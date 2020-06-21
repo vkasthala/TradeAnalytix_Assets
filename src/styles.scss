@@ -1,0 +1,53 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+h1,h2,h3,h4,h5,h6{
+    margin-bottom: 0px !important;
+}
+
+p{
+    margin-bottom: 0px !important;
+
+}
+
+.form-group{
+    margin-bottom: 0px !important;
+}
+  
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.form-control:focus{
+    outline: none ;
+    box-shadow: none !important;
+}
+
+.mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
+    background-color: #0183C0 !important;
+}
+
+.mat-horizontal-stepper-header-container {
+    background: #DBDBDB !important;
+}
+
+.mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:first-child)::before, .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:last-child)::after, [dir=rtl] .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:first-child)::after, [dir=rtl] .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:last-child)::before {
+    border-top-width: 2px !important;
+}
+
+.mat-horizontal-stepper-header::after, .mat-horizontal-stepper-header::before, .mat-stepper-horizontal-line {
+    border-top-color: #AAAAAA !important;
+}
+
+.mat-stepper-horizontal-line {
+    border-top-width: 2px !important;
+}
+
+.mat-horizontal-content-container {
+    overflow: auto !important;
+    min-height: 40vh !important;
+}
+
+.cursor-pointer {
+    cursor: pointer !important;
+}

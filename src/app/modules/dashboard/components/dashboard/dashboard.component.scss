@@ -1,0 +1,158 @@
+@import "../../../../../assets/styles/variable.scss";
+
+// Dashboard topbar
+
+.trade-dashboard-topbar {
+  height: auto;
+  @include gradient-background();
+
+  .trade-dash-sections {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 20px;
+
+    .dashboard-left-logo {
+      img {
+        width: 200px;
+        height: auto;
+      }
+    }
+
+    .dashboard-right-login {
+      display: flex;
+      align-items: center;
+
+      .login-img {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: 1px solid $white;
+        overflow: hidden;
+        margin-right: 10px;
+
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+
+      .login-member {
+        color: $white;
+
+        .login-member-name {
+          h4 {
+            cursor: pointer;
+            font-size: 15px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Dashboard Navabr
+.trade-dashboard-navbar {
+  background-color: $white;
+  box-shadow: 1px 0px 4px #00000087;
+
+  .trade-navbar {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    ul {
+      margin: 0px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      width: 100%;
+      flex-flow: wrap;
+      padding: 10px;
+      li {
+        cursor: pointer;
+
+        a.trade-nav-link {
+          display: flex;
+          align-items: center;
+          text-decoration: none;
+          span {
+            margin-right: 5px;
+        
+            img {
+              width: 16px;
+            }
+          }
+          h4 {
+            color: $heading-1;
+            font-size: 16px;
+            font-weight: 500;
+            text-transform: uppercase;
+            margin-top: 3px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.nav-active {
+  a {
+    span {
+      img {
+        fill: $secondary !important;
+      }
+    }
+    h4 {
+      color: $secondary !important;
+    }
+  }
+}
+
+// Dashboard sedction
+
+.trade-app-dashboard {
+  background-color: $btn-background;
+  height: auto;
+  min-height: 100vh;
+}
+.trade-dash-section {
+  width: 100%;
+
+  .trade-dash-main {
+    padding: 10px 20px;
+
+    .trade-bread {
+      nav {
+        ol {
+          padding-left: 0px;
+          list-style: none;
+          li {
+            display: inline-flex;
+          }
+        }
+      }
+    }
+
+    .trade-dash-name {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      width: 100%;
+      margin-bottom: 15px;
+      .left-dash {
+        h2 {
+          color: $secondary;
+          font-weight: 500;
+        }
+
+        h5 {
+          color: $member-name;
+        }
+      }
+    }
+
+   
+  }
+}
+
+

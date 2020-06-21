@@ -1,0 +1,45 @@
+<div class="container-fluid">
+  <div class="addnew-trade">
+    <mat-horizontal-stepper labelPosition="bottom" #stepper>
+      <mat-step>
+        <ng-template matStepLabel>Trade Details</ng-template>
+
+        <div class="stepper-content">
+          <app-trade-details></app-trade-details>
+        </div>
+      </mat-step>
+
+      <mat-step>
+        <ng-template matStepLabel>Risk Analysis</ng-template>
+        <mat-form-field>
+          <mat-label>Address</mat-label>
+          <input matInput />
+        </mat-form-field>
+      </mat-step>
+
+      <mat-step>
+        <ng-template matStepLabel>Trade Thesis</ng-template>
+        <mat-form-field>
+          <mat-label>Address</mat-label>
+          <input matInput />
+        </mat-form-field>
+      </mat-step>
+
+      <mat-step>
+        <ng-template matStepLabel>Risk Management</ng-template>
+        <mat-form-field>
+          <mat-label>Address</mat-label>
+          <input matInput />
+        </mat-form-field>
+      </mat-step>
+
+      <mat-step>
+        <ng-template matStepLabel>Entry Rules</ng-template>
+        <mat-form-field>
+          <mat-label>Address</mat-label>
+          <input matInput />
+        </mat-form-field>
+      </mat-step>
+    </mat-horizontal-stepper>
+  </div>
+</div>

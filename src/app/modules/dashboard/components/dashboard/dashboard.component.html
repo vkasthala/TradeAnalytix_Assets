@@ -1,0 +1,121 @@
+<div class="trade-app-dashboard">
+
+    <div class="trade-dashboard-topbar">
+        <div class="container-fluid">
+            <div class="trade-dash-sections">
+
+                <div class="dashboard-left-logo cursor-pointer"  [routerLink]="['/dashboard']">
+                    <img src="../../../assets/images/Group 10.svg" alt="Trade-app-logo" class="img-fluid">
+                </div>
+                <div class="dashboard-right-login">
+                    <div class="login-img">
+                        <img src="../../../assets/images/face-img.png" alt="">
+                    </div>
+                    <div class="login-member">
+                        <div class="login-member-name">
+                            <h5>Welcome Venkat</h5>
+                        </div>
+                        <div class="login-member-name" (click)="logout()">
+                            <h4>Logout</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="trade-dashboard-navbar">
+        <nav class="trade-navbar">
+            <ul class="list-unstyled ">
+                <li class="nav-active">
+                    <a class="trade-nav-link" [routerLink]="['/dashboard']"><span><img src="../../../assets/images/icon/Icon ionic-md-home.svg"
+                                alt=""></span>
+                        <h4>Dashboard</h4>
+                    </a>
+                </li>
+                <li>
+                    <a class="trade-nav-link" [routerLink]="['/dashboard/new-trade']"><span><img src="../../../assets/images/icon/Icon ionic-ios-add-circle.svg"
+                                alt=""></span>
+                        <h4>Add New Trade</h4>
+                    </a>
+                </li>
+                <li>
+                    <a class="trade-nav-link" [routerLink]="['/dashboard/import-trades']"><span><img src="../../../assets/images/icon/Icon ionic-ios-add-circle.svg"
+                                alt=""></span>
+                        <h4>IMPORT TRADES</h4>
+                    </a>
+                </li>
+                <li>
+                    <a class="trade-nav-link" [routerLink]="['/dashboard/trade-strategies']"><span><img src="../../../assets/images/icon/Subtraction 9.svg"
+                                alt=""></span>
+                        <h4>Trade Strategies </h4>
+                    </a>
+                </li>
+                <li>
+                    <a class="trade-nav-link" [routerLink]="['/dashboard/compare-strategies']"><span><img
+                                src="../../../assets/images/icon/Icon material-compare-arrows.svg" alt=""></span>
+                        <h4>Compare Strategies</h4>
+                    </a>
+                </li>
+                <li>
+                    <a class="trade-nav-link" [routerLink]="['/dashboard/reports']"><span><img src="../../../assets/images/icon/Icon metro-chart-dots.svg"
+                                alt=""></span>
+                        <h4>Reports</h4>
+                    </a>
+                </li>
+                <li>
+                    <a class="trade-nav-link" [routerLink]="['/dashboard/setttings']"><span><img src="../../../assets/images/icon/Icon ionic-ios-settings.svg"
+                                alt=""></span>
+                        <h4>Settings</h4>
+                    </a>
+                </li>
+                <li>
+                    <a class="trade-nav-link" [routerLink]="['/dashboard/help']"><span><img
+                                src="../../../assets/images/icon/Icon awesome-question-circle.svg" alt=""></span>
+                        <h4>Help</h4>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+
+    <div class="trade-dash-section">
+        <div class="container-fluid">
+            <div class="trade-dash-main">
+
+                <div class="trade-bread">
+                    <nav>
+                        <ol>
+                            <li>
+                                <a> Home &gt; </a> &nbsp;
+                            </li>
+
+                            <li>
+                                <a>
+                                    <strong>{{currentNavigation.breadcrumb}}</strong>
+                                </a>
+                            </li>
+                        </ol>
+                    </nav>
+
+                </div>
+
+                <div class="trade-dash-name">
+                    <div class="left-dash">
+                        <h2>
+                            {{currentNavigation.title}}
+                        </h2>
+                    </div>
+                    <div class="left-dash">
+                        <h5>
+                            Welcome Venkat
+                        </h5>
+                    </div>
+                </div>
+            </div>
+         
+        </div>
+    </div>
+    <router-outlet></router-outlet>
+</div>

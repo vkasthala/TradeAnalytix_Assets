@@ -1,0 +1,214 @@
+@import "../../../../../assets/styles/variable.scss";
+
+
+.trade-dash-cards {
+  margin-top: 20px;
+  padding: 0px 20px;
+  .flex-container {
+    display: flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: -webkit-flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    // padding: 0px 14px;
+    flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    position: relative;
+    height: 100%;
+    // max-width: calc((100vw - 30px));
+  }
+  .flex-item {
+    min-height: 120px;
+    // margin: 10px 0;
+    margin-bottom: 10px;
+    padding: 0px;
+    width: auto;
+    position: relative;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .flex-inner {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      text-align: center;
+      a {
+        cursor: pointer;
+
+        span {
+          display: block;
+          padding-bottom: 10px;
+          font-size: 14px;
+        }
+      }
+
+      .card-icon {
+        position: absolute;
+        right: 5px;
+        bottom: 5px;
+
+        img {
+          width: 18px;
+        }
+      }
+    }
+  }
+}
+.card-first {
+  background-color: $cardone;
+}
+.card-second {
+  background-color: $cardtwo;
+}
+.card-fourth {
+  background-color: $cardthree;
+}
+.card-five {
+  background-color: $cardfour;
+}
+
+.trade-dash-con{
+    margin: 30px 0px;
+    padding: 0px 20px;
+    .dsh-img{
+        // background-color: $white;
+        // border: 1px solid #D2D2D2;
+        // padding: 20px;
+        margin-bottom: 20px;
+    }
+}
+
+.trade-strategies-section{
+  background-color: white;
+  height: 400px;
+}
+
+
+// strategies table
+.trade-strategies-table{
+  .table{
+    margin-bottom: 0px;
+    thead{
+      background-color: $apptabel;
+      color: $white;
+      tr{
+
+        th{
+          padding: 14px 14px;
+          font-size: 14px;
+          font-weight: 500;
+          text-align: center;
+          vertical-align: middle;
+          border-bottom: 1px solid #dee2e6;
+        }
+      }
+    }
+    tbody{
+      tr{
+        td{
+          padding: 14px 14px;
+          text-align: center;
+          vertical-align: middle;
+          font-size: 14px;
+          color: #2A2A2A;
+        }
+
+
+        .trade-check{
+          .form-group {
+            display: block;
+            margin-bottom: 0px;
+          }
+          
+          .form-group input {
+            padding: 0;
+            height: initial;
+            width: initial;
+            margin-bottom: 0;
+            display: none;
+            cursor: pointer;
+          }
+          
+          .form-group label {
+            position: relative;
+            cursor: pointer;
+            margin-bottom: 0px;
+          }
+          
+          .form-group label:before {
+            content:'';
+            -webkit-appearance: none;
+            background-color: transparent;
+            border: 2px solid $heading-1;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
+            padding: 8px;
+            display: inline-block;
+            position: relative;
+            vertical-align: middle;
+            cursor: pointer;
+            margin-right: 5px;
+          }
+          
+          .form-group input:checked + label:after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 5px;
+            left: 7px;
+            width: 6px;
+            height: 12px;
+            border: solid $heading-1;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+          }
+        }
+
+        .trade-check-img{
+          img{
+            width: 18px;
+          }
+        }
+
+        .trade-rd{
+          color: #1CB86A;
+          font-weight: 500;
+        }
+        .trade-rdd{
+          color: #E11C1C;
+          font-weight: 500;
+
+        }
+      }
+    }
+  }
+}
+
+.table tbody tr td:first-child{
+  padding-right: 0px !important;
+}
+.table tbody tr th:first-child{
+  padding-right: 0px !important;
+}
+.table-striped tbody tr:nth-of-type(even) {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: transparent !important;
+}
+
+
+.trade-details{
+  cursor: pointer;
+}
+
+.card-bm{
+  margin-bottom: 10px;
+}

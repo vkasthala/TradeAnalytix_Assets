@@ -1,0 +1,51 @@
+// Linear Gradient Background-color
+@mixin gradient-background(){
+	background: rgb(2,63,143);
+	background: -moz-linear-gradient(90deg, rgba(2,63,143,1) 0%, rgba(1,144,202,1) 35%, rgba(1,144,202,1) 100%);
+	background: -webkit-linear-gradient(90deg, rgba(2,63,143,1) 0%, rgba(1,144,202,1) 35%, rgba(1,144,202,1) 100%);
+	background: -o-linear-gradient(90deg, rgba(2,63,143,1) 0%, rgba(1,144,202,1) 35%, rgba(1,144,202,1) 100%);
+	background: -ms-linear-gradient(90deg, rgba(2,63,143,1) 0%, rgba(1,144,202,1) 35%, rgba(1,144,202,1) 100%);
+	background: linear-gradient(90deg, rgba(2,63,143,1) 0%, rgba(1,144,202,1) 35%, rgba(1,144,202,1) 100%);
+}
+
+
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+       -moz-border-radius: $radius;
+        -ms-border-radius: $radius;
+            border-radius: $radius;
+}
+
+
+
+// color- variable
+
+$heading-1:#4A4A4A;
+$white:#FFFFFF;
+$appfooter:#323434;
+$primary:#016DB0;
+$secondary:#02559F;
+$third:#565656;
+$cardone:#66D64F;
+$cardtwo:#F13F3F;
+$cardthree:#FF984A;
+$cardfour:#0992A7;
+$member-name:#0B2D50;
+
+$btn-background:#F2F2F2;
+$btn-border-color:#707070;
+
+$apptabel:#979797;
+$appbtn-color:#0183C0;
+
+// font family
+
+ $font-primary: 'Segoe UI';
+
+
+
+ $extra-small: 'screen and (min-width: 320px) and (max-width:599px)';
+$small: 'screen and (min-width: 600px) and (max-width: 959px)';
+$medium: 'screen and (min-width: 960px) and (max-width: 1279px)';
+$large: 'screen and (min-width: 1280px) and (max-width: 1919px)';
+$extra-large: 'screen and (min-width: 1920px) and (max-width: 5000px)';

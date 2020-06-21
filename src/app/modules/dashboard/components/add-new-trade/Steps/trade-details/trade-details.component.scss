@@ -1,0 +1,515 @@
+@import '../../../../../../../assets/styles/variable.scss';
+
+.addnew-trade{
+    padding: 0px 20px;
+}
+.btn-enter{
+    background-color: #0183C0;
+    color: $white;
+    padding: 6px 40px;
+}   
+
+.trade-right-search .form-control{
+    border: 1px solid #A2A2A2;
+    // height: 40px;
+}
+
+.trade-right-search{
+    position: relative;
+    width: 200px;
+}
+
+img.form-icon{
+    position: absolute;
+    right: 11px;
+    top: 9px;
+    width: 19px;
+}
+
+.trade-rate {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.trade-name {
+    margin-bottom: 5px;
+}
+
+span.trade-r {
+    color: black;
+    font-weight: 500;
+    font-size: 20px;
+}
+span.trade-rr {
+    color: #FF0000;
+    font-weight: 500;
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+
+.trade-rate-box{
+    background-color: #f2f2f2;
+    border: 1px solid #CBCBCB;
+    padding: 12px;
+    margin: 10px 0px 40px 0px;
+}
+
+
+.trade-rate-sec{
+    margin-top: 10px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.rate-box-right {
+    width: 50%;
+    border-right: 1px solid #707070;
+}
+
+.rate-box-left {
+    width: 50%;
+}
+.rate-box {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.trade-rate-heading{
+    h6{
+        color: $primary;
+    }
+}
+
+.rate-box-s {
+    width: 15%;
+}
+
+.rate-box{
+    width: 26%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.bxo-name {
+    margin-bottom: 12px;
+
+    span{
+        font-size: 14px;
+    }
+}
+
+.trad-border{
+    border: 1px solid #ACACAC;
+}
+
+.mat-stepper-horizontal.mat-horizontal-content-container{
+    padding: 0px !important;
+}
+
+.search_btn .btn-add {
+    width: 110px;
+    height: 40px;
+    line-height: 28px;
+    background: $appbtn-color;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    text-transform: uppercase;
+    // margin-top: 24px;
+}
+.btn-next{
+    padding: 8px 40px;
+    background: $appbtn-color;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+.btn:hover{
+    color: $white;
+}
+
+.order-btn {
+    margin-top: 20px;
+    
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    
+}
+a.btn.btn-skip {
+    color: $appbtn-color;
+    right: 0px;
+    position: absolute;
+    font-size: 15px;
+}
+
+.gap-btn {
+    margin-left: 20px;
+}
+
+.trade-section {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 80%;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.gap-btn {
+    margin-left: 20px;
+}
+
+.Trade-type .form-control{
+    height: 40px;
+    width: 140px;
+    font-size: 14px;
+}
+
+.trade-sec span{
+    font-size: 14px;
+    font-weight: 500;
+    color: $primary;
+}
+
+.trade-stoack-main {
+    margin-top: 15px;
+}
+
+.btn-secondary{
+    color: $white;
+    text-transform: uppercase;
+}
+
+
+
+.trade-cards-section {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    margin: 40px 0px;
+    // flex-wrap: wrap;
+    @media #{$extra-small} {
+        width: 100%;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+    @media #{$small} {
+        flex-wrap: wrap;
+        // margin-bottom: 10px;
+    }
+    @media #{$medium} {
+        flex-wrap: wrap;
+        // margin-bottom: 10px;
+    }
+    .trade-card-box {
+        width: 200px;
+        min-width: 260px;
+        background: #f2f2f2;
+        height: auto;
+        min-height: 330px;
+        display: flex;
+        flex-direction: column;
+        padding: 14px;
+        justify-content: flex-start;
+        align-items: flex-start;
+       
+        @media #{$extra-small} {
+            min-height: 420px;
+            margin-bottom: 10px;
+        }
+        @media #{$small} {
+            margin-bottom: 10px;
+        }
+        @media #{$medium} {
+            margin-bottom: 10px;
+        }
+        .top-heading {
+            display: flex;
+            justify-content: space-evenly;
+            width: 100%;
+            align-items: baseline;
+            margin-bottom: 10px;
+            h6 {
+                font-weight: 600;
+                margin: auto;
+                font-size: 15px;
+            }
+        }
+        .card-main {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 10px;
+            .card-left {
+                width: 50%;
+                span {
+                    font-size: 12px;
+                }
+            }
+            .card-right {
+                width: 70%;
+                .form-control {
+                    font-size: 12px !important;
+                }
+                .select-input {
+                    padding: 0p 2px;
+                }
+            }
+        }
+    }
+}
+.trade-card-box:not(:first-child){
+    margin: 0px 0px 0px 30px;
+}
+
+.btn-yes,.btn-no{
+    
+    padding: 10px 25px;
+    border-radius: 5px;
+}
+.btn-yes{
+    background-color: #219563;
+    color: $white;
+}
+.btn-no{
+    background-color: #E2E2E2;
+    color: #000;
+    margin-left: 20px;
+}
+
+.btn-no:hover{
+    color: #000;
+}
+
+.trade-risk h6{
+    font-size: 14px;
+    font-weight: 500;
+    color: #016DB0;
+}
+
+.trade-risk {
+    margin: 10px 0px;
+}
+
+.risk-stock-seciton {
+    display: flex;
+    width: 90%;
+    align-items: center;
+}
+
+.stock-inc {
+    border: 1px solid #707070;
+    padding: 4px 9px;
+    border-radius: 50px;
+    width: 42%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    a{
+        cursor: pointer;
+        img{
+            width: 25px;
+            height: auto;
+        }
+    }
+
+    span{
+        margin: 0px 5px;
+    }
+}
+
+.stock-name {
+    width: 50%;
+    span{
+        font-size: 15px;
+    }
+}
+
+.risk-box {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.risk-af{
+    position: relative;
+
+}
+
+.risk-af::after{
+    content: '';
+    position: absolute;
+    right: 20px;
+    top: 0px;
+    width: 1px;
+    height: 100%;
+    background-color: #707070;
+    z-index: 9;
+    opacity: .5;
+}
+
+.risk-bt{
+    margin-bottom: 20px;
+}
+
+.trade-risk-heading {
+    margin-bottom: 40px;
+    h6{
+        font-size: 14px;
+        font-weight: 500;
+        color: #016DB0;
+    
+    }
+
+    p{
+        display: block;
+        margin-top: 15px;
+        font-size: 13px
+    }
+}
+
+.trade-risk-stock {
+    margin-bottom: 40px;
+}
+
+// risk tabs
+.tab .nav-tabs{ border-bottom: 2px solid #e8e8e8; }
+.tab .nav-tabs li a{
+    display: block;
+    padding: 10px 20px;
+    margin: 0 5px 1px 0;
+    background: #fff;
+    font-size: 15px;
+    font-weight: 500;
+    color: #000;
+    text-align: center;
+    border: none;
+    border-radius: 0;
+    z-index: 2;
+    position: relative;
+    transition:all 0.3s ease 0s;
+    text-decoration: none;
+}
+.tab .nav-tabs li a:hover,
+.tab .nav-tabs li.active a{
+    color: $primary !important;
+    border: none;
+}
+
+.tab .nav-tabs li.active a:after{
+    content: "";
+    width: 100%;
+    height: 2px;
+    background: $primary;
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    z-index: -1;
+    transition: all 0.3s ease 0s;
+}
+.tab .tab-content{
+    padding: 30px 20px 20px;
+    margin-top: 0;
+    background: #fff;
+    font-size: 15px;
+    color: #7a9181;
+    line-height: 30px;
+    border-radius: 0 0 5px 5px;
+}
+.tab .tab-content h3{
+    font-size: 24px;
+    margin-top: 0;
+}
+@media only screen and (max-width: 479px){
+    .tab .nav-tabs li{
+        width: 100%;
+        text-align: center;
+    }
+    .tab .nav-tabs li.active a:before{
+        content: "\f105";
+        bottom: 15%;
+        left: 0;
+        right: auto;
+    }
+}
+
+.charts{
+    img{
+        width: 50%;
+    }
+}
+
+
+// risk table
+
+.risk-tabs-table {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    margin: 0px 0;
+}
+
+.risk-table {
+    
+    width: 260px;
+    /* min-width: 185px; */
+    height: auto;
+    min-height: 340px;
+    /* padding-top: 10px; */
+    border-right: 1px solid;
+    /* padding-right: 12px; */
+    padding: 0px 8px;
+
+    table {
+        width: 100%;
+        margin: 0 auto;
+        text-align: center;
+        thead{
+
+            
+                    th {
+                        
+               background: #707070; 
+                       color: white; 
+                        font-size: 14px;
+                        font-weight: normal;
+                        /* padding: 12px; */
+                        /* display: table; */
+                        // border: 1px solid;
+                    }
+
+                    &:nth-child(2){
+                        display: block;
+                        margin: 0 12px;
+                    }
+        }
+
+        td {
+            font-size: 13px;
+            font-weight: 400;
+            color: #4F5051;
+            border-bottom: 1px solid;
+        }
+    }
+}
+
+thead th:nth-child(2){
+    display: block;
+    margin: 0 12px;
+}
+

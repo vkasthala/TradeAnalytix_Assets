@@ -1,0 +1,211 @@
+@import "../../../../../assets/styles/variable.scss";
+
+
+.trade-strategies-table{
+
+
+    padding: 10px 20px;
+    .card-body{
+        padding: 0px;
+    }
+    .table{
+      margin-bottom: 0px;
+      thead{
+        background-color: $apptabel;
+        color: $white;
+        tr{
+  
+          th{
+            padding: 14px 14px;
+            font-size: 14px;
+            font-weight: 500;
+            text-align: center;
+            vertical-align: middle;
+            border-bottom: 1px solid #dee2e6;
+          }
+        }
+      }
+      tbody{
+        tr{
+          td{
+            padding: 14px 14px;
+            text-align: center;
+            vertical-align: middle;
+            font-size: 14px;
+            color: #2A2A2A;
+          }
+  
+  
+          .trade-check{
+            .form-group {
+              display: block;
+              margin-bottom: 0px;
+            }
+            
+            .form-group input {
+              padding: 0;
+              height: initial;
+              width: initial;
+              margin-bottom: 0;
+              display: none;
+              cursor: pointer;
+            }
+            
+            .form-group label {
+              position: relative;
+              cursor: pointer;
+              margin-bottom: 0px;
+            }
+            
+            .form-group label:before {
+              content:'';
+              -webkit-appearance: none;
+              background-color: transparent;
+              border: 2px solid $heading-1;
+              box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
+              padding: 8px;
+              display: inline-block;
+              position: relative;
+              vertical-align: middle;
+              cursor: pointer;
+              margin-right: 5px;
+            }
+            
+            .form-group input:checked + label:after {
+              content: '';
+              display: block;
+              position: absolute;
+              top: 5px;
+              left: 7px;
+              width: 6px;
+              height: 12px;
+              border: solid $heading-1;
+              border-width: 0 2px 2px 0;
+              transform: rotate(45deg);
+            }
+          }
+  
+          .trade-check-img{
+            img{
+              width: 18px;
+            }
+          }
+  
+          .trade-rd{
+            color: #1CB86A;
+            font-weight: 500;
+          }
+          .trade-rdd{
+            color: #E11C1C;
+            font-weight: 500;
+  
+          }
+        }
+      }
+    }
+  }
+  
+  .table tbody tr td:first-child{
+    padding-right: 0px !important;
+  }
+  .table tbody tr th:first-child{
+    padding-right: 0px !important;
+  }
+  .table-striped tbody tr:nth-of-type(even) {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+  .table-striped tbody tr:nth-of-type(odd) {
+    background-color: transparent !important;
+  }
+  
+  
+  .trade-st-box {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    padding: 15px 0px;
+}
+
+  .trade-form {
+    position: relative;
+    width: 200px;
+}
+
+  img.form-icon {
+    position: absolute;
+    right: 11px;
+    top: 9px;
+    width: 19px;
+}
+
+.form-icon-down{
+  position: absolute;
+  right: 11px;
+  top: 15px;
+  width: 15px;
+}
+
+.form-control{
+    border: 1px solid #707070;
+}
+
+
+.trade-sel {
+    width: 180px;
+    position: relative;
+  
+  select{
+    cursor: pointer;
+    -webkit-appearance: none !important;
+  }
+}
+
+.trade-form .form-control{
+  font-size: 14px ;
+  color: #4A4A4A;
+}
+.trade-form .form-control ::placeholder{
+  color: #4A4A4A;
+
+}
+
+.trade-date .form-control{
+  font-size: 14px ;
+  color: #4A4A4A;
+}
+.trade-sel .form-control{
+  font-size: 14px ;
+  color: #4A4A4A;
+}
+
+.btn-apply{
+  background-color: #0183C0;
+  color: $white;
+  font-size: 14px;
+}
+
+.trade-details{
+  cursor: pointer;
+}
+
+.add-new-trade-btn {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 16px;
+  align-items: center;
+}
+
+a.add-new ,
+a.import-new{
+  color: #0183C0;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+a.add-new img{
+  width: 15px;
+} 
