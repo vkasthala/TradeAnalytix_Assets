@@ -4,7 +4,6 @@ import {FormControl} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatStepperModule } from '@angular/material/stepper';
 import {MatAutocompleteModule, MatInputModule } from '@angular/material';
-import {AngularMaterialModule } from './angular-material/angular-material.module';
 
 
 
@@ -14,8 +13,7 @@ import {AngularMaterialModule } from './angular-material/angular-material.module
     MatStepperModule,
     MatFormFieldModule,
     MatAutocompleteModule,
-    MatInputModule,
-    AngularMaterialModule    
+    MatInputModule  
   ],
   exports : [
     MatStepperModule,
