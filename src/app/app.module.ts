@@ -15,6 +15,8 @@ import { localStorageSync } from 'ngrx-store-localstorage';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { reducers } from './modules/utilities/reducers';
 import { UtilitiesModule } from './modules/utilities/utilities/utilities.module';
+import {AngularMaterialModule } from './angular-material.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
   return localStorageSync({ keys: [globalConfigFeatureKey], rehydrate: true })(reducer);
@@ -33,6 +35,10 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     UtilitiesModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     BrowserAnimationsModule,
+	AngularMaterialModule,
+	ReactiveFormsModule,
+	FormsModule,
+    DashboardModule,
     StoreModule.forRoot(reducers, {
       metaReducers,
       runtimeChecks: {

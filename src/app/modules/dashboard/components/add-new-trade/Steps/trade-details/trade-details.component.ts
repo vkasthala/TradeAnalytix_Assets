@@ -1,22 +1,51 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+
+import { Component, OnInit, EventEmitter,Output,NgModule } from '@angular/core';
+import {FormControl} from '@angular/forms';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatStepperModule } from '@angular/material/stepper';
+import {MatAutocompleteModule, MatInputModule } from '@angular/material';
+
+
+
+@NgModule({
+  declarations: [],
+  imports: [
+    MatStepperModule,
+    MatFormFieldModule,
+    MatAutocompleteModule,
+    MatInputModule,
+    AngularMaterialModule    
+  ],
+  exports : [
+    MatStepperModule,
+    MatFormFieldModule,
+    MatAutocompleteModule,
+    MatInputModule    
+  ]
+})
 
 @Component({
   selector: 'app-trade-details',
   templateUrl: './trade-details.component.html',
   styleUrls: ['./trade-details.component.scss']
 })
+
+
 export class TradeDetailsComponent implements OnInit {
 
-  stockLowerBand: number = -10;
-  stockUpperBand: number = 10;
 
-  currentState: number = 1;
-  stockAdded: boolean;
-  performRiskAnalysis: boolean;
-  promptPerformRiskAnalysis: boolean;
-  displayRiskAnalysis: boolean;
-  analyzeRisk: boolean;
-  stockOptions: any[] = [];
+ stockLowerBand: number = -10;
+ stockUpperBand: number = 10;
+
+  currentState:number = 1;
+  stockAdded:boolean;
+  performRiskAnalysis:boolean;
+  promptPerformRiskAnalysis:boolean;
+  displayRiskAnalysis:boolean;
+  analyzeRisk:boolean;
+  stockOptions:any[] = [];
+  myFormControl=new FormControl();
+  symbolOptions: string[]=['NTFX','AAPL'];
   @Output('nextStep') nextStep = new EventEmitter();
   @Output('activateRisk') activateRisk = new EventEmitter();
 
