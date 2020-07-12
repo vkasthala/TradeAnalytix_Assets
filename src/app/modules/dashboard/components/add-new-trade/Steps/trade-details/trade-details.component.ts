@@ -13,8 +13,8 @@ import {MatAutocompleteModule, MatInputModule } from '@angular/material';
     MatStepperModule,
     MatFormFieldModule,
     MatAutocompleteModule,
-    MatInputModule,
-    AngularMaterialModule    
+    MatInputModule
+ //   AngularMaterialModule    
   ],
   exports : [
     MatStepperModule,
