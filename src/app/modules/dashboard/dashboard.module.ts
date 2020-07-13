@@ -14,10 +14,19 @@ import { HelpComponent } from './components/help/help.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UtilitiesModule } from '../utilities/utilities/utilities.module';
 import { TradeDetailsComponent } from './components/add-new-trade/Steps/trade-details/trade-details.component';
-import { RiskAnalysisComponent } from './components/add-new-trade/Steps/risk-analysis/risk-analysis.component';
 import { TradeThesisComponent } from './components/add-new-trade/Steps/trade-thesis/trade-thesis.component';
 import { RiskManagementComponent } from './components/add-new-trade/Steps/risk-management/risk-management.component';
 import { EntryRulesComponent } from './components/add-new-trade/Steps/entry-rules/entry-rules.component';
+import { AddTradeConfirmationPopupComponent } from './modalAsComponents/add-trade-confirmation-popup/add-trade-confirmation-popup.component';
+import { MobileEntryRulesComponent } from './components/add-new-trade/Steps/mobile-steps/mobile-entry-rules/mobile-entry-rules.component';
+import { MobileRiskManagementComponent } from './components/add-new-trade/Steps/mobile-steps/mobile-risk-management/mobile-risk-management.component';
+import { MobileTradeDetailsComponent } from './components/add-new-trade/Steps/mobile-steps/mobile-trade-details/mobile-trade-details.component';
+import { MobileTradeThesisComponent } from './components/add-new-trade/Steps/mobile-steps/mobile-trade-thesis/mobile-trade-thesis.component';
+import { MobileRiskAnalysisComponent } from './components/add-new-trade/Steps/mobile-steps/mobile-risk-analysis/mobile-risk-analysis.component';
+import { MobileTradeAnalysisComponent } from './components/add-new-trade/Steps/mobile-steps/mobile-trade-analysis/mobile-trade-analysis.component';
+import { CloseTradeComponent } from './components/close-trade/close-trade.component';
+import { ExitRulesComponent } from './components/exit-rules/exit-rules.component';
+import { UpdateStrategyPopupComponent } from './modalAsComponents/update-strategy-popup/update-strategy-popup.component';
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -30,10 +39,19 @@ import { EntryRulesComponent } from './components/add-new-trade/Steps/entry-rule
     SettingsComponent,
     HelpComponent,
     TradeDetailsComponent,
-    RiskAnalysisComponent,
     TradeThesisComponent,
     RiskManagementComponent,
-    EntryRulesComponent
+    EntryRulesComponent,
+    AddTradeConfirmationPopupComponent,
+    MobileEntryRulesComponent,
+    MobileRiskManagementComponent,
+    MobileTradeDetailsComponent,
+    MobileTradeThesisComponent,
+    MobileRiskAnalysisComponent,
+    MobileTradeAnalysisComponent,
+    CloseTradeComponent,
+    ExitRulesComponent,
+    UpdateStrategyPopupComponent
   ],
   imports: [
     CommonModule,
@@ -41,6 +59,10 @@ import { EntryRulesComponent } from './components/add-new-trade/Steps/entry-rule
     ReactiveFormsModule,
     DashboardRoutingModule,
     UtilitiesModule
+  ],
+  entryComponents: [
+    AddTradeConfirmationPopupComponent,
+    UpdateStrategyPopupComponent
   ]
 })
 export class DashboardModule { }

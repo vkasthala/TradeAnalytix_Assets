@@ -1,45 +1,135 @@
 <div class="container-fluid">
   <div class="addnew-trade">
-    <mat-horizontal-stepper labelPosition="bottom" #stepper>
+    <mat-horizontal-stepper labelPosition="bottom" #stepper [linear]="false">
       <mat-step>
         <ng-template matStepLabel>Trade Details</ng-template>
 
         <div class="stepper-content">
-          <app-trade-details></app-trade-details>
+          <app-trade-details
+            (nextStep)="goForward(true)"
+            (activateRisk)="activeStep = true"
+          ></app-trade-details>
         </div>
       </mat-step>
 
-      <mat-step>
-        <ng-template matStepLabel>Risk Analysis</ng-template>
-        <mat-form-field>
-          <mat-label>Address</mat-label>
-          <input matInput />
-        </mat-form-field>
+      <mat-step
+        [editable]="false"
+        [completed]="activeStep"
+        [state]="'completed'"
+      >
+        <ng-template matStepLabel
+          ><span [class.activeStepHeading]="activeStep"
+            >Risk Analysis</span
+          ></ng-template
+        >
+        <div class="stepper-content"></div>
       </mat-step>
 
       <mat-step>
         <ng-template matStepLabel>Trade Thesis</ng-template>
-        <mat-form-field>
-          <mat-label>Address</mat-label>
-          <input matInput />
-        </mat-form-field>
+        <div class="stepper-content">
+          <app-trade-thesis
+            (nextStep)="goForward()"
+            (prevStep)="goBack(true)"
+          ></app-trade-thesis>
+        </div>
       </mat-step>
 
       <mat-step>
         <ng-template matStepLabel>Risk Management</ng-template>
-        <mat-form-field>
-          <mat-label>Address</mat-label>
-          <input matInput />
-        </mat-form-field>
+        <div class="stepper-content">
+          <app-risk-management
+            (nextStep)="goForward()"
+            (prevStep)="goBack()"
+          ></app-risk-management>
+        </div>
       </mat-step>
 
       <mat-step>
         <ng-template matStepLabel>Entry Rules</ng-template>
-        <mat-form-field>
-          <mat-label>Address</mat-label>
-          <input matInput />
-        </mat-form-field>
+        <div class="stepper-content">
+          <app-entry-rules (prevStep)="goBack()"></app-entry-rules>
+        </div>
       </mat-step>
     </mat-horizontal-stepper>
+  </div>
+</div>
+
+<!-- Add-new-trade-mobile -->
+<div class="add-newtrade-mobile">
+  <div class="container-fluid">
+    <div class="trade-top-heading">
+      <h3>
+        ADD TRADE
+      </h3>
+    </div>
+  </div>
+  <div class="trad-border"></div>
+
+  <div class="new-trade-inner">
+    <div class="addnew-steps">
+      <mat-horizontal-stepper labelPosition="bottom" #tradeMobileStepper [linear]="false">
+        <mat-step>
+          <ng-template matStepLabel>Trade Details</ng-template>
+
+          <div class="stepper-content">
+            <app-mobile-trade-details
+              (nextStep)="goForward(false,true)"
+            ></app-mobile-trade-details>
+          </div>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Entry Rules</ng-template>
+          <div class="stepper-content">
+            <app-mobile-risk-analysis
+              (prevStep)="goBack(false,true)"
+              (nextStep)="goForward(false,true)"
+            ></app-mobile-risk-analysis>
+          </div>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Entry Rules</ng-template>
+          <div class="stepper-content">
+            <app-mobile-trade-analysis
+              (prevStep)="goBack(false,true)"
+              (nextStep)="goForward(false,true)"
+            ></app-mobile-trade-analysis>
+          </div>
+        </mat-step>
+
+        <mat-step>
+          <ng-template matStepLabel>Entry Rules</ng-template>
+          <div class="stepper-content">
+            <app-mobile-trade-thesis
+              (prevStep)="goBack(false,true)"
+              (nextStep)="goForward(false,true)"
+            ></app-mobile-trade-thesis>
+          </div>
+        </mat-step>
+
+        <mat-step>
+          <ng-template matStepLabel>Entry Rules</ng-template>
+          <div class="stepper-content">
+            <app-mobile-risk-management
+              (prevStep)="goBack(false,true)"
+              (nextStep)="goForward(false,true)"
+            ></app-mobile-risk-management>
+          </div>
+        </mat-step>
+
+        <mat-step>
+          <ng-template matStepLabel>Entry Rules</ng-template>
+          <div class="stepper-content">
+            <app-mobile-entry-rules
+              (prevStep)="goBack(false,true)"
+            ></app-mobile-entry-rules>
+          </div>
+        </mat-step>
+      </mat-horizontal-stepper>
+
+
+
+
+    </div>
   </div>
 </div>

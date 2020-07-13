@@ -1,0 +1,137 @@
+@import "../../../../../../../assets/styles/variable.scss";
+@import '../../../../../../../assets/styles/breakpoints.scss';
+
+.trade-thesis-sec {
+  .trade-thesis-heading {
+    border-bottom: 1px solid #7070704f;
+    padding-bottom: 15px;
+    h4 {
+      color: $primary;
+    }
+  }
+
+  .trade-thesis-inner {
+    padding: 0px 20px;
+    @media #{$extra-small} {
+      padding: 0px;
+    }
+  }
+}
+
+.form-control {
+  border: 1px solid #70707070;
+}
+
+.trade-thesis-list {
+  margin: 30px 0px;
+
+  .thesis-list-inner {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-top: 20px;
+    margin-bottom: 40px;
+
+    &:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      left: 30px;
+      bottom: -20px;
+      width: 99%;
+      height: 2px;
+      background: #7070704f;
+      opacity: 0.5;
+    }
+    .list-inner-left {
+      width: 50%;
+      position: relative;
+      display: flex;
+      align-items: center;
+
+      span {
+        margin-right: 20px;
+
+        h6 {
+          font-weight: 400;
+          @media #{$small} {
+            font-size: 15px;
+          }
+        }
+      }
+    }
+
+    .list-inner-right {
+      display: flex;
+      align-items: baseline;
+      width: 48%;
+      @media #{$extra-small} {
+        width: 50%;
+      }
+
+      .add-new {
+        color: $primary;
+        font-size: 16px;
+        cursor: pointer;
+        font-weight: 500;
+        margin-left: 20px;
+      }
+    }
+  }
+}
+
+.Trade-type .form-control {
+  height: 45px;
+  width: 240px;
+  font-size: 14px;
+  @media #{$extra-small} {
+    width: 100%;
+  }
+  @media #{$small} {
+    width: 100%;
+  }
+}
+
+.trade-date .form-control {
+  height: 45px;
+}
+
+.trade-input .form-control {
+  height: 45px;
+  width: 150%;
+  @media #{$extra-small} {
+    width: 100%;
+  }
+  @media #{$small} {
+    width: 100%;
+  }
+}
+
+.trade-inputt .form-control {
+  height: 45px;
+}
+
+.trad-border {
+  border: 1px solid #acacac;
+  opacity: 0.3;
+}
+
+.trade-new-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  .btn-per {
+    color: $primary;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .btn-next {
+    color: $primary;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+}

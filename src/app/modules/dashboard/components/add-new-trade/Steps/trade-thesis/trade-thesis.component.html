@@ -1,1 +1,175 @@
-<p>trade-thesis works!</p>
+<div class="trade-thesis-sec">
+    <div class="trade-thesis-heading">
+        <h4>
+            Trade Thesis
+        </h4>
+    </div>
+
+    <div class="trade-thesis-inner">
+        <div class="trade-thesis-list">
+            <div class="thesis-list-inner">
+                <div class="list-inner-left">
+                    <span>
+                        <img src="../../../../../../../assets/images/icon/Icon ionic-ios-arrow-forward.png" alt="">
+                    </span>
+                    <h6>
+                        When did you execute this trade? (leave blank if not executed)
+                    </h6>
+                </div>
+                <div class="list-inner-right">
+                    <div class="trade-date">
+                        <div class="form-group">
+                            <div class="input-group date" id="datetimepicker1">
+                                <input class="form-control input-lg" type="date">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="thesis-list-inner">
+                <div class="list-inner-left">
+                    <span>
+                        <img src="../../../../../../../assets/images/icon/Icon ionic-ios-arrow-forward.png" alt="">
+                    </span>
+                    <h6>
+                        What is the source of this trade idea?
+                    </h6>
+                </div>
+                <div class="list-inner-right">
+                    <div class="Trade-type">
+                        <div class="form-group"><select class="form-control select-input" id="inputState">
+                                <option selected="">Custom</option>
+                                <option>Trade Type</option>
+                                <option>Naked call</option>
+                                <option>Naked put</option>
+                                <option>Covered Call</option>
+                                <option>Protective Put</option>
+                                <option>Iron Condor</option>
+                                <option>Call Spread</option>
+                                <option>Put Spread</option>
+                            </select></div>
+                    </div>
+                    <a class="add-new">+ Add New Source</a>
+
+                </div>
+            </div>
+
+            <div class="thesis-list-inner">
+                <div class="list-inner-left">
+                    <span>
+                        <img src="../../../../../../../assets/images/icon/Icon ionic-ios-arrow-forward.png" alt="">
+                    </span>
+                    <h6>
+                        Specify the reasons for executing the trade
+                    </h6>
+                </div>
+                <div class="list-inner-right">
+                    <div class="trade-input">
+
+                        <div  class="form-group has-search">
+                            <input class="form-control" placeholder="" type="text">
+                        </div>
+                    </div>
+            </div>
+            </div>
+
+            <div class="thesis-list-inner">
+                <div class="list-inner-left">
+                    <span>
+                        <img src="../../../../../../../assets/images/icon/Icon ionic-ios-arrow-forward.png" alt="">
+                    </span>
+                    <h6>
+                        List the risks associated with the trade
+                    </h6>
+                </div>
+                <div class="list-inner-right">
+                    <div class="trade-input">
+
+                        <div  class="form-group has-search">
+                            <input class="form-control" placeholder="" type="text">
+                        </div>
+                    </div>
+            </div>
+            </div>
+
+
+            <div class="thesis-list-inner">
+                <div class="list-inner-left">
+                    <span>
+                        <img src="../../../../../../../assets/images/icon/Icon ionic-ios-arrow-forward.png" alt="">
+                    </span>
+                    <h6>
+                        How much profit do you expect from this trade?
+                    </h6>
+                </div>
+                <div class="list-inner-right">
+                    <div class="trade-inputt">
+
+                        <div  class="form-group has-search">
+                            <input class="form-control" placeholder="" type="text">
+                        </div>
+                    </div>
+            </div>
+            </div>
+
+
+            <div class="thesis-list-inner">
+                <div class="list-inner-left">
+                    <span>
+                        <img src="../../../../../../../assets/images/icon/Icon ionic-ios-arrow-forward.png" alt="">
+                    </span>
+                    <h6>
+                        What is your target date to close the position?
+                    </h6>
+                </div>
+                <div class="list-inner-right">
+                    <div class="trade-date">
+                        <div class="form-group">
+                            <div class="input-group date" id="datetimepicker1">
+                                <input class="form-control input-lg" type="date">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="thesis-list-inner">
+                <div class="list-inner-left">
+                    <span>
+                        <img src="../../../../../../../assets/images/icon/Icon ionic-ios-arrow-forward.png" alt="">
+                    </span>
+                    <h6>
+                        Are there any events surrounding this trade (e.g., earnings, stock split, etc.)? If yes, please specify.
+                    </h6>
+                </div>
+                <div class="list-inner-right">
+                    <div class="Trade-type">
+                        <div class="form-group">
+                            <select class="form-control select-input" id="inputState">
+                                <option selected="">Custom</option>
+                                <option>Trade Type</option>
+                                <option>Naked call</option>
+                                <option>Naked put</option>
+                                <option>Covered Call</option>
+                                <option>Protective Put</option>
+                                <option>Iron Condor</option>
+                                <option>Call Spread</option>
+                                <option>Put Spread</option>
+                            </select></div>
+                    </div>
+
+                    <a class="add-new">+ Add New</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div  class="trad-border ng-star-inserted" ></div>
+
+<div class="trade-new-btn">
+    <a class="btn btn-per" (click)="previous()">Previous</a>
+    <a class="btn btn-next" (click)="next()">Next</a>
+
+</div>

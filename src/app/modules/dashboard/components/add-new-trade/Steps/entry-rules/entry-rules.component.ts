@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { AddTradeConfirmationPopupComponent } from './../../../../modalAsComponents/add-trade-confirmation-popup/add-trade-confirmation-popup.component';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { MatDialog } from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-entry-rules',
@@ -7,9 +10,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EntryRulesComponent implements OnInit {
 
-  constructor() { }
+  @Output('prevStep') prevStep = new EventEmitter();
+
+  constructor(
+    private _dialog: MatDialog,
+    private router: Router
+  ) { }
 
   ngOnInit() {
   }
 
+  previous() {
+    this.prevStep.emit()
+  }
+
+  confirmAddTrade() {
+    const dialogRef = this._dialog.open(AddTradeConfirmationPopupComponent, {
+      disableClose: true,
+      width: 'auto'
+    });
+
+    dialogRef.afterClosed().subscribe((res) => {
+      res ? this.router.navigate(['/dashboard/trade-strategies']) : 0;
+    });
+  }
 }

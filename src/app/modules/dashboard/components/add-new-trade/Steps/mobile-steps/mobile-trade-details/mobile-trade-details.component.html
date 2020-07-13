@@ -1,0 +1,249 @@
+  <ng-container [ngSwitch]="currentState">
+    <ng-container *ngSwitchCase="1">
+    <!-- step-one -->
+    <div class="trdae-step-one">
+
+        <div class="new-step-one">
+            <div class="stepone-left">
+            <h6>
+                Enter Symbol
+            </h6>
+            </div>
+            <div class="stepone-right">
+            <div class="form-group has-search"><input class="form-control" placeholder="Symbol" type="text">
+            </div>
+            </div>
+        </div>
+        <br>
+        <a class="btn btn-add" (click)="enterSymbol()">Enter</a>
+    </div>
+
+    </ng-container>
+    <ng-container *ngSwitchCase="2">
+    <!-- step-second -->
+    <div class="container-fluid">
+        <div class="new-step-second">       
+        <div class="trade-rate">
+            <div class="trade-left-name">
+            <div class="trade-name">
+                <h4>
+                Netflix Inc.
+                </h4>
+            </div>
+            <div class="trade-name-rate">
+                <span class="trade-r">$429.32</span>
+                <span class="trade-rr">
+                <img src="../../../../../assets/images/Icon awesome-arrow-up.png" alt="" />
+                -6.93 (-1.59%)
+                </span>
+            </div>
+            </div>
+
+            <div class="trade-right-search">
+            <div class="form-group has-search">
+                <input class="form-control" placeholder="Symbol" type="text" />
+                <img alt="" class="form-icon" src="../../../../../assets/images/icon/Icon awesome-search.png" />
+            </div>
+            </div>
+        </div>
+
+        <div class="trad-border"></div>
+
+        <div class="trade-stategy-options">
+            <div class="trade-stategy-heading">
+            <h6>
+                Build trade strategy with stock or options.
+            </h6>
+            </div>
+
+            <div class="trade-stategy-option-section">
+            <div class="stategy-options">
+
+                <!-- trade-stategy-cards -->
+                <div class="trade-add-stock-cards" *ngIf="stockAdded">
+                <div class="cards-inner">
+                    <div class="cards-inner-top">
+                    <div class="left-card-inner">
+                        <h6>Stock Details</h6>
+                    </div>
+                    <div class="right-card-inner" (click)="stockAdded = false">
+                        <img src="../../../../../assets/images/icon/delete.png" alt="" class="img-fluid">
+                    </div>
+                    </div>
+                    <div class="cards-inner-main">
+
+                    <div class="card-main">
+                        <div class="card-left">
+                        <span>Select Action</span>
+                        </div>
+                        <div class="card-right">
+                        <div class="form-group">
+                            <select class="form-control select-input" id="inputState">
+                            <option  selected value="Buy to Open">Buy to Open</option>
+                            <option  value="Sell to Open">Sell to Open</option>
+                            </select>
+                        </div>
+                        </div>
+                    </div>
+
+
+                    <div class="card-main">
+                        <div class="card-left">
+                        <span>Enter Quantity</span>
+                        </div>
+                        <div class="card-right">
+                        <div class="stock-inc">
+                            <a (click)="quantity = quantity - 1">
+                            <img alt="" src="../../../../../assets/images/icon/Group 359.png">
+                            </a>
+                            <span> {{quantity}}% </span>
+                            <a (click)="quantity = quantity + 1">
+                            <img alt="" src="../../../../../assets/images/icon/Group 360.png">
+                            </a>
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="card-main">
+                        <div class="card-left">
+                        <span>Enter Price</span>
+                        </div>
+                        <div class="card-right">
+                        <div class="form-group">
+                            <input class="form-control"  type="text">
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="card-main">
+                        <div class="card-left">
+                        <span>Net Debit</span>
+                        </div>
+                        <div class="card-right">
+                        <p></p>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+
+                <!-- Trade-add-options-cards -->
+                <div class="trade-add-options">
+                <div class="cards-inner" *ngFor="let item of stockOptions; let i=index" [ngClass]="{'card-margin': i > 0}">
+                    <div class="cards-inner-top">
+                    <div class="left-card-inner">
+                        <h6>Option-{{i+1}}</h6>
+                    </div>
+                    <div class="right-card-inner" (click)="deleteStockOption(i)">
+                        <img src="../../../../../assets/images/icon/delete.png" alt="" class="img-fluid">
+                    </div>
+                    </div>
+                    <div class="cards-inner-main">
+
+                    <div class="card-main">
+                        <div class="card-left">
+                        <span>Select Action</span>
+                        </div>
+                        <div class="card-right">
+                        <div class="form-group">
+                            <select class="form-control select-input" id="inputState">
+                                <option  selected value="Buy to Open">Buy to Open</option>
+                                <option  value="Sell to Open">Sell to Open</option>
+                            </select>
+                        </div>
+                        </div>
+                    </div>
+
+
+                    <div class="card-main">
+                        <div class="card-left">
+                        <span>Enter Quantity</span>
+                        </div>
+                        <div class="card-right">
+                        <div class="stock-inc">
+                            <a (click)="item.quantity = item.quantity - 1">
+                            <img alt="" src="../../../../../assets/images/icon/Group 359.png">
+                            </a>
+                            <span> {{item.quantity}}% </span>
+                            <a (click)="item.quantity = item.quantity + 1">
+                            <img alt="" src="../../../../../assets/images/icon/Group 360.png">
+                            </a>
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="card-main">
+                        <div class="card-left">
+                        <span>Strike Price</span>
+                        </div>
+                        <div class="card-right">
+                        <div class="form-group">
+                            <input class="form-control" type="text">
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="card-main">
+                        <div class="card-left">
+                        <span>Option Type</span>
+                        </div>
+                        <div class="card-right">
+                        <div class="form-group">
+                            <select class="form-control select-input" id="inputState">
+                            <option  selected value="Call">Call</option>
+                            <option  value="Put">Put</option>
+                            </select>
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="card-main">
+                        <div class="card-left">
+                        <span>Expiry Date</span>
+                        </div>
+                        <div class="card-right">
+                        <div class="form-group">
+                            <input class="form-control"  type="date">
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="card-main">
+                        <div class="card-left">
+                        <span>Price</span>
+                        </div>
+                        <div class="card-right">
+                        <div class="form-group">
+                            <input class="form-control"  type="text">
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="card-main">
+                        <div class="card-left">
+                        <span>Net Debit</span>
+                        </div>
+                        <div class="card-right">
+                        <p></p>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+
+                <div class="add-option-btn">
+                <a class="btn btn-add" (click)="addStock()" *ngIf="!stockAdded"> Add Stock</a>
+                <a class="btn btn-secondary" (click)="addOption()"> Add Option</a>
+
+                <a class="btn btn-add" (click)="next()"> PROCEED TO RISK ANALYSIS</a>
+
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    </ng-container>
+
+  </ng-container>
