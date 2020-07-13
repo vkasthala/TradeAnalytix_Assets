@@ -1,5 +1,5 @@
 @import "../../../../../assets/styles/variable.scss";
-
+@import "../../../../../assets/styles/breakpoints.scss";
 // Dashboard topbar
 
 .trade-dashboard-topbar {
@@ -11,10 +11,16 @@
     justify-content: space-between;
     align-items: center;
     padding: 5px 20px;
+    @media #{$extra-small} {
+      padding: 0px;
+    }
 
     .dashboard-left-logo {
+      @media #{$extra-small} {
+        display: none;
+      }
       img {
-        width: 200px;
+        width: 30%;
         height: auto;
       }
     }
@@ -22,6 +28,9 @@
     .dashboard-right-login {
       display: flex;
       align-items: center;
+      @media #{$extra-small} {
+        display: none;
+      }
 
       .login-img {
         width: 60px;
@@ -60,14 +69,34 @@
     width: 100%;
     height: 50px;
     display: flex;
+    padding: 0px 6px;
+
+    @include media(">tablet", "<laptop") {
+      padding: 0px;
+      height: auto;
+    }
+    @media #{$extra-small} {
+      display: none;
+    }
+
     ul {
       margin: 0px;
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
       align-items: center;
       width: 100%;
-      flex-flow: wrap;
+      // flex-flow: wrap;
       padding: 10px;
+
+      @include media(">tablet", "<laptop") {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+      }
+
+      @media #{$extra-small} {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+      }
       li {
         cursor: pointer;
 
@@ -75,11 +104,20 @@
           display: flex;
           align-items: center;
           text-decoration: none;
+          
+          @include media(">tablet", "<laptop") {
+            margin-left: 14px;
+            margin-bottom: 9px;
+          }
+
           span {
             margin-right: 5px;
-        
-            img {
+
+            svg {
               width: 16px;
+              @include media(">tablet", "<laptop") {
+                width: 14px;
+              }
             }
           }
           h4 {
@@ -87,7 +125,13 @@
             font-size: 16px;
             font-weight: 500;
             text-transform: uppercase;
-            margin-top: 3px;
+            margin-top: 5px;
+            @include media(">tablet", "<laptop") {
+              font-size: 14px;
+            }
+            @media #{$medium} {
+            font-size: 14px;
+            }
           }
         }
       }
@@ -106,6 +150,9 @@
       color: $secondary !important;
     }
   }
+  svg path {
+    fill: #02559f !important;
+  }
 }
 
 // Dashboard sedction
@@ -114,12 +161,22 @@
   background-color: $btn-background;
   height: auto;
   min-height: 100vh;
+  padding-bottom: 20px;
+  @media #{$extra-small} {
+    min-height: 87vh;
+    padding-bottom: 0px;
+
+  }
+
 }
 .trade-dash-section {
   width: 100%;
 
   .trade-dash-main {
     padding: 10px 20px;
+    @media #{$extra-small} {
+      display: none;
+    }
 
     .trade-bread {
       nav {
@@ -140,7 +197,7 @@
       width: 100%;
       margin-bottom: 15px;
       .left-dash {
-        h2 {
+        h3 {
           color: $secondary;
           font-weight: 500;
         }
@@ -150,9 +207,78 @@
         }
       }
     }
+  }
+}
 
-   
+// mobile-navbar
+.mobile-bottom-nav {
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: none;
+
+  //give nav it's own compsite layer
+  will-change: transform;
+  transform: translateZ(0);
+  height: 50px;
+  box-shadow: 0 -2px 5px -2px #333;
+  background-color: #fff;
+
+  @media #{$extra-small} {
+    display: flex;
+  }
+  @media #{$small} {
+    display: none;
+  }
+  ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+    li {
+      display: inline-block;
+      width: 20%;
+      height: 100%;
+      border-left: 1px solid #ddd;
+      a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        height: 100%;
+        color: #565656;
+        span {
+          img {
+            width: 17px;
+          }
+        }
+      }
+    }
   }
 }
 
 
+
+.mobile-logo{
+  display: none;
+  background-image: url('../../../../../assets/images/trade-logo.svg');
+  width: 180px;
+  width: 180px;
+  height: 80px;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin: 0 auto;
+  @media #{$extra-small} {
+    display: flex;
+  }
+
+
+}
+.nav-active{
+  color: $primary !important;
+}

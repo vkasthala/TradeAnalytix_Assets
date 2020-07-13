@@ -1,9 +1,13 @@
 @import "../../../../../assets/styles/variable.scss";
 
 
-.trade-dash-cards {
+.trade-dash-cards-web {
   margin-top: 20px;
   padding: 0px 20px;
+
+  @media #{$extra-small} {
+    display: none;
+  }
   .flex-container {
     display: flex;
     display: -moz-box;
@@ -46,7 +50,102 @@
         span {
           display: block;
           padding-bottom: 10px;
-          font-size: 14px;
+          font-size: 20px;
+          line-height: 20px;
+        }
+      }
+
+      .card-icon {
+        position: absolute;
+        right: 5px;
+        bottom: 4px;
+
+        img {
+          width: 20px;
+        }
+      }
+    }
+  }
+}
+.card-first {
+  background-color: $cardone;
+}
+.card-second {
+  background-color: $cardtwo;
+}
+.card-fourth {
+  background-color: $cardthree;
+}
+.card-five {
+  background-color: $cardfour;
+}
+
+
+
+// card-mobile
+.trade-dash-cards-mobile {
+  margin-top: 20px;
+  padding: 0px 20px;
+  display: none;
+
+  @media #{$extra-small} {
+    display: flex;
+    padding: 0px;
+  }
+
+  .trade-mobile-cards{
+    width: 100%;
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .flex-container {
+    display: flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: -webkit-flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    position: relative;
+    height: 100%;
+  }
+  .flex-item {
+    min-height: 100px;
+    margin-bottom: 10px;
+    padding: 0px;
+    width: 45%;
+    // min-width: 45%;
+    position: relative;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5px;
+    border-radius: 4px;
+    .flex-inner {
+      // height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      color: #fff;
+      text-align: center;
+      width: 100%;
+      a {
+        cursor: pointer;
+
+        span {
+          display: block;
+          padding-bottom: 10px;
+          font-size: 18px;
+          line-height: 17px;
+        }
+        h4{
+          font-size: 20px;
         }
       }
 
@@ -75,13 +174,18 @@
   background-color: $cardfour;
 }
 
+
+
+
+
 .trade-dash-con{
     margin: 30px 0px;
     padding: 0px 20px;
+    @media #{$extra-small} {
+      margin-bottom: 0px;
+      display: none;
+    }
     .dsh-img{
-        // background-color: $white;
-        // border: 1px solid #D2D2D2;
-        // padding: 20px;
         margin-bottom: 20px;
     }
 }
@@ -89,6 +193,9 @@
 .trade-strategies-section{
   background-color: white;
   height: 400px;
+  @media #{$extra-small} {
+    display: none;
+  }
 }
 
 
@@ -108,6 +215,19 @@
           text-align: center;
           vertical-align: middle;
           border-bottom: 1px solid #dee2e6;
+          @media #{$medium} {
+            padding: 8px 0px;
+            font-size: 12px;
+          }
+          @media #{$small} {
+            padding: 8px 0px;
+            font-size: 10px;
+
+          }
+          @media #{$extra-small} {
+            padding: 8px 0px;
+            font-size: 11px;
+          }
         }
       }
     }
@@ -119,6 +239,18 @@
           vertical-align: middle;
           font-size: 14px;
           color: #2A2A2A;
+          @media #{$medium} {
+            padding: 8px 0px;
+            font-size: 12px;
+          }
+          @media #{$small} {
+            padding: 8px 0px;
+            font-size: 10px;
+          }
+          @media #{$extra-small} {
+            padding: 8px 0px;
+            font-size: 12px;
+          }
         }
 
 
@@ -168,12 +300,19 @@
             border: solid $heading-1;
             border-width: 0 2px 2px 0;
             transform: rotate(45deg);
+
+            @media #{$small} {
+              top: 3px;
+            }
           }
         }
 
         .trade-check-img{
           img{
             width: 18px;
+            @media #{$small} {
+              width: 14px;
+            }
           }
         }
 
@@ -207,8 +346,47 @@
 
 .trade-details{
   cursor: pointer;
+  img{
+    @media #{$small} {
+      width: 4px;
+    }
+  }
+
 }
 
 .card-bm{
   margin-bottom: 10px;
+}
+
+.dash-select {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+
+  h6{
+    color: #016db0;
+    font-size: 16px;
+    font-weight: 500;
+    width: 90%;
+  }
+  .Trade-type {
+    width: 140px;
+  }
+}
+
+.trade-dash-wel {
+  display: none;
+  margin-top: 15px;
+  @media #{$extra-small} {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 0px 20px 0px;
+  }
+
+}
+
+.trade-stategies-heading{
+  color: $primary;
 }

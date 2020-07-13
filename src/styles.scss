@@ -1,5 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+@import './assets/styles/variable.scss';
 
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
 
 h1,h2,h3,h4,h5,h6{
     margin-bottom: 0px !important;
@@ -15,7 +21,9 @@ p{
 }
   
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif !important; 
+
+}
 
 
 .form-control:focus{
@@ -29,6 +37,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .mat-horizontal-stepper-header-container {
     background: #DBDBDB !important;
+    padding: 10px 100px;
+    @media #{$small} {
+        padding: 10px 0px;
+      }
 }
 
 .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:first-child)::before, .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:last-child)::after, [dir=rtl] .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:first-child)::after, [dir=rtl] .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:last-child)::before {
@@ -46,8 +58,42 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mat-horizontal-content-container {
     overflow: auto !important;
     min-height: 40vh !important;
+
+    @media #{$small} {
+        padding: 0 24px 9px 24px;
+      }
 }
 
 .cursor-pointer {
     cursor: pointer !important;
+}
+
+.mat-dialog-container {
+    padding: 0 !important;
+}
+
+.mat-step-label-selected {
+    color: $appbtn-color !important;
+}
+
+.mat-horizontal-stepper-header{
+    pointer-events: none !important;
+}
+
+
+@media #{$extra-small} {
+    .mat-horizontal-stepper-header-container {
+        display: none !important;
+      }
+
+      .mat-stepper-horizontal, .mat-stepper-vertical{
+          background-color: transparent !important;
+      }
+      .mat-horizontal-content-container{
+          padding: 0px !important;
+      }
+  }
+
+.mat-expansion-panel-header-title {
+    width: 100%;
 }

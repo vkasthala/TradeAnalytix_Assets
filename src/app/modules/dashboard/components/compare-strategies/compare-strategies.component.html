@@ -1,1 +1,213 @@
-<p>compare-strategies works!</p>
+<div class="container-fluid">
+    <div class="trade-compare-strategies">
+        <div class="trade-compare-inner">
+            <div class="compare-headiang">
+
+                <h6>
+                    Select trade strategies on the same stock to compare their P&L
+                </h6>
+            </div>
+
+            <div class="compare-inner-sec">
+                <div class="compare-choose-trade-sec">
+                    <div class="choose-trade" *ngFor="let item of strategies; let i=index">
+                        <div class="choose-heading">
+                            <h6>
+                                Choose Strategy
+                            </h6>
+                        </div>
+
+                        <div class="choose-select">
+                            <div class="trade-select">
+                                <div class="form-group">
+                                    <select class="form-control select-input" id="inputState">
+                                        <option selected="">05232020-FB001</option>
+                                        <option>Trade Type</option>
+                                        <option>Naked call</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="trade-update" (click)="update()">
+                                <span>
+                                    Update
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="trade-buys">
+                            <p>
+                                Buy to Open 100 Stock at $329.90
+                            </p>
+                            <p>
+                                Sell to Open 1 contract of 355 Jun-19-2020 Call at $2.30
+                            </p>
+                            <p>
+                                Buy to Open 1 contract of 310 Jun-19-2020 Put at $1.80
+                            </p>
+                            <p>
+                                Sell to Open 1 contract of 270 Jun-19-2020 Call at $0.80
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="comapre-trade-btn">
+                    <a class="btn btn-add" (click)="addStrategy()" *ngIf="strategies.length < 4">ADD STRATEGY</a>
+                </div>
+
+
+
+            </div>
+            <div class="compare-btn" *ngIf="strategies.length > 0 && !compareStrategies">
+                <a class="btn btn-add" (click)="compareStrategies = true">COMPARE</a>
+            </div>
+
+
+
+
+            <!-- tabs -->
+            <div class="compare-outer" *ngIf="compareStrategies">
+                <div class="update-price-heading">
+                    <span>
+                        Update Price Range
+                    </span>
+                </div>
+                <div class="compare-tabs-sec">
+
+                    <div class="tab" role="tabpanel">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="active" role="presentation">
+                                <a aria-controls="home" aria-expanded="true" data-toggle="tab" href="#Section1"
+                                    role="tab">Data Table</a>
+                            </li>
+                            <li class="" role="presentation">
+                                <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#Section2"
+                                    role="tab">Charts</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content tabs">
+                            <div class="tab-pane active" id="Section1" role="tabpanel">
+                                <div class="risk-tabs-table">
+                                    <div class="risk-table">
+
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>Change</th>
+                                                    <th>Stock Price</th>
+                                                    <th>05232020-FB001</th>
+                                                    <th>05232020-FB002</th>
+                                                    <th>05232020-FB003</th>
+                                                    <th>05232020-FB004</th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody>
+                                                <tr>
+                                                    <td class="trade-rdd">-10.0%</td>
+                                                    <td>386.39</td>
+                                                    <td class="trade-rdd">$(429.32)</td>
+                                                    <td class="trade-rdd">$(429.32)</td>
+                                                    <td class="trade-rdd">$(429.32)</td>
+                                                    <td class="trade-rdd">$(429.32)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="trade-rdd">-10.0%</td>
+                                                    <td>386.39</td>
+                                                    <td class="trade-rdd">$(429.32)</td>
+                                                    <td class="trade-rdd">$(429.32)</td>
+                                                    <td class="trade-rdd">$(429.32)</td>
+                                                    <td class="trade-rdd">$(429.32)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="trade-rdd">-10.0%</td>
+                                                    <td>386.39</td>
+                                                    <td class="trade-rdd">$(429.32)</td>
+                                                    <td class="trade-rdd">$(429.32)</td>
+                                                    <td class="trade-rdd">$(429.32)</td>
+                                                    <td class="trade-rdd">$(429.32)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="trade-rdd">-10.0%</td>
+                                                    <td>386.39</td>
+                                                    <td class="trade-rdd">$(429.32)</td>
+                                                    <td class="trade-rdd">$(429.32)</td>
+                                                    <td class="trade-rdd">$(429.32)</td>
+                                                    <td class="trade-rdd">$(429.32)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="trade-rdd">-10.0%</td>
+                                                    <td>386.39</td>
+                                                    <td class="trade-rdd">$(429.32)</td>
+                                                    <td class="trade-rdd">$(429.32)</td>
+                                                    <td class="trade-rdd">$(429.32)</td>
+                                                    <td class="trade-rdd">$(429.32)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="trade-rdd">-10.0%</td>
+                                                    <td>386.39</td>
+                                                    <td class="trade-rdd">$(429.32)</td>
+                                                    <td class="trade-rdd">$(429.32)</td>
+                                                    <td class="trade-rdd">$(429.32)</td>
+                                                    <td class="trade-rdd">$(429.32)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="trade-rdd">-10.0%</td>
+                                                    <td>386.39</td>
+                                                    <td class="trade-rdd">$(429.32)</td>
+                                                    <td class="trade-rdd">$(429.32)</td>
+                                                    <td class="trade-rdd">$(429.32)</td>
+                                                    <td class="trade-rdd">$(429.32)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="trade-rdd">-10.0%</td>
+                                                    <td>386.39</td>
+                                                    <td class="trade-rdd">$(429.32)</td>
+                                                    <td class="trade-rdd">$(429.32)</td>
+                                                    <td class="trade-rdd">$(429.32)</td>
+                                                    <td class="trade-rdd">$(429.32)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="trade-rdd">-10.0%</td>
+                                                    <td>386.39</td>
+                                                    <td class="trade-rdd">$(429.32)</td>
+                                                    <td class="trade-rdd">$(429.32)</td>
+                                                    <td class="trade-rdd">$(429.32)</td>
+                                                    <td class="trade-rdd">$(429.32)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="trade-rdd">-10.0%</td>
+                                                    <td>386.39</td>
+                                                    <td class="trade-rdd">$(429.32)</td>
+                                                    <td class="trade-rdd">$(429.32)</td>
+                                                    <td class="trade-rdd">$(429.32)</td>
+                                                    <td class="trade-rdd">$(429.32)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="trade-rdd">-10.0%</td>
+                                                    <td>386.39</td>
+                                                    <td class="trade-rdd">$(429.32)</td>
+                                                    <td class="trade-rdd">$(429.32)</td>
+                                                    <td class="trade-rdd">$(429.32)</td>
+                                                    <td class="trade-rdd">$(429.32)</td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="Section2" role="tabpanel">
+                                <div class="charts">
+                                    <img src="../../../../../assets/images/Strategy Comparison.png" alt=""
+                                        class="img-responsive" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

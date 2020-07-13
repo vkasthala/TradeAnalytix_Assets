@@ -30,13 +30,14 @@ export class DashboardComponent implements OnInit {
   get currentNavigation() {
     switch (this.currentRoute) {
       case 'dashboard': return {breadcrumb : 'DASHBOARD', title: 'DASHBOARD'};
-      case 'new-trade': return {breadcrumb : 'TRADE STRATEGIES', title: 'ADD NEW TRADE'};
-      case 'import-trades': return {breadcrumb : 'TRADE STRATEGIES', title: 'IMPORT TRADES'};
+      case 'new-trade': return {breadcrumb : 'ADD NEW TRADE', title: 'ADD NEW TRADE'};
+      case 'import-trades': return {breadcrumb : 'IMPORT TRADES', title: 'IMPORT TRADES'};
       case 'trade-strategies': return {breadcrumb : 'TRADE STRATEGIES', title: 'TRADE STRATEGIES'};
-      case 'compare-strategies': return {breadcrumb : 'TRADE STRATEGIES', title: 'COMPARE STRATEGIES'};
+      case 'compare-strategies': return {breadcrumb : 'COMPARE STRATEGIES', title: 'COMPARE STRATEGIES'};
       case 'reports': return {breadcrumb : 'REPORTS', title: 'REPORTS'};
       case 'help': return {breadcrumb : 'HELP', title: 'HELP'};
       case 'setttings': return {breadcrumb : 'SETTINGS', title: 'MANAGE RULES'};
+      default :  return {breadcrumb : 'TRADE STRATEGIES', title: 'TRADE STRATEGIES'};
     }
   }
 

@@ -1,0 +1,266 @@
+@import "../../../../../assets/styles/variable.scss";
+
+.trade-compare-strategies {
+  padding: 0px 20px;
+
+  .trade-compare-inner {
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px 15px;
+    height: 100%;
+    min-height: 100vh;
+
+    .compare-headiang {
+      h6 {
+        color: $primary;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+.compare-inner-sec {
+  padding-left: 40px;
+  margin-top: 25px;
+}
+
+.btn-add {
+  padding: 8px 30px;
+  background: #016db0;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.compare-choose-trade-sec {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  .choose-trade {
+    width: 35%;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 20px;
+    &:nth-child(even){
+      margin-left: 20px;
+    }
+  }
+}
+
+.choose-select {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 12px;
+  .trade-update {
+    margin-left: 10px;
+    span {
+      font-size: 13px;
+      color: $primary;
+      cursor: pointer;
+      font-weight: 500;
+    }
+  }
+}
+
+.choose-heading {
+  margin-bottom: 10px;
+  h6 {
+    font-weight: bold;
+    font-size: 14px;
+  }
+}
+
+.trade-buys {
+  padding-left: 20px;
+  p {
+    font-size: 14px;
+  }
+}
+
+.comapre-trade-btn {
+  width: 20%;
+  margin-left: 20px;
+}
+
+.btn-add:hover {
+  color: #fff;
+}
+
+.compare-btn {
+  width: 70%;
+  text-align: center;
+  margin-top: 30px;
+}
+.trade-border {
+  position: relative;
+  padding-top: 20px;
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 72%;
+    height: 1px;
+    background: #ddd;
+  }
+}
+
+// risk tabs
+.tab .nav-tabs {
+  border-bottom: 2px solid #e8e8e8;
+}
+.tab .nav-tabs li a {
+  display: block;
+  padding: 10px 20px;
+  margin: 0 5px 1px 0;
+  background: #f2f2f2;
+  font-size: 15px;
+  font-weight: 500;
+  color: #000;
+  text-align: center;
+  border: none;
+  border-radius: 0;
+  z-index: 2;
+  position: relative;
+  transition: all 0.3s ease 0s;
+  text-decoration: none;
+}
+.tab .nav-tabs li a:hover,
+.tab .nav-tabs li.active a {
+  color: $primary !important;
+  border: none;
+}
+
+.tab .nav-tabs li.active a:after {
+  content: "";
+  width: 100%;
+  height: 2px;
+  background: $primary;
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  z-index: -1;
+  transition: all 0.3s ease 0s;
+}
+.tab .tab-content {
+  padding: 30px 0px;
+  margin-top: 0;
+  background: #f2f2f2;
+  font-size: 15px;
+  color: #7a9181;
+  line-height: 30px;
+  border-radius: 0 0 5px 5px;
+  @media #{$extra-small} {
+    overflow-y: scroll;
+  }
+  @media #{$small} {
+    overflow-y: scroll;
+  }
+  @media #{$medium} {
+    overflow-y: scroll;
+  }
+}
+.tab .tab-content h3 {
+  font-size: 24px;
+  margin-top: 0;
+}
+@media only screen and (max-width: 479px) {
+  .tab .nav-tabs li {
+    width: 100%;
+    text-align: center;
+  }
+  .tab .nav-tabs li.active a:before {
+    content: "\f105";
+    bottom: 15%;
+    left: 0;
+    right: auto;
+  }
+}
+
+.charts {
+  img {
+    width: 70%;
+    padding-left: 20px;
+  }
+}
+
+.risk-table {
+  width: 100%;
+  height: auto;
+//   min-height: 340px;
+
+  padding: 0px 18px;
+  h6 {
+    text-align: center;
+    font-size: 14px;
+    margin-bottom: 10px !important;
+    color: #000;
+  }
+  table {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    thead {
+      th {
+        background: #707070;
+        color: white;
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+
+    }
+
+    td {
+      font-size: 13px;
+      font-weight: 500;
+      //   color: #4f5051;
+    //   border-bottom: 1px solid #bfbfbf;
+    }
+  }
+}
+
+thead th:nth-of-type(odd) {
+  display: block;
+  margin: 0 12px;
+}
+
+
+.compare-outer {
+    margin-top:50px;
+}
+
+.compare-tabs-sec {
+    width: 70%;
+    background: #F2F2F2;
+    height: 100%;
+}
+
+.trade-rdd {
+    color: #e11c1c;
+  }
+
+  
+  .trade-rd {
+    color: #1cb86a;
+  }
+
+
+  .update-price-heading {
+    width: 70%;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+    
+    span{
+        color: $primary;
+        font-size: 13px;
+        cursor: pointer;
+    }
+}

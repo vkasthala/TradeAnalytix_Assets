@@ -9,6 +9,9 @@ import { CompareStrategiesComponent } from './components/compare-strategies/comp
 import { ReportsComponent } from './components/reports/reports.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { HelpComponent } from './components/help/help.component';
+import { combineLatest } from 'rxjs';
+import { CloseTradeComponent } from './components/close-trade/close-trade.component';
+import { ExitRulesComponent } from './components/exit-rules/exit-rules.component';
 
 const routes: Routes = [
   {
@@ -46,6 +49,14 @@ const routes: Routes = [
         {
           path : 'help',
           component: HelpComponent
+        },
+        {
+          path: 'close-trade/:id',
+          component: CloseTradeComponent
+        },
+        {
+          path : 'exit-rules',
+          component: ExitRulesComponent
         }
     ]
   },
