@@ -15,6 +15,7 @@ import { localStorageSync } from 'ngrx-store-localstorage';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { reducers } from './modules/utilities/reducers';
 import { UtilitiesModule } from './modules/utilities/utilities/utilities.module';
+import {MatAutocompleteModule, MatInputModule } from '@angular/material';
 import {AngularMaterialModule } from './angular-material/angular-material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -37,6 +38,8 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     UtilitiesModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     BrowserAnimationsModule,
+    MatAutocompleteModule,
+    MatInputModule,
   	AngularMaterialModule,
 	ReactiveFormsModule,
 	FormsModule,

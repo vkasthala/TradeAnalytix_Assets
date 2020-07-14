@@ -18,16 +18,18 @@
 	              id="searchSymbolId"
 	              aria-describedby="emailHelp"	              
 	              placeholder="Enter Symbol"
-	              matInput
-	              [formControl]="myFormControl"
+	              matInput   [formControl]="myFormControl"
 	              [matAutocomplete]="auto"
-	            >
-	            <mat-auto-complete #auto="matAutocomplete">
+             />
+
+              <mat-auto-complete #auto="matAutocomplete">
 	            	<mat-option *ngFor="let option for symbolOptions" [value]="option">
 	            		{{option}}
 	            	</mat-option>
 	            </mat-auto-complete>
-	          </mat-form-field>
+            </mat-form-field>
+	         
+	         
             </form>
           </div>
           <div class="col-sm-5 col-md-4 col-lg-2 ">
