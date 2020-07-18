@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TradeStrategyService } from 'src/app/trade-strategy.service';
+//import { Server } from 'http';
 
 @Component({
   selector: 'app-trade-strategies',
@@ -10,8 +12,9 @@ export class TradeStrategiesComponent implements OnInit {
 
   expandIndex:any;
   showDetailsIndex:any;
+  tradeStrategiesData:any;
 
-  tradeStrategiesData = [
+ /* tradeStrategiesData = [
        {
           "strategyId":"05082020-001",
           "strategy":"Naked Call",
@@ -139,7 +142,7 @@ export class TradeStrategiesComponent implements OnInit {
           "return":"-$2000"
        }
       ];
-
+*/
   minifiedTradeStrategiesData = [
     {
        "strategyId":"050720-001",
@@ -227,13 +230,20 @@ export class TradeStrategiesComponent implements OnInit {
     }
  ]    
 
-  constructor(private router:Router) { }
+ // constructor(private router:Router) { }
+
+  constructor(private router:Router,private service:TradeStrategyService) {
+
+  }
 
   ngOnInit() {
+     let response = this.service.getAllTradeStrategies('1001');
+     response.subscribe((data)=>this.tradeStrategiesData=data);
   }
 
   closeTrade(strategyId) {
     this.router.navigate(['dashboard/close-trade/' + strategyId]);
+   
   }
 
   editTrade() {

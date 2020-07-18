@@ -10,24 +10,9 @@
             </h6>
           </div>
           <div class="col-sm-3">
-          <form class="form-control">
-          	<mat-form-field class="full-width">
-	            <input
-	              type="text"
-	              class="form-control"
-	              id="searchSymbolId"
-	              aria-describedby="emailHelp"	              
-	              placeholder="Enter Symbol"
-	              matInput   [formControl]="myFormControl"
-	              [matAutocomplete]="auto"
-             />
-
-              <mat-auto-complete #auto="matAutocomplete">
-	            	<mat-option *ngFor="let option for symbolOptions" [value]="option">
-	            		{{option}}
-	            	</mat-option>
-	            </mat-auto-complete>
-	          </mat-form-field>
+          <form class="form-control"> 
+           
+	         
             </form>
           </div>
           <div class="col-sm-5 col-md-4 col-lg-2 ">
@@ -55,10 +40,11 @@
       <div class="trade-rate">
         <div class="trade-left-name">
           <div class="trade-name">
-            <h5>
-              Netflix Inc.
+             <h5> 
+            
+             {{tradeStrategy.stockCode}}
             </h5>
-          </div>
+           </div>
           <div class="trade-name-rate">
             <span class="trade-r">$429.32</span>
             <span class="trade-rr">
@@ -383,7 +369,7 @@
           </div>
           <div class="card-right">
             <div class="form-group">
-              <select id="inputState" class="form-control select-input">
+              <select id="type" class="form-control select-input" [(ngModel)]="tradeStrategy.type">
                 <option value="" selected data-default>Buy to Open</option>
                 <option value="" >Sell to Open</option>
               </select>
@@ -396,7 +382,7 @@
           </div>
           <div class="card-right">
             <div class="form-group">
-              <input type="text" class="form-control cards-input" placeholder="" />
+              <input id= "quantity" type="text" class="form-control cards-input" placeholder=""  [(ngModel)]="tradeStrategy.stockLeg.Quantity"/>
             </div>
           </div>
         </div>

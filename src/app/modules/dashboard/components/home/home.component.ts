@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TradeStrategyService } from 'src/app/trade-strategy.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  tradeStrategiesData:any;
+  constructor(private service:TradeStrategyService) { }
 
   ngOnInit() {
+    let response = this.service.getAllTradeStrategies('1001');
+     response.subscribe((data)=>this.tradeStrategiesData=data);
   }
 
 }
