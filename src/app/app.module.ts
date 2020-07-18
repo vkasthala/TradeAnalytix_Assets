@@ -18,6 +18,8 @@ import { UtilitiesModule } from './modules/utilities/utilities/utilities.module'
 import {MatAutocompleteModule, MatInputModule } from '@angular/material';
 import {AngularMaterialModule } from './angular-material/angular-material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {TradeStrategyService} from './trade-strategy.service'
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -34,6 +36,7 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     DashboardModule,
     UtilitiesModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
@@ -54,7 +57,7 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     StoreModule.forFeature(fromGlobalConfig.globalConfigFeatureKey, fromGlobalConfig.reducer),
   ],
-  providers: [PwaService],
+  providers: [PwaService,TradeStrategyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

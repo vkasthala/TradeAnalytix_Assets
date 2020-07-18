@@ -335,7 +335,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr *ngFor="let stratagy of tradeStrategiesData">
 
                                 <td class="trade-check">
                                     <div class="form-group">
@@ -343,20 +343,20 @@
                                         <label for="trade"></label>
                                     </div>
                                 </td>
-                                <td>05082020-001</td>
+                                <td>{{stratagy.strategyId}}</td>
                                 <td>Naked Call </td>
-                                <td>Facebook</td>
+                                <td>{{stratagy.stockCode}}</td>
                                 <td>
                                     <img src="../../../../../assets/images/icon/Icon awesome-arrow-up.png" alt=""
                                         class="img-fluid">
-                                    Long</td>
-                                <td class="trade-rd">$2000</td>
-                                <td class="trade-rdd">-$2000</td>
+                                        {{stratagy.direction}}</td>
+                                <td class="trade-rd">${{stratagy.maxGain}}</td>
+                                <td class="trade-rdd">-${{stratagy.maxLoss}}</td>
                                 <td class="trade-check-img">
                                     <img src="../../../../../assets/images/Icon feather-check.png" alt=""
                                         class="img-fluid">
                                 </td>
-                                <td class="text-primary">Draft</td>
+                                <td class="text-primary">${{stratagy.Status}}</td>
                                 <td>
                                     <img src="../../../../../assets/images/Icon awesome-minus.png" alt=""
                                         class="img-fluid">
@@ -373,126 +373,7 @@
                                         class="img-fluid">
                                 </td>
                             </tr>
-                            <tr>
-                                <td class="trade-check">
-                                    <div class="form-group">
-                                        <input type="checkbox" id="trade1">
-                                        <label for="trade1"></label>
-                                    </div>
-                                </td>
-                                <td>05082020-001</td>
-                                <td>Naked Call </td>
-                                <td>Facebook</td>
-                                <td>
-                                    <img src="../../../../../assets/images/icon/Icon awesome-minus.png" alt=""
-                                        class="img-fluid">
-
-                                    Long</td>
-                                <td class="trade-rd">$2000</td>
-                                <td class="trade-rdd">-$2000</td>
-                                <td class="trade-check-img">
-                                    <img src="../../../../../assets/images/Icon material-close.png" alt=""
-                                        class="img-fluid">
-                                </td>
-                                <td class="text-warning">Open</td>
-                                <td>
-                                    <img src="../../../../../assets/images/Icon awesome-minus.png" alt=""
-                                        class="img-fluid">
-
-                                </td>
-                                <td>
-                                    <img src="../../../../../assets/images/Icon awesome-minus.png" alt=""
-                                        class="img-fluid">
-
-                                </td>
-                                <td class="trade-rd">-$2000</td>
-                                <td class="trade-details">
-                                    <img src="../../../../../assets/images/Icon ionic-md-more.png" alt=""
-                                        class="img-fluid">
-
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="trade-check">
-                                    <div class="form-group">
-                                        <input type="checkbox" id="trade2">
-                                        <label for="trade2"></label>
-                                    </div>
-                                </td>
-                                <td>05082020-001</td>
-                                <td>Naked Call </td>
-                                <td>Facebook</td>
-                                <td>
-                                    <img src="../../../../../assets/images/Icon awesome-arrow-up.png" alt=""
-                                        class="img-fluid">
-
-                                    Long</td>
-                                <td class="trade-rd">$2000</td>
-                                <td class="trade-rdd">-$2000</td>
-                                <td class="trade-check-img">
-                                    <img src="../../../../../assets/images/Icon feather-check.png" alt=""
-                                        class="img-fluid">
-                                </td>
-                                <td class="text-danger">Close</td>
-                                <td>
-                                    <img src="../../../../../assets/images/Icon awesome-minus.png" alt=""
-                                        class="img-fluid">
-
-                                </td>
-                                <td>
-                                    <img src="../../../../../assets/images/Icon awesome-minus.png" alt=""
-                                        class="img-fluid">
-
-                                </td>
-                                <td class="trade-rd">-$2000</td>
-                                <td class="trade-details">
-                                    <img src="../../../../../assets/images/Icon ionic-md-more.png" alt=""
-                                        class="img-fluid">
-
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="trade-check">
-                                    <div class="form-group">
-                                        <input type="checkbox" id="trade3">
-                                        <label for="trade3"></label>
-                                    </div>
-                                </td>
-                                <td>05082020-001</td>
-                                <td>Naked Call </td>
-                                <td>Facebook</td>
-                                <td>
-                                    <img src="../../../../../assets/images/icon/Icon awesome-arrow-up.png" alt=""
-                                        class="img-fluid">
-
-                                    Long</td>
-                                <td class="trade-rd">$2000</td>
-                                <td class="trade-rdd">-$2000</td>
-                                <td class="trade-check-img">
-                                    <img src="../../../../../assets/images/Icon material-close.png" alt=""
-                                        class="img-fluid">
-                                </td>
-                                <td class="text-secondary">
-                                    Expired
-                                </td>
-                                <td>
-                                    <img src="../../../../../assets/images/Icon awesome-minus.png" alt=""
-                                        class="img-fluid">
-
-                                </td>
-                                <td>
-                                    <img src="../../../../../assets/images/Icon awesome-minus.png" alt=""
-                                        class="img-fluid">
-
-                                </td>
-                                <td class="trade-rdd"> -$2000</td>
-                                <td class="trade-details">
-                                    <img src="../../../../../assets/images/Icon ionic-md-more.png" alt=""
-                                        class="img-fluid">
-
-                                </td>
-                            </tr>
-
+                
 
                         </tbody>
                     </table>

@@ -3,7 +3,12 @@ import { Component, OnInit, EventEmitter,Output,NgModule } from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatStepperModule } from '@angular/material/stepper';
-import {MatAutocompleteModule, MatInputModule } from '@angular/material';
+import { MatInputModule } from '@angular/material';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import {AngularMaterialModule } from '../../../../../../angular-material/angular-material.module';
+import { TradeStrategyService } from 'src/app/trade-strategy.service';
+import { TradeStrategy } from '../../../../../TradeStrategy'
+import { StockLeg} from '../../../../../StockLeg'
 
 
 
@@ -32,10 +37,12 @@ import {MatAutocompleteModule, MatInputModule } from '@angular/material';
 
 export class TradeDetailsComponent implements OnInit {
 
-
+  stockLeg : StockLeg = new StockLeg();
+  tradeStrategy : TradeStrategy =new TradeStrategy(1,"NSFT","","","",0,"","",1,1,1,this.stockLeg,"","","");
  stockLowerBand: number = -10;
  stockUpperBand: number = 10;
 
+ 
   currentState:number = 1;
   stockAdded:boolean;
   performRiskAnalysis:boolean;
@@ -44,13 +51,15 @@ export class TradeDetailsComponent implements OnInit {
   analyzeRisk:boolean;
   stockOptions:any[] = [];
   myFormControl=new FormControl();
-  symbolOptions: string[]=['NTFX','AAPL'];
+  symbolOptions: string[]=['NTFX','AAPL','PCG'];
   @Output('nextStep') nextStep = new EventEmitter();
   @Output('activateRisk') activateRisk = new EventEmitter();
 
-  constructor() { }
+  constructor(private service:TradeStrategyService) { }
 
   ngOnInit() {
+    
+     // this.service
   }
 
   enterSymbol() {
@@ -58,7 +67,10 @@ export class TradeDetailsComponent implements OnInit {
   }
 
   addStock() {
-    this.stockAdded = true;
+   // this.stockAdded = true;
+    console.log("Came here @add Stock");
+     this.service.addStrategy(this.tradeStrategy);
+    return;
   }
 
   addOption() {
@@ -135,5 +147,6 @@ export class TradeDetailsComponent implements OnInit {
     this.activateRisk.emit(true);
   }
 
+  
 
 }
