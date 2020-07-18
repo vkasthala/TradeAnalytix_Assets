@@ -7,8 +7,9 @@ import { MatInputModule } from '@angular/material';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import {AngularMaterialModule } from '../../../../../../angular-material/angular-material.module';
 import { TradeStrategyService } from 'src/app/trade-strategy.service';
-import { TradeStrategy } from '../../../../../TradeStrategy'
-import { StockLeg} from '../../../../../StockLeg'
+import { TradeStrategy } from '../../../../../TradeStrategy';
+import { StockLeg} from '../../../../../StockLeg';
+import { Observable, Subject } from 'rxjs';
 
 
 
@@ -69,7 +70,7 @@ export class TradeDetailsComponent implements OnInit {
   addStock() {
    // this.stockAdded = true;
     console.log("Came here @add Stock");
-     this.service.addStrategy(this.tradeStrategy);
+     this.service.addStrategy(this.tradeStrategy).subscribe((result) => {console.log("Came back after  @add Stock");});
     return;
   }
 
