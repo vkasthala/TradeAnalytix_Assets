@@ -4,6 +4,7 @@ export class StockLeg {
     id: number;
     action: any;
     quantity: number;
+    stockPrice:number;
     closedFlag: boolean;
     openPrice: any;
     closePrice: any;
