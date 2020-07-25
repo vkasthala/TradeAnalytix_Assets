@@ -7,9 +7,11 @@ import { MatInputModule } from '@angular/material';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import {AngularMaterialModule } from '../../../../../../angular-material/angular-material.module';
 import { TradeStrategyService } from 'src/app/trade-strategy.service';
+import { TradeDataService} from 'src/app/trade-data.service';
 import { TradeStrategy } from '../../../../../TradeStrategy';
 import { StockLeg} from '../../../../../StockLeg';
 import { Observable, Subject } from 'rxjs';
+import { TradeThesisComponent} from '../trade-thesis/trade-thesis.component';
 
 
 
@@ -40,7 +42,7 @@ import { Observable, Subject } from 'rxjs';
 export class TradeDetailsComponent implements OnInit {
 
   stockLeg : StockLeg = new StockLeg();
-  tradeStrategy : TradeStrategy =new TradeStrategy(1,"NSFT","","","",0,"","",1,1,1,this.stockLeg,"","","");
+  tradeStrategy : TradeStrategy =new TradeStrategy(1,"","","","",0,"","",1,1,1,this.stockLeg,"","","");
  stockLowerBand: number = -10;
  stockUpperBand: number = 10;
 
@@ -54,10 +56,10 @@ export class TradeDetailsComponent implements OnInit {
   stockOptions:any[] = [];
   myFormControl=new FormControl();
   symbolOptions: string[]=['NTFX','AAPL','PCG'];
-  @Output('nextStep') nextStep = new EventEmitter();
+  @Output('nextStep') nextStep = new EventEmitter<TradeStrategy>();
   @Output('activateRisk') activateRisk = new EventEmitter();
 
-  constructor(private service:TradeStrategyService) { }
+  constructor(private tradeDataservice:TradeDataService) { }
 
   ngOnInit() {
     
@@ -69,10 +71,10 @@ export class TradeDetailsComponent implements OnInit {
   }
 
   addStock() {
-   // this.stockAdded = true;
-    console.log("Came here @add Stock");
-     this.service.addStrategy(this.tradeStrategy).subscribe((result) => {console.log("Came back after  @add Stock");});
-    return;
+    this.stockAdded = true;
+   // console.log("Came here @add Stock");
+  //   this.service.addStrategy(this.tradeStrategy).subscribe((result) => {console.log("Came back after  @add Stock");});
+  //  return;
   }
 
   addOption() {
@@ -85,10 +87,13 @@ export class TradeDetailsComponent implements OnInit {
   }
 
   next() {
-    this.nextStep.emit()
+    console.log("I am here ... next");
+    console.log( this.tradeStrategy.stockCode);
+    this.tradeDataservice.updateData(this.tradeStrategy);
+    this.nextStep.emit();
   }
 
-  deleteStockOption(index) {
+  deleteStockOption(index:any) {
     this.stockOptions.splice(index, 1);
   }
 
