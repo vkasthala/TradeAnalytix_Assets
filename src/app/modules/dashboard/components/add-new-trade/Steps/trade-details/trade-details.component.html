@@ -31,10 +31,10 @@
             <div class="trade-inp">
 
               <input
-                type="email"
+                type="text"
                 class="form-control"
-                id="exampleInputEmail1"
-                
+                id="stockCode"
+                [(ngModel)]="tradeStrategy.stockCode"
                 placeholder=""
               />
             </div>
@@ -394,7 +394,7 @@
           </div>
           <div class="card-right">
             <div class="form-group">
-              <input id= "quantity" type="text" class="form-control cards-input" placeholder=""  [(ngModel)]="tradeStrategy.stockLeg.Quantity"/>
+              <input id= "quantity" type="text" class="form-control cards-input" placeholder=""  [(ngModel)]="tradeStrategy.stockLeg.quantity"/>
             </div>
           </div>
         </div>
@@ -404,7 +404,7 @@
           </div>
           <div class="card-right">
             <div class="form-group">
-              <input type="text" class="form-control cards-input" placeholder="" />
+              <input type="text" class="form-control cards-input" placeholder=""   />
             </div>
           </div>
         </div>
@@ -413,7 +413,9 @@
             <span>Net Debit</span>
           </div>
           <div class="card-right">
-            <h6></h6>
+            <div class="form-group">
+              <input type="text" class="form-control cards-input" placeholder=""   />
+            </div>
           </div>
         </div>
       </div>

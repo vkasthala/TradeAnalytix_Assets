@@ -24,8 +24,7 @@ export class TradeStrategyService {
    addStrategy(tradeStrategy:TradeStrategy): Observable<TradeStrategy> {
     console.log("Insided add stra"+tradeStrategy.stockCode);
     console.log("Insided add stra"+tradeStrategy.stockLeg.quantity);
-
-    return this.http.post<TradeStrategy>("http://localhost:8080/addStrategy/", JSON.stringify(tradeStrategy), this.httpOptions)
+     return this.http.post<TradeStrategy>("http://localhost:8080/addStrategy/", JSON.stringify(tradeStrategy), this.httpOptions)
     .pipe(catchError(this.handleError<TradeStrategy>('addStrategy')))    ;
   }
   
