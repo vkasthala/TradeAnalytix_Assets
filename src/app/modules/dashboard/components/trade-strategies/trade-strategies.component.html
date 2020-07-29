@@ -2,21 +2,8 @@
     <div class="trade-strategies-sec">
 
         <div class="add-new-trade-btn">
-            <a class="add-new">
-
-                <img src="../../../../../assets/images/icon/Icon ionic-ios-add-circle.png" alt="">
-
-
-                ADD NEW TRADE
-            </a>
-            &nbsp; &nbsp;&nbsp;
-            <a class="import-new">
-
-                <img src="../../../../../assets/images/icon/Icon ionic-ios-add-circle.png" alt="">
-
-
-                IMPORT TRADES
-            </a>
+            <button routerLink="/dashboard/new-trade" class="add-new btn btn-apply">
+                + ADD NEW TRADE</button> 
         </div>
         <div class="trade-strategies-table">
             <div class="card mb-4">
@@ -41,10 +28,43 @@
                             <div class="trade-sel">
                                 <select class="form-control" id="exampleFormControlSelect1">
                                     <option>Trade Strategy</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
+                                    <option>Long Stock</option>
+                                    <option>Short Stock</option>
+                                    <option>Long Call</option>
+                                    <option>Short Call</option>
+                                    <option>Long Put</option>
+                                    <option>Covered Call</option>
+                                    <option>Married Put</option>
+                                    <option>Protective Put</option>
+                                    <option>Bull Call Spread</option>
+                                    <option>Bull Put Spread</option>
+                                    <option>Long Strangle</option>
+                                    <option>Short Strangle</option>
+                                    <option>Long Straddle</option>
+                                    <option>Short Straddle</option>
+                                    <option>Iron Condor</option>
+                                    <option>Protective Collar</option>
+                                    <option>Long Call Butterfly Spread</option>
+                                    <option>Long Call Calendar Spread</option>
+                                    <option>Long Put Calendar Spread</option>
+                                    <option>Custom</option>
+
+                                </select>
+                                <img src="../../../../../assets/images/icon/Icon ionic-ios-arrow-down.png" alt=""
+                                    class="form-icon-down">
+
+
+                            </div>
+                        </div>
+                        <div class="st-slect-section">
+
+                            <div class="trade-sel">
+                                <select class="form-control" id="exampleFormControlSelect1">
+                                    <option>Status</option>
+                                    <option>Draft</option>
+                                    <option>Open</option>
+                                    <option>Closed</option>
+                                    <option>Expired</option>
                                 </select>
                                 <img src="../../../../../assets/images/icon/Icon ionic-ios-arrow-down.png" alt=""
                                     class="form-icon-down">
@@ -56,28 +76,13 @@
                             <div class="trade-date">
 
                                 <div class="form-group">
-                                    <div class='input-group date' id='datetimepicker1'>
-                                        <input type='date' class="form-control input-lg" />
-                                    </div>
+                                  <div class='input-group date' id='datetimepicker1'>
+                                      <my-date-range-picker placeholder="Date range" name="mydaterange" [options]="myDateRangePickerOptions"></my-date-range-picker>
+                                    </div> 
                                 </div>
                             </div>
                         </div>
-                        <div class="st-slect-section">
-
-                            <div class="trade-sel">
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                    <option>Trade Strategy</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                                <img src="../../../../../assets/images/icon/Icon ionic-ios-arrow-down.png" alt=""
-                                    class="form-icon-down">
-
-
-                            </div>
-                        </div>
+                        
                         <div class="st-slect-section select-btn">
                             <button class="btn btn-apply">APPLY FILTERS</button> &nbsp; &nbsp;
                             <button type="button" class="btn btn-link ">Clear</button>
@@ -108,7 +113,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr (click)="expandShowDetails(i)" *ngFor="let item of tradeStrategiesData; let i=index" class="table-ac cursor-pointer">
+                            <tr (click)="expandShowDetails(i)" [ngClass]="{'expanded-row': showDetailsIndex == i}" *ngFor="let item of tradeStrategiesData; let i=index" class="table-ac cursor-pointer">
 
                                 <td class="trade-check">
                                     <div class="form-group">
@@ -157,8 +162,7 @@
                                         {{item.closeDate}}
                                     </ng-container>
                                     <ng-template #elseTemplate>
-                                        <img src="../../../../../assets/images/Icon awesome-minus.png" alt=""
-                                            class="img-fluid">
+                                        <div class="close-dash"></div>
 
                                     </ng-template>
 
@@ -169,32 +173,40 @@
                                     <img (click)="expandRowOptions(i)" src="../../../../../assets/images/Icon ionic-md-more.png" alt=""
                                         class="img-fluid cursor-pointer">
 
-                                    <div class="trade-det-box" *ngIf="expandIndex == i">
+                                    <div class="trade-det-box"  *ngIf="expandIndex == i">
                                         <div class="de-box">
 
-                                            <a class="dt-top-icon cursor-pointer" (click)="closeActionBox()">
-                                                <span></span>
-                                                <img src="../../../../../assets/images/icon/Icon ionic-ios-close-circle.png">
-                                            </a>
-                                            <a class="box-icon cursor-pointer" (click)="editTrade()">
-                                                <img src="../../../../../assets/images/icon/Icon material-edit.png"> <span>Edit</span>
-                                            </a>
-                                            <a class="box-icon cursor-pointer" (click)="closeTrade(item.strategyId)">
-                                                <img src="../../../../../assets/images/icon/Icon material-close.png"> <span>Close</span>
-                                            </a>
-                                            <a class="box-icon cursor-pointer" (click)="deleteTrade()">
-                                                <img src="../../../../../assets/images/icon/Icon material-delete.png"> <span>Delete</span>
-                                            </a>
+                                          
+                                            <div class="right-con">
+
+
+                                                <a class="box-icon cursor-pointer" (click)="editTrade()">
+                                                    <img src="../../../../../assets/images/icon/Icon material-edit.png"> <span>Edit</span>
+                                                </a>
+                                                <a class="box-icon cursor-pointer" (click)="closeTrade(item.strategyId)">
+                                                    <img src="../../../../../assets/images/icon/Icon material-close.png"> <span>Close</span>
+                                                </a>
+                                                <a class="box-icon cursor-pointer" (click)="deleteTrade()">
+                                                    <img src="../../../../../assets/images/icon/Icon material-delete.png"> <span>Delete</span>
+                                                </a>
+                                            </div>
+                                            <div class="left-icon">
+                                                <a class="dt-top-icon cursor-pointer" (click)="closeActionBox()">
+                                                    <span></span>
+                                                    <img src="../../../../../assets/images/icon/Icon ionic-ios-close-circle.png">
+                                                </a>
+
+                                            </div>
                                         </div>
                                     </div>
 
                                 </td>
 
 
-                                <div class="box-table" *ngIf="showDetailsIndex == i">
+                                <div class="box-table" [ngClass]="{'box-table-even': i%2 == 0, 'box-table-odd': i%2 != 0,'expanded-details': showDetailsIndex == i}" *ngIf="showDetailsIndex == i">
                                     <div class="inner-box">
                                         <ul class="list-inline">
-                                            <li>
+                                            <li style="padding-left: 0;">
                                                 <img src="../../../../../assets/images/Ellipse 55.png" alt="">
                                                 <em>Bought 200 stock at $1450.62</em>
                                             </li>
@@ -219,6 +231,9 @@
     </div>
 
 </div>
+
+
+
 <!-- for-mobile -->
 <div class="trade-st-mobile">
     <div class="container-fluid">
@@ -228,89 +243,82 @@
                 TRADE STRATEGIES
             </h3>
         </div>
+    </div>
+        <div  class="trad-border"></div> 
 
-        <div class="trade-top-sec">
-            <div class="st-slect-section">
-                <div class="trade-form">
+        <div class="container-fluid">
 
-                    <div class="form-group has-search">
-                        <input type="text" class="form-control" placeholder="Symbol or Stock Name">
-                        <img src="../../../../../assets/images/icon/Icon awesome-search.png" alt="" class="form-icon">
-
+            <div class="trade-top-sec">
+                <div class="st-slect-section">
+                    <div class="trade-form">
+    
+                        <div class="form-group has-search">
+                            <input type="text" class="form-control" placeholder="Symbol or Stock Name">
+                            <img src="../../../../../assets/images/icon/Icon awesome-search.png" alt="" class="form-icon">
+    
+                        </div>
                     </div>
                 </div>
+
             </div>
-
-            <div class="st-slect">
-
-                <div class="trade-sel">
-                    <select class="form-control" id="exampleFormControlSelect1">
-                        <option>Status</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
-                    <img src="../../../../../assets/images/icon/Icon ionic-ios-arrow-down.png" alt=""
-                        class="form-icon-down">
-
-
-                </div>
-            </div>
-        </div>
-
-        <div class="trade-table">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-
-                        <th>Strategy ID</th>
-                        <th>Symbol</th>
-                        <th>Strategy</th>
-                        <th>Status</th>
-                        <th>Return</th>
-
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let item of minifiedTradeStrategiesData; let i=index">
-                        <td class="mobile-de"><a class="trade-h" (click)="expandRowOptions(i)">{{item.strategyId}}</a>
-                            <div class="trade-det-box" *ngIf="expandIndex == i">
-                                <div class="de-box">
-
-                                    <div class="dt-top-icon" (click)="closeActionBox()">
-                                        <img src="../../../../../assets/images/icon/Icon ionic-ios-close-circle.png"
-                                            alt="">
+    
+            <div class="trade-table">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+    
+                            <th>Strategy ID</th>
+                            <th>Symbol</th>
+                            <th>Strategy</th>
+                            <th>Status</th>
+                            <th>Return</th>
+    
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of minifiedTradeStrategiesData; let i=index">
+                            <td class="mobile-de"><a class="trade-h" (click)="expandRowOptions(i)">{{item.strategyId}}</a>
+                                <div class="trade-det-box" *ngIf="expandIndex == i">
+                                    <div class="de-box">
+    
+                                        <div class="right-con">
+                                            
+                                            <a class="box-icon">
+                                                <img src="../../../../../assets/images/icon/Icon material-edit.png" alt="">
+                                                <span>Edit</span>
+                                            </a>
+                                            <a class="box-icon" (click)="closeTrade(item.strategyId)">
+                                                <img src="../../../../../assets/images/icon/Icon material-close.png" alt="">
+                                                <span>Close</span>
+                                            </a>
+                                            <a class="box-icon">
+                                                <img src="../../../../../assets/images/icon/Icon material-delete.png" alt="">
+                                                <span>Delete</span>
+                                            </a>
+                                        </div>
+                                        
+                                        <div class="dt-top-icon" (click)="closeActionBox()">
+                                            <img src="../../../../../assets/images/icon/Icon ionic-ios-close-circle.png"
+                                                alt="">
+                                        </div>
                                     </div>
-                                    <a class="box-icon">
-                                        <img src="../../../../../assets/images/icon/Icon material-edit.png" alt="">
-                                        <span>Edit</span>
-                                    </a>
-                                    <a class="box-icon" (click)="closeTrade(item.strategyId)">
-                                        <img src="../../../../../assets/images/icon/Icon material-close.png" alt="">
-                                        <span>Close</span>
-                                    </a>
-                                    <a class="box-icon">
-                                        <img src="../../../../../assets/images/icon/Icon material-delete.png" alt="">
-                                        <span>Delete</span>
-                                    </a>
                                 </div>
-                            </div>
-                        </td>
-                        <td>{{item.symbol}}</td>
-                        <td>{{item.strategy}}</td>
-                        <td 
-                        [ngClass]="{
-                            'text-warning': item.status == 'Open',
-                            'text-danger': item.status == 'Closed',
-                            'text-primary': item.status == 'Draft',
-                            'text-secondary': item.status == 'Expired'
-                        }"
-                        >{{item.status}}</td>
-                        <td class="text-success">{{item.return}}</td>
-                    </tr>
-                </tbody>
-            </table>
+                            </td>
+                            <td>{{item.symbol}}</td>
+                            <td>{{item.strategy}}</td>
+                            <td 
+                            [ngClass]="{
+                                'text-warning': item.status == 'Open',
+                                'text-danger': item.status == 'Closed',
+                                'text-primary': item.status == 'Draft',
+                                'text-secondary': item.status == 'Expired'
+                            }"
+                            >{{item.status}}</td>
+                            <td class="text-success">{{item.return}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+      
         </div>
-    </div>
 </div>

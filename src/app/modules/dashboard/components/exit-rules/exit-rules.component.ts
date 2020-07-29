@@ -8,6 +8,10 @@ import { Router } from '@angular/router';
 })
 export class ExitRulesComponent implements OnInit {
 
+  checkbox2:any;
+  checkbox4:any;
+  checkbox6:any;
+
   constructor(private router: Router) { }
 
   ngOnInit() {

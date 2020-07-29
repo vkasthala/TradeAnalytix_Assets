@@ -326,15 +326,27 @@
               <div class="Trade-type">
                 <div class="form-group">
                   <select class="form-control select-input" id="inputState">
-                    <option selected="">Custom</option>
-                    <option>Trade Type</option>
-                    <option>Naked call</option>
-                    <option>Naked put</option>
+                    <option>Trade Strategy</option>
+                    <option>Long Stock</option>
+                    <option>Short Stock</option>
+                    <option>Long Call</option>
+                    <option>Short Call</option>
+                    <option>Long Put</option>
                     <option>Covered Call</option>
+                    <option>Married Put</option>
                     <option>Protective Put</option>
+                    <option>Bull Call Spread</option>
+                    <option>Bull Put Spread</option>
+                    <option>Long Strangle</option>
+                    <option>Short Strangle</option>
+                    <option>Long Straddle</option>
+                    <option>Short Straddle</option>
                     <option>Iron Condor</option>
-                    <option>Call Spread</option>
-                    <option>Put Spread</option>
+                    <option>Protective Collar</option>
+                    <option>Long Call Butterfly Spread</option>
+                    <option>Long Call Calendar Spread</option>
+                    <option>Long Put Calendar Spread</option>
+                    <option selected>Custom</option>
                   </select>
                 </div>
               </div>
@@ -355,7 +367,7 @@
 
     <div class="trade-cards-section">
       <div class="trade-card-box" *ngIf="stockAdded">
-        <div class="top-heading" (click)="stockAdded = false">
+        <div class="top-heading" (click)="deleteStock()">
           <img src="../../../../../assets/images/icon/delete.png" alt="" class="img-fluid">
         </div>
         <div class="card-main">
@@ -367,6 +379,8 @@
               <select id="inputState" class="form-control select-input">
                 <option value="" selected data-default>Buy to Open</option>
                 <option value="" >Sell to Open</option>
+                <option value="" >Buy to Close</option>
+                <option value="" >Sell to Close</option>
               </select>
             </div>
           </div>
@@ -377,7 +391,7 @@
           </div>
           <div class="card-right">
             <div class="form-group">
-              <input type="text" class="form-control cards-input" placeholder="" />
+              <input type="number" (keydown)="preventNegatives($event, false)"  min="0" class="form-control cards-input" />
             </div>
           </div>
         </div>
@@ -387,7 +401,7 @@
           </div>
           <div class="card-right">
             <div class="form-group">
-              <input type="text" class="form-control cards-input" placeholder="" />
+              <input type="number"  pattern="^\d*(\.\d{0,2})?$"  (change)="checkForDecimalValidation($event)" step="0.01" (keydown)="preventNegatives($event, true)"  min="0"  class="form-control cards-input" placeholder="" />
             </div>
           </div>
         </div>
@@ -414,6 +428,8 @@
                 <select id="inputState" class="form-control select-input">
                   <option value="" selected data-default>Buy to Open</option>
                   <option value="" >Sell to Open</option>
+                  <option value="" >Buy to Close</option>
+                  <option value="" >Sell to Close</option>
                 </select>
               </div>
             </div>
@@ -424,7 +440,7 @@
             </div>
             <div class="card-right">
               <div class="form-group">
-                <input type="text" class="form-control cards-input" placeholder="" />
+                <input type="number" (keydown)="preventNegatives($event, false)"  min="0" class="form-control cards-input" placeholder="" />
               </div>
             </div>
           </div>
@@ -434,7 +450,7 @@
             </div>
             <div class="card-right">
               <div class="form-group">
-                <input type="text" class="form-control cards-input" placeholder="" />
+                <input type="number" (keydown)="preventNegatives($event, true)" pattern="^\d*(\.\d{0,2})?$"  (change)="checkForDecimalValidation($event)" step="0.01" min="0" class="form-control cards-input" placeholder="" />
               </div>
             </div>
           </div>
@@ -455,7 +471,7 @@
           </div>
           <div class="card-main">
             <div class="card-left">
-              <span>Date</span>
+              <span>Expiry Date</span>
             </div>
             <div class="card-right">
               <div class="form-group">
@@ -469,7 +485,7 @@
             </div>
             <div class="card-right">
               <div class="form-group">
-                <input type="text" class="form-control cards-input" placeholder="" />
+                <input type="number" (keydown)="preventNegatives($event, true)" pattern="^\d*(\.\d{0,2})?$"  (change)="checkForDecimalValidation($event)" step="0.01" min="0" class="form-control cards-input" placeholder="" />
               </div>
             </div>
           </div>
@@ -496,6 +512,7 @@
         !promptPerformRiskAnalysis &&
         !performRiskAnalysis &&
         !displayRiskAnalysis
+        && (stockAdded || stockOptions.length > 0)
       "
     >
       <a class="btn btn-next" (click)="promptPerformRiskAnalysis = true"
@@ -508,21 +525,20 @@
       class="trade-risk"
       *ngIf="promptPerformRiskAnalysis && !displayRiskAnalysis"
     >
-      <div class="row d-flex justify-content-center align-items-center">
-        <div class="col-sm-6">
+      <div class="row d-flex  align-items-center">
+        <div class="col-sm-6 col-md-6 col-g-5 ">
           <h6>
-            Do you want to perform risk analysis of the trade strategy by
-            simulation?
+            Do you want to perform risk analysis of the trade strategy by simulation?
           </h6>
         </div>
 
-        <div class="col-sm-6">
+        <div class="col-sm-6 col-md-4">
           <a
             class="btn btn-yes"
             (click)="performRiskAnalysis = true; displayRiskAnalysis = true; activateRiskAnalysisStep()"
             >Yes</a
           >
-          <a class="btn btn-no" (click)="promptPerformRiskAnalysis = false"
+          <a class="btn btn-no" (click)="promptPerformRiskAnalysis = false; navigateToTradeThesis()"
             >No</a
           >
         </div>
@@ -556,16 +572,16 @@
               </div>
 
               <div class="stock-inc">
-                <a (click)="decreaseStockLowerBand()">
+                <a (click)="decreaseStockLowerBand()" (mousedown)="mousedown('decreaseStockLowerBand')" (mouseup)="mouseup()" (mouseleave)="mouseup()"> 
                   <img
                     src="../../../../../assets/images/icon/Group 285.png"
                     alt=""
                   />
                 </a>
-                <span>
-                  {{stockLowerBand}}
-                </span>
-                <a (click)="increaseStockLowerBand()">
+                <div class="stock-p">
+                  <input type="number" class="hide-bars" min="-100" max="0" minlength="-100" maxlength="0" [(ngModel)]="stockLowerBand" (input)="enforceMaxLength($event, -100, 0)"><p>&#37;</p>
+                </div>
+                <a (click)="increaseStockLowerBand()" (mousedown)="mousedown('increaseStockLowerBand')" (mouseup)="mouseup()" (mouseleave)="mouseup()">
                   <img
                     src="../../../../../assets/images/icon/Group 283.png"
                     alt=""
@@ -581,16 +597,16 @@
               </div>
 
               <div class="stock-inc">
-                <a (click)="decreaseStockUpperBand()">
+                <a (click)="decreaseStockUpperBand()" (mousedown)="mousedown('decreaseStockUpperBand')" (mouseup)="mouseup()" (mouseleave)="mouseup()">
                   <img
                     src="../../../../../assets/images/icon/Group 285.png"
                     alt=""
                   />
                 </a>
-                <span>
-                 {{stockUpperBand}}
-                </span>
-                <a (click)="increaseStockeUpperBand()">
+                <div class="stock-p">
+                  <input (keydown)="preventNegatives($event, true)" type="number" class="hide-bars" min="0" max="100" minlength="0" maxlength="100" [(ngModel)]="stockUpperBand" (input)="enforceMaxLength($event, 0, 100)"><p>&#37;</p>
+                </div>
+                <a (click)="increaseStockeUpperBand()" (mousedown)="mousedown('increaseStockeUpperBand')" (mouseup)="mouseup()" (mouseleave)="mouseup()">
                   <img
                     src="../../../../../assets/images/icon/Group 283.png"
                     alt=""
@@ -600,7 +616,7 @@
             </div>
           </div>
 
-          <div class="risk-box risk-af" *ngFor="let item of stockOptions;let index=index">
+          <div class="risk-box risk-af card-m" *ngFor="let item of stockOptions;let index=index">
             <div class="risk-stock-seciton risk-bt">
               <div class="stock-name">
                 <span>
@@ -609,16 +625,16 @@
               </div>
 
               <div class="stock-inc">
-                <a (click)="decreaseDaysLeft(index)">
+                <a (click)="decreaseDaysLeft(index)"  (mousedown)="mousedown('decreaseDaysLeft', index)" (mouseup)="mouseup()" (mouseleave)="mouseup()">
                   <img
                     src="../../../../../assets/images/icon/Group 285.png"
                     alt=""
                   />
                 </a>
                 <span>
-                  {{item.daysLeft}}
+                  <input (keydown)="preventNegatives($event, true)" type="number" class="hide-bars" step="0.1" min="0" max="730" minlength="0" maxlength="730" [(ngModel)]="item.daysLeft">
                 </span>
-                <a (click)="increaseDaysLeft(index)">
+                <a (click)="increaseDaysLeft(index)"  (mousedown)="mousedown('increaseDaysLeft', index)" (mouseup)="mouseup()" (mouseleave)="mouseup()">
                   <img
                     src="../../../../../assets/images/icon/Group 283.png"
                     alt=""
@@ -634,16 +650,16 @@
               </div>
 
               <div class="stock-inc">
-                <a (click)="decreaseImpliedValue(index)">
+                <a (click)="decreaseImpliedValue(index)"  (mousedown)="mousedown('decreaseImpliedValue', index)" (mouseup)="mouseup()" (mouseleave)="mouseup()">
                   <img
                     src="../../../../../assets/images/icon/Group 285.png"
                     alt=""
                   />
                 </a>
-                <span>
-                  {{item.impliedValue}}%
-                </span>
-                <a (click)="increaseImpliedValue(index)">
+                <div class="stock-p">
+                  <input  type="number" class="hide-bars" min="1" max="500" minlength="1" maxlength="500" [(ngModel)]="item.impliedValue" (input)="enforceMaxLength($event, 1, 500)"><p>&#37;</p>
+                </div >
+                <a (click)="increaseImpliedValue(index)"  (mousedown)="mousedown('increaseImpliedValue', index)" (mouseup)="mouseup()" (mouseleave)="mouseup()">
                   <img
                     src="../../../../../assets/images/icon/Group 283.png"
                     alt=""
@@ -660,7 +676,7 @@
       <div class="order-btn text-center">
         <a class="btn btn-next" (click)="analyzeRisk = true">Analyze</a>
 
-        <a class="btn btn-skip" *ngIf="!analyzeRisk">Skip Risk Analysis</a>
+        <a class="btn btn-skip" *ngIf="!analyzeRisk" (click)="next()">Skip Risk Analysis</a>
       </div>
     </div>
   </ng-container>
@@ -693,7 +709,8 @@
         <div class="tab-content tabs">
           <div class="tab-pane active" id="Section1" role="tabpanel">
             <div class="risk-tabs-table">
-              <div class="risk-table">
+
+              <div class="risk-table" *ngIf="stockAdded">
 
                 <div class="trad-risk-head">
                   <h6>
@@ -768,237 +785,84 @@
                   </tbody>
                 </table>
               </div>
-           
-
-              <div class="risk-table">
-
-                <div class="trad-risk-head">
-                  <h6>
-                    Short May-29 2020 460 Call
-                  </h6>
+              <ng-container *ngFor="let item of stockOptions;let index=index">
+                <div class="risk-table">
+  
+                  <div class="trad-risk-head">
+                    <h6>
+                      Short May-29 2020 460 Call
+                    </h6>
+                  </div>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Change</th>
+                        <th>Stock Price</th>
+                        <th>Gain/Loss</th>
+                      </tr>
+                    </thead>
+  
+                    <tbody>
+                      <tr>
+                        <td class="trade-rdd">-10.0%</td>
+                        <td>386.39</td>
+                        <td class="trade-rdd">$(429.32)</td>
+                      </tr>
+                      <tr>
+                        <td class="trade-rdd">-10.0%</td>
+                        <td>386.39</td>
+                        <td class="trade-rdd">$(429.32)</td>
+                      </tr>
+                      <tr>
+                        <td class="trade-rdd">-10.0%</td>
+                        <td>386.39</td>
+                        <td class="trade-rdd">$(429.32)</td>
+                      </tr>
+                      <tr>
+                        <td class="trade-rdd">-10.0%</td>
+                        <td>386.39</td>
+                        <td class="trade-rdd">$(429.32)</td>
+                      </tr>
+                      <tr>
+                        <td class="trade-rdd">-10.0%</td>
+                        <td>386.39</td>
+                        <td class="trade-rdd">$(429.32)</td>
+                      </tr>
+                      <tr>
+                        <td class="trade-rdd">-10.0%</td>
+                        <td>386.39</td>
+                        <td class="trade-rdd">$(429.32)</td>
+                      </tr>
+                      <tr>
+                        <td class="trade-rdd">-10.0%</td>
+                        <td>386.39</td>
+                        <td class="trade-rdd">$(429.32)</td>
+                      </tr>
+                      <tr>
+                        <td class="trade-rdd">-10.0%</td>
+                        <td>386.39</td>
+                        <td class="trade-rdd">$(429.32)</td>
+                      </tr>
+                      <tr>
+                        <td class="trade-rd">-10.0%</td>
+                        <td>386.39</td>
+                        <td class="trade-rd">$(429.32)</td>
+                      </tr>
+                      <tr>
+                        <td class="trade-rd">-10.0%</td>
+                        <td>386.39</td>
+                        <td class="trade-rd">$(429.32)</td>
+                      </tr>
+                      <tr>
+                        <td class="trade-rd">-10.0%</td>
+                        <td>386.39</td>
+                        <td class="trade-rd">$(429.32)</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Change</th>
-                      <th>Stock Price</th>
-                      <th>Gain/Loss</th>
-                    </tr>
-                  </thead>
-
-                  <tbody>
-                    <tr>
-                      <td class="trade-rdd">-10.0%</td>
-                      <td>386.39</td>
-                      <td class="trade-rdd">$(429.32)</td>
-                    </tr>
-                    <tr>
-                      <td class="trade-rdd">-10.0%</td>
-                      <td>386.39</td>
-                      <td class="trade-rdd">$(429.32)</td>
-                    </tr>
-                    <tr>
-                      <td class="trade-rdd">-10.0%</td>
-                      <td>386.39</td>
-                      <td class="trade-rdd">$(429.32)</td>
-                    </tr>
-                    <tr>
-                      <td class="trade-rdd">-10.0%</td>
-                      <td>386.39</td>
-                      <td class="trade-rdd">$(429.32)</td>
-                    </tr>
-                    <tr>
-                      <td class="trade-rdd">-10.0%</td>
-                      <td>386.39</td>
-                      <td class="trade-rdd">$(429.32)</td>
-                    </tr>
-                    <tr>
-                      <td class="trade-rdd">-10.0%</td>
-                      <td>386.39</td>
-                      <td class="trade-rdd">$(429.32)</td>
-                    </tr>
-                    <tr>
-                      <td class="trade-rdd">-10.0%</td>
-                      <td>386.39</td>
-                      <td class="trade-rdd">$(429.32)</td>
-                    </tr>
-                    <tr>
-                      <td class="trade-rdd">-10.0%</td>
-                      <td>386.39</td>
-                      <td class="trade-rdd">$(429.32)</td>
-                    </tr>
-                    <tr>
-                      <td class="trade-rd">-10.0%</td>
-                      <td>386.39</td>
-                      <td class="trade-rd">$(429.32)</td>
-                    </tr>
-                    <tr>
-                      <td class="trade-rd">-10.0%</td>
-                      <td>386.39</td>
-                      <td class="trade-rd">$(429.32)</td>
-                    </tr>
-                    <tr>
-                      <td class="trade-rd">-10.0%</td>
-                      <td>386.39</td>
-                      <td class="trade-rd">$(429.32)</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-
-
-              <div class="risk-table">
-
-                <div class="trad-risk-head">
-                  <h6>
-                    Long May-29 2020 380 Put   
-                  </h6>
-                </div>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Change</th>
-                      <th>Stock Price</th>
-                      <th>Gain/Loss</th>
-                    </tr>
-                  </thead>
-
-                  <tbody>
-                    <tr>
-                      <td class="trade-rdd">-10.0%</td>
-                      <td>386.39</td>
-                      <td class="trade-rdd">$(429.32)</td>
-                    </tr>
-                    <tr>
-                      <td class="trade-rdd">-10.0%</td>
-                      <td>386.39</td>
-                      <td class="trade-rdd">$(429.32)</td>
-                    </tr>
-                    <tr>
-                      <td class="trade-rdd">-10.0%</td>
-                      <td>386.39</td>
-                      <td class="trade-rdd">$(429.32)</td>
-                    </tr>
-                    <tr>
-                      <td class="trade-rdd">-10.0%</td>
-                      <td>386.39</td>
-                      <td class="trade-rdd">$(429.32)</td>
-                    </tr>
-                    <tr>
-                      <td class="trade-rdd">-10.0%</td>
-                      <td>386.39</td>
-                      <td class="trade-rdd">$(429.32)</td>
-                    </tr>
-                    <tr>
-                      <td class="trade-rdd">-10.0%</td>
-                      <td>386.39</td>
-                      <td class="trade-rdd">$(429.32)</td>
-                    </tr>
-                    <tr>
-                      <td class="trade-rdd">-10.0%</td>
-                      <td>386.39</td>
-                      <td class="trade-rdd">$(429.32)</td>
-                    </tr>
-                    <tr>
-                      <td class="trade-rdd">-10.0%</td>
-                      <td>386.39</td>
-                      <td class="trade-rdd">$(429.32)</td>
-                    </tr>
-                    <tr>
-                      <td class="trade-rd">-10.0%</td>
-                      <td>386.39</td>
-                      <td class="trade-rd">$(429.32)</td>
-                    </tr>
-                    <tr>
-                      <td class="trade-rd">-10.0%</td>
-                      <td>386.39</td>
-                      <td class="trade-rd">$(429.32)</td>
-                    </tr>
-                    <tr>
-                      <td class="trade-rd">-10.0%</td>
-                      <td>386.39</td>
-                      <td class="trade-rd">$(429.32)</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-
-
-              <div class="risk-table">
-
-                <div class="trad-risk-head">
-                  <h6>
-                    Short May-29 2020 380 Put
-                  </h6>
-                </div>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Change</th>
-                      <th>Stock Price</th>
-                      <th>Gain/Loss</th>
-                    </tr>
-                  </thead>
-
-                  <tbody>
-                    <tr>
-                      <td class="trade-rdd">-10.0%</td>
-                      <td>386.39</td>
-                      <td class="trade-rdd">$(429.32)</td>
-                    </tr>
-                    <tr>
-                      <td class="trade-rdd">-10.0%</td>
-                      <td>386.39</td>
-                      <td class="trade-rdd">$(429.32)</td>
-                    </tr>
-                    <tr>
-                      <td class="trade-rdd">-10.0%</td>
-                      <td>386.39</td>
-                      <td class="trade-rdd">$(429.32)</td>
-                    </tr>
-                    <tr>
-                      <td class="trade-rdd">-10.0%</td>
-                      <td>386.39</td>
-                      <td class="trade-rdd">$(429.32)</td>
-                    </tr>
-                    <tr>
-                      <td class="trade-rdd">-10.0%</td>
-                      <td>386.39</td>
-                      <td class="trade-rdd">$(429.32)</td>
-                    </tr>
-                    <tr>
-                      <td class="trade-rdd">-10.0%</td>
-                      <td>386.39</td>
-                      <td class="trade-rdd">$(429.32)</td>
-                    </tr>
-                    <tr>
-                      <td class="trade-rdd">-10.0%</td>
-                      <td>386.39</td>
-                      <td class="trade-rdd">$(429.32)</td>
-                    </tr>
-                    <tr>
-                      <td class="trade-rdd">-10.0%</td>
-                      <td>386.39</td>
-                      <td class="trade-rdd">$(429.32)</td>
-                    </tr>
-                    <tr>
-                      <td class="trade-rd">-10.0%</td>
-                      <td>386.39</td>
-                      <td class="trade-rd">$(429.32)</td>
-                    </tr>
-                    <tr>
-                      <td class="trade-rd">-10.0%</td>
-                      <td>386.39</td>
-                      <td class="trade-rd">$(429.32)</td>
-                    </tr>
-                    <tr>
-                      <td class="trade-rd">-10.0%</td>
-                      <td>386.39</td>
-                      <td class="trade-rd">$(429.32)</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+              </ng-container>
+              
 
               <div class="risk-tables">
 

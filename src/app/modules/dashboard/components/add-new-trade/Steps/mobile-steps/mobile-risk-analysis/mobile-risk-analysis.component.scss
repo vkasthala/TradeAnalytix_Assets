@@ -1,1 +1,20 @@
 @import '../styles/mobile-steps.scss';
+
+.stock-p {
+
+    display: flex;
+    position: relative;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    p{
+      // margin-left: -12px;
+      position: absolute;
+      right: 10px;
+    }
+  
+    .hide-bars {
+      width: 80%;
+      text-align: center;
+  }
+  }

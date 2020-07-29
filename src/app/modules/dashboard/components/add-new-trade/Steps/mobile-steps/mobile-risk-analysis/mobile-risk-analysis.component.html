@@ -3,7 +3,7 @@
   <div class="new-step-third">
     <div class="trade-stategy-heading">
       <h6>
-        Provide inputs to the simulate the profitability of the trade strategy.
+        Provide inputs for risk analysis simulation
       </h6>
     </div>
 
@@ -15,21 +15,26 @@
       </div>
       <div class="right-stock-price">
         <div class="stock-price-box">
-          <a>
+          <a (click)="decreaseStockPriceStartRange()">
             <img alt="" src="../../../../../assets/images/icon/Group 359.png" />
           </a>
-          <span> 10% </span>
-          <a>
+          <div class="stock-p"> 
+            <input type="number" class="hide-bars"  [(ngModel)]="stockPriceStartRange"><p>&#37;</p>
+
+          </div>
+          <a (click)="increaseStockPriceStartRange()">
             <img alt="" src="../../../../../assets/images/icon/Group 360.png" />
           </a>
         </div>
 
         <div class="stock-price-box box-m">
-          <a>
+          <a (click)="decreaseStockPriceEndRage()">
             <img alt="" src="../../../../../assets/images/icon/Group 359.png" />
           </a>
-          <span> 10% </span>
-          <a>
+          <div class="stock-p">
+            <input type="number" class="hide-bars"  [(ngModel)]="stockPriceEndRange"><p>&#37;</p>
+          </div>
+          <a (click)="increaseStockPriceEndRange()">
             <img alt="" src="../../../../../assets/images/icon/Group 360.png" />
           </a>
         </div>
@@ -74,210 +79,66 @@
         </div>
       </div>
 
-      <div class="option-select">
-        <div class="left-stock-option">
-          <p>
-            Option-1 (Sell 460 Call)
-          </p>
-        </div>
 
-        <div class="right-stock-option">
-          <div class="firstqt">
-            <div class="form-group">
-              <input class="form-control" placeholder="2" type="text" />
-            </div>
+      <ng-container *ngFor="let item of stockOptions; let i=index">
+        <div class="option-select">
+          <div class="left-stock-option">
+            <p>
+              {{item.title}}
+            </p>
           </div>
-          <div class="first-qt">
-            <div class="stock-price-box">
-              <a>
-                <img
-                  alt=""
-                  src="../../../../../assets/images/icon/Group 359.png"
-                />
-              </a>
-              <span> 10% </span>
-              <a>
-                <img
-                  alt=""
-                  src="../../../../../assets/images/icon/Group 360.png"
-                />
-              </a>
+  
+          <div class="right-stock-option">
+            <div class="firstqt">
+              <div class="form-group">
+                <input class="form-control" type="number" [(ngModel)]="item.quantity" />
+              </div>
             </div>
-          </div>
-          <div class="first-qt">
-            <div class="stock-price-box">
-              <a>
-                <img
-                  alt=""
-                  src="../../../../../assets/images/icon/Group 359.png"
-                />
-              </a>
-              <span> 10% </span>
-              <a>
-                <img
-                  alt=""
-                  src="../../../../../assets/images/icon/Group 360.png"
-                />
-              </a>
+            <div class="first-qt">
+              <div class="stock-price-box">
+                <a (click)="increaseDaysLeft(i)">
+                  <img
+                    alt=""
+                    src="../../../../../assets/images/icon/Group 359.png"
+                  />
+                </a>
+                <span> 
+                  <input (keydown)="preventNegatives($event, true)" type="number" class="hide-bars" [(ngModel)]="item.daysLeft">
+                </span>
+                <a (click)="decreaseDaysLeft(i)">
+                  <img
+                    alt=""
+                    src="../../../../../assets/images/icon/Group 360.png"
+                  />
+                </a>
+              </div>
             </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="trad-border"></div>
-
-      <div class="option-select">
-        <div class="left-stock-option">
-          <p>
-            Option-2 (Buy 500 Call)
-          </p>
-        </div>
-
-        <div class="right-stock-option">
-          <div class="firstqt">
-            <div class="form-group">
-              <input class="form-control" placeholder="2" type="text" />
-            </div>
-          </div>
-          <div class="first-qt">
-            <div class="stock-price-box">
-              <a>
-                <img
-                  alt=""
-                  src="../../../../../assets/images/icon/Group 359.png"
-                />
-              </a>
-              <span> 10% </span>
-              <a>
-                <img
-                  alt=""
-                  src="../../../../../assets/images/icon/Group 360.png"
-                />
-              </a>
-            </div>
-          </div>
-          <div class="first-qt">
-            <div class="stock-price-box">
-              <a>
-                <img
-                  alt=""
-                  src="../../../../../assets/images/icon/Group 359.png"
-                />
-              </a>
-              <span> 10% </span>
-              <a>
-                <img
-                  alt=""
-                  src="../../../../../assets/images/icon/Group 360.png"
-                />
-              </a>
+            <div class="first-qt">
+              <div class="stock-price-box">
+                <a (click)="increaseImpliedValue(i)">
+                  <img
+                    alt=""
+                    src="../../../../../assets/images/icon/Group 359.png"
+                  />
+                </a>
+                <div class="stock-p"> 
+                  <input (keydown)="preventNegatives($event, true)" type="number" class="hide-bars" [(ngModel)]="item.impliedValue"><p>&#37;</p>
+  
+                </div>
+                <a (click)="decreaseImpliedValue(i)">
+                  <img
+                    alt=""
+                    src="../../../../../assets/images/icon/Group 360.png"
+                  />
+                </a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="trad-border"></div>
-
-      <div class="option-select">
-        <div class="left-stock-option">
-          <p>
-            Option-3 (Buy 380 Put)
-          </p>
-        </div>
-
-        <div class="right-stock-option">
-          <div class="firstqt">
-            <div class="form-group">
-              <input class="form-control" placeholder="2" type="text" />
-            </div>
-          </div>
-          <div class="first-qt">
-            <div class="stock-price-box">
-              <a>
-                <img
-                  alt=""
-                  src="../../../../../assets/images/icon/Group 359.png"
-                />
-              </a>
-              <span> 10% </span>
-              <a>
-                <img
-                  alt=""
-                  src="../../../../../assets/images/icon/Group 360.png"
-                />
-              </a>
-            </div>
-          </div>
-          <div class="first-qt">
-            <div class="stock-price-box">
-              <a>
-                <img
-                  alt=""
-                  src="../../../../../assets/images/icon/Group 359.png"
-                />
-              </a>
-              <span> 10% </span>
-              <a>
-                <img
-                  alt=""
-                  src="../../../../../assets/images/icon/Group 360.png"
-                />
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="trad-border"></div>
-
-      <div class="option-select">
-        <div class="left-stock-option">
-          <p>
-            Option-4 (Sell 420 Put)
-          </p>
-        </div>
-
-        <div class="right-stock-option">
-          <div class="firstqt">
-            <div class="form-group">
-              <input class="form-control" placeholder="2" type="text" />
-            </div>
-          </div>
-          <div class="first-qt">
-            <div class="stock-price-box">
-              <a>
-                <img
-                  alt=""
-                  src="../../../../../assets/images/icon/Group 359.png"
-                />
-              </a>
-              <span> 10% </span>
-              <a>
-                <img
-                  alt=""
-                  src="../../../../../assets/images/icon/Group 360.png"
-                />
-              </a>
-            </div>
-          </div>
-          <div class="first-qt">
-            <div class="stock-price-box">
-              <a>
-                <img
-                  alt=""
-                  src="../../../../../assets/images/icon/Group 359.png"
-                />
-              </a>
-              <span> 10% </span>
-              <a>
-                <img
-                  alt=""
-                  src="../../../../../assets/images/icon/Group 360.png"
-                />
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
+        <div class="trad-border" *ngIf="i != stockOptions.length"></div>
+      </ng-container>
+      
+      <br>
       <a class="btn btn-add" (click)="next()"> ANALYZE</a>
 
       <div class="trade-btn-p">

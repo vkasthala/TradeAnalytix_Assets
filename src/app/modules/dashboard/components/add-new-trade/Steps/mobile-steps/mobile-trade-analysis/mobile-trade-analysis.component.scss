@@ -1,1 +1,18 @@
 @import '../styles/mobile-steps.scss';
+
+.trade-table{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
+    padding: 0px;
+    white-space: pre-line;
+    // margin: 0 auto;
+}
+
+.trade-table .table{
+    border: none !important;
+    width:  14.285714%;
+    min-width:  14.285714%;
+    // margin: 0 auto;
+}

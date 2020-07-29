@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HomeComponent } from './components/home/home.component';
@@ -27,6 +26,12 @@ import { MobileTradeAnalysisComponent } from './components/add-new-trade/Steps/m
 import { CloseTradeComponent } from './components/close-trade/close-trade.component';
 import { ExitRulesComponent } from './components/exit-rules/exit-rules.component';
 import { UpdateStrategyPopupComponent } from './modalAsComponents/update-strategy-popup/update-strategy-popup.component';
+import { ManagerulesComponent } from './components/managerules/managerules.component';
+import { UpdatePriceRangeComponent } from './modalAsComponents/update-price-range/update-price-range.component';
+import { SingleInputModalComponent } from './modalAsComponents/single-input-modal/single-input-modal.component';
+import { ManageRulePopupComponent } from './modalAsComponents/manage-rule-popup/manage-rule-popup.component';
+import { AddnewtradeplanComponent } from './components/addnewtradeplan/addnewtradeplan.component';
+import { TradePlansComponent } from './components/trade-plans/trade-plans.component';
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -51,7 +56,13 @@ import { UpdateStrategyPopupComponent } from './modalAsComponents/update-strateg
     MobileTradeAnalysisComponent,
     CloseTradeComponent,
     ExitRulesComponent,
-    UpdateStrategyPopupComponent
+    UpdateStrategyPopupComponent,
+    ManagerulesComponent,
+    UpdatePriceRangeComponent,
+    SingleInputModalComponent,
+    ManageRulePopupComponent,
+    AddnewtradeplanComponent,
+    TradePlansComponent
   ],
   imports: [
     CommonModule,
@@ -62,7 +73,10 @@ import { UpdateStrategyPopupComponent } from './modalAsComponents/update-strateg
   ],
   entryComponents: [
     AddTradeConfirmationPopupComponent,
-    UpdateStrategyPopupComponent
+    UpdateStrategyPopupComponent,
+    UpdatePriceRangeComponent,
+    SingleInputModalComponent,
+    ManageRulePopupComponent
   ]
 })
 export class DashboardModule { }

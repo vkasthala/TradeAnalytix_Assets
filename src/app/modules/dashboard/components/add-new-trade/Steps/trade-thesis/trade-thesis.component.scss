@@ -12,6 +12,26 @@
 
   .trade-thesis-inner {
     padding: 0px 20px;
+    border: 1px solid #ddd;
+    position: relative;
+    &::after{
+      content: '';
+      position: absolute;
+      left: 48%;
+      top: 0%;
+      height: 100%;
+      width: 1px;
+      background-color: #ddd;
+      @media #{$small} {
+        display: none;
+      }
+    }
+    @media #{$small} {
+      padding: 0px;
+    }
+    @media #{$medium} {
+      padding: 0px !important;
+    }
     @media #{$extra-small} {
       padding: 0px;
     }
@@ -24,31 +44,42 @@
 
 .trade-thesis-list {
   margin: 30px 0px;
-
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: row;
+  width: 100%;
+  padding-left: 15px;
+  @media #{$small} {
+    flex-direction: column;
+  }
   .thesis-list-inner {
     position: relative;
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
-    margin-top: 20px;
-    margin-bottom: 40px;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-direction: column;
+    // padding-bottom: 10px;
+    
+ 
+    @media #{$small} {
+      flex-direction: column;
+      align-items: flex-start;
+    }
 
-    &:not(:last-child)::after {
-      content: "";
-      position: absolute;
-      left: 30px;
-      bottom: -20px;
-      width: 99%;
-      height: 2px;
-      background: #7070704f;
-      opacity: 0.5;
+    @media #{$medium} {
+     min-height: 120px;
     }
     .list-inner-left {
-      width: 50%;
+      width: 100%;
       position: relative;
       display: flex;
       align-items: center;
-
+      margin-bottom: 15px;
+      @media #{$small} {
+        width: 100%;
+      }
       span {
         margin-right: 20px;
 
@@ -64,9 +95,13 @@
     .list-inner-right {
       display: flex;
       align-items: baseline;
-      width: 48%;
+      width: 100%;
+      // padding-left: 27px;
       @media #{$extra-small} {
         width: 50%;
+      }
+      @media #{$small} {
+        width: 100%;
       }
 
       .add-new {
@@ -75,8 +110,20 @@
         cursor: pointer;
         font-weight: 500;
         margin-left: 20px;
+        @media #{$medium} {
+          font-size: 14px;
+        }
       }
     }
+  }
+}
+
+.left-trade ,.right-trade{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  @media #{$small} {
+    width: 100%;
   }
 }
 
@@ -92,11 +139,11 @@
   }
 }
 
-.trade-date .form-control {
+.trade-date .form-control{
   height: 45px;
 }
 
-.trade-input .form-control {
+.trade-input .has-search {
   height: 45px;
   width: 150%;
   @media #{$extra-small} {
@@ -133,5 +180,47 @@
     font-size: 16px;
     font-weight: 500;
     cursor: pointer;
+  }
+}
+
+
+ textarea{
+   width: 500px;
+  height: 70px;
+  resize: none;
+  @media #{$small} {
+    width: 100%;
+  }
+  @media #{$medium} {
+    min-width: 370px;
+    width: 370px;
+  }
+}
+
+.trade-input {
+  // width: 70%;
+  @media #{$small} {
+    width: 70%;
+  }
+}
+
+.trade-new {
+  // display: flex;
+  align-items: flex-start;
+  width: 100%;
+  margin-bottom: 15px;
+
+}
+
+.trade-box-right {
+  width: 49%;
+  @media #{$small} {
+    width: 100%;
+  }
+}
+.trade-box-left {
+  width: 49%;
+  @media #{$small} {
+    width: 100%;
   }
 }

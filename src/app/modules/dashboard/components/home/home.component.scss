@@ -2,7 +2,7 @@
 
 
 .trade-dash-cards-web {
-  margin-top: 20px;
+  // margin-top: 20px;
   padding: 0px 20px;
 
   @media #{$extra-small} {
@@ -23,20 +23,30 @@
     -webkit-flex-flow: row wrap;
     position: relative;
     height: 100%;
-    // max-width: calc((100vw - 30px));
+    max-width: calc((100% - 13%));
   }
   .flex-item {
     min-height: 120px;
     // margin: 10px 0;
     margin-bottom: 10px;
     padding: 0px;
-    width: auto;
+    width: 13%;
     position: relative;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    min-width: calc((100% - 87%));  
+    @media #{$small} {
+      min-width: calc((100% - 69%));
+    }
+    @media #{$medium} {
+      min-width: calc((100% - 70%));
+    }
 
+    &:not(:last-child){
+      margin-right: 10px;
+    }
     .flex-inner {
       height: 100%;
       display: flex;
@@ -49,9 +59,10 @@
 
         span {
           display: block;
-          padding-bottom: 10px;
+          // padding-bottom: 10px;
           font-size: 20px;
           line-height: 20px;
+          height: 50px;
         }
       }
 
@@ -68,18 +79,14 @@
   }
 }
 .card-first {
-  background-color: $cardone;
+  @include gradient-background-1();
 }
 .card-second {
-  background-color: $cardtwo;
+  @include gradient-background-2();
 }
-.card-fourth {
-  background-color: $cardthree;
+.card-three {
+  @include gradient-background-3();
 }
-.card-five {
-  background-color: $cardfour;
-}
-
 
 
 // card-mobile
@@ -90,6 +97,7 @@
 
   @media #{$extra-small} {
     display: flex;
+    flex-direction: column;
     padding: 0px;
   }
 
@@ -140,9 +148,9 @@
 
         span {
           display: block;
-          padding-bottom: 10px;
-          font-size: 18px;
-          line-height: 17px;
+          padding-bottom: 7px;
+          font-size: 20px;
+          line-height: 27px;
         }
         h4{
           font-size: 20px;
@@ -162,24 +170,22 @@
   }
 }
 .card-first {
-  background-color: $cardone;
+  @include gradient-background-1();
 }
 .card-second {
-  background-color: $cardtwo;
+  @include gradient-background-2();
 }
-.card-fourth {
-  background-color: $cardthree;
+.card-three {
+  @include gradient-background-3();
 }
-.card-five {
-  background-color: $cardfour;
-}
+
 
 
 
 
 
 .trade-dash-con{
-    margin: 30px 0px;
+    margin: 30px 0px 0px 0px;
     padding: 0px 20px;
     @media #{$extra-small} {
       margin-bottom: 0px;
@@ -189,10 +195,14 @@
         margin-bottom: 20px;
     }
 }
+.trade-strategies-section{
+  padding: 0px 20px;
+}
+
 
 .trade-strategies-section{
-  background-color: white;
-  height: 400px;
+  // background-color: white;
+  // height: 400px;
   @media #{$extra-small} {
     display: none;
   }
@@ -209,8 +219,8 @@
       tr{
 
         th{
-          padding: 14px 14px;
-          font-size: 14px;
+          padding: 10px 14px;
+          font-size: 13px;
           font-weight: 500;
           text-align: center;
           vertical-align: middle;
@@ -234,10 +244,10 @@
     tbody{
       tr{
         td{
-          padding: 14px 14px;
+          padding: 0px 14px;
           text-align: center;
           vertical-align: middle;
-          font-size: 14px;
+          font-size: 12px;
           color: #2A2A2A;
           @media #{$medium} {
             padding: 8px 0px;
@@ -250,6 +260,10 @@
           @media #{$extra-small} {
             padding: 8px 0px;
             font-size: 12px;
+          }
+
+          p{
+            text-align: justify;
           }
         }
 
@@ -389,4 +403,73 @@
 
 .trade-stategies-heading{
   color: $primary;
+  font-size: 22px;
+}
+.close-dash {
+  width: 20%;
+  height: 3px;
+  background-color: #848484;
+  margin: 0 auto;
+}
+
+.trade-dash-cards {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  flex-flow: row wrap;
+  /* width: calc(100% - 0px); */
+}
+
+.trade-plan{
+  display: flex;
+  justify-content: flex-end;
+  .add-btn{
+    margin-right: 10px;
+    cursor: pointer;
+  }
+
+  .view-btn{
+    p{
+      color: $primary;
+      cursor: pointer;
+    }
+  }
+}
+
+.market {
+  width: 40%;
+}
+.currnt {
+  width: 10%;
+}
+.date {
+  width: 5%;
+}
+.plan {
+  width: 20%;
+}
+.per {
+  width: 8%;
+}
+
+.lesson {
+  width: 15%;
+}
+
+.trad-border{
+  border: 1px solid #acacac;
+  opacity: 0.3;
+}
+
+.per-heading{
+  margin-bottom: 15px;
+  h5{
+    color: $primary;
+    font-size: 24px;
+  }
+}
+
+.trade-performance {
+  margin: 14px 0px;
 }

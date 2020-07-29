@@ -11,6 +11,30 @@
 
   .trade-thesis-inner {
     padding: 0px 20px;
+    border: 1px solid #ddd;
+    position: relative;
+    &::after{
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0%;
+      height: 100%;
+      width: 1px;
+      background-color: #ddd;
+      @media #{$small} {
+        display: none;
+      }
+    }
+    @media #{$small} {
+      padding: 0px;
+    }
+    @media #{$medium} {
+      padding: 0px !important;
+    }
+    @media #{$extra-small} {
+      padding: 0px;
+    }
+  
   }
 }
 
@@ -20,36 +44,48 @@
 
 .trade-thesis-list {
   margin: 30px 0px;
-
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: row;
+  width: 100%;
+  padding-left: 15px;
+  @media #{$small} {
+    flex-direction: column;
+  }
   .thesis-list-inner {
     position: relative;
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
-    margin-top: 20px;
-    margin-bottom: 40px;
-
-    &:not(:last-child)::after {
-      content: "";
-      position: absolute;
-      left: 30px;
-      bottom: -20px;
-      width: 99%;
-      height: 2px;
-      background: #7070704f;
-      opacity: 0.5;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-direction: column;
+    @media #{$small} {
+      flex-direction: column;
+      align-items: flex-start;
     }
+
+    @media #{$medium} {
+     min-height: 120px;
+    }
+
     .list-inner-left {
-      width: 45%;
+      width: 100%;
       position: relative;
       display: flex;
       align-items: center;
-
+      margin-bottom: 15px;
+      @media #{$small} {
+        width: 100%;
+      }
       span {
         margin-right: 20px;
 
         h6 {
           font-weight: 400;
+          @media #{$small} {
+            font-size: 15px;
+          }
         }
       }
     }
@@ -57,7 +93,14 @@
     .list-inner-right {
       display: flex;
       align-items: flex-start;
-      width: 54%;
+      width: 100%;
+      // padding-left: 27px;
+      @media #{$extra-small} {
+        width: 50%;
+      }
+      @media #{$small} {
+        width: 100%;
+      }
 
       .add-new {
         color: $primary;
@@ -65,6 +108,9 @@
         cursor: pointer;
         font-weight: 500;
         margin-left: 14px;
+        @media #{$medium} {
+          font-size: 14px;
+        }
       }
     }
   }
@@ -72,7 +118,7 @@
 
 .Trade-type .form-control {
   height: 45px;
-  width: 240px;
+  width: 190px;
   font-size: 14px;
   @media #{$small} {
     width: 100%;
@@ -125,7 +171,7 @@
 // Toggle Customize 
 .switch{
     position: relative;
-    width: 50%;
+    width: 42%;
   }
   .switch label
   {
@@ -144,11 +190,11 @@
   }
   .switch label:after{
     content: "";
-    width: 25px;
-    height: 25px;
+    width: 26px;
+    height: 26px;
     border-radius: 50px;
     position: absolute;
-    top: 3px;
+    top: 2px;
     left: 1px;
     background-color: white;
     transition: all .3s;
@@ -157,31 +203,32 @@
     left: 33px;
     }
   .switch input[type="checkbox"]:checked + label{
-   background-color:#2BBC48;
+   background-color:$primary;
     }
   .switch input[type="checkbox"]:not(:checked) + label{
-   background-color:red;
+   background-color:#ddd;
     }
 .switch-no{
-    color:red;
+    color:#ddd;
 }
 .switch-yes{
-    color:#2BBC48;
+    color:$primary;
 }
 
 
     .trade-check{
         display: flex;
+        justify-content: center;
         border: 1px solid #ddd;
-        width: 30%;
+        width: 40%;
         padding: 12px;
         border-radius: 6px;
         @media #{$small} {
-          width: 50%;
+          width: 40%;
         }
 
         span{
-            width: 25%;
+            width: 20%;
             font-size:16px;
             font-weight: 500;
         }
@@ -194,4 +241,42 @@
 
     .ad-mb{
         margin-bottom: 10px;
+    }
+
+    .left-trade ,.right-trade{
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      @media #{$small} {
+        width: 100%;
+      }
+    }
+    
+
+    .trade-input {
+      // width: 70%;
+      @media #{$small} {
+        width: 70%;
+      }
+    }
+
+    .trade-new {
+      // display: flex;
+      align-items: flex-start;
+      width: 100%;
+      margin-bottom: 15px;
+     
+    }
+
+    .trade-box-right {
+      width: 49%;
+      @media #{$small} {
+        width: 100%;
+      }
+    }
+    .trade-box-left {
+      width: 49%;
+      @media #{$small} {
+        width: 100%;
+      }
     }

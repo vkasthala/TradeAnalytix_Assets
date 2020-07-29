@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-mobile-trade-analysis',
@@ -9,6 +9,9 @@ export class MobileTradeAnalysisComponent implements OnInit {
 
   @Output('nextStep') nextStep = new EventEmitter();
   @Output('prevStep') prevStep = new EventEmitter();
+
+  @Input('stockOptions') stockOptions:any[];
+  @Input('stockAdded') stockAdded: boolean;
   constructor() { }
 
   ngOnInit() {

@@ -4,7 +4,7 @@
         <div class="trade-thesis-sec">
             <div class="trade-thesis-heading">
                 <h4>
-                    Entry Rules
+                    Exit Rules
                 </h4>
             </div>
         
@@ -49,7 +49,7 @@
                             <div class="trade-check-s">
                                 <span class="switch-no"> NOT ALIGNED</span>
                                 <div class="switch">
-                                    <input type="checkbox" id="checkbox-2"/>
+                                    <input type="checkbox" id="checkbox-2" [(ngModel)]="checkbox2"/>
                                     <label for="checkbox-2"></label>
                                   </div>
         
@@ -58,8 +58,8 @@
                             </div>
                             <div class="trade-input">
         
-                                <div  class="form-group has-search">
-                                    <input class="form-control" placeholder="Provide reason" type="text">
+                                <div  class="form-group has-search" *ngIf="!checkbox2">
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                 </div>
                             </div>
         
@@ -103,7 +103,7 @@
                             <div class="trade-check-s">
                                 <span class="switch-no"> NOT ALIGNED</span>
                                 <div class="switch">
-                                    <input type="checkbox" id="checkbox-4"/>
+                                    <input type="checkbox" id="checkbox-4" [(ngModel)]="checkbox4"/>
                                     <label for="checkbox-4"></label>
                                   </div>
         
@@ -112,8 +112,8 @@
                             </div>
                             <div class="trade-input">
         
-                                <div  class="form-group has-search">
-                                    <input class="form-control" placeholder="Provide reason" type="text">
+                                <div  class="form-group has-search" *ngIf="!checkbox4">
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                 </div>
                             </div>
                     </div>
@@ -159,7 +159,7 @@
                             <div class="trade-check-s">
                                 <span class="switch-no"> NOT ALIGNED</span>
                                 <div class="switch">
-                                    <input type="checkbox" id="checkbox-6"/>
+                                    <input type="checkbox" id="checkbox-6" [(ngModel)]="checkbox6"/>
                                     <label for="checkbox-6"></label>
                                   </div>
         
@@ -169,8 +169,8 @@
         
                             <div class="trade-input">
         
-                                <div  class="form-group has-search">
-                                    <input class="form-control" placeholder="Provide reason" type="text">
+                                <div  class="form-group has-search" *ngIf="!checkbox6">
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                 </div>
                             </div>
                         </div>

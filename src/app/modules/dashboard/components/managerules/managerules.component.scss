@@ -1,0 +1,291 @@
+@import "../../../../../assets/styles/variable.scss";
+
+.trade-strategies-table {
+  padding: 10px 20px;
+  .card-body {
+    padding: 0px;
+    @media #{$small} {
+      overflow: hidden;
+    }
+  }
+  .table {
+    margin-bottom: 0px;
+    @media #{$small} {
+      // overflow-x: scroll;
+      // display: block;
+    }
+    thead {
+      background-color: $apptabel;
+      color: $white;
+      tr {
+        th {
+          padding: 14px 14px;
+          font-size: 14px;
+          font-weight: 500;
+          text-align: left;
+          vertical-align: middle;
+          border-bottom: 1px solid #dee2e6;
+
+          @media #{$medium} {
+            padding: 8px 0px;
+            font-size: 12px;
+          }
+          @media #{$small} {
+            &:not(:first-child) {
+              padding: 8px 10px;
+              font-size: 12px;
+            }
+          }
+          @media #{$extra-small} {
+            padding: 8px 0px;
+            font-size: 12px;
+          }
+        }
+      }
+    }
+    tbody {
+      tr {
+        td {
+          padding: 14px 14px;
+          text-align: left;
+          vertical-align: middle;
+          font-size: 14px;
+          color: #2a2a2a;
+
+          @media #{$medium} {
+            padding: 8px 0px;
+            font-size: 12px;
+          }
+          @media #{$small} {
+            &:not(:first-child) {
+              padding: 8px 10px;
+              font-size: 12px;
+            }
+          }
+          @media #{$extra-small} {
+            padding: 8px 0px;
+            font-size: 12px;
+          }
+        }
+
+        .trade-check {
+          .form-group {
+            display: block;
+            margin-bottom: 0px;
+          }
+
+          .form-group input {
+            padding: 0;
+            height: initial;
+            width: initial;
+            margin-bottom: 0;
+            display: none;
+            cursor: pointer;
+          }
+
+          .form-group label {
+            position: relative;
+            cursor: pointer;
+            margin-bottom: 0px;
+          }
+
+          .form-group label:before {
+            content: "";
+            -webkit-appearance: none;
+            background-color: transparent;
+            border: 2px solid $heading-1;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05),
+              inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
+            padding: 8px;
+            display: inline-block;
+            position: relative;
+            vertical-align: middle;
+            cursor: pointer;
+            margin-right: 5px;
+          }
+
+          .form-group input:checked + label:after {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 5px;
+            left: 7px;
+            width: 6px;
+            height: 12px;
+            border: solid $heading-1;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+            @media #{$small} {
+              top: 3px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.table tbody tr td:first-child {
+  padding-right: 0px !important;
+}
+.table tbody tr th:first-child {
+  padding-right: 0px !important;
+}
+.table-striped tbody tr:nth-of-type(even) {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: transparent !important;
+}
+
+.trade-st-box {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  padding: 15px 20px;
+  @media #{$extra-small} {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  @media #{$small} {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+}
+.st-slect-sections {
+  width: 30%;
+  @media #{$extra-small} {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  @media #{$small} {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  @media #{$medium} {
+    width: 40%;
+  }
+}
+
+.st-slect-section {
+  @media #{$small} {
+    display: flex;
+  }
+  @media #{$extra-small} {
+    display: flex;
+  }
+}
+
+.right-box {
+  display: flex;
+  justify-content: flex-start;
+  width: 40%;
+  align-items: center;
+  @media #{$extra-small} {
+    width: 100%;
+  }
+  @media #{$small} {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  @media #{$medium} {
+    width: 50%;
+  }
+}
+
+.select-btn {
+  @media #{$medium} {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  button.btn.btn-apply {
+    @media #{$medium} {
+      padding: 0px 4px;
+      font-size: 12px;
+    }
+  }
+}
+.trade-form {
+  position: relative;
+  width: 80%;
+}
+
+img.form-icon {
+  position: absolute;
+  right: 11px;
+  top: 9px;
+  width: 19px;
+}
+
+.form-icon-down {
+  position: absolute;
+  right: 11px;
+  top: 15px;
+  width: 15px;
+}
+
+.form-control {
+  border: 1px solid #707070;
+}
+
+.trade-sel {
+  width: 200px;
+  position: relative;
+  margin-right: 30px;
+
+  select {
+    cursor: pointer;
+    -webkit-appearance: none !important;
+  }
+}
+
+.trade-form .form-control {
+  font-size: 14px;
+  color: #4a4a4a;
+}
+.trade-form .form-control ::placeholder {
+  color: #4a4a4a;
+}
+
+.trade-date .form-control {
+  font-size: 14px;
+  color: #4a4a4a;
+}
+.trade-sel .form-control {
+  font-size: 14px;
+  color: #4a4a4a;
+}
+
+.btn-apply {
+  background-color: #0183c0;
+  color: $white;
+  font-size: 14px;
+}
+
+.add-new-trade-btn {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 30px;
+  align-items: center;
+}
+
+a.add-new {
+  color: #0183c0;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.tabel-action {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  .right-delete {
+    margin-left: 20px;
+  }
+}

@@ -61,7 +61,7 @@ span.trade-rr {
   background-color: #f2f2f2;
   // border: 1px solid #cbcbcb;
   padding: 12px;
-  margin: 10px 0px 40px 0px;
+  margin: 10px 0px 20px 0px;
 }
 
 .trade-rate-sec {
@@ -158,8 +158,6 @@ span.trade-rr {
 
 .order-btn {
   margin-top: 20px;
-
-  margin-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -209,9 +207,9 @@ a.btn.btn-skip {
 }
 
 .trade-sec h6 {
-  // font-size: 14px;
-  // font-weight: 500;
+  font-size: 16px;
   color: $primary;
+  margin-bottom: 10px !important;
 }
 
 .trade-stoack-main {
@@ -236,7 +234,7 @@ a.btn.btn-skip {
   justify-content: flex-start;
   align-items: flex-start;
   width: 100%;
-  margin: 40px 0px;
+  margin: 40px 0px 20px 0px;
   // flex-wrap: wrap;
   @media #{$extra-small} {
     width: 100%;
@@ -257,7 +255,7 @@ a.btn.btn-skip {
     // min-width: 260px;
     background: #f2f2f2;
     height: auto;
-    min-height: 385px;
+    min-height: 390px;
     display: flex;
     flex-direction: column;
     padding: 14px;
@@ -272,11 +270,16 @@ a.btn.btn-skip {
     }
     @media #{$small} {
       margin-bottom: 10px;
-      width: 32%;
-      min-height: 400px;
+      width: 48%;
+      min-height: 420px;
+      margin-left: 8px;
     }
     @media #{$medium} {
       margin-bottom: 10px;
+      margin-right: 10px;
+      margin-left: 0px;
+      width: 22%;
+      min-height: 420px;
     }
     .top-heading {
       display: flex;
@@ -285,7 +288,7 @@ a.btn.btn-skip {
       align-items: baseline;
       margin-bottom: 10px;
       img {
-        width: 10px;
+        width: 14px;
         cursor: pointer;
       }
     }
@@ -296,13 +299,13 @@ a.btn.btn-skip {
       align-items: baseline;
       margin-bottom: 10px;
       .card-left {
-        width: 50%;
+        width: 45%;
         span {
-          font-size: 12px;
+          font-size: 13px;
         }
       }
       .card-right {
-        width: 50%;
+        width: 55%;
         h6 {
           font-size: 12px;
 
@@ -311,14 +314,15 @@ a.btn.btn-skip {
           }
         }
         .cards-input {
-          font-size: 12px !important;
+          font-size: 13px !important;
           height: 40px;
+          padding: 0px;
         }
 
         .select-input {
-          padding: 0p 2px;
+          padding: 0px 8px;
           height: 40px;
-          font-size: 14px;
+          font-size: 13px;
         }
       }
     }
@@ -351,7 +355,7 @@ a.btn.btn-skip {
 }
 
 .trade-risk h6 {
-  // font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
   color: #016db0;
 
@@ -366,8 +370,11 @@ a.btn.btn-skip {
 
 .risk-stock-seciton {
   display: flex;
-  width: 90%;
+  width: 97%;
   align-items: center;
+  @media #{$medium} {
+    width: 100%;
+  }
 }
 
 .stock-inc {
@@ -378,6 +385,7 @@ a.btn.btn-skip {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
   // margin: 0 auto;
   a {
     cursor: pointer;
@@ -395,7 +403,7 @@ a.btn.btn-skip {
 .stock-name {
   width: 50%;
   span {
-    font-size: 12px;
+    font-size: 13px;
   }
 }
 
@@ -406,8 +414,17 @@ a.btn.btn-skip {
   width: 20%;
   @media #{$small} {
     margin-bottom: 20px;
-    // border-right: 1px solid #ddd;
-    width: 50%;
+    width: 48%;
+    border: 1px solid #ddd;
+    padding: 12px;
+    margin-right: 10px;
+  }
+  @media #{$medium} {
+    margin-bottom: 20px;
+    width: 23%;
+    border: 1px solid #ddd;
+    padding: 8px;
+    margin-right: 10px;
   }
 }
 .risk-af {
@@ -421,7 +438,7 @@ a.btn.btn-skip {
 .risk-af::after {
   content: "";
   position: absolute;
-  right: 10px;
+  right: 0px;
   top: 0px;
   width: 2px;
   height: 100%;
@@ -435,9 +452,18 @@ a.btn.btn-skip {
   @media #{$small} {
     display: none;
   }
+  @media #{$medium} {
+    display: none;
+  }
 }
 .card-m{
   margin-left: 10px;
+  @media #{$small} {
+    margin-left: 0px;
+  }
+  @media #{$medium} {
+    margin-left: 0px;
+  }
 }
 
 
@@ -466,6 +492,9 @@ a.btn.btn-skip {
   justify-content: flex-start;
   width: 100%;
   @media #{$small} {
+    flex-wrap: wrap;
+  }
+  @media #{$medium} {
     flex-wrap: wrap;
   }
 }
@@ -567,7 +596,7 @@ a.btn.btn-skip {
   height: auto;
   min-height: 340px;
   border-right: 1px solid;
-  padding: 0px 18px;
+  padding: 0px 10px;
   @media #{$small} {
     width: 50%;
   }
@@ -586,7 +615,7 @@ a.btn.btn-skip {
       th {
         background: #707070;
         color: white;
-        font-size: 14px;
+        font-size: 13px;
         font-weight: normal;
         @media #{$small} {
           font-size: 12px;
@@ -695,4 +724,23 @@ a.btn.btn-skip {
       // margin-bottom: 10px;
     }
   }
+}
+
+.stock-p {
+
+  display: flex;
+  position: relative;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  p{
+    // margin-left: -12px;
+    position: absolute;
+    right: 5px;
+  }
+
+  .hide-bars {
+    width: 80%;
+    text-align: center;
+}
 }

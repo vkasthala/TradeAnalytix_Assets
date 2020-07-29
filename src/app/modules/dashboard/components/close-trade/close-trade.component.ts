@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { MatStepper } from '@angular/material';
+import { MatStepper, MatDialog } from '@angular/material';
+import { SingleInputModalComponent } from '../../modalAsComponents/single-input-modal/single-input-modal.component';
 
 @Component({
   selector: 'app-close-trade',
@@ -12,7 +13,7 @@ export class CloseTradeComponent implements OnInit {
   panelOpenStateTwo = false;
   step = 0;
   @ViewChild('tradeMobileStepper', { static: false }) private tradeMobileStepper: MatStepper;
-  constructor(private router: Router) { }
+  constructor(private router: Router, private _dialog: MatDialog) { }
 
   ngOnInit() {
   }
@@ -43,5 +44,17 @@ export class CloseTradeComponent implements OnInit {
 
   navigateToExitThesis() {
     this.tradeMobileStepper.previous();
+  }
+
+  addValue(value) {
+    const dialogRef = this._dialog.open(SingleInputModalComponent, {
+      disableClose: true,
+      width: 'auto',
+      data : {title: value}
+    });
+
+    dialogRef.afterClosed().subscribe((res) => {
+      
+    });
   }
 }

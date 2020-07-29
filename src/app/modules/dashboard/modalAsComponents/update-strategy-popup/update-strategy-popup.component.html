@@ -25,127 +25,48 @@
                     <span>Implied Volatility (%)</span>
                 </div>
             </div>
-
+            <ng-container *ngFor="let item of strategiesData; let index=index">
+            
             <div class="main-inner-sec">
 
                 <div class="left-sec">
-                    <p>Sell 355 Jun-19-2020 Call</p>
+                    <p>{{item.title}}</p>
                 </div>
 
                 <div class="right-sec">
                     <div class="sec-inc">
                         <div class="stock-inc">
-                            <a>
+                            <a (click)="decreaseContracts(index)" (mousedown)="mousedown('decreaseContracts', index)" (mouseup)="mouseup()" (mouseleave)="mouseup()">
                                 <img alt="" src="../../../../../assets/images/icon/Group 359.png"></a>
                             <span>
-                                10% </span>
-                            <a>
+                                <input style="width: 35px;" type="number" class="hide-bars"  [(ngModel)]="item.contracts">
+
+                            </span>
+                            <a (click)="increaseContracts(index)" (mousedown)="mousedown('increaseContracts', index)" (mouseup)="mouseup()" (mouseleave)="mouseup()">
                                 <img alt="" src="../../../../../assets/images/icon/Group 360.png">
                             </a>
                         </div>
                     </div>
                     <div class="sec-inc sec-m">
                         <div class="stock-inc">
-                            <a>
+                            <a (click)="decreaseDaysLeft(index)" (mousedown)="mousedown('decreaseDaysLeft', index)" (mouseup)="mouseup()" (mouseleave)="mouseup()">
                                 <img alt="" src="../../../../../assets/images/icon/Group 359.png"></a>
                             <span>
-                                10% </span>
-                            <a>
+                                <input style="width: 35px;" (keydown)="preventNegatives($event, true)" type="number" class="hide-bars" step="0.1" min="0" max="730" minlength="0" maxlength="730" [(ngModel)]="item.daysLeft"> 
+                            </span>
+                            <a (click)="increaseDaysLeft(index)" (mousedown)="mousedown('increaseDaysLeft', index)" (mouseup)="mouseup()" (mouseleave)="mouseup()">
                                 <img alt="" src="../../../../../assets/images/icon/Group 360.png">
                             </a>
                         </div>
                     </div>
                     <div class="sec-inc">
                         <div class="stock-inc">
-                            <a>
+                            <a (click)="decreaseImpliedValue(index)" (mousedown)="mousedown('decreaseImpliedValue', index)" (mouseup)="mouseup()" (mouseleave)="mouseup()">
                                 <img alt="" src="../../../../../assets/images/icon/Group 359.png"></a>
-                            <span>
-                                10% </span>
-                            <a>
-                                <img alt="" src="../../../../../assets/images/icon/Group 360.png">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="main-inner-sec">
-                
-                <div class="left-sec">
-                    <p>Sell 355 Jun-19-2020 Call</p>
-                </div>
-
-                <div class="right-sec">
-                    <div class="sec-inc">
-                        <div class="stock-inc">
-                            <a>
-                                <img alt="" src="../../../../../assets/images/icon/Group 359.png"></a>
-                            <span>
-                                10% </span>
-                            <a>
-                                <img alt="" src="../../../../../assets/images/icon/Group 360.png">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="sec-inc sec-m">
-                        <div class="stock-inc">
-                            <a>
-                                <img alt="" src="../../../../../assets/images/icon/Group 359.png"></a>
-                            <span>
-                                10% </span>
-                            <a>
-                                <img alt="" src="../../../../../assets/images/icon/Group 360.png">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="sec-inc">
-                        <div class="stock-inc">
-                            <a>
-                                <img alt="" src="../../../../../assets/images/icon/Group 359.png"></a>
-                            <span>
-                                10% </span>
-                            <a>
-                                <img alt="" src="../../../../../assets/images/icon/Group 360.png">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="main-inner-sec">
-                
-                <div class="left-sec">
-                    <p>Sell 355 Jun-19-2020 Call</p>
-                </div>
-
-                <div class="right-sec">
-                    <div class="sec-inc">
-                        <div class="stock-inc">
-                            <a>
-                                <img alt="" src="../../../../../assets/images/icon/Group 359.png"></a>
-                            <span>
-                                10% </span>
-                            <a>
-                                <img alt="" src="../../../../../assets/images/icon/Group 360.png">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="sec-inc sec-m">
-                        <div class="stock-inc">
-                            <a>
-                                <img alt="" src="../../../../../assets/images/icon/Group 359.png"></a>
-                            <span>
-                                10% </span>
-                            <a>
-                                <img alt="" src="../../../../../assets/images/icon/Group 360.png">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="sec-inc">
-                        <div class="stock-inc">
-                            <a>
-                                <img alt="" src="../../../../../assets/images/icon/Group 359.png"></a>
-                            <span>
-                                10% </span>
-                            <a>
+                            <div class="stock-p">
+                                <input style="width: 35px;" type="number" class="hide-bars" min="1" max="500" minlength="1" maxlength="500" [(ngModel)]="item.impliedValue" (input)="enforceMaxLength($event, 1, 500)"><p>&#37;</p>     
+                            </div>
+                            <a (click)="increaseImpliedValue(index)" (mousedown)="mousedown('increaseImpliedValue', index)" (mouseup)="mouseup()" (mouseleave)="mouseup()">
                                 <img alt="" src="../../../../../assets/images/icon/Group 360.png">
                             </a>
                         </div>
@@ -153,7 +74,7 @@
                 </div>
             </div>
 
-
+        </ng-container>
             <div class="btn-up">
                 <a class="btn btn-add" (click)="closeModal()">UPDATE</a>
             </div>

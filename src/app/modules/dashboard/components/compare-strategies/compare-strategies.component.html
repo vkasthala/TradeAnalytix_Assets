@@ -6,11 +6,19 @@
                 <h6>
                     Select trade strategies on the same stock to compare their P&L
                 </h6>
+
+                <div class="comapre-trade-btn">
+                    <a class="btn btn-add" (click)="addStrategy()" *ngIf="strategies.length < 4">ADD STRATEGY</a>
+                </div>
+
             </div>
 
             <div class="compare-inner-sec">
                 <div class="compare-choose-trade-sec">
                     <div class="choose-trade" *ngFor="let item of strategies; let i=index">
+                        <div class="detele-icon" (click)="deleteStrategy(index)">
+                            <img src="../../../../../assets/images/Icon material-delete.png" alt="">
+                        </div>
                         <div class="choose-heading">
                             <h6>
                                 Choose Strategy
@@ -51,14 +59,12 @@
                     </div>
 
                 </div>
-                <div class="comapre-trade-btn">
-                    <a class="btn btn-add" (click)="addStrategy()" *ngIf="strategies.length < 4">ADD STRATEGY</a>
-                </div>
+                
 
 
 
             </div>
-            <div class="compare-btn" *ngIf="strategies.length > 0 && !compareStrategies">
+            <div class="compare-btn" *ngIf="strategies.length > 1 && !compareStrategies">
                 <a class="btn btn-add" (click)="compareStrategies = true">COMPARE</a>
             </div>
 
@@ -67,7 +73,7 @@
 
             <!-- tabs -->
             <div class="compare-outer" *ngIf="compareStrategies">
-                <div class="update-price-heading">
+                <div class="update-price-heading" (click)="updatePriceRange()">
                     <span>
                         Update Price Range
                     </span>

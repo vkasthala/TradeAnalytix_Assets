@@ -1,0 +1,142 @@
+@import '../../../../../assets/styles/variable.scss';
+// update-price-pop
+
+.update-price-pop {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    // background-color: rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .update-price-pop-inner {
+    width: auto;
+    min-width: 450px;
+    height: auto;
+    min-height: 160px;
+    display: flex;
+    flex-direction: column;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 20px;
+    box-shadow: 0px 15px 45px #7d7d7d;
+  }
+  
+  .pop-top-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .btn-save {
+    background-color: $appbtn-color;
+    color: #ffffff;
+    padding: 6px 50px;
+    margin: 0 auto 10px auto;
+    cursor: pointer;
+    text-transform: capitalize;
+  }
+  
+  .pop-top-heading {
+    .left-heading {
+      h6 {
+        color: $primary;
+      }
+    }
+  
+    .right-heading {
+      span {
+        font-size: 13px;
+        color: $primary;
+        cursor: pointer;
+      }
+    }
+  }
+  
+  .stock-inc {
+    position: relative;
+    border: 1px solid #707070;
+    padding: 4px 9px;
+    border-radius: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    a {
+      cursor: pointer;
+  
+      img {
+        width: 25px;
+        height: auto;
+      }
+    }
+    span {
+      margin: 0px 5px;
+    }
+  }
+  
+  
+  .update-price-con {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    // height: 100px;
+    margin: 10px 0px;
+  }
+  .price-update-sec {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    margin: 10px auto;
+  }
+  .left-price {
+    width: 30%;
+    text-align: center;
+  }
+  
+  .right-price-sec {
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+    /* margin: 0 auto; */
+    width: 60%;
+    // margin-left: 10px;
+  }
+  .sec-inc {
+    width: 50%;
+  }
+  
+  .price-sec{
+    margin-left: 10px;
+  }
+
+  .stock-p {
+
+    display: flex;
+    position: relative;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    p{
+      // margin-left: -12px;
+      position: absolute;
+      right: 6px;
+    }
+  
+    .hide-bars {
+      width: 80%;
+      text-align: center;
+      background-color: transparent;
+  }
+  }

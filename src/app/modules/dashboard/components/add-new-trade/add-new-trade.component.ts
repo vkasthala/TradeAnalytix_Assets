@@ -9,7 +9,9 @@ export class AddNewTradeComponent implements OnInit {
 
   @ViewChild('stepper', { static: false }) private tradeStepper: MatStepper;
   @ViewChild('tradeMobileStepper', { static: false }) private tradeMobileStepper: MatStepper;
-  activeStep:boolean
+  activeStep:boolean;
+  stockOptions:any[] = [];
+  stockAdded:boolean;
   constructor(private changeRef: ChangeDetectorRef) { }
 
   ngOnInit() {

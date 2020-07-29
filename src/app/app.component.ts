@@ -10,7 +10,7 @@ import { updateCurrentRoute } from './modules/utilities/actions/global-configs.a
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'TradeAnalytics';
+  title = 'Trade Analytix';
 
   constructor(
     private pwaService: PwaService,
@@ -22,7 +22,13 @@ export class AppComponent {
     }
     this.router.events.subscribe(res => { 
       if(res instanceof NavigationEnd) {
-          this.globalStore.dispatch(updateCurrentRoute({currentRoute: res.url.split('/').pop()}))
+          let currentRoute = '';
+          if(res.url.split('/').length > 3) {
+            currentRoute = res.url.split('/')[2];
+          }else {
+            currentRoute = res.url.split('/').pop()
+          }
+          this.globalStore.dispatch(updateCurrentRoute({currentRoute: currentRoute}))
       }
     })
   }

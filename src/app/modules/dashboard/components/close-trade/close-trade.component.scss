@@ -45,31 +45,56 @@
 }
 
 .trade-thesis-list {
-  margin: 0px 0px;
-
+  margin: 15px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
+  border: 1px solid #ddd;
+  padding: 19px 20px;
+  &::after{
+    content: '';
+    position: absolute;
+    left: 48%;
+    top: 0%;
+    height: 100%;
+    width: 1px;
+    background-color: #ddd;
+    @media #{$small} {
+      display: none;
+    }
+  }
+  @media #{$small} {
+    flex-direction: column;
+  }
   .thesis-list-inner {
+    width: 100%;
     position: relative;
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
-    margin-top: 20px;
-    margin-bottom: 40px;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-direction: column;
 
-    &:not(:last-child)::after {
-      content: "";
-      position: absolute;
-      left: 30px;
-      bottom: -20px;
-      width: 99%;
-      height: 2px;
-      background: #7070704f;
-      opacity: 0.5;
+    @media #{$small} {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    @media #{$medium} {
+     min-height: 120px;
     }
     .list-inner-left {
-      width: 40%;
+      width: 100%;
       position: relative;
       display: flex;
       align-items: center;
+      margin-bottom: 15px;
+      @media #{$small} {
+        width: 100%;
+      }
 
       span {
         margin-right: 20px;
@@ -86,7 +111,8 @@
     .list-inner-right {
       display: flex;
       align-items: center;
-      width: 59%;
+      width: 100%;
+      // padding-left: 27px;
       @media #{$extra-small} {
         width: 50%;
       }
@@ -103,7 +129,8 @@
     .list-inner-rights {
       display: flex;
       align-items: flex-start;
-      width: 59%;
+      width:100%;
+      padding-left: 27px;
       @media #{$extra-small} {
         width: 50%;
       }
@@ -121,7 +148,7 @@
 
 .Trade-type .form-control {
   height: 45px;
-  width: 240px;
+  width: 190px;
   font-size: 14px;
   @media #{$extra-small} {
     width: 100%;
@@ -135,20 +162,20 @@
   height: 45px;
 }
 
-.trade-input .form-control {
-  height: 45px;
-  width: 150%;
-  @media #{$extra-small} {
-    width: 100%;
-  }
-  @media #{$small} {
-    width: 100%;
-  }
-}
+// .trade-input .form-control {
+//   height: 45px;
+//   width: 150%;
+//   @media #{$extra-small} {
+//     width: 100%;
+//   }
+//   @media #{$small} {
+//     width: 100%;
+//   }
+// }
 
-.trade-inputt .form-control {
-  height: 45px;
-}
+// .trade-inputt .form-control {
+//   height: 45px;
+// }
 
 .mat-action-row {
   justify-content: space-between !important;
@@ -171,9 +198,11 @@
 .trade-net {
   display: flex;
   align-items: center;
-  width: 38%;
+  width: 42%;
+  justify-content: space-between;
   margin-left: 30px;
   span {
+    width: 32%;
     font-size: 15px;
   }
   .form-control {
@@ -216,14 +245,17 @@
 
 .trade-thesis-inner {
   margin-top: 15px;
+
 }
 .tranding-thesis {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  flex-direction: column;
   width: 100%;
   margin-bottom: 18px;
   .left-thesis {
-    width: 69%;
+    width: 100%;
+    margin-bottom: 10px;
     h6 {
       color: #565656 !important;
       font-size: 18px;
@@ -231,7 +263,7 @@
     }
   }
   .right-thesis {
-    width: 30%;
+    width: 100%;
   }
 }
 .trading-thesis-trade {
@@ -266,11 +298,11 @@
 }
 .switch label:after {
   content: "";
-  width: 25px;
-  height: 25px;
+  width: 26px;
+  height: 26px;
   border-radius: 50px;
   position: absolute;
-  top: 3px;
+  top: 2px;
   left: 1px;
   background-color: white;
   transition: all 0.3s;
@@ -279,16 +311,16 @@
   left: 33px;
 }
 .switch input[type="checkbox"]:checked + label {
-  background-color: #2BBC48;
+  background-color: $primary;
 }
 .switch input[type="checkbox"]:not(:checked) + label {
-  background-color: red;
+  background-color: #ddd;
 }
 .switch-no {
-  color: red;
+  color: #ddd;
 }
 .switch-yes {
-  color: green;
+  color: $primary;
 }
 
 
@@ -356,4 +388,65 @@
   text-transform: uppercase;
   margin-bottom: 15px;
   width: 100%;
+}
+
+.disabled-control:disabled {
+  background-color: white;
+}
+
+textarea{
+  width: 370px;
+ height: 70px;
+ resize: none;
+ @media #{$extra-small} {
+  width: 100%;
+}
+ @media #{$small} {
+  width: 100%;
+}
+ @media #{$medium} {
+  min-width: 370px;
+  width: 370px;
+}
+}
+
+.left-trade ,.right-trade{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  @media #{$small} {
+    width: 100%;
+  }
+}
+
+
+.trade-input {
+  // width: 70%;
+  @media #{$small} {
+    width: 70%;
+  }
+}
+
+.trade-new {
+  // display: flex;
+  align-items: flex-start;
+  width: 100%;
+  margin-bottom: 15px;
+  // &:not(:last-child){
+  //   border-bottom: 1px solid #ddd;
+  // }
+}
+
+
+.trade-box-right {
+  width: 49%;
+  @media #{$small} {
+    width: 100%;
+  }
+}
+.trade-box-left {
+  width: 49%;
+  @media #{$small} {
+    width: 100%;
+  }
 }

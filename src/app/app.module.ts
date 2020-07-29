@@ -15,6 +15,7 @@ import { localStorageSync } from 'ngrx-store-localstorage';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { reducers } from './modules/utilities/reducers';
 import { UtilitiesModule } from './modules/utilities/utilities/utilities.module';
+import { UtilService } from './services/util.service';
 
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
   return localStorageSync({ keys: [globalConfigFeatureKey], rehydrate: true })(reducer);
@@ -43,7 +44,7 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     StoreModule.forFeature(fromGlobalConfig.globalConfigFeatureKey, fromGlobalConfig.reducer),
   ],
-  providers: [PwaService],
+  providers: [PwaService, UtilService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,51 +1,145 @@
 // Linear Gradient Background-color
-@mixin gradient-background(){
-	background: rgb(2,63,143);
-	background: -moz-linear-gradient(90deg, rgba(2,63,143,1) 0%, rgba(1,144,202,1) 35%, rgba(1,144,202,1) 100%);
-	background: -webkit-linear-gradient(90deg, rgba(2,63,143,1) 0%, rgba(1,144,202,1) 35%, rgba(1,144,202,1) 100%);
-	background: -o-linear-gradient(90deg, rgba(2,63,143,1) 0%, rgba(1,144,202,1) 35%, rgba(1,144,202,1) 100%);
-	background: -ms-linear-gradient(90deg, rgba(2,63,143,1) 0%, rgba(1,144,202,1) 35%, rgba(1,144,202,1) 100%);
-	background: linear-gradient(90deg, rgba(2,63,143,1) 0%, rgba(1,144,202,1) 35%, rgba(1,144,202,1) 100%);
+@mixin gradient-background() {
+  background: rgb(2, 63, 143);
+  background: -moz-linear-gradient(
+    90deg,
+    rgba(1, 144, 202, 1) 0%,
+    rgba(1, 144, 202, 1) 35%,
+    rgba(1, 144, 202, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    90deg,
+    rgba(1, 144, 202, 1) 0%,
+    rgba(1, 144, 202, 1) 35%,
+    rgba(1, 144, 202, 1) 100%
+  );
+  background: -o-linear-gradient(
+    90deg,
+    rgba(1, 144, 202, 1) 0%,
+    rgba(1, 144, 202, 1) 35%,
+    rgba(1, 144, 202, 1) 100%
+  );
+  background: -ms-linear-gradient(
+    90deg,
+    rgba(1, 144, 202, 1) 0%,
+    rgba(1, 144, 202, 1) 35%,
+    rgba(1, 144, 202, 1) 100%
+  );
+  background: linear-gradient(
+    90deg,
+    rgba(1, 144, 202, 1) 0%,
+    rgba(1, 144, 202, 1) 35%,
+    rgba(1, 144, 202, 1) 100%
+  );
 }
-
 
 @mixin border-radius($radius) {
-    -webkit-border-radius: $radius;
-       -moz-border-radius: $radius;
-        -ms-border-radius: $radius;
-            border-radius: $radius;
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
 }
-
-
 
 // color- variable
 
-$heading-1:#4A4A4A;
-$white:#FFFFFF;
-$appfooter:#323434;
-$primary:#016DB0;
-$secondary:#02559F;
-$third:#565656;
-$cardone:#66D64F;
-$cardtwo:#F13F3F;
-$cardthree:#FF984A;
-$cardfour:#0992A7;
-$member-name:#0B2D50;
+$heading-1: #4a4a4a;
+$white: #ffffff;
+$appfooter: #323434;
+$primary: #016db0;
+$secondary: #02559f;
+$third: #565656;
+$cardone: #66d64f;
+$cardtwo: #f13f3f;
+$cardthree: #ff984a;
+$cardfour: #0992a7;
+$member-name: #0b2d50;
 
-$btn-background:#F2F2F2;
-$btn-border-color:#707070;
+$btn-background: #f2f2f2;
+$btn-border-color: #707070;
 
-$apptabel:#979797;
-$appbtn-color:#0183C0;
+$apptabel: #979797;
+$appbtn-color: #0183c0;
 
 // font family
 
- $font-primary: 'Segoe UI';
+$font-primary: "Segoe UI";
 
+// media Queries
 
+$extra-small: "screen and (min-width: 320px) and (max-width:599px)";
+$small: "screen and (min-width: 600px) and (max-width: 959px)";
+$medium: "screen and (min-width: 960px) and (max-width: 1279px)";
+$large: "screen and (min-width: 1280px) and (max-width: 1919px)";
+$extra-large: "screen and (min-width: 1920px) and (max-width: 5000px)";
 
- $extra-small: 'screen and (min-width: 320px) and (max-width:599px)';
-$small: 'screen and (min-width: 600px) and (max-width: 959px)';
-$medium: 'screen and (min-width: 960px) and (max-width: 1279px)';
-$large: 'screen and (min-width: 1280px) and (max-width: 1919px)';
-$extra-large: 'screen and (min-width: 1920px) and (max-width: 5000px)';
+// Cards Gradient color
+
+@mixin gradient-background-1() {
+  background: rgb(85, 170, 74);
+  background: -moz-linear-gradient(
+    183deg,
+    rgba(85, 170, 74, 1) 0%,
+    rgba(89, 166, 75, 1) 2%,
+    rgba(46, 84, 37, 1) 99%,
+    rgba(42, 85, 32, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    183deg,
+    rgba(85, 170, 74, 1) 0%,
+    rgba(89, 166, 75, 1) 2%,
+    rgba(46, 84, 37, 1) 99%,
+    rgba(42, 85, 32, 1) 100%
+  );
+  background: linear-gradient(
+    183deg,
+    rgba(85, 170, 74, 1) 0%,
+    rgba(89, 166, 75, 1) 2%,
+    rgba(46, 84, 37, 1) 99%,
+    rgba(42, 85, 32, 1) 100%
+  );
+}
+@mixin gradient-background-2() {
+  background: rgb(191, 42, 42);
+  background: -moz-linear-gradient(
+    183deg,
+    rgba(191, 42, 42, 1) 0%,
+    rgba(188, 46, 46, 1) 2%,
+    rgba(96, 23, 23, 1) 99%,
+    rgba(96, 21, 21, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    183deg,
+    rgba(191, 42, 42, 1) 0%,
+    rgba(188, 46, 46, 1) 2%,
+    rgba(96, 23, 23, 1) 99%,
+    rgba(96, 21, 21, 1) 100%
+  );
+  background: linear-gradient(
+    183deg,
+    rgba(191, 42, 42, 1) 0%,
+    rgba(188, 46, 46, 1) 2%,
+    rgba(96, 23, 23, 1) 99%,
+    rgba(96, 21, 21, 1) 100%
+  );
+}
+@mixin gradient-background-3() {
+  background: rgb(42, 42, 53);
+  background: -moz-linear-gradient(
+    183deg,
+    rgba(42, 42, 53, 1) 0%,
+    rgba(48, 50, 57, 1) 2%,
+    rgba(93, 96, 110, 1) 99%
+  );
+  background: -webkit-linear-gradient(
+    183deg,
+    rgba(42, 42, 53, 1) 0%,
+    rgba(48, 50, 57, 1) 2%,
+    rgba(93, 96, 110, 1) 99%
+  );
+  background: linear-gradient(
+    183deg,
+    rgba(42, 42, 53, 1) 0%,
+    rgba(48, 50, 57, 1) 2%,
+    rgba(93, 96, 110, 1) 99%
+  );
+}
