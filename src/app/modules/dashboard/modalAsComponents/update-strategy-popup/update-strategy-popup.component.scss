@@ -1,131 +1,156 @@
-@import '../../../../../assets/styles/variable.scss';
+@import "../../../../../assets/styles/variable.scss";
 
-.compare-popup{
-    position: fixed;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 99;
-    background-color: rgba(0,0,0,0.1);
-    width:100vw;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.compare-popup {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99;
+  // background-color: rgba(0,0,0,0.1);
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.compare-pop-inner {
+  background: #f9f9f9;
+  width: auto;
+  min-width: 650px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border: 1px solid #ddd;
+  box-shadow: 0px 15px 45px #7d7d7d;
+}
+
+.main-pop-inner {
+  border: 1px solid #ddd;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+}
+
+.main-inner-sec {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 15px;
+  .left-sec {
+    width: 36%;
   }
-  .compare-pop-inner {
-    background: #F9F9F9;
-    width: auto;
-    min-width: 650px;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    border: 1px solid #ddd;
-  }
-  
-  .main-pop-inner{
-    border: 1px solid #ddd;
-    padding: 12px;
-    display: flex;
-    flex-direction: column;
-    background-color: #FFFFFF;
-  }
-  
-  .main-inner-sec {
-    display: flex;
-    align-items: center;
-    width: 100%;  
-    margin-bottom: 15px;
-      .left-sec {
-        width: 36%;
-    }
-  
-    .right-sec{
-      display: flex;
-      width: 66%;
-  }
-  }
-  
+
   .right-sec {
     display: flex;
+    width: 66%;
   }
-  
-  .stock-inc{
-    border: 1px solid #707070;
-    padding: 4px 9px;
-    border-radius: 50px;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 auto;
-  
-    a{
-      cursor: pointer;
-  
-      img{
-        width: 25px;
-        height: auto;
+}
+
+.right-sec {
+  display: flex;
+}
+
+.stock-inc {
+  position: relative;
+  border: 1px solid #707070;
+  padding: 4px 9px;
+  border-radius: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+
+  a {
+    cursor: pointer;
+
+    img {
+      width: 25px;
+      height: auto;
     }
   }
-  
-  span{
+
+  span {
     margin: 0px 5px;
   }
+}
+
+.sec-m {
+  margin: 0px 10px;
+}
+
+.main-inner-headings {
+  width: 21%;
+  text-align: center;
+}
+
+.main-inner-heading {
+  width: 25%;
+}
+
+.main-inner-top {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.top-pop-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.left-heading {
+  h6 {
+    color: $primary;
   }
-  
-  .sec-m{
-    margin: 0px 10px;
-  }
-  
-  .main-inner-headings {
-    width: 21%;
-    text-align: center;
-  }
-  
-  .main-inner-heading {
-    width: 25%;
-  }
-  
-  .main-inner-top {
-    display: flex;
-    justify-content: flex-end;
-  }
-  
-  .top-pop-inner{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  .left-heading{
-    h6{
-      color: $primary;
-    }
-  }
-  .right-close{
-    span{
-      cursor: pointer;
-      color: $primary;
-    }
-  }
-  
-  .btn-up{
-    margin: 10px auto;
-  }
-  .btn-add {
-    padding: 8px 40px;
-    background: #016DB0;
-    color: #fff;
-    font-size: 14px;
-    font-weight: 500;
+}
+.right-close {
+  span {
     cursor: pointer;
-    text-transform: uppercase;
-    margin-bottom: 15px;
-    &:hover {
-      color: white !important;
-    }
+    color: $primary;
   }
+}
+
+.btn-up {
+  margin: 10px auto;
+}
+.btn-add {
+  padding: 8px 40px;
+  background: #016db0;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  &:hover {
+    color: white !important;
+  }
+}
+
+.stock-p {
+  display: flex;
+  position: relative;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  p {
+    // margin-left: -12px;
+    position: absolute;
+    right: 6px;
+  }
+
+  .hide-bars {
+    width: 80% !important;
+    text-align: center;
+    background-color: transparent;
+  }
+}
+
+.sec-inc {
+  width: 30%;
+}

@@ -23,6 +23,16 @@
 .compare-inner-sec {
   padding-left: 40px;
   margin-top: 25px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  @media #{$medium} {
+    padding-left: 10px;
+  }
+  @media #{$small} {
+    padding-left: 10px;
+  }
 }
 
 .btn-add {
@@ -33,21 +43,33 @@
   font-weight: 500;
   cursor: pointer;
   text-transform: uppercase;
+  @media #{$small} {
+    padding: 8px 20px;
+    font-size: 10px;
+  }
 }
 
 .compare-choose-trade-sec {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  width: 100%;
-  margin-bottom: 30px;
+  width: 75%;
+  // margin-bottom: 30px;
   flex-wrap: wrap;
+  @media #{$small} {
+    width: 100%;
+    margin-bottom: 0px;
+  }
   .choose-trade {
-    width: 35%;
+    width: 45%;
     border: 1px solid #ddd;
     padding: 15px;
+    position: relative;
+    @media #{$small} {
+      width: 48%;
+    }
     margin-bottom: 20px;
-    &:nth-child(even){
+    &:nth-child(even) {
       margin-left: 20px;
     }
   }
@@ -84,8 +106,8 @@
 }
 
 .comapre-trade-btn {
-  width: 20%;
-  margin-left: 20px;
+  width: 43%;
+
 }
 
 .btn-add:hover {
@@ -96,6 +118,9 @@
   width: 70%;
   text-align: center;
   margin-top: 30px;
+  @media #{$small} {
+    margin-top:0px;
+  }
 }
 .trade-border {
   position: relative;
@@ -193,7 +218,7 @@
 .risk-table {
   width: 100%;
   height: auto;
-//   min-height: 340px;
+  //   min-height: 340px;
 
   padding: 0px 18px;
   h6 {
@@ -212,16 +237,17 @@
         color: white;
         font-size: 14px;
         font-weight: 500;
+        @media #{$small} {
+          font-size: 12px;
+        }
       }
-
-
     }
 
     td {
       font-size: 13px;
       font-weight: 500;
       //   color: #4f5051;
-    //   border-bottom: 1px solid #bfbfbf;
+      //   border-bottom: 1px solid #bfbfbf;
     }
   }
 }
@@ -231,36 +257,59 @@ thead th:nth-of-type(odd) {
   margin: 0 12px;
 }
 
-
 .compare-outer {
-    margin-top:50px;
+  margin-top: 50px;
 }
 
 .compare-tabs-sec {
-    width: 70%;
-    background: #F2F2F2;
-    height: 100%;
+  width: 70%;
+  background: #f2f2f2;
+  height: 100%;
+  @media #{$medium} {
+    width: 80%;
+  }
+  @media #{$small} {
+    width: 100%;
+  }
 }
 
 .trade-rdd {
-    color: #e11c1c;
+  color: #e11c1c;
+}
+
+.trade-rd {
+  color: #1cb86a;
+}
+
+.update-price-heading {
+  width: 70%;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+  @media #{$medium} {
+    width: 80%;
+  }
+  @media #{$small} {
+    width: 100%;
   }
 
-  
-  .trade-rd {
-    color: #1cb86a;
+  span {
+    color: $primary;
+    font-size: 13px;
+    cursor: pointer;
   }
+}
 
+.compare-headiang{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
 
-  .update-price-heading {
-    width: 70%;
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 10px;
-    
-    span{
-        color: $primary;
-        font-size: 13px;
-        cursor: pointer;
-    }
+.detele-icon {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
 }

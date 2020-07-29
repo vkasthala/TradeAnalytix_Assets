@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { UpdateStrategyPopupComponent } from '../../modalAsComponents/update-strategy-popup/update-strategy-popup.component';
+import { UpdatePriceRangeComponent } from '../../modalAsComponents/update-price-range/update-price-range.component';
 
 @Component({
   selector: 'app-compare-strategies',
@@ -9,7 +10,7 @@ import { UpdateStrategyPopupComponent } from '../../modalAsComponents/update-str
 })
 export class CompareStrategiesComponent implements OnInit {
 
-  strategies:any[] = [];
+  strategies:any[] = [true];
   compareStrategies:boolean;
 
   constructor( private _dialog: MatDialog) { }
@@ -28,7 +29,21 @@ export class CompareStrategiesComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((res) => {
-   
+      this.compareStrategies = false;
+    });
+  }
+
+  deleteStrategy(index) {
+    this.strategies.splice(index,1);
+  }
+
+  updatePriceRange() {
+    const dialogRef = this._dialog.open(UpdatePriceRangeComponent, {
+      disableClose: true,
+      width: 'auto'
+    });
+
+    dialogRef.afterClosed().subscribe((res) => {
     });
   }
 

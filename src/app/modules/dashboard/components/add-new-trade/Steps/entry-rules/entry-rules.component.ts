@@ -10,6 +10,10 @@ import { Router } from '@angular/router';
 })
 export class EntryRulesComponent implements OnInit {
 
+  checkbox2:any;
+  checkbox4:any;
+  checkbox6:any;
+  checkbox8:any;
   @Output('prevStep') prevStep = new EventEmitter();
 
   constructor(

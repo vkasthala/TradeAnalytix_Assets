@@ -1,360 +1,362 @@
 <div class="container-fluid">
-    <div class="close-trade-section">
+  <div class="close-trade-section">
 
-        <mat-accordion class="example-headers-align">
-            <mat-expansion-panel (closed)="panelOpenStateOne = false" [expanded]="step === 0"
-                (opened)="setStep(0);panelOpenStateOne = true" hideToggle>
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        Trade Thesis
-                    </mat-panel-title>
-                    <mat-panel-description>
-                        <mat-icon *ngIf="!panelOpenStateOne">add</mat-icon>
-                        <mat-icon *ngIf="panelOpenStateOne">remove</mat-icon>
-                    </mat-panel-description>
-                </mat-expansion-panel-header>
+    <mat-accordion class="example-headers-align">
+      <mat-expansion-panel (closed)="panelOpenStateOne = false" [expanded]="step === 0"
+        (opened)="setStep(0);panelOpenStateOne = true" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Trade Thesis
+          </mat-panel-title>
+          <mat-panel-description>
+            <mat-icon *ngIf="!panelOpenStateOne">add</mat-icon>
+            <mat-icon *ngIf="panelOpenStateOne">remove</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
 
-                <!-- Add Content here-->
-                <!-- close Trade -->
-                <div class="close-trade-inner-sec">
-                    <div class="first-sec">
+        <!-- Add Content here-->
+        <!-- close Trade -->
+        <div class="close-trade-inner-sec">
+          <div class="first-sec">
 
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="close-trade-input">
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Source of the trade idea</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1"
-                                            aria-describedby="emailHelp" placeholder="CNBC">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="close-trade-input">
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Mindset while executing the trade</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1"
-                                            aria-describedby="emailHelp" placeholder="Not Selected ">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="close-trade-input">
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Trade executed to take any advantage of</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1"
-                                            aria-describedby="emailHelp" placeholder="Earnings Announcement">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="first-sec">
-
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="close-trade-input">
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Reasons for executing the trade</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1"
-                                            aria-describedby="emailHelp"
-                                            placeholder="Lorem Ipsum is simply dummy text of the printing and typesetting industr">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="close-trade-input">
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Profit Expected</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1"
-                                            aria-describedby="emailHelp" placeholder="$4,500">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="close-trade-input">
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Stop loss set for the stock</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1"
-                                            aria-describedby="emailHelp" placeholder="$214.32">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="first-sec">
-
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="close-trade-input">
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Risks associated with the trade</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1"
-                                            aria-describedby="emailHelp"
-                                            placeholder="Lorem Ipsum is simply dummy text of the printing and typesetting industr">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="close-trade-input">
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Target Close Date</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1"
-                                            aria-describedby="emailHelp" placeholder="06/30/2020">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="close-trade-input">
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Specify the technical indicator used for the
-                                            trade</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1"
-                                            aria-describedby="emailHelp" placeholder="Relative Strength Indicator (30.2)
-                                            RSI_05302019.png
-                                        ">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="close-trade-input">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Source of the trade idea</label>
+                    <input type="email" class="form-control disabled-control" id="exampleInputEmail1"
+                      aria-describedby="emailHelp" disabled placeholder="CNBC">
+                  </div>
                 </div>
-                <!---->
-
-
-                <!-- <mat-action-row>
-                    <button mat-button color="primary" (click)="nextStep()">Next</button>
-                </mat-action-row> -->
-            </mat-expansion-panel>
-
-            <mat-expansion-panel (closed)="panelOpenStateTwo = false" [expanded]="step === 1"
-                (opened)="setStep(1);panelOpenStateTwo = true" hideToggle>
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        Exit Thesis
-                    </mat-panel-title>
-                    <mat-panel-description>
-                        <mat-icon *ngIf="!panelOpenStateTwo">add</mat-icon>
-                        <mat-icon *ngIf="panelOpenStateTwo">remove</mat-icon>
-                    </mat-panel-description>
-                </mat-expansion-panel-header>
-
-                <!-- Add Content here-->
-                <!-- exit thesis -->
-                <div class="trade-thesis-list">
-                    <div class="thesis-list-inner">
-                        <div class="list-inner-left">
-                            <span>
-                                <img src="../../../../../../../assets/images/icon/Icon ionic-ios-arrow-forward.png"
-                                    alt="">
-                            </span>
-                            <h6>
-                                On what date is the trade closed in the brokerage account?
-                            </h6>
-                        </div>
-                        <div class="list-inner-right">
-                            <div class="trade-date">
-                                <div class="form-group">
-                                    <div class="input-group date" id="datetimepicker1">
-                                        <input class="form-control input-lg" type="date">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="thesis-list-inner">
-                        <div class="list-inner-left">
-                            <span>
-                                <img src="../../../../../../../assets/images/icon/Icon ionic-ios-arrow-forward.png"
-                                    alt="">
-                            </span>
-                            <h6>
-                                What is the trigger for closing the trade?
-                            </h6>
-                        </div>
-                        <div class="list-inner-right">
-                            <div class="Trade-type">
-                                <div class="form-group"><select class="form-control select-input" id="inputState">
-                                        <option selected="">Select Source</option>
-                                        <option>Trade Type</option>
-                                        <option>Naked call</option>
-                                        <option>Naked put</option>
-                                        <option>Covered Call</option>
-                                        <option>Protective Put</option>
-                                        <option>Iron Condor</option>
-                                        <option>Call Spread</option>
-                                        <option>Put Spread</option>
-                                    </select></div>
-                            </div>
-                            <a class="add-new">+ Add New Source</a>
-
-                        </div>
-                    </div>
-
-                    <div class="thesis-list-inner">
-                        <div class="list-inner-left">
-                            <span>
-                                <img src="../../../../../../../assets/images/icon/Icon ionic-ios-arrow-forward.png"
-                                    alt="">
-                            </span>
-                            <h6>
-                                What is your mindset while executing the trade?
-                            </h6>
-                        </div>
-                        <div class="list-inner-right">
-                            <div class="Trade-type">
-                                <div class="form-group"><select class="form-control select-input" id="inputState">
-                                        <option selected="">Select Source</option>
-                                        <option>Trade Type</option>
-                                        <option>Naked call</option>
-                                        <option>Naked put</option>
-                                        <option>Covered Call</option>
-                                        <option>Protective Put</option>
-                                        <option>Iron Condor</option>
-                                        <option>Call Spread</option>
-                                        <option>Put Spread</option>
-                                    </select></div>
-                            </div>
-                            <a class="add-new">+ Add New</a>
-
-                        </div>
-                    </div>
-
-                    <div class="thesis-list-inner">
-                        <div class="list-inner-left">
-                            <span>
-                                <img src="../../../../../../../assets/images/icon/Icon ionic-ios-arrow-forward.png"
-                                    alt="">
-                            </span>
-                            <h6>
-                                Specify the reasons for closing the trade
-                            </h6>
-                        </div>
-                        <div class="list-inner-right">
-                            <div class="trade-input">
-
-                                <div class="form-group has-search">
-                                    <input class="form-control" placeholder="" type="text">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="thesis-list-inner">
-                        <div class="list-inner-left">
-                            <span>
-                                <img src="../../../../../../../assets/images/icon/Icon ionic-ios-arrow-forward.png"
-                                    alt="">
-                            </span>
-                            <h6>
-                                Gain or loss from the trade attributed to
-                            </h6>
-                        </div>
-                        <div class="list-inner-right">
-                            <div class="Trade-type">
-                                <div class="form-group"><select class="form-control select-input" id="inputState">
-                                        <option selected="">Select Source</option>
-                                        <option>Trade Type</option>
-                                        <option>Naked call</option>
-                                        <option>Naked put</option>
-                                        <option>Covered Call</option>
-                                        <option>Protective Put</option>
-                                        <option>Iron Condor</option>
-                                        <option>Call Spread</option>
-                                        <option>Put Spread</option>
-                                    </select></div>
-                            </div>
-                            <a class="add-new">+ Add Reason</a>
-                            <div class="trade-net">
-                                <span>Net Gain</span>
-                                <div class="trade-input">
-
-                                    <div class="form-group has-search">
-                                        <input class="form-control" placeholder="$999" type="text">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="thesis-list-inner">
-                        <div class="list-inner-left">
-                            <span>
-                                <img src="../../../../../../../assets/images/icon/Icon ionic-ios-arrow-forward.png"
-                                    alt="">
-                            </span>
-                            <h6>
-                                Specify the lessons learnt from the trade
-                            </h6>
-                        </div>
-                        <div class="list-inner-right">
-                            <div class="trade-input">
-
-                                <div class="form-group has-search">
-                                    <input class="form-control" placeholder="" type="text">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="thesis-list-inner">
-                        <div class="list-inner-left">
-                            <span>
-                                <img src="../../../../../../../assets/images/icon/Icon ionic-ios-arrow-forward.png"
-                                    alt="">
-                            </span>
-                            <h6>
-                                Specify the indicator based on which the trade is closed
-                            </h6>
-                        </div>
-                        <div class="list-inner-rights">
-                            <div class="Trade-type">
-                                <div class="form-group">
-                                    <select class="form-control select-input" id="inputState">
-                                        <option selected="">Custom</option>
-                                        <option>Trade Type</option>
-                                        <option>Naked call</option>
-                                        <option>Naked put</option>
-                                        <option>Covered Call</option>
-                                        <option>Protective Put</option>
-                                        <option>Iron Condor</option>
-                                        <option>Call Spread</option>
-                                        <option>Put Spread</option>
-                                    </select></div>
-                            </div>
-                            <div class="add-new-t">
-
-                                <a class="add-new ad-mb">+ Add New Indicator</a>
-
-                                <a class="add-new">
-                                    <img src="../../../../../../../assets/images/icon/Icon metro-attachment.png" alt="">
-                                    Upload Files</a>
-                            </div>
-
-                            <a class="add-new">
-                                30-day Moving Average.png <img
-                                    src="../../../../../../../assets/images/icon/Icon ionic-ios-close-circle.png"
-                                    alt=""> </a>
-
-
-                        </div>
-                    </div>
+              </div>
+              <div class="col-md-4">
+                <div class="close-trade-input">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Mindset while executing the trade</label>
+                    <input type="email" class="form-control disabled-control" id="exampleInputEmail1"
+                      aria-describedby="emailHelp" disabled placeholder="Not Selected ">
+                  </div>
                 </div>
+              </div>
+              <div class="col-md-4">
+                <div class="close-trade-input">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Trade executed to take any advantage of</label>
+                    <input type="email" class="form-control disabled-control" id="exampleInputEmail1"
+                      aria-describedby="emailHelp" disabled placeholder="Earnings Announcement">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="first-sec">
 
-                <!---->
+            <div class="row">
+              <div class="col-md-4">
+                <div class="close-trade-input">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Reasons for executing the trade</label>
+                    <input type="email" class="form-control disabled-control" id="exampleInputEmail1"
+                      aria-describedby="emailHelp" disabled
+                      placeholder="Lorem Ipsum is simply dummy text of the printing and typesetting industr">
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="close-trade-input">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Profit Expected</label>
+                    <input type="email" class="form-control disabled-control" id="exampleInputEmail1"
+                      aria-describedby="emailHelp" disabled placeholder="$4,500">
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="close-trade-input">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Stop loss set for the stock</label>
+                    <input type="email" class="form-control disabled-control" id="exampleInputEmail1"
+                      aria-describedby="emailHelp" disabled placeholder="$214.32">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="first-sec">
 
-                <mat-action-row>
-                    <button mat-button color=primary (click)="prevStep()">Previous</button>
-                    <button mat-button color="primary" (click)="exitRules()">Exit Rules</button>
-                </mat-action-row>
-            </mat-expansion-panel>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="close-trade-input">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Risks associated with the trade</label>
+                    <input type="email" class="form-control disabled-control" id="exampleInputEmail1"
+                      aria-describedby="emailHelp" disabled
+                      placeholder="Lorem Ipsum is simply dummy text of the printing and typesetting industr">
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="close-trade-input">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Target Close Date</label>
+                    <input type="email" class="form-control disabled-control" id="exampleInputEmail1"
+                      aria-describedby="emailHelp" disabled placeholder="06/30/2020">
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="close-trade-input">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Specify the technical indicator used for the
+                      trade</label>
+                    <input type="email" class="form-control disabled-control" id="exampleInputEmail1"
+                      aria-describedby="emailHelp" placeholder="Relative Strength Indicator (30.2) RSI_05302019.png"
+                      disabled>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!---->
+      </mat-expansion-panel>
+
+      <mat-expansion-panel (closed)="panelOpenStateTwo = false" [expanded]="step === 1"
+        (opened)="setStep(1);panelOpenStateTwo = true" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Exit Thesis
+          </mat-panel-title>
+          <mat-panel-description>
+            <mat-icon *ngIf="!panelOpenStateTwo">add</mat-icon>
+            <mat-icon *ngIf="panelOpenStateTwo">remove</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <!-- Add Content here-->
+        <!-- exit thesis -->
+        <div class="trade-thesis-list">
+
+          <div class="trade-box-left">
+            <div class="trade-new">
+              <div class="left-trade">
+                <div class="thesis-list-inner">
+                  <div class="list-inner-left">
+
+                    <h6>
+                      On what date is the trade closed in the brokerage account?
+                    </h6>
+                  </div>
+                  <div class="list-inner-right">
+                    <div class="trade-date">
+                      <div class="form-group">
+                        <div class="input-group date" id="datetimepicker1">
+                          <input class="form-control input-lg" type="date">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="right-trade">
+                <div class="thesis-list-inner">
+                  <div class="list-inner-left">
+
+                    <h6>
+                      What is the trigger for closing the trade?
+                    </h6>
+                  </div>
+                  <div class="list-inner-right">
+                    <div class="Trade-type">
+                      <div class="form-group"><select class="form-control select-input" id="inputState">
+                          <option selected="">Analyst Upgrade</option>
+                          <option>Analyst Downgrade</option>
+                          <option>Friend</option>
+                          <option>Self</option>
+                          <option>CNBC</option>
+                          <option>Yates</option>
+                          <option>Barrons</option>
+                          <option>StockTwits</option>
+                          <option>Trading Academy</option>
+                        </select></div>
+                    </div>
+                    <a class="add-new" (click)="addValue('Source')">+ Add New Source</a>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="trade-new">
+              <div class="left-trade">
+                <div class="thesis-list-inner">
+                  <div class="list-inner-left">
+
+                    <h6>
+                      What is your mindset while executing the trade?
+                    </h6>
+                  </div>
+                  <div class="list-inner-right">
+                    <div class="Trade-type">
+                      <div class="form-group"><select class="form-control select-input" id="inputState">
+                          <option selected="">Fear of Missing Out</option>
+                          <option>Recent Success</option>
+                          <option>Recent Loss</option>
+                          <option>Greedy</option>
+                          <option>Relaxed</option>
+                          <option>Confident</option>
+                          <option>Iron Condor</option>
+                          <option>Well Thought-Out</option>
+
+                        </select></div>
+                    </div>
+                    <a class="add-new" (click)="addValue('Mindset')">+ Add New</a>
+
+                  </div>
+                </div>
+              </div>
+              <div class="right-trade">
+                <div class="thesis-list-inner">
+                  <div class="list-inner-left">
+
+                    <h6>
+                      Specify the reasons for closing the trade
+                    </h6>
+                  </div>
+                  <div class="list-inner-right">
+                    <div class="trade-input">
+
+                      <div class="form-group has-search">
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="trade-box-right">
+            <div class="trade-new">
+              <div class="left-trade">
+
+                <div class="thesis-list-inner">
+                  <div class="list-inner-left">
+
+                    <h6>
+                      Gain or loss from the trade attributed to
+                    </h6>
+                  </div>
+                  <div class="list-inner-right">
+                    <div class="Trade-type">
+                      <div class="form-group"><select class="form-control select-input" id="inputState">
+                          <option selected="">Luck</option>
+                          <option>Patience</option>
+                          <option>Strategy</option>
+                          <option>Analysis</option>
+                          <option>Greed</option>
+                          <option>Fear</option>
+                          <option>Iron Condor</option>
+                          <option>Call Spread</option>
+                          <option>Put Spread</option>
+                        </select></div>
+                    </div>
+                    <a class="add-new" (click)="addValue('Reason')">+ Add Reason</a>
+                    <div class="trade-net">
+                      <span>Net Gain</span>
+                      <div class="trade-input">
+
+                        <div class="form-group has-search">
+                          <input class="form-control" placeholder="$999" type="text">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="right-trade">
+                <div class="thesis-list-inner">
+                  <div class="list-inner-left">
+
+                    <h6>
+                      Specify the lessons learnt from the trade
+                    </h6>
+                  </div>
+                  <div class="list-inner-right">
+                    <div class="trade-input">
+
+                      <div class="form-group has-search">
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="trade-new">
+              <div class="left-trade">
+                <div class="thesis-list-inner">
+                  <div class="list-inner-left">
+
+                    <h6>
+                      Specify the indicator based on which the trade is closed
+                    </h6>
+                  </div>
+                  <div class="list-inner-rights">
+                    <div class="Trade-type">
+                      <div class="form-group">
+                        <select class="form-control select-input" id="inputState">
+                          <option selected="">MACD</option>
+                          <option>RSI</option>
+                          <option>SMA</option>
+                          <option>EMA</option>
+                          <option>Bollinger Bands</option>
+                          <option>Support</option>
+                          <option>Resistance</option>
+                          <option>On-Balance Volume</option>
+                          <option>Stochastic Oscillator</option>
+                          <option>Fibonacci Retracement</option>
+                          <option>Ichimoku Cloud</option>
+                          <option>Average Directional Index</option>
+                          <option>Standard Deviation</option>
+                          <option>Williams %R</option>
+
+                        </select>
+                      </div>
+                    </div>
+                    <div class="add-new-t">
+
+                      <a class="add-new ad-mb" (click)="addValue('Indicator')">+ Add New Indicator</a>
+
+                      <a class="add-new">
+                        <img src="../../../../../../../assets/images/icon/Icon metro-attachment.png" alt="">
+                        Attach File</a>
+                    </div>
+
+                    <a class="add-new">
+                      30-day Moving Average.png <img
+                        src="../../../../../../../assets/images/icon/Icon ionic-ios-close-circle.png" alt=""> </a>
 
 
-        </mat-accordion>
-    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="right-trade"></div>
+            </div>
+          </div>
+        </div>
+
+        <!---->
+
+        <mat-action-row>
+          <button mat-button color=primary (click)="prevStep()">Previous</button>
+          <button mat-button color="primary" (click)="exitRules()">Exit Rules</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+
+
+    </mat-accordion>
+  </div>
 </div>
 
 
@@ -362,251 +364,282 @@
 <!-- for-mobile -->
 
 
-    <div class="close-trade-mobile">
-        <div class="trade-top-heading">
-            <h3> Close TRADE </h3>
-        </div>
-        <div class="trad-border"></div>
-        <div class="container-fluid">
+<div class="close-trade-mobile">
+  <div class="trade-top-heading">
+    <h3> CLOSE TRADE </h3>
+  </div>
+  <div class="trad-border"></div>
+  <div class="container-fluid">
 
-          <mat-horizontal-stepper labelPosition="bottom" #tradeMobileStepper [linear]="false">
-            <mat-step>
-              <ng-template matStepLabel>Trade Details</ng-template>
-    
-              <div class="stepper-content">
-               <!-- Exit-thesis -->
-               <div class="exit-thesis-sec">
+    <mat-horizontal-stepper labelPosition="bottom" #tradeMobileStepper [linear]="false">
+      <mat-step>
+        <ng-template matStepLabel>Trade Details</ng-template>
 
-                <div class="trade-stategy-heading">
-                    <h6>
-                        Exit Thesis
-                    </h6>
-                </div>
-        
-                <div class="trade-thesis-inner">
-                    <div class="tranding-thesis">
-                      <div class="left-thesis">
-                        <h6>Trade closed date</h6>
-                      </div>
-                      <div class="right-thesis">
-                        <div class="form-group">
-                          <input class="form-control" placeholder="05-May-2020" type="date">
-                        </div>
-                      </div>
-                    </div>
-        
-                    <div class="tranding-thesis">
-                      <div class="left-thesis">
-                        <h6>Trigger for trade closure</h6>
-                      </div>
-                      <div class="right-thesis">
-                        <div class="form-group">
-                          <select class="form-control select-input" id="inputState">
-                            <option>Call</option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-        
-                    <div class="tranding-thesis">
-                      <div class="left-thesis">
-                        <h6>Mindset at trade closure</h6>
-                      </div>
-                      <div class="right-thesis">
-                        <div class="form-group">
-                          <select class="form-control select-input" id="inputState">
-                            <option>Call</option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-        
-                    <div class="tranding-thesis">
-                      <div class="left-thesis">
-                        <h6>Gain or loss attributed to </h6>
-                      </div>
-                      <div class="right-thesis">
-                        <div class="form-group">
-                          <select class="form-control select-input" id="inputState">
-                            <option>Call</option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-        
-                    <div class="tranding-thesis">
-                      <div class="left-thesis">
-                        <h6>Events related to the stock</h6>
-                      </div>
-                      <div class="right-thesis">
-                        <div class="form-group">
-                          <select class="form-control select-input" id="inputState">
-                            <option>Call</option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-        
-                    <div class="trading-thesis-trade">
-                      <div class="top-thesis">
-                        <h6>
-                            Reasons for closing the trade
-                        </h6>
-                      </div>
-                      <div class="bot-thesis">
-                        <div class="form-group">
-                          <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
-                        </div>
-                      </div>
-                    </div>
-        
-                    <div class="trading-thesis-trade">
-                      <div class="top-thesis">
-                        <h6>
-                            Lessons learnt from the trade
-                        </h6>
-                      </div>
-                      <div class="bot-thesis">
-                        <div class="form-group">
-                          <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
-                        </div>
-                      </div>
-                    </div>
-        
-                  </div>
-        
-        
-                  <div class="trade-btn-p">
-                    <a class="btn-pre" (click)="navigateToTradeStrategies()">Previous</a>
-                    <a class="btn-pre" (click)="navigaateToExitRules()">Exit Rules</a>
-        
-                  </div>
+        <div class="stepper-content">
+          <!-- Exit-thesis -->
+          <div class="exit-thesis-sec">
+
+            <div class="trade-stategy-heading">
+              <h6>
+                Exit Thesis
+              </h6>
             </div>
-              </div>
-            </mat-step>
-            <mat-step>
-              <ng-template matStepLabel>Entry Rules</ng-template>
-              <div class="stepper-content">
-                <!-- Exit-Rules -->
 
-                <div class="exit-rules-sec">
-
-                  <div class="trade-stategy-heading">
-                      <h6>
-                          Exit Rules
-                      </h6>
+            <div class="trade-thesis-inner">
+              <div class="tranding-thesis">
+                <div class="left-thesis">
+                  <h6>Trade closed date</h6>
+                </div>
+                <div class="right-thesis">
+                  <div class="form-group">
+                    <input class="form-control" placeholder="05-May-2020" type="date">
                   </div>
-  
-  
-                  <div class="trade-entry-rule">
-                      <div class="entry-inner">
-                        <div class="left-con">
-                          <h6>
-                              Do not close trade before target price is reached
-                          </h6>
-                        </div>
-          
-                        <div class="right-toggle">
-                          <div class="switch">
-                            <input type="checkbox" id="checkboxe" checked>
-                            <label for="checkboxe"></label>
-                          </div>
-          
-                        </div>
-                      </div>
-                      <div class="entry-inner">
-                        <div class="left-con">
-                          <h6>
-                              Do not close the trade if the profit is less than $100
-                                          </h6>
-                        </div>
-          
-                        <div class="right-toggle">
-                          <div class="switch">
-                            <input type="checkbox" id="checkboxe-1" checked>
-                            <label for="checkboxe-1"></label>
-                          </div>
-          
-                        </div>
-                      </div>
-                      <div class="entry-inner">
-                        <div class="left-con">
-                          <h6>
-                              Do not close the trade if the entry hypothesis is intact
-                          </h6>
-                        </div>
-          
-                        <div class="right-toggle">
-                          <div class="switch">
-                            <input type="checkbox" id="checkboxe-2" >
-                            <label for="checkboxe-2"></label>
-                          </div>
-          
-                        </div>
-                      </div>
-                      <div class="entry-inner">
-                        <div class="left-con">
-                          <h6>
-                              Do not close the trade to buy another hot stock
-                          </h6>
-                        </div>
-          
-                        <div class="right-toggle">
-                          <div class="switch">
-                            <input type="checkbox" id="checkboxe-3" checked>
-                            <label for="checkboxe-3"></label>
-                          </div>
-          
-                        </div>
-                      </div>
-                      <div class="entry-inner">
-                        <div class="left-con">
-                          <h6>
-                            Always protect your trade
-                          </h6>
-                        </div>
-          
-                        <div class="right-toggle">
-                          <div class="switch">
-                            <input type="checkbox" id="checkboxe-4" >
-                            <label for="checkboxe-4"></label>
-                          </div>
-          
-                        </div>
-                      </div>
-                      <div class="entry-inner">
-                        <div class="left-con">
-                          <h6>
-                            Do not sell calls on growth high-beta stocks
-                          </h6>
-                        </div>
-          
-                        <div class="right-toggle">
-                          <div class="switch">
-                            <input type="checkbox" id="checkboxe-5" >
-                            <label for="checkboxe-5"></label>
-                          </div>
-          
-                        </div>
-                      </div>
-                    </div>
-          
-                    <a class="btn btn-add" (click)="navigateToTradeStrategies()"> CLOSE TRADE</a>
-          
-                    <div class="trade-btn-p">
-                      <a class=" btn-pre" (click)="navigateToExitThesis()">Previous</a>
-                    </div>
-  
-  
-  
+                </div>
               </div>
+
+              <div class="tranding-thesis">
+                <div class="left-thesis">
+                  <h6>Trigger for trade closure</h6>
+                </div>
+                <div class="right-thesis">
+                  <div class="form-group">
+                    <select class="form-control select-input" id="inputState">
+                      <option selected="">Analyst Upgrade</option>
+                      <option>Analyst Downgrade</option>
+                      <option>Friend</option>
+                      <option>Self</option>
+                      <option>CNBC</option>
+                      <option>Yates</option>
+                      <option>Barrons</option>
+                      <option>StockTwits</option>
+                      <option>Trading Academy</option>
+                    </select>
+                  </div>
+                </div>
               </div>
-            </mat-step>
-          </mat-horizontal-stepper>
 
-         
+              <div class="tranding-thesis">
+                <div class="left-thesis">
+                  <h6>Mindset at trade closure</h6>
+                </div>
+                <div class="right-thesis">
+                  <div class="form-group">
+                    <select class="form-control select-input" id="inputState">
+                      <option selected="">Fear of Missing Out</option>
+                      <option>Recent Success</option>
+                      <option>Recent Loss</option>
+                      <option>Greedy</option>
+                      <option>Relaxed</option>
+                      <option>Confident</option>
+                      <option>Iron Condor</option>
+                      <option>Well Thought-Out</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tranding-thesis">
+                <div class="left-thesis">
+                  <h6>Gain or loss attributed to </h6>
+                </div>
+                <div class="right-thesis">
+                  <div class="form-group">
+                    <select class="form-control select-input" id="inputState">
+                      <option selected="">Luck</option>
+                      <option>Patience</option>
+                      <option>Strategy</option>
+                      <option>Analysis</option>
+                      <option>Greed</option>
+                      <option>Fear</option>
+                      <option>Iron Condor</option>
+                      <option>Call Spread</option>
+                      <option>Put Spread</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tranding-thesis">
+                <div class="left-thesis">
+                  <h6>Events related to the stock</h6>
+                </div>
+                <div class="right-thesis">
+                  <div class="form-group">
+                    <select class="form-control select-input" id="inputState">
+                      <option selected="">Luck</option>
+                      <option>Patience</option>
+                      <option>Strategy</option>
+                      <option>Analysis</option>
+                      <option>Greed</option>
+                      <option>Fear</option>
+                      <option>Iron Condor</option>
+                      <option>Call Spread</option>
+                      <option>Put Spread</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="trading-thesis-trade">
+                <div class="top-thesis">
+                  <h6>
+                    Reasons for closing the trade
+                  </h6>
+                </div>
+                <div class="bot-thesis">
+                  <div class="form-group">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+                  </div>
+                </div>
+              </div>
+
+              <div class="trading-thesis-trade">
+                <div class="top-thesis">
+                  <h6>
+                    Lessons learnt from the trade
+                  </h6>
+                </div>
+                <div class="bot-thesis">
+                  <div class="form-group">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+                  </div>
+                </div>
+              </div>
+
+            </div>
 
 
-        
-    </div>
+            <div class="trade-btn-p">
+              <a class="btn-pre" (click)="navigateToTradeStrategies()">Previous</a>
+              <a class="btn-pre" (click)="navigaateToExitRules()">Exit Rules</a>
+
+            </div>
+          </div>
+        </div>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Entry Rules</ng-template>
+        <div class="stepper-content">
+          <!-- Exit-Rules -->
+
+          <div class="exit-rules-sec">
+
+            <div class="trade-stategy-heading">
+              <h6>
+                Exit Rules
+              </h6>
+            </div>
+
+
+            <div class="trade-entry-rule">
+              <div class="entry-inner">
+                <div class="left-con">
+                  <h6>
+                    Do not close trade before target price is reached
+                  </h6>
+                </div>
+
+                <div class="right-toggle">
+                  <div class="switch">
+                    <input type="checkbox" id="checkboxe" checked>
+                    <label for="checkboxe"></label>
+                  </div>
+
+                </div>
+              </div>
+              <div class="entry-inner">
+                <div class="left-con">
+                  <h6>
+                    Do not close the trade if the profit is less than $100
+                  </h6>
+                </div>
+
+                <div class="right-toggle">
+                  <div class="switch">
+                    <input type="checkbox" id="checkboxe-1" checked>
+                    <label for="checkboxe-1"></label>
+                  </div>
+
+                </div>
+              </div>
+              <div class="entry-inner">
+                <div class="left-con">
+                  <h6>
+                    Do not close the trade if the entry hypothesis is intact
+                  </h6>
+                </div>
+
+                <div class="right-toggle">
+                  <div class="switch">
+                    <input type="checkbox" id="checkboxe-2">
+                    <label for="checkboxe-2"></label>
+                  </div>
+
+                </div>
+              </div>
+              <div class="entry-inner">
+                <div class="left-con">
+                  <h6>
+                    Do not close the trade to buy another hot stock
+                  </h6>
+                </div>
+
+                <div class="right-toggle">
+                  <div class="switch">
+                    <input type="checkbox" id="checkboxe-3" checked>
+                    <label for="checkboxe-3"></label>
+                  </div>
+
+                </div>
+              </div>
+              <div class="entry-inner">
+                <div class="left-con">
+                  <h6>
+                    Always protect your trade
+                  </h6>
+                </div>
+
+                <div class="right-toggle">
+                  <div class="switch">
+                    <input type="checkbox" id="checkboxe-4">
+                    <label for="checkboxe-4"></label>
+                  </div>
+
+                </div>
+              </div>
+              <div class="entry-inner">
+                <div class="left-con">
+                  <h6>
+                    Do not sell calls on growth high-beta stocks
+                  </h6>
+                </div>
+
+                <div class="right-toggle">
+                  <div class="switch">
+                    <input type="checkbox" id="checkboxe-5">
+                    <label for="checkboxe-5"></label>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <a class="btn btn-add" (click)="navigateToTradeStrategies()"> CLOSE TRADE</a>
+
+            <div class="trade-btn-p">
+              <a class=" btn-pre" (click)="navigateToExitThesis()">Previous</a>
+            </div>
+
+
+
+          </div>
+        </div>
+      </mat-step>
+    </mat-horizontal-stepper>
+
+
+
+
+
+  </div>
 </div>

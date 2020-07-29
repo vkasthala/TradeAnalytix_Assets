@@ -1,4 +1,6 @@
+import { SingleInputModalComponent } from './../../../../modalAsComponents/single-input-modal/single-input-modal.component';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-trade-thesis',
@@ -9,7 +11,7 @@ export class TradeThesisComponent implements OnInit {
   @Output('nextStep') nextStep = new EventEmitter();
   @Output('prevStep') prevStep = new EventEmitter();
 
-  constructor() { }
+  constructor(private _dialog: MatDialog) { }
 
   ngOnInit() {
   }
@@ -20,6 +22,20 @@ export class TradeThesisComponent implements OnInit {
 
   next() {
     this.nextStep.emit()
+  }
+
+
+
+  addValue(value) {
+    const dialogRef = this._dialog.open(SingleInputModalComponent, {
+      disableClose: true,
+      width: 'auto',
+      data : {title: value}
+    });
+
+    dialogRef.afterClosed().subscribe((res) => {
+      
+    });
   }
 
 }

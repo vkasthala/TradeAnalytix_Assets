@@ -1,5 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-
+import * as $ from 'jquery';
+import { UtilService } from 'src/app/services/util.service';
 @Component({
   selector: 'app-trade-details',
   templateUrl: './trade-details.component.html',
@@ -20,9 +21,13 @@ export class TradeDetailsComponent implements OnInit {
   @Output('nextStep') nextStep = new EventEmitter();
   @Output('activateRisk') activateRisk = new EventEmitter();
 
-  constructor() { }
+  constructor(private utilService: UtilService) { }
 
   ngOnInit() {
+  }
+
+  ngAfterViewInit(): void {
+  
   }
 
   enterSymbol() {
@@ -31,6 +36,9 @@ export class TradeDetailsComponent implements OnInit {
 
   addStock() {
     this.stockAdded = true;
+    this.promptPerformRiskAnalysis = false;
+    this.performRiskAnalysis = false;
+    this.displayRiskAnalysis = false;
   }
 
   addOption() {
@@ -46,8 +54,16 @@ export class TradeDetailsComponent implements OnInit {
     this.nextStep.emit()
   }
 
+  deleteStock() {
+    this.stockAdded = false;
+    if(this.stockOptions.length == 0) {
+      this.displayRiskAnalysis = false;
+      this.promptPerformRiskAnalysis = false;
+    }
+  }
   deleteStockOption(index) {
     this.stockOptions.splice(index, 1);
+   
   }
 
   decreaseStockLowerBand() {
@@ -84,7 +100,7 @@ export class TradeDetailsComponent implements OnInit {
 
   increaseDaysLeft(index) {
     let stock = this.stockOptions[index];
-    if (stock.daysLeft > 0 && stock.daysLeft < 731) {
+    if (stock.daysLeft >= 0 && stock.daysLeft < 731) {
       stock.daysLeft++;
     }
   }
@@ -107,5 +123,76 @@ export class TradeDetailsComponent implements OnInit {
     this.activateRisk.emit(true);
   }
 
+  preventNegatives(e, preventDecimal?:boolean) {
+    if(preventDecimal) {
+      if(!((e.keyCode > 95 && e.keyCode < 106)
+      || (e.keyCode > 47 && e.keyCode < 58) 
+      || e.keyCode == 8 ||e.keyCode == 17 || e.keyCode == 110)) {
+        if(e.keyCode != 190) {
+          return false;
+        }else {
+          return true;
+        }
+    }
+    }else {
+      if(!((e.keyCode > 95 && e.keyCode < 106)
+      || (e.keyCode > 47 && e.keyCode < 58) 
+      || e.keyCode == 8)) {
+        if(e.keyCode != 190) {
+          return false;
+        }else {
+          return true;
+        }
+    }
+    }
+  }
+
+  checkForDecimalValidation(event) {
+    event.target.value = parseFloat(event.target.value).toFixed(2);
+  }
+
+  navigateToTradeThesis() {
+    this.activateRiskAnalysisStep()
+    this.nextStep.emit()
+  }
+
+  enforceMaxLength($event, min, max) {
+   let t = $event.target;
+   console.log("TradeDetailsComponent -> enforceMaxLength -> $event.target", $event.target)
+    if(t.value < min || t.value > max) {
+      return false;
+    }
+  }
+
+  //Code for handling Mouse Hold event
+  name: number = 0;
+  timeoutHandler;
+
+  public mouseup() {
+    if (this.timeoutHandler) {
+      clearInterval(this.timeoutHandler);
+      this.name = 0;
+      this.timeoutHandler = null;
+    }
+  }
+
+  /*
+  * @mousedown 'Requires operation field which is the operation to be performed on mouse hold'
+  */
+  public mousedown(operations, index?) {
+    this.timeoutHandler = setInterval(() => {
+      switch (operations) {
+        case 'increaseStockeUpperBand': this.increaseStockeUpperBand(); break;
+        case 'decreaseStockUpperBand': this.decreaseStockUpperBand(); break;
+        case 'increaseStockLowerBand': this.increaseStockLowerBand(); break;
+        case 'decreaseStockLowerBand': this.decreaseStockLowerBand(); break;
+        case 'decreaseDaysLeft': this.decreaseDaysLeft(index); break;
+        case 'increaseDaysLeft': this.increaseDaysLeft(index); break;
+        case 'decreaseImpliedValue': this.decreaseImpliedValue(index); break;
+        case 'increaseImpliedValue': this.increaseImpliedValue(index); break;
+      }
+      this.name += 1;
+    }, 100);
+  }
 
 }

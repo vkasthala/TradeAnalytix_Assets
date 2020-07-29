@@ -1,0 +1,62 @@
+<!-- update-price-pop -->
+
+<div class="update-price-pop">
+    <div class="update-price-pop-inner">
+        <div class="pop-top-heading">
+            <div class="left-heading">
+                <h6>Update Price Range</h6>
+            </div>
+            <div class="right-heading" (click)="closeModal()">
+                <span>Close</span>
+            </div>
+        </div>
+
+        <div class="update-price-con">
+            <div class="price-update-sec">
+                <div class="left-price">
+                    <span>Price Range</span>
+                </div>
+                <div class="right-price-sec">
+                    <div class="sec-inc">
+                        <div class="stock-inc">
+                            <a (click)="decreasePriceStartRange()" (mousedown)="mousedown('decreasePriceStartRange')" (mouseup)="mouseup()" (mouseleave)="mouseup()">
+                                <img alt="" src="../../../../../assets/images/icon/Group 359.png">
+                            </a>
+                            <div class="stock-p"> 
+                                <input style="width: 35px;" type="number" class="hide-bars" [(ngModel)]="priceStartRange"><p>&#37;</p>       
+                            </div>
+                            <a (click)="increasePriceStartRange()" (mousedown)="mousedown('increasePriceStartRange')" (mouseup)="mouseup()" (mouseleave)="mouseup()">
+                                <img alt="" src="../../../../../assets/images/icon/Group 360.png">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="sec-inc price-sec">
+                        <div class="stock-inc">
+                            <a (click)="decreasePriceEndRage()" (mousedown)="mousedown('decreasePriceEndRage')" (mouseup)="mouseup()" (mouseleave)="mouseup()">
+                                <img alt="" src="../../../../../assets/images/icon/Group 359.png">
+                            </a>
+                            <div class="stock-p"> 
+                                <input style="width: 35px;" type="number" class="hide-bars" [(ngModel)]="priceStartRange"><p>&#37;</p>       
+                            </div>
+                            <a (click)="increasePriceEndRange()" (mousedown)="mousedown('increasePriceEndRange')" (mouseup)="mouseup()" (mouseleave)="mouseup()">
+                                <img alt="" src="../../../../../assets/images/icon/Group 360.png">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="price-update-sec">
+                <div class="left-price">
+                    <span>Target Date</span>
+                </div>
+                <div class="right-price-sec">
+                    <div class="form-group">
+                        <input class="form-control cards-input" placeholder="" type="date"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="btn btn-save" (click)="closeModal()">Update</div>
+    </div>
+</div>

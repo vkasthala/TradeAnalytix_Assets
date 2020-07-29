@@ -7,178 +7,208 @@
 
     <div class="trade-thesis-inner">
         <div class="trade-thesis-list">
-            <div class="thesis-list-inner">
-                <div class="list-inner-left">
-                    <span>
-                        <img src="../../../../../../../assets/images/icon/Icon ionic-ios-arrow-forward.png" alt="">
-                    </span>
-                    <h6>
-                        What is your mindset while executing the trade?
-                    </h6>
-                </div>
-                <div class="list-inner-right">
-                    <div class="Trade-type">
-                        <div class="form-group"><select class="form-control select-input" id="inputState">
-                                <option selected="">Custom</option>
-                                <option>Trade Type</option>
-                                <option>Naked call</option>
-                                <option>Naked put</option>
-                                <option>Covered Call</option>
-                                <option>Protective Put</option>
-                                <option>Iron Condor</option>
-                                <option>Call Spread</option>
-                                <option>Put Spread</option>
-                            </select></div>
-                    </div>
-                    <a class="add-new">+ Add New Source</a>
 
+            <div class="trade-box-left">
+                
+            <div class="trade-new">
+                <div class="left-trade">
+                    <div class="thesis-list-inner">
+                        <div class="list-inner-left">
+
+                            <h6>
+                                What is your mindset while executing the trade?
+                            </h6>
+                        </div>
+                        <div class="list-inner-right" style="align-items: center;">
+                            <div class="Trade-type">
+                                <div class="form-group"><select class="form-control select-input" id="inputState">
+                                        <option selected="">Custom</option>
+                                        <option>Trade Type</option>
+                                        <option>Naked call</option>
+                                        <option>Naked put</option>
+                                        <option>Covered Call</option>
+                                        <option>Protective Put</option>
+                                        <option>Iron Condor</option>
+                                        <option>Call Spread</option>
+                                        <option>Put Spread</option>
+                                    </select></div>
+                            </div>
+                            <a class="add-new" (click)="addValue('Mindset')">+ Add New Item</a>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="right-trade">
+                    <div class="thesis-list-inner">
+                        <div class="list-inner-left">
+
+                            <h6>
+                                What percentage of the total capital is invested on this trade?
+                            </h6>
+                        </div>
+                        <div class="list-inner-right">
+                            <div class="trade-input">
+
+                                <div class="form-group has-search">
+                                    <input type="number" pattern="^\d*(\.\d{0,2})?$"
+                                        (change)="checkForDecimalValidation($event)" step="0.01"
+                                        (keydown)="preventNegatives($event, true)" min="0" class="form-control">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="thesis-list-inner">
-                <div class="list-inner-left">
-                    <span>
-                        <img src="../../../../../../../assets/images/icon/Icon ionic-ios-arrow-forward.png" alt="">
-                    </span>
-                    <h6>
-                        What percentage of the total capital is invested on this trade?
-                    </h6>
-                </div>
-                <div class="list-inner-right">
-                    <div class="trade-input">
+            <div class="trade-new">
+                <div class="left-trade">
+                    <div class="thesis-list-inner">
+                        <div class="list-inner-left">
 
-                        <div  class="form-group has-search">
-                            <input class="form-control" placeholder="" type="text">
+                            <h6>
+                                What percentage of the total capital is left as cash post this trade?
+                            </h6>
+                        </div>
+                        <div class="list-inner-right">
+                            <div class="trade-input">
+
+                                <div class="form-group has-search">
+                                    <input type="number" pattern="^\d*(\.\d{0,2})?$"
+                                        (change)="checkForDecimalValidation($event)" step="0.01"
+                                        (keydown)="preventNegatives($event, true)" min="0" class="form-control">
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                 </div>
-            </div>
+                <div class="right-trade">
 
-            <div class="thesis-list-inner">
-                <div class="list-inner-left">
-                    <span>
-                        <img src="../../../../../../../assets/images/icon/Icon ionic-ios-arrow-forward.png" alt="">
-                    </span>
-                    <h6>
-                        What percentage of the total capital is left as cash post this trade?
-                    </h6>
-                </div>
-                <div class="list-inner-right">
-                    <div class="trade-input">
+                    <div class="thesis-list-inner">
+                        <div class="list-inner-left">
 
-                        <div  class="form-group has-search">
-                            <input class="form-control" placeholder="" type="text">
+                            <h6>
+                                What percentage of the amount allocated for the trade is hedged? (leave blank if not
+                                hedged)
+                            </h6>
+                        </div>
+                        <div class="list-inner-right">
+                            <div class="trade-input">
+
+                                <div class="form-group has-search">
+                                    <input type="number" pattern="^\d*(\.\d{0,2})?$"
+                                        (change)="checkForDecimalValidation($event)" step="0.01"
+                                        (keydown)="preventNegatives($event, true)" min="0" class="form-control">
+                                </div>
+                            </div>
                         </div>
                     </div>
-            </div>
-            </div>
-
-            <div class="thesis-list-inner">
-                <div class="list-inner-left">
-                    <span>
-                        <img src="../../../../../../../assets/images/icon/Icon ionic-ios-arrow-forward.png" alt="">
-                    </span>
-                    <h6>
-                        What percentage of the amount allocated for the trade is hedged? (leave blank if not hedged)
-                    </h6>
-                </div>
-                <div class="list-inner-right">
-                    <div class="trade-input">
-
-                        <div  class="form-group has-search">
-                            <input class="form-control" placeholder="" type="text">
-                        </div>
-                    </div>
-            </div>
-            </div>
-
-
-            <div class="thesis-list-inner">
-                <div class="list-inner-left">
-                    <span>
-                        <img src="../../../../../../../assets/images/icon/Icon ionic-ios-arrow-forward.png" alt="">
-                    </span>
-                    <h6>
-                        Specify the stop loss set for the trade? (leave blank if stop loss not set)
-                    </h6>
-                </div>
-                <div class="list-inner-right">
-                    <div class="trade-inputt">
-
-                        <div  class="form-group has-search">
-                            <input class="form-control" placeholder="" type="text">
-                        </div>
-                    </div>
-            </div>
-            </div>
-
-
-            <div class="thesis-list-inner">
-                <div class="list-inner-left">
-                    <span>
-                        <img src="../../../../../../../assets/images/icon/Icon ionic-ios-arrow-forward.png" alt="">
-                    </span>
-                    <h6>
-                        Is this a contrarian trade?
-                    </h6>
-                </div>
-                <div class="list-inner-right">
-                    <div class="trade-check">
-                        <span class="switch-no"> No</span>
-                        <div class="switch">
-                            <input type="checkbox" id="checkbox1"/>
-                            <label for="checkbox1"></label>
-                          </div>
-
-                          <span class="switch-yes"> Yes</span>
-
-                    </div>
                 </div>
             </div>
-
-            <div class="thesis-list-inner">
-                <div class="list-inner-left">
-                    <span>
-                        <img src="../../../../../../../assets/images/icon/Icon ionic-ios-arrow-forward.png" alt="">
-                    </span>
-                    <h6>
-                        Specify the technical indicator used for the trade                    </h6>
-                </div>
-                <div class="list-inner-right">
-                    <div class="Trade-type">
-                        <div class="form-group">
-                            <select class="form-control select-input" id="inputState">
-                                <option selected="">Custom</option>
-                                <option>Trade Type</option>
-                                <option>Naked call</option>
-                                <option>Naked put</option>
-                                <option>Covered Call</option>
-                                <option>Protective Put</option>
-                                <option>Iron Condor</option>
-                                <option>Call Spread</option>
-                                <option>Put Spread</option>
-                            </select></div>
-                    </div>
-                    <div class="add-new-t">
-
-                        <a class="add-new ad-mb">+ Add New Indicator</a>
+            </div>  
+            <div class="trade-box-right">
+                <div class="trade-new">
+                    <div class="left-trade">
     
-                        <a class="add-new">
-                            <img src="../../../../../../../assets/images/icon/Icon metro-attachment.png" alt=""> Upload Files</a>
+                        <div class="thesis-list-inner">
+                            <div class="list-inner-left">
+    
+                                <h6>
+                                    Specify the stop loss set for the trade? (leave blank if stop loss not set)
+                                </h6>
+                            </div>
+                            <div class="list-inner-right">
+                                <div class="trade-inputt">
+    
+                                    <div class="form-group has-search">
+                                        <input class="form-control" type="number" (keydown)="preventNegatives($event, true)"
+                                            step=".01" min="0">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
                     </div>
-
-                    <a class="add-new">
-                         30-day Moving Average.png <img src="../../../../../../../assets/images/icon/Icon ionic-ios-close-circle.png" alt=""> </a>
-
-
+                    <div class="right-trade">
+                        <div class="thesis-list-inner">
+                            <div class="list-inner-left">
+    
+                                <h6>
+                                    Is this a contrarian trade?
+                                </h6>
+                            </div>
+                            <div class="list-inner-right">
+                                <div class="trade-check">
+                                    <span class="switch-no"> No</span>
+                                    <div class="switch">
+                                        <input type="checkbox" id="checkbox1" />
+                                        <label for="checkbox1"></label>
+                                    </div>
+    
+                                    <span class="switch-yes"> Yes</span>
+    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="trade-new">
+                    <div class="left-trade">
+                        <div class="thesis-list-inner">
+                            <div class="list-inner-left">
+    
+                                <h6>
+                                    Specify the technical indicator used for the trade </h6>
+                            </div>
+                            <div class="list-inner-right">
+                                <div class="Trade-type">
+                                    <div class="form-group">
+                                        <select class="form-control select-input" id="inputState">
+                                            <option selected="">MACD</option>
+                                            <option>RSI</option>
+                                            <option>SMA</option>
+                                            <option>EMA</option>
+                                            <option>Bollinger Bands</option>
+                                            <option>Support</option>
+                                            <option>Resistance</option>
+                                            <option>On-Balance Volume</option>
+                                            <option>Stochastic Oscillator</option>
+                                            <option>Fibonacci Retracement</option>
+                                            <option>Ichimoku Cloud</option>
+                                            <option>Average Directional Index</option>
+                                            <option>Standard Deviation</option>
+                                            <option>Williams %R</option>
+    
+                                        </select></div>
+                                </div>
+                                <div class="add-new-t">
+    
+                                    <a class="add-new ad-mb" (click)="addValue('Indicator')">+ Add New Indicator</a>
+    
+                                    <a class="add-new">
+                                        <img src="../../../../../../../assets/images/icon/Icon metro-attachment.png"
+                                            alt="">Attach File</a>
+                                </div>
+    
+                                <a class="add-new">
+                                    30-day Moving Average.png <img
+                                        src="../../../../../../../assets/images/icon/Icon ionic-ios-close-circle.png"
+                                        alt=""> </a>
+    
+    
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right-trade"></div>
                 </div>
             </div>
-    </div>
+        </div>
     </div>
 </div>
 
-<div  class="trad-border ng-star-inserted" ></div>
+<div class="trad-border ng-star-inserted"></div>
 
 <div class="trade-new-btn">
     <a class="btn btn-per" (click)="previous()">Previous</a>

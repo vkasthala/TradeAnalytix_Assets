@@ -70,27 +70,31 @@
     <div class="addnew-steps">
       <mat-horizontal-stepper labelPosition="bottom" #tradeMobileStepper [linear]="false">
         <mat-step>
-          <ng-template matStepLabel>Trade Details</ng-template>
 
           <div class="stepper-content">
             <app-mobile-trade-details
+              [stockOptions]="stockOptions"
+              [stockAdded]="stockAdded"
               (nextStep)="goForward(false,true)"
+              (updateStockAdded)="stockAdded = $event"
             ></app-mobile-trade-details>
           </div>
         </mat-step>
         <mat-step>
-          <ng-template matStepLabel>Entry Rules</ng-template>
           <div class="stepper-content">
             <app-mobile-risk-analysis
+            [stockOptions]="stockOptions"
+            [stockAdded]="stockAdded"
               (prevStep)="goBack(false,true)"
               (nextStep)="goForward(false,true)"
             ></app-mobile-risk-analysis>
           </div>
         </mat-step>
         <mat-step>
-          <ng-template matStepLabel>Entry Rules</ng-template>
           <div class="stepper-content">
             <app-mobile-trade-analysis
+            [stockOptions]="stockOptions"
+            [stockAdded]="stockAdded"
               (prevStep)="goBack(false,true)"
               (nextStep)="goForward(false,true)"
             ></app-mobile-trade-analysis>
@@ -98,7 +102,6 @@
         </mat-step>
 
         <mat-step>
-          <ng-template matStepLabel>Entry Rules</ng-template>
           <div class="stepper-content">
             <app-mobile-trade-thesis
               (prevStep)="goBack(false,true)"
@@ -108,7 +111,6 @@
         </mat-step>
 
         <mat-step>
-          <ng-template matStepLabel>Entry Rules</ng-template>
           <div class="stepper-content">
             <app-mobile-risk-management
               (prevStep)="goBack(false,true)"
@@ -118,7 +120,6 @@
         </mat-step>
 
         <mat-step>
-          <ng-template matStepLabel>Entry Rules</ng-template>
           <div class="stepper-content">
             <app-mobile-entry-rules
               (prevStep)="goBack(false,true)"
@@ -126,10 +127,6 @@
           </div>
         </mat-step>
       </mat-horizontal-stepper>
-
-
-
-
     </div>
   </div>
 </div>

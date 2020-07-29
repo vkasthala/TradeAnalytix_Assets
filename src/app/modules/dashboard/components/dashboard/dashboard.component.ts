@@ -27,6 +27,7 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(['/landing']);
   }
 
+
   get currentNavigation() {
     switch (this.currentRoute) {
       case 'dashboard': return {breadcrumb : 'DASHBOARD', title: 'DASHBOARD'};
@@ -37,6 +38,10 @@ export class DashboardComponent implements OnInit {
       case 'reports': return {breadcrumb : 'REPORTS', title: 'REPORTS'};
       case 'help': return {breadcrumb : 'HELP', title: 'HELP'};
       case 'setttings': return {breadcrumb : 'SETTINGS', title: 'MANAGE RULES'};
+      case 'close-trade' : return {breadcrumb : 'TRADE STRATEGIES', title: 'CLOSE TRADE'};
+      case 'exit-rules' : return {breadcrumb : 'TRADE STRATEGIES', title: 'EXIT RULES'};
+      case 'trade-plans' : return {breadcrumb : 'TRADING PLAN', title: 'TRADE PLAN'};
+      case 'add-new-trade-plan' : return {breadcrumb : 'TRADING PLAN', breadcrumbChild: 'ADD TRADE PLAN',title: 'ADD TRADE PLAN'};
       default :  return {breadcrumb : 'TRADE STRATEGIES', title: 'TRADE STRATEGIES'};
     }
   }

@@ -4,7 +4,7 @@
 
           <div class="trade-stategy-heading">
             <h6>
-              Profit and loss on each trade for a defined stock price range
+              Gain/Loss for a defined stock price range
             </h6>
           </div>
         </div>
@@ -13,111 +13,150 @@
           <table class="table table-striped">
             <thead>
               <tr>
-
                 <th>Change</th>
-                <th>Stock </th>
-                <th>Option-1</th>
-                <th>Option-2 </th>
-                <th>Option-3</th>
-                <th>Option-4</th>
-                <th>Net</th>
 
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td class="text-primary">-5%</td>
-                <td>-$429</td>
-                <td>$229</td>
-                <td>$1000</td>
-                <td>-$800</td>
-                <td>-$225</td>
-                <td>-$225</td>
+            
               </tr>
               <tr>
                 <td class="text-primary">-5%</td>
-                <td>-$429</td>
-                <td>$229</td>
-                <td>$1000</td>
-                <td>-$800</td>
-                <td>-$225</td>
-                <td>-$225</td>
+            
               </tr>
               <tr>
                 <td class="text-primary">-5%</td>
-                <td>-$429</td>
-                <td>$229</td>
-                <td>$1000</td>
-                <td>-$800</td>
-                <td>-$225</td>
-                <td>-$225</td>
+            
               </tr>
               <tr>
                 <td class="text-primary">-5%</td>
-                <td>-$429</td>
-                <td>$229</td>
-                <td>$1000</td>
-                <td>-$800</td>
-                <td>-$225</td>
-                <td>-$225</td>
+            
               </tr>
               <tr>
                 <td class="text-primary">-5%</td>
-                <td>-$429</td>
-                <td>$229</td>
-                <td>$1000</td>
-                <td>-$800</td>
-                <td>-$225</td>
-                <td>-$225</td>
+            
               </tr>
               <tr>
                 <td class="text-primary">-5%</td>
-                <td>-$429</td>
-                <td>$229</td>
-                <td>$1000</td>
-                <td>-$800</td>
-                <td>-$225</td>
-                <td>-$225</td>
+            
               </tr>
               <tr>
                 <td class="text-primary">-5%</td>
-                <td>-$429</td>
-                <td>$229</td>
-                <td>$1000</td>
-                <td>-$800</td>
-                <td>-$225</td>
-                <td>-$225</td>
+            
               </tr>
-              <tr>
-                <td class="text-primary">-5%</td>
-                <td>-$429</td>
-                <td>$229</td>
-                <td>$1000</td>
-                <td>-$800</td>
-                <td>-$225</td>
-                <td>-$225</td>
-              </tr>
-              <tr>
-                <td class="text-primary">-5%</td>
-                <td>-$429</td>
-                <td>$229</td>
-                <td>$1000</td>
-                <td>-$800</td>
-                <td>-$225</td>
-                <td>-$225</td>
-              </tr>
-              <tr>
-                <td class="text-primary">-5%</td>
-                <td>-$429</td>
-                <td>$229</td>
-                <td>$1000</td>
-                <td>-$800</td>
-                <td>-$225</td>
-                <td>-$225</td>
-              </tr>
+
 
             </tbody>
           </table>
+          <table class="table table-striped" *ngIf="stockAdded">
+            <thead>
+              <tr>
+
+        
+                <th>Stock </th>
+              
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>-$429</td>
+              </tr>
+              <tr>
+                <td>-$429</td>
+              </tr>
+              <tr>
+                <td>-$429</td>
+              </tr>
+              <tr>
+                <td>-$429</td>
+              </tr>
+              <tr>
+                <td>-$429</td>
+              </tr>
+              <tr>
+                <td>-$429</td>
+              </tr>
+              <tr>
+                <td>-$429</td>
+              </tr>
+ 
+
+            </tbody>
+          </table>
+
+
+          <ng-container *ngFor="let item of stockOptions; let i=index">
+          
+          
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Option-{{i+1}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>-$225</td>
+              </tr>
+              <tr>
+                <td>-$225</td>
+              </tr>
+              <tr>
+                <td>-$225</td>
+              </tr>
+              <tr>
+                <td>-$225</td>
+              </tr>
+              <tr>
+                <td>-$225</td>
+              </tr>
+              <tr>
+                <td>-$225</td>
+              </tr>
+              <tr>
+                <td>-$225</td>
+              </tr>
+
+
+            </tbody>
+          </table>
+        </ng-container>
+
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Net</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+          
+                <td>-$225</td>
+              </tr>
+              <tr>
+                <td>-$225</td>
+              </tr>
+              <tr>
+                <td>-$225</td>
+              </tr>
+              <tr>
+                <td>-$225</td>
+              </tr>
+              <tr>
+                <td>-$225</td>
+              </tr>
+              <tr>
+                <td>-$225</td>
+              </tr>
+              <tr>
+                <td>-$225</td>
+              </tr>
+            </tbody>
+          </table>
+
         </div>
 
         <div class="container-fluid">

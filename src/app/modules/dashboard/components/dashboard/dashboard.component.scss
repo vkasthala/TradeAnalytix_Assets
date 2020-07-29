@@ -10,7 +10,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px 20px;
+    padding: 5px 14px;
     @media #{$extra-small} {
       padding: 0px;
     }
@@ -20,7 +20,7 @@
         display: none;
       }
       img {
-        width: 30%;
+        width: 160px;
         height: auto;
       }
     }
@@ -195,17 +195,15 @@
       justify-content: space-between;
       align-items: flex-end;
       width: 100%;
-      margin-bottom: 15px;
-      .left-dash {
+      margin-bottom: 0px;
+      
         h3 {
           color: $secondary;
           font-weight: 500;
         }
 
-        h5 {
-          color: $member-name;
-        }
-      }
+       
+      
     }
   }
 }
@@ -252,7 +250,8 @@
         height: 100%;
         color: #565656;
         span {
-          img {
+          height: 20px;
+          svg{
             width: 17px;
           }
         }
@@ -266,13 +265,11 @@
 .mobile-logo{
   display: none;
   background-image: url('../../../../../assets/images/trade-logo.svg');
-  width: 180px;
-  width: 180px;
-  height: 80px;
+  width: 110px;
+  height: 60px;
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
-  margin: 0 auto;
   @media #{$extra-small} {
     display: flex;
   }

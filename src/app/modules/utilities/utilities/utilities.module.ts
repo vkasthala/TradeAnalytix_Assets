@@ -6,6 +6,7 @@ import { MatInputModule, MatButtonModule, MatDialogModule } from '@angular/mater
 import { FooterComponent } from 'src/app/components/footer/footer.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatIconModule} from '@angular/material/icon';
+import { MyDateRangePickerModule } from 'mydaterangepicker';
 @NgModule({
   declarations: [
     FooterComponent
@@ -18,7 +19,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatButtonModule,
     MatDialogModule,
     MatExpansionModule,
-    MatIconModule
+    MatIconModule,
+    MyDateRangePickerModule 
   ],
   exports : [
     MatStepperModule,
@@ -28,7 +30,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatDialogModule,
     FooterComponent,
     MatExpansionModule,
-    MatIconModule
+    MatIconModule,
+    MyDateRangePickerModule 
   ]
 })
 export class UtilitiesModule { }
