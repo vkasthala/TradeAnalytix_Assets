@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IMyDrpOptions } from 'mydaterangepicker';
 
 @Component({
   selector: 'app-reports',
@@ -8,6 +9,12 @@ import { Component, OnInit } from '@angular/core';
 export class ReportsComponent implements OnInit {
 
   constructor() { }
+
+  myDateRangePickerOptions: IMyDrpOptions = {
+    dateFormat: 'dd.mm.yyyy',
+    editableDateRangeField: false,
+    ariaLabelInputField : 'Date'
+ };
 
   ngOnInit() {
   }

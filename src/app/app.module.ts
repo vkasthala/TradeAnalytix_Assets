@@ -14,7 +14,7 @@ import { ActionReducer, MetaReducer, StoreModule } from '@ngrx/store';
 import { localStorageSync } from 'ngrx-store-localstorage';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { reducers } from './modules/utilities/reducers';
-import { UtilitiesModule } from './modules/utilities/utilities/utilities.module';
+import { UtilitiesModule } from './modules/Utilities/utilities.module';
 import { UtilService } from './services/util.service';
 
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
