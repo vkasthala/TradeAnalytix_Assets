@@ -14,6 +14,8 @@ import { CloseTradeComponent } from './components/close-trade/close-trade.compon
 import { ExitRulesComponent } from './components/exit-rules/exit-rules.component';
 import { AddnewtradeplanComponent } from './components/addnewtradeplan/addnewtradeplan.component';
 import { TradePlansComponent } from './components/trade-plans/trade-plans.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { RiskAnalysisComponent } from './components/risk-analysis/risk-analysis.component';
 
 const routes: Routes = [
   {
@@ -31,6 +33,10 @@ const routes: Routes = [
         {
           path : 'import-trades',
           component: ImportTradesComponent
+        },
+        {
+          path : 'risk-analysis',
+          component : RiskAnalysisComponent
         },
         {
           path : 'trade-strategies',
@@ -67,6 +73,10 @@ const routes: Routes = [
         {
           path: 'trade-plans',
           component: TradePlansComponent
+        },
+        {
+          path : 'profile',
+          component : ProfileComponent
         }
     ]
   },

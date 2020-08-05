@@ -8,7 +8,7 @@
                 </div>
                 <div class="mobile-logo cursor-pointer" [routerLink]="['/dashboard']">
                 </div>
-                <div class="dashboard-right-login">
+                <div class="dashboard-right-login" [routerLink]="['/dashboard/profile']">
                     <div class="login-img">
                         <img src="../../../assets/images/face-img.png" alt="">
                     </div>
@@ -47,13 +47,13 @@
                             <h4>Add New Trade</h4>
                         </a>
                     </li>
-                    <li [class.nav-active]="currentRoute == 'import-trades'">
-                        <a class="trade-nav-link" [routerLink]="['/dashboard/import-trades']"><span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="17.407" height="17.407" viewBox="0 0 17.407 17.407">
-                                <path id="Icon_ionic-ios-add-circle" data-name="Icon ionic-ios-add-circle" d="M12.078,3.375a8.7,8.7,0,1,0,8.7,8.7A8.7,8.7,0,0,0,12.078,3.375Zm3.787,9.373H12.748v3.117a.669.669,0,0,1-1.339,0V12.748H8.292a.669.669,0,0,1,0-1.339h3.117V8.292a.669.669,0,0,1,1.339,0v3.117h3.117a.669.669,0,0,1,0,1.339Z" transform="translate(-3.375 -3.375)" fill="#565656"/>
+                    <li [class.nav-active]="currentRoute == 'risk-analysis'">
+                        <a class="trade-nav-link" [routerLink]="['/dashboard/risk-analysis']"><span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="17.515" height="17.514" viewBox="0 0 17.515 17.514">
+                                <path id="Icon_metro-chart-dots" data-name="Icon metro-chart-dots" d="M4.76,17.253H20.085v2.189H2.571V1.928H4.76ZM7.5,16.159a1.642,1.642,0,0,1,0-3.284c.048,0,.1,0,.143.007L9.405,9.94a1.642,1.642,0,1,1,2.751,0l1.765,2.942q.072-.006.143-.007c.037,0,.073,0,.109,0l2.914-5.1a1.642,1.642,0,1,1,1.356.716c-.037,0-.073,0-.109,0l-2.914,5.1a1.642,1.642,0,1,1-2.732.029l-1.765-2.942c-.047,0-.1.007-.143.007s-.1,0-.143-.007L8.872,13.62A1.642,1.642,0,0,1,7.5,16.159Z" transform="translate(-2.571 -1.928)" fill="#565656"/>
                               </svg>
                               </span>
-                            <h4>IMPORT TRADES</h4>
+                            <h4>RISK ANALYSIS</h4>
                         </a>
                     </li>
                     <li [class.nav-active]="currentRoute == 'trade-strategies'">
