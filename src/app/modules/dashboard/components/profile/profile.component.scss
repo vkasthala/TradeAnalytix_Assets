@@ -106,11 +106,7 @@
       display: flex;
       align-items: center;
       width: 100%;
-      // padding-left: 27px;
-      @media #{$extra-small} {
-        width: 50%;
-      }
-
+      padding-left: 27px;
       .add-new {
         color: $primary;
         font-size: 14px;
@@ -124,11 +120,7 @@
       display: flex;
       align-items: flex-start;
       width: 100%;
-
-      @media #{$extra-small} {
-        width: 50%;
-      }
-
+      padding-left: 27px;
       .add-new {
         color: $primary;
         font-size: 14px;
@@ -370,4 +362,59 @@ textarea {
   .mydrp{
     width: 80% !important;
   }
+}
+
+
+// trade-profile-mobile
+
+.trade-profile-mobile{
+  margin-top: 20px;
+    display: none;  
+
+    @media #{$extra-small}{
+      display: flex;
+      flex-direction: column;
+    } 
+
+
+    .trade-top-heading h3 {
+      color: #016db0;
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 10px !important;
+  }
+
+ .trad-border {
+    border: 1px solid #acacac;
+    opacity: 0.3;
+}
+
+.trade-stategy-heading h6 {
+  color: #016db0;
+  font-weight: 500;
+  font-size: 18px;
+}
+}
+
+.trade-mobile-profile-sec{
+  margin-top: 15px;
+
+  .trade-box-left {
+    width: 100%;
+}
+
+.trade-sel{
+  width: 100%;
+}
+.trade-inp {
+  width: 100%;
+}
+
+.trade-thesis-list{
+  margin-top: 20px;
+}
+
+.mydrp{
+  width: 380px !important;
+}
 }

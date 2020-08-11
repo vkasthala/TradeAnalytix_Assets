@@ -2,7 +2,7 @@
 
 .trade-thesis-sec {
   .trade-thesis-heading {
-    border-bottom: 1px solid #7070704f;
+    border-bottom: 1px solid transparent;
     padding-bottom: 15px;
     h4 {
       color: $primary;
@@ -13,8 +13,8 @@
     padding: 0px 20px;
     border: 1px solid #ddd;
     position: relative;
-    &::after{
-      content: '';
+    &::after {
+      content: "";
       position: absolute;
       left: 50%;
       top: 0%;
@@ -34,7 +34,6 @@
     @media #{$extra-small} {
       padding: 0px;
     }
-  
   }
 }
 
@@ -66,7 +65,7 @@
     }
 
     @media #{$medium} {
-     min-height: 120px;
+      min-height: 120px;
     }
 
     .list-inner-left {
@@ -94,7 +93,7 @@
       display: flex;
       align-items: flex-start;
       width: 100%;
-      // padding-left: 27px;
+      padding-left: 27px;
       @media #{$extra-small} {
         width: 50%;
       }
@@ -107,7 +106,7 @@
         font-size: 14px;
         cursor: pointer;
         font-weight: 500;
-        margin-left: 14px;
+        // margin-left: 14px;
         @media #{$medium} {
           font-size: 14px;
         }
@@ -166,117 +165,123 @@
   }
 }
 
-
-
-// Toggle Customize 
-.switch{
-    position: relative;
-    width: 42%;
-  }
-  .switch label
-  {
-    width: 60px;
-    height: 30px;
-    position: absolute;
-    background-color: #999;
-    top: -3px;
-    left: 0;
-    border-radius:50px;
-    margin-bottom: 0px;
-  }
-  .switch input[type="checkbox"]
-  {
+// Toggle Customize
+.switch {
+  position: relative;
+  width: 42%;
+}
+.switch label {
+  width: 60px;
+  height: 30px;
+  position: absolute;
+  background-color: #999;
+  top: -3px;
+  left: 0;
+  border-radius: 50px;
+  margin-bottom: 0px;
+}
+.switch input[type="checkbox"] {
   visibility: hidden;
+}
+.switch label:after {
+  content: "";
+  width: 26px;
+  height: 26px;
+  border-radius: 50px;
+  position: absolute;
+  top: 2px;
+  left: 1px;
+  background-color: white;
+  transition: all 0.3s;
+}
+.switch input[type="checkbox"]:checked + label:after {
+  left: 33px;
+}
+.switch input[type="checkbox"]:checked + label {
+  background-color: $primary;
+}
+.switch input[type="checkbox"]:not(:checked) + label {
+  background-color: #ddd;
+}
+.switch-no {
+  color: #9e9e9e;
+}
+.switch-yes {
+  color: $primary;
+}
+
+.trade-check {
+  display: flex;
+  justify-content: center;
+  border: 1px solid #ddd;
+  width: 40%;
+  padding: 12px;
+  border-radius: 6px;
+  @media #{$small} {
+    width: 40%;
   }
-  .switch label:after{
-    content: "";
-    width: 26px;
-    height: 26px;
-    border-radius: 50px;
-    position: absolute;
-    top: 2px;
-    left: 1px;
-    background-color: white;
-    transition: all .3s;
-    }
-  .switch input[type="checkbox"]:checked + label:after{
-    left: 33px;
-    }
-  .switch input[type="checkbox"]:checked + label{
-   background-color:$primary;
-    }
-  .switch input[type="checkbox"]:not(:checked) + label{
-   background-color:#ddd;
-    }
-.switch-no{
-    color:#ddd;
-}
-.switch-yes{
-    color:$primary;
+
+  span {
+    width: 20%;
+    font-size: 16px;
+    font-weight: 500;
+  }
 }
 
+.add-new-t {
+  display: flex;
+  margin-top: 5px;
+  // flex-direction: column;
+}
 
-    .trade-check{
-        display: flex;
-        justify-content: center;
-        border: 1px solid #ddd;
-        width: 40%;
-        padding: 12px;
-        border-radius: 6px;
-        @media #{$small} {
-          width: 40%;
-        }
+.ad-mb {
+  margin-bottom: 10px;
+}
 
-        span{
-            width: 20%;
-            font-size:16px;
-            font-weight: 500;
-        }
-    }
+.left-trade,
+.right-trade {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  @media #{$small} {
+    width: 100%;
+  }
+}
 
-    .add-new-t {
-        display: flex;
-        flex-direction: column;
-    }
+.trade-input {
+  // width: 70%;
+  @media #{$small} {
+    width: 70%;
+  }
+}
 
-    .ad-mb{
-        margin-bottom: 10px;
-    }
+.trade-new {
+  // display: flex;
+  align-items: flex-start;
+  width: 100%;
+  margin-bottom: 15px;
+}
 
-    .left-trade ,.right-trade{
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      @media #{$small} {
-        width: 100%;
-      }
-    }
-    
+.trade-box-right {
+  width: 49%;
+  @media #{$small} {
+    width: 100%;
+  }
+}
+.trade-box-left {
+  width: 49%;
+  @media #{$small} {
+    width: 100%;
+  }
+}
 
-    .trade-input {
-      // width: 70%;
-      @media #{$small} {
-        width: 70%;
-      }
-    }
+.trade-risk-nw {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+}
 
-    .trade-new {
-      // display: flex;
-      align-items: flex-start;
-      width: 100%;
-      margin-bottom: 15px;
-     
-    }
 
-    .trade-box-right {
-      width: 49%;
-      @media #{$small} {
-        width: 100%;
-      }
-    }
-    .trade-box-left {
-      width: 49%;
-      @media #{$small} {
-        width: 100%;
-      }
-    }
+.add-left{
+  margin-left: 15px;
+}
