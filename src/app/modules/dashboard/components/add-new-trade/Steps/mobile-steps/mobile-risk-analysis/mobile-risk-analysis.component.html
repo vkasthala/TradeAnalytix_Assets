@@ -96,7 +96,7 @@
             </div>
             <div class="first-qt">
               <div class="stock-price-box">
-                <a (click)="increaseDaysLeft(i)">
+                <a (click)="decreaseDaysLeft(i)">
                   <img
                     alt=""
                     src="../../../../../assets/images/icon/Group 359.png"
@@ -105,7 +105,7 @@
                 <span> 
                   <input (keydown)="preventNegatives($event, true)" type="number" class="hide-bars" [(ngModel)]="item.daysLeft">
                 </span>
-                <a (click)="decreaseDaysLeft(i)">
+                <a (click)="increaseDaysLeft(i)">
                   <img
                     alt=""
                     src="../../../../../assets/images/icon/Group 360.png"
@@ -115,7 +115,7 @@
             </div>
             <div class="first-qt">
               <div class="stock-price-box">
-                <a (click)="increaseImpliedValue(i)">
+                <a (click)="decreaseImpliedValue(i)">
                   <img
                     alt=""
                     src="../../../../../assets/images/icon/Group 359.png"
@@ -125,7 +125,7 @@
                   <input (keydown)="preventNegatives($event, true)" type="number" class="hide-bars" [(ngModel)]="item.impliedValue"><p>&#37;</p>
   
                 </div>
-                <a (click)="decreaseImpliedValue(i)">
+                <a (click)="increaseImpliedValue(i)">
                   <img
                     alt=""
                     src="../../../../../assets/images/icon/Group 360.png"
@@ -143,7 +143,7 @@
 
       <div class="trade-btn-p">
         <a class="btn-pre" (click)="previous()">Previous</a>
-        <a class="btn-pre" (click)="next()">Skip Risk Analysis</a>
+        <a class="btn-pre" (click)="skipRiskAnalysis()">Skip Risk Analysis</a>
       </div>
     </div>
   </div>

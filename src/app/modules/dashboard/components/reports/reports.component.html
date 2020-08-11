@@ -5,7 +5,7 @@
             <div class="tab" role="tabpanel">
                 <ul class="nav nav-tabs" role="tablist">
                     <li class="active" role="presentation">
-                        <a aria-controls="home" aria-expanded="true" data-toggle="tab" href="#General" role="tab">Data
+                        <a aria-controls="home" aria-expanded="true" data-toggle="tab" href="#General" role="tab">
                             General</a>
                     </li>
                     <li class="" role="presentation">
@@ -28,16 +28,338 @@
                 <div class="tab-content tabs">
                     <div class="tab-pane active" id="General" role="tabpanel">
                         <div class="general-sec">
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
-                            </p>
+                            <div class="risk-manage-sec">
+                                <div class="top-sec">
+                                    <div class="left-heading">
+                                        <h5>
+                                            Key Metrics
+                                        </h5>
+                                    </div>
+    
+                                    <div class="right-filters">
+                                        <div class="left-filters">
+                                            <div class="left-filters-heading">
+                                                <p>
+                                                    Filter By
+                                                </p>
+                                            </div>
+                                            <div class="right-filters-name">
+                                                <div class="box-1">
+                                                    1W
+                                                </div>
+                                                <div class="box-1">
+                                                    1W
+                                                </div>
+                                                <div class="box-1">
+                                                    3M
+                                                </div>
+                                                <div class="box-1">
+                                                    YTD
+                                                </div>
+                                            </div>
+                                        </div>
+    
+                                        <div class="right-datepick">
+                                            <div class="trade-date">
+    
+                                                <div class="form-group">
+                                                    <div class='input-group date' id='datetimepicker1'>
+                                                        <my-date-range-picker placeholder="Date range" name="mydaterange"
+                                                            [options]="myDateRangePickerOptions"></my-date-range-picker>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <!-- cards -->
+                                <div class="trade-dash-cards">
+                                    <div class="flex-item card-first">
+                                        <div class="flex-inner">
+                                            <a>
+                                                <span>R for the 
+                                                    selected period</span>
+                                                <h3 class="trade-green">
+                                                    +$12,546
+                                                </h3>
+                                            </a>
+    
+                                        </div>
+                                    </div>
+                                    <div class="flex-item card-second">
+                                        <div class="flex-inner">
+                                            <a>
+                                                <span>Maximum Profit 
+                                                    Potential</span>
+                                                <h3 class="trade-green">
+                                                    +$1,546
+                                                </h3>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="flex-item card-second">
+                                        <div class="flex-inner">
+                                            <a>
+                                                <span>Maxiumum Amount 
+                                                    at Risk</span>
+                                                <h3 class="trade-red">
+                                                    57%
+                                                </h3>
+                                            </a>
+    
+                                        </div>
+                                    </div>
+                                    <div class="flex-item card-first">
+                                        <div class="flex-inner">
+                                            <a>
+                                                <span>Amount Allocated 
+                                                    for Hedging</span>
+                                                <h3 >
+                                                    $2,325
+                                                </h3>
+                                            </a>
+    
+                                        </div>
+                                    </div>
+                                    <div class="flex-item card-three">
+                                        <div class="flex-inner">
+                                            <a>
+                                                <span>Hedge 
+                                                    Percentage</span>
+                                                <h3 class="trade-green">
+                                                    1.2 days
+                                                </h3>
+                                            </a>
+    
+                                        </div>
+                                    </div>
+                                    <div class="flex-item card-three">
+                                        <div class="flex-inner">
+                                            <a>
+                                                <span>Net Gain on 
+                                                    Hedged Trades</span>
+                                                <h3 class="trade-green">
+                                                    Iron Condor
+                                                </h3>
+    
+                                               
+                                            </a>
+    
+                                        </div>
+                                    </div>
+                                    <div class="flex-item card-second">
+                                        <div class="flex-inner">
+                                            <a>
+                                                <span>Max. Loss on 
+                                                    Hedged Trades</span>
+                                                <h3 class="trade-red">
+                                                    25%
+                                                </h3>
+                                            </a>
+    
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <!-- risk-nalytics -->
+                                <div class="trade-dash-con">
+    
+                                        <div class="row">
+                                            <div class="col-sm-12 col-md-6">
+                                                <div class="trade-analytics">
+                                                    <div class="trade-headiang">
+                                                        <h5>R History</h5>
+                                                    </div>
+                                                    <div class="dsh-img">
+                                                        <img src="../../../../../assets/images/risk/Group 305.png" alt="" class="img-fluid">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-6">
+                                                <div class="trade-analytics">
+                                                    <div class="trade-headiang">
+                                                        <h5>Maximum Profit and Risk History</h5>
+                                                    </div>
+                                                    <div class="dsh-img">
+                                                        <img src="../../../../../assets/images/risk/Group 306.png" alt="" class="img-fluid">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                          
+                                        </div>
+                                    
+                                </div>
+    
+                            </div>
                         </div>
                     </div>
                     <div class="tab-pane fade" id="Performance" role="tabpanel">
                         <div class="performance-sec">
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
-                            </p>
+                            <div class="risk-manage-sec">
+                                <div class="top-sec">
+                                    <div class="left-heading">
+                                        <h5>
+                                            Key Metrics
+                                        </h5>
+                                    </div>
+    
+                                    <div class="right-filters">
+                                        <div class="left-filters">
+                                            <div class="left-filters-heading">
+                                                <p>
+                                                    Filter By
+                                                </p>
+                                            </div>
+                                            <div class="right-filters-name">
+                                                <div class="box-1">
+                                                    1W
+                                                </div>
+                                                <div class="box-1">
+                                                    1W
+                                                </div>
+                                                <div class="box-1">
+                                                    3M
+                                                </div>
+                                                <div class="box-1">
+                                                    YTD
+                                                </div>
+                                            </div>
+                                        </div>
+    
+                                        <div class="right-datepick">
+                                            <div class="trade-date">
+    
+                                                <div class="form-group">
+                                                    <div class='input-group date' id='datetimepicker1'>
+                                                        <my-date-range-picker placeholder="Date range" name="mydaterange"
+                                                            [options]="myDateRangePickerOptions"></my-date-range-picker>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <!-- cards -->
+                                <div class="trade-dash-cards">
+                                    <div class="flex-item card-first">
+                                        <div class="flex-inner">
+                                            <a>
+                                                <span>R for the 
+                                                    selected period</span>
+                                                <h3 class="trade-green">
+                                                    +$12,546
+                                                </h3>
+                                            </a>
+    
+                                        </div>
+                                    </div>
+                                    <div class="flex-item card-second">
+                                        <div class="flex-inner">
+                                            <a>
+                                                <span>Maximum Profit 
+                                                    Potential</span>
+                                                <h3 class="trade-green">
+                                                    +$1,546
+                                                </h3>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="flex-item card-second">
+                                        <div class="flex-inner">
+                                            <a>
+                                                <span>Maxiumum Amount 
+                                                    at Risk</span>
+                                                <h3 class="trade-red">
+                                                    57%
+                                                </h3>
+                                            </a>
+    
+                                        </div>
+                                    </div>
+                                    <div class="flex-item card-first">
+                                        <div class="flex-inner">
+                                            <a>
+                                                <span>Amount Allocated 
+                                                    for Hedging</span>
+                                                <h3 >
+                                                    $2,325
+                                                </h3>
+                                            </a>
+    
+                                        </div>
+                                    </div>
+                                    <div class="flex-item card-three">
+                                        <div class="flex-inner">
+                                            <a>
+                                                <span>Hedge 
+                                                    Percentage</span>
+                                                <h3 class="trade-green">
+                                                    1.2 days
+                                                </h3>
+                                            </a>
+    
+                                        </div>
+                                    </div>
+                                    <div class="flex-item card-three">
+                                        <div class="flex-inner">
+                                            <a>
+                                                <span>Net Gain on 
+                                                    Hedged Trades</span>
+                                                <h3 class="trade-green">
+                                                    Iron Condor
+                                                </h3>
+    
+                                               
+                                            </a>
+    
+                                        </div>
+                                    </div>
+                                    <div class="flex-item card-second">
+                                        <div class="flex-inner">
+                                            <a>
+                                                <span>Max. Loss on 
+                                                    Hedged Trades</span>
+                                                <h3 class="trade-red">
+                                                    25%
+                                                </h3>
+                                            </a>
+    
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <!-- risk-nalytics -->
+                                <div class="trade-dash-con">
+    
+                                        <div class="row">
+                                            <div class="col-sm-12 col-md-6">
+                                                <div class="trade-analytics">
+                                                    <div class="trade-headiang">
+                                                        <h5>R History</h5>
+                                                    </div>
+                                                    <div class="dsh-img">
+                                                        <img src="../../../../../assets/images/risk/Group 305.png" alt="" class="img-fluid">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-6">
+                                                <div class="trade-analytics">
+                                                    <div class="trade-headiang">
+                                                        <h5>Maximum Profit and Risk History</h5>
+                                                    </div>
+                                                    <div class="dsh-img">
+                                                        <img src="../../../../../assets/images/risk/Group 306.png" alt="" class="img-fluid">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                          
+                                        </div>
+                                    
+                                </div>
+    
+                            </div>
                         </div>
                     </div>
                     <div class="tab-pane fade" id="RiskManagement" role="tabpanel">
@@ -208,16 +530,338 @@
                     </div>
                     <div class="tab-pane fade" id="Direction" role="tabpanel">
                         <div class="direction-sec">
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
-                            </p>
+                            <div class="risk-manage-sec">
+                                <div class="top-sec">
+                                    <div class="left-heading">
+                                        <h5>
+                                            Key Metrics
+                                        </h5>
+                                    </div>
+    
+                                    <div class="right-filters">
+                                        <div class="left-filters">
+                                            <div class="left-filters-heading">
+                                                <p>
+                                                    Filter By
+                                                </p>
+                                            </div>
+                                            <div class="right-filters-name">
+                                                <div class="box-1">
+                                                    1W
+                                                </div>
+                                                <div class="box-1">
+                                                    1W
+                                                </div>
+                                                <div class="box-1">
+                                                    3M
+                                                </div>
+                                                <div class="box-1">
+                                                    YTD
+                                                </div>
+                                            </div>
+                                        </div>
+    
+                                        <div class="right-datepick">
+                                            <div class="trade-date">
+    
+                                                <div class="form-group">
+                                                    <div class='input-group date' id='datetimepicker1'>
+                                                        <my-date-range-picker placeholder="Date range" name="mydaterange"
+                                                            [options]="myDateRangePickerOptions"></my-date-range-picker>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <!-- cards -->
+                                <div class="trade-dash-cards">
+                                    <div class="flex-item card-first">
+                                        <div class="flex-inner">
+                                            <a>
+                                                <span>R for the 
+                                                    selected period</span>
+                                                <h3 class="trade-green">
+                                                    +$12,546
+                                                </h3>
+                                            </a>
+    
+                                        </div>
+                                    </div>
+                                    <div class="flex-item card-second">
+                                        <div class="flex-inner">
+                                            <a>
+                                                <span>Maximum Profit 
+                                                    Potential</span>
+                                                <h3 class="trade-green">
+                                                    +$1,546
+                                                </h3>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="flex-item card-second">
+                                        <div class="flex-inner">
+                                            <a>
+                                                <span>Maxiumum Amount 
+                                                    at Risk</span>
+                                                <h3 class="trade-red">
+                                                    57%
+                                                </h3>
+                                            </a>
+    
+                                        </div>
+                                    </div>
+                                    <div class="flex-item card-first">
+                                        <div class="flex-inner">
+                                            <a>
+                                                <span>Amount Allocated 
+                                                    for Hedging</span>
+                                                <h3 >
+                                                    $2,325
+                                                </h3>
+                                            </a>
+    
+                                        </div>
+                                    </div>
+                                    <div class="flex-item card-three">
+                                        <div class="flex-inner">
+                                            <a>
+                                                <span>Hedge 
+                                                    Percentage</span>
+                                                <h3 class="trade-green">
+                                                    1.2 days
+                                                </h3>
+                                            </a>
+    
+                                        </div>
+                                    </div>
+                                    <div class="flex-item card-three">
+                                        <div class="flex-inner">
+                                            <a>
+                                                <span>Net Gain on 
+                                                    Hedged Trades</span>
+                                                <h3 class="trade-green">
+                                                    Iron Condor
+                                                </h3>
+    
+                                               
+                                            </a>
+    
+                                        </div>
+                                    </div>
+                                    <div class="flex-item card-second">
+                                        <div class="flex-inner">
+                                            <a>
+                                                <span>Max. Loss on 
+                                                    Hedged Trades</span>
+                                                <h3 class="trade-red">
+                                                    25%
+                                                </h3>
+                                            </a>
+    
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <!-- risk-nalytics -->
+                                <div class="trade-dash-con">
+    
+                                        <div class="row">
+                                            <div class="col-sm-12 col-md-6">
+                                                <div class="trade-analytics">
+                                                    <div class="trade-headiang">
+                                                        <h5>R History</h5>
+                                                    </div>
+                                                    <div class="dsh-img">
+                                                        <img src="../../../../../assets/images/risk/Group 305.png" alt="" class="img-fluid">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-6">
+                                                <div class="trade-analytics">
+                                                    <div class="trade-headiang">
+                                                        <h5>Maximum Profit and Risk History</h5>
+                                                    </div>
+                                                    <div class="dsh-img">
+                                                        <img src="../../../../../assets/images/risk/Group 306.png" alt="" class="img-fluid">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                          
+                                        </div>
+                                    
+                                </div>
+    
+                            </div>
                         </div>
                     </div>
                     <div class="tab-pane fade" id="Discipline" role="tabpanel">
                         <div class="discipline-sec">
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
-                            </p>
+                            <div class="risk-manage-sec">
+                                <div class="top-sec">
+                                    <div class="left-heading">
+                                        <h5>
+                                            Key Metrics
+                                        </h5>
+                                    </div>
+    
+                                    <div class="right-filters">
+                                        <div class="left-filters">
+                                            <div class="left-filters-heading">
+                                                <p>
+                                                    Filter By
+                                                </p>
+                                            </div>
+                                            <div class="right-filters-name">
+                                                <div class="box-1">
+                                                    1W
+                                                </div>
+                                                <div class="box-1">
+                                                    1W
+                                                </div>
+                                                <div class="box-1">
+                                                    3M
+                                                </div>
+                                                <div class="box-1">
+                                                    YTD
+                                                </div>
+                                            </div>
+                                        </div>
+    
+                                        <div class="right-datepick">
+                                            <div class="trade-date">
+    
+                                                <div class="form-group">
+                                                    <div class='input-group date' id='datetimepicker1'>
+                                                        <my-date-range-picker placeholder="Date range" name="mydaterange"
+                                                            [options]="myDateRangePickerOptions"></my-date-range-picker>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <!-- cards -->
+                                <div class="trade-dash-cards">
+                                    <div class="flex-item card-first">
+                                        <div class="flex-inner">
+                                            <a>
+                                                <span>R for the 
+                                                    selected period</span>
+                                                <h3 class="trade-green">
+                                                    +$12,546
+                                                </h3>
+                                            </a>
+    
+                                        </div>
+                                    </div>
+                                    <div class="flex-item card-second">
+                                        <div class="flex-inner">
+                                            <a>
+                                                <span>Maximum Profit 
+                                                    Potential</span>
+                                                <h3 class="trade-green">
+                                                    +$1,546
+                                                </h3>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="flex-item card-second">
+                                        <div class="flex-inner">
+                                            <a>
+                                                <span>Maxiumum Amount 
+                                                    at Risk</span>
+                                                <h3 class="trade-red">
+                                                    57%
+                                                </h3>
+                                            </a>
+    
+                                        </div>
+                                    </div>
+                                    <div class="flex-item card-first">
+                                        <div class="flex-inner">
+                                            <a>
+                                                <span>Amount Allocated 
+                                                    for Hedging</span>
+                                                <h3 >
+                                                    $2,325
+                                                </h3>
+                                            </a>
+    
+                                        </div>
+                                    </div>
+                                    <div class="flex-item card-three">
+                                        <div class="flex-inner">
+                                            <a>
+                                                <span>Hedge 
+                                                    Percentage</span>
+                                                <h3 class="trade-green">
+                                                    1.2 days
+                                                </h3>
+                                            </a>
+    
+                                        </div>
+                                    </div>
+                                    <div class="flex-item card-three">
+                                        <div class="flex-inner">
+                                            <a>
+                                                <span>Net Gain on 
+                                                    Hedged Trades</span>
+                                                <h3 class="trade-green">
+                                                    Iron Condor
+                                                </h3>
+    
+                                               
+                                            </a>
+    
+                                        </div>
+                                    </div>
+                                    <div class="flex-item card-second">
+                                        <div class="flex-inner">
+                                            <a>
+                                                <span>Max. Loss on 
+                                                    Hedged Trades</span>
+                                                <h3 class="trade-red">
+                                                    25%
+                                                </h3>
+                                            </a>
+    
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <!-- risk-nalytics -->
+                                <div class="trade-dash-con">
+    
+                                        <div class="row">
+                                            <div class="col-sm-12 col-md-6">
+                                                <div class="trade-analytics">
+                                                    <div class="trade-headiang">
+                                                        <h5>R History</h5>
+                                                    </div>
+                                                    <div class="dsh-img">
+                                                        <img src="../../../../../assets/images/risk/Group 305.png" alt="" class="img-fluid">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-6">
+                                                <div class="trade-analytics">
+                                                    <div class="trade-headiang">
+                                                        <h5>Maximum Profit and Risk History</h5>
+                                                    </div>
+                                                    <div class="dsh-img">
+                                                        <img src="../../../../../assets/images/risk/Group 306.png" alt="" class="img-fluid">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                          
+                                        </div>
+                                    
+                                </div>
+    
+                            </div>
                         </div>
                     </div>
                 </div>

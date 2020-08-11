@@ -14,10 +14,10 @@
                     </div>
                     <div class="login-member">
                         <div class="login-member-name">
-                            <h5>Welcome Venkat</h5>
+                            <h5>Welcome Venkat</h5> <div class="edit-icon"><img src="../../../../../assets/images/Dashboard/Icon material-edit.png" alt=""></div>
                         </div>
-                        <div class="login-member-name" (click)="logout()">
-                            <h4>Logout</h4>
+                        <div class="login-log" (click)="logout()">
+                            <h6>Logout</h6>
                         </div>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
                         <a class="trade-nav-link" [routerLink]="['/dashboard']"><span><svg xmlns="http://www.w3.org/2000/svg" width="21.032" height="19.414" viewBox="0 0 21.032 19.414">
                             <path id="Icon_ionic-md-home" data-name="Icon ionic-md-home" d="M11.464,23.914V17.443h4.854v6.471h4.934V14.207h3.155L13.891,4.5,3.375,14.207H6.53v9.707Z" transform="translate(-3.375 -4.5)"  fill="#565656"/>
                           </svg></span>
-                            <h4>Dashboard</h4>
+                            <h4>HOME</h4>
                         </a>
                     </li>
                     <li [class.nav-active]="currentRoute == 'new-trade'">
@@ -44,7 +44,17 @@
                                     <path id="Icon_ionic-ios-add-circle" data-name="Icon ionic-ios-add-circle" d="M12.078,3.375a8.7,8.7,0,1,0,8.7,8.7A8.7,8.7,0,0,0,12.078,3.375Zm3.787,9.373H12.748v3.117a.669.669,0,0,1-1.339,0V12.748H8.292a.669.669,0,0,1,0-1.339h3.117V8.292a.669.669,0,0,1,1.339,0v3.117h3.117a.669.669,0,0,1,0,1.339Z" transform="translate(-3.375 -3.375)" fill="#565656"/>
                                   </svg>
                         </span>
-                            <h4>Add New Trade</h4>
+                            <h4>Add Trade</h4>
+                        </a>
+                    </li>
+                    <li [class.nav-active]="currentRoute == 'import-trades'">
+                        <a class="trade-nav-link" [routerLink]="['/dashboard/import-trades']">
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="17.407" height="17.407" viewBox="0 0 17.407 17.407">
+                                    <path id="Icon_ionic-ios-add-circle" data-name="Icon ionic-ios-add-circle" d="M12.078,3.375a8.7,8.7,0,1,0,8.7,8.7A8.7,8.7,0,0,0,12.078,3.375Zm3.787,9.373H12.748v3.117a.669.669,0,0,1-1.339,0V12.748H8.292a.669.669,0,0,1,0-1.339h3.117V8.292a.669.669,0,0,1,1.339,0v3.117h3.117a.669.669,0,0,1,0,1.339Z" transform="translate(-3.375 -3.375)" fill="#565656"/>
+                                  </svg>
+                        </span>
+                            <h4>Import Trades</h4>
                         </a>
                     </li>
                     <li [class.nav-active]="currentRoute == 'risk-analysis'">
@@ -54,6 +64,16 @@
                               </svg>
                               </span>
                             <h4>RISK ANALYSIS</h4>
+                        </a>
+                    </li>
+                    <li [class.nav-active]="currentRoute == 'trade-plans'">
+                        <a class="trade-nav-link" [routerLink]="['/dashboard/trade-plans']"><span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="17.002" viewBox="0 0 22 17.002">
+                                <path id="Subtraction_9" data-name="Subtraction 9" d="M-8320-298h-2v-2h-9v-13h-1v-2h1l20,0,1,0v2h-1v13h-9v2Zm-5.154-12.9a3.851,3.851,0,0,0-3.846,3.848,3.851,3.851,0,0,0,3.846,3.848,3.851,3.851,0,0,0,3.846-3.848,3.791,3.791,0,0,0-.4-1.719l-3.441,1.719V-310.9ZM-8319-307h0v2h6v-2Zm-5.6-5h0v3.848l3.439-1.721A3.823,3.823,0,0,0-8324.6-312Zm5.6,1h0v2h6v-2Z" transform="translate(8332 315.001)" fill="#565656"/>
+                              </svg>
+                              
+                                </span>
+                            <h4>Trade Plan </h4>
                         </a>
                     </li>
                     <li [class.nav-active]="currentRoute == 'trade-strategies'">
@@ -90,14 +110,6 @@
                               </svg>
                               </span>
                             <h4>Settings</h4>
-                        </a>
-                    </li>
-                    <li [class.nav-active]="currentRoute == 'help'">
-                        <a class="trade-nav-link" [routerLink]="['/dashboard/help']"><span><svg xmlns="http://www.w3.org/2000/svg" width="19.845" height="19.845" viewBox="0 0 19.845 19.845">
-                            <path id="Icon_awesome-question-circle" data-name="Icon awesome-question-circle" d="M20.407,10.485A9.922,9.922,0,1,1,10.485.563,9.922,9.922,0,0,1,20.407,10.485ZM10.751,3.843A5.182,5.182,0,0,0,6.088,6.394a.481.481,0,0,0,.109.65L7.585,8.1a.48.48,0,0,0,.667-.085c.715-.907,1.2-1.432,2.293-1.432.817,0,1.828.526,1.828,1.319,0,.6-.495.907-1.3,1.359-.941.528-2.187,1.184-2.187,2.827v.16a.48.48,0,0,0,.48.48h2.241a.48.48,0,0,0,.48-.48v-.053c0-1.139,3.328-1.186,3.328-4.268C15.414,5.6,13.006,3.843,10.751,3.843Zm-.266,9.922a1.84,1.84,0,1,0,1.84,1.84A1.843,1.843,0,0,0,10.485,13.766Z" transform="translate(-0.563 -0.563)" fill="#565656"/>
-                          </svg>
-                          </span>
-                            <h4>Help</h4>
                         </a>
                     </li>
                 </ul>
@@ -183,7 +195,7 @@
                 <path id="Icon_ionic-ios-settings" data-name="Icon ionic-ios-settings" d="M21.014,13.5a2.316,2.316,0,0,1,1.486-2.16,9.177,9.177,0,0,0-1.111-2.676,2.348,2.348,0,0,1-.942.2,2.311,2.311,0,0,1-2.114-3.252A9.155,9.155,0,0,0,15.661,4.5a2.314,2.314,0,0,1-4.322,0A9.182,9.182,0,0,0,8.662,5.611,2.311,2.311,0,0,1,6.548,8.863a2.271,2.271,0,0,1-.942-.2A9.38,9.38,0,0,0,4.5,11.342a2.315,2.315,0,0,1,0,4.321,9.177,9.177,0,0,0,1.111,2.676,2.312,2.312,0,0,1,3.052,3.051A9.236,9.236,0,0,0,11.344,22.5a2.31,2.31,0,0,1,4.312,0,9.182,9.182,0,0,0,2.677-1.111,2.314,2.314,0,0,1,3.052-3.051A9.231,9.231,0,0,0,22.5,15.663,2.327,2.327,0,0,1,21.014,13.5Zm-7.472,3.744a3.749,3.749,0,1,1,3.75-3.749A3.748,3.748,0,0,1,13.542,17.242Z" transform="translate(-4.5 -4.5)" fill="#565656"/>
               </svg>
               
-              </span>Trade</a>
+              </span>Trade plan</a>
       </li>
       <li>
           <a > <span>

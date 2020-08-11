@@ -3,7 +3,7 @@
 
 .trade-thesis-sec {
   .trade-thesis-heading {
-    border-bottom: 1px solid #7070704f;
+    border-bottom: 1px solid transparent;
     padding-bottom: 15px;
     h4 {
       color: $primary;
@@ -96,7 +96,7 @@
       display: flex;
       align-items: baseline;
       width: 100%;
-      // padding-left: 27px;
+      padding-left: 27px;
       @media #{$extra-small} {
         width: 50%;
       }
@@ -185,7 +185,7 @@
 
 
  textarea{
-   width: 500px;
+   width: 420px;
   height: 70px;
   resize: none;
   @media #{$small} {
