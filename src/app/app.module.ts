@@ -16,6 +16,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { reducers } from './modules/utilities/reducers';
 import { UtilitiesModule } from './modules/Utilities/utilities.module';
 import { UtilService } from './services/util.service';
+import { HttpClientModule } from '@angular/common/http';
 
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
   return localStorageSync({ keys: [globalConfigFeatureKey], rehydrate: true })(reducer);
@@ -30,6 +31,7 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     DashboardModule,
     UtilitiesModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
