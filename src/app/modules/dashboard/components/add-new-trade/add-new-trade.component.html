@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="addnew-trade">
     <mat-horizontal-stepper labelPosition="bottom" #stepper [linear]="false">
-      <mat-step>
+      <mat-step [class.active]="stepone.completed" #stepone>
         <ng-template matStepLabel>Trade Details</ng-template>
 
         <div class="stepper-content">
@@ -87,6 +87,7 @@
             [stockAdded]="stockAdded"
               (prevStep)="goBack(false,true)"
               (nextStep)="goForward(false,true)"
+              (skipAnalysis)="goForward(true,true)"
             ></app-mobile-risk-analysis>
           </div>
         </mat-step>

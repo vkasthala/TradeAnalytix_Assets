@@ -11,7 +11,7 @@ import { ReportsComponent } from './components/reports/reports.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { HelpComponent } from './components/help/help.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { UtilitiesModule } from '../utilities/utilities/utilities.module';
+import { UtilitiesModule } from '../Utilities/utilities.module';
 import { TradeDetailsComponent } from './components/add-new-trade/Steps/trade-details/trade-details.component';
 import { TradeThesisComponent } from './components/add-new-trade/Steps/trade-thesis/trade-thesis.component';
 import { RiskManagementComponent } from './components/add-new-trade/Steps/risk-management/risk-management.component';
@@ -32,6 +32,8 @@ import { SingleInputModalComponent } from './modalAsComponents/single-input-moda
 import { ManageRulePopupComponent } from './modalAsComponents/manage-rule-popup/manage-rule-popup.component';
 import { AddnewtradeplanComponent } from './components/addnewtradeplan/addnewtradeplan.component';
 import { TradePlansComponent } from './components/trade-plans/trade-plans.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { RiskAnalysisComponent } from './components/risk-analysis/risk-analysis.component';
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -62,7 +64,9 @@ import { TradePlansComponent } from './components/trade-plans/trade-plans.compon
     SingleInputModalComponent,
     ManageRulePopupComponent,
     AddnewtradeplanComponent,
-    TradePlansComponent
+    TradePlansComponent,
+    ProfileComponent,
+    RiskAnalysisComponent
   ],
   imports: [
     CommonModule,

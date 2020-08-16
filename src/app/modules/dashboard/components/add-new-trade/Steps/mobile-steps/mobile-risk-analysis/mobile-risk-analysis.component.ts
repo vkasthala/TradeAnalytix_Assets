@@ -9,6 +9,7 @@ export class MobileRiskAnalysisComponent implements OnInit {
   
   @Output('nextStep') nextStep = new EventEmitter();
   @Output('prevStep') prevStep = new EventEmitter();
+  @Output('skipAnalysis') skipAnalysis = new EventEmitter();
 
   stockPriceStartRange:number = 0;
   stockPriceEndRange:number = 0;
@@ -28,6 +29,10 @@ export class MobileRiskAnalysisComponent implements OnInit {
 
   next() {
     this.nextStep.emit()
+  }
+
+  skipRiskAnalysis() {
+      this.skipAnalysis.emit()
   }
 
   increaseStockPriceStartRange() {

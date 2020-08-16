@@ -64,7 +64,7 @@
                                 <div class="cards-inner">
                                     <div class="cards-inner-top">
                                         <div class="left-card-inner">
-                                            <h6>Add Stock</h6>
+                                            <h6>Stock</h6>
                                         </div>
                                         <div class="right-card-inner" (click)="removeStock()">
                                             <img src="../../../../../assets/images/icon/delete.png" alt=""
@@ -140,7 +140,7 @@
                                     [ngClass]="{'card-margin': i > 0}">
                                     <div class="cards-inner-top">
                                         <div class="left-card-inner">
-                                            <h6> Add Option-{{i+1}}</h6>
+                                            <h6> Option-{{i+1}}</h6>
                                         </div>
                                         <div class="right-card-inner" (click)="deleteStockOption(i)">
                                             <img src="../../../../../assets/images/icon/delete.png" alt=""
@@ -256,7 +256,7 @@
 
                             <div class="add-option-btn">
                                 <a class="btn btn-add" (click)="addStock()" *ngIf="!stockAdded"> Add Stock</a>
-                                <a class="btn btn-secondary" (click)="addOption()"> Add Option</a>
+                                <a class="btn btn-secondary" *ngIf="stockOptions.length < 4" (click)="addOption()"> Add Option</a>
 
                                 <a class="btn btn-add" (click)="next()" *ngIf="stockOptions.length > 0 || stockAdded"> PROCEED TO RISK ANALYSIS</a>
 
