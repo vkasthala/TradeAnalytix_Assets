@@ -340,11 +340,12 @@
                         </div>
                         <div class="card-right">
                             <div class="form-group">
-                                <select id="inputState" class="form-control select-input">
-                                    <option value="" selected data-default>Buy to Open</option>
-                                    <option value="">Sell to Open</option>
-                                    <option value="">Buy to Close</option>
-                                    <option value="">Sell to Close</option>
+                                <select id="inputState" class="form-control select-input"
+                                    [(ngModel)]="stockEntry.actionType">
+                                    <option value="BUY_TO_OPEN" selected data-default>Buy to Open</option>
+                                    <option value="SELL_TO_OPEN">Sell to Open</option>
+                                    <option value="BUY_TO_CLOSE">Buy to Close</option>
+                                    <option value="SELL_TO_CLOSE">Sell to Close</option>
                                 </select>
                             </div>
                         </div>
@@ -356,7 +357,7 @@
                         <div class="card-right">
                             <div class="form-group">
                                 <input type="number" (keydown)="preventNegatives($event, false)" min="0"
-                                    class="form-control cards-input" />
+                                    class="form-control cards-input" [(ngModel)]="stockEntry.quantity" />
                             </div>
                         </div>
                     </div>
@@ -369,7 +370,7 @@
                                 <input type="number" pattern="^\d*(\.\d{0,2})?$"
                                     (change)="checkForDecimalValidation($event)" step="0.01"
                                     (keydown)="preventNegatives($event, true)" min="0" class="form-control cards-input"
-                                    placeholder="" />
+                                    placeholder="" [(ngModel)]="stockEntry.price" />
                             </div>
                         </div>
                     </div>
@@ -378,7 +379,7 @@
                             <span>Net Debit</span>
                         </div>
                         <div class="card-right">
-                            <h6></h6>
+                            <h6>{{(stockEntry.quantity * stockEntry.price).toFixed(2)}}</h6>
                         </div>
                     </div>
                 </div>
@@ -393,11 +394,12 @@
                             </div>
                             <div class="card-right">
                                 <div class="form-group">
-                                    <select id="inputState" class="form-control select-input">
-                                        <option value="" selected data-default>Buy to Open</option>
-                                        <option value="">Sell to Open</option>
-                                        <option value="">Buy to Close</option>
-                                        <option value="">Sell to Close</option>
+                                    <select id="inputState" class="form-control select-input"
+                                        [(ngModel)]="stockOptions[index].actionType">
+                                        <option value="BUY_TO_OPEN" selected data-default>Buy to Open</option>
+                                        <option value="SELL_TO_OPEN">Sell to Open</option>
+                                        <option value="BUY_TO_CLOSE">Buy to Close</option>
+                                        <option value="SELL_TO_CLOSE">Sell to Close</option>
                                     </select>
                                 </div>
                             </div>
@@ -409,7 +411,8 @@
                             <div class="card-right">
                                 <div class="form-group">
                                     <input type="number" (keydown)="preventNegatives($event, false)" min="0"
-                                        class="form-control cards-input" placeholder="" />
+                                        class="form-control cards-input" placeholder=""
+                                        [(ngModel)]="stockOptions[index].contracts" />
                                 </div>
                             </div>
                         </div>
@@ -421,7 +424,8 @@
                                 <div class="form-group">
                                     <input type="number" (keydown)="preventNegatives($event, true)"
                                         pattern="^\d*(\.\d{0,2})?$" (change)="checkForDecimalValidation($event)"
-                                        step="0.01" min="0" class="form-control cards-input" placeholder="" />
+                                        step="0.01" min="0" class="form-control cards-input" placeholder=""
+                                        [(ngModel)]="stockOptions[index].strikePrice" />
                                 </div>
                             </div>
                         </div>
@@ -432,10 +436,10 @@
                             </div>
                             <div class="card-right">
                                 <div class="form-group">
-                                    <select id="inputState" class="form-control select-input">
-                                        <option value="" selected data-default>Call</option>
-                                        <option value="">Put</option>
-
+                                    <select id="inputState" class="form-control select-input"
+                                        [(ngModel)]="stockOptions[index].optionType">
+                                        <option value="call" selected data-default>Call</option>
+                                        <option value="put">Put</option>
                                     </select>
                                 </div>
                             </div>
@@ -446,7 +450,9 @@
                             </div>
                             <div class="card-right">
                                 <div class="form-group">
-                                    <input type="date" class="form-control cards-input" placeholder="" />
+                                    <input type="date" class="form-control cards-input" placeholder=""
+                                        [ngModel]="stockOptions[index].expireDate | date:'yyyy-MM-dd'" name="stockOptions[index].expireDate"
+                                        (ngModelChange)="stockOptions[index].expireDate = $event" />
                                 </div>
                             </div>
                         </div>
@@ -458,7 +464,8 @@
                                 <div class="form-group">
                                     <input type="number" (keydown)="preventNegatives($event, true)"
                                         pattern="^\d*(\.\d{0,2})?$" (change)="checkForDecimalValidation($event)"
-                                        step="0.01" min="0" class="form-control cards-input" placeholder="" />
+                                        step="0.01" min="0" class="form-control cards-input" placeholder=""
+                                        [(ngModel)]="stockOptions[index].price" />
                                 </div>
                             </div>
                         </div>
@@ -468,7 +475,7 @@
                             </div>
                             <div class="card-right">
                                 <h6>
-
+                                    {{(stockOptions[index].contracts * stockOptions[index].price * 100).toFixed(2)}}
                                 </h6>
                             </div>
                         </div>
@@ -499,9 +506,8 @@
 
                     <div class="col-sm-6 col-md-4">
                         <a class="btn btn-yes"
-                            (click)="performRiskAnalysis = true; displayRiskAnalysis = true;">Yes</a>
-                        <a class="btn btn-no"
-                            (click)="promptPerformRiskAnalysis = false;">No</a>
+                            (click)="performRiskAnalysis = true; displayRiskAnalysis = true; loadImpliedVolatility();">Yes</a>
+                        <a class="btn btn-no" (click)="promptPerformRiskAnalysis = false;">No</a>
                     </div>
                 </div>
             </div>
@@ -540,7 +546,7 @@
                                     </a>
                                     <div class="stock-p">
                                         <input type="number" class="hide-bars" min="-100" max="0" minlength="-100"
-                                            maxlength="0" [(ngModel)]="stockLowerBand"
+                                            maxlength="0" [(ngModel)]="stockEntry.lowerBound"
                                             (input)="enforceMaxLength($event, -100, 0)">
                                         <p>&#37;</p>
                                     </div>
@@ -567,7 +573,8 @@
                                     <div class="stock-p">
                                         <input (keydown)="preventNegatives($event, true)" type="number"
                                             class="hide-bars" min="0" max="100" minlength="0" maxlength="100"
-                                            [(ngModel)]="stockUpperBand" (input)="enforceMaxLength($event, 0, 100)">
+                                            [(ngModel)]="stockEntry.upperBound"
+                                            (input)="enforceMaxLength($event, 0, 100)">
                                         <p>&#37;</p>
                                     </div>
                                     <a (click)="increaseStockeUpperBand()"
@@ -580,29 +587,31 @@
 
                             <div class="risk-stock-seciton">
                                 <div class="stock-name">
-                                  <span>
-                                    Risk Free Rate
-                                  </span>
+                                    <span>
+                                        Risk Free Rate
+                                    </span>
                                 </div>
-                  
+
                                 <div class="stock-inc">
-                                  <a (click)="decreaseStockUpperBand()" (mousedown)="mousedown('decreaseStockUpperBand')" (mouseup)="mouseup()" (mouseleave)="mouseup()">
-                                    <img
-                                      src="../../../../../assets/images/icon/Group 285.png"
-                                      alt=""
-                                    />
-                                  </a>
-                                  <div class="stock-p">
-                                    <input (keydown)="preventNegatives($event, true)" type="number" class="hide-bars" min="0" max="100" minlength="0" maxlength="100" [(ngModel)]="stockUpperBand" (input)="enforceMaxLength($event, 0, 100)"><p>&#37;</p>
-                                  </div>
-                                  <a (click)="increaseStockeUpperBand()" (mousedown)="mousedown('increaseStockeUpperBand')" (mouseup)="mouseup()" (mouseleave)="mouseup()">
-                                    <img
-                                      src="../../../../../assets/images/icon/Group 283.png"
-                                      alt=""
-                                    />
-                                  </a>
+                                    <a (click)="decreaseStockUpperBand()"
+                                        (mousedown)="mousedown('decreaseStockUpperBand')" (mouseup)="mouseup()"
+                                        (mouseleave)="mouseup()">
+                                        <img src="../../../../../assets/images/icon/Group 285.png" alt="" />
+                                    </a>
+                                    <div class="stock-p">
+                                        <input (keydown)="preventNegatives($event, true)" type="number"
+                                            class="hide-bars" min="0" max="100" minlength="0" maxlength="100"
+                                            [(ngModel)]="stockEntry.riskFreeRate"
+                                            (input)="enforceMaxLength($event, 0, 100)">
+                                        <p>&#37;</p>
+                                    </div>
+                                    <a (click)="increaseStockeUpperBand()"
+                                        (mousedown)="mousedown('increaseStockeUpperBand')" (mouseup)="mouseup()"
+                                        (mouseleave)="mouseup()">
+                                        <img src="../../../../../assets/images/icon/Group 283.png" alt="" />
+                                    </a>
                                 </div>
-                              </div>
+                            </div>
                         </div>
 
                         <div class="risk-box risk-af card-m" *ngFor="let item of stockOptions;let index=index">
@@ -646,7 +655,7 @@
                                     </a>
                                     <div class="stock-p">
                                         <input type="number" class="hide-bars" min="1" max="500" minlength="1"
-                                            maxlength="500" [(ngModel)]="item.impliedValue"
+                                            maxlength="500" [(ngModel)]="item.impliedVolatility"
                                             (input)="enforceMaxLength($event, 1, 500)">
                                         <p>&#37;</p>
                                     </div>
@@ -658,8 +667,8 @@
                                 </div>
                             </div>
                             <div class="current-stock">
-                                <p>Current IV: <span>55%</span></p>
-                              </div>
+                                <p>Current IV: <span>{{item.initialImpliedVolatility}}</span></p>
+                            </div>
                         </div>
 
 
@@ -667,7 +676,7 @@
 
                     <!-- next-button -->
                     <div class="order-btn text-center">
-                        <a class="btn btn-next" (click)="analyzeRisk = true">Analyze</a>
+                        <a class="btn btn-next" (click)="analyzeRisk = true; initRiskAnalysis();">Analyze</a>
                     </div>
                 </div>
             </ng-container>
@@ -693,7 +702,7 @@
 
                                         <div class="trad-risk-head">
                                             <h6>
-                                                Long 100 Stock
+                                                {{riskAnalysisResults[0].stockPriceResult.heading}}
                                             </h6>
                                         </div>
                                         <table>
@@ -706,136 +715,39 @@
                                             </thead>
 
                                             <tbody>
-                                                <tr>
-                                                    <td class="trade-rdd">-10.0%</td>
-                                                    <td>386.39</td>
-                                                    <td class="trade-rdd">$(429.32)</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="trade-rdd">-10.0%</td>
-                                                    <td>386.39</td>
-                                                    <td class="trade-rdd">$(429.32)</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="trade-rdd">-10.0%</td>
-                                                    <td>386.39</td>
-                                                    <td class="trade-rdd">$(429.32)</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="trade-rdd">-10.0%</td>
-                                                    <td>386.39</td>
-                                                    <td class="trade-rdd">$(429.32)</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="trade-rdd">-10.0%</td>
-                                                    <td>386.39</td>
-                                                    <td class="trade-rdd">$(429.32)</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="trade-rdd">-10.0%</td>
-                                                    <td>386.39</td>
-                                                    <td class="trade-rdd">$(429.32)</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="trade-rdd">-10.0%</td>
-                                                    <td>386.39</td>
-                                                    <td class="trade-rdd">$(429.32)</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="trade-rdd">-10.0%</td>
-                                                    <td>386.39</td>
-                                                    <td class="trade-rdd">$(429.32)</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="trade-rd">-10.0%</td>
-                                                    <td>386.39</td>
-                                                    <td class="trade-rd">$(429.32)</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="trade-rd">-10.0%</td>
-                                                    <td>386.39</td>
-                                                    <td class="trade-rd">$(429.32)</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="trade-rd">-10.0%</td>
-                                                    <td>386.39</td>
-                                                    <td class="trade-rd">$(429.32)</td>
+                                                <tr *ngFor="let item of riskAnalysisResults;let index=index">
+                                                    <td [ngClass]="{ 'trade-rd' :item.stockPriceResult.gainLoss >= 0, 'trade-rdd':item.stockPriceResult.gainLoss < 0}">{{item.stockPriceResult.change + '%'}}</td>
+                                                    <td>{{item.stockPriceResult.stockPrice}}</td>
+                                                    <td [ngClass]="{ 'trade-rd' :item.stockPriceResult.gainLoss >= 0, 'trade-rdd':item.stockPriceResult.gainLoss < 0}">{{'$(' + item.stockPriceResult.gainLoss + ')'}}</td>
                                                 </tr>
                                             </tbody>
                                         </table>
                                     </div>
-                                    <ng-container *ngFor="let item of stockOptions;let index=index">
+                                    <ng-container *ngFor="let item of riskAnalysisResults[0].optionResults;let index=index">
                                         <div class="risk-table">
 
                                             <div class="trad-risk-head">
                                                 <h6>
-                                                    Short May-29 2020 460 Call
+                                                    {{item.heading}}
                                                 </h6>
                                             </div>
                                             <table>
                                                 <thead>
                                                     <tr>
-                                                        <th>Change</th>
-                                                        <th>Stock Price</th>
+                                                        <th>{{riskAnalysisResults[0].optionResults[index].optionType == 'CALL' ? 'Call Price' : 'Put Price'}}
+                                                        </th>
+                                                        <th>{{riskAnalysisResults[0].optionResults[index].optionType == 'CALL' ? 'Call Value' : 'Put Value'}}
+                                                        </th>
                                                         <th>Gain/Loss</th>
                                                     </tr>
                                                 </thead>
 
                                                 <tbody>
-                                                    <tr>
-                                                        <td class="trade-rdd">-10.0%</td>
-                                                        <td>386.39</td>
-                                                        <td class="trade-rdd">$(429.32)</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="trade-rdd">-10.0%</td>
-                                                        <td>386.39</td>
-                                                        <td class="trade-rdd">$(429.32)</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="trade-rdd">-10.0%</td>
-                                                        <td>386.39</td>
-                                                        <td class="trade-rdd">$(429.32)</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="trade-rdd">-10.0%</td>
-                                                        <td>386.39</td>
-                                                        <td class="trade-rdd">$(429.32)</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="trade-rdd">-10.0%</td>
-                                                        <td>386.39</td>
-                                                        <td class="trade-rdd">$(429.32)</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="trade-rdd">-10.0%</td>
-                                                        <td>386.39</td>
-                                                        <td class="trade-rdd">$(429.32)</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="trade-rdd">-10.0%</td>
-                                                        <td>386.39</td>
-                                                        <td class="trade-rdd">$(429.32)</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="trade-rdd">-10.0%</td>
-                                                        <td>386.39</td>
-                                                        <td class="trade-rdd">$(429.32)</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="trade-rd">-10.0%</td>
-                                                        <td>386.39</td>
-                                                        <td class="trade-rd">$(429.32)</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="trade-rd">-10.0%</td>
-                                                        <td>386.39</td>
-                                                        <td class="trade-rd">$(429.32)</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="trade-rd">-10.0%</td>
-                                                        <td>386.39</td>
-                                                        <td class="trade-rd">$(429.32)</td>
+                                                    <tr *ngFor="let ritem of riskAnalysisResults;let rowIndex=index">
+                                                        <td [ngClass]="{ 'trade-rd' :ritem.optionResults[index].gainLoss >= 0, 'trade-rdd':ritem.optionResults[index].gainLoss < 0}">{{ritem.optionResults[index].price}}</td>
+                                                        <td>{{ritem.optionResults[index].value}}</td>
+                                                        <td [ngClass]="{ 'trade-rd' :ritem.optionResults[index].gainLoss >= 0, 'trade-rdd':ritem.optionResults[index].gainLoss < 0}">{{'$(' + ritem.optionResults[index].gainLoss + ')'}}
+                                                        </td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -859,49 +771,8 @@
                                             </thead>
 
                                             <tbody>
-                                                <tr>
-
-                                                    <td class="trade-rdd">$(429.32)</td>
-                                                </tr>
-                                                <tr>
-
-                                                    <td class="trade-rdd">$(429.32)</td>
-                                                </tr>
-                                                <tr>
-
-                                                    <td class="trade-rdd">$(429.32)</td>
-                                                </tr>
-                                                <tr>
-
-                                                    <td class="trade-rdd">$(429.32)</td>
-                                                </tr>
-                                                <tr>
-
-                                                    <td class="trade-rdd">$(429.32)</td>
-                                                </tr>
-                                                <tr>
-
-                                                    <td class="trade-rdd">$(429.32)</td>
-                                                </tr>
-                                                <tr>
-
-                                                    <td class="trade-rdd">$(429.32)</td>
-                                                </tr>
-                                                <tr>
-
-                                                    <td class="trade-rdd">$(429.32)</td>
-                                                </tr>
-                                                <tr>
-
-                                                    <td class="trade-rd">$(429.32)</td>
-                                                </tr>
-                                                <tr>
-
-                                                    <td class="trade-rd">$(429.32)</td>
-                                                </tr>
-                                                <tr>
-
-                                                    <td class="trade-rd">$(429.32)</td>
+                                                <tr *ngFor="let item of riskAnalysisResults;let index=index">
+                                                    <td [ngClass]="{ 'trade-rd' :item.totalSummary.gainLoss >= 0, 'trade-rdd':item.totalSummary.gainLoss < 0}">{{'$(' + item.totalSummary.gainLoss + ')'}}</td>
                                                 </tr>
                                             </tbody>
                                         </table>
