@@ -5,12 +5,21 @@
                 KEY METRICS
             </h5>
         </div>
+        
+
+
+  <input matInput [matDatepicker]="picker1" (click)="picker1.open()" />
+<mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+<mat-datepicker #picker1></mat-datepicker>
+
+        
+          
         <div class="trade-dash-cards">
             <div class="flex-item card-first">
                 <div class="flex-inner">
                     <a>
-                        <span>Total Return</span>
-                        <h3 class="trade-green">
+                        <span class="trade_title">Total Return</span>
+                        <h3 class="trade_count trade-green">
                             +$12,546
                         </h3>
                     </a>
@@ -20,9 +29,9 @@
             <div class="flex-item card-second">
                 <div class="flex-inner">
                     <a>
-                        <span>Risk-Adjusted
+                        <span class="trade_title">Risk-Adjusted
                             Return</span>
-                        <h3 class="trade-green">
+                        <h3 class="trade_count trade-green">
                             +$1,546
                         </h3>
                     </a>
@@ -31,8 +40,8 @@
             <div class="flex-item card-second">
                 <div class="flex-inner">
                     <a>
-                        <span>Win/Loss Ratio</span>
-                        <h3 class="trade-red">
+                        <span class="trade_title">Win/Loss Ratio</span>
+                        <h3 class="trade_count trade-red">
                             57%
                         </h3>
                     </a>
@@ -42,9 +51,9 @@
             <div class="flex-item card-first">
                 <div class="flex-inner">
                     <a>
-                        <span>Max. Amount
+                        <span class="trade_title">Max. Amount
                             at Risk</span>
-                        <h3 class="trade-red">
+                        <h3 class="trade_count trade-red">
                             $2,325
                         </h3>
                     </a>
@@ -54,9 +63,9 @@
             <div class="flex-item card-three">
                 <div class="flex-inner">
                     <a>
-                        <span>Average Holding
+                        <span class="trade_title">Average Holding
                             Period</span>
-                        <h3>
+                        <h3 class="trade_count">
                             1.2 days
                         </h3>
 
@@ -70,9 +79,9 @@
             <div class="flex-item card-three">
                 <div class="flex-inner">
                     <a>
-                        <span>Most Successful
+                        <span class="trade_title">Most Successful
                             Strategy</span>
-                        <h3>
+                        <h3 class="trade_count">
                             Iron Condor
                         </h3>
 
@@ -86,9 +95,9 @@
             <div class="flex-item card-second">
                 <div class="flex-inner">
                     <a>
-                        <span>Alignment with
+                        <span class="trade_title">Alignment with
                             Trading Plan</span>
-                        <h3 class="trade-red">
+                        <h3 class="trade_count trade-red">
                             25%
                         </h3>
                     </a>
@@ -125,7 +134,7 @@
                     <div class="flex-inner">
                         <a>
                             <span>Total Return</span>
-                            <h4 class="trade-green">
+                            <h4 class="trade_count trade-green">
                                 +$12,560
                             </h4>
                         </a>
@@ -136,7 +145,7 @@
                     <div class="flex-inner">
                         <a>
                             <span>Risk Adjusted Return</span>
-                            <h4 class="trade-green">
+                            <h4 class="trade_count trade-green">
                                 -$1,546
                             </h4>
 
@@ -151,7 +160,7 @@
                     <div class="flex-inner">
                         <a>
                             <span>Win/Loss Ratio</span>
-                            <h4 class="trade-red">
+                            <h4 class="trade_count trade-red">
                                 49%
                             </h4>
                         </a>
@@ -161,7 +170,7 @@
                     <div class="flex-inner">
                         <a>
                             <span>Max. Amount at Risk</span>
-                            <h4 class="trade-red">
+                            <h4 class="trade_count trade-red">
                                 -$1,546
                             </h4>
                         </a>
@@ -174,7 +183,7 @@
                     <div class="flex-inner">
                         <a>
                             <span>Average Holding Period</span>
-                            <h4>
+                            <h4 class="trade_count">
                                 1.2 days
                             </h4>
 
@@ -187,7 +196,7 @@
                         <a>
                             <span>Alignment with
                                 Trading Plan</span>
-                            <h4 class="trade-red">
+                            <h4 class="trade_count trade-red">
                                 21%
                             </h4>
 
