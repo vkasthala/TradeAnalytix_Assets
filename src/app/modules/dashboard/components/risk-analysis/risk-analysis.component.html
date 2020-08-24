@@ -591,27 +591,25 @@
                                         Risk Free Rate
                                     </span>
                                 </div>
-
-                                <div class="stock-inc">
-                                    <a (click)="decreaseStockUpperBand()"
-                                        (mousedown)="mousedown('decreaseStockUpperBand')" (mouseup)="mouseup()"
-                                        (mouseleave)="mouseup()">
-                                        <img src="../../../../../assets/images/icon/Group 285.png" alt="" />
+                  
+                                <div class="stock-inc"> 
+                                    <a (click)="decreaseRiskFreeRate()" (mousedown)="mousedown('decreaseRiskFreeRate')" (mouseup)="mouseup()" (mouseleave)="mouseup()">
+                                      <img
+                                        src="../../../../../assets/images/icon/Group 285.png"
+                                        alt=""
+                                      />
                                     </a>
                                     <div class="stock-p">
-                                        <input (keydown)="preventNegatives($event, true)" type="number"
-                                            class="hide-bars" min="0" max="100" minlength="0" maxlength="100"
-                                            [(ngModel)]="stockEntry.riskFreeRate"
-                                            (input)="enforceMaxLength($event, 0, 100)">
-                                        <p>&#37;</p>
+                                      <input (keydown)="preventNegatives($event, true)" type="number" class="hide-bars" min="0" max="100" minlength="0" maxlength="100" [(ngModel)]="riskFreeRate" (input)="enforceMaxLength($event, 0, 100)"><p>&#37;</p>
                                     </div>
-                                    <a (click)="increaseStockeUpperBand()"
-                                        (mousedown)="mousedown('increaseStockeUpperBand')" (mouseup)="mouseup()"
-                                        (mouseleave)="mouseup()">
-                                        <img src="../../../../../assets/images/icon/Group 283.png" alt="" />
+                                    <a (click)="increaseRiskFreeRate()" (mousedown)="mousedown('increaseRiskFreeRate')" (mouseup)="mouseup()" (mouseleave)="mouseup()">
+                                      <img
+                                        src="../../../../../assets/images/icon/Group 283.png"
+                                        alt=""
+                                      />
                                     </a>
-                                </div>
-                            </div>
+                                  </div>
+                              </div>
                         </div>
 
                         <div class="risk-box risk-af card-m" *ngFor="let item of stockOptions;let index=index">

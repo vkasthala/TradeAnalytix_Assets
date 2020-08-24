@@ -3,7 +3,7 @@
 
 
         <div class="add-new-trade-btn">
-            <button  class="add-new btn btn-apply" (click)="addEntry()"> ADD PLAN</button>
+            <button class="add-new btn btn-apply" (click)="addEntry()"> ADD PLAN</button>
         </div>
 
         <div class="trade-strategies-table">
@@ -30,9 +30,10 @@
                                 <div class="trade-date">
 
                                     <div class="form-group">
-                                      <div class='input-group date' id='datetimepicker1'>
-                                          <my-date-range-picker placeholder="Date range" name="mydaterange" [options]="myDateRangePickerOptions"></my-date-range-picker>
-                                        </div> 
+                                        <div class='input-group date' id='datetimepicker1'>
+                                            <my-date-range-picker placeholder="Date range" name="mydaterange"
+                                                [options]="myDateRangePickerOptions"></my-date-range-picker>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -51,14 +52,14 @@
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th>Date</th>
-                                <th>Positions Aligned with Rules </th>
-                                <th>Perspective on the market</th>
-                                <th>Planned Trades</th>
-                                <th>Traded as 
+                                <th class="date">Date</th>
+                                <th class="currnt">Positions Aligned with Rules </th>
+                                <th class="market">Perspective on the market</th>
+                                <th class="plan">Planned Trades</th>
+                                <th class="per">Traded as
                                     per the plan</th>
-                                    <th>Lessons Learnt</th>
-                                    <th></th>
+                                <th class="lesson">Lessons Learnt</th>
+                                <th class="edit"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -76,17 +77,19 @@
                                 <td class="plan">
                                     <p>Wait on AMZN. May be buy 3000 call and Put Spreads on AMZN for next
                                         week. Buy calls on tech stocks.</p>
-                                     </td>
+                                </td>
                                 <td class="per">
-                                    <img  alt="" class="img-fluid"
-                                        src="../../../../../assets/images/Dashboard/Icon_feather-check-removebg-preview.png"> </td>
+                                    <img alt="" class="img-fluid"
+                                        src="../../../../../assets/images/Dashboard/Icon_feather-check-removebg-preview.png">
+                                </td>
 
                                 <td class="lesson">
-                                   <p>Do not trade same day calls and puts unnecessarily. Money will be lost consistently.</p> 
+                                    <p>Do not trade same day calls and puts unnecessarily. Money will be lost
+                                        consistently.</p>
                                 </td>
                                 <td>
                                     <div class="edit">
-                                        <img  alt="" src="../../../../../assets/images/Icon material-edit.png">
+                                        <img alt="" src="../../../../../assets/images/Icon material-edit.png">
                                     </div>
                                 </td>
 
@@ -105,17 +108,19 @@
                                 <td class="plan">
                                     <p>Wait on AMZN. May be buy 3000 call and Put Spreads on AMZN for next
                                         week. Buy calls on tech stocks.</p>
-                                     </td>
+                                </td>
                                 <td class="per">
-                                    <img  alt="" class="img-fluid"
-                                        src="../../../../../assets/images/Dashboard/Icon_feather-check-removebg-preview.png"> </td>
+                                    <img alt="" class="img-fluid"
+                                        src="../../../../../assets/images/Dashboard/Icon_feather-check-removebg-preview.png">
+                                </td>
 
                                 <td class="lesson">
-                                   <p>Do not trade same day calls and puts unnecessarily. Money will be lost consistently.</p> 
+                                    <p>Do not trade same day calls and puts unnecessarily. Money will be lost
+                                        consistently.</p>
                                 </td>
                                 <td>
                                     <div class="edit">
-                                        <img  alt="" src="../../../../../assets/images/Icon material-edit.png">
+                                        <img alt="" src="../../../../../assets/images/Icon material-edit.png">
                                     </div>
                                 </td>
 

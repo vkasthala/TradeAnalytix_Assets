@@ -22,7 +22,7 @@ export class RiskAnalysisComponent implements OnInit {
 
   stockLowerBand: number = -10;
   stockUpperBand: number = 10;
-
+  riskFreeRate: number = 10;
   stockAdded: boolean;
   performRiskAnalysis: boolean;
   promptPerformRiskAnalysis: boolean;
@@ -124,23 +124,22 @@ export class RiskAnalysisComponent implements OnInit {
     }
   }
 
-
-  preventNegatives(e, preventDecimal?: boolean) {
-    if (preventDecimal) {
-      if (!((e.keyCode > 95 && e.keyCode < 106)
-        || (e.keyCode > 47 && e.keyCode < 58)
-        || e.keyCode == 8 || e.keyCode == 17 || e.keyCode == 110)) {
-        if (e.keyCode != 190) {
+  preventNegatives(e, preventDecimal?:boolean) {
+    if(preventDecimal) {
+      if(!((e.keyCode > 95 && e.keyCode < 106)
+      || (e.keyCode > 47 && e.keyCode < 58) 
+      || e.keyCode == 8 ||e.keyCode == 17 || e.keyCode == 110)) {
+        if(e.keyCode != 190 && e.keyCode != 46 && e.keyCode != 37  && e.keyCode != 39 && e.keyCode != 9) {
           return false;
         } else {
           return true;
         }
-      }
-    } else {
-      if (!((e.keyCode > 95 && e.keyCode < 106)
-        || (e.keyCode > 47 && e.keyCode < 58)
-        || e.keyCode == 8)) {
-        if (e.keyCode != 190) {
+    }
+    }else {
+      if(!((e.keyCode > 95 && e.keyCode < 106)
+      || (e.keyCode > 47 && e.keyCode < 58) 
+      || e.keyCode == 8)) {
+        if(e.keyCode != 190 && e.keyCode != 46 && e.keyCode != 37  && e.keyCode != 39 && e.keyCode != 9) {
           return false;
         } else {
           return true;
@@ -257,6 +256,18 @@ export class RiskAnalysisComponent implements OnInit {
     }
   }
 
+  decreaseRiskFreeRate() {
+    if (this.riskFreeRate > 0 && this.riskFreeRate < 101) {
+      this.riskFreeRate--;
+    }
+  }
+
+  increaseRiskFreeRate() {
+    if (this.riskFreeRate > -1 && this.riskFreeRate < 100) {
+      this.riskFreeRate++;
+    }
+  }
+
   /*
   * @mousedown 'Requires operation field which is the operation to be performed on mouse hold'
   */
@@ -271,6 +282,8 @@ export class RiskAnalysisComponent implements OnInit {
         case 'increaseDaysLeft': this.increaseDaysLeft(index); break;
         case 'decreaseImpliedValue': this.decreaseImpliedValue(index); break;
         case 'increaseImpliedValue': this.increaseImpliedValue(index); break;
+        case 'decreaseRiskFreeRate': this.decreaseRiskFreeRate(); break;
+        case 'increaseRiskFreeRate': this.increaseRiskFreeRate(); break;
       }
       this.name += 1;
     }, 100);
