@@ -34,6 +34,14 @@ import { AddnewtradeplanComponent } from './components/addnewtradeplan/addnewtra
 import { TradePlansComponent } from './components/trade-plans/trade-plans.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RiskAnalysisComponent } from './components/risk-analysis/risk-analysis.component';
+import { TradeSearchComponent } from './components/add-new-trade/Steps/search-trade/trade-search.component';
+
+import { 
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatInputModule
+} from '@angular/material';
+
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -46,6 +54,7 @@ import { RiskAnalysisComponent } from './components/risk-analysis/risk-analysis.
     SettingsComponent,
     HelpComponent,
     TradeDetailsComponent,
+    TradeSearchComponent,
     TradeThesisComponent,
     RiskManagementComponent,
     EntryRulesComponent,
@@ -73,7 +82,10 @@ import { RiskAnalysisComponent } from './components/risk-analysis/risk-analysis.
     FormsModule,
     ReactiveFormsModule,
     DashboardRoutingModule,
-    UtilitiesModule
+    UtilitiesModule,
+    MatNativeDateModule,
+    MatInputModule,
+    MatDatepickerModule
   ],
   entryComponents: [
     AddTradeConfirmationPopupComponent,

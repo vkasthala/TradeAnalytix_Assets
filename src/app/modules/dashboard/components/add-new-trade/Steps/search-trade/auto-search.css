@@ -1,0 +1,34 @@
+.auto-search {
+    position: relative;
+}
+
+.search-result {
+    position: absolute;
+    top:100%;
+    left: 0;
+    background: #fff;
+    z-index: 20;
+    border: 1px solid #ccc;
+    width: 100%;
+    font-size: .89rem;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    max-height: 300px;
+    overflow: auto;
+}
+
+.search-result li {
+    border-bottom: 1px solid #e8e8e8;
+    padding: 5px;
+    background-color: white;
+    cursor: pointer;
+    list-style-type: none;
+  }
+.search-result li:last-child {
+    border-bottom: 0;
+}
+  
+.search-result li:hover {
+    background-color: #607D8B;
+}
