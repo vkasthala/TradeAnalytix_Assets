@@ -384,7 +384,8 @@
             <span>Net Debit</span>
           </div>
           <div class="card-right">
-            <h6>{{(stockEntry.quantity * stockEntry.price).toFixed(2)}}</h6>
+            <h6>{{stockEntry.quantity && stockEntry.price ? (stockEntry.quantity * stockEntry.price).toFixed(2) : 0}}
+            </h6>
           </div>
         </div>
       </div>
@@ -475,7 +476,7 @@
             </div>
             <div class="card-right">
               <h6>
-                {{(stockOptions[index].contracts * stockOptions[index].price * 100).toFixed(2)}}
+                {{stockOptions[index].contracts && stockOptions[index].price ? (stockOptions[index].contracts * stockOptions[index].price * 100).toFixed(2) : 0}}
               </h6>
             </div>
           </div>
@@ -573,79 +574,86 @@
             </div>
           </div>
 
-          <div class="stock-inc"> 
-            <a (click)="decreaseRiskFreeRate()" (mousedown)="mousedown('decreaseRiskFreeRate')" (mouseup)="mouseup()" (mouseleave)="mouseup()">
-              <img
-                src="../../../../../assets/images/icon/Group 285.png"
-                alt=""
-              />
-            </a>
-            <div class="stock-p">
-              <input (keydown)="preventNegatives($event, true)" type="number" class="hide-bars" min="0" max="100" minlength="0" maxlength="100" [(ngModel)]="riskFreeRate" (input)="enforceMaxLength($event, 0, 100)"><p>&#37;</p>
+
+          <div class="risk-stock-seciton">
+            <div class="stock-name">
+              <span>
+                Risk Free Rate
+              </span>
             </div>
-            <a (click)="increaseRiskFreeRate()" (mousedown)="mousedown('increaseRiskFreeRate')" (mouseup)="mouseup()" (mouseleave)="mouseup()">
-              <img
-                src="../../../../../assets/images/icon/Group 283.png"
-                alt=""
-              />
-            </a>
+
+            <div class="stock-inc">
+              <a (click)="decreaseRiskFreeRate()" (mousedown)="mousedown('decreaseRiskFreeRate')" (mouseup)="mouseup()"
+                (mouseleave)="mouseup()">
+                <img src="../../../../../assets/images/icon/Group 285.png" alt="" />
+              </a>
+              <div class="stock-p">
+                <input (keydown)="preventNegatives($event, true)" type="number" class="hide-bars" min="0" max="100"
+                  minlength="0" maxlength="100" [(ngModel)]="riskFreeRate" (input)="enforceMaxLength($event, 0, 100)">
+                <p>&#37;</p>
+              </div>
+              <a (click)="increaseRiskFreeRate()" (mousedown)="mousedown('increaseRiskFreeRate')" (mouseup)="mouseup()"
+                (mouseleave)="mouseup()">
+                <img src="../../../../../assets/images/icon/Group 283.png" alt="" />
+              </a>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
 
-    <div class="risk-box risk-af card-m" *ngFor="let item of stockOptions;let index=index">
-      <div class="risk-stock-seciton risk-bt">
-        <div class="stock-name">
-          <span>
-            Days Left
-          </span>
-        </div>
+        <div class="risk-box risk-af card-m" *ngFor="let item of stockOptions;let index=index">
+          <div class="risk-stock-seciton risk-bt">
+            <div class="stock-name">
+              <span>
+                Days Left
+              </span>
+            </div>
 
-        <div class="stock-inc">
-          <a (click)="decreaseDaysLeft(index)" (mousedown)="mousedown('decreaseDaysLeft', index)"
-            (mouseup)="mouseup()" (mouseleave)="mouseup()">
-            <img src="../../../../../assets/images/icon/Group 285.png" alt="" />
-          </a>
-          <span>
-            <input (keydown)="preventNegatives($event, true)" type="number" class="hide-bars" step="0.1" min="0"
-              max="730" minlength="0" maxlength="730" [(ngModel)]="item.daysLeft">
-          </span>
-          <a (click)="increaseDaysLeft(index)" (mousedown)="mousedown('increaseDaysLeft', index)"
-            (mouseup)="mouseup()" (mouseleave)="mouseup()">
-            <img src="../../../../../assets/images/icon/Group 283.png" alt="" />
-          </a>
-        </div>
+            <div class="stock-inc">
+              <a (click)="decreaseDaysLeft(index)" (mousedown)="mousedown('decreaseDaysLeft', index)"
+                (mouseup)="mouseup()" (mouseleave)="mouseup()">
+                <img src="../../../../../assets/images/icon/Group 285.png" alt="" />
+              </a>
+              <span>
+                <input (keydown)="preventNegatives($event, true)" type="number" class="hide-bars" step="0.1" min="0"
+                  max="730" minlength="0" maxlength="730" [(ngModel)]="item.daysLeft">
+              </span>
+              <a (click)="increaseDaysLeft(index)" (mousedown)="mousedown('increaseDaysLeft', index)"
+                (mouseup)="mouseup()" (mouseleave)="mouseup()">
+                <img src="../../../../../assets/images/icon/Group 283.png" alt="" />
+              </a>
+            </div>
 
-      </div>
-
-      <div class="risk-stock-seciton">
-        <div class="stock-name">
-          <span>
-            Implied Volatility
-          </span>
-        </div>
-
-        <div class="stock-inc">
-          <a (click)="decreaseImpliedValue(index)" (mousedown)="mousedown('decreaseImpliedValue', index)"
-            (mouseup)="mouseup()" (mouseleave)="mouseup()">
-            <img src="../../../../../assets/images/icon/Group 285.png" alt="" />
-          </a>
-          <div class="stock-p">
-            <input type="number" class="hide-bars" min="1" max="500" minlength="1" maxlength="500"
-              [(ngModel)]="item.impliedVolatility" (input)="enforceMaxLength($event, 1, 500)">
-            <p>&#37;</p>
           </div>
-          <a (click)="increaseImpliedValue(index)" (mousedown)="mousedown('increaseImpliedValue', index)"
-            (mouseup)="mouseup()" (mouseleave)="mouseup()">
-            <img src="../../../../../assets/images/icon/Group 283.png" alt="" />
-          </a>
+
+          <div class="risk-stock-seciton">
+            <div class="stock-name">
+              <span>
+                Implied Volatility
+              </span>
+            </div>
+
+            <div class="stock-inc">
+              <a (click)="decreaseImpliedValue(index)" (mousedown)="mousedown('decreaseImpliedValue', index)"
+                (mouseup)="mouseup()" (mouseleave)="mouseup()">
+                <img src="../../../../../assets/images/icon/Group 285.png" alt="" />
+              </a>
+              <div class="stock-p">
+                <input type="number" class="hide-bars" min="1" max="500" minlength="1" maxlength="500"
+                  [(ngModel)]="item.impliedVolatility" (input)="enforceMaxLength($event, 1, 500)">
+                <p>&#37;</p>
+              </div>
+              <a (click)="increaseImpliedValue(index)" (mousedown)="mousedown('increaseImpliedValue', index)"
+                (mouseup)="mouseup()" (mouseleave)="mouseup()">
+                <img src="../../../../../assets/images/icon/Group 283.png" alt="" />
+              </a>
+            </div>
+
+          </div>
+
+          <div class="current-stock">
+            <p>Current IV: <span>{{item.initialImpliedVolatility}}</span></p>
+          </div>
         </div>
-
-      </div>
-
-      <div class="current-stock">
-        <p>Current IV: <span>{{item.initialImpliedVolatility}}</span></p>
       </div>
     </div>
 
@@ -656,7 +664,7 @@
       <a class="btn btn-skip" *ngIf="!analyzeRisk" (click)="next()">Skip Risk Analysis</a>
     </div>
   </ng-container>
-  
+
   <ng-container *ngIf="analyzeRisk">
     <!-- risk-tabs -->
     <div class="trade-risk-tabs">

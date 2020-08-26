@@ -185,6 +185,7 @@ export class RiskAnalysisComponent implements OnInit {
 
   createStockEntry() {
     this.stockEntry = new StockEntry();
+    this.stockEntry.price = 440.14;
     this.stockEntry.lowerBound = -10;
     this.stockEntry.upperBound = 10;
     this.stockEntry.riskFreeRate = 63;

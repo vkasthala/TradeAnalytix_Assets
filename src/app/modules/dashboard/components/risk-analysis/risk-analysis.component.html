@@ -379,7 +379,7 @@
                             <span>Net Debit</span>
                         </div>
                         <div class="card-right">
-                            <h6>{{(stockEntry.quantity * stockEntry.price).toFixed(2)}}</h6>
+                            <h6>{{stockEntry.quantity && stockEntry.price ? (stockEntry.quantity * stockEntry.price).toFixed(2) : 0}}</h6>
                         </div>
                     </div>
                 </div>
@@ -475,7 +475,7 @@
                             </div>
                             <div class="card-right">
                                 <h6>
-                                    {{(stockOptions[index].contracts * stockOptions[index].price * 100).toFixed(2)}}
+                                    {{stockOptions[index].contracts && stockOptions[index].price ? (stockOptions[index].contracts * stockOptions[index].price * 100).toFixed(2) : 0}}
                                 </h6>
                             </div>
                         </div>
