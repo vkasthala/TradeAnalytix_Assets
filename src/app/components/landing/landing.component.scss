@@ -11,7 +11,7 @@
   overflow: hidden;
   @media #{$extra-small} {
     min-height: 92vh;
-    background-color: #fff;
+    background-color: #f2f2f2;
   }
 
   // left-section
@@ -107,8 +107,7 @@
     }
     @media #{$extra-small} {
       display: none;
-    }
-
+    } 
     ul {
       margin: 0px;
       display: flex;
@@ -141,16 +140,15 @@
           padding: 5px 10px;
           
           @include media(">tablet", "<laptop") {
-            margin-left: 14px;
             margin-bottom: 9px;
+            font-size: .78rem;
+            padding: 5px;
           }
           .mat-icon {
             font-size: 1rem;
             height: 18px;
             width: 18px;
           }
-          
-         
         }
         .sub-menu {
           display: none;
@@ -166,6 +164,11 @@
           top:100%;
           left:0;
           list-style-type: none;
+          @include media(">tablet", "<laptop") {
+            min-width: 180px;
+            font-size: .78rem;
+            padding: 5px;
+          }
           li {
             padding: 0;
             a {
@@ -178,6 +181,9 @@
                 color: #000;
                 background-color: #bdbdbd;
               }
+              @include media(">tablet", "<laptop") {
+                padding: 5px;
+              }
             }
           }
         }
@@ -186,6 +192,7 @@
       }
     }
   }
+
   .features_box {
     margin-bottom: 2.5rem;
   }
@@ -198,6 +205,8 @@
     padding-top: 65px;
     @media #{$extra-small} {
       min-height: auto !important;
+      padding-top: 15px;
+      background-color: #f2f2f2;
     }
     .trade-login {
       width: 95%;
@@ -212,6 +221,9 @@
         @include media('>tablet','<laptop'){
           font-size:22px;
         }
+        @media #{$extra-small} {
+          display: none;
+        }
       }
       .sub-heading {
         color: $heading-1;
@@ -220,6 +232,9 @@
         margin-top: 2.5rem;       
         @include media('>tablet','<laptop'){
           font-size:22px;
+        }
+        @media #{$extra-small} {
+          display: none;
         }
       }
       .trade-con {
@@ -288,4 +303,70 @@
     }
   }
 }
+.mobile-trade-head {
+  color: $heading-1;
+  font-size: 1rem;
+  line-height: 1.5;
+  display: none;
+  text-align: left;
+  margin-bottom: 2rem;
+  @media #{$extra-small} {
+    display: flex;
+  }
+  @media #{$small} {
+    display: none;
+  }
+}
 
+// mobile-navbar
+.mobile-bottom-nav {
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: none;
+
+  //give nav it's own compsite layer
+  will-change: transform;
+  transform: translateZ(0);
+  height: 50px;
+  box-shadow: 0 -2px 5px -2px #333;
+  background-color: #fff;
+
+  @media #{$extra-small} {
+    display: flex;
+  }
+  @media #{$small} {
+    display: none;
+  }
+  ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    li {
+      display: inline-block;
+      width: 20%;
+      height: 100%;
+      border-left: 1px solid #ddd;
+      a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        height: 100%;
+        color: #565656;
+        span {
+          height: 20px;
+          svg{
+            width: 17px;
+          }
+        }
+      }
+    }
+  }
+}

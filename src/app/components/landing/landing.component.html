@@ -179,8 +179,13 @@
                <div class="trade-right-section ">
                    <div class="container">
                     <div class="trade-login">
+                        
                         <h2 class="trade-head text-center">Welcome to TradeAnalytix</h2>
                         <h3 class="sub-heading text-center">Sign-in Options</h3>
+
+                        <h3 class="mobile-trade-head">Welcome to TradeAnalytix, a robust
+                            tool to improve trading discipline and
+                            thereby returns</h3>
      
                         <!-- <p class="trade-con">
                          Sign in to record your trade strategies, perform risk analysis, and learn from your trading history to improve your odds of trading success.
@@ -220,4 +225,36 @@
         </div>
    
 </div>
+<nav class="mobile-bottom-nav">
+    <ul>
+        <li [class.nav-active]="currentRoute == 'about-us'">
+            <a class="landing-nav-link" [routerLink]="['/about-us']">
+              About Us
+            </a>
+        </li>
+        <li [class.nav-active]="currentRoute == 'features'">
+            <a class="landing-nav-link" [routerLink]="['/features']">
+                Features
+            </a>
+            
+        </li>
+        <li [class.nav-active]="currentRoute == 'getting-started'">
+            <a class="landing-nav-link" [routerLink]="['/getting-started']">
+            Getting <br/> Started
+            </a>
+        </li>
+        <li [class.nav-active]="currentRoute == 'pricing'">
+            <a class="landing-nav-link" [routerLink]="['/pricing']">
+                Pricing
+            </a>
+        </li>
+        <li [class.nav-active]="currentRoute == 'blogs'">
+            <a class="landing-nav-link" [routerLink]="['/blogs']">
+                Blogs
+            </a>
+        </li>
+
+        
+    </ul>
+</nav>
 <app-footer></app-footer>
