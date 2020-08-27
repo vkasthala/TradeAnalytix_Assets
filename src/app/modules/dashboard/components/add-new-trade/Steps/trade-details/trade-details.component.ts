@@ -223,7 +223,7 @@ export class TradeDetailsComponent implements OnInit {
     this.stockEntry.price = 440.14;
     this.stockEntry.lowerBound = -10;
     this.stockEntry.upperBound = 10;
-    this.stockEntry.riskFreeRate = 63;
+    this.stockEntry.riskFreeRate = 10;
     this.stockEntry.actionType = ActionType["Buy to Open"];
   }
 

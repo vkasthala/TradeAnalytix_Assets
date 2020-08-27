@@ -600,7 +600,7 @@
                                       />
                                     </a>
                                     <div class="stock-p">
-                                      <input (keydown)="preventNegatives($event, true)" type="number" class="hide-bars" min="0" max="100" minlength="0" maxlength="100" [(ngModel)]="riskFreeRate" (input)="enforceMaxLength($event, 0, 100)"><p>&#37;</p>
+                                      <input (keydown)="preventNegatives($event, true)" type="number" class="hide-bars" min="0" max="100" minlength="0" maxlength="100" [(ngModel)]="stockEntry.riskFreeRate" (input)="enforceMaxLength($event, 0, 100)"><p>&#37;</p>
                                     </div>
                                     <a (click)="increaseRiskFreeRate()" (mousedown)="mousedown('increaseRiskFreeRate')" (mouseup)="mouseup()" (mouseleave)="mouseup()">
                                       <img
@@ -732,9 +732,9 @@
                                             <table>
                                                 <thead>
                                                     <tr>
-                                                        <th>{{riskAnalysisResults[0].optionResults[index].optionType == 'CALL' ? 'Call Price' : 'Put Price'}}
+                                                        <th>{{riskAnalysisResults[0].optionResults[index].optionType == 'call' ? 'Call Price' : 'Put Price'}}
                                                         </th>
-                                                        <th>{{riskAnalysisResults[0].optionResults[index].optionType == 'CALL' ? 'Call Value' : 'Put Value'}}
+                                                        <th>{{riskAnalysisResults[0].optionResults[index].optionType == 'call' ? 'Call Value' : 'Put Value'}}
                                                         </th>
                                                         <th>Gain/Loss</th>
                                                     </tr>
