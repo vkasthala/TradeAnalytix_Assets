@@ -74,15 +74,13 @@
                         </div>
                         <div class="st-slect-section">
                             <div class="trade-date">
-
-                                <div class="form-group">
-                                  <div class='input-group date' id='datetimepicker1'>
-                                      <my-date-range-picker placeholder="Date range" name="mydaterange" [options]="myDateRangePickerOptions"></my-date-range-picker>
-                                    </div> 
+                                <div class="datepicker-group">
+                                    <input matInput [matDatepicker]="mydaterange" (click)="mydaterange.open()" placeholder="Entry Date range" id="mydaterange" (dateChange)="addEvent('input', $event)" />
+                                    <mat-datepicker-toggle matSuffix [for]="mydaterange"></mat-datepicker-toggle>
+                                    <mat-datepicker #mydaterange></mat-datepicker>
                                 </div>
                             </div>
                         </div>
-                        
                         <div class="st-slect-section select-btn">
                             <button class="btn btn-apply">APPLY FILTERS</button> &nbsp; &nbsp;
                             <button type="button" class="btn btn-link ">Clear</button>
