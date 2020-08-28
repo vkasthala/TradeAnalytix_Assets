@@ -25,7 +25,6 @@ export class RiskAnalysisComponent implements OnInit {
   riskFreeRate: number = 10;
   stockAdded: boolean;
   performRiskAnalysis: boolean;
-  promptPerformRiskAnalysis: boolean;
   displayRiskAnalysis: boolean;
   analyzeRisk: boolean;
 
@@ -46,7 +45,6 @@ export class RiskAnalysisComponent implements OnInit {
 
   addStock() {
     this.stockAdded = true;
-    this.promptPerformRiskAnalysis = false;
     this.performRiskAnalysis = false;
     this.displayRiskAnalysis = false;
     this.createStockEntry();
@@ -63,7 +61,6 @@ export class RiskAnalysisComponent implements OnInit {
     this.stockAdded = false;
     if (this.stockOptions.length == 0) {
       this.displayRiskAnalysis = false;
-      this.promptPerformRiskAnalysis = false;
     }
   }
   deleteStockOption(index) {
@@ -188,7 +185,7 @@ export class RiskAnalysisComponent implements OnInit {
     this.stockEntry.price = 440.14;
     this.stockEntry.lowerBound = -10;
     this.stockEntry.upperBound = 10;
-    this.stockEntry.riskFreeRate = 10;
+    this.stockEntry.riskFreeRate = 6;
     this.stockEntry.actionType = ActionType["Buy to Open"];
   }
 

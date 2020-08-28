@@ -20,6 +20,8 @@ import { RiskAnalysisRequest } from 'src/app/models/trade-details/risk-analysis-
 })
 export class TradeDetailsComponent implements OnInit {
 
+  addTrade: boolean = true;
+
   stockLowerBand: number = -10;
   stockUpperBand: number = 10;
   riskFreeRate: number = 10;
@@ -223,7 +225,7 @@ export class TradeDetailsComponent implements OnInit {
     this.stockEntry.price = 440.14;
     this.stockEntry.lowerBound = -10;
     this.stockEntry.upperBound = 10;
-    this.stockEntry.riskFreeRate = 10;
+    this.stockEntry.riskFreeRate = 6;
     this.stockEntry.actionType = ActionType["Buy to Open"];
   }
 
