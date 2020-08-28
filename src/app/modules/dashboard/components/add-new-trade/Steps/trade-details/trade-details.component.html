@@ -350,8 +350,6 @@
               <select id="inputState" class="form-control select-input" [(ngModel)]="stockEntry.actionType">
                 <option value="BUY_TO_OPEN" selected data-default>Buy to Open</option>
                 <option value="SELL_TO_OPEN">Sell to Open</option>
-                <option value="BUY_TO_CLOSE">Buy to Close</option>
-                <option value="SELL_TO_CLOSE">Sell to Close</option>
               </select>
             </div>
           </div>
@@ -403,8 +401,6 @@
                 <select id="inputState" class="form-control select-input" [(ngModel)]="stockOptions[index].actionType">
                   <option value="BUY_TO_OPEN" selected data-default>Buy to Open</option>
                   <option value="SELL_TO_OPEN">Sell to Open</option>
-                  <option value="BUY_TO_CLOSE">Buy to Close</option>
-                  <option value="SELL_TO_CLOSE">Sell to Close</option>
                 </select>
               </div>
             </div>
@@ -451,10 +447,10 @@
               <span>Expiry Date</span>
             </div>
             <div class="card-right">
-              <div class="form-group">
-                <input type="date" class="form-control cards-input" placeholder=""
-                  [ngModel]="stockOptions[index].expireDate | date:'yyyy-MM-dd'" name="stockOptions[index].expireDate"
-                  (ngModelChange)="stockOptions[index].expireDate = $event" />
+              <div class="datepicker-group">
+                <input matInput [matDatepicker]="expireDate" (click)="expireDate.open()" id="expireDate" (dateChange)="addEvent('input', $event)" name="stockOptions[index].expireDate" />
+                <mat-datepicker-toggle matSuffix [for]="expireDate"></mat-datepicker-toggle>
+                <mat-datepicker #expireDate></mat-datepicker>
               </div>
             </div>
           </div>
@@ -493,11 +489,11 @@
         !displayRiskAnalysis
         && (stockAdded || stockOptions.length > 0)
       ">
-      <a class="btn btn-next" (click)="promptPerformRiskAnalysis = true">Next</a>
+      <a class="btn btn-next" (click)="displayRiskAnalysis = true">Next</a>
     </div>
 
     <!-- risk-analysis -->
-    <div class="trade-risk" *ngIf="promptPerformRiskAnalysis && !displayRiskAnalysis">
+    <!-- <div class="trade-risk" *ngIf="promptPerformRiskAnalysis && !displayRiskAnalysis">
       <div class="row d-flex  align-items-center">
         <div class="col-sm-6 col-md-6 col-g-5 ">
           <h6>
@@ -511,7 +507,7 @@
           <a class="btn btn-no" (click)="promptPerformRiskAnalysis = false; navigateToTradeThesis()">No</a>
         </div>
       </div>
-    </div>
+    </div> -->
   </ng-container>
 
   <ng-container *ngIf="displayRiskAnalysis">
@@ -705,7 +701,7 @@
                       <td>{{item.stockPriceResult.stockPrice}}</td>
                       <td
                         [ngClass]="{ 'trade-rd' :item.stockPriceResult.gainLoss >= 0, 'trade-rdd':item.stockPriceResult.gainLoss < 0}">
-                        {{'$(' + item.stockPriceResult.gainLoss + ')'}}</td>
+                        {{item.stockPriceResult.gainLoss}}</td>
                     </tr>
                   </tbody>
                 </table>

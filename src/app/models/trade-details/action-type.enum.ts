@@ -4,8 +4,8 @@ export enum ActionType {
 
     "Sell to Open" = "SELL_TO_OPEN",
 
-    "Buy to Close" = "BUY_TO_CLOSE",
+    // "Buy to Close" = "BUY_TO_CLOSE",
 
-    "Sell to Close" = "SELL_TO_CLOSE"
+    // "Sell to Close" = "SELL_TO_CLOSE"
 
 }

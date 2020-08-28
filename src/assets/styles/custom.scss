@@ -12,6 +12,7 @@
         padding: .35rem .5rem;
         border-radius: 4px;
         cursor: pointer;
+        width: 100%;
         &:focus {
             border: 0;
             outline: 0;
@@ -20,11 +21,14 @@
         
     }
     .mat-icon-button {
-        width: 30px;
-        height: 30px;
+        width: 25px;
+        height: 25px;
         line-height: 1;
         border: 0;
-        background: transparent !important;
+        position: absolute;
+        right: 0;
+        top: 5px;
+        background: #fff !important;
         &:focus {
             outline: 0;
             background: transparent !important;
@@ -35,3 +39,16 @@
     }
 }
 
+.login-member-name {
+    align-items: center !important;
+    h5{
+        font-weight: 400;
+        font-size: 1rem;
+    }
+}
+.login-log {
+    h6{
+        font-weight: 300;
+        font-size: .9rem;
+    }
+}
