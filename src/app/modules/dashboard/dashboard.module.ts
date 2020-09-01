@@ -24,6 +24,7 @@ import { MobileTradeThesisComponent } from './components/add-new-trade/Steps/mob
 import { MobileRiskAnalysisComponent } from './components/add-new-trade/Steps/mobile-steps/mobile-risk-analysis/mobile-risk-analysis.component';
 import { MobileTradeAnalysisComponent } from './components/add-new-trade/Steps/mobile-steps/mobile-trade-analysis/mobile-trade-analysis.component';
 import { CloseTradeComponent } from './components/close-trade/close-trade.component';
+import { EditTradeComponent } from './components/edit-trade/edit-trade.component';
 import { ExitRulesComponent } from './components/exit-rules/exit-rules.component';
 import { UpdateStrategyPopupComponent } from './modalAsComponents/update-strategy-popup/update-strategy-popup.component';
 import { ManagerulesComponent } from './components/managerules/managerules.component';
@@ -41,6 +42,7 @@ import {
   MatNativeDateModule,
   MatInputModule
 } from '@angular/material';
+import { EditTradeDetailsComponent } from './components/edit-trade-details/edit-trade-details.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +68,7 @@ import {
     MobileRiskAnalysisComponent,
     MobileTradeAnalysisComponent,
     CloseTradeComponent,
+    EditTradeComponent,
     ExitRulesComponent,
     UpdateStrategyPopupComponent,
     ManagerulesComponent,
@@ -75,7 +78,8 @@ import {
     AddnewtradeplanComponent,
     TradePlansComponent,
     ProfileComponent,
-    RiskAnalysisComponent
+    RiskAnalysisComponent,
+    EditTradeDetailsComponent,
   ],
   imports: [
     CommonModule,

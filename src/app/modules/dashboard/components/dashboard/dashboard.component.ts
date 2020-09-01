@@ -38,6 +38,7 @@ export class DashboardComponent implements OnInit {
       case 'reports': return {breadcrumb : 'REPORTS', title: 'REPORTS'};
       case 'help': return {breadcrumb : 'HELP', title: 'HELP'};
       case 'setttings': return {breadcrumb : 'SETTINGS', title: 'MANAGE RULES'};
+      case 'edit-trade' : return {breadcrumb : 'Edit TRADE', title: 'Edit TRADE'};
       case 'close-trade' : return {breadcrumb : 'TRADE STRATEGIES', title: 'CLOSE TRADE'};
       case 'exit-rules' : return {breadcrumb : 'TRADE STRATEGIES', title: 'EXIT RULES'};
       case 'trade-plans' : return {breadcrumb : 'TRADING PLAN', title: 'TRADE PLAN'};

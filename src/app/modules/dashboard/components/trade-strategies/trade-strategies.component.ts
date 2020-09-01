@@ -242,8 +242,8 @@ export class TradeStrategiesComponent implements OnInit {
       this.router.navigate(['dashboard/close-trade/' + strategyId]);
    }
 
-   editTrade() {
-
+   editTrade(strategyId) {
+      this.router.navigate(['dashboard/edit-trade/' + strategyId]);
    }
 
    deleteTrade() {

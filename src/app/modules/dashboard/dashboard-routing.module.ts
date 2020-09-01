@@ -11,6 +11,7 @@ import { SettingsComponent } from './components/settings/settings.component';
 import { HelpComponent } from './components/help/help.component';
 import { combineLatest } from 'rxjs';
 import { CloseTradeComponent } from './components/close-trade/close-trade.component';
+import { EditTradeComponent } from './components/edit-trade/edit-trade.component';
 import { ExitRulesComponent } from './components/exit-rules/exit-rules.component';
 import { AddnewtradeplanComponent } from './components/addnewtradeplan/addnewtradeplan.component';
 import { TradePlansComponent } from './components/trade-plans/trade-plans.component';
@@ -61,6 +62,10 @@ const routes: Routes = [
         {
           path: 'close-trade/:id',
           component: CloseTradeComponent
+        },
+        {
+          path: 'edit-trade/:id',
+          component: EditTradeComponent
         },
         {
           path : 'exit-rules',
