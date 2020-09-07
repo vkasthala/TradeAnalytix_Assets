@@ -12,4 +12,6 @@ export class EditTradeComponent implements OnInit {
   ngOnInit() {
   }
 
+  
+
 }

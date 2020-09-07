@@ -323,8 +323,16 @@
   
       <div class="trade-cards-section">
         <div class="trade-card-box">
-          <div class="top-heading" (click)="deleteStock()">
-            <img src="../../../../../assets/images/icon/delete.png" alt="" class="img-fluid">
+          <div class="trade-card-box-header">
+            <span class="ml-2 cursor" (click)="addToPosition()">
+              <img src="../../../../../assets/images/icon/add.png" alt="ADD TO POSITION " />
+            </span>
+            <span class="ml-2 cursor" (click)="reduceToPosition()">
+              <img src="../../../../../assets/images/icon/reduce.png" alt="Reduce TO POSITION" />
+            </span>
+            <span class="ml-2 cursor" (click)="deleteStock()">
+              <img src="../../../../../assets/images/icon/delete.png" alt="Delete Position" class="delete_icon" />
+            </span>
           </div>
           <div class="card-main">
             <div class="card-left">
@@ -373,97 +381,108 @@
           </div>
         </div>
         <ng-container *ngFor="let item of stockOptions;let index = index">
-          <div class="trade-card-box card-m">
-            <div class="top-heading cursor-pointer" (click)="deleteStockOption(index)">
-              <img src="../../../../../assets/images/icon/delete.png" alt="" class="img-fluid">
-            </div>
-            <div class="card-main">
-              <div class="card-left">
-                <span>Select Action</span>
+          <div class="edit-trade-card-box-container">
+            <div class="trade-card-box">
+              <div class="trade-card-box-header">
+                <span class="ml-2 cursor" (click)="addToStockPosition(index)">
+                  <img src="../../../../../assets/images/icon/add.png" alt="ADD TO POSITION " />
+                </span>
+                <span class="ml-2 cursor" (click)="addToStockOption(index)">
+                  <img src="../../../../../assets/images/icon/reduce.png" alt="Reduce TO POSITION" />
+                </span>
+                <span class="ml-2 cursor" (click)="deleteStockOption(index)">
+                  <img src="../../../../../assets/images/icon/delete.png" alt="Delete Position" class="delete_icon" />
+                </span>
               </div>
-              <div class="card-right">
-                <div class="form-group">
-                  <select id="inputState" class="form-control select-input" [(ngModel)]="stockOptions[index].actionType">
-                    <option value="BUY_TO_OPEN" [hidden]="!addTrade" selected data-default>Buy to Open</option>
-                    <option value="SELL_TO_OPEN" [hidden]="!addTrade">Sell to Open</option>
-                    <option value="BUY_TO_CLOSE" [hidden]="addTrade">Buy to Close</option>
-                    <option value="SELL_TO_CLOSE" [hidden]="addTrade">Sell to Close</option>
-                  </select>
+              <div class="card-main">
+                <div class="card-left">
+                  <span>Select Action</span>
+                </div>
+                <div class="card-right">
+                  <div class="form-group">
+                    <select id="inputState" class="form-control select-input" [(ngModel)]="stockOptions[index].actionType">
+                      <option value="BUY_TO_OPEN" [hidden]="!addTrade" selected data-default>Buy to Open</option>
+                      <option value="SELL_TO_OPEN" [hidden]="!addTrade">Sell to Open</option>
+                      <option value="BUY_TO_CLOSE" [hidden]="addTrade">Buy to Close</option>
+                      <option value="SELL_TO_CLOSE" [hidden]="addTrade">Sell to Close</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="card-main">
+                <div class="card-left">
+                  <span>Enter Contracts</span>
+                </div>
+                <div class="card-right">
+                  <div class="form-group">
+                    <input type="number" (keydown)="preventNegatives($event, false)" min="0"
+                      class="form-control cards-input" placeholder="" [(ngModel)]="stockOptions[index].contracts" />
+                  </div>
+                </div>
+              </div>
+              <div class="card-main">
+                <div class="card-left">
+                  <span>Strike Price</span>
+                </div>
+                <div class="card-right">
+                  <div class="form-group">
+                    <input type="number" (keydown)="preventNegatives($event, true)" pattern="^\d*(\.\d{0,2})?$"
+                      (change)="checkForDecimalValidation($event)" step="0.01" min="0" class="form-control cards-input"
+                      placeholder="" [(ngModel)]="stockOptions[index].strikePrice" />
+                  </div>
+                </div>
+              </div>
+    
+              <div class="card-main">
+                <div class="card-left">
+                  <span>Option Type</span>
+                </div>
+                <div class="card-right">
+                  <div class="form-group">
+                    <select id="inputState" class="form-control select-input" [(ngModel)]="stockOptions[index].optionType">
+                      <option value="call" selected data-default>Call</option>
+                      <option value="put">Put</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="card-main">
+                <div class="card-left">
+                  <span>Expiry Date</span>
+                </div>
+                <div class="card-right">
+                  <div class="datepicker-group">
+                    <input matInput [matDatepicker]="expireDate" (click)="expireDate.open()" id="expireDate" (dateChange)="addEvent('input', $event)" name="stockOptions[index].expireDate" />
+                    <mat-datepicker-toggle matSuffix [for]="expireDate"></mat-datepicker-toggle>
+                    <mat-datepicker #expireDate></mat-datepicker>
+                  </div>
+                </div>
+              </div>
+              <div class="card-main">
+                <div class="card-left">
+                  <span>Price</span>
+                </div>
+                <div class="card-right">
+                  <div class="form-group">
+                    <input type="number" (keydown)="preventNegatives($event, true)" pattern="^\d*(\.\d{0,2})?$"
+                      (change)="checkForDecimalValidation($event)" step="0.01" min="0" class="form-control cards-input"
+                      placeholder="" [(ngModel)]="stockOptions[index].price" />
+                  </div>
+                </div>
+              </div>
+              <div class="card-main">
+                <div class="card-left">
+                  <span>Net Credit</span>
+                </div>
+                <div class="card-right">
+                  <h6>
+                    {{stockOptions[index].contracts && stockOptions[index].price ? (stockOptions[index].contracts * stockOptions[index].price * 100).toFixed(2) : 0}}
+                  </h6>
                 </div>
               </div>
             </div>
-            <div class="card-main">
-              <div class="card-left">
-                <span>Enter Contracts</span>
-              </div>
-              <div class="card-right">
-                <div class="form-group">
-                  <input type="number" (keydown)="preventNegatives($event, false)" min="0"
-                    class="form-control cards-input" placeholder="" [(ngModel)]="stockOptions[index].contracts" />
-                </div>
-              </div>
-            </div>
-            <div class="card-main">
-              <div class="card-left">
-                <span>Strike Price</span>
-              </div>
-              <div class="card-right">
-                <div class="form-group">
-                  <input type="number" (keydown)="preventNegatives($event, true)" pattern="^\d*(\.\d{0,2})?$"
-                    (change)="checkForDecimalValidation($event)" step="0.01" min="0" class="form-control cards-input"
-                    placeholder="" [(ngModel)]="stockOptions[index].strikePrice" />
-                </div>
-              </div>
-            </div>
-  
-            <div class="card-main">
-              <div class="card-left">
-                <span>Option Type</span>
-              </div>
-              <div class="card-right">
-                <div class="form-group">
-                  <select id="inputState" class="form-control select-input" [(ngModel)]="stockOptions[index].optionType">
-                    <option value="call" selected data-default>Call</option>
-                    <option value="put">Put</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div class="card-main">
-              <div class="card-left">
-                <span>Expiry Date</span>
-              </div>
-              <div class="card-right">
-                <div class="datepicker-group">
-                  <input matInput [matDatepicker]="expireDate" (click)="expireDate.open()" id="expireDate" (dateChange)="addEvent('input', $event)" name="stockOptions[index].expireDate" />
-                  <mat-datepicker-toggle matSuffix [for]="expireDate"></mat-datepicker-toggle>
-                  <mat-datepicker #expireDate></mat-datepicker>
-                </div>
-              </div>
-            </div>
-            <div class="card-main">
-              <div class="card-left">
-                <span>Price</span>
-              </div>
-              <div class="card-right">
-                <div class="form-group">
-                  <input type="number" (keydown)="preventNegatives($event, true)" pattern="^\d*(\.\d{0,2})?$"
-                    (change)="checkForDecimalValidation($event)" step="0.01" min="0" class="form-control cards-input"
-                    placeholder="" [(ngModel)]="stockOptions[index].price" />
-                </div>
-              </div>
-            </div>
-            <div class="card-main">
-              <div class="card-left">
-                <span>Net Credit</span>
-              </div>
-              <div class="card-right">
-                <h6>
-                  {{stockOptions[index].contracts && stockOptions[index].price ? (stockOptions[index].contracts * stockOptions[index].price * 100).toFixed(2) : 0}}
-                </h6>
-              </div>
-            </div>
-          </div>
+            <div class="trade-card-box-bottom">Hedge Trade <input type="checkbox" class="ml-2" /></div>
+        </div>
         </ng-container>
       </div>
   

@@ -12,6 +12,8 @@ import { OptionResult } from 'src/app/models/trade-details/option-result.model';
 import { SummaryResult } from 'src/app/models/trade-details/summary-result.model';
 import { RiskAnalysisService } from 'src/app/services/risk-analysis.service';
 import { RiskAnalysisRequest } from 'src/app/models/trade-details/risk-analysis-request.model';
+import {MatDialog} from '@angular/material/dialog';
+import { AddToPositionPopupComponent } from '../edit-trade/add-to-position-popup/add-to-position-popup.component';
 
 @Component({
   selector: 'app-edit-trade-details',
@@ -42,9 +44,10 @@ export class EditTradeDetailsComponent implements OnInit {
   @Output('nextStep') nextStep = new EventEmitter();
   @Output('activateRisk') activateRisk = new EventEmitter();
 
-  constructor(private utilService: UtilService, private riskAnalysisService: RiskAnalysisService) { }
+  constructor(private utilService: UtilService, private riskAnalysisService: RiskAnalysisService, private _dialog: MatDialog) { }
 
   ngOnInit() {
+    this.addStock();
   }
 
   ngAfterViewInit(): void {
@@ -67,6 +70,14 @@ export class EditTradeDetailsComponent implements OnInit {
     if (this.stockOptions.length < 4) {
       this.stockOptions.push(this.createStockOptionEntry())
     }
+  }
+
+  addToPosition() {
+    const dialogRef = this._dialog.open(AddToPositionPopupComponent, {
+      disableClose: false,
+      width: 'auto'
+    });
+
   }
 
   next() {
@@ -281,6 +292,7 @@ export class EditTradeDetailsComponent implements OnInit {
     stockResult.gainLoss = 126.36;
     return stockResult;
   }
+
 
   //Code for handling Mouse Hold event
   name: number = 0;

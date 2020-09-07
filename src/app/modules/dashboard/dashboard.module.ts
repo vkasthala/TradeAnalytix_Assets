@@ -43,6 +43,7 @@ import {
   MatInputModule
 } from '@angular/material';
 import { EditTradeDetailsComponent } from './components/edit-trade-details/edit-trade-details.component';
+import { AddToPositionPopupComponent } from './components/edit-trade/add-to-position-popup/add-to-position-popup.component';
 
 @NgModule({
   declarations: [
@@ -80,6 +81,7 @@ import { EditTradeDetailsComponent } from './components/edit-trade-details/edit-
     ProfileComponent,
     RiskAnalysisComponent,
     EditTradeDetailsComponent,
+    AddToPositionPopupComponent,
   ],
   imports: [
     CommonModule,
@@ -96,7 +98,8 @@ import { EditTradeDetailsComponent } from './components/edit-trade-details/edit-
     UpdateStrategyPopupComponent,
     UpdatePriceRangeComponent,
     SingleInputModalComponent,
-    ManageRulePopupComponent
+    ManageRulePopupComponent,
+    AddToPositionPopupComponent,
   ]
 })
 export class DashboardModule { }

@@ -250,6 +250,15 @@ a.btn.btn-skip {
     flex-wrap: wrap;
     // margin-bottom: 10px;
   }
+  .edit-trade-card-box-container {
+    width: 20%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-left: 10px;
+  }
   .trade-card-box {
     width: 20%;
     // min-width: 260px;
@@ -758,4 +767,16 @@ a.btn.btn-skip {
     font-size: 14px;
   }
 
+}
+.trade-card-box-bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 100%;
+  align-items: center;
+  padding: .5rem 0;
+  font-size: .789rem;
+}
+.edit-trade-card-box-container .trade-card-box {
+  width: 100%;
 }
