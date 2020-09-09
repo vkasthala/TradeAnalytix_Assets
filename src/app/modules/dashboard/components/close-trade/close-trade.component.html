@@ -1,378 +1,403 @@
 <div class="container-fluid">
+  <h3 class="edit-trade-item">
+    STRATEGY #05082020-001
+  </h3>
   <div class="close-trade-section">
+    <mat-horizontal-stepper labelPosition="bottom" #stepper [linear]="false">
+      <mat-step [class.active]="stepone.completed" #stepone [editable]="false">
+        <ng-template matStepLabel>Trade Details</ng-template>
 
-    <mat-accordion class="example-headers-align">
-      <mat-expansion-panel (closed)="panelOpenStateOne = false" [expanded]="step === 0"
-        (opened)="setStep(0);panelOpenStateOne = true" hideToggle>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Trade Thesis
-          </mat-panel-title>
-          <mat-panel-description>
-            <mat-icon *ngIf="!panelOpenStateOne">add</mat-icon>
-            <mat-icon *ngIf="panelOpenStateOne">remove</mat-icon>
-          </mat-panel-description>
-        </mat-expansion-panel-header>
-
-        <!-- Add Content here-->
-        <!-- close Trade -->
-        <div class="close-trade-inner-sec">
-          <div class="first-sec">
-
-            <div class="row">
-              <div class="col-md-4">
-                <div class="close-trade-input">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Source of the trade idea</label>
-                    <input type="email" class="form-control disabled-control" id="exampleInputEmail1"
-                      aria-describedby="emailHelp" disabled placeholder="CNBC">
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="close-trade-input">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Mindset while executing the trade</label>
-                    <input type="email" class="form-control disabled-control" id="exampleInputEmail1"
-                      aria-describedby="emailHelp" disabled placeholder="Not Selected ">
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="close-trade-input">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Trade executed to take any advantage of</label>
-                    <input type="email" class="form-control disabled-control" id="exampleInputEmail1"
-                      aria-describedby="emailHelp" disabled placeholder="Earnings Announcement">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="first-sec">
-
-            <div class="row">
-              <div class="col-md-4">
-                <div class="close-trade-input">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Reasons for executing the trade</label>
-                    <input type="email" class="form-control disabled-control" id="exampleInputEmail1"
-                      aria-describedby="emailHelp" disabled
-                      placeholder="Lorem Ipsum is simply dummy text of the printing and typesetting industr">
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="close-trade-input">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Profit Expected</label>
-                    <input type="email" class="form-control disabled-control" id="exampleInputEmail1"
-                      aria-describedby="emailHelp" disabled placeholder="$4,500">
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="close-trade-input">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Stop loss set for the stock</label>
-                    <input type="email" class="form-control disabled-control" id="exampleInputEmail1"
-                      aria-describedby="emailHelp" disabled placeholder="$214.32">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="first-sec">
-
-            <div class="row">
-              <div class="col-md-4">
-                <div class="close-trade-input">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Risks associated with the trade</label>
-                    <input type="email" class="form-control disabled-control" id="exampleInputEmail1"
-                      aria-describedby="emailHelp" disabled
-                      placeholder="Lorem Ipsum is simply dummy text of the printing and typesetting industr">
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="close-trade-input">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Target Close Date</label>
-                    <input type="email" class="form-control disabled-control" id="exampleInputEmail1"
-                      aria-describedby="emailHelp" disabled placeholder="06/30/2020">
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="close-trade-input">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Specify the technical indicator used for the
-                      trade</label>
-                    <input type="email" class="form-control disabled-control" id="exampleInputEmail1"
-                      aria-describedby="emailHelp" placeholder="Relative Strength Indicator (30.2) RSI_05302019.png"
-                      disabled>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="stepper-content">
+          <app-close-trade-details
+            (nextStep)="goForward()"
+            (activateRisk)="activeStep = true"
+          ></app-close-trade-details>
         </div>
-        <!---->
-      </mat-expansion-panel>
+      </mat-step>
 
-      <mat-expansion-panel (closed)="panelOpenStateTwo = false" [expanded]="step === 1"
-        (opened)="setStep(1);panelOpenStateTwo = true" hideToggle>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Exit Thesis
-          </mat-panel-title>
-          <mat-panel-description>
-            <mat-icon *ngIf="!panelOpenStateTwo">add</mat-icon>
-            <mat-icon *ngIf="panelOpenStateTwo">remove</mat-icon>
-          </mat-panel-description>
-        </mat-expansion-panel-header>
+      <mat-step [editable]="false">
+        <ng-template matStepLabel>Exit Thesis</ng-template>
+        <div class="stepper-content" (nextStep)="goForward()">
+          <mat-accordion class="example-headers-align">
+            <mat-expansion-panel (closed)="panelOpenStateOne = false" [expanded]="step === 0"
+              (opened)="setStep(0);panelOpenStateOne = true" hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Trade Thesis
+                </mat-panel-title>
+                <mat-panel-description>
+                  <mat-icon *ngIf="!panelOpenStateOne">add</mat-icon>
+                  <mat-icon *ngIf="panelOpenStateOne">remove</mat-icon>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
 
-        <!-- Add Content here-->
-        <!-- exit thesis -->
-        <div class="trade-thesis-list">
+              <!-- Add Content here-->
+              <!-- close Trade -->
+              <div class="close-trade-inner-sec">
+                <div class="first-sec">
 
-          <div class="trade-box-left">
-            <div class="trade-new">
-              <div class="left-trade">
-                <div class="thesis-list-inner">
-                  <div class="list-inner-left">
-                    <span><img alt=""
-                        src="../../../../../../../assets/images/icon/Icon ionic-ios-arrow-forward.png"></span>
-
-                    <h6>
-                      On what date is the trade closed in the brokerage account?
-                    </h6>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="close-trade-input">
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Source of the trade idea</label>
+                          <input type="email" class="form-control disabled-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp" disabled placeholder="CNBC">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="close-trade-input">
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Mindset while executing the trade</label>
+                          <input type="email" class="form-control disabled-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp" disabled placeholder="Not Selected ">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="close-trade-input">
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Trade executed to take any advantage of</label>
+                          <input type="email" class="form-control disabled-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp" disabled placeholder="Earnings Announcement">
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div class="list-inner-right">
-                    <div class="trade-date">
-                      <div class="form-group">
-                        <div class="input-group date" id="datetimepicker1">
-                          <input class="form-control input-lg" type="date">
+                </div>
+                <div class="first-sec">
+
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="close-trade-input">
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Reasons for executing the trade</label>
+                          <input type="email" class="form-control disabled-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp" disabled
+                            placeholder="Lorem Ipsum is simply dummy text of the printing and typesetting industr">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="close-trade-input">
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Profit Expected</label>
+                          <input type="email" class="form-control disabled-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp" disabled placeholder="$4,500">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="close-trade-input">
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Stop loss set for the stock</label>
+                          <input type="email" class="form-control disabled-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp" disabled placeholder="$214.32">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="first-sec">
+
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="close-trade-input">
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Risks associated with the trade</label>
+                          <input type="email" class="form-control disabled-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp" disabled
+                            placeholder="Lorem Ipsum is simply dummy text of the printing and typesetting industr">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="close-trade-input">
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Target Close Date</label>
+                          <input type="email" class="form-control disabled-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp" disabled placeholder="06/30/2020">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="close-trade-input">
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Specify the technical indicator used for the
+                            trade</label>
+                          <input type="email" class="form-control disabled-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp" placeholder="Relative Strength Indicator (30.2) RSI_05302019.png"
+                            disabled>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="right-trade">
-                <div class="thesis-list-inner">
-                  <div class="list-inner-left">
-                    <span><img alt=""
-                        src="../../../../../../../assets/images/icon/Icon ionic-ios-arrow-forward.png"></span>
+              <!---->
+            </mat-expansion-panel>
 
-                    <h6>
-                      What is the trigger for closing the trade?
-                    </h6>
-                  </div>
-                  <div class="list-inner-right">
-                    <div class="Trade-type">
-                      <div class="form-group"><select class="form-control select-input" id="inputState">
-                          <option selected="">Analyst Upgrade</option>
-                          <option>Analyst Downgrade</option>
-                          <option>Friend</option>
-                          <option>Self</option>
-                          <option>CNBC</option>
-                          <option>Yates</option>
-                          <option>Barrons</option>
-                          <option>StockTwits</option>
-                          <option>Trading Academy</option>
-                        </select></div>
+            <mat-expansion-panel (closed)="panelOpenStateTwo = false" [expanded]="step === 1"
+              (opened)="setStep(1);panelOpenStateTwo = true" hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Exit Thesis
+                </mat-panel-title>
+                <mat-panel-description>
+                  <mat-icon *ngIf="!panelOpenStateTwo">add</mat-icon>
+                  <mat-icon *ngIf="panelOpenStateTwo">remove</mat-icon>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+
+              <!-- Add Content here-->
+              <!-- exit thesis -->
+              <div class="trade-thesis-list">
+
+                <div class="trade-box-left">
+                  <div class="trade-new">
+                    <div class="left-trade">
+                      <div class="thesis-list-inner">
+                        <div class="list-inner-left">
+                          <span><img alt=""
+                              src="../../../../../../../assets/images/icon/Icon ionic-ios-arrow-forward.png"></span>
+
+                          <h6>
+                            On what date is the trade closed in the brokerage account?
+                          </h6>
+                        </div>
+                        <div class="list-inner-right">
+                          <div class="trade-date">
+                            <div class="form-group">
+                              <div class="input-group date" id="datetimepicker1">
+                                <input class="form-control input-lg" type="date">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <a class="add-new m-left" (click)="addValue('Source')">+ Add New Source</a>
+                    <div class="right-trade">
+                      <div class="thesis-list-inner">
+                        <div class="list-inner-left">
+                          <span><img alt=""
+                              src="../../../../../../../assets/images/icon/Icon ionic-ios-arrow-forward.png"></span>
 
-                  </div>
-                </div>
-              </div>
-            </div>
+                          <h6>
+                            What is the trigger for closing the trade?
+                          </h6>
+                        </div>
+                        <div class="list-inner-right">
+                          <div class="Trade-type">
+                            <div class="form-group"><select class="form-control select-input" id="inputState">
+                                <option selected="">Analyst Upgrade</option>
+                                <option>Analyst Downgrade</option>
+                                <option>Friend</option>
+                                <option>Self</option>
+                                <option>CNBC</option>
+                                <option>Yates</option>
+                                <option>Barrons</option>
+                                <option>StockTwits</option>
+                                <option>Trading Academy</option>
+                              </select></div>
+                          </div>
+                          <a class="add-new m-left" (click)="addValue('Source')">+ Add New Source</a>
 
-            <div class="trade-new">
-              <div class="left-trade">
-                <div class="thesis-list-inner">
-                  <div class="list-inner-left">
-                    <span><img alt=""
-                        src="../../../../../../../assets/images/icon/Icon ionic-ios-arrow-forward.png"></span>
-
-                    <h6>
-                      What is your mindset while executing the trade?
-                    </h6>
-                  </div>
-                  <div class="list-inner-right">
-                    <div class="Trade-type">
-                      <div class="form-group"><select class="form-control select-input" id="inputState">
-                          <option selected="">Fear of Missing Out</option>
-                          <option>Recent Success</option>
-                          <option>Recent Loss</option>
-                          <option>Greedy</option>
-                          <option>Relaxed</option>
-                          <option>Confident</option>
-                          <option>Iron Condor</option>
-                          <option>Well Thought-Out</option>
-
-                        </select></div>
-                    </div>
-                    <a class="add-new m-left" (click)="addValue('Mindset')">+ Add New</a>
-
-                  </div>
-                </div>
-              </div>
-              <div class="right-trade">
-                <div class="thesis-list-inner">
-                  <div class="list-inner-left">
-                    <span><img alt=""
-                        src="../../../../../../../assets/images/icon/Icon ionic-ios-arrow-forward.png"></span>
-
-                    <h6>
-                      Specify the reasons for closing the trade
-                    </h6>
-                  </div>
-                  <div class="list-inner-right">
-                    <div class="trade-input">
-
-                      <div class="form-group has-search">
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="trade-box-right">
-            <div class="trade-new">
-              <div class="left-trade">
 
-                <div class="thesis-list-inner">
-                  <div class="list-inner-left">
-                    <span><img alt=""
-                        src="../../../../../../../assets/images/icon/Icon ionic-ios-arrow-forward.png"></span>
+                  <div class="trade-new">
+                    <div class="left-trade">
+                      <div class="thesis-list-inner">
+                        <div class="list-inner-left">
+                          <span><img alt=""
+                              src="../../../../../../../assets/images/icon/Icon ionic-ios-arrow-forward.png"></span>
 
-                    <h6>
-                      Gain or loss from the trade attributed to
-                    </h6>
-                  </div>
-                  <div class="list-inner-right">
-                    <div class="Trade-type">
-                      <div class="form-group"><select class="form-control select-input" id="inputState">
-                          <option selected="">Luck</option>
-                          <option>Patience</option>
-                          <option>Strategy</option>
-                          <option>Analysis</option>
-                          <option>Greed</option>
-                          <option>Fear</option>
-                          <option>Iron Condor</option>
-                          <option>Call Spread</option>
-                          <option>Put Spread</option>
-                        </select></div>
+                          <h6>
+                            What is your mindset while executing the trade?
+                          </h6>
+                        </div>
+                        <div class="list-inner-right">
+                          <div class="Trade-type">
+                            <div class="form-group"><select class="form-control select-input" id="inputState">
+                                <option selected="">Fear of Missing Out</option>
+                                <option>Recent Success</option>
+                                <option>Recent Loss</option>
+                                <option>Greedy</option>
+                                <option>Relaxed</option>
+                                <option>Confident</option>
+                                <option>Iron Condor</option>
+                                <option>Well Thought-Out</option>
+
+                              </select></div>
+                          </div>
+                          <a class="add-new m-left" (click)="addValue('Mindset')">+ Add New</a>
+
+                        </div>
+                      </div>
                     </div>
-                    <a class="add-new m-left" (click)="addValue('Reason')">+ Add Reason</a>
-                    <div class="trade-net">
-                      <span>Net Gain</span>
-                      <div class="trade-input">
+                    <div class="right-trade">
+                      <div class="thesis-list-inner">
+                        <div class="list-inner-left">
+                          <span><img alt=""
+                              src="../../../../../../../assets/images/icon/Icon ionic-ios-arrow-forward.png"></span>
 
-                        <div class="form-group has-search">
-                          <input class="form-control" placeholder="$999" type="text">
+                          <h6>
+                            Specify the reasons for closing the trade
+                          </h6>
+                        </div>
+                        <div class="list-inner-right">
+                          <div class="trade-input">
+
+                            <div class="form-group has-search">
+                              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="right-trade">
-                <div class="thesis-list-inner">
-                  <div class="list-inner-left">
-                    <span><img alt=""
-                        src="../../../../../../../assets/images/icon/Icon ionic-ios-arrow-forward.png"></span>
+                <div class="trade-box-right">
+                  <div class="trade-new">
+                    <div class="left-trade">
 
-                    <h6>
-                      Specify the lessons learnt from the trade
-                    </h6>
-                  </div>
-                  <div class="list-inner-right">
-                    <div class="trade-input">
+                      <div class="thesis-list-inner">
+                        <div class="list-inner-left">
+                          <span><img alt=""
+                              src="../../../../../../../assets/images/icon/Icon ionic-ios-arrow-forward.png"></span>
 
-                      <div class="form-group has-search">
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="trade-new">
-              <div class="left-trade">
-                <div class="thesis-list-inner">
-                  <div class="list-inner-left">
-                    <span><img alt=""
-                        src="../../../../../../../assets/images/icon/Icon ionic-ios-arrow-forward.png"></span>
-
-                    <h6>
-                      Specify the indicator based on which the trade is closed
-                    </h6>
-                  </div>
-                  <div class="list-inner-rights">
-                    <div class="trade-risk">
-                      <div class="trade-risk-nw">
-
-                        <div class="Trade-type">
-                          <div class="form-group">
-                            <select class="form-control select-input" id="inputState">
-                              <option selected="">MACD</option>
-                              <option>RSI</option>
-                              <option>SMA</option>
-                              <option>EMA</option>
-                              <option>Bollinger Bands</option>
-                              <option>Support</option>
-                              <option>Resistance</option>
-                              <option>On-Balance Volume</option>
-                              <option>Stochastic Oscillator</option>
-                              <option>Fibonacci Retracement</option>
-                              <option>Ichimoku Cloud</option>
-                              <option>Average Directional Index</option>
-                              <option>Standard Deviation</option>
-                              <option>Williams %R</option>
-
-                            </select></div>
+                          <h6>
+                            Gain or loss from the trade attributed to
+                          </h6>
                         </div>
-                        <a class="add-new add-left" (click)="addValue('Indicator')">+ Add New
-                          Indicator</a>
+                        <div class="list-inner-right">
+                          <div class="Trade-type">
+                            <div class="form-group"><select class="form-control select-input" id="inputState">
+                                <option selected="">Luck</option>
+                                <option>Patience</option>
+                                <option>Strategy</option>
+                                <option>Analysis</option>
+                                <option>Greed</option>
+                                <option>Fear</option>
+                                <option>Iron Condor</option>
+                                <option>Call Spread</option>
+                                <option>Put Spread</option>
+                              </select></div>
+                          </div>
+                          <a class="add-new m-left" (click)="addValue('Reason')">+ Add Reason</a>
+                          <div class="trade-net">
+                            <span>Net Gain</span>
+                            <div class="trade-input">
+
+                              <div class="form-group has-search">
+                                <input class="form-control" placeholder="$999" type="text">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
+                    </div>
+                    <div class="right-trade">
+                      <div class="thesis-list-inner">
+                        <div class="list-inner-left">
+                          <span><img alt=""
+                              src="../../../../../../../assets/images/icon/Icon ionic-ios-arrow-forward.png"></span>
 
-                      <div class="add-new-t">
+                          <h6>
+                            Specify the lessons learnt from the trade
+                          </h6>
+                        </div>
+                        <div class="list-inner-right">
+                          <div class="trade-input">
 
-                        <a class="add-new">
-                          30-day Moving Average.png <img
-                            src="../../../../../../../assets/images/icon/Icon ionic-ios-close-circle.png" alt=""> </a>
-
-                        <a class="add-new add-left">
-                          <img src="../../../../../../../assets/images/icon/Icon metro-attachment.png" alt="">Attach
-                          File</a>
+                            <div class="form-group has-search">
+                              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
+
+                  <div class="trade-new">
+                    <div class="left-trade">
+                      <div class="thesis-list-inner">
+                        <div class="list-inner-left">
+                          <span><img alt=""
+                              src="../../../../../../../assets/images/icon/Icon ionic-ios-arrow-forward.png"></span>
+
+                          <h6>
+                            Specify the indicator based on which the trade is closed
+                          </h6>
+                        </div>
+                        <div class="list-inner-rights">
+                          <div class="trade-risk">
+                            <div class="trade-risk-nw">
+
+                              <div class="Trade-type">
+                                <div class="form-group">
+                                  <select class="form-control select-input" id="inputState">
+                                    <option selected="">MACD</option>
+                                    <option>RSI</option>
+                                    <option>SMA</option>
+                                    <option>EMA</option>
+                                    <option>Bollinger Bands</option>
+                                    <option>Support</option>
+                                    <option>Resistance</option>
+                                    <option>On-Balance Volume</option>
+                                    <option>Stochastic Oscillator</option>
+                                    <option>Fibonacci Retracement</option>
+                                    <option>Ichimoku Cloud</option>
+                                    <option>Average Directional Index</option>
+                                    <option>Standard Deviation</option>
+                                    <option>Williams %R</option>
+
+                                  </select></div>
+                              </div>
+                              <a class="add-new add-left" (click)="addValue('Indicator')">+ Add New
+                                Indicator</a>
+                            </div>
+
+                            <div class="add-new-t">
+
+                              <a class="add-new">
+                                30-day Moving Average.png <img
+                                  src="../../../../../../../assets/images/icon/Icon ionic-ios-close-circle.png" alt=""> </a>
+
+                              <a class="add-new add-left">
+                                <img src="../../../../../../../assets/images/icon/Icon metro-attachment.png" alt="">Attach
+                                File</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="right-trade"></div>
+                  </div>
                 </div>
               </div>
-              <div class="right-trade"></div>
-            </div>
-          </div>
+
+              <!---->
+
+              <mat-action-row>
+                <button mat-button color=primary (click)="goBack()">Previous</button>
+                <button mat-button color="primary" (click)="goForward()">Exit Rules</button>
+              </mat-action-row>
+            </mat-expansion-panel>
+          </mat-accordion>
         </div>
+      </mat-step>
 
-        <!---->
-
-        <mat-action-row>
-          <button mat-button color=primary (click)="prevStep()">Previous</button>
-          <button mat-button color="primary" (click)="exitRules()">Exit Rules</button>
-        </mat-action-row>
-      </mat-expansion-panel>
-
-
-    </mat-accordion>
+      <mat-step>
+        <ng-template matStepLabel>Exit Rules</ng-template>
+        <div class="stepper-content">
+          <app-exit-rules (prevStep)="goBack()"></app-exit-rules>
+        </div>
+      </mat-step>
+    </mat-horizontal-stepper>
   </div>
 </div>
 
@@ -383,7 +408,7 @@
 
 <div class="close-trade-mobile">
   <div class="trade-top-heading">
-    <h3> CLOSE TRADE </h3>
+    <h3> CLOSE TRADE</h3>
   </div>
   <div class="trad-border"></div>
   <div class="container-fluid">

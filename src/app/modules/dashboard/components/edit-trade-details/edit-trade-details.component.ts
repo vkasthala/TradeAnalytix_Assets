@@ -14,6 +14,9 @@ import { RiskAnalysisService } from 'src/app/services/risk-analysis.service';
 import { RiskAnalysisRequest } from 'src/app/models/trade-details/risk-analysis-request.model';
 import {MatDialog} from '@angular/material/dialog';
 import { AddToPositionPopupComponent } from '../edit-trade/add-to-position-popup/add-to-position-popup.component';
+import { AddToStockPositionPopupComponent } from '../edit-trade/add-to-stock-position-popup/add-to-stock-position-popup.component';
+import { ReduceToPositionPopupComponent } from '../edit-trade/reduce-to-position-popup/reduce-to-position-popup.component';
+import { ReduceToStockPositionPopupComponent } from '../edit-trade/reduce-to-stock-position-popup/reduce-to-stock-position-popup.component';
 
 @Component({
   selector: 'app-edit-trade-details',
@@ -79,8 +82,27 @@ export class EditTradeDetailsComponent implements OnInit {
     });
 
   }
-
+  addToStockPosition() {
+    const dialogRef = this._dialog.open(AddToStockPositionPopupComponent, {
+      disableClose: false,
+      width: 'auto'
+    });
+  }
+  reduceToPosition(){
+    const dialogRef = this._dialog.open(ReduceToPositionPopupComponent, {
+      disableClose: false,
+      width: 'auto'
+    });
+  }
+  
+  reduceToStockOption() {
+    const dialogRef = this._dialog.open(ReduceToStockPositionPopupComponent, {
+      disableClose: false,
+      width: 'auto'
+    });
+  }
   next() {
+    debugger;
     this.nextStep.emit()
   }
 

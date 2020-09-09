@@ -44,6 +44,10 @@ import {
 } from '@angular/material';
 import { EditTradeDetailsComponent } from './components/edit-trade-details/edit-trade-details.component';
 import { AddToPositionPopupComponent } from './components/edit-trade/add-to-position-popup/add-to-position-popup.component';
+import { AddToStockPositionPopupComponent } from './components/edit-trade/add-to-stock-position-popup/add-to-stock-position-popup.component';
+import { ReduceToPositionPopupComponent } from './components/edit-trade/reduce-to-position-popup/reduce-to-position-popup.component';
+import { ReduceToStockPositionPopupComponent } from './components/edit-trade/reduce-to-stock-position-popup/reduce-to-stock-position-popup.component';
+import { CloseTradeDetailsComponent } from './components/close-trade/close-trade-details/close-trade-details.component';
 
 @NgModule({
   declarations: [
@@ -82,6 +86,10 @@ import { AddToPositionPopupComponent } from './components/edit-trade/add-to-posi
     RiskAnalysisComponent,
     EditTradeDetailsComponent,
     AddToPositionPopupComponent,
+    AddToStockPositionPopupComponent,
+    ReduceToPositionPopupComponent,
+    ReduceToStockPositionPopupComponent,
+    CloseTradeDetailsComponent,
   ],
   imports: [
     CommonModule,
@@ -100,6 +108,9 @@ import { AddToPositionPopupComponent } from './components/edit-trade/add-to-posi
     SingleInputModalComponent,
     ManageRulePopupComponent,
     AddToPositionPopupComponent,
+    AddToStockPositionPopupComponent,
+    ReduceToPositionPopupComponent,
+    ReduceToStockPositionPopupComponent
   ]
 })
 export class DashboardModule { }

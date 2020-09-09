@@ -9,10 +9,11 @@ import { SingleInputModalComponent } from '../../modalAsComponents/single-input-
   styleUrls: ['./close-trade.component.scss']
 })
 export class CloseTradeComponent implements OnInit {
+  @ViewChild('stepper', { static: false }) private tradeStepper: MatStepper;
+  @ViewChild('tradeMobileStepper', { static: false }) private tradeMobileStepper: MatStepper;
   panelOpenStateOne = false;
   panelOpenStateTwo = false;
   step = 0;
-  @ViewChild('tradeMobileStepper', { static: false }) private tradeMobileStepper: MatStepper;
   constructor(private router: Router, private _dialog: MatDialog) { }
 
   ngOnInit() {
@@ -56,5 +57,13 @@ export class CloseTradeComponent implements OnInit {
     dialogRef.afterClosed().subscribe((res) => {
       
     });
+  }
+  goForward(moveTwoSteps?,mobileView?) {
+    let stepper = mobileView ? this.tradeMobileStepper : this.tradeStepper;
+    if(stepper && !moveTwoSteps) {
+      stepper.next();
+    }else if(stepper && moveTwoSteps) {
+      stepper.next();stepper.next();
+    }
   }
 }
