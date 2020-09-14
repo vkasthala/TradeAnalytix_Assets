@@ -48,6 +48,7 @@ import { AddToStockPositionPopupComponent } from './components/edit-trade/add-to
 import { ReduceToPositionPopupComponent } from './components/edit-trade/reduce-to-position-popup/reduce-to-position-popup.component';
 import { ReduceToStockPositionPopupComponent } from './components/edit-trade/reduce-to-stock-position-popup/reduce-to-stock-position-popup.component';
 import { CloseTradeDetailsComponent } from './components/close-trade/close-trade-details/close-trade-details.component';
+import { TradeDetailsHeaderComponent } from './components/common/trade-details-header/trade-details-header.component';
 
 @NgModule({
   declarations: [
@@ -90,6 +91,7 @@ import { CloseTradeDetailsComponent } from './components/close-trade/close-trade
     ReduceToPositionPopupComponent,
     ReduceToStockPositionPopupComponent,
     CloseTradeDetailsComponent,
+    TradeDetailsHeaderComponent,
   ],
   imports: [
     CommonModule,

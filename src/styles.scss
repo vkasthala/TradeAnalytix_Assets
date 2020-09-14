@@ -141,3 +141,40 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     // display: none;
     // -webkit-appearance: none;
 }
+.mat-stepper-horizontal, .mat-stepper-vertical {
+    position: relative;
+}
+.mat-stepper-vertical {
+    border-top: 1px solid #cecece;
+}
+.mat-vertical-stepper-header {
+    position: absolute !important;
+    z-index: 20;
+    width: 190px;
+    left: 0;
+    top: 0;
+    height: 60px !important;
+    box-sizing: border-box !important;
+    border-bottom: 1px solid #cecece;
+}
+.mat-vertical-content-container {
+    margin-left: 0 !important;
+    padding-left: 190px;
+}
+.mat-vertical-stepper-content {
+    border-left: 1px solid #cecece;
+}
+
+.mat-vertical-stepper-header:last-child {
+    border-top-width: 2px !important;
+}
+
+.mat-stepper-vertical .mat-step:nth-child(2) > .mat-vertical-stepper-header {
+    top: 60px;
+}
+.mat-stepper-vertical .mat-step:nth-child(3) > .mat-vertical-stepper-header {
+    top:120px;
+}
+.mat-stepper-vertical-line::before {
+    border-left: 0 !important;
+}

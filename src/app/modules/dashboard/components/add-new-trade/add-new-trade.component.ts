@@ -12,10 +12,14 @@ export class AddNewTradeComponent implements OnInit {
   activeStep:boolean;
   stockOptions:any[] = [];
   stockAdded:boolean;
+  currentState: number = 1;
   constructor(private changeRef: ChangeDetectorRef) { }
 
   ngOnInit() {
 
+  }
+  enterSymbol() {
+    this.currentState++;
   }
 
   goBack(moveTwoSteps?,mobileView?) {

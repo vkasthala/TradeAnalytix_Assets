@@ -1,57 +1,52 @@
 <div class="container-fluid">
   <div class="addnew-trade">
-    <mat-horizontal-stepper labelPosition="bottom" #stepper [linear]="false">
-      <mat-step [class.active]="stepone.completed" #stepone>
-        <ng-template matStepLabel>Trade Details</ng-template>
+    <div class="addnew-trade-body">
+      <ng-container [ngSwitch]="currentState">
+        <ng-container *ngSwitchCase="1">
+          <!--entry first-->
+          <div class="addnew-first p-3">
+            <div class="trade-form">
+              <div class="d-flex justify-content-center align-items-center">
+                <label class="col-form-label px-2">Enter Symbol</label>
+                <app-trade-search></app-trade-search>
+                <button class="btn btn-enter ml-2" (click)="enterSymbol()">ENTER</button>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+        <ng-container *ngSwitchCase="2">
+          <app-trade-details-header></app-trade-details-header>
+        
+          <mat-vertical-stepper labelPosition="left" #stepper [linear]="false">
+            <mat-step [class.active]="stepone.completed" #stepone>
+              <ng-template matStepLabel>Trade Details</ng-template>
+              <div class="stepper-content">
+                <app-trade-details
+                  (nextStep)="goForward(true)"
+                  (activateRisk)="activeStep = true"
+                ></app-trade-details>
+              </div>
+            </mat-step>
 
-        <div class="stepper-content">
-          <app-trade-details
-            (nextStep)="goForward(true)"
-            (activateRisk)="activeStep = true"
-          ></app-trade-details>
-        </div>
-      </mat-step>
-
-      <mat-step
-        [editable]="false"
-        [completed]="activeStep"
-        [state]="'completed'"
-      >
-        <ng-template matStepLabel
-          ><span [class.activeStepHeading]="activeStep"
-            >Risk Analysis</span
-          ></ng-template
-        >
-        <div class="stepper-content"></div>
-      </mat-step>
-
-      <mat-step>
-        <ng-template matStepLabel>Trade Thesis</ng-template>
-        <div class="stepper-content">
-          <app-trade-thesis
-            (nextStep)="goForward()"
-            (prevStep)="goBack(true)"
-          ></app-trade-thesis>
-        </div>
-      </mat-step>
-
-      <mat-step>
-        <ng-template matStepLabel>Risk Management</ng-template>
-        <div class="stepper-content">
-          <app-risk-management
-            (nextStep)="goForward()"
-            (prevStep)="goBack()"
-          ></app-risk-management>
-        </div>
-      </mat-step>
-
-      <mat-step>
-        <ng-template matStepLabel>Entry Rules</ng-template>
-        <div class="stepper-content">
-          <app-entry-rules (prevStep)="goBack()"></app-entry-rules>
-        </div>
-      </mat-step>
-    </mat-horizontal-stepper>
+            <mat-step>
+              <ng-template matStepLabel>Trade Thesis</ng-template>
+              <div class="stepper-content">
+                <app-trade-thesis
+                  (nextStep)="goForward()"
+                  (prevStep)="goBack(true)"
+                ></app-trade-thesis>
+              </div>
+            </mat-step>
+            <mat-step>
+              <ng-template matStepLabel>Entry Rules</ng-template>
+              <div class="stepper-content">
+                <app-entry-rules (prevStep)="goBack()"></app-entry-rules>
+              </div>
+            </mat-step>
+          </mat-vertical-stepper>
+        </ng-container>
+      </ng-container>
+    </div>
   </div>
 </div>
 

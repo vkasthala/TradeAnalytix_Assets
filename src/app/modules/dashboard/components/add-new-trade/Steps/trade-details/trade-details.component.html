@@ -1,291 +1,6 @@
+<div class="addnew-trade-body">
 <ng-container [ngSwitch]="currentState">
-  <ng-container *ngSwitchCase="1">
-    <!--entry first-->
-    <div class="addnew-first">
-      <div class="trade-form">
-        <div class="d-flex justify-content-center align-items-center">
-          <label class="col-form-label px-2">Enter Symbol</label>
-          <app-trade-search></app-trade-search>
-          <button class="btn btn-enter ml-2" (click)="enterSymbol()">ENTER</button>
-        </div>
-      </div>
-    </div>
-  </ng-container>
-  <ng-container *ngSwitchCase="2">
-    <!-- entry second -->
-    <div class="addnew-second">
-      <div class="trade-rate">
-        <div class="trade-left-name">
-          <div class="trade-name">
-            <h5>
-              Netflix Inc.
-            </h5>
-          </div>
-          <div class="trade-name-rate">
-            <span class="trade-r">$429.32</span>
-            <span class="trade-rr">
-              <img src="../../../../../assets/images/Icon awesome-arrow-up.png" alt="" />
-              -6.93 (-1.59%)
-            </span>
-          </div>
-        </div>
-
-        <div class="trade-right-search">
-          <div class="form-group has-search">
-            <input class="form-control" placeholder="Symbol" type="text" />
-            <img alt="" class="form-icon" src="../../../../../assets/images/icon/Icon awesome-search.png" />
-          </div>
-        </div>
-      </div>
-
-      <div class="trade-rate-box">
-        <div class="trade-rate-heading">
-          <h6>
-            Key Statistics
-          </h6>
-        </div>
-
-        <div class="trade-rate-sec">
-          <div class="rate-box">
-            <div class="rate-box-left">
-              <div class="bxo-name">
-                <span>
-                  Prev Close
-                </span>
-
-                <h6>
-                  436.25
-                </h6>
-              </div>
-              <div class="bxo-name">
-                <span>
-                  Today's Open
-                </span>
-
-                <h6>
-                  440.14
-                </h6>
-              </div>
-              <div class="bxo-name">
-                <span>
-                  Day's Range
-                </span>
-
-                <h6>
-                  427.18 - 439.09
-                </h6>
-              </div>
-              <div class="bxo-name">
-                <span>
-                  52-Wk Range
-                </span>
-
-                <h6>
-                  252.28 - 458.97
-                </h6>
-              </div>
-            </div>
-            <div class="rate-box-right">
-              <div class="bxo-name">
-                <span>
-                  Market Cap
-                </span>
-
-                <h6>
-                  188.81B
-                </h6>
-              </div>
-              <div class="bxo-name">
-                <span>
-                  Volume
-                </span>
-
-                <h6>
-                  5.19M
-                </h6>
-              </div>
-              <div class="bxo-name">
-                <span>
-                  Avg. Volume
-                </span>
-
-                <h6>
-                  9.07M
-                </h6>
-              </div>
-              <div class="bxo-name">
-                <span>
-                  Beta
-                </span>
-
-                <h6>
-                  0.97
-                </h6>
-              </div>
-            </div>
-          </div>
-
-          <div class="rate-box">
-            <div class="rate-box-left">
-              <div class="bxo-name">
-                <span>
-                  Enterprise Value
-                </span>
-
-                <h6>
-                  206.40B
-                </h6>
-              </div>
-              <div class="bxo-name">
-                <span>
-                  Revenue
-                </span>
-
-                <h6>
-                  21.4B
-                </h6>
-              </div>
-              <div class="bxo-name">
-                <span>
-                  Gross Margin
-                </span>
-
-                <h6>
-                  35.2%
-                </h6>
-              </div>
-              <div class="bxo-name">
-                <span>
-                  Oper. Margin
-                </span>
-
-                <h6>
-                  14.6%
-                </h6>
-              </div>
-            </div>
-            <div class="rate-box-right">
-              <div class="bxo-name">
-                <span>
-                  Total Debt
-                </span>
-
-                <h6>
-                  16.27B
-                </h6>
-              </div>
-              <div class="bxo-name">
-                <span>
-                  Free Cash Flow
-                </span>
-
-                <h6>
-                  13.31B
-                </h6>
-              </div>
-
-            </div>
-          </div>
-
-          <div class="rate-box">
-            <div class="rate-box-left">
-              <div class="bxo-name">
-                <span>
-                  Price/Earnings
-                </span>
-
-                <h6>
-                  90.62
-                </h6>
-              </div>
-              <div class="bxo-name">
-                <span>
-                  Price/Sales
-                </span>
-
-                <h6>
-                  9.45
-                </h6>
-              </div>
-              <div class="bxo-name">
-                <span>
-                  Price/Book
-                </span>
-
-                <h6>
-                  23.41
-                </h6>
-              </div>
-              <div class="bxo-name">
-                <span>
-                  Dividend Yield
-                </span>
-
-                <h6>
-                  N/A
-                </h6>
-              </div>
-            </div>
-            <div class="rate-box-right">
-              <div class="bxo-name">
-                <span>
-                  Short Ratio
-                </span>
-
-                <h6>
-                  1.27%
-                </h6>
-              </div>
-              <div class="bxo-name">
-                <span>
-                  Institutional Holding
-                </span>
-
-                <h6>
-                  83%
-                </h6>
-              </div>
-
-            </div>
-          </div>
-
-          <div class="rate-box-s">
-            <div class="rate-box-s-left">
-              <div class="bxo-name">
-                <span>
-                  30-day Moving Average
-                </span>
-
-                <h6>
-                  385.62
-                </h6>
-              </div>
-              <div class="bxo-name">
-                <span>
-                  Stock Trend
-                </span>
-
-                <h6>
-                  Bullish
-                </h6>
-              </div>
-              <div class="bxo-name">
-                <span>
-                  7-day RSI
-                </span>
-
-                <h6>
-                  27.82
-                </h6>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="trad-border"></div>
+  
 
     <!-- entry-third -->
     <div class="trade-stoack-main">
@@ -484,8 +199,8 @@
       </ng-container>
     </div>
 
-    <div class="trad-border"></div>
 
+    
     <!-- next-button -->
     <div class="order-btn text-center" *ngIf="
         !promptPerformRiskAnalysis &&
@@ -496,23 +211,6 @@
       <a class="btn btn-next" (click)="displayRiskAnalysis = true">Next</a>
     </div>
 
-    <!-- risk-analysis -->
-    <!-- <div class="trade-risk" *ngIf="promptPerformRiskAnalysis && !displayRiskAnalysis">
-      <div class="row d-flex  align-items-center">
-        <div class="col-sm-6 col-md-6 col-g-5 ">
-          <h6>
-            Do you want to perform risk analysis of the trade strategy by simulation?
-          </h6>
-        </div>
-
-        <div class="col-sm-6 col-md-4">
-          <a class="btn btn-yes"
-            (click)="performRiskAnalysis = true; displayRiskAnalysis = true; activateRiskAnalysisStep()">Yes</a>
-          <a class="btn btn-no" (click)="promptPerformRiskAnalysis = false; navigateToTradeThesis()">No</a>
-        </div>
-      </div>
-    </div> -->
-  </ng-container>
 
   <ng-container *ngIf="displayRiskAnalysis">
     <!-- risk-increas and decreas -->
@@ -783,11 +481,12 @@
         </div>
       </div>
 
-      <div class="trad-border"></div>
 
+      
       <div class="order-btn text-center">
         <a class="btn btn-next" (click)="next()">Next</a>
       </div>
     </div>
   </ng-container>
 </ng-container>
+</div>
