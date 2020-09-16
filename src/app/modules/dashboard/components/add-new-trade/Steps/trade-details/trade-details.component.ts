@@ -282,6 +282,10 @@ export class TradeDetailsComponent implements OnInit {
     return stockResult;
   }
 
+  refreshImpliedVolatility() {
+    this.loadImpliedVolatility();
+  }
+
   //Code for handling Mouse Hold event
   name: number = 0;
   timeoutHandler;
@@ -314,5 +318,10 @@ export class TradeDetailsComponent implements OnInit {
       this.name += 1;
     }, 100);
   }
+
+  scroll(element: HTMLElement){
+    element.scrollIntoView();
+  }
+
 
 }

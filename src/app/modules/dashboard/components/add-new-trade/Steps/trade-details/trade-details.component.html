@@ -3,7 +3,7 @@
   
 
     <!-- entry-third -->
-    <div class="trade-stoack-main">
+    <div class="trade-stoack-main" #tradeCards>
       <div class="trade-sec">
         <h6>Select a pre-defined strategy or build custom strategy with stocks
           and options</h6>
@@ -167,7 +167,8 @@
             </div>
             <div class="card-right">
               <div class="datepicker-group">
-                <input matInput [matDatepicker]="expireDate" (click)="expireDate.open()" id="expireDate" (dateChange)="addEvent('input', $event)" name="stockOptions[index].expireDate" />
+                <input matInput [matDatepicker]="expireDate" (click)="expireDate.open()" id="expireDate"
+                  (dateChange)="addEvent('input', $event)" name="stockOptions[index].expireDate" />
                 <mat-datepicker-toggle matSuffix [for]="expireDate"></mat-datepicker-toggle>
                 <mat-datepicker #expireDate></mat-datepicker>
               </div>
@@ -216,9 +217,13 @@
     <!-- risk-increas and decreas -->
     <div class="trade-risk-section">
       <div class="trade-risk-heading">
-        <h6>
-          Risk Analysis By Simulation
-        </h6>
+        <span>
+          <h6>
+            Risk Analysis By Simulation
+          </h6>
+          <i class="material-icons" class="refresh-icon material-icons"
+            (click)="refreshImpliedVolatility();">refresh</i>
+        </span>
 
         <p>
           Analyze the profitability for a chosen stock price range by changing
@@ -360,6 +365,8 @@
     <!-- next-button -->
     <div class="order-btn text-center">
       <a class="btn btn-next" (click)="analyzeRisk = true;initRiskAnalysis();">Analyze</a>
+      <a class="btn btn-next gap-btn" *ngIf="analyzeRisk"
+      (click)="analyzeRisk = false; scroll(tradeCards);">Reset</a>
       <a class="btn btn-skip" *ngIf="!analyzeRisk" (click)="next()">Skip Risk Analysis</a>
     </div>
   </ng-container>
