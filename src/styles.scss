@@ -178,3 +178,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .mat-stepper-vertical-line::before {
     border-left: 0 !important;
 }
+.mat-stepper-vertical .mat-step:first-child .mat-vertical-stepper-content {
+    min-height: 200px;
+}
