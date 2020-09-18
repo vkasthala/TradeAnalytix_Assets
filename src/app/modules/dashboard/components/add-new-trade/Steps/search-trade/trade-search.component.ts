@@ -4,38 +4,34 @@ import { UtilService } from 'src/app/services/util.service';
 import { Observable, Subject } from 'rxjs';
 
 import {
-   debounceTime, distinctUntilChanged, switchMap
- } from 'rxjs/operators';
+    debounceTime, distinctUntilChanged, switchMap
+} from 'rxjs/operators';
+import { StockSymbol } from 'src/app/models/trademgmt/stock-symbol.model';
+import { StockSymbolService } from 'src/app/services/stock-symbol.service';
 
 @Component({
-  selector: 'app-trade-search',
-  templateUrl: './trade-search.component.html',
-  styleUrls: [ './auto-search.css' ]
+    selector: 'app-trade-search',
+    templateUrl: './trade-search.component.html',
+    styleUrls: ['./auto-search.css']
 })
 export class TradeSearchComponent implements OnInit {
     serarchResult = false;
     TradeList = [];
     tradeItem = '';
-    searchData  = [
-        { id: 11, name: 'Netflix Inc' },
-        { id: 12, name: 'Prime' },
-        { id: 13, name: 'Hotstar' },
-        { id: 14, name: 'Sunnxt' },
-        { id: 15, name: 'Sonyliv' },
-        { id: 16, name: 'Youtube' },
-        { id: 17, name: 'Fancode' },
-      ];
-    
+    searchData: StockSymbol[] = [];
 
-    constructor(private utilService: UtilService) {
-        
-     }
+    constructor(private utilService: UtilService, private stockSymbolService: StockSymbolService) { }
+
     search(term: string): void {
         this.searchTrade(term)
     }
 
     ngOnInit(): void {
-        
+        //Load all stock symbols on load
+        this.stockSymbolService.getStockSymbols().subscribe(result => {
+            console.log("stock symbol result:", result);
+            this.searchData = result;
+        });
     }
 
     /* GET search terms */
@@ -43,12 +39,12 @@ export class TradeSearchComponent implements OnInit {
         this.TradeList = [];
         if (!term.trim()) {
             this.serarchResult = false;
-        return;
+            return;
         }
-        for(var i=0; i < this.searchData.length; i++ ){
+        for (var i = 0; i < this.searchData.length; i++) {
             var str = this.searchData[i].name;
             var value = term.toLowerCase();
-            if(str.toLowerCase().includes(value)){
+            if (str.toLowerCase().includes(value)) {
                 this.TradeList.push(this.searchData[i].name);
             }
         }
@@ -61,11 +57,6 @@ export class TradeSearchComponent implements OnInit {
         this.serarchResult = false;
         console.log('tradeItem', this.tradeItem)
     }
-   
 
-   
-
-
- 
 }
 
