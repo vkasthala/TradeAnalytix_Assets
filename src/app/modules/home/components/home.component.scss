@@ -1,0 +1,294 @@
+@import "../../../../assets/styles/variable.scss";
+@import "../../../../assets/styles/breakpoints.scss";
+// Dashboard topbar
+
+.trade-dashboard-topbar {
+  height: auto;
+  @include gradient-background();
+
+  .trade-dash-sections {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 14px;
+    @media #{$extra-small} {
+      padding: 0px;
+    }
+
+    .dashboard-left-logo {
+      @media #{$extra-small} {
+        display: none;
+      }
+      img {
+        width: 160px;
+        height: auto;
+      }
+    }
+
+    .dashboard-right-login {
+      display: flex;
+      align-items: center;
+      @media #{$extra-small} {
+        display: none;
+      }
+
+      .login-img {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: 1px solid $white;
+        overflow: hidden;
+        margin-right: 10px;
+
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+
+      .login-member {
+        color: $white;
+
+        .login-member-name {
+          h4 {
+            cursor: pointer;
+            font-size: 15px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Dashboard Navabr
+.trade-dashboard-navbar {
+  background-color: $white;
+  box-shadow: 1px 0px 4px #00000087;
+
+  .trade-navbar {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    padding: 0px 6px;
+
+    @include media(">tablet", "<laptop") {
+      padding: 0px;
+      height: auto;
+    }
+    @media #{$extra-small} {
+      display: none;
+    }
+
+    ul {
+      margin: 0px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      // flex-flow: wrap;
+      padding: 10px;
+
+      @include media(">tablet", "<laptop") {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+      }
+
+      @media #{$extra-small} {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+      }
+      li {
+        cursor: pointer;
+
+        a.trade-nav-link {
+          display: flex;
+          align-items: center;
+          text-decoration: none;
+          
+          @include media(">tablet", "<laptop") {
+            margin-left: 14px;
+            margin-bottom: 9px;
+          }
+
+          span {
+            margin-right: 5px;
+
+            svg {
+              width: 16px;
+              @include media(">tablet", "<laptop") {
+                width: 14px;
+              }
+            }
+          }
+          h4 {
+            color: $heading-1;
+            font-size: 16px;
+            font-weight: 500;
+            text-transform: uppercase;
+            margin-top: 5px;
+            @include media(">tablet", "<laptop") {
+              font-size: 14px;
+            }
+            @media #{$medium} {
+            font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.nav-active {
+  a {
+    span {
+      img {
+        fill: $secondary !important;
+      }
+    }
+    h4 {
+      color: $secondary !important;
+    }
+  }
+  svg path {
+    fill: #02559f !important;
+  }
+}
+
+// Dashboard sedction
+
+.trade-app-dashboard {
+  background-color: $btn-background;
+  height: auto;
+  min-height: 100vh;
+  padding-bottom: 20px;
+  @media #{$extra-small} {
+    min-height: 87vh;
+    padding-bottom: 0px;
+
+  }
+
+}
+.trade-dash-section {
+  width: 100%;
+
+  .trade-dash-main {
+    padding: 10px 20px;
+    @media #{$extra-small} {
+      display: none;
+    }
+
+    .trade-bread {
+      nav {
+        ol {
+          padding-left: 0px;
+          list-style: none;
+          li {
+            display: inline-flex;
+          }
+        }
+      }
+    }
+
+    .trade-dash-name {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      width: 100%;
+      margin-bottom: 0px;
+      
+        h3 {
+          color: $secondary;
+          font-weight: 500;
+        }
+
+       
+      
+    }
+  }
+}
+
+// mobile-navbar
+.mobile-bottom-nav {
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: none;
+
+  //give nav it's own compsite layer
+  will-change: transform;
+  transform: translateZ(0);
+  height: 50px;
+  box-shadow: 0 -2px 5px -2px #333;
+  background-color: #fff;
+
+  @media #{$extra-small} {
+    display: flex;
+  }
+  @media #{$small} {
+    display: none;
+  }
+  ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+    li {
+      display: inline-block;
+      width: 20%;
+      height: 100%;
+      border-left: 1px solid #ddd;
+      a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        height: 100%;
+        color: #565656;
+        span {
+          height: 20px;
+          svg{
+            width: 17px;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+.mobile-logo{
+  display: none;
+  background-image: url('../../../../assets/images/trade-logo.svg');
+  width: 110px;
+  height: 60px;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  @media #{$extra-small} {
+    display: flex;
+  }
+
+
+}
+.nav-active{
+  color: $primary !important;
+}
+
+
+.login-member-name {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.edit-icon{
+  margin-left: 10px;
+  img{
+    cursor: pointer;
+  }
+}

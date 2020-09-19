@@ -1,0 +1,116 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { 
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatInputModule
+} from '@angular/material';
+import { TradeStrategiesComponent } from '../trade-strategies/components/trade-strategies.component';
+import { DashboardComponent } from '../dashboard/components/dashboard.component';
+import { HomeComponent } from './components/home.component';
+import { AddNewTradeComponent } from '../trade-management/components/add-trade/add-new-trade.component';
+import { ImportTradesComponent } from '../import-trades/components/import-trades.component';
+import { CompareStrategiesComponent } from '../compare-strategies/components/compare-strategies.component';
+import { ReportsComponent } from '../reports/components/reports.component';
+import { SettingsComponent } from '../settings/components/settings.component';
+import { TradeDetailsComponent } from '../trade-management/components/add-trade/Steps/trade-details/trade-details.component';
+import { TradeSearchComponent } from '../trade-management/components/add-trade/Steps/search-trade/trade-search.component';
+import { TradeThesisComponent } from '../trade-management/components/add-trade/Steps/trade-thesis/trade-thesis.component';
+import { RiskManagementComponent } from '../trade-management/components/add-trade/Steps/risk-management/risk-management.component';
+import { EntryRulesComponent } from '../trade-management/components/add-trade/Steps/entry-rules/entry-rules.component';
+import { AddTradeConfirmationPopupComponent } from '../trade-management/components/add-trade/add-trade-confirmation-popup/add-trade-confirmation-popup.component';
+import { MobileEntryRulesComponent } from '../trade-management/components/add-trade/Steps/mobile-steps/mobile-entry-rules/mobile-entry-rules.component';
+import { MobileRiskManagementComponent } from '../trade-management/components/add-trade/Steps/mobile-steps/mobile-risk-management/mobile-risk-management.component';
+import { MobileTradeDetailsComponent } from '../trade-management/components/add-trade/Steps/mobile-steps/mobile-trade-details/mobile-trade-details.component';
+import { MobileTradeThesisComponent } from '../trade-management/components/add-trade/Steps/mobile-steps/mobile-trade-thesis/mobile-trade-thesis.component';
+import { MobileRiskAnalysisComponent } from '../trade-management/components/add-trade/Steps/mobile-steps/mobile-risk-analysis/mobile-risk-analysis.component';
+import { MobileTradeAnalysisComponent } from '../trade-management/components/add-trade/Steps/mobile-steps/mobile-trade-analysis/mobile-trade-analysis.component';
+import { CloseTradeComponent } from '../trade-management/components/close-trade/close-trade.component';
+import { EditTradeComponent } from '../trade-management/components/edit-trade/edit-trade.component';
+import { ExitRulesComponent } from '../trade-management/components/exit-rules/exit-rules.component';
+import { UpdateStrategyPopupComponent } from '../compare-strategies/components/update-strategy-popup/update-strategy-popup.component';
+import { ManagerulesComponent } from '../settings/components/managerules/managerules.component';
+import { UpdatePriceRangeComponent } from '../compare-strategies/components/update-price-range/update-price-range.component';
+import { SingleInputModalComponent } from '../shared/components/modals/single-input-modal/single-input-modal.component';
+import { ManageRulePopupComponent } from '../settings/components/managerules/manage-rule-popup/manage-rule-popup.component';
+import { AddnewtradeplanComponent } from '../trade-plan/components/add-trade-plan/addnewtradeplan.component';
+import { TradePlansComponent } from '../trade-plan/components/trade-plans.component';
+import { ProfileComponent } from '../user-profile/components/profile.component';
+import { RiskAnalysisComponent } from '../risk-analysis/components/risk-analysis.component';
+import { EditTradeDetailsComponent } from '../trade-management/components/edit-trade/edit-trade-details/edit-trade-details.component';
+import { AddToPositionPopupComponent } from '../trade-management/components/edit-trade/add-to-position-popup/add-to-position-popup.component';
+import { AddToStockPositionPopupComponent } from '../trade-management/components/edit-trade/add-to-stock-position-popup/add-to-stock-position-popup.component';
+import { ReduceToPositionPopupComponent } from '../trade-management/components/edit-trade/reduce-to-position-popup/reduce-to-position-popup.component';
+import { ReduceToStockPositionPopupComponent } from '../trade-management/components/edit-trade/reduce-to-stock-position-popup/reduce-to-stock-position-popup.component';
+import { CloseTradeDetailsComponent } from '../trade-management/components/close-trade/close-trade-details/close-trade-details.component';
+import { TradeDetailsHeaderComponent } from '../trade-management/components/trade-details-header/trade-details-header.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RoutingModule } from './routing.module';
+import { UtilitiesModule } from '../Utilities/utilities.module';
+
+
+@NgModule({
+  declarations: [
+    DashboardComponent,
+    HomeComponent,
+    AddNewTradeComponent,
+    ImportTradesComponent,
+    TradeStrategiesComponent,
+    CompareStrategiesComponent,
+    ReportsComponent,
+    SettingsComponent,
+    TradeDetailsComponent,
+    TradeSearchComponent,
+    TradeThesisComponent,
+    RiskManagementComponent,
+    EntryRulesComponent,
+    AddTradeConfirmationPopupComponent,
+    MobileEntryRulesComponent,
+    MobileRiskManagementComponent,
+    MobileTradeDetailsComponent,
+    MobileTradeThesisComponent,
+    MobileRiskAnalysisComponent,
+    MobileTradeAnalysisComponent,
+    CloseTradeComponent,
+    EditTradeComponent,
+    ExitRulesComponent,
+    UpdateStrategyPopupComponent,
+    ManagerulesComponent,
+    UpdatePriceRangeComponent,
+    SingleInputModalComponent,
+    ManageRulePopupComponent,
+    AddnewtradeplanComponent,
+    TradePlansComponent,
+    ProfileComponent,
+    RiskAnalysisComponent,
+    EditTradeDetailsComponent,
+    AddToPositionPopupComponent,
+    AddToStockPositionPopupComponent,
+    ReduceToPositionPopupComponent,
+    ReduceToStockPositionPopupComponent,
+    CloseTradeDetailsComponent,
+    TradeDetailsHeaderComponent,
+  ],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RoutingModule,
+    UtilitiesModule,
+    MatNativeDateModule,
+    MatInputModule,
+    MatDatepickerModule
+  ],
+  entryComponents: [
+    AddTradeConfirmationPopupComponent,
+    UpdateStrategyPopupComponent,
+    UpdatePriceRangeComponent,
+    SingleInputModalComponent,
+    ManageRulePopupComponent,
+    AddToPositionPopupComponent,
+    AddToStockPositionPopupComponent,
+    ReduceToPositionPopupComponent,
+    ReduceToStockPositionPopupComponent
+  ]
+})
+export class HomeModule { }

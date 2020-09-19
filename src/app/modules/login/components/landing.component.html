@@ -1,0 +1,260 @@
+<div class="trade-app">
+        <div class="row no-gutters">
+            <div class=" col-lg-8  col-md-8 col-sm-8">
+                <div class="trade-left-section">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="trade-left-section-logo">
+                        </div>
+                        <nav class="landing-navbar">
+                            <ul class="list-unstyled ">
+                                <li [class.nav-active]="currentRoute == 'about-us'">
+                                    <a class="landing-nav-link" [routerLink]="['/about-us']">
+                                      About Us
+                                    </a>
+                                </li>
+                                <li [class.nav-active]="currentRoute == 'features'">
+                                    <a class="landing-nav-link" [routerLink]="['/features']">
+                                        Features <mat-icon>keyboard_arrow_down</mat-icon>
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li [class.nav-active]="currentRoute == 'trade-journal'">
+                                            <a [routerLink]="['/trade-journal']">
+                                            Trade Journal 
+                                            </a>
+                                        </li>
+                                        <li [class.nav-active]="currentRoute == 'bulk-import-trades'">
+                                            <a [routerLink]="['/bulk-import-trades']">
+                                                Bulk-Import Trades 
+                                            </a>
+                                        </li>
+                                        <li [class.nav-active]="currentRoute == 'bulk-import-trades'">
+                                            <a [routerLink]="['/bulk-import-trades']">
+                                                Risk Analysis
+                                            </a>
+                                        </li>
+                                        <li [class.nav-active]="currentRoute == 'bulk-import-trades'">
+                                            <a [routerLink]="['/bulk-import-trades']">
+                                                Compare Strategies
+                                            </a>
+                                        </li>
+                                        <li [class.nav-active]="currentRoute == 'bulk-import-trades'">
+                                            <a [routerLink]="['/bulk-import-trades']">
+                                                Trade Plan 
+                                            </a>
+                                        </li>
+                                        <li [class.nav-active]="currentRoute == 'set-entry'">
+                                            <a [routerLink]="['/set-entry']">
+                                                Set Entry And Exit Rules
+                                            </a>
+                                        </li>
+                                        <li [class.nav-active]="currentRoute == 'reports'">
+                                            <a [routerLink]="['/reports']">
+                                                Reports
+                                            </a>
+                                        </li>
+                                        <li [class.nav-active]="currentRoute == 'insights'">
+                                            <a [routerLink]="['/insights']">
+                                                Insights
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li [class.nav-active]="currentRoute == 'getting-started'">
+                                    <a class="landing-nav-link" [routerLink]="['/getting-started']">
+                                    Getting Started
+                                    </a>
+                                </li>
+                                <li [class.nav-active]="currentRoute == 'pricing'">
+                                    <a class="landing-nav-link" [routerLink]="['/pricing']">
+                                        Pricing
+                                    </a>
+                                </li>
+                                <li [class.nav-active]="currentRoute == 'blogs'">
+                                    <a class="landing-nav-link" [routerLink]="['/blogs']">
+                                        Blogs
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <!-- Trade-Navbar-Web -->
+
+                    
+
+                    <div class="trade-section text-center">
+                        <h1 class="trade-section-heading">
+                            A robust tool to improve trading<br>discipline and thereby returns.
+                        </h1>
+
+                        <div class="trade-section-features">
+                            <div class="row m-0">
+                                <div class="col-lg-4 col-sm-6">
+                                    <div class="features_box">
+                                        <div class="feat-box">
+                                            <img src="../../../../assets/images/feature-img-1.png" alt="">
+                                        </div>
+                                        <div class="feat-box-con">
+                                            <h5>
+                                                Comprehensive<br>
+                                                trade journal
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-sm-6">
+                                      <div class="features_box">
+                                        <div class="feat-box">
+                                            <img src="../../../../assets/images/feature-img-2.png" alt="">
+                                        </div>
+                                        <div class="feat-box-con">
+                                            <h5>
+                                                Risk assessment <br>
+                                                and mitigation
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-sm-6">
+                                      <div class="features_box">
+                                        <div class="feat-box">
+                                            <img src="../../../../assets/images/feature-img-1.png" alt="">
+                                        </div>
+                                        <div class="feat-box-con">
+                                            <h5>
+                                                In-depth reporting <br>
+                                                on trade history
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-sm-6">
+                                      <div class="features_box">
+                                        <div class="feat-box">
+                                            <img src="../../../../assets/images/feature-img-3.png" alt="">
+                                        </div>
+                                        <div class="feat-box-con">
+                                            <h5>
+                                                Rule-based approach <br>
+                                                to enforce discipline
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-sm-6">
+                                      <div class="features_box">
+                                        <div class="feat-box">
+                                            <img src="../../../../assets/images/feature-img-4.png" alt="">
+                                        </div>
+                                        <div class="feat-box-con">
+                                            <h5>
+                                                Automatic insights <br>
+                                                on open trades
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-sm-6">
+                                    <div class="features_box">
+                                      <div class="feat-box">
+                                          <img src="../../../../assets/images/feature-img-3.png" alt="">
+                                      </div>
+                                      <div class="feat-box-con">
+                                          <h5>
+                                            Bulk-import<br>
+                                            of trades
+                                          </h5>
+                                      </div>
+                                  </div>
+                              </div>
+                            </div>
+                        </div>
+
+                        <!-- <div class="trade-app-img">
+                            <img src="../../../assets/images/trade-app.png" alt="">
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4">
+               <div class="trade-right-section ">
+                   <div class="container">
+                    <div class="trade-login">
+                        
+                        <h2 class="trade-head text-center">Welcome to TradeAnalytix</h2>
+                        <h3 class="sub-heading text-center">Sign-in Options</h3>
+
+                        <h3 class="mobile-trade-head">Welcome to TradeAnalytix, a robust
+                            tool to improve trading discipline and
+                            thereby returns</h3>
+     
+                        <!-- <p class="trade-con">
+                         Sign in to record your trade strategies, perform risk analysis, and learn from your trading history to improve your odds of trading success.
+                        </p> -->
+
+
+                        <div class="trade-login-sec">
+                            <div class="trade-login-btn" (click)="navigateToDashboard()">
+                                <div class="login-img">
+                                    <img src="../../../../assets/images/google.png" alt=""  class="img-responsive">
+                                </div>
+                                <div class="login-con">
+                                    Sign in with Google
+                                </div>
+                            </div>
+                            <div class="trade-login-btn" (click)="navigateToDashboard()">
+                                <div class="login-img">
+                                    <img src="../../../../assets/images//facebook.svg" alt=""  class="img-responsive">
+                                </div>
+                                <div class="login-con">
+                                    Sign in with Facebook
+                                </div>
+                            </div>
+                            <div class="trade-login-btn" (click)="navigateToDashboard()">
+                                <div class="login-img">
+                                    <img src="../../../../assets/images/microsoft.svg" alt=""  class="img-responsive">
+                                </div>
+                                <div class="login-con">
+                                    Sign in with Microsoft
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   </div>
+               </div>
+            </div>
+        </div>
+   
+</div>
+<nav class="mobile-bottom-nav">
+    <ul>
+        <li [class.nav-active]="currentRoute == 'about-us'">
+            <a class="landing-nav-link" [routerLink]="['/about-us']">
+              About Us
+            </a>
+        </li>
+        <li [class.nav-active]="currentRoute == 'features'">
+            <a class="landing-nav-link" [routerLink]="['/features']">
+                Features
+            </a>
+            
+        </li>
+        <li [class.nav-active]="currentRoute == 'getting-started'">
+            <a class="landing-nav-link" [routerLink]="['/getting-started']">
+            Getting <br/> Started
+            </a>
+        </li>
+        <li [class.nav-active]="currentRoute == 'pricing'">
+            <a class="landing-nav-link" [routerLink]="['/pricing']">
+                Pricing
+            </a>
+        </li>
+        <li [class.nav-active]="currentRoute == 'blogs'">
+            <a class="landing-nav-link" [routerLink]="['/blogs']">
+                Blogs
+            </a>
+        </li>
+
+        
+    </ul>
+</nav>
+<app-footer></app-footer>

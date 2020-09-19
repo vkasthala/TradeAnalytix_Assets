@@ -1,0 +1,380 @@
+@import "../../../../assets/styles/variable.scss";
+@import '../../../../assets/styles/breakpoints.scss';
+
+
+// Landing page
+.trade-app {
+  width: 100%;
+  min-height: 100vh;
+  height: auto;
+
+  overflow: hidden;
+  @media #{$extra-small} {
+    min-height: 92vh;
+    background-color: #f2f2f2;
+  }
+
+  // left-section
+  .trade-left-section {
+    padding-left: 15px;
+    // padding-top: 10px;
+    padding-right: 15px;
+    @include gradient-background();
+    height: 100%;
+    @media #{$extra-small} {
+      padding: 0px;
+
+    }
+    &-logo {
+      //  display: none;
+       background-image: url('../../../../assets/images/trade-logo-1.png');
+       background-position: center;
+       background-size: contain;
+       background-repeat: no-repeat;
+       width: 110px;
+       /* height: 100%; */
+       min-height: 55px;
+       @media #{$extra-small} {
+        display: block;
+      }
+   
+    }
+
+    // features section
+    .trade-section {
+      padding-top: 35px;
+      @media #{$extra-small} {
+        display: none;
+      }
+      &-heading {
+        color: $white;
+        font-weight: 400;
+        font-size: 2.45rem;
+        @include media('>tablet','<laptop'){
+          font-size: 22px;
+        }
+      }
+
+      &-features {
+        padding-top: 45px;
+
+        .features_box {
+          @include media('>tablet','<laptop'){
+            margin-bottom: 20px;
+          }
+          .feat-box {
+            margin-bottom: 10px;
+            img {
+              width: 85px;
+              height: auto;
+            }
+          }
+
+          .feat-box-con {
+            h5 {
+              color: $white;
+              font-weight: 300;
+              font-size: 1rem;
+              white-space: break-spaces;
+
+              @include media('<=tablet'){
+                font-size: 14px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .trade-app-img {
+      margin-top: 40px;
+      img {
+        width: 40%;
+        height: auto;
+      }
+    }
+  }
+
+  .landing-navbar {
+    display: flex;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+
+    @include media(">tablet", "<laptop") {
+      padding: 0px;
+      height: auto;
+    }
+    @media #{$extra-small} {
+      display: none;
+    } 
+    ul {
+      margin: 0px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      // flex-flow: wrap;
+      padding: 0 10px;
+
+      @include media(">tablet", "<laptop") {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+      }
+
+      @media #{$extra-small} {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+      }
+      li {
+        cursor: pointer;
+        padding: 0 5px;
+        position: relative;
+        text-align: left;
+
+        a.landing-nav-link {
+          display: flex;
+          align-items: center;
+          text-decoration: none;
+          color: $white;
+          padding: 5px 10px;
+          
+          @include media(">tablet", "<laptop") {
+            margin-bottom: 9px;
+            font-size: .78rem;
+            padding: 5px;
+          }
+          .mat-icon {
+            font-size: 1rem;
+            height: 18px;
+            width: 18px;
+          }
+        }
+        .sub-menu {
+          display: none;
+          position: absolute;
+          border-radius: 2px;
+          background-color: #fff;
+          border: 1px solid #d1d2d3;
+          min-width: 225px;
+          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+          z-index: 1;
+          margin: 0;
+          padding: 0;
+          top:100%;
+          left:0;
+          list-style-type: none;
+          @include media(">tablet", "<laptop") {
+            min-width: 180px;
+            font-size: .78rem;
+            padding: 5px;
+          }
+          li {
+            padding: 0;
+            a {
+              color: #767676;
+              justify-content: flex-start;
+              padding: 5px 12px;
+              text-decoration: none;
+              display: block;
+              &:hover {
+                color: #000;
+                background-color: #bdbdbd;
+              }
+              @include media(">tablet", "<laptop") {
+                padding: 5px;
+              }
+            }
+          }
+        }
+        
+        &:hover .sub-menu {display: block;}
+      }
+    }
+  }
+  .features_box {
+    margin-bottom: 2.5rem;
+  }
+
+  //right-section
+  .trade-right-section {
+    background-color: $white;
+    min-height: 100vh;
+    height: 100%;
+    padding-top: 65px;
+    @media #{$extra-small} {
+      min-height: auto !important;
+      padding-top: 15px;
+      background-color: #f2f2f2;
+    }
+    .trade-login {
+      width: 95%;
+      margin: 0 auto;
+      @media #{$extra-small} {
+        text-align: center;
+      }
+      .trade-head {
+        color: $heading-1;
+        font-size: 30px;
+        
+        @include media('>tablet','<laptop'){
+          font-size:22px;
+        }
+        @media #{$extra-small} {
+          display: none;
+        }
+      }
+      .sub-heading {
+        color: $heading-1;
+        font-size: 1.5rem;
+        font-weight: 300;
+        margin-top: 2.5rem;       
+        @include media('>tablet','<laptop'){
+          font-size:22px;
+        }
+        @media #{$extra-small} {
+          display: none;
+        }
+      }
+      .sub-heading {
+        color: $heading-1;
+        font-size: 1.5rem;
+        font-weight: 300;
+        margin-top: 2.5rem;       
+        @include media('>tablet','<laptop'){
+          font-size:22px;
+        }
+      }
+      .trade-con {
+        color: $heading-1;
+        font-size: 18px;
+        font-weight: 500;
+        margin-bottom: 0px;
+        margin-top: 25px;
+        @include media('>tablet','<laptop'){
+          font-size: 18px;
+        }
+      }
+
+
+      .trade-login-sec{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        margin-top: 1rem;
+        align-items: center;
+
+        .trade-login-btn {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            width: 230px;
+            // height: 60px;
+            padding: 10px;
+            border: .5px solid $btn-border-color;
+            @include border-radius(8px);
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: 0.1s all ease-in-out;
+            @include media('>tablet','<laptop'){
+              width: 100%;
+            }
+
+            &:hover{
+                box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.4);            
+            }
+
+            .login-img{
+                width: 14%;
+                @include media('>tablet','<laptop'){
+                  width: 20%;
+                }
+                img{
+                    width: 25px;
+                    height: auto;
+                }
+            }
+
+            .login-con{
+                color:$heading-1;
+                font-size:1rem;
+                font-weight: 400;
+                padding-left: .5rem;
+                text-align: left;
+                @include media('>tablet','<laptop'){
+                  font-size: 15px;
+                }
+            }
+        }
+      }
+    }
+  }
+}
+.mobile-trade-head {
+  color: $heading-1;
+  font-size: 1rem;
+  line-height: 1.5;
+  display: none;
+  text-align: left;
+  margin-bottom: 2rem;
+  @media #{$extra-small} {
+    display: flex;
+  }
+  @media #{$small} {
+    display: none;
+  }
+}
+
+// mobile-navbar
+.mobile-bottom-nav {
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: none;
+
+  //give nav it's own compsite layer
+  will-change: transform;
+  transform: translateZ(0);
+  height: 50px;
+  box-shadow: 0 -2px 5px -2px #333;
+  background-color: #fff;
+
+  @media #{$extra-small} {
+    display: flex;
+  }
+  @media #{$small} {
+    display: none;
+  }
+  ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    li {
+      display: inline-block;
+      width: 20%;
+      height: 100%;
+      border-left: 1px solid #ddd;
+      a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        height: 100%;
+        color: #565656;
+        span {
+          height: 20px;
+          svg{
+            width: 17px;
+          }
+        }
+      }
+    }
+  }
+}

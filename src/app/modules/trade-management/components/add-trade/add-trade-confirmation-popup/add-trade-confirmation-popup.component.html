@@ -1,0 +1,85 @@
+<div class="rule-non-popup">
+    <div class="entry-rul-pop">
+        <div class="top-con-pop">
+            <div class="left-pop-con">
+                <h6>
+                    Warning!
+                </h6>
+            </div>
+            <div class="right-pop-close">
+                <a class="close link" (click)="closeModal(false)">
+                    Close
+                </a>
+            </div>
+        </div>
+
+        <div class="mid-pop-con">
+            <h6>This trade does not align with the following self-set entry rules.</h6>
+
+            <div class="con-list">
+
+                <div class="pop-con-first">
+                    <div class="top-pop">
+
+                        <img src="../../../../../../assets/images/icon/Icon ionic-ios-arrow-forward.png" alt="">
+                        <h6 class="pop-head">
+                            Do not buy option that are expiring less than four weeks.
+                        </h6>
+                    </div>
+                    <div class="bot-pop">
+
+                        <span>
+                            <p>
+                                34% winning trades on the short-term options
+                            </p>
+                            <p>
+                                Maximum loss on a short-term option is $290
+                            </p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="pop-con-first">
+                    <div class="top-pop">
+
+                        <img src="../../../../../../assets/images/icon/Icon ionic-ios-arrow-forward.png" alt="">
+                        <h6 class="pop-head">
+                            Always hedge your position to avoid significant loss.
+                        </h6>
+                    </div>
+                    <div class="bot-pop">
+
+                        <span>
+                            <p>
+                                21% winning trades on the short-term options
+                            </p>
+                            <p>
+                                Maximum Loss on an unhedged trade is $7000
+                            </p>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="close-con">
+                <h6>
+                    Are you sure you want to proceed with this trade?
+                </h6>
+            </div>
+        </div>
+
+
+        <div class="btn-sec">
+
+            <div class="order-btn text-center">
+                <a class="btn btn-back" (click)="closeModal(false)">No</a>
+            </div>
+
+
+            <div class="order-btn text-center">
+                <a class="btn btn-add" (click)="closeModal(true)">Yes</a>
+            </div>
+        </div>
+
+    </div>
+</div>

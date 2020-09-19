@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { PwaService } from './services/pwa.service';
 import { Router, NavigationEnd } from '@angular/router';
 import * as fromGlobalConfig from './modules/utilities/reducers/global-config.reducer';
 import { State, Store } from '@ngrx/store';
 import { updateCurrentRoute } from './modules/utilities/actions/global-configs.actions';
+import { PwaService } from './modules/shared/services/pwa.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

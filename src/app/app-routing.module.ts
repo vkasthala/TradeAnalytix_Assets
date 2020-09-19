@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LandingComponent } from './components/landing/landing.component';
+import { LandingComponent } from './modules/login/components/landing.component';
 
 const routes: Routes = [
   {
@@ -13,8 +13,8 @@ const routes: Routes = [
     component : LandingComponent
   },
   {
-    path : 'dashboard',
-    loadChildren : './modules/dashboard/dashboard.module#DashboardModule'
+    path : '',
+    loadChildren : './modules/home/home.module#HomeModule'
   },
   {
     path : '**',
