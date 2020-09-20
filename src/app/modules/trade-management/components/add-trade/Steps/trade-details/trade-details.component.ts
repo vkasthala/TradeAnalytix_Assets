@@ -12,6 +12,9 @@ import { OptionType } from 'src/app/modules/shared/models/trade-management/optio
 import { SummaryResult } from 'src/app/modules/risk-analysis/models/summary-result.model';
 import { OptionResult } from 'src/app/modules/risk-analysis/models/option-result.model';
 import { StockResult } from 'src/app/modules/risk-analysis/models/stock-result.model';
+import { StrategyType } from 'src/app/modules/shared/models/strategy-type.enum';
+import { StrategyCreateServiceService } from 'src/app/modules/shared/services/strategy-create-service.service';
+import { StrategyTemplate } from 'src/app/modules/shared/models/strategy-template.model';
 
 @Component({
   selector: 'app-trade-details',
@@ -33,6 +36,9 @@ export class TradeDetailsComponent implements OnInit {
   displayRiskAnalysis: boolean;
   analyzeRisk: boolean;
 
+  strategies = StrategyType;
+  strategyTypes: String[] = this.strategyCreateServiceService.getStrategies();
+
   stockEntry: StockEntry;
   stockOptions: OptionEntry[] = [];
 
@@ -41,7 +47,7 @@ export class TradeDetailsComponent implements OnInit {
   @Output('nextStep') nextStep = new EventEmitter();
   @Output('activateRisk') activateRisk = new EventEmitter();
 
-  constructor(private utilService: UtilService, private riskAnalysisService: RiskAnalysisService) { }
+  constructor(private utilService: UtilService, private riskAnalysisService: RiskAnalysisService, private strategyCreateServiceService: StrategyCreateServiceService) { }
 
   ngOnInit() {
   }
@@ -155,22 +161,32 @@ export class TradeDetailsComponent implements OnInit {
     this.loadImpliedVolatility();
   }
 
-  preventNegatives(e, preventDecimal?:boolean) {
-    if(preventDecimal) {
-      if(!((e.keyCode > 95 && e.keyCode < 106)
-      || (e.keyCode > 47 && e.keyCode < 58) 
-      || e.keyCode == 8 ||e.keyCode == 17 || e.keyCode == 110)) {
-        if(e.keyCode != 190 && e.keyCode != 46 && e.keyCode != 37  && e.keyCode != 39 && e.keyCode != 9) {
+  onStrategyTypeChange(strategy: Number) {
+    console.log('selected strategy:', strategy);
+    let template: StrategyTemplate = this.strategyCreateServiceService.getStrategyTemplate(strategy);
+    if (template) {
+      this.stockEntry = template.stockEntry;
+      this.stockAdded = template.stockEntry ? true : false;
+      this.stockOptions = template.optionEntries;
+    }
+  }
+
+  preventNegatives(e, preventDecimal?: boolean) {
+    if (preventDecimal) {
+      if (!((e.keyCode > 95 && e.keyCode < 106)
+        || (e.keyCode > 47 && e.keyCode < 58)
+        || e.keyCode == 8 || e.keyCode == 17 || e.keyCode == 110)) {
+        if (e.keyCode != 190 && e.keyCode != 46 && e.keyCode != 37 && e.keyCode != 39 && e.keyCode != 9) {
           return false;
         } else {
           return true;
         }
-    }
-    }else {
-      if(!((e.keyCode > 95 && e.keyCode < 106)
-      || (e.keyCode > 47 && e.keyCode < 58) 
-      || e.keyCode == 8)) {
-        if(e.keyCode != 190 && e.keyCode != 46 && e.keyCode != 37  && e.keyCode != 39 && e.keyCode != 9) {
+      }
+    } else {
+      if (!((e.keyCode > 95 && e.keyCode < 106)
+        || (e.keyCode > 47 && e.keyCode < 58)
+        || e.keyCode == 8)) {
+        if (e.keyCode != 190 && e.keyCode != 46 && e.keyCode != 37 && e.keyCode != 39 && e.keyCode != 9) {
           return false;
         } else {
           return true;
@@ -221,7 +237,6 @@ export class TradeDetailsComponent implements OnInit {
 
   createStockEntry() {
     this.stockEntry = new StockEntry();
-    this.stockEntry.price = 440.14;
     this.stockEntry.lowerBound = -10;
     this.stockEntry.upperBound = 10;
     this.stockEntry.riskFreeRate = 6;
@@ -318,7 +333,7 @@ export class TradeDetailsComponent implements OnInit {
     }, 100);
   }
 
-  scroll(element: HTMLElement){
+  scroll(element: HTMLElement) {
     element.scrollIntoView();
   }
 

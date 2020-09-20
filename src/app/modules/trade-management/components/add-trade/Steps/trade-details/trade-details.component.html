@@ -11,28 +11,8 @@
             <div class="trade-section">
               <div class="Trade-type">
                 <div class="form-group">
-                  <select class="form-control select-input" id="inputState">
-                    <option>Trade Strategy</option>
-                    <option>Long Stock</option>
-                    <option>Short Stock</option>
-                    <option>Long Call</option>
-                    <option>Short Call</option>
-                    <option>Long Put</option>
-                    <option>Covered Call</option>
-                    <option>Married Put</option>
-                    <option>Protective Put</option>
-                    <option>Bull Call Spread</option>
-                    <option>Bull Put Spread</option>
-                    <option>Long Strangle</option>
-                    <option>Short Strangle</option>
-                    <option>Long Straddle</option>
-                    <option>Short Straddle</option>
-                    <option>Iron Condor</option>
-                    <option>Protective Collar</option>
-                    <option>Long Call Butterfly Spread</option>
-                    <option>Long Call Calendar Spread</option>
-                    <option>Long Put Calendar Spread</option>
-                    <option selected>Custom</option>
+                  <select class="form-control select-input" id="inputState" (change)="onStrategyTypeChange($event.target.value)" [value] = '15'>
+                    <option *ngFor="let key of strategyTypes" [value]="key" [label]="strategies[key]"></option>
                   </select>
                 </div>
               </div>

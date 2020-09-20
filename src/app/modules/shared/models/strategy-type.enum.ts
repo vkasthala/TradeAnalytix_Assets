@@ -1,0 +1,17 @@
+export enum StrategyType {
+    'Stock' = 1,
+    'Long Call' = 2,
+    'Short Call' = 3,
+    'Long Put' = 4,
+    'Short Put' = 5,
+    'Call Spread' = 6,
+    'Put Spread' = 7,
+    'Covered Call' = 8,
+    'Married Put' = 9,
+    'Collars' = 10,
+    'Straddle' = 11,
+    'Strangle' = 12,
+    'Iron Condor' = 13,
+    'Iron Butterfly' = 14,
+    'Custom' = 15,
+}
