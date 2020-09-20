@@ -10,14 +10,14 @@
             <div class="trade-form">
               <div class="d-flex justify-content-center align-items-center">
                 <label class="col-form-label px-2">Enter Symbol</label>
-                <app-trade-search></app-trade-search>
+                <app-trade-search (symbolSelectEvent)="symbolSelectEventHandler($event)"></app-trade-search>
                 <button class="btn btn-enter ml-2" (click)="enterSymbol()">ENTER</button>
               </div>
             </div>
           </div>
         </ng-container>
         <ng-container *ngSwitchCase="2">
-          <app-trade-details-header></app-trade-details-header>
+          <app-trade-details-header [selectedStock] = "selectedStock" [stockSummary] = "stockSummary" (loadMoreStats) = "loadMoreStatsHandler($event)"></app-trade-details-header>
         
           <mat-vertical-stepper labelPosition="left" #stepper [linear]="false">
             <mat-step [class.active]="stepone.completed" #stepone>

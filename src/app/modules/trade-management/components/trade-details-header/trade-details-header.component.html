@@ -1,127 +1,129 @@
+<!-- entry second -->
+<div class="addnew-second p-3">
+  <div class="trade-rate">
+    <div class="trade-name">
+      <h5>
+        {{getDisplayValue(selectedStock.name)}}
+      </h5>
+    </div>
+    <div class="trade-name-rate ml-3">
+      <span class="trade-r">{{stockSummary.close}}</span>
+      <span [ngClass]="{'trade-rr': stockSummary.changePercent <= 0, 'trade-g' : stockSummary.changePercent > 0}">
+        <i *ngIf="stockSummary.changePercent > 0" class="positive-amt material-icons">arrow_upward</i>
+        <i *ngIf="stockSummary.changePercent <= 0" class="negative-amt material-icons">arrow_downward</i>
+        {{getDisplayValue(stockSummary.changePercent, '%')}}
+      </span>
+    </div>
+  </div>
 
-      <!-- entry second -->
-      <div class="addnew-second p-3">
-        <div class="trade-rate">
-            <div class="trade-name">
-              <h5>
-                Netflix Inc.
-              </h5>
-            </div>
-            <div class="trade-name-rate ml-3">
-              <span class="trade-r">$429.32</span>
-              <span class="trade-rr">
-                <img src="../../../../../assets/images/Icon awesome-arrow-up.png" alt="" />
-                -6.93 (-1.59%)
-              </span>
-            </div>
+  <div class="trade-rate-box">
+    <div class="trade-rate-box-header">
+      <div class="bxo-name">
+        <span>Prev Close</span>
+        <h6>{{getDisplayValue(stockSummary.open)}}</h6>
+      </div>
+      <div class="bxo-name">
+        <span>Day Range</span>
+        <h6>{{getDisplayValue(stockSummary.low)}} - {{getDisplayValue(stockSummary.high)}}</h6>
+      </div>
+      <div class="bxo-name">
+        <span>Volume</span>
+        <h6>{{getDisplayValue(stockSummary.volume)}}</h6>
+      </div>
+      <div class="bxo-name">
+        <span>Win / Loss Ratio</span>
+        <h6>{{getDisplayValue(stockSummary.winPercent)}} | {{getDisplayValue(stockSummary.lossPercent)}}
+          ({{getDisplayValue(stockSummary.winLossRatio)}})</h6>
+      </div>
+      <div class="bxo-name">
+        <span>Net Return</span>
+        <h6>{{getDisplayValue(stockSummary.netReturn)}}</h6>
+      </div>
+      <div class="bxo-name">
+        <span>Avg Holding Period</span>
+        <h6>{{getDisplayValue(stockSummary.avgHoldingPeriod, ' days')}}</h6>
+      </div>
+      <div class="bxo-name">
+        <span>Successful Strategy</span>
+        <h6>{{getDisplayValue(stockSummary.successStrategy)}}</h6>
+      </div>
+      <div class="bxo-name">
+        <span>Highest Gain</span>
+        <h6>{{getDisplayValue(stockSummary.highGain)}}</h6>
+      </div>
+    </div>
+
+    <div class="trade-rate-box-body" *ngIf="allStats">
+      <div class="trade-rate-box-row">
+        <div class="bxo-name">
+          <span>Market Cap</span>
+          <h6>{{getDisplayValue(stockSummary.marketCapitalBln)}}</h6>
         </div>
-        
-        <div class="trade-rate-box">
-          <div class="trade-rate-box-header">
-            <div class="bxo-name">
-              <span>Prev Close</span>
-              <h6>436.25</h6>
-            </div>
-            <div class="bxo-name">
-              <span>Day Range</span>
-              <h6>252.28 - 458.97</h6>
-            </div>
-            <div class="bxo-name">
-              <span>Volume</span>
-              <h6>538,124</h6>
-            </div>
-            <div class="bxo-name">
-              <span>Win / Loss Ratio</span>
-              <h6>53 | 100 (53%)</h6>
-            </div>
-            <div class="bxo-name">
-              <span>Net Return</span>
-              <h6>-$2,445</h6>
-            </div>
-            <div class="bxo-name">
-              <span>Avg Holding Period</span>
-              <h6>3.6 days</h6>
-            </div>
-            <div class="bxo-name">
-              <span>Successful Strategy</span>
-              <h6>Call Spread</h6>
-            </div>
-            <div class="bxo-name">
-              <span>Highest Gain</span>
-              <h6>Bullish</h6>
-            </div>
-          </div>
-          
-          <div class="trade-rate-box-body" *ngIf="allStats">
-            <div class="trade-rate-box-row">
-              <div class="bxo-name">
-                <span>Market Cap</span>
-                <h6>188.81B</h6>
-              </div>
-              <div class="bxo-name">
-                <span>52-Wk Range</span>
-                <h6>252.28 - 458.97</h6>
-              </div>
-              <div class="bxo-name">
-                <span>Avg. Volume</span>
-                <h6>9.07M</h6>
-              </div>
-              <div class="bxo-name">
-                <span>P/E</span>
-                <h6>43.23</h6>
-              </div>
-              <div class="bxo-name">
-                <span>P/S</span>
-                <h6>2.05</h6>
-              </div>
-              <div class="bxo-name">
-                <span>P/B</span>
-                <h6>31.26</h6>
-              </div>
-              <div class="bxo-name">
-                <span>P/B</span>
-                <h6>31.26</h6>
-              </div>
-              <div class="bxo-name">
-                <span>Largest Loss</span>
-                <h6>-$3,142</h6>
-              </div>
-            </div>
-            <div class="trade-rate-box-row">
-              <div class="bxo-name">
-                <span>Revenue</span>
-                <h6>95.6B</h6>
-              </div>
-              <div class="bxo-name">
-                <span>Gross Margin</span>
-                <h6>52%</h6>
-              </div>
-              <div class="bxo-name">
-                <span>Operating Margin</span>
-                <h6>16%</h6>
-              </div>
-              <div class="bxo-name">
-                <span>Free Cash Flow</span>
-                <h6>10.32B</h6>
-              </div>
-              <div class="bxo-name">
-                <span>Total Debt</span>
-                <h6>NA</h6>
-              </div>
-              <div class="bxo-name">
-                <span>EPS</span>
-                <h6>10.23</h6>
-              </div>
-              <div class="bxo-name">
-                <span>Book Value</span>
-                <h6>14.23B</h6>
-              </div>
-              <div class="bxo-name">
-                <span>Beta</span>
-                <h6>1.32</h6>
-              </div>
-            </div>
-          </div>
-          <div class="text-right py-1"><span class="btn-link cursor" (click)="showMoreStats()">{{allStats ? "More" : "Less"}} Stats</span></div>
+        <div class="bxo-name">
+          <span>52-Wk Range</span>
+          <h6>{{getDisplayValue(stockSummary.week52Low)}} - {{getDisplayValue(stockSummary.week52High)}}</h6>
+        </div>
+        <div class="bxo-name">
+          <span>Avg. Volume</span>
+          <h6>{{getDisplayValue(stockSummary.avgVolumeMln, 'M')}}</h6>
+        </div>
+        <div class="bxo-name">
+          <span>P/E</span>
+          <h6>NA</h6>
+        </div>
+        <div class="bxo-name">
+          <span>P/S</span>
+          <h6>NA</h6>
+        </div>
+        <div class="bxo-name">
+          <span>P/B</span>
+          <h6>NA</h6>
+        </div>
+        <div class="bxo-name">
+          <span>P/B</span>
+          <h6>NA</h6>
+        </div>
+        <div class="bxo-name">
+          <span>Largest Loss</span>
+          <h6>{{getDisplayValue(stockSummary.largestLoss)}}</h6>
         </div>
       </div>
+      <div class="trade-rate-box-row">
+        <div class="bxo-name">
+          <span>Revenue</span>
+          <h6>{{getDisplayValue(stockSummary.revenueBln, 'B')}}</h6>
+        </div>
+        <div class="bxo-name">
+          <span>Gross Margin</span>
+          <h6>{{getDisplayValue(stockSummary.grossMargin, '%')}}</h6>
+        </div>
+        <div class="bxo-name">
+          <span>Operating Margin</span>
+          <h6>{{getDisplayValue(stockSummary.operatingMargin, '%')}}</h6>
+        </div>
+        <div class="bxo-name">
+          <span>Free Cash Flow</span>
+          <h6>{{getDisplayValue(stockSummary.freeCashFlowBln, 'B')}}</h6>
+        </div>
+        <div class="bxo-name">
+          <span>Total Debt</span>
+          <h6>{{getDisplayValue(stockSummary.totalDebt)}}</h6>
+        </div>
+        <div class="bxo-name">
+          <span>EPS</span>
+          <h6>{{getDisplayValue(stockSummary.eps)}}</h6>
+        </div>
+        <div class="bxo-name">
+          <span>Book Value</span>
+          <h6>{{getDisplayValue(stockSummary.bookValueBln)}}</h6>
+        </div>
+        <div class="bxo-name">
+          <span>Beta</span>
+          <h6>{{getDisplayValue(stockSummary.beta)}}</h6>
+        </div>
+      </div>
+    </div>
+    <div class="text-right py-1"><span class="btn-link cursor" (click)="showMoreStats()">{{allStats ? "Less" : "More"}}
+        Stats</span></div>
+  </div>
+</div>

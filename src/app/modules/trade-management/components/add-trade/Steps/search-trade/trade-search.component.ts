@@ -19,6 +19,8 @@ export class TradeSearchComponent implements OnInit {
     tradeItem = '';
     searchData: StockSymbol[] = [];
 
+    @Output() symbolSelectEvent = new EventEmitter<StockSymbol>();
+
     constructor(private utilService: UtilService, private stockSymbolService: StockSymbolService) { }
 
     search(term: string): void {
@@ -44,7 +46,7 @@ export class TradeSearchComponent implements OnInit {
             var str = this.searchData[i].name;
             var value = term.toLowerCase();
             if (str.toLowerCase().includes(value)) {
-                this.TradeList.push(this.searchData[i].name);
+                this.TradeList.push(this.searchData[i]);
             }
         }
         this.serarchResult = true;
@@ -52,10 +54,11 @@ export class TradeSearchComponent implements OnInit {
     }
     
     selectedTrade(item) {
-        this.tradeItem = item;
+        this.tradeItem = item.name;
         this.TradeList = [];
         this.serarchResult = false;
-        console.log('tradeItem', this.tradeItem)
+        console.log('tradeItem', this.tradeItem);
+        this.symbolSelectEvent.emit(item);
     }
 
 }

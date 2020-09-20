@@ -4,7 +4,7 @@
     <div *ngIf="TradeList">
         <ul [className]="serarchResult ? 'search-result' : 'm-0'" [ngStyle]="{'max-height':this.TradeList.length<5 ? 'auto' : '' }">
             <li *ngFor="let trade of TradeList; let i = index;" (click)="selectedTrade(trade)">
-                <span>{{trade}}</span>
+                <span>{{trade.name}}</span>
             </li>
         </ul>
     </div>
