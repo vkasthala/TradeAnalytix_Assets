@@ -253,7 +253,7 @@ a.btn.btn-skip {
   .trade-card-box {
     display: flex;
     align-items: stretch;
-    margin-top: 10px;
+    margin-bottom: 10px;
     flex-wrap: wrap;
     @media #{$extra-small} {
       margin-bottom: 10px;
@@ -271,6 +271,7 @@ a.btn.btn-skip {
     .card-main {
       text-align: center;
       padding-right: 1rem;
+      min-width: 140px;
       max-width: 140px;
       h6 {
         font-size: 1.25rem;

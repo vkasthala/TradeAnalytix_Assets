@@ -34,7 +34,6 @@
 
     <div class="trade-cards-section">
       <div class="trade-card-box" *ngIf="stockAdded">
-        
         <div class="card-main">
           <label class="col-form-label pt-0">Action</label>
           <select id="inputState" class="form-control select-input" [(ngModel)]="stockEntry.actionType">
@@ -62,10 +61,20 @@
           <img src="../../../../../assets/images/icon/delete.png" alt="" class="img-fluid">
         </div>
       </div>
+      <ng-container>
+        <div class="trade-card-box mb-1" *ngIf="stockOptions.length">
+          <div class="card-main">Action</div>
+          <div class="card-main">Contracts</div>
+          <div class="card-main">Expiration</div>
+          <div class="card-main">Strike</div>
+          <div class="card-main">Call / Put</div>
+          <div class="card-main">Price</div>
+          <div class="card-main">Amount</div>
+        </div>
+      </ng-container>
       <ng-container *ngFor="let item of stockOptions;let index = index">
         <div class="trade-card-box">
           <div class="card-main">
-            <label class="col-form-label pt-0">Action</label>
             <select id="inputState" class="form-control select-input" [(ngModel)]="stockOptions[index].actionType">
               <option value="BUY_TO_OPEN" [hidden]="!addTrade" selected data-default>Buy to Open</option>
               <option value="SELL_TO_OPEN" [hidden]="!addTrade">Sell to Open</option>
@@ -74,12 +83,10 @@
             </select>
           </div>
           <div class="card-main">
-            <label class="col-form-label pt-0">Contracts</label>
             <input type="number" (keydown)="preventNegatives($event, false)" min="0"
                   class="form-control cards-input" placeholder="" [(ngModel)]="stockOptions[index].contracts" />
           </div>
           <div class="card-main">
-            <label class="col-form-label pt-0">Expiration</label>
             <div class="datepicker-group">
               <input matInput [matDatepicker]="expireDate" (click)="expireDate.open()" id="expireDate" (dateChange)="addEvent('input', $event)" name="stockOptions[index].expireDate" />
               <mat-datepicker-toggle matSuffix [for]="expireDate"></mat-datepicker-toggle>
@@ -87,12 +94,10 @@
             </div>
           </div>
           <div class="card-main">
-            <label class="col-form-label pt-0">Strike</label>
             <input type="number" (keydown)="preventNegatives($event, true)" pattern="^\d*(\.\d{0,2})?$" (change)="checkForDecimalValidation($event)" step="0.01" min="0" class="form-control cards-input" placeholder="" [(ngModel)]="stockOptions[index].strikePrice" />
           </div>
 
           <div class="card-main">
-            <label class="col-form-label pt-0">Call / Put</label>
             <select id="inputState" class="form-control select-input" [(ngModel)]="stockOptions[index].optionType">
               <option value="call" selected data-default>Call</option>
               <option value="put">Put</option>
@@ -100,18 +105,16 @@
           </div>
           
           <div class="card-main">
-            <label class="col-form-label pt-0">Price</label>
             <input type="number" (keydown)="preventNegatives($event, true)" pattern="^\d*(\.\d{0,2})?$"
                   (change)="checkForDecimalValidation($event)" step="0.01" min="0" class="form-control cards-input"
                   placeholder="" [(ngModel)]="stockOptions[index].price" />
           </div>
           <div class="card-main">
-            <label class="col-form-label pt-0">Amount</label>
             <h6>
               {{stockOptions[index].contracts && stockOptions[index].price ? (stockOptions[index].contracts * stockOptions[index].price * 100).toFixed(2) : 0}}
             </h6>
           </div>
-          <div class="top-heading cursor-pointer" (click)="deleteStockOption(index)">
+          <div class="top-heading cursor p-0" (click)="deleteStockOption(index)">
             <img src="../../../../../assets/images/icon/delete.png" alt="" class="img-fluid">
           </div>
         </div>
