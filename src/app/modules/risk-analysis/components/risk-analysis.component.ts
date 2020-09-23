@@ -9,6 +9,12 @@ import { ActionType } from '../../shared/models/trade-management/action-type.enu
 import { OptionType } from '../../shared/models/trade-management/option-type.enum';
 import { OptionResult } from '../models/option-result.model';
 import { StockResult } from '../models/stock-result.model';
+import { Router, NavigationExtras } from '@angular/router';
+import { StockSymbol } from '../../shared/models/trade-management/stock-symbol.model';
+import { UserStockSummary } from '../../shared/models/user-stock-summary.model';
+import { StrategyType } from '../../shared/models/strategy-type.enum';
+import { StrategyCreateServiceService } from '../../shared/services/strategy-create-service.service';
+import { UserStockStatsService } from '../../shared/services/user-stock-stats.service';
 
 @Component({
   selector: 'app-risk-analysis',
@@ -25,15 +31,30 @@ export class RiskAnalysisComponent implements OnInit {
   performRiskAnalysis: boolean;
   displayRiskAnalysis: boolean;
   analyzeRisk: boolean;
+  detailSummaryLoaded: boolean;
+  selectedStrategy: number = 15;
+
+  selectedStock: StockSymbol = new StockSymbol();
+  stockSummary: UserStockSummary = new UserStockSummary();
+
+  strategies = StrategyType;
+  strategyTypes: String[] = this.strategyCreateServiceService.getStrategies();
 
   stockEntry: StockEntry;
   stockOptions: OptionEntry[] = [];
 
   riskAnalysisResults: RiskAnalysisRecord[] = [];
 
-  constructor(private utilService: UtilService, private riskAnalysisService: RiskAnalysisService) { }
+  constructor(private utilService: UtilService,
+    private riskAnalysisService: RiskAnalysisService,
+    private userStockStatsService: UserStockStatsService,
+    private strategyCreateServiceService: StrategyCreateServiceService,
+    private router: Router) {
+    this.initState();
+  }
 
   ngOnInit() {
+
   }
 
   ngAfterViewInit(): void {
@@ -118,22 +139,69 @@ export class RiskAnalysisComponent implements OnInit {
     }
   }
 
-  preventNegatives(e, preventDecimal?:boolean) {
-    if(preventDecimal) {
-      if(!((e.keyCode > 95 && e.keyCode < 106)
-      || (e.keyCode > 47 && e.keyCode < 58) 
-      || e.keyCode == 8 ||e.keyCode == 17 || e.keyCode == 110)) {
-        if(e.keyCode != 190 && e.keyCode != 46 && e.keyCode != 37  && e.keyCode != 39 && e.keyCode != 9) {
+  symbolSelectEventHandler($event: any) {
+    console.log('symbol:', $event);
+    this.selectedStock = $event;
+    this.loadStockBriefSummary();
+  }
+
+  loadMoreStatsHandler($event: any) {
+    console.log('load more stats:', $event);
+    this.loadStockDetailSummary();
+  }
+
+  loadStockBriefSummary() {
+    this.userStockStatsService.getUserStockBriefSummary(this.selectedStock.id, 1).subscribe(result => {
+      this.stockSummary = result;
+    });
+  }
+
+  loadStockDetailSummary() {
+    this.userStockStatsService.getUserStockDetailSummary(this.selectedStock.id, 1).subscribe(result => {
+      this.detailSummaryLoaded = true;
+      this.stockSummary = result;
+    });
+  }
+
+  initState(): void {
+    let extras: NavigationExtras = this.router.getCurrentNavigation().extras;
+    console.log('state:', extras.state);
+    if (extras.state && extras.state.selectedStock && extras.state.stockSummary) {
+      this.selectedStock = extras.state.selectedStock;
+      this.stockSummary = extras.state.stockSummary;
+      console.log('stockSummary:', extras.state.selectedStock);
+      console.log('stockSummary:', extras.state.stockSummary);
+      if (extras.state.stockEntry) {
+        console.log('stock:', extras.state.stockEntry);
+        this.stockAdded = true;
+        this.stockEntry = extras.state.stockEntry;
+      }
+      if (extras.state.stockOptions) {
+        console.log('stockOptions:', extras.state.stockOptions);
+        this.stockOptions = extras.state.stockOptions;
+      }
+      if (extras.state.selectedStrategy) {
+        this.selectedStrategy = extras.state.selectedStrategy;
+      }
+    }
+  }
+
+  preventNegatives(e, preventDecimal?: boolean) {
+    if (preventDecimal) {
+      if (!((e.keyCode > 95 && e.keyCode < 106)
+        || (e.keyCode > 47 && e.keyCode < 58)
+        || e.keyCode == 8 || e.keyCode == 17 || e.keyCode == 110)) {
+        if (e.keyCode != 190 && e.keyCode != 46 && e.keyCode != 37 && e.keyCode != 39 && e.keyCode != 9) {
           return false;
         } else {
           return true;
         }
-    }
-    }else {
-      if(!((e.keyCode > 95 && e.keyCode < 106)
-      || (e.keyCode > 47 && e.keyCode < 58) 
-      || e.keyCode == 8)) {
-        if(e.keyCode != 190 && e.keyCode != 46 && e.keyCode != 37  && e.keyCode != 39 && e.keyCode != 9) {
+      }
+    } else {
+      if (!((e.keyCode > 95 && e.keyCode < 106)
+        || (e.keyCode > 47 && e.keyCode < 58)
+        || e.keyCode == 8)) {
+        if (e.keyCode != 190 && e.keyCode != 46 && e.keyCode != 37 && e.keyCode != 39 && e.keyCode != 9) {
           return false;
         } else {
           return true;
@@ -282,7 +350,7 @@ export class RiskAnalysisComponent implements OnInit {
     }, 100);
   }
 
-  scroll(element: HTMLElement){
+  scroll(element: HTMLElement) {
     element.scrollIntoView();
   }
 

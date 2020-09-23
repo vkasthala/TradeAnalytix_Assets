@@ -25,7 +25,9 @@
               <div class="stepper-content">
                 <app-trade-details
                   (nextStep)="goForward(true)"
-                  (activateRisk)="activeStep = true"
+                  (activateRisk)="activeStep = true" 
+                  [stockSummary] = "stockSummary"
+                  [selectedStock] = "selectedStock"
                 ></app-trade-details>
               </div>
             </mat-step>

@@ -11,7 +11,7 @@
             <div class="trade-section">
               <div class="Trade-type">
                 <div class="form-group">
-                  <select class="form-control select-input" id="inputState" (change)="onStrategyTypeChange($event.target.value)" [value] = '15'>
+                  <select class="form-control select-input" id="inputState" (change)="onStrategyTypeChange($event.target.value)" [(ngModel)] = 'selectedStrategy'>
                     <option *ngFor="let key of strategyTypes" [value]="key" [label]="strategies[key]"></option>
                   </select>
                 </div>
@@ -24,7 +24,7 @@
                   Add Option</a>
               </div>
               <div class="search_btn m-r gap-btn" *ngIf="stockOptions.length">
-                <a class="font-weight-bold" [routerLink]="['/dashboard/risk-analysis']">Analyze Risk</a>
+                <a class="font-weight-bold" (click)="navigateToRiskAnalysis()">Analyze Risk</a>
               </div>
             </div>
           </div>
@@ -88,7 +88,7 @@
           </div>
           <div class="card-main">
             <div class="datepicker-group">
-              <input matInput [matDatepicker]="expireDate" (click)="expireDate.open()" id="expireDate" (dateChange)="addEvent('input', $event)" name="stockOptions[index].expireDate" />
+              <input matInput [matDatepicker]="expireDate" (click)="expireDate.open()" id="expireDate" (dateChange)="addEvent('input', $event)" name="stockOptions[index].expireDate" [(ngModel)]="stockOptions[index].expireDate"/>
               <mat-datepicker-toggle matSuffix [for]="expireDate"></mat-datepicker-toggle>
               <mat-datepicker #expireDate></mat-datepicker>
             </div>
