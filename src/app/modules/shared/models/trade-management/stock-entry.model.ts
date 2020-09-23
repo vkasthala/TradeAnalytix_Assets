@@ -8,7 +8,7 @@ export class StockEntry {
     
     quantity: number;
     
-    riskFreeRate: number;
+    riskFreeRate: number = 6;
     
     lowerBound: number;
     

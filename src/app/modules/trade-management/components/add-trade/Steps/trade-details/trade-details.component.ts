@@ -1,5 +1,5 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
+import { Router, NavigationExtras } from '@angular/router';
 import * as $ from 'jquery';
 import { StockEntry } from 'src/app/modules/shared/models/trade-management/stock-entry.model';
 import { OptionEntry } from 'src/app/modules/shared/models/trade-management/option-entry.model';
@@ -15,6 +15,8 @@ import { StockResult } from 'src/app/modules/risk-analysis/models/stock-result.m
 import { StrategyType } from 'src/app/modules/shared/models/strategy-type.enum';
 import { StrategyCreateServiceService } from 'src/app/modules/shared/services/strategy-create-service.service';
 import { StrategyTemplate } from 'src/app/modules/shared/models/strategy-template.model';
+import { UserStockSummary } from 'src/app/modules/shared/models/user-stock-summary.model';
+import { StockSymbol } from 'src/app/modules/shared/models/trade-management/stock-symbol.model';
 
 @Component({
   selector: 'app-trade-details',
@@ -36,6 +38,8 @@ export class TradeDetailsComponent implements OnInit {
   displayRiskAnalysis: boolean;
   analyzeRisk: boolean;
 
+  selectedStrategy: number = 15;
+
   strategies = StrategyType;
   strategyTypes: String[] = this.strategyCreateServiceService.getStrategies();
 
@@ -47,7 +51,13 @@ export class TradeDetailsComponent implements OnInit {
   @Output('nextStep') nextStep = new EventEmitter();
   @Output('activateRisk') activateRisk = new EventEmitter();
 
-  constructor(private utilService: UtilService, private riskAnalysisService: RiskAnalysisService, private strategyCreateServiceService: StrategyCreateServiceService) { }
+  @Input('stockSummary') stockSummary: UserStockSummary;
+  @Input("selectedStock") selectedStock: StockSymbol;
+
+  constructor(private utilService: UtilService,
+    private riskAnalysisService: RiskAnalysisService,
+    private strategyCreateServiceService: StrategyCreateServiceService,
+    private router: Router) { }
 
   ngOnInit() {
   }
@@ -169,6 +179,18 @@ export class TradeDetailsComponent implements OnInit {
       this.stockAdded = template.stockEntry ? true : false;
       this.stockOptions = template.optionEntries;
     }
+  }
+
+  navigateToRiskAnalysis(): void {
+    let extras: NavigationExtras = {};
+    extras.state = {
+      stockEntry: this.stockEntry,
+      stockOptions: this.stockOptions,
+      stockSummary: this.stockSummary,
+      selectedStock: this.selectedStock,
+      selectedStrategy: this.selectedStrategy
+    };
+    this.router.navigate(['/risk-analysis'], extras);
   }
 
   preventNegatives(e, preventDecimal?: boolean) {
