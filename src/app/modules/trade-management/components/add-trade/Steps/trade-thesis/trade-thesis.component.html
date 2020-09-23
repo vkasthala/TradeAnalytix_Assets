@@ -1,186 +1,134 @@
 <div class="trade-thesis-sec">
     <div class="trade-thesis-heading">
         <h4>
-            Trade Thesis
+            Provide additional details on the reasons for making this trade
         </h4>
     </div>
-
-    <div class="trade-thesis-inner">
-        <div class="trade-thesis-list">
-            <div class="trade-box-left">
-                <div class="trade-new">
-                    <div class="left-trade">
-                        <div class="thesis-list-inner">
-                            <div class="list-inner-left">
-                                <span ><img  alt="" src="../../../../../../../assets/images/icon/Icon ionic-ios-arrow-forward.png"></span>
-
-                                <h6>
-                                    When did you execute this trade? (leave blank if not executed)
-                                </h6>
-                            </div>
-                            <div class="list-inner-right">
-                                <div class="trade-date">
-                                    <div class="form-group">
-                                        <div class="input-group date" id="datetimepicker1">
-                                            <input class="form-control input-lg" type="date">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="right-trade">
-                        <div class="thesis-list-inner">
-                            <div class="list-inner-left">
-                                <span ><img  alt="" src="../../../../../../../assets/images/icon/Icon ionic-ios-arrow-forward.png"></span>
-
-                                <h6>
-                                    What is the source of this trade idea?
-                                </h6>
-                            </div>
-                            <div class="list-inner-right">
-                                <div class="Trade-type">
-                                    <div class="form-group"><select class="form-control select-input" id="inputState">
-                                            <option selected="">Analyst Upgrade</option>
-                                            <option>Analyst Downgrade</option>
-                                            <option>Friend</option>
-                                            <option>Self</option>
-                                            <option>CNBC</option>
-                                            <option>Yates</option>
-                                            <option>Barrons</option>
-                                            <option>StockTwits</option>
-                                            <option>Trading Academy</option>
-                                        </select></div>
-                                </div>
-                                <a class="add-new" (click)="addValue('Source')">+ Add New Source</a>
-    
-                            </div>
-                        </div>
-                    </div>
+    <div class="row mb-3">
+        <div class="col-6 list-inner-left">
+            <h6 class="d-flex media align-items-center">
+                <mat-icon>keyboard_arrow_right</mat-icon> What is the source of this trade idea?
+            </h6>
+        </div>
+        <div class="col-6 media align-items-center">
+            <div class="media-body">
+                <select class="form-control select-input" id="inputState">
+                    <option selected="">Analyst Upgrade</option>
+                    <option>Analyst Downgrade</option>
+                    <option>Friend</option>
+                    <option>Self</option>
+                    <option>CNBC</option>
+                    <option>Yates</option>
+                    <option>Barrons</option>
+                    <option>StockTwits</option>
+                    <option>Trading Academy</option>
+                </select>
+            </div>
+            <div class="media-body">
+                <a class="add-new" (click)="addValue('Source')">+ Add New</a>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-6 list-inner-left">
+            <h6 class="d-flex media align-items-center">
+                <mat-icon>keyboard_arrow_right</mat-icon> Is this a planned or an impromptu trade?
+            </h6>
+        </div>
+        <div class="col-6">
+            <span class="mr-3">
+                Planned <input type="radio" name="tradeType" checked />
+            </span>
+            <span class="ml-3">
+                Impromptu <input type="radio" name="tradeType" />
+            </span>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-6 list-inner-left">
+            <h6 class="d-flex media align-items-center">
+                <mat-icon>keyboard_arrow_right</mat-icon> What is your mindset while executing the trade?
+            </h6>
+        </div>
+        <div class="col-6 media align-items-center">
+            <div class="media-body">
+                <select class="form-control select-input">
+                    <option>Select Mindset</option>
+                </select>
+            </div>
+            <div class="media-body">
+                <a class="add-new" (click)="addValue('Source')">+ Add New</a>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-6 list-inner-left">
+            <h6 class="d-flex media align-items-center">
+                <mat-icon>keyboard_arrow_right</mat-icon> Specify the reasons for executing the trade
+            </h6>
+        </div>
+        <div class="col-6 media align-items-center">
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-6 list-inner-left">
+            <h6 class="d-flex media align-items-center">
+                <mat-icon>keyboard_arrow_right</mat-icon> Are there any events around the time this trade was placed?
+            </h6>
+        </div>
+        <div class="col-6 media align-items-center">
+            <div class="media-body">
+                <select class="form-control select-input" id="inputState">
+                    <option>Pre-Earnings</option>
+                    <option selected="">Post-Earnings</option>
+                    <option>Dividends</option>
+                    <option>Stock Split</option>
+                    <option>Reverse Stock Split</option>
+                    <option>Product Announcement</option>
+                    <option>None</option>
+                </select>
+            </div>
+            <div class="media-body">
+                <a class="add-new" (click)="addValue('Source')">+ Add New</a>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-6 list-inner-left">
+            <h6 class="d-flex media align-items-center">
+                <mat-icon>keyboard_arrow_right</mat-icon> What is the target price for the stock?
+            </h6>
+        </div>
+        <div class="col-6 media align-items-center">
+            <div class="media-body">
+                <input type="text" class="form-control" placeholder="Enter the price" />
+            </div>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-6 list-inner-left">
+            <h6 class="d-flex media align-items-center">
+                <mat-icon>keyboard_arrow_right</mat-icon> Specify the technical indicator used for the trade
+            </h6>
+        </div>
+        <div class="col-6">
+            <div class="media align-items-center mb-2">
+                <div class="media-body">
+                    <select class="form-control select-input" id="inputState">
+                        <option>select</option>
+                        <option selected="">MACD</option>
+                    </select>
                 </div>
-    
-                <div class="trade-new">
-                    <div class="left-trade">
-                        <div class="thesis-list-inner">
-                            <div class="list-inner-left">
-                                <span ><img  alt="" src="../../../../../../../assets/images/icon/Icon ionic-ios-arrow-forward.png"></span>
-
-                                <h6>
-                                    Specify the reasons for executing the trade
-                                </h6>
-                            </div>
-                            <div class="list-inner-right">
-                                <div class="trade-input">
-    
-                                    <div class="form-group">
-    
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="right-trade">
-                        <div class="thesis-list-inner">
-                            <div class="list-inner-left">
-                                <span ><img  alt="" src="../../../../../../../assets/images/icon/Icon ionic-ios-arrow-forward.png"></span>
-
-                                <h6>
-                                    List the risks associated with the trade
-                                </h6>
-                            </div>
-                            <div class="list-inner-right">
-                                <div class="trade-input">
-    
-    
-                                    <div class="form-group">
-    
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-    
-                    </div>
+                <div class="media-body">
+                    <a class="add-new" (click)="addValue('Source')">+ Add New</a>
                 </div>
             </div>
-            <div class="trade-box-right">
-                <div class="trade-new">
-                    <div class="left-trade">
-                        <div class="thesis-list-inner">
-                            <div class="list-inner-left">
-                                <span ><img  alt="" src="../../../../../../../assets/images/icon/Icon ionic-ios-arrow-forward.png"></span>
-
-                                <h6>
-                                    How much profit do you expect from this trade?
-                                </h6>
-                            </div>
-                            <div class="list-inner-right">
-                                <div class="trade-inputt">
-    
-                                    <div class="form-group has-search">
-                                        <input class="form-control" type="number" min="0">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="right-trade">
-                        <div class="thesis-list-inner">
-                            <div class="list-inner-left">
-                                <span ><img  alt="" src="../../../../../../../assets/images/icon/Icon ionic-ios-arrow-forward.png"></span>
-
-                                <h6>
-                                    What is your target date to close the position?
-                                </h6>
-                            </div>
-                            <div class="list-inner-right">
-                                <div class="trade-date">
-                                    <div class="form-group">
-                                        <div class="input-group date" id="datetimepicker1">
-                                            <input class="form-control input-lg" type="date">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-    
-    
-                <div class="trade-new">
-                    <div class="left-trade">
-                        <div class="thesis-list-inner">
-                            <div class="list-inner-left">
-                                <span ><img  alt="" src="../../../../../../../assets/images/icon/Icon ionic-ios-arrow-forward.png"></span>
-
-                                <h6>
-                                    Are there any events surrounding this trade (e.g., earnings, stock split, etc.)? If yes,
-                                    please
-                                    specify.
-                                </h6>
-                            </div>
-                            <div class="list-inner-right">
-                                <div class="Trade-type">
-                                    <div class="form-group">
-                                        <select class="form-control select-input" id="inputState">
-                                            <option selected="">Pre-Earnings</option>
-                                            <option>Post-Earnings</option>
-                                            <option>Dividends</option>
-                                            <option>Stock Split</option>
-                                            <option>Reverse Stock Split</option>
-                                            <option>Product Announcement</option>
-                                            <option>None</option>
-    
-                                        </select></div>
-                                </div>
-    
-                                <a class="add-new" (click)="addValue('Event')">+ Add New</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="right-trade"></div>
-                </div>
+            <div class="mb-2 d-flex align-items-center text-primary">
+                <mat-icon> attach_file</mat-icon> <input type="file" />
+            </div>
+            <div class="d-flex align-items-center text-primary">
+                30-day Moving Average.png <a href="#"><mat-icon>close</mat-icon></a>
             </div>
         </div>
     </div>
