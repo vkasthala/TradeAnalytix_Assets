@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { StrategyType } from '../models/strategy-type.enum';
-import { StrategyTemplate } from '../models/strategy-template.model';
-import { StockEntry } from '../models/trade-management/stock-entry.model';
-import { OptionEntry } from '../models/trade-management/option-entry.model';
 import { ActionType } from '../models/trade-management/action-type.enum';
+import { OptionEntry } from '../models/trade-management/option-entry.model';
 import { OptionType } from '../models/trade-management/option-type.enum';
+import { StockEntry } from '../models/trade-management/stock-entry.model';
+import { StrategyTemplate } from '../models/trade-management/strategy-template.model';
+import { StrategyType } from '../models/trade-management/strategy-type.enum';
 
 @Injectable({
   providedIn: 'root'

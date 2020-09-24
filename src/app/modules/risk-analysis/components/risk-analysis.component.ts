@@ -1,20 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { StockEntry } from '../../shared/models/trade-management/stock-entry.model';
-import { OptionEntry } from '../../shared/models/trade-management/option-entry.model';
-import { RiskAnalysisRecord } from '../models/risk-analysis-record.model';
-import { UtilService } from '../../utilities/services/util.service';
-import { RiskAnalysisService } from '../services/risk-analysis.service';
-import { RiskAnalysisRequest } from '../models/risk-analysis-request.model';
+import { NavigationExtras, Router } from '@angular/router';
 import { ActionType } from '../../shared/models/trade-management/action-type.enum';
+import { OptionEntry } from '../../shared/models/trade-management/option-entry.model';
 import { OptionType } from '../../shared/models/trade-management/option-type.enum';
-import { OptionResult } from '../models/option-result.model';
-import { StockResult } from '../models/stock-result.model';
-import { Router, NavigationExtras } from '@angular/router';
+import { StockEntry } from '../../shared/models/trade-management/stock-entry.model';
 import { StockSymbol } from '../../shared/models/trade-management/stock-symbol.model';
-import { UserStockSummary } from '../../shared/models/user-stock-summary.model';
-import { StrategyType } from '../../shared/models/strategy-type.enum';
+import { StrategyType } from '../../shared/models/trade-management/strategy-type.enum';
+import { TradeInputData } from '../../shared/models/trade-management/trade-input-data.model';
+import { UserStockSummary } from '../../shared/models/trade-management/user-stock-summary.model';
 import { StrategyCreateServiceService } from '../../shared/services/strategy-create-service.service';
 import { UserStockStatsService } from '../../shared/services/user-stock-stats.service';
+import { UtilService } from '../../utilities/services/util.service';
+import { OptionResult } from '../models/option-result.model';
+import { RiskAnalysisRecord } from '../models/risk-analysis-record.model';
+import { RiskAnalysisRequest } from '../models/risk-analysis-request.model';
+import { StockResult } from '../models/stock-result.model';
+import { RiskAnalysisService } from '../services/risk-analysis.service';
+import { StrategyTemplate } from '../../shared/models/trade-management/strategy-template.model';
 
 @Component({
   selector: 'app-risk-analysis',
@@ -23,16 +25,18 @@ import { UserStockStatsService } from '../../shared/services/user-stock-stats.se
 })
 export class RiskAnalysisComponent implements OnInit {
 
-
+  currentState: number = 1;
   stockLowerBand: number = -10;
   stockUpperBand: number = 10;
   riskFreeRate: number = 10;
+  selectedStrategy: number = 15;
+
   stockAdded: boolean;
   performRiskAnalysis: boolean;
   displayRiskAnalysis: boolean;
   analyzeRisk: boolean;
   detailSummaryLoaded: boolean;
-  selectedStrategy: number = 15;
+  fromAddTrade: boolean;
 
   selectedStock: StockSymbol = new StockSymbol();
   stockSummary: UserStockSummary = new UserStockSummary();
@@ -59,6 +63,10 @@ export class RiskAnalysisComponent implements OnInit {
 
   ngAfterViewInit(): void {
 
+  }
+
+  enterSymbol() {
+    this.currentState++;
   }
 
   addStock() {
@@ -163,25 +171,57 @@ export class RiskAnalysisComponent implements OnInit {
     });
   }
 
+  navigateToAddTrade() {
+    let extras: NavigationExtras = {};
+    let input: TradeInputData = {
+      stockEntry: this.stockEntry,
+      stockOptions: this.stockOptions,
+      stockSummary: this.stockSummary,
+      selectedStock: this.selectedStock,
+      strategyType: this.selectedStrategy
+    };
+    extras.state = input;
+    this.router.navigate(['/new-trade'], extras);
+  }
+
+  onStrategyTypeChange(strategy: Number) {
+    console.log('selected strategy:', strategy);
+    let template: StrategyTemplate = this.strategyCreateServiceService.getStrategyTemplate(strategy);
+    if (template) {
+      this.stockEntry = template.stockEntry;
+      this.stockAdded = template.stockEntry ? true : false;
+      this.stockOptions = template.optionEntries;
+    }
+  }
+
   initState(): void {
+    if (!this.router.getCurrentNavigation()) {
+      return;
+    }
     let extras: NavigationExtras = this.router.getCurrentNavigation().extras;
-    console.log('state:', extras.state);
-    if (extras.state && extras.state.selectedStock && extras.state.stockSummary) {
-      this.selectedStock = extras.state.selectedStock;
-      this.stockSummary = extras.state.stockSummary;
-      console.log('stockSummary:', extras.state.selectedStock);
-      console.log('stockSummary:', extras.state.stockSummary);
-      if (extras.state.stockEntry) {
-        console.log('stock:', extras.state.stockEntry);
-        this.stockAdded = true;
-        this.stockEntry = extras.state.stockEntry;
-      }
-      if (extras.state.stockOptions) {
-        console.log('stockOptions:', extras.state.stockOptions);
-        this.stockOptions = extras.state.stockOptions;
-      }
-      if (extras.state.selectedStrategy) {
-        this.selectedStrategy = extras.state.selectedStrategy;
+    console.log('state---:', extras.state);
+    if (extras.state) {
+      let state: TradeInputData = <TradeInputData>extras.state;
+      console.log('state:', state);
+      if (state.selectedStock && state.stockSummary) {
+        this.selectedStock = state.selectedStock;
+        this.stockSummary = state.stockSummary;
+        this.fromAddTrade = true;
+        this.currentState++;
+        console.log('stockSummary:', state.selectedStock);
+        console.log('stockSummary:', state.stockSummary);
+        if (extras.state.stockEntry) {
+          console.log('stock:', state.stockEntry);
+          this.stockAdded = true;
+          this.stockEntry = state.stockEntry;
+        }
+        if (extras.state.stockOptions) {
+          console.log('stockOptions:', state.stockOptions);
+          this.stockOptions = state.stockOptions;
+        }
+        if (extras.state.strategyType) {
+          this.selectedStrategy = state.strategyType;
+        }
       }
     }
   }

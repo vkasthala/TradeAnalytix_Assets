@@ -1,6 +1,6 @@
-import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { StockSymbol } from 'src/app/modules/shared/models/trade-management/stock-symbol.model';
-import { UserStockSummary } from 'src/app/modules/shared/models/user-stock-summary.model';
+import { UserStockSummary } from 'src/app/modules/shared/models/trade-management/user-stock-summary.model';
 
 @Component({
   selector: 'app-trade-details-header',
@@ -26,7 +26,7 @@ export class TradeDetailsHeaderComponent implements OnInit {
 
   getDisplayValue(value, postfix) {
     if (value) {
-      return value +  (postfix ? postfix : '');
+      return value + (postfix ? postfix : '');
     }
     return "NA";
   }

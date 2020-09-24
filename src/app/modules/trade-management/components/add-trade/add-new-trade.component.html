@@ -1,5 +1,3 @@
-
-
 <div class="container-fluid">
   <div class="addnew-trade">
     <div class="addnew-trade-body">
@@ -17,28 +15,23 @@
           </div>
         </ng-container>
         <ng-container *ngSwitchCase="2">
-          <app-trade-details-header [selectedStock] = "selectedStock" [stockSummary] = "stockSummary" (loadMoreStats) = "loadMoreStatsHandler($event)"></app-trade-details-header>
-        
+          <app-trade-details-header [selectedStock]="selectedStock" [stockSummary]="stockSummary"
+            (loadMoreStats)="loadMoreStatsHandler($event)"></app-trade-details-header>
+
           <mat-vertical-stepper labelPosition="left" #stepper [linear]="false">
             <mat-step [class.active]="stepone.completed" #stepone>
               <ng-template matStepLabel>Trade Details</ng-template>
               <div class="stepper-content">
-                <app-trade-details
-                  (nextStep)="goForward(true)"
-                  (activateRisk)="activeStep = true" 
-                  [stockSummary] = "stockSummary"
-                  [selectedStock] = "selectedStock"
-                ></app-trade-details>
+                <app-trade-details (nextStep)="goForward(true)" (activateRisk)="activeStep = true"
+                  [stockSummary]="stockSummary" [selectedStock]="selectedStock" [stockEntry]="stockEntry"
+                  [stockOptions]="stockOptions" [selectedStrategy]="selectedStrategy"></app-trade-details>
               </div>
             </mat-step>
 
             <mat-step>
               <ng-template matStepLabel>Trade Thesis</ng-template>
               <div class="stepper-content">
-                <app-trade-thesis
-                  (nextStep)="goForward()"
-                  (prevStep)="goBack(true)"
-                ></app-trade-thesis>
+                <app-trade-thesis (nextStep)="goForward()" (prevStep)="goBack(true)"></app-trade-thesis>
               </div>
             </mat-step>
             <mat-step>
@@ -71,59 +64,41 @@
         <mat-step>
 
           <div class="stepper-content">
-            <app-mobile-trade-details
-              [stockOptions]="stockOptions"
-              [stockAdded]="stockAdded"
-              (nextStep)="goForward(false,true)"
-              (updateStockAdded)="stockAdded = $event"
-            ></app-mobile-trade-details>
+            <app-mobile-trade-details [stockOptions]="stockOptions" [stockAdded]="stockAdded"
+              (nextStep)="goForward(false,true)" (updateStockAdded)="stockAdded = $event"></app-mobile-trade-details>
           </div>
         </mat-step>
         <mat-step>
           <div class="stepper-content">
-            <app-mobile-risk-analysis
-            [stockOptions]="stockOptions"
-            [stockAdded]="stockAdded"
-              (prevStep)="goBack(false,true)"
-              (nextStep)="goForward(false,true)"
-              (skipAnalysis)="goForward(true,true)"
-            ></app-mobile-risk-analysis>
+            <app-mobile-risk-analysis [stockOptions]="stockOptions" [stockAdded]="stockAdded"
+              (prevStep)="goBack(false,true)" (nextStep)="goForward(false,true)" (skipAnalysis)="goForward(true,true)">
+            </app-mobile-risk-analysis>
           </div>
         </mat-step>
         <mat-step>
           <div class="stepper-content">
-            <app-mobile-trade-analysis
-            [stockOptions]="stockOptions"
-            [stockAdded]="stockAdded"
-              (prevStep)="goBack(false,true)"
-              (nextStep)="goForward(false,true)"
-            ></app-mobile-trade-analysis>
+            <app-mobile-trade-analysis [stockOptions]="stockOptions" [stockAdded]="stockAdded"
+              (prevStep)="goBack(false,true)" (nextStep)="goForward(false,true)"></app-mobile-trade-analysis>
           </div>
         </mat-step>
 
         <mat-step>
           <div class="stepper-content">
-            <app-mobile-trade-thesis
-              (prevStep)="goBack(false,true)"
-              (nextStep)="goForward(false,true)"
-            ></app-mobile-trade-thesis>
+            <app-mobile-trade-thesis (prevStep)="goBack(false,true)" (nextStep)="goForward(false,true)">
+            </app-mobile-trade-thesis>
           </div>
         </mat-step>
 
         <mat-step>
           <div class="stepper-content">
-            <app-mobile-risk-management
-              (prevStep)="goBack(false,true)"
-              (nextStep)="goForward(false,true)"
-            ></app-mobile-risk-management>
+            <app-mobile-risk-management (prevStep)="goBack(false,true)" (nextStep)="goForward(false,true)">
+            </app-mobile-risk-management>
           </div>
         </mat-step>
 
         <mat-step>
           <div class="stepper-content">
-            <app-mobile-entry-rules
-              (prevStep)="goBack(false,true)"
-            ></app-mobile-entry-rules>
+            <app-mobile-entry-rules (prevStep)="goBack(false,true)"></app-mobile-entry-rules>
           </div>
         </mat-step>
       </mat-horizontal-stepper>
