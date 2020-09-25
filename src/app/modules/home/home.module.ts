@@ -47,6 +47,8 @@ import { TradeDetailsHeaderComponent } from '../trade-management/components/trad
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RoutingModule } from './routing.module';
 import { UtilitiesModule } from '../Utilities/utilities.module';
+import { TradeExecutionDateComponent } from '../shared/components/modals/trade-execution-date/trade-execution-date.component';
+
 
 
 @NgModule({
@@ -90,6 +92,7 @@ import { UtilitiesModule } from '../Utilities/utilities.module';
     ReduceToStockPositionPopupComponent,
     CloseTradeDetailsComponent,
     TradeDetailsHeaderComponent,
+    TradeExecutionDateComponent
   ],
   imports: [
     CommonModule,
@@ -110,7 +113,8 @@ import { UtilitiesModule } from '../Utilities/utilities.module';
     AddToPositionPopupComponent,
     AddToStockPositionPopupComponent,
     ReduceToPositionPopupComponent,
-    ReduceToStockPositionPopupComponent
+    ReduceToStockPositionPopupComponent,
+    TradeExecutionDateComponent
   ]
 })
 export class HomeModule { }

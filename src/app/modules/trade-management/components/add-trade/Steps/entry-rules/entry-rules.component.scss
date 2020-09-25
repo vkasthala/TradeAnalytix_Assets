@@ -2,10 +2,12 @@
 
 .trade-thesis-sec {
   .trade-thesis-heading {
-    border-bottom: 1px solid #7070704f;
+    border-bottom: 1px solid transparent;
     padding-bottom: 15px;
+    padding-top: 1rem;
     h4 {
       color: $primary;
+      font-size: 1rem;
     }
   }
 
@@ -21,63 +23,49 @@
   border: 1px solid #70707070;
 }
 
-.trade-thesis-list {
-  margin: 30px 0px;
+.thesis-list-inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
 
-  .thesis-list-inner {
+  
+  .list-inner-left {
+    width: 40%;
     position: relative;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin-top: 20px;
-    margin-bottom: 40px;
 
-    &:not(:last-child)::after {
-      content: "";
-      position: absolute;
-      left: 30px;
-      bottom: -20px;
-      width: 99%;
-      height: 2px;
-      background: #7070704f;
-      opacity: 0.5;
-    }
-    .list-inner-left {
-      width: 40%;
-      position: relative;
-      display: flex;
-      align-items: center;
+    span {
+      margin-right: 20px;
 
-      span {
-        margin-right: 20px;
-
-        h6 {
-          font-weight: 400;
-        }
-      }
-    }
-
-    .list-inner-right {
-      display: flex;
-      align-items: center;
-      width: 60%;
-      @media #{$small} {
-        justify-content: space-between;
-        width: 60%;
-      }
-      @media #{$medium} {
-        justify-content: space-between;
-      }
-      .add-new {
-        color: $primary;
-        font-size: 14px;
-        cursor: pointer;
-        font-weight: 500;
-        margin-left: 14px;
+      h6 {
+        font-weight: 400;
       }
     }
   }
+
+  .list-inner-right {
+    display: flex;
+    align-items: center;
+    width: 60%;
+    @media #{$small} {
+      justify-content: space-between;
+      width: 60%;
+    }
+    @media #{$medium} {
+      justify-content: space-between;
+    }
+    .add-new {
+      color: $primary;
+      font-size: 14px;
+      cursor: pointer;
+      font-weight: 500;
+      margin-left: 14px;
+    }
+  }
 }
+
 
 .Trade-type .form-control {
   height: 45px;
@@ -129,7 +117,7 @@
 // Toggle Customize
 .switch {
   position: relative;
-  width: 27%;
+  width: 10%;
 }
 .switch label {
   width: 60px;
@@ -167,11 +155,10 @@
 
 .trade-check {
   display: flex;
-  justify-content: center;
   align-items: center;
   border: 1px solid #ddd;
   width: 40%;
-  padding: 12px;
+  padding: 10px;
   border-radius: 6px;
   @media #{$small} {
     width: 70%;

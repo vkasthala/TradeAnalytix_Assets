@@ -132,7 +132,7 @@
         !displayRiskAnalysis
         && (stockAdded || stockOptions.length > 0)
       ">
-      <a class="btn btn-next mr-3">ADD TRADE</a>
+      <button type="button" class="btn btn-next mr-3" (click)="CheckExecutionDate('Confirm Trade Execution Date')">ADD TRADE</button>
       <a class="text-primary" (click)="displayRiskAnalysis = true">Go to Trade Thesis</a>
     </div>
 </ng-container>

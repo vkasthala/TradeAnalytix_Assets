@@ -12,6 +12,8 @@ import { UserStockSummary } from 'src/app/modules/shared/models/trade-management
 import { StrategyCreateServiceService } from 'src/app/modules/shared/services/strategy-create-service.service';
 import { UtilService } from 'src/app/modules/utilities/services/util.service';
 
+import { MatDialog } from '@angular/material';
+import { TradeExecutionDateComponent } from 'src/app/modules/shared/components/modals/trade-execution-date/trade-execution-date.component';
 
 @Component({
   selector: 'app-trade-details',
@@ -39,7 +41,8 @@ export class TradeDetailsComponent implements OnInit {
 
   constructor(private utilService: UtilService,
     private strategyCreateServiceService: StrategyCreateServiceService,
-    private router: Router) { }
+    private router: Router,
+    private _dialog: MatDialog) { }
 
   ngOnInit() {
   }
@@ -136,6 +139,18 @@ export class TradeDetailsComponent implements OnInit {
         }
       }
     }
+  }
+
+  CheckExecutionDate(value) {
+    const dialogRef = this._dialog.open(TradeExecutionDateComponent, {
+      disableClose: true,
+      width: 'auto',
+      data : {title: value}
+    });
+
+    dialogRef.afterClosed().subscribe((res) => {
+      
+    });
   }
 
 }
