@@ -12,16 +12,8 @@
         </div>
         <div class="col-6 media align-items-center">
             <div class="media-body">
-                <select class="form-control select-input" id="inputState">
-                    <option selected="">Analyst Upgrade</option>
-                    <option>Analyst Downgrade</option>
-                    <option>Friend</option>
-                    <option>Self</option>
-                    <option>CNBC</option>
-                    <option>Yates</option>
-                    <option>Barrons</option>
-                    <option>StockTwits</option>
-                    <option>Trading Academy</option>
+                <select class="form-control select-input" id="inputState" [(ngModel)]="tradeThesis.sourceId">
+                    <option [ngValue]="opt.id" *ngFor="let opt of sourceTypes; trackBy: id">{{opt.name}}</option>
                 </select>
             </div>
             <div class="media-body">
@@ -52,8 +44,8 @@
         </div>
         <div class="col-6 media align-items-center">
             <div class="media-body">
-                <select class="form-control select-input">
-                    <option>Select Mindset</option>
+                <select class="form-control select-input" id="inputState" [(ngModel)]="tradeThesis.mindsetId">
+                    <option [ngValue]="opt.id" *ngFor="let opt of mindsetTypes; trackBy: id">{{opt.name}}</option>
                 </select>
             </div>
             <div class="media-body">
@@ -79,14 +71,8 @@
         </div>
         <div class="col-6 media align-items-center">
             <div class="media-body">
-                <select class="form-control select-input" id="inputState">
-                    <option>Pre-Earnings</option>
-                    <option selected="">Post-Earnings</option>
-                    <option>Dividends</option>
-                    <option>Stock Split</option>
-                    <option>Reverse Stock Split</option>
-                    <option>Product Announcement</option>
-                    <option>None</option>
+                <select class="form-control select-input" id="inputState" [(ngModel)]="tradeThesis.surroundingEventId">
+                    <option [ngValue]="opt.id" *ngFor="let opt of surroundingTypes; trackBy: id">{{opt.name}}</option>
                 </select>
             </div>
             <div class="media-body">
@@ -115,9 +101,10 @@
         <div class="col-6">
             <div class="media align-items-center mb-2">
                 <div class="media-body">
-                    <select class="form-control select-input" id="inputState">
-                        <option>select</option>
-                        <option selected="">MACD</option>
+                    <select class="form-control select-input" id="inputState"
+                        [(ngModel)]="tradeThesis.technicalIndicatorId">
+                        <option [ngValue]="opt.id" *ngFor="let opt of technicalIndicators; trackBy: id">{{opt.name}}
+                        </option>
                     </select>
                 </div>
                 <div class="media-body">

@@ -8,6 +8,7 @@ import { StockSymbol } from 'src/app/modules/shared/models/trade-management/stoc
 import { TradeInputData } from 'src/app/modules/shared/models/trade-management/trade-input-data.model';
 import { UserStockSummary } from 'src/app/modules/shared/models/trade-management/user-stock-summary.model';
 import { UserStockStatsService } from 'src/app/modules/shared/services/user-stock-stats.service';
+import { TradeThesis } from '../../models/trade-thesis.model';
 @Component({
   selector: 'app-add-new-trade',
   templateUrl: './add-new-trade.component.html',
@@ -26,6 +27,9 @@ export class AddNewTradeComponent implements OnInit {
   stockEntry: StockEntry = this.createStockEntry();
   stockOptions: OptionEntry[] = [];
   selectedStrategy: number = 15;
+
+  tradeThesis: TradeThesis;
+
   detailSummaryLoaded: boolean;
 
   constructor(private changeRef: ChangeDetectorRef,

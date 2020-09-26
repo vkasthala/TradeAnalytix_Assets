@@ -31,7 +31,8 @@
             <mat-step>
               <ng-template matStepLabel>Trade Thesis</ng-template>
               <div class="stepper-content">
-                <app-trade-thesis (nextStep)="goForward()" (prevStep)="goBack(true)"></app-trade-thesis>
+                <app-trade-thesis (nextStep)="goForward()" (prevStep)="goBack(true)" [tradeThesis]="tradeThesis">
+                </app-trade-thesis>
               </div>
             </mat-step>
             <mat-step>
