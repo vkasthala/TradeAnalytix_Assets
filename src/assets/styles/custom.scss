@@ -64,3 +64,18 @@
 .cursor {
     cursor: pointer;
 }
+
+.mat-step-header[aria-selected="true"] { 
+    // background-color: rgba(0, 0, 0, 0.04) !important;
+    position: relative;
+    overflow: inherit;
+}
+.mat-step-header[aria-selected=true]::before {
+    content: "";
+    position: absolute;
+    right: -1px;
+    background: #fff;
+    height: 100%;
+    top: 0;
+    width: 1px;
+}

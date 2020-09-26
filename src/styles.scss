@@ -179,3 +179,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .mat-stepper-vertical-line::before {
     border-left: 0 !important;
 }
+
+.mat-stepper-vertical .mat-step:nth-child(1) > .mat-vertical-content-container .mat-vertical-content {
+    min-height: 250px;
+}
