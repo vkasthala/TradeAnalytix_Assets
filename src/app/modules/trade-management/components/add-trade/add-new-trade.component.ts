@@ -1,13 +1,13 @@
-import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { MatStepper } from '@angular/material';
-import { StockSymbol } from 'src/app/modules/shared/models/trade-management/stock-symbol.model';
-import { UserStockStatsService } from 'src/app/modules/shared/services/user-stock-stats.service';
-import { TradeInputData } from 'src/app/modules/shared/models/trade-management/trade-input-data.model';
-import { Subject } from 'rxjs';
-import { Router, NavigationExtras } from '@angular/router';
-import { UserStockSummary } from 'src/app/modules/shared/models/trade-management/user-stock-summary.model';
-import { StockEntry } from 'src/app/modules/shared/models/trade-management/stock-entry.model';
+import { NavigationExtras, Router } from '@angular/router';
+import { ActionType } from 'src/app/modules/shared/models/trade-management/action-type.enum';
 import { OptionEntry } from 'src/app/modules/shared/models/trade-management/option-entry.model';
+import { StockEntry } from 'src/app/modules/shared/models/trade-management/stock-entry.model';
+import { StockSymbol } from 'src/app/modules/shared/models/trade-management/stock-symbol.model';
+import { TradeInputData } from 'src/app/modules/shared/models/trade-management/trade-input-data.model';
+import { UserStockSummary } from 'src/app/modules/shared/models/trade-management/user-stock-summary.model';
+import { UserStockStatsService } from 'src/app/modules/shared/services/user-stock-stats.service';
 @Component({
   selector: 'app-add-new-trade',
   templateUrl: './add-new-trade.component.html',
@@ -23,7 +23,7 @@ export class AddNewTradeComponent implements OnInit {
   selectedStock: StockSymbol = new StockSymbol();
   stockSummary: UserStockSummary = new UserStockSummary();
 
-  stockEntry: StockEntry;
+  stockEntry: StockEntry = this.createStockEntry();
   stockOptions: OptionEntry[] = [];
   selectedStrategy: number = 15;
   detailSummaryLoaded: boolean;
@@ -64,6 +64,16 @@ export class AddNewTradeComponent implements OnInit {
       this.detailSummaryLoaded = true;
       this.stockSummary = result;
     });
+  }
+
+  createStockEntry(): StockEntry {
+    let stockEntry: StockEntry = new StockEntry();
+    stockEntry.price = this.stockSummary.close;
+    stockEntry.lowerBound = -10;
+    stockEntry.upperBound = 10;
+    stockEntry.riskFreeRate = 6;
+    stockEntry.actionType = ActionType["Buy to Open"];
+    return stockEntry;
   }
 
   goBack(moveTwoSteps?, mobileView?) {

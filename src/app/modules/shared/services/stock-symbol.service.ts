@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
 import { environment } from '../../../../environments/environment';
 import { StockSymbol } from '../models/trade-management/stock-symbol.model';
+import { HttpService } from './http.service';
 
 
 @Injectable({
@@ -12,10 +12,10 @@ export class StockSymbolService {
 
   private apiUrl = environment.apiUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private httpService: HttpService) { }
 
   public getStockSymbols(): Observable<StockSymbol[]> {
-    return this.http.get<StockSymbol[]>(this.apiUrl + '/stock-symbols');
+    return this.httpService.get<StockSymbol[]>(this.apiUrl + '/stock-symbols');
   }
 
 }

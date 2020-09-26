@@ -1,55 +1,55 @@
 export class UserStockSummary {
 
-    open: Number;
+    open: number;
 
-    high: Number;
+    high: number;
 
-    low: Number;
+    low: number;
 
-    close: Number;
+    close: number;
 
-    volume: Number;
+    volume: number;
 
-    changePercent: Number;
+    changePercent: number;
 
-    winPercent: Number;
+    winPercent: number;
 
-    lossPercent: Number;
+    lossPercent: number;
 
-    winLossRatio: Number;
+    winLossRatio: number;
 
-    netReturn: Number;
+    netReturn: number;
 
-    avgHoldingPeriod: Number;
+    avgHoldingPeriod: number;
 
     successStrategy: String;
 
-    highGain: Number;
+    highGain: number;
 
-    marketCapitalBln: Number;
+    marketCapitalBln: number;
 
-    week52High: Number;
+    week52High: number;
 
-    week52Low: Number;
+    week52Low: number;
 
-    avgVolumeMln: Number;
+    avgVolumeMln: number;
 
-    largestLoss: Number;
+    largestLoss: number;
 
-    revenueBln: Number;
+    revenueBln: number;
 
-    grossMargin: Number;
+    grossMargin: number;
 
-    operatingMargin: Number;
+    operatingMargin: number;
 
-    freeCashFlowBln: Number;
+    freeCashFlowBln: number;
 
-    totalDebt: Number;
+    totalDebt: number;
 
-    eps: Number;
+    eps: number;
 
-    bookValueBln: Number;
+    bookValueBln: number;
 
-    beta: Number;
+    beta: number;
 
 }

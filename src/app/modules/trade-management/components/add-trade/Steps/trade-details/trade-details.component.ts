@@ -57,7 +57,6 @@ export class TradeDetailsComponent implements OnInit {
 
   addStock() {
     this.stockAdded = true;
-    this.createStockEntry();
   }
 
   addOption() {
@@ -100,14 +99,6 @@ export class TradeDetailsComponent implements OnInit {
     };
     extras.state = input;
     this.router.navigate(['/risk-analysis'], extras);
-  }
-
-  createStockEntry() {
-    this.stockEntry = new StockEntry();
-    this.stockEntry.lowerBound = -10;
-    this.stockEntry.upperBound = 10;
-    this.stockEntry.riskFreeRate = 6;
-    this.stockEntry.actionType = ActionType["Buy to Open"];
   }
 
   createStockOptionEntry(): OptionEntry {

@@ -26,9 +26,6 @@ import { StrategyTemplate } from '../../shared/models/trade-management/strategy-
 export class RiskAnalysisComponent implements OnInit {
 
   currentState: number = 1;
-  stockLowerBand: number = -10;
-  stockUpperBand: number = 10;
-  riskFreeRate: number = 10;
   selectedStrategy: number = 15;
 
   stockAdded: boolean;
@@ -44,7 +41,7 @@ export class RiskAnalysisComponent implements OnInit {
   strategies = StrategyType;
   strategyTypes: String[] = this.strategyCreateServiceService.getStrategies();
 
-  stockEntry: StockEntry;
+  stockEntry: StockEntry = this.createStockEntry();
   stockOptions: OptionEntry[] = [];
 
   riskAnalysisResults: RiskAnalysisRecord[] = [];
@@ -89,33 +86,33 @@ export class RiskAnalysisComponent implements OnInit {
       this.displayRiskAnalysis = false;
     }
   }
+
   deleteStockOption(index) {
     this.stockOptions.splice(index, 1);
-
   }
 
   decreaseStockLowerBand() {
-    if (this.stockLowerBand < 1 && this.stockLowerBand > -100) {
-      this.stockLowerBand--;
+    if (this.stockEntry.lowerBound < 1 && this.stockEntry.lowerBound > -100) {
+      this.stockEntry.lowerBound--;
     }
   }
 
   increaseStockLowerBand() {
-    if (this.stockLowerBand < 0 && this.stockLowerBand > -100) {
-      this.stockLowerBand++;
+    if (this.stockEntry.lowerBound < 0 && this.stockEntry.lowerBound > -100) {
+      this.stockEntry.lowerBound++;
     }
   }
 
 
   decreaseStockUpperBand() {
-    if (this.stockUpperBand > 0 && this.stockUpperBand < 101) {
-      this.stockUpperBand--;
+    if (this.stockEntry.upperBound > 0 && this.stockEntry.upperBound < 101) {
+      this.stockEntry.upperBound--;
     }
   }
 
   increaseStockeUpperBand() {
-    if (this.stockUpperBand > -1 && this.stockUpperBand < 100) {
-      this.stockUpperBand++;
+    if (this.stockEntry.upperBound > -1 && this.stockEntry.upperBound < 100) {
+      this.stockEntry.upperBound++;
     }
   }
 
@@ -285,13 +282,14 @@ export class RiskAnalysisComponent implements OnInit {
     });
   }
 
-  createStockEntry() {
-    this.stockEntry = new StockEntry();
-    this.stockEntry.price = 440.14;
-    this.stockEntry.lowerBound = -10;
-    this.stockEntry.upperBound = 10;
-    this.stockEntry.riskFreeRate = 6;
-    this.stockEntry.actionType = ActionType["Buy to Open"];
+  createStockEntry(): StockEntry {
+    let stockEntry: StockEntry = new StockEntry();
+    stockEntry.price = this.stockSummary.close;
+    stockEntry.lowerBound = -10;
+    stockEntry.upperBound = 10;
+    stockEntry.riskFreeRate = 6;
+    stockEntry.actionType = ActionType["Buy to Open"];
+    return stockEntry;
   }
 
   createStockOptionEntry(): OptionEntry {
@@ -358,14 +356,14 @@ export class RiskAnalysisComponent implements OnInit {
   }
 
   decreaseRiskFreeRate() {
-    if (this.riskFreeRate > 0 && this.riskFreeRate < 101) {
-      this.riskFreeRate--;
+    if (this.stockEntry.riskFreeRate > 0 && this.stockEntry.riskFreeRate < 101) {
+      this.stockEntry.riskFreeRate--;
     }
   }
 
   increaseRiskFreeRate() {
-    if (this.riskFreeRate > -1 && this.riskFreeRate < 100) {
-      this.riskFreeRate++;
+    if (this.stockEntry.riskFreeRate > -1 && this.stockEntry.riskFreeRate < 100) {
+      this.stockEntry.riskFreeRate++;
     }
   }
 
