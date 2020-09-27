@@ -72,8 +72,8 @@
                                     <div class="form-group">
                                         <select id="inputState" class="form-control select-input"
                                             [(ngModel)]="stockEntry.actionType">
-                                            <option value="BUY_TO_OPEN" selected data-default>Buy to Open</option>
-                                            <option value="SELL_TO_OPEN">Sell to Open</option>
+                                            <option value=1 selected data-default>Buy to Open</option>
+                                            <option value=2>Sell to Open</option>
                                         </select>
                                     </div>
                                 </div>
@@ -126,8 +126,8 @@
                                         <div class="form-group">
                                             <select id="inputState" class="form-control select-input"
                                                 [(ngModel)]="stockOptions[index].actionType">
-                                                <option value="BUY_TO_OPEN" selected data-default>Buy to Open</option>
-                                                <option value="SELL_TO_OPEN">Sell to Open</option>
+                                                <option value=1 selected data-default>Buy to Open</option>
+                                                <option value=2>Sell to Open</option>
                                             </select>
                                         </div>
                                     </div>
@@ -166,8 +166,8 @@
                                         <div class="form-group">
                                             <select id="inputState" class="form-control select-input"
                                                 [(ngModel)]="stockOptions[index].optionType">
-                                                <option value="call" selected data-default>Call</option>
-                                                <option value="put">Put</option>
+                                                <option value=1 selected data-default>Call</option>
+                                                <option value=2>Put</option>
                                             </select>
                                         </div>
                                     </div>
@@ -461,9 +461,9 @@
                                                     <table>
                                                         <thead>
                                                             <tr>
-                                                                <th>{{riskAnalysisResults[0].optionResults[index].optionType == 'call' ? 'Call Price' : 'Put Price'}}
+                                                                <th>{{riskAnalysisResults[0].optionResults[index].optionType == 1 ? 'Call Price' : 'Put Price'}}
                                                                 </th>
-                                                                <th>{{riskAnalysisResults[0].optionResults[index].optionType == 'call' ? 'Call Value' : 'Put Value'}}
+                                                                <th>{{riskAnalysisResults[0].optionResults[index].optionType == 1 ? 'Call Value' : 'Put Value'}}
                                                                 </th>
                                                                 <th>Gain/Loss</th>
                                                             </tr>

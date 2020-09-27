@@ -1,7 +1,7 @@
 export enum OptionType {
 
-    "Call" = "call",
+    "Call" = 1,
 
-    "Put" = "put"
+    "Put" = 2
     
 }

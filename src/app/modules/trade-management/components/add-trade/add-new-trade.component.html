@@ -23,15 +23,15 @@
               <ng-template matStepLabel>Trade Details</ng-template>
               <div class="stepper-content">
                 <app-trade-details (nextStep)="goForward(true)" (activateRisk)="activeStep = true"
-                  [stockSummary]="stockSummary" [selectedStock]="selectedStock" [stockEntry]="stockEntry"
-                  [stockOptions]="stockOptions" [selectedStrategy]="selectedStrategy"></app-trade-details>
+                  (addTradeEvent)="addTrade($event)" [stockSummary]="stockSummary" [selectedStock]="selectedStock" [inputState]="inputState" #tradeDetails>
+                </app-trade-details>
               </div>
             </mat-step>
 
             <mat-step>
               <ng-template matStepLabel>Trade Thesis</ng-template>
               <div class="stepper-content">
-                <app-trade-thesis (nextStep)="goForward()" (prevStep)="goBack(true)" [tradeThesis]="tradeThesis">
+                <app-trade-thesis (nextStep)="goForward()" (prevStep)="goBack(true)" #tradeThesis>
                 </app-trade-thesis>
               </div>
             </mat-step>

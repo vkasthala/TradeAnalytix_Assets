@@ -2,11 +2,11 @@ export class TradeThesis {
 
     sourceId: number;
 
-    tradeType: string;
+    tradeType: string = 'planned';
 
     mindsetId: number;
 
-    reason: string;
+    reasons: string;
 
     surroundingEventId: number;
 

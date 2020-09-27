@@ -14,6 +14,7 @@ import { UtilService } from 'src/app/modules/utilities/services/util.service';
 
 import { MatDialog } from '@angular/material';
 import { TradeExecutionDateComponent } from 'src/app/modules/shared/components/modals/trade-execution-date/trade-execution-date.component';
+import { TradeStrategy } from 'src/app/modules/trade-management/models/trade-strategy.model';
 
 @Component({
   selector: 'app-trade-details',
@@ -32,12 +33,16 @@ export class TradeDetailsComponent implements OnInit {
 
   @Output('nextStep') nextStep = new EventEmitter();
   @Output('activateRisk') activateRisk = new EventEmitter();
+  @Output('addTradeEvent') addTradeEvent = new EventEmitter();
 
   @Input('stockSummary') stockSummary: UserStockSummary;
   @Input("selectedStock") selectedStock: StockSymbol;
-  @Input("stockEntry") stockEntry: StockEntry;
-  @Input("stockOptions") stockOptions: OptionEntry[];
-  @Input("selectedStrategy") selectedStrategy: number;
+  @Input("inputState") inputState: TradeInputData;
+
+
+  stockEntry: StockEntry;
+  stockOptions: OptionEntry[] = [];
+  selectedStrategy: number = 15;
 
   constructor(private utilService: UtilService,
     private strategyCreateServiceService: StrategyCreateServiceService,
@@ -45,10 +50,24 @@ export class TradeDetailsComponent implements OnInit {
     private _dialog: MatDialog) { }
 
   ngOnInit() {
+    console.log('child init:', this.router.getCurrentNavigation());
+    this.stockEntry = this.createStockEntry();
   }
 
   ngAfterViewInit(): void {
+    console.log('child view init:', this.inputState);
+    if (this.inputState) {
+      this.stockEntry = this.inputState.stockEntry;
+      this.stockOptions = this.inputState.stockOptions;
+      this.selectedStrategy = this.inputState.strategyType;
+      if (this.stockEntry) {
+        this.stockAdded = true;
+      }
+    }
+  }
 
+  ngAfterContentInit() {
+    console.log('here1..')
   }
 
   enterSymbol() {
@@ -108,6 +127,16 @@ export class TradeDetailsComponent implements OnInit {
     return option;
   }
 
+  createStockEntry(): StockEntry {
+    let stockEntry: StockEntry = new StockEntry();
+    stockEntry.price = this.stockSummary.close;
+    stockEntry.lowerBound = -10;
+    stockEntry.upperBound = 10;
+    stockEntry.riskFreeRate = 6;
+    stockEntry.actionType = ActionType["Buy to Open"];
+    return stockEntry;
+  }
+
   preventNegatives(e, preventDecimal?: boolean) {
     if (preventDecimal) {
       if (!((e.keyCode > 95 && e.keyCode < 106)
@@ -136,11 +165,16 @@ export class TradeDetailsComponent implements OnInit {
     const dialogRef = this._dialog.open(TradeExecutionDateComponent, {
       disableClose: true,
       width: 'auto',
-      data : {title: value}
+      data: { title: value }
     });
 
     dialogRef.afterClosed().subscribe((res) => {
-      
+      console.log('here...');
+      let tradeStrategy: TradeStrategy = new TradeStrategy();
+      tradeStrategy.stockEntry = this.stockEntry;
+      tradeStrategy.stockOptions = this.stockOptions;
+      tradeStrategy.strategyTypeId = this.selectedStrategy;
+      this.addTradeEvent.emit(tradeStrategy);
     });
   }
 

@@ -20,7 +20,7 @@ export class TradeThesisComponent implements OnInit {
   technicalIndicators: TechnicalIndicator[];
   surroundingTypes: SurroundingType[];
 
-  @Input('tradeThesis') tradeThesis: TradeThesis;
+  tradeThesis: TradeThesis;
 
   @Output('nextStep') nextStep = new EventEmitter();
   @Output('prevStep') prevStep = new EventEmitter();
