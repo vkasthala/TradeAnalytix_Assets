@@ -136,4 +136,13 @@ export class AddNewTradeComponent implements OnInit {
     }
   }
 
+  navigaeToRiskAnalysis($event: TradeInputData) {
+    let extras: NavigationExtras = {};
+    if (this.tradeThesis && this.tradeThesis.tradeThesis) {
+      $event.tradeThesis = this.tradeThesis.tradeThesis;
+    }
+    extras.state = $event;
+    this.router.navigate(['/risk-analysis'], extras);
+  }
+
 }

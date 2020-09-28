@@ -16,4 +16,6 @@ export class TradeInputData {
 
     strategyType: number;
 
+    tradeThesis?: TradeThesis;
+
 }

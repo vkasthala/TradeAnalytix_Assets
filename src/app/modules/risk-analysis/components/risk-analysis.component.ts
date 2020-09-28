@@ -38,6 +38,8 @@ export class RiskAnalysisComponent implements OnInit {
   selectedStock: StockSymbol = new StockSymbol();
   stockSummary: UserStockSummary = new UserStockSummary();
 
+  inputState: TradeInputData;
+
   strategies = StrategyType;
   strategyTypes: String[] = this.strategyCreateServiceService.getStrategies();
 
@@ -170,13 +172,21 @@ export class RiskAnalysisComponent implements OnInit {
 
   navigateToAddTrade() {
     let extras: NavigationExtras = {};
-    let input: TradeInputData = {
-      stockEntry: this.stockEntry,
-      stockOptions: this.stockOptions,
-      stockSummary: this.stockSummary,
-      selectedStock: this.selectedStock,
-      strategyType: this.selectedStrategy
-    };
+    let input: TradeInputData;
+    if (this.inputState) {
+      input = this.inputState;
+      input.stockEntry = this.stockEntry;
+      input.stockOptions = this.stockOptions;
+      input.strategyType = this.selectedStrategy;
+    } else {
+      input = {
+        stockEntry: this.stockEntry,
+        stockOptions: this.stockOptions,
+        stockSummary: this.stockSummary,
+        selectedStock: this.selectedStock,
+        strategyType: this.selectedStrategy
+      };
+    }
     extras.state = input;
     this.router.navigate(['/new-trade'], extras);
   }
@@ -201,6 +211,7 @@ export class RiskAnalysisComponent implements OnInit {
       let state: TradeInputData = <TradeInputData>extras.state;
       console.log('state:', state);
       if (state.selectedStock && state.stockSummary) {
+        this.inputState = state;
         this.selectedStock = state.selectedStock;
         this.stockSummary = state.stockSummary;
         this.fromAddTrade = true;

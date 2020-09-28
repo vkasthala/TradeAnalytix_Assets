@@ -15,6 +15,7 @@ import { UtilService } from 'src/app/modules/utilities/services/util.service';
 import { MatDialog } from '@angular/material';
 import { TradeExecutionDateComponent } from 'src/app/modules/shared/components/modals/trade-execution-date/trade-execution-date.component';
 import { TradeStrategy } from 'src/app/modules/trade-management/models/trade-strategy.model';
+import { TradeThesis } from 'src/app/modules/trade-management/models/trade-thesis.model';
 
 @Component({
   selector: 'app-trade-details',
@@ -34,6 +35,7 @@ export class TradeDetailsComponent implements OnInit {
   @Output('nextStep') nextStep = new EventEmitter();
   @Output('activateRisk') activateRisk = new EventEmitter();
   @Output('addTradeEvent') addTradeEvent = new EventEmitter();
+  @Output('navigateRiskAnalysisEvent') navigateRiskAnalysisEvent = new EventEmitter();
 
   @Input('stockSummary') stockSummary: UserStockSummary;
   @Input("selectedStock") selectedStock: StockSymbol;
@@ -108,7 +110,6 @@ export class TradeDetailsComponent implements OnInit {
   }
 
   navigateToRiskAnalysis(): void {
-    let extras: NavigationExtras = {};
     let input: TradeInputData = {
       stockEntry: this.stockEntry,
       stockOptions: this.stockOptions,
@@ -116,8 +117,7 @@ export class TradeDetailsComponent implements OnInit {
       selectedStock: this.selectedStock,
       strategyType: this.selectedStrategy
     };
-    extras.state = input;
-    this.router.navigate(['/risk-analysis'], extras);
+    this.navigateRiskAnalysisEvent.emit(input);
   }
 
   createStockOptionEntry(): OptionEntry {

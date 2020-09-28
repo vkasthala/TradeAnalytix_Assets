@@ -7,6 +7,7 @@ import { SurroundingType } from 'src/app/modules/trade-management/models/surroun
 import { TechnicalIndicator } from 'src/app/modules/trade-management/models/technical-indicator.model';
 import { UserMetadataService } from 'src/app/modules/trade-management/services/user-metadata.service';
 import { TradeThesis } from 'src/app/modules/trade-management/models/trade-thesis.model';
+import { TradeInputData } from 'src/app/modules/shared/models/trade-management/trade-input-data.model';
 
 @Component({
   selector: 'app-trade-thesis',
@@ -25,6 +26,8 @@ export class TradeThesisComponent implements OnInit {
   @Output('nextStep') nextStep = new EventEmitter();
   @Output('prevStep') prevStep = new EventEmitter();
 
+  @Input("inputState") inputState: TradeInputData;
+
   constructor(private _dialog: MatDialog, private metadataService: UserMetadataService) { }
 
   ngOnInit() {
@@ -33,6 +36,13 @@ export class TradeThesisComponent implements OnInit {
     this.loadSourceTypes();
     this.loadSurroundingEvents();
     this.loadTechnicalIndicators();
+  }
+
+  ngAfterViewInit(): void {
+    console.log('trade thesis child view init:', this.inputState);
+    if (this.inputState && this.inputState.tradeThesis) {
+      this.tradeThesis = this.inputState.tradeThesis;
+    }
   }
 
   previous() {

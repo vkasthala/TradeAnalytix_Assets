@@ -8,14 +8,14 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 })
 export class TradeExecutionDateComponent implements OnInit {
 
-  title:string;
+  title: string;
 
   constructor(
     public dialogRef: MatDialogRef<TradeExecutionDateComponent>,
     @Inject(MAT_DIALOG_DATA) data
   ) {
     this.title = data.title;
-    }
+  }
 
   ngOnInit() {
   }
