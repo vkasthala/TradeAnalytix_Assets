@@ -137,6 +137,26 @@ export class TradeDetailsComponent implements OnInit {
     return stockEntry;
   }
 
+  calculateNetDebit(): number {
+    let netDebit: number = 0;
+    let tmp: number;
+    if (this.stockEntry && this.stockEntry.quantity && this.stockEntry.price) {
+      tmp = this.stockEntry.quantity * this.stockEntry.price;
+      netDebit = tmp * (this.stockEntry.actionType == ActionType["Buy to Open"] ? 1 : -1);
+    }
+    if (this.stockOptions) {
+      for (let index = 0; index < this.stockOptions.length; index++) {
+        tmp = this.stockOptions[index].contracts && this.stockOptions[index].price ? Number.parseFloat((this.stockOptions[index].contracts * this.stockOptions[index].price * 100).toFixed(2)) : 0
+        if (this.stockOptions[index].actionType == ActionType["Buy to Open"]) {
+          netDebit += tmp;
+        } else if (this.stockOptions[index].actionType == ActionType["Sell to Open"]) {
+          netDebit -= tmp;
+        }
+      }
+    }
+    return netDebit;
+  }
+
   preventNegatives(e, preventDecimal?: boolean) {
     if (preventDecimal) {
       if (!((e.keyCode > 95 && e.keyCode < 106)
