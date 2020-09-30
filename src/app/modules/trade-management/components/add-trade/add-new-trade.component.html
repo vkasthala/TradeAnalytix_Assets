@@ -22,7 +22,7 @@
             <mat-step [class.active]="stepone.completed" #stepone>
               <ng-template matStepLabel>Trade Details</ng-template>
               <div class="stepper-content">
-                <app-trade-details (nextStep)="goForward(true)" (activateRisk)="activeStep = true"
+                <app-trade-details (nextStep)="goForward()" (activateRisk)="activeStep = true"
                   (addTradeEvent)="addTrade($event)" (navigateRiskAnalysisEvent)="navigaeToRiskAnalysis($event)"
                   [stockSummary]="stockSummary" [selectedStock]="selectedStock" [inputState]="inputState" #tradeDetails>
                 </app-trade-details>

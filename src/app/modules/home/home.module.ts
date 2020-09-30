@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { 
   MatDatepickerModule,
   MatNativeDateModule,
-  MatInputModule
+  MatInputModule,
+
 } from '@angular/material';
 import { TradeStrategiesComponent } from '../trade-strategies/components/trade-strategies.component';
 import { DashboardComponent } from '../dashboard/components/dashboard.component';
@@ -49,7 +50,10 @@ import { RoutingModule } from './routing.module';
 import { UtilitiesModule } from '../Utilities/utilities.module';
 import { TradeExecutionDateComponent } from '../shared/components/modals/trade-execution-date/trade-execution-date.component';
 
-
+import { TradeStrategiesGrid } from '../trade-strategies/components/trade-strategies-grid/trade-strategies-grid';
+import {MatTableModule} from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+// import { MatTableDataSource } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -92,7 +96,8 @@ import { TradeExecutionDateComponent } from '../shared/components/modals/trade-e
     ReduceToStockPositionPopupComponent,
     CloseTradeDetailsComponent,
     TradeDetailsHeaderComponent,
-    TradeExecutionDateComponent
+    TradeExecutionDateComponent,
+    TradeStrategiesGrid
   ],
   imports: [
     CommonModule,
@@ -102,7 +107,10 @@ import { TradeExecutionDateComponent } from '../shared/components/modals/trade-e
     UtilitiesModule,
     MatNativeDateModule,
     MatInputModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatTableModule,
+    MatPaginatorModule,
+    // MatTableDataSource
   ],
   entryComponents: [
     AddTradeConfirmationPopupComponent,
@@ -114,7 +122,9 @@ import { TradeExecutionDateComponent } from '../shared/components/modals/trade-e
     AddToStockPositionPopupComponent,
     ReduceToPositionPopupComponent,
     ReduceToStockPositionPopupComponent,
-    TradeExecutionDateComponent
-  ]
+    TradeExecutionDateComponent,
+    TradeStrategiesGrid
+  ],
+  // bootstrap: [TradeStrategiesGrid],
 })
 export class HomeModule { }

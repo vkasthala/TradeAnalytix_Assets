@@ -75,7 +75,6 @@ export class CloseTradeDetailsComponent implements OnInit {
 
   
   next() {
-    debugger;
     this.displayRiskAnalysis = true;
     this.nextStep.emit()
   }
