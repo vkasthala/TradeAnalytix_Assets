@@ -1,6 +1,7 @@
 import { TradeThesis } from './trade-thesis.model';
 import { StockEntry } from '../../shared/models/trade-management/stock-entry.model';
 import { OptionEntry } from '../../shared/models/trade-management/option-entry.model';
+import { EntryExitRule } from './entry-exit-rule.model';
 
 export class TradeStrategy {
 
@@ -23,5 +24,7 @@ export class TradeStrategy {
     stockEntry: StockEntry;
 
     stockOptions: OptionEntry[];
+
+    entryRules: EntryExitRule[];
 
 }

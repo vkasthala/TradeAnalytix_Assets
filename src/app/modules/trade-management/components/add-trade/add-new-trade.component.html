@@ -40,7 +40,7 @@
             <mat-step>
               <ng-template matStepLabel>Entry Rules</ng-template>
               <div class="stepper-content">
-                <app-entry-rules (prevStep)="goBack()"></app-entry-rules>
+                <app-entry-rules (prevStep)="goBack()" #entryRules></app-entry-rules>
               </div>
             </mat-step>
           </mat-vertical-stepper>

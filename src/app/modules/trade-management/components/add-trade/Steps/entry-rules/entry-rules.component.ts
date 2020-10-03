@@ -2,6 +2,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
 import { AddTradeConfirmationPopupComponent } from '../../add-trade-confirmation-popup/add-trade-confirmation-popup.component';
+import { EntryExitRule } from 'src/app/modules/trade-management/models/entry-exit-rule.model';
+import { EntryExitRuleService } from 'src/app/modules/trade-management/services/entry-exit-rule.service';
 
 @Component({
   selector: 'app-entry-rules',
@@ -16,9 +18,12 @@ export class EntryRulesComponent implements OnInit {
   checkbox8:any;
   @Output('prevStep') prevStep = new EventEmitter();
 
+  entryRules: EntryExitRule[] = this.entryExitRuleService.getEntryRules();
+
   constructor(
     private _dialog: MatDialog,
-    private router: Router
+    private router: Router,
+    private entryExitRuleService: EntryExitRuleService
   ) { }
 
   ngOnInit() {

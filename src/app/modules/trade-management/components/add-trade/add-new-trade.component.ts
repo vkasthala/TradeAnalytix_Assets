@@ -9,6 +9,7 @@ import { TradeStrategy } from '../../models/trade-strategy.model';
 import { TradeStrategyService } from '../../services/trade-strategy.service';
 import { TradeDetailsComponent } from './Steps/trade-details/trade-details.component';
 import { TradeThesisComponent } from './Steps/trade-thesis/trade-thesis.component';
+import { EntryRulesComponent } from './Steps/entry-rules/entry-rules.component';
 @Component({
   selector: 'app-add-new-trade',
   templateUrl: './add-new-trade.component.html',
@@ -21,6 +22,7 @@ export class AddNewTradeComponent implements OnInit {
 
   @ViewChild('tradeDetails', { static: false }) private tradeDetails: TradeDetailsComponent;
   @ViewChild('tradeThesis', { static: false }) private tradeThesis: TradeThesisComponent;
+  @ViewChild('entryRules', { static: false }) private entryRules: EntryRulesComponent;
 
   activeStep: boolean;
   stockAdded: boolean;
@@ -96,6 +98,7 @@ export class AddNewTradeComponent implements OnInit {
     tradeStrategy.tradeThesis = this.tradeThesis.tradeThesis;
     tradeStrategy.stockEntry = this.tradeDetails.stockEntry;
     tradeStrategy.stockOptions = this.tradeDetails.stockOptions;
+    tradeStrategy.entryRules = this.entryRules.entryRules;
     return tradeStrategy;
   }
 
