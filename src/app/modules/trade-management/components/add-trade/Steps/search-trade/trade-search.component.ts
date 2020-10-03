@@ -35,6 +35,10 @@ export class TradeSearchComponent implements OnInit {
         });
     }
 
+    clearSelection(){
+        this.tradeItem = null;
+    }
+
     /* GET search terms */
     searchTrade(term: string) {
         this.TradeList = [];

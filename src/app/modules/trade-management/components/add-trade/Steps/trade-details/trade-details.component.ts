@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { NavigationExtras, Router } from '@angular/router';
+import { MatDialog } from '@angular/material';
+import { Router } from '@angular/router';
+import { TradeExecutionDateComponent } from 'src/app/modules/shared/components/modals/trade-execution-date/trade-execution-date.component';
 import { ActionType } from 'src/app/modules/shared/models/trade-management/action-type.enum';
 import { OptionEntry } from 'src/app/modules/shared/models/trade-management/option-entry.model';
 import { OptionType } from 'src/app/modules/shared/models/trade-management/option-type.enum';
@@ -9,13 +11,10 @@ import { StrategyTemplate } from 'src/app/modules/shared/models/trade-management
 import { StrategyType } from 'src/app/modules/shared/models/trade-management/strategy-type.enum';
 import { TradeInputData } from 'src/app/modules/shared/models/trade-management/trade-input-data.model';
 import { UserStockSummary } from 'src/app/modules/shared/models/trade-management/user-stock-summary.model';
-import { StrategyCreateServiceService } from 'src/app/modules/shared/services/strategy-create-service.service';
+import { StrategyCreateService } from 'src/app/modules/shared/services/strategy-create.service';
+import { TradeStrategy } from 'src/app/modules/trade-management/models/trade-strategy.model';
 import { UtilService } from 'src/app/modules/utilities/services/util.service';
 
-import { MatDialog } from '@angular/material';
-import { TradeExecutionDateComponent } from 'src/app/modules/shared/components/modals/trade-execution-date/trade-execution-date.component';
-import { TradeStrategy } from 'src/app/modules/trade-management/models/trade-strategy.model';
-import { TradeThesis } from 'src/app/modules/trade-management/models/trade-thesis.model';
 
 @Component({
   selector: 'app-trade-details',
@@ -47,7 +46,7 @@ export class TradeDetailsComponent implements OnInit {
   selectedStrategy: number = 15;
 
   constructor(private utilService: UtilService,
-    private strategyCreateServiceService: StrategyCreateServiceService,
+    private strategyCreateServiceService: StrategyCreateService,
     private router: Router,
     private _dialog: MatDialog) { }
 

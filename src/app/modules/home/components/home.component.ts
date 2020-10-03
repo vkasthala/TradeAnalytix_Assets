@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
 
 
   get currentNavigation() {
-    console.log('route:', this.currentRoute);
+    //console.log('route:', this.currentRoute);
     switch (this.currentRoute) {
       case 'dashboard': return {breadcrumb : 'DASHBOARD', title: 'DASHBOARD'};
       case 'new-trade': return {breadcrumb : 'ADD NEW TRADE', title: 'ADD NEW TRADE'};

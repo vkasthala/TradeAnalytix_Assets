@@ -1,40 +1,54 @@
-<div class="mat-elevation-z8">
-  <table mat-table [dataSource]="dataSource">
+l̥<div class="mat-elevation-z8">
+  <mat-table [dataSource]="dataSource" matSort >
 
     <!-- Strategy ID Column -->
-    <ng-container matColumnDef="strategyId">
-      <th mat-header-cell *matHeaderCellDef>Strategy ID</th>
-      <td mat-cell *matCellDef="let element"> {{element.strategyId}} </td>
+    <ng-container matColumnDef="id">
+      <mat-header-cell class="strategy-id-cell" *matHeaderCellDef mat-sort-header>Strategy ID</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
     </ng-container>
 
     <!-- Strategy Column -->
     <ng-container matColumnDef="strategy">
-      <th mat-header-cell *matHeaderCellDef>Strategy</th>
-      <td mat-cell *matCellDef="let element"> {{element.strategy}} </td>
+      <mat-header-cell class="strategy-name-cell" *matHeaderCellDef mat-sort-header>Strategy</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.strategy}} </mat-cell>
     </ng-container>
 
     <!-- Stock Column -->
-    <ng-container matColumnDef="stock">
-      <th mat-header-cell *matHeaderCellDef>Stock</th>
-      <td mat-cell *matCellDef="let element"> {{element.stock}} </td>
+    <ng-container matColumnDef="stockName">
+      <mat-header-cell class="stock-name-cell" *matHeaderCellDef mat-sort-header>Stock</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.stockName}} </mat-cell>
     </ng-container>
 
     <!-- Direction Column -->
     <ng-container matColumnDef="direction">
-      <th mat-header-cell *matHeaderCellDef>Direction</th>
-      <td mat-cell *matCellDef="let element"> {{element.direction}} </td>
+      <mat-header-cell class="direction-cell" *matHeaderCellDef mat-sort-header>Direction</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.direction}} </mat-cell>
     </ng-container>
 
     <!-- Status Column -->
     <ng-container matColumnDef="status">
-      <th mat-header-cell *matHeaderCellDef>Status</th>
-      <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+      <mat-header-cell class="status-cell" *matHeaderCellDef mat-sort-header>Status</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.status}} </mat-cell>
     </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
+    <!-- Open Date Column -->
+    <ng-container matColumnDef="openDate">
+      <mat-header-cell class="open-date-cell" *matHeaderCellDef mat-sort-header>Open Date</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.openDate}} </mat-cell>
+    </ng-container>
+
+    <!-- Closed Date Column -->
+    <ng-container matColumnDef="closeDate">
+      <mat-header-cell class="close-date-cell" *matHeaderCellDef mat-sort-header>Close Date</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.closeDate}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
 
   <!-- Angular 8 pagination -->
-<mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>
+  <mat-paginator [pageSize]="20" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true"
+    [length]="dataSource.totalCount">
+  </mat-paginator>
 </div>

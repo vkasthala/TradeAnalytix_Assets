@@ -5,11 +5,13 @@ import { OptionType } from '../models/trade-management/option-type.enum';
 import { StockEntry } from '../models/trade-management/stock-entry.model';
 import { StrategyTemplate } from '../models/trade-management/strategy-template.model';
 import { StrategyType } from '../models/trade-management/strategy-type.enum';
+import { TradeStatus } from '../models/trade-management/trade-status.enum';
+import { TradeDirection } from '../models/trade-management/trade-direction.enum';
 
 @Injectable({
   providedIn: 'root'
 })
-export class StrategyCreateServiceService {
+export class StrategyCreateService {
 
   constructor() { }
 
@@ -20,6 +22,24 @@ export class StrategyCreateServiceService {
         names.push(strategy);
     }
     return names;
+  }
+
+  public getTradeStatuses(): String[] {
+    let statuses: String[] = [];
+    for (let status in TradeStatus) {
+      if (typeof TradeStatus[status] === 'string')
+        statuses.push(status);
+    }
+    return statuses;
+  }
+
+  public getTradeDirections(): String[] {
+    let directions: String[] = [];
+    for (let direction in TradeDirection) {
+      if (typeof TradeDirection[direction] === 'string')
+        directions.push(direction);
+    }
+    return directions;
   }
 
   public getStrategyTemplate(strategyId: Number): StrategyTemplate {

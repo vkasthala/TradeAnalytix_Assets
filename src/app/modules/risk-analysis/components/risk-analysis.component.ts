@@ -8,7 +8,7 @@ import { StockSymbol } from '../../shared/models/trade-management/stock-symbol.m
 import { StrategyType } from '../../shared/models/trade-management/strategy-type.enum';
 import { TradeInputData } from '../../shared/models/trade-management/trade-input-data.model';
 import { UserStockSummary } from '../../shared/models/trade-management/user-stock-summary.model';
-import { StrategyCreateServiceService } from '../../shared/services/strategy-create-service.service';
+import { StrategyCreateService } from '../../shared/services/strategy-create.service';
 import { UserStockStatsService } from '../../shared/services/user-stock-stats.service';
 import { UtilService } from '../../utilities/services/util.service';
 import { OptionResult } from '../models/option-result.model';
@@ -41,7 +41,7 @@ export class RiskAnalysisComponent implements OnInit {
   inputState: TradeInputData;
 
   strategies = StrategyType;
-  strategyTypes: String[] = this.strategyCreateServiceService.getStrategies();
+  strategyTypes: String[] = this.strategyCreateService.getStrategies();
 
   stockEntry: StockEntry = this.createStockEntry();
   stockOptions: OptionEntry[] = [];
@@ -51,7 +51,7 @@ export class RiskAnalysisComponent implements OnInit {
   constructor(private utilService: UtilService,
     private riskAnalysisService: RiskAnalysisService,
     private userStockStatsService: UserStockStatsService,
-    private strategyCreateServiceService: StrategyCreateServiceService,
+    private strategyCreateService: StrategyCreateService,
     private router: Router) {
     this.initState();
   }
@@ -193,7 +193,7 @@ export class RiskAnalysisComponent implements OnInit {
 
   onStrategyTypeChange(strategy: Number) {
     console.log('selected strategy:', strategy);
-    let template: StrategyTemplate = this.strategyCreateServiceService.getStrategyTemplate(strategy);
+    let template: StrategyTemplate = this.strategyCreateService.getStrategyTemplate(strategy);
     if (template) {
       this.stockEntry = template.stockEntry;
       this.stockAdded = template.stockEntry ? true : false;

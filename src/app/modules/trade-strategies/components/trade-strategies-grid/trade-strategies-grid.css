@@ -1,4 +1,4 @@
-table {
+mat-table {
     width: 100%;
 }
 
@@ -16,4 +16,32 @@ th.mat-header-cell {
 
 .mat-row:nth-child(odd){
   background-color: transparent;
+}
+
+.strategy-id-cell{
+  width: 15%;
+}
+
+.strategy-name-cell{
+  width: 15%;
+}
+
+.stock-name-cell{
+  width: 32%;
+}
+
+.direction-cell{
+  width: 10%;
+}
+
+.status-cell{
+  width: 10%;
+}
+
+.open-date-cell{
+  width: 12.5%;
+}
+
+.close-date-cell{
+  width: 12.5%;
 }
