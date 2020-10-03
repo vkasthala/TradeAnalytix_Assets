@@ -13,7 +13,7 @@
             <p>Is this trade already executed in the brokerage platform?</p>
             </div>
             <div class="col-3">
-                <span class="mr-3">Yes <input type="checkbox" /></span>
+                <span class="mr-3">Yes <input type="checkbox" [(ngModel)] = 'data.executed'/></span>
                 <span>No <input type="checkbox" /></span>
             </div>
         </div>
@@ -24,7 +24,7 @@
             <div class="col-3">
                 <div class="trade-date">
                     <div class="datepicker-group">
-                        <input matInput [matDatepicker]="executionDate" (click)="executionDate.open()"  id="executionDate" (dateChange)="addEvent('input', $event)" />
+                        <input matInput [matDatepicker]="executionDate" (click)="executionDate.open()"  id="executionDate" (dateChange)="addEvent('input', $event)" [(ngModel)] = 'data.executionDate' />
                         <mat-datepicker-toggle matSuffix [for]="executionDate"></mat-datepicker-toggle>
                         <mat-datepicker #executionDate></mat-datepicker>
                     </div>
@@ -33,7 +33,7 @@
         </div>
       </div>
       <div class="modal-footer">
-          <button type="button" class="btn btn-save" (click)="closeModal()">SUBMIT</button>
+          <button type="button" class="btn btn-save" [mat-dialog-close]="data">SUBMIT</button>
           <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancel</button>
       </div>
     </div>

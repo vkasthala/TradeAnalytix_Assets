@@ -29,6 +29,9 @@ export class AddNewTradeComponent implements OnInit {
   selectedStock: StockSymbol = new StockSymbol();
   stockSummary: UserStockSummary = new UserStockSummary();
 
+  executed: boolean;
+  executedDate: string;
+
   inputState: TradeInputData;
 
   detailSummaryLoaded: boolean;
@@ -74,9 +77,13 @@ export class AddNewTradeComponent implements OnInit {
 
 
   addTrade($event) {
+    this.executed = $event.executed;
+    this.executedDate = $event.executedDate;
     console.log('add trade...', this.createTradeStrategy());
     this.tradeStrategyService.addTrade(this.createTradeStrategy()).subscribe(result => {
       console.log('Trade strategy successfully created');
+      alert('Trade Strategy successfully created');//TODO Replace with info box
+      this.router.navigateByUrl("/trade-strategies");
     });
   }
 
@@ -84,8 +91,8 @@ export class AddNewTradeComponent implements OnInit {
     let tradeStrategy: TradeStrategy = new TradeStrategy();
     tradeStrategy.stockId = this.selectedStock.id;
     tradeStrategy.strategyTypeId = this.tradeDetails.selectedStrategy;
-    tradeStrategy.executed = true;
-    tradeStrategy.executedDate = '2020-09-25';
+    tradeStrategy.executed = this.executed;
+    tradeStrategy.executedDate = this.executedDate;
     tradeStrategy.tradeThesis = this.tradeThesis.tradeThesis;
     tradeStrategy.stockEntry = this.tradeDetails.stockEntry;
     tradeStrategy.stockOptions = this.tradeDetails.stockOptions;

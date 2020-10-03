@@ -10,9 +10,11 @@ export class TradeExecutionDateComponent implements OnInit {
 
   title: string;
 
-  constructor(
-    public dialogRef: MatDialogRef<TradeExecutionDateComponent>,
-    @Inject(MAT_DIALOG_DATA) data
+  executed: boolean;
+
+  executionDate: string;
+
+  constructor( public dialogRef: MatDialogRef<TradeExecutionDateComponent>, @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.title = data.title;
   }

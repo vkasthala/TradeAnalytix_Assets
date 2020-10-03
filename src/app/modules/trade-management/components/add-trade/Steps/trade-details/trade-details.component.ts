@@ -181,15 +181,22 @@ export class TradeDetailsComponent implements OnInit {
   }
 
   CheckExecutionDate(value) {
+    let dialogData = {
+      title: value,
+      executed: false,
+      executionDate: null
+    };
     const dialogRef = this._dialog.open(TradeExecutionDateComponent, {
       disableClose: true,
       width: 'auto',
-      data: { title: value }
+      data: dialogData
     });
 
     dialogRef.afterClosed().subscribe((res) => {
-      console.log('here...');
+      console.log('here...', res);
       let tradeStrategy: TradeStrategy = new TradeStrategy();
+      tradeStrategy.executed = res.executed;
+      tradeStrategy.executedDate = res.executionDate;
       tradeStrategy.stockEntry = this.stockEntry;
       tradeStrategy.stockOptions = this.stockOptions;
       tradeStrategy.strategyTypeId = this.selectedStrategy;
