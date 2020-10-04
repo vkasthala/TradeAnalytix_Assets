@@ -14,7 +14,7 @@ import { StrategiesGridSort } from '../../models/strategies-grid-sort.model';
   templateUrl: 'trade-strategies-grid.html',
 })
 export class TradeStrategiesGrid implements AfterViewInit, OnInit {
-
+  expandIndex: any;
   displayedColumns = ['id', 'strategy', 'stockName', 'direction', 'status', 'openDate', 'closeDate', 'action'];
   pageSize: number = 20
 
@@ -100,6 +100,12 @@ merge(this.sort.sortChange, this.paginator.page)
     if (this.sort.active) {
       sortRequest.order = this.sort.direction;
     }*/
+  }
+  expandRowOptions(index) {
+    this.expandIndex = index;
+  }
+  closeActionBox() {
+    this.expandIndex = null
   }
 
 }

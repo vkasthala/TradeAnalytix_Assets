@@ -58,8 +58,28 @@ l̥<div class="mat-elevation-z8">
     <!-- Closed Date Column -->
     <ng-container matColumnDef="action">
       <mat-header-cell class="action-cell" *matHeaderCellDef mat-sort-header>Action</mat-header-cell>
-      <mat-cell *matCellDef="let element">
-        <i class="material-icons">more_vert</i>
+      <mat-cell *matCellDef="let element, let i = index" class="action_colum">
+        <i class="material-icons" (click)="expandRowOptions(i)">more_vert</i>
+
+        <div class="trade-det-box"  *ngIf="expandIndex == i">
+          <div class="de-box">
+            <div class="right-con">
+              <a class="box-icon cursor-pointer" (click)="editTrade(item.strategyId)">
+                  <img src="../../../../assets/images/icon/Icon material-edit.png"> <span>Edit</span>
+              </a>
+              <a class="box-icon cursor-pointer" (click)="closeTrade(item.strategyId)">
+                  <img src="../../../../assets/images/icon/Icon material-close.png"> <span>Close</span>
+              </a>
+              <a class="box-icon cursor-pointer" (click)="deleteTrade()">
+                  <img src="../../../../assets/images/icon/Icon material-delete.png"> <span>Delete</span>
+              </a>
+            </div>
+            <a class="close_action_box" (click)="closeActionBox()">
+              <span></span>
+              <img src="../../../../assets/images/icon/Icon ionic-ios-close-circle.png">
+            </a>
+          </div>
+      </div>
       </mat-cell>
     </ng-container>
 
