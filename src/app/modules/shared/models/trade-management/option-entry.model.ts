@@ -3,6 +3,8 @@ import {OptionType} from "./option-type.enum";
 
 export class OptionEntry {
 
+    id: number;
+
     actionType: ActionType;
 
     optionType: OptionType;

@@ -1,9 +1,10 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
 import { AddTradeConfirmationPopupComponent } from '../../add-trade-confirmation-popup/add-trade-confirmation-popup.component';
 import { EntryExitRule } from 'src/app/modules/trade-management/models/entry-exit-rule.model';
 import { EntryExitRuleService } from 'src/app/modules/trade-management/services/entry-exit-rule.service';
+import { TradeInputData } from 'src/app/modules/shared/models/trade-management/trade-input-data.model';
 
 @Component({
   selector: 'app-entry-rules',
@@ -16,7 +17,11 @@ export class EntryRulesComponent implements OnInit {
   checkbox4:any;
   checkbox6:any;
   checkbox8:any;
+
+  @Input("inputState") inputState: TradeInputData;
+  
   @Output('prevStep') prevStep = new EventEmitter();
+
 
   entryRules: EntryExitRule[] = this.entryExitRuleService.getEntryRules();
 
@@ -27,6 +32,13 @@ export class EntryRulesComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+  }
+
+  ngAfterViewInit(): void {
+    console.log('entry rules child view init:', this.inputState);
+    if (this.inputState && this.inputState.entryRules) {
+      this.entryRules = this.inputState.entryRules;
+    }
   }
 
   previous() {

@@ -18,4 +18,8 @@ export class StockSymbolService {
     return this.httpService.get<StockSymbol[]>(this.apiUrl + '/stock-symbols');
   }
 
+  public getStockSymbolById(id: number): Observable<StockSymbol> {
+    return this.httpService.get<StockSymbol>(this.apiUrl + '/stock-symbol/' + id);
+  }
+
 }

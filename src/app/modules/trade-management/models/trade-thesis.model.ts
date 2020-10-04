@@ -1,5 +1,7 @@
 export class TradeThesis {
 
+    id: number;
+
     sourceId: number;
 
     tradeType: string = 'planned';

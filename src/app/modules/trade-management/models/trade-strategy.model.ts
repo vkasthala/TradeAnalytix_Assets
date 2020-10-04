@@ -5,6 +5,8 @@ import { EntryExitRule } from './entry-exit-rule.model';
 
 export class TradeStrategy {
 
+    id: number;
+
     openDate: string;
 
     closeDate: string;
@@ -12,6 +14,8 @@ export class TradeStrategy {
     executed: boolean;
 
     executedDate: string;
+
+    createDateTime: string;
 
     stockId: number;
 

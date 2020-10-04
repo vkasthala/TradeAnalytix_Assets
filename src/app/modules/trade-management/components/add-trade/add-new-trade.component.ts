@@ -24,6 +24,8 @@ export class AddNewTradeComponent implements OnInit {
   @ViewChild('tradeThesis', { static: false }) private tradeThesis: TradeThesisComponent;
   @ViewChild('entryRules', { static: false }) private entryRules: EntryRulesComponent;
 
+  editTrade = false;
+
   activeStep: boolean;
   stockAdded: boolean;
   currentState: number = 1;
@@ -31,14 +33,19 @@ export class AddNewTradeComponent implements OnInit {
   selectedStock: StockSymbol = new StockSymbol();
   stockSummary: UserStockSummary = new UserStockSummary();
 
-  executed: boolean;
+  id: number;
+  
+  openDate: string;
+  closeDate: string;
+  createDateTime: string;
   executedDate: string;
+  executed: boolean;
 
   inputState: TradeInputData;
 
   detailSummaryLoaded: boolean;
 
-  constructor(private changeRef: ChangeDetectorRef,
+  constructor(
     private userStockStatsService: UserStockStatsService,
     private tradeStrategyService: TradeStrategyService,
     private router: Router) {
@@ -81,16 +88,30 @@ export class AddNewTradeComponent implements OnInit {
   addTrade($event) {
     this.executed = $event.executed;
     this.executedDate = $event.executedDate;
-    console.log('add trade...', this.createTradeStrategy());
-    this.tradeStrategyService.addTrade(this.createTradeStrategy()).subscribe(result => {
-      console.log('Trade strategy successfully created');
-      alert('Trade Strategy successfully created');//TODO Replace with info box
+    if (this.editTrade) {
+      this.editTradeStrategy();
+    } else {
+      console.log('add trade...', this.createTradeStrategy());
+      this.tradeStrategyService.addTrade(this.createTradeStrategy()).subscribe(result => {
+        console.log('Trade strategy successfully created');
+        alert('Trade Strategy successfully created');//TODO Replace with info box
+        this.router.navigateByUrl("/trade-strategies");
+      });
+    }
+  }
+
+  editTradeStrategy() {
+    console.log('edit trade...', this.createTradeStrategy());
+    this.tradeStrategyService.editTrade(this.createTradeStrategy()).subscribe(result => {
+      console.log('Trade strategy successfully updated');
+      alert('Trade Strategy successfully updated');//TODO Replace with info box
       this.router.navigateByUrl("/trade-strategies");
     });
   }
 
   createTradeStrategy(): TradeStrategy {
     let tradeStrategy: TradeStrategy = new TradeStrategy();
+    tradeStrategy.id = this.id;
     tradeStrategy.stockId = this.selectedStock.id;
     tradeStrategy.strategyTypeId = this.tradeDetails.selectedStrategy;
     tradeStrategy.executed = this.executed;
@@ -99,6 +120,9 @@ export class AddNewTradeComponent implements OnInit {
     tradeStrategy.stockEntry = this.tradeDetails.stockEntry;
     tradeStrategy.stockOptions = this.tradeDetails.stockOptions;
     tradeStrategy.entryRules = this.entryRules.entryRules;
+    tradeStrategy.openDate = this.openDate;
+    tradeStrategy.closeDate = this.closeDate;
+    tradeStrategy.createDateTime = this.createDateTime;
     return tradeStrategy;
   }
 
@@ -143,6 +167,12 @@ export class AddNewTradeComponent implements OnInit {
       console.log('Setting state:', this.inputState);
       this.selectedStock = this.inputState.selectedStock;
       this.stockSummary = this.inputState.stockSummary;
+      this.id = this.inputState.id;
+      this.executed = this.inputState.executed;
+      this.executedDate = this.inputState.executionDate;
+      this.openDate = this.inputState.openDate;
+      this.closeDate = this.inputState.closeDate;
+      this.createDateTime = this.inputState.createDateTime;
     }
   }
 
@@ -150,6 +180,9 @@ export class AddNewTradeComponent implements OnInit {
     let extras: NavigationExtras = {};
     if (this.tradeThesis && this.tradeThesis.tradeThesis) {
       $event.tradeThesis = this.tradeThesis.tradeThesis;
+    }
+    if (this.entryRules && this.entryRules.entryRules) {
+      $event.entryRules = this.entryRules.entryRules;
     }
     extras.state = $event;
     this.router.navigate(['/risk-analysis'], extras);

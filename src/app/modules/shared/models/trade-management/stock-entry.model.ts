@@ -2,6 +2,8 @@ import {ActionType} from "./action-type.enum";
 
 export class StockEntry {
 
+    id: number;
+
     actionType: ActionType;
     
     price: number;

@@ -18,4 +18,13 @@ export class TradeStrategyService {
     return this.httpService.post<TradeStrategy, void>(url, tradeStrategy);
   }
 
+  public editTrade(tradeStrategy: TradeStrategy): Observable<void> {
+    let url = this.apiUrl + '/trade-strategy/update';
+    return this.httpService.post<TradeStrategy, void>(url, tradeStrategy);
+  }
+
+  public getTradeStrategyDetails(id: number): Observable<TradeStrategy> {
+    return this.httpService.get<TradeStrategy>(this.apiUrl + '/trade-strategy/' + id);
+  }
+
 }
