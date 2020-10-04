@@ -61,9 +61,8 @@ export class TradeDetailsComponent implements OnInit {
       this.stockEntry = this.inputState.stockEntry;
       this.stockOptions = this.inputState.stockOptions;
       this.selectedStrategy = this.inputState.strategyType;
-      if (this.stockEntry) {
-        this.stockAdded = true;
-      }
+      this.stockEntry = this.inputState.stockEntry;
+      this.stockAdded = this.inputState.stockEntry && this.inputState.stockEntry.actionType && this.inputState.stockEntry.quantity > 0;
     }
   }
 
@@ -76,6 +75,7 @@ export class TradeDetailsComponent implements OnInit {
   }
 
   addStock() {
+    this.stockEntry = this.createStockEntry();
     this.stockAdded = true;
   }
 
