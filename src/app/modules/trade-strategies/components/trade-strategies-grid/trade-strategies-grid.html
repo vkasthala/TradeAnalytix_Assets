@@ -22,13 +22,25 @@ l̥<div class="mat-elevation-z8">
     <!-- Direction Column -->
     <ng-container matColumnDef="direction">
       <mat-header-cell class="direction-cell" *matHeaderCellDef mat-sort-header>Direction</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.direction}} </mat-cell>
+      <mat-cell *matCellDef="let element">
+        <span class="text-success direction_arrow" *ngIf="element.direction == 'Long'"><mat-icon>arrow_upward</mat-icon></span>
+        <span class="text-danger direction_arrow" *ngIf="element.direction == 'Neutral'"><mat-icon>arrow_downward</mat-icon></span>
+          {{element.direction}}
+      </mat-cell>
     </ng-container>
 
     <!-- Status Column -->
     <ng-container matColumnDef="status">
       <mat-header-cell class="status-cell" *matHeaderCellDef mat-sort-header>Status</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.status}} </mat-cell>
+      <mat-cell *matCellDef="let element" 
+      [ngClass]="{
+        'text-primary': element.status == 'Draft',
+        'text-warning': element.status == 'Open',
+        'text-danger': element.status == 'Closed',
+        'text-secondary': element.status == 'Expired'
+
+    }"
+      > {{element.status}} </mat-cell>
     </ng-container>
 
     <!-- Open Date Column -->

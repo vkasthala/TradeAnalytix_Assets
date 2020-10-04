@@ -1,6 +1,6 @@
 
 <div id="search-component" class="auto-search">
-    <input class="form-control" #searchBox id="search-box" (input)="search(searchBox.value)" [(ngModel)]="tradeItem"  />
+    <input class="form-control" #searchBox id="search-box" (input)="search(searchBox.value)" [(ngModel)]="tradeItem" placeholder="Symbol or Stock Name"  />
     <div *ngIf="TradeList">
         <ul [className]="serarchResult ? 'search-result' : 'm-0'" [ngStyle]="{'max-height':this.TradeList.length<5 ? 'auto' : '' }">
             <li *ngFor="let trade of TradeList; let i = index;" (click)="selectedTrade(trade)">
