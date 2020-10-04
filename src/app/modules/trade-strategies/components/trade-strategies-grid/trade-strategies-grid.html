@@ -1,5 +1,5 @@
 l̥<div class="mat-elevation-z8">
-  <mat-table [dataSource]="dataSource" matSort >
+  <mat-table [dataSource]="dataSource" matSort>
 
     <!-- Strategy ID Column -->
     <ng-container matColumnDef="id">
@@ -41,6 +41,14 @@ l̥<div class="mat-elevation-z8">
     <ng-container matColumnDef="closeDate">
       <mat-header-cell class="close-date-cell" *matHeaderCellDef mat-sort-header>Close Date</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.closeDate}} </mat-cell>
+    </ng-container>
+
+    <!-- Closed Date Column -->
+    <ng-container matColumnDef="action">
+      <mat-header-cell class="action-cell" *matHeaderCellDef mat-sort-header>Action</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <i class="material-icons">more_vert</i>
+      </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

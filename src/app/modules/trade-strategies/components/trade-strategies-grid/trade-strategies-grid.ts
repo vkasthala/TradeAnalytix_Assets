@@ -15,7 +15,7 @@ import { StrategiesGridSort } from '../../models/strategies-grid-sort.model';
 })
 export class TradeStrategiesGrid implements AfterViewInit, OnInit {
 
-  displayedColumns = ['id', 'strategy', 'stockName', 'direction', 'status', 'openDate', 'closeDate'];
+  displayedColumns = ['id', 'strategy', 'stockName', 'direction', 'status', 'openDate', 'closeDate', 'action'];
   pageSize: number = 20
 
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
