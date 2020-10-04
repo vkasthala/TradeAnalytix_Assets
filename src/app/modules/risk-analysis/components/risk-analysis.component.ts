@@ -43,7 +43,7 @@ export class RiskAnalysisComponent implements OnInit {
   strategies = StrategyType;
   strategyTypes: String[] = this.strategyCreateService.getStrategies();
 
-  stockEntry: StockEntry = this.createStockEntry();
+  stockEntry: StockEntry;
   stockOptions: OptionEntry[] = [];
 
   riskAnalysisResults: RiskAnalysisRecord[] = [];
@@ -57,7 +57,7 @@ export class RiskAnalysisComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.stockEntry = this.createStockEntry();
   }
 
   ngAfterViewInit(): void {
@@ -72,7 +72,7 @@ export class RiskAnalysisComponent implements OnInit {
     this.stockAdded = true;
     this.performRiskAnalysis = false;
     this.displayRiskAnalysis = false;
-    this.createStockEntry();
+    this.stockEntry = this.createStockEntry();
   }
 
   addOption() {
@@ -220,9 +220,9 @@ export class RiskAnalysisComponent implements OnInit {
         console.log('stockSummary:', state.stockSummary);
         if (extras.state.stockEntry) {
           console.log('stock:', state.stockEntry);
-          this.stockAdded = true;
           this.stockEntry = state.stockEntry;
         }
+        this.stockAdded = extras.state.stockEntry && extras.state.stockEntry.actionType && extras.state.stockEntry.quantity;
         if (extras.state.stockOptions) {
           console.log('stockOptions:', state.stockOptions);
           this.stockOptions = state.stockOptions;
