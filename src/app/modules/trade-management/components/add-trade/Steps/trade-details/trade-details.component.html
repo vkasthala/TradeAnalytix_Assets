@@ -124,14 +124,6 @@
       </div>
     
     <!-- next-button -->
-    <div class="order-btn text-center" *ngIf="
-        !promptPerformRiskAnalysis &&
-        !performRiskAnalysis &&
-        !displayRiskAnalysis
-        && (stockAdded || stockOptions.length > 0)
-      ">
-      <button type="button" class="btn btn-next mr-3" (click)="CheckExecutionDate('Confirm Trade Execution Date')">ADD TRADE</button>
-      <a class="text-primary cursor" (click)="next()">Go to Trade Thesis</a>
-    </div>
+    
 </ng-container>
 </div>

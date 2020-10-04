@@ -10,6 +10,7 @@ export class TradeExecutionDateComponent implements OnInit {
 
   title: string;
 
+  confirmDateExcute: boolean=false;
   executed: boolean;
 
   executionDate: string;
@@ -25,6 +26,9 @@ export class TradeExecutionDateComponent implements OnInit {
   closeModal() {
     this.dialogRef.close();
   }
-
+  confirmEvent(e){
+    console.log(e.target.value);
+    this.executed = e.target.value;
+  }
 }
 
