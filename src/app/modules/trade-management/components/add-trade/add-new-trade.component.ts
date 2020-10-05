@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
-import { MatStepper } from '@angular/material';
+import { MatStepper, MatDialog } from '@angular/material';
 import { NavigationExtras, Router } from '@angular/router';
 import { StockSymbol } from 'src/app/modules/shared/models/trade-management/stock-symbol.model';
 import { TradeInputData } from 'src/app/modules/shared/models/trade-management/trade-input-data.model';
@@ -10,6 +10,7 @@ import { TradeStrategyService } from '../../services/trade-strategy.service';
 import { TradeDetailsComponent } from './Steps/trade-details/trade-details.component';
 import { TradeThesisComponent } from './Steps/trade-thesis/trade-thesis.component';
 import { EntryRulesComponent } from './Steps/entry-rules/entry-rules.component';
+import { TradeExecutionDateComponent } from 'src/app/modules/shared/components/modals/trade-execution-date/trade-execution-date.component';
 @Component({
   selector: 'app-add-new-trade',
   templateUrl: './add-new-trade.component.html',
@@ -33,13 +34,7 @@ export class AddNewTradeComponent implements OnInit {
   selectedStock: StockSymbol = new StockSymbol();
   stockSummary: UserStockSummary = new UserStockSummary();
 
-  id: number;
-  
-  openDate: string;
-  closeDate: string;
-  createDateTime: string;
-  executedDate: string;
-  executed: boolean;
+  tradeStrategy: TradeStrategy = new TradeStrategy();
 
   inputState: TradeInputData;
 
@@ -48,7 +43,8 @@ export class AddNewTradeComponent implements OnInit {
   constructor(
     private userStockStatsService: UserStockStatsService,
     private tradeStrategyService: TradeStrategyService,
-    private router: Router) {
+    private router: Router,
+    private _dialog: MatDialog) {
     this.initState();
   }
 
@@ -85,14 +81,13 @@ export class AddNewTradeComponent implements OnInit {
   }
 
 
-  addTrade($event) {
-    this.executed = $event.executed;
-    this.executedDate = $event.executedDate;
+  addTrade() {
+    this.updateTradeStrategyProps();
     if (this.editTrade) {
       this.editTradeStrategy();
     } else {
-      console.log('add trade...', this.createTradeStrategy());
-      this.tradeStrategyService.addTrade(this.createTradeStrategy()).subscribe(result => {
+      console.log('add trade...', this.tradeStrategy);
+      this.tradeStrategyService.addTrade(this.tradeStrategy).subscribe(result => {
         console.log('Trade strategy successfully created');
         alert('Trade Strategy successfully created');//TODO Replace with info box
         this.router.navigateByUrl("/trade-strategies");
@@ -101,29 +96,27 @@ export class AddNewTradeComponent implements OnInit {
   }
 
   editTradeStrategy() {
-    console.log('edit trade...', this.createTradeStrategy());
-    this.tradeStrategyService.editTrade(this.createTradeStrategy()).subscribe(result => {
+    console.log('edit trade...', this.tradeStrategy);
+    this.tradeStrategyService.editTrade(this.tradeStrategy).subscribe(result => {
       console.log('Trade strategy successfully updated');
       alert('Trade Strategy successfully updated');//TODO Replace with info box
       this.router.navigateByUrl("/trade-strategies");
     });
   }
 
-  createTradeStrategy(): TradeStrategy {
-    let tradeStrategy: TradeStrategy = new TradeStrategy();
-    tradeStrategy.id = this.id;
-    tradeStrategy.stockId = this.selectedStock.id;
-    tradeStrategy.strategyTypeId = this.tradeDetails.selectedStrategy;
-    tradeStrategy.executed = this.executed;
-    tradeStrategy.executedDate = this.executedDate;
-    tradeStrategy.tradeThesis = this.tradeThesis.tradeThesis;
-    tradeStrategy.stockEntry = this.tradeDetails.stockEntry;
-    tradeStrategy.stockOptions = this.tradeDetails.stockOptions;
-    tradeStrategy.entryRules = this.entryRules.entryRules;
-    tradeStrategy.openDate = this.openDate;
-    tradeStrategy.closeDate = this.closeDate;
-    tradeStrategy.createDateTime = this.createDateTime;
-    return tradeStrategy;
+  updateTradeStrategyProps() {
+    this.tradeStrategy.stockId = this.selectedStock.id;
+    this.tradeStrategy.strategyTypeId = this.tradeDetails.selectedStrategy;
+    let tradeThesisArray = [];
+    tradeThesisArray.push(this.tradeThesis.tradeThesis);
+    this.tradeStrategy.tradeThesis = tradeThesisArray;
+    let stockEntries = [];
+    if (this.tradeDetails.stockEntry) {
+      stockEntries.push(this.tradeDetails.stockEntry);
+    }
+    this.tradeStrategy.stockEntry = stockEntries;
+    this.tradeStrategy.stockOptions = this.tradeDetails.stockOptions;
+    this.tradeStrategy.entryRules = this.entryRules.entryRules;
   }
 
   goBack(moveTwoSteps?, mobileView?) {
@@ -167,25 +160,39 @@ export class AddNewTradeComponent implements OnInit {
       console.log('Setting state:', this.inputState);
       this.selectedStock = this.inputState.selectedStock;
       this.stockSummary = this.inputState.stockSummary;
-      this.id = this.inputState.id;
-      this.executed = this.inputState.executed;
-      this.executedDate = this.inputState.executionDate;
-      this.openDate = this.inputState.openDate;
-      this.closeDate = this.inputState.closeDate;
-      this.createDateTime = this.inputState.createDateTime;
+      this.tradeStrategy = this.inputState.tradeStrategy;
     }
   }
 
-  navigaeToRiskAnalysis($event: TradeInputData) {
+  navigaeToRiskAnalysis() {
     let extras: NavigationExtras = {};
-    if (this.tradeThesis && this.tradeThesis.tradeThesis) {
-      $event.tradeThesis = this.tradeThesis.tradeThesis;
-    }
-    if (this.entryRules && this.entryRules.entryRules) {
-      $event.entryRules = this.entryRules.entryRules;
-    }
-    extras.state = $event;
+    this.updateTradeStrategyProps();
+    let inputData: TradeInputData = new TradeInputData();
+    inputData.selectedStock = this.selectedStock;
+    inputData.tradeStrategy = this.tradeStrategy;
+    inputData.stockSummary = this.stockSummary;
+    extras.state = inputData;
     this.router.navigate(['/risk-analysis'], extras);
+  }
+
+  CheckExecutionDate(value) {
+    let dialogData = {
+      title: value,
+      executed: this.tradeStrategy.executed,
+      executionDate: this.tradeStrategy.executedDate
+    };
+    const dialogRef = this._dialog.open(TradeExecutionDateComponent, {
+      disableClose: true,
+      width: 'auto',
+      data: dialogData
+    });
+
+    dialogRef.afterClosed().subscribe((res) => {
+      console.log('here...', res);
+      this.tradeStrategy.executed = res.executed;
+      this.tradeStrategy.executedDate = res.executionDate;
+      this.addTrade();
+    });
   }
 
 }

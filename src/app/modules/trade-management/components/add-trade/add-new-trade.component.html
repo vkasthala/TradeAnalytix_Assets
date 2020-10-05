@@ -23,7 +23,7 @@
               <ng-template matStepLabel>Trade Details</ng-template>
               <div class="stepper-content">
                 <app-trade-details (nextStep)="goForward()" (activateRisk)="activeStep = true"
-                  (addTradeEvent)="addTrade($event)" (navigateRiskAnalysisEvent)="navigaeToRiskAnalysis($event)"
+                  (addTradeEvent)="addTrade($event)" (navigateRiskAnalysisEvent)="navigaeToRiskAnalysis()"
                   [stockSummary]="stockSummary" [selectedStock]="selectedStock" [inputState]="inputState" #tradeDetails>
                 </app-trade-details>
               </div>
@@ -46,10 +46,10 @@
           </mat-vertical-stepper>
           <div class="text-center border-top py-2">
             <button type="button" class="btn btn-next mr-3" *ngIf = "!editTrade"
-              (click)="tradeDetails.CheckExecutionDate('Confirm Trade Execution Date')">ADD TRADE</button>
+              (click)="CheckExecutionDate('Confirm Trade Execution Date')">ADD TRADE</button>
             
             <button type="button" class="btn btn-next mr-3" *ngIf = "editTrade"
-              (click)="tradeDetails.CheckExecutionDate('Confirm Trade Execution Date')">UPDATE TRADE</button>
+              (click)="CheckExecutionDate('Confirm Trade Execution Date')">UPDATE TRADE</button>
 
             <span class="order-btn text-center"
               *ngIf="(tradeDetails.stockAdded || tradeDetails.stockOptions.length > 0) && (stepper.selectedIndex == 0)">

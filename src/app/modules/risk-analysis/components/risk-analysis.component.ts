@@ -17,6 +17,7 @@ import { RiskAnalysisRequest } from '../models/risk-analysis-request.model';
 import { StockResult } from '../models/stock-result.model';
 import { RiskAnalysisService } from '../services/risk-analysis.service';
 import { StrategyTemplate } from '../../shared/models/trade-management/strategy-template.model';
+import { TradeStrategy } from '../../trade-management/models/trade-strategy.model';
 
 @Component({
   selector: 'app-risk-analysis',
@@ -53,11 +54,11 @@ export class RiskAnalysisComponent implements OnInit {
     private userStockStatsService: UserStockStatsService,
     private strategyCreateService: StrategyCreateService,
     private router: Router) {
-    this.initState();
+      this.stockEntry = this.createStockEntry();
+      this.initState();
   }
 
   ngOnInit() {
-    this.stockEntry = this.createStockEntry();
   }
 
   ngAfterViewInit(): void {
@@ -175,17 +176,26 @@ export class RiskAnalysisComponent implements OnInit {
     let input: TradeInputData;
     if (this.inputState) {
       input = this.inputState;
-      input.stockEntry = this.stockEntry;
-      input.stockOptions = this.stockOptions;
-      input.strategyType = this.selectedStrategy;
+      let stockEntries = [];
+      if (this.stockEntry) {
+        stockEntries.push(this.stockEntry);
+      }
+      input.tradeStrategy.stockEntry = stockEntries;
+      input.tradeStrategy.stockOptions = this.stockOptions;
+      input.tradeStrategy.strategyTypeId = this.selectedStrategy;
     } else {
-      input = {
-        stockEntry: this.stockEntry,
-        stockOptions: this.stockOptions,
-        stockSummary: this.stockSummary,
-        selectedStock: this.selectedStock,
-        strategyType: this.selectedStrategy
-      };
+      input = new TradeInputData();
+      let tradeStrategy: TradeStrategy = new TradeStrategy();
+      let stockEntries = [];
+      if (this.stockEntry) {
+        stockEntries.push(this.stockEntry);
+      }
+      tradeStrategy.stockEntry = stockEntries;
+      tradeStrategy.stockOptions = this.stockOptions;
+      tradeStrategy.strategyTypeId = this.selectedStrategy;
+      input.tradeStrategy = tradeStrategy;
+      input.selectedStock = this.selectedStock;
+      input.stockSummary = this.stockSummary;
     }
     extras.state = input;
     this.router.navigate(['/new-trade'], extras);
@@ -218,17 +228,17 @@ export class RiskAnalysisComponent implements OnInit {
         this.currentState++;
         console.log('stockSummary:', state.selectedStock);
         console.log('stockSummary:', state.stockSummary);
-        if (extras.state.stockEntry) {
-          console.log('stock:', state.stockEntry);
-          this.stockEntry = state.stockEntry;
+        if (state.tradeStrategy && state.tradeStrategy.stockEntry && state.tradeStrategy.stockEntry.length > 0) {
+          console.log('stock:', state.tradeStrategy.stockEntry);
+          this.stockEntry = state.tradeStrategy.stockEntry[0];
+          this.stockAdded = state.tradeStrategy.stockEntry[0].actionType && state.tradeStrategy.stockEntry[0].quantity > 0;
         }
-        this.stockAdded = extras.state.stockEntry && extras.state.stockEntry.actionType && extras.state.stockEntry.quantity;
-        if (extras.state.stockOptions) {
-          console.log('stockOptions:', state.stockOptions);
-          this.stockOptions = state.stockOptions;
+        if (state.tradeStrategy && state.tradeStrategy.stockOptions) {
+          console.log('stockOptions:', state.tradeStrategy.stockOptions);
+          this.stockOptions = state.tradeStrategy.stockOptions;
         }
-        if (extras.state.strategyType) {
-          this.selectedStrategy = state.strategyType;
+        if (state.tradeStrategy && state.tradeStrategy.strategyTypeId) {
+          this.selectedStrategy = state.tradeStrategy.strategyTypeId;
         }
       }
     }

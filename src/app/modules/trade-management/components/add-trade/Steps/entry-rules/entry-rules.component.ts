@@ -13,13 +13,13 @@ import { TradeInputData } from 'src/app/modules/shared/models/trade-management/t
 })
 export class EntryRulesComponent implements OnInit {
 
-  checkbox2:any;
-  checkbox4:any;
-  checkbox6:any;
-  checkbox8:any;
+  checkbox2: any;
+  checkbox4: any;
+  checkbox6: any;
+  checkbox8: any;
 
   @Input("inputState") inputState: TradeInputData;
-  
+
   @Output('prevStep') prevStep = new EventEmitter();
 
 
@@ -36,8 +36,8 @@ export class EntryRulesComponent implements OnInit {
 
   ngAfterViewInit(): void {
     console.log('entry rules child view init:', this.inputState);
-    if (this.inputState && this.inputState.entryRules) {
-      this.entryRules = this.inputState.entryRules;
+    if (this.inputState && this.inputState.tradeStrategy.entryRules) {
+      this.entryRules = this.inputState.tradeStrategy.entryRules;
     }
   }
 

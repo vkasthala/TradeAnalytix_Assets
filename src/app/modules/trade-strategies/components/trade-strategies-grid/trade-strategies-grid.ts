@@ -121,19 +121,7 @@ merge(this.sort.sortChange, this.paginator.page)
       let input: TradeInputData = new TradeInputData();
       input.selectedStock = results[0];
       input.stockSummary = results[1];
-      input.id = results[2].id;
-      input.executionDate = results[2].executedDate;
-      input.executed = results[2].executed;
-      input.stockEntry = results[2].stockEntry;
-      input.stockOptions = results[2].stockOptions;
-      input.strategyType = results[2].strategyTypeId;
-      input.tradeThesis = results[2].tradeThesis;
-      if (results[2].entryRules && results[2].entryRules.length > 0) {
-        input.entryRules = results[2].entryRules;
-      }
-      input.openDate = results[2].openDate;
-      input.closeDate = results[2].closeDate;
-      input.createDateTime = results[2].createDateTime;
+      input.tradeStrategy = results[2];
       console.log('edit trade: ', input);
       extras.state = input;
       this.router.navigate(["/edit-trade/" + rowModel.id], extras);
@@ -146,6 +134,9 @@ merge(this.sort.sortChange, this.paginator.page)
 
 
   deleteTrade(rowModel: TradeStrategyGridRow) {
+    this.tradeStrategyService.deleteTradeStrategy(rowModel.id).subscribe(() => {
+      console.log('Trade strategy deleted..', rowModel.id);
+    });
     console.log('delete..', rowModel);
   }
 

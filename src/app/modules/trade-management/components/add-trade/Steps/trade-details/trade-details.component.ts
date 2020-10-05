@@ -58,11 +58,10 @@ export class TradeDetailsComponent implements OnInit {
   ngAfterViewInit(): void {
     console.log('child view init:', this.inputState);
     if (this.inputState) {
-      this.stockEntry = this.inputState.stockEntry;
-      this.stockOptions = this.inputState.stockOptions;
-      this.selectedStrategy = this.inputState.strategyType;
-      this.stockEntry = this.inputState.stockEntry;
-      this.stockAdded = this.inputState.stockEntry && this.inputState.stockEntry.actionType && this.inputState.stockEntry.quantity > 0;
+      this.stockOptions = this.inputState.tradeStrategy.stockOptions;
+      this.selectedStrategy = this.inputState.tradeStrategy.strategyTypeId;
+      this.stockEntry = this.inputState.tradeStrategy.stockEntry && this.inputState.tradeStrategy.stockEntry.length > 0 ? this.inputState.tradeStrategy.stockEntry[0] : undefined;
+      this.stockAdded = this.inputState.tradeStrategy.stockEntry && this.inputState.tradeStrategy.stockEntry.length > 0 && this.inputState.tradeStrategy.stockEntry[0].actionType && this.inputState.tradeStrategy.stockEntry[0].quantity > 0;
     }
   }
 
@@ -109,14 +108,7 @@ export class TradeDetailsComponent implements OnInit {
   }
 
   navigateToRiskAnalysis(): void {
-    let input: TradeInputData = {
-      stockEntry: this.stockEntry,
-      stockOptions: this.stockOptions,
-      stockSummary: this.stockSummary,
-      selectedStock: this.selectedStock,
-      strategyType: this.selectedStrategy
-    };
-    this.navigateRiskAnalysisEvent.emit(input);
+    this.navigateRiskAnalysisEvent.emit();
   }
 
   createStockOptionEntry(): OptionEntry {
@@ -178,30 +170,6 @@ export class TradeDetailsComponent implements OnInit {
         }
       }
     }
-  }
-
-  CheckExecutionDate(value) {
-    let dialogData = {
-      title: value,
-      executed: false,
-      executionDate: null
-    };
-    const dialogRef = this._dialog.open(TradeExecutionDateComponent, {
-      disableClose: true,
-      width: 'auto',
-      data: dialogData
-    });
-
-    dialogRef.afterClosed().subscribe((res) => {
-      console.log('here...', res);
-      let tradeStrategy: TradeStrategy = new TradeStrategy();
-      tradeStrategy.executed = res.executed;
-      tradeStrategy.executedDate = res.executionDate;
-      tradeStrategy.stockEntry = this.stockEntry;
-      tradeStrategy.stockOptions = this.stockOptions;
-      tradeStrategy.strategyTypeId = this.selectedStrategy;
-      this.addTradeEvent.emit(tradeStrategy);
-    });
   }
 
 }

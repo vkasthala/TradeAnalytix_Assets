@@ -23,9 +23,9 @@ export class TradeStrategy {
 
     strategyTypeId: number;
 
-    tradeThesis: TradeThesis;
+    tradeThesis: TradeThesis[];
 
-    stockEntry: StockEntry;
+    stockEntry: StockEntry[];
 
     stockOptions: OptionEntry[];
 

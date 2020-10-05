@@ -3,6 +3,7 @@ import { AddNewTradeComponent } from '../add-trade/add-new-trade.component';
 import { UserStockStatsService } from 'src/app/modules/shared/services/user-stock-stats.service';
 import { TradeStrategyService } from '../../services/trade-strategy.service';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-edit-trade',
@@ -14,13 +15,14 @@ export class EditTradeComponent extends AddNewTradeComponent implements OnInit {
   constructor(
     userStockStatsService: UserStockStatsService,
     tradeStrategyService: TradeStrategyService,
-    router: Router) {
-    super(userStockStatsService, tradeStrategyService, router);
+    router: Router,
+    _dialog: MatDialog) {
+    super(userStockStatsService, tradeStrategyService, router, _dialog);
     super.editTrade = true;
   }
 
   ngOnInit() {
-     super.setState();
+    super.setState();
   }
 
 

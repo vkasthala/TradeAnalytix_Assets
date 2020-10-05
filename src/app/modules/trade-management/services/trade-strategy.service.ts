@@ -27,4 +27,8 @@ export class TradeStrategyService {
     return this.httpService.get<TradeStrategy>(this.apiUrl + '/trade-strategy/' + id);
   }
 
+  public deleteTradeStrategy(id: number): Observable<void> {
+    return this.httpService.delete(this.apiUrl + '/trade-strategy/' + id);
+  }
+
 }

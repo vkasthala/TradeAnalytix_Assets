@@ -30,6 +30,10 @@ export class HttpService {
     });
   }
 
+  public delete(url: string): Observable<void> {
+    return this.http.delete<void>(url);
+  }
+
   private createHttpParms(requestParams: Map<string, string>) {
     let httpParams: HttpParams = new HttpParams();
     let paramText: string = '';
