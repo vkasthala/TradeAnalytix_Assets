@@ -57,8 +57,15 @@
           <h6>{{stockEntry.quantity && stockEntry.price ? (stockEntry.quantity * stockEntry.price).toFixed(2) : 0}}
           </h6>
         </div>
+        
+        <div *ngIf="editTrade" class="top-heading mr-1" (click)="addToPosition()">
+          <mat-icon>add_circle</mat-icon>
+        </div>
+        <div class="top-heading mr-1" (click)="reduceToPosition()">
+          <mat-icon>remove_circle</mat-icon>
+        </div>
         <div class="top-heading" (click)="deleteStock()">
-          <img src="../../../../../assets/images/icon/delete.png" alt="" class="img-fluid">
+          <mat-icon>delete</mat-icon>
         </div>
       </div>
       <ng-container>
@@ -112,8 +119,14 @@
               {{stockOptions[index].contracts && stockOptions[index].price ? (stockOptions[index].contracts * stockOptions[index].price * 100).toFixed(2) : 0}}
             </h6>
           </div>
-          <div class="top-heading cursor p-0" (click)="deleteStockOption(index)">
-            <img src="../../../../../assets/images/icon/delete.png" alt="" class="img-fluid">
+          <div *ngIf="editTrade" class="top-heading p-0 mr-1" (click)="addToStockPosition(index)">
+            <mat-icon>add_circle</mat-icon>
+          </div>
+          <div class="top-heading p-0 mr-1" (click)="reduceToStockOption(index)">
+            <mat-icon>remove_circle</mat-icon>
+          </div>
+          <div class="top-heading p-0" (click)="deleteStockOption(index)">
+            <mat-icon>delete</mat-icon>
           </div>
         </div>
       </ng-container>

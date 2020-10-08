@@ -39,10 +39,10 @@ import { TradePlansComponent } from '../trade-plan/components/trade-plans.compon
 import { ProfileComponent } from '../user-profile/components/profile.component';
 import { RiskAnalysisComponent } from '../risk-analysis/components/risk-analysis.component';
 import { EditTradeDetailsComponent } from '../trade-management/components/edit-trade/edit-trade-details/edit-trade-details.component';
-import { AddToPositionPopupComponent } from '../trade-management/components/edit-trade/add-to-position-popup/add-to-position-popup.component';
-import { AddToStockPositionPopupComponent } from '../trade-management/components/edit-trade/add-to-stock-position-popup/add-to-stock-position-popup.component';
-import { ReduceToPositionPopupComponent } from '../trade-management/components/edit-trade/reduce-to-position-popup/reduce-to-position-popup.component';
-import { ReduceToStockPositionPopupComponent } from '../trade-management/components/edit-trade/reduce-to-stock-position-popup/reduce-to-stock-position-popup.component';
+import { AddToPositionComponent } from '../shared/components/modals/add-to-position/add-to-position.component';
+import { AddToStockPositionComponent } from '../shared/components/modals/add-to-stock-position/add-to-stock-position.component';
+import { ReduceToPositionComponent } from '../shared/components/modals/reduce-to-position/reduce-to-position.component';
+import { ReduceToStockPositionComponent } from '../shared/components/modals/reduce-to-stock-position/reduce-to-stock-position.component';
 import { CloseTradeDetailsComponent } from '../trade-management/components/close-trade/close-trade-details/close-trade-details.component';
 import { TradeDetailsHeaderComponent } from '../trade-management/components/trade-details-header/trade-details-header.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -90,10 +90,10 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     ProfileComponent,
     RiskAnalysisComponent,
     EditTradeDetailsComponent,
-    AddToPositionPopupComponent,
-    AddToStockPositionPopupComponent,
-    ReduceToPositionPopupComponent,
-    ReduceToStockPositionPopupComponent,
+    AddToPositionComponent,
+    AddToStockPositionComponent,
+    ReduceToPositionComponent,
+    ReduceToStockPositionComponent,
     CloseTradeDetailsComponent,
     TradeDetailsHeaderComponent,
     TradeExecutionDateComponent,
@@ -118,10 +118,10 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     UpdatePriceRangeComponent,
     SingleInputModalComponent,
     ManageRulePopupComponent,
-    AddToPositionPopupComponent,
-    AddToStockPositionPopupComponent,
-    ReduceToPositionPopupComponent,
-    ReduceToStockPositionPopupComponent,
+    AddToPositionComponent,
+    AddToStockPositionComponent,
+    ReduceToPositionComponent,
+    ReduceToStockPositionComponent,
     TradeExecutionDateComponent,
     TradeStrategiesGrid
   ],

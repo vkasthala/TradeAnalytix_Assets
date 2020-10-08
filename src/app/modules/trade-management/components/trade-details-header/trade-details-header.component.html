@@ -1,17 +1,17 @@
 <!-- entry second -->
 <div class="addnew-second px-3 py-2">
   <div class="trade-rate">
-    <div class="trade-name">
+    <div class="trade-name m-0">
       <h5>
         {{getDisplayValue(selectedStock.name)}}
       </h5>
     </div>
-    <div class="trade-name-rate ml-3">
+    <div class="trade-name-rate ml-3 d-flex align-items-center">
       <span class="trade-r">{{stockSummary.close}}</span>
-      <span [ngClass]="{'trade-rr': stockSummary.changePercent <= 0, 'trade-g' : stockSummary.changePercent > 0}">
+      <span [ngClass]="{'d-flex trade-rr': stockSummary.changePercent <= 0, 'd-flex trade-g' : stockSummary.changePercent > 0}">
         <i *ngIf="stockSummary.changePercent > 0" class="positive-amt material-icons">arrow_upward</i>
         <i *ngIf="stockSummary.changePercent <= 0" class="negative-amt material-icons">arrow_downward</i>
-        {{getDisplayValue(stockSummary.changePercent, '%')}}
+       {{getDisplayValue(stockSummary.changePercent, '%')}}
       </span>
     </div>
   </div>
@@ -123,7 +123,11 @@
         </div>
       </div>
     </div>
-    <div class="text-right read-more"><span class="btn-link cursor" (click)="showMoreStats()">{{allStats ? "-" : "+"}}
-        Stats</span></div>
+    <div class="text-right read-more">
+      <span class="d-flex btn-link cursor" (click)="showMoreStats()">
+        <i *ngIf="allStats" class="negative-amt material-icons">arrow_upward</i>
+        <i *ngIf="!allStats" class="negative-amt material-icons">arrow_downward</i> 
+      </span>
+      </div>
   </div>
 </div>

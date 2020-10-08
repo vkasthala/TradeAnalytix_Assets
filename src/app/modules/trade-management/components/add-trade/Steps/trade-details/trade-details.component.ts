@@ -14,7 +14,10 @@ import { UserStockSummary } from 'src/app/modules/shared/models/trade-management
 import { StrategyCreateService } from 'src/app/modules/shared/services/strategy-create.service';
 import { TradeStrategy } from 'src/app/modules/trade-management/models/trade-strategy.model';
 import { UtilService } from 'src/app/modules/utilities/services/util.service';
-
+import { AddToPositionComponent } from 'src/app/modules/shared/components/modals/add-to-position/add-to-position.component';
+import { AddToStockPositionComponent } from 'src/app/modules/shared/components/modals/add-to-stock-position/add-to-stock-position.component';
+import { ReduceToPositionComponent } from 'src/app/modules/shared/components/modals/reduce-to-position/reduce-to-position.component';
+import { ReduceToStockPositionComponent } from 'src/app/modules/shared/components/modals/reduce-to-stock-position/reduce-to-stock-position.component';
 
 @Component({
   selector: 'app-trade-details',
@@ -39,7 +42,7 @@ export class TradeDetailsComponent implements OnInit {
   @Input('stockSummary') stockSummary: UserStockSummary;
   @Input("selectedStock") selectedStock: StockSymbol;
   @Input("inputState") inputState: TradeInputData;
-
+  @Input() editTrade: boolean;
 
   stockEntry: StockEntry;
   stockOptions: OptionEntry[] = [];
@@ -170,6 +173,30 @@ export class TradeDetailsComponent implements OnInit {
         }
       }
     }
+  }
+  addToPosition() {
+    const dialogRef = this._dialog.open(AddToPositionComponent, {
+      disableClose: false,
+      width: 'auto'
+    });
+  }
+  reduceToPosition() {
+    const dialogRef = this._dialog.open(ReduceToPositionComponent, {
+      disableClose: false,
+      width: 'auto'
+    });
+  }
+  addToStockPosition() {
+    const dialogRef = this._dialog.open(AddToStockPositionComponent, {
+      disableClose: false,
+      width: 'auto'
+    });
+  }
+  reduceToStockOption() {
+    const dialogRef = this._dialog.open(ReduceToStockPositionComponent, {
+      disableClose: false,
+      width: 'auto'
+    });
   }
 
 }

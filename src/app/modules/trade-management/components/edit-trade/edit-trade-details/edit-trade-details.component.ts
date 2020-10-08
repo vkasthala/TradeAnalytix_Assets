@@ -12,10 +12,6 @@ import { OptionType } from 'src/app/modules/shared/models/trade-management/optio
 import { SummaryResult } from 'src/app/modules/risk-analysis/models/summary-result.model';
 import { OptionResult } from 'src/app/modules/risk-analysis/models/option-result.model';
 import { StockResult } from 'src/app/modules/risk-analysis/models/stock-result.model';
-import { AddToPositionPopupComponent } from '../add-to-position-popup/add-to-position-popup.component';
-import { AddToStockPositionPopupComponent } from '../add-to-stock-position-popup/add-to-stock-position-popup.component';
-import { ReduceToPositionPopupComponent } from '../reduce-to-position-popup/reduce-to-position-popup.component';
-import { ReduceToStockPositionPopupComponent } from '../reduce-to-stock-position-popup/reduce-to-stock-position-popup.component';
 
 @Component({
   selector: 'app-edit-trade-details',
@@ -73,32 +69,7 @@ export class EditTradeDetailsComponent implements OnInit {
     }
   }
 
-  addToPosition() {
-    const dialogRef = this._dialog.open(AddToPositionPopupComponent, {
-      disableClose: false,
-      width: 'auto'
-    });
 
-  }
-  addToStockPosition() {
-    const dialogRef = this._dialog.open(AddToStockPositionPopupComponent, {
-      disableClose: false,
-      width: 'auto'
-    });
-  }
-  reduceToPosition() {
-    const dialogRef = this._dialog.open(ReduceToPositionPopupComponent, {
-      disableClose: false,
-      width: 'auto'
-    });
-  }
-
-  reduceToStockOption() {
-    const dialogRef = this._dialog.open(ReduceToStockPositionPopupComponent, {
-      disableClose: false,
-      width: 'auto'
-    });
-  }
   next() {
     debugger;
     this.nextStep.emit()

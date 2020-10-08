@@ -10,12 +10,16 @@ import { TradeStrategiesGrid } from './trade-strategies-grid/trade-strategies-gr
 import { TradeStatus } from '../../shared/models/trade-management/trade-status.enum';
 import { TradeDirection } from '../../shared/models/trade-management/trade-direction.enum';
 import { TradeSearchComponent } from '../../trade-management/components/add-trade/Steps/search-trade/trade-search.component';
+import {FormGroup, FormControl} from '@angular/forms';
+
 @Component({
    selector: 'app-trade-strategies',
    templateUrl: './trade-strategies.component.html',
    styleUrls: ['./trade-strategies.component.scss']
 })
 export class TradeStrategiesComponent implements OnInit {
+
+   
 
    @ViewChild('tradeStrategiesGrid', { static: false }) private tradeStrategiesGrid: TradeStrategiesGrid;
    @ViewChild('tradeSearchComponent', { static: false }) private tradeSearchComponent: TradeSearchComponent;
@@ -34,7 +38,10 @@ export class TradeStrategiesComponent implements OnInit {
       ariaLabelInputField: 'Date'
    };
 
-
+   range = new FormGroup({
+      start: new FormControl(),
+      end: new FormControl()
+    });
    strategies = StrategyType;
    strategyTypes: String[] = this.strategyCreateService.getStrategies();
 
