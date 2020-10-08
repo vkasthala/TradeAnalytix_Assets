@@ -25,7 +25,7 @@ export class AddNewTradeComponent implements OnInit {
   @ViewChild('tradeThesis', { static: false }) private tradeThesis: TradeThesisComponent;
   @ViewChild('entryRules', { static: false }) private entryRules: EntryRulesComponent;
 
-  editTrade = false;
+  public editTrade = false;
 
   activeStep: boolean;
   stockAdded: boolean;
@@ -155,7 +155,7 @@ export class AddNewTradeComponent implements OnInit {
     }
   }
 
-  setState() {
+  public setState() {
     if (this.inputState) {
       console.log('Setting state:', this.inputState);
       this.selectedStock = this.inputState.selectedStock;
