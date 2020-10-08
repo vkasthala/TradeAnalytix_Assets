@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { IMyDrpOptions } from 'mydaterangepicker';
+import { IMyDrpOptions, IMyDateRangeModel } from 'mydaterangepicker';
 import { StrategyType } from '../../shared/models/trade-management/strategy-type.enum';
 import { StrategyCreateService } from '../../shared/services/strategy-create.service';
 import { StrategiesGridFilter } from '../models/strategies-grid-filter.model';
@@ -33,7 +33,7 @@ export class TradeStrategiesComponent implements OnInit {
    showDetailsIndex: any;
 
    myDateRangePickerOptions: IMyDrpOptions = {
-      dateFormat: 'dd.mm.yyyy',
+      dateFormat: 'mm-dd-yyyy',
       editableDateRangeField: false,
       ariaLabelInputField: 'Date'
    };
@@ -84,10 +84,22 @@ export class TradeStrategiesComponent implements OnInit {
       this.strategiesGridFilter.stockCode = $event.code;
    }
 
+
    applyFilters() {
       let tradeStrategyGridRequest = this.tradeStrategiesGrid.tradeStrategyGridRequest;
       tradeStrategyGridRequest.filters = this.strategiesGridFilter;
       this.tradeStrategiesGrid.reload();
+   }
+
+   onDateRangeChanged(event: IMyDateRangeModel) {
+      if (event.beginJsDate && event.endJsDate) {
+         this.strategiesGridFilter.fromDate = event.beginDate.year + '-' + event.beginDate.month + '-' + event.beginDate.day;
+         this.strategiesGridFilter.toDate = event.endDate.year + '-' + event.endDate.month + '-' + event.endDate.day;
+      } else {
+         this.strategiesGridFilter.fromDate = undefined;
+         this.strategiesGridFilter.toDate = undefined;
+      }
+      console.log('trade strategies filter after date range: ', this.strategiesGridFilter);
    }
 
    clearFilters() {

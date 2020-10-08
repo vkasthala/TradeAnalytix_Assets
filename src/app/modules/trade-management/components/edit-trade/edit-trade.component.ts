@@ -18,11 +18,11 @@ export class EditTradeComponent extends AddNewTradeComponent implements OnInit {
     router: Router,
     _dialog: MatDialog) {
     super(userStockStatsService, tradeStrategyService, router, _dialog);
-    super.editTrade = true;
+    this.editTrade = true;
   }
 
   ngOnInit() {
-    super.setState();
+    this.setState();
   }
 
 
