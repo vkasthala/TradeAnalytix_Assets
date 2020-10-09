@@ -11,6 +11,8 @@ import { TradeDetailsComponent } from './Steps/trade-details/trade-details.compo
 import { TradeThesisComponent } from './Steps/trade-thesis/trade-thesis.component';
 import { EntryRulesComponent } from './Steps/entry-rules/entry-rules.component';
 import { TradeExecutionDateComponent } from 'src/app/modules/shared/components/modals/trade-execution-date/trade-execution-date.component';
+import { ActionType } from 'src/app/modules/shared/models/trade-management/action-type.enum';
+import { TradeDirection } from 'src/app/modules/shared/models/trade-management/trade-direction.enum';
 @Component({
   selector: 'app-add-new-trade',
   templateUrl: './add-new-trade.component.html',
@@ -116,7 +118,20 @@ export class AddNewTradeComponent implements OnInit {
     }
     this.tradeStrategy.stockEntry = stockEntries;
     this.tradeStrategy.stockOptions = this.tradeDetails.stockOptions;
+    this.tradeStrategy.direction = this.getDirection();
     this.tradeStrategy.entryRules = this.entryRules.entryRules;
+  }
+
+  getDirection(){
+    let dir: TradeDirection = this.tradeDetails.direction;
+    if (this.tradeDetails.selectedStrategy == 1) {
+      if (this.tradeDetails.stockEntry.actionType == ActionType["Buy to Open"]) {
+        dir = TradeDirection.Long;
+      } else if (this.tradeDetails.stockEntry.actionType == ActionType["Sell to Open"]) {
+        dir = TradeDirection.Short;
+      }
+    }
+    return dir;
   }
 
   goBack(moveTwoSteps?, mobileView?) {

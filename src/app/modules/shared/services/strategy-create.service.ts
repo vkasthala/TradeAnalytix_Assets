@@ -46,46 +46,60 @@ export class StrategyCreateService {
     let template: StrategyTemplate = new StrategyTemplate();
     if (StrategyType['Stock'] == strategyId) {
       template.stockEntry = this.createStockEntry(ActionType["Buy to Open"], 10);
+      template.direction = TradeDirection.Long;
     } else if (StrategyType['Long Call'] == strategyId) {
       template.optionEntries.push(this.createOptionEntry(ActionType["Buy to Open"], OptionType.Call, 1));
+      template.direction = TradeDirection.Long;
     } else if (StrategyType['Short Call'] == strategyId) {
       template.optionEntries.push(this.createOptionEntry(ActionType["Sell to Open"], OptionType.Call, 1));
+      template.direction = TradeDirection.Short;
     } else if (StrategyType['Long Put'] == strategyId) {
       template.optionEntries.push(this.createOptionEntry(ActionType["Buy to Open"], OptionType.Put, 1));
+      template.direction = TradeDirection.Long;
     } else if (StrategyType['Short Put'] == strategyId) {
       template.optionEntries.push(this.createOptionEntry(ActionType["Sell to Open"], OptionType.Put, 1));
+      template.direction = TradeDirection.Short;
     } else if (StrategyType['Call Spread'] == strategyId) {
       template.optionEntries.push(this.createOptionEntry(ActionType["Buy to Open"], OptionType.Call, 1));
       template.optionEntries.push(this.createOptionEntry(ActionType["Sell to Open"], OptionType.Call, 1));
+      template.direction = TradeDirection.Long;
     } else if (StrategyType['Put Spread'] == strategyId) {
       template.optionEntries.push(this.createOptionEntry(ActionType["Buy to Open"], OptionType.Put, 1));
       template.optionEntries.push(this.createOptionEntry(ActionType["Sell to Open"], OptionType.Put, 1));
+      template.direction = TradeDirection.Short;
     } else if (StrategyType['Covered Call'] == strategyId) {
       template.stockEntry = this.createStockEntry(ActionType["Buy to Open"], 1);
       template.optionEntries.push(this.createOptionEntry(ActionType["Sell to Open"], OptionType.Call, 1));
+      template.direction = TradeDirection.Long;
     } else if (StrategyType['Married Put'] == strategyId) {
       template.stockEntry = this.createStockEntry(ActionType["Buy to Open"], 1);
       template.optionEntries.push(this.createOptionEntry(ActionType["Buy to Open"], OptionType.Put, 1));
+      template.direction = TradeDirection.Long;
     } else if (StrategyType['Collars'] == strategyId) {
       template.stockEntry = this.createStockEntry(ActionType["Buy to Open"], 10);
       template.optionEntries.push(this.createOptionEntry(ActionType["Sell to Open"], OptionType.Call, 1));
       template.optionEntries.push(this.createOptionEntry(ActionType["Buy to Open"], OptionType.Put, 1));
+      template.direction = TradeDirection.Long;
     } else if (StrategyType['Straddle'] == strategyId) {
       template.optionEntries.push(this.createOptionEntry(ActionType["Buy to Open"], OptionType.Call, 1));
       template.optionEntries.push(this.createOptionEntry(ActionType["Buy to Open"], OptionType.Put, 1));
+      template.direction = TradeDirection.Neutral;
     } else if (StrategyType['Strangle'] == strategyId) {
       template.optionEntries.push(this.createOptionEntry(ActionType["Sell to Open"], OptionType.Call, 1));
       template.optionEntries.push(this.createOptionEntry(ActionType["Sell to Open"], OptionType.Put, 1));
+      template.direction = TradeDirection.Neutral;
     } else if (StrategyType['Iron Condor'] == strategyId) {
       template.optionEntries.push(this.createOptionEntry(ActionType["Buy to Open"], OptionType.Call, 1));
       template.optionEntries.push(this.createOptionEntry(ActionType["Sell to Open"], OptionType.Call, 1));
       template.optionEntries.push(this.createOptionEntry(ActionType["Buy to Open"], OptionType.Put, 1));
       template.optionEntries.push(this.createOptionEntry(ActionType["Sell to Open"], OptionType.Put, 1));
+      template.direction = TradeDirection.Neutral;
     } else if (StrategyType['Iron Butterfly'] == strategyId) {
       template.optionEntries.push(this.createOptionEntry(ActionType["Buy to Open"], OptionType.Call, 1));
       template.optionEntries.push(this.createOptionEntry(ActionType["Sell to Open"], OptionType.Call, 1));
       template.optionEntries.push(this.createOptionEntry(ActionType["Buy to Open"], OptionType.Put, 1));
       template.optionEntries.push(this.createOptionEntry(ActionType["Sell to Open"], OptionType.Put, 1));
+      template.direction = TradeDirection.Neutral;
     }
     return template;
   }

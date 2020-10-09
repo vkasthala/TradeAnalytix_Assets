@@ -2,6 +2,7 @@ import { TradeThesis } from './trade-thesis.model';
 import { StockEntry } from '../../shared/models/trade-management/stock-entry.model';
 import { OptionEntry } from '../../shared/models/trade-management/option-entry.model';
 import { EntryExitRule } from './entry-exit-rule.model';
+import { TradeDirection } from '../../shared/models/trade-management/trade-direction.enum';
 
 export class TradeStrategy {
 
@@ -18,6 +19,8 @@ export class TradeStrategy {
     createDateTime: string;
 
     stockId: number;
+
+    direction: TradeDirection;
 
     userId: number;
 

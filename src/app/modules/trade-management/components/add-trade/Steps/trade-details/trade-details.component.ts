@@ -18,6 +18,8 @@ import { AddToPositionComponent } from 'src/app/modules/shared/components/modals
 import { AddToStockPositionComponent } from 'src/app/modules/shared/components/modals/add-to-stock-position/add-to-stock-position.component';
 import { ReduceToPositionComponent } from 'src/app/modules/shared/components/modals/reduce-to-position/reduce-to-position.component';
 import { ReduceToStockPositionComponent } from 'src/app/modules/shared/components/modals/reduce-to-stock-position/reduce-to-stock-position.component';
+import { TradeDirection } from 'src/app/modules/shared/models/trade-management/trade-direction.enum';
+
 
 @Component({
   selector: 'app-trade-details',
@@ -47,6 +49,7 @@ export class TradeDetailsComponent implements OnInit {
   stockEntry: StockEntry;
   stockOptions: OptionEntry[] = [];
   selectedStrategy: number = 15;
+  direction: TradeDirection = TradeDirection.Custom;
 
   constructor(private utilService: UtilService,
     private strategyCreateServiceService: StrategyCreateService,
@@ -65,6 +68,7 @@ export class TradeDetailsComponent implements OnInit {
       this.selectedStrategy = this.inputState.tradeStrategy.strategyTypeId;
       this.stockEntry = this.inputState.tradeStrategy.stockEntry && this.inputState.tradeStrategy.stockEntry.length > 0 ? this.inputState.tradeStrategy.stockEntry[0] : undefined;
       this.stockAdded = this.inputState.tradeStrategy.stockEntry && this.inputState.tradeStrategy.stockEntry.length > 0 && this.inputState.tradeStrategy.stockEntry[0].actionType && this.inputState.tradeStrategy.stockEntry[0].quantity > 0;
+      this.direction = this.inputState.tradeStrategy.direction;
     }
   }
 
@@ -107,6 +111,7 @@ export class TradeDetailsComponent implements OnInit {
       this.stockEntry = template.stockEntry;
       this.stockAdded = template.stockEntry ? true : false;
       this.stockOptions = template.optionEntries;
+      this.direction = template.direction;
     }
   }
 
@@ -174,24 +179,28 @@ export class TradeDetailsComponent implements OnInit {
       }
     }
   }
+
   addToPosition() {
     const dialogRef = this._dialog.open(AddToPositionComponent, {
       disableClose: false,
       width: 'auto'
     });
   }
+
   reduceToPosition() {
     const dialogRef = this._dialog.open(ReduceToPositionComponent, {
       disableClose: false,
       width: 'auto'
     });
   }
+
   addToStockPosition() {
     const dialogRef = this._dialog.open(AddToStockPositionComponent, {
       disableClose: false,
       width: 'auto'
     });
   }
+
   reduceToStockOption() {
     const dialogRef = this._dialog.open(ReduceToStockPositionComponent, {
       disableClose: false,
