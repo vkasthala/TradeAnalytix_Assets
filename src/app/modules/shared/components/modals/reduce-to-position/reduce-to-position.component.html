@@ -3,7 +3,7 @@
     <div class="compare-pop-inner">
         <div class="top-pop-inner">
             <div class="left-heading">
-                <h6>REDUCE STOCK</h6>
+                <h6>Reduce ExpDate-StrikePrice-Call/Put</h6>
             </div>
             <div class="right-close" (click)="closeModal()">
                 <span>close</span>
@@ -15,7 +15,7 @@
               <label class="col-6 col-form-label">Select Action</label>
               <div class="col-6">
                 <select id="inputState" class="form-control select-input" [(ngModel)]="stockEntry.actionType">
-                  <option value="BUY_TO_OPEN" [hidden]="!addTrade" selected data-default>Buy to Open</option>
+                  <option value="SELL_TO_Close" [hidden]="!addTrade" selected data-default>Sell to Close</option>
                   <option value="SELL_TO_OPEN" [hidden]="!addTrade">Sell to Open</option>
                 </select>
               </div>

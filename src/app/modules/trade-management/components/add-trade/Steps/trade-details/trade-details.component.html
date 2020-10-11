@@ -43,18 +43,18 @@
             <option value=2 [hidden]="!addTrade">Sell to Open</option>
           </select>
         </div>
-        <div class="card-main">
+        <div class="card-main card-main-sm">
           <label class="col-form-label pt-0">Quantity</label>
           <input type="number" (keydown)="preventNegatives($event, false)" min="0" class="form-control cards-input" [(ngModel)]="stockEntry.quantity" />
         </div>
-        <div class="card-main">
+        <div class="card-main card-main-sm">
           <label class="col-form-label pt-0">Price</label>
           <input type="number" pattern="^\d*(\.\d{0,2})?$" (change)="checkForDecimalValidation($event)" step="0.01" (keydown)="preventNegatives($event, true)" min="0" class="form-control cards-input" placeholder=""
               [(ngModel)]="stockEntry.price" />
         </div>
         <div class="card-main">
           <label class="col-form-label pt-0">Amount</label>
-          <h6>{{stockEntry.quantity && stockEntry.price ? (stockEntry.quantity * stockEntry.price).toFixed(2) : 0}}
+          <h6 class="input_text">{{stockEntry.quantity && stockEntry.price ? (stockEntry.quantity * stockEntry.price).toFixed(2) : 0}}
           </h6>
         </div>
         
@@ -71,12 +71,12 @@
       <ng-container>
         <div class="trade-card-box mb-1" *ngIf="stockOptions.length">
           <div class="card-main">Action</div>
-          <div class="card-main">Contracts</div>
+          <div class="card-main card-main-sm">Contracts</div>
           <div class="card-main">Expiration</div>
-          <div class="card-main">Strike</div>
-          <div class="card-main">Call / Put</div>
-          <div class="card-main">Price</div>
-          <div class="card-main">Amount</div>
+          <div class="card-main card-main-sm">Strike</div>
+          <div class="card-main card-main-sm">Call / Put</div>
+          <div class="card-main card-main-sm">Price</div>
+          <div class="card-main text-left">Amount</div>
         </div>
       </ng-container>
       <ng-container *ngFor="let item of stockOptions;let index = index">
@@ -87,7 +87,7 @@
               <option value=2 [hidden]="!addTrade">Sell to Open</option>
             </select>
           </div>
-          <div class="card-main">
+          <div class="card-main card-main-sm">
             <input type="number" (keydown)="preventNegatives($event, false)" min="0"
                   class="form-control cards-input" placeholder="" [(ngModel)]="stockOptions[index].contracts" />
           </div>
@@ -98,24 +98,24 @@
               <mat-datepicker #expireDate></mat-datepicker>
             </div>
           </div>
-          <div class="card-main">
+          <div class="card-main card-main-sm">
             <input type="number" (keydown)="preventNegatives($event, true)" pattern="^\d*(\.\d{0,2})?$" (change)="checkForDecimalValidation($event)" step="0.01" min="0" class="form-control cards-input" placeholder="" [(ngModel)]="stockOptions[index].strikePrice" />
           </div>
 
-          <div class="card-main">
+          <div class="card-main card-main-sm">
             <select id="inputState" class="form-control select-input" [(ngModel)]="stockOptions[index].optionType">
               <option value=1 selected data-default>Call</option>
               <option value=2>Put</option>
             </select>
           </div>
           
-          <div class="card-main">
+          <div class="card-main card-main-sm">
             <input type="number" (keydown)="preventNegatives($event, true)" pattern="^\d*(\.\d{0,2})?$"
                   (change)="checkForDecimalValidation($event)" step="0.01" min="0" class="form-control cards-input"
                   placeholder="" [(ngModel)]="stockOptions[index].price" />
           </div>
           <div class="card-main">
-            <h6>
+            <h6 class="input_text justify-content-start">
               {{stockOptions[index].contracts && stockOptions[index].price ? (stockOptions[index].contracts * stockOptions[index].price * 100).toFixed(2) : 0}}
             </h6>
           </div>
@@ -131,8 +131,8 @@
         </div>
       </ng-container>
     </div>
-      <div class="font-weight-bold pt-2 text-right" *ngIf="stockOptions.length">
-        <span class="px-3">Net Debit</span>
+      <div class="font-weight-bold net_debit" *ngIf="stockOptions.length">
+        <span>Total Amount</span>
         <span class="px-3">{{calculateNetDebit()}}</span>
       </div>
     
