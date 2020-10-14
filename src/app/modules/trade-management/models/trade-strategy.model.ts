@@ -8,6 +8,8 @@ export class TradeStrategy {
 
     id: number;
 
+    uid: string;
+
     openDate: string;
 
     closeDate: string;
