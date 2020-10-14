@@ -10,15 +10,16 @@ export class ReduceToPositionComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<ReduceToPositionComponent>,
-    @Inject(MAT_DIALOG_DATA) data
+    @Inject(MAT_DIALOG_DATA) public data
   ) {
- 
+
   }
 
   ngOnInit() {
   }
+
   closeModal() {
-    debugger;
     this.dialogRef.close();
   }
+
 }

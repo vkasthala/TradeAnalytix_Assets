@@ -27,7 +27,8 @@ export class AddNewTradeComponent implements OnInit {
   @ViewChild('tradeThesis', { static: false }) private tradeThesis: TradeThesisComponent;
   @ViewChild('entryRules', { static: false }) private entryRules: EntryRulesComponent;
 
-  public editTrade = false;
+  public add = true;
+  public edit = false;
 
   activeStep: boolean;
   stockAdded: boolean;
@@ -85,7 +86,7 @@ export class AddNewTradeComponent implements OnInit {
 
   addTrade() {
     this.updateTradeStrategyProps();
-    if (this.editTrade) {
+    if (this.edit) {
       this.editTradeStrategy();
     } else {
       console.log('add trade...', this.tradeStrategy);

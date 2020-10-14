@@ -10,9 +10,9 @@ export class AddToPositionComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<AddToPositionComponent>,
-    @Inject(MAT_DIALOG_DATA) data
+    @Inject(MAT_DIALOG_DATA) public data
   ) {
- 
+
   }
 
   ngOnInit() {

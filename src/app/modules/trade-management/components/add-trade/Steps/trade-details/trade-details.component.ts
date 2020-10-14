@@ -19,6 +19,7 @@ import { AddToStockPositionComponent } from 'src/app/modules/shared/components/m
 import { ReduceToPositionComponent } from 'src/app/modules/shared/components/modals/reduce-to-position/reduce-to-position.component';
 import { ReduceToStockPositionComponent } from 'src/app/modules/shared/components/modals/reduce-to-stock-position/reduce-to-stock-position.component';
 import { TradeDirection } from 'src/app/modules/shared/models/trade-management/trade-direction.enum';
+import { formatDate } from '@angular/common';
 
 
 @Component({
@@ -27,8 +28,6 @@ import { TradeDirection } from 'src/app/modules/shared/models/trade-management/t
   styleUrls: ['./trade-details.component.scss']
 })
 export class TradeDetailsComponent implements OnInit {
-
-  addTrade: boolean = true;
 
   currentState: number = 1;
   stockAdded: boolean;
@@ -44,7 +43,8 @@ export class TradeDetailsComponent implements OnInit {
   @Input('stockSummary') stockSummary: UserStockSummary;
   @Input("selectedStock") selectedStock: StockSymbol;
   @Input("inputState") inputState: TradeInputData;
-  @Input() editTrade: boolean;
+  @Input("addTrade") addTrade: boolean;
+  @Input("editTrade") editTrade: boolean;
 
   stockEntry: StockEntry;
   stockOptions: OptionEntry[] = [];
@@ -57,7 +57,7 @@ export class TradeDetailsComponent implements OnInit {
     private _dialog: MatDialog) { }
 
   ngOnInit() {
-    console.log('child init:', this.router.getCurrentNavigation());
+    console.log('child init:', this.router.getCurrentNavigation(), this.addTrade, this.editTrade);
     this.stockEntry = this.createStockEntry();
   }
 
@@ -181,31 +181,113 @@ export class TradeDetailsComponent implements OnInit {
   }
 
   addToPosition() {
+    let dialogData: any = this.getAddData(this.stockEntry.actionType);
+    dialogData.title = this.getStockAddOrReduceTitle(true);
     const dialogRef = this._dialog.open(AddToPositionComponent, {
       disableClose: false,
-      width: 'auto'
+      width: 'auto',
+      data: dialogData
+    });
+    dialogRef.afterClosed().subscribe((res) => {
+      this.addOrReduceStock(res, true);
     });
   }
 
   reduceToPosition() {
+    let dialogData: any = this.getReduceData(this.stockEntry.actionType);
+    dialogData.title = this.getStockAddOrReduceTitle(false);
     const dialogRef = this._dialog.open(ReduceToPositionComponent, {
       disableClose: false,
-      width: 'auto'
+      width: 'auto',
+      data: dialogData
+    });
+    dialogRef.afterClosed().subscribe((res) => {
+      this.addOrReduceStock(res, false);
     });
   }
 
-  addToStockPosition() {
+  addToStockPosition(index: number) {
+    let dialogData: any = this.getAddData(this.stockOptions[index].actionType);
+    dialogData.title = this.getOptionAddOrReduceTitle(this.stockOptions[index].expireDate, this.stockOptions[index].strikePrice, this.stockOptions[index].optionType, true);
     const dialogRef = this._dialog.open(AddToStockPositionComponent, {
       disableClose: false,
-      width: 'auto'
+      width: 'auto',
+      data: dialogData
+    });
+    dialogRef.afterClosed().subscribe((res) => {
+      console.log('here...', res);
+      this.addOrReduceStockOption(res, this.stockOptions[index], true);
     });
   }
 
-  reduceToStockOption() {
+  reduceToStockOption(index: number) {
+    let dialogData: any = this.getReduceData(this.stockOptions[index].actionType);
+    dialogData.title = this.getOptionAddOrReduceTitle(this.stockOptions[index].expireDate, this.stockOptions[index].strikePrice, this.stockOptions[index].optionType, false);
     const dialogRef = this._dialog.open(ReduceToStockPositionComponent, {
       disableClose: false,
-      width: 'auto'
+      width: 'auto',
+      data: dialogData
     });
+    dialogRef.afterClosed().subscribe((res) => {
+      console.log('here...', res);
+      this.addOrReduceStockOption(res, this.stockOptions[index], false);
+    });
+  }
+
+  getAddData(orgActionType: ActionType) {
+    return {
+      actionType: orgActionType
+    }
+  }
+
+  getReduceData(orgActionType: ActionType) {
+    let actionType;
+    if (ActionType["Buy to Open"] == orgActionType) {
+      actionType = ActionType["Sell to Close"];
+    } else if (ActionType["Sell to Open"] == orgActionType) {
+      actionType = ActionType["Buy to Close"];
+    }
+    return {
+      actionType: actionType
+    }
+  }
+
+  getOptionAddOrReduceTitle(expiryDate: string, strikePrice: number, optionType: OptionType, add: boolean) {
+    let tInd = expiryDate.indexOf('T');
+    let expiryDateText = expiryDate.substring(0, tInd);
+    return (add == true ? 'Add to ' : 'Reduce ') + expiryDateText + '-' + strikePrice + '-' + (optionType == 1 ? 'call' : 'put');
+  }
+
+  getStockAddOrReduceTitle(add: boolean) {
+    return (add == true ? 'Add to ' : 'Reduce ') + 'Stock';
+  }
+
+  addOrReduceStock(dialogResult: any, add: boolean) {
+    console.log('here...', dialogResult, add);
+    if (!dialogResult) {
+      return;
+    }
+    if (add) {
+      this.stockEntry.quantity = this.stockEntry.quantity + dialogResult.quantity;
+      let price = +(((this.stockEntry.price * this.stockEntry.quantity) + (dialogResult.quantity * dialogResult.price)) / (this.stockEntry.quantity + dialogResult.quantity)).toFixed(2);
+      this.stockEntry.price = price;
+    } else {
+      this.stockEntry.quantity = this.stockEntry.quantity - dialogResult.quantity;
+    }
+  }
+
+  addOrReduceStockOption(dialogResult: any, stockOption: OptionEntry, add: boolean) {
+    console.log('here...', dialogResult, add);
+    if (!dialogResult) {
+      return;
+    }
+    if (add) {
+      stockOption.contracts = stockOption.contracts + dialogResult.contracts;
+      let price = +(((stockOption.price * stockOption.contracts) + (dialogResult.contracts * dialogResult.price)) / (stockOption.contracts + dialogResult.contracts)).toFixed(2);
+      stockOption.price = price;
+    } else if (dialogResult.contracts < stockOption.contracts) {
+      stockOption.contracts = stockOption.contracts - dialogResult.contracts;
+    }
   }
 
 }

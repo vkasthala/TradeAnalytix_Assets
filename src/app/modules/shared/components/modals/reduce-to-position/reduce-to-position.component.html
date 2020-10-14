@@ -1,53 +1,55 @@
-
 <div class="compare-popup">
-    <div class="compare-pop-inner">
-        <div class="top-pop-inner">
-            <div class="left-heading">
-                <h6>Reduce ExpDate-StrikePrice-Call/Put</h6>
-            </div>
-            <div class="right-close" (click)="closeModal()">
-                <span>close</span>
-            </div>
-        </div>
-  
-        <div class="main-pop-inner">
-            <div class="row mb-3 align-items-center">
-              <label class="col-6 col-form-label">Select Action</label>
-              <div class="col-6">
-                <select id="inputState" class="form-control select-input" [(ngModel)]="stockEntry.actionType">
-                  <option value="SELL_TO_Close" [hidden]="!addTrade" selected data-default>Sell to Close</option>
-                  <option value="SELL_TO_OPEN" [hidden]="!addTrade">Sell to Open</option>
-                </select>
-              </div>
-            </div>
-            <div class="row mb-3 align-items-center">
-              <label class="col-6 col-form-label">Enter Quantity</label>
-              <div class="col-6">
-                <input type="number" (keydown)="preventNegatives($event, false)" min="0" class="form-control cards-input" [(ngModel)]="stockEntry.quantity" />
-              </div>
-            </div>
-            <div class="row mb-3 align-items-center">
-              <label class="col-6 col-form-label">Stock Price </label>
-              <div class="col-6">
-                <div class="form-group">
-                  <input type="number" pattern="^\d*(\.\d{0,2})?$" (change)="checkForDecimalValidation($event)" step="0.01"
-                    (keydown)="preventNegatives($event, true)" min="0" class="form-control cards-input" placeholder=""
-                    [(ngModel)]="stockEntry.price" />
-                </div>
-              </div>
-            </div>
-            <div class="row align-items-center">
-              <label class="col-6 col-form-label">Amount</label>
-              <div class="col-6">
-                <h6>{{stockEntry.quantity && stockEntry.price ? (stockEntry.quantity * stockEntry.price).toFixed(2) : 0}}
-                </h6>
-              </div>
-            </div>
-            
-            <div class="btn-up mb-0">
-                <a class="btn btn-add" (click)="closeModal()">SAVE</a>
-            </div>
-        </div>
-  
+  <div class="compare-pop-inner">
+    <div class="top-pop-inner">
+      <div class="left-heading">
+        <h6>{{data.title}}</h6>
+      </div>
+      <div class="right-close" (click)="closeModal()">
+        <span>close</span>
+      </div>
     </div>
+
+    <div class="main-pop-inner">
+      <div class="row mb-3 align-items-center">
+        <label class="col-6 col-form-label">Select Action</label>
+        <div class="col-6">
+          <select id="inputState" class="form-control select-input" [(ngModel)]="data.actionType">
+            <option value=1 [hidden]="!addTrade" selected data-default>Buy to Open</option>
+            <option value=2 [hidden]="!addTrade">Sell to Open</option>
+            <option value=3 [hidden]="!addTrade">Buy to Close</option>
+            <option value=4 [hidden]="!addTrade">Sell to Close</option>
+          </select>
+        </div>
+      </div>
+      <div class="row mb-3 align-items-center">
+        <label class="col-6 col-form-label">Enter Quantity</label>
+        <div class="col-6">
+          <input type="number" (keydown)="preventNegatives($event, false)" min="0" class="form-control cards-input"
+            [(ngModel)]="data.quantity" />
+        </div>
+      </div>
+      <div class="row mb-3 align-items-center">
+        <label class="col-6 col-form-label">Stock Price </label>
+        <div class="col-6">
+          <div class="form-group">
+            <input type="number" pattern="^\d*(\.\d{0,2})?$" (change)="checkForDecimalValidation($event)" step="0.01"
+              (keydown)="preventNegatives($event, true)" min="0" class="form-control cards-input" placeholder=""
+              [(ngModel)]="data.price" />
+          </div>
+        </div>
+      </div>
+      <div class="row align-items-center">
+        <label class="col-6 col-form-label">Amount</label>
+        <div class="col-6">
+          <h6>{{data.quantity && data.price ? (data.quantity * data.price).toFixed(2) : 0}}
+          </h6>
+        </div>
+      </div>
+
+      <div class="btn-up mb-0">
+        <button type="button" class="btn btn-add" [mat-dialog-close]="data">SAVE</button>
+      </div>
+    </div>
+
   </div>
+</div>

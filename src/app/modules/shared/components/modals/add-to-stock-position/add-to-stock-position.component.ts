@@ -10,7 +10,7 @@ export class AddToStockPositionComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<AddToStockPositionComponent>,
-    @Inject(MAT_DIALOG_DATA) data
+    @Inject(MAT_DIALOG_DATA) public data
   ) {
  
   }

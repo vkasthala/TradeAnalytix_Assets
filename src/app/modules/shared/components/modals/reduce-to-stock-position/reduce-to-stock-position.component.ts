@@ -10,9 +10,9 @@ export class ReduceToStockPositionComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<ReduceToStockPositionComponent>,
-    @Inject(MAT_DIALOG_DATA) data
+    @Inject(MAT_DIALOG_DATA) public data
   ) {
-  
+
   }
 
   ngOnInit() {
