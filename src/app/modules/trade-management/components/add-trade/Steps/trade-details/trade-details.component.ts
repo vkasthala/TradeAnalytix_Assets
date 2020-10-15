@@ -263,7 +263,6 @@ export class TradeDetailsComponent implements OnInit {
   }
 
   addOrReduceStock(dialogResult: any, add: boolean) {
-    console.log('here...', dialogResult, add);
     if (!dialogResult) {
       return;
     }
@@ -277,7 +276,6 @@ export class TradeDetailsComponent implements OnInit {
   }
 
   addOrReduceStockOption(dialogResult: any, stockOption: OptionEntry, add: boolean) {
-    console.log('here...', dialogResult, add);
     if (!dialogResult) {
       return;
     }

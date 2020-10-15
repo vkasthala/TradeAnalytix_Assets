@@ -57,7 +57,7 @@
         </div>
         <div class="card-main card-main-sm">
           <label class="col-form-label pt-0">Amount</label>
-          <h6 class="input_text">{{stockEntry.quantity && stockEntry.price ? (stockEntry.quantity * stockEntry.price).toFixed(2) : 0}}
+          <h6 class="input_text">{{(stockEntry.quantity && stockEntry.price) ? (stockEntry.quantity * stockEntry.price * (stockEntry.actionType == 2 ? -1 : 1)).toFixed(2) : 0}}
           </h6>
         </div>
 
@@ -123,7 +123,7 @@
           </div>
           <div class="card-main card-main-sm">
             <h6 class="input_text justify-content-start">
-              {{stockOptions[index].contracts && stockOptions[index].price ? (stockOptions[index].contracts * stockOptions[index].price * 100).toFixed(2) : 0}}
+              {{(stockOptions[index].contracts && stockOptions[index].price) ? (stockOptions[index].contracts * (stockOptions[index].price * 100) *  (stockOptions[index].actionType == 2 ? -1 : 1)).toFixed(2) : 0}}
             </h6>
           </div>
           <div *ngIf="editTrade == true" class="top-heading p-0 mr-1" (click)="addToStockPosition(index)">
