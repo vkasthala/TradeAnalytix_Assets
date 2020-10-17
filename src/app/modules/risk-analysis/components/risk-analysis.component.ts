@@ -54,8 +54,8 @@ export class RiskAnalysisComponent implements OnInit {
     private userStockStatsService: UserStockStatsService,
     private strategyCreateService: StrategyCreateService,
     private router: Router) {
-      this.stockEntry = this.createStockEntry();
-      this.initState();
+    this.stockEntry = this.createStockEntry();
+    this.initState();
   }
 
   ngOnInit() {
@@ -87,11 +87,18 @@ export class RiskAnalysisComponent implements OnInit {
     this.stockAdded = false;
     if (this.stockOptions.length == 0) {
       this.displayRiskAnalysis = false;
+      this.riskAnalysisResults = [];
+      this.analyzeRisk = false;
     }
   }
 
   deleteStockOption(index) {
     this.stockOptions.splice(index, 1);
+    if (this.stockOptions.length == 0 && this.stockAdded == false) {
+      this.displayRiskAnalysis = false;
+      this.riskAnalysisResults = [];
+      this.analyzeRisk = false;
+    }
   }
 
   decreaseStockLowerBand() {
@@ -207,6 +214,11 @@ export class RiskAnalysisComponent implements OnInit {
     if (template) {
       this.stockEntry = template.stockEntry;
       this.stockAdded = template.stockEntry ? true : false;
+      if (this.stockAdded) {
+        this.stockEntry.price = this.stockSummary.close;
+      } else if (!this.stockEntry) {
+        this.stockEntry = this.createStockEntry();
+      }
       this.stockOptions = template.optionEntries;
     }
   }
@@ -285,8 +297,13 @@ export class RiskAnalysisComponent implements OnInit {
   }
 
   loadImpliedVolatility() {
+    if (this.validateInputs() == false) {
+      return;
+    }
+    this.performRiskAnalysis = true;
+    this.displayRiskAnalysis = true;
     let riskAnalysisRequest: RiskAnalysisRequest = new RiskAnalysisRequest();
-    riskAnalysisRequest.stockPrice = this.stockEntry;
+    riskAnalysisRequest.stockPrice = this.stockAdded ? this.stockEntry : this.createStockEntry();
     riskAnalysisRequest.options = this.stockOptions;
 
     console.log('implied volatility request:', JSON.stringify(riskAnalysisRequest));
@@ -301,6 +318,45 @@ export class RiskAnalysisComponent implements OnInit {
     }, errorResponse => {
       console.log("get implied volatility error:", errorResponse);
     });
+  }
+
+  validateInputs(): boolean {
+    if (this.stockAdded) {
+      if (!this.stockEntry.price || this.stockEntry.price == 0) {
+        alert('Invalid Stock Price'); //TODO Need to replace all alerts with error messages
+        return false;
+      }
+
+      if (!this.stockEntry.quantity || this.stockEntry.quantity == 0) {
+        alert('Invalid Stock Quantity');
+        return false;
+      }
+    }
+
+    if (this.stockOptions && this.stockOptions.length > 0) {
+      for (let ind = 0; ind < this.stockOptions.length; ind++) {
+        if (!this.stockOptions[ind].price || this.stockOptions[ind].price == 0) {
+          alert('Invalid Option Price');
+          return false;
+        }
+
+        if (!this.stockOptions[ind].contracts || this.stockOptions[ind].contracts == 0) {
+          alert('Invalid Option Contracts');
+          return false;
+        }
+
+        if (!this.stockOptions[ind].strikePrice || this.stockOptions[ind].strikePrice == 0) {
+          alert('Invalid Option Strike Price');
+          return false;
+        }
+
+        if (!this.stockOptions[ind].expireDate) {
+          alert('Invalid Option Expiry Date');
+          return false;
+        }
+      }
+    }
+    return true;
   }
 
   createStockEntry(): StockEntry {

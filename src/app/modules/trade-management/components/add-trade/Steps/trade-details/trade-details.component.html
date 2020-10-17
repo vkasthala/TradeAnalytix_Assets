@@ -26,7 +26,7 @@
                     Add Option</a>
                 </div>
               </div>
-              <div *ngIf="stockOptions.length">
+              <div *ngIf="stockAdded || stockOptions.length">
                 <a class="text-link" (click)="navigateToRiskAnalysis()">Analyze Risk</a>
               </div>
             </div>

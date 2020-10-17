@@ -110,6 +110,11 @@ export class TradeDetailsComponent implements OnInit {
     if (template) {
       this.stockEntry = template.stockEntry;
       this.stockAdded = template.stockEntry ? true : false;
+      if (this.stockAdded) {
+        this.stockEntry.price = this.stockSummary.close;
+      } else if (!this.stockEntry) {
+        this.stockEntry = this.createStockEntry();
+      }
       this.stockOptions = template.optionEntries;
       this.direction = template.direction;
     }
@@ -216,7 +221,7 @@ export class TradeDetailsComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe((res) => {
       console.log('here...', res);
-      this.addOrReduceStockOption(res, this.stockOptions[index], true);
+      this.addOrReduceStockOption(res, this.stockOptions[index], true, index);
     });
   }
 
@@ -230,7 +235,7 @@ export class TradeDetailsComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe((res) => {
       console.log('here...', res);
-      this.addOrReduceStockOption(res, this.stockOptions[index], false);
+      this.addOrReduceStockOption(res, this.stockOptions[index], false, index);
     });
   }
 
@@ -263,7 +268,7 @@ export class TradeDetailsComponent implements OnInit {
   }
 
   addOrReduceStock(dialogResult: any, add: boolean) {
-    if (!dialogResult) {
+    if (!dialogResult || (!dialogResult.price || !dialogResult.quantity) || (add == false && dialogResult.quantity > this.stockEntry.quantity)) {
       return;
     }
     if (add) {
@@ -275,15 +280,15 @@ export class TradeDetailsComponent implements OnInit {
     }
   }
 
-  addOrReduceStockOption(dialogResult: any, stockOption: OptionEntry, add: boolean) {
-    if (!dialogResult) {
+  addOrReduceStockOption(dialogResult: any, stockOption: OptionEntry, add: boolean, index: number) {
+    if (!dialogResult || (!dialogResult.price || !dialogResult.contracts) || (add == false && dialogResult.contracts > stockOption.contracts)) {
       return;
     }
     if (add) {
       stockOption.contracts = stockOption.contracts + dialogResult.contracts;
       let price = +(((stockOption.price * stockOption.contracts) + (dialogResult.contracts * dialogResult.price)) / (stockOption.contracts + dialogResult.contracts)).toFixed(2);
       stockOption.price = price;
-    } else if (dialogResult.contracts < stockOption.contracts) {
+    } else if (dialogResult.contracts <= stockOption.contracts) {
       stockOption.contracts = stockOption.contracts - dialogResult.contracts;
     }
   }
