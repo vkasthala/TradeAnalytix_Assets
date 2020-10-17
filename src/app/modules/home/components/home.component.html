@@ -37,26 +37,39 @@
                             <h4>HOME</h4>
                         </a>
                     </li>
-                    <li [class.nav-active]="currentRoute == 'new-trade'">
-                        <a class="trade-nav-link" [routerLink]="['/new-trade/']">
-                            <span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="17.407" height="17.407" viewBox="0 0 17.407 17.407">
-                                    <path id="Icon_ionic-ios-add-circle" data-name="Icon ionic-ios-add-circle" d="M12.078,3.375a8.7,8.7,0,1,0,8.7,8.7A8.7,8.7,0,0,0,12.078,3.375Zm3.787,9.373H12.748v3.117a.669.669,0,0,1-1.339,0V12.748H8.292a.669.669,0,0,1,0-1.339h3.117V8.292a.669.669,0,0,1,1.339,0v3.117h3.117a.669.669,0,0,1,0,1.339Z" transform="translate(-3.375 -3.375)" fill="#565656"/>
-                                  </svg>
-                        </span>
-                            <h4>Add Trade</h4>
-                        </a>
+                    <li [class.nav-active]="currentRoute == 'trade-strategies'">
+                        <a class="trade-nav-link" [routerLink]="['/trade-strategies/']"><span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="17.002" viewBox="0 0 22 17.002">
+                                <path id="Subtraction_9" data-name="Subtraction 9" d="M-8320-298h-2v-2h-9v-13h-1v-2h1l20,0,1,0v2h-1v13h-9v2Zm-5.154-12.9a3.851,3.851,0,0,0-3.846,3.848,3.851,3.851,0,0,0,3.846,3.848,3.851,3.851,0,0,0,3.846-3.848,3.791,3.791,0,0,0-.4-1.719l-3.441,1.719V-310.9ZM-8319-307h0v2h6v-2Zm-5.6-5h0v3.848l3.439-1.721A3.823,3.823,0,0,0-8324.6-312Zm5.6,1h0v2h6v-2Z" transform="translate(8332 315.001)" fill="#565656"/>
+                              </svg>
+                              
+                                </span>
+                            <h4>Trade Strategies </h4>
+                        </a>                    
+                        <ul class="dropdown">
+                            <li [class.nav-active]="currentRoute == 'new-trade'">
+                                <a class="trade-nav-link" [routerLink]="['/new-trade/']">
+                                    Add Trade
+                                </a>
+                            </li>
+                            <li [class.nav-active]="currentRoute == 'import-trades'">
+                                <a class="trade-nav-link" [routerLink]="['/import-trades/']">
+                                    Import Trades
+                                </a>
+                            </li>
+                            <li [class.nav-active]="currentRoute == 'view-strategies'">
+                                <a class="trade-nav-link" [routerLink]="['/view-strategies/']">
+                                    VIEW STRATEGIES
+                                </a>
+                            </li>
+                            <li [class.nav-active]="currentRoute == 'compare-strategies'">
+                                <a class="trade-nav-link" [routerLink]="['/compare-strategies/']">
+                                    Compare Strategies
+                                </a>
+                            </li>
+                        </ul>
                     </li>
-                    <li [class.nav-active]="currentRoute == 'import-trades'">
-                        <a class="trade-nav-link" [routerLink]="['/import-trades/']">
-                            <span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="17.407" height="17.407" viewBox="0 0 17.407 17.407">
-                                    <path id="Icon_ionic-ios-add-circle" data-name="Icon ionic-ios-add-circle" d="M12.078,3.375a8.7,8.7,0,1,0,8.7,8.7A8.7,8.7,0,0,0,12.078,3.375Zm3.787,9.373H12.748v3.117a.669.669,0,0,1-1.339,0V12.748H8.292a.669.669,0,0,1,0-1.339h3.117V8.292a.669.669,0,0,1,1.339,0v3.117h3.117a.669.669,0,0,1,0,1.339Z" transform="translate(-3.375 -3.375)" fill="#565656"/>
-                                  </svg>
-                        </span>
-                            <h4>Import Trades</h4>
-                        </a>
-                    </li>
+                    
                     <li [class.nav-active]="currentRoute == 'risk-analysis'">
                         <a class="trade-nav-link" [routerLink]="['/risk-analysis/']"><span>
                             <svg xmlns="http://www.w3.org/2000/svg" width="17.515" height="17.514" viewBox="0 0 17.515 17.514">
@@ -71,30 +84,20 @@
                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="17.002" viewBox="0 0 22 17.002">
                                 <path id="Subtraction_9" data-name="Subtraction 9" d="M-8320-298h-2v-2h-9v-13h-1v-2h1l20,0,1,0v2h-1v13h-9v2Zm-5.154-12.9a3.851,3.851,0,0,0-3.846,3.848,3.851,3.851,0,0,0,3.846,3.848,3.851,3.851,0,0,0,3.846-3.848,3.791,3.791,0,0,0-.4-1.719l-3.441,1.719V-310.9ZM-8319-307h0v2h6v-2Zm-5.6-5h0v3.848l3.439-1.721A3.823,3.823,0,0,0-8324.6-312Zm5.6,1h0v2h6v-2Z" transform="translate(8332 315.001)" fill="#565656"/>
                               </svg>
-                              
                                 </span>
-                            <h4>Trade Plan </h4>
+                            <h4>Trade Plans</h4>
                         </a>
+                        <ul class="dropdown">
+                            <li [class.nav-active]="currentRoute == 'add-trade-plan'">
+                                <a class="trade-nav-link" [routerLink]="['/add-trade-plan/']">ADD TRADE PLAN</a>
+                            </li>
+                            <li [class.nav-active]="currentRoute == 'view-trade-plans'">
+                                <a class="trade-nav-link" [routerLink]="['/view-trade-plans/']">VIEW TRADE PLANS</a>
+                            </li>
+                        </ul>
                     </li>
-                    <li [class.nav-active]="currentRoute == 'trade-strategies'">
-                        <a class="trade-nav-link" [routerLink]="['/trade-strategies/']"><span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="17.002" viewBox="0 0 22 17.002">
-                                <path id="Subtraction_9" data-name="Subtraction 9" d="M-8320-298h-2v-2h-9v-13h-1v-2h1l20,0,1,0v2h-1v13h-9v2Zm-5.154-12.9a3.851,3.851,0,0,0-3.846,3.848,3.851,3.851,0,0,0,3.846,3.848,3.851,3.851,0,0,0,3.846-3.848,3.791,3.791,0,0,0-.4-1.719l-3.441,1.719V-310.9ZM-8319-307h0v2h6v-2Zm-5.6-5h0v3.848l3.439-1.721A3.823,3.823,0,0,0-8324.6-312Zm5.6,1h0v2h6v-2Z" transform="translate(8332 315.001)" fill="#565656"/>
-                              </svg>
-                              
-                                </span>
-                            <h4>Trade Strategies </h4>
-                        </a>
-                    </li>
-                    <li [class.nav-active]="currentRoute == 'compare-strategies'">
-                        <a class="trade-nav-link" [routerLink]="['/compare-strategies/']"><span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="21" viewBox="0 0 30 21">
-                                <path id="Icon_material-compare-arrows" data-name="Icon material-compare-arrows" d="M13.515,21H3v3H13.515v4.5l5.985-6-5.985-6V21Zm8.97-1.5V15H33V12H22.485V7.5l-5.985,6Z" transform="translate(-3 -7.5)" fill="#565656"/>
-                              </svg>
-                              </span>
-                            <h4>Compare Strategies</h4>
-                        </a>
-                    </li>
+                    
+                    
                     <li [class.nav-active]="currentRoute == 'reports'">
                         <a class="trade-nav-link" [routerLink]="['/reports/']"><span><svg xmlns="http://www.w3.org/2000/svg" width="17.515" height="17.514" viewBox="0 0 17.515 17.514">
                             <path id="Icon_metro-chart-dots" data-name="Icon metro-chart-dots" d="M4.76,17.253H20.085v2.189H2.571V1.928H4.76ZM7.5,16.159a1.642,1.642,0,0,1,0-3.284c.048,0,.1,0,.143.007L9.405,9.94a1.642,1.642,0,1,1,2.751,0l1.765,2.942q.072-.006.143-.007c.037,0,.073,0,.109,0l2.914-5.1a1.642,1.642,0,1,1,1.356.716c-.037,0-.073,0-.109,0l-2.914,5.1a1.642,1.642,0,1,1-2.732.029l-1.765-2.942c-.047,0-.1.007-.143.007s-.1,0-.143-.007L8.872,13.62A1.642,1.642,0,0,1,7.5,16.159Z" transform="translate(-2.571 -1.928)" fill="#565656"/>
@@ -111,6 +114,37 @@
                               </span>
                             <h4>Settings</h4>
                         </a>
+                        <ul class="dropdown">
+                            <li [class.nav-active]="currentRoute == 'manage-rules'">
+                                <a class="trade-nav-link" [routerLink]="['/manage-rules/']">MANAGE RULES</a>
+                            </li>
+                            <li [class.nav-active]="currentRoute == 'trading-goal'">
+                                <a class="trade-nav-link" [routerLink]="['/trading-goal/']">TRADING GOAL</a>
+                            </li>
+                            <li [class.nav-active]="currentRoute == 'profile'">
+                                <a class="trade-nav-link" [routerLink]="['/profile/']">PROFILE</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li [class.nav-active]="currentRoute == 'help'">
+                        <a class="trade-nav-link" [routerLink]="['/help/']"><span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18.315" height="18.32" viewBox="0 0 18.315 18.32">
+                                <path id="Icon_ionic-ios-help" data-name="Icon ionic-ios-help" d="M21.3,13.658a2.357,2.357,0,0,1,1.512-2.2,9.342,9.342,0,0,0-1.13-2.723,2.388,2.388,0,0,1-.959.205,2.352,2.352,0,0,1-2.151-3.31A9.314,9.314,0,0,0,15.857,4.5a2.355,2.355,0,0,1-4.4,0A9.342,9.342,0,0,0,8.735,5.63a2.352,2.352,0,0,1-2.151,3.31,2.311,2.311,0,0,1-.959-.205A9.549,9.549,0,0,0,4.5,11.464a2.356,2.356,0,0,1,0,4.4,9.342,9.342,0,0,0,1.13,2.723A2.353,2.353,0,0,1,8.74,21.69a9.4,9.4,0,0,0,2.723,1.13,2.351,2.351,0,0,1,4.388,0,9.342,9.342,0,0,0,2.723-1.13,2.355,2.355,0,0,1,3.105-3.105,9.4,9.4,0,0,0,1.13-2.723A2.368,2.368,0,0,1,21.3,13.658Zm-7.6,3.811a3.816,3.816,0,1,1,3.816-3.816A3.815,3.815,0,0,1,13.7,17.469Z" transform="translate(-4.5 -4.5)" fill="#565656"/>
+                              </svg>
+                              </span>
+                            <h4>HELP</h4>
+                        </a>
+                        <ul class="dropdown last-menu">
+                            <li [class.nav-active]="currentRoute == 'features'">
+                                <a class="trade-nav-link" [routerLink]="['/features/']">FEATURES</a>
+                            </li>
+                            <li [class.nav-active]="currentRoute == 'pricing'">
+                                <a class="trade-nav-link" [routerLink]="['/pricing/']">PRICING</a>
+                            </li>
+                            <li [class.nav-active]="currentRoute == 'contact'">
+                                <a class="trade-nav-link" [routerLink]="['/contact/']">CONTACT</a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </nav>
