@@ -141,7 +141,7 @@ export class TradeDetailsComponent implements OnInit {
     return stockEntry;
   }
 
-  calculateNetDebit(): number {
+  calculateNetDebit(): string {
     let netDebit: number = 0;
     let tmp: number;
     if (this.stockEntry && this.stockEntry.quantity && this.stockEntry.price) {
@@ -158,7 +158,7 @@ export class TradeDetailsComponent implements OnInit {
         }
       }
     }
-    return netDebit;
+    return netDebit.toFixed(2);
   }
 
   preventNegatives(e, preventDecimal?: boolean) {

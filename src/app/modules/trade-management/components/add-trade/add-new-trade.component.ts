@@ -194,7 +194,7 @@ export class AddNewTradeComponent implements OnInit {
   CheckExecutionDate(value) {
     let dialogData = {
       title: value,
-      executed: this.tradeStrategy.executed,
+      executed: this.tradeStrategy.executed + '',
       executionDate: this.tradeStrategy.executedDate
     };
     const dialogRef = this._dialog.open(TradeExecutionDateComponent, {

@@ -13,11 +13,11 @@
             <p>Is this trade already executed in the brokerage platform?</p>
             </div>
             <div class="col-3">
-                <span class="mr-3">Yes <input type="radio" name="confirm_excute" value=true [(ngModel)] = 'data.executed' (change)="confirmEvent($event)" /></span>
-                <span>No <input type="radio" value=false name="confirm_excute" [(ngModel)] = 'data.executed'  (change)="confirmEvent($event)" /></span>
+                <span class="mr-3">Yes <input type="radio" name="confirm_excute" value="true" [(ngModel)] = 'data.executed' (change)="confirmEvent($event)" /></span>
+                <span>No <input type="radio" value="false" name="confirm_excute" [(ngModel)] = 'data.executed'  (change)="confirmEvent($event)" /></span>
             </div>
         </div>
-        <div class="row py-2" *ngIf="data.executed">
+        <div class="row py-2" *ngIf="data.executed == 'true'">
             <div class="col-9 text-right">
             <p>Specify execution Call</p>
             </div>
