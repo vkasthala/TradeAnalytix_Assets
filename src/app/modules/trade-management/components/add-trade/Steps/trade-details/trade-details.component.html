@@ -37,7 +37,7 @@
 
     <div class="trade-cards-section">
       <div class="trade-card-box" *ngIf="stockAdded">
-        <div class="card-main card-main-sm">
+        <div class="card-main">
           <label class="col-form-label pt-0">Action</label>
           <select id="inputState" class="form-control select-input" [(ngModel)]="stockEntry.actionType">
             <option value=1 selected data-default>Buy to Open</option>
@@ -73,9 +73,9 @@
       </div>
       <ng-container>
         <div class="trade-card-box mb-1" *ngIf="stockOptions.length">
-          <div class="card-main card-main-sm">Action</div>
+          <div class="card-main">Action</div>
           <div class="card-main card-main-sm">Contracts</div>
-          <div class="card-main card-main-sm">Expiration</div>
+          <div class="card-main">Expiration</div>
           <div class="card-main card-main-sm">Strike</div>
           <div class="card-main card-main-sm">Call / Put</div>
           <div class="card-main card-main-sm">Price</div>
@@ -84,7 +84,7 @@
       </ng-container>
       <ng-container *ngFor="let item of stockOptions;let index = index">
         <div class="trade-card-box">
-          <div class="card-main card-main-sm">
+          <div class="card-main">
             <select id="inputState" class="form-control select-input" [(ngModel)]="stockOptions[index].actionType">
               <option value=1 selected data-default>Buy to Open</option>
               <option value=2>Sell to Open</option>
@@ -94,7 +94,7 @@
             <input type="number" (keydown)="preventNegatives($event, false)" min="0" class="form-control cards-input"
               placeholder="" [(ngModel)]="stockOptions[index].contracts" />
           </div>
-          <div class="card-main card-main-sm">
+          <div class="card-main">
             <div class="datepicker-group">
               <input matInput [matDatepicker]="expireDate" (click)="expireDate.open()" id="expireDate"
                 (dateChange)="addEvent('input', $event)" name="stockOptions[index].expireDate"
