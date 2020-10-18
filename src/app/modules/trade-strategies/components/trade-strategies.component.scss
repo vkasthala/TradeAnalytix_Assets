@@ -202,13 +202,13 @@
 }
   .trade-form {
     position: relative;
-    width: 200px;
+    width: 220px;
 }
 
   img.form-icon {
     position: absolute;
-    right: 11px;
-    top: 9px;
+    right: 3px;
+    top: 12px;
     width: 19px;
 }
 
@@ -589,4 +589,11 @@ a.import-new img{
 }
 .right-con{
   width: 80%;
+}
+.custom-label {
+  pointer-events: none;
+  position: absolute;
+  left: 15px;
+  top:6px;
+  color: rgba(73, 80, 87, 0.82);
 }

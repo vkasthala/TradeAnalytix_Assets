@@ -26,24 +26,20 @@
                             </div>
                         </div>
                         <div class="st-slect-section">
-
-                            <div class="trade-sel">
-                                <select class="form-control select-input" id="inputState" placeholder="Select Strategy"
-                                    [(ngModel)]='strategiesGridFilter.strategy'>
+                            <div class="trade-sel position-relative">
+                                <span class="custom-label" *ngIf="strategyLabel">Select Strategy</span>
+                                <select class="form-control select-input" id="strategy_inputState" [(ngModel)]='strategiesGridFilter.strategy'
+                                (change)='onOptionsSelected($event)' name="strategy">
                                     <option *ngFor="let key of strategyTypes" [value]="key" [label]="strategies[key]">
                                     </option>
                                 </select>
-                                <img src="../../../../assets/images/icon/Icon ionic-ios-arrow-down.png" alt=""
-                                    class="form-icon-down">
-
-
+                                <img src="../../../../assets/images/icon/Icon ionic-ios-arrow-down.png" alt="" class="form-icon-down" />
                             </div>
                         </div>
                         <div class="st-slect-section">
-
-                            <div class="trade-sel">
-                                <select class="form-control" id="tradeStrategyStatusFilter" placeholder="Select Status"
-                                    [(ngModel)]='strategiesGridFilter.status'>
+                            <div class="trade-sel position-relative">
+                                <span class="custom-label" *ngIf="statusLabel">Select Status</span>
+                                <select class="form-control" id="tradeStrategyStatusFilter" [(ngModel)]='strategiesGridFilter.status' (change)='onOptionsSelected($event)'>
                                     <option *ngFor="let key of tradeStatusNames" [value]="key"
                                         [label]="tradeStatues[key]"></option>
                                 </select>

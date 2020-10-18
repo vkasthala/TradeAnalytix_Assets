@@ -18,9 +18,6 @@ import {FormGroup, FormControl} from '@angular/forms';
    styleUrls: ['./trade-strategies.component.scss']
 })
 export class TradeStrategiesComponent implements OnInit {
-
-   
-
    @ViewChild('tradeStrategiesGrid', { static: false }) private tradeStrategiesGrid: TradeStrategiesGrid;
    @ViewChild('tradeSearchComponent', { static: false }) private tradeSearchComponent: TradeSearchComponent;
 
@@ -31,6 +28,8 @@ export class TradeStrategiesComponent implements OnInit {
 
    expandIndex: any;
    showDetailsIndex: any;
+   strategyLabel: boolean=true;
+   statusLabel: boolean=true;
 
    myDateRangePickerOptions: IMyDrpOptions = {
       dateFormat: 'mm-dd-yyyy',
@@ -81,6 +80,7 @@ export class TradeStrategiesComponent implements OnInit {
    }
 
    symbolSelectEventHandler($event) {
+      debugger;
       this.strategiesGridFilter.stockCode = $event.code;
    }
 
@@ -109,5 +109,16 @@ export class TradeStrategiesComponent implements OnInit {
       this.strategiesGridFilter = new StrategiesGridFilter();
       this.tradeStrategiesGrid.reload();
    }
-
+   onOptionsSelected(event){
+      let value = event.target.value;
+      if(value !== ''){
+         if(event.target.name == 'strategy'){
+            this.strategyLabel = false;
+         }else{
+            this.statusLabel = false;
+         }
+      }
+      
+   }
+  
 }
