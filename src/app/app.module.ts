@@ -8,7 +8,6 @@ import { localStorageSync } from 'ngrx-store-localstorage';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { LandingComponent } from './modules/login/components/landing.component';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
@@ -19,6 +18,8 @@ import { reducers } from './modules/utilities/reducers';
 import { UtilitiesModule } from './modules/Utilities/utilities.module';
 import { UtilService } from './modules/utilities/services/util.service';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
   return localStorageSync({ keys: [globalConfigFeatureKey], rehydrate: true })(reducer);
@@ -38,6 +39,12 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     UtilitiesModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut:1500,
+      positionClass:'toast-top-center',
+      preventDuplicates:false
+    }), 
+
     StoreModule.forRoot(reducers, {
       metaReducers,
       runtimeChecks: {

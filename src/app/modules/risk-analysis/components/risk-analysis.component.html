@@ -248,6 +248,46 @@
                                     <div class="risk-stock-seciton risk-bt">
                                         <div class="stock-name">
                                             <span>
+                                                Stock Price
+                                            </span>
+                                        </div>
+
+                                        <div class="stock-inc">
+                                            <div class="stock-p">
+                                                <input type="text" class="hide-bars" min="-100" max="0" [(ngModel)]="stockEntry.price" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="risk-stock-seciton risk-bt">
+                                        <div class="stock-name">
+                                            <span>
+                                                Price Range
+                                            </span>
+                                        </div>
+
+                                        <div class="d-flex col-6 p-0">
+                                            <div class="stock-inc mr-1">
+                                                <div class="stock-p">
+                                                    <input type="number" class="hide-bars range-sm" min="-100" max="0"
+                                                        minlength="-100" maxlength="0" [(ngModel)]="stockEntry.lowerBound"
+                                                        (input)="enforceMaxLength($event, -100, 0)">
+                                                    <p>&#37;</p>
+                                                </div>
+                                            </div>
+                                            <div class="stock-inc">
+                                                <div class="stock-p">
+                                                    <input (keydown)="preventNegatives($event, true)" type="number"
+                                                    class="hide-bars range-sm" min="0" max="100" minlength="0" maxlength="100"
+                                                    [(ngModel)]="stockEntry.upperBound"
+                                                    (input)="enforceMaxLength($event, 0, 100)" />
+                                                    <p>&#37;</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="risk-stock-seciton risk-bt">
+                                        <div class="stock-name">
+                                            <span>
                                                 Stock Lower Band
                                             </span>
                                         </div>
@@ -297,7 +337,7 @@
                                                 <img src="../../../../assets/images/icon/Group 283.png" alt="" />
                                             </a>
                                         </div>
-                                    </div>
+                                    </div> -->
 
                                     <div class="risk-stock-seciton">
                                         <div class="stock-name">

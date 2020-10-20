@@ -383,7 +383,7 @@ a.btn.btn-skip {
   border: 1px solid #7070703d;
   padding: 4px 8px;
   border-radius: 50px;
-  width: 50%;
+  width: 58%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -403,7 +403,7 @@ a.btn.btn-skip {
 }
 
 .stock-name {
-  width: 50%;
+  width: 42%;
   span {
     font-size: 13px;
   }
@@ -781,4 +781,8 @@ a.btn.btn-skip {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.range-sm {
+  min-width: 50px;
+  text-align: left !important;
 }

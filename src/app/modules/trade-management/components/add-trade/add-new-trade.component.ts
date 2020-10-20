@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatStepper, MatDialog } from '@angular/material';
 import { NavigationExtras, Router } from '@angular/router';
 import { StockSymbol } from 'src/app/modules/shared/models/trade-management/stock-symbol.model';
@@ -13,13 +13,19 @@ import { EntryRulesComponent } from './Steps/entry-rules/entry-rules.component';
 import { TradeExecutionDateComponent } from 'src/app/modules/shared/components/modals/trade-execution-date/trade-execution-date.component';
 import { ActionType } from 'src/app/modules/shared/models/trade-management/action-type.enum';
 import { TradeDirection } from 'src/app/modules/shared/models/trade-management/trade-direction.enum';
+import { TradeSearchComponent } from './Steps/search-trade/trade-search.component';
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-add-new-trade',
   templateUrl: './add-new-trade.component.html',
   styleUrls: ['./add-new-trade.component.scss']
 })
 export class AddNewTradeComponent implements OnInit {
+  title = 'toaster-not';
 
+  @Input() boya: StockSymbol;
+  @ViewChild('tradeSearchComponent', { static: false }) private tradeSearchComponent: TradeSearchComponent;
   @ViewChild('stepper', { static: false }) private tradeStepper: MatStepper;
   @ViewChild('tradeMobileStepper', { static: false }) private tradeMobileStepper: MatStepper;
 
@@ -47,6 +53,7 @@ export class AddNewTradeComponent implements OnInit {
     private userStockStatsService: UserStockStatsService,
     private tradeStrategyService: TradeStrategyService,
     private router: Router,
+    private toastr: ToastrService,
     private _dialog: MatDialog) {
     this.initState();
   }
@@ -55,7 +62,13 @@ export class AddNewTradeComponent implements OnInit {
     this.setState();
   }
 
+
   enterSymbol() {
+    if(!this.selectedStock || !this.selectedStock.code){
+      this.toastr.error('Pleae Select Stock', '');
+      return false;
+    }
+    
     this.currentState++;
   }
 
@@ -210,5 +223,10 @@ export class AddNewTradeComponent implements OnInit {
       this.addTrade();
     });
   }
+
+  showSuccess() {
+    this.toastr.error('Hello world!', 'Toastr fun!');
+  }
+  
 
 }
