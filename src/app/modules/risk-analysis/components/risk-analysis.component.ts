@@ -18,6 +18,7 @@ import { StockResult } from '../models/stock-result.model';
 import { RiskAnalysisService } from '../services/risk-analysis.service';
 import { StrategyTemplate } from '../../shared/models/trade-management/strategy-template.model';
 import { TradeStrategy } from '../../trade-management/models/trade-strategy.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-risk-analysis',
@@ -53,6 +54,7 @@ export class RiskAnalysisComponent implements OnInit {
     private riskAnalysisService: RiskAnalysisService,
     private userStockStatsService: UserStockStatsService,
     private strategyCreateService: StrategyCreateService,
+    private toastr: ToastrService,
     private router: Router) {
     this.stockEntry = this.createStockEntry();
     this.initState();
@@ -66,6 +68,10 @@ export class RiskAnalysisComponent implements OnInit {
   }
 
   enterSymbol() {
+    if(!this.selectedStock || !this.selectedStock.code){
+      this.toastr.error('Pleae Select Stock', '');
+      return false;
+    }
     this.currentState++;
   }
 

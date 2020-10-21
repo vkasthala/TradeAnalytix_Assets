@@ -4,6 +4,7 @@ import { UserStockStatsService } from 'src/app/modules/shared/services/user-stoc
 import { TradeStrategyService } from '../../services/trade-strategy.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-edit-trade',
@@ -16,8 +17,9 @@ export class EditTradeComponent extends AddNewTradeComponent implements OnInit {
     userStockStatsService: UserStockStatsService,
     tradeStrategyService: TradeStrategyService,
     router: Router,
+    toastr: ToastrService,
     _dialog: MatDialog) {
-    super(userStockStatsService, tradeStrategyService, router, _dialog);
+    super(userStockStatsService, tradeStrategyService, router, toastr, _dialog);
     this.edit = true;
     this.add = false;
   }
