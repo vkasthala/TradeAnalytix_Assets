@@ -12,10 +12,20 @@ export class StockSymbolService {
 
   private apiUrl = environment.apiUrl;
 
+  private symobols: StockSymbol[] = [];
+
   constructor(private httpService: HttpService) { }
 
   public getStockSymbols(): Observable<StockSymbol[]> {
-    return this.httpService.get<StockSymbol[]>(this.apiUrl + '/stock-symbols');
+    if (this.symobols.length) {
+      return new Observable(subscriber => subscriber.next(this.symobols));
+    } else {
+      let observable: Observable<StockSymbol[]> = this.httpService.get<StockSymbol[]>(this.apiUrl + '/stock-symbols');
+      observable.subscribe(result => {
+        this.symobols = result;
+      });
+      return observable;
+    }
   }
 
   public getStockSymbolById(id: number): Observable<StockSymbol> {

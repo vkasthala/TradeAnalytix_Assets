@@ -68,7 +68,7 @@ export class RiskAnalysisComponent implements OnInit {
   }
 
   enterSymbol() {
-    if(!this.selectedStock || !this.selectedStock.code){
+    if (!this.selectedStock || !this.selectedStock.code) {
       this.toastr.error('Pleae Select Stock', '');
       return false;
     }
@@ -174,6 +174,7 @@ export class RiskAnalysisComponent implements OnInit {
   loadStockBriefSummary() {
     this.userStockStatsService.getUserStockBriefSummary(this.selectedStock.id, 1).subscribe(result => {
       this.stockSummary = result;
+      this.stockEntry.price = this.stockSummary.close;
     });
   }
 

@@ -455,7 +455,7 @@
                                         <div class="risk-tabs-table">
 
                                             <div class="risk-table"
-                                                *ngIf="stockAdded && riskAnalysisResults && riskAnalysisResults.length">
+                                                *ngIf="riskAnalysisResults && riskAnalysisResults.length">
 
                                                 <div class="trad-risk-head">
                                                     <h6>
@@ -467,7 +467,7 @@
                                                         <tr>
                                                             <th>Change</th>
                                                             <th>Stock Price</th>
-                                                            <th>Gain/Loss</th>
+                                                            <th *ngIf="stockAdded">Gain/Loss</th>
                                                         </tr>
                                                     </thead>
 
@@ -477,7 +477,7 @@
                                                                 [ngClass]="{ 'trade-rd' :item.stockPriceResult.gainLoss >= 0, 'trade-rdd':item.stockPriceResult.gainLoss < 0}">
                                                                 {{item.stockPriceResult.change + '%'}}</td>
                                                             <td>{{item.stockPriceResult.stockPrice}}</td>
-                                                            <td
+                                                            <td *ngIf="stockAdded"
                                                                 [ngClass]="{ 'trade-rd' :item.stockPriceResult.gainLoss >= 0, 'trade-rdd':item.stockPriceResult.gainLoss < 0}">
                                                                 {{item.stockPriceResult.gainLoss}}</td>
                                                         </tr>

@@ -50,7 +50,7 @@ export class TradeSearchComponent implements OnInit {
             var str = this.searchData[i].name;
             var code = this.searchData[i].code;
             var value = term.toLowerCase();
-            if (str.toLowerCase().includes(value) || code.toLowerCase().includes(value)) {
+            if (str.toLowerCase().startsWith(value) || code.toLowerCase() === value) {
                 this.TradeList.push(this.searchData[i]);
             }
         }
