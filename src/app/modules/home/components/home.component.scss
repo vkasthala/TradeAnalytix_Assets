@@ -4,13 +4,15 @@
 
 .trade-dashboard-topbar {
   height: auto;
-  @include gradient-background();
+  background: #fff;
+  box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.2);
+  // @include gradient-background();
 
   .trade-dash-sections {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px 14px;
+    padding: .789rem 0;
     @media #{$extra-small} {
       padding: 0px;
     }
@@ -25,16 +27,17 @@
       }
     }
 
-    .dashboard-right-login {
+    .user-details {
       display: flex;
       align-items: center;
+      padding: 5px;
       @media #{$extra-small} {
         display: none;
       }
 
       .login-img {
-        width: 60px;
-        height: 60px;
+        width: 40px;
+        height: 40px;
         border-radius: 50%;
         border: 1px solid $white;
         overflow: hidden;
@@ -46,14 +49,14 @@
         }
       }
 
-      .login-member {
-        color: $white;
-
-        .login-member-name {
-          h4 {
-            cursor: pointer;
-            font-size: 15px;
-          }
+      .login-member-name {
+        color: #000;
+        font-weight: 500;
+        font-size: .78rem;
+        h5 {
+          font-weight: 500;
+          font-size: .78rem;
+          padding: .25rem 0;
         }
       }
     }
@@ -63,13 +66,11 @@
 // Dashboard Navabr
 .trade-dashboard-navbar {
   background-color: $white;
-  box-shadow: 1px 0px 4px #00000087;
 
   .trade-navbar {
     width: 100%;
-    height: 50px;
     display: flex;
-    padding: 0px 6px;
+    padding: 0px;
 
     @include media(">tablet", "<laptop") {
       padding: 0px;
@@ -86,7 +87,7 @@
       align-items: center;
       width: 100%;
       // flex-flow: wrap;
-      padding: 5px;
+      padding: 0;
 
       @include media(">tablet", "<laptop") {
         flex-wrap: wrap;
@@ -100,6 +101,7 @@
       li {
         cursor: pointer;
         position: relative;
+        padding: 0 .5rem;
         &:hover > ul {
           visibility: visible;
           opacity: 1;
@@ -111,6 +113,7 @@
           align-items: center;
           text-decoration: none;
           padding: 5px;
+          color: #000;
           
           @include media(">tablet", "<laptop") {
             margin-left: 14px;
@@ -128,11 +131,9 @@
             }
           }
           h4 {
-            color: $heading-1;
-            font-size: 16px;
+            color: #000;
+            font-size: 15px;
             font-weight: 500;
-            text-transform: uppercase;
-            margin-top: 5px;
             @include media(">tablet", "<laptop") {
               font-size: 14px;
             }
@@ -146,8 +147,8 @@
           border: 1px solid #b6b6b6;
           visibility: hidden;
           opacity: 0;
-          min-width: 220px;
-          max-width: 220px;
+          min-width: 170px;
+          max-width: 170px;
           position: absolute;
           transition: all 0.5s ease;
           margin: 0;
@@ -158,12 +159,11 @@
           top: 32px;
           z-index: 10;
             li{
-              border-top: 1px solid #b6b6b6;
+              padding: 0;
                 a.trade-nav-link {
-                  color: $heading-1;
+                  color: #000;
                   font-size: 14px;
                   font-weight: 500;
-                  text-transform: uppercase;
                   padding: 10px;
                 }
 
@@ -189,7 +189,8 @@
       }
     }
     h4 {
-      color: $secondary !important;
+      // color: $secondary !important;
+      border-bottom: 2px solid #1383c0;
     }
   }
   svg path {
@@ -200,7 +201,7 @@
 // Dashboard sedction
 
 .trade-app-dashboard {
-  background-color: $btn-background;
+  background-color: #e8e8e8;
   height: auto;
   min-height: 90.43vh;
   padding-bottom: 20px;
@@ -215,7 +216,7 @@
   width: 100%;
 
   .trade-dash-main {
-    padding: 10px 20px;
+    padding: 10px 0;
     @media #{$extra-small} {
       display: none;
     }
@@ -319,15 +320,9 @@
 
 }
 .nav-active{
-  color: $primary !important;
+  // color: $primary !important;
 }
 
-
-.login-member-name {
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-}
 .edit-icon{
   margin-left: 10px;
   img{
