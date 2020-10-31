@@ -1,4 +1,12 @@
 <div class="container">
+  <div class="trade-dash-main">
+    <div class="trade-dash-name">
+        <h3>
+          Add Trade
+        </h3>
+    </div>
+  </div>
+  
   <div class="addnew-trade">
 
     <ng-container [ngSwitch]="currentState">
@@ -10,7 +18,7 @@
               <div class="d-flex justify-content-center align-items-center">
                 <label class="col-form-label px-2">Enter Symbol</label>
                 <app-trade-search (symbolSelectEvent)="symbolSelectEventHandler($event)"></app-trade-search>
-                <button class="btn btn-enter ml-2" (click)="enterSymbol()">ENTER</button>
+                <button class="btn btn-enter ml-2" (click)="enterSymbol()">Submit </button>
               </div>
              
             </div>

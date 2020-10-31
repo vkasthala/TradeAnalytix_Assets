@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
       case 'dashboard': return {breadcrumb : 'DASHBOARD', title: 'DASHBOARD'};
       case 'new-trade': return {breadcrumb : 'ADD NEW TRADE', title: 'ADD NEW TRADE'};
       case 'import-trades': return {breadcrumb : 'IMPORT TRADES', title: 'IMPORT TRADES'};
-      case 'trade-strategies': return {breadcrumb : 'TRADE STRATEGIES', title: 'TRADE STRATEGIES'};
+      case 'trade-strategies': return {breadcrumb : 'Trade Strategies', title: 'Trade Strategies'};
       case 'compare-strategies': return {breadcrumb : 'COMPARE STRATEGIES', title: 'COMPARE STRATEGIES'};
       case 'reports': return {breadcrumb : 'REPORTS', title: 'REPORTS'};
       case 'help': return {breadcrumb : 'HELP', title: 'HELP'};
