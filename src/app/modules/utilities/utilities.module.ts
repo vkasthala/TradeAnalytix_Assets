@@ -7,9 +7,11 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatIconModule} from '@angular/material/icon';
 import { MyDateRangePickerModule } from 'mydaterangepicker';
 import { FooterComponent } from '../shared/components/footer/footer.component';
+import { OauthRedirectComponent } from './components/oauth-redirect/oauth-redirect.component';
 @NgModule({
   declarations: [
-    FooterComponent
+    FooterComponent,
+    OauthRedirectComponent
   ],
   imports: [
     CommonModule,

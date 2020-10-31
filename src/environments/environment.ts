@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8080'
+  apiUrl: 'http://ec2-3-137-151-176.us-east-2.compute.amazonaws.com:8080',
+  redirectUri: 'http://ec2-18-222-142-19.us-east-2.compute.amazonaws.com/oauth-redirect'
 };
 
 /*

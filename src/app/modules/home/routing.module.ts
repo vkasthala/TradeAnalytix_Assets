@@ -15,6 +15,7 @@ import { AddnewtradeplanComponent } from '../../modules/trade-plan/components/ad
 import { TradePlansComponent } from '../../modules/trade-plan/components/trade-plans.component';
 import { ProfileComponent } from '../../modules/user-profile/components/profile.component';
 import { RiskAnalysisComponent } from '../../modules/risk-analysis/components/risk-analysis.component';
+import { OauthRedirectComponent } from '../Utilities/components/oauth-redirect/oauth-redirect.component';
 
 const routes: Routes = [
   {
@@ -76,6 +77,10 @@ const routes: Routes = [
         {
           path : 'profile',
           component : ProfileComponent
+        },
+        {
+          path: 'oauth-redirect',
+          component: OauthRedirectComponent
         }
     ]
   },

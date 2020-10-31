@@ -53,6 +53,7 @@ import { TradeExecutionDateComponent } from '../shared/components/modals/trade-e
 import { TradeStrategiesGrid } from '../trade-strategies/components/trade-strategies-grid/trade-strategies-grid';
 import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { OauthRedirectComponent } from '../Utilities/components/oauth-redirect/oauth-redirect.component';
 // import { MatTableDataSource } from '@angular/material';
 
 @NgModule({

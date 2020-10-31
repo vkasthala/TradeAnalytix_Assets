@@ -10,7 +10,7 @@ export class HttpService {
   constructor(private http: HttpClient) { }
 
   public get<T>(url: string): Observable<T> {
-    return this.http.get<T>(url);
+    return this.getWithParams(url, new Map(), new Map())
   }
 
   public getWithParams<T>(url: string, requestParamsMap: Map<string, string>, headersMap: Map<string, string>): Observable<T> {
@@ -21,7 +21,7 @@ export class HttpService {
   }
 
   public post<S, T>(url: string, body: S): Observable<T> {
-    return this.http.post<T>(url, body);
+    return this.postWithHeaders(url, body, new Map());
   }
 
   public postWithHeaders<S, T>(url: string, body: S, headersMap: Map<string, string>): Observable<T> {
@@ -34,7 +34,7 @@ export class HttpService {
     return this.http.delete<void>(url);
   }
 
-  private createHttpParms(requestParams: Map<string, string>) {
+  private createHttpParms(requestParams: Map<string, string>): HttpParams {
     let httpParams: HttpParams = new HttpParams();
     let paramText: string = '';
     for (let key of requestParams.keys()) {
@@ -43,11 +43,14 @@ export class HttpService {
     return httpParams;
   }
 
-  private createHttpHeaders(headersMap: Map<string, string>) {
-    let httpHeaders: HttpHeaders = new HttpHeaders;
+  private createHttpHeaders(headersMap: Map<string, string>): HttpHeaders {
+    let httpHeaders: HttpHeaders = new HttpHeaders({
+      Authorization: 'Bearer ' + sessionStorage.getItem('token')
+    });
     for (let key in headersMap.keys()) {
-      httpHeaders.set(key, headersMap.get(key));
+      httpHeaders.append(key, headersMap.get(key));
     }
+    console.log('http heades:', httpHeaders);
     return httpHeaders;
   }
 
