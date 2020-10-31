@@ -85,17 +85,17 @@
                                     <mat-icon>keyboard_arrow_down</mat-icon>
                                 </a>
                                 <ul class="dropdown">
-                                    <div class="d-flex user-details">
+                                    <!-- <div class="d-flex user-details">
                                         <div class="login-img">
                                             <img src="../../../assets/images/face-img.png" alt="">
-                                        </div>
+                                        </div> 
                                         <div class="login-member">
                                             <div class="login-member-name">
                                                 <h5>Welcome Venkat</h5>
                                                 <span class="trade-nav-link" (click)="logout()">Logout</span>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <li [class.nav-active]="currentRoute == 'manage-rules'">
                                         <a class="trade-nav-link" [routerLink]="['/manage-rules/']">Entry/Exit Rules</a>
                                     </li>
@@ -115,9 +115,9 @@
                                     <li [class.nav-active]="currentRoute == 'contact'">
                                         <a class="trade-nav-link" [routerLink]="['/contact/']">Contact</a>
                                     </li>
-                                    <!-- <li [class.nav-active]="currentRoute == 'contact'">
+                                    <li [class.nav-active]="currentRoute == 'contact'">
                                         <a class="trade-nav-link" (click)="logout()">Logout</a>
-                                    </li> -->
+                                    </li>
                                 </ul>
                             </li>
                         </ul>
