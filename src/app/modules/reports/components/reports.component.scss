@@ -1,7 +1,7 @@
 @import '../../../../assets/styles/variable.scss';
 
 .reports-section {
-    padding: 0px 20px;
+    padding: 0px;
 }
 
 // risk tabs
@@ -55,6 +55,7 @@
     color: #7a9181;
     line-height: 30px;
     border-radius: 0 0 5px 5px;
+    box-shadow: 0px 0px 6px 0px #5a5a5a;
     @media #{$extra-small} {
       overflow-y: scroll;
     }
@@ -214,8 +215,8 @@
 
 .left-filters {
   display: flex;
-    justify-content: flex-end;
-    width: 51%;
+  justify-content: flex-end;
+  
 }
 
 .right-datepick {
@@ -227,6 +228,7 @@
     justify-content: flex-end;
     align-items: end;
     width: 50%;
+    padding-right: 1rem;
     @media #{$small} {
       justify-content: flex-start;
       align-items: flex-start;

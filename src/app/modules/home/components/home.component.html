@@ -32,8 +32,8 @@
                                             Import Trades
                                         </a>
                                     </li>
-                                    <li [class.nav-active]="currentRoute == 'view-strategies'">
-                                        <a class="trade-nav-link" [routerLink]="['/view-strategies/']">
+                                    <li [class.nav-active]="currentRoute == 'trade-strategies'">
+                                        <a class="trade-nav-link" [routerLink]="['/trade-strategies/']">
                                             View Strategies
                                         </a>
                                     </li>
@@ -64,11 +64,11 @@
                                     <mat-icon>keyboard_arrow_down</mat-icon>
                                 </a>
                                 <ul class="dropdown">
-                                    <li [class.nav-active]="currentRoute == 'add-trade-plan'">
-                                        <a class="trade-nav-link" [routerLink]="['/add-trade-plan/']">Add Trade Plan</a>
+                                    <li [class.nav-active]="currentRoute == 'new-trade'">
+                                        <a class="trade-nav-link" [routerLink]="['/new-trade/']">Add Trade Plan</a>
                                     </li>
-                                    <li [class.nav-active]="currentRoute == 'view-trade-plans'">
-                                        <a class="trade-nav-link" [routerLink]="['/view-trade-plans/']">View Plans</a>
+                                    <li [class.nav-active]="currentRoute == 'trade-plans'">
+                                        <a class="trade-nav-link" [routerLink]="['/trade-plans/']">View Plans</a>
                                     </li>
                                 </ul>
                             </li>
@@ -96,8 +96,8 @@
                                             </div>
                                         </div>
                                     </div> -->
-                                    <li [class.nav-active]="currentRoute == 'manage-rules'">
-                                        <a class="trade-nav-link" [routerLink]="['/manage-rules/']">Entry/Exit Rules</a>
+                                    <li [class.nav-active]="currentRoute == 'exit-rules'">
+                                        <a class="trade-nav-link" [routerLink]="['/exit-rules/']">Entry/Exit Rules</a>
                                     </li>
                                     
                                     <li [class.nav-active]="currentRoute == 'profile'">

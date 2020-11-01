@@ -66,7 +66,7 @@ export class AddNewTradeComponent implements OnInit {
   enterSymbol() {
     if(!this.selectedStock || !this.selectedStock.code){
       this.toastr.error('Pleae Select Stock', '');
-      return false;
+      //return false;
     }
     
     this.currentState++;

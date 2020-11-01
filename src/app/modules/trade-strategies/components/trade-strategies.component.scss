@@ -162,7 +162,7 @@
   
   .trade-st-box {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-evenly;
     align-items: center;
     width: 100%;
     padding: 15px 0px;
@@ -180,28 +180,29 @@
 
 .st-slect-section{
   margin-right: .5rem;
+  height: 35px;
   @media #{$small} {
     margin-bottom: 15px;
     }
 }
 .select-btn{
+  display: flex;
+  align-items: center;
   @media #{$medium} {
-   display: flex;
-   justify-content: space-between;
-    }
+    display: flex;
+    justify-content: space-between;
+  }
 
-
-    button.btn.btn-apply {
-      @media #{$medium} {
-
+  button.btn.btn-apply {
+    @media #{$medium} {
       padding: 0px 4px;
       font-size: 12px;
-      }
+    }
   }
 }
   .trade-form {
     position: relative;
-    width: 120px;
+    width: 220px;
 }
 
   img.form-icon {
@@ -218,13 +219,9 @@
   width: 14px;
 }
 
-.form-control{
-    border: 1px solid #707070;
-}
-
 
 .trade-sel {
-    width: 140px;
+    width: 240px;
     position: relative;
   
   select{
@@ -242,10 +239,14 @@
 
 }
 
-.trade-date .form-control{
-  font-size: 0.89rem;
-  color: #000;
+.trade-date {
+  line-height: 1;
+  .trade-date .form-control{
+    font-size: 0.89rem;
+    color: #000;
+  }
 }
+
 .trade-sel .form-control{
   font-size: 0.89rem;
   color: #000;

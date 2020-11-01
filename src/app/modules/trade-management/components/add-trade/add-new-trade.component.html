@@ -8,7 +8,6 @@
   </div>
   
   <div class="addnew-trade">
-
     <ng-container [ngSwitch]="currentState">
       <ng-container *ngSwitchCase="1">
         <div class="addnew-trade-body">
@@ -26,7 +25,7 @@
         </div>
       </ng-container>
       <ng-container *ngSwitchCase="2">
-        <div class="addnew-trade-body mb-1">
+        <div class="addnew-trade-body mb-2">
           <app-trade-details-header [selectedStock]="selectedStock" [stockSummary]="stockSummary"
             (loadMoreStats)="loadMoreStatsHandler($event)"></app-trade-details-header>
         </div>
