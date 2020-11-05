@@ -54,6 +54,8 @@ import { TradeStrategiesGrid } from '../trade-strategies/components/trade-strate
 import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { OauthRedirectComponent } from '../Utilities/components/oauth-redirect/oauth-redirect.component';
+import { RiskAnalysisChartComponent } from '../risk-analysis/components/risk-analysis-chart/risk-analysis-chart.component';
+import { ChartModule } from 'angular-highcharts';
 // import { MatTableDataSource } from '@angular/material';
 
 @NgModule({
@@ -90,6 +92,7 @@ import { OauthRedirectComponent } from '../Utilities/components/oauth-redirect/o
     TradePlansComponent,
     ProfileComponent,
     RiskAnalysisComponent,
+    RiskAnalysisChartComponent,
     EditTradeDetailsComponent,
     AddToPositionComponent,
     AddToStockPositionComponent,
@@ -111,6 +114,7 @@ import { OauthRedirectComponent } from '../Utilities/components/oauth-redirect/o
     MatDatepickerModule,
     MatTableModule,
     MatPaginatorModule,
+    ChartModule
     // MatTableDataSource
   ],
   entryComponents: [

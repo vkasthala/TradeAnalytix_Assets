@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { ActionType } from '../../shared/models/trade-management/action-type.enum';
 import { OptionEntry } from '../../shared/models/trade-management/option-entry.model';
@@ -19,6 +19,7 @@ import { RiskAnalysisService } from '../services/risk-analysis.service';
 import { StrategyTemplate } from '../../shared/models/trade-management/strategy-template.model';
 import { TradeStrategy } from '../../trade-management/models/trade-strategy.model';
 import { ToastrService } from 'ngx-toastr';
+import { RiskAnalysisChartComponent } from './risk-analysis-chart/risk-analysis-chart.component';
 
 @Component({
   selector: 'app-risk-analysis',
@@ -26,6 +27,8 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./risk-analysis.component.scss']
 })
 export class RiskAnalysisComponent implements OnInit {
+
+  @ViewChild('riskAnalysisChartComponent', { static: false }) private riskAnalysisChartComponent: RiskAnalysisChartComponent;
 
   currentState: number = 1;
   selectedStrategy: number = 15;
