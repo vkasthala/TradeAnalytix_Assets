@@ -28,7 +28,7 @@ import { RiskAnalysisChartComponent } from './risk-analysis-chart/risk-analysis-
 })
 export class RiskAnalysisComponent implements OnInit {
 
-  @ViewChild('riskAnalysisChartComponent', { static: false }) private riskAnalysisChartComponent: RiskAnalysisChartComponent;
+  @ViewChild('riskAnalysisChart', { static: false }) private riskAnalysisChartComponent: RiskAnalysisChartComponent;
 
   currentState: number = 1;
   selectedStrategy: number = 15;
@@ -266,6 +266,18 @@ export class RiskAnalysisComponent implements OnInit {
     }
   }
 
+  initRiskAnalysisChart(riskAnalysisRequest: RiskAnalysisRequest) {
+    this.riskAnalysisService.getRiskAnalysisChart(riskAnalysisRequest).subscribe(chartResult => {
+      this.riskAnalysisChartComponent.loadChart(chartResult);
+    });
+  }
+
+  initChart() {
+    if (this.riskAnalysisChartComponent) {
+      this.initRiskAnalysisChart(this.createRiskAnalysisRequest());
+    }
+  }
+
   preventNegatives(e, preventDecimal?: boolean) {
     if (preventDecimal) {
       if (!((e.keyCode > 95 && e.keyCode < 106)
@@ -388,9 +400,7 @@ export class RiskAnalysisComponent implements OnInit {
 
   getRiskAnalysisResults(): RiskAnalysisRecord[] {
     this.riskAnalysisResults = [];
-    let riskAnalysisRequest: RiskAnalysisRequest = new RiskAnalysisRequest();
-    riskAnalysisRequest.stockPrice = this.stockEntry;
-    riskAnalysisRequest.options = this.stockOptions;
+    let riskAnalysisRequest: RiskAnalysisRequest = this.createRiskAnalysisRequest();
 
     console.log('risk analysis request:', JSON.stringify(riskAnalysisRequest));
 
@@ -401,7 +411,17 @@ export class RiskAnalysisComponent implements OnInit {
       errResponse => {
         console.log("error:", errResponse);
       });
+    if (this.riskAnalysisChartComponent) {
+      this.initRiskAnalysisChart(riskAnalysisRequest);
+    }
     return [];
+  }
+
+  createRiskAnalysisRequest(): RiskAnalysisRequest {
+    let riskAnalysisRequest: RiskAnalysisRequest = new RiskAnalysisRequest();
+    riskAnalysisRequest.stockPrice = this.stockEntry;
+    riskAnalysisRequest.options = this.stockOptions;
+    return riskAnalysisRequest;
   }
 
   createOptionResults(length: number): OptionResult[] {

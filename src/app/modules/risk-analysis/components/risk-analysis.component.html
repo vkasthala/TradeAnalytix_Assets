@@ -450,7 +450,7 @@
                                     </li>
                                     <li class="" role="presentation">
                                         <a aria-controls="profile" aria-expanded="false" data-toggle="tab"
-                                            href="#Section2" role="tab">Charts</a>
+                                            href="#Section2" role="tab" (click)="initChart()">Charts</a>
                                     </li>
                                 </ul>
                                 <div class="tab-content tabs">
@@ -558,7 +558,7 @@
                                             <img src="../../../../assets/images/icon/Image 24.png" alt=""
                                                 class="img-responsive" />
                                         </div> -->
-                                        <app-risk-analysis-chart></app-risk-analysis-chart>
+                                        <app-risk-analysis-chart #riskAnalysisChart></app-risk-analysis-chart>
                                     </div>
                                 </div>
                             </div>

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'angular-highcharts';
+import { RiskAnalysisRequest } from '../../models/risk-analysis-request.model';
+import { RiskAnalysisService } from '../../services/risk-analysis.service';
 
 
 @Component({
@@ -11,27 +13,14 @@ export class RiskAnalysisChartComponent implements OnInit {
 
   chart: Chart;
 
-  constructor() { }
+  constructor(private riskAnalysisService: RiskAnalysisService) {
+  }
 
   ngOnInit() {
-    this.chart = new Chart({
-    chart: {
-      type: 'line'
-    },
-    title: {
-      text: 'Linechart'
-    },
-    credits: {
-      enabled: false
-    },
-    series: [
-      {
-        name: 'Line 1',
-        type:'line',
-        data: [1,2,3]
-      }
-    ]
-  });
+  }
+
+  loadChart(chartResult: any) {
+    this.chart = new Chart(chartResult);
   }
 
 }

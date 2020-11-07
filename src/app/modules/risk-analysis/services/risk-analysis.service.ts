@@ -23,4 +23,8 @@ export class RiskAnalysisService {
     return this.httpService.post<RiskAnalysisRequest, RiskAnalysisResult>(this.apiUrl + "/result", request);
   }
 
+  public getRiskAnalysisChart(request: RiskAnalysisRequest): Observable<any> {
+    return this.httpService.post<RiskAnalysisRequest, any>(this.apiUrl + "/chart", request);
+  }
+
 }
