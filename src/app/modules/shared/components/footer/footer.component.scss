@@ -6,8 +6,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 20px;
-
+  padding: 5px 0;
+  color:#fff;
+  font-size: .89rem;
   .trade-logo {
     color: $white;
   }
@@ -16,11 +17,21 @@
     display: flex;
     align-items: center;
     color: $white;
+    justify-content: flex-end;
 
     img {
-      width: 30px;
+      width: 22px;
       height: auto;
-      margin-left: 2px;
+      margin-left: 4px;
+    }
+  }
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    li{
+      padding: 0 10px;
+      display: inline-flex;
     }
   }
 }

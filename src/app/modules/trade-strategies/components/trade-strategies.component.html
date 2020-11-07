@@ -11,7 +11,16 @@
         <div class="trade-strategies-table">
             <div class="card mb-4">
                 <div class="card-body">
-                    <div class="trade-st-box">
+                    <div class="text-right px-3 pt-2">
+                        <span class="cursor" (click)="strategiesFilter()">
+                            <i class="fas fa-filter"></i>
+                            
+                            <i *ngIf="!showFilters" class="negative-amt material-icons" data-toggle="tooltip" data-placement="top" title="Show Filters">filter</i> 
+                            <i *ngIf="showFilters" class="negative-amt material-icons" data-toggle="tooltip" data-placement="top" title="Close Filters">close</i>
+                        </span>
+                    </div>
+                    <div *ngIf="showFilters" class="trade-st-box pt-0">
+                        
                         <div class="st-slect-section">
                             <div class="trade-form">
                                 <div class="form-group has-search">

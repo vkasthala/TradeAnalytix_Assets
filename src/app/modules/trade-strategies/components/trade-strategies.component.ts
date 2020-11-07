@@ -30,6 +30,7 @@ export class TradeStrategiesComponent implements OnInit {
    showDetailsIndex: any;
    strategyLabel: boolean=true;
    statusLabel: boolean=true;
+   showFilters: boolean=false;
 
    myDateRangePickerOptions: IMyDrpOptions = {
       dateFormat: 'mm-dd-yyyy',
@@ -53,6 +54,7 @@ export class TradeStrategiesComponent implements OnInit {
    constructor(private router: Router, private strategyCreateService: StrategyCreateService) { }
 
    ngOnInit() {
+     
    }
 
    closeTrade(strategyId) {
@@ -118,7 +120,9 @@ export class TradeStrategiesComponent implements OnInit {
             this.statusLabel = false;
          }
       }
-      
+   }
+   strategiesFilter(){
+      this.showFilters = !this.showFilters;
    }
   
 }
