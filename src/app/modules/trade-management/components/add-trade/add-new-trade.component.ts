@@ -35,6 +35,7 @@ export class AddNewTradeComponent implements OnInit {
 
   public add = true;
   public edit = false;
+  public close = false;
 
   activeStep: boolean;
   stockAdded: boolean;
@@ -65,7 +66,7 @@ export class AddNewTradeComponent implements OnInit {
 
   enterSymbol() {
     if(!this.selectedStock || !this.selectedStock.code){
-      this.toastr.error('Pleae Select Stock', '');
+      this.toastr.error('Invalid Symbol', '');
       //return false;
     }
     
@@ -105,7 +106,7 @@ export class AddNewTradeComponent implements OnInit {
       console.log('add trade...', this.tradeStrategy);
       this.tradeStrategyService.addTrade(this.tradeStrategy).subscribe(result => {
         console.log('Trade strategy successfully created');
-        alert('Trade Strategy successfully created');//TODO Replace with info box
+        this.toastr.success('Trade Strategy successfully created', '');//TODO Replace with info box
         this.router.navigateByUrl("/trade-strategies");
       });
     }
@@ -115,7 +116,7 @@ export class AddNewTradeComponent implements OnInit {
     console.log('edit trade...', this.tradeStrategy);
     this.tradeStrategyService.editTrade(this.tradeStrategy).subscribe(result => {
       console.log('Trade strategy successfully updated');
-      alert('Trade Strategy successfully updated');//TODO Replace with info box
+      this.toastr.success('Trade Strategy successfully updated', '');//TODO Replace with info box
       this.router.navigateByUrl("/trade-strategies");
     });
   }

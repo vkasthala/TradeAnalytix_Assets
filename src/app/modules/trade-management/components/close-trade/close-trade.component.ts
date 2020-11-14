@@ -1,20 +1,38 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatStepper, MatDialog } from '@angular/material';
 import { SingleInputModalComponent } from 'src/app/modules/shared/components/modals/single-input-modal/single-input-modal.component';
 
+import { AddNewTradeComponent } from '../add-trade/add-new-trade.component';
+import { UserStockStatsService } from 'src/app/modules/shared/services/user-stock-stats.service';
+import { TradeStrategyService } from '../../services/trade-strategy.service';
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-close-trade',
-  templateUrl: './close-trade.component.html',
-  styleUrls: ['./close-trade.component.scss']
+  templateUrl: '../add-trade/add-new-trade.component.html',
+  styleUrls: ['../add-trade/add-new-trade.component.scss']
+  // templateUrl: './close-trade.component.html',
+  // styleUrls: ['./close-trade.component.scss']
 })
-export class CloseTradeComponent implements OnInit {
+export class CloseTradeComponent extends AddNewTradeComponent implements OnInit {
+  constructor(
+    userStockStatsService: UserStockStatsService,
+    tradeStrategyService: TradeStrategyService,
+    router: Router,
+    toastr: ToastrService,
+    _dialog: MatDialog) {
+    super(userStockStatsService, tradeStrategyService, router, toastr, _dialog);
+    this.close = true;
+    this.edit = false;
+    this.add = false;
+  }
+
   @ViewChild('stepper', { static: false }) private tradeStepper: MatStepper;
   @ViewChild('tradeMobileStepper', { static: false }) private tradeMobileStepper: MatStepper;
   panelOpenStateOne = false;
   panelOpenStateTwo = false;
   step = 0;
-  constructor(private router: Router, private _dialog: MatDialog) { }
 
   ngOnInit() {
   }

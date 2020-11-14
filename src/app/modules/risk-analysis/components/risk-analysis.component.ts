@@ -72,7 +72,7 @@ export class RiskAnalysisComponent implements OnInit {
 
   enterSymbol() {
     if (!this.selectedStock || !this.selectedStock.code) {
-      this.toastr.error('Pleae Select Stock', '');
+      this.toastr.error('Invalid Symbol', '');
       //return false;
     }
     this.currentState++;
@@ -345,7 +345,7 @@ export class RiskAnalysisComponent implements OnInit {
   validateInputs(): boolean {
     if (this.stockAdded) {
       if (!this.stockEntry.price || this.stockEntry.price == 0) {
-        alert('Invalid Stock Price'); //TODO Need to replace all alerts with error messages
+        this.toastr.error('Invalid Stock Price', '');
         return false;
       }
 

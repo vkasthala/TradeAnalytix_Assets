@@ -764,8 +764,29 @@ a.btn.btn-skip {
 }
 @media (min-width:768px){
   .net_debit {
-    padding-left: 610px;
+    // padding-left: 610px;
     font-weight: 300;
     font-size: .89rem !important;
+    display: flex;
   }
+  .total_label {
+    width: 600px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .total_amount {
+    width: 100px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .total_return {
+    width: 165px;
+  }
+}
+
+.close_trade_module .form-control, 
+.close_trade_module .mat-input-element, 
+.disabled {
+  background: #dedede !important;
+  pointer-events: none !important;
 }

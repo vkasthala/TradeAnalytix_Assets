@@ -1,200 +1,92 @@
-<div class="container">
-    <div class="trade-dash-main">
-        <div class="trade-dash-name">
-            <h3>Entry/Exit Rules</h3>
+<div class="trade-thesis-sec">
+    <div class="trade-thesis-heading">
+        <h4>
+            Check whether this trade aligns with the following self-set exit rules
+        </h4>
+    </div>
+    <div class="pb-2 text-center font-weight-bold">
+        <div class="col-md-5 offset-md-3">
+            NOT ALIGNED / ALIGNED
         </div>
     </div>
-
-    <div class="trade-exit-rules mt-2">
-        <div class="trade-thesis-sec">
-            <div class="trade-thesis-heading">
-                <h4>
-                    Exit Rules
-                </h4>
+    <div class="">
+        <div class="thesis-list-inner row">
+            <div class="col-5 list-inner-left">
+                <h6 class="d-flex media align-items-center">
+                    <mat-icon>keyboard_arrow_right</mat-icon> Always protect your investment by hedging
+                </h6>
             </div>
-        
-            <div class="trade-thesis-inner">
-                <div class="trade-thesis-list">
-                    <div class="thesis-list-inner">
-                        <div class="list-inner-left">
-                            <span>
-                                <img src="../../../../../../../assets/images/icon/Icon ionic-ios-arrow-forward.png" alt="">
-                            </span>
-                            <h6>
-                                Do not close trade before target price is reached
-                            </h6>
-                        </div>
-                        <div class="list-inner-right">
-                            <div class="trade-check">
-                                <span class="switch-no"> NOT ALIGNED</span>
-                                <div class="switch">
-                                    <input type="checkbox" id="checkbox-1" checked/>
-                                    <label for="checkbox-1"></label>
-                                  </div>
-        
-                                  <span class="switch-yes checked"> ALIGNED</span>
-        
-                            </div>
-                          
-        
-                        </div>
-                    </div>
-        
-                    <div class="thesis-list-inner">
-                        <div class="list-inner-left">
-                            <span>
-                                <img src="../../../../../../../assets/images/icon/Icon ionic-ios-arrow-forward.png" alt="">
-                            </span>
-                            <h6>
-                                Do not close the trade if the profit is less than $100
-                            </h6>
-                        </div>
-                        <div class="list-inner-right">
-        
-                            <div class="trade-check-s">
-                                <span class="switch-no"> NOT ALIGNED</span>
-                                <div class="switch">
-                                    <input type="checkbox" id="checkbox-2" [(ngModel)]="checkbox2"/>
-                                    <label for="checkbox-2"></label>
-                                  </div>
-        
-                                  <span class="switch-yes"> ALIGNED</span>
-        
-                            </div>
-                            <div class="trade-input">
-        
-                                <div  class="form-group has-search" *ngIf="!checkbox2">
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                </div>
-                            </div>
-        
-                        </div>
-                    </div>
-        
-                    <div class="thesis-list-inner">
-                        <div class="list-inner-left">
-                            <span>
-                                <img src="../../../../../../../assets/images/icon/Icon ionic-ios-arrow-forward.png" alt="">
-                            </span>
-                            <h6>
-                                Do not close the trade if the entry hypothesis is intact
-                            </h6>
-                        </div>
-                        <div class="list-inner-right">
-                            <div class="trade-check">
-                                <span class="switch-no"> NOT ALIGNED</span>
-                                <div class="switch">
-                                    <input type="checkbox" id="checkbox-3"/>
-                                    <label for="checkbox-3"></label>
-                                  </div>
-        
-                                  <span class="switch-yes"> ALIGNED</span>
-        
-                            </div>
-                    </div>
-                    </div>
-        
-                    <div class="thesis-list-inner">
-                        <div class="list-inner-left">
-                            <span>
-                                <img src="../../../../../../../assets/images/icon/Icon ionic-ios-arrow-forward.png" alt="">
-                            </span>
-                            <h6>
-                                Do not close the trade to buy another hot stock                    
-                            </h6>
-                        </div>
-                        <div class="list-inner-right">
-        
-                            <div class="trade-check-s">
-                                <span class="switch-no"> NOT ALIGNED</span>
-                                <div class="switch">
-                                    <input type="checkbox" id="checkbox-4" [(ngModel)]="checkbox4"/>
-                                    <label for="checkbox-4"></label>
-                                  </div>
-        
-                                  <span class="switch-yes"> ALIGNED</span>
-        
-                            </div>
-                            <div class="trade-input">
-        
-                                <div  class="form-group has-search" *ngIf="!checkbox4">
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                </div>
-                            </div>
-                    </div>
-                    </div>
-        
-        
-                    <div class="thesis-list-inner">
-                        <div class="list-inner-left">
-                            <span>
-                                <img src="../../../../../../../assets/images/icon/Icon ionic-ios-arrow-forward.png" alt="">
-                            </span>
-                            <h6>
-                                Do not close the trade purely based on fear                   
-                            </h6>
-                        </div>
-                        <div class="list-inner-right">
-        
-                            <div class="trade-check">
-                                <span class="switch-no"> NOT ALIGNED</span>
-                                <div class="switch">
-                                    <input type="checkbox" id="checkbox-5"/>
-                                    <label for="checkbox-5"></label>
-                                  </div>
-        
-                                  <span class="switch-yes"> ALIGNED</span>
-        
-                            </div>
-                         
-                    </div>
-                    </div>
-        
-        
-                    <div class="thesis-list-inner">
-                        <div class="list-inner-left">
-                            <span>
-                                <img src="../../../../../../../assets/images/icon/Icon ionic-ios-arrow-forward.png" alt="">
-                            </span>
-                            <h6>
-                                Do not close the position without meeting the exit criteria.
-                            </h6>
-                        </div>
-                        <div class="list-inner-right">
-                            <div class="trade-check-s">
-                                <span class="switch-no"> NOT ALIGNED</span>
-                                <div class="switch">
-                                    <input type="checkbox" id="checkbox-6" [(ngModel)]="checkbox6"/>
-                                    <label for="checkbox-6"></label>
-                                  </div>
-        
-                                  <span class="switch-yes"> ALIGNED</span>
-        
-                            </div>
-        
-                            <div class="trade-input">
-        
-                                <div  class="form-group has-search" *ngIf="!checkbox6">
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-        
-                    
+            <div class="switch">
+                <input type="checkbox" checked id="hedging1" name="hedging1" />
+                <label for="hedging1"></label>
             </div>
-            </div>
-        
-        
-        <div  class="trad-border " ></div>
-        
-        <br>
-        <div class="order-btn text-center" >
-            <a  class="btn btn-next" (click)="closeTrade()">Close TRADE</a>
         </div>
-        <div class="trade-new-btn">
-            <a class="btn btn-per" (click)="previous()">Previous</a>
+        <div class="thesis-list-inner row">
+            <div class="col-5 list-inner-left">
+                <h6 class="d-flex media align-items-center">
+                    <mat-icon>keyboard_arrow_right</mat-icon> Do not trade options expiring in the same week
+                </h6>
+            </div>
+            <div class="switch">
+                <input type="checkbox" id="same_week1" name="same_week1" />
+                <label for="same_week1"></label>
+            </div>
+            <input type="text" class="trade-check" placeholder="Specify reason for not aligning with the rule"
+                [(ngModel)]="entryRules[1].comment" />
         </div>
-    </div>
+        <div class="thesis-list-inner row">
+            <div class="col-5 list-inner-left">
+                <h6 class="d-flex media align-items-center">
+                    <mat-icon>keyboard_arrow_right</mat-icon> Do not put more than 100,000 in a stock
+                </h6>
+            </div>
+            <div class="switch">
+                <input type="checkbox" id="onelack_stock1" name="onelack_stock1" />
+                <label for="onelack_stock1"></label>
+            </div>
+        </div>
+        <div class="thesis-list-inner row">
+            <div class="col-5 list-inner-left">
+                <h6 class="d-flex media align-items-center">
+                    <mat-icon>keyboard_arrow_right</mat-icon> Trade only the stocks that were planned for the day
+                </h6>
+            </div>
+            <div class="switch">
+                <input type="checkbox" id="planned_day1" name="planned_day1" />
+                <label for="planned_day1"></label>
+            </div>
+            <input type="text" class="trade-check" placeholder="Specify reason for not aligning with the rule"
+                [(ngModel)]="entryRules[3].comment" />
+        </div>
+        <div class="thesis-list-inner row">
+            <div class="col-5 list-inner-left">
+                <h6 class="d-flex media align-items-center">
+                    <mat-icon>keyboard_arrow_right</mat-icon> Write a detailed trade thesis with justification and risks
+                </h6>
+            </div>
+            <div class="switch">
+                <input type="checkbox" id="justification_risks1" name="justification_risks1" />
+                <label for="justification_risks1"></label>
+            </div>
+            <input type="text" class="trade-check" placeholder="Specify reason for not aligning with the rule"
+                [(ngModel)]="entryRules[4].comment" />
+        </div>
+        <div class="thesis-list-inner row">
+            <div class="col-5 list-inner-left">
+                <h6 class="d-flex media align-items-center">
+                    <mat-icon>keyboard_arrow_right</mat-icon> Maximum risk should not be more than 20,000 on a trade
+                </h6>
+            </div>
+            <div class="switch">
+                <input type="checkbox" id="maximum_risk1" name="maximum_risk1" />
+                <label for="maximum_risk1"></label>
+            </div>
+        </div>
     </div>
 </div>
+
+<!-- <div class="trad-border "></div> -->
+
+<!-- <div class="order-btn text-center">
+    <a class="btn btn-next" (click)="confirmAddTrade()">ADD TRADE</a>
+</div> -->

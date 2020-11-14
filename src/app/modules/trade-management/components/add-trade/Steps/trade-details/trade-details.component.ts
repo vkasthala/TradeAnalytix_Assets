@@ -45,6 +45,7 @@ export class TradeDetailsComponent implements OnInit {
   @Input("inputState") inputState: TradeInputData;
   @Input("addTrade") addTrade: boolean;
   @Input("editTrade") editTrade: boolean;
+  @Input("closeTrade") closeTrade: boolean;
 
   stockEntry: StockEntry;
   stockOptions: OptionEntry[] = [];
@@ -57,6 +58,7 @@ export class TradeDetailsComponent implements OnInit {
     private _dialog: MatDialog) { }
 
   ngOnInit() {
+    console.log('closeTrade:', this.router.getCurrentNavigation(), this.closeTrade);
     console.log('child init:', this.router.getCurrentNavigation(), this.addTrade, this.editTrade);
     this.stockEntry = this.createStockEntry();
   }

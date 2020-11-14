@@ -13,6 +13,7 @@
         border-radius: 4px;
         cursor: pointer;
         width: 100%;
+        text-align: left;
         &:focus {
             border: 0;
             outline: 0;
@@ -28,7 +29,6 @@
         position: absolute;
         right: 0;
         top: 5px;
-        background: #fff !important;
         &:focus {
             outline: 0;
             background: transparent !important;
@@ -86,7 +86,7 @@
     color: #0183c0 !important;
 }
 .toast-top-center {
-    top: 120px !important;
+    top: 60px !important;
 }
 .toast-error {
     background-color: #ff3547 !important;
@@ -142,4 +142,16 @@
 .mat-header-cell {
     font-size: 14px !important;
     font-weight: 500;
+}
+input.mat-input-element {
+    color: #495057;
+}
+.d-inline-flex {
+    display: -webkit-inline-box !important;
+    display: -ms-inline-flexbox !important;
+    display: inline-flex !important; 
+}
+.datepicker-sm {
+    display: inline-flex !important;
+    width: 120px;
 }

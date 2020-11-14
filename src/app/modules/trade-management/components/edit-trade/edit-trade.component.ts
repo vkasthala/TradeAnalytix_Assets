@@ -21,6 +21,7 @@ export class EditTradeComponent extends AddNewTradeComponent implements OnInit {
     _dialog: MatDialog) {
     super(userStockStatsService, tradeStrategyService, router, toastr, _dialog);
     this.edit = true;
+    this.close = false;
     this.add = false;
   }
 

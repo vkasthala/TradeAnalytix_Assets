@@ -49,6 +49,109 @@
                     </div>
 
                     <!-- Grid row -->
+                    <div class="mat-elevation-z8">
+                        <mat-table [dataSource]="dataSource" matSort>
+                      
+                          <!-- Strategy ID Column -->
+                          <ng-container matColumnDef="id">
+                            <mat-header-cell class="strategy-id-cell" *matHeaderCellDef mat-sort-header>Strategy ID</mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.uid ? element.uid : element.id}} </mat-cell>
+                          </ng-container>
+                      
+                          <!-- Strategy Column -->
+                          <ng-container matColumnDef="strategy">
+                            <mat-header-cell class="strategy-name-cell" *matHeaderCellDef mat-sort-header>Strategy</mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.strategy}} </mat-cell>
+                          </ng-container>
+                      
+                          <!-- Stock Column -->
+                          <ng-container matColumnDef="stockName">
+                            <mat-header-cell class="stock-name-cell" *matHeaderCellDef mat-sort-header>Stock</mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.stockName}} </mat-cell>
+                          </ng-container>
+                      
+                          <!-- Direction Column -->
+                          <ng-container matColumnDef="direction">
+                            <mat-header-cell class="direction-cell" *matHeaderCellDef mat-sort-header>Direction</mat-header-cell>
+                            <mat-cell *matCellDef="let element">
+                              <span class="text-success direction_arrow" *ngIf="element.direction == 'Long'">
+                                <mat-icon>arrow_upward</mat-icon>
+                              </span>
+                              <span class="text-danger direction_arrow" *ngIf="element.direction == 'Neutral'">
+                                <mat-icon>arrow_downward</mat-icon>
+                              </span>
+                              {{element.direction}}
+                            </mat-cell>
+                          </ng-container>
+                      
+                          <!-- Status Column -->
+                          <ng-container matColumnDef="status">
+                            <mat-header-cell class="status-cell" *matHeaderCellDef mat-sort-header>Status</mat-header-cell>
+                            <mat-cell *matCellDef="let element" [ngClass]="{
+                              'text-primary': element.status == 'Draft',
+                              'text-warning': element.status == 'Open',
+                              'text-danger': element.status == 'Closed',
+                              'text-secondary': element.status == 'Expired'
+                      
+                          }"> {{element.status}} </mat-cell>
+                          </ng-container>
+                      
+                          <!-- Alignment Column -->
+                          <ng-container matColumnDef="alignment">
+                            <mat-header-cell  *matHeaderCellDef mat-sort-header>Alignment</mat-header-cell>
+                            <mat-cell *matCellDef="let element"> </mat-cell>
+                          </ng-container>
+                      
+                          <!-- Open Date Column -->
+                          <ng-container matColumnDef="openDate">
+                            <mat-header-cell class="open-date-cell" *matHeaderCellDef mat-sort-header>Open Date</mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.openDate}} </mat-cell>
+                          </ng-container>
+                      
+                          <!-- Closed Date Column -->
+                          <ng-container matColumnDef="closeDate">
+                            <mat-header-cell class="close-date-cell" *matHeaderCellDef mat-sort-header>Close Date</mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.closeDate}} </mat-cell>
+                          </ng-container>
+                      
+                          <!-- Closed Date Column -->
+                          <ng-container matColumnDef="action">
+                            <mat-header-cell class="action-cell" *matHeaderCellDef mat-sort-header>Action</mat-header-cell>
+                            <mat-cell *matCellDef="let element, let i = index" class="action_colum">
+                              <i class="material-icons" (click)="expandRowOptions(i)">more_vert</i>
+                      
+                              <div class="trade-det-box" *ngIf="expandIndex == i">
+                                <div class="de-box">
+                                  <div class="right-con">
+                                    <a class="box-icon cursor-pointer" (click)="editTrade(element);closeActionBox()">
+                                      <img src="../../../../assets/images/icon/Icon material-edit.png"> <span>Edit</span>
+                                    </a>
+                                    <a class="box-icon cursor-pointer" (click)="closeTrade(element);closeActionBox()">
+                                      <img src="../../../../assets/images/icon/Icon material-close.png"> <span>Close</span>
+                                    </a>
+                                    <a class="box-icon cursor-pointer" (click)="deleteTrade(element);closeActionBox()">
+                                      <img src="../../../../assets/images/icon/Icon material-delete.png"> <span>Delete</span>
+                                    </a>
+                                  </div>
+                                  <a class="close_action_box" (click)="closeActionBox()">
+                                    <span></span>
+                                    <img src="../../../../assets/images/icon/Icon ionic-ios-close-circle.png">
+                                  </a>
+                                </div>
+                              </div>
+                            </mat-cell>
+                          </ng-container>
+                      
+                          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                        </mat-table>
+                      
+                        <!-- Angular 8 pagination -->
+                        <mat-paginator [pageSize]="20" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true"
+                          [length]="dataSource.totalCount">
+                        </mat-paginator>
+                      </div>
+                      
                     <table class="table table-striped">
                         <thead>
                             <tr>
