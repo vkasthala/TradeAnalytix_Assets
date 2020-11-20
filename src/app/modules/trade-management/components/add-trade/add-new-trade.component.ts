@@ -24,38 +24,37 @@ import { ToastrService } from 'ngx-toastr';
 export class AddNewTradeComponent implements OnInit {
   title = 'toaster-not';
 
-  @Input() boya: StockSymbol;
-  @ViewChild('tradeSearchComponent', { static: false }) private tradeSearchComponent: TradeSearchComponent;
-  @ViewChild('stepper', { static: false }) private tradeStepper: MatStepper;
-  @ViewChild('tradeMobileStepper', { static: false }) private tradeMobileStepper: MatStepper;
+  @ViewChild('tradeSearchComponent', { static: false }) protected tradeSearchComponent: TradeSearchComponent;
+  @ViewChild('stepper', { static: false }) protected tradeStepper: MatStepper;
+  @ViewChild('tradeMobileStepper', { static: false }) protected tradeMobileStepper: MatStepper;
 
-  @ViewChild('tradeDetails', { static: false }) private tradeDetails: TradeDetailsComponent;
-  @ViewChild('tradeThesis', { static: false }) private tradeThesis: TradeThesisComponent;
-  @ViewChild('entryRules', { static: false }) private entryRules: EntryRulesComponent;
+  @ViewChild('tradeDetails', { static: false }) protected tradeDetails: TradeDetailsComponent;
+  @ViewChild('tradeThesis', { static: false }) protected tradeThesis: TradeThesisComponent;
+  @ViewChild('entryRules', { static: false }) protected entryRules: EntryRulesComponent;
 
-  public add = true;
-  public edit = false;
-  public close = false;
+  protected add = true;
+  protected edit = false;
+  protected close = false;
 
-  activeStep: boolean;
-  stockAdded: boolean;
-  currentState: number = 1;
+  protected activeStep: boolean;
+  protected stockAdded: boolean;
+  protected currentState: number = 1;
 
-  selectedStock: StockSymbol = new StockSymbol();
-  stockSummary: UserStockSummary = new UserStockSummary();
+  protected selectedStock: StockSymbol = new StockSymbol();
+  protected stockSummary: UserStockSummary = new UserStockSummary();
 
-  tradeStrategy: TradeStrategy = new TradeStrategy();
+  protected tradeStrategy: TradeStrategy = new TradeStrategy();
 
-  inputState: TradeInputData;
+  protected inputState: TradeInputData;
 
-  detailSummaryLoaded: boolean;
+  protected detailSummaryLoaded: boolean;
 
   constructor(
-    private userStockStatsService: UserStockStatsService,
-    private tradeStrategyService: TradeStrategyService,
-    private router: Router,
-    private toastr: ToastrService,
-    private _dialog: MatDialog) {
+    protected userStockStatsService: UserStockStatsService,
+    protected tradeStrategyService: TradeStrategyService,
+    protected router: Router,
+    protected toastr: ToastrService,
+    protected _dialog: MatDialog) {
     this.initState();
   }
 

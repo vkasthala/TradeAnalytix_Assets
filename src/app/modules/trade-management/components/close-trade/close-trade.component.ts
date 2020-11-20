@@ -1,19 +1,17 @@
-import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
-import { NavigationExtras, Router } from '@angular/router';
-import { MatStepper, MatDialog } from '@angular/material';
+import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { SingleInputModalComponent } from 'src/app/modules/shared/components/modals/single-input-modal/single-input-modal.component';
-
-import { AddNewTradeComponent } from '../add-trade/add-new-trade.component';
 import { UserStockStatsService } from 'src/app/modules/shared/services/user-stock-stats.service';
 import { TradeStrategyService } from '../../services/trade-strategy.service';
-import { ToastrService } from 'ngx-toastr';
+import { AddNewTradeComponent } from '../add-trade/add-new-trade.component';
+
 
 @Component({
   selector: 'app-close-trade',
   templateUrl: '../add-trade/add-new-trade.component.html',
   styleUrls: ['../add-trade/add-new-trade.component.scss']
-  // templateUrl: './close-trade.component.html',
-  // styleUrls: ['./close-trade.component.scss']
 })
 export class CloseTradeComponent extends AddNewTradeComponent implements OnInit {
   constructor(
@@ -28,13 +26,12 @@ export class CloseTradeComponent extends AddNewTradeComponent implements OnInit 
     this.add = false;
   }
 
-  @ViewChild('stepper', { static: false }) private tradeStepper: MatStepper;
-  @ViewChild('tradeMobileStepper', { static: false }) private tradeMobileStepper: MatStepper;
   panelOpenStateOne = false;
   panelOpenStateTwo = false;
   step = 0;
 
   ngOnInit() {
+    this.setState();
   }
 
   setStep(index: number) {
@@ -69,19 +66,21 @@ export class CloseTradeComponent extends AddNewTradeComponent implements OnInit 
     const dialogRef = this._dialog.open(SingleInputModalComponent, {
       disableClose: true,
       width: 'auto',
-      data : {title: value}
+      data: { title: value }
     });
 
     dialogRef.afterClosed().subscribe((res) => {
-      
+
     });
   }
-  goForward(moveTwoSteps?,mobileView?) {
+
+  goForward(moveTwoSteps?, mobileView?) {
     let stepper = mobileView ? this.tradeMobileStepper : this.tradeStepper;
-    if(stepper && !moveTwoSteps) {
+    if (stepper && !moveTwoSteps) {
       stepper.next();
-    }else if(stepper && moveTwoSteps) {
-      stepper.next();stepper.next();
+    } else if (stepper && moveTwoSteps) {
+      stepper.next(); stepper.next();
     }
   }
+
 }

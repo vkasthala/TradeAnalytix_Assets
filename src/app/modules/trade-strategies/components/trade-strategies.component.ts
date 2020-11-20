@@ -86,7 +86,6 @@ export class TradeStrategiesComponent implements OnInit {
       this.strategiesGridFilter.stockCode = $event.code;
    }
 
-
    applyFilters() {
       let tradeStrategyGridRequest = this.tradeStrategiesGrid.tradeStrategyGridRequest;
       tradeStrategyGridRequest.filters = this.strategiesGridFilter;
@@ -111,6 +110,7 @@ export class TradeStrategiesComponent implements OnInit {
       this.strategiesGridFilter = new StrategiesGridFilter();
       this.tradeStrategiesGrid.reload();
    }
+
    onOptionsSelected(event){
       let value = event.target.value;
       if(value !== ''){
@@ -121,6 +121,7 @@ export class TradeStrategiesComponent implements OnInit {
          }
       }
    }
+
    strategiesFilter(){
       this.showFilters = !this.showFilters;
    }
