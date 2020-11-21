@@ -31,7 +31,7 @@ export class TradePlansComponent implements OnInit {
   ngOnInit() {
   }
 
-  addEntry() { this.router.navigate(['/dashboard/add-new-trade-plan']) }
+  addEntry() { this.router.navigate(['/add-new-trade-plan']) }
 
 }
 
