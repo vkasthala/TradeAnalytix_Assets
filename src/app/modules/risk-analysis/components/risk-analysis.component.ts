@@ -254,6 +254,11 @@ export class RiskAnalysisComponent implements OnInit {
           console.log('stock:', state.tradeStrategy.stockEntry);
           this.stockEntry = state.tradeStrategy.stockEntry[0];
           this.stockAdded = state.tradeStrategy.stockEntry[0].actionType && state.tradeStrategy.stockEntry[0].quantity > 0;
+          if(!this.stockEntry.riskFreeRate){
+            this.stockEntry.lowerBound = -10;
+            this.stockEntry.upperBound = 10;
+            this.stockEntry.riskFreeRate = 6;
+          }
         }
         if (state.tradeStrategy && state.tradeStrategy.stockOptions) {
           console.log('stockOptions:', state.tradeStrategy.stockOptions);

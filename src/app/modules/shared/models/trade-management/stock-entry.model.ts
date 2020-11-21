@@ -7,6 +7,8 @@ export class StockEntry {
     actionType: ActionType;
     
     price: number;
+
+    closePrice: number;
     
     quantity: number;
     

@@ -8,7 +8,8 @@
           <div *ngIf="addTrade == false">
             <label class="col-form-label mr-2">Executed Date</label>
             <div class="datepicker-group datepicker-sm">
-              <input matInput [matDatepicker]="executed_date" (click)="executed_date.open()" id="executed_date" (dateChange)="addEvent('input', $event)" name="executed_date" [(ngModel)]="executedDate"/>
+              <input matInput [matDatepicker]="executed_date" (click)="executed_date.open()" id="executed_date"
+                (dateChange)="addEvent('input', $event)" name="executed_date" [(ngModel)]="executedDate" />
               <mat-datepicker-toggle matSuffix [for]="executed_date"></mat-datepicker-toggle>
               <mat-datepicker #executed_date></mat-datepicker>
             </div>
@@ -49,14 +50,16 @@
       <div class="trade-card-box" *ngIf="stockAdded">
         <div class="card-main">
           <label class="col-form-label pt-0">Action</label>
-          <select id="inputState" [ngClass]="closeTrade ? 'disabled' : ''" class="form-control select-input" [(ngModel)]="stockEntry.actionType">
+          <select id="inputState" [ngClass]="closeTrade ? 'disabled' : ''" class="form-control select-input"
+            [(ngModel)]="stockEntry.actionType">
             <option value=1 selected data-default>Buy to Open</option>
             <option value=2>Sell to Open</option>
           </select>
         </div>
         <div class="card-main card-main-sm">
           <label class="col-form-label pt-0">Quantity</label>
-          <input type="number" (keydown)="preventNegatives($event, false)" min="0" class="form-control cards-input" [ngClass]="closeTrade ? 'disabled' : ''" [(ngModel)]="stockEntry.quantity" />
+          <input type="number" (keydown)="preventNegatives($event, false)" min="0" class="form-control cards-input"
+            [ngClass]="closeTrade ? 'disabled' : ''" [(ngModel)]="stockEntry.quantity" />
         </div>
         <div class="card-main card-main-sm">
           <label class="col-form-label pt-0">Entry Price</label>
@@ -66,16 +69,19 @@
         </div>
         <div class="card-main card-main-sm" *ngIf="closeTrade">
           <label class="col-form-label pt-0">Exit Price</label>
-          <input type="number" pattern="^\d*(\.\d{0,2})?$" min="0" class="form-control cards-input" placeholder="" />
+          <input type="number" pattern="^\d*(\.\d{0,2})?$" step="0.01" min="0" class="form-control cards-input" placeholder=""
+            [(ngModel)]="stockEntry.closePrice" />
         </div>
         <div class="card-main card-main-sm" *ngIf="closeTrade">
           <label class="col-form-label pt-0">Net Return</label>
-          <h6 class="input_text">-$500.00
+          <h6 class="input_text">
+            {{(stockEntry.quantity && stockEntry.closePrice) ? (stockEntry.quantity * stockEntry.closePrice * (stockEntry.actionType == 2 ? -1 : 1)).toFixed(2) : 0}}
           </h6>
         </div>
         <div class="card-main card-main-sm" *ngIf="!closeTrade">
           <label class="col-form-label pt-0">Amount</label>
-          <h6 class="input_text">{{(stockEntry.quantity && stockEntry.price) ? (stockEntry.quantity * stockEntry.price * (stockEntry.actionType == 2 ? -1 : 1)).toFixed(2) : 0}}
+          <h6 class="input_text">
+            {{(stockEntry.quantity && stockEntry.price) ? (stockEntry.quantity * stockEntry.price * (stockEntry.actionType == 2 ? -1 : 1)).toFixed(2) : 0}}
           </h6>
         </div>
 
@@ -105,7 +111,8 @@
       <ng-container *ngFor="let item of stockOptions;let index = index">
         <div class="trade-card-box">
           <div class="card-main">
-            <select id="inputState" [ngClass]="closeTrade ? 'disabled' : ''" class="form-control select-input" [(ngModel)]="stockOptions[index].actionType">
+            <select id="inputState" [ngClass]="closeTrade ? 'disabled' : ''" class="form-control select-input"
+              [(ngModel)]="stockOptions[index].actionType">
               <option value=1 selected data-default>Buy to Open</option>
               <option value=2>Sell to Open</option>
             </select>
@@ -119,23 +126,25 @@
               <input matInput [matDatepicker]="expireDate" (click)="expireDate.open()" id="expireDate"
                 (dateChange)="addEvent('input', $event)" name="stockOptions[index].expireDate"
                 [(ngModel)]="stockOptions[index].expireDate" [ngClass]="closeTrade ? 'disabled' : ''" />
-              <mat-datepicker-toggle matSuffix [for]="expireDate" [ngClass]="closeTrade ? 'disabled' : ''" ></mat-datepicker-toggle>
+              <mat-datepicker-toggle matSuffix [for]="expireDate" [ngClass]="closeTrade ? 'disabled' : ''">
+              </mat-datepicker-toggle>
               <mat-datepicker #expireDate></mat-datepicker>
             </div>
           </div>
           <div class="card-main card-main-sm">
             <input type="number" (keydown)="preventNegatives($event, true)" pattern="^\d*(\.\d{0,2})?$"
               (change)="checkForDecimalValidation($event)" step="0.01" min="0" class="form-control cards-input"
-              placeholder="" [(ngModel)]="stockOptions[index].strikePrice" [ngClass]="closeTrade ? 'disabled' : ''"/>
+              placeholder="" [(ngModel)]="stockOptions[index].strikePrice" [ngClass]="closeTrade ? 'disabled' : ''" />
           </div>
 
           <div class="card-main card-main-sm">
-            <select id="inputState" class="form-control select-input" [(ngModel)]="stockOptions[index].optionType" [ngClass]="closeTrade ? 'disabled' : ''">
+            <select id="inputState" class="form-control select-input" [(ngModel)]="stockOptions[index].optionType"
+              [ngClass]="closeTrade ? 'disabled' : ''">
               <option value=1 selected data-default>Call</option>
               <option value=2>Put</option>
             </select>
           </div>
-          
+
           <div class="card-main card-main-sm">
             <input type="number" (keydown)="preventNegatives($event, true)" pattern="^\d*(\.\d{0,2})?$"
               (change)="checkForDecimalValidation($event)" step="0.01" min="0" class="form-control cards-input"
@@ -147,10 +156,12 @@
             </h6>
           </div>
           <div class="card-main card-main-sm" *ngIf="closeTrade">
-            <input type="number" pattern="^\d*(\.\d{0,2})?$" min="0" class="form-control cards-input" placeholder="" />
+            <input type="number" pattern="^\d*(\.\d{0,2})?$" step="0.01" min="0" class="form-control cards-input" placeholder=""
+              [(ngModel)]="stockOptions[index].closePrice" />
           </div>
           <div class="card-main card-main-sm" *ngIf="closeTrade">
-            <h6 class="input_text justify-content-start">-$500.00
+            <h6 class="input_text justify-content-start">
+              {{(stockOptions[index].contracts && stockOptions[index].closePrice) ? (stockOptions[index].contracts * (stockOptions[index].closePrice * 100) *  (stockOptions[index].actionType == 2 ? -1 : 1)).toFixed(2) : 0}}
             </h6>
           </div>
 
@@ -166,19 +177,21 @@
         </div>
       </ng-container>
     </div>
-      <div class="font-weight-bold net_debit" *ngIf="stockOptions.length">
-        <span class="total_label">Total {{closeTrade ? 'Return' : 'Amount'}}  </span>
-        <span class="total_amount px-2" [ngClass]="closeTrade ? 'total_return' : ''">{{calculateNetDebit()}}</span>
+    <div class="font-weight-bold net_debit" *ngIf="stockOptions.length">
+      <span class="total_label">Total {{closeTrade ? 'Return' : 'Amount'}} </span>
+      <span class="total_amount px-2"
+        [ngClass]="closeTrade ? 'total_return' : ''">{{closeTrade ? calculateNetReturn() : calculateNetDebit()}}</span>
+    </div>
+    <div class="pt-2" *ngIf="closeTrade">
+      <label class="col-form-label mr-2">Closed Date <span class="text-danger">*</span></label>
+      <div class="datepicker-group datepicker-sm">
+        <input matInput [matDatepicker]="closed_date" (click)="closed_date.open()" id="closed_date"
+          (dateChange)="addEvent('input', $event)" name="stockOptions[index].closed_date" [(ngModel)]="closeDate"/>
+        <mat-datepicker-toggle matSuffix [for]="closed_date"></mat-datepicker-toggle>
+        <mat-datepicker #closed_date></mat-datepicker>
       </div>
-      <div class="pt-2" *ngIf="closeTrade">
-        <label class="col-form-label mr-2">Closed Date <span class="text-danger">*</span></label>
-        <div class="datepicker-group datepicker-sm">
-          <input matInput [matDatepicker]="closed_date" (click)="closed_date.open()" id="closed_date" (dateChange)="addEvent('input', $event)" name="stockOptions[index].closed_date" />
-          <mat-datepicker-toggle matSuffix [for]="closed_date"></mat-datepicker-toggle>
-          <mat-datepicker #closed_date></mat-datepicker>
-        </div>
-      </div>
-    
+    </div>
+
     <!-- next-button -->
 
   </ng-container>

@@ -21,7 +21,8 @@ export class ExitRulesComponent implements OnInit {
   @Input("inputState") inputState: TradeInputData;
   @Output('prevStep') prevStep = new EventEmitter();
 
-  entryRules: EntryExitRule[] = this.entryExitRuleService.getEntryRules();
+  exitRules: EntryExitRule[] = this.entryExitRuleService.getExitRules();
+
   constructor(private _dialog: MatDialog,
     private router: Router,
     private entryExitRuleService: EntryExitRuleService) { }
@@ -29,10 +30,8 @@ export class ExitRulesComponent implements OnInit {
   ngOnInit() {
   }
   ngAfterViewInit(): void {
-    console.log('entry rules child view init:', this.inputState);
-    if (this.inputState && this.inputState.tradeStrategy.entryRules) {
-      this.entryRules = this.inputState.tradeStrategy.entryRules;
-    }
+    console.log('exit rules child view init:', this.inputState);
+    //No state initialization in exit rules
   }
 
   closeTrade() {

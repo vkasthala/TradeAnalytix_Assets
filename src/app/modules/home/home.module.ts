@@ -28,7 +28,6 @@ import { MobileRiskAnalysisComponent } from '../trade-management/components/add-
 import { MobileTradeAnalysisComponent } from '../trade-management/components/add-trade/Steps/mobile-steps/mobile-trade-analysis/mobile-trade-analysis.component';
 import { CloseTradeComponent } from '../trade-management/components/close-trade/close-trade.component';
 import { EditTradeComponent } from '../trade-management/components/edit-trade/edit-trade.component';
-import { ExitRulesComponent } from '../trade-management/components/exit-rules/exit-rules.component';
 import { UpdateStrategyPopupComponent } from '../compare-strategies/components/update-strategy-popup/update-strategy-popup.component';
 import { ManagerulesComponent } from '../settings/components/managerules/managerules.component';
 import { UpdatePriceRangeComponent } from '../compare-strategies/components/update-price-range/update-price-range.component';
@@ -57,6 +56,7 @@ import { OauthRedirectComponent } from '../Utilities/components/oauth-redirect/o
 import { RiskAnalysisChartComponent } from '../risk-analysis/components/risk-analysis-chart/risk-analysis-chart.component';
 import { ChartModule } from 'angular-highcharts';
 import { ConfirmDialogComponent } from '../shared/components/modals/confirm-dialog/confirm-dialog.component';
+import { ExitRulesComponent } from '../trade-management/components/add-trade/Steps/exit-rules/exit-rules.component';
 // import { MatTableDataSource } from '@angular/material';
 
 @NgModule({

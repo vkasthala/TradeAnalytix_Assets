@@ -23,6 +23,8 @@ export class OptionEntry {
 
     price: number;
 
+    closePrice: number;
+
     expireDate: string;
 
 }

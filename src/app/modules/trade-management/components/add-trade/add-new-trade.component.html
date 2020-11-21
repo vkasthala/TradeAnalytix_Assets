@@ -59,13 +59,13 @@
             <mat-step *ngIf="close">
               <ng-template matStepLabel>Exit Rules</ng-template>
               <div class="stepper-content">
-                <app-exit-rules (prevStep)="goBack()" [inputState]="inputState"></app-exit-rules>
+                <app-exit-rules (prevStep)="goBack()" [inputState]="inputState" #exitRules></app-exit-rules>
               </div>
             </mat-step>
           </mat-vertical-stepper>
           <div class="text-center border-top py-2">
             <span class="order-btn text-center" *ngIf="(tradeDetails.stockAdded || tradeDetails.stockOptions.length > 0) && (stepper.selectedIndex == 0)">
-              <button type="button" class="btn btn-next mr-3" *ngIf="!close" (click)="saveTradeAsDraft()">SAVE AS DRAFT</button>
+              <button type="button" class="btn btn-next mr-3" *ngIf="!close && !tradeStrategy.executed" (click)="saveTradeAsDraft()">SAVE AS DRAFT</button>
             </span>
             <button type="button" class="btn btn-next mr-3" *ngIf="add"
               (click)="CheckExecutionDate('Confirm Trade Execution Date')">ADD TRADE</button>

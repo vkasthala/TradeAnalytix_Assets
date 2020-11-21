@@ -10,12 +10,12 @@ import { ReportsComponent } from '../../modules/reports/components/reports.compo
 import { SettingsComponent } from '../../modules/settings/components/settings.component';
 import { CloseTradeComponent } from '../../modules/trade-management/components/close-trade/close-trade.component';
 import { EditTradeComponent } from '../../modules/trade-management/components/edit-trade/edit-trade.component';
-import { ExitRulesComponent } from '../../modules/trade-management/components/exit-rules/exit-rules.component';
 import { AddnewtradeplanComponent } from '../../modules/trade-plan/components/add-trade-plan/addnewtradeplan.component';
 import { TradePlansComponent } from '../../modules/trade-plan/components/trade-plans.component';
 import { ProfileComponent } from '../../modules/user-profile/components/profile.component';
 import { RiskAnalysisComponent } from '../../modules/risk-analysis/components/risk-analysis.component';
 import { OauthRedirectComponent } from '../Utilities/components/oauth-redirect/oauth-redirect.component';
+import { ExitRulesComponent } from '../trade-management/components/add-trade/Steps/exit-rules/exit-rules.component';
 
 const routes: Routes = [
   {

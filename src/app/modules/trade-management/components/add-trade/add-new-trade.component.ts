@@ -16,6 +16,7 @@ import { TradeDirection } from 'src/app/modules/shared/models/trade-management/t
 import { TradeSearchComponent } from './Steps/search-trade/trade-search.component';
 import { ToastrService } from 'ngx-toastr';
 import { ConfirmDialogComponent } from 'src/app/modules/shared/components/modals/confirm-dialog/confirm-dialog.component';
+import { ExitRulesComponent } from './Steps/exit-rules/exit-rules.component';
 
 @Component({
   selector: 'app-add-new-trade',
@@ -32,6 +33,7 @@ export class AddNewTradeComponent implements OnInit {
   @ViewChild('tradeDetails', { static: false }) protected tradeDetails: TradeDetailsComponent;
   @ViewChild('tradeThesis', { static: false }) protected tradeThesis: TradeThesisComponent;
   @ViewChild('entryRules', { static: false }) protected entryRules: EntryRulesComponent;
+  @ViewChild('exitRules', { static: false }) protected exitRules: ExitRulesComponent;
 
   protected add = true;
   protected edit = false;
@@ -103,7 +105,7 @@ export class AddNewTradeComponent implements OnInit {
     console.log('add trade...', this.tradeStrategy);
     this.tradeStrategyService.addTrade(this.tradeStrategy).subscribe(result => {
       console.log('Trade strategy successfully created');
-      this.toastr.success('Trade Strategy successfully created', '');//TODO Replace with info box
+      this.toastr.success('Trade Strategy successfully created', '');
       this.router.navigateByUrl("/trade-strategies");
     });
   }
@@ -113,7 +115,7 @@ export class AddNewTradeComponent implements OnInit {
     console.log('edit trade...', this.tradeStrategy);
     this.tradeStrategyService.editTrade(this.tradeStrategy).subscribe(result => {
       console.log('Trade strategy successfully updated');
-      this.toastr.success('Trade Strategy successfully updated', '');//TODO Replace with info box
+      this.toastr.success('Trade Strategy successfully updated', '');
       this.router.navigateByUrl("/trade-strategies");
     });
   }
@@ -121,6 +123,11 @@ export class AddNewTradeComponent implements OnInit {
   closeTradeStrategy() {
     this.updateTradeStrategyProps();
     console.log('close trade...', this.tradeStrategy);
+    this.tradeStrategyService.closeTrade(this.tradeStrategy).subscribe(result => {
+      console.log('Trade strategy successfully closed');
+      this.toastr.success('Trade Strategy successfully closed', '');
+      this.router.navigateByUrl("/trade-strategies");
+    });
   }
 
   updateTradeStrategyProps() {
@@ -137,6 +144,12 @@ export class AddNewTradeComponent implements OnInit {
     this.tradeStrategy.stockOptions = this.tradeDetails.stockOptions;
     this.tradeStrategy.direction = this.getDirection();
     this.tradeStrategy.entryRules = this.entryRules.entryRules;
+    if (this.close) {
+      if (this.tradeStrategy.entryRules && this.exitRules.exitRules) {
+        this.tradeStrategy.entryRules = this.tradeStrategy.entryRules.concat(this.exitRules.exitRules);
+      }
+      this.tradeStrategy.closeDate = this.tradeDetails.closeDate;
+    }
     if (!this.add) {
       this.tradeStrategy.executed = this.tradeDetails.executedDate != null && this.tradeDetails.executedDate != undefined && this.tradeDetails.executedDate != '';
       this.tradeStrategy.executedDate = this.tradeDetails.executedDate;

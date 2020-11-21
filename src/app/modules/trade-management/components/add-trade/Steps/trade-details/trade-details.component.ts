@@ -49,6 +49,7 @@ export class TradeDetailsComponent implements OnInit {
   selectedStrategy: number = 15;
   direction: TradeDirection = TradeDirection.Custom;
   executedDate: string;
+  closeDate: string;
 
   constructor(private utilService: UtilService,
     private strategyCreateServiceService: StrategyCreateService,
@@ -70,6 +71,7 @@ export class TradeDetailsComponent implements OnInit {
       this.stockAdded = this.inputState.tradeStrategy.stockEntry && this.inputState.tradeStrategy.stockEntry.length > 0 && this.inputState.tradeStrategy.stockEntry[0].actionType && this.inputState.tradeStrategy.stockEntry[0].quantity > 0;
       this.direction = this.inputState.tradeStrategy.direction;
       this.executedDate = this.inputState.tradeStrategy.executedDate;
+      this.closeDate = this.inputState.tradeStrategy.closeDate;
     }
   }
 
@@ -160,6 +162,26 @@ export class TradeDetailsComponent implements OnInit {
       }
     }
     return netDebit.toFixed(2);
+  }
+
+  calculateNetReturn(): string {
+    let netReturn: number = 0;
+    let tmp: number;
+    if (this.stockEntry && this.stockEntry.quantity && this.stockEntry.closePrice) {
+      tmp = this.stockEntry.quantity * this.stockEntry.closePrice;
+      netReturn = tmp * (this.stockEntry.actionType == ActionType["Buy to Open"] ? 1 : -1);
+    }
+    if (this.stockOptions) {
+      for (let index = 0; index < this.stockOptions.length; index++) {
+        tmp = this.stockOptions[index].contracts && this.stockOptions[index].closePrice ? Number.parseFloat((this.stockOptions[index].contracts * this.stockOptions[index].closePrice * 100).toFixed(2)) : 0
+        if (this.stockOptions[index].actionType == ActionType["Buy to Open"]) {
+          netReturn += tmp;
+        } else if (this.stockOptions[index].actionType == ActionType["Sell to Open"]) {
+          netReturn -= tmp;
+        }
+      }
+    }
+    return netReturn.toFixed(2);
   }
 
   preventNegatives(e, preventDecimal?: boolean) {

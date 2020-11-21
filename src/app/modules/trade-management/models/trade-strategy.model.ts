@@ -35,5 +35,5 @@ export class TradeStrategy {
     stockOptions: OptionEntry[];
 
     entryRules: EntryExitRule[];
-
+    
 }

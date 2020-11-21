@@ -8,4 +8,5 @@ export class EntryExitRule {
 
     comment: string;
 
+    type: number;
 }

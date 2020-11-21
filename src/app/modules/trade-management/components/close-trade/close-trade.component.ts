@@ -46,15 +46,11 @@ export class CloseTradeComponent extends AddNewTradeComponent implements OnInit 
     this.step--;
   }
 
-  exitRules() {
-    this.router.navigate(['dashboard/exit-rules'])
-  }
-
   navigateToTradeStrategies() {
     this.router.navigate(['/dashboard/trade-strategies'])
   }
 
-  navigaateToExitRules() {
+  navigateToExitRulesStep() {
     this.tradeMobileStepper.next();
   }
 
