@@ -248,7 +248,7 @@ export class AddNewTradeComponent implements OnInit {
     const dialogRef = this._dialog.open(ConfirmDialogComponent, {
       width: 'auto',
       height: 'auto',
-      data: { 'message': 'Are you sure you want to edit this trade?' }
+      data: { 'message': 'Are you sure you want to edit this strategy?' }
     });
     dialogRef.afterClosed().subscribe(dialogResult => {
       if (dialogResult == true) {
@@ -259,7 +259,7 @@ export class AddNewTradeComponent implements OnInit {
 
   closeTrade() {
     const dialogRef = this._dialog.open(ConfirmDialogComponent, {
-      data: { 'message': 'Are you sure you want to close this trade?' }
+      data: { 'message': 'Are you sure you want to close this strategy?' }
     });
     dialogRef.afterClosed().subscribe(dialogResult => {
       if (dialogResult == true) {

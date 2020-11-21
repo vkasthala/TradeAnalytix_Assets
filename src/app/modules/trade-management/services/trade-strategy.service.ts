@@ -33,7 +33,7 @@ export class TradeStrategyService {
   }
 
   public deleteTradeStrategy(id: number): Observable<void> {
-    return this.httpService.delete(this.apiUrl + '/trade-strategy/' + id);
+    return this.httpService.post(this.apiUrl + '/trade-strategy/delete/' + id, null);
   }
 
 }
