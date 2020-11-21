@@ -1,5 +1,5 @@
 import { Component, ViewChild, AfterViewInit, OnInit } from '@angular/core';
-import { MatPaginator, MatTableDataSource, MatSort } from '@angular/material';
+import { MatPaginator, MatTableDataSource, MatSort, MatDialog } from '@angular/material';
 import { TradeStrategyGridStore } from '../../services/trade-strategy-grid-store';
 import { TradeStrategyGridService } from '../../services/trade-strategy-grid.service';
 import { TradeStrategyGridRequest } from '../../models/trade-strategy-grid-request.model';
@@ -13,6 +13,7 @@ import { TradeStrategyService } from 'src/app/modules/trade-management/services/
 import { StockSymbolService } from 'src/app/modules/shared/services/stock-symbol.service';
 import { UserStockStatsService } from 'src/app/modules/shared/services/user-stock-stats.service';
 import { TradeInputData } from 'src/app/modules/shared/models/trade-management/trade-input-data.model';
+import { ConfirmDialogComponent } from 'src/app/modules/shared/components/modals/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-trade-strategies-grid',
@@ -34,7 +35,8 @@ export class TradeStrategiesGrid implements AfterViewInit, OnInit {
     private tradeStrategyService: TradeStrategyService,
     private stockSymbolService: StockSymbolService,
     private userStockStatsService: UserStockStatsService,
-    private router: Router) {
+    private router: Router,
+    private dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -147,10 +149,19 @@ merge(this.sort.sortChange, this.paginator.page)
 
 
   deleteTrade(rowModel: TradeStrategyGridRow) {
-    this.tradeStrategyService.deleteTradeStrategy(rowModel.id).subscribe(() => {
-      console.log('Trade strategy deleted..', rowModel.id);
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: 'auto',
+      height: 'auto',
+      data: { 'message': 'Are you sure you want to delete this strategy?' }
     });
-    console.log('delete..', rowModel);
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      if (dialogResult == true) {
+        this.tradeStrategyService.deleteTradeStrategy(rowModel.id).subscribe(() => {
+          console.log('Trade strategy deleted..', rowModel.id);
+          this.reload();
+        });
+      }
+    });
   }
 
   expandRowOptions(index) {
