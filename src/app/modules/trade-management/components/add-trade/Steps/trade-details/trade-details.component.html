@@ -8,7 +8,7 @@
           <div *ngIf="addTrade == false">
             <label class="col-form-label mr-2">Executed Date</label>
             <div class="datepicker-group datepicker-sm">
-              <input matInput [matDatepicker]="executed_date" (click)="executed_date.open()" id="executed_date" (dateChange)="addEvent('input', $event)" name="stockOptions[index].executed_date" />
+              <input matInput [matDatepicker]="executed_date" (click)="executed_date.open()" id="executed_date" (dateChange)="addEvent('input', $event)" name="executed_date" [(ngModel)]="executedDate"/>
               <mat-datepicker-toggle matSuffix [for]="executed_date"></mat-datepicker-toggle>
               <mat-datepicker #executed_date></mat-datepicker>
             </div>

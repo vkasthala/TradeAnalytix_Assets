@@ -12,12 +12,12 @@
         </div>
         <div class="col-6 media align-items-center">
             <div class="media-body">
-                <select class="form-control select-input" id="inputState" [(ngModel)]="tradeThesis.sourceId">
+                <select class="form-control select-input" id="inputState" [(ngModel)]="tradeThesis.sourceId" [disabled]="closeTrade">
                     <option [ngValue]="opt.id" *ngFor="let opt of sourceTypes; trackBy: id">{{opt.name}}</option>
                 </select>
             </div>
             <div class="media-body">
-                <a class="add-new" (click)="addValue('Source')">+ Add New</a>
+                <a class="add-new" (click)="addValue('Source')" *ngIf="!closeTrade">+ Add New</a>
             </div>
         </div>
     </div>
@@ -29,10 +29,10 @@
         </div>
         <div class="col-6">
             <span class="mr-3">
-                Planned <input type="radio" name="tradeType" value="planned" [(ngModel)]="tradeThesis.tradeType" checked />
+                Planned <input type="radio" [disabled]="closeTrade" name="tradeType" value="planned" [(ngModel)]="tradeThesis.tradeType" checked />
             </span>
             <span class="ml-3">
-                Impromptu <input type="radio" name="tradeType" value="impromptu" [(ngModel)]="tradeThesis.tradeType"/>
+                Impromptu <input type="radio" [disabled]="closeTrade" name="tradeType" value="impromptu" [(ngModel)]="tradeThesis.tradeType"/>
             </span>
         </div>
     </div>
@@ -44,12 +44,12 @@
         </div>
         <div class="col-6 media align-items-center">
             <div class="media-body">
-                <select class="form-control select-input" id="inputState" [(ngModel)]="tradeThesis.mindsetId">
+                <select class="form-control select-input" id="inputState" [(ngModel)]="tradeThesis.mindsetId" [disabled]="closeTrade">
                     <option [ngValue]="opt.id" *ngFor="let opt of mindsetTypes; trackBy: id">{{opt.name}}</option>
                 </select>
             </div>
             <div class="media-body">
-                <a class="add-new" (click)="addValue('Source')">+ Add New</a>
+                <a class="add-new" (click)="addValue('Source')" *ngIf="!closeTrade">+ Add New</a>
             </div>
         </div>
     </div>
@@ -60,7 +60,7 @@
             </h6>
         </div>
         <div class="col-6 media align-items-center">
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="tradeThesis.reasons"></textarea>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="tradeThesis.reasons" [disabled]="closeTrade"></textarea>
         </div>
     </div>
     <div class="row mb-3">
@@ -71,12 +71,12 @@
         </div>
         <div class="col-6 media align-items-center">
             <div class="media-body">
-                <select class="form-control select-input" id="inputState" [(ngModel)]="tradeThesis.surroundingEventId">
+                <select class="form-control select-input" [disabled]="closeTrade" id="inputState" [(ngModel)]="tradeThesis.surroundingEventId">
                     <option [ngValue]="opt.id" *ngFor="let opt of surroundingTypes; trackBy: id">{{opt.name}}</option>
                 </select>
             </div>
             <div class="media-body">
-                <a class="add-new" (click)="addValue('Source')">+ Add New</a>
+                <a class="add-new" (click)="addValue('Source')" *ngIf="!closeTrade">+ Add New</a>
             </div>
         </div>
     </div>
@@ -88,7 +88,7 @@
         </div>
         <div class="col-6 media align-items-center">
             <div class="media-body">
-                <input type="text" class="form-control" placeholder="Enter the price" [(ngModel)]="tradeThesis.targetPrice" />
+                <input type="text" class="form-control" [disabled]="closeTrade" placeholder="Enter the price" [(ngModel)]="tradeThesis.targetPrice" />
             </div>
         </div>
     </div>
@@ -102,13 +102,13 @@
             <div class="media align-items-center mb-2">
                 <div class="media-body">
                     <select class="form-control select-input" id="inputState"
-                        [(ngModel)]="tradeThesis.technicalIndicatorId">
+                        [(ngModel)]="tradeThesis.technicalIndicatorId" [disabled]="closeTrade">
                         <option [ngValue]="opt.id" *ngFor="let opt of technicalIndicators; trackBy: id">{{opt.name}}
                         </option>
                     </select>
                 </div>
                 <div class="media-body">
-                    <a class="add-new" (click)="addValue('Source')">+ Add New</a>
+                    <a class="add-new" (click)="addValue('Source')" *ngIf="!closeTrade">+ Add New</a>
                 </div>
             </div>
         </div>

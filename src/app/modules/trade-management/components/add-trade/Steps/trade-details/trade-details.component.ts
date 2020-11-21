@@ -1,7 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
-import { TradeExecutionDateComponent } from 'src/app/modules/shared/components/modals/trade-execution-date/trade-execution-date.component';
+import { AddToPositionComponent } from 'src/app/modules/shared/components/modals/add-to-position/add-to-position.component';
+import { AddToStockPositionComponent } from 'src/app/modules/shared/components/modals/add-to-stock-position/add-to-stock-position.component';
+import { ReduceToPositionComponent } from 'src/app/modules/shared/components/modals/reduce-to-position/reduce-to-position.component';
+import { ReduceToStockPositionComponent } from 'src/app/modules/shared/components/modals/reduce-to-stock-position/reduce-to-stock-position.component';
 import { ActionType } from 'src/app/modules/shared/models/trade-management/action-type.enum';
 import { OptionEntry } from 'src/app/modules/shared/models/trade-management/option-entry.model';
 import { OptionType } from 'src/app/modules/shared/models/trade-management/option-type.enum';
@@ -9,17 +12,11 @@ import { StockEntry } from 'src/app/modules/shared/models/trade-management/stock
 import { StockSymbol } from 'src/app/modules/shared/models/trade-management/stock-symbol.model';
 import { StrategyTemplate } from 'src/app/modules/shared/models/trade-management/strategy-template.model';
 import { StrategyType } from 'src/app/modules/shared/models/trade-management/strategy-type.enum';
+import { TradeDirection } from 'src/app/modules/shared/models/trade-management/trade-direction.enum';
 import { TradeInputData } from 'src/app/modules/shared/models/trade-management/trade-input-data.model';
 import { UserStockSummary } from 'src/app/modules/shared/models/trade-management/user-stock-summary.model';
 import { StrategyCreateService } from 'src/app/modules/shared/services/strategy-create.service';
-import { TradeStrategy } from 'src/app/modules/trade-management/models/trade-strategy.model';
 import { UtilService } from 'src/app/modules/utilities/services/util.service';
-import { AddToPositionComponent } from 'src/app/modules/shared/components/modals/add-to-position/add-to-position.component';
-import { AddToStockPositionComponent } from 'src/app/modules/shared/components/modals/add-to-stock-position/add-to-stock-position.component';
-import { ReduceToPositionComponent } from 'src/app/modules/shared/components/modals/reduce-to-position/reduce-to-position.component';
-import { ReduceToStockPositionComponent } from 'src/app/modules/shared/components/modals/reduce-to-stock-position/reduce-to-stock-position.component';
-import { TradeDirection } from 'src/app/modules/shared/models/trade-management/trade-direction.enum';
-import { formatDate } from '@angular/common';
 
 
 @Component({
@@ -51,6 +48,7 @@ export class TradeDetailsComponent implements OnInit {
   stockOptions: OptionEntry[] = [];
   selectedStrategy: number = 15;
   direction: TradeDirection = TradeDirection.Custom;
+  executedDate: string;
 
   constructor(private utilService: UtilService,
     private strategyCreateServiceService: StrategyCreateService,
@@ -71,6 +69,7 @@ export class TradeDetailsComponent implements OnInit {
       this.stockEntry = this.inputState.tradeStrategy.stockEntry && this.inputState.tradeStrategy.stockEntry.length > 0 ? this.inputState.tradeStrategy.stockEntry[0] : undefined;
       this.stockAdded = this.inputState.tradeStrategy.stockEntry && this.inputState.tradeStrategy.stockEntry.length > 0 && this.inputState.tradeStrategy.stockEntry[0].actionType && this.inputState.tradeStrategy.stockEntry[0].quantity > 0;
       this.direction = this.inputState.tradeStrategy.direction;
+      this.executedDate = this.inputState.tradeStrategy.executedDate;
     }
   }
 

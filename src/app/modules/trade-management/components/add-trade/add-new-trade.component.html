@@ -45,14 +45,14 @@
               <ng-template matStepLabel>Trade Thesis</ng-template>
               <div class="stepper-content">
                 <app-trade-thesis (nextStep)="goForward()" (prevStep)="goBack(true)" [inputState]="inputState"
-                  #tradeThesis>
+                [editTrade]="edit" [addTrade]="add" [closeTrade]="close" #tradeThesis>
                 </app-trade-thesis>
               </div>
             </mat-step>
             <mat-step>
               <ng-template matStepLabel>Entry Rules</ng-template>
               <div class="stepper-content">
-                <app-entry-rules (prevStep)="goBack()" [inputState]="inputState" #entryRules></app-entry-rules>
+                <app-entry-rules (prevStep)="goBack()" [inputState]="inputState" [editTrade]="edit" [addTrade]="add" [closeTrade]="close" #entryRules></app-entry-rules>
               </div>
             </mat-step>
             
@@ -65,14 +65,14 @@
           </mat-vertical-stepper>
           <div class="text-center border-top py-2">
             <span class="order-btn text-center" *ngIf="(tradeDetails.stockAdded || tradeDetails.stockOptions.length > 0) && (stepper.selectedIndex == 0)">
-              <button type="button" class="btn btn-next mr-3" *ngIf="!close">SAVE</button>
+              <button type="button" class="btn btn-next mr-3" *ngIf="!close" (click)="saveTradeAsDraft()">SAVE AS DRAFT</button>
             </span>
             <button type="button" class="btn btn-next mr-3" *ngIf="add"
               (click)="CheckExecutionDate('Confirm Trade Execution Date')">ADD TRADE</button>
 
-            <button type="button" class="btn btn-next mr-3" *ngIf="edit" (click)="CheckExecutionDate('Confirm Trade Execution Date')">UPDATE TRADE</button>
+            <button type="button" class="btn btn-next mr-3" *ngIf="edit" (click)="editTrade()">UPDATE TRADE</button>
             
-            <button type="button" class="btn btn-next mr-3" *ngIf="close">CLOSE TRADE</button>
+            <button type="button" class="btn btn-next mr-3" *ngIf="close" (click)="closeTrade()">CLOSE TRADE</button>
           </div>
         </div>
       </ng-container>

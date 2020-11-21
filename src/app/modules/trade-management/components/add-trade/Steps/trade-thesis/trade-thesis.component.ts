@@ -27,6 +27,9 @@ export class TradeThesisComponent implements OnInit {
   @Output('prevStep') prevStep = new EventEmitter();
 
   @Input("inputState") inputState: TradeInputData;
+  @Input("addTrade") addTrade: boolean;
+  @Input("editTrade") editTrade: boolean;
+  @Input("closeTrade") closeTrade: boolean;
 
   constructor(private _dialog: MatDialog, private metadataService: UserMetadataService) { }
 

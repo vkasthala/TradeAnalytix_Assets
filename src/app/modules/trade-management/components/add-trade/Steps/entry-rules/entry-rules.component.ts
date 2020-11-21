@@ -20,6 +20,10 @@ export class EntryRulesComponent implements OnInit {
 
   @Input("inputState") inputState: TradeInputData;
 
+  @Input("addTrade") addTrade: boolean;
+  @Input("editTrade") editTrade: boolean;
+  @Input("closeTrade") closeTrade: boolean;
+
   @Output('prevStep') prevStep = new EventEmitter();
 
 

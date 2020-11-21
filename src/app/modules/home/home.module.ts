@@ -56,6 +56,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { OauthRedirectComponent } from '../Utilities/components/oauth-redirect/oauth-redirect.component';
 import { RiskAnalysisChartComponent } from '../risk-analysis/components/risk-analysis-chart/risk-analysis-chart.component';
 import { ChartModule } from 'angular-highcharts';
+import { ConfirmDialogComponent } from '../shared/components/modals/confirm-dialog/confirm-dialog.component';
 // import { MatTableDataSource } from '@angular/material';
 
 @NgModule({
@@ -101,7 +102,8 @@ import { ChartModule } from 'angular-highcharts';
     CloseTradeDetailsComponent,
     TradeDetailsHeaderComponent,
     TradeExecutionDateComponent,
-    TradeStrategiesGrid
+    TradeStrategiesGrid,
+    ConfirmDialogComponent
   ],
   imports: [
     CommonModule,
@@ -128,7 +130,8 @@ import { ChartModule } from 'angular-highcharts';
     ReduceToPositionComponent,
     ReduceToStockPositionComponent,
     TradeExecutionDateComponent,
-    TradeStrategiesGrid
+    TradeStrategiesGrid,
+    ConfirmDialogComponent
   ],
   // bootstrap: [TradeStrategiesGrid],
 })

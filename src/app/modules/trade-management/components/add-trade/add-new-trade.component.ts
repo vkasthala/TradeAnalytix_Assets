@@ -15,6 +15,7 @@ import { ActionType } from 'src/app/modules/shared/models/trade-management/actio
 import { TradeDirection } from 'src/app/modules/shared/models/trade-management/trade-direction.enum';
 import { TradeSearchComponent } from './Steps/search-trade/trade-search.component';
 import { ToastrService } from 'ngx-toastr';
+import { ConfirmDialogComponent } from 'src/app/modules/shared/components/modals/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-add-new-trade',
@@ -64,11 +65,11 @@ export class AddNewTradeComponent implements OnInit {
 
 
   enterSymbol() {
-    if(!this.selectedStock || !this.selectedStock.code){
+    if (!this.selectedStock || !this.selectedStock.code) {
       this.toastr.error('Invalid Symbol', '');
       //return false;
     }
-    
+
     this.currentState++;
   }
 
@@ -99,25 +100,27 @@ export class AddNewTradeComponent implements OnInit {
 
   addTrade() {
     this.updateTradeStrategyProps();
-    if (this.edit) {
-      this.editTradeStrategy();
-    } else {
-      console.log('add trade...', this.tradeStrategy);
-      this.tradeStrategyService.addTrade(this.tradeStrategy).subscribe(result => {
-        console.log('Trade strategy successfully created');
-        this.toastr.success('Trade Strategy successfully created', '');//TODO Replace with info box
-        this.router.navigateByUrl("/trade-strategies");
-      });
-    }
+    console.log('add trade...', this.tradeStrategy);
+    this.tradeStrategyService.addTrade(this.tradeStrategy).subscribe(result => {
+      console.log('Trade strategy successfully created');
+      this.toastr.success('Trade Strategy successfully created', '');//TODO Replace with info box
+      this.router.navigateByUrl("/trade-strategies");
+    });
   }
 
   editTradeStrategy() {
+    this.updateTradeStrategyProps();
     console.log('edit trade...', this.tradeStrategy);
     this.tradeStrategyService.editTrade(this.tradeStrategy).subscribe(result => {
       console.log('Trade strategy successfully updated');
       this.toastr.success('Trade Strategy successfully updated', '');//TODO Replace with info box
       this.router.navigateByUrl("/trade-strategies");
     });
+  }
+
+  closeTradeStrategy() {
+    this.updateTradeStrategyProps();
+    console.log('close trade...', this.tradeStrategy);
   }
 
   updateTradeStrategyProps() {
@@ -134,9 +137,13 @@ export class AddNewTradeComponent implements OnInit {
     this.tradeStrategy.stockOptions = this.tradeDetails.stockOptions;
     this.tradeStrategy.direction = this.getDirection();
     this.tradeStrategy.entryRules = this.entryRules.entryRules;
+    if (!this.add) {
+      this.tradeStrategy.executed = this.tradeDetails.executedDate != null && this.tradeDetails.executedDate != undefined && this.tradeDetails.executedDate != '';
+      this.tradeStrategy.executedDate = this.tradeDetails.executedDate;
+    }
   }
 
-  getDirection(){
+  getDirection() {
     let dir: TradeDirection = this.tradeDetails.direction;
     if (this.tradeDetails.selectedStrategy == 1) {
       if (this.tradeDetails.stockEntry.actionType == ActionType["Buy to Open"]) {
@@ -224,9 +231,39 @@ export class AddNewTradeComponent implements OnInit {
     });
   }
 
+  editTrade() {
+    const dialogRef = this._dialog.open(ConfirmDialogComponent, {
+      width: 'auto',
+      height: 'auto',
+      data: { 'message': 'Are you sure you want to edit this trade?' }
+    });
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      if (dialogResult == true) {
+        this.editTradeStrategy();
+      }
+    });
+  }
+
+  closeTrade() {
+    const dialogRef = this._dialog.open(ConfirmDialogComponent, {
+      data: { 'message': 'Are you sure you want to close this trade?' }
+    });
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      if (dialogResult == true) {
+        this.closeTradeStrategy();
+      }
+    });
+  }
+
+  saveTradeAsDraft() {
+    this.tradeStrategy.executed = false;
+    this.tradeStrategy.executedDate = undefined;
+    this.addTrade();
+  }
+
   showSuccess() {
     this.toastr.error('Hello world!', 'Toastr fun!');
   }
-  
+
 
 }
