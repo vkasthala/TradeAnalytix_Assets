@@ -6,44 +6,14 @@
 .inner-trade{
   width: 100%;
   background-color: #fff;
-  padding: 20px 15px;
   height: 100%;
   position: relative;
   box-shadow: 0px 0px 6px 0px #5a5a5a;
 //   text-align: center;
 }
 .inner-trade-plan {
-
   display: flex;
   flex-direction: column;
-  // /* min-height: 100vh; */
-  &::before {
-    content: "";
-    position: absolute;
-    left: 0px;
-    top: 8%;
-    height: 1px;
-    width: 100%;
-    background-color: #ddd;
-    @media #{$small} {
-      display: none;
-    }
-  }
-  &::after {
-    content: "";
-    position: absolute;
-    left: 0px;
-    bottom: 12%;
-    height: 1px;
-    width: 100%;
-    background-color: #ddd;
-    @media #{$small} {
-      display: none;
-    }
-    @media #{$medium} {
-      bottom: 16%;
-    }
-  }
 }
 
 .trade-thesis-list {
@@ -138,7 +108,6 @@
   align-items: flex-start;
   width: 100%;
   height: 100%;
-  padding-left: 30px;
   position: relative;
 
   @media #{$small} {
@@ -148,20 +117,6 @@
     padding-left: 0px;
   }
 
-  &::after {
-    content: "";
-    position: absolute;
-    left: 49%;
-    top: 6%;
-    bottom: 0%;
-    height: 91%;
-    width: 1px;
-    background-color: #ddd;
-    @media #{$small} {
-      display: none;
-    }
-  
-  }
 }
 
 .pre-market-box {
@@ -214,7 +169,8 @@ textarea {
 
 .pre-heading {
   color: $primary;
-  font-size: 16px;
+  font-size: 18px;
+  font-weight: 600
 }
 
 .btn-apply {
@@ -417,4 +373,29 @@ textarea {
 .mydrp{
   width: 380px !important;
 }
+}
+.disabled {
+  background: #dedede !important;
+  pointer-events: none !important;
+}
+.width-auto {
+  width: auto;
+}
+.form-control {
+  border-radius: 0;
+}
+@media (min-width: 768px) {
+  .v-line::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0%;
+    height: 100%;
+    width: 1px;
+    background-color: #ddd;
+  }
+}
+.profile-bottom {
+  border-top: 2px solid #ddd;
 }
