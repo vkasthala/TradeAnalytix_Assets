@@ -1,5 +1,6 @@
 import {ActionType} from "./action-type.enum";
 import {OptionType} from "./option-type.enum";
+import { PartialLegChange } from './partial-leg-change.model';
 
 export class OptionEntry {
 
@@ -27,4 +28,5 @@ export class OptionEntry {
 
     expireDate: string;
 
+    partialLegChange: PartialLegChange[]
 }

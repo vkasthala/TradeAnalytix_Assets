@@ -1,4 +1,5 @@
 import {ActionType} from "./action-type.enum";
+import { PartialLegChange } from './partial-leg-change.model';
 
 export class StockEntry {
 
@@ -17,5 +18,7 @@ export class StockEntry {
     lowerBound: number;
     
     upperBound: number;
+
+    partialLegChange: PartialLegChange[]
 
 }

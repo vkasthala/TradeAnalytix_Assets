@@ -8,6 +8,7 @@ import { ReduceToStockPositionComponent } from 'src/app/modules/shared/component
 import { ActionType } from 'src/app/modules/shared/models/trade-management/action-type.enum';
 import { OptionEntry } from 'src/app/modules/shared/models/trade-management/option-entry.model';
 import { OptionType } from 'src/app/modules/shared/models/trade-management/option-type.enum';
+import { PartialLegChange } from 'src/app/modules/shared/models/trade-management/partial-leg-change.model';
 import { StockEntry } from 'src/app/modules/shared/models/trade-management/stock-entry.model';
 import { StockSymbol } from 'src/app/modules/shared/models/trade-management/stock-symbol.model';
 import { StrategyTemplate } from 'src/app/modules/shared/models/trade-management/strategy-template.model';
@@ -168,12 +169,12 @@ export class TradeDetailsComponent implements OnInit {
     let netReturn: number = 0;
     let tmp: number;
     if (this.stockEntry && this.stockEntry.quantity && this.stockEntry.closePrice) {
-      tmp = this.stockEntry.quantity * this.stockEntry.closePrice;
+      tmp = this.stockEntry.quantity * (this.stockEntry.closePrice - this.stockEntry.price);
       netReturn = tmp * (this.stockEntry.actionType == ActionType["Buy to Open"] ? 1 : -1);
     }
     if (this.stockOptions) {
       for (let index = 0; index < this.stockOptions.length; index++) {
-        tmp = this.stockOptions[index].contracts && this.stockOptions[index].closePrice ? Number.parseFloat((this.stockOptions[index].contracts * this.stockOptions[index].closePrice * 100).toFixed(2)) : 0
+        tmp = this.stockOptions[index].contracts && this.stockOptions[index].closePrice ? Number.parseFloat((this.stockOptions[index].contracts * (this.stockOptions[index].closePrice - this.stockOptions[index].price) * 100).toFixed(2)) : 0
         if (this.stockOptions[index].actionType == ActionType["Buy to Open"]) {
           netReturn += tmp;
         } else if (this.stockOptions[index].actionType == ActionType["Sell to Open"]) {
@@ -294,6 +295,7 @@ export class TradeDetailsComponent implements OnInit {
     if (!dialogResult || (!dialogResult.price || !dialogResult.quantity) || (add == false && dialogResult.quantity > this.stockEntry.quantity)) {
       return;
     }
+    let openPrice: number = this.stockEntry.price;
     if (add) {
       this.stockEntry.quantity = this.stockEntry.quantity + dialogResult.quantity;
       let price = +(((this.stockEntry.price * this.stockEntry.quantity) + (dialogResult.quantity * dialogResult.price)) / (this.stockEntry.quantity + dialogResult.quantity)).toFixed(2);
@@ -301,12 +303,17 @@ export class TradeDetailsComponent implements OnInit {
     } else {
       this.stockEntry.quantity = this.stockEntry.quantity - dialogResult.quantity;
     }
+    if (!this.stockEntry.partialLegChange) {
+      this.stockEntry.partialLegChange = [];
+    }
+    this.stockEntry.partialLegChange.push(this.createPartialLegClose(dialogResult.quantity, openPrice, dialogResult.price, add));
   }
 
   addOrReduceStockOption(dialogResult: any, stockOption: OptionEntry, add: boolean, index: number) {
     if (!dialogResult || (!dialogResult.price || !dialogResult.contracts) || (add == false && dialogResult.contracts > stockOption.contracts)) {
       return;
     }
+    let openPrice: number = stockOption.price;
     if (add) {
       stockOption.contracts = stockOption.contracts + dialogResult.contracts;
       let price = +(((stockOption.price * stockOption.contracts) + (dialogResult.contracts * dialogResult.price)) / (stockOption.contracts + dialogResult.contracts)).toFixed(2);
@@ -314,6 +321,19 @@ export class TradeDetailsComponent implements OnInit {
     } else if (dialogResult.contracts <= stockOption.contracts) {
       stockOption.contracts = stockOption.contracts - dialogResult.contracts;
     }
+
+    if (!stockOption.partialLegChange) {
+      stockOption.partialLegChange = [];
+    }
+    stockOption.partialLegChange.push(this.createPartialLegClose(dialogResult.contracts, openPrice, dialogResult.price, add))
+  }
+
+  createPartialLegClose(changeCount: number, openPrice: number, closePrice: number, add: boolean) {
+    let partialCloseDetails: PartialLegChange = new PartialLegChange();
+    partialCloseDetails.changeCount = add === true ? changeCount : -1 * changeCount;
+    partialCloseDetails.closePrice = closePrice;
+    partialCloseDetails.openPrice = openPrice;
+    return partialCloseDetails;
   }
 
 }

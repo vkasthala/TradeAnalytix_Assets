@@ -75,7 +75,7 @@
         <div class="card-main card-main-sm" *ngIf="closeTrade">
           <label class="col-form-label pt-0">Net Return</label>
           <h6 class="input_text">
-            {{(stockEntry.quantity && stockEntry.closePrice) ? (stockEntry.quantity * stockEntry.closePrice * (stockEntry.actionType == 2 ? -1 : 1)).toFixed(2) : 0}}
+            {{(stockEntry.quantity && stockEntry.closePrice) ? (stockEntry.quantity * (stockEntry.closePrice - stockEntry.price) * (stockEntry.actionType == 2 ? -1 : 1)).toFixed(2) : 0}}
           </h6>
         </div>
         <div class="card-main card-main-sm" *ngIf="!closeTrade">
@@ -161,7 +161,7 @@
           </div>
           <div class="card-main card-main-sm" *ngIf="closeTrade">
             <h6 class="input_text justify-content-start">
-              {{(stockOptions[index].contracts && stockOptions[index].closePrice) ? (stockOptions[index].contracts * (stockOptions[index].closePrice * 100) *  (stockOptions[index].actionType == 2 ? -1 : 1)).toFixed(2) : 0}}
+              {{(stockOptions[index].contracts && stockOptions[index].closePrice) ? (stockOptions[index].contracts * ((stockOptions[index].closePrice - stockOptions[index].price) * 100) *  (stockOptions[index].actionType == 2 ? -1 : 1)).toFixed(2) : 0}}
             </h6>
           </div>
 
