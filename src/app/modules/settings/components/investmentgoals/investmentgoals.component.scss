@@ -1,0 +1,62 @@
+@import "../../../../../assets/styles/variable.scss";
+
+.btn-apply {
+  background-color: #0183c0;
+  color: #ffffff;
+  font-size: 14px;
+  cursor: pointer;
+  margin: 0 auto;
+  padding: 10px 40px;
+}
+@media #{$extra-small} {
+  .add-trade-plan{
+    display: none;
+  }
+}
+
+
+
+.btn-pre{
+  color: #016db0;
+  font-weight: 500;
+  font-size: 17px;
+}
+
+
+.trade-btn{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.disabled {
+  background: #dedede !important;
+  pointer-events: none !important;
+}
+.width-auto {
+  width: auto;
+}
+.form-control {
+  border-radius: 0;
+}
+
+.trade-cards-section {
+    display: flex;
+    align-items: stretch;
+    flex-wrap: wrap;
+}
+.card-main {
+    padding-right: 0.5678rem;
+    min-width: 135px;
+    max-width: 135px;
+    font-size: 0.89rem;
+}
+.card-main-lg {
+    min-width: 230px;
+    max-width: 230px;
+}
+.form-control {
+    height: calc(1.35em + 0.75rem + 2px);
+}

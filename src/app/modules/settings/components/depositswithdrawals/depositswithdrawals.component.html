@@ -1,0 +1,75 @@
+<div class="p-3">
+    <div class="mb-2">
+        <label class="col-form-label">What is the portfolio value (including cash) at the time of setting up this proﬁle?</label>
+        <div class="col-md-6 col-lg-3 p-0">
+            <input type="text" class="form-control"  />
+        </div>
+    </div>
+
+    
+    
+    <div class="mb-2">
+        <label class="col-form-label">Deposit and Withdrawal History</label>
+        <div class="trade-cards-section">
+            <span class="card-main">
+                <div class="datepicker-group">
+                    <input matInput [matDatepicker]="executed_date" (click)="executed_date.open()" id="executed_date"
+                      (dateChange)="addEvent('input', $event)" name="executed_date" [(ngModel)]="executedDate" placeholder="Entry Date" />
+                    <mat-datepicker-toggle matSuffix [for]="executed_date"></mat-datepicker-toggle>
+                    <mat-datepicker #executed_date></mat-datepicker>
+                  </div>
+            </span>
+            <span class="card-main">
+                <select class="form-control">
+                    <option value="1">Deposit</option>
+                    <option value="1">Withdrawal</option>
+                </select>
+            </span>
+            <span class="card-main"><input type="text" class="form-control" placeholder="Amount" /></span>
+            <span class="text-primary"><mat-icon class="mt-2">add</mat-icon></span>
+        </div>
+        <div class="d-flex align-items-center mb-1">
+            <span class="card-main">01-Jan-2020</span>
+            <span class="card-main">Deposit</span>
+            <span class="card-main">12,024</span>
+            <span class="text-primary">
+                <mat-icon class="mr-3">edit</mat-icon>
+                <mat-icon>delete</mat-icon>
+            </span>
+        </div>
+        <div class="d-flex align-items-center mb-1">
+            <span class="card-main">01-Jan-2020</span>
+            <span class="card-main">Withdrawal</span>
+            <span class="card-main">12,024</span>
+            <span class="text-primary">
+                <mat-icon class="mr-3">edit</mat-icon>
+                <mat-icon>delete</mat-icon>
+            </span>
+        </div>
+        <div class="d-flex align-items-center mb-1">
+            <span class="card-main">01-Jan-2020</span>
+            <span class="card-main">Withdrawal</span>
+            <span class="card-main">12,024</span>
+            <span class="text-primary">
+                <mat-icon class="mr-3">edit</mat-icon>
+                <mat-icon>delete</mat-icon>
+            </span>
+        </div>
+        <div class="d-flex align-items-center mb-1">
+            <span class="card-main">01-Jan-2020</span>
+            <span class="card-main">Deposit</span>
+            <span class="card-main">12,024</span>
+            <span class="text-primary">
+                <mat-icon class="mr-3">edit</mat-icon>
+                <mat-icon>delete</mat-icon>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="trade-btn py-3">
+    <div class="btn btn-apply" (click)="saveprofile()">
+        SAVE
+    </div>
+</div>
+      

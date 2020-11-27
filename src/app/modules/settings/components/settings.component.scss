@@ -1,0 +1,82 @@
+@import '../../../../assets/styles/variable.scss';
+
+
+// risk tabs
+.tab .nav-tabs {
+    display: flex;
+    align-items: center;
+    border: 0;
+  }
+  .tab .nav-tabs li{
+    padding: 0 1rem;
+  }
+  .tab .nav-tabs li a {
+    display: block;
+    padding: 10px 20px;
+    margin: 0 5px 1px 0;
+    background: transparent;
+    font-size: 15px;
+    font-weight: 500;
+    color: #000;
+    text-align: center;
+    border: none;
+    border-radius: 0;
+    z-index: 2;
+    position: relative;
+    transition: all 0.3s ease 0s;
+    text-decoration: none;
+  }
+  .tab .nav-tabs li a:hover,
+  .tab .nav-tabs li.active a {
+    color: $primary !important;
+    border: none;
+  }
+  
+  .tab .nav-tabs li.active a:after {
+    content: "";
+    width: 100%;
+    height: 2px;
+    background: $primary;
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    z-index: -1;
+    transition: all 0.3s ease 0s;
+  }
+  .tab .tab-content {
+    padding: 0px;
+    margin-top: 0;
+    background: #fff;
+    font-size: 16px;
+    color: #7a9181;
+    border-radius: 0 0 5px 5px;
+    box-shadow: 0px 0px 6px 0px #5a5a5a;
+    @media #{$extra-small} {
+      overflow-y: scroll;
+    }
+    @media #{$small} {
+      overflow-y: scroll;
+    }
+    @media #{$medium} {
+      overflow-y: scroll;
+    }
+  }
+  .tab .tab-content h3 {
+    font-size: 24px;
+    margin-top: 0;
+  }
+@media only screen and (max-width: 479px) {
+    .tab .nav-tabs li {
+        width: 100%;
+        text-align: center;
+    }
+    .tab .nav-tabs li.active a:before {
+        content: "\f105";
+        bottom: 15%;
+        left: 0;
+        right: auto;
+    }
+}
+
+
+

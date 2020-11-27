@@ -1,447 +1,74 @@
-<div class="add-trade-plan">
-    <div class="container">
-        <div class="trade-dash-main">
-            <div class="trade-dash-name">
-                <h3>Profile</h3>
+
+<div class="trade-plan-box row m-0">
+    <div class="pre-market-box col-sm-6 py-3">
+        <div class="mb-2">
+            <label class="col-form-label">Sign-In Method</label>
+            <div class="d-flex col-md-8 p-0">
+                <input class="form-control disabled" id="exampleInputEmail1" value="Google" type="text" />
             </div>
         </div>
-        <div class="inner-trade mt-2">
-            <div class="inner-trade-plan">
-                <div class="trade-plan-box row m-0">
-                    <div class="pre-market-box col-sm-6 py-3">
-                        <div class="pre-heading">User Settings</div>
-                        <div class="mb-2">
-                            <label class="col-form-label">Sign-In Details</label>
-                            <div class="d-flex col-md-10 p-0">
-                                <select class="form-control disabled width-auto mr-2">
-                                    <option value="1">Google</option>
-                                </select>
-                                <input class="form-control disabled" id="exampleInputEmail1" placeholder="venkat.kasthala@gmail.com" type="email" />
-                            </div>
-                        </div>
-                        <div class="mb-2">
-                            <label class="col-form-label">Country</label>
-                            <select class="form-control col-md-8">
-                                <option value="1">India</option>
-                            </select>
-                        </div>
-                        <div class="mb-2">
-                            <label class="col-form-label">Source of Trade Ideas</label>
-                            <div class="d-flex align-items-center">
-                                <select class="form-control col-md-8">
-                                    <option value="1">CNBC</option>
-                                </select>
-                                <span class="px-3 text-primary"><mat-icon>add</mat-icon></span>
-                            </div>
-                        </div>
-                        <div class="mb-2">
-                            <label class="col-form-label">Technical Indicators Used</label>
-                            <div class="d-flex align-items-center">
-                                <select class="form-control col-md-8">
-                                    <option value="1">Bollinger Bands</option>
-                                </select>
-                                <span class="px-3 text-primary"><mat-icon>add</mat-icon></span>
-                            </div>
-                        </div>
-                        <div class="mb-2">
-                            <label class="col-form-label">Mindset at Trade Entry and Exit</label>
-                            <div class="d-flex align-items-center">
-                                <select class="form-control col-md-8">
-                                    <option value="1">Greed</option>
-                                </select>
-                                <span class="px-3 text-primary"><mat-icon>add</mat-icon></span>
-                            </div>
-                        </div>
-                        <div class="mb-2">
-                            <label class="col-form-label">Events Surrounding the Trade</label>
-                            <div class="d-flex align-items-center">
-                                <select class="form-control col-md-8">
-                                    <option value="1">Post-Earnings</option>
-                                </select>
-                                <span class="px-3 text-primary"><mat-icon>add</mat-icon></span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="post-market-box col-sm-6 py-3 v-line">
-                        <div class="pre-heading">Investment Profile</div>
-                        <div class="mb-2">
-                            <label class="col-form-label">What is the initial investment?</label>
-                            <div class="d-flex col-md-8 p-0">
-                                <input type="text" class="form-control"  />
-                            </div>
-                        </div>
-                        <div class="mb-2">
-                            <label class="col-form-label">What is the target proﬁt in the given timeframe?</label>
-                            <div class="d-flex align-items-center">
-                                <span class="col-4 p-0"><input type="text" class="form-control" value="$80,000" /></span>
-                                <span class="px-3">in</span>
-                                <span class="col-2 p-0"><input type="text" class="form-control" value="18" /></span>
-                                
-                                <span class="px-3">Months</span>
-                            </div>
-                        </div>
-                        <div class="mb-2">
-                            <label class="col-form-label">How much amount are you willing to risk to achieve the goal?</label>
-                            <div class="d-flex col-md-8 p-0">
-                                <input type="text" class="form-control"  />
-                            </div>
-                        </div>
-                        <div class="mb-2">
-                            <label class="col-form-label">How much amount would like to maintain as cash reserves?</label>
-                            <div class="d-flex col-md-8 p-0">
-                                <input type="text" class="form-control"  />
-                            </div>
-                        </div>
-                        <div class="mb-2">
-                            <label class="col-form-label">Deposits and Withdrawals</label>
-                            <div class="row d-flex align-items-center mb-2">
-                                <span class="col-3"><input type="text" class="form-control" placeholder="Date" /></span>
-                                <span class="col-3">
-                                    <select class="form-control">
-                                        <option value="1">Deposit</option>
-                                    </select>
-                                </span>
-                                <span class="col-3"><input type="text" class="form-control" placeholder="Amount" /></span>
-                                <span class="text-primary"><mat-icon>add</mat-icon></span>
-                            </div>
-                            <div class="row d-flex align-items-center">
-                                <span class="col-3"><input type="text" class="form-control" placeholder="Date" /></span>
-                                <span class="col-3">
-                                    <select class="form-control">
-                                        <option value="1">Withdrawal</option>
-                                    </select>
-                                </span>
-                                <span class="col-3"><input type="text" class="form-control" placeholder="Amount" /></span>
-                                <span class="text-primary"><mat-icon>add</mat-icon></span>
-                            </div>
-                        </div>
-
-                        <div class="mb-2">
-                            <label class="col-form-label">Commission</label>
-                            <div class="row d-flex align-items-center mb-2">
-                                <span class="col-3">
-                                    <select class="form-control">
-                                        <option value="1">Stocks</option>
-                                    </select>
-                                </span>
-                                <span class="col-3">
-                                    <select class="form-control">
-                                        <option value="1">%</option>
-                                    </select>
-                                </span>
-                                <span class="col-3"><input type="text" class="form-control" placeholder="0.15" /></span>
-                                <span class="text-primary"><mat-icon>add</mat-icon></span>
-                            </div>
-                            <div class="row d-flex align-items-center">
-                                <span class="col-3"><input type="text" class="form-control" placeholder="Date" /></span>
-                                <span class="col-3">
-                                    <select class="form-control">
-                                        <option value="1">Withdrawal</option>
-                                    </select>
-                                </span>
-                                <span class="col-3">
-                                    <select class="form-control">
-                                        <option value="1">Amount
-                                        </option>
-                                    </select>
-                                </span>
-                                <span class="text-primary"><mat-icon>add</mat-icon></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
-            <div class="trade-btn profile-bottom py-3">
-                <div class="btn btn-apply" (click)="saveprofile()">
-                    SAVE
-                </div>
+        <div class="mb-2">
+            <label class="col-form-label">Email Address</label>
+            <div class="d-flex col-md-8 p-0">
+                <input class="form-control disabled" id="exampleInputEmail1" value="venkat.kasthala@gmail.com" type="email" />
             </div>
         </div>
+        
+        <div class="mb-2">
+            <label class="col-form-label">Country</label>
+            <select class="form-control col-md-8">
+                <option value="1">USA</option>
+            </select>
+        </div>
+        <a href="#">Reset Password</a>
 
+        <div class="mb-2">
+            <label class="col-form-label">Current Password</label>
+            <div class="d-flex col-md-8 p-0">
+                <input class="form-control" id="currentpassword" type="password" />
+            </div>
+        </div>
+        <div class="mb-2">
+            <label class="col-form-label">New Password</label>
+            <div class="d-flex col-md-8 p-0">
+                <input class="form-control" id="newpassword" type="password" />
+            </div>
+        </div>
+        <div class="mb-2">
+            <label class="col-form-label">Confirm Password</label>
+            <div class="d-flex col-md-8 p-0">
+                <input class="form-control" id="confirmpassword" type="password" />
+            </div>
+        </div>
+    </div>
 
-
+    <div class="post-market-box col-sm-6 py-3 v-line">
+        <div class="mb-2">
+            <label class="col-form-label">Brokerages Used</label>
+            <select class="form-control col-md-8">
+                <option value="1">tdAmeritrade</option>
+                <option value="2">Robinhood</option>
+                <option value="3">WebBull</option>
+                <option value="4">Charles Schwab</option>
+                <option value="5">Interactive Brokers</option>
+            </select>
+        </div>
+        <div class="mb-2">
+            <label class="col-form-label">Traded Instruments</label>
+            <select class="form-control col-md-8">
+                <option value="1">Stocks</option>
+                <option value="2">Stock Options</option>
+                <option value="3">Stock Futures</option>
+                <option value="4">Commodity Futures</option>
+                <option value="5">Forex Options</option>
+            </select>
+        </div>
+        
     </div>
 </div>
 
-
-
-<!-- mobile -->
-
-<div class="trade-profile-mobile">
-    <div class="container">
-        <div class="trade-top-heading">
-            <h3> TRADE PLAN </h3>
-        </div>
-    </div>
-
-    <div class="trad-border"></div>
-
-    <div class="trade-mobile-profile-sec">
-        <div class="pro-step">
-            <div class="container">
-                <div  class="trade-stategy-heading">
-                    <h6> Personal Information </h6>
-                </div>
-
-
-                <div class="trade-thesis-list">
-
-                    <div class="trade-box-left">
-                        <div class="trade-new">
-                            <div class="left-trade">
-                                <div class="thesis-list-inner">
-                                    <div class="list-inner-left">
-
-                                        <h6>
-                                            First Name
-                                        </h6>
-                                    </div>
-                                    <div class="list-inner-right">
-                                        <div class="trade-inp"><input class="form-control"
-                                                id="exampleInputEmail1" placeholder="Venkat" type="email"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="right-trade">
-                                <div class="thesis-list-inner">
-                                    <div class="list-inner-left">
-
-                                        <h6>
-                                            Last Name
-                                        </h6>
-                                    </div>
-                                    <div class="list-inner-right">
-                                        <div class="trade-inp"><input class="form-control"
-                                                id="exampleInputEmail1" placeholder="Kasthala" type="email">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="trade-new">
-                            <div class="left-trade">
-                                <div class="thesis-list-inner">
-                                    <div class="list-inner-left">
-
-                                        <h6>
-                                            Email Address
-                                        </h6>
-                                    </div>
-                                    <div class="list-inner-right">
-                                        <div class="trade-inp"><input class="form-control"
-                                                id="exampleInputEmail1" placeholder="venkat.kasthala@gmail.com"
-                                                type="email"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="right-trade">
-                                <div class="thesis-list-inner">
-                                    <div class="list-inner-left">
-
-                                        <h6>
-                                            Sign-in Method
-                                        </h6>
-                                    </div>
-                                    <div class="list-inner-right">
-                                        <div class="trade-sel">
-                                            <select class="form-control" id="exampleFormControlSelect1">
-                                                <option>Google</option>
-                                                <option>No</option>
-                                            </select>
-                                            <img src="../../../../assets/images/icon/Icon ionic-ios-arrow-down.png"
-                                                alt="" class="form-icon-down">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="trade-new">
-                            <div class="left-trade">
-                                <div class="thesis-list-inner">
-                                    <div class="list-inner-left">
-
-                                        <h6>
-                                            Region
-                                        </h6>
-                                    </div>
-                                    <div class="list-inner-right">
-
-                                        <div class="trade-sel">
-                                            <select class="form-control" id="exampleFormControlSelect1">
-                                                <option>USA</option>
-                                                <option>India</option>
-                                            </select>
-                                            <img src="../../../../assets/images/icon/Icon ionic-ios-arrow-down.png"
-                                                alt="" class="form-icon-down">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="left-trade">
-                                <div class="thesis-list-inner">
-                                    <div class="list-inner-left">
-
-                                        <h6>
-                                            What brokerage(s) do you use?
-                                        </h6>
-                                    </div>
-                                    <div class="list-inner-right">
-
-                                        <div class="trade-sel">
-                                            <select class="form-control" id="exampleFormControlSelect1">
-                                                <option>tdAmeritrade, Robinhood</option>
-                                                <option>India</option>
-                                            </select>
-                                            <img src="../../../../assets/images/icon/Icon ionic-ios-arrow-down.png"
-                                                alt="" class="form-icon-down">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        <div class="pro-step">
-            <div class="container">
-                <div  class="trade-stategy-heading">
-                    <h6> Investment Profile </h6>
-                </div>
-
-
-                <div class="trade-thesis-list">
-
-                    <div class="trade-box-left">
-                        <div class="trade-new">
-                            <div class="left-trade">
-                                <div class="thesis-list-inner">
-                                    <div class="list-inner-left">
-
-                                        <h6>
-                                            How much amount did you allocate for investments?
-
-                                        </h6>
-                                    </div>
-                                    <div class="list-inner-right">
-                                        <div class="trade-inp"><input class="form-control"
-                                                id="exampleInputEmail1" placeholder="$50,000" type="email"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="right-trade">
-                                <div class="thesis-list-inner">
-                                    <div class="list-inner-left">
-
-                                        <h6>
-                                            What is the target profit?
-                                        </h6>
-                                    </div>
-                                    <div class="list-inner-right">
-                                        <div class="trade-inp"><input class="form-control"
-                                                id="exampleInputEmail1" placeholder="$50,000" type="email">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="trade-new">
-                            <div class="left-trade">
-                                <div class="thesis-list-inner">
-                                    <div class="list-inner-left">
-
-                                        <h6>
-                                            What is the target date to achieve the target profit?
-                                        </h6>
-                                    </div>
-                                    <div class="list-inner-rights">
-                                        <div class="trade-date">
-
-                                            <div class="form-group">
-                                                <div class='input-group date' id='datetimepicker1'>
-                                                    <my-date-range-picker placeholder="Date range"
-                                                        name="mydaterange" [options]="myDateRangePickerOptions">
-                                                    </my-date-range-picker>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="right-trade">
-                                <div class="thesis-list-inner">
-                                    <div class="list-inner-left">
-
-                                        <h6>
-                                            What is the maximum amount you can afford to lose?
-                                        </h6>
-                                    </div>
-                                    <div class="list-inner-rights">
-                                        <div class="list-inner-right">
-                                            <div class="trade-inp"><input class="form-control"
-                                                    id="exampleInputEmail1" placeholder="$10,000" type="email">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="trade-new">
-                            <div class="left-trade">
-                                <div class="thesis-list-inner">
-                                    <div class="list-inner-left">
-
-                                        <h6>
-                                            How much cash would you like to keep as reserves?
-                                        </h6>
-                                    </div>
-                                    <div class="list-inner-rights">
-                                        <div class="trade-inp">
-                                            <input class="form-control" id="exampleInputEmail1"
-                                                placeholder="$10,000" type="email">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="right-trade">
-                                <div class="thesis-list-inner">
-                                    <div class="list-inner-left">
-
-                                        <h6>
-                                            In which instruments do you trade?
-                                        </h6>
-                                    </div>
-                                    <div class="list-inner-rights">
-                                        <div class="list-inner-right">
-                                            <div class="trade-sel">
-                                                <select class="form-control" id="exampleFormControlSelect1">
-                                                    <option>Stocks, Options, Crypto</option>
-                                                    <option>No</option>
-                                                </select>
-                                                <img src="../../../../assets/images/icon/Icon ionic-ios-arrow-down.png"
-                                                    alt="" class="form-icon-down">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-        </div>
+<div class="trade-btn profile-bottom py-3">
+    <div class="btn btn-apply" (click)="saveprofile()">
+        SAVE
     </div>
 </div>

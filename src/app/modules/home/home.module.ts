@@ -58,6 +58,8 @@ import { ChartModule } from 'angular-highcharts';
 import { ConfirmDialogComponent } from '../shared/components/modals/confirm-dialog/confirm-dialog.component';
 import { ExitRulesComponent } from '../trade-management/components/add-trade/Steps/exit-rules/exit-rules.component';
 // import { MatTableDataSource } from '@angular/material';
+import { InvestmentGoalsComponent } from '../settings/components/investmentgoals/investmentgoals.component';
+import { DepositswithdrawalsComponent } from '../settings/components/depositswithdrawals/depositswithdrawals.component';
 
 @NgModule({
   declarations: [
@@ -86,6 +88,8 @@ import { ExitRulesComponent } from '../trade-management/components/add-trade/Ste
     ExitRulesComponent,
     UpdateStrategyPopupComponent,
     ManagerulesComponent,
+    InvestmentGoalsComponent,
+    DepositswithdrawalsComponent,
     UpdatePriceRangeComponent,
     SingleInputModalComponent,
     ManageRulePopupComponent,
