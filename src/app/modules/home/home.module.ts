@@ -60,6 +60,7 @@ import { ExitRulesComponent } from '../trade-management/components/add-trade/Ste
 // import { MatTableDataSource } from '@angular/material';
 import { InvestmentGoalsComponent } from '../settings/components/investmentgoals/investmentgoals.component';
 import { DepositswithdrawalsComponent } from '../settings/components/depositswithdrawals/depositswithdrawals.component';
+import { DatasetupComponent } from '../settings/components/datasetup/datasetup.component';
 
 @NgModule({
   declarations: [
@@ -90,6 +91,7 @@ import { DepositswithdrawalsComponent } from '../settings/components/depositswit
     ManagerulesComponent,
     InvestmentGoalsComponent,
     DepositswithdrawalsComponent,
+    DatasetupComponent,
     UpdatePriceRangeComponent,
     SingleInputModalComponent,
     ManageRulePopupComponent,

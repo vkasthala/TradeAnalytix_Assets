@@ -1,0 +1,434 @@
+@import "../../../../../assets/styles/variable.scss";
+
+.add-trade-plan {
+    padding: 0px 20px;
+  }
+  .inner-trade{
+    width: 100%;
+    background-color: #fff;
+    height: 100%;
+    position: relative;
+    box-shadow: 0px 0px 6px 0px #5a5a5a;
+  //   text-align: center;
+  }
+  .inner-trade-plan {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .trade-thesis-list {
+    margin-top: 40px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: row;
+    width: 100%;
+    position: relative;
+    // padding: 19px 20px;
+  
+    @media #{$small} {
+      flex-direction: column;
+    }
+    @media #{$medium} {
+      margin-top: 50px;
+    }
+    .thesis-list-inner {
+      width: 100%;
+      position: relative;
+      display: flex;
+      // justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      flex-direction: column;
+  
+      @media #{$small} {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+  
+      @media #{$medium} {
+        // min-height: 120px;
+      }
+      .list-inner-left {
+        width: 100%;
+        position: relative;
+        display: flex;
+        align-items: center;
+        margin-bottom: 5px;
+        @media #{$small} {
+          width: 100%;
+        }
+  
+        span {
+          margin-right: 20px;
+  
+          h6 {
+            font-weight: 400;
+            @media #{$small} {
+              font-size: 15px;
+            }
+          }
+        }
+      }
+  
+      .list-inner-right {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding-left: 27px;
+        .add-new {
+          color: $primary;
+          font-size: 14px;
+          cursor: pointer;
+          font-weight: 500;
+          margin-left: 20px;
+        }
+      }
+  
+      .list-inner-rights {
+        display: flex;
+        align-items: flex-start;
+        width: 100%;
+        padding-left: 27px;
+        .add-new {
+          color: $primary;
+          font-size: 14px;
+          cursor: pointer;
+          font-weight: 500;
+          margin-left: 20px;
+        }
+      }
+    }
+  }
+  
+  .trade-plan-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;
+    position: relative;
+  
+    @media #{$small} {
+      flex-direction: column;
+    }
+    @media #{$medium} {
+      padding-left: 0px;
+    }
+  
+  }
+  
+  .pre-market-box {
+    width: 50%;
+    @media #{$small} {
+      width: 100%;
+  
+      border-bottom: 1px solid #ddd;
+    }
+  }
+  
+  .post-market-box {
+    width: 50%;
+    @media #{$small} {
+      width: 100%;
+      margin-top: 10px;
+    }
+  }
+  
+  .trade-sel {
+    width: 230px;
+    position: relative;
+  //   margin-right: 30px;
+  
+    select {
+      cursor: pointer;
+      -webkit-appearance: none !important;
+    }
+  }
+  
+  .form-icon-down {
+    position: absolute;
+    right: 11px;
+    top: 15px;
+    width: 15px;
+  }
+  
+  textarea {
+    width: 400px;
+    height: 70px;
+    resize: none;
+  
+    @media #{$small} {
+      width: 450px;
+    }
+    @media #{$medium} {
+      width: 290px;
+    }
+  }
+  
+  .pre-heading {
+    color: $primary;
+    font-size: 18px;
+    font-weight: 600
+  }
+  
+  .btn-apply {
+    background-color: #0183c0;
+    color: #ffffff;
+    font-size: 14px;
+    cursor: pointer;
+    margin: 0 auto;
+    padding: 10px 40px;
+  }
+  @media #{$extra-small} {
+    .add-trade-plan{
+      display: none;
+    }
+  }
+  
+  .trade-plan-mobile {
+    display: none;
+    margin-top: 20px;
+    @media #{$extra-small} {
+      display: flex;
+      flex-direction: column;
+    }
+    .trade-top-heading h3 {
+      color: #016db0;
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 10px !important;
+    }
+    .trad-border {
+      border: 1px solid #acacac;
+      opacity: 0.3;
+    }
+  
+    .trade-stategy-heading {
+      h6 {
+        color: #016db0;
+        font-weight: 500;
+        font-size: 18px;
+      }
+    }
+    .trade-thesis-inner {
+      margin-top: 15px;
+    }
+  
+    .tranding-thesis {
+      display: flex;
+      justify-content: flex-start;
+      flex-direction: column;
+      width: 100%;
+      margin-bottom: 18px;
+      .left-thesis {
+        width: 100%;
+        margin-bottom: 10px;
+        h6 {
+          color: #565656 !important;
+          font-size: 17px;
+          font-weight: 400;
+        }
+      }
+      .right-thesis {
+        width: 100%;
+      }
+    }
+    .trade-new-plan-mobile{
+      margin-top: 15px;
+    }
+    textarea{
+      width: 100%;
+    }
+  
+    .btn-add{
+      padding: 14px 40px;
+      background: #016db0;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+      width: 100%;
+  }
+  .btn-pre{
+    color: #016db0;
+    font-weight: 500;
+    font-size: 17px;
+  }
+  .trade-btn-p{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  }
+  
+  
+  .add-trade-plan .trade-btn-p{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .btn-pre{
+    color: #016db0;
+    font-weight: 500;
+    font-size: 17px;
+  }
+  
+  .trade-border{
+    border: 1px solid #ddd;
+    
+    margin: 13px 0px;
+  
+  }
+  
+  .list-inner-rights{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  
+  .trade-btn{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  
+  
+  @media #{$small} {
+    .trade-box-left{
+      width: 100%;
+    }
+    .trade-box-right{
+      width: 100%;
+    }
+    .trade-inp,.trade-sel,.trade-date{
+      width: 80%;
+    }
+  
+    .mydrp{
+      width: 80% !important;
+    }
+  }
+  
+  
+  // trade-profile-mobile
+  
+  .trade-profile-mobile{
+    margin-top: 20px;
+      display: none;  
+  
+      @media #{$extra-small}{
+        display: flex;
+        flex-direction: column;
+      } 
+  
+  
+      .trade-top-heading h3 {
+        color: #016db0;
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 10px !important;
+    }
+  
+   .trad-border {
+      border: 1px solid #acacac;
+      opacity: 0.3;
+  }
+  
+  .trade-stategy-heading h6 {
+    color: #016db0;
+    font-weight: 500;
+    font-size: 18px;
+  }
+  }
+  
+  .trade-mobile-profile-sec{
+    margin-top: 15px;
+  
+    .trade-box-left {
+      width: 100%;
+  }
+  
+  .trade-sel{
+    width: 100%;
+  }
+  .trade-inp {
+    width: 100%;
+  }
+  
+  .trade-thesis-list{
+    margin-top: 20px;
+  }
+  
+  .mydrp{
+    width: 380px !important;
+  }
+  }
+  .disabled {
+    background: #dedede !important;
+    pointer-events: none !important;
+  }
+  .width-auto {
+    width: auto;
+  }
+  .form-control {
+    border-radius: 0;
+  }
+  @media (min-width: 768px) {
+    .v-line::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0%;
+      height: 100%;
+      width: 1px;
+      background-color: #ddd;
+    }
+  }
+  .profile-bottom {
+    border-top: 2px solid #ddd;
+  }
+  
+.trade-cards-section {
+    display: flex;
+    align-items: stretch;
+    flex-wrap: wrap;
+}
+.card-main {
+    padding-right: 0.5678rem;
+    min-width: 145px;
+    max-width: 145px;
+    font-size: 0.89rem;
+}
+.card-main-sm {
+    min-width: 100px;
+    max-width: 100px;
+}
+.form-control {
+    height: calc(1.35em + 0.75rem + 2px);
+}
+textarea {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
