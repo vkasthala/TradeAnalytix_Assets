@@ -3,127 +3,130 @@
         <div class="container">
             <div class="trade-dash-sections">
                 <div class="dashboard-left-logo cursor-pointer" [routerLink]="['/dashboard/']">
-                    <img src="../../../../assets/images/logo-new.png" alt="Trade-app-logo" class="img-fluid">
+                    <img src="../../../../assets/images/logo_green.png" alt="Trade-app-logo" class="img-fluid">
                 </div>
                 <div class="mobile-logo cursor-pointer" [routerLink]="['/home/dashboard/']">
                 </div>
-                    <!-- Trade-Navbar-Web -->
-                <div class="trade-dashboard-navbar">
-                    <nav class="trade-navbar">
-                        <ul class="list-unstyled ">
-                            <li [class.nav-active]="currentRoute == 'dashboard'">
-                                <a class="trade-nav-link" [routerLink]="['/dashboard/']">
-                                    <h4>Home</h4>
-                                </a>
-                            </li>
-                            <li [class.nav-active]="currentRoute == 'trade-strategies'">
-                                <a class="trade-nav-link" [routerLink]="['/trade-strategies/']">
-                                    <h4>Strategies</h4>
-                                    <mat-icon>keyboard_arrow_down</mat-icon>
-                                </a>                    
-                                <ul class="dropdown">
-                                    <li [class.nav-active]="currentRoute == 'new-trade'">
-                                        <a class="trade-nav-link" [routerLink]="['/new-trade/']">
-                                            Add Trade
-                                        </a>
-                                    </li>
-                                    <li [class.nav-active]="currentRoute == 'import-trades'">
-                                        <a class="trade-nav-link" [routerLink]="['/import-trades/']">
-                                            Import Trades
-                                        </a>
-                                    </li>
-                                    <li [class.nav-active]="currentRoute == 'trade-strategies'">
-                                        <a class="trade-nav-link" [routerLink]="['/trade-strategies/']">
-                                            View Strategies
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            
-                            <li [class.nav-active]="currentRoute == 'risk-analysis'">
-                                <a class="trade-nav-link" [routerLink]="['/risk-analysis/']">
-                                    <h4>Risk Analysis</h4>
-                                    <mat-icon>keyboard_arrow_down</mat-icon>
-                                </a>
-                                <ul class="dropdown">
-                                    <li [class.nav-active]="currentRoute == 'risk-analysis'">
-                                        <a class="trade-nav-link" [routerLink]="['/risk-analysis/']">
-                                            Risk Analysis
-                                        </a>
-                                    </li>
-                                    <li [class.nav-active]="currentRoute == 'compare-strategies'">
-                                        <a class="trade-nav-link" [routerLink]="['/compare-strategies/']">
-                                            Compare Strategies
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li [class.nav-active]="currentRoute == 'trade-plans'">
-                                <a class="trade-nav-link" [routerLink]="['/trade-plans/']">
-                                    <h4>Trade Plans</h4>
-                                    <mat-icon>keyboard_arrow_down</mat-icon>
-                                </a>
-                                <ul class="dropdown">
-                                    <li [class.nav-active]="currentRoute == 'new-trade'">
-                                        <a class="trade-nav-link" [routerLink]="['/add-new-trade-plan/']">Add Trade Plan</a>
-                                    </li>
-                                    <li [class.nav-active]="currentRoute == 'trade-plans'">
-                                        <a class="trade-nav-link" [routerLink]="['/trade-plans/']">View Plans</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            
-                            
-                            <li [class.nav-active]="currentRoute == 'reports'">
-                                <a class="trade-nav-link" [routerLink]="['/reports/']">
-                                    <h4>Reports</h4>
-                                </a>
-                            </li>
-                            <li [class.nav-active]="currentRoute == 'setttings'">
-                                <a class="trade-nav-link" [routerLink]="['/setttings/']">
-                                    <h4>Settings</h4>
-                                    <mat-icon>keyboard_arrow_down</mat-icon>
-                                </a>
-                                <ul class="dropdown">
-                                    <!-- <div class="d-flex user-details">
-                                        <div class="login-img">
-                                            <img src="../../../assets/images/face-img.png" alt="">
-                                        </div> 
-                                        <div class="login-member">
-                                            <div class="login-member-name">
-                                                <h5>Welcome Venkat</h5>
-                                                <span class="trade-nav-link" (click)="logout()">Logout</span>
-                                            </div>
+            </div>
+            <!-- Trade-Navbar-Web -->
+            <div class="trade-dashboard-navbar">
+                <nav class="trade-navbar">
+                    <ul class="list-unstyled ">
+                        <li [class.nav-active]="currentRoute == 'dashboard'">
+                            <a class="trade-nav-link" [routerLink]="['/dashboard/']">
+                                <h4>DASHBOARD</h4>
+                            </a>
+                        </li>
+                        <li [class.nav-active]="currentRoute == 'trade-strategies'">
+                            <a class="trade-nav-link" [routerLink]="['/trade-strategies/']">
+                                <h4>TRADE STRATEGIES</h4>
+                                <!-- <mat-icon>keyboard_arrow_down</mat-icon> -->
+                            </a>                    
+                            <!-- <ul class="dropdown">
+                                <li [class.nav-active]="currentRoute == 'new-trade'">
+                                    <a class="trade-nav-link" [routerLink]="['/new-trade/']">
+                                        Add Trade
+                                    </a>
+                                </li>
+                                <li [class.nav-active]="currentRoute == 'import-trades'">
+                                    <a class="trade-nav-link" [routerLink]="['/import-trades/']">
+                                        Import Trades
+                                    </a>
+                                </li>
+                                <li [class.nav-active]="currentRoute == 'trade-strategies'">
+                                    <a class="trade-nav-link" [routerLink]="['/trade-strategies/']">
+                                        View Strategies
+                                    </a>
+                                </li>
+                            </ul> -->
+                        </li>
+                        
+                        <li [class.nav-active]="currentRoute == 'import-trades'">
+                            <a class="trade-nav-link" [routerLink]="['/import-trades/']">
+                                <h4>IMPORT TRADES</h4>
+                            </a>
+                        </li>
+                        
+                        <li [class.nav-active]="currentRoute == 'risk-analysis'">
+                            <a class="trade-nav-link" [routerLink]="['/risk-analysis/']">
+                                <h4>RISK ANALYSIS</h4>
+                            </a>
+                            <!-- <ul class="dropdown">
+                                <li [class.nav-active]="currentRoute == 'risk-analysis'">
+                                    <a class="trade-nav-link" [routerLink]="['/risk-analysis/']">
+                                        Risk Analysis
+                                    </a>
+                                </li>
+                                <li [class.nav-active]="currentRoute == 'compare-strategies'">
+                                    <a class="trade-nav-link" [routerLink]="['/compare-strategies/']">
+                                        Compare Strategies
+                                    </a>
+                                </li>
+                            </ul> -->
+                        </li>
+                        <li [class.nav-active]="currentRoute == 'trade-plans'">
+                            <a class="trade-nav-link" [routerLink]="['/trade-plans/']">
+                                <h4>TRADE PLAN</h4>
+                                <!-- <mat-icon>keyboard_arrow_down</mat-icon> -->
+                            </a>
+                            <!-- <ul class="dropdown">
+                                <li [class.nav-active]="currentRoute == 'new-trade'">
+                                    <a class="trade-nav-link" [routerLink]="['/add-new-trade-plan/']">Add Trade Plan</a>
+                                </li>
+                                <li [class.nav-active]="currentRoute == 'trade-plans'">
+                                    <a class="trade-nav-link" [routerLink]="['/trade-plans/']">View Plans</a>
+                                </li>
+                            </ul> -->
+                        </li>
+                        
+                        
+                        <li [class.nav-active]="currentRoute == 'reports'">
+                            <a class="trade-nav-link" [routerLink]="['/reports/']">
+                                <h4>REPORTS</h4>
+                            </a>
+                        </li>
+                        <li [class.nav-active]="currentRoute == 'setttings'">
+                            <a class="trade-nav-link" [routerLink]="['/setttings/']">
+                                <h4>SETTINGS</h4>
+                            </a>
+                            <ul class="dropdown">
+                                <!-- <div class="d-flex user-details">
+                                    <div class="login-img">
+                                        <img src="../../../assets/images/face-img.png" alt="">
+                                    </div> 
+                                    <div class="login-member">
+                                        <div class="login-member-name">
+                                            <h5>Welcome Venkat</h5>
+                                            <span class="trade-nav-link" (click)="logout()">Logout</span>
                                         </div>
-                                    </div> -->
-                                    <li [class.nav-active]="currentRoute == 'exit-rules'">
-                                        <a class="trade-nav-link" [routerLink]="['/exit-rules/']">Entry/Exit Rules</a>
-                                    </li>
-                                    
-                                    <li [class.nav-active]="currentRoute == 'profile'">
-                                        <a class="trade-nav-link" [routerLink]="['/profile/']">User Settings</a>
-                                    </li>
-                            
-                                    <li [class.nav-active]="currentRoute == 'help'">
-                                        <a class="trade-nav-link" [routerLink]="['/help/']">
-                                            Help
-                                        </a>
-                                    </li>
-                                    <li [class.nav-active]="currentRoute == 'pricing'">
-                                        <a class="trade-nav-link" [routerLink]="['/pricing/']">Pricing</a>
-                                    </li>
-                                    <li [class.nav-active]="currentRoute == 'contact'">
-                                        <a class="trade-nav-link" [routerLink]="['/contact/']">Contact</a>
-                                    </li>
-                                    <li [class.nav-active]="currentRoute == 'contact'">
-                                        <a class="trade-nav-link" (click)="logout()">Logout</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-                    
+                                    </div>
+                                </div> -->
+                                <li [class.nav-active]="currentRoute == 'exit-rules'">
+                                    <a class="trade-nav-link" [routerLink]="['/exit-rules/']">Entry/Exit Rules</a>
+                                </li>
+                                
+                                <li [class.nav-active]="currentRoute == 'profile'">
+                                    <a class="trade-nav-link" [routerLink]="['/profile/']">User Settings</a>
+                                </li>
+                        
+                                <li [class.nav-active]="currentRoute == 'help'">
+                                    <a class="trade-nav-link" [routerLink]="['/help/']">
+                                        Help
+                                    </a>
+                                </li>
+                                <li [class.nav-active]="currentRoute == 'pricing'">
+                                    <a class="trade-nav-link" [routerLink]="['/pricing/']">Pricing</a>
+                                </li>
+                                <li [class.nav-active]="currentRoute == 'contact'">
+                                    <a class="trade-nav-link" [routerLink]="['/contact/']">Contact</a>
+                                </li>
+                                <li [class.nav-active]="currentRoute == 'contact'">
+                                    <a class="trade-nav-link" (click)="logout()">Logout</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
             </div>
         </div>
     </div>

@@ -2,7 +2,7 @@
 
 
 .trade-strategies-table{
-    padding: 10px 0;
+    
     .card-body{
         padding: 0px;
         @media #{$small} {
@@ -253,9 +253,11 @@
 }
 
 .btn-apply{
-  background-color: #0183C0;
+  background-color: #37A000;
   color: $white;
   font-size: 14px;
+  padding: 0.375rem 16px !important;
+  border-radius: 0;
 }
 
 .trade-details{
@@ -329,7 +331,11 @@ a.import-new img{
 .trade-strategies-sec{
   @media #{$extra-small} {
     display: none;
-    }
+  }
+  .container {
+    background: #242E3A;
+    padding-bottom: 5px;
+  }
 }
 
 .trade-st-mobile{

@@ -1,17 +1,22 @@
 @import "../../../../../assets/styles/variable.scss";
 
 .trade-app-footer {
-  background: #545454;
-  height: 60px;
+  background: #e8e8e8;
+  
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 5px 0;
+  
   color:#fff;
   font-size: .89rem;
+  .container {
+    background: #242e3a;
+    padding: 10px 15px;
+  }
   .trade-logo {
     color: $white;
   }
+
 
   .trade-socail-icon {
     display: flex;

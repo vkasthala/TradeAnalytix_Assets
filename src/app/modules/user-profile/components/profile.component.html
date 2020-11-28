@@ -22,22 +22,24 @@
         </div>
         <a href="#">Reset Password</a>
 
-        <div class="mb-2">
-            <label class="col-form-label">Current Password</label>
-            <div class="d-flex col-md-8 p-0">
-                <input class="form-control" id="currentpassword" type="password" />
+        <div *ngIf="stockAdded">
+            <div class="mb-2">
+                <label class="col-form-label">Current Password</label>
+                <div class="d-flex col-md-8 p-0">
+                    <input class="form-control" id="currentpassword" type="password" />
+                </div>
             </div>
-        </div>
-        <div class="mb-2">
-            <label class="col-form-label">New Password</label>
-            <div class="d-flex col-md-8 p-0">
-                <input class="form-control" id="newpassword" type="password" />
+            <div class="mb-2">
+                <label class="col-form-label">New Password</label>
+                <div class="d-flex col-md-8 p-0">
+                    <input class="form-control" id="newpassword" type="password" />
+                </div>
             </div>
-        </div>
-        <div class="mb-2">
-            <label class="col-form-label">Confirm Password</label>
-            <div class="d-flex col-md-8 p-0">
-                <input class="form-control" id="confirmpassword" type="password" />
+            <div class="mb-2">
+                <label class="col-form-label">Confirm Password</label>
+                <div class="d-flex col-md-8 p-0">
+                    <input class="form-control" id="confirmpassword" type="password" />
+                </div>
             </div>
         </div>
     </div>

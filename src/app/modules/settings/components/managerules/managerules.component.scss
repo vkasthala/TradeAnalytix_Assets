@@ -1,13 +1,7 @@
 @import "../../../../../assets/styles/variable.scss";
 
 .trade-strategies-table {
-  padding: 10px 0;
-  .card-body {
-    padding: 0px;
-    @media #{$small} {
-      overflow: hidden;
-    }
-  }
+  padding-bottom: 20px;
   .table {
     margin-bottom: 0px;
     @media #{$small} {
@@ -15,7 +9,7 @@
       // display: block;
     }
     thead {
-      background-color: $apptabel;
+      background-color: rgba(98, 95, 95, 0.9);
       color: $white;
       tr {
         th {
@@ -140,10 +134,10 @@
 
 .trade-st-box {
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-end;
   align-items: center;
   width: 100%;
-  padding: 15px 20px;
+  padding: 15px 0;
   @media #{$extra-small} {
     flex-direction: column;
     align-items: flex-start;
@@ -268,13 +262,11 @@ img.form-icon {
 .add-new-trade-btn {
   display: flex;
   justify-content: flex-end;
-  padding-right: 30px;
   align-items: center;
 }
 
 a.add-new {
   color: #0183c0;
-  font-size: 15px;
   font-weight: 500;
   text-decoration: none;
   cursor: pointer;
@@ -288,4 +280,10 @@ a.add-new {
   .right-delete {
     margin-left: 20px;
   }
+}
+.mat-icon-sm {
+  font-size: 22px;
+}
+.text-danger {
+  color: #f62d51 !important;
 }

@@ -1,23 +1,24 @@
-<div class="container">
-    <div class="trade-dash-main">
-        <div class="trade-dash-name">
-            <h3>
-                Trade Strategies
-            </h3>
-        </div>
-        <button routerLink="/new-trade" class="add-new btn btn-apply">ADD TRADE</button>
-    </div>
-    <div class="trade-strategies-sec">
-        <div class="trade-strategies-table">
-            <div class="card mb-4">
+<div class="trade-strategies-sec">
+    <div class="container">
+        <div class="card">
+            <div class="trade-dash-main">
+                <div class="trade-dash-name">
+                    <h3>
+                        Trade Strategies
+                    </h3>
+                </div>
+                <div>
+                    <button routerLink="/new-trade" class="add-new btn btn-apply">ADD TRADE</button>
+                    <span class="cursor ml-2" (click)="strategiesFilter()">
+                        <span *ngIf="!showFilters" class="text-primary text-sm" data-toggle="tooltip" data-placement="top" title="Show Filters">Show Filters</span> 
+                        <span *ngIf="showFilters" class="text-primary text-sm" data-toggle="tooltip" data-placement="top" title="Close Filters">Hide Filters</span>
+                    </span>
+                </div>
+            </div>
+            <div class="trade-strategies-table">
                 <div class="card-body">
                     <div class="text-right px-3 pt-2">
-                        <span class="cursor" (click)="strategiesFilter()">
-                            <i class="fas fa-filter"></i>
-                            
-                            <i *ngIf="!showFilters" class="negative-amt material-icons" data-toggle="tooltip" data-placement="top" title="Show Filters">filter</i> 
-                            <i *ngIf="showFilters" class="negative-amt material-icons" data-toggle="tooltip" data-placement="top" title="Close Filters">close</i>
-                        </span>
+                        
                     </div>
                     <div *ngIf="showFilters" class="trade-st-box pt-0">
                         
@@ -207,7 +208,6 @@
             </div>
         </div>
     </div>
-
 </div>
 
 

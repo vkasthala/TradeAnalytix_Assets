@@ -6,10 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./settings.component.scss']
 })
 export class SettingsComponent implements OnInit {
-
+  stockAdded: boolean;
   constructor() { }
 
   ngOnInit() {
+  }
+  addStock() {
+    this.stockAdded = true;
   }
 
 }
