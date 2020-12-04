@@ -5,14 +5,9 @@
   padding-right: 21px;
   align-items: center;
 }
-.btn-apply {
-  background-color: $appbtn-color;
-  color: #fff;
-  font-size: 14px;
-}
 
 .trade-strategies-table {
-  padding: 10px 0;
+  padding: 0;
   .card-body {
     padding: 0px;
     @media #{$small} {
@@ -211,11 +206,6 @@ img.form-icon {
   color: #4a4a4a;
 }
 
-.btn-apply {
-  background-color: #0183c0;
-  color: $white;
-  font-size: 14px;
-}
 
 .market {
   width: 35%;
@@ -251,7 +241,7 @@ table {
 }
 
 th.mat-header-cell {
-color: #fff;
+color: #242E3A;
 font-size: 14px;
 font-weight: 500;
 border-bottom: 1px solid #dee2e6;
@@ -265,8 +255,8 @@ background-color: #F9F9F9;
 background-color: transparent;
 }
 .mat-header-cell {
-  background: rgba(98, 95, 95, 0.9);
-  color: #fff;
+  background: #F6F7FA;
+  color: #242E3A;
 }
 .mat-header-row {
   min-height: 42px;
@@ -274,8 +264,7 @@ background-color: transparent;
 }
 .trade_plans_header {
   justify-content: flex-end;
-  align-items: center;
-  padding: 1rem;
+  align-items: flex-start;
   display: flex !important;
 }
 .col-form-label {

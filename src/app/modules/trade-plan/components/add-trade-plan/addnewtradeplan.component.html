@@ -1,45 +1,76 @@
-<div class="add-trade-plan">
-    <div class="container">
-        <div class="trade-dash-main">
-            <div class="trade-dash-name">
-                <h3>
-                    New Plan
-                </h3>
-            </div>
-          </div>
+<div class="dark-theme-body add-trade-plan">
+    <div class="container px-2">
+        
 
         <div class="inner-trade">
-
+            <div class="trade-dash-main">
+                <div class="trade-dash-name">
+                    <h3>New Plan</h3>
+                </div>
+              </div>
             <div class="inner-trade-plan">
                 <div class="trade-plan-box row m-0">
-                    <div class="pre-market-box py-3 col-md-6">
+                    <div class="pre-market-box col-md-6">
                         <div class="pre-heading text-center">
                             Trade Plan for Nov 11, 2020
                         </div>
-                        <div class="pre-heading">Pre-Market</div>
+                        <div class="pre-heading pt-2">Pre-Market</div>
                         <div class="mb-2">
                             <label class="col-form-label">Where do you think market is heading?</label>
                             <div class="row d-flex align-items-center m-0 mb-2">
-                                <span class="col-2 p-0"><input type="button" class="btn btn-gray full-width" value="UP" /></span>
-                                <span class="col-3 p-0"><input type="button" class="btn btn-primary full-width" value="Sideways" /></span>
-                                <span class="col-2 p-0"><input type="button" class="btn btn-gray full-width" value="Down" /></span>
+                                <span class="col-2 p-0"><input type="button" class="btn  full-width disabled" value="UP" /></span>
+                                <span class="col-3 p-0"><input type="button" class="btn btn-apply full-width" value="Sideways" /></span>
+                                <span class="col-2 p-0"><input type="button" class="btn  full-width disabled" value="Down" /></span>
                             </div>
                         </div>
                         <div class="mb-2">
+                            <label class="col-form-label pb-0 mr-2">Pre-Market Activities</label>
+                            <input type="checkbox" name="" checked />
+                        </div>
+
+                        <div class="mb-2">
                             <label class="col-form-label">What’s your perspective on the market and your current positions?</label>
-                            <textarea class="form-control disabled" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            <textarea class="form-control disabled" id="exampleFormControlTextarea1" rows="2"></textarea>
+                        </div>
+                        <div class="mb-2">
+                            <label class="col-form-label">What is your mindset today</label>
+                            <select class="form-control col-md-3 disabled">
+                                <option value="1">Anxious</option>
+                            </select>
                         </div>
                         <div class="mb-2">
                             <label class="col-form-label">What do you plan to trade today?</label>
                             <div class="row d-flex align-items-center mb-2">
-                                <span class="col-3"><input type="text" class="form-control disabled" placeholder="Symbol" /></span>
-                                <span class="col-3"><input type="text" class="form-control disabled" placeholder="Action" /></span>
-                                <span class="col-3"><input type="text" class="form-control disabled" placeholder="Thesis" /></span>
+                                <span class="col-3">
+                                    <select class="form-control disabled">
+                                        <option value="1">FB</option>
+                                    </select>
+                                </span>
+                                <span class="col-3">
+                                    <select class="form-control disabled">
+                                        <option value="1">Sell to Close</option>
+                                        <option value="2">Buy to Open</option>
+                                        <option value="3">Sell to Open</option>
+                                    </select>
+                                </span>
+                                <span class="col-3"><input type="text" class="form-control disabled" value="Undervalued" /></span>
                             </div>
-                            <div class="row d-flex align-items-center mb-2">
-                                <span class="col-3"><input type="text" class="form-control disabled" placeholder="Symbol" /></span>
-                                <span class="col-3"><input type="text" class="form-control disabled" placeholder="Action" /></span>
-                                <span class="col-3"><input type="text" class="form-control disabled" placeholder="Thesis" /></span>
+                            <div class="border px-3 py-1 mb-2">
+                                <div class="row mb-1">
+                                    <span class="col-3">AAPL</span>
+                                    <span class="col-3">Buy to Close</span>
+                                    <span class="col-6">Happy with the returns</span>
+                                </div>
+                                <div class="row mb-1">
+                                    <span class="col-3">NIO</span>
+                                    <span class="col-3">Sell to Close</span>
+                                    <span class="col-6">Bad earnings expected</span>
+                                </div>
+                                <div class="row mb-1">
+                                    <span class="col-3">SNOW</span>
+                                    <span class="col-3">Sell to Open</span>
+                                    <span class="col-6">Overvalued</span>
+                                </div>
                             </div>
                         </div>
                         <div class="pre-heading">Post-Market</div>
@@ -51,7 +82,7 @@
                                         <option value="1">Yes</option>
                                     </select>
                                 </span>
-                                <span class="col-9"><input type="text" class="form-control disabled" placeholder="Action" /></span>
+                                <span class="col-9"><input type="text" class="form-control disabled" value="If no, specify reason" /></span>
                             </div>
                         </div>
                         <div class="mb-2">
@@ -60,25 +91,26 @@
                         </div>
                     </div>
     
-                    <div class="post-market-box py-3 col-md-6 v-line">
-                        <div class="pre-heading">
-                            <h6>Post-Market</h6>
-                        </div>
+                    <div class="post-market-box col-md-6 v-line">
                         <div class="pre-heading text-center">
                             Trade Plan for Nov 11, 2020
                         </div>
-                        <div class="pre-heading">Pre-Market</div>
+                        <div class="pre-heading pt-2">Pre-Market</div>
                         <div class="mb-2">
                             <label class="col-form-label">Where do you think market is heading?</label>
                             <div class="row d-flex align-items-center m-0 mb-2">
                                 <span class="col-2 p-0"><input type="button" class="btn btn-white full-width" value="UP" /></span>
                                 <span class="col-3 p-0"><input type="button" class="btn btn-white full-width" value="Sideways" /></span>
-                                <span class="col-2 p-0"><input type="button" class="btn btn-primary full-width" value="Down" /></span>
+                                <span class="col-2 p-0"><input type="button" class="btn btn-apply full-width" value="Down" /></span>
                             </div>
                         </div>
                         <div class="mb-2">
+                            <label class="col-form-label pb-0 mr-2">Pre-Market Activities</label>
+                            <input type="checkbox" name="" checked />
+                        </div>
+                        <div class="mb-2">
                             <label class="col-form-label">What’s your perspective on the market and your current positions?</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
                         </div>
                         <div class="mb-2">
                             <label class="col-form-label">What do you plan to trade today?</label>
