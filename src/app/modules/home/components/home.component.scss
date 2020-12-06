@@ -15,6 +15,7 @@
     justify-content: space-between;
     align-items: center;
     padding: .5rem 0 .25rem 0;
+    position: relative;
     @media #{$extra-small} {
       padding: 0px;
     }
@@ -32,14 +33,14 @@
     .user-details {
       display: flex;
       align-items: center;
-      padding: 5px;
+      font-size: .89rem;
       @media #{$extra-small} {
         display: none;
       }
 
       .login-img {
-        width: 40px;
-        height: 40px;
+        width: 30px;
+        height: 30px;
         border-radius: 50%;
         border: 1px solid $white;
         overflow: hidden;
@@ -160,7 +161,7 @@
           display: none;
           padding: 0;
           list-style: none;
-          top: 32px;
+          top: 26px;
           z-index: 10;
             li{
               padding: 0;
@@ -214,15 +215,10 @@
 // Dashboard sedction
 
 .trade-app-dashboard {
-  background-color: #E8E8E8;
+  background-color: #242e3a;
   height: auto;
-  min-height: 90.43vh;
-  padding-bottom: 20px;
-  @media #{$extra-small} {
-    min-height: 87vh;
-    padding-bottom: 0px;
-
-  }
+  min-height: 100vh;
+  padding: 0;
 
 }
 .trade-dash-section {
@@ -341,4 +337,26 @@
   img{
     cursor: pointer;
   }
+}
+
+.dropdown {
+  position: absolute;
+  top: 80%;
+  right: 0;
+  z-index: 95;
+  min-width: 10rem;
+  overflow: auto;
+  border-radius: 0;
+  background: #fff;
+  box-shadow: 0px 0px 50px 0px rgba(82, 63, 105, 0.15);
+  margin: 0;
+}
+
+.dropdown > li > a {
+  padding: 5px 10px;
+  display: block;
+  color: #424242;
+}
+.dropdown > li > a:hover {
+  text-decoration: none;
 }

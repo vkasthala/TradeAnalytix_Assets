@@ -1,6 +1,8 @@
 @import '../../../../assets/styles/variable.scss';
 @import '../../../../assets/styles/breakpoints.scss';
-
+.risk-analysis {
+  padding-bottom: 40px;
+}
 .addnew-trade {
   padding: 0px;
 }
@@ -713,6 +715,7 @@ a.btn.btn-skip {
 }
 
 .trade-form {
+  border-top: 2px solid #ccc;
   .row {
     justify-content: center;
     align-items: center;
@@ -777,11 +780,6 @@ a.btn.btn-skip {
 .addnew-first {
   height: 67vh;
   background-color: #fff;
-  border: 1px solid #ddd;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0px 0px 10px 0px rgba(103, 103, 103, 0.49);
 }
 .range-sm {
   min-width: 50px;

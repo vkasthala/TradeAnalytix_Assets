@@ -1,28 +1,31 @@
 @import "../../../../../assets/styles/variable.scss";
 
 .addnew-trade {
-  padding: 0px;
+  padding-bottom: 40px;
   @media #{$extra-small} {
     display: none;
+  }
+  .container {
+    background: #242E3A;
+    padding-bottom: 5px;
   }
 }
 .addnew-trade-body{
   background-color: #fff;
   box-shadow: 0px 0px 6px 0px #5a5a5a;
+  border-radius: 2px;
 }
 .addnew-first {
   height: 67vh;
+  border-top: 2px solid #ccc;
 }
 .trade-form {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
 }
 .btn-enter {
-  background-color: #0183c0;
+  background-color: #37A000;
   color: $white;
-  padding: 6px 40px;
+  padding: 5px 20px !important;
 }
 
 

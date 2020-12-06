@@ -1,28 +1,29 @@
-<div class="container">
-  <div class="trade-dash-main">
-    <div class="trade-dash-name">
-        <h3>
-          {{add ? 'Add' : ''}} {{edit ? 'Edit' : ''}} {{close ? 'Close' : ''}}  Trade
-        </h3>
-    </div>
-  </div>
+
   
   <div class="addnew-trade">
+    <div class="container px-2">
+      <div class="addnew-trade-body">
+      <div class="trade-dash-main">
+        <div class="trade-dash-name">
+            <h3>
+              {{add ? 'Add' : ''}} {{edit ? 'Edit' : ''}} {{close ? 'Close' : ''}}  Trade
+            </h3>
+        </div>
+      </div>
     <ng-container [ngSwitch]="currentState">
       <ng-container *ngSwitchCase="1">
-        <div class="addnew-trade-body">
+        
           <!--entry first-->
           <div class="addnew-first p-3">
             <div class="trade-form">
-              <div class="d-flex justify-content-center align-items-center">
-                <label class="col-form-label px-2">Enter Symbol</label>
+              <div class="d-flex">
+                <label class="col-form-label pb-0 mr-2">Enter Symbol</label>
                 <app-trade-search (symbolSelectEvent)="symbolSelectEventHandler($event)"></app-trade-search>
                 <button class="btn btn-enter ml-2" (click)="enterSymbol()">Submit </button>
               </div>
              
             </div>
           </div>
-        </div>
       </ng-container>
       <ng-container *ngSwitchCase="2">
         <div class="addnew-trade-body mb-2">
@@ -78,7 +79,7 @@
       </ng-container>
     </ng-container>
 
-
+    </div>
   </div>
 </div>
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import * as fromGlobalConfig from '../../../modules/utilities/reducers/global-config.reducer';
 import { Store } from '@ngrx/store';
@@ -10,9 +10,10 @@ import { Store } from '@ngrx/store';
 export class HomeComponent implements OnInit {
 
   currentRoute: string;
+  userdetails: boolean=false;
   constructor(
     private globalStore: Store<fromGlobalConfig.State>,
-    private router: Router
+    private router: Router,
   ) { 
         let globalSelector = (fromGlobalConfig.globalConfigFeatureKey as any);
         globalStore.select(globalSelector).subscribe(res => {
@@ -21,13 +22,24 @@ export class HomeComponent implements OnInit {
     }
 
   ngOnInit() {
+   
   }
 
   logout() {
     this.router.navigate(['/landing']);
   }
 
-
+  @HostListener('document:click', ['$event'])
+  @HostListener('document:touchstart', ['$event'])
+  toggle(event) {
+    var target = event.target;
+    if (target.closest(".user-details")) { 
+      this.userdetails = !this.userdetails;
+    } else {
+      this.userdetails = false;
+    }
+  }
+  
   get currentNavigation() {
     //console.log('route:', this.currentRoute);
     switch (this.currentRoute) {
