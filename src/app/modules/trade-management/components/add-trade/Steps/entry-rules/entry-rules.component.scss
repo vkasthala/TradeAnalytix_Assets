@@ -119,8 +119,8 @@
   width: 10%;
 }
 .switch label {
-  width: 60px;
-  height: 30px;
+  width: 52px;
+  height: 26px;
   position: absolute;
   background-color: #999;
   top: -3px;
@@ -133,8 +133,8 @@
 }
 .switch label:after {
   content: "";
-  width: 26px;
-  height: 26px;
+  width: 23px;
+  height: 23px;
   border-radius: 50px;
   position: absolute;
   top: 2px;
@@ -143,20 +143,21 @@
   transition: all 0.3s;
 }
 .switch input[type="checkbox"]:checked + label:after {
-  left: 33px;
+  left: 28px;
 }
 .switch input[type="checkbox"]:checked + label {
-  background-color: $primary;
+  background-color: #37a01a;
 }
 .switch input[type="checkbox"]:not(:checked) + label {
-  background-color: #ddd;
+  background-color: #555555;
 }
 
 .trade-check {
   display: flex;
   align-items: center;
   border: 1px solid #ddd;
-  width: 40%;
+  width: 36%;
+  font-size: 12px;
   padding: 10px;
   border-radius: 6px;
   @media #{$small} {

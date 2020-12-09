@@ -26,54 +26,60 @@
           </div>
       </ng-container>
       <ng-container *ngSwitchCase="2">
-        <div class="addnew-trade-body mb-2">
+        <div class="addnew-trade-body">
           <app-trade-details-header [selectedStock]="selectedStock" [stockSummary]="stockSummary"
             (loadMoreStats)="loadMoreStatsHandler($event)"></app-trade-details-header>
         </div>
-        <div class="addnew-trade-body">
-          <mat-vertical-stepper labelPosition="left" #stepper [linear]="false">
-            <mat-step [class.active]="stepone.completed" #stepone>
-              <ng-template matStepLabel>Trade Details</ng-template>
-              <div class="stepper-content">
-                <app-trade-details (nextStep)="goForward()" (activateRisk)="activeStep = true"
-                  (addTradeEvent)="addTrade($event)" (navigateRiskAnalysisEvent)="navigaeToRiskAnalysis()"
-                  [stockSummary]="stockSummary" [selectedStock]="selectedStock" [inputState]="inputState"
-                  [editTrade]="edit" [addTrade]="add" [closeTrade]="close" #tradeDetails>
-                </app-trade-details>
-              </div>
-            </mat-step>
-            <mat-step>
-              <ng-template matStepLabel>Trade Thesis</ng-template>
-              <div class="stepper-content">
-                <app-trade-thesis (nextStep)="goForward()" (prevStep)="goBack(true)" [inputState]="inputState"
-                [editTrade]="edit" [addTrade]="add" [closeTrade]="close" #tradeThesis>
-                </app-trade-thesis>
-              </div>
-            </mat-step>
-            <mat-step>
-              <ng-template matStepLabel>Entry Rules</ng-template>
-              <div class="stepper-content">
-                <app-entry-rules (prevStep)="goBack()" [inputState]="inputState" [editTrade]="edit" [addTrade]="add" [closeTrade]="close" #entryRules></app-entry-rules>
-              </div>
-            </mat-step>
-            
-            <mat-step *ngIf="close">
-              <ng-template matStepLabel>Exit Rules</ng-template>
-              <div class="stepper-content">
-                <app-exit-rules (prevStep)="goBack()" [inputState]="inputState" #exitRules></app-exit-rules>
-              </div>
-            </mat-step>
-          </mat-vertical-stepper>
-          <div class="text-center border-top py-2">
-            <span class="order-btn text-center" *ngIf="(tradeDetails.stockAdded || tradeDetails.stockOptions.length > 0) && (stepper.selectedIndex == 0)">
-              <button type="button" class="btn btn-next mr-3" *ngIf="!close && !tradeStrategy.executed" (click)="saveTradeAsDraft()">SAVE AS DRAFT</button>
-            </span>
-            <button type="button" class="btn btn-next mr-3" *ngIf="add"
-              (click)="CheckExecutionDate('Confirm Trade Execution Date')">ADD TRADE</button>
+        <div class="d-flex no-gutters" style="margin-right: -1px;">
+          <div class="col-8">
+            <mat-horizontal-stepper labelPosition="left" #stepper [linear]="false">
+              <mat-step [class.active]="stepone.completed" #stepone>
+                <ng-template matStepLabel>Trade Details</ng-template>
+                <div class="stepper-content">
+                  <app-trade-details (nextStep)="goForward()" (activateRisk)="activeStep = true"
+                    (addTradeEvent)="addTrade($event)" (navigateRiskAnalysisEvent)="navigaeToRiskAnalysis()"
+                    [stockSummary]="stockSummary" [selectedStock]="selectedStock" [inputState]="inputState"
+                    [editTrade]="edit" [addTrade]="add" [closeTrade]="close" #tradeDetails>
+                  </app-trade-details>
+                </div>
+              </mat-step>
+              <mat-step>
+                <ng-template matStepLabel>Trade Thesis</ng-template>
+                <div class="stepper-content">
+                  <app-trade-thesis (nextStep)="goForward()" (prevStep)="goBack(true)" [inputState]="inputState"
+                  [editTrade]="edit" [addTrade]="add" [closeTrade]="close" #tradeThesis>
+                  </app-trade-thesis>
+                </div>
+              </mat-step>
+              <mat-step>
+                <ng-template matStepLabel>Entry Rules</ng-template>
+                <div class="stepper-content">
+                  <app-entry-rules (prevStep)="goBack()" [inputState]="inputState" [editTrade]="edit" [addTrade]="add" [closeTrade]="close" #entryRules></app-entry-rules>
+                </div>
+              </mat-step>
+              
+              <mat-step *ngIf="close">
+                <ng-template matStepLabel>Exit Rules</ng-template>
+                <div class="stepper-content">
+                  <app-exit-rules (prevStep)="goBack()" [inputState]="inputState" #exitRules></app-exit-rules>
+                </div>
+              </mat-step>
+            </mat-horizontal-stepper>
+            <div class="text-center py-3">
+              <span class="order-btn text-center" *ngIf="(tradeDetails.stockAdded || tradeDetails.stockOptions.length > 0) && (stepper.selectedIndex == 0)">
+                <button type="button" class="btn btn-gray mr-3" *ngIf="!close && !tradeStrategy.executed" (click)="saveTradeAsDraft()">SAVE AS DRAFT</button>
+              </span>
+              <button type="button" class="btn btn-next mr-3" *ngIf="add"
+                (click)="CheckExecutionDate('Confirm Trade Execution Date')">ADD TRADE</button>
 
-            <button type="button" class="btn btn-next mr-3" *ngIf="edit" (click)="editTrade()">UPDATE TRADE</button>
-            
-            <button type="button" class="btn btn-next mr-3" *ngIf="close" (click)="closeTrade()">CLOSE TRADE</button>
+              <button type="button" class="btn btn-next mr-3" *ngIf="edit" (click)="editTrade()">UPDATE TRADE</button>
+              
+              <button type="button" class="btn btn-next mr-3" *ngIf="close" (click)="closeTrade()">CLOSE TRADE</button>
+            </div>
+          </div>
+          <div class="col-4 trade-details-aside">
+            <app-trade-details-aside [selectedStock]="selectedStock" [stockSummary]="stockSummary"
+            (loadMoreStats)="loadMoreStatsHandler($event)"></app-trade-details-aside>
           </div>
         </div>
       </ng-container>

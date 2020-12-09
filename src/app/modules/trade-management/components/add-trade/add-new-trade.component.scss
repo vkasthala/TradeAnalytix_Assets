@@ -12,11 +12,11 @@
 }
 .addnew-trade-body{
   background-color: #fff;
-  box-shadow: 0px 0px 6px 0px #5a5a5a;
+  // box-shadow: 0px 0px 6px 0px #5a5a5a;
   border-radius: 2px;
 }
 .addnew-first {
-  height: 67vh;
+  height: 71vh;
   border-top: 2px solid #ccc;
 }
 .trade-form {
@@ -139,7 +139,7 @@
 
               .btn-add {
                 padding: 8px 40px;
-                background: #016DB0;
+                background: #37a01a;
                 color: #fff;
                 font-size: 14px;
                 font-weight: 500;
@@ -427,7 +427,7 @@
 
 .btn-add {
   padding: 8px 40px;
-  background: #016DB0;
+  background: #37a01a;
   color: #fff;
   font-size: 14px;
   font-weight: 500;
@@ -598,10 +598,22 @@ visibility: hidden;
 }
 .btn-next {
   padding: 8px 1rem;
-  background: $appbtn-color;
+  background: #37a01a;
   color: #fff;
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
   text-transform: uppercase;
+}
+.btn-gray {
+  padding: 8px 1rem;
+  background: #3e3e3e;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+.trade-details-aside {
+  margin-top: 40px;
 }

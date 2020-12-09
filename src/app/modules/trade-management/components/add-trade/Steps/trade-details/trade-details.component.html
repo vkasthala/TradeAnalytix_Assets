@@ -50,8 +50,7 @@
       <div class="trade-card-box" *ngIf="stockAdded">
         <div class="card-main">
           <label class="col-form-label pt-0">Action</label>
-          <select id="inputState" [ngClass]="closeTrade ? 'disabled' : ''" class="form-control select-input"
-            [(ngModel)]="stockEntry.actionType">
+          <select id="inputState" [ngClass]="closeTrade ? 'disabled' : ''" class="form-control px-0" [(ngModel)]="stockEntry.actionType">
             <option value=1 selected data-default>Buy to Open</option>
             <option value=2>Sell to Open</option>
           </select>
@@ -78,17 +77,17 @@
             {{(stockEntry.quantity && stockEntry.closePrice) ? (stockEntry.quantity * (stockEntry.closePrice - stockEntry.price) * (stockEntry.actionType == 2 ? -1 : 1)).toFixed(2) : 0}}
           </h6>
         </div>
-        <div class="card-main card-main-sm" *ngIf="!closeTrade">
+        <div class="card-main" *ngIf="!closeTrade">
           <label class="col-form-label pt-0">Amount</label>
           <h6 class="input_text">
             {{(stockEntry.quantity && stockEntry.price) ? (stockEntry.quantity * stockEntry.price * (stockEntry.actionType == 2 ? -1 : 1)).toFixed(2) : 0}}
           </h6>
         </div>
 
-        <div *ngIf="editTrade == true" class="top-heading mr-1" (click)="addToPosition()">
+        <div *ngIf="editTrade == true" class="top-heading mr-1 text-success" (click)="addToPosition()">
           <mat-icon>add_circle</mat-icon>
         </div>
-        <div *ngIf="editTrade == true" class="top-heading mr-1" (click)="reduceToPosition()">
+        <div *ngIf="editTrade == true" class="top-heading mr-1 text-success" (click)="reduceToPosition()">
           <mat-icon>remove_circle</mat-icon>
         </div>
         <div *ngIf="!closeTrade" class="top-heading" (click)="deleteStock()">
@@ -103,7 +102,7 @@
           <div class="card-main card-main-sm">Strike</div>
           <div class="card-main card-main-sm">Call / Put</div>
           <div class="card-main card-main-sm">Entry Price</div>
-          <div class="card-main card-main-sm" *ngIf="!closeTrade">Amount</div>
+          <div class="card-main" *ngIf="!closeTrade">Amount</div>
           <div class="card-main card-main-sm" *ngIf="closeTrade">Exit Price</div>
           <div class="card-main card-main-sm" *ngIf="closeTrade">Net Return</div>
         </div>
@@ -150,7 +149,7 @@
               (change)="checkForDecimalValidation($event)" step="0.01" min="0" class="form-control cards-input"
               placeholder="" [(ngModel)]="stockOptions[index].price" [ngClass]="closeTrade ? 'disabled' : ''" />
           </div>
-          <div class="card-main card-main-sm" *ngIf="!closeTrade">
+          <div class="card-main" *ngIf="!closeTrade">
             <h6 class="input_text justify-content-end">
               {{(stockOptions[index].contracts && stockOptions[index].price) ? (stockOptions[index].contracts * (stockOptions[index].price * 100) *  (stockOptions[index].actionType == 2 ? -1 : 1)).toFixed(2) : 0}}
             </h6>
@@ -165,10 +164,10 @@
             </h6>
           </div>
 
-          <div *ngIf="editTrade == true" class="top-heading p-0 mr-1" (click)="addToStockPosition(index)">
+          <div *ngIf="editTrade == true" class="top-heading p-0 mr-1 text-success" (click)="addToStockPosition(index)">
             <mat-icon>add_circle</mat-icon>
           </div>
-          <div *ngIf="editTrade == true" class="top-heading p-0 mr-1" (click)="reduceToStockOption(index)">
+          <div *ngIf="editTrade == true" class="top-heading p-0 mr-1 text-success" (click)="reduceToStockOption(index)">
             <mat-icon>remove_circle</mat-icon>
           </div>
           <div *ngIf="!closeTrade" class="top-heading p-0" (click)="deleteStockOption(index)">
@@ -179,7 +178,7 @@
     </div>
     <div class="font-weight-bold net_debit" *ngIf="stockOptions.length">
       <span class="total_label">Total {{closeTrade ? 'Return' : 'Amount'}} </span>
-      <span class="total_amount px-2"
+      <span class="total_amount mx-2"
         [ngClass]="closeTrade ? 'total_return' : ''">{{closeTrade ? calculateNetReturn() : calculateNetDebit()}}</span>
     </div>
     <div class="pt-2" *ngIf="closeTrade">
