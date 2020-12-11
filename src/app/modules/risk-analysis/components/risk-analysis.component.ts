@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { ActionType } from '../../shared/models/trade-management/action-type.enum';
 import { OptionEntry } from '../../shared/models/trade-management/option-entry.model';
@@ -26,9 +26,15 @@ import { RiskAnalysisChartComponent } from './risk-analysis-chart/risk-analysis-
   templateUrl: './risk-analysis.component.html',
   styleUrls: ['./risk-analysis.component.scss']
 })
+
+
 export class RiskAnalysisComponent implements OnInit {
+  @Input('matTooltipShowDelay') showDelay: number;
+  @Input('matTooltipHideDelay') hideDelay: number;
 
   @ViewChild('riskAnalysisChart', { static: false }) private riskAnalysisChartComponent: RiskAnalysisChartComponent;
+
+  
 
   currentState: number = 1;
   selectedStrategy: number = 15;
@@ -67,7 +73,8 @@ export class RiskAnalysisComponent implements OnInit {
   }
 
   ngAfterViewInit(): void {
-
+    this.showDelay = 50;
+    this.hideDelay = 200;
   }
 
   enterSymbol() {

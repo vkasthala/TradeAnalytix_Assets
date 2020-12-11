@@ -1,9 +1,12 @@
 <div class="px-2">
     <div class="card">
         <div class="trade-dash-main">
+            
             <div class="trade-dash-name">
-                <h3>
-                    Risk Analysis 
+                <h3 class="d-flex">
+                    Risk Analysis <mat-icon matTooltip="Risk analysis feature allows the traders to analyze the proﬁtability and risk involved with a a complex trade strategy involving stock and options. Traders can assess the maximum gain and loss associated with the strategy by varying the stock and option inputs. Based on the analysis results, traders can tweak the strategy so that it aligns with the desired goal. 
+                    " matTooltipPosition="right" class="text-success ml-2" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay"
+                    [matTooltipHideDelay]="this.hideDelay">info</mat-icon>
                 </h3>
             </div>
         </div>
@@ -12,14 +15,14 @@
                 <!--entry first-->
                 <div class="addnew-first">
                     <div class="trade-form pt-3 d-flex">
-                        <label class="col-form-label px-2">Enter Symbol</label>
+                        <label class="col-form-label px-2" data-toggle="tooltip" data-placement="top" title="Show Filters">Enter Symbol</label>
                         <app-trade-search (symbolSelectEvent)="symbolSelectEventHandler($event)"></app-trade-search>
                         <button class="btn btn-enter ml-2" (click)="enterSymbol()">Submit</button>
                     </div>
                 </div>
             </ng-container>
             <ng-container *ngSwitchCase="2">
-                <div class="risk-inner mb-2">
+                <div class="mb-2">
                     <app-trade-details-header [selectedStock]="selectedStock" [stockSummary]="stockSummary"
                     (loadMoreStats)="loadMoreStatsHandler($event)"></app-trade-details-header>
                 </div>

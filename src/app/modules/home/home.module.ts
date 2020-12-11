@@ -4,6 +4,7 @@ import {
   MatDatepickerModule,
   MatNativeDateModule,
   MatInputModule,
+  MatTooltipModule
 
 } from '@angular/material';
 import { TradeStrategiesComponent } from '../trade-strategies/components/trade-strategies.component';
@@ -121,6 +122,7 @@ import { DatasetupComponent } from '../settings/components/datasetup/datasetup.c
     UtilitiesModule,
     MatNativeDateModule,
     MatInputModule,
+    MatTooltipModule,
     MatDatepickerModule,
     MatTableModule,
     MatPaginatorModule,
