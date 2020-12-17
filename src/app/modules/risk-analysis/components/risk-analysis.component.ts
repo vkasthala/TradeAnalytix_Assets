@@ -69,13 +69,15 @@ export class RiskAnalysisComponent implements OnInit {
     this.initState();
   }
 
+  step = 0;
+  panelOpenState = false;
+  panelDisabled = true;
+  panel3Disabled = true;
+  panelExpand = false;
+
   ngOnInit() {
   }
 
-  ngAfterViewInit(): void {
-    this.showDelay = 50;
-    this.hideDelay = 200;
-  }
 
   enterSymbol() {
     if (!this.selectedStock || !this.selectedStock.code) {
@@ -334,6 +336,8 @@ export class RiskAnalysisComponent implements OnInit {
     if (this.validateInputs() == false) {
       return;
     }
+    this.panelOpenState = true;
+    this.panelDisabled = false;
     this.performRiskAnalysis = true;
     this.displayRiskAnalysis = true;
     let riskAnalysisRequest: RiskAnalysisRequest = new RiskAnalysisRequest();
@@ -352,6 +356,8 @@ export class RiskAnalysisComponent implements OnInit {
     }, errorResponse => {
       console.log("get implied volatility error:", errorResponse);
     });
+    
+    
   }
 
   validateInputs(): boolean {
@@ -419,6 +425,8 @@ export class RiskAnalysisComponent implements OnInit {
     this.riskAnalysisService.getRiskAnalysisResult(riskAnalysisRequest).subscribe(result => {
       console.log("success:", result)
       this.riskAnalysisResults = result.records;
+      this.panelExpand = true;
+      this.panel3Disabled = false;
     },
       errResponse => {
         console.log("error:", errResponse);
@@ -511,5 +519,23 @@ export class RiskAnalysisComponent implements OnInit {
     element.scrollIntoView();
   }
 
+  
+
+  setStep(index: number) {
+    // this.step = index;
+  }
+
+  afterPanelClosed(event) {
+    if(event == 1){
+      this.panelOpenState = false;
+    }
+    
+    this.panelExpand = false;
+  }
+  afterPanelOpened(){
+    console.log("Panel opened!");
+  }
+
 
 }
+
