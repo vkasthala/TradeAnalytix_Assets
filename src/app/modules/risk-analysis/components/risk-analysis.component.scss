@@ -1,7 +1,10 @@
 @import '../../../../assets/styles/variable.scss';
 @import '../../../../assets/styles/breakpoints.scss';
+.mat-expansion-panel-body {
+  padding: 0 16px !important;
+}
 .risk-analysis {
-  padding-bottom: 40px;
+  padding-bottom: 20px;
 }
 .addnew-trade {
   padding: 0px;
@@ -137,7 +140,7 @@ span.trade-rr {
   width: 110px;
   height: 40px;
   line-height: 28px;
-  background: $appbtn-color;
+  background: #37a01a;
   color: #fff;
   font-size: 14px;
   font-weight: 500;
@@ -145,9 +148,12 @@ span.trade-rr {
   text-transform: uppercase;
   // margin-top: 24px;
 }
+.btn-option {
+  background: #3e3e3e;
+}
 .btn-next {
-  padding: 8px 40px;
-  background: $appbtn-color;
+  padding: 8px 20px !important;
+  background: #37a01a;
   color: #fff;
   font-size: 14px;
   font-weight: 500;
@@ -159,7 +165,7 @@ span.trade-rr {
 }
 
 .order-btn {
-  margin-top: 20px;
+  padding-bottom: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -236,7 +242,7 @@ a.btn.btn-skip {
   justify-content: flex-start;
   align-items: flex-start;
   width: 100%;
-  margin: 40px 0px 20px 0px;
+  margin: 10px 0px;
   // flex-wrap: wrap;
   @media #{$extra-small} {
     width: 100%;
@@ -255,14 +261,16 @@ a.btn.btn-skip {
   .trade-card-box {
     width: 20%;
     // min-width: 260px;
-    background: #f2f2f2;
+    background: #fff;
     height: auto;
     min-height: 390px;
     display: flex;
     flex-direction: column;
-    padding: 14px;
+    padding: 10px;
     justify-content: flex-start;
     align-items: flex-start;
+    box-shadow: 0 0 4px #ccc;
+    border: 1px solid #cbcbcb;
     // margin-left: 20px;
     @media #{$extra-small} {
       min-height: 350px;
@@ -301,14 +309,14 @@ a.btn.btn-skip {
       align-items: baseline;
       margin-bottom: 10px;
       .card-left {
-        width: 45%;
+        width: 40%;
         padding-left: 5px;
         span {
           font-size: 13px;
         }
       }
       .card-right {
-        width: 52%;
+        width: 60%;
         h6 {
           font-size: 12px;
 
@@ -374,25 +382,26 @@ a.btn.btn-skip {
 
 .risk-stock-seciton {
   display: flex;
-  width: 97%;
+  width: 100%;
   align-items: center;
+  flex-direction: column;
   @media #{$medium} {
     width: 100%;
   }
 }
 
 .stock-inc {
-  border: 1px solid #7070703d;
+  border: 1px solid #a2a2a2;
   padding: 4px 8px;
   border-radius: 50px;
-  width: 58%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: relative;
-  // margin: 0 auto;
+  margin: 0 auto;
   a {
     cursor: pointer;
+    line-height: 0;
     img {
       width: 20px;
       height: auto;
@@ -405,7 +414,8 @@ a.btn.btn-skip {
 }
 
 .stock-name {
-  width: 42%;
+  justify-content: center;
+  display: inline-flex
   span {
     font-size: 13px;
   }
@@ -416,6 +426,9 @@ a.btn.btn-skip {
   flex-direction: column;
   position: relative;
   width: 20%;
+  box-shadow: 0 0 4px #ccc;
+  border: 1px solid #cbcbcb;
+  padding: 10px;
   @media #{$small} {
     margin-bottom: 20px;
     width: 48%;
@@ -439,27 +452,7 @@ a.btn.btn-skip {
   }
 }
 
-.risk-af::after {
-  content: "";
-  position: absolute;
-  right: 0px;
-  top: 0px;
-  width: 2px;
-  height: 60%;
-  background-color: #7070703b;
-  z-index: 9;
-  opacity: 0.5;
 
-  @media #{$extra-small} {
-    display: none;
-  }
-  @media #{$small} {
-    display: none;
-  }
-  @media #{$medium} {
-    display: none;
-  }
-}
 .card-m{
   margin-left: 10px;
   @media #{$small} {
@@ -498,7 +491,7 @@ a.btn.btn-skip {
 }
 
 .trade-risk-stock {
-  margin-bottom: 40px;
+  margin-bottom: 10px;
   display: flex;
   justify-content: flex-start;
   width: 100%;
@@ -516,7 +509,7 @@ a.btn.btn-skip {
 }
 .tab .nav-tabs li a {
   display: block;
-  padding: 10px 20px;
+  padding: 5px;
   margin: 0 5px 1px 0;
   background: #fff;
   font-size: 15px;
@@ -532,7 +525,7 @@ a.btn.btn-skip {
 }
 .tab .nav-tabs li a:hover,
 .tab .nav-tabs li.active a {
-  color: $primary !important;
+  color: #37a01a  !important;
   border: none;
 }
 
@@ -540,7 +533,7 @@ a.btn.btn-skip {
   content: "";
   width: 100%;
   height: 2px;
-  background: $primary;
+  background: #37a01a;
   position: absolute;
   bottom: -3px;
   left: 0;
@@ -548,7 +541,7 @@ a.btn.btn-skip {
   transition: all 0.3s ease 0s;
 }
 .tab .tab-content {
-  padding: 30px 0px;
+  padding: 0px;
   margin-top: 0;
   background: #fff;
   font-size: 15px;
@@ -606,8 +599,10 @@ a.btn.btn-skip {
   width: 30%;
   height: auto;
   min-height: 340px;
-  border-right: 1px solid;
-  padding: 0px 10px;
+  padding: 0px;
+  box-shadow: 0 0 5px #ccc;
+  border: 1px solid #cbcbcb;
+  margin-right: 10px;
   @media #{$small} {
     width: 50%;
   }
@@ -615,7 +610,8 @@ a.btn.btn-skip {
   h6 {
     text-align: center;
     font-size: 14px;
-    margin-bottom: 10px !important;
+    padding: 6px .25rem;
+    margin: 0;
     color: #000;
   }
   table {
@@ -624,8 +620,8 @@ a.btn.btn-skip {
     text-align: center;
     thead {
       th {
-        background: #707070;
-        color: white;
+        background: #ededed;
+        color: #424242;
         font-size: 13px;
         font-weight: normal;
         @media #{$small} {
@@ -653,19 +649,21 @@ a.btn.btn-skip {
     }
   }
 }
+
 .risk-tables {
   width: 8%;
   height: auto;
   min-height: 340px;
-
-  padding: 0px 18px;
+  box-shadow: 0 0 5px #ccc;
+  border: 1px solid #cbcbcb;
+  padding: 0px;
   @media #{$small} {
     width: 9%;
   }
   h6 {
     text-align: center;
     font-size: 14px;
-    margin-bottom: 10px !important;
+    padding: .25rem;
     color: #000;
   }
   table {
@@ -674,10 +672,10 @@ a.btn.btn-skip {
     text-align: center;
     thead {
       th {
-        background: #707070;
-        color: white;
-        font-size: 14px;
-        font-weight: normal;
+        background: #ededed;
+        color: #424242;
+        font-size: 13px;
+        font-weight: 500;
         @media #{$small} {
           font-size: 12px;
         }
@@ -767,9 +765,8 @@ a.btn.btn-skip {
 
 .current-stock {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
-  margin-right: 8%;
   margin-top: 5px;
   P{
     font-size: 14px;

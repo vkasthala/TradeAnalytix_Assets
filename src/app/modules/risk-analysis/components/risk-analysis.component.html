@@ -55,7 +55,7 @@
                                                         <a class="btn btn-add" (click)="addStock()"> Add Stock</a>
                                                     </div>
                                                     <div class="search_btn m-r gap-btn">
-                                                        <a class="btn btn-secondary" (click)="addOption()"
+                                                        <a class="btn btn-secondary btn-option" (click)="addOption()"
                                                             *ngIf="stockOptions.length < 4">
                                                             Add Option</a>
                                                     </div>
@@ -72,7 +72,7 @@
                                     <div class="trade-cards-section">
                                         <div class="trade-card-box" *ngIf="stockAdded">
                                             <div class="top-heading" (click)="deleteStock()">
-                                                <img src="../../../../assets/images/icon/delete.png" alt="" class="img-fluid">
+                                                <mat-icon>delete</mat-icon>
                                             </div>
                                             <div class="card-main">
                                                 <div class="card-left">
@@ -126,7 +126,7 @@
                                         <ng-container *ngFor="let item of stockOptions;let index = index">
                                             <div class="trade-card-box card-m">
                                                 <div class="top-heading cursor-pointer" (click)="deleteStockOption(index)">
-                                                    <img src="../../../../assets/images/icon/delete.png" alt="" class="img-fluid">
+                                                    <mat-icon>delete</mat-icon>
                                                 </div>
                                                 <div class="card-main">
                                                     <div class="card-left">
@@ -246,42 +246,9 @@
                                     <ng-container *ngIf="displayRiskAnalysis">
                                         <!-- risk-increas and decreas -->
                                         <div class="trade-risk-section">
-                                            <div class="trade-risk-heading">
-                                                <span>
-                                                    <h6>
-                                                        Risk Analysis By Simulation
-                                                    </h6>
-                                                    <i class="material-icons" class="refresh-icon material-icons"
-                                                        (click)="refreshImpliedVolatility();">refresh</i>
-                                                </span>
-            
-                                                <p>
-                                                    Analyze the profitability for a chosen stock price range by changing
-                                                    the implied volatility and days to expiration of the option contracts.
-                                                </p>
-            
-            
-            
-            
-                                            </div>
-            
                                             <div class="trade-risk-stock">
-            
-            
                                                 <div class="risk-box risk-af">
-                                                    <div class="risk-stock-seciton risk-bt">
-                                                        <div class="stock-name">
-                                                            <span>
-                                                                Stock Price
-                                                            </span>
-                                                        </div>
-            
-                                                        <div class="stock-inc">
-                                                            <div class="stock-p">
-                                                                <input type="text" class="hide-bars" min="-100" max="0" [(ngModel)]="stockEntry.price" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                   
                                                     <div class="risk-stock-seciton risk-bt">
                                                         <div class="stock-name">
                                                             <span>
@@ -289,7 +256,7 @@
                                                             </span>
                                                         </div>
             
-                                                        <div class="d-flex col-6 p-0">
+                                                        <div class="d-flex py-1">
                                                             <div class="stock-inc mr-1">
                                                                 <div class="stock-p">
                                                                     <input type="number" class="hide-bars range-sm" min="-100" max="0"
@@ -309,59 +276,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <!-- <div class="risk-stock-seciton risk-bt">
-                                                        <div class="stock-name">
-                                                            <span>
-                                                                Stock Lower Band
-                                                            </span>
-                                                        </div>
-            
-                                                        <div class="stock-inc">
-                                                            <a (click)="decreaseStockLowerBand()"
-                                                                (mousedown)="mousedown('decreaseStockLowerBand')" (mouseup)="mouseup()"
-                                                                (mouseleave)="mouseup()">
-                                                                <img src="../../../../assets/images/icon/Group 285.png" alt="" />
-                                                            </a>
-                                                            <div class="stock-p">
-                                                                <input type="number" class="hide-bars" min="-100" max="0"
-                                                                    minlength="-100" maxlength="0" [(ngModel)]="stockEntry.lowerBound"
-                                                                    (input)="enforceMaxLength($event, -100, 0)">
-                                                                <p>&#37;</p>
-                                                            </div>
-                                                            <a (click)="increaseStockLowerBand()"
-                                                                (mousedown)="mousedown('increaseStockLowerBand')" (mouseup)="mouseup()"
-                                                                (mouseleave)="mouseup()">
-                                                                <img src="../../../../assets/images/icon/Group 283.png" alt="" />
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="risk-stock-seciton risk-bt">
-                                                        <div class="stock-name">
-                                                            <span>
-                                                                Stock Upper Band
-                                                            </span>
-                                                        </div>
-            
-                                                        <div class="stock-inc">
-                                                            <a (click)="decreaseStockUpperBand()"
-                                                                (mousedown)="mousedown('decreaseStockUpperBand')" (mouseup)="mouseup()"
-                                                                (mouseleave)="mouseup()">
-                                                                <img src="../../../../assets/images/icon/Group 285.png" alt="" />
-                                                            </a>
-                                                            <div class="stock-p">
-                                                                <input (keydown)="preventNegatives($event, true)" type="number"
-                                                                    class="hide-bars" min="0" max="100" minlength="0" maxlength="100"
-                                                                    [(ngModel)]="stockEntry.upperBound"
-                                                                    (input)="enforceMaxLength($event, 0, 100)">
-                                                                <p>&#37;</p>
-                                                            </div>
-                                                            <a (click)="increaseStockeUpperBand()"
-                                                                (mousedown)="mousedown('increaseStockeUpperBand')" (mouseup)="mouseup()"
-                                                                (mouseleave)="mouseup()">
-                                                                <img src="../../../../assets/images/icon/Group 283.png" alt="" />
-                                                            </a>
-                                                        </div>
-                                                    </div> -->
+                                                    
             
                                                     <div class="risk-stock-seciton">
                                                         <div class="stock-name">
@@ -374,7 +289,7 @@
                                                             <a (click)="decreaseRiskFreeRate()"
                                                                 (mousedown)="mousedown('decreaseRiskFreeRate')" (mouseup)="mouseup()"
                                                                 (mouseleave)="mouseup()">
-                                                                <img src="../../../../assets/images/icon/Group 285.png" alt="" />
+                                                                <mat-icon>remove_circle</mat-icon>
                                                             </a>
                                                             <div class="stock-p">
                                                                 <input (keydown)="preventNegatives($event, true)" type="number"
@@ -386,7 +301,7 @@
                                                             <a (click)="increaseRiskFreeRate()"
                                                                 (mousedown)="mousedown('increaseRiskFreeRate')" (mouseup)="mouseup()"
                                                                 (mouseleave)="mouseup()">
-                                                                <img src="../../../../assets/images/icon/Group 283.png" alt="" />
+                                                                <mat-icon class="text-success">add_circle</mat-icon>
                                                             </a>
                                                         </div>
                                                     </div>
@@ -404,7 +319,7 @@
                                                             <a (click)="decreaseDaysLeft(index)"
                                                                 (mousedown)="mousedown('decreaseDaysLeft', index)" (mouseup)="mouseup()"
                                                                 (mouseleave)="mouseup()">
-                                                                <img src="../../../../assets/images/icon/Group 285.png" alt="" />
+                                                                <mat-icon>remove_circle</mat-icon>
                                                             </a>
                                                             <span>
                                                                 <input (keydown)="preventNegatives($event, true)" type="number"
@@ -414,7 +329,7 @@
                                                             <a (click)="increaseDaysLeft(index)"
                                                                 (mousedown)="mousedown('increaseDaysLeft', index)" (mouseup)="mouseup()"
                                                                 (mouseleave)="mouseup()">
-                                                                <img src="../../../../assets/images/icon/Group 283.png" alt="" />
+                                                                <mat-icon class="text-success">add_circle</mat-icon>
                                                             </a>
                                                         </div>
                                                     </div>
@@ -429,7 +344,7 @@
                                                             <a (click)="decreaseImpliedValue(index)"
                                                                 (mousedown)="mousedown('decreaseImpliedValue', index)"
                                                                 (mouseup)="mouseup()" (mouseleave)="mouseup()">
-                                                                <img src="../../../../assets/images/icon/Group 285.png" alt="" />
+                                                                <mat-icon>remove_circle</mat-icon>
                                                             </a>
                                                             <div class="stock-p">
                                                                 <input type="number" class="hide-bars" min="1" max="500" minlength="1"
@@ -440,7 +355,7 @@
                                                             <a (click)="increaseImpliedValue(index)"
                                                                 (mousedown)="mousedown('increaseImpliedValue', index)"
                                                                 (mouseup)="mouseup()" (mouseleave)="mouseup()">
-                                                                <img src="../../../../assets/images/icon/Group 283.png" alt="" />
+                                                                <mat-icon class="text-success">add_circle</mat-icon>
                                                             </a>
                                                         </div>
                                                     </div>
@@ -471,6 +386,11 @@
                                 </mat-panel-title>
                               </mat-expansion-panel-header>
                                 <ng-template matExpansionPanelContent>
+                                <div class="py-2 k-font-bold">
+                                    <p>Maximum Proﬁt is <span class="text-success">937.26</span> when the stock is up 12% Maximum</p>
+                                    <p>Risk is <span class="text-danger">633.23</span> when the stock is down 10%</p>
+                                </div> 
+
                                     <ng-container *ngIf="displayRiskAnalysis && analyzeRisk && (stockAdded || stockOptions.length > 0)">
                                         <!-- risk-tabs -->
                                         <div class="trade-risk-tabs">
@@ -500,9 +420,9 @@
                                                                 <table>
                                                                     <thead>
                                                                         <tr>
-                                                                            <th>Change</th>
-                                                                            <th>Stock Price</th>
-                                                                            <th *ngIf="stockAdded">Gain/Loss</th>
+                                                                        <th>Change</th>
+                                                                        <th>Price</th>
+                                                                        <th *ngIf="stockAdded">P&L</th>
                                                                         </tr>
                                                                     </thead>
             
@@ -532,11 +452,11 @@
                                                                     <table>
                                                                         <thead>
                                                                             <tr>
-                                                                                <th>{{riskAnalysisResults[0].optionResults[index].optionType == 1 ? 'Call Price' : 'Put Price'}}
+                                                                                <th>{{riskAnalysisResults[0].optionResults[index].optionType == 1 ? 'Price' : 'Price'}}
                                                                                 </th>
-                                                                                <th>{{riskAnalysisResults[0].optionResults[index].optionType == 1 ? 'Call Value' : 'Put Value'}}
+                                                                                <th>{{riskAnalysisResults[0].optionResults[index].optionType == 1 ? 'Value' : 'Value'}}
                                                                                 </th>
-                                                                                <th>Gain/Loss</th>
+                                                                                <th>P&L</th>
                                                                             </tr>
                                                                         </thead>
             
@@ -563,14 +483,14 @@
             
                                                                 <div class="trad-risk-head">
                                                                     <h6>
-                                                                        Net P&L
+                                                                        Net Return
                                                                     </h6>
                                                                 </div>
                                                                 <table>
                                                                     <thead>
                                                                         <tr>
             
-                                                                            <th>Gain/Loss</th>
+                                                                            <th>Net P&L</th>
                                                                         </tr>
                                                                     </thead>
             
