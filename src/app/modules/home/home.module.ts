@@ -63,7 +63,8 @@ import { ExitRulesComponent } from '../trade-management/components/add-trade/Ste
 import { InvestmentGoalsComponent } from '../settings/components/investmentgoals/investmentgoals.component';
 import { DepositswithdrawalsComponent } from '../settings/components/depositswithdrawals/depositswithdrawals.component';
 import { DatasetupComponent } from '../settings/components/datasetup/datasetup.component';
-
+import { PerformanceComponent } from '../reports/components/performance/performance.component';
+import { ReportsitemsComponent } from '../reports/components/reportsitems/reportsitems.component';
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -112,7 +113,9 @@ import { DatasetupComponent } from '../settings/components/datasetup/datasetup.c
     TradeDetailsAsideComponent,
     TradeExecutionDateComponent,
     TradeStrategiesGrid,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    PerformanceComponent,
+    ReportsitemsComponent
   ],
   imports: [
     CommonModule,
