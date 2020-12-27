@@ -1,4 +1,4 @@
 export class ReportsItem {
     name: String;
-    value: String;
+    value: any;
 }
