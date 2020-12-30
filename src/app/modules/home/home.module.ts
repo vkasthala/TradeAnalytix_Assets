@@ -64,7 +64,12 @@ import { InvestmentGoalsComponent } from '../settings/components/investmentgoals
 import { DepositswithdrawalsComponent } from '../settings/components/depositswithdrawals/depositswithdrawals.component';
 import { DatasetupComponent } from '../settings/components/datasetup/datasetup.component';
 import { PerformanceComponent } from '../reports/components/performance/performance.component';
+
 import { ReportsitemsComponent } from '../reports/components/reportsitems/reportsitems.component';
+import { RiskmanagementComponent } from '../reports/components/riskmanagement/riskmanagement.component';
+import { CommissionsComponent } from '../reports/components/commissions/commissions.component';
+import { DisciplineComponent } from '../reports/components/discipline/discipline.component';
+
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -115,6 +120,9 @@ import { ReportsitemsComponent } from '../reports/components/reportsitems/report
     TradeStrategiesGrid,
     ConfirmDialogComponent,
     PerformanceComponent,
+    RiskmanagementComponent,
+    CommissionsComponent,
+    DisciplineComponent,
     ReportsitemsComponent
   ],
   imports: [
