@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ReportDetails } from '../model/report-details.model';
 import { ReportSubType } from '../model/report-sub-type.model';
+import { ReportCategory } from '../model/report-category.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -21,53 +22,61 @@ export class ReportTypeService {
     let reportSubTypes: ReportSubType[] = [];
 
     let reportSubType: ReportSubType = new ReportSubType();
-    reportSubType.name = 'Overview';
+    /*reportSubType.name = 'Overview';
     reportSubType.reportDetailList = [new ReportDetails('goal_status', 'Goal Status'), new ReportDetails('total_net_return_win_rate', 'Total Net Return & Win-Rate'), new ReportDetails('calendar_eport', 'Calendar Report')];
     reportSubTypes.push(reportSubType);
 
-    reportSubType = new ReportSubType();
+    reportSubType = new ReportSubType();*/
     reportSubType.name = 'Strategy Type';
-    reportSubType.reportDetailList = [new ReportDetails('net_return_strategy_type', 'Net Return by Strategy Type'), new ReportDetails('win_loss_strategy_type', 'Win/Loss by Strategy Type')];
+    reportSubType.id = "type";
+    reportSubType.reportDetailList = [new ReportDetails('net_return_strategy_type', 'Net Return by Strategy Type', ReportCategory.Net_Return), new ReportDetails('win_loss_strategy_type', 'Win/Loss by Strategy Type', ReportCategory.Win_Loss)];
     reportSubTypes.push(reportSubType);
 
     reportSubType = new ReportSubType();
     reportSubType.name = 'Direction';
-    reportSubType.reportDetailList = [new ReportDetails('net_return_direction', 'Net Return by Direction'), new ReportDetails('win_loss_direction', 'Win/Loss by Direction')];
+    reportSubType.id = "direction";
+    reportSubType.reportDetailList = [new ReportDetails('net_return_direction', 'Net Return by Direction', ReportCategory.Net_Return), new ReportDetails('win_loss_direction', 'Win/Loss by Direction', ReportCategory.Win_Loss)];
     reportSubTypes.push(reportSubType);
 
     reportSubType = new ReportSubType();
     reportSubType.name = 'Holding Period';
-    reportSubType.reportDetailList = [new ReportDetails('net_return_holdingperiod', 'Net Return by Holding Period'), new ReportDetails('win_loss_holdingperiod', 'Win/Loss by Holding Period')];
+    reportSubType.id = "holding_period";
+    reportSubType.reportDetailList = [new ReportDetails('net_return_holdingperiod', 'Net Return by Holding Period', ReportCategory.Net_Return), new ReportDetails('win_loss_holdingperiod', 'Win/Loss by Holding Period', ReportCategory.Win_Loss)];
     reportSubTypes.push(reportSubType);
 
     reportSubType = new ReportSubType();
     reportSubType.name = 'Trade Day';
-    reportSubType.reportDetailList = [new ReportDetails('net_return_tradeday', 'Net Return by Trade Day'), new ReportDetails('win_loss_tradeday', 'Win/Loss by Trade Day')];
+    reportSubType.id = "initiated_day";
+    reportSubType.reportDetailList = [new ReportDetails('net_return_tradeday', 'Net Return by Trade Day', ReportCategory.Net_Return), new ReportDetails('win_loss_tradeday', 'Win/Loss by Trade Day', ReportCategory.Win_Loss)];
     reportSubTypes.push(reportSubType);
 
-    reportSubType = new ReportSubType();
+    /*reportSubType = new ReportSubType();
     reportSubType.name = 'Entry Price';
     reportSubType.reportDetailList = [new ReportDetails('net_return_entryprice', 'Net Return by Entry Price'), new ReportDetails('win_loss_entryprice', 'Win/Loss by Entry Price')];
-    reportSubTypes.push(reportSubType);
+    reportSubTypes.push(reportSubType);*/
 
     reportSubType = new ReportSubType();
     reportSubType.name = 'Technical Indicator';
-    reportSubType.reportDetailList = [new ReportDetails('net_return_technicalindicator', 'Net Return by Technical Indicator'), new ReportDetails('win_loss_technicalindicator', 'Win/Loss by Technical Indicator')];
+    reportSubType.id = "technical_indicator";
+    reportSubType.reportDetailList = [new ReportDetails('net_return_technicalindicator', 'Net Return by Technical Indicator', ReportCategory.Net_Return), new ReportDetails('win_loss_technicalindicator', 'Win/Loss by Technical Indicator', ReportCategory.Win_Loss)];
     reportSubTypes.push(reportSubType);
 
     reportSubType = new ReportSubType();
     reportSubType.name = 'Events';
-    reportSubType.reportDetailList = [new ReportDetails('net_return_events', 'Net Return by Events'), new ReportDetails('win_loss_events', 'Win/Loss by Events')];
+    reportSubType.id = "event";
+    reportSubType.reportDetailList = [new ReportDetails('net_return_events', 'Net Return by Events', ReportCategory.Net_Return), new ReportDetails('win_loss_events', 'Win/Loss by Events', ReportCategory.Win_Loss)];
     reportSubTypes.push(reportSubType);
 
     reportSubType = new ReportSubType();
     reportSubType.name = 'Source';
-    reportSubType.reportDetailList = [new ReportDetails('net_return_source', 'Net Return by Source'), new ReportDetails('win_loss_source', 'Win/Loss by Source')];
+    reportSubType.id = "source";
+    reportSubType.reportDetailList = [new ReportDetails('net_return_source', 'Net Return by Source', ReportCategory.Net_Return), new ReportDetails('win_loss_source', 'Win/Loss by Source', ReportCategory.Win_Loss)];
     reportSubTypes.push(reportSubType);
 
     reportSubType = new ReportSubType();
     reportSubType.name = 'Mindset';
-    reportSubType.reportDetailList = [new ReportDetails('net_return_mindset', 'Net Return by Mindset'), new ReportDetails('win_loss_mindset', 'Win/Loss by Mindset')];
+    reportSubType.id = "mindset";
+    reportSubType.reportDetailList = [new ReportDetails('net_return_mindset', 'Net Return by Mindset', ReportCategory.Net_Return), new ReportDetails('win_loss_mindset', 'Win/Loss by Mindset', ReportCategory.Win_Loss)];
     reportSubTypes.push(reportSubType);
 
     return reportSubTypes;

@@ -24,12 +24,15 @@ export class ReportTabContentComponent implements OnInit {
 
   protected reportSummaryItems: ReportSummaryItem[] = [];
 
+  protected subtype: string;
+
   constructor(protected type: string, protected reportTypeService: ReportTypeService) { }
 
   ngOnInit() {
   }
 
   onReportSubTypeSelect(type: ReportSubType): void {
+    this.subtype = type.id;
     this.loadSummary(type);
     this.reports = type.reportDetailList;
   }

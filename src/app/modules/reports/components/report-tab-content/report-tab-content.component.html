@@ -28,7 +28,7 @@
 
                     <!-- charts -->
                     <div class="trade-dash-con">
-                        <app-report-chart *ngFor="let report of reports" [report] = "report" #reportChart></app-report-chart>
+                        <app-report-chart *ngFor="let report of reports" [report] = "report" [subtype] = "subtype" #reportChart></app-report-chart>
                     </div>
                 </div>
             </div>
