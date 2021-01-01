@@ -1,7 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { ReportDetails } from '../../model/report-details.model';
 import { ReportSubType } from '../../model/report-sub-type.model';
 import { ReportSummaryItem } from '../../model/report-summary-item.model';
+import { ReportTypeService } from '../../services/report-type.service';
+import { ReportSummaryComponent } from '../report-summary/report-summary.component';
+import { typeofExpr } from '@angular/compiler/src/output/output_ast';
+import { ReportChartComponent } from '../report-chart/report-chart.component';
 
 @Component({
   selector: 'app-report-tab-content',
@@ -10,13 +14,17 @@ import { ReportSummaryItem } from '../../model/report-summary-item.model';
 })
 export class ReportTabContentComponent implements OnInit {
 
-  @Input("reportSubTypes") reportSubTypes: ReportSubType[];
+  @ViewChild('reportSummary', { static: false }) protected reportSummary: ReportSummaryComponent;
 
-  reports: ReportDetails[];
+  @ViewChild('reportChart', { static: false }) protected reportChart: ReportChartComponent;
 
-  reportSummaryItems: ReportSummaryItem[] = [];
+  protected reportSubTypes: ReportSubType[];
 
-  constructor() { }
+  protected reports: ReportDetails[];
+
+  protected reportSummaryItems: ReportSummaryItem[] = [];
+
+  constructor(protected type: string, protected reportTypeService: ReportTypeService) { }
 
   ngOnInit() {
   }
@@ -27,15 +35,19 @@ export class ReportTabContentComponent implements OnInit {
   }
 
   loadSummary(type: ReportSubType): void {
-    let item:ReportSummaryItem = new ReportSummaryItem();
-    item.name = 'Name1';
+    this.reportSummaryItems = [];
+
+    let item: ReportSummaryItem = new ReportSummaryItem();
+    item.name = type.name + 'Name1';
     item.value = '1234.34';
     this.reportSummaryItems.push(item);
 
     item = new ReportSummaryItem();
-    item.name = 'Name2';
+    item.name = type.name + 'Name2';
     item.value = '3454.34';
     this.reportSummaryItems.push(item);
+
+    this.reports = type.reportDetailList;
   }
 
 }

@@ -13,6 +13,7 @@ export class ReportChartComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log('rport: ', this.report);
   }
 
 }

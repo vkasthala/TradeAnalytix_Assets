@@ -1,7 +1,7 @@
 <div class="trade-risk-tabs">
     <div class="tab vertical-tabs" role="tabpanel">
         <ul class="nav nav-tabs v-tabs" role="tablist">
-            <li class="active" role="presentation" *ngFor="let type of reportSubTypes">
+            <li class="" role="presentation" *ngFor="let type of reportSubTypes">
                 <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#Overview" role="tab"
                     (click)="onReportSubTypeSelect(type)">{{type.name}}</a>
             </li>
@@ -24,11 +24,11 @@
                     </div>
 
                     <!-- Summary -->
-                    <app-report-summary [reportSummaryItems]="reportSummaryItems"></app-report-summary>
+                    <app-report-summary [reportSummaryItems]="reportSummaryItems" #reportSummary></app-report-summary>
 
                     <!-- charts -->
                     <div class="trade-dash-con">
-                        <app-report-chart *ngFor="let report of reports"></app-report-chart>
+                        <app-report-chart *ngFor="let report of reports" [report] = "report" #reportChart></app-report-chart>
                     </div>
                 </div>
             </div>

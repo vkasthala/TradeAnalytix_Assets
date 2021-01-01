@@ -69,6 +69,8 @@ import { ReportsitemsComponent } from '../reports/components/reportsitems/report
 import { RiskmanagementComponent } from '../reports/components/riskmanagement/riskmanagement.component';
 import { CommissionsComponent } from '../reports/components/commissions/commissions.component';
 import { DisciplineComponent } from '../reports/components/discipline/discipline.component';
+import { ReportSummaryComponent } from '../reports/components/report-summary/report-summary.component';
+import { ReportChartComponent } from '../reports/components/report-chart/report-chart.component';
 
 @NgModule({
   declarations: [
@@ -123,7 +125,9 @@ import { DisciplineComponent } from '../reports/components/discipline/discipline
     RiskmanagementComponent,
     CommissionsComponent,
     DisciplineComponent,
-    ReportsitemsComponent
+    ReportsitemsComponent,
+    ReportSummaryComponent,
+    ReportChartComponent
   ],
   imports: [
     CommonModule,
