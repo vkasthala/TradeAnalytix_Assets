@@ -758,9 +758,13 @@ a.btn.btn-skip {
   font-weight: 300;
   font-size: .89rem !important;
 }
-.card-main-sm {
+.card-main-md {
   min-width: 80px !important;
   max-width: 80px !important;
+}
+.card-main-sm {
+  min-width: 70px !important;
+  max-width: 70px !important;
 }
 @media (min-width:768px){
   .net_debit {
@@ -770,7 +774,7 @@ a.btn.btn-skip {
     display: flex;
   }
   .total_label {
-    width: 530px;
+    width: 500px;
     display: flex;
     justify-content: flex-end;
   }

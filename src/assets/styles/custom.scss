@@ -20,7 +20,7 @@
         margin:0;
         position: relative;
         border: 0;
-        padding: .35rem .5rem;
+        padding: .35rem .25rem;
         border-radius: 4px;
         cursor: pointer;
         width: 100%;
@@ -33,19 +33,23 @@
         
     }
     .mat-icon-button {
-        width: 25px;
-        height: 25px;
+        width: 18px;
+        height: 18px;
         line-height: 1;
         border: 0;
         position: absolute;
         right: 0;
-        top: 5px;
+        top: 7px;
         &:focus {
             outline: 0;
             background: transparent !important;
         }
         .mat-button-focus-overlay {
             background: transparent !important;
+        }
+        .mat-datepicker-toggle-default-icon {
+            width: 18px;
+            height: 18px;
         }
     }
 }
@@ -167,7 +171,7 @@ input.mat-input-element {
     width: 120px;
 }
 .text-danger {
-    color: #f62d51 !important;
+    color: #ff0000 !important;
 }
 .text-sm {
     font-size: .789rem;
