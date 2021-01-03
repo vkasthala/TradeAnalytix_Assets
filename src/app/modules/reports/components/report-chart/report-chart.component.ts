@@ -5,6 +5,8 @@ import { ReportCategory } from '../../model/report-category.enum';
 import { ReportDetails } from '../../model/report-details.model';
 import { ReportDataService } from '../../services/report-data.service';
 import { ReportRequestService } from '../../services/report-request.service';
+import { ReportFilter } from '../../model/report-filter.model';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-report-chart',
@@ -17,9 +19,9 @@ export class ReportChartComponent implements OnInit {
 
   @Input("subtype") subtype: string;
 
-  @Input("fromDate") fromDate: string;
+  @Input("reportFilter") reportFilter: ReportFilter;
 
-  @Input("toDate") toDate: string;
+  @Input("filterChangeSubject") filterChangeSubject: Subject<ReportFilter>;
 
   chart: Chart;
 
@@ -27,6 +29,9 @@ export class ReportChartComponent implements OnInit {
 
   ngOnInit() {
     this.loadChart();
+    this.filterChangeSubject.asObservable().subscribe(data => {
+      this.onFilterChange(data);
+    });
   }
 
   loadChart(): void {
@@ -36,17 +41,27 @@ export class ReportChartComponent implements OnInit {
 
     //Body and URL identification
     if (category == ReportCategory.Net_Return) {
-      request = this.reportRequestService.getNetReturnChartRequest(this.report, this.subtype, this.fromDate, this.toDate);
+      request = this.reportRequestService.getNetReturnChartRequest(this.report, this.subtype, this.reportFilter);
       url = '/reports/performance/netreturn';
     } else if (category == ReportCategory.Win_Loss) {
-      request = this.reportRequestService.getWinLossChartRequest(this.report, this.subtype, this.fromDate, this.toDate);
+      request = this.reportRequestService.getWinLossChartRequest(this.report, this.subtype, this.reportFilter);
       url = '/reports/performance/winloss';
     }
 
     //Load Chart
     this.reportDataService.getReportChart(url, request).subscribe(chartResult => {
-      this.chart = new Chart(chartResult);
+      if (chartResult) {
+        console.log('chart result:', chartResult);
+        this.chart = new Chart(chartResult);
+      } else if (this.chart) {
+        this.chart.destroy();
+      }
     });
+  }
+
+  onFilterChange(reportFilter: ReportFilter): void {
+    console.log('here...', reportFilter);
+    this.loadChart();
   }
 
 }

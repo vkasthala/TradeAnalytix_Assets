@@ -1,7 +1,7 @@
 <div class="trade-risk-tabs">
     <div class="tab vertical-tabs" role="tabpanel">
         <ul class="nav nav-tabs v-tabs" role="tablist">
-            <li class="" role="presentation" *ngFor="let type of reportSubTypes">
+            <li role="presentation" *ngFor="let type of reportSubTypes" [ngClass]="{'active': type.id === 'type'}">
                 <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#Overview" role="tab"
                     (click)="onReportSubTypeSelect(type)">{{type.name}}</a>
             </li>
@@ -17,18 +17,18 @@
                             <div class="form-group">
                                 <div class='input-group date' id='datetimepicker1'>
                                     <my-date-range-picker placeholder="Date range" name="mydaterange"
-                                        [options]="myDateRangePickerOptions"></my-date-range-picker>
+                                        [options]="myDateRangePickerOptions" (dateRangeChanged)="onDateRangeChanged($event)" [(ngModel)]="dateFilter"></my-date-range-picker>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Summary -->
-                    <app-report-summary [reportSummaryItems]="reportSummaryItems" #reportSummary></app-report-summary>
+                    <!--<app-report-summary [reportSummaryItems]="reportSummaryItems" #reportSummary></app-report-summary>-->
 
                     <!-- charts -->
                     <div class="trade-dash-con">
-                        <app-report-chart *ngFor="let report of reports" [report] = "report" [subtype] = "subtype" #reportChart></app-report-chart>
+                        <app-report-chart *ngFor="let report of reports" [report] = "report" [subtype] = "subtype" [reportFilter] = "reportFilter" [filterChangeSubject]="filterChangeSubject" #reportChart></app-report-chart>
                     </div>
                 </div>
             </div>
