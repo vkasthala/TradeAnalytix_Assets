@@ -1,20 +1,13 @@
 <div class="trade-thesis-sec">
     <div class="trade-thesis-heading">
-        <h4>
-            Check whether this trade aligns with the following self-set entry rules
+        <h4 class="text-success d-flex align-items-center">
+            <i class="negative-amt material-icons">keyboard_arrow_right</i> Entry Rules
         </h4>
     </div>
-    <div class="pb-2 text-center">
-        <div class="col-md-5 offset-md-4 text-sm">
-            Not Aligned / Aligned
-        </div>
-    </div>
-    <div class="">
+    <div class="mb-3">
         <div class="thesis-list-inner row">
             <div class="col-6 list-inner-left">
-                <h6 class="d-flex media align-items-center">
-                    Always protect your investment by hedging
-                </h6>
+                Always protect your investment by hedging
             </div>
             <div class="switch">
                 <input type="checkbox" checked id="hedging" [(ngModel)]="entryRules[0].aligned" [disabled]="closeTrade"/>
@@ -23,9 +16,7 @@
         </div>
         <div class="thesis-list-inner row">
             <div class="col-6 list-inner-left">
-                <h6 class="d-flex media align-items-center">
-                    Do not trade options expiring in the same week
-                </h6>
+                Do not trade options expiring in the same week
             </div>
             <div class="switch">
                 <input type="checkbox" id="same_week" name="same_week" [(ngModel)]="entryRules[1].aligned" [disabled]="closeTrade"/>
@@ -36,9 +27,7 @@
         </div>
         <div class="thesis-list-inner row">
             <div class="col-6 list-inner-left">
-                <h6 class="d-flex media align-items-center">
-                    Do not put more than 100,000 in a stock
-                </h6>
+                Do not put more than 100,000 in a stock
             </div>
             <div class="switch">
                 <input type="checkbox" checked id="onelack_stock" name="onelack_stock"
@@ -48,9 +37,7 @@
         </div>
         <div class="thesis-list-inner row">
             <div class="col-6 list-inner-left">
-                <h6 class="d-flex media align-items-center">
-                    Trade only the stocks that were planned for the day
-                </h6>
+                Trade only the stocks that were planned for the day
             </div>
             <div class="switch">
                 <input type="checkbox" id="planned_day" name="planned_day" [(ngModel)]="entryRules[3].aligned" [disabled]="closeTrade" />
@@ -58,32 +45,6 @@
             </div>
             <input type="text" class="trade-check" placeholder="Specify reason for not aligning with the rule"
                 [(ngModel)]="entryRules[3].comment" [disabled]="closeTrade" />
-        </div>
-        <div class="thesis-list-inner row">
-            <div class="col-6 list-inner-left">
-                <h6 class="d-flex media align-items-center">
-                    Write a detailed trade thesis with justification and risks
-                </h6>
-            </div>
-            <div class="switch">
-                <input type="checkbox" id="justification_risks" name="justification_risks"
-                    [(ngModel)]="entryRules[4].aligned" [disabled]="closeTrade" />
-                <label for="justification_risks"></label>
-            </div>
-            <input type="text" class="trade-check" placeholder="Specify reason for not aligning with the rule"
-                [(ngModel)]="entryRules[4].comment" [disabled]="closeTrade" />
-        </div>
-        <div class="thesis-list-inner row">
-            <div class="col-6 list-inner-left">
-                <h6 class="d-flex media align-items-center">
-                    Maximum risk should not be more than 20,000 on a trade
-                </h6>
-            </div>
-            <div class="switch">
-                <input type="checkbox" checked id="maximum_risk" name="maximum_risk"
-                    [(ngModel)]="entryRules[5].aligned" [disabled]="closeTrade" />
-                <label for="maximum_risk"></label>
-            </div>
         </div>
     </div>
 </div>

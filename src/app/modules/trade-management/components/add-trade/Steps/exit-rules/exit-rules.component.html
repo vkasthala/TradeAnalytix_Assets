@@ -1,86 +1,35 @@
 <div class="trade-thesis-sec">
     <div class="trade-thesis-heading">
-        <h4>
-            Check whether this trade aligns with the following self-set exit rules
+        <h4 class="text-success d-flex align-items-center">
+            <i class="negative-amt material-icons">keyboard_arrow_right</i> Exit Rules
         </h4>
     </div>
-    <div class="pb-2 text-center font-weight-bold">
-        <div class="col-md-5 offset-md-3">
-            NOT ALIGNED / ALIGNED
+    <div class="thesis-list-inner row">
+        <div class="col-6 list-inner-left">
+            Always protect your investment by hedging
+        </div>
+        <div class="switch">
+            <input type="checkbox" checked id="exit_hedging" name="exit_hedging" [(ngModel)]="exitRules[0].aligned" [disabled]="closeTrade" />
+            <label for="exit_hedging"></label>
         </div>
     </div>
-    <div class="">
-        <div class="thesis-list-inner row">
-            <div class="col-5 list-inner-left">
-                <h6 class="d-flex media align-items-center">
-                    <mat-icon>keyboard_arrow_right</mat-icon> Always protect your investment by hedging
-                </h6>
-            </div>
-            <div class="switch">
-                <input type="checkbox" checked id="hedging1" name="hedging1" [(ngModel)]="exitRules[0].aligned" />
-                <label for="hedging1"></label>
-            </div>
+    <div class="thesis-list-inner row">
+        <div class="col-6 list-inner-left">
+            Do not trade options expiring in the same week
         </div>
-        <div class="thesis-list-inner row">
-            <div class="col-5 list-inner-left">
-                <h6 class="d-flex media align-items-center">
-                    <mat-icon>keyboard_arrow_right</mat-icon> Do not trade options expiring in the same week
-                </h6>
-            </div>
-            <div class="switch">
-                <input type="checkbox" id="same_week1" name="same_week1" [(ngModel)]="exitRules[1].aligned" />
-                <label for="same_week1"></label>
-            </div>
-            <input type="text" class="trade-check" placeholder="Specify reason for not aligning with the rule"
-                [(ngModel)]="exitRules[1].comment" />
+        <div class="switch">
+            <input type="checkbox" id="exit_same_week" name="exit_same_week" [(ngModel)]="exitRules[1].aligned" [disabled]="closeTrade"/>
+            <label for="exit_same_week"></label>
         </div>
-        <div class="thesis-list-inner row">
-            <div class="col-5 list-inner-left">
-                <h6 class="d-flex media align-items-center">
-                    <mat-icon>keyboard_arrow_right</mat-icon> Do not put more than 100,000 in a stock
-                </h6>
-            </div>
-            <div class="switch">
-                <input type="checkbox" id="onelack_stock1" name="onelack_stock1" [(ngModel)]="exitRules[2].aligned" />
-                <label for="onelack_stock1"></label>
-            </div>
+        <input type="text" class="trade-check" placeholder="Specify reason for not aligning with the rule" [disabled]="closeTrade" [(ngModel)]="exitRules[1].comment" />
+    </div>
+    <div class="thesis-list-inner row">
+        <div class="col-6 list-inner-left">
+            Do not put more than 100,000 in a stock
         </div>
-        <div class="thesis-list-inner row">
-            <div class="col-5 list-inner-left">
-                <h6 class="d-flex media align-items-center">
-                    <mat-icon>keyboard_arrow_right</mat-icon> Trade only the stocks that were planned for the day
-                </h6>
-            </div>
-            <div class="switch">
-                <input type="checkbox" id="planned_day1" name="planned_day1" [(ngModel)]="exitRules[3].aligned" />
-                <label for="planned_day1"></label>
-            </div>
-            <input type="text" class="trade-check" placeholder="Specify reason for not aligning with the rule"
-                [(ngModel)]="exitRules[3].comment" />
-        </div>
-        <div class="thesis-list-inner row">
-            <div class="col-5 list-inner-left">
-                <h6 class="d-flex media align-items-center">
-                    <mat-icon>keyboard_arrow_right</mat-icon> Write a detailed trade thesis with justification and risks
-                </h6>
-            </div>
-            <div class="switch">
-                <input type="checkbox" id="justification_risks1" name="justification_risks1" [(ngModel)]="exitRules[4].aligned" />
-                <label for="justification_risks1"></label>
-            </div>
-            <input type="text" class="trade-check" placeholder="Specify reason for not aligning with the rule"
-                [(ngModel)]="exitRules[4].comment" />
-        </div>
-        <div class="thesis-list-inner row">
-            <div class="col-5 list-inner-left">
-                <h6 class="d-flex media align-items-center">
-                    <mat-icon>keyboard_arrow_right</mat-icon> Maximum risk should not be more than 20,000 on a trade
-                </h6>
-            </div>
-            <div class="switch">
-                <input type="checkbox" id="maximum_risk1" name="maximum_risk1" [(ngModel)]="exitRules[5].aligned" />
-                <label for="maximum_risk1"></label>
-            </div>
+        <div class="switch">
+            <input type="checkbox" checked id="exit_onelack_stock" name="exit_onelack_stock" [disabled]="closeTrade" [(ngModel)]="exitRules[2].aligned" />
+            <label for="exit_onelack_stock"></label>
         </div>
     </div>
 </div>

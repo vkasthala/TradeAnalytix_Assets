@@ -28,7 +28,7 @@ export class EntryRulesComponent implements OnInit {
 
 
   entryRules: EntryExitRule[] = this.entryExitRuleService.getEntryRules();
-
+  
   constructor(
     private _dialog: MatDialog,
     private router: Router,

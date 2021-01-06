@@ -51,6 +51,7 @@ export class AddNewTradeComponent implements OnInit {
   protected inputState: TradeInputData;
 
   protected detailSummaryLoaded: boolean;
+  closedLegs: boolean = true;
 
   constructor(
     protected userStockStatsService: UserStockStatsService,
@@ -277,6 +278,8 @@ export class AddNewTradeComponent implements OnInit {
   showSuccess() {
     this.toastr.error('Hello world!', 'Toastr fun!');
   }
-
+  showClosedLegs() {
+    this.closedLegs = !this.closedLegs;
+  }
 
 }

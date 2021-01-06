@@ -84,8 +84,11 @@
         <div *ngIf="editTrade == true" class="top-heading mr-1 text-danger" (click)="reduceToPosition()">
           <mat-icon>remove_circle</mat-icon>
         </div>
-        <div *ngIf="!closeTrade" class="top-heading" (click)="deleteStock()">
+        <div *ngIf="!closeTrade" class="top-heading mr-1" (click)="deleteStock()">
           <mat-icon>delete</mat-icon>
+        </div>
+        <div *ngIf="editTrade == true" class="top-heading">
+          <mat-icon>history</mat-icon>
         </div>
       </div>
       <ng-container>
@@ -166,6 +169,9 @@
           </div>
           <div *ngIf="!closeTrade" class="top-heading p-0" (click)="deleteStockOption(index)">
             <mat-icon>delete</mat-icon>
+          </div>
+          <div *ngIf="editTrade == true" class="top-heading p-0">
+            <mat-icon>history</mat-icon>
           </div>
         </div>
       </ng-container>
