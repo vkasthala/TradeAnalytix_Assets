@@ -21,5 +21,8 @@ export class TradeStrategyGridRow {
     openDate: string;
 
     closeDate: string;
+    maxLoss: string;
+    maxGain: string;
+    return: string;
 
 }

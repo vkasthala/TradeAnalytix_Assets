@@ -4,7 +4,7 @@
     <div class="trade-stoack-main" #tradeCards>
       <div class="trade-sec">
         <div class="d-flex align-items-center justify-content-between">
-          <span class="col-form-label p-0">Select Strategy</span>
+          <span class="col-form-label p-0">{{add ? 'Select' : 'Current'}} Strategy</span>
           <div *ngIf="addTrade == false">
             <label class="col-form-label mr-2">Last Updated Date : {{executedDate | date: 'dd-MMM-yyyy'}}</label>
           </div>
@@ -60,18 +60,18 @@
             (keydown)="preventNegatives($event, true)" min="0" class="form-control cards-input" placeholder=""
             [(ngModel)]="stockEntry.price" [ngClass]="closeTrade ? 'disabled' : ''" />
         </div>
-        <div class="card-main card-main-md" *ngIf="closeTrade">
+        <!-- <div class="card-main card-main-md" *ngIf="closeTrade">
           <label class="col-form-label pt-0">Exit Price</label>
           <input type="number" pattern="^\d*(\.\d{0,2})?$" step="0.01" min="0" class="form-control cards-input" placeholder=""
             [(ngModel)]="stockEntry.closePrice" />
         </div>
         <div class="card-main card-main-sm" *ngIf="closeTrade">
-          <label class="col-form-label pt-0">Net Return</label>
+          <label class="col-form-label pt-0">Return</label>
           <h6 class="input_text">
             {{(stockEntry.quantity && stockEntry.closePrice) ? (stockEntry.quantity * (stockEntry.closePrice - stockEntry.price) * (stockEntry.actionType == 2 ? -1 : 1)).toFixed(2) : 0}}
           </h6>
-        </div>
-        <div class="card-main" *ngIf="!closeTrade">
+        </div> -->
+        <div class="card-main">
           <label class="col-form-label pt-0">Amount</label>
           <h6 class="input_text">
             {{(stockEntry.quantity && stockEntry.price) ? (stockEntry.quantity * stockEntry.price * (stockEntry.actionType == 2 ? -1 : 1)).toFixed(2) : 0}}
@@ -101,7 +101,7 @@
           <div class="card-main card-main-md pr-1">Entry Price</div>
           <div class="card-main" *ngIf="!closeTrade">Amount</div>
           <div class="card-main card-main-sm" *ngIf="closeTrade">Exit Price</div>
-          <div class="card-main card-main-sm" *ngIf="closeTrade">Net Return</div>
+          <div class="card-main card-main-sm" *ngIf="closeTrade">Return</div>
         </div>
       </ng-container>
       <ng-container *ngFor="let item of stockOptions;let index = index">
@@ -181,15 +181,7 @@
       <span class="total_amount mx-2"
         [ngClass]="closeTrade ? 'total_return' : ''">{{closeTrade ? calculateNetReturn() : calculateNetDebit()}}</span>
     </div>
-    <div class="pt-2" *ngIf="closeTrade">
-      <label class="col-form-label mr-2">Closed Date <span class="text-danger">*</span></label>
-      <div class="datepicker-group datepicker-sm">
-        <input matInput [matDatepicker]="closed_date" (click)="closed_date.open()" id="closed_date"
-          (dateChange)="addEvent('input', $event)" name="stockOptions[index].closed_date" [(ngModel)]="closeDate"/>
-        <mat-datepicker-toggle matSuffix [for]="closed_date"></mat-datepicker-toggle>
-        <mat-datepicker #closed_date></mat-datepicker>
-      </div>
-    </div>
+    
 
     <!-- next-button -->
 

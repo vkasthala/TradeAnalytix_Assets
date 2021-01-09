@@ -2,7 +2,7 @@
   <div class="compare-pop-inner">
     <div class="top-pop-inner">
       <div class="left-heading">
-        <h6>{{data.title}}</h6>
+        <h6>{{data.title}} Quantity</h6>
       </div>
       <div class="right-close" (click)="closeModal()">
         <span>close</span>
@@ -10,8 +10,8 @@
     </div>
 
     <div class="main-pop-inner">
-      <div class="row mb-3 align-items-center">
-        <label class="col-6 col-form-label">Select Action</label>
+      <div class="row mb-2 align-items-center">
+        <label class="col-6 col-form-label">Action : {{data.actionType}}</label>
         <div class="col-6">
           <select id="inputState" class="form-control select-input" [(ngModel)]="data.actionType">
             <option value=1 [hidden]="!addTrade" selected data-default>Buy to Open</option>
@@ -21,14 +21,14 @@
           </select>
         </div>
       </div>
-      <div class="row mb-3 align-items-center">
+      <div class="row mb-2 align-items-center">
         <label class="col-6 col-form-label">Enter Contracts</label>
         <div class="col-6">
           <input type="number" (keydown)="preventNegatives($event, false)" min="0" class="form-control cards-input"
             [(ngModel)]="data.contracts" />
         </div>
       </div>
-      <div class="row mb-3 align-items-center">
+      <div class="row mb-2 align-items-center">
         <label class="col-6 col-form-label">Option Price </label>
         <div class="col-6">
           <div class="form-group">
@@ -44,6 +44,20 @@
           <h6>{{data.contracts && data.price ? (data.contracts * data.price).toFixed(2) : 0}}
           </h6>
         </div>
+      </div>
+      <div class="row align-items-center">
+        <label class="col-6 col-form-label">Execution Date</label>
+        <div class="col-6">
+          <div class="datepicker-group datepicker-sm">
+            <input matInput [matDatepicker]="execution_date">
+            <mat-datepicker-toggle matSuffix [for]="execution_date"></mat-datepicker-toggle>
+            <mat-datepicker #execution_date></mat-datepicker>
+          </div>
+        </div>
+      </div>
+      <div class="pb-1">
+        <label class="col-form-label">Notes</label>
+        <textarea rows="2" class="form-control"></textarea>
       </div>
 
       <div class="btn-up mb-0">

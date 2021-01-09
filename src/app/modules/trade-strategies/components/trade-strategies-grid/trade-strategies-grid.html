@@ -3,7 +3,7 @@
 
     <!-- Strategy ID Column -->
     <ng-container matColumnDef="id">
-      <mat-header-cell class="strategy-id-cell" *matHeaderCellDef mat-sort-header>Strategy ID</mat-header-cell>
+      <mat-header-cell class="strategy-id-cell" *matHeaderCellDef mat-sort-header>Identiﬁer</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.uid ? element.uid : element.id}} </mat-cell>
     </ng-container>
 
@@ -33,24 +33,6 @@
       </mat-cell>
     </ng-container>
 
-    <!-- Status Column -->
-    <ng-container matColumnDef="status">
-      <mat-header-cell class="status-cell" *matHeaderCellDef mat-sort-header>Status</mat-header-cell>
-      <mat-cell *matCellDef="let element" [ngClass]="{
-        'text-primary': element.status == 'Draft',
-        'text-warning': element.status == 'Open',
-        'text-danger': element.status == 'Closed',
-        'text-secondary': element.status == 'Expired'
-
-    }"> {{element.status}} </mat-cell>
-    </ng-container>
-
-    <!-- Alignment Column -->
-    <!-- <ng-container matColumnDef="alignment">
-      <mat-header-cell  *matHeaderCellDef mat-sort-header>Alignment</mat-header-cell>
-      <mat-cell *matCellDef="let element"> </mat-cell>
-    </ng-container> -->
-
     <!-- Open Date Column -->
     <ng-container matColumnDef="openDate">
       <mat-header-cell class="open-date-cell" *matHeaderCellDef mat-sort-header>Open Date</mat-header-cell>
@@ -63,13 +45,64 @@
       <mat-cell *matCellDef="let element"> {{element.closeDate}} </mat-cell>
     </ng-container>
 
+    <!-- Max Loss Column -->
+    <ng-container matColumnDef="maxLoss">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Max Loss</mat-header-cell>
+      <mat-cell *matCellDef="let element" class="text-danger"> {{element.maxLoss}} </mat-cell>
+    </ng-container>
+
+    <!-- Max Gain Column -->
+    <ng-container matColumnDef="maxGain">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Max Gain</mat-header-cell>
+      <mat-cell *matCellDef="let element" class="text-success"> {{element.maxGain}} </mat-cell>
+    </ng-container>
+
+    <!-- Return Column -->
+    <ng-container matColumnDef="return">
+      <mat-header-cell class="close-date-cell" *matHeaderCellDef mat-sort-header>Return</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.return}} </mat-cell>
+    </ng-container>
+
+    <!-- Status Column -->
+    <ng-container matColumnDef="status">
+      <mat-header-cell class="status-cell" *matHeaderCellDef mat-sort-header>Status</mat-header-cell>
+      <mat-cell *matCellDef="let element" [ngClass]="{
+        'text-black': element.status == 'Draft',
+        'text-primary': element.status == 'Open',
+        'text-danger': element.status == 'Closed',
+        'text-secondary': element.status == 'Expired'
+
+    }"> {{element.status}} </mat-cell>
+    </ng-container>
+
+    <!-- Alignment Column -->
+    <!-- <ng-container matColumnDef="alignment">
+      <mat-header-cell  *matHeaderCellDef mat-sort-header>Alignment</mat-header-cell>
+      <mat-cell *matCellDef="let element"> </mat-cell>
+    </ng-container> -->
+
+    
+
     <!-- Closed Date Column -->
     <ng-container matColumnDef="action">
       <mat-header-cell class="action-cell" *matHeaderCellDef mat-sort-header>Action</mat-header-cell>
       <mat-cell *matCellDef="let element, let i = index" class="action_colum">
-        <i class="material-icons" (click)="expandRowOptions(i)">more_vert</i>
 
-        <div class="trade-det-box" *ngIf="expandIndex == i">
+        <div>
+          <mat-icon *ngIf="element.status == 'Open' || element.status == 'Draft'" (click)="editTrade(element);closeActionBox()" class="mat-icon-sm text-success">edit</mat-icon>
+
+          <mat-icon *ngIf="element.status == 'Open'" (click)="closeTrade(element);closeActionBox()" class="text-success mat-icon-sm ml-2">cancel</mat-icon>
+
+          <mat-icon *ngIf="element.status == 'Draft'" (click)="closeTrade(element);closeActionBox()" class="mat-icon-sm ml-2">delete</mat-icon>
+
+          <mat-icon *ngIf="element.status == 'Closed'" (click)="closeTrade(element);closeActionBox()" class="mat-icon-sm ml-2">delete</mat-icon>
+
+          <mat-icon *ngIf="element.status == 'Closed'" (click)="closeTrade(element);closeActionBox()" class="mat-icon-sm ml-2">visibility</mat-icon>
+        </div>
+
+        <!-- <i class="material-icons" (click)="expandRowOptions(i)">more_vert</i> -->
+
+        <!-- <div class="trade-det-box" *ngIf="expandIndex == i">
           <div class="de-box">
             <div class="right-con">
               <a class="box-icon cursor-pointer" (click)="editTrade(element);closeActionBox()">
@@ -87,7 +120,7 @@
               <img src="../../../../assets/images/icon/Icon ionic-ios-close-circle.png">
             </a>
           </div>
-        </div>
+        </div> -->
       </mat-cell>
     </ng-container>
 

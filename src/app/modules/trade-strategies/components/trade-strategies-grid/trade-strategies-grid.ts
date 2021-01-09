@@ -22,7 +22,7 @@ import { ConfirmDialogComponent } from 'src/app/modules/shared/components/modals
 })
 export class TradeStrategiesGrid implements AfterViewInit, OnInit {
   expandIndex: any;
-  displayedColumns = ['id', 'strategy', 'stockName', 'direction', 'status', 'openDate', 'closeDate', 'action'];
+  displayedColumns = ['id', 'strategy', 'stockName', 'direction', 'openDate', 'closeDate', 'maxLoss', 'maxGain', 'return', 'status', 'action'];
   pageSize: number = 20
 
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;

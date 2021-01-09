@@ -42,7 +42,7 @@
                     [editTrade]="edit" [addTrade]="add" [closeTrade]="close" #tradeDetails>
                   </app-trade-details>
                 </div>
-                <div *ngIf="edit">
+                <div *ngIf="!add">
                   <span class="cursor" (click)="showClosedLegs()">
                     <span *ngIf="closedLegs" class="text-success d-flex align-items-center">Hide Closed Legs <i class="negative-amt material-icons">keyboard_arrow_down</i>
                     </span>
@@ -125,7 +125,18 @@
                       </div>
                     </div>
                     <div class="net_debit">
-                      <span class="realized_label">Realized Return</span>
+                      <div class="realized_label" [ngClass]="close ? 'justify-content-between' : ''">
+                        <div *ngIf="close">
+                          <label class="col-form-label mr-2">Closed Date <span class="text-danger">*</span></label>
+                          <div class="datepicker-group datepicker-sm">
+                            <input matInput [matDatepicker]="closed_date" (click)="closed_date.open()" id="closed_date"
+                              (dateChange)="addEvent('input', $event)" name="stockOptions[index].closed_date" [(ngModel)]="closeDate"/>
+                            <mat-datepicker-toggle matSuffix [for]="closed_date"></mat-datepicker-toggle>
+                            <mat-datepicker #closed_date></mat-datepicker>
+                          </div>
+                        </div>
+                        <span>{{edit ? 'Realized' : 'Total'}}  Return</span>
+                      </div>
                       <span class="realized_return mx-2">-400.00</span>
                     </div>
                   </div>
@@ -144,13 +155,6 @@
                 <div class="stepper-content">
                   <app-entry-rules (prevStep)="goBack()" [inputState]="inputState" [editTrade]="edit" [addTrade]="add" [closeTrade]="close" #entryRules></app-entry-rules>
                   <app-exit-rules></app-exit-rules>
-                </div>
-              </mat-step>
-              
-              <mat-step *ngIf="close">
-                <ng-template matStepLabel>Rules Checklist</ng-template>
-                <div class="stepper-content">
-                  <app-exit-rules (prevStep)="goBack()" [inputState]="inputState" #exitRules></app-exit-rules>
                 </div>
               </mat-step>
             </mat-horizontal-stepper>
