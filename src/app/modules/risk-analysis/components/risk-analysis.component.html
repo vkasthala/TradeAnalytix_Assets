@@ -386,9 +386,14 @@
                                 </mat-panel-title>
                               </mat-expansion-panel-header>
                                 <ng-template matExpansionPanelContent>
-                                <div class="py-2 k-font-bold">
-                                    <p>Maximum Proﬁt is <span class="text-success">937.26</span> when the stock is up 12% Maximum</p>
-                                    <p>Risk is <span class="text-danger">633.23</span> when the stock is down 10%</p>
+                                <div style="display: inline-block;width:100%;">
+                                    <div style="float:right;margin: 5px;">
+                                        <button class="btn btn-enter ml-2" (click)="calculateMaxRisk()">Calculate Max Profit/Risk</button>
+                                    </div>
+                                    <div class="py-2 k-font-bold" *ngIf="maxRiskDetails">
+                                        <p>Maximum Proﬁt is <span class="text-success">{{maxRiskDetails.maxProfit}}</span> when the stock is up <span>{{maxRiskDetails.maxProfitChange}}</span>% Maximum</p>
+                                        <p>Risk is <span class="text-danger">{{maxRiskDetails.maxRisk}}</span> when the stock is down <span>{{maxRiskDetails.maxRiskChange}}</span>%</p>
+                                    </div>
                                 </div> 
 
                                     <ng-container *ngIf="displayRiskAnalysis && analyzeRisk && (stockAdded || stockOptions.length > 0)">

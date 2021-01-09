@@ -20,6 +20,7 @@ import { StrategyTemplate } from '../../shared/models/trade-management/strategy-
 import { TradeStrategy } from '../../trade-management/models/trade-strategy.model';
 import { ToastrService } from 'ngx-toastr';
 import { RiskAnalysisChartComponent } from './risk-analysis-chart/risk-analysis-chart.component';
+import { MaxRiskDetails } from '../models/max-risk-details.model';
 
 @Component({
   selector: 'app-risk-analysis',
@@ -34,7 +35,7 @@ export class RiskAnalysisComponent implements OnInit {
 
   @ViewChild('riskAnalysisChart', { static: false }) private riskAnalysisChartComponent: RiskAnalysisChartComponent;
 
-  
+
 
   currentState: number = 1;
   selectedStrategy: number = 15;
@@ -58,6 +59,8 @@ export class RiskAnalysisComponent implements OnInit {
   stockOptions: OptionEntry[] = [];
 
   riskAnalysisResults: RiskAnalysisRecord[] = [];
+
+  maxRiskDetails: MaxRiskDetails;
 
   constructor(private utilService: UtilService,
     private riskAnalysisService: RiskAnalysisService,
@@ -107,6 +110,7 @@ export class RiskAnalysisComponent implements OnInit {
       this.displayRiskAnalysis = false;
       this.riskAnalysisResults = [];
       this.analyzeRisk = false;
+      this.maxRiskDetails = null;
     }
   }
 
@@ -116,6 +120,7 @@ export class RiskAnalysisComponent implements OnInit {
       this.displayRiskAnalysis = false;
       this.riskAnalysisResults = [];
       this.analyzeRisk = false;
+      this.maxRiskDetails = null;
     }
   }
 
@@ -263,7 +268,7 @@ export class RiskAnalysisComponent implements OnInit {
           console.log('stock:', state.tradeStrategy.stockEntry);
           this.stockEntry = state.tradeStrategy.stockEntry[0];
           this.stockAdded = state.tradeStrategy.stockEntry[0].actionType && state.tradeStrategy.stockEntry[0].quantity > 0;
-          if(!this.stockEntry.riskFreeRate){
+          if (!this.stockEntry.riskFreeRate) {
             this.stockEntry.lowerBound = -10;
             this.stockEntry.upperBound = 10;
             this.stockEntry.riskFreeRate = 6;
@@ -329,6 +334,7 @@ export class RiskAnalysisComponent implements OnInit {
   }
 
   initRiskAnalysis() {
+    this.maxRiskDetails = null;
     this.getRiskAnalysisResults();
   }
 
@@ -356,8 +362,8 @@ export class RiskAnalysisComponent implements OnInit {
     }, errorResponse => {
       console.log("get implied volatility error:", errorResponse);
     });
-    
-    
+
+
   }
 
   validateInputs(): boolean {
@@ -494,6 +500,20 @@ export class RiskAnalysisComponent implements OnInit {
     }
   }
 
+  calculateMaxRisk() {
+    let riskAnalysisRequest: RiskAnalysisRequest = this.createRiskAnalysisRequest();
+
+    console.log('max risk request:', JSON.stringify(riskAnalysisRequest));
+
+    this.riskAnalysisService.getMaxRiskDetails(riskAnalysisRequest).subscribe(result => {
+      console.log("max details success:", result)
+      this.maxRiskDetails = result;
+    },
+      errResponse => {
+        console.log("max details error:", errResponse);
+      });
+  }
+
   /*
   * @mousedown 'Requires operation field which is the operation to be performed on mouse hold'
   */
@@ -519,20 +539,20 @@ export class RiskAnalysisComponent implements OnInit {
     element.scrollIntoView();
   }
 
-  
+
 
   setStep(index: number) {
     // this.step = index;
   }
 
   afterPanelClosed(event) {
-    if(event == 1){
+    if (event == 1) {
       this.panelOpenState = false;
     }
-    
+
     this.panelExpand = false;
   }
-  afterPanelOpened(){
+  afterPanelOpened() {
     console.log("Panel opened!");
   }
 

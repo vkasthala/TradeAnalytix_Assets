@@ -6,6 +6,7 @@ import { SingleInputModalComponent } from 'src/app/modules/shared/components/mod
 import { UserStockStatsService } from 'src/app/modules/shared/services/user-stock-stats.service';
 import { TradeStrategyService } from '../../services/trade-strategy.service';
 import { AddNewTradeComponent } from '../add-trade/add-new-trade.component';
+import { RiskAnalysisService } from 'src/app/modules/risk-analysis/services/risk-analysis.service';
 
 
 @Component({
@@ -17,10 +18,11 @@ export class CloseTradeComponent extends AddNewTradeComponent implements OnInit 
   constructor(
     userStockStatsService: UserStockStatsService,
     tradeStrategyService: TradeStrategyService,
+    riskAnalysisService: RiskAnalysisService,
     router: Router,
     toastr: ToastrService,
     _dialog: MatDialog) {
-    super(userStockStatsService, tradeStrategyService, router, toastr, _dialog);
+    super(userStockStatsService, tradeStrategyService, riskAnalysisService, router, toastr, _dialog);
     this.close = true;
     this.edit = false;
     this.add = false;
