@@ -173,7 +173,7 @@
           </div>
           <div class="col-4 trade-details-aside">
             <app-trade-details-aside [selectedStock]="selectedStock" [stockSummary]="stockSummary"
-            (loadMoreStats)="loadMoreStatsHandler($event)"></app-trade-details-aside>
+            (loadMoreStats)="loadMoreStatsHandler($event)" (calculateMaxRisk)="calculateMaxRisk($event)" #tradeDetailsAside></app-trade-details-aside>
           </div>
         </div>
       </ng-container>

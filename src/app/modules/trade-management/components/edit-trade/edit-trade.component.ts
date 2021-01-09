@@ -5,6 +5,7 @@ import { TradeStrategyService } from '../../services/trade-strategy.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { ToastrService } from 'ngx-toastr';
+import { RiskAnalysisService } from 'src/app/modules/risk-analysis/services/risk-analysis.service';
 
 @Component({
   selector: 'app-edit-trade',
@@ -16,10 +17,11 @@ export class EditTradeComponent extends AddNewTradeComponent implements OnInit {
   constructor(
     userStockStatsService: UserStockStatsService,
     tradeStrategyService: TradeStrategyService,
+    riskAnalysisService: RiskAnalysisService,
     router: Router,
     toastr: ToastrService,
     _dialog: MatDialog) {
-    super(userStockStatsService, tradeStrategyService, router, toastr, _dialog);
+    super(userStockStatsService, tradeStrategyService, riskAnalysisService, router, toastr, _dialog);
     this.edit = true;
     this.close = false;
     this.add = false;

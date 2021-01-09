@@ -36,7 +36,8 @@ export class ExitRulesComponent implements OnInit {
   ngOnInit() {
   }
   ngAfterViewInit(): void {
-    
+    console.log('exit rules child view init:', this.inputState);
+    //No state initialization in exit rules
   }
 
 

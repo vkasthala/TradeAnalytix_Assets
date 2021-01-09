@@ -17,6 +17,9 @@ import { TradeSearchComponent } from './Steps/search-trade/trade-search.componen
 import { ToastrService } from 'ngx-toastr';
 import { ConfirmDialogComponent } from 'src/app/modules/shared/components/modals/confirm-dialog/confirm-dialog.component';
 import { ExitRulesComponent } from './Steps/exit-rules/exit-rules.component';
+import { RiskAnalysisRequest } from 'src/app/modules/risk-analysis/models/risk-analysis-request.model';
+import { RiskAnalysisService } from 'src/app/modules/risk-analysis/services/risk-analysis.service';
+import { TradeDetailsAsideComponent } from './trade-details-aside/trade-details-aside.component';
 
 @Component({
   selector: 'app-add-new-trade',
@@ -29,6 +32,7 @@ export class AddNewTradeComponent implements OnInit {
   @ViewChild('tradeSearchComponent', { static: false }) protected tradeSearchComponent: TradeSearchComponent;
   @ViewChild('stepper', { static: false }) protected tradeStepper: MatStepper;
   @ViewChild('tradeMobileStepper', { static: false }) protected tradeMobileStepper: MatStepper;
+  @ViewChild('tradeDetailsAside', { static: false }) protected tradeDetailsAsideComponent: TradeDetailsAsideComponent;
 
   @ViewChild('tradeDetails', { static: false }) protected tradeDetails: TradeDetailsComponent;
   @ViewChild('tradeThesis', { static: false }) protected tradeThesis: TradeThesisComponent;
@@ -56,6 +60,7 @@ export class AddNewTradeComponent implements OnInit {
   constructor(
     protected userStockStatsService: UserStockStatsService,
     protected tradeStrategyService: TradeStrategyService,
+    protected riskAnalysisService: RiskAnalysisService,
     protected router: Router,
     protected toastr: ToastrService,
     protected _dialog: MatDialog) {
@@ -85,6 +90,28 @@ export class AddNewTradeComponent implements OnInit {
   loadMoreStatsHandler($event: any) {
     console.log('load more stats:', $event);
     this.loadStockDetailSummary();
+  }
+
+  calculateMaxRisk($event: any) {
+    console.log('calculate max risk:', $event);
+    let riskAnalysisRequest: RiskAnalysisRequest = this.createRiskAnalysisRequest();
+
+    console.log('max risk request:', JSON.stringify(riskAnalysisRequest));
+
+    this.riskAnalysisService.getMaxRiskDetails(riskAnalysisRequest).subscribe(result => {
+      console.log("max details success:", result)
+      this.tradeDetailsAsideComponent.maxRiskDetails = result;
+    },
+      errResponse => {
+        console.log("max details error:", errResponse);
+      });
+  }
+
+  createRiskAnalysisRequest(): RiskAnalysisRequest {
+    let riskAnalysisRequest: RiskAnalysisRequest = new RiskAnalysisRequest();
+    riskAnalysisRequest.stockPrice = this.tradeDetails.stockEntry;
+    riskAnalysisRequest.options = this.tradeDetails.stockOptions;
+    return riskAnalysisRequest;
   }
 
   loadStockBriefSummary() {

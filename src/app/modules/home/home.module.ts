@@ -45,7 +45,7 @@ import { ReduceToPositionComponent } from '../shared/components/modals/reduce-to
 import { ReduceToStockPositionComponent } from '../shared/components/modals/reduce-to-stock-position/reduce-to-stock-position.component';
 import { CloseTradeDetailsComponent } from '../trade-management/components/close-trade/close-trade-details/close-trade-details.component';
 import { TradeDetailsHeaderComponent } from '../trade-management/components/trade-details-header/trade-details-header.component';
-import { TradeDetailsAsideComponent } from '../trade-management/components/trade-details-aside/trade-details-aside.component';
+import { TradeDetailsAsideComponent } from '../trade-management/components/add-trade/trade-details-aside/trade-details-aside.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RoutingModule } from './routing.module';
 import { UtilitiesModule } from '../Utilities/utilities.module';
