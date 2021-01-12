@@ -1,14 +1,13 @@
 <!-- manage-rules-popup -->
-
 <div class="manage-rules-popup">
     <div class="manage-rule-popup-inner">
         <div class="top-heading">
             <h5>
                 {{title}} Rule
             </h5>
+            <mat-icon class="cursor" (click)="closeModal()">close</mat-icon>
         </div>
         <div class="pop-up-box">
-
             <div class="rules-pop-con">
                 <div class="left-pop-heading">
                     <span>Rule Type</span>
@@ -22,8 +21,6 @@
                         </select>
                         <img src="../../../../../../assets/images/icon/Icon ionic-ios-arrow-down.png" alt=""
                             class="form-icon-down">
-
-
                     </div>
                 </div>
             </div>
@@ -32,7 +29,6 @@
                 <div class="left-pop-heading">
                     <span>Description</span>
                 </div>
-
                 <div class="right-pop-con">
                     <div class="form-group">
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
@@ -40,14 +36,10 @@
                 </div>
             </div>
 
-
-
-
             <div class="rules-pop-con">
                 <div class="left-pop-heading">
                     <span>Source</span>
                 </div>
-
                 <div class="right-pop-con">
                     <div class="trade-sel">
                         <div class="form-group has-search">
@@ -60,8 +52,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="btn btn-save" (click)="closeModal()">{{btnText}}</div>
-
         </div>
     </div>

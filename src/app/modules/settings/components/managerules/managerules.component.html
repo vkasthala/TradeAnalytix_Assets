@@ -10,12 +10,10 @@
                 <option value="5">Expired</option>
             </select>
         </div>
-        <div class="add-new-trade-btn">
-            <a class="add-new" (click)="addRule('Add New', 'ADD RULE')">
-                <mat-icon class="mat-icon-sm float-left">add_circle</mat-icon>
-                ADD RULE
-            </a>
-        </div>
+        <a class="add-new" (click)="addRule('Add', 'SAVE')">
+            <mat-icon class="mat-icon-sm text-success">add_circle</mat-icon>
+            ADD RULE
+        </a>
     </div>
 
     <div class="trade-strategies-table">
@@ -37,8 +35,8 @@
                     <td>Always hedge your position to avoid significant loss</td>
                     <td>Experience</td>
                     <td>
-                        <mat-icon class="text-primary cursor" (click)="addRule('Edit', 'Update')">edit</mat-icon>
-                        <mat-icon class="text-danger cursor ml-2">delete</mat-icon>
+                        <mat-icon class="text-success mat-icon-sm cursor" (click)="addRule('Edit', 'Update')">edit</mat-icon>
+                        <mat-icon class="mat-icon-sm cursor ml-2">delete</mat-icon>
                     </td>
                  
                 </tr>
@@ -48,8 +46,8 @@
                     <td>Do not close the position before the target price is reached</td>
                     <td>Best Practice</td>
                     <td>
-                        <mat-icon class="text-primary cursor" (click)="addRule('Edit', 'Update')">edit</mat-icon>
-                        <mat-icon class="text-danger cursor ml-2">delete</mat-icon>
+                        <mat-icon class="text-success mat-icon-sm cursor" (click)="addRule('Edit', 'Update')">edit</mat-icon>
+                        <mat-icon class="mat-icon-sm cursor ml-2">delete</mat-icon>
                     </td>
                 </tr>
                 <tr>
@@ -58,8 +56,8 @@
                     <td>Do not buy for fear of missing out on a rally or opportunity</td>
                     <td>Lesson Learnt</td>
                     <td>
-                        <mat-icon class="text-primary cursor" (click)="addRule('Edit', 'Update')">edit</mat-icon>
-                        <mat-icon class="text-danger cursor ml-2">delete</mat-icon>
+                        <mat-icon class="text-success mat-icon-sm cursor" (click)="addRule('Edit', 'Update')">edit</mat-icon>
+                        <mat-icon class="mat-icon-sm cursor ml-2">delete</mat-icon>
                     </td>
                  
 
@@ -72,8 +70,8 @@
                     <td>Always hedge your position to avoid significant loss</td>
                     <td>Experience</td>
                     <td>
-                        <mat-icon class="text-primary cursor" (click)="addRule('Edit', 'Update')">edit</mat-icon>
-                        <mat-icon class="text-danger cursor ml-2">delete</mat-icon>
+                        <mat-icon class="text-success mat-icon-sm cursor" (click)="addRule('Edit', 'Update')">edit</mat-icon>
+                        <mat-icon class="mat-icon-sm cursor ml-2">delete</mat-icon>
                     </td>
                   
 
@@ -84,8 +82,8 @@
                     <td>Always hedge your position to avoid significant loss</td>
                     <td>Best Practice</td>
                     <td>
-                        <mat-icon class="text-primary cursor" (click)="addRule('Edit', 'Update')">edit</mat-icon>
-                        <mat-icon class="text-danger cursor ml-2">delete</mat-icon>
+                        <mat-icon class="text-success mat-icon-sm cursor" (click)="addRule('Edit', 'Update')">edit</mat-icon>
+                        <mat-icon class="mat-icon-sm cursor ml-2">delete</mat-icon>
                     </td>
                    
 
@@ -96,8 +94,8 @@
                     <td>Always hedge your position to avoid significant loss</td>
                     <td>Lesson Learnt</td>
                     <td>
-                        <mat-icon class="text-primary cursor" (click)="addRule('Edit', 'Update')">edit</mat-icon>
-                        <mat-icon class="text-danger cursor ml-2">delete</mat-icon>
+                        <mat-icon class="text-success mat-icon-sm cursor" (click)="addRule('Edit', 'Update')">edit</mat-icon>
+                        <mat-icon class="mat-icon-sm cursor ml-2">delete</mat-icon>
                     </td>
                 
 
@@ -108,8 +106,8 @@
                     <td>Always hedge your position to avoid significant loss</td>
                     <td>Best Practice</td>
                     <td>
-                        <mat-icon class="text-primary cursor" (click)="addRule('Edit', 'Update')">edit</mat-icon>
-                        <mat-icon class="text-danger cursor ml-2">delete</mat-icon>
+                        <mat-icon class="text-success mat-icon-sm cursor" (click)="addRule('Edit', 'Update')">edit</mat-icon>
+                        <mat-icon class="mat-icon-sm cursor ml-2">delete</mat-icon>
                     </td>
                   
                 </tr>
@@ -119,16 +117,9 @@
                     <td>Always hedge your position to avoid significant loss</td>
                     <td>Experience</td>
                     <td>
-                        <div class="tabel-action">
-                            <div class="left-edit" (click)="addRule('Edit', 'Update')">
-                                <img src="../../../../../assets/images/Icon material-edit.png" alt="">
-                            </div>
-                            <div class="right-delete">
-                                <img src="../../../../../assets/images/Icon material-delete.png" alt="">
-                            </div>
-                        </div>
+                        <mat-icon class="text-success mat-icon-sm cursor" (click)="addRule('Edit', 'Update')">edit</mat-icon>
+                        <mat-icon class="mat-icon-sm cursor ml-2">delete</mat-icon>
                     </td>
-                 
                 </tr>
             </tbody>
         </table>
