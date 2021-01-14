@@ -1,6 +1,9 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, Input  } from '@angular/core';
 import { Router } from '@angular/router';
 import { IMyDateRangeModel } from 'mydaterangepicker';
+import { GoalsService } from '../../services/goals.service';
+import { InvestmentGoals } from'../../models/investment-goals.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-investmentgoals',
@@ -8,55 +11,63 @@ import { IMyDateRangeModel } from 'mydaterangepicker';
   styleUrls: ['./investmentgoals.component.scss']
 })
 export class InvestmentGoalsComponent implements OnInit {
-
-  tradeItem = '';
-  investmentGoals: any = [];
-  targetProfit:number;
+  entry_date: Date;
   targetDate:string;
+  targetProfit:number;
 
-  constructor(private router: Router) { }
+  entryDate:string;
+  targetDateRange:string;
+
+  public GoalsList = [];
+
+  constructor(
+    private toastr: ToastrService,
+    private router: Router,
+    private goalsService: GoalsService) { 
+  }
 
   ngOnInit() {
+    this.goalsService.getInvestGoals().subscribe(data => {
+      this.GoalsList = data;
+    });
   }
   addGoal() { 
     var num1 = ((document.getElementById("targetProfit") as HTMLInputElement).value);
-    console.log(num1);
 
     if(num1 == '' || num1 == undefined){
+      this.toastr.error('Please Enter Target Profit', '');
       return;
     }else {
-      this.investmentGoals.push(this.createGoalsEntry(num1));
-      console.log('investmentGoals', this.investmentGoals);
+      this.GoalsList.push(this.createGoalsEntry());
       this.handleClear();
     }
   }
 
   deleteinvestmentGoal(index){
-    this.investmentGoals.splice(index, 1);
+    this.GoalsList.splice(index, 1);
   }
 
-  createGoalsEntry(num1){
-    let goalEntry = new Object();
-    goalEntry.profit = num1;
-    goalEntry.targetdate = this.targetDate;
+  createGoalsEntry(){
+    let goalEntry = Object();
+    goalEntry.entrydate = this.entryDate;
+    goalEntry.profit = this.targetProfit;
+    goalEntry.targetdate = this.targetDateRange;
     return goalEntry;
   }
   
 
   handleClear(){
+    this.entry_date = null;
     this.targetProfit = null;
     this.targetDate = null;
   }
-
   onDateRangeChanged(event: IMyDateRangeModel) {
-    console.log('date::', event);
-    let formattedText = event.formatted;
-    let seperatorInd = formattedText.indexOf(' - ');
-    // this.targetDate = formattedText.substring(0, seperatorInd).trim()+' to '+formattedText.substring(seperatorInd + 3).trim();
-    // if (seperatorInd > -1) {
-    //   this.reportFilter.fromDate = formattedText.substring(0, seperatorInd).trim();
-    //   this.reportFilter.toDate = formattedText.substring(seperatorInd + 3).trim();
-    // }
+    this.targetDateRange= event.formatted;
+  }
+
+  addEvent(event) {
+    this.entryDate = event.targetElement.value;
   }
 
 }
+

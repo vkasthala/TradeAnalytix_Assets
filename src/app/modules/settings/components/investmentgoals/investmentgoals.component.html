@@ -17,11 +17,11 @@
         <label class="col-form-label">Specify your investment goals for a given date range.</label>
         <div class="trade-cards-section">
             <span class="card-main">
-                <!-- <div class="datepicker-group">
-                    <input matInput [matDatepicker]="entryDate" (click)="entryDate.open()" name="entryDate" [(ngModel)]="entryDate" placeholder="Entry Date" />
-                    <mat-datepicker-toggle matSuffix [for]="entryDate"></mat-datepicker-toggle>
-                    <mat-datepicker #entryDate></mat-datepicker>
-                  </div> -->
+                <div class="datepicker-group">
+                    <input matInput [matDatepicker]="entrydate" (click)="entrydate.open()" id="entrydate"  name="entrydate" (dateChange)="addEvent($event)" placeholder="Entry Date" [(ngModel)]="entry_date">
+                    <mat-datepicker-toggle matSuffix [for]="entrydate"></mat-datepicker-toggle>
+                    <mat-datepicker #entrydate></mat-datepicker>
+                </div>
             </span>
             <span class="card-main card-main-lg">
                 <div class='input-group date' id='datetimepicker1'>
@@ -35,14 +35,14 @@
             <mat-icon (click)="addGoal()" class="mt-2 text-success cursor">add_circle</mat-icon>
             
         </div>
-        <ng-container *ngIf="investmentGoals.length">
-            <div *ngFor="let goal of investmentGoals;let index = index">
+        <ng-container *ngIf="GoalsList.length">
+            <div *ngFor="let goal of GoalsList;let index = index">
                 <div class="d-flex align-items-center mb-1">
-                    <span class="card-main pl-3">01-Jan-2020</span>
-                    <span class="card-main card-main-lg pl-3">{{goal.targetdate.formatted}}</span>
+                    <span class="card-main pl-3">{{goal.entrydate}}</span>
+                    <span class="card-main card-main-lg pl-3">{{goal.targetdate}}</span>
                     <span class="card-main pl-3">{{goal.profit}}</span>
-                    <mat-icon class="mr-2 text-success mat-icon-sm">edit</mat-icon>
-                    <mat-icon class="mat-icon-sm"  (click)="deleteinvestmentGoal(index)">delete</mat-icon>
+                    <mat-icon class="mr-2 text-success mat-icon-sm cursor">edit</mat-icon>
+                    <mat-icon class="mat-icon-sm cursor"  (click)="deleteinvestmentGoal(index)">delete</mat-icon>
                 </div>
             </div>
         </ng-container>
