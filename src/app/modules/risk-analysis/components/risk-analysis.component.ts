@@ -112,6 +112,7 @@ export class RiskAnalysisComponent implements OnInit {
       this.analyzeRisk = false;
       this.maxRiskDetails = null;
     }
+    this.stockEntry = this.createStockEntry();
   }
 
   deleteStockOption(index) {
@@ -411,7 +412,7 @@ export class RiskAnalysisComponent implements OnInit {
     stockEntry.lowerBound = -10;
     stockEntry.upperBound = 10;
     stockEntry.riskFreeRate = 6;
-    stockEntry.actionType = ActionType["Buy to Open"];
+    stockEntry.actionType = null;
     return stockEntry;
   }
 
