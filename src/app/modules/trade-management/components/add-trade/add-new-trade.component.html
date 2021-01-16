@@ -31,7 +31,7 @@
             (loadMoreStats)="loadMoreStatsHandler($event)"></app-trade-details-header>
         </div>
         <div class="d-flex no-gutters" style="margin-right: -1px;">
-          <div class="col-8">
+          <div class="col-8 trade-details-ltside">
             <mat-horizontal-stepper labelPosition="left" #stepper [linear]="false">
               <mat-step [class.active]="stepone.completed" #stepone>
                 <ng-template matStepLabel>Trade Details</ng-template>
@@ -160,7 +160,7 @@
             </mat-horizontal-stepper>
             <div class="text-center py-3">
               <span class="order-btn text-center" *ngIf="(tradeDetails.stockAdded || tradeDetails.stockOptions.length > 0) && (stepper.selectedIndex == 0)">
-                <button type="button" class="btn btn-gray mr-3" *ngIf="!close && !tradeStrategy.executed" (click)="saveTradeAsDraft()">SAVE AS DRAFT</button>
+                <button type="button" class="btn btn-gray mr-3" *ngIf="!close && !tradeStrategy.executed" (click)="saveTradeAsDraft()">SAVE</button>
               </span>
               <button type="button" class="btn btn-next mr-3" *ngIf="add"
                 (click)="CheckExecutionDate('Confirm Trade Execution Date')">ADD TRADE</button>

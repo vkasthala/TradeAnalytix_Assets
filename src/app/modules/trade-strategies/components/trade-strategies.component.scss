@@ -162,7 +162,7 @@
   
   .trade-st-box {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     width: 100%;
     padding: 15px 0px;
@@ -175,12 +175,11 @@
     @media #{$extra-small} {
       flex-wrap: wrap;
       }
-
 }
 
 .st-slect-section{
-  margin-right: .5rem;
-  height: 35px;
+  margin-right: 0.789rem;
+  height: 45px;
   @media #{$small} {
     margin-bottom: 15px;
     }
@@ -214,14 +213,14 @@
 
 .form-icon-down{
   position: absolute;
-  right: 11px;
-  top: 14px;
-  width: 14px;
+  right: 5px;
+  top: 8px;
+  color: #37A000 !important;
 }
 
 
 .trade-sel {
-    width: 240px;
+    width: 160px;
     position: relative;
   
   select{
@@ -230,10 +229,7 @@
   }
 }
 
-.trade-form .form-control{
-  font-size: 0.89rem;
-  color: #000;
-}
+
 .trade-form .form-control ::placeholder{
   color: #000;
 
@@ -250,6 +246,7 @@
 .trade-sel .form-control{
   font-size: 0.89rem;
   color: #000;
+  height: 40px;
 }
 
 .btn-apply{
@@ -600,7 +597,7 @@ a.import-new img{
   pointer-events: none;
   position: absolute;
   left: 10px;
-  top:6px;
+  top:10px;
   color: #000;
   font-size: .89rem;
 }
@@ -615,4 +612,9 @@ a.import-new img{
 }
 .text-blue {
   color: #0190CA !important;
+}
+.trade-form .form-control{
+  font-size: 0.89rem;
+  color: #000;
+  height: 40px;
 }

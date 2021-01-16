@@ -30,9 +30,10 @@
                       Add Option</a>
                   </span>
                 </div>
-              </div>
-              <div *ngIf="stockAdded || stockOptions.length">
-                <a class="text-link" (click)="navigateToRiskAnalysis()">Assess Risk</a>
+              
+                <div *ngIf="stockAdded || stockOptions.length">
+                  <a class="text-link ml-3" (click)="navigateToRiskAnalysis()">Assess Risk</a>
+                </div>
               </div>
             </div>
           </div>
@@ -94,12 +95,12 @@
       <ng-container>
         <div class="trade-card-box mb-1" *ngIf="stockOptions.length">
           <div class="card-main">Action</div>
-          <div class="card-main card-main-sm">Contracts</div>
+          <div class="card-main card-main-md">Contracts</div>
           <div class="card-main">Expiration</div>
-          <div class="card-main card-main-sm">Strike</div>
-          <div class="card-main card-main-sm">Call / Put</div>
+          <div class="card-main card-main-md">Strike</div>
+          <div class="card-main card-main-md">Call / Put</div>
           <div class="card-main card-main-md pr-1">Entry Price</div>
-          <div class="card-main" *ngIf="!closeTrade">Amount</div>
+          <div class="card-main text-right" *ngIf="!closeTrade">Amount</div>
           <div class="card-main card-main-sm" *ngIf="closeTrade">Exit Price</div>
           <div class="card-main card-main-sm" *ngIf="closeTrade">Return</div>
         </div>
@@ -113,7 +114,7 @@
               <option value=2>Sell to Open</option>
             </select>
           </div>
-          <div class="card-main card-main-sm">
+          <div class="card-main card-main-md">
             <input type="number" (keydown)="preventNegatives($event, false)" min="0" class="form-control cards-input"
               placeholder="" [(ngModel)]="stockOptions[index].contracts" [ngClass]="closeTrade ? 'disabled' : ''" />
           </div>
@@ -127,13 +128,13 @@
               <mat-datepicker #expireDate></mat-datepicker>
             </div>
           </div>
-          <div class="card-main card-main-sm">
+          <div class="card-main card-main-md">
             <input type="number" (keydown)="preventNegatives($event, true)" pattern="^\d*(\.\d{0,2})?$"
               (change)="checkForDecimalValidation($event)" step="0.01" min="0" class="form-control cards-input"
               placeholder="" [(ngModel)]="stockOptions[index].strikePrice" [ngClass]="closeTrade ? 'disabled' : ''" />
           </div>
 
-          <div class="card-main card-main-sm">
+          <div class="card-main card-main-md">
             <select id="inputState" class="form-control select-input px-0" [(ngModel)]="stockOptions[index].optionType"
               [ngClass]="closeTrade ? 'disabled' : ''">
               <option value=1 selected data-default>Call</option>
@@ -176,7 +177,7 @@
         </div>
       </ng-container>
     </div>
-    <div class="font-weight-bold net_debit" *ngIf="stockOptions.length">
+    <div class="net_debit" *ngIf="stockOptions.length">
       <span class="total_label">Total {{closeTrade ? 'Return' : 'Amount'}} </span>
       <span class="total_amount mx-2"
         [ngClass]="closeTrade ? 'total_return' : ''">{{closeTrade ? calculateNetReturn() : calculateNetDebit()}}</span>

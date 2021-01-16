@@ -46,7 +46,7 @@ body {
 }
 
 .mat-horizontal-stepper-header-container {
-    border-bottom:2px solid #adadad;
+    border-bottom:2px solid #d6d6d6;
     @media #{$small} {
         padding: 10px 0px;
       }
@@ -114,12 +114,16 @@ body {
       }
 }
 
-
 .mydrp{
     width: 210px !important;
-  }
-  input:invalid {   box-shadow: 0 0 1.5px 1px red;   }
-
+}
+.date-range-md .mydrp .selectiongroup {
+    height: 38px !important;
+}
+.date-range-md .mydrp .selection {
+    height: 38px !important;
+}
+input:invalid {   box-shadow: 0 0 1.5px 1px red;   }
 
   .hide-bars::-webkit-inner-spin-button, 
   .hide-bars::-webkit-outer-spin-button { 
