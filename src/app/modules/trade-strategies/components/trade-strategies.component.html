@@ -10,12 +10,12 @@
                 <div>
                     <button routerLink="/new-trade" class="add-new btn btn-apply">ADD TRADE</button>
                     <span class="cursor ml-2" (click)="strategiesFilter()">
-                        <span *ngIf="!showFilters" class="text-primary text-sm" data-toggle="tooltip" data-placement="top" title="Show Filters">Show Filters</span> 
+                        <span *ngIf="!showFilters" class="text-blue text-sm" data-toggle="tooltip" data-placement="top" title="Show Filters">Show Filters</span> 
                         <span *ngIf="showFilters" class="text-primary text-sm" data-toggle="tooltip" data-placement="top" title="Close Filters">Hide Filters</span>
                     </span>
                 </div>
             </div>
-            <div class="trade-strategies-table">
+            <div class="trade-strategies-table px-3">
                 <div class="card-body">
                     <div class="text-right px-3 pt-2">
                         
@@ -46,13 +46,6 @@
                             </div>
                         </div>
                         <div class="st-slect-section">
-                            <div class="trade-date">
-                                <my-date-range-picker placeholder="Date range" name="mydaterange"
-                                    [options]="myDateRangePickerOptions"
-                                    (dateRangeChanged)="onDateRangeChanged($event)"></my-date-range-picker>
-                            </div>
-                        </div>
-                        <div class="st-slect-section">
                             <div class="trade-sel position-relative">
                                 <span class="custom-label" *ngIf="statusLabel">Status</span>
                                 <select class="form-control" id="tradeStrategyStatusFilter" [(ngModel)]='strategiesGridFilter.status' (change)='onOptionsSelected($event)'>
@@ -61,6 +54,14 @@
                                 </select>
                                 <img src="../../../../assets/images/icon/Icon ionic-ios-arrow-down.png" alt=""
                                     class="form-icon-down">
+                            </div>
+                        </div>
+
+                        <div class="st-slect-section">
+                            <div class="trade-date">
+                                <my-date-range-picker placeholder="Date range" name="mydaterange"
+                                    [options]="myDateRangePickerOptions"
+                                    (dateRangeChanged)="onDateRangeChanged($event)"></my-date-range-picker>
                             </div>
                         </div>
                         
@@ -73,137 +74,7 @@
 
                     <!-- Grid row -->
                     <app-trade-strategies-grid #tradeStrategiesGrid>loading</app-trade-strategies-grid>
-                    <!-- <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th>Strategy ID</th>
-                                <th>Strategy</th>
-                                <th>Stock</th>
-                                <th>Direction</th>
-                                <th>Status</th>
-                                <th>Rules Compliance</th>
-                                <th>Maximum Gain</th>
-                                <th>MaximumLoss</th>
-                                <th>Open Date</th>
-                                <th>Close Date</th>
-                                <th>Return</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr (click)="expandShowDetails(i)" [ngClass]="{'expanded-row': showDetailsIndex == i}" *ngFor="let item of tradeStrategiesData; let i=index" class="table-ac cursor-pointer">
-
-                                <td class="trade-check">
-                                    <div class="form-group">
-                                        <input type="checkbox" [id]="item.strategyId">
-                                        <label [for]="item.strategyId"></label>
-                                    </div>
-                                </td>
-                                <td>{{item.strategyId}}</td>
-                                <td>{{item.strategy}}</td>
-                                <td>{{item.stock}}</td>
-                                <td>
-                                    {{item.direction}}
-
-                                    <img [src]="item.directionSymbol" alt="" class="img-fluid">
-                                </td>
-                                <td [ngClass]="{
-                                        'text-primary': item.status == 'Draft',
-                                        'text-warning': item.status == 'Open',
-                                        'text-danger': item.status == 'Closed',
-                                        'text-secondary': item.status == 'Expired'
-
-                                    }">{{item.status}}</td>
-                                <td class="trade-check-img">
-                                    <img *ngIf="item.rulesCompliance"
-                                        src="../../../../assets/images/Icon feather-check.png" alt=""
-                                        class="img-fluid">
-                                    <img *ngIf="!item.rulesCompliance"
-                                        src="../../../../assets/images/Icon material-close.png" alt=""
-                                        class="img-fluid">
-                                </td>
-                                <td class="trade-rd">{{item.maxGain}}</td>
-                                <td class="trade-rdd">{{item.maxGain}}</td>
-                                <td>
-                                    <ng-container *ngIf="item.openDate; else elseTemplate">
-                                        {{item.openDate}}
-                                    </ng-container>
-                                    <ng-template #elseTemplate>
-                                        <img src="../../../../assets/images/Icon awesome-minus.png" alt=""
-                                            class="img-fluid">
-                                    </ng-template>
-
-                                </td>
-                                <td>
-
-                                    <ng-container *ngIf="item.closeDate; else elseTemplate">
-                                        {{item.closeDate}}
-                                    </ng-container>
-                                    <ng-template #elseTemplate>
-                                        <div class="close-dash"></div>
-
-                                    </ng-template>
-
-
-                                </td>
-                                <td class="trade-rdd">{{item.return}}</td>
-                                <td class="trade-details">
-                                    <img (click)="expandRowOptions(i)" src="../../../../assets/images/Icon ionic-md-more.png" alt=""
-                                        class="img-fluid cursor-pointer">
-
-                                    <div class="trade-det-box"  *ngIf="expandIndex == i">
-                                        <div class="de-box">
-
-                                          
-                                            <div class="right-con">
-
-
-                                                <a class="box-icon cursor-pointer" (click)="editTrade(item.strategyId)">
-                                                    <img src="../../../../assets/images/icon/Icon material-edit.png"> <span>Edit</span>
-                                                </a>
-                                                <a class="box-icon cursor-pointer" (click)="closeTrade(item.strategyId)">
-                                                    <img src="../../../../assets/images/icon/Icon material-close.png"> <span>Close</span>
-                                                </a>
-                                                <a class="box-icon cursor-pointer" (click)="deleteTrade()">
-                                                    <img src="../../../../assets/images/icon/Icon material-delete.png"> <span>Delete</span>
-                                                </a>
-                                            </div>
-                                            <div class="left-icon">
-                                                <a class="dt-top-icon cursor-pointer" (click)="closeActionBox()">
-                                                    <span></span>
-                                                    <img src="../../../../assets/images/icon/Icon ionic-ios-close-circle.png">
-                                                </a>
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </td>
-
-
-                                <div class="box-table" [ngClass]="{'box-table-even': i%2 == 0, 'box-table-odd': i%2 != 0,'expanded-details': showDetailsIndex == i}" *ngIf="showDetailsIndex == i">
-                                    <div class="inner-box">
-                                        <ul class="list-inline">
-                                            <li style="padding-left: 0;">
-                                                <img src="../../../../assets/images/Ellipse 55.png" alt="">
-                                                <em>Bought 200 stock at $1450.62</em>
-                                            </li>
-                                            <li>
-                                                <img src="../../../../assets/images/Ellipse 55.png" alt="">
-                                                <em>Sold 2 contracts of 1500 Call 25-Jun-20 at $12.30</em>
-                                            </li>
-                                            <li>
-                                                <img src="../../../../assets/images/Ellipse 55.png" alt="">
-                                                <em>Bought 2 contracts of 1450 Call 25-Jun-20 at $15.45</em>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </tr>
-                           
-                        </tbody>
-                    </table> -->
+                   
                 </div>
             </div>
         </div>
@@ -289,7 +160,7 @@
                                 'text-primary': item.status == 'Draft',
                                 'text-secondary': item.status == 'Expired'
                             }">{{item.status}}</td>
-                        <td class="text-success">{{item.return}}</td>
+                        <td class="text-green">{{item.return}}</td>
                     </tr>
                 </tbody>
             </table>

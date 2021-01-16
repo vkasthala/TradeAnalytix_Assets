@@ -1,4 +1,4 @@
-<div class="mat-elevation-z8">
+<div class="trade-table">
   <mat-table [dataSource]="dataSource" matSort>
 
     <!-- Strategy ID Column -->
@@ -23,12 +23,15 @@
     <ng-container matColumnDef="direction">
       <mat-header-cell class="direction-cell" *matHeaderCellDef mat-sort-header>Direction</mat-header-cell>
       <mat-cell *matCellDef="let element">
-        <span class="text-success direction_arrow" *ngIf="element.direction == 'Long'">
+        <!-- <span class="text-success direction_arrow" *ngIf="element.direction == 'Long'">
           <mat-icon>arrow_upward</mat-icon>
         </span>
         <span class="text-danger direction_arrow" *ngIf="element.direction == 'Neutral'">
           <mat-icon>arrow_downward</mat-icon>
         </span>
+        <span class="direction_arrow" *ngIf="element.direction == 'Custom'">
+          <mat-icon class="mat-icon-xs">help_outline</mat-icon>
+        </span> -->
         {{element.direction}}
       </mat-cell>
     </ng-container>
@@ -69,7 +72,7 @@
       <mat-cell *matCellDef="let element" [ngClass]="{
         'text-black': element.status == 'Draft',
         'text-primary': element.status == 'Open',
-        'text-danger': element.status == 'Closed',
+        'text-success': element.status == 'Closed',
         'text-secondary': element.status == 'Expired'
 
     }"> {{element.status}} </mat-cell>
@@ -94,8 +97,6 @@
           <mat-icon *ngIf="element.status == 'Open'" (click)="closeTrade(element);closeActionBox()" class="text-success mat-icon-sm ml-2">cancel</mat-icon>
 
           <mat-icon *ngIf="element.status == 'Draft'" (click)="closeTrade(element);closeActionBox()" class="mat-icon-sm ml-2">delete</mat-icon>
-
-          <mat-icon *ngIf="element.status == 'Closed'" (click)="closeTrade(element);closeActionBox()" class="mat-icon-sm ml-2">delete</mat-icon>
 
           <mat-icon *ngIf="element.status == 'Closed'" (click)="closeTrade(element);closeActionBox()" class="mat-icon-sm ml-2">visibility</mat-icon>
         </div>

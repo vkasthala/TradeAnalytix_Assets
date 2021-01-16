@@ -133,6 +133,7 @@
           font-weight: 500;
           font-size: 1.25rem;
           margin-bottom: 0px;
+          color: #000;
         }
     }
 }
@@ -141,7 +142,7 @@
     font-size: .89rem !important;
     line-height: 1.5;
     color: #000 !important;
-    box-shadow: 0px 4px 2px 0px rgba(90, 90, 90, 0.4);
+    // box-shadow: 0px 4px 2px 0px rgba(90, 90, 90, 0.4);
     border-radius: 0;
 }
 .mydrp .selection {
@@ -156,7 +157,7 @@
 }
 .mat-header-cell {
     font-size: 14px !important;
-    font-weight: 500;
+    font-weight: 550;
 }
 input.mat-input-element {
     color: #495057;
@@ -216,5 +217,13 @@ input.mat-input-element {
     color: #37a01a !important;
 }
 .mat-icon-sm {
-    font-size: 22px !important;
-  }
+    font-size: 21px !important;
+}
+.mat-icon-xs {
+    height: 16px !important;
+    width: 20px !important;
+    font-size: 16px !important;
+}
+.col-form-label {
+    font-size: 14px !important;
+}

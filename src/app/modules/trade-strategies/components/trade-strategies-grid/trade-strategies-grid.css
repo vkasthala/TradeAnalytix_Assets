@@ -12,11 +12,14 @@ th.mat-header-cell {
 }
 
 .mat-row:nth-child(even){
-  background-color: #F9F9F9;
+  background-color: transparent;
+  border: 0;
 }
 
 .mat-row:nth-child(odd){
-  background-color: transparent;
+  
+  background-color: #f6f7fa;
+  border: 0;
 }
 
 .strategy-id-cell{
@@ -124,5 +127,31 @@ th.mat-header-cell {
 }
 .mat-header-cell {
   background: #F6F7FA;
-  color: #242E3A;
+  color: #000;
+  
+}
+.mat-header-cell, 
+.mat-cell, 
+.mat-footer-cell {
+  justify-content: center;
+  color: #000;
+}
+
+.text-success {
+  color: #37A000 !important;
+}
+.text-primary {
+  color: #0190CA !important;
+}
+.mat-header-row {
+  min-height: 45px;
+  border: 0;
+}
+.mat-row {
+  min-height: 45px;
+}
+.trade-table {
+  border: 1px solid rgb(233, 233, 233);
+  box-shadow: none;
+  margin-bottom: 1rem;
 }
