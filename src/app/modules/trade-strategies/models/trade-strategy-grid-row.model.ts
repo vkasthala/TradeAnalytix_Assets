@@ -10,6 +10,8 @@ export class TradeStrategyGridRow {
 
     stockId: number;
 
+    stockCode: string;
+
     direction: string;
 
     directionId: number;
@@ -21,8 +23,11 @@ export class TradeStrategyGridRow {
     openDate: string;
 
     closeDate: string;
+
     maxLoss: string;
+    
     maxGain: string;
+    
     return: string;
 
 }
