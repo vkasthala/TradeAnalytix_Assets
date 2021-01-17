@@ -4,7 +4,7 @@
     <div class="trade-stoack-main" #tradeCards>
       <div class="trade-sec">
         <div class="d-flex align-items-center justify-content-between">
-          <span class="col-form-label p-0">{{add ? 'Select' : 'Current'}} Strategy</span>
+          <span class="col-form-label p-0">{{addTrade ? 'Select' : 'Current'}} Strategy</span>
           <div *ngIf="addTrade == false">
             <label class="col-form-label mr-2">Last Updated Date : {{executedDate | date: 'dd-MMM-yyyy'}}</label>
           </div>
@@ -22,16 +22,13 @@
                   </div>
                 </div>
                 <div *ngIf="closeTrade == false">
-                  <span class="search_btn m-r gap-btn" *ngIf="!stockAdded">
+                  <span class="search_btn gap-btn" *ngIf="!stockAdded">
                     <a class="btn btn-add" (click)="addStock()"> Add Stock</a>
                   </span>
-                  <span class="search_btn m-r gap-btn">
-                    <a class="btn btn-secondary" (click)="addOption()" *ngIf="stockOptions.length < 4">
-                      Add Option</a>
-                  </span>
+                  <a class="btn btn-secondary ml-3" (click)="addOption()" *ngIf="stockOptions.length < 4">Add Option</a>
                 </div>
               
-                <div *ngIf="stockAdded || stockOptions.length">
+                <div class="d-flex align-items-center" *ngIf="stockAdded || stockOptions.length">
                   <a class="text-link ml-3" (click)="navigateToRiskAnalysis()">Assess Risk</a>
                 </div>
               </div>
@@ -179,7 +176,7 @@
     </div>
     <div class="net_debit" *ngIf="stockOptions.length">
       <span class="total_label">Total {{closeTrade ? 'Return' : 'Amount'}} </span>
-      <span class="total_amount mx-2"
+      <span class="total_amount mx-1"
         [ngClass]="closeTrade ? 'total_return' : ''">{{closeTrade ? calculateNetReturn() : calculateNetDebit()}}</span>
     </div>
     

@@ -124,21 +124,21 @@
                         </h6>
                       </div>
                     </div>
-                    <div class="net_debit">
-                      <div class="realized_label" [ngClass]="close ? 'justify-content-between' : ''">
-                        <div *ngIf="close">
-                          <label class="col-form-label mr-2">Closed Date <span class="text-danger">*</span></label>
-                          <div class="datepicker-group datepicker-sm">
-                            <input matInput [matDatepicker]="closed_date" (click)="closed_date.open()" id="closed_date"
-                              (dateChange)="addEvent('input', $event)" name="stockOptions[index].closed_date" [(ngModel)]="closeDate"/>
-                            <mat-datepicker-toggle matSuffix [for]="closed_date"></mat-datepicker-toggle>
-                            <mat-datepicker #closed_date></mat-datepicker>
-                          </div>
+                  </div>
+                  <div class="net_debit">
+                    <div class="realized_label" [ngClass]="close ? 'justify-content-between' : ''">
+                      <div *ngIf="close">
+                        <label class="col-form-label mr-2">Closed Date <span class="text-danger">*</span></label>
+                        <div class="datepicker-group datepicker-sm">
+                          <input matInput [matDatepicker]="closed_date" (click)="closed_date.open()" id="closed_date"
+                            (dateChange)="addEvent('input', $event)" name="stockOptions[index].closed_date" [(ngModel)]="closeDate"/>
+                          <mat-datepicker-toggle matSuffix [for]="closed_date"></mat-datepicker-toggle>
+                          <mat-datepicker #closed_date></mat-datepicker>
                         </div>
-                        <span>{{edit ? 'Realized' : 'Total'}}  Return</span>
                       </div>
-                      <span class="realized_return mx-2">-400.00</span>
+                      <span>{{edit ? 'Realized' : 'Total'}}  Return</span>
                     </div>
+                    <span class="realized_return mx-2">-400.00</span>
                   </div>
                 </div>
               </mat-step>
@@ -162,7 +162,7 @@
               <span class="order-btn text-center" *ngIf="(tradeDetails.stockAdded || tradeDetails.stockOptions.length > 0) && (stepper.selectedIndex == 0)">
                 <button type="button" class="btn btn-gray mr-3" *ngIf="!close && !tradeStrategy.executed" (click)="saveTradeAsDraft()">SAVE</button>
               </span>
-              <button type="button" class="btn btn-next mr-3" *ngIf="add"
+              <button type="button" class="btn btn-next mr-3" *ngIf="(add && (tradeDetails.stockOptions.length || tradeDetails.stockAdded))"
                 (click)="CheckExecutionDate('Confirm Trade Execution Date')">ADD TRADE</button>
 
               <button type="button" class="btn btn-gray mr-3" *ngIf="edit">CANCEL</button>
