@@ -21,6 +21,8 @@ import { TradeStrategy } from '../../trade-management/models/trade-strategy.mode
 import { ToastrService } from 'ngx-toastr';
 import { RiskAnalysisChartComponent } from './risk-analysis-chart/risk-analysis-chart.component';
 import { MaxRiskDetails } from '../models/max-risk-details.model';
+import { UpdateStockPricePopupComponent } from './update-stock-price-popup/update-stock-price-popup.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-risk-analysis',
@@ -41,6 +43,7 @@ export class RiskAnalysisComponent implements OnInit {
   selectedStrategy: number = 15;
 
   stockAdded: boolean;
+  stockPriceUpdated: boolean;
   performRiskAnalysis: boolean;
   displayRiskAnalysis: boolean;
   analyzeRisk: boolean;
@@ -67,7 +70,8 @@ export class RiskAnalysisComponent implements OnInit {
     private userStockStatsService: UserStockStatsService,
     private strategyCreateService: StrategyCreateService,
     private toastr: ToastrService,
-    private router: Router) {
+    private router: Router,
+    private _dialog: MatDialog) {
     this.stockEntry = this.createStockEntry();
     this.initState();
   }
@@ -106,6 +110,7 @@ export class RiskAnalysisComponent implements OnInit {
 
   deleteStock() {
     this.stockAdded = false;
+    this.stockPriceUpdated = false;
     if (this.stockOptions.length == 0) {
       this.displayRiskAnalysis = false;
       this.riskAnalysisResults = [];
@@ -337,6 +342,35 @@ export class RiskAnalysisComponent implements OnInit {
   initRiskAnalysis() {
     this.maxRiskDetails = null;
     this.getRiskAnalysisResults();
+  }
+
+  checkForStockPrice() {
+    if (!this.stockAdded && !this.stockPriceUpdated) {
+      this.openUpdateStockPricePopup();
+    } else {
+      this.loadImpliedVolatility();
+    }
+  }
+
+  openUpdateStockPricePopup() {
+    let dialogData = {
+      update: 'false',
+      stockPrice: this.stockEntry.price
+    };
+    const dialogRef = this._dialog.open(UpdateStockPricePopupComponent, {
+      disableClose: true,
+      width: 'auto',
+      data: dialogData
+    });
+
+    dialogRef.afterClosed().subscribe((res) => {
+      console.log('here...', res);
+      this.stockPriceUpdated = true;
+      if (res.update == 'true') {
+        this.stockEntry.price = res.stockPrice;
+      }
+      this.loadImpliedVolatility();
+    });
   }
 
   loadImpliedVolatility() {

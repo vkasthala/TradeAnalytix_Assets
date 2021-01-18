@@ -70,7 +70,7 @@
                                         </div>
                                     </div>
                                     <div class="trade-cards-section">
-                                        <div class="trade-card-box">
+                                        <div class="trade-card-box" *ngIf="stockAdded || stockPriceUpdated">
                                             <div class="top-heading" (click)="deleteStock()">
                                                 <mat-icon>delete</mat-icon>
                                             </div>
@@ -228,7 +228,7 @@
                                     <!-- next-button -->
                                     <div class="order-btn text-center" *ngIf="stockAdded || stockOptions.length > 0">
                                         <a class="btn btn-next"
-                                            (click)="loadImpliedVolatility();">Next</a>
+                                            (click)="checkForStockPrice();">Next</a>
                                     </div>
                                 </ng-template>
                             </mat-expansion-panel>

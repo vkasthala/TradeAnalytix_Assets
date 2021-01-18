@@ -71,6 +71,7 @@ import { CommissionsComponent } from '../reports/components/commissions/commissi
 import { DisciplineComponent } from '../reports/components/discipline/discipline.component';
 import { ReportSummaryComponent } from '../reports/components/report-summary/report-summary.component';
 import { ReportChartComponent } from '../reports/components/report-chart/report-chart.component';
+import { UpdateStockPricePopupComponent } from '../risk-analysis/components/update-stock-price-popup/update-stock-price-popup.component';
 
 @NgModule({
   declarations: [
@@ -127,7 +128,8 @@ import { ReportChartComponent } from '../reports/components/report-chart/report-
     DisciplineComponent,
     ReportsitemsComponent,
     ReportSummaryComponent,
-    ReportChartComponent
+    ReportChartComponent,
+    UpdateStockPricePopupComponent
   ],
   imports: [
     CommonModule,
@@ -156,7 +158,8 @@ import { ReportChartComponent } from '../reports/components/report-chart/report-
     ReduceToStockPositionComponent,
     TradeExecutionDateComponent,
     TradeStrategiesGrid,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    UpdateStockPricePopupComponent
   ],
   // bootstrap: [TradeStrategiesGrid],
 })
