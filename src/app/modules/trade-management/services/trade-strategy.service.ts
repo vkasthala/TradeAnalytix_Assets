@@ -3,6 +3,7 @@ import { HttpService } from '../../shared/services/http.service';
 import { TradeStrategy } from '../models/trade-strategy.model';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
+import { TradeHistory } from '../models/trade-history.model';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +35,10 @@ export class TradeStrategyService {
 
   public deleteTradeStrategy(id: number): Observable<void> {
     return this.httpService.post(this.apiUrl + '/trade-strategy/delete/' + id, null);
+  }
+
+  public getTradeClosedHistory(id: number): Observable<TradeHistory> {
+    return this.httpService.get<TradeHistory>(this.apiUrl + '/trade-strategy/closed-history/' + id);
   }
 
 }
