@@ -295,6 +295,7 @@ export class TradeDetailsComponent implements OnInit {
     if (!dialogResult || (!dialogResult.price || !dialogResult.quantity) || (add == false && dialogResult.quantity > this.stockEntry.quantity)) {
       return;
     }
+    console.log('stock result:', dialogResult);
     let openPrice: number = this.stockEntry.price;
     if (add) {
       this.stockEntry.quantity = this.stockEntry.quantity + dialogResult.quantity;
@@ -306,13 +307,14 @@ export class TradeDetailsComponent implements OnInit {
     if (!this.stockEntry.partialLegChange) {
       this.stockEntry.partialLegChange = [];
     }
-    this.stockEntry.partialLegChange.push(this.createPartialLegClose(dialogResult.quantity, openPrice, dialogResult.price, add));
+    this.stockEntry.partialLegChange.push(this.createPartialLegClose(dialogResult.quantity, openPrice, dialogResult.price, add, dialogResult.actionType, dialogResult.notes, dialogResult.executedDate));
   }
 
   addOrReduceStockOption(dialogResult: any, stockOption: OptionEntry, add: boolean, index: number) {
     if (!dialogResult || (!dialogResult.price || !dialogResult.contracts) || (add == false && dialogResult.contracts > stockOption.contracts)) {
       return;
     }
+    console.log('option result:', dialogResult);
     let openPrice: number = stockOption.price;
     if (add) {
       stockOption.contracts = stockOption.contracts + dialogResult.contracts;
@@ -325,14 +327,17 @@ export class TradeDetailsComponent implements OnInit {
     if (!stockOption.partialLegChange) {
       stockOption.partialLegChange = [];
     }
-    stockOption.partialLegChange.push(this.createPartialLegClose(dialogResult.contracts, openPrice, dialogResult.price, add))
+    stockOption.partialLegChange.push(this.createPartialLegClose(dialogResult.contracts, openPrice, dialogResult.price, add, dialogResult.actionType, dialogResult.notes, dialogResult.executedDate));
   }
 
-  createPartialLegClose(changeCount: number, openPrice: number, closePrice: number, add: boolean) {
+  createPartialLegClose(changeCount: number, openPrice: number, closePrice: number, add: boolean, actionType: any, notes: string, executedDate: string) {
     let partialCloseDetails: PartialLegChange = new PartialLegChange();
     partialCloseDetails.changeCount = add === true ? changeCount : -1 * changeCount;
     partialCloseDetails.closePrice = closePrice;
     partialCloseDetails.openPrice = openPrice;
+    partialCloseDetails.executedDate = executedDate;
+    partialCloseDetails.actionType = actionType;
+    partialCloseDetails.notes = notes;
     return partialCloseDetails;
   }
 

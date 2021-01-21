@@ -57,6 +57,8 @@
                           <select id="inputState" class="form-control disabled px-0" [(ngModel)]="item.actionType">
                             <option value=1 selected data-default>Buy to Open</option>
                             <option value=2>Sell to Open</option>
+                            <option value=3>Buy to Close</option>
+                            <option value=4>Sell to Close</option>
                           </select>
                         </div>
                         <div class="card-main card-main-sm">
@@ -67,17 +69,17 @@
                         <div class="card-main card-main-md pr-1">
                           <label class="col-form-label pt-0">Entry Price</label>
                           <input type="number" min="0" class="form-control cards-input disabled"
-                            [(ngModel)]="item.entryPrice" />
+                            [(ngModel)]="item.entryPrice" pattern="^\d*(\.\d{0,2})?$" step="0.01" />
                         </div>
                         <div class="card-main card-main-md">
                           <label class="col-form-label pt-0">Exit Price</label>
                           <input type="number" min="0" class="form-control cards-input disabled"
-                            [(ngModel)]="item.exitPrice" />
+                            [(ngModel)]="item.exitPrice" pattern="^\d*(\.\d{0,2})?$" step="0.01" />
                         </div>
                         <div class="card-main card-main-sm">
                           <label class="col-form-label pt-0">Return</label>
                           <h6 class="input_text">
-                            {{(item.quantity && item.closePrice) ? (item.quantity * (item.closePrice - stockEntry.entryPrice) * (item.actionType == 2 ? -1 : 1)).toFixed(2) : 0}}
+                            {{(item.quantity && item.exitPrice && item.entryPrice) ? (item.quantity * (item.exitPrice - item.entryPrice) * (item.actionType == 3 ? -1 : 1)).toFixed(2) : 0}}
                           </h6>
                         </div>
                       </div>
@@ -88,6 +90,8 @@
                           <select id="inputState" class="form-control disabled px-0" [(ngModel)]="item.actionType">
                             <option value=1 selected data-default>Buy to Open</option>
                             <option value=2>Sell to Open</option>
+                            <option value=3>Buy to Close</option>
+                            <option value=4>Sell to Close</option>
                           </select>
                         </div>
                         <div class="card-main card-main-sm">
@@ -108,7 +112,7 @@
                         <div class="card-main card-main-sm">
                           <label class="col-form-label pt-0">Strike</label>
                           <input type="number" step="0.01" min="0" class="form-control cards-input disabled"
-                            [(ngModel)]="item.strikePrice" />
+                            [(ngModel)]="item.strikePrice" pattern="^\d*(\.\d{0,2})?$" />
                         </div>
                         <div class="card-main card-main-sm">
                           <label class="col-form-label pt-0">Call / Put</label>
@@ -121,17 +125,17 @@
                         <div class="card-main card-main-md pr-1">
                           <label class="col-form-label pt-0">Entry Price</label>
                           <input type="number" min="0" class="form-control cards-input disabled"
-                            [(ngModel)]="item.entryPrice" />
+                            [(ngModel)]="item.entryPrice" pattern="^\d*(\.\d{0,2})?$" step="0.01" />
                         </div>
                         <div class="card-main card-main-md">
                           <label class="col-form-label pt-0">Exit Price</label>
                           <input type="number" min="0" class="form-control cards-input disabled"
-                            [(ngModel)]="item.exitPrice" />
+                            [(ngModel)]="item.exitPrice" pattern="^\d*(\.\d{0,2})?$" step="0.01" />
                         </div>
                         <div class="card-main card-main-sm">
                           <label class="col-form-label pt-0">Return</label>
                           <h6 class="input_text">
-                            {{(item.contracts && item.exitPrice) ? (item.contracts * ((item.exitPrice - item.entryPrice) * 100) *  (item.actionType == 2 ? -1 : 1)).toFixed(2) : 0}}
+                            {{(item.contracts && item.exitPrice && item.entryPrice) ? (item.contracts * ((item.exitPrice - item.entryPrice) * 100) *  (item.actionType == 3 ? -1 : 1)).toFixed(2) : 0}}
                           </h6>
                         </div>
                       </div>
@@ -148,9 +152,7 @@
                             <mat-datepicker #closed_date></mat-datepicker>
                           </div>
                         </div>
-                        <span>{{edit ? 'Realized' : 'Total'}} Return</span>
                       </div>
-                      <span class="realized_return mx-2">-400.00</span>
                     </div>
                   </div>
                 </mat-step>

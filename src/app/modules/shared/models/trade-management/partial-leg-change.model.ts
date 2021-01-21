@@ -1,3 +1,5 @@
+import { ActionType } from './action-type.enum';
+
 export class PartialLegChange {
     
     changeCount: number;
@@ -5,5 +7,11 @@ export class PartialLegChange {
     closePrice: number;
 
     openPrice: number;
+
+    executedDate: string;
+
+    notes: string;
+
+    actionType: ActionType;
 
 }
