@@ -1,18 +1,16 @@
-
-  
-  <div class="addnew-trade">
-    <div class="container px-2">
-      <div class="addnew-trade-body">
+<div class="addnew-trade">
+  <div class="container px-2">
+    <div class="addnew-trade-body">
       <div class="trade-dash-main">
         <div class="trade-dash-name">
-            <h3>
-              {{add ? 'Add' : ''}} {{edit ? 'Edit' : ''}} {{close ? 'Close' : ''}}  Trade
-            </h3>
+          <h3>
+            {{add ? 'Add' : ''}} {{edit ? 'Edit' : ''}} {{close ? 'Close' : ''}} Trade
+          </h3>
         </div>
       </div>
-    <ng-container [ngSwitch]="currentState">
-      <ng-container *ngSwitchCase="1">
-        
+      <ng-container [ngSwitch]="currentState">
+        <ng-container *ngSwitchCase="1">
+
           <!--entry first-->
           <div class="addnew-first p-3">
             <div class="trade-form">
@@ -21,163 +19,183 @@
                 <app-trade-search (symbolSelectEvent)="symbolSelectEventHandler($event)"></app-trade-search>
                 <button class="btn btn-enter ml-2" (click)="enterSymbol()">Submit </button>
               </div>
-             
-            </div>
-          </div>
-      </ng-container>
-      <ng-container *ngSwitchCase="2">
-        <div class="addnew-trade-body">
-          <app-trade-details-header [selectedStock]="selectedStock" [stockSummary]="stockSummary"
-            (loadMoreStats)="loadMoreStatsHandler($event)"></app-trade-details-header>
-        </div>
-        <div class="d-flex no-gutters" style="margin-right: -1px;">
-          <div class="col-8 trade-details-ltside">
-            <mat-horizontal-stepper labelPosition="left" #stepper [linear]="false">
-              <mat-step [class.active]="stepone.completed" #stepone>
-                <ng-template matStepLabel>Trade Details</ng-template>
-                <div class="stepper-content">
-                  <app-trade-details (nextStep)="goForward()" (activateRisk)="activeStep = true"
-                    (addTradeEvent)="addTrade($event)" (navigateRiskAnalysisEvent)="navigaeToRiskAnalysis()"
-                    [stockSummary]="stockSummary" [selectedStock]="selectedStock" [inputState]="inputState"
-                    [editTrade]="edit" [addTrade]="add" [closeTrade]="close" #tradeDetails>
-                  </app-trade-details>
-                </div>
-                <div *ngIf="!add">
-                  <span class="cursor" (click)="showClosedLegs()">
-                    <span *ngIf="closedLegs" class="text-success d-flex align-items-center">Hide Closed Legs <i class="negative-amt material-icons">keyboard_arrow_down</i>
-                    </span>
-                    <span *ngIf="!closedLegs" class="text-success d-flex align-items-center">Show Closed Legs <i class="negative-amt material-icons">keyboard_arrow_right</i>
-                    </span>
-                  </span>
-                  <div *ngIf="closedLegs">
-                    <div class="trade-card-box mb-1">
-                      <div class="card-main">
-                        <label class="col-form-label pt-0">Action</label>
-                        <select id="inputState" class="form-control disabled px-0">
-                          <option value=1 selected data-default>Buy to Open</option>
-                          <option value=2>Sell to Open</option>
-                        </select>
-                      </div>
-                      <div class="card-main card-main-sm">
-                        <label class="col-form-label pt-0">Quantity</label>
-                        <input type="number" min="0" class="form-control cards-input disabled" value="15" />
-                      </div>
-                      <div class="card-main card-main-md pr-1">
-                        <label class="col-form-label pt-0">Entry Price</label>
-                        <input type="number" min="0" class="form-control cards-input disabled" value="5.00" />
-                      </div>
-                      <div class="card-main card-main-md">
-                        <label class="col-form-label pt-0">Exit Price</label>
-                        <input type="number" min="0" class="form-control cards-input disabled" value="5.00" />
-                      </div>
-                      <div class="card-main card-main-sm">
-                        <label class="col-form-label pt-0">Return</label>
-                        <h6 class="input_text">
-                          -$500.00
-                        </h6>
-                      </div>
-                    </div>
-                    <div class="mb-1 trade-card-box">
-                      <div class="card-main">
-                        <label class="col-form-label pt-0">Action</label>
-                        <select id="inputState" class="form-control disabled px-0">
-                          <option value=1 selected data-default>Buy to Open</option>
-                          <option value=2>Sell to Open</option>
-                        </select>
-                      </div>
-                      <div class="card-main card-main-sm">
-                        <label class="col-form-label pt-0">Contracts</label>
-                        <input type="number" min="0" class="form-control cards-input disabled" value="15" />
-                      </div>
-                      <div class="card-main">
-                        <label class="col-form-label pt-0">Expiration</label>
-                        <div class="datepicker-group">
-                          <input matInput [matDatepicker]="expireDate" id="expireDate" name="stockOptions[index].expireDate" class="disabled" value="12/24/2020" />
-                          <mat-datepicker-toggle matSuffix [for]="expireDate" class="disabled">
-                          </mat-datepicker-toggle>
-                          <mat-datepicker #expireDate></mat-datepicker>
-                        </div>
-                      </div>
-                      <div class="card-main card-main-sm">
-                        <label class="col-form-label pt-0">Strike</label>
-                        <input type="number" step="0.01" min="0" class="form-control cards-input disabled" value="480" />
-                      </div>
-                      <div class="card-main card-main-sm">
-                        <label class="col-form-label pt-0">Call / Put</label>
-                        <select id="inputState" class="form-control select-input disabled px-0">
-                          <option value=1 selected data-default>Call</option>
-                          <option value=2>Put</option>
-                        </select>
-                      </div>
-                      <div class="card-main card-main-md pr-1">
-                        <label class="col-form-label pt-0">Entry Price</label>
-                        <input type="number" min="0" class="form-control cards-input disabled" value="5.00" />
-                      </div>
-                      <div class="card-main card-main-md">
-                        <label class="col-form-label pt-0">Exit Price</label>
-                        <input type="number" min="0" class="form-control cards-input disabled" value="5.00" />
-                      </div>
-                      <div class="card-main card-main-sm">
-                        <label class="col-form-label pt-0">Return</label>
-                        <h6 class="input_text">
-                          -$500.00
-                        </h6>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="net_debit">
-                    <div class="realized_label" [ngClass]="close ? 'justify-content-between' : ''">
-                      <div *ngIf="close">
-                        <label class="col-form-label mr-2">Closed Date <span class="text-danger">*</span></label>
-                        <div class="datepicker-group datepicker-sm">
-                          <input matInput [matDatepicker]="closed_date" (click)="closed_date.open()" id="closed_date"
-                            (dateChange)="addEvent('input', $event)" name="stockOptions[index].closed_date" [(ngModel)]="closeDate"/>
-                          <mat-datepicker-toggle matSuffix [for]="closed_date"></mat-datepicker-toggle>
-                          <mat-datepicker #closed_date></mat-datepicker>
-                        </div>
-                      </div>
-                      <span>{{edit ? 'Realized' : 'Total'}}  Return</span>
-                    </div>
-                    <span class="realized_return mx-2">-400.00</span>
-                  </div>
-                </div>
-              </mat-step>
-              <mat-step>
-                <ng-template matStepLabel>Thesis</ng-template>
-                <div class="stepper-content">
-                  <app-trade-thesis (nextStep)="goForward()" (prevStep)="goBack(true)" [inputState]="inputState"
-                  [editTrade]="edit" [addTrade]="add" [closeTrade]="close" #tradeThesis>
-                  </app-trade-thesis>
-                </div>
-              </mat-step>
-              <mat-step>
-                <ng-template matStepLabel>Entry Rules</ng-template>
-                <div class="stepper-content">
-                  <app-entry-rules (prevStep)="goBack()" [inputState]="inputState" [editTrade]="edit" [addTrade]="add" [closeTrade]="close" #entryRules></app-entry-rules>
-                  <app-exit-rules></app-exit-rules>
-                </div>
-              </mat-step>
-            </mat-horizontal-stepper>
-            <div class="text-center py-3">
-              <span class="order-btn text-center" *ngIf="(tradeDetails.stockAdded || tradeDetails.stockOptions.length > 0) && (stepper.selectedIndex == 0)">
-                <button type="button" class="btn btn-gray mr-3" *ngIf="!close && !tradeStrategy.executed" (click)="saveTradeAsDraft()">SAVE</button>
-              </span>
-              <button type="button" class="btn btn-next mr-3" *ngIf="(add && (tradeDetails.stockOptions.length || tradeDetails.stockAdded))"
-                (click)="CheckExecutionDate('Confirm Trade Execution Date')">ADD TRADE</button>
 
-              <button type="button" class="btn btn-gray mr-3" *ngIf="edit">CANCEL</button>
-              <button type="button" class="btn btn-next mr-3" *ngIf="edit" (click)="editTrade()">UPDATE</button>
-              
-              <button type="button" class="btn btn-next mr-3" *ngIf="close" (click)="closeTrade()">CLOSE TRADE</button>
             </div>
           </div>
-          <div class="col-4 trade-details-aside">
-            <app-trade-details-aside [selectedStock]="selectedStock" [stockSummary]="stockSummary"
-            (loadMoreStats)="loadMoreStatsHandler($event)" (calculateMaxRisk)="calculateMaxRisk($event)" #tradeDetailsAside></app-trade-details-aside>
+        </ng-container>
+        <ng-container *ngSwitchCase="2">
+          <div class="addnew-trade-body">
+            <app-trade-details-header [selectedStock]="selectedStock" [stockSummary]="stockSummary"
+              (loadMoreStats)="loadMoreStatsHandler($event)"></app-trade-details-header>
           </div>
-        </div>
+          <div class="d-flex no-gutters" style="margin-right: -1px;">
+            <div class="col-8 trade-details-ltside">
+              <mat-horizontal-stepper labelPosition="left" #stepper [linear]="false">
+                <mat-step [class.active]="stepone.completed" #stepone>
+                  <ng-template matStepLabel>Trade Details</ng-template>
+                  <div class="stepper-content">
+                    <app-trade-details (nextStep)="goForward()" (activateRisk)="activeStep = true"
+                      (addTradeEvent)="addTrade($event)" (navigateRiskAnalysisEvent)="navigaeToRiskAnalysis()"
+                      [stockSummary]="stockSummary" [selectedStock]="selectedStock" [inputState]="inputState"
+                      [editTrade]="edit" [addTrade]="add" [closeTrade]="close" #tradeDetails>
+                    </app-trade-details>
+                  </div>
+                  <div *ngIf="!add">
+                    <span class="cursor" (click)="showClosedLegs()">
+                      <span *ngIf="closedLegs" class="text-success d-flex align-items-center">Hide Closed Legs <i
+                          class="negative-amt material-icons">keyboard_arrow_down</i>
+                      </span>
+                      <span *ngIf="!closedLegs" class="text-success d-flex align-items-center">Show Closed Legs <i
+                          class="negative-amt material-icons">keyboard_arrow_right</i>
+                      </span>
+                    </span>
+                    <div *ngIf="closedLegs && tradeHistory">
+                      <div class="trade-card-box mb-1"
+                        *ngFor="let item of tradeHistory.stockLegHistories;let index = index">
+                        <div class="card-main">
+                          <label class="col-form-label pt-0">Action</label>
+                          <select id="inputState" class="form-control disabled px-0" [(ngModel)]="item.actionType">
+                            <option value=1 selected data-default>Buy to Open</option>
+                            <option value=2>Sell to Open</option>
+                          </select>
+                        </div>
+                        <div class="card-main card-main-sm">
+                          <label class="col-form-label pt-0">Quantity</label>
+                          <input type="number" min="0" class="form-control cards-input disabled"
+                            [(ngModel)]="item.quantity" />
+                        </div>
+                        <div class="card-main card-main-md pr-1">
+                          <label class="col-form-label pt-0">Entry Price</label>
+                          <input type="number" min="0" class="form-control cards-input disabled"
+                            [(ngModel)]="item.entryPrice" />
+                        </div>
+                        <div class="card-main card-main-md">
+                          <label class="col-form-label pt-0">Exit Price</label>
+                          <input type="number" min="0" class="form-control cards-input disabled"
+                            [(ngModel)]="item.exitPrice" />
+                        </div>
+                        <div class="card-main card-main-sm">
+                          <label class="col-form-label pt-0">Return</label>
+                          <h6 class="input_text">
+                            {{(item.quantity && item.closePrice) ? (item.quantity * (item.closePrice - stockEntry.entryPrice) * (item.actionType == 2 ? -1 : 1)).toFixed(2) : 0}}
+                          </h6>
+                        </div>
+                      </div>
+                      <div class="mb-1 trade-card-box"
+                        *ngFor="let item of tradeHistory.optionLegHistories;let index = index">
+                        <div class="card-main">
+                          <label class="col-form-label pt-0">Action</label>
+                          <select id="inputState" class="form-control disabled px-0" [(ngModel)]="item.actionType">
+                            <option value=1 selected data-default>Buy to Open</option>
+                            <option value=2>Sell to Open</option>
+                          </select>
+                        </div>
+                        <div class="card-main card-main-sm">
+                          <label class="col-form-label pt-0">Contracts</label>
+                          <input type="number" min="0" class="form-control cards-input disabled"
+                            [(ngModel)]="item.contracts" />
+                        </div>
+                        <div class="card-main">
+                          <label class="col-form-label pt-0">Expiration</label>
+                          <div class="datepicker-group">
+                            <input matInput [matDatepicker]="expireDate" id="expireDate" name="item.expireDate"
+                              class="disabled" [(ngModel)]="item.expireDate" />
+                            <mat-datepicker-toggle matSuffix [for]="expireDate" class="disabled">
+                            </mat-datepicker-toggle>
+                            <mat-datepicker #expireDate></mat-datepicker>
+                          </div>
+                        </div>
+                        <div class="card-main card-main-sm">
+                          <label class="col-form-label pt-0">Strike</label>
+                          <input type="number" step="0.01" min="0" class="form-control cards-input disabled"
+                            [(ngModel)]="item.strikePrice" />
+                        </div>
+                        <div class="card-main card-main-sm">
+                          <label class="col-form-label pt-0">Call / Put</label>
+                          <select id="inputState" class="form-control select-input disabled px-0"
+                            [(ngModel)]="item.optionType">
+                            <option value=1 selected data-default>Call</option>
+                            <option value=2>Put</option>
+                          </select>
+                        </div>
+                        <div class="card-main card-main-md pr-1">
+                          <label class="col-form-label pt-0">Entry Price</label>
+                          <input type="number" min="0" class="form-control cards-input disabled"
+                            [(ngModel)]="item.entryPrice" />
+                        </div>
+                        <div class="card-main card-main-md">
+                          <label class="col-form-label pt-0">Exit Price</label>
+                          <input type="number" min="0" class="form-control cards-input disabled"
+                            [(ngModel)]="item.exitPrice" />
+                        </div>
+                        <div class="card-main card-main-sm">
+                          <label class="col-form-label pt-0">Return</label>
+                          <h6 class="input_text">
+                            {{(item.contracts && item.exitPrice) ? (item.contracts * ((item.exitPrice - item.entryPrice) * 100) *  (item.actionType == 2 ? -1 : 1)).toFixed(2) : 0}}
+                          </h6>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="net_debit">
+                      <div class="realized_label" [ngClass]="close ? 'justify-content-between' : ''">
+                        <div *ngIf="close">
+                          <label class="col-form-label mr-2">Closed Date <span class="text-danger">*</span></label>
+                          <div class="datepicker-group datepicker-sm">
+                            <input matInput [matDatepicker]="closed_date" (click)="closed_date.open()" id="closed_date"
+                              (dateChange)="addEvent('input', $event)" name="stockOptions[index].closed_date"
+                              [(ngModel)]="closeDate" />
+                            <mat-datepicker-toggle matSuffix [for]="closed_date"></mat-datepicker-toggle>
+                            <mat-datepicker #closed_date></mat-datepicker>
+                          </div>
+                        </div>
+                        <span>{{edit ? 'Realized' : 'Total'}} Return</span>
+                      </div>
+                      <span class="realized_return mx-2">-400.00</span>
+                    </div>
+                  </div>
+                </mat-step>
+                <mat-step>
+                  <ng-template matStepLabel>Thesis</ng-template>
+                  <div class="stepper-content">
+                    <app-trade-thesis (nextStep)="goForward()" (prevStep)="goBack(true)" [inputState]="inputState"
+                      [editTrade]="edit" [addTrade]="add" [closeTrade]="close" #tradeThesis>
+                    </app-trade-thesis>
+                  </div>
+                </mat-step>
+                <mat-step>
+                  <ng-template matStepLabel>Entry Rules</ng-template>
+                  <div class="stepper-content">
+                    <app-entry-rules (prevStep)="goBack()" [inputState]="inputState" [editTrade]="edit" [addTrade]="add"
+                      [closeTrade]="close" #entryRules></app-entry-rules>
+                    <app-exit-rules></app-exit-rules>
+                  </div>
+                </mat-step>
+              </mat-horizontal-stepper>
+              <div class="text-center py-3">
+                <span class="order-btn text-center"
+                  *ngIf="(tradeDetails.stockAdded || tradeDetails.stockOptions.length > 0) && (stepper.selectedIndex == 0)">
+                  <button type="button" class="btn btn-gray mr-3" *ngIf="!close && !tradeStrategy.executed"
+                    (click)="saveTradeAsDraft()">SAVE</button>
+                </span>
+                <button type="button" class="btn btn-next mr-3"
+                  *ngIf="(add && (tradeDetails.stockOptions.length || tradeDetails.stockAdded))"
+                  (click)="CheckExecutionDate('Confirm Trade Execution Date')">ADD TRADE</button>
+
+                <button type="button" class="btn btn-gray mr-3" *ngIf="edit">CANCEL</button>
+                <button type="button" class="btn btn-next mr-3" *ngIf="edit" (click)="editTrade()">UPDATE</button>
+
+                <button type="button" class="btn btn-next mr-3" *ngIf="close" (click)="closeTrade()">CLOSE
+                  TRADE</button>
+              </div>
+            </div>
+            <div class="col-4 trade-details-aside">
+              <app-trade-details-aside [selectedStock]="selectedStock" [stockSummary]="stockSummary"
+                (loadMoreStats)="loadMoreStatsHandler($event)" (calculateMaxRisk)="calculateMaxRisk($event)"
+                #tradeDetailsAside></app-trade-details-aside>
+            </div>
+          </div>
+        </ng-container>
       </ng-container>
-    </ng-container>
 
     </div>
   </div>

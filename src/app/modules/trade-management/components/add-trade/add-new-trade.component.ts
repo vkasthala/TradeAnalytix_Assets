@@ -20,6 +20,7 @@ import { ExitRulesComponent } from './Steps/exit-rules/exit-rules.component';
 import { RiskAnalysisRequest } from 'src/app/modules/risk-analysis/models/risk-analysis-request.model';
 import { RiskAnalysisService } from 'src/app/modules/risk-analysis/services/risk-analysis.service';
 import { TradeDetailsAsideComponent } from './trade-details-aside/trade-details-aside.component';
+import { TradeHistory } from '../../models/trade-history.model';
 
 @Component({
   selector: 'app-add-new-trade',
@@ -55,7 +56,9 @@ export class AddNewTradeComponent implements OnInit {
   protected inputState: TradeInputData;
 
   protected detailSummaryLoaded: boolean;
-  closedLegs: boolean = true;
+  protected closedLegs: boolean = false;
+
+  protected tradeHistory: TradeHistory;
 
   constructor(
     protected userStockStatsService: UserStockStatsService,
@@ -305,8 +308,14 @@ export class AddNewTradeComponent implements OnInit {
   showSuccess() {
     this.toastr.error('Hello world!', 'Toastr fun!');
   }
+
   showClosedLegs() {
     this.closedLegs = !this.closedLegs;
+    if (this.closedLegs && !this.tradeHistory) {
+      this.tradeStrategyService.getTradeClosedHistory(this.tradeStrategy.id).subscribe(history => {
+        this.tradeHistory = history;
+      });
+    }
   }
 
 }
