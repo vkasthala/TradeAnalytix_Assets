@@ -58,7 +58,7 @@
             (keydown)="preventNegatives($event, true)" min="0" class="form-control cards-input" placeholder=""
             [(ngModel)]="stockEntry.price" [ngClass]="closeTrade ? 'disabled' : ''" />
         </div>
-        <!-- <div class="card-main card-main-md" *ngIf="closeTrade">
+        <div class="card-main card-main-md" *ngIf="closeTrade">
           <label class="col-form-label pt-0">Exit Price</label>
           <input type="number" pattern="^\d*(\.\d{0,2})?$" step="0.01" min="0" class="form-control cards-input" placeholder=""
             [(ngModel)]="stockEntry.closePrice" />
@@ -68,7 +68,7 @@
           <h6 class="input_text">
             {{(stockEntry.quantity && stockEntry.closePrice) ? (stockEntry.quantity * (stockEntry.closePrice - stockEntry.price) * (stockEntry.actionType == 2 ? -1 : 1)).toFixed(2) : 0}}
           </h6>
-        </div> -->
+        </div>
         <div class="card-main">
           <label class="col-form-label pt-0">Amount</label>
           <h6 class="input_text">

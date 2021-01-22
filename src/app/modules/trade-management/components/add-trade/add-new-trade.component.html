@@ -147,7 +147,7 @@
                           <div class="datepicker-group datepicker-sm">
                             <input matInput [matDatepicker]="closed_date" (click)="closed_date.open()" id="closed_date"
                               (dateChange)="addEvent('input', $event)" name="stockOptions[index].closed_date"
-                              [(ngModel)]="closeDate" />
+                              [(ngModel)]="tradeDetails.closeDate" />
                             <mat-datepicker-toggle matSuffix [for]="closed_date"></mat-datepicker-toggle>
                             <mat-datepicker #closed_date></mat-datepicker>
                           </div>
@@ -170,7 +170,7 @@
                     <app-entry-rules (prevStep)="goBack()" [inputState]="inputState" [editTrade]="edit" [addTrade]="add"
                       [closeTrade]="close" #entryRules></app-entry-rules>
                       <div *ngIf="!add">
-                        <app-exit-rules></app-exit-rules>
+                        <app-exit-rules #exitRules></app-exit-rules>
                       </div>
                   </div>
                 </mat-step>
