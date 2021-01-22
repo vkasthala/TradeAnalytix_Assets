@@ -169,7 +169,9 @@
                   <div class="stepper-content">
                     <app-entry-rules (prevStep)="goBack()" [inputState]="inputState" [editTrade]="edit" [addTrade]="add"
                       [closeTrade]="close" #entryRules></app-entry-rules>
-                    <app-exit-rules></app-exit-rules>
+                      <div *ngIf="!add">
+                        <app-exit-rules></app-exit-rules>
+                      </div>
                   </div>
                 </mat-step>
               </mat-horizontal-stepper>
