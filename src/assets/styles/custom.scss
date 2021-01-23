@@ -25,7 +25,7 @@
         cursor: pointer;
         width: 100%;
         text-align: left;
-        height: 34px;
+        height: 38px;
         font-size: 14px;
         &:focus {
             border: 0;
@@ -41,7 +41,7 @@
         border: 0;
         position: absolute;
         right: 2px;
-        top: 7px;
+        top: 11px;
         &:focus {
             outline: 0;
             background: transparent !important;
@@ -90,10 +90,11 @@
     width: 100%;
 }
 .text-link {
-    font-weight: 500;
+    font-weight: 300;
     color: #007bff !important;
-    text-decoration: underline !important;
+    text-decoration: none !important;
     cursor: pointer;
+    font-size: 14px !important;
 }
 .text-link:hover {
     color: #000 !important;
@@ -238,4 +239,7 @@ input.mat-input-element {
 .form-control, .trade-thesis-sec {
     font-size: 14px;
     color: #000 !important;
+}
+.with-130 {
+    width: 130px !important;
 }

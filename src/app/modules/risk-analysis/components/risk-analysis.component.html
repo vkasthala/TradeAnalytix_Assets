@@ -14,7 +14,7 @@
                 <!--entry first-->
                 <div class="addnew-first">
                     <div class="trade-form pt-3 d-flex">
-                        <label class="col-form-label px-2" data-toggle="tooltip" data-placement="top" title="Show Filters">Enter Symbol</label>
+                        <label class="col-form-label px-3" data-toggle="tooltip" data-placement="top" title="Show Filters">Enter Symbol</label>
                         <app-trade-search (symbolSelectEvent)="symbolSelectEventHandler($event)"></app-trade-search>
                         <button class="btn btn-enter ml-2" (click)="enterSymbol()">Submit</button>
                     </div>
@@ -113,7 +113,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="card-main">
+                                            <div class="card-main pt-1">
                                                 <div class="card-left">
                                                     <span>Amount</span>
                                                 </div>
@@ -209,7 +209,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="card-main">
+                                                <div class="card-main pt-1">
                                                     <div class="card-left">
                                                         <span>Amount</span>
                                                     </div>
@@ -285,7 +285,7 @@
                                                             </span>
                                                         </div>
             
-                                                        <div class="stock-inc">
+                                                        <div class="stock-inc with-130">
                                                             <a (click)="decreaseRiskFreeRate()"
                                                                 (mousedown)="mousedown('decreaseRiskFreeRate')" (mouseup)="mouseup()"
                                                                 (mouseleave)="mouseup()">
@@ -315,7 +315,7 @@
                                                             </span>
                                                         </div>
             
-                                                        <div class="stock-inc">
+                                                        <div class="stock-inc with-130">
                                                             <a (click)="decreaseDaysLeft(index)"
                                                                 (mousedown)="mousedown('decreaseDaysLeft', index)" (mouseup)="mouseup()"
                                                                 (mouseleave)="mouseup()">
@@ -340,7 +340,7 @@
                                                             </span>
                                                         </div>
             
-                                                        <div class="stock-inc">
+                                                        <div class="stock-inc with-130">
                                                             <a (click)="decreaseImpliedValue(index)"
                                                                 (mousedown)="mousedown('decreaseImpliedValue', index)"
                                                                 (mouseup)="mouseup()" (mouseleave)="mouseup()">

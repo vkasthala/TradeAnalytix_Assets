@@ -23,15 +23,16 @@ th.mat-header-cell {
 }
 
 .strategy-id-cell{
-  width: 12.5%;
+  width: 15%;
+  min-width: 140px;
 }
 
 .strategy-name-cell{
-  width: 12.5%;
+  width: 12%;
 }
 
 .stock-name-cell{
-  width: 32%;
+  width: 28%;
 }
 
 .direction-cell{
@@ -51,7 +52,7 @@ th.mat-header-cell {
 }
 
 .action-cell {
-  width: 10%;
+  width: 5%;
 }
 .direction_arrow .material-icons {
   font-size: 1rem;
@@ -133,7 +134,7 @@ th.mat-header-cell {
 .mat-header-cell, 
 .mat-cell, 
 .mat-footer-cell {
-  justify-content: center;
+  /* justify-content: center; */
   color: #000;
 }
 

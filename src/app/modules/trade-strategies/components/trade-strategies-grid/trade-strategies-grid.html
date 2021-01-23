@@ -4,7 +4,7 @@
     <!-- Strategy ID Column -->
     <ng-container matColumnDef="id">
       <mat-header-cell class="strategy-id-cell" *matHeaderCellDef mat-sort-header>Identiﬁer</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.uid ? element.uid : element.id}} </mat-cell>
+      <mat-cell class="strategy-id-cell" *matCellDef="let element"> {{element.uid ? element.uid : element.id}} </mat-cell>
     </ng-container>
 
     <!-- Strategy Column -->

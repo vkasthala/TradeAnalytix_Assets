@@ -49,9 +49,12 @@
   .btn-save{
     background-color: #37a01a;
     color: #FFFFFF;
-    padding: 6px 1rem;
+    padding: 6px 1rem !important;
     cursor: pointer;
     text-transform: capitalize;
+  }
+  .btn-secondary {
+    padding: 6px 1rem !important;
   }
   
   .right-input {
@@ -69,7 +72,8 @@
       text-align: left;
   
     p{
-      color: #4E4E4E;
+      color: #000;
+      font-size: 14px;
     }
   }
   
@@ -83,9 +87,13 @@
   
   .right-heading{
     span{
-      font-size: 13px;
+      font-size: 14px;
       color: $primary;
       cursor: pointer;
     }
   }
 
+p{
+  color: #000;
+  font-size: 14px;
+}

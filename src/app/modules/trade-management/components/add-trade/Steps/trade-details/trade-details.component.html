@@ -47,18 +47,18 @@
             <option value=2>Sell to Open</option>
           </select>
         </div>
-        <div class="card-main card-main-sm">
+        <div class="card-main card-main-md">
           <label class="col-form-label pt-0">Quantity</label>
           <input type="number" (keydown)="preventNegatives($event, false)" min="0" class="form-control cards-input"
             [ngClass]="closeTrade ? 'disabled' : ''" [(ngModel)]="stockEntry.quantity" />
         </div>
-        <div class="card-main card-main-md pr-1">
+        <div class="card-main card-main-custom">
           <label class="col-form-label pt-0">Entry Price</label>
           <input type="number" pattern="^\d*(\.\d{0,2})?$" (change)="checkForDecimalValidation($event)" step="0.01"
-            (keydown)="preventNegatives($event, true)" min="0" class="form-control cards-input" placeholder=""
+            (keydown)="preventNegatives($event, true)" min="0" class="form-control" placeholder=""
             [(ngModel)]="stockEntry.price" [ngClass]="closeTrade ? 'disabled' : ''" />
         </div>
-        <div class="card-main card-main-md" *ngIf="closeTrade">
+        <div class="card-main card-main-custom" *ngIf="closeTrade">
           <label class="col-form-label pt-0">Exit Price</label>
           <input type="number" pattern="^\d*(\.\d{0,2})?$" step="0.01" min="0" class="form-control cards-input" placeholder=""
             [(ngModel)]="stockEntry.closePrice" />
@@ -69,7 +69,7 @@
             {{(stockEntry.quantity && stockEntry.closePrice) ? (stockEntry.quantity * (stockEntry.closePrice - stockEntry.price) * (stockEntry.actionType == 2 ? -1 : 1)).toFixed(2) : 0}}
           </h6>
         </div>
-        <div class="card-main">
+        <div class="card-main" *ngIf="!closeTrade">
           <label class="col-form-label pt-0">Amount</label>
           <h6 class="input_text">
             {{(stockEntry.quantity && stockEntry.price) ? (stockEntry.quantity * stockEntry.price * (stockEntry.actionType == 2 ? -1 : 1)).toFixed(2) : 0}}
@@ -93,12 +93,12 @@
         <div class="trade-card-box mb-1" *ngIf="stockOptions.length">
           <div class="card-main">Action</div>
           <div class="card-main card-main-md">Contracts</div>
+          <div class="card-main card-main-custom">Strike</div>
           <div class="card-main">Expiration</div>
-          <div class="card-main card-main-md">Strike</div>
           <div class="card-main card-main-md">Call / Put</div>
-          <div class="card-main card-main-md pr-1">Entry Price</div>
-          <div class="card-main text-right" *ngIf="!closeTrade">Amount</div>
-          <div class="card-main card-main-sm" *ngIf="closeTrade">Exit Price</div>
+          <div class="card-main card-main-custom">Entry Price</div>
+          <div class="card-main card-main-md text-right" *ngIf="!closeTrade">Amount</div>
+          <div class="card-main card-main-custom" *ngIf="closeTrade">Exit Price</div>
           <div class="card-main card-main-sm" *ngIf="closeTrade">Return</div>
         </div>
       </ng-container>
@@ -115,6 +115,12 @@
             <input type="number" (keydown)="preventNegatives($event, false)" min="0" class="form-control cards-input"
               placeholder="" [(ngModel)]="stockOptions[index].contracts" [ngClass]="closeTrade ? 'disabled' : ''" />
           </div>
+          
+          <div class="card-main card-main-custom">
+            <input type="number" (keydown)="preventNegatives($event, true)" pattern="^\d*(\.\d{0,2})?$"
+              (change)="checkForDecimalValidation($event)" step="0.01" min="0" class="form-control cards-input"
+              placeholder="" [(ngModel)]="stockOptions[index].strikePrice" [ngClass]="closeTrade ? 'disabled' : ''" />
+          </div>
           <div class="card-main">
             <div class="datepicker-group">
               <input matInput [matDatepicker]="expireDate" (click)="expireDate.open()" id="expireDate"
@@ -125,11 +131,6 @@
               <mat-datepicker #expireDate></mat-datepicker>
             </div>
           </div>
-          <div class="card-main card-main-md">
-            <input type="number" (keydown)="preventNegatives($event, true)" pattern="^\d*(\.\d{0,2})?$"
-              (change)="checkForDecimalValidation($event)" step="0.01" min="0" class="form-control cards-input"
-              placeholder="" [(ngModel)]="stockOptions[index].strikePrice" [ngClass]="closeTrade ? 'disabled' : ''" />
-          </div>
 
           <div class="card-main card-main-md">
             <select id="inputState" class="form-control select-input px-0" [(ngModel)]="stockOptions[index].optionType"
@@ -139,17 +140,17 @@
             </select>
           </div>
 
-          <div class="card-main card-main-md pr-1">
+          <div class="card-main card-main-custom">
             <input type="number" (keydown)="preventNegatives($event, true)" pattern="^\d*(\.\d{0,2})?$"
               (change)="checkForDecimalValidation($event)" step="0.01" min="0" class="form-control cards-input"
               placeholder="" [(ngModel)]="stockOptions[index].price" [ngClass]="closeTrade ? 'disabled' : ''" />
           </div>
-          <div class="card-main" *ngIf="!closeTrade">
+          <div class="card-main card-main-md" *ngIf="!closeTrade">
             <h6 class="input_text justify-content-end">
               {{(stockOptions[index].contracts && stockOptions[index].price) ? (stockOptions[index].contracts * (stockOptions[index].price * 100) *  (stockOptions[index].actionType == 2 ? -1 : 1)).toFixed(2) : 0}}
             </h6>
           </div>
-          <div class="card-main card-main-sm" *ngIf="closeTrade">
+          <div class="card-main card-main-custom" *ngIf="closeTrade">
             <input type="number" pattern="^\d*(\.\d{0,2})?$" step="0.01" min="0" class="form-control cards-input" placeholder=""
               [(ngModel)]="stockOptions[index].closePrice" />
           </div>

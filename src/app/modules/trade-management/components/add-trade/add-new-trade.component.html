@@ -32,7 +32,7 @@
             <div class="col-8 trade-details-ltside">
               <mat-horizontal-stepper labelPosition="left" #stepper [linear]="false">
                 <mat-step [class.active]="stepone.completed" #stepone>
-                  <ng-template matStepLabel>Trade Details</ng-template>
+                  <ng-template matStepLabel>1.Trade Details</ng-template>
                   <div class="stepper-content">
                     <app-trade-details (nextStep)="goForward()" (activateRisk)="activeStep = true"
                       (addTradeEvent)="addTrade($event)" (navigateRiskAnalysisEvent)="navigaeToRiskAnalysis()"
@@ -41,7 +41,7 @@
                     </app-trade-details>
                   </div>
                   <div *ngIf="!add">
-                    <span class="cursor" (click)="showClosedLegs()">
+                    <span class="cursor legs-heading" (click)="showClosedLegs()">
                       <span *ngIf="closedLegs" class="text-success d-flex align-items-center">Hide Closed Legs <i
                           class="negative-amt material-icons">keyboard_arrow_down</i>
                       </span>
@@ -157,7 +157,7 @@
                   </div>
                 </mat-step>
                 <mat-step>
-                  <ng-template matStepLabel>Thesis</ng-template>
+                  <ng-template matStepLabel>2.Thesis</ng-template>
                   <div class="stepper-content">
                     <app-trade-thesis (nextStep)="goForward()" (prevStep)="goBack(true)" [inputState]="inputState"
                       [editTrade]="edit" [addTrade]="add" [closeTrade]="close" #tradeThesis>
@@ -165,11 +165,11 @@
                   </div>
                 </mat-step>
                 <mat-step>
-                  <ng-template matStepLabel>Entry Rules</ng-template>
+                  <ng-template matStepLabel>3.Entry Rules</ng-template>
                   <div class="stepper-content">
                     <app-entry-rules (prevStep)="goBack()" [inputState]="inputState" [editTrade]="edit" [addTrade]="add"
                       [closeTrade]="close" #entryRules></app-entry-rules>
-                      <div *ngIf="!add">
+                      <div *ngIf="close">
                         <app-exit-rules #exitRules></app-exit-rules>
                       </div>
                   </div>
