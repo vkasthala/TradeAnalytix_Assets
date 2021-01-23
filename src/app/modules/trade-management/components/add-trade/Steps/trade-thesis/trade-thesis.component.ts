@@ -30,7 +30,8 @@ export class TradeThesisComponent implements OnInit {
   @Input("addTrade") addTrade: boolean;
   @Input("editTrade") editTrade: boolean;
   @Input("closeTrade") closeTrade: boolean;
-
+  protected hideEntryThesis: boolean = false;
+  protected hideClosingThesis: boolean = false;
   constructor(private _dialog: MatDialog, private metadataService: UserMetadataService) { }
 
   ngOnInit() {
@@ -112,5 +113,11 @@ export class TradeThesisComponent implements OnInit {
 
     });
   }
-
+  showEntryThesis(){
+    this.hideEntryThesis = !this.hideEntryThesis;
+  }
+  showClosingThesis(){
+    this.hideClosingThesis = !this.hideClosingThesis;
+  }
+  
 }

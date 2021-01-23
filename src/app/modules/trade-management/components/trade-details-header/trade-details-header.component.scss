@@ -58,14 +58,17 @@ span.trade-rr {
   color: #ff0000;
   font-weight: bold;
   font-size: 14px;
-  margin-left: 10px;
+  margin-left: 4px;
+  display: flex;
+  align-items: center;
 }
 
 span.trade-g {
   color: #027512;
   font-weight: bold;
   font-size: 14px;
-  margin-left: 10px;
+  margin-left: 4px;
+  align-items: center;
 }
 
 .trade-rate-sec {
@@ -782,4 +785,9 @@ a.btn.btn-skip {
   align-items: center;
   justify-content: flex-end;
   display: flex;
+}
+.mat-icon-xs {
+  height: 16px !important;
+  width: 18px !important;
+  font-size: 16px !important;
 }

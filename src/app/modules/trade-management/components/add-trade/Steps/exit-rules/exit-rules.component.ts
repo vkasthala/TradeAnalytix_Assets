@@ -27,7 +27,7 @@ export class ExitRulesComponent implements OnInit {
   @Output('prevStep') prevStep = new EventEmitter();
 
   exitRules: EntryExitRule[] = this.entryExitRuleService.getExitRules();
-
+  protected hideExitRules: boolean = false;
   constructor(
     private _dialog: MatDialog,
     private router: Router,
@@ -39,8 +39,6 @@ export class ExitRulesComponent implements OnInit {
     console.log('exit rules child view init:', this.inputState);
     //No state initialization in exit rules
   }
-
-
 
   previous() {
     this.prevStep.emit()
@@ -54,6 +52,9 @@ export class ExitRulesComponent implements OnInit {
     dialogRef.afterClosed().subscribe((res) => {
       res ? this.router.navigate(['/dashboard/trade-strategies']) : 0;
     });
+  }
+  showExitRules(){
+    this.hideExitRules = !this.hideExitRules
   }
 
 }

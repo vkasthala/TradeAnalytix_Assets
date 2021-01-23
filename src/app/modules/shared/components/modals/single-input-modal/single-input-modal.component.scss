@@ -19,10 +19,11 @@
     min-height: 200px;
     display: flex;
     flex-direction: column;
-    background-color: #F9F9F9;
-    border: 1px solid #ddd;
+    background-color: #fff;
+    border: 1px solid #7e7e7e;
     padding: 12px;
     box-shadow: 0px 15px 45px #7d7d7d;
+    font-size: 14px;
   }
   
   .pop-top-heading{
@@ -41,9 +42,9 @@
   }
   
   .btn-save{
-    background-color: $appbtn-color;
+    background-color: #37a01a;
     color: #FFFFFF;
-    padding: 6px 50px;
+    padding: 6px 32px !important;
     margin: 0 auto 0 auto;
     cursor: pointer;
     text-transform: capitalize;
@@ -64,13 +65,13 @@
       text-align: left;
   
     p{
-      color: #4E4E4E;
+      color: #000;
     }
   }
   
   .left-heading{
     h5{
-      color: $primary;
+      color: #37a01a;
     }
   }
   

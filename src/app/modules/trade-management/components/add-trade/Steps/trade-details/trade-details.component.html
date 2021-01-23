@@ -4,7 +4,7 @@
     <div class="trade-stoack-main" #tradeCards>
       <div class="trade-sec">
         <div class="d-flex align-items-center justify-content-between">
-          <span class="col-form-label p-0">{{addTrade ? 'Select' : 'Current'}} Strategy</span>
+          <span class="col-form-label pt-0">{{addTrade ? 'Select' : 'Current'}} Strategy</span>
           <div *ngIf="addTrade == false">
             <label class="col-form-label mr-2">Last Updated Date : {{executedDate | date: 'dd-MMM-yyyy'}}</label>
           </div>
@@ -15,7 +15,7 @@
               <div class="pr-3 d-flex">
                 <div class="Trade-type">
                   <div class="form-group">
-                    <select class="form-control select-input" id="inputState"
+                    <select class="form-control select-input pl-0" id="inputState"
                       (change)="onStrategyTypeChange($event.target.value)" [(ngModel)]='selectedStrategy'>
                       <option *ngFor="let key of strategyTypes" [value]="key" [label]="strategies[key]"></option>
                     </select>

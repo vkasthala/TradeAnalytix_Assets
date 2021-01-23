@@ -28,7 +28,7 @@ export class EntryRulesComponent implements OnInit {
 
 
   entryRules: EntryExitRule[] = this.entryExitRuleService.getEntryRules();
-  
+  protected hideEntryRules: boolean = false;
   constructor(
     private _dialog: MatDialog,
     private router: Router,
@@ -58,5 +58,8 @@ export class EntryRulesComponent implements OnInit {
     dialogRef.afterClosed().subscribe((res) => {
       res ? this.router.navigate(['/dashboard/trade-strategies']) : 0;
     });
+  }
+  showEntryRules(){
+    this.hideEntryRules = !this.hideEntryRules
   }
 }

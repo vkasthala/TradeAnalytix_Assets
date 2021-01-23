@@ -10,7 +10,7 @@
     <!-- Strategy Column -->
     <ng-container matColumnDef="strategy">
       <mat-header-cell class="strategy-name-cell" *matHeaderCellDef mat-sort-header>Strategy</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.strategy}} </mat-cell>
+      <mat-cell *matCellDef="let element" format='yyyy-MM-dd' editType='datepickeredit'> {{element.strategy}} </mat-cell>
     </ng-container>
 
     <!-- Stock Column -->

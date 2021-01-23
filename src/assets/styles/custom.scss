@@ -25,6 +25,8 @@
         cursor: pointer;
         width: 100%;
         text-align: left;
+        height: 34px;
+        font-size: 14px;
         &:focus {
             border: 0;
             outline: 0;
@@ -38,7 +40,7 @@
         line-height: 1;
         border: 0;
         position: absolute;
-        right: 0;
+        right: 2px;
         top: 7px;
         &:focus {
             outline: 0;
@@ -232,4 +234,8 @@ input.mat-input-element {
 }
 .strategies_filter .form-control {
     height: 40px !important;
+}
+.form-control, .trade-thesis-sec {
+    font-size: 14px;
+    color: #000 !important;
 }
