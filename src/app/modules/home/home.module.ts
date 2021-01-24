@@ -29,6 +29,7 @@ import { MobileRiskAnalysisComponent } from '../trade-management/components/add-
 import { MobileTradeAnalysisComponent } from '../trade-management/components/add-trade/Steps/mobile-steps/mobile-trade-analysis/mobile-trade-analysis.component';
 import { CloseTradeComponent } from '../trade-management/components/close-trade/close-trade.component';
 import { EditTradeComponent } from '../trade-management/components/edit-trade/edit-trade.component';
+import { ViewTradeComponent } from '../trade-management/components/view-trade/view-trade.component';
 import { UpdateStrategyPopupComponent } from '../compare-strategies/components/update-strategy-popup/update-strategy-popup.component';
 import { ManagerulesComponent } from '../settings/components/managerules/managerules.component';
 import { UpdatePriceRangeComponent } from '../compare-strategies/components/update-price-range/update-price-range.component';
@@ -97,6 +98,7 @@ import { UpdateStockPricePopupComponent } from '../risk-analysis/components/upda
     MobileTradeAnalysisComponent,
     CloseTradeComponent,
     EditTradeComponent,
+    ViewTradeComponent,
     ExitRulesComponent,
     UpdateStrategyPopupComponent,
     ManagerulesComponent,

@@ -124,7 +124,7 @@
             <div class="col-5">
                 <div class="row align-items-center">
                     <div class="col-7">
-                        <select class="form-control select-input" id="inputState" [(ngModel)]="tradeThesis.sourceId" [disabled]="closeTrade">
+                        <select class="form-control select-input" id="inputState" [(ngModel)]="tradeThesis.sourceId" [disabled]="!closeTrade">
                             <option [ngValue]="opt.id" *ngFor="let opt of sourceTypes; trackBy: id">{{opt.name}}</option>
                         </select>
                     </div>
@@ -140,10 +140,10 @@
             </div>
             <div class="col-5">
                 <span class="mr-3">
-                    Planned <input type="radio" [disabled]="closeTrade" name="tradeType" value="planned" [(ngModel)]="tradeThesis.tradeType" checked />
+                    Planned <input type="radio" [disabled]="!closeTrade" name="tradeType" value="planned" [(ngModel)]="tradeThesis.tradeType" checked />
                 </span>
                 <span class="ml-3">
-                    Impromptu <input type="radio" [disabled]="closeTrade" name="tradeType" value="impromptu" [(ngModel)]="tradeThesis.tradeType"/>
+                    Impromptu <input type="radio" [disabled]="!closeTrade" name="tradeType" value="impromptu" [(ngModel)]="tradeThesis.tradeType"/>
                 </span>
             </div>
         </div>
@@ -154,7 +154,7 @@
             <div class="col-5">
                 <div class="row align-items-center">
                     <div class="col-7">
-                        <select class="form-control select-input" id="inputState" [(ngModel)]="tradeThesis.mindsetId" [disabled]="closeTrade">
+                        <select class="form-control select-input" id="inputState" [(ngModel)]="tradeThesis.mindsetId" [disabled]="!closeTrade">
                             <option [ngValue]="opt.id" *ngFor="let opt of mindsetTypes; trackBy: id">{{opt.name}}</option>
                         </select>
                     </div>
@@ -169,7 +169,7 @@
                 Specify the reasons for closing the trade
             </div>
             <div class="col-5 media align-items-center">
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="tradeThesis.reasons" [disabled]="closeTrade"></textarea>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="tradeThesis.reasons" [disabled]="!closeTrade"></textarea>
             </div>
         </div>
         <div class="row mx-0 ml-2 mb-2">
@@ -179,7 +179,7 @@
             <div class="col-5">
                 <div class="row align-items-center">
                     <div class="col-7">
-                        <select class="form-control select-input" [disabled]="closeTrade" id="inputState" [(ngModel)]="tradeThesis.surroundingEventId">
+                        <select class="form-control select-input" [disabled]="!closeTrade" id="inputState" [(ngModel)]="tradeThesis.surroundingEventId">
                             <option [ngValue]="opt.id" *ngFor="let opt of surroundingTypes; trackBy: id">{{opt.name}}</option>
                         </select>
                     </div>
@@ -194,7 +194,7 @@
                 Specify the lessons learnt from the trade
             </div>
             <div class="media col-3">
-                <input type="text" class="form-control mr-2" [disabled]="closeTrade" placeholder="Enter the price" [(ngModel)]="tradeThesis.targetPrice" />
+                <input type="text" class="form-control mr-2" [disabled]="!closeTrade" placeholder="Enter the price" [(ngModel)]="tradeThesis.targetPrice" />
             </div>
         </div>
         <div class="row mx-0 ml-2 mb-2">
@@ -205,7 +205,7 @@
                 <div class="row align-items-center">
                     <div class="col-7">
                         <select class="form-control select-input" id="inputState"
-                            [(ngModel)]="tradeThesis.technicalIndicatorId" [disabled]="closeTrade">
+                            [(ngModel)]="tradeThesis.technicalIndicatorId" [disabled]="!closeTrade">
                             <option [ngValue]="opt.id" *ngFor="let opt of technicalIndicators; trackBy: id">{{opt.name}}
                             </option>
                         </select>

@@ -8,11 +8,11 @@ import { ToastrService } from 'ngx-toastr';
 import { RiskAnalysisService } from 'src/app/modules/risk-analysis/services/risk-analysis.service';
 
 @Component({
-  selector: 'app-edit-trade',
+  selector: 'app-view-trade',
   templateUrl: '../add-trade/add-new-trade.component.html',
   styleUrls: ['../add-trade/add-new-trade.component.scss']
 })
-export class EditTradeComponent extends AddNewTradeComponent implements OnInit {
+export class ViewTradeComponent extends AddNewTradeComponent implements OnInit {
 
   constructor(
     userStockStatsService: UserStockStatsService,
@@ -22,10 +22,10 @@ export class EditTradeComponent extends AddNewTradeComponent implements OnInit {
     toastr: ToastrService,
     _dialog: MatDialog) {
     super(userStockStatsService, tradeStrategyService, riskAnalysisService, router, toastr, _dialog);
-    this.edit = true;
+    this.edit = false;
     this.close = false;
     this.add = false;
-    this.view = false;
+    this.view = true;
   }
 
   ngOnInit() {

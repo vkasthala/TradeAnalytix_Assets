@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, ViewChild, Input  } from '@angular/core';
+import { Router } from '@angular/router';
+import { DepositService } from '../../services/deposit.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-depositswithdrawals',
   templateUrl: './depositswithdrawals.component.html',
@@ -7,9 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DepositswithdrawalsComponent implements OnInit {
 
-  constructor() { }
+  entry_date: Date;
+  targetDate:string;
+  targetProfit:number;
+
+  entryDate:string;
+  targetDateRange:string;
+
+  public DepositList = [];
+
+  constructor(
+    private toastr: ToastrService,
+    private router: Router,
+    private depositService: DepositService) { 
+  }
 
   ngOnInit() {
+    this.depositService.getDeposits().subscribe(data => {
+      this.DepositList = data;
+    });
   }
 
 }

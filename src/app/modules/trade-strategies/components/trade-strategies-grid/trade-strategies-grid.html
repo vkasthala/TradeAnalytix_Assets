@@ -96,9 +96,9 @@
 
           <mat-icon *ngIf="element.status == 'Open'" (click)="closeTrade(element);closeActionBox()" class="text-success mat-icon-sm ml-2">cancel</mat-icon>
 
-          <mat-icon *ngIf="element.status == 'Draft'" (click)="closeTrade(element);closeActionBox()" class="mat-icon-sm ml-2">delete</mat-icon>
+          <mat-icon *ngIf="element.status == 'Draft'" (click)="closeTrade(element);closeActionBox()" class="mat-icon-sm mx-2">delete</mat-icon>
 
-          <mat-icon *ngIf="element.status == 'Closed'" (click)="closeTrade(element);closeActionBox()" class="mat-icon-sm ml-2">visibility</mat-icon>
+          <mat-icon *ngIf="element.status == 'Closed'" (click)="viewTrade(element);closeActionBox()" class="mat-icon-sm">visibility</mat-icon>
         </div>
 
         <!-- <i class="material-icons" (click)="expandRowOptions(i)">more_vert</i> -->

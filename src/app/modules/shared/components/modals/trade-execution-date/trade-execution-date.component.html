@@ -8,18 +8,18 @@
       </div>
 
       <div class="popup-body">
-        <div class="row py-2">
-            <div class="col-9 text-right">
+        <div class="media py-2">
+            <div class="media-body">
             <p>Is this trade already executed in the brokerage platform?</p>
             </div>
-            <div class="col-3">
+            <div class="ml-1">
                 <span class="mr-3 col-form-label">Yes <input type="radio" name="confirm_excute" value="true" [(ngModel)] = 'data.executed' (change)="confirmEvent($event)" /></span>
                 <span class="col-form-label">No <input type="radio" value="false" name="confirm_excute" [(ngModel)] = 'data.executed'  (change)="confirmEvent($event)" /></span>
             </div>
         </div>
         <div class="row py-2" *ngIf="data.executed == 'true'">
             <div class="col-9 text-right">
-            <label class="col-form-label">Specify execution Date</label>
+            <label class="col-form-label">Specify execution date</label>
             </div>
             <div class="col-3">
                 <div class="trade-date">
@@ -32,7 +32,7 @@
             </div>
         </div>
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer justify-content-center py-2">
           <button type="button" class="btn btn-save" [mat-dialog-close]="data">SUBMIT</button>
           <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancel</button>
       </div>

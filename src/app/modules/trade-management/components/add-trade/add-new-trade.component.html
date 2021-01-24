@@ -147,8 +147,8 @@
                           <div class="datepicker-group datepicker-sm">
                             <input matInput [matDatepicker]="closed_date" (click)="closed_date.open()" id="closed_date"
                               (dateChange)="addEvent('input', $event)" name="stockOptions[index].closed_date"
-                              [(ngModel)]="tradeDetails.closeDate" />
-                            <mat-datepicker-toggle matSuffix [for]="closed_date"></mat-datepicker-toggle>
+                              [(ngModel)]="tradeDetails.closeDate" [ngClass]="view ? 'disabled' : ''" />
+                            <mat-datepicker-toggle matSuffix [for]="closed_date" [ngClass]="viewTrade ? 'disabled' : ''"></mat-datepicker-toggle>
                             <mat-datepicker #closed_date></mat-datepicker>
                           </div>
                         </div>
@@ -188,7 +188,7 @@
                 <button type="button" class="btn btn-gray mr-3" *ngIf="edit">CANCEL</button>
                 <button type="button" class="btn btn-next mr-3" *ngIf="edit" (click)="editTrade()">UPDATE</button>
 
-                <button type="button" class="btn btn-next mr-3" *ngIf="close" (click)="closeTrade()">CLOSE
+                <button type="button" class="btn btn-next mr-3" *ngIf="close && !view" (click)="closeTrade()">CLOSE
                   TRADE</button>
               </div>
             </div>

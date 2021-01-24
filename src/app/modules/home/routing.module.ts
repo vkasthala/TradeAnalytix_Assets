@@ -10,6 +10,7 @@ import { ReportsComponent } from '../../modules/reports/components/reports.compo
 import { SettingsComponent } from '../../modules/settings/components/settings.component';
 import { CloseTradeComponent } from '../../modules/trade-management/components/close-trade/close-trade.component';
 import { EditTradeComponent } from '../../modules/trade-management/components/edit-trade/edit-trade.component';
+import { ViewTradeComponent } from '../../modules/trade-management/components/view-trade/view-trade.component';
 import { AddnewtradeplanComponent } from '../../modules/trade-plan/components/add-trade-plan/addnewtradeplan.component';
 import { TradePlansComponent } from '../../modules/trade-plan/components/trade-plans.component';
 import { ProfileComponent } from '../../modules/user-profile/components/profile.component';
@@ -61,6 +62,10 @@ const routes: Routes = [
         {
           path: 'edit-trade/:id',
           component: EditTradeComponent
+        },
+        {
+          path: 'view-trade/:id',
+          component: ViewTradeComponent
         },
         {
           path : 'exit-rules',

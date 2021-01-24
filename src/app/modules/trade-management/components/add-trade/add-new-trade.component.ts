@@ -43,6 +43,7 @@ export class AddNewTradeComponent implements OnInit {
   protected add = true;
   protected edit = false;
   protected close = false;
+  protected view = false;
 
   protected activeStep: boolean;
   protected stockAdded: boolean;

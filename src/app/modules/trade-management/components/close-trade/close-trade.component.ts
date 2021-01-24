@@ -26,6 +26,7 @@ export class CloseTradeComponent extends AddNewTradeComponent implements OnInit 
     this.close = true;
     this.edit = false;
     this.add = false;
+    this.view = false;
   }
 
   panelOpenStateOne = false;

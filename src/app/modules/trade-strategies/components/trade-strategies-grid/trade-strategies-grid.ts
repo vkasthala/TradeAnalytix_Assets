@@ -146,6 +146,20 @@ merge(this.sort.sortChange, this.paginator.page)
       this.router.navigate(["/close-trade/" + rowModel.id], extras);
     });
   }
+  viewTrade(rowModel: TradeStrategyGridRow) {
+    let stockSymbolReq = this.stockSymbolService.getStockSymbolById(rowModel.stockId);
+    let tradeStrategyReq = this.tradeStrategyService.getTradeStrategyDetails(rowModel.id);
+    let stockSummaryReq = this.userStockStatsService.getUserStockBriefSummary(rowModel.stockId, 1);
+    forkJoin([stockSymbolReq, stockSummaryReq, tradeStrategyReq]).subscribe(results => {
+      let extras: NavigationExtras = {};
+      let input: TradeInputData = new TradeInputData();
+      input.selectedStock = results[0];
+      input.stockSummary = results[1];
+      input.tradeStrategy = results[2];
+      extras.state = input;
+      this.router.navigate(["/view-trade/" + rowModel.id], extras);
+    });
+  }
 
 
   deleteTrade(rowModel: TradeStrategyGridRow) {
