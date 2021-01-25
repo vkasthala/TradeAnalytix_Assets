@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild, Input  } from '@angular/core';
 import { Router } from '@angular/router';
-import { DepositService } from '../../services/deposit.service';
 import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-depositswithdrawals',
@@ -20,14 +19,14 @@ export class DepositswithdrawalsComponent implements OnInit {
 
   constructor(
     private toastr: ToastrService,
-    private router: Router,
-    private depositService: DepositService) { 
+    private router: Router/*,
+    private depositService: DepositService*/) { 
   }
 
   ngOnInit() {
-    this.depositService.getDeposits().subscribe(data => {
+    /*this.depositService.getDeposits().subscribe(data => {
       this.DepositList = data;
-    });
+    });*/
   }
 
 }
