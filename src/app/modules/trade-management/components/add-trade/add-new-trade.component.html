@@ -37,7 +37,7 @@
                     <app-trade-details (nextStep)="goForward()" (activateRisk)="activeStep = true"
                       (addTradeEvent)="addTrade($event)" (navigateRiskAnalysisEvent)="navigaeToRiskAnalysis()"
                       [stockSummary]="stockSummary" [selectedStock]="selectedStock" [inputState]="inputState"
-                      [editTrade]="edit" [addTrade]="add" [closeTrade]="close" #tradeDetails>
+                      [editTrade]="edit" [addTrade]="add" [closeTrade]="close" [viewTrade]="view" #tradeDetails>
                     </app-trade-details>
                   </div>
                   <div *ngIf="!add">
@@ -141,8 +141,8 @@
                       </div>
                     </div>
                     <div class="net_debit">
-                      <div class="realized_label" [ngClass]="close ? 'justify-content-between' : ''">
-                        <div *ngIf="close">
+                      <div class="" [ngClass]="close || view ? 'justify-content-between' : 'realized_label'">
+                        <div *ngIf="close || view">
                           <label class="col-form-label mr-2">Closed Date <span class="text-danger">*</span></label>
                           <div class="datepicker-group datepicker-sm">
                             <input matInput [matDatepicker]="closed_date" (click)="closed_date.open()" id="closed_date"

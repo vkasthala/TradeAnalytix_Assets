@@ -59,10 +59,6 @@ export class TradeDetailsComponent implements OnInit {
     private _dialog: MatDialog) { }
 
   ngOnInit() {
-    // this.viewTrade = this.closeTrade;
-    debugger;
-    console.log(' viewTrade Status:', this.viewTrade);
-    console.log(' closeTrade:', this.closeTrade);
     this.stockEntry = this.createStockEntry();
   }
 

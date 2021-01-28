@@ -1,12 +1,14 @@
-<h4 style="padding: 10px;">
-    {{title}}
-</h4>
+<div class="modal-header p-2">
+    <h5 class="modal-title">
+        {{title}}
+    </h5>
+</div>
 
-<div style="padding: 10px;">
+<div class="modal-body">
     <p>{{message}}</p>
 </div>
 
-<div style="padding: 10px;">
-    <button mat-button (click)="onDismiss()">No</button>
-    <button mat-raised-button color="primary" (click)="onConfirm()" style="margin-left: 10px;">Yes</button>
+<div class="modal-footer py-1">
+    <button class="btn btn-success btn-sm mr-2" (click)="onConfirm()">Yes</button>
+    <button class="btn btn-secondary btn-sm" (click)="onDismiss()">No</button>
 </div>

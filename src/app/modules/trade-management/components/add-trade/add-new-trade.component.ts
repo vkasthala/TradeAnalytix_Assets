@@ -146,7 +146,6 @@ export class AddNewTradeComponent implements OnInit {
     this.updateTradeStrategyProps();
     console.log('edit trade...', this.tradeStrategy);
     this.tradeStrategyService.editTrade(this.tradeStrategy).subscribe(result => {
-      console.log('Trade strategy successfully updated');
       this.toastr.success('Trade Strategy successfully updated', '');
       this.router.navigateByUrl("/trade-strategies");
     });
