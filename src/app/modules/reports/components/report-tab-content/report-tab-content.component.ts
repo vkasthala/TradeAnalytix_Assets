@@ -23,6 +23,8 @@ export class ReportTabContentComponent implements OnInit {
 
   filterChangeSubject: Subject<ReportFilter> = new Subject<ReportFilter>();
 
+  reportTypeChangeSubject: Subject<ReportFilter> = new Subject<ReportFilter>();
+
   protected reportSubTypes: ReportSubType[];
 
   protected reports: ReportDetails[];
@@ -43,24 +45,9 @@ export class ReportTabContentComponent implements OnInit {
 
   onReportSubTypeSelect(type: ReportSubType): void {
     this.subtype = type.id;
-    this.loadSummary(type);
+    this.reportFilter.summaryType = type.id;
     this.reports = type.reportDetailList;
-  }
-
-  loadSummary(type: ReportSubType): void {
-    this.reportSummaryItems = [];
-
-    let item: ReportSummaryItem = new ReportSummaryItem();
-    item.name = type.name + 'Name1';
-    item.value = '1234.34';
-    this.reportSummaryItems.push(item);
-
-    item = new ReportSummaryItem();
-    item.name = type.name + 'Name2';
-    item.value = '3454.34';
-    this.reportSummaryItems.push(item);
-
-    this.reports = type.reportDetailList;
+    this.reportTypeChangeSubject.next(this.reportFilter);
   }
 
   onDateRangeChanged(event: IMyDateRangeModel) {
