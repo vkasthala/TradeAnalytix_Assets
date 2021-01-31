@@ -37,7 +37,9 @@
                     <app-trade-details (nextStep)="goForward()" (activateRisk)="activeStep = true"
                       (addTradeEvent)="addTrade($event)" (navigateRiskAnalysisEvent)="navigaeToRiskAnalysis()"
                       [stockSummary]="stockSummary" [selectedStock]="selectedStock" [inputState]="inputState"
-                      [editTrade]="edit" [addTrade]="add" [closeTrade]="close" [viewTrade]="view" #tradeDetails>
+                      [editTrade]="edit" [addTrade]="add" [closeTrade]="close" [viewTrade]="view"
+                      [strategyTypeChangeSubject]="strategyTypeChangeSubject"
+                      [stockOrOptionAddedSubject]="stockOrOptionAddedSubject" #tradeDetails>
                     </app-trade-details>
                   </div>
                   <div *ngIf="!add">
@@ -148,7 +150,8 @@
                             <input matInput [matDatepicker]="closed_date" (click)="closed_date.open()" id="closed_date"
                               (dateChange)="addEvent('input', $event)" name="stockOptions[index].closed_date"
                               [(ngModel)]="tradeDetails.closeDate" [ngClass]="view ? 'disabled' : ''" />
-                            <mat-datepicker-toggle matSuffix [for]="closed_date" [ngClass]="viewTrade ? 'disabled' : ''"></mat-datepicker-toggle>
+                            <mat-datepicker-toggle matSuffix [for]="closed_date"
+                              [ngClass]="viewTrade ? 'disabled' : ''"></mat-datepicker-toggle>
                             <mat-datepicker #closed_date></mat-datepicker>
                           </div>
                         </div>
@@ -169,9 +172,9 @@
                   <div class="stepper-content">
                     <app-entry-rules (prevStep)="goBack()" [inputState]="inputState" [editTrade]="edit" [addTrade]="add"
                       [closeTrade]="close" #entryRules></app-entry-rules>
-                      <div *ngIf="close">
-                        <app-exit-rules #exitRules></app-exit-rules>
-                      </div>
+                    <div *ngIf="close">
+                      <app-exit-rules #exitRules></app-exit-rules>
+                    </div>
                   </div>
                 </mat-step>
               </mat-horizontal-stepper>
@@ -195,7 +198,8 @@
             <div class="col-4 trade-details-aside">
               <app-trade-details-aside [selectedStock]="selectedStock" [stockSummary]="stockSummary"
                 (loadMoreStats)="loadMoreStatsHandler($event)" (calculateMaxRisk)="calculateMaxRisk($event)"
-                #tradeDetailsAside></app-trade-details-aside>
+                [strategyTypeChangeSubject]="strategyTypeChangeSubject"
+                [stockOrOptionAddedSubject]="stockOrOptionAddedSubject" #tradeDetailsAside></app-trade-details-aside>
             </div>
           </div>
         </ng-container>

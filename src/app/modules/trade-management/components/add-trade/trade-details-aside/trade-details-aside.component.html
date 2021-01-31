@@ -1,5 +1,5 @@
 <!-- entry second -->
-<div class="addnew-second p-2">
+<div class="addnew-second p-2" *ngIf="selectedStock && stockSummaryResult">
   <div class="widget-2">
     <div class="widget_header">
       <h5 class="widget_header-label">NFLX Stats</h5>
@@ -7,58 +7,57 @@
     <div class="row no-gutters justify-content-between">
       <div class="widget_item">
         <span class="widget_item-title">Realized Return</span>
-        <h6 class="widget_item-value text-success">{{getDisplayValue(stockSummary.netReturn)}}</h6>
+        <h6 class="widget_item-value text-success">{{getDisplayValue(stockSummaryResult.realizedReturn)}}</h6>
       </div>
       <div class="widget_item">
         <span class="widget_item-title">Net R</span>
-        <h6 class="widget_item-value text-success">{{getDisplayValue(stockSummary.netReturn)}}</h6>
+        <h6 class="widget_item-value text-success">{{getDisplayValue(stockSummaryResult.netR)}}</h6>
       </div>
       <div class="widget_item">
         <span class="widget_item-title">Win Rate</span>
-        <h6 class="widget_item-value text-danger">{{getDisplayValue(stockSummary.winPercent)}} |
+        <h6 class="widget_item-value text-danger">{{getDisplayValue(stockSummaryResult.winRate)}} |
           {{getDisplayValue(stockSummary.lossPercent)}}
           ({{getDisplayValue(stockSummary.winLossRatio)}})</h6>
       </div>
       <div class="widget_item">
         <span class="widget_item-title">Avg. Hold Period </span>
-        <h6 class="widget_item-value">{{getDisplayValue(stockSummary.avgHoldingPeriod, ' days')}}</h6>
+        <h6 class="widget_item-value">{{getDisplayValue(stockSummaryResult.avgHoldingPeriod, ' days')}}</h6>
       </div>
       <div class="widget_item">
         <span class="widget_item-title">Highest Return</span>
-        <h6 class="widget_item-value text-success">{{getDisplayValue(stockSummary.highGain)}}</h6>
+        <h6 class="widget_item-value text-success">{{getDisplayValue(stockSummaryResult.highestReturn)}}</h6>
       </div>
       <div class="widget_item">
         <span class="widget_item-title">Largest Loss</span>
-        <h6 class="widget_item-value text-danger">{{getDisplayValue(stockSummary.largestLoss)}}</h6>
+        <h6 class="widget_item-value text-danger">{{getDisplayValue(stockSummaryResult.largestLoss)}}</h6>
       </div>
       <div class="widget_item">
         <span class="widget_item-title">Successful Strategy</span>
-        <h6 class="widget_item-value text-success">Iron Condor {{getDisplayValue(stockSummary.successStrategy)}}</h6>
+        <h6 class="widget_item-value text-success">Iron Condor {{getDisplayValue(stockSummaryResult.successStrategy)}}
+        </h6>
       </div>
       <div class="widget_item">
         <span class="widget_item-title">Failed Strategy</span>
-        <h6 class="widget_item-value text-danger">{{getDisplayValue(stockSummary.largestLoss)}}</h6>
+        <h6 class="widget_item-value text-danger">{{getDisplayValue(stockSummaryResult.failedStrategy)}}</h6>
       </div>
     </div>
   </div>
-  <div class="widget-2">
+  <div class="widget-2" *ngIf="stockOrOptionAdded == true && strategyTypeSummaryResult">
     <div class="widget_header">
-      <h5 class="widget_header-label">Custom Strategy Stats</h5>
+      <h5 class="widget_header-label">{{strategyName}} Strategy Stats</h5>
     </div>
     <div class="row no-gutters justify-content-between">
       <div class="widget_item">
         <span class="widget_item-title">Realized Return</span>
-        <h6 class="widget_item-value text-success">{{getDisplayValue(stockSummary.netReturn)}}</h6>
+        <h6 class="widget_item-value text-success">{{getDisplayValue(strategyTypeSummaryResult.realizedReturn)}}</h6>
       </div>
       <div class="widget_item">
         <span class="widget_item-title">Win Rate</span>
-        <h6 class="widget_item-value text-danger">{{getDisplayValue(stockSummary.winPercent)}} |
-          {{getDisplayValue(stockSummary.lossPercent)}}
-          ({{getDisplayValue(stockSummary.winLossRatio)}})</h6>
+        <h6 class="widget_item-value text-danger">{{getDisplayValue(strategyTypeSummaryResult.winRate)}}</h6>
       </div>
     </div>
   </div>
-  <div class="widget-2">
+  <div class="widget-2" *ngIf="stockOrOptionAdded == true && strategyTypeSummaryResult">
     <div class="widget_header">
       <h5 class="widget_header-label">Proﬁt Potential and Risk</h5>
       <button type="button" class="btn p-0 text-link" (click)="calculateMaxProfitAndRisk()">Calculate</button>
@@ -67,11 +66,13 @@
     <div class="row no-gutters justify-content-between">
       <div class="widget_item">
         <span class="widget_item-title">Maximum Proﬁt</span>
-        <h6 class="widget_item-value text-success" *ngIf="maxRiskDetails && maxRiskDetails.maxProfit">{{maxRiskDetails.maxProfit}}</h6>
+        <h6 class="widget_item-value text-success" *ngIf="maxRiskDetails && maxRiskDetails.maxProfit">
+          {{maxRiskDetails.maxProfit}}</h6>
       </div>
       <div class="widget_item">
         <span class="widget_item-title">Maximum Risk </span>
-        <h6 class="widget_item-value text-danger" *ngIf="maxRiskDetails && maxRiskDetails.maxRisk">{{maxRiskDetails.maxRisk}}</h6>
+        <h6 class="widget_item-value text-danger" *ngIf="maxRiskDetails && maxRiskDetails.maxRisk">
+          {{maxRiskDetails.maxRisk}}</h6>
       </div>
     </div>
   </div>

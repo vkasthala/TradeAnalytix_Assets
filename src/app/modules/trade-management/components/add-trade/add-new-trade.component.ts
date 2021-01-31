@@ -1,26 +1,27 @@
-import { ChangeDetectorRef, Component, Input, OnInit, ViewChild } from '@angular/core';
-import { MatStepper, MatDialog } from '@angular/material';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog, MatStepper } from '@angular/material';
 import { NavigationExtras, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { RiskAnalysisRequest } from 'src/app/modules/risk-analysis/models/risk-analysis-request.model';
+import { RiskAnalysisService } from 'src/app/modules/risk-analysis/services/risk-analysis.service';
+import { ConfirmDialogComponent } from 'src/app/modules/shared/components/modals/confirm-dialog/confirm-dialog.component';
+import { TradeExecutionDateComponent } from 'src/app/modules/shared/components/modals/trade-execution-date/trade-execution-date.component';
+import { ActionType } from 'src/app/modules/shared/models/trade-management/action-type.enum';
 import { StockSymbol } from 'src/app/modules/shared/models/trade-management/stock-symbol.model';
+import { TradeDirection } from 'src/app/modules/shared/models/trade-management/trade-direction.enum';
 import { TradeInputData } from 'src/app/modules/shared/models/trade-management/trade-input-data.model';
 import { UserStockSummary } from 'src/app/modules/shared/models/trade-management/user-stock-summary.model';
 import { UserStockStatsService } from 'src/app/modules/shared/services/user-stock-stats.service';
+import { TradeHistory } from '../../models/trade-history.model';
 import { TradeStrategy } from '../../models/trade-strategy.model';
 import { TradeStrategyService } from '../../services/trade-strategy.service';
+import { EntryRulesComponent } from './Steps/entry-rules/entry-rules.component';
+import { ExitRulesComponent } from './Steps/exit-rules/exit-rules.component';
+import { TradeSearchComponent } from './Steps/search-trade/trade-search.component';
 import { TradeDetailsComponent } from './Steps/trade-details/trade-details.component';
 import { TradeThesisComponent } from './Steps/trade-thesis/trade-thesis.component';
-import { EntryRulesComponent } from './Steps/entry-rules/entry-rules.component';
-import { TradeExecutionDateComponent } from 'src/app/modules/shared/components/modals/trade-execution-date/trade-execution-date.component';
-import { ActionType } from 'src/app/modules/shared/models/trade-management/action-type.enum';
-import { TradeDirection } from 'src/app/modules/shared/models/trade-management/trade-direction.enum';
-import { TradeSearchComponent } from './Steps/search-trade/trade-search.component';
-import { ToastrService } from 'ngx-toastr';
-import { ConfirmDialogComponent } from 'src/app/modules/shared/components/modals/confirm-dialog/confirm-dialog.component';
-import { ExitRulesComponent } from './Steps/exit-rules/exit-rules.component';
-import { RiskAnalysisRequest } from 'src/app/modules/risk-analysis/models/risk-analysis-request.model';
-import { RiskAnalysisService } from 'src/app/modules/risk-analysis/services/risk-analysis.service';
 import { TradeDetailsAsideComponent } from './trade-details-aside/trade-details-aside.component';
-import { TradeHistory } from '../../models/trade-history.model';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-add-new-trade',
@@ -39,6 +40,9 @@ export class AddNewTradeComponent implements OnInit {
   @ViewChild('tradeThesis', { static: false }) protected tradeThesis: TradeThesisComponent;
   @ViewChild('entryRules', { static: false }) protected entryRules: EntryRulesComponent;
   @ViewChild('exitRules', { static: false }) protected exitRules: ExitRulesComponent;
+
+  strategyTypeChangeSubject: Subject<number> = new Subject<number>();
+  stockOrOptionAddedSubject: Subject<boolean> = new Subject<boolean>();
 
   protected add = true;
   protected edit = false;

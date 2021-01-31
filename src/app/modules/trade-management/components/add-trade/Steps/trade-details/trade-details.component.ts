@@ -18,6 +18,7 @@ import { TradeInputData } from 'src/app/modules/shared/models/trade-management/t
 import { UserStockSummary } from 'src/app/modules/shared/models/trade-management/user-stock-summary.model';
 import { StrategyCreateService } from 'src/app/modules/shared/services/strategy-create.service';
 import { UtilService } from 'src/app/modules/utilities/services/util.service';
+import { Subject } from 'rxjs';
 
 
 @Component({
@@ -45,6 +46,8 @@ export class TradeDetailsComponent implements OnInit {
   @Input("editTrade") editTrade: boolean;
   @Input("closeTrade") closeTrade: boolean;
   @Input("viewTrade") viewTrade: boolean;
+  @Input("strategyTypeChangeSubject") strategyTypeChangeSubject: Subject<number> = new Subject<number>();
+  @Input("stockOrOptionAddedSubject") stockOrOptionAddedSubject: Subject<boolean> = new Subject<boolean>();
 
   stockEntry: StockEntry;
   stockOptions: OptionEntry[] = [];
@@ -86,12 +89,18 @@ export class TradeDetailsComponent implements OnInit {
   addStock() {
     this.stockEntry = this.createStockEntry();
     this.stockAdded = true;
+    this.updateStockOrOptionAddedStatus();
   }
 
   addOption() {
     if (this.stockOptions.length < 4) {
       this.stockOptions.push(this.createStockOptionEntry())
+      this.updateStockOrOptionAddedStatus();
     }
+  }
+
+  updateStockOrOptionAddedStatus() {
+    this.stockOrOptionAddedSubject.next(this.stockAdded || this.stockOptions.length > 0);
   }
 
   next() {
@@ -121,6 +130,7 @@ export class TradeDetailsComponent implements OnInit {
       this.stockOptions = template.optionEntries;
       this.direction = template.direction;
     }
+    this.strategyTypeChangeSubject.next(strategy.valueOf());
   }
 
   navigateToRiskAnalysis(): void {
