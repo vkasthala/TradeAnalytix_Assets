@@ -199,7 +199,8 @@
               <app-trade-details-aside [selectedStock]="selectedStock" [stockSummary]="stockSummary"
                 (loadMoreStats)="loadMoreStatsHandler($event)" (calculateMaxRisk)="calculateMaxRisk($event)"
                 [strategyTypeChangeSubject]="strategyTypeChangeSubject"
-                [stockOrOptionAddedSubject]="stockOrOptionAddedSubject" #tradeDetailsAside></app-trade-details-aside>
+                [stockOrOptionAddedSubject]="stockOrOptionAddedSubject" [tradeStrategy]="tradeStrategy"
+                #tradeDetailsAside></app-trade-details-aside>
             </div>
           </div>
         </ng-container>

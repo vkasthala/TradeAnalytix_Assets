@@ -55,7 +55,12 @@ export class TradeDetailsAsideComponent implements OnInit {
     });
 
     this.stockOrOptionAddedSubject.asObservable().subscribe(data => {
-      if (this.strategyTypeSummaryResult && this.stockOrOptionAdded == false && data == true) {
+      console.log('stock/option added: ', data);
+      if (!this.strategyTypeSummaryResult &&  data === true) {
+        if(!this.strategyTypeId){
+          this.strategyTypeId = 15;
+        }
+        this.updateStrategyName(this.strategyTypeId);
         this.loadStrategyTypeSummary(this.strategyTypeId);
       }
       this.stockOrOptionAdded = data;
@@ -86,6 +91,7 @@ export class TradeDetailsAsideComponent implements OnInit {
   }
 
   updateStrategyName(strategyId: number) {
+    console.log('selected strategy:', strategyId);
     Object.keys(StrategyType).forEach((key) => {
       if (StrategyType[key] == strategyId) {
         this.strategyName = key;
