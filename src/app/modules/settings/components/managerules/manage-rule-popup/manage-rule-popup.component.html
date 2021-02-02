@@ -15,12 +15,11 @@
 
                 <div class="right-pop-con">
                     <div class="trade-sel">
-                        <select class="form-control" id="exampleFormControlSelect1">
+                        <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="rowData.type">
                             <option>Entry</option>
                             <option>Exit</option>
                         </select>
-                        <img src="../../../../../../assets/images/icon/Icon ionic-ios-arrow-down.png" alt=""
-                            class="form-icon-down">
+                        <mat-icon class="form-icon-down">keyboard_arrow_down</mat-icon>
                     </div>
                 </div>
             </div>
@@ -31,7 +30,7 @@
                 </div>
                 <div class="right-pop-con">
                     <div class="form-group">
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">{{rowData.description}}</textarea>
                     </div>
                 </div>
             </div>
@@ -43,7 +42,7 @@
                 <div class="right-pop-con">
                     <div class="trade-sel">
                         <div class="form-group has-search">
-                            <input class="form-control" placeholder="" type="text">
+                            <input class="form-control" placeholder="" type="text" [(ngModel)]="rowData.source" />
                         </div>
 
                         <!-- <div class="add-new">

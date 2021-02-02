@@ -9,12 +9,14 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 export class ManageRulePopupComponent implements OnInit {
   title:string;
   btnText:string;
+  rowData:string;
   constructor(
     public dialogRef: MatDialogRef<ManageRulePopupComponent>,
     @Inject(MAT_DIALOG_DATA) data
   ) {
     this.title = data.title;
     this.btnText = data.btnText;
+    this.rowData = data.formData;
   }
 
   ngOnInit() {

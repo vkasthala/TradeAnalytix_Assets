@@ -1,137 +1,5 @@
 @import "../../../../../assets/styles/variable.scss";
 
-.trade-strategies-table {
-  padding-bottom: 20px;
-  .table {
-    margin-bottom: 0px;
-    @media #{$small} {
-      // overflow-x: scroll;
-      // display: block;
-    }
-    thead {
-      background-color: rgba(98, 95, 95, 0.9);
-      color: $white;
-      tr {
-        th {
-          padding: 14px 14px;
-          font-size: 14px;
-          font-weight: 500;
-          text-align: left;
-          vertical-align: middle;
-          border-bottom: 1px solid #dee2e6;
-
-          @media #{$medium} {
-            padding: 8px 0px;
-            font-size: 12px;
-          }
-          @media #{$small} {
-            &:not(:first-child) {
-              padding: 8px 10px;
-              font-size: 12px;
-            }
-          }
-          @media #{$extra-small} {
-            padding: 8px 0px;
-            font-size: 12px;
-          }
-        }
-      }
-    }
-    tbody {
-      tr {
-        td {
-          padding: 14px 14px;
-          text-align: left;
-          vertical-align: middle;
-          font-size: 14px;
-          color: #2a2a2a;
-
-          @media #{$medium} {
-            padding: 8px 0px;
-            font-size: 12px;
-          }
-          @media #{$small} {
-            &:not(:first-child) {
-              padding: 8px 10px;
-              font-size: 12px;
-            }
-          }
-          @media #{$extra-small} {
-            padding: 8px 0px;
-            font-size: 12px;
-          }
-        }
-
-        .trade-check {
-          .form-group {
-            display: block;
-            margin-bottom: 0px;
-          }
-
-          .form-group input {
-            padding: 0;
-            height: initial;
-            width: initial;
-            margin-bottom: 0;
-            display: none;
-            cursor: pointer;
-          }
-
-          .form-group label {
-            position: relative;
-            cursor: pointer;
-            margin-bottom: 0px;
-          }
-
-          .form-group label:before {
-            content: "";
-            -webkit-appearance: none;
-            background-color: transparent;
-            border: 2px solid $heading-1;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05),
-              inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
-            padding: 8px;
-            display: inline-block;
-            position: relative;
-            vertical-align: middle;
-            cursor: pointer;
-            margin-right: 5px;
-          }
-
-          .form-group input:checked + label:after {
-            content: "";
-            display: block;
-            position: absolute;
-            top: 5px;
-            left: 7px;
-            width: 6px;
-            height: 12px;
-            border: solid $heading-1;
-            border-width: 0 2px 2px 0;
-            transform: rotate(45deg);
-            @media #{$small} {
-              top: 3px;
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-.table tbody tr td:first-child {
-  padding-right: 0px !important;
-}
-.table tbody tr th:first-child {
-  padding-right: 0px !important;
-}
-.table-striped tbody tr:nth-of-type(even) {
-  background-color: rgba(0, 0, 0, 0.05);
-}
-.table-striped tbody tr:nth-of-type(odd) {
-  background-color: transparent !important;
-}
-
 .trade-st-box {
   display: flex;
   justify-content: flex-end;
@@ -214,15 +82,11 @@ img.form-icon {
   width: 19px;
 }
 
-.form-icon-down {
-  position: absolute;
-  right: 11px;
-  top: 15px;
-  width: 15px;
-}
+
 
 .form-control {
   border: 1px solid #707070;
+  font-size: 14px;
 }
 
 .trade-sel {
@@ -267,13 +131,16 @@ img.form-icon {
 
 a.add-new {
   color: #37A000;
-  font-weight: 500;
+  font-weight: 600;
   text-decoration: none;
   cursor: pointer;
   align-items: center;
   display: flex;
+  font-size: 14px;
 }
-
+label {
+  font-size: 14px;
+}
 .tabel-action {
   display: flex;
   justify-content: flex-start;
@@ -288,4 +155,30 @@ a.add-new {
 }
 .text-danger {
   color: #ff0000 !important;
+}
+mat-table, table.mat-table {
+  width: 100%;
+}
+
+.mat-header-row {
+  height: 45px !important;
+}
+.type-cell{
+  width: 10%;
+}
+.date-cell{
+  width: 10%;
+}
+.source-cell{
+  width: 20%;
+  min-width: 200px;
+}
+.description-cell{
+  width: 55%;
+  min-width: 500px;
+}
+
+
+.action-cell {
+  width: 5%;
 }

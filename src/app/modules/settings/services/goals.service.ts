@@ -6,11 +6,22 @@ import { InvestmentGoals } from'../models/investment-goals.model';
     providedIn:'root'
 })
 export class GoalsService{
-    private goals:InvestmentGoals[] = [];
     constructor(private http: HttpService) { }
     private _url = "./assets/settings.json";
 
     getInvestGoals(){
        return this.http.get<InvestmentGoals[]>(this._url)
     }
+
+    // getInvestGoals(){
+    //     let staticGoals:InvestmentGoals[] =[];
+    //     let goal: InvestmentGoals = new InvestmentGoals();
+    //     goal.id = 1;
+    //     goal.entrydate = "1/19/2021";
+    //     goal.targetdate = "2021-01-19 - 2021-01-29";
+    //     goal.profit = 200;
+    //     staticGoals.push(goal);
+        
+    //    return Observable.of(staticGoals);
+    // }
 }

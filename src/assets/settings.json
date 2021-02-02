@@ -1,15 +1,19 @@
-[
-    {
-       "id":1,
-       "entrydate":"1/19/2021",
-       "targetdate":"2021-01-19 - 2021-01-29",
-       "profit":200
-    },
-    {
-       "id":2,
-       "entrydate":"1/14/2021",
-       "targetdate":"2021-01-14 - 2021-02-04",
-       "profit":999
-    }
- ]
- 
+{
+   "investmentgoals":
+   [
+      {"id": 1, "entrydate":"1/19/2021", "targetdate":"2021-01-19 - 2021-01-29", "profit":200},
+      {"id": 1, "entrydate":"1/19/2021", "targetdate":"2021-01-19 - 2021-01-29", "profit":200},
+      {"id": 1, "entrydate":"1/19/2021", "targetdate":"2021-01-19 - 2021-01-29", "profit":200},
+      {"id": 1, "entrydate":"1/19/2021", "targetdate":"2021-01-19 - 2021-01-29", "profit":200}
+   ],
+	"entryexitrules":
+		[
+			{ "date": "08 May 2020", "type": "Entry", "description": "Always hedge your position to avoid significant loss", "source": "Best Practice"},
+  { "date": "07 May 2020", "type": "Exit", "description": "Do not close the position before the target price is reached", "source": "Training"},
+  { "date": "08 May 2020", "type": "Entry", "description": "Do not close the position before the target price is reached", "source": "Lesson Learnt"},
+  { "date": "07 May 2020", "type": "Entry", "description": "Always hedge your position to avoid significant loss", "source": "Best Practice"},
+  { "date": "08 May 2020", "type": "Exit", "description": "Always hedge your position to avoid significant loss", "source": "Best Practice"},
+  { "date": "08 May 2020", "type": "Exit", "description": "Always hedge your position to avoid significant loss", "source": "Best Practice"},
+  { "date": "07 May 2020", "type": "Entry", "description": "Always hedge your position to avoid significant loss", "source": "Best Practice"}
+		]
+}
