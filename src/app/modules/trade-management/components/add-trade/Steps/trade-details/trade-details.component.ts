@@ -19,6 +19,8 @@ import { UserStockSummary } from 'src/app/modules/shared/models/trade-management
 import { StrategyCreateService } from 'src/app/modules/shared/services/strategy-create.service';
 import { UtilService } from 'src/app/modules/utilities/services/util.service';
 import { Subject } from 'rxjs';
+import { StockLegHistory } from 'src/app/modules/trade-management/models/stock-leg-history.model';
+import { OptionLegHistory } from 'src/app/modules/trade-management/models/option-leg-history.model';
 
 
 @Component({
@@ -48,6 +50,8 @@ export class TradeDetailsComponent implements OnInit {
   @Input("viewTrade") viewTrade: boolean;
   @Input("strategyTypeChangeSubject") strategyTypeChangeSubject: Subject<number> = new Subject<number>();
   @Input("stockOrOptionAddedSubject") stockOrOptionAddedSubject: Subject<boolean> = new Subject<boolean>();
+  @Input("localStockClosedSubject") localStockClosedSubject: Subject<StockLegHistory> = new Subject<StockLegHistory>();
+  @Input("localOptionClosedSubject") localOptionClosedSubject: Subject<OptionLegHistory> = new Subject<OptionLegHistory>();
 
   stockEntry: StockEntry;
   stockOptions: OptionEntry[] = [];
@@ -316,7 +320,13 @@ export class TradeDetailsComponent implements OnInit {
     if (!this.stockEntry.partialLegChange) {
       this.stockEntry.partialLegChange = [];
     }
-    this.stockEntry.partialLegChange.push(this.createPartialLegClose(dialogResult.quantity, openPrice, dialogResult.price, add, dialogResult.actionType, dialogResult.notes, dialogResult.executedDate));
+    let legChange: PartialLegChange = this.createPartialLegClose(dialogResult.quantity, openPrice, dialogResult.price, add, dialogResult.actionType, dialogResult.notes, dialogResult.executedDate);
+    this.stockEntry.partialLegChange.push(legChange);
+    if (legChange.changeCount < 0) {
+      let stockLegHistory: StockLegHistory = this.createLocalStockLegHistory(legChange);
+      console.log('stock leg history: ', stockLegHistory);
+      this.localStockClosedSubject.next(stockLegHistory);
+    }
   }
 
   addOrReduceStockOption(dialogResult: any, stockOption: OptionEntry, add: boolean, index: number) {
@@ -336,7 +346,13 @@ export class TradeDetailsComponent implements OnInit {
     if (!stockOption.partialLegChange) {
       stockOption.partialLegChange = [];
     }
-    stockOption.partialLegChange.push(this.createPartialLegClose(dialogResult.contracts, openPrice, dialogResult.price, add, dialogResult.actionType, dialogResult.notes, dialogResult.executedDate));
+    let legChange: PartialLegChange = this.createPartialLegClose(dialogResult.contracts, openPrice, dialogResult.price, add, dialogResult.actionType, dialogResult.notes, dialogResult.executedDate);
+    stockOption.partialLegChange.push(legChange);
+    if (legChange.changeCount < 0) {
+      let optionLegHistory: OptionLegHistory = this.createLocalOptionLegHistory(legChange, stockOption);
+      console.log('option leg history: ', optionLegHistory);
+      this.localOptionClosedSubject.next(optionLegHistory);
+    }
   }
 
   createPartialLegClose(changeCount: number, openPrice: number, closePrice: number, add: boolean, actionType: any, notes: string, executedDate: string) {
@@ -348,6 +364,27 @@ export class TradeDetailsComponent implements OnInit {
     partialCloseDetails.actionType = actionType;
     partialCloseDetails.notes = notes;
     return partialCloseDetails;
+  }
+
+  createLocalStockLegHistory(legChange: PartialLegChange): StockLegHistory {
+    let stockLegHistory: StockLegHistory = new StockLegHistory();
+    stockLegHistory.actionType = legChange.actionType;
+    stockLegHistory.quantity = legChange.changeCount * -1;
+    stockLegHistory.entryPrice = legChange.openPrice;
+    stockLegHistory.exitPrice = legChange.closePrice;
+    return stockLegHistory;
+  }
+
+  createLocalOptionLegHistory(legChange: PartialLegChange, stockOption: OptionEntry): OptionLegHistory {
+    let optionLegHistory: OptionLegHistory = new OptionLegHistory();
+    optionLegHistory.actionType = legChange.actionType;
+    optionLegHistory.contracts = legChange.changeCount * -1;
+    optionLegHistory.entryPrice = legChange.openPrice;
+    optionLegHistory.exitPrice = legChange.closePrice;
+    optionLegHistory.optionType = stockOption.optionType;
+    optionLegHistory.strikePrice = stockOption.strikePrice;
+    optionLegHistory.expireDate = stockOption.expireDate;
+    return optionLegHistory;
   }
 
 }

@@ -39,7 +39,9 @@
                       [stockSummary]="stockSummary" [selectedStock]="selectedStock" [inputState]="inputState"
                       [editTrade]="edit" [addTrade]="add" [closeTrade]="close" [viewTrade]="view"
                       [strategyTypeChangeSubject]="strategyTypeChangeSubject"
-                      [stockOrOptionAddedSubject]="stockOrOptionAddedSubject" #tradeDetails>
+                      [stockOrOptionAddedSubject]="stockOrOptionAddedSubject"
+                      [localStockClosedSubject]="localStockClosedSubject"
+                      [localOptionClosedSubject]="localOptionClosedSubject" #tradeDetails>
                     </app-trade-details>
                   </div>
                   <div *ngIf="!add">

@@ -22,6 +22,8 @@ import { TradeDetailsComponent } from './Steps/trade-details/trade-details.compo
 import { TradeThesisComponent } from './Steps/trade-thesis/trade-thesis.component';
 import { TradeDetailsAsideComponent } from './trade-details-aside/trade-details-aside.component';
 import { Subject } from 'rxjs';
+import { StockLegHistory } from '../../models/stock-leg-history.model';
+import { OptionLegHistory } from '../../models/option-leg-history.model';
 
 @Component({
   selector: 'app-add-new-trade',
@@ -44,6 +46,9 @@ export class AddNewTradeComponent implements OnInit {
   strategyTypeChangeSubject: Subject<number> = new Subject<number>();
   stockOrOptionAddedSubject: Subject<boolean> = new Subject<boolean>();
 
+  localStockClosedSubject: Subject<StockLegHistory> = new Subject<StockLegHistory>();
+  localOptionClosedSubject: Subject<OptionLegHistory> = new Subject<OptionLegHistory>();
+
   protected add = true;
   protected edit = false;
   protected close = false;
@@ -64,6 +69,8 @@ export class AddNewTradeComponent implements OnInit {
   protected closedLegs: boolean = false;
 
   protected tradeHistory: TradeHistory;
+  protected localTradeHistory: TradeHistory;
+  protected serverTradeHistory: TradeHistory;
 
   constructor(
     protected userStockStatsService: UserStockStatsService,
@@ -73,12 +80,20 @@ export class AddNewTradeComponent implements OnInit {
     protected toastr: ToastrService,
     protected _dialog: MatDialog) {
     this.initState();
+    this.localStockClosedSubject.asObservable().subscribe(data => {
+      console.log('stock leg subject:', data);
+      this.updateLocalTradeHistory(data, null);
+    });
+
+    this.localOptionClosedSubject.asObservable().subscribe(data => {
+      console.log('option leg subject:', data);
+      this.updateLocalTradeHistory(null, data);
+    });
   }
 
   ngOnInit() {
     this.setState();
   }
-
 
   enterSymbol() {
     if (!this.selectedStock || !this.selectedStock.code) {
@@ -317,9 +332,52 @@ export class AddNewTradeComponent implements OnInit {
     this.closedLegs = !this.closedLegs;
     if (this.closedLegs && !this.tradeHistory) {
       this.tradeStrategyService.getTradeClosedHistory(this.tradeStrategy.id).subscribe(history => {
-        this.tradeHistory = history;
+        this.mergeLocalAndServerTradeHistories(this.localTradeHistory, history);
       });
     }
+  }
+
+  updateLocalTradeHistory(stockLegHistory: StockLegHistory, optionLegHistory: OptionLegHistory) {
+    if (!this.localTradeHistory) {
+      this.localTradeHistory = new TradeHistory();
+      this.localTradeHistory.stockLegHistories = [];
+      this.localTradeHistory.optionLegHistories = [];
+    }
+    if (stockLegHistory) {
+      this.localTradeHistory.stockLegHistories.push(stockLegHistory);
+    }
+    if (optionLegHistory) {
+      this.localTradeHistory.optionLegHistories.push(optionLegHistory);
+    }
+    console.log('local close history:', this.localTradeHistory);
+    this.mergeLocalAndServerTradeHistories(this.localTradeHistory, this.serverTradeHistory);
+  }
+
+  mergeLocalAndServerTradeHistories(localHistory: TradeHistory, serverHistory: TradeHistory) {
+    let totalTradeHistory: TradeHistory = new TradeHistory();
+    let stockLegHistories = [];
+    let optionLegHistories = [];
+    if (localHistory) {
+      if (localHistory.stockLegHistories && localHistory.stockLegHistories.length) {
+        stockLegHistories.push(localHistory.stockLegHistories);
+      }
+      if (localHistory.optionLegHistories && localHistory.optionLegHistories.length) {
+        optionLegHistories.push(localHistory.optionLegHistories);
+      }
+    }
+
+    if (serverHistory) {
+      if (serverHistory.stockLegHistories && serverHistory.stockLegHistories.length) {
+        stockLegHistories.push(serverHistory.stockLegHistories);
+      }
+      if (serverHistory.optionLegHistories && serverHistory.optionLegHistories.length) {
+        optionLegHistories.push(serverHistory.optionLegHistories);
+      }
+    }
+    totalTradeHistory.stockLegHistories = stockLegHistories;
+    totalTradeHistory.optionLegHistories = optionLegHistories;
+    console.log('total close history:', totalTradeHistory);
+    this.tradeHistory = totalTradeHistory;
   }
 
 }
