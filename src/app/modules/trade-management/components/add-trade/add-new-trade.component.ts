@@ -332,6 +332,7 @@ export class AddNewTradeComponent implements OnInit {
     this.closedLegs = !this.closedLegs;
     if (this.closedLegs && !this.tradeHistory) {
       this.tradeStrategyService.getTradeClosedHistory(this.tradeStrategy.id).subscribe(history => {
+        this.serverTradeHistory = history;
         this.mergeLocalAndServerTradeHistories(this.localTradeHistory, history);
       });
     }
@@ -354,30 +355,31 @@ export class AddNewTradeComponent implements OnInit {
   }
 
   mergeLocalAndServerTradeHistories(localHistory: TradeHistory, serverHistory: TradeHistory) {
-    let totalTradeHistory: TradeHistory = new TradeHistory();
     let stockLegHistories = [];
     let optionLegHistories = [];
     if (localHistory) {
       if (localHistory.stockLegHistories && localHistory.stockLegHistories.length) {
-        stockLegHistories.push(localHistory.stockLegHistories);
+        stockLegHistories = stockLegHistories.concat(localHistory.stockLegHistories);
       }
       if (localHistory.optionLegHistories && localHistory.optionLegHistories.length) {
-        optionLegHistories.push(localHistory.optionLegHistories);
+        optionLegHistories = optionLegHistories.concat(localHistory.optionLegHistories);
       }
     }
 
     if (serverHistory) {
       if (serverHistory.stockLegHistories && serverHistory.stockLegHistories.length) {
-        stockLegHistories.push(serverHistory.stockLegHistories);
+        stockLegHistories = stockLegHistories.concat(serverHistory.stockLegHistories);
       }
       if (serverHistory.optionLegHistories && serverHistory.optionLegHistories.length) {
-        optionLegHistories.push(serverHistory.optionLegHistories);
+        optionLegHistories = optionLegHistories.concat(serverHistory.optionLegHistories);
       }
     }
-    totalTradeHistory.stockLegHistories = stockLegHistories;
-    totalTradeHistory.optionLegHistories = optionLegHistories;
-    console.log('total close history:', totalTradeHistory);
-    this.tradeHistory = totalTradeHistory;
+    if (!this.tradeHistory) {
+      this.tradeHistory = new TradeHistory();
+    }
+    this.tradeHistory.stockLegHistories = stockLegHistories;
+    this.tradeHistory.optionLegHistories = optionLegHistories;
+    console.log('total close history:', this.tradeHistory);
   }
 
 }

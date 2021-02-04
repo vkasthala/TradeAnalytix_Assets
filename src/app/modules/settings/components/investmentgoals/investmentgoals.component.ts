@@ -28,8 +28,8 @@ export class InvestmentGoalsComponent implements OnInit {
 
   ngOnInit() {
     this.goalsService.getInvestGoals().subscribe(data => {
-      console.log('investmentgoals', data.investmentgoals)
-      this.GoalsList = data.investmentgoals;
+      //console.log('investmentgoals', data.investmentgoals)
+      //this.GoalsList = data.investmentgoals;
     });
   }
   addGoal() { 

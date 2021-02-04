@@ -28,7 +28,7 @@ export class ManagerulesComponent implements OnInit {
 
   ngAfterViewInit() {
     this.entryExitRulesService.getEntryExitRules().subscribe(data => {
-      this.dataSource = data.entryexitrules;
+      //this.dataSource = data.entryexitrules;
       console.log('dataSource', this.dataSource)
     });
   }
