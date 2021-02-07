@@ -4,7 +4,8 @@
       <div class="trade-dash-main">
         <div class="trade-dash-name">
           <h3>
-            {{add ? 'Add' : ''}} {{edit ? 'Edit' : ''}} {{close ? 'Close' : ''}} Trade
+            {{add ? 'Add Trade' : ''}} {{close ? 'Close Trade' : ''}}
+            <span *ngIf="edit">Edit Trade - {{tradeStrategy.id}}</span>
           </h3>
         </div>
       </div>

@@ -28,7 +28,7 @@ export class ManagerulesComponent implements OnInit {
 
   ngAfterViewInit() {
     this.entryExitRulesService.getEntryExitRules().subscribe(data => {
-      //this.dataSource = data.entryexitrules;
+      this.dataSource = data.entryexitrules;
       console.log('dataSource', this.dataSource)
     });
   }
@@ -52,7 +52,7 @@ export class ManagerulesComponent implements OnInit {
     });
   }
 
-  editTrade(rowModel: EntryExitRulesGridRow, title, btnText) {
+  editRule(rowModel: EntryExitRulesGridRow, title, btnText) {
     const dialogRef = this._dialog.open(ManageRulePopupComponent, {
       disableClose: true,
       width: 'auto',
@@ -66,5 +66,10 @@ export class ManagerulesComponent implements OnInit {
     dialogRef.afterClosed().subscribe((res) => {
     });
   }
+  deleteRule(row_obj){
+    this.dataSource = this.dataSource.filter((value,key)=>{
+      return value.id != row_obj.id;
+    });
+ }
 
 }

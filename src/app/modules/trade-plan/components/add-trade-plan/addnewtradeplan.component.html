@@ -1,188 +1,208 @@
 <div class="dark-theme-body add-trade-plan">
     <div class="container px-2">
-        
-
         <div class="inner-trade">
             <div class="trade-dash-main">
                 <div class="trade-dash-name">
-                    <h3>New Plan</h3>
+                    <h3>{{edit ? 'Edit' : "New"}} Trade Plan</h3>
                 </div>
               </div>
-            <div class="inner-trade-plan">
-                <div class="trade-plan-box row m-0">
-                    <div class="pre-market-box col-md-6">
-                        <div class="pre-heading text-center">
-                            Trade Plan for Nov 11, 2020
+            <div class="inner-trade-plan px-3">
+                <div class="mb-2">
+                    <label class="col-form-label pt-0">Select the date for which trade plan is being created</label>
+                    <div class="trade-sel">
+                        <div class="datepicker-group">
+                            <input matInput [matDatepicker]="tradedate" (click)="tradedate.open()" id="tradedate"  name="tradedate">
+                            <mat-datepicker-toggle matSuffix [for]="tradedate"></mat-datepicker-toggle>
+                            <mat-datepicker #tradedate></mat-datepicker>
                         </div>
-                        <div class="pre-heading pt-2">Pre-Market</div>
-                        <div class="mb-2">
-                            <label class="col-form-label">Where do you think market is heading?</label>
-                            <div class="row d-flex align-items-center m-0 mb-2">
-                                <span class="col-2 p-0"><input type="button" class="btn  full-width disabled" value="UP" /></span>
-                                <span class="col-3 p-0"><input type="button" class="btn btn-apply full-width" value="Sideways" /></span>
-                                <span class="col-2 p-0"><input type="button" class="btn  full-width disabled" value="Down" /></span>
-                            </div>
-                        </div>
-                        <div class="mb-2">
-                            <label class="col-form-label pb-0 mr-2">Pre-Market Activities</label>
-                            <input type="checkbox" name="" checked />
-                        </div>
-
-                        <div class="mb-2">
-                            <label class="col-form-label">What’s your perspective on the market and your current positions?</label>
-                            <textarea class="form-control disabled" id="exampleFormControlTextarea1" rows="2"></textarea>
-                        </div>
-                        <div class="mb-2">
-                            <label class="col-form-label">What is your mindset today</label>
-                            <select class="form-control col-md-3 disabled">
-                                <option value="1">Anxious</option>
-                            </select>
-                        </div>
-                        <div class="mb-2">
-                            <label class="col-form-label">What do you plan to trade today?</label>
-                            <div class="row d-flex align-items-center mb-2">
-                                <span class="col-3">
-                                    <select class="form-control disabled">
-                                        <option value="1">FB</option>
-                                    </select>
-                                </span>
-                                <span class="col-3">
-                                    <select class="form-control disabled">
-                                        <option value="1">Sell to Close</option>
-                                        <option value="2">Buy to Open</option>
-                                        <option value="3">Sell to Open</option>
-                                    </select>
-                                </span>
-                                <span class="col-6"><input type="text" class="form-control disabled" value="Undervalued" /></span>
-                            </div>
-                            <div class="border px-3 py-1 mb-2">
-                                <div class="row mb-1">
-                                    <span class="col-3">AAPL</span>
-                                    <span class="col-3">Buy to Close</span>
-                                    <span class="col-6">Happy with the returns</span>
-                                </div>
-                                <div class="row mb-1">
-                                    <span class="col-3">NIO</span>
-                                    <span class="col-3">Sell to Close</span>
-                                    <span class="col-6">Bad earnings expected</span>
-                                </div>
-                                <div class="row mb-1">
-                                    <span class="col-3">SNOW</span>
-                                    <span class="col-3">Sell to Open</span>
-                                    <span class="col-6">Overvalued</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="pre-heading">Post-Market</div>
-                        <div class="mb-2">
-                            <label class="col-form-label">Did you align with the trading plan?</label>
-                            <div class="row d-flex align-items-center mb-2">
-                                <span class="col-3">
-                                    <select class="form-control disabled">
-                                        <option value="1">Yes</option>
-                                    </select>
-                                </span>
-                                <span class="col-9"><input type="text" class="form-control disabled" value="If no, specify reason" /></span>
-                            </div>
-                        </div>
-                        <div class="mb-2">
-                            <label class="col-form-label">What lessons did you learn today?</label>
-                            <input type="text" class="form-control disabled" />
-                        </div>
-                    </div>
-    
-                    <div class="post-market-box col-md-6 v-line">
-                        <div class="pre-heading text-center">
-                            Trade Plan for Nov 11, 2020
-                        </div>
-                        <div class="pre-heading pt-2">Pre-Market</div>
-                        <div class="mb-2">
-                            <label class="col-form-label">Where do you think market is heading?</label>
-                            <div class="row d-flex align-items-center m-0 mb-2">
-                                <span class="col-2 p-0"><input type="button" class="btn btn-white full-width" value="UP" /></span>
-                                <span class="col-3 p-0"><input type="button" class="btn btn-white full-width" value="Sideways" /></span>
-                                <span class="col-2 p-0"><input type="button" class="btn btn-apply full-width" value="Down" /></span>
-                            </div>
-                        </div>
-                        <div class="mb-2">
-                            <label class="col-form-label pb-0 mr-2">Pre-Market Activities</label>
-                            <input type="checkbox" name="" checked />
-                        </div>
-                        <div class="mb-2">
-                            <label class="col-form-label">What’s your perspective on the market and your current positions?</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
-                        </div>
-                        <div class="mb-2">
-                            <label class="col-form-label">What is your mindset today</label>
-                            <select class="form-control col-md-3 disabled">
-                                <option value="1">Relaxed</option>
-                            </select>
-                        </div>
-                        <div class="mb-2">
-                            <label class="col-form-label">What do you plan to trade today?</label>
-                            <div class="trade-cards-section">
-                                <span class="card-main">
-                                    <select class="form-control">
-                                        <option value="1">FB</option>
-                                    </select>
-                                </span>
-                                <span class="card-main">
-                                    <select class="form-control">
-                                        <option value="1">Sell to Close</option>
-                                        <option value="2">Buy to Open</option>
-                                        <option value="3">Sell to Open</option>
-                                    </select>
-                                </span>
-                                <span class="card-main card-main-sm"><input type="text" class="form-control" value="Undervalued" /></span>
-                                <span class="text-success"><mat-icon class="mt-2">add</mat-icon></span>
-                            </div>
-                            <div class="d-flex align-items-center mb-1">
-                                <span class="card-main pl-3">Stocks</span>
-                                <span class="card-main pl-3">Percentage</span>
-                                <span class="card-main card-main-sm pl-3">0.15%</span>
-                                <mat-icon class="mr-3 text-success">edit</mat-icon>
-                                <mat-icon class="text-secondary">delete</mat-icon>
-                            </div>
-                            <div class="d-flex align-items-center mb-1">
-                                <span class="card-main pl-3">Stock Options</span>
-                                <span class="card-main pl-3">Fixed</span>
-                                <span class="card-main card-main-sm pl-3">0.65</span>
-                                <mat-icon class="mr-3 text-success">edit</mat-icon>
-                                <mat-icon class="text-secondary">delete</mat-icon>
-                            </div>
-                            <div class="d-flex align-items-center mb-1">
-                                <span class="card-main pl-3">Stock Future</span>
-                                <span class="card-main pl-3">Fixed</span>
-                                <span class="card-main card-main-sm pl-3">0.85</span>
-                                <mat-icon class="mr-3 text-success">edit</mat-icon>
-                                <mat-icon class="text-secondary">delete</mat-icon>
-                            </div>
-                        </div>
-                        
-                        <div class="pre-heading">Post-Market</div>
-                        <div class="mb-2">
-                            <label class="col-form-label">Did you align with the trading plan?</label>
-                            <div class="row d-flex align-items-center mb-2">
-                                <span class="col-3">
-                                    <select class="form-control">
-                                        <option value="1">Yes</option>
-                                    </select>
-                                </span>
-                                <span class="col-9"><input type="text" class="form-control" value="If no, specify reason." /></span>
-                            </div>
-                        </div>
-                        <div class="mb-2">
-                            <label class="col-form-label">What lessons did you learn today?</label>
-                            <input type="text" class="form-control" />
-                        </div>
-                        <div class="py-3">
-                            <button type="button" class="btn btn-apply" (click)="addEntry()">
-                                Save
-                            </button>
-                        </div>
-    
                     </div>
                 </div>
+                <div class="mb-2">
+                    <label class="col-form-label pt-0">Where do you think market is headed today?</label>
+                    <div class="trade-sel">
+                        <select class="form-control" id="exampleFormControlSelect1">
+                            <option>Sideways</option>
+                        </select>
+                        <mat-icon class="form-icon-down text-success">keyboard_arrow_down</mat-icon>
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <label class="col-form-label pt-0">Did you complete the pre-market activities?</label>
+                    <div class="trade-sel">
+                        <select class="form-control" id="exampleFormControlSelect1">
+                            <option>Yes</option>
+                            <option>No</option>
+                        </select>
+                        <mat-icon class="form-icon-down text-success">keyboard_arrow_down</mat-icon>
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <label class="col-form-label pt-0">What is your mindset today?</label>
+                    <div class="trade-sel">
+                        <select class="form-control" id="exampleFormControlSelect1">
+                            <option>Conﬁdent</option>
+                        </select>
+                        <mat-icon class="form-icon-down text-success">keyboard_arrow_down</mat-icon>
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <label class="col-form-label pt-0">What’s your perspective on the market and your current positions?</label>
+                    <div class="col-10 px-0">
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <label class="col-form-label pt-0">What do you want to do with your open positions?</label>
+                    <div class="col-11 px-0">
+                        <table class="table table-bordered table-custom">
+                            <thead>
+                                <tr>
+                                    <th class="border-0">Symbol</th>
+                                    <th class="border-0">Strategy</th>
+                                    <th class="border-0">Return</th>
+                                    <th class="border-0">Max. Risk</th>
+                                    <th class="border-0">Max. Profit</th>
+                                    <th class="border-0">Action</th>
+                                    <th class="border-0" *ngIf="edit">Aligned</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>NIO</td>
+                                    <td>Put Spread</td>
+                                    <td>9823</td>
+                                    <td>3094</td>
+                                    <td>3094</td>
+                                    <td>
+                                        Close half the positions and book proﬁt 
+                                        <mat-icon *ngIf="!edit" class="text-success mat-icon-sm ml-2">edit</mat-icon>
+                                    </td>
+                                    <td *ngIf="edit"><input type="checkbox" checked /></td>
+                                </tr>
+                                <tr>
+                                    <td>XPEV</td>
+                                    <td>Call Spread</td>
+                                    <td>932</td>
+                                    <td>29384</td>
+                                    <td>29384</td>
+                                    <td>
+                                        Retain the positions as they are 
+                                        <mat-icon *ngIf="!edit" class="text-success mat-icon-sm ml-2">edit</mat-icon>
+                                    </td>
+                                    <td *ngIf="edit"><input type="checkbox" /></td>
+                                </tr>
+                                <tr>
+                                    <td>LI</td>
+                                    <td>Custom</td>
+                                    <td>459</td>
+                                    <td>9283</td>
+                                    <td>9283</td>
+                                    <td>No change. Hold <mat-icon *ngIf="!edit" class="text-success mat-icon-sm ml-2">edit</mat-icon></td>
+                                    <td *ngIf="edit"><input type="checkbox" checked /></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- end: table-custom -->
+                <div class="mb-2">
+                    <label class="col-form-label pt-0">What do you plan to trade today?</label>
+                    <div class="px-0" [ngClass]="edit ? 'col-11': 'col-12'">
+                        <table class="table table-bordered table-custom">
+                            <thead>
+                                <tr>
+                                    <th>Symbol</th>
+                                    <th>Strategy</th>
+                                    <th>Buy to Open</th>
+                                    <th>Max. Risk</th>
+                                    <th>Profit(Exp)</th>
+                                    <th>Specify reasons for the trade</th>
+                                    <th class="border-0" *ngIf="!edit"><mat-icon class="text-success mat-icon-md">add_circle</mat-icon></th>
+                                    <th *ngIf="edit">Executed</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>AAPL</td>
+                                    <td>Stock</td>
+                                    <td>Sell to Close</td>
+                                    <td>9823</td>
+                                    <td>3094</td>
+                                    <td>Happy with returns</td>
+                                    <td class="border-0" *ngIf="!edit">
+                                        <mat-icon class="text-success mat-icon-sm">edit</mat-icon>
+                                        <mat-icon class="ml-2">delete</mat-icon>
+                                    </td>
+                                    <td *ngIf="edit"><input type="checkbox" checked /></td>
+                                </tr>
+                                <tr>
+                                    <td>XPEV</td>
+                                    <td>Call Spread</td>
+                                    <td>Buy to Open</td>
+                                    <td>932</td>
+                                    <td>29384</td>
+                                    <td>Bad earnings expected</td>
+                                    <td class="border-0" *ngIf="!edit">
+                                        <mat-icon class="text-success mat-icon-sm">edit</mat-icon>
+                                        <mat-icon class="ml-2">delete</mat-icon>
+                                    </td>
+                                    <td *ngIf="edit"><input type="checkbox" /></td>
+                                </tr>
+                                <tr>
+                                    <td>SNOW</td>
+                                    <td>Put Spread</td>
+                                    <td>Sell to Close</td>
+                                    <td>932</td>
+                                    <td>9283</td>
+                                    <td>Overvalued</td>
+                                    <td class="border-0" *ngIf="!edit">
+                                        <mat-icon class="text-success mat-icon-sm">edit</mat-icon>
+                                        <mat-icon class="ml-2">delete</mat-icon>
+                                    </td>
+                                    <td *ngIf="edit"><input type="checkbox" checked /></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <ng-container *ngIf="edit">
+                    <div class="mb-2">
+                        <label class="col-form-label pt-0">Did you align with the trading plan?</label>
+                        <div class="col-10 px-0 media">
+                            <div class="trade-sel mr-3">
+                                <select class="form-control" id="exampleFormControlSelect1">
+                                    <option>Yes</option>
+                                </select>
+                                <mat-icon class="form-icon-down text-success">keyboard_arrow_down</mat-icon>
+                            </div>
+                            <div class="media-body">
+                                <input type="text" placeholder=" If no, specify reason" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <label class="col-form-label pt-0">How you rate your trading performance today? </label>
+                        <div class="trade-sel">
+                            <select class="form-control" id="exampleFormControlSelect1">
+                                <option>Good</option>
+                            </select>
+                            <mat-icon class="form-icon-down text-success">keyboard_arrow_down</mat-icon>
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <label class="col-form-label pt-0">Did you align with the trading plan?</label>
+                        <div class="col-10 px-0">
+                            <textarea class="form-control"></textarea>
+                            <div class="text-right"><span class="add-new" (click)="addRule('Add', 'SAVE')">Add as Rule</span></div>
+                        </div>
+                    </div>
+                </ng-container>
+                <!-- end: table-custom -->
+                <div class="pb-3 text-center">
+                    <button type="button" class="btn btn-success" *ngIf="!edit">ADD PLAN</button>
+                    <button type="button" class="btn btn-success" *ngIf="edit">SUBMIT</button>
+                </div>
+                
             </div>
         </div>
     </div>

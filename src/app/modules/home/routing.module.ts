@@ -12,6 +12,7 @@ import { CloseTradeComponent } from '../../modules/trade-management/components/c
 import { EditTradeComponent } from '../../modules/trade-management/components/edit-trade/edit-trade.component';
 import { ViewTradeComponent } from '../../modules/trade-management/components/view-trade/view-trade.component';
 import { AddnewtradeplanComponent } from '../../modules/trade-plan/components/add-trade-plan/addnewtradeplan.component';
+import { EditTradePlanComponent } from '../../modules/trade-plan/components/edit-trade-plan.component';
 import { TradePlansComponent } from '../../modules/trade-plan/components/trade-plans.component';
 import { ProfileComponent } from '../../modules/user-profile/components/profile.component';
 import { RiskAnalysisComponent } from '../../modules/risk-analysis/components/risk-analysis.component';
@@ -74,6 +75,10 @@ const routes: Routes = [
         {
           path: 'add-new-trade-plan',
           component: AddnewtradeplanComponent
+        },
+        {
+          path: 'edit-trade-plan',
+          component: EditTradePlanComponent
         },
         {
           path: 'trade-plans',

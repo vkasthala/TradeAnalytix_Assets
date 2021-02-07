@@ -6,6 +6,7 @@
           <div class="trade-dash-main">
             <div class="trade-dash-name">
               <h3>Trade Plans</h3>
+              
             </div>
             <div class="trade_plans_header">
               <span class="col-form-label mr-2">Filter By</span>
@@ -28,19 +29,28 @@
                   <th mat-header-cell *matHeaderCellDef> Date </th>
                   <td mat-cell *matCellDef="let element"> {{element.date}} </td>
                 </ng-container>
+
+                <!-- Status Column -->
+                <ng-container matColumnDef="status">
+                  <th mat-header-cell *matHeaderCellDef> Status </th>
+                  <td mat-cell *matCellDef="let element" [ngClass]="{
+                    'text-primary': element.status == 'Open',
+                    'text-success': element.status == 'Closed'}"> {{element.status}} </td>
+                </ng-container>
+
+                <!-- Mindset Column -->
+                <ng-container matColumnDef="mindset">
+                  <th mat-header-cell *matHeaderCellDef> Mindset </th>
+                  <td mat-cell *matCellDef="let element"> {{element.mindset}} </td>
+                </ng-container>
             
                 <!-- Name Column -->
-                <ng-container matColumnDef="perspective">
-                  <th mat-header-cell *matHeaderCellDef width ="30%"> Perspective on the Market</th>
-                  <td mat-cell *matCellDef="let element"> {{element.perspective}} </td>
+                <ng-container matColumnDef="prediction">
+                  <th mat-header-cell *matHeaderCellDef width ="15%"> Prediction</th>
+                  <td mat-cell *matCellDef="let element"> {{element.prediction}} </td>
                 </ng-container>
             
-                <!-- Weight Column -->
-                <ng-container matColumnDef="direction">
-                  <th mat-header-cell *matHeaderCellDef> Market Direction </th>
-                  <td mat-cell *matCellDef="let element"> {{element.direction}} </td>
-                </ng-container>
-            
+                
                 <!-- Symbol Column -->
                 <ng-container matColumnDef="planned_trades">
                   <th mat-header-cell *matHeaderCellDef> Planned Trades </th>
@@ -48,24 +58,41 @@
                 </ng-container>
 
                 <!-- Lessions Learnt Column -->
-                <ng-container matColumnDef="aligned_with_plan">
-                  <th mat-header-cell *matHeaderCellDef> Aligned with Plan</th>
-                  <td mat-cell *matCellDef="let element"><img alt="" class="img-fluid"
-                    src="../../../../assets/images/Dashboard/Icon_feather-check-removebg-preview.png" /></td>
+                <ng-container matColumnDef="aligned">
+                  <th mat-header-cell *matHeaderCellDef> Aligned</th>
+                  <td mat-cell *matCellDef="let element" [ngClass]="{
+                    'text-success': element.aligned == 'Yes',
+                    'text-danger': element.aligned == 'No'}">{{element.aligned}}</td>
                 </ng-container>
 
                 <!-- Lessions Learnt Column -->
-                <ng-container matColumnDef="lessions_learnt">
-                  <th mat-header-cell *matHeaderCellDef> Lessions Learnt </th>
-                  <td mat-cell *matCellDef="let element"> {{element.lessions_learnt}} </td>
+                <ng-container matColumnDef="self_review">
+                  <th mat-header-cell *matHeaderCellDef>Self-Review</th>
+                  <td mat-cell *matCellDef="let element"> {{element.self_review}} </td>
+                </ng-container>
+
+                <!-- Lessions Learnt Column -->
+                <ng-container matColumnDef="trades">
+                  <th mat-header-cell *matHeaderCellDef>Trades</th>
+                  <td mat-cell *matCellDef="let element"> {{element.trades}} </td>
+                </ng-container>
+
+                <!-- Lessions Learnt Column -->
+                <ng-container matColumnDef="return">
+                  <th mat-header-cell *matHeaderCellDef>Return</th>
+                  <td mat-cell *matCellDef="let element"> {{element.return}} </td>
                 </ng-container>
 
                 <!-- Action Column -->
                 <ng-container matColumnDef="action">
                   <th mat-header-cell *matHeaderCellDef> </th>
                   <td mat-cell *matCellDef="let element"><div class="edit">
-                    <img alt="" src="../../../../assets/images/Icon material-edit.png">
-                </div></td>
+                    
+
+                    <mat-icon class="text-success cursor mat-icon-sm" (click)="editEntry()">edit</mat-icon>
+                </div>
+
+              </td>
                 </ng-container>
             
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

@@ -73,7 +73,8 @@ import { DisciplineComponent } from '../reports/components/discipline/discipline
 import { ReportSummaryComponent } from '../reports/components/report-summary/report-summary.component';
 import { ReportChartComponent } from '../reports/components/report-chart/report-chart.component';
 import { UpdateStockPricePopupComponent } from '../risk-analysis/components/update-stock-price-popup/update-stock-price-popup.component';
-
+import { EditTradePlanComponent } from '../trade-plan/components/edit-trade-plan.component';
+import { from } from 'rxjs';
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -131,7 +132,8 @@ import { UpdateStockPricePopupComponent } from '../risk-analysis/components/upda
     ReportsitemsComponent,
     ReportSummaryComponent,
     ReportChartComponent,
-    UpdateStockPricePopupComponent
+    UpdateStockPricePopupComponent,
+    EditTradePlanComponent
   ],
   imports: [
     CommonModule,

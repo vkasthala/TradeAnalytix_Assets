@@ -47,8 +47,8 @@
               <ng-container matColumnDef="action">
                 <mat-header-cell class="action-cell" *matHeaderCellDef> Action</mat-header-cell>
                 <mat-cell *matCellDef="let element" class="action-cell">
-                    <mat-icon class="text-success mat-icon-sm cursor" (click)="editTrade(element, 'Edit', 'Update')">edit</mat-icon>
-                    <mat-icon class="mat-icon-sm cursor ml-2">delete</mat-icon>
+                    <mat-icon class="text-success mat-icon-sm cursor" (click)="editRule(element, 'Edit', 'Update')">edit</mat-icon>
+                    <mat-icon class="mat-icon-sm cursor ml-2" (click)="deleteRule(element)">delete</mat-icon>
                 </mat-cell>
               </ng-container>
           
