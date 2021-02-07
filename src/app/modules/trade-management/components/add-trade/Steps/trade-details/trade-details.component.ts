@@ -327,6 +327,9 @@ export class TradeDetailsComponent implements OnInit {
       console.log('stock leg history: ', stockLegHistory);
       this.localStockClosedSubject.next(stockLegHistory);
     }
+    if (this.stockEntry.quantity == 0) {
+      this.stockAdded = false;
+    }
   }
 
   addOrReduceStockOption(dialogResult: any, stockOption: OptionEntry, add: boolean, index: number) {
@@ -352,6 +355,10 @@ export class TradeDetailsComponent implements OnInit {
       let optionLegHistory: OptionLegHistory = this.createLocalOptionLegHistory(legChange, stockOption);
       console.log('option leg history: ', optionLegHistory);
       this.localOptionClosedSubject.next(optionLegHistory);
+    }
+
+    if (stockOption.contracts == 0) {
+      this.deleteStockOption(index);
     }
   }
 
