@@ -180,6 +180,19 @@ export class AddNewTradeComponent implements OnInit {
     });
   }
 
+  cancelTrade() {
+    const dialogRef = this._dialog.open(ConfirmDialogComponent, {
+      width: 'auto',
+      height: 'auto',
+      data: { 'message': 'Are you sure you want to cancel the changes?' }
+    });
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      if (dialogResult == true) {
+        this.router.navigateByUrl("/trade-strategies");
+      }
+    });
+  }
+
   updateTradeStrategyProps() {
     this.tradeStrategy.stockId = this.selectedStock.id;
     this.tradeStrategy.strategyTypeId = this.tradeDetails.selectedStrategy;

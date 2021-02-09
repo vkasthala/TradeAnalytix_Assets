@@ -29,7 +29,7 @@ export class TradePlansComponent implements OnInit {
 
   ngAfterViewInit() {
     this.tradeplansService.getTradePlans().subscribe(data => {
-      this.dataSource = data.tradeplanData;
+      //this.dataSource = data.tradeplanData;
       console.log('TradePlans', this.dataSource);
       return;
     });

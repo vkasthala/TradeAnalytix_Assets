@@ -191,7 +191,7 @@
                   *ngIf="(add && (tradeDetails.stockOptions.length || tradeDetails.stockAdded))"
                   (click)="CheckExecutionDate('Confirm Trade Execution Date')">ADD TRADE</button>
 
-                <button type="button" class="btn btn-gray mr-3" *ngIf="edit">CANCEL</button>
+                <button type="button" class="btn btn-gray mr-3" *ngIf="edit" (click)="cancelTrade()">CANCEL</button>
                 <button type="button" class="btn btn-next mr-3" *ngIf="edit" (click)="editTrade()">UPDATE</button>
 
                 <button type="button" class="btn btn-next mr-3" *ngIf="close && !view" (click)="closeTrade()">CLOSE

@@ -14,7 +14,7 @@ export class EditTradePlanComponent extends AddnewtradeplanComponent implements 
   constructor(
     router: Router,
     _dialog: MatDialog) {
-    super(_dialog);
+    super(_dialog, router);
     this.edit = true;
     this.add = false;
   }
