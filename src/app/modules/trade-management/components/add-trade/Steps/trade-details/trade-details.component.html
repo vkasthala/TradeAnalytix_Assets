@@ -103,7 +103,7 @@
         </div>
       </ng-container>
       <ng-container *ngFor="let item of stockOptions;let index = index">
-        <div class="trade-card-box">
+        <div class="trade-card-box" *ngIf="item.display != false">
           <div class="card-main">
             <select id="inputState" [ngClass]="[closeTrade ? 'disabled' : '', viewTrade ? 'disabled' : '']" class="form-control select-input px-0"
               [(ngModel)]="stockOptions[index].actionType">

@@ -28,5 +28,7 @@ export class OptionEntry {
 
     expireDate: string;
 
-    partialLegChange: PartialLegChange[]
+    partialLegChange: PartialLegChange[];
+
+    display: boolean;
 }

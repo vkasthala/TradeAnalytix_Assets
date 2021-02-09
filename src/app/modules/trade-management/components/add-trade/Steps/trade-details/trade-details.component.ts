@@ -79,6 +79,20 @@ export class TradeDetailsComponent implements OnInit {
       this.direction = this.inputState.tradeStrategy.direction;
       this.executedDate = this.inputState.tradeStrategy.executedDate;
       this.closeDate = this.inputState.tradeStrategy.closeDate;
+      this.updateStockOptionDisplayProperty();
+    }
+  }
+
+  updateStockOptionDisplayProperty() {
+    if (!this.stockOptions) {
+      return;
+    }
+    console.log('update stock options: ', this.stockOptions);
+    for (let ind = 0; ind < this.stockOptions.length; ind++) {
+      if (this.stockOptions[ind].contracts === 0) {
+        console.log('this ind: ', ind);
+        this.stockOptions[ind].display = false;
+      }
     }
   }
 
@@ -327,9 +341,6 @@ export class TradeDetailsComponent implements OnInit {
       console.log('stock leg history: ', stockLegHistory);
       this.localStockClosedSubject.next(stockLegHistory);
     }
-    if (this.stockEntry.quantity == 0) {
-      this.stockAdded = false;
-    }
   }
 
   addOrReduceStockOption(dialogResult: any, stockOption: OptionEntry, add: boolean, index: number) {
@@ -355,10 +366,6 @@ export class TradeDetailsComponent implements OnInit {
       let optionLegHistory: OptionLegHistory = this.createLocalOptionLegHistory(legChange, stockOption);
       console.log('option leg history: ', optionLegHistory);
       this.localOptionClosedSubject.next(optionLegHistory);
-    }
-
-    if (stockOption.contracts == 0) {
-      this.deleteStockOption(index);
     }
   }
 
