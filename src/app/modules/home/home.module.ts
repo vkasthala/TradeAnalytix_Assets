@@ -75,6 +75,22 @@ import { ReportChartComponent } from '../reports/components/report-chart/report-
 import { UpdateStockPricePopupComponent } from '../risk-analysis/components/update-stock-price-popup/update-stock-price-popup.component';
 import { EditTradePlanComponent } from '../trade-plan/components/edit-trade-plan.component';
 import { from } from 'rxjs';
+
+import {MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
+import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
+import * as _moment from 'moment';
+export const MY_FORMATS = {
+  parse: {
+      dateInput: 'DD-MMM-YY'
+  },
+  display: {
+    dateInput: 'DD-MMM-YY',
+    monthYearLabel: 'DD-MMM-YY',
+    dateA11yLabel: 'DD',
+    monthYearA11yLabel: 'DD-MMM-YY',
+  }
+};
+
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -133,7 +149,8 @@ import { from } from 'rxjs';
     ReportSummaryComponent,
     ReportChartComponent,
     UpdateStockPricePopupComponent,
-    EditTradePlanComponent
+    EditTradePlanComponent,
+
   ],
   imports: [
     CommonModule,
@@ -166,5 +183,13 @@ import { from } from 'rxjs';
     UpdateStockPricePopupComponent
   ],
   // bootstrap: [TradeStrategiesGrid],
+  providers: [
+    {
+      provide: DateAdapter,
+      useClass: MomentDateAdapter,
+      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
+    },
+    {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
+  ],
 })
 export class HomeModule { }

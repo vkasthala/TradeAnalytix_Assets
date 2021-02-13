@@ -26,10 +26,9 @@ import { OptionLegHistory } from 'src/app/modules/trade-management/models/option
 @Component({
   selector: 'app-trade-details',
   templateUrl: './trade-details.component.html',
-  styleUrls: ['./trade-details.component.scss']
+  styleUrls: ['./trade-details.component.scss'],
 })
 export class TradeDetailsComponent implements OnInit {
-
   currentState: number = 1;
   stockAdded: boolean;
 
@@ -60,10 +59,12 @@ export class TradeDetailsComponent implements OnInit {
   executedDate: string;
   closeDate: string;
 
-  constructor(private utilService: UtilService,
+  constructor(
+    private utilService: UtilService,
     private strategyCreateServiceService: StrategyCreateService,
     private router: Router,
-    private _dialog: MatDialog) { }
+    private _dialog: MatDialog) { 
+    }
 
   ngOnInit() {
     this.stockEntry = this.createStockEntry();

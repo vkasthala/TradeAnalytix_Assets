@@ -25,6 +25,7 @@ import { Subject } from 'rxjs';
 import { StockLegHistory } from '../../models/stock-leg-history.model';
 import { OptionLegHistory } from '../../models/option-leg-history.model';
 
+
 @Component({
   selector: 'app-add-new-trade',
   templateUrl: './add-new-trade.component.html',
@@ -97,7 +98,7 @@ export class AddNewTradeComponent implements OnInit {
 
   enterSymbol() {
     if (!this.selectedStock || !this.selectedStock.code) {
-      this.toastr.error('Invalid Symbol', '');
+      this.toastr.error('Please enter a valid symbol to proceed', '');
       return false;
     }
 
@@ -162,6 +163,7 @@ export class AddNewTradeComponent implements OnInit {
   }
 
   editTradeStrategy() {
+    debugger;
     this.updateTradeStrategyProps();
     console.log('edit trade...', this.tradeStrategy);
     this.tradeStrategyService.editTrade(this.tradeStrategy).subscribe(result => {

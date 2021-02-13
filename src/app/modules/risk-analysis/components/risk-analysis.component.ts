@@ -88,7 +88,7 @@ export class RiskAnalysisComponent implements OnInit {
 
   enterSymbol() {
     if (!this.selectedStock || !this.selectedStock.code) {
-      this.toastr.error('Invalid Symbol', '');
+      this.toastr.error('Please enter a valid symbol to proceed', '');
       return false;
     }
     this.currentState++;
