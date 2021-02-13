@@ -382,7 +382,7 @@ export class RiskAnalysisComponent implements OnInit {
     this.performRiskAnalysis = true;
     this.displayRiskAnalysis = true;
     let riskAnalysisRequest: RiskAnalysisRequest = new RiskAnalysisRequest();
-    riskAnalysisRequest.stockPrice = this.stockAdded ? this.stockEntry : this.createStockEntry();
+    riskAnalysisRequest.stockPrice = this.stockEntry;
     riskAnalysisRequest.options = this.stockOptions;
 
     console.log('implied volatility request:', JSON.stringify(riskAnalysisRequest));
