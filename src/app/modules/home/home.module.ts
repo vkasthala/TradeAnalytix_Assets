@@ -4,7 +4,8 @@ import {
   MatDatepickerModule,
   MatNativeDateModule,
   MatInputModule,
-  MatTooltipModule
+  MatTooltipModule,
+  MatListModule
 
 } from '@angular/material';
 import { TradeStrategiesComponent } from '../trade-strategies/components/trade-strategies.component';
@@ -74,6 +75,8 @@ import { ReportSummaryComponent } from '../reports/components/report-summary/rep
 import { ReportChartComponent } from '../reports/components/report-chart/report-chart.component';
 import { UpdateStockPricePopupComponent } from '../risk-analysis/components/update-stock-price-popup/update-stock-price-popup.component';
 import { EditTradePlanComponent } from '../trade-plan/components/edit-trade-plan.component';
+import { EditableListComponent } from '../shared/components/widgets/editable-list/editable-list.component';
+
 import { from } from 'rxjs';
 
 import {MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
@@ -150,7 +153,7 @@ export const MY_FORMATS = {
     ReportChartComponent,
     UpdateStockPricePopupComponent,
     EditTradePlanComponent,
-
+    EditableListComponent
   ],
   imports: [
     CommonModule,
@@ -164,7 +167,8 @@ export const MY_FORMATS = {
     MatDatepickerModule,
     MatTableModule,
     MatPaginatorModule,
-    ChartModule
+    ChartModule,
+    MatListModule
     // MatTableDataSource
   ],
   entryComponents: [

@@ -1,0 +1,23 @@
+<div>
+    <div class="trade-cards-section">
+        <span class="card-main">
+            <input type="text" class="form-control" [(ngModel)]="newValue" />
+        </span>
+        <span class="text-primary" *ngIf="!edit">
+            <mat-icon class="mt-2 text-success" (click)="onItemAdd()">add_circle</mat-icon>
+        </span>
+        <span class="text-primary" *ngIf="edit">
+            <mat-icon class="mt-2 text-success" (click)="onItemEdit()">check_circle</mat-icon>
+        </span>
+        <span class="text-primary" *ngIf="edit">
+            <mat-icon class="mt-2 text-danger" (click)="onCancel()">close</mat-icon>
+        </span>
+    </div>
+
+    <mat-selection-list [(ngModel)]="selectedItems" (ngModelChange)="onSelectedItemChange($event)">
+        <mat-list-option *ngFor="let item of items" [value]="item">
+            <div mat-line>{{item.name}}</div>
+            <mat-icon class="mat-icon-sm">delete</mat-icon>
+        </mat-list-option>
+    </mat-selection-list>
+</div>
