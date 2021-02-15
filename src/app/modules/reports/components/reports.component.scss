@@ -10,6 +10,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-left: 14%;
   }
   .tab .nav-tabs li{
     padding: 0px 40px;
@@ -117,7 +118,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      min-width: calc((100% - 87%));  
+      min-width: calc((100% - 87%));
+      border-radius: 4px;
       @media #{$extra-small} {
         min-width: calc((100% - 54%));
       }
