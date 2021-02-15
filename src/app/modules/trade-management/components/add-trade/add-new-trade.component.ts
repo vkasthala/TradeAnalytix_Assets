@@ -163,7 +163,6 @@ export class AddNewTradeComponent implements OnInit {
   }
 
   editTradeStrategy() {
-    debugger;
     this.updateTradeStrategyProps();
     console.log('edit trade...', this.tradeStrategy);
     this.tradeStrategyService.editTrade(this.tradeStrategy).subscribe(result => {

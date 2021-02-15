@@ -67,17 +67,17 @@
                             <option value=4>Sell to Close</option>
                           </select>
                         </div>
-                        <div class="card-main card-main-sm">
+                        <div class="card-main card-main-md">
                           <label class="col-form-label pt-0">Quantity</label>
                           <input type="number" min="0" class="form-control cards-input disabled"
                             [(ngModel)]="item.quantity" />
                         </div>
-                        <div class="card-main card-main-md pr-1">
+                        <div class="card-main card-main-custom pr-1">
                           <label class="col-form-label pt-0">Entry Price</label>
                           <input type="number" min="0" class="form-control cards-input disabled"
                             [(ngModel)]="item.entryPrice" pattern="^\d*(\.\d{0,2})?$" step="0.01" />
                         </div>
-                        <div class="card-main card-main-md">
+                        <div class="card-main card-main-custom">
                           <label class="col-form-label pt-0">Exit Price</label>
                           <input type="number" min="0" class="form-control cards-input disabled"
                             [(ngModel)]="item.exitPrice" pattern="^\d*(\.\d{0,2})?$" step="0.01" />
@@ -91,13 +91,13 @@
                       </div>
                       <div class="mb-1 trade-card-box">
                         <div class="card-main">Action</div>
-                        <div class="card-main card-main-sm">Contracts</div>
+                        <div class="card-main card-main-md">Contracts</div>
+                        <div class="card-main card-main-md">Strike</div>
                         <div class="card-main">Expiration</div>
-                        <div class="card-main card-main-sm">Strike</div>
-                        <div class="card-main card-main-sm">Call / Put</div>
-                        <div class="card-main card-main-md pr-1">Entry Price</div>
+                        <div class="card-main card-main-md">Call / Put</div>
+                        <div class="card-main card-main-md">Entry Price</div>
                         <div class="card-main card-main-md">Exit Price</div>
-                        <div class="card-main card-main-sm">Return</div>
+                        <div class="card-main card-main-md">Return</div>
                       </div>
                       <div class="mb-1 trade-card-box"
                         *ngFor="let item of tradeHistory.optionLegHistories;let index = index">
@@ -109,9 +109,14 @@
                             <option value=4>Sell to Close</option>
                           </select>
                         </div>
-                        <div class="card-main card-main-sm">
+                        <div class="card-main card-main-md">
                           <input type="number" min="0" class="form-control cards-input disabled"
                             [(ngModel)]="item.contracts" />
+                        </div>
+                        
+                        <div class="card-main card-main-md">
+                          <input type="number" step="0.01" min="0" class="form-control cards-input disabled"
+                            [(ngModel)]="item.strikePrice" pattern="^\d*(\.\d{0,2})?$" />
                         </div>
                         <div class="card-main">
                           <div class="datepicker-group">
@@ -122,18 +127,15 @@
                             <mat-datepicker #expireDate></mat-datepicker>
                           </div>
                         </div>
-                        <div class="card-main card-main-sm">
-                          <input type="number" step="0.01" min="0" class="form-control cards-input disabled"
-                            [(ngModel)]="item.strikePrice" pattern="^\d*(\.\d{0,2})?$" />
-                        </div>
-                        <div class="card-main card-main-sm">
+                        <div class="card-main card-main-md">
                           <select id="inputState" class="form-control select-input disabled px-0"
                             [(ngModel)]="item.optionType">
                             <option value=1 selected data-default>Call</option>
                             <option value=2>Put</option>
                           </select>
                         </div>
-                        <div class="card-main card-main-md pr-1">
+
+                        <div class="card-main card-main-md">
                           <input type="number" min="0" class="form-control cards-input disabled"
                             [(ngModel)]="item.entryPrice" pattern="^\d*(\.\d{0,2})?$" step="0.01" />
                         </div>
@@ -141,7 +143,7 @@
                           <input type="number" min="0" class="form-control cards-input disabled"
                             [(ngModel)]="item.exitPrice" pattern="^\d*(\.\d{0,2})?$" step="0.01" />
                         </div>
-                        <div class="card-main card-main-sm">
+                        <div class="card-main card-main-md">
                           <h6 class="input_text">
                             {{(item.contracts && item.exitPrice && item.entryPrice) ? (item.contracts * ((item.exitPrice - item.entryPrice) * 100) *  (item.actionType == 3 ? -1 : 1)).toFixed(2) : 0}}
                           </h6>
@@ -187,7 +189,7 @@
               <div class="text-center py-3">
                 <span class="order-btn text-center"
                   *ngIf="(tradeDetails.stockAdded || tradeDetails.stockOptions.length > 0) && (stepper.selectedIndex == 0)">
-                  <button type="button" class="btn btn-gray mr-3" *ngIf="!close && !tradeStrategy.executed"
+                  <button type="button" class="btn btn-gray mr-3" *ngIf="!close && !tradeStrategy.executed && !edit"
                     (click)="saveTradeAsDraft()">Save as Draft</button>
                 </span>
                 <button type="button" class="btn btn-next mr-3"
