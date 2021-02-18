@@ -10,7 +10,7 @@ export class EditableListComponent implements OnInit {
 
   items: EditableListItem[] = [];
 
-  selectedItems: EditableListItem[];
+  selected: EditableListItem;
 
   newValue: string;
 
@@ -23,8 +23,11 @@ export class EditableListComponent implements OnInit {
   }
 
   onSelectedItemChange(value) {
+    console.log("selected:", value);
     if (value) {
       this.edit = true;
+      this.selected = value;
+      this.newValue = value.name;
     }
   }
 
@@ -32,13 +35,18 @@ export class EditableListComponent implements OnInit {
     let item: EditableListItem = new EditableListItem();
     item.name = this.newValue;
     this.items.push(item);
+    this.onCancel();
 
   }
 
   onItemEdit() {
-    if (this.selectedItems.length == 1) {
-      this.selectedItems[0].name == this.newValue;
-    }
+    this.selected.name = this.newValue;
+    this.onCancel();
+  }
+
+  onDelete(index) {
+    this.items.splice(index, 1);
+    this.onCancel();
   }
 
   onCancel() {
