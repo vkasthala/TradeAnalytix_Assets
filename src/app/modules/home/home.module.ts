@@ -82,6 +82,7 @@ import { from } from 'rxjs';
 import {MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 import * as _moment from 'moment';
+import { EditableGridComponent } from '../shared/components/widgets/editable-grid/editable-grid.component';
 export const MY_FORMATS = {
   parse: {
       dateInput: 'DD-MMM-YY'
@@ -153,7 +154,8 @@ export const MY_FORMATS = {
     ReportChartComponent,
     UpdateStockPricePopupComponent,
     EditTradePlanComponent,
-    EditableListComponent
+    EditableListComponent,
+    EditableGridComponent
   ],
   imports: [
     CommonModule,

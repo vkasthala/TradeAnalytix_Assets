@@ -1,1 +1,9 @@
-<p>editable-grid works!</p>
+<div>
+    <mat-table [dataSource]="dataSource">
+        <ng-container *ngFor="let entry of columns" matColumnDef="{{entry}}">
+            <mat-cell class="strategy-id-cell" *matCellDef="let element"> Test {{element[entry]}}
+            </mat-cell>
+        </ng-container>
+        <mat-row class="editable-grid-row" *matRowDef="let element; columns: columns;"></mat-row>
+    </mat-table>
+</div>
