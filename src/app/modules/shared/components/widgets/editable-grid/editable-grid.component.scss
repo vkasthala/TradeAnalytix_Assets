@@ -1,7 +1,25 @@
-tr.editable-grid-row :active{
-    background: #efefef;
+
+.card-main{
+    padding-right: 10px;
 }
 
-tr.editable-grid-row :hover{
-    background: #efefef;
+.editable-text{
+    width: 80px;
+}
+
+.trade-cards-section {
+    display: flex;
+    align-items: stretch;
+    flex-wrap: wrap;
+    padding-bottom: 10px;
+}
+
+.mat-row:nth-child(odd) {
+    background-color: transparent !important;
+    border: 0;
+}
+
+.action-icon{
+    cursor: pointer;
+    padding-right: 10px;
 }

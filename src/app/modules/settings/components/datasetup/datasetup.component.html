@@ -3,7 +3,7 @@
     <div class="pre-market-box col-sm-6 py-3">
         <div class="mb-2">
             <label class="col-form-label">Brokerage Commission</label>
-            <div class="trade-cards-section">
+            <!--<div class="trade-cards-section">
                 <span class="card-main">
                     <select class="form-control">
                         <option value="1">Forex Options</option>
@@ -19,7 +19,7 @@
                 </span>
                 <span class="card-main card-main-sm"><input type="text" class="form-control" value="0.85%" /></span>
                 <span class="text-primary"><mat-icon class="mt-2 text-success">add_circle</mat-icon></span>
-            </div>
+            </div>-->
             <!--<div class="d-flex align-items-center mb-1">
                 <span class="card-main pl-3">Stocks</span>
                 <span class="card-main pl-3">Percentage</span>
@@ -45,51 +45,11 @@
         </div>
         <div class="mb-2">
             <label class="col-form-label">Source of Trade Ideas</label>
-            <div class="trade-cards-section">
-                <span class="card-main">
-                    <input type="text" class="form-control" value="CNBC" />
-                </span>
-                <span class="text-primary"><mat-icon class="mt-2 text-success">add_circle</mat-icon></span>
-            </div>
-            <div class="d-flex align-items-center mb-1">
-                <span class="card-main pl-3">Barrons</span>
-                <mat-icon class="mr-2 text-success mat-icon-sm">edit</mat-icon>
-            <mat-icon class="mat-icon-sm">delete</mat-icon>
-            </div>
-            <div class="d-flex align-items-center mb-1">
-                <span class="card-main pl-3">Self</span>
-                <mat-icon class="mr-2 text-success mat-icon-sm">edit</mat-icon>
-                <mat-icon class="mat-icon-sm">delete</mat-icon>
-            </div>
-            <div class="d-flex align-items-center mb-1">
-                <span class="card-main pl-3">Ark Investment</span>
-                <mat-icon class="mr-2 text-success mat-icon-sm">edit</mat-icon>
-                <mat-icon class="mat-icon-sm">delete</mat-icon>
-            </div>
+            <app-editable-list #tradeIdea></app-editable-list>
         </div>
         <div class="mb-2">
             <label class="col-form-label">Technical Indicators</label>
-            <div class="trade-cards-section">
-                <span class="card-main">
-                    <input type="text" class="form-control" value="50-day Moving Average" />
-                </span>
-                <span class="text-primary"><mat-icon class="mt-2 text-success">add_circle</mat-icon></span>
-            </div>
-            <div class="d-flex align-items-center mb-1">
-                <span class="card-main pl-3">Support</span>
-                <mat-icon class="mr-2 text-success mat-icon-sm">edit</mat-icon>
-            <mat-icon class="mat-icon-sm">delete</mat-icon>
-            </div>
-            <div class="d-flex align-items-center mb-1">
-                <span class="card-main pl-3">Resistance</span>
-                <mat-icon class="mr-2 text-success mat-icon-sm">edit</mat-icon>
-                <mat-icon class="mat-icon-sm">delete</mat-icon>
-            </div>
-            <div class="d-flex align-items-center mb-1">
-                <span class="card-main pl-3">Bollinger Bands</span>
-                <mat-icon class="mr-2 text-success mat-icon-sm">edit</mat-icon>
-                <mat-icon class="mat-icon-sm">delete</mat-icon>
-            </div>
+            <app-editable-list #technicalIndicator></app-editable-list>
         </div>
     </div>
 
@@ -100,33 +60,7 @@
         </div>
         <div class="mb-2">
             <label class="col-form-label">Events</label>
-            <div class="trade-cards-section">
-                <span class="col-md-5 pl-0">
-                    <input type="text" class="form-control" value="Pre-Earnings" />
-                </span>
-                <span class="text-primary"><mat-icon class="mt-2 text-success">add_circle</mat-icon></span>
-            </div>
-            <div class="d-flex align-items-center mb-1">
-                <span class="col-md-5">Stock Split</span>
-                <mat-icon class="mr-2 text-success mat-icon-sm">edit</mat-icon>
-            <mat-icon class="mat-icon-sm">delete</mat-icon>
-            </div>
-            <div class="d-flex align-items-center mb-1">
-                <span class="col-md-5">Post-Earnings</span>
-                <mat-icon class="mr-2 text-success mat-icon-sm">edit</mat-icon>
-                <mat-icon class="mat-icon-sm">delete</mat-icon>
-            </div>
-            <div class="d-flex align-items-center mb-1">
-                <span class="col-md-5">Product Launch</span>
-                <mat-icon class="mr-2 text-success mat-icon-sm">edit</mat-icon>
-            <mat-icon class="mat-icon-sm">delete</mat-icon>
-            </div>
-        </div>
-        <div class="mb-2">
-            <label class="col-form-label">Pre-Market Activities</label>
-            <textarea class="col-sm-10" rows="3"></textarea>
-        </div>
-        
+            <app-editable-list #event></app-editable-list>
     </div>
 </div>
 

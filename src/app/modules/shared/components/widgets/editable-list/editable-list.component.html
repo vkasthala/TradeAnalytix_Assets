@@ -15,9 +15,11 @@
     </div>
 
     <mat-selection-list [(ngModel)]="selectedItems">
-        <mat-list-option *ngFor="let item of items;let i=index" [value]="item" (click)="onSelectedItemChange(item)">
+        <mat-list-option *ngFor="let item of items;let i=index" [value]="item">
             <span>{{item.name}}</span>
-            <mat-icon class="mat-icon-sm delete-icon" (click)="onDelete(i)">delete</mat-icon>
+            <mat-icon class="mat-icon-sm right-icon" (click)="onDelete(i)">delete</mat-icon>
+            <mat-icon class="mr-2 text-success mat-icon-sm right-icon" (click)="onSelectedItemChange(item)">edit
+            </mat-icon>
         </mat-list-option>
     </mat-selection-list>
 </div>

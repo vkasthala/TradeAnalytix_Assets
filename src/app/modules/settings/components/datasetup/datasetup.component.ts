@@ -13,6 +13,10 @@ import { EditableGridColumn } from 'src/app/modules/shared/models/common/editabl
 export class DatasetupComponent implements OnInit {
 
   @ViewChild('mindSetType', { static: false }) protected mindSetType: EditableListComponent;
+  @ViewChild('technicalIndicator', { static: false }) protected technicalIndicator: EditableListComponent;
+  @ViewChild('event', { static: false }) protected event: EditableListComponent;
+  @ViewChild('tradeIdea', { static: false }) protected tradeIdea: EditableListComponent;
+
   @ViewChild('brokerageCommissions', { static: false }) protected brokerageCommissions: EditableGridComponent<BockerageCommission>;
 
   constructor(private dataSetupService: DataSetupService, private cdr: ChangeDetectorRef) { }
@@ -20,6 +24,15 @@ export class DatasetupComponent implements OnInit {
   ngOnInit() {
     this.dataSetupService.getMindsetTypes().subscribe(result => {
       this.mindSetType.items = result;
+    });
+    this.dataSetupService.getTechIndicators().subscribe(result => {
+      this.technicalIndicator.items = result;
+    });
+    this.dataSetupService.getSurroundingTypes().subscribe(result => {
+      this.event.items = result;
+    });
+    this.dataSetupService.getTradeSourceTypes().subscribe(result => {
+      this.tradeIdea.items = result;
     });
   }
 
@@ -36,35 +49,41 @@ export class DatasetupComponent implements OnInit {
     let col: EditableGridColumn = new EditableGridColumn();
     col.id = "name";
     col.name = "Name";
+    col.type = 'select';
+    col.values = ['Forex Options', 'Stock Options', 'Stock Future'];
     colIds.push('name');
     cols.push(col);
 
     col = new EditableGridColumn();
     col.id = "type";
     col.name = "Type";
+    col.type = 'select';
+    col.values = ['Percentage', 'Fixed'];
     colIds.push('type');
     cols.push(col);
 
     col = new EditableGridColumn();
     col.id = "value";
     col.name = "Value";
+    col.type = 'text';
     colIds.push('value');
     cols.push(col);
 
-    this.brokerageCommissions.columnConfigs = cols;
+    this.brokerageCommissions.setColumnConfigs(cols);
+    this.brokerageCommissions.setColumns(colIds);
   }
 
   loadBrockerageCommisionsData() {
     let data: BockerageCommission[] = [];
 
     let commission: BockerageCommission = new BockerageCommission();
-    commission.name = "Stocks";
+    commission.name = "Stock Options";
     commission.type = "Fixed";
     commission.value = 12.5;
     data.push(commission);
 
     commission = new BockerageCommission();
-    commission.name = "Forex Option";
+    commission.name = "Forex Options";
     commission.type = "Percentage";
     commission.value = 1.8;
     data.push(commission);

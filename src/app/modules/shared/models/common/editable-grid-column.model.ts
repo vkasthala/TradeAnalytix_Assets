@@ -4,4 +4,8 @@ export class EditableGridColumn {
 
     name: string;
 
+    type: string;
+
+    values: string[];
+
 }
