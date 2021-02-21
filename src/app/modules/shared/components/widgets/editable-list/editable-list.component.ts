@@ -38,7 +38,7 @@ export class EditableListComponent implements OnInit {
 
   onItemAdd() {
     let item: EditableListItem = new EditableListItem();
-    //item.name = this.newValue;
+    item.name = this.newValue;
     //this.items.push(item);
     this.addItemSubject.next(item);
     this.onCancel();

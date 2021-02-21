@@ -46,6 +46,42 @@ export class DataSetupService {
     return this.httpService.post<void, void>(this.apiUrl + '/metadata/trade-source-type/' + itemId, null);
   }
 
+  public createTechnicalIndicatorType(item: EditableListItem): Observable<void> {
+    return this.httpService.post<EditableListItem, void>(this.apiUrl + '/metadata/technical-indicator-type', item);
+  }
+
+  public updateTechnicalIndicatorType(item: EditableListItem): Observable<void> {
+    return this.httpService.put<EditableListItem, void>(this.apiUrl + '/metadata/technical-indicator-type', item);
+  }
+
+  public deleteTechnicalIndicatorType(itemId: number): Observable<void> {
+    return this.httpService.post<void, void>(this.apiUrl + '/metadata/technical-indicator-type/' + itemId, null);
+  }
+
+  public createMindsetType(item: EditableListItem): Observable<void> {
+    return this.httpService.post<EditableListItem, void>(this.apiUrl + '/metadata/mindset-type', item);
+  }
+
+  public updateMindsetType(item: EditableListItem): Observable<void> {
+    return this.httpService.put<EditableListItem, void>(this.apiUrl + '/metadata/mindset-type', item);
+  }
+
+  public deleteMindsetType(itemId: number): Observable<void> {
+    return this.httpService.post<void, void>(this.apiUrl + '/metadata/mindset-type/' + itemId, null);
+  }
+
+  public createSurrEventType(item: EditableListItem): Observable<void> {
+    return this.httpService.post<EditableListItem, void>(this.apiUrl + '/metadata/surrounding-event-type', item);
+  }
+
+  public updateSurrEventType(item: EditableListItem): Observable<void> {
+    return this.httpService.put<EditableListItem, void>(this.apiUrl + '/metadata/surrounding-event-type', item);
+  }
+
+  public deleteSurrEventType(itemId: number): Observable<void> {
+    return this.httpService.post<void, void>(this.apiUrl + '/metadata/surrounding-event-type/' + itemId, null);
+  }
+
   public createBrokerageCommission(item: BockerageCommission): Observable<void> {
     return this.httpService.post<BockerageCommission, void>(this.apiUrl + '/metadata/brokerage-commission', item);
   }

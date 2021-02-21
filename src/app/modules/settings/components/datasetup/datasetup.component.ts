@@ -24,20 +24,15 @@ export class DatasetupComponent implements OnInit {
   constructor(private dataSetupService: DataSetupService, private cdr: ChangeDetectorRef) { }
 
   ngOnInit() {
-    this.dataSetupService.getMindsetTypes().subscribe(result => {
-      this.mindSetType.items = result;
-    });
-    this.dataSetupService.getTechIndicators().subscribe(result => {
-      this.technicalIndicator.items = result;
-    });
-    this.dataSetupService.getSurroundingTypes().subscribe(result => {
-      this.event.items = result;
-    });
+
   }
 
   ngAfterViewInit() {
     this.initBrockerageCommisionsGrid();
     this.initSourceTypes();
+    this.initTechIndicators();
+    this.initMindsetTypes();
+    this.initSurrEventTypes();
     this.cdr.detectChanges();
   }
 
@@ -75,6 +70,117 @@ export class DatasetupComponent implements OnInit {
   loadSourceItems() {
     this.dataSetupService.getTradeSourceTypes().subscribe(result => {
       this.tradeIdea.items = result;
+    });
+  }
+
+  initTechIndicators() {
+    let addItemSubject: Subject<EditableListItem> = new Subject<EditableListItem>();
+    let editItemSubject: Subject<EditableListItem> = new Subject<EditableListItem>();
+    let deleteItemSubject: Subject<EditableListItem> = new Subject<EditableListItem>();
+    addItemSubject.asObservable().subscribe(data => {
+      this.dataSetupService.createTechnicalIndicatorType(data).subscribe(data => {
+        this.loadTechnicalIndicators();
+      }, err => {
+        console.log('error in creating tech ind type: ', data)
+      });
+    });
+    editItemSubject.asObservable().subscribe(data => {
+      this.dataSetupService.updateTechnicalIndicatorType(data).subscribe(data => {
+        this.loadTechnicalIndicators();
+      }, err => {
+        console.log('error in editing tech ind type: ', data)
+      });
+    });
+    deleteItemSubject.asObservable().subscribe(data => {
+      this.dataSetupService.deleteTechnicalIndicatorType(data.id).subscribe(data => {
+        this.loadTechnicalIndicators();
+      }, err => {
+        console.log('error in deleting tech indicator type: ', data)
+      });
+    });
+    this.technicalIndicator.addItemSubject = addItemSubject;
+    this.technicalIndicator.editItemSubject = editItemSubject;
+    this.technicalIndicator.deleteItemSubject = deleteItemSubject;
+    this.loadTechnicalIndicators();
+  }
+
+  loadTechnicalIndicators() {
+    this.dataSetupService.getTechIndicators().subscribe(result => {
+      this.technicalIndicator.items = result;
+    });
+  }
+
+  initMindsetTypes() {
+    let addItemSubject: Subject<EditableListItem> = new Subject<EditableListItem>();
+    let editItemSubject: Subject<EditableListItem> = new Subject<EditableListItem>();
+    let deleteItemSubject: Subject<EditableListItem> = new Subject<EditableListItem>();
+    addItemSubject.asObservable().subscribe(data => {
+      this.dataSetupService.createMindsetType(data).subscribe(data => {
+        this.loadMindsetTypes();
+      }, err => {
+        console.log('error in creating mindset type: ', data)
+      });
+    });
+    editItemSubject.asObservable().subscribe(data => {
+      this.dataSetupService.updateMindsetType(data).subscribe(data => {
+        this.loadMindsetTypes();
+      }, err => {
+        console.log('error in editing mindset type: ', data)
+      });
+    });
+    deleteItemSubject.asObservable().subscribe(data => {
+      this.dataSetupService.deleteMindsetType(data.id).subscribe(data => {
+        this.loadMindsetTypes();
+      }, err => {
+        console.log('error in deleting mindset type: ', data)
+      });
+    });
+    this.mindSetType.addItemSubject = addItemSubject;
+    this.mindSetType.editItemSubject = editItemSubject;
+    this.mindSetType.deleteItemSubject = deleteItemSubject;
+    this.loadMindsetTypes();
+  }
+
+  loadMindsetTypes() {
+    this.dataSetupService.getMindsetTypes().subscribe(result => {
+      this.mindSetType.items = result;
+    });
+  }
+
+  initSurrEventTypes() {
+    let addItemSubject: Subject<EditableListItem> = new Subject<EditableListItem>();
+    let editItemSubject: Subject<EditableListItem> = new Subject<EditableListItem>();
+    let deleteItemSubject: Subject<EditableListItem> = new Subject<EditableListItem>();
+    addItemSubject.asObservable().subscribe(data => {
+      this.dataSetupService.createSurrEventType(data).subscribe(data => {
+        this.loadSurrEventTypes();
+      }, err => {
+        console.log('error in creating surr event type: ', data)
+      });
+    });
+    editItemSubject.asObservable().subscribe(data => {
+      this.dataSetupService.updateSurrEventType(data).subscribe(data => {
+        this.loadSurrEventTypes();
+      }, err => {
+        console.log('error in editing surr event type: ', data)
+      });
+    });
+    deleteItemSubject.asObservable().subscribe(data => {
+      this.dataSetupService.deleteSurrEventType(data.id).subscribe(data => {
+        this.loadSurrEventTypes();
+      }, err => {
+        console.log('error in deleting surr event type: ', data)
+      });
+    });
+    this.event.addItemSubject = addItemSubject;
+    this.event.editItemSubject = editItemSubject;
+    this.event.deleteItemSubject = deleteItemSubject;
+    this.loadSurrEventTypes();
+  }
+
+  loadSurrEventTypes() {
+    this.dataSetupService.getSurroundingTypes().subscribe(result => {
+      this.event.items = result;
     });
   }
 
@@ -139,22 +245,6 @@ export class DatasetupComponent implements OnInit {
   }
 
   loadBrockerageCommisionsData() {
-    /*let data: BockerageCommission[] = [];
-
-    let commission: BockerageCommission = new BockerageCommission();
-    commission.name = "Stock Options";
-    commission.type = "Fixed";
-    commission.value = 12.5;
-    data.push(commission);
-
-    commission = new BockerageCommission();
-    commission.name = "Forex Options";
-    commission.type = "Percentage";
-    commission.value = 1.8;
-    data.push(commission);
-
-    this.brokerageCommissions.dataSource = data;*/
-
     this.dataSetupService.getBrokerageCommissions().subscribe(result => {
       this.brokerageCommissions.dataSource = result;
     });
