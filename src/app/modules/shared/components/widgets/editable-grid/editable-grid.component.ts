@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EditableGridColumn } from '../../../models/common/editable-grid-column.model';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-editable-grid',
@@ -17,6 +18,10 @@ export class EditableGridComponent<T> implements OnInit {
   selectedModel: T;
 
   edit: boolean = false;
+
+  addItemSubject: Subject<T>;
+  editItemSubject: Subject<T>;
+  deleteItemSubject: Subject<T>;
 
   constructor() { }
 
@@ -49,6 +54,7 @@ export class EditableGridComponent<T> implements OnInit {
 
   onRowDelete(element: T) {
     console.log(element);
+    this.deleteItemSubject.next(element);
   }
 
   onCancel() {
@@ -62,6 +68,7 @@ export class EditableGridComponent<T> implements OnInit {
     }
     this.fillSelectedValues(null);
     this.edit = false;
+    this.editItemSubject.next(this.selectedModel);
   }
 
   onItemAdd() {
@@ -71,8 +78,8 @@ export class EditableGridComponent<T> implements OnInit {
     }
     let typeObj: T = obj as T;
     console.log('type obj:', typeObj);
-    this.dataSource.push(typeObj);
     this.fillSelectedValues(null);
+    this.addItemSubject.next(typeObj);
   }
 
 }

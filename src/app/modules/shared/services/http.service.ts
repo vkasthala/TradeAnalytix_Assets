@@ -24,8 +24,18 @@ export class HttpService {
     return this.postWithHeaders(url, body, new Map());
   }
 
+  public put<S, T>(url: string, body: S): Observable<T> {
+    return this.putWithHeaders(url, body, new Map());
+  }
+
   public postWithHeaders<S, T>(url: string, body: S, headersMap: Map<string, string>): Observable<T> {
     return this.http.post<T>(url, body, {
+      headers: this.createHttpHeaders(headersMap)
+    });
+  }
+
+  public putWithHeaders<S, T>(url: string, body: S, headersMap: Map<string, string>): Observable<T> {
+    return this.http.put<T>(url, body, {
       headers: this.createHttpHeaders(headersMap)
     });
   }

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { EditableListItem } from '../../../models/common/editable-list-item.model';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-editable-list',
@@ -15,6 +16,10 @@ export class EditableListComponent implements OnInit {
   newValue: string;
 
   edit: boolean;
+
+  addItemSubject: Subject<EditableListItem>;
+  editItemSubject: Subject<EditableListItem>;
+  deleteItemSubject: Subject<EditableListItem>;
 
   constructor() { }
 
@@ -33,19 +38,22 @@ export class EditableListComponent implements OnInit {
 
   onItemAdd() {
     let item: EditableListItem = new EditableListItem();
-    item.name = this.newValue;
-    this.items.push(item);
+    //item.name = this.newValue;
+    //this.items.push(item);
+    this.addItemSubject.next(item);
     this.onCancel();
 
   }
 
   onItemEdit() {
     this.selected.name = this.newValue;
+    this.editItemSubject.next(this.selected);
     this.onCancel();
   }
 
   onDelete(index) {
-    this.items.splice(index, 1);
+    this.deleteItemSubject.next(this.items[index]);
+    //this.items.splice(index, 1);
     this.onCancel();
   }
 

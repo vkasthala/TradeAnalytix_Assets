@@ -4,6 +4,8 @@ import { DataSetupService } from '../../services/data-setup.service';
 import { EditableGridComponent } from 'src/app/modules/shared/components/widgets/editable-grid/editable-grid.component';
 import { BockerageCommission } from '../../models/brockerage-commission.model';
 import { EditableGridColumn } from 'src/app/modules/shared/models/common/editable-grid-column.model';
+import { EditableListItem } from 'src/app/modules/shared/models/common/editable-list-item.model';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-datasetup',
@@ -31,14 +33,49 @@ export class DatasetupComponent implements OnInit {
     this.dataSetupService.getSurroundingTypes().subscribe(result => {
       this.event.items = result;
     });
-    this.dataSetupService.getTradeSourceTypes().subscribe(result => {
-      this.tradeIdea.items = result;
-    });
   }
 
   ngAfterViewInit() {
     this.initBrockerageCommisionsGrid();
+    this.initSourceTypes();
     this.cdr.detectChanges();
+  }
+
+  initSourceTypes() {
+    let addItemSubject: Subject<EditableListItem> = new Subject<EditableListItem>();
+    let editItemSubject: Subject<EditableListItem> = new Subject<EditableListItem>();
+    let deleteItemSubject: Subject<EditableListItem> = new Subject<EditableListItem>();
+    addItemSubject.asObservable().subscribe(data => {
+      this.dataSetupService.createSourceType(data).subscribe(data => {
+        this.loadSourceItems();
+      }, err => {
+        console.log('error in creating source type: ', data)
+      });
+    });
+    editItemSubject.asObservable().subscribe(data => {
+      this.dataSetupService.updateSourceType(data).subscribe(data => {
+        this.loadSourceItems();
+      }, err => {
+        console.log('error in editing source type: ', data)
+      });
+    });
+    deleteItemSubject.asObservable().subscribe(data => {
+      this.dataSetupService.deleteSourceType(data.id).subscribe(data => {
+        this.loadSourceItems();
+      }, err => {
+        console.log('error in deleteing source type: ', data)
+      });
+    });
+    this.tradeIdea.addItemSubject = addItemSubject;
+    this.tradeIdea.editItemSubject = editItemSubject;
+    this.tradeIdea.deleteItemSubject = deleteItemSubject;
+    this.loadSourceItems();
+  }
+
+  loadSourceItems() {
+    this.dataSetupService.getTradeSourceTypes().subscribe(result => {
+      this.tradeIdea.items = result;
+    });
   }
 
   initBrockerageCommisionsGrid() {
@@ -71,10 +108,38 @@ export class DatasetupComponent implements OnInit {
 
     this.brokerageCommissions.setColumnConfigs(cols);
     this.brokerageCommissions.setColumns(colIds);
+
+    let addItemSubject: Subject<BockerageCommission> = new Subject<BockerageCommission>();
+    let editItemSubject: Subject<BockerageCommission> = new Subject<BockerageCommission>();
+    let deleteItemSubject: Subject<BockerageCommission> = new Subject<BockerageCommission>();
+    addItemSubject.asObservable().subscribe(data => {
+      this.dataSetupService.createBrokerageCommission(data).subscribe(data => {
+        this.loadBrockerageCommisionsData();
+      }, err => {
+        console.log('error in creating brokerage commission: ', data)
+      });
+    });
+    editItemSubject.asObservable().subscribe(data => {
+      this.dataSetupService.updateBrokerageCommission(data).subscribe(data => {
+        this.loadBrockerageCommisionsData();
+      }, err => {
+        console.log('error in editing brokerage commission: ', data)
+      });
+    });
+    deleteItemSubject.asObservable().subscribe(data => {
+      this.dataSetupService.deleteBrokerageCommission(data.id).subscribe(data => {
+        this.loadBrockerageCommisionsData();
+      }, err => {
+        console.log('error in deleteing brokerage commission: ', data)
+      });
+    });
+    this.brokerageCommissions.addItemSubject = addItemSubject;
+    this.brokerageCommissions.editItemSubject = editItemSubject;
+    this.brokerageCommissions.deleteItemSubject = deleteItemSubject;
   }
 
   loadBrockerageCommisionsData() {
-    let data: BockerageCommission[] = [];
+    /*let data: BockerageCommission[] = [];
 
     let commission: BockerageCommission = new BockerageCommission();
     commission.name = "Stock Options";
@@ -88,7 +153,11 @@ export class DatasetupComponent implements OnInit {
     commission.value = 1.8;
     data.push(commission);
 
-    this.brokerageCommissions.dataSource = data;
+    this.brokerageCommissions.dataSource = data;*/
+
+    this.dataSetupService.getBrokerageCommissions().subscribe(result => {
+      this.brokerageCommissions.dataSource = result;
+    });
   }
 
 }

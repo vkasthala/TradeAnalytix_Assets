@@ -3,6 +3,7 @@ import { environment } from 'src/environments/environment';
 import { HttpService } from '../../shared/services/http.service';
 import { Observable } from 'rxjs';
 import { EditableListItem } from '../../shared/models/common/editable-list-item.model';
+import { BockerageCommission } from '../models/brockerage-commission.model';
 
 @Injectable({
   providedIn: 'root'
@@ -28,5 +29,33 @@ export class DataSetupService {
   public getTechIndicators(): Observable<EditableListItem[]> {
     return this.httpService.get<EditableListItem[]>(this.apiUrl + '/metadata/technical-indicator-types');
   }
-  
+
+  public getBrokerageCommissions(): Observable<BockerageCommission[]> {
+    return this.httpService.get<BockerageCommission[]>(this.apiUrl + '/metadata/brokerage-commissions');
+  }
+
+  public createSourceType(item: EditableListItem): Observable<void> {
+    return this.httpService.post<EditableListItem, void>(this.apiUrl + '/metadata/trade-source-type', item);
+  }
+
+  public updateSourceType(item: EditableListItem): Observable<void> {
+    return this.httpService.put<EditableListItem, void>(this.apiUrl + '/metadata/trade-source-type', item);
+  }
+
+  public deleteSourceType(itemId: number): Observable<void> {
+    return this.httpService.post<void, void>(this.apiUrl + '/metadata/trade-source-type/' + itemId, null);
+  }
+
+  public createBrokerageCommission(item: BockerageCommission): Observable<void> {
+    return this.httpService.post<BockerageCommission, void>(this.apiUrl + '/metadata/brokerage-commission', item);
+  }
+
+  public updateBrokerageCommission(item: BockerageCommission): Observable<void> {
+    return this.httpService.put<BockerageCommission, void>(this.apiUrl + '/metadata/brokerage-commission', item);
+  }
+
+  public deleteBrokerageCommission(itemId: number): Observable<void> {
+    return this.httpService.post<void, void>(this.apiUrl + '/metadata/brokerage-commission/' + itemId, null);
+  }
+
 }
