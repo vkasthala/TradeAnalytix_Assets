@@ -4,4 +4,6 @@ export class EditableListItem {
 
     name: string;
 
+    editable: number;
+
 }
