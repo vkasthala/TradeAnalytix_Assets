@@ -6,6 +6,9 @@ import { BockerageCommission } from '../../models/brockerage-commission.model';
 import { EditableGridColumn } from 'src/app/modules/shared/models/common/editable-grid-column.model';
 import { EditableListItem } from 'src/app/modules/shared/models/common/editable-list-item.model';
 import { Subject } from 'rxjs';
+import { ConfirmDialogComponent } from 'src/app/modules/shared/components/modals/confirm-dialog/confirm-dialog.component';
+import { MatDialog } from '@angular/material';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-datasetup',
@@ -21,7 +24,7 @@ export class DatasetupComponent implements OnInit {
 
   @ViewChild('brokerageCommissions', { static: false }) protected brokerageCommissions: EditableGridComponent<BockerageCommission>;
 
-  constructor(private dataSetupService: DataSetupService, private cdr: ChangeDetectorRef) { }
+  constructor(private dataSetupService: DataSetupService, private cdr: ChangeDetectorRef, private _dialog: MatDialog, private toastr: ToastrService) { }
 
   ngOnInit() {
 
@@ -55,10 +58,15 @@ export class DatasetupComponent implements OnInit {
       });
     });
     deleteItemSubject.asObservable().subscribe(data => {
-      this.dataSetupService.deleteSourceType(data.id).subscribe(data => {
-        this.loadSourceItems();
-      }, err => {
-        console.log('error in deleteing source type: ', data)
+      this.getDeleteDialog().afterClosed().subscribe(dialogResult => {
+        if (dialogResult == true) {
+          this.dataSetupService.deleteSourceType(data.id).subscribe(data => {
+            this.loadSourceItems();
+          }, err => {
+            console.log('error in deleteing source type: ', data)
+            this.showDeleteErrorMessage();
+          });
+        }
       });
     });
     this.tradeIdea.addItemSubject = addItemSubject;
@@ -92,10 +100,15 @@ export class DatasetupComponent implements OnInit {
       });
     });
     deleteItemSubject.asObservable().subscribe(data => {
-      this.dataSetupService.deleteTechnicalIndicatorType(data.id).subscribe(data => {
-        this.loadTechnicalIndicators();
-      }, err => {
-        console.log('error in deleting tech indicator type: ', data)
+      this.getDeleteDialog().afterClosed().subscribe(dialogResult => {
+        if (dialogResult == true) {
+          this.dataSetupService.deleteTechnicalIndicatorType(data.id).subscribe(data => {
+            this.loadTechnicalIndicators();
+          }, err => {
+            console.log('error in deleting tech indicator type: ', data)
+            this.showDeleteErrorMessage();
+          });
+        }
       });
     });
     this.technicalIndicator.addItemSubject = addItemSubject;
@@ -129,10 +142,15 @@ export class DatasetupComponent implements OnInit {
       });
     });
     deleteItemSubject.asObservable().subscribe(data => {
-      this.dataSetupService.deleteMindsetType(data.id).subscribe(data => {
-        this.loadMindsetTypes();
-      }, err => {
-        console.log('error in deleting mindset type: ', data)
+      this.getDeleteDialog().afterClosed().subscribe(dialogResult => {
+        if (dialogResult == true) {
+          this.dataSetupService.deleteMindsetType(data.id).subscribe(data => {
+            this.loadMindsetTypes();
+          }, err => {
+            console.log('error in deleting mindset type: ', data)
+            this.showDeleteErrorMessage();
+          });
+        }
       });
     });
     this.mindSetType.addItemSubject = addItemSubject;
@@ -166,10 +184,15 @@ export class DatasetupComponent implements OnInit {
       });
     });
     deleteItemSubject.asObservable().subscribe(data => {
-      this.dataSetupService.deleteSurrEventType(data.id).subscribe(data => {
-        this.loadSurrEventTypes();
-      }, err => {
-        console.log('error in deleting surr event type: ', data)
+      this.getDeleteDialog().afterClosed().subscribe(dialogResult => {
+        if (dialogResult == true) {
+          this.dataSetupService.deleteSurrEventType(data.id).subscribe(data => {
+            this.loadSurrEventTypes();
+          }, err => {
+            console.log('error in deleting surr event type: ', data)
+            this.showDeleteErrorMessage();
+          });
+        }
       });
     });
     this.event.addItemSubject = addItemSubject;
@@ -233,10 +256,15 @@ export class DatasetupComponent implements OnInit {
       });
     });
     deleteItemSubject.asObservable().subscribe(data => {
-      this.dataSetupService.deleteBrokerageCommission(data.id).subscribe(data => {
-        this.loadBrockerageCommisionsData();
-      }, err => {
-        console.log('error in deleteing brokerage commission: ', data)
+      this.getDeleteDialog().afterClosed().subscribe(dialogResult => {
+        if (dialogResult == true) {
+          this.dataSetupService.deleteBrokerageCommission(data.id).subscribe(data => {
+            this.loadBrockerageCommisionsData();
+          }, err => {
+            console.log('error in deleteing brokerage commission: ', data)
+            this.showDeleteErrorMessage();
+          });
+        }
       });
     });
     this.brokerageCommissions.addItemSubject = addItemSubject;
@@ -248,6 +276,19 @@ export class DatasetupComponent implements OnInit {
     this.dataSetupService.getBrokerageCommissions().subscribe(result => {
       this.brokerageCommissions.dataSource = result;
     });
+  }
+
+  getDeleteDialog() {
+    const dialogRef = this._dialog.open(ConfirmDialogComponent, {
+      width: 'auto',
+      height: 'auto',
+      data: { 'message': 'Are you sure you want to delete this entry?' }
+    });
+    return dialogRef;
+  }
+
+  showDeleteErrorMessage() {
+    this.toastr.error('Failed to delete entry. Please check if this has assigned to any trade strategy.', '');
   }
 
 }
