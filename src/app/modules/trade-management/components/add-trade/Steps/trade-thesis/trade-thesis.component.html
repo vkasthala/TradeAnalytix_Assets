@@ -140,10 +140,10 @@
             </div>
             <div class="col-5">
                 <span class="mr-3">
-                    Planned <input type="radio" [disabled]="!closeTrade" name="tradeType" value="planned" [(ngModel)]="tradeThesis.tradeType" checked />
+                    Planned <input type="radio" name="closingtradeType" value="planned" checked />
                 </span>
                 <span class="ml-3">
-                    Impromptu <input type="radio" [disabled]="!closeTrade" name="tradeType" value="impromptu" [(ngModel)]="tradeThesis.tradeType"/>
+                    Impromptu <input type="radio" name="closingtradeType" value="impromptu" />
                 </span>
             </div>
         </div>
@@ -169,7 +169,7 @@
                 Specify the reasons for closing the trade
             </div>
             <div class="col-5 media align-items-center">
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="tradeThesis.reasons" [disabled]="!closeTrade"></textarea>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [disabled]="!closeTrade"></textarea>
             </div>
         </div>
         <div class="row mx-0 ml-2 mb-2">
@@ -193,8 +193,8 @@
             <div class="col-7 list-inner-left">
                 Specify the lessons learnt from the trade
             </div>
-            <div class="media col-3">
-                <input type="text" class="form-control mr-2" [disabled]="!closeTrade" placeholder="Enter the price" [(ngModel)]="tradeThesis.targetPrice" />
+            <div class="media col-5">
+                <textarea class="form-control" id="closingLessionsTrade" rows="3"></textarea>
             </div>
         </div>
         <div class="row mx-0 ml-2 mb-2">

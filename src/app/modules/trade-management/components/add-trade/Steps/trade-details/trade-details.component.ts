@@ -58,6 +58,7 @@ export class TradeDetailsComponent implements OnInit {
   direction: TradeDirection = TradeDirection.Custom;
   executedDate: string;
   closeDate: string;
+  tradeStatus: number;
 
   constructor(
     private utilService: UtilService,
@@ -71,8 +72,8 @@ export class TradeDetailsComponent implements OnInit {
   }
 
   ngAfterViewInit(): void {
-    console.log('child view init:', this.inputState);
     if (this.inputState) {
+      this.tradeStatus = this.inputState.tradeStrategy.statusId;
       this.stockOptions = this.inputState.tradeStrategy.stockOptions;
       this.selectedStrategy = this.inputState.tradeStrategy.strategyTypeId;
       this.stockEntry = this.inputState.tradeStrategy.stockEntry && this.inputState.tradeStrategy.stockEntry.length > 0 ? this.inputState.tradeStrategy.stockEntry[0] : undefined;
@@ -80,6 +81,7 @@ export class TradeDetailsComponent implements OnInit {
       this.direction = this.inputState.tradeStrategy.direction;
       this.executedDate = this.inputState.tradeStrategy.executedDate;
       this.closeDate = this.inputState.tradeStrategy.closeDate;
+      
       this.updateStockOptionDisplayProperty();
     }
   }

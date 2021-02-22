@@ -626,6 +626,8 @@ a.btn.btn-skip {
         color: #000;
         font-size: 13px;
         font-weight: normal;
+        text-align: right;
+        padding-right: .25rem;
         @media #{$small} {
           font-size: 12px;
         }
@@ -645,6 +647,8 @@ a.btn.btn-skip {
       font-weight: 400;
       //   color: #4f5051;
       border-bottom: 1px solid #bfbfbf;
+      text-align: right;
+      padding-right: .25rem;
       @media #{$small} {
         padding: 0px 10px;
       }
@@ -781,4 +785,7 @@ a.btn.btn-skip {
 .range-sm {
   min-width: 45px;
   text-align: left !important;
+}
+.main-body {
+  margin-bottom: 30px;
 }
