@@ -15,7 +15,7 @@ import { PwaService } from './modules/shared/services/pwa.service';
 import * as fromGlobalConfig from './modules/utilities/reducers/global-config.reducer';
 import { globalConfigFeatureKey } from './modules/utilities/reducers/global-config.reducer';
 import { reducers } from './modules/utilities/reducers';
-import { UtilitiesModule } from './modules/Utilities/utilities.module';
+import { UtilitiesModule } from './modules/utilities/utilities.module';
 import { UtilService } from './modules/utilities/services/util.service';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';

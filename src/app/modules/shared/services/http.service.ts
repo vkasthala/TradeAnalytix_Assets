@@ -64,4 +64,8 @@ export class HttpService {
     return httpHeaders;
   }
 
+  public postWithForm<S, T>(url: string, formData: FormData): Observable<T> {
+    return this.postWithHeaders(url, formData, new Map());
+  }
+
 }

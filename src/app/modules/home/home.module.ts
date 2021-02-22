@@ -50,13 +50,13 @@ import { TradeDetailsHeaderComponent } from '../trade-management/components/trad
 import { TradeDetailsAsideComponent } from '../trade-management/components/add-trade/trade-details-aside/trade-details-aside.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RoutingModule } from './routing.module';
-import { UtilitiesModule } from '../Utilities/utilities.module';
+import { UtilitiesModule } from '../utilities/utilities.module';
 import { TradeExecutionDateComponent } from '../shared/components/modals/trade-execution-date/trade-execution-date.component';
 
 import { TradeStrategiesGrid } from '../trade-strategies/components/trade-strategies-grid/trade-strategies-grid';
 import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { OauthRedirectComponent } from '../Utilities/components/oauth-redirect/oauth-redirect.component';
+import { OauthRedirectComponent } from '../utilities/components/oauth-redirect/oauth-redirect.component';
 import { RiskAnalysisChartComponent } from '../risk-analysis/components/risk-analysis-chart/risk-analysis-chart.component';
 import { ChartModule } from 'angular-highcharts';
 import { ConfirmDialogComponent } from '../shared/components/modals/confirm-dialog/confirm-dialog.component';

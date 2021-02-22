@@ -16,7 +16,7 @@ import { EditTradePlanComponent } from '../../modules/trade-plan/components/edit
 import { TradePlansComponent } from '../../modules/trade-plan/components/trade-plans.component';
 import { ProfileComponent } from '../../modules/user-profile/components/profile.component';
 import { RiskAnalysisComponent } from '../../modules/risk-analysis/components/risk-analysis.component';
-import { OauthRedirectComponent } from '../Utilities/components/oauth-redirect/oauth-redirect.component';
+import { OauthRedirectComponent } from '../utilities/components/oauth-redirect/oauth-redirect.component';
 import { ExitRulesComponent } from '../trade-management/components/add-trade/Steps/exit-rules/exit-rules.component';
 
 const routes: Routes = [
