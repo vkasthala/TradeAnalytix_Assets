@@ -45,25 +45,30 @@ export class DatasetupComponent implements OnInit {
     let deleteItemSubject: Subject<EditableListItem> = new Subject<EditableListItem>();
     addItemSubject.asObservable().subscribe(data => {
       this.dataSetupService.createSourceType(data).subscribe(data => {
+        this.showSuccessMessage('Successfully added the new source type');
         this.loadSourceItems();
       }, err => {
-        console.log('error in creating source type: ', data)
+        console.log('error in creating source type: ', data);
+        this.showErrorMessageDialog('Error! failed to add source type');
       });
     });
     editItemSubject.asObservable().subscribe(data => {
       this.dataSetupService.updateSourceType(data).subscribe(data => {
+        this.showSuccessMessage('Successfully updated the selected source type');
         this.loadSourceItems();
       }, err => {
-        console.log('error in editing source type: ', data)
+        console.log('error in editing source type: ', data);
+        this.showErrorMessageDialog('Error! failed to edit the selected source type');
       });
     });
     deleteItemSubject.asObservable().subscribe(data => {
       this.getDeleteDialog().afterClosed().subscribe(dialogResult => {
         if (dialogResult == true) {
           this.dataSetupService.deleteSourceType(data.id).subscribe(data => {
+            this.showSuccessMessage('Successfully deleted the selected source type');
             this.loadSourceItems();
           }, err => {
-            console.log('error in deleteing source type: ', data)
+            console.log('error in deleteing source type: ', data);
             this.showDeleteErrorMessage();
           });
         }
@@ -87,22 +92,27 @@ export class DatasetupComponent implements OnInit {
     let deleteItemSubject: Subject<EditableListItem> = new Subject<EditableListItem>();
     addItemSubject.asObservable().subscribe(data => {
       this.dataSetupService.createTechnicalIndicatorType(data).subscribe(data => {
+        this.showSuccessMessage('Successfully added new technical indicator');
         this.loadTechnicalIndicators();
       }, err => {
-        console.log('error in creating tech ind type: ', data)
+        console.log('error in creating tech ind type: ', data);
+        this.showErrorMessageDialog('Error! failed to add technical indicator');
       });
     });
     editItemSubject.asObservable().subscribe(data => {
       this.dataSetupService.updateTechnicalIndicatorType(data).subscribe(data => {
+        this.showSuccessMessage('Successfully updated the selected technical indicator');
         this.loadTechnicalIndicators();
       }, err => {
-        console.log('error in editing tech ind type: ', data)
+        console.log('error in editing tech ind type: ', data);
+        this.showErrorMessageDialog('Error! failed to edit the selected technical indicator');
       });
     });
     deleteItemSubject.asObservable().subscribe(data => {
       this.getDeleteDialog().afterClosed().subscribe(dialogResult => {
         if (dialogResult == true) {
           this.dataSetupService.deleteTechnicalIndicatorType(data.id).subscribe(data => {
+            this.showSuccessMessage('Successfully deleted the selected technical indicator');
             this.loadTechnicalIndicators();
           }, err => {
             console.log('error in deleting tech indicator type: ', data)
@@ -129,22 +139,27 @@ export class DatasetupComponent implements OnInit {
     let deleteItemSubject: Subject<EditableListItem> = new Subject<EditableListItem>();
     addItemSubject.asObservable().subscribe(data => {
       this.dataSetupService.createMindsetType(data).subscribe(data => {
+        this.showSuccessMessage('Successfully added new mindset');
         this.loadMindsetTypes();
       }, err => {
-        console.log('error in creating mindset type: ', data)
+        console.log('error in creating mindset type: ', data);
+        this.showErrorMessageDialog('Error! failed to add mindset');
       });
     });
     editItemSubject.asObservable().subscribe(data => {
       this.dataSetupService.updateMindsetType(data).subscribe(data => {
+        this.showSuccessMessage('Successfully updated the selected mindset');
         this.loadMindsetTypes();
       }, err => {
-        console.log('error in editing mindset type: ', data)
+        console.log('error in editing mindset type: ', data);
+        this.showErrorMessageDialog('Error! failed to edit the selected mindset');
       });
     });
     deleteItemSubject.asObservable().subscribe(data => {
       this.getDeleteDialog().afterClosed().subscribe(dialogResult => {
         if (dialogResult == true) {
           this.dataSetupService.deleteMindsetType(data.id).subscribe(data => {
+            this.showSuccessMessage('Successfully deleted the selected mindset');
             this.loadMindsetTypes();
           }, err => {
             console.log('error in deleting mindset type: ', data)
@@ -171,22 +186,27 @@ export class DatasetupComponent implements OnInit {
     let deleteItemSubject: Subject<EditableListItem> = new Subject<EditableListItem>();
     addItemSubject.asObservable().subscribe(data => {
       this.dataSetupService.createSurrEventType(data).subscribe(data => {
+        this.showSuccessMessage('Successfully added new event');
         this.loadSurrEventTypes();
       }, err => {
-        console.log('error in creating surr event type: ', data)
+        console.log('error in creating surr event type: ', data);
+        this.showErrorMessageDialog('Error! failed to add event');
       });
     });
     editItemSubject.asObservable().subscribe(data => {
       this.dataSetupService.updateSurrEventType(data).subscribe(data => {
+        this.showSuccessMessage('Successfully updated the selected event');
         this.loadSurrEventTypes();
       }, err => {
         console.log('error in editing surr event type: ', data)
+        this.showErrorMessageDialog('Error! failed to edit the selected event');
       });
     });
     deleteItemSubject.asObservable().subscribe(data => {
       this.getDeleteDialog().afterClosed().subscribe(dialogResult => {
         if (dialogResult == true) {
           this.dataSetupService.deleteSurrEventType(data.id).subscribe(data => {
+            this.showSuccessMessage('Successfully deleted the selected event');
             this.loadSurrEventTypes();
           }, err => {
             console.log('error in deleting surr event type: ', data)
@@ -243,22 +263,27 @@ export class DatasetupComponent implements OnInit {
     let deleteItemSubject: Subject<BockerageCommission> = new Subject<BockerageCommission>();
     addItemSubject.asObservable().subscribe(data => {
       this.dataSetupService.createBrokerageCommission(data).subscribe(data => {
+        this.showSuccessMessage('Successfully added the new brokerage commission');
         this.loadBrockerageCommisionsData();
       }, err => {
         console.log('error in creating brokerage commission: ', data)
+        this.showErrorMessageDialog('Error! failed to add brokerage commission');
       });
     });
     editItemSubject.asObservable().subscribe(data => {
       this.dataSetupService.updateBrokerageCommission(data).subscribe(data => {
+        this.showSuccessMessage('Successfully updated the selected brokerage commission');
         this.loadBrockerageCommisionsData();
       }, err => {
         console.log('error in editing brokerage commission: ', data)
+        this.showErrorMessageDialog('Error! failed to edit selected brokerage commission');
       });
     });
     deleteItemSubject.asObservable().subscribe(data => {
       this.getDeleteDialog().afterClosed().subscribe(dialogResult => {
         if (dialogResult == true) {
           this.dataSetupService.deleteBrokerageCommission(data.id).subscribe(data => {
+            this.showSuccessMessage('Successfully deleted the selected brokerage commission');
             this.loadBrockerageCommisionsData();
           }, err => {
             console.log('error in deleteing brokerage commission: ', data)
@@ -289,6 +314,14 @@ export class DatasetupComponent implements OnInit {
 
   showDeleteErrorMessage() {
     this.toastr.error('Failed to delete entry. Please check if this has assigned to any trade strategy.', '');
+  }
+
+  showErrorMessageDialog(msg: string) {
+    this.toastr.error(msg, '');
+  }
+
+  showSuccessMessage(msg: string) {
+    this.toastr.success(msg);
   }
 
 }
