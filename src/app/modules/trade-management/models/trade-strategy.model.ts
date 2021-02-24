@@ -5,7 +5,8 @@ import { EntryExitRule } from './entry-exit-rule.model';
 import { TradeDirection } from '../../shared/models/trade-management/trade-direction.enum';
 
 export class TradeStrategy {
-    status: string;
+    statusId: number;
+
     id: number;
 
     uid: string;
