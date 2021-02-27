@@ -20,8 +20,8 @@
                 <div class="mb-2">
                     <label class="col-form-label pt-0">Where do you think market is headed today?</label>
                     <div class="trade-sel">
-                        <select class="form-control" id="exampleFormControlSelect1">
-                            <option>Sideways</option>
+                        <select class="form-control" id="tradePlanMarketStatus">
+                            <option [ngValue]="opt.id" *ngFor="let opt of marketStatuses; trackBy: id">{{opt.name}}</option>
                         </select>
                         <mat-icon class="form-icon-down text-success">keyboard_arrow_down</mat-icon>
                     </div>
@@ -39,8 +39,8 @@
                 <div class="mb-2">
                     <label class="col-form-label pt-0">What is your mindset today?</label>
                     <div class="trade-sel">
-                        <select class="form-control" id="exampleFormControlSelect1">
-                            <option>Conﬁdent</option>
+                        <select class="form-control" id="tradePlanMindsetType">
+                            <option [ngValue]="opt.id" *ngFor="let opt of mindsetTypes; trackBy: id">{{opt.name}}</option>
                         </select>
                         <mat-icon class="form-icon-down text-success">keyboard_arrow_down</mat-icon>
                     </div>
