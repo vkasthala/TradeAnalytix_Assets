@@ -23,7 +23,7 @@ export class ExitRulesComponent implements OnInit {
   @Input("addTrade") addTrade: boolean;
   @Input("editTrade") editTrade: boolean;
   @Input("closeTrade") closeTrade: boolean;
-  @Input("vieweTrade") vieweTrade: boolean;
+  @Input("viewTrade") viewTrade: boolean;
   @Output('prevStep') prevStep = new EventEmitter();
 
   exitRules: EntryExitRule[] = this.entryExitRuleService.getExitRules();

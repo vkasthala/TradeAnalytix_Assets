@@ -30,7 +30,8 @@ export class TradeThesisComponent implements OnInit {
   @Input("addTrade") addTrade: boolean;
   @Input("editTrade") editTrade: boolean;
   @Input("closeTrade") closeTrade: boolean;
-  @Input("vieweTrade") vieweTrade: boolean;
+  @Input("viewTrade") viewTrade: boolean;
+  
   protected hideEntryThesis: boolean = false;
   protected hideClosingThesis: boolean = false;
   constructor(private _dialog: MatDialog, private metadataService: UserMetadataService) { }

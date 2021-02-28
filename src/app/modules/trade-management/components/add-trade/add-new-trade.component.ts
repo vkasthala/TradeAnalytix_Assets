@@ -82,12 +82,10 @@ export class AddNewTradeComponent implements OnInit {
     protected _dialog: MatDialog) {
     this.initState();
     this.localStockClosedSubject.asObservable().subscribe(data => {
-      console.log('stock leg subject:', data);
       this.updateLocalTradeHistory(data, null);
     });
 
     this.localOptionClosedSubject.asObservable().subscribe(data => {
-      console.log('option leg subject:', data);
       this.updateLocalTradeHistory(null, data);
     });
   }
@@ -164,7 +162,6 @@ export class AddNewTradeComponent implements OnInit {
 
   editTradeStrategy() {
     this.updateTradeStrategyProps();
-    console.log('edit trade...', this.tradeStrategy);
     this.tradeStrategyService.editTrade(this.tradeStrategy).subscribe(result => {
       this.toastr.success('Trade Strategy successfully updated', '');
       this.router.navigateByUrl("/trade-strategies");
@@ -173,9 +170,7 @@ export class AddNewTradeComponent implements OnInit {
 
   closeTradeStrategy() {
     this.updateTradeStrategyProps();
-    console.log('close trade...', this.tradeStrategy);
     this.tradeStrategyService.closeTrade(this.tradeStrategy).subscribe(result => {
-      console.log('Trade strategy successfully closed');
       this.toastr.success('Trade Strategy successfully closed', '');
       this.router.navigateByUrl("/trade-strategies");
     });
@@ -252,25 +247,21 @@ export class AddNewTradeComponent implements OnInit {
   }
 
   initState(): void {
-    console.log('nav:', this.router.getCurrentNavigation());
     if (!this.router.getCurrentNavigation()) {
       return;
     }
     let extras: NavigationExtras = this.router.getCurrentNavigation().extras;
     if (extras && extras.state) {
       this.currentState++;
-      console.log('state..', extras.state)
       let state: TradeInputData = <TradeInputData>extras.state;
       if (state && state.selectedStock && state.stockSummary) {
         this.inputState = state;
-        console.log('created state:', this.inputState);
       }
     }
   }
 
   public setState() {
     if (this.inputState) {
-      console.log('Setting state:', this.inputState);
       this.selectedStock = this.inputState.selectedStock;
       this.stockSummary = this.inputState.stockSummary;
       this.tradeStrategy = this.inputState.tradeStrategy;

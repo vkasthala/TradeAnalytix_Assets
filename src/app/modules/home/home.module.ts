@@ -77,6 +77,9 @@ import { UpdateStockPricePopupComponent } from '../risk-analysis/components/upda
 import { EditTradePlanComponent } from '../trade-plan/components/edit-trade-plan.component';
 import { EditableListComponent } from '../shared/components/widgets/editable-list/editable-list.component';
 
+import { StrategyComparison } from '../strategy-comparison/components/strategy-comparison.component';
+
+
 import { from } from 'rxjs';
 
 import {MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
@@ -155,7 +158,8 @@ export const MY_FORMATS = {
     UpdateStockPricePopupComponent,
     EditTradePlanComponent,
     EditableListComponent,
-    EditableGridComponent
+    EditableGridComponent,
+    StrategyComparison
   ],
   imports: [
     CommonModule,

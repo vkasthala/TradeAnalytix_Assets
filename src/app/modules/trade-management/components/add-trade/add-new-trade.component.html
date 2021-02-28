@@ -46,7 +46,7 @@
                       [localOptionClosedSubject]="localOptionClosedSubject" #tradeDetails>
                     </app-trade-details>
                   </div>
-                  <div *ngIf="!add">
+                  <div *ngIf="!add && tradeStrategy.statusId !=4">
                     <span class="cursor legs-heading" (click)="showClosedLegs()">
                       <span *ngIf="closedLegs" class="text-success d-flex align-items-center">Hide Closed Legs <i
                           class="negative-amt material-icons">keyboard_arrow_down</i>
@@ -89,7 +89,7 @@
                           </h6>
                         </div>
                       </div>
-                      <div class="mb-1 trade-card-box">
+                      <div class="mb-1 trade-card-box" *ngIf="tradeHistory.optionLegHistories.length > 0">
                         <div class="card-main">Action</div>
                         <div class="card-main card-main-md">Contracts</div>
                         <div class="card-main card-main-md">Strike</div>
@@ -171,7 +171,7 @@
                   <ng-template matStepLabel>2.Thesis</ng-template>
                   <div class="stepper-content">
                     <app-trade-thesis (nextStep)="goForward()" (prevStep)="goBack(true)" [inputState]="inputState"
-                      [editTrade]="edit" [addTrade]="add" [closeTrade]="close" #tradeThesis>
+                      [editTrade]="edit" [viewTrade]="view" [addTrade]="add" [closeTrade]="close"  #tradeThesis>
                     </app-trade-thesis>
                   </div>
                 </mat-step>
@@ -180,7 +180,7 @@
                   <div class="stepper-content">
                     <app-entry-rules (prevStep)="goBack()" [inputState]="inputState" [editTrade]="edit" [addTrade]="add"
                       [closeTrade]="close" #entryRules></app-entry-rules>
-                    <div *ngIf="close">
+                    <div *ngIf="close || view">
                       <app-exit-rules #exitRules></app-exit-rules>
                     </div>
                   </div>

@@ -18,7 +18,7 @@
         </span>
     </span>
 </div>
-<div>
+<div class="border" [ngClass]="columns.length > 4 ? 'editable-list' : ''">
     <mat-table [dataSource]="dataSource">
         <ng-container *ngFor="let entry of columns" matColumnDef="{{entry}}">
             <mat-cell class="strategy-id-cell" *matCellDef="let element">

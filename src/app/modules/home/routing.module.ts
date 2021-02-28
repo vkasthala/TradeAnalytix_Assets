@@ -18,6 +18,9 @@ import { ProfileComponent } from '../../modules/user-profile/components/profile.
 import { RiskAnalysisComponent } from '../../modules/risk-analysis/components/risk-analysis.component';
 import { OauthRedirectComponent } from '../utilities/components/oauth-redirect/oauth-redirect.component';
 import { ExitRulesComponent } from '../trade-management/components/add-trade/Steps/exit-rules/exit-rules.component';
+import { StrategyComparison } from '../../modules/strategy-comparison/components/strategy-comparison.component';
+
+
 
 const routes: Routes = [
   {
@@ -91,6 +94,10 @@ const routes: Routes = [
         {
           path: 'oauth-redirect',
           component: OauthRedirectComponent
+        },
+        {
+          path: 'strategy-comparison',
+          component: StrategyComparison
         }
     ]
   },

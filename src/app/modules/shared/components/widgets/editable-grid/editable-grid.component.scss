@@ -11,7 +11,7 @@
     display: flex;
     align-items: stretch;
     flex-wrap: wrap;
-    padding-bottom: 10px;
+    padding-bottom: .25rem;
 }
 
 .mat-row:nth-child(odd) {
@@ -19,7 +19,38 @@
     border: 0;
 }
 
+mat-cell:first-of-type, 
+mat-footer-cell:first-of-type, 
+mat-header-cell:first-of-type {
+    padding-left: 10px !important;
+}
+
+mat-cell:last-of-type, 
+mat-footer-cell:last-of-type, 
+mat-header-cell:last-of-type {
+    padding-right: 0 !important;
+}
+.editable-list .mat-list-item-content {
+    padding: 0 10px !important;
+}
+.right-icon{
+    float: right;
+    cursor: pointer;
+}
+
+
 .action-icon{
     cursor: pointer;
-    padding-right: 10px;
+    margin-left: 10px;
+}
+.mat-list-base .mat-list-item, .mat-list-base .mat-list-option {
+    height: 32px;
+    font-size: 14px;
+}
+.mat-row {
+    min-height: 36px;
+}
+
+.mat-nav-list .mat-list-item:hover {
+    background: rgba(0,0,0,.0567);
 }

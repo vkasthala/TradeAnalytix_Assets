@@ -39,13 +39,13 @@
     <!-- Open Date Column -->
     <ng-container matColumnDef="openDate">
       <mat-header-cell class="open-date-cell" *matHeaderCellDef mat-sort-header>Open Date</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.openDate}} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{element.openDate | date: 'dd-MMM-yyyy'}} </mat-cell>
     </ng-container>
 
     <!-- Closed Date Column -->
     <ng-container matColumnDef="closeDate">
       <mat-header-cell class="close-date-cell" *matHeaderCellDef mat-sort-header>Close Date</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.closeDate}} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{element.closeDate | date: 'dd-MMM-yyyy'}} </mat-cell>
     </ng-container>
 
     <!-- Max Loss Column -->
@@ -96,7 +96,7 @@
 
           <mat-icon *ngIf="element.status == 'Open'" (click)="closeTrade(element);closeActionBox()" class="text-success mat-icon-sm ml-2">cancel</mat-icon>
 
-          <mat-icon *ngIf="element.status == 'Draft'" (click)="closeTrade(element);closeActionBox()" class="mat-icon-sm mx-2">delete</mat-icon>
+          <mat-icon *ngIf="element.status == 'Draft'" (click)="deleteTrade(element);closeActionBox()" class="mat-icon-sm mx-2">delete</mat-icon>
 
           <mat-icon *ngIf="element.status == 'Closed'" (click)="viewTrade(element);closeActionBox()" class="mat-icon-sm">visibility</mat-icon>
         </div>
