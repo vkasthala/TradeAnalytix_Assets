@@ -23,6 +23,7 @@ import { RiskAnalysisChartComponent } from '../../risk-analysis/components/risk-
 import { MaxRiskDetails } from '../../risk-analysis/models/max-risk-details.model';
 // import { UpdateStockPricePopupComponent } from './update-stock-price-popup/update-stock-price-popup.component';
 import { MatDialog } from '@angular/material/dialog';
+import { EditStrategyComponent } from 'src/app/modules/shared/components/modals/edit-strategy/edit-strategy.component';
 
 
 @Component({
@@ -231,5 +232,15 @@ export class StrategyComparison implements OnInit {
     return riskAnalysisRequest;
   }
 
+  editStrategyItem(index){
+    const dialogRef = this._dialog.open(EditStrategyComponent, {
+      disableClose: false,
+      width: 'auto',
+      // data: dialogData
+    });
+    dialogRef.afterClosed().subscribe((res) => {
+      console.log('here...', res);
+    });
+  }
 }
 

@@ -78,6 +78,7 @@ import { EditTradePlanComponent } from '../trade-plan/components/edit-trade-plan
 import { EditableListComponent } from '../shared/components/widgets/editable-list/editable-list.component';
 
 import { StrategyComparison } from '../strategy-comparison/components/strategy-comparison.component';
+import { EditStrategyComponent } from '../shared/components/modals/edit-strategy/edit-strategy.component';
 
 
 import { from } from 'rxjs';
@@ -159,7 +160,8 @@ export const MY_FORMATS = {
     EditTradePlanComponent,
     EditableListComponent,
     EditableGridComponent,
-    StrategyComparison
+    StrategyComparison,
+    EditStrategyComponent
   ],
   imports: [
     CommonModule,
@@ -190,7 +192,8 @@ export const MY_FORMATS = {
     TradeExecutionDateComponent,
     TradeStrategiesGrid,
     ConfirmDialogComponent,
-    UpdateStockPricePopupComponent
+    UpdateStockPricePopupComponent,
+    EditStrategyComponent
   ],
   // bootstrap: [TradeStrategiesGrid],
   providers: [

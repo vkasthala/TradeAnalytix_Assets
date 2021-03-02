@@ -70,7 +70,7 @@
                         </mat-panel-title>
                         </mat-expansion-panel-header>
                         <ng-template matExpansionPanelContent>
-                            <div class="d-flex">
+                            <div class="row">
                                 <div class="col-2">
                                     <label class="col-form-label">Price Range</label>
                                     <div class="d-flex">
@@ -98,7 +98,7 @@
                         </div> 
 
 
-                            <ng-container *ngIf="displayRiskAnalysis && analyzeRisk && (stockAdded || stockOptions.length > 0)">
+                            <ng-container>
                                 <!-- risk-tabs -->
                                 <div class="trade-risk-tabs">
                                     <div class="tab" role="tabpanel">
@@ -115,9 +115,7 @@
                                         <div class="tab-content tabs">
                                             <div class="tab-pane active" id="Section1" role="tabpanel">
                                                 <div class="risk-tabs-table">
-    
-                                                    <div class="risk-table"
-                                                        *ngIf="riskAnalysisResults && riskAnalysisResults.length">
+                                                    <div class="risk-table">
     
                                                         <div class="trad-risk-head">
                                                             <h6>
