@@ -15,13 +15,12 @@ export class OpenStrategiesGridComponent implements OnInit {
 
   @Input('tradePlanId') tradePlanId: number;
 
-  constructor(private tradePlanService: TradePlansService) { }
-
-  ngOnInit() {
+  constructor(private tradePlanService: TradePlansService) {
+    this.loadStrategies();
   }
 
-  ngAfterViewInit() {
-    this.loadStrategies();
+  ngOnInit() {
+    
   }
 
   loadStrategies() {

@@ -17,7 +17,7 @@ export class TradePlansService {
     private _url = "./assets/settings.json";
 
     getTradePlans() {
-        return this.http.get<TradePlans[]>(this._url)
+        return this.http.get<TradePlans[]>(this._url);
     }
 
     getMarketStatusValues(): Observable<MarketStatus[]> {
