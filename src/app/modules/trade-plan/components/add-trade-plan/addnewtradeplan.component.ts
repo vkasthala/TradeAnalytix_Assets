@@ -17,6 +17,7 @@ import { TradePlansService } from '../../services/trade-plans.service';
 export class AddnewtradeplanComponent implements OnInit {
   protected add = true;
   protected edit = false;
+  protected tradePlanId: number;
 
   marketStatuses: MarketStatus[];
   mindsetTypes: MindsetType[];

@@ -4,6 +4,7 @@ import { HttpService } from '../../shared/services/http.service';
 import { TradePlans } from '../models/trade-plans.model';
 import { MarketStatus } from '../models/market-status.model';
 import { environment } from 'src/environments/environment';
+import { TradePlanStrategy } from '../models/trade-plan-strategy.model';
 @Injectable({
     providedIn: 'root'
 })
@@ -21,6 +22,14 @@ export class TradePlansService {
 
     getMarketStatusValues(): Observable<MarketStatus[]> {
         return this.http.get<MarketStatus[]>(this.apiUrl + '/trade-plan/market-status-values');
+    }
+
+    getOpenStrategies(): Observable<TradePlanStrategy[]> {
+        return this.http.get<TradePlanStrategy[]>(this.apiUrl + '/trade-plan/open-strategies');
+    }
+
+    getTradePlanStrategies(tradePlanId: number): Observable<TradePlanStrategy[]> {
+        return this.http.get<TradePlanStrategy[]>(this.apiUrl + '/trade-plan/strategies/' + tradePlanId);
     }
 
 }

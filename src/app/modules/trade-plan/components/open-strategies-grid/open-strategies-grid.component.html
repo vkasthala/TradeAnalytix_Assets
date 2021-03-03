@@ -1,0 +1,39 @@
+<div class="mb-2">
+    <label class="col-form-label pt-0">What do you want to do with your open positions?</label>
+    <div class="col-11 px-0">
+        <mat-table [dataSource]="strategiesDataSource">
+            <ng-container matColumnDef="symbol">
+                <th mat-header-cell *matHeaderCellDef>Symbol</th>
+                <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="strategyType">
+                <th mat-header-cell *matHeaderCellDef>Strategy Type</th>
+                <td mat-cell *matCellDef="let element"> {{element.strategyType}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="returnAmount">
+                <th mat-header-cell *matHeaderCellDef>Return</th>
+                <td mat-cell *matCellDef="let element"> {{element.returnAmount}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="maxRisk">
+                <th mat-header-cell *matHeaderCellDef>Max Risk</th>
+                <td mat-cell *matCellDef="let element"> {{element.maxRisk}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="maxProfit">
+                <th mat-header-cell *matHeaderCellDef>Max Profit</th>
+                <td mat-cell *matCellDef="let element"> {{element.maxProfit}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="actionText">
+                <th mat-header-cell *matHeaderCellDef>Action</th>
+                <td mat-cell *matCellDef="let element"> {{element.actionText}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="strategiesGridColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: strategiesGridColumns;"></tr>
+        </mat-table>
+    </div>
+</div>

@@ -87,6 +87,7 @@ import {MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/mater
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 import * as _moment from 'moment';
 import { EditableGridComponent } from '../shared/components/widgets/editable-grid/editable-grid.component';
+import { OpenStrategiesGridComponent } from '../trade-plan/components/open-strategies-grid/open-strategies-grid.component';
 export const MY_FORMATS = {
   parse: {
       dateInput: 'DD-MMM-YY'
@@ -161,7 +162,8 @@ export const MY_FORMATS = {
     EditableListComponent,
     EditableGridComponent,
     StrategyComparison,
-    EditStrategyComponent
+    EditStrategyComponent,
+    OpenStrategiesGridComponent
   ],
   imports: [
     CommonModule,
