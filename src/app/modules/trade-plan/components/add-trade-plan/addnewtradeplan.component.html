@@ -119,7 +119,7 @@
                                     <th>Max. Risk</th>
                                     <th>Profit(Exp)</th>
                                     <th>Specify reasons for the trade</th>
-                                    <th class="border-0" *ngIf="!edit"><mat-icon class="text-success mat-icon-md">add_circle</mat-icon></th>
+                                    <th class="border-0" *ngIf="!edit"><mat-icon class="text-success mat-icon-md" (click)="openPlannedTradeDialog()">add_circle</mat-icon></th>
                                     <th *ngIf="edit">Executed</th>
                                 </tr>
                             </thead>

@@ -7,6 +7,8 @@ import { MarketStatus } from '../../models/market-status.model';
 import { MindsetType } from 'src/app/modules/trade-management/models/mindset-type.model';
 import { UserMetadataService } from 'src/app/modules/trade-management/services/user-metadata.service';
 import { TradePlansService } from '../../services/trade-plans.service';
+import { PlannedTrade } from '../../models/planned-trade.model';
+import { PlannedTradeDialogComponent } from '../planned-trade-dialog/planned-trade-dialog.component';
 
 
 @Component({
@@ -71,6 +73,18 @@ export class AddnewtradeplanComponent implements OnInit {
       this.marketStatuses = result;
     });
 
+  }
+
+  openPlannedTradeDialog() {
+    let dialogData: PlannedTrade = new PlannedTrade();
+    const dialogRef = this._dialog.open(PlannedTradeDialogComponent, {
+      disableClose: false,
+      width: 'auto',
+      data: dialogData
+    });
+    dialogRef.afterClosed().subscribe((res) => {
+      console.log('after:', dialogData);
+    });
   }
 
 

@@ -1,0 +1,68 @@
+<div class="plannedtrade-popup">
+    <div class="plannedtrade-pop-inner">
+        <div class="top-pop-inner">
+            <div class="left-heading">
+                <h6>Add Planned Trade</h6>
+            </div>
+            </div>
+        </div>
+
+        <div class="main-pop-inner">
+
+            <div class="row mb-2 align-items-center">
+                <label class="col-6 col-form-label">Symbol</label>
+                <div class="col-6">
+                    <app-trade-search (symbolSelectEvent)="symbolSelectEventHandler($event)"></app-trade-search>
+                </div>
+            </div>
+
+            <div class="row mb-2 align-items-center">
+                <label class="col-6 col-form-label">Strategy</label>
+                <div class="col-6">
+                    <select class="form-control select-input pl-0" id="inputState" [(ngModel)]='data.strategyTypeId'>
+                        <option *ngFor="let key of strategyTypes" [value]="key" [label]="strategies[key]"></option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row mb-2 align-items-center">
+                <label class="col-6 col-form-label">Action Type</label>
+                <div class="col-6">
+                    <select id="inputState" class="form-control select-input"
+                        [(ngModel)]="data.actionTypeId">
+                        <option value=1 selected data-default>Buy to Open</option>
+                        <option value=2>Sell to Open</option>
+                        <option value=3>Buy to Close</option>
+                        <option value=4>Sell to Close</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row mb-2 align-items-center">
+                <label class="col-6 col-form-label">Max Risk</label>
+                <div class="col-6">
+                    <input type="number" (keydown)="preventNegatives($event, false)" min="0"
+                        class="form-control cards-input" [(ngModel)]="data.maxRisk" />
+                </div>
+            </div>
+
+            <div class="row mb-2 align-items-center">
+                <label class="col-6 col-form-label">Max Profit</label>
+                <div class="col-6">
+                    <input type="number" (keydown)="preventNegatives($event, false)" min="0"
+                        class="form-control cards-input" [(ngModel)]="data.maxProfit" />
+                </div>
+            </div>
+
+            <div class="pb-1">
+                <label class="col-form-label">Reason</label>
+                <textarea rows="2" class="form-control" [(ngModel)]="data.reason"></textarea>
+            </div>
+
+            <div class="btn-up mb-0">
+                <button type="button" class="btn btn-add" [mat-dialog-close]="data">SAVE</button>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -88,6 +88,7 @@ import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/
 import * as _moment from 'moment';
 import { EditableGridComponent } from '../shared/components/widgets/editable-grid/editable-grid.component';
 import { OpenStrategiesGridComponent } from '../trade-plan/components/open-strategies-grid/open-strategies-grid.component';
+import { PlannedTradeDialogComponent } from '../trade-plan/components/planned-trade-dialog/planned-trade-dialog.component';
 export const MY_FORMATS = {
   parse: {
       dateInput: 'DD-MMM-YY'
@@ -163,7 +164,8 @@ export const MY_FORMATS = {
     EditableGridComponent,
     StrategyComparison,
     EditStrategyComponent,
-    OpenStrategiesGridComponent
+    OpenStrategiesGridComponent,
+    PlannedTradeDialogComponent
   ],
   imports: [
     CommonModule,
@@ -195,7 +197,8 @@ export const MY_FORMATS = {
     TradeStrategiesGrid,
     ConfirmDialogComponent,
     UpdateStockPricePopupComponent,
-    EditStrategyComponent
+    EditStrategyComponent,
+    PlannedTradeDialogComponent
   ],
   // bootstrap: [TradeStrategiesGrid],
   providers: [
