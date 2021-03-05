@@ -17,9 +17,12 @@ export class PlannedTradeDialogComponent implements OnInit {
 
   strategyTypes: String[];
   strategies = StrategyType;
+  actionTypes: string[];
+
 
   constructor(private strategyCreateService: StrategyCreateService, private dialogRef: MatDialogRef<PlannedTradeDialogComponent>) {
     this.strategyTypes = this.strategyCreateService.getStrategies();
+    this.actionTypes = this.strategyCreateService.getActionTypes();
   }
 
   ngOnInit() {
@@ -34,6 +37,16 @@ export class PlannedTradeDialogComponent implements OnInit {
 
   closeModal() {
     this.dialogRef.close();
+  }
+
+  onStrategyTypeChange(strategyTypeId) {
+    console.log('str: ', this.strategyTypes[strategyTypeId].valueOf(), this.strategyTypes, this.actionTypes);
+    this.data.strategyType = this.strategyTypes[strategyTypeId].valueOf();
+  }
+
+  onActionTypeChange(actType: string) {
+    console.log('act: ', actType);
+    this.data.actionType = this.actionTypes[actType];
   }
 
 }

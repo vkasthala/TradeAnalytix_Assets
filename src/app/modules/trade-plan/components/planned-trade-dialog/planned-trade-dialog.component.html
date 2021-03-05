@@ -18,7 +18,7 @@
             <div class="row mb-2 align-items-center">
                 <label class="col-6 col-form-label">Strategy</label>
                 <div class="col-6">
-                    <select class="form-control select-input pl-0" id="inputState" [(ngModel)]='data.strategyTypeId'>
+                    <select class="form-control select-input pl-0" id="inputState" [(ngModel)]='data.strategyTypeId' (change)="onStrategyTypeChange($event.target.value)">
                         <option *ngFor="let key of strategyTypes" [value]="key" [label]="strategies[key]"></option>
                     </select>
                 </div>
@@ -28,7 +28,7 @@
                 <label class="col-6 col-form-label">Action Type</label>
                 <div class="col-6">
                     <select id="inputState" class="form-control select-input"
-                        [(ngModel)]="data.actionTypeId">
+                        [(ngModel)]="data.actionTypeId" (change)="onActionTypeChange($event.target.value)">
                         <option value=1 selected data-default>Buy to Open</option>
                         <option value=2>Sell to Open</option>
                         <option value=3>Buy to Close</option>

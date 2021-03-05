@@ -9,6 +9,7 @@ import { UserMetadataService } from 'src/app/modules/trade-management/services/u
 import { TradePlansService } from '../../services/trade-plans.service';
 import { PlannedTrade } from '../../models/planned-trade.model';
 import { PlannedTradeDialogComponent } from '../planned-trade-dialog/planned-trade-dialog.component';
+import { Subject } from 'rxjs';
 
 
 @Component({
@@ -19,7 +20,7 @@ import { PlannedTradeDialogComponent } from '../planned-trade-dialog/planned-tra
 export class AddnewtradeplanComponent implements OnInit {
   protected add = true;
   protected edit = false;
-  protected tradePlanId: number;
+  protected tradePlanId: number = 0;
 
   marketStatuses: MarketStatus[];
   mindsetTypes: MindsetType[];
@@ -73,18 +74,6 @@ export class AddnewtradeplanComponent implements OnInit {
       this.marketStatuses = result;
     });
 
-  }
-
-  openPlannedTradeDialog() {
-    let dialogData: PlannedTrade = new PlannedTrade();
-    const dialogRef = this._dialog.open(PlannedTradeDialogComponent, {
-      disableClose: false,
-      width: 'auto',
-      data: dialogData
-    });
-    dialogRef.afterClosed().subscribe((res) => {
-      console.log('after:', dialogData);
-    });
   }
 
 

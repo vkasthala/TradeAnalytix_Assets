@@ -1,6 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { PlannedTrade } from '../../models/planned-trade.model';
 import { TradePlansService } from '../../services/trade-plans.service';
+import { Subject } from 'rxjs';
+import { MatDialog } from '@angular/material';
+import { PlannedTradeDialogComponent } from '../planned-trade-dialog/planned-trade-dialog.component';
 
 @Component({
   selector: 'app-planned-trades-grid',
@@ -9,13 +12,13 @@ import { TradePlansService } from '../../services/trade-plans.service';
 })
 export class PlannedTradesGridComponent implements OnInit {
 
-  plannedTradesDataSource: PlannedTrade[];
+  plannedTradesDataSource: PlannedTrade[] = [];
 
   plannedTradesGridColumns: string[] = ['symbol', 'strategyType', 'actionType', 'maxRisk', 'profit', 'reason'];
 
   @Input('tradePlanId') tradePlanId: number;
 
-  constructor(private tradePlanService: TradePlansService) {
+  constructor(private tradePlanService: TradePlansService, private _dialog: MatDialog) {
     this.loadPlannedTrades();
   }
 
@@ -29,6 +32,21 @@ export class PlannedTradesGridComponent implements OnInit {
         this.plannedTradesDataSource = result;
       });
     }
+  }
+
+  openPlannedTradeDialog() {
+    let dialogData: PlannedTrade = new PlannedTrade();
+    const dialogRef = this._dialog.open(PlannedTradeDialogComponent, {
+      disableClose: false,
+      width: 'auto',
+      data: dialogData
+    });
+    dialogRef.afterClosed().subscribe((res) => {
+      console.log('after:', res);
+      this.plannedTradesDataSource.push(res);
+      let cloned = this.plannedTradesDataSource.slice()
+      this.plannedTradesDataSource = cloned;
+    });
   }
 
 }

@@ -24,6 +24,15 @@ export class StrategyCreateService {
     return names;
   }
 
+  public getActionTypes(): string[] {
+    let names: string[] = [];
+    for (let actType in ActionType) {
+      if (typeof ActionType[actType] === 'string')
+        names.push(actType);
+    }
+    return names;
+  }
+
   public getTradeStatuses(): String[] {
     let statuses: String[] = [];
     for (let status in TradeStatus) {
