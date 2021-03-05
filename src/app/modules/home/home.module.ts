@@ -89,6 +89,7 @@ import * as _moment from 'moment';
 import { EditableGridComponent } from '../shared/components/widgets/editable-grid/editable-grid.component';
 import { OpenStrategiesGridComponent } from '../trade-plan/components/open-strategies-grid/open-strategies-grid.component';
 import { PlannedTradeDialogComponent } from '../trade-plan/components/planned-trade-dialog/planned-trade-dialog.component';
+import { PlannedTradesGridComponent } from '../trade-plan/components/planned-trades-grid/planned-trades-grid.component';
 export const MY_FORMATS = {
   parse: {
       dateInput: 'DD-MMM-YY'
@@ -165,7 +166,8 @@ export const MY_FORMATS = {
     StrategyComparison,
     EditStrategyComponent,
     OpenStrategiesGridComponent,
-    PlannedTradeDialogComponent
+    PlannedTradeDialogComponent,
+    PlannedTradesGridComponent
   ],
   imports: [
     CommonModule,

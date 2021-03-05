@@ -5,6 +5,8 @@ import { TradePlans } from '../models/trade-plans.model';
 import { MarketStatus } from '../models/market-status.model';
 import { environment } from 'src/environments/environment';
 import { TradePlanStrategy } from '../models/trade-plan-strategy.model';
+import { TradePlan } from '../models/trade-plan.model';
+import { PlannedTrade } from '../models/planned-trade.model';
 @Injectable({
     providedIn: 'root'
 })
@@ -30,6 +32,10 @@ export class TradePlansService {
 
     getTradePlanStrategies(tradePlanId: number): Observable<TradePlanStrategy[]> {
         return this.http.get<TradePlanStrategy[]>(this.apiUrl + '/trade-plan/strategies/' + tradePlanId);
+    }
+
+    getPlannedTrades(tradePlanId: number): Observable<PlannedTrade[]> {
+        return this.http.get<PlannedTrade[]>(this.apiUrl + '/trade-plan/planned-trades/' + tradePlanId);
     }
 
 }
