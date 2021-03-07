@@ -7,6 +7,9 @@ import { environment } from 'src/environments/environment';
 import { TradePlanStrategy } from '../models/trade-plan-strategy.model';
 import { TradePlan } from '../models/trade-plan.model';
 import { PlannedTrade } from '../models/planned-trade.model';
+import { TradePlanGridRow } from '../models/trade-plan-grid-row.model';
+import { TradePlanGridRequest } from '../models/trade-plan-grid-request.model';
+import { TradePlanGridResult } from '../models/trade-plan-grid-result.model';
 @Injectable({
     providedIn: 'root'
 })
@@ -38,12 +41,16 @@ export class TradePlansService {
         return this.http.get<PlannedTrade[]>(this.apiUrl + '/trade-plan/planned-trades/' + tradePlanId);
     }
 
-    createTradePlan(tradePlan: TradePlan): Observable<void>{
+    createTradePlan(tradePlan: TradePlan): Observable<void> {
         return this.http.post<TradePlan, void>(this.apiUrl + '/trade-plan/create', tradePlan);
     }
 
-    updateTradePlan(tradePlan: TradePlan): Observable<void>{
+    updateTradePlan(tradePlan: TradePlan): Observable<void> {
         return this.http.post<TradePlan, void>(this.apiUrl + '/trade-plan/update', tradePlan);
+    }
+
+    getTradePlansGridResult(gridRequest: TradePlanGridRequest): Observable<TradePlanGridResult> {
+        return this.http.post<TradePlanGridRequest, TradePlanGridResult>(this.apiUrl + '/trade-plan/grid-result', gridRequest);
     }
 
 }

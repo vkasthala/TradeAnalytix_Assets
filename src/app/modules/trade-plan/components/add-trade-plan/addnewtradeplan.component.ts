@@ -1,19 +1,16 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog, MatStepper } from '@angular/material';
 import { Router } from '@angular/router';
-import { MatStepper } from '@angular/material';
-import { MatDialog } from '@angular/material';
-import { ManageRulePopupComponent } from '../../../settings/components/managerules/manage-rule-popup/manage-rule-popup.component';
-import { MarketStatus } from '../../models/market-status.model';
+import { ToastrService } from 'ngx-toastr';
 import { MindsetType } from 'src/app/modules/trade-management/models/mindset-type.model';
 import { UserMetadataService } from 'src/app/modules/trade-management/services/user-metadata.service';
-import { TradePlansService } from '../../services/trade-plans.service';
+import { ManageRulePopupComponent } from '../../../settings/components/managerules/manage-rule-popup/manage-rule-popup.component';
+import { MarketStatus } from '../../models/market-status.model';
 import { PlannedTrade } from '../../models/planned-trade.model';
-import { PlannedTradeDialogComponent } from '../planned-trade-dialog/planned-trade-dialog.component';
-import { Subject } from 'rxjs';
+import { TradePlan } from '../../models/trade-plan.model';
+import { TradePlansService } from '../../services/trade-plans.service';
 import { OpenStrategiesGridComponent } from '../open-strategies-grid/open-strategies-grid.component';
 import { PlannedTradesGridComponent } from '../planned-trades-grid/planned-trades-grid.component';
-import { TradePlan } from '../../models/trade-plan.model';
-import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -106,7 +103,18 @@ export class AddnewtradeplanComponent implements OnInit {
   createTradePlan(): TradePlan {
     this.tradePlan.tradePlanStrategies = this.tradeStrategiesGrid.getOpenStrategies();
     this.tradePlan.plannedTrades = this.plannedTradesGrid.getPlannedTrades();
+    this.tradePlan.tradeItemsPlanned = this.getPlannedTradeSymbols(this.tradePlan.plannedTrades);
     return this.tradePlan;
+  }
+
+  getPlannedTradeSymbols(plannedTrades: PlannedTrade[]) {
+    let symbols: string = ""
+    if (plannedTrades && plannedTrades.length > 0) {
+      for (let ind = 0; ind < plannedTrades.length; ind++) {
+        symbols = symbols + ', ' + plannedTrades[ind].symbol;
+      }
+    }
+    return symbols;
   }
 
 

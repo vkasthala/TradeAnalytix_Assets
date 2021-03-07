@@ -17,6 +17,8 @@ export class TradePlan {
 
     perspective: string;
 
+    tradeItemsPlanned: string;
+
     tradePlanStrategies: TradePlanStrategy[];
 
     plannedTrades: PlannedTrade[];

@@ -6,17 +6,18 @@
           <div class="trade-dash-main">
             <div class="trade-dash-name">
               <h3>Trade Plans</h3>
-              
+
             </div>
             <div class="trade_plans_header">
               <span class="col-form-label mr-2">Filter By</span>
-                <div class="trade-date mr-3">
-                  <div class="form-group">
-                    <div class='input-group date' id='datetimepicker1'>
-                        <my-date-range-picker placeholder="Date range" name="mydaterange" [options]="myDateRangePickerOptions"></my-date-range-picker>
-                    </div>
+              <div class="trade-date mr-3">
+                <div class="form-group">
+                  <div class='input-group date' id='datetimepicker1'>
+                    <my-date-range-picker placeholder="Date range" name="mydaterange"
+                      [options]="myDateRangePickerOptions"></my-date-range-picker>
                   </div>
                 </div>
+              </div>
               <button class="add-new btn btn-apply" (click)="addEntry()"> New Plan</button>
             </div>
           </div>
@@ -25,9 +26,9 @@
             <div class="mat-elevation-z8">
               <table mat-table [dataSource]="dataSource">
                 <!-- Position Column -->
-                <ng-container matColumnDef="date">
+                <ng-container matColumnDef="day">
                   <th mat-header-cell *matHeaderCellDef> Date </th>
-                  <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+                  <td mat-cell *matCellDef="let element"> {{element.day}} </td>
                 </ng-container>
 
                 <!-- Status Column -->
@@ -39,25 +40,25 @@
                 </ng-container>
 
                 <!-- Mindset Column -->
-                <ng-container matColumnDef="mindset">
+                <ng-container matColumnDef="mindsetType">
                   <th mat-header-cell *matHeaderCellDef> Mindset </th>
-                  <td mat-cell *matCellDef="let element"> {{element.mindset}} </td>
-                </ng-container>
-            
-                <!-- Name Column -->
-                <ng-container matColumnDef="prediction">
-                  <th mat-header-cell *matHeaderCellDef width ="15%"> Prediction</th>
-                  <td mat-cell *matCellDef="let element"> {{element.prediction}} </td>
-                </ng-container>
-            
-                
-                <!-- Symbol Column -->
-                <ng-container matColumnDef="planned_trades">
-                  <th mat-header-cell *matHeaderCellDef> Planned Trades </th>
-                  <td mat-cell *matCellDef="let element"> {{element.planned_trades}} </td>
+                  <td mat-cell *matCellDef="let element"> {{element.mindsetType}} </td>
                 </ng-container>
 
-                <!-- Lessions Learnt Column -->
+                <!-- Prediction Column -->
+                <ng-container matColumnDef="marketStatus">
+                  <th mat-header-cell *matHeaderCellDef width="15%"> Prediction</th>
+                  <td mat-cell *matCellDef="let element"> {{element.marketStatus}} </td>
+                </ng-container>
+
+
+                <!-- Planned Trades Column -->
+                <ng-container matColumnDef="plannedTrades">
+                  <th mat-header-cell *matHeaderCellDef> Planned Trades </th>
+                  <td mat-cell *matCellDef="let element"> {{element.plannedTrades}} </td>
+                </ng-container>
+
+                <!--Aligned Column -->
                 <ng-container matColumnDef="aligned">
                   <th mat-header-cell *matHeaderCellDef> Aligned</th>
                   <td mat-cell *matCellDef="let element" [ngClass]="{
@@ -65,41 +66,40 @@
                     'text-danger': element.aligned == 'No'}">{{element.aligned}}</td>
                 </ng-container>
 
-                <!-- Lessions Learnt Column -->
-                <ng-container matColumnDef="self_review">
+                <!-- Self-Review Column -->
+                <ng-container matColumnDef="selfReview">
                   <th mat-header-cell *matHeaderCellDef>Self-Review</th>
-                  <td mat-cell *matCellDef="let element"> {{element.self_review}} </td>
+                  <td mat-cell *matCellDef="let element"> {{element.selfReview}} </td>
                 </ng-container>
 
-                <!-- Lessions Learnt Column -->
-                <ng-container matColumnDef="trades">
+                <!-- Trades Column -->
+                <ng-container matColumnDef="todayStrategyCount">
                   <th mat-header-cell *matHeaderCellDef>Trades</th>
-                  <td mat-cell *matCellDef="let element"> {{element.trades}} </td>
+                  <td mat-cell *matCellDef="let element"> {{element.todayStrategyCount}} </td>
                 </ng-container>
 
-                <!-- Lessions Learnt Column -->
-                <ng-container matColumnDef="return">
+                <!-- Return Column -->
+                <ng-container matColumnDef="returnAmount">
                   <th mat-header-cell *matHeaderCellDef>Return</th>
-                  <td mat-cell *matCellDef="let element"> {{element.return}} </td>
+                  <td mat-cell *matCellDef="let element"> {{element.returnAmount}} </td>
                 </ng-container>
 
                 <!-- Action Column -->
                 <ng-container matColumnDef="action">
                   <th mat-header-cell *matHeaderCellDef> </th>
-                  <td mat-cell *matCellDef="let element"><div class="edit">
-                    
+                  <td mat-cell *matCellDef="let element">
+                    <div class="edit">
+                      <mat-icon class="text-success cursor mat-icon-sm" (click)="editEntry()">edit</mat-icon>
+                    </div>
 
-                    <mat-icon class="text-success cursor mat-icon-sm" (click)="editEntry()">edit</mat-icon>
-                </div>
-
-              </td>
+                  </td>
                 </ng-container>
-            
+
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
               </table>
               <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true"
-              [length]="dataSource.totalCount"></mat-paginator>
+                [length]="dataSource.totalCount"></mat-paginator>
             </div>
           </div>
         </div>
