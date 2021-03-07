@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { UserMetadataService } from '../../trade-management/services/user-metadata.service';
 import { TradePlansService } from '../services/trade-plans.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-edit-trade-plan',
@@ -14,10 +15,12 @@ export class EditTradePlanComponent extends AddnewtradeplanComponent implements 
 
 
   constructor(
+    _dialog: MatDialog,
     router: Router,
-    _dialog: MatDialog, metadataService: UserMetadataService,
-    tradePlanService: TradePlansService) {
-    super(_dialog, router, metadataService, tradePlanService);
+    metadataService: UserMetadataService,
+    tradePlanService: TradePlansService,
+    toastr: ToastrService) {
+    super(_dialog, router, metadataService, tradePlanService, toastr);
     this.edit = true;
     this.add = false;
   }
@@ -25,8 +28,5 @@ export class EditTradePlanComponent extends AddnewtradeplanComponent implements 
   ngOnInit() {
     // this.setState();
   }
-
-
-
 
 }

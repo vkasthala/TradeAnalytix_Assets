@@ -10,6 +10,10 @@ import { TradePlansService } from '../../services/trade-plans.service';
 import { PlannedTrade } from '../../models/planned-trade.model';
 import { PlannedTradeDialogComponent } from '../planned-trade-dialog/planned-trade-dialog.component';
 import { Subject } from 'rxjs';
+import { OpenStrategiesGridComponent } from '../open-strategies-grid/open-strategies-grid.component';
+import { PlannedTradesGridComponent } from '../planned-trades-grid/planned-trades-grid.component';
+import { TradePlan } from '../../models/trade-plan.model';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -25,13 +29,18 @@ export class AddnewtradeplanComponent implements OnInit {
   marketStatuses: MarketStatus[];
   mindsetTypes: MindsetType[];
 
+  tradePlan: TradePlan = new TradePlan();
+
   @ViewChild('tradeMobileStepper', { static: false }) private tradeMobileStepper: MatStepper;
+  @ViewChild('tradeStrategiesGrid', { static: false }) protected tradeStrategiesGrid: OpenStrategiesGridComponent;
+  @ViewChild('plannedTradesGrid', { static: false }) protected plannedTradesGrid: PlannedTradesGridComponent;
 
   constructor(
-    private _dialog: MatDialog,
-    private router: Router,
+    protected _dialog: MatDialog,
+    protected router: Router,
     protected metadataService: UserMetadataService,
-    protected tradePlanService: TradePlansService
+    protected tradePlanService: TradePlansService,
+    protected toastr: ToastrService
   ) { }
 
   ngOnInit() {
@@ -74,6 +83,30 @@ export class AddnewtradeplanComponent implements OnInit {
       this.marketStatuses = result;
     });
 
+  }
+
+  addTradePlan() {
+    let tradePlan: TradePlan = this.createTradePlan();
+    tradePlan.statusId = 1;
+    console.log('trade plan to be created: ', tradePlan);
+    this.tradePlanService.createTradePlan(tradePlan).subscribe(result => {
+      this.toastr.success('Trade plan successfully created');
+    });
+  }
+
+  submitTradePlan() {
+    let tradePlan: TradePlan = this.createTradePlan();
+    tradePlan.statusId = 2;
+    console.log('trade plan to be updated: ', tradePlan);
+    this.tradePlanService.updateTradePlan(tradePlan).subscribe(result => {
+      this.toastr.success('Trade plan successfully submitted');
+    });
+  }
+
+  createTradePlan(): TradePlan {
+    this.tradePlan.tradePlanStrategies = this.tradeStrategiesGrid.getOpenStrategies();
+    this.tradePlan.plannedTrades = this.plannedTradesGrid.getPlannedTrades();
+    return this.tradePlan;
   }
 
 

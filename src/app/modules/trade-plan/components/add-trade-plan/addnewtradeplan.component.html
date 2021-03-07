@@ -5,13 +5,14 @@
                 <div class="trade-dash-name">
                     <h3>{{edit ? 'Edit' : "New"}} Trade Plan</h3>
                 </div>
-              </div>
+            </div>
             <div class="inner-trade-plan px-3">
                 <div class="mb-2">
                     <label class="col-form-label pt-0">Select the date for which trade plan is being created</label>
                     <div class="trade-sel">
                         <div class="datepicker-group">
-                            <input matInput [matDatepicker]="tradedate" (click)="tradedate.open()" id="tradedate"  name="tradedate">
+                            <input matInput [matDatepicker]="tradedate" (click)="tradedate.open()" id="tradedate"
+                                name="tradedate" [(ngModel)]="tradePlan.day">
                             <mat-datepicker-toggle matSuffix [for]="tradedate"></mat-datepicker-toggle>
                             <mat-datepicker #tradedate></mat-datepicker>
                         </div>
@@ -20,8 +21,9 @@
                 <div class="mb-2">
                     <label class="col-form-label pt-0">Where do you think market is headed today?</label>
                     <div class="trade-sel">
-                        <select class="form-control" id="tradePlanMarketStatus">
-                            <option [ngValue]="opt.id" *ngFor="let opt of marketStatuses; trackBy: id">{{opt.name}}</option>
+                        <select class="form-control" id="tradePlanMarketStatus" [(ngModel)]="tradePlan.marketHeadingId">
+                            <option [ngValue]="opt.id" *ngFor="let opt of marketStatuses; trackBy: id">{{opt.name}}
+                            </option>
                         </select>
                         <mat-icon class="form-icon-down text-success">keyboard_arrow_down</mat-icon>
                     </div>
@@ -29,9 +31,10 @@
                 <div class="mb-2">
                     <label class="col-form-label pt-0">Did you complete the pre-market activities?</label>
                     <div class="trade-sel">
-                        <select class="form-control" id="exampleFormControlSelect1">
-                            <option>Yes</option>
-                            <option>No</option>
+                        <select class="form-control" id="exampleFormControlSelect1"
+                            [(ngModel)]="tradePlan.premarketActivityStatus">
+                            <option value=true>Yes</option>
+                            <option value=false>No</option>
                         </select>
                         <mat-icon class="form-icon-down text-success">keyboard_arrow_down</mat-icon>
                     </div>
@@ -39,16 +42,19 @@
                 <div class="mb-2">
                     <label class="col-form-label pt-0">What is your mindset today?</label>
                     <div class="trade-sel">
-                        <select class="form-control" id="tradePlanMindsetType">
-                            <option [ngValue]="opt.id" *ngFor="let opt of mindsetTypes; trackBy: id">{{opt.name}}</option>
+                        <select class="form-control" id="tradePlanMindsetType" [(ngModel)]="tradePlan.mindSetTypeId">
+                            <option [ngValue]="opt.id" *ngFor="let opt of mindsetTypes; trackBy: id">{{opt.name}}
+                            </option>
                         </select>
                         <mat-icon class="form-icon-down text-success">keyboard_arrow_down</mat-icon>
                     </div>
                 </div>
                 <div class="mb-2">
-                    <label class="col-form-label pt-0">What’s your perspective on the market and your current positions?</label>
+                    <label class="col-form-label pt-0">What’s your perspective on the market and your current
+                        positions?</label>
                     <div class="col-10 px-0">
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"
+                            [(ngModel)]="tradePlan.perspective"></textarea>
                     </div>
                 </div>
 
@@ -105,8 +111,8 @@
                         </table>
                     </div>
                 </div> -->
-                <app-open-strategies-grid [tradePlanId]="tradePlanId"></app-open-strategies-grid>
-                <app-planned-trades-grid [tradePlanId]="tradePlanId"></app-planned-trades-grid>
+                <app-open-strategies-grid [tradePlanId]="tradePlanId" #tradeStrategiesGrid></app-open-strategies-grid>
+                <app-planned-trades-grid [tradePlanId]="tradePlanId" #plannedTradesGrid></app-planned-trades-grid>
                 <!-- end: table-custom -->
                 <!--<div class="mb-2">
                     <label class="col-form-label pt-0">What do you plan to trade today?</label>
@@ -173,39 +179,45 @@
                         <label class="col-form-label pt-0">Did you align with the trading plan?</label>
                         <div class="col-10 px-0 media">
                             <div class="trade-sel mr-3">
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                    <option>Yes</option>
+                                <select class="form-control" id="exampleFormControlSelect1"
+                                    [(ngModel)]="tradePlan.tradeplanAligned">
+                                    <option value=true>Yes</option>
+                                    <option value=false>Yes</option>
                                 </select>
                                 <mat-icon class="form-icon-down text-success">keyboard_arrow_down</mat-icon>
                             </div>
                             <div class="media-body">
-                                <input type="text" placeholder=" If no, specify reason" class="form-control" />
+                                <input type="text" placeholder=" If no, specify reason" class="form-control"
+                                    [(ngModel)]="tradePlan.notAlignedReason" />
                             </div>
                         </div>
                     </div>
                     <div class="mb-2">
                         <label class="col-form-label pt-0">How you rate your trading performance today? </label>
                         <div class="trade-sel">
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <option>Good</option>
+                            <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="tradePlan.selfReview">
+                                <option value="Good">Good</option>
+                                <option value="Average">Average</option>
+                                <option value="Bad">Bad</option>
                             </select>
                             <mat-icon class="form-icon-down text-success">keyboard_arrow_down</mat-icon>
                         </div>
                     </div>
                     <div class="mb-2">
-                        <label class="col-form-label pt-0">Did you align with the trading plan?</label>
+                        <label class="col-form-label pt-0">What lessons did you learn today?</label>
                         <div class="col-10 px-0">
-                            <textarea class="form-control"></textarea>
-                            <div class="text-right"><span class="add-new" (click)="addRule('Add', 'SAVE')">Add as Rule</span></div>
+                            <textarea class="form-control" [(ngModel)]="tradePlan.lessons"></textarea>
+                            <div class="text-right"><span class="add-new" (click)="addRule('Add', 'SAVE')">Add as
+                                    Rule</span></div>
                         </div>
                     </div>
                 </ng-container>
                 <!-- end: table-custom -->
                 <div class="pb-3 text-center">
-                    <button type="button" class="btn btn-success" *ngIf="!edit">ADD PLAN</button>
-                    <button type="button" class="btn btn-success" *ngIf="edit">SUBMIT</button>
+                    <button type="button" class="btn btn-success" *ngIf="!edit" (click) = "addTradePlan()">ADD PLAN</button>
+                    <button type="button" class="btn btn-success" *ngIf="edit" (click) = "submitTradePlan()">SUBMIT</button>
                 </div>
-                
+
             </div>
         </div>
     </div>
@@ -220,177 +232,183 @@
             <h3> TRADE PLAN </h3>
         </div>
     </div>
-        <div class="trad-border"></div>
+    <div class="trad-border"></div>
 
-        <mat-horizontal-stepper labelPosition="bottom" #tradeMobileStepper [linear]="false">
-            <mat-step>
-    
-              <div class="stepper-content">
-                  
-                          <!-- Pre-Market -->
-                  
-                          <div class="trade-new-plan-mobile">
-                              <div class="container">
-                                  <div class="trade-stategy-heading">
-                                      <h6>
-                                          Pre-Market
-                                      </h6>
-                                  </div>
-                  
-                                  <div class="trade-thesis-inner">
-                                      <div class="tranding-thesis">
-                                          <div class="left-thesis">
-                                              <h6>Are current trade positions aligned with entry and exit rules?</h6>
-                                          </div>
-                                          <div class="right-thesis">
-                                              <div class="trade-sel">
-                                                  <select class="form-control" id="exampleFormControlSelect1">
-                                                      <option>Yes</option>
-                                                      <option>No</option>
-                                                  </select>
-                                                  <img src="../../../../../assets/images/icon/Icon ionic-ios-arrow-down.png" alt=""
-                                                      class="form-icon-down">
-                                              </div>
-                                          </div>
-                                      </div>
-                  
-                                      <div class="tranding-thesis">
-                                          <div class="left-thesis">
-                                              <h6>What's your perspective on the market and your positions?</h6>
-                                          </div>
-                                          <div class="right-thesis">
-                                              <div class="form-group">
-                                                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
-                                              </div>
-                                          </div>
-                                      </div>
-                  
-                                      <div class="tranding-thesis">
-                                          <div class="left-thesis">
-                                              <h6>Did your perspective on the market change from yesterday?</h6>
-                                          </div>
-                                          <div class="right-thesis">
-                                              <div class="form-group">
-                                                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
-                                              </div>
-                                          </div>
-                                      </div>
-                  
-                                      <div class="tranding-thesis">
-                                          <div class="left-thesis">
-                                              <h6>What trades do you want to executed today?</h6>
-                                          </div>
-                                          <div class="right-thesis">
-                                              <div class="form-group">
-                                                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
-                                              </div>
-                                          </div>
-                                      </div>
-                  
-                                      <div class="tranding-thesis">
-                                          <div class="left-thesis">
-                                              <h6>Did you review previous lessons learnt?</h6>
-                                          </div>
-                                          <div class="right-thesis">
-                                              <div class="trade-sel">
-                                                  <select class="form-control" id="exampleFormControlSelect1">
-                                                      <option>Yes</option>
-                                                                          <option>No</option>
-                                                  </select>
-                                                  <img src="../../../../../assets/images/icon/Icon ionic-ios-arrow-down.png" alt=""
-                                                      class="form-icon-down">
-                                              </div>
-                                          </div>
-                                      </div>
-                  
-                                  </div>
-                  
-                                  <a  class="btn btn-add" [routerLink]="['/dashboard']"> SAVE</a>
-                  
-                                  <div class="trade-btn-p">
-                                      <!-- <a class=" btn-pre" (click)="previous()">Previous</a> -->
-                                      <a class="btn-pre" (click)="goForward()">Next</a>
-                  
-                                  </div>
-                              </div>
-                          </div>
-           
-              </div>
-            </mat-step>
-            <mat-step>
-              <div class="stepper-content">
-                  <!-- Post-Market -->
-                  <div class="trade-new-plan-mobile">
-                      <div class="container">
-                          <div class="trade-stategy-heading">
-                              <h6>
-                                  Post-Market
-                              </h6>
-                          </div>
-          
-                          <div class="trade-thesis-inner">
-                              <div class="tranding-thesis">
-                                  <div class="left-thesis">
-                                      <h6>Did the trades executed today align with the trading plan?</h6>
-                                  </div>
-                                  <div class="right-thesis">
-                                      <div class="trade-sel">
-                                          <select class="form-control" id="exampleFormControlSelect1">
-                                              <option>Yes</option>
-                                              <option>No</option>
-                                          </select>
-                                          <img src="../../../../../assets/images/icon/Icon ionic-ios-arrow-down.png" alt=""
-                                              class="form-icon-down">
-                                      </div>
-                                  </div>
-                              </div>
-          
-                              <div class="tranding-thesis">
-                                  <div class="left-thesis">
-                                      <h6>What's your perspective on the market and your positions?</h6>
-                                  </div>
-                                  <div class="right-thesis">
-                                      <div class="form-group">
-                                          <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
-                                      </div>
-                                  </div>
-                              </div>
-          
-                              <div class="tranding-thesis">
-                                  <div class="left-thesis">
-                                      <h6>What trades did you execute and why?</h6>
-                                  </div>
-                                  <div class="right-thesis">
-                                      <div class="form-group">
-                                          <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
-                                      </div>
-                                  </div>
-                              </div>
-          
-                              <div class="tranding-thesis">
-                                  <div class="left-thesis">
-                                      <h6>What lessons did you learn today?</h6>
-                                  </div>
-                                  <div class="right-thesis">
-                                      <div class="form-group">
-                                          <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
-                                      </div>
-                                  </div>
-                              </div>
-          
-                          
-          
-                          </div>
-          
-                          <a  class="btn btn-add" [routerLink]="['/dashboard']"> SAVE</a>
-          
-                      </div>
-                  </div>
-         
-              </div>
-            </mat-step>
-        
-          </mat-horizontal-stepper>
+    <mat-horizontal-stepper labelPosition="bottom" #tradeMobileStepper [linear]="false">
+        <mat-step>
+
+            <div class="stepper-content">
+
+                <!-- Pre-Market -->
+
+                <div class="trade-new-plan-mobile">
+                    <div class="container">
+                        <div class="trade-stategy-heading">
+                            <h6>
+                                Pre-Market
+                            </h6>
+                        </div>
+
+                        <div class="trade-thesis-inner">
+                            <div class="tranding-thesis">
+                                <div class="left-thesis">
+                                    <h6>Are current trade positions aligned with entry and exit rules?</h6>
+                                </div>
+                                <div class="right-thesis">
+                                    <div class="trade-sel">
+                                        <select class="form-control" id="exampleFormControlSelect1">
+                                            <option>Yes</option>
+                                            <option>No</option>
+                                        </select>
+                                        <img src="../../../../../assets/images/icon/Icon ionic-ios-arrow-down.png"
+                                            alt="" class="form-icon-down">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tranding-thesis">
+                                <div class="left-thesis">
+                                    <h6>What's your perspective on the market and your positions?</h6>
+                                </div>
+                                <div class="right-thesis">
+                                    <div class="form-group">
+                                        <textarea class="form-control" id="exampleFormControlTextarea1"
+                                            rows="2"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tranding-thesis">
+                                <div class="left-thesis">
+                                    <h6>Did your perspective on the market change from yesterday?</h6>
+                                </div>
+                                <div class="right-thesis">
+                                    <div class="form-group">
+                                        <textarea class="form-control" id="exampleFormControlTextarea1"
+                                            rows="2"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tranding-thesis">
+                                <div class="left-thesis">
+                                    <h6>What trades do you want to executed today?</h6>
+                                </div>
+                                <div class="right-thesis">
+                                    <div class="form-group">
+                                        <textarea class="form-control" id="exampleFormControlTextarea1"
+                                            rows="2"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tranding-thesis">
+                                <div class="left-thesis">
+                                    <h6>Did you review previous lessons learnt?</h6>
+                                </div>
+                                <div class="right-thesis">
+                                    <div class="trade-sel">
+                                        <select class="form-control" id="exampleFormControlSelect1">
+                                            <option>Yes</option>
+                                            <option>No</option>
+                                        </select>
+                                        <img src="../../../../../assets/images/icon/Icon ionic-ios-arrow-down.png"
+                                            alt="" class="form-icon-down">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <a class="btn btn-add" [routerLink]="['/dashboard']"> SAVE</a>
+
+                        <div class="trade-btn-p">
+                            <!-- <a class=" btn-pre" (click)="previous()">Previous</a> -->
+                            <a class="btn-pre" (click)="goForward()">Next</a>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </mat-step>
+        <mat-step>
+            <div class="stepper-content">
+                <!-- Post-Market -->
+                <div class="trade-new-plan-mobile">
+                    <div class="container">
+                        <div class="trade-stategy-heading">
+                            <h6>
+                                Post-Market
+                            </h6>
+                        </div>
+
+                        <div class="trade-thesis-inner">
+                            <div class="tranding-thesis">
+                                <div class="left-thesis">
+                                    <h6>Did the trades executed today align with the trading plan?</h6>
+                                </div>
+                                <div class="right-thesis">
+                                    <div class="trade-sel">
+                                        <select class="form-control" id="exampleFormControlSelect1">
+                                            <option>Yes</option>
+                                            <option>No</option>
+                                        </select>
+                                        <img src="../../../../../assets/images/icon/Icon ionic-ios-arrow-down.png"
+                                            alt="" class="form-icon-down">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tranding-thesis">
+                                <div class="left-thesis">
+                                    <h6>What's your perspective on the market and your positions?</h6>
+                                </div>
+                                <div class="right-thesis">
+                                    <div class="form-group">
+                                        <textarea class="form-control" id="exampleFormControlTextarea1"
+                                            rows="2"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tranding-thesis">
+                                <div class="left-thesis">
+                                    <h6>What trades did you execute and why?</h6>
+                                </div>
+                                <div class="right-thesis">
+                                    <div class="form-group">
+                                        <textarea class="form-control" id="exampleFormControlTextarea1"
+                                            rows="2"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tranding-thesis">
+                                <div class="left-thesis">
+                                    <h6>What lessons did you learn today?</h6>
+                                </div>
+                                <div class="right-thesis">
+                                    <div class="form-group">
+                                        <textarea class="form-control" id="exampleFormControlTextarea1"
+                                            rows="2"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+                        <a class="btn btn-add" [routerLink]="['/dashboard']"> SAVE</a>
+
+                    </div>
+                </div>
+
+            </div>
+        </mat-step>
+
+    </mat-horizontal-stepper>
 
 
 

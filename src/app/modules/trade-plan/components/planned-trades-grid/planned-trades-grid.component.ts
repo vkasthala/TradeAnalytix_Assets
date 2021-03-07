@@ -49,4 +49,8 @@ export class PlannedTradesGridComponent implements OnInit {
     });
   }
 
+  getPlannedTrades(): PlannedTrade[] {
+    return this.plannedTradesDataSource;
+  }
+
 }

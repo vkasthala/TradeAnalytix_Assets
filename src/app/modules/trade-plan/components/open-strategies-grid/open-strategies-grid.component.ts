@@ -20,7 +20,7 @@ export class OpenStrategiesGridComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+
   }
 
   loadStrategies() {
@@ -33,6 +33,10 @@ export class OpenStrategiesGridComponent implements OnInit {
         this.strategiesDataSource = result;
       });
     }
+  }
+
+  getOpenStrategies(): TradePlanStrategy[] {
+    return this.strategiesDataSource;
   }
 
 }

@@ -38,4 +38,12 @@ export class TradePlansService {
         return this.http.get<PlannedTrade[]>(this.apiUrl + '/trade-plan/planned-trades/' + tradePlanId);
     }
 
+    createTradePlan(tradePlan: TradePlan): Observable<void>{
+        return this.http.post<TradePlan, void>(this.apiUrl + '/trade-plan/create', tradePlan);
+    }
+
+    updateTradePlan(tradePlan: TradePlan): Observable<void>{
+        return this.http.post<TradePlan, void>(this.apiUrl + '/trade-plan/update', tradePlan);
+    }
+
 }
