@@ -4,6 +4,7 @@ import { PlannedTrade } from '../../models/planned-trade.model';
 import { StrategyCreateService } from 'src/app/modules/shared/services/strategy-create.service';
 import { StrategyType } from 'src/app/modules/shared/models/trade-management/strategy-type.enum';
 import { MatDialogRef } from '@angular/material/dialog';
+import { ActionType } from 'src/app/modules/shared/models/trade-management/action-type.enum';
 
 @Component({
   selector: 'app-planned-trade-dialog',
@@ -17,12 +18,11 @@ export class PlannedTradeDialogComponent implements OnInit {
 
   strategyTypes: String[];
   strategies = StrategyType;
-  actionTypes: string[];
+  actionTypes = ActionType;
 
 
   constructor(private strategyCreateService: StrategyCreateService, private dialogRef: MatDialogRef<PlannedTradeDialogComponent>) {
     this.strategyTypes = this.strategyCreateService.getStrategies();
-    this.actionTypes = this.strategyCreateService.getActionTypes();
   }
 
   ngOnInit() {
@@ -40,12 +40,12 @@ export class PlannedTradeDialogComponent implements OnInit {
   }
 
   onStrategyTypeChange(strategyTypeId) {
-    console.log('str: ', this.strategyTypes[strategyTypeId].valueOf(), this.strategyTypes, this.actionTypes);
-    this.data.strategyType = this.strategyTypes[strategyTypeId].valueOf();
+    console.log('str: ', this.strategies[strategyTypeId]);
+    this.data.strategyType = this.strategies[strategyTypeId];
   }
 
   onActionTypeChange(actType: string) {
-    console.log('act: ', actType);
+    console.log('act: ', this.actionTypes[actType]);
     this.data.actionType = this.actionTypes[actType];
   }
 
