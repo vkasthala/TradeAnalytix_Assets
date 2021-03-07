@@ -19,11 +19,11 @@ export class PlannedTradesGridComponent implements OnInit {
   @Input('tradePlanId') tradePlanId: number;
 
   constructor(private tradePlanService: TradePlansService, private _dialog: MatDialog) {
-    this.loadPlannedTrades();
+
   }
 
   ngOnInit() {
-
+    this.loadPlannedTrades();
   }
 
   loadPlannedTrades() {

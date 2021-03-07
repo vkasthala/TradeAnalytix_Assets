@@ -1,0 +1,21 @@
+<div class="actiontext-popup">
+    <div class="actiontext-pop-inner">
+        <div class="top-pop-inner">
+            <div class="left-heading">
+                <h6>Action Notes</h6>
+            </div>
+        </div>
+
+        <div class="main-pop-inner">
+            <div class="pb-1">
+                <label class="col-form-label"></label>
+                <textarea rows="2" class="form-control" [(ngModel)]="data.actionText"></textarea>
+            </div>
+
+            <div class="btn-up mb-0">
+                <button type="button" class="btn btn-add" [mat-dialog-close]="data">SAVE</button>
+            </div>
+        </div>
+
+    </div>
+</div>

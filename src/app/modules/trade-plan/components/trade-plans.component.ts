@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ViewChild, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 import { IMyDrpOptions } from 'mydaterangepicker';
 import { MatPaginator } from '@angular/material/paginator';
 import { TradePlansService } from '../services/trade-plans.service';
@@ -10,6 +10,7 @@ import { TradePlanGridRequest } from '../models/trade-plan-grid-request.model';
 import { TradePlanGridPage } from '../models/trade-plan-grid-page.model';
 import { TradePlanGridSort } from '../models/trade-plan-grid-sort.model';
 import { tap } from 'rxjs/operators';
+import { TradePlanGridRow } from '../models/trade-plan-grid-row.model';
 
 @Component({
   selector: 'app-trade-plans',
@@ -97,9 +98,14 @@ export class TradePlansComponent implements OnInit {
   };
 
 
-  addEntry() { this.router.navigate(['/add-new-trade-plan']) }
-  editEntry() {
-    this.router.navigate(['/edit-trade-plan'])
+  addEntry() {
+    this.router.navigate(['/add-new-trade-plan']);
+  }
+
+  editEntry(element: TradePlanGridRow) {
+    let extras: NavigationExtras = {};
+    extras.state = element;
+    this.router.navigate(['/edit-trade-plan'], extras);
   }
 
 }

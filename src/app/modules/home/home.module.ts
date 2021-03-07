@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { 
+import {
   MatDatepickerModule,
   MatNativeDateModule,
   MatInputModule,
@@ -54,7 +54,7 @@ import { UtilitiesModule } from '../utilities/utilities.module';
 import { TradeExecutionDateComponent } from '../shared/components/modals/trade-execution-date/trade-execution-date.component';
 
 import { TradeStrategiesGrid } from '../trade-strategies/components/trade-strategies-grid/trade-strategies-grid';
-import {MatTableModule} from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { OauthRedirectComponent } from '../utilities/components/oauth-redirect/oauth-redirect.component';
 import { RiskAnalysisChartComponent } from '../risk-analysis/components/risk-analysis-chart/risk-analysis-chart.component';
@@ -83,16 +83,17 @@ import { EditStrategyComponent } from '../shared/components/modals/edit-strategy
 
 import { from } from 'rxjs';
 
-import {MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
-import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
+import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import * as _moment from 'moment';
 import { EditableGridComponent } from '../shared/components/widgets/editable-grid/editable-grid.component';
 import { OpenStrategiesGridComponent } from '../trade-plan/components/open-strategies-grid/open-strategies-grid.component';
 import { PlannedTradeDialogComponent } from '../trade-plan/components/planned-trade-dialog/planned-trade-dialog.component';
 import { PlannedTradesGridComponent } from '../trade-plan/components/planned-trades-grid/planned-trades-grid.component';
+import { StrategyActionTextDialogComponent } from '../trade-plan/components/strategy-action-text-dialog/strategy-action-text-dialog.component';
 export const MY_FORMATS = {
   parse: {
-      dateInput: 'DD-MMM-YY'
+    dateInput: 'DD-MMM-YY'
   },
   display: {
     dateInput: 'DD-MMM-YY',
@@ -167,7 +168,8 @@ export const MY_FORMATS = {
     EditStrategyComponent,
     OpenStrategiesGridComponent,
     PlannedTradeDialogComponent,
-    PlannedTradesGridComponent
+    PlannedTradesGridComponent,
+    StrategyActionTextDialogComponent
   ],
   imports: [
     CommonModule,
@@ -200,7 +202,8 @@ export const MY_FORMATS = {
     ConfirmDialogComponent,
     UpdateStockPricePopupComponent,
     EditStrategyComponent,
-    PlannedTradeDialogComponent
+    PlannedTradeDialogComponent,
+    StrategyActionTextDialogComponent
   ],
   // bootstrap: [TradeStrategiesGrid],
   providers: [
@@ -209,7 +212,7 @@ export const MY_FORMATS = {
       useClass: MomentDateAdapter,
       deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
     },
-    {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
+    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
   ],
 })
 export class HomeModule { }

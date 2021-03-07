@@ -29,7 +29,10 @@
 
             <ng-container matColumnDef="actionText">
                 <th mat-header-cell *matHeaderCellDef>Action</th>
-                <td mat-cell *matCellDef="let element"> {{element.actionText}} </td>
+                <td mat-cell *matCellDef="let element"> <span>{{element.actionText}}</span>
+                    <mat-icon class="mr-2 text-success mat-icon-sm right-icon" (click)="onActionTextEdit(element)">edit
+                    </mat-icon>
+                </td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="strategiesGridColumns"></tr>

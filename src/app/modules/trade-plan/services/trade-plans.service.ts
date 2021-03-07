@@ -53,4 +53,9 @@ export class TradePlansService {
         return this.http.post<TradePlanGridRequest, TradePlanGridResult>(this.apiUrl + '/trade-plan/grid-result', gridRequest);
     }
 
+    getTradePlanData(tradePlanId: number): Observable<TradePlan> {
+        return this.http.get<TradePlan>(this.apiUrl + '/trade-plan/' + tradePlanId);
+    }
+
+
 }
