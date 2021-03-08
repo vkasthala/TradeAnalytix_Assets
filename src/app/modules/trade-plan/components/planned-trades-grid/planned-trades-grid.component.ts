@@ -23,6 +23,9 @@ export class PlannedTradesGridComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (this.tradePlanId > 0) {
+      this.plannedTradesGridColumns.push('executed');
+    }
     this.loadPlannedTrades();
   }
 

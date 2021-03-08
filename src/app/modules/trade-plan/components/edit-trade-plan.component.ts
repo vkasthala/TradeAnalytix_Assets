@@ -25,8 +25,4 @@ export class EditTradePlanComponent extends AddnewtradeplanComponent implements 
     this.add = false;
   }
 
-  ngOnInit() {
-    // this.setState();
-  }
-
 }

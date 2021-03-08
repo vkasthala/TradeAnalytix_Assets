@@ -35,6 +35,13 @@
                 </td>
             </ng-container>
 
+            <ng-container matColumnDef="aligned" *ngIf="tradePlanId > 0">
+                <th mat-header-cell *matHeaderCellDef>Aligned</th>
+                <td mat-cell *matCellDef="let element">
+                    <mat-checkbox [(ngModel)]="element.aligned"></mat-checkbox>
+                </td>
+            </ng-container>
+
             <tr mat-header-row *matHeaderRowDef="strategiesGridColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: strategiesGridColumns;"></tr>
         </mat-table>

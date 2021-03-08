@@ -5,7 +5,8 @@ import {
   MatNativeDateModule,
   MatInputModule,
   MatTooltipModule,
-  MatListModule
+  MatListModule,
+  MatCheckboxModule
 
 } from '@angular/material';
 import { TradeStrategiesComponent } from '../trade-strategies/components/trade-strategies.component';
@@ -184,7 +185,8 @@ export const MY_FORMATS = {
     MatTableModule,
     MatPaginatorModule,
     ChartModule,
-    MatListModule
+    MatListModule,
+    MatCheckboxModule
     // MatTableDataSource
   ],
   entryComponents: [

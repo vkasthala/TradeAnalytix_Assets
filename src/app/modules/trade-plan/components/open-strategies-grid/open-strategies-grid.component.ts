@@ -22,6 +22,9 @@ export class OpenStrategiesGridComponent implements OnInit {
   }
 
   ngOnInit() {
+    if(this.tradePlanId > 0){
+      this.strategiesGridColumns.push('aligned');
+    }
     this.loadStrategies();
   }
 

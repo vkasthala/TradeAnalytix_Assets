@@ -86,11 +86,10 @@ export class AddnewtradeplanComponent implements OnInit {
   }
 
   addEntry() {
-
-    this.router.navigate(['/dashboard/trade-plans'])
+    this.router.navigate(['/trade-plans'])
   }
 
-  previous() { this.router.navigate(['/dashboard/trade-plans']) }
+  previous() { this.router.navigate(['/trade-plans']) }
 
 
   goForward() {
@@ -114,7 +113,7 @@ export class AddnewtradeplanComponent implements OnInit {
     console.log('trade plan to be created: ', tradePlan);
     this.tradePlanService.createTradePlan(tradePlan).subscribe(result => {
       this.toastr.success('Trade plan successfully created');
-      this.router.navigate(['/dashboard/trade-plans']);
+      this.router.navigate(['/trade-plans']);
     });
   }
 
@@ -124,7 +123,7 @@ export class AddnewtradeplanComponent implements OnInit {
     console.log('trade plan to be updated: ', tradePlan);
     this.tradePlanService.updateTradePlan(tradePlan).subscribe(result => {
       this.toastr.success('Trade plan successfully submitted');
-      this.router.navigate(['/dashboard/trade-plans']);
+      this.router.navigate(['/trade-plans']);
     });
   }
 
