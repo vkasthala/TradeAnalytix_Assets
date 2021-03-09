@@ -1,7 +1,9 @@
 <div class="mb-2">
-    <label class="col-form-label pt-0">What do you plan to trade today?</label>
-    <div class="px-0">
+    <div class="col-9 px-0 d-flex justify-content-between">
+        <label class="col-form-label pt-0">What do you plan to trade today?</label>
         <mat-icon class="text-success mat-icon-md add-icon" (click)="openPlannedTradeDialog()">add_circle</mat-icon>
+    </div>
+    <div class="d-flex">
         <mat-table [dataSource]="plannedTradesDataSource">
             <ng-container matColumnDef="symbol">
                 <th mat-header-cell *matHeaderCellDef>Symbol</th>

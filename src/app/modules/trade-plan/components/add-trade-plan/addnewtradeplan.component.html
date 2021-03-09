@@ -50,18 +50,20 @@
                     </div>
                 </div>
                 <div class="mb-2">
-                    <label class="col-form-label pt-0">What’s your perspective on the market and your current
-                        positions?</label>
-                    <div class="col-10 px-0">
+                    <label class="col-form-label pt-0">What’s your perspective on the market and your current positions?</label>
+                    <div class="col-8 px-0">
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"
                             [(ngModel)]="tradePlan.perspective"></textarea>
                     </div>
                 </div>
 
+                <app-open-strategies-grid [tradePlanId]="tradePlanId" #tradeStrategiesGrid></app-open-strategies-grid>
+                <app-planned-trades-grid [tradePlanId]="tradePlanId" #plannedTradesGrid></app-planned-trades-grid>
+
                 <!--<div class="mb-2">
                     <label class="col-form-label pt-0">What do you want to do with your open positions?</label>
                     <div class="col-11 px-0">
-                       <!--<table class="table table-bordered table-custom">
+                       <table class="table table-bordered table-custom">
                             <thead>
                                 <tr>
                                     <th class="border-0">Symbol</th>
@@ -111,8 +113,7 @@
                         </table>
                     </div>
                 </div> -->
-                <app-open-strategies-grid [tradePlanId]="tradePlanId" #tradeStrategiesGrid></app-open-strategies-grid>
-                <app-planned-trades-grid [tradePlanId]="tradePlanId" #plannedTradesGrid></app-planned-trades-grid>
+                
                 <!-- end: table-custom -->
                 <!--<div class="mb-2">
                     <label class="col-form-label pt-0">What do you plan to trade today?</label>
