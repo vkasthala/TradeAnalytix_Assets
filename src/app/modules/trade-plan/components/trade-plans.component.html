@@ -14,7 +14,8 @@
                 <div class="form-group">
                   <div class='input-group date' id='datetimepicker1'>
                     <my-date-range-picker placeholder="Date range" name="mydaterange"
-                      [options]="myDateRangePickerOptions"></my-date-range-picker>
+                      [options]="myDateRangePickerOptions" (dateRangeChanged)="onDateRangeChanged($event)">
+                    </my-date-range-picker>
                   </div>
                 </div>
               </div>

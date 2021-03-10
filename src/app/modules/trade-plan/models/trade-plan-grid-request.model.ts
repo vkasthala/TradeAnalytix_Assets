@@ -4,7 +4,7 @@ import { TradePlanGridSort } from "./trade-plan-grid-sort.model";
 
 export class TradePlanGridRequest {
 
-    filter: TradePlanGridFilter;
+    filters: TradePlanGridFilter;
 
     page: TradePlanGridPage;
 

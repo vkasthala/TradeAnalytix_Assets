@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ViewChild, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
-import { IMyDrpOptions } from 'mydaterangepicker';
+import { IMyDateRangeModel, IMyDrpOptions } from 'mydaterangepicker';
 import { MatPaginator } from '@angular/material/paginator';
 import { TradePlansService } from '../services/trade-plans.service';
 
@@ -11,6 +11,7 @@ import { TradePlanGridPage } from '../models/trade-plan-grid-page.model';
 import { TradePlanGridSort } from '../models/trade-plan-grid-sort.model';
 import { tap } from 'rxjs/operators';
 import { TradePlanGridRow } from '../models/trade-plan-grid-row.model';
+import { TradePlanGridFilter } from '../models/trade-plan-grid-filter.model';
 
 @Component({
   selector: 'app-trade-plans',
@@ -106,6 +107,24 @@ export class TradePlansComponent implements OnInit {
     let extras: NavigationExtras = {};
     extras.state = element;
     this.router.navigate(['/edit-trade-plan'], extras);
+  }
+
+  onDateRangeChanged(event: IMyDateRangeModel) {
+    console.log('date change: ', event);
+    let filter: TradePlanGridFilter = this.tradePlanGridRequest.filters;
+    if (!filter) {
+      filter = new TradePlanGridFilter();
+      this.tradePlanGridRequest.filters = filter;
+    }
+    if (event.beginJsDate && event.endJsDate) {
+      filter.fromDate = event.beginDate.year + '-' + event.beginDate.month + '-' + event.beginDate.day;
+      filter.toDate = event.endDate.year + '-' + event.endDate.month + '-' + event.endDate.day;
+    } else {
+      filter.fromDate = undefined;
+      filter.toDate = undefined;
+    }
+    this.loadPage();
+    console.log('trade plans filter after date range: ', filter);
   }
 
 }
