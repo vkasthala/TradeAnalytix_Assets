@@ -11,33 +11,39 @@
             <ul class="list-unstyled ">
                 <li class="sidebar-item" [class.nav-active]="currentRoute == 'dashboard'">
                     <a class="sidebar-link" [routerLink]="['/dashboard/']">
-                        <mat-icon>home</mat-icon> 
+                        <mat-icon>dashboard</mat-icon> 
                         <span>Dashboard</span>
                     </a>
                 </li>
                 <li class="sidebar-item" [class.nav-active]="currentRoute == 'trade-strategies'">
                     <a class="sidebar-link" [routerLink]="['/trade-strategies/']">
-                        <mat-icon>calendar_today</mat-icon>
+                        <mat-icon>attach_money</mat-icon>
                         <span>Trade Strategies</span>
                     </a>                    
                 </li>
-                
+           
                 <li class="sidebar-item" [class.nav-active]="currentRoute == 'import-trades'">
                     <a class="sidebar-link" [routerLink]="['/import-trades/']">
-                        <mat-icon>calendar_today</mat-icon>
+                        <mat-icon class="mat-lg">import_export</mat-icon>
                         <span>IMPORT TRADES</span>
                     </a>
                 </li>
                 
                 <li class="sidebar-item" [class.nav-active]="currentRoute == 'risk-analysis'">
                     <a class="sidebar-link" [routerLink]="['/risk-analysis/']">
+                        <mat-icon>insights</mat-icon>
                         <span>RISK ANALYSIS</span>
                     </a>
-                    
+                </li>
+                <li class="sidebar-item" [class.nav-active]="currentRoute == 'strategy-comparison'">
+                    <a class="sidebar-link" [routerLink]="['/strategy-comparison/']">
+                        <mat-icon>compare_arrows</mat-icon>
+                        <span>Compare Strategy</span>
+                    </a>
                 </li>
                 <li class="sidebar-item" [class.nav-active]="currentRoute == 'trade-plans'">
                     <a class="sidebar-link" [routerLink]="['/trade-plans/']">
-                        <mat-icon>account_balance</mat-icon>
+                        <mat-icon>note_add</mat-icon>
                         <span>TRADE PLAN</span>
                     </a>
                 </li>
@@ -45,7 +51,7 @@
                 
                 <li class="sidebar-item" [class.nav-active]="currentRoute == 'reports'">
                     <a class="sidebar-link" [routerLink]="['/reports/']">
-                        <mat-icon>report</mat-icon>
+                        <mat-icon>pie_chart</mat-icon>
                         <span>REPORTS</span>
                     </a>
                 </li>
