@@ -11,6 +11,8 @@ export class HomeComponent implements OnInit {
 
   currentRoute: string;
   userdetails: boolean=false;
+  isExpand: boolean=true;
+  
   constructor(
     private globalStore: Store<fromGlobalConfig.State>,
     private router: Router,
@@ -23,6 +25,9 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
    
+  }
+  sidebarToggle() {
+    this.isExpand = !this.isExpand
   }
 
   logout() {
