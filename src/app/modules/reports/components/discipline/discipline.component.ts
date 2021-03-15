@@ -1,50 +1,28 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ReportsItem } from '../../model/reports-item.model';
+import { Component } from '@angular/core';
+import { ReportTypeService } from '../../services/report-type.service';
+import { ReportTabContentComponent } from '../report-tab-content/report-tab-content.component';
 
 @Component({
   selector: 'app-discipline',
-  templateUrl: './discipline.component.html',
-  styleUrls: ['./discipline.component.scss']
+  templateUrl: '../report-tab-content/report-tab-content.component.html',
+  styleUrls: ['../report-tab-content/report-tab-content.component.scss']
 })
-export class DisciplineComponent implements OnInit {
-  reportsitems: ReportsItem[] = [];
+export class DisciplineComponent extends ReportTabContentComponent {
 
-  reportsItemsData = {
-    compliance: [
-      { name: 'Net Return from Aligned Trades', value: "$23932" },
-      { name: 'Win-Loss by Aligned Trades', value: "$12456" },
-    ],
-    
-    plannedtrades: [
-      { name: 'Trade Plan Alignment (%)', value: "33%" },
-      { name: 'Planed Trades (%)', value: "43%" }
-    ],
-    rulescompliance: [
-      { name: 'Entry Rules Compliance (%)', value: "72%" },
-      { name: 'Exit Rules Compliance (%)', value: "32%" }
-    ],
-    
-  };
-
-  constructor() { }
+  constructor(reportTypeService: ReportTypeService) {
+    super('discipline', reportTypeService);
+  }
 
   ngOnInit() {
-    this.getComplianceItems();
-
+    super.ngOnInit();
+    this.reportSubTypes = this.reportTypeService.getSubTypesByCategory(this.type);
+    console.log('discipline charts loading..', this.reportSubTypes);
+    //this.onReportSubTypeSelect(this.reportSubTypes[0]);
   }
 
-  getComplianceItems(): ReportsItem[] {
-    this.reportsitems = this.reportsItemsData.compliance;
-    return this.reportsitems;
-  }
-
-  getPlannedTradesItems(): ReportsItem[] {
-    this.reportsitems = this.reportsItemsData.plannedtrades;
-    return this.reportsitems;
-  }
-  getRulesComplianceItems(): ReportsItem[] {
-    this.reportsitems = this.reportsItemsData.rulescompliance;
-    return this.reportsitems;
+  reloadData(tab: string){
+    console.log('here..');
+    this.onReportSubTypeSelect(this.reportSubTypes[0]);
   }
 
 }

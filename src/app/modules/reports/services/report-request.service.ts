@@ -30,4 +30,12 @@ export class ReportRequestService {
     return request;
   }
 
+  public getDisciplineReturnWinLossChartRequest(reportDetails: ReportDetails, subtype: string, reportFilter: ReportFilter): ChartRequest {
+    let request: ChartRequest = new ChartRequest();
+    request.id = reportDetails.id;
+    request.fromDate = reportFilter.fromDate;
+    request.toDate = reportFilter.toDate;
+    return request;
+  }
+
 }

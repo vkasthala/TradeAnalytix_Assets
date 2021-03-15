@@ -14,6 +14,8 @@ export class ReportTypeService {
     let subTypes: ReportSubType[] = [];
     if (category === 'performance') {
       subTypes = this.getPerformanceSubTypes();
+    } else if (category === 'discipline') {
+      subTypes = this.getDisciplineReportSubTypes();
     }
     return subTypes;
   }
@@ -77,6 +79,18 @@ export class ReportTypeService {
     reportSubType.name = 'Mindset';
     reportSubType.id = "mindset";
     reportSubType.reportDetailList = [new ReportDetails('net_return_mindset', 'Net Return by Mindset', ReportCategory.Net_Return), new ReportDetails('win_loss_mindset', 'Win/Loss by Mindset', ReportCategory.Win_Loss)];
+    reportSubTypes.push(reportSubType);
+
+    return reportSubTypes;
+  }
+
+  private getDisciplineReportSubTypes(): ReportSubType[] {
+    let reportSubTypes: ReportSubType[] = [];
+
+    let reportSubType: ReportSubType = new ReportSubType();
+    reportSubType.name = 'Performance by Planned Trades';
+    reportSubType.id = "type";
+    reportSubType.reportDetailList = [new ReportDetails('discipline_trade_type', 'Return and Win Rate by planned trades', ReportCategory.Discipline_Return_Winloss)];
     reportSubTypes.push(reportSubType);
 
     return reportSubTypes;

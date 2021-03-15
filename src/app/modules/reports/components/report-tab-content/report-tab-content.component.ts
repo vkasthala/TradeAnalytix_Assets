@@ -73,4 +73,8 @@ export class ReportTabContentComponent implements OnInit {
     return dateObj;
   }
 
+  protected reloadData(tab: string){
+
+  }
+
 }
