@@ -4,6 +4,6 @@ export enum ReportCategory {
 
     "Win_Loss" = "win_loss",
 
-    "Discipline_Return_Winloss" = "discipline_return_winloss"
+    "Discipline" = "discipline"
 
 }

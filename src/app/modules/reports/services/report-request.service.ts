@@ -30,12 +30,24 @@ export class ReportRequestService {
     return request;
   }
 
-  public getDisciplineReturnWinLossChartRequest(reportDetails: ReportDetails, subtype: string, reportFilter: ReportFilter): ChartRequest {
+  public getDisciplineChartRequest(reportDetails: ReportDetails, subtype: string, reportFilter: ReportFilter): ChartRequest {
     let request: ChartRequest = new ChartRequest();
     request.id = reportDetails.id;
     request.fromDate = reportFilter.fromDate;
     request.toDate = reportFilter.toDate;
     return request;
+  }
+
+  public getDisciplineReportApiUrl(reportId: string): string {
+    let url: string;
+    if ('discipline_trade_type' === reportId) {
+      url = '/reports/discipline/netreturn-winloss';
+    } else if ('discipline_netreturn' === reportId) {
+      url = '/reports/discipline/compliance-netreturn';
+    } else if ('discipline_winrate' === reportId) {
+      url = '/reports/discipline/compliance-winrate';
+    }
+    return url;
   }
 
 }

@@ -46,9 +46,9 @@ export class ReportChartComponent implements OnInit {
     } else if (category == ReportCategory.Win_Loss) {
       request = this.reportRequestService.getWinLossChartRequest(this.report, this.subtype, this.reportFilter);
       url = '/reports/performance/winloss';
-    } else if (category == ReportCategory.Discipline_Return_Winloss) {
-      request = this.reportRequestService.getDisciplineReturnWinLossChartRequest(this.report, this.subtype, this.reportFilter);
-      url = '/reports/discipline/netreturn-winloss';
+    } else if (category == ReportCategory.Discipline) {
+      request = this.reportRequestService.getDisciplineChartRequest(this.report, this.subtype, this.reportFilter);
+      url = this.reportRequestService.getDisciplineReportApiUrl(this.report.id);
     }
 
     //Load Chart

@@ -22,6 +22,9 @@ export class DisciplineComponent extends ReportTabContentComponent {
 
   reloadData(tab: string){
     console.log('here..');
+    if(this.reportSubTypes.length == 0){
+      this.reportSubTypes = this.reportTypeService.getSubTypesByCategory(this.type);
+    }
     this.onReportSubTypeSelect(this.reportSubTypes[0]);
   }
 

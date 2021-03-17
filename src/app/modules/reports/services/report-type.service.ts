@@ -89,10 +89,10 @@ export class ReportTypeService {
 
     let reportSubType: ReportSubType = new ReportSubType();
     reportSubType.name = 'Performance by Planned Trades';
-    reportSubType.id = "type";
-    reportSubType.reportDetailList = [new ReportDetails('discipline_trade_type', 'Return and Win Rate by planned trades', ReportCategory.Discipline_Return_Winloss)];
+    reportSubType.id = "discipline_performance";
+    reportSubType.reportDetailList = [new ReportDetails('discipline_trade_type', 'Return and Win Rate by planned trades', ReportCategory.Discipline), new ReportDetails('discipline_netreturn', 'Net Return by Trade Plan Compliance', ReportCategory.Discipline), new ReportDetails('discipline_winrate', 'Win Rate by Trade Plan Compliance', ReportCategory.Discipline)];
     reportSubTypes.push(reportSubType);
-
+    
     return reportSubTypes;
   }
 
