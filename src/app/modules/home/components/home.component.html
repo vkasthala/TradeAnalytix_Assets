@@ -4,7 +4,7 @@
             <img src="../../../../assets/images/logo_sm.png" alt="Trade-app-logo" class="img-fluid">
         </div>
         <div *ngIf="!isExpand" class="sidebar-brand cursor-pointer" [routerLink]="['/dashboard/']">
-            trade<span>analytix</span>
+            <img src="../../../../assets/images/logo.png" alt="Trade-app-logo" class="img-fluid">
         </div>
        
         <nav class="trade-navbar">
@@ -25,26 +25,26 @@
                 <li class="sidebar-item" [class.nav-active]="currentRoute == 'import-trades'">
                     <a class="sidebar-link" [routerLink]="['/import-trades/']">
                         <mat-icon class="mat-lg">import_export</mat-icon>
-                        <span>IMPORT TRADES</span>
+                        <span>Import Trades</span>
                     </a>
                 </li>
                 
                 <li class="sidebar-item" [class.nav-active]="currentRoute == 'risk-analysis'">
                     <a class="sidebar-link" [routerLink]="['/risk-analysis/']">
                         <mat-icon>insights</mat-icon>
-                        <span>RISK ANALYSIS</span>
+                        <span>Risk Analysis</span>
                     </a>
                 </li>
                 <li class="sidebar-item" [class.nav-active]="currentRoute == 'strategy-comparison'">
                     <a class="sidebar-link" [routerLink]="['/strategy-comparison/']">
                         <mat-icon>compare_arrows</mat-icon>
-                        <span>Compare Strategy</span>
+                        <span>Compare Strategies</span>
                     </a>
                 </li>
                 <li class="sidebar-item" [class.nav-active]="currentRoute == 'trade-plans'">
                     <a class="sidebar-link" [routerLink]="['/trade-plans/']">
                         <mat-icon>note_add</mat-icon>
-                        <span>TRADE PLAN</span>
+                        <span>Trade Plan</span>
                     </a>
                 </li>
                 
@@ -52,7 +52,7 @@
                 <li class="sidebar-item" [class.nav-active]="currentRoute == 'reports'">
                     <a class="sidebar-link" [routerLink]="['/reports/']">
                         <mat-icon>pie_chart</mat-icon>
-                        <span>REPORTS</span>
+                        <span>Reports</span>
                     </a>
                 </li>
                 

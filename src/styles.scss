@@ -120,7 +120,30 @@ body {
 
 .mydrp{
     width: 210px !important;
+    font-family: 'Poppins', sans-serif !important;
 }
+
+.trade-plan-date .mydrp {
+    background: #F5F8FA;
+    border: 1px solid #9DA6BA;
+    box-sizing: border-box;
+    border-radius: 4px;
+    height: 40px;
+    font-family: 'Poppins', sans-serif !important;
+}
+.trade-plan-date .mydrp .selectiongroup, .trade-plan-date .mydrp .selection {
+    background: transparent !important;
+    font-family: 'Poppins', sans-serif !important;
+}
+.trade-plan-date .mydrp .btnclear, .trade-plan-date .mydrp .btnpicker {
+    width: 20px !important;
+    background: transparent !important;
+}
+.mat-paginator, .mat-paginator-page-size .mat-select-trigger {
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 13px;
+}
+
 .date-range-md .mydrp .selectiongroup {
     height: 38px !important;
 }
