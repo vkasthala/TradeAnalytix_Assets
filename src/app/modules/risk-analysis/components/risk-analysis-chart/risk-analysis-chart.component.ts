@@ -22,10 +22,6 @@ export class RiskAnalysisChartComponent implements OnInit {
   }
 
   initRiskAnalysisChartProps() {
-    /**
- * In order to synchronize tooltips and crosshairs, override the
- * built-in events with handlers defined on the parent element.
- */
     ['mousemove', 'touchmove', 'touchstart'].forEach(function (eventType) {
       document.getElementById('container').addEventListener(
         eventType,
@@ -46,7 +42,7 @@ export class RiskAnalysisChartComponent implements OnInit {
             * Highligh`t a point by showing tooltip, setting hover state and draw crosshair
             */
             if (point) {
-              event = chart.pointer.normalize(event);
+              //event = chart.pointer.normalize(event);
               point.onMouseOver(); // Show the hover marker
               //chart.tooltip.refresh(this); // Show the tooltip
               chart.xAxis[0].drawCrosshair(event, this); // Show the crosshair
