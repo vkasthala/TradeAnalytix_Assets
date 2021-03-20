@@ -4,7 +4,7 @@ export class TradeThesis {
 
     sourceId: number;
 
-    tradeType: string = 'planned';
+    tradeType: string;
 
     mindsetId: number;
 

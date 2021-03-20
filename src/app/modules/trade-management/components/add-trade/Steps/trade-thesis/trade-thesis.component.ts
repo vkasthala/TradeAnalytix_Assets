@@ -62,7 +62,9 @@ export class TradeThesisComponent implements OnInit {
 
   loadMindsets() {
     this.metadataService.getMindsetTypes().subscribe(result => {
-      this.mindsetTypes = result;
+      this.mindsetTypes = [];
+      this.mindsetTypes.push(new MindsetType());
+      this.mindsetTypes = this.mindsetTypes.concat(result);
       if (this.mindsetTypes && this.mindsetTypes.length) {
         if (!this.tradeThesis.mindsetId) {
           this.tradeThesis.mindsetId = this.mindsetTypes[0].id;
@@ -73,7 +75,9 @@ export class TradeThesisComponent implements OnInit {
 
   loadSourceTypes() {
     this.metadataService.getTradeSourceTypes().subscribe(result => {
-      this.sourceTypes = result;
+      this.sourceTypes = [];
+      this.sourceTypes.push(new SourceType());
+      this.sourceTypes = this.sourceTypes.concat(result);
       if (this.sourceTypes && this.sourceTypes.length) {
         if (!this.tradeThesis.sourceId) {
           this.tradeThesis.sourceId = this.sourceTypes[0].id;
@@ -84,7 +88,9 @@ export class TradeThesisComponent implements OnInit {
 
   loadSurroundingEvents() {
     this.metadataService.getSurroundingTypes().subscribe(result => {
-      this.surroundingTypes = result;
+      this.surroundingTypes = [];
+      this.surroundingTypes.push(new SurroundingType());
+      this.surroundingTypes = this.surroundingTypes.concat(result);
       if (this.surroundingTypes && this.surroundingTypes.length) {
         if (!this.tradeThesis.surroundingEventId) {
           this.tradeThesis.surroundingEventId = this.surroundingTypes[0].id;
@@ -95,7 +101,9 @@ export class TradeThesisComponent implements OnInit {
 
   loadTechnicalIndicators() {
     this.metadataService.getTechIndicators().subscribe(result => {
-      this.technicalIndicators = result;
+      this.technicalIndicators = [];
+      this.technicalIndicators.push(new TechnicalIndicator());
+      this.technicalIndicators = this.technicalIndicators.concat(result);
       if (this.technicalIndicators && this.technicalIndicators.length) {
         if (!this.tradeThesis.technicalIndicatorId) {
           this.tradeThesis.technicalIndicatorId = this.technicalIndicators[0].id;
