@@ -41,7 +41,7 @@ export class EntryRulesComponent implements OnInit {
 
   ngAfterViewInit(): void {
     console.log('entry rules child view init:', this.inputState);
-    if (this.inputState && this.inputState.tradeStrategy.entryRules) {
+    if (this.inputState && this.inputState.tradeStrategy.entryRules && this.inputState.tradeStrategy.entryRules.length > 0) {
       this.entryRules = this.inputState.tradeStrategy.entryRules;
     }
   }
@@ -60,7 +60,7 @@ export class EntryRulesComponent implements OnInit {
       res ? this.router.navigate(['/dashboard/trade-strategies']) : 0;
     });
   }
-  showEntryRules(){
+  showEntryRules() {
     this.hideEntryRules = !this.hideEntryRules
   }
 }
