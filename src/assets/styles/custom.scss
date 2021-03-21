@@ -133,7 +133,7 @@
       margin-bottom: 0px;
         h3 {
           font-weight: 500;
-          font-size: 20px;
+          font-size: 18px;
           margin-bottom: 0px;
           color: #242E3A;
           padding-left: 1.23rem;
@@ -264,12 +264,12 @@ mat-header-cell:last-of-type, .mat-header-cell:last-of-type {
 .mat-header-cell {
     background: #eaecf1;
     color: #3A4C85;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 600;
 }
 .mat-cell, 
 .mat-footer-cell {
-    font-size: 15px;
+    font-size: 14px;
     color: #3B5065;
 }
 
@@ -295,7 +295,7 @@ mat-header-cell:last-of-type, .mat-header-cell:last-of-type {
 }
 
 .sidebar-brand {
-    padding: 18px 8px;
+    padding: 15px 8px;
     color: #f8f9fa;
     display: block;
     font-family: 'Poppins', sans-serif;
@@ -310,8 +310,8 @@ mat-header-cell:last-of-type, .mat-header-cell:last-of-type {
     outline: none;
 }
 .sidebar {
-    min-width: 260px;
-    max-width: 260px;
+    min-width: 220px;
+    max-width: 220px;
     transition: margin-left .35s ease-in-out,left .35s ease-in-out,margin-right .35s ease-in-out,right .35s ease-in-out;
     direction: ltr;
     background: #394c86;
@@ -416,7 +416,7 @@ mat-header-cell:last-of-type, .mat-header-cell:last-of-type {
     font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 600;
-    font-size: 24px;
+    font-size: 22px;
     line-height: 36px;
     color: #242E3A;
 }
@@ -450,4 +450,9 @@ mat-header-cell:last-of-type, .mat-header-cell:last-of-type {
     padding: .5rem;
     display: flex;
     align-items: center;
+}
+.menu-toggle {
+    color: #fff;
+    float: right;
+    margin-right: 10px;
 }

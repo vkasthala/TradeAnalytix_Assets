@@ -57,13 +57,16 @@
                 </li>
                 
             </ul>
+            <span class="menu-toggle cursor-pointer" (click)="sidebarToggle()">
+                <mat-icon *ngIf="isExpand">arrow_forward</mat-icon>
+                <mat-icon *ngIf="!isExpand">arrow_back</mat-icon>
+            </span>
         </nav>
     </div>
     <div class="main">
         <div class="trade-dashboard-topbar">
             <div class="trade-dash-sections">
                 <div class="d-flex align-items-center px-3">
-                    <mat-icon class="menu-toggle cursor-pointer" (click)="sidebarToggle()">menu</mat-icon>
                     <span class="page-heading ml-3">Dashboard</span>
                 </div>
                 <div  class="user-details">
