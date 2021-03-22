@@ -17,16 +17,28 @@
   border-radius: 2px;
 }
 .addnew-first {
-  height: 74vh;
-  border-top: 2px solid #ccc;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .trade-form {
-  display: flex;
+  width: 500px;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 16px rgba(157, 157, 157, 0.1);
+  border-radius: 4px;
+  padding: 30px;
 }
 .btn-enter {
-  background-color: #37A000;
+  background: #2285FA;
+  border-radius: 4px;
   color: $white;
   padding: 5px 20px !important;
+  height: 40px;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 18px;
+  width: 118px;
 }
 
 
@@ -616,13 +628,11 @@ visibility: hidden;
   text-transform: uppercase;
 }
 .trade-details-aside {
-  margin-top: 33px;
   flex: 0 0 28.333333%;
   max-width: 28.333333%;
-}
-.trade-details-ltside {
-  flex: 0 0 71.666667%;
-  max-width: 71.666667%;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 16px rgba(157, 157, 157, 0.1);
+  border-radius: 4px;
 }
 
 .trade-card-box {

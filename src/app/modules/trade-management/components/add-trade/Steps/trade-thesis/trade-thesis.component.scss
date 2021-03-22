@@ -2,6 +2,11 @@
 @import '../../../../../../../assets/styles/breakpoints.scss';
 
 .trade-thesis-sec {
+  background: #FFFFFF;
+  box-shadow: 0px 4px 16px rgba(157, 157, 157, 0.1);
+  border-radius: 0 0 4px 4px;
+  padding: 0;
+  position: relative;
   .trade-thesis-heading {
     border-bottom: 1px solid transparent;
     padding-bottom: 15px;
@@ -38,6 +43,13 @@
       padding: 0px;
     }
   }
+}
+.trade-close-thesis-sec {
+  background: #FFFFFF;
+  box-shadow: 0px 4px 16px rgba(157, 157, 157, 0.1);
+  border-radius: 4px;
+  padding: 0;
+  position: relative;
 }
 
 .form-control {

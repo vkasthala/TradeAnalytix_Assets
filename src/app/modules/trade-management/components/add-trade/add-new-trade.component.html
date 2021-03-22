@@ -1,7 +1,7 @@
 <div class="addnew-trade">
-  <div class="px-2 mt-3">
-    <div class="addnew-trade-body">
-      <div class="trade-dash-main">
+  <div class="px-3 mt-3">
+    
+      <!-- <div class="trade-dash-main">
         <div class="trade-dash-name">
           <h3>
             {{add ? 'Add Trade' : ''}} {{view ? 'View Trade' : ''}}
@@ -9,29 +9,32 @@
             <span *ngIf="close">Close Trade - {{tradeStrategy.uid}}</span>
           </h3>
         </div>
-      </div>
+      </div> -->
       <ng-container [ngSwitch]="currentState">
         <ng-container *ngSwitchCase="1">
 
           <!--entry first-->
-          <div class="addnew-first p-3">
-            <div class="trade-form">
-              <div class="d-flex">
-                <label class="col-form-label pb-0 mr-2">Enter Symbol</label>
-                <app-trade-search (symbolSelectEvent)="symbolSelectEventHandler($event)"></app-trade-search>
-                <button class="btn btn-enter ml-2" (click)="enterSymbol()">Submit </button>
-              </div>
+            <div class="addnew-first p-3">
+              
+              <div class="trade-form">
+                <img src="../../../../assets/images/add_trade.png" class="img-fluid mb-3" />
+                <h2 class="py-3 symbol-heading">Add Trade</h2>
+                <div class="pb-3 symbol-description">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
+                <div class="d-flex mt-2">
+                  <div class="media-body">
+                    <app-trade-search (symbolSelectEvent)="symbolSelectEventHandler($event)"></app-trade-search>
+                  </div>
+                  <button class="btn btn-enter ml-3" (click)="enterSymbol()">Submit </button>
+                </div>
 
+              </div>
             </div>
-          </div>
         </ng-container>
         <ng-container *ngSwitchCase="2">
-          <div class="addnew-trade-body">
-            <app-trade-details-header [selectedStock]="selectedStock" [stockSummary]="stockSummary"
+          <app-trade-details-header [selectedStock]="selectedStock" [stockSummary]="stockSummary"
               (loadMoreStats)="loadMoreStatsHandler($event)"></app-trade-details-header>
-          </div>
-          <div class="d-flex no-gutters" style="margin-right: -1px;">
-            <div class="col-8 trade-details-ltside">
+          <div class="row">
+            <div class="col-8">
               <mat-horizontal-stepper labelPosition="left" #stepper [linear]="false">
                 <mat-step [class.active]="stepone.completed" #stepone>
                   <ng-template matStepLabel>1.Trade Details</ng-template>
@@ -168,7 +171,7 @@
                   </div>
                 </mat-step>
                 <mat-step>
-                  <ng-template matStepLabel>2.Thesis</ng-template>
+                  <ng-template matStepLabel>Thesis</ng-template>
                   <div class="stepper-content">
                     <app-trade-thesis (nextStep)="goForward()" (prevStep)="goBack(true)" [inputState]="inputState"
                       [editTrade]="edit" [viewTrade]="view" [addTrade]="add" [closeTrade]="close"  #tradeThesis>
@@ -203,7 +206,7 @@
                   TRADE</button>
               </div>
             </div>
-            <div class="col-4 trade-details-aside">
+            <div class="col-4">
               <app-trade-details-aside [selectedStock]="selectedStock" [stockSummary]="stockSummary"
                 (loadMoreStats)="loadMoreStatsHandler($event)" (calculateMaxRisk)="calculateMaxRisk($event)"
                 [strategyTypeChangeSubject]="strategyTypeChangeSubject"
@@ -214,7 +217,6 @@
         </ng-container>
       </ng-container>
 
-    </div>
   </div>
 </div>
 

@@ -29,6 +29,13 @@ import { OptionLegHistory } from 'src/app/modules/trade-management/models/option
   styleUrls: ['./trade-details.component.scss'],
 })
 export class TradeDetailsComponent implements OnInit {
+
+  step = 0;
+
+  setStep(index: number) {
+    this.step = index;
+  }
+  
   currentState: number = 1;
   stockAdded: boolean;
 
