@@ -1,226 +1,254 @@
 <div class="trade-thesis-sec">
-    <div class="trade-thesis-heading">
-        <h4 class="text-success">
-            <span class="cursor d-flex align-items-center" (click)="showEntryThesis()"><i class="negative-amt material-icons">{{hideEntryThesis ? 'keyboard_arrow_right' : 'keyboard_arrow_down'}}</i> Entry Thesis</span>
-        </h4>
+    <div class="entry-thesis-header cursor" (click)="showEntryThesis()">
+        <span>Entry Thesis</span>
+        <i class="negative-amt material-icons">{{hideEntryThesis ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}</i>
     </div>
 
-    <div *ngIf="!hideEntryThesis">
-        <div class="row mx-0 ml-2 mb-2">
-            <div class="col-7 list-inner-left">
-                What is the source of this trade idea?
-            </div>
-            <div class="col-5">
-                <div class="row align-items-center">
-                    <div class="col-7">
-                        <select class="form-control select-input" id="inputState" [(ngModel)]="tradeThesis.sourceId" [disabled]="closeTrade">
-                            <option [ngValue]="opt.id" *ngFor="let opt of sourceTypes; trackBy: id">{{opt.name}}</option>
-                        </select>
+    <div class="trade-thesis-body" *ngIf="!hideEntryThesis">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="thesis_item">
+                    <div class="thesis_item_title">
+                        What is the source of this trade idea?
                     </div>
-                    <div class="col-5 px-0">
-                        <a class="add-new" (click)="addValue('Source')" *ngIf="!closeTrade">Add New</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row mx-0 ml-2 mb-2">
-            <div class="col-7 list-inner-left">
-                Is this a planned or an impromptu trade?
-            </div>
-            <div class="col-5">
-                <span class="mr-3">
-                    Planned <input type="radio" [disabled]="closeTrade" name="tradeType" value="planned" [(ngModel)]="tradeThesis.tradeType" checked />
-                </span>
-                <span class="ml-3">
-                    Impromptu <input type="radio" [disabled]="closeTrade" name="tradeType" value="impromptu" [(ngModel)]="tradeThesis.tradeType"/>
-                </span>
-            </div>
-        </div>
-        <div class="row mx-0 ml-2 mb-2">
-            <div class="col-7 list-inner-left">
-                What is your mindset while executing the trade?
-            </div>
-            <div class="col-5">
-                <div class="row align-items-center">
-                    <div class="col-7">
-                        <select class="form-control select-input" id="inputState" [(ngModel)]="tradeThesis.mindsetId" [disabled]="closeTrade">
-                            <option [ngValue]="opt.id" *ngFor="let opt of mindsetTypes; trackBy: id">{{opt.name}}</option>
-                        </select>
-                    </div>
-                    <div class="col-5 px-0">
-                        <a class="add-new" (click)="addValue('Source')" *ngIf="!closeTrade">Add New</a>
+                    <div class="media align-items-center">
+                        <div class="media-body">
+                            <select class="form-control select-input" id="inputState" [(ngModel)]="tradeThesis.sourceId" [disabled]="closeTrade">
+                                <option [ngValue]="opt.id" *ngFor="let opt of sourceTypes; trackBy: id">{{opt.name}}</option>
+                            </select>
+                        </div>
+                        <div class="px-3">
+                            <a class="add-new" (click)="addValue('Source')" *ngIf="!closeTrade">+ Add New</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row mx-0 ml-2 mb-2">
-            <div class="col-7 list-inner-left">
-                Specify the reasons for executing the trade
-            </div>
-            <div class="col-5 media align-items-center">
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="tradeThesis.reasons" [disabled]="closeTrade"></textarea>
-            </div>
-        </div>
-        <div class="row mx-0 ml-2 mb-2">
-            <div class="col-7 list-inner-left">
-                Are there any events around the time this trade was placed?
-            </div>
-            <div class="col-5">
-                <div class="row align-items-center">
-                    <div class="col-7">
-                        <select class="form-control select-input" [disabled]="closeTrade" id="inputState" [(ngModel)]="tradeThesis.surroundingEventId">
-                            <option [ngValue]="opt.id" *ngFor="let opt of surroundingTypes; trackBy: id">{{opt.name}}</option>
-                        </select>
+            <!-- end : thesis_item -->
+            <div class="col-sm-6">
+                <div class="thesis_item">
+                    <div class="thesis_item_title">
+                        Is this a planned or an impromptu trade?
                     </div>
-                    <div class="col-5 px-0">
-                        <a class="add-new" (click)="addValue('Source')" *ngIf="!closeTrade">Add New</a>
+                    <div class="media align-items-center">
+                        <span class="form-check form-check-inline">
+                            <input type="radio" class="form-check-input" [disabled]="closeTrade" name="tradeType" value="planned" [(ngModel)]="tradeThesis.tradeType" checked /> 
+                            <label class="form-check-label" for="Planned">Planned</label> 
+                        </span>
+                        <span class="form-check form-check-inline">
+                            <input type="radio" class="form-check-input" [disabled]="closeTrade" name="tradeType" value="impromptu" [(ngModel)]="tradeThesis.tradeType"/> 
+                            <label class="form-check-label" for="Planned">Impromptu</label>
+                        </span>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row mx-0 ml-2 mb-2">
-            <div class="col-7 list-inner-left">
-                What is the target price for the stock?
+            <!-- end : thesis_item -->
+
+            <div class="col-sm-6">
+                <div class="thesis_item">
+                    <div class="thesis_item_title">
+                        What is your mindset while executing the trade?
+                    </div>
+                    <div class="media align-items-center">
+                        <div class="media-body">
+                            <select class="form-control select-input" id="inputState" [(ngModel)]="tradeThesis.mindsetId" [disabled]="closeTrade">
+                                <option [ngValue]="opt.id" *ngFor="let opt of mindsetTypes; trackBy: id">{{opt.name}}</option>
+                            </select>
+                        </div>
+                        <div class="px-3">
+                            <a class="add-new" (click)="addValue('Source')" *ngIf="!closeTrade">+ Add New</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-3 media align-items-center">
-                <input type="text" class="form-control mr-2" [disabled]="closeTrade" placeholder="Enter the price" [(ngModel)]="tradeThesis.targetPrice" />
+            <!-- end : thesis_item -->
+
+            <div class="col-sm-6">
+                <div class="thesis_item">
+                    <div class="thesis_item_title">
+                        Specify the reasons for executing the trade
+                    </div>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="tradeThesis.reasons" [disabled]="closeTrade"></textarea>
+                </div>
             </div>
-        </div>
-        <div class="row mx-0 ml-2 mb-2">
-            <div class="col-7 list-inner-left">
-                Specify the technical indicator used for the trade
+            <!-- end : thesis_item -->
+            <div class="col-sm-6">
+                <div class="thesis_item">
+                    <div class="thesis_item_title">
+                        Are there any events around the time this trade was placed?
+                    </div>
+                    <div class="media align-items-center">
+                        <div class="media-body">
+                            <select class="form-control select-input" [disabled]="closeTrade" id="inputState" [(ngModel)]="tradeThesis.surroundingEventId">
+                                <option [ngValue]="opt.id" *ngFor="let opt of surroundingTypes; trackBy: id">{{opt.name}}</option>
+                            </select>
+                        </div>
+                        <div class="px-3">
+                            <a class="add-new" (click)="addValue('Source')" *ngIf="!closeTrade"> + Add New</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-5">
-                <div class="row align-items-center">
-                    <div class="col-7">
-                        <select class="form-control select-input" id="inputState"
+            <!-- end : thesis_item -->
+            <div class="col-sm-6">
+                <div class="thesis_item">
+                    <div class="thesis_item_title">
+                        What is the target price for the stock?
+                    </div>
+                    <input type="text" class="form-control" [disabled]="closeTrade" placeholder="Enter the price" [(ngModel)]="tradeThesis.targetPrice" />
+                </div>
+            </div>
+            <!-- end : thesis_item -->
+
+            <div class="col-sm-6">
+                <div class="thesis_item">
+                    <div class="thesis_item_title">
+                        Specify the technical indicator used for the trade
+                    </div>
+                    <div class="media align-items-center">
+                        <div class="media-body">
+                            <select class="form-control select-input" id="inputState"
                             [(ngModel)]="tradeThesis.technicalIndicatorId" [disabled]="closeTrade">
-                            <option [ngValue]="opt.id" *ngFor="let opt of technicalIndicators; trackBy: id">{{opt.name}}
-                            </option>
-                        </select>
-                    </div>
-                    <div class="col-5 px-0">
-                        <a class="add-new" (click)="addValue('Source')" *ngIf="!closeTrade">+ Add New</a>
+                                <option [ngValue]="opt.id" *ngFor="let opt of technicalIndicators; trackBy: id">{{opt.name}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="px-3">
+                            <a class="add-new" (click)="addValue('Source')" *ngIf="!closeTrade">+ Add New</a>
+                        </div>
                     </div>
                 </div>
             </div>
+            <!-- end : thesis_item -->
         </div>
     </div>
 </div>
+
 <!-- start: Closing Thesis -->
 <div class="trade-thesis-sec trade-close-thesis-sec" *ngIf="closeTrade || viewTrade">
-    <div class="trade-thesis-heading">
-        <h4 class="text-success">
-            <span class="cursor d-flex align-items-center" (click)="showClosingThesis()"><i class="negative-amt material-icons">{{hideClosingThesis ? 'keyboard_arrow_right' : 'keyboard_arrow_down'}}</i> Closing Thesis</span>
-        </h4>
+    <div class="entry-thesis-header cursor" (click)="showClosingThesis()">
+        <span>Closing Thesis</span>
+        <i class="negative-amt material-icons">{{hideClosingThesis ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}</i>
     </div>
 
-    <div *ngIf="!hideClosingThesis">
-        <div class="row mx-0 ml-2 mb-2">
-            <div class="col-7 list-inner-left">
-                What is the trigger for closing the trade?
-            </div>
-            <div class="col-5">
-                <div class="row align-items-center">
-                    <div class="col-7">
-                        <select class="form-control select-input" id="inputState" [(ngModel)]="tradeThesis.sourceId" [disabled]="!closeTrade">
-                            <option [ngValue]="opt.id" *ngFor="let opt of sourceTypes; trackBy: id">{{opt.name}}</option>
-                        </select>
+    <div class="trade-thesis-body" *ngIf="!hideClosingThesis">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="thesis_item">
+                    <div class="thesis_item_title">
+                        What is the trigger for closing the trade?
                     </div>
-                    <div class="col-5 px-0">
-                        <a class="add-new" (click)="addValue('Source')" *ngIf="!closeTrade">Add New</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row mx-0 ml-2 mb-2">
-            <div class="col-7 list-inner-left">
-                Is this a planned or an impromptu trade?
-            </div>
-            <div class="col-5">
-                <span class="mr-3">
-                    Planned <input type="radio" name="closingtradeType" value="planned"/>
-                </span>
-                <span class="ml-3">
-                    Impromptu <input type="radio" name="closingtradeType" value="impromptu" />
-                </span>
-            </div>
-        </div>
-        <div class="row mx-0 ml-2 mb-2">
-            <div class="col-7 list-inner-left">
-                What is your mindset while closing the trade?
-            </div>
-            <div class="col-5">
-                <div class="row align-items-center">
-                    <div class="col-7">
-                        <select class="form-control select-input" id="inputState" [(ngModel)]="tradeThesis.mindsetId" [disabled]="!closeTrade">
-                            <option [ngValue]="opt.id" *ngFor="let opt of mindsetTypes; trackBy: id">{{opt.name}}</option>
-                        </select>
-                    </div>
-                    <div class="col-5 px-0">
-                        <a class="add-new" (click)="addValue('Source')" *ngIf="!closeTrade">Add New</a>
+                    <div class="media align-items-center">
+                        <div class="media-body">
+                            <select class="form-control select-input" id="inputState" [(ngModel)]="tradeThesis.sourceId" [disabled]="!closeTrade">
+                                <option [ngValue]="opt.id" *ngFor="let opt of sourceTypes; trackBy: id">{{opt.name}}</option>
+                            </select>
+                        </div>
+                        <div class="px-3">
+                            <a class="add-new" (click)="addValue('Source')" *ngIf="!closeTrade">+ Add New</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row mx-0 ml-2 mb-2">
-            <div class="col-7 list-inner-left">
-                Specify the reasons for closing the trade
-            </div>
-            <div class="col-5 media align-items-center">
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [disabled]="!closeTrade"></textarea>
-            </div>
-        </div>
-        <div class="row mx-0 ml-2 mb-2">
-            <div class="col-7 list-inner-left">
-                Gain or loss from the trade attributed to
-            </div>
-            <div class="col-5">
-                <div class="row align-items-center">
-                    <div class="col-7">
-                        <select class="form-control select-input" [disabled]="!closeTrade" id="inputState" [(ngModel)]="tradeThesis.surroundingEventId">
-                            <option [ngValue]="opt.id" *ngFor="let opt of surroundingTypes; trackBy: id">{{opt.name}}</option>
-                        </select>
+            <!-- end : thesis_item -->
+
+            <div class="col-sm-6">
+                <div class="thesis_item">
+                    <div class="thesis_item_title">
+                        Is this a planned or an impromptu trade?
                     </div>
-                    <div class="col-5 px-0">
-                        <a class="add-new" (click)="addValue('Source')" *ngIf="!closeTrade">Add New</a>
+                    <div class="media align-items-center">
+                        <span class="form-check form-check-inline">
+                            <input type="radio" class="form-check-input" name="closingtradeType" value="planned"/>
+                            <label class="form-check-label" for="Planned">Planned</label> 
+                        </span>
+                        <span class="form-check form-check-inline">
+                            <input type="radio" class="form-check-input" name="closingtradeType" value="impromptu" /> 
+                            <label class="form-check-label" for="Planned">Impromptu</label>
+                        </span>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row mx-0 ml-2 mb-2">
-            <div class="col-7 list-inner-left">
-                Specify the lessons learnt from the trade
+            <!-- end : thesis_item -->
+
+            <div class="col-sm-6">
+                <div class="thesis_item">
+                    <div class="thesis_item_title">
+                        What is your mindset while closing the trade?
+                    </div>
+                    <div class="media align-items-center">
+                        <div class="media-body">
+                            <select class="form-control select-input" id="inputState" [(ngModel)]="tradeThesis.mindsetId" [disabled]="!closeTrade">
+                                <option [ngValue]="opt.id" *ngFor="let opt of mindsetTypes; trackBy: id">{{opt.name}}</option>
+                            </select>
+                        </div>
+                        <div class="px-3">
+                            <a class="add-new" (click)="addValue('Source')" *ngIf="!closeTrade">+ Add New</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="media col-5">
-                <textarea class="form-control" id="closingLessionsTrade" rows="3"></textarea>
+            <!-- end : thesis_item -->
+
+            <div class="col-sm-6">
+                <div class="thesis_item">
+                    <div class="thesis_item_title">
+                        Specify the reasons for closing the trade
+                    </div>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [disabled]="!closeTrade"></textarea>
+                </div>
             </div>
-        </div>
-        <div class="row mx-0 ml-2 mb-2">
-            <div class="col-7 list-inner-left">
-                Specify the technical indicator used for the trade
+            <!-- end : thesis_item -->
+
+            <div class="col-sm-6">
+                <div class="thesis_item">
+                    <div class="thesis_item_title">
+                        Gain or loss from the trade attributed to
+                    </div>
+                    <div class="media align-items-center">
+                        <div class="media-body">
+                            <select class="form-control select-input" [disabled]="!closeTrade" id="inputState" [(ngModel)]="tradeThesis.surroundingEventId">
+                                <option [ngValue]="opt.id" *ngFor="let opt of surroundingTypes; trackBy: id">{{opt.name}}</option>
+                            </select>
+                        </div>
+                        <div class="px-3">
+                            <a class="add-new" (click)="addValue('Source')" *ngIf="!closeTrade">+ Add New</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-5">
-                <div class="row align-items-center">
-                    <div class="col-7">
-                        <select class="form-control select-input" id="inputState"
+            <!-- end : thesis_item -->
+
+            <div class="col-sm-6">
+                <div class="thesis_item">
+                    <div class="thesis_item_title">
+                        Specify the lessons learnt from the trade
+                    </div>
+                    <textarea class="form-control" id="closingLessionsTrade" rows="3"></textarea>
+                </div>
+            </div>
+            <!-- end : thesis_item -->
+
+            <div class="col-sm-6">
+                <div class="thesis_item">
+                    <div class="thesis_item_title">
+                        Specify the technical indicator used for the trade
+                    </div>
+                    <div class="media align-items-center">
+                        <div class="media-body">
+                            <select class="form-control select-input" id="inputState"
                             [(ngModel)]="tradeThesis.technicalIndicatorId" [disabled]="!closeTrade">
-                            <option [ngValue]="opt.id" *ngFor="let opt of technicalIndicators; trackBy: id">{{opt.name}}
-                            </option>
-                        </select>
-                    </div>
-                    <div class="col-5 px-0">
-                        <a class="add-new" (click)="addValue('Source')" *ngIf="!closeTrade">+ Add New</a>
+                                <option [ngValue]="opt.id" *ngFor="let opt of technicalIndicators; trackBy: id">{{opt.name}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="px-3">
+                            <a class="add-new" (click)="addValue('Source')" *ngIf="!closeTrade">+ Add New</a>
+                        </div>
                     </div>
                 </div>
             </div>
+            <!-- end : thesis_item -->
+
         </div>
     </div>
 </div>
-
-<!-- <div class="trad-border ng-star-inserted"></div> -->
-
-<!-- <div class="trade-new-btn">
-    <a class="btn btn-per" (click)="previous()">Previous</a>
-    <a class="btn btn-next" (click)="next()">Next</a>
-</div> -->

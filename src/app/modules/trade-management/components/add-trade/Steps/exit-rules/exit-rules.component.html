@@ -1,43 +1,50 @@
 <div class="trade-thesis-sec">
-    <div class="trade-thesis-heading">
-        <h4 class="text-success">
-            <span class="cursor d-flex align-items-center" (click)="showExitRules()"><i class="negative-amt material-icons">{{hideExitRules ? 'keyboard_arrow_right' : 'keyboard_arrow_down'}}</i> Exit Rules</span>
-        </h4>
+    <div class="entry-thesis-header cursor" (click)="showExitRules()">
+        <span>Exit Rules</span>
+        <i class="negative-amt material-icons">{{hideExitRules ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}</i>
     </div>
-    <div *ngIf="!hideExitRules">
-        <div class="thesis-list-inner row mx-0 ml-2">
-            <div class="col-7 list-inner-left">
-                Always protect your investment by hedging
+
+    <div class="trade-thesis-body" *ngIf="!hideExitRules">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="thesis_item">
+                    <div class="thesis_item_title">
+                        Always protect your investment by hedging
+                    </div>
+                    <div class="switch">
+                        <input type="checkbox" checked id="exit_hedging" name="exit_hedging" [(ngModel)]="exitRules[0].aligned" [disabled]="closeTrade" />
+                        <label for="exit_hedging"></label>
+                    </div>
+                </div>
             </div>
-            <div class="switch">
-                <input type="checkbox" checked id="exit_hedging" name="exit_hedging" [(ngModel)]="exitRules[0].aligned" [disabled]="closeTrade" />
-                <label for="exit_hedging"></label>
+            <!-- end : entryrule_item -->
+
+            <div class="col-sm-6">
+                <div class="thesis_item">
+                    <div class="thesis_item_title">
+                        Do not trade options expiring in the same week
+                    </div>
+                    <div class="switch">
+                        <input type="checkbox" id="exit_same_week" name="exit_same_week" [(ngModel)]="exitRules[1].aligned" [disabled]="closeTrade"/>
+                        <label for="exit_same_week"></label>
+                    </div>
+                    <input type="text" class="trade-check" placeholder="Specify reason for not aligning with the rule" [disabled]="closeTrade" [(ngModel)]="exitRules[1].comment" />
+                </div>
             </div>
-        </div>
-        <div class="thesis-list-inner row mx-0 ml-2">
-            <div class="col-7 list-inner-left">
-                Do not trade options expiring in the same week
+            <!-- end : entryrule_item -->
+
+            <div class="col-sm-6">
+                <div class="thesis_item">
+                    <div class="thesis_item_title">
+                        Do not put more than 100,000 in a stock
+                    </div>
+                    <div class="switch">
+                        <input type="checkbox" checked id="exit_onelack_stock" name="exit_onelack_stock" [disabled]="closeTrade" [(ngModel)]="exitRules[2].aligned" />
+                        <label for="exit_onelack_stock"></label>
+                    </div>
+                </div>
             </div>
-            <div class="switch">
-                <input type="checkbox" id="exit_same_week" name="exit_same_week" [(ngModel)]="exitRules[1].aligned" [disabled]="closeTrade"/>
-                <label for="exit_same_week"></label>
-            </div>
-            <input type="text" class="trade-check" placeholder="Specify reason for not aligning with the rule" [disabled]="closeTrade" [(ngModel)]="exitRules[1].comment" />
-        </div>
-        <div class="thesis-list-inner row mx-0 ml-2">
-            <div class="col-7 list-inner-left">
-                Do not put more than 100,000 in a stock
-            </div>
-            <div class="switch">
-                <input type="checkbox" checked id="exit_onelack_stock" name="exit_onelack_stock" [disabled]="closeTrade" [(ngModel)]="exitRules[2].aligned" />
-                <label for="exit_onelack_stock"></label>
-            </div>
+            <!-- end : entryrule_item -->
         </div>
     </div>
 </div>
-
-<!-- <div class="trad-border "></div> -->
-
-<!-- <div class="order-btn text-center">
-    <a class="btn btn-next" (click)="confirmAddTrade()">ADD TRADE</a>
-</div> -->

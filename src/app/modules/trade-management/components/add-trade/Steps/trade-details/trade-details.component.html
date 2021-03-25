@@ -81,10 +81,10 @@
           </div>
           
           <div *ngIf="editTrade == true && tradeStatus !=4" class="top-heading mr-1 text-success" (click)="addToPosition()">
-            <mat-icon>add_circle</mat-icon>
+            <mat-icon class="text-primary">add_circle</mat-icon>
           </div>
           <div *ngIf="editTrade == true && tradeStatus !=4" class="top-heading mr-1 text-danger" (click)="reduceToPosition()">
-            <mat-icon>remove_circle</mat-icon>
+            <mat-icon class="text-primary">remove_circle</mat-icon>
           </div>
           <div *ngIf="!viewTrade && !closeTrade" class="top-heading mr-1" (click)="deleteStock()">
             <mat-icon>delete</mat-icon>
@@ -185,10 +185,10 @@
                       </h6>
                     </div>
                     <div *ngIf="editTrade == true && tradeStatus !=4" class="top-heading p-0 mr-1 text-success" (click)="addToStockPosition(index)">
-                      <mat-icon>add_circle</mat-icon>
+                      <mat-icon class="text-primary">add_circle</mat-icon>
                     </div>
                     <div *ngIf="editTrade == true && tradeStatus !=4" class="top-heading p-0 mr-1 text-danger" (click)="reduceToStockOption(index)">
-                      <mat-icon>remove_circle</mat-icon>
+                      <mat-icon class="text-primary">remove_circle</mat-icon>
                     </div>
                     <div *ngIf="!viewTrade && !closeTrade" class="top-heading p-0" (click)="deleteStockOption(index)">
                       <mat-icon>delete</mat-icon>

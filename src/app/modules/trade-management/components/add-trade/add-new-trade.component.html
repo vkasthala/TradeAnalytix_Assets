@@ -37,7 +37,7 @@
             <div class="col-8">
               <mat-horizontal-stepper labelPosition="left" #stepper [linear]="false">
                 <mat-step [class.active]="stepone.completed" #stepone>
-                  <ng-template matStepLabel>1.Trade Details</ng-template>
+                  <ng-template matStepLabel>rade Details</ng-template>
                   <div class="stepper-content">
                     <app-trade-details (nextStep)="goForward()" (activateRisk)="activeStep = true"
                       (addTradeEvent)="addTrade($event)" (navigateRiskAnalysisEvent)="navigaeToRiskAnalysis()"
@@ -49,16 +49,18 @@
                       [localOptionClosedSubject]="localOptionClosedSubject" #tradeDetails>
                     </app-trade-details>
                   </div>
-                  <div *ngIf="!add && tradeStrategy.statusId !=4">
-                    <span class="cursor legs-heading" (click)="showClosedLegs()">
-                      <span *ngIf="closedLegs" class="text-success d-flex align-items-center">Hide Closed Legs <i
-                          class="negative-amt material-icons">keyboard_arrow_down</i>
-                      </span>
-                      <span *ngIf="!closedLegs" class="text-success d-flex align-items-center">Show Closed Legs <i
-                          class="negative-amt material-icons">keyboard_arrow_right</i>
-                      </span>
-                    </span>
-                    <div *ngIf="closedLegs && tradeHistory">
+                  <div class="closed-legs-sec" *ngIf="!add && tradeStrategy.statusId !=4">
+                    <div class="cursor closed-legs-header" (click)="showClosedLegs()">
+                      <div class="closed-legs-title" *ngIf="closedLegs">
+                        <span>Hide Closed Legs</span>
+                        <i class="negative-amt material-icons">keyboard_arrow_down</i>
+                      </div>
+                      <div class="closed-legs-title" *ngIf="!closedLegs">
+                        <span>Show Closed Legs</span>
+                        <i class="negative-amt material-icons">keyboard_arrow_right</i>
+                      </div>
+                    </div>
+                    <div class="closed-legs-body" *ngIf="closedLegs && tradeHistory">
                       <div class="trade-card-box"
                         *ngFor="let item of tradeHistory.stockLegHistories;let index = index">
                         <div class="card-main">
@@ -153,7 +155,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="net_debit">
+                    <div class="closed-legs-footer net_debit">
                       <div class="" [ngClass]="close || view ? 'justify-content-between' : 'realized_label'">
                         <div *ngIf="close || view">
                           <label class="col-form-label mr-2">Closed Date <span class="text-danger">*</span></label>
@@ -179,7 +181,7 @@
                   </div>
                 </mat-step>
                 <mat-step>
-                  <ng-template matStepLabel>3.Entry Rules</ng-template>
+                  <ng-template matStepLabel>Entry Rules</ng-template>
                   <div class="stepper-content">
                     <app-entry-rules (prevStep)="goBack()" [inputState]="inputState" [editTrade]="edit" [addTrade]="add"
                       [closeTrade]="close" #entryRules></app-entry-rules>
@@ -189,21 +191,22 @@
                   </div>
                 </mat-step>
               </mat-horizontal-stepper>
-              <div class="text-center py-3">
-                <span class="order-btn text-center"
-                  *ngIf="(tradeDetails.stockAdded || tradeDetails.stockOptions.length > 0) && (stepper.selectedIndex == 0)">
-                  <button type="button" class="btn btn-gray mr-3" *ngIf="!close && !tradeStrategy.executed && !edit"
-                    (click)="saveTradeAsDraft()">Save as Draft</button>
-                </span>
-                <button type="button" class="btn btn-next mr-3"
+              <div class="trade-actions">
+                <button type="button" class="btn btn-next mr-2"
                   *ngIf="(add && (tradeDetails.stockOptions.length || tradeDetails.stockAdded))"
                   (click)="CheckExecutionDate('Confirm Trade Execution Date')">ADD TRADE</button>
 
-                <button type="button" class="btn btn-gray mr-3" *ngIf="edit" (click)="cancelTrade()">CANCEL</button>
-                <button type="button" class="btn btn-next mr-3" *ngIf="edit" (click)="editTrade()">UPDATE</button>
+                <span *ngIf="(tradeDetails.stockAdded || tradeDetails.stockOptions.length > 0) && (stepper.selectedIndex == 0)">
+                  <button type="button" class="btn btn-outline-primary" *ngIf="!close && !tradeStrategy.executed && !edit"
+                    (click)="saveTradeAsDraft()">Save as Draft</button>
+                </span>
+                
+                <button type="button" class="btn btn-next mr-2" *ngIf="edit" (click)="editTrade()">UPDATE</button>
 
-                <button type="button" class="btn btn-next mr-3" *ngIf="close && !view" (click)="closeTrade()">CLOSE
+                <button type="button" class="btn btn-next mr-2" *ngIf="close && !view" (click)="closeTrade()">CLOSE
                   TRADE</button>
+
+                <button type="button" class="btn btn-gray" *ngIf="edit" (click)="cancelTrade()">CANCEL</button>
               </div>
             </div>
             <div class="col-4">

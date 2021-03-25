@@ -1,56 +1,63 @@
 <div class="trade-thesis-sec">
-    <div class="trade-thesis-heading">
-        <h4 class="text-success">
-            <span class="cursor d-flex align-items-center" (click)="showEntryRules()"><i class="negative-amt material-icons mat-icon-sm">{{hideEntryRules ? 'keyboard_arrow_right' : 'keyboard_arrow_down'}}</i> Entry Rules</span>
-        </h4>
+    <div class="entry-thesis-header cursor" (click)="showEntryRules()">
+        <span>Entry Rules</span>
+        <i class="negative-amt material-icons mat-icon-sm">{{hideEntryRules ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}</i>
     </div>
-    <div class="mb-3" *ngIf="!hideEntryRules">
-        <div class="thesis-list-inner row mx-0 ml-2">
-            <div class="col-7 list-inner-left">
-                Always protect your investment by hedging
+    <div class="trade-thesis-body" *ngIf="!hideEntryRules">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="thesis_item">
+                    <div class="thesis_item_title">
+                        Always protect your investment by hedging
+                    </div>
+                    <div class="switch">
+                        <input type="checkbox" checked id="hedging" [(ngModel)]="entryRules[0].aligned" [disabled]="closeTrade"/>
+                        <label for="hedging"></label>
+                    </div>
+                </div>
             </div>
-            <div class="switch">
-                <input type="checkbox" checked id="hedging" [(ngModel)]="entryRules[0].aligned" [disabled]="closeTrade"/>
-                <label for="hedging"></label>
-            </div>
-        </div>
-        <div class="thesis-list-inner row mx-0 ml-2">
-            <div class="col-7 list-inner-left">
-                Do not trade options expiring in the same week
-            </div>
-            <div class="switch">
-                <input type="checkbox" id="same_week" name="same_week" [(ngModel)]="entryRules[1].aligned" [disabled]="closeTrade"/>
-                <label for="same_week"></label>
-            </div>
-            <input type="text" class="trade-check" placeholder="Specify reason for not aligning with the rule"
+            <!-- end : entryrule_item -->
+            <div class="col-sm-6">
+                <div class="thesis_item">
+                    <div class="thesis_item_title">
+                        Do not trade options expiring in the same week
+                    </div>
+                    <div class="switch">
+                        <input type="checkbox" id="same_week" name="same_week" [(ngModel)]="entryRules[1].aligned" [disabled]="closeTrade" />
+                        <label for="same_week"></label>
+                    </div>
+                    <input type="text" class="trade-check" placeholder="Specify reason for not aligning with the rule"
                 [(ngModel)]="entryRules[1].comment" [disabled]="closeTrade" />
-        </div>
-        <div class="thesis-list-inner row mx-0 ml-2">
-            <div class="col-7 list-inner-left">
-                Do not put more than 100,000 in a stock
+                </div>
             </div>
-            <div class="switch">
-                <input type="checkbox" checked id="onelack_stock" name="onelack_stock"
-                    [(ngModel)]="entryRules[2].aligned" [disabled]="closeTrade" />
-                <label for="onelack_stock"></label>
+            <!-- end : entryrule_item -->
+
+            <div class="col-sm-6">
+                <div class="thesis_item">
+                    <div class="thesis_item_title">
+                        Do not put more than 100,000 in a stock
+                    </div>
+                    <div class="switch">
+                        <input type="checkbox" checked id="onelack_stock" name="onelack_stock" [(ngModel)]="entryRules[2].aligned" [disabled]="closeTrade" />
+                        <label for="onelack_stock"></label>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="thesis-list-inner row mx-0 ml-2">
-            <div class="col-7 list-inner-left">
-                Trade only the stocks that were planned for the day
+            <!-- end : entryrule_item -->
+
+            <div class="col-sm-6">
+                <div class="thesis_item">
+                    <div class="thesis_item_title">
+                        Trade only the stocks that were planned for the day
+                    </div>
+                    <div class="switch">
+                        <input type="checkbox" id="planned_day" name="planned_day" [(ngModel)]="entryRules[3].aligned" [disabled]="closeTrade" />
+                        <label for="planned_day"></label>
+                    </div>
+                    <input type="text" class="trade-check" placeholder="Specify reason for not aligning with the rule" [(ngModel)]="entryRules[3].comment" [disabled]="closeTrade" />
+                </div>
             </div>
-            <div class="switch">
-                <input type="checkbox" id="planned_day" name="planned_day" [(ngModel)]="entryRules[3].aligned" [disabled]="closeTrade" />
-                <label for="planned_day"></label>
-            </div>
-            <input type="text" class="trade-check" placeholder="Specify reason for not aligning with the rule"
-                [(ngModel)]="entryRules[3].comment" [disabled]="closeTrade" />
+            <!-- end : entryrule_item -->
         </div>
     </div>
 </div>
-
-<!-- <div class="trad-border "></div> -->
-
-<!-- <div class="order-btn text-center">
-    <a class="btn btn-next" (click)="confirmAddTrade()">ADD TRADE</a>
-</div> -->
