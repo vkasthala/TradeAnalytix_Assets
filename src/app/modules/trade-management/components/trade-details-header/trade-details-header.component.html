@@ -1,63 +1,63 @@
 <!-- entry second -->
-<div class="trade-rate-box-title">Netflix Inc. (NFLX)</div>
+<div class="trade-rate-box-title">{{getDisplayValue(selectedStock.name)}} ({{getDisplayValue(selectedStock.code)}})</div>
 <div class="addnew-second">
-  <div class="trade-rate-box">
-    <div class="trade-rate-box-header">
-      <div class="text-left trade-name-rate">
-        <div class="d-flex align-items-center">
-          <span class="trade-r">{{stockSummary.close}}</span>
-          <span [ngClass]="{'d-flex trade-rr': stockSummary.changePercent <= 0, 'd-flex trade-g' : stockSummary.changePercent > 0}">
+    <div class="trade-rate-box">
+        <div class="trade-rate-box-header">
+            <div class="text-left trade-name-rate">
+                <div class="d-flex align-items-center">
+                    <span class="trade-r">{{stockSummary.close}}</span>
+                    <span [ngClass]="{'d-flex trade-rr': stockSummary.changePercent <= 0, 'd-flex trade-g' : stockSummary.changePercent > 0}">
             <i *ngIf="stockSummary.changePercent > 0" class="positive-amt material-icons mat-icon-xs">arrow_upward</i>
             <i *ngIf="stockSummary.changePercent <= 0" class="negative-amt material-icons mat-icon-xs">arrow_downward</i>
            {{getDisplayValue(stockSummary.changePercent, '%')}}
           </span>
+                </div>
+                <span>{{getDisplayValue(selectedStock.code)}}</span>
+            </div>
+
+            <div class="bxo-name">
+                <h6>{{getDisplayValue(stockSummary.open)}}</h6>
+                <span>Prev Close</span>
+            </div>
+            <div class="bxo-name">
+                <h6>{{getDisplayValue(stockSummary.low)}} - {{getDisplayValue(stockSummary.high)}}</h6>
+                <span>Days Range</span>
+            </div>
+            <div class="bxo-name">
+                <h6>{{getDisplayValue(stockSummary.volume)}}</h6>
+                <span>Volume</span>
+            </div>
+            <div class="bxo-name">
+                <h6>{{getDisplayValue(stockSummary.week52Low)}} - {{getDisplayValue(stockSummary.week52High)}}</h6>
+                <span>52-Wk Range</span>
+            </div>
+            <div class="bxo-name">
+                <h6>{{getDisplayValue(stockSummary.marketCapitalBln)}}</h6>
+                <span>Mkt Cap</span>
+            </div>
+            <div class="bxo-name">
+                <h6>{{getDisplayValue(stockSummary.revenueBln, 'B')}}</h6>
+                <span>Revenue</span>
+            </div>
+            <div class="bxo-name">
+                <h6>{{getDisplayValue(stockSummary.operatingMargin, '%')}}</h6>
+                <span>Oper. Margin</span>
+            </div>
+            <div class="bxo-name bxo-name-sm">
+                <h6>NA</h6>
+                <span>P/E</span>
+            </div>
+            <div class="bxo-name bxo-name-sm">
+                <h6>NA</h6>
+                <span>P/S</span>
+            </div>
         </div>
-        <span>{{getDisplayValue(selectedStock.code)}}</span>
-      </div>
 
-      <div class="bxo-name">
-        <h6>{{getDisplayValue(stockSummary.open)}}</h6>
-        <span>Prev Close</span>
-      </div>
-      <div class="bxo-name">
-        <h6>{{getDisplayValue(stockSummary.low)}} - {{getDisplayValue(stockSummary.high)}}</h6>
-        <span>Days Range</span>
-      </div>
-      <div class="bxo-name">
-        <h6>{{getDisplayValue(stockSummary.volume)}}</h6>
-        <span>Volume</span>
-      </div>
-      <div class="bxo-name">
-        <h6>{{getDisplayValue(stockSummary.week52Low)}} - {{getDisplayValue(stockSummary.week52High)}}</h6>
-        <span>52-Wk Range</span>
-      </div>
-      <div class="bxo-name">
-        <h6>{{getDisplayValue(stockSummary.marketCapitalBln)}}</h6>
-        <span>Mkt Cap</span>
-      </div>
-      <div class="bxo-name">
-        <h6>{{getDisplayValue(stockSummary.revenueBln, 'B')}}</h6>
-        <span>Revenue</span>
-      </div>
-      <div class="bxo-name">
-        <h6>{{getDisplayValue(stockSummary.operatingMargin, '%')}}</h6>
-        <span>Oper. Margin</span>
-      </div>
-      <div class="bxo-name bxo-name-sm">
-        <h6>NA</h6>
-        <span>P/E</span>
-      </div>
-      <div class="bxo-name bxo-name-sm">
-        <h6>NA</h6>
-        <span>P/S</span>
-      </div>
-    </div>
-
-    <!-- <div class="text-right read-more">
+        <!-- <div class="text-right read-more">
       <span class="d-flex btn-link cursor" (click)="showMoreStats()">
         <i *ngIf="allStats" class="negative-amt material-icons">arrow_upward</i>
         <i *ngIf="!allStats" class="negative-amt material-icons">arrow_downward</i> 
       </span>
     </div> -->
-  </div>
+    </div>
 </div>

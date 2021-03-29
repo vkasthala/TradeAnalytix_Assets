@@ -13,7 +13,7 @@
                     </div>
                     <div class="switch">
                         <input type="checkbox" checked id="exit_hedging" name="exit_hedging" [(ngModel)]="exitRules[0].aligned" [disabled]="closeTrade" />
-                        <label for="exit_hedging"></label>
+                        <!-- <label for="exit_hedging"></label> -->
                     </div>
                 </div>
             </div>
@@ -25,8 +25,8 @@
                         Do not trade options expiring in the same week
                     </div>
                     <div class="switch">
-                        <input type="checkbox" id="exit_same_week" name="exit_same_week" [(ngModel)]="exitRules[1].aligned" [disabled]="closeTrade"/>
-                        <label for="exit_same_week"></label>
+                        <input type="checkbox" id="exit_same_week" name="exit_same_week" [(ngModel)]="exitRules[1].aligned" [disabled]="closeTrade" />
+                        <!-- <label for="exit_same_week"></label> -->
                     </div>
                     <input type="text" class="trade-check" placeholder="Specify reason for not aligning with the rule" [disabled]="closeTrade" [(ngModel)]="exitRules[1].comment" />
                 </div>
@@ -40,7 +40,7 @@
                     </div>
                     <div class="switch">
                         <input type="checkbox" checked id="exit_onelack_stock" name="exit_onelack_stock" [disabled]="closeTrade" [(ngModel)]="exitRules[2].aligned" />
-                        <label for="exit_onelack_stock"></label>
+                        <!-- <label for="exit_onelack_stock"></label> -->
                     </div>
                 </div>
             </div>

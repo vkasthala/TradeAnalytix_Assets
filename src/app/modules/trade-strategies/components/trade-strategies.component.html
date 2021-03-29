@@ -1,71 +1,67 @@
 <div class="trade-strategies-sec">
-        <div class="main-body">
-            <div class="trade-dash-main">
-                <div class="trade-dash-name">
-                    <h3>
-                        Trade Strategies
-                    </h3>
-                </div>
-                <div>
-                    <button routerLink="/new-trade" class="add-new btn btn-apply">ADD TRADE</button>
-                    <span class="cursor ml-2" (click)="strategiesFilter()">
-                        <span *ngIf="!showFilters" class="text-blue text-sm" data-toggle="tooltip" data-placement="top" title="Show Filters">Show Filters</span> 
-                        <span *ngIf="showFilters" class="text-primary text-sm" data-toggle="tooltip" data-placement="top" title="Close Filters">Hide Filters</span>
-                    </span>
-                </div>
+    <div class="main-body">
+        <div class="trade-dash-main">
+            <div class="trade-dash-name">
+                <h3>
+                    Trade Strategies
+                </h3>
             </div>
-            <div class="trade-strategies-table px-3 py-2">
-                <div *ngIf="showFilters" class="trade-st-box pt-0">
-                    <div class="st-slect-section">
-                        <div class="trade-form strategies_filter">
-                            <div class="form-group has-search">
-                                <app-trade-search (symbolSelectEvent)="symbolSelectEventHandler($event)"
-                                    #tradeSearchComponent>
-                                </app-trade-search>
-                                <mat-icon class="form-icon-down">search</mat-icon>
-                            </div>
+            <div>
+                <button routerLink="/new-trade" class="add-new btn btn-apply">+ ADD TRADE</button>
+                <span class="cursor ml-2" (click)="strategiesFilter()">
+                        <span *ngIf="!showFilters" class="text-blue text-sm" data-toggle="tooltip" data-placement="top" title="Show Filters">Show Filters</span>
+                <span *ngIf="showFilters" class="text-primary text-sm" data-toggle="tooltip" data-placement="top" title="Close Filters">Hide Filters</span>
+                </span>
+            </div>
+        </div>
+        <div class="trade-strategies-table px-3 py-2">
+            <div *ngIf="showFilters" class="trade-st-box pt-0">
+                <div class="st-slect-section">
+                    <div class="trade-form strategies_filter">
+                        <div class="form-group has-search">
+                            <app-trade-search (symbolSelectEvent)="symbolSelectEventHandler($event)" #tradeSearchComponent>
+                            </app-trade-search>
+                            <mat-icon class="form-icon-down">search</mat-icon>
                         </div>
                     </div>
-                    <div class="st-slect-section">
-                        <div class="trade-sel position-relative">
-                            <span class="custom-label" *ngIf="strategyLabel">Strategy Type</span>
-                            <select class="form-control select-input" id="strategy_inputState" [(ngModel)]='strategiesGridFilter.strategy'
-                            (change)='onOptionsSelected($event)' name="strategy">
+                </div>
+                <div class="st-slect-section">
+                    <div class="trade-sel position-relative">
+                        <span class="custom-label" *ngIf="strategyLabel">Strategy Type</span>
+                        <select class="form-control select-input" id="strategy_inputState" [(ngModel)]='strategiesGridFilter.strategy' (change)='onOptionsSelected($event)' name="strategy">
                                 <option *ngFor="let key of strategyTypes" [value]="key" [label]="strategies[key]">
                                 </option>
                             </select>
-                            <mat-icon class="form-icon-down">keyboard_arrow_down</mat-icon>
-                        </div>
+                        <mat-icon class="form-icon-down">keyboard_arrow_down</mat-icon>
                     </div>
-                    <div class="st-slect-section">
-                        <div class="trade-sel position-relative">
-                            <span class="custom-label" *ngIf="statusLabel">Status</span>
-                            <select class="form-control" id="tradeStrategyStatusFilter" [(ngModel)]='strategiesGridFilter.status' (change)='onOptionsSelected($event)'>
+                </div>
+                <div class="st-slect-section">
+                    <div class="trade-sel position-relative">
+                        <span class="custom-label" *ngIf="statusLabel">Status</span>
+                        <select class="form-control" id="tradeStrategyStatusFilter" [(ngModel)]='strategiesGridFilter.status' (change)='onOptionsSelected($event)'>
                                 <option *ngFor="let key of tradeStatusNames" [value]="key"
                                     [label]="tradeStatues[key]"></option>
                             </select>
-                            <mat-icon class="form-icon-down">keyboard_arrow_down</mat-icon>
-                        </div>
-                    </div>
-
-                    <div class="st-slect-section">
-                        <div class="trade-date date-range-md">
-                            <my-date-range-picker placeholder="Date range" name="mydaterange"
-                                [options]="myDateRangePickerOptions"
-                                (dateRangeChanged)="onDateRangeChanged($event)"></my-date-range-picker>
-                        </div>
-                    </div>
-                    
-                    <div class=" st-slect-section select-btn">
-                        <a href="javascript:void(0)" class="btn-link mr-3" (click)="applyFilters()">Apply</a>
-                        
-                        <a href="javascript:void(0)" class="btn-link" (click)="clearFilters()">Clear</a>
+                        <mat-icon class="form-icon-down">keyboard_arrow_down</mat-icon>
                     </div>
                 </div>
-                <!-- Grid row -->
-                <app-trade-strategies-grid #tradeStrategiesGrid>loading</app-trade-strategies-grid>
+
+                <div class="st-slect-section">
+                    <div class="trade-date date-range-md">
+                        <my-date-range-picker placeholder="Date range" name="mydaterange" [options]="myDateRangePickerOptions" (dateRangeChanged)="onDateRangeChanged($event)"></my-date-range-picker>
+                    </div>
+                </div>
+
+                <div class=" st-slect-section select-btn">
+                    <a href="javascript:void(0)" class="btn-link mr-3" (click)="applyFilters()">Apply</a>
+
+                    <a href="javascript:void(0)" class="btn-link" (click)="clearFilters()">Clear</a>
+                </div>
             </div>
+            <!-- Grid row -->
+            <app-trade-strategies-grid #tradeStrategiesGrid>loading</app-trade-strategies-grid>
         </div>
+    </div>
 </div>
 
 
@@ -133,8 +129,7 @@
                                     </div>
 
                                     <div class="dt-top-icon" (click)="closeActionBox()">
-                                        <img src="../../../../assets/images/icon/Icon ionic-ios-close-circle.png"
-                                            alt="">
+                                        <img src="../../../../assets/images/icon/Icon ionic-ios-close-circle.png" alt="">
                                     </div>
                                 </div>
                             </div>
