@@ -34,7 +34,7 @@
                     </div>
                 </div>
             </div>
-            <div class="add-stock-body" *ngIf="!stockAdded">
+            <div class="add-stock-body" *ngIf="!stockAdded && !closeTrade">
                 <p>You can add stocks</p>
                 <span class="search_btn gap-btn">
           <a class="btn btn-link" (click)="addStock()"> + Add Stock</a>
@@ -43,12 +43,12 @@
             <div class="trade-cards-section" *ngIf="stockAdded">
                 <h4 *ngIf="addTrade">Added Stock</h4>
                 <div class="trade-card-box mt-3">
-                    <div class="card-main">
+                    <div class="card-main card-main-actions">
                         <label class="col-form-label pt-0">Action</label>
                         <select id="inputState" [ngClass]="[closeTrade ? 'disabled' : '', viewTrade ? 'disabled' : '']" class="form-control px-0" [(ngModel)]="stockEntry.actionType">
-              <option value=1 selected data-default>Buy to Open</option>
-              <option value=2>Sell to Open</option>
-            </select>
+                            <option value=1 selected data-default>Buy to Open</option>
+                            <option value=2>Sell to Open</option>
+                        </select>
                     </div>
                     <div class="card-main card-main-md">
                         <label class="col-form-label pt-0">Quantity</label>
@@ -93,7 +93,7 @@
         </div>
 
         <div class="add-options-sec">
-            <div class="add-stock-body add-options-body" *ngIf="stockOptions.length < 1">
+            <div class="add-stock-body add-options-body" *ngIf="stockOptions.length <= 0 && !closeTrade">
                 <span class="add-options-header">OR</span>
                 <p>You can add options too</p>
                 <span class="search_btn gap-btn">
@@ -112,7 +112,7 @@
                         <ng-template matExpansionPanelContent>
                             <ng-container>
                                 <div class="trade-card-box mb-1">
-                                    <div class="card-main">Action</div>
+                                    <div class="card-main card-main-actions">Action</div>
                                     <div class="card-main card-main-md">Contracts</div>
                                     <div class="card-main card-main-custom">Strike</div>
                                     <div class="card-main">Expiration</div>
@@ -125,11 +125,11 @@
                             </ng-container>
                             <ng-container *ngFor="let item of stockOptions;let index = index">
                                 <div class="trade-card-box" *ngIf="item.display != false">
-                                    <div class="card-main">
+                                    <div class="card-main card-main-actions">
                                         <select id="inputState" [ngClass]="[closeTrade ? 'disabled' : '', viewTrade ? 'disabled' : '']" class="form-control select-input px-0" [(ngModel)]="stockOptions[index].actionType">
-                        <option value=1 selected data-default>Buy to Open</option>
-                        <option value=2>Sell to Open</option>
-                      </select>
+                                            <option value=1 selected data-default>Buy to Open</option>
+                                            <option value=2>Sell to Open</option>
+                                        </select>
                                     </div>
                                     <div class="card-main card-main-md">
                                         <input type="number" (keydown)="preventNegatives($event, false)" min="0" class="form-control cards-input" placeholder="" [(ngModel)]="stockOptions[index].contracts" [ngClass]="[closeTrade ? 'disabled' : '', viewTrade ? 'disabled' : '']" />

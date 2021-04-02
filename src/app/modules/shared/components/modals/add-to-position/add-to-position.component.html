@@ -11,52 +11,52 @@
 
         <div class="main-pop-inner">
             <div class="row mb-2 align-items-center">
-                <label class="col-6 col-form-label">Action</label>
                 <div class="col-6">
+                    <label class="col-form-label">Action</label>
                     <select id="inputState" class="form-control select-input" disabled="true" [(ngModel)]="data.actionType">
-            <option value=1 [hidden]="!addTrade" selected data-default>Buy to Open</option>
-            <option value=2 [hidden]="!addTrade">Sell to Open</option>
-            <option value=3 [hidden]="!addTrade">Buy to Close</option>
-            <option value=4 [hidden]="!addTrade">Sell to Close</option>
-          </select>
+                        <option value=1 [hidden]="!addTrade" selected data-default>Buy to Open</option>
+                        <option value=2 [hidden]="!addTrade">Sell to Open</option>
+                        <option value=3 [hidden]="!addTrade">Buy to Close</option>
+                        <option value=4 [hidden]="!addTrade">Sell to Close</option>
+                    </select>
                 </div>
             </div>
             <div class="row mb-2 align-items-center">
-                <label class="col-6 col-form-label">Enter Quantity</label>
                 <div class="col-6">
+                    <label class="col-form-label">Enter Quantity</label>
                     <input type="number" (keydown)="preventNegatives($event, false)" min="0" class="form-control cards-input" [(ngModel)]="data.quantity" />
                 </div>
-            </div>
-            <div class="row mb-2 align-items-center">
-                <label class="col-6 col-form-label">Stock Price </label>
                 <div class="col-6">
+                    <label class="col-form-label">Stock Price </label>
                     <div class="form-group">
                         <input type="number" pattern="^\d*(\.\d{0,2})?$" (change)="checkForDecimalValidation($event)" step="0.01" (keydown)="preventNegatives($event, true)" min="0" class="form-control cards-input" placeholder="" [(ngModel)]="data.price" />
                     </div>
                 </div>
             </div>
-            <div class="row align-items-center">
-                <label class="col-6 col-form-label">Amount</label>
-                <div class="col-6">
-                    <h6>{{data.quantity && data.price ? (data.quantity * data.price).toFixed(2) : 0}}
-                    </h6>
+            <div class="mb-2">
+                <label class="col-form-label">Amount</label>
+                <div class="form-control">
+                    {{data.quantity && data.price ? (data.quantity * data.price).toFixed(2) : 0}}
                 </div>
             </div>
-            <div class="row align-items-center">
-                <label class="col-6 col-form-label">Execution Date</label>
+            <div class="separator"></div>
+
+            <div class="row mb-2">
+                <div class="pop-inner-title w-100 px-3">Specify execution date</div>
                 <div class="col-6">
-                    <div class="datepicker-group datepicker-sm">
+                    <div class="datepicker-group">
                         <input matInput [matDatepicker]="execution_date" [(ngModel)]="data.executedDate" name="execution_date">
                         <mat-datepicker-toggle matSuffix [for]="execution_date"></mat-datepicker-toggle>
                         <mat-datepicker #execution_date></mat-datepicker>
                     </div>
                 </div>
             </div>
+
             <div class="pb-1">
                 <label class="col-form-label">Notes</label>
                 <textarea rows="2" class="form-control" [(ngModel)]="data.notes"></textarea>
             </div>
-
+            <div class="separator"></div>
             <div class="btn-up mb-0">
                 <button type="button" class="btn btn-add" [mat-dialog-close]="data">Save</button>
             </div>

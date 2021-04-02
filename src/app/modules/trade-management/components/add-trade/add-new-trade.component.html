@@ -56,14 +56,14 @@
                                     </div>
                                     <div class="closed-legs-body" *ngIf="closedLegs && tradeHistory">
                                         <div class="trade-card-box" *ngFor="let item of tradeHistory.stockLegHistories;let index = index">
-                                            <div class="card-main">
+                                            <div class="card-main card-main-actions">
                                                 <label class="col-form-label pt-0">Action</label>
                                                 <select id="inputState" class="form-control disabled px-0" [(ngModel)]="item.actionType">
-                            <option value=1 selected data-default>Buy to Open</option>
-                            <option value=2>Sell to Open</option>
-                            <option value=3>Buy to Close</option>
-                            <option value=4>Sell to Close</option>
-                          </select>
+                                                    <option value=1 selected data-default>Buy to Open</option>
+                                                    <option value=2>Sell to Open</option>
+                                                    <option value=3>Buy to Close</option>
+                                                    <option value=4>Sell to Close</option>
+                                                </select>
                                             </div>
                                             <div class="card-main card-main-md">
                                                 <label class="col-form-label pt-0">Quantity</label>
@@ -85,7 +85,7 @@
                                             </div>
                                         </div>
                                         <div class="mb-1 trade-card-box" *ngIf="tradeHistory.optionLegHistories.length > 0">
-                                            <div class="card-main">Action</div>
+                                            <div class="card-main card-main-actions">Action</div>
                                             <div class="card-main card-main-md">Contracts</div>
                                             <div class="card-main card-main-md">Strike</div>
                                             <div class="card-main">Expiration</div>
@@ -95,13 +95,13 @@
                                             <div class="card-main card-main-md">Return</div>
                                         </div>
                                         <div class="mb-1 trade-card-box" *ngFor="let item of tradeHistory.optionLegHistories;let index = index">
-                                            <div class="card-main">
+                                            <div class="card-main card-main-actions">
                                                 <select id="inputState" class="form-control disabled px-0" [(ngModel)]="item.actionType">
-                            <option value=1 selected data-default>Buy to Open</option>
-                            <option value=2>Sell to Open</option>
-                            <option value=3>Buy to Close</option>
-                            <option value=4>Sell to Close</option>
-                          </select>
+                                                    <option value=1 selected data-default>Buy to Open</option>
+                                                    <option value=2>Sell to Open</option>
+                                                    <option value=3>Buy to Close</option>
+                                                    <option value=4>Sell to Close</option>
+                                                </select>
                                             </div>
                                             <div class="card-main card-main-md">
                                                 <input type="number" min="0" class="form-control cards-input disabled" [(ngModel)]="item.contracts" />
@@ -120,9 +120,9 @@
                                             </div>
                                             <div class="card-main card-main-md">
                                                 <select id="inputState" class="form-control select-input disabled px-0" [(ngModel)]="item.optionType">
-                            <option value=1 selected data-default>Call</option>
-                            <option value=2>Put</option>
-                          </select>
+                                                <option value=1 selected data-default>Call</option>
+                                                <option value=2>Put</option>
+                                            </select>
                                             </div>
 
                                             <div class="card-main card-main-md">
@@ -143,7 +143,8 @@
                                             <div *ngIf="close || view">
                                                 <label class="col-form-label mr-2">Closed Date <span class="text-danger">*</span></label>
                                                 <div class="datepicker-group datepicker-sm">
-                                                    <input matInput [matDatepicker]="closed_date" (click)="closed_date.open()" id="closed_date" (dateChange)="addEvent('input', $event)" name="stockOptions[index].closed_date" [(ngModel)]="tradeDetails.closeDate" [ngClass]="view ? 'disabled' : ''" />
+                                                    <input matInput [matDatepicker]="closed_date" (click)="closed_date.open()" id="closed_date" (dateChange)="addEvent('input', $event)" name="stockOptions[index].closed_date" [(ngModel)]="tradeDetails.closeDate" [ngClass]="view ? 'disabled' : ''" [max]="maxDate"
+                                                    />
                                                     <mat-datepicker-toggle matSuffix [for]="closed_date" [ngClass]="viewTrade ? 'disabled' : ''"></mat-datepicker-toggle>
                                                     <mat-datepicker #closed_date></mat-datepicker>
                                                 </div>

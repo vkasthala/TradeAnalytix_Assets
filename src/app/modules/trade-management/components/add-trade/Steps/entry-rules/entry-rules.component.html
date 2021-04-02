@@ -14,6 +14,7 @@
                         <input type="checkbox" checked id="hedging" [(ngModel)]="entryRules[0].aligned" [disabled]="closeTrade" />
                         <!-- <label for="hedging"></label> -->
                     </div>
+                    <input type="text" class="trade-check" placeholder="Specify reason for not aligning with the rule" [(ngModel)]="entryRules[0].comment" [disabled]="closeTrade" />
                 </div>
             </div>
             <!-- end : entryrule_item -->
@@ -40,6 +41,7 @@
                         <input type="checkbox" checked id="onelack_stock" name="onelack_stock" [(ngModel)]="entryRules[2].aligned" [disabled]="closeTrade" />
                         <!-- <label for="onelack_stock"></label> -->
                     </div>
+                    <input type="text" class="trade-check" placeholder="Specify reason for not aligning with the rule" [(ngModel)]="entryRules[2].comment" [disabled]="closeTrade" />
                 </div>
             </div>
             <!-- end : entryrule_item -->

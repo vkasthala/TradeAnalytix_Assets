@@ -1,285 +1,283 @@
 @import "../../../../../../../assets/styles/variable.scss";
-
 .trade-thesis-sec {
-  .trade-thesis-heading {
-    border-bottom: 1px solid transparent;
-    padding-bottom: 15px;
-    
-  }
-
-  .trade-thesis-inner {
-    padding: 0px 20px;
-    border: 1px solid #ddd;
-    position: relative;
-    &::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 0%;
-      height: 100%;
-      width: 1px;
-      background-color: #ddd;
-      @media #{$small} {
-        display: none;
-      }
+    .trade-thesis-heading {
+        border-bottom: 1px solid transparent;
+        padding-bottom: 15px;
     }
-    @media #{$small} {
-      padding: 0px;
+    .trade-thesis-inner {
+        padding: 0px 20px;
+        border: 1px solid #ddd;
+        position: relative;
+        &::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 0%;
+            height: 100%;
+            width: 1px;
+            background-color: #ddd;
+            @media #{$small} {
+                display: none;
+            }
+        }
+        @media #{$small} {
+            padding: 0px;
+        }
+        @media #{$medium} {
+            padding: 0px !important;
+        }
+        @media #{$extra-small} {
+            padding: 0px;
+        }
     }
-    @media #{$medium} {
-      padding: 0px !important;
-    }
-    @media #{$extra-small} {
-      padding: 0px;
-    }
-  }
 }
 
 .form-control {
-  border: 1px solid #70707070;
+    border: 1px solid #70707070;
 }
 
 .trade-thesis-list {
-  margin: 30px 0px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-direction: row;
-  width: 100%;
-  padding-left: 15px;
-  @media #{$small} {
-    flex-direction: column;
-  }
-  .thesis-list-inner {
-    position: relative;
+    margin: 30px 0px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    flex-direction: column;
+    align-items: flex-start;
+    flex-direction: row;
+    width: 100%;
+    padding-left: 15px;
     @media #{$small} {
-      flex-direction: column;
-      align-items: flex-start;
+        flex-direction: column;
     }
-
-    @media #{$medium} {
-      min-height: 120px;
-    }
-
-    .list-inner-left {
-      width: 100%;
-      position: relative;
-      display: flex;
-      align-items: center;
-      margin-bottom: 15px;
-      @media #{$small} {
-        width: 100%;
-      }
-      span {
-        margin-right: 20px;
-
-        h6 {
-          font-weight: 400;
-          @media #{$small} {
-            font-size: 15px;
-          }
+    .thesis-list-inner {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        flex-direction: column;
+        @media #{$small} {
+            flex-direction: column;
+            align-items: flex-start;
         }
-      }
-    }
-
-    .list-inner-right {
-      display: flex;
-      align-items: flex-start;
-      width: 100%;
-      padding-left: 27px;
-      @media #{$extra-small} {
-        width: 50%;
-      }
-      @media #{$small} {
-        width: 100%;
-      }
-
-      .add-new {
-        color: $primary;
-        font-size: 14px;
-        cursor: pointer;
-        font-weight: 500;
-        // margin-left: 14px;
         @media #{$medium} {
-          font-size: 14px;
+            min-height: 120px;
         }
-      }
+        .list-inner-left {
+            width: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            @media #{$small} {
+                width: 100%;
+            }
+            span {
+                margin-right: 20px;
+                h6 {
+                    font-weight: 400;
+                    @media #{$small} {
+                        font-size: 15px;
+                    }
+                }
+            }
+        }
+        .list-inner-right {
+            display: flex;
+            align-items: flex-start;
+            width: 100%;
+            padding-left: 27px;
+            @media #{$extra-small} {
+                width: 50%;
+            }
+            @media #{$small} {
+                width: 100%;
+            }
+            .add-new {
+                color: $primary;
+                font-size: 14px;
+                cursor: pointer;
+                font-weight: 500;
+                // margin-left: 14px;
+                @media #{$medium} {
+                    font-size: 14px;
+                }
+            }
+        }
     }
-  }
 }
 
 .Trade-type .form-control {
-  height: 45px;
-  width: 190px;
-  font-size: 14px;
-  @media #{$small} {
-    width: 100%;
-  }
+    height: 45px;
+    width: 190px;
+    font-size: 12px;
+    @media #{$small} {
+        width: 100%;
+    }
 }
 
 .trade-date .form-control {
-  height: 45px;
+    height: 45px;
 }
 
 .trade-input .form-control {
-  height: 45px;
-  width: 150%;
-  @media #{$small} {
-    width: 100%;
-  }
+    height: 45px;
+    width: 150%;
+    @media #{$small} {
+        width: 100%;
+    }
 }
 
 .trade-inputt .form-control {
-  height: 45px;
+    height: 45px;
 }
 
 .trad-border {
-  border: 1px solid #acacac;
-  opacity: 0.3;
+    border: 1px solid #acacac;
+    opacity: 0.3;
 }
 
 .trade-new-btn {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-
-  .btn-per {
-    color: $primary;
-    font-size: 16px;
-    font-weight: 500;
-    cursor: pointer;
-  }
-  .btn-next {
-    color: $primary;
-    font-size: 16px;
-    font-weight: 500;
-    cursor: pointer;
-  }
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    .btn-per {
+        color: $primary;
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+    }
+    .btn-next {
+        color: $primary;
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+    }
 }
 
 // Toggle Customize
 .switch {
-  position: relative;
-  width: 42%;
+    position: relative;
+    width: 42%;
 }
+
 .switch label {
-  width: 60px;
-  height: 30px;
-  position: absolute;
-  background-color: #999;
-  top: -3px;
-  left: 0;
-  border-radius: 50px;
-  margin-bottom: 0px;
+    width: 60px;
+    height: 30px;
+    position: absolute;
+    background-color: #999;
+    top: -3px;
+    left: 0;
+    border-radius: 50px;
+    margin-bottom: 0px;
 }
+
 .switch input[type="checkbox"] {
-  visibility: hidden;
+    visibility: hidden;
 }
+
 .switch label:after {
-  content: "";
-  width: 26px;
-  height: 26px;
-  border-radius: 50px;
-  position: absolute;
-  top: 2px;
-  left: 1px;
-  background-color: white;
-  transition: all 0.3s;
+    content: "";
+    width: 26px;
+    height: 26px;
+    border-radius: 50px;
+    position: absolute;
+    top: 2px;
+    left: 1px;
+    background-color: white;
+    transition: all 0.3s;
 }
-.switch input[type="checkbox"]:checked + label:after {
-  left: 33px;
+
+.switch input[type="checkbox"]:checked+label:after {
+    left: 33px;
 }
-.switch input[type="checkbox"]:checked + label {
-  background-color: $primary;
+
+.switch input[type="checkbox"]:checked+label {
+    background-color: $primary;
 }
-.switch input[type="checkbox"]:not(:checked) + label {
-  background-color: #ddd;
+
+.switch input[type="checkbox"]:not(:checked)+label {
+    background-color: #ddd;
 }
+
 .switch-no {
-  color: #9e9e9e;
+    color: #9e9e9e;
 }
+
 .switch-yes {
-  color: $primary;
+    color: $primary;
 }
 
 .trade-check {
-  display: flex;
-  justify-content: center;
-  border: 1px solid #ddd;
-  width: 40%;
-  padding: 12px;
-  border-radius: 6px;
-  @media #{$small} {
+    display: flex;
+    justify-content: center;
+    border: 1px solid #ddd;
     width: 40%;
-  }
-
-  span {
-    width: 20%;
-    font-size: 16px;
-    font-weight: 500;
-  }
+    padding: 12px;
+    border-radius: 6px;
+    @media #{$small} {
+        width: 40%;
+    }
+    span {
+        width: 20%;
+        font-size: 16px;
+        font-weight: 500;
+    }
 }
 
 .add-new-t {
-  display: flex;
-  margin-top: 5px;
-  // flex-direction: column;
+    display: flex;
+    margin-top: 5px;
+    // flex-direction: column;
 }
 
 .ad-mb {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 .left-trade,
 .right-trade {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  @media #{$small} {
+    display: flex;
+    flex-direction: column;
     width: 100%;
-  }
+    @media #{$small} {
+        width: 100%;
+    }
 }
 
 .trade-input {
-  // width: 70%;
-  @media #{$small} {
-    width: 70%;
-  }
+    // width: 70%;
+    @media #{$small} {
+        width: 70%;
+    }
 }
 
 .trade-new {
-  // display: flex;
-  align-items: flex-start;
-  width: 100%;
-  margin-bottom: 15px;
+    // display: flex;
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: 15px;
 }
 
 .trade-box-right {
-  width: 49%;
-  @media #{$small} {
-    width: 100%;
-  }
+    width: 49%;
+    @media #{$small} {
+        width: 100%;
+    }
 }
+
 .trade-box-left {
-  width: 49%;
-  @media #{$small} {
-    width: 100%;
-  }
+    width: 49%;
+    @media #{$small} {
+        width: 100%;
+    }
 }
 
 .trade-risk-nw {
-  display: flex;
-  align-items: flex-end;
-  width: 100%;
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
 }
 
-
-.add-left{
-  margin-left: 15px;
+.add-left {
+    margin-left: 15px;
 }

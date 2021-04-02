@@ -1,813 +1,815 @@
 @import '../../../../assets/styles/variable.scss';
 @import '../../../../assets/styles/breakpoints.scss';
 .mat-expansion-panel {
-  overflow: visible;
+    overflow: visible;
 }
+
 .mat-expansion-panel-body {
-  padding: 0 16px !important;
+    padding: 0 16px !important;
 }
+
 .risk-analysis {
-  // padding-bottom: 20px;
+    // padding-bottom: 20px;
 }
+
 .addnew-trade {
-  padding: 0px;
+    padding: 0px;
 }
+
 .btn-enter {
-  background-color: #37A000;
-  color: $white;
-  padding: 5px 20px !important;
+    background-color: #37A000;
+    color: $white;
+    padding: 5px 20px !important;
 }
 
 .trade-right-search .form-control {
-  border: 1px solid #a2a2a2;
-  // height: 40px;
+    border: 1px solid #a2a2a2;
+    // height: 40px;
 }
-select.form-control {
-  padding: 0.375rem 0.25rem !important;
-  font-size: 14px;
-}
-.trade-right-search {
-  position: relative;
-  width: 200px;
 
-  @include media(">tablet", "<laptop") {
-    width: 150px;
-  }
+select.form-control {
+    padding: 0.375rem 0.25rem !important;
+    font-size: 12px;
+}
+
+.trade-right-search {
+    position: relative;
+    width: 200px;
+    @include media(">tablet", "<laptop") {
+        width: 150px;
+    }
 }
 
 img.form-icon {
-  position: absolute;
-  right: 11px;
-  top: 9px;
-  width: 19px;
+    position: absolute;
+    right: 11px;
+    top: 9px;
+    width: 19px;
 }
 
 .trade-rate {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
 }
 
 .trade-name {
-  margin-bottom: 5px;
-  h5 {
-    font-weight: bold;
-  }
+    margin-bottom: 5px;
+    h5 {
+        font-weight: bold;
+    }
 }
 
 span.trade-r {
-  color: black;
-  font-weight: bold;
-  font-size: 20px;
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
 }
+
 span.trade-rr {
-  color: #ff0000;
-  font-weight: bold;
-  font-size: 20px;
-  margin-left: 10px;
+    color: #ff0000;
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: 10px;
 }
 
 .trade-rate-box {
-  background-color: #f2f2f2;
-  // border: 1px solid #cbcbcb;
-  padding: 12px;
-  margin: 10px 0px 20px 0px;
+    background-color: #f2f2f2;
+    // border: 1px solid #cbcbcb;
+    padding: 12px;
+    margin: 10px 0px 20px 0px;
 }
 
 .trade-rate-sec {
-  margin-top: 10px;
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  @media #{$small} {
-    flex-wrap: wrap;
-  }
+    margin-top: 10px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    @media #{$small} {
+        flex-wrap: wrap;
+    }
 }
+
 .rate-box-right {
-  width: 50%;
-  border-right: 1px solid #bdbdbdb3;
-  @media #{$small} {
-    border-right: unset;
-  }
+    width: 50%;
+    border-right: 1px solid #bdbdbdb3;
+    @media #{$small} {
+        border-right: unset;
+    }
 }
 
 .rate-box-left {
-  width: 50%;
-  @media #{$small} {
-    width: 53%;
-  }
+    width: 50%;
+    @media #{$small} {
+        width: 53%;
+    }
 }
 
 .trade-rate-heading {
-  h6 {
-    color: $primary;
-  }
+    h6 {
+        color: $primary;
+    }
 }
 
 .rate-box-s {
-  width: 15%;
-  @media #{$small} {
-    width: 50%;
-    border: 1px solid #ddd;
-    padding: 10px;
-  }
+    width: 15%;
+    @media #{$small} {
+        width: 50%;
+        border: 1px solid #ddd;
+        padding: 10px;
+    }
 }
 
 .rate-box {
-  width: 26%;
-  display: flex;
-  justify-content: flex-start;
-  @media #{$small} {
-    width: 50%;
-    border: 1px solid #ddd;
-    padding: 10px;
-  }
+    width: 26%;
+    display: flex;
+    justify-content: flex-start;
+    @media #{$small} {
+        width: 50%;
+        border: 1px solid #ddd;
+        padding: 10px;
+    }
 }
 
 .bxo-name {
-  margin-bottom: 12px;
-
-  span {
-    font-size: 14px;
-  }
+    margin-bottom: 12px;
+    span {
+        font-size: 14px;
+    }
 }
 
 .trad-border {
-  border: 1px solid #acacac;
-  opacity: 0.2;
+    border: 1px solid #acacac;
+    opacity: 0.2;
 }
 
 .mat-stepper-horizontal.mat-horizontal-content-container {
-  padding: 0px !important;
+    padding: 0px !important;
 }
 
 .search_btn .btn-add {
-  width: 110px;
-  height: 40px;
-  line-height: 28px;
-  background: #37a01a;
-  color: #fff;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  text-transform: uppercase;
-  // margin-top: 24px;
+    width: 110px;
+    height: 40px;
+    line-height: 28px;
+    background: #37a01a;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    text-transform: uppercase;
+    // margin-top: 24px;
 }
+
 .btn-option {
-  background: #3e3e3e;
+    background: #3e3e3e;
 }
+
 .btn-next {
-  padding: 0.375rem 1.5rem !important;
-  height: 40px;
-  line-height: 28px;
-  background: #37a01a;
-  color: #fff;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  text-transform: uppercase;
+    padding: 0.375rem 1.5rem !important;
+    height: 40px;
+    line-height: 28px;
+    background: #37a01a;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    text-transform: uppercase;
 }
+
 .btn:hover {
-  color: $white;
+    color: $white;
 }
 
 .order-btn {
-  padding-bottom: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  @media #{$extra-small} {
-    justify-content: space-between;
-  }
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    @media #{$extra-small} {
+        justify-content: space-between;
+    }
 }
+
 a.btn.btn-skip {
-  color: $appbtn-color;
-  right: 0px;
-  position: absolute;
-  font-size: 15px;
+    color: $appbtn-color;
+    right: 0px;
+    position: absolute;
+    font-size: 15px;
 }
 
 .trade-section {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  flex-wrap: wrap;
-  @include media(">tablet", "<laptop") {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
-  }
-
-  @media #{$small} {
-    width: 100%;
-  }
-  @media #{$extra-small} {
-    width: 100%;
-  }
+    flex-wrap: wrap;
+    @include media(">tablet", "<laptop") {
+        width: 100%;
+    }
+    @media #{$small} {
+        width: 100%;
+    }
+    @media #{$extra-small} {
+        width: 100%;
+    }
 }
 
-
 .form-control {
-  height: 40px;
-  font-size: 14px;
+    height: 40px;
+    font-size: 12px;
 }
 
 .trade-sec h6 {
-  font-size: 16px;
-  color: $primary;
-  margin-bottom: 10px !important;
+    font-size: 16px;
+    color: $primary;
+    margin-bottom: 10px !important;
 }
 
 .trade-stoack-main {
-  margin-top: 15px;
-  padding-bottom: 15px;
+    margin-top: 15px;
+    padding-bottom: 15px;
 }
 
 .btn-secondary {
-  color: $white;
-  text-transform: uppercase;
-  width: 110px;
-  height: 40px;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 28px;
+    color: $white;
+    text-transform: uppercase;
+    width: 110px;
+    height: 40px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 28px;
 }
 
 .trade-risk-section {
-  margin-top: 20px;
+    margin-top: 20px;
 }
+
 .trade-cards-section {
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  width: 100%;
-  margin: 10px 0px;
-  // flex-wrap: wrap;
-  @media #{$extra-small} {
-    width: 100%;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-  @media #{$small} {
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    // margin-bottom: 10px;
-  }
-  @media #{$medium} {
-    flex-wrap: wrap;
-    // margin-bottom: 10px;
-  }
-  .trade-card-box {
-    width: 20%;
-    // min-width: 260px;
-    background: #fff;
-    height: auto;
-    min-height: 390px;
     display: flex;
-    flex-direction: column;
-    padding: 10px;
     justify-content: flex-start;
     align-items: flex-start;
-    box-shadow: 0 0 4px #ccc;
-    border: 1px solid #cbcbcb;
-    // margin-left: 20px;
+    width: 100%;
+    margin: 10px 0px;
+    // flex-wrap: wrap;
     @media #{$extra-small} {
-      min-height: 350px;
-      margin-bottom: 10px;
-      min-width: 196px !important;
-      border: 1px solid #ddd;
+        width: 100%;
+        flex-wrap: wrap;
+        align-items: center;
     }
     @media #{$small} {
-      margin-bottom: 10px;
-      width: 48%;
-      min-height: 420px;
-      margin-left: 8px;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        // margin-bottom: 10px;
     }
     @media #{$medium} {
-      margin-bottom: 10px;
-      margin-right: 10px;
-      margin-left: 0px;
-      width: 22%;
-      min-height: 420px;
+        flex-wrap: wrap;
+        // margin-bottom: 10px;
     }
-    .top-heading {
-      display: flex;
-      justify-content: flex-end;
-      width: 100%;
-      align-items: baseline;
-      margin-bottom: 10px;
-      img {
-        width: 14px;
-        cursor: pointer;
-      }
+    .trade-card-box {
+        width: 20%;
+        // min-width: 260px;
+        background: #fff;
+        height: auto;
+        min-height: 390px;
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        justify-content: flex-start;
+        align-items: flex-start;
+        box-shadow: 0 0 4px #ccc;
+        border: 1px solid #cbcbcb;
+        // margin-left: 20px;
+        @media #{$extra-small} {
+            min-height: 350px;
+            margin-bottom: 10px;
+            min-width: 196px !important;
+            border: 1px solid #ddd;
+        }
+        @media #{$small} {
+            margin-bottom: 10px;
+            width: 48%;
+            min-height: 420px;
+            margin-left: 8px;
+        }
+        @media #{$medium} {
+            margin-bottom: 10px;
+            margin-right: 10px;
+            margin-left: 0px;
+            width: 22%;
+            min-height: 420px;
+        }
+        .top-heading {
+            display: flex;
+            justify-content: flex-end;
+            width: 100%;
+            align-items: baseline;
+            margin-bottom: 10px;
+            img {
+                width: 14px;
+                cursor: pointer;
+            }
+        }
+        .card-main {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 10px;
+            .card-left {
+                width: 40%;
+                padding-left: 5px;
+                span {
+                    font-size: 14px;
+                }
+            }
+            .card-right {
+                width: 60%;
+                h6 {
+                    font-size: 14px;
+                    @media #{$medium} {
+                        font-size: 14px;
+                    }
+                }
+                .cards-input {
+                    font-size: 13px !important;
+                    height: 40px;
+                    padding: 0px;
+                    padding-left: 10px !important;
+                }
+                .select-input {
+                    padding: 0px 8px;
+                    height: 40px;
+                    font-size: 13px;
+                }
+            }
+        }
     }
-    .card-main {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 10px;
-      .card-left {
-        width: 40%;
-        padding-left: 5px;
-        span {
-          font-size: 14px;
-        }
-      }
-      .card-right {
-        width: 60%;
-        h6 {
-          font-size: 14px;
-
-          @media #{$medium} {
-            font-size: 14px;
-          }
-        }
-        .cards-input {
-          font-size: 13px !important;
-          height: 40px;
-          padding: 0px;
-          padding-left: 10px !important;
-        }
-
-        .select-input {
-          padding: 0px 8px;
-          height: 40px;
-          font-size: 13px;
-        }
-      }
-    }
-  }
 }
 
 .trade-card-box {
-  @media #{$extra-small} {
-    margin: 0px 0px 0px 0px;
-  }
+    @media #{$extra-small} {
+        margin: 0px 0px 0px 0px;
+    }
 }
 
 .btn-yes,
 .btn-no {
-  padding: 10px 25px;
-  border-radius: 5px;
+    padding: 10px 25px;
+    border-radius: 5px;
 }
+
 .btn-yes {
-  background-color: #219563;
-  color: $white;
+    background-color: #219563;
+    color: $white;
 }
+
 .btn-no {
-  background-color: #e2e2e2;
-  color: #000;
-  margin-left: 10px;
+    background-color: #e2e2e2;
+    color: #000;
+    margin-left: 10px;
 }
 
 .btn-no:hover {
-  color: #000;
+    color: #000;
 }
 
 .trade-risk h6 {
-  font-size: 16px;
-  font-weight: 500;
-  color: #016db0;
-
-  @media #{$extra-small} {
-    margin-bottom: 10px !important;
-  }
+    font-size: 16px;
+    font-weight: 500;
+    color: #016db0;
+    @media #{$extra-small} {
+        margin-bottom: 10px !important;
+    }
 }
 
 .trade-risk {
-  margin: 10px 0px;
+    margin: 10px 0px;
 }
 
 .risk-stock-seciton {
-  display: flex;
-  width: 100%;
-  align-items: center;
-  flex-direction: column;
-  @media #{$medium} {
+    display: flex;
     width: 100%;
-  }
+    align-items: center;
+    flex-direction: column;
+    @media #{$medium} {
+        width: 100%;
+    }
 }
 
 .stock-inc {
-  border: 1px solid #a2a2a2;
-  padding: 4px 8px;
-  border-radius: 50px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-  margin: 0 auto;
-  a {
-    cursor: pointer;
-    line-height: 0;
-    img {
-      width: 20px;
-      height: auto;
+    border: 1px solid #a2a2a2;
+    padding: 4px 8px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    margin: 0 auto;
+    a {
+        cursor: pointer;
+        line-height: 0;
+        img {
+            width: 20px;
+            height: auto;
+        }
     }
-  }
-
-  span {
-    margin: 0px 5px;
-  }
+    span {
+        margin: 0px 5px;
+    }
 }
 
 .stock-name {
-  justify-content: center;
-  display: inline-flex
-  span {
-    font-size: 13px;
-  }
+    justify-content: center;
+    display: inline-flex span {
+        font-size: 13px;
+    }
 }
 
 .risk-box {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  width: 20%;
-  box-shadow: 0 0 4px #ccc;
-  border: 1px solid #cbcbcb;
-  padding: 10px;
-  @media #{$small} {
-    margin-bottom: 20px;
-    width: 48%;
-    border: 1px solid #ddd;
-    padding: 12px;
-    margin-right: 10px;
-  }
-  @media #{$medium} {
-    margin-bottom: 20px;
-    width: 23%;
-    border: 1px solid #ddd;
-    padding: 8px;
-    margin-right: 10px;
-  }
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 20%;
+    box-shadow: 0 0 4px #ccc;
+    border: 1px solid #cbcbcb;
+    padding: 10px;
+    @media #{$small} {
+        margin-bottom: 20px;
+        width: 48%;
+        border: 1px solid #ddd;
+        padding: 12px;
+        margin-right: 10px;
+    }
+    @media #{$medium} {
+        margin-bottom: 20px;
+        width: 23%;
+        border: 1px solid #ddd;
+        padding: 8px;
+        margin-right: 10px;
+    }
 }
+
 .risk-af {
-  position: relative;
-
-  @media #{$extra-small} {
-    margin-bottom: 20px;
-  }
+    position: relative;
+    @media #{$extra-small} {
+        margin-bottom: 20px;
+    }
 }
 
-
-.card-m{
-  margin-left: 10px;
-  @media #{$small} {
-    margin-left: 0px;
-  }
-  @media #{$medium} {
-    margin-left: 0px;
-  }
+.card-m {
+    margin-left: 10px;
+    @media #{$small} {
+        margin-left: 0px;
+    }
+    @media #{$medium} {
+        margin-left: 0px;
+    }
 }
-
 
 .risk-bt {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 .trade-risk-heading {
-  margin-bottom: 40px;
-  h6 {
-    // font-size: 14px;
-    font-weight: 500;
-    color: #016db0;
-  }
-
-  p {
-    display: block;
-    margin-top: 15px;
-    font-size: 13px;
-  }
-
-  .refresh-icon {
-    font-size:35px;
-    color:#016db0;
-    float: right;
-     cursor: pointer;
-  }
+    margin-bottom: 40px;
+    h6 {
+        // font-size: 14px;
+        font-weight: 500;
+        color: #016db0;
+    }
+    p {
+        display: block;
+        margin-top: 15px;
+        font-size: 13px;
+    }
+    .refresh-icon {
+        font-size: 35px;
+        color: #016db0;
+        float: right;
+        cursor: pointer;
+    }
 }
 
 .trade-risk-stock {
-  margin-bottom: 10px;
-  display: flex;
-  justify-content: flex-start;
-  width: 100%;
-  @media #{$small} {
-    flex-wrap: wrap;
-  }
-  @media #{$medium} {
-    flex-wrap: wrap;
-  }
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    @media #{$small} {
+        flex-wrap: wrap;
+    }
+    @media #{$medium} {
+        flex-wrap: wrap;
+    }
 }
 
 // risk tabs
 .tab .nav-tabs {
-  border-bottom: 2px solid #e8e8e8;
+    border-bottom: 2px solid #e8e8e8;
 }
+
 .tab .nav-tabs li a {
-  display: block;
-  padding: 5px;
-  margin: 0 5px 1px 0;
-  background: #fff;
-  font-size: 15px;
-  font-weight: 500;
-  color: #000;
-  text-align: center;
-  border: none;
-  border-radius: 0;
-  z-index: 2;
-  position: relative;
-  transition: all 0.3s ease 0s;
-  text-decoration: none;
+    display: block;
+    padding: 5px;
+    margin: 0 5px 1px 0;
+    background: #fff;
+    font-size: 15px;
+    font-weight: 500;
+    color: #000;
+    text-align: center;
+    border: none;
+    border-radius: 0;
+    z-index: 2;
+    position: relative;
+    transition: all 0.3s ease 0s;
+    text-decoration: none;
 }
+
 .tab .nav-tabs li a:hover,
 .tab .nav-tabs li.active a {
-  color: #37a01a  !important;
-  border: none;
+    color: #37a01a !important;
+    border: none;
 }
 
 .tab .nav-tabs li.active a:after {
-  content: "";
-  width: 100%;
-  height: 2px;
-  background: #37a01a;
-  position: absolute;
-  bottom: -3px;
-  left: 0;
-  z-index: -1;
-  transition: all 0.3s ease 0s;
-}
-.tab .tab-content {
-  padding: 0px;
-  margin-top: 0;
-  background: #fff;
-  font-size: 14px;
-  color: #000;
-  line-height: 30px;
-  border-radius: 0 0 5px 5px;
-  @media #{$extra-small} {
-    overflow-y: scroll;
-  }
-  @media #{$small} {
-    overflow-y: scroll;
-  }
-  @media #{$medium} {
-    overflow-y: scroll;
-  }
-}
-.tab .tab-content h3 {
-  font-size: 24px;
-  margin-top: 0;
-}
-@media only screen and (max-width: 479px) {
-  .tab .nav-tabs li {
+    content: "";
     width: 100%;
-    text-align: center;
-  }
-  .tab .nav-tabs li.active a:before {
-    content: "\f105";
-    bottom: 15%;
+    height: 2px;
+    background: #37a01a;
+    position: absolute;
+    bottom: -3px;
     left: 0;
-    right: auto;
-  }
+    z-index: -1;
+    transition: all 0.3s ease 0s;
+}
+
+.tab .tab-content {
+    padding: 0px;
+    margin-top: 0;
+    background: #fff;
+    font-size: 14px;
+    color: #000;
+    line-height: 30px;
+    border-radius: 0 0 5px 5px;
+    @media #{$extra-small} {
+        overflow-y: scroll;
+    }
+    @media #{$small} {
+        overflow-y: scroll;
+    }
+    @media #{$medium} {
+        overflow-y: scroll;
+    }
+}
+
+.tab .tab-content h3 {
+    font-size: 24px;
+    margin-top: 0;
+}
+
+@media only screen and (max-width: 479px) {
+    .tab .nav-tabs li {
+        width: 100%;
+        text-align: center;
+    }
+    .tab .nav-tabs li.active a:before {
+        content: "\f105";
+        bottom: 15%;
+        left: 0;
+        right: auto;
+    }
 }
 
 .charts {
-  img {
-    width: 50%;
-  }
+    img {
+        width: 50%;
+    }
 }
 
 // risk table
-
 .risk-tabs-table {
-  position: relative;
-  display: inline-flex;
-  justify-content: flex-start;
-  align-items: flex-start;
+    position: relative;
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: flex-start;
     width: 100%;
-  margin: 0px 0;
-  @media #{$small} {
-    width: auto;
-  }
+    margin: 0px 0;
+    @media #{$small} {
+        width: auto;
+    }
 }
 
 .risk-table {
-  width: 30%;
-  height: auto;
-  min-height: 340px;
-  padding: 0px;
-  box-shadow: 0 0 5px #ccc;
-  border: 1px solid #cbcbcb;
-  margin-right: 10px;
-  @media #{$small} {
-    width: 50%;
-  }
-
-  h6 {
-    text-align: center;
-    font-size: 14px;
-    padding: 6px .25rem;
-    margin: 0;
-    color: #000;
-  }
-  table {
-    width: 100%;
-    margin: 0 auto;
-    text-align: center;
-    thead {
-      th {
-        background: #ededed;
+    width: 30%;
+    height: auto;
+    min-height: 340px;
+    padding: 0px;
+    box-shadow: 0 0 5px #ccc;
+    border: 1px solid #cbcbcb;
+    margin-right: 10px;
+    @media #{$small} {
+        width: 50%;
+    }
+    h6 {
+        text-align: center;
+        font-size: 14px;
+        padding: 6px .25rem;
+        margin: 0;
         color: #000;
-        font-size: 13px;
-        font-weight: normal;
-        text-align: right;
-        padding-right: .25rem;
-        @media #{$small} {
-          font-size: 12px;
-        }
-      }
-
-      &:nth-child(2) {
-        display: block;
-        margin: 0 12px;
-        @media #{$small} {
-          display: inline;
-        }
-      }
     }
-
-    td {
-      font-size: 13px;
-      font-weight: 400;
-      //   color: #4f5051;
-      border-bottom: 1px solid #bfbfbf;
-      text-align: right;
-      padding-right: .25rem;
-      @media #{$small} {
-        padding: 0px 10px;
-      }
+    table {
+        width: 100%;
+        margin: 0 auto;
+        text-align: center;
+        thead {
+            th {
+                background: #ededed;
+                color: #000;
+                font-size: 13px;
+                font-weight: normal;
+                text-align: right;
+                padding-right: .25rem;
+                @media #{$small} {
+                    font-size: 12px;
+                }
+            }
+            &:nth-child(2) {
+                display: block;
+                margin: 0 12px;
+                @media #{$small} {
+                    display: inline;
+                }
+            }
+        }
+        td {
+            font-size: 13px;
+            font-weight: 400;
+            //   color: #4f5051;
+            border-bottom: 1px solid #bfbfbf;
+            text-align: right;
+            padding-right: .25rem;
+            @media #{$small} {
+                padding: 0px 10px;
+            }
+        }
     }
-  }
 }
 
 .risk-tables {
-  width: 8%;
-  height: auto;
-  min-height: 340px;
-  box-shadow: 0 0 5px #ccc;
-  border: 1px solid #cbcbcb;
-  padding: 0px;
-  @media #{$small} {
-    width: 9%;
-  }
-  h6 {
-    text-align: center;
-    font-size: 14px;
-    padding: 6px 0.25rem;
-    color: #000;
-  }
-  table {
-    width: 100%;
-    margin: 0 auto;
-    text-align: center;
-    thead {
-      th {
-        background: #ededed;
-        color: #424242;
-        font-size: 13px;
-        font-weight: 500;
-        @media #{$small} {
-          font-size: 12px;
+    width: 8%;
+    height: auto;
+    min-height: 340px;
+    box-shadow: 0 0 5px #ccc;
+    border: 1px solid #cbcbcb;
+    padding: 0px;
+    @media #{$small} {
+        width: 9%;
+    }
+    h6 {
+        text-align: center;
+        font-size: 14px;
+        padding: 6px 0.25rem;
+        color: #000;
+    }
+    table {
+        width: 100%;
+        margin: 0 auto;
+        text-align: center;
+        thead {
+            th {
+                background: #ededed;
+                color: #424242;
+                font-size: 13px;
+                font-weight: 500;
+                @media #{$small} {
+                    font-size: 12px;
+                }
+            }
+            &:nth-child(2) {
+                display: block;
+                margin: 0 12px;
+            }
         }
-      }
-
-      &:nth-child(2) {
-        display: block;
-        margin: 0 12px;
-      }
+        td {
+            font-size: 13px;
+            font-weight: 400;
+            //   color: #4f5051;
+            border-bottom: 1px solid #bfbfbf;
+            @media #{$small} {
+                padding: 0px 10px;
+            }
+        }
     }
-
-    td {
-      font-size: 13px;
-      font-weight: 400;
-      //   color: #4f5051;
-      border-bottom: 1px solid #bfbfbf;
-      @media #{$small} {
-        padding: 0px 10px;
-      }
-    }
-  }
 }
 
 // thead th:nth-child(2) {
 //   display: block;
 //   margin: 0 12px;
 // }
-
 .trade-rdd {
-  color: #ff031b !important;
+    color: #ff031b !important;
 }
 
 .trade-rd {
-  color: #37a01a !important;
+    color: #37a01a !important;
 }
 
 .trade-form {
-  border-top: 2px solid #ccc;
-  .row {
-    justify-content: center;
-    align-items: center;
-  }
-  .trade-he {
-    display: flex;
-    justify-content: flex-end;
-  }
-
-  @include media(">tablet", "<laptop") {
-    .btn-enter {
-      text-align: center;
+    border-top: 2px solid #ccc;
+    .row {
+        justify-content: center;
+        align-items: center;
     }
-
     .trade-he {
-      display: flex;
-      justify-content: center;
-      // margin-bottom: 10px;
+        display: flex;
+        justify-content: flex-end;
     }
-  }
+    @include media(">tablet", "<laptop") {
+        .btn-enter {
+            text-align: center;
+        }
+        .trade-he {
+            display: flex;
+            justify-content: center;
+            // margin-bottom: 10px;
+        }
+    }
 }
 
 .stock-p {
-  display: flex;
-  position: relative;
-  justify-content: flex-start;
-  align-items: center;
-  width: 100%;
-  p{
-    // margin-left: -12px;
-    position: absolute;
-    right: 5px;
-  }
-
-  .hide-bars {
-    width: 80%;
-    text-align: center;
+    display: flex;
+    position: relative;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    p {
+        // margin-left: -12px;
+        position: absolute;
+        right: 5px;
+    }
+    .hide-bars {
+        width: 80%;
+        text-align: center;
+    }
 }
-}
 
-.risk-analysis-sec{
+.risk-analysis-sec {
     padding: 0px;
 }
-.risk-inner{
+
+.risk-inner {
     background-color: #fff;
     padding: 5px 15px;
 }
 
 .current-stock {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 5px;
-  P{
-    font-size: 14px;
-  }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+    P {
+        font-size: 14px;
+    }
+}
 
-}
 .addnew-first {
-  height: 78vh;
-  background-color: #fff;
+    height: 78vh;
+    background-color: #fff;
 }
+
 .range-sm {
-  min-width: 45px;
-  text-align: left !important;
+    min-width: 45px;
+    text-align: left !important;
 }
 
 .card-main {
-  padding-right: 0.5678rem;
-  min-width: 150px;
-  max-width: 150px;
-  font-size: 14px;
+    padding-right: 0.5678rem;
+    min-width: 150px;
+    max-width: 150px;
+    font-size: 14px;
 }
+
 .add_strategy {
-  display: flex !important;
-  align-items: self-start;
-  flex-direction: column;
-  justify-content: space-around;
-  margin-top: 1.45rem;
+    display: flex !important;
+    align-items: self-start;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-top: 1.45rem;
 }
-.form-icon-down{
-  position: absolute;
-  right: 5px;
-  top: 8px;
-  color: #37A000 !important;
+
+.form-icon-down {
+    position: absolute;
+    right: 5px;
+    top: 8px;
+    color: #37A000 !important;
 }
+
 .trade-sel {
-  select{
-    cursor: pointer;
-    -webkit-appearance: none !important;
-    height: 40px;
-  }
+    select {
+        cursor: pointer;
+        -webkit-appearance: none !important;
+        height: 40px;
+    }
 }

@@ -25,7 +25,8 @@
         width: 100%;
         text-align: left;
         height: 38px;
-        font-size: 14px;
+        font-size: 12px;
+        font-family: 'Poppins', sans-serif !important;
         &:focus {
             border: 0;
             outline: 0;
@@ -233,7 +234,7 @@ input.mat-input-element {
 }
 
 .col-form-label {
-    font-size: 14px !important;
+    font-size: 12px !important;
 }
 
 .main-body {
@@ -246,8 +247,7 @@ input.mat-input-element {
 
 .form-control,
 .trade-thesis-sec {
-    font-size: 14px;
-    color: #000 !important;
+    font-size: 12px;
 }
 
 .with-130 {
@@ -512,4 +512,20 @@ a.sidebar-link {
     color: #9DA6BA;
     font-weight: 300;
     font-size: 18px;
+}
+
+input,
+button,
+select,
+optgroup,
+textarea {
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.material-icons {
+    font-size: 20px !important;
+}
+
+.mat-expansion-panel-content {
+    font: 400 13px/20px 'Poppins', sans-serif !important;
 }

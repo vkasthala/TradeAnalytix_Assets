@@ -1,6 +1,26 @@
-.btn-sm, .btn-group-sm > .btn {
+.btn-sm,
+.btn-group-sm>.btn {
     padding: 0.25rem 1rem !important;
 }
+
+element.style {}
+
+.p-2 {
+    padding: 0.5rem !important;
+}
+
+.modal-header {
+    border-bottom: 1px solid #dee2e6;
+    border-radius: 0;
+    background: #3A4C85;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    color: #fff;
+    font-size: 14px;
+}
+
 .modal-title {
-    font-size: 1rem;
+    font-size: 14px;
 }

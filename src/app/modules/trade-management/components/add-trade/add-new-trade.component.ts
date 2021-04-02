@@ -32,6 +32,7 @@ import { OptionLegHistory } from '../../models/option-leg-history.model';
   styleUrls: ['./add-new-trade.component.scss']
 })
 export class AddNewTradeComponent implements OnInit {
+  maxDate = new Date();
   title = 'toaster-not';
 
   @ViewChild('tradeSearchComponent', { static: false }) protected tradeSearchComponent: TradeSearchComponent;
