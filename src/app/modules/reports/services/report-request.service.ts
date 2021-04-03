@@ -38,6 +38,14 @@ export class ReportRequestService {
     return request;
   }
 
+  public getCommonChartRequest(reportDetails: ReportDetails, subtype: string, reportFilter: ReportFilter): ChartRequest {
+    let request: ChartRequest = new ChartRequest();
+    request.id = reportDetails.id;
+    request.fromDate = reportFilter.fromDate;
+    request.toDate = reportFilter.toDate;
+    return request;
+  }
+
   public getDisciplineReportApiUrl(reportId: string): string {
     let url: string;
     if ('discipline_trade_type' === reportId) {
@@ -46,6 +54,16 @@ export class ReportRequestService {
       url = '/reports/discipline/compliance-netreturn';
     } else if ('discipline_winrate' === reportId) {
       url = '/reports/discipline/compliance-winrate';
+    }
+    return url;
+  }
+
+  public getRiskReportApiUrl(reportId: string): string {
+    let url: string;
+    if ('max_risk_profit' === reportId) {
+      url = '/reports/risk/max-risk-profit';
+    } else if ('net_r' === reportId) {
+      url = '/reports/risk/netr';
     }
     return url;
   }

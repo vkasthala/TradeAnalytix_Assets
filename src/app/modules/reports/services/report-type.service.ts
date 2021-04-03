@@ -16,6 +16,8 @@ export class ReportTypeService {
       subTypes = this.getPerformanceSubTypes();
     } else if (category === 'discipline') {
       subTypes = this.getDisciplineReportSubTypes();
+    } else if(category === 'risk') {
+      subTypes = this.getRiskReportSubTypes();
     }
     return subTypes;
   }
@@ -93,6 +95,24 @@ export class ReportTypeService {
     reportSubType.reportDetailList = [new ReportDetails('discipline_trade_type', 'Return and Win Rate by planned trades', ReportCategory.Discipline), new ReportDetails('discipline_netreturn', 'Net Return by Trade Plan Compliance', ReportCategory.Discipline), new ReportDetails('discipline_winrate', 'Win Rate by Trade Plan Compliance', ReportCategory.Discipline)];
     reportSubTypes.push(reportSubType);
     
+    return reportSubTypes;
+  }
+
+  private getRiskReportSubTypes(): ReportSubType[] {
+    let reportSubTypes: ReportSubType[] = [];
+
+    let reportSubType: ReportSubType = new ReportSubType();
+    reportSubType.name = 'Max Risk and Profit';
+    reportSubType.id = "risk_max_risk_profit";
+    reportSubType.reportDetailList = [new ReportDetails('max_risk_profit', 'Maximum Risk and Proﬁt Potential', ReportCategory.Risk)];
+    reportSubTypes.push(reportSubType);
+    
+    reportSubType = new ReportSubType();
+    reportSubType.name = 'Net R';
+    reportSubType.id = "net_r";
+    reportSubType.reportDetailList = [new ReportDetails('net_r', 'Net R', ReportCategory.Risk)];
+    reportSubTypes.push(reportSubType);
+
     return reportSubTypes;
   }
 

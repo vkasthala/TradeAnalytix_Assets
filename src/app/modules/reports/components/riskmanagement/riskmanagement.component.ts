@@ -1,42 +1,31 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ReportsItem } from '../../model/reports-item.model';
+import { ReportTypeService } from '../../services/report-type.service';
+import { ReportTabContentComponent } from '../report-tab-content/report-tab-content.component';
 
 @Component({
   selector: 'app-riskmanagement',
-  templateUrl: './riskmanagement.component.html',
-  styleUrls: ['./riskmanagement.component.scss']
+  templateUrl: '../report-tab-content/report-tab-content.component.html',
+  styleUrls: ['../report-tab-content/report-tab-content.component.scss']
 })
-export class RiskmanagementComponent implements OnInit {
-  reportsitems: ReportsItem[] = [];
-
-  reportsItemsData = {
-    riskandproﬁt: [
-      { name: 'Current Maximum Risk', value: "$23932" },
-      { name: 'Current Maximum Profit Potential', value: "$12456" },
-    ]
-    ,
-    netr: [
-      { name: 'Current Net R', value: "1.2R" }
-    ],
-    
-  };
-
-  constructor() { }
+export class RiskmanagementComponent extends ReportTabContentComponent implements OnInit {
+  constructor(reportTypeService: ReportTypeService) {
+    super('risk', reportTypeService);
+  }
 
   ngOnInit() {
-    this.getRiskItems();
-
+    super.ngOnInit();
+    this.reportSubTypes = this.reportTypeService.getSubTypesByCategory(this.type);
+    console.log('risk charts loading..', this.reportSubTypes);
+    //this.onReportSubTypeSelect(this.reportSubTypes[0]);
   }
 
-  getRiskItems(): ReportsItem[] {
-    this.reportsitems = this.reportsItemsData.riskandproﬁt;
-    return this.reportsitems;
+  reloadData(tab: string) {
+    console.log('here..');
+    if (this.reportSubTypes.length == 0) {
+      this.reportSubTypes = this.reportTypeService.getSubTypesByCategory(this.type);
+    }
+    this.onReportSubTypeSelect(this.reportSubTypes[0]);
   }
-
-  getNetRItems(): ReportsItem[] {
-    this.reportsitems = this.reportsItemsData.netr;
-    return this.reportsitems;
-  }
-
 
 }
