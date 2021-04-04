@@ -46,6 +46,12 @@ export class ReportRequestService {
     return request;
   }
 
+  public getDashboardChartRequest(reportId: string): ChartRequest {
+    let request: ChartRequest = new ChartRequest();
+    request.id = reportId;
+    return request;
+  }
+
   public getDisciplineReportApiUrl(reportId: string): string {
     let url: string;
     if ('discipline_trade_type' === reportId) {
@@ -64,6 +70,16 @@ export class ReportRequestService {
       url = '/reports/risk/max-risk-profit';
     } else if ('net_r' === reportId) {
       url = '/reports/risk/netr';
+    }
+    return url;
+  }
+
+  public getDashbpardReportUrl(reportId: string) {
+    let url: string;
+    if ('realizedReturnByDay' === reportId) {
+      url = '/reports/dashboard/day-realized-return';
+    } else if ('riskAmountByAsset' === reportId) {
+      url = '/reports/dashboard/risk-amount-by-asset';
     }
     return url;
   }
