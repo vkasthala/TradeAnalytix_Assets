@@ -43,6 +43,7 @@
                                         [localOptionClosedSubject]="localOptionClosedSubject" #tradeDetails>
                                     </app-trade-details>
                                 </div>
+
                                 <div class="closed-legs-sec" *ngIf="!add && tradeStrategy.statusId !=4">
                                     <div class="cursor closed-legs-header" (click)="showClosedLegs()">
                                         <div class="closed-legs-title" *ngIf="closedLegs">

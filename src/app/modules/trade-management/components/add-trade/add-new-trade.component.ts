@@ -93,6 +93,7 @@ export class AddNewTradeComponent implements OnInit {
 
   ngOnInit() {
     this.setState();
+    this.showClosedLegs()
   }
 
   enterSymbol() {

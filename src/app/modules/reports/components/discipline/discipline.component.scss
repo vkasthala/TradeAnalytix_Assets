@@ -1,132 +1,146 @@
 @import '../../../../../assets/styles/variable.scss';
+.tab .nav-tabs li {
+    padding: 0px;
+    flex-basis: 100%;
+    background: #fff;
+    position: relative;
+    height: 55px;
+}
 
-.tab .nav-tabs li{
-  padding: 0px;
-  border: 1px solid #37a01a;
-  flex-basis: 100%;
-  background: #fff;
-  margin-bottom: 2px;
+.tab .nav-tabs li::before,
+.tab .nav-tabs li.active::before {
+    background: #d6dbe1;
+    content: "";
+    height: 1px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 20;
 }
+
 .tab .nav-tabs li a {
-  display: block;
-  padding: 10px;
-  background: transparent;
-  font-size: 1rem;
-  font-weight: 500;
-  color: #424242;
-  text-align: center;
-  border: none;
-  z-index: 2;
-  position: relative;
-  transition: all 0.3s ease 0s;
-  text-decoration: none;
-}
-  .tab .nav-tabs li a:hover,
-  .tab .nav-tabs li.active a {
+    display: block;
+    padding: 15px;
+    background: transparent;
+    font-size: 14px;
+    font-weight: 600;
+    color: #9DA6BA;
     border: none;
-    background: #37a01a;
-    color: #fff;
-  }
-  
-  .tab .nav-tabs li.active {
-    background: #37a01a;
-    color: #fff;
+    z-index: 2;
+    position: relative;
     transition: all 0.3s ease 0s;
-  }
-  .tab .tab-content {
+    text-decoration: none;
+}
+
+.tab .nav-tabs li a:hover,
+.tab .nav-tabs li.active a {
+    border: none;
+    background: #fff;
+    color: #3A4C85;
+}
+
+.tab .nav-tabs li.active::before {
+    transition: all 0.3s ease 0s;
+    background: #3A4C85;
+    height: 4px;
+}
+
+.tab .tab-content {
     padding: 0px;
     margin-top: 0;
-    background: #fff;
     font-size: 15px;
     color: #7a9181;
     line-height: 30px;
     @media #{$extra-small} {
-      overflow-y: scroll;
+        overflow-y: scroll;
     }
     @media #{$small} {
-      overflow-y: scroll;
+        overflow-y: scroll;
     }
     @media #{$medium} {
-      overflow-y: scroll;
+        overflow-y: scroll;
     }
-  }
-  .tab .tab-content h3 {
+}
+
+.tab .tab-content h3 {
     font-size: 24px;
     margin-top: 0;
-  }
-  @media only screen and (max-width: 479px) {
+}
+
+@media only screen and (max-width: 479px) {
     .tab .nav-tabs li {
-      width: 100%;
-      text-align: center;
+        width: 100%;
+        text-align: center;
     }
     .tab .nav-tabs li.active a:before {
-      content: "\f105";
-      bottom: 15%;
-      left: 0;
-      right: auto;
+        content: "\f105";
+        bottom: 15%;
+        left: 0;
+        right: auto;
     }
-  }
+}
 
-
-
-  .risk-manage-sec{
+.risk-manage-sec {
     padding: 10px;
-  }
+}
 
-  .top-sec{
-      width: 100%;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      margin-bottom: 10px;
-      @media #{$small} {
+.top-sec {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 10px;
+    @media #{$small} {
         justify-content: flex-start;
         align-items: flex-start;
         flex-direction: column;
-      }
-  }
+    }
+}
 
-
-.trade-dash-con{
+.trade-dash-con {
     margin: 10px 0px;
     @media #{$extra-small} {
-      margin-bottom: 0px;
+        margin-bottom: 0px;
     }
     .trade-analytics {
-      margin-bottom: 20px;
+        margin-bottom: 20px;
     }
 }
 
-.trade-headiang{
-  margin-bottom: 10px;
-  h5{
-    color: #717171;
-    font-weight: 600;
-    font-size: 1rem;
-  }
+.trade-headiang {
+    margin-bottom: 10px;
+    h5 {
+        color: #717171;
+        font-weight: 600;
+        font-size: 1.345rem;
+    }
 }
 
-.trade-date .mydrp, .mydrp .headerclearbtn, .mydrp .headerokbtn {
+.trade-date .mydrp,
+.mydrp .headerclearbtn,
+.mydrp .headerokbtn {
     border: 1px solid #37a01a !important;
     border-radius: 0 !important;
 }
+
 .vertical-tabs {
-  background: #f5f5f5;
-  display: flex;
-  align-items: flex-start;
-  .v-tabs {
-    flex: 0 0 20%;
-    max-width: 20%;
-    padding: 2px 5px;
-  }
-}
-.reports-chart {
-  border-radius: 5px;
-  box-shadow: 0px 0px 3px 0px #5a5a5a;
-  border: 2px solid #71b35f;
-  margin-bottom: 1rem;
-}
-.reports-chart img {
-  border-radius: 5px;
+    display: flex;
+    align-items: flex-start;
+    .v-tabs {
+        flex: 0 0 16%;
+        max-width: 16%;
+        padding: 0;
+    }
 }
 
+.tab-content.tabs {
+    display: flex;
+    flex: 0 0 84%;
+    max-width: 84%;
+    border-left: 1px solid rgb(157 166 186 / 30%);
+}
+
+.tab-content>.tab-pane {
+    width: 100%;
+}
