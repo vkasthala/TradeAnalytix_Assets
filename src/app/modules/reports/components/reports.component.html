@@ -11,10 +11,10 @@
                         <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#RiskManagement" role="tab" (click)="onTabSelect('risk')">Risk Management</a>
                     </li>
                     <li class="" role="presentation">
-                        <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#Commissions" role="tab">Commissions</a>
+                        <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#Discipline" role="tab" (click)="onTabSelect('discipline')">Discipline</a>
                     </li>
                     <li class="" role="presentation">
-                        <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#Discipline" role="tab" (click)="onTabSelect('discipline')">Discipline</a>
+                        <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#Commissions" role="tab">Commissions</a>
                     </li>
                 </ul>
                 <div class="tab-content tabs">
@@ -24,11 +24,11 @@
                     <div class="tab-pane fade" id="RiskManagement" role="tabpanel">
                         <app-riskmanagement #riskReports></app-riskmanagement>
                     </div>
-                    <div class="tab-pane fade" id="Commissions" role="tabpanel">
-                        <app-commissions></app-commissions>
-                    </div>
                     <div class="tab-pane fade" id="Discipline" role="tabpanel">
                         <app-discipline #disciplineReports></app-discipline>
+                    </div>
+                    <div class="tab-pane fade" id="Commissions" role="tabpanel">
+                        <app-commissions></app-commissions>
                     </div>
                 </div>
             </div>

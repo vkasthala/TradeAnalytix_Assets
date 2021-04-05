@@ -4,7 +4,7 @@
         <div class="add-stock-sec" #tradeCards>
             <div class="trade-sec">
                 <div class="d-flex align-items-center justify-content-between">
-                    <span class="col-form-label pt-0">Strategy</span>
+                    <span class="col-form-label pt-0">{{ addTrade ? 'Select' : '' }} Strategy</span>
                     <div *ngIf="addTrade == false">
                         <label class="col-form-label">Last Updated Date : {{executedDate | date: 'dd-MMM-yyyy'}}</label>
                     </div>
@@ -40,7 +40,7 @@
                     <a class="btn btn-link" (click)="addStock()"> + Add Stock</a>
                 </span>
             </div>
-            <div class="trade-cards-section" *ngIf="stockAdded && !viewTrade">
+            <div class="trade-cards-section" *ngIf="stockAdded">
                 <h4 *ngIf="addTrade">Added Stock</h4>
                 <div class="trade-card-box mt-3">
                     <div class="card-main card-main-actions">
@@ -100,7 +100,7 @@
           
         </span>
             </div>
-            <div class="trade-cards-section" *ngIf="stockOptions.length && !viewTrade">
+            <div class="trade-cards-section" *ngIf="stockOptions.length">
                 <mat-accordion class="example-headers-align w-100" multi="true">
                     <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
                         <mat-expansion-panel-header>

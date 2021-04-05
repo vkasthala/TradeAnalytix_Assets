@@ -15,25 +15,29 @@
                         <div class="trade-date">
                             <div class="form-group">
                                 <div class='input-group date' id='datetimepicker1'>
-                                    <my-date-range-picker placeholder="Date range" name="mydaterange"
-                                        [options]="myDateRangePickerOptions"></my-date-range-picker>
+                                    <my-date-range-picker placeholder="Date range" name="mydaterange" [options]="myDateRangePickerOptions"></my-date-range-picker>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- cards -->
-                    <app-reportsitems [reportsitems]="reportsitems"></app-reportsitems>
-
-                    <!-- risk-nalytics -->
-                    <div class="trade-dash-con">
-                        <div class="trade-analytics">
-                            <div class="trade-headiang">
-                                <h5>Total Commission</h5>
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <!-- risk-nalytics -->
+                            <div class="trade-dash-con">
+                                <div class="trade-analytics">
+                                    <div class="trade-headiang">
+                                        <h5>Total Commission</h5>
+                                    </div>
+                                    <div class="dsh-img reports-chart">
+                                        <img src="../../../../assets/images/risk/Group 305.png" alt="" class="img-fluid">
+                                    </div>
+                                </div>
                             </div>
-                            <div class="dsh-img reports-chart">
-                                <img src="../../../../assets/images/risk/Group 305.png" alt="" class="img-fluid">
-                            </div>
+                        </div>
+
+                        <!-- Summary -->
+                        <div class="col-sm-4">
+                            <app-reportsitems [reportsitems]="reportsitems"></app-reportsitems>
                         </div>
                     </div>
                 </div>

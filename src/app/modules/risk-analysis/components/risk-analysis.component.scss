@@ -560,52 +560,50 @@ a.btn.btn-skip {
 
 // risk tabs
 .tab .nav-tabs {
-    border-bottom: 2px solid #e8e8e8;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    border-bottom: 0;
+}
+
+.tab .nav-tabs li {
+    padding: 0;
+    background: #F6F8FB;
+}
+
+.tab .nav-tabs li:first-child>a {
+    border-radius: 4px 0 0 0;
 }
 
 .tab .nav-tabs li a {
     display: block;
-    padding: 5px;
-    margin: 0 5px 1px 0;
-    background: #fff;
-    font-size: 15px;
+    padding: 12px 20px;
+    margin: 0;
+    background: transparent;
     font-weight: 500;
-    color: #000;
+    font-size: 16px;
+    line-height: 24px;
+    color: #9DA6BA;
     text-align: center;
     border: none;
-    border-radius: 0;
     z-index: 2;
     position: relative;
     transition: all 0.3s ease 0s;
     text-decoration: none;
+    height: 50px;
 }
 
 .tab .nav-tabs li a:hover,
 .tab .nav-tabs li.active a {
-    color: #37a01a !important;
     border: none;
-}
-
-.tab .nav-tabs li.active a:after {
-    content: "";
-    width: 100%;
-    height: 2px;
-    background: #37a01a;
-    position: absolute;
-    bottom: -3px;
-    left: 0;
-    z-index: -1;
-    transition: all 0.3s ease 0s;
+    background-color: #3A4C85;
+    color: #fff;
 }
 
 .tab .tab-content {
     padding: 0px;
     margin-top: 0;
-    background: #fff;
-    font-size: 14px;
-    color: #000;
-    line-height: 30px;
-    border-radius: 0 0 5px 5px;
+    font-size: 15px;
     @media #{$extra-small} {
         overflow-y: scroll;
     }
@@ -659,18 +657,21 @@ a.btn.btn-skip {
     height: auto;
     min-height: 340px;
     padding: 0px;
-    box-shadow: 0 0 5px #ccc;
-    border: 1px solid #cbcbcb;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 12px rgb(157 157 157 / 35%);
+    border-radius: 4px;
     margin-right: 10px;
     @media #{$small} {
         width: 50%;
     }
     h6 {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
         text-align: center;
-        font-size: 14px;
         padding: 6px .25rem;
         margin: 0;
-        color: #000;
+        color: #3A4C85;
     }
     table {
         width: 100%;
@@ -678,12 +679,13 @@ a.btn.btn-skip {
         text-align: center;
         thead {
             th {
-                background: #ededed;
-                color: #000;
+                background: rgb(157 166 186 / 20%);
+                color: #3A4C85;
                 font-size: 13px;
                 font-weight: normal;
                 text-align: right;
-                padding-right: .25rem;
+                padding: .5rem 0.25rem;
+                padding-left: 0;
                 @media #{$small} {
                     font-size: 12px;
                 }
@@ -702,7 +704,8 @@ a.btn.btn-skip {
             //   color: #4f5051;
             border-bottom: 1px solid #bfbfbf;
             text-align: right;
-            padding-right: .25rem;
+            padding: .5rem 0.25rem;
+            padding-left: 0;
             @media #{$small} {
                 padding: 0px 10px;
             }
@@ -714,17 +717,21 @@ a.btn.btn-skip {
     width: 8%;
     height: auto;
     min-height: 340px;
-    box-shadow: 0 0 5px #ccc;
-    border: 1px solid #cbcbcb;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 12px rgb(157 157 157 / 35%);
+    border-radius: 4px;
     padding: 0px;
     @media #{$small} {
         width: 9%;
     }
     h6 {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
         text-align: center;
-        font-size: 14px;
-        padding: 6px 0.25rem;
-        color: #000;
+        padding: 6px .25rem;
+        margin: 0;
+        color: #3A4C85;
     }
     table {
         width: 100%;
@@ -732,10 +739,13 @@ a.btn.btn-skip {
         text-align: center;
         thead {
             th {
-                background: #ededed;
-                color: #424242;
+                background: rgb(157 166 186 / 20%);
+                color: #3A4C85;
                 font-size: 13px;
-                font-weight: 500;
+                font-weight: normal;
+                text-align: center;
+                padding: .5rem 0.25rem;
+                padding-left: 0;
                 @media #{$small} {
                     font-size: 12px;
                 }
@@ -748,8 +758,8 @@ a.btn.btn-skip {
         td {
             font-size: 13px;
             font-weight: 400;
-            //   color: #4f5051;
             border-bottom: 1px solid #bfbfbf;
+            padding: .5rem 0;
             @media #{$small} {
                 padding: 0px 10px;
             }
@@ -757,10 +767,6 @@ a.btn.btn-skip {
     }
 }
 
-// thead th:nth-child(2) {
-//   display: block;
-//   margin: 0 12px;
-// }
 .trade-rdd {
     color: #ff031b !important;
 }
@@ -853,4 +859,39 @@ a.btn.btn-skip {
     font-size: 12px;
     font-weight: 600;
     padding-top: 0;
+}
+
+.risk_details {
+    background: #FFFFFF;
+    border: 2px solid #61BC6D;
+    box-sizing: border-box;
+    border-radius: 4px;
+    height: 64px;
+    font-size: 14px;
+    line-height: 21px;
+    color: #242E3A;
+    display: flex;
+    min-width: 300px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+}
+
+.risk_details_count {
+    font-weight: 600;
+    font-size: 29px;
+}
+
+.risk_profit {
+    border: 2px solid #61BC6D;
+    .risk_details_count {
+        color: #61BC6D;
+    }
+}
+
+.risk_lose {
+    border: 2px solid #EC6B56;
+    .risk_details_count {
+        color: #EC6B56;
+    }
 }

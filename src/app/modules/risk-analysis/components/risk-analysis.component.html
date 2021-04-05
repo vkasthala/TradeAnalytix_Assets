@@ -16,7 +16,7 @@
                     <div class="trade-form">
                         <mat-icon class="trade-form-icon">attach_money</mat-icon>
                         <h2 class="py-3 symbol-heading">Risk Analysis</h2>
-                        <div class="pb-3 symbol-description">Enter the stock symbol or name for which trade strategy is being added</div>
+                        <div class="pb-3 symbol-description">Enter the stock name or symbol to build a strategy and analyze its risk and profitability in different scenarios.</div>
                         <div class="d-flex mt-2">
                             <div class="media-body">
                                 <app-trade-search (symbolSelectEvent)="symbolSelectEventHandler($event)"></app-trade-search>
@@ -63,6 +63,10 @@
                                                         <a class="btn btn-outline-primary" (click)="addOption()" *ngIf="stockOptions.length < 4">
                                                             Add Option</a>
                                                     </div>
+
+                                                </div>
+                                                <div class="d-flex align-items-center">
+                                                    <span class="col-form-label p-0">Want to create strategy with the same data? </span>
                                                     <a class="btn btn-outline-primary ml-3" (click)="navigateToAddTrade()" *ngIf="selectedStock.name && (stockEntry || stockOptions.length > 0)">{{fromAddTrade ? 'Update Strategy' : 'Create Strategy'}}</a>
                                                 </div>
                                             </div>
@@ -302,14 +306,20 @@
                                     </mat-panel-title>
                                 </mat-expansion-panel-header>
                                 <ng-template matExpansionPanelContent>
-                                    <div style="display: inline-block;width:100%;">
-                                        <div style="float:right;margin: 5px;">
-                                            <button class="btn btn-enter ml-2" (click)="calculateMaxRisk()">Max Profit/Risk</button>
+                                    <div class="d-flex justify-content-end align-items-center mt-3">
+                                        <div class="pb-3 k-font-bold d-flex justify-content-end" *ngIf="maxRiskDetails">
+                                            <div class="risk_details risk_profit mr-3">
+                                                <div class="pr-3">Maximum Proﬁt is when the stock is up <span>{{maxRiskDetails.maxProfitChange}}</span>% Maximum
+                                                </div>
+                                                <span class="risk_details_count">{{maxRiskDetails.maxProfit}}</span>
+                                            </div>
+                                            <div class="risk_details risk_lose">
+                                                <div class="pr-3">Risk is when the stock is down <span>{{maxRiskDetails.maxRiskChange}}</span>%
+                                                </div>
+                                                <span class="risk_details_count">{{maxRiskDetails.maxRisk}}</span>
+                                            </div>
                                         </div>
-                                        <div class="py-2 k-font-bold" *ngIf="maxRiskDetails">
-                                            <p>Maximum Proﬁt is <span class="text-success">{{maxRiskDetails.maxProfit}}</span> when the stock is up <span>{{maxRiskDetails.maxProfitChange}}</span>% Maximum</p>
-                                            <p>Risk is <span class="text-danger">{{maxRiskDetails.maxRisk}}</span> when the stock is down <span>{{maxRiskDetails.maxRiskChange}}</span>%</p>
-                                        </div>
+                                        <button class="btn btn-enter ml-3" (click)="calculateMaxRisk()">Max Profit/Risk</button>
                                     </div>
 
                                     <ng-container *ngIf="displayRiskAnalysis && analyzeRisk && (stockAdded || stockOptions.length > 0)">
