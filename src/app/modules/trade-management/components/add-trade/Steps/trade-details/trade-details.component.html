@@ -4,7 +4,7 @@
         <div class="add-stock-sec" #tradeCards>
             <div class="trade-sec">
                 <div class="d-flex align-items-center justify-content-between">
-                    <span class="col-form-label pt-0">{{ addTrade ? 'Select' : '' }} Strategy</span>
+                    <span class="col-form-label pt-0">{{ addTrade ? 'Select' : 'Current' }} Strategy</span>
                     <div *ngIf="addTrade == false">
                         <label class="col-form-label">Last Updated Date : {{executedDate | date: 'dd-MMM-yyyy'}}</label>
                     </div>
@@ -41,7 +41,7 @@
                 </span>
             </div>
             <div class="trade-cards-section" *ngIf="stockAdded">
-                <h4 *ngIf="addTrade">Added Stock</h4>
+                <h4 *ngIf="addTrade">Stock Positions</h4>
                 <div class="trade-card-box mt-3">
                     <div class="card-main card-main-actions">
                         <label class="col-form-label pt-0">Action</label>
@@ -105,7 +105,7 @@
                     <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
                         <mat-expansion-panel-header>
                             <mat-panel-title>
-                                Stock Options
+                                Option Positions
                             </mat-panel-title>
                         </mat-expansion-panel-header>
                         <ng-template matExpansionPanelContent>

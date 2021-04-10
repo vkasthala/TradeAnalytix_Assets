@@ -3,11 +3,11 @@
         <div class="trade-dash-main">
             <div class="trade-dash-name">
                 <h3>
-                    Trade Strategies
+                    List of all the trade strategies. Apply filters to refine the list
                 </h3>
             </div>
             <div>
-                <button routerLink="/new-trade" class="add-new btn btn-apply">+ ADD TRADE</button>
+                <button routerLink="/new-trade" class="add-new btn btn-apply d-inline-flex align-items-center"><span class="add-icon mr-2">+</span> ADD TRADE</button>
                 <span class="cursor ml-2" (click)="strategiesFilter()">
                         <span *ngIf="!showFilters" class="text-blue text-sm" data-toggle="tooltip" data-placement="top" title="Show Filters">Show Filters</span>
                 <span *ngIf="showFilters" class="text-primary text-sm" data-toggle="tooltip" data-placement="top" title="Close Filters">Hide Filters</span>

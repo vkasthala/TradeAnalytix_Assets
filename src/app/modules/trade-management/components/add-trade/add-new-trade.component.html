@@ -46,13 +46,10 @@
 
                                 <div class="closed-legs-sec" *ngIf="!add && tradeStrategy.statusId !=4">
                                     <div class="cursor closed-legs-header" (click)="showClosedLegs()">
-                                        <div class="closed-legs-title" *ngIf="closedLegs">
-                                            <span>Hide Closed Legs</span>
-                                            <i class="negative-amt material-icons">keyboard_arrow_down</i>
-                                        </div>
-                                        <div class="closed-legs-title" *ngIf="!closedLegs">
-                                            <span>Show Closed Legs</span>
-                                            <i class="negative-amt material-icons">keyboard_arrow_right</i>
+                                        <div class="closed-legs-title">
+                                            <span>Closed Positions</span>
+                                            <i class="negative-amt material-icons" *ngIf="closedLegs">keyboard_arrow_down</i>
+                                            <i class="negative-amt material-icons" *ngIf="!closedLegs">keyboard_arrow_right</i>
                                         </div>
                                     </div>
                                     <div class="closed-legs-body" *ngIf="closedLegs && tradeHistory">

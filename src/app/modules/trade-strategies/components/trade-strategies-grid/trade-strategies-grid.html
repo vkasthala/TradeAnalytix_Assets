@@ -1,29 +1,29 @@
 <div class="trade-table">
-  <mat-table [dataSource]="dataSource" matSort>
+    <mat-table [dataSource]="dataSource" matSort>
 
-    <!-- Strategy ID Column -->
-    <ng-container matColumnDef="id">
-      <mat-header-cell class="strategy-id-cell" *matHeaderCellDef mat-sort-header>Strategy ID</mat-header-cell>
-      <mat-cell class="strategy-id-cell" *matCellDef="let element"> {{element.uid ? element.uid : element.id}} </mat-cell>
-    </ng-container>
+        <!-- Strategy ID Column -->
+        <ng-container matColumnDef="id">
+            <mat-header-cell class="strategy-id-cell" *matHeaderCellDef mat-sort-header>Strategy ID</mat-header-cell>
+            <mat-cell class="strategy-id-cell" *matCellDef="let element"> {{element.uid ? element.uid : element.id}} </mat-cell>
+        </ng-container>
 
-    <!-- Strategy Column -->
-    <ng-container matColumnDef="strategy">
-      <mat-header-cell class="strategy-name-cell" *matHeaderCellDef mat-sort-header>Strategy</mat-header-cell>
-      <mat-cell *matCellDef="let element" format='yyyy-MM-dd' editType='datepickeredit'> {{element.strategy}} </mat-cell>
-    </ng-container>
+        <!-- Strategy Column -->
+        <ng-container matColumnDef="strategy">
+            <mat-header-cell class="strategy-name-cell" *matHeaderCellDef mat-sort-header>Strategy</mat-header-cell>
+            <mat-cell *matCellDef="let element" format='yyyy-MM-dd' editType='datepickeredit'> {{element.strategy}} </mat-cell>
+        </ng-container>
 
-    <!-- Stock Column -->
-    <ng-container matColumnDef="stockName">
-      <mat-header-cell class="stock-name-cell" *matHeaderCellDef mat-sort-header>Stock</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.stockCode}} </mat-cell>
-    </ng-container>
+        <!-- Stock Column -->
+        <ng-container matColumnDef="stockName">
+            <mat-header-cell class="stock-name-cell" *matHeaderCellDef mat-sort-header>Stock</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.stockCode}} </mat-cell>
+        </ng-container>
 
-    <!-- Direction Column -->
-    <ng-container matColumnDef="direction">
-      <mat-header-cell class="direction-cell" *matHeaderCellDef mat-sort-header>Direction</mat-header-cell>
-      <mat-cell *matCellDef="let element">
-        <!-- <span class="text-success direction_arrow" *ngIf="element.direction == 'Long'">
+        <!-- Direction Column -->
+        <ng-container matColumnDef="direction">
+            <mat-header-cell class="direction-cell" *matHeaderCellDef mat-sort-header>Direction</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <!-- <span class="text-success direction_arrow" *ngIf="element.direction == 'Long'">
           <mat-icon>arrow_upward</mat-icon>
         </span>
         <span class="text-danger direction_arrow" *ngIf="element.direction == 'Neutral'">
@@ -32,78 +32,78 @@
         <span class="direction_arrow" *ngIf="element.direction == 'Custom'">
           <mat-icon class="mat-icon-xs">help_outline</mat-icon>
         </span> -->
-        {{element.direction}}
-      </mat-cell>
-    </ng-container>
+                {{element.direction}}
+            </mat-cell>
+        </ng-container>
 
-    <!-- Open Date Column -->
-    <ng-container matColumnDef="openDate">
-      <mat-header-cell class="open-date-cell" *matHeaderCellDef mat-sort-header>Open Date</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.openDate | date: 'dd-MMM-yyyy'}} </mat-cell>
-    </ng-container>
+        <!-- Open Date Column -->
+        <ng-container matColumnDef="openDate">
+            <mat-header-cell class="open-date-cell" *matHeaderCellDef mat-sort-header>Open Date</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.openDate | date: 'dd-MMM-yyyy'}} </mat-cell>
+        </ng-container>
 
-    <!-- Closed Date Column -->
-    <ng-container matColumnDef="closeDate">
-      <mat-header-cell class="close-date-cell" *matHeaderCellDef mat-sort-header>Close Date</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.closeDate | date: 'dd-MMM-yyyy'}} </mat-cell>
-    </ng-container>
+        <!-- Closed Date Column -->
+        <ng-container matColumnDef="closeDate">
+            <mat-header-cell class="close-date-cell" *matHeaderCellDef mat-sort-header>Close Date</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.closeDate | date: 'dd-MMM-yyyy'}} </mat-cell>
+        </ng-container>
 
-    <!-- Max Loss Column -->
-    <ng-container matColumnDef="maxLoss">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Max Loss</mat-header-cell>
-      <mat-cell *matCellDef="let element" class="text-danger"> {{element.maxLoss}} </mat-cell>
-    </ng-container>
+        <!-- Max Loss Column -->
+        <ng-container matColumnDef="maxLoss">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Max Loss*</mat-header-cell>
+            <mat-cell *matCellDef="let element" class="text-danger"> {{element.maxLoss}} </mat-cell>
+        </ng-container>
 
-    <!-- Max Gain Column -->
-    <ng-container matColumnDef="maxGain">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Max Gain</mat-header-cell>
-      <mat-cell *matCellDef="let element" class="text-success"> {{element.maxGain}} </mat-cell>
-    </ng-container>
+        <!-- Max Gain Column -->
+        <ng-container matColumnDef="maxGain">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Max Gain*</mat-header-cell>
+            <mat-cell *matCellDef="let element" class="text-success"> {{element.maxGain}} </mat-cell>
+        </ng-container>
 
-    <!-- Return Column -->
-    <ng-container matColumnDef="return">
-      <mat-header-cell class="close-date-cell" *matHeaderCellDef mat-sort-header>Return</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.return}} </mat-cell>
-    </ng-container>
+        <!-- Return Column -->
+        <ng-container matColumnDef="return">
+            <mat-header-cell class="close-date-cell" *matHeaderCellDef mat-sort-header>Return</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.return}} </mat-cell>
+        </ng-container>
 
-    <!-- Status Column -->
-    <ng-container matColumnDef="status">
-      <mat-header-cell class="status-cell" *matHeaderCellDef mat-sort-header>Status</mat-header-cell>
-      <mat-cell *matCellDef="let element" [ngClass]="{
+        <!-- Status Column -->
+        <ng-container matColumnDef="status">
+            <mat-header-cell class="status-cell" *matHeaderCellDef mat-sort-header>Status</mat-header-cell>
+            <mat-cell *matCellDef="let element" [ngClass]="{
         'text-black': element.status == 'Draft',
         'text-primary': element.status == 'Open',
         'text-success': element.status == 'Closed',
         'text-secondary': element.status == 'Expired'
 
     }"> {{element.status}} </mat-cell>
-    </ng-container>
+        </ng-container>
 
-    <!-- Alignment Column -->
-    <!-- <ng-container matColumnDef="alignment">
+        <!-- Alignment Column -->
+        <!-- <ng-container matColumnDef="alignment">
       <mat-header-cell  *matHeaderCellDef mat-sort-header>Alignment</mat-header-cell>
       <mat-cell *matCellDef="let element"> </mat-cell>
     </ng-container> -->
 
-    
 
-    <!-- Closed Date Column -->
-    <ng-container matColumnDef="action">
-      <mat-header-cell class="action-cell" *matHeaderCellDef mat-sort-header>Action</mat-header-cell>
-      <mat-cell *matCellDef="let element, let i = index" class="action_colum">
 
-        <div>
-          <mat-icon *ngIf="element.status == 'Open' || element.status == 'Draft'" (click)="editTrade(element);closeActionBox()" class="mat-icon-sm trade-edit">edit</mat-icon>
+        <!-- Closed Date Column -->
+        <ng-container matColumnDef="action">
+            <mat-header-cell class="action-cell" *matHeaderCellDef mat-sort-header>Action</mat-header-cell>
+            <mat-cell *matCellDef="let element, let i = index" class="action_colum">
 
-          <mat-icon *ngIf="element.status == 'Open'" (click)="closeTrade(element);closeActionBox()" class="mat-icon-sm ml-2 trade-close">cancel</mat-icon>
+                <div>
+                    <mat-icon *ngIf="element.status == 'Open' || element.status == 'Draft'" (click)="editTrade(element);closeActionBox()" class="mat-icon-sm trade-edit">edit</mat-icon>
 
-          <mat-icon *ngIf="element.status == 'Draft'" (click)="deleteTrade(element);closeActionBox()" class="mat-icon-sm mx-2 trade-delete">delete</mat-icon>
+                    <mat-icon *ngIf="element.status == 'Open'" (click)="closeTrade(element);closeActionBox()" class="mat-icon-sm ml-2 trade-close">cancel</mat-icon>
 
-          <mat-icon *ngIf="element.status == 'Closed'" (click)="viewTrade(element);closeActionBox()" class="mat-icon-sm trade-view">visibility</mat-icon>
-        </div>
+                    <mat-icon *ngIf="element.status == 'Draft'" (click)="deleteTrade(element);closeActionBox()" class="mat-icon-sm mx-2 trade-delete">delete</mat-icon>
 
-        <!-- <i class="material-icons" (click)="expandRowOptions(i)">more_vert</i> -->
+                    <mat-icon *ngIf="element.status == 'Closed'" (click)="viewTrade(element);closeActionBox()" class="mat-icon-sm trade-view">visibility</mat-icon>
+                </div>
 
-        <!-- <div class="trade-det-box" *ngIf="expandIndex == i">
+                <!-- <i class="material-icons" (click)="expandRowOptions(i)">more_vert</i> -->
+
+                <!-- <div class="trade-det-box" *ngIf="expandIndex == i">
           <div class="de-box">
             <div class="right-con">
               <a class="box-icon cursor-pointer" (click)="editTrade(element);closeActionBox()">
@@ -122,15 +122,14 @@
             </a>
           </div>
         </div> -->
-      </mat-cell>
-    </ng-container>
+            </mat-cell>
+        </ng-container>
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-  </mat-table>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
 
-  <!-- Angular 8 pagination -->
-  <mat-paginator [pageSize]="20" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true"
-    [length]="dataSource.totalCount">
-  </mat-paginator>
+    <!-- Angular 8 pagination -->
+    <mat-paginator [pageSize]="20" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true" [length]="dataSource.totalCount">
+    </mat-paginator>
 </div>
