@@ -1,56 +1,41 @@
 <!-- manage-rules-popup -->
-<div class="manage-rules-popup">
-    <div class="manage-rule-popup-inner">
-        <div class="top-heading">
-            <h5>
-                {{title}} Rule
-            </h5>
-            <mat-icon class="cursor" (click)="closeModal()">close</mat-icon>
+<div class="compare-popup">
+    <div class="compare-pop-inner">
+        <div class="top-pop-inner">
+            <div class="left-heading">
+                <h6>{{title}} Rule</h6>
+            </div>
+            <div class="right-close" (click)="closeModal()">
+                <mat-icon>clear</mat-icon>
+            </div>
         </div>
-        <div class="pop-up-box">
-            <div class="rules-pop-con">
-                <div class="left-pop-heading">
-                    <span>Rule Type</span>
-                </div>
 
-                <div class="right-pop-con">
-                    <div class="trade-sel">
-                        <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="rowData.type">
-                            <option>Entry</option>
-                            <option>Exit</option>
-                        </select>
-                        <mat-icon class="form-icon-down">keyboard_arrow_down</mat-icon>
-                    </div>
+        <div class="main-pop-inner">
+            <div class="row mb-2">
+                <label class="col-12 col-form-label">Rule Type</label>
+                <div class="col-8">
+                    <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="rowData.type">
+                        <option>Entry</option>
+                        <option>Exit</option>
+                    </select>
                 </div>
             </div>
 
-            <div class="rules-pop-con">
-                <div class="left-pop-heading">
-                    <span>Description</span>
-                </div>
-                <div class="right-pop-con">
-                    <div class="form-group">
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">{{rowData.description}}</textarea>
-                    </div>
+            <div class="mb-2">
+                <label class="col-form-label">Description</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">{{rowData.description}}</textarea>
+            </div>
+            <div class="row mb-2">
+                <label class="col-12 col-form-label">Source</label>
+                <div class="col-8 has-search">
+                    <input class="form-control" placeholder="" type="text" [(ngModel)]="rowData.source" />
                 </div>
             </div>
+            <div class="separator"></div>
 
-            <div class="rules-pop-con">
-                <div class="left-pop-heading">
-                    <span>Source</span>
-                </div>
-                <div class="right-pop-con">
-                    <div class="trade-sel">
-                        <div class="form-group has-search">
-                            <input class="form-control" placeholder="" type="text" [(ngModel)]="rowData.source" />
-                        </div>
-
-                        <!-- <div class="add-new">
-                        <span>+ {{title}}</span>
-                    </div> -->
-                    </div>
-                </div>
+            <div class="btn-up mb-0">
+                <button type="button" class="btn btn-save" (click)="closeModal()">{{btnText}}</button>
             </div>
-            <div class="btn btn-save" (click)="closeModal()">{{btnText}}</div>
         </div>
     </div>
+</div>

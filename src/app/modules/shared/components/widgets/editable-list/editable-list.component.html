@@ -1,10 +1,10 @@
 <div>
-    <div class="trade-cards-section d-flex">
+    <div class="trade-cards-section d-flex mb-2">
         <span class="col-7 px-0">
             <input type="text" class="form-control" [(ngModel)]="newValue" />
         </span>
         <span class="text-primary" *ngIf="!edit">
-            <mat-icon class="mt-2 text-success action-icon" (click)="onItemAdd()">add_circle</mat-icon>
+            <mat-icon class="mt-2 text-primary action-icon" (click)="onItemAdd()">add_circle</mat-icon>
         </span>
         <span class="text-primary" *ngIf="edit">
             <mat-icon class="mt-2 text-success action-icon" (click)="onItemEdit()">check_circle</mat-icon>
@@ -18,7 +18,7 @@
             <mat-list-option *ngFor="let item of items;let i=index" [value]="item">
                 <span>{{item.name}}</span>
                 <mat-icon class="mat-icon-sm right-icon" (click)="onDelete(i)" *ngIf="item.editable == 1">delete</mat-icon>
-                <mat-icon class="mr-2 text-success mat-icon-sm right-icon" (click)="onSelectedItemChange(item)" *ngIf="item.editable == 1">edit
+                <mat-icon class="mr-2 mat-icon-edit mat-icon-sm right-icon" (click)="onSelectedItemChange(item)" *ngIf="item.editable == 1">edit
                 </mat-icon>
             </mat-list-option>
         </mat-selection-list>

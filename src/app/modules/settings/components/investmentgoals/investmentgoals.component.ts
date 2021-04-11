@@ -25,7 +25,11 @@ export class InvestmentGoalsComponent implements OnInit {
     private router: Router,
     private goalsService: GoalsService) { 
   }
+  step = 0;
 
+  setStep(index: number) {
+    this.step = index;
+  }
   ngOnInit() {
     this.goalsService.getInvestGoals().subscribe(data => {
       //console.log('investmentgoals', data.investmentgoals)

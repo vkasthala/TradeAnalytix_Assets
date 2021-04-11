@@ -22,11 +22,16 @@ export class DepositswithdrawalsComponent implements OnInit {
     private router: Router/*,
     private depositService: DepositService*/) { 
   }
-
+  step = 0;
   ngOnInit() {
     /*this.depositService.getDeposits().subscribe(data => {
       this.DepositList = data;
     });*/
+  }
+  
+
+  setStep(index: number) {
+    this.step = index;
   }
 
 }

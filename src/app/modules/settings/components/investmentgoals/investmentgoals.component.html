@@ -1,51 +1,60 @@
-<div class="p-3">
-    <div class="mb-2">
-        <label class="col-form-label">Specify the maximum amount you are willing to risk to achieve your investment goals.</label>
-        <div class="col-md-6 col-lg-3 p-0">
-            <input type="text" class="form-control"  />
-        </div>
-    </div>
-    <div class="mb-2">
-        <label class="col-form-label">What percentage of total capital would you like to keep as cash?</label>
-        <div class="col-md-6 col-lg-3 p-0">
-            <input type="text" class="form-control"  />
-        </div>
-    </div>
-    
-    
-    <div class="mb-2">
-        <label class="col-form-label">Specify your investment goals for a given date range.</label>
-        <div class="trade-cards-section">
-            <span class="card-main">
-                <div class="datepicker-group">
-                    <input matInput [matDatepicker]="entrydate" (click)="entrydate.open()" id="entrydate"  name="entrydate" (dateChange)="addEvent($event)" placeholder="Entry Date" [(ngModel)]="entry_date">
-                    <mat-datepicker-toggle matSuffix [for]="entrydate"></mat-datepicker-toggle>
-                    <mat-datepicker #entrydate></mat-datepicker>
+<mat-accordion class="example-headers-align w-100" multi="true">
+    <mat-expansion-panel [expanded]="true" (opened)="setStep(1)">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Specify your investment goals for a given date range
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ng-template matExpansionPanelContent>
+            <div class="mb-2">
+                <div class="trade-cards-section mb-2">
+                    <span class="card-main">
+                        <label class="col-form-label">Entry Date</label>
+                        <div class="datepicker-group">
+                            <input matInput [matDatepicker]="entrydate" (click)="entrydate.open()" id="entrydate"  name="entrydate" (dateChange)="addEvent($event)" [(ngModel)]="entry_date">
+                            <mat-datepicker-toggle matSuffix [for]="entrydate"></mat-datepicker-toggle>
+                            <mat-datepicker #entrydate></mat-datepicker>
+                        </div>
+                    </span>
+                    <span class="card-main card-main-lg">
+                        <label class="col-form-label">Target Date range</label>
+                        <div class='input-group date date-rang' id='datetimepicker1'>
+                            <my-date-range-picker name="targetDate" [options]="myDateRangePickerOptions" (dateRangeChanged)="onDateRangeChanged($event)" [(ngModel)]="targetDate"></my-date-range-picker>
+                        </div>
+                    </span>
+                    <span class="card-main">
+                        <label class="col-form-label">Target Profit</label>
+                        <input type="text" class="form-control" id="targetProfit" [(ngModel)]="targetProfit" />
+                    </span>
+                    <span class="add-item d-flex align-items-end mb-2">
+                        <mat-icon (click)="addGoal()">add_circle</mat-icon>
+                    </span>
                 </div>
-            </span>
-            <span class="card-main card-main-lg">
-                <div class='input-group date' id='datetimepicker1'>
-                    <my-date-range-picker placeholder="Target Date range" name="targetDate" [options]="myDateRangePickerOptions" (dateRangeChanged)="onDateRangeChanged($event)" [(ngModel)]="targetDate"></my-date-range-picker>
-                </div>
-            </span>
-            <span class="card-main">
-                <input type="text" class="form-control" placeholder="Target Profit" id="targetProfit" [(ngModel)]="targetProfit" />
-            </span>
-
-            <mat-icon (click)="addGoal()" class="mt-2 text-success cursor">add_circle</mat-icon>
-            
-        </div>
-        <ng-container *ngIf="GoalsList.length">
-            <div *ngFor="let goal of GoalsList;let index = index">
-                <div class="d-flex align-items-center mb-1">
-                    <span class="card-main pl-3">{{goal.entrydate}}</span>
-                    <span class="card-main card-main-lg pl-3">{{goal.targetdate}}</span>
-                    <span class="card-main pl-3">{{goal.profit}}</span>
-                    <mat-icon class="mr-2 text-success mat-icon-sm cursor">edit</mat-icon>
-                    <mat-icon class="mat-icon-sm cursor"  (click)="deleteinvestmentGoal(index)">delete</mat-icon>
-                </div>
+                <ng-container *ngIf="GoalsList.length">
+                    <div *ngFor="let goal of GoalsList;let index = index">
+                        <div class="d-flex align-items-center py-2">
+                            <span class="card-main pl-3">{{goal.entrydate}}</span>
+                            <span class="card-main card-main-lg pl-3">{{goal.targetdate}}</span>
+                            <span class="card-main pl-3">{{goal.profit}}</span>
+                            <mat-icon class="mr-3 mat-icon-sm mat-icon-edit">edit</mat-icon>
+                            <mat-icon class="mat-icon-sm" (click)="deleteinvestmentGoal(index)">delete</mat-icon>
+                        </div>
+                    </div>
+                </ng-container>
             </div>
-        </ng-container>
+        </ng-template>
+    </mat-expansion-panel>
+</mat-accordion>
+<div class="investment-goals-footer mt-3">
+    <div class="row">
+        <div class="col-6 mb-2">
+            <label class="col-form-label">Specify the maximum amount you are willing to risk to achieve your investment goals.</label>
+            <input type="text" class="form-control" />
+        </div>
+        <div class="col-5 mb-2">
+            <label class="col-form-label">What percentage of total capital would you like to keep as cash?</label>
+            <input type="text" class="form-control" />
+        </div>
     </div>
 </div>
 
@@ -54,4 +63,3 @@
         SAVE
     </div>
 </div>
-      

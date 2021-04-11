@@ -22,7 +22,7 @@ export class EditableListComponent implements OnInit {
   deleteItemSubject: Subject<EditableListItem>;
 
   constructor() { }
-
+  step = 0;
   ngOnInit() {
 
   }

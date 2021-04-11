@@ -16,7 +16,11 @@ export class ProfileComponent implements OnInit {
     editableDateRangeField: false,
     ariaLabelInputField : 'Date'
  };
+ step = 0;
 
+ setStep(index: number) {
+   this.step = index;
+ }
   ngOnInit() {
   }
 

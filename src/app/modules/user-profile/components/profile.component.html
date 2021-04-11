@@ -1,76 +1,66 @@
-
-<div class="trade-plan-box row m-0">
-    <div class="pre-market-box col-sm-6 py-3">
-        <div class="mb-2">
+<div class="profile-body">
+    <div class="row">
+        <div class="col-sm-3 mb-2">
             <label class="col-form-label">Sign-In Method</label>
-            <div class="d-flex col-md-8 p-0">
-                <input class="form-control disabled" id="exampleInputEmail1" value="Google" type="text" />
-            </div>
+            <input class="form-control disabled" id="exampleInputEmail1" value="Google" type="text" />
         </div>
-        <div class="mb-2">
+        <div class="col-sm-3 mb-2">
             <label class="col-form-label">Email Address</label>
-            <div class="d-flex col-md-8 p-0">
-                <input class="form-control disabled" id="exampleInputEmail1" value="venkat.kasthala@gmail.com" type="email" />
-            </div>
+            <input class="form-control disabled" id="exampleInputEmail1" value="venkat.kasthala@gmail.com" type="email" />
         </div>
-        
-        <div class="mb-2">
+
+        <div class="col-sm-3 mb-2">
             <label class="col-form-label">Country</label>
-            <select class="form-control col-md-8">
-                <option value="1">USA</option>
-            </select>
-        </div>
-        <a href="#">Reset Password</a>
-
-        <div *ngIf="stockAdded">
-            <div class="mb-2">
-                <label class="col-form-label">Current Password</label>
-                <div class="d-flex col-md-8 p-0">
-                    <input class="form-control" id="currentpassword" type="password" />
-                </div>
-            </div>
-            <div class="mb-2">
-                <label class="col-form-label">New Password</label>
-                <div class="d-flex col-md-8 p-0">
-                    <input class="form-control" id="newpassword" type="password" />
-                </div>
-            </div>
-            <div class="mb-2">
-                <label class="col-form-label">Confirm Password</label>
-                <div class="d-flex col-md-8 p-0">
-                    <input class="form-control" id="confirmpassword" type="password" />
-                </div>
-            </div>
+            <select class="form-control">
+            <option value="1">USA</option>
+        </select>
         </div>
     </div>
 
-    <div class="post-market-box col-sm-6 py-3 v-line">
-        <div class="mb-2">
+    <div class="py-3"><a href="#">Reset Password</a></div>
+
+    <div class="row" *ngIf="stockAdded">
+        <div class="col-sm-3 mb-2">
+            <label class="col-form-label">Current Password</label>
+            <input class="form-control" id="currentpassword" type="password" />
+        </div>
+        <div class="col-sm-3 mb-2">
+            <label class="col-form-label">New Password</label>
+            <input class="form-control" id="newpassword" type="password" />
+        </div>
+        <div class="col-sm-3 mb-2">
+            <label class="col-form-label">Confirm Password</label>
+            <input class="form-control" id="confirmpassword" type="password" />
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-sm-3 mb-2">
             <label class="col-form-label">Brokerages Used</label>
-            <select class="form-control col-md-8">
-                <option value="1">tdAmeritrade</option>
-                <option value="2">Robinhood</option>
-                <option value="3">WebBull</option>
-                <option value="4">Charles Schwab</option>
-                <option value="5">Interactive Brokers</option>
-            </select>
+            <select class="form-control">
+            <option value="1">tdAmeritrade</option>
+            <option value="2">Robinhood</option>
+            <option value="3">WebBull</option>
+            <option value="4">Charles Schwab</option>
+            <option value="5">Interactive Brokers</option>
+        </select>
         </div>
-        <div class="mb-2">
+        <div class="col-sm-3 mb-2">
             <label class="col-form-label">Traded Instruments</label>
-            <select class="form-control col-md-8">
-                <option value="1">Stocks</option>
-                <option value="2">Stock Options</option>
-                <option value="3">Stock Futures</option>
-                <option value="4">Commodity Futures</option>
-                <option value="5">Forex Options</option>
-            </select>
+            <select class="form-control">
+            <option value="1">Stocks</option>
+            <option value="2">Stock Options</option>
+            <option value="3">Stock Futures</option>
+            <option value="4">Commodity Futures</option>
+            <option value="5">Forex Options</option>
+        </select>
         </div>
-        
-    </div>
-</div>
 
-<div class="trade-btn profile-bottom py-3">
-    <div class="btn btn-apply" (click)="saveprofile()">
-        SAVE
+    </div>
+
+    <div class="trade-btn profile-bottom pt-3">
+        <div class="btn btn-apply" (click)="saveprofile()">
+            SAVE
+        </div>
     </div>
 </div>
