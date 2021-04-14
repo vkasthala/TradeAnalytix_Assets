@@ -1,4 +1,4 @@
-export class EntryExitRules {
+export class EntryExitRule {
     
     id: number;
 
@@ -9,6 +9,10 @@ export class EntryExitRules {
     description: string;
 
     source: string;
+
+    userId: number;
+ 
+    createDate: string;
 
 }
 

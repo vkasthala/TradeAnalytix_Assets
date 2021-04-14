@@ -1,11 +1,18 @@
-import { AfterViewInit, Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatSort } from '@angular/material';
 import { ManageRulePopupComponent } from './manage-rule-popup/manage-rule-popup.component';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
-import { EntryExitRulesService } from '../../services/entry_exit_rules.service';
+import { EntryExitRulesService } from '../../services/entry-exit-rules.service';
 import { EntryExitRulesGridRow } from '../../models/entry-exit-rules-grid-row.model';
+
+import { EntryExitRulesResult } from '../../models/entry-exit-rules-result.model';
+import { EntryExitRule } from '../../models/entry-exit-rules.model';
+import { SettingsService } from '../../services/settings.service';
+import { EntryExitRulesGridStore} from '../../services/entry-exit-rules-grid-store';
+import { EntryExitRulesGridRequest} from '../../models/entry-exit-rules-grid-request.model';
+import { EntryExitRulesGridPage} from '../../models/entry-exit-rules-grid-page.model';
+
 
 // EntryExitRulesService
 @Component({
@@ -15,28 +22,47 @@ import { EntryExitRulesGridRow } from '../../models/entry-exit-rules-grid-row.mo
 })
 export class ManagerulesComponent implements OnInit {
   displayedColumns: string[] = ['date', 'type', 'description', 'source', 'action'];
-  // dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
-  public dataSource = [];
-
+  expandIndex: any;
+  pageSize: number = 20
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: false }) sort: MatSort;
+
+  dataSource: EntryExitRulesGridStore;
+  tentryExitRulesGridRequest: EntryExitRulesGridRequest = this.getInitialRequest();
+
   public gridData = [];
   constructor(private _dialog: MatDialog,
     private router: Router,
-    private entryExitRulesService: EntryExitRulesService
-    
+    private entryExitRulesService: EntryExitRulesService,
+    private settingsService: SettingsService
     ) { }
-
-  ngAfterViewInit() {
-    this.entryExitRulesService.getEntryExitRules().subscribe(data => {
-      //this.dataSource = data.entryexitrules;
-      console.log('dataSource', this.dataSource)
-    });
-  }
+  
+  entryExitRulesResults: EntryExitRulesResult;
+  entryExitRules: EntryExitRule[] = [];
+  
 
   ngOnInit() {
-    
+    this.dataSource = new EntryExitRulesGridStore(this.entryExitRulesService, this.settingsService);
+    this.loadPage();
   }
 
+
+  loadPage() {
+    this.dataSource.loadEntryExitRulesStore(this.getInitialRequest());
+  }
+
+  reload() {
+    this.tentryExitRulesGridRequest.page.pageNumber = 0;
+    this.loadPage();
+  }
+  getInitialRequest(): EntryExitRulesGridRequest {
+    let request: EntryExitRulesGridRequest = new EntryExitRulesGridRequest();
+    let pageRequest: EntryExitRulesGridPage = new EntryExitRulesGridPage();
+    pageRequest.pageNumber = 0;
+    pageRequest.pageSize = 20;
+    request.page = pageRequest;
+    return request;
+  }
   addRule(title, btnText) {
     const dialogRef = this._dialog.open(ManageRulePopupComponent, {
       disableClose: true,
@@ -66,10 +92,5 @@ export class ManagerulesComponent implements OnInit {
     dialogRef.afterClosed().subscribe((res) => {
     });
   }
-  deleteRule(row_obj){
-    this.dataSource = this.dataSource.filter((value,key)=>{
-      return value.id != row_obj.id;
-    });
- }
 
 }
