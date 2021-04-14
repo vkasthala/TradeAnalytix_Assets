@@ -36,7 +36,7 @@
                 <div class="flex-inner">
                     <a>
                         <h3 class="trade_count">12457</h3>
-                        <span class="trade_title">Max. Amount  at Risk</span>
+                        <span class="trade_title">Max. Amount at Risk</span>
                     </a>
                 </div>
             </div>
@@ -44,7 +44,7 @@
                 <div class="flex-inner">
                     <a>
                         <h3 class="trade_count">23984</h3>
-                        <span class="trade_title">Max. Proﬁt  Potential</span>
+                        <span class="trade_title">Max. Proﬁt Potential</span>
                     </a>
                 </div>
             </div>
@@ -52,7 +52,7 @@
                 <div class="flex-inner">
                     <a>
                         <h3 class="trade_count trade-red">123%</h3>
-                        <span class="trade_title">Volatility of  Returns</span>
+                        <span class="trade_title">Volatility of Returns</span>
                     </a>
                 </div>
             </div>
@@ -60,7 +60,7 @@
                 <div class="flex-inner">
                     <a>
                         <h3 class="trade_count trade-success">23.2</h3>
-                        <span class="trade_title">Avg Daily  Trade Count</span>
+                        <span class="trade_title">Avg Daily Trade Count</span>
                     </a>
                 </div>
             </div>
@@ -221,7 +221,8 @@
                         <h5>Calendar Report</h5>
                     </div>
                     <div class="dsh-img">
-                        <img src="../../../../assets/images/Dashboard/calendar_report.jpg" alt="" class="img-fluid das-i">
+                        <img src="../../../../assets/images/Dashboard/calendar_report.jpg" alt=""
+                            class="img-fluid das-i">
                     </div>
                 </div>
             </div>
@@ -245,13 +246,13 @@
                             </div>
                             <div class="row">
                                 <div class="col-3 text-success">
-                                    Bullish
+                                    {{latestTradePlan ? latestTradePlan.marketStatus : 'N/A'}}
                                 </div>
                                 <div class="col-3">
-                                    Confident
+                                    {{latestTradePlan ? latestTradePlan.mindsetType : 'N/A'}}
                                 </div>
                                 <div class="col-3">
-                                    02/09/2021
+                                    {{latestTradePlan ? latestTradePlan.day : 'N/A'}}
                                 </div>
                             </div>
                         </div>
@@ -263,7 +264,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-12">
-                                    I expect the market to trade sideways or correct slightly because of stocks returning to their pre-covid levels.
+                                    {{latestTradePlan ? latestTradePlan.notes : 'N/A'}}
                                 </div>
                             </div>
                         </div>
@@ -275,7 +276,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-12">
-                                    FB, NIO, GOOG, DAL, LUV, XPEV, LI, AMZN, AAPL FB, QQQ, UVXY
+                                    {{latestTradePlan ? latestTradePlan.plannedTrades : 'N/A'}}
                                 </div>
                             </div>
                         </div>
@@ -293,13 +294,13 @@
                             </div>
                             <div class="row">
                                 <div class="col-2">
-                                    No
+                                    {{latestTradePlan ? (latestTradePlan.aligned ? 'Yes' : 'No') : 'N/A'}}
                                 </div>
                                 <div class="col-3">
-                                    Good
+                                    {{latestTradePlan ? latestTradePlan.selfReview : 'N/A'}}
                                 </div>
                                 <div class="col-4">
-                                    None
+                                    {{latestTradePlan ? latestTradePlan.lessons : 'N/A'}}
                                 </div>
                                 <div class="d-flex">
                                     <button class="btn btn-primary btn-sm">View More</button>

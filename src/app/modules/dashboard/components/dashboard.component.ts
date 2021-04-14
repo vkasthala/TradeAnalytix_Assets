@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TradePlanGridRow } from '../../trade-plan/models/trade-plan-grid-row.model';
+import { TradePlan } from '../../trade-plan/models/trade-plan.model';
+import { TradePlansService } from '../../trade-plan/services/trade-plans.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,9 +11,21 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  latestTradePlan: TradePlanGridRow;
+
+  constructor(private router: Router, private tradePlanService: TradePlansService) { }
 
   ngOnInit() {
+    this.loadLatestTradePlan();
+  }
+
+  loadLatestTradePlan() {
+    this.tradePlanService.getLatestTradePlan().subscribe(result => {
+      console.log("latest trade plan:", result);
+      if (result) {
+        this.latestTradePlan = result;
+      }
+    });
   }
 
   addNewTradePlan() {
