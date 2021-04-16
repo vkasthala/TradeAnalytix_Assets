@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { ActionReducer, MetaReducer, StoreModule } from '@ngrx/store';
@@ -20,6 +20,7 @@ import { UtilService } from './modules/utilities/services/util.service';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { ApiInterceptor } from './modules/shared/classes/api-interceptor';
 
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
   return localStorageSync({ keys: [globalConfigFeatureKey], rehydrate: true })(reducer);
@@ -40,10 +41,10 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     BrowserAnimationsModule,
     ToastrModule.forRoot({
-      timeOut:1500,
-      positionClass:'toast-top-center',
-      preventDuplicates:false
-    }), 
+      timeOut: 1500,
+      positionClass: 'toast-top-center',
+      preventDuplicates: false
+    }),
 
     StoreModule.forRoot(reducers, {
       metaReducers,
@@ -55,7 +56,7 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     StoreModule.forFeature(fromGlobalConfig.globalConfigFeatureKey, fromGlobalConfig.reducer),
   ],
-  providers: [PwaService, UtilService],
+  providers: [PwaService, UtilService, { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
