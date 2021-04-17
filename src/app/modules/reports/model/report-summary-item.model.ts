@@ -1,4 +1,6 @@
 export class ReportSummaryItem {
+
+    id: string;
     
     name: string;
 
