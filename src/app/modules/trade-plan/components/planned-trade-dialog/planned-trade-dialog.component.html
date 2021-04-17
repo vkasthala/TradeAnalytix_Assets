@@ -27,8 +27,7 @@
             <div class="row mb-2 align-items-center">
                 <label class="col-6 col-form-label">Action Type</label>
                 <div class="col-6">
-                    <select id="inputState" class="form-control select-input"
-                        [(ngModel)]="data.actionTypeId" (change)="onActionTypeChange($event.target.value)">
+                    <select id="inputState" class="form-control select-input" [(ngModel)]="data.actionTypeId" (change)="onActionTypeChange($event.target.value)">
                         <option value=1 selected data-default>Buy to Open</option>
                         <option value=2>Sell to Open</option>
                         <option value=3>Buy to Close</option>
@@ -40,16 +39,14 @@
             <div class="row mb-2 align-items-center">
                 <label class="col-6 col-form-label">Max Risk</label>
                 <div class="col-6">
-                    <input type="number" (keydown)="preventNegatives($event, false)" min="0"
-                        class="form-control cards-input" [(ngModel)]="data.maxRisk" />
+                    <input type="number" (keydown)="preventNegatives($event, false)" min="0" class="form-control cards-input" [(ngModel)]="data.maxRisk" />
                 </div>
             </div>
 
             <div class="row mb-2 align-items-center">
                 <label class="col-6 col-form-label">Max Profit</label>
                 <div class="col-6">
-                    <input type="number" (keydown)="preventNegatives($event, false)" min="0"
-                        class="form-control cards-input" [(ngModel)]="data.profit" />
+                    <input type="number" (keydown)="preventNegatives($event, false)" min="0" class="form-control cards-input" [(ngModel)]="data.profit" />
                 </div>
             </div>
 
