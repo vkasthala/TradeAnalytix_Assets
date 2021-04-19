@@ -28,7 +28,8 @@ export class TradeStrategyGridRow {
     
     maxGain: string;
     
-    return: string;
+    returnAmount: string;
+
     Simha: string
 
 }
