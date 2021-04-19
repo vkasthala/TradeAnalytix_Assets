@@ -1,6 +1,6 @@
 <div>
     <div class="trade-cards-section d-flex mb-2">
-        <span class="col-7 px-0">
+        <span class="col-sm-7 col-md-4 px-0">
             <input type="text" class="form-control" [(ngModel)]="newValue" />
         </span>
         <span class="text-primary" *ngIf="!edit">
@@ -13,7 +13,7 @@
             <mat-icon class="mt-2 text-danger action-icon" (click)="onCancel()">close</mat-icon>
         </span>
     </div>
-    <div class="col-7 px-0">
+    <div class="col-sm-7 col-md-4 px-0">
         <mat-selection-list [(ngModel)]="selectedItems" class="editable-content" [ngClass]="items.length > 4 ? 'editable-list' : ''">
             <mat-list-option *ngFor="let item of items;let i=index" [value]="item">
                 <span>{{item.name}}</span>
