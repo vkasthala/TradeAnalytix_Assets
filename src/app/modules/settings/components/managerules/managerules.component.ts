@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialog, MatSort } from '@angular/material';
 import { ManageRulePopupComponent } from './manage-rule-popup/manage-rule-popup.component';
@@ -12,6 +12,7 @@ import { SettingsService } from '../../services/settings.service';
 import { EntryExitRulesGridStore} from '../../services/entry-exit-rules-grid-store';
 import { EntryExitRulesGridRequest} from '../../models/entry-exit-rules-grid-request.model';
 import { EntryExitRulesGridPage} from '../../models/entry-exit-rules-grid-page.model';
+import { ToastrService } from 'ngx-toastr';
 
 
 // EntryExitRulesService
@@ -29,12 +30,13 @@ export class ManagerulesComponent implements OnInit {
 
   dataSource: EntryExitRulesGridStore;
   tentryExitRulesGridRequest: EntryExitRulesGridRequest = this.getInitialRequest();
-
+  public event: EventEmitter<any> = new EventEmitter();
   public gridData = [];
   constructor(private _dialog: MatDialog,
     private router: Router,
     private entryExitRulesService: EntryExitRulesService,
-    private settingsService: SettingsService
+    private settingsService: SettingsService,
+    protected toastr: ToastrService
     ) { }
   
   entryExitRulesResults: EntryExitRulesResult;
@@ -63,7 +65,7 @@ export class ManagerulesComponent implements OnInit {
     request.page = pageRequest;
     return request;
   }
-  addRule(title, btnText) {
+  addEntryExitRule(title, btnText) {
     const dialogRef = this._dialog.open(ManageRulePopupComponent, {
       disableClose: true,
       width: 'auto',
@@ -73,9 +75,17 @@ export class ManagerulesComponent implements OnInit {
         formData:''
       }
     });
-
+    
     dialogRef.afterClosed().subscribe((res) => {
+      this.settingsService.saveEntryExitRule(res).subscribe(data => {
+        this.toastr.success('Entry exit rule added successfully', '');
+        this.loadPage();
+      }, err => {
+        this.toastr.error('Failed to add entry exit rule');
+      });;
     });
+
+    
   }
 
   editRule(rowModel: EntryExitRulesGridRow, title, btnText) {
