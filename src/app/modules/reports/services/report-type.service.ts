@@ -12,25 +12,47 @@ export class ReportTypeService {
 
   getSubTypesByCategory(category: string): ReportSubType[] {
     let subTypes: ReportSubType[] = [];
-    if (category === 'performance') {
+    if (category === 'portfolio') {
+      subTypes = this.getPortfolioSubTypes();
+    } else if(category === 'performance') {
       subTypes = this.getPerformanceSubTypes();
     } else if (category === 'discipline') {
       subTypes = this.getDisciplineReportSubTypes();
     } else if(category === 'risk') {
       subTypes = this.getRiskReportSubTypes();
+    } else if(category === 'goals') {
+      subTypes = this.getGoalsReportSubTypes();
     }
     return subTypes;
   }
+  private getPortfolioSubTypes(): ReportSubType[] {
+    let reportSubTypes: ReportSubType[] = [];
 
+    let reportSubType: ReportSubType = new ReportSubType();
+    reportSubType.name = 'Allocation';
+    reportSubType.id = "allocation";
+    reportSubType.reportDetailList = [new ReportDetails('allocation_portfolio', 'Allocation Chart title', ReportCategory.Net_Return)];
+    reportSubTypes.push(reportSubType);
+
+    reportSubType = new ReportSubType();
+    reportSubType.name = 'Diversification';
+    reportSubType.id = "diversification";
+    reportSubType.reportDetailList = [new ReportDetails('diversification', 'Diversification Chart title', ReportCategory.Net_Return)];
+    reportSubTypes.push(reportSubType);
+    
+    return reportSubTypes;
+  }
+  
   private getPerformanceSubTypes(): ReportSubType[] {
     let reportSubTypes: ReportSubType[] = [];
 
     let reportSubType: ReportSubType = new ReportSubType();
-    /*reportSubType.name = 'Overview';
+    reportSubType.name = 'Overview';
+    reportSubType.id = "allocation";
     reportSubType.reportDetailList = [new ReportDetails('goal_status', 'Goal Status'), new ReportDetails('total_net_return_win_rate', 'Total Net Return & Win-Rate'), new ReportDetails('calendar_eport', 'Calendar Report')];
     reportSubTypes.push(reportSubType);
 
-    reportSubType = new ReportSubType();*/
+    reportSubType = new ReportSubType();
     reportSubType.name = 'Strategy Type';
     reportSubType.id = "type";
     reportSubType.reportDetailList = [new ReportDetails('net_return_strategy_type', 'Net Return by Strategy Type', ReportCategory.Net_Return), new ReportDetails('win_loss_strategy_type', 'Win/Loss by Strategy Type', ReportCategory.Win_Loss)];
@@ -49,15 +71,15 @@ export class ReportTypeService {
     reportSubTypes.push(reportSubType);
 
     reportSubType = new ReportSubType();
+    reportSubType.name = 'Entry Price';
+    reportSubType.reportDetailList = [new ReportDetails('net_return_entryprice', 'Net Return by Entry Price'), new ReportDetails('win_loss_entryprice', 'Win/Loss by Entry Price')];
+    reportSubTypes.push(reportSubType);
+
+    reportSubType = new ReportSubType();
     reportSubType.name = 'Trade Day';
     reportSubType.id = "initiated_day";
     reportSubType.reportDetailList = [new ReportDetails('net_return_tradeday', 'Net Return by Trade Day', ReportCategory.Net_Return), new ReportDetails('win_loss_tradeday', 'Win/Loss by Trade Day', ReportCategory.Win_Loss)];
     reportSubTypes.push(reportSubType);
-
-    /*reportSubType = new ReportSubType();
-    reportSubType.name = 'Entry Price';
-    reportSubType.reportDetailList = [new ReportDetails('net_return_entryprice', 'Net Return by Entry Price'), new ReportDetails('win_loss_entryprice', 'Win/Loss by Entry Price')];
-    reportSubTypes.push(reportSubType);*/
 
     reportSubType = new ReportSubType();
     reportSubType.name = 'Technical Indicator';
@@ -78,9 +100,27 @@ export class ReportTypeService {
     reportSubTypes.push(reportSubType);
 
     reportSubType = new ReportSubType();
+    reportSubType.name = 'Contrarian';
+    reportSubType.id = "contrarian";
+    reportSubType.reportDetailList = [new ReportDetails('contrarian', 'Contrarian Chart Title', ReportCategory.Net_Return)];
+    reportSubTypes.push(reportSubType);
+
+    reportSubType = new ReportSubType();
     reportSubType.name = 'Mindset';
     reportSubType.id = "mindset";
     reportSubType.reportDetailList = [new ReportDetails('net_return_mindset', 'Net Return by Mindset', ReportCategory.Net_Return), new ReportDetails('win_loss_mindset', 'Win/Loss by Mindset', ReportCategory.Win_Loss)];
+    reportSubTypes.push(reportSubType);
+
+    reportSubType = new ReportSubType();
+    reportSubType.name = 'Strike Price';
+    reportSubType.id = "strike_price";
+    reportSubType.reportDetailList = [new ReportDetails('strike_price', 'Strike Price Chart title', ReportCategory.Net_Return)];
+    reportSubTypes.push(reportSubType);
+
+    reportSubType = new ReportSubType();
+    reportSubType.name = 'Entry Date';
+    reportSubType.id = "entry_date";
+    reportSubType.reportDetailList = [new ReportDetails('entry_date', 'Entry Date Chart title', ReportCategory.Net_Return)];
     reportSubTypes.push(reportSubType);
 
     return reportSubTypes;
@@ -108,9 +148,26 @@ export class ReportTypeService {
     reportSubTypes.push(reportSubType);
     
     reportSubType = new ReportSubType();
+    reportSubType.name = 'Max Risk by Asset';
+    reportSubType.id = "max_risk_asset";
+    reportSubType.reportDetailList = [new ReportDetails('max_risk_asset', 'Max Risk by Asset Chart title', ReportCategory.Risk)];
+    reportSubTypes.push(reportSubType);
+
+    reportSubType = new ReportSubType();
     reportSubType.name = 'Net R';
     reportSubType.id = "net_r";
     reportSubType.reportDetailList = [new ReportDetails('net_r', 'Net R', ReportCategory.Risk)];
+    reportSubTypes.push(reportSubType);
+
+    return reportSubTypes;
+  }
+  private getGoalsReportSubTypes(): ReportSubType[] {
+    let reportSubTypes: ReportSubType[] = [];
+
+    let reportSubType: ReportSubType = new ReportSubType();
+    reportSubType.name = 'Goal Status';
+    reportSubType.id = "goal_status";
+    reportSubType.reportDetailList = [new ReportDetails('goal_status', 'Goal Status Chart Title', ReportCategory.Risk)];
     reportSubTypes.push(reportSubType);
 
     return reportSubTypes;

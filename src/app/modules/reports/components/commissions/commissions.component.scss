@@ -163,3 +163,63 @@
         color: #242E3A;
     }
 }
+
+.trade-dash-cards-title {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 30px;
+    color: #242E3A;
+}
+
+.trade-dash-cards {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    .flex-item {
+        min-height: 80px;
+        margin-bottom: 15px;
+        padding: 0px;
+        width: 47.5%;
+        position: relative;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-width: calc((100% - 87%));
+        color: #242E3A;
+        background: #FFFFFF;
+        border: 1px solid #9DA6BA;
+        box-sizing: border-box;
+        border-radius: 4px;
+        @media #{$extra-small} {
+            min-width: calc((100% - 54%));
+        }
+        @media #{$small} {
+            min-width: calc((100% - 69%));
+        }
+        @media #{$medium} {
+            min-width: calc((100% - 70%));
+        }
+        &:not(:last-child) {
+            margin-right: 1%;
+        }
+        .flex-inner {
+            text-align: center;
+            padding: 0px 5px;
+            span {
+                font-size: 14px;
+                color: #242E3A;
+                line-height: 20px;
+                display: flex;
+            }
+            .item-des {
+                font-weight: 600;
+                font-size: 20px;
+                color: #394C86;
+                padding-bottom: .5rem;
+            }
+        }
+    }
+}

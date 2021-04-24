@@ -1,23 +1,22 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ReportsItem } from '../../model/reports-item.model';
-import { ReportTabContentComponent } from '../report-tab-content/report-tab-content.component';
 import { ReportTypeService } from '../../services/report-type.service';
+import { ReportTabContentComponent } from '../report-tab-content/report-tab-content.component';
 
 @Component({
-  selector: 'app-performance',
+  selector: 'app-goals',
   templateUrl: '../report-tab-content/report-tab-content.component.html',
   styleUrls: ['../report-tab-content/report-tab-content.component.scss']
 })
-export class PerformanceComponent extends ReportTabContentComponent implements OnInit {
+export class GoalsComponent extends ReportTabContentComponent implements OnInit {
   constructor(reportTypeService: ReportTypeService) {
-    super('performance', reportTypeService);
+    super('goals', reportTypeService);
   }
-  
+
   ngOnInit() {
     super.ngOnInit();
     this.reportSubTypes = this.reportTypeService.getSubTypesByCategory(this.type);
-    console.log('risk charts loading..', this.reportSubTypes);
-    this.onReportSubTypeSelect(this.reportSubTypes[0]);
+    //this.onReportSubTypeSelect(this.reportSubTypes[0]);
   }
 
   reloadData(tab: string) {

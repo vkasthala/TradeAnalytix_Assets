@@ -49,6 +49,7 @@ import { ReduceToStockPositionComponent } from '../shared/components/modals/redu
 import { CloseTradeDetailsComponent } from '../trade-management/components/close-trade/close-trade-details/close-trade-details.component';
 import { TradeDetailsHeaderComponent } from '../trade-management/components/trade-details-header/trade-details-header.component';
 import { TradeDetailsAsideComponent } from '../trade-management/components/add-trade/trade-details-aside/trade-details-aside.component';
+import { TradeDetailsBottomComponent } from '../trade-management/components/add-trade/trade-details-bottom/trade-details-bottom.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RoutingModule } from './routing.module';
 import { UtilitiesModule } from '../utilities/utilities.module';
@@ -67,6 +68,8 @@ import { InvestmentGoalsComponent } from '../settings/components/investmentgoals
 import { DepositswithdrawalsComponent } from '../settings/components/depositswithdrawals/depositswithdrawals.component';
 import { DatasetupComponent } from '../settings/components/datasetup/datasetup.component';
 import { PerformanceComponent } from '../reports/components/performance/performance.component';
+import { PortfolioComponent } from '../reports/components/portfolio/portfolio.component';
+import { GoalsComponent } from '../reports/components/goals/goals.component';
 
 import { ReportsitemsComponent } from '../reports/components/reportsitems/reportsitems.component';
 import { RiskmanagementComponent } from '../reports/components/riskmanagement/riskmanagement.component';
@@ -153,10 +156,13 @@ export const MY_FORMATS = {
     CloseTradeDetailsComponent,
     TradeDetailsHeaderComponent,
     TradeDetailsAsideComponent,
+    TradeDetailsBottomComponent,
     TradeExecutionDateComponent,
     TradeStrategiesGrid,
     ConfirmDialogComponent,
     PerformanceComponent,
+    GoalsComponent,
+    PortfolioComponent,
     RiskmanagementComponent,
     CommissionsComponent,
     DisciplineComponent,

@@ -1,12 +1,12 @@
 <div class="trade-risk-tabs">
     <div class="tab vertical-tabs" role="tabpanel">
         <ul class="nav nav-tabs v-tabs" role="tablist">
-            <li role="presentation" *ngFor="let type of reportSubTypes" [ngClass]="{'active': type.id === 'type'}">
-                <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#Overview" role="tab" (click)="onReportSubTypeSelect(type)">{{type.name}}</a>
+            <li role="presentation" *ngFor="let type of reportSubTypes" [ngClass]="{'active': type.id === 'allocation'}">
+                <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#allocation" role="tab" (click)="onReportSubTypeSelect(type)">{{type.name}}</a>
             </li>
         </ul>
         <div class="tab-content tabs">
-            <div class="tab-pane active" id="Overview" role="tabpanel">
+            <div class="tab-pane active" id="allocation" role="tabpanel">
                 <div class="risk-manage-sec">
                     <div class="top-sec">
                         <div class="px-3 top-sec-label">

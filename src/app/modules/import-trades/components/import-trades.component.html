@@ -1,17 +1,18 @@
-<div class="container">
-    <div class="trade-dash-main">
-        <div class="trade-dash-name">
-            <h3>
-            Import Trades
-            </h3>
+<div class="px-3 mt-3">
+    <div class="main-body">
+        <div class="addnew-first">
+            <div class="trade-form">
+                <mat-icon class="trade-form-icon">attach_money</mat-icon>
+                <h2 class="py-3 symbol-heading">Import Trades</h2>
+                <div class="d-flex mt-2">
+                    <div class="media-body">
+                        <input type="file" (change)="selectFile($event)" />
+                    </div>
+                    <button class="btn btn-enter" [disabled]="!selectedFiles" (click)="importTrades()">
+              Upload
+            </button>
+                </div>
+            </div>
         </div>
-    </div>
-    <div>      
-      <label class="btn btn-default">
-        <input type="file" (change)="selectFile($event)" />
-      </label>
-      <button class="btn btn-success" [disabled]="!selectedFiles" (click)="importTrades()">
-        Upload
-      </button>
     </div>
 </div>

@@ -1,10 +1,10 @@
-<div class="px-3 mt-3">
+<div class="px-3 mt-2">
     <div class="inner-trade">
-        <div class="trade-dash-main">
+        <div class="trade-dash-main px-0">
             <div class="trade-dash-name">
                 <h3>{{edit ? 'Edit' : "New"}} Trade Plan</h3>
             </div>
-            <div class="pb-3 text-center">
+            <div class="text-center">
                 <button type="button" class="btn btn-primary d-flex align-items-center" *ngIf="!edit" (click)="addTradePlan()">
                     <span class="add-icon mr-2">+</span> ADD PLAN
                 </button>
@@ -62,15 +62,15 @@
             </div>
         </div>
 
-        <div class="inner-trade-plan">
+        <div class="inner-trade-plan px-0">
             <app-open-strategies-grid [tradePlanId]="tradePlanId" #tradeStrategiesGrid></app-open-strategies-grid>
         </div>
 
-        <div class="inner-trade-plan">
+        <div class="inner-trade-plan px-0">
             <app-planned-trades-grid [tradePlanId]="tradePlanId" #plannedTradesGrid></app-planned-trades-grid>
         </div>
 
-        <ng-container class="inner-trade-plan" *ngIf="edit">
+        <ng-container class="inner-trade-plan px-0" *ngIf="edit">
             <div class="mb-2">
                 <label class="col-form-label pt-0">Did you align with the trading plan?</label>
                 <div class="col-10 px-0 media">

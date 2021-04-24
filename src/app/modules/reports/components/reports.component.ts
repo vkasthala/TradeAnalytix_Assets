@@ -2,6 +2,8 @@ import { ViewChild } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { IMyDrpOptions } from 'mydaterangepicker';
 import { RiskManagementComponent } from '../../trade-management/components/add-trade/Steps/risk-management/risk-management.component';
+import { PerformanceComponent } from './performance/performance.component';
+import { GoalsComponent } from './goals/goals.component';
 import { DisciplineComponent } from './discipline/discipline.component';
 import { RiskmanagementComponent } from './riskmanagement/riskmanagement.component';
 
@@ -12,6 +14,7 @@ import { RiskmanagementComponent } from './riskmanagement/riskmanagement.compone
 })
 export class ReportsComponent implements OnInit {
 
+  @ViewChild('GoalsReports', { static: false }) protected GoalsReports: PerformanceComponent;
   @ViewChild('disciplineReports', { static: false }) protected disciplineReports: DisciplineComponent;
   @ViewChild('riskReports', { static: false }) protected riskReports: RiskmanagementComponent;
 
@@ -28,8 +31,8 @@ export class ReportsComponent implements OnInit {
 
   onTabSelect(selectedTab: string) {
     if (selectedTab === 'discipline') {
-      this.disciplineReports.reloadData(selectedTab);
-    } else if (selectedTab === 'risk') {
+      this.riskReports.reloadData(selectedTab);
+    }else if (selectedTab === 'risk') {
       this.riskReports.reloadData(selectedTab);
     }
   }

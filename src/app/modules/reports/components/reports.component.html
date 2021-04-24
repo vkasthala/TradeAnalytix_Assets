@@ -5,10 +5,16 @@
             <div class="tab" role="tabpanel">
                 <ul class="nav nav-tabs" role="tablist">
                     <li class="active" role="presentation">
-                        <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#Performance" role="tab">Performance</a>
+                        <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#Portfolio" role="tab">Portfolio</a>
                     </li>
                     <li class="" role="presentation">
-                        <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#RiskManagement" role="tab" (click)="onTabSelect('risk')">Risk Management</a>
+                        <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#Performance" role="tab" (click)="onTabSelect('performance')">Performance</a>
+                    </li>
+                    <li class="" role="presentation">
+                        <a aria-controls="Risk Management" aria-expanded="false" data-toggle="tab" href="#RiskManagement" role="tab" (click)="onTabSelect('risk')">Risk Management</a>
+                    </li>
+                    <li class="" role="presentation">
+                        <a aria-controls="Goals" aria-expanded="false" data-toggle="tab" href="#Goals" role="tab" (click)="onTabSelect('goals')">Goals</a>
                     </li>
                     <li class="" role="presentation">
                         <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#Discipline" role="tab" (click)="onTabSelect('discipline')">Discipline</a>
@@ -18,11 +24,17 @@
                     </li>
                 </ul>
                 <div class="tab-content tabs">
-                    <div class="tab-pane active" id="Performance" role="tabpanel">
+                    <div class="tab-pane active" id="Portfolio" role="tabpanel">
+                        <app-portfolio></app-portfolio>
+                    </div>
+                    <div class="tab-pane" id="Performance" role="tabpanel">
                         <app-performance></app-performance>
                     </div>
                     <div class="tab-pane fade" id="RiskManagement" role="tabpanel">
                         <app-riskmanagement #riskReports></app-riskmanagement>
+                    </div>
+                    <div class="tab-pane fade" id="Goals" role="tabpanel">
+                        <app-goals #GoalsReports></app-goals>
                     </div>
                     <div class="tab-pane fade" id="Discipline" role="tabpanel">
                         <app-discipline #disciplineReports></app-discipline>
