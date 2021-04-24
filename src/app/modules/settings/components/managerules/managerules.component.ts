@@ -41,7 +41,7 @@ export class ManagerulesComponent implements OnInit {
   
   entryExitRulesResults: EntryExitRulesResult;
   entryExitRules: EntryExitRule[] = [];
-  
+  rule: EntryExitRule = new EntryExitRule();
 
   ngOnInit() {
     this.dataSource = new EntryExitRulesGridStore(this.entryExitRulesService, this.settingsService);
@@ -65,6 +65,7 @@ export class ManagerulesComponent implements OnInit {
     request.page = pageRequest;
     return request;
   }
+
   addEntryExitRule(title, btnText) {
     const dialogRef = this._dialog.open(ManageRulePopupComponent, {
       disableClose: true,
@@ -82,10 +83,9 @@ export class ManagerulesComponent implements OnInit {
         this.loadPage();
       }, err => {
         this.toastr.error('Failed to add entry exit rule');
-      });;
+      });
     });
-
-    
+  
   }
 
   editRule(rowModel: EntryExitRulesGridRow, title, btnText) {
@@ -100,6 +100,33 @@ export class ManagerulesComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((res) => {
+
+      this.rule.id = rowModel.id;
+      this.rule.type = rowModel.type;
+      this.rule.description = rowModel.description;
+      this.rule.source = rowModel.source;
+
+      this.settingsService.updateEntryExitRule(this.rule).subscribe(data => {
+        this.toastr.success('Entry exit rule updated successfully', '');
+        this.loadPage();
+      }, err => {
+        this.toastr.error('Failed to update entry exit rule');
+      });
+    });
+  }
+
+
+  deleteRule(rowModel: EntryExitRulesGridRow) {
+    this.rule.id = rowModel.id;
+    this.rule.type = rowModel.type;
+    this.rule.description = rowModel.description;
+    this.rule.source = rowModel.source;
+
+    this.settingsService.deleteEntryExitRule(this.rule).subscribe(data => {
+      this.toastr.success('Entry exit rule deleted successfully', '');
+      this.loadPage();
+    }, err => {
+      this.toastr.error('Failed to delete entry exit rule');
     });
   }
 
