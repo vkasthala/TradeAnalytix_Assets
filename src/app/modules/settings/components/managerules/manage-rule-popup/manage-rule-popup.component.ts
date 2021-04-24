@@ -37,8 +37,5 @@ export class ManageRulePopupComponent implements OnInit {
     this.dialogRef.close(form.value);
   }
 
-  saveRule(form) {
-    console.log('form.value................',form.value);
-  }
 
 }

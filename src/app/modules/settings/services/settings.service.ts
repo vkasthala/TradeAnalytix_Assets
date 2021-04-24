@@ -21,4 +21,14 @@ export class SettingsService {
   public saveEntryExitRule(entryExitRule: EntryExitRule): Observable<void> {
     return this.httpService.post<EntryExitRule, void>(this.apiUrl + '/rules/create', entryExitRule);
   }
+
+  public updateEntryExitRule(entryExitRule: EntryExitRule): Observable<void> {
+    return this.httpService.post<EntryExitRule, void>(this.apiUrl + '/rules/update', entryExitRule);
+  }
+
+  public deleteEntryExitRule(entryExitRule: EntryExitRule): Observable<void> {
+    console.log('deleteentryExitRule..................',entryExitRule);
+    return this.httpService.post<EntryExitRule, void>(this.apiUrl + '/rules/delete', entryExitRule);
+  }
+
 }
