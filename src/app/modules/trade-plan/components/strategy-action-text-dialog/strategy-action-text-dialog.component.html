@@ -1,14 +1,16 @@
-<div class="actiontext-popup">
-    <div class="actiontext-pop-inner">
+<div class="compare-popup">
+    <div class="compare-pop-inner">
         <div class="top-pop-inner">
             <div class="left-heading">
                 <h6>Action Notes</h6>
+            </div>
+            <div class="right-close" (click)="closeModal()">
+                <mat-icon>clear</mat-icon>
             </div>
         </div>
 
         <div class="main-pop-inner">
             <div class="pb-1">
-                <label class="col-form-label"></label>
                 <textarea rows="2" class="form-control" [(ngModel)]="data.actionText"></textarea>
             </div>
 

@@ -149,7 +149,7 @@
 
 .trade-st-box {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     width: 100%;
     padding: 15px 0px;
@@ -174,16 +174,9 @@
 
 .select-btn {
     display: flex;
-    align-items: center;
     @media #{$medium} {
         display: flex;
         justify-content: space-between;
-    }
-    button.btn.btn-apply {
-        @media #{$medium} {
-            padding: 0px 4px;
-            font-size: 12px;
-        }
     }
 }
 
@@ -203,7 +196,7 @@ img.form-icon {
     position: absolute;
     right: 5px;
     top: 8px;
-    color: #37A000 !important;
+    color: #9DA6BA !important;
 }
 
 .trade-sel {
@@ -228,17 +221,31 @@ img.form-icon {
 }
 
 .trade-sel .form-control {
-    font-size: 0.89rem;
-    color: #000;
+    font-size: 12px;
+    color: #242E3A;
     height: 40px;
 }
 
 .btn-apply {
     background-color: #2285FA;
     color: $white;
+    color: #ffffff;
     font-size: 12px;
-    padding: 0.375rem 16px !important;
+    padding: 0.375rem 1.5rem !important;
     border-radius: 4px;
+    height: 40px;
+    line-height: 26px;
+}
+
+.btn-outline-primary {
+    border: 1px solid #2285FA;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 12px;
+    color: #2285FA;
+    height: 40px;
+    line-height: 26px;
+    padding: 0.375rem 1.5rem !important;
 }
 
 .trade-details {
@@ -615,4 +622,18 @@ a.import-new img {
     font-weight: 700;
     font-size: 22px;
     line-height: 1;
+}
+
+.trade-strategies-filters .date-range-md .mydrp .selectiongroup {
+    height: 39px !important;
+}
+
+.trade-strategies-filters .date-range-md .mydrp .selection {
+    height: 38px !important;
+}
+
+.btn-outline-primary:hover {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
 }

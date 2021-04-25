@@ -14,7 +14,7 @@
                 </span>
             </div>
         </div>
-        <div class="trade-strategies-table px-3 py-2">
+        <div class="trade-strategies-table px-3 py-2 trade-strategies-filters">
             <div *ngIf="showFilters" class="trade-st-box pt-0">
                 <div class="st-slect-section">
                     <div class="trade-form strategies_filter">
@@ -53,9 +53,9 @@
                 </div>
 
                 <div class=" st-slect-section select-btn">
-                    <a href="javascript:void(0)" class="btn-link mr-3" (click)="applyFilters()">Apply</a>
+                    <a href="javascript:void(0)" class="btn btn-apply mr-3" (click)="applyFilters()">Apply</a>
 
-                    <a href="javascript:void(0)" class="btn-link" (click)="clearFilters()">Clear</a>
+                    <a href="javascript:void(0)" class="btn btn-outline-primary" (click)="clearFilters()">Clear</a>
                 </div>
             </div>
             <!-- Grid row -->

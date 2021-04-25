@@ -1,7 +1,7 @@
 <div class="mb-2">
-    <div class="col-11 px-0 d-flex justify-content-between">
+    <div class="col-12 px-0 d-flex justify-content-between mb-1">
         <label class="col-form-label pt-0 px-3">What do you plan to trade today?</label>
-        <mat-icon class="text-primary mat-icon-md add-icon cursor" (click)="openPlannedTradeDialog()">add_circle</mat-icon>
+        <!-- <mat-icon class="text-primary mat-icon-md add-icon cursor" (click)="openPlannedTradeDialog()">add_circle</mat-icon> -->
     </div>
     <div class="d-flex">
         <mat-table [dataSource]="plannedTradesDataSource">
@@ -16,7 +16,7 @@
             </ng-container>
 
             <ng-container matColumnDef="actionType">
-                <th mat-header-cell *matHeaderCellDef>Action</th>
+                <th mat-header-cell *matHeaderCellDef>Buy to Open</th>
                 <td mat-cell *matCellDef="let element"> {{element.actionType}} </td>
             </ng-container>
 
@@ -26,12 +26,12 @@
             </ng-container>
 
             <ng-container matColumnDef="profit">
-                <th mat-header-cell *matHeaderCellDef>Profit</th>
+                <th mat-header-cell *matHeaderCellDef>Expected Profit</th>
                 <td mat-cell *matCellDef="let element"> {{element.profit}} </td>
             </ng-container>
 
             <ng-container matColumnDef="reason">
-                <th mat-header-cell *matHeaderCellDef>Specify reasons for the trade</th>
+                <th mat-header-cell *matHeaderCellDef>Justification</th>
                 <td mat-cell *matCellDef="let element"> {{element.reason}} </td>
             </ng-container>
 
@@ -39,6 +39,21 @@
                 <th mat-header-cell *matHeaderCellDef>Executed</th>
                 <td mat-cell *matCellDef="let element">
                     <mat-checkbox [(ngModel)]="element.executed"></mat-checkbox>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef>
+                    <span class="d-flex align-items-center">
+                        Actions
+                        <mat-icon class="text-primary mat-icon-md cursor ml-3" (click)="openPlannedTradeDialog()">add_circle</mat-icon>
+                    </span>
+                </th>
+                <td mat-cell *matCellDef="let actions"> <span>{{element.actionText}}</span>
+                    <mat-icon class="mat-icon-edit mat-icon-sm" (click)="onActionTextEdit(element)">edit
+                    </mat-icon>
+
+                    <mat-icon class="mat-icon-sm mat-icon-sm ml-2" (click)="onActionTextEdit(element)">delete
+                    </mat-icon>
                 </td>
             </ng-container>
 

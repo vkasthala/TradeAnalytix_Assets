@@ -29,15 +29,15 @@ export class ReportTypeService {
     let reportSubTypes: ReportSubType[] = [];
 
     let reportSubType: ReportSubType = new ReportSubType();
-    reportSubType.name = 'Allocation';
+    reportSubType.name = 'Allocation By Stock';
     reportSubType.id = "allocation";
     reportSubType.reportDetailList = [new ReportDetails('allocation_portfolio', 'Allocation Chart title', ReportCategory.Net_Return)];
     reportSubTypes.push(reportSubType);
 
     reportSubType = new ReportSubType();
-    reportSubType.name = 'Diversification';
+    reportSubType.name = 'Allocation By Sector';
     reportSubType.id = "diversification";
-    reportSubType.reportDetailList = [new ReportDetails('diversification', 'Diversification Chart title', ReportCategory.Net_Return)];
+    reportSubType.reportDetailList = [new ReportDetails('diversification', 'Allocation By Sector Chart title', ReportCategory.Net_Return)];
     reportSubTypes.push(reportSubType);
     
     return reportSubTypes;
@@ -157,6 +157,12 @@ export class ReportTypeService {
     reportSubType.name = 'Net R';
     reportSubType.id = "net_r";
     reportSubType.reportDetailList = [new ReportDetails('net_r', 'Net R', ReportCategory.Risk)];
+    reportSubTypes.push(reportSubType);
+
+    reportSubType = new ReportSubType();
+    reportSubType.name = 'Portfolio Systematic Risk';
+    reportSubType.id = "portfolio_systematic_risk";
+    reportSubType.reportDetailList = [new ReportDetails('portfolio_systematic_risk', 'Portfolio Systematic Risk Chart title', ReportCategory.Risk)];
     reportSubTypes.push(reportSubType);
 
     return reportSubTypes;
