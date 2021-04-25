@@ -1,19 +1,19 @@
-import { Component, ViewChild, AfterViewInit, OnInit } from '@angular/core';
-import { MatPaginator, MatTableDataSource, MatSort, MatDialog } from '@angular/material';
-import { TradeStrategyGridStore } from '../../services/trade-strategy-grid-store';
-import { TradeStrategyGridService } from '../../services/trade-strategy-grid.service';
-import { TradeStrategyGridRequest } from '../../models/trade-strategy-grid-request.model';
-import { StrategiesGridPage } from '../../models/strategies-grid-page.model';
-import { fromEvent, merge, forkJoin } from 'rxjs';
-import { debounceTime, distinctUntilChanged, tap } from 'rxjs/operators';
-import { StrategiesGridSort } from '../../models/strategies-grid-sort.model';
-import { TradeStrategyGridRow } from '../../models/trade-strategy-grid-row.model';
-import { Router, NavigationExtras } from '@angular/router';
-import { TradeStrategyService } from 'src/app/modules/trade-management/services/trade-strategy.service';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog, MatPaginator, MatSort } from '@angular/material';
+import { NavigationExtras, Router } from '@angular/router';
+import { forkJoin } from 'rxjs';
+import { tap } from 'rxjs/operators';
+import { ConfirmDialogComponent } from 'src/app/modules/shared/components/modals/confirm-dialog/confirm-dialog.component';
+import { TradeInputData } from 'src/app/modules/shared/models/trade-management/trade-input-data.model';
 import { StockSymbolService } from 'src/app/modules/shared/services/stock-symbol.service';
 import { UserStockStatsService } from 'src/app/modules/shared/services/user-stock-stats.service';
-import { TradeInputData } from 'src/app/modules/shared/models/trade-management/trade-input-data.model';
-import { ConfirmDialogComponent } from 'src/app/modules/shared/components/modals/confirm-dialog/confirm-dialog.component';
+import { TradeStrategyService } from 'src/app/modules/trade-management/services/trade-strategy.service';
+import { StrategiesGridPage } from '../../models/strategies-grid-page.model';
+import { StrategiesGridSort } from '../../models/strategies-grid-sort.model';
+import { TradeStrategyGridRequest } from '../../models/trade-strategy-grid-request.model';
+import { TradeStrategyGridRow } from '../../models/trade-strategy-grid-row.model';
+import { TradeStrategyGridStore } from '../../services/trade-strategy-grid-store';
+import { TradeStrategyGridService } from '../../services/trade-strategy-grid.service';
 
 @Component({
   selector: 'app-trade-strategies-grid',

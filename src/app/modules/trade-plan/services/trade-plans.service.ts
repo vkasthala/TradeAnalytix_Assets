@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpService } from '../../shared/services/http.service';
-import { TradePlans } from '../models/trade-plans.model';
-import { MarketStatus } from '../models/market-status.model';
 import { environment } from 'src/environments/environment';
-import { TradePlanStrategy } from '../models/trade-plan-strategy.model';
-import { TradePlan } from '../models/trade-plan.model';
+import { HttpService } from '../../shared/services/http.service';
+import { MarketStatus } from '../models/market-status.model';
 import { PlannedTrade } from '../models/planned-trade.model';
-import { TradePlanGridRow } from '../models/trade-plan-grid-row.model';
 import { TradePlanGridRequest } from '../models/trade-plan-grid-request.model';
 import { TradePlanGridResult } from '../models/trade-plan-grid-result.model';
+import { TradePlanGridRow } from '../models/trade-plan-grid-row.model';
+import { TradePlanStrategy } from '../models/trade-plan-strategy.model';
+import { TradePlan } from '../models/trade-plan.model';
+import { TradePlans } from '../models/trade-plans.model';
 @Injectable({
     providedIn: 'root'
 })
@@ -55,6 +55,10 @@ export class TradePlansService {
 
     getTradePlanData(tradePlanId: number): Observable<TradePlan> {
         return this.http.get<TradePlan>(this.apiUrl + '/trade-plan/' + tradePlanId);
+    }
+
+    getLatestTradePlan(): Observable<TradePlanGridRow> {
+        return this.http.get<TradePlanGridRow>(this.apiUrl + '/trade-plan/latest');
     }
 
 

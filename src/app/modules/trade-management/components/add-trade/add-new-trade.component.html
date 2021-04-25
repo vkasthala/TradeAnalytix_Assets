@@ -46,13 +46,10 @@
 
                                 <div class="closed-legs-sec" *ngIf="!add && tradeStrategy.statusId !=4">
                                     <div class="cursor closed-legs-header" (click)="showClosedLegs()">
-                                        <div class="closed-legs-title" *ngIf="closedLegs">
-                                            <span>Hide Closed Legs</span>
-                                            <i class="negative-amt material-icons">keyboard_arrow_down</i>
-                                        </div>
-                                        <div class="closed-legs-title" *ngIf="!closedLegs">
-                                            <span>Show Closed Legs</span>
-                                            <i class="negative-amt material-icons">keyboard_arrow_right</i>
+                                        <div class="closed-legs-title">
+                                            <span>Closed Positions</span>
+                                            <i class="negative-amt material-icons" *ngIf="closedLegs">keyboard_arrow_down</i>
+                                            <i class="negative-amt material-icons" *ngIf="!closedLegs">keyboard_arrow_right</i>
                                         </div>
                                     </div>
                                     <div class="closed-legs-body" *ngIf="closedLegs && tradeHistory">
@@ -139,8 +136,33 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="closed-legs-footer net_debit">
-                                        <div class="" [ngClass]="close || view ? 'justify-content-between' : 'realized_label'">
+
+                                </div>
+                                <div class="closed-legs-sec">
+                                    <div class="widget-2 mt-1" *ngIf="stockOrOptionAdded == true && strategyTypeSummaryResult">
+                                        <div class="widget_header">
+                                            <h5 class="widget_header-label">Proﬁt Potential and Risk</h5>
+                                            <button type="button" class="btn p-0 text-link" (click)="calculateMaxProfitAndRisk()">Calculate</button>
+                                        </div>
+
+                                        <div class="row no-gutters justify-content-between">
+                                            <div class="widget_item">
+                                                <h6 class="widget_item-value" *ngIf="maxRiskDetails && maxRiskDetails.maxProfit">
+                                                    {{maxRiskDetails.maxProfit}}</h6>
+                                                <span class="widget_item-title">Maximum Proﬁt</span>
+                                            </div>
+                                            <div class="widget_item widget_item_danger">
+                                                <h6 class="widget_item-value" *ngIf="maxRiskDetails && maxRiskDetails.maxRisk">
+                                                    {{maxRiskDetails.maxRisk}}</h6>
+                                                <span class="widget_item-title">Maximum Risk </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <app-trade-details-bottom></app-trade-details-bottom>
+
+                                    <!-- <div class="net_debit">
+                                        <div class="closed_date_sec" [ngClass]="close || view ? 'justify-content-between' : 'realized_label'">
                                             <div *ngIf="close || view">
                                                 <label class="col-form-label mr-2">Closed Date <span class="text-danger">*</span></label>
                                                 <div class="datepicker-group datepicker-sm">
@@ -151,8 +173,10 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
+
                                 </div>
+
                             </mat-step>
                             <mat-step>
                                 <ng-template matStepLabel>Thesis</ng-template>
@@ -175,14 +199,13 @@
                             <button type="button" class="btn btn-next mr-2" *ngIf="(add && (tradeDetails.stockOptions.length || tradeDetails.stockAdded))" (click)="CheckExecutionDate('Confirm Trade Execution Date')">ADD TRADE</button>
 
                             <span *ngIf="(tradeDetails.stockAdded || tradeDetails.stockOptions.length > 0) && (stepper.selectedIndex == 0)">
-                  <button type="button" class="btn btn-outline-primary" *ngIf="!close && !tradeStrategy.executed && !edit"
-                    (click)="saveTradeAsDraft()">Save as Draft</button>
-                </span>
+                                <button type="button" class="btn btn-outline-primary" *ngIf="!close && !tradeStrategy.executed && !edit"
+                                    (click)="saveTradeAsDraft()">Save as Draft</button>
+                            </span>
 
                             <button type="button" class="btn btn-next mr-2" *ngIf="edit" (click)="editTrade()">UPDATE</button>
 
-                            <button type="button" class="btn btn-next mr-2" *ngIf="close && !view" (click)="closeTrade()">CLOSE
-                  TRADE</button>
+                            <button type="button" class="btn btn-next mr-2" *ngIf="close && !view" (click)="closeTrade()">CLOSE TRADE</button>
 
                             <button type="button" class="btn btn-gray" *ngIf="edit" (click)="cancelTrade()">CANCEL</button>
                         </div>

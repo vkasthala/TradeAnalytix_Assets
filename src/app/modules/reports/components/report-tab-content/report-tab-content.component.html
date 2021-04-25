@@ -1,27 +1,27 @@
 <div class="trade-risk-tabs">
     <div class="tab vertical-tabs" role="tabpanel">
         <ul class="nav nav-tabs v-tabs" role="tablist">
-            <li role="presentation" *ngFor="let type of reportSubTypes" [ngClass]="{'active': type.id === 'type'}">
-                <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#Overview" role="tab" (click)="onReportSubTypeSelect(type)">{{type.name}}</a>
+            <li role="presentation" *ngFor="let type of reportSubTypes" [ngClass]="{'active': type.id === 'allocation'}">
+                <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#allocation" role="tab" (click)="onReportSubTypeSelect(type)">{{type.name}}</a>
             </li>
         </ul>
         <div class="tab-content tabs">
-            <div class="tab-pane active" id="Overview" role="tabpanel">
+            <div class="tab-pane active" id="allocation" role="tabpanel">
                 <div class="risk-manage-sec">
-                    <div class="row">
-                        <div class="col-sm-8">
-                            <div class="top-sec">
-                                <div class="px-3">
-                                    Filter By Date
-                                </div>
-                                <div class="trade-date">
-                                    <div class="form-group">
-                                        <div class='input-group date' id='datetimepicker1'>
-                                            <my-date-range-picker placeholder="Date range" name="mydaterange" [options]="myDateRangePickerOptions" (dateRangeChanged)="onDateRangeChanged($event)" [(ngModel)]="dateFilter"></my-date-range-picker>
-                                        </div>
-                                    </div>
+                    <div class="top-sec">
+                        <div class="px-3 top-sec-label">
+                            Date Range
+                        </div>
+                        <div class="trade-date">
+                            <div class="form-group m-0">
+                                <div class='input-group date' id='datetimepicker1'>
+                                    <my-date-range-picker placeholder="Date range" name="mydaterange" [options]="myDateRangePickerOptions" (dateRangeChanged)="onDateRangeChanged($event)" [(ngModel)]="dateFilter"></my-date-range-picker>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-8">
                             <!-- charts -->
                             <div class="trade-dash-con">
                                 <app-report-chart *ngFor="let report of reports" [report]="report" [subtype]="subtype" [reportFilter]="reportFilter" [filterChangeSubject]="filterChangeSubject" #reportChart></app-report-chart>

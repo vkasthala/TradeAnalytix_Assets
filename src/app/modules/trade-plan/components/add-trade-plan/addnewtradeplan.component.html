@@ -1,25 +1,30 @@
-<div class="dark-theme-body add-trade-plan">
-    <div class="px-2 mt-3">
-        <div class="inner-trade">
-            <div class="trade-dash-main">
-                <div class="trade-dash-name">
-                    <h3>{{edit ? 'Edit' : "New"}} Trade Plan</h3>
-                </div>
+<div class="px-3 mt-2">
+    <div class="inner-trade">
+        <div class="trade-dash-main px-0">
+            <div class="trade-dash-name">
+                <h3>{{edit ? 'Edit' : "New"}} Trade Plan</h3>
             </div>
-            <div class="inner-trade-plan px-3">
-                <div class="mb-2">
-                    <label class="col-form-label pt-0">Select the date for which trade plan is being created</label>
+            <div class="text-center">
+                <button type="button" class="btn btn-primary btn-add-plan d-flex align-items-center" *ngIf="!edit" (click)="addTradePlan()">
+                    <span class="add-icon mr-2">+</span> Add Plan
+                </button>
+                <button type="button" class="btn btn-primary" *ngIf="edit" (click)="submitTradePlan()">SUBMIT</button>
+            </div>
+        </div>
+        <div class="inner-trade-plan">
+            <div class="row">
+                <div class="col-sm-6 mb-3">
+                    <label class="col-form-label">Select the date for which trade plan is being created</label>
                     <div class="trade-sel">
                         <div class="datepicker-group">
-                            <input matInput [matDatepicker]="tradedate" (click)="tradedate.open()" id="tradedate"
-                                name="tradedate" [(ngModel)]="tradePlan.day">
+                            <input matInput [matDatepicker]="tradedate" (click)="tradedate.open()" id="tradedate" name="tradedate" [(ngModel)]="tradePlan.day">
                             <mat-datepicker-toggle matSuffix [for]="tradedate"></mat-datepicker-toggle>
                             <mat-datepicker #tradedate></mat-datepicker>
                         </div>
                     </div>
                 </div>
-                <div class="mb-2">
-                    <label class="col-form-label pt-0">Where do you think market is headed today?</label>
+                <div class="col-sm-6 mb-3">
+                    <label class="col-form-label">Where do you think market is headed today?</label>
                     <div class="trade-sel">
                         <select class="form-control" id="tradePlanMarketStatus" [(ngModel)]="tradePlan.marketHeadingId">
                             <option [ngValue]="opt.id" *ngFor="let opt of marketStatuses; trackBy: id">{{opt.name}}
@@ -28,19 +33,18 @@
                         <mat-icon class="form-icon-down text-success">keyboard_arrow_down</mat-icon>
                     </div>
                 </div>
-                <div class="mb-2">
-                    <label class="col-form-label pt-0">Did you complete the pre-market activities?</label>
+                <div class="col-sm-6 mb-3">
+                    <label class="col-form-label">Did you complete the pre-market activities?</label>
                     <div class="trade-sel">
-                        <select class="form-control" id="exampleFormControlSelect1"
-                            [(ngModel)]="tradePlan.premarketActivityStatus">
+                        <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="tradePlan.premarketActivityStatus">
                             <option value=true>Yes</option>
                             <option value=false>No</option>
                         </select>
                         <mat-icon class="form-icon-down text-success">keyboard_arrow_down</mat-icon>
                     </div>
                 </div>
-                <div class="mb-2">
-                    <label class="col-form-label pt-0">What is your mindset today?</label>
+                <div class="col-sm-6 mb-3">
+                    <label class="col-form-label">What is your mindset today?</label>
                     <div class="trade-sel">
                         <select class="form-control" id="tradePlanMindsetType" [(ngModel)]="tradePlan.mindSetTypeId">
                             <option [ngValue]="opt.id" *ngFor="let opt of mindsetTypes; trackBy: id">{{opt.name}}
@@ -49,178 +53,60 @@
                         <mat-icon class="form-icon-down text-success">keyboard_arrow_down</mat-icon>
                     </div>
                 </div>
-                <div class="mb-2">
-                    <label class="col-form-label pt-0">What’s your perspective on the market and your current positions?</label>
+                <div class="col-sm-6 mb-3">
+                    <label class="col-form-label">What’s your perspective on the market and your current positions?</label>
                     <div class="col-8 px-0">
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"
-                            [(ngModel)]="tradePlan.perspective"></textarea>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="tradePlan.perspective"></textarea>
                     </div>
                 </div>
-
-                <app-open-strategies-grid [tradePlanId]="tradePlanId" #tradeStrategiesGrid></app-open-strategies-grid>
-                <app-planned-trades-grid [tradePlanId]="tradePlanId" #plannedTradesGrid></app-planned-trades-grid>
-
-                <!--<div class="mb-2">
-                    <label class="col-form-label pt-0">What do you want to do with your open positions?</label>
-                    <div class="col-11 px-0">
-                       <table class="table table-bordered table-custom">
-                            <thead>
-                                <tr>
-                                    <th class="border-0">Symbol</th>
-                                    <th class="border-0">Strategy</th>
-                                    <th class="border-0">Return</th>
-                                    <th class="border-0">Max. Risk</th>
-                                    <th class="border-0">Max. Profit</th>
-                                    <th class="border-0">Action</th>
-                                    <th class="border-0" *ngIf="edit">Aligned</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>NIO</td>
-                                    <td>Put Spread</td>
-                                    <td>9823</td>
-                                    <td>3094</td>
-                                    <td>3094</td>
-                                    <td>
-                                        Close half the positions and book proﬁt 
-                                        <mat-icon *ngIf="!edit" class="text-success mat-icon-sm ml-2">edit</mat-icon>
-                                    </td>
-                                    <td *ngIf="edit"><input type="checkbox" checked /></td>
-                                </tr>
-                                <tr>
-                                    <td>XPEV</td>
-                                    <td>Call Spread</td>
-                                    <td>932</td>
-                                    <td>29384</td>
-                                    <td>29384</td>
-                                    <td>
-                                        Retain the positions as they are 
-                                        <mat-icon *ngIf="!edit" class="text-success mat-icon-sm ml-2">edit</mat-icon>
-                                    </td>
-                                    <td *ngIf="edit"><input type="checkbox" /></td>
-                                </tr>
-                                <tr>
-                                    <td>LI</td>
-                                    <td>Custom</td>
-                                    <td>459</td>
-                                    <td>9283</td>
-                                    <td>9283</td>
-                                    <td>No change. Hold <mat-icon *ngIf="!edit" class="text-success mat-icon-sm ml-2">edit</mat-icon></td>
-                                    <td *ngIf="edit"><input type="checkbox" checked /></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div> -->
-                
-                <!-- end: table-custom -->
-                <!--<div class="mb-2">
-                    <label class="col-form-label pt-0">What do you plan to trade today?</label>
-                    <div class="px-0" [ngClass]="edit ? 'col-11': 'col-12'">
-                        <table class="table table-bordered table-custom">
-                            <thead>
-                                <tr>
-                                    <th>Symbol</th>
-                                    <th>Strategy</th>
-                                    <th>Buy to Open</th>
-                                    <th>Max. Risk</th>
-                                    <th>Profit(Exp)</th>
-                                    <th>Specify reasons for the trade</th>
-                                    <th class="border-0" *ngIf="!edit"><mat-icon class="text-success mat-icon-md" (click)="openPlannedTradeDialog()">add_circle</mat-icon></th>
-                                    <th *ngIf="edit">Executed</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>AAPL</td>
-                                    <td>Stock</td>
-                                    <td>Sell to Close</td>
-                                    <td>9823</td>
-                                    <td>3094</td>
-                                    <td>Happy with returns</td>
-                                    <td class="border-0" *ngIf="!edit">
-                                        <mat-icon class="text-success mat-icon-sm">edit</mat-icon>
-                                        <mat-icon class="ml-2">delete</mat-icon>
-                                    </td>
-                                    <td *ngIf="edit"><input type="checkbox" checked /></td>
-                                </tr>
-                                <tr>
-                                    <td>XPEV</td>
-                                    <td>Call Spread</td>
-                                    <td>Buy to Open</td>
-                                    <td>932</td>
-                                    <td>29384</td>
-                                    <td>Bad earnings expected</td>
-                                    <td class="border-0" *ngIf="!edit">
-                                        <mat-icon class="text-success mat-icon-sm">edit</mat-icon>
-                                        <mat-icon class="ml-2">delete</mat-icon>
-                                    </td>
-                                    <td *ngIf="edit"><input type="checkbox" /></td>
-                                </tr>
-                                <tr>
-                                    <td>SNOW</td>
-                                    <td>Put Spread</td>
-                                    <td>Sell to Close</td>
-                                    <td>932</td>
-                                    <td>9283</td>
-                                    <td>Overvalued</td>
-                                    <td class="border-0" *ngIf="!edit">
-                                        <mat-icon class="text-success mat-icon-sm">edit</mat-icon>
-                                        <mat-icon class="ml-2">delete</mat-icon>
-                                    </td>
-                                    <td *ngIf="edit"><input type="checkbox" checked /></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>-->
-                <ng-container *ngIf="edit">
-                    <div class="mb-2">
-                        <label class="col-form-label pt-0">Did you align with the trading plan?</label>
-                        <div class="col-10 px-0 media">
-                            <div class="trade-sel mr-3">
-                                <select class="form-control" id="exampleFormControlSelect1"
-                                    [(ngModel)]="tradePlan.tradeplanAligned">
-                                    <option value=true>Yes</option>
-                                    <option value=false>No</option>
-                                </select>
-                                <mat-icon class="form-icon-down text-success">keyboard_arrow_down</mat-icon>
-                            </div>
-                            <div class="media-body">
-                                <input type="text" placeholder=" If no, specify reason" class="form-control"
-                                    [(ngModel)]="tradePlan.notAlignedReason" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-2">
-                        <label class="col-form-label pt-0">How you rate your trading performance today? </label>
-                        <div class="trade-sel">
-                            <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="tradePlan.selfReview">
-                                <option value="Good">Good</option>
-                                <option value="Average">Average</option>
-                                <option value="Bad">Bad</option>
-                            </select>
-                            <mat-icon class="form-icon-down text-success">keyboard_arrow_down</mat-icon>
-                        </div>
-                    </div>
-                    <div class="mb-2">
-                        <label class="col-form-label pt-0">What lessons did you learn today?</label>
-                        <div class="col-10 px-0">
-                            <textarea class="form-control" [(ngModel)]="tradePlan.lessons"></textarea>
-                            <div class="text-right"><span class="add-new" (click)="addRule('Add', 'SAVE')">Add as
-                                    Rule</span></div>
-                        </div>
-                    </div>
-                </ng-container>
-                <!-- end: table-custom -->
-                <div class="pb-3 text-center">
-                    <button type="button" class="btn btn-success" *ngIf="!edit" (click) = "addTradePlan()">ADD PLAN</button>
-                    <button type="button" class="btn btn-success" *ngIf="edit" (click) = "submitTradePlan()">SUBMIT</button>
-                </div>
-
             </div>
         </div>
+
+        <div class="inner-trade-plan px-0">
+            <app-open-strategies-grid [tradePlanId]="tradePlanId" #tradeStrategiesGrid></app-open-strategies-grid>
+        </div>
+
+        <div class="inner-trade-plan px-0">
+            <app-planned-trades-grid [tradePlanId]="tradePlanId" #plannedTradesGrid></app-planned-trades-grid>
+        </div>
+
+        <ng-container class="inner-trade-plan px-0" *ngIf="edit">
+            <div class="mb-2">
+                <label class="col-form-label pt-0">Did you align with the trading plan?</label>
+                <div class="col-10 px-0 media">
+                    <div class="trade-sel mr-3">
+                        <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="tradePlan.tradeplanAligned">
+                                <option value=true>Yes</option>
+                                <option value=false>No</option>
+                            </select>
+                        <mat-icon class="form-icon-down text-success">keyboard_arrow_down</mat-icon>
+                    </div>
+                    <div class="media-body">
+                        <input type="text" placeholder=" If no, specify reason" class="form-control" [(ngModel)]="tradePlan.notAlignedReason" />
+                    </div>
+                </div>
+            </div>
+            <div class="mb-2">
+                <label class="col-form-label pt-0">How you rate your trading performance today? </label>
+                <div class="trade-sel">
+                    <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="tradePlan.selfReview">
+                            <option value="Good">Good</option>
+                            <option value="Average">Average</option>
+                            <option value="Bad">Bad</option>
+                        </select>
+                    <mat-icon class="form-icon-down text-success">keyboard_arrow_down</mat-icon>
+                </div>
+            </div>
+            <div class="mb-2">
+                <label class="col-form-label pt-0">What lessons did you learn today?</label>
+                <div class="col-10 px-0">
+                    <textarea class="form-control" [(ngModel)]="tradePlan.lessons"></textarea>
+                    <div class="text-right"><span class="add-new" (click)="addRule('Add', 'SAVE')">Add as
+                                Rule</span></div>
+                </div>
+            </div>
+        </ng-container>
+        <!-- end: table-custom -->
     </div>
 </div>
 
@@ -261,8 +147,7 @@
                                             <option>Yes</option>
                                             <option>No</option>
                                         </select>
-                                        <img src="../../../../../assets/images/icon/Icon ionic-ios-arrow-down.png"
-                                            alt="" class="form-icon-down">
+                                        <img src="../../../../../assets/images/icon/Icon ionic-ios-arrow-down.png" alt="" class="form-icon-down">
                                     </div>
                                 </div>
                             </div>
@@ -273,8 +158,7 @@
                                 </div>
                                 <div class="right-thesis">
                                     <div class="form-group">
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="2"></textarea>
+                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -285,8 +169,7 @@
                                 </div>
                                 <div class="right-thesis">
                                     <div class="form-group">
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="2"></textarea>
+                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -297,8 +180,7 @@
                                 </div>
                                 <div class="right-thesis">
                                     <div class="form-group">
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="2"></textarea>
+                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -313,8 +195,7 @@
                                             <option>Yes</option>
                                             <option>No</option>
                                         </select>
-                                        <img src="../../../../../assets/images/icon/Icon ionic-ios-arrow-down.png"
-                                            alt="" class="form-icon-down">
+                                        <img src="../../../../../assets/images/icon/Icon ionic-ios-arrow-down.png" alt="" class="form-icon-down">
                                     </div>
                                 </div>
                             </div>
@@ -355,8 +236,7 @@
                                             <option>Yes</option>
                                             <option>No</option>
                                         </select>
-                                        <img src="../../../../../assets/images/icon/Icon ionic-ios-arrow-down.png"
-                                            alt="" class="form-icon-down">
+                                        <img src="../../../../../assets/images/icon/Icon ionic-ios-arrow-down.png" alt="" class="form-icon-down">
                                     </div>
                                 </div>
                             </div>
@@ -367,8 +247,7 @@
                                 </div>
                                 <div class="right-thesis">
                                     <div class="form-group">
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="2"></textarea>
+                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -379,8 +258,7 @@
                                 </div>
                                 <div class="right-thesis">
                                     <div class="form-group">
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="2"></textarea>
+                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -391,8 +269,7 @@
                                 </div>
                                 <div class="right-thesis">
                                     <div class="form-group">
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="2"></textarea>
+                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
                                     </div>
                                 </div>
                             </div>

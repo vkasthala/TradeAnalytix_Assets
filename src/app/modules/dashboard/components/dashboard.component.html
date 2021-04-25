@@ -5,8 +5,18 @@
                 Key Metrics
             </h5>
         </div>
-            
+
         <div class="trade-dash-cards">
+            <div class="flex-item" *ngFor="let item of summaryItems;">
+                <div class="flex-inner">
+                    <a>
+                        <h3 class="trade_count trade-green" [style.color]="getSummaryTextColor(item)">{{item.value}}{{getValueSuffix(item)}}</h3>
+                        <span class="trade_title">{{item.name}}</span>
+                    </a>
+                </div>
+            </div>
+
+            <!--
             <div class="flex-item">
                 <div class="flex-inner">
                     <a>
@@ -23,7 +33,7 @@
                     </a>
                 </div>
             </div>
-            
+
             <div class="flex-item">
                 <div class="flex-inner">
                     <a>
@@ -36,7 +46,7 @@
                 <div class="flex-inner">
                     <a>
                         <h3 class="trade_count">12457</h3>
-                        <span class="trade_title">Max. Amount  at Risk</span>
+                        <span class="trade_title">Max. Amount at Risk</span>
                     </a>
                 </div>
             </div>
@@ -44,7 +54,7 @@
                 <div class="flex-inner">
                     <a>
                         <h3 class="trade_count">23984</h3>
-                        <span class="trade_title">Max. Proﬁt  Potential</span>
+                        <span class="trade_title">Max. Proﬁt Potential</span>
                     </a>
                 </div>
             </div>
@@ -52,7 +62,7 @@
                 <div class="flex-inner">
                     <a>
                         <h3 class="trade_count trade-red">123%</h3>
-                        <span class="trade_title">Volatility of  Returns</span>
+                        <span class="trade_title">Volatility of Returns</span>
                     </a>
                 </div>
             </div>
@@ -60,10 +70,11 @@
                 <div class="flex-inner">
                     <a>
                         <h3 class="trade_count trade-success">23.2</h3>
-                        <span class="trade_title">Avg Daily  Trade Count</span>
+                        <span class="trade_title">Avg Daily Trade Count</span>
                     </a>
                 </div>
             </div>
+        -->
             <!-- <div class="flex-item">
                 <div class="flex-inner">
                     <a>
@@ -191,7 +202,7 @@
                         <h5>Goal Status</h5>
                     </div>
                     <div class="dsh-img">
-                        <img src="../../../../assets/images/Dashboard/goal_status.jpg" alt="" class="img-fluid das-i" >
+                        <img src="../../../../assets/images/Dashboard/goal_status.jpg" alt="" class="img-fluid das-i">
                     </div>
                 </div>
             </div>
@@ -221,7 +232,8 @@
                         <h5>Calendar Report</h5>
                     </div>
                     <div class="dsh-img">
-                        <img src="../../../../assets/images/Dashboard/calendar_report.jpg" alt="" class="img-fluid das-i">
+                        <img src="../../../../assets/images/Dashboard/calendar_report.jpg" alt=""
+                            class="img-fluid das-i">
                     </div>
                 </div>
             </div>
@@ -230,8 +242,82 @@
                     <div class="trade-headiang">
                         <h5>Trade Plan</h5>
                     </div>
-                    <div class="dsh-img">
-                        <img src="../../../../assets/images/Dashboard/trade_plan.jpg" alt="" class="img-fluid das-i">
+                    <div class="dsh-img p-3">
+                        <div class="custom-grid">
+                            <div class="row custom-grid-head">
+                                <div class="col-3">
+                                    Market View
+                                </div>
+                                <div class="col-3">
+                                    Mindset
+                                </div>
+                                <div class="col-3">
+                                    Date
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3 text-success">
+                                    {{latestTradePlan ? latestTradePlan.marketStatus : 'N/A'}}
+                                </div>
+                                <div class="col-3">
+                                    {{latestTradePlan ? latestTradePlan.mindsetType : 'N/A'}}
+                                </div>
+                                <div class="col-3">
+                                    {{latestTradePlan ? latestTradePlan.day : 'N/A'}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="custom-grid">
+                            <div class="row custom-grid-head">
+                                <div class="col-12">
+                                    Notes
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    {{latestTradePlan ? latestTradePlan.notes : 'N/A'}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="custom-grid">
+                            <div class="row custom-grid-head">
+                                <div class="col-12">
+                                    Planned Trades
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    {{latestTradePlan ? latestTradePlan.plannedTrades : 'N/A'}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="custom-grid">
+                            <div class="row custom-grid-head">
+                                <div class="col-2">
+                                    Aligned
+                                </div>
+                                <div class="col-3">
+                                    Self-Review
+                                </div>
+                                <div class="col-4">
+                                    Lessons Learnt
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-2">
+                                    {{latestTradePlan ? (latestTradePlan.aligned ? 'Yes' : 'No') : 'N/A'}}
+                                </div>
+                                <div class="col-3">
+                                    {{latestTradePlan ? latestTradePlan.selfReview : 'N/A'}}
+                                </div>
+                                <div class="col-4">
+                                    {{latestTradePlan ? latestTradePlan.lessons : 'N/A'}}
+                                </div>
+                                <div class="d-flex">
+                                    <button class="btn btn-primary btn-sm">View More</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

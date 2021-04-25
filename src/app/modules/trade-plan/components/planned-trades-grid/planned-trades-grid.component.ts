@@ -14,7 +14,7 @@ export class PlannedTradesGridComponent implements OnInit {
 
   plannedTradesDataSource: PlannedTrade[] = [];
 
-  plannedTradesGridColumns: string[] = ['symbol', 'strategyType', 'actionType', 'maxRisk', 'profit', 'reason'];
+  plannedTradesGridColumns: string[] = ['symbol', 'strategyType', 'actionType', 'maxRisk', 'profit', 'reason', 'actions'];
 
   @Input('tradePlanId') tradePlanId: number;
 

@@ -25,11 +25,13 @@ export class DatasetupComponent implements OnInit {
   @ViewChild('brokerageCommissions', { static: false }) protected brokerageCommissions: EditableGridComponent<BockerageCommission>;
 
   constructor(private dataSetupService: DataSetupService, private cdr: ChangeDetectorRef, private _dialog: MatDialog, private toastr: ToastrService) { }
-
+  step = 0;
   ngOnInit() {
 
   }
-
+  setStep(index: number) {
+    this.step = index;
+  }
   ngAfterViewInit() {
     this.initBrockerageCommisionsGrid();
     this.initSourceTypes();

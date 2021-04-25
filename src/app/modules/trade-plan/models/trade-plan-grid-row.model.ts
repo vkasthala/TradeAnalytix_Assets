@@ -20,4 +20,8 @@ export class TradePlanGridRow {
 
     todayStrategyCount: number;
 
+    notes: string;
+
+    lessons: string;
+
 }

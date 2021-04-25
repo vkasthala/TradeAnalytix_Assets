@@ -1,42 +1,80 @@
-.add-icon{
+.add-icon {
     float: right;
 }
+
 .mat-table {
-    border: 1px solid #c4c9ce !important;
     max-height: 300px;
     overflow: auto;
-    // width: 100%;
-}
-tr.mat-header-row, tr.mat-footer-row, tr.mat-row {
-    height: 36px;
-    min-height: 36px;
-}
-td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
-    padding: .25rem .5rem !important;
+    width: 100%;
 }
 
+tr.mat-header-row,
+tr.mat-footer-row,
+tr.mat-row {
+    height: 50px;
+    min-height: 50px;
+    line-height: 40px;
+}
+
+.mat-header-cell {
+    background: rgb(157 166 186 / 20%);
+    color: #3A4C85;
+    font-size: 14px;
+    font-weight: 600;
+    width: 14%;
+    border: 0;
+}
+
+td.mat-cell,
+td.mat-footer-cell,
+th.mat-header-cell {
+    padding: .75rem 1.5rem !important;
+    border-radius: 0;
+    line-height: 20px;
+}
 
 .mat-column-symbol {
     flex: 0 0 20% !important;
     min-width: 150px !important;
 }
+
 .mat-column-strategyType {
     flex: 0 0 20% !important;
     min-width: 150px !important;
 }
+
 .mat-column-actionType {
     flex: 0 0 15% !important;
     min-width: 100px !important;
 }
+
 .mat-column-maxRisk {
     flex: 0 0 15% !important;
     min-width: 80px !important;
 }
+
 .mat-column-maxProfit {
     flex: 0 0 15% !important;
     min-width: 100px !important;
 }
+
 .mat-column-reason {
     flex: 0 0 20% !important;
     min-width: 220px !important;
+}
+
+.col-form-label {
+    font-weight: 600;
+    font-size: 15px !important;
+    line-height: 27px;
+    color: #3A4C85;
+}
+
+.mat-icon-edit {
+    color: #9DA6BA;
+}
+
+.mat-row:nth-child(odd) {
+    background-color: #fff;
+    border: 0;
 }

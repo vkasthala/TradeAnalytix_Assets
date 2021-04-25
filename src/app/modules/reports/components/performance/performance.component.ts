@@ -9,10 +9,21 @@ import { ReportTypeService } from '../../services/report-type.service';
   styleUrls: ['../report-tab-content/report-tab-content.component.scss']
 })
 export class PerformanceComponent extends ReportTabContentComponent implements OnInit {
-
   constructor(reportTypeService: ReportTypeService) {
     super('performance', reportTypeService);
+  }
+  
+  ngOnInit() {
+    super.ngOnInit();
     this.reportSubTypes = this.reportTypeService.getSubTypesByCategory(this.type);
+    console.log('risk charts loading..', this.reportSubTypes);
+    this.onReportSubTypeSelect(this.reportSubTypes[0]);
+  }
+
+  reloadData(tab: string) {
+    if (this.reportSubTypes.length == 0) {
+      this.reportSubTypes = this.reportTypeService.getSubTypesByCategory(this.type);
+    }
     this.onReportSubTypeSelect(this.reportSubTypes[0]);
   }
 

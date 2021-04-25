@@ -9,7 +9,7 @@
 
 .tab .nav-tabs li::before,
 .tab .nav-tabs li.active::before {
-    background: #d6dbe1;
+    background: rgb(214 219 225 / 42%);
     content: "";
     height: 1px;
     position: absolute;
@@ -90,16 +90,19 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    margin-bottom: 10px;
     @media #{$small} {
         justify-content: flex-start;
         align-items: flex-start;
         flex-direction: column;
     }
+    .top-sec-label {
+        font-size: 13px;
+        line-height: 1;
+        margin-bottom: 5px;
+    }
 }
 
 .trade-dash-con {
-    margin: 10px 0px;
     @media #{$extra-small} {
         margin-bottom: 0px;
     }
@@ -128,16 +131,16 @@
     display: flex;
     align-items: flex-start;
     .v-tabs {
-        flex: 0 0 16%;
-        max-width: 16%;
+        flex: 0 0 14%;
+        max-width: 14%;
         padding: 0;
     }
 }
 
 .tab-content.tabs {
     display: flex;
-    flex: 0 0 84%;
-    max-width: 84%;
+    flex: 0 0 86%;
+    max-width: 86%;
     border-left: 1px solid rgb(157 166 186 / 30%);
 }
 

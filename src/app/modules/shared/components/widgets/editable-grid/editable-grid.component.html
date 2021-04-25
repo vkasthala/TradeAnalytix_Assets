@@ -1,4 +1,4 @@
-<div class="trade-cards-section">
+<div class="trade-cards-section mb-2">
     <span class="card-main" *ngFor="let entry of columnConfigs">
         <select class="form-control" *ngIf="entry.type == 'select'" id="{{entry.id}}">
             <option value=""></option>
@@ -8,22 +8,22 @@
     </span>
     <span class="text-primary">
         <span class="text-primary action-icon" *ngIf="!edit">
-            <mat-icon class="mt-2 text-success" (click)="onItemAdd()">add_circle</mat-icon>
+            <mat-icon class="mt-2 text-primary" (click)="onItemAdd()">add_circle</mat-icon>
         </span>
-        <span class="text-primary" *ngIf="edit">
-            <mat-icon class="mt-2 text-success action-icon" (click)="onItemEdit()">check_circle</mat-icon>
+    <span class="text-primary" *ngIf="edit">
+            <mat-icon class="mt-2 mat-icon-edit action-icon" (click)="onItemEdit()">check_circle</mat-icon>
         </span>
-        <span class="text-primary" *ngIf="edit">
+    <span class="text-primary" *ngIf="edit">
             <mat-icon class="mt-2 text-danger action-icon" (click)="onCancel()">close</mat-icon>
         </span>
     </span>
 </div>
-<div class="border" [ngClass]="columns.length > 4 ? 'editable-list' : ''">
+<div class="border p-2" [ngClass]="columns.length > 4 ? 'editable-list' : ''">
     <mat-table [dataSource]="dataSource">
         <ng-container *ngFor="let entry of columns" matColumnDef="{{entry}}">
             <mat-cell class="strategy-id-cell" *matCellDef="let element">
-                <span *ngIf="entry == 'action'">
-                    <mat-icon class="mr-2 text-success mat-icon-sm action-icon" (click)="onRowEdit(element)">edit
+                <span *ngIf="entry == 'action'" class="actions-column">
+                    <mat-icon class="mr-2 mat-icon-sm mat-icon-edit action-icon" (click)="onRowEdit(element)">edit
                     </mat-icon>
                     <mat-icon class="mat-icon-sm action-icon" (click)="onRowDelete(element)">delete</mat-icon>
                 </span>

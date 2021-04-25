@@ -1,49 +1,60 @@
 /* You can add global styles to this file, and also import other style files */
+
 @import './assets/styles/variable.scss';
 @import './assets/styles/custom.scss';
-
-*{
+* {
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
 }
 
-h1,h2,h3,h4,h5,h6{
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     margin-bottom: 0px !important;
 }
 
-p{
-    margin-bottom: 0px !important;
-
-}
-
-.form-group{
+p {
     margin-bottom: 0px !important;
 }
-  
-html, body { height: 100%; }
+
+.form-group {
+    margin-bottom: 0px !important;
+}
+
+html,
 body {
-    margin: 0; 
+    height: 100%;
+}
+
+body {
+    margin: 0;
     font-family: 'Poppins', sans-serif !important;
     color: #242E3A !important;
     background-color: #f5f8fa !important;
     font-size: 14px !important;
 }
 
-
-.form-control:focus{
-    outline: none ;
+.form-control:focus {
+    outline: none;
     box-shadow: none !important;
 }
+
 .mat-horizontal-stepper-header .mat-step-icon {
     margin-right: 0 !important;
     width: 20px !important;
     background: transparent !important;
-    color: rgba(0,0,0,.87);
+    color: rgba(0, 0, 0, .87);
     font-size: 14px;
     display: none;
 }
-.mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
+
+.mat-step-header .mat-step-icon-selected,
+.mat-step-header .mat-step-icon-state-done,
+.mat-step-header .mat-step-icon-state-edit {
     color: #37a01a;
     background: transparent !important;
 }
@@ -68,21 +79,23 @@ body {
     }
 }
 
-.mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:first-child)::before, .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:last-child)::after, [dir=rtl] .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:first-child)::after, [dir=rtl] .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:last-child)::before {
+.mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:first-child)::before,
+.mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:last-child)::after,
+[dir=rtl] .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:first-child)::after,
+[dir=rtl] .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:last-child)::before {
     border-top-width: 2px !important;
 }
-
-
 
 .mat-stepper-horizontal-line {
     display: none;
 }
+
 .mat-horizontal-content-container {
     min-height: 40vh !important;
     padding: 0 !important;
     @media #{$small} {
         padding: 0 24px 9px 24px;
-      }
+    }
 }
 
 .cursor-pointer {
@@ -93,11 +106,12 @@ body {
     padding: 0 !important;
 }
 
-.mat-horizontal-stepper-header{
+.mat-horizontal-stepper-header {
     height: 50px !important;
     padding: 0 20px !important;
     background: #F6F8FB;
 }
+
 .mat-horizontal-stepper-header:first-child {
     border-radius: 4px 0 0 0;
 }
@@ -105,36 +119,38 @@ body {
 @media #{$extra-small} {
     .mat-horizontal-stepper-header-container {
         display: none !important;
-      }
-
-      .mat-stepper-horizontal, .mat-stepper-vertical{
-          background-color: transparent !important;
-      }
-      .mat-horizontal-content-container{
-          padding: 0px !important;
-      }
-  }
+    }
+    .mat-stepper-horizontal,
+    .mat-stepper-vertical {
+        background-color: transparent !important;
+    }
+    .mat-horizontal-content-container {
+        padding: 0px !important;
+    }
+}
 
 .mat-expansion-panel-header-title {
     width: 100%;
 }
 
-.mat-step-label{
+.mat-step-label {
     font-size: 15px !important;
     font-weight: 500 !important;
-    
     @media #{$small} {
         white-space: break-spaces !important;
         font-size: 14px !important;
-      }
+    }
 }
+
 .mat-step-label {
     color: #9DA6BA !important;
 }
+
 .mat-step-label-selected {
     color: #fff !important;
 }
-.mydrp{
+
+.mydrp {
     width: 210px !important;
     font-family: 'Poppins', sans-serif !important;
 }
@@ -147,15 +163,21 @@ body {
     height: 40px;
     font-family: 'Poppins', sans-serif !important;
 }
-.trade-plan-date .mydrp .selectiongroup, .trade-plan-date .mydrp .selection {
+
+.trade-plan-date .mydrp .selectiongroup,
+.trade-plan-date .mydrp .selection {
     background: transparent !important;
     font-family: 'Poppins', sans-serif !important;
 }
-.trade-plan-date .mydrp .btnclear, .trade-plan-date .mydrp .btnpicker {
+
+.trade-plan-date .mydrp .btnclear,
+.trade-plan-date .mydrp .btnpicker {
     width: 20px !important;
     background: transparent !important;
 }
-.mat-paginator, .mat-paginator-page-size .mat-select-trigger {
+
+.mat-paginator,
+.mat-paginator-page-size .mat-select-trigger {
     font-family: 'Poppins', sans-serif !important;
     font-size: 13px;
 }
@@ -163,46 +185,55 @@ body {
 .date-range-md .mydrp .selectiongroup {
     height: 38px !important;
 }
+
 .date-range-md .mydrp .selection {
-    height: 38px !important;
+    height: 37px !important;
 }
-input:invalid {   box-shadow: 0 0 1.5px 1px red;   }
 
-  .hide-bars::-webkit-inner-spin-button, 
-  .hide-bars::-webkit-outer-spin-button { 
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
-      margin: 0; 
-  }
-  .hide-bars {
-      border: none !important;
-      width: 100%;
-      text-align: center;
-  }
-  
-  .hide-bars:focus {
+input:invalid {
+    box-shadow: 0 0 1.5px 1px red;
+}
+
+.hide-bars::-webkit-inner-spin-button,
+.hide-bars::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+.hide-bars {
+    border: none !important;
+    width: 100%;
+    text-align: center;
+}
+
+.hide-bars:focus {
     outline: none !important;
-  }
+}
 
-  .height-auto {
+.height-auto {
     height: auto !important;
-  }
+}
 
-  input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-inner-spin-button,
 input[type="date"]::-webkit-calendar-picker-indicator {
     // display: none;
     // -webkit-appearance: none;
 }
-.mat-stepper-horizontal, .mat-stepper-vertical {
+
+.mat-stepper-horizontal,
+.mat-stepper-vertical {
     position: relative;
     font-family: 'Poppins', sans-serif !important;
     background-color: transparent !important;
 }
+
 .mat-stepper-vertical {
     border-top: 1px solid #cecece;
     min-height: 200px;
 }
+
 .mat-vertical-stepper-header {
     position: absolute !important;
     z-index: 20;
@@ -213,10 +244,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     box-sizing: border-box !important;
     border-bottom: 1px solid #cecece;
 }
+
 .mat-vertical-content-container {
     margin-left: 0 !important;
     padding-left: 190px;
 }
+
 .mat-vertical-stepper-content {
     border-left: 1px solid #cecece;
 }
@@ -225,22 +258,26 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     border-top-width: 2px !important;
 }
 
-.mat-stepper-vertical .mat-step:nth-child(2) > .mat-vertical-stepper-header {
+.mat-stepper-vertical .mat-step:nth-child(2)>.mat-vertical-stepper-header {
     top: 60px;
 }
-.mat-stepper-vertical .mat-step:nth-child(3) > .mat-vertical-stepper-header {
-    top:120px;
+
+.mat-stepper-vertical .mat-step:nth-child(3)>.mat-vertical-stepper-header {
+    top: 120px;
 }
-.mat-stepper-vertical .mat-step:nth-child(4) > .mat-vertical-stepper-header {
-    top:180px;
+
+.mat-stepper-vertical .mat-step:nth-child(4)>.mat-vertical-stepper-header {
+    top: 180px;
 }
+
 .mat-stepper-vertical-line::before {
     border-left: 0 !important;
 }
 
-.mat-stepper-vertical .mat-step:nth-child(1) > .mat-vertical-content-container .mat-vertical-content {
+.mat-stepper-vertical .mat-step:nth-child(1)>.mat-vertical-content-container .mat-vertical-content {
     min-height: 250px;
 }
+
 .mat-expansion-indicator::after {
     color: #3A4C85 !important;
 }

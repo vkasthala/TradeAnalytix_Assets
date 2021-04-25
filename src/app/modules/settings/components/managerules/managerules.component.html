@@ -1,4 +1,4 @@
-<div class="container">
+<div class="managerules-sec">
     <div class="trade-st-box">
         <label class="m-0">Filter By</label>
         <div class="px-2">
@@ -10,54 +10,52 @@
                 <option value="5">Expired</option>
             </select>
         </div>
-        <a class="add-new" (click)="addRule('Add', 'SAVE')">
-            <mat-icon class="mat-icon-sm text-success">add_circle</mat-icon>
-            ADD RULE
+        <a class="btn btn-primary add-new" (click)="addEntryExitRule('Add', 'SAVE')">
+            <mat-icon class="mat-icon-sm text-white mr-1">add_circle</mat-icon>
+            Add Rule
         </a>
     </div>
 
     <div class="trade-strategies-table">
         <div class="trade-table">
             <mat-table [dataSource]="dataSource" matSort>
-              <!-- Position Column -->
-              <ng-container matColumnDef="date">
-                <mat-header-cell class="date-cell" *matHeaderCellDef> Date </mat-header-cell>
-                <mat-cell *matCellDef="let element"> {{element.date}} </mat-cell>
-              </ng-container>
-          
-              <!-- Name Column -->
-              <ng-container matColumnDef="type">
-                <mat-header-cell class="type-cell" *matHeaderCellDef> Type</mat-header-cell>
-                <mat-cell *matCellDef="let element" class="type-cell"> {{element.type}} </mat-cell>
-              </ng-container>
-          
-              <!-- Weight Column -->
-              <ng-container matColumnDef="description">
-                <mat-header-cell class="description-cell" *matHeaderCellDef> Description</mat-header-cell>
-                <mat-cell *matCellDef="let element" class="description-cell"> {{element.description}} </mat-cell>
-              </ng-container>
-          
-              <!-- Symbol Column -->
-              <ng-container matColumnDef="source">
-                <mat-header-cell class="source-cell" *matHeaderCellDef> Source </mat-header-cell>
-                <mat-cell class="source-cell" *matCellDef="let element"> {{element.source}} </mat-cell>
-              </ng-container>
-              
-              <!-- Action Column -->
-              <ng-container matColumnDef="action">
-                <mat-header-cell class="action-cell" *matHeaderCellDef> Action</mat-header-cell>
-                <mat-cell *matCellDef="let element" class="action-cell">
-                    <mat-icon class="text-success mat-icon-sm cursor" (click)="editRule(element, 'Edit', 'Update')">edit</mat-icon>
-                    <mat-icon class="mat-icon-sm cursor ml-2" (click)="deleteRule(element)">delete</mat-icon>
-                </mat-cell>
-              </ng-container>
-          
-              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-              <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                <!-- Position Column -->
+                <ng-container matColumnDef="date">
+                    <mat-header-cell class="date-cell" *matHeaderCellDef> Date </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.createDate}} </mat-cell>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="type">
+                    <mat-header-cell class="type-cell" *matHeaderCellDef> Type</mat-header-cell>
+                    <mat-cell *matCellDef="let element" class="type-cell"> {{element.type}} </mat-cell>
+                </ng-container>
+
+                <!-- Weight Column -->
+                <ng-container matColumnDef="description">
+                    <mat-header-cell class="description-cell" *matHeaderCellDef> Description</mat-header-cell>
+                    <mat-cell *matCellDef="let element" class="description-cell"> {{element.description}} </mat-cell>
+                </ng-container>
+
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="source">
+                    <mat-header-cell class="source-cell" *matHeaderCellDef> Source </mat-header-cell>
+                    <mat-cell class="source-cell" *matCellDef="let element"> {{element.source}} </mat-cell>
+                </ng-container>
+
+                <!-- Action Column -->
+                <ng-container matColumnDef="action">
+                    <mat-header-cell class="action-cell" *matHeaderCellDef> Action</mat-header-cell>
+                    <mat-cell *matCellDef="let element" class="action-cell">
+                        <mat-icon class="mat-icon-sm mat-icon-edit" (click)="editRule(element, 'Edit', 'Update')">edit</mat-icon>
+                        <mat-icon class="mat-icon-sm ml-3" (click)="deleteRule(element)">delete</mat-icon>
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
             </mat-table>
-            <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true"
-            [length]="dataSource.totalCount"></mat-paginator>
-          </div>
+            <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true" [length]="dataSource.totalCount"></mat-paginator>
+        </div>
     </div>
 </div>
-
