@@ -1,27 +1,27 @@
-import {Injectable} from '@angular/core';
-import { Observable } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { environment } from '../../../../environments/environment';
 import { HttpService } from '../../shared/services/http.service';
-import { InvestmentGoals } from'../models/investment-goals.model';
+import { InvestmentGoals } from '../models/investment-goals.model';
 @Injectable({
-    providedIn:'root'
+    providedIn: 'root'
 })
-export class GoalsService{
+export class GoalsService {
     constructor(private http: HttpService) { }
-    private _url = "./assets/settings.json";
+    private url = environment.apiUrl + '/metadata/investment-goal/';
 
-    getInvestGoals(){
-       return this.http.get<InvestmentGoals[]>(this._url)
+    getInvestGoals() {
+        return this.http.get<InvestmentGoals[]>(this.url);
     }
 
-    // getInvestGoals(){
-    //     let staticGoals:InvestmentGoals[] =[];
-    //     let goal: InvestmentGoals = new InvestmentGoals();
-    //     goal.id = 1;
-    //     goal.entrydate = "1/19/2021";
-    //     goal.targetdate = "2021-01-19 - 2021-01-29";
-    //     goal.profit = 200;
-    //     staticGoals.push(goal);
-        
-    //    return Observable.of(staticGoals);
-    // }
+    saveInvestmentGoals(goals: InvestmentGoals) {
+        return this.http.post(this.url, goals);
+    }
+
+    deleteInvestmentGoals(goal: InvestmentGoals) {
+        return this.http.post(this.url + goal.id, null);
+    }
+
+    putInvestmentGoals(goal: InvestmentGoals) {
+        return this.http.put(this.url, goal);
+    }
 }
