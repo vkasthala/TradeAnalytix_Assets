@@ -7,7 +7,7 @@ import { InvestmentGoals } from '../models/investment-goals.model';
 })
 export class GoalsService {
     constructor(private http: HttpService) { }
-    private url = environment.apiUrl + '/metadata/investment-goal/';
+    private url = environment.apiUrl + '/metadata/investment-goal';
 
     getInvestGoals() {
         return this.http.get<InvestmentGoals[]>(this.url);
@@ -18,7 +18,7 @@ export class GoalsService {
     }
 
     deleteInvestmentGoals(goal: InvestmentGoals) {
-        return this.http.post(this.url + goal.id, null);
+        return this.http.post(this.url + '/' + goal.id, null);
     }
 
     putInvestmentGoals(goal: InvestmentGoals) {
