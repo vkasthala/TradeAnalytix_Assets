@@ -1,13 +1,8 @@
 export class InvestmentGoals {
-    
     id: number;
-
-    entrydate: string;
-    
-    targetdate: string;
-
-    profit: number;
-
+    entryDate: string;
+    startDate: string;
+    endDate: string;
+    targetAmount: number;
+    goalName: string;
 }
-
-
