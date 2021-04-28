@@ -82,6 +82,7 @@ import { EditTradePlanComponent } from '../trade-plan/components/edit-trade-plan
 import { EditableListComponent } from '../shared/components/widgets/editable-list/editable-list.component';
 
 import { StrategyComparison } from '../strategy-comparison/components/strategy-comparison.component';
+import { StrategyDetailsComponent } from '../shared/components/modals/strategy-details/strategy-details.component';
 import { EditStrategyComponent } from '../shared/components/modals/edit-strategy/edit-strategy.component';
 
 
@@ -174,6 +175,7 @@ export const MY_FORMATS = {
     EditableListComponent,
     EditableGridComponent,
     StrategyComparison,
+    StrategyDetailsComponent,
     EditStrategyComponent,
     OpenStrategiesGridComponent,
     PlannedTradeDialogComponent,
@@ -213,6 +215,7 @@ export const MY_FORMATS = {
     TradeStrategiesGrid,
     ConfirmDialogComponent,
     UpdateStockPricePopupComponent,
+    StrategyDetailsComponent,
     EditStrategyComponent,
     PlannedTradeDialogComponent,
     StrategyActionTextDialogComponent
