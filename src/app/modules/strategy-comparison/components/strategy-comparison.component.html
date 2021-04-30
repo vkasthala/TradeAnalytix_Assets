@@ -39,11 +39,7 @@
                                             </div>
                                             <div class="trade-sel position-relative">
                                                 <select class="form-control select-input">
-                                                    <option value=1>0221-304278 </option>
-                                                    <option value=2>0228-293842</option>
-                                                    <option value=3>0301-238453</option>
-                                                    <option value=4>0321-485721</option>
-                                                    <option value=5>0321-485777</option>
+                                                    <option *ngFor="let key of userStrategies" [value]="key">{{key.uid}}</option>
                                                 </select>
                                                 <mat-icon class="form-icon-down">keyboard_arrow_down</mat-icon>
                                             </div>
@@ -62,11 +58,7 @@
                                             </div>
                                             <div class="trade-sel position-relative">
                                                 <select class="form-control select-input">
-                                                    <option value=1>0221-304278 </option>
-                                                    <option value=2>0228-293842</option>
-                                                    <option value=3>0301-238453</option>
-                                                    <option value=4>0321-485721</option>
-                                                    <option value=5>0321-485777</option>
+                                                    <option *ngFor="let key of userStrategies" [value]="key">{{key.uid}}</option>
                                                 </select>
                                                 <mat-icon class="form-icon-down">keyboard_arrow_down</mat-icon>
                                             </div>
@@ -86,11 +78,7 @@
                                                 </div>
                                                 <div class="trade-sel position-relative">
                                                     <select class="form-control select-input">
-                                                        <option value=1>0221-304278 </option>
-                                                        <option value=2>0228-293842</option>
-                                                        <option value=3>0301-238453</option>
-                                                        <option value=4>0321-485721</option>
-                                                        <option value=5>0321-485777</option>
+                                                        <option *ngFor="let key of userStrategies" [value]="key">{{key.uid}}</option>
                                                     </select>
                                                     <mat-icon class="form-icon-down">keyboard_arrow_down</mat-icon>
                                                 </div>

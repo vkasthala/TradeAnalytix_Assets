@@ -17,6 +17,7 @@ export class ApiInterceptor implements HttpInterceptor {
                     if (err.status === 401) {
                         this.router.navigate(['landing']);
                     }
+                    throw err;
                 }
                 return event;
             }));

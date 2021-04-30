@@ -1,30 +1,14 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import { NavigationExtras, Router } from '@angular/router';
-import { ActionType } from '../../shared/models/trade-management/action-type.enum';
-import { OptionEntry } from '../../shared/models/trade-management/option-entry.model';
-import { OptionType } from '../../shared/models/trade-management/option-type.enum';
-import { StockEntry } from '../../shared/models/trade-management/stock-entry.model';
-import { StockSymbol } from '../../shared/models/trade-management/stock-symbol.model';
-import { StrategyType } from '../../shared/models/trade-management/strategy-type.enum';
-import { TradeInputData } from '../../shared/models/trade-management/trade-input-data.model';
-import { UserStockSummary } from '../../shared/models/trade-management/user-stock-summary.model';
-import { StrategyCreateService } from '../../shared/services/strategy-create.service';
-import { UserStockStatsService } from '../../shared/services/user-stock-stats.service';
-import { UtilService } from '../../utilities/services/util.service';
-import { OptionResult } from '../../risk-analysis/models/option-result.model';
-import { RiskAnalysisRecord } from '../../risk-analysis/models/risk-analysis-record.model';
-import { RiskAnalysisRequest } from '../../risk-analysis/models/risk-analysis-request.model';
-import { StockResult } from '../../risk-analysis/models/stock-result.model';
-import { RiskAnalysisService } from '../../risk-analysis/services/risk-analysis.service';
-import { StrategyTemplate } from '../../shared/models/trade-management/strategy-template.model';
-import { TradeStrategy } from '../../trade-management/models/trade-strategy.model';
-import { ToastrService } from 'ngx-toastr';
-import { RiskAnalysisChartComponent } from '../../risk-analysis/components/risk-analysis-chart/risk-analysis-chart.component';
-import { MaxRiskDetails } from '../../risk-analysis/models/max-risk-details.model';
+import { Component, Input, OnInit } from '@angular/core';
 // import { UpdateStockPricePopupComponent } from './update-stock-price-popup/update-stock-price-popup.component';
 import { MatDialog } from '@angular/material/dialog';
-import { StrategyDetailsComponent } from 'src/app/modules/shared/components/modals/strategy-details/strategy-details.component';
+import { ToastrService } from 'ngx-toastr';
 import { EditStrategyComponent } from 'src/app/modules/shared/components/modals/edit-strategy/edit-strategy.component';
+import { StrategyDetailsComponent } from 'src/app/modules/shared/components/modals/strategy-details/strategy-details.component';
+import { StrategyInput } from '../../compare-strategies/models/strategy-input.model';
+import { CompareStrategiesService } from '../../compare-strategies/services/compare-strategies.service';
+import { StockSymbol } from '../../shared/models/trade-management/stock-symbol.model';
+import { UserStockSummary } from '../../shared/models/trade-management/user-stock-summary.model';
+import { UserStockStatsService } from '../../shared/services/user-stock-stats.service';
 
 
 @Component({
@@ -38,53 +22,31 @@ export class StrategyComparison implements OnInit {
   @Input('matTooltipShowDelay') showDelay: number;
   @Input('matTooltipHideDelay') hideDelay: number;
 
-  @ViewChild('riskAnalysisChart', { static: false }) private riskAnalysisChartComponent: RiskAnalysisChartComponent;
-
   currentState: number = 1;
-  selectedStrategy: number = 15;
-
-  strategiesAdded: boolean;
-  stockPriceUpdated: boolean;
-  performRiskAnalysis: boolean;
-  displayRiskAnalysis: boolean;
-  analyzeRisk: boolean;
-  detailSummaryLoaded: boolean;
-  fromAddTrade: boolean;
 
   selectedStock: StockSymbol = new StockSymbol();
   stockSummary: UserStockSummary = new UserStockSummary();
-
-  inputState: TradeInputData;
-
-  strategies = StrategyType;
-  strategyTypes: String[] = this.strategyCreateService.getStrategies();
-
-  stockEntry: StockEntry;
-  strategiesList= [];
-  stockOptions: OptionEntry[] = [];
-
-  riskAnalysisResults: RiskAnalysisRecord[] = [];
-  maxRiskDetails: MaxRiskDetails;
-
-  constructor(private utilService: UtilService,
-    private riskAnalysisService: RiskAnalysisService,
-    private userStockStatsService: UserStockStatsService,
-    private strategyCreateService: StrategyCreateService,
-    private toastr: ToastrService,
-    private router: Router,
-    private _dialog: MatDialog) {
-    this.stockEntry = this.createStockEntry();
-  }
 
   step = 0;
   panelOpenState = false;
   panelDisabled = true;
   panel3Disabled = true;
   panelExpand = false;
+  detailSummaryLoaded: boolean = false;
 
-  ngOnInit() {
+  userStrategies: StrategyInput[] = [];
+  strategiesList: StrategyInput[] = [];
+
+  constructor(
+    private userStockStatsService: UserStockStatsService,
+    private compareStrategyService: CompareStrategiesService,
+    private toastr: ToastrService,
+    private _dialog: MatDialog) {
   }
 
+  ngOnInit() {
+
+  }
 
   enterSymbol() {
     if (!this.selectedStock || !this.selectedStock.code) {
@@ -94,54 +56,31 @@ export class StrategyComparison implements OnInit {
     this.currentState++;
   }
 
-  submitStrategies() {
-    this.strategiesAdded = true;
-    this.performRiskAnalysis = false;
-    this.displayRiskAnalysis = false;
-    this.stockEntry = this.createStockEntry();
+  symbolSelectEventHandler($event: any) {
+    this.selectedStock = $event;
+    this.loadStockBriefSummary();
+    this.loadUserStrategies();
+  }
+
+  loadUserStrategies() {
+    //Load strategies
+    this.compareStrategyService.getStrategiesList(this.selectedStock.id).subscribe(result => {
+      this.userStrategies = result;
+      /*if (result.length > 0) {
+        this.strategiesList[0] = result[0];
+      }
+      if (result.length > 1) {
+        this.strategiesList[1] = result[1];
+      }*/
+    })
   }
 
   addStrategy() {
     if (this.strategiesList.length < 5) {
-      this.strategiesList.push(this.stockEntry)
+      if (this.userStrategies.length > 0) {
+        this.strategiesList.push(this.userStrategies[0]);
+      }
     }
-  }
-  deleteStrategyItem(stockEntry) {
-    this.strategiesList.splice(stockEntry, 1);
-  }
-
-
-
-
-  decreaseStockLowerBand() {
-    if (this.stockEntry.lowerBound < 1 && this.stockEntry.lowerBound > -100) {
-      this.stockEntry.lowerBound--;
-    }
-  }
-
-  increaseStockLowerBand() {
-    if (this.stockEntry.lowerBound < 0 && this.stockEntry.lowerBound > -100) {
-      this.stockEntry.lowerBound++;
-    }
-  }
-
-
-  decreaseStockUpperBand() {
-    if (this.stockEntry.upperBound > 0 && this.stockEntry.upperBound < 101) {
-      this.stockEntry.upperBound--;
-    }
-  }
-
-  increaseStockeUpperBand() {
-    if (this.stockEntry.upperBound > -1 && this.stockEntry.upperBound < 100) {
-      this.stockEntry.upperBound++;
-    }
-  }
-
-
-  symbolSelectEventHandler($event: any) {
-    this.selectedStock = $event;
-    this.loadStockBriefSummary();
   }
 
   loadMoreStatsHandler($event: any) {
@@ -152,7 +91,6 @@ export class StrategyComparison implements OnInit {
   loadStockBriefSummary() {
     this.userStockStatsService.getUserStockBriefSummary(this.selectedStock.id, 1).subscribe(result => {
       this.stockSummary = result;
-      this.stockEntry.price = this.stockSummary.close;
     });
   }
 
@@ -163,13 +101,13 @@ export class StrategyComparison implements OnInit {
     });
   }
 
-
-
-
   checkForDecimalValidation(event) {
     event.target.value = parseFloat(event.target.value).toFixed(2);
   }
 
+  deleteStrategyItem(index: number) {
+    this.strategiesList.splice(index, 1);
+  }
 
   enforceMaxLength($event, min, max) {
     let t = $event.target;
@@ -177,20 +115,6 @@ export class StrategyComparison implements OnInit {
       return false;
     }
   }
-
-
-
-
-  createStockEntry(): StockEntry {
-    let stockEntry: StockEntry = new StockEntry();
-    stockEntry.price = this.stockSummary.close;
-    stockEntry.lowerBound = -10;
-    stockEntry.upperBound = 10;
-    stockEntry.riskFreeRate = 6;
-    stockEntry.actionType = null;
-    return stockEntry;
-  }
-
 
 
   setStep(index: number) {
@@ -204,36 +128,12 @@ export class StrategyComparison implements OnInit {
 
     this.panelExpand = false;
   }
+
   afterPanelOpened() {
     console.log("Panel opened!");
   }
-  initRiskAnalysisChart(riskAnalysisRequest: RiskAnalysisRequest) {
-    this.riskAnalysisService.getRiskAnalysisChart(riskAnalysisRequest).subscribe(chartResult => {
-      this.riskAnalysisChartComponent.loadChart(chartResult);
-    });
-  }
-  calculateMaxRisk() {
-    let riskAnalysisRequest: RiskAnalysisRequest = this.createRiskAnalysisRequest();
 
-    console.log('max risk request:', JSON.stringify(riskAnalysisRequest));
-
-    this.riskAnalysisService.getMaxRiskDetails(riskAnalysisRequest).subscribe(result => {
-      console.log("max details success:", result)
-      this.maxRiskDetails = result;
-    },
-      errResponse => {
-        console.log("max details error:", errResponse);
-      });
-  }
-
-  createRiskAnalysisRequest(): RiskAnalysisRequest {
-    let riskAnalysisRequest: RiskAnalysisRequest = new RiskAnalysisRequest();
-    riskAnalysisRequest.stockPrice = this.stockEntry;
-    riskAnalysisRequest.options = this.stockOptions;
-    return riskAnalysisRequest;
-  }
-
-  editStrategyItem(index){
+  editStrategyItem(index) {
     const dialogRef = this._dialog.open(EditStrategyComponent, {
       disableClose: false,
       width: 'auto',
@@ -243,7 +143,8 @@ export class StrategyComparison implements OnInit {
       console.log('here...', res);
     });
   }
-  StrategyDetailsModal(index){
+
+  StrategyDetailsModal(index) {
     const dialogRef = this._dialog.open(StrategyDetailsComponent, {
       disableClose: false,
       width: 'auto',
@@ -253,5 +154,6 @@ export class StrategyComparison implements OnInit {
       console.log('here...', res);
     });
   }
+
 }
 
