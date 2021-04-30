@@ -31,49 +31,11 @@
                         <ng-template matExpansionPanelContent>
                             <div class="trade-stoack-main" #tradeCards>
                                 <div class="d-flex align-items-end">
-                                    <div class="d-flex justify-content-between align-items-end">
-                                        <div class="card-main">
-                                            <div class="d-flex align-items-center">
-                                                <label class="col-form-label">Strategy-1 </label>
-                                                <mat-icon class="mat-icon-sm mat-icon-edit ml-2" (click)="StrategyDetailsModal(1)">info</mat-icon>
-                                            </div>
-                                            <div class="trade-sel position-relative">
-                                                <select class="form-control select-input">
-                                                    <option *ngFor="let key of userStrategies" [value]="key">{{key.uid}}</option>
-                                                </select>
-                                                <mat-icon class="form-icon-down">keyboard_arrow_down</mat-icon>
-                                            </div>
-                                        </div>
-                                        <div class="px-3">
-                                            <div class="cursor" (click)="editStrategyItem(1)">
-                                                <mat-icon class="mat-icon-sm mat-icon-edit">edit</mat-icon>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-end">
-                                        <div class="card-main">
-                                            <div class="d-flex align-items-center">
-                                                <label class="col-form-label">Strategy-2 </label>
-                                                <mat-icon class="mat-icon-sm mat-icon-edit ml-2" (click)="StrategyDetailsModal(2)">info</mat-icon>
-                                            </div>
-                                            <div class="trade-sel position-relative">
-                                                <select class="form-control select-input">
-                                                    <option *ngFor="let key of userStrategies" [value]="key">{{key.uid}}</option>
-                                                </select>
-                                                <mat-icon class="form-icon-down">keyboard_arrow_down</mat-icon>
-                                            </div>
-                                        </div>
-                                        <div class="px-3">
-                                            <div class="cursor" (click)="editStrategyItem(2)">
-                                                <mat-icon class="mat-icon-sm mat-icon-edit">edit</mat-icon>
-                                            </div>
-                                        </div>
-                                    </div>
                                     <ng-container *ngFor="let item of strategiesList;let index = index">
                                         <div class="d-flex justify-content-between align-items-end">
                                             <div class="card-main">
                                                 <div class="d-flex align-items-center">
-                                                    <label class="col-form-label">Strategy-{{index+3}} </label>
+                                                    <label class="col-form-label">Strategy-{{index+1}} </label>
                                                     <mat-icon class="mat-icon-sm mat-icon-edit ml-2" (click)="StrategyDetailsModal(index+3)">info</mat-icon>
                                                 </div>
                                                 <div class="trade-sel position-relative">
@@ -94,11 +56,11 @@
                                         </div>
                                     </ng-container>
 
-                                    <div class="search_btn add_strategy" [ngClass]="strategiesList.length > 4 ? 'mt-0' : '' ">
+                                    <div class="search_btn add_strategy" [ngClass]="strategiesList.length > 1 ? 'mt-0' : '' ">
                                         <div class="mb-1">
                                             <a class="btn btn-primary mr-3" (click)="submitStrategies()">SUBMIT</a>
                                         </div>
-                                        <a class="btn" [ngClass]="strategiesList.length > 1 ? 'btn-outline-primary' : 'btn-primary' " (click)="addStrategy()" *ngIf="strategiesList.length < 3 && selectedStock.id">Add Strategy</a>
+                                        <a class="btn" [ngClass]="strategiesList.length > 1 ? 'btn-outline-primary' : 'btn-primary' " (click)="addStrategy()" *ngIf="strategiesList.length < 6 && selectedStock.id">Add Strategy</a>
                                     </div>
                                 </div>
                             </div>

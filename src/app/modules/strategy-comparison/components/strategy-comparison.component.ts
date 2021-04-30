@@ -66,12 +66,12 @@ export class StrategyComparison implements OnInit {
     //Load strategies
     this.compareStrategyService.getStrategiesList(this.selectedStock.id).subscribe(result => {
       this.userStrategies = result;
-      /*if (result.length > 0) {
+      if (result.length > 0) {
         this.strategiesList[0] = result[0];
       }
       if (result.length > 1) {
         this.strategiesList[1] = result[1];
-      }*/
+      }
     })
   }
 
