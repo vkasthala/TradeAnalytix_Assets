@@ -1,0 +1,26 @@
+<div class="compare-popup">
+    <div class="compare-pop-inner">
+        <div class="top-pop-inner">
+            <div class="left-heading">
+                <h6>Strategy Details</h6>
+            </div>
+            <div class="right-close" (click)="closeModal()">
+                <mat-icon>clear</mat-icon>
+            </div>
+        </div>
+
+        <div class="main-pop-inner">
+            <p class="col-form-label">Buy to Open 100 Stock at <span class="text-success">$329.90</span></p>
+            <p class="col-form-label">Sell to Open 1 contract of 355 Jun-19-2020 Call at <span class="text-success">$2.30</span> </p>
+            <p class="col-form-label">Buy to Open 1 contract of 310 Jun-19-2020 Put at <span class="text-success">$1.80</span> </p>
+            <p class="col-form-label">Sell to Open 1 contract of 270 Jun-19-2020 Call at <span class="text-success">$0.80</span> </p>
+
+            <div class="separator"></div>
+
+            <div class="text-right">
+                <button type="button" class="btn btn-add" [mat-dialog-close]="data">Ok</button>
+            </div>
+        </div>
+
+    </div>
+</div>
