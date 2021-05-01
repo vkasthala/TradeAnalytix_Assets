@@ -4,6 +4,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { EditStrategyComponent } from 'src/app/modules/shared/components/modals/edit-strategy/edit-strategy.component';
 import { StrategyDetailsComponent } from 'src/app/modules/shared/components/modals/strategy-details/strategy-details.component';
+import { CompareStrategyResponse } from '../../compare-strategies/models/compare-strategy-response.model';
+import { StrategyCompareRequest } from '../../compare-strategies/models/strategy-compare-request.model';
 import { StrategyInput } from '../../compare-strategies/models/strategy-input.model';
 import { CompareStrategiesService } from '../../compare-strategies/services/compare-strategies.service';
 import { StockSymbol } from '../../shared/models/trade-management/stock-symbol.model';
@@ -36,6 +38,12 @@ export class StrategyComparison implements OnInit {
 
   userStrategies: StrategyInput[] = [];
   strategiesList: StrategyInput[] = [];
+
+  riskFreeRate: number = 6;
+  lowerBound: number = -10;
+  upperBound: number = 10;
+
+  compareResult: CompareStrategyResponse;
 
   constructor(
     private userStockStatsService: UserStockStatsService,
@@ -76,6 +84,7 @@ export class StrategyComparison implements OnInit {
   }
 
   addStrategy() {
+    this.compareResult = null;
     if (this.strategiesList.length < 5) {
       if (this.userStrategies.length > 0) {
         this.strategiesList.push(this.userStrategies[0]);
@@ -131,6 +140,22 @@ export class StrategyComparison implements OnInit {
 
   afterPanelOpened() {
     console.log("Panel opened!");
+  }
+
+  submitStrategies() {
+    this.compareStrategyService.compareStrategies(this.createStrategyCompareRequest()).subscribe(result => {
+      console.log("strategy compare result:", result);
+      this.compareResult = result;
+    });
+  }
+
+  createStrategyCompareRequest(): StrategyCompareRequest {
+    let request: StrategyCompareRequest = new StrategyCompareRequest();
+    request.strategies = this.strategiesList;
+    request.lowerBound = this.lowerBound;
+    request.upperBound = this.upperBound;
+    request.riskFreeRate = this.riskFreeRate;
+    return request;
   }
 
   editStrategyItem(index) {

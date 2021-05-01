@@ -67,7 +67,7 @@
                         </ng-template>
                     </mat-expansion-panel>
 
-                    <mat-expansion-panel [expanded]="step === 0" *ngIf="strategiesAdded">
+                    <mat-expansion-panel [expanded]="step === 0" *ngIf="compareResult">
                         <mat-expansion-panel-header>
                             <mat-panel-title>
                                 Analyze the risk and proﬁtability associated with the strategies for the given stock price range
@@ -80,15 +80,15 @@
                                         <div class="col-4">
                                             <label class="col-form-label">Price Range</label>
                                             <div class="d-flex">
-                                                <input type="text" name="price_range_min" value="-10%" class="form-control" />
-                                                <input type="text" name="price_range_max" value="-10%" class="form-control ml-2" />
+                                                <input type="text" name="price_range_min" value="-10%" class="form-control" [(ngModel)]='lowerBound'/>
+                                                <input type="text" name="price_range_max" value="-10%" class="form-control ml-2" [(ngModel)]='upperBound'/>
                                             </div>
                                         </div>
 
                                         <div class="col-4">
                                             <label class="col-form-label">Risk Free Rate</label>
                                             <div class="d-flex">
-                                                <input type="text" name="price_range_min" value="6.5%" class="form-control" />
+                                                <input type="text" name="price_range_min" class="form-control" [(ngModel)]='riskFreeRate'/>
                                             </div>
                                         </div>
                                         <div class="d-flex align-items-end">
@@ -96,7 +96,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-6">
+                                <!--<div class="col-6">
                                     <div class="d-flex justify-content-end align-items-center mt-3">
                                         <div class="k-font-bold d-flex justify-content-end" *ngIf="maxRiskDetails">
                                             <div class="risk_details risk_profit mr-3">
@@ -112,7 +112,7 @@
                                         </div>
                                         <button class="col-3 btn btn-enter ml-3" (click)="calculateMaxRisk()">Max Profit/Risk</button>
                                     </div>
-                                </div>
+                                </div>-->
                             </div>
 
 
@@ -134,84 +134,20 @@
                                                 <div class="risk-tabs-table">
                                                     <div class="risk-table">
 
-                                                        <div class="trad-risk-head">
-                                                            <h6>
-                                                                {{riskAnalysisResults[0].stockPriceResult.heading}}
-                                                            </h6>
-                                                        </div>
                                                         <table>
                                                             <thead>
                                                                 <tr>
                                                                     <th>Change</th>
                                                                     <th>Price</th>
-                                                                    <th *ngIf="stockAdded">P&L</th>
+                                                                    <th *ngFor="let key of strategiesList; let i = index">{{'Strategy-' + (i + 1) + ' P&L' }}</th>
                                                                 </tr>
                                                             </thead>
 
                                                             <tbody>
-                                                                <tr *ngFor="let item of riskAnalysisResults;let index=index">
-                                                                    <td [ngClass]="{ 'trade-rd' :item.stockPriceResult.gainLoss >= 0, 'trade-rdd':item.stockPriceResult.gainLoss < 0}">
-                                                                        {{item.stockPriceResult.change + '%'}}</td>
-                                                                    <td>{{item.stockPriceResult.stockPrice}}</td>
-                                                                    <td *ngIf="stockAdded" [ngClass]="{ 'trade-rd' :item.stockPriceResult.gainLoss >= 0, 'trade-rdd':item.stockPriceResult.gainLoss < 0}">
-                                                                        {{item.stockPriceResult.gainLoss}}</td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                    <ng-container *ngFor="let item of riskAnalysisResults[0].optionResults;let index=index">
-                                                        <div class="risk-table" *ngIf="riskAnalysisResults && riskAnalysisResults.length && stockOptions && stockOptions.length">
-
-                                                            <div class="trad-risk-head">
-                                                                <h6>
-                                                                    {{item.heading}}
-                                                                </h6>
-                                                            </div>
-                                                            <table>
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th>{{riskAnalysisResults[0].optionResults[index].optionType == 1 ? 'Price' : 'Price'}}
-                                                                        </th>
-                                                                        <th>{{riskAnalysisResults[0].optionResults[index].optionType == 1 ? 'Value' : 'Value'}}
-                                                                        </th>
-                                                                        <th>P&L</th>
-                                                                    </tr>
-                                                                </thead>
-
-                                                                <tbody>
-                                                                    <tr *ngFor="let ritem of riskAnalysisResults;let rowIndex=index">
-                                                                        <td [ngClass]="{ 'trade-rd' :ritem.optionResults[index].gainLoss >= 0, 'trade-rdd':ritem.optionResults[index].gainLoss < 0}">
-                                                                            {{ritem.optionResults[index].price}}</td>
-                                                                        <td>{{ritem.optionResults[index].value}}</td>
-                                                                        <td [ngClass]="{ 'trade-rd' :ritem.optionResults[index].gainLoss >= 0, 'trade-rdd':ritem.optionResults[index].gainLoss < 0}">
-                                                                            {{ritem.optionResults[index].gainLoss}}
-                                                                        </td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                    </ng-container>
-
-
-                                                    <div class="risk-tables" *ngIf="stockAdded || (stockOptions && stockOptions.length)">
-
-                                                        <div class="trad-risk-head">
-                                                            <h6>
-                                                                Total
-                                                            </h6>
-                                                        </div>
-                                                        <table>
-                                                            <thead>
-                                                                <tr>
-
-                                                                    <th>Net P&L</th>
-                                                                </tr>
-                                                            </thead>
-
-                                                            <tbody>
-                                                                <tr *ngFor="let item of riskAnalysisResults;let index=index">
-                                                                    <td [ngClass]="{ 'trade-rd' :item.totalSummary.gainLoss >= 0, 'trade-rdd':item.totalSummary.gainLoss < 0}">
-                                                                        {{item.totalSummary.gainLoss}}</td>
+                                                                <tr *ngFor="let item of compareResult.rows;let index=index">
+                                                                    <td>{{item.stockChange.change}}%</td>
+                                                                    <td>{{item.stockChange.price}}</td>
+                                                                    <td *ngFor="let key of strategiesList; let ind = index">{{item.results[ind].netPL}}</td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
