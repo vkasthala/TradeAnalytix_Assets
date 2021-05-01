@@ -80,6 +80,8 @@ export class ReportRequestService {
       url = '/reports/dashboard/day-realized-return';
     } else if ('riskAmountByAsset' === reportId) {
       url = '/reports/dashboard/risk-amount-by-asset';
+    } else if ('userGoalByDate' === reportId) {
+      url = '/reports/dashboard/goalstatus';
     }
     return url;
   }

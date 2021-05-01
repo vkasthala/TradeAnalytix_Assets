@@ -21,11 +21,21 @@ import { UtilService } from './modules/utilities/services/util.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { ApiInterceptor } from './modules/shared/classes/api-interceptor';
+import { HIGHCHARTS_MODULES, ChartModule } from 'angular-highcharts';
+
+import more from 'highcharts/highcharts-more.src';
+import exporting from 'highcharts/modules/exporting.src';
+import highmaps from 'highcharts/modules/map.src';
 
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
   return localStorageSync({ keys: [globalConfigFeatureKey], rehydrate: true })(reducer);
 }
 const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
+
+export function highchartsModules() { 
+  // apply Highcharts Modules to this array
+  return [ more, exporting, highmaps];
+}
 
 @NgModule({
   declarations: [
@@ -40,6 +50,7 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     UtilitiesModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     BrowserAnimationsModule,
+    ChartModule,
     ToastrModule.forRoot({
       timeOut: 1500,
       positionClass: 'toast-top-center',
@@ -56,7 +67,11 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     StoreModule.forFeature(fromGlobalConfig.globalConfigFeatureKey, fromGlobalConfig.reducer),
   ],
-  providers: [PwaService, UtilService, { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true }],
+  providers: [
+    PwaService, UtilService, 
+    {provide: HIGHCHARTS_MODULES, useFactory: highchartsModules},
+    {provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
