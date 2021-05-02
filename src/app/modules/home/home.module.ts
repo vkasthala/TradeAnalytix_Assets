@@ -98,6 +98,8 @@ import { PlannedTradesGridComponent } from '../trade-plan/components/planned-tra
 import { StrategyActionTextDialogComponent } from '../trade-plan/components/strategy-action-text-dialog/strategy-action-text-dialog.component';
 import { RealizedReturnChartComponent } from '../dashboard/charts/realized-return-chart/realized-return-chart.component';
 import { RiskByAssetChartComponent } from '../dashboard/charts/risk-by-asset-chart/risk-by-asset-chart.component';
+import { UserGoalsByDateChartComponent } from '../dashboard/charts/user-goals-by-date/user-goals-by-date.component.';
+import { ReturnsCalendarChartComponent } from '../dashboard/charts/returns-calendar-chart/returns-calendar-chart.component';
 export const MY_FORMATS = {
   parse: {
     dateInput: 'DD-MMM-YY'
@@ -182,7 +184,9 @@ export const MY_FORMATS = {
     PlannedTradesGridComponent,
     StrategyActionTextDialogComponent,
     RealizedReturnChartComponent,
-    RiskByAssetChartComponent
+    RiskByAssetChartComponent,
+    UserGoalsByDateChartComponent,
+    ReturnsCalendarChartComponent
   ],
   imports: [
     CommonModule,
