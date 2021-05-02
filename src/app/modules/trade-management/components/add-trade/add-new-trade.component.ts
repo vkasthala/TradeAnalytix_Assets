@@ -24,6 +24,7 @@ import { TradeDetailsAsideComponent } from './trade-details-aside/trade-details-
 import { Subject } from 'rxjs';
 import { StockLegHistory } from '../../models/stock-leg-history.model';
 import { OptionLegHistory } from '../../models/option-leg-history.model';
+import { TradeDetailsBottomComponent } from './trade-details-bottom/trade-details-bottom.component';
 
 
 @Component({
@@ -39,6 +40,7 @@ export class AddNewTradeComponent implements OnInit {
   @ViewChild('stepper', { static: false }) protected tradeStepper: MatStepper;
   @ViewChild('tradeMobileStepper', { static: false }) protected tradeMobileStepper: MatStepper;
   @ViewChild('tradeDetailsAside', { static: false }) protected tradeDetailsAsideComponent: TradeDetailsAsideComponent;
+  @ViewChild('tradeDetailsBottom', { static: false }) protected tradeDetailsBottomComponent: TradeDetailsBottomComponent;
 
   @ViewChild('tradeDetails', { static: false }) protected tradeDetails: TradeDetailsComponent;
   @ViewChild('tradeThesis', { static: false }) protected tradeThesis: TradeThesisComponent;
@@ -125,10 +127,19 @@ export class AddNewTradeComponent implements OnInit {
     this.riskAnalysisService.getMaxRiskDetails(riskAnalysisRequest).subscribe(result => {
       console.log("max details success:", result)
       this.tradeDetailsAsideComponent.maxRiskDetails = result;
+      this.tradeDetailsBottomComponent.maxRiskDetails = result;
     },
       errResponse => {
         console.log("max details error:", errResponse);
       });
+  }
+
+  calcNetDebit($event: string): string {
+    return this.tradeDetailsBottomComponent.netDebit = $event;
+  }
+
+  calcNetReturn($event: string): string {
+    return this.tradeDetailsBottomComponent.netReturn = $event;
   }
 
   createRiskAnalysisRequest(): RiskAnalysisRequest {
@@ -209,7 +220,7 @@ export class AddNewTradeComponent implements OnInit {
       if (this.tradeStrategy.entryRules && this.exitRules.exitRules) {
         this.tradeStrategy.entryRules = this.tradeStrategy.entryRules.concat(this.exitRules.exitRules);
       }
-      this.tradeStrategy.closeDate = this.tradeDetails.closeDate;
+      this.tradeStrategy.closeDate = this.tradeDetailsBottomComponent.closeDate;
     }
     if (!this.add) {
       this.tradeStrategy.executed = this.tradeDetails.executedDate != null && this.tradeDetails.executedDate != undefined && this.tradeDetails.executedDate != '';

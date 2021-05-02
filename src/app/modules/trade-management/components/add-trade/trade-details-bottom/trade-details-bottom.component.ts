@@ -40,7 +40,7 @@ export class TradeDetailsBottomComponent implements OnInit {
   setStep(index: number) {
     this.step = index;
   }
-  
+
   currentState: number = 1;
   stockAdded: boolean;
   stockEntry: StockEntry;
@@ -88,13 +88,16 @@ export class TradeDetailsBottomComponent implements OnInit {
   closeDate: string;
   tradeStatus: number;
 
+  netDebit: string;
+  netReturn: string;
+
   constructor(
     private userStockStatsService: UserStockStatsService,
     private utilService: UtilService,
     private strategyCreateServiceService: StrategyCreateService,
     private router: Router,
     private _dialog: MatDialog
-    ) { }
+  ) { }
 
   ngOnInit() {
     // this.loadSummary();
@@ -134,7 +137,7 @@ export class TradeDetailsBottomComponent implements OnInit {
       this.direction = this.inputState.tradeStrategy.direction;
       this.executedDate = this.inputState.tradeStrategy.executedDate;
       this.closeDate = this.inputState.tradeStrategy.closeDate;
-      
+
       this.updateStockOptionDisplayProperty();
     }
   }
@@ -187,44 +190,8 @@ export class TradeDetailsBottomComponent implements OnInit {
     });
   }
 
-  calculateNetDebit(): string {
-    let netDebit: number = 0;
-    let tmp: number;
-    if (this.stockEntry && this.stockEntry.quantity && this.stockEntry.price) {
-      tmp = this.stockEntry.quantity * this.stockEntry.price;
-      netDebit = tmp * (this.stockEntry.actionType == ActionType["Buy to Open"] ? 1 : -1);
-    }
-    if (this.stockOptions) {
-      for (let index = 0; index < this.stockOptions.length; index++) {
-        tmp = this.stockOptions[index].contracts && this.stockOptions[index].price ? Number.parseFloat((this.stockOptions[index].contracts * this.stockOptions[index].price * 100).toFixed(2)) : 0
-        if (this.stockOptions[index].actionType == ActionType["Buy to Open"]) {
-          netDebit += tmp;
-        } else if (this.stockOptions[index].actionType == ActionType["Sell to Open"]) {
-          netDebit -= tmp;
-        }
-      }
-    }
-    return netDebit.toFixed(2);
-  }
-
-  calculateNetReturn(): string {
-    let netReturn: number = 0;
-    let tmp: number;
-    if (this.stockEntry && this.stockEntry.quantity && this.stockEntry.closePrice) {
-      tmp = this.stockEntry.quantity * (this.stockEntry.closePrice - this.stockEntry.price);
-      netReturn = tmp * (this.stockEntry.actionType == ActionType["Buy to Open"] ? 1 : -1);
-    }
-    if (this.stockOptions) {
-      for (let index = 0; index < this.stockOptions.length; index++) {
-        tmp = this.stockOptions[index].contracts && this.stockOptions[index].closePrice ? Number.parseFloat((this.stockOptions[index].contracts * (this.stockOptions[index].closePrice - this.stockOptions[index].price) * 100).toFixed(2)) : 0
-        if (this.stockOptions[index].actionType == ActionType["Buy to Open"]) {
-          netReturn += tmp;
-        } else if (this.stockOptions[index].actionType == ActionType["Sell to Open"]) {
-          netReturn -= tmp;
-        }
-      }
-    }
-    return netReturn.toFixed(2);
+  getTotalAmount(): string {
+    return this.closeTrade ? this.netReturn : this.netDebit;
   }
 
 }

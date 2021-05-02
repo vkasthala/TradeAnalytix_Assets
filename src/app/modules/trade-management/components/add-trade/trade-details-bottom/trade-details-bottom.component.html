@@ -1,23 +1,23 @@
 <!-- <div class="addnew-second" *ngIf="selectedStock && stockSummaryResult"> -->
 <div class="net_debit">
     <div class="row no-gutters justify-content-between align-items-center">
-        <div class="widget_item">
-            <h6 class="widget_item-value maximum_proﬁt">12245 {{maxRiskDetails.maxProfit}}</h6>
+        <div class="widget_item" *ngIf="maxRiskDetails">
+            <h6 class="widget_item-value maximum_proﬁt">{{maxRiskDetails.maxProfit}}</h6>
             <span class="widget_item-title">Maximum Proﬁt</span>
         </div>
-        <div class="widget_item">
-            <h6 class="widget_item-value maximum_risk">-3467 {{maxRiskDetails.maxRisk}}</h6>
+        <div class="widget_item" *ngIf="maxRiskDetails">
+            <h6 class="widget_item-value maximum_risk">{{maxRiskDetails.maxRisk}}</h6>
             <span class="widget_item-title">Maximum Risk </span>
         </div>
         <div class="widget_item">
-            <button type="button" class="btn p-0 text-link" (click)="calculateMaxProfitAndRisk()">Calculate</button>
+            <button type="button" class="btn p-0 text-link" (click)="calculateMaxProfitAndRisk()">Calculate Max Risk</button>
         </div>
 
-        <div class="closed_date_sec" [ngClass]="closeTrade || viewTrade ? 'justify-content-between' : 'realized_label'">
+        <div class="closed_date_sec" *ngIf="closeTrade" [ngClass]="closeTrade || viewTrade ? 'justify-content-between' : 'realized_label'">
             <div>
                 <label class="col-form-label mr-2">Closed Date <span class="text-danger">*</span></label>
                 <div class="datepicker-group datepicker-sm">
-                    <input matInput [matDatepicker]="closed_date" (click)="closed_date.open()" id="closed_date" (dateChange)="addEvent('input', $event)" name="stockOptions[index].closed_date" [(ngModel)]="tradeDetails.closeDate" [ngClass]="viewTrade ? 'disabled' : ''" [max]="maxDate"
+                    <input matInput [matDatepicker]="closed_date" (click)="closed_date.open()"  id="closed_date" (dateChange)="addEvent('input', $event)" name="stockOptions[index].closed_date" [(ngModel)]="closeDate" [ngClass]="viewTrade ? 'disabled' : ''" [max]="maxDate"
                     />
                     <mat-datepicker-toggle matSuffix [for]="closed_date" [ngClass]="viewTrade ? 'disabled' : ''"></mat-datepicker-toggle>
                     <mat-datepicker #closed_date></mat-datepicker>
@@ -26,7 +26,7 @@
         </div>
         <div class="net_debit">
             <span class="total_label">Total {{closeTrade ? 'Return' : 'Amount'}} </span>
-            <span class="total_amount mx-1" [ngClass]="closeTrade ? 'total_return' : ''">{{closeTrade ? calculateNetReturn() : calculateNetDebit()}}</span>
+            <span class="total_amount mx-1" [ngClass]="closeTrade ? 'total_return' : ''">{{getTotalAmount()}}</span>
         </div>
     </div>
 </div>

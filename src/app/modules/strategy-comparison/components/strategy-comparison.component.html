@@ -39,8 +39,8 @@
                                                     <mat-icon class="mat-icon-sm mat-icon-edit ml-2" (click)="StrategyDetailsModal(index+3)">info</mat-icon>
                                                 </div>
                                                 <div class="trade-sel position-relative">
-                                                    <select class="form-control select-input">
-                                                        <option *ngFor="let key of userStrategies" [value]="key">{{key.uid}}</option>
+                                                    <select class="form-control select-input" (change)="onStrategyChange($event.target.value, index)">
+                                                        <option *ngFor="let key of userStrategies;let i = index" [value]="i" >{{key.uid}}</option>
                                                     </select>
                                                     <mat-icon class="form-icon-down">keyboard_arrow_down</mat-icon>
                                                 </div>
@@ -92,7 +92,7 @@
                                             </div>
                                         </div>
                                         <div class="d-flex align-items-end">
-                                            <a class="btn btn-next" (click)="analyzeRisk = true; calculateMaxRisk();">Analyze</a>
+                                            <a class="btn btn-next" (click)="analyzeRisk = true; submitStrategies();">Analyze</a>
                                         </div>
                                     </div>
                                 </div>

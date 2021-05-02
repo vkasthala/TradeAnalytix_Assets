@@ -38,6 +38,7 @@ export class StrategyComparison implements OnInit {
 
   userStrategies: StrategyInput[] = [];
   strategiesList: StrategyInput[] = [];
+  selectedStrategies: StrategyInput[] = new Array<StrategyInput>(5);
 
   riskFreeRate: number = 6;
   lowerBound: number = -10;
@@ -76,9 +77,11 @@ export class StrategyComparison implements OnInit {
       this.userStrategies = result;
       if (result.length > 0) {
         this.strategiesList[0] = result[0];
+        this.selectedStrategies[0] = result[0];
       }
       if (result.length > 1) {
-        this.strategiesList[1] = result[1];
+        this.strategiesList[1] = result[0];
+        this.selectedStrategies[1] = result[0];
       }
     })
   }
@@ -151,11 +154,16 @@ export class StrategyComparison implements OnInit {
 
   createStrategyCompareRequest(): StrategyCompareRequest {
     let request: StrategyCompareRequest = new StrategyCompareRequest();
-    request.strategies = this.strategiesList;
+    request.strategies = this.selectedStrategies;
     request.lowerBound = this.lowerBound;
     request.upperBound = this.upperBound;
     request.riskFreeRate = this.riskFreeRate;
     return request;
+  }
+
+  onStrategyChange(valueInd: number, index: number) {
+    console.log('selected: ', this.userStrategies[valueInd]);
+    this.selectedStrategies[index] = this.userStrategies[valueInd];
   }
 
   editStrategyItem(index) {
