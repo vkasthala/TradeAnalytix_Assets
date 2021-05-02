@@ -35,7 +35,7 @@ export class TradeDetailsComponent implements OnInit {
   setStep(index: number) {
     this.step = index;
   }
-  
+
   currentState: number = 1;
   stockAdded: boolean;
 
@@ -46,6 +46,8 @@ export class TradeDetailsComponent implements OnInit {
   @Output('activateRisk') activateRisk = new EventEmitter();
   @Output('addTradeEvent') addTradeEvent = new EventEmitter();
   @Output('navigateRiskAnalysisEvent') navigateRiskAnalysisEvent = new EventEmitter();
+  @Output('calcNetDebit') calcNetDebit: EventEmitter<string> = new EventEmitter();
+  @Output('calcNetReturn') calcNetReturn: EventEmitter<string> = new EventEmitter();
 
   @Input('stockSummary') stockSummary: UserStockSummary;
   @Input("selectedStock") selectedStock: StockSymbol;
@@ -71,8 +73,8 @@ export class TradeDetailsComponent implements OnInit {
     private utilService: UtilService,
     private strategyCreateServiceService: StrategyCreateService,
     private router: Router,
-    private _dialog: MatDialog) { 
-    }
+    private _dialog: MatDialog) {
+  }
 
   ngOnInit() {
     this.stockEntry = this.createStockEntry();
@@ -88,7 +90,7 @@ export class TradeDetailsComponent implements OnInit {
       this.direction = this.inputState.tradeStrategy.direction;
       this.executedDate = this.inputState.tradeStrategy.executedDate;
       this.closeDate = this.inputState.tradeStrategy.closeDate;
-      
+
       this.updateStockOptionDisplayProperty();
     }
   }
@@ -199,7 +201,9 @@ export class TradeDetailsComponent implements OnInit {
         }
       }
     }
-    return netDebit.toFixed(2);
+    let debit: string = netDebit.toFixed(2);
+    this.calcNetDebit.emit(debit);
+    return debit;
   }
 
   calculateNetReturn(): string {
@@ -219,7 +223,9 @@ export class TradeDetailsComponent implements OnInit {
         }
       }
     }
-    return netReturn.toFixed(2);
+    let returnAmt: string = netReturn.toFixed(2);
+    this.calcNetReturn.emit(returnAmt);
+    return returnAmt;
   }
 
   preventNegatives(e, preventDecimal?: boolean) {
