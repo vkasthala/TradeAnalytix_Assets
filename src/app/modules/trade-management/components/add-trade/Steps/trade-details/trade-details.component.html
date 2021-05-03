@@ -118,7 +118,7 @@
                 </span>
             </div>
             <div style="width: 0px; height: 0px;">
-                <span class="total_amount mx-1" [ngClass]="closeTrade ? 'total_return' : ''">{{closeTrade ? calculateNetReturn() : calculateNetDebit()}}</span>
+                <span class="total_amount mx-1" style="display: none;" [ngClass]="closeTrade ? 'total_return' : ''">{{closeTrade ? calculateNetReturn() : calculateNetDebit()}}</span>
             </div>
             <div class="trade-cards-section" *ngIf="stockOptions.length">
                 <mat-accordion class="example-headers-align w-100" multi="true">
