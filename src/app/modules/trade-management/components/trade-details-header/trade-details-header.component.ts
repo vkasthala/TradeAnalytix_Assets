@@ -13,7 +13,11 @@ export class TradeDetailsHeaderComponent implements OnInit {
   @Input() selectedStock: StockSymbol;
   @Input() stockSummary: UserStockSummary;
   @Output('loadMoreStats') loadMoreStats = new EventEmitter();
-
+  @Input("addTrade") addTrade: boolean;
+  @Input("editTrade") editTrade: boolean;
+  @Input("closeTrade") closeTrade: boolean;
+  @Input("viewTrade") viewTrade: boolean;
+  @Input("StrategyId") StrategyId: any;
   constructor() { }
 
   ngOnInit() {

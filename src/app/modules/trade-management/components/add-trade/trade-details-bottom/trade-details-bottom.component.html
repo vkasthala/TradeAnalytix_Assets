@@ -17,16 +17,20 @@
             <div>
                 <label class="col-form-label mr-2">Closed Date <span class="text-danger">*</span></label>
                 <div class="datepicker-group datepicker-sm">
-                    <input matInput [matDatepicker]="closed_date" (click)="closed_date.open()"  id="closed_date" (dateChange)="addEvent('input', $event)" name="stockOptions[index].closed_date" [(ngModel)]="closeDate" [ngClass]="viewTrade ? 'disabled' : ''" [max]="maxDate"
+                    <input matInput [matDatepicker]="closed_date" (click)="closed_date.open()" id="closed_date" (dateChange)="addEvent('input', $event)" name="stockOptions[index].closed_date" [(ngModel)]="closeDate" [ngClass]="viewTrade ? 'disabled' : ''" [max]="maxDate"
                     />
                     <mat-datepicker-toggle matSuffix [for]="closed_date" [ngClass]="viewTrade ? 'disabled' : ''"></mat-datepicker-toggle>
                     <mat-datepicker #closed_date></mat-datepicker>
                 </div>
             </div>
         </div>
-        <div class="net_debit">
+        <div class="widget_item">
+            <h6 class="widget_item-value" [ngClass]="closeTrade ? 'total_return' : ''">{{getTotalAmount()}}</h6>
+            <span class="widget_item-title">Total {{closeTrade ? 'Return' : 'Amount'}}</span>
+        </div>
+        <!-- <div class="net_debit">
             <span class="total_label">Total {{closeTrade ? 'Return' : 'Amount'}} </span>
             <span class="total_amount mx-1" [ngClass]="closeTrade ? 'total_return' : ''">{{getTotalAmount()}}</span>
-        </div>
+        </div> -->
     </div>
 </div>

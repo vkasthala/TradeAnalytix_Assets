@@ -15,9 +15,7 @@
                             <div class="pr-3 d-flex">
                                 <div class="Trade-type">
                                     <div class="form-group">
-                                        <select class="form-control select-input pl-0" id="inputState"
-                                            (change)="onStrategyTypeChange($event.target.value)"
-                                            [(ngModel)]='selectedStrategy' [ngClass]="viewTrade ? 'disabled' : ''">
+                                        <select class="form-control select-input pl-0" id="inputState" (change)="onStrategyTypeChange($event.target.value)" [(ngModel)]='selectedStrategy' [ngClass]="viewTrade || editTrade ? 'disabled' : ''">
                                             <option *ngFor="let key of strategyTypes" [value]="key"
                                                 [label]="strategies[key]"></option>
                                         </select>
@@ -29,8 +27,7 @@
                   </span>
                 </div> -->
 
-                                <div class="d-flex align-items-center"
-                                    *ngIf="(stockAdded || stockOptions.length) && !closeTrade && !viewTrade">
+                                <div class="d-flex align-items-center" *ngIf="(stockAdded || stockOptions.length) && !closeTrade && !viewTrade">
                                     <a class="text-link ml-3" (click)="navigateToRiskAnalysis()">Assess Risk</a>
                                 </div>
                             </div>
@@ -49,57 +46,44 @@
                 <div class="trade-card-box mt-3">
                     <div class="card-main card-main-actions">
                         <label class="col-form-label pt-0">Action</label>
-                        <select id="inputState" [ngClass]="[closeTrade ? 'disabled' : '', viewTrade ? 'disabled' : '']"
-                            class="form-control px-0" [(ngModel)]="stockEntry.actionType">
+                        <select id="inputState" [ngClass]="[closeTrade ? 'disabled' : '', viewTrade || editTrade ? 'disabled' : '']" class="form-control px-0" [(ngModel)]="stockEntry.actionType">
                             <option value=1 selected data-default>Buy to Open</option>
                             <option value=2>Sell to Open</option>
                         </select>
                     </div>
                     <div class="card-main card-main-md">
                         <label class="col-form-label pt-0">Quantity</label>
-                        <input type="number" (keydown)="preventNegatives($event, false)" min="0"
-                            class="form-control cards-input"
-                            [ngClass]="[closeTrade ? 'disabled' : '', viewTrade ? 'disabled' : '']"
-                            [(ngModel)]="stockEntry.quantity" />
+                        <input type="number" (keydown)="preventNegatives($event, false)" min="0" class="form-control cards-input" [ngClass]="[closeTrade ? 'disabled' : '', viewTrade || editTrade ? 'disabled' : '']" [(ngModel)]="stockEntry.quantity" />
                     </div>
                     <div class="card-main card-main-custom">
                         <label class="col-form-label pt-0">Entry Price</label>
-                        <input type="number" pattern="^\d*(\.\d{0,2})?$" (change)="checkForDecimalValidation($event)"
-                            step="0.01" (keydown)="preventNegatives($event, true)" min="0" class="form-control"
-                            placeholder="" [(ngModel)]="stockEntry.price"
-                            [ngClass]="[closeTrade ? 'disabled' : '', viewTrade ? 'disabled' : '']" />
+                        <input type="number" pattern="^\d*(\.\d{0,2})?$" (change)="checkForDecimalValidation($event)" step="0.01" (keydown)="preventNegatives($event, true)" min="0" class="form-control" placeholder="" [(ngModel)]="stockEntry.price" [ngClass]="[closeTrade ? 'disabled' : '', viewTrade || editTrade ? 'disabled' : '']"
+                        />
                     </div>
                     <div class="card-main card-main-custom" *ngIf="closeTrade">
                         <label class="col-form-label pt-0">Exit Price</label>
-                        <input type="number" pattern="^\d*(\.\d{0,2})?$" step="0.01" min="0"
-                            class="form-control cards-input" placeholder="" [(ngModel)]="stockEntry.closePrice"
-                            [ngClass]="viewTrade ? 'disabled' : ''" />
+                        <input type="number" pattern="^\d*(\.\d{0,2})?$" step="0.01" min="0" class="form-control cards-input" placeholder="" [(ngModel)]="stockEntry.closePrice" [ngClass]="viewTrade || editTrade ? 'disabled' : ''" />
                     </div>
                     <div class="card-main card-main-sm" *ngIf="closeTrade">
                         <label class="col-form-label pt-0">Return</label>
                         <h6 class="input_text">
-                            {{(stockEntry.quantity && stockEntry.closePrice) ? (stockEntry.quantity *
-                            (stockEntry.closePrice - stockEntry.price) * (stockEntry.actionType == 2 ? -1 :
-                            1)).toFixed(2) : 0}}
+                            {{(stockEntry.quantity && stockEntry.closePrice) ? (stockEntry.quantity * (stockEntry.closePrice - stockEntry.price) * (stockEntry.actionType == 2 ? -1 : 1)).toFixed(2) : 0}}
                         </h6>
                     </div>
                     <div class="card-main text-right" *ngIf="!closeTrade">
                         <label class="col-form-label pt-0">Amount</label>
                         <h6 class="input_text justify-content-end">
-                            {{(stockEntry.quantity && stockEntry.price) ? (stockEntry.quantity * stockEntry.price *
-                            (stockEntry.actionType == 2 ? -1 : 1)).toFixed(2) : 0}}
+                            {{(stockEntry.quantity && stockEntry.price) ? (stockEntry.quantity * stockEntry.price * (stockEntry.actionType == 2 ? -1 : 1)).toFixed(2) : 0}}
                         </h6>
                     </div>
 
-                    <div *ngIf="editTrade == true && tradeStatus !=4" class="top-heading mr-2 text-success"
-                        (click)="addToPosition()">
+                    <div *ngIf="editTrade == true && tradeStatus !=4" class="top-heading mr-2 text-success" (click)="addToPosition()">
                         <mat-icon class="text-primary">add_circle</mat-icon>
                     </div>
-                    <div *ngIf="editTrade == true && tradeStatus !=4" class="top-heading mr-2 text-danger"
-                        (click)="reduceToPosition()">
+                    <div *ngIf="editTrade == true && tradeStatus !=4" class="top-heading mr-2 text-danger" (click)="reduceToPosition()">
                         <mat-icon class="text-primary">remove_circle</mat-icon>
                     </div>
-                    <div *ngIf="!viewTrade && !closeTrade" class="top-heading mr-2" (click)="deleteStock()">
+                    <div *ngIf="!viewTrade && !closeTrade && !editTrade" class="top-heading mr-2" (click)="deleteStock()">
                         <mat-icon>delete</mat-icon>
                     </div>
                     <div *ngIf="editTrade == true && tradeStatus !=4" class="top-heading">
@@ -145,88 +129,61 @@
                             <ng-container *ngFor="let item of stockOptions;let index = index">
                                 <div class="trade-card-box" *ngIf="item.display != false">
                                     <div class="card-main card-main-actions">
-                                        <select id="inputState"
-                                            [ngClass]="[closeTrade ? 'disabled' : '', viewTrade ? 'disabled' : '']"
-                                            class="form-control select-input px-0"
-                                            [(ngModel)]="stockOptions[index].actionType">
+                                        <select id="inputState" [ngClass]="[closeTrade ? 'disabled' : '', viewTrade || editTrade  ? 'disabled' : '']" class="form-control select-input px-0" [(ngModel)]="stockOptions[index].actionType">
                                             <option value=1 selected data-default>Buy to Open</option>
                                             <option value=2>Sell to Open</option>
                                         </select>
                                     </div>
                                     <div class="card-main card-main-md">
-                                        <input type="number" (keydown)="preventNegatives($event, false)" min="0"
-                                            class="form-control cards-input" placeholder=""
-                                            [(ngModel)]="stockOptions[index].contracts"
-                                            [ngClass]="[closeTrade ? 'disabled' : '', viewTrade ? 'disabled' : '']" />
+                                        <input type="number" (keydown)="preventNegatives($event, false)" min="0" class="form-control cards-input" placeholder="" [(ngModel)]="stockOptions[index].contracts" [ngClass]="[closeTrade ? 'disabled' : '', viewTrade || editTrade  ? 'disabled' : '']"
+                                        />
                                     </div>
 
                                     <div class="card-main card-main-custom">
-                                        <input type="number" (keydown)="preventNegatives($event, true)"
-                                            pattern="^\d*(\.\d{0,2})?$" (change)="checkForDecimalValidation($event)"
-                                            step="0.01" min="0" class="form-control cards-input" placeholder=""
-                                            [(ngModel)]="stockOptions[index].strikePrice"
-                                            [ngClass]="[closeTrade ? 'disabled' : '', viewTrade ? 'disabled' : '']" />
+                                        <input type="number" (keydown)="preventNegatives($event, true)" pattern="^\d*(\.\d{0,2})?$" (change)="checkForDecimalValidation($event)" step="0.01" min="0" class="form-control cards-input" placeholder="" [(ngModel)]="stockOptions[index].strikePrice"
+                                            [ngClass]="[closeTrade ? 'disabled' : '', viewTrade || editTrade  ? 'disabled' : '']" />
                                     </div>
                                     <div class="card-main">
                                         <div class="datepicker-group">
-                                            <input matInput [matDatepicker]="expireDate" (click)="expireDate.open()"
-                                                id="expireDate" (dateChange)="addEvent('input', $event)"
-                                                name="stockOptions[index].expireDate"
-                                                [(ngModel)]="stockOptions[index].expireDate"
-                                                [ngClass]="[closeTrade ? 'disabled' : '', viewTrade ? 'disabled' : '']" />
-                                            <mat-datepicker-toggle matSuffix [for]="expireDate"
-                                                [ngClass]="[closeTrade ? 'disabled' : '', viewTrade ? 'disabled' : '']">
+                                            <input matInput [matDatepicker]="expireDate" (click)="expireDate.open()" id="expireDate" (dateChange)="addEvent('input', $event)" name="stockOptions[index].expireDate" [(ngModel)]="stockOptions[index].expireDate" [ngClass]="[closeTrade ? 'disabled' : '', viewTrade ? 'disabled' : '']"
+                                            />
+                                            <mat-datepicker-toggle matSuffix [for]="expireDate" [ngClass]="[closeTrade ? 'disabled' : '', viewTrade || editTrade  ? 'disabled' : '']">
                                             </mat-datepicker-toggle>
                                             <mat-datepicker #expireDate></mat-datepicker>
                                         </div>
                                     </div>
 
                                     <div class="card-main card-main-md">
-                                        <select id="inputState" class="form-control select-input px-0"
-                                            [(ngModel)]="stockOptions[index].optionType"
-                                            [ngClass]="[closeTrade ? 'disabled' : '', viewTrade ? 'disabled' : '']">
+                                        <select id="inputState" class="form-control select-input px-0" [(ngModel)]="stockOptions[index].optionType" [ngClass]="[closeTrade ? 'disabled' : '', viewTrade || editTrade  ? 'disabled' : '']">
                                             <option value=1 selected data-default>Call</option>
                                             <option value=2>Put</option>
                                         </select>
                                     </div>
 
                                     <div class="card-main card-main-custom">
-                                        <input type="number" (keydown)="preventNegatives($event, true)"
-                                            pattern="^\d*(\.\d{0,2})?$" (change)="checkForDecimalValidation($event)"
-                                            step="0.01" min="0" class="form-control cards-input" placeholder=""
-                                            [(ngModel)]="stockOptions[index].price"
-                                            [ngClass]="[closeTrade ? 'disabled' : '', viewTrade ? 'disabled' : '']" />
+                                        <input type="number" (keydown)="preventNegatives($event, true)" pattern="^\d*(\.\d{0,2})?$" (change)="checkForDecimalValidation($event)" step="0.01" min="0" class="form-control cards-input" placeholder="" [(ngModel)]="stockOptions[index].price" [ngClass]="[closeTrade ? 'disabled' : '', viewTrade || editTrade  ? 'disabled' : '']"
+                                        />
                                     </div>
                                     <div class="card-main card-main-md" *ngIf="!closeTrade">
                                         <h6 class="input_text justify-content-end">
-                                            {{(stockOptions[index].contracts && stockOptions[index].price) ?
-                                            (stockOptions[index].contracts * (stockOptions[index].price * 100) *
-                                            (stockOptions[index].actionType == 2 ? -1 : 1)).toFixed(2) : 0}}
+                                            {{(stockOptions[index].contracts && stockOptions[index].price) ? (stockOptions[index].contracts * (stockOptions[index].price * 100) * (stockOptions[index].actionType == 2 ? -1 : 1)).toFixed(2) : 0}}
                                         </h6>
                                     </div>
                                     <div class="card-main card-main-custom" *ngIf="closeTrade">
-                                        <input type="number" pattern="^\d*(\.\d{0,2})?$" step="0.01" min="0"
-                                            class="form-control cards-input" placeholder=""
-                                            [(ngModel)]="stockOptions[index].closePrice" />
+                                        <input type="number" pattern="^\d*(\.\d{0,2})?$" step="0.01" min="0" class="form-control cards-input" placeholder="" [(ngModel)]="stockOptions[index].closePrice" />
                                     </div>
                                     <div class="card-main card-main-sm" *ngIf="closeTrade">
                                         <h6 class="input_text justify-content-start">
-                                            {{(stockOptions[index].contracts && stockOptions[index].closePrice) ?
-                                            (stockOptions[index].contracts * ((stockOptions[index].closePrice -
-                                            stockOptions[index].price) * 100) * (stockOptions[index].actionType == 2 ?
-                                            -1 : 1)).toFixed(2) : 0}}
+                                            {{(stockOptions[index].contracts && stockOptions[index].closePrice) ? (stockOptions[index].contracts * ((stockOptions[index].closePrice - stockOptions[index].price) * 100) * (stockOptions[index].actionType == 2 ? -1 : 1)).toFixed(2) : 0}}
                                         </h6>
                                     </div>
-                                    <div *ngIf="editTrade == true && tradeStatus !=4"
-                                        class="top-heading p-0 mr-2 text-success" (click)="addToStockPosition(index)">
+                                    <div *ngIf="editTrade == true && tradeStatus !=4" class="top-heading p-0 mr-2 text-success" (click)="addToStockPosition(index)">
                                         <mat-icon class="text-primary">add_circle</mat-icon>
                                     </div>
-                                    <div *ngIf="editTrade == true && tradeStatus !=4"
-                                        class="top-heading p-0 mr-2 text-danger" (click)="reduceToStockOption(index)">
+                                    <div *ngIf="editTrade == true && tradeStatus !=4" class="top-heading p-0 mr-2 text-danger" (click)="reduceToStockOption(index)">
                                         <mat-icon class="text-primary">remove_circle</mat-icon>
                                     </div>
-                                    <div *ngIf="!viewTrade && !closeTrade" class="top-heading p-0 mr-2"
-                                        (click)="deleteStockOption(index)">
+                                    <div *ngIf="!viewTrade && !closeTrade" class="top-heading p-0 mr-2" (click)="deleteStockOption(index)">
                                         <mat-icon>delete</mat-icon>
                                     </div>
                                     <div *ngIf="editTrade == true && tradeStatus !=4" class="top-heading p-0">
@@ -234,8 +191,7 @@
                                     </div>
                                 </div>
                             </ng-container>
-                            <a class="btn btn-link" (click)="addOption()"
-                                *ngIf="stockOptions.length < 4 && !closeTrade && !viewTrade"> + Add another option</a>
+                            <a class="btn btn-link" (click)="addOption()" *ngIf="stockOptions.length < 4 && !closeTrade && !viewTrade"> + Add another option</a>
                         </ng-template>
                     </mat-expansion-panel>
                 </mat-accordion>
