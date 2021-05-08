@@ -1,40 +1,44 @@
-
-<div class="exit-thesis-pop">
-    <div class="exit-thesis-pop-inner">
-      <div class="pop-top-heading">
-        <div class="left-heading">
-          <h5>{{title}}</h5>
-        </div>
-      </div>
-
-      <div class="popup-body">
-        <div class="media py-2">
-            <div class="media-body">
-            <p>Is this trade already executed in the brokerage platform?</p>
+<div class="compare-popup">
+    <div class="compare-pop-inner">
+        <div class="top-pop-inner">
+            <div class="left-heading">
+                <h6>{{title}}</h6>
             </div>
-            <div class="ml-1">
-                <span class="mr-3 col-form-label">Yes <input type="radio" name="confirm_excute" value="true" [(ngModel)] = 'data.executed' (change)="confirmEvent($event)" /></span>
-                <span class="col-form-label">No <input type="radio" value="false" name="confirm_excute" [(ngModel)] = 'data.executed'  (change)="confirmEvent($event)" /></span>
+            <div class="right-close" (click)="closeModal()">
+                <mat-icon>clear</mat-icon>
             </div>
         </div>
-        <div class="row py-2" *ngIf="data.executed == 'true'">
-            <div class="col-9 text-right">
-            <label class="col-form-label">Specify execution date</label>
+
+        <div class="main-pop-inner">
+            <div class="media py-2">
+                <div class="media-body col-form-label py-0">
+                    Is this trade already executed in the brokerage platform?
+                </div>
+                <div class="ml-1">
+                    <span class="mr-3 col-form-label">Yes <input type="radio" name="confirm_excute" value="true" [(ngModel)] = 'data.executed' (change)="confirmEvent($event)" /></span>
+                    <span class="col-form-label">No <input type="radio" value="false" name="confirm_excute" [(ngModel)] = 'data.executed'  (change)="confirmEvent($event)" /></span>
+                </div>
             </div>
-            <div class="col-3">
-                <div class="trade-date">
-                    <div class="datepicker-group">
-                        <input matInput [matDatepicker]="executionDate" (click)="executionDate.open()"  id="executionDate" (dateChange)="addEvent('input', $event)" [(ngModel)] = 'data.executionDate' />
-                        <mat-datepicker-toggle matSuffix [for]="executionDate"></mat-datepicker-toggle>
-                        <mat-datepicker #executionDate></mat-datepicker>
+            <div class="row py-2" *ngIf="data.executed == 'true'">
+                <div class="col-8 text-right">
+                    <label class="col-form-label">Specify execution date</label>
+                </div>
+                <div class="col-4">
+                    <div class="trade-date">
+                        <div class="datepicker-group">
+                            <input matInput [matDatepicker]="executionDate" (click)="executionDate.open()" id="executionDate" (dateChange)="addEvent('input', $event)" [(ngModel)]='data.executionDate' />
+                            <mat-datepicker-toggle matSuffix [for]="executionDate"></mat-datepicker-toggle>
+                            <mat-datepicker #executionDate></mat-datepicker>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-      </div>
-      <div class="modal-footer justify-content-center py-2">
-          <button type="button" class="btn btn-save" [mat-dialog-close]="data">SUBMIT</button>
-          <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancel</button>
-      </div>
+
+
+        <div class="modal-footer py-2">
+            <button type="button" class="btn btn-primary btn-sm" [mat-dialog-close]="data">SUBMIT</button>
+            <button type="button" class="btn btn-secondary tn-sm" (click)="closeModal()">Cancel</button>
+        </div>
     </div>
 </div>

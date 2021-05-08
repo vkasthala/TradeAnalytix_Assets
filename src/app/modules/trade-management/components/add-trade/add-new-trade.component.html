@@ -192,7 +192,7 @@
                                 <div class="stepper-content">
                                     <app-entry-rules (prevStep)="goBack()" [inputState]="inputState" [editTrade]="edit" [addTrade]="add" [closeTrade]="close" #entryRules></app-entry-rules>
                                     <div *ngIf="close || view">
-                                        <app-exit-rules #exitRules></app-exit-rules>
+                                        <app-exit-rules [addTrade]="add" [closeTrade]="close" #exitRules></app-exit-rules>
                                     </div>
                                 </div>
                             </mat-step>

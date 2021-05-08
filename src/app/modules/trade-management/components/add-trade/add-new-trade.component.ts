@@ -313,16 +313,20 @@ export class AddNewTradeComponent implements OnInit {
   }
 
   editTrade() {
-    const dialogRef = this._dialog.open(ConfirmDialogComponent, {
-      width: 'auto',
-      height: 'auto',
-      data: { 'message': 'Are you sure you want to edit this strategy?' }
-    });
-    dialogRef.afterClosed().subscribe(dialogResult => {
-      if (dialogResult == true) {
-        this.editTradeStrategy();
-      }
-    });
+    if (this.tradeStrategy.statusId == 4) {
+      this.CheckExecutionDate('Confirm Trade Execution Date')
+    }else {
+      const dialogRef = this._dialog.open(ConfirmDialogComponent, {
+        width: 'auto',
+        height: 'auto',
+        data: { 'message': 'Are you sure you want to edit this strategy?' }
+      });
+      dialogRef.afterClosed().subscribe(dialogResult => {
+        if (dialogResult == true) {
+          this.editTradeStrategy();
+        }
+      });
+    }
   }
 
   closeTrade() {

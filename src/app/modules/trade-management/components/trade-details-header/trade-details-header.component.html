@@ -1,7 +1,7 @@
 <!-- entry second -->
 <div class="trade-rate-box-title">
     {{getDisplayValue(selectedStock.name)}} ({{getDisplayValue(selectedStock.code)}})
-    <span *ngIf="editTrade || closeTrade"> - {{StrategyId.uid}}</span>
+    <span *ngIf="!addTrade"> - {{StrategyId.uid}}</span>
 </div>
 <div class="addnew-second">
     <div class="trade-rate-box">
