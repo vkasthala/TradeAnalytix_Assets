@@ -49,7 +49,7 @@ export class ReportTypeService {
     let reportSubType: ReportSubType = new ReportSubType();
     reportSubType.name = 'Overview';
     reportSubType.id = "overview";
-    reportSubType.reportDetailList = [new ReportDetails('goal_status', 'Goal Status', ReportCategory.Goal_Status), new ReportDetails('total_net_return_win_rate', 'Total Net Return & Win-Rate', ReportCategory.Win_Loss), new ReportDetails('calendar_eport', 'Calendar Report', ReportCategory.Win_Loss)];
+    reportSubType.reportDetailList = [new ReportDetails('goal_status', 'Goal Status', ReportCategory.Goal_Status), new ReportDetails('total_net_return_win_rate', 'Total Net Return & Win-Rate', ReportCategory.Win_Loss), new ReportDetails('calendar_eport', 'Calendar Report', ReportCategory.Calendar_Report)];
     reportSubTypes.push(reportSubType);
 
     reportSubType = new ReportSubType();
