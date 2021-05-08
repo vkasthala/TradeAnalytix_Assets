@@ -88,4 +88,14 @@ export class ReportRequestService {
     return url;
   }
 
+  public getAllocationReportUrl(reportId: string) {
+    let url: string;
+    if ('allocation-stock' === reportId) {
+      url = '/reports/portfolio/allocation-stock';
+    } else if ('allocation-sector' === reportId) {
+      url = '/reports/portfolio/allocation-sector';
+    }
+    return url;
+  }
+
 }

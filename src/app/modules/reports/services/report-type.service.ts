@@ -30,14 +30,14 @@ export class ReportTypeService {
 
     let reportSubType: ReportSubType = new ReportSubType();
     reportSubType.name = 'Allocation By Stock';
-    reportSubType.id = "allocation";
-    reportSubType.reportDetailList = [new ReportDetails('allocation_portfolio', 'Allocation Chart title', ReportCategory.Net_Return)];
+    reportSubType.id = "allocation-stock";
+    reportSubType.reportDetailList = [new ReportDetails('allocation-stock', 'Allocation By Stock', ReportCategory.Allocation)];
     reportSubTypes.push(reportSubType);
 
     reportSubType = new ReportSubType();
     reportSubType.name = 'Allocation By Sector';
-    reportSubType.id = "diversification";
-    reportSubType.reportDetailList = [new ReportDetails('diversification', 'Allocation By Sector Chart title', ReportCategory.Net_Return)];
+    reportSubType.id = "allocation-sector";
+    reportSubType.reportDetailList = [new ReportDetails('allocation-sector', 'Allocation By Sector', ReportCategory.Allocation)];
     reportSubTypes.push(reportSubType);
     
     return reportSubTypes;

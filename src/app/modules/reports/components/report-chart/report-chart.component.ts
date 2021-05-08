@@ -57,6 +57,9 @@ export class ReportChartComponent implements OnInit {
     } else if (category == ReportCategory.Risk) {
       request = this.reportRequestService.getCommonChartRequest(this.report, this.subtype, this.reportFilter);
       url = this.reportRequestService.getRiskReportApiUrl(this.report.id);
+    } else if (category == ReportCategory.Allocation) {
+      request = this.reportRequestService.getCommonChartRequest(this.report, this.subtype, this.reportFilter);
+      url = this.reportRequestService.getAllocationReportUrl(this.report.id);
     }
 
     //Load Chart
