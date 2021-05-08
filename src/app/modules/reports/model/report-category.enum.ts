@@ -6,6 +6,8 @@ export enum ReportCategory {
 
     "Discipline" = "discipline",
 
-    "Risk" = "risk"
+    "Risk" = "risk",
+
+    "Goal_Status" = "goal_status"
 
 }
