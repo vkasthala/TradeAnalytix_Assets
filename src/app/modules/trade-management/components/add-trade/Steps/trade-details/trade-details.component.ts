@@ -100,6 +100,7 @@ export class TradeDetailsComponent implements OnInit {
       return;
     }
     console.log('update stock options: ', this.stockOptions);
+    
     for (let ind = 0; ind < this.stockOptions.length; ind++) {
       if (this.stockOptions[ind].contracts === 0) {
         console.log('this ind: ', ind);
@@ -175,6 +176,7 @@ export class TradeDetailsComponent implements OnInit {
   }
 
   createStockEntry(): StockEntry {
+    console.log('StockEntry: ', StockEntry);
     let stockEntry: StockEntry = new StockEntry();
     stockEntry.price = this.stockSummary.close;
     stockEntry.lowerBound = -10;

@@ -30,14 +30,14 @@ export class ReportTypeService {
 
     let reportSubType: ReportSubType = new ReportSubType();
     reportSubType.name = 'Allocation By Stock';
-    reportSubType.id = "allocation";
-    reportSubType.reportDetailList = [new ReportDetails('allocation_portfolio', 'Allocation Chart title', ReportCategory.Net_Return)];
+    reportSubType.id = "allocation-stock";
+    reportSubType.reportDetailList = [new ReportDetails('allocation-stock', 'Allocation By Stock', ReportCategory.Allocation)];
     reportSubTypes.push(reportSubType);
 
     reportSubType = new ReportSubType();
     reportSubType.name = 'Allocation By Sector';
-    reportSubType.id = "diversification";
-    reportSubType.reportDetailList = [new ReportDetails('diversification', 'Allocation By Sector Chart title', ReportCategory.Net_Return)];
+    reportSubType.id = "allocation-sector";
+    reportSubType.reportDetailList = [new ReportDetails('allocation-sector', 'Allocation By Sector', ReportCategory.Allocation)];
     reportSubTypes.push(reportSubType);
     
     return reportSubTypes;
@@ -49,7 +49,7 @@ export class ReportTypeService {
     let reportSubType: ReportSubType = new ReportSubType();
     reportSubType.name = 'Overview';
     reportSubType.id = "overview";
-    reportSubType.reportDetailList = [new ReportDetails('total_net_return_win_rate', 'Total Net Return & Win-Rate', ReportCategory.Win_Loss), new ReportDetails('calendar_eport', 'Calendar Report', ReportCategory.Calendar_Report)];
+    reportSubType.reportDetailList = [new ReportDetails('total_net_return_win_rate', 'Realized Return', ReportCategory.Dashboard), new ReportDetails('calendar_eport', 'Calendar Report', ReportCategory.Calendar_Report)];
     reportSubTypes.push(reportSubType);
 
     reportSubType = new ReportSubType();
@@ -150,7 +150,7 @@ export class ReportTypeService {
     reportSubType = new ReportSubType();
     reportSubType.name = 'Max Risk by Asset';
     reportSubType.id = "max_risk_asset";
-    reportSubType.reportDetailList = [new ReportDetails('max_risk_asset', 'Max Risk by Asset Chart title', ReportCategory.Risk)];
+    reportSubType.reportDetailList = [new ReportDetails('max_risk_asset', 'Max Risk by Asset Chart', ReportCategory.Dashboard)];
     reportSubTypes.push(reportSubType);
 
     reportSubType = new ReportSubType();

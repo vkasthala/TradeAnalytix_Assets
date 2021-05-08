@@ -10,6 +10,10 @@ export enum ReportCategory {
 
     "Goal_Status" = "goal_status",
 
-    "Calendar_Report" =  "returnsCalendar"
+    "Calendar_Report" =  "returnsCalendar",
+
+    "Allocation" = "allocation",
+
+    "Dashboard" = "dashboard"
 
 }

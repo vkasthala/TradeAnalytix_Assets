@@ -82,8 +82,28 @@ export class ReportRequestService {
       url = '/reports/dashboard/risk-amount-by-asset';
     } else if ('userGoalByDate' === reportId) {
       url = '/reports/dashboard/goalstatus';
-    } else if('returnsCalendar' === reportId) {
+    } else if ('returnsCalendar' === reportId) {
       url = '/reports/dashboard/calendarChart';
+    }
+    return url;
+  }
+
+  public getAllocationReportUrl(reportId: string) {
+    let url: string;
+    if ('allocation-stock' === reportId) {
+      url = '/reports/portfolio/allocation-stock';
+    } else if ('allocation-sector' === reportId) {
+      url = '/reports/portfolio/allocation-sector';
+    }
+    return url;
+  }
+
+  public getDashboardReportApiUrl(reportId: string) {
+    let url: string;
+    if ('total_net_return_win_rate' === reportId) {
+      url = '/reports/performance/day-realized-return';
+    } else if ('max_risk_asset' === reportId) {
+      url = '/reports/risk/risk-amount-by-asset';
     }
     return url;
   }

@@ -10,21 +10,23 @@ import { Store } from '@ngrx/store';
 export class HomeComponent implements OnInit {
 
   currentRoute: string;
-  userdetails: boolean=false;
-  isExpand: boolean=true;
-  
+  userdetails: boolean = false;
+  isExpand: boolean = true;
+  title: string;
+
   constructor(
     private globalStore: Store<fromGlobalConfig.State>,
     private router: Router,
-  ) { 
-        let globalSelector = (fromGlobalConfig.globalConfigFeatureKey as any);
-        globalStore.select(globalSelector).subscribe(res => {
-          this.currentRoute = res.currentRoute;
-        })
-    }
+  ) {
+    let globalSelector = (fromGlobalConfig.globalConfigFeatureKey as any);
+    globalStore.select(globalSelector).subscribe(res => {
+      this.currentRoute = res.currentRoute;
+      this.updateModuleName();
+    })
+  }
 
   ngOnInit() {
-   
+
   }
   sidebarToggle() {
     this.isExpand = !this.isExpand
@@ -38,32 +40,40 @@ export class HomeComponent implements OnInit {
   @HostListener('document:touchstart', ['$event'])
   toggle(event) {
     var target = event.target;
-    if (target.closest(".user-details")) { 
+    if (target.closest(".user-details")) {
       this.userdetails = !this.userdetails;
     } else {
       this.userdetails = false;
     }
   }
-  
+
   get currentNavigation() {
     //console.log('route:', this.currentRoute);
     switch (this.currentRoute) {
-      case 'dashboard': return {breadcrumb : 'DASHBOARD', title: 'DASHBOARD'};
-      case 'new-trade': return {breadcrumb : 'ADD NEW TRADE', title: 'ADD NEW TRADE'};
-      case 'import-trades': return {breadcrumb : 'IMPORT TRADES', title: 'IMPORT TRADES'};
-      case 'trade-strategies': return {breadcrumb : 'Trade Strategies', title: 'Trade Strategies'};
-      case 'compare-strategies': return {breadcrumb : 'COMPARE STRATEGIES', title: 'COMPARE STRATEGIES'};
-      case 'reports': return {breadcrumb : 'REPORTS', title: 'REPORTS'};
-      case 'help': return {breadcrumb : 'HELP', title: 'HELP'};
-      case 'setttings': return {breadcrumb : 'SETTINGS', title: 'MANAGE RULES'};
-      case 'edit-trade' : return {breadcrumb : 'Edit TRADE', title: 'Edit TRADE'};
-      case 'close-trade' : return {breadcrumb : 'TRADE STRATEGIES', title: 'CLOSE TRADE'};
-      case 'exit-rules' : return {breadcrumb : 'TRADE STRATEGIES', title: 'EXIT RULES'};
-      case 'trade-plans' : return {breadcrumb : 'TRADING PLAN', title: 'TRADE PLAN'};
-      case 'profile' : return {breadcrumb : 'USER PROFILE', title: 'USER PROFILE'};
-      case 'risk-analysis' : return {breadcrumb : 'RISK ANALYSIS', title: 'RISK ANALYSIS'};
-      case 'add-new-trade-plan' : return {breadcrumb : 'TRADING PLAN', breadcrumbChild: 'ADD TRADE PLAN',title: 'ADD TRADE PLAN'};
-      default :  return {breadcrumb : 'TRADE STRATEGIES', title: 'TRADE STRATEGIES'};
+      case 'dashboard': return { breadcrumb: 'DASHBOARD', title: 'Dashboard' };
+      case 'new-trade': return { breadcrumb: 'ADD NEW TRADE', title: 'Add New Trade' };
+      case 'import-trades': return { breadcrumb: 'IMPORT TRADES', title: 'Import Trades' };
+      case 'trade-strategies': return { breadcrumb: 'Trade Strategies', title: 'Trade Strategies' };
+      case 'compare-strategies': return { breadcrumb: 'COMPARE STRATEGIES', title: 'Compare Strategies' };
+      case 'strategy-comparison': return { breadcrumb: 'COMPARE STRATEGIES', title: 'Compare Strategies' };
+      case 'reports': return { breadcrumb: 'REPORTS', title: 'Reports' };
+      case 'help': return { breadcrumb: 'HELP', title: 'Help' };
+      case 'setttings': return { breadcrumb: 'SETTINGS', title: 'Settings' };
+      case 'edit-trade': return { breadcrumb: 'Edit TRADE', title: 'Edit Trade' };
+      case 'close-trade': return { breadcrumb: 'TRADE STRATEGIES', title: 'Close Trade' };
+      case 'exit-rules': return { breadcrumb: 'TRADE STRATEGIES', title: 'Exit Rules' };
+      case 'trade-plans': return { breadcrumb: 'TRADING PLAN', title: 'Trade Plan' };
+      case 'profile': return { breadcrumb: 'USER PROFILE', title: 'User Profile' };
+      case 'risk-analysis': return { breadcrumb: 'RISK ANALYSIS', title: 'Risk Analysis' };
+      case 'add-new-trade-plan': return { breadcrumb: 'TRADING PLAN', breadcrumbChild: 'ADD TRADE PLAN', title: 'Add Trade Plan' };
+      default: return null;
+    }
+  }
+
+  updateModuleName() {
+    let module: any = this.currentNavigation;
+    if (module) {
+      this.title = module.title;
     }
   }
 
