@@ -49,7 +49,7 @@ export class ReportTypeService {
     let reportSubType: ReportSubType = new ReportSubType();
     reportSubType.name = 'Overview';
     reportSubType.id = "overview";
-    reportSubType.reportDetailList = [new ReportDetails('goal_status', 'Goal Status', ReportCategory.Goal_Status), new ReportDetails('total_net_return_win_rate', 'Total Net Return & Win-Rate', ReportCategory.Win_Loss), new ReportDetails('calendar_eport', 'Calendar Report', ReportCategory.Calendar_Report)];
+    reportSubType.reportDetailList = [new ReportDetails('goal_status', 'Goal Status', ReportCategory.Goal_Status), new ReportDetails('total_net_return_win_rate', 'Realized Return', ReportCategory.Dashboard), new ReportDetails('calendar_eport', 'Calendar Report', ReportCategory.Calendar_Report)];
     reportSubTypes.push(reportSubType);
 
     reportSubType = new ReportSubType();
@@ -150,7 +150,7 @@ export class ReportTypeService {
     reportSubType = new ReportSubType();
     reportSubType.name = 'Max Risk by Asset';
     reportSubType.id = "max_risk_asset";
-    reportSubType.reportDetailList = [new ReportDetails('max_risk_asset', 'Max Risk by Asset Chart title', ReportCategory.Risk)];
+    reportSubType.reportDetailList = [new ReportDetails('max_risk_asset', 'Max Risk by Asset Chart', ReportCategory.Dashboard)];
     reportSubTypes.push(reportSubType);
 
     reportSubType = new ReportSubType();
