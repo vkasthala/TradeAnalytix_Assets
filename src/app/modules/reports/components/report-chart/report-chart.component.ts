@@ -38,7 +38,6 @@ export class ReportChartComponent implements OnInit {
     let category: ReportCategory = this.report.category
     let request: ChartRequest;
     let url: string;
-
     //Body and URL identification
     if (category == ReportCategory.Net_Return) {
       request = this.reportRequestService.getNetReturnChartRequest(this.report, this.subtype, this.reportFilter);
@@ -46,6 +45,9 @@ export class ReportChartComponent implements OnInit {
     } else if (category == ReportCategory.Win_Loss) {
       request = this.reportRequestService.getWinLossChartRequest(this.report, this.subtype, this.reportFilter);
       url = '/reports/performance/winloss';
+    } else if (category == ReportCategory.Goal_Status) {
+      request = this.reportRequestService.getCommonChartRequest(this.report, this.subtype, this.reportFilter);
+      url = '/reports/performance/goalstatus';
     } else if (category == ReportCategory.Discipline) {
       request = this.reportRequestService.getDisciplineChartRequest(this.report, this.subtype, this.reportFilter);
       url = this.reportRequestService.getDisciplineReportApiUrl(this.report.id);
