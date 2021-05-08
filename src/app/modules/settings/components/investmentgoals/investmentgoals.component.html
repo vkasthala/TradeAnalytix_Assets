@@ -34,7 +34,7 @@
                         <mat-icon (click)="addGoal()">add_circle</mat-icon>
                     </span>
                 </div>
-                <ng-container *ngIf="GoalsList.length">
+                <ng-container *ngIf="GoalsList">
                     <div *ngFor="let goal of GoalsList;let index = index">
                         <div class="d-flex align-items-center py-2">
                             <span class="card-main pl-3">{{goal.goalName}}</span>
