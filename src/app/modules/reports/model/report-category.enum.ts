@@ -8,6 +8,8 @@ export enum ReportCategory {
 
     "Risk" = "risk",
 
-    "Goal_Status" = "goal_status"
+    "Goal_Status" = "goal_status",
+
+    "Calendar_Report" =  "returnsCalendar"
 
 }
