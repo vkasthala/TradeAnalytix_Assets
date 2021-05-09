@@ -44,6 +44,13 @@ export class DashboardComponent implements OnInit {
     this.reportDataService.getReportSummary(this.createSummaryRequest()).subscribe(result => {
       if (result) {
         this.summaryItems = result;
+
+        //Add Volatility of Returns static item //TODO
+        let volatilityReturn: ReportSummaryItem = new ReportSummaryItem();
+        volatilityReturn.name = 'Volatility of Returns';
+        volatilityReturn.id = 'volatility_of_returns';
+        volatilityReturn.value = '25%';
+        this.summaryItems.push(volatilityReturn);
       }
       console.log('summary items::', this.summaryItems);
     });

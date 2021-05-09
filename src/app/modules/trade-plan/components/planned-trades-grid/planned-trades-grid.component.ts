@@ -37,8 +37,13 @@ export class PlannedTradesGridComponent implements OnInit {
     }
   }
 
-  openPlannedTradeDialog() {
-    let dialogData: PlannedTrade = new PlannedTrade();
+  openPlannedTradeDialog(plannedTrade: PlannedTrade) {
+    let dialogData: PlannedTrade = plannedTrade;
+    console.log('planned::', plannedTrade);
+    if (!dialogData) {
+      dialogData = new PlannedTrade();
+    }
+
     const dialogRef = this._dialog.open(PlannedTradeDialogComponent, {
       disableClose: false,
       width: 'auto',
@@ -54,6 +59,10 @@ export class PlannedTradesGridComponent implements OnInit {
 
   getPlannedTrades(): PlannedTrade[] {
     return this.plannedTradesDataSource;
+  }
+
+  deletePlannedTrade(plannedTrade: PlannedTrade) {
+    //TODO
   }
 
 }
