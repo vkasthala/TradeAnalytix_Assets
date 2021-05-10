@@ -85,7 +85,6 @@ export class TradeStrategiesComponent implements OnInit {
    }
 
    symbolSelectEventHandler($event) {
-      debugger;
       this.strategiesGridFilter.stockCode = $event.code;
    }
 

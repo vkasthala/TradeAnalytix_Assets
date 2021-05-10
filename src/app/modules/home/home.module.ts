@@ -84,7 +84,7 @@ import { EditableListComponent } from '../shared/components/widgets/editable-lis
 import { StrategyComparison } from '../strategy-comparison/components/strategy-comparison.component';
 import { StrategyDetailsComponent } from '../shared/components/modals/strategy-details/strategy-details.component';
 import { EditStrategyComponent } from '../shared/components/modals/edit-strategy/edit-strategy.component';
-
+import { ImportTradesHistory } from '../import-trades-history/import-trades-history';
 
 import { from } from 'rxjs';
 
@@ -186,7 +186,8 @@ export const MY_FORMATS = {
     RealizedReturnChartComponent,
     RiskByAssetChartComponent,
     UserGoalsByDateChartComponent,
-    ReturnsCalendarChartComponent
+    ReturnsCalendarChartComponent,
+    ImportTradesHistory
   ],
   imports: [
     CommonModule,

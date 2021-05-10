@@ -1,15 +1,13 @@
 <div class="addnew-trade">
     <div class="px-3 mt-3">
-
-        <!-- <div class="trade-dash-main">
-        <div class="trade-dash-name">
-          <h3>
-            {{add ? 'Add Trade' : ''}} {{view ? 'View Trade' : ''}}
-            <span *ngIf="edit">Edit Trade - {{tradeStrategy.uid}}</span>
-            <span *ngIf="close">Close Trade - {{tradeStrategy.uid}}</span>
-          </h3>
+        <div class="float-right">
+            <div class="trade-dash-name">
+                <h5 class="text-primary">
+                    <!-- {{add ? 'Add Trade' : ''}} {{view ? 'View Trade' : ''}} -->
+                    <span *ngIf="!add">{{tradeStrategy.uid}}</span>
+                </h5>
+            </div>
         </div>
-      </div> -->
         <ng-container [ngSwitch]="currentState">
             <ng-container *ngSwitchCase="1">
 

@@ -36,7 +36,7 @@ import { OptionLegHistory } from 'src/app/modules/trade-management/models/option
 export class TradeDetailsBottomComponent implements OnInit {
 
   step = 0;
-
+  maxDate = new Date();
   setStep(index: number) {
     this.step = index;
   }

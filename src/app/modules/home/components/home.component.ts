@@ -66,6 +66,7 @@ export class HomeComponent implements OnInit {
       case 'profile': return { breadcrumb: 'USER PROFILE', title: 'User Profile' };
       case 'risk-analysis': return { breadcrumb: 'RISK ANALYSIS', title: 'Risk Analysis' };
       case 'add-new-trade-plan': return { breadcrumb: 'TRADING PLAN', breadcrumbChild: 'ADD TRADE PLAN', title: 'Add Trade Plan' };
+      case 'import-trades-history': return { breadcrumb: 'Import Trades History', title: 'Import Trades History' };
       default: return null;
     }
   }

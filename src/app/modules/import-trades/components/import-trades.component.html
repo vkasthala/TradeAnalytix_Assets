@@ -2,7 +2,10 @@
     <div class="main-body">
         <div class="addnew-first">
             <div class="trade-form">
-                <mat-icon class="trade-form-icon">attach_money</mat-icon>
+                <div class="d-flex align-items-center justify-content-between">
+                    <mat-icon class="trade-form-icon">import_export</mat-icon>
+
+                </div>
                 <h2 class="py-3 symbol-heading">Import Trades</h2>
                 <div class="pb-3 symbol-description">Upload transaction history from the brokerage systems to add or update trade strategies in bulk.</div>
                 <div class="d-flex mt-2 align-items-center">
@@ -12,6 +15,10 @@
                     <button class="btn btn-enter" [disabled]="!selectedFiles" (click)="importTrades()">
               Upload
             </button>
+
+                </div>
+                <div class="text-right py-2">
+                    <a class="top-nav-link" [routerLink]="['/import-trades-history/']" style="text-decoration: underline;">View Import History</a>
                 </div>
             </div>
         </div>
