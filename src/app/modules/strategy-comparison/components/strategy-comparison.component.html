@@ -21,7 +21,14 @@
             <ng-container *ngSwitchCase="2">
                 <!-- {{strategiesList.length}} -->
                 <app-trade-details-header [selectedStock]="selectedStock" [stockSummary]="stockSummary" (loadMoreStats)="loadMoreStatsHandler($event)"></app-trade-details-header>
-                <div *ngIf="strategiesList">
+                <div class="addnew-second" *ngIf="strategiesList.length == 0">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <span class="col-form-label p-0">No strategies exist for the symbol" and provide</span>
+                        <a class="btn btn-outline-primary ml-3" (click)="navigateToAddTrade()">Create Strategy</a>
+                    </div>
+
+                </div>
+                <div *ngIf="strategiesList.length > 0">
                     <mat-accordion class="example-headers-align" multi="true">
                         <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
                             <mat-expansion-panel-header>

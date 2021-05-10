@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { NavigationExtras, Router } from '@angular/router';
 // import { UpdateStockPricePopupComponent } from './update-stock-price-popup/update-stock-price-popup.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
@@ -11,7 +12,10 @@ import { CompareStrategiesService } from '../../compare-strategies/services/comp
 import { StockSymbol } from '../../shared/models/trade-management/stock-symbol.model';
 import { UserStockSummary } from '../../shared/models/trade-management/user-stock-summary.model';
 import { UserStockStatsService } from '../../shared/services/user-stock-stats.service';
-
+import { TradeInputData } from '../../shared/models/trade-management/trade-input-data.model';
+import { StockEntry } from '../../shared/models/trade-management/stock-entry.model';
+import { TradeStrategy } from '../../trade-management/models/trade-strategy.model';
+import { OptionEntry } from '../../shared/models/trade-management/option-entry.model';
 
 @Component({
   selector: 'app-strategy-comparison',
@@ -28,7 +32,7 @@ export class StrategyComparison implements OnInit {
 
   selectedStock: StockSymbol = new StockSymbol();
   stockSummary: UserStockSummary = new UserStockSummary();
-
+  inputState: TradeInputData;
   step = 0;
   panelOpenState = false;
   panelDisabled = true;
@@ -45,11 +49,16 @@ export class StrategyComparison implements OnInit {
   upperBound: number = 10;
 
   compareResult: CompareStrategyResponse;
+  stockEntry: StockEntry;
 
+  stockOptions: OptionEntry[] = [];
+  selectedStrategy: number = 15;
+  
   constructor(
     private userStockStatsService: UserStockStatsService,
     private compareStrategyService: CompareStrategiesService,
     private toastr: ToastrService,
+    private router: Router,
     private _dialog: MatDialog) {
   }
 
@@ -186,6 +195,36 @@ export class StrategyComparison implements OnInit {
     dialogRef.afterClosed().subscribe((res) => {
       console.log('here...', res);
     });
+  }
+
+  navigateToAddTrade() {
+    let extras: NavigationExtras = {};
+    let input: TradeInputData;
+    if (this.inputState) {
+      input = this.inputState;
+      let stockEntries = [];
+      if (this.stockEntry) {
+        stockEntries.push(this.stockEntry);
+      }
+      input.tradeStrategy.stockEntry = stockEntries;
+      input.tradeStrategy.stockOptions = this.stockOptions;
+      input.tradeStrategy.strategyTypeId = this.selectedStrategy;
+    } else {
+      input = new TradeInputData();
+      let tradeStrategy: TradeStrategy = new TradeStrategy();
+      let stockEntries = [];
+      if (this.stockEntry) {
+        stockEntries.push(this.stockEntry);
+      }
+      tradeStrategy.stockEntry = stockEntries;
+      tradeStrategy.stockOptions = this.stockOptions;
+      tradeStrategy.strategyTypeId = this.selectedStrategy;
+      input.tradeStrategy = tradeStrategy;
+      input.selectedStock = this.selectedStock;
+      input.stockSummary = this.stockSummary;
+    }
+    extras.state = input;
+    this.router.navigate(['/new-trade'], extras);
   }
 
 }
