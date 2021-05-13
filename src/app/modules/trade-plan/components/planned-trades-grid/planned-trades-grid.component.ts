@@ -51,9 +51,11 @@ export class PlannedTradesGridComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe((res) => {
       console.log('after:', res);
-      this.plannedTradesDataSource.push(res);
-      let cloned = this.plannedTradesDataSource.slice()
-      this.plannedTradesDataSource = cloned;
+      if(res){
+        this.plannedTradesDataSource.push(res);
+        let cloned = this.plannedTradesDataSource.slice()
+        this.plannedTradesDataSource = cloned;
+      }
     });
   }
 

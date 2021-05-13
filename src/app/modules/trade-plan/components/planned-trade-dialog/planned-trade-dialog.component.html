@@ -14,7 +14,7 @@
             <div class="row mb-2 align-items-center">
                 <label class="col-6 col-form-label">Symbol</label>
                 <div class="col-6">
-                    <app-trade-search (symbolSelectEvent)="symbolSelectEventHandler($event)"></app-trade-search>
+                    <app-trade-search (symbolSelectEvent)="symbolSelectEventHandler($event)" (symbolLoadEvent)="symbolLoadHandler()" #stockSymbolsSearch></app-trade-search>
                 </div>
             </div>
 

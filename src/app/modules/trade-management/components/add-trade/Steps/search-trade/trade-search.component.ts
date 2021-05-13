@@ -18,8 +18,10 @@ export class TradeSearchComponent implements OnInit {
     TradeList = [];
     tradeItem = '';
     searchData: StockSymbol[] = [];
+    symbolMap: Map<number, StockSymbol> = new Map<number, StockSymbol>();
 
     @Output() symbolSelectEvent = new EventEmitter<StockSymbol>();
+    @Output() symbolLoadEvent = new EventEmitter();
 
     constructor(private utilService: UtilService, private stockSymbolService: StockSymbolService) { }
 
@@ -32,11 +34,17 @@ export class TradeSearchComponent implements OnInit {
         this.stockSymbolService.getStockSymbols().subscribe(result => {
             console.log("stock symbol result:", result);
             this.searchData = result;
+            this.searchData.map(ele => this.symbolMap.set(ele.id, ele));
+            this.symbolLoadEvent.emit();
         });
     }
 
-    clearSelection(){
+    clearSelection() {
         this.tradeItem = null;
+    }
+
+    getSymbolById(id: number): StockSymbol {
+        return this.symbolMap.get(id);
     }
 
     /* GET search terms */
@@ -57,7 +65,7 @@ export class TradeSearchComponent implements OnInit {
         this.serarchResult = true;
         console.log('TradeList', this.TradeList)
     }
-    
+
     selectedTrade(item) {
         this.tradeItem = item.name;
         this.TradeList = [];
