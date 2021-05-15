@@ -167,7 +167,7 @@ export class AddNewTradeComponent implements OnInit {
     console.log('add trade...', this.tradeStrategy);
     this.tradeStrategyService.addTrade(this.tradeStrategy).subscribe(result => {
       console.log('Trade strategy successfully created');
-      this.toastr.success('Trade Strategy successfully created', '');
+      this.toastr.success('Trade strategy created', '');
       this.router.navigateByUrl("/trade-strategies");
     });
   }
@@ -175,7 +175,7 @@ export class AddNewTradeComponent implements OnInit {
   editTradeStrategy() {
     this.updateTradeStrategyProps();
     this.tradeStrategyService.editTrade(this.tradeStrategy).subscribe(result => {
-      this.toastr.success('Trade Strategy successfully updated', '');
+      this.toastr.success('Trade strategy updated', '');
       this.router.navigateByUrl("/trade-strategies");
     });
   }
@@ -183,7 +183,7 @@ export class AddNewTradeComponent implements OnInit {
   closeTradeStrategy() {
     this.updateTradeStrategyProps();
     this.tradeStrategyService.closeTrade(this.tradeStrategy).subscribe(result => {
-      this.toastr.success('Trade Strategy successfully closed', '');
+      this.toastr.success('Trade strategy closed', '');
       this.router.navigateByUrl("/trade-strategies");
     });
   }

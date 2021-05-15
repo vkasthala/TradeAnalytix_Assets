@@ -39,7 +39,7 @@
                                 <div class="stepper-content">
                                     <app-trade-details (nextStep)="goForward()" (activateRisk)="activeStep = true" (addTradeEvent)="addTrade($event)" (navigateRiskAnalysisEvent)="navigaeToRiskAnalysis()" [stockSummary]="stockSummary" [selectedStock]="selectedStock" [inputState]="inputState"
                                         [editTrade]="edit" [addTrade]="add" [closeTrade]="close" [viewTrade]="view" [strategyTypeChangeSubject]="strategyTypeChangeSubject" [stockOrOptionAddedSubject]="stockOrOptionAddedSubject" [localStockClosedSubject]="localStockClosedSubject"
-                                        [localOptionClosedSubject]="localOptionClosedSubject" (calcNetDebit)="calcNetDebit($event)" (calcNetReturn)="calcNetReturn($event)" #tradeDetails>
+                                        [localOptionClosedSubject]="localOptionClosedSubject" (calcNetDebit)="calcNetDebit($event)" (calcNetReturn)="calcNetReturn($event)" [StockPosition]="tradeStrategy" #tradeDetails>
                                     </app-trade-details>
                                 </div>
 

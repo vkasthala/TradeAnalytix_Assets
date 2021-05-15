@@ -112,7 +112,7 @@ export class AddnewtradeplanComponent implements OnInit {
     tradePlan.statusId = 1;
     console.log('trade plan to be created: ', tradePlan);
     this.tradePlanService.createTradePlan(tradePlan).subscribe(result => {
-      this.toastr.success('Trade plan successfully created');
+      this.toastr.success('Trade plan added');
       this.router.navigate(['/trade-plans']);
     });
   }

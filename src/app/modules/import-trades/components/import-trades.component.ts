@@ -28,7 +28,7 @@ export class ImportTradesComponent implements OnInit {
       this.currentFile = this.selectedFiles.item(0);
       this.uploadService.importTrades(this.currentFile).subscribe(
         event => {
-          this.toastr.success('Trade Strategy successfully updated', '');
+          this.toastr.success('Imported trades successfully', '');
           this.router.navigateByUrl("/trade-strategies");
         },
         err => {

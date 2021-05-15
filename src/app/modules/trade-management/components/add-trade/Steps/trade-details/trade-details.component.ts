@@ -51,6 +51,7 @@ export class TradeDetailsComponent implements OnInit {
 
   @Input('stockSummary') stockSummary: UserStockSummary;
   @Input("selectedStock") selectedStock: StockSymbol;
+  @Input("StockPosition") StockPosition: any;
   @Input("inputState") inputState: TradeInputData;
   @Input("addTrade") addTrade: boolean;
   @Input("editTrade") editTrade: boolean;
@@ -77,6 +78,12 @@ export class TradeDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
+    if(!this.addTrade){
+      this.StockPosition = this.StockPosition.stockEntry[0];
+    }else{
+      this.StockPosition = []
+    }
+    
     this.stockEntry = this.createStockEntry();
   }
 
@@ -140,6 +147,7 @@ export class TradeDetailsComponent implements OnInit {
 
   deleteStock() {
     this.stockAdded = false;
+    this.StockPosition = []
   }
 
   deleteStockOption(index) {

@@ -100,23 +100,51 @@
 }
 
 .toast-top-center {
-    top: 60px !important;
+    top: 5px !important;
+}
+
+.toast-container .ngx-toastr {
+    background: #FFFFFF;
+    box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.05) !important;
+    border-radius: 20px !important;
+    padding: 8px 5px 8px 15px !important;
+    background-position: 15px center;
+    background-size: 16px;
+    color: inherit;
+    width: 340px !important;
 }
 
 .toast-error {
-    background-color: #ff3547 !important;
+    background-color: transparent !important;
+    color: #EB5757 !important;
+    border: 1px solid rgba(235, 87, 87, 0.4);
 }
 
 .toast-success {
-    background-color: #00c851 !important;
+    background-color: transparent !important;
+    color: #2285FA !important;
+    border: 1px solid rgba(34, 133, 250, 0.4);
 }
 
 .toast-warning {
-    background-color: #fb3 !important;
+    background-color: transparent !important;
+    color: #fb3 !important;
 }
 
 .toast-info {
-    background-color: #33b5e5 !important;
+    background-color: transparent !important;
+    color: #33b5e5 !important;
+}
+
+.toast-message::before {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    width: 20px;
+    height: 20px;
+    content: "x";
+    font-size: 16px;
+    font-weight: 800;
 }
 
 .card {

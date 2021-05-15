@@ -2,7 +2,7 @@
     <label class="col-form-label pt-0 px-3 mb-1">What do you want to do with your open positions?</label>
     <mat-table [dataSource]="strategiesDataSource">
         <ng-container matColumnDef="symbol">
-            <th mat-header-cell *matHeaderCellDef>Symbol</th>
+            <th mat-header-cell *matHeaderCellDef class="symbol-cell">Symbol</th>
             <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
         </ng-container>
 
@@ -18,17 +18,24 @@
 
         <ng-container matColumnDef="maxRisk">
             <th mat-header-cell *matHeaderCellDef>Max Risk</th>
-            <td mat-cell *matCellDef="let element"> {{element.maxRisk}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.maxRisk | number:'1.0-0' }} </td>
         </ng-container>
 
         <ng-container matColumnDef="maxProfit">
             <th mat-header-cell *matHeaderCellDef>Max Profit</th>
-            <td mat-cell *matCellDef="let element"> {{element.maxProfit}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.maxProfit | number:'1.0-0' }} </td>
         </ng-container>
 
         <ng-container matColumnDef="actionText">
-            <th mat-header-cell *matHeaderCellDef>Action</th>
+            <th mat-header-cell *matHeaderCellDef class="action-cell">Justification</th>
             <td mat-cell *matCellDef="let element"> <span>{{element.actionText}}</span>
+                <!-- <mat-icon class="mat-icon-edit mat-icon-sm" (click)="onActionTextEdit(element)">edit
+                </mat-icon> -->
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="editColumn">
+            <th mat-header-cell *matHeaderCellDef>Action</th>
+            <td mat-cell *matCellDef="let element">
                 <mat-icon class="mat-icon-edit mat-icon-sm" (click)="onActionTextEdit(element)">edit
                 </mat-icon>
             </td>

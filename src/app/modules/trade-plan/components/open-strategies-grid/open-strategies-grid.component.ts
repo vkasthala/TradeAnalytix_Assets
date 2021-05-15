@@ -13,7 +13,7 @@ export class OpenStrategiesGridComponent implements OnInit {
 
   strategiesDataSource: TradePlanStrategy[];
 
-  strategiesGridColumns: string[] = ['symbol', 'strategyType', 'returnAmount', 'maxRisk', 'maxProfit', 'actionText'];
+  strategiesGridColumns: string[] = ['symbol', 'strategyType', 'returnAmount', 'maxRisk', 'maxProfit', 'actionText', 'editColumn'];
 
   @Input('tradePlanId') tradePlanId: number;
 

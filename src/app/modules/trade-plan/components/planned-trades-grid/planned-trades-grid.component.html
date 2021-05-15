@@ -6,7 +6,7 @@
     <div class="d-flex">
         <mat-table [dataSource]="plannedTradesDataSource">
             <ng-container matColumnDef="symbol">
-                <th mat-header-cell *matHeaderCellDef>Symbol</th>
+                <th mat-header-cell *matHeaderCellDef class="symbol-cell">Symbol</th>
                 <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
             </ng-container>
 
@@ -22,16 +22,16 @@
 
             <ng-container matColumnDef="maxRisk">
                 <th mat-header-cell *matHeaderCellDef>Max Risk</th>
-                <td mat-cell *matCellDef="let element"> {{element.maxRisk}} </td>
+                <td mat-cell *matCellDef="let element"> {{element.maxRisk | number:'1.0-0'}} </td>
             </ng-container>
 
             <ng-container matColumnDef="profit">
                 <th mat-header-cell *matHeaderCellDef>Expected Profit</th>
-                <td mat-cell *matCellDef="let element"> {{element.profit}} </td>
+                <td mat-cell *matCellDef="let element"> {{element.profit | number:'1.0-0'}} </td>
             </ng-container>
 
             <ng-container matColumnDef="reason">
-                <th mat-header-cell *matHeaderCellDef>Justification</th>
+                <th mat-header-cell *matHeaderCellDef class="justification-cell">Justification</th>
                 <td mat-cell *matCellDef="let element"> {{element.reason}} </td>
             </ng-container>
 

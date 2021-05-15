@@ -2,7 +2,7 @@
     cursor: pointer;
 }
 
-.mat-icon-sm{
+.mat-icon-sm {
     cursor: pointer;
 }
 
@@ -46,6 +46,8 @@ th.mat-header-cell {
     color: #3A4C85;
     font-size: 14px;
     font-weight: 600;
+    flex: 0 0 10% !important;
+    min-width: 100px !important;
     width: 10%;
 }
 
@@ -92,4 +94,27 @@ th.mat-header-cell {
 .mat-row:nth-child(odd) {
     background-color: #fff;
     border: 0;
+}
+
+.mat-column-action-cell {
+    flex: 0 0 25% !important;
+    min-width: 104px !important;
+}
+
+.action-cell {
+    width: 30%;
+    flex: 0 0 30% !important;
+    min-width: 150px !important;
+}
+
+.mat-column-symbol-cell {
+    flex: 0 0 10% !important;
+    min-width: 100px !important;
+    width: 10%;
+}
+
+.symbol-cell {
+    width: 10%;
+    flex: 0 0 10% !important;
+    min-width: 100px !important;
 }
