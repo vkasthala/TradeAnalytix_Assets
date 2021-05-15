@@ -4,6 +4,7 @@ import { TradePlansService } from '../../services/trade-plans.service';
 import { Subject } from 'rxjs';
 import { MatDialog } from '@angular/material';
 import { PlannedTradeDialogComponent } from '../planned-trade-dialog/planned-trade-dialog.component';
+import { ConfirmDialogComponent } from 'src/app/modules/shared/components/modals/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-planned-trades-grid',
@@ -37,11 +38,27 @@ export class PlannedTradesGridComponent implements OnInit {
     }
   }
 
-  openPlannedTradeDialog(plannedTrade: PlannedTrade) {
-    let dialogData: PlannedTrade = plannedTrade;
-    console.log('planned::', plannedTrade);
-    if (!dialogData) {
+  deletePlannedTrade(ind: number) {
+    const dialogRef = this._dialog.open(ConfirmDialogComponent, {
+      width: 'auto',
+      height: 'auto',
+      data: { 'message': 'Are you sure you want to delete?' }
+    });
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      if (dialogResult == true) {
+        this.plannedTradesDataSource.splice(ind, 1)
+        this.plannedTradesDataSource = this.plannedTradesDataSource.slice();
+      }
+    });
+
+  }
+
+  openPlannedTradeDialog(plannedTrade: PlannedTrade, ind: number) {
+    let dialogData: PlannedTrade;
+    if (!plannedTrade) {
       dialogData = new PlannedTrade();
+    } else {
+      dialogData = Object.create(plannedTrade);
     }
 
     const dialogRef = this._dialog.open(PlannedTradeDialogComponent, {
@@ -50,9 +67,13 @@ export class PlannedTradesGridComponent implements OnInit {
       data: dialogData
     });
     dialogRef.afterClosed().subscribe((res) => {
-      console.log('after:', res);
-      if(res){
-        this.plannedTradesDataSource.push(res);
+      if (res) {
+        console.log('result..', res);
+        if (ind != undefined && ind > -1) {
+          this.plannedTradesDataSource[ind] = res;
+        } else {
+          this.plannedTradesDataSource.push(res);
+        }
         let cloned = this.plannedTradesDataSource.slice()
         this.plannedTradesDataSource = cloned;
       }
@@ -61,10 +82,6 @@ export class PlannedTradesGridComponent implements OnInit {
 
   getPlannedTrades(): PlannedTrade[] {
     return this.plannedTradesDataSource;
-  }
-
-  deletePlannedTrade(plannedTrade: PlannedTrade) {
-    //TODO
   }
 
 }

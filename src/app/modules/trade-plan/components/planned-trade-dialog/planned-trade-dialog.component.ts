@@ -16,39 +16,58 @@ export class PlannedTradeDialogComponent implements OnInit {
 
   @ViewChild('stockSymbolsSearch', { static: false }) private tradeSearchComponent: TradeSearchComponent;
 
-  selectedStock: StockSymbol = new StockSymbol();
+  selectedStock: StockSymbol;
 
 
   strategyTypes: String[];
   strategies = StrategyType;
   actionTypes = ActionType;
 
+  stockId: number;
+
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: PlannedTrade, private strategyCreateService: StrategyCreateService, private dialogRef: MatDialogRef<PlannedTradeDialogComponent>) {
+    console.log('planned trade::', data);
     this.strategyTypes = this.strategyCreateService.getStrategies();
+    this.data.actionType = this.data.actionType;
+    this.data.actionTypeId = this.data.actionTypeId;
+    this.data.strategyType = this.data.strategyType;
+    this.data.strategyTypeId = this.data.strategyTypeId;
+    this.data.maxRisk = this.data.maxRisk;
+    this.data.profit = this.data.profit;
+    this.data.executed = this.data.executed;
+    this.data.reason = this.data.reason;
+    this.data.id = this.data.id;
   }
 
   ngOnInit() {
-    if (this.selectedStock && this.tradeSearchComponent) {
-      this.tradeSearchComponent.selectedTrade(this.selectedStock);
+
+  }
+
+  ngAfterViewInit() {
+    if (this.stockId) {
+      this.selectedStock = this.tradeSearchComponent.getSymbolById(this.stockId);
+      if (this.selectedStock) {
+        this.tradeSearchComponent.selectedTrade(this.selectedStock);
+      }
     }
   }
 
   symbolSelectEventHandler($event: any) {
-    console.log('symbol:', $event);
-    this.selectedStock = $event;
-    this.data.symbol = this.selectedStock.code.valueOf();
-    this.data.stockId = this.selectedStock.id;
+    if ($event && $event.code) {
+      this.selectedStock = $event;
+      this.data.symbol = this.selectedStock.code.valueOf();
+      this.data.stockId = this.selectedStock.id;
+    }
   }
 
   symbolLoadHandler() {
-    console.log('symbols loaded...');
-    if (this.data.stockId && this.data.stockId > 0 && this.tradeSearchComponent) {
-      let symbolObj: StockSymbol = this.tradeSearchComponent.getSymbolById(this.data.stockId);
-      console.log('symbol ob: ', symbolObj);
-      if (symbolObj) {
-        this.selectedStock = symbolObj;
-        if (this.tradeSearchComponent) {
+    if (this.data.stockId && this.data.stockId > 0) {
+      this.stockId = this.data.stockId;
+      if (this.tradeSearchComponent) {
+        let symbolObj: StockSymbol = this.tradeSearchComponent.getSymbolById(this.data.stockId);
+        if (symbolObj) {
+          this.selectedStock = symbolObj;
           this.tradeSearchComponent.selectedTrade(this.selectedStock);
         }
       }
@@ -56,16 +75,16 @@ export class PlannedTradeDialogComponent implements OnInit {
   }
 
   closeModal() {
+    console.log('data:::', this.data);
     this.dialogRef.close();
   }
 
   onStrategyTypeChange(strategyTypeId) {
-    console.log('str: ', this.strategies[strategyTypeId]);
+    console.log('str type', strategyTypeId);
     this.data.strategyType = this.strategies[strategyTypeId];
   }
 
   onActionTypeChange(actType: string) {
-    console.log('act: ', this.actionTypes[actType]);
     this.data.actionType = this.actionTypes[actType];
   }
 
