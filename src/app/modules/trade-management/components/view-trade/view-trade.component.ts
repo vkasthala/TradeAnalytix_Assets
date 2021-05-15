@@ -32,6 +32,8 @@ export class ViewTradeComponent extends AddNewTradeComponent implements OnInit {
     this.setState();
   }
 
-
+  ngAfterViewInit() {
+    this.showClosedLegs();
+  }
 
 }

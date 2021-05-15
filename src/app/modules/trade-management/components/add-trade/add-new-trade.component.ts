@@ -95,7 +95,6 @@ export class AddNewTradeComponent implements OnInit {
 
   ngOnInit() {
     this.setState();
-    this.showClosedLegs()
   }
 
   enterSymbol() {
@@ -315,7 +314,7 @@ export class AddNewTradeComponent implements OnInit {
   editTrade() {
     if (this.tradeStrategy.statusId == 4) {
       this.CheckExecutionDate('Confirm Trade Execution Date')
-    }else {
+    } else {
       const dialogRef = this._dialog.open(ConfirmDialogComponent, {
         width: 'auto',
         height: 'auto',
@@ -402,6 +401,31 @@ export class AddNewTradeComponent implements OnInit {
     this.tradeHistory.stockLegHistories = stockLegHistories;
     this.tradeHistory.optionLegHistories = optionLegHistories;
     console.log('total close history:', this.tradeHistory);
+    if (this.view) {
+      this.calculateClosedValuesReturn();
+    }
+  }
+
+  calculateClosedValuesReturn(): string {
+    let netReturn: number = 0;
+    let tmp: number;
+    if (this.tradeHistory && this.tradeHistory.stockLegHistories) {
+      for (let index = 0; index < this.tradeHistory.stockLegHistories.length; index++) {
+        tmp = this.tradeHistory.stockLegHistories[index].quantity * ((this.tradeHistory.stockLegHistories[index].exitPrice ? this.tradeHistory.stockLegHistories[index].exitPrice : 0) - (this.tradeHistory.stockLegHistories[index].entryPrice ? this.tradeHistory.stockLegHistories[index].entryPrice : 0));
+        // netReturn = tmp * (this.tradeHistory.stockLegHistories[index].actionType == ActionType["Buy to Open"] ? 1 : -1);
+        netReturn = netReturn + tmp;
+      }
+    }
+    if (this.tradeHistory && this.tradeHistory.optionLegHistories) {
+      for (let index = 0; index < this.tradeHistory.optionLegHistories.length; index++) {
+        tmp = this.tradeHistory.optionLegHistories[index].contracts * ((this.tradeHistory.optionLegHistories[index].exitPrice ? this.tradeHistory.optionLegHistories[index].exitPrice : 0) - (this.tradeHistory.optionLegHistories[index].entryPrice ? this.tradeHistory.optionLegHistories[index].entryPrice : 0));
+        /// netReturn = tmp * (this.tradeHistory.optionLegHistories[index].actionType == ActionType["Buy to Open"] ? 100 : -100);
+        netReturn = netReturn + (tmp * 100);
+      }
+    }
+    let returnAmt: string = netReturn.toFixed(2);
+    this.tradeDetailsBottomComponent.netReturn = returnAmt;
+    return returnAmt;
   }
 
 }

@@ -191,7 +191,7 @@ export class TradeDetailsBottomComponent implements OnInit {
   }
 
   getTotalAmount(): string {
-    return this.closeTrade ? this.netReturn : this.netDebit;
+    return (this.closeTrade || this.viewTrade) ? this.netReturn : this.netDebit;
   }
 
 }
