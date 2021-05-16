@@ -69,6 +69,7 @@ export class TradeDetailsComponent implements OnInit {
   executedDate: string;
   closeDate: string;
   tradeStatus: number;
+  lastUpdatedDate: string;
 
   constructor(
     private utilService: UtilService,
@@ -97,6 +98,7 @@ export class TradeDetailsComponent implements OnInit {
       this.direction = this.inputState.tradeStrategy.direction;
       this.executedDate = this.inputState.tradeStrategy.executedDate;
       this.closeDate = this.inputState.tradeStrategy.closeDate;
+      this.lastUpdatedDate = this.inputState.tradeStrategy.updateDateTime;
 
       this.updateStockOptionDisplayProperty();
     }

@@ -19,6 +19,8 @@ export class TradeStrategy {
 
     executedDate: string;
 
+    updateDateTime: string;
+
     createDateTime11: string;
 
     stockId: number;

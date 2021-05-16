@@ -6,7 +6,7 @@
                 <div class="d-flex align-items-center justify-content-between">
                     <span class="col-form-label pt-0">{{ addTrade ? 'Select' : 'Current' }} Strategy</span>
                     <div *ngIf="addTrade == false">
-                        <label class="col-form-label">Last Updated Date : {{executedDate | date: 'dd-MMM-yyyy'}}</label>
+                        <label class="col-form-label">Last Updated Date : {{lastUpdatedDate | date: 'dd-MMM-yyyy'}}</label>
                     </div>
                 </div>
                 <div [ngClass]="closeTrade ? 'row close_trade_module' : 'row'">
