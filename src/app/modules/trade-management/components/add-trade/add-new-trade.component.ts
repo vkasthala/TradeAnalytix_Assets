@@ -307,6 +307,9 @@ export class AddNewTradeComponent implements OnInit {
       console.log('here...', res);
       this.tradeStrategy.executed = res.executed;
       this.tradeStrategy.executedDate = res.executionDate;
+      if (!this.add) {
+        this.tradeDetails.executedDate = res.executionDate;
+      }
       this.addTrade();
     });
   }
