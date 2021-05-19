@@ -82,4 +82,8 @@ export class CloseTradeComponent extends AddNewTradeComponent implements OnInit 
     }
   }
 
+  isValidTradeStrategy(): boolean {
+    return super.isValidTradeStrategy();
+  }
+
 }

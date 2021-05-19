@@ -79,12 +79,12 @@ export class TradeDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    if(!this.addTrade){
+    if (!this.addTrade) {
       this.StockPosition = this.StockPosition.stockEntry[0];
-    }else{
+    } else {
       this.StockPosition = []
     }
-    
+
     this.stockEntry = this.createStockEntry();
   }
 
@@ -109,7 +109,7 @@ export class TradeDetailsComponent implements OnInit {
       return;
     }
     console.log('update stock options: ', this.stockOptions);
-    
+
     for (let ind = 0; ind < this.stockOptions.length; ind++) {
       if (this.stockOptions[ind].contracts === 0) {
         console.log('this ind: ', ind);
@@ -427,6 +427,53 @@ export class TradeDetailsComponent implements OnInit {
     optionLegHistory.strikePrice = stockOption.strikePrice;
     optionLegHistory.expireDate = stockOption.expireDate;
     return optionLegHistory;
+  }
+
+  isValidTradeStrategy(): boolean {
+    if (!this.stockAdded && this.stockOptions.length == 0) {
+      return false;
+    }
+    let status: boolean = true;
+    if (this.addTrade || this.editTrade) {
+      status = this.isValidAddEditTradeDetails();
+    } else if (this.closeTrade) {
+      status = this.isValidCloseTradeDetails();
+    }
+    return status;
+  }
+
+  isValidCloseTradeDetails(): boolean {
+    return this.selectedStrategy > 0 && this.isValidStockEntry() && this.isValidOptionEntries();
+  }
+
+  isValidAddEditTradeDetails(): boolean {
+    return this.selectedStrategy > 0 && this.isValidStockEntry() && this.isValidOptionEntries();
+  }
+
+  isValidStockEntry(): boolean {
+    if (!this.stockAdded) {
+      return true;
+    }
+    if (this.addTrade || this.editTrade) {
+      return this.stockEntry && this.stockEntry.actionType && this.stockEntry.quantity > 0 && this.stockEntry.price > 0;
+    } else if (this.closeTrade) {
+      return this.stockEntry && this.stockEntry.actionType && this.stockEntry.quantity > 0 && this.stockEntry.closePrice > 0;
+    }
+  }
+
+  isValidOptionEntries(): boolean {
+    if (!this.stockOptions || this.stockOptions.length == 0) {
+      return true;
+    }
+    let status: boolean = true;
+    for (let ind = 0; ind < this.stockOptions.length; ind++) {
+      if (this.addTrade || this.editTrade) {
+        status = this.stockOptions[ind].actionType !== undefined && this.stockOptions[ind].strikePrice !== undefined && this.stockOptions[ind].strikePrice > 0 && this.stockOptions[ind].contracts > 0 && this.stockOptions[ind].expireDate !== undefined && this.stockOptions[ind].price !== undefined && this.stockOptions[ind].price > 0;
+      } else if (this.closeTrade) {
+        status = this.stockOptions[ind].actionType !== undefined && this.stockOptions[ind].strikePrice !== undefined && this.stockOptions[ind].strikePrice > 0 && this.stockOptions[ind].contracts > 0 && this.stockOptions[ind].expireDate !== undefined && this.stockOptions[ind].closePrice !== undefined && this.stockOptions[ind].closePrice > 0;
+      }
+    }
+    return status;
   }
 
 }
