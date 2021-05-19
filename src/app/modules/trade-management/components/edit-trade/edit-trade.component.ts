@@ -32,6 +32,8 @@ export class EditTradeComponent extends AddNewTradeComponent implements OnInit {
     this.setState();
   }
 
-
+  isValidTradeStrategy(): boolean {
+    return super.isValidTradeStrategy();
+  }
 
 }

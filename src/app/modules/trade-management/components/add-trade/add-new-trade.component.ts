@@ -431,4 +431,15 @@ export class AddNewTradeComponent implements OnInit {
     return returnAmt;
   }
 
+  protected isValidTradeStrategy(): boolean {
+    if (!this.tradeDetails) {
+      return false;
+    }
+    let status: boolean = this.tradeDetails.isValidTradeStrategy();
+    if(this.close){
+      status = status && this.tradeDetailsBottomComponent.closeDate !== undefined;
+    }
+    return status;
+  }
+
 }
