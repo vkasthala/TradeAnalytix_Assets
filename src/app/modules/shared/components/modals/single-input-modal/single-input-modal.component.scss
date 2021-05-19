@@ -21,16 +21,17 @@
     flex-direction: column;
     background-color: #fff;
     border: 1px solid #7e7e7e;
-    padding: 12px;
+    padding: 0;
     box-shadow: 0px 15px 45px #7d7d7d;
     font-size: 14px;
   }
   
   .pop-top-heading{
+    background: #3A4C85;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
+    padding: 10px 15px;
   }
   
   .exit-con{
@@ -40,15 +41,7 @@
     width: 100%;
     height: 90px;
   }
-  
-  .btn-save{
-    background-color: #37a01a;
-    color: #FFFFFF;
-    padding: 6px 32px !important;
-    margin: 0 auto 0 auto;
-    cursor: pointer;
-    text-transform: capitalize;
-  }
+
   
   .right-input {
     width: 50%;
@@ -69,16 +62,64 @@
     }
   }
   
-  .left-heading{
-    h5{
-      color: #37a01a;
+  .left-heading {
+    font-size: 14px;
+    h5 {
+        color: #fff;
+        font-size: 14px;
     }
-  }
+}
   
-  .right-heading{
-    span{
-      font-size: 13px;
-      color: $primary;
+.right-close {
+  line-height: 0;
+  span {
       cursor: pointer;
-    }
+      color: #fff;
+  }
+  .mat-icon {
+      cursor: pointer;
+      height: 20px;
+      width: 20px;
+      color: #fff;
+      font-size: 22px;
+  }
+}
+
+.btn-up {
+  padding-top: 0.5rem;
+  text-align: right;
+}
+
+.btn-add {
+  padding: 0.375rem 1.5rem !important;
+  background: #2285FA;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 0;
+  &:hover {
+      color: white !important;
+  }
+}
+
+.col-form-label {
+  color: #3A4C85;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.form-control {
+  padding: 0.375rem 0.5rem;
+  font-size: 12px;
+}
+
+select.form-control {
+  padding: 0.375rem 0.25rem;
+}
+  .separator {
+    background: #9DA6BA;
+    opacity: 0.2;
+    margin: .5rem 0;
+    height: 1px;
   }

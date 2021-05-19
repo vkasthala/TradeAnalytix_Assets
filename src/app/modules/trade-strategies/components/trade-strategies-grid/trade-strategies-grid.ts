@@ -22,7 +22,7 @@ import { TradeStrategyGridService } from '../../services/trade-strategy-grid.ser
 })
 export class TradeStrategiesGrid implements AfterViewInit, OnInit {
   expandIndex: any;
-  displayedColumns = ['id', 'strategy', 'stockName', 'direction', 'openDate', 'closeDate', 'maxLoss', 'maxGain', 'return', 'status', 'action'];
+  displayedColumns = ['id', 'stockName', 'strategy', 'direction', 'openDate', 'closeDate', 'maxGain', 'maxLoss', 'return', 'rules', 'status', 'action'];
   pageSize: number = 20
 
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;

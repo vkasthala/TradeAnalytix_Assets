@@ -46,7 +46,7 @@
                 <div class="trade-card-box mt-3">
                     <div class="card-main card-main-actions">
                         <label class="col-form-label pt-0">Action</label>
-                        <select id="inputState" [ngClass]="[closeTrade || viewTrade ? 'disabled' : '']" class="form-control px-0" [(ngModel)]="stockEntry.actionType">
+                        <select id="inputState" [ngClass]="[closeTrade || viewTrade ? 'disabled' : '', editTrade && (StockPosition.quantity > 0 && StockPosition.quantity !== undefined ) ? 'disabled' : '']" class="form-control px-0" [(ngModel)]="stockEntry.actionType">
                             <option value=1 selected data-default>Buy to Open</option>
                             <option value=2>Sell to Open</option>
                         </select>

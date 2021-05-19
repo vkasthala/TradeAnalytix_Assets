@@ -1,0 +1,9 @@
+<mat-accordion class="example-headers-align w-100" multi="true">
+    <mat-expansion-panel [expanded]="true" (opened)="setStep(0)">
+        <ng-template matExpansionPanelContent>
+            <div class="col-sm-8 col-md-6 mt-3">
+                <app-editable-grid #brokerageCommissions></app-editable-grid>
+            </div>
+        </ng-template>
+    </mat-expansion-panel>
+</mat-accordion>

@@ -100,6 +100,8 @@ import { RealizedReturnChartComponent } from '../dashboard/charts/realized-retur
 import { RiskByAssetChartComponent } from '../dashboard/charts/risk-by-asset-chart/risk-by-asset-chart.component';
 import { UserGoalsByDateChartComponent } from '../dashboard/charts/user-goals-by-date/user-goals-by-date.component.';
 import { ReturnsCalendarChartComponent } from '../dashboard/charts/returns-calendar-chart/returns-calendar-chart.component';
+import { CodedRulesComponent } from '../settings/components/coded-rules/codedrules.component';
+
 export const MY_FORMATS = {
   parse: {
     dateInput: 'DD-MMM-YY'
@@ -187,7 +189,8 @@ export const MY_FORMATS = {
     RiskByAssetChartComponent,
     UserGoalsByDateChartComponent,
     ReturnsCalendarChartComponent,
-    ImportTradesHistory
+    ImportTradesHistory,
+    CodedRulesComponent
   ],
   imports: [
     CommonModule,
