@@ -591,6 +591,27 @@ export class RiskAnalysisComponent implements OnInit {
     console.log("Panel opened!");
   }
 
+  isValidDetails(): boolean {
+    return this.isValidStockEntry() && this.isValidOptionEntries();
+  }
+
+  isValidStockEntry(): boolean {
+    if (!this.stockAdded) {
+      return true;
+    }
+    return this.stockEntry && this.stockEntry.actionType && this.stockEntry.quantity > 0 && this.stockEntry.price > 0;
+  }
+
+  isValidOptionEntries(): boolean {
+    if (!this.stockOptions || this.stockOptions.length == 0) {
+      return true;
+    }
+    let status: boolean = true;
+    for (let ind = 0; ind < this.stockOptions.length; ind++) {
+      status = this.stockOptions[ind].actionType !== undefined && this.stockOptions[ind].strikePrice !== undefined && this.stockOptions[ind].strikePrice > 0 && this.stockOptions[ind].contracts > 0 && this.stockOptions[ind].expireDate !== undefined && this.stockOptions[ind].price !== undefined && this.stockOptions[ind].price > 0;
+    }
+    return status;
+  }
 
 }
 

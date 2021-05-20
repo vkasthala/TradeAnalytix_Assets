@@ -193,7 +193,7 @@
 
                                     <!-- next-button -->
                                     <div class="order-btn text-center" *ngIf="stockAdded || stockOptions.length > 0">
-                                        <a class="btn btn-next" (click)="checkForStockPrice();">Next</a>
+                                        <a class="btn btn-next" (click)="checkForStockPrice();" [class.disabled] = "!isValidDetails()">Next</a>
                                     </div>
                                 </ng-template>
                             </mat-expansion-panel>
@@ -290,7 +290,7 @@
 
                                             <!-- next-button -->
                                             <div class="order-btn text-center">
-                                                <a class="btn btn-next" (click)="analyzeRisk = true; initRiskAnalysis();">Analyze</a>
+                                                <a class="btn btn-next" (click)="analyzeRisk = true; initRiskAnalysis();" [class.disabled] = "!isValidDetails()">Analyze</a>
                                                 <a class="btn btn-next gap-btn" *ngIf="analyzeRisk" (click)="analyzeRisk = false; scroll(tradeCards);">Reset</a>
                                             </div>
                                         </div>
