@@ -163,7 +163,7 @@
                                                     <label class="col-form-label">Expiry</label>
                                                     <div class="card-right">
                                                         <div class="datepicker-group">
-                                                            <input matInput [matDatepicker]="expireDate" (click)="expireDate.open()" id="expireDate" (dateChange)="addEvent('input', $event)" name="expireDate" [(ngModel)]="stockOptions[index].expireDate" />
+                                                            <input matInput [matDatepicker]="expireDate" (click)="expireDate.open()" id="expireDate" (dateChange)="addEvent('input', $event)" name="expireDate" [(ngModel)]="stockOptions[index].expireDate" [min]="minDate" />
                                                             <mat-datepicker-toggle matSuffix [for]="expireDate"></mat-datepicker-toggle>
                                                             <mat-datepicker #expireDate></mat-datepicker>
                                                         </div>

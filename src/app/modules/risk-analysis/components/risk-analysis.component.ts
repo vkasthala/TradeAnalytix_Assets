@@ -37,7 +37,7 @@ export class RiskAnalysisComponent implements OnInit {
 
   @ViewChild('riskAnalysisChart', { static: false }) private riskAnalysisChartComponent: RiskAnalysisChartComponent;
 
-
+  minDate = new Date();
 
   currentState: number = 1;
   selectedStrategy: number = 15;
