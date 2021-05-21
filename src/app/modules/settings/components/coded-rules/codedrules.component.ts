@@ -17,220 +17,30 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class CodedRulesComponent implements OnInit {
 
-  @ViewChild('mindSetType', { static: false }) protected mindSetType: EditableListComponent;
-  @ViewChild('technicalIndicator', { static: false }) protected technicalIndicator: EditableListComponent;
-  @ViewChild('event', { static: false }) protected event: EditableListComponent;
-  @ViewChild('tradeIdea', { static: false }) protected tradeIdea: EditableListComponent;
-
-  @ViewChild('brokerageCommissions', { static: false }) protected brokerageCommissions: EditableGridComponent<BockerageCommission>;
+  @ViewChild('codedRules', { static: false }) protected codedRules: EditableGridComponent<BockerageCommission>;
 
   constructor(private dataSetupService: DataSetupService, private cdr: ChangeDetectorRef, private _dialog: MatDialog, private toastr: ToastrService) { }
   step = 0;
   ngOnInit() {
 
   }
+
   setStep(index: number) {
     this.step = index;
   }
   ngAfterViewInit() {
-    this.initBrockerageCommisionsGrid();
-    this.initSourceTypes();
-    this.initTechIndicators();
-    this.initMindsetTypes();
-    this.initSurrEventTypes();
+    this.initCodedRulesGrid();
     this.cdr.detectChanges();
   }
 
-  initSourceTypes() {
-    let addItemSubject: Subject<EditableListItem> = new Subject<EditableListItem>();
-    let editItemSubject: Subject<EditableListItem> = new Subject<EditableListItem>();
-    let deleteItemSubject: Subject<EditableListItem> = new Subject<EditableListItem>();
-    addItemSubject.asObservable().subscribe(data => {
-      this.dataSetupService.createSourceType(data).subscribe(data => {
-        this.showSuccessMessage('Successfully added the new source type');
-        this.loadSourceItems();
-      }, err => {
-        console.log('error in creating source type: ', data);
-        this.showErrorMessageDialog('Error! failed to add source type');
-      });
-    });
-    editItemSubject.asObservable().subscribe(data => {
-      this.dataSetupService.updateSourceType(data).subscribe(data => {
-        this.showSuccessMessage('Successfully updated the selected source type');
-        this.loadSourceItems();
-      }, err => {
-        console.log('error in editing source type: ', data);
-        this.showErrorMessageDialog('Error! failed to edit the selected source type');
-      });
-    });
-    deleteItemSubject.asObservable().subscribe(data => {
-      this.getDeleteDialog().afterClosed().subscribe(dialogResult => {
-        if (dialogResult == true) {
-          this.dataSetupService.deleteSourceType(data.id).subscribe(data => {
-            this.showSuccessMessage('Successfully deleted the selected source type');
-            this.loadSourceItems();
-          }, err => {
-            console.log('error in deleteing source type: ', data);
-            this.showDeleteErrorMessage();
-          });
-        }
-      });
-    });
-    this.tradeIdea.addItemSubject = addItemSubject;
-    this.tradeIdea.editItemSubject = editItemSubject;
-    this.tradeIdea.deleteItemSubject = deleteItemSubject;
-    this.loadSourceItems();
-  }
-
-  loadSourceItems() {
-    this.dataSetupService.getTradeSourceTypes().subscribe(result => {
-      this.tradeIdea.items = result;
+  loadCodedRulesData() {
+    this.dataSetupService.getBrokerageCommissions().subscribe(result => {
+      this.codedRules.dataSource = result;
     });
   }
 
-  initTechIndicators() {
-    let addItemSubject: Subject<EditableListItem> = new Subject<EditableListItem>();
-    let editItemSubject: Subject<EditableListItem> = new Subject<EditableListItem>();
-    let deleteItemSubject: Subject<EditableListItem> = new Subject<EditableListItem>();
-    addItemSubject.asObservable().subscribe(data => {
-      this.dataSetupService.createTechnicalIndicatorType(data).subscribe(data => {
-        this.showSuccessMessage('Successfully added new technical indicator');
-        this.loadTechnicalIndicators();
-      }, err => {
-        console.log('error in creating tech ind type: ', data);
-        this.showErrorMessageDialog('Error! failed to add technical indicator');
-      });
-    });
-    editItemSubject.asObservable().subscribe(data => {
-      this.dataSetupService.updateTechnicalIndicatorType(data).subscribe(data => {
-        this.showSuccessMessage('Successfully updated the selected technical indicator');
-        this.loadTechnicalIndicators();
-      }, err => {
-        console.log('error in editing tech ind type: ', data);
-        this.showErrorMessageDialog('Error! failed to edit the selected technical indicator');
-      });
-    });
-    deleteItemSubject.asObservable().subscribe(data => {
-      this.getDeleteDialog().afterClosed().subscribe(dialogResult => {
-        if (dialogResult == true) {
-          this.dataSetupService.deleteTechnicalIndicatorType(data.id).subscribe(data => {
-            this.showSuccessMessage('Successfully deleted the selected technical indicator');
-            this.loadTechnicalIndicators();
-          }, err => {
-            console.log('error in deleting tech indicator type: ', data)
-            this.showDeleteErrorMessage();
-          });
-        }
-      });
-    });
-    this.technicalIndicator.addItemSubject = addItemSubject;
-    this.technicalIndicator.editItemSubject = editItemSubject;
-    this.technicalIndicator.deleteItemSubject = deleteItemSubject;
-    this.loadTechnicalIndicators();
-  }
-
-  loadTechnicalIndicators() {
-    this.dataSetupService.getTechIndicators().subscribe(result => {
-      this.technicalIndicator.items = result;
-    });
-  }
-
-  initMindsetTypes() {
-    let addItemSubject: Subject<EditableListItem> = new Subject<EditableListItem>();
-    let editItemSubject: Subject<EditableListItem> = new Subject<EditableListItem>();
-    let deleteItemSubject: Subject<EditableListItem> = new Subject<EditableListItem>();
-    addItemSubject.asObservable().subscribe(data => {
-      this.dataSetupService.createMindsetType(data).subscribe(data => {
-        this.showSuccessMessage('Successfully added new mindset');
-        this.loadMindsetTypes();
-      }, err => {
-        console.log('error in creating mindset type: ', data);
-        this.showErrorMessageDialog('Error! failed to add mindset');
-      });
-    });
-    editItemSubject.asObservable().subscribe(data => {
-      this.dataSetupService.updateMindsetType(data).subscribe(data => {
-        this.showSuccessMessage('Successfully updated the selected mindset');
-        this.loadMindsetTypes();
-      }, err => {
-        console.log('error in editing mindset type: ', data);
-        this.showErrorMessageDialog('Error! failed to edit the selected mindset');
-      });
-    });
-    deleteItemSubject.asObservable().subscribe(data => {
-      this.getDeleteDialog().afterClosed().subscribe(dialogResult => {
-        if (dialogResult == true) {
-          this.dataSetupService.deleteMindsetType(data.id).subscribe(data => {
-            this.showSuccessMessage('Successfully deleted the selected mindset');
-            this.loadMindsetTypes();
-          }, err => {
-            console.log('error in deleting mindset type: ', data)
-            this.showDeleteErrorMessage();
-          });
-        }
-      });
-    });
-    this.mindSetType.addItemSubject = addItemSubject;
-    this.mindSetType.editItemSubject = editItemSubject;
-    this.mindSetType.deleteItemSubject = deleteItemSubject;
-    this.loadMindsetTypes();
-  }
-
-  loadMindsetTypes() {
-    this.dataSetupService.getMindsetTypes().subscribe(result => {
-      this.mindSetType.items = result;
-    });
-  }
-
-  initSurrEventTypes() {
-    let addItemSubject: Subject<EditableListItem> = new Subject<EditableListItem>();
-    let editItemSubject: Subject<EditableListItem> = new Subject<EditableListItem>();
-    let deleteItemSubject: Subject<EditableListItem> = new Subject<EditableListItem>();
-    addItemSubject.asObservable().subscribe(data => {
-      this.dataSetupService.createSurrEventType(data).subscribe(data => {
-        this.showSuccessMessage('Successfully added new event');
-        this.loadSurrEventTypes();
-      }, err => {
-        console.log('error in creating surr event type: ', data);
-        this.showErrorMessageDialog('Error! failed to add event');
-      });
-    });
-    editItemSubject.asObservable().subscribe(data => {
-      this.dataSetupService.updateSurrEventType(data).subscribe(data => {
-        this.showSuccessMessage('Successfully updated the selected event');
-        this.loadSurrEventTypes();
-      }, err => {
-        console.log('error in editing surr event type: ', data)
-        this.showErrorMessageDialog('Error! failed to edit the selected event');
-      });
-    });
-    deleteItemSubject.asObservable().subscribe(data => {
-      this.getDeleteDialog().afterClosed().subscribe(dialogResult => {
-        if (dialogResult == true) {
-          this.dataSetupService.deleteSurrEventType(data.id).subscribe(data => {
-            this.showSuccessMessage('Successfully deleted the selected event');
-            this.loadSurrEventTypes();
-          }, err => {
-            console.log('error in deleting surr event type: ', data)
-            this.showDeleteErrorMessage();
-          });
-        }
-      });
-    });
-    this.event.addItemSubject = addItemSubject;
-    this.event.editItemSubject = editItemSubject;
-    this.event.deleteItemSubject = deleteItemSubject;
-    this.loadSurrEventTypes();
-  }
-
-  loadSurrEventTypes() {
-    this.dataSetupService.getSurroundingTypes().subscribe(result => {
-      this.event.items = result;
-    });
-  }
-
-  initBrockerageCommisionsGrid() {
-    this.loadBrockerageCommisionsData();
+  initCodedRulesGrid() {
+    this.loadCodedRulesData();
 
     let cols: EditableGridColumn[] = [];
     let colIds: string[] = [];
@@ -257,8 +67,8 @@ export class CodedRulesComponent implements OnInit {
     colIds.push('value');
     cols.push(col);
 
-    this.brokerageCommissions.setColumnConfigs(cols);
-    this.brokerageCommissions.setColumns(colIds);
+    this.codedRules.setColumnConfigs(cols);
+    this.codedRules.setColumns(colIds);
 
     let addItemSubject: Subject<BockerageCommission> = new Subject<BockerageCommission>();
     let editItemSubject: Subject<BockerageCommission> = new Subject<BockerageCommission>();
@@ -266,7 +76,7 @@ export class CodedRulesComponent implements OnInit {
     addItemSubject.asObservable().subscribe(data => {
       this.dataSetupService.createBrokerageCommission(data).subscribe(data => {
         this.showSuccessMessage('Successfully added the new brokerage commission');
-        this.loadBrockerageCommisionsData();
+        this.loadCodedRulesData();
       }, err => {
         console.log('error in creating brokerage commission: ', data)
         this.showErrorMessageDialog('Error! failed to add brokerage commission');
@@ -275,7 +85,7 @@ export class CodedRulesComponent implements OnInit {
     editItemSubject.asObservable().subscribe(data => {
       this.dataSetupService.updateBrokerageCommission(data).subscribe(data => {
         this.showSuccessMessage('Successfully updated the selected brokerage commission');
-        this.loadBrockerageCommisionsData();
+        this.loadCodedRulesData();
       }, err => {
         console.log('error in editing brokerage commission: ', data)
         this.showErrorMessageDialog('Error! failed to edit selected brokerage commission');
@@ -286,7 +96,7 @@ export class CodedRulesComponent implements OnInit {
         if (dialogResult == true) {
           this.dataSetupService.deleteBrokerageCommission(data.id).subscribe(data => {
             this.showSuccessMessage('Successfully deleted the selected brokerage commission');
-            this.loadBrockerageCommisionsData();
+            this.loadCodedRulesData();
           }, err => {
             console.log('error in deleteing brokerage commission: ', data)
             this.showDeleteErrorMessage();
@@ -294,16 +104,11 @@ export class CodedRulesComponent implements OnInit {
         }
       });
     });
-    this.brokerageCommissions.addItemSubject = addItemSubject;
-    this.brokerageCommissions.editItemSubject = editItemSubject;
-    this.brokerageCommissions.deleteItemSubject = deleteItemSubject;
+    this.codedRules.addItemSubject = addItemSubject;
+    this.codedRules.editItemSubject = editItemSubject;
+    this.codedRules.deleteItemSubject = deleteItemSubject;
   }
 
-  loadBrockerageCommisionsData() {
-    this.dataSetupService.getBrokerageCommissions().subscribe(result => {
-      this.brokerageCommissions.dataSource = result;
-    });
-  }
 
   getDeleteDialog() {
     const dialogRef = this._dialog.open(ConfirmDialogComponent, {

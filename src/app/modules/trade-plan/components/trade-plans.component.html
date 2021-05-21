@@ -81,10 +81,9 @@
                         <ng-container matColumnDef="action">
                             <th mat-header-cell *matHeaderCellDef> </th>
                             <td mat-cell *matCellDef="let element">
-                                <div class="edit">
-                                    <mat-icon class="text-success cursor mat-icon-sm" (click)="editEntry(element)">edit</mat-icon>
-                                </div>
+                                <mat-icon *ngIf="element.status == 'Open'" class="text-success cursor mat-icon-sm mr-3" (click)="editEntry(element)">edit</mat-icon>
 
+                                <mat-icon *ngIf="element.status == 'Closed'" (click)="editEntry(element);closeActionBox()" class="mat-icon-sm trade-view">visibility</mat-icon>
                             </td>
                         </ng-container>
 
