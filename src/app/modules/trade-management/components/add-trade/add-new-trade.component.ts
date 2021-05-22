@@ -309,8 +309,10 @@ export class AddNewTradeComponent implements OnInit {
       this.tradeStrategy.executedDate = res.executionDate;
       if (!this.add) {
         this.tradeDetails.executedDate = res.executionDate;
+        this.editTradeStrategy();
+      } else {
+        this.addTrade();
       }
-      this.addTrade();
     });
   }
 
@@ -436,7 +438,7 @@ export class AddNewTradeComponent implements OnInit {
       return false;
     }
     let status: boolean = this.tradeDetails.isValidTradeStrategy();
-    if(this.close){
+    if (this.close) {
       status = status && this.tradeDetailsBottomComponent.closeDate !== undefined;
     }
     return status;
