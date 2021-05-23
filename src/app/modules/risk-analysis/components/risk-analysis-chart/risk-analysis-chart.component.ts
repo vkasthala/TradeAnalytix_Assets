@@ -32,20 +32,23 @@ export class RiskAnalysisChartComponent implements OnInit {
             event;
 
           for (i = 0; i < Highcharts.charts.length; i = i + 1) {
+            debugger;
             chart = Highcharts.charts[i];
-            // Find coordinates within the chart
-            event = chart.pointer.normalize(e);
-            // Get the hovered point
-            point = chart.series[0].searchPoint(event, true);
+            if (chart) {
+              chart = Highcharts.charts[i];
+              // Find coordinates within the chart
+              event = chart.pointer.normalize(e);
+              //event.chartX = (event.chartX+400) % 400;
+              event.chartX = event.offsetX;
+              // Get the hovered point
+              point = chart.series[0].searchPoint(event, true);
 
-            /**
-            * Highligh`t a point by showing tooltip, setting hover state and draw crosshair
-            */
-            if (point) {
-              //event = chart.pointer.normalize(event);
-              point.onMouseOver(); // Show the hover marker
-              //chart.tooltip.refresh(this); // Show the tooltip
-              chart.xAxis[0].drawCrosshair(event, this); // Show the crosshair
+              if (point) {
+                point.onMouseOver(); // Show the hover marker
+                //chart.tooltip.refresh(this); // Show the tooltip
+                chart.xAxis[0].drawCrosshair(event, this); 
+                //point.highlight(e);
+              }
             }
           }
         }
@@ -81,18 +84,20 @@ export class RiskAnalysisChartComponent implements OnInit {
     }
   }
 
-
-
   loadChart(chartResult: any[]) {
     this.removeAllChildNodes(document.getElementById('container'));
     for (let ind = 0; ind < chartResult.length; ind++) {
       var chartDiv = document.createElement('div');
       chartDiv.className = 'chart';
-      chartDiv.setAttribute("style", "margin-top:15px;");
+      chartDiv.id = "chart" + ind;
+      chartDiv.style.width = '500px';
+      chartDiv.style.height = '200px';
+      chartDiv.style.float = 'left';
+      chartDiv.style.marginTop = '15px';
       document.getElementById('container').appendChild(chartDiv);
+
       Highcharts.chart(chartDiv, chartResult[ind]);
     }
-    //this.chart = new Chart(chartResult);
   }
 
   removeAllChildNodes(parent) {
