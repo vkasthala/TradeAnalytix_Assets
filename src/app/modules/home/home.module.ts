@@ -101,6 +101,9 @@ import { RiskByAssetChartComponent } from '../dashboard/charts/risk-by-asset-cha
 import { UserGoalsByDateChartComponent } from '../dashboard/charts/user-goals-by-date/user-goals-by-date.component.';
 import { ReturnsCalendarChartComponent } from '../dashboard/charts/returns-calendar-chart/returns-calendar-chart.component';
 import { CodedRulesComponent } from '../settings/components/coded-rules/codedrules.component';
+import { NotificationsComponent } from '../notifications/notifications.component';
+import { ViewTradePlanComponent } from '../trade-plan/components/view-trade-plan.component';
+
 
 export const MY_FORMATS = {
   parse: {
@@ -190,7 +193,9 @@ export const MY_FORMATS = {
     UserGoalsByDateChartComponent,
     ReturnsCalendarChartComponent,
     ImportTradesHistory,
-    CodedRulesComponent
+    CodedRulesComponent,
+    NotificationsComponent,
+    ViewTradePlanComponent
   ],
   imports: [
     CommonModule,

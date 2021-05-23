@@ -7,11 +7,11 @@ import { TradePlansService } from '../services/trade-plans.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-edit-trade-plan',
+  selector: 'app-view-trade-plan',
   templateUrl: './add-trade-plan/addnewtradeplan.component.html',
   styleUrls: ['./add-trade-plan/addnewtradeplan.component.scss']
 })
-export class EditTradePlanComponent extends AddnewtradeplanComponent implements OnInit {
+export class ViewTradePlanComponent extends AddnewtradeplanComponent implements OnInit {
 
 
   constructor(
@@ -21,9 +21,9 @@ export class EditTradePlanComponent extends AddnewtradeplanComponent implements 
     tradePlanService: TradePlansService,
     toastr: ToastrService) {
     super(_dialog, router, metadataService, tradePlanService, toastr);
-    this.edit = true;
+    this.view = true;
+    this.edit = false;
     this.add = false;
-    this.view = false;
   }
 
 }

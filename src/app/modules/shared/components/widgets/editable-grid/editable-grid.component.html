@@ -1,10 +1,11 @@
 <div class="trade-cards-section mb-2">
     <span class="card-main" *ngFor="let entry of columnConfigs">
-        <select class="form-control" *ngIf="entry.type == 'select'" id="{{entry.id}}">
-            <option value=""></option>
+        <select class="form-control" *ngIf="entry.type == 'select'" id="{{entry.id}}" required>
+            <option value="" disabled selected>Select {{entry.name}}</option>
+            <!-- <option value=""></option> -->
             <option *ngFor="let value of entry.values" value="{{value}}">{{value}}</option>
         </select>
-        <input type="text" class="form-control editable-text" *ngIf="entry.type == 'text'" id="{{entry.id}}" />
+        <input type="text" class="form-control editable-text" *ngIf="entry.type == 'text'" id="{{entry.id}}" placeholder="Enter {{entry.name}}" />
     </span>
     <span class="text-primary">
         <span class="text-primary action-icon" *ngIf="!edit">

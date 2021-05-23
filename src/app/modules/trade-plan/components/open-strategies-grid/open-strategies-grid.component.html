@@ -34,9 +34,9 @@
             </td>
         </ng-container>
         <ng-container matColumnDef="editColumn">
-            <th mat-header-cell *matHeaderCellDef>Action</th>
+            <th mat-header-cell *matHeaderCellDef><span *ngIf="!viewTradePlan">Action</span></th>
             <td mat-cell *matCellDef="let element">
-                <mat-icon class="mat-icon-edit mat-icon-sm" (click)="onActionTextEdit(element)">edit
+                <mat-icon class="mat-icon-edit mat-icon-sm" *ngIf="!viewTradePlan" (click)="onActionTextEdit(element)">edit
                 </mat-icon>
             </td>
         </ng-container>
@@ -44,7 +44,7 @@
         <ng-container matColumnDef="aligned" *ngIf="tradePlanId > 0">
             <th mat-header-cell *matHeaderCellDef>Aligned</th>
             <td mat-cell *matCellDef="let element">
-                <mat-checkbox [(ngModel)]="element.aligned"></mat-checkbox>
+               <mat-checkbox [(ngModel)]="element.aligned" [ngClass]="[viewTradePlan ? 'disabled' : '']"></mat-checkbox>
             </td>
         </ng-container>
 

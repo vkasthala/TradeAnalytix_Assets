@@ -108,6 +108,11 @@ export class TradePlansComponent implements OnInit {
     extras.state = element;
     this.router.navigate(['/edit-trade-plan'], extras);
   }
+  viewEntry(element: TradePlanGridRow) {
+    let extras: NavigationExtras = {};
+    extras.state = element;
+    this.router.navigate(['/view-trade-plan'], extras);
+  }
 
   onDateRangeChanged(event: IMyDateRangeModel) {
     console.log('date change: ', event);

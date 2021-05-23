@@ -47,6 +47,7 @@ export class CodedRulesComponent implements OnInit {
     let col: EditableGridColumn = new EditableGridColumn();
     col.id = "name";
     col.name = "Parameter";
+    col.placeholder = "Parameter";
     col.type = 'select';
     col.values = ['Forex Options', 'Stock Options', 'Stock Future'];
     colIds.push('name');

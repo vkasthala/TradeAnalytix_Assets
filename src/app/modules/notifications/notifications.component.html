@@ -1,0 +1,41 @@
+<div class="p-3 mt-1">
+    <div class="main-body">
+        <div class="trade-table">
+            <mat-table [dataSource]="dataSource" matSort>
+                <!-- Date Column -->
+                <ng-container matColumnDef="openDate">
+                    <mat-header-cell class="date-cell" *matHeaderCellDef mat-sort-header>Date</mat-header-cell>
+                    <mat-cell class="date-cell" *matCellDef="let element"> {{element.openDate | date: 'dd-MMM-yyyy'}} </mat-cell>
+                </ng-container>
+
+                <!-- Notification Column -->
+                <ng-container matColumnDef="stockName">
+                    <mat-header-cell class="notification-cell" *matHeaderCellDef mat-sort-header>Notification</mat-header-cell>
+                    <mat-cell class="notification-cell" *matCellDef="let element"> {{element.stockName}} </mat-cell>
+                </ng-container>
+
+                
+                <!-- Action Column -->
+                <ng-container matColumnDef="action">
+                    <mat-header-cell class="action-cell" *matHeaderCellDef mat-sort-header>
+                        <input type="checkbox" class="mr-2" (click)="viewTrade(element);closeActionBox()"  /> 
+                        Select All 
+                        <mat-icon class="ml-3">markunread_mailbox</mat-icon>
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element, let i = index" class="action_colum">
+                        <div>
+                            <input type="checkbox" (click)="viewTrade(element)"  />
+                        </div>
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+
+            <!-- Angular 8 pagination -->
+            <mat-paginator [pageSize]="20" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true" [length]="dataSource.totalCount">
+            </mat-paginator>
+        </div>
+    </div>
+</div>

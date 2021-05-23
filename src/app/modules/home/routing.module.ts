@@ -20,6 +20,8 @@ import { OauthRedirectComponent } from '../utilities/components/oauth-redirect/o
 import { ExitRulesComponent } from '../trade-management/components/add-trade/Steps/exit-rules/exit-rules.component';
 import { StrategyComparison } from '../../modules/strategy-comparison/components/strategy-comparison.component';
 import { ImportTradesHistory } from '../../modules/import-trades-history/import-trades-history';
+import { NotificationsComponent } from '../../modules/notifications/notifications.component';
+import { ViewTradePlanComponent } from '../../modules/trade-plan/components/view-trade-plan.component';
 
 
 
@@ -85,6 +87,10 @@ const routes: Routes = [
           component: EditTradePlanComponent
         },
         {
+          path: 'view-trade-plan',
+          component: ViewTradePlanComponent
+        },
+        {
           path: 'trade-plans',
           component: TradePlansComponent
         },
@@ -103,6 +109,10 @@ const routes: Routes = [
         {
           path: 'import-trades-history',
           component: ImportTradesHistory
+        },
+        {
+          path: 'notifications',
+          component: NotificationsComponent
         }
     ]
   },

@@ -22,6 +22,7 @@ import { PlannedTradesGridComponent } from '../planned-trades-grid/planned-trade
 export class AddnewtradeplanComponent implements OnInit {
   protected add = true;
   protected edit = false;
+  protected view = false;
   tradePlanId: number = 0;
 
   marketStatuses: MarketStatus[];

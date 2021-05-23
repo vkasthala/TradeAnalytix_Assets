@@ -68,7 +68,7 @@
                         <input type="number" pattern="^\d*(\.\d{0,2})?$" (change)="checkForDecimalValidation($event)"
                             step="0.01" (keydown)="preventNegatives($event, true)" min="0" class="form-control"
                             placeholder="" [(ngModel)]="stockEntry.price"
-                            [ngClass]="[closeTrade || viewTrade ? 'disabled' : '', editTrade && (StockPosition.price > 0 && StockPosition.price !== undefined ) ? 'disabled' : '']" />
+                            [ngClass]="[closeTrade || viewTrade ? 'disabled' : '', editTrade && (StockPosition.quantity > 0 && StockPosition.quantity !== undefined ) ? 'disabled' : '']" />
                     </div>
                     <div class="card-main card-main-custom" *ngIf="closeTrade">
                         <label class="col-form-label pt-0">Exit Price <span class="text-danger">*</span></label>

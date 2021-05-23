@@ -7,5 +7,7 @@ export class EditableGridColumn {
     type: string;
 
     values: string[];
+    
+    placeholder: string;
 
 }

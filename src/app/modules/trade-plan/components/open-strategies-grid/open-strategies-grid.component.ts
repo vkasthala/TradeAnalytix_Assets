@@ -16,6 +16,7 @@ export class OpenStrategiesGridComponent implements OnInit {
   strategiesGridColumns: string[] = ['symbol', 'strategyType', 'returnAmount', 'maxRisk', 'maxProfit', 'actionText', 'editColumn'];
 
   @Input('tradePlanId') tradePlanId: number;
+  @Input('viewTradePlan') viewTradePlan: boolean;
 
   constructor(private tradePlanService: TradePlansService, private _dialog: MatDialog) {
   
