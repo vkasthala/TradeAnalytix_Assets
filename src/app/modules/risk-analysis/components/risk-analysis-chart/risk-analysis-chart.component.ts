@@ -97,6 +97,13 @@ export class RiskAnalysisChartComponent implements OnInit {
       //chartDiv.style.marginTop = '15px';
       document.getElementById('container').appendChild(chartDiv);
 
+      let chartData = chartResult[ind];
+      chartData.tooltip = {
+        formatter: function () {
+          return 'Change: <b>' + this.x + '%' + '</b><br/>Price: <b>' + this.y + '</b>';
+        }
+      }
+
       Highcharts.chart(chartDiv, chartResult[ind]);
     }
   }
