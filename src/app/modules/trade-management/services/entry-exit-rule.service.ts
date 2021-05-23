@@ -1,14 +1,23 @@
 import { Injectable } from '@angular/core';
 import { EntryExitRule } from '../models/entry-exit-rule.model';
+import { EntryExitRulesGridRequest } from '../../settings/models/entry-exit-rules-grid-request.model';
+import { EntryExitRulesGridPage } from '../../settings/models/entry-exit-rules-grid-page.model';
+import { SettingsService } from '../../settings/services/settings.service';
+import { HttpService } from '../../shared/services/http.service';
+import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EntryExitRuleService {
 
-  constructor() { }
-
-  public getEntryRules(): EntryExitRule[]{
+  constructor(private settingsService: SettingsService,
+    private httpService: HttpService) { }
+    
+  private apiUrl = environment.apiUrl;
+  
+  public getEntryRules1(): EntryExitRule[]{
     let entryRules:EntryExitRule[] = [];
 
     let rule1 = new EntryExitRule();
@@ -48,6 +57,29 @@ export class EntryExitRuleService {
     entryRules.push(rule6);
 
     return entryRules;
+  }
+
+
+  getEntryRules2(id): EntryExitRule[] {
+    let entryRules:EntryExitRule[] = [];
+    let type = 'Entry';
+    this.getUserEntryExitRules(id, type).subscribe(result => {
+      return result;
+    });
+    return entryRules;
+  }
+
+  getUserEntryExitRules(id, type): Observable<EntryExitRule[]> {
+    return this.httpService.get<EntryExitRule[]>(this.apiUrl + '/trade-strategy/entryexitrules/'+ id + '/' +type);
+  }
+
+  getInitialRequest(): EntryExitRulesGridRequest {
+    let request: EntryExitRulesGridRequest = new EntryExitRulesGridRequest();
+    let pageRequest: EntryExitRulesGridPage = new EntryExitRulesGridPage();
+    pageRequest.pageNumber = 0;
+    pageRequest.pageSize = 200;
+    request.page = pageRequest;
+    return request;
   }
 
   public getExitRules(): EntryExitRule[]{
