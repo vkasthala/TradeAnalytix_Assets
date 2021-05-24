@@ -28,7 +28,7 @@ export class EntryRulesComponent implements OnInit {
   @Output('prevStep') prevStep = new EventEmitter();
 
 
-  entryRules: EntryExitRule[] = this.entryExitRuleService.getEntryRules();
+  entryRules: EntryExitRule[];
   protected hideEntryRules: boolean = false;
   constructor(
     private _dialog: MatDialog,
@@ -40,12 +40,12 @@ export class EntryRulesComponent implements OnInit {
   }
 
   ngAfterViewInit(): void {
-    console.log('entry rules child view init:', this.inputState);
-    if (this.inputState && this.inputState.tradeStrategy.entryRules && this.inputState.tradeStrategy.entryRules.length > 0) {
-      this.entryRules = this.inputState.tradeStrategy.entryRules;
-    }
+    let type = 'Entry';
+      this.entryExitRuleService.getUserEntryExitRules(this.inputState.tradeStrategy.id, type).subscribe(result => {
+        this.entryRules = result;
+      });
   }
-
+    
   previous() {
     this.prevStep.emit()
   }

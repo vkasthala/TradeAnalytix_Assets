@@ -7,6 +7,10 @@ export class EntryExitRule {
     aligned: boolean;
 
     comment: string;
-
+    
+    description: string;
+    
     type: number;
+
+    source: string;
 }

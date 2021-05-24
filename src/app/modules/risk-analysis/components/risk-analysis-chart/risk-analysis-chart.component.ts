@@ -46,7 +46,7 @@ export class RiskAnalysisChartComponent implements OnInit {
               if (point) {
                 point.onMouseOver(); // Show the hover marker
                 //chart.tooltip.refresh(this); // Show the tooltip
-                chart.xAxis[0].drawCrosshair(event, this); 
+                chart.xAxis[0].drawCrosshair(event, this);
                 //point.highlight(e);
               }
             }
@@ -90,11 +90,19 @@ export class RiskAnalysisChartComponent implements OnInit {
       var chartDiv = document.createElement('div');
       chartDiv.className = 'chart';
       chartDiv.id = "chart" + ind;
-      chartDiv.style.width = '500px';
-      chartDiv.style.height = '200px';
-      // chartDiv.style.float = 'left';
-      chartDiv.style.marginTop = '15px';
+      chartDiv.setAttribute("style", "width:500px; height: 200px; float: left; margin-top: 15px;");
+      //chartDiv.style.width = '500px';
+      //chartDiv.style.height = '200px';
+      //chartDiv.style.float = 'left';
+      //chartDiv.style.marginTop = '15px';
       document.getElementById('container').appendChild(chartDiv);
+
+      let chartData = chartResult[ind];
+      chartData.tooltip = {
+        formatter: function () {
+          return 'Change: <b>' + this.x + '%' + '</b><br/>Price: <b>' + this.y + '</b>';
+        }
+      }
 
       Highcharts.chart(chartDiv, chartResult[ind]);
     }
