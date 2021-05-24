@@ -30,7 +30,7 @@
             </ng-container>
             <ng-container *ngSwitchCase="2">
                 <div class="mb-2">
-                    <app-trade-details-header [selectedStock]="selectedStock" [stockSummary]="stockSummary" (loadMoreStats)="loadMoreStatsHandler($event)"></app-trade-details-header>
+                    <app-trade-details-header [addTrade]="add" [selectedStock]="selectedStock" [stockSummary]="stockSummary" (loadMoreStats)="loadMoreStatsHandler($event)"></app-trade-details-header>
                 </div>
                 <div class="risk-analysis-sec">
                     <div class="risk-inner">
@@ -388,9 +388,9 @@
                                                                             <tr *ngFor="let ritem of riskAnalysisResults;let rowIndex=index">
                                                                                 <td [ngClass]="{ 'trade-rd' :ritem.optionResults[index].gainLoss >= 0, 'trade-rdd':ritem.optionResults[index].gainLoss < 0}">
                                                                                     {{ritem.optionResults[index].price}}</td>
-                                                                                <td>{{ritem.optionResults[index].value}}</td>
+                                                                                <td>{{ritem.optionResults[index].value | number:'1.0-0' }}</td>
                                                                                 <td [ngClass]="{ 'trade-rd' :ritem.optionResults[index].gainLoss >= 0, 'trade-rdd':ritem.optionResults[index].gainLoss < 0}">
-                                                                                    {{ritem.optionResults[index].gainLoss}}
+                                                                                    {{ritem.optionResults[index].gainLoss | number:'1.0-0'}}
                                                                                 </td>
                                                                             </tr>
                                                                         </tbody>

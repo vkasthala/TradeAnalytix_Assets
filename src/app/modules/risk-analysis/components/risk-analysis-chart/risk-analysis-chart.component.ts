@@ -92,7 +92,7 @@ export class RiskAnalysisChartComponent implements OnInit {
       chartDiv.id = "chart" + ind;
       chartDiv.style.width = '500px';
       chartDiv.style.height = '200px';
-      chartDiv.style.float = 'left';
+      // chartDiv.style.float = 'left';
       chartDiv.style.marginTop = '15px';
       document.getElementById('container').appendChild(chartDiv);
 

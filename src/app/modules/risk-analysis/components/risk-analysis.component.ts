@@ -64,7 +64,8 @@ export class RiskAnalysisComponent implements OnInit {
   riskAnalysisResults: RiskAnalysisRecord[] = [];
 
   maxRiskDetails: MaxRiskDetails;
-
+  protected add = true;
+  
   constructor(private utilService: UtilService,
     private riskAnalysisService: RiskAnalysisService,
     private userStockStatsService: UserStockStatsService,

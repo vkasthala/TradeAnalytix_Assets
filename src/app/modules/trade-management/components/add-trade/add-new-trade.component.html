@@ -4,7 +4,7 @@
             <div class="trade-dash-name">
                 <h5 class="text-primary">
                     <!-- {{add ? 'Add Trade' : ''}} {{view ? 'View Trade' : ''}} -->
-                    <span *ngIf="!add">{{tradeStrategy.uid}}</span>
+                    <!-- <span *ngIf="!add">{{tradeStrategy.uid}}</span> -->
                 </h5>
             </div>
         </div>
@@ -31,7 +31,7 @@
                 </div>
             </ng-container>
             <ng-container *ngSwitchCase="2">
-                <app-trade-details-header [editTrade]="edit" [closeTrade]="close" [selectedStock]="selectedStock"
+                <app-trade-details-header [addTrade]="add" [editTrade]="edit" [closeTrade]="close" [selectedStock]="selectedStock"
                     [stockSummary]="stockSummary" (loadMoreStats)="loadMoreStatsHandler($event)"
                     [StrategyId]="tradeStrategy"></app-trade-details-header>
                 <div class="row">

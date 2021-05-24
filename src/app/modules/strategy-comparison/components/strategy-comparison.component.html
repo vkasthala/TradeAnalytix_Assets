@@ -20,7 +20,7 @@
 
             <ng-container *ngSwitchCase="2">
                 <!-- {{strategiesList.length}} -->
-                <app-trade-details-header [selectedStock]="selectedStock" [stockSummary]="stockSummary" (loadMoreStats)="loadMoreStatsHandler($event)"></app-trade-details-header>
+                <app-trade-details-header [addTrade]="add" [selectedStock]="selectedStock" [stockSummary]="stockSummary" (loadMoreStats)="loadMoreStatsHandler($event)"></app-trade-details-header>
                 <div class="addnew-second" *ngIf="strategiesList.length == 0">
                     <div class="d-flex align-items-center justify-content-between">
                         <span class="col-form-label p-0">No strategies exist for the symbol" and provide</span>
