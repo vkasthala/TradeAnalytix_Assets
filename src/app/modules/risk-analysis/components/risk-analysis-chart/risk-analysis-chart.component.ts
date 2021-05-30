@@ -32,7 +32,6 @@ export class RiskAnalysisChartComponent implements OnInit {
             event;
 
           for (i = 0; i < Highcharts.charts.length; i = i + 1) {
-            debugger;
             chart = Highcharts.charts[i];
             if (chart) {
               chart = Highcharts.charts[i];
