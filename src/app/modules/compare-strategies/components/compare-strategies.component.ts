@@ -53,6 +53,7 @@ export class CompareStrategiesComponent implements OnInit {
 
   stockOptions: OptionEntry[] = [];
   selectedStrategy: number = 15;
+  protected add = true;
 
   constructor(
     private userStockStatsService: UserStockStatsService,
