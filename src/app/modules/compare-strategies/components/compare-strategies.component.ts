@@ -1,7 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material';
-import { UpdateStrategyPopupComponent } from './update-strategy-popup/update-strategy-popup.component';
-import { UpdatePriceRangeComponent } from './update-price-range/update-price-range.component';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { NavigationExtras, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { EditStrategyComponent } from 'src/app/modules/shared/components/modals/edit-strategy/edit-strategy.component';
+import { StrategyDetailsComponent } from 'src/app/modules/shared/components/modals/strategy-details/strategy-details.component';
+import { CompareStrategyResponse } from '../../compare-strategies/models/compare-strategy-response.model';
+import { StrategyCompareRequest } from '../../compare-strategies/models/strategy-compare-request.model';
+import { StrategyInput } from '../../compare-strategies/models/strategy-input.model';
+import { CompareStrategiesService } from '../../compare-strategies/services/compare-strategies.service';
+import { OptionEntry } from '../../shared/models/trade-management/option-entry.model';
+import { StockEntry } from '../../shared/models/trade-management/stock-entry.model';
+import { StockSymbol } from '../../shared/models/trade-management/stock-symbol.model';
+import { TradeInputData } from '../../shared/models/trade-management/trade-input-data.model';
+import { UserStockSummary } from '../../shared/models/trade-management/user-stock-summary.model';
+import { UserStockStatsService } from '../../shared/services/user-stock-stats.service';
+import { TradeStrategy } from '../../trade-management/models/trade-strategy.model';
+import { CompareStrategiesChartComponent } from './compare-strategies-chart/compare-strategies-chart.component';
 
 @Component({
   selector: 'app-compare-strategies',
@@ -9,42 +23,234 @@ import { UpdatePriceRangeComponent } from './update-price-range/update-price-ran
   styleUrls: ['./compare-strategies.component.scss']
 })
 export class CompareStrategiesComponent implements OnInit {
+  @Input('matTooltipShowDelay') showDelay: number;
+  @Input('matTooltipHideDelay') hideDelay: number;
 
-  strategies:any[] = [true];
-  compareStrategies:boolean;
+  @ViewChild('compareStrategiesChart', { static: false }) private compareStrategiesChartComponent: CompareStrategiesChartComponent;
 
-  constructor( private _dialog: MatDialog) { }
+  currentState: number = 1;
+
+  selectedStock: StockSymbol = new StockSymbol();
+  stockSummary: UserStockSummary = new UserStockSummary();
+  inputState: TradeInputData;
+  step = 0;
+  panelOpenState = false;
+  panelDisabled = true;
+  panel3Disabled = true;
+  panelExpand = false;
+  detailSummaryLoaded: boolean = false;
+
+  userStrategies: StrategyInput[] = [];
+  strategiesList: StrategyInput[] = [];
+  selectedStrategies: StrategyInput[] = new Array<StrategyInput>(5);
+
+  riskFreeRate: number = 6;
+  lowerBound: number = -10;
+  upperBound: number = 10;
+
+  compareResult: CompareStrategyResponse;
+  stockEntry: StockEntry;
+
+  stockOptions: OptionEntry[] = [];
+  selectedStrategy: number = 15;
+
+  constructor(
+    private userStockStatsService: UserStockStatsService,
+    private compareStrategyService: CompareStrategiesService,
+    private toastr: ToastrService,
+    private router: Router,
+    private _dialog: MatDialog) {
+  }
 
   ngOnInit() {
+
+  }
+
+  enterSymbol() {
+    if (!this.selectedStock || !this.selectedStock.code) {
+      this.toastr.error('Please enter a valid symbol to proceed', '');
+      return false;
+    }
+    this.currentState++;
+  }
+
+  symbolSelectEventHandler($event: any) {
+    this.selectedStock = $event;
+    this.loadStockBriefSummary();
+    this.loadUserStrategies();
+  }
+
+  loadUserStrategies() {
+    //Load strategies
+    this.compareStrategyService.getStrategiesList(this.selectedStock.id).subscribe(result => {
+      this.userStrategies = result;
+      if (result.length > 0) {
+        this.strategiesList[0] = result[0];
+        this.selectedStrategies[0] = result[0];
+      }
+      if (result.length > 1) {
+        this.strategiesList[1] = result[0];
+        this.selectedStrategies[1] = result[0];
+      }
+    })
   }
 
   addStrategy() {
-    this.strategies.push(true);
+    this.compareResult = null;
+    if (this.strategiesList.length < 5) {
+      if (this.userStrategies.length > 0) {
+        this.strategiesList.push(this.userStrategies[0]);
+      }
+    }
   }
 
-  update() {
-    const dialogRef = this._dialog.open(UpdateStrategyPopupComponent, {
-      disableClose: true,
-      width: 'auto'
-    });
+  loadMoreStatsHandler($event: any) {
+    console.log('load more stats:', $event);
+    this.loadStockDetailSummary();
+  }
 
+  loadStockBriefSummary() {
+    this.userStockStatsService.getUserStockBriefSummary(this.selectedStock.id, 1).subscribe(result => {
+      this.stockSummary = result;
+    });
+  }
+
+  loadStockDetailSummary() {
+    this.userStockStatsService.getUserStockDetailSummary(this.selectedStock.id, 1).subscribe(result => {
+      this.detailSummaryLoaded = true;
+      this.stockSummary = result;
+    });
+  }
+
+  checkForDecimalValidation(event) {
+    event.target.value = parseFloat(event.target.value).toFixed(2);
+  }
+
+  deleteStrategyItem(index: number) {
+    debugger;
+    let newStratetegies: StrategyInput[] = [];
+    let selected: StrategyInput[] = new Array<StrategyInput>(5);
+    for (let ind = 0; ind < this.strategiesList.length; ind++) {
+      if (ind !== index) {
+        newStratetegies.push(this.strategiesList[ind]);
+        selected[ind] = this.selectedStrategies[ind];
+      }
+    }
+    this.strategiesList = newStratetegies;
+    this.selectedStrategies = selected;
+  }
+
+  enforceMaxLength($event, min, max) {
+    let t = $event.target;
+    if (t.value < min || t.value > max) {
+      return false;
+    }
+  }
+
+
+  setStep(index: number) {
+    // this.step = index;
+  }
+
+  afterPanelClosed(event) {
+    if (event == 1) {
+      this.panelOpenState = false;
+    }
+
+    this.panelExpand = false;
+  }
+
+  afterPanelOpened() {
+    console.log("Panel opened!");
+  }
+
+  submitStrategies() {
+    this.compareStrategyService.compareStrategies(this.createStrategyCompareRequest()).subscribe(result => {
+      console.log("strategy compare result:", result);
+      this.compareResult = result;
+    });
+    //Load chart if it is already rendered
+    if (this.compareStrategiesChartComponent && this.compareStrategiesChartComponent.rendered === true) {
+      this.initChart(true);
+    }
+  }
+
+  createStrategyCompareRequest(): StrategyCompareRequest {
+    let request: StrategyCompareRequest = new StrategyCompareRequest();
+    request.strategies = this.selectedStrategies;
+    request.lowerBound = this.lowerBound;
+    request.upperBound = this.upperBound;
+    request.riskFreeRate = this.riskFreeRate;
+    return request;
+  }
+
+  onStrategyChange(valueInd: number, index: number) {
+    console.log('selected: ', this.userStrategies[valueInd]);
+    this.selectedStrategies[index] = this.userStrategies[valueInd];
+  }
+
+  editStrategyItem(index) {
+    const dialogRef = this._dialog.open(EditStrategyComponent, {
+      disableClose: false,
+      width: 'auto',
+      // data: dialogData
+    });
     dialogRef.afterClosed().subscribe((res) => {
-      this.compareStrategies = false;
+      console.log('here...', res);
     });
   }
 
-  deleteStrategy(index) {
-    this.strategies.splice(index,1);
+  initChart(forceReload: boolean) {
+    debugger;
+    /*if (this.compareStrategiesChartComponent && this.compareStrategiesChartComponent.rendered === true && forceReload === false) {
+      return;
+    }*/
+    this.compareStrategyService.getCompareStrategiesChart(this.createStrategyCompareRequest()).subscribe(chartData => {
+      debugger;
+      if (chartData) {
+        this.compareStrategiesChartComponent.loadChart(chartData);
+      }
+    });
   }
 
-  updatePriceRange() {
-    const dialogRef = this._dialog.open(UpdatePriceRangeComponent, {
-      disableClose: true,
-      width: 'auto'
+  StrategyDetailsModal(index) {
+    const dialogRef = this._dialog.open(StrategyDetailsComponent, {
+      disableClose: false,
+      width: 'auto',
+      // data: dialogData
     });
-
     dialogRef.afterClosed().subscribe((res) => {
+      console.log('here...', res);
     });
   }
 
+  navigateToAddTrade() {
+    let extras: NavigationExtras = {};
+    let input: TradeInputData;
+    if (this.inputState) {
+      input = this.inputState;
+      let stockEntries = [];
+      if (this.stockEntry) {
+        stockEntries.push(this.stockEntry);
+      }
+      input.tradeStrategy.stockEntry = stockEntries;
+      input.tradeStrategy.stockOptions = this.stockOptions;
+      input.tradeStrategy.strategyTypeId = this.selectedStrategy;
+    } else {
+      input = new TradeInputData();
+      let tradeStrategy: TradeStrategy = new TradeStrategy();
+      let stockEntries = [];
+      if (this.stockEntry) {
+        stockEntries.push(this.stockEntry);
+      }
+      tradeStrategy.stockEntry = stockEntries;
+      tradeStrategy.stockOptions = this.stockOptions;
+      tradeStrategy.strategyTypeId = this.selectedStrategy;
+      input.tradeStrategy = tradeStrategy;
+      input.selectedStock = this.selectedStock;
+      input.stockSummary = this.stockSummary;
+    }
+    extras.state = input;
+    this.router.navigate(['/new-trade'], extras);
+  }
 }
