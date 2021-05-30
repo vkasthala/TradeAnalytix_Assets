@@ -49,6 +49,7 @@ import { ReduceToStockPositionComponent } from '../shared/components/modals/redu
 import { CloseTradeDetailsComponent } from '../trade-management/components/close-trade/close-trade-details/close-trade-details.component';
 import { TradeDetailsHeaderComponent } from '../trade-management/components/trade-details-header/trade-details-header.component';
 import { TradeDetailsAsideComponent } from '../trade-management/components/add-trade/trade-details-aside/trade-details-aside.component';
+import { TradingViewComponent } from '../trade-management/components/add-trade/trading-view/trading-view.component';
 import { TradeDetailsBottomComponent } from '../trade-management/components/add-trade/trade-details-bottom/trade-details-bottom.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RoutingModule } from './routing.module';
@@ -81,7 +82,6 @@ import { UpdateStockPricePopupComponent } from '../risk-analysis/components/upda
 import { EditTradePlanComponent } from '../trade-plan/components/edit-trade-plan.component';
 import { EditableListComponent } from '../shared/components/widgets/editable-list/editable-list.component';
 
-import { StrategyComparison } from '../strategy-comparison/components/strategy-comparison.component';
 import { StrategyDetailsComponent } from '../shared/components/modals/strategy-details/strategy-details.component';
 import { EditStrategyComponent } from '../shared/components/modals/edit-strategy/edit-strategy.component';
 import { ImportTradesHistory } from '../import-trades-history/import-trades-history';
@@ -103,6 +103,7 @@ import { ReturnsCalendarChartComponent } from '../dashboard/charts/returns-calen
 import { CodedRulesComponent } from '../settings/components/coded-rules/codedrules.component';
 import { NotificationsComponent } from '../notifications/notifications.component';
 import { ViewTradePlanComponent } from '../trade-plan/components/view-trade-plan.component';
+import { CompareStrategiesChartComponent } from '../compare-strategies/components/compare-strategies-chart/compare-strategies-chart.component';
 
 
 export const MY_FORMATS = {
@@ -181,7 +182,6 @@ export const MY_FORMATS = {
     EditTradePlanComponent,
     EditableListComponent,
     EditableGridComponent,
-    StrategyComparison,
     StrategyDetailsComponent,
     EditStrategyComponent,
     OpenStrategiesGridComponent,
@@ -195,7 +195,9 @@ export const MY_FORMATS = {
     ImportTradesHistory,
     CodedRulesComponent,
     NotificationsComponent,
-    ViewTradePlanComponent
+    ViewTradePlanComponent,
+    CompareStrategiesChartComponent,
+    TradingViewComponent
   ],
   imports: [
     CommonModule,

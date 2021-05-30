@@ -1,14 +1,7 @@
 <!-- entry second -->
 <div class="addnew-second" *ngIf="selectedStock && stockSummaryResult">
-    <!-- <div *ngIf="addTrade || editTrade || closeTrade"> -->
-    <div>
-       <!-- TradingView Widget BEGIN -->
-<div class="tradingview-widget-container">
-    <div class="tradingview-widget-container__widget"></div>
-    
-</div>
-<!-- TradingView Widget END -->
-        
+    <div *ngIf="addTrade || editTrade || closeTrade">
+        <app-trading-view></app-trading-view>
     </div>
     <div class="widget-2">
         <div class="widget_header">
