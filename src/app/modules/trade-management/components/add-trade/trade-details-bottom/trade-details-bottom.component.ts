@@ -69,7 +69,9 @@ export class TradeDetailsBottomComponent implements OnInit {
 
   @Output('loadMoreStats') loadMoreStats = new EventEmitter();
   @Output('calculateMaxRisk') calculateMaxRisk: EventEmitter<any> = new EventEmitter();
-
+  @Input('matTooltipShowDelay') showDelay: number;
+  @Input('matTooltipHideDelay') hideDelay: number;
+  
   maxRiskDetails: MaxRiskDetails;
 
   stockSummaryResult: StockSummaryResult;

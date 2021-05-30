@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output  } from '@angular/core';
 import { MaxRiskDetails } from 'src/app/modules/risk-analysis/models/max-risk-details.model';
 import { StockSymbol } from 'src/app/modules/shared/models/trade-management/stock-symbol.model';
 import { UserStockSummary } from 'src/app/modules/shared/models/trade-management/user-stock-summary.model';
@@ -8,6 +8,7 @@ import { StrategySummaryResult } from '../../../models/strategy-summary-result.m
 import { Subject } from 'rxjs';
 import { TradeStrategy } from '../../../models/trade-strategy.model';
 import { StrategyType } from 'src/app/modules/shared/models/trade-management/strategy-type.enum';
+
 
 @Component({
   selector: 'app-trade-details-aside',
@@ -21,7 +22,9 @@ export class TradeDetailsAsideComponent implements OnInit {
   @Input("tradeStrategy") tradeStrategy: TradeStrategy;
   @Input("strategyTypeChangeSubject") strategyTypeChangeSubject: Subject<number> = new Subject<number>();
   @Input("stockOrOptionAddedSubject") stockOrOptionAddedSubject: Subject<boolean> = new Subject<boolean>();
-
+  @Input("addTrade") addTrade: boolean;
+  @Input("editTrade") editTrade: boolean;
+  @Input("closeTrade") closeTrade: boolean;
   @Output('loadMoreStats') loadMoreStats = new EventEmitter();
   @Output('calculateMaxRisk') calculateMaxRisk: EventEmitter<any> = new EventEmitter();
 
@@ -37,6 +40,7 @@ export class TradeDetailsAsideComponent implements OnInit {
 
   strategyName: string;
 
+  
   constructor(private userStockStatsService: UserStockStatsService) { }
 
   ngOnInit() {
@@ -66,6 +70,9 @@ export class TradeDetailsAsideComponent implements OnInit {
       this.stockOrOptionAdded = data;
     });
   }
+
+
+  
 
   loadSummary() {
     this.userStockStatsService.getStockMetricsSummaryResult(this.selectedStock.id).subscribe(result => {
@@ -100,3 +107,31 @@ export class TradeDetailsAsideComponent implements OnInit {
   }
 
 }
+
+const TradingView = (
+  elementId: 'tradingview-widget-container__widget',
+  symbol: '"FOREXCOM:SPXUSD"',
+  // symbol: string,
+  width: string,
+  locale: string,
+  colorTheme: string,
+  referral_id: string,
+  isTransparent: boolean
+) => {
+  if (document.getElementById(elementId) && document.getElementById(elementId)!.innerHTML === "") {
+      const script = document.createElement('script');
+      script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js'
+      script.async = true;
+      script.innerHTML = JSON.stringify({
+          symbol: symbol,
+          width: width,
+          locale: locale,
+          colorTheme: colorTheme,
+          referral_id: referral_id,
+          isTransparent: isTransparent            
+      });
+      document.getElementById(elementId)!.appendChild(script);
+  }
+}
+
+export { TradingView };

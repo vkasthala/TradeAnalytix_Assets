@@ -28,7 +28,7 @@
                         <input type="checkbox" id="exit_same_week" name="exit_same_week" [(ngModel)]="exitRules[1].aligned" [ngClass]="[closeTrade || viewTrade ? 'disabled' : '', viewTrade ? 'disabled' : '']" />
                         <!-- <label for="exit_same_week"></label> -->
                     </div>
-                    <input type="text" class="trade-check" placeholder="Specify reason for not aligning with the rule" [(ngModel)]="exitRules[1].comment" [ngClass]="[closeTrade || viewTrade ? 'disabled' : '', viewTrade ? 'disabled' : '']" />
+                    <input type="text" class="trade-check" placeholder="Add notes" [(ngModel)]="exitRules[1].comment" [ngClass]="[closeTrade || viewTrade ? 'disabled' : '', viewTrade ? 'disabled' : '']" />
                 </div>
             </div>
             <!-- end : entryrule_item -->

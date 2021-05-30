@@ -1,8 +1,21 @@
 <!-- entry second -->
 <div class="addnew-second" *ngIf="selectedStock && stockSummaryResult">
+    <!-- <div *ngIf="addTrade || editTrade || closeTrade"> -->
+    <div>
+       <!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+    <div class="tradingview-widget-container__widget"></div>
+    
+</div>
+<!-- TradingView Widget END -->
+        
+    </div>
     <div class="widget-2">
         <div class="widget_header">
-            <h5 class="widget_header-label">{{getDisplayValue(selectedStock.code)}} Stats</h5>
+            <h5 class="widget_header-label">
+                {{getDisplayValue(selectedStock.code)}} Stats 
+                <mat-icon matTooltip="Sample Text" matTooltipPosition="right" class="ml-2 mat-icon-sm cursor" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay">info</mat-icon>
+            </h5>
         </div>
         <div class="row no-gutters justify-content-between">
             <div class="widget_item">
@@ -44,7 +57,9 @@
     </div>
     <div class="widget-2" *ngIf="stockOrOptionAdded == true && strategyTypeSummaryResult">
         <div class="widget_header">
-            <h5 class="widget_header-label">{{strategyName}} Strategy Stats</h5>
+            <h5 class="widget_header-label">{{strategyName}} Stats 
+                <mat-icon matTooltip="Sample Text" matTooltipPosition="right" class="ml-2 mat-icon-sm cursor" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay">info</mat-icon>
+            </h5>
         </div>
         <div class="row no-gutters justify-content-between">
             <div class="widget_item">

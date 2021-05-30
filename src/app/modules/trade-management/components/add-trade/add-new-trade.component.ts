@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { MatDialog, MatStepper } from '@angular/material';
 import { NavigationExtras, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -25,7 +25,8 @@ import { Subject } from 'rxjs';
 import { StockLegHistory } from '../../models/stock-leg-history.model';
 import { OptionLegHistory } from '../../models/option-leg-history.model';
 import { TradeDetailsBottomComponent } from './trade-details-bottom/trade-details-bottom.component';
-
+import { catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-add-new-trade',
@@ -46,7 +47,8 @@ export class AddNewTradeComponent implements OnInit {
   @ViewChild('tradeThesis', { static: false }) protected tradeThesis: TradeThesisComponent;
   @ViewChild('entryRules', { static: false }) protected entryRules: EntryRulesComponent;
   @ViewChild('exitRules', { static: false }) protected exitRules: ExitRulesComponent;
-
+  @Input('matTooltipShowDelay') showDelay: number;
+  @Input('matTooltipHideDelay') hideDelay: number;
   strategyTypeChangeSubject: Subject<number> = new Subject<number>();
   stockOrOptionAddedSubject: Subject<boolean> = new Subject<boolean>();
 
@@ -57,6 +59,7 @@ export class AddNewTradeComponent implements OnInit {
   protected edit = false;
   protected close = false;
   protected view = false;
+  protected Loader = false;
 
   protected activeStep: boolean;
   protected stockAdded: boolean;
@@ -75,7 +78,7 @@ export class AddNewTradeComponent implements OnInit {
   protected tradeHistory: TradeHistory;
   protected localTradeHistory: TradeHistory;
   protected serverTradeHistory: TradeHistory;
-
+  errorMsg: string;
   constructor(
     protected userStockStatsService: UserStockStatsService,
     protected tradeStrategyService: TradeStrategyService,
@@ -163,21 +166,34 @@ export class AddNewTradeComponent implements OnInit {
 
 
   addTrade() {
+    this.Loader = !this.Loader;
     this.updateTradeStrategyProps();
     console.log('add trade...', this.tradeStrategy);
     this.tradeStrategyService.addTrade(this.tradeStrategy).subscribe(result => {
       console.log('Trade strategy successfully created');
       this.toastr.success('Trade strategy created', '');
       this.router.navigateByUrl("/trade-strategies");
-    });
+      this.Loader = !this.Loader;
+    },
+    err => {
+      this.toastr.error('Internal Server Error');
+      this.Loader = !this.Loader;
+    })
   }
 
   editTradeStrategy() {
+    this.Loader = !this.Loader;
     this.updateTradeStrategyProps();
     this.tradeStrategyService.editTrade(this.tradeStrategy).subscribe(result => {
       this.toastr.success('Trade strategy updated', '');
       this.router.navigateByUrl("/trade-strategies");
-    });
+      this.Loader = !this.Loader;
+    },
+    err => {
+      this.toastr.error('Internal Server Error');
+      this.Loader = !this.Loader;
+    })
+    
   }
 
   closeTradeStrategy() {
@@ -185,7 +201,12 @@ export class AddNewTradeComponent implements OnInit {
     this.tradeStrategyService.closeTrade(this.tradeStrategy).subscribe(result => {
       this.toastr.success('Trade strategy closed', '');
       this.router.navigateByUrl("/trade-strategies");
-    });
+      this.Loader = !this.Loader;
+    },
+    err => {
+      this.toastr.error('Internal Server Error');
+      this.Loader = !this.Loader;
+    })
   }
 
   cancelTrade() {
@@ -339,6 +360,7 @@ export class AddNewTradeComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(dialogResult => {
       if (dialogResult == true) {
+        this.Loader = !this.Loader;
         this.closeTradeStrategy();
       }
     });

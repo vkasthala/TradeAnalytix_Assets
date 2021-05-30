@@ -13,7 +13,7 @@
                     <div class="switch">
                         <input type="checkbox" checked id="hedging" [(ngModel)]="entry.aligned" [disabled]="closeTrade" [ngClass]="closeTrade ? 'disabled' : ''" />
                     </div>
-                    <input type="text" class="trade-check" placeholder="Specify reason for not aligning with the rule" [disabled]="closeTrade" [ngClass]="closeTrade ? 'disabled' : ''" />
+                    <input type="text" class="trade-check" placeholder="Add notes" [disabled]="closeTrade" [ngClass]="closeTrade ? 'disabled' : ''" />
                 </div>
             </div>
             <!--
@@ -25,7 +25,7 @@
                     <div class="switch">
                         <input type="checkbox" checked id="hedging" [(ngModel)]="entryRules[0].aligned" [disabled]="closeTrade" [ngClass]="closeTrade ? 'disabled' : ''" />
                     </div>
-                    <input type="text" class="trade-check" placeholder="Specify reason for not aligning with the rule" [(ngModel)]="entryRules[0].comment" [disabled]="closeTrade" [ngClass]="closeTrade ? 'disabled' : ''" />
+                    <input type="text" class="trade-check" placeholder="Add notes" [(ngModel)]="entryRules[0].comment" [disabled]="closeTrade" [ngClass]="closeTrade ? 'disabled' : ''" />
                 </div>
             </div>
             <div class="col-sm-6">
@@ -36,7 +36,7 @@
                     <div class="switch">
                         <input type="checkbox" id="same_week" name="same_week" [(ngModel)]="entryRules[1].aligned" [disabled]="closeTrade" [ngClass]="closeTrade ? 'disabled' : ''" />
                     </div>
-                    <input type="text" class="trade-check" placeholder="Specify reason for not aligning with the rule" [(ngModel)]="entryRules[1].comment" [disabled]="closeTrade" [ngClass]="closeTrade ? 'disabled' : ''" />
+                    <input type="text" class="trade-check" placeholder="Add notes" [(ngModel)]="entryRules[1].comment" [disabled]="closeTrade" [ngClass]="closeTrade ? 'disabled' : ''" />
                 </div>
             </div>
             <div class="col-sm-6">
@@ -47,7 +47,7 @@
                     <div class="switch">
                         <input type="checkbox" checked id="onelack_stock" name="onelack_stock" [(ngModel)]="entryRules[2].aligned" [disabled]="closeTrade" [ngClass]="closeTrade ? 'disabled' : ''" />
                     </div>
-                    <input type="text" class="trade-check" placeholder="Specify reason for not aligning with the rule" [(ngModel)]="entryRules[2].comment" [disabled]="closeTrade" [ngClass]="closeTrade ? 'disabled' : ''" />
+                    <input type="text" class="trade-check" placeholder="Add notes" [(ngModel)]="entryRules[2].comment" [disabled]="closeTrade" [ngClass]="closeTrade ? 'disabled' : ''" />
                 </div>
             </div>
 
@@ -59,7 +59,7 @@
                     <div class="switch">
                         <input type="checkbox" id="planned_day" name="planned_day" [(ngModel)]="entryRules[3].aligned" [disabled]="closeTrade" [ngClass]="closeTrade ? 'disabled' : ''" />
                     </div>
-                    <input type="text" class="trade-check" placeholder="Specify reason for not aligning with the rule" [(ngModel)]="entryRules[3].comment" [disabled]="closeTrade" [ngClass]="closeTrade ? 'disabled' : ''" />
+                    <input type="text" class="trade-check" placeholder="Add notes" [(ngModel)]="entryRules[3].comment" [disabled]="closeTrade" [ngClass]="closeTrade ? 'disabled' : ''" />
                 </div>
             </div>
             -->
