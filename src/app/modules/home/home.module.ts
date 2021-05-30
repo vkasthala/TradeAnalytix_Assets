@@ -102,6 +102,7 @@ import { ReturnsCalendarChartComponent } from '../dashboard/charts/returns-calen
 import { CodedRulesComponent } from '../settings/components/coded-rules/codedrules.component';
 import { NotificationsComponent } from '../notifications/notifications.component';
 import { ViewTradePlanComponent } from '../trade-plan/components/view-trade-plan.component';
+import { CompareStrategiesChartComponent } from '../compare-strategies/components/compare-strategies-chart/compare-strategies-chart.component';
 
 
 export const MY_FORMATS = {
@@ -193,7 +194,8 @@ export const MY_FORMATS = {
     ImportTradesHistory,
     CodedRulesComponent,
     NotificationsComponent,
-    ViewTradePlanComponent
+    ViewTradePlanComponent,
+    CompareStrategiesChartComponent
   ],
   imports: [
     CommonModule,

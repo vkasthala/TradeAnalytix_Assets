@@ -29,7 +29,6 @@
                         <span class="col-form-label p-0">No strategies exist for the symbol" and provide</span>
                         <a class="btn btn-outline-primary ml-3" (click)="navigateToAddTrade()">Create Strategy</a>
                     </div>
-
                 </div>
                 <div *ngIf="strategiesList.length > 0">
                     <mat-accordion class="example-headers-align" multi="true">
@@ -153,7 +152,7 @@
                                                 </li>
                                                 <li class="" role="presentation">
                                                     <a aria-controls="profile" aria-expanded="false" data-toggle="tab"
-                                                        href="#Section2" role="tab" (click)="initChart()">Charts</a>
+                                                        href="#Section2" role="tab" (click)="initChart(false)">Charts</a>
                                                 </li>
                                             </ul>
                                             <div class="tab-content tabs">
@@ -187,12 +186,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="tab-pane fade" id="Section2" role="tabpanel">
-                                                    <!-- <div class="charts">
-                                                    <img src="../../../../assets/images/icon/Image 24.png" alt=""
-                                                        class="img-responsive" />
-                                                </div> -->
-                                                    <app-risk-analysis-chart #riskAnalysisChart>
-                                                    </app-risk-analysis-chart>
+                                                    <app-compare-strategies-chart #compareStrategiesChart>
+                                                    </app-compare-strategies-chart>
                                                 </div>
                                             </div>
                                         </div>

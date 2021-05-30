@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { NavigationExtras, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -15,6 +15,7 @@ import { TradeInputData } from '../../shared/models/trade-management/trade-input
 import { UserStockSummary } from '../../shared/models/trade-management/user-stock-summary.model';
 import { UserStockStatsService } from '../../shared/services/user-stock-stats.service';
 import { TradeStrategy } from '../../trade-management/models/trade-strategy.model';
+import { CompareStrategiesChartComponent } from './compare-strategies-chart/compare-strategies-chart.component';
 
 @Component({
   selector: 'app-compare-strategies',
@@ -24,6 +25,8 @@ import { TradeStrategy } from '../../trade-management/models/trade-strategy.mode
 export class CompareStrategiesComponent implements OnInit {
   @Input('matTooltipShowDelay') showDelay: number;
   @Input('matTooltipHideDelay') hideDelay: number;
+
+  @ViewChild('compareStrategiesChart', { static: false }) private compareStrategiesChartComponent: CompareStrategiesChartComponent;
 
   currentState: number = 1;
 
@@ -124,7 +127,17 @@ export class CompareStrategiesComponent implements OnInit {
   }
 
   deleteStrategyItem(index: number) {
-    this.strategiesList.splice(index, 1);
+    debugger;
+    let newStratetegies: StrategyInput[] = [];
+    let selected: StrategyInput[] = new Array<StrategyInput>(5);
+    for (let ind = 0; ind < this.strategiesList.length; ind++) {
+      if (ind !== index) {
+        newStratetegies.push(this.strategiesList[ind]);
+        selected[ind] = this.selectedStrategies[ind];
+      }
+    }
+    this.strategiesList = newStratetegies;
+    this.selectedStrategies = selected;
   }
 
   enforceMaxLength($event, min, max) {
@@ -156,6 +169,10 @@ export class CompareStrategiesComponent implements OnInit {
       console.log("strategy compare result:", result);
       this.compareResult = result;
     });
+    //Load chart if it is already rendered
+    if (this.compareStrategiesChartComponent && this.compareStrategiesChartComponent.rendered === true) {
+      this.initChart(true);
+    }
   }
 
   createStrategyCompareRequest(): StrategyCompareRequest {
@@ -180,6 +197,19 @@ export class CompareStrategiesComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe((res) => {
       console.log('here...', res);
+    });
+  }
+
+  initChart(forceReload: boolean) {
+    debugger;
+    /*if (this.compareStrategiesChartComponent && this.compareStrategiesChartComponent.rendered === true && forceReload === false) {
+      return;
+    }*/
+    this.compareStrategyService.getCompareStrategiesChart(this.createStrategyCompareRequest()).subscribe(chartData => {
+      debugger;
+      if (chartData) {
+        this.compareStrategiesChartComponent.loadChart(chartData);
+      }
     });
   }
 

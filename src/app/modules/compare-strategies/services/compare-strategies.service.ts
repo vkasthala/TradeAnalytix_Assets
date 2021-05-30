@@ -15,12 +15,17 @@ export class CompareStrategiesService {
 
   constructor(private httpService: HttpService) { }
 
+
   getStrategiesList(stockId: number): Observable<StrategyInput[]> {
     return this.httpService.get<StrategyInput[]>(this.apiUrl + '/compare-strategy/strategies/' + stockId);
   }
 
   compareStrategies(request: StrategyCompareRequest): Observable<CompareStrategyResponse> {
     return this.httpService.post<StrategyCompareRequest, CompareStrategyResponse>(this.apiUrl + '/compare-strategy/strategies/compare', request);
+  }
+
+  getCompareStrategiesChart(request: StrategyCompareRequest): Observable<any> {
+    return this.httpService.post<StrategyCompareRequest, any>(environment.apiUrl + '/compare-strategy/strategies/chart', request);
   }
 
 }

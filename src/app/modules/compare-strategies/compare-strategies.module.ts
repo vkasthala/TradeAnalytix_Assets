@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CompareStrategiesChartComponent } from './components/compare-strategies-chart/compare-strategies-chart.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [CompareStrategiesChartComponent],
   imports: [
     CommonModule
   ]
