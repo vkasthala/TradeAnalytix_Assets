@@ -1,6 +1,6 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { StockSymbol } from 'src/app/modules/shared/models/trade-management/stock-symbol.model';
 
-declare const TradingView: any;
 
 @Component({
   selector: 'app-trading-view',
@@ -9,34 +9,22 @@ declare const TradingView: any;
 })
 export class TradingViewComponent implements OnInit, AfterViewInit {
 
-  constructor() { }
+  @ViewChild('tradingview', { static: false }) tradingview: ElementRef;
+
+  @Input() selectedStock: StockSymbol;
+
+  constructor(private _renderer2: Renderer2) { }
 
   ngOnInit() {
   }
 
-  ngAfterViewInit(){
-    new TradingView.widget(
-      {
-      "width": 300,
-      "height": 250,
-      "symbol": "NASDAQ:AAPL",
-      "timezone": "Etc/UTC",
-      "theme": "Light",
-      "style": "1",
-      "locale": "en",
-      "toolbar_bg": "#f1f3f6",
-      "enable_publishing": false,
-      "withdateranges": true,
-      "range": "ytd",
-      "hide_side_toolbar": false,
-      "allow_symbol_change": true,
-      "show_popup_button": true,
-      "popup_width": "1000",
-      "popup_height": "650",
-      "no_referral_id": true,
-      "container_id": "tradingview_bac65"
-    }
-      );
+  ngAfterViewInit() {
+    let script = this._renderer2.createElement('script');
+    script.type = `text/javascript`;
+    script.src = "https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js";
+    script.text = '{"symbol": " BSE:' + this.selectedStock.code + '","width": 380,"height": 220,"locale": "in","dateRange": "12M","colorTheme": "light","trendLineColor": "#37a6ef","underLineColor": "#E3F2FD","isTransparent": false,"autosize": false,"largeChartUrl": ""}';
+
+    this.tradingview.nativeElement.appendChild(script);
   }
 
 }
