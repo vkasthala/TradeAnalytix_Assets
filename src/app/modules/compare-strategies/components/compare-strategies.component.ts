@@ -101,6 +101,7 @@ export class CompareStrategiesComponent implements OnInit {
     if (this.strategiesList.length < 5) {
       if (this.userStrategies.length > 0) {
         this.strategiesList.push(this.userStrategies[0]);
+        this.selectedStrategies.push(this.userStrategies[0]);
       }
     }
   }
@@ -128,7 +129,6 @@ export class CompareStrategiesComponent implements OnInit {
   }
 
   deleteStrategyItem(index: number) {
-    debugger;
     let newStratetegies: StrategyInput[] = [];
     let selected: StrategyInput[] = new Array<StrategyInput>(5);
     for (let ind = 0; ind < this.strategiesList.length; ind++) {
@@ -202,12 +202,10 @@ export class CompareStrategiesComponent implements OnInit {
   }
 
   initChart(forceReload: boolean) {
-    debugger;
     /*if (this.compareStrategiesChartComponent && this.compareStrategiesChartComponent.rendered === true && forceReload === false) {
       return;
     }*/
     this.compareStrategyService.getCompareStrategiesChart(this.createStrategyCompareRequest()).subscribe(chartData => {
-      debugger;
       if (chartData) {
         this.compareStrategiesChartComponent.loadChart(chartData);
       }
