@@ -104,7 +104,8 @@ import { CodedRulesComponent } from '../settings/components/coded-rules/codedrul
 import { NotificationsComponent } from '../notifications/notifications.component';
 import { ViewTradePlanComponent } from '../trade-plan/components/view-trade-plan.component';
 import { CompareStrategiesChartComponent } from '../compare-strategies/components/compare-strategies-chart/compare-strategies-chart.component';
-
+import { EconomicCalendarComponent } from '../economic-calendar/economic-calendar.component'
+import { GenerateChartPopupComponent } from '../trade-management/components/add-trade/Steps/trade-thesis/generate-chart-popup/generate-chart-popup.component';
 
 export const MY_FORMATS = {
   parse: {
@@ -197,7 +198,9 @@ export const MY_FORMATS = {
     NotificationsComponent,
     ViewTradePlanComponent,
     CompareStrategiesChartComponent,
-    TradingViewComponent
+    TradingViewComponent,
+    EconomicCalendarComponent,
+    GenerateChartPopupComponent
   ],
   imports: [
     CommonModule,
@@ -233,7 +236,8 @@ export const MY_FORMATS = {
     StrategyDetailsComponent,
     EditStrategyComponent,
     PlannedTradeDialogComponent,
-    StrategyActionTextDialogComponent
+    StrategyActionTextDialogComponent,
+    GenerateChartPopupComponent
   ],
   // bootstrap: [TradeStrategiesGrid],
   providers: [

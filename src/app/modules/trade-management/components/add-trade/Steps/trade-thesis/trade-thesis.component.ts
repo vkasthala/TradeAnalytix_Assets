@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, Input, Renderer2, ViewChild, AfterViewInit} from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { SingleInputModalComponent } from 'src/app/modules/shared/components/modals/single-input-modal/single-input-modal.component';
 import { MindsetType } from 'src/app/modules/trade-management/models/mindset-type.model';
@@ -8,13 +8,15 @@ import { TechnicalIndicator } from 'src/app/modules/trade-management/models/tech
 import { UserMetadataService } from 'src/app/modules/trade-management/services/user-metadata.service';
 import { TradeThesis } from 'src/app/modules/trade-management/models/trade-thesis.model';
 import { TradeInputData } from 'src/app/modules/shared/models/trade-management/trade-input-data.model';
+import { StockSymbol } from 'src/app/modules/shared/models/trade-management/stock-symbol.model';
 
+import { GenerateChartPopupComponent } from './generate-chart-popup/generate-chart-popup.component';
 @Component({
   selector: 'app-trade-thesis',
   templateUrl: './trade-thesis.component.html',
   styleUrls: ['./trade-thesis.component.scss']
 })
-export class TradeThesisComponent implements OnInit {
+export class TradeThesisComponent implements OnInit, AfterViewInit {
 
   mindsetTypes: MindsetType[];
   sourceTypes: SourceType[];
@@ -22,7 +24,7 @@ export class TradeThesisComponent implements OnInit {
   surroundingTypes: SurroundingType[];
 
   tradeThesis: TradeThesis;
-
+  @ViewChild('thesisTradingview', { static: false }) thesisTradingview: ElementRef;
   @Output('nextStep') nextStep = new EventEmitter();
   @Output('prevStep') prevStep = new EventEmitter();
 
@@ -31,10 +33,17 @@ export class TradeThesisComponent implements OnInit {
   @Input("editTrade") editTrade: boolean;
   @Input("closeTrade") closeTrade: boolean;
   @Input("viewTrade") viewTrade: boolean;
-  
+  @Input() selectedStock: StockSymbol;
+
   protected hideEntryThesis: boolean = false;
   protected hideClosingThesis: boolean = false;
-  constructor(private _dialog: MatDialog, private metadataService: UserMetadataService) { }
+  constructor(
+    private _renderer2: Renderer2,
+    private _dialog: MatDialog, 
+    private metadataService: UserMetadataService
+    ) { 
+
+    }
 
   ngOnInit() {
     this.tradeThesis = new TradeThesis();
@@ -128,6 +137,16 @@ export class TradeThesisComponent implements OnInit {
   }
   showClosingThesis(){
     this.hideClosingThesis = !this.hideClosingThesis;
+  }
+  generateChart() {
+    const dialogRef = this._dialog.open(GenerateChartPopupComponent, {
+      disableClose: true,
+      width: 'auto',
+      data: {
+        title: 'Generate Chart',
+        selectedStock:this.selectedStock
+      }
+    });
   }
   
 }

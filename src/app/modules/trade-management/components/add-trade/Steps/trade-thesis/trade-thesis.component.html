@@ -120,6 +120,28 @@
                 </div>
             </div>
             <!-- end : thesis_item -->
+            
+            <div class="col-sm-12">
+                <div class="thesis_item upload_item">
+                    <div class="upload_title">
+                        You can upload more images
+                    </div>
+                    <div class="media">
+                        <div class="media-body">
+                            <input type="file" (change)="selectFile($event)" />
+                        </div>
+                        <div class="media-body px-3">
+                            <div class="py-2">
+                                <a class="add-new" *ngIf="addTrade || editTrade">+ Upload more files</a>
+                            </div>
+                            <div class="text-right">
+                                <a class="add-new" (click)="generateChart()" *ngIf="addTrade || editTrade">Generate Chart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end : thesis_item -->
         </div>
     </div>
 </div>
