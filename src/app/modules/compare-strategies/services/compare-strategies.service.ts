@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HttpService } from '../../shared/services/http.service';
+import { CompareStrategyDetails } from '../models/compare-strategy-details.model';
 import { CompareStrategyResponse } from '../models/compare-strategy-response.model';
 import { StrategyCompareRequest } from '../models/strategy-compare-request.model';
 import { StrategyInput } from '../models/strategy-input.model';
@@ -26,6 +27,10 @@ export class CompareStrategiesService {
 
   getCompareStrategiesChart(request: StrategyCompareRequest): Observable<any> {
     return this.httpService.post<StrategyCompareRequest, any>(environment.apiUrl + '/compare-strategy/strategies/chart', request);
+  }
+
+  getStrategyDetails(request: StrategyCompareRequest): Observable<CompareStrategyDetails> {
+    return this.httpService.post<StrategyCompareRequest, CompareStrategyDetails>(environment.apiUrl + '/compare-strategy/strategy/details', request);
   }
 
 }

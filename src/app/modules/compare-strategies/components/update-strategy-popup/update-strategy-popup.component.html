@@ -1,10 +1,9 @@
-
 <div class="compare-popup">
     <div class="compare-pop-inner">
         <div class="top-pop-inner">
             <div class="left-heading">
                 <h6>
-                    05232020-FB001
+                    {{strategyUid}}
                 </h6>
             </div>
             <div class="right-close" (click)="closeModal()">
@@ -13,72 +12,119 @@
         </div>
 
         <div class="main-pop-inner">
-            <div class="main-inner-top">
-                <div class="main-inner-headings">
-                    <span>Contracts</span>
+
+            <div *ngIf="strategyDetails && strategyDetails.compareStrategyStock">
+                <div class="d-flex justify-content-between">
+                    <label class="col-form-label col-4 px-0"></label>
+                    <label class="col-form-label px-2">Quantity</label>
+                    <label class="col-form-label pr-2"></label>
+                    <label class="col-form-label"></label>
                 </div>
 
-                <div class="main-inner-headings">
-                    <span>Days Left</span>
-                </div>
-                <div class="main-inner-heading">
-                    <span>Implied Volatility (%)</span>
+                <div class="d-flex justify-content-between mb-3">
+                    <label class="col-form-label col-4 px-0">{{strategyDetails.compareStrategyStock.heading}}</label>
+                    <div class="px-3">
+                        <div class="stock-inc">
+                            <a (click)="decreaseContracts(index)" (mousedown)="mousedown('decreaseQuantity', index)"
+                                (mouseup)="mouseup()" (mouseleave)="mouseup()">
+                                <mat-icon class="text-primary">remove_circle</mat-icon>
+                            </a>
+                            <span>
+                                <input (keydown)="preventNegatives($event, true)" type="number" class="hide-bars"
+                                    step="0.1" min="0" max="730" minlength="0" maxlength="730"
+                                    [(ngModel)]="strategyDetails.compareStrategyStock.quantity">
+                            </span>
+                            <a (click)="increaseContracts(index)" (mousedown)="mousedown('increaseQuantity', index)"
+                                (mouseup)="mouseup()" (mouseleave)="mouseup()">
+                                <mat-icon class="text-primary">add_circle</mat-icon>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="pr-3"></div>
+                    <div class="pr-3"></div>
                 </div>
             </div>
-            <ng-container *ngFor="let item of strategiesData; let index=index">
-            
-            <div class="main-inner-sec">
 
-                <div class="left-sec">
-                    <p>{{item.title}}</p>
+            <div
+                *ngIf="strategyDetails && strategyDetails.compareStrategyOptions && strategyDetails.compareStrategyOptions.length">
+                <div class="d-flex justify-content-between">
+                    <label class="col-form-label col-4 px-0"></label>
+                    <label class="col-form-label px-2">Contracts</label>
+                    <label class="col-form-label pr-2">Days Left</label>
+                    <label class="col-form-label">Imp. Volatility(%)</label>
                 </div>
+                <div class="risk-box risk-af card-m"
+                    *ngFor="let item of strategyDetails.compareStrategyOptions; let index=index">
 
-                <div class="right-sec">
-                    <div class="sec-inc">
-                        <div class="stock-inc">
-                            <a (click)="decreaseContracts(index)" (mousedown)="mousedown('decreaseContracts', index)" (mouseup)="mouseup()" (mouseleave)="mouseup()">
-                                <img alt="" src="../../../../../assets/images/icon/Group 359.png"></a>
-                            <span>
-                                <input style="width: 35px;" type="number" class="hide-bars"  [(ngModel)]="item.contracts">
-
-                            </span>
-                            <a (click)="increaseContracts(index)" (mousedown)="mousedown('increaseContracts', index)" (mouseup)="mouseup()" (mouseleave)="mouseup()">
-                                <img alt="" src="../../../../../assets/images/icon/Group 360.png">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="sec-inc sec-m">
-                        <div class="stock-inc">
-                            <a (click)="decreaseDaysLeft(index)" (mousedown)="mousedown('decreaseDaysLeft', index)" (mouseup)="mouseup()" (mouseleave)="mouseup()">
-                                <img alt="" src="../../../../../assets/images/icon/Group 359.png"></a>
-                            <span>
-                                <input style="width: 35px;" (keydown)="preventNegatives($event, true)" type="number" class="hide-bars" step="0.1" min="0" max="730" minlength="0" maxlength="730" [(ngModel)]="item.daysLeft"> 
-                            </span>
-                            <a (click)="increaseDaysLeft(index)" (mousedown)="mousedown('increaseDaysLeft', index)" (mouseup)="mouseup()" (mouseleave)="mouseup()">
-                                <img alt="" src="../../../../../assets/images/icon/Group 360.png">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="sec-inc">
-                        <div class="stock-inc">
-                            <a (click)="decreaseImpliedValue(index)" (mousedown)="mousedown('decreaseImpliedValue', index)" (mouseup)="mouseup()" (mouseleave)="mouseup()">
-                                <img alt="" src="../../../../../assets/images/icon/Group 359.png"></a>
-                            <div class="stock-p">
-                                <input style="width: 35px;" type="number" class="hide-bars" min="1" max="500" minlength="1" maxlength="500" [(ngModel)]="item.impliedValue" (input)="enforceMaxLength($event, 1, 500)"><p>&#37;</p>     
+                    <div class="d-flex justify-content-between mb-3">
+                        <label class="col-form-label col-4 px-0">{{item.heading}}</label>
+                        <div class="px-3">
+                            <div class="stock-inc">
+                                <a (click)="decreaseContracts(index)"
+                                    (mousedown)="mousedown('decreaseContracts', index)" (mouseup)="mouseup()"
+                                    (mouseleave)="mouseup()">
+                                    <mat-icon class="text-primary">remove_circle</mat-icon>
+                                </a>
+                                <span>
+                                    <input (keydown)="preventNegatives($event, true)" type="number" class="hide-bars"
+                                        step="0.1" min="0" max="730" minlength="0" maxlength="730"
+                                        [(ngModel)]="item.contracts">
+                                </span>
+                                <a (click)="increaseContracts(index)"
+                                    (mousedown)="mousedown('increaseContracts', index)" (mouseup)="mouseup()"
+                                    (mouseleave)="mouseup()">
+                                    <mat-icon class="text-primary">add_circle</mat-icon>
+                                </a>
                             </div>
-                            <a (click)="increaseImpliedValue(index)" (mousedown)="mousedown('increaseImpliedValue', index)" (mouseup)="mouseup()" (mouseleave)="mouseup()">
-                                <img alt="" src="../../../../../assets/images/icon/Group 360.png">
-                            </a>
+                        </div>
+                        <div class="pr-3">
+                            <div class="stock-inc">
+                                <a (click)="decreaseDaysLeft(index)" (mousedown)="mousedown('decreaseDaysLeft', index)"
+                                    (mouseup)="mouseup()" (mouseleave)="mouseup()">
+                                    <mat-icon class="text-primary">remove_circle</mat-icon>
+                                </a>
+                                <span>
+                                    <input (keydown)="preventNegatives($event, true)" type="number" class="hide-bars"
+                                        step="0.1" min="0" max="730" minlength="0" maxlength="730"
+                                        [(ngModel)]="item.daysLeft">
+                                </span>
+                                <a (click)="increaseDaysLeft(index)" (mousedown)="mousedown('increaseDaysLeft', index)"
+                                    (mouseup)="mouseup()" (mouseleave)="mouseup()">
+                                    <mat-icon class="text-primary">add_circle</mat-icon>
+                                </a>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="stock-inc">
+                                <a (click)="decreaseImpliedValue(index)"
+                                    (mousedown)="mousedown('decreaseImpliedValue', index)" (mouseup)="mouseup()"
+                                    (mouseleave)="mouseup()">
+                                    <mat-icon class="text-primary">remove_circle</mat-icon>
+                                </a>
+                                <div class="stock-p">
+                                    <input type="number" class="hide-bars" min="1" max="500" minlength="1"
+                                        maxlength="500" [(ngModel)]="item.impliedVolatility"
+                                        (input)="enforceMaxLength($event, 1, 500)">
+                                    <p>&#37;</p>
+                                </div>
+                                <a (click)="increaseImpliedValue(index)"
+                                    (mousedown)="mousedown('increaseImpliedValue', index)" (mouseup)="mouseup()"
+                                    (mouseleave)="mouseup()">
+                                    <mat-icon class="text-primary">add_circle</mat-icon>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-        </ng-container>
-            <div class="btn-up">
-                <a class="btn btn-add" (click)="closeModal()">UPDATE</a>
+            <div class="separator"></div>
+
+            <div class="text-right">
+                <button type="button" class="btn btn-add" [mat-dialog-close]="strategyDetails">Save</button>
             </div>
         </div>
 
     </div>
+
 </div>

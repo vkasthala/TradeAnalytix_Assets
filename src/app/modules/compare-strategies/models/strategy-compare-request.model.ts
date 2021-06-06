@@ -1,3 +1,4 @@
+import { CompareStrategyDetails } from "./compare-strategy-details.model";
 import { StrategyInput } from "./strategy-input.model";
 
 export class StrategyCompareRequest {
@@ -9,5 +10,7 @@ export class StrategyCompareRequest {
     upperBound: number;
 
     riskFreeRate: number;
+
+    stockPrice: number;
 
 }
