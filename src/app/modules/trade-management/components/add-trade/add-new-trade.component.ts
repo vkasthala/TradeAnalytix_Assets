@@ -27,6 +27,7 @@ import { OptionLegHistory } from '../../models/option-leg-history.model';
 import { TradeDetailsBottomComponent } from './trade-details-bottom/trade-details-bottom.component';
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { TradeTag } from 'src/app/modules/shared/models/trade-management/trade-tag.model';
 
 @Component({
   selector: 'app-add-new-trade',
@@ -228,6 +229,11 @@ export class AddNewTradeComponent implements OnInit {
     let tradeThesisArray = [];
     tradeThesisArray.push(this.tradeThesis.tradeThesis);
     this.tradeStrategy.tradeThesis = tradeThesisArray;
+    let tradeTags = [];
+    this.tradeDetails.tags.split(",").forEach(tag => {
+      tradeTags.push(new TradeTag(tag));
+    });
+    this.tradeStrategy.tradeTag = tradeTags;
     let stockEntries = [];
     if (this.tradeDetails.stockEntry) {
       stockEntries.push(this.tradeDetails.stockEntry);

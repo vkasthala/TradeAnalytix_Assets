@@ -3,6 +3,7 @@ import { StockEntry } from '../../shared/models/trade-management/stock-entry.mod
 import { OptionEntry } from '../../shared/models/trade-management/option-entry.model';
 import { EntryExitRule } from './entry-exit-rule.model';
 import { TradeDirection } from '../../shared/models/trade-management/trade-direction.enum';
+import { TradeTag } from '../../shared/models/trade-management/trade-tag.model';
 
 export class TradeStrategy {
     statusId: number;
@@ -38,5 +39,6 @@ export class TradeStrategy {
     stockOptions: OptionEntry[];
 
     entryRules: EntryExitRule[];
-    
+
+    tradeTag: TradeTag[];
 }
