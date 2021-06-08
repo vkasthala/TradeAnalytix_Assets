@@ -65,6 +65,12 @@ export class ReportTypeService {
     reportSubTypes.push(reportSubType);
 
     reportSubType = new ReportSubType();
+    reportSubType.name = 'Tag';
+    reportSubType.id = "trade_tags";
+    reportSubType.reportDetailList = [new ReportDetails('net_return_trade_tags', 'Net Return by Tag', ReportCategory.Net_Return_Tag), new ReportDetails('win_loss_trade_tags', 'Win/Loss by Tag', ReportCategory.Win_Loss_Tag)];
+    reportSubTypes.push(reportSubType);
+
+    reportSubType = new ReportSubType();
     reportSubType.name = 'Holding Period';
     reportSubType.id = "holding_period";
     reportSubType.reportDetailList = [new ReportDetails('net_return_holdingperiod', 'Net Return by Holding Period', ReportCategory.Net_Return), new ReportDetails('win_loss_holdingperiod', 'Win/Loss by Holding Period', ReportCategory.Win_Loss)];

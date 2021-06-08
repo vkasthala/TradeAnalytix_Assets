@@ -14,6 +14,10 @@ export enum ReportCategory {
 
     "Allocation" = "allocation",
 
-    "Dashboard" = "dashboard"
+    "Dashboard" = "dashboard",
+
+    "Net_Return_Tag" = "net_return_tag",
+
+    "Win_Loss_Tag" = "win_loss_tag"
 
 }

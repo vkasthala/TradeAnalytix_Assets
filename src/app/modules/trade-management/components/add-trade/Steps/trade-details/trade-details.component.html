@@ -91,7 +91,6 @@
                             (stockEntry.actionType == 2 ? -1 : 1)).toFixed(2) : 0}}
                         </h6>
                     </div>
-
                     <div *ngIf="editTrade == true && tradeStatus !=4" class="top-heading mr-2 text-success"
                         (click)="addToPosition()">
                         <mat-icon class="text-primary">add_circle</mat-icon>
@@ -108,6 +107,12 @@
                     <div *ngIf="editTrade == true && tradeStatus !=4" class="top-heading">
                         <mat-icon>history</mat-icon>
                     </div>
+                </div>
+                <div class="card-main card-main-md" *ngIf="addTrade || editTrade">
+                    <label class="col-form-label pt-0">Tags</label>
+                    <input type="text"  min="0" placeholder="Tag1, Tag2, Tag3..."
+                        class="input_text justify-content-end"
+                        [(ngModel)]="tags" />
                 </div>
             </div>
         </div>

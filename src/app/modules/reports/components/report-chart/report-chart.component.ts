@@ -45,7 +45,14 @@ export class ReportChartComponent implements OnInit {
     } else if (category == ReportCategory.Win_Loss) {
       request = this.reportRequestService.getWinLossChartRequest(this.report, this.subtype, this.reportFilter);
       url = '/reports/performance/winloss';
-    } else if (category == ReportCategory.Goal_Status) {
+    } if (category == ReportCategory.Net_Return_Tag) {
+      request = this.reportRequestService.getNetReturnChartRequest(this.report, this.subtype, this.reportFilter);
+      url = '/reports/performance/netreturnbytag';
+    } else if (category == ReportCategory.Win_Loss_Tag) {
+      request = this.reportRequestService.getWinLossChartRequest(this.report, this.subtype, this.reportFilter);
+      url = '/reports/performance/winlossbytag';
+    }
+     else if (category == ReportCategory.Goal_Status) {
       request = this.reportRequestService.getCommonChartRequest(this.report, this.subtype, this.reportFilter);
       url = '/reports/performance/goalstatus';
     } else if (category == ReportCategory.Calendar_Report) {

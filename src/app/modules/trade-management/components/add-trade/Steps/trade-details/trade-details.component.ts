@@ -70,6 +70,7 @@ export class TradeDetailsComponent implements OnInit {
   closeDate: string;
   tradeStatus: number;
   lastUpdatedDate: string;
+  tags: string;
 
   constructor(
     private utilService: UtilService,
@@ -99,7 +100,7 @@ export class TradeDetailsComponent implements OnInit {
       this.executedDate = this.inputState.tradeStrategy.executedDate;
       this.closeDate = this.inputState.tradeStrategy.closeDate;
       this.lastUpdatedDate = this.inputState.tradeStrategy.updateDateTime;
-
+      this.tags = this.inputState.tradeStrategy.tradeTag.join();
       this.updateStockOptionDisplayProperty();
     }
   }
@@ -158,7 +159,6 @@ export class TradeDetailsComponent implements OnInit {
   }
 
   onStrategyTypeChange(strategy: Number) {
-    console.log('selected strategy:', strategy);
     let template: StrategyTemplate = this.strategyCreateServiceService.getStrategyTemplate(strategy);
     if (template) {
       this.stockEntry = template.stockEntry;
