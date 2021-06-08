@@ -12,8 +12,12 @@ export class LandingComponent implements OnInit {
   GOOGLE_AUTH_URL: string = '/oauth2/authorize/google';
   FACEBOOK_AUTH_URL: string = '/oauth2/authorize/facebook';
   MICROSOFT_AUTH_URL: string = '/oauth2/authorize/microsoft';
+  closeResult = '';
 
-  constructor(private router: Router) { }
+  protected loginModalOpen: boolean = false;
+  constructor(
+    private router: Router
+    ) { }
 
   ngOnInit() {
   }
@@ -34,5 +38,13 @@ export class LandingComponent implements OnInit {
       window.location.href = authUrl;
     }
   }
+
+  openLoginModal() {
+    this.loginModalOpen = !this.loginModalOpen;
+  }
+  closeLoginModal() {
+    this.loginModalOpen = !this.loginModalOpen;
+  }
+
 
 }
