@@ -15,7 +15,9 @@ import { TradeInputData } from '../../shared/models/trade-management/trade-input
 import { UserStockSummary } from '../../shared/models/trade-management/user-stock-summary.model';
 import { UserStockStatsService } from '../../shared/services/user-stock-stats.service';
 import { TradeStrategy } from '../../trade-management/models/trade-strategy.model';
+import { CompareStrategyDetails } from '../models/compare-strategy-details.model';
 import { CompareStrategiesChartComponent } from './compare-strategies-chart/compare-strategies-chart.component';
+import { UpdateStrategyPopupComponent } from './update-strategy-popup/update-strategy-popup.component';
 
 @Component({
   selector: 'app-compare-strategies',
@@ -47,6 +49,7 @@ export class CompareStrategiesComponent implements OnInit {
   riskFreeRate: number = 6;
   lowerBound: number = -10;
   upperBound: number = 10;
+  stockPrice: number;
 
   compareResult: CompareStrategyResponse;
   stockEntry: StockEntry;
@@ -114,6 +117,9 @@ export class CompareStrategiesComponent implements OnInit {
   loadStockBriefSummary() {
     this.userStockStatsService.getUserStockBriefSummary(this.selectedStock.id, 1).subscribe(result => {
       this.stockSummary = result;
+      if (this.stockSummary.close) {
+        this.stockPrice = this.stockSummary.close;
+      }
     });
   }
 
@@ -182,6 +188,7 @@ export class CompareStrategiesComponent implements OnInit {
     request.lowerBound = this.lowerBound;
     request.upperBound = this.upperBound;
     request.riskFreeRate = this.riskFreeRate;
+    request.stockPrice = this.stockPrice;
     return request;
   }
 
@@ -191,14 +198,39 @@ export class CompareStrategiesComponent implements OnInit {
   }
 
   editStrategyItem(index) {
-    const dialogRef = this._dialog.open(EditStrategyComponent, {
+    if (this.selectedStrategies[index].details) {
+      this.openUpdateStrategyDetailsPopup(this.selectedStrategies[index].details, index);
+    } else {
+      this.compareStrategyService.getStrategyDetails(this.createGetStrategyDetailsRequest(index)).subscribe(result => {
+        this.openUpdateStrategyDetailsPopup(result, index);
+      });
+    }
+  }
+
+  openUpdateStrategyDetailsPopup(strategyDetails: CompareStrategyDetails, index) {
+    let dialogData: any = {};
+    dialogData.details = strategyDetails;
+    dialogData.strategyUid = this.selectedStrategies[index].uid;
+    const dialogRef = this._dialog.open(UpdateStrategyPopupComponent, {
       disableClose: false,
       width: 'auto',
-      // data: dialogData
+      data: dialogData
     });
     dialogRef.afterClosed().subscribe((res) => {
-      console.log('here...', res);
+      if (res) {
+        this.selectedStrategies[index].details = res;
+      }
     });
+  }
+
+  createGetStrategyDetailsRequest(index): StrategyCompareRequest {
+    let request: StrategyCompareRequest = new StrategyCompareRequest();
+    request.strategies = [this.selectedStrategies[index]];
+    request.lowerBound = this.lowerBound;
+    request.upperBound = this.upperBound;
+    request.riskFreeRate = this.riskFreeRate;
+    request.stockPrice = this.stockPrice;
+    return request;
   }
 
   initChart(forceReload: boolean) {
