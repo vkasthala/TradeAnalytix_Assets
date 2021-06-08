@@ -1,5 +1,7 @@
 export class CompareStrategyOption {
 
+    id: number;
+
     heading: string;
 
     contracts: number;
@@ -7,5 +9,15 @@ export class CompareStrategyOption {
     daysLeft: number;
 
     impliedVolatility: number;
+
+    price: number;
+
+    actionType: number;
+
+    optionType: number;
+
+    strikePrice: number;
+
+    expireDate: string;
 
 }

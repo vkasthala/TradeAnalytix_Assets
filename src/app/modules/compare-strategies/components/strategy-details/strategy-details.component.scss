@@ -1,4 +1,4 @@
-@import "../../../../../../assets/styles/variable.scss";
+@import '../../../../../assets/styles/variable.scss';
 .compare-popup {
     position: fixed;
     left: 0;
@@ -16,8 +16,8 @@
 
 .compare-pop-inner {
     background: #fff;
-    max-width: 650px;
-    min-width: 650px;
+    max-width: 450px;
+    min-width: 450px;
     height: auto;
     display: flex;
     flex-direction: column;
@@ -172,15 +172,14 @@ select.form-control {
 }
 
 .stock-inc {
+    border: 1px solid #a2a2a2;
     padding: 4px 8px;
+    border-radius: 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: relative;
     margin: 0 auto;
-    background: #FFFFFF;
-    border: 1px solid #9DA6BA;
-    border-radius: 4px;
 }
 
 .stock-p {
@@ -189,8 +188,4 @@ select.form-control {
     justify-content: flex-start;
     align-items: center;
     width: 100%;
-}
-
-.text-primary {
-    color: #2285FA !important;
 }

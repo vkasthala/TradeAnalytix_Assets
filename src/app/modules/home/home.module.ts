@@ -82,8 +82,7 @@ import { UpdateStockPricePopupComponent } from '../risk-analysis/components/upda
 import { EditTradePlanComponent } from '../trade-plan/components/edit-trade-plan.component';
 import { EditableListComponent } from '../shared/components/widgets/editable-list/editable-list.component';
 
-import { StrategyDetailsComponent } from '../shared/components/modals/strategy-details/strategy-details.component';
-import { EditStrategyComponent } from '../shared/components/modals/edit-strategy/edit-strategy.component';
+import { StrategyDetailsComponent } from '../compare-strategies/components/strategy-details/strategy-details.component';
 import { ImportTradesHistory } from '../import-trades-history/import-trades-history';
 
 import { from } from 'rxjs';
@@ -184,7 +183,6 @@ export const MY_FORMATS = {
     EditableListComponent,
     EditableGridComponent,
     StrategyDetailsComponent,
-    EditStrategyComponent,
     OpenStrategiesGridComponent,
     PlannedTradeDialogComponent,
     PlannedTradesGridComponent,
@@ -234,7 +232,6 @@ export const MY_FORMATS = {
     ConfirmDialogComponent,
     UpdateStockPricePopupComponent,
     StrategyDetailsComponent,
-    EditStrategyComponent,
     PlannedTradeDialogComponent,
     StrategyActionTextDialogComponent,
     GenerateChartPopupComponent

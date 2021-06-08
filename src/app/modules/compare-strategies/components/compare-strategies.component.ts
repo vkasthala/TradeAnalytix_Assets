@@ -2,8 +2,7 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { NavigationExtras, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { EditStrategyComponent } from 'src/app/modules/shared/components/modals/edit-strategy/edit-strategy.component';
-import { StrategyDetailsComponent } from 'src/app/modules/shared/components/modals/strategy-details/strategy-details.component';
+import { StrategyDetailsComponent } from 'src/app/modules/compare-strategies/components/strategy-details/strategy-details.component';
 import { CompareStrategyResponse } from '../../compare-strategies/models/compare-strategy-response.model';
 import { StrategyCompareRequest } from '../../compare-strategies/models/strategy-compare-request.model';
 import { StrategyInput } from '../../compare-strategies/models/strategy-input.model';
@@ -245,13 +244,26 @@ export class CompareStrategiesComponent implements OnInit {
   }
 
   StrategyDetailsModal(index) {
+    if (this.selectedStrategies[index].details !== undefined) {
+      this.openStrategyDetailsPopup(this.selectedStrategies[index].details, index);
+    } else {
+      this.compareStrategyService.getStrategyDetails(this.createGetStrategyDetailsRequest(index)).subscribe(result => {
+        this.openStrategyDetailsPopup(result, index);
+      });
+    }
+  }
+
+  openStrategyDetailsPopup(strategyDetails: CompareStrategyDetails, index) {
+    debugger;
+    let dialogData: any = {};
+    dialogData.details = strategyDetails;
     const dialogRef = this._dialog.open(StrategyDetailsComponent, {
       disableClose: false,
       width: 'auto',
-      // data: dialogData
+      data: dialogData
     });
     dialogRef.afterClosed().subscribe((res) => {
-      console.log('here...', res);
+
     });
   }
 
