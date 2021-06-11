@@ -24,6 +24,7 @@ export class AddnewtradeplanComponent implements OnInit {
   protected edit = false;
   protected view = false;
   tradePlanId: number = 0;
+  day: string;
 
   marketStatuses: MarketStatus[];
   mindsetTypes: MindsetType[];
@@ -63,6 +64,7 @@ export class AddnewtradeplanComponent implements OnInit {
     if (extras.state) {
       let state: TradePlanGridRow = <TradePlanGridRow>extras.state;
       this.tradePlanId = state.id;
+      this.day = state.day;
       console.log('trade pla id: ', this.tradePlanId);
     }
     if (this.tradePlanId > 0) {

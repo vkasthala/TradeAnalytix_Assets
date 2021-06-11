@@ -105,6 +105,7 @@ import { ViewTradePlanComponent } from '../trade-plan/components/view-trade-plan
 import { CompareStrategiesChartComponent } from '../compare-strategies/components/compare-strategies-chart/compare-strategies-chart.component';
 import { EconomicCalendarComponent } from '../economic-calendar/economic-calendar.component'
 import { GenerateChartPopupComponent } from '../trade-management/components/add-trade/Steps/trade-thesis/generate-chart-popup/generate-chart-popup.component';
+import { TodayExecutedLegsComponent } from '../trade-plan/components/today-executed-legs/today-executed-legs.component';
 
 export const MY_FORMATS = {
   parse: {
@@ -198,7 +199,8 @@ export const MY_FORMATS = {
     CompareStrategiesChartComponent,
     TradingViewComponent,
     EconomicCalendarComponent,
-    GenerateChartPopupComponent
+    GenerateChartPopupComponent,
+    TodayExecutedLegsComponent
   ],
   imports: [
     CommonModule,

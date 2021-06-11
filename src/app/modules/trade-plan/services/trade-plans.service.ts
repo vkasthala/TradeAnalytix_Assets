@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { HttpService } from '../../shared/services/http.service';
 import { MarketStatus } from '../models/market-status.model';
 import { PlannedTrade } from '../models/planned-trade.model';
+import { TodayExecutedLeg } from '../models/today-executed-leg.model';
 import { TradePlanGridRequest } from '../models/trade-plan-grid-request.model';
 import { TradePlanGridResult } from '../models/trade-plan-grid-result.model';
 import { TradePlanGridRow } from '../models/trade-plan-grid-row.model';
@@ -59,6 +60,10 @@ export class TradePlansService {
 
     getLatestTradePlan(): Observable<TradePlanGridRow> {
         return this.http.get<TradePlanGridRow>(this.apiUrl + '/trade-plan/latest');
+    }
+
+    getTodayExecutedLegs(day: string): Observable<TodayExecutedLeg[]> {
+        return this.http.get<TodayExecutedLeg[]>(this.apiUrl + '/trade-plan/executed/' + day);
     }
 
 
