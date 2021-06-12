@@ -4,11 +4,7 @@
             <div class="trade-header-section-logo"></div>
             <nav class="landing-navbar">
                 <ul class="list-unstyled ">
-                    <li [class.nav-active]="currentRoute == 'about-us'">
-                        <a class="landing-nav-link" [routerLink]="['/about-us']">
-                            About Us
-                        </a>
-                    </li>
+                    
                     <li [class.nav-active]="currentRoute == 'features'">
                         <a class="landing-nav-link" [routerLink]="['/features']">
                             Features <mat-icon>keyboard_arrow_down</mat-icon>
@@ -56,19 +52,35 @@
                             </li>
                         </ul>
                     </li>
-                    <li [class.nav-active]="currentRoute == 'getting-started'">
-                        <a class="landing-nav-link" [routerLink]="['/getting-started']">
-                        Getting Started
+                    <li [class.nav-active]="currentRoute == 'demo'">
+                        <a class="landing-nav-link" [routerLink]="['/demo']">
+                            Demo
                         </a>
                     </li>
+                    
                     <li [class.nav-active]="currentRoute == 'pricing'">
                         <a class="landing-nav-link" [routerLink]="['/pricing']">
                             Pricing
                         </a>
                     </li>
-                    <li [class.nav-active]="currentRoute == 'blogs'">
-                        <a class="landing-nav-link" [routerLink]="['/blogs']">
-                            Blogs
+                    <li [class.nav-active]="currentRoute == 'partners'">
+                        <a class="landing-nav-link" [routerLink]="['/partners']">
+                        Partners
+                        </a>
+                    </li>
+                    <li [class.nav-active]="currentRoute == 'resources'">
+                        <a class="landing-nav-link" [routerLink]="['/resources']">
+                            Resources
+                        </a>
+                    </li>
+                    <li [class.nav-active]="currentRoute == 'reviews'">
+                        <a class="landing-nav-link" [routerLink]="['/reviews']">
+                            Reviews
+                        </a>
+                    </li>
+                    <li [class.nav-active]="currentRoute == 'contact-us'">
+                        <a class="landing-nav-link" [routerLink]="['/contact-us']">
+                            Contact Us
                         </a>
                     </li>
                     <li>
@@ -86,10 +98,10 @@
                 <div class="col-sm-3 d-flex align-items-center">
                     <div class="banner-info">
                         <h1 class="banner-info-title">
-                            Why <br/>TradeAnalytix?
+                            Improve Trading Performance by
                         </h1>
                         <div class="pt-3">
-                            TradeAnalytix is a robust platform that provides a data-driven and methodical approach to improve your trading performance
+                            Learning from your trade history
                         </div>
                         <div class="banner-info-footer">
                             <button type="button" class="btn btn-white mr-3">Register Now</button>
@@ -102,11 +114,11 @@
                         <div class="banner-img"><img src="../../../../assets/images/banner-img.png" alt=""></div>
                         <div class="widgets_section">
                             <div class="widgets_box_orange">
-                                <div class="widgets_box_icon pt-1">
+                                <div class="widgets_box_icon">
                                     <img src="../../../../assets/images/widgets_icon1.png" alt="">
                                 </div>
                                 <div class="widgets_box_dec">
-                                    Know strengths, improve trading decisions
+                                    Learn from the past and improve trading decisions
                                 </div>
                             </div>
                         
@@ -114,11 +126,11 @@
                                 <img src="../../../../assets/images/shape1.png" alt="">
                             </div>
                             <div class="widgets_box_orange">
-                                <div class="widgets_box_icon pt-1">
+                                <div class="widgets_box_icon">
                                     <img src="../../../../assets/images/widgets_icon2.png" alt="">
                                 </div>
                                 <div class="widgets_box_dec">
-                                    Alignment of trades with self-set rules
+                                    Set rules and align your trades with them
                                 </div>
                             </div>
                             <div class="widgets_box_thumb">
@@ -130,22 +142,22 @@
 
                         <div class="widgets_section">
                             <div class="widgets_box_blue">
-                                <div class="widgets_box_icon pt-1">
+                                <div class="widgets_box_icon">
                                     <img src="../../../../assets/images/widgets_icon3.png" alt="">
                                 </div>
                                 <div class="widgets_box_dec">
-                                    Trade journaling from multiple perspectives
+                                    Record trades in detail with hypothesis
                                 </div>
                             </div>
                             <div class="widgets_box_thumb">
                                 <img src="../../../../assets/images/banner_thumb2.png" alt="">
                             </div>
                             <div class="widgets_box_blue">
-                                <div class="widgets_box_icon pt-1">
+                                <div class="widgets_box_icon">
                                     <img src="../../../../assets/images/widgets_icon4.png" alt="">
                                 </div>
                                 <div class="widgets_box_dec">
-                                    Right strategy selection
+                                    Risk Analysis and Simulation
                                 </div>
                             </div>
                             <div class="widgets_box_empty"></div>
@@ -156,11 +168,11 @@
                                 <img src="../../../../assets/images/shape2.png" alt="">
                             </div>
                             <div class="widgets_box_orange">
-                                <div class="widgets_box_icon pt-1">
+                                <div class="widgets_box_icon">
                                     <img src="../../../../assets/images/widgets_icon5.png" alt="">
                                 </div>
                                 <div class="widgets_box_dec">
-                                    Risk analysis and management
+                                    Right Strategy Selection through Comparison
                                 </div>
                             </div>
                             <div class="widgets_box_thumb">
@@ -336,46 +348,79 @@
 
 
 <!-- Modal -->
-<div class="modal fade" [ngClass]="loginModalOpen ? 'show' : ''" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade login_modal" [ngClass]="loginModalOpen ? 'show' : ''" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="text-right p-2">
             <span class="cursor" (click)="closeLoginModal()"><mat-icon class="mat-icon-sm">clear</mat-icon></span>
         </div>
-        <div class="modal-body">
-            <div class="trade-login text-center">
-                <h2 class="login-heading">trade<span>analytix</span></h2>
-                <h3 class="trade-head">Welcome to TradeAnalytix</h3>
-                <h3 class="login_desc">A robust tool to improve trading discipline and thereby returns</h3>
+        <div *ngIf="logonBodySec">
+            <div class="modal-body">
+                <div class="trade-login text-center">
+                    <span class="login-heading"><img src="../../../../assets/images/logo.png" alt="" /></span>
+                    <h3 class="trade-head">Welcome to TradeAnalytix</h3>
+                    <h3 class="login_desc">A robust tool to improve trading discipline and thereby returns</h3>
 
-                <div class="trade-login-sec">
-                    <div class="trade-login-btn" (click)="login('google')">
-                        <div class="login-img">
-                            <img src="../../../../assets/images/google.png" alt=""  class="img-responsive">
+                    <div class="trade-login-sec">
+                        <div class="trade-login-btn" (click)="login('google')">
+                            <div class="login-img">
+                                <img src="../../../../assets/images/google.png" alt=""  class="img-responsive">
+                            </div>
+                            <div class="login-con">
+                                Sign in with Google
+                            </div>
                         </div>
-                        <div class="login-con">
-                            Sign in with Google
+                        <div class="trade-login-btn" (click)="login('facebook')">
+                            <div class="login-img">
+                                <img src="../../../../assets/images//facebook.svg" alt=""  class="img-responsive">
+                            </div>
+                            <div class="login-con">
+                                Sign in with Facebook
+                            </div>
                         </div>
+                        <div class="trade-login-btn" (click)="login('microsoft')">
+                            <div class="login-img">
+                                <img src="../../../../assets/images/microsoft.svg" alt=""  class="img-responsive">
+                            </div>
+                            <div class="login-con">
+                                Sign in with Microsoft
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-create-account" (click)="openCreateAcModal()">Create Account</button>
                     </div>
-                    <div class="trade-login-btn" (click)="login('facebook')">
-                        <div class="login-img">
-                            <img src="../../../../assets/images//facebook.svg" alt=""  class="img-responsive">
-                        </div>
-                        <div class="login-con">
-                            Sign in with Facebook
-                        </div>
-                    </div>
-                    <div class="trade-login-btn" (click)="login('microsoft')">
-                        <div class="login-img">
-                            <img src="../../../../assets/images/microsoft.svg" alt=""  class="img-responsive">
-                        </div>
-                        <div class="login-con">
-                            Sign in with Microsoft
-                        </div>
+                </div>
+            </div>
+            <div class="login-modal-footer pt-0">
+                <div class="pb-3 follow_us">
+                    <p class="py-2">Follow us</p>
+                    <div class="follow_us_icons">
+                        <a href="#"><img src="../../../../assets/images/fb_sm.png" alt=""  class="img-responsive"></a>
+                        <a href="#"><img src="../../../../assets/images/twitter_sm.png" alt=""  class="img-responsive"></a>
                     </div>
                 </div>
             </div>
         </div>
+        <!-- end: login_content -->
+        <div *ngIf="createAcSec">
+            <div class="modal-body">
+                <div class="trade-login text-center">
+                    <span class="login-heading"><img src="../../../../assets/images/logo.png" alt="" /></span>
+                    <h3 class="trade-head">Create Account</h3>
+
+                    <div class="trade-login-sec">
+                        <input type="text" class="form-control" placeholder="Full Name" />
+                        <input type="text" class="form-control" placeholder="Email Address" />
+                        <input type="text" class="form-control" placeholder="Full Name" />
+                        
+                        <button type="button" class="btn btn-create-account">Create Account</button>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <!-- end: create account -->
+        
+        <div class="copyright pb-3">Copyright @TradeAnalytix 2021   |  Terms & Conditions</div>
       </div>
     </div>
   </div>

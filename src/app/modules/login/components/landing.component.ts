@@ -8,7 +8,8 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./landing.component.scss']
 })
 export class LandingComponent implements OnInit {
-
+  private createAcSec: boolean = false;
+  private logonBodySec: boolean = true;
   GOOGLE_AUTH_URL: string = '/oauth2/authorize/google';
   FACEBOOK_AUTH_URL: string = '/oauth2/authorize/facebook';
   MICROSOFT_AUTH_URL: string = '/oauth2/authorize/microsoft';
@@ -39,12 +40,18 @@ export class LandingComponent implements OnInit {
     }
   }
 
+  
   openLoginModal() {
+    this.createAcSec = false;
+    this.logonBodySec = true;
     this.loginModalOpen = !this.loginModalOpen;
   }
   closeLoginModal() {
     this.loginModalOpen = !this.loginModalOpen;
   }
-
+  openCreateAcModal() {
+    this.logonBodySec = !this.logonBodySec;
+    this.createAcSec = !this.createAcSec;
+  }
 
 }
