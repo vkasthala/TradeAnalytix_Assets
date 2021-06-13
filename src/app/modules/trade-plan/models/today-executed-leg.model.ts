@@ -14,6 +14,7 @@ export class TodayExecutedLeg {
 
     optionType: string;
 
-    price: number;
+    entryPrice: number;
 
+    exitPrice: number;
 }
