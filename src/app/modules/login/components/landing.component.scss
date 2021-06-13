@@ -1,7 +1,6 @@
 @import "../../../../assets/styles/variable.scss";
 @import '../../../../assets/styles/breakpoints.scss';
 
-
 // Landing page
 .trade-app {
   width: 100%;
@@ -18,7 +17,7 @@
   .trade-header-section {
     background: url('../../../../assets/images/headerbg.svg') no-repeat center -10px;
     padding: 20px;
-    height: 800px;
+    height: 760px;
     width: 100%;
     background-size: cover;
     position: relative;
@@ -110,11 +109,7 @@
           font-size: .78rem;
           padding: 5px;
         }
-        .mat-icon {
-          font-size: 1rem;
-          height: 18px;
-          width: 18px;
-        }
+        
       }
       .sub-menu {
         display: none;
@@ -173,7 +168,7 @@
 }
 
 .trade-banner-section {
-  height: 723px;
+  height: 675px;
   width: 100%;
   display: flex;
   position: relative;
@@ -188,8 +183,7 @@
 .banner-info-title {
   font-style: normal;
   font-weight: 600;
-  font-size: 40px;
-  line-height: 50px;
+  font-size: 30px;
   color: #fff;
 }
 .banner-info-footer {
@@ -222,7 +216,6 @@
 }
 
 .banner-rtside {
-  padding-top: 45px;
   float: right;
   position: relative;
   margin-right: -20px;
@@ -399,24 +392,17 @@
     font-weight: 500;
     font-size: 26px;
     color: #3A4C85;
-    padding-bottom: 1rem
+    padding-bottom: 1rem;
+    padding-top: 2rem;
   }
   .login-heading {
-    font-weight: 300;
-    font-size: 18px;
-    line-height: 48px;
-    color: #394C86;
-    padding-bottom: 1.5rem;       
-    @include media('>tablet','<laptop'){
-      font-size:22px;
-    }
-    @media #{$extra-small} {
-      display: none;
-    }
-    span {
-      font-weight: 600;
-      font-size: 25px;
-      color: #2285FA;
+    padding: 1rem;
+    background: #1d2644;
+    margin-bottom: 1.5rem;
+    border-radius: 6px;     
+    
+    img {
+      height: 30px;
     }
   }
   .login_desc{
@@ -442,19 +428,18 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    margin-top: 2rem;
+    margin-top: 1.5rem;
     align-items: center;
 
     .trade-login-btn {
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        width: 230px;
-        // height: 60px;
+        width: 86%;
         padding: 10px;
         border: .5px solid $btn-border-color;
         @include border-radius(8px);
-        margin-bottom: 20px;
+        margin-bottom: 1rem;
         cursor: pointer;
         transition: 0.1s all ease-in-out;
         @include media('>tablet','<laptop'){
@@ -477,14 +462,13 @@
         }
 
         .login-con{
-            color:$heading-1;
-            font-size:14px;
-            font-weight: 400;
-            padding-left: .5rem;
-            text-align: left;
-            @include media('>tablet','<laptop'){
-              font-size: 15px;
-            }
+          color: #4a4a4a;
+          font-size: 14px;
+          font-weight: 400;
+          padding-left: 0.5rem;
+          display: flex;
+          flex-basis: 100%;
+          flex-direction: column;
         }
     }
   }
@@ -599,4 +583,60 @@
 .footer_column {
   display: flex;
   justify-content: space-evenly;
+}
+.login_modal .modal-dialog {
+  max-width: 420px;
+}
+.login-modal-footer {
+  position: relative;
+  flex: 1 1 auto;
+  padding: 1rem;
+  font-size: 12px;
+  line-height: 18px;
+  text-align: center;
+  color: #3A4C85;
+}
+.btn-create-account {
+  background: #2285FA;
+  border: 1px solid #2285FA;
+  box-sizing: border-box;
+  border-radius: 8px;
+  color: #fff;
+  height: 50px;
+  width: 90%;
+  font-weight: 500;
+  font-size: 14px;
+}
+.follow_us {
+  text-align: center;
+}
+.follow_us_icons {
+  text-align: center;
+  a {
+    width: 45px;
+    height: 45px;
+    background: #e8ecef;
+    border-radius: 10px;
+    display: inline-flex;
+    margin-left: 1rem;
+    align-items: center;
+    justify-content: center;
+  }
+}
+.copyright {
+  font-size: 12px;
+  line-height: 18px;
+  text-align: center;
+  color: #3A4C85;
+}
+.login_modal .form-control {
+  border: 1px solid #2285FA;
+  box-sizing: border-box;
+  border-radius: 4px;
+  margin-bottom: .5rem;
+}
+input::placeholder {
+  font-weight: 500;
+  font-size: 13px;
+  color: #242E3A;
 }

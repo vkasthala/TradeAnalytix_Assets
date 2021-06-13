@@ -2,7 +2,7 @@
     <div class="inner-trade">
         <div class="trade-dash-main px-0">
             <div class="trade-dash-name">
-                <h3>{{add ? 'New' : "" }} {{edit ? 'Edit' : "" }} {{view ? 'View' : "" }} Trade Plan</h3>
+                <h3>{{edit ? 'Edit' : "" }} {{view ? 'View' : "" }} Trade Plan</h3>
             </div>
             <div class="text-center">
                 <button type="button" class="btn btn-primary btn-add-plan d-flex align-items-center" *ngIf="add" (click)="addTradePlan()">
@@ -16,34 +16,14 @@
                 <div class="col-sm-4">
                     <div class="mb-3">
                         <label class="col-form-label">Select the date for which trade plan is being created</label>
-                        <div class="datepicker-group">
-                            <input matInput [matDatepicker]="tradedate" (click)="tradedate.open()" id="tradedate" name="tradedate" [(ngModel)]="tradePlan.day" [ngClass]="[view ? 'disabled' : '']">
-                            <mat-datepicker-toggle matSuffix [for]="tradedate"></mat-datepicker-toggle>
-                            <mat-datepicker #tradedate></mat-datepicker>
+                        <div class="col-10 px-0">
+                            <div class="datepicker-group">
+                                <input matInput [matDatepicker]="tradedate" (click)="tradedate.open()" id="tradedate" name="tradedate" [(ngModel)]="tradePlan.day" [ngClass]="[view ? 'disabled' : '']">
+                                <mat-datepicker-toggle matSuffix [for]="tradedate"></mat-datepicker-toggle>
+                                <mat-datepicker #tradedate></mat-datepicker>
+                            </div>
                         </div>
                     </div>
-                    <div class="mb-3">
-                        <label class="col-form-label">Did you complete the pre-market activities?</label>
-                        <div class="position-relative">
-                            <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="tradePlan.premarketActivityStatus" [ngClass]="[view ? 'disabled' : '']">
-                                <option value=true>Yes</option>
-                                <option value=false>No</option>
-                            </select>
-                            <mat-icon class="form-icon-down text-success">keyboard_arrow_down</mat-icon>
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label class="col-form-label">What is your mindset today?</label>
-                        <div class="position-relative">
-                            <select class="form-control" id="tradePlanMindsetType" [(ngModel)]="tradePlan.mindSetTypeId" [ngClass]="[view ? 'disabled' : '']">
-                                <option [ngValue]="opt.id" *ngFor="let opt of mindsetTypes; trackBy: id">{{opt.name}}
-                                </option>
-                            </select>
-                            <mat-icon class="form-icon-down text-success">keyboard_arrow_down</mat-icon>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4">
                     <div class="mb-3">
                         <label class="col-form-label">Where do you think market is headed today?</label>
                         <div class="col-10 px-0">
@@ -55,13 +35,37 @@
                         </div>
                     </div>
                     <div class="mb-3">
+                        <label class="col-form-label">What is your mindset today?</label>
+                        <div class="position-relative col-md-10 px-0">
+                            <select class="form-control" id="tradePlanMindsetType" [(ngModel)]="tradePlan.mindSetTypeId" [ngClass]="[view ? 'disabled' : '']">
+                                <option [ngValue]="opt.id" *ngFor="let opt of mindsetTypes; trackBy: id">{{opt.name}}
+                                </option>
+                            </select>
+                            <mat-icon class="form-icon-down text-success">keyboard_arrow_down</mat-icon>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="mb-3">
+                        <label class="col-form-label">Did you complete the pre-market activities?</label>
+                        <div class="position-relative">
+                            <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="tradePlan.premarketActivityStatus" [ngClass]="[view ? 'disabled' : '']">
+                                <option value=true>Yes</option>
+                                <option value=false>No</option>
+                            </select>
+                            <mat-icon class="form-icon-down text-success">keyboard_arrow_down</mat-icon>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
                         <label class="col-form-label">What’s your perspective on the market and your current positions?</label>
-                        <div class="col-10 px-0">
+                        <div class="">
                             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="tradePlan.perspective" [ngClass]="[view ? 'disabled' : '']"></textarea>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-5">
+                    <h5 class="pb-1">Economic Calendar</h5>
                     <app-economic-calendar></app-economic-calendar>
                 </div>
             </div>

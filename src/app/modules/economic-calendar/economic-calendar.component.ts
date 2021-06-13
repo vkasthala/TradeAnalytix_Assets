@@ -17,7 +17,7 @@ export class EconomicCalendarComponent implements OnInit, AfterViewInit {
     let script = this._renderer2.createElement('script');
     script.type = `text/javascript`;
     script.src = "https://s3.tradingview.com/external-embedding/embed-widget-events.js";
-    script.text = '{"width": 380,"height": 300,"locale": "in","dateRange": "12M","colorTheme": "light","trendLineColor": "#37a6ef","underLineColor": "#E3F2FD","isTransparent": false,"autosize": false,"importanceFilter": "-1,0,1"}';
+    script.text = '{"width": "100%","height": 300,"locale": "in","dateRange": "12M","colorTheme": "light","trendLineColor": "#37a6ef","underLineColor": "#E3F2FD","isTransparent": false,"autosize": false,"importanceFilter": "-1,0,1", "currencyFilter": "INR"}';
 
     this.tradingview.nativeElement.appendChild(script);
   }
