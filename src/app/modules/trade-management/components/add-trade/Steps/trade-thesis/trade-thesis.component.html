@@ -8,8 +8,8 @@
         <div class="row">
             <div class="col-sm-6">
                 <div class="thesis_item">
-                    <div class="thesis_item_title">
-                        What is the source of this trade idea?
+                    <div class="thesis_item_title" matTooltip="Specify the person, channel, service, website which recommended this trade. " matTooltipPosition="above" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay">
+                        Who suggested this trade to you?
                     </div>
                     <div class="media align-items-center">
                         <div class="media-body">
@@ -26,7 +26,88 @@
             <!-- end : thesis_item -->
             <div class="col-sm-6">
                 <div class="thesis_item">
+                    <div class="thesis_item_title" matTooltip="Write notes on why you are executing this trade at this point in time. This will make you think through your logic and avoid rash decisions." matTooltipPosition="above" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay">
+                        Specify the reasons for executing this trade
+                    </div>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="tradeThesis.reasons" [disabled]="closeTrade" [ngClass]="closeTrade || viewTrade ? 'disabled' : ''"></textarea>
+                </div>
+            </div>
+            <!-- end : thesis_item -->
+
+            <div class="col-sm-6">
+                <div class="thesis_item">
+                    <div class="thesis_item_title" matTooltip="Enter the target profit you intend to make on this trade." matTooltipPosition="above" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay">
+                        How much profit do you expect from this trade?
+                    </div>
+                    <input type="text" class="form-control" [disabled]="closeTrade" placeholder="Enter the price" [(ngModel)]="tradeThesis.targetPrice" [ngClass]="closeTrade || viewTrade ? 'disabled' : ''" />
+                </div>
+            </div>
+            <!-- end : thesis_item -->
+              
+            <div class="col-sm-6">
+                <div class="thesis_item">
+                    <div class="thesis_item_title" matTooltip="If you are executing this order to take advantage of any event (e.g., before or after earnings, before or after product launch etc.), create the event and select it" matTooltipPosition="above" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay">
+                        Select any event surrounding this trade
+                    </div>
+                    <div class="media align-items-center">
+                        <div class="media-body">
+                            <select class="form-control select-input" id="inputState" [(ngModel)]="tradeThesis.mindsetId" [disabled]="closeTrade" [ngClass]="closeTrade || viewTrade ? 'disabled' : ''">
+                                <option [ngValue]="opt.id" *ngFor="let opt of mindsetTypes; trackBy: id">{{opt.name}}</option>
+                            </select>
+                        </div>
+                        <div class="px-3">
+                            <a class="add-new" (click)="addValue('Source')" *ngIf="addTrade || editTrade">+ Add New</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end : thesis_item -->
+
+            <div class="col-sm-6">
+                <div class="thesis_item">
+                    <div class="thesis_item_title" matTooltip="If this trade is based on any technical indicator, add the indicator to the list and select it. " matTooltipPosition="above" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay">
+                        Select the technical indicator used for this trade
+                    </div>
+                    <div class="media align-items-center">
+                        <div class="media-body">
+                            <select class="form-control select-input" [disabled]="closeTrade" id="inputState" [(ngModel)]="tradeThesis.surroundingEventId" [ngClass]="closeTrade ? 'disabled' : ''">
+                                <option [ngValue]="opt.id" *ngFor="let opt of surroundingTypes; trackBy: id">{{opt.name}}</option>
+                            </select>
+                        </div>
+                        <div class="px-3">
+                            <a class="add-new" (click)="addValue('Source')" *ngIf="addTrade || editTrade"> + Add New</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end : thesis_item -->
+
+            <div class="col-sm-6">
+                <div class="thesis_item upload_item">
                     <div class="thesis_item_title">
+                        Upload files
+                    </div>
+                    <div class="media">
+                        <div class="media-body">
+                            <input type="file" (change)="selectFile($event)" />
+                        </div>
+                        <!-- <div class="media-body px-3">
+                            <div class="py-2">
+                                <a class="add-new" *ngIf="addTrade || editTrade">+ Upload more files</a>
+                            </div>
+                            
+                        </div> -->
+                    </div>
+                    <div class="text-right pt-2">
+                        <a class="add-new" (click)="generateChart()" *ngIf="addTrade || editTrade">Generate Chart</a>
+                    </div>
+                </div>
+            </div>
+            <!-- end : thesis_item -->
+
+            <div class="col-sm-6">
+                <div class="thesis_item">
+                    <div class="thesis_item_title" matTooltip="Specify whether you planned this trade before market hours or decided to trade on the fly." matTooltipPosition="above" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay">
                         Is this a planned or an impromptu trade?
                     </div>
                     <div class="media align-items-center">
@@ -45,66 +126,8 @@
 
             <div class="col-sm-6">
                 <div class="thesis_item">
-                    <div class="thesis_item_title">
-                        Specify the reasons for executing the trade
-                    </div>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="tradeThesis.reasons" [disabled]="closeTrade" [ngClass]="closeTrade || viewTrade ? 'disabled' : ''"></textarea>
-                </div>
-            </div>
-            <!-- end : thesis_item -->
-
-            <div class="col-sm-6">
-                <div class="thesis_item">
-                    <div class="thesis_item_title">
-                        What is your mindset while executing the trade?
-                    </div>
-                    <div class="media align-items-center">
-                        <div class="media-body">
-                            <select class="form-control select-input" id="inputState" [(ngModel)]="tradeThesis.mindsetId" [disabled]="closeTrade" [ngClass]="closeTrade || viewTrade ? 'disabled' : ''">
-                                <option [ngValue]="opt.id" *ngFor="let opt of mindsetTypes; trackBy: id">{{opt.name}}</option>
-                            </select>
-                        </div>
-                        <div class="px-3">
-                            <a class="add-new" (click)="addValue('Source')" *ngIf="addTrade || editTrade">+ Add New</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- end : thesis_item -->
-
-
-            <div class="col-sm-6">
-                <div class="thesis_item">
-                    <div class="thesis_item_title">
-                        Are there any events around the time this trade was placed?
-                    </div>
-                    <div class="media align-items-center">
-                        <div class="media-body">
-                            <select class="form-control select-input" [disabled]="closeTrade" id="inputState" [(ngModel)]="tradeThesis.surroundingEventId" [ngClass]="closeTrade ? 'disabled' : ''">
-                                <option [ngValue]="opt.id" *ngFor="let opt of surroundingTypes; trackBy: id">{{opt.name}}</option>
-                            </select>
-                        </div>
-                        <div class="px-3">
-                            <a class="add-new" (click)="addValue('Source')" *ngIf="addTrade || editTrade"> + Add New</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- end : thesis_item -->
-            <div class="col-sm-6">
-                <div class="thesis_item">
-                    <div class="thesis_item_title">
-                        What is the target price for the stock?
-                    </div>
-                    <input type="text" class="form-control" [disabled]="closeTrade" placeholder="Enter the price" [(ngModel)]="tradeThesis.targetPrice" [ngClass]="closeTrade || viewTrade ? 'disabled' : ''" />
-                </div>
-            </div>
-            <!-- end : thesis_item -->
-
-            <div class="col-sm-6">
-                <div class="thesis_item">
-                    <div class="thesis_item_title">
-                        Specify the technical indicator used for the trade
+                    <div class="thesis_item_title" matTooltip="Specify how you are feeling at the time of placing this trade (e.g., anxious, confident, fear of missing out, etc.). Create mindset and select from the dropdown." matTooltipPosition="above" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay">
+                        What is your mindset while executing this trade?
                     </div>
                     <div class="media align-items-center">
                         <div class="media-body">
@@ -120,31 +143,10 @@
                 </div>
             </div>
             <!-- end : thesis_item -->
-            
-            <div class="col-sm-12">
-                <div class="thesis_item upload_item">
-                    <div class="upload_title">
-                        You can upload more images
-                    </div>
-                    <div class="media">
-                        <div class="media-body">
-                            <input type="file" (change)="selectFile($event)" />
-                        </div>
-                        <div class="media-body px-3">
-                            <div class="py-2">
-                                <a class="add-new" *ngIf="addTrade || editTrade">+ Upload more files</a>
-                            </div>
-                            <div class="text-right">
-                                <a class="add-new" (click)="generateChart()" *ngIf="addTrade || editTrade">Generate Chart</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- end : thesis_item -->
         </div>
     </div>
 </div>
+
 
 <!-- start: Closing Thesis -->
 <div class="trade-thesis-sec trade-close-thesis-sec" *ngIf="closeTrade || viewTrade">

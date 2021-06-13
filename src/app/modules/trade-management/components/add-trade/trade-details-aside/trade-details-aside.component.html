@@ -3,11 +3,11 @@
     <div *ngIf="addTrade || editTrade || closeTrade">
         <app-trading-view [selectedStock]="selectedStock"></app-trading-view>
     </div>
-    <div class="widget-2">
+    <div class="widget-2 mt-2">
         <div class="widget_header">
             <h5 class="widget_header-label">
-                {{getDisplayValue(selectedStock.code)}} Stats 
-                <mat-icon matTooltip="Sample Text" matTooltipPosition="right" class="ml-2 mat-icon-sm cursor" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay">info</mat-icon>
+                {{getDisplayValue(selectedStock.code)}} Historical Stats 
+                <mat-icon matTooltip="Statistics derived from your {{getDisplayValue(selectedStock.code)}} trades" matTooltipPosition="right" class="ml-2 mat-icon-sm cursor" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay">info</mat-icon>
             </h5>
         </div>
         <div class="row no-gutters justify-content-between">
@@ -40,18 +40,18 @@
             <div class="widget_item">
                 <h6 class="widget_item-label">{{getDisplayValue(stockSummaryResult.successStrategy)}}
                 </h6>
-                <span class="widget_item-title">Successful Strategy</span>
+                <span class="widget_item-title">Most Successful Strategy</span>
             </div>
             <div class="widget_item widget_item_danger">
                 <h6 class="widget_item-label">{{getDisplayValue(stockSummaryResult.failedStrategy)}}</h6>
-                <span class="widget_item-title">Failed Strategy</span>
+                <span class="widget_item-title">Most Failed Strategy</span>
             </div>
         </div>
     </div>
     <div class="widget-2" *ngIf="stockOrOptionAdded == true && strategyTypeSummaryResult">
         <div class="widget_header">
-            <h5 class="widget_header-label">{{strategyName}} Stats 
-                <mat-icon matTooltip="Sample Text" matTooltipPosition="right" class="ml-2 mat-icon-sm cursor" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay">info</mat-icon>
+            <h5 class="widget_header-label">{{strategyName}} Historical Stats 
+                <mat-icon matTooltip="Statistics derived from your {{strategyName}} trades" matTooltipPosition="right" class="ml-2 mat-icon-sm cursor" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay">info</mat-icon>
             </h5>
         </div>
         <div class="row no-gutters justify-content-between">

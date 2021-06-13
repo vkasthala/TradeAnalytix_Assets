@@ -136,9 +136,15 @@ export class ReportTypeService {
     let reportSubTypes: ReportSubType[] = [];
 
     let reportSubType: ReportSubType = new ReportSubType();
-    reportSubType.name = 'Performance by Planned Trades';
+    reportSubType.name = 'Planned Trades';
     reportSubType.id = "discipline_performance";
-    reportSubType.reportDetailList = [new ReportDetails('discipline_trade_type', 'Return and Win Rate by planned trades', ReportCategory.Discipline), new ReportDetails('discipline_netreturn', 'Net Return by Trade Plan Compliance', ReportCategory.Discipline), new ReportDetails('discipline_winrate', 'Win Rate by Trade Plan Compliance', ReportCategory.Discipline)];
+    reportSubType.reportDetailList = [new ReportDetails('discipline_trade_type', 'Return and Win Rate by planned trades', ReportCategory.Discipline)];
+    reportSubTypes.push(reportSubType);
+
+    reportSubType = new ReportSubType();
+    reportSubType.name = 'Trade Plan Compliance';
+    reportSubType.id = "discipline_compliance";
+    reportSubType.reportDetailList = [new ReportDetails('discipline_netreturn', 'Net Return by Trade Plan Compliance', ReportCategory.Discipline), new ReportDetails('discipline_winrate', 'Win Rate by Trade Plan Compliance', ReportCategory.Discipline)];
     reportSubTypes.push(reportSubType);
     
     return reportSubTypes;

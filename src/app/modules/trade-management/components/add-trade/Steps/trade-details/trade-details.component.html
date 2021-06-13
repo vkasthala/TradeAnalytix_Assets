@@ -85,7 +85,7 @@
                         </h6>
                     </div>
                     <div class="card-main text-right" *ngIf="!closeTrade">
-                        <label class="col-form-label pt-0">Amount</label>
+                        <label class="col-form-label pt-0">Cost</label>
                         <h6 class="input_text justify-content-end">
                             {{(stockEntry.quantity && stockEntry.price) ? (stockEntry.quantity * stockEntry.price *
                             (stockEntry.actionType == 2 ? -1 : 1)).toFixed(2) : 0}}
@@ -147,7 +147,7 @@
                                     <div class="card-main">Expiration</div>
                                     <div class="card-main card-main-md">Call / Put</div>
                                     <div class="card-main card-main-custom">Entry Price</div>
-                                    <div class="card-main card-main-md text-right" *ngIf="!closeTrade">Amount</div>
+                                    <div class="card-main card-main-md text-right" *ngIf="!closeTrade">Cost</div>
                                     <div class="card-main card-main-custom" *ngIf="closeTrade">Exit Price <span
                                             class="text-danger">*</span></div>
                                     <div class="card-main card-main-sm" *ngIf="closeTrade">Return</div>

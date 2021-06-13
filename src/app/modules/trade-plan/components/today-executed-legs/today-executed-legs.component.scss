@@ -34,7 +34,7 @@ tr.mat-row {
 td.mat-cell,
 td.mat-footer-cell,
 th.mat-header-cell {
-    padding: .75rem 1.5rem !important;
+    padding: .75rem 1rem !important;
     border-radius: 0;
     line-height: 20px;
 }
@@ -105,5 +105,15 @@ th.mat-header-cell {
 .symbol-cell {
     width: 10%;
     flex: 0 0 10% !important;
+    min-width: 100px !important;
+}
+.cell-w-10 {
+    width: 10%;
+    flex: 0 0 10% !important;
+    min-width: 80px !important;
+}
+.cell-w-12 {
+    width: 13%;
+    flex: 0 0 13% !important;
     min-width: 100px !important;
 }

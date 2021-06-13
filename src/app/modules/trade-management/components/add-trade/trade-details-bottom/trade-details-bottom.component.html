@@ -5,14 +5,14 @@
             <h6 class="widget_item-value maximum_proﬁt">{{maxRiskDetails.maxProfit}}</h6>
             <span class="widget_item-title d-flex align-items-center">
                 Maximum Proﬁt 
-                <mat-icon matTooltip="Sample Text" matTooltipPosition="right" class="ml-2 mat-icon-sm cursor" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay">info</mat-icon>
+                <mat-icon matTooltip="Estimated maximum profit on the trade strategy by calculating stock’s upside based on 30-day volatility" matTooltipPosition="right" class="ml-2 mat-icon-sm cursor" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay">info</mat-icon>
             </span>
         </div>
         <div class="widget_item" *ngIf="maxRiskDetails">
             <h6 class="widget_item-value maximum_risk">{{maxRiskDetails.maxRisk}}</h6>
             <span class="widget_item-title d-flex align-items-center">
                 Maximum Risk 
-                <mat-icon matTooltip="Sample Text" matTooltipPosition="right" class="ml-2 mat-icon-sm cursor" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay">info</mat-icon>
+                <mat-icon matTooltip="Estimated maximum loss on the trade strategy by calculating stock’s downside based on 30-day volatility" matTooltipPosition="right" class="ml-2 mat-icon-sm cursor" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay">info</mat-icon>
             </span>
         </div>
         <div class="widget_item">
@@ -37,7 +37,7 @@
         <div class="widget_item">
             <h6 class="widget_item-value" [ngClass]="(closeTrade || viewTrade) ? 'total_return' : ''">
                 {{getTotalAmount()}}</h6>
-            <span class="widget_item-title">Total {{ (closeTrade || viewTrade) ? 'Return' : 'Amount'}}</span>
+            <span class="widget_item-title">{{ (closeTrade || viewTrade) ? 'Return' : 'Cost of Trade'}}</span>
         </div>
         <!-- <div class="net_debit">
             <span class="total_label">Total {{closeTrade ? 'Return' : 'Amount'}} </span>

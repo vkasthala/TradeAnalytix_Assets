@@ -20,7 +20,7 @@ import { TradePlanGridFilter } from '../models/trade-plan-grid-filter.model';
 })
 export class TradePlansComponent implements OnInit {
 
-  displayedColumns: string[] = ['day', 'status', 'mindsetType', 'marketStatus', 'plannedTrades', 'aligned', 'selfReview', 'todayStrategyCount', 'returnAmount', 'action'];
+  displayedColumns: string[] = ['day', 'marketStatus', 'mindsetType', 'plannedTrades', 'aligned', 'selfReview', 'todayStrategyCount', 'returnAmount', 'status', 'action'];
   dataSource: TradePlanGridStoreService;
 
   tradePlanGridRequest: TradePlanGridRequest = this.getInitialRequest();
@@ -36,6 +36,7 @@ export class TradePlansComponent implements OnInit {
   ngOnInit() {
     this.dataSource = new TradePlanGridStoreService(this.tradeplansService);
     this.loadPage();
+    console.log('this.dataSource', this.dataSource)
   }
 
   loadPage() {

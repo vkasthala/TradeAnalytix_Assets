@@ -11,22 +11,22 @@
             </ng-container>
 
             <ng-container matColumnDef="strategyType">
-                <th mat-header-cell *matHeaderCellDef>Strategy Type</th>
+                <th mat-header-cell *matHeaderCellDef class="cell-w-12">Strategy Type</th>
                 <td mat-cell *matCellDef="let element"> {{element.strategyType}} </td>
             </ng-container>
 
             <ng-container matColumnDef="actionType">
-                <th mat-header-cell *matHeaderCellDef>Buy to Open</th>
+                <th mat-header-cell *matHeaderCellDef class="cell-w-12">Buy to Open</th>
                 <td mat-cell *matCellDef="let element"> {{element.actionType}} </td>
             </ng-container>
 
             <ng-container matColumnDef="maxRisk">
-                <th mat-header-cell *matHeaderCellDef>Max Risk</th>
+                <th mat-header-cell *matHeaderCellDef class="cell-w-12">Max Risk</th>
                 <td mat-cell *matCellDef="let element"> {{element.maxRisk | number:'1.0-0'}} </td>
             </ng-container>
 
             <ng-container matColumnDef="profit">
-                <th mat-header-cell *matHeaderCellDef>Expected Profit</th>
+                <th mat-header-cell *matHeaderCellDef class="cell-w-12">Expected Profit</th>
                 <td mat-cell *matCellDef="let element"> {{element.profit | number:'1.0-0'}} </td>
             </ng-container>
 

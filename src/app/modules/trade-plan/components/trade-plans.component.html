@@ -20,8 +20,52 @@
                     <table mat-table [dataSource]="dataSource">
                         <!-- Position Column -->
                         <ng-container matColumnDef="day">
-                            <th mat-header-cell *matHeaderCellDef> Date </th>
-                            <td mat-cell *matCellDef="let element"> {{element.day}} </td>
+                            <th mat-header-cell *matHeaderCellDef> Entry Date </th>
+                            <td mat-cell *matCellDef="let element"> {{element.day | date: 'dd-MMM-yyyy'}} </td>
+                        </ng-container>
+
+                        <!-- Prediction Column -->
+                        <ng-container matColumnDef="marketStatus">
+                            <th mat-header-cell *matHeaderCellDef width="12%"> Prediction</th>
+                            <td mat-cell *matCellDef="let element"> {{element.marketStatus}} </td>
+                        </ng-container>
+
+                        <!-- Mindset Column -->
+                        <ng-container matColumnDef="mindsetType">
+                            <th mat-header-cell *matHeaderCellDef> Mindset </th>
+                            <td mat-cell *matCellDef="let element"> {{element.mindsetType}} </td>
+                        </ng-container>
+
+                        <!-- Planned Trades Column -->
+                        <ng-container matColumnDef="plannedTrades">
+                            <th mat-header-cell *matHeaderCellDef> Planned Trades </th>
+                            <td mat-cell *matCellDef="let element"> {{element.plannedTrades}} </td>
+                        </ng-container>
+
+                        <!--Aligned Column -->
+                        <ng-container matColumnDef="aligned">
+                            <th mat-header-cell *matHeaderCellDef>Aligned with Plan</th>
+                            <td mat-cell *matCellDef="let element" [ngClass]="{
+                'text-success': element.aligned == 'Yes',
+                'text-danger': element.aligned == 'No'}">{{element.aligned == true ? 'Yes' : 'No'}}</td>
+                        </ng-container>
+
+                        <!-- Self-Review Column -->
+                        <ng-container matColumnDef="selfReview">
+                            <th mat-header-cell *matHeaderCellDef>Self-Assessment</th>
+                            <td mat-cell *matCellDef="let element"> {{element.selfReview}} </td>
+                        </ng-container>
+
+                        <!-- Trades Column -->
+                        <ng-container matColumnDef="todayStrategyCount">
+                            <th mat-header-cell *matHeaderCellDef>Trade Count</th>
+                            <td mat-cell *matCellDef="let element"> {{element.todayStrategyCount}} </td>
+                        </ng-container>
+
+                        <!-- Realized  Return Column -->
+                        <ng-container matColumnDef="returnAmount">
+                            <th mat-header-cell *matHeaderCellDef>Realized  Return</th>
+                            <td mat-cell *matCellDef="let element"> {{element.returnAmount}} </td>
                         </ng-container>
 
                         <!-- Status Column -->
@@ -32,54 +76,9 @@
                 'text-success': element.status == 'Closed'}"> {{element.status}} </td>
                         </ng-container>
 
-                        <!-- Mindset Column -->
-                        <ng-container matColumnDef="mindsetType">
-                            <th mat-header-cell *matHeaderCellDef> Mindset </th>
-                            <td mat-cell *matCellDef="let element"> {{element.mindsetType}} </td>
-                        </ng-container>
-
-                        <!-- Prediction Column -->
-                        <ng-container matColumnDef="marketStatus">
-                            <th mat-header-cell *matHeaderCellDef width="15%"> Prediction</th>
-                            <td mat-cell *matCellDef="let element"> {{element.marketStatus}} </td>
-                        </ng-container>
-
-
-                        <!-- Planned Trades Column -->
-                        <ng-container matColumnDef="plannedTrades">
-                            <th mat-header-cell *matHeaderCellDef> Planned Trades </th>
-                            <td mat-cell *matCellDef="let element"> {{element.plannedTrades}} </td>
-                        </ng-container>
-
-                        <!--Aligned Column -->
-                        <ng-container matColumnDef="aligned">
-                            <th mat-header-cell *matHeaderCellDef> Aligned</th>
-                            <td mat-cell *matCellDef="let element" [ngClass]="{
-                'text-success': element.aligned == 'Yes',
-                'text-danger': element.aligned == 'No'}">{{element.aligned == true ? 'Yes' : 'No'}}</td>
-                        </ng-container>
-
-                        <!-- Self-Review Column -->
-                        <ng-container matColumnDef="selfReview">
-                            <th mat-header-cell *matHeaderCellDef>Self-Review</th>
-                            <td mat-cell *matCellDef="let element"> {{element.selfReview}} </td>
-                        </ng-container>
-
-                        <!-- Trades Column -->
-                        <ng-container matColumnDef="todayStrategyCount">
-                            <th mat-header-cell *matHeaderCellDef>Trades</th>
-                            <td mat-cell *matCellDef="let element"> {{element.todayStrategyCount}} </td>
-                        </ng-container>
-
-                        <!-- Return Column -->
-                        <ng-container matColumnDef="returnAmount">
-                            <th mat-header-cell *matHeaderCellDef>Return</th>
-                            <td mat-cell *matCellDef="let element"> {{element.returnAmount}} </td>
-                        </ng-container>
-
                         <!-- Action Column -->
                         <ng-container matColumnDef="action">
-                            <th mat-header-cell *matHeaderCellDef> </th>
+                            <th mat-header-cell *matHeaderCellDef>Action</th>
                             <td mat-cell *matCellDef="let element">
                                 <mat-icon *ngIf="element.status == 'Open'" class="text-success cursor mat-icon-sm mr-3" (click)="editEntry(element)">edit</mat-icon>
 

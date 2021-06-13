@@ -16,7 +16,7 @@
                 <div class="col-sm-4">
                     <div class="mb-3">
                         <label class="col-form-label">Select the date for which trade plan is being created</label>
-                        <div class="col-10 px-0">
+                        <div class="col-sm-11 px-0">
                             <div class="datepicker-group">
                                 <input matInput [matDatepicker]="tradedate" (click)="tradedate.open()" id="tradedate" name="tradedate" [(ngModel)]="tradePlan.day" [ngClass]="[view ? 'disabled' : '']">
                                 <mat-datepicker-toggle matSuffix [for]="tradedate"></mat-datepicker-toggle>
@@ -26,7 +26,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="col-form-label">Where do you think market is headed today?</label>
-                        <div class="col-10 px-0">
+                        <div class="col-sm-11 px-0">
                             <select class="form-control" id="tradePlanMarketStatus" [(ngModel)]="tradePlan.marketHeadingId" [ngClass]="[view ? 'disabled' : '']">
                                 <option [ngValue]="opt.id" *ngFor="let opt of marketStatuses; trackBy: id">{{opt.name}}
                                 </option>
@@ -35,13 +35,9 @@
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label class="col-form-label">What is your mindset today?</label>
-                        <div class="position-relative col-md-10 px-0">
-                            <select class="form-control" id="tradePlanMindsetType" [(ngModel)]="tradePlan.mindSetTypeId" [ngClass]="[view ? 'disabled' : '']">
-                                <option [ngValue]="opt.id" *ngFor="let opt of mindsetTypes; trackBy: id">{{opt.name}}
-                                </option>
-                            </select>
-                            <mat-icon class="form-icon-down text-success">keyboard_arrow_down</mat-icon>
+                        <label class="col-form-label">What’s your perspective on the market and open positions?</label>
+                        <div class="col-sm-11 px-0">
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="tradePlan.perspective" [ngClass]="[view ? 'disabled' : '']"></textarea>
                         </div>
                     </div>
                 </div>
@@ -56,16 +52,20 @@
                             <mat-icon class="form-icon-down text-success">keyboard_arrow_down</mat-icon>
                         </div>
                     </div>
-                    
                     <div class="mb-3">
-                        <label class="col-form-label">What’s your perspective on the market and your current positions?</label>
-                        <div class="">
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="tradePlan.perspective" [ngClass]="[view ? 'disabled' : '']"></textarea>
+                        <label class="col-form-label">What is your mindset today?</label>
+                        <div class="position-relative px-0">
+                            <select class="form-control" id="tradePlanMindsetType" [(ngModel)]="tradePlan.mindSetTypeId" [ngClass]="[view ? 'disabled' : '']">
+                                <option [ngValue]="opt.id" *ngFor="let opt of mindsetTypes; trackBy: id">{{opt.name}}
+                                </option>
+                            </select>
+                            <mat-icon class="form-icon-down text-success">keyboard_arrow_down</mat-icon>
                         </div>
                     </div>
+                    
                 </div>
                 <div class="col-sm-5">
-                    <h5 class="pb-1">Economic Calendar</h5>
+                    <h5 class="col-form-label pb-1">Economic Calendar</h5>
                     <app-economic-calendar></app-economic-calendar>
                 </div>
             </div>
@@ -101,8 +101,8 @@
                     </div>
                 </div>
                 <div class="mb-2">
-                    <label class="col-form-label pt-0">How you rate your trading performance today? </label>
-                    <div class="trade-sel">
+                    <label class="col-form-label pt-0">How do you rate your trading performance today? </label>
+                    <div class="col-md-3 px-0 trade-sel">
                         <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="tradePlan.selfReview" [ngClass]="[view ? 'disabled' : '']">
                                 <option value="Good">Good</option>
                                 <option value="Average">Average</option>
