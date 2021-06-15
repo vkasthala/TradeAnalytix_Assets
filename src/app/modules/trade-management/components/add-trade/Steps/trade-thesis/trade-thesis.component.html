@@ -8,8 +8,9 @@
         <div class="row">
             <div class="col-sm-6">
                 <div class="thesis_item">
-                    <div class="thesis_item_title" matTooltip="Specify the person, channel, service, website which recommended this trade. " matTooltipPosition="above" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay">
-                        Who suggested this trade to you?
+                    <div class="thesis_item_title">
+                        Who suggested this trade to you ? 
+                        <mat-icon matTooltip="Specify the person, channel, service, website which recommended this trade. " matTooltipPosition="above" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay" class="ml-2 mat-icon-sm cursor">info_outline</mat-icon>
                     </div>
                     <div class="media align-items-center">
                         <div class="media-body">
@@ -26,8 +27,9 @@
             <!-- end : thesis_item -->
             <div class="col-sm-6">
                 <div class="thesis_item">
-                    <div class="thesis_item_title" matTooltip="Write notes on why you are executing this trade at this point in time. This will make you think through your logic and avoid rash decisions." matTooltipPosition="above" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay">
-                        Specify the reasons for executing this trade
+                    <div class="thesis_item_title">
+                        Specify the reasons for executing this trade 
+                        <mat-icon matTooltip="Write notes on why you are executing this trade at this point in time. This will make you think through your logic and avoid rash decisions." matTooltipPosition="above" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay" class="ml-2 mat-icon-sm cursor">info_outline</mat-icon>
                     </div>
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="tradeThesis.reasons" [disabled]="closeTrade" [ngClass]="closeTrade || viewTrade ? 'disabled' : ''"></textarea>
                 </div>
@@ -36,8 +38,9 @@
 
             <div class="col-sm-6">
                 <div class="thesis_item">
-                    <div class="thesis_item_title" matTooltip="Enter the target profit you intend to make on this trade." matTooltipPosition="above" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay">
-                        How much profit do you expect from this trade?
+                    <div class="thesis_item_title">
+                        How much profit do you expect from this trade ? 
+                        <mat-icon matTooltip="Enter the target profit you intend to make on this trade." matTooltipPosition="above" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay" class="ml-2 mat-icon-sm cursor">info_outline</mat-icon>
                     </div>
                     <input type="text" class="form-control" [disabled]="closeTrade" placeholder="Enter the price" [(ngModel)]="tradeThesis.targetPrice" [ngClass]="closeTrade || viewTrade ? 'disabled' : ''" />
                 </div>
@@ -46,8 +49,9 @@
               
             <div class="col-sm-6">
                 <div class="thesis_item">
-                    <div class="thesis_item_title" matTooltip="If you are executing this order to take advantage of any event (e.g., before or after earnings, before or after product launch etc.), create the event and select it" matTooltipPosition="above" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay">
-                        Select any event surrounding this trade
+                    <div class="thesis_item_title">
+                        Select any event surrounding this trade 
+                        <mat-icon matTooltip="If you are executing this order to take advantage of any event (e.g., before or after earnings, before or after product launch etc.), create the event and select it" matTooltipPosition="above" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay" class="ml-2 mat-icon-sm cursor">info_outline</mat-icon>
                     </div>
                     <div class="media align-items-center">
                         <div class="media-body">
@@ -65,8 +69,9 @@
 
             <div class="col-sm-6">
                 <div class="thesis_item">
-                    <div class="thesis_item_title" matTooltip="If this trade is based on any technical indicator, add the indicator to the list and select it. " matTooltipPosition="above" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay">
-                        Select the technical indicator used for this trade
+                    <div class="thesis_item_title">
+                        Select the technical indicator used for this trade 
+                        <mat-icon matTooltip="If this trade is based on any technical indicator, add the indicator to the list and select it. " matTooltipPosition="above" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay" class="ml-2 mat-icon-sm cursor">info_outline</mat-icon>
                     </div>
                     <div class="media align-items-center">
                         <div class="media-body">
@@ -107,8 +112,8 @@
 
             <div class="col-sm-6">
                 <div class="thesis_item">
-                    <div class="thesis_item_title" matTooltip="Specify whether you planned this trade before market hours or decided to trade on the fly." matTooltipPosition="above" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay">
-                        Is this a planned or an impromptu trade?
+                    <div class="thesis_item_title">
+                        Is this a planned or an impromptu trade ? <mat-icon matTooltip="Specify whether you planned this trade before market hours or decided to trade on the fly." matTooltipPosition="above" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay" class="ml-2 mat-icon-sm cursor">info_outline</mat-icon>
                     </div>
                     <div class="media align-items-center">
                         <span class="form-check form-check-inline">
@@ -126,8 +131,8 @@
 
             <div class="col-sm-6">
                 <div class="thesis_item">
-                    <div class="thesis_item_title" matTooltip="Specify how you are feeling at the time of placing this trade (e.g., anxious, confident, fear of missing out, etc.). Create mindset and select from the dropdown." matTooltipPosition="above" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay">
-                        What is your mindset while executing this trade?
+                    <div class="thesis_item_title">
+                        What is your mindset while executing this trade? <mat-icon matTooltip="Specify how you are feeling at the time of placing this trade (e.g., anxious, confident, fear of missing out, etc.). Create mindset and select from the dropdown." matTooltipPosition="above" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay" class="ml-2 mat-icon-sm cursor">info_outline</mat-icon>
                     </div>
                     <div class="media align-items-center">
                         <div class="media-body">
