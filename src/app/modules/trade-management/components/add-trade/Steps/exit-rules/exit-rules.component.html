@@ -5,46 +5,19 @@
     </div>
 
     <div class="trade-thesis-body" *ngIf="!hideExitRules">
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="thesis_item">
-                    <div class="thesis_item_title">
-                        Always protect your investment by hedging
-                    </div>
-                    <div class="switch">
-                        <input type="checkbox" checked id="exit_hedging" name="exit_hedging" [(ngModel)]="exitRules[0].aligned" [ngClass]="[closeTrade || viewTrade ? 'disabled' : '']" />
-                        <!-- <label for="exit_hedging"></label> -->
-                    </div>
-                </div>
-            </div>
-            <!-- end : entryrule_item -->
 
+        <div class="row" *ngFor="let exit of exitRules;">
             <div class="col-sm-6">
                 <div class="thesis_item">
                     <div class="thesis_item_title">
-                        Do not trade options expiring in the same week
+                        {{exit.description}}
                     </div>
                     <div class="switch">
-                        <input type="checkbox" id="exit_same_week" name="exit_same_week" [(ngModel)]="exitRules[1].aligned" [ngClass]="[closeTrade || viewTrade ? 'disabled' : '', viewTrade ? 'disabled' : '']" />
-                        <!-- <label for="exit_same_week"></label> -->
+                        <input type="checkbox" checked id="hedging" [(ngModel)]="exit.aligned" [disabled]="closeTrade" [ngClass]="closeTrade ? 'disabled' : ''" />
                     </div>
-                    <input type="text" class="trade-check" placeholder="Add notes" [(ngModel)]="exitRules[1].comment" [ngClass]="[closeTrade || viewTrade ? 'disabled' : '', viewTrade ? 'disabled' : '']" />
+                    <input type="text" class="trade-check" placeholder="Add notes" [disabled]="closeTrade" [ngClass]="closeTrade ? 'disabled' : ''" />
                 </div>
-            </div>
-            <!-- end : entryrule_item -->
-
-            <div class="col-sm-6">
-                <div class="thesis_item">
-                    <div class="thesis_item_title">
-                        Do not put more than 100,000 in a stock
-                    </div>
-                    <div class="switch">
-                        <input type="checkbox" checked id="exit_onelack_stock" name="exit_onelack_stock" [(ngModel)]="exitRules[2].aligned" [ngClass]="[closeTrade || viewTrade ? 'disabled' : '', viewTrade ? 'disabled' : '']" />
-                        <!-- <label for="exit_onelack_stock"></label> -->
-                    </div>
-                </div>
-            </div>
-            <!-- end : entryrule_item -->
+            </div>        
         </div>
     </div>
 </div>
