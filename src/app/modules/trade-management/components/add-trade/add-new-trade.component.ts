@@ -99,8 +99,6 @@ export class AddNewTradeComponent implements OnInit {
 
   ngOnInit() {
     this.setState();
-    console.log('Adding..............');
-    console.log('Rules....................',this.entryRules.entryRules);
   }
 
   enterSymbol() {
@@ -244,7 +242,6 @@ export class AddNewTradeComponent implements OnInit {
     this.tradeStrategy.stockOptions = this.tradeDetails.stockOptions;
     this.tradeStrategy.direction = this.getDirection();
     this.tradeStrategy.entryRules = this.entryRules.entryRules;
-    
     
     if (this.close) {
       if (this.tradeStrategy.entryRules && this.exitRules.exitRules) {

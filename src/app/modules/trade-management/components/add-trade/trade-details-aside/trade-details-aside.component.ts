@@ -8,6 +8,7 @@ import { StrategySummaryResult } from '../../../models/strategy-summary-result.m
 import { Subject } from 'rxjs';
 import { TradeStrategy } from '../../../models/trade-strategy.model';
 import { StrategyType } from 'src/app/modules/shared/models/trade-management/strategy-type.enum';
+import { TradeInputData } from 'src/app/modules/shared/models/trade-management/trade-input-data.model';
 
 
 @Component({
@@ -17,6 +18,7 @@ import { StrategyType } from 'src/app/modules/shared/models/trade-management/str
 })
 export class TradeDetailsAsideComponent implements OnInit {
 
+  @Input("inputState") inputState: TradeInputData;
   @Input() selectedStock: StockSymbol;
   @Input() stockSummary: UserStockSummary;
   @Input("tradeStrategy") tradeStrategy: TradeStrategy;

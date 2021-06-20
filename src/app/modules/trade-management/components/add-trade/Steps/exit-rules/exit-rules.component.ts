@@ -26,7 +26,7 @@ export class ExitRulesComponent implements OnInit {
   @Input("viewTrade") viewTrade: boolean;
   @Output('prevStep') prevStep = new EventEmitter();
 
-  exitRules: EntryExitRule[] = [];//this.entryExitRuleService.getExitRules();
+  exitRules: EntryExitRule[] = [];
   protected hideExitRules: boolean = false;
   constructor(
     private _dialog: MatDialog,
@@ -37,6 +37,7 @@ export class ExitRulesComponent implements OnInit {
   }
   ngAfterViewInit(): void {
     console.log('exit rules child view init:', this.inputState);
+    this.closeTrade = false;
     //No state initialization in exit rules
     let type = 'Exit';
     if(this.inputState != undefined){
