@@ -18,7 +18,8 @@ export class PlannedTradesGridComponent implements OnInit {
   plannedTradesGridColumns: string[] = ['symbol', 'strategyType', 'actionType', 'maxRisk', 'profit', 'reason', 'actions'];
 
   @Input('tradePlanId') tradePlanId: number;
-
+  @Input('viewTradePlan') viewTradePlan: boolean;
+  
   constructor(private tradePlanService: TradePlansService, private _dialog: MatDialog) {
 
   }

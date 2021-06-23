@@ -102,6 +102,10 @@
                             <!-- Improve Trading Performance by -->
                         </h1>
                         <div class="pt-3">
+                            
+                            <!-- <div *ngFor="let datum of slideData; let i = index">
+                                {{datum}}
+                              </div> -->
                             TradeAnalytix provides a data-driven and methodical approach to improve your trading performance
                             <!-- Learning from your trade history -->
                         </div>
@@ -350,14 +354,14 @@
 
 
 <!-- Modal -->
-<div class="modal fade login_modal" [ngClass]="loginModalOpen ? 'show' : ''" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade custom_modal" [ngClass]="loginModalOpen ? 'show' : ''" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="text-right p-2">
             <span class="cursor" (click)="closeLoginModal()"><mat-icon class="mat-icon-sm">clear</mat-icon></span>
         </div>
         <div *ngIf="logonBodySec">
-            <div class="modal-body">
+            <div class="modal-body login_modal">
                 <div class="trade-login text-center">
                     <!-- <span class="login-heading"><img src="../../../../assets/images/logo.png" alt="" /></span> -->
                     <h3 class="trade-head">Welcome to TradeAnalytix</h3>
@@ -380,14 +384,14 @@
                                 Sign in with Facebook
                             </div>
                         </div>
-                        <div class="trade-login-btn" (click)="login('microsoft')">
+                        <!-- <div class="trade-login-btn" (click)="login('microsoft')">
                             <div class="login-img">
                                 <img src="../../../../assets/images/microsoft.svg" alt=""  class="img-responsive">
                             </div>
                             <div class="login-con">
                                 Sign in with Microsoft
                             </div>
-                        </div>
+                        </div> -->
                         <button type="button" class="btn btn-create-account" (click)="openCreateAcModal()">Create Account</button>
                     </div>
                 </div>
@@ -404,7 +408,7 @@
         </div>
         <!-- end: login_content -->
         <div *ngIf="createAcSec">
-            <div class="modal-body">
+            <div class="modal-body createact_modal">
                 <div class="trade-login text-center">
                     <!-- <span class="login-heading"><img src="../../../../assets/images/logo.png" alt="" /></span> -->
                     <h3 class="trade-head">Create Account</h3>
@@ -412,7 +416,8 @@
                     <div class="trade-login-sec">
                         <input type="text" class="form-control" placeholder="Full Name" />
                         <input type="text" class="form-control" placeholder="Email Address" />
-                        <input type="text" class="form-control" placeholder="Full Name" />
+                        <input type="password" class="form-control" placeholder="Password" />
+                        <input type="password" class="form-control" placeholder="Confirm Password" />
                         
                         <button type="button" class="btn btn-create-account">Create Account</button>
                     </div>

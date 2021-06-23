@@ -7,35 +7,35 @@
         <div class="widget_header">
             <h5 class="widget_header-label">
                 {{getDisplayValue(selectedStock.code)}} Historical Stats 
-                <mat-icon matTooltip="Statistics derived from your {{getDisplayValue(selectedStock.code)}} trades" matTooltipPosition="right" class="ml-2 mat-icon-sm cursor" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay">info_outline</mat-icon>
+                <mat-icon matTooltip="Statistics derived from your {{getDisplayValue(selectedStock.code)}} trades" matTooltipPosition="right" class="mat-icon-xs info-icon cursor" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay">info_outline</mat-icon>
             </h5>
         </div>
         <div class="row no-gutters justify-content-between">
-            <div class="widget_item">
+            <div class="widget_item" [ngClass]="[getDisplayValue(stockSummaryResult.realizedReturn) >= 0 ? 'widget_item' : 'widget_item_danger', getDisplayValue(stockSummaryResult.realizedReturn) === 'NA'  ? 'widget_item_gray' : '']">
                 <h6 class="widget_item-value">{{getDisplayValue(stockSummaryResult.realizedReturn)}}</h6>
                 <span class="widget_item-title">Realized Return</span>
             </div>
-            <div class="widget_item">
+            <div class="widget_item" [ngClass]="[getDisplayValue(stockSummaryResult.netR) >= 0 ? 'widget_item' : 'widget_item_danger', getDisplayValue(stockSummaryResult.netR) === 'NA'  ? 'widget_item_gray' : '']">
                 <h6 class="widget_item-value">{{getDisplayValue(stockSummaryResult.netR)}}</h6>
                 <span class="widget_item-title">Net R</span>
             </div>
-            <div class="widget_item widget_item_danger">
+            <div class="widget_item" [ngClass]="[getDisplayValue(stockSummaryResult.winRate) >= 50% ? 'widget_item' : 'widget_item_danger', getDisplayValue(stockSummaryResult.winRate) === 'NA'  ? 'widget_item_gray' : '']">
                 <h6 class="widget_item-value">{{getDisplayValue(stockSummaryResult.winRate)}}</h6>
                 <!-- <h6 class="widget_item-value">{{getDisplayValue(stockSummaryResult.winRate)}} | {{getDisplayValue(stockSummary.lossPercent)}} ({{getDisplayValue(stockSummary.winLossRatio)}})
                 </h6> -->
                 <span class="widget_item-title">Win Rate</span>
             </div>
-            <div class="widget_item">
+            <div class="widget_item widget_item_gray">
                 <h6 class="widget_item-value">{{getDisplayValue(stockSummaryResult.avgHoldingPeriod, ' days')}}</h6>
                 <span class="widget_item-title">Avg. Hold Period </span>
             </div>
-            <div class="widget_item">
+            <div class="widget_item" [ngClass]="[getDisplayValue(stockSummaryResult.highestReturn) >= 0 ? 'widget_item' : 'widget_item_danger', getDisplayValue(stockSummaryResult.highestReturn) === 'NA'  ? 'widget_item_gray' : '']">
                 <h6 class="widget_item-value">{{getDisplayValue(stockSummaryResult.highestReturn)}}</h6>
                 <span class="widget_item-title">Highest Return</span>
             </div>
-            <div class="widget_item widget_item_danger">
+            <div class="widget_item widget_item_danger" [ngClass]="[getDisplayValue(stockSummaryResult.largestLoss) >= 0 ? 'widget_item' : 'widget_item_danger', getDisplayValue(stockSummaryResult.largestLoss) === 'NA'  ? 'widget_item_gray' : '']">
                 <h6 class="widget_item-value">{{getDisplayValue(stockSummaryResult.largestLoss)}}</h6>
-                <span class="widget_item-title">Largest Loss</span>
+                <span class="widget_item-title">Lowest Return</span>
             </div>
             <div class="widget_item">
                 <h6 class="widget_item-label">{{getDisplayValue(stockSummaryResult.successStrategy)}}
@@ -51,7 +51,7 @@
     <div class="widget-2" *ngIf="stockOrOptionAdded == true && strategyTypeSummaryResult">
         <div class="widget_header">
             <h5 class="widget_header-label">{{strategyName}} Historical Stats 
-                <mat-icon matTooltip="Statistics derived from your {{strategyName}} trades" matTooltipPosition="right" class="ml-2 mat-icon-sm cursor" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay">info_outline</mat-icon>
+                <mat-icon matTooltip="Statistics derived from your {{strategyName}} trades" matTooltipPosition="right" class="mat-icon-xs info-icon cursor" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay">info_outline</mat-icon>
             </h5>
         </div>
         <div class="row no-gutters justify-content-between">
