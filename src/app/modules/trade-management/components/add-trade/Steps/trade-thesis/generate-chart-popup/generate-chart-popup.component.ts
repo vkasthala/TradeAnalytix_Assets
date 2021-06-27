@@ -21,13 +21,14 @@ export class GenerateChartPopupComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     let script = this._renderer2.createElement('script');
     script.type = `text/javascript`;
-    script.src = "https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js";
-    script.text = '{"symbol": " BSE:' + this.data.selectedStock.code + '","width": 600,"height": 400,"interval": "1", "timezone": "Etc/UTC","theme": "light","style": "1","locale": "en","toolbar_bg": "#f1f3f6","enable_publishing": true,"withdateranges": true,"hide_side_toolbar": false,"allow_symbol_change": true,"details": true,"hotlist": true,"calendar": true,"container_id": "tradingview_7e17d"}';
+    script.src = "https://s3.tradingview.com/tv.js";
+    script.text = '{"width": 980, "height": 610, "symbol": "NASDAQ:AAPL", "interval": "D", "timezone": "Etc/UTC", "theme": "light", "style": "1", "locale": "en", "toolbar_bg": "#f1f3f6", "enable_publishing": false, "allow_symbol_change": true, "container_id": "tradingview_2f7bd"}';
 
     this.thesisTradingview.nativeElement.appendChild(script);
 
 
   }
+
 
   closeModal() {
     this.dialogRef.close();
