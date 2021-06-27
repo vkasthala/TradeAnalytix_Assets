@@ -65,6 +65,7 @@ export class RiskAnalysisComponent implements OnInit {
 
   maxRiskDetails: MaxRiskDetails;
   protected add = true;
+  protected Loader = false;
   
   constructor(private utilService: UtilService,
     private riskAnalysisService: RiskAnalysisService,
@@ -299,8 +300,10 @@ export class RiskAnalysisComponent implements OnInit {
   }
 
   initChart() {
+    this.Loader = !this.Loader;
     if (this.riskAnalysisChartComponent) {
       this.initRiskAnalysisChart(this.createRiskAnalysisRequest());
+      this.Loader = !this.Loader;
     }
   }
 
@@ -346,10 +349,13 @@ export class RiskAnalysisComponent implements OnInit {
   }
 
   checkForStockPrice() {
+    this.Loader = !this.Loader;
     if (!this.stockAdded && !this.stockPriceUpdated) {
       this.openUpdateStockPricePopup();
+      this.Loader = !this.Loader;
     } else {
       this.loadImpliedVolatility();
+      this.Loader = !this.Loader;
     }
   }
 
@@ -459,6 +465,7 @@ export class RiskAnalysisComponent implements OnInit {
   }
 
   getRiskAnalysisResults(): RiskAnalysisRecord[] {
+    this.Loader = !this.Loader;
     this.riskAnalysisResults = [];
     let riskAnalysisRequest: RiskAnalysisRequest = this.createRiskAnalysisRequest();
 
@@ -469,9 +476,11 @@ export class RiskAnalysisComponent implements OnInit {
       this.riskAnalysisResults = result.records;
       this.panelExpand = true;
       this.panel3Disabled = false;
+      this.Loader = !this.Loader;
     },
       errResponse => {
         console.log("error:", errResponse);
+        this.Loader = !this.Loader;
       });
     if (this.riskAnalysisChartComponent) {
       this.initRiskAnalysisChart(riskAnalysisRequest);

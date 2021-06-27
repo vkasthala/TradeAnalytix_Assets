@@ -19,7 +19,7 @@
                 <h6 class="widget_item-value">{{getDisplayValue(stockSummaryResult.netR)}}</h6>
                 <span class="widget_item-title">Net R</span>
             </div>
-            <div class="widget_item" [ngClass]="[getDisplayValue(stockSummaryResult.winRate) >= 50% ? 'widget_item' : 'widget_item_danger', getDisplayValue(stockSummaryResult.winRate) === 'NA'  ? 'widget_item_gray' : '']">
+            <div class="widget_item" [ngClass]="[getDisplayValue(stockSummaryResult.winRate) >= (getDisplayValue(stockSummaryResult.winRate)*50/100) ? 'widget_item' : 'widget_item_danger', getDisplayValue(stockSummaryResult.winRate) === 'NA'  ? 'widget_item_gray' : '']">
                 <h6 class="widget_item-value">{{getDisplayValue(stockSummaryResult.winRate)}}</h6>
                 <!-- <h6 class="widget_item-value">{{getDisplayValue(stockSummaryResult.winRate)}} | {{getDisplayValue(stockSummary.lossPercent)}} ({{getDisplayValue(stockSummary.winLossRatio)}})
                 </h6> -->

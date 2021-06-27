@@ -21,6 +21,7 @@ import { TradeStrategyGridService } from '../../services/trade-strategy-grid.ser
   templateUrl: 'trade-strategies-grid.html',
 })
 export class TradeStrategiesGrid implements AfterViewInit, OnInit {
+  protected Loader = false;
   expandIndex: any;
   displayedColumns = ['id', 'stockName', 'strategy', 'direction', 'openDate', 'closeDate', 'maxGain', 'maxLoss', 'return', 'rules', 'status', 'action'];
   pageSize: number = 20
@@ -115,6 +116,7 @@ merge(this.sort.sortChange, this.paginator.page)
   }
 
   editTrade(rowModel: TradeStrategyGridRow) {
+    this.Loader = !this.Loader;
     let stockSymbolReq = this.stockSymbolService.getStockSymbolById(rowModel.stockId);
     let tradeStrategyReq = this.tradeStrategyService.getTradeStrategyDetails(rowModel.id);
     let stockSummaryReq = this.userStockStatsService.getUserStockBriefSummary(rowModel.stockId, 1);
@@ -124,14 +126,14 @@ merge(this.sort.sortChange, this.paginator.page)
       input.selectedStock = results[0];
       input.stockSummary = results[1];
       input.tradeStrategy = results[2];
-      console.log('edit trade: ', input);
       extras.state = input;
       this.router.navigate(["/edit-trade/" + rowModel.id], extras);
+      this.Loader = !this.Loader;
     });
   }
 
   closeTrade(rowModel: TradeStrategyGridRow) {
-    console.log('close..', rowModel);
+    this.Loader = !this.Loader;
     let stockSymbolReq = this.stockSymbolService.getStockSymbolById(rowModel.stockId);
     let tradeStrategyReq = this.tradeStrategyService.getTradeStrategyDetails(rowModel.id);
     let stockSummaryReq = this.userStockStatsService.getUserStockBriefSummary(rowModel.stockId, 1);
@@ -141,12 +143,13 @@ merge(this.sort.sortChange, this.paginator.page)
       input.selectedStock = results[0];
       input.stockSummary = results[1];
       input.tradeStrategy = results[2];
-      console.log('close trade: ', input);
       extras.state = input;
       this.router.navigate(["/close-trade/" + rowModel.id], extras);
+      this.Loader = !this.Loader;
     });
   }
   viewTrade(rowModel: TradeStrategyGridRow) {
+    this.Loader = !this.Loader;
     let stockSymbolReq = this.stockSymbolService.getStockSymbolById(rowModel.stockId);
     let tradeStrategyReq = this.tradeStrategyService.getTradeStrategyDetails(rowModel.id);
     let stockSummaryReq = this.userStockStatsService.getUserStockBriefSummary(rowModel.stockId, 1);
@@ -158,11 +161,13 @@ merge(this.sort.sortChange, this.paginator.page)
       input.tradeStrategy = results[2];
       extras.state = input;
       this.router.navigate(["/view-trade/" + rowModel.id], extras);
+      this.Loader = !this.Loader;
     });
   }
 
 
   deleteTrade(rowModel: TradeStrategyGridRow) {
+    this.Loader = !this.Loader;
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       width: 'auto',
       height: 'auto',
@@ -174,6 +179,7 @@ merge(this.sort.sortChange, this.paginator.page)
           console.log('Trade strategy deleted..', rowModel.id);
           this.reload();
         });
+        this.Loader = !this.Loader;
       }
     });
   }

@@ -29,6 +29,9 @@
                     stock and option inputs. Based on the analysis results, traders can tweak the strategy so that it aligns with the desired goal.</div> -->
             </ng-container>
             <ng-container *ngSwitchCase="2">
+                <div class="mask" *ngIf="Loader">    
+                    <div class="loader"></div> 
+                </div>
                 <div class="mb-2">
                     <app-trade-details-header [addTrade]="add" [selectedStock]="selectedStock" [stockSummary]="stockSummary" (loadMoreStats)="loadMoreStatsHandler($event)"></app-trade-details-header>
                 </div>
@@ -417,7 +420,7 @@
                                                                     <tbody>
                                                                         <tr *ngFor="let item of riskAnalysisResults;let index=index">
                                                                             <td [ngClass]="{ 'trade-rd' :item.totalSummary.gainLoss >= 0, 'trade-rdd':item.totalSummary.gainLoss < 0}">
-                                                                                {{item.totalSummary.gainLoss}}</td>
+                                                                                {{item.totalSummary.gainLoss | number:'1.0-0'}}</td>
                                                                         </tr>
                                                                     </tbody>
                                                                 </table>
