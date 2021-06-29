@@ -14,13 +14,22 @@ export class LandingComponent implements OnInit {
   FACEBOOK_AUTH_URL: string = '/oauth2/authorize/facebook';
   MICROSOFT_AUTH_URL: string = '/oauth2/authorize/microsoft';
   closeResult = '';
+  features: string[] = ['Learning from your trade history', 'Aligning with self-set rules', 'Journaling your trades', 'Analyzing risk of trades', 'Picking the right strategies'];
+  currentInd: number = 0;
 
   protected loginModalOpen: boolean = false;
   constructor(
     private router: Router
-    ) { }
+  ) { }
 
   ngOnInit() {
+    setInterval(() => {
+      if (this.currentInd === (this.features.length - 1)) {
+        this.currentInd = 0;
+      } else {
+        this.currentInd++;
+      }
+    }, 2000);
   }
 
   login(authProvider: string) {
@@ -32,7 +41,7 @@ export class LandingComponent implements OnInit {
     } else if ("microsoft" === authProvider) {
       url = this.MICROSOFT_AUTH_URL;
     } else if ("local" === authProvider) {
-      
+
     }
     if (url) {
       let authUrl = environment.apiUrl + url + '?redirect_uri=' + environment.redirectUri;
@@ -40,7 +49,7 @@ export class LandingComponent implements OnInit {
     }
   }
 
-  
+
   openLoginModal() {
     this.createAcSec = false;
     this.logonBodySec = true;
