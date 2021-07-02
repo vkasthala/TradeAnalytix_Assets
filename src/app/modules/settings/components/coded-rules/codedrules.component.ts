@@ -1,14 +1,14 @@
-import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
-import { EditableListComponent } from 'src/app/modules/shared/components/widgets/editable-list/editable-list.component';
-import { DataSetupService } from '../../services/data-setup.service';
-import { EditableGridComponent } from 'src/app/modules/shared/components/widgets/editable-grid/editable-grid.component';
-import { BockerageCommission } from '../../models/brockerage-commission.model';
-import { EditableGridColumn } from 'src/app/modules/shared/models/common/editable-grid-column.model';
-import { EditableListItem } from 'src/app/modules/shared/models/common/editable-list-item.model';
-import { Subject } from 'rxjs';
-import { ConfirmDialogComponent } from 'src/app/modules/shared/components/modals/confirm-dialog/confirm-dialog.component';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { ToastrService } from 'ngx-toastr';
+import { Subject } from 'rxjs';
+import { ConfirmDialogComponent } from 'src/app/modules/shared/components/modals/confirm-dialog/confirm-dialog.component';
+import { EditableGridComponent } from 'src/app/modules/shared/components/widgets/editable-grid/editable-grid.component';
+import { EditableGridColumn } from 'src/app/modules/shared/models/common/editable-grid-column.model';
+import { BockerageCommission } from '../../models/brockerage-commission.model';
+import { UserCodedRule } from '../../models/user-coded-rule.model';
+import { CodedRuleService } from '../../services/coded-rule.service';
+import { DataSetupService } from '../../services/data-setup.service';
 
 @Component({
   selector: 'app-codedrules',
@@ -17,9 +17,9 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class CodedRulesComponent implements OnInit {
 
-  @ViewChild('codedRules', { static: false }) protected codedRules: EditableGridComponent<BockerageCommission>;
+  @ViewChild('codedRules', { static: false }) protected codedRules: EditableGridComponent<UserCodedRule>;
 
-  constructor(private dataSetupService: DataSetupService, private cdr: ChangeDetectorRef, private _dialog: MatDialog, private toastr: ToastrService) { }
+  constructor(private codedRuleService: CodedRuleService, private cdr: ChangeDetectorRef, private _dialog: MatDialog, private toastr: ToastrService) { }
   step = 0;
   ngOnInit() {
 
@@ -34,7 +34,7 @@ export class CodedRulesComponent implements OnInit {
   }
 
   loadCodedRulesData() {
-    this.dataSetupService.getBrokerageCommissions().subscribe(result => {
+    this.codedRuleService.getUserCodedRules().subscribe(result => {
       this.codedRules.dataSource = result;
     });
   }
@@ -45,7 +45,7 @@ export class CodedRulesComponent implements OnInit {
     let cols: EditableGridColumn[] = [];
     let colIds: string[] = [];
     let col: EditableGridColumn = new EditableGridColumn();
-    col.id = "name";
+    col.id = "ruleName";
     col.name = "Parameter";
     col.placeholder = "Parameter";
     col.type = 'select';
@@ -54,7 +54,7 @@ export class CodedRulesComponent implements OnInit {
     cols.push(col);
 
     col = new EditableGridColumn();
-    col.id = "type";
+    col.id = "operatorName";
     col.name = "Operator";
     col.type = 'select';
     col.values = ['Percentage', 'Fixed'];
@@ -71,40 +71,43 @@ export class CodedRulesComponent implements OnInit {
     this.codedRules.setColumnConfigs(cols);
     this.codedRules.setColumns(colIds);
 
-    let addItemSubject: Subject<BockerageCommission> = new Subject<BockerageCommission>();
-    let editItemSubject: Subject<BockerageCommission> = new Subject<BockerageCommission>();
-    let deleteItemSubject: Subject<BockerageCommission> = new Subject<BockerageCommission>();
+    let addItemSubject: Subject<UserCodedRule> = new Subject<UserCodedRule>();
+    let editItemSubject: Subject<UserCodedRule> = new Subject<UserCodedRule>();
+    let deleteItemSubject: Subject<UserCodedRule> = new Subject<UserCodedRule>();
     addItemSubject.asObservable().subscribe(data => {
-      this.dataSetupService.createBrokerageCommission(data).subscribe(data => {
-        this.showSuccessMessage('Successfully added the new brokerage commission');
+      this.codedRuleService.createCodedRule(data).subscribe(data => {
+        this.showSuccessMessage('Successfully added the coded rule');
         this.loadCodedRulesData();
       }, err => {
-        console.log('error in creating brokerage commission: ', data)
-        this.showErrorMessageDialog('Error! failed to add brokerage commission');
+        console.log('error in creating coded rule: ', data)
+        this.showErrorMessageDialog('Error! failed to add coded rule');
       });
     });
+
     editItemSubject.asObservable().subscribe(data => {
-      this.dataSetupService.updateBrokerageCommission(data).subscribe(data => {
-        this.showSuccessMessage('Successfully updated the selected brokerage commission');
+      this.codedRuleService.updateCodedRule(data).subscribe(data => {
+        this.showSuccessMessage('Successfully updated the coded rule');
         this.loadCodedRulesData();
       }, err => {
-        console.log('error in editing brokerage commission: ', data)
-        this.showErrorMessageDialog('Error! failed to edit selected brokerage commission');
+        console.log('error in editing coded rule: ', data)
+        this.showErrorMessageDialog('Error! failed to edit coded rule');
       });
     });
+    
     deleteItemSubject.asObservable().subscribe(data => {
       this.getDeleteDialog().afterClosed().subscribe(dialogResult => {
         if (dialogResult == true) {
-          this.dataSetupService.deleteBrokerageCommission(data.id).subscribe(data => {
-            this.showSuccessMessage('Successfully deleted the selected brokerage commission');
+          this.codedRuleService.deleteCodedRule(data.id).subscribe(data => {
+            this.showSuccessMessage('Successfully deleted the coded rule');
             this.loadCodedRulesData();
           }, err => {
-            console.log('error in deleteing brokerage commission: ', data)
+            console.log('error in deleteing coded rule: ', data)
             this.showDeleteErrorMessage();
           });
         }
       });
     });
+
     this.codedRules.addItemSubject = addItemSubject;
     this.codedRules.editItemSubject = editItemSubject;
     this.codedRules.deleteItemSubject = deleteItemSubject;
