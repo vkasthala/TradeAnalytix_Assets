@@ -172,6 +172,7 @@ export class TradeDetailsComponent implements OnInit {
       this.direction = template.direction;
     }
     this.strategyTypeChangeSubject.next(strategy.valueOf());
+    this.updateStockOrOptionAddedStatus();
   }
 
   navigateToRiskAnalysis(): void {
