@@ -29,7 +29,7 @@ export class LandingComponent implements OnInit {
       } else {
         this.currentInd++;
       }
-    }, 2000);
+    }, 3000);
   }
 
   login(authProvider: string) {

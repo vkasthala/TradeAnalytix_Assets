@@ -4,7 +4,7 @@
             <div class="trade-header-section-logo"></div>
             <nav class="landing-navbar">
                 <ul class="list-unstyled ">
-                    
+
                     <li [class.nav-active]="currentRoute == 'features'">
                         <a class="landing-nav-link" [routerLink]="['/features']">
                             Features <mat-icon>keyboard_arrow_down</mat-icon>
@@ -57,7 +57,7 @@
                             Demo
                         </a>
                     </li>
-                    
+
                     <li [class.nav-active]="currentRoute == 'pricing'">
                         <a class="landing-nav-link" [routerLink]="['/pricing']">
                             Pricing
@@ -95,13 +95,13 @@
 
         <div class="trade-banner-section">
             <div class="row w-100 m-0">
-                <div class="col-sm-3 d-flex align-items-center">
-                    <div class="banner-info">
+                <div class="col-sm-3 col-md-4 d-flex align-items-center">
+                    <div class="banner-info LeaderBoardTop">
                         <h1 class="banner-info-title">
-                            Improve Trading Performance by
+                            Improve Trade Results by
                             <!-- Improve Trading Performance by -->
                         </h1>
-                        <div class="pt-3">
+                        <div class="pt-3 slideFeatures">
                             {{features[currentInd]}}
                             <!-- <div *ngFor="let datum of slideData; let i = index">
                                 {{datum}}
@@ -114,7 +114,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-9 pr-0">
+                <div class="col-sm-9 col-md-8 pr-0">
                     <div class="banner-rtside">
                         <div class="banner-img"><img src="../../../../assets/images/banner-img.png" alt=""></div>
                         <div class="widgets_section">
@@ -126,7 +126,7 @@
                                     Learn from the past and improve trading decisions
                                 </div>
                             </div>
-                        
+
                             <div class="widgets_box_transparent">
                                 <img src="../../../../assets/images/shape1.png" alt="">
                             </div>
@@ -187,7 +187,7 @@
                         </div>
                         <!-- end: widgets_section -->
                         <div class="widgets_section">
-                            
+
                             <div class="widgets_box_hshape"></div>
                             <div class="widgets_box_empty-s"></div>
                         </div>
@@ -287,9 +287,9 @@
             <div class="demo_video_section_header">
                 <div class="demo_video_section-title">Watch the demo</div>
                 <div class="demo_video_section-dec">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
-                <div class="py-3"><img src="../../../../assets/images/down_arrow.png" alt=""  class="img-responsive"></div>
+                <div class="py-3"><img src="../../../../assets/images/down_arrow.png" alt="" class="img-responsive"></div>
             </div>
-            <div class="video_container"><img src="../../../../assets/images/video-img.png" alt=""  class="img-responsive"></div>
+            <div class="video_container"><img src="../../../../assets/images/video-img.png" alt="" class="img-responsive"></div>
         </div>
     </div>
 </div>
@@ -304,7 +304,7 @@
             <a class="landing-nav-link" [routerLink]="['/features']">
                 Features
             </a>
-            
+
         </li>
         <li [class.nav-active]="currentRoute == 'getting-started'">
             <a class="landing-nav-link" [routerLink]="['/getting-started']">
@@ -322,7 +322,7 @@
             </a>
         </li>
 
-        
+
     </ul>
 </nav>
 <div class="landing-footer">
@@ -345,7 +345,7 @@
                     <li><a href="#">Terms & Conditions</a></li>
                 </ul>
             </div>
-            
+
         </div>
         <app-footer></app-footer>
     </div>
@@ -355,35 +355,35 @@
 <!-- Modal -->
 <div class="modal fade custom_modal" [ngClass]="loginModalOpen ? 'show' : ''" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="text-right p-2">
-            <span class="cursor" (click)="closeLoginModal()"><mat-icon class="mat-icon-sm">clear</mat-icon></span>
-        </div>
-        <div *ngIf="logonBodySec">
-            <div class="modal-body login_modal">
-                <div class="trade-login text-center">
-                    <!-- <span class="login-heading"><img src="../../../../assets/images/logo.png" alt="" /></span> -->
-                    <h3 class="trade-head">Welcome to TradeAnalytix</h3>
-                    <h3 class="login_desc">A robust tool to improve trading discipline and thereby returns</h3>
+        <div class="modal-content">
+            <div class="text-right p-2">
+                <span class="cursor" (click)="closeLoginModal()"><mat-icon class="mat-icon-sm">clear</mat-icon></span>
+            </div>
+            <div *ngIf="logonBodySec">
+                <div class="modal-body login_modal">
+                    <div class="trade-login text-center">
+                        <!-- <span class="login-heading"><img src="../../../../assets/images/logo.png" alt="" /></span> -->
+                        <h3 class="trade-head">Welcome to TradeAnalytix</h3>
+                        <h3 class="login_desc">A robust tool to improve trading discipline and thereby returns</h3>
 
-                    <div class="trade-login-sec">
-                        <div class="trade-login-btn" (click)="login('google')">
-                            <div class="login-img">
-                                <img src="../../../../assets/images/google.png" alt=""  class="img-responsive">
+                        <div class="trade-login-sec">
+                            <div class="trade-login-btn" (click)="login('google')">
+                                <div class="login-img">
+                                    <img src="../../../../assets/images/google.png" alt="" class="img-responsive">
+                                </div>
+                                <div class="login-con">
+                                    Sign in with Google
+                                </div>
                             </div>
-                            <div class="login-con">
-                                Sign in with Google
+                            <div class="trade-login-btn" (click)="login('facebook')">
+                                <div class="login-img">
+                                    <img src="../../../../assets/images//facebook.svg" alt="" class="img-responsive">
+                                </div>
+                                <div class="login-con">
+                                    Sign in with Facebook
+                                </div>
                             </div>
-                        </div>
-                        <div class="trade-login-btn" (click)="login('facebook')">
-                            <div class="login-img">
-                                <img src="../../../../assets/images//facebook.svg" alt=""  class="img-responsive">
-                            </div>
-                            <div class="login-con">
-                                Sign in with Facebook
-                            </div>
-                        </div>
-                        <!-- <div class="trade-login-btn" (click)="login('microsoft')">
+                            <!-- <div class="trade-login-btn" (click)="login('microsoft')">
                             <div class="login-img">
                                 <img src="../../../../assets/images/microsoft.svg" alt=""  class="img-responsive">
                             </div>
@@ -391,45 +391,44 @@
                                 Sign in with Microsoft
                             </div>
                         </div> -->
-                        <button type="button" class="btn btn-create-account" (click)="openCreateAcModal()">Create Account</button>
+                            <button type="button" class="btn btn-create-account" (click)="openCreateAcModal()">Create Account</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="login-modal-footer pt-0">
+                    <div class="pb-3 follow_us">
+                        <p class="py-2">Follow us</p>
+                        <div class="follow_us_icons">
+                            <a href="#"><img src="../../../../assets/images/fb_sm.png" alt="" class="img-responsive"></a>
+                            <a href="#"><img src="../../../../assets/images/twitter_sm.png" alt="" class="img-responsive"></a>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="login-modal-footer pt-0">
-                <div class="pb-3 follow_us">
-                    <p class="py-2">Follow us</p>
-                    <div class="follow_us_icons">
-                        <a href="#"><img src="../../../../assets/images/fb_sm.png" alt=""  class="img-responsive"></a>
-                        <a href="#"><img src="../../../../assets/images/twitter_sm.png" alt=""  class="img-responsive"></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- end: login_content -->
-        <div *ngIf="createAcSec">
-            <div class="modal-body createact_modal">
-                <div class="trade-login text-center">
-                    <!-- <span class="login-heading"><img src="../../../../assets/images/logo.png" alt="" /></span> -->
-                    <h3 class="trade-head">Create Account</h3>
+            <!-- end: login_content -->
+            <div *ngIf="createAcSec">
+                <div class="modal-body createact_modal">
+                    <div class="trade-login text-center">
+                        <!-- <span class="login-heading"><img src="../../../../assets/images/logo.png" alt="" /></span> -->
+                        <h3 class="trade-head">Create Account</h3>
 
-                    <div class="trade-login-sec">
-                        <input type="text" class="form-control" placeholder="Full Name" />
-                        <input type="text" class="form-control" placeholder="Email Address" />
-                        <input type="password" class="form-control" placeholder="Password" />
-                        <input type="password" class="form-control" placeholder="Confirm Password" />
-                        
-                        <button type="button" class="btn btn-create-account">Create Account</button>
+                        <div class="trade-login-sec">
+                            <input type="text" class="form-control" placeholder="Full Name" />
+                            <input type="text" class="form-control" placeholder="Email Address" />
+                            <input type="password" class="form-control" placeholder="Password" />
+                            <input type="password" class="form-control" placeholder="Confirm Password" />
+
+                            <button type="button" class="btn btn-create-account">Create Account</button>
+                        </div>
                     </div>
                 </div>
+
             </div>
-            
+            <!-- end: create account -->
+
+            <div class="copyright pb-3">Copyright @TradeAnalytix 2021 | Terms & Conditions</div>
         </div>
-        <!-- end: create account -->
-        
-        <div class="copyright pb-3">Copyright @TradeAnalytix 2021   |  Terms & Conditions</div>
-      </div>
     </div>
-  </div>
+</div>
 
 <div *ngIf="loginModalOpen" class="modal-backdrop fade show"></div>
-
