@@ -373,3 +373,14 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   color: #EC6B56;
   
 }
+@media (max-width:1024px) {
+    .mydrp {
+        width: 170px !important;
+    }
+    .date-range-md .mydrp .selection {
+        height: 32px !important;
+    }
+    .date-range-md .mydrp .selectiongroup {
+        height: 33px !important;
+    }
+}

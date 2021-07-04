@@ -309,7 +309,7 @@ a.btn.btn-skip {
             min-width: 125px;
             max-width: 125px;
             color: #3A4C85;
-            font-size: 13px !important;
+            font-size: 13px;
             h6 {
                 font-size: 1.25rem;
                 @media #{$medium} {
@@ -901,4 +901,42 @@ a.btn.btn-skip {
     .mat-expansion-panel-body {
         padding: 0 25px !important;
     }
+}
+@media (max-width:1024px) {
+    .add-stock-sec {
+        .col-form-label {
+            font-size: 12px !important;
+        }
+    }
+    .form-control {
+        height: 35px;
+    }
+    .card-main{
+        min-width: 115px !important;
+        max-width: 115px !important;
+        font-size: 12px !important;
+        padding-right: 0.345rem !important;
+    }
+    .card-main-actions {
+        min-width: 100px !important;
+        max-width: 100px !important;
+    }
+    .card-main-custom, .trade-cards-section .card-main-custom {
+        width: 70px !important;
+        min-width: 70px !important;
+        max-width: 70px !important;
+        margin-right: 0 !important;
+        font-size: 12px !important;
+    }
+    .card-main-md {
+        min-width: 70px !important;
+        max-width: 70px !important;
+        font-size: 12px !important;
+    }
+    .mat-icon {
+        height: 20px;
+        width: 18px;
+        font-size: 22px !important;
+    }
+    
 }

@@ -637,3 +637,30 @@ a.import-new img {
     background-color: #007bff;
     border-color: #007bff;
 }
+
+@media (max-width:1024px) {
+    
+    .btn-apply, .btn-outline-primary, .btn-outline-primary {
+        padding: 0.375rem 1rem !important;
+        height: 35px;
+        line-height: 1.5;
+    }
+    .strategies_filter .form-control, .trade-sel .form-control {
+        height: 35px !important;
+    }
+    .st-slect-section {
+        margin-right: 0.567rem;
+        height: 35px;
+    }
+    .mydrp .selection {
+        font-size: 12px !important;
+        padding: 0 25px 0 6px !important;
+    }
+    .date-range-md .mydrp .selection {
+        height: 32px !important;
+    }
+    .mydrp .selbtngroup {
+        height: 33px !important;
+    }
+    
+}
