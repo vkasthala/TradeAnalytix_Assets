@@ -1,7 +1,8 @@
+import { stringify } from '@angular/compiler/src/util';
 import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { ToastrService } from 'ngx-toastr';
-import { Subject } from 'rxjs';
+import { of, Subject } from 'rxjs';
 import { ConfirmDialogComponent } from 'src/app/modules/shared/components/modals/confirm-dialog/confirm-dialog.component';
 import { EditableGridComponent } from 'src/app/modules/shared/components/widgets/editable-grid/editable-grid.component';
 import { EditableGridColumn } from 'src/app/modules/shared/models/common/editable-grid-column.model';
@@ -19,8 +20,13 @@ export class CodedRulesComponent implements OnInit {
 
   @ViewChild('codedRules', { static: false }) protected codedRules: EditableGridComponent<UserCodedRule>;
 
+  paramNameCol: EditableGridColumn;
+  ruleOperatorCol: EditableGridColumn;
+  valueCol: EditableGridColumn;
+
   constructor(private codedRuleService: CodedRuleService, private cdr: ChangeDetectorRef, private _dialog: MatDialog, private toastr: ToastrService) { }
   step = 0;
+
   ngOnInit() {
 
   }
@@ -28,9 +34,22 @@ export class CodedRulesComponent implements OnInit {
   setStep(index: number) {
     this.step = index;
   }
+
   ngAfterViewInit() {
+    this.loadCodedRuleOptions();
     this.initCodedRulesGrid();
     this.cdr.detectChanges();
+  }
+
+  loadCodedRuleOptions() {
+    this.codedRuleService.getCodedRules().subscribe(result => {
+      let options: Map<string, string> = new Map();
+      result.forEach(rule => {
+        options.set(rule.id + '', rule.label);
+      });
+      this.paramNameCol.values = options;
+      this.cdr.detectChanges();
+    });
   }
 
   loadCodedRulesData() {
@@ -45,28 +64,31 @@ export class CodedRulesComponent implements OnInit {
     let cols: EditableGridColumn[] = [];
     let colIds: string[] = [];
     let col: EditableGridColumn = new EditableGridColumn();
-    col.id = "ruleName";
+    col.id = "ruleParam";
     col.name = "Parameter";
     col.placeholder = "Parameter";
     col.type = 'select';
-    col.values = ['Forex Options', 'Stock Options', 'Stock Future'];
+    col.values = new Map<string, string>();
     colIds.push('name');
+    this.paramNameCol = col;
     cols.push(col);
 
     col = new EditableGridColumn();
-    col.id = "operatorName";
+    col.id = "ruleOperator";
     col.name = "Operator";
     col.type = 'select';
-    col.values = ['Percentage', 'Fixed'];
+    col.values = new Map<string, string>();
     colIds.push('type');
     cols.push(col);
+    this.ruleOperatorCol = col;
 
     col = new EditableGridColumn();
-    col.id = "value";
+    col.id = "val";
     col.name = "Value";
     col.type = 'text';
-    colIds.push('value');
+    colIds.push('val');
     cols.push(col);
+    this.valueCol = col;
 
     this.codedRules.setColumnConfigs(cols);
     this.codedRules.setColumns(colIds);
@@ -74,6 +96,7 @@ export class CodedRulesComponent implements OnInit {
     let addItemSubject: Subject<UserCodedRule> = new Subject<UserCodedRule>();
     let editItemSubject: Subject<UserCodedRule> = new Subject<UserCodedRule>();
     let deleteItemSubject: Subject<UserCodedRule> = new Subject<UserCodedRule>();
+    let comboChangeSubject: Subject<string> = new Subject<string>();
     addItemSubject.asObservable().subscribe(data => {
       this.codedRuleService.createCodedRule(data).subscribe(data => {
         this.showSuccessMessage('Successfully added the coded rule');
@@ -93,7 +116,7 @@ export class CodedRulesComponent implements OnInit {
         this.showErrorMessageDialog('Error! failed to edit coded rule');
       });
     });
-    
+
     deleteItemSubject.asObservable().subscribe(data => {
       this.getDeleteDialog().afterClosed().subscribe(dialogResult => {
         if (dialogResult == true) {
@@ -108,11 +131,32 @@ export class CodedRulesComponent implements OnInit {
       });
     });
 
+    comboChangeSubject.asObservable().subscribe(data => {
+      if (data === 'ruleParam') {
+        let ruleId = document.getElementById('ruleParam')['value'];
+        if (ruleId) {
+          let ruleNumber: number = parseInt(ruleId);
+          this.lodRuleOperators(ruleId);
+          this.valueCol.visible = !(ruleNumber === 6 || ruleNumber === 11);
+        }
+      }
+    });
+
     this.codedRules.addItemSubject = addItemSubject;
     this.codedRules.editItemSubject = editItemSubject;
     this.codedRules.deleteItemSubject = deleteItemSubject;
+    this.codedRules.comboChangeSubject = comboChangeSubject;
   }
 
+  lodRuleOperators(ruleId: string) {
+    this.codedRuleService.getRuleOperators(ruleId).subscribe(result => {
+      let options: Map<string, string> = new Map();
+      result.forEach(rule => {
+        options.set(rule.id + '', rule.name);
+      });
+      this.ruleOperatorCol.values = options;
+    });
+  }
 
   getDeleteDialog() {
     const dialogRef = this._dialog.open(ConfirmDialogComponent, {

@@ -22,6 +22,7 @@ export class EditableGridComponent<T> implements OnInit {
   addItemSubject: Subject<T>;
   editItemSubject: Subject<T>;
   deleteItemSubject: Subject<T>;
+  comboChangeSubject: Subject<string>;
 
   constructor() { }
 
@@ -75,11 +76,27 @@ export class EditableGridComponent<T> implements OnInit {
     let obj = {};
     for (let ind = 0; ind < this.columnConfigs.length; ind++) {
       obj[this.columnConfigs[ind].id] = document.getElementById(this.columnConfigs[ind].id)['value'];
+      console.log(this.columnConfigs[ind].id + '=' + obj[this.columnConfigs[ind].id]);
     }
     let typeObj: T = obj as T;
     console.log('type obj:', typeObj);
     this.fillSelectedValues(null);
     this.addItemSubject.next(typeObj);
+  }
+
+  getSelectOptions(map: Map<string, string>) {
+    if (!map) {
+      return [];
+    }
+    let arr = Array.from(map.entries());
+    console.log('array: {}', arr);
+    return arr;
+  }
+
+  onComboValueChange(id: string) {
+    if (this.comboChangeSubject) {
+      this.comboChangeSubject.next(id);
+    }
   }
 
 }
