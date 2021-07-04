@@ -372,7 +372,6 @@ mat-header-cell:last-of-type,
     // transition: margin-left .35s ease-in-out, left .35s ease-in-out, margin-right .35s ease-in-out, right .35s ease-in-out;
     direction: ltr;
     background: #394c86;
-
     -webkit-transform: translate3d(0, 0px, 0px);
     transform: translate3d(0, 0px, 0px);
     visibility: visible;
@@ -383,16 +382,17 @@ mat-header-cell:last-of-type,
 .sidebar.toggled {
     min-width: 60px;
     max-width: 60px;
-
-
     -webkit-transform: translate3d(0px, 0px, 0px);
-  transform: translate3d(0px, 0px, 0px);
-  visibility: visible;
+    transform: translate3d(0px, 0px, 0px);
+    visibility: visible;
+    z-index: 999;
 }
+
 .sidebar.toggled .sidebar-brand {
     width: 60px;
     max-width: 60px;
 }
+
 .main {
     display: flex;
     width: 100%;
@@ -409,12 +409,13 @@ a.sidebar-link {
     color: rgba(255, 255, 255, 0.55);
     font-weight: 400;
     background: transparent;
-    transition: background 50ms ease-in-out;
+    transition: background 0.5s ease-in-out;
     text-decoration: none;
     cursor: pointer;
     line-height: 1;
     display: flex;
     align-items: center;
+    border-radius: 6px;
 }
 
 .sidebar-link>.mat-icon {
@@ -431,7 +432,6 @@ a.sidebar-link {
     color: #fff;
     background: #2285FA;
     box-shadow: 0px 4px 16px rgba(157, 157, 157, 0.2);
-    border-radius: 6px;
     text-decoration: none;
 }
 
@@ -488,7 +488,7 @@ a.sidebar-link {
 .sidebar-item {
     position: relative;
     padding: 6px 10px;
-    min-height: 50px;
+    min-height: 52px;
 }
 
 .page-heading {
@@ -591,6 +591,7 @@ textarea {
 .mat-icon-sm {
     font-size: 21px !important;
 }
+
 .info-icon {
     color: rgb(157 166 186 / 64%);
     font-size: 16px !important;
@@ -598,7 +599,7 @@ textarea {
 
 .mask {
     background-color: rgb(36 46 58 / 41%);
-    position:absolute;
+    position: absolute;
     width: 100%;
     height: 100%;
     left: 0;
@@ -607,6 +608,7 @@ textarea {
     display: flex;
     justify-content: center;
 }
+
 .loader {
     margin-top: 5rem;
     border: 10px solid #f3f3f3;
@@ -614,17 +616,28 @@ textarea {
     border-top: 10px solid #3498db;
     width: 60px;
     height: 60px;
-    -webkit-animation: spin 2s linear infinite; /* Safari */
+    -webkit-animation: spin 2s linear infinite;
+    /* Safari */
     animation: spin 2s linear infinite;
 }
-  
+
+
 /* Safari */
+
 @-webkit-keyframes spin {
-    0% { -webkit-transform: rotate(0deg); }
-    100% { -webkit-transform: rotate(360deg); }
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
