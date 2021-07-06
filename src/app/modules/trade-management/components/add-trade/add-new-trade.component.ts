@@ -176,10 +176,10 @@ export class AddNewTradeComponent implements OnInit {
       this.router.navigateByUrl("/trade-strategies");
       this.Loader = !this.Loader;
     },
-    err => {
-      this.toastr.error('Internal Server Error');
-      this.Loader = !this.Loader;
-    })
+      err => {
+        this.toastr.error('Internal Server Error');
+        this.Loader = !this.Loader;
+      })
   }
 
   editTradeStrategy() {
@@ -190,11 +190,11 @@ export class AddNewTradeComponent implements OnInit {
       this.router.navigateByUrl("/trade-strategies");
       this.Loader = !this.Loader;
     },
-    err => {
-      this.toastr.error('Internal Server Error');
-      this.Loader = !this.Loader;
-    })
-    
+      err => {
+        this.toastr.error('Internal Server Error');
+        this.Loader = !this.Loader;
+      })
+
   }
 
   closeTradeStrategy() {
@@ -204,10 +204,10 @@ export class AddNewTradeComponent implements OnInit {
       this.router.navigateByUrl("/trade-strategies");
       this.Loader = !this.Loader;
     },
-    err => {
-      this.toastr.error('Internal Server Error');
-      this.Loader = !this.Loader;
-    })
+      err => {
+        this.toastr.error('Internal Server Error');
+        this.Loader = !this.Loader;
+      })
   }
 
   cancelTrade() {
@@ -230,9 +230,11 @@ export class AddNewTradeComponent implements OnInit {
     tradeThesisArray.push(this.tradeThesis.tradeThesis);
     this.tradeStrategy.tradeThesis = tradeThesisArray;
     let tradeTags = [];
-    this.tradeDetails.tags.split(",").forEach(tag => {
-      tradeTags.push(new TradeTag(tag));
-    });
+    if (this.tradeDetails.tags) {
+      this.tradeDetails.tags.split(",").forEach(tag => {
+        tradeTags.push(new TradeTag(tag));
+      });
+    }
     this.tradeStrategy.tradeTag = tradeTags;
     let stockEntries = [];
     if (this.tradeDetails.stockEntry) {
@@ -242,7 +244,7 @@ export class AddNewTradeComponent implements OnInit {
     this.tradeStrategy.stockOptions = this.tradeDetails.stockOptions;
     this.tradeStrategy.direction = this.getDirection();
     this.tradeStrategy.entryRules = this.entryRules.entryRules;
-    
+
     if (this.close) {
       if (this.tradeStrategy.entryRules && this.exitRules.exitRules) {
         this.tradeStrategy.entryRules = this.tradeStrategy.entryRules.concat(this.exitRules.exitRules);
