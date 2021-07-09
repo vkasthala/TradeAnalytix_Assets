@@ -49,7 +49,13 @@ export class EditableGridComponent<T> implements OnInit {
 
   fillSelectedValues(model: T) {
     for (let ind = 0; ind < this.columnConfigs.length; ind++) {
-      document.getElementById(this.columnConfigs[ind].id)['value'] = (model != null ? model[this.columnConfigs[ind].id] : "");
+      let ele = document.getElementById(this.columnConfigs[ind].id);
+      if (ele) {
+        ele['value'] = (model != null ? model[this.columnConfigs[ind].id] : "");
+        if (this.columnConfigs[ind].type === 'select') {
+          this.onComboValueChange(this.columnConfigs[ind].id);
+        }
+      }
     }
   }
 
@@ -65,7 +71,10 @@ export class EditableGridComponent<T> implements OnInit {
 
   onItemEdit() {
     for (let ind = 0; ind < this.columnConfigs.length; ind++) {
-      this.selectedModel[this.columnConfigs[ind].id] = document.getElementById(this.columnConfigs[ind].id)['value'];
+      let ele = document.getElementById(this.columnConfigs[ind].id);
+      if (ele) {
+        this.selectedModel[this.columnConfigs[ind].id] = ele['value'];
+      }
     }
     this.fillSelectedValues(null);
     this.edit = false;
@@ -75,7 +84,10 @@ export class EditableGridComponent<T> implements OnInit {
   onItemAdd() {
     let obj = {};
     for (let ind = 0; ind < this.columnConfigs.length; ind++) {
-      obj[this.columnConfigs[ind].id] = document.getElementById(this.columnConfigs[ind].id)['value'];
+      let ele = document.getElementById(this.columnConfigs[ind].id);
+      if (ele) {
+        obj[this.columnConfigs[ind].id] = ele['value'];
+      }
       console.log(this.columnConfigs[ind].id + '=' + obj[this.columnConfigs[ind].id]);
     }
     let typeObj: T = obj as T;

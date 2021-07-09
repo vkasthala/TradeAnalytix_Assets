@@ -6,7 +6,7 @@ export class EditableGridColumn {
 
     type: string;
 
-    values: Map<string, string>;
+    values: string[][];
     
     placeholder: string;
 

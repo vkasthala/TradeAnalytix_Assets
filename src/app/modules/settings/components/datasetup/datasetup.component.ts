@@ -238,7 +238,7 @@ export class DatasetupComponent implements OnInit {
     col.id = "name";
     col.name = "Name";
     col.type = 'select';
-    col.values = new Map<string, string>().set('Forex Options', 'Forex Options').set('Stock Options', 'Stock Options').set('Stock Future', 'Stock Future');
+    col.values = [['Forex Options', 'Forex Options'], ['Stock Options', 'Stock Options'], ['Stock Future', 'Stock Future']]
     colIds.push('name');
     cols.push(col);
 
@@ -246,7 +246,7 @@ export class DatasetupComponent implements OnInit {
     col.id = "type";
     col.name = "Type";
     col.type = 'select';
-    col.values = new Map<string, string>().set('Percentage', 'Percentage').set('Fixed', 'Fixed');
+    col.values = [['Percentage', 'Percentage'], ['Fixed', 'Fixed']];
     colIds.push('type');
     cols.push(col);
 

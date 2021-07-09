@@ -38,17 +38,15 @@ export class CodedRulesComponent implements OnInit {
   ngAfterViewInit() {
     this.loadCodedRuleOptions();
     this.initCodedRulesGrid();
-    this.cdr.detectChanges();
   }
 
   loadCodedRuleOptions() {
     this.codedRuleService.getCodedRules().subscribe(result => {
-      let options: Map<string, string> = new Map();
+      let arr = [];
       result.forEach(rule => {
-        options.set(rule.id + '', rule.label);
+        arr.push([rule.id, rule.label]);
       });
-      this.paramNameCol.values = options;
-      this.cdr.detectChanges();
+      this.paramNameCol.values = arr;
     });
   }
 
@@ -68,8 +66,8 @@ export class CodedRulesComponent implements OnInit {
     col.name = "Parameter";
     col.placeholder = "Parameter";
     col.type = 'select';
-    col.values = new Map<string, string>();
-    colIds.push('name');
+    col.values = [];
+    colIds.push('ruleName');
     this.paramNameCol = col;
     cols.push(col);
 
@@ -77,8 +75,8 @@ export class CodedRulesComponent implements OnInit {
     col.id = "ruleOperator";
     col.name = "Operator";
     col.type = 'select';
-    col.values = new Map<string, string>();
-    colIds.push('type');
+    col.values = [];
+    colIds.push('operatorName');
     cols.push(col);
     this.ruleOperatorCol = col;
 
@@ -150,11 +148,11 @@ export class CodedRulesComponent implements OnInit {
 
   lodRuleOperators(ruleId: string) {
     this.codedRuleService.getRuleOperators(ruleId).subscribe(result => {
-      let options: Map<string, string> = new Map();
+      let arr = [];
       result.forEach(rule => {
-        options.set(rule.id + '', rule.name);
+        arr.push([rule.id, rule.name]);
       });
-      this.ruleOperatorCol.values = options;
+      this.ruleOperatorCol.values = arr;
     });
   }
 

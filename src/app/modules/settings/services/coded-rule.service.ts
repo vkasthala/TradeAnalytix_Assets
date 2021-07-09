@@ -28,7 +28,7 @@ export class CodedRuleService {
   }
 
   public deleteCodedRule(itemId: number): Observable<void> {
-    return this.httpService.post<void, void>(this.apiUrl + '/coded-rule/delete' + itemId, null);
+    return this.httpService.post<void, void>(this.apiUrl + '/coded-rule/delete/' + itemId, null);
   }
 
   public getCodedRules(): Observable<CodedRule[]> {
