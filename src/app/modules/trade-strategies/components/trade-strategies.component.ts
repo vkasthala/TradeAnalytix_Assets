@@ -54,7 +54,7 @@ export class TradeStrategiesComponent implements OnInit {
    constructor(private router: Router, private strategyCreateService: StrategyCreateService) { }
 
    ngOnInit() {
-     
+
    }
 
    closeTrade(strategyId) {

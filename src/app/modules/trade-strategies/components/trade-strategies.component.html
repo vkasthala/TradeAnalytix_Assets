@@ -67,86 +67,66 @@
 
 <!-- for-mobile -->
 <div class="trade-st-mobile">
-    <div class="container">
-
-        <div class="trade-top-heading">
-            <h3>
-                TRADE STRATEGIES
-            </h3>
+    <div class="px-3 d-flex align-items-center justify-content-between">
+        <div class="page-heading">Trade Strategies</div> 
+        <div class="d-flex">
+            <mat-icon class="cursor material-icons">search</mat-icon>
+            <span class="cursor ml-2" (click)="strategiesFilter()" data-toggle="tooltip" data-placement="top" title="Show Filters"><img src="../../../../assets/images/filter.png" alt="" /></span>
         </div>
     </div>
-    <div class="trad-border"></div>
-
-    <div class="container">
-
-        <div class="trade-top-sec">
+    <div class="py-2 px-3">
+        <button routerLink="/new-trade" class="btn btn-apply"><span class="add-icon mr-2">+</span> ADD TRADE</button>
+    </div>
+    
+    <div class="trade-strategies-table p-2 trade-strategies-filters">
+        <div *ngIf="showFilters" class="trade-st-box pt-0">
             <div class="st-slect-section">
-                <div class="trade-form">
-
+                <div class="trade-form strategies_filter">
                     <div class="form-group has-search">
-                        <input type="text" class="form-control" placeholder="Symbol or Stock Name">
-                        <img src="../../../../assets/images/icon/Icon awesome-search.png" alt="" class="form-icon">
-
+                        <app-trade-search (symbolSelectEvent)="symbolSelectEventHandler($event)" #tradeSearchComponent>
+                        </app-trade-search>
+                        <mat-icon class="form-icon-down">search</mat-icon>
                     </div>
                 </div>
             </div>
+            <div class="st-slect-section">
+                <div class="trade-sel position-relative">
+                    <span class="custom-label" *ngIf="strategyLabel">Strategy Type</span>
+                    <select class="form-control select-input" id="strategy_inputState" [(ngModel)]='strategiesGridFilter.strategy' (change)='onOptionsSelected($event)' name="strategy">
+                            <option *ngFor="let key of strategyTypes" [value]="key" [label]="strategies[key]">
+                            </option>
+                        </select>
+                    <mat-icon class="form-icon-down">keyboard_arrow_down</mat-icon>
+                </div>
+            </div>
+            <div class="st-slect-section">
+                <div class="trade-sel position-relative">
+                    <span class="custom-label" *ngIf="statusLabel">Status</span>
+                    <select class="form-control" id="tradeStrategyStatusFilter" [(ngModel)]='strategiesGridFilter.status' (change)='onOptionsSelected($event)'>
+                            <option *ngFor="let key of tradeStatusNames" [value]="key"
+                                [label]="tradeStatues[key]"></option>
+                        </select>
+                    <mat-icon class="form-icon-down">keyboard_arrow_down</mat-icon>
+                </div>
+            </div>
 
+            <div class="st-slect-section">
+                <div class="trade-date date-range-md">
+                    <my-date-range-picker placeholder="Date range" name="mydaterange" [options]="myDateRangePickerOptions" (dateRangeChanged)="onDateRangeChanged($event)"></my-date-range-picker>
+                </div>
+            </div>
+
+            <div class=" st-slect-section select-btn">
+                <a href="javascript:void(0)" class="btn btn-apply mr-3" (click)="applyFilters()">Apply</a>
+
+                <a href="javascript:void(0)" class="btn btn-outline-primary" (click)="clearFilters()">Clear</a>
+            </div>
         </div>
+        <!-- Grid row -->
+        <app-trade-strategies-grid #tradeStrategiesGrid>loading</app-trade-strategies-grid>
 
-        <div class="trade-table">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-
-                        <th>Strategy ID</th>
-                        <th>Symbol</th>
-                        <th>Strategy</th>
-                        <th>Status</th>
-                        <th>Return</th>
-
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let item of minifiedTradeStrategiesData; let i=index">
-                        <td class="mobile-de"><a class="trade-h" (click)="expandRowOptions(i)">{{item.strategyId}}</a>
-                            <div class="trade-det-box" *ngIf="expandIndex == i">
-                                <div class="de-box">
-
-                                    <div class="right-con">
-
-                                        <a class="box-icon">
-                                            <img src="../../../../assets/images/icon/Icon material-edit.png" alt="">
-                                            <span>Edit</span>
-                                        </a>
-                                        <a class="box-icon" (click)="closeTrade(item.strategyId)">
-                                            <img src="../../../../assets/images/icon/Icon material-close.png" alt="">
-                                            <span>Close</span>
-                                        </a>
-                                        <a class="box-icon">
-                                            <img src="../../../../assets/images/icon/Icon material-delete.png" alt="">
-                                            <span>Delete</span>
-                                        </a>
-                                    </div>
-
-                                    <div class="dt-top-icon" (click)="closeActionBox()">
-                                        <img src="../../../../assets/images/icon/Icon ionic-ios-close-circle.png" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                        <td>{{item.symbol}}</td>
-                        <td>{{item.strategy}}</td>
-                        <td [ngClass]="{
-                                'text-warning': item.status == 'Open',
-                                'text-danger': item.status == 'Closed',
-                                'text-primary': item.status == 'Draft',
-                                'text-secondary': item.status == 'Expired'
-                            }">{{item.status}}</td>
-                        <td class="text-green">{{item.return}}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
 
     </div>
+
+    
 </div>

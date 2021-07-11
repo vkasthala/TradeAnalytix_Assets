@@ -12,7 +12,7 @@ export class TradeStrategyGridStore extends DataSource<TradeStrategyGridRow>{
     private loadingSubject = new BehaviorSubject<boolean>(false);
 
     totalCount: number = 0;
-
+    protected gridData: any;
     constructor(private tradeStrategyGridService: TradeStrategyGridService) {
         super();
     }
@@ -32,6 +32,8 @@ export class TradeStrategyGridStore extends DataSource<TradeStrategyGridRow>{
             if (result) {
                 this.tradeStrategySubject.next(result.rows);
                 this.totalCount = result.totalCount;
+                localStorage.setItem('strategiesGridData', JSON.stringify(result.rows));
+                this.gridData = JSON.parse(localStorage.getItem('strategiesGridData'));
             }
         });
     }

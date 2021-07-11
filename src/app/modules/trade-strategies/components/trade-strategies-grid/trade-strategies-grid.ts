@@ -17,13 +17,13 @@ import { TradeStrategyGridService } from '../../services/trade-strategy-grid.ser
 
 @Component({
   selector: 'app-trade-strategies-grid',
-  styleUrls: ['trade-strategies-grid.css'],
+  styleUrls: ['trade-strategies-grid.scss'],
   templateUrl: 'trade-strategies-grid.html',
 })
 export class TradeStrategiesGrid implements AfterViewInit, OnInit {
   protected Loader = false;
   expandIndex: any;
-  displayedColumns = ['id', 'stockName', 'strategy', 'direction', 'openDate', 'closeDate', 'maxGain', 'maxLoss', 'return', 'rules', 'status', 'action'];
+  displayedColumns = ['id', 'stockName', 'strategy', 'direction', 'openDate', 'closeDate', 'maxGain', 'maxLoss', 'return', 'thesis', 'rules', 'status', 'action'];
   pageSize: number = 20
 
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
@@ -31,6 +31,10 @@ export class TradeStrategiesGrid implements AfterViewInit, OnInit {
 
   dataSource: TradeStrategyGridStore;
   tradeStrategyGridRequest: TradeStrategyGridRequest = this.getInitialRequest();
+  protected gridData: any;
+  expandedIndex:any;
+
+  public hideRuleContent:boolean[] = [];
 
   constructor(private tradeStrategyGridService: TradeStrategyGridService,
     private tradeStrategyService: TradeStrategyService,
@@ -43,10 +47,13 @@ export class TradeStrategiesGrid implements AfterViewInit, OnInit {
   ngOnInit() {
     this.dataSource = new TradeStrategyGridStore(this.tradeStrategyGridService);
     this.loadPage();
+    this.gridData = JSON.parse(localStorage.getItem('strategiesGridData'));
+    this.expandedIndex = -1;
   }
 
   loadPage() {
     this.dataSource.loadTradeStrategies(this.tradeStrategyGridRequest);
+    
   }
 
   reload() {
@@ -191,6 +198,11 @@ merge(this.sort.sortChange, this.paginator.page)
   closeActionBox() {
     this.expandIndex = null
   }
+  
+  Collaps(index: number) {  
+    // this.expandedIndex[index] = !this.expandedIndex[index];
+    this.hideRuleContent[index] = !this.hideRuleContent[index]; 
+    } 
 
 }
 

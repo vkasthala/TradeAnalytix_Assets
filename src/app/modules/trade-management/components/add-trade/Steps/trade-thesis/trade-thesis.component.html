@@ -75,7 +75,7 @@
                     </div>
                     <div class="media align-items-center">
                         <div class="media-body">
-                            <select class="form-control select-input" [disabled]="closeTrade" id="inputState" [(ngModel)]="tradeThesis.surroundingEventId" [ngClass]="closeTrade ? 'disabled' : ''">
+                            <select class="form-control select-input" id="inputState" [(ngModel)]="tradeThesis.surroundingEventId" [disabled]="closeTrade" [ngClass]="closeTrade || viewTrade ? 'disabled' : ''">
                                 <option [ngValue]="opt.id" *ngFor="let opt of surroundingTypes; trackBy: id">{{opt.name}}</option>
                             </select>
                         </div>
@@ -169,7 +169,7 @@
                     </div>
                     <div class="media align-items-center">
                         <div class="media-body">
-                            <select class="form-control select-input" id="inputState" [(ngModel)]="tradeThesis.sourceId" [disabled]="!closeTrade" [ngClass]="closeTrade || viewTrade ? 'disabled' : ''">
+                            <select class="form-control select-input" id="inputState" [(ngModel)]="tradeThesis.sourceId" [disabled]="!closeTrade" [ngClass]="viewTrade ? 'disabled' : ''">
                                 <option [ngValue]="opt.id" *ngFor="let opt of sourceTypes; trackBy: id">{{opt.name}}</option>
                             </select>
                         </div>
@@ -188,11 +188,11 @@
                     </div>
                     <div class="media align-items-center">
                         <span class="form-check form-check-inline">
-                            <input type="radio" class="form-check-input" name="closingtradeType" value="planned" [ngClass]="closeTrade || viewTrade ? 'disabled' : ''" />
+                            <input type="radio" class="form-check-input" name="closingtradeType" value="planned" [ngClass]="viewTrade ? 'disabled' : ''" />
                             <label class="form-check-label" for="Planned">Planned</label> 
                         </span>
                         <span class="form-check form-check-inline">
-                            <input type="radio" class="form-check-input" name="closingtradeType" value="impromptu" [ngClass]="closeTrade || viewTrade ? 'disabled' : ''" /> 
+                            <input type="radio" class="form-check-input" name="closingtradeType" value="impromptu" [ngClass]="viewTrade ? 'disabled' : ''" /> 
                             <label class="form-check-label" for="Planned">Impromptu</label>
                         </span>
                     </div>
@@ -207,7 +207,7 @@
                     </div>
                     <div class="media align-items-center">
                         <div class="media-body">
-                            <select class="form-control select-input" id="inputState" [(ngModel)]="tradeThesis.mindsetId" [disabled]="!closeTrade" [ngClass]="closeTrade || viewTrade ? 'disabled' : ''">
+                            <select class="form-control select-input" id="inputState" [(ngModel)]="tradeThesis.mindsetId" [disabled]="!closeTrade" [ngClass]="viewTrade ? 'disabled' : ''">
                                 <option [ngValue]="opt.id" *ngFor="let opt of mindsetTypes; trackBy: id">{{opt.name}}</option>
                             </select>
                         </div>
@@ -224,7 +224,7 @@
                     <div class="thesis_item_title">
                         Specify the reasons for closing the trade
                     </div>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [disabled]="!closeTrade" [ngClass]="closeTrade || viewTrade ? 'disabled' : ''"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [disabled]="!closeTrade" [ngClass]="viewTrade ? 'disabled' : ''"></textarea>
                 </div>
             </div>
             <!-- end : thesis_item -->
@@ -236,7 +236,7 @@
                     </div>
                     <div class="media align-items-center">
                         <div class="media-body">
-                            <select class="form-control select-input" [disabled]="!closeTrade" id="inputState" [(ngModel)]="tradeThesis.surroundingEventId" [ngClass]="closeTrade || viewTrade ? 'disabled' : ''">
+                            <select class="form-control select-input" [disabled]="!closeTrade" id="inputState" [(ngModel)]="tradeThesis.surroundingEventId" [ngClass]="viewTrade ? 'disabled' : ''">
                                 <option [ngValue]="opt.id" *ngFor="let opt of surroundingTypes; trackBy: id">{{opt.name}}</option>
                             </select>
                         </div>
@@ -253,7 +253,7 @@
                     <div class="thesis_item_title">
                         Specify the lessons learnt from the trade
                     </div>
-                    <textarea class="form-control" id="closingLessionsTrade" rows="3" [ngClass]="closeTrade || viewTrade ? 'disabled' : ''"></textarea>
+                    <textarea class="form-control" id="closingLessionsTrade" rows="3" [ngClass]="viewTrade ? 'disabled' : ''"></textarea>
                 </div>
             </div>
             <!-- end : thesis_item -->
@@ -265,7 +265,7 @@
                     </div>
                     <div class="media align-items-center">
                         <div class="media-body">
-                            <select class="form-control select-input" id="inputState" [(ngModel)]="tradeThesis.technicalIndicatorId" [ngClass]="closeTrade || viewTrade ? 'disabled' : ''">
+                            <select class="form-control select-input" id="inputState" [(ngModel)]="tradeThesis.technicalIndicatorId" [ngClass]="viewTrade ? 'disabled' : ''">
                                 <option [ngValue]="opt.id" *ngFor="let opt of technicalIndicators; trackBy: id">{{opt.name}}
                                 </option>
                             </select>

@@ -6,6 +6,9 @@
     background: #FFFFFF;
     box-shadow: 0px 2px 2px rgba(105, 105, 105, 0.1);
     display: flex;
+    @media #{$extra-small} {
+        display: none;
+    }
     .trade-dash-sections {
         display: flex;
         justify-content: space-between;
@@ -16,6 +19,7 @@
         @media #{$extra-small} {
             padding: 0px;
         }
+        
         .dashboard-left-logo {
             @media #{$extra-small} {
                 display: none;
@@ -172,6 +176,12 @@
     height: auto;
     min-height: 100vh;
     padding: 0;
+    
+}
+.sidebar {
+    @media #{$extra-small} {
+        display: none;
+    }
 }
 
 .trade-dash-section {
@@ -208,20 +218,22 @@
 
 // mobile-navbar
 .mobile-bottom-nav {
-    position: sticky;
+    
     bottom: 0;
     left: 0;
     right: 0;
     z-index: 1000;
     display: none;
-    //give nav it's own compsite layer
     will-change: transform;
     transform: translateZ(0);
-    height: 50px;
-    box-shadow: 0 -2px 5px -2px #333;
-    background-color: #fff;
+    height: 70px;
+    background: #FFFFFF;
+    box-shadow: 0px -4px 16px rgba(157, 157, 157, 0.2);
+    padding: 0 20px;
+    width: 100%;
     @media #{$extra-small} {
-        display: flex;
+        display: block;
+        position: fixed;
     }
     @media #{$small} {
         display: none;
@@ -230,27 +242,64 @@
         list-style: none;
         margin: 0px;
         padding: 0px;
-        width: 100%;
+        display: flex;
+        flex: 0 0 100%;
+        max-width: 100%;
+        justify-content: space-between;
+        align-items: center;
         height: 100%;
         li {
             display: inline-block;
-            width: 20%;
-            height: 100%;
-            border-left: 1px solid #ddd;
             a {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
                 font-size: 14px;
-                height: 100%;
                 color: #565656;
                 span {
-                    height: 20px;
-                    svg {
-                        width: 17px;
-                    }
+                    width: 48px;
+                    height: 48px;
+                    text-indent: -9999em;
                 }
+            
+                &:hover {
+                    background-color: #2285FA;
+                    box-shadow: 0px 4px 16px rgba(157, 157, 157, 0.2);
+                    border-radius: 6px;
+                }
+            }
+            
+            .home {
+                width: 48px;
+                height: 48px;
+                background: url('../../../../assets/images/home.svg') no-repeat center center;
+            }
+            .home.nav-active {
+                background:#2285FA url('../../../../assets/images/home_r.svg') no-repeat center center;
+            }
+            .nav2 {
+                width: 48px;
+                height: 48px;
+                background: url('../../../../assets/images/mobile-nav2.svg') no-repeat center center;
+            }
+            .nav2.nav-active {
+                background:#2285FA url('../../../../assets/images/mobile-nav2_r.svg') no-repeat center center;
+            }
+            .nav3 {
+                width: 48px;
+                height: 48px;
+                background: url('../../../../assets/images/mobile-nav3.svg') no-repeat center center;
+            }
+            .nav4 {
+                width: 48px;
+                height: 48px;
+                background: url('../../../../assets/images/mobile-nav4.svg') no-repeat center center;
+            }
+            .nav-active {
+                background-color: #2285FA;
+                box-shadow: 0px 4px 16px rgba(157, 157, 157, 0.2);
+                border-radius: 6px;
             }
         }
     }

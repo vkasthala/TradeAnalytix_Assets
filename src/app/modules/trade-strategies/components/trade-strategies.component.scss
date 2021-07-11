@@ -235,6 +235,11 @@ img.form-icon {
     border-radius: 4px;
     height: 40px;
     line-height: 26px;
+    @media #{$extra-small} {
+        justify-content: center;
+        width: 100% !important;
+        display: inline-flex !important;
+    }
 }
 
 .btn-outline-primary {
