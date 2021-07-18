@@ -20,6 +20,10 @@ export class NotificationService {
     return this.http.post<NotificationGridRequest, NotificationGridResponse>(this.apiUrl + '/notification/page', gridRequest);
   }
 
+  getTopNotifications(count: number): Observable<Notification[]> {
+    return this.http.post<any, Notification[]>(this.apiUrl + '/notification/top-notifications/' + count, '');
+  }
+
   markAsRead(notificationId: number): Observable<void> {
     return this.http.post<any, void>(this.apiUrl + '/notification/mark-notification-as-read/' + notificationId, '');
   }
