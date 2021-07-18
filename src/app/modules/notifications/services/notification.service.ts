@@ -12,6 +12,8 @@ export class NotificationService {
 
   private apiUrl = environment.apiUrl;
 
+  notificationCount: number = 0;
+
   constructor(private http: HttpService) { }
 
   getNotifications(gridRequest: NotificationGridRequest): Observable<NotificationGridResponse> {
@@ -20,6 +22,12 @@ export class NotificationService {
 
   markAsRead(notificationId: number): Observable<void> {
     return this.http.post<any, void>(this.apiUrl + '/notification/mark-notification-as-read/' + notificationId, '');
+  }
+
+  loadNotificationCount(): void {
+    this.http.get<number>(this.apiUrl + '/notification/unread-notification-count').subscribe(result => {
+      this.notificationCount = result;
+    });
   }
 
 }

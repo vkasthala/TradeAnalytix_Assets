@@ -2,6 +2,7 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import * as fromGlobalConfig from '../../../modules/utilities/reducers/global-config.reducer';
 import { Store } from '@ngrx/store';
+import { NotificationService } from '../../notifications/services/notification.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -17,6 +18,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private globalStore: Store<fromGlobalConfig.State>,
     private router: Router,
+    private notificationService: NotificationService
   ) {
     let globalSelector = (fromGlobalConfig.globalConfigFeatureKey as any);
     globalStore.select(globalSelector).subscribe(res => {
@@ -26,8 +28,9 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.loadNotificationCount();
   }
+
   sidebarToggle() {
     this.isExpand = !this.isExpand
   }
@@ -77,6 +80,10 @@ export class HomeComponent implements OnInit {
     if (module) {
       this.title = module.title;
     }
+  }
+
+  loadNotificationCount() {
+    this.notificationService.loadNotificationCount();
   }
 
 }

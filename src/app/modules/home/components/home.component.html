@@ -79,11 +79,12 @@
                         <span class="top-nav-item" [class.nav-active]="currentRoute == 'notifications'">
                             <a class="top-nav-link" [routerLink]="['/notifications/']">
                                 <mat-icon>notifications_none</mat-icon>
-                                <span class="notification_count">999</span>
-                        </a>
+                                <span class="notification_count">{{notificationService.notificationCount}}</span>
+                            </a>
                         </span>
                     </div>
-                    <div class="login-img ml-3" (click)="logout()"><img src="../../../../assets/images/face-img.png" /></div>
+                    <div class="login-img ml-3" (click)="logout()"><img src="../../../../assets/images/face-img.png" />
+                    </div>
                     <!-- <ul *ngIf="userdetails" class="dropdown">
                         <li>
                             <a class="trade-nav-link" [routerLink]="['/setttings/']">SETTINGS</a>
@@ -117,12 +118,14 @@
             </a>
         </li>
         <li>
-            <a class="nav2" [class.nav-active]="currentRoute == 'trade-strategies'" [routerLink]="['/trade-strategies']">
+            <a class="nav2" [class.nav-active]="currentRoute == 'trade-strategies'"
+                [routerLink]="['/trade-strategies']">
                 <span>Trade Strategies</span>
             </a>
         </li>
         <li>
-            <a class="nav3" [class.nav-active]="currentRoute == 'strategy-comparison'" [routerLink]="['/strategy-comparison/']">
+            <a class="nav3" [class.nav-active]="currentRoute == 'strategy-comparison'"
+                [routerLink]="['/strategy-comparison/']">
                 <span>Compare Strategies</span>
             </a>
         </li>

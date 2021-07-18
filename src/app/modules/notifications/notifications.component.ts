@@ -98,6 +98,7 @@ export class NotificationsComponent implements AfterViewInit, OnInit {
   markAsRead(notification: Notification) {
     this.notificationService.markAsRead(notification.id).subscribe(result => {
       this.loadPage();
+      this.notificationService.loadNotificationCount();
     });
   }
 
