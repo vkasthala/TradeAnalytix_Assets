@@ -1,19 +1,15 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatPaginator, MatSort } from '@angular/material';
-import { NavigationExtras, Router } from '@angular/router';
-import { forkJoin } from 'rxjs';
+import { Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
-
-import { TradeInputData } from 'src/app/modules/shared/models/trade-management/trade-input-data.model';
-import { StockSymbolService } from 'src/app/modules/shared/services/stock-symbol.service';
-import { UserStockStatsService } from 'src/app/modules/shared/services/user-stock-stats.service';
-import { TradeStrategyService } from 'src/app/modules/trade-management/services/trade-strategy.service';
 import { StrategiesGridPage } from 'src/app/modules/trade-strategies/models/strategies-grid-page.model';
 import { StrategiesGridSort } from 'src/app/modules/trade-strategies/models/strategies-grid-sort.model';
-import { TradeStrategyGridRequest } from 'src/app/modules/trade-strategies/models/trade-strategy-grid-request.model';
-import { TradeStrategyGridRow } from 'src/app/modules/trade-strategies/models/trade-strategy-grid-row.model';
-import { TradeStrategyGridStore } from 'src/app/modules/trade-strategies/services/trade-strategy-grid-store';
-import { TradeStrategyGridService } from 'src/app/modules/trade-strategies/services/trade-strategy-grid.service';
+import { NotificationGridPage } from './models/notification-grid-page.model';
+import { NotificationGridRequest } from './models/notification-grid-request.model';
+import { Notification } from './models/notification.model';
+import { NotificationStore } from './services/notification-store';
+import { NotificationService } from './services/notification.service';
+
 
 @Component({
   selector: 'app-notifications',
@@ -23,34 +19,31 @@ import { TradeStrategyGridService } from 'src/app/modules/trade-strategies/servi
 export class NotificationsComponent implements AfterViewInit, OnInit {
 
   expandIndex: any;
-  displayedColumns = ['openDate', 'stockName', 'action'];
+  displayedColumns = ['day', 'msg', 'read'];
   pageSize: number = 20
 
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort: MatSort;
 
-  dataSource: TradeStrategyGridStore;
-  tradeStrategyGridRequest: TradeStrategyGridRequest = this.getInitialRequest();
+  dataSource: NotificationStore;
+  notificationGridRequest: NotificationGridRequest = this.getInitialRequest();
 
-  constructor(private tradeStrategyGridService: TradeStrategyGridService,
-    private tradeStrategyService: TradeStrategyService,
-    private stockSymbolService: StockSymbolService,
-    private userStockStatsService: UserStockStatsService,
+  constructor(private notificationService: NotificationService,
     private router: Router,
     private dialog: MatDialog) {
   }
 
   ngOnInit() {
-    this.dataSource = new TradeStrategyGridStore(this.tradeStrategyGridService);
+    this.dataSource = new NotificationStore(this.notificationService);
     this.loadPage();
   }
 
   loadPage() {
-    this.dataSource.loadTradeStrategies(this.tradeStrategyGridRequest);
+    this.dataSource.loadNotifications(this.notificationGridRequest);
   }
 
   reload() {
-    this.tradeStrategyGridRequest.page.pageNumber = 0;
+    this.notificationGridRequest.page.pageNumber = 0;
     this.loadPage();
   }
 
@@ -73,9 +66,9 @@ export class NotificationsComponent implements AfterViewInit, OnInit {
 
   }
 
-  getInitialRequest(): TradeStrategyGridRequest {
-    let request: TradeStrategyGridRequest = new TradeStrategyGridRequest();
-    let pageRequest: StrategiesGridPage = new StrategiesGridPage();
+  getInitialRequest(): NotificationGridRequest {
+    let request: NotificationGridRequest = new NotificationGridRequest();
+    let pageRequest: NotificationGridPage = new NotificationGridPage();
     pageRequest.pageNumber = 0;
     pageRequest.pageSize = 20;
     request.page = pageRequest;
@@ -83,18 +76,18 @@ export class NotificationsComponent implements AfterViewInit, OnInit {
   }
 
   updatePageSortParams() {
-    let pageRequest: StrategiesGridPage = this.tradeStrategyGridRequest.page;
+    let pageRequest: StrategiesGridPage = this.notificationGridRequest.page;
     if (!pageRequest) {
-      pageRequest = new StrategiesGridPage();
-      this.tradeStrategyGridRequest.page = pageRequest;
+      pageRequest = new NotificationGridPage();
+      this.notificationGridRequest.page = pageRequest;
     }
     pageRequest.pageNumber = this.paginator.pageIndex;
     pageRequest.pageSize = this.paginator.pageSize;
 
-    let sortRequest: StrategiesGridSort = this.tradeStrategyGridRequest.sort;
+    let sortRequest: StrategiesGridSort = this.notificationGridRequest.sort;
     if (!sortRequest) {
       sortRequest = new StrategiesGridSort();
-      this.tradeStrategyGridRequest.sort = sortRequest;
+      this.notificationGridRequest.sort = sortRequest;
     }
     /*sortRequest.column = this.sort.active;
     if (this.sort.active) {
@@ -102,62 +95,10 @@ export class NotificationsComponent implements AfterViewInit, OnInit {
     }*/
   }
 
-  editTrade(rowModel: TradeStrategyGridRow) {
-    let stockSymbolReq = this.stockSymbolService.getStockSymbolById(rowModel.stockId);
-    let tradeStrategyReq = this.tradeStrategyService.getTradeStrategyDetails(rowModel.id);
-    let stockSummaryReq = this.userStockStatsService.getUserStockBriefSummary(rowModel.stockId, 1);
-    forkJoin([stockSymbolReq, stockSummaryReq, tradeStrategyReq]).subscribe(results => {
-      let extras: NavigationExtras = {};
-      let input: TradeInputData = new TradeInputData();
-      input.selectedStock = results[0];
-      input.stockSummary = results[1];
-      input.tradeStrategy = results[2];
-      console.log('edit trade: ', input);
-      extras.state = input;
-      this.router.navigate(["/edit-trade/" + rowModel.id], extras);
+  markAsRead(notification: Notification) {
+    this.notificationService.markAsRead(notification.id).subscribe(result => {
+      this.loadPage();
     });
-  }
-
-  closeTrade(rowModel: TradeStrategyGridRow) {
-    console.log('close..', rowModel);
-    let stockSymbolReq = this.stockSymbolService.getStockSymbolById(rowModel.stockId);
-    let tradeStrategyReq = this.tradeStrategyService.getTradeStrategyDetails(rowModel.id);
-    let stockSummaryReq = this.userStockStatsService.getUserStockBriefSummary(rowModel.stockId, 1);
-    forkJoin([stockSymbolReq, stockSummaryReq, tradeStrategyReq]).subscribe(results => {
-      let extras: NavigationExtras = {};
-      let input: TradeInputData = new TradeInputData();
-      input.selectedStock = results[0];
-      input.stockSummary = results[1];
-      input.tradeStrategy = results[2];
-      console.log('close trade: ', input);
-      extras.state = input;
-      this.router.navigate(["/close-trade/" + rowModel.id], extras);
-    });
-  }
-  viewTrade(rowModel: TradeStrategyGridRow) {
-    let stockSymbolReq = this.stockSymbolService.getStockSymbolById(rowModel.stockId);
-    let tradeStrategyReq = this.tradeStrategyService.getTradeStrategyDetails(rowModel.id);
-    let stockSummaryReq = this.userStockStatsService.getUserStockBriefSummary(rowModel.stockId, 1);
-    forkJoin([stockSymbolReq, stockSummaryReq, tradeStrategyReq]).subscribe(results => {
-      let extras: NavigationExtras = {};
-      let input: TradeInputData = new TradeInputData();
-      input.selectedStock = results[0];
-      input.stockSummary = results[1];
-      input.tradeStrategy = results[2];
-      extras.state = input;
-      this.router.navigate(["/view-trade/" + rowModel.id], extras);
-    });
-  }
-
-
-
-
-  expandRowOptions(index) {
-    this.expandIndex = index;
-  }
-
-  closeActionBox() {
-    this.expandIndex = null
   }
 
 }

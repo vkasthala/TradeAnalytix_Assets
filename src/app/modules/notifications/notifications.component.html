@@ -3,28 +3,24 @@
         <div class="trade-table">
             <mat-table [dataSource]="dataSource" matSort>
                 <!-- Date Column -->
-                <ng-container matColumnDef="openDate">
+                <ng-container matColumnDef="day">
                     <mat-header-cell class="date-cell" *matHeaderCellDef mat-sort-header>Date</mat-header-cell>
-                    <mat-cell class="date-cell" *matCellDef="let element"> {{element.openDate | date: 'dd-MMM-yyyy'}} </mat-cell>
+                    <mat-cell class="date-cell" *matCellDef="let element"> {{element.day | date: 'yyyy-MMM-dd'}} </mat-cell>
                 </ng-container>
 
                 <!-- Notification Column -->
-                <ng-container matColumnDef="stockName">
+                <ng-container matColumnDef="msg">
                     <mat-header-cell class="notification-cell" *matHeaderCellDef mat-sort-header>Notification</mat-header-cell>
-                    <mat-cell class="notification-cell" *matCellDef="let element"> {{element.stockName}} </mat-cell>
+                    <mat-cell class="notification-cell" *matCellDef="let element"> {{element.msg}} </mat-cell>
                 </ng-container>
 
-                
-                <!-- Action Column -->
-                <ng-container matColumnDef="action">
-                    <mat-header-cell class="action-cell" *matHeaderCellDef mat-sort-header>
-                        <input type="checkbox" class="mr-2" (click)="viewTrade(element);closeActionBox()"  /> 
-                        Select All 
-                        <mat-icon class="ml-3">markunread_mailbox</mat-icon>
-                    </mat-header-cell>
-                    <mat-cell *matCellDef="let element, let i = index" class="action_colum">
+                <!-- Read Column-->
+                <ng-container matColumnDef="read">
+                    <mat-header-cell class="action-cell" *matHeaderCellDef mat-sort-header>Read</mat-header-cell>
+                    <mat-cell *matCellDef="let element" class="action_colum">
                         <div>
-                            <input type="checkbox" (click)="viewTrade(element)"  />
+                            <mat-icon *ngIf="element.read === true" class="mat-icon-sm">mark_email_read</mat-icon>
+                            <mat-icon *ngIf="element.read === false" (click)="markAsRead(element)" class="mat-icon-sm text-success cursor-pointer">markunread</mat-icon>
                         </div>
                     </mat-cell>
                 </ng-container>
