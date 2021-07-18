@@ -1,6 +1,9 @@
 @import "../../../../assets/styles/variable.scss";
 .dashboard {
     // padding-bottom: 40px;
+    @media #{$extra-small} {
+        padding: 0 !important;
+    }
 }
 
 .trade-dash-cards-web {
@@ -84,19 +87,17 @@
 
 // card-mobile
 .trade-dash-cards-mobile {
-    margin-top: 20px;
     padding: 0px 20px;
     display: none;
     @media #{$extra-small} {
         display: flex;
         flex-direction: column;
-        padding: 0px;
+        padding: 0;
     }
     .trade-mobile-cards {
         width: 100%;
-        padding: 12px;
+        padding: 5px;
         display: flex;
-        justify-content: space-between;
     }
     .flex-container {
         display: flex;
@@ -114,36 +115,37 @@
         height: 100%;
     }
     .flex-item {
-        min-height: 100px;
+        min-height: 80px;
         margin-bottom: 10px;
         padding: 0px;
         width: 45%;
+        background: #FFFFFF;
+        box-shadow: 0px 2px 6px rgb(157 157 157 / 40%);
         // min-width: 45%;
         position: relative;
         height: 100%;
         display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-left: 5px;
         border-radius: 4px;
+        margin-left: 10px;
         .flex-inner {
             // height: 100%;
             display: flex;
-            justify-content: center;
             align-items: flex-start;
-            text-align: center;
             width: 100%;
+            padding: 10px 15px;
             a {
                 cursor: pointer;
                 span {
-                    display: block;
-                    font-size: 20px;
-                    line-height: 25px;
-                    height: 55px;
                     color: #4a4a4a;
+                    display: block;
+                    font-size: 11px;
+                    font-weight: 500;
+                    line-height: 16px;
                 }
                 h4 {
                     font-size: 20px;
+                    font-weight: bold;
+                    line-height: 28px;
                 }
             }
             .card-icon {
@@ -155,6 +157,33 @@
                 }
             }
         }
+    }
+    .trade-cards-heading {
+        margin-bottom: 8px;
+        h5 {
+            font-weight: 700;
+            font-size: 14px;
+            line-height: 21px;
+        }
+    }
+    .trade-headiang {
+        margin-bottom: 8px;
+        h5 {
+            font-weight: 700;
+            font-size: 14px;
+            line-height: 21px;
+        }
+    }
+    .per-heading {
+        margin-bottom: 8px;
+        h5 {
+            font-size: 14px;
+            font-weight: 700;
+            line-height: 21px;
+        }
+    }
+    .trade-analytics {
+        padding-bottom: 20px;
     }
 }
 
@@ -431,16 +460,8 @@
 }
 
 .trad-border {
-    border: 1px solid #acacac;
+    border: 0 solid #acacac;
     opacity: 0.3;
-}
-
-.per-heading {
-    margin-bottom: 15px;
-    h5 {
-        color: $primary;
-        font-size: 20px;
-    }
 }
 
 .trade-performance {
@@ -457,16 +478,17 @@
         @media #{$medium} {
             font-size: 16px;
         }
+        @media #{$small} {
+            font-size: 14px;
+        }
     }
 }
 
 .trade-cards-heading {
     margin-bottom: 10px;
     h5 {
-        font-style: normal;
         font-weight: 500;
         font-size: 20px;
-        line-height: 30px;
         @media #{$medium} {
             font-size: 16px;
             line-height: 28px;
