@@ -270,6 +270,7 @@ export class AddNewTradeComponent implements OnInit {
   }
 
   goBack(moveTwoSteps?, mobileView?) {
+    debugger;
     let stepper = mobileView ? this.tradeMobileStepper : this.tradeStepper;
     if (stepper && !moveTwoSteps) {
       stepper.previous();

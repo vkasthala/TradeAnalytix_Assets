@@ -56,7 +56,7 @@ export class HomeComponent implements OnInit {
       case 'dashboard': return { breadcrumb: 'DASHBOARD', title: 'Dashboard' };
       case 'new-trade': return { breadcrumb: 'ADD NEW TRADE', title: 'Add New Trade' };
       case 'import-trades': return { breadcrumb: 'IMPORT TRADES', title: 'Import Trades' };
-      case 'trade-strategies': return { breadcrumb: 'Trade Strategies', title: 'Trade Strategies' };
+      case 'trade-strategies': return { breadcrumb: 'Trade Strategies', title: 'My Trades' };
       case 'compare-strategies': return { breadcrumb: 'COMPARE STRATEGIES', title: 'Compare Strategies' };
       case 'strategy-comparison': return { breadcrumb: 'COMPARE STRATEGIES', title: 'Compare Strategies' };
       case 'reports': return { breadcrumb: 'REPORTS', title: 'Reports' };

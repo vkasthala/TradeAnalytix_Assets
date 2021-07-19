@@ -7,7 +7,7 @@
 
           <!-- Strategy ID Column -->
           <ng-container matColumnDef="id">
-              <mat-header-cell class="strategy-id-cell" *matHeaderCellDef mat-sort-header>Strategy ID</mat-header-cell>
+              <mat-header-cell class="strategy-id-cell" *matHeaderCellDef mat-sort-header>Identifier</mat-header-cell>
               <mat-cell class="strategy-id-cell" *matCellDef="let element"> {{element.uid ? element.uid : element.id}} </mat-cell>
           </ng-container>
 
@@ -158,7 +158,7 @@
 
   <div class="trade-st-mobile-grid">
     <div class="row mb-1">
-      <div class="col-6 pl-4 cell-header">Strategy ID</div>
+      <div class="col-6 pl-4 cell-header">Identifier</div>
       <div class="col-3 cell-header">Symbol</div>
       <div class="col-3 cell-header text-right">Status</div>
     </div>
