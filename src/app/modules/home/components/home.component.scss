@@ -365,3 +365,15 @@
     width: 80%;
     margin: 0 auto;
 }
+.trade-header-mobile {
+    background-color: #394c86;
+    display: none;
+    @media #{$extra-small} {
+        display: block;
+    }
+    .mat-icon,
+    .top-nav-link {
+        color: #fff;
+        fill: #fff;
+    }
+}

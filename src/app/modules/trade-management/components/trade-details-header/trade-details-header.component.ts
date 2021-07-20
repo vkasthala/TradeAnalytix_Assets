@@ -18,6 +18,9 @@ export class TradeDetailsHeaderComponent implements OnInit {
   @Input("closeTrade") closeTrade: boolean;
   @Input("viewTrade") viewTrade: boolean;
   @Input("StrategyId") StrategyId: any;
+
+  public hideTradeHeader:boolean= false;
+
   constructor() { }
 
   ngOnInit() {
@@ -33,6 +36,9 @@ export class TradeDetailsHeaderComponent implements OnInit {
       return value + (postfix ? postfix : '');
     }
     return "NA";
+  }
+  CollapsTradeHeader() {  
+    this.hideTradeHeader = !this.hideTradeHeader; 
   }
 
 }

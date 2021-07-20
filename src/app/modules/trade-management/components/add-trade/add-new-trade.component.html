@@ -299,7 +299,7 @@
                 </h3>
             </div>
             <!--entry first-->
-            <div class="addnew-first p-3">
+            <div class="addnew-first py-3">
 
                 <div class="trade-form">
                     <mat-icon class="trade-form-icon">attach_money</mat-icon>
@@ -326,7 +326,7 @@
                 </div> 
 
             <div class="row">
-                <div class="col-8 trade-details-body pr-0">
+                <div class="col-sm-8 trade-details-body pr-0">
                     <mat-horizontal-stepper labelPosition="left" #stepper [linear]="false">
                         <mat-step [class.active]="stepone.completed" #stepone>
                             <ng-template matStepLabel>Trade Details</ng-template>
@@ -545,7 +545,7 @@
                             (click)="cancelTrade()">CANCEL</button>
                     </div>
                 </div>
-                <div class="col-4 right-sidebar">
+                <div class="col-sm-4 right-sidebar">
                     <app-trade-details-aside [addTrade]="add" [editTrade]="edit" [closeTrade]="close" [selectedStock]="selectedStock" [stockSummary]="stockSummary"
                         (loadMoreStats)="loadMoreStatsHandler($event)" (calculateMaxRisk)="calculateMaxRisk($event)"
                         [strategyTypeChangeSubject]="strategyTypeChangeSubject"

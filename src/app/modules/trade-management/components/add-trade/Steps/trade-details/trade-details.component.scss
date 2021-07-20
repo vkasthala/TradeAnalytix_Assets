@@ -1,5 +1,11 @@
 @import "../../../../../../../assets/styles/variable.scss";
 @import "../../../../../../../assets/styles/breakpoints.scss";
+
+.addnew-trade-body {
+    @media #{$extra-small} {
+        display: none;
+    }
+}
 .addnew-trade {
     padding: 0px 20px;
 }

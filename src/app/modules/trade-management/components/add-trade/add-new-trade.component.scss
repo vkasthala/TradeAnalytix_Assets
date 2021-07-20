@@ -15,6 +15,9 @@
     margin-bottom: 25px;
     // box-shadow: 0px 0px 6px 0px #5a5a5a;
     border-radius: 2px;
+    @media #{$extra-small} {
+        display: none;
+    }
 }
 
 .addnew-first {
@@ -57,6 +60,7 @@
     display: none;
     @media #{$extra-small} {
         display: block;
+        padding: 15px !important;
     }
     
     .addnew-steps {
@@ -784,7 +788,14 @@
     100% { transform: rotate(360deg); }
   }
 
+.trade-details-mobile {
+    display: none;
+}
+
 @media #{$extra-small} {
+    .trade-details-mobile {
+        display: block;
+    }
     .addnew-first {
         align-items: baseline;
         height: 75vh;
@@ -817,5 +828,12 @@
     }
     .symbol-description {
         font-size: 14px;
+    }
+    .trade-details-body, .right-sidebar {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .trade-actions {
+        position: relative;
     }
 }
