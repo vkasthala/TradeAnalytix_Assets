@@ -75,6 +75,7 @@ export class AddNewTradeComponent implements OnInit {
 
   protected detailSummaryLoaded: boolean;
   protected closedLegs: boolean = false;
+  protected StatsSlide: boolean = false;
 
   protected tradeHistory: TradeHistory;
   protected localTradeHistory: TradeHistory;
@@ -475,5 +476,7 @@ export class AddNewTradeComponent implements OnInit {
     }
     return status;
   }
-
+  ShowStats() {
+    this.StatsSlide = !this.StatsSlide;
+  }
 }

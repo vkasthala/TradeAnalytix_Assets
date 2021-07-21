@@ -289,8 +289,6 @@
 
 <!-- Add-new-trade-mobile -->
 <div class="add-newtrade-mobile">
-    
-
     <ng-container [ngSwitch]="currentState">
         <ng-container *ngSwitchCase="1">
             <div class="trade-top-heading">
@@ -300,7 +298,6 @@
             </div>
             <!--entry first-->
             <div class="addnew-first py-3">
-
                 <div class="trade-form">
                     <mat-icon class="trade-form-icon">attach_money</mat-icon>
                     <h2 class="py-3 symbol-heading">Add Trade</h2>
@@ -309,10 +306,8 @@
                     <div class="mt-2">
                         <app-trade-search (symbolSelectEvent)="symbolSelectEventHandler($event)">
                         </app-trade-search>
-                        
                     </div>
                     <button class="btn btn-enter mt-2" (click)="enterSymbol()">Submit </button>
-
                 </div>
             </div>
         </ng-container>
@@ -325,8 +320,7 @@
                     <div class="loader"></div> 
                 </div> 
 
-            <div class="row">
-                <div class="col-sm-8 trade-details-body pr-0">
+                <div class="trade-details-body">
                     <mat-horizontal-stepper labelPosition="left" #stepper [linear]="false">
                         <mat-step [class.active]="stepone.completed" #stepone>
                             <ng-template matStepLabel>Trade Details</ng-template>
@@ -545,15 +539,21 @@
                             (click)="cancelTrade()">CANCEL</button>
                     </div>
                 </div>
-                <div class="col-sm-4 right-sidebar">
+                <span class="stats-arrow cursor" (click)="ShowStats()">
+                    <mat-icon class="trade-form-icon">keyboard_arrow_left</mat-icon>
+                </span>
+                <div class="stats-slide" [ngClass]="StatsSlide ? 'open' : ''" >
+                    <div class="trade-top-heading">
+                        <h3>
+                            <mat-icon class="trade-form-icon mr-2 cursor" (click)="ShowStats()">arrow_back</mat-icon> Key Statistics
+                        </h3>
+                    </div>
                     <app-trade-details-aside [addTrade]="add" [editTrade]="edit" [closeTrade]="close" [selectedStock]="selectedStock" [stockSummary]="stockSummary"
                         (loadMoreStats)="loadMoreStatsHandler($event)" (calculateMaxRisk)="calculateMaxRisk($event)"
                         [strategyTypeChangeSubject]="strategyTypeChangeSubject"
                         [stockOrOptionAddedSubject]="stockOrOptionAddedSubject" [tradeStrategy]="tradeStrategy"
                         #tradeDetailsAside></app-trade-details-aside>
                 </div>
-                <!-- [addTrade]="add" [editTrade]="edit" [closeTrade]="close" -->
-            </div>
         </ng-container>
     </ng-container>
 </div>

@@ -31,6 +31,7 @@ export class TradeStrategiesComponent implements OnInit {
    strategyLabel: boolean=true;
    statusLabel: boolean=true;
    showFilters: boolean=false;
+   showSearchFilter: boolean=false;
 
    myDateRangePickerOptions: IMyDrpOptions = {
       dateFormat: 'mm-dd-yyyy',
@@ -126,6 +127,9 @@ export class TradeStrategiesComponent implements OnInit {
 
    strategiesFilter(){
       this.showFilters = !this.showFilters;
+   }
+   searchFilter(){
+      this.showSearchFilter = !this.showSearchFilter;
    }
   
 }
