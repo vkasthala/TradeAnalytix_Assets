@@ -1,9 +1,9 @@
 <div class="mb-2">
     <div class="col-12 px-0 d-flex justify-content-between mb-1">
-        <label class="col-form-label pt-0 px-3">Today Executed Trades</label>
+        <label class="col-form-label pt-0 px-3">Executed Trades</label>
     </div>
     <div class="d-flex">
-        <mat-table [dataSource]="todayExecutedLegsDatasource">
+        <mat-table [dataSource]="todayExecutedLegsDatasource" class="d-lg-table">
 
             <ng-container matColumnDef="strategyUid">
                 <th mat-header-cell *matHeaderCellDef class="cell-w-12">Strategy ID</th>
@@ -52,7 +52,10 @@
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="todayExecutedGridColumns"></tr>
+
             <tr mat-row *matRowDef="let row; columns: todayExecutedGridColumns;"></tr>
         </mat-table>
+
     </div>
+    <div *ngIf="todayExecutedLegsDatasource.length==0" class="text-center pt-3">There are no trades executed today.</div>
 </div>

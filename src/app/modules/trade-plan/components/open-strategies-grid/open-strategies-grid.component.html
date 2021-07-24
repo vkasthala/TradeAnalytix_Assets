@@ -1,54 +1,58 @@
 <div class="mb-2">
-    <label class="col-form-label pt-0 px-3 mb-1">What do you want to do with your open positions?</label>
-    <mat-table [dataSource]="strategiesDataSource">
-        <ng-container matColumnDef="symbol">
-            <th mat-header-cell *matHeaderCellDef class="symbol-cell">Symbol</th>
-            <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-        </ng-container>
+    <div class="col-12 px-0 d-flex justify-content-between mb-1">
+        <label class="col-form-label pt-0 px-3 mb-1">Open Trades</label></div>
+    <div class="d-flex">
+        <mat-table [dataSource]="strategiesDataSource" class="d-lg-table">
+            <ng-container matColumnDef="symbol">
+                <th mat-header-cell *matHeaderCellDef class="symbol-cell">Symbol</th>
+                <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+            </ng-container>
 
-        <ng-container matColumnDef="strategyType">
-            <th mat-header-cell *matHeaderCellDef class="cell-w-12">Strategy Type</th>
-            <td mat-cell *matCellDef="let element"> {{element.strategyType}} </td>
-        </ng-container>
+            <ng-container matColumnDef="strategyType">
+                <th mat-header-cell *matHeaderCellDef class="cell-w-12">Strategy Type</th>
+                <td mat-cell *matCellDef="let element"> {{element.strategyType}} </td>
+            </ng-container>
 
-        <ng-container matColumnDef="returnAmount">
-            <th mat-header-cell *matHeaderCellDef class="cell-w-12">Return</th>
-            <td mat-cell *matCellDef="let element"> {{element.returnAmount}} </td>
-        </ng-container>
+            <ng-container matColumnDef="returnAmount">
+                <th mat-header-cell *matHeaderCellDef class="cell-w-12">Return</th>
+                <td mat-cell *matCellDef="let element"> {{element.returnAmount}} </td>
+            </ng-container>
 
-        <ng-container matColumnDef="maxRisk">
-            <th mat-header-cell *matHeaderCellDef class="cell-w-12">Max Risk</th>
-            <td mat-cell *matCellDef="let element"> {{element.maxRisk | number:'1.0-0' }} </td>
-        </ng-container>
+            <ng-container matColumnDef="maxRisk">
+                <th mat-header-cell *matHeaderCellDef class="cell-w-12">Max Risk</th>
+                <td mat-cell *matCellDef="let element"> {{element.maxRisk | number:'1.0-0' }} </td>
+            </ng-container>
 
-        <ng-container matColumnDef="maxProfit">
-            <th mat-header-cell *matHeaderCellDef class="cell-w-12">Max Profit</th>
-            <td mat-cell *matCellDef="let element"> {{element.maxProfit | number:'1.0-0' }} </td>
-        </ng-container>
+            <ng-container matColumnDef="maxProfit">
+                <th mat-header-cell *matHeaderCellDef class="cell-w-12">Max Profit</th>
+                <td mat-cell *matCellDef="let element"> {{element.maxProfit | number:'1.0-0' }} </td>
+            </ng-container>
 
-        <ng-container matColumnDef="actionText">
-            <th mat-header-cell *matHeaderCellDef class="action-cell">Justification</th>
-            <td mat-cell *matCellDef="let element"> <span>{{element.actionText}}</span>
-                <!-- <mat-icon class="mat-icon-edit mat-icon-sm" (click)="onActionTextEdit(element)">edit
+            <ng-container matColumnDef="actionText">
+                <th mat-header-cell *matHeaderCellDef class="action-cell">Comments</th>
+                <td mat-cell *matCellDef="let element"> <span>{{element.actionText}}</span>
+                    <!-- <mat-icon class="mat-icon-edit mat-icon-sm" (click)="onActionTextEdit(element)">edit
                 </mat-icon> -->
-            </td>
-        </ng-container>
-        <ng-container matColumnDef="editColumn">
-            <th mat-header-cell *matHeaderCellDef><span *ngIf="!viewTradePlan">Action</span></th>
-            <td mat-cell *matCellDef="let element">
-                <mat-icon class="mat-icon-edit mat-icon-sm" *ngIf="!viewTradePlan" (click)="onActionTextEdit(element)">edit
-                </mat-icon>
-            </td>
-        </ng-container>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="editColumn">
+                <th mat-header-cell *matHeaderCellDef><span *ngIf="!viewTradePlan">Action</span></th>
+                <td mat-cell *matCellDef="let element">
+                    <mat-icon class="mat-icon-edit mat-icon-sm" *ngIf="!viewTradePlan" (click)="onActionTextEdit(element)">edit
+                    </mat-icon>
+                </td>
+            </ng-container>
 
-        <ng-container matColumnDef="aligned" *ngIf="tradePlanId > 0">
-            <th mat-header-cell *matHeaderCellDef>Aligned</th>
-            <td mat-cell *matCellDef="let element">
-               <mat-checkbox [(ngModel)]="element.aligned" [ngClass]="[viewTradePlan ? 'disabled' : '']"></mat-checkbox>
-            </td>
-        </ng-container>
+            <ng-container matColumnDef="aligned" *ngIf="tradePlanId > 0">
+                <th mat-header-cell *matHeaderCellDef>Aligned</th>
+                <td mat-cell *matCellDef="let element">
+                    <mat-checkbox [(ngModel)]="element.aligned" [ngClass]="[viewTradePlan ? 'disabled' : '']"></mat-checkbox>
+                </td>
+            </ng-container>
 
-        <tr mat-header-row *matHeaderRowDef="strategiesGridColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: strategiesGridColumns;"></tr>
-    </mat-table>
+            <tr mat-header-row *matHeaderRowDef="strategiesGridColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: strategiesGridColumns;"></tr>
+        </mat-table>
+    </div>
+    <div *ngIf="strategiesGridColumns.length==0" class="text-center pt-3">There are no trades executed today.</div>
 </div>
