@@ -352,25 +352,26 @@
                         <div class="custom-grid">
                             <div class="row custom-grid-head">
                                 <div class="col-3">
+                                    Date
+                                </div>
+                                <div class="col-3">
                                     Market View
                                 </div>
                                 <div class="col-3">
                                     Mindset
                                 </div>
-                                <div class="col-3">
-                                    Date
-                                </div>
                             </div>
                             <div class="row">
+                                <div class="col-3">
+                                    {{latestTradePlan ? latestTradePlan.day : 'N/A'}}
+                                </div>
                                 <div class="col-3 text-success">
                                     {{latestTradePlan ? latestTradePlan.marketStatus : 'N/A'}}
                                 </div>
                                 <div class="col-3">
                                     {{latestTradePlan ? latestTradePlan.mindsetType : 'N/A'}}
                                 </div>
-                                <div class="col-3">
-                                    {{latestTradePlan ? latestTradePlan.day : 'N/A'}}
-                                </div>
+
                             </div>
                         </div>
                         <div class="custom-grid">
@@ -399,7 +400,19 @@
                         </div>
                         <div class="custom-grid">
                             <div class="row custom-grid-head">
-                                <div class="col-2">
+                                <div class="col-12">
+                                    Executed Trades
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    no data
+                                </div>
+                            </div>
+                        </div>
+                        <div class="custom-grid">
+                            <div class="row custom-grid-head">
+                                <div class="col-3">
                                     Aligned
                                 </div>
                                 <div class="col-3">
