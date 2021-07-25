@@ -30,7 +30,7 @@
                 <th mat-header-cell *matHeaderCellDef class="aligned-cell"><span>Aligned</span></th>
                 <td mat-cell *matCellDef="let element">
                     <mat-icon class="mat-icon-warning mat-icon-sm"
-                        *ngIf="element.type === 'Coded' && element.aligned === false">warning
+                        *ngIf="element.type === 'Coded'">warning
                     </mat-icon>
                     <mat-checkbox *ngIf="element.type !== 'Coded'" [(ngModel)]="element.aligned"></mat-checkbox>
                 </td>
@@ -39,9 +39,11 @@
             <ng-container matColumnDef="comment">
                 <th mat-header-cell *matHeaderCellDef class="comment-cell"><span>Comment</span></th>
                 <td mat-cell *matCellDef="let element">
-                    <mat-icon class="mat-icon-edit mat-icon-sm"
-                        (click)="onCommentEdit(element)">edit
-                    </mat-icon>
+                    <span class="d-flex align-items-center" *ngIf="!viewTradePlan">
+                        {{element.comment}}
+                        <mat-icon class="mat-icon-edit mat-icon-sm" (click)="onCommentEdit(element)">edit
+                        </mat-icon>
+                    </span>
                 </td>
             </ng-container>
 

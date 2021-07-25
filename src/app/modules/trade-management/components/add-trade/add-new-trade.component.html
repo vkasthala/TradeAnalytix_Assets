@@ -243,7 +243,7 @@
                                 <div class="stepper-content">
                                     <app-entry-rules (prevStep)="goBack()" [inputState]="inputState" [editTrade]="edit" [addTrade]="add" [closeTrade]="close" [viewTrade]="view" #entryRules></app-entry-rules>
                                     <div *ngIf="close || view">
-                                        <app-exit-rules [addTrade]="add" [viewTrade]="view" [closeTrade]="close" #exitRules></app-exit-rules>
+                                        <app-exit-rules [inputState]="inputState" [addTrade]="add" [viewTrade]="view" [closeTrade]="close" #exitRules></app-exit-rules>
                                     </div>
                                 </div>
                             </mat-step>
@@ -510,7 +510,7 @@
                             <div class="stepper-content">
                                 <app-entry-rules (prevStep)="goBack()" [inputState]="inputState" [editTrade]="edit" [addTrade]="add" [closeTrade]="close" [viewTrade]="view" #entryRules></app-entry-rules>
                                 <div *ngIf="close || view">
-                                    <app-exit-rules [addTrade]="add" [viewTrade]="view" [closeTrade]="close" #exitRules></app-exit-rules>
+                                    <app-exit-rules [inputState]="inputState" [addTrade]="add" [viewTrade]="view" [closeTrade]="close" #exitRules></app-exit-rules>
                                 </div>
                             </div>
                         </mat-step>
