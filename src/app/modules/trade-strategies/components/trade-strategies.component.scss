@@ -695,3 +695,14 @@ a.import-new img {
     }
     
 }
+@media #{$extra-small} {
+    .btn-apply {
+        font-size: 14px !important;
+        height: 40px;
+        line-height: 1.8;
+        .add-icon {
+            font-size: 22px;
+            line-height: 1.2345;
+        }
+    }
+}
