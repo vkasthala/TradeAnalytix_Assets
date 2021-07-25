@@ -5,7 +5,7 @@
     </div>
 
     <div class="trade-thesis-body" *ngIf="!hideExitRules">
-
+        <!--
         <div class="row" *ngFor="let exit of exitRules;">
             <div class="col-sm-6">
                 <div class="thesis_item">
@@ -19,5 +19,34 @@
                 </div>
             </div>        
         </div>
+        -->
+        <mat-table [dataSource]="exitRules">
+            <ng-container matColumnDef="msg">
+                <th mat-header-cell *matHeaderCellDef class="msg-cell">Rule</th>
+                <td mat-cell *matCellDef="let element"> {{element.msg}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="aligned">
+                <th mat-header-cell *matHeaderCellDef class="aligned-cell"><span>Aligned</span></th>
+                <td mat-cell *matCellDef="let element">
+                    <mat-icon class="mat-icon-warning mat-icon-sm"
+                        *ngIf="element.type === 'Coded' && element.aligned === false">warning
+                    </mat-icon>
+                    <mat-checkbox *ngIf="element.type !== 'Coded'" [(ngModel)]="element.aligned"></mat-checkbox>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="comment">
+                <th mat-header-cell *matHeaderCellDef class="comment-cell"><span>Comment</span></th>
+                <td mat-cell *matCellDef="let element">
+                    <mat-icon class="mat-icon-edit mat-icon-sm"
+                        (click)="onCommentEdit(element)">edit
+                    </mat-icon>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="ruleGridColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: ruleGridColumns;"></tr>
+        </mat-table>
     </div>
 </div>

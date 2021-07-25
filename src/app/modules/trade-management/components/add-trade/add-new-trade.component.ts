@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatStepper } from '@angular/material';
 import { NavigationExtras, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Subject } from 'rxjs';
 import { RiskAnalysisRequest } from 'src/app/modules/risk-analysis/models/risk-analysis-request.model';
 import { RiskAnalysisService } from 'src/app/modules/risk-analysis/services/risk-analysis.service';
 import { ConfirmDialogComponent } from 'src/app/modules/shared/components/modals/confirm-dialog/confirm-dialog.component';
@@ -10,8 +11,11 @@ import { ActionType } from 'src/app/modules/shared/models/trade-management/actio
 import { StockSymbol } from 'src/app/modules/shared/models/trade-management/stock-symbol.model';
 import { TradeDirection } from 'src/app/modules/shared/models/trade-management/trade-direction.enum';
 import { TradeInputData } from 'src/app/modules/shared/models/trade-management/trade-input-data.model';
+import { TradeTag } from 'src/app/modules/shared/models/trade-management/trade-tag.model';
 import { UserStockSummary } from 'src/app/modules/shared/models/trade-management/user-stock-summary.model';
 import { UserStockStatsService } from 'src/app/modules/shared/services/user-stock-stats.service';
+import { OptionLegHistory } from '../../models/option-leg-history.model';
+import { StockLegHistory } from '../../models/stock-leg-history.model';
 import { TradeHistory } from '../../models/trade-history.model';
 import { TradeStrategy } from '../../models/trade-strategy.model';
 import { TradeStrategyService } from '../../services/trade-strategy.service';
@@ -21,13 +25,7 @@ import { TradeSearchComponent } from './Steps/search-trade/trade-search.componen
 import { TradeDetailsComponent } from './Steps/trade-details/trade-details.component';
 import { TradeThesisComponent } from './Steps/trade-thesis/trade-thesis.component';
 import { TradeDetailsAsideComponent } from './trade-details-aside/trade-details-aside.component';
-import { Subject } from 'rxjs';
-import { StockLegHistory } from '../../models/stock-leg-history.model';
-import { OptionLegHistory } from '../../models/option-leg-history.model';
 import { TradeDetailsBottomComponent } from './trade-details-bottom/trade-details-bottom.component';
-import { catchError } from 'rxjs/operators';
-import { of } from 'rxjs';
-import { TradeTag } from 'src/app/modules/shared/models/trade-management/trade-tag.model';
 
 @Component({
   selector: 'app-add-new-trade',
@@ -244,11 +242,11 @@ export class AddNewTradeComponent implements OnInit {
     this.tradeStrategy.stockEntry = stockEntries;
     this.tradeStrategy.stockOptions = this.tradeDetails.stockOptions;
     this.tradeStrategy.direction = this.getDirection();
-    this.tradeStrategy.entryRules = this.entryRules.entryRules;
+    this.tradeStrategy.rules = this.entryRules.entryRules;
 
     if (this.close) {
-      if (this.tradeStrategy.entryRules && this.exitRules.exitRules) {
-        this.tradeStrategy.entryRules = this.tradeStrategy.entryRules.concat(this.exitRules.exitRules);
+      if (this.tradeStrategy.rules && this.exitRules.exitRules) {
+        this.tradeStrategy.rules = this.tradeStrategy.rules.concat(this.exitRules.exitRules);
       }
       this.tradeStrategy.closeDate = this.tradeDetailsBottomComponent.closeDate;
     }

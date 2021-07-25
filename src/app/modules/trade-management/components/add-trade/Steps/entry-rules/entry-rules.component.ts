@@ -1,10 +1,11 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
-import { AddTradeConfirmationPopupComponent } from '../../add-trade-confirmation-popup/add-trade-confirmation-popup.component';
-import { EntryExitRule } from 'src/app/modules/trade-management/models/entry-exit-rule.model';
-import { EntryExitRuleService } from 'src/app/modules/trade-management/services/entry-exit-rule.service';
 import { TradeInputData } from 'src/app/modules/shared/models/trade-management/trade-input-data.model';
+import { RuleDto } from 'src/app/modules/trade-management/models/rule-dto.model';
+import { EntryExitRuleService } from 'src/app/modules/trade-management/services/entry-exit-rule.service';
+import { AddTradeConfirmationPopupComponent } from '../../add-trade-confirmation-popup/add-trade-confirmation-popup.component';
+import { RuleCommentDialogComponent } from '../../rule-comment-dialog/rule-comment-dialog.component';
 
 @Component({
   selector: 'app-entry-rules',
@@ -12,11 +13,6 @@ import { TradeInputData } from 'src/app/modules/shared/models/trade-management/t
   styleUrls: ['./entry-rules.component.scss']
 })
 export class EntryRulesComponent implements OnInit {
-
-  checkbox2: any;
-  checkbox4: any;
-  checkbox6: any;
-  checkbox8: any;
 
   @Input("inputState") inputState: TradeInputData;
 
@@ -27,9 +23,11 @@ export class EntryRulesComponent implements OnInit {
 
   @Output('prevStep') prevStep = new EventEmitter();
 
+  ruleGridColumns = ['msg', 'aligned', 'comment'];
+  entryRules: RuleDto[];
 
-  entryRules: EntryExitRule[];
   protected hideEntryRules: boolean = false;
+
   constructor(
     private _dialog: MatDialog,
     private router: Router,
@@ -41,18 +39,18 @@ export class EntryRulesComponent implements OnInit {
 
   ngAfterViewInit(): void {
     let type = 'Entry';
-    if(this.inputState != undefined){
-      this.entryExitRuleService.getUserEntryExitRules(this.inputState.tradeStrategy.id, type).subscribe(result => {
+    if (this.inputState != undefined) {
+      this.entryExitRuleService.getTradeEntryRules(this.inputState.tradeStrategy.id).subscribe(result => {
         this.entryRules = result;
       });
     }
-    else{
-      this.entryExitRuleService.getUserEntryExitRules(0, type).subscribe(result => {
+    else {
+      this.entryExitRuleService.getEntryRules().subscribe(result => {
         this.entryRules = result;
       });
     }
   }
-    
+
   previous() {
     this.prevStep.emit()
   }
@@ -67,7 +65,23 @@ export class EntryRulesComponent implements OnInit {
       res ? this.router.navigate(['/dashboard/trade-strategies']) : 0;
     });
   }
+
   showEntryRules() {
     this.hideEntryRules = !this.hideEntryRules
+  }
+
+  onCommentEdit(ele: RuleDto) {
+    let dialogData: any = {
+      comment: ele.comment
+    };
+    const dialogRef = this._dialog.open(RuleCommentDialogComponent, {
+      disableClose: false,
+      width: 'auto',
+      data: dialogData
+    });
+    dialogRef.afterClosed().subscribe((res) => {
+      console.log('after:', res);
+      ele.comment = res.comment;
+    });
   }
 }

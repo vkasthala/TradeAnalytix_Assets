@@ -107,6 +107,7 @@ import { EconomicCalendarComponent } from '../economic-calendar/economic-calenda
 import { GenerateChartPopupComponent } from '../trade-management/components/add-trade/Steps/trade-thesis/generate-chart-popup/generate-chart-popup.component';
 import { TodayExecutedLegsComponent } from '../trade-plan/components/today-executed-legs/today-executed-legs.component';
 import { KeyInsightsComponent } from '../dashboard/components/key-insights/key-insights.component';
+import { RuleCommentDialogComponent } from '../trade-management/components/add-trade/rule-comment-dialog/rule-comment-dialog.component';
 
 export const MY_FORMATS = {
   parse: {
@@ -189,6 +190,7 @@ export const MY_FORMATS = {
     PlannedTradeDialogComponent,
     PlannedTradesGridComponent,
     StrategyActionTextDialogComponent,
+    RuleCommentDialogComponent,
     RealizedReturnChartComponent,
     RiskByAssetChartComponent,
     UserGoalsByDateChartComponent,
@@ -238,7 +240,8 @@ export const MY_FORMATS = {
     StrategyDetailsComponent,
     PlannedTradeDialogComponent,
     StrategyActionTextDialogComponent,
-    GenerateChartPopupComponent
+    GenerateChartPopupComponent,
+    RuleCommentDialogComponent
   ],
   // bootstrap: [TradeStrategiesGrid],
   providers: [
