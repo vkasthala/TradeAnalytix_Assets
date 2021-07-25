@@ -29,7 +29,11 @@
                             <th mat-header-cell *matHeaderCellDef width="12%"> Market View</th>
                             <td mat-cell *matCellDef="let element"> {{element.marketStatus}} </td>
                         </ng-container>
-
+                        <!-- Pre-Market Activities Column -->
+                        <ng-container matColumnDef="plannedTrades">
+                            <th mat-header-cell *matHeaderCellDef>Pre-Market Activities</th>
+                            <td mat-cell *matCellDef="let element"> {{element.plannedTrades}} </td>
+                        </ng-container>
                         <!-- Mindset Column -->
                         <ng-container matColumnDef="mindsetType">
                             <th mat-header-cell *matHeaderCellDef> Mindset </th>
@@ -43,6 +47,7 @@
                             <td mat-cell *matCellDef="let element"> {{element.plannedTrades}} </td>
                         </ng-container>
                     -->
+
                         <!--Aligned Column -->
                         <ng-container matColumnDef="aligned">
                             <th mat-header-cell *matHeaderCellDef>Aligned with Plan</th>

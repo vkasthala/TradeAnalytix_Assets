@@ -20,7 +20,7 @@ import { TradePlanGridFilter } from '../models/trade-plan-grid-filter.model';
 })
 export class TradePlansComponent implements OnInit {
 
-  displayedColumns: string[] = ['day', 'marketStatus', 'mindsetType',  'aligned', 'selfReview', 'todayStrategyCount', 'returnAmount', 'status', 'action'];
+  displayedColumns: string[] = ['day', 'marketStatus', 'plannedTrades', 'mindsetType',  'aligned', 'selfReview', 'todayStrategyCount', 'returnAmount', 'status', 'action'];
   dataSource: TradePlanGridStoreService;
 
   tradePlanGridRequest: TradePlanGridRequest = this.getInitialRequest();
