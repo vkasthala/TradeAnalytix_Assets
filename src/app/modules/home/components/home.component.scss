@@ -19,7 +19,6 @@
         @media #{$extra-small} {
             padding: 0px;
         }
-        
         .dashboard-left-logo {
             @media #{$extra-small} {
                 display: none;
@@ -176,8 +175,8 @@
     height: auto;
     min-height: 100vh;
     padding: 0;
-    
 }
+
 .sidebar {
     @media #{$extra-small} {
         display: none;
@@ -218,7 +217,6 @@
 
 // mobile-navbar
 .mobile-bottom-nav {
-    
     bottom: 0;
     left: 0;
     right: 0;
@@ -262,21 +260,19 @@
                     height: 48px;
                     text-indent: -9999em;
                 }
-            
                 &:hover {
                     background-color: #2285FA;
                     box-shadow: 0px 4px 16px rgba(157, 157, 157, 0.2);
                     border-radius: 6px;
                 }
             }
-            
             .home {
                 width: 48px;
                 height: 48px;
                 background: url('../../../../assets/images/home.svg') no-repeat center center;
             }
             .home.nav-active {
-                background:#2285FA url('../../../../assets/images/home_r.svg') no-repeat center center;
+                background: #2285FA url('../../../../assets/images/home_r.svg') no-repeat center center;
             }
             .nav2 {
                 width: 48px;
@@ -284,7 +280,7 @@
                 background: url('../../../../assets/images/mobile-nav2.svg') no-repeat center center;
             }
             .nav2.nav-active {
-                background:#2285FA url('../../../../assets/images/mobile-nav2_r.svg') no-repeat center center;
+                background: #2285FA url('../../../../assets/images/mobile-nav2_r.svg') no-repeat center center;
             }
             .nav3 {
                 width: 48px;
@@ -365,6 +361,7 @@
     width: 80%;
     margin: 0 auto;
 }
+
 .trade-header-mobile {
     background-color: #394c86;
     display: none;
@@ -375,5 +372,22 @@
     .top-nav-link {
         color: #fff;
         fill: #fff;
+        @media #{$extra-small} {
+            display: inline-block;
+        }
+    }
+    .top-nav-item {
+        @media #{$extra-small} {
+            margin-top: 0;
+            padding: 0;
+        }
+    }
+    .mat-icon {
+        @media #{$extra-small} {
+            height: 20px;
+            width: 20px;
+            font-size: 20px!important;
+            margin-top: 3px;
+        }
     }
 }

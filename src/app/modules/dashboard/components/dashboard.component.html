@@ -207,28 +207,28 @@
                 <div class="trade-headiang">
                     <h5>Trade Plan</h5>
                 </div>
-                <div class="dsh-img p-3" style="height: 300px;">
+                <div class="dsh-img p-3" style="height: 330px;">
                     <div class="custom-grid">
                         <div class="row custom-grid-head">
-                            <div class="col-3">
+                            <div class="col-4">
+                                Date
+                            </div>
+                            <div class="col-4">
                                 Market View
                             </div>
-                            <div class="col-3">
+                            <div class="col-4">
                                 Mindset
-                            </div>
-                            <div class="col-3">
-                                Date
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-3 text-success">
+                            <div class="col-4">
+                                {{latestTradePlan ? latestTradePlan.day : 'N/A'}}
+                            </div>
+                            <div class="col-4 text-success">
                                 {{latestTradePlan ? latestTradePlan.marketStatus : 'N/A'}}
                             </div>
-                            <div class="col-3">
+                            <div class="col-4">
                                 {{latestTradePlan ? latestTradePlan.mindsetType : 'N/A'}}
-                            </div>
-                            <div class="col-3">
-                                {{latestTradePlan ? latestTradePlan.day : 'N/A'}}
                             </div>
                         </div>
                     </div>
@@ -258,10 +258,22 @@
                     </div>
                     <div class="custom-grid">
                         <div class="row custom-grid-head">
-                            <div class="col-2">
+                            <div class="col-12">
+                                Executed Trades
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                no data
+                            </div>
+                        </div>
+                    </div>
+                    <div class="custom-grid">
+                        <div class="row custom-grid-head">
+                            <div class="col-4">
                                 Aligned
                             </div>
-                            <div class="col-3">
+                            <div class="col-4">
                                 Self-Review
                             </div>
                             <div class="col-4">
@@ -269,18 +281,19 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-2">
+                            <div class="col-4">
                                 {{latestTradePlan ? (latestTradePlan.aligned ? 'Yes' : 'No') : 'N/A'}}
                             </div>
-                            <div class="col-3">
+                            <div class="col-4">
                                 {{latestTradePlan ? latestTradePlan.selfReview : 'N/A'}}
                             </div>
                             <div class="col-4">
                                 {{latestTradePlan ? latestTradePlan.lessons : 'N/A'}}
                             </div>
-                            <div class="d-flex">
-                                <button class="btn btn-primary btn-sm">View More</button>
-                            </div>
+
+                        </div>
+                        <div class="d-flex justify-content-end">
+                            <button class="btn btn-primary btn-sm">View More</button>
                         </div>
                     </div>
                 </div>
@@ -410,6 +423,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="custom-grid">
                             <div class="row custom-grid-head">
                                 <div class="col-3">

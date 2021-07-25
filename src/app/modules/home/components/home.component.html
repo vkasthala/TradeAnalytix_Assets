@@ -80,7 +80,7 @@
                             <a class="top-nav-link" [routerLink]="['/notifications/']">
                                 <mat-icon>notifications_none</mat-icon>
                                 <span class="notification_count">{{notificationService.notificationCount}}</span>
-                            </a>
+                        </a>
                         </span>
                     </div>
                     <div class="login-img ml-3" (click)="logout()"><img src="../../../../assets/images/face-img.png" />
@@ -103,9 +103,9 @@
                 </div>
             </div>
         </div>
-        <div class="trade-header-mobile p-3">
+        <div class="trade-header-mobile p-2">
             <div class="d-flex align-items-center justify-content-between">
-                <div class="db-mb-header-section-logo"><img alt="Trade-app-logo" class="img-fluid" src="../../../../assets/images/logo.png"></div>
+                <div class="db-mb-header-section-logo"><img alt="Trade-app-logo" class="img-fluid" src="../../../../assets/images/logo_sm.png" width="40"></div>
                 <div class="user-details">
                     <div class="top-nav">
                         <span class="top-nav-item" [class.nav-active]="currentRoute == 'setttings'">
@@ -137,14 +137,12 @@
             </a>
         </li>
         <li>
-            <a class="nav2" [class.nav-active]="currentRoute == 'trade-strategies'"
-                [routerLink]="['/trade-strategies']">
+            <a class="nav2" [class.nav-active]="currentRoute == 'trade-strategies'" [routerLink]="['/trade-strategies']">
                 <span>Trade Strategies</span>
             </a>
         </li>
         <li>
-            <a class="nav3" [class.nav-active]="currentRoute == 'strategy-comparison'"
-                [routerLink]="['/strategy-comparison/']">
+            <a class="nav3" [class.nav-active]="currentRoute == 'strategy-comparison'" [routerLink]="['/strategy-comparison/']">
                 <span>Compare Strategies</span>
             </a>
         </li>
