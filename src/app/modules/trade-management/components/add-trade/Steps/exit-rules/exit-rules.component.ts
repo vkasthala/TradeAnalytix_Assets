@@ -41,7 +41,7 @@ export class ExitRulesComponent implements OnInit {
     this.closeTrade = false;
     //No state initialization in exit rules
     let type = 'Exit';
-    if (this.inputState != undefined) {
+    if (this.inputState != undefined && this.viewTrade === true) {
       this.entryExitRuleService.getTradeExitRules(this.inputState.tradeStrategy.id).subscribe(result => {
         this.exitRules = result;
       });
