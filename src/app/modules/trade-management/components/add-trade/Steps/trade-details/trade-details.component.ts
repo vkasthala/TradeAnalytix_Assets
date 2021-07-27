@@ -37,6 +37,7 @@ export class TradeDetailsComponent implements OnInit {
   }
 
   currentState: number = 1;
+  
   stockAdded: boolean;
 
   strategies = StrategyType;
@@ -71,7 +72,11 @@ export class TradeDetailsComponent implements OnInit {
   tradeStatus: number;
   lastUpdatedDate: string;
   tags: string;
-
+  showFormSec: boolean = false;
+  showStockSec: boolean = false;
+  showStockForm: boolean = false;
+  protected optionIndex: number = 1;
+  optionData: OptionEntry[] = [];
   constructor(
     private utilService: UtilService,
     private strategyCreateServiceService: StrategyCreateService,
@@ -82,6 +87,7 @@ export class TradeDetailsComponent implements OnInit {
   ngOnInit() {
     if (!this.addTrade) {
       this.StockPosition = this.StockPosition.stockEntry[0];
+      this.showStockSec = true;
     } else {
       this.StockPosition = []
     }
@@ -130,11 +136,34 @@ export class TradeDetailsComponent implements OnInit {
   addStock() {
     this.stockEntry = this.createStockEntry();
     this.stockAdded = true;
+    this.showFormSec = true;
+    this.showStockForm = true;
     this.updateStockOrOptionAddedStatus();
+  }
+  showStock() {
+    this.showFormSec = false;
+    this.showStockSec = true;
+    this.showStockForm = false;
+  }
+  showOptionForm() {
+    this.showFormSec = true;
+    this.showStockForm = false;
   }
 
   addOption() {
+    debugger;
+    this.showStockForm = false;
     if (this.stockOptions.length < 4) {
+      this.showFormSec = true;
+      this.stockOptions.push(this.createStockOptionEntry())
+      this.updateStockOrOptionAddedStatus();
+    }
+  }
+  addOption1() {
+    debugger;
+    this.showStockForm = false;
+    if (this.stockOptions.length < 4) {
+      this.showFormSec = true;
       this.stockOptions.push(this.createStockOptionEntry())
       this.updateStockOrOptionAddedStatus();
     }
@@ -150,7 +179,10 @@ export class TradeDetailsComponent implements OnInit {
 
   deleteStock() {
     this.stockAdded = false;
-    this.StockPosition = []
+    this.StockPosition = [];
+    this.showStockSec = false;
+    this.showFormSec = false;
+    this.showStockForm = false;
   }
 
   deleteStockOption(index) {
@@ -162,7 +194,9 @@ export class TradeDetailsComponent implements OnInit {
     let template: StrategyTemplate = this.strategyCreateServiceService.getStrategyTemplate(strategy);
     if (template) {
       this.stockEntry = template.stockEntry;
+      this.showFormSec = template.stockEntry ? true : false;
       this.stockAdded = template.stockEntry ? true : false;
+      this.showStockForm = template.stockEntry ? true : false;
       if (this.stockAdded) {
         this.stockEntry.price = this.stockSummary.close;
       } else if (!this.stockEntry) {
@@ -187,13 +221,13 @@ export class TradeDetailsComponent implements OnInit {
   }
 
   createStockEntry(): StockEntry {
-    console.log('StockEntry: ', StockEntry);
     let stockEntry: StockEntry = new StockEntry();
     stockEntry.price = this.stockSummary.close;
     stockEntry.lowerBound = -10;
     stockEntry.upperBound = 10;
     stockEntry.riskFreeRate = 6;
     stockEntry.actionType = ActionType["Buy to Open"];
+    console.log('StockEntry: ', StockEntry);
     return stockEntry;
   }
 

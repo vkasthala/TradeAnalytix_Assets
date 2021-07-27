@@ -57,9 +57,7 @@
 
 // Addnew-trade-Mobile
 .add-newtrade-mobile {
-    position: relative;
     display: none;
-    overflow: hidden;
     @media #{$extra-small} {
         display: block;
         padding: 15px !important;
@@ -853,7 +851,7 @@
         justify-content: center;
     }
     .stats-slide {
-        position: absolute;
+        position: fixed;
         width: 100%;
         height: 100%;
         right: -100%;
