@@ -15,8 +15,10 @@
                     Is this trade already executed in the brokerage platform?
                 </div>
                 <div class="ml-1">
-                    <span class="mr-3 col-form-label">Yes <input type="radio" name="confirm_excute" value="true" [(ngModel)] = 'data.executed' (change)="confirmEvent($event)" /></span>
-                    <span class="col-form-label">No <input type="radio" value="false" name="confirm_excute" [(ngModel)] = 'data.executed'  (change)="confirmEvent($event)" /></span>
+                    <span class="mr-3 col-form-label">Yes <input type="radio" name="confirm_excute" value="true"
+                            [(ngModel)]='data.executed' (change)="confirmEvent($event)" /></span>
+                    <span class="col-form-label">No <input type="radio" value="false" name="confirm_excute"
+                            [(ngModel)]='data.executed' (change)="confirmEvent($event)" /></span>
                 </div>
             </div>
             <div class="row py-2" *ngIf="data.executed == 'true'">
@@ -26,15 +28,24 @@
                 <div class="col-4">
                     <div class="trade-date">
                         <div class="datepicker-group">
-                            <input matInput [matDatepicker]="executionDate" (click)="executionDate.open()" id="executionDate" (dateChange)="addEvent('input', $event)" [(ngModel)]='data.executionDate' />
+                            <input matInput [matDatepicker]="executionDate" (click)="executionDate.open()"
+                                id="executionDate" (dateChange)="addEvent('input', $event)"
+                                [(ngModel)]='data.executionDate' />
                             <mat-datepicker-toggle matSuffix [for]="executionDate"></mat-datepicker-toggle>
                             <mat-datepicker #executionDate></mat-datepicker>
                         </div>
                     </div>
                 </div>
             </div>
+            <div *ngIf="failedRules && failedRules.length" class="failed-rules">
+                <div>Below rules are failed, do you want to continue?</div>
+                <ol class="rules-list">
+                    <li *ngFor="let rule of failedRules; let i = index;" class="rule-item">
+                        {{rule.displayMsg}}
+                    </li>
+                </ol>
+            </div>
         </div>
-
 
         <div class="modal-footer py-2">
             <button type="button" class="btn btn-primary btn-sm" [mat-dialog-close]="data">SUBMIT</button>

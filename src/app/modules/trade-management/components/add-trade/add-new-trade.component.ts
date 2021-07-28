@@ -15,6 +15,7 @@ import { TradeTag } from 'src/app/modules/shared/models/trade-management/trade-t
 import { UserStockSummary } from 'src/app/modules/shared/models/trade-management/user-stock-summary.model';
 import { UserStockStatsService } from 'src/app/modules/shared/services/user-stock-stats.service';
 import { OptionLegHistory } from '../../models/option-leg-history.model';
+import { RuleEvalResult } from '../../models/rule-eval-result.model';
 import { StockLegHistory } from '../../models/stock-leg-history.model';
 import { TradeHistory } from '../../models/trade-history.model';
 import { TradeStrategy } from '../../models/trade-strategy.model';
@@ -321,11 +322,12 @@ export class AddNewTradeComponent implements OnInit {
     this.router.navigate(['/risk-analysis'], extras);
   }
 
-  CheckExecutionDate(value) {
+  CheckExecutionDate(failedRules: RuleEvalResult[]) {
     let dialogData = {
-      title: value,
+      title: 'Confirm Trade Execution Date',
       executed: this.tradeStrategy.executed + '',
-      executionDate: this.tradeStrategy.executedDate
+      executionDate: this.tradeStrategy.executedDate,
+      failedRules: failedRules
     };
     const dialogRef = this._dialog.open(TradeExecutionDateComponent, {
       disableClose: true,
@@ -348,7 +350,7 @@ export class AddNewTradeComponent implements OnInit {
 
   editTrade() {
     if (this.tradeStrategy.statusId == 4) {
-      this.CheckExecutionDate('Confirm Trade Execution Date')
+      this.evaluateStrategyRules();
     } else {
       const dialogRef = this._dialog.open(ConfirmDialogComponent, {
         width: 'auto',
@@ -464,6 +466,18 @@ export class AddNewTradeComponent implements OnInit {
     return returnAmt;
   }
 
+  evaluateStrategyRules() {
+    this.Loader = !this.Loader;
+    this.updateTradeStrategyProps();
+    this.tradeStrategyService.evaluateStrategyRules(this.tradeStrategy).subscribe(result => {
+      this.Loader = !this.Loader;
+      this.CheckExecutionDate(result);
+    }, (err) => {
+      console.error("Error while evaluating strategy rules for strategy: {}", this.tradeStrategy, err);
+      this.Loader = !this.Loader;
+    });
+  }
+
   protected isValidTradeStrategy(): boolean {
     if (!this.tradeDetails) {
       return false;
@@ -474,7 +488,9 @@ export class AddNewTradeComponent implements OnInit {
     }
     return status;
   }
+
   ShowStats() {
     this.StatsSlide = !this.StatsSlide;
   }
+
 }
