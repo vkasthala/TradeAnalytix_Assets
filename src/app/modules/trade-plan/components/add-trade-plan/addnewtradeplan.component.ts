@@ -117,6 +117,8 @@ export class AddnewtradeplanComponent implements OnInit {
     this.tradePlanService.createTradePlan(tradePlan).subscribe(result => {
       this.toastr.success('Trade plan added');
       this.router.navigate(['/trade-plans']);
+    }, () => {
+      this.toastr.error("Failed to create trade plan for the day")
     });
   }
 

@@ -492,7 +492,7 @@ export class TradeDetailsComponent implements OnInit {
     if (this.addTrade || this.editTrade) {
       return this.stockEntry && this.stockEntry.actionType && this.stockEntry.quantity > 0 && this.stockEntry.price > 0;
     } else if (this.closeTrade) {
-      return this.stockEntry && this.stockEntry.actionType && this.stockEntry.quantity > 0 && this.stockEntry.closePrice > 0;
+      return this.stockEntry && this.stockEntry.actionType && this.stockEntry.quantity > 0 && this.stockEntry.closePrice >= 0;
     }
   }
 
@@ -505,7 +505,7 @@ export class TradeDetailsComponent implements OnInit {
       if (this.addTrade || this.editTrade) {
         status = this.stockOptions[ind].actionType !== undefined && this.stockOptions[ind].strikePrice !== undefined && this.stockOptions[ind].strikePrice > 0 && this.stockOptions[ind].contracts > 0 && this.stockOptions[ind].expireDate !== undefined && this.stockOptions[ind].price !== undefined && this.stockOptions[ind].price > 0;
       } else if (this.closeTrade) {
-        status = this.stockOptions[ind].actionType !== undefined && this.stockOptions[ind].strikePrice !== undefined && this.stockOptions[ind].strikePrice > 0 && this.stockOptions[ind].contracts > 0 && this.stockOptions[ind].expireDate !== undefined && this.stockOptions[ind].closePrice !== undefined && this.stockOptions[ind].closePrice > 0;
+        status = this.stockOptions[ind].actionType !== undefined && this.stockOptions[ind].strikePrice !== undefined && this.stockOptions[ind].strikePrice > 0 && this.stockOptions[ind].contracts > 0 && this.stockOptions[ind].expireDate !== undefined && this.stockOptions[ind].closePrice !== undefined && this.stockOptions[ind].closePrice >= 0;
       }
     }
     return status;
