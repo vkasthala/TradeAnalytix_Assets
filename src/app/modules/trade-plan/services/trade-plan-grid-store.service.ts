@@ -13,7 +13,7 @@ export class TradePlanGridStoreService extends DataSource<TradePlanGridRow>{
 
   private tradePlanSubject = new BehaviorSubject<TradePlanGridRow[]>([]);
   private loadingSubject = new BehaviorSubject<boolean>(false);
-
+  protected gridData: any;
   totalCount: number = 0;
 
   constructor(private tradePlanService: TradePlansService) {
@@ -35,6 +35,8 @@ export class TradePlanGridStoreService extends DataSource<TradePlanGridRow>{
       if (result) {
         this.tradePlanSubject.next(result.rows);
         this.totalCount = result.totalCount;
+        localStorage.setItem('tradePlanGridData', JSON.stringify(result.rows));
+        this.gridData = JSON.parse(localStorage.getItem('tradePlanGridData'));
       }
     });
   }
