@@ -12,6 +12,8 @@ import { StrategyActionTextDialogComponent } from '../strategy-action-text-dialo
 export class OpenStrategiesGridComponent implements OnInit {
 
   strategiesDataSource: TradePlanStrategy[];
+  public hideRuleContent: boolean[] = [];
+  protected openStategiesGridData: any;
 
   strategiesGridColumns: string[] = ['symbol', 'strategyType', 'returnAmount', 'maxRisk', 'maxProfit', 'actionText', 'editColumn'];
 
@@ -19,14 +21,15 @@ export class OpenStrategiesGridComponent implements OnInit {
   @Input('viewTradePlan') viewTradePlan: boolean;
 
   constructor(private tradePlanService: TradePlansService, private _dialog: MatDialog) {
-  
+
   }
 
   ngOnInit() {
-    if(this.tradePlanId > 0){
+    if (this.tradePlanId > 0) {
       this.strategiesGridColumns.push('aligned');
     }
     this.loadStrategies();
+
   }
 
   loadStrategies() {
@@ -34,10 +37,13 @@ export class OpenStrategiesGridComponent implements OnInit {
     if (this.tradePlanId > 0) {
       this.tradePlanService.getTradePlanStrategies(this.tradePlanId).subscribe(result => {
         this.strategiesDataSource = result;
+        //console.log('test rs2', result);
+        this.openStategiesGridData = result;
       });
     } else {
       this.tradePlanService.getOpenStrategies().subscribe(result => {
         this.strategiesDataSource = result;
+        this.openStategiesGridData = result;
       });
     }
   }
@@ -60,5 +66,8 @@ export class OpenStrategiesGridComponent implements OnInit {
       ele.actionText = res.actionText;
     });
   }
-
+  Collaps(index: number) {
+    // this.expandedIndex[index] = !this.expandedIndex[index];
+    this.hideRuleContent[index] = !this.hideRuleContent[index];
+  }
 }

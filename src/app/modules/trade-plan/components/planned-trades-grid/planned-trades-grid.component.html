@@ -1,4 +1,4 @@
-<div class="mb-2">
+<div class="mb-2 ad-trade-plan-web">
     <div class="col-12 px-0 d-flex justify-content-between mb-1">
         <label class="col-form-label pt-0 px-3">Planned Trades</label>
         <!-- <mat-icon class="text-primary mat-icon-md add-icon cursor" (click)="openPlannedTradeDialog()">add_circle</mat-icon> -->
@@ -64,4 +64,75 @@
         </mat-table>
     </div>
     <div *ngIf="plannedTradesDataSource.length==0" class="text-center pt-3">There are no trades executed today.</div>
+</div>
+
+<!-- Mobile Code -->
+<div class="mb-2 ad-trade-plan-mobile">
+    <div class="col-12 px-0 justify-content-between mb-1">
+        <label class="col-form-label pt-0 px-3">What do you plan to trade today?</label>
+        <div class="trade-plan-table">
+            <!-- Grid row -->
+            <div class="trade-plan-mobile-grid">
+                <div class="row mb-1">
+                    <div class="col-6 pl-4 cell-header">Symbol</div>
+                    <div class="col-6 cell-header text-right">Strategy</div>
+                </div>
+                <div class="pb-2 pt-3 mobile-grid-row" *ngFor="let element of planOpenGridData; let i=index">
+                    <div class="row">
+                        <div class="col-6 pl-1 mobile-grid-cell">
+                            <span class="cursor" (click)="Collaps(i)">
+                                <i class="material-icons">{{hideRuleContent[i] ? 'keyboard_arrow_up' :
+                                    'keyboard_arrow_right'}}</i>
+                            </span> {{element.symbol}}
+                        </div>
+                        <div class="col-6  text-right">{{element.strategyType}}</div>
+                    </div>
+                    <div class="" *ngIf="hideRuleContent[i]">
+                        <div class="row py-1">
+                            <div class="col-6 pl-4">
+                                Buy to Open
+                            </div>
+                            <div class="col-6 text-right">
+                                {{element.returnAmount}}
+                            </div>
+                        </div>
+                        <div class="row py-1">
+                            <div class="col-6 pl-4">
+                                Max. Risk
+                            </div>
+                            <div class="col-6 text-right">
+                                {{element.maxRisk | number:'1.0-0' }}
+                            </div>
+                        </div>
+                        <div class="row py-1">
+                            <div class="col-6 pl-4">
+                                Profit (Exp)
+                            </div>
+                            <div class="col-6 text-right">
+                                {{element.maxProfit | number:'1.0-0' }}
+                            </div>
+                        </div>
+                        <div class="row py-1">
+                            <div class="col-6 pl-4">
+                                Specify reasons for the trade
+                            </div>
+                            <div class="col-6 text-right">
+                                <span>{{element.actionText}}</span>
+                            </div>
+                        </div>
+                        <div class="row py-1">
+                            <div class="col-6 pl-4">
+                                Action
+                            </div>
+                            <div class="col-6 text-right">
+                                <mat-icon class="mat-icon-edit mat-icon-sm" *ngIf="!viewTradePlan" (click)="onActionTextEdit(element)">edit
+                                </mat-icon>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
 </div>
