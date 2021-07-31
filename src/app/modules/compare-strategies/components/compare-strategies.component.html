@@ -5,9 +5,8 @@
                 <div class="addnew-first p-3">
                     <div class="trade-form">
                         <mat-icon class="trade-form-icon ml-0">compare_arrows</mat-icon>
-                        <h2 class="py-3 symbol-heading">Compare Strategies</h2>
-                        <div class="pb-3 symbol-description">Enter the stock symbol or name for which trade strategy is
-                            being added</div>
+                        <h2 class="pb-2 symbol-heading">Compare Strategies</h2>
+                        <div class="pb-3 symbol-description">Enter the stock symbol or name for which trade strategy is being added</div>
                         <div class="d-flex mt-2">
                             <div class="media-body">
                                 <app-trade-search (symbolSelectEvent)="symbolSelectEventHandler($event)">
@@ -22,8 +21,7 @@
 
             <ng-container *ngSwitchCase="2">
                 <!-- {{strategiesList.length}} -->
-                <app-trade-details-header [addTrade]="add" [selectedStock]="selectedStock" [stockSummary]="stockSummary"
-                    (loadMoreStats)="loadMoreStatsHandler($event)"></app-trade-details-header>
+                <app-trade-details-header [addTrade]="add" [selectedStock]="selectedStock" [stockSummary]="stockSummary" (loadMoreStats)="loadMoreStatsHandler($event)"></app-trade-details-header>
                 <div class="addnew-second" *ngIf="strategiesList.length == 0">
                     <div class="d-flex align-items-center justify-content-between">
                         <span class="col-form-label p-0">No strategies exist for the symbol" and provide</span>
@@ -47,12 +45,10 @@
                                                 <div class="card-main">
                                                     <div class="d-flex align-items-center">
                                                         <label class="col-form-label">Strategy-{{index+1}} </label>
-                                                        <mat-icon class="mat-icon-sm mat-icon-edit ml-2"
-                                                            (click)="StrategyDetailsModal(index)">info</mat-icon>
+                                                        <mat-icon class="mat-icon-sm mat-icon-edit ml-2" (click)="StrategyDetailsModal(index)">info</mat-icon>
                                                     </div>
                                                     <div class="trade-sel position-relative">
-                                                        <select class="form-control select-input"
-                                                            (change)="onStrategyChange($event.target.value, index)">
+                                                        <select class="form-control select-input" (change)="onStrategyChange($event.target.value, index)">
                                                             <option *ngFor="let key of userStrategies;let i = index"
                                                                 [value]="i">{{key.uid}}</option>
                                                         </select>
@@ -60,8 +56,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="px-3">
-                                                    <div class="cursor" *ngIf="index > 1"
-                                                        (click)="deleteStrategyItem(index)">
+                                                    <div class="cursor" *ngIf="index > 1" (click)="deleteStrategyItem(index)">
                                                         <mat-icon class="mat-icon-sm">delete</mat-icon>
                                                     </div>
                                                     <div class="cursor" (click)="editStrategyItem(index)">
@@ -71,15 +66,11 @@
                                             </div>
                                         </ng-container>
 
-                                        <div class="search_btn add_strategy"
-                                            [ngClass]="strategiesList.length > 1 ? 'mt-0' : '' ">
+                                        <div class="search_btn add_strategy" [ngClass]="strategiesList.length > 1 ? 'mt-0' : '' ">
                                             <div class="mb-1">
                                                 <a class="btn btn-primary mr-3" (click)="submitStrategies()">SUBMIT</a>
                                             </div>
-                                            <a class="btn"
-                                                [ngClass]="strategiesList.length > 1 ? 'btn-outline-primary' : 'btn-primary' "
-                                                (click)="addStrategy()"
-                                                *ngIf="strategiesList.length < 5 && selectedStock.id">Add Strategy</a>
+                                            <a class="btn" [ngClass]="strategiesList.length > 1 ? 'btn-outline-primary' : 'btn-primary' " (click)="addStrategy()" *ngIf="strategiesList.length < 5 && selectedStock.id">Add Strategy</a>
                                         </div>
                                     </div>
                                 </div>
@@ -89,8 +80,7 @@
                         <mat-expansion-panel [expanded]="step === 0" *ngIf="compareResult">
                             <mat-expansion-panel-header>
                                 <mat-panel-title>
-                                    Analyze the risk and proﬁtability associated with the strategies for the given stock
-                                    price range
+                                    Analyze the risk and proﬁtability associated with the strategies for the given stock price range
                                 </mat-panel-title>
                             </mat-expansion-panel-header>
                             <ng-template matExpansionPanelContent>
@@ -100,31 +90,26 @@
                                             <div class="col-3">
                                                 <label class="col-form-label">Stock Price</label>
                                                 <div class="d-flex">
-                                                    <input type="text" name="stock_price" class="form-control"
-                                                        [(ngModel)]='stockPrice' />
+                                                    <input type="text" name="stock_price" class="form-control" [(ngModel)]='stockPrice' />
                                                 </div>
                                             </div>
 
                                             <div class="col-3">
                                                 <label class="col-form-label">Price Range</label>
                                                 <div class="d-flex">
-                                                    <input type="text" name="price_range_min" value="-10%"
-                                                        class="form-control" [(ngModel)]='lowerBound' />
-                                                    <input type="text" name="price_range_max" value="-10%"
-                                                        class="form-control ml-2" [(ngModel)]='upperBound' />
+                                                    <input type="text" name="price_range_min" value="-10%" class="form-control" [(ngModel)]='lowerBound' />
+                                                    <input type="text" name="price_range_max" value="-10%" class="form-control ml-2" [(ngModel)]='upperBound' />
                                                 </div>
                                             </div>
 
                                             <div class="col-3">
                                                 <label class="col-form-label">Risk Free Rate</label>
                                                 <div class="d-flex">
-                                                    <input type="text" name="price_range_min" class="form-control"
-                                                        [(ngModel)]='riskFreeRate' />
+                                                    <input type="text" name="price_range_min" class="form-control" [(ngModel)]='riskFreeRate' />
                                                 </div>
                                             </div>
                                             <div class="d-flex align-items-end">
-                                                <a class="btn btn-next"
-                                                    (click)="analyzeRisk = true; submitStrategies();">Analyze</a>
+                                                <a class="btn btn-next" (click)="analyzeRisk = true; submitStrategies();">Analyze</a>
                                             </div>
                                         </div>
                                     </div>
@@ -155,13 +140,10 @@
                                         <div class="tab" role="tabpanel">
                                             <ul class="nav nav-tabs" role="tablist">
                                                 <li class="active" role="presentation">
-                                                    <a aria-controls="home" aria-expanded="true" data-toggle="tab"
-                                                        href="#Section1" role="tab">Data Table</a>
+                                                    <a aria-controls="home" aria-expanded="true" data-toggle="tab" href="#Section1" role="tab">Data Table</a>
                                                 </li>
                                                 <li class="" role="presentation">
-                                                    <a aria-controls="profile" aria-expanded="false" data-toggle="tab"
-                                                        href="#Section2" role="tab"
-                                                        (click)="initChart(false)">Charts</a>
+                                                    <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#Section2" role="tab" (click)="initChart(false)">Charts</a>
                                                 </li>
                                             </ul>
                                             <div class="tab-content tabs">
@@ -174,19 +156,16 @@
                                                                     <tr>
                                                                         <th>Change</th>
                                                                         <th>Price</th>
-                                                                        <th
-                                                                            *ngFor="let key of strategiesList; let i = index">
+                                                                        <th *ngFor="let key of strategiesList; let i = index">
                                                                             {{'Strategy-' + (i + 1) + ' P&L' }}</th>
                                                                     </tr>
                                                                 </thead>
 
                                                                 <tbody>
-                                                                    <tr
-                                                                        *ngFor="let item of compareResult.rows;let index=index">
+                                                                    <tr *ngFor="let item of compareResult.rows;let index=index">
                                                                         <td>{{item.stockChange.change}}%</td>
                                                                         <td>{{item.stockChange.price}}</td>
-                                                                        <td
-                                                                            *ngFor="let key of strategiesList; let ind = index">
+                                                                        <td *ngFor="let key of strategiesList; let ind = index">
                                                                             {{item.results[ind].netPL}}</td>
                                                                     </tr>
                                                                 </tbody>
