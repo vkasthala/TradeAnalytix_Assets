@@ -24,6 +24,10 @@ export class TradePlansComponent implements OnInit {
   dataSource: TradePlanGridStoreService;
 
   tradePlanGridRequest: TradePlanGridRequest = this.getInitialRequest();
+  showFilters: boolean=false;
+  public hideRuleContent:boolean[] = [];
+  protected gridData: any;
+  expandedIndex:any;
 
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 
@@ -36,7 +40,10 @@ export class TradePlansComponent implements OnInit {
   ngOnInit() {
     this.dataSource = new TradePlanGridStoreService(this.tradeplansService);
     this.loadPage();
-    console.log('this.dataSource', this.dataSource)
+    console.log('this.dataSource', this.dataSource);    
+    this.gridData = JSON.parse(localStorage.getItem('tradePlanGridData'));
+    this.expandedIndex = -1;
+    console.log('test rs', this.gridData);
   }
 
   loadPage() {
@@ -133,5 +140,12 @@ export class TradePlansComponent implements OnInit {
     console.log('trade plans filter after date range: ', filter);
   }
 
+  strategiesFilter(){
+    this.showFilters = !this.showFilters;
+ }
+ Collaps(index: number) {  
+  // this.expandedIndex[index] = !this.expandedIndex[index];
+  this.hideRuleContent[index] = !this.hideRuleContent[index]; 
+  } 
 }
 

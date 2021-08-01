@@ -15,7 +15,7 @@
                 <div class="addnew-first">
                     <div class="trade-form">
                         <mat-icon class="trade-form-icon ml-1">insights</mat-icon>
-                        <h2 class="py-3 symbol-heading">Risk Analysis</h2>
+                        <h2 class="pb-2 symbol-heading">Risk Analysis</h2>
                         <div class="pb-3 symbol-description">Enter the stock name or symbol to build a strategy and analyze its risk and profitability in different scenarios</div>
                         <div class="d-flex mt-2">
                             <div class="media-body">
@@ -29,8 +29,8 @@
                     stock and option inputs. Based on the analysis results, traders can tweak the strategy so that it aligns with the desired goal.</div> -->
             </ng-container>
             <ng-container *ngSwitchCase="2">
-                <div class="mask" *ngIf="Loader">    
-                    <div class="loader"></div> 
+                <div class="mask" *ngIf="Loader">
+                    <div class="loader"></div>
                 </div>
                 <div class="mb-2">
                     <app-trade-details-header [addTrade]="add" [selectedStock]="selectedStock" [stockSummary]="stockSummary" (loadMoreStats)="loadMoreStatsHandler($event)"></app-trade-details-header>
@@ -196,7 +196,7 @@
 
                                     <!-- next-button -->
                                     <div class="order-btn text-center" *ngIf="stockAdded || stockOptions.length > 0">
-                                        <a class="btn btn-next" (click)="checkForStockPrice();" [class.disabled] = "!isValidDetails()">Next</a>
+                                        <a class="btn btn-next" (click)="checkForStockPrice();" [class.disabled]="!isValidDetails()">Next</a>
                                     </div>
                                 </ng-template>
                             </mat-expansion-panel>
@@ -293,7 +293,7 @@
 
                                             <!-- next-button -->
                                             <div class="order-btn text-center">
-                                                <a class="btn btn-next" (click)="analyzeRisk = true; initRiskAnalysis();" [class.disabled] = "!isValidDetails()">Analyze</a>
+                                                <a class="btn btn-next" (click)="analyzeRisk = true; initRiskAnalysis();" [class.disabled]="!isValidDetails()">Analyze</a>
                                                 <a class="btn btn-next gap-btn" *ngIf="analyzeRisk" (click)="analyzeRisk = false; scroll(tradeCards);">Reset</a>
                                             </div>
                                         </div>

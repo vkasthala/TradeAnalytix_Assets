@@ -17,6 +17,9 @@ export class PlannedTradesGridComponent implements OnInit {
 
   plannedTradesGridColumns: string[] = ['symbol', 'strategyType', 'actionType', 'maxRisk', 'profit', 'reason', 'actions'];
 
+  public hideRuleContent: boolean[] = [];
+  protected planOpenGridData: any;
+
   @Input('tradePlanId') tradePlanId: number;
   @Input('viewTradePlan') viewTradePlan: boolean;
   
@@ -28,13 +31,15 @@ export class PlannedTradesGridComponent implements OnInit {
     if (this.tradePlanId > 0) {
       this.plannedTradesGridColumns.push('executed');
     }
-    this.loadPlannedTrades();
+    this.loadPlannedTrades();    
   }
 
   loadPlannedTrades() {
     if (this.tradePlanId > 0) {
       this.tradePlanService.getPlannedTrades(this.tradePlanId).subscribe(result => {
         this.plannedTradesDataSource = result;
+        this.planOpenGridData = result;
+        console.log("test 3 rs", this.planOpenGridData);
       });
     }
   }
@@ -83,6 +88,10 @@ export class PlannedTradesGridComponent implements OnInit {
 
   getPlannedTrades(): PlannedTrade[] {
     return this.plannedTradesDataSource;
+  }
+  Collaps(index: number) {
+    // this.expandedIndex[index] = !this.expandedIndex[index];
+    this.hideRuleContent[index] = !this.hideRuleContent[index];
   }
 
 }
