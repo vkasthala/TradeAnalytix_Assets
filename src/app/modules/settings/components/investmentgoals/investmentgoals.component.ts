@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Input  } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { IMyDateRangeModel } from 'mydaterangepicker';
 import { GoalsService } from '../../services/goals.service';
@@ -60,18 +60,18 @@ export class InvestmentGoalsComponent implements OnInit {
       beginDate: { year: startDate.getFullYear(), month: startDate.getMonth(), day: startDate.getDate() },
       endDate: { year: endDate.getFullYear(), month: endDate.getMonth(), day: endDate.getDate() }
     };
-    this.targetDate = dateObj; 
+    this.targetDate = dateObj;
   }
 
   deleteinvestmentGoal(goal: InvestmentGoals) {
     this.goalsService.deleteInvestmentGoals(goal).subscribe((data: []) => {
-       this.GoalsList = data;
+      this.GoalsList = data;
     });
   }
 
   createGoalsEntry() {
     const goalEntry = new InvestmentGoals();
-    if ( this.id ) {
+    if (this.id) {
       goalEntry.id = this.id;
     }
     goalEntry.goalName = this.goalName;
@@ -101,12 +101,13 @@ export class InvestmentGoalsComponent implements OnInit {
   }
 
   saveProfile(goal: InvestmentGoals) {
-    this.goalsService.saveInvestmentGoals(goal).subscribe( (data: []) => {
+    this.goalsService.saveInvestmentGoals(goal).subscribe((data: []) => {
       this.GoalsList = data;
       this.toastr.success('Goals saved successfully');
       this.handleClear();
     }, (error) => {
-      this.toastr.error('Failed saving the goals');
+      console.log('test: ', error);
+      this.toastr.error(error.error ? String(error.error) : 'Failed saving the goals');
       this.handleClear();
       return;
     });
