@@ -75,8 +75,16 @@ export class TradeDetailsComponent implements OnInit {
   showFormSec: boolean = false;
   showStockSec: boolean = false;
   showStockForm: boolean = false;
+  showOptionLegForm: boolean = false;
+  editOptionForm: boolean = false;
   protected optionIndex: number = 1;
-  optionData: OptionEntry[] = [];
+  protected optionGroup = {};
+
+  public optionTypes: [
+    {value: 1, name:'radio1', id:"Call"},
+    {value: 2, name:'radio1', id:"Put"},
+  ]
+
   constructor(
     private utilService: UtilService,
     private strategyCreateServiceService: StrategyCreateService,
@@ -91,7 +99,6 @@ export class TradeDetailsComponent implements OnInit {
     } else {
       this.StockPosition = []
     }
-
     this.stockEntry = this.createStockEntry();
   }
 
@@ -138,6 +145,7 @@ export class TradeDetailsComponent implements OnInit {
     this.stockAdded = true;
     this.showFormSec = true;
     this.showStockForm = true;
+    this.showOptionLegForm = false;
     this.updateStockOrOptionAddedStatus();
   }
   showStock() {
@@ -148,10 +156,10 @@ export class TradeDetailsComponent implements OnInit {
   showOptionForm() {
     this.showFormSec = true;
     this.showStockForm = false;
+    this.showOptionLegForm = true;
   }
 
   addOption() {
-    debugger;
     this.showStockForm = false;
     if (this.stockOptions.length < 4) {
       this.showFormSec = true;
@@ -160,15 +168,24 @@ export class TradeDetailsComponent implements OnInit {
     }
   }
   addOption1() {
-    debugger;
+    this.createStockOptionEntry()
+    let optionData = this.optionGroup;
     this.showStockForm = false;
     if (this.stockOptions.length < 4) {
-      this.showFormSec = true;
-      this.stockOptions.push(this.createStockOptionEntry())
+      this.showFormSec = false;
+      this.stockOptions.push(optionData);
       this.updateStockOrOptionAddedStatus();
+      this.optionGroup = {}
+      this.showOptionLegForm = false;
     }
   }
 
+  editOptionLeg(index) {
+    this.showFormSec = true;
+    this.editOptionForm = true;
+    this.showOptionLegForm = true;
+  }
+  
   updateStockOrOptionAddedStatus() {
     this.stockOrOptionAddedSubject.next(this.stockAdded || this.stockOptions.length > 0);
   }
