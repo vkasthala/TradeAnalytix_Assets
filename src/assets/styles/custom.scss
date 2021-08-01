@@ -597,6 +597,35 @@ textarea {
     font-size: 16px !important;
 }
 
+.col-form-label {
+    color: #3A4C85;
+    font-size: 13px !important;
+}
+
+.coded_rules_body .mat-table {
+    display: table;
+    width: 100%;
+}
+
+.coded_rules_body .mat-table .mat-row {
+    display: table-row;
+    width: 100%;
+}
+
+.coded_rules_body .mat-table .mat-cell {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.coded_rules_body .mat-table .mat-cell:first-child,
+.coded_rules_body .mat-table .mat-cell:nth-child(2) {
+    width: 36%;
+}
+
+.coded_rules_body .mat-table .mat-cell:nth-child(3) {
+    width: 15%;
+}
+
 .mask {
     background-color: rgb(36 46 58 / 41%);
     position: absolute;
@@ -641,26 +670,36 @@ textarea {
         transform: rotate(360deg);
     }
 }
+
 @media (max-width:1024px) {
-    mat-cell:first-of-type, mat-footer-cell:first-of-type, mat-header-cell:first-of-type {
+    mat-cell:first-of-type,
+    mat-footer-cell:first-of-type,
+    mat-header-cell:first-of-type {
         padding-left: 10px !important;
     }
-    mat-cell:last-of-type, mat-footer-cell:last-of-type, mat-header-cell:last-of-type {
+    mat-cell:last-of-type,
+    mat-footer-cell:last-of-type,
+    mat-header-cell:last-of-type {
         padding-right: 10px !important;
     }
-    .mat-header-cell, .mat-cell, .mat-footer-cell, .custom-label {
+    .mat-header-cell,
+    .mat-cell,
+    .mat-footer-cell,
+    .custom-label {
         font-size: 12px !important;
     }
     .st-slect-section {
         margin-right: 0.5rem;
         height: 45px;
     }
-    .btn-apply, .btn-outline-primary {
+    .btn-apply,
+    .btn-outline-primary {
         padding: 0.375rem 1rem !important;
         height: 35px;
         line-height: 1.5;
     }
-    .strategies_filter .form-control, .trade-sel .form-control {
+    .strategies_filter .form-control,
+    .trade-sel .form-control {
         height: 35px !important;
     }
     .st-slect-section {
@@ -680,12 +719,14 @@ textarea {
     .page-heading {
         font-size: 18px !important;
     }
-    .trade-name-rate, .bxo-name {
+    .trade-name-rate,
+    .bxo-name {
         font-size: 12px !important;
         padding: 5px !important;
     }
     .bxo-name {
-        h6, span {
+        h6,
+        span {
             font-size: 12px !important;
         }
     }
@@ -712,5 +753,4 @@ textarea {
     .widget_item-title {
         text-align: center;
     }
-    
 }
