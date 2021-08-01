@@ -78,7 +78,7 @@ export class TradeDetailsComponent implements OnInit {
   showOptionLegForm: boolean = false;
   editOptionForm: boolean = false;
   protected optionIndex: number = 1;
-  protected optionGroup = {};
+  protected optionGroup:any = {};
 
   public optionTypes: [
     {value: 1, name:'radio1', id:"Call"},
@@ -175,7 +175,7 @@ export class TradeDetailsComponent implements OnInit {
       this.showFormSec = false;
       this.stockOptions.push(optionData);
       this.updateStockOrOptionAddedStatus();
-      this.optionGroup = {}
+      // this.optionGroup = {}
       this.showOptionLegForm = false;
     }
   }

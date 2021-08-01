@@ -452,20 +452,17 @@
                     </div>
                     <div *ngIf="editOptionForm">
                         <div class="d-flex justify-content-center mb-2">
-                            <span class="top-heading p-0 mr-2 text-success" (click)="addToStockPosition(index)">
+                            <span class="top-heading p-0 mr-2 text-success" (click)="addToStockPosition(index)" *ngIf="editTrade == true && tradeStatus !=4">
                                 <mat-icon class="text-primary">add_circle</mat-icon>
                             </span>
-                            <span class="top-heading p-0 mr-2" (click)="reduceToStockOption(index)">
+                            <span class="top-heading p-0 mr-2" (click)="reduceToStockOption(index)" *ngIf="editTrade == true && tradeStatus !=4">
                                 <mat-icon class="text-primary">remove_circle</mat-icon>
                             </span>
-                            <span class="top-heading p-0">
+                            <span class="top-heading p-0" *ngIf="editTrade == true && tradeStatus !=4">
                                 <mat-icon>history</mat-icon>
                             </span>
-                            <span  class="top-heading p-0 ml-2" (click)="deleteStockOption(index)">
-                                <mat-icon>delete</mat-icon>
-                            </span>
                         </div>
-                        <div class="text-center py-3">
+                        <div class="text-center py-3" *ngIf="!addTrade">
                             <label class="col-form-label">Last Updated Date : {{lastUpdatedDate | date:
                                 'dd-MMM-yyyy'}}</label>
                         </div>
