@@ -8,6 +8,12 @@
                 <mat-icon>clear</mat-icon>
             </div>
         </div>
+        <div class="mobile-popup-header">
+            <h6>
+                <mat-icon class="trade-form-icon mr-2 cursor" (click)="closeModal()">arrow_back</mat-icon> 
+                Add Option
+            </h6>
+        </div>
 
         <div class="main-pop-inner">
             <div class="row mb-2 align-items-center">
@@ -58,9 +64,13 @@
                 <label class="col-form-label">Notes</label>
                 <textarea rows="2" class="form-control" [(ngModel)]="data.notes"></textarea>
             </div>
-            <div class="separator"></div>
-            <div class="btn-up mb-0">
+            <div class="mobile-separator"></div>
+            <div class="btn-up mb-0 popup-footer">
                 <button type="button" class="btn btn-add" [mat-dialog-close]="data">Save</button>
+            </div>
+            <div class="mobile-popup-footer pt-3">
+                <button type="button" class="btn btn-add w-100 mr-2" [mat-dialog-close]="data">Save</button>
+                <button type="button" class="btn btn-outline-secondary w-100 ml-2" (click)="closeModal()">Cancel</button>
             </div>
         </div>
 
