@@ -312,6 +312,15 @@
             </div>
         </ng-container>
         <ng-container *ngSwitchCase="2">
+            <div class="trade-actions d-flex justify-content-between">
+                <span class="text-danger" (click)="cancelTrade()">CANCEL</span>
+                <span class="mr-2" *ngIf="add" (click)="CheckExecutionDate('Confirm Trade Execution Date')" >Add Trade</span>
+                
+                <span class="mr-2" *ngIf="edit" (click)="editTrade()">Edit Trade</span>
+
+                <span class="text-primary" (click)="TradeReview()">Review</span>
+            </div>
+
             <app-trade-details-header [addTrade]="add" [editTrade]="edit" [closeTrade]="close" [selectedStock]="selectedStock"
                 [stockSummary]="stockSummary" (loadMoreStats)="loadMoreStatsHandler($event)"
                 [StrategyId]="tradeStrategy"></app-trade-details-header>
@@ -321,6 +330,7 @@
                 </div> 
 
                 <div class="trade-details-body">
+                    
                     <mat-horizontal-stepper labelPosition="left" #stepper [linear]="false">
                         <mat-step [class.active]="stepone.completed" #stepone>
                             <ng-template matStepLabel>Trade Details</ng-template>
@@ -515,29 +525,7 @@
                             </div>
                         </mat-step>
                     </mat-horizontal-stepper>
-                    <div class="trade-actions">
-                        <button type="button" class="btn btn-next mr-2"
-                            *ngIf="(add && (tradeDetails.stockOptions.length || tradeDetails.stockAdded))"
-                            (click)="CheckExecutionDate('Confirm Trade Execution Date')"
-                            [disabled]="!isValidTradeStrategy()">ADD TRADE</button>
-
-                        <span
-                            *ngIf="(tradeDetails.stockAdded || tradeDetails.stockOptions.length > 0) && (stepper.selectedIndex == 0)">
-                            <button type="button" class="btn btn-outline-primary"
-                                *ngIf="!close && !tradeStrategy.executed && !edit" (click)="saveTradeAsDraft()"
-                                [disabled]="!isValidTradeStrategy()">Save
-                                as Draft</button>
-                        </span>
-
-                        <button type="button" class="btn btn-next mr-2" *ngIf="edit" (click)="editTrade()"
-                            [disabled]="!isValidTradeStrategy()">UPDATE</button>
-
-                        <button type="button" class="btn btn-next mr-2" *ngIf="close && !view"
-                            (click)="closeTrade()" [disabled]="!isValidTradeStrategy()">CLOSE TRADE</button>
-
-                        <button type="button" class="btn btn-gray" *ngIf="edit"
-                            (click)="cancelTrade()">CANCEL</button>
-                    </div>
+                    
                 </div>
                 <span class="stats-arrow cursor" (click)="ShowStats()">
                     <mat-icon class="trade-form-icon">keyboard_arrow_left</mat-icon>

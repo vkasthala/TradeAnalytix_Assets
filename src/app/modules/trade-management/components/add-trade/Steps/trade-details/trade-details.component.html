@@ -91,7 +91,6 @@
                     <div *ngIf="editTrade == true && tradeStatus !=4" class="top-heading mr-2 text-danger" (click)="reduceToPosition()">
                         <mat-icon class="text-primary">remove_circle</mat-icon>
                     </div>
-                    {{StockPosition.length}}
                     <div *ngIf="addTrade || tradeStatus == 4 || (editTrade && StockPosition.quantity == 0 || StockPosition.quantity == undefined)" class="top-heading mr-2" (click)="deleteStock()">
                         <mat-icon>delete</mat-icon>
                     </div>
@@ -223,19 +222,6 @@
             <div class="trade-sec">
                 <div [ngClass]="closeTrade ? 'close_trade_module' : ''">
                     <div class="d-flex justify-content-between align-items-end">
-                        <div class="Trade-type mr-2" *ngIf="!stockAdded">
-                            <label class="col-form-label pt-0">{{ addTrade ? 'Select' : 'Current' }} Strategy</label>
-                            <div class="form-group">
-                                <select class="form-control select-input pl-0" id="inputState"
-                                    (change)="onStrategyTypeChange($event.target.value)"
-                                    [(ngModel)]='selectedStrategy'
-                                    [ngClass]="viewTrade || editTrade ? 'disabled' : ''">
-                                    <option *ngFor="let key of strategyTypes" [value]="key"
-                                        [label]="strategies[key]"></option>
-                                </select>
-                            </div>
-                        </div>
-                        
                         <button type="button" class="btn btn-add" (click)="addStock()" [ngClass]="[stockAdded ? 'disabled' : '']"> + Stock</button>
 
                         <button type="button" class="btn btn-add ml-2" (click)="showOptionForm()" [ngClass]="[stockOptions.length === 4 ? 'disabled' : '']"> + Option</button>
@@ -339,7 +325,8 @@
         </div>
 
         <div class="form-stock-sec" [ngClass]="showFormSec ? 'd-block' : 'd-none'">
-            <div class="trade-cards-section" *ngIf="showStockForm">
+            <div class="trade-cards-section stock-leg-form" *ngIf="showStockForm">
+                <h3 *ngIf="editStockForm">Edit Stock</h3>
                 <div class="mb-2">
                     <label class="col-form-label pt-0">Action</label>
                     <div class="mb-2">
@@ -367,7 +354,7 @@
                             [ngClass]="[closeTrade || viewTrade ? 'disabled' : '', editTrade && (StockPosition.quantity > 0 && StockPosition.quantity !== undefined ) ? 'disabled' : '']" />
                     </div>
                 </div>
-                <div class="d-flex justify-content-between mt-3">
+                <div class="d-flex justify-content-between mt-3 w-100">
                     <div *ngIf="!closeTrade">
                         <label class="col-form-label pt-0">Cost</label>
                         <h6>
@@ -382,7 +369,25 @@
                             [ngClass]="[viewTrade ? 'disabled' : '']" />
                     </div>
                 </div>
-                <button type="button" class="btn btn-primary w-100" (click)="showStock(); ">Add</button>
+                <button type="button" class="btn btn-primary w-100 mt-3" (click)="showStock();" *ngIf="!editStockForm">Add</button>
+                
+                <div *ngIf="editStockForm" class="w-100">
+                    <div class="d-flex justify-content-center mb-2">
+                        <span *ngIf="editTrade == true && tradeStatus !=4" class="top-heading mr-2 text-success" (click)="addToPosition()">
+                            <mat-icon class="text-primary">add_circle</mat-icon>
+                        </span>
+                        <span *ngIf="editTrade == true && tradeStatus !=4" class="top-heading mr-2 text-danger" (click)="reduceToPosition()">
+                            <mat-icon class="text-primary">remove_circle</mat-icon>
+                        </span>
+                        <span *ngIf="editTrade == true && tradeStatus !=4" class="top-heading">
+                            <mat-icon>history</mat-icon>
+                        </span>
+                    </div>
+                    <div class="w-100 d-flex justify-content-between py-2">
+                        <button type="button" class="btn btn-primary w-100 mr-2" (click)="saveTradeStock()">Save</button>
+                        <button type="button" class="btn btn-outline-secondary w-100 ml-2" (click)="cancelTradeStock()">CANCEL</button>
+                    </div>
+                </div>
             </div>
             <!-- end: stock form sec -->
 
@@ -467,8 +472,8 @@
                                 'dd-MMM-yyyy'}}</label>
                         </div>
                         <div class="d-flex justify-content-between mb-2">
-                            <button type="button" class="btn btn-primary w-100 mr-2" (click)="saveTradeAsDraft()">Save</button>
-                            <button type="button" class="btn btn-outline-secondary w-100 ml-2" (click)="cancelTrade()">CANCEL</button>
+                            <button type="button" class="btn btn-primary w-100 mr-2" (click)="saveTradeOption()">Save</button>
+                            <button type="button" class="btn btn-outline-secondary w-100 ml-2" (click)="cancelTradeOption()">CANCEL</button>
                         </div>
                     </div>
                     <button type="button" class="btn btn-primary w-100" (click)="addOption1()" *ngIf="!editOptionForm">Add</button>

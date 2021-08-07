@@ -76,6 +76,7 @@ export class TradeDetailsComponent implements OnInit {
   showStockSec: boolean = false;
   showStockForm: boolean = false;
   showOptionLegForm: boolean = false;
+  editStockForm: boolean = false;
   editOptionForm: boolean = false;
   protected optionIndex: number = 1;
   protected optionGroup:any = {};
@@ -180,11 +181,29 @@ export class TradeDetailsComponent implements OnInit {
     }
   }
 
+  editStock(element) {
+    this.showFormSec = true;
+    this.editOptionForm = false;
+    this.showStockForm = true;
+    this.editStockForm = true;
+  }
+  cancelTradeStock(index) {
+    this.showFormSec = false;
+    this.editOptionForm = false;
+    this.showOptionLegForm = false;
+    this.showStockForm = false;
+  }
   editOptionLeg(index) {
     this.showFormSec = true;
     this.editOptionForm = true;
     this.showOptionLegForm = true;
   }
+  cancelTradeOption(index) {
+    this.showFormSec = false;
+    this.editOptionForm = false;
+    this.showOptionLegForm = false;
+  }
+  
   
   updateStockOrOptionAddedStatus() {
     this.stockOrOptionAddedSubject.next(this.stockAdded || this.stockOptions.length > 0);
@@ -200,6 +219,7 @@ export class TradeDetailsComponent implements OnInit {
     this.showStockSec = false;
     this.showFormSec = false;
     this.showStockForm = false;
+    this.editStockForm = false;
   }
 
   deleteStockOption(index) {
