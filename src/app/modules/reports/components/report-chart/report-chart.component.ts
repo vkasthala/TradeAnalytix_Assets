@@ -52,12 +52,13 @@ export class ReportChartComponent implements OnInit {
       request = this.reportRequestService.getWinLossChartRequest(this.report, this.subtype, this.reportFilter);
       url = '/reports/performance/winlossbytag';
     }
-     else if (category == ReportCategory.Goal_Status) {
+    else if (category == ReportCategory.Goal_Status) {
       request = this.reportRequestService.getCommonChartRequest(this.report, this.subtype, this.reportFilter);
       url = '/reports/performance/goalstatus';
     } else if (category == ReportCategory.Calendar_Report) {
       request = this.reportRequestService.getCommonChartRequest(this.report, this.subtype, this.reportFilter);
-      url = '/reports/dashboard/calendarChart';
+      let month = new Date().getMonth();
+      url = '/reports/dashboard/calendarChart/' + month;
     } else if (category == ReportCategory.Discipline) {
       request = this.reportRequestService.getDisciplineChartRequest(this.report, this.subtype, this.reportFilter);
       url = this.reportRequestService.getDisciplineReportApiUrl(this.report.id);

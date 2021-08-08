@@ -24,7 +24,7 @@ export class CodedRuleService {
   }
 
   public updateCodedRule(item: UserCodedRule): Observable<void> {
-    return this.httpService.put<UserCodedRule, void>(this.apiUrl + '/coded-rule/update', item);
+    return this.httpService.post<UserCodedRule, void>(this.apiUrl + '/coded-rule/update', item);
   }
 
   public deleteCodedRule(itemId: number): Observable<void> {

@@ -83,7 +83,8 @@ export class ReportRequestService {
     } else if ('userGoalByDate' === reportId) {
       url = '/reports/dashboard/goalstatus';
     } else if ('returnsCalendar' === reportId) {
-      url = '/reports/dashboard/calendarChart';
+      let month = new Date().getMonth();
+      url = '/reports/dashboard/calendarChart/' + month;
     }
     return url;
   }
