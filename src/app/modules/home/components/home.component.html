@@ -132,28 +132,38 @@
 <nav class="mobile-bottom-nav">
     <ul>
         <li>
-            <a class="home" [routerLink]="['/dashboard/']" [class.nav-active]="currentRoute == 'dashboard'">
-                <span>Home</span>
+            <a [routerLink]="['/dashboard/']" [class.nav-active]="currentRoute == 'dashboard'">
+                <mat-icon _ngcontent-moq-c1="" class="mat-icon notranslate material-icons mat-icon-no-color nav1" role="img" aria-hidden="true">dashboard</mat-icon>
             </a>
         </li>
         <li>
-            <a class="nav2" [class.nav-active]="currentRoute == 'trade-strategies'" [routerLink]="['/trade-strategies']">
-                <span>Trade Strategies</span>
+            <a [class.nav-active]="currentRoute == 'trade-strategies'" [routerLink]="['/trade-strategies']">
+                <mat-icon _ngcontent-moq-c1="" class="mat-icon notranslate material-icons mat-icon-no-color" role="img" aria-hidden="true">attach_money</mat-icon>
             </a>
         </li>
         <li>
-            <a class="nav3" [class.nav-active]="currentRoute == 'strategy-comparison'" [routerLink]="['/strategy-comparison/']">
-                <span>Compare Strategies</span>
+            <a [class.nav-active]="currentRoute == 'strategy-comparison'" [routerLink]="['/strategy-comparison/']">
+                <mat-icon _ngcontent-moq-c1="" class="mat-icon notranslate material-icons mat-icon-no-color" role="img" aria-hidden="true">compare_arrows</mat-icon>
             </a>
         </li>
         <li>
-            <a class="nav4" [class.nav-active]="currentRoute == 'risk-analysis'" [routerLink]="['/risk-analysis/']">
-                <span>Risk Analysis</span>
+            <a [class.nav-active]="currentRoute == 'risk-analysis'" [routerLink]="['/risk-analysis/']">
+                <mat-icon _ngcontent-moq-c1="" class="mat-icon notranslate material-icons mat-icon-no-color" role="img" aria-hidden="true">insights</mat-icon>
+            </a>
+        </li>
+        <li>
+            <a [class.nav-active]="currentRoute == 'trade-plan'" [routerLink]="['/trade-plans']">
+                <mat-icon _ngcontent-moq-c1="" class="mat-icon notranslate material-icons mat-icon-no-color" role="img" aria-hidden="true">note_add</mat-icon>
+            </a>
+        </li>
+        <li>
+            <a [class.nav-active]="currentRoute == 'reports'" [routerLink]="['/reports']">
+                <mat-icon _ngcontent-moq-c1="" class="mat-icon notranslate material-icons mat-icon-no-color" role="img" aria-hidden="true">pie_chart</mat-icon>
             </a>
         </li>
 
-        <li>
+        <!-- <li>
             <i class="material-icons" (click)="expandRowOptions(i)">more_vert</i>
-        </li>
+        </li> -->
     </ul>
 </nav>

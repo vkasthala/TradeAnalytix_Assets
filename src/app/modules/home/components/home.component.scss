@@ -224,7 +224,7 @@
     display: none;
     will-change: transform;
     transform: translateZ(0);
-    height: 70px;
+    height: 50px;
     background: #FFFFFF;
     box-shadow: 0px -4px 16px rgba(157, 157, 157, 0.2);
     padding: 0 20px;
@@ -254,48 +254,28 @@
                 align-items: center;
                 justify-content: center;
                 font-size: 14px;
-                color: #565656;
-                span {
-                    width: 48px;
-                    height: 48px;
-                    text-indent: -9999em;
+                color: #394C86;
+                text-decoration: none;
+                .mat-icon {
+                    height: 29px;
+                    width: 29px;
+                    padding: 3px;
+                }
+                .nav1 {
+                    padding-top: 2px;
                 }
                 &:hover {
                     background-color: #2285FA;
                     box-shadow: 0px 4px 16px rgba(157, 157, 157, 0.2);
                     border-radius: 6px;
+                    color: #fff;
                 }
-            }
-            .home {
-                width: 48px;
-                height: 48px;
-                background: url('../../../../assets/images/home.svg') no-repeat center center;
-            }
-            .home.nav-active {
-                background: #2285FA url('../../../../assets/images/home_r.svg') no-repeat center center;
-            }
-            .nav2 {
-                width: 48px;
-                height: 48px;
-                background: url('../../../../assets/images/mobile-nav2.svg') no-repeat center center;
-            }
-            .nav2.nav-active {
-                background: #2285FA url('../../../../assets/images/mobile-nav2_r.svg') no-repeat center center;
-            }
-            .nav3 {
-                width: 48px;
-                height: 48px;
-                background: url('../../../../assets/images/mobile-nav3.svg') no-repeat center center;
-            }
-            .nav4 {
-                width: 48px;
-                height: 48px;
-                background: url('../../../../assets/images/mobile-nav4.svg') no-repeat center center;
             }
             .nav-active {
                 background-color: #2285FA;
                 box-shadow: 0px 4px 16px rgba(157, 157, 157, 0.2);
                 border-radius: 6px;
+                color: #fff;
             }
         }
     }
