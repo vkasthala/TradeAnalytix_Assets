@@ -1,4 +1,4 @@
-<div class="mb-2">
+<div class="mb-2 today-executed-plan-web">
     <div class="col-12 px-0 d-flex justify-content-between mb-1">
         <label class="col-form-label pt-0 px-3">Executed Trades</label>
     </div>
@@ -58,4 +58,100 @@
 
     </div>
     <div *ngIf="todayExecutedLegsDatasource.length==0" class="text-center pt-3">There are no trades executed today.</div>
+</div>
+
+
+<!-- Mobile Code -->
+<div class="mb-2 today-executed-plan-mobile">
+    <div class="col-12 px-0 justify-content-between mb-1">
+
+        <label class="col-form-label pt-0 pl-4 w-100 pr-2">Executed Trades <span class="cursor float-right" (click)="Collaps(i)">
+            <i class="material-icons material-icons-outlined">{{hideRuleContent[i] ? 'add_circle_outline' :
+                'remove_circle_outline'}}  </i>              
+            </span></label>
+        <div class="trade-plan-table" *ngIf="!hideRuleContent[i]">
+            <!-- Grid row -->
+            <div class="trade-plan-mobile-grid">
+                <div class="row mb-1 pl-3">
+                    <div class="col-7 pl-4 cell-header">Strategy ID</div>
+                    <div class="col-5 cell-header cell-header pl-2">Symbol</div>
+                </div>
+                <div class="pb-2 pt-3 mobile-grid-row" *ngFor="let element of todayexecutedGridData; let i=index">
+                    <div class="row">
+                        <div class="col-7 pl-3 mobile-grid-cell">
+                            <span class="cursor" (click)="Collaps(i)">
+                                    <i class="material-icons">{{hideRuleContent[i] ? 'keyboard_arrow_up' :
+                                        'keyboard_arrow_right'}}</i>
+                                </span> {{element.strategyUid}}
+                        </div>
+                        <div class="col-5">{{element.symbol}}</div>
+                    </div>
+                    <div class="pl-3" *ngIf="hideRuleContent[i]">
+                        <div class="row py-1">
+                            <div class="col-7 pl-4">
+                                Action Type
+                            </div>
+                            <div class="col-5">
+                                {{element.action}}
+                            </div>
+                        </div>
+                        <div class="row py-1">
+                            <div class="col-7 pl-4">
+                                Quantity
+                            </div>
+                            <div class="col-5">
+                                {{element.quantity}}
+                            </div>
+                        </div>
+                        <div class="row py-1">
+                            <div class="col-7 pl-4">
+                                Strike
+                            </div>
+                            <div class="col-5">
+                                {{element.strikePrice}}
+                            </div>
+                        </div>
+                        <div class="row py-1">
+                            <div class="col-6 pl-4">
+                                Expiry Date
+                            </div>
+                            <div class="col-6 text-right">
+                                <span>{{element.expiryDate}}</span>
+                            </div>
+                        </div>
+
+                        <div class="row py-1">
+                            <div class="col-6 pl-4">
+                                Option Type
+                            </div>
+                            <div class="col-6 text-right">
+                                <span>{{element.optionType}}</span>
+                            </div>
+                        </div>
+
+                        <div class="row py-1">
+                            <div class="col-6 pl-4">
+                                Entry Price
+                            </div>
+                            <div class="col-6 text-right">
+                                <span>{{element.entryPrice | number:'1.0-0'}}</span>
+                            </div>
+                        </div>
+
+                        <div class="row py-1">
+                            <div class="col-6 pl-4">
+                                Exit Price
+                            </div>
+                            <div class="col-6 text-right">
+                                <span>{{element.exitPrice | number:'1.0-0'}} </span>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
 </div>

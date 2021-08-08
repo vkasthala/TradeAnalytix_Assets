@@ -422,3 +422,16 @@ textarea.form-control {
     background: #dedede !important;
     pointer-events: none !important;
 }
+
+@media screen and (min-width: 320px) and (max-width:599px) {
+    .trade-sel-cl {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .trade-sel {
+        width: 100%;
+    }
+    .media {
+        display: block;
+    }
+}

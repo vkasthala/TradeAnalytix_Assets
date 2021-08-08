@@ -133,76 +133,85 @@
     <div class="trade-plan-table p-2">
         <!-- Grid row -->
         <div class="trade-plan-mobile-grid">
-            <div class="row mb-1">
-                <div class="col-6 pl-4 cell-header">Date</div>
-                <div class="col-3 cell-header">Status</div>
-                <div class="col-3 cell-header text-right">Mindset</div>
+            <div class="row mb-1 pl-3">
+                <div class="col-7 pl-4 cell-header">Date</div>
+                <div class="col-5 cell-header">Status</div>
+
             </div>
             <div class="pb-2 pt-3 mobile-grid-row" *ngFor="let element of gridData; let i=index">
                 <div class="row">
-                    <div class="col-6 pl-1 mobile-grid-cell">
+                    <div class="col-7 pl-3 mobile-grid-cell">
                         <span class="cursor" (click)="Collaps(i)">
                             <i class="material-icons">{{hideRuleContent[i] ? 'keyboard_arrow_up' :
                                 'keyboard_arrow_right'}}</i>
                         </span> {{element.day | date: 'dd-MMM-yyyy'}}
                     </div>
-                    <div class="col-3">{{element.marketStatus}}</div>
-                    <div class="col-3 text-right">{{element.mindsetType}}</div>
+                    <div class="col-5">{{element.marketStatus}}</div>
+
                 </div>
-                <div class="" *ngIf="hideRuleContent[i]">
+                <div *ngIf="hideRuleContent[i]" class="pl-3">
                     <div class="row py-1">
-                        <div class="col-6 pl-4">
+                        <div class="col-7 pl-4">
                             Prediction
                         </div>
-                        <div class="col-6 text-right">
+                        <div class="col-5">
                             {{element.plannedTrades}}
                         </div>
                     </div>
                     <div class="row py-1">
-                        <div class="col-6 pl-4">
+                        <div class="col-7 pl-4">
                             Planned Trades
                         </div>
-                        <div class="col-6 text-right">
+                        <div class="col-5">
                             {{element.plannedTrades}}
                         </div>
                     </div>
                     <div class="row py-1">
-                        <div class="col-6 pl-4">
+                        <div class="col-7 pl-4">
                             Aligned
                         </div>
-                        <div class="col-6 text-right">
+                        <div class="col-5">
                             {{element.aligned == true ? 'Yes' : 'No'}}
                         </div>
                     </div>
                     <div class="row py-1">
-                        <div class="col-6 pl-4">
+                        <div class="col-7 pl-4">
                             Self-Review
                         </div>
-                        <div class="col-6 text-right">
+                        <div class="col-5">
                             {{element.selfReview}}
                         </div>
                     </div>
                     <div class="row py-1">
-                        <div class="col-6 pl-4">
+                        <div class="col-7 pl-4">
                             Trades
                         </div>
-                        <div class="col-6 text-success text-right">
+                        <div class="col-5 text-success">
                             {{element.todayStrategyCount}}
                         </div>
                     </div>
                     <div class="row py-1">
-                        <div class="col-6 pl-4">
+                        <div class="col-7 pl-4">
                             Return
                         </div>
-                        <div class="col-6 text-danger text-right">
+                        <div class="col-5 text-danger">
                             {{element.returnAmount}}
                         </div>
                     </div>
+                    <div class="row py-1">
+                        <div class="col-7 pl-4">
+                            Mindset
+                        </div>
+                        <div class="col-5 text-danger">
+                            {{element.mindsetType}}
+                        </div>
+                    </div>
+
 
                     <div class="py-1 grid-bottom">
                         <button type="button" class="btn mobile-grid-btn trade-edit">
-                            <mat-icon *ngIf="element.status == 'Open'" class="cursor mat-icon-sm mr-3"
-                                (click)="editEntry(element)">edit</mat-icon> Edit
+                            <mat-icon *ngIf="element.status == 'Open'" class="text-success cursor mat-icon-sm mr-3" (click)="editEntry(element)">edit</mat-icon> <span *ngIf="element.status == 'Open'">Open</span>
+                            <mat-icon *ngIf="element.status == 'Closed'" (click)="viewEntry(element)" class="mat-icon-sm cursor">visibility</mat-icon> <span *ngIf="element.status == 'Closed'">Closed</span>
                         </button>
 
                     </div>

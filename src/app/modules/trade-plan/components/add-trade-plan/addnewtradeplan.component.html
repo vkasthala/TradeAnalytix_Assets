@@ -89,8 +89,8 @@
             <div class="inner-trade-plan">
                 <div class="mb-2">
                     <label class="col-form-label pt-0">Did you align with the trading plan?</label>
-                    <div class="col-10 px-0 media">
-                        <div class="trade-sel mr-3">
+                    <div class="trade-sel-cl col-10 px-0 media">
+                        <div class="trade-sel mr-md-3 mb-md-0  mb-2">
                             <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="tradePlan.tradeplanAligned" [ngClass]="[view ? 'disabled' : '']">
                                     <option value=true>Yes</option>
                                     <option value=false>No</option>
@@ -115,9 +115,9 @@
                 </div>
                 <div class="mb-2">
                     <label class="col-form-label pt-0">What lessons did you learn today?</label>
-                    <div class="col-10 px-0">
+                    <div class="col-10 px-0 trade-sel-cl">
                         <textarea class="form-control" [(ngModel)]="tradePlan.lessons" [ngClass]="[view ? 'disabled' : '']"></textarea>
-                        <div class="text-right mt-1" *ngIf="!view"><span class="add-new" (click)="addRule('Add', 'SAVE')">Add as Rule</span></div>
+                        <div class="text-md-right text-center mt-1" *ngIf="!view"><span class="add-new font-weight-bold" (click)="addRule('Add', 'SAVE')">+ Add as Rule</span></div>
                     </div>
                 </div>
             </div>

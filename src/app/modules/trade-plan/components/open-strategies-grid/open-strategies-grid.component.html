@@ -1,6 +1,7 @@
 <div class="mb-2 ad-trade-plan-web">
     <div class="col-12 px-0 d-flex justify-content-between mb-1">
-        <label class="col-form-label pt-0 px-3 mb-1">Open Trades</label></div>
+        <label class="col-form-label pt-0 px-3 mb-1">Open Trades</label>
+    </div>
     <div class="d-flex">
         <mat-table [dataSource]="strategiesDataSource" class="d-lg-table">
             <ng-container matColumnDef="symbol">
@@ -46,7 +47,8 @@
             <ng-container matColumnDef="aligned" *ngIf="tradePlanId > 0">
                 <th mat-header-cell *matHeaderCellDef>Aligned</th>
                 <td mat-cell *matCellDef="let element">
-                    <mat-checkbox [(ngModel)]="element.aligned" [ngClass]="[viewTradePlan ? 'disabled' : '']"></mat-checkbox>
+                    <mat-checkbox [(ngModel)]="element.aligned" [ngClass]="[viewTradePlan ? 'disabled' : '']">
+                    </mat-checkbox>
                 </td>
             </ng-container>
 
@@ -58,65 +60,80 @@
 </div>
 <!-- Mobile Code -->
 <div class="mb-2 ad-trade-plan-mobile">
-    <div class="col-12 px-0 justify-content-between mb-1">
-        <label class="col-form-label pt-0 px-3">Open Trades</label>
-        <div class="trade-plan-table">
+    <div class="col-12 px-0 justify-content-between pb-0">
+        <label class="col-form-label pt-0 pl-4 w-100 pr-2">Open Trades <span class="cursor float-right"
+                (click)="Collaps(i)">
+                <i class="material-icons material-icons-outlined">{{hideRuleContent[i] ? 'add_circle_outline' :
+                    'remove_circle_outline'}}</i></span></label>
+        <div class="trade-plan-table" *ngIf="!hideRuleContent[i]">
             <!-- Grid row -->
             <div class="trade-plan-mobile-grid">
-                <div class="row mb-1">
-                    <div class="col-6 pl-4 cell-header">Symbol</div>
-                    <div class="col-6 cell-header text-right">Strategy</div>
+                <div class="row mb-1 pl-3">
+                    <div class="col-7 pl-4 cell-header">Symbol</div>
+                    <div class="col-5 cell-header cell-header pl-2">Strategy</div>
                 </div>
                 <div class="pb-2 pt-3 mobile-grid-row" *ngFor="let element of openStategiesGridData; let i=index">
                     <div class="row">
-                        <div class="col-6 pl-1 mobile-grid-cell">
+                        <div class="col-7 pl-3 mobile-grid-cell">
                             <span class="cursor" (click)="Collaps(i)">
                                 <i class="material-icons">{{hideRuleContent[i] ? 'keyboard_arrow_up' :
                                     'keyboard_arrow_right'}}</i>
                             </span> {{element.symbol}}
                         </div>
-                        <div class="col-6  text-right">{{element.strategyType}}</div>
+                        <div class="col-5">{{element.strategyType}}</div>
                     </div>
-                    <div class="" *ngIf="hideRuleContent[i]">
+                    <div class="pl-3" *ngIf="hideRuleContent[i]">
                         <div class="row py-1">
-                            <div class="col-6 pl-4">
+                            <div class="col-7 pl-4">
                                 Return
                             </div>
-                            <div class="col-6 text-right">
+                            <div class="col-5">
                                 {{element.returnAmount}}
                             </div>
                         </div>
                         <div class="row py-1">
-                            <div class="col-6 pl-4">
+                            <div class="col-7 pl-4">
                                 Max.Risk
                             </div>
-                            <div class="col-6 text-right">
+                            <div class="col-5">
                                 {{element.maxRisk | number:'1.0-0' }}
                             </div>
                         </div>
                         <div class="row py-1">
-                            <div class="col-6 pl-4">
+                            <div class="col-7 pl-4">
                                 Max.Profit
                             </div>
-                            <div class="col-6 text-right">
+                            <div class="col-5">
                                 {{element.maxProfit | number:'1.0-0' }}
                             </div>
                         </div>
                         <div class="row py-1">
-                            <div class="col-6 pl-4">
+                            <div class="col-7 pl-4">
                                 Comments
                             </div>
-                            <div class="col-6 text-right">
+                            <div class="col-5">
                                 <span>{{element.actionText}}</span>
                             </div>
                         </div>
                         <div class="row py-1">
-                            <div class="col-6 pl-4">
-                                Action
+                            <div class="col-7 pl-4">
+                                Aligned
                             </div>
-                            <div class="col-6 text-right">
-                                <mat-icon class="mat-icon-edit mat-icon-sm" *ngIf="!viewTradePlan" (click)="onActionTextEdit(element)">edit
-                                </mat-icon>
+                            <div class="col-5">
+                                <span>
+                                    <mat-checkbox [(ngModel)]="element.aligned"
+                                        [ngClass]="[viewTradePlan ? 'disabled' : '']">
+                                    </mat-checkbox>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row py-1">
+                            <!-- <div class="col-6 pl-4">
+                                Action
+                            </div> -->
+                            <div class="col-12">
+                                <button class="btn add-new d-flex align-items-center" *ngIf="!viewTradePlan" (click)="onActionTextEdit(element)"> <span class="add-icon mr-2">+</span> Add
+                                    Notes</button>
                             </div>
                         </div>
                     </div>

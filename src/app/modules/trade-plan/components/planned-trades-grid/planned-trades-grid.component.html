@@ -45,7 +45,8 @@
                 <th mat-header-cell *matHeaderCellDef>
                     <span class="d-flex align-items-center" *ngIf="!viewTradePlan">
                         Action
-                        <mat-icon class="text-primary mat-icon-md cursor ml-3" (click)="openPlannedTradeDialog()">add_circle</mat-icon>
+                        <mat-icon class="text-primary mat-icon-md cursor ml-3" (click)="openPlannedTradeDialog()">
+                            add_circle</mat-icon>
                     </span>
                 </th>
                 <td mat-cell *matCellDef="let element; let i = index;">
@@ -68,65 +69,82 @@
 
 <!-- Mobile Code -->
 <div class="mb-2 ad-trade-plan-mobile">
-    <div class="col-12 px-0 justify-content-between mb-1">
-        <label class="col-form-label pt-0 px-3">What do you plan to trade today?</label>
-        <div class="trade-plan-table">
+    <div class="col-12 px-0 justify-content-between mb-1 pb-0">
+        <label class="col-form-label pt-0 pl-4 w-100 pr-2">Planned Trades <span class="cursor float-right"
+                (click)="Collaps(i)">
+                <i class="material-icons material-icons-outlined">{{hideRuleContent[i] ? 'add_circle_outline' :
+                    'remove_circle_outline'}}</i></span></label>
+        <div class="trade-plan-table" *ngIf="!hideRuleContent[i]">
             <!-- Grid row -->
             <div class="trade-plan-mobile-grid">
-                <div class="row mb-1">
-                    <div class="col-6 pl-4 cell-header">Symbol</div>
-                    <div class="col-6 cell-header text-right">Strategy</div>
+                <div class="row mb-1 pl-3">
+                    <div class="col-7 pl-4 cell-header">Symbol</div>
+                    <div class="col-5 cell-header cell-header pl-2">Strategy</div>
                 </div>
                 <div class="pb-2 pt-3 mobile-grid-row" *ngFor="let element of planOpenGridData; let i=index">
                     <div class="row">
-                        <div class="col-6 pl-1 mobile-grid-cell">
+                        <div class="col-7 pl-3 mobile-grid-cell">
                             <span class="cursor" (click)="Collaps(i)">
                                 <i class="material-icons">{{hideRuleContent[i] ? 'keyboard_arrow_up' :
                                     'keyboard_arrow_right'}}</i>
                             </span> {{element.symbol}}
                         </div>
-                        <div class="col-6  text-right">{{element.strategyType}}</div>
+                        <div class="col-5">{{element.strategyType}}</div>
                     </div>
-                    <div class="" *ngIf="hideRuleContent[i]">
+                    <div class="pl-3" *ngIf="hideRuleContent[i]">
                         <div class="row py-1">
-                            <div class="col-6 pl-4">
+                            <div class="col-7 pl-4">
                                 Buy to Open
                             </div>
-                            <div class="col-6 text-right">
+                            <div class="col-5">
                                 {{element.returnAmount}}
                             </div>
                         </div>
                         <div class="row py-1">
-                            <div class="col-6 pl-4">
+                            <div class="col-7 pl-4">
                                 Max. Risk
                             </div>
-                            <div class="col-6 text-right">
+                            <div class="col-5">
                                 {{element.maxRisk | number:'1.0-0' }}
                             </div>
                         </div>
                         <div class="row py-1">
-                            <div class="col-6 pl-4">
+                            <div class="col-7 pl-4">
                                 Profit (Exp)
                             </div>
-                            <div class="col-6 text-right">
+                            <div class="col-5">
                                 {{element.maxProfit | number:'1.0-0' }}
                             </div>
                         </div>
                         <div class="row py-1">
-                            <div class="col-6 pl-4">
+                            <div class="col-7 pl-4">
                                 Specify reasons for the trade
                             </div>
-                            <div class="col-6 text-right">
+                            <div class="col-5">
                                 <span>{{element.actionText}}</span>
                             </div>
                         </div>
                         <div class="row py-1">
-                            <div class="col-6 pl-4">
+                            <div class="col-7 pl-4">
                                 Action
                             </div>
-                            <div class="col-6 text-right">
-                                <mat-icon class="mat-icon-edit mat-icon-sm" *ngIf="!viewTradePlan" (click)="onActionTextEdit(element)">edit
-                                </mat-icon>
+                            <div class="col-5">
+
+                                <span class="d-flex align-items-center" *ngIf="!viewTradePlan">
+                                    Action
+                                    <mat-icon class="text-primary mat-icon-md cursor ml-3"
+                                        (click)="openPlannedTradeDialog()">add_circle</mat-icon>
+                                </span>
+
+                                <div *ngIf="!viewTradePlan">
+                                    <mat-icon class="mat-icon-edit mat-icon-sm" (click)="openPlannedTradeDialog(element, i)">edit
+                                    </mat-icon>
+
+                                    <mat-icon class="mat-icon-sm mat-icon-sm ml-2" (click)="deletePlannedTrade(i)">
+                                        delete
+                                    </mat-icon>
+                                </div>
+
                             </div>
                         </div>
                     </div>
