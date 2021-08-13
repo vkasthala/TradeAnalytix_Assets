@@ -66,7 +66,16 @@ export class RiskAnalysisComponent implements OnInit {
   maxRiskDetails: MaxRiskDetails;
   protected add = true;
   protected Loader = false;
-  
+
+  showFormSec: boolean = false;
+  showStockSec: boolean = false;
+  showStockForm: boolean = false;
+  showOptionLegForm: boolean = false;
+  editStockForm: boolean = false;
+  editOptionForm: boolean = false;
+  showNextBtn: boolean = false;
+  protected optionGroup:any = {};
+
   constructor(private utilService: UtilService,
     private riskAnalysisService: RiskAnalysisService,
     private userStockStatsService: UserStockStatsService,
@@ -100,7 +109,26 @@ export class RiskAnalysisComponent implements OnInit {
     this.stockAdded = true;
     this.performRiskAnalysis = false;
     this.displayRiskAnalysis = false;
+    this.showOptionLegForm = false;
     this.stockEntry = this.createStockEntry();
+  }
+
+  enableStockForm() {
+    this.stockAdded = true;
+    this.showFormSec = true;
+    this.showStockForm = true;
+    this.showOptionLegForm = false;
+  }
+  showStock() {
+    this.showFormSec = false;
+    this.showStockSec = true;
+    this.showStockForm = false;
+    this.showNextBtn = true;
+  }
+  showOptionForm() {
+    this.showFormSec = true;
+    this.showStockForm = false;
+    this.showOptionLegForm = true;
   }
 
   addOption() {
@@ -108,7 +136,15 @@ export class RiskAnalysisComponent implements OnInit {
       this.stockOptions.push(this.createStockOptionEntry())
     }
   }
-
+  addOption1() {
+    let optionData = this.optionGroup;
+    this.showStockForm = false;
+    if (this.stockOptions.length < 4) {
+      this.showFormSec = false;
+      this.stockOptions.push(optionData)
+      this.showOptionLegForm = false;
+    }
+  }
 
   deleteStock() {
     this.stockAdded = false;
@@ -118,8 +154,13 @@ export class RiskAnalysisComponent implements OnInit {
       this.riskAnalysisResults = [];
       this.analyzeRisk = false;
       this.maxRiskDetails = null;
+      this.showNextBtn = false;
     }
     this.stockEntry = this.createStockEntry();
+    this.showStockSec = false;
+    this.showFormSec = false;
+    this.showStockForm = false;
+    this.editStockForm = false;
   }
 
   deleteStockOption(index) {
@@ -454,6 +495,10 @@ export class RiskAnalysisComponent implements OnInit {
     stockEntry.upperBound = 10;
     stockEntry.riskFreeRate = 6;
     stockEntry.actionType = null;
+    if (this.showStockForm) {
+      stockEntry.quantity = this.stockEntry.quantity;
+      stockEntry.actionType = this.stockEntry.actionType;
+    }
     return stockEntry;
   }
 

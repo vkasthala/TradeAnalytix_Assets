@@ -93,7 +93,7 @@
                                                 </div>
                                             </div>
                                             <div class="card-main">
-                                                <label class="col-form-label">Quantity</label>
+                                                <label class="col-form-label">Quantity :: {{ stockEntry.quantity}}</label>
                                                 <div class="card-right">
                                                     <div class="form-group">
                                                         <input type="number" (keydown)="preventNegatives($event, false)" min="0" class="form-control cards-input" [(ngModel)]="stockEntry.quantity" [disabled]="!stockAdded" />
@@ -450,4 +450,500 @@
             </ng-container>
         </ng-container>
     </div>
+</div>
+
+<!-- Add-new-trade-mobile -->
+<div class="risk-analysis-mobile">
+    <ng-container [ngSwitch]="currentState">
+        <ng-container *ngSwitchCase="1">
+            <!--entry first-->
+            <div class="addnew-first">
+                <div class="trade-form">
+                    <mat-icon class="trade-form-icon ml-1">insights</mat-icon>
+                    <h2 class="py-3 symbol-heading">Risk Analysis</h2>
+                    <div class="pb-3 symbol-description">Enter the stock name or symbol to build a strategy and analyze its risk and profitability in different scenarios</div>
+                    <div class="my-2">
+                        <app-trade-search (symbolSelectEvent)="symbolSelectEventHandler($event)"></app-trade-search>
+                    </div>
+                    <button class="btn btn-enter mt-2" (click)="enterSymbol()">Submit </button>
+                </div>
+            </div>
+            <div class="py-3 symbol-description">Risk analysis feature allows the traders to analyze the profitability and risk involved with a a complex trade strategy involving stock and options. Traders can assess the maximum gain and loss associated with the strategy by varying the stock and option inputs. Based on the analysis results, traders can tweak the strategy so that it aligns with the desired goal. 
+            </div>
+        </ng-container>
+        <!--end :: entry first-->
+
+        <ng-container *ngSwitchCase="2">
+            <div class="mask" *ngIf="Loader">
+                <div class="loader"></div>
+            </div>
+            <div class="trade-actions d-flex justify-content-between">
+                <span class="text-danger" (click)="cancelRiskAnalysis()">CANCEL</span>
+                <span class="text-primary">Risk Analysis</span>
+                <a class="text-primary" (click)="navigateToAddTrade()" *ngIf="selectedStock.name && (stockEntry || stockOptions.length > 0)">{{fromAddTrade ? 'Update' : 'Create'}}</a>
+            </div>
+            
+            <div class="mb-2">
+                <app-trade-details-header [addTrade]="add" [selectedStock]="selectedStock" [stockSummary]="stockSummary" (loadMoreStats)="loadMoreStatsHandler($event)"></app-trade-details-header>
+            </div>
+            <div class="risk-analysis-sec">
+                <div class="risk-inner">
+                    <mat-accordion class="example-headers-align" multi="true">
+                        <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    Build a trade with a pre-deﬁned or a custom strategy
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+
+                            <ng-template matExpansionPanelContent>
+                                <div class="trade-stoack-main pb-3" #tradeCards>
+                                    <div class="d-flex justify-content-between align-items-end">
+                                        <button type="button" class="btn btn-add"  *ngIf="!stockAdded" (click)="enableStockForm()"> + Stock</button>
+
+                                        <button type="button" class="btn btn-add ml-2" (click)="showOptionForm()" *ngIf="stockOptions.length < 4">+ Option</button>
+                                    </div>
+                                
+
+                                    <div class="show-stock-sec" *ngIf="showStockSec">
+                                        <div class="row pt-3">
+                                            <div class="col-5">
+                                                <label class="col-form-label pt-0">Action</label>
+                                                <div class="col-form-value">{{stockEntry.actionType === "1" ? "Buy to Open" : "Sell to Open"}}</div>
+                                            </div>
+                                            <div class="col-3">
+                                                <label class="col-form-label pt-0">Quantity</label>
+                                                <div class="col-form-value">{{ stockEntry.quantity }}</div>
+                                            </div>
+                                            <div class="col-4">
+                                                <label class="col-form-label pt-0">Entry Price</label>
+                                                <div class="col-form-value">{{stockEntry.price}}</div>
+                                            </div>
+                                        </div>
+                                        <div class="row pt-3 align-items-end">
+                                            <div class="col-5" *ngIf="!closeTrade">
+                                                <label class="col-form-label pt-0">Amount</label>
+                                                <div class="col-form-value">
+                                                    {{(stockEntry.quantity && stockEntry.price) ? (stockEntry.quantity * stockEntry.price *
+                                                    (stockEntry.actionType == 2 ? -1 : 1)).toFixed(2) : 0}}
+                                                </div>
+                                            </div>
+                                            <div class="col-4">
+                                                <span class="trade-edit" (click)="editStock(element)">
+                                                    <mat-icon class="mat-icon-sm mr-1">edit</mat-icon> Edit
+                                                </span>
+                                            </div>
+                                            <div class="col-2" *ngIf="stockAdded || stockPriceUpdated">
+                                                <span class="top-heading">
+                                                    <mat-icon (click)="deleteStock()">delete</mat-icon>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ng-container *ngFor="let item of stockOptions;let index = index">
+                                        <div class="row pt-3">
+                                            <div class="col-4">
+                                                <label class="col-form-label pt-0">Action</label>
+                                                <div class="col-form-value">{{stockOptions[index].actionType == 1 ? "Buy to Open" : "Sell to Open"}}</div>
+                                            </div>
+                                            <div class="col-3">
+                                                <label class="col-form-label pt-0">Contracts</label>
+                                                <div class="col-form-value">{{stockOptions[index].contracts}}</div>
+                                            </div>
+                                            <div class="col-3">
+                                                <label class="col-form-label pt-0">Expiration</label>
+                                                <div class="col-form-value">{{stockOptions[index].expireDate | date:
+                                                    'MM/dd/yyyy'}}</div>
+                                            </div>
+                                            <div class="col-2">
+                                                <label class="col-form-label pt-0">Strike</label>
+                                                <div class="col-form-value">{{stockOptions[index].strikePrice}}</div>
+                                            </div>
+                                        </div>
+                                        <div class="row pt-3 align-items-end mb-3">
+                                            <div class="col-3">
+                                                <label class="col-form-label pt-0">Call/Put</label>
+                                                <div class="col-form-value">{{stockOptions[index].optionType == 1 ? "Call" : "Put"}}</div>
+                                            </div>
+                                            <div class="col-4">
+                                                <label class="col-form-label pt-0">Entry Price</label>
+                                                <div class="col-form-value">{{stockOptions[index].price}}</div>
+                                            </div>
+                                            <div class="col-3">
+                                                <span class="trade-edit" (click)="editOptionLeg(index)">
+                                                    <mat-icon class="mat-icon-sm mr-1">edit</mat-icon> Edit
+                                                </span>
+                                            </div>
+                                            <div class="col-2">
+                                                <span class="cursor" (click)="deleteStockOption(index)">
+                                                    <mat-icon class="mat-icon-sm mr-1">delete</mat-icon>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </ng-container>
+
+                                    <!-- next-button -->
+                                    <div class="order-btn text-center" *ngIf="showNextBtn || stockOptions.length > 0">
+                                        <button type="button" class="btn btn-next w-100 mt-3" (click)="checkForStockPrice();" [class.disabled]="!isValidDetails()">
+                                            Next
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="trade-cards-section">
+                                    
+                                    
+                                </div>
+
+                                <div class="form-stock-sec" [ngClass]="showFormSec ? 'd-block' : 'd-none'">
+                                    <div class="trade-cards-section stock-leg-form" *ngIf="showStockForm">
+                                        <div class="mb-2">
+                                            <label class="col-form-label pt-0">Action</label>
+                                            <div class="mb-2">
+                                                <span class="mr-3">
+                                                    <input type="radio" name="inputState" value="1" [(ngModel)]="stockEntry.actionType" class="radio" /> Buy to Open
+                                                </span>
+                                                <span class="mr-3">
+                                                    <input type="radio" name="inputState" value="2" [(ngModel)]="stockEntry.actionType" class="radio" /> Sell to Open
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <div class="mr-3">
+                                                <label class="col-form-label pt-0">Quantity</label>
+                                                <input type="number" (change)="preventNegatives($event, false)" min="0" class="form-control cards-input" [(ngModel)]="stockEntry.quantity" />
+                                            </div>
+                                            <div>
+                                                <label class="col-form-label pt-0">Entry Price</label>
+                                                <input type="number" pattern="^\d*(\.\d{0,2})?$" (change)="checkForDecimalValidation($event)" step="0.01" (change)="preventNegatives($event, true)" min="0" class="form-control cards-input" placeholder="" [(ngModel)]="stockEntry.price" />
+                                            </div>
+                                        </div>
+                                        <div class="mt-3">
+                                            <label class="col-form-label pt-0">Amount</label>
+                                            <h6>
+                                                <h6>{{stockEntry.quantity && stockEntry.price ? (stockEntry.quantity * stockEntry.price).toFixed(2) : 0}}
+                                                </h6>
+                                            </h6>
+                                        </div>
+                                        <button type="button" class="btn btn-primary w-100 mt-3" (click)="addStock(); showStock();" *ngIf="!editStockForm">Add</button>
+                                    </div>
+                                    <!-- end: stock form sec -->
+                                    
+                                    <ng-container *ngIf="showOptionLegForm">
+                                        <div class="option-leg-form">
+                                            <div class="mb-3">
+                                                <label class="col-form-label pt-0">Action</label>
+                                                <div class="mb-2">
+                                                    <span class="mr-3">
+                                                        <input type="radio" value="1" [(ngModel)]="optionGroup.actionType" class="radio" > Buy to Open
+                                                    </span>
+                                                    <span>
+                                                        <input type="radio" value="2" [(ngModel)]="optionGroup.actionType" class="radio" > Sell to Open
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex justify-content-between mb-3">
+                                                <div class="mr-3">
+                                                    <label class="col-form-label pt-0">Contracts</label>
+                                                    <input type="number" min="0" class="form-control" placeholder="" [(ngModel)]="optionGroup.contracts" />
+                                                </div>
+                                                <div>
+                                                    <label class="col-form-label pt-0">Expiration</label>
+                                                    <div class="datepicker-group">
+                                                        <input matInput [matDatepicker]="expireDate" (click)="expireDate.open()"
+                                                            id="expireDate" name="optionGroup.expireDate"
+                                                            [(ngModel)]="optionGroup.expireDate" />
+                                                        <mat-datepicker-toggle matSuffix [for]="expireDate"></mat-datepicker-toggle>
+                                                        <mat-datepicker #expireDate></mat-datepicker>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-6 pr-1">
+                                                    <label class="col-form-label pt-0">Strike</label>
+                                                    <input type="number" pattern="^\d*(\.\d{0,2})?$" step="0.01" min="0" class="form-control cards-input" placeholder="" [(ngModel)]="optionGroup.strikePrice" />
+                                                </div>
+                                                <div class="col-6">
+                                                    <label class="col-form-label pt-0">Call/Put</label>
+                                                    <div class="mb-2">
+                                                        <span class="mr-3">
+                                                            <input type="radio" name="optionType" value="1" [(ngModel)]="optionGroup.optionType" /> Call
+                                                        </span>
+                                                        <span>
+                                                            <input type="radio" name="optionType" value="2" [(ngModel)]="optionGroup.optionType" /> Put
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex justify-content-between mb-3">
+                                                <div class="mr-3">
+                                                    <label class="col-form-label pt-0">Entry Price</label>
+                                                    <input type="number" (change)="preventNegatives($event, true)" pattern="^\d*(\.\d{0,2})?$" (change)="checkForDecimalValidation($event)"
+                                                                    step="0.01" min="0" class="form-control" placeholder="" [(ngModel)]="optionGroup.price" />
+                                                </div>
+                                                <div>
+                                                    <label class="col-form-label pt-0">Cost</label>
+                                                    <h6>
+                                                        {{(optionGroup.contracts && optionGroup.closePrice) ?
+                                                        (optionGroup.contracts * ((optionGroup.closePrice -
+                                                        optionGroup.price) * 100) * (optionGroup.actionType == 2 ?
+                                                        -1 : 1)).toFixed(2) : 0}}
+                                                    </h6>
+                                                </div>
+                                            </div>
+                                            <button type="button" class="btn btn-primary w-100" (click)="addOption1()" *ngIf="!editOptionForm">Add</button>
+                                        </div>
+                                    </ng-container>
+                                </div>
+
+                                
+                            </ng-template>
+                        </mat-expansion-panel>
+
+                        <mat-expansion-panel [expanded]="panelOpenState" (opened)="setStep(1)" (afterCollapse)="afterPanelClosed(1)" (afterExpand)="afterPanelOpened($event)" [disabled]="panelDisabled">
+                            <mat-expansion-panel-header>
+                                Provide stock and option leg inputs
+                            </mat-expansion-panel-header>
+
+                            <ng-template matExpansionPanelContent>
+                                <ng-container *ngIf="displayRiskAnalysis">
+                                    <!-- risk-increas and decreas -->
+                                    <div class="trade-stoack-main">
+                                        <div class="d-flex justify-content-between mb-3">
+                                            <div class="col-7 pl-0">
+                                                <div class="stock-name">Price Range</div>
+                                                <div class="d-flex">
+                                                    <div class="stock-inc mr-2">
+                                                        <div class="stock-p">
+                                                            <input type="number" class="hide-bars range-sm" min="-100" max="0" minlength="-100" maxlength="0" [(ngModel)]="stockEntry.lowerBound" (input)="enforceMaxLength($event, -100, 0)">
+                                                            <p>&#37;</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="stock-inc">
+                                                        <div class="stock-p">
+                                                            <input (keydown)="preventNegatives($event, true)" type="number" class="hide-bars range-sm" min="0" max="100" minlength="0" maxlength="100" [(ngModel)]="stockEntry.upperBound" (input)="enforceMaxLength($event, 0, 100)" />
+                                                            <p>&#37;</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-5 pr-0">
+                                                <div class="stock-name">Risk Free Rate</div>
+                                                <div class="stock-inc">
+                                                    <a (click)="decreaseRiskFreeRate()" (mousedown)="mousedown('decreaseRiskFreeRate')" (mouseup)="mouseup()" (mouseleave)="mouseup()">
+                                                        <mat-icon>remove_circle</mat-icon>
+                                                    </a>
+                                                    <div class="stock-p">
+                                                        <input (keydown)="preventNegatives($event, true)" type="number" class="hide-bars" min="0" max="100" minlength="0" maxlength="100" [(ngModel)]="stockEntry.riskFreeRate" (input)="enforceMaxLength($event, 0, 100)">
+                                                        <p>&#37;</p>
+                                                    </div>
+                                                    <a (click)="increaseRiskFreeRate()" (mousedown)="mousedown('increaseRiskFreeRate')" (mouseup)="mouseup()" (mouseleave)="mouseup()">
+                                                        <mat-icon>add_circle</mat-icon>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="w-100" *ngFor="let item of stockOptions;let index=index">
+                                            <div class="py-3">
+                                                <div class="d-flex justify-content-between mb-3">
+                                                    <div class="col-6 pl-0 pr-1">
+                                                        <div class="stock-name">Days Left</div>
+                                                        <div class="stock-inc">
+                                                            <a (click)="decreaseDaysLeft(index)" (mousedown)="mousedown('decreaseDaysLeft', index)" (mouseup)="mouseup()" (mouseleave)="mouseup()">
+                                                                <mat-icon>remove_circle</mat-icon>
+                                                            </a>
+                                                            <span>
+                                                                <input (keydown)="preventNegatives($event, true)" type="number"
+                                                                    class="hide-bars" step="0.1" min="0" max="730" minlength="0"
+                                                                    maxlength="730" [(ngModel)]="item.daysLeft">
+                                                            </span>
+                                                            <a (click)="increaseDaysLeft(index)" (mousedown)="mousedown('increaseDaysLeft', index)" (mouseup)="mouseup()" (mouseleave)="mouseup()">
+                                                                <mat-icon>add_circle</mat-icon>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-6 pr-0 pl-2">
+                                                        <div class="stock-name">Implied Volatility</div>
+                                                        <div class="stock-inc">
+                                                            <a (click)="decreaseImpliedValue(index)" (mousedown)="mousedown('decreaseImpliedValue', index)" (mouseup)="mouseup()" (mouseleave)="mouseup()">
+                                                                <mat-icon>remove_circle</mat-icon>
+                                                            </a>
+                                                            <div class="stock-p">
+                                                                <input type="number" class="hide-bars" min="1" max="500" minlength="1" maxlength="500" [(ngModel)]="item.impliedVolatility" (input)="enforceMaxLength($event, 1, 500)">
+                                                                <p>&#37;</p>
+                                                            </div>
+                                                            <a (click)="increaseImpliedValue(index)" (mousedown)="mousedown('increaseImpliedValue', index)" (mouseup)="mouseup()" (mouseleave)="mouseup()">
+                                                                <mat-icon>add_circle</mat-icon>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="current-stock">
+                                                    <p>Current IV: <span>{{item.initialImpliedVolatility}}</span></p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                        <!-- next-button -->
+                                        <div class="order-btn text-center">
+                                            <a class="btn btn-next" (click)="analyzeRisk = true; initRiskAnalysis();" [class.disabled]="!isValidDetails()">Analyze</a>
+                                            <a class="btn btn-next gap-btn" *ngIf="analyzeRisk" (click)="analyzeRisk = false; scroll(tradeCards);">Reset</a>
+                                        </div>
+                                    </div>
+                                </ng-container>
+                            </ng-template>
+                        </mat-expansion-panel>
+
+
+                        <mat-expansion-panel [expanded]="panelExpand" (opened)="setStep(2)" [disabled]="panel3Disabled" (afterCollapse)="afterPanelClosed(2)">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    Analyze the risk and proﬁtability associated with the trade for the given inputs
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <ng-template matExpansionPanelContent>
+                                <div class="d-flex justify-content-end align-items-center mt-3">
+                                    <div class="pb-3 k-font-bold d-flex justify-content-end" *ngIf="maxRiskDetails">
+                                        <div class="risk_details risk_profit mr-3">
+                                            <div class="pr-3">Maximum Proﬁt is when the stock is up <span>{{maxRiskDetails.maxProfitChange}}</span>% Maximum
+                                            </div>
+                                            <span class="risk_details_count">{{maxRiskDetails.maxProfit}}</span>
+                                        </div>
+                                        <div class="risk_details risk_lose">
+                                            <div class="pr-3">Risk is when the stock is down <span>{{maxRiskDetails.maxRiskChange}}</span>%
+                                            </div>
+                                            <span class="risk_details_count">{{maxRiskDetails.maxRisk}}</span>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-enter ml-3" (click)="calculateMaxRisk()">Max Profit/Risk</button>
+                                </div>
+
+                                <ng-container *ngIf="displayRiskAnalysis && analyzeRisk && (stockAdded || stockOptions.length > 0)">
+                                    <!-- risk-tabs -->
+                                    <div class="trade-risk-tabs">
+                                        <div class="tab" role="tabpanel">
+                                            <ul class="nav nav-tabs" role="tablist">
+                                                <li class="active" role="presentation">
+                                                    <a aria-controls="home" aria-expanded="true" data-toggle="tab" href="#Section1" role="tab">Data Table</a>
+                                                </li>
+                                                <li class="" role="presentation">
+                                                    <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#Section2" role="tab" (click)="initChart()">Charts</a>
+                                                </li>
+                                            </ul>
+                                            <div class="tab-content tabs">
+                                                <div class="tab-pane active" id="Section1" role="tabpanel">
+                                                    <div class="risk-tabs-table">
+
+                                                        <div class="risk-table" *ngIf="riskAnalysisResults && riskAnalysisResults.length">
+
+                                                            <div class="trad-risk-head">
+                                                                <h6>
+                                                                    {{riskAnalysisResults[0].stockPriceResult.heading}}
+                                                                </h6>
+                                                            </div>
+                                                            <table>
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Change</th>
+                                                                        <th>Price</th>
+                                                                        <th *ngIf="stockAdded">P&L</th>
+                                                                    </tr>
+                                                                </thead>
+
+                                                                <tbody>
+                                                                    <tr *ngFor="let item of riskAnalysisResults;let index=index">
+                                                                        <td [ngClass]="{ 'trade-rd' :item.stockPriceResult.gainLoss >= 0, 'trade-rdd':item.stockPriceResult.gainLoss < 0}">
+                                                                            {{item.stockPriceResult.change + '%'}}</td>
+                                                                        <td>{{item.stockPriceResult.stockPrice}}</td>
+                                                                        <td *ngIf="stockAdded" [ngClass]="{ 'trade-rd' :item.stockPriceResult.gainLoss >= 0, 'trade-rdd':item.stockPriceResult.gainLoss < 0}">
+                                                                            {{item.stockPriceResult.gainLoss}}</td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                        <ng-container *ngFor="let item of riskAnalysisResults[0].optionResults;let index=index">
+                                                            <div class="risk-table" *ngIf="riskAnalysisResults && riskAnalysisResults.length && stockOptions && stockOptions.length">
+
+                                                                <div class="trad-risk-head">
+                                                                    <h6>
+                                                                        {{item.heading}}
+                                                                    </h6>
+                                                                </div>
+                                                                <table>
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>{{riskAnalysisResults[0].optionResults[index].optionType == 1 ? 'Price' : 'Price'}}
+                                                                            </th>
+                                                                            <th>{{riskAnalysisResults[0].optionResults[index].optionType == 1 ? 'Value' : 'Value'}}
+                                                                            </th>
+                                                                            <th>P&L</th>
+                                                                        </tr>
+                                                                    </thead>
+
+                                                                    <tbody>
+                                                                        <tr *ngFor="let ritem of riskAnalysisResults;let rowIndex=index">
+                                                                            <td [ngClass]="{ 'trade-rd' :ritem.optionResults[index].gainLoss >= 0, 'trade-rdd':ritem.optionResults[index].gainLoss < 0}">
+                                                                                {{ritem.optionResults[index].price}}</td>
+                                                                            <td>{{ritem.optionResults[index].value | number:'1.0-0' }}</td>
+                                                                            <td [ngClass]="{ 'trade-rd' :ritem.optionResults[index].gainLoss >= 0, 'trade-rdd':ritem.optionResults[index].gainLoss < 0}">
+                                                                                {{ritem.optionResults[index].gainLoss | number:'1.0-0'}}
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </ng-container>
+
+
+                                                        <div class="risk-tables" *ngIf="stockAdded || (stockOptions && stockOptions.length)">
+
+                                                            <div class="trad-risk-head">
+                                                                <h6>
+                                                                    Total
+                                                                </h6>
+                                                            </div>
+                                                            <table>
+                                                                <thead>
+                                                                    <tr>
+
+                                                                        <th>Net P&L</th>
+                                                                    </tr>
+                                                                </thead>
+
+                                                                <tbody>
+                                                                    <tr *ngFor="let item of riskAnalysisResults;let index=index">
+                                                                        <td [ngClass]="{ 'trade-rd' :item.totalSummary.gainLoss >= 0, 'trade-rdd':item.totalSummary.gainLoss < 0}">
+                                                                            {{item.totalSummary.gainLoss | number:'1.0-0'}}</td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane fade" id="Section2" role="tabpanel">
+                                                    <!-- <div class="charts">
+                                                        <img src="../../../../assets/images/icon/Image 24.png" alt=""
+                                                            class="img-responsive" />
+                                                    </div> -->
+                                                    <app-risk-analysis-chart #riskAnalysisChart></app-risk-analysis-chart>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="trad-border"></div>
+
+
+                                    </div>
+                                </ng-container>
+                            </ng-template>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                </div>
+            </div>
+        </ng-container>
+    </ng-container>
 </div>
