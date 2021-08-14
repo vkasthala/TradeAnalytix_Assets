@@ -5,5 +5,9 @@ export class ReportFilter {
     toDate: string;
 
     summaryType: string;
+
+    year: number;
+
+    month: number;
     
 }

@@ -23,8 +23,14 @@
                     <div class="row">
                         <div class="col-sm-8">
                             <!-- charts -->
-                            <div class="trade-dash-con">
-                                <app-report-chart *ngFor="let report of reports" [report]="report" [subtype]="subtype" [reportFilter]="reportFilter" [filterChangeSubject]="filterChangeSubject" #reportChart></app-report-chart>
+                            <div class="trade-dash-con" *ngFor="let report of reports">
+                                <app-report-chart [report]="report" [subtype]="subtype" [reportFilter]="reportFilter" [filterChangeSubject]="filterChangeSubject" #reportChart></app-report-chart>
+                                <!--
+                                <div [ngSwitch]="report.id">
+                                    <app-calendar-chart [report]="report" [subtype]="subtype" [reportFilter]="reportFilter" [filterChangeSubject]="filterChangeSubject" *ngSwitchCase="calendar_report" #reportChart></app-calendar-chart>
+                                    <app-report-chart [report]="report" [subtype]="subtype" [reportFilter]="reportFilter" [filterChangeSubject]="filterChangeSubject" *ngSwitchDefault #reportChart></app-report-chart>
+                                </div>
+                                -->
                             </div>
                         </div>
 

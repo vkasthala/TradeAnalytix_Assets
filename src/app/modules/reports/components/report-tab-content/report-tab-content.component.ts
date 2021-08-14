@@ -1,14 +1,13 @@
-import { Component, OnInit, Input, ViewChild, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { IMyDateRangeModel } from 'mydaterangepicker';
+import { Subject } from 'rxjs';
 import { ReportDetails } from '../../model/report-details.model';
+import { ReportFilter } from '../../model/report-filter.model';
 import { ReportSubType } from '../../model/report-sub-type.model';
 import { ReportSummaryItem } from '../../model/report-summary-item.model';
 import { ReportTypeService } from '../../services/report-type.service';
-import { ReportSummaryComponent } from '../report-summary/report-summary.component';
-import { typeofExpr } from '@angular/compiler/src/output/output_ast';
 import { ReportChartComponent } from '../report-chart/report-chart.component';
-import { IMyDateRangeModel } from 'mydaterangepicker';
-import { ReportFilter } from '../../model/report-filter.model';
-import { Subject } from 'rxjs';
+import { ReportSummaryComponent } from '../report-summary/report-summary.component';
 
 @Component({
   selector: 'app-report-tab-content',
@@ -73,7 +72,7 @@ export class ReportTabContentComponent implements OnInit {
     return dateObj;
   }
 
-  protected reloadData(tab: string){
+  protected reloadData(tab: string) {
 
   }
 
