@@ -3,6 +3,16 @@
         <h5>{{report.title}}</h5>
     </div>
     <div class="dsh-img reports-chart">
+        <div *ngIf = "monthFilter" class="row date-filter">
+            <div class="col-1 date-label">Year:</div>
+            <select class="form-control select-input col-2" id="year" (change)="onYearAndMonthChange()" [(ngModel)]='reportFilter.year'>
+                <option *ngFor="let key of years" [value]="key" [label]="key"></option>
+            </select>
+            <div class="col-1 date-label">Month:</div>
+            <select class="form-control select-input col-2" id="month" (change)="onYearAndMonthChange()" [(ngModel)]='reportFilter.month'>
+                <option *ngFor="let month of months" [value]="month.key" [label]="month.label"></option>
+            </select>
+        </div>
         <div [chart]="chart"></div>
     </div>
 </div>
