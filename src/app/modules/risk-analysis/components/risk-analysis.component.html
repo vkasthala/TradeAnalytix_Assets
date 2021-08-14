@@ -477,10 +477,13 @@
             <div class="mask" *ngIf="Loader">
                 <div class="loader"></div>
             </div>
-            <div class="trade-actions d-flex justify-content-between">
+            <div class="trade-actions d-flex justify-content-between mb-2">
                 <span class="text-danger" (click)="cancelRiskAnalysis()">CANCEL</span>
                 <span class="text-primary">Risk Analysis</span>
-                <a class="text-primary" (click)="navigateToAddTrade()" *ngIf="selectedStock.name && (stockEntry || stockOptions.length > 0)">{{fromAddTrade ? 'Update' : 'Create'}}</a>
+
+                <!-- <a class="text-primary" (click)="navigateToAddTrade()" *ngIf="selectedStock.name && (stockEntry || stockOptions.length > 0)">{{fromAddTrade ? 'Update' : 'Create'}}</a> -->
+
+                <a class="text-primary" *ngIf="displayRiskAnalysis" (click)="analyzeRisk = true; initRiskAnalysis(); calculateMaxRisk();">Analyze</a>
             </div>
             
             <div class="mb-2">
@@ -785,14 +788,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
-
-
-                                        <!-- next-button -->
-                                        <div class="order-btn text-center">
-                                            <a class="btn btn-next" (click)="analyzeRisk = true; initRiskAnalysis();" [class.disabled]="!isValidDetails()">Analyze</a>
-                                            <a class="btn btn-next gap-btn" *ngIf="analyzeRisk" (click)="analyzeRisk = false; scroll(tradeCards);">Reset</a>
-                                        </div>
                                     </div>
                                 </ng-container>
                             </ng-template>
@@ -806,22 +801,18 @@
                                 </mat-panel-title>
                             </mat-expansion-panel-header>
                             <ng-template matExpansionPanelContent>
-                                <div class="d-flex justify-content-end align-items-center mt-3">
-                                    <div class="pb-3 k-font-bold d-flex justify-content-end" *ngIf="maxRiskDetails">
-                                        <div class="risk_details risk_profit mr-3">
-                                            <div class="pr-3">Maximum Proﬁt is when the stock is up <span>{{maxRiskDetails.maxProfitChange}}</span>% Maximum
-                                            </div>
-                                            <span class="risk_details_count">{{maxRiskDetails.maxProfit}}</span>
+                                <div class="trade-stoack-main">
+                                    <div class="risk_details risk_profit mb-3">
+                                        <div class="pr-3">Maximum Proﬁt is when the stock is up <span>{{maxRiskDetails.maxProfitChange}}</span>% Maximum
                                         </div>
-                                        <div class="risk_details risk_lose">
-                                            <div class="pr-3">Risk is when the stock is down <span>{{maxRiskDetails.maxRiskChange}}</span>%
-                                            </div>
-                                            <span class="risk_details_count">{{maxRiskDetails.maxRisk}}</span>
-                                        </div>
+                                        <span class="risk_details_count">{{maxRiskDetails.maxProfit}}</span>
                                     </div>
-                                    <button class="btn btn-enter ml-3" (click)="calculateMaxRisk()">Max Profit/Risk</button>
+                                    <div class="risk_details risk_lose">
+                                        <div class="pr-3">Risk is when the stock is down <span>{{maxRiskDetails.maxRiskChange}}</span>%
+                                        </div>
+                                        <span class="risk_details_count">{{maxRiskDetails.maxRisk}}</span>
+                                    </div>
                                 </div>
-
                                 <ng-container *ngIf="displayRiskAnalysis && analyzeRisk && (stockAdded || stockOptions.length > 0)">
                                     <!-- risk-tabs -->
                                     <div class="trade-risk-tabs">
