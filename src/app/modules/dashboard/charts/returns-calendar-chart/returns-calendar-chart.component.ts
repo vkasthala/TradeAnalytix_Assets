@@ -28,11 +28,11 @@ export class ReturnsCalendarChartComponent extends DashboardChartComponent imple
             return '<span>' + this.point.value.val + '</span>';
           } else if (day < 0) {
             return '<span class="dateloss">' + this.point.value.val + '</span>'
-            + '<br>' + '<span class=valLoss>' + this.point.value.gain * -1 + '<br>'
+            + '<br>' + '<span class="material-icons calendar-day-icon">price_change</span><span class=valLoss>' + this.point.value.gain * -1 + '<br><span class="material-icons calendar-day-icon">add_box</span>'
             + this.point.value.trades + '</span>';
           } else {
             return '<span class=dateGain>' + this.point.value.val + '</span>' + '<br>'
-              + '<span class=valGain> ' + this.point.value.gain + '<br>' + this.point.value.trades + '</span>'
+              + '<span class="material-icons calendar-day-icon">price_change</span><span class=valGain> ' + this.point.value.gain + '<br><span class="material-icons calendar-day-icon">add_box</span>' + this.point.value.trades + '</span>'
           }
         };
 
