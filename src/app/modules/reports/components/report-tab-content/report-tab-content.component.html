@@ -10,6 +10,15 @@
                 <div class="risk-manage-sec">
                     <div class="top-sec">
                         <div class="px-3 top-sec-label">
+                            Symbol
+                        </div>
+                        <div class="report-trade-symbol">
+                            <div class="form-group has-search">
+                                <app-trade-search (symbolSelectEvent)="symbolSelectEventHandler($event)" #tradeSearchComponent>
+                                </app-trade-search>
+                            </div>
+                        </div>
+                        <div class="px-3 top-sec-label">
                             Date Range
                         </div>
                         <div class="trade-date">

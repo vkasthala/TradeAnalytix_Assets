@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IMyDateRangeModel } from 'mydaterangepicker';
 import { Subject } from 'rxjs';
+import { StockSymbol } from 'src/app/modules/shared/models/trade-management/stock-symbol.model';
 import { ReportDetails } from '../../model/report-details.model';
 import { ReportFilter } from '../../model/report-filter.model';
 import { ReportSubType } from '../../model/report-sub-type.model';
@@ -74,6 +75,12 @@ export class ReportTabContentComponent implements OnInit {
 
   protected reloadData(tab: string) {
 
+  }
+
+  symbolSelectEventHandler(selectedSymbol: StockSymbol) {
+    this.reportFilter.stockId = selectedSymbol.id;
+    this.reportFilter.symbol = selectedSymbol.code + '';
+    console.log('symbol filter:', this.reportFilter);
   }
 
 }
