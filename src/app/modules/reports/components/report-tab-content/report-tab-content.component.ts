@@ -81,6 +81,7 @@ export class ReportTabContentComponent implements OnInit {
     this.reportFilter.stockId = selectedSymbol.id;
     this.reportFilter.symbol = selectedSymbol.code + '';
     console.log('symbol filter:', this.reportFilter);
+    this.filterChangeSubject.next(this.reportFilter);
   }
 
 }
