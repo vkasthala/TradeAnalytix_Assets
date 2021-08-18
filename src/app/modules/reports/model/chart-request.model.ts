@@ -5,4 +5,9 @@ export class ChartRequest {
     fromDate: string;
 
     toDate: string;
+
+    symbol: string;
+   
+    stockId: number;
+    
 }

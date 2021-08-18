@@ -71,7 +71,6 @@ export class EditTradeDetailsComponent implements OnInit {
 
 
   next() {
-    debugger;
     this.nextStep.emit()
   }
 

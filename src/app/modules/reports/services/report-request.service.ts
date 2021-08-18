@@ -43,6 +43,8 @@ export class ReportRequestService {
     request.id = reportDetails.id;
     request.fromDate = reportFilter.fromDate;
     request.toDate = reportFilter.toDate;
+    request.stockId = reportFilter.stockId;
+    request.symbol = reportFilter.symbol;
     return request;
   }
 

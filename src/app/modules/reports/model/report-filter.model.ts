@@ -9,5 +9,8 @@ export class ReportFilter {
     year: number;
 
     month: number;
-    
+
+    symbol: string;
+   
+    stockId: number;
 }
