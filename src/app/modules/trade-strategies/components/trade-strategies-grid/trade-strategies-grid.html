@@ -159,8 +159,7 @@
   <div class="trade-st-mobile-grid">
     <div class="row mb-1">
       <div class="col-6 pl-4 cell-header">Identifier</div>
-      <div class="col-3 cell-header">Symbol</div>
-      <div class="col-3 cell-header text-right">Status</div>
+      <div class="col-6 cell-header text-right">Symbol</div>
     </div>
     <div class="pb-2 pt-3 mobile-grid-row" *ngFor="let element of gridData; let i=index">
       <div class="row">
@@ -170,10 +169,17 @@
           </span>
           {{element.uid}}
         </div>
-        <div class="col-3">{{element.stockCode}}</div>
-        <div class="col-3 text-right">{{element.status}}</div>
+        <div class="col-6 text-right">{{element.stockCode}}</div>
       </div>
       <div class="" *ngIf="hideRuleContent[i]">
+        <div class="row py-1">
+          <div class="col-6 pl-4">
+            Status
+          </div>
+          <div class="col-6 text-right">
+            {{element.status}}
+          </div>
+        </div>
         <div class="row py-1">
           <div class="col-6 pl-4">
             Strategy

@@ -75,6 +75,10 @@ export class RiskAnalysisComponent implements OnInit {
   editOptionForm: boolean = false;
   showNextBtn: boolean = false;
   protected optionGroup:any = {};
+  stockTable: boolean = true;
+  optionTable: boolean = false;
+  totalTable: boolean = false;
+  selectedOptionResult: any;
 
   constructor(private utilService: UtilService,
     private riskAnalysisService: RiskAnalysisService,
@@ -296,6 +300,48 @@ export class RiskAnalysisComponent implements OnInit {
     }
   }
 
+  riskAnalysisGridChange(value:string) {
+    if (value === 'stockTb') {
+      this.optionTable = false;
+      this.totalTable = false;
+      this.stockTable = true;
+    } else if (value === 'totalTB') {
+      this.stockTable = false;
+      this.optionTable = false
+      this.totalTable = true;
+    } else {
+      var numeric = Number(value);
+      this.stockTable = false;
+      this.totalTable = false;
+      this.optionTable = true;
+      this.selectedOptionResult = Number(value);
+    }
+  }
+
+  editStock(element) {
+    this.showFormSec = true;
+    this.editOptionForm = false;
+    this.showStockForm = true;
+    this.editStockForm = true;
+    this.showOptionLegForm = false;
+  }
+  editOptionLeg(index) {
+    this.showFormSec = true;
+    this.editOptionForm = true;
+    this.showOptionLegForm = true;
+  }
+  cancelTradeStock(index) {
+    this.showFormSec = false;
+    this.editOptionForm = false;
+    this.showOptionLegForm = false;
+    this.showStockForm = false;
+  }
+  cancelTradeOption(index) {
+    this.showFormSec = false;
+    this.editOptionForm = false;
+    this.showOptionLegForm = false;
+  }
+  
   initState(): void {
     if (!this.router.getCurrentNavigation()) {
       return;
