@@ -9,5 +9,7 @@ export class SummaryRequest {
     stockId: number;
 
     strategyTypeId: number;
+
+    symbol: string;
     
 }

@@ -50,6 +50,8 @@ export class ReportSummaryComponent implements OnInit {
     summaryRequest.fromDate = reportFilter.fromDate;
     summaryRequest.toDate = reportFilter.toDate;
     summaryRequest.summaryType = reportFilter.summaryType;
+    summaryRequest.symbol = reportFilter.symbol;
+    summaryRequest.stockId = reportFilter.stockId;
     return summaryRequest;
   }
 
