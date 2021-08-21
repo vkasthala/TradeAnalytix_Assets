@@ -81,9 +81,8 @@
                 {{getDisplayValue(stockSummary.changePercent, '%')}}
                 </span>
             </div>
+            <span class="w-100 pl-4">{{getDisplayValue(selectedStock.code)}}</span>
         </div>
-        <span class="col-3">{{getDisplayValue(selectedStock.code)}}</span>
-        <span class="col-3"></span>
     </div>
     <div *ngIf="hideTradeHeader">
         <div class="row trade-header-row">
