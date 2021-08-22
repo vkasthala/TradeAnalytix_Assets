@@ -13,6 +13,15 @@ export class HttpService {
     return this.getWithParams(url, new Map(), new Map())
   }
 
+  getWIthReponseType(url: string, requestParamsMap: Map<string, string>, headersMap: Map<string, string>): Observable<any> {
+    const options  = {
+      headers: this.createHttpHeaders(headersMap),
+      params: this.createHttpParms(requestParamsMap),
+      responseType: 'arraybuffer' as 'text'
+    };
+    return this.http.get(url, options);
+  }
+
   public getWithParams<T>(url: string, requestParamsMap: Map<string, string>, headersMap: Map<string, string>): Observable<T> {
     return this.http.get<T>(url, {
       headers: this.createHttpHeaders(headersMap),

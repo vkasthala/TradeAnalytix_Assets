@@ -5,25 +5,25 @@
                 <!-- Date Column -->
                 <ng-container matColumnDef="openDate">
                     <mat-header-cell *matHeaderCellDef mat-sort-header>Date</mat-header-cell>
-                    <mat-cell class="strategy-id-cell" *matCellDef="let element"> {{element.openDate | date: 'dd-MMM-yyyy'}} </mat-cell>
+                    <mat-cell class="strategy-id-cell" *matCellDef="let element"> {{element.createDateTime | date: 'dd-MMM-yyyy'}} </mat-cell>
                 </ng-container>
 
                 <!-- File name Column -->
                 <ng-container matColumnDef="stockName">
                     <mat-header-cell class="stock-name-cell" *matHeaderCellDef mat-sort-header>File name</mat-header-cell>
-                    <mat-cell *matCellDef="let element"> {{element.stockCode}} </mat-cell>
+                    <mat-cell *matCellDef="let element"> {{element.fileName}} </mat-cell>
                 </ng-container>
 
                 <!-- Uploaded Records Column -->
                 <ng-container matColumnDef="direction">
                     <mat-header-cell *matHeaderCellDef mat-sort-header>Uploaded Records</mat-header-cell>
-                    <mat-cell *matCellDef="let element" class="text-success"> {{element.direction}} </mat-cell>
+                    <mat-cell *matCellDef="let element" class="text-success"> {{element.totalRecords}} </mat-cell>
                 </ng-container>
 
                 <!-- Failed Records Column -->
                 <ng-container matColumnDef="status">
                     <mat-header-cell *matHeaderCellDef mat-sort-header>Failed Records</mat-header-cell>
-                    <mat-cell *matCellDef="let element" class="text-danger"> {{element.status}} </mat-cell>
+                    <mat-cell *matCellDef="let element" class="text-danger"> {{element.failedRecords}} </mat-cell>
                 </ng-container>
 
                 <!-- Closed Date Column -->
@@ -31,7 +31,7 @@
                     <mat-header-cell class="action-cell" *matHeaderCellDef mat-sort-header>Action</mat-header-cell>
                     <mat-cell *matCellDef="let element, let i = index" class="action_colum">
                         <div>
-                            <mat-icon (click)="viewTrade(element);closeActionBox()" class="mat-icon-sm trade-view">download</mat-icon>
+                            <mat-icon (click)="downloadFailedTrade(element)" class="mat-icon-sm trade-view">download</mat-icon>
                         </div>
                     </mat-cell>
                 </ng-container>
