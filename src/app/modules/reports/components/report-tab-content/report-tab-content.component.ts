@@ -35,7 +35,7 @@ export class ReportTabContentComponent implements OnInit {
 
   protected reportFilter: ReportFilter = new ReportFilter();
 
-  protected dateFilter: any;;
+  protected dateFilter: any;
 
   constructor(protected type: string, protected reportTypeService: ReportTypeService) { }
 

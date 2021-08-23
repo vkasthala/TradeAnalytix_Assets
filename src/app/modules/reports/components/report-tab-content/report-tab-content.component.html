@@ -9,10 +9,10 @@
             <div class="tab-pane active" id="allocation" role="tabpanel">
                 <div class="risk-manage-sec">
                     <div class="top-sec">
-                        <div class="px-3 top-sec-label">
+                        <div class="px-3 top-sec-label" *ngIf="type === 'performance'">
                             Symbol
                         </div>
-                        <div class="report-trade-symbol">
+                        <div class="report-trade-symbol" *ngIf="type === 'performance'">
                             <div class="form-group has-search">
                                 <app-trade-search (symbolSelectEvent)="symbolSelectEventHandler($event)" #tradeSearchComponent>
                                 </app-trade-search>
