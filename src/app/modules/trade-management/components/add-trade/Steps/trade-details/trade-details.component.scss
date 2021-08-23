@@ -589,6 +589,31 @@ a.btn.btn-skip {
     margin-top: 0;
 }
 
+.tags-list {
+    list-style: none;
+    text-align: center;
+}
+
+.tag-icon {
+    font-size: 12px !important;
+    vertical-align: middle;
+    color: #2285FA;
+}
+
+.tags-list > li {
+    display: inline-block;
+}
+
+.tag-item {
+    cursor: pointer;
+    margin-left: 5px;;
+}
+
+.add-tag {
+    cursor: pointer;
+    margin-left: 10px;
+}
+
 @media only screen and (max-width: 479px) {
     .tab .nav-tabs li {
         width: 100%;

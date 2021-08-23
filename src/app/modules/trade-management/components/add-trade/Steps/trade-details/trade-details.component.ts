@@ -21,6 +21,8 @@ import { UtilService } from 'src/app/modules/utilities/services/util.service';
 import { Subject } from 'rxjs';
 import { StockLegHistory } from 'src/app/modules/trade-management/models/stock-leg-history.model';
 import { OptionLegHistory } from 'src/app/modules/trade-management/models/option-leg-history.model';
+import { TradeTag } from 'src/app/modules/shared/models/trade-management/trade-tag.model';
+import { SingleInputModalComponent } from 'src/app/modules/shared/components/modals/single-input-modal/single-input-modal.component';
 
 
 @Component({
@@ -37,7 +39,7 @@ export class TradeDetailsComponent implements OnInit {
   }
 
   currentState: number = 1;
-  
+
   stockAdded: boolean;
 
   strategies = StrategyType;
@@ -71,7 +73,7 @@ export class TradeDetailsComponent implements OnInit {
   closeDate: string;
   tradeStatus: number;
   lastUpdatedDate: string;
-  tags: string;
+  tags: TradeTag[] = [];
   showFormSec: boolean = false;
   showStockSec: boolean = false;
   showStockForm: boolean = false;
@@ -79,11 +81,11 @@ export class TradeDetailsComponent implements OnInit {
   editStockForm: boolean = false;
   editOptionForm: boolean = false;
   protected optionIndex: number = 1;
-  protected optionGroup:any = {};
+  protected optionGroup: any = {};
 
   public optionTypes: [
-    {value: 1, name:'radio1', id:"Call"},
-    {value: 2, name:'radio1', id:"Put"},
+    { value: 1, name: 'radio1', id: "Call" },
+    { value: 2, name: 'radio1', id: "Put" },
   ]
 
   constructor(
@@ -114,7 +116,7 @@ export class TradeDetailsComponent implements OnInit {
       this.executedDate = this.inputState.tradeStrategy.executedDate;
       this.closeDate = this.inputState.tradeStrategy.closeDate;
       this.lastUpdatedDate = this.inputState.tradeStrategy.updateDateTime;
-      this.tags = this.inputState.tradeStrategy.tradeTag.join();
+      this.tags = this.inputState.tradeStrategy.tradeTag;
       this.updateStockOptionDisplayProperty();
     }
   }
@@ -203,8 +205,8 @@ export class TradeDetailsComponent implements OnInit {
     this.editOptionForm = false;
     this.showOptionLegForm = false;
   }
-  
-  
+
+
   updateStockOrOptionAddedStatus() {
     this.stockOrOptionAddedSubject.next(this.stockAdded || this.stockOptions.length > 0);
   }
@@ -546,6 +548,31 @@ export class TradeDetailsComponent implements OnInit {
       }
     }
     return status;
+  }
+
+  addTag() {
+    const dialogRef = this._dialog.open(SingleInputModalComponent, {
+      disableClose: true,
+      width: 'auto',
+      data: { title: 'Tag' }
+    });
+
+    dialogRef.afterClosed().subscribe((res) => {
+      let tag: TradeTag = new TradeTag(res);
+      this.tags.push(tag);
+    });
+  }
+
+  editTag(tag: TradeTag) {
+    const dialogRef = this._dialog.open(SingleInputModalComponent, {
+      disableClose: true,
+      width: 'auto',
+      data: { title: 'Tag', value: tag.name }
+    });
+
+    dialogRef.afterClosed().subscribe((res) => {
+      tag.name = res;
+    });
   }
 
 }

@@ -8,20 +8,24 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 })
 export class SingleInputModalComponent implements OnInit {
 
-  title:string;
+  title: string;
+  value: string;
 
   constructor(
     public dialogRef: MatDialogRef<SingleInputModalComponent>,
     @Inject(MAT_DIALOG_DATA) data
   ) {
     this.title = data.title;
+    if (data.value) {
+      this.value = data.value;
     }
+  }
 
   ngOnInit() {
   }
 
   closeModal() {
-    this.dialogRef.close();
+    this.dialogRef.close(this.value);
   }
 
 }

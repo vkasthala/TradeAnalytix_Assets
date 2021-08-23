@@ -229,13 +229,10 @@ export class AddNewTradeComponent implements OnInit {
     let tradeThesisArray = [];
     tradeThesisArray.push(this.tradeThesis.tradeThesis);
     this.tradeStrategy.tradeThesis = tradeThesisArray;
-    let tradeTags = [];
     if (this.tradeDetails.tags) {
-      this.tradeDetails.tags.split(",").forEach(tag => {
-        tradeTags.push(new TradeTag(tag));
-      });
+      this.tradeStrategy.tradeTag = this.tradeDetails.tags;
     }
-    this.tradeStrategy.tradeTag = tradeTags;
+    
     let stockEntries = [];
     if (this.tradeDetails.stockEntry) {
       stockEntries.push(this.tradeDetails.stockEntry);
