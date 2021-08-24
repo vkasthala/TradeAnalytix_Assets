@@ -56,7 +56,8 @@ export class CompareStrategiesComponent implements OnInit {
   stockOptions: OptionEntry[] = [];
   selectedStrategy: number = 15;
   protected add = true;
-
+  showStrategyForm : boolean = true;
+  selectedItem: any = [];
   constructor(
     private userStockStatsService: UserStockStatsService,
     private compareStrategyService: CompareStrategiesService,
@@ -88,22 +89,17 @@ export class CompareStrategiesComponent implements OnInit {
     this.compareStrategyService.getStrategiesList(this.selectedStock.id).subscribe(result => {
       this.userStrategies = result;
       if (result.length > 0) {
-        this.strategiesList[0] = result[0];
+        this.strategiesList = result.slice(0, 2);;
         this.selectedStrategies[0] = result[0];
-      }
-      if (result.length > 1) {
-        this.strategiesList[1] = result[0];
-        this.selectedStrategies[1] = result[0];
       }
     })
   }
 
-  addStrategy() {
+  addStrategy(index) {
     this.compareResult = null;
     if (this.strategiesList.length < 5) {
       if (this.userStrategies.length > 0) {
-        this.strategiesList.push(this.userStrategies[0]);
-        this.selectedStrategies.push(this.userStrategies[0]);
+        this.strategiesList.push(this.selectedItem[0]);
       }
     }
   }
@@ -174,6 +170,7 @@ export class CompareStrategiesComponent implements OnInit {
     this.compareStrategyService.compareStrategies(this.createStrategyCompareRequest()).subscribe(result => {
       console.log("strategy compare result:", result);
       this.compareResult = result;
+      this.showStrategyForm = false;
     });
     //Load chart if it is already rendered
     if (this.compareStrategiesChartComponent && this.compareStrategiesChartComponent.rendered === true) {
@@ -191,9 +188,11 @@ export class CompareStrategiesComponent implements OnInit {
     return request;
   }
 
-  onStrategyChange(valueInd: number, index: number) {
-    console.log('selected: ', this.userStrategies[valueInd]);
-    this.selectedStrategies[index] = this.userStrategies[valueInd];
+  onStrategyChange(index: number) {
+    this.selectedItem = [];
+    console.log('selected: ', this.userStrategies[index]);
+    this.selectedStrategies[index] = this.userStrategies[index];
+    this.selectedItem.push(this.userStrategies[index]);
   }
 
   editStrategyItem(index) {

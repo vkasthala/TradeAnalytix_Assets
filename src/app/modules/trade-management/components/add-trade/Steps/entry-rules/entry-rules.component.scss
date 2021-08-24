@@ -144,13 +144,15 @@
 }
 
 .btn-next {
-    padding: 8px 40px;
-    background: $primary;
-    color: $white;
-    font-size: 14px;
+    padding: 0.375rem 1rem !important;
+    background: #2285FA;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 12px;
     font-weight: 500;
     cursor: pointer;
-    text-transform: uppercase;
+    height: 30px;
+    line-height: 1;
 }
 
 .btn-next:hover {
@@ -304,7 +306,7 @@ input[type="checkbox"] {
 }
 
 .msg-cell{
-    width: 50%;
+    width: 60%;
 }
 
 .aligned-cell{
@@ -312,5 +314,5 @@ input[type="checkbox"] {
 }
 
 .comment-cell{
-    width: 40%;
+    width: 30%;
 }
