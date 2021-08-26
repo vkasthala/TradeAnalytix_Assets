@@ -11,14 +11,15 @@
                 <div class="row">
                     <div class="py-2 col-sm-6">
                         <label class="col-form-label">Select Brokerage</label>
-                        <select class="form-control">
-                        <option value="1">Zerodha</option>
-                        <option value="2">ICICIDirect</option>
-                        <option value="3">IIFL</option>
-                        <option value="4">Edelweiss</option>
-                        <option value="5">tdAmeritrade</option>
-                        <option value="6">eTrade</option>
-                    </select>
+                        <select class="form-control" [(ngModel)]="selectedbroker">
+                            <option value="1">Zerodha</option>
+                            <option value="2">ICICIDirect</option>
+                            <option value="3">IIFL</option>
+                            <option value="4">Edelweiss</option>
+                            <option value="5">tdAmeritrade</option>
+                            <option value="6">eTrade</option>
+                            <option value="20">Default</option>
+                        </select>
                     </div>
                     <div class="py-2 col-sm-6">
                         <label class="col-form-label">Choose File</label>
