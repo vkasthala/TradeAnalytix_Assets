@@ -75,6 +75,7 @@ export class AddNewTradeComponent implements OnInit {
   protected detailSummaryLoaded: boolean;
   protected closedLegs: boolean = false;
   protected StatsSlide: boolean = false;
+  protected updatedDate: any;
 
   protected tradeHistory: TradeHistory;
   protected localTradeHistory: TradeHistory;
@@ -305,6 +306,7 @@ export class AddNewTradeComponent implements OnInit {
       this.selectedStock = this.inputState.selectedStock;
       this.stockSummary = this.inputState.stockSummary;
       this.tradeStrategy = this.inputState.tradeStrategy;
+      this.updatedDate = this.inputState.tradeStrategy.updateDateTime;
     }
   }
 

@@ -591,7 +591,8 @@ a.btn.btn-skip {
 
 .tags-list {
     list-style: none;
-    text-align: center;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .tag-icon {
@@ -601,7 +602,7 @@ a.btn.btn-skip {
 }
 
 .tags-list > li {
-    display: inline-block;
+    display: inline-flex;
 }
 
 .tag-item {

@@ -5,6 +5,11 @@
                 <h5 class="text-primary">
                     <!-- {{add ? 'Add Trade' : ''}} {{view ? 'View Trade' : ''}} -->
                     <!-- <span *ngIf="!add">{{tradeStrategy.uid}}</span> -->
+
+                    <div *ngIf="add == false">
+                        <label class="col-form-label">Last Updated Date : {{updatedDate | date:
+                            'dd-MMM-yyyy'}}</label>
+                    </div>
                 </h5>
             </div>
         </div>

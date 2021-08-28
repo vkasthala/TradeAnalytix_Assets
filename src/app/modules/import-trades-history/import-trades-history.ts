@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialog, MatPaginator, MatSort } from '@angular/material';
+import { MatDialog, MatPaginator, MatSort, MatDialogRef } from '@angular/material';
 import { NavigationExtras, Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -13,6 +13,7 @@ import { ImportTradesGridRequest } from 'src/app/modules/import-trades-history/m
 import { TradeStrategyGridRow } from 'src/app/modules/trade-strategies/models/trade-strategy-grid-row.model';
 import { ImportTradesGridStore } from 'src/app/modules/import-trades-history/services/import-trades-grid-store';
 import { ImportTradesGridService } from 'src/app/modules/import-trades-history/services/import-trades-grid.service';
+import { ImportTradePopupComponent } from './import-trade-popup/import-trade-popup.component';
 
 @Component({
   selector: 'app-import-trades-history',
@@ -35,7 +36,9 @@ export class ImportTradesHistory implements AfterViewInit, OnInit {
     private stockSymbolService: StockSymbolService,
     private userStockStatsService: UserStockStatsService,
     private router: Router,
-    private dialog: MatDialog) {
+    private _dialog: MatDialog,
+    //public dialogRef: MatDialogRef<ImportTradePopupComponent>
+    ) {
   }
 
   ngOnInit() {
@@ -117,6 +120,14 @@ export class ImportTradesHistory implements AfterViewInit, OnInit {
   closeActionBox() {
     this.expandIndex = null
   }
+  importTradesPopup() {
+    const dialogRef = this._dialog.open(ImportTradePopupComponent, {
+      disableClose: true,
+      width: 'auto',
+      //data: dialogData
+    });
+  }
+  
 
 }
 

@@ -1,0 +1,38 @@
+<div class="import-trade-popup">
+    <div class="import-trade-pop-inner">
+        <div class="popup-body">
+            <div class="top-pop-inner">
+                <div class="right-close" (click)="closeModal()">
+                    <mat-icon>clear</mat-icon>
+                </div>
+            </div>
+            <div class="trade-form">
+                <div class="d-flex align-items-center justify-content-between">
+                    <mat-icon class="trade-form-icon">import_export</mat-icon>
+                </div>
+                <h2 class="py-2 symbol-heading">Import Trades</h2>
+                <div class="pb-2 symbol-description">Select your brokerage and upload trade history to add your trade strategies in bulk</div>
+                <div class="row">
+                    <div class="py-2 col-sm-6">
+                        <label class="col-form-label">Select Brokerage</label>
+                        <select class="form-control">
+                        <option value="1">Zerodha</option>
+                        <option value="2">ICICIDirect</option>
+                        <option value="3">IIFL</option>
+                        <option value="4">Edelweiss</option>
+                        <option value="5">tdAmeritrade</option>
+                        <option value="6">eTrade</option>
+                    </select>
+                    </div>
+                    <div class="py-2 col-sm-6">
+                        <label class="col-form-label">Choose File</label>
+                        <input class="w-100" type="file" (change)="selectFile($event)" />
+                    </div>
+                    <div class="pt-2 col-sm-6">
+                        <button class="btn btn-enter btn-sm" [disabled]="!selectedFiles" (click)="importTrades()">Upload</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

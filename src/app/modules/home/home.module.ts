@@ -57,6 +57,9 @@ import { UtilitiesModule } from '../utilities/utilities.module';
 import { TradeExecutionDateComponent } from '../shared/components/modals/trade-execution-date/trade-execution-date.component';
 
 import { TradeStrategiesGrid } from '../trade-strategies/components/trade-strategies-grid/trade-strategies-grid';
+import { PortfolioGrid } from '../trade-strategies/components/portfolio-grid/portfolio-grid.component';
+import { DraftTradesGrid } from '../trade-strategies/components/draft-trades-grid/draft-trades-grid.component';
+import { HistoryGrid } from '../trade-strategies/components/history-grid/history-grid.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { OauthRedirectComponent } from '../utilities/components/oauth-redirect/oauth-redirect.component';
@@ -108,6 +111,7 @@ import { GenerateChartPopupComponent } from '../trade-management/components/add-
 import { TodayExecutedLegsComponent } from '../trade-plan/components/today-executed-legs/today-executed-legs.component';
 import { KeyInsightsComponent } from '../dashboard/components/key-insights/key-insights.component';
 import { RuleCommentDialogComponent } from '../trade-management/components/add-trade/rule-comment-dialog/rule-comment-dialog.component';
+import { ImportTradePopupComponent } from '../import-trades-history/import-trade-popup/import-trade-popup.component';
 
 export const MY_FORMATS = {
   parse: {
@@ -171,6 +175,9 @@ export const MY_FORMATS = {
     TradeDetailsBottomComponent,
     TradeExecutionDateComponent,
     TradeStrategiesGrid,
+    PortfolioGrid,
+    DraftTradesGrid,
+    HistoryGrid,
     ConfirmDialogComponent,
     PerformanceComponent,
     GoalsComponent,
@@ -204,7 +211,8 @@ export const MY_FORMATS = {
     EconomicCalendarComponent,
     GenerateChartPopupComponent,
     TodayExecutedLegsComponent,
-    KeyInsightsComponent
+    KeyInsightsComponent,
+    ImportTradePopupComponent
   ],
   imports: [
     CommonModule,
@@ -235,13 +243,17 @@ export const MY_FORMATS = {
     ReduceToStockPositionComponent,
     TradeExecutionDateComponent,
     TradeStrategiesGrid,
+    PortfolioGrid,
+    DraftTradesGrid,
+    HistoryGrid,
     ConfirmDialogComponent,
     UpdateStockPricePopupComponent,
     StrategyDetailsComponent,
     PlannedTradeDialogComponent,
     StrategyActionTextDialogComponent,
     GenerateChartPopupComponent,
-    RuleCommentDialogComponent
+    RuleCommentDialogComponent,
+    ImportTradePopupComponent
   ],
   // bootstrap: [TradeStrategiesGrid],
   providers: [

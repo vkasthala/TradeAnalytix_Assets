@@ -1,0 +1,198 @@
+<div class="mask" *ngIf="Loader">    
+  <div class="loader"></div> 
+</div>
+<div class="trade-strategies-grid">
+  <div class="trade-table">
+      <mat-table [dataSource]="dataSource" matSort>
+
+          <!-- Strategy ID Column -->
+          <ng-container matColumnDef="id">
+              <mat-header-cell class="strategy-id-cell" *matHeaderCellDef mat-sort-header>Identifier</mat-header-cell>
+              <mat-cell class="strategy-id-cell" *matCellDef="let element"> {{element.uid ? element.uid : element.id}} </mat-cell>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="stockName">
+              <mat-header-cell class="stock-name-cell" *matHeaderCellDef mat-sort-header>Symbol</mat-header-cell>
+              <mat-cell class="stock-name-cell" *matCellDef="let element"> {{element.stockCode}} </mat-cell>
+          </ng-container>
+
+          <!-- Strategy Column -->
+          <ng-container matColumnDef="strategy">
+            <mat-header-cell class="stock-name-cell" *matHeaderCellDef mat-sort-header>Strategy</mat-header-cell>
+            <mat-cell class="stock-name-cell" *matCellDef="let element" format='yyyy-MM-dd' editType='datepickeredit'> {{element.strategy}} </mat-cell>
+        </ng-container>
+
+
+          <!-- Open Date Column -->
+          <ng-container matColumnDef="openDate">
+              <mat-header-cell class="open-date-cell" *matHeaderCellDef mat-sort-header>Create Date</mat-header-cell>
+              <mat-cell class="open-date-cell" *matCellDef="let element"> {{element.openDate | date: 'dd-MMM-yyyy'}} </mat-cell>
+          </ng-container>
+
+          <!-- Total Amount Column -->
+          <ng-container matColumnDef="totalAmount">
+              <mat-header-cell class="total-amount-cell" *matHeaderCellDef mat-sort-header>Total Amount</mat-header-cell>
+              <mat-cell class="total-amount-cell" *matCellDef="let element"> {{element.totalAmount}} </mat-cell>
+          </ng-container>
+
+          <!-- Max Gain Column -->
+          <ng-container matColumnDef="maxGain">
+            <mat-header-cell class="close-date-cell" *matHeaderCellDef mat-sort-header>Max Gain*</mat-header-cell>
+            <mat-cell *matCellDef="let element" class="text-success close-date-cell"> {{element.maxGain | number:'1.0-0'}} </mat-cell>
+          </ng-container>
+
+          <!-- Max Loss Column -->
+          <ng-container matColumnDef="maxLoss">
+              <mat-header-cell class="close-date-cell" *matHeaderCellDef mat-sort-header>Max Loss*</mat-header-cell>
+              <mat-cell *matCellDef="let element" class="text-danger close-date-cell"> {{element.maxLoss | number:'1.0-0'}} </mat-cell>
+          </ng-container>
+
+
+          <!-- Thesis Column -->
+          <ng-container matColumnDef="thesis">
+              <mat-header-cell class="close-date-cell" *matHeaderCellDef mat-sort-header>Thesis</mat-header-cell>
+              <mat-cell class="close-date-cell" *matCellDef="let element"> {{element.thesis}} </mat-cell>
+          </ng-container>
+
+          <!-- Rules Column -->
+          <ng-container matColumnDef="rules">
+              <mat-header-cell class="rules-cell" *matHeaderCellDef mat-sort-header>Rules</mat-header-cell>
+              <mat-cell class="rules-cell" *matCellDef="let element"> {{element.rules}} </mat-cell>
+          </ng-container>
+
+          <!-- Closed Date Column -->
+          <ng-container matColumnDef="action">
+              <mat-header-cell class="action-cell" *matHeaderCellDef mat-sort-header>Action</mat-header-cell>
+              <mat-cell *matCellDef="let element, let i = index" class="action_colum action-cell">
+                  <div>
+                      <mat-icon *ngIf="element.status == 'Open' || element.status == 'Draft'" (click)="editTrade(element);closeActionBox()" class="mat-icon-sm trade-edit">edit</mat-icon>
+
+                      <mat-icon *ngIf="element.status == 'Open'" (click)="closeTrade(element);closeActionBox()" class="mat-icon-sm ml-2 trade-close">cancel</mat-icon>
+
+                      <mat-icon *ngIf="element.status == 'Draft'" (click)="deleteTrade(element);closeActionBox()" class="mat-icon-sm mx-2 trade-delete">delete</mat-icon>
+
+                      <mat-icon *ngIf="element.status == 'Closed'" (click)="viewTrade(element);closeActionBox()" class="mat-icon-sm trade-view">visibility</mat-icon>
+                  </div>
+              </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+
+      <!-- Angular 8 pagination -->
+      <mat-paginator [pageSize]="20" [pageSizeOptions]="[10, 20, 50, 100, 200]" [showFirstLastButtons]="true" [length]="dataSource.totalCount">
+      </mat-paginator>
+  </div>
+</div>
+
+<!-- for-mobile -->
+<div class="trade-st-mobile">
+
+  <div class="trade-st-mobile-grid">
+    <div class="row mb-1">
+      <div class="col-6 pl-4 cell-header">Identifier</div>
+      <div class="col-6 cell-header text-right">Symbol</div>
+    </div>
+    <div class="pb-2 pt-3 mobile-grid-row" *ngFor="let element of gridData; let i=index">
+      <div class="row">
+        <div class="col-6 pl-1 mobile-grid-cell">
+          <span class="cursor" (click)="Collaps(i)">
+            <i class="material-icons">{{hideRuleContent[i] ? 'keyboard_arrow_up' : 'keyboard_arrow_right'}}</i>
+          </span>
+          {{element.uid}}
+        </div>
+        <div class="col-6 text-right">{{element.stockCode}}</div>
+      </div>
+      <div class="" *ngIf="hideRuleContent[i]">
+        <div class="row py-1">
+          <div class="col-6 pl-4">
+            Status
+          </div>
+          <div class="col-6 text-right">
+            {{element.status}}
+          </div>
+        </div>
+        <div class="row py-1">
+          <div class="col-6 pl-4">
+            Strategy
+          </div>
+          <div class="col-6 text-right">
+            {{element.strategy}}
+          </div>
+        </div>
+
+        <div class="row py-1">
+          <div class="col-6 pl-4">
+            Create Date
+          </div>
+          <div class="col-6 text-right">
+            {{element.openDate | date: 'dd-MMM-yyyy'}}
+          </div>
+        </div>
+        <div class="row py-1">
+          <div class="col-6 pl-4">
+            Close Date
+          </div>
+          <div class="col-6 text-right">
+            {{element.closeDate | date: 'dd-MMM-yyyy'}}
+          </div>
+        </div>
+        <div class="row py-1">
+          <div class="col-6 pl-4">
+            Max Gain
+          </div>
+          <div class="col-6 text-success text-right">
+            {{element.maxGain | number:'1.0-0'}}
+          </div>
+        </div>
+        <div class="row py-1">
+          <div class="col-6 pl-4">
+            Max Loss
+          </div>
+          <div class="col-6 text-danger text-right">
+            {{element.maxLoss | number:'1.0-0'}}
+          </div>
+        </div>
+        <div class="row py-1">
+          <div class="col-6 pl-4">
+            Thesis
+          </div>
+          <div class="col-6 text-right">
+            {{element.returnAmount}}
+          </div>
+        </div>
+        <div class="row py-1">
+          <div class="col-6 pl-4">
+            Rules
+          </div>
+          <div class="col-6 text-right">
+            {{element.rules}}
+          </div>
+        </div>
+        <div class="py-1 grid-bottom">
+          <button type="button" class="btn mobile-grid-btn trade-edit" *ngIf="element.status == 'Open' || element.status == 'Draft'" (click)="editTrade(element);closeActionBox()">
+            <mat-icon class="mat-icon-sm trade-edit mr-1">edit</mat-icon> Edit
+          </button>
+
+          <button type="button" class="btn mobile-grid-btn ml-2 trade-close" *ngIf="element.status == 'Open'" (click)="closeTrade(element);closeActionBox()">
+            <mat-icon class="mat-icon-sm mr-1">cancel</mat-icon> Close
+          </button>
+
+          <button type="button" class="btn mobile-grid-btn mx-2 trade-delete" *ngIf="element.status == 'Draft'" (click)="deleteTrade(element);closeActionBox()">
+            <mat-icon  class="mat-icon-sm mr-1">delete</mat-icon> Delete
+          </button>
+
+          <button type="button" class="btn mobile-grid-btn trade-view" *ngIf="element.status == 'Closed'" (click)="viewTrade(element);closeActionBox()">
+            <mat-icon  class="mat-icon-sm mr-1">visibility</mat-icon> Visibility
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+  

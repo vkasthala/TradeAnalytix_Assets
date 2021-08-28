@@ -58,8 +58,29 @@
                     <a href="javascript:void(0)" class="btn btn-outline-primary" (click)="clearFilters()">Clear</a>
                 </div>
             </div>
+            <!-- start : Tabs section -->
+            <mat-horizontal-stepper labelPosition="left" #stepper [linear]="false">
+                <mat-step [class.active]="stepone.completed" #stepone>
+                    <ng-template matStepLabel>Portfolio</ng-template>
+                    <div class="stepper-content">
+                        <app-portfolio-grid #portfolioGrid>loading</app-portfolio-grid>
+                    </div>
+                </mat-step>
+                <mat-step>
+                    <ng-template matStepLabel>Draft Trades</ng-template>
+                    <div class="stepper-content">
+                        <app-draft-trades-grid #draftTradesGrid>loading</app-draft-trades-grid>
+                    </div>
+                </mat-step>
+                <mat-step>
+                    <ng-template matStepLabel>History</ng-template>
+                    <div class="stepper-content">
+                        <app-history-grid #historyGrid>loading</app-history-grid>
+                    </div>
+                </mat-step>
+            </mat-horizontal-stepper>
             <!-- Grid row -->
-            <app-trade-strategies-grid #tradeStrategiesGrid>loading</app-trade-strategies-grid>
+
         </div>
     </div>
 </div>

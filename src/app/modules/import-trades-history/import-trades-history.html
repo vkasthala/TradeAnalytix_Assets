@@ -1,5 +1,9 @@
 <div class="p-3 mt-1">
     <div class="main-body">
+        <div class="pb-3 text-right">
+            <button type="button" (click)="importTradesPopup();" class="btn btn-apply">Import Trades</button>
+        </div>
+
         <div class="trade-table">
             <mat-table [dataSource]="dataSource" matSort>
                 <!-- Date Column -->

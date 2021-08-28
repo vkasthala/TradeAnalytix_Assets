@@ -1,6 +1,12 @@
 
+@import "../../../../../assets/styles/variable.scss";
 mat-table {
     width: 100%;
+}
+.trade-strategies-grid {
+    @media #{$extra-small} {
+        display: none;
+    }
 }
 
 th.mat-header-cell {
@@ -29,22 +35,31 @@ th.mat-header-cell {
 
 .strategy-name-cell{
   width: 12%;
+  flex: 0 0 12% !important;
 }
 
 .stock-name-cell{
-  width: 28%;
+  width: 8%;
+  flex: 0 0 8% !important;
 }
 
 .direction-cell{
   width: 10%;
+  flex: 0 0 10% !important;
 }
 
 .status-cell{
   width: 10%;
+  flex: 0 0 10% !important;
 }
 
-.open-date-cell{
+.open-date-cell, .rules-cell{
   width: 10%;
+  flex: 0 0 10% !important;
+}
+.return-cell, .total-amount-cell {
+  width: 12%;
+  flex: 0 0 12% !important;
 }
 
 .close-date-cell{
@@ -52,7 +67,8 @@ th.mat-header-cell {
 }
 
 .action-cell {
-  width: 5%;
+  width: 7%;
+  flex: 0 0 7% !important;
 }
 .direction_arrow .material-icons {
   font-size: 1rem;
@@ -132,6 +148,7 @@ th.mat-header-cell {
 .trade-close {
   color: #EC6B56;
 }
+
 .trade-delete {
   color: #3A4C85;
 }
@@ -145,13 +162,62 @@ th.mat-header-cell {
 .text-primary {
   color: #0190CA !important;
 }
-.btn-apply {
-  background-color: #2285FA;
-  color: #ffffff;
-  color: #ffffff;
-  font-size: 12px;
-  padding: 0.375rem 1.5rem !important;
+.mask {
+  position: fixed;
+}
+.trade-st-mobile {
+  display: none;
+  @media #{$extra-small} {
+      display: block;
+      margin-top: 15px;
+  }
+}
+
+.trade-st-mobile-grid {
+  color: #3A4C85;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 16px rgba(157, 157, 157, 0.1);
   border-radius: 4px;
-  height: 40px;
-  line-height: 26px;
+  font-weight: 400;
+  padding: 1rem;
+  font-size: 16px;
+  .cell-header {
+    font-weight: 600;
+  }
+  .mobile-grid-row {
+    border-bottom: 1px solid rgb(157 166 186 / 30%);
+  }
+  .mobile-grid-cell {
+    display: inline-flex;
+    .material-icons {
+      color: #2285FA;
+    }
+  }
+}
+
+@media #{$extra-small} {
+  .grid-bottom {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .mobile-grid-btn {
+    background: #F5F8FA;
+    border: 1px solid #9DA6BA;
+    box-sizing: border-box;
+    border-radius: 4px;
+    display: none;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.375rem 1rem !important;
+    width:48%;
+  }
+  .trade-edit {
+    color: #2285FA;
+    opacity: 1;
+  }
+  .trade-delete {
+    color: #EB5757;
+  }
 }

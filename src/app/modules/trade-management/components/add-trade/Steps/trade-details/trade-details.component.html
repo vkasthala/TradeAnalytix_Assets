@@ -4,7 +4,7 @@
         <div class="add-stock-sec" #tradeCards>
             <div class="trade-sec">
                 <div class="row justify-content-between">
-                    <div class="col-sm-7">
+                    <div class="col-sm-5">
                         <span class="col-form-label pt-0">{{ addTrade ? 'Select' : 'Current' }} Strategy</span>
                         <div [ngClass]="closeTrade ? 'row close_trade_module' : 'row'">
                             <div class="col-sm-12">
@@ -36,21 +36,19 @@
                             </div>
                         </div>
                     </div>
-                    <div *ngIf="addTrade == false" class="col-sm-3">
-                        <label class="col-form-label">Last Updated Date : <br>{{lastUpdatedDate | date:
-                            'dd-MMM-yyyy'}}</label>
-                    </div>
-                    <div class="card-main col-sm-2" *ngIf="addTrade || editTrade">
+                    
+                    <div class="col-sm-7 px-0" *ngIf="addTrade || editTrade">
                         <ul class="tags-list">
                             <li *ngFor="let tag of tags; let i = index;" class="tag-item">
                                 <span (click)="editTag(tag)">
-                                    <span class="material-icons tag-icon">tag</span>
+                                    <span class="material-icons tag-icon">#</span>
                                     {{tag.name}}
                                 </span>
                             </li>
                             <li>
-                                <span (click)="addTag()" class="add-tag"><span
-                                        class="material-icons tag-icon">add_circle_outline</span>Tag</span>
+                                <span (click)="addTag()" class="add-tag">
+                                    <span class="material-icons tag-icon">add_circle_outline</span> Tag
+                                </span>
                             </li>
                         </ul>
                     </div>
