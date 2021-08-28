@@ -16,6 +16,7 @@
                             <div class="form-group has-search">
                                 <app-trade-search (symbolSelectEvent)="symbolSelectEventHandler($event)" #tradeSearchComponent>
                                 </app-trade-search>
+                                <mat-icon class="form-icon-down" (click)="onClearSymbol()">clear</mat-icon>
                             </div>
                         </div>
                         <div class="px-3 top-sec-label">

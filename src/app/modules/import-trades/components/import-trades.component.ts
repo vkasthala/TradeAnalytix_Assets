@@ -12,7 +12,7 @@ export class ImportTradesComponent implements OnInit {
 
   selectedFiles: FileList;
   currentFile: File;
-  
+  selectedbroker: any;
   constructor(private uploadService: UploadFileService,
     protected toastr: ToastrService,
     protected router: Router
@@ -24,9 +24,10 @@ export class ImportTradesComponent implements OnInit {
     this.selectedFiles = event.target.files;
   }
   importTrades() {    
+    console.log('selectedbroker------>',this.selectedbroker);
     if(this.selectedFiles !== undefined && this.selectedFiles.length > 0) {
       this.currentFile = this.selectedFiles.item(0);
-      this.uploadService.importTrades(this.currentFile).subscribe(
+      this.uploadService.importTrades(this.currentFile, this.selectedbroker).subscribe(
         event => {
           this.toastr.success('Imported trades successfully', '');
           this.router.navigateByUrl("/trade-strategies");

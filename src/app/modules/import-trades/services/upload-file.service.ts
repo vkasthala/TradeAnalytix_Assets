@@ -12,9 +12,9 @@ export class UploadFileService {
     private apiUrl = environment.apiUrl + "/trades";
     constructor(private httpService: HttpService) { }
 
-    importTrades(file: File): Observable<HttpEvent<any>> {
+    importTrades(file: File, selectedbroker: number): Observable<HttpEvent<any>> {
         const formData: FormData = new FormData();
         formData.append('file', file);
-        return this.httpService.postWithForm(`${this.apiUrl}/upload`,formData);
+        return this.httpService.postWithForm(`${this.apiUrl}/upload/${selectedbroker}`,formData);
     }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { IMyDateRangeModel } from 'mydaterangepicker';
 import { Subject } from 'rxjs';
 import { StockSymbol } from 'src/app/modules/shared/models/trade-management/stock-symbol.model';
+import { TradeSearchComponent } from 'src/app/modules/trade-management/components/add-trade/Steps/search-trade/trade-search.component';
 import { ReportDetails } from '../../model/report-details.model';
 import { ReportFilter } from '../../model/report-filter.model';
 import { ReportSubType } from '../../model/report-sub-type.model';
@@ -20,6 +21,8 @@ export class ReportTabContentComponent implements OnInit {
   @ViewChild('reportSummary', { static: false }) protected reportSummary: ReportSummaryComponent;
 
   @ViewChild('reportChart', { static: false }) protected reportChart: ReportChartComponent;
+
+  @ViewChild('tradeSearchComponent', { static: false }) protected tradeSearchComponent: TradeSearchComponent;
 
   filterChangeSubject: Subject<ReportFilter> = new Subject<ReportFilter>();
 
@@ -80,7 +83,15 @@ export class ReportTabContentComponent implements OnInit {
   symbolSelectEventHandler(selectedSymbol: StockSymbol) {
     this.reportFilter.stockId = selectedSymbol.id;
     this.reportFilter.symbol = selectedSymbol.code + '';
-    console.log('symbol filter:', this.reportFilter);
+    console.log('filter after selecting symbol:', this.reportFilter);
+    this.filterChangeSubject.next(this.reportFilter);
+  }
+
+  onClearSymbol(){
+    delete this.reportFilter.stockId;
+    delete this.reportFilter.symbol;
+    this.tradeSearchComponent.clearSelection();
+    console.log('filter after clear symbol:', this.reportFilter);
     this.filterChangeSubject.next(this.reportFilter);
   }
 
