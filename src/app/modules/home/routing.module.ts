@@ -21,7 +21,7 @@ import { ExitRulesComponent } from '../trade-management/components/add-trade/Ste
 import { ImportTradesHistory } from '../../modules/import-trades-history/import-trades-history';
 import { NotificationsComponent } from '../../modules/notifications/notifications.component';
 import { ViewTradePlanComponent } from '../../modules/trade-plan/components/view-trade-plan.component';
-
+import { RulesComponent } from '../rules/components/rules.component';
 
 
 const routes: Routes = [
@@ -112,6 +112,10 @@ const routes: Routes = [
         {
           path: 'notifications',
           component: NotificationsComponent
+        },
+        {
+          path: 'rules',
+          component: RulesComponent
         }
     ]
   },

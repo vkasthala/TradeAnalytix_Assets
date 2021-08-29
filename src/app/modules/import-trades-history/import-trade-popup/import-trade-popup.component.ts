@@ -12,6 +12,7 @@ import { UploadFileService } from 'src/app/modules/import-trades/services/upload
 export class ImportTradePopupComponent implements OnInit {
   selectedFiles: FileList;
   currentFile: File;
+  selectedbroker: any;
   constructor(
     private uploadService: UploadFileService,
     protected toastr: ToastrService,
@@ -28,10 +29,11 @@ export class ImportTradePopupComponent implements OnInit {
   selectFile(event) {
     this.selectedFiles = event.target.files;
   }
-  importTrades() {
+  importTrades() {    
+    console.log('selectedbroker------>',this.selectedbroker);
     if(this.selectedFiles !== undefined && this.selectedFiles.length > 0) {
       this.currentFile = this.selectedFiles.item(0);
-      this.uploadService.importTrades(this.currentFile).subscribe(
+      this.uploadService.importTrades(this.currentFile, this.selectedbroker).subscribe(
         event => {
           this.toastr.success('Imported trades successfully', '');
           this.router.navigateByUrl("/trade-strategies");

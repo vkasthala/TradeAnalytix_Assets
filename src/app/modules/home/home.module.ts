@@ -112,7 +112,7 @@ import { TodayExecutedLegsComponent } from '../trade-plan/components/today-execu
 import { KeyInsightsComponent } from '../dashboard/components/key-insights/key-insights.component';
 import { RuleCommentDialogComponent } from '../trade-management/components/add-trade/rule-comment-dialog/rule-comment-dialog.component';
 import { ImportTradePopupComponent } from '../import-trades-history/import-trade-popup/import-trade-popup.component';
-
+import { RulesComponent } from '../rules/components/rules.component';
 export const MY_FORMATS = {
   parse: {
     dateInput: 'DD-MMM-YY'
@@ -212,7 +212,8 @@ export const MY_FORMATS = {
     GenerateChartPopupComponent,
     TodayExecutedLegsComponent,
     KeyInsightsComponent,
-    ImportTradePopupComponent
+    ImportTradePopupComponent,
+    RulesComponent
   ],
   imports: [
     CommonModule,
