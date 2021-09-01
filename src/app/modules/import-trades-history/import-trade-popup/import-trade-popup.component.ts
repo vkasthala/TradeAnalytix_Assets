@@ -35,8 +35,8 @@ export class ImportTradePopupComponent implements OnInit {
       this.currentFile = this.selectedFiles.item(0);
       this.uploadService.importTrades(this.currentFile, this.selectedbroker).subscribe(
         event => {
+          window.location.reload();
           this.toastr.success('Imported trades successfully', '');
-          this.router.navigateByUrl("/trade-strategies");
         },
         err => {
           this.toastr.error('Failed to import trades');
