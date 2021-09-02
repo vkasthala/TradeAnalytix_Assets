@@ -19,6 +19,7 @@ import { RuleEvalResult } from '../../models/rule-eval-result.model';
 import { StockLegHistory } from '../../models/stock-leg-history.model';
 import { TradeHistory } from '../../models/trade-history.model';
 import { TradeStrategy } from '../../models/trade-strategy.model';
+import { EntryExitRuleService } from '../../services/entry-exit-rule.service';
 import { TradeStrategyService } from '../../services/trade-strategy.service';
 import { EntryRulesComponent } from './Steps/entry-rules/entry-rules.component';
 import { ExitRulesComponent } from './Steps/exit-rules/exit-rules.component';
@@ -85,6 +86,7 @@ export class AddNewTradeComponent implements OnInit {
     protected userStockStatsService: UserStockStatsService,
     protected tradeStrategyService: TradeStrategyService,
     protected riskAnalysisService: RiskAnalysisService,
+    protected entryExitRuleService: EntryExitRuleService,
     protected router: Router,
     protected toastr: ToastrService,
     protected _dialog: MatDialog) {
@@ -233,7 +235,7 @@ export class AddNewTradeComponent implements OnInit {
     if (this.tradeDetails.tags) {
       this.tradeStrategy.tradeTag = this.tradeDetails.tags;
     }
-    
+
     let stockEntries = [];
     if (this.tradeDetails.stockEntry) {
       stockEntries.push(this.tradeDetails.stockEntry);
@@ -374,6 +376,13 @@ export class AddNewTradeComponent implements OnInit {
         this.closeTradeStrategy();
       }
     });
+  }
+
+  evalRules(event: any) {
+    this.updateTradeStrategyProps();
+    this.entryExitRuleService.evalTradeRules(this.tradeStrategy).subscribe(result => {
+      this.entryRules.updateEntryRules(result);
+    })
   }
 
   saveTradeAsDraft() {

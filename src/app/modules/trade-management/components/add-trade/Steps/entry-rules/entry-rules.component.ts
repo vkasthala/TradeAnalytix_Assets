@@ -22,6 +22,7 @@ export class EntryRulesComponent implements OnInit {
   @Input("viewTrade") viewTrade: boolean;
 
   @Output('prevStep') prevStep = new EventEmitter();
+  @Output('evalRulesEvent') evalRulesEvent = new EventEmitter();
 
   ruleGridColumns = ['msg', 'aligned', 'comment'];
   entryRules: RuleDto[];
@@ -49,6 +50,27 @@ export class EntryRulesComponent implements OnInit {
         this.entryRules = result;
       });
     }
+  }
+
+  updateEntryRules(rules: RuleDto[]) {
+    let newRules: RuleDto[] = [];
+    if (this.entryRules.length > 0) {
+      for (let ind = 0; ind < this.entryRules.length; ind++) {
+        if (this.entryRules[ind].type === 'Entry' && (!this.entryRules[ind].id || this.entryRules[ind].id === 0)) {
+          continue;
+        }
+        newRules.push(this.entryRules[ind]);
+      }
+    }
+    if (rules && rules.length > 0) {
+      this.entryRules = rules.concat(newRules);
+    } else {
+      this.entryRules = newRules;
+    }
+  }
+
+  evalRules() {
+    this.evalRulesEvent.emit();
   }
 
   previous() {

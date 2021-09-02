@@ -7,6 +7,7 @@ import { UserStockStatsService } from 'src/app/modules/shared/services/user-stoc
 import { TradeStrategyService } from '../../services/trade-strategy.service';
 import { AddNewTradeComponent } from '../add-trade/add-new-trade.component';
 import { RiskAnalysisService } from 'src/app/modules/risk-analysis/services/risk-analysis.service';
+import { EntryExitRuleService } from '../../services/entry-exit-rule.service';
 
 
 @Component({
@@ -19,10 +20,11 @@ export class CloseTradeComponent extends AddNewTradeComponent implements OnInit 
     userStockStatsService: UserStockStatsService,
     tradeStrategyService: TradeStrategyService,
     riskAnalysisService: RiskAnalysisService,
+    entryExitRuleService: EntryExitRuleService,
     router: Router,
     toastr: ToastrService,
     _dialog: MatDialog) {
-    super(userStockStatsService, tradeStrategyService, riskAnalysisService, router, toastr, _dialog);
+    super(userStockStatsService, tradeStrategyService, riskAnalysisService, entryExitRuleService, router, toastr, _dialog);
     this.close = true;
     this.edit = false;
     this.add = false;
