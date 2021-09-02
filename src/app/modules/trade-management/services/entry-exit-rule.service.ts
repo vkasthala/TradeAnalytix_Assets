@@ -7,6 +7,7 @@ import { HttpService } from '../../shared/services/http.service';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { RuleDto } from '../models/rule-dto.model';
+import { TradeStrategy } from '../models/trade-strategy.model';
 
 @Injectable({
   providedIn: 'root'
@@ -35,6 +36,11 @@ export class EntryExitRuleService {
 
   getTradeExitRules(strategyId: number): Observable<RuleDto[]> {
     return this.httpService.get<RuleDto[]>(this.apiUrl + '/trade-strategy/trade-exit-rules/' + strategyId);
+  }
+
+  evalTradeRules(strategy: TradeStrategy) {
+    let url = this.apiUrl + '/trade-strategy/eval-rules';
+    return this.httpService.post<TradeStrategy, RuleDto[]>(url, strategy);
   }
 
   getInitialRequest(): EntryExitRulesGridRequest {
