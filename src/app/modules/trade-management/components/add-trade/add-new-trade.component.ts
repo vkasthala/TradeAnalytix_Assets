@@ -378,7 +378,7 @@ export class AddNewTradeComponent implements OnInit {
     });
   }
 
-  evalRules(event: any) {
+  evalGridRules(event: any) {
     this.updateTradeStrategyProps();
     this.entryExitRuleService.evalTradeRules(this.tradeStrategy).subscribe(result => {
       this.entryRules.updateEntryRules(result);

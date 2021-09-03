@@ -56,7 +56,7 @@ export class EntryRulesComponent implements OnInit {
     let newRules: RuleDto[] = [];
     if (this.entryRules.length > 0) {
       for (let ind = 0; ind < this.entryRules.length; ind++) {
-        if (this.entryRules[ind].type === 'Entry' && (!this.entryRules[ind].id || this.entryRules[ind].id === 0)) {
+        if (this.entryRules[ind].type === 'Coded' && (!this.entryRules[ind].id || this.entryRules[ind].id === 0)) {
           continue;
         }
         newRules.push(this.entryRules[ind]);
@@ -69,8 +69,10 @@ export class EntryRulesComponent implements OnInit {
     }
   }
 
-  evalRules() {
-    this.evalRulesEvent.emit();
+  evalRules(event) {
+    event.stopPropagation();
+    this.evalRulesEvent.emit(event);
+    
   }
 
   previous() {

@@ -39,7 +39,7 @@ export class EntryExitRuleService {
   }
 
   evalTradeRules(strategy: TradeStrategy) {
-    let url = this.apiUrl + '/trade-strategy/eval-rules';
+    let url = this.apiUrl + '/trade-strategy/eval-grid-rules';
     return this.httpService.post<TradeStrategy, RuleDto[]>(url, strategy);
   }
 

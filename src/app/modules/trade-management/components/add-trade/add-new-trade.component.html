@@ -249,7 +249,7 @@
                                 <div class="stepper-content">
                                     <app-entry-rules (prevStep)="goBack()" [inputState]="inputState" [editTrade]="edit"
                                         [addTrade]="add" [closeTrade]="close" [viewTrade]="view"
-                                        (evalRulesEvent)="evalRules($event)" #entryRules></app-entry-rules>
+                                        (evalRulesEvent)="evalGridRules($event)" #entryRules></app-entry-rules>
                                     <div *ngIf="close || view">
                                         <app-exit-rules [inputState]="inputState" [addTrade]="add" [viewTrade]="view"
                                             [closeTrade]="close" #exitRules></app-exit-rules>
