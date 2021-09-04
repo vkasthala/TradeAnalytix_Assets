@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, AfterViewInit } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import * as fromGlobalConfig from '../../../modules/utilities/reducers/global-config.reducer';
 import { Store } from '@ngrx/store';
@@ -8,7 +8,7 @@ import { NotificationService } from '../../notifications/services/notification.s
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit {
 
   currentRoute: string;
   userdetails: boolean = false;
@@ -27,8 +27,11 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  ngOnInit() {
+  ngAfterViewInit(): void {
     this.loadNotificationCount();
+  }
+
+  ngOnInit() {
   }
 
   sidebarToggle() {
