@@ -12,8 +12,9 @@ import { StrategiesGridPage } from '../../models/strategies-grid-page.model';
 import { StrategiesGridSort } from '../../models/strategies-grid-sort.model';
 import { TradeStrategyGridRequest } from '../../models/trade-strategy-grid-request.model';
 import { TradeStrategyGridRow } from '../../models/trade-strategy-grid-row.model';
-import { TradeStrategyGridStore } from '../../services/trade-strategy-grid-store';
 import { TradeStrategyGridService } from '../../services/trade-strategy-grid.service';
+import { StrategiesGridFilter } from '../../models/strategies-grid-filter.model';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-history-grid',
@@ -21,6 +22,12 @@ import { TradeStrategyGridService } from '../../services/trade-strategy-grid.ser
   styleUrls: ['./history-grid.component.scss']
 })
 export class HistoryGrid implements AfterViewInit, OnInit {
+  public get dialog(): MatDialog {
+    return this._dialog;
+  }
+  public set dialog(value: MatDialog) {
+    this._dialog = value;
+  }
 
   protected Loader = false;
   expandIndex: any;
@@ -30,31 +37,40 @@ export class HistoryGrid implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort: MatSort;
 
-  dataSource: TradeStrategyGridStore;
+  historyDataSource;
   tradeStrategyGridRequest: TradeStrategyGridRequest = this.getInitialRequest();
+  private tradeStrategySubject = new BehaviorSubject<TradeStrategyGridRow[]>([]);
+  strategiesGridFilter: StrategiesGridFilter = new StrategiesGridFilter();
+
   protected gridData: any;
   expandedIndex:any;
 
   public hideRuleContent:boolean[] = [];
-
+  totalCount: number = 0;
   constructor(private tradeStrategyGridService: TradeStrategyGridService,
     private tradeStrategyService: TradeStrategyService,
     private stockSymbolService: StockSymbolService,
     private userStockStatsService: UserStockStatsService,
     private router: Router,
-    private dialog: MatDialog) {
+    
+    private _dialog: MatDialog) {
   }
 
   ngOnInit() {
-    this.dataSource = new TradeStrategyGridStore(this.tradeStrategyGridService);
     this.loadPage();
-    this.gridData = JSON.parse(localStorage.getItem('strategiesGridData'));
     this.expandedIndex = -1;
   }
 
   loadPage() {
-    this.dataSource.loadTradeStrategies(this.tradeStrategyGridRequest);
-    
+    this.strategiesGridFilter.status = 2;
+    this.tradeStrategyGridRequest.filters= this.strategiesGridFilter;
+    this.tradeStrategyGridService.loadTradeStrategies(this.tradeStrategyGridRequest).subscribe(result => {
+      if (result) {
+        this.historyDataSource = result.rows
+        this.tradeStrategySubject.next(result.rows);
+        this.totalCount = result.totalCount;
+      }
+    });
   }
 
   reload() {
@@ -67,7 +83,6 @@ export class HistoryGrid implements AfterViewInit, OnInit {
   }
 
   ngAfterViewInit() {
-
     this.paginator.page
       .pipe(
         tap(() => {
@@ -77,21 +92,6 @@ export class HistoryGrid implements AfterViewInit, OnInit {
         })
       )
       .subscribe();
-
-    /*
-// reset the paginator after sorting
-this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
-
-// on sort or paginate events, load a new page
-merge(this.sort.sortChange, this.paginator.page)
-  .pipe(
-    tap(() => {
-      console.log('here...');
-      this.updatePageSortParams();
-      this.loadPage();
-    })
-  )
-  .subscribe();*/
   }
 
   getInitialRequest(): TradeStrategyGridRequest {
@@ -117,10 +117,7 @@ merge(this.sort.sortChange, this.paginator.page)
       sortRequest = new StrategiesGridSort();
       this.tradeStrategyGridRequest.sort = sortRequest;
     }
-    /*sortRequest.column = this.sort.active;
-    if (this.sort.active) {
-      sortRequest.order = this.sort.direction;
-    }*/
+    
   }
 
   editTrade(rowModel: TradeStrategyGridRow) {
@@ -140,22 +137,6 @@ merge(this.sort.sortChange, this.paginator.page)
     });
   }
 
-  closeTrade(rowModel: TradeStrategyGridRow) {
-    this.Loader = !this.Loader;
-    let stockSymbolReq = this.stockSymbolService.getStockSymbolById(rowModel.stockId);
-    let tradeStrategyReq = this.tradeStrategyService.getTradeStrategyDetails(rowModel.id);
-    let stockSummaryReq = this.userStockStatsService.getUserStockBriefSummary(rowModel.stockId, 1);
-    forkJoin([stockSymbolReq, stockSummaryReq, tradeStrategyReq]).subscribe(results => {
-      let extras: NavigationExtras = {};
-      let input: TradeInputData = new TradeInputData();
-      input.selectedStock = results[0];
-      input.stockSummary = results[1];
-      input.tradeStrategy = results[2];
-      extras.state = input;
-      this.router.navigate(["/close-trade/" + rowModel.id], extras);
-      this.Loader = !this.Loader;
-    });
-  }
   viewTrade(rowModel: TradeStrategyGridRow) {
     this.Loader = !this.Loader;
     let stockSymbolReq = this.stockSymbolService.getStockSymbolById(rowModel.stockId);
@@ -170,25 +151,6 @@ merge(this.sort.sortChange, this.paginator.page)
       extras.state = input;
       this.router.navigate(["/view-trade/" + rowModel.id], extras);
       this.Loader = !this.Loader;
-    });
-  }
-
-
-  deleteTrade(rowModel: TradeStrategyGridRow) {
-    this.Loader = !this.Loader;
-    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-      width: 'auto',
-      height: 'auto',
-      data: { 'message': 'Are you sure you want to delete this strategy?' }
-    });
-    dialogRef.afterClosed().subscribe(dialogResult => {
-      if (dialogResult == true) {
-        this.tradeStrategyService.deleteTradeStrategy(rowModel.id).subscribe(() => {
-          console.log('Trade strategy deleted..', rowModel.id);
-          this.reload();
-        });
-        this.Loader = !this.Loader;
-      }
     });
   }
 

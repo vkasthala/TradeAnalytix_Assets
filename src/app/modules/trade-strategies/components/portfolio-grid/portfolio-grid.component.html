@@ -3,7 +3,7 @@
   </div>
   <div class="trade-strategies-grid">
     <div class="trade-table">
-        <mat-table [dataSource]="dataSource" matSort>
+        <mat-table [dataSource]="portfolioDataSource" matSort>
   
             <!-- Strategy ID Column -->
             <ng-container matColumnDef="id">
@@ -87,8 +87,11 @@
         </mat-table>
   
         <!-- Angular 8 pagination -->
-        <mat-paginator [pageSize]="20" [pageSizeOptions]="[10, 20, 50, 100, 200]" [showFirstLastButtons]="true" [length]="dataSource.totalCount">
+        <mat-paginator [pageSize]="20" [pageSizeOptions]="[10, 20, 50, 100, 200]" [showFirstLastButtons]="true" [length]="totalCount">
         </mat-paginator>
+
+
+        totalCount:: {{totalCount}}
     </div>
   </div>
   

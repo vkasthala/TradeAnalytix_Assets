@@ -15,6 +15,9 @@ import { TradeStrategyGridRow } from '../../models/trade-strategy-grid-row.model
 import { TradeStrategyGridStore } from '../../services/trade-strategy-grid-store';
 import { TradeStrategyGridService } from '../../services/trade-strategy-grid.service';
 
+import { StrategiesGridFilter } from '../../models/strategies-grid-filter.model';
+import { BehaviorSubject } from 'rxjs';
+
 @Component({
   selector: 'app-draft-trades-grid',
   templateUrl: './draft-trades-grid.component.html',
@@ -26,12 +29,17 @@ export class DraftTradesGrid implements AfterViewInit, OnInit {
   expandIndex: any;
   displayedColumns = ['id', 'stockName', 'strategy', 'openDate', 'totalAmount', 'maxGain', 'maxLoss', 'thesis', 'rules', 'action'];
   pageSize: number = 20
+  totalCount: number = 0;
 
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort: MatSort;
 
-  dataSource: TradeStrategyGridStore;
+  draftDataSource;
+
   tradeStrategyGridRequest: TradeStrategyGridRequest = this.getInitialRequest();
+  strategiesGridFilter: StrategiesGridFilter = new StrategiesGridFilter();
+  private tradeStrategySubject = new BehaviorSubject<TradeStrategyGridRow[]>([]);
+
   protected gridData: any;
   expandedIndex:any;
 
@@ -46,14 +54,20 @@ export class DraftTradesGrid implements AfterViewInit, OnInit {
   }
 
   ngOnInit() {
-    this.dataSource = new TradeStrategyGridStore(this.tradeStrategyGridService);
     this.loadPage();
-    this.gridData = JSON.parse(localStorage.getItem('strategiesGridData'));
     this.expandedIndex = -1;
   }
 
   loadPage() {
-    this.dataSource.loadTradeStrategies(this.tradeStrategyGridRequest);
+    this.strategiesGridFilter.status = 4;
+    this.tradeStrategyGridRequest.filters= this.strategiesGridFilter;
+    this.tradeStrategyGridService.loadTradeStrategies(this.tradeStrategyGridRequest).subscribe(result => {
+      if (result) {
+        this.draftDataSource = result.rows
+        this.tradeStrategySubject.next(result.rows);
+        this.totalCount = result.totalCount;
+      }
+    });
     
   }
 

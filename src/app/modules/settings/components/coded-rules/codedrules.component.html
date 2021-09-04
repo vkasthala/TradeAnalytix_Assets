@@ -1,9 +1,29 @@
+
 <mat-accordion class="example-headers-align w-100" multi="true">
-    <mat-expansion-panel class="coded_rules_body" [expanded]="true" (opened)="setStep(0)">
+    <mat-expansion-panel class="coded_rules_body pt-3" [expanded]="true" (opened)="setStep(0)">
         <ng-template matExpansionPanelContent>
-            <div class="col-sm-8 col-md-6 mt-3">
-                <app-editable-grid #codedRules></app-editable-grid>
+            <div class="px-2 h6">Review and update the coded rules listed below to receive notifications automatically once the conditions are met.</div>
+            <div class="d-flex py-2 align-items-center" *ngFor="let coderule of columnConfigs">
+                <span class="px-2 pr-3">
+                    <input type="checkbox" name="rule" class="checkbox mt-2" />
+                </span>
+                <span class="code-label">
+                    {{coderule.name}}
+                </span>
+                <span class="px-2" *ngIf="!coderule.visible">
+                    {{coderule.id}}
+                </span>
+                <span class="px-1 d-flex align-items-center" *ngIf="coderule.visible">
+                    <input type="text" class="form-control col-5" [(ngModel)]="coderule.id" id="{{coderule.id}}" />
+                    <mat-icon class="ml-2 mat-icon-edit action-icon" (click)="onItemEdit(coderule)">check_circle</mat-icon>
+                    <mat-icon class="ml-2 text-danger action-icon" (click)="onCancel(coderule)">close</mat-icon>
+                </span>
+                <mat-icon class="mat-icon-sm mat-icon-edit" (click)="onRowEdit(coderule)" *ngIf="!coderule.visible && coderule.id">edit</mat-icon>
             </div>
+
+            <!-- <div class="col-sm-8 col-md-6 mt-3">
+                <app-editable-grid #codedRules></app-editable-grid>
+            </div> -->
         </ng-template>
     </mat-expansion-panel>
 </mat-accordion>

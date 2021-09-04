@@ -14,6 +14,8 @@ import { TradeStrategyGridRequest } from '../../models/trade-strategy-grid-reque
 import { TradeStrategyGridRow } from '../../models/trade-strategy-grid-row.model';
 import { TradeStrategyGridStore } from '../../services/trade-strategy-grid-store';
 import { TradeStrategyGridService } from '../../services/trade-strategy-grid.service';
+import { StrategiesGridFilter } from '../../models/strategies-grid-filter.model';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-portfolio-grid',
@@ -21,7 +23,7 @@ import { TradeStrategyGridService } from '../../services/trade-strategy-grid.ser
   styleUrls: ['./portfolio-grid.component.scss']
 })
 export class PortfolioGrid implements AfterViewInit, OnInit {
-
+  totalCount: number = 0;
   protected Loader = false;
   expandIndex: any;
   displayedColumns = ['id', 'stockName', 'strategy', 'openDate', 'totalAmount', 'maxGain', 'maxLoss', 'return', 'thesis', 'rules', 'action'];
@@ -30,8 +32,10 @@ export class PortfolioGrid implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort: MatSort;
 
-  dataSource: TradeStrategyGridStore;
+  portfolioDataSource;
   tradeStrategyGridRequest: TradeStrategyGridRequest = this.getInitialRequest();
+  private tradeStrategySubject = new BehaviorSubject<TradeStrategyGridRow[]>([]);
+  strategiesGridFilter: StrategiesGridFilter = new StrategiesGridFilter();
   protected gridData: any;
   expandedIndex:any;
 
@@ -46,14 +50,22 @@ export class PortfolioGrid implements AfterViewInit, OnInit {
   }
 
   ngOnInit() {
-    this.dataSource = new TradeStrategyGridStore(this.tradeStrategyGridService);
     this.loadPage();
     this.gridData = JSON.parse(localStorage.getItem('strategiesGridData'));
     this.expandedIndex = -1;
+    this.strategiesGridFilter.status = 1;
   }
 
   loadPage() {
-    this.dataSource.loadTradeStrategies(this.tradeStrategyGridRequest);
+    
+    this.tradeStrategyGridRequest.filters= this.strategiesGridFilter;
+    this.tradeStrategyGridService.loadTradeStrategies(this.tradeStrategyGridRequest).subscribe(result => {
+      if (result) {
+        this.portfolioDataSource = result.rows
+        this.tradeStrategySubject.next(result.rows);
+        this.totalCount = result.totalCount;
+      }
+    });
     
   }
 
@@ -77,21 +89,6 @@ export class PortfolioGrid implements AfterViewInit, OnInit {
         })
       )
       .subscribe();
-
-    /*
-// reset the paginator after sorting
-this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
-
-// on sort or paginate events, load a new page
-merge(this.sort.sortChange, this.paginator.page)
-  .pipe(
-    tap(() => {
-      console.log('here...');
-      this.updatePageSortParams();
-      this.loadPage();
-    })
-  )
-  .subscribe();*/
   }
 
   getInitialRequest(): TradeStrategyGridRequest {
@@ -117,10 +114,7 @@ merge(this.sort.sortChange, this.paginator.page)
       sortRequest = new StrategiesGridSort();
       this.tradeStrategyGridRequest.sort = sortRequest;
     }
-    /*sortRequest.column = this.sort.active;
-    if (this.sort.active) {
-      sortRequest.order = this.sort.direction;
-    }*/
+    
   }
 
   editTrade(rowModel: TradeStrategyGridRow) {
@@ -201,7 +195,6 @@ merge(this.sort.sortChange, this.paginator.page)
   }
   
   Collaps(index: number) {  
-    // this.expandedIndex[index] = !this.expandedIndex[index];
     this.hideRuleContent[index] = !this.hideRuleContent[index]; 
   }
 

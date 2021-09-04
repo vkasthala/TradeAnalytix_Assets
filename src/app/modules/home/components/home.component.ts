@@ -73,6 +73,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       case 'risk-analysis': return { breadcrumb: 'RISK ANALYSIS', title: 'Risk Analysis' };
       case 'add-new-trade-plan': return { breadcrumb: 'TRADING PLAN', breadcrumbChild: 'ADD TRADE PLAN', title: 'Add Trade Plan' };
       case 'import-trades-history': return { breadcrumb: 'Import Trades History', title: 'Import Trades History' };
+      case 'rules': return { breadcrumb: 'Rules', title: 'Rules' };
       case 'notifications': return { breadcrumb: 'Notifications', title: 'Notifications' };
       default: return null;
     }

@@ -16,13 +16,33 @@ import { DataSetupService } from '../../services/data-setup.service';
   templateUrl: './codedrules.component.html',
   styleUrls: ['./codedrules.component.scss']
 })
-export class CodedRulesComponent implements OnInit {
+export class CodedRulesComponent<T> implements OnInit {
 
   @ViewChild('codedRules', { static: false }) protected codedRules: EditableGridComponent<UserCodedRule>;
-
-  paramNameCol: EditableGridColumn;
+  
+  //paramNameCol: EditableGridColumn;
   ruleOperatorCol: EditableGridColumn;
   valueCol: EditableGridColumn;
+
+  columnConfigs: EditableGridColumn[] = [{"id":"1000", "name":"Receive an alert while adding or editing a trade when the stock amount is greater than", "type":"text", "values":[],"placeholder":"", "visible":false},
+  {"id":"500", "name":"Receive an alert while adding or editing a trade when the option amount is greater than", "type":"text", "values":[],"placeholder":"", "visible":false},
+  {"id":"10000", "name":"Receive an alert while adding or editing a trade when the total amount of a trade is greater than", "type":"text", "values":[],"placeholder":"", "visible":false},
+  {"id":"50000", "name":"Receive an alert while adding or editing a trade when maximum risk of a trade is greater than", "type":"text", "values":[],"placeholder":"", "visible":false},
+  {"id":"50000", "name":"Receive an alert while adding or editing a trade when maximum profit potential of a trade is less than", "type":"text", "values":[],"placeholder":"", "visible":false},
+  {"id":"", "name":"Receive an alert wh,,en a trade is being averaged", "type":"text", "values":[],"placeholder":"", "visible":false},
+  {"id":"50000", "name":"Receive an alert at the end of the day when maximum risk of the account greater than", "type":"text", "values":[],"placeholder":"", "visible":false},
+  {"id":"50000", "name":"Receive an alert at the end of the day when maximum profit potential of the account is less than", "type":"text", "values":[],"placeholder":"", "visible":false},
+  {"id":"", "name":"Receive an alert when a trade plan is not created for the day", "type":"text", "values":[],"placeholder":"", "visible":false},
+  {"id":"20", "name":"Receive an alert at the end of the day when daily trade count exceeds", "type":"text", "values":[],"placeholder":"", "visible":false},
+  {"id":"120", "name":"Receive an alert at the end of the day when weekly trade count exceeds", "type":"text", "values":[],"placeholder":"", "visible":false}
+];
+
+  selectedModel: T;
+  edit: boolean = false;
+  addItemSubject: Subject<T>;
+  editItemSubject: Subject<T>;
+  deleteItemSubject: Subject<T>;
+  comboChangeSubject: Subject<string>;
 
   constructor(private codedRuleService: CodedRuleService, private cdr: ChangeDetectorRef, private _dialog: MatDialog, private toastr: ToastrService) { }
   step = 0;
@@ -36,11 +56,11 @@ export class CodedRulesComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.loadCodedRuleOptions();
-    this.initCodedRulesGrid();
+    //this.loadCodedRuleOptions();
+    //this.initCodedRulesGrid();
   }
 
-  loadCodedRuleOptions() {
+  /*loadCodedRuleOptions() {
     this.codedRuleService.getCodedRules().subscribe(result => {
       let arr = [];
       result.forEach(rule => {
@@ -48,7 +68,7 @@ export class CodedRulesComponent implements OnInit {
       });
       this.paramNameCol.values = arr;
     });
-  }
+  }*/
 
   loadCodedRulesData() {
     this.codedRuleService.getUserCodedRules().subscribe(result => {
@@ -56,7 +76,7 @@ export class CodedRulesComponent implements OnInit {
     });
   }
 
-  initCodedRulesGrid() {
+  /*initCodedRulesGrid() {
     this.loadCodedRulesData();
 
     let cols: EditableGridColumn[] = [];
@@ -144,7 +164,7 @@ export class CodedRulesComponent implements OnInit {
     this.codedRules.editItemSubject = editItemSubject;
     this.codedRules.deleteItemSubject = deleteItemSubject;
     this.codedRules.comboChangeSubject = comboChangeSubject;
-  }
+  }*/
 
   lodRuleOperators(ruleId: string) {
     this.codedRuleService.getRuleOperators(ruleId).subscribe(result => {
@@ -175,6 +195,24 @@ export class CodedRulesComponent implements OnInit {
 
   showSuccessMessage(msg: string) {
     this.toastr.success(msg);
+  }
+
+  onRowEdit(element) {
+    console.log(element);
+    this.selectedModel = element;
+    element.visible = true;
+  }
+  onItemEdit(element) {
+    for (let ind = 0; ind < this.columnConfigs.length; ind++) {
+      let ele = document.getElementById(this.columnConfigs[ind].id);
+      if (ele) {
+        this.selectedModel[this.columnConfigs[ind].id] = ele['value'];
+      }
+    }
+    element.visible = false;
+  }
+  onCancel(element) {
+    element.visible = false;
   }
 
 }
