@@ -6,10 +6,18 @@ export class UserCodedRule {
 
     ruleOperator: number;
 
-    value: string;
+    val: string;
 
     ruleName: string;
 
     operatorName: string;
+
+    uiLabel: string;
+
+    tempVal: string;
+
+    editing: boolean;
+
+    defaultValue: string;
 
 }
