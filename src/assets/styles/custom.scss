@@ -670,7 +670,12 @@ textarea {
         transform: rotate(360deg);
     }
 }
-
+.global-search #search-box {
+    font-size: 12px !important;
+    height: 33px;
+    border: 0;
+    padding: 0;
+}
 @media (max-width:1024px) {
     mat-cell:first-of-type,
     mat-footer-cell:first-of-type,

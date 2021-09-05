@@ -1,0 +1,12 @@
+<div class="custom-calendar">
+    <ul>
+        <li class="days" *ngFor="let day of calendarDays">{{day}}</li>
+    </ul>
+    <ul>
+        <li *ngFor="let date of calendarDates">
+            <span class="" [ngClass]="{'abc' : !date.return, 'working_day' : date.return > 0,  'negitive_return' : date.return < 0 }">{{date.id}}</span>
+            <p class="w-100 text-right">{{date.return}}</p>
+            <p class="w-100 text-right">{{date.tradecount}}</p>
+        </li>
+    </ul>
+</div>

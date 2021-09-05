@@ -55,6 +55,12 @@
                         <span>Reports</span>
                     </a>
                 </li>
+                <li class="sidebar-item" [class.nav-active]="currentRoute == 'rules'">
+                    <a class="sidebar-link" [routerLink]="['/rules/']">
+                        <mat-icon>rule</mat-icon>
+                        <span>Rules</span>
+                    </a>
+                </li>
 
             </ul>
             <span class="menu-toggle cursor-pointer" (click)="sidebarToggle()">
@@ -70,12 +76,21 @@
                     <span class="page-heading">{{title}}</span>
                 </div>
                 <div class="user-details">
+                    <div class="global-search">
+                        <div class="media-body">
+                            <app-trade-search (symbolSelectEvent)="symbolSelectEventHandler($event)">
+                            </app-trade-search>
+                        </div>
+                        <mat-icon class="material-icons-outlined cursor" (click)="enterSymbol()">
+                            search
+                        </mat-icon>
+                    </div>
                     <div class="top-nav">
-                        <span class="top-nav-item" [class.nav-active]="currentRoute == 'rules'">
+                        <!-- <span class="top-nav-item" [class.nav-active]="currentRoute == 'rules'">
                             <a class="top-nav-link" [routerLink]="['/rules/']">
                                 Rules
                             </a>
-                        </span>
+                        </span> -->
                         <span class="top-nav-item" [class.nav-active]="currentRoute == 'setttings'">
                             <a class="top-nav-link" [routerLink]="['/setttings/']">
                                 <mat-icon>settings</mat-icon>
