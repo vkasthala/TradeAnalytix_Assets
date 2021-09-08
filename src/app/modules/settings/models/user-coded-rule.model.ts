@@ -20,4 +20,6 @@ export class UserCodedRule {
 
     defaultValue: string;
 
+    checked: boolean;
+
 }

@@ -29,6 +29,9 @@ export class CodedRulesComponent implements OnInit {
   loadCodedRulesData() {
     this.codedRuleService.getUserCodedRules().subscribe(result => {
       this.userCodedRules = result;
+      this.userCodedRules.forEach(rule => {
+        rule.checked = rule.id && rule.id !== null && rule.id > 0;
+      })
     });
   }
 
@@ -134,7 +137,7 @@ export class CodedRulesComponent implements OnInit {
   onRowEdit(element: UserCodedRule) {
     console.log(element);
     element.editing = true;
-    element.tempVal = element.val ? element.val : element.tempVal;
+    element.tempVal = element.val ? element.val : element.defaultValue;
   }
 
   onItemEdit(element: UserCodedRule) {
@@ -143,6 +146,13 @@ export class CodedRulesComponent implements OnInit {
     }
     element.val = element.tempVal;
     element.editing = false;
+    if (!element.checked) {
+      return;
+    }
+    this.addOrUpdateRule(element);
+  }
+
+  addOrUpdateRule(element: UserCodedRule) {
     if (!element.id || element.id === 0) {
       this.codedRuleService.createCodedRule(element).subscribe(data => {
         this.showSuccessMessage('Successfully added the coded rule');
@@ -159,6 +169,24 @@ export class CodedRulesComponent implements OnInit {
         console.log('error in editing coded rule: ', element)
         this.showErrorMessageDialog('Error! failed to edit coded rule');
       });
+    }
+  }
+
+  deleteCodedRule(rule: UserCodedRule) {
+    this.codedRuleService.deleteCodedRule(rule.id).subscribe(data => {
+      this.showSuccessMessage('Successfully removed from rules list');
+      this.loadCodedRulesData();
+    }, err => {
+      console.log('error in deleteing coded rule: ', rule)
+      this.showErrorMessageDialog('Failed to remove from rules list');
+    });
+  }
+
+  onRuleSelectionChange(rule: UserCodedRule) {
+    if (rule.checked) {
+      this.addOrUpdateRule(rule);
+    } else if (rule.id && rule.id > 0) {
+      this.deleteCodedRule(rule);
     }
   }
 
