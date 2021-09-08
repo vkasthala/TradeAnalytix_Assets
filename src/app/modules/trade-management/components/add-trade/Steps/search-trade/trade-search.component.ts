@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, AfterViewInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 
 import {
@@ -13,7 +13,7 @@ import { UtilService } from 'src/app/modules/utilities/services/util.service';
     templateUrl: './trade-search.component.html',
     styleUrls: ['./auto-search.css']
 })
-export class TradeSearchComponent implements OnInit {
+export class TradeSearchComponent implements OnInit, AfterViewInit {
     serarchResult = false;
     TradeList = [];
     tradeItem = '';
@@ -30,6 +30,10 @@ export class TradeSearchComponent implements OnInit {
     }
 
     ngOnInit(): void {
+
+    }
+
+    ngAfterViewInit(): void {
         //Load all stock symbols on load
         this.stockSymbolService.getStockSymbols().subscribe(result => {
             console.log("stock symbol result:", result);
