@@ -14,6 +14,8 @@ import { TradeStrategyGridRow } from 'src/app/modules/trade-strategies/models/tr
 import { ImportTradesGridStore } from 'src/app/modules/import-trades-history/services/import-trades-grid-store';
 import { ImportTradesGridService } from 'src/app/modules/import-trades-history/services/import-trades-grid.service';
 import { ImportTradePopupComponent } from './import-trade-popup/import-trade-popup.component';
+import { ToastrService } from 'ngx-toastr';
+import { UploadFileService } from 'src/app/modules/import-trades/services/upload-file.service';
 
 @Component({
   selector: 'app-import-trades-history',
@@ -21,6 +23,7 @@ import { ImportTradePopupComponent } from './import-trade-popup/import-trade-pop
   templateUrl: 'import-trades-history.html',
 })
 export class ImportTradesHistory implements AfterViewInit, OnInit {
+  selectedFiles: FileList;
   expandIndex: any;
   displayedColumns = ['openDate', 'stockName', 'direction', 'status', 'action'];
   pageSize: number = 20
@@ -35,6 +38,8 @@ export class ImportTradesHistory implements AfterViewInit, OnInit {
     private tradeStrategyService: TradeStrategyService,
     private stockSymbolService: StockSymbolService,
     private userStockStatsService: UserStockStatsService,
+    private uploadService: UploadFileService,
+    protected toastr: ToastrService,
     private router: Router,
     private _dialog: MatDialog,
     //public dialogRef: MatDialogRef<ImportTradePopupComponent>
@@ -111,6 +116,35 @@ export class ImportTradesHistory implements AfterViewInit, OnInit {
         console.log('error downloading....',error);
       }   
     );
+  }
+
+  downloadTradeThesis(rowModel: TradeStrategyGridRow) {
+    this.importTradesGridService.downloadImportTradesThesis(rowModel.id).subscribe(
+      response => {
+        const blob = new Blob([response], { type: 'text/csv'});
+        FileSaver.saveAs(blob, 'Trade_Thesis_imports_'+new Date()+'.csv')
+      },
+      error => {
+        console.log('error downloading....',error);
+      }   
+    );
+  }
+
+  uploadTradeThesis(event, rowModel: TradeStrategyGridRow) {
+    this.selectedFiles = event.target.files;
+    if(this.selectedFiles !== undefined && this.selectedFiles.length > 0) {
+      this.uploadService.importTradesThesis(this.selectedFiles.item(0), rowModel.id).subscribe(
+        event => {
+          this.toastr.success('Imported trades thesis successfully', '');
+        },
+        err => {
+          this.toastr.error('Failed to import trades thesis');
+        });
+      this.selectedFiles = undefined;
+    }
+    else{
+      this.toastr.error('Please select a file import trades thesis');
+    }
   }
 
   expandRowOptions(index) {

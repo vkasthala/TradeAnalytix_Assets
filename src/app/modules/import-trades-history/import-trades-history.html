@@ -36,6 +36,9 @@
                     <mat-cell *matCellDef="let element, let i = index" class="action_colum">
                         <div>
                             <mat-icon (click)="downloadFailedTrade(element)" class="mat-icon-sm trade-view">download</mat-icon>
+                            <mat-icon (click)="downloadTradeThesis(element)" class="mat-icon-sm trade-view">download</mat-icon>
+                            <mat-icon class="mat-icon-sm trade-view"><input class="w-100" type="file" (change)="uploadTradeThesis($event, element)" /></mat-icon>
+                           
                         </div>
                     </mat-cell>
                 </ng-container>

@@ -17,4 +17,10 @@ export class UploadFileService {
         formData.append('file', file);
         return this.httpService.postWithForm(`${this.apiUrl}/upload/${selectedbroker}`,formData);
     }
+
+    importTradesThesis(file: File, id: number): Observable<HttpEvent<any>> {
+      const formData: FormData = new FormData();
+      formData.append('file', file);
+      return this.httpService.postWithForm(`${this.apiUrl}/thesis/upload/${id}`,formData);
+  }
 }

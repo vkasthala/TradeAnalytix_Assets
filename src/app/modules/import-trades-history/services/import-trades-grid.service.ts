@@ -31,4 +31,9 @@ export class ImportTradesGridService {
     return this.httpService.getWIthReponseType(`${this.apiUrl}/trades/download/${id}`,new Map(), new Map());
   }
 
+  public downloadImportTradesThesis(id: number){
+    let url = this.apiUrl + '/trades/thesis/download/';
+    return this.httpService.getWIthReponseType(`${this.apiUrl}/trades/thesis/download/${id}`,new Map(), new Map());
+  }
+
 }
