@@ -116,7 +116,7 @@
                         (click)="reduceToPosition()">
                         <mat-icon class="text-primary">remove_circle</mat-icon>
                     </div>
-                    <div *ngIf="addTrade || tradeStatus == 4 || (editTrade && StockPosition.quantity == 0 || StockPosition.quantity == undefined)"
+                    <div *ngIf="addTrade || tradeStatus == 4 || (StockPosition != undefined && StockPosition.quantity !== undefined && StockPosition.quantity == 0 )"
                         class="top-heading mr-2" (click)="deleteStock()">
                         <mat-icon>delete</mat-icon>
                     </div>
@@ -287,7 +287,7 @@
                 </div>
             </div>
 
-            <div class="show-stock-sec" *ngIf="showStockSec">
+            <div class="show-stock-sec" *ngIf="showStockSec && stockEntry != undefined">
                 <div class="row pt-3">
                     <div class="col-5">
                         <label class="col-form-label pt-0">Action</label>
@@ -332,7 +332,7 @@
                         </span>
                     </div>
                     <div class="col-2"
-                        *ngIf="addTrade || tradeStatus == 4 || (editTrade && StockPosition.quantity == 0 || StockPosition.quantity == undefined)">
+                        *ngIf="addTrade || tradeStatus == 4 || (editTrade && (StockPosition != undefined && StockPosition.quantity !== undefined && StockPosition.quantity == 0 ))">
                         <span class="trade-delete mr-2" (click)="deleteStock()">
                             <mat-icon>delete</mat-icon>
                         </span>
