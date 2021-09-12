@@ -38,9 +38,13 @@ th.mat-header-cell {
   flex: 0 0 12% !important;
 }
 
+.strategy-cell{
+  width: 10%;
+  flex: 0 0 10% !important;
+}
 .stock-name-cell{
-  width: 8%;
-  flex: 0 0 8% !important;
+  width: 10%;
+  flex: 0 0 10% !important;
 }
 
 .direction-cell{
@@ -54,16 +58,17 @@ th.mat-header-cell {
 }
 
 .open-date-cell, .rules-cell{
-  width: 10%;
-  flex: 0 0 10% !important;
-}
-.return-cell, .total-amount-cell {
   width: 12%;
   flex: 0 0 12% !important;
 }
+.return-cell, .total-amount-cell {
+  width: 11%;
+  flex: 0 0 11% !important;
+}
 
 .close-date-cell{
-  width: 10%;
+  width: 11%;
+  flex: 0 0 11% !important;
 }
 
 .action-cell {

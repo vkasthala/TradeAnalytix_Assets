@@ -1,19 +1,56 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Subject } from 'rxjs';
+import { ReportDetails } from '../../model/report-details.model';
+
+import { ReportSubType } from '../../model/report-sub-type.model';
+import { ReportSummaryItem } from '../../model/report-summary-item.model';
 import { ReportTypeService } from '../../services/report-type.service';
+import { ReportChartComponent } from '../report-chart/report-chart.component';
 import { ReportTabContentComponent } from '../report-tab-content/report-tab-content.component';
 
 @Component({
   selector: 'app-reports-rules',
-  templateUrl: '../report-tab-content/report-tab-content.component.html',
-  styleUrls: ['../report-tab-content/report-tab-content.component.scss']
+  templateUrl: './reports-rules.component.html',
+  styleUrls: ['./reports-rules.component.scss']
 })
 export class ReportsRulesComponent extends ReportTabContentComponent implements OnInit {
+
+
+  @ViewChild('reportChart', { static: false }) protected reportChart: ReportChartComponent;
+
+
+
+
+  // protected reportSubTypes: ReportSubType[];
+
+  protected reports: ReportDetails[];
+
+  protected reportSummaryItems: ReportSummaryItem[] = [];
+
+  protected subtype: string;
+
+  protected description: string;
+
+
+  protected dateFilter: any;
+
   reportTypeService: any;
   reportSubTypes: any;
 
   constructor(reportTypeService: ReportTypeService) {
-    super('rules', reportTypeService);
+    super('rules', reportTypeService)
   }
+
+
+
+  onReportSubTypeSelect(type: ReportSubType): void {
+    this.subtype = type.id;
+    this.description = type.description;
+    this.reportFilter.summaryType = type.id;
+    this.reports = type.reportDetailList;
+    this.reportTypeChangeSubject.next(this.reportFilter);
+  }
+
 
 
   ngOnInit() {

@@ -78,7 +78,7 @@
         
         <app-planned-trades-grid [tradePlanId]="tradePlanId" [viewTradePlan]="view" #plannedTradesGrid></app-planned-trades-grid>
 
-        <div class="inner-trade-plan px-0" *ngIf="edit || view">
+        <div *ngIf="edit || view">
             <app-today-executed-legs [day]="day" #todayExecutedLegsGrid></app-today-executed-legs>
         </div>
 
