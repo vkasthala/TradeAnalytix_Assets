@@ -114,6 +114,7 @@ import { RuleCommentDialogComponent } from '../trade-management/components/add-t
 import { ImportTradePopupComponent } from '../import-trades-history/import-trade-popup/import-trade-popup.component';
 import { RulesComponent } from '../rules/components/rules.component';
 import { CalendarComponent } from '../reports/components/calendar/calendar.component';
+import { ReportsRulesComponent } from '../reports/components/reports-rules/reports-rules.component';
 
 export const MY_FORMATS = {
   parse: {
@@ -216,7 +217,8 @@ export const MY_FORMATS = {
     KeyInsightsComponent,
     ImportTradePopupComponent,
     RulesComponent,
-    CalendarComponent
+    CalendarComponent,
+    ReportsRulesComponent
   ],
   imports: [
     CommonModule,
@@ -232,7 +234,7 @@ export const MY_FORMATS = {
     MatPaginatorModule,
     ChartModule,
     MatListModule,
-    MatCheckboxModule
+    MatCheckboxModule,
     // MatTableDataSource
   ],
   entryComponents: [
@@ -258,7 +260,8 @@ export const MY_FORMATS = {
     GenerateChartPopupComponent,
     RuleCommentDialogComponent,
     ImportTradePopupComponent,
-    CalendarComponent
+    CalendarComponent,
+    ReportsRulesComponent
   ],
   // bootstrap: [TradeStrategiesGrid],
   providers: [

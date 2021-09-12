@@ -18,6 +18,7 @@ export enum ReportCategory {
 
     "Net_Return_Tag" = "net_return_tag",
 
-    "Win_Loss_Tag" = "win_loss_tag"
+    "Win_Loss_Tag" = "win_loss_tag",
+    "Rule" = "rule"
 
 }

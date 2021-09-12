@@ -20,6 +20,8 @@ export class ReportTypeService {
       subTypes = this.getDisciplineReportSubTypes();
     } else if(category === 'risk') {
       subTypes = this.getRiskReportSubTypes();
+    } else if(category === 'rules') {
+      subTypes = this.getReportsRulesSubTypes();
     } else if(category === 'goals') {
       subTypes = this.getGoalsReportSubTypes();
     }
@@ -209,6 +211,88 @@ export class ReportTypeService {
     reportSubType.description = "This report compares the goals set by the user for a given period against the realized return during that period.";
     reportSubType.id = "goal_status";
     reportSubType.reportDetailList = [new ReportDetails('goal_status', 'Goal Status', ReportCategory.Goal_Status)];
+    reportSubTypes.push(reportSubType);
+
+    return reportSubTypes;
+  }
+
+  private getReportsRulesSubTypes(): ReportSubType[] {
+    let reportSubTypes: ReportSubType[] = [];
+    let reportSubType: ReportSubType = new ReportSubType();
+    reportSubType.name = 'Rule 1';
+    reportSubType.description = "Rule 1 description";
+    reportSubType.id = "rule_1";
+    reportSubType.reportDetailList = [new ReportDetails('rule', 'Rule 1', ReportCategory.Rule)];
+    reportSubTypes.push(reportSubType);
+
+    reportSubType = new ReportSubType();
+    reportSubType.name = 'Rule 2';
+    reportSubType.description = "Rule 2 description";
+    reportSubType.id = "rule_2";
+    reportSubType.reportDetailList = [new ReportDetails('rule', 'Rule 2', ReportCategory.Rule)];
+    reportSubTypes.push(reportSubType);
+
+    reportSubType = new ReportSubType();
+    reportSubType.name = 'Rule 3';
+    reportSubType.description = "Rule 3 description";
+    reportSubType.id = "rule_3";
+    reportSubType.reportDetailList = [new ReportDetails('rule', 'Rule 3', ReportCategory.Rule)];
+    reportSubTypes.push(reportSubType);
+
+    reportSubType = new ReportSubType();
+    reportSubType.name = 'Rule 4';
+    reportSubType.description = "Rule 4 description";
+    reportSubType.id = "rule_4";
+    reportSubType.reportDetailList = [new ReportDetails('rule', 'Rule 4', ReportCategory.Rule)];
+    reportSubTypes.push(reportSubType);
+
+    reportSubType = new ReportSubType();
+    reportSubType.name = 'Rule 5';
+    reportSubType.description = "Rule 5 description";
+    reportSubType.id = "rule_5";
+    reportSubType.reportDetailList = [new ReportDetails('rule', 'Rule 5', ReportCategory.Rule)];
+    reportSubTypes.push(reportSubType);
+
+    reportSubType = new ReportSubType();
+    reportSubType.name = 'Rule 6';
+    reportSubType.description = "Rule 6 description";
+    reportSubType.id = "rule_6";
+    reportSubType.reportDetailList = [new ReportDetails('rule', 'Rule 6', ReportCategory.Rule)];
+    reportSubTypes.push(reportSubType);
+
+    reportSubType = new ReportSubType();
+    reportSubType.name = 'Rule 7';
+    reportSubType.description = "Rule 7 description";
+    reportSubType.id = "rule_7";
+    reportSubType.reportDetailList = [new ReportDetails('rule', 'Rule 7', ReportCategory.Rule)];
+    reportSubTypes.push(reportSubType);
+
+    reportSubType = new ReportSubType();
+    reportSubType.name = 'Rule 8';
+    reportSubType.description = "Rule 8 description";
+    reportSubType.id = "rule_8";
+    reportSubType.reportDetailList = [new ReportDetails('rule', 'Rule 8', ReportCategory.Rule)];
+    reportSubTypes.push(reportSubType);
+
+    reportSubType = new ReportSubType();
+    reportSubType.name = 'Rule 9';
+    reportSubType.description = "Rule 9 description";
+    reportSubType.id = "rule_9";
+    reportSubType.reportDetailList = [new ReportDetails('rule', 'Rule 9', ReportCategory.Rule)];
+    reportSubTypes.push(reportSubType);
+
+    reportSubType = new ReportSubType();
+    reportSubType.name = 'Rule 10';
+    reportSubType.description = "Rule 10 description";
+    reportSubType.id = "rule_10";
+    reportSubType.reportDetailList = [new ReportDetails('rule', 'Rule 10', ReportCategory.Rule)];
+    reportSubTypes.push(reportSubType);
+
+    reportSubType = new ReportSubType();
+    reportSubType.name = 'Rule 11';
+    reportSubType.description = "Rule 11 description";
+    reportSubType.id = "rule_11";
+    reportSubType.reportDetailList = [new ReportDetails('rule', 'Rule 11', ReportCategory.Rule)];
     reportSubTypes.push(reportSubType);
 
     return reportSubTypes;

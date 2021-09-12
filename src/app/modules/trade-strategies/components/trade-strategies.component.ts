@@ -98,9 +98,9 @@ export class TradeStrategiesComponent implements OnInit {
    applyFilters() {
       let tradeStrategyGridRequest = this.tradeStrategiesGrid.tradeStrategyGridRequest;
       tradeStrategyGridRequest.filters = this.strategiesGridFilter;
-      this.draftTradesGrid.reload();
-      this.historyGrid.reload();
-      this.portfolioGrid.reload();
+      this.portfolioGrid.reload(tradeStrategyGridRequest.filters);
+      this.historyGrid.reload(tradeStrategyGridRequest.filters);
+      this.draftTradesGrid.reload(tradeStrategyGridRequest.filters);
    }
 
    onDateRangeChanged(event: IMyDateRangeModel) {
@@ -119,8 +119,10 @@ export class TradeStrategiesComponent implements OnInit {
       this.tradeSearchComponent.clearSelection();
       tradeStrategyGridRequest.filters = new StrategiesGridFilter();
       this.strategiesGridFilter = new StrategiesGridFilter();
-      this.portfolioGrid.reload();
-    }
+      this.portfolioGrid.reload(this.strategiesGridFilter);
+      this.historyGrid.reload(this.strategiesGridFilter);
+      this.draftTradesGrid.reload(this.strategiesGridFilter);
+   }
 
    onOptionsSelected(event){
       let value = event.target.value;

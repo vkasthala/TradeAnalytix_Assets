@@ -54,12 +54,12 @@ export class DraftTradesGrid implements AfterViewInit, OnInit {
   }
 
   ngOnInit() {
+    this.strategiesGridFilter.status = 4;
     this.loadPage();
     this.expandedIndex = -1;
   }
 
   loadPage() {
-    this.strategiesGridFilter.status = 4;
     this.tradeStrategyGridRequest.filters= this.strategiesGridFilter;
     this.tradeStrategyGridService.loadTradeStrategies(this.tradeStrategyGridRequest).subscribe(result => {
       if (result) {
@@ -71,7 +71,13 @@ export class DraftTradesGrid implements AfterViewInit, OnInit {
     
   }
 
-  reload() {
+  reload(filter) {
+    if(Object.keys(filter).length === 0 ) {
+      this.strategiesGridFilter = new StrategiesGridFilter();
+      this.strategiesGridFilter.status = 4;
+    } else {
+      this.strategiesGridFilter = Object.assign(this.strategiesGridFilter, filter);
+    }
     this.tradeStrategyGridRequest.page.pageNumber = 0;
     this.loadPage();
   }
@@ -181,7 +187,7 @@ export class DraftTradesGrid implements AfterViewInit, OnInit {
       if (dialogResult == true) {
         this.tradeStrategyService.deleteTradeStrategy(rowModel.id).subscribe(() => {
           console.log('Trade strategy deleted..', rowModel.id);
-          this.reload();
+          this.reload(this.strategiesGridFilter);
         });
         this.Loader = !this.Loader;
       }

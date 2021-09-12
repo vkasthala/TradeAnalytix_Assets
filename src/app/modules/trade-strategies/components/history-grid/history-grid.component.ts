@@ -57,12 +57,12 @@ export class HistoryGrid implements AfterViewInit, OnInit {
   }
 
   ngOnInit() {
+    this.strategiesGridFilter.status = 2;
     this.loadPage();
     this.expandedIndex = -1;
   }
 
   loadPage() {
-    this.strategiesGridFilter.status = 2;
     this.tradeStrategyGridRequest.filters= this.strategiesGridFilter;
     this.tradeStrategyGridService.loadTradeStrategies(this.tradeStrategyGridRequest).subscribe(result => {
       if (result) {
@@ -73,7 +73,13 @@ export class HistoryGrid implements AfterViewInit, OnInit {
     });
   }
 
-  reload() {
+  reload(filter) {
+    if(Object.keys(filter).length === 0 ) {
+      this.strategiesGridFilter = new StrategiesGridFilter();
+      this.strategiesGridFilter.status = 2;
+    } else {
+      this.strategiesGridFilter = Object.assign(this.strategiesGridFilter, filter);
+    }
     this.tradeStrategyGridRequest.page.pageNumber = 0;
     this.loadPage();
   }

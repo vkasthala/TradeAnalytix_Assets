@@ -8,9 +8,10 @@ import { GoalsComponent } from './components/goals/goals.component';
 import { CommissionsComponent } from './components/commissions/commissions.component';
 import { DisciplineComponent } from './components/discipline/discipline.component';
 import { ReportTabContentComponent } from './components/report-tab-content/report-tab-content.component';
+import { ReportsRulesComponent } from './components/reports-rules/reports-rules.component';
 
 @NgModule({
-  declarations: [PortfolioComponent,PerformanceComponent, ReportsitemsComponent, RiskmanagementComponent, GoalsComponent, CommissionsComponent, DisciplineComponent, ReportTabContentComponent],
+  declarations: [PortfolioComponent,PerformanceComponent, ReportsitemsComponent, RiskmanagementComponent, GoalsComponent, CommissionsComponent, DisciplineComponent, ReportTabContentComponent, ReportsRulesComponent],
   imports: [
     CommonModule
   ]
