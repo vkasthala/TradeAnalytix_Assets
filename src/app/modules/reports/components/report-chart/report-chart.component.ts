@@ -20,6 +20,7 @@ export class ReportChartComponent implements OnInit {
   @Input("report") report: ReportDetails;
 
   @Input("subtype") subtype: string;
+  @Input("description") description: string;
 
   @Input("reportFilter") reportFilter: ReportFilter;
 

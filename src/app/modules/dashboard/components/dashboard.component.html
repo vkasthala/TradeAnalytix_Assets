@@ -121,13 +121,13 @@
                             </div>
                             <div class="row">
                                 <div class="col-4">
-                                    {{latestTradePlan ? latestTradePlan.day : 'N/A'}}
+                                    {{latestTradePlan.day | date: 'dd-MMM-yyyy'}}
                                 </div>
                                 <div class="col-4 text-success">
-                                    {{latestTradePlan ? latestTradePlan.marketStatus : 'N/A'}}
+                                    {{latestTradePlan ? latestTradePlan.marketStatus : ''}}
                                 </div>
                                 <div class="col-4">
-                                    {{latestTradePlan ? latestTradePlan.mindsetType : 'N/A'}}
+                                    {{latestTradePlan ? latestTradePlan.mindsetType : ''}}
                                 </div>
 
                             </div>
@@ -140,7 +140,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-12">
-                                    {{latestTradePlan ? latestTradePlan.notes : 'N/A'}}
+                                    {{latestTradePlan ? latestTradePlan.notes : ''}}
                                 </div>
                             </div>
                         </div>
@@ -152,7 +152,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-12">
-                                    {{latestTradePlan ? latestTradePlan.plannedTrades : 'N/A'}}
+                                    {{latestTradePlan ? latestTradePlan.plannedTrades : ''}}
                                 </div>
                             </div>
                         </div>
@@ -193,7 +193,7 @@
                                 </div>
                             </div> -->
                             <div class="py-2 text-right">
-                                <a href="#" class="btn-link">View More</a>
+                                <a href="#" class="view-more">View More</a>
                             </div>
                         </div>
                     </div>
@@ -201,13 +201,11 @@
             </div>
             <div class="col-sm-12 col-md-4">
                 <div class="trade-analytics">
-                    <div class="container">
-                        <div class="trade-headiang">
-                            <h5>Key Insights</h5>
-                        </div>
-                        <div class="dsh-img" style="height: 300px;">
-                            <app-key-insights></app-key-insights>
-                        </div>
+                    <div class="trade-headiang">
+                        <h5>Key Insights</h5>
+                    </div>
+                    <div class="dsh-img" style="height: 300px;">
+                        <app-key-insights></app-key-insights>
                     </div>
                 </div>
             </div>

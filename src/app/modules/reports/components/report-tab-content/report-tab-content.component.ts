@@ -36,6 +36,8 @@ export class ReportTabContentComponent implements OnInit {
 
   protected subtype: string;
 
+  protected description: string;
+
   protected reportFilter: ReportFilter = new ReportFilter();
 
   protected dateFilter: any;
@@ -48,6 +50,7 @@ export class ReportTabContentComponent implements OnInit {
 
   onReportSubTypeSelect(type: ReportSubType): void {
     this.subtype = type.id;
+    this.description = type.description;
     this.reportFilter.summaryType = type.id;
     this.reports = type.reportDetailList;
     this.reportTypeChangeSubject.next(this.reportFilter);

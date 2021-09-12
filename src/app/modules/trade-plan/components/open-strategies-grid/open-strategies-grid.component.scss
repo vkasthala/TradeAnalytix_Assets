@@ -179,3 +179,39 @@ th.mat-header-cell {
         font-style: 16px;
     }
 }
+
+.mat-expansion-panel {
+    box-shadow: none;
+    margin-bottom: 20px;
+    border-radius: 4px !important;
+}
+
+.mat-expansion-panel-header {
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 24px;
+    color: #3A4C85;
+    background: transparent !important;
+    border-radius: 4px 4px 0 !important;
+    padding: 15px 25px !important;
+    height: inherit !important;
+    border: 0;
+    border-bottom: 1px solid rgb(157 166 186 / 30%);
+    .mat-expansion-panel-header-title {
+        color: #3A4C85;
+    }
+}
+
+.mat-expansion-panel-body {
+    padding: 0 25px !important;
+    border-top: 1px solid rgb(157 166 186 / 30%);
+}
+
+.mat-expansion-panel-header-title {
+    color: #3A4C85;
+    font-family: "Poppins", sans-serif !important;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 24px;
+}

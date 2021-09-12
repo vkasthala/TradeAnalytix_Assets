@@ -73,13 +73,10 @@
             </div>
         </div>
 
-        <div class="inner-trade-plan px-0">
-            <app-open-strategies-grid [tradePlanId]="tradePlanId" [viewTradePlan]="view" #tradeStrategiesGrid></app-open-strategies-grid>
-        </div>
 
-        <div class="inner-trade-plan px-0">
-            <app-planned-trades-grid [tradePlanId]="tradePlanId" [viewTradePlan]="view" #plannedTradesGrid></app-planned-trades-grid>
-        </div>
+        <app-open-strategies-grid [tradePlanId]="tradePlanId" [viewTradePlan]="view" #tradeStrategiesGrid></app-open-strategies-grid>
+        
+        <app-planned-trades-grid [tradePlanId]="tradePlanId" [viewTradePlan]="view" #plannedTradesGrid></app-planned-trades-grid>
 
         <div class="inner-trade-plan px-0" *ngIf="edit || view">
             <app-today-executed-legs [day]="day" #todayExecutedLegsGrid></app-today-executed-legs>

@@ -1,4 +1,4 @@
-<div class="trade-dash-cards-title mb-2">Key Statistics</div>
+<div class="trade-dash-cards-title mb-2" *ngIf="reportSummaryItems">Key Statistics</div>
 <div class="trade-dash-cards">
     <div class="flex-item" *ngFor="let item of reportSummaryItems; let i = index;">
         <div class="flex-inner">
