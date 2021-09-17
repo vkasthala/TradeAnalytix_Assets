@@ -4,8 +4,8 @@
     </ul>
     <ul>
         <li *ngFor="let date of calendarDates">
-            <span class="" [ngClass]="{'abc' : !date.return, 'working_day' : date.return > 0,  'negitive_return' : date.return < 0 }">{{date.day}}</span>
-            <p class="w-100 text-right">{{date.return}}</p>
+            <span class="" [ngClass]="{'abc' : !date.returnAmount, 'working_day' : date.returnAmount > 0,  'negitive_return' : date.returnAmount < 0 }">{{date.day}}</span>
+            <p class="w-100 text-right">{{date.returnAmount}}</p>
             <p class="w-100 text-right">{{date.tradecount}}</p>
         </li>
     </ul>

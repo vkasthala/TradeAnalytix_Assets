@@ -1,5 +1,6 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { CalendarComponent } from '../../reports/components/calendar/calendar.component';
 import { ReportSummaryItem } from '../../reports/model/report-summary-item.model';
 import { ReportDataService } from '../../reports/services/report-data.service';
 import { SummaryItem } from '../../shared/models/reports/summary-item.model';
@@ -13,7 +14,9 @@ import { TradePlansService } from '../../trade-plan/services/trade-plans.service
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, AfterViewInit {
+
+  @ViewChild('calendarReport', { static: false }) private calendarReport: CalendarComponent;
 
   latestTradePlan: TradePlanGridRow;
 
@@ -24,6 +27,11 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.loadLatestTradePlan();
     this.loadSummaryItems();
+  }
+
+  ngAfterViewInit(): void {
+    const today: Date = new Date();
+    this.calendarReport.loadData(today.getFullYear(), today.getMonth() + 1);
   }
 
   ngAfterContentChecked() {

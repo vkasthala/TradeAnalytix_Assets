@@ -2,7 +2,7 @@ export class CalReportDayData {
 
     day: string;
 
-    return: number;
+    returnAmount: number;
 
     tradecount: number;
 

@@ -23,7 +23,7 @@ export class ReportDataService {
   }
 
   public getCalendarReportData(month: number, year: number): Observable<CalReportDayData[]> {
-    return this.httpService.get<CalReportDayData[]>(environment.apiUrl + '/calendar-data/' + year + '/' + month);
+    return this.httpService.get<CalReportDayData[]>(environment.apiUrl + '/reports/calendar-report/' + year + '/' + month);
   }
 
 }
