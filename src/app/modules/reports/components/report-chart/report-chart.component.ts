@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Chart } from 'angular-highcharts';
 import { ChartRequest } from '../../model/chart-request.model';
 import { ReportCategory } from '../../model/report-category.enum';
@@ -8,6 +8,7 @@ import { ReportRequestService } from '../../services/report-request.service';
 import { ReportFilter } from '../../model/report-filter.model';
 import { Subject } from 'rxjs';
 import { ReportSubType } from '../../model/report-sub-type.model';
+import { CalendarComponent } from '../calendar/calendar.component';
 
 @Component({
   selector: 'app-report-chart',
@@ -15,7 +16,9 @@ import { ReportSubType } from '../../model/report-sub-type.model';
   styleUrls: ['./report-chart.component.scss'],
   inputs: ['report', 'subtype', 'reportFilter', 'filterChangeSubject']
 })
-export class ReportChartComponent implements OnInit {
+export class ReportChartComponent implements OnInit, AfterViewInit {
+
+  @ViewChild('calendarReport', { static: false }) private calendarReport: CalendarComponent;
 
   @Input("report") report: ReportDetails;
 
@@ -40,7 +43,7 @@ export class ReportChartComponent implements OnInit {
 
   constructor(protected reportRequestService: ReportRequestService, protected reportDataService: ReportDataService) { }
 
-  ngOnInit() {
+  ngAfterViewInit(): void {
     this.loadChart();
     this.filterChangeSubject.asObservable().subscribe(data => {
       this.onFilterChange(data);
@@ -49,6 +52,9 @@ export class ReportChartComponent implements OnInit {
     if (this.monthFilter) {
       this.initYearsAndMonths();
     }
+  }
+
+  ngOnInit() {
   }
 
   loadChart(): void {
@@ -72,15 +78,17 @@ export class ReportChartComponent implements OnInit {
       request = this.reportRequestService.getCommonChartRequest(this.report, this.subtype, this.reportFilter);
       url = '/reports/performance/goalstatus';
     } else if (category == ReportCategory.Calendar_Report) {
-      request = this.reportRequestService.getCommonChartRequest(this.report, this.subtype, this.reportFilter);
+      //request = this.reportRequestService.getCommonChartRequest(this.report, this.subtype, this.reportFilter);
+      debugger;
       let month = this.reportFilter.month;
       let year = this.reportFilter.year;
       if (!month || !year) {
         let today = new Date();
-        month = today.getMonth();
+        month = today.getMonth() + 1;
         year = today.getFullYear();
       }
-      url = '/reports/dashboard/calendarChart/' + year + '/' + month;
+      url = null;
+      this.calendarReport.loadData(year, month);
     } else if (category == ReportCategory.Discipline) {
       request = this.reportRequestService.getDisciplineChartRequest(this.report, this.subtype, this.reportFilter);
       url = this.reportRequestService.getDisciplineReportApiUrl(this.report.id);
@@ -96,17 +104,19 @@ export class ReportChartComponent implements OnInit {
     }
 
     //Load Chart
-    this.reportDataService.getReportChart(url, request).subscribe(chartResult => {
-      if (chartResult) {
-        if (url.indexOf('calendarChart') > 0) {
-          this.addHeatmapFormatter(chartResult);
+    if (url) {
+      this.reportDataService.getReportChart(url, request).subscribe(chartResult => {
+        if (chartResult) {
+          if (url.indexOf('calendarChart') > 0) {
+            this.addHeatmapFormatter(chartResult);
+          }
+          console.log('chart result:', chartResult);
+          this.chart = new Chart(chartResult);
+        } else if (this.chart) {
+          this.chart.destroy();
         }
-        console.log('chart result:', chartResult);
-        this.chart = new Chart(chartResult);
-      } else if (this.chart) {
-        this.chart.destroy();
-      }
-    });
+      });
+    }
   }
 
   addHeatmapFormatter(chartResult: any) {
@@ -153,40 +163,40 @@ export class ReportChartComponent implements OnInit {
 
     //Months
     this.months = [{
-      'key': 0,
+      'key': 1,
       'label': 'Jan'
     }, {
-      'key': 1,
+      'key': 2,
       'label': 'Feb'
     }, {
-      'key': 2,
+      'key': 3,
       'label': 'Mar'
     }, {
-      'key': 3,
+      'key': 4,
       'label': 'Apr'
     }, {
-      'key': 4,
+      'key': 5,
       'label': 'May'
     }, {
-      'key': 5,
+      'key': 6,
       'label': 'Jun'
     }, {
-      'key': 6,
+      'key': 7,
       'label': 'Jul'
     }, {
-      'key': 7,
+      'key': 8,
       'label': 'Aug'
     }, {
-      'key': 8,
+      'key': 9,
       'label': 'Sep'
     }, {
-      'key': 9,
+      'key': 10,
       'label': 'Oct'
     }, {
-      'key': 10,
+      'key': 11,
       'label': 'Nov'
     }, {
-      'key': 11,
+      'key': 12,
       'label': 'Dec'
     }];
     this.reportFilter.month = this.months[today.getMonth()].key;

@@ -3,10 +3,8 @@ import { Router } from '@angular/router';
 import { CalendarComponent } from '../../reports/components/calendar/calendar.component';
 import { ReportSummaryItem } from '../../reports/model/report-summary-item.model';
 import { ReportDataService } from '../../reports/services/report-data.service';
-import { SummaryItem } from '../../shared/models/reports/summary-item.model';
 import { SummaryRequest } from '../../shared/models/reports/summary-request.model';
 import { TradePlanGridRow } from '../../trade-plan/models/trade-plan-grid-row.model';
-import { TradePlan } from '../../trade-plan/models/trade-plan.model';
 import { TradePlansService } from '../../trade-plan/services/trade-plans.service';
 
 @Component({
