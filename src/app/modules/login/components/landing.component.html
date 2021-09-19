@@ -7,9 +7,10 @@
 
                     <li [class.nav-active]="currentRoute == 'features'">
                         <a class="landing-nav-link" [routerLink]="['/features']">
-                            Benefits <mat-icon>keyboard_arrow_down</mat-icon>
+                            Benefits
+                            <!-- Benefits <mat-icon>keyboard_arrow_down</mat-icon> -->
                         </a>
-                        <ul class="sub-menu">
+                        <!-- <ul class="sub-menu">
                             <li [class.nav-active]="currentRoute == 'trade-journal'">
                                 <a [routerLink]="['/trade-journal']">
                                 Trade Journal 
@@ -50,7 +51,7 @@
                                     Insights
                                 </a>
                             </li>
-                        </ul>
+                        </ul> -->
                     </li>
                     <li [class.nav-active]="currentRoute == 'demo'">
                         <a class="landing-nav-link" [routerLink]="['/demo']">
@@ -100,7 +101,7 @@
 
         <div class="trade-banner-section">
             <div class="row w-100 m-0">
-                <div class="col-sm-3 col-md-4 d-flex align-items-center">
+                <div class="col-sm-3 col-md-5 d-flex align-items-center">
                     <div class="banner-info LeaderBoardTop">
                         <h1 class="banner-info-title">
                             Boost your trading performance
@@ -119,7 +120,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-9 col-md-8 pr-0">
+                <div class="col-sm-9 col-md-7 pr-0">
                     <div class="banner-rtside">
                         <div class="banner-img"><img src="../../../../assets/images/banner-img.png" alt=""></div>
                         <div class="widgets_section">
@@ -207,9 +208,9 @@
 
     <div class="main-body">
         <div class="container">
-            <div class="main-body-title">
+            <!-- <div class="main-body-title">
                 Product Benefits
-            </div>
+            </div> -->
             <!-- <div class="main-body-dec">
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry.
             </div> -->
@@ -237,7 +238,7 @@
             <!-- end: Trade Plan -->
 
             <div class="features_section">
-                <div class="features_section_title">Analyze past trading peformance though in-dept reporting and improve trading decisions</div>
+                <div class="features_section_title">Analyze past trading peformance through in-depth reporting and improve trading decisions</div>
                 <div class="features_section_dec">
                     You know how much money you made or lost in a certain period of time but do you know what kind of trades worked well for you and what didn’t during the same period? Probably not! CueTrade provides you with comprehensive statistics on trade history and journals through reports and metrics across different categories such as performance, risk management, discipline, etc. With this feature, you can build on your strengths by doing more of what worked in the past and avoid the kind of trades that didn’t work....<a href="#" class="read_more">Read More</a>
                 </div>
@@ -284,7 +285,7 @@
             <!-- end: Strategy comparison section -->
 
             <div class="features_section">
-                <div class="features_section_title">Import Trades</div>
+                <div class="features_section_title">Add trades in bulk by uploading the trade history file from your brokerage systems.</div>
                 <div class="features_section_dec">
                     Add your historical trades in bulk by uploading trade history files in .csv format exported from your brokerages. Upon successful import, trades are created, updated or closed in the system and strategies are assigned to them. Users can update journal details of the imported trades in bulk as well. Supported brokerages include Zerodha, ICICIDirect, Upstox...<a href="#" class="read_more">Read More</a>
                 </div>
