@@ -55,9 +55,9 @@
                 <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
                 <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
             </mat-table>
-
+            <div class="p-3 text-center" *ngIf="dataSource.length === 0">No trades are imported yet</div>
             <!-- Angular 8 pagination -->
-            <mat-paginator [pageSize]="20" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true" [length]="dataSource.totalCount">
+            <mat-paginator *ngIf="dataSource.totalCount > 0" [pageSize]="20" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true" [length]="dataSource.totalCount">
             </mat-paginator>
         </div>
     </div>
