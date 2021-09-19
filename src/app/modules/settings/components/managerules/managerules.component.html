@@ -1,19 +1,24 @@
 <div class="managerules-sec">
-    <div class="trade-st-box">
-        <label class="m-0">Filter By</label>
-        <div class="px-2">
-            <select class="form-control" id="exampleFormControlSelect1">
-                <option value="1">Source</option>
-                <option value="2">Draft</option>
-                <option value="3">Open</option>
-                <option value="4">Closed</option>
-                <option value="5">Expired</option>
-            </select>
+    <div class="d-flex">
+        <div class="trade-dash-name col-md-9 px-0">
+            <h3>Coded rules are user-specific automated rules that trigger notifications or warning messages when the they are broken. Enable the rules that you are appropriate for you and update the values as needed by clicking on edit icon.</h3>
         </div>
-        <a class="btn btn-primary add-new" (click)="addEntryExitRule('Add', 'SAVE')">
-            <mat-icon class="mat-icon-sm text-white mr-1">add_circle</mat-icon>
-            Add Rule
-        </a>
+        <div class="trade-st-box pt-0">
+            <label class="m-0">Filter By</label>
+            <div class="px-2">
+                <select class="form-control" id="exampleFormControlSelect1">
+                    <option value="1">Source</option>
+                    <option value="2">Draft</option>
+                    <option value="3">Open</option>
+                    <option value="4">Closed</option>
+                    <option value="5">Expired</option>
+                </select>
+            </div>
+            <a class="btn btn-primary add-new" (click)="addEntryExitRule('Add', 'SAVE')">
+                <mat-icon class="mat-icon-sm text-white mr-1">add_circle</mat-icon>
+                Add Rule
+            </a>
+        </div>
     </div>
 
     <div class="trade-strategies-table">
@@ -55,7 +60,9 @@
                 <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
                 <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
             </mat-table>
-            <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true" [length]="dataSource.totalCount"></mat-paginator>
+            <div class="p-3 text-center" *ngIf="dataSource.totalCount === 0">No rules are added yet</div>
+
+            <mat-paginator *ngIf="dataSource.totalCount > 0" [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true" [length]="dataSource.totalCount"></mat-paginator>
         </div>
     </div>
 </div>
