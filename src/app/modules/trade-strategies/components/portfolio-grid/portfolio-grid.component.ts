@@ -32,7 +32,7 @@ export class PortfolioGrid implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort: MatSort;
 
-  portfolioDataSource;
+  portfolioDataSource: TradeStrategyGridRow[];
   tradeStrategyGridRequest: TradeStrategyGridRequest = this.getInitialRequest();
   private tradeStrategySubject = new BehaviorSubject<TradeStrategyGridRow[]>([]);
   strategiesGridFilter: StrategiesGridFilter = new StrategiesGridFilter();

@@ -30,6 +30,8 @@ export class TradeStrategyGridRow {
     
     returnAmount: string;
 
-    Simha: string
+    totalAmount: number;
+
+    createDate: string;
 
 }

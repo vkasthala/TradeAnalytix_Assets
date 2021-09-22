@@ -34,7 +34,7 @@ export class DraftTradesGrid implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort: MatSort;
 
-  draftDataSource;
+  draftDataSource: TradeStrategyGridRow[];
 
   tradeStrategyGridRequest: TradeStrategyGridRequest = this.getInitialRequest();
   strategiesGridFilter: StrategiesGridFilter = new StrategiesGridFilter();

@@ -37,22 +37,22 @@ export class HistoryGrid implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort: MatSort;
 
-  historyDataSource;
+  historyDataSource: TradeStrategyGridRow[];
   tradeStrategyGridRequest: TradeStrategyGridRequest = this.getInitialRequest();
   private tradeStrategySubject = new BehaviorSubject<TradeStrategyGridRow[]>([]);
   strategiesGridFilter: StrategiesGridFilter = new StrategiesGridFilter();
 
   protected gridData: any;
-  expandedIndex:any;
+  expandedIndex: any;
 
-  public hideRuleContent:boolean[] = [];
+  public hideRuleContent: boolean[] = [];
   totalCount: number = 0;
   constructor(private tradeStrategyGridService: TradeStrategyGridService,
     private tradeStrategyService: TradeStrategyService,
     private stockSymbolService: StockSymbolService,
     private userStockStatsService: UserStockStatsService,
     private router: Router,
-    
+
     private _dialog: MatDialog) {
   }
 
@@ -63,7 +63,7 @@ export class HistoryGrid implements AfterViewInit, OnInit {
   }
 
   loadPage() {
-    this.tradeStrategyGridRequest.filters= this.strategiesGridFilter;
+    this.tradeStrategyGridRequest.filters = this.strategiesGridFilter;
     this.tradeStrategyGridService.loadTradeStrategies(this.tradeStrategyGridRequest).subscribe(result => {
       if (result) {
         this.historyDataSource = result.rows
@@ -74,7 +74,7 @@ export class HistoryGrid implements AfterViewInit, OnInit {
   }
 
   reload(filter) {
-    if(Object.keys(filter).length === 0 ) {
+    if (Object.keys(filter).length === 0) {
       this.strategiesGridFilter = new StrategiesGridFilter();
       this.strategiesGridFilter.status = 2;
     } else {
@@ -123,7 +123,7 @@ export class HistoryGrid implements AfterViewInit, OnInit {
       sortRequest = new StrategiesGridSort();
       this.tradeStrategyGridRequest.sort = sortRequest;
     }
-    
+
   }
 
   editTrade(rowModel: TradeStrategyGridRow) {
@@ -167,10 +167,10 @@ export class HistoryGrid implements AfterViewInit, OnInit {
   closeActionBox() {
     this.expandIndex = null
   }
-  
-  Collaps(index: number) {  
+
+  Collaps(index: number) {
     // this.expandedIndex[index] = !this.expandedIndex[index];
-    this.hideRuleContent[index] = !this.hideRuleContent[index]; 
+    this.hideRuleContent[index] = !this.hideRuleContent[index];
   }
 
 }

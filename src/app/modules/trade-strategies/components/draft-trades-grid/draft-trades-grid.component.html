@@ -26,7 +26,7 @@
           <!-- Open Date Column -->
           <ng-container matColumnDef="openDate">
               <mat-header-cell class="open-date-cell" *matHeaderCellDef mat-sort-header>Create Date</mat-header-cell>
-              <mat-cell class="open-date-cell" *matCellDef="let element"> {{element.openDate | date: 'dd-MMM-yyyy'}} </mat-cell>
+              <mat-cell class="open-date-cell" *matCellDef="let element"> {{element.createDate | date: 'dd-MMM-yyyy'}} </mat-cell>
           </ng-container>
 
           <!-- Total Amount Column -->
