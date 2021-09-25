@@ -1,0 +1,32 @@
+<div class="compare-popup">
+    <div class="compare-pop-inner">
+        <div class="top-pop-inner">
+            <div class="left-heading">
+                <h6>{{title}}</h6>
+            </div>
+            <div class="right-close" (click)="closeModal()">
+                <mat-icon>clear</mat-icon>
+            </div>
+        </div>
+
+        <div class="main-pop-inner">
+            <div class="row py-2">
+                <label class="col-form-label col-4">Name </label>
+                <div class="col-8">
+                    <input matInput id="name" />
+                </div>
+            </div>
+            <div class="row py-2">
+                <label class="col-form-label col-4">Email</label>
+                <div class="col-8">
+                    <input matInput id="email" />
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer py-2">
+            <button type="button" class="btn btn-primary btn-sm">Join Waitlist</button>
+            <button type="button" class="btn btn-secondary tn-sm" (click)="closeModal()">Cancel</button>
+        </div>
+    </div>
+</div>

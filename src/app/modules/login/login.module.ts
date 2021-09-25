@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { JoinWaitlistComponent } from './components/join-waitlist/join-waitlist.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [JoinWaitlistComponent],
   imports: [
     CommonModule
   ]

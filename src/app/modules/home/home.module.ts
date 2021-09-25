@@ -115,6 +115,7 @@ import { ImportTradePopupComponent } from '../import-trades-history/import-trade
 import { RulesComponent } from '../rules/components/rules.component';
 import { CalendarComponent } from '../reports/components/calendar/calendar.component';
 import { ReportsRulesComponent } from '../reports/components/reports-rules/reports-rules.component';
+import { JoinWaitlistComponent } from '../login/components/join-waitlist/join-waitlist.component';
 
 export const MY_FORMATS = {
   parse: {
@@ -218,7 +219,8 @@ export const MY_FORMATS = {
     ImportTradePopupComponent,
     RulesComponent,
     CalendarComponent,
-    ReportsRulesComponent
+    ReportsRulesComponent,
+    JoinWaitlistComponent
   ],
   imports: [
     CommonModule,
@@ -261,7 +263,8 @@ export const MY_FORMATS = {
     RuleCommentDialogComponent,
     ImportTradePopupComponent,
     CalendarComponent,
-    ReportsRulesComponent
+    ReportsRulesComponent,
+    JoinWaitlistComponent
   ],
   // bootstrap: [TradeStrategiesGrid],
   providers: [

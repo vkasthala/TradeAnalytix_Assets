@@ -79,7 +79,6 @@ export class ReportChartComponent implements OnInit, AfterViewInit {
       url = '/reports/performance/goalstatus';
     } else if (category == ReportCategory.Calendar_Report) {
       //request = this.reportRequestService.getCommonChartRequest(this.report, this.subtype, this.reportFilter);
-      debugger;
       let month = this.reportFilter.month;
       let year = this.reportFilter.year;
       if (!month || !year) {

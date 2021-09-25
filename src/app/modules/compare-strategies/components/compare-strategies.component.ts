@@ -253,7 +253,6 @@ export class CompareStrategiesComponent implements OnInit {
   }
 
   openStrategyDetailsPopup(strategyDetails: CompareStrategyDetails, index) {
-    debugger;
     let dialogData: any = {};
     dialogData.details = strategyDetails;
     const dialogRef = this._dialog.open(StrategyDetailsComponent, {

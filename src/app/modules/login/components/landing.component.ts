@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { JoinWaitlistComponent } from './join-waitlist/join-waitlist.component';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-landing',
@@ -19,7 +22,8 @@ export class LandingComponent implements OnInit {
 
   protected loginModalOpen: boolean = false;
   constructor(
-    private router: Router
+    private router: Router,
+    private _dialog: MatDialog,
   ) { }
 
   ngOnInit() {
@@ -63,4 +67,15 @@ export class LandingComponent implements OnInit {
     this.createAcSec = !this.createAcSec;
   }
 
+  joinWaitlist() {
+    debugger;
+    let dialogData = {
+      title: 'Join the Waitlist',
+    };
+    const dialogRef = this._dialog.open(JoinWaitlistComponent, {
+      disableClose: true,
+      width: 'auto',
+      data: dialogData
+    });
+  }
 }
