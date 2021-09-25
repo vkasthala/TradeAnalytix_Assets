@@ -26,15 +26,17 @@ import { HIGHCHARTS_MODULES, ChartModule } from 'angular-highcharts';
 import more from 'highcharts/highcharts-more.src';
 import exporting from 'highcharts/modules/exporting.src';
 import highmaps from 'highcharts/modules/map.src';
+import { DateAdapter } from '@angular/material';
+import { CustomDateAdapter } from './modules/shared/adapter/custom-date-adapter';
 
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
   return localStorageSync({ keys: [globalConfigFeatureKey], rehydrate: true })(reducer);
 }
 const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
 
-export function highchartsModules() { 
+export function highchartsModules() {
   // apply Highcharts Modules to this array
-  return [ more, exporting, highmaps];
+  return [more, exporting, highmaps];
 }
 
 @NgModule({
@@ -68,9 +70,10 @@ export function highchartsModules() {
     StoreModule.forFeature(fromGlobalConfig.globalConfigFeatureKey, fromGlobalConfig.reducer),
   ],
   providers: [
-    PwaService, UtilService, 
-    {provide: HIGHCHARTS_MODULES, useFactory: highchartsModules},
-    {provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true}
+    PwaService, UtilService,
+    { provide: HIGHCHARTS_MODULES, useFactory: highchartsModules },
+    { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true },
+    { provide: DateAdapter, useClass: CustomDateAdapter }
   ],
   bootstrap: [AppComponent]
 })
