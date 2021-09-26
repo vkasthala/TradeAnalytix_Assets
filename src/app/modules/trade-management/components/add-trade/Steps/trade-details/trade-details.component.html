@@ -191,7 +191,7 @@
                                     <div class="card-main">
                                         <div class="datepicker-group">
                                             <input matInput [matDatepicker]="expireDate" (click)="expireDate.open()"
-                                                id="expireDate" (dateChange)="addEvent('input', $event)"
+                                                id="expireDate" (dateChange)="addEvent('input', $event, index)"
                                                 name="stockOptions[index].expireDate"
                                                 [(ngModel)]="stockOptions[index].expireDate"
                                                 [ngClass]="[closeTrade || viewTrade ? 'disabled' : '', editTrade && tradeStatus !== 4 && item.id > 0  ? 'disabled' : '']" />

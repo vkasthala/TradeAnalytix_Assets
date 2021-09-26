@@ -36,7 +36,6 @@ export class RiskAnalysisComponent implements OnInit {
   @Input('matTooltipHideDelay') hideDelay: number;
 
   @ViewChild('riskAnalysisChart', { static: false }) private riskAnalysisChartComponent: RiskAnalysisChartComponent;
-
   minDate = new Date();
 
   currentState: number = 1;
@@ -283,6 +282,10 @@ export class RiskAnalysisComponent implements OnInit {
     }
     extras.state = input;
     this.router.navigate(['/new-trade'], extras);
+  }
+
+  addEvent(input: any, event: any, index: number) {
+    this.stockOptions[index]['expireDate'] = event.value._d;
   }
 
   onStrategyTypeChange(strategy: Number) {

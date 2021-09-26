@@ -574,5 +574,8 @@ export class TradeDetailsComponent implements OnInit {
       tag.name = res;
     });
   }
+  addEvent(input: any, event: any, index: number) {
+    this.stockOptions[index]['expireDate'] = event.value._d;
+  }
 
 }
