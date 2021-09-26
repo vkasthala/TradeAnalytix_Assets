@@ -555,8 +555,12 @@
 
 .footer_nav {
     list-style: none;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
     li {
-        margin-bottom: .567rem;
+        margin-right: 1rem;
         a {
             color: #fff;
         }
@@ -653,4 +657,14 @@ input::placeholder {
 .custom_modal .modal-dialog {
     max-width: 400px;
     margin: 1.75rem auto;
+}
+
+.footer-logo {
+    background-image: url('../../../../assets/images/logo.png');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 170px;
+    min-height: 40px;
+
 }

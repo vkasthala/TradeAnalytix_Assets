@@ -32,7 +32,6 @@ export class ReportTypeService {
     let reportSubTypes: ReportSubType[] = [];
 
     if (userCodedRules && userCodedRules.length) {
-      debugger;
       for (let ind = 0; ind < userCodedRules.length; ind++) {
         const reportSubType: ReportSubType = new ReportSubType();
         reportSubType.name = 'Rule ' + (ind + 1);
@@ -42,7 +41,6 @@ export class ReportTypeService {
         const realizedReturnReportDetails: ReportDetails = new ReportDetails('rule_realizedreturn', 'Realized Return By Rule Alignment', ReportCategory.Rule, "This report illustrates the importance of a rule set by the user by showing the realized return on the trades in which the rule is aligned");
         realizedReturnReportDetails.url = '/reports/rule/realized-return/' + (userCodedRules[ind].id ? userCodedRules[ind].id + '' : '0');
         reportSubType.reportDetailList = [winRateReportDetails, realizedReturnReportDetails];
-        debugger;
         reportSubTypes.push(reportSubType);
       }
     }

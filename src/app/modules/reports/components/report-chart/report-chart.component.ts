@@ -102,7 +102,6 @@ export class ReportChartComponent implements OnInit, AfterViewInit {
       request = this.reportRequestService.getCommonChartRequest(this.report, this.subtype, this.reportFilter);
       url = this.reportRequestService.getDashboardReportApiUrl(this.report.id);
     } else if (category == ReportCategory.Rule) {
-      debugger;
       request = this.reportRequestService.getCommonChartRequest(this.report, this.subtype, this.reportFilter);
       url = this.report.url;
     }

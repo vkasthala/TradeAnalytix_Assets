@@ -39,7 +39,7 @@
             <div class="col-sm-6">
                 <div class="thesis_item">
                     <div class="thesis_item_title">
-                        How much profit do you expect from this trade ? 
+                        What is the "What is your target price for the stock? 
                         <mat-icon matTooltip="Enter the target profit you intend to make on this trade." matTooltipPosition="above" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay" class="mat-icon-xs cursor info-icon">info_outline</mat-icon>
                     </div>
                     <input type="text" class="form-control" [disabled]="closeTrade" placeholder="Enter the price" [(ngModel)]="tradeThesis.targetPrice" [ngClass]="closeTrade || viewTrade ? 'disabled' : ''" />
@@ -136,6 +136,26 @@
                 <div class="thesis_item">
                     <div class="thesis_item_title">
                         What is your mindset while executing this trade? <mat-icon matTooltip="Specify how you are feeling at the time of placing this trade (e.g., anxious, confident, fear of missing out, etc.). Create mindset and select from the dropdown." matTooltipPosition="above" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay" class="mat-icon-xs cursor info-icon">info_outline</mat-icon>
+                    </div>
+                    <div class="media align-items-center">
+                        <div class="media-body">
+                            <select class="form-control select-input" id="inputState" [(ngModel)]="tradeThesis.technicalIndicatorId" [disabled]="closeTrade" [ngClass]="closeTrade || viewTrade ? 'disabled' : ''">
+                                <option [ngValue]="opt.id" *ngFor="let opt of mindsetTypes; trackBy: id">{{opt.name}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="px-3">
+                            <a class="add-new" (click)="addValue('Source')" *ngIf="addTrade || editTrade">+ Add New</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end : thesis_item -->
+
+            <div class="col-sm-6">
+                <div class="thesis_item">
+                    <div class="thesis_item_title">
+                        What is the target holding period? <mat-icon matTooltip="" matTooltipPosition="above" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay" class="mat-icon-xs cursor info-icon">info_outline</mat-icon>
                     </div>
                     <div class="media align-items-center">
                         <div class="media-body">

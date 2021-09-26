@@ -53,7 +53,6 @@ export class ReportTabContentComponent implements OnInit {
     this.description = type.description;
     this.reportFilter.summaryType = type.id;
     this.reports = type.reportDetailList;
-    debugger;
     this.reportTypeChangeSubject.next(this.reportFilter);
   }
 
