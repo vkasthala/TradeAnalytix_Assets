@@ -7,7 +7,11 @@ export class ReportDetails {
     title: string;
 
     category: ReportCategory;
+
     description: string;
+
+    url: string;
+
 
     constructor(id: string, title: string, category: ReportCategory, description:string){
         this.id = id;

@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { ReportDetails } from '../model/report-details.model';
 import { ReportSubType } from '../model/report-sub-type.model';
 import { ReportCategory } from '../model/report-category.enum';
+import { CodedRuleService } from '../../settings/services/coded-rule.service';
+import { UserCodedRule } from '../../settings/models/user-coded-rule.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,19 +16,39 @@ export class ReportTypeService {
     let subTypes: ReportSubType[] = [];
     if (category === 'portfolio') {
       subTypes = this.getPortfolioSubTypes();
-    } else if(category === 'performance') {
+    } else if (category === 'performance') {
       subTypes = this.getPerformanceSubTypes();
     } else if (category === 'discipline') {
       subTypes = this.getDisciplineReportSubTypes();
-    } else if(category === 'risk') {
+    } else if (category === 'risk') {
       subTypes = this.getRiskReportSubTypes();
-    } else if(category === 'rules') {
-      subTypes = this.getReportsRulesSubTypes();
-    } else if(category === 'goals') {
+    } else if (category === 'goals') {
       subTypes = this.getGoalsReportSubTypes();
     }
     return subTypes;
   }
+
+  getRuleReportsSubTypes(category: string, userCodedRules: UserCodedRule[]): ReportSubType[] {
+    let reportSubTypes: ReportSubType[] = [];
+
+    if (userCodedRules && userCodedRules.length) {
+      debugger;
+      for (let ind = 0; ind < userCodedRules.length; ind++) {
+        const reportSubType: ReportSubType = new ReportSubType();
+        reportSubType.name = 'Rule ' + (ind + 1);
+        reportSubType.id = userCodedRules[ind].id ? userCodedRules[ind].id + '' : '0';
+        const winRateReportDetails: ReportDetails = new ReportDetails('rule_winrate', 'Win Rate By Rule Alignment', ReportCategory.Rule, "This report illustrates the importance of a rule set by the user by showing the win rate on the trades in which the rule is aligned");
+        winRateReportDetails.url = '/reports/rule/win-rate/' + (userCodedRules[ind].id ? userCodedRules[ind].id + '' : '0');
+        const realizedReturnReportDetails: ReportDetails = new ReportDetails('rule_realizedreturn', 'Realized Return By Rule Alignment', ReportCategory.Rule, "This report illustrates the importance of a rule set by the user by showing the realized return on the trades in which the rule is aligned");
+        realizedReturnReportDetails.url = '/reports/rule/realized-return/' + (userCodedRules[ind].id ? userCodedRules[ind].id + '' : '0');
+        reportSubType.reportDetailList = [winRateReportDetails, realizedReturnReportDetails];
+        debugger;
+        reportSubTypes.push(reportSubType);
+      }
+    }
+    return reportSubTypes;
+  }
+
   private getPortfolioSubTypes(): ReportSubType[] {
     let reportSubTypes: ReportSubType[] = [];
 
@@ -41,10 +63,10 @@ export class ReportTypeService {
     reportSubType.id = "allocation-sector";
     reportSubType.reportDetailList = [new ReportDetails('allocation-sector', 'Allocation By Sector', ReportCategory.Allocation, "This report shows the diversification of the portfolio by sector by depicting the proportion of the amount currently put in different trades by sector. User's cash on-hand is ignored in this report.")];
     reportSubTypes.push(reportSubType);
-    
+
     return reportSubTypes;
   }
-  
+
   private getPerformanceSubTypes(): ReportSubType[] {
     let reportSubTypes: ReportSubType[] = [];
 
@@ -148,7 +170,7 @@ export class ReportTypeService {
     reportSubType.id = "discipline_compliance";
     reportSubType.reportDetailList = [new ReportDetails('discipline_netreturn', 'Net Return by Trade Plan Compliance', ReportCategory.Discipline, "This report illustrates the importance of creating a trade plan by showing the realized return on the days trade plan was created"), new ReportDetails('discipline_winrate', 'Win Rate by Trade Plan Compliance', ReportCategory.Discipline, "This report illustrates the importance of creating a trade plan by showing the realized return on the days trade plan was created")];
     reportSubTypes.push(reportSubType);
-    
+
     return reportSubTypes;
   }
 
@@ -160,7 +182,7 @@ export class ReportTypeService {
     reportSubType.id = "risk_max_risk_profit";
     reportSubType.reportDetailList = [new ReportDetails('max_risk_profit', 'Maximum Risk and Proﬁt Potential', ReportCategory.Risk, "This report shows the potential maximum risk and maximum profit of the portfolio during the selected range. Maximum risk and profit are calculated based on the previous 30-day volatility of the stocks.")];
     reportSubTypes.push(reportSubType);
-    
+
     reportSubType = new ReportSubType();
     reportSubType.name = 'Max Risk by Asset';
     reportSubType.id = "max_risk_asset";
@@ -188,77 +210,6 @@ export class ReportTypeService {
     reportSubType.name = 'Goal Status';
     reportSubType.id = "goal_status";
     reportSubType.reportDetailList = [new ReportDetails('goal_status', 'Goal Status', ReportCategory.Goal_Status, "This report compares the goals set by the user for a given period against the realized return during that period.")];
-    reportSubTypes.push(reportSubType);
-
-    return reportSubTypes;
-  }
-
-  private getReportsRulesSubTypes(): ReportSubType[] {
-    let reportSubTypes: ReportSubType[] = [];
-    let reportSubType: ReportSubType = new ReportSubType();
-    reportSubType.name = 'Rule 1';
-    reportSubType.id = "rule_1";
-    reportSubType.reportDetailList = [new ReportDetails('rule', 'Rule 1', ReportCategory.Rule, "This report illustrates the importance of a rule set by the user by showing the realized return on the trades in which the rule is aligned")];
-    reportSubTypes.push(reportSubType);
-
-    reportSubType = new ReportSubType();
-    reportSubType.name = 'Rule 2';
-    reportSubType.id = "rule_2";
-    reportSubType.reportDetailList = [new ReportDetails('rule', 'Rule 2', ReportCategory.Rule, "This report illustrates the importance of a rule set by the user by showing the realized return on the trades in which the rule is aligned")];
-    reportSubTypes.push(reportSubType);
-
-    reportSubType = new ReportSubType();
-    reportSubType.name = 'Rule 3';
-    reportSubType.id = "rule_3";
-    reportSubType.reportDetailList = [new ReportDetails('rule', 'Rule 3', ReportCategory.Rule, "This report illustrates the importance of a rule set by the user by showing the realized return on the trades in which the rule is aligned")];
-    reportSubTypes.push(reportSubType);
-
-    reportSubType = new ReportSubType();
-    reportSubType.name = 'Rule 4';
-    reportSubType.id = "rule_4";
-    reportSubType.reportDetailList = [new ReportDetails('rule', 'Rule 4', ReportCategory.Rule, "This report illustrates the importance of a rule set by the user by showing the realized return on the trades in which the rule is aligned")];
-    reportSubTypes.push(reportSubType);
-
-    reportSubType = new ReportSubType();
-    reportSubType.name = 'Rule 5';
-    reportSubType.id = "rule_5";
-    reportSubType.reportDetailList = [new ReportDetails('rule', 'Rule 5', ReportCategory.Rule, "This report illustrates the importance of a rule set by the user by showing the realized return on the trades in which the rule is aligned")];
-    reportSubTypes.push(reportSubType);
-
-    reportSubType = new ReportSubType();
-    reportSubType.name = 'Rule 6';
-    reportSubType.id = "rule_6";
-    reportSubType.reportDetailList = [new ReportDetails('rule', 'Rule 6', ReportCategory.Rule, "This report illustrates the importance of a rule set by the user by showing the realized return on the trades in which the rule is aligned")];
-    reportSubTypes.push(reportSubType);
-
-    reportSubType = new ReportSubType();
-    reportSubType.name = 'Rule 7';
-    reportSubType.id = "rule_7";
-    reportSubType.reportDetailList = [new ReportDetails('rule', 'Rule 7', ReportCategory.Rule, "This report illustrates the importance of a rule set by the user by showing the realized return on the trades in which the rule is aligned")];
-    reportSubTypes.push(reportSubType);
-
-    reportSubType = new ReportSubType();
-    reportSubType.name = 'Rule 8';
-    reportSubType.id = "rule_8";
-    reportSubType.reportDetailList = [new ReportDetails('rule', 'Rule 8', ReportCategory.Rule, "This report illustrates the importance of a rule set by the user by showing the realized return on the trades in which the rule is aligned")];
-    reportSubTypes.push(reportSubType);
-
-    reportSubType = new ReportSubType();
-    reportSubType.name = 'Rule 9';
-    reportSubType.id = "rule_9";
-    reportSubType.reportDetailList = [new ReportDetails('rule', 'Rule 9', ReportCategory.Rule, "This report illustrates the importance of a rule set by the user by showing the realized return on the trades in which the rule is aligned")];
-    reportSubTypes.push(reportSubType);
-
-    reportSubType = new ReportSubType();
-    reportSubType.name = 'Rule 10';
-    reportSubType.id = "rule_10";
-    reportSubType.reportDetailList = [new ReportDetails('rule', 'Rule 10', ReportCategory.Rule, "This report illustrates the importance of a rule set by the user by showing the realized return on the trades in which the rule is aligned")];
-    reportSubTypes.push(reportSubType);
-
-    reportSubType = new ReportSubType();
-    reportSubType.name = 'Rule 11';
-    reportSubType.id = "rule_11";
-    reportSubType.reportDetailList = [new ReportDetails('rule', 'Rule 11', ReportCategory.Rule, "This report illustrates the importance of a rule set by the user by showing the realized return on the trades in which the rule is aligned")];
     reportSubTypes.push(reportSubType);
 
     return reportSubTypes;

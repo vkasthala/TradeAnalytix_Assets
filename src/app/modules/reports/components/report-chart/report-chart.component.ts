@@ -23,6 +23,7 @@ export class ReportChartComponent implements OnInit, AfterViewInit {
   @Input("report") report: ReportDetails;
 
   @Input("subtype") subtype: string;
+  
   @Input("description") description: string;
 
   @Input("reportFilter") reportFilter: ReportFilter;
@@ -100,6 +101,10 @@ export class ReportChartComponent implements OnInit, AfterViewInit {
     } else if (category == ReportCategory.Dashboard) {
       request = this.reportRequestService.getCommonChartRequest(this.report, this.subtype, this.reportFilter);
       url = this.reportRequestService.getDashboardReportApiUrl(this.report.id);
+    } else if (category == ReportCategory.Rule) {
+      debugger;
+      request = this.reportRequestService.getCommonChartRequest(this.report, this.subtype, this.reportFilter);
+      url = this.report.url;
     }
 
     //Load Chart
