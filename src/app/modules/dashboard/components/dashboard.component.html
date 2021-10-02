@@ -194,7 +194,7 @@
                                 </div>
                             </div> -->
                             <div class="py-2 text-right">
-                                <a href="#" class="view-more">View More</a>
+                                <a routerLink="/edit-trade/{{latestTradePlan.id}}" class="view-more">View More</a>
                             </div>
                         </div>
                     </div>
@@ -226,7 +226,8 @@
                         <h5>Realized Return</h5>
                     </div>
                     <div class="dsh-img">
-                        <app-realized-return-chart></app-realized-return-chart>
+                        <a routerLink="/reports" class="cursor">
+                        <app-realized-return-chart></app-realized-return-chart></a>
                     </div>
                 </div>
             </div>
@@ -236,7 +237,7 @@
                         <h5>Max Amount at Risk by Asset</h5>
                     </div>
                     <div class="dsh-img">
-                        <app-risk-by-asset-chart></app-risk-by-asset-chart>
+                        <a routerLink="/reports" class="cursor"><app-risk-by-asset-chart></app-risk-by-asset-chart></a>
                     </div>
                 </div>
             </div>
