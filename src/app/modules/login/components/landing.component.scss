@@ -326,14 +326,16 @@
         }
         .read_more {
             font-weight: bold;
-            font-size: 15px;
+            font-size: 13px;
             color: #2285FA;
+            margin-left: .5rem;
         }
         .features_section_banner {
             padding-top: 1rem;
             filter: drop-shadow(20px 20px 40px rgba(0, 0, 0, 0.12));
             img {
                 max-width: 100%;
+                width: 900px;
             }
         }
     }
@@ -550,9 +552,22 @@
     box-shadow: 0px 2px 9px rgba(105, 105, 105, 0.2);
     font-size: 12px;
     color: #FFFFFF;
-    padding-top: 3rem;
+    padding: .5rem 0;
 }
-
+.trade-socail-icon {
+    display: flex;
+    align-items: center;
+    color: #9DA6BA;
+    justify-content: flex-end;
+    img {
+      margin-left: 10px;
+      height: 20px;
+    }
+    @media #{$extra-small} {
+      justify-content: center;
+      padding-top: 0.5rem !important;
+    }
+}
 .footer_nav {
     list-style: none;
     display: flex;

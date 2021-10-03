@@ -413,8 +413,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .ad-trade-plan-web .mat-expansion-panel-body {
     padding: 0 !important;
 }
+.dashboard .custom-calendar ul.custom_dates {
+    height: 270px;
+}
 .dashboard .custom-calendar ul li {
     font-size: 11px !important;
-    height: 50px !important;
+    height: auto !important;
     justify-content: end !important;
 }
