@@ -153,6 +153,11 @@ export class CodedRulesComponent implements OnInit {
   }
 
   addOrUpdateRule(element: UserCodedRule) {
+    // Set rule value
+    if (!element.val) {
+      element.val = element.defaultValue;
+    }
+
     if (!element.id || element.id === 0) {
       this.codedRuleService.createCodedRule(element).subscribe(data => {
         this.showSuccessMessage('Successfully added the coded rule');
