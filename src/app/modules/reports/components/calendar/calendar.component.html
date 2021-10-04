@@ -2,7 +2,7 @@
     <ul>
         <li class="days" *ngFor="let day of calendarDays">{{day}}</li>
     </ul>
-    <ul>
+    <ul class="custom_dates">
         <li *ngFor="let date of calendarDates">
             <span class="" [ngClass]="{'abc' : !date.returnAmount, 'working_day' : date.returnAmount > 0,  'negitive_return' : date.returnAmount < 0 }">{{date.day}}</span>
             <p class="w-100 text-right">{{date.returnAmount}}</p>

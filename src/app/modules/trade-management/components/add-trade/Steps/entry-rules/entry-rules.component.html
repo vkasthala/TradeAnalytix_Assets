@@ -2,12 +2,12 @@
     <div class="entry-thesis-header cursor" (click)="showEntryRules()">
         <span>Entry Rules</span>
         <span>
-            <button type="button" class="btn btn-next mr-3" (click)="evalRules($event)">CHECK RULES</button>
+            
             <i class="negative-amt material-icons mat-icon-sm">{{hideEntryRules ? 'keyboard_arrow_up' :
                 'keyboard_arrow_down'}}</i>
         </span>
     </div>
-    <div class="trade-thesis-body" *ngIf="!hideEntryRules">
+    <div class="trade-thesis-body pt-1" *ngIf="!hideEntryRules">
         <!--
         <div class="row" *ngFor="let entry of entryRules;">
             <div class="col-sm-6">
@@ -70,6 +70,7 @@
             
         </div>
         -->
+        <span class="float-right cursor" (click)="evalRules($event)"><mat-icon class="form-icon-down">refresh</mat-icon></span>
 
         <mat-table [dataSource]="entryRules" class="d-table w-100">
             <ng-container matColumnDef="msg">

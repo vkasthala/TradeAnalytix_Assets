@@ -622,7 +622,10 @@ a.import-new img {
     color: #000;
     font-size: .89rem;
 }
-
+.trade-sel .custom-label {
+    color: #a3a3a3;
+    font-size: 12px;
+}
 .btn-link {
     color: #007bff !important;
     cursor: pointer;
@@ -706,3 +709,10 @@ a.import-new img {
         }
     }
 }
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: pink;
+  }
+  ::-moz-placeholder { /* Firefox 19+ */
+    color: pink;
+  }
