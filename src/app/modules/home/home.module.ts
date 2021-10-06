@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
-  MatCheckboxModule, MatDatepickerModule, MatInputModule, MatListModule, MatNativeDateModule, MatTooltipModule
+  MatCheckboxModule, MatDatepickerModule, MatInputModule, MatListModule, MatNativeDateModule, MatRadioModule, MatTooltipModule
 } from '@angular/material';
 import { MAT_MOMENT_DATE_ADAPTER_OPTIONS, MomentDateAdapter } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
@@ -221,6 +221,7 @@ export const MY_FORMATS = {
     ChartModule,
     MatListModule,
     MatCheckboxModule,
+    MatRadioModule
     // MatTableDataSource
   ],
   entryComponents: [

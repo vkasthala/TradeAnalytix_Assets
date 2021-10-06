@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, ElementRef, Output, Input, Renderer2, ViewChild, AfterViewInit} from '@angular/core';
+import { Component, EventEmitter, OnInit, ElementRef, Output, Input, Renderer2, ViewChild, AfterViewInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { SingleInputModalComponent } from 'src/app/modules/shared/components/modals/single-input-modal/single-input-modal.component';
 import { MindsetType } from 'src/app/modules/trade-management/models/mindset-type.model';
@@ -39,14 +39,15 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
   protected hideClosingThesis: boolean = false;
   constructor(
     private _renderer2: Renderer2,
-    private _dialog: MatDialog, 
+    private _dialog: MatDialog,
     private metadataService: UserMetadataService
-    ) { 
+  ) {
 
-    }
+  }
 
   ngOnInit() {
     this.tradeThesis = new TradeThesis();
+    this.tradeThesis.tradeType = 'planned';
     this.loadMindsets();
     this.loadSourceTypes();
     this.loadSurroundingEvents();
@@ -54,9 +55,16 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    debugger;
     console.log('trade thesis child view init:', this.inputState);
     if (this.inputState && this.inputState.tradeStrategy && this.inputState.tradeStrategy.tradeThesis && this.inputState.tradeStrategy.tradeThesis.length > 0) {
       this.tradeThesis = this.inputState.tradeStrategy.tradeThesis[0];
+      if (!this.tradeThesis) {
+        this.tradeThesis = new TradeThesis();
+      }
+      if (!this.tradeThesis.tradeType) {
+        this.tradeThesis.tradeType = 'planned';
+      }
     }
   }
 
@@ -132,10 +140,10 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
 
     });
   }
-  showEntryThesis(){
+  showEntryThesis() {
     this.hideEntryThesis = !this.hideEntryThesis;
   }
-  showClosingThesis(){
+  showClosingThesis() {
     this.hideClosingThesis = !this.hideClosingThesis;
   }
   generateChart() {
@@ -144,9 +152,9 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
       width: 'auto',
       data: {
         title: 'Generate Chart',
-        selectedStock:this.selectedStock
+        selectedStock: this.selectedStock
       }
     });
   }
-  
+
 }

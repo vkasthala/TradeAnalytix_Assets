@@ -9,13 +9,19 @@
             <div class="col-sm-6">
                 <div class="thesis_item">
                     <div class="thesis_item_title">
-                        Who suggested this trade to you ? 
-                        <mat-icon matTooltip="Specify the person, channel, service, website which recommended this trade. " matTooltipPosition="above" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay" class="mat-icon-xs cursor info-icon">info_outline</mat-icon>
+                        Who suggested this trade to you ?
+                        <mat-icon
+                            matTooltip="Specify the person, channel, service, website which recommended this trade. "
+                            matTooltipPosition="above" matTooltipClass="custom-tooltip"
+                            [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay"
+                            class="mat-icon-xs cursor info-icon">info_outline</mat-icon>
                     </div>
                     <div class="media align-items-center">
                         <div class="media-body">
-                            <select class="form-control select-input" id="inputState" [(ngModel)]="tradeThesis.sourceId" [disabled]="viewTrade" [ngClass]="viewTrade ? 'disabled' : ''">
-                                <option [ngValue]="opt.id" *ngFor="let opt of sourceTypes; trackBy: id">{{opt.name}}</option>
+                            <select class="form-control select-input" id="inputState" [(ngModel)]="tradeThesis.sourceId"
+                                [disabled]="viewTrade" [ngClass]="viewTrade ? 'disabled' : ''">
+                                <option [ngValue]="opt.id" *ngFor="let opt of sourceTypes; trackBy: id">{{opt.name}}
+                                </option>
                             </select>
                         </div>
                         <div class="px-3">
@@ -28,10 +34,16 @@
             <div class="col-sm-6">
                 <div class="thesis_item">
                     <div class="thesis_item_title">
-                        Specify the reasons for executing this trade 
-                        <mat-icon matTooltip="Write notes on why you are executing this trade at this point in time. This will make you think through your logic and avoid rash decisions." matTooltipPosition="above" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay" class="mat-icon-xs cursor info-icon">info_outline</mat-icon>
+                        Specify the reasons for executing this trade
+                        <mat-icon
+                            matTooltip="Write notes on why you are executing this trade at this point in time. This will make you think through your logic and avoid rash decisions."
+                            matTooltipPosition="above" matTooltipClass="custom-tooltip"
+                            [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay"
+                            class="mat-icon-xs cursor info-icon">info_outline</mat-icon>
                     </div>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="tradeThesis.reasons" [disabled]="viewTrade" [ngClass]="viewTrade ? 'disabled' : ''"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                        [(ngModel)]="tradeThesis.reasons" [disabled]="viewTrade"
+                        [ngClass]="viewTrade ? 'disabled' : ''"></textarea>
                 </div>
             </div>
             <!-- end : thesis_item -->
@@ -39,10 +51,15 @@
             <div class="col-sm-6">
                 <div class="thesis_item">
                     <div class="thesis_item_title">
-                        What is your target price for the stock? 
-                        <mat-icon matTooltip="Enter the target profit you intend to make on this trade." matTooltipPosition="above" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay" class="mat-icon-xs cursor info-icon">info_outline</mat-icon>
+                        What is your target price for the stock?
+                        <mat-icon matTooltip="Enter the target profit you intend to make on this trade."
+                            matTooltipPosition="above" matTooltipClass="custom-tooltip"
+                            [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay"
+                            class="mat-icon-xs cursor info-icon">info_outline</mat-icon>
                     </div>
-                    <input type="text" class="form-control" placeholder="Enter the price" [(ngModel)]="tradeThesis.targetPrice" [disabled]="viewTrade" [ngClass]="viewTrade ? 'disabled' : ''" />
+                    <input type="text" class="form-control" placeholder="Enter the price"
+                        [(ngModel)]="tradeThesis.targetPrice" [disabled]="viewTrade"
+                        [ngClass]="viewTrade ? 'disabled' : ''" />
                 </div>
             </div>
             <!-- end : thesis_item -->
@@ -50,27 +67,39 @@
             <div class="col-sm-6">
                 <div class="thesis_item">
                     <div class="thesis_item_title">
-                        What is the target holding period? <mat-icon matTooltip="" matTooltipPosition="above" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay" class="mat-icon-xs cursor info-icon">info_outline</mat-icon>
+                        What is the target holding period? <mat-icon matTooltip="" matTooltipPosition="above"
+                            matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay"
+                            [matTooltipHideDelay]="this.hideDelay" class="mat-icon-xs cursor info-icon">info_outline
+                        </mat-icon>
                     </div>
                     <div class="media align-items-center">
                         <div class="media-body">
-                            <input type="text" class="form-control" placeholder="Enter the holding period" [(ngModel)]="tradeThesis.holdingPeriod" [disabled]="viewTrade" [ngClass]="viewTrade ? 'disabled' : ''" />
+                            <input type="text" class="form-control" placeholder="Enter the holding period"
+                                [(ngModel)]="tradeThesis.holdingPeriod" [disabled]="viewTrade"
+                                [ngClass]="viewTrade ? 'disabled' : ''" />
                         </div>
                     </div>
                 </div>
             </div>
             <!-- end : thesis_item -->
-              
+
             <div class="col-sm-6">
                 <div class="thesis_item">
                     <div class="thesis_item_title">
-                        Select the technical indicator used for this trade 
-                        <mat-icon matTooltip="If this trade is based on any technical indicator, add the indicator to the list and select it. " matTooltipPosition="above" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay" class="mat-icon-xs cursor info-icon">info_outline</mat-icon>
+                        Select the technical indicator used for this trade
+                        <mat-icon
+                            matTooltip="If this trade is based on any technical indicator, add the indicator to the list and select it. "
+                            matTooltipPosition="above" matTooltipClass="custom-tooltip"
+                            [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay"
+                            class="mat-icon-xs cursor info-icon">info_outline</mat-icon>
                     </div>
                     <div class="media align-items-center">
                         <div class="media-body">
-                            <select class="form-control select-input" id="inputState" [(ngModel)]="tradeThesis.surroundingEventId" [disabled]="viewTrade" [ngClass]="viewTrade ? 'disabled' : ''">
-                                <option [ngValue]="opt.id" *ngFor="let opt of technicalIndicators; trackBy: id">{{opt.name}}</option>
+                            <select class="form-control select-input" id="inputState"
+                                [(ngModel)]="tradeThesis.surroundingEventId" [disabled]="viewTrade"
+                                [ngClass]="viewTrade ? 'disabled' : ''">
+                                <option [ngValue]="opt.id" *ngFor="let opt of technicalIndicators; trackBy: id">
+                                    {{opt.name}}</option>
                             </select>
                         </div>
                         <div class="px-3">
@@ -84,13 +113,20 @@
             <div class="col-sm-6">
                 <div class="thesis_item">
                     <div class="thesis_item_title">
-                        Select any event surrounding this trade 
-                        <mat-icon matTooltip="If you are executing this order to take advantage of any event (e.g., before or after earnings, before or after product launch etc.), create the event and select it" matTooltipPosition="above" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay" class="mat-icon-xs cursor info-icon">info_outline</mat-icon>
+                        Select any event surrounding this trade
+                        <mat-icon
+                            matTooltip="If you are executing this order to take advantage of any event (e.g., before or after earnings, before or after product launch etc.), create the event and select it"
+                            matTooltipPosition="above" matTooltipClass="custom-tooltip"
+                            [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay"
+                            class="mat-icon-xs cursor info-icon">info_outline</mat-icon>
                     </div>
                     <div class="media align-items-center">
                         <div class="media-body">
-                            <select class="form-control select-input" id="inputState" [(ngModel)]="tradeThesis.mindsetId" [disabled]="viewTrade" [ngClass]="viewTrade ? 'disabled' : ''">
-                                <option [ngValue]="opt.id" *ngFor="let opt of surroundingTypes; trackBy: id">{{opt.name}}</option>
+                            <select class="form-control select-input" id="inputState"
+                                [(ngModel)]="tradeThesis.mindsetId" [disabled]="viewTrade"
+                                [ngClass]="viewTrade ? 'disabled' : ''">
+                                <option [ngValue]="opt.id" *ngFor="let opt of surroundingTypes; trackBy: id">
+                                    {{opt.name}}</option>
                             </select>
                         </div>
                         <div class="px-3">
@@ -104,20 +140,33 @@
             <div class="col-sm-6">
                 <div class="thesis_item">
                     <div class="thesis_item_title">
-                        Is this a planned or an impromptu trade ? <mat-icon matTooltip="Specify whether you planned this trade before market hours or decided to trade on the fly." matTooltipPosition="above" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay" class="mat-icon-xs cursor info-icon">info_outline</mat-icon>
+                        Is this a planned or an impromptu trade ? <mat-icon
+                            matTooltip="Specify whether you planned this trade before market hours or decided to trade on the fly."
+                            matTooltipPosition="above" matTooltipClass="custom-tooltip"
+                            [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay"
+                            class="mat-icon-xs cursor info-icon">info_outline</mat-icon>
                     </div>
                     <div class="media align-items-center">
+                        <!--
                         <span class="form-check form-check-inline">
                             <input type="radio" name="tradeType" value="planned"
-                            [(ngModel)]='tradeThesis.tradeType' [disabled]="viewTrade" [ngClass]="viewTrade ? 'disabled' : ''" />
+                            [disabled]="viewTrade"/>
 
                             <label class="form-check-label ml-1">Planned</label> 
                         </span>
                         <span class="form-check form-check-inline">
-                            <input type="radio" class="form-check-input" name="tradeType" value="impromptu" [(ngModel)]="tradeThesis.tradeType" [ngClass]="viewTrade ? 'disabled' : ''" /> 
+                            <input type="radio" class="form-check-input" name="tradeType" value="impromptu" /> 
                             <label class="form-check-label ml-1">Impromptu</label>
                         </span>
+                    -->
+
+                        <mat-radio-group [(ngModel)]="tradeThesis.tradeType">
+                            <mat-radio-button value="planned" class="trade-type-radio">Planned</mat-radio-button>
+                            <mat-radio-button value="impromptu" class="trade-type-radio">Impromptu</mat-radio-button>
+                        </mat-radio-group>
+
                     </div>
+
                 </div>
             </div>
             <!-- end : thesis_item -->
@@ -125,11 +174,17 @@
             <div class="col-sm-6">
                 <div class="thesis_item">
                     <div class="thesis_item_title">
-                        What is your mindset while executing this trade? <mat-icon matTooltip="Specify how you are feeling at the time of placing this trade (e.g., anxious, confident, fear of missing out, etc.). Create mindset and select from the dropdown." matTooltipPosition="above" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay" class="mat-icon-xs cursor info-icon">info_outline</mat-icon>
+                        What is your mindset while executing this trade? <mat-icon
+                            matTooltip="Specify how you are feeling at the time of placing this trade (e.g., anxious, confident, fear of missing out, etc.). Create mindset and select from the dropdown."
+                            matTooltipPosition="above" matTooltipClass="custom-tooltip"
+                            [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay"
+                            class="mat-icon-xs cursor info-icon">info_outline</mat-icon>
                     </div>
                     <div class="media align-items-center">
                         <div class="media-body">
-                            <select class="form-control select-input" id="inputState" [(ngModel)]="tradeThesis.technicalIndicatorId" [disabled]="viewTrade" [ngClass]="viewTrade ? 'disabled' : ''">
+                            <select class="form-control select-input" id="inputState"
+                                [(ngModel)]="tradeThesis.technicalIndicatorId" [disabled]="viewTrade"
+                                [ngClass]="viewTrade ? 'disabled' : ''">
                                 <option [ngValue]="opt.id" *ngFor="let opt of mindsetTypes; trackBy: id">{{opt.name}}
                                 </option>
                             </select>
@@ -163,7 +218,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- end : thesis_item -->
         </div>
     </div>
@@ -186,8 +241,10 @@
                     </div>
                     <div class="media align-items-center">
                         <div class="media-body">
-                            <select class="form-control select-input" id="inputState" [(ngModel)]="tradeThesis.sourceId" [disabled]="viewTrade" [ngClass]="viewTrade ? 'disabled' : ''">
-                                <option [ngValue]="opt.id" *ngFor="let opt of sourceTypes; trackBy: id">{{opt.name}}</option>
+                            <select class="form-control select-input" id="inputState" [(ngModel)]="tradeThesis.sourceId"
+                                [disabled]="viewTrade" [ngClass]="viewTrade ? 'disabled' : ''">
+                                <option [ngValue]="opt.id" *ngFor="let opt of sourceTypes; trackBy: id">{{opt.name}}
+                                </option>
                             </select>
                         </div>
                         <div class="px-3">
@@ -241,7 +298,8 @@
                     <div class="thesis_item_title">
                         Specify the reasons for closing the trade
                     </div>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [disabled]="!closeTrade" [ngClass]="viewTrade ? 'disabled' : ''"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [disabled]="!closeTrade"
+                        [ngClass]="viewTrade ? 'disabled' : ''"></textarea>
                 </div>
             </div>
             <!-- end : thesis_item -->
@@ -253,8 +311,10 @@
                     </div>
                     <div class="media align-items-center">
                         <div class="media-body">
-                            <select class="form-control select-input" id="inputState" [(ngModel)]="tradeThesis.surroundingEventId" [ngClass]="viewTrade ? 'disabled' : ''">
-                                <option [ngValue]="opt.id" *ngFor="let opt of surroundingTypes; trackBy: id">{{opt.name}}</option>
+                            <select class="form-control select-input" id="inputState"
+                                [(ngModel)]="tradeThesis.surroundingEventId" [ngClass]="viewTrade ? 'disabled' : ''">
+                                <option [ngValue]="opt.id" *ngFor="let opt of surroundingTypes; trackBy: id">
+                                    {{opt.name}}</option>
                             </select>
                         </div>
                         <div class="px-3">
@@ -270,7 +330,8 @@
                     <div class="thesis_item_title">
                         Specify the lessons learnt from the trade
                     </div>
-                    <textarea class="form-control" id="closingLessionsTrade" rows="3" [ngClass]="viewTrade ? 'disabled' : ''"></textarea>
+                    <textarea class="form-control" id="closingLessionsTrade" rows="3"
+                        [ngClass]="viewTrade ? 'disabled' : ''"></textarea>
                 </div>
             </div>
             <!-- end : thesis_item -->
