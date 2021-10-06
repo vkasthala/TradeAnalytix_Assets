@@ -1,6 +1,5 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { RuleEvalResult } from 'src/app/modules/trade-management/models/rule-eval-result.model';
 
 @Component({
   selector: 'app-join-waitlist',
@@ -24,5 +23,3 @@ export class JoinWaitlistComponent implements OnInit {
   }
 
 }
-
-export class LandingComponent {}

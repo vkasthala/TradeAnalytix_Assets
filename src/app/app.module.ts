@@ -28,6 +28,7 @@ import exporting from 'highcharts/modules/exporting.src';
 import highmaps from 'highcharts/modules/map.src';
 import { DateAdapter } from '@angular/material';
 import { CustomDateAdapter } from './modules/shared/adapter/custom-date-adapter';
+import { JoinWaitlistComponent } from './modules/login/components/join-waitlist/join-waitlist.component';
 
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
   return localStorageSync({ keys: [globalConfigFeatureKey], rehydrate: true })(reducer);
@@ -42,6 +43,7 @@ export function highchartsModules() {
 @NgModule({
   declarations: [
     AppComponent,
+    JoinWaitlistComponent,
     LandingComponent
   ],
   imports: [
@@ -75,6 +77,9 @@ export function highchartsModules() {
     { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true },
     { provide: DateAdapter, useClass: CustomDateAdapter }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    JoinWaitlistComponent
+  ]
 })
 export class AppModule { }

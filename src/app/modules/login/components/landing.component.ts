@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { JoinWaitlistComponent } from './join-waitlist/join-waitlist.component';
-import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-landing',
