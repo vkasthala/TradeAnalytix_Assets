@@ -67,7 +67,6 @@ export class LandingComponent implements OnInit {
   }
 
   joinWaitlist() {
-    debugger;
     let dialogData = {
       title: 'Join the Waitlist',
     };

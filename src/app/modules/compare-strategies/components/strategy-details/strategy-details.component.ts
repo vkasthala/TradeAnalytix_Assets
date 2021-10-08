@@ -19,7 +19,7 @@ export class StrategyDetailsComponent implements OnInit {
     public dialogRef: MatDialogRef<StrategyDetailsComponent>,
     @Inject(MAT_DIALOG_DATA) public data
   ) {
-    debugger;
+
     this.strategyDetails = data.details;
     console.log('details::', this.strategyDetails);
   }
@@ -36,7 +36,6 @@ export class StrategyDetailsComponent implements OnInit {
   }
 
   getOptionLabel(option: CompareStrategyOption): string {
-    debugger;
     return this.getActionTypeLabel(option.actionType) + ' ' + option.contracts + ' contract of ' + option.strikePrice + ' ' + option.expireDate + ' ' + this.getOptionTypeLabel(option.optionType) + ' at ';
   }
 

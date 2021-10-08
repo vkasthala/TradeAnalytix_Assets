@@ -55,7 +55,6 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    debugger;
     console.log('trade thesis child view init:', this.inputState);
     if (this.inputState && this.inputState.tradeStrategy && this.inputState.tradeStrategy.tradeThesis && this.inputState.tradeStrategy.tradeThesis.length > 0) {
       this.tradeThesis = this.inputState.tradeStrategy.tradeThesis[0];

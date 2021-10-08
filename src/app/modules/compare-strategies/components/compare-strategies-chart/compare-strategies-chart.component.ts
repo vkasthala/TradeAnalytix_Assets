@@ -23,7 +23,6 @@ export class CompareStrategiesChartComponent implements OnInit {
   }
 
   loadChart(chartData: any) {
-    debugger;
     this.chart = new Chart(chartData);
   }
 

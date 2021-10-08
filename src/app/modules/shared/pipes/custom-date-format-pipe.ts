@@ -10,7 +10,6 @@ export class CustomDateFormatPipe implements PipeTransform {
     private timezone = environment.tz;
 
     transform(date: string | Date, timeFormat: string = '') {
-        debugger;
         const defaultValues = {
             dateFormat: 'yyyy-MM-dd',
             language: 'en-US',
