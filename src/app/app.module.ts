@@ -26,6 +26,7 @@ import { HIGHCHARTS_MODULES, ChartModule } from 'angular-highcharts';
 import more from 'highcharts/highcharts-more.src';
 import exporting from 'highcharts/modules/exporting.src';
 import highmaps from 'highcharts/modules/map.src';
+import exportingdata from 'highcharts/modules/export-data.src';
 import { DateAdapter } from '@angular/material';
 import { CustomDateAdapter } from './modules/shared/adapter/custom-date-adapter';
 import { JoinWaitlistComponent } from './modules/login/components/join-waitlist/join-waitlist.component';
@@ -37,7 +38,7 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
 
 export function highchartsModules() {
   // apply Highcharts Modules to this array
-  return [more, exporting, highmaps];
+  return [more, exporting, highmaps, exportingdata];
 }
 
 @NgModule({
