@@ -23,6 +23,7 @@ import { StockLegHistory } from 'src/app/modules/trade-management/models/stock-l
 import { OptionLegHistory } from 'src/app/modules/trade-management/models/option-leg-history.model';
 import { TradeTag } from 'src/app/modules/shared/models/trade-management/trade-tag.model';
 import { SingleInputModalComponent } from 'src/app/modules/shared/components/modals/single-input-modal/single-input-modal.component';
+import { ConfirmDialogComponent } from 'src/app/modules/shared/components/modals/confirm-dialog/confirm-dialog.component';
 
 
 @Component({
@@ -574,6 +575,23 @@ export class TradeDetailsComponent implements OnInit {
       tag.name = res;
     });
   }
+
+  deleteTag(tag: TradeTag, ind: number) {
+    const dialogRef = this._dialog.open(ConfirmDialogComponent, {
+      width: 'auto',
+      height: 'auto',
+      data: { 'message': 'Are you sure you want to delete tag: ' + tag.name + '?' }
+    });
+
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      if (dialogResult == true) {
+        if (this.tags.length > ind) {
+          this.tags.splice(ind, 1);
+        }
+      }
+    });
+  }
+
   addEvent(input: any, event: any, index: number) {
     this.stockOptions[index]['expireDate'] = event.value._d;
   }

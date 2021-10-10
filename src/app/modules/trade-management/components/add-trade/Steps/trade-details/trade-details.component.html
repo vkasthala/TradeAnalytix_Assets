@@ -36,7 +36,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="col-sm-7 px-0" *ngIf="addTrade || editTrade">
                         <ul class="tags-list">
                             <li *ngFor="let tag of tags; let i = index;" class="tag-item">
@@ -44,9 +44,10 @@
                                     <span class="material-icons tag-icon">#</span>
                                     {{tag.name}}
                                 </span>
+                                <span class="material-icons delete-tag-icon" (click)="deleteTag(tag, i)">remove_circle_outline</span>
                             </li>
                             <li>
-                                <span (click)="addTag()" class="add-tag">
+                                <span (click)="addTag()" class="add-tag" *ngIf = "tags.length < 3">
                                     <span class="material-icons tag-icon">add_circle_outline</span> Tag
                                 </span>
                             </li>
