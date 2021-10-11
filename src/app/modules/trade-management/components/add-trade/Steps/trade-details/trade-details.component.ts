@@ -24,6 +24,7 @@ import { OptionLegHistory } from 'src/app/modules/trade-management/models/option
 import { TradeTag } from 'src/app/modules/shared/models/trade-management/trade-tag.model';
 import { SingleInputModalComponent } from 'src/app/modules/shared/components/modals/single-input-modal/single-input-modal.component';
 import { ConfirmDialogComponent } from 'src/app/modules/shared/components/modals/confirm-dialog/confirm-dialog.component';
+import { StrategySelectionComponent } from 'src/app/modules/shared/components/modals/strategy-selection/strategy-selection.component';
 
 
 @Component({
@@ -231,6 +232,7 @@ export class TradeDetailsComponent implements OnInit {
   }
 
   onStrategyTypeChange(strategy: Number) {
+    debugger;
     let template: StrategyTemplate = this.strategyCreateServiceService.getStrategyTemplate(strategy);
     if (template) {
       this.stockEntry = template.stockEntry;
@@ -362,6 +364,14 @@ export class TradeDetailsComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe((res) => {
       this.addOrReduceStock(res, false);
+    });
+  }
+  selectStrategy() {
+    let dialogData: any = this.strategies;
+    const dialogRef = this._dialog.open(StrategySelectionComponent, {
+      disableClose: false,
+      width: 'auto',
+      data: dialogData
     });
   }
 

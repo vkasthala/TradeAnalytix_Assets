@@ -55,6 +55,7 @@ import { ConfirmDialogComponent } from '../shared/components/modals/confirm-dial
 import { ReduceToPositionComponent } from '../shared/components/modals/reduce-to-position/reduce-to-position.component';
 import { ReduceToStockPositionComponent } from '../shared/components/modals/reduce-to-stock-position/reduce-to-stock-position.component';
 import { SingleInputModalComponent } from '../shared/components/modals/single-input-modal/single-input-modal.component';
+import { StrategySelectionComponent } from '../shared/components/modals/strategy-selection/strategy-selection.component';
 import { TradeExecutionDateComponent } from '../shared/components/modals/trade-execution-date/trade-execution-date.component';
 import { EditableGridComponent } from '../shared/components/widgets/editable-grid/editable-grid.component';
 import { EditableListComponent } from '../shared/components/widgets/editable-list/editable-list.component';
@@ -204,7 +205,8 @@ export const MY_FORMATS = {
     ImportTradePopupComponent,
     RulesComponent,
     CalendarComponent,
-    ReportsRulesComponent
+    ReportsRulesComponent,
+    StrategySelectionComponent
   ],
   imports: [
     CommonModule,
@@ -248,7 +250,8 @@ export const MY_FORMATS = {
     RuleCommentDialogComponent,
     ImportTradePopupComponent,
     CalendarComponent,
-    ReportsRulesComponent
+    ReportsRulesComponent,
+    StrategySelectionComponent
   ],
   // bootstrap: [TradeStrategiesGrid],
   providers: [

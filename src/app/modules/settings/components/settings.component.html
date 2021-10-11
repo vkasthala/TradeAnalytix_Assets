@@ -1,4 +1,4 @@
-<div class="reports-section px-3">
+<div class="reports-section px-3 settings_web">
     <!-- <div class="trade-dash-main">
             <div class="trade-dash-name">
                 <h3>Settings</h3>
@@ -29,6 +29,7 @@
                     <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#CodedRules" role="tab">Coded Rules</a>
                 </li> -->
             </ul>
+            
             <div class="tab-content tabs">
                 <div class="tab-pane active" id="UserProﬁle" role="tabpanel">
                     <app-profile></app-profile>
@@ -49,6 +50,32 @@
                     <app-codedrules></app-codedrules>
                 </div> -->
             </div>
+        </div>
+    </div>
+</div>
+
+<!-- Settings-mobile -->
+<div class="settings-mobile">
+    <div class="mb-3">
+        <select class="form-control" (change)="settingsTabChange($event.target.value)">
+            <option value="UserProﬁle" selected data-default>User Proﬁle</option>
+            <option value="InvestmentGoals">Investment Goals</option>
+            <option value="DepositsWithdrawals">Deposits & Withdrawals</option>
+            <option value="DataSetup">Data Setup</option>
+        </select>
+    </div>
+    <div class="tab-content tabs">
+        <div class="tab-pane active" id="UserProﬁle" role="tabpanel" [ngClass]="[selectedType === 'UserProﬁle' ? 'd-block' : 'd-none']">
+            <app-profile></app-profile>
+        </div>
+        <div class="tab-pane" id="InvestmentGoals" role="tabpanel" [ngClass]="[selectedType === 'InvestmentGoals' ? 'd-block' : 'd-none']">
+            <app-investmentgoals></app-investmentgoals>
+        </div>
+        <div class="tab-pane" id="DepositsWithdrawals" role="tabpanel" [ngClass]="[selectedType === 'DepositsWithdrawals' ? 'd-block' : 'd-none']">
+            <app-depositswithdrawals></app-depositswithdrawals>
+        </div>
+        <div class="tab-pane" id="DataSetup" role="tabpanel" [ngClass]="[selectedType === 'DataSetup' ? 'd-block' : 'd-none']">
+            <app-datasetup></app-datasetup>
         </div>
     </div>
 </div>

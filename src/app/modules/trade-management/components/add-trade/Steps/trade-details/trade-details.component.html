@@ -5,12 +5,16 @@
             <div class="trade-sec">
                 <div class="row justify-content-between">
                     <div class="col-sm-5">
-                        <span class="col-form-label pt-0">{{ addTrade ? 'Select' : 'Current' }} Strategy</span>
+                        <span class="col-form-label pt-0">{{ addTrade ? 'Select' : 'Current' }} Strategy </span>
+                            
+                            <span class="col-form-label pt-0 ml-2" *ngIf="!addTrade">: {{ strategies[selectedStrategy] }} 
+                            <mat-icon class="mat-icon-sm mr-1 cursor" (click)="selectStrategy()">edit</mat-icon>
+                        </span>
                         <div [ngClass]="closeTrade ? 'row close_trade_module' : 'row'">
                             <div class="col-sm-12">
                                 <div class="trade-section m-0">
                                     <div class="pr-3 d-flex">
-                                        <div class="Trade-type">
+                                        <div class="Trade-type mr-3" *ngIf="assTrade">
                                             <div class="form-group">
                                                 <select class="form-control select-input pl-0" id="inputState"
                                                     (change)="onStrategyTypeChange($event.target.value)"
@@ -29,7 +33,7 @@
 
                                         <div class="d-flex align-items-center"
                                             *ngIf="(stockAdded || stockOptions.length) && !closeTrade && !viewTrade">
-                                            <a class="text-link ml-3" (click)="navigateToRiskAnalysis()">Assess Risk</a>
+                                            <a class="text-link" (click)="navigateToRiskAnalysis()">Assess Risk</a>
                                         </div>
                                     </div>
                                 </div>

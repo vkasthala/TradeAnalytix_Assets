@@ -2,6 +2,11 @@
 .reports-section {
     padding-top: 30px;
 }
+.settings_web {
+    @media #{$extra-small} {
+        display: none !important;
+    }
+}
 
 // risk tabs
 .tab .nav-tabs {
@@ -80,4 +85,14 @@
 .col-form-label {
     color: #3A4C85;
     font-size: 13px !important;
+}
+.settings-mobile {
+    display: none;
+}
+
+@media #{$extra-small} {
+    .settings-mobile {
+        padding: 15px;
+        display: block;
+    }
 }

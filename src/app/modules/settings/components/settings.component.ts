@@ -7,12 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SettingsComponent implements OnInit {
   stockAdded: boolean;
+  selectedType: string = "UserProﬁle";
   constructor() { }
 
   ngOnInit() {
   }
   addStock() {
     this.stockAdded = true;
+  }
+
+  settingsTabChange(value:string) {
+    this.selectedType = value
   }
 
 }
