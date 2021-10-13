@@ -6,8 +6,8 @@
                 <div class="row justify-content-between">
                     <div class="col-sm-5">
                         <span class="col-form-label pt-0">{{ addTrade ? 'Select' : 'Current' }} Strategy </span>
-                            
-                            <span class="col-form-label pt-0 ml-2" *ngIf="!addTrade">: {{ strategies[selectedStrategy] }} 
+
+                        <span class="col-form-label pt-0 ml-2" *ngIf="!addTrade">: {{ strategies[selectedStrategy] }}
                             <mat-icon class="mat-icon-sm mr-1 cursor" (click)="selectStrategy()">edit</mat-icon>
                         </span>
                         <div [ngClass]="closeTrade ? 'row close_trade_module' : 'row'">
@@ -48,10 +48,11 @@
                                     <span class="material-icons tag-icon">#</span>
                                     {{tag.name}}
                                 </span>
-                                <span class="material-icons delete-tag-icon" (click)="deleteTag(tag, i)">remove_circle_outline</span>
+                                <span class="material-icons delete-tag-icon"
+                                    (click)="deleteTag(tag, i)">remove_circle_outline</span>
                             </li>
                             <li>
-                                <span (click)="addTag()" class="add-tag" *ngIf = "tags.length < 3">
+                                <span (click)="addTag()" class="add-tag" *ngIf="tags.length < 3">
                                     <span class="material-icons tag-icon">add_circle_outline</span> Tag
                                 </span>
                             </li>
@@ -72,7 +73,7 @@
                     <div class="card-main card-main-actions">
                         <label class="col-form-label pt-0">Action</label>
                         <select id="inputState"
-                            [ngClass]="[closeTrade || viewTrade ? 'disabled' : '', editTrade && (StockPosition.quantity > 0 && StockPosition.quantity !== undefined ) ? 'disabled' : '']"
+                            [ngClass]="[closeTrade || viewTrade ? 'disabled' : '', editTrade && ((StockPosition.quantity > 0 && StockPosition.quantity !== undefined) || (StockPosition.partialLegChange && StockPosition.partialLegChange.length > 0) ) ? 'disabled' : '']"
                             class="form-control px-0" [(ngModel)]="stockEntry.actionType">
                             <option value=1 selected data-default>Buy to Open</option>
                             <option value=2>Sell to Open</option>
@@ -82,7 +83,7 @@
                         <label class="col-form-label pt-0">Quantity</label>
                         <input type="number" (keydown)="preventNegatives($event, false)" min="0"
                             class="form-control cards-input"
-                            [ngClass]="[closeTrade || viewTrade ? 'disabled' : '', editTrade && (StockPosition.quantity > 0 && StockPosition.quantity !== undefined ) ? 'disabled' : '']"
+                            [ngClass]="[closeTrade || viewTrade ? 'disabled' : '', editTrade && ((StockPosition.quantity > 0 && StockPosition.quantity !== undefined ) || (StockPosition.partialLegChange && StockPosition.partialLegChange.length > 0)) ? 'disabled' : '']"
                             [(ngModel)]="stockEntry.quantity" />
                     </div>
                     <div class="card-main card-main-custom">
@@ -90,7 +91,7 @@
                         <input type="number" pattern="^\d*(\.\d{0,2})?$" (change)="checkForDecimalValidation($event)"
                             step="0.01" (keydown)="preventNegatives($event, true)" min="0" class="form-control"
                             placeholder="" [(ngModel)]="stockEntry.price"
-                            [ngClass]="[closeTrade || viewTrade ? 'disabled' : '', editTrade && (StockPosition.quantity > 0 && StockPosition.quantity !== undefined ) ? 'disabled' : '']" />
+                            [ngClass]="[closeTrade || viewTrade ? 'disabled' : '', editTrade && ((StockPosition.quantity > 0 && StockPosition.quantity !== undefined ) || (StockPosition.partialLegChange && StockPosition.partialLegChange.length > 0)) ? 'disabled' : '']" />
                     </div>
                     <div class="card-main card-main-custom" *ngIf="closeTrade">
                         <label class="col-form-label pt-0">Exit Price <span class="text-danger">*</span></label>
