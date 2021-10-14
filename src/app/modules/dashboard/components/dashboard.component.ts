@@ -4,6 +4,7 @@ import { CalendarComponent } from '../../reports/components/calendar/calendar.co
 import { ReportSummaryItem } from '../../reports/model/report-summary-item.model';
 import { ReportDataService } from '../../reports/services/report-data.service';
 import { SummaryRequest } from '../../shared/models/reports/summary-request.model';
+import { UserService } from '../../shared/services/user.service';
 import { TradePlanGridRow } from '../../trade-plan/models/trade-plan-grid-row.model';
 import { TradePlansService } from '../../trade-plan/services/trade-plans.service';
 
@@ -20,7 +21,9 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
   summaryItems: ReportSummaryItem[];
 
-  constructor(private router: Router, private ref: ChangeDetectorRef, private tradePlanService: TradePlansService, private reportDataService: ReportDataService) { }
+  userName: string = '';
+
+  constructor(private router: Router, private ref: ChangeDetectorRef, private tradePlanService: TradePlansService, private reportDataService: ReportDataService, private userService: UserService) { }
 
   ngOnInit() {
     this.loadLatestTradePlan();
@@ -30,6 +33,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     const today: Date = new Date();
     this.calendarReport.loadData(today.getFullYear(), today.getMonth() + 1);
+    this.loadUserDetails();
   }
 
   ngAfterContentChecked() {
@@ -104,6 +108,14 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
   viewAllTradePlans() {
     this.router.navigate(['/dashboard/trade-plans']);
+  }
+
+  loadUserDetails() {
+    this.userService.getUserDetails().subscribe(details => {
+      if (details && details.name) {
+        this.userName = details.name;
+      }
+    });
   }
 
 }

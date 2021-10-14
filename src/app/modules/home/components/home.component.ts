@@ -3,6 +3,8 @@ import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import * as fromGlobalConfig from '../../../modules/utilities/reducers/global-config.reducer';
 import { Store } from '@ngrx/store';
 import { NotificationService } from '../../notifications/services/notification.service';
+import { ConfirmDialogComponent } from '../../shared/components/modals/confirm-dialog/confirm-dialog.component';
+import { MatDialog } from '@angular/material';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -19,7 +21,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
   constructor(
     private globalStore: Store<fromGlobalConfig.State>,
     private router: Router,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private _dialog: MatDialog
   ) {
     let globalSelector = (fromGlobalConfig.globalConfigFeatureKey as any);
     globalStore.select(globalSelector).subscribe(res => {
@@ -40,7 +43,16 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   logout() {
-    this.router.navigate(['/landing']);
+    const dialogRef = this._dialog.open(ConfirmDialogComponent, {
+      width: 'auto',
+      height: 'auto',
+      data: { 'message': 'Are you sure you want to logout?' }
+    });
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      if (dialogResult == true) {
+        this.router.navigate(['/landing']);
+      }
+    });
   }
 
   @HostListener('document:click', ['$event'])
@@ -60,7 +72,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       case 'dashboard': return { breadcrumb: 'DASHBOARD', title: 'Dashboard', description: 'Dashboard' };
       case 'new-trade': return { breadcrumb: 'ADD NEW TRADE', title: 'Add New Trade', description: 'Enter the stock symbol or name for which trade strategy is being added' };
 
-      case 'import-trades': return { breadcrumb: 'IMPORT TRADES', title: 'Import Trades', description:"Trade history files exported from brokerages can be imported into the system to add trades in bulk. All the files imported into the system are displayed as a list." };
+      case 'import-trades': return { breadcrumb: 'IMPORT TRADES', title: 'Import Trades', description: "Trade history files exported from brokerages can be imported into the system to add trades in bulk. All the files imported into the system are displayed as a list." };
 
       case 'trade-strategies': return { breadcrumb: 'Trade Strategies', title: 'My Trades', description: "Trades are segregated by status and displayed as a list. Trades that are not yet executed remain in Draft status. Trades that are executed remain in Open Status. Trades that are fully closed remain in Closed status." };
 
