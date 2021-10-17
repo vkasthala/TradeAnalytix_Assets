@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   MatCheckboxModule, MatDatepickerModule, MatInputModule, MatListModule, MatNativeDateModule, MatRadioModule, MatTooltipModule
 } from '@angular/material';
@@ -208,6 +209,8 @@ export const MY_FORMATS = {
     StrategySelectionComponent
   ],
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
     CommonModule,
     RoutingModule,
     UtilitiesModule,
