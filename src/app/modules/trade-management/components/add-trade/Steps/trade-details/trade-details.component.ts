@@ -538,7 +538,6 @@ export class TradeDetailsComponent implements OnInit {
   }
 
   isValidAddEditTradeDetails(): boolean {
-    debugger;
     return this.selectedStrategy > 0 && this.isValidStockEntry() && this.isValidOptionEntries();
   }
 

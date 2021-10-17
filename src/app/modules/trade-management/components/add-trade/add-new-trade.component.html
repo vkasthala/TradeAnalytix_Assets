@@ -78,6 +78,9 @@
                                         </div>
                                     </div>
                                     <div class="closed-legs-body" *ngIf="closedLegs && tradeHistory">
+                                        <div class="text-center" *ngIf="tradeHistory.stockLegHistories.length === 0 && tradeHistory.optionLegHistories.length === 0">
+                                            No closed positions
+                                        </div>
                                         <div class="trade-card-box"
                                             *ngFor="let item of tradeHistory.stockLegHistories;let index = index">
                                             <div class="card-main card-main-actions">
