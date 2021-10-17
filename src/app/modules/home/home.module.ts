@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   MatCheckboxModule, MatDatepickerModule, MatInputModule, MatListModule, MatNativeDateModule, MatRadioModule, MatTooltipModule
 } from '@angular/material';
@@ -210,8 +209,6 @@ export const MY_FORMATS = {
   ],
   imports: [
     CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
     RoutingModule,
     UtilitiesModule,
     MatNativeDateModule,

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment';
+import { HttpService } from '../../shared/services/http.service';
 import { JoinWaitlistComponent } from './join-waitlist/join-waitlist.component';
 
 @Component({
@@ -23,6 +25,8 @@ export class LandingComponent implements OnInit {
   constructor(
     private router: Router,
     private _dialog: MatDialog,
+    private httpService: HttpService,
+    protected toastr: ToastrService
   ) { }
 
   ngOnInit() {
@@ -74,6 +78,16 @@ export class LandingComponent implements OnInit {
       disableClose: true,
       width: 'auto',
       data: dialogData
+    });
+
+    dialogRef.afterClosed().subscribe((res) => {
+      if (res) {
+        this.httpService.post(environment.apiUrl + '/wait-list-user/create', res).subscribe(resp => {
+          this.toastr.success('Successfully added to waitlist. The activation details will be sent via email in 24 hours.')
+        }, err => {
+          this.toastr.error(err.error);
+        });
+      }
     });
   }
 }

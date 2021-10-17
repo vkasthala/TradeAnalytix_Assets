@@ -13,19 +13,19 @@
             <div class="row py-2">
                 <label class="col-form-label col-4">Name </label>
                 <div class="col-8">
-                    <input matInput id="name" />
+                    <input matInput id="name" [(ngModel)]='data.name' />
                 </div>
             </div>
             <div class="row py-2">
                 <label class="col-form-label col-4">Email</label>
                 <div class="col-8">
-                    <input matInput id="email" />
+                    <input matInput id="email" [(ngModel)]='data.email' />
                 </div>
             </div>
         </div>
 
         <div class="modal-footer py-2">
-            <button type="button" class="btn btn-primary btn-sm">Join Waitlist</button>
+            <button type="button" class="btn btn-primary btn-sm" [mat-dialog-close]="data">Join Waitlist</button>
             <button type="button" class="btn btn-secondary tn-sm" (click)="closeModal()">Cancel</button>
         </div>
     </div>

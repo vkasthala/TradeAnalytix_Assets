@@ -30,6 +30,7 @@ import exportingdata from 'highcharts/modules/export-data.src';
 import { DateAdapter } from '@angular/material';
 import { CustomDateAdapter } from './modules/shared/adapter/custom-date-adapter';
 import { JoinWaitlistComponent } from './modules/login/components/join-waitlist/join-waitlist.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
   return localStorageSync({ keys: [globalConfigFeatureKey], rehydrate: true })(reducer);
@@ -48,6 +49,8 @@ export function highchartsModules() {
     LandingComponent
   ],
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
