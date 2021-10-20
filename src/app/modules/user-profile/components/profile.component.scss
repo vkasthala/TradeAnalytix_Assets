@@ -397,3 +397,21 @@ textarea {
     color: #3A4C85;
     font-size: 13px !important;
 }
+.profile-web {
+    @media #{$extra-small} {
+        display: none !important;
+    }
+}
+.profile-mobile {
+    display: none;
+}
+@media #{$extra-small} {
+    .profile-mobile {
+        display: block;
+    }
+    .btn-reset {
+        background: #9DA6BA;
+        border-radius: 4px;
+        color: #fff;
+    }
+}

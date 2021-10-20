@@ -1,13 +1,13 @@
 <div class="deposits-top mb-3">
     <div class="row">
-        <div class="col-6 mb-2">
+        <div class="col-md-6 mb-2">
             <label class="col-form-label">What is the portfolio value (including cash) at the time of setting up this proﬁle?</label>
             <input type="text" class="form-control" />
         </div>
     </div>
 </div>
 
-<mat-accordion class="example-headers-align w-100" multi="true">
+<mat-accordion class="example-headers-align w-100 deposits-web" multi="true">
     <mat-expansion-panel [expanded]="true" (opened)="setStep(0)">
         <mat-expansion-panel-header>
             <mat-panel-title>
@@ -54,8 +54,77 @@
     </mat-expansion-panel>
 </mat-accordion>
 
-<div class="trade-btn py-3">
+<div class="trade-btn py-3 deposits-web">
     <div class="btn btn-apply" (click)="saveprofile()">
         SAVE
+    </div>
+</div>
+
+<!-- deposits-mobile -->
+<div class="deposits-mobile">
+    <div class="deposits_mobile_sec">
+        <div class="d-flex justify-content-between">
+            <h3>
+                Deposit and Withdrawal History
+            </h3>
+            <mat-icon (click)="openDepositForm()">add_circle</mat-icon>
+        </div>
+        <div class="show-stock-sec" *ngFor="let deposit of DepositList;let index = index">
+            <div class="row">
+                <div class="col-4">
+                    <label class="col-form-label p-0">Entry Date</label>
+                    <div class="col-form-value">{{deposit.entrydate}}</div>
+                </div>
+                <div class="col-4">
+                    <label class="col-form-label p-0">Deposit</label>
+                    <div class="col-form-value">Deposit</div>
+                </div>
+                <div class="col-4">
+                    <label class="col-form-label p-0">Amount</label>
+                    <div class="col-form-value">10,000</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- add new goal -->
+    <div class="newgoal_slide" *ngIf="showDepositForm">
+        <div class="newgoal_slide-header">
+            <mat-icon class="arrow_back mr-2 cursor" (click)="hideDepositForm()">arrow_back</mat-icon> 
+            New Deposit
+        </div>
+
+        <div class="p-3">
+            <div class="newgoal_slide_body">
+                <div class="newgoal_slide_body_heading">Add New</div>
+                <div class="row">
+                    <div class="col-6">
+                        <label class="col-form-label pb-0">Entry Date</label>
+                        <div class="datepicker-group">
+                            <input matInput [matDatepicker]="executed_date" (click)="executed_date.open()" id="executed_date" (dateChange)="addEvent('input', $event)" name="executed_date" [(ngModel)]="executedDate" />
+                            <mat-datepicker-toggle matSuffix [for]="executed_date"></mat-datepicker-toggle>
+                            <mat-datepicker #executed_date></mat-datepicker>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <label class="col-form-label pb-0">Deposit</label>
+                        <select class="form-control">
+                            <option value="1">Deposit</option>
+                            <option value="1">Withdrawal</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <label class="col-form-label pb-0">Amount</label>
+                        <input type="text" class="form-control" />
+                    </div>
+                </div>
+                   
+                <div class="pt-3">
+                    <button type="button" class="btn btn-add w-100" (click)="addGoal()">Save</button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

@@ -8,7 +8,7 @@ import { IMyDrpOptions } from 'mydaterangepicker';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-
+  showResetForm:boolean= false;
   constructor(private router: Router) { }
 
   myDateRangePickerOptions: IMyDrpOptions = {
@@ -26,6 +26,9 @@ export class ProfileComponent implements OnInit {
 
   saveprofile() {
     this.router.navigate(['/dashboard']);
+  }
+  resetPassword() {
+    this.showResetForm = !this.showResetForm;
   }
 
 }

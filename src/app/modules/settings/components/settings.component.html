@@ -56,6 +56,12 @@
 
 <!-- Settings-mobile -->
 <div class="settings-mobile">
+    <div class="trade-actions d-flex justify-content-between mb-2">
+        <span class="text-primary" (click)="cancelSettings()">CANCEL</span>
+        <span class="text-black">Settings</span>
+        <a class="text-primary">Save</a>
+    </div>
+
     <div class="mb-3">
         <select class="form-control" (change)="settingsTabChange($event.target.value)">
             <option value="UserProﬁle" selected data-default>User Proﬁle</option>

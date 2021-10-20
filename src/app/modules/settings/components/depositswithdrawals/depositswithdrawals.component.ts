@@ -16,6 +16,7 @@ export class DepositswithdrawalsComponent implements OnInit {
   targetDateRange:string;
 
   public DepositList = [];
+  public showDepositForm: boolean = false;
 
   constructor(
     private toastr: ToastrService,
@@ -32,6 +33,12 @@ export class DepositswithdrawalsComponent implements OnInit {
 
   setStep(index: number) {
     this.step = index;
+  }
+  openDepositForm() {
+    this.showDepositForm = true;
+  }
+  hideDepositForm() {
+    this.showDepositForm = false;
   }
 
 }

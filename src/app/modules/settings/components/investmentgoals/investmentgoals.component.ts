@@ -19,6 +19,7 @@ export class InvestmentGoalsComponent implements OnInit {
   targetDateRange: string;
   goalName: string;
   public GoalsList: [];
+  public showGoalForm: boolean = false;
 
   constructor(
     private toastr: ToastrService,
@@ -45,6 +46,7 @@ export class InvestmentGoalsComponent implements OnInit {
     } else {
       this.saveProfile(this.createGoalsEntry());
     }
+    this.showGoalForm = false;
   }
 
   editinvestmentGoal(goal: InvestmentGoals) {
@@ -111,5 +113,12 @@ export class InvestmentGoalsComponent implements OnInit {
       this.handleClear();
       return;
     });
+  }
+
+  openGoalForm() {
+    this.showGoalForm = true;
+  }
+  hideGoalForm() {
+    this.showGoalForm = false;
   }
 }
