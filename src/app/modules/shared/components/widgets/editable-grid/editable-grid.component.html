@@ -18,12 +18,13 @@
         </span>
     </span>
 </div>
-<div class="border p-2" [ngClass]="columns.length > 4 ? 'editable-list' : ''">
+
+<div class="editable-grid-container" [ngClass]="columns.length > 4 ? 'editable-list' : ''">
     <mat-table [dataSource]="dataSource">
         <ng-container *ngFor="let entry of columns" matColumnDef="{{entry}}">
             <mat-cell class="strategy-id-cell" *matCellDef="let element">
                 <span *ngIf="entry == 'action'" class="actions-column">
-                    <mat-icon class="mr-2 mat-icon-sm mat-icon-edit action-icon" (click)="onRowEdit(element)">edit
+                    <mat-icon class="mat-icon-sm mat-icon-edit action-icon" (click)="onRowEdit(element)">edit
                     </mat-icon>
                     <mat-icon class="mat-icon-sm action-icon" (click)="onRowDelete(element)">delete</mat-icon>
                 </span>

@@ -1,3 +1,4 @@
+@import '../../../../../../assets/styles/variable.scss';
 ::ng-deep.mat-pseudo-checkbox {
     display: none !important;
 }
@@ -69,4 +70,17 @@
 
 .text-primary {
     color: #2285FA !important;
+}
+
+@media #{$extra-small} {
+    .editable-content-mobile {
+        display: block;
+    }
+    .editable-content {
+        border: 0 !important;
+        margin-top: .25rem;
+    }
+    .editable-list .mat-list-item-content{
+        padding: 0 !important;
+    }
 }

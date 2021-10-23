@@ -798,3 +798,12 @@ textarea {
 .investment-mobile .mydrp .selbtngroup {
     height: 28px !important;
 }
+
+@media #{$extra-small} {
+    .editable-list .mat-list-item-content{
+        padding: 0 10px !important;
+    }
+    .settings-component .mat-expansion-panel-body {
+        padding-top: 10px !important;
+    }
+}

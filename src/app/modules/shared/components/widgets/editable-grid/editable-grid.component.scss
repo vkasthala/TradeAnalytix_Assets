@@ -1,3 +1,4 @@
+@import '../../../../../../assets/styles/variable.scss';
 .card-main {
     padding-right: 10px;
 }
@@ -95,4 +96,125 @@ option:first {
 .trade-cards-section .card-main:first-child,
 .trade-cards-section .card-main:nth-child(2) {
     width: 35%;
+}
+
+.editable-grid-web {
+    @media #{$extra-small} {
+        display: none !important;
+    }
+}
+.editable-grid-mobile {
+    display: none;
+}
+.editable-grid-container {
+    padding: 0.5rem !important;
+    border: 1px solid #dee2e6;
+}
+
+@media #{$extra-small} {
+    .editable-grid-mobile {
+        display: block;
+    }
+    .editable-grid_mobile_sec {
+        padding: 15px;
+        background: #FFFFFF;
+        box-shadow: 0px 4px 16px rgb(157 157 157 / 30%);
+        border-radius: 5px;
+        margin-bottom: 20px;
+        h3 {
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 24px;
+            color: #3A4C85;
+            padding-bottom: 0.5rem;
+        }
+        .show-stock-sec {
+            border-bottom: 1px solid rgb(157 166 186 / 30%);
+            padding-bottom: .5rem;
+            margin-bottom: .5rem;
+        }
+        .col-form-value {
+            font-weight: 600;
+            font-size: 13px;
+            line-height: 21px;
+            color: #3A4C85;
+        }
+    }
+
+    .newgoal_slide {
+        position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 99;
+        background: #f2f4f6;
+        width: 100vw;
+        height: 100%;
+    }
+    .newgoal_slide-header {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 21px;
+        color: #FFFFFF;
+        background: #394C86;
+        padding: 15px;
+        align-items: center;
+        display: flex;
+    }
+    .arrow_back {
+        color: #FFFFFF; 
+    }
+    
+    .newitem_slide_body {
+        background: #FFFFFF;
+        box-shadow: 0px 4px 16px rgba(157, 157, 157, 0.1);
+        border-radius: 4px;
+        padding: 15px;
+    }
+    .newitem_slide_heading { 
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
+        color: #3A4C85;
+    }
+    .newitem_bottom {
+        border-top: 1px solid rgb(157 166 186 / 30%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
+        color: #2285FA;
+    }
+
+    .editable-grid-mobile .form-control {
+        height: 33px;
+    }
+    .trade-cards-section .card-main {
+        width: 50% !important;
+        margin-bottom: 0.5rem;
+    }
+    .editable-text {
+        width: 100% !important;
+    }
+    
+    mat-cell:first-of-type,
+    mat-footer-cell:first-of-type,
+    mat-header-cell:first-of-type {
+        padding-left: 0 !important;
+    }
+    .editable-grid-container {
+        padding: 0 !important;
+        border: 0;
+    }
+    .mat-cell:nth-child(3) {
+        flex: 0 0 13%;
+        width: 13%;
+    }
+    .mat-cell:nth-child(4) {
+        flex: 0 0 22%;
+        width: 22%;
+    }
 }

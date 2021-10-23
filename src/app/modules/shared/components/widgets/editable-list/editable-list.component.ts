@@ -20,7 +20,7 @@ export class EditableListComponent implements OnInit {
   addItemSubject: Subject<EditableListItem>;
   editItemSubject: Subject<EditableListItem>;
   deleteItemSubject: Subject<EditableListItem>;
-
+  public showDepositForm: boolean = false;
   constructor() { }
   step = 0;
   ngOnInit() {
@@ -41,6 +41,7 @@ export class EditableListComponent implements OnInit {
     item.name = this.newValue;
     //this.items.push(item);
     this.addItemSubject.next(item);
+    this.showDepositForm = false;
     this.onCancel();
 
   }
