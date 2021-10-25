@@ -339,12 +339,8 @@
                                                 <div class="tab-pane active" id="Section3" role="tabpanel">
                                                     <div class="trade-stoack-main">
                                                         <div class="mb-3">
-                                                            <select class="form-control" (change)="riskAnalysisGridChange($event.target.value)">
-                                                                <option value="stockTb" selected data-default>{{riskAnalysisResults[0].stockPriceResult.heading}}</option>
-                                                                
-                                                                <!-- <option *ngFor="let item of riskAnalysisResults[0].optionResults;let index=index" [value]="index">{{item.heading}}</option> -->
-                                                                <option *ngFor="let key of strategiesList;let i = index" [value]="i">{{'Strategy-' + (i + 1)}}</option>
-                                                                <option value="totalTB">Total</option>
+                                                            <select class="form-control" (change)="stratgeyIndexChange($event.target.value)" selected> 
+                                                                <option *ngFor="let key of strategiesList;let i = index" [value]=i>{{'Stratgey-' + (i + 1)}}</option>
                                                             </select>
                                                         </div>
                                                         <div class="row">
@@ -365,103 +361,25 @@
                                                                     </tbody>
                                                                 </table>
                                                             </div>
-                                                            <div class="risk-table">
+                                                            
+                                                            <div class="risk-table"  *ngFor="let item of strategiesList; let tableIndex = index" [ngClass]="selectedStrategyTable === tableIndex ? 'd-block' : 'd-none'">
                                                                 <table>
                                                                     <thead>
                                                                         <tr>
-                                                                            <th *ngFor="let key of strategiesList; let i = index">
-                                                                                {{'Strategy-' + (i + 1) + ' P&L' }}</th>
+                                                                            <th>
+                                                                                {{'Strategy-' + (tableIndex + 1) + ' P&L' }}</th>
                                                                         </tr>
                                                                     </thead>
     
                                                                     <tbody>
-                                                                        <tr *ngFor="let item of compareResult.rows;let index=index">
-                                                                            
-                                                                            <td *ngFor="let key of strategiesList; let ind = index">
-                                                                                {{item.results[ind].netPL}}</td>
+                                                                        <tr *ngFor="let item of compareResult.rows;let ind=index">
+                                                                            <td>{{item.results[tableIndex].netPL}}</td>
                                                                         </tr>
                                                                     </tbody>
                                                                 </table>
                                                             </div>
                                                         </div>
-                                                        <!-- <div class="row">
-                                                            <div class="risk-table ChangeTable" *ngIf="riskAnalysisResults && riskAnalysisResults.length">
-                                                                <table>
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th>Change</th>
-                                                                        </tr>
-                                                                    </thead>
-
-                                                                    <tbody>
-                                                                        <tr *ngFor="let item of riskAnalysisResults;let index=index">
-                                                                            <td [ngClass]="{ 'trade-rd' :item.stockPriceResult.gainLoss >= 0, 'trade-rdd':item.stockPriceResult.gainLoss < 0}">
-                                                                                {{item.stockPriceResult.change + '%'}}</td>
-                                                                        </tr>
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
-
-                                                            <div class="risk-table" *ngIf="stockTable">
-                                                                <table>
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th>Price</th>
-                                                                            <th *ngIf="stockAdded">P&L</th>
-                                                                        </tr>
-                                                                    </thead>
-
-                                                                    <tbody>
-                                                                        <tr *ngFor="let item of riskAnalysisResults;let index=index">
-                                                                            <td>{{item.stockPriceResult.stockPrice}}</td>
-                                                                            <td *ngIf="stockAdded" [ngClass]="{ 'trade-rd' :item.stockPriceResult.gainLoss >= 0, 'trade-rdd':item.stockPriceResult.gainLoss < 0}">{{item.stockPriceResult.gainLoss}}</td>
-                                                                        </tr>
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
                                                         
-                                                            <ng-container *ngIf="optionTable">
-                                                                <div class="risk-table position-relative">
-                                                                    <div class="option-table" *ngFor="let item of riskAnalysisResults[0].optionResults;let index=index" [ngClass]="selectedOptionResult == index ? 'd-block' : 'd-none'">
-                                                                        <table>
-                                                                            <thead>
-                                                                                <tr>
-                                                                                    <th>Value</th>
-                                                                                    <th>P&L</th>
-                                                                                </tr>
-                                                                            </thead>
-
-                                                                            <tbody>
-                                                                                <tr *ngFor="let ritem of riskAnalysisResults;let rowIndex=index">
-                                                                                    <td>{{ritem.optionResults[index].value | number:'1.0-0' }}</td>
-                                                                                    <td [ngClass]="{ 'trade-rd' :ritem.optionResults[index].gainLoss >= 0, 'trade-rdd':ritem.optionResults[index].gainLoss < 0}">
-                                                                                        {{ritem.optionResults[index].gainLoss | number:'1.0-0'}}
-                                                                                    </td>
-                                                                                </tr>
-                                                                            </tbody>
-                                                                        </table>
-                                                                    </div>
-                                                                </div>
-                                                            </ng-container>
-
-                                                            <div class="risk-tables" *ngIf="totalTable">
-                                                                <table>
-                                                                    <thead>
-                                                                        <tr>
-
-                                                                            <th>Net P&L</th>
-                                                                        </tr>
-                                                                    </thead>
-
-                                                                    <tbody>
-                                                                        <tr *ngFor="let item of riskAnalysisResults;let index=index">
-                                                                            <td [ngClass]="{ 'trade-rd' :item.totalSummary.gainLoss >= 0, 'trade-rdd':item.totalSummary.gainLoss < 0}">
-                                                                                {{item.totalSummary.gainLoss | number:'1.0-0'}}</td>
-                                                                        </tr>
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
-                                                        </div> -->
                                                     </div>
                                                 </div>
                                             </div>

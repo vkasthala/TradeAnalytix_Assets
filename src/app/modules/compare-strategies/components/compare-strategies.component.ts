@@ -59,6 +59,7 @@ export class CompareStrategiesComponent implements OnInit {
   showStrategyForm : boolean = true;
   showCompareResult : boolean = false;
   selectedItem: any = [];
+  public selectedStrategyTable: number = 0;
   constructor(
     private userStockStatsService: UserStockStatsService,
     private compareStrategyService: CompareStrategiesService,
@@ -97,6 +98,12 @@ export class CompareStrategiesComponent implements OnInit {
   }
 
   addStrategy(index) {
+    let strategyItem = [];
+    if (index === undefined) {
+      index = this.strategiesList.length;
+      strategyItem.push(this.userStrategies[index]);
+      this.selectedItem = strategyItem;
+    }
     this.compareResult = null;
     if (this.strategiesList.length < 5) {
       if (this.userStrategies.length > 0) {
@@ -168,7 +175,6 @@ export class CompareStrategiesComponent implements OnInit {
   }
 
   submitStrategies() {
-    
     this.compareStrategyService.compareStrategies(this.createStrategyCompareRequest()).subscribe(result => {
       console.log("strategy compare result:", result);
       this.compareResult = result;
@@ -180,6 +186,10 @@ export class CompareStrategiesComponent implements OnInit {
     if (this.compareStrategiesChartComponent && this.compareStrategiesChartComponent.rendered === true) {
       this.initChart(true);
     }
+  }
+
+  stratgeyIndexChange(value) {
+    this.selectedStrategyTable = Number(value);
   }
 
   createStrategyCompareRequest(): StrategyCompareRequest {

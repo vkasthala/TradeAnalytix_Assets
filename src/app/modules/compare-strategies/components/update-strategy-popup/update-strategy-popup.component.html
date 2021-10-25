@@ -10,21 +10,24 @@
                 <span>close</span>
             </div>
         </div>
+        <div class="mobile-popup-header">
+            <h6>
+                <mat-icon class="trade-form-icon mr-2 cursor" (click)="closeModal()">arrow_back</mat-icon> 
+                Strategy Stock
+            </h6>
+        </div>
 
         <div class="main-pop-inner">
 
-            <div *ngIf="strategyDetails && strategyDetails.compareStrategyStock">
-                <div class="d-flex justify-content-between">
-                    <label class="col-form-label col-4 px-0"></label>
-                    <label class="col-form-label px-2">Quantity</label>
-                    <label class="col-form-label pr-2"></label>
-                    <label class="col-form-label"></label>
+            <div class="row align-items-end mb-3" *ngIf="strategyDetails && strategyDetails.compareStrategyStock">
+                <div class="col-4">
+                    <label class="col-form-label">{{strategyDetails.compareStrategyStock.heading}}</label>
                 </div>
 
-                <div class="d-flex justify-content-between mb-3">
-                    <label class="col-form-label col-4 px-0">{{strategyDetails.compareStrategyStock.heading}}</label>
-                    <div class="px-3">
-                        <div class="stock-inc">
+                <div class="col-8">
+                    <div class="col-form-label text-center">Quantity</div>
+                    <div class="center-content-group">
+                        <div class="stock-inc center-content-field">
                             <a (click)="decreaseContracts(index)" (mousedown)="mousedown('decreaseQuantity', index)"
                                 (mouseup)="mouseup()" (mouseleave)="mouseup()">
                                 <mat-icon class="text-primary">remove_circle</mat-icon>
@@ -40,12 +43,10 @@
                             </a>
                         </div>
                     </div>
-                    <div class="pr-3"></div>
-                    <div class="pr-3"></div>
                 </div>
             </div>
 
-            <div
+            <div class="compare-popup-web"
                 *ngIf="strategyDetails && strategyDetails.compareStrategyOptions && strategyDetails.compareStrategyOptions.length">
                 <div class="d-flex justify-content-between">
                     <label class="col-form-label col-4 px-0"></label>
@@ -118,9 +119,79 @@
                 </div>
             </div>
 
-            <div class="separator"></div>
+            <!-- compare-popup-mobile :start -->
+            <div class="compare-popup-mobile"
+                *ngIf="strategyDetails && strategyDetails.compareStrategyOptions && strategyDetails.compareStrategyOptions.length">
+                <div class="border-top mb-3"
+                    *ngFor="let item of strategyDetails.compareStrategyOptions; let index=index">
+                    <h3 class="col-form-label">{{item.heading}}</h3>
+                    <div class="row">
+                        <div class="col-6">
+                            <label class="col-form-label">Contracts</label>
+                            <div class="stock-inc">
+                                <a (click)="decreaseContracts(index)"
+                                    (mousedown)="mousedown('decreaseContracts', index)" (mouseup)="mouseup()"
+                                    (mouseleave)="mouseup()">
+                                    <mat-icon class="text-primary">remove_circle</mat-icon>
+                                </a>
+                                <span>
+                                    <input (keydown)="preventNegatives($event, true)" type="number" class="hide-bars"
+                                        step="0.1" min="0" max="730" minlength="0" maxlength="730"
+                                        [(ngModel)]="item.contracts">
+                                </span>
+                                <a (click)="increaseContracts(index)"
+                                    (mousedown)="mousedown('increaseContracts', index)" (mouseup)="mouseup()"
+                                    (mouseleave)="mouseup()">
+                                    <mat-icon class="text-primary">add_circle</mat-icon>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <label class="col-form-label">Days Left</label>
+                            <div class="stock-inc">
+                                <a (click)="decreaseDaysLeft(index)" (mousedown)="mousedown('decreaseDaysLeft', index)"
+                                    (mouseup)="mouseup()" (mouseleave)="mouseup()">
+                                    <mat-icon class="text-primary">remove_circle</mat-icon>
+                                </a>
+                                <span>
+                                    <input (keydown)="preventNegatives($event, true)" type="number" class="hide-bars"
+                                        step="0.1" min="0" max="730" minlength="0" maxlength="730"
+                                        [(ngModel)]="item.daysLeft">
+                                </span>
+                                <a (click)="increaseDaysLeft(index)" (mousedown)="mousedown('increaseDaysLeft', index)"
+                                    (mouseup)="mouseup()" (mouseleave)="mouseup()">
+                                    <mat-icon class="text-primary">add_circle</mat-icon>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-6 mt-1">
+                            <label class="col-form-label">Imp. Volatility(%)</label>
+                            <div class="stock-inc">
+                                <a (click)="decreaseImpliedValue(index)"
+                                    (mousedown)="mousedown('decreaseImpliedValue', index)" (mouseup)="mouseup()"
+                                    (mouseleave)="mouseup()">
+                                    <mat-icon class="text-primary">remove_circle</mat-icon>
+                                </a>
+                                <div class="stock-p">
+                                    <input type="number" class="hide-bars" min="1" max="500" minlength="1"
+                                        maxlength="500" [(ngModel)]="item.impliedVolatility"
+                                        (input)="enforceMaxLength($event, 1, 500)">
+                                    <p>&#37;</p>
+                                </div>
+                                <a (click)="increaseImpliedValue(index)"
+                                    (mousedown)="mousedown('increaseImpliedValue', index)" (mouseup)="mouseup()"
+                                    (mouseleave)="mouseup()">
+                                    <mat-icon class="text-primary">add_circle</mat-icon>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-            <div class="text-right">
+            <div class="separator mobile-separator"></div>
+
+            <div class="text-right mobile-popup-footer">
                 <button type="button" class="btn btn-add" [mat-dialog-close]="strategyDetails">Save</button>
             </div>
         </div>
