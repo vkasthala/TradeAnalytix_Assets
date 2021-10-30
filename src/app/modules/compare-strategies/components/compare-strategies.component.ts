@@ -56,7 +56,6 @@ export class CompareStrategiesComponent implements OnInit {
   stockOptions: OptionEntry[] = [];
   selectedStrategy: number = 15;
   protected add = true;
-  showStrategyForm : boolean = true;
   showCompareResult : boolean = false;
   selectedItem: any = [];
   public selectedStrategyTable: number = 0;
@@ -92,7 +91,7 @@ export class CompareStrategiesComponent implements OnInit {
       this.userStrategies = result;
       if (result.length > 0) {
         this.strategiesList = result.slice(0, 2);;
-        this.selectedStrategies[0] = result[0];
+        this.selectedStrategies = this.strategiesList;
       }
     })
   }
@@ -104,7 +103,7 @@ export class CompareStrategiesComponent implements OnInit {
       strategyItem.push(this.userStrategies[index]);
       this.selectedItem = strategyItem;
     }
-    this.compareResult = null;
+    //this.compareResult = null;
     if (this.strategiesList.length < 5) {
       if (this.userStrategies.length > 0) {
         this.strategiesList.push(this.selectedItem[0]);
@@ -178,9 +177,7 @@ export class CompareStrategiesComponent implements OnInit {
     this.compareStrategyService.compareStrategies(this.createStrategyCompareRequest()).subscribe(result => {
       console.log("strategy compare result:", result);
       this.compareResult = result;
-      this.showCompareResult = true;
-      this.showStrategyForm = false;
-      
+      this.showCompareResult = true;      
     });
     //Load chart if it is already rendered
     if (this.compareStrategiesChartComponent && this.compareStrategiesChartComponent.rendered === true) {
