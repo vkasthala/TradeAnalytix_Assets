@@ -253,10 +253,8 @@
                                     <app-entry-rules (prevStep)="goBack()" [inputState]="inputState" [editTrade]="edit"
                                         [addTrade]="add" [closeTrade]="close" [viewTrade]="view"
                                         (evalRulesEvent)="evalGridRules($event)" #entryRules></app-entry-rules>
-                                    <div *ngIf="close || view">
                                         <app-exit-rules [inputState]="inputState" [addTrade]="add" [viewTrade]="view"
-                                            [closeTrade]="close" #exitRules></app-exit-rules>
-                                    </div>
+                                        [closeTrade]="close" #exitRules></app-exit-rules>
                                 </div>
                             </mat-step>
                         </mat-horizontal-stepper>

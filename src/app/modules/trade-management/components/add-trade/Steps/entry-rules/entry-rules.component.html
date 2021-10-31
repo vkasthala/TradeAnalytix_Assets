@@ -70,17 +70,20 @@
             
         </div>
         -->
-        <span class="float-right cursor" (click)="evalRules($event)"><mat-icon class="form-icon-down">refresh</mat-icon></span>
+        <div class="text-right">
+            <span class="cursor" (click)="evalRules($event)"><mat-icon class="form-icon-down">refresh</mat-icon></span>
+        </div>
+        
 
-        <mat-table [dataSource]="entryRules" class="d-table w-100">
+        <mat-table [dataSource]="entryRules" class="w-100">
             <ng-container matColumnDef="msg">
-                <th mat-header-cell *matHeaderCellDef class="msg-cell align-middle">Rule</th>
-                <td mat-cell *matCellDef="let element" class="align-middle"> {{element.msg}} </td>
+                <th mat-header-cell *matHeaderCellDef class="msg-cell">Rule</th>
+                <td mat-cell *matCellDef="let element" class="msg-cell"> {{element.msg}} </td>
             </ng-container>
 
             <ng-container matColumnDef="aligned">
-                <th mat-header-cell *matHeaderCellDef class="align-middle pl-3"><span>Aligned</span></th>
-                <td mat-cell *matCellDef="let element" class="align-middle pl-3">
+                <th mat-header-cell *matHeaderCellDef class="aligned-cell pl-3"><span>Aligned</span></th>
+                <td mat-cell *matCellDef="let element" class="aligned-cell pl-3">
                     <mat-icon class="mat-icon-warning mat-icon-sm" *ngIf="element.type === 'Coded'">warning
                     </mat-icon>
                     <mat-checkbox *ngIf="element.type !== 'Coded'" [(ngModel)]="element.aligned" class="checkbox-green">
@@ -89,8 +92,8 @@
             </ng-container>
 
             <ng-container matColumnDef="comment">
-                <th mat-header-cell *matHeaderCellDef class="align-middle"><span>Comment</span></th>
-                <td mat-cell *matCellDef="let element" class="align-middle">
+                <th mat-header-cell *matHeaderCellDef class="comment-cell"><span>Comment</span></th>
+                <td mat-cell *matCellDef="let element" class="comment-cell">
                     <span class="d-flex align-items-center"
                         *ngIf="!viewTradePlan && !(element.type === 'Coded' && (!element.id || element.id === 0))">
                         {{element.comment}}
@@ -103,5 +106,6 @@
             <tr mat-header-row *matHeaderRowDef="ruleGridColumns" style="height: 50px;"></tr>
             <tr mat-row *matRowDef="let row; columns: ruleGridColumns;"></tr>
         </mat-table>
+        <div class="p-3 text-center" *ngIf="entryRules && entryRules.length === 0">Entry rules have not been set up</div>
     </div>
 </div>

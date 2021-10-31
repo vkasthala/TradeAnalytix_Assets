@@ -226,7 +226,7 @@
 
 
 <!-- start: Closing Thesis -->
-<div class="trade-thesis-sec trade-close-thesis-sec" *ngIf="closeTrade || viewTrade">
+<div class="trade-thesis-sec trade-close-thesis-sec">
     <div class="entry-thesis-header cursor" (click)="showClosingThesis()">
         <span>Closing Thesis</span>
         <i class="negative-amt material-icons">{{hideClosingThesis ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}</i>
@@ -298,8 +298,7 @@
                     <div class="thesis_item_title">
                         Specify the reasons for closing the trade
                     </div>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [disabled]="!closeTrade"
-                        [ngClass]="viewTrade ? 'disabled' : ''"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [ngClass]="viewTrade ? 'disabled' : ''"></textarea>
                 </div>
             </div>
             <!-- end : thesis_item -->

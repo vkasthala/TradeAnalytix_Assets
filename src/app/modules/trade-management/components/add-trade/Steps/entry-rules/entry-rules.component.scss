@@ -304,15 +304,33 @@ input[type="checkbox"] {
 .mat-icon-warning{
     color: #EC6B56;
 }
-
-.msg-cell{
-    width: 60%;
+.mat-header-row {
+    min-height: 50px;
+    height: 50px;
+    border: 0;
+    display: flex;
 }
-
-.aligned-cell{
-    width: 10%;
+.mat-row {
+    display: flex;
+}
+td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
+    padding-top: .5rem;
+}
+.msg-cell{
+    width: 50%;
+    flex: 0 0 50% !important;
 }
 
 .comment-cell{
     width: 30%;
+    flex: 0 0 30% !important;
+}
+th.mat-header-cell {
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+}
+.aligned-cell{
+    width: 20%;
+    flex: 0 0 20% !important;
 }

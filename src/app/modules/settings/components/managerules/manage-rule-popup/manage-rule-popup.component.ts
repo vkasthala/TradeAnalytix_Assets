@@ -32,7 +32,8 @@ export class ManageRulePopupComponent implements OnInit {
   ngOnInit() {
   }
 
-  closeModal(form) {    
+  closeModal(form) {
+    this.dialogRef.close();
     this.event.emit({ data: form.value });
     this.dialogRef.close(form.value);
   }

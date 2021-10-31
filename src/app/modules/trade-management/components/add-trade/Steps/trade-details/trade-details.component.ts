@@ -235,7 +235,6 @@ export class TradeDetailsComponent implements OnInit {
   }
 
   onStrategyTypeChange(strategy: Number) {
-    debugger;
     let template: StrategyTemplate = this.strategyCreateServiceService.getStrategyTemplate(strategy);
     if (template) {
       this.stockEntry = template.stockEntry;

@@ -343,15 +343,27 @@ input[type="checkbox"] {
     background: #dedede !important;
     pointer-events: none !important;
 }
-
+.mat-header-row {
+    min-height: 50px;
+    height: 50px;
+    border: 0;
+    display: flex;
+}
 .msg-cell{
     width: 50%;
-}
-
-.aligned-cell{
-    width: 10%;
+    flex: 0 0 50% !important;
 }
 
 .comment-cell{
-    width: 40%;
+    width: 30%;
+    flex: 0 0 30% !important;
+}
+th.mat-header-cell {
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+}
+.aligned-cell{
+    width: 20%;
+    flex: 0 0 20% !important;
 }
