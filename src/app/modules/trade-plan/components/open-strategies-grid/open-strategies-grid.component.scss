@@ -23,7 +23,7 @@ tr.mat-row {
 td.mat-cell,
 td.mat-footer-cell,
 th.mat-header-cell {
-    padding: .5rem 25px !important;
+    padding: .5rem .5rem .5rem 1rem !important;
     border: 0;
     border-radius: 0;
 }
@@ -101,28 +101,25 @@ th.mat-header-cell {
     min-width: 104px !important;
 }
 
-.action-cell {
-    width: 30%;
-    flex: 0 0 30% !important;
-    min-width: 150px !important;
+.comments-cell {
+    width: 33%;
+    flex: 0 0 33% !important;
+    min-width: 180px !important;
 }
 
-.mat-column-symbol-cell {
-    flex: 0 0 10% !important;
-    min-width: 100px !important;
-    width: 10%;
+.action-cell {
+    flex: 0 0 5% !important;
+    width: 5%;
 }
 
 .symbol-cell {
     width: 10%;
     flex: 0 0 10% !important;
-    min-width: 100px !important;
 }
 
 .cell-w-12 {
     width: 13%;
     flex: 0 0 13% !important;
-    min-width: 100px !important;
 }
 
 .disabled {
@@ -194,7 +191,7 @@ th.mat-header-cell {
     color: #3A4C85;
     background: transparent !important;
     border-radius: 4px 4px 0 !important;
-    padding: 0.75rem 1.5rem !important;
+    padding: 0.75rem 1rem !important;
     height: inherit !important;
     border: 0;
     border-bottom: 1px solid rgb(157 166 186 / 30%);

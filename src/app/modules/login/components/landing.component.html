@@ -90,8 +90,11 @@
                         </a>
                     </li>
                     <li>
-                        <button type="button" class="btn login-btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="openLoginModal()">
+                        <!-- <button type="button" class="btn login-btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="openLoginModal()">
                             Login
+                        </button> -->
+                        <button type="button" class="btn login-btn" (click)="login('google')">
+                            Login with Google
                         </button>
                     </li>
                 </ul>

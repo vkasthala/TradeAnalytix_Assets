@@ -15,7 +15,7 @@ export class OpenStrategiesGridComponent implements OnInit {
   public hideRuleContent: boolean[] = [];
   protected openStategiesGridData: any;
 
-  strategiesGridColumns: string[] = ['symbol', 'strategyType', 'returnAmount', 'maxRisk', 'maxProfit', 'actionText', 'editColumn'];
+  strategiesGridColumns: string[] = ['symbol', 'strategyUid', 'totalAmount', 'returnAmount', 'maxRisk', 'maxProfit', 'actionText', 'postMarketComments', 'editColumn'];
 
   @Input('tradePlanId') tradePlanId: number;
   @Input('viewTradePlan') viewTradePlan: boolean;

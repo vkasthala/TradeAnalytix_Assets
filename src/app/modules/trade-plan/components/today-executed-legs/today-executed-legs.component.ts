@@ -9,7 +9,7 @@ import { TradePlansService } from '../../services/trade-plans.service';
 })
 export class TodayExecutedLegsComponent implements OnInit {
 
-  todayExecutedGridColumns: string[] = ['strategyUid', 'symbol', 'action', 'quantity', 'strike', 'expiryDate', 'optionType', 'entryPrice', 'exitPrice'];
+  todayExecutedGridColumns: string[] = ['strategyUid', 'symbol', 'totalAmount', 'action', 'quantity', 'strike', 'entryPrice', 'exitPrice'];
 
   todayExecutedLegsDatasource: TodayExecutedLeg[] = [];
   todayexecutedGridData: TodayExecutedLeg[] = [];

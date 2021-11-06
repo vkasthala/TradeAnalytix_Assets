@@ -21,6 +21,10 @@
                             <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
                         </ng-container>
 
+                        <ng-container matColumnDef="totalAmount">
+                            <th mat-header-cell *matHeaderCellDef class="cell-w-12">Total Amount</th>
+                            <td mat-cell *matCellDef="let element"> {{element.totalAmount}} </td>
+                        </ng-container>
 
                         <ng-container matColumnDef="action">
                             <th mat-header-cell *matHeaderCellDef class="cell-w-12">Action Type</th>
@@ -33,19 +37,18 @@
                         </ng-container>
 
                         <ng-container matColumnDef="strike">
+                            <th mat-header-cell *matHeaderCellDef class="cell-w-12">Contract</th>
+                            <td mat-cell *matCellDef="let element">{{(element.strikePrice == 0) ? ("") : (element.strikePrice)}}-{{element.optionType}}-{{element.expiryDate | date: 'ddMMMyyyy'}}</td>
+                        </ng-container>
+                        <!-- <ng-container matColumnDef="strike">
                             <th mat-header-cell *matHeaderCellDef class="cell-w-10">Strike</th>
-                            <td mat-cell *matCellDef="let element"> {{element.strikePrice}} </td>
+                            <td mat-cell *matCellDef="let element">{{(element.strikePrice == 0) ? ("") : (element.strikePrice)}} </td>
                         </ng-container>
 
                         <ng-container matColumnDef="expiryDate">
                             <th mat-header-cell *matHeaderCellDef class="cell-w-12">Expiry Date</th>
                             <td mat-cell *matCellDef="let element"> {{element.expiryDate}} </td>
-                        </ng-container>
-
-                        <ng-container matColumnDef="optionType">
-                            <th mat-header-cell *matHeaderCellDef class="cell-w-12">Option Type</th>
-                            <td mat-cell *matCellDef="let element"> {{element.optionType}} </td>
-                        </ng-container>
+                        </ng-container> -->
 
                         <ng-container matColumnDef="entryPrice">
                             <th mat-header-cell *matHeaderCellDef class="cell-w-12">Entry Price</th>

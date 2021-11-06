@@ -86,6 +86,47 @@
             <div class="col-sm-6">
                 <div class="thesis_item">
                     <div class="thesis_item_title">
+                        Is this a contrarian trade? <mat-icon matTooltip="Is this a contrarian trade" matTooltipPosition="above"
+                            matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay"
+                            [matTooltipHideDelay]="this.hideDelay" class="mat-icon-xs cursor info-icon">info_outline
+                        </mat-icon>
+                    </div>
+                    <div class="media align-items-center">
+                        <select class="form-control select-input" id="inputState"
+                            [(ngModel)]="tradeThesis.surroundingEventId" [disabled]="viewTrade"
+                            [ngClass]="viewTrade ? 'disabled' : ''">
+                            <option [ngValue]="yes">Yes</option>
+                            <option [ngValue]="No">No</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <!-- end : thesis_item -->
+
+            <div class="col-sm-6">
+                <div class="thesis_item">
+                    <div class="thesis_item_title">
+                        Specify the direction of the trade? <mat-icon matTooltip="Is this a contrarian trade" matTooltipPosition="above"
+                            matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay"
+                            [matTooltipHideDelay]="this.hideDelay" class="mat-icon-xs cursor info-icon">info_outline
+                        </mat-icon>
+                    </div>
+                    <div class="media align-items-center">
+                        <select class="form-control select-input" id="inputState"
+                            [(ngModel)]="tradeThesis.surroundingEventId" [disabled]="viewTrade"
+                            [ngClass]="viewTrade ? 'disabled' : ''">
+                            <option [ngValue]="Long">Long</option>
+                            <option [ngValue]="Neutral">Neutral</option>
+                            <option [ngValue]="Short">Short</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <!-- end : thesis_item -->
+
+            <div class="col-sm-6">
+                <div class="thesis_item">
+                    <div class="thesis_item_title">
                         Select the technical indicator used for this trade
                         <mat-icon
                             matTooltip="If this trade is based on any technical indicator, add the indicator to the list and select it. "
@@ -241,7 +282,7 @@
                     </div>
                     <div class="media align-items-center">
                         <div class="media-body">
-                            <select class="form-control select-input" id="inputState" [(ngModel)]="tradeThesis.sourceId"
+                            <select class="form-control select-input" id="inputState"
                                 [disabled]="viewTrade" [ngClass]="viewTrade ? 'disabled' : ''">
                                 <option [ngValue]="opt.id" *ngFor="let opt of sourceTypes; trackBy: id">{{opt.name}}
                                 </option>
@@ -311,7 +352,7 @@
                     <div class="media align-items-center">
                         <div class="media-body">
                             <select class="form-control select-input" id="inputState"
-                                [(ngModel)]="tradeThesis.surroundingEventId" [ngClass]="viewTrade ? 'disabled' : ''">
+                                [ngClass]="viewTrade ? 'disabled' : ''">
                                 <option [ngValue]="opt.id" *ngFor="let opt of surroundingTypes; trackBy: id">
                                     {{opt.name}}</option>
                             </select>
