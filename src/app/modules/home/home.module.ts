@@ -62,6 +62,7 @@ import { EditableListComponent } from '../shared/components/widgets/editable-lis
 import { AddNewTradeComponent } from '../trade-management/components/add-trade/add-new-trade.component';
 import { AddTradeConfirmationPopupComponent } from '../trade-management/components/add-trade/add-trade-confirmation-popup/add-trade-confirmation-popup.component';
 import { RuleCommentDialogComponent } from '../trade-management/components/add-trade/rule-comment-dialog/rule-comment-dialog.component';
+import { EditableSelectComponent } from '../trade-management/components/add-trade/Steps/editable-select/editable-select.component';
 import { EntryRulesComponent } from '../trade-management/components/add-trade/Steps/entry-rules/entry-rules.component';
 import { ExitRulesComponent } from '../trade-management/components/add-trade/Steps/exit-rules/exit-rules.component';
 import { MobileEntryRulesComponent } from '../trade-management/components/add-trade/Steps/mobile-steps/mobile-entry-rules/mobile-entry-rules.component';
@@ -206,7 +207,8 @@ export const MY_FORMATS = {
     RulesComponent,
     CalendarComponent,
     ReportsRulesComponent,
-    StrategySelectionComponent
+    StrategySelectionComponent,
+    EditableSelectComponent
   ],
   imports: [
     FormsModule,
@@ -251,7 +253,8 @@ export const MY_FORMATS = {
     ImportTradePopupComponent,
     CalendarComponent,
     ReportsRulesComponent,
-    StrategySelectionComponent
+    StrategySelectionComponent,
+    EditableSelectComponent
   ],
   // bootstrap: [TradeStrategiesGrid],
   providers: [

@@ -367,3 +367,12 @@ th.mat-header-cell {
     width: 20%;
     flex: 0 0 20% !important;
 }
+.mat-row {
+    border: 0;
+    display: flex;
+    height: auto;
+}
+td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}

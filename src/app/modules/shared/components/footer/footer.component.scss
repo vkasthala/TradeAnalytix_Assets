@@ -6,10 +6,12 @@
   align-items: center;
   color:#9DA6BA;
   font-size: 12px;
-  // position: fixed;
+  position: fixed;
   bottom: 0;
   width: 100%;
   left: 0;
+  background: #f2f4f6;
+  z-index: 999;
   @media #{$extra-small} {
     justify-content: center;
     margin-bottom: 70px;

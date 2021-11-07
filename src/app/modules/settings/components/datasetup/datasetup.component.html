@@ -44,6 +44,18 @@
     <mat-expansion-panel [expanded]="true" (opened)="setStep(4)">
         <mat-expansion-panel-header>
             <mat-panel-title>
+                Pre-Market Activities
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ng-template matExpansionPanelContent>
+            <div class="col-sm-8 col-md-5 px-0">
+                <textarea id="preMarketActivities" rows="4"></textarea>
+            </div>
+        </ng-template>
+    </mat-expansion-panel>
+    <mat-expansion-panel [expanded]="true" (opened)="setStep(5)">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
                 Brokerage Commission
             </mat-panel-title>
         </mat-expansion-panel-header>

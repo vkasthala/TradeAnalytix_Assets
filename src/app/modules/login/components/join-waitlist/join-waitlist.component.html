@@ -1,32 +1,26 @@
 <div class="compare-popup">
     <div class="compare-pop-inner">
         <div class="top-pop-inner">
-            <div class="left-heading">
+            <!-- <div class="left-heading">
                 <h6>{{title}}</h6>
-            </div>
+            </div> -->
             <div class="right-close" (click)="closeModal()">
                 <mat-icon>clear</mat-icon>
             </div>
         </div>
 
         <div class="main-pop-inner">
-            <div class="row py-2">
-                <label class="col-form-label col-4">Name </label>
-                <div class="col-8">
-                    <input matInput id="name" [(ngModel)]='data.name' />
-                </div>
+            <div class="modal-title mb-3">{{title}}</div>
+            <div class="py-2">
+                <input class="form-control" matInput id="name" placeholder="Name" [(ngModel)]='data.name' />
             </div>
-            <div class="row py-2">
-                <label class="col-form-label col-4">Email</label>
-                <div class="col-8">
-                    <input matInput id="email" [(ngModel)]='data.email' />
-                </div>
+            <div class="py-2">
+                <input class="form-control" placeholder="Email" matInput id="email" [(ngModel)]='data.email' />
             </div>
         </div>
 
-        <div class="modal-footer py-2">
-            <button type="button" class="btn btn-primary btn-sm" [mat-dialog-close]="data">Join Waitlist</button>
-            <button type="button" class="btn btn-secondary tn-sm" (click)="closeModal()">Cancel</button>
+        <div class="px-3 pb-3 text-center">
+            <button type="button" class="btn btn-primary btn-sm w-80" [mat-dialog-close]="data">Join Waitlist</button>
         </div>
     </div>
 </div>

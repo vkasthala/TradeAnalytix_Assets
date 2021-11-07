@@ -2,10 +2,10 @@
     <div class="main-body">
         <div class="trade-dash-main">
             <div class="trade-dash-name col-sm-8 pl-1">
-                <span class="col-form-label mr-3">Number of Trades : <span class="text-secondary h6">{{numberOfTrades}}</span></span>
-                <span class="col-form-label mr-3">Total Amount : <span class="text-secondary h6">{{totalAmount | number:'1.0-0'}}</span></span>
-                <span class="col-form-label mr-3">Max Gain <span class="text-success h6">{{maxGain | number:'1.0-0'}}</span></span>
-                <span class="col-form-label">Max Loss : <span class="text-danger h6">{{maxLoss | number:'1.0-0'}}</span></span>
+                <span class="col-form-label font-size-14 mx-2 px-3">Number of Trades : <span class="text-secondary h6">{{numberOfTrades}}</span></span>
+                <span class="col-form-label font-size-14 mx-2 px-3">Total Amount : <span class="text-secondary h6">{{totalAmount | number:'1.0-0'}}</span></span>
+                <span class="col-form-label font-size-14 mx-2 px-3">Max Gain <span class="text-success h6">{{maxGain | number:'1.0-0'}}</span></span>
+                <span class="col-form-label font-size-14 mx-2 px-3">Max Loss : <span class="text-danger h6">{{maxLoss | number:'1.0-0'}}</span></span>
             </div>
             <div>
                 <button routerLink="/new-trade" class="add-new btn btn-apply d-inline-flex align-items-center"><span class="add-icon mr-2">+</span> ADD TRADE</button>

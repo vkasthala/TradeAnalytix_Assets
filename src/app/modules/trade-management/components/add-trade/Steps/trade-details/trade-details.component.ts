@@ -25,6 +25,7 @@ import { TradeTag } from 'src/app/modules/shared/models/trade-management/trade-t
 import { SingleInputModalComponent } from 'src/app/modules/shared/components/modals/single-input-modal/single-input-modal.component';
 import { ConfirmDialogComponent } from 'src/app/modules/shared/components/modals/confirm-dialog/confirm-dialog.component';
 import { StrategySelectionComponent } from 'src/app/modules/shared/components/modals/strategy-selection/strategy-selection.component';
+import { EditableSelectComponent } from '../editable-select/editable-select.component';
 
 
 @Component({
@@ -571,7 +572,7 @@ export class TradeDetailsComponent implements OnInit {
   }
 
   addTag() {
-    const dialogRef = this._dialog.open(SingleInputModalComponent, {
+    const dialogRef = this._dialog.open(EditableSelectComponent, {
       disableClose: true,
       width: 'auto',
       data: { title: 'Tag' }

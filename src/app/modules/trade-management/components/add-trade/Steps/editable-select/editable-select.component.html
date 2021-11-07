@@ -1,0 +1,28 @@
+
+<div class="exit-thesis-pop">
+    <div class="exit-thesis-pop-inner">
+      <div class="pop-top-heading">
+        <div class="left-heading">
+          <h5>Add {{title}}</h5>
+        </div>
+        <div class="right-close" (click)="closeModal()">
+          <mat-icon>clear</mat-icon>
+        </div>
+      </div>
+
+      <div class="exit-con">
+        <div class="combobox">
+            <input type="text" [(ngModel)]='value' (ngModelChange)="getFilteredList()" class="combobox-input" (keyup)="onKeyPress($event)" (blur)="toggleListDisplay(value)" (focus)="toggleListDisplay(1, value)" placeholder="Select one..." >
+
+            <div class="combobox-options" *ngIf="!listHidden">
+                <li *ngFor="let item of filteredList;let i = index" (click)="selectItem(i)" [ngClass]="{'selected': i===selectedIndex}">{{item}}</li>
+            </div>
+        </div>
+      </div>
+      <div class="separator"></div>
+      <div class="px-3 pt-1 text-right">
+        <button type="button" class="btn btn-add" (click)="closeModal()">Save</button>
+      </div>
+
+    </div>
+</div>

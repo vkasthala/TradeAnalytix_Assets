@@ -16,7 +16,7 @@
                 <span class="code-label">
                     {{coderule.uiLabel}}
                 </span>
-                <span class="px-2" *ngIf="!coderule.editing">
+                <span class="px-2 mx-2" [ngClass]="coderule.val ? 'border' : ''" *ngIf="!coderule.editing">
                     {{coderule.val ? coderule.val : coderule.defaultValue}}
                 </span>
                 <span class="px-1 d-flex align-items-center" *ngIf="coderule.editing">
@@ -25,7 +25,7 @@
                     </mat-icon>
                     <mat-icon class="ml-2 text-danger action-icon" (click)="onCancel(coderule)">close</mat-icon>
                 </span>
-                <mat-icon class="mat-icon-sm mat-icon-edit" (click)="onRowEdit(coderule)" *ngIf="!coderule.editing">edit
+                <mat-icon class="mat-icon-sm mat-icon-edit" (click)="onRowEdit(coderule)" *ngIf="!coderule.editing && coderule.val">edit
                 </mat-icon>
             </div>
 
