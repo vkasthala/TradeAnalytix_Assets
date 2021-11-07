@@ -16,8 +16,8 @@
 
 .compare-pop-inner {
     background: #fff;
-    max-width: 350px;
-    min-width: 350px;
+    max-width: 400px;
+    min-width: 400px;
     height: auto;
     display: flex;
     flex-direction: column;
@@ -33,6 +33,9 @@
     flex-direction: column;
     background-color: #ffffff;
     padding-top: 0;
+}
+.w-60 {
+    width: 60% !important;
 }
 .w-80 {
     width: 80% !important;
@@ -104,6 +107,7 @@
 .modal-title {
     font-size: 18px;
     text-align: center;
+    font-weight: 600;
 }
 .left-heading {
     font-size: 14px;
