@@ -43,7 +43,7 @@ export class ImportTradesHistory implements AfterViewInit, OnInit {
     private router: Router,
     private _dialog: MatDialog,
     //public dialogRef: MatDialogRef<ImportTradePopupComponent>
-    ) {
+  ) {
   }
 
   ngOnInit() {
@@ -109,30 +109,30 @@ export class ImportTradesHistory implements AfterViewInit, OnInit {
   downloadFailedTrade(rowModel: TradeStrategyGridRow) {
     this.importTradesGridService.downloadFailedImportTrades(rowModel.id).subscribe(
       response => {
-        const blob = new Blob([response], { type: 'text/csv'});
-        FileSaver.saveAs(blob, 'Failed_imports_'+new Date()+'.csv')
+        const blob = new Blob([response], { type: 'text/csv' });
+        FileSaver.saveAs(blob, 'Failed_imports_' + new Date() + '.csv')
       },
       error => {
-        console.log('error downloading....',error);
-      }   
+        console.log('error downloading....', error);
+      }
     );
   }
 
   downloadTradeThesis(rowModel: TradeStrategyGridRow) {
     this.importTradesGridService.downloadImportTradesThesis(rowModel.id).subscribe(
       response => {
-        const blob = new Blob([response], { type: 'text/csv'});
-        FileSaver.saveAs(blob, 'Trade_Thesis_imports_'+new Date()+'.csv')
+        const blob = new Blob([response], { type: 'text/csv' });
+        FileSaver.saveAs(blob, 'Trade_Thesis_imports_' + new Date() + '.csv')
       },
       error => {
-        console.log('error downloading....',error);
-      }   
+        console.log('error downloading....', error);
+      }
     );
   }
 
   uploadTradeThesis(event, rowModel: TradeStrategyGridRow) {
     this.selectedFiles = event.target.files;
-    if(this.selectedFiles !== undefined && this.selectedFiles.length > 0) {
+    if (this.selectedFiles !== undefined && this.selectedFiles.length > 0) {
       this.uploadService.importTradesThesis(this.selectedFiles.item(0), rowModel.id).subscribe(
         event => {
           this.toastr.success('Imported trades thesis successfully', '');
@@ -142,7 +142,7 @@ export class ImportTradesHistory implements AfterViewInit, OnInit {
         });
       this.selectedFiles = undefined;
     }
-    else{
+    else {
       this.toastr.error('Please select a file import trades thesis');
     }
   }
@@ -154,14 +154,20 @@ export class ImportTradesHistory implements AfterViewInit, OnInit {
   closeActionBox() {
     this.expandIndex = null
   }
+
   importTradesPopup() {
     const dialogRef = this._dialog.open(ImportTradePopupComponent, {
       disableClose: true,
       width: 'auto',
       //data: dialogData
     });
+    dialogRef.afterClosed().subscribe((res) => {
+      if (res === true) {
+        this.reload();
+      }
+    });
   }
-  
+
 
 }
 

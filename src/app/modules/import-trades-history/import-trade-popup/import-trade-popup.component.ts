@@ -12,7 +12,8 @@ import { UploadFileService } from 'src/app/modules/import-trades/services/upload
 export class ImportTradePopupComponent implements OnInit {
   selectedFiles: FileList;
   currentFile: File;
-  selectedbroker: any;
+  selectedbroker: any = 20;
+  processing: boolean = false;
   constructor(
     private uploadService: UploadFileService,
     protected toastr: ToastrService,
@@ -29,25 +30,37 @@ export class ImportTradePopupComponent implements OnInit {
   selectFile(event) {
     this.selectedFiles = event.target.files;
   }
-  importTrades() {    
-    console.log('selectedbroker------>',this.selectedbroker);
-    if(this.selectedFiles !== undefined && this.selectedFiles.length > 0) {
+  importTrades() {
+    console.log('selectedbroker------>', this.selectedbroker);
+    if (this.selectedFiles !== undefined && this.selectedFiles.length > 0) {
       this.currentFile = this.selectedFiles.item(0);
+      this.processing = true;
       this.uploadService.importTrades(this.currentFile, this.selectedbroker).subscribe(
-        event => {
-          window.location.reload();
-          this.toastr.success('Imported trades successfully', '');
+        result => {
+          this.processing = false;
+          this.dialogRef.close(true);
+          console.log('import result:', result);
+          let newCount: any = result['newRecordCount'] ? result['newRecordCount'] : '0';
+          let updatedCount: any = result['updateRecordCount'] ? result['updateRecordCount'] : '0';
+          let closedCount: any = result['closedRecordCount'] ? result['closedRecordCount'] : '0';
+          let failedCount: any = result['failedPersistRecordCount'] ? result['failedPersistRecordCount'] : '0';
+          let failedRows: any = result['failedRecords'] ? result['failedRecords'].length : 0;
+          let message = 'New positions count: ' + newCount
+            + ',  Updated positions count: ' + updatedCount
+            + ',  Closed positions count: ' + closedCount
+            + ',  Failed positions count: ' + failedCount
+            + ',  Unprocessed rows count: ' + failedRows;
+          this.toastr.success(message, 'Import Trade Result', { timeOut: 0 });
         },
         err => {
-          this.toastr.error('Failed to import trades');
+          this.processing = false;
+          this.toastr.error('Failed to import trades.' + (err.error && err.error.message ? ' Error message: ' + err.error.message : ''), 'Error', { timeOut: 0 });
           this.currentFile = undefined;
-          window.location.reload();
         });
       this.selectedFiles = undefined;
     }
-    else{
+    else {
       this.toastr.error('Please select a file import trades');
-      window.location.reload();
     }
   }
 
