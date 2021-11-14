@@ -54,9 +54,9 @@ export class EntryRulesComponent implements OnInit {
 
   updateEntryRules(rules: RuleDto[]) {
     let newRules: RuleDto[] = [];
-    if (this.entryRules.length > 0) {
+    if (this.entryRules && this.entryRules.length > 0) {
       for (let ind = 0; ind < this.entryRules.length; ind++) {
-        if (this.entryRules[ind].type === 'Coded' && (!this.entryRules[ind].id || this.entryRules[ind].id === 0)) {
+        if (this.entryRules[ind].type === 'Coded') {
           continue;
         }
         newRules.push(this.entryRules[ind]);
