@@ -22,6 +22,7 @@ import { ImportTradesHistory } from '../../modules/import-trades-history/import-
 import { NotificationsComponent } from '../../modules/notifications/notifications.component';
 import { ViewTradePlanComponent } from '../../modules/trade-plan/components/view-trade-plan.component';
 import { RulesComponent } from '../rules/components/rules.component';
+import { DefaultDashboardComponent } from '../default-dashboard/default-dashboard.component';
 
 
 const routes: Routes = [
@@ -32,6 +33,10 @@ const routes: Routes = [
         {
           path : '',
           component: DashboardComponent
+        },
+        {
+          path : 'home',
+          component: DefaultDashboardComponent
         },
         {
           path : 'new-trade',

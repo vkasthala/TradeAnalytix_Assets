@@ -64,16 +64,23 @@
             <div class="col-sm-6">
                 <div class="thesis_item">
                     <div class="thesis_item_title">
-                        What is the target holding period? <mat-icon matTooltip="" matTooltipPosition="above"
+                        What is the target date to close this trade? <mat-icon matTooltip="What is the target date to close this trade" matTooltipPosition="above"
                             matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay"
                             [matTooltipHideDelay]="this.hideDelay" class="mat-icon-xs cursor info-icon">info_outline
                         </mat-icon>
                     </div>
-                    <div class="media align-items-center">
-                        <div class="media-body">
-                            <input type="text" class="form-control" placeholder="Enter the holding period"
-                                [(ngModel)]="tradeThesis.holdingPeriod" />
-                        </div>
+                    <div class="datepicker-group">
+                        <input 
+                            class="form-control bg-white"
+                            matInput 
+                            [matDatepicker]="holdingPeriod" 
+                            id="holdingPeriod" 
+                            (dateChange)="addEvent('input', $event, index)" 
+                            name="tradeThesis.holdingPeriod" 
+                            [(ngModel)]="tradeThesis.holdingPeriod" />
+                        <mat-datepicker-toggle matSuffix [for]="holdingPeriod">
+                        </mat-datepicker-toggle>
+                        <mat-datepicker #holdingPeriod></mat-datepicker>
                     </div>
                 </div>
             </div>

@@ -75,21 +75,21 @@ export class ReportTypeService {
     reportSubTypes.push(reportSubType);
 
     reportSubType = new ReportSubType();
-    reportSubType.name = 'Strategy Type';
-    reportSubType.id = "type";
-    reportSubType.reportDetailList = [new ReportDetails('net_return_strategy_type', 'Net Return by Strategy Type', ReportCategory.Net_Return, "This report shows the realized return of the user's portfolio by strategy type for the selected date range."), new ReportDetails('win_loss_strategy_type', 'Win/Loss by Strategy Type', ReportCategory.Win_Loss, "This report shows the number of winning and losing trades by strategy type for the selected date range.")];
+    reportSubType.name = 'Tag';
+    reportSubType.id = "trade_tags";
+    reportSubType.reportDetailList = [new ReportDetails('net_return_trade_tags', 'Net Return by Tag', ReportCategory.Net_Return_Tag, "This report shows the realized return of the user's portfolio by tags assigned to the trades"), new ReportDetails('win_loss_trade_tags', 'Win/Loss by Tag', ReportCategory.Win_Loss_Tag, "This report shows the number of winning and losing trades by tags assigned to the trades by the user")];
     reportSubTypes.push(reportSubType);
+
+    // reportSubType = new ReportSubType();
+    // reportSubType.name = 'Strategy Type';
+    // reportSubType.id = "type";
+    // reportSubType.reportDetailList = [new ReportDetails('net_return_strategy_type', 'Net Return by Strategy Type', ReportCategory.Net_Return, "This report shows the realized return of the user's portfolio by strategy type for the selected date range."), new ReportDetails('win_loss_strategy_type', 'Win/Loss by Strategy Type', ReportCategory.Win_Loss, "This report shows the number of winning and losing trades by strategy type for the selected date range.")];
+    // reportSubTypes.push(reportSubType);
 
     reportSubType = new ReportSubType();
     reportSubType.name = 'Direction';
     reportSubType.id = "direction";
     reportSubType.reportDetailList = [new ReportDetails('net_return_direction', 'Net Return by Direction', ReportCategory.Net_Return, "This report shows the realized return of the user's portfolio by direction for the selected date range."), new ReportDetails('win_loss_direction', 'Win/Loss by Direction', ReportCategory.Win_Loss, "This report shows the number of winning and losing trades by direction for the selected date range.")];
-    reportSubTypes.push(reportSubType);
-
-    reportSubType = new ReportSubType();
-    reportSubType.name = 'Tag';
-    reportSubType.id = "trade_tags";
-    reportSubType.reportDetailList = [new ReportDetails('net_return_trade_tags', 'Net Return by Tag', ReportCategory.Net_Return_Tag, "This report shows the realized return of the user's portfolio by tags assigned to the trades"), new ReportDetails('win_loss_trade_tags', 'Win/Loss by Tag', ReportCategory.Win_Loss_Tag, "This report shows the number of winning and losing trades by tags assigned to the trades by the user")];
     reportSubTypes.push(reportSubType);
 
     reportSubType = new ReportSubType();

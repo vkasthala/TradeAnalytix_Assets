@@ -155,5 +155,8 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
       }
     });
   }
+  addEvent(input: any, event: any, index: number) {
+    this.tradeThesis['holdingPeriod'] = event.value._d;
+  }
 
 }

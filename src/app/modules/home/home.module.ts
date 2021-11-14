@@ -20,6 +20,7 @@ import { RiskByAssetChartComponent } from '../dashboard/charts/risk-by-asset-cha
 import { UserGoalsByDateChartComponent } from '../dashboard/charts/user-goals-by-date/user-goals-by-date.component.';
 import { DashboardComponent } from '../dashboard/components/dashboard.component';
 import { KeyInsightsComponent } from '../dashboard/components/key-insights/key-insights.component';
+import { DefaultDashboardComponent } from '../default-dashboard/default-dashboard.component';
 import { EconomicCalendarComponent } from '../economic-calendar/economic-calendar.component';
 import { ImportTradePopupComponent } from '../import-trades-history/import-trade-popup/import-trade-popup.component';
 import { ImportTradesHistory } from '../import-trades-history/import-trades-history';
@@ -208,7 +209,8 @@ export const MY_FORMATS = {
     CalendarComponent,
     ReportsRulesComponent,
     StrategySelectionComponent,
-    EditableSelectComponent
+    EditableSelectComponent,
+    DefaultDashboardComponent
   ],
   imports: [
     FormsModule,

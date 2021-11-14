@@ -1,0 +1,140 @@
+<div class="px-2 dashboard">
+    <div class="trade-dash-cards-web px-2">
+        <div class="row">
+            <div class="col-sm-10">
+                <div class="trade-cards-heading mt-3">
+                    <span>Welcome {{userName}}</span>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-3 pr-0">
+                        <div class="card card-white">
+                            <div class="card-body p-2">
+                                <h5 class="card-title text-center mb-2">
+                                    <a routerLink="/trade-strategies">Trade Journal</a>
+                                </h5>
+                                <p>Record your trades individually with along with trade thesis, supporting documents, and alignment with self-set rules</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 pr-0">
+                        <div class="card card-white">
+                            <div class="card-body p-2">
+                                <h5 class="card-title text-center mb-2">
+                                    <a routerLink="/import-trades-history">Import Trades</a>
+                                </h5>
+                                <p>Upload trade history files downloaded from your brokerages  so that they are added in bulk to the system</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 pr-0">
+                        <div class="card card-white">
+                            <div class="card-body p-2">
+                                <h5 class="card-title text-center mb-2">
+                                    <a routerLink="/trade-plans">Trade Plan</a>
+                                </h5>
+                                <p>Create a daily trading plan with your viewpoints and intended actions during the day. Update the trade plan after market hours</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 pr-0">
+                        <div class="card card-white">
+                            <div class="card-body p-2">
+                                <h5 class="card-title text-center mb-2">
+                                    <a routerLink="/trade-plans">Goals</a>
+                                </h5>
+                                <p>Set trading goals for a selected period so that you know where you are at with regards to your goals</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end:: row -->
+                <div class="row">
+                    <div class="col-sm-3 pr-0">
+                        <div class="card card-white">
+                            <div class="card-body p-2">
+                                <h5 class="card-title text-center mb-2">
+                                    <a routerLink="/risk-analysis">Risk Analysis</a>
+                                </h5>
+                                <p>Analyze the potential return of a strategy at present and in the future while varying implied volatility, days to expiry, and stock price </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 pr-0">
+                        <div class="card card-white">
+                            <div class="card-body p-2">
+                                <h5 class="card-title text-center mb-2">
+                                    <a routerLink="/compare-strategies">Compare Strategies</a>
+                                </h5>
+                                <p>Compare the potential returns of multiple trade strategies on a symbol so that you can pick one that is aligned with your risk appetite</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 pr-0">
+                        <div class="card card-white">
+                            <div class="card-body p-2">
+                                <h5 class="card-title text-center mb-2">
+                                    <a routerLink="/rules">Trading Rules</a>
+                                </h5>
+                                <p>Set manual and automated rules so that your trades are aligned with them to improve your trading performance</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 pr-0">
+                        <div class="card card-white">
+                            <div class="card-body p-2">
+                                <h5 class="card-title text-center mb-2">
+                                    <a routerLink="/reports">Reports</a>
+                                </h5>
+                                <p>View reports and metrics across different categories such as goals, portfolio, performance, portfolio, risk management, discipline, rules, etc.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end:: row -->
+            </div>
+            
+       
+            <div class="col-sm-2">
+                <h6 class="mb-2 mt-3">Quick Link</h6>
+                <div class="card card-white">
+                    <div class="card-body px-3 py-2">
+                        <ul class="list-unstyled m-0">
+                            <li class="list-item py-1">
+                                <a routerLink="/view-trade-plan">Add a new trade</a>
+                            </li>
+                            <li class="list-item py-1">
+                                <a routerLink="/view-trade-plan">How-to Videos?</a>
+                            </li>
+                            <li class="list-item py-1">
+                                <a routerLink="/view-trade-plan">Help Docs</a>
+                            </li>
+                            <li class="list-item py-1">
+                                <a routerLink="/view-trade-plan">Report an issue</a>
+                            </li>
+                            <li class="list-item py-1">
+                                <a routerLink="/view-trade-plan">Request for a feature</a>
+                            </li>
+                            <li class="list-item py-1">
+                                <a routerLink="/view-trade-plan">Write a review</a>
+                            </li>
+                            <li class="list-item py-1">
+                                <a routerLink="/view-trade-plan">Refer a friend</a>
+                            </li>
+                        </ul>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h6 class="py-2">Open Positions</h6>
+        <app-portfolio-grid></app-portfolio-grid>
+    </div>
+</div>
+
+    
+
+<!-- Mobile -->
+<div class="trade-dash-cards-mobile">
+        
+</div>
