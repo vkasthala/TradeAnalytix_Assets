@@ -43,18 +43,10 @@
 
                     <div class="col-sm-7 px-0">
                         <ul class="tags-list">
-                            <li class="tag-item" *ngIf="!addTrade">
-                                <span (click)="editTag(strategies[selectedStrategy])">
-                                    <span class="material-icons tag-icon">#</span>
-                                    {{strategies[selectedStrategy]}}
-                                </span>
-                                <span class="material-icons delete-tag-icon"
-                                    (click)="deleteTag(tag, i)">remove_circle_outline</span>
-                            </li>
                             <li *ngFor="let tag of tags; let i = index;" class="tag-item">
                                 <span (click)="editTag(tag)">
                                     <span class="material-icons tag-icon">#</span>
-                                    {{tag.name}}
+                                    {{getTagName(tag.tagId)}}
                                 </span>
                                 <span class="material-icons delete-tag-icon"
                                     (click)="deleteTag(tag, i)">remove_circle_outline</span>

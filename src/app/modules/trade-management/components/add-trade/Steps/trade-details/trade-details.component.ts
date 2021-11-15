@@ -26,6 +26,8 @@ import { SingleInputModalComponent } from 'src/app/modules/shared/components/mod
 import { ConfirmDialogComponent } from 'src/app/modules/shared/components/modals/confirm-dialog/confirm-dialog.component';
 import { StrategySelectionComponent } from 'src/app/modules/shared/components/modals/strategy-selection/strategy-selection.component';
 import { EditableSelectComponent } from '../editable-select/editable-select.component';
+import { UserTagService } from 'src/app/modules/settings/services/user-tag.service';
+import { UserTag } from 'src/app/modules/settings/models/user-tag.model';
 
 
 @Component({
@@ -94,6 +96,7 @@ export class TradeDetailsComponent implements OnInit {
   constructor(
     private utilService: UtilService,
     private strategyCreateServiceService: StrategyCreateService,
+    private userTagService: UserTagService,
     private router: Router,
     private _dialog: MatDialog) {
   }
@@ -575,12 +578,21 @@ export class TradeDetailsComponent implements OnInit {
     const dialogRef = this._dialog.open(EditableSelectComponent, {
       disableClose: true,
       width: 'auto',
-      data: { title: 'Tag' }
+      data: { title: 'Tag', list: this.userTagService.getTags() }
     });
 
     dialogRef.afterClosed().subscribe((res) => {
-      let tag: TradeTag = new TradeTag(res);
-      this.tags.push(tag);
+      let userTag: UserTag = this.userTagService.getUserTagByName(res);
+      if (userTag) {
+        let tag: TradeTag = new TradeTag(userTag.id);
+        this.tags.push(tag);
+      } else {
+        this.userTagService.createTag(this.createUserTag(res, undefined)).subscribe(result => {
+          this.userTagService.registerTag(result);
+          let tag: TradeTag = new TradeTag(result.id);
+          this.tags.push(tag);
+        });
+      }
     });
   }
 
@@ -588,11 +600,16 @@ export class TradeDetailsComponent implements OnInit {
     const dialogRef = this._dialog.open(SingleInputModalComponent, {
       disableClose: true,
       width: 'auto',
-      data: { title: 'Tag', value: tag.name }
+      data: { title: 'Tag', value: this.getTagName(tag.tagId) }
     });
 
     dialogRef.afterClosed().subscribe((res) => {
-      tag.name = res;
+      if (res && res.length > 0) {
+        this.userTagService.updateTag(this.createUserTag(res, tag.id)).subscribe(result => {
+          this.userTagService.registerTag(result);
+          tag.tagId = result.id;
+        });
+      }
     });
   }
 
@@ -600,7 +617,7 @@ export class TradeDetailsComponent implements OnInit {
     const dialogRef = this._dialog.open(ConfirmDialogComponent, {
       width: 'auto',
       height: 'auto',
-      data: { 'message': 'Are you sure you want to delete tag: ' + tag.name + '?' }
+      data: { 'message': 'Are you sure you want to delete tag: ' + this.getTagName(tag.id) + '?' }
     });
 
     dialogRef.afterClosed().subscribe(dialogResult => {
@@ -615,5 +632,18 @@ export class TradeDetailsComponent implements OnInit {
   addEvent(input: any, event: any, index: number) {
     this.stockOptions[index]['expireDate'] = event.value._d;
   }
-  
+
+  getTagName(id: number): string {
+    return this.userTagService.getTagNameById(id);
+  }
+
+  createUserTag(tagName: string, tagId: number): UserTag {
+    let userTag: UserTag = new UserTag();
+    if (tagId) {
+      userTag.id = tagId;
+    }
+    userTag.tag = tagName;
+    return userTag;
+  }
+
 }

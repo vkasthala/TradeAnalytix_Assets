@@ -1,8 +1,9 @@
 
 export class TradeTag {
     id: number;
-    name: string;
-    constructor(tag: string) {
-        this.name = tag;
+    tagId: number;
+
+    constructor(tagId: number) {
+        this.tagId = tagId;
     }
 }    

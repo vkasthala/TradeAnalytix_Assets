@@ -11,8 +11,8 @@ export class EditableSelectComponent implements OnInit {
   title: string;
   value: string;
 
-  list = ['Stock', 'Long Call', 'Short Call', 'Long Put', 'Short Put', 'Call Spread', 'Put Spread'];
-   
+  list = [];
+
   listHidden = true;
   selectedIndex = -1;
 
@@ -24,6 +24,11 @@ export class EditableSelectComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) data
   ) {
     this.title = data.title;
+    if (data.list) {
+      this.list = data.list;
+    } else {
+      this.list = [];
+    }
     if (data.value) {
       this.value = data.value;
     }
@@ -79,7 +84,7 @@ export class EditableSelectComponent implements OnInit {
           document.getElementsByTagName('li')[this.selectedIndex].scrollIntoView();
         }
       }
-    } 
+    }
   }
 
   // show or hide the dropdown list when input is focused or moves out of focus
