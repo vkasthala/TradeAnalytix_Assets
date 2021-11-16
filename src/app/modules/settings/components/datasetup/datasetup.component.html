@@ -44,6 +44,16 @@
     <mat-expansion-panel [expanded]="true" (opened)="setStep(4)">
         <mat-expansion-panel-header>
             <mat-panel-title>
+                Trigger for Closing
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ng-template matExpansionPanelContent>
+            <app-editable-list #triggerClosing></app-editable-list>
+        </ng-template>
+    </mat-expansion-panel>
+    <mat-expansion-panel [expanded]="true" (opened)="setStep(5)">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
                 Pre-Market Activities
             </mat-panel-title>
         </mat-expansion-panel-header>
@@ -58,7 +68,7 @@
             </div>
         </ng-template>
     </mat-expansion-panel>
-    <mat-expansion-panel [expanded]="true" (opened)="setStep(5)">
+    <mat-expansion-panel [expanded]="true" (opened)="setStep(6)">
         <mat-expansion-panel-header>
             <mat-panel-title>
                 Brokerage Commission

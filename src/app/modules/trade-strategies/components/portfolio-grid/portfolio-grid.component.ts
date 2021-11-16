@@ -23,7 +23,7 @@ import { BehaviorSubject } from 'rxjs';
   styleUrls: ['./portfolio-grid.component.scss']
 })
 export class PortfolioGrid implements AfterViewInit, OnInit {
-  totalCount: number = 0;
+  totalCount: number = 1;
   protected Loader = false;
   expandIndex: any;
   displayedColumns = ['id', 'stockName', 'strategy', 'openDate', 'totalAmount', 'maxGain', 'maxLoss', 'return', 'thesis', 'rules', 'action'];
@@ -63,9 +63,10 @@ export class PortfolioGrid implements AfterViewInit, OnInit {
         this.portfolioDataSource = result.rows
         this.tradeStrategySubject.next(result.rows);
         this.totalCount = result.totalCount;
+      } else {
+        this.totalCount = 0;
       }
     });
-    
   }
 
   reload(filter) {
@@ -84,7 +85,6 @@ export class PortfolioGrid implements AfterViewInit, OnInit {
   }
 
   ngAfterViewInit() {
-
     this.paginator.page
       .pipe(
         tap(() => {

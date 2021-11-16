@@ -23,7 +23,7 @@ export class DatasetupComponent implements OnInit {
   @ViewChild('tradeIdea', { static: false }) protected tradeIdea: EditableListComponent;
 
   @ViewChild('brokerageCommissions', { static: false }) protected brokerageCommissions: EditableGridComponent<BockerageCommission>;
-
+  @ViewChild('triggerClosing', { static: false }) protected triggerClosing: EditableListComponent;
   constructor(private dataSetupService: DataSetupService, private cdr: ChangeDetectorRef, private _dialog: MatDialog, private toastr: ToastrService) { }
   step = 0;
   ngOnInit() {

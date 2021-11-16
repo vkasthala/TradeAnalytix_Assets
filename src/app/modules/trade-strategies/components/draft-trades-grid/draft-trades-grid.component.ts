@@ -29,7 +29,7 @@ export class DraftTradesGrid implements AfterViewInit, OnInit {
   expandIndex: any;
   displayedColumns = ['id', 'stockName', 'strategy', 'openDate', 'totalAmount', 'maxGain', 'maxLoss', 'thesis', 'rules', 'action'];
   pageSize: number = 20
-  totalCount: number = 0;
+  totalCount: number = 1;
 
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort: MatSort;
@@ -66,6 +66,8 @@ export class DraftTradesGrid implements AfterViewInit, OnInit {
         this.draftDataSource = result.rows
         this.tradeStrategySubject.next(result.rows);
         this.totalCount = result.totalCount;
+      } else {
+        this.totalCount = 0;
       }
     });
     

@@ -46,7 +46,7 @@ export class HistoryGrid implements AfterViewInit, OnInit {
   expandedIndex: any;
 
   public hideRuleContent: boolean[] = [];
-  totalCount: number = 0;
+  public totalCount: number = 1;
   constructor(private tradeStrategyGridService: TradeStrategyGridService,
     private tradeStrategyService: TradeStrategyService,
     private stockSymbolService: StockSymbolService,
@@ -69,6 +69,8 @@ export class HistoryGrid implements AfterViewInit, OnInit {
         this.historyDataSource = result.rows
         this.tradeStrategySubject.next(result.rows);
         this.totalCount = result.totalCount;
+      } else {
+        this.totalCount = 0;
       }
     });
   }

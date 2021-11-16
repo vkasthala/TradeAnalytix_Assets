@@ -1,7 +1,7 @@
 <div class="trade-strategies-sec">
     <div class="main-body">
         <div class="trade-dash-main">
-            <div class="trade-dash-name col-sm-8 pl-1">
+            <div class="trade-dash-name col-sm-8 pl-1" *ngIf="openTrades">
                 <span class="col-form-label font-size-14 mx-2 px-3">Number of Trades : <span class="text-secondary">{{numberOfTrades}}</span></span>
                 <span class="col-form-label font-size-14 mx-2 px-3">Total Amount : <span class="text-secondary">{{totalAmount | number:'1.0-0'}}</span></span>
                 <span class="col-form-label font-size-14 mx-2 px-3">Max Gain <span class="text-success">{{maxGain | number:'1.0-0'}}</span></span>
@@ -79,7 +79,7 @@
             <!-- start : Tabs section -->
             <mat-horizontal-stepper labelPosition="left" #stepper [linear]="false">
                 <mat-step [class.active]="stepone.completed" #stepone>
-                    <ng-template matStepLabel>Open Positions</ng-template>
+                    <ng-template matStepLabel> Open Positions</ng-template>
                     <div class="stepper-content">
                         <app-portfolio-grid #portfolioGrid>loading</app-portfolio-grid>
                     </div>
@@ -107,7 +107,7 @@
 <!-- for-mobile -->
 <div class="trade-st-mobile">
     <div class="px-3 d-flex align-items-center justify-content-between">
-        <div class="page-heading">My Trades</div> 
+        <div class="page-heading">Portfolio</div> 
         <div class="d-flex">
             <mat-icon class="cursor material-icons" (click)="searchFilter()">search</mat-icon>
             <span class="cursor ml-2" (click)="strategiesFilter()" data-toggle="tooltip" data-placement="top" title="Show Filters"><img src="../../../../assets/images/filter.png" alt="" height="18" /></span>
