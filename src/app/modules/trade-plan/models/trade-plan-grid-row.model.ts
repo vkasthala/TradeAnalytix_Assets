@@ -24,4 +24,6 @@ export class TradePlanGridRow {
 
     lessons: string;
 
+    preMarketActStatus: boolean;
+
 }
