@@ -1,17 +1,20 @@
 <div class="trade-strategies-sec">
     <div class="main-body">
         <div class="trade-dash-main">
-            <div class="trade-dash-name col-sm-8 pl-1" *ngIf="openTrades">
-                <span class="col-form-label font-size-14 mx-2 px-3">Number of Trades : <span class="text-secondary">{{numberOfTrades}}</span></span>
-                <span class="col-form-label font-size-14 mx-2 px-3">Total Amount : <span class="text-secondary">{{totalAmount | number:'1.0-0'}}</span></span>
-                <span class="col-form-label font-size-14 mx-2 px-3">Max Gain <span class="text-success">{{maxGain | number:'1.0-0'}}</span></span>
-                <span class="col-form-label font-size-14 mx-2 px-3">Max Loss : <span class="text-danger">{{maxLoss | number:'1.0-0'}}</span></span>
+            <div class="trade-dash-name col-sm-8 pl-1">
+                <span class="col-form-label font-size-14 mx-2 px-3" *ngFor="let summary of summaryItems">{{summary.name
+                    + ': '}} <span class="text-secondary"
+                        [ngClass]="{'text-success': summary.id === 'max_gain', 'text-danger' : summary.id === 'max_loss' }">{{summary.value}}</span></span>
             </div>
+
             <div>
-                <button routerLink="/new-trade" class="add-new btn btn-apply d-inline-flex align-items-center"><span class="add-icon mr-2">+</span> ADD TRADE</button>
+                <button routerLink="/new-trade" class="add-new btn btn-apply d-inline-flex align-items-center"><span
+                        class="add-icon mr-2">+</span> ADD TRADE</button>
                 <span class="cursor ml-2" (click)="strategiesFilter()">
-                        <span *ngIf="!showFilters" class="text-blue text-sm" data-toggle="tooltip" data-placement="top" title="Show Filters">Show Filters</span>
-                <span *ngIf="showFilters" class="text-primary text-sm" data-toggle="tooltip" data-placement="top" title="Close Filters">Hide Filters</span>
+                    <span *ngIf="!showFilters" class="text-blue text-sm" data-toggle="tooltip" data-placement="top"
+                        title="Show Filters">Show Filters</span>
+                    <span *ngIf="showFilters" class="text-primary text-sm" data-toggle="tooltip" data-placement="top"
+                        title="Close Filters">Hide Filters</span>
                 </span>
             </div>
         </div>
@@ -20,7 +23,8 @@
                 <div class="st-slect-section">
                     <div class="trade-form strategies_filter">
                         <div class="form-group has-search">
-                            <app-trade-search (symbolSelectEvent)="symbolSelectEventHandler($event)" #tradeSearchComponent>
+                            <app-trade-search (symbolSelectEvent)="symbolSelectEventHandler($event)"
+                                #tradeSearchComponent>
                             </app-trade-search>
                             <mat-icon class="form-icon-down">search</mat-icon>
                         </div>
@@ -29,10 +33,12 @@
                 <div class="st-slect-section">
                     <div class="trade-sel position-relative">
                         <span class="custom-label" *ngIf="strategyLabel">Strategy Type</span>
-                        <select class="form-control select-input" id="strategy_inputState" [(ngModel)]='strategiesGridFilter.strategy' (change)='onOptionsSelected($event)' name="strategy">
-                                <option *ngFor="let key of strategyTypes" [value]="key" [label]="strategies[key]">
-                                </option>
-                            </select>
+                        <select class="form-control select-input" id="strategy_inputState"
+                            [(ngModel)]='strategiesGridFilter.strategy' (change)='onOptionsSelected($event)'
+                            name="strategy">
+                            <option *ngFor="let key of strategyTypes" [value]="key" [label]="strategies[key]">
+                            </option>
+                        </select>
                         <mat-icon class="form-icon-down">keyboard_arrow_down</mat-icon>
                     </div>
                 </div>
@@ -66,7 +72,9 @@
                         <mat-datepicker #picker></mat-datepicker>
                       </mat-form-field> -->
                     <div class="trade-date date-range-md">
-                        <my-date-range-picker placeholder="Date range" name="mydaterange" [options]="myDateRangePickerOptions" (dateRangeChanged)="onDateRangeChanged($event)"></my-date-range-picker>
+                        <my-date-range-picker placeholder="Date range" name="mydaterange"
+                            [options]="myDateRangePickerOptions" (dateRangeChanged)="onDateRangeChanged($event)">
+                        </my-date-range-picker>
                     </div>
                 </div>
 
@@ -107,10 +115,11 @@
 <!-- for-mobile -->
 <div class="trade-st-mobile">
     <div class="px-3 d-flex align-items-center justify-content-between">
-        <div class="page-heading">Portfolio</div> 
+        <div class="page-heading">My Trades</div>
         <div class="d-flex">
             <mat-icon class="cursor material-icons" (click)="searchFilter()">search</mat-icon>
-            <span class="cursor ml-2" (click)="strategiesFilter()" data-toggle="tooltip" data-placement="top" title="Show Filters"><img src="../../../../assets/images/filter.png" alt="" height="18" /></span>
+            <span class="cursor ml-2" (click)="strategiesFilter()" data-toggle="tooltip" data-placement="top"
+                title="Show Filters"><img src="../../../../assets/images/filter.png" alt="" height="18" /></span>
         </div>
     </div>
     <div class="py-2 px-3">
@@ -125,24 +134,26 @@
         <div class="filter-form">
             <div class="trade-sel position-relative">
                 <span class="custom-label" *ngIf="strategyLabel">Strategy Type</span>
-                <select class="form-control select-input" id="strategy_inputState" [(ngModel)]='strategiesGridFilter.strategy' (change)='onOptionsSelected($event)' name="strategy">
-                        <option *ngFor="let key of strategyTypes" [value]="key" [label]="strategies[key]">
-                        </option>
-                    </select>
+                <select class="form-control select-input" id="strategy_inputState"
+                    [(ngModel)]='strategiesGridFilter.strategy' (change)='onOptionsSelected($event)' name="strategy">
+                    <option *ngFor="let key of strategyTypes" [value]="key" [label]="strategies[key]">
+                    </option>
+                </select>
                 <mat-icon class="form-icon-down">keyboard_arrow_down</mat-icon>
             </div>
 
             <div class="trade-sel position-relative">
                 <span class="custom-label" *ngIf="statusLabel">Status</span>
-                <select class="form-control" id="tradeStrategyStatusFilter" [(ngModel)]='strategiesGridFilter.status' (change)='onOptionsSelected($event)'>
-                        <option *ngFor="let key of tradeStatusNames" [value]="key"
-                            [label]="tradeStatues[key]"></option>
-                    </select>
+                <select class="form-control" id="tradeStrategyStatusFilter" [(ngModel)]='strategiesGridFilter.status'
+                    (change)='onOptionsSelected($event)'>
+                    <option *ngFor="let key of tradeStatusNames" [value]="key" [label]="tradeStatues[key]"></option>
+                </select>
                 <mat-icon class="form-icon-down">keyboard_arrow_down</mat-icon>
             </div>
 
             <div class="trade-date date-range-md">
-                <my-date-range-picker placeholder="Date range" name="mydaterange" [options]="myDateRangePickerOptions" (dateRangeChanged)="onDateRangeChanged($event)"></my-date-range-picker>
+                <my-date-range-picker placeholder="Date range" name="mydaterange" [options]="myDateRangePickerOptions"
+                    (dateRangeChanged)="onDateRangeChanged($event)"></my-date-range-picker>
             </div>
 
             <div class="mt-3">
@@ -171,5 +182,5 @@
         <app-trade-strategies-grid #tradeStrategiesGrid>loading</app-trade-strategies-grid>
     </div>
 
-    
+
 </div>

@@ -15,6 +15,9 @@ import { TradeDirection } from '../../shared/models/trade-management/trade-direc
 import { TradeSearchComponent } from '../../trade-management/components/add-trade/Steps/search-trade/trade-search.component';
 import {FormGroup, FormControl} from '@angular/forms';
 import { TradeStrategyGridService } from '../services/trade-strategy-grid.service';
+import { SummaryItem } from '../../shared/models/reports/summary-item.model';
+import { SummaryRequest } from '../../shared/models/reports/summary-request.model';
+import { ReportDataService } from '../../reports/services/report-data.service';
 
 @Component({
    selector: 'app-trade-strategies',
@@ -39,10 +42,9 @@ export class TradeStrategiesComponent implements OnInit {
    statusLabel: boolean=true;
    showFilters: boolean=false;
    showSearchFilter: boolean=false;
-   numberOfTrades: number;
-   totalAmount: number;
-   maxGain: number;
-   maxLoss: number;
+
+
+   summaryItems: SummaryItem[] = [];
 
    myDateRangePickerOptions: IMyDrpOptions = {
       dateFormat: 'mm-dd-yyyy',
@@ -67,10 +69,21 @@ export class TradeStrategiesComponent implements OnInit {
       private router: Router, 
       private strategyCreateService: StrategyCreateService,
       private tradeStrategyGridService: TradeStrategyGridService,
+      private reportDataService: ReportDataService
    ) { }
 
    ngOnInit() {
+      this.loadSummary();
+   }
 
+   loadSummary(){
+      let request: SummaryRequest = new SummaryRequest();
+      request.summaryType = 'user_trade_summary';
+      this.reportDataService.getReportSummary(request).subscribe(result => {
+         if(result){
+            this.summaryItems = result;
+         }
+      });
    }
 
    closeTrade(strategyId) {
@@ -152,35 +165,6 @@ export class TradeStrategiesComponent implements OnInit {
    }
 
    ngAfterViewInit() {
-      this.strategiesGridFilter.status = 1;
-      let tradeStrategyGridRequest = this.tradeStrategiesGrid.tradeStrategyGridRequest;
-      tradeStrategyGridRequest.filters = this.strategiesGridFilter;
-
-      this.tradeStrategyGridService.loadTradeStrategies(tradeStrategyGridRequest).subscribe(result => {
-         if (result) {
-            let amount:number = 0;
-            let gainAmount:number = 0;
-            let  lossAmount:number = 0;
-            let rowData = result.rows;
-            rowData.filter(x => {
-               console.log(x);
-               if(x.totalAmount && x.totalAmount !== undefined){
-                  amount = Number(amount + x.totalAmount)
-               }
-               if(x.maxGain && x.maxGain !== undefined){
-                  gainAmount = Number(gainAmount + x.maxGain)
-               }
-               if(x.maxLoss && x.maxLoss !== undefined){
-                  lossAmount = Number(lossAmount + x.maxLoss)
-               }
-            })
-            this.totalAmount = amount;
-            this.maxGain = gainAmount;
-            this.maxLoss = lossAmount;
-            console.log('totalAmount', this.totalAmount);
-            this.numberOfTrades = result.totalCount;
-         }
-      });
       
    }
   

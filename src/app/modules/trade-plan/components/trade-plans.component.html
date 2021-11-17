@@ -33,7 +33,7 @@
                         <!-- Pre-Market Activities Column -->
                         <ng-container matColumnDef="plannedTrades">
                             <th mat-header-cell *matHeaderCellDef>Pre-Market Activities</th>
-                            <td mat-cell *matCellDef="let element"> {{element.plannedTrades}} </td>
+                            <td mat-cell *matCellDef="let element"> {{element.preMarketActStatus == true ? 'Yes' : 'No'}} </td>
                         </ng-container>
                         <!-- Mindset Column -->
                         <ng-container matColumnDef="mindsetType">
