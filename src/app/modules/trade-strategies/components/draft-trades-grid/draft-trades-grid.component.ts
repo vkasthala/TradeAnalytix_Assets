@@ -27,7 +27,7 @@ export class DraftTradesGrid implements AfterViewInit, OnInit {
 
   protected Loader = false;
   expandIndex: any;
-  displayedColumns = ['id', 'stockName', 'strategy', 'openDate', 'totalAmount', 'maxGain', 'maxLoss', 'thesis', 'rules', 'action'];
+  displayedColumns = ['id', 'stockName', 'openDate', 'totalAmount', 'maxGain', 'maxLoss', 'thesis', 'rules', 'tags', 'action'];
   pageSize: number = 20
   totalCount: number = 0;
 
@@ -41,9 +41,9 @@ export class DraftTradesGrid implements AfterViewInit, OnInit {
   private tradeStrategySubject = new BehaviorSubject<TradeStrategyGridRow[]>([]);
 
   protected gridData: any;
-  expandedIndex:any;
+  expandedIndex: any;
 
-  public hideRuleContent:boolean[] = [];
+  public hideRuleContent: boolean[] = [];
 
   constructor(private tradeStrategyGridService: TradeStrategyGridService,
     private tradeStrategyService: TradeStrategyService,
@@ -60,7 +60,7 @@ export class DraftTradesGrid implements AfterViewInit, OnInit {
   }
 
   loadPage() {
-    this.tradeStrategyGridRequest.filters= this.strategiesGridFilter;
+    this.tradeStrategyGridRequest.filters = this.strategiesGridFilter;
     this.tradeStrategyGridService.loadTradeStrategies(this.tradeStrategyGridRequest).subscribe(result => {
       if (result) {
         this.draftDataSource = result.rows
@@ -68,11 +68,11 @@ export class DraftTradesGrid implements AfterViewInit, OnInit {
         this.totalCount = result.totalCount;
       }
     });
-    
+
   }
 
   reload(filter) {
-    if(Object.keys(filter).length === 0 ) {
+    if (Object.keys(filter).length === 0) {
       this.strategiesGridFilter = new StrategiesGridFilter();
       this.strategiesGridFilter.status = 4;
     } else {
@@ -122,7 +122,7 @@ export class DraftTradesGrid implements AfterViewInit, OnInit {
       sortRequest = new StrategiesGridSort();
       this.tradeStrategyGridRequest.sort = sortRequest;
     }
-    
+
   }
 
   editTrade(rowModel: TradeStrategyGridRow) {
@@ -201,10 +201,10 @@ export class DraftTradesGrid implements AfterViewInit, OnInit {
   closeActionBox() {
     this.expandIndex = null
   }
-  
-  Collaps(index: number) {  
+
+  Collaps(index: number) {
     // this.expandedIndex[index] = !this.expandedIndex[index];
-    this.hideRuleContent[index] = !this.hideRuleContent[index]; 
+    this.hideRuleContent[index] = !this.hideRuleContent[index];
   }
 
 }
