@@ -26,7 +26,7 @@ export class PortfolioGrid implements AfterViewInit, OnInit {
   totalCount: number = 1;
   protected Loader = false;
   expandIndex: any;
-  displayedColumns = ['id', 'stockName', 'strategy', 'openDate', 'totalAmount', 'maxGain', 'maxLoss', 'return', 'thesis', 'rules', 'action'];
+  displayedColumns = ['id', 'stockName', 'openDate', 'totalAmount', 'maxGain', 'maxLoss', 'return', 'thesis', 'rules', 'tags', 'action'];
   pageSize: number = 20
 
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
@@ -37,9 +37,9 @@ export class PortfolioGrid implements AfterViewInit, OnInit {
   private tradeStrategySubject = new BehaviorSubject<TradeStrategyGridRow[]>([]);
   strategiesGridFilter: StrategiesGridFilter = new StrategiesGridFilter();
   protected gridData: any;
-  expandedIndex:any;
+  expandedIndex: any;
 
-  public hideRuleContent:boolean[] = [];
+  public hideRuleContent: boolean[] = [];
 
   constructor(private tradeStrategyGridService: TradeStrategyGridService,
     private tradeStrategyService: TradeStrategyService,
@@ -57,7 +57,7 @@ export class PortfolioGrid implements AfterViewInit, OnInit {
   }
 
   loadPage() {
-    this.tradeStrategyGridRequest.filters= this.strategiesGridFilter;
+    this.tradeStrategyGridRequest.filters = this.strategiesGridFilter;
     this.tradeStrategyGridService.loadTradeStrategies(this.tradeStrategyGridRequest).subscribe(result => {
       if (result) {
         this.portfolioDataSource = result.rows
@@ -70,7 +70,7 @@ export class PortfolioGrid implements AfterViewInit, OnInit {
   }
 
   reload(filter) {
-    if(Object.keys(filter).length === 0 ) {
+    if (Object.keys(filter).length === 0) {
       this.strategiesGridFilter = new StrategiesGridFilter();
       this.strategiesGridFilter.status = 1;
     } else {
@@ -119,7 +119,7 @@ export class PortfolioGrid implements AfterViewInit, OnInit {
       sortRequest = new StrategiesGridSort();
       this.tradeStrategyGridRequest.sort = sortRequest;
     }
-    
+
   }
 
   editTrade(rowModel: TradeStrategyGridRow) {
@@ -198,9 +198,9 @@ export class PortfolioGrid implements AfterViewInit, OnInit {
   closeActionBox() {
     this.expandIndex = null
   }
-  
-  Collaps(index: number) {  
-    this.hideRuleContent[index] = !this.hideRuleContent[index]; 
+
+  Collaps(index: number) {
+    this.hideRuleContent[index] = !this.hideRuleContent[index];
   }
 
 }
