@@ -31,6 +31,16 @@ import { DateAdapter } from '@angular/material';
 import { CustomDateAdapter } from './modules/shared/adapter/custom-date-adapter';
 import { JoinWaitlistComponent } from './modules/login/components/join-waitlist/join-waitlist.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HelpComponent } from './modules/help/components/help.component';
+import { TradeJournalComponent } from './modules/help/components/trade-journal/trade-journal.component';
+import { GettingStartedComponent } from './modules/help/components/getting-started/getting-started.component';
+import { ImportTradeComponent } from './modules/help/components/import-trade/import-trade.component';
+import { TradePlaneComponent } from './modules/help/components/trade-plan/trade-plan.component';
+import { HelpRiskAnalysisComponent } from './modules/help/components/risk-analysis/risk-analysis.component';
+import { CompareStrategyComponent } from './modules/help/components/compare-strategy/compare-strategy.component';
+import { TradingRulesComponent } from './modules/help/components/trading-rules/trading-rules.component';
+import { HelpReportsComponent } from './modules/help/components/help-reports/help-reports.component';
+import { HelpDataSetupComponent } from './modules/help/components/data-setup/data-setup.component';
 
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
   return localStorageSync({ keys: [globalConfigFeatureKey], rehydrate: true })(reducer);
@@ -46,7 +56,17 @@ export function highchartsModules() {
   declarations: [
     AppComponent,
     JoinWaitlistComponent,
-    LandingComponent
+    LandingComponent,
+    HelpComponent,
+    GettingStartedComponent,
+    TradeJournalComponent,
+    ImportTradeComponent,
+    TradePlaneComponent,
+    HelpRiskAnalysisComponent,
+    CompareStrategyComponent,
+    TradingRulesComponent,
+    HelpReportsComponent,
+    HelpDataSetupComponent
   ],
   imports: [
     FormsModule,
