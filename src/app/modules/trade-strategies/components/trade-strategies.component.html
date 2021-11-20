@@ -2,9 +2,12 @@
     <div class="main-body">
         <div class="trade-dash-main">
             <div class="trade-dash-name col-sm-8 pl-1">
-                <span class="col-form-label font-size-14 mx-2 px-3" *ngFor="let summary of summaryItems">{{summary.name
-                    + ': '}} <span class="text-secondary"
-                        [ngClass]="{'text-success': summary.id === 'max_gain', 'text-danger' : summary.id === 'max_loss' }">{{summary.value}}</span></span>
+                <div *ngIf="isOpenPositions">
+                    <span class="col-form-label font-size-14 mx-2 px-3" *ngFor="let summary of summaryItems">{{summary.name
+                        + ': '}} <span class="text-secondary"
+                            [ngClass]="{'text-success': summary.id === 'max_gain', 'text-danger' : summary.id === 'max_loss' }">{{summary.value}}</span>
+                        </span>
+                </div>
             </div>
 
             <div>
@@ -85,20 +88,20 @@
                 </div>
             </div>
             <!-- start : Tabs section -->
-            <mat-horizontal-stepper labelPosition="left" #stepper [linear]="false">
-                <mat-step [class.active]="stepone.completed" #stepone>
+            <mat-horizontal-stepper labelPosition="left" #stepper [linear]="false" (selectionChange)="selectionChange($event)">
+                <mat-step [class.active]="stepone.completed" label="Open Positions" #stepone>
                     <ng-template matStepLabel> Open Positions</ng-template>
                     <div class="stepper-content">
                         <app-portfolio-grid #portfolioGrid>loading</app-portfolio-grid>
                     </div>
                 </mat-step>
-                <mat-step>
+                <mat-step label="Draft Trades">
                     <ng-template matStepLabel>Draft Trades</ng-template>
                     <div class="stepper-content">
                         <app-draft-trades-grid #draftTradesGrid>loading</app-draft-trades-grid>
                     </div>
                 </mat-step>
-                <mat-step>
+                <mat-step label="Closed Positions">
                     <ng-template matStepLabel>Closed Positions</ng-template>
                     <div class="stepper-content">
                         <app-history-grid #historyGrid>loading</app-history-grid>

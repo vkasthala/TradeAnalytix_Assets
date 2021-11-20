@@ -314,6 +314,7 @@ export class AddNewTradeComponent implements OnInit {
   navigaeToRiskAnalysis() {
     let extras: NavigationExtras = {};
     this.updateTradeStrategyProps();
+    this.tradeStrategy.isEditTrade = this.edit;
     let inputData: TradeInputData = new TradeInputData();
     inputData.selectedStock = this.selectedStock;
     inputData.tradeStrategy = this.tradeStrategy;

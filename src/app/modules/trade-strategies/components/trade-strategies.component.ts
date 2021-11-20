@@ -35,7 +35,7 @@ export class TradeStrategiesComponent implements OnInit {
    strategiesGridPage: StrategiesGridPage = new StrategiesGridPage();
    strategiesGridSort: StrategiesGridSort = new StrategiesGridSort();
 
-
+   isOpenPositions: boolean=true;
    expandIndex: any;
    showDetailsIndex: any;
    strategyLabel: boolean=true;
@@ -168,4 +168,12 @@ export class TradeStrategiesComponent implements OnInit {
       
    }
   
+   selectionChange(event) {
+      let stepLabel = event.selectedStep.label
+      if (stepLabel === "Open Positions") {
+         this.isOpenPositions = true
+      } else {
+         this.isOpenPositions = false
+      }
+   }
 }

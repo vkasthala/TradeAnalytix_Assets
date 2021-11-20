@@ -42,4 +42,6 @@ export class TradeStrategy {
     rules: RuleDto[];
 
     tradeTag: TradeTag[];
+
+    isEditTrade: boolean;
 }

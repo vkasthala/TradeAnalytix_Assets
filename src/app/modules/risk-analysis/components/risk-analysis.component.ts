@@ -34,7 +34,7 @@ import { MatDialog } from '@angular/material/dialog';
 export class RiskAnalysisComponent implements OnInit {
   @Input('matTooltipShowDelay') showDelay: number;
   @Input('matTooltipHideDelay') hideDelay: number;
-
+  @Input("editTrade") editTrade: boolean;
   @ViewChild('riskAnalysisChart', { static: false }) private riskAnalysisChartComponent: RiskAnalysisChartComponent;
   minDate = new Date();
 
@@ -78,7 +78,7 @@ export class RiskAnalysisComponent implements OnInit {
   optionTable: boolean = false;
   totalTable: boolean = false;
   selectedOptionResult: any;
-
+  isEditTrade: boolean = false;
   constructor(private utilService: UtilService,
     private riskAnalysisService: RiskAnalysisService,
     private userStockStatsService: UserStockStatsService,
@@ -281,7 +281,11 @@ export class RiskAnalysisComponent implements OnInit {
       input.stockSummary = this.stockSummary;
     }
     extras.state = input;
-    this.router.navigate(['/new-trade'], extras);
+    if (this.isEditTrade) {
+      this.router.navigate(['/edit-trade/' + input.tradeStrategy.id], extras);
+    } else {
+      this.router.navigate(['/new-trade'], extras);
+    }
   }
 
   addEvent(input: any, event: any, index: number) {
@@ -379,8 +383,9 @@ export class RiskAnalysisComponent implements OnInit {
         if (state.tradeStrategy && state.tradeStrategy.strategyTypeId) {
           this.selectedStrategy = state.tradeStrategy.strategyTypeId;
         }
+        this.isEditTrade = state.tradeStrategy.isEditTrade
       }
-    }
+    } 
   }
 
   initRiskAnalysisChart(riskAnalysisRequest: RiskAnalysisRequest) {
