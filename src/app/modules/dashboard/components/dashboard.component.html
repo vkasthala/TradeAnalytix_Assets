@@ -120,7 +120,7 @@
                                     Mindset
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row" *ngIf="latestTradePlan && latestTradePlan.day">
                                 <div class="col-4">
                                     {{latestTradePlan.day | date: 'dd-MMM-yyyy'}}
                                 </div>
