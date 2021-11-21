@@ -16,14 +16,50 @@
     background: #FFFFFF;
     box-shadow: 0px 4px 16px rgba(157, 157, 157, 0.1);
     border-radius: 5px;
-    min-height: 125px;
     .card-title {
-        font-size: 20px;
+        font-size: 22px;
         font-weight: 600;
+        color: #000;
+        text-align: center;
+        a {
+            color: #000;
+            &:hover {
+                color: #60bd6e;
+            }
+        }
     }
     .list-item {
         font-size: 13px;
     }
+}
+
+.card-icon {
+    // background-color: #5db570;
+    // border-radius: 4px;
+    // padding: 8px 3px;
+
+    img {
+        width: 40px;
+        height: 40px;
+    }
+}
+.card-thumb img {
+    width: 100%;
+    // border-radius: 4px;
+    height: 230px;
+    border: 1px solid #dcdddf;
+    padding: 2px;
+}
+.card-description {
+    position: absolute;
+    width: 100%;
+    background: rgb(96 189 110);
+    bottom: 0;
+    padding: 5px;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 500;
+    line-height: 1.345;
 }
 
 .trade-dash-cards-web {
@@ -182,6 +218,7 @@
     }
     .trade-cards-heading {
         margin-bottom: 8px;
+        font-size: 22px;
         h5 {
             font-weight: 700;
             font-size: 18px;
@@ -521,9 +558,10 @@
 
 .trade-cards-heading {
     margin-bottom: 10px;
+    font-size: 20px;
     h5 {
         font-weight: 500;
-        font-size: 20px;
+        font-size: 18px;
         @media #{$medium} {
             font-size: 16px;
             line-height: 28px;
@@ -624,3 +662,80 @@
     line-height: 21px;
     color: #9DA6BA;
 }
+
+.oultline-link {
+    display: inline-flex;
+    border: 1px solid #dcdddf;
+    border-radius: 4px;
+    color: #000;
+    flex-basis: 0;
+    flex-grow: 1;
+    justify-content: center;
+    padding: 6px 0;
+    width: 100%;
+    margin-bottom: 0.5rem;
+    a {
+        color: #000;
+    }
+}
+
+.flip-card {
+    background-color: transparent;
+    width: 100%;
+    height: 303px;
+    perspective: 1000px;
+  }
+  
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  }
+  
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  
+  .flip-card-front {
+    background-color: #bbb;
+    color: black;
+  }
+  
+  .flip-card-back {
+    background-color: #394c86;
+    color: white;
+    transform: rotateY(180deg);
+    padding: 1rem;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .card-title {
+        font-size: 26px;
+        font-weight: 600;
+        color: #fff;
+        a {
+            color: #fff;
+            &:hover {
+                color: #60bd6e;
+            }
+        }
+    }
+    p {
+        font-size: 1rem;
+    }
+  }
