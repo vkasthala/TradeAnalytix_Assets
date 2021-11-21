@@ -11,6 +11,8 @@ import { TradeInputData } from 'src/app/modules/shared/models/trade-management/t
 import { StockSymbol } from 'src/app/modules/shared/models/trade-management/stock-symbol.model';
 
 import { GenerateChartPopupComponent } from './generate-chart-popup/generate-chart-popup.component';
+import { DataSetupService } from 'src/app/modules/settings/services/data-setup.service';
+import { EditableListItem } from 'src/app/modules/shared/models/common/editable-list-item.model';
 @Component({
   selector: 'app-trade-thesis',
   templateUrl: './trade-thesis.component.html',
@@ -40,7 +42,8 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
   constructor(
     private _renderer2: Renderer2,
     private _dialog: MatDialog,
-    private metadataService: UserMetadataService
+    private metadataService: UserMetadataService,
+    private dataSetupService: DataSetupService
   ) {
 
   }
@@ -136,15 +139,60 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
     });
 
     dialogRef.afterClosed().subscribe((res) => {
-
+      if (!res || res === '') {
+        return;
+      }
+      if ('Source' === value) {
+        this.addSource(res);
+      } else if ('Technical Indicator' === value) {
+        this.addTechnicalIndicator(res);
+      } else if ('Surrounding Type' === value) {
+        this.addSurroundingEvent(res);
+      } else if ('Mindset' === value) {
+        this.addMindset(res);
+      }
     });
   }
+
+  addSource(value: string) {
+    this.dataSetupService.createSourceType(this.createEditableItem(value)).subscribe(result => {
+      this.loadSourceTypes();
+    });
+  }
+
+  addTechnicalIndicator(value: string) {
+    this.dataSetupService.createTechnicalIndicatorType(this.createEditableItem(value)).subscribe(result => {
+      this.loadTechnicalIndicators();
+    });
+  }
+
+  addSurroundingEvent(value: string) {
+    this.dataSetupService.createSurrEventType(this.createEditableItem(value)).subscribe(result => {
+      this.loadSurroundingEvents();
+    });
+  }
+
+  addMindset(value: string) {
+    this.dataSetupService.createMindsetType(this.createEditableItem(value)).subscribe(resuly => {
+      this.loadMindsets();
+    });
+  }
+
+  createEditableItem(value: string): EditableListItem {
+    const itm: EditableListItem = new EditableListItem();
+    itm.name = value;
+    itm.editable = 1;
+    return itm;
+  }
+
   showEntryThesis() {
     this.hideEntryThesis = !this.hideEntryThesis;
   }
+
   showClosingThesis() {
     this.hideClosingThesis = !this.hideClosingThesis;
   }
+
   generateChart() {
     const dialogRef = this._dialog.open(GenerateChartPopupComponent, {
       disableClose: true,
