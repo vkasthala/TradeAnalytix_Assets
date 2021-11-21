@@ -33,7 +33,7 @@
                 <!-- Name Column -->
                 <ng-container matColumnDef="type">
                     <mat-header-cell class="type-cell" *matHeaderCellDef> Type</mat-header-cell>
-                    <mat-cell *matCellDef="let element" class="type-cell"> {{element.type}} </mat-cell>
+                    <mat-cell *matCellDef="let element" class="type-cell"> {{element.type === '2' ? 'Exit' : 'Entry'}} </mat-cell>
                 </ng-container>
 
                 <!-- Weight Column -->
