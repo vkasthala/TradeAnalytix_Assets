@@ -16,6 +16,8 @@ export class TradePlanStrategy {
 
     aligned: boolean;
 
-    actionText: string;
+    preMarketComment: string;
+
+    postMarketComment: string;
 
 }

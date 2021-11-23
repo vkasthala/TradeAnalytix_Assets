@@ -9,7 +9,11 @@ import { PlannedTradeDialogComponent } from '../planned-trade-dialog/planned-tra
 })
 export class StrategyActionTextDialogComponent implements OnInit {
 
-  constructor(private dialogRef: MatDialogRef<PlannedTradeDialogComponent>, @Inject(MAT_DIALOG_DATA) public data) { }
+  title: string;
+
+  constructor(private dialogRef: MatDialogRef<PlannedTradeDialogComponent>, @Inject(MAT_DIALOG_DATA) public data) {
+    this.title = data.title;
+  }
 
   ngOnInit() {
   }

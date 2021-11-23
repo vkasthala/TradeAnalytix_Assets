@@ -52,9 +52,10 @@ export class OpenStrategiesGridComponent implements OnInit {
     return this.strategiesDataSource;
   }
 
-  onActionTextEdit(ele: TradePlanStrategy) {
+  onActionTextEdit(ele: TradePlanStrategy, commentType: string) {
     let dialogData: any = {
-      actionText: ele.actionText
+      actionText: 'Pre-Market Comments' === commentType ? ele.preMarketComment : ele.postMarketComment,
+      title: commentType
     };
     const dialogRef = this._dialog.open(StrategyActionTextDialogComponent, {
       disableClose: false,
@@ -63,7 +64,11 @@ export class OpenStrategiesGridComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe((res) => {
       console.log('after:', res);
-      ele.actionText = res.actionText;
+      if('Pre-Market Comments' === commentType){
+        ele.preMarketComment = res.actionText;
+      }else{
+        ele.postMarketComment = res.actionText;
+      }
     });
   }
   Collaps(index: number) {
