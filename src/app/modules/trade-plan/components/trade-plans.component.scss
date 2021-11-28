@@ -301,6 +301,16 @@ table {
     flex: 0 0 10% !important;
     min-width: 100px !important;
 }
+.entry_date_cell {
+    width: 10%;
+    flex: 0 0 10% !important;
+}
+td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type, th.mat-header-cell:first-of-type {
+    text-align: left !important;
+}
+td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
+    text-align: center;
+}
 
 .trade-plan-mobile {
     position: relative;

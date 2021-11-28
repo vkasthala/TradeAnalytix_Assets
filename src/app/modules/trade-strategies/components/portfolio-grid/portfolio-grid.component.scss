@@ -29,8 +29,9 @@ th.mat-header-cell {
 }
 
 .strategy-id-cell{
-  width: 15%;
+  width: 12%;
   min-width: 140px;
+  flex: 0 0 12% !important;
 }
 
 .strategy-name-cell{
@@ -71,6 +72,10 @@ th.mat-header-cell {
   flex: 0 0 8% !important;
 }
 
+.tags-cell {
+  width: 27%;
+  flex: 0 0 27% !important;
+}
 .action-cell {
   width: 7%;
   flex: 0 0 7% !important;

@@ -11,8 +11,8 @@
             <mat-table [dataSource]="dataSource" matSort>
                 <!-- Date Column -->
                 <ng-container matColumnDef="openDate">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header>Date</mat-header-cell>
-                    <mat-cell class="strategy-id-cell" *matCellDef="let element"> {{element.createDateTime | date: 'dd-MMM-yyyy'}} </mat-cell>
+                    <mat-header-cell *matHeaderCellDef mat-sort-header class="date-cell">Date</mat-header-cell>
+                    <mat-cell class="date-cell" *matCellDef="let element"> {{element.createDateTime | date: 'dd-MMM-yyyy'}} </mat-cell>
                 </ng-container>
 
                 <!-- File name Column -->

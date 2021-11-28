@@ -221,6 +221,16 @@
 
                                 <ng-template matExpansionPanelContent>
                                     <ng-container *ngIf="displayRiskAnalysis">
+                                        <div class="float-right mb-2">
+                                            <label class="col-form-label p-0 pt-2">Target Date</label>
+                                            <div class="card-right">
+                                                <div class="datepicker-group">
+                                                    <input matInput [matDatepicker]="targetDate" id="targetDate" name="targetDate" [min]="minDate" />
+                                                    <mat-datepicker-toggle matSuffix [for]="targetDate"></mat-datepicker-toggle>
+                                                    <mat-datepicker #targetDate></mat-datepicker>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <!-- risk-increas and decreas -->
                                         <div class="trade-risk-section">
                                             <div class="trade-risk-stock">
@@ -519,7 +529,7 @@
                             </mat-expansion-panel-header>
 
                             <ng-template matExpansionPanelContent>
-                                <div class="trade-stoack-main pb-3" #tradeCards>
+                                <div class="trade-stoack-main pb-1" #tradeCards>
                                     <div class="d-flex justify-content-between align-items-end">
                                         <button type="button" class="btn btn-add"  *ngIf="!stockAdded" (click)="enableStockForm()"> + Stock</button>
 

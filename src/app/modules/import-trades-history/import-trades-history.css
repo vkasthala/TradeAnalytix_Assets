@@ -21,18 +21,23 @@ th.mat-header-cell {
   background-color: transparent;
   border: 0;
 }
-
+.date-cell {
+  width: 10%;
+  flex: 0 0 10% !important;
+}
 .strategy-id-cell{
   width: 15%;
-  min-width: 140px;
+  flex: 0 0 15% !important;
 }
 
 .strategy-name-cell{
   width: 12%;
+  flex: 0 0 12% !important;
 }
 
 .stock-name-cell{
   width: 28%;
+  flex: 0 0 28% !important;
 }
 
 .direction-cell{
@@ -184,4 +189,12 @@ th.mat-header-cell {
 }
 .trade-dash-name h3 {
   font-size: 14px !important;
+}
+.mat-cell:first-of-type, .mat-footer-cell:first-of-type, .mat-header-cell:first-of-type {
+  text-align: left !important;
+  justify-content: start;
+}
+.mat-cell, .mat-footer-cell, .mat-header-cell {
+  text-align: center;
+  justify-content: center;
 }
