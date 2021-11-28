@@ -325,17 +325,23 @@
                                     <div class="d-flex justify-content-end align-items-center mt-3">
                                         <div class="pb-3 k-font-bold d-flex justify-content-end" *ngIf="maxRiskDetails">
                                             <div class="risk_details risk_profit mr-3">
-                                                <div class="pr-3">Maximum Proﬁt is when the stock is up <span>{{maxRiskDetails.maxProfitChange}}</span>% Maximum
+                                                <div class="pr-3">
+                                                    Maximum profit at the current implied volatility and days left to expiration is
+                                                    <span class="risk_details_count">{{maxRiskDetails.maxProfit}}</span>
+                                                    when the stock price moves<span class="ml-2">{{maxRiskDetails.maxProfitChange}}</span>%
                                                 </div>
-                                                <span class="risk_details_count">{{maxRiskDetails.maxProfit}}</span>
+                                                
                                             </div>
                                             <div class="risk_details risk_lose">
-                                                <div class="pr-3">Risk is when the stock is down <span>{{maxRiskDetails.maxRiskChange}}</span>%
+                                                <div class="pr-3">Maximum risk at the current implied volatility and days left to expiration is <span class="risk_details_count">{{maxRiskDetails.maxRisk}}</span> when the stock moves <span class="ml-2">{{maxRiskDetails.maxRiskChange}}</span>%
                                                 </div>
-                                                <span class="risk_details_count">{{maxRiskDetails.maxRisk}}</span>
+                                                
                                             </div>
                                         </div>
-                                        <button class="btn btn-enter ml-3" (click)="calculateMaxRisk()">Max Profit/Risk</button>
+                                        <div class="col-sm-3 pr-0">
+                                            <button class="btn btn-enter d-flex align-items-center ml-auto" (click)="calculateMaxRisk()">Estimate Maximum Profit and Risk <mat-icon matTooltip="Maximum risk and maximum profit is estimated at the current implied volatility and days left to expiration. The values might change as the IV and days left gets updated" matTooltipPosition="right" class="ml-2 mat-icon-sm cursor" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay">info</mat-icon></button>
+                                        </div>
+                                        
                                     </div>
 
                                     <ng-container *ngIf="displayRiskAnalysis && analyzeRisk && (stockAdded || stockOptions.length > 0)">
@@ -366,7 +372,7 @@
                                                                         <tr>
                                                                             <th>Change</th>
                                                                             <th>Price</th>
-                                                                            <th *ngIf="stockAdded">P&L</th>
+                                                                            <th *ngIf="stockAdded">Return</th>
                                                                         </tr>
                                                                     </thead>
 
@@ -396,7 +402,7 @@
                                                                                 </th>
                                                                                 <th>{{riskAnalysisResults[0].optionResults[index].optionType == 1 ? 'Value' : 'Value'}}
                                                                                 </th>
-                                                                                <th>P&L</th>
+                                                                                <th>Return</th>
                                                                             </tr>
                                                                         </thead>
 
@@ -426,7 +432,7 @@
                                                                     <thead>
                                                                         <tr>
 
-                                                                            <th>Net P&L</th>
+                                                                            <th>Net Return</th>
                                                                         </tr>
                                                                     </thead>
 
@@ -882,7 +888,7 @@
                                                                     <thead>
                                                                         <tr>
                                                                             <th>Price</th>
-                                                                            <th *ngIf="stockAdded">P&L</th>
+                                                                            <th *ngIf="stockAdded">Return</th>
                                                                         </tr>
                                                                     </thead>
 
@@ -902,7 +908,7 @@
                                                                             <thead>
                                                                                 <tr>
                                                                                     <th>Value</th>
-                                                                                    <th>P&L</th>
+                                                                                    <th>Return</th>
                                                                                 </tr>
                                                                             </thead>
 
@@ -924,7 +930,7 @@
                                                                     <thead>
                                                                         <tr>
 
-                                                                            <th>Net P&L</th>
+                                                                            <th>Net Return</th>
                                                                         </tr>
                                                                     </thead>
 

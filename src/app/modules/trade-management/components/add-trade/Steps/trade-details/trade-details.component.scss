@@ -602,7 +602,7 @@ a.btn.btn-skip {
 
 .tags-list {
     list-style: none;
-    display: flex;
+    display: inline-flex;
     justify-content: flex-end;
 }
 
@@ -1064,4 +1064,9 @@ a.btn.btn-skip {
         }
     }
     
+}
+.assess-risk-btn {
+    border: 3px solid #dee2e6 !important;
+    border-radius: 5px;
+    padding: 0.25rem 0.5rem;
 }

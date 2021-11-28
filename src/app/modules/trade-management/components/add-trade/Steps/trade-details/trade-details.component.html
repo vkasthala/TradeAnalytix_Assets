@@ -25,23 +25,16 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <!-- <div *ngIf="closeTrade == false">
-                      <span class="search_btn gap-btn" *ngIf="!stockAdded">
-                        <a class="btn btn-add" (click)="addStock()"> Add Stock</a>
-                      </span>
-                    </div> -->
-
-                                        <div class="d-flex align-items-center"
-                                            *ngIf="(stockAdded || stockOptions.length) && !closeTrade && !viewTrade">
-                                            <a class="text-link" (click)="navigateToRiskAnalysis()">Assess Risk</a>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-sm-7 px-0">
+                    <div class="col-sm-7 px-0 text-right">
+                        <span class="d-inline-flex mr-2" *ngIf="(stockAdded || stockOptions.length) && !closeTrade && !viewTrade">
+                            <a class="text-link assess-risk-btn" (click)="navigateToRiskAnalysis()">Assess Risk</a>
+                        </span>
                         <ul class="tags-list">
                             <li *ngFor="let tag of tags; let i = index;" class="tag-item">
                                 <span (click)="editTag(tag)">

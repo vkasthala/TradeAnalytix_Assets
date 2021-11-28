@@ -385,6 +385,17 @@ export class RiskAnalysisComponent implements OnInit {
         }
         this.isEditTrade = state.tradeStrategy.isEditTrade
       }
+      if (this.stockOptions && this.stockOptions.length > 0) {
+        for (let ind = 0; ind < this.stockOptions.length; ind++) {
+          console.log(this.stockOptions[ind].expireDate);
+          let todayDate = new Date();
+          todayDate.setHours(0,0,0,0);
+          let currentDate = new Date(this.stockOptions[ind].expireDate);          
+          if (currentDate < todayDate) {
+            this.toastr.error("Expiry date is in the past. Please change it.");
+          } 
+        }
+      }
     } 
   }
 

@@ -5,19 +5,21 @@
             <h6 class="widget_item-value maximum_proﬁt">{{maxRiskDetails.maxProfit}}</h6>
             <span class="widget_item-title d-flex align-items-center">
                 Maximum Proﬁt 
-                <mat-icon matTooltip="Estimated maximum profit on the trade strategy by calculating stock’s upside based on 30-day volatility" matTooltipPosition="right" class="ml-2 mat-icon-sm cursor" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay">info</mat-icon>
+                <mat-icon matTooltip="Maximum profit is estimated at the current implied volatility and days left to expiration" matTooltipPosition="right" class="ml-2 mat-icon-sm cursor" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay">info</mat-icon>
             </span>
         </div>
         <div class="widget_item" *ngIf="maxRiskDetails">
             <h6 class="widget_item-value maximum_risk">{{maxRiskDetails.maxRisk}}</h6>
             <span class="widget_item-title d-flex align-items-center">
                 Maximum Risk 
-                <mat-icon matTooltip="Estimated maximum loss on the trade strategy by calculating stock’s downside based on 30-day volatility" matTooltipPosition="right" class="ml-2 mat-icon-sm cursor" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay">info</mat-icon>
+                <mat-icon matTooltip="Maximum risk is estimated at the current implied volatility and days left to expiration" matTooltipPosition="right" class="ml-2 mat-icon-sm cursor" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay">info</mat-icon>
             </span>
         </div>
         <div class="widget_item">
-            <button type="button" *ngIf="!viewTrade" class="btn p-0 text-link"
-                (click)="calculateMaxProfitAndRisk()">Calculate Max Risk</button>
+            <span *ngIf="!viewTrade" class="text-link d-flex"
+                (click)="calculateMaxProfitAndRisk()">Estimate Profit and Risk
+                <mat-icon matTooltip="Maximum risk and maximum profit is estimated at the current implied volatility and days left to expiration. The values might change as the IV and days left gets updated" matTooltipPosition="right" class="ml-2 mat-icon-sm cursor" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay">info</mat-icon>
+            </span>
         </div>
 
         <div class="closed_date_sec" *ngIf="closeTrade"
