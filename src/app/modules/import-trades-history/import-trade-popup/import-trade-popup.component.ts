@@ -3,6 +3,8 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { UploadFileService } from 'src/app/modules/import-trades/services/upload-file.service';
+import { BrokerageService } from '../../shared/services/brokerage.service';
+import { Brokerage } from '../models/brokerage.model';
 
 @Component({
   selector: 'app-import-trade-popup',
@@ -10,12 +12,17 @@ import { UploadFileService } from 'src/app/modules/import-trades/services/upload
   styleUrls: ['./import-trade-popup.component.scss']
 })
 export class ImportTradePopupComponent implements OnInit {
+
+  brokerages: Brokerage[] = [];
+
   selectedFiles: FileList;
   currentFile: File;
-  selectedbroker: any = 20;
+  selectedbroker: any = 1;
   processing: boolean = false;
+
   constructor(
     private uploadService: UploadFileService,
+    private brokerageService: BrokerageService,
     protected toastr: ToastrService,
     protected router: Router,
     public dialogRef: MatDialogRef<ImportTradePopupComponent>,
@@ -24,12 +31,15 @@ export class ImportTradePopupComponent implements OnInit {
 
 
   ngOnInit() {
-
+    this.brokerageService.getBrokerages().subscribe(result => {
+      this.brokerages = result;
+    });
   }
 
   selectFile(event) {
     this.selectedFiles = event.target.files;
   }
+
   importTrades() {
     console.log('selectedbroker------>', this.selectedbroker);
     if (this.selectedFiles !== undefined && this.selectedFiles.length > 0) {
