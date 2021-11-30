@@ -102,7 +102,12 @@ export class RiskAnalysisComponent implements OnInit {
 
   enterSymbol() {
     if (!this.selectedStock || !this.selectedStock.code) {
-      this.toastr.error('Please enter a valid symbol to proceed', '');
+      this.toastr.error('Please enter a valid symbol to proceed', '', 
+      { 
+        tapToDismiss:false,
+        closeButton:true,
+        disableTimeOut: true
+      });
       return false;
     }
     this.currentState++;
@@ -392,7 +397,12 @@ export class RiskAnalysisComponent implements OnInit {
           todayDate.setHours(0,0,0,0);
           let currentDate = new Date(this.stockOptions[ind].expireDate);          
           if (currentDate < todayDate) {
-            this.toastr.error("Expiry date is in the past. Please change it.");
+            this.toastr.error("Expiry date is in the past. Please change it.", '', 
+            { 
+              tapToDismiss:false,
+              closeButton:true,
+              disableTimeOut: true
+            });
           } 
         }
       }
@@ -517,7 +527,12 @@ export class RiskAnalysisComponent implements OnInit {
   validateInputs(): boolean {
     if (this.stockAdded) {
       if (!this.stockEntry.price || this.stockEntry.price == 0) {
-        this.toastr.error('Invalid Stock Price', '');
+        this.toastr.error('Invalid Stock Price', '', 
+        { 
+          tapToDismiss:false,
+          closeButton:true,
+          disableTimeOut: true
+        });
         return false;
       }
 

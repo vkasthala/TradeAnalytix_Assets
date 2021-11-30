@@ -30,17 +30,32 @@ export class ImportTradesComponent implements OnInit {
       this.uploadService.importTrades(this.currentFile, this.selectedbroker).subscribe(
         event => {
           window.location.reload();
-          this.toastr.success('Imported trades successfully', '');
+          this.toastr.success('Imported trades successfully', '', 
+          { 
+            tapToDismiss:false,
+            closeButton:true,
+            disableTimeOut: true
+          });
         },
         err => {
-          this.toastr.error('Failed to import trades');
+          this.toastr.error('Failed to import trades', '', 
+          { 
+            tapToDismiss:false,
+            closeButton:true,
+            disableTimeOut: true
+          });
           this.currentFile = undefined;
           window.location.reload();
         });
       this.selectedFiles = undefined;
     }
     else{
-      this.toastr.error('Please select a file import trades');
+      this.toastr.error('Please select a file import trades', '', 
+      { 
+        tapToDismiss:false,
+        closeButton:true,
+        disableTimeOut: true
+      });
       window.location.reload();
     }
   }

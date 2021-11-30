@@ -315,15 +315,28 @@ export class DatasetupComponent implements OnInit {
   }
 
   showDeleteErrorMessage() {
-    this.toastr.error('Failed to delete entry. Please check if this has assigned to any trade strategy.', '');
+    this.toastr.error('Failed to delete entry. Please check if this has assigned to any trade strategy.', '', 
+    { 
+      tapToDismiss:false,
+      closeButton:true,
+      disableTimeOut: true
+    });
   }
 
   showErrorMessageDialog(msg: string) {
-    this.toastr.error(msg, '');
+    this.toastr.error(msg, '', { 
+      tapToDismiss:false,
+      closeButton:true,
+      disableTimeOut: true
+    });
   }
 
   showSuccessMessage(msg: string) {
-    this.toastr.success(msg);
+    this.toastr.success(msg, '', { 
+      tapToDismiss:false,
+      closeButton:true,
+      disableTimeOut: true
+    });
   }
 
 }

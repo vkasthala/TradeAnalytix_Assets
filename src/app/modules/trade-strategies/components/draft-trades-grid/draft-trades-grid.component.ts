@@ -17,7 +17,7 @@ import { TradeStrategyGridService } from '../../services/trade-strategy-grid.ser
 
 import { StrategiesGridFilter } from '../../models/strategies-grid-filter.model';
 import { BehaviorSubject } from 'rxjs';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-draft-trades-grid',
   templateUrl: './draft-trades-grid.component.html',
@@ -50,7 +50,9 @@ export class DraftTradesGrid implements AfterViewInit, OnInit {
     private stockSymbolService: StockSymbolService,
     private userStockStatsService: UserStockStatsService,
     private router: Router,
-    private dialog: MatDialog) {
+    private dialog: MatDialog,
+    protected toastr: ToastrService,
+    ) {
   }
 
   ngOnInit() {
@@ -190,8 +192,19 @@ export class DraftTradesGrid implements AfterViewInit, OnInit {
         this.tradeStrategyService.deleteTradeStrategy(rowModel.id).subscribe(() => {
           console.log('Trade strategy deleted..', rowModel.id);
           this.reload(this.strategiesGridFilter);
-        });
-        this.Loader = !this.Loader;
+          this.Loader = !this.Loader;
+        },
+        err => {
+          this.toastr.error(
+            'Internal Server Error', '', 
+            { 
+              tapToDismiss:false,
+              closeButton:true,
+              disableTimeOut: true
+            },
+          );
+          this.Loader = !this.Loader;
+        })
       }
     });
   }

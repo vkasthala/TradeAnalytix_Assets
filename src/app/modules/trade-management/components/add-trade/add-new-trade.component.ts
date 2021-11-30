@@ -106,7 +106,11 @@ export class AddNewTradeComponent implements OnInit {
 
   enterSymbol() {
     if (!this.selectedStock || !this.selectedStock.code) {
-      this.toastr.error('Please enter a valid symbol to proceed', '');
+      this.toastr.error('Please enter a valid symbol to proceed', '', { 
+        tapToDismiss:false,
+        closeButton:true,
+        disableTimeOut: true
+      });
       return false;
     }
 
@@ -175,12 +179,21 @@ export class AddNewTradeComponent implements OnInit {
     console.log('add trade...', this.tradeStrategy);
     this.tradeStrategyService.addTrade(this.tradeStrategy).subscribe(result => {
       console.log('Trade strategy successfully created');
-      this.toastr.success('Trade strategy created', '');
+      this.toastr.success('Trade strategy created', '', 
+      { 
+        tapToDismiss:false,
+        closeButton:true,
+        disableTimeOut: true
+      });
       this.router.navigateByUrl("/trade-strategies");
       this.Loader = !this.Loader;
     },
       err => {
-        this.toastr.error('Internal Server Error');
+        this.toastr.error('Internal Server Error', '', { 
+          tapToDismiss:false,
+          closeButton:true,
+          disableTimeOut: true
+        });
         this.Loader = !this.Loader;
       })
   }
@@ -189,12 +202,21 @@ export class AddNewTradeComponent implements OnInit {
     this.Loader = !this.Loader;
     this.updateTradeStrategyProps();
     this.tradeStrategyService.editTrade(this.tradeStrategy).subscribe(result => {
-      this.toastr.success('Trade strategy updated', '');
+      this.toastr.success('Trade strategy updated', '', 
+      { 
+        tapToDismiss:false,
+        closeButton:true,
+        disableTimeOut: true
+      });
       this.router.navigateByUrl("/trade-strategies");
       this.Loader = !this.Loader;
     },
       err => {
-        this.toastr.error('Internal Server Error');
+        this.toastr.error('Internal Server Error', '', { 
+          tapToDismiss:false,
+          closeButton:true,
+          disableTimeOut: true
+        });
         this.Loader = !this.Loader;
       })
 
@@ -203,12 +225,22 @@ export class AddNewTradeComponent implements OnInit {
   closeTradeStrategy() {
     this.updateTradeStrategyProps();
     this.tradeStrategyService.closeTrade(this.tradeStrategy).subscribe(result => {
-      this.toastr.success('Trade strategy closed', '');
+      this.toastr.success('Trade strategy closed', '', 
+      { 
+        tapToDismiss:false,
+        closeButton:true,
+        disableTimeOut: true
+      });
       this.router.navigateByUrl("/trade-strategies");
       this.Loader = !this.Loader;
     },
       err => {
-        this.toastr.error('Internal Server Error');
+        this.toastr.error('Internal Server Error', '', 
+        { 
+          tapToDismiss:false,
+          closeButton:true,
+          disableTimeOut: true
+        });
         this.Loader = !this.Loader;
       })
   }
@@ -392,7 +424,12 @@ export class AddNewTradeComponent implements OnInit {
   }
 
   showSuccess() {
-    this.toastr.error('Hello world!', 'Toastr fun!');
+    this.toastr.error('Hello world!', 'Toastr fun!',
+    { 
+      tapToDismiss:false,
+      closeButton:true,
+      disableTimeOut: true
+    });
   }
 
   showClosedLegs() {

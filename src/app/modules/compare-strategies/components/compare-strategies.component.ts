@@ -73,7 +73,12 @@ export class CompareStrategiesComponent implements OnInit {
 
   enterSymbol() {
     if (!this.selectedStock || !this.selectedStock.code) {
-      this.toastr.error('Please enter a valid symbol to proceed', '');
+      this.toastr.error('Please enter a valid symbol to proceed', '', 
+      { 
+        tapToDismiss:false,
+        closeButton:true,
+        disableTimeOut: true
+      });
       return false;
     }
     this.currentState++;

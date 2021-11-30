@@ -64,13 +64,23 @@ export class ImportTradePopupComponent implements OnInit {
         },
         err => {
           this.processing = false;
-          this.toastr.error('Failed to import trades.' + (err.error && err.error.message ? ' Error message: ' + err.error.message : ''), 'Error', { timeOut: 0 });
+          this.toastr.error('Failed to import trades.' + (err.error && err.error.message ? ' Error message: ' + err.error.message : ''), 'Error', { 
+            tapToDismiss:false,
+            closeButton:true,
+            disableTimeOut: true,
+            timeOut: 0 
+          });
           this.currentFile = undefined;
         });
       this.selectedFiles = undefined;
     }
     else {
-      this.toastr.error('Please select a file import trades');
+      this.toastr.error('Please select a file import trades', '', 
+      { 
+        tapToDismiss:false,
+        closeButton:true,
+        disableTimeOut: true
+      });
     }
   }
 

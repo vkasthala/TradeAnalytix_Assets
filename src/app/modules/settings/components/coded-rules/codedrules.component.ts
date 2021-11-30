@@ -127,11 +127,20 @@ export class CodedRulesComponent implements OnInit {
 
 
   showErrorMessageDialog(msg: string) {
-    this.toastr.error(msg, '');
+    this.toastr.error(msg, '', { 
+      tapToDismiss:false,
+      closeButton:true,
+      disableTimeOut: true
+    });
   }
 
   showSuccessMessage(msg: string) {
-    this.toastr.success(msg);
+    this.toastr.success(msg, '', 
+    { 
+      tapToDismiss:false,
+      closeButton:true,
+      disableTimeOut: true
+    });
   }
 
   onRowEdit(element: UserCodedRule) {

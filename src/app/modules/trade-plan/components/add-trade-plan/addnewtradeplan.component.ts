@@ -115,10 +115,19 @@ export class AddnewtradeplanComponent implements OnInit {
     tradePlan.statusId = 1;
     console.log('trade plan to be created: ', tradePlan);
     this.tradePlanService.createTradePlan(tradePlan).subscribe(result => {
-      this.toastr.success('Trade plan added');
+      this.toastr.success('Trade plan added', '', { 
+        tapToDismiss:false,
+        closeButton:true,
+        disableTimeOut: true
+      });
       this.router.navigate(['/trade-plans']);
     }, () => {
-      this.toastr.error("Failed to create trade plan for the day")
+      this.toastr.error("Failed to create trade plan for the day", '', 
+      { 
+        tapToDismiss:false,
+        closeButton:true,
+        disableTimeOut: true
+      })
     });
   }
 
@@ -127,7 +136,12 @@ export class AddnewtradeplanComponent implements OnInit {
     tradePlan.statusId = 2;
     console.log('trade plan to be updated: ', tradePlan);
     this.tradePlanService.updateTradePlan(tradePlan).subscribe(result => {
-      this.toastr.success('Trade plan successfully submitted');
+      this.toastr.success('Trade plan successfully submitted', '', 
+      { 
+        tapToDismiss:false,
+        closeButton:true,
+        disableTimeOut: true
+      });
       this.router.navigate(['/trade-plans']);
     });
   }
