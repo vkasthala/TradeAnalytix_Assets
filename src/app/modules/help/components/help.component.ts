@@ -25,7 +25,7 @@ export class HelpComponent implements OnInit {
     private router: Router,
     private _dialog: MatDialog,
     private httpService: HttpService,
-    protected toastr: ToastrService
+    protected toastr: ToastrService,
   ) { }
 
   ngOnInit() {
