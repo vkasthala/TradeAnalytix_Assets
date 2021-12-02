@@ -118,7 +118,6 @@ export class TradeDetailsComponent implements OnInit {
       this.selectedStrategy = this.inputState.tradeStrategy.strategyTypeId;
       this.stockEntry = this.inputState.tradeStrategy.stockEntry && this.inputState.tradeStrategy.stockEntry.length > 0 ? this.inputState.tradeStrategy.stockEntry[0] : undefined;
       this.stockAdded = this.inputState.tradeStrategy.stockEntry && this.inputState.tradeStrategy.stockEntry.length > 0 && this.inputState.tradeStrategy.stockEntry[0].actionType && this.inputState.tradeStrategy.stockEntry[0].quantity > 0;
-      this.direction = this.inputState.tradeStrategy.direction;
       this.executedDate = this.inputState.tradeStrategy.executedDate;
       this.closeDate = this.inputState.tradeStrategy.closeDate;
       this.lastUpdatedDate = this.inputState.tradeStrategy.updateDateTime;

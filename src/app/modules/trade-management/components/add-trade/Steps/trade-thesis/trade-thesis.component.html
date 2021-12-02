@@ -95,9 +95,9 @@
                         </mat-icon>
                     </div>
                     <div class="media align-items-center">
-                        <mat-radio-group [(ngModel)]="tradeThesis.contrarianType">
-                            <mat-radio-button value="yes" class="trade-type-radio">Yes</mat-radio-button>
-                            <mat-radio-button value="no" class="trade-type-radio">No</mat-radio-button>
+                        <mat-radio-group [(ngModel)]="tradeThesis.contrarian">
+                            <mat-radio-button [value]=0 class="trade-type-radio">No</mat-radio-button>
+                            <mat-radio-button [value]=1 class="trade-type-radio">Yes</mat-radio-button>
                         </mat-radio-group>
                     </div>
                 </div>
@@ -114,10 +114,11 @@
                     </div>
                     <div class="media align-items-center">
                         <select class="form-control select-input" id="inputState"
-                            [(ngModel)]="tradeThesis.surroundingEventId">
-                            <option [ngValue]="Long">Long</option>
-                            <option [ngValue]="Neutral">Neutral</option>
-                            <option [ngValue]="Short">Short</option>
+                            [(ngModel)]="tradeThesis.direction">
+                            <option [ngValue]=1>Long</option>
+                            <option [ngValue]=2>Neutral</option>
+                            <option [ngValue]=3>Short</option>
+                            <option [ngValue]=4>Custom</option>
                         </select>
                     </div>
                 </div>

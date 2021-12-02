@@ -16,4 +16,8 @@ export class TradeThesis {
 
     technicalIndicatorId: number;
 
+    contrarian: Number;
+
+    direction: Number;
+
 }
