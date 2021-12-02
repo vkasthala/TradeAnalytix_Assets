@@ -160,7 +160,7 @@ export class ReportTypeService {
     reportSubType = new ReportSubType();
     reportSubType.name = 'Contrarian';
     reportSubType.id = "contrarian";
-    reportSubType.reportDetailList = [new ReportDetails('contrarian', 'Contrarian Chart Title', ReportCategory.Net_Return, "This report shows the realized return of the user's portfolio by contrarian trade")];
+    reportSubType.reportDetailList = [new ReportDetails('net_return_contrarian', 'Net Return by Contrarian', ReportCategory.Net_Return, "This report shows the realized return by contrarian type"), new ReportDetails('win_loss_contrarian', 'Win/Loss by Contrarian', ReportCategory.Win_Loss, "This report shows the number of winning and losing trades by contrarian")];
     reportSubTypes.push(reportSubType);
 
     reportSubType = new ReportSubType();
