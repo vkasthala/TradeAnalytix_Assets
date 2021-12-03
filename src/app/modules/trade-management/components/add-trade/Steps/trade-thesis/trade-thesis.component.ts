@@ -24,8 +24,8 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
   sourceTypes: SourceType[];
   technicalIndicators: TechnicalIndicator[];
   surroundingTypes: SurroundingType[];
-
   tradeThesis: TradeThesis;
+
   @ViewChild('thesisTradingview', { static: false }) thesisTradingview: ElementRef;
   @Output('nextStep') nextStep = new EventEmitter();
   @Output('prevStep') prevStep = new EventEmitter();
@@ -67,6 +67,8 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
       if (!this.tradeThesis.tradeType) {
         this.tradeThesis.tradeType = 'planned';
       }
+      debugger;
+      this.tradeThesis.direction = this.inputState.tradeStrategy.direction;
     }
   }
 

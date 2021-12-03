@@ -27,7 +27,7 @@ export class TradeStrategy {
 
     stockId: number;
 
-    direction: TradeDirection;
+    direction: Number;
 
     userId: number;
 

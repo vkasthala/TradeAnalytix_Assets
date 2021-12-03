@@ -274,7 +274,7 @@ export class AddNewTradeComponent implements OnInit {
     }
     this.tradeStrategy.stockEntry = stockEntries;
     this.tradeStrategy.stockOptions = this.tradeDetails.stockOptions;
-    this.tradeStrategy.direction = this.getDirection();
+    this.tradeStrategy.direction = this.tradeThesis.tradeThesis.direction;
     this.tradeStrategy.rules = this.entryRules.entryRules;
 
     if (this.close) {
