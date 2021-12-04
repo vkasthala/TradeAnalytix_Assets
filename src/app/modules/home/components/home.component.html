@@ -92,16 +92,21 @@
                                 Rules
                             </a>
                         </span> -->
-                        <span class="top-nav-item" [class.nav-active]="currentRoute == 'setttings'">
+                        <span class="top-nav-item pr-0" [class.nav-active]="currentRoute == 'setttings'">
                             <a class="top-nav-link" [routerLink]="['/setttings/']">
                                 <mat-icon>settings</mat-icon>
                             </a>
                         </span>
-                        <span class="top-nav-item" [class.nav-active]="currentRoute == 'notifications'">
+                        <span class="top-nav-item pl-0" [class.nav-active]="currentRoute == 'notifications'">
                             <a class="top-nav-link" [routerLink]="['/notifications/']">
                                 <mat-icon>notifications_none</mat-icon>
                                 <span class="notification_count">{{notificationService.notificationCount}}</span>
                         </a>
+                        </span>
+                        <span class="top-nav-item" [class.nav-active]="currentRoute == 'help'">
+                            <a class="top-nav-link" [routerLink]="['/help']">
+                                <mat-icon>help_outline</mat-icon>
+                            </a>
                         </span>
                     </div>
                     <div class="login-img ml-3" (click)="logout()">

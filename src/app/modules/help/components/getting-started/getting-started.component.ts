@@ -9,8 +9,6 @@ import { Router } from '@angular/router';
 })
 export class GettingStartedComponent implements OnInit {
   
-
-  protected loginModalOpen: boolean = false;
   constructor(
     private router: Router,
   ) { }

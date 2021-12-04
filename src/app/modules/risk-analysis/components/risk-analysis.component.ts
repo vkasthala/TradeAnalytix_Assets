@@ -383,7 +383,12 @@ export class RiskAnalysisComponent implements OnInit {
         }
         if (state.tradeStrategy && state.tradeStrategy.stockOptions) {
           console.log('stockOptions:', state.tradeStrategy.stockOptions);
-          this.stockOptions = state.tradeStrategy.stockOptions;
+          for(let ind = 0; ind < state.tradeStrategy.stockOptions.length; ind++){
+            if(state.tradeStrategy.stockOptions[ind].contracts !== 0) {
+              this.stockOptions.push(state.tradeStrategy.stockOptions[ind]);
+            }
+          }
+          
         }
         if (state.tradeStrategy && state.tradeStrategy.strategyTypeId) {
           this.selectedStrategy = state.tradeStrategy.strategyTypeId;

@@ -22,6 +22,16 @@ import { DashboardComponent } from '../dashboard/components/dashboard.component'
 import { KeyInsightsComponent } from '../dashboard/components/key-insights/key-insights.component';
 import { DefaultDashboardComponent } from '../default-dashboard/default-dashboard.component';
 import { EconomicCalendarComponent } from '../economic-calendar/economic-calendar.component';
+import { CompareStrategyComponent } from '../help/components/compare-strategy/compare-strategy.component';
+import { HelpDataSetupComponent } from '../help/components/data-setup/data-setup.component';
+import { GettingStartedComponent } from '../help/components/getting-started/getting-started.component';
+import { HelpReportsComponent } from '../help/components/help-reports/help-reports.component';
+import { HelpComponent } from '../help/components/help.component';
+import { ImportTradeComponent } from '../help/components/import-trade/import-trade.component';
+import { HelpRiskAnalysisComponent } from '../help/components/risk-analysis/risk-analysis.component';
+import { TradeJournalComponent } from '../help/components/trade-journal/trade-journal.component';
+import { TradePlaneComponent } from '../help/components/trade-plan/trade-plan.component';
+import { TradingRulesComponent } from '../help/components/trading-rules/trading-rules.component';
 import { ImportTradePopupComponent } from '../import-trades-history/import-trade-popup/import-trade-popup.component';
 import { ImportTradesHistory } from '../import-trades-history/import-trades-history';
 import { ImportTradesComponent } from '../import-trades/components/import-trades.component';
@@ -210,7 +220,17 @@ export const MY_FORMATS = {
     ReportsRulesComponent,
     StrategySelectionComponent,
     EditableSelectComponent,
-    DefaultDashboardComponent
+    DefaultDashboardComponent,
+    HelpComponent,
+    GettingStartedComponent,
+    TradeJournalComponent,
+    ImportTradeComponent,
+    TradePlaneComponent,
+    HelpRiskAnalysisComponent,
+    CompareStrategyComponent,
+    TradingRulesComponent,
+    HelpReportsComponent,
+    HelpDataSetupComponent
   ],
   imports: [
     FormsModule,

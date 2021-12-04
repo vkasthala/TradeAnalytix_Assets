@@ -23,6 +23,16 @@ import { NotificationsComponent } from '../../modules/notifications/notification
 import { ViewTradePlanComponent } from '../../modules/trade-plan/components/view-trade-plan.component';
 import { RulesComponent } from '../rules/components/rules.component';
 import { DefaultDashboardComponent } from '../default-dashboard/default-dashboard.component';
+import { HelpComponent } from '../help/components/help.component';
+import { GettingStartedComponent } from '../help/components/getting-started/getting-started.component';
+import { TradeJournalComponent } from '../help/components/trade-journal/trade-journal.component';
+import { ImportTradeComponent } from '../help/components/import-trade/import-trade.component';
+import { HelpDataSetupComponent } from '../help/components/data-setup/data-setup.component';
+import { HelpReportsComponent } from '../help/components/help-reports/help-reports.component';
+import { TradingRulesComponent } from '../help/components/trading-rules/trading-rules.component';
+import { CompareStrategyComponent } from '../help/components/compare-strategy/compare-strategy.component';
+import { TradePlaneComponent } from '../help/components/trade-plan/trade-plan.component';
+import { HelpRiskAnalysisComponent } from '../help/components/risk-analysis/risk-analysis.component';
 
 
 const routes: Routes = [
@@ -121,7 +131,53 @@ const routes: Routes = [
         {
           path: 'rules',
           component: RulesComponent
-        }
+        },
+        {
+          path: 'help',
+          component : HelpComponent,
+          children: [
+            {
+              path : '',
+              component: GettingStartedComponent
+            },
+            {
+              path : 'getting-started',
+              component: GettingStartedComponent
+            },
+            {
+              path : 'trade-journal',
+              component: TradeJournalComponent
+            },
+            {
+              path : 'import-trade',
+              component: ImportTradeComponent
+            },
+            {
+              path : 'trade-plan',
+              component: TradePlaneComponent
+            },
+            {
+              path : 'helprisk-analysis',
+              component: HelpRiskAnalysisComponent
+            },
+            {
+              path : 'compare-strategy',
+              component: CompareStrategyComponent
+            },
+            {
+              path : 'trading-rules',
+              component: TradingRulesComponent
+            },
+            {
+              path : 'helpreports',
+              component: HelpReportsComponent
+            },
+            {
+              path : 'data-setup',
+              component: HelpDataSetupComponent
+            },
+          ]
+        },
     ]
   },
   {
