@@ -67,7 +67,6 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
       if (!this.tradeThesis.tradeType) {
         this.tradeThesis.tradeType = 'planned';
       }
-      debugger;
       this.tradeThesis.direction = this.inputState.tradeStrategy.direction;
     }
   }

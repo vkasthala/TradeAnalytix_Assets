@@ -5,8 +5,8 @@
             <nav class="landing-navbar">
                 <ul class="list-unstyled ">
 
-                    <li [class.nav-active]="currentRoute == 'features'">
-                        <a class="landing-nav-link" [routerLink]="['/features']">
+                    <li>
+                        <a class="landing-nav-link" href="landing#trade_journal">
                             Benefits
                             <!-- Benefits <mat-icon>keyboard_arrow_down</mat-icon> -->
                         </a>
@@ -64,12 +64,12 @@
                             Pricing
                         </a>
                     </li>
-                    <li [class.nav-active]="currentRoute == 'partners'">
+                    <!-- <li [class.nav-active]="currentRoute == 'partners'">
                         <a class="landing-nav-link" [routerLink]="['/partners']">
                         Partners
                         </a>
                     </li>
-                    <!-- <li [class.nav-active]="currentRoute == 'resources'">
+                    <li [class.nav-active]="currentRoute == 'resources'">
                         <a class="landing-nav-link" [routerLink]="['/resources']">
                             Resources
                         </a>
@@ -79,11 +79,11 @@
                             Reviews
                         </a>
                     </li>
-                    <li [class.nav-active]="currentRoute == 'help'">
+                    <!-- <li [class.nav-active]="currentRoute == 'help'">
                         <a class="landing-nav-link" [routerLink]="['/help']">
                             Help
                         </a>
-                    </li>
+                    </li> -->
                     <li [class.nav-active]="currentRoute == 'contact-us'">
                         <a class="landing-nav-link" [routerLink]="['/contact-us']">
                             Contact Us
@@ -121,7 +121,7 @@
                             <!-- Learning from your trade history -->
                         </div>
                         <div class="banner-info-footer">
-                            <button type="button" class="btn btn-white mr-3">See Benefits</button>
+                            <a class="btn btn-white mr-3" href="landing#trade_journal">See Benefits</a>
                             <button type="button" class="btn btn-outline" (click)="joinWaitlist()">Join Waitlist</button>
                         </div>
                     </div>
@@ -220,10 +220,10 @@
             <!-- <div class="main-body-dec">
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry.
             </div> -->
-            <div class="features_section">
-                <div class="features_section_title">Record your trades in detail with a comprehensive trade journal</div>
+            <div class="features_section" id="trade_journal">
+                <div class="features_section_title">Record your trades with a comprehensive trade journal</div>
                 <div class="features_section_dec">
-                    Adopt a methodical approach to trading by recording your trades with detailed trade thesis. User can record the justification for the trade, source of the idea, events surrounding the trade, planned or impromptu trade, target price, target holding period, mindset, and technical indicator used. Supporting documents or images can be attached as well.<a href="#" class="read_more">Read More</a>
+                    Adopt a systematic approach to trading by recording your trades in detail with the reasoning,source of the idea, events around the trade, target price, target close date, mindset, technical indicator, supporting documents, etc.<a href="#" class="read_more">Read More</a>
                 </div>
                 <div class="features_section_banner">
                     <img src="../../../../assets/images/trade-thesis.png" alt="" />
@@ -232,9 +232,9 @@
             <!-- end: Comprehensive trade journal -->
 
             <div class="features_section">
-                <div class="features_section_title">Prepare for the day ahead with the creation of a trading plan</div>
+                <div class="features_section_title">Prepare for the day ahead with a meticulous trade plan</div>
                 <div class="features_section_dec">
-                    A trade plan created before the market hours allows you to think objectively about the market without getting influenced by the price movements. User can create a trade plan for the day by logging his perspective on the market, entering notes against open positions, adding any new stocks that he intends to trade, etc. Trade plan can be updated aftermarket hours to check alignment with the actual plan and record lessons learnt on that day.<a href="#" class="read_more">Read More</a>
+                    A trade plan created before the market hours allows you to think objectively about the market without getting influenced by the price movements. Within a trade plan, one can record their perspective on the market and intended actions during the day. It can be updated after the market hours to check actual actions against the planned actions.<a href="#" class="read_more">Read More</a>
                 </div>
             
                 <div class="features_section_banner">
@@ -244,9 +244,9 @@
             <!-- end: Trade Plan -->
 
             <div class="features_section">
-                <div class="features_section_title">Improve trading decisions with in-depth reporting on trade history</div>
+                <div class="features_section_title">Improve trading decisions through in-depth reports on trade history</div>
                 <div class="features_section_dec">
-                    You know how much money you made or lost in a certain period, but do you know what kind of trades worked well for you and what didn’t during the same period? Probably not! CueTrade provides in-depth reports and metrics on your trading history. Reports are provided on your portfolio, performance, risk management, discipline, rules, and goals. With this, one can build on their strengths by doing more of what worked in the past and avoiding kind of trades that didn’t work.<a href="#" class="read_more">Read More</a>
+                    Identify your strengths and weaknesses by reviewing reports and metrics derived from your trading journal and history. Reports are generated across different categories such as portfolio, performance, risk, discipline, trading rules, and goals. Build on your strengths by doing more of what worked in the past and avoiding the kind of trades that didn’t work.<a href="#" class="read_more">Read More</a>
                 </div>
             
                 <div class="features_section_banner">
@@ -256,9 +256,9 @@
             <!-- end: features_section -->
             
             <div class="features_section">
-                <div class="features_section_title">Set manual or automated rules and align your trades with them</div>
+                <div class="features_section_title">Set trading rules and abide by them to avoid repeating the mistakes</div>
                 <div class="features_section_dec">
-                    We all want to be disciplined and not repeat the same mistakes we made in the past. But, the mercurial nature of the markets, ease of trading through mobile devices, and continuous influx of trading ideas through social media makes it very difficult to be disciplined and influences one to take impromptu decisions. Rules feature set helps resolve this issue for the traders. One can create manual or automated rules within the system and whenever their actions do not align with these rules, they will be notified at the right time thereby helping them operate within the rules.<a href="#" class="read_more">Read More</a>
+                    Market volatility, ease of trading, and influx of trading ideas makes it difficult to be disciplined and influences one to take impromptu decisions. Rules feature allows you to set trading rules (manual and automatic) and trade as per these rules so that past mistakes can be avoided. Manual rules are the notes that you would like to be reminded of, while opening or closing positions. Automatic rules are the rules that trigger alerts or notifications when they are broken.<a href="#" class="read_more">Read More</a>
                 </div>
                 <div class="features_section_banner">
                     <img src="../../../../assets/images/rules_thumb.PNG" alt="" />
@@ -270,7 +270,7 @@
             <div class="features_section">
                 <div class="features_section_title">Analyze risk of complex trades by simulating possible future scenarios</div>
                 <div class="features_section_dec">
-                    Do you know what would be the profitability of your trades involving options in the future at a different stock price and implied volatility? If not, risk analysis feature is what you should consider because it allows you to analyze the risk of a trade strategy while varying implied volatility, days left for expiration, and stock price. The feature allows you to assess the risk, modify your trades, re-assess the risk until you arrive at the trade strategy that you are comfortable with.<a href="#" class="read_more">Read More</a>
+                    Analyze the potential returns on a trade strategy involving options at present and in the future while varying stock price, implied volatility, and days to expiration. Risk analysis feature allows you to modify the trade strategy and keep assessing its profitability until you arrive at a trade that is aligned with your risk appetite.<a href="#" class="read_more">Read More</a>
                 </div>
                 <div class="features_section_banner">
                     <img src="../../../../assets/images/risk-analysis.png" alt="" />
@@ -281,7 +281,7 @@
             <div class="features_section">
                 <div class="features_section_title">Pick the right strategy that is aligned with your risk appetite</div>
                 <div class="features_section_dec">
-                    Let's say you are bullish on a stock. Do you know which bullish strategy on the stock works well for you within your risk appetite? Strategy Comparison feature allows you to compare up to five different strategies on a stock and analyze the risk and profitability in different scenarios so that you can pick a strategy that aligned with your risk appetite.<a href="#" class="read_more">Read More</a>
+                    Let's say you are bullish on a stock. Do you know which bullish strategy on the stock works well for you within your risk appetite? Strategy Comparison feature allows you to compare up to five different strategies on a symbol and analyze their profitability in different scenarios so that you can pick a strategy that aligned with your risk appetite. <a href="#" class="read_more">Read More</a>
                 </div>
                 <div class="features_section_banner">
                     <img src="../../../../assets/images/strategy-comparison.png" alt="" />
@@ -290,9 +290,9 @@
             <!-- end: Strategy comparison section -->
 
             <div class="features_section">
-                <div class="features_section_title">Import historical trades from your brokerage on the click of a button</div>
+                <div class="features_section_title">Import Trade History</div>
                 <div class="features_section_dec">
-                    Upload trade history files from your brokerages to add the trades to CueTrade in bulk without having to add one by one through the user interface. Upon successful import, trades are created, updated or closed in the system and strategies are assigned to the trades. Users can update journal details of the imported trades in bulk as well. <a href="#" class="read_more">Read More</a>
+                    All the files imported at different points in time are displayed. Trades that failed to import can be downloaded into excel for review. Trades that got created or updated in the system because of importing a file can be downloaded to an excel as well. update the thesis for these trades in excel and upload the file back into the system. User can update trade thesis of multiple trades at once through excel upload.<a href="#" class="read_more">Read More</a>
                 </div>
                 <div class="features_section_banner">
                     <img src="../../../../assets/images/import-trades.png" alt="" />
@@ -310,7 +310,10 @@
                 <!-- <div class="demo_video_section-dec">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div> -->
                 <div class="py-3"><img src="../../../../assets/images/down_arrow.png" alt="" class="img-responsive"></div>
             </div>
-            <div class="video_container"><img src="../../../../assets/images/video-img.png" alt="" class="img-responsive"></div>
+            <div class="video_container">
+                <span class="video-label">Coming Soon</span>
+                <img src="../../../../assets/images/video_thumbnail.png" alt="" class="w-100">
+            </div>
         </div>
     </div>
 </div>
@@ -349,9 +352,6 @@
 <div class="landing-footer">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-sm-3">
-                <div class="footer-logo"></div>
-            </div>
             <div class="col-sm-6">
                 <ul class="footer_nav">
                     <li><a href="#">About Us</a></li>
@@ -360,7 +360,7 @@
                     <li><a href="#">Contact us</a></li>
                 </ul>
             </div>
-            <div class="trade-socail-icon col-sm-3">
+            <div class="trade-socail-icon col-sm-6">
                 <p>Follow us on</p>  &nbsp;
                 <img src="../../../assets/images/twitter.png" alt="twitter" />
                 <img src="../../../assets/images/facebook.png" alt="facebook" />

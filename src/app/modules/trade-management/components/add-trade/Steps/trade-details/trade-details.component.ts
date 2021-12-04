@@ -230,6 +230,7 @@ export class TradeDetailsComponent implements OnInit {
     this.showFormSec = false;
     this.showStockForm = false;
     this.editStockForm = false;
+    this.stockEntry = this.createStockEntry();
   }
 
   deleteStockOption(index) {

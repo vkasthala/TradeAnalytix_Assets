@@ -66,7 +66,7 @@
                     <div class="card-main card-main-actions">
                         <label class="col-form-label pt-0">Action</label>
                         <select id="inputState"
-                            [ngClass]="[closeTrade || viewTrade ? 'disabled' : '', editTrade && ((StockPosition.quantity > 0 && StockPosition.quantity !== undefined) || (StockPosition.partialLegChange && StockPosition.partialLegChange.length > 0) ) ? 'disabled' : '']"
+                            [ngClass]="[closeTrade || viewTrade ? 'disabled' : '', editTrade && ((StockPosition.quantity > 0 && StockPosition.quantity !== undefined) || (StockPosition.partialLegChange && StockPosition.partialLegChange.length > 0) ) ? 'disabled' : '', tradeStatus == 4 ? 'input_enanled' : 'simha']"
                             class="form-control px-0" [(ngModel)]="stockEntry.actionType">
                             <option value=1 selected data-default>Buy to Open</option>
                             <option value=2>Sell to Open</option>
@@ -76,7 +76,7 @@
                         <label class="col-form-label pt-0">Quantity</label>
                         <input type="number" (keydown)="preventNegatives($event, false)" min="0"
                             class="form-control cards-input"
-                            [ngClass]="[closeTrade || viewTrade ? 'disabled' : '', editTrade && ((StockPosition.quantity > 0 && StockPosition.quantity !== undefined ) || (StockPosition.partialLegChange && StockPosition.partialLegChange.length > 0)) ? 'disabled' : '']"
+                            [ngClass]="[closeTrade || viewTrade ? 'disabled' : '', editTrade && ((StockPosition.quantity > 0 && StockPosition.quantity !== undefined ) || (StockPosition.partialLegChange && StockPosition.partialLegChange.length > 0)) ? 'disabled' : '', tradeStatus == 4 ? 'input_enanled' : 'simha']"
                             [(ngModel)]="stockEntry.quantity" />
                     </div>
                     <div class="card-main card-main-custom">
@@ -84,7 +84,7 @@
                         <input type="number" pattern="^\d*(\.\d{0,2})?$" (change)="checkForDecimalValidation($event)"
                             step="0.01" (keydown)="preventNegatives($event, true)" min="0" class="form-control"
                             placeholder="" [(ngModel)]="stockEntry.price"
-                            [ngClass]="[closeTrade || viewTrade ? 'disabled' : '', editTrade && ((StockPosition.quantity > 0 && StockPosition.quantity !== undefined ) || (StockPosition.partialLegChange && StockPosition.partialLegChange.length > 0)) ? 'disabled' : '']" />
+                            [ngClass]="[closeTrade || viewTrade ? 'disabled' : '', editTrade && ((StockPosition.quantity > 0 && StockPosition.quantity !== undefined ) || (StockPosition.partialLegChange && StockPosition.partialLegChange.length > 0)) ? 'disabled' : '', tradeStatus == 4 ? 'input_enanled' : '']" />
                     </div>
                     <div class="card-main card-main-custom" *ngIf="closeTrade">
                         <label class="col-form-label pt-0">Exit Price <span class="text-danger">*</span></label>
