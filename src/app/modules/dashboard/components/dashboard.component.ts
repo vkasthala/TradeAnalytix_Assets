@@ -61,11 +61,11 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         });
 
         //Add Volatility of Returns static item //TODO
-        let volatilityReturn: ReportSummaryItem = new ReportSummaryItem();
+        /*let volatilityReturn: ReportSummaryItem = new ReportSummaryItem();
         volatilityReturn.name = 'Volatility of Returns';
         volatilityReturn.id = 'volatility_of_returns';
         volatilityReturn.value = '25%';
-        this.summaryItems.push(volatilityReturn);
+        this.summaryItems.push(volatilityReturn);*/
       }
       console.log('summary items::', this.summaryItems);
     });
