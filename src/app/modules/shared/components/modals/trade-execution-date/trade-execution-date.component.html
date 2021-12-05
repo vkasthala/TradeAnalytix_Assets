@@ -12,7 +12,7 @@
         <div class="main-pop-inner">
             <div class="media py-2">
                 <div class="media-body col-form-label py-0">
-                    Is this trade already executed in the brokerage platform?
+                    Did you execute this trade in the brokerage system?
                 </div>
                 <div class="ml-1">
                     <span class="mr-3 col-form-label">Yes <input type="radio" name="confirm_excute" value="true"
@@ -38,7 +38,7 @@
                 </div>
             </div>
             <div *ngIf="failedRules && failedRules.length" class="failed-rules">
-                <div>Below rules are failed, do you want to continue?</div>
+                <div>The following self-set rules are being violated with the execution of this trade. Modify your trade to align with the rules</div>
                 <ol class="rules-list">
                     <li *ngFor="let rule of failedRules; let i = index;" class="rule-item">
                         {{rule.displayMsg}}
