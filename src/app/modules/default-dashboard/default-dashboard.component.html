@@ -1,17 +1,17 @@
 <div class="px-2 dashboard">
     <div class="trade-dash-cards-web px-2">
-        <div class="card mt-3 px-3 py-2">
-            <span class="trade-cards-heading m-0">Welcome to CueTrade {{userName}}</span>
+        <div class="mt-3">
+            <span class="trade-cards-heading m-0">Welcome {{userName}}</span>
         </div>
         <div class="row mt-3">
             <div class="col-sm-10">
                 <div class="row mb-1">
                     <div class="col-sm-4">
                         <div class="card card-white">
-                            <div class="card-body p-3">
-                                <h5 class="card-title mb-2">
+                            <div class="card-body p-2">
+                                <h5 class="card-title mb-1">
                                     <a routerLink="/trade-strategies">
-                                        Trade Journal
+                                        <mat-icon>attach_money</mat-icon> Trade Journal
                                     </a>
                                 </h5>
                                 <div class="position-relative pt-2">
@@ -19,17 +19,17 @@
                                         <img src="../../../../assets/images/home/trade_journal_thumb.png" alt="">
                                     </div>
                                 
-                                    <div class="card-description">Record your trades with justification and alignment with self-set rules</div>
+                                    <div class="card-description">Record your trades in detail and check alignment with self-set rules</div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="card card-white">
-                            <div class="card-body p-3">
-                                <h5 class="card-title mb-2">
+                            <div class="card-body p-2">
+                                <h5 class="card-title mb-1">
                                     <a routerLink="/import-trades-history">
-                                        Import Trades
+                                        <mat-icon class="mat-lg mr-1">import_export</mat-icon> Import Trades
                                     </a>
                                 </h5>
                                 <div class="position-relative pt-2">
@@ -37,7 +37,7 @@
                                         <img src="../../../../assets/images/home/import_trades_thumb.png" alt="">
                                     </div>
                                 
-                                    <div class="card-description">Add your trades in bulk by uploading trade history files
+                                    <div class="card-description">Add trades in bulk by importing trade history files from the brokerages
                                     </div>
                                 </div>
                             </div>
@@ -45,10 +45,10 @@
                     </div>
                     <div class="col-sm-4">
                         <div class="card card-white">
-                            <div class="card-body p-3">
-                                <h5 class="card-title mb-2">
+                            <div class="card-body p-2">
+                                <h5 class="card-title mb-1">
                                     <a routerLink="/trade-plans">
-                                        Trade Plan
+                                        <mat-icon class="mr-1">note_add</mat-icon> Trade Plan
                                     </a>
                                 </h5>
                                 <div class="position-relative pt-2">
@@ -56,7 +56,7 @@
                                         <img src="../../../../assets/images/home/trade_plan_thumb.png" alt="">
                                     </div>
                                 
-                                    <div class="card-description">Create a trade plan with your viewpoints and intended actions
+                                    <div class="card-description">Prepare for the day ahead by recording your viewpoints and intended actions
                                     </div>
                                 </div>
                             </div>
@@ -67,10 +67,10 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="card card-white">
-                            <div class="card-body p-3">
-                                <h5 class="card-title mb-2">
+                            <div class="card-body p-2">
+                                <h5 class="card-title mb-1">
                                     <a routerLink="/risk-analysis">
-                                        Risk Analysis
+                                        <mat-icon class="mr-1">insights</mat-icon> Risk Analysis
                                     </a>
                                 </h5>
                                 <div class="position-relative pt-2">
@@ -78,7 +78,7 @@
                                         <img src="../../../../assets/images/home/risk_analysis_thumb.png" alt="">
                                     </div>
                                 
-                                    <div class="card-description">Analyze the potential returns of a strategy while option parameters
+                                    <div class="card-description">Analyze risk of complex trades by simulating possible future scenarios
                                     </div>
                                 </div>
                             </div>
@@ -86,10 +86,10 @@
                     </div>
                     <div class="col-sm-4">
                         <div class="card card-white">
-                            <div class="card-body p-3">
-                                <h5 class="card-title mb-2">
+                            <div class="card-body p-2">
+                                <h5 class="card-title mb-1">
                                     <a routerLink="/compare-strategies">
-                                        Strategy Comparison
+                                        <mat-icon class="mr-1">compare_arrows</mat-icon> Strategy Comparison
                                     </a>
                                 </h5>
                                 <div class="position-relative pt-2">
@@ -97,7 +97,7 @@
                                         <img src="../../../../assets/images/home/strategy_comparison_thumb.png" alt="">
                                     </div>
                                 
-                                    <div class="card-description">Compare potential returns on strategies to pick the right strategy
+                                    <div class="card-description">Compare potential returns on different strategies to pick the right strategy
                                     </div>
                                 </div>
                             </div>
@@ -106,10 +106,10 @@
                     
                     <div class="col-sm-4">
                         <div class="card card-white">
-                            <div class="card-body p-3">
-                                <h5 class="card-title mb-2">
+                            <div class="card-body p-2">
+                                <h5 class="card-title mb-1">
                                     <a routerLink="/reports">
-                                        Reports
+                                        <mat-icon class="mr-1">pie_chart</mat-icon> Reports
                                     </a>
                                 </h5>
                                 <div class="position-relative pt-2">
@@ -117,20 +117,25 @@
                                         <img src="../../../../assets/images/home/reports_thumb.png" alt="" />
                                     </div>
                                 
-                                    <div class="card-description">View reports generated from trade history across different categories</div>
+                                    <div class="card-description">Improve trading decisions through in-depth reports on trade history</div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- end:: row -->
-                <div class="card card-white ml-0">
-                    <div class="card-body py-3">
-                        <h5 class="card-title mb-2">
+                
+            </div>
+            
+       
+            <div class="col-sm-2 pl-0">
+                <div class="card card-white">
+                    <div class="card-body py-2">
+                        <!-- <h5 class="card-title mb-2">
                             Complete the following steps to get full advantage of CueTrade!
-                        </h5>
+                        </h5> -->
         
-                        <div class="d-flex pt-2 align-items-center">
+                        <div class="d-flex align-items-center">
                             <span class="pr-2">
                                 <input type="checkbox" name="rule" class="checkbox mt-1" />
                             </span>
@@ -138,7 +143,7 @@
                                 Set Up Data
                             </span>
                         </div>
-                        <div class="d-flex py-2 align-items-center">
+                        <div class="d-flex pt-2 align-items-center">
                             <span class="pr-2">
                                 <input type="checkbox" name="rule" class="checkbox mt-1" />
                             </span>
@@ -164,14 +169,12 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            
-       
-            <div class="col-sm-2 pl-0">
+
+                <h5 class="py-1 pl-3">Quick Links</h5>
                 <div class="card card-white">
                     <div class="card-body p-3">
                         <h5 class="card-title mb-3">
-                            Help Center
+                            <mat-icon class="mr-1">help_outline</mat-icon> Help Center
                         </h5>
                         <ul class="list-unstyled m-0">
                             <li class="oultline-link">
@@ -182,12 +185,9 @@
                             </li>
                         </ul>
                         
-                    </div>
-                </div>
-                <div class="card card-white mt-3">
-                    <div class="card-body p-3">
-                        <h5 class="card-title mb-3">
-                            Give Feedback
+                    
+                        <h5 class="card-title mb-2 mt-3">
+                            <mat-icon class="mr-1">feedback</mat-icon> Give Feedback
                         </h5>
                         <ul class="list-unstyled m-0">
                             <li class="oultline-link">
@@ -197,13 +197,9 @@
                                 <a routerLink="/view-trade-plan">Ask for a Feature</a>
                             </li>
                         </ul>
-                        
-                    </div>
-                </div>
-                <div class="card card-white mt-3">
-                    <div class="card-body p-3">
-                        <h5 class="card-title mb-3">
-                            Support Us
+                     
+                        <h5 class="card-title mb-2 mt-3">
+                            <mat-icon class="mr-1">contact_support</mat-icon> Support Us
                         </h5>
                         <ul class="list-unstyled m-0">
                             <li class="oultline-link">

@@ -17,14 +17,18 @@
     box-shadow: 0px 4px 16px rgba(157, 157, 157, 0.1);
     border-radius: 5px;
     .card-title {
-        font-size: 22px;
+        font-size: 20px;
         font-weight: 600;
         color: #000;
-        text-align: center;
+        align-items: center;
+        display: flex;
         a {
-            color: #000;
+            color: #3A4C85;
+            align-items: center;
+            display: flex;
             &:hover {
                 color: #60bd6e;
+                text-decoration: none;
             }
         }
     }
@@ -46,20 +50,17 @@
 .card-thumb img {
     width: 100%;
     // border-radius: 4px;
-    height: 230px;
+    height: 180px;
     border: 1px solid #dcdddf;
-    padding: 2px;
+    padding: 1px;
 }
 .card-description {
-    position: absolute;
-    width: 100%;
-    background: rgb(133 133 133);
-    bottom: 0;
-    padding: 5px;
+    padding: 4px;
     font-size: 16px;
-    color: #fff;
-    font-weight: 500;
-    line-height: 1.345;
+    color: #000;
+    font-weight: 400;
+    line-height: 1.2345;
+    margin-top: 2px;
 }
 
 .trade-dash-cards-web {
@@ -218,7 +219,7 @@
     }
     .trade-cards-heading {
         margin-bottom: 8px;
-        font-size: 22px;
+        font-size: 14px;
         h5 {
             font-weight: 700;
             font-size: 18px;
@@ -558,7 +559,7 @@
 
 .trade-cards-heading {
     margin-bottom: 10px;
-    font-size: 20px;
+    font-size: 14px;
     h5 {
         font-weight: 500;
         font-size: 18px;
@@ -725,7 +726,7 @@
     justify-content: center;
 
     .card-title {
-        font-size: 26px;
+        font-size: 20px;
         font-weight: 600;
         color: #fff;
         a {
