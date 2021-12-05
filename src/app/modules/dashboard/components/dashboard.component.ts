@@ -54,6 +54,11 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     this.reportDataService.getReportSummary(this.createSummaryRequest()).subscribe(result => {
       if (result) {
         this.summaryItems = result;
+        this.summaryItems.forEach(item => {
+          if(item.value === undefined || item.value === null){
+            item.value = 'N/A';
+          }
+        });
 
         //Add Volatility of Returns static item //TODO
         let volatilityReturn: ReportSummaryItem = new ReportSummaryItem();
