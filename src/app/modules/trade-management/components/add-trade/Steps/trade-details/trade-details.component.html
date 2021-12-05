@@ -37,16 +37,16 @@
                         </span>
                         <ul class="tags-list">
                             <li *ngFor="let tag of tags; let i = index;" class="tag-item">
-                                <span (click)="editTag(tag)">
-                                    <span class="material-icons tag-icon">#</span>
-                                    {{getTagName(tag.tagId)}}
+                                <span class="tag-list-item">
+                                    <span (click)="editTag(tag)">
+                                        {{getTagName(tag.tagId)}}
+                                    </span>
+                                    <span class="material-icons delete-tag-icon" (click)="deleteTag(tag, i)">close_outline</span>
                                 </span>
-                                <span class="material-icons delete-tag-icon"
-                                    (click)="deleteTag(tag, i)">remove_circle_outline</span>
                             </li>
                             <li>
                                 <span (click)="addTag()" class="add-tag" *ngIf="tags && tags.length < 3">
-                                    <span class="material-icons tag-icon">add_circle_outline</span> Tag
+                                    Add New Tag
                                 </span>
                             </li>
                         </ul>

@@ -617,21 +617,31 @@ a.btn.btn-skip {
 }
 
 .tag-item {
-    cursor: pointer;
+    
     margin-left: 5px;;
+}
+.tag-list-item {
+    cursor: pointer;
+    background: #ced2d7;
+    border-radius: 8px;
+    padding: 0.25rem 0.5rem;
+    padding-right: 0;
 }
 
 .add-tag {
     cursor: pointer;
     margin-left: 10px;
+    border: 2px solid #9da6ba !important;
+    border-radius: 3px;
+    padding: 0.235rem;
+    font-size: 12px;
 }
 
 .delete-tag-icon {
     cursor: pointer;
     font-size: 12px !important;
     color: #ff0000 !important;
-    margin-top: 5px;
-    margin-left: 1px;
+    width: 15px;
 }
 
 @media only screen and (max-width: 479px) {
