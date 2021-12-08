@@ -12,11 +12,11 @@
         </div>
         <div class="row no-gutters justify-content-between">
             <div class="widget_item widget_item_gray">
-                <h6 class="widget_item-value">22</h6>
+                <h6 class="widget_item-value">{{getDisplayValue(stockSummaryResult.totalTransactions)}}</h6>
                 <span class="widget_item-title">Transactions</span>
             </div>
             <div class="widget_item widget_item_gray">
-                <h6 class="widget_item-value">9</h6>
+                <h6 class="widget_item-value">{{getDisplayValue(stockSummaryResult.totalStrategies)}}</h6>
                 <span class="widget_item-title">Trade Strategies</span>
             </div>
             
@@ -32,13 +32,13 @@
                 <h6 class="widget_item-value">{{getDisplayValue(stockSummaryResult.winRate, '%')}}</h6>
                 <span class="widget_item-title">Win Rate</span>
             </div>
-            <div class="widget_item widget_item_danger">
-                <h6 class="widget_item-label">22</h6>
-                <span class="widget_item-title">Sharpe Ratio</span>
+            <div class="widget_item widget_item_gray">
+                <h6 class="widget_item-value">{{getDisplayValue(stockSummaryResult.allocPercent)}}</h6>
+                <span class="widget_item-title">Amount Allocated (%)</span>
             </div>
             <div class="widget_item widget_item_gray">
                 <h6 class="widget_item-value">{{getDisplayValue(stockSummaryResult.avgHoldingPeriod, ' days')}}</h6>
-                <span class="widget_item-title">Avg. Hold Period </span>
+                <span class="widget_item-title">Avg. Hold Period</span>
             </div>
             <div class="widget_item" [ngClass]="[getDisplayValue(stockSummaryResult.highestReturn) >= 0 ? 'widget_item' : 'widget_item_danger', getDisplayValue(stockSummaryResult.highestReturn) === 'NA'  ? 'widget_item_gray' : '']">
                 <h6 class="widget_item-value">{{getDisplayValue(stockSummaryResult.highestReturn)}}</h6>
@@ -49,14 +49,15 @@
                 <span class="widget_item-title">Lowest Return</span>
             </div>
             <div class="widget_item">
-                <h6 class="widget_item-label">{{getDisplayValue(stockSummaryResult.successStrategy)}}
+                <h6 class="widget_item-label">{{getDisplayValue(stockSummaryResult.successfulTag)}}
                 </h6>
                 <span class="widget_item-title">Most Successful Tag</span>
             </div>
             <div class="widget_item widget_item_danger">
-                <h6 class="widget_item-label">{{getDisplayValue(stockSummaryResult.failedStrategy)}}</h6>
+                <h6 class="widget_item-label">{{getDisplayValue(stockSummaryResult.unsuccessfulTag)}}</h6>
                 <span class="widget_item-title">Most Unsuccessful Tag</span>
             </div>
+            <!--
             <div class="widget_item">
                 <h6 class="widget_item-label">2541</h6>
                 <span class="widget_item-title">Commission</span>
@@ -65,6 +66,7 @@
                 <h6 class="widget_item-label">65.2%</h6>
                 <span class="widget_item-title">30-day Volatility</span>
             </div>
+        -->
         </div>
     </div>
     <!-- <div class="widget-2" *ngIf="stockOrOptionAdded == true && strategyTypeSummaryResult">
