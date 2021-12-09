@@ -4,6 +4,6 @@ export class CalReportDayData {
 
     returnAmount: number;
 
-    tradecount: number;
+    tradeCount: number;
 
 }
