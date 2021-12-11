@@ -102,31 +102,9 @@ export class TradeDetailsBottomComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.loadSummary();
-    // if (this.tradeStrategy) {
-    //   this.strategyTypeId = this.tradeStrategy.strategyTypeId;
-    //   this.loadStrategyTypeSummary(this.tradeStrategy.strategyTypeId);
-    //   this.stockOrOptionAdded = ((this.tradeStrategy.stockOptions && this.tradeStrategy.stockOptions.length > 0) || (this.tradeStrategy.stockEntry && this.tradeStrategy.stockEntry.length > 0 && this.tradeStrategy.stockEntry[0].quantity > 0));
-    //   this.updateStrategyName(this.strategyTypeId);
-    // }
-
-    // this.strategyTypeChangeSubject.asObservable().subscribe(data => {
-    //   this.strategyTypeId = data;
-    //   this.updateStrategyName(this.strategyTypeId);
-    //   this.loadStrategyTypeSummary(data);
-    // });
-
-    // this.stockOrOptionAddedSubject.asObservable().subscribe(data => {
-    //   console.log('stock/option added: ', data);
-    //   if (!this.strategyTypeSummaryResult &&  data === true) {
-    //     if(!this.strategyTypeId){
-    //       this.strategyTypeId = 15;
-    //     }
-    //     this.updateStrategyName(this.strategyTypeId);
-    //     this.loadStrategyTypeSummary(this.strategyTypeId);
-    //   }
-    //   this.stockOrOptionAdded = data;
-    // });
+    this.stockOrOptionAddedSubject.asObservable().subscribe(data => {
+      this.stockOrOptionAdded = data;
+    });
   }
 
   ngAfterViewInit(): void {
@@ -145,6 +123,7 @@ export class TradeDetailsBottomComponent implements OnInit {
   }
 
   updateStockOptionDisplayProperty() {
+    debugger;
     if (!this.stockOptions) {
       return;
     }

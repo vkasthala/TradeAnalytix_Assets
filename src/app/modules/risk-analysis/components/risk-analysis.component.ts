@@ -23,6 +23,7 @@ import { RiskAnalysisChartComponent } from './risk-analysis-chart/risk-analysis-
 import { MaxRiskDetails } from '../models/max-risk-details.model';
 import { UpdateStockPricePopupComponent } from './update-stock-price-popup/update-stock-price-popup.component';
 import { MatDialog } from '@angular/material/dialog';
+import { TradeStrategyService } from '../../trade-management/services/trade-strategy.service';
 
 @Component({
   selector: 'app-risk-analysis',
@@ -85,7 +86,10 @@ export class RiskAnalysisComponent implements OnInit {
     private strategyCreateService: StrategyCreateService,
     private toastr: ToastrService,
     private router: Router,
-    private _dialog: MatDialog) {
+    private _dialog: MatDialog,
+    private tradeStrategyService: TradeStrategyService,
+    
+    ) {
     this.stockEntry = this.createStockEntry();
     this.initState();
   }
@@ -287,7 +291,12 @@ export class RiskAnalysisComponent implements OnInit {
     }
     extras.state = input;
     if (this.isEditTrade) {
-      this.router.navigate(['/edit-trade/' + input.tradeStrategy.id], extras);
+      let tradeId = input.tradeStrategy.id;
+      this.tradeStrategyService.getTradeStrategyDetails(tradeId).subscribe(results => {
+        input.tradeStrategy.stockEntry = results.stockEntry
+        input.tradeStrategy.stockOptions = results.stockOptions
+        this.router.navigate(['/edit-trade/' + tradeId], extras);
+      })
     } else {
       this.router.navigate(['/new-trade'], extras);
     }

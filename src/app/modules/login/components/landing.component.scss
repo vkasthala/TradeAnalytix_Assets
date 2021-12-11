@@ -20,13 +20,12 @@
         position: relative;
         &-logo {
             //  display: none;
-            background-image: url('../../../../assets/images/logo.png');
-            background-position: center;
+            background-image: url('../../../../assets/images/logo.svg');
             background-size: contain;
             background-repeat: no-repeat;
-            width: 170px;
+            width: 267px;
             /* height: 100%; */
-            min-height: 40px;
+            min-height: 50px;
             @media #{$extra-small} {
                 display: block;
             }
@@ -687,8 +686,7 @@ input::placeholder {
 }
 
 .footer-logo {
-    background-image: url('../../../../assets/images/logo.png');
-    background-position: center;
+    background-image: url('../../../../assets/images/logo.svg');
     background-size: contain;
     background-repeat: no-repeat;
     width: 170px;

@@ -5,20 +5,21 @@
             <h6 class="widget_item-value maximum_proﬁt">{{maxRiskDetails.maxProfit}}</h6>
             <span class="widget_item-title d-flex align-items-center">
                 Maximum Proﬁt 
-                <mat-icon matTooltip="Maximum profit is estimated at the current implied volatility and days left to expiration" matTooltipPosition="right" class="ml-2 mat-icon-sm cursor" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay">info</mat-icon>
+                <mat-icon matTooltip="Maximum profit is estimated at the current implied volatility and days left to expiration" matTooltipPosition="right" class="ml-2 mat-icon-xs info-icon cursor" matTooltipClass="custom-tooltip w-50" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay">info_outline</mat-icon>
             </span>
         </div>
         <div class="widget_item" *ngIf="maxRiskDetails">
             <h6 class="widget_item-value maximum_risk">{{maxRiskDetails.maxRisk}}</h6>
             <span class="widget_item-title d-flex align-items-center">
                 Maximum Risk 
-                <mat-icon matTooltip="Maximum risk is estimated at the current implied volatility and days left to expiration" matTooltipPosition="right" class="ml-2 mat-icon-sm cursor" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay">info</mat-icon>
+                <mat-icon matTooltip="Maximum risk is estimated at the current implied volatility and days left to expiration" matTooltipPosition="right" class="ml-2 mat-icon-xs info-icon cursor" matTooltipClass="custom-tooltip w-50" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay">info_outline</mat-icon>
             </span>
         </div>
         <div class="widget_item">
-            <span *ngIf="!viewTrade" class="text-link d-flex"
+            stockOptions.length :: {{stockOptions.length}}
+            <span *ngIf="!viewTrade && (stockOrOptionAdded || stockOptions.length)" class="text-link d-flex"
                 (click)="calculateMaxProfitAndRisk()">Estimate Profit and Risk
-                <mat-icon matTooltip="Maximum risk and maximum profit is estimated at the current implied volatility and days left to expiration. The values might change as the IV and days left gets updated" matTooltipPosition="right" class="ml-2 mat-icon-sm cursor" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay">info</mat-icon>
+                <mat-icon matTooltip="Maximum risk and maximum profit is estimated at the current implied volatility and days left to expiration. The values might change as the IV and days left gets updated" matTooltipPosition="right" class="ml-2 mat-icon-xs info-icon cursor" matTooltipClass="custom-tooltip w-50" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay">info_outline</mat-icon>
             </span>
         </div>
 

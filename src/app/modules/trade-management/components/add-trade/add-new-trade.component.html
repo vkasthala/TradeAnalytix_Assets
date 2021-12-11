@@ -217,7 +217,8 @@
                                     </div>
 
                                     <app-trade-details-bottom [editTrade]="edit" [addTrade]="add" [closeTrade]="close"
-                                        [viewTrade]="view" (calculateMaxRisk)="calculateMaxRisk($event)"
+                                        [viewTrade]="view" (calculateMaxRisk)="calculateMaxRisk($event)" 
+                                        [stockOrOptionAddedSubject]="stockOrOptionAddedSubject"
                                         #tradeDetailsBottom>
                                     </app-trade-details-bottom>
                                 </div>
