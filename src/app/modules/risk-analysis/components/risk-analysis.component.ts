@@ -106,7 +106,7 @@ export class RiskAnalysisComponent implements OnInit {
 
   enterSymbol() {
     if (!this.selectedStock || !this.selectedStock.code) {
-      this.toastr.error('Please enter a valid symbol to proceed', '', 
+      this.toastr.error('Please enter a valid symbol to proceed', 'Error', 
       { 
         tapToDismiss:false,
         closeButton:true,
@@ -411,7 +411,7 @@ export class RiskAnalysisComponent implements OnInit {
           todayDate.setHours(0,0,0,0);
           let currentDate = new Date(this.stockOptions[ind].expireDate);          
           if (currentDate < todayDate) {
-            this.toastr.error("Expiry date is in the past. Please change it.", '', 
+            this.toastr.error("Expiry date is in the past. Please change it to a future date", 'Error', 
             { 
               tapToDismiss:false,
               closeButton:true,

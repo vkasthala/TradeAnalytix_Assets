@@ -106,7 +106,7 @@ export class AddNewTradeComponent implements OnInit {
 
   enterSymbol() {
     if (!this.selectedStock || !this.selectedStock.code) {
-      this.toastr.error('Please enter a valid symbol to proceed', '', { 
+      this.toastr.error('Please enter a valid symbol to proceed', 'Error', { 
         tapToDismiss:false,
         closeButton:true,
         disableTimeOut: true
@@ -202,12 +202,7 @@ export class AddNewTradeComponent implements OnInit {
     this.Loader = !this.Loader;
     this.updateTradeStrategyProps();
     this.tradeStrategyService.editTrade(this.tradeStrategy).subscribe(result => {
-      this.toastr.success('Trade strategy updated', '', 
-      { 
-        tapToDismiss:false,
-        closeButton:true,
-        disableTimeOut: true
-      });
+      this.toastr.success('Trade strategy has been updated. Can we include strategy ID in the banner message?', 'Success');
       this.router.navigateByUrl("/trade-strategies");
       this.Loader = !this.Loader;
     },

@@ -16,8 +16,7 @@
             </span>
         </div>
         <div class="widget_item">
-            stockOptions.length :: {{stockOptions.length}}
-            <span *ngIf="!viewTrade && (stockOrOptionAdded || stockOptions.length)" class="text-link d-flex"
+            <span *ngIf="(addTrade && stockOrOptionAdded) || editTrade" class="text-link d-flex"
                 (click)="calculateMaxProfitAndRisk()">Estimate Profit and Risk
                 <mat-icon matTooltip="Maximum risk and maximum profit is estimated at the current implied volatility and days left to expiration. The values might change as the IV and days left gets updated" matTooltipPosition="right" class="ml-2 mat-icon-xs info-icon cursor" matTooltipClass="custom-tooltip w-50" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay">info_outline</mat-icon>
             </span>

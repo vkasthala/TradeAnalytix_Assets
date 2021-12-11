@@ -13,7 +13,7 @@ export class EditableSelectComponent implements OnInit {
 
   list = [];
 
-  listHidden = true;
+  listHidden = false;
   selectedIndex = -1;
 
   // the list to be shown after filtering
@@ -54,12 +54,13 @@ export class EditableSelectComponent implements OnInit {
   // select highlighted item when enter is pressed or any item that is clicked
   selectItem(ind) {
     this.value = this.filteredList[ind];
-    this.listHidden = true;
+    this.listHidden = false;
     this.selectedIndex = ind;
   }
 
   // navigate through the list of items
   onKeyPress(event) {
+    console.log(event.target.value.length)
     if (!this.listHidden) {
       if (event.key === 'Escape') {
         this.selectedIndex = -1;
@@ -69,13 +70,13 @@ export class EditableSelectComponent implements OnInit {
         this.toggleListDisplay(0);
       }
       if (event.key === 'ArrowDown') {
-        this.listHidden = false;
+        this.listHidden = true;
         this.selectedIndex = (this.selectedIndex + 1) % this.filteredList.length;
         if (this.filteredList.length > 0 && !this.listHidden) {
           document.getElementsByTagName('li')[this.selectedIndex].scrollIntoView();
         }
       } else if (event.key === 'ArrowUp') {
-        this.listHidden = false;
+        this.listHidden = true;
         if (this.selectedIndex <= 0) {
           this.selectedIndex = this.filteredList.length;
         }
@@ -84,6 +85,9 @@ export class EditableSelectComponent implements OnInit {
           document.getElementsByTagName('li')[this.selectedIndex].scrollIntoView();
         }
       }
+    }
+    if(event.target.value.length > 1) {
+      this.listHidden = true;
     }
   }
 
@@ -97,7 +101,7 @@ export class EditableSelectComponent implements OnInit {
       // helps to select item by clicking
       setTimeout(() => {
         //this.selectItem(this.selectedIndex);
-        this.listHidden = true;
+        this.listHidden = false;
         if (!this.list.includes(this.value)) {
           this.filteredList = this.list;
         }

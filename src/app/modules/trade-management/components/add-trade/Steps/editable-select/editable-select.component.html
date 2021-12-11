@@ -14,7 +14,7 @@
         <div class="combobox">
             <input type="text" [(ngModel)]='value' (ngModelChange)="getFilteredList()" class="combobox-input" (keyup)="onKeyPress($event)" (blur)="toggleListDisplay(value)" (focus)="toggleListDisplay(1, value)" placeholder="Select one..." >
 
-            <div class="combobox-options" *ngIf="!listHidden">
+            <div class="combobox-options" *ngIf="listHidden">
                 <li *ngFor="let item of filteredList;let i = index" (click)="selectItem(i)" [ngClass]="{'selected': i===selectedIndex}">{{item}}</li>
             </div>
         </div>

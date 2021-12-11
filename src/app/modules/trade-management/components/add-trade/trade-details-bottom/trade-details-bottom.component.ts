@@ -123,7 +123,6 @@ export class TradeDetailsBottomComponent implements OnInit {
   }
 
   updateStockOptionDisplayProperty() {
-    debugger;
     if (!this.stockOptions) {
       return;
     }
