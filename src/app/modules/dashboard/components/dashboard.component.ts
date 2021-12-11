@@ -55,7 +55,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       if (result) {
         this.summaryItems = result;
         this.summaryItems.forEach(item => {
-          if(item.value === undefined || item.value === null){
+          if(item.value === undefined || item.value === null || !item.value){
             item.value = 'N/A';
           }
         });
@@ -98,6 +98,9 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   }
 
   getValueSuffix(summaryItem: ReportSummaryItem) {
+    if(!summaryItem.value || summaryItem.value === 'N/A'){
+      return "";
+    }
     let suffix: string = "";
     if (summaryItem.id == 'win_rate') {
       suffix = '%';
