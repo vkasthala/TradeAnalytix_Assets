@@ -20,7 +20,7 @@ export class GenerateChartPopupComponent implements OnInit, AfterViewInit {
 
   selectedStock: StockSymbol;
   symbol: string;
-  exchange: string = 'BSE'; // This is to be dynamic in future
+  exchange: string = 'NASDAQ'; // This is to be dynamic in future
 
   constructor(
     private _renderer2: Renderer2,
