@@ -55,7 +55,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       if (result) {
         this.summaryItems = result;
         this.summaryItems.forEach(item => {
-          if(item.value === undefined || item.value === null || !item.value){
+          if(item.value === undefined || item.value === null){
             item.value = 'N/A';
           }
         });
@@ -98,7 +98,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   }
 
   getValueSuffix(summaryItem: ReportSummaryItem) {
-    if(!summaryItem.value || summaryItem.value === 'N/A'){
+    if(summaryItem.value === undefined || summaryItem.value === null || summaryItem.value === 'N/A'){
       return "";
     }
     let suffix: string = "";
