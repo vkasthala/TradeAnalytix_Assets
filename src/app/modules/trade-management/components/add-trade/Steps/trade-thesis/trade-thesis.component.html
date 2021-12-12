@@ -138,7 +138,7 @@
                     <div class="media align-items-center">
                         <div class="media-body">
                             <select class="form-control select-input" id="inputState"
-                                [(ngModel)]="tradeThesis.surroundingEventId">
+                                [(ngModel)]="tradeThesis.technicalIndicatorId">
                                 <option [ngValue]="opt.id" *ngFor="let opt of technicalIndicators; trackBy: id">
                                     {{opt.name}}</option>
                             </select>
@@ -164,7 +164,7 @@
                     <div class="media align-items-center">
                         <div class="media-body">
                             <select class="form-control select-input" id="inputState"
-                                [(ngModel)]="tradeThesis.mindsetId">
+                                [(ngModel)]="tradeThesis.surroundingEventId">
                                 <option [ngValue]="opt.id" *ngFor="let opt of surroundingTypes; trackBy: id">
                                     {{opt.name}}</option>
                             </select>
@@ -223,7 +223,7 @@
                     <div class="media align-items-center">
                         <div class="media-body">
                             <select class="form-control select-input" id="inputState"
-                                [(ngModel)]="tradeThesis.technicalIndicatorId">
+                                [(ngModel)]="tradeThesis.mindsetId">
                                 <option [ngValue]="opt.id" *ngFor="let opt of mindsetTypes; trackBy: id">{{opt.name}}
                                 </option>
                             </select>

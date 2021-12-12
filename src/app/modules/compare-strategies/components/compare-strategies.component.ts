@@ -56,7 +56,7 @@ export class CompareStrategiesComponent implements OnInit {
   stockOptions: OptionEntry[] = [];
   selectedStrategy: number = 15;
   protected add = true;
-  showCompareResult : boolean = false;
+  showCompareResult: boolean = false;
   selectedItem: any = [];
   public selectedStrategyTable: number = 0;
   constructor(
@@ -182,7 +182,14 @@ export class CompareStrategiesComponent implements OnInit {
     this.compareStrategyService.compareStrategies(this.createStrategyCompareRequest()).subscribe(result => {
       console.log("strategy compare result:", result);
       this.compareResult = result;
-      this.showCompareResult = true;      
+      this.showCompareResult = true;
+    }, err => {
+      this.toastr.error('Please check the data within the strategies and try again.', 'Error',
+        {
+          tapToDismiss: false,
+          closeButton: true,
+          disableTimeOut: true
+        });
     });
     //Load chart if it is already rendered
     if (this.compareStrategiesChartComponent && this.compareStrategiesChartComponent.rendered === true) {
