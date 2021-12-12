@@ -346,7 +346,9 @@ export class TradeDetailsComponent implements OnInit {
       }
     }
   }
-
+  checkForDecimalValidation(event) {
+    event.target.value = parseFloat(event.target.value).toFixed(2);
+  }
   addToPosition() {
     let dialogData: any = this.getAddData(this.stockEntry.actionType);
     dialogData.title = this.getStockAddOrReduceTitle(true);
