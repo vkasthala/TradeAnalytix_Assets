@@ -640,7 +640,6 @@ a.btn.btn-skip {
 }
 
 .risk-table {
-    width: 100%;
     height: auto;
     min-height: 340px;
     padding: 0px;
@@ -658,17 +657,14 @@ a.btn.btn-skip {
         color: #3A4C85;
     }
     table {
-        width: 100%;
-        margin: 0 auto;
-        text-align: center;
+        width: auto;
         thead {
             th {
                 background: rgb(157 166 186 / 20%);
                 color: #3A4C85;
                 font-size: 15px;
                 font-weight: 600;
-                padding: 1rem 0.25rem;
-                padding-left: 0;
+                padding: 1rem 0.45rem;
                 @media #{$small} {
                     font-size: 12px;
                 }
@@ -1097,4 +1093,14 @@ a.btn.btn-skip {
         }
     }
 
+}
+.change_cell {
+    width: 10%;
+    max-width: 10%;
+    min-width: 100px;
+}
+.strategies_cell {
+    width: 16%;
+    max-width: 16%;
+    min-width: 200px;
 }

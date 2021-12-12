@@ -156,13 +156,12 @@
                                                 <div class="tab-pane active" id="Section1" role="tabpanel">
                                                     <div class="risk-tabs-table">
                                                         <div class="risk-table">
-
                                                             <table>
                                                                 <thead>
                                                                     <tr>
-                                                                        <th>Change</th>
-                                                                        <th>Price</th>
-                                                                        <th *ngFor="let key of strategiesList; let i = index">
+                                                                        <th  class="change_cell">Change</th>
+                                                                        <th class="change_cell">Price</th>
+                                                                        <th class="strategies_cell" *ngFor="let key of strategiesList; let i = index">
                                                                             {{'Strategy-' + (i + 1) + ' Return' }}</th>
                                                                     </tr>
                                                                 </thead>

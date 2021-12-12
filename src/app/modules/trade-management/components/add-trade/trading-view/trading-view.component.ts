@@ -22,7 +22,7 @@ export class TradingViewComponent implements OnInit, AfterViewInit {
     let script = this._renderer2.createElement('script');
     script.type = `text/javascript`;
     script.src = "https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js";
-    script.text = '{"symbol": " BSE:' + this.selectedStock.code + '","width": "100%","height": 220,"locale": "in","dateRange": "12M","colorTheme": "light","trendLineColor": "#37a6ef","underLineColor": "#E3F2FD","isTransparent": false,"autosize": false,"largeChartUrl": ""}';
+    script.text = '{"symbol": " USD:' + this.selectedStock.code + '","width": "100%","height": 220,"locale": "in","dateRange": "12M","colorTheme": "light","trendLineColor": "#37a6ef","underLineColor": "#E3F2FD","isTransparent": false,"autosize": false,"largeChartUrl": ""}';
 
     this.tradingview.nativeElement.appendChild(script);
   }
