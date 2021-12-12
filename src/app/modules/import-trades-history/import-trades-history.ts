@@ -135,15 +135,10 @@ export class ImportTradesHistory implements AfterViewInit, OnInit {
     if (this.selectedFiles !== undefined && this.selectedFiles.length > 0) {
       this.uploadService.importTradesThesis(this.selectedFiles.item(0), rowModel.id).subscribe(
         event => {
-          this.toastr.success('Imported trades thesis successfully', '', 
-          { 
-            tapToDismiss:false,
-            closeButton:true,
-            disableTimeOut: true
-          });
+          this.toastr.success('Your trades have been sucessfully imported. Uploaded Records: ____; Failed Records: ____', 'Success');
         },
         err => {
-          this.toastr.error('Failed to import trades thesis', '', 
+          this.toastr.error('Failed to import trades thesis', 'Error', 
           { 
             tapToDismiss:false,
             closeButton:true,
@@ -153,7 +148,7 @@ export class ImportTradesHistory implements AfterViewInit, OnInit {
       this.selectedFiles = undefined;
     }
     else {
-      this.toastr.error('Please select a file import trades thesis', '', 
+      this.toastr.error('Please select a file import trades thesis', 'Error', 
       { 
         tapToDismiss:false,
         closeButton:true,

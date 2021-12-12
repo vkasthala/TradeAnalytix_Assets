@@ -79,14 +79,10 @@ export class ManagerulesComponent implements OnInit {
     
     dialogRef.afterClosed().subscribe((res) => {
       this.settingsService.saveEntryExitRule(res).subscribe(data => {
-        this.toastr.success('Entry exit rule added successfully', '', { 
-          tapToDismiss:false,
-          closeButton:true,
-          disableTimeOut: true
-        });
+        this.toastr.success('Manual rule added', 'Success');
         this.loadPage();
       }, err => {
-        this.toastr.error('Failed to add entry exit rule', '', 
+        this.toastr.error('Failed to add entry exit rule', 'Error', 
         { 
           tapToDismiss:false,
           closeButton:true,
@@ -116,14 +112,10 @@ export class ManagerulesComponent implements OnInit {
       this.rule.source = rowModel.source;
 
       this.settingsService.updateEntryExitRule(this.rule).subscribe(data => {
-        this.toastr.success('Entry exit rule updated successfully', '', { 
-          tapToDismiss:false,
-          closeButton:true,
-          disableTimeOut: true
-        });
+        this.toastr.success('Manual rule updated', 'Success');
         this.loadPage();
       }, err => {
-        this.toastr.error('Failed to update entry exit rule', '', { 
+        this.toastr.error('Failed to update entry exit rule', 'Error', { 
           tapToDismiss:false,
           closeButton:true,
           disableTimeOut: true
@@ -140,14 +132,10 @@ export class ManagerulesComponent implements OnInit {
     this.rule.source = rowModel.source;
 
     this.settingsService.deleteEntryExitRule(this.rule).subscribe(data => {
-      this.toastr.success('Entry exit rule deleted successfully', '', { 
-        tapToDismiss:false,
-        closeButton:true,
-        disableTimeOut: true
-      });
+      this.toastr.success('Entry exit rule deleted successfully', 'Success');
       this.loadPage();
     }, err => {
-      this.toastr.error('Failed to delete entry exit rule', '', { 
+      this.toastr.error('Failed to delete entry exit rule', 'Error', { 
         tapToDismiss:false,
         closeButton:true,
         disableTimeOut: true

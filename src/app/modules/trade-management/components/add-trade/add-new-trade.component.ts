@@ -179,17 +179,12 @@ export class AddNewTradeComponent implements OnInit {
     console.log('add trade...', this.tradeStrategy);
     this.tradeStrategyService.addTrade(this.tradeStrategy).subscribe(result => {
       console.log('Trade strategy successfully created');
-      this.toastr.success('Trade strategy created', '', 
-      { 
-        tapToDismiss:false,
-        closeButton:true,
-        disableTimeOut: true
-      });
+      this.toastr.success('Trade strategy has been added. Can we include strategy ID in the banner message?', 'Success');
       this.router.navigateByUrl("/trade-strategies");
       this.Loader = !this.Loader;
     },
       err => {
-        this.toastr.error('Internal Server Error', '', { 
+        this.toastr.error('Internal Server Error', 'Error', { 
           tapToDismiss:false,
           closeButton:true,
           disableTimeOut: true
@@ -207,7 +202,7 @@ export class AddNewTradeComponent implements OnInit {
       this.Loader = !this.Loader;
     },
       err => {
-        this.toastr.error('Internal Server Error', '', { 
+        this.toastr.error('Internal Server Error', 'Error', { 
           tapToDismiss:false,
           closeButton:true,
           disableTimeOut: true
@@ -220,17 +215,12 @@ export class AddNewTradeComponent implements OnInit {
   closeTradeStrategy() {
     this.updateTradeStrategyProps();
     this.tradeStrategyService.closeTrade(this.tradeStrategy).subscribe(result => {
-      this.toastr.success('Trade strategy closed', '', 
-      { 
-        tapToDismiss:false,
-        closeButton:true,
-        disableTimeOut: true
-      });
+      this.toastr.success('Trade strategy closed', 'Success');
       this.router.navigateByUrl("/trade-strategies");
       this.Loader = !this.Loader;
     },
       err => {
-        this.toastr.error('Internal Server Error', '', 
+        this.toastr.error('Internal Server Error', 'Error', 
         { 
           tapToDismiss:false,
           closeButton:true,

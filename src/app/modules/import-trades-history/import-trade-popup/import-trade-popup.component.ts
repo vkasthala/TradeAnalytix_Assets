@@ -75,7 +75,7 @@ export class ImportTradePopupComponent implements OnInit {
       this.selectedFiles = undefined;
     }
     else {
-      this.toastr.error('Please select a file import trades', '', 
+      this.toastr.error('Please select a file import trades', 'Error', 
       { 
         tapToDismiss:false,
         closeButton:true,

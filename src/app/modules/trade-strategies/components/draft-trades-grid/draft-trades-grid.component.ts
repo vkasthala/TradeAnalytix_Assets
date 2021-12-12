@@ -196,7 +196,7 @@ export class DraftTradesGrid implements AfterViewInit, OnInit {
         },
         err => {
           this.toastr.error(
-            'Internal Server Error', '', 
+            'Internal Server Error', 'Error', 
             { 
               tapToDismiss:false,
               closeButton:true,

@@ -127,7 +127,7 @@ export class CodedRulesComponent implements OnInit {
 
 
   showErrorMessageDialog(msg: string) {
-    this.toastr.error(msg, '', { 
+    this.toastr.error(msg, 'Error', { 
       tapToDismiss:false,
       closeButton:true,
       disableTimeOut: true
@@ -135,12 +135,7 @@ export class CodedRulesComponent implements OnInit {
   }
 
   showSuccessMessage(msg: string) {
-    this.toastr.success(msg, '', 
-    { 
-      tapToDismiss:false,
-      closeButton:true,
-      disableTimeOut: true
-    });
+    this.toastr.success(msg, 'Success');
   }
 
   onRowEdit(element: UserCodedRule) {
@@ -169,7 +164,7 @@ export class CodedRulesComponent implements OnInit {
 
     if (!element.id || element.id === 0) {
       this.codedRuleService.createCodedRule(element).subscribe(data => {
-        this.showSuccessMessage('Successfully added the coded rule');
+        this.toastr.success('Automatic rule enabled', 'Success');
         this.loadCodedRulesData();
       }, err => {
         console.log('error in creating coded rule: ', element)
@@ -177,7 +172,7 @@ export class CodedRulesComponent implements OnInit {
       });
     } else {
       this.codedRuleService.updateCodedRule(element).subscribe(data => {
-        this.showSuccessMessage('Successfully updated the coded rule');
+        this.toastr.success('Automatic rule updated', 'Success');
         this.loadCodedRulesData();
       }, err => {
         console.log('error in editing coded rule: ', element)
@@ -188,7 +183,7 @@ export class CodedRulesComponent implements OnInit {
 
   deleteCodedRule(rule: UserCodedRule) {
     this.codedRuleService.deleteCodedRule(rule.id).subscribe(data => {
-      this.showSuccessMessage('Successfully removed from rules list');
+      this.toastr.success('Automatic rule disabled.', 'Success');
       this.loadCodedRulesData();
     }, err => {
       console.log('error in deleteing coded rule: ', rule)

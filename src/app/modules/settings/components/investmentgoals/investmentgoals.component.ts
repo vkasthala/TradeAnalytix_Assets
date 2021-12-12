@@ -41,7 +41,7 @@ export class InvestmentGoalsComponent implements OnInit {
     const num1 = ((document.getElementById('targetProfit') as HTMLInputElement).value);
 
     if (num1 === '' || num1 === undefined) {
-      this.toastr.error('Please Enter Target Profit', '', { 
+      this.toastr.error('Please Enter Target Profit', 'Error', { 
         tapToDismiss:false,
         closeButton:true,
         disableTimeOut: true
@@ -109,15 +109,11 @@ export class InvestmentGoalsComponent implements OnInit {
   saveProfile(goal: InvestmentGoals) {
     this.goalsService.saveInvestmentGoals(goal).subscribe((data: []) => {
       this.GoalsList = data;
-      this.toastr.success('Goals saved successfully', '', { 
-        tapToDismiss:false,
-        closeButton:true,
-        disableTimeOut: true
-      });
+      this.toastr.success('Goals saved successfully', 'Success');
       this.handleClear();
     }, (error) => {
       console.log('test: ', error);
-      this.toastr.error(error.error ? String(error.error) : 'Failed saving the goals', '', { 
+      this.toastr.error(error.error ? String(error.error) : 'Failed saving the goals', 'Error', { 
         tapToDismiss:false,
         closeButton:true,
         disableTimeOut: true

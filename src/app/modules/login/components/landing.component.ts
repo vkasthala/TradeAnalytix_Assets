@@ -83,12 +83,7 @@ export class LandingComponent implements OnInit {
     dialogRef.afterClosed().subscribe((res) => {
       if (res) {
         this.httpService.post(environment.apiUrl + '/wait-list-user/create', res).subscribe(resp => {
-          this.toastr.success('Successfully added to waitlist. The activation details will be sent via email in 24 hours.', '', 
-          { 
-            tapToDismiss:false,
-            closeButton:true,
-            disableTimeOut: true
-          })
+          this.toastr.success('Successfully added to waitlist. The activation details will be sent via email in 24 hours.', 'Success')
         }, err => {
           this.toastr.error(err.error, '', 
           { 

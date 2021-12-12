@@ -315,7 +315,7 @@ export class DatasetupComponent implements OnInit {
   }
 
   showDeleteErrorMessage() {
-    this.toastr.error('Failed to delete entry. Please check if this has assigned to any trade strategy.', '', 
+    this.toastr.error('Failed to delete entry. Please check if this has assigned to any trade strategy.', 'Error', 
     { 
       tapToDismiss:false,
       closeButton:true,
@@ -324,7 +324,7 @@ export class DatasetupComponent implements OnInit {
   }
 
   showErrorMessageDialog(msg: string) {
-    this.toastr.error(msg, '', { 
+    this.toastr.error(msg, 'Error', { 
       tapToDismiss:false,
       closeButton:true,
       disableTimeOut: true
@@ -332,11 +332,7 @@ export class DatasetupComponent implements OnInit {
   }
 
   showSuccessMessage(msg: string) {
-    this.toastr.success(msg, '', { 
-      tapToDismiss:false,
-      closeButton:true,
-      disableTimeOut: true
-    });
+    this.toastr.success(msg, 'Success');
   }
 
 }

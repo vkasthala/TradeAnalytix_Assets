@@ -30,15 +30,10 @@ export class ImportTradesComponent implements OnInit {
       this.uploadService.importTrades(this.currentFile, this.selectedbroker).subscribe(
         event => {
           window.location.reload();
-          this.toastr.success('Imported trades successfully', '', 
-          { 
-            tapToDismiss:false,
-            closeButton:true,
-            disableTimeOut: true
-          });
+          this.toastr.success('Your trades have been sucessfully imported. Uploaded Records: ____; Failed Records: ____', 'Success');
         },
         err => {
-          this.toastr.error('Failed to import trades', '', 
+          this.toastr.error('Failed to import trades', 'Error', 
           { 
             tapToDismiss:false,
             closeButton:true,
@@ -50,7 +45,7 @@ export class ImportTradesComponent implements OnInit {
       this.selectedFiles = undefined;
     }
     else{
-      this.toastr.error('Please select a file import trades', '', 
+      this.toastr.error('Please select a file import trades', 'Error', 
       { 
         tapToDismiss:false,
         closeButton:true,

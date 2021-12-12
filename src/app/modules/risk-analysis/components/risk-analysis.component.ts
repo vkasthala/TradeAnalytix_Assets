@@ -541,7 +541,7 @@ export class RiskAnalysisComponent implements OnInit {
   validateInputs(): boolean {
     if (this.stockAdded) {
       if (!this.stockEntry.price || this.stockEntry.price == 0) {
-        this.toastr.error('Invalid Stock Price', '', 
+        this.toastr.error('Invalid Stock Price', 'Error', 
         { 
           tapToDismiss:false,
           closeButton:true,
