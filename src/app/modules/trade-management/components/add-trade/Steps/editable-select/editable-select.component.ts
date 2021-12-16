@@ -47,7 +47,15 @@ export class EditableSelectComponent implements OnInit {
     this.listHidden = false;
     // this.selectedIndex = 0;
     if (!this.listHidden && this.value !== undefined) {
-      this.filteredList = this.list.filter((item) => item.toLowerCase().startsWith(this.value.toLowerCase()));
+      let val = this.value.toLowerCase();
+      this.filteredList = [];
+      this.list.filter((item) => {
+        if(item !== undefined) {
+          if (item.toLowerCase().startsWith(val)) {
+            this.filteredList.push(item)
+          }
+        }
+      });
     }
   }
 
@@ -86,7 +94,7 @@ export class EditableSelectComponent implements OnInit {
         }
       }
     }
-    if(event.target.value.length > 1) {
+    if(event.target.value.length > 0) {
       this.listHidden = true;
     }
   }
