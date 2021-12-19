@@ -33,7 +33,9 @@ import { TradingRulesComponent } from '../help/components/trading-rules/trading-
 import { CompareStrategyComponent } from '../help/components/compare-strategy/compare-strategy.component';
 import { TradePlaneComponent } from '../help/components/trade-plan/trade-plan.component';
 import { HelpRiskAnalysisComponent } from '../help/components/risk-analysis/risk-analysis.component';
-
+import { HelpCloseTradeComponent } from '../help/components/trade-journal/clode-trade/clode-trade.component';
+import { HelpEditTradeComponent } from '../help/components/trade-journal/edit-trade/help-edit-trade.component';
+import { HelpAddNewTradeComponent } from '../help/components/trade-journal/add-trade/help-add-trade.component';
 
 const routes: Routes = [
   {
@@ -145,8 +147,15 @@ const routes: Routes = [
               component: GettingStartedComponent
             },
             {
-              path : 'trade-journal',
-              component: TradeJournalComponent
+              path : 'add-trade',
+              component: HelpAddNewTradeComponent
+            }, {
+              path : 'edit-trade',
+              component: HelpEditTradeComponent
+            },
+            {
+              path : 'close-trade',
+              component: HelpCloseTradeComponent
             },
             {
               path : 'import-trade',

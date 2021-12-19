@@ -29,6 +29,9 @@ import { HelpReportsComponent } from '../help/components/help-reports/help-repor
 import { HelpComponent } from '../help/components/help.component';
 import { ImportTradeComponent } from '../help/components/import-trade/import-trade.component';
 import { HelpRiskAnalysisComponent } from '../help/components/risk-analysis/risk-analysis.component';
+import { HelpAddNewTradeComponent } from '../help/components/trade-journal/add-trade/help-add-trade.component';
+import { HelpCloseTradeComponent } from '../help/components/trade-journal/clode-trade/clode-trade.component';
+import { HelpEditTradeComponent } from '../help/components/trade-journal/edit-trade/help-edit-trade.component';
 import { TradeJournalComponent } from '../help/components/trade-journal/trade-journal.component';
 import { TradePlaneComponent } from '../help/components/trade-plan/trade-plan.component';
 import { TradingRulesComponent } from '../help/components/trading-rules/trading-rules.component';
@@ -224,6 +227,9 @@ export const MY_FORMATS = {
     HelpComponent,
     GettingStartedComponent,
     TradeJournalComponent,
+    HelpAddNewTradeComponent,
+    HelpEditTradeComponent,
+    HelpCloseTradeComponent,
     ImportTradeComponent,
     TradePlaneComponent,
     HelpRiskAnalysisComponent,

@@ -1,10 +1,13 @@
 <div class="p-3 mt-1">
     <div class="main-body">
         <div class="trade-dash-main px-0">
-            <div class="trade-dash-name col-10 pl-0">
+            <div class="trade-dash-name col-8 pl-0">
                 <h3>Trades can be added in bulk to CueTrade by uploading a file that has your trades. You can add your trades to our standard template (click here to download) or import the trade history files exported from your brokerages.</h3>
             </div>
-            <button type="button" (click)="importTradesPopup();" class="btn btn-apply">Import Trades</button>
+            <div class="d-flex justify-content-end">
+                <button type="button" (click)="importTradesPopup();" class="btn btn-apply">Import Trades</button>
+                <button type="button" class="d-flex btn btn-apply ml-2 align-items-center"><mat-icon class="mr-2">download</mat-icon> Template</button>
+            </div>
         </div>
 
         <div class="trade-table">

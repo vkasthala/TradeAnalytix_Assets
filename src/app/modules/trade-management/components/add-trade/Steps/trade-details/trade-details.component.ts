@@ -28,7 +28,7 @@ import { StrategySelectionComponent } from 'src/app/modules/shared/components/mo
 import { EditableSelectComponent } from '../editable-select/editable-select.component';
 import { UserTagService } from 'src/app/modules/settings/services/user-tag.service';
 import { UserTag } from 'src/app/modules/settings/models/user-tag.model';
-
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-trade-details',
@@ -87,7 +87,7 @@ export class TradeDetailsComponent implements OnInit {
   editOptionForm: boolean = false;
   protected optionIndex: number = 1;
   protected optionGroup: any = {};
-
+  registeredTags: any = [];
   public optionTypes: [
     { value: 1, name: 'radio1', id: "Call" },
     { value: 2, name: 'radio1', id: "Put" },
@@ -98,7 +98,9 @@ export class TradeDetailsComponent implements OnInit {
     private strategyCreateServiceService: StrategyCreateService,
     private userTagService: UserTagService,
     private router: Router,
-    private _dialog: MatDialog) {
+    private _dialog: MatDialog,
+    private toastr: ToastrService,
+    ) {
   }
 
   ngOnInit() {
@@ -577,18 +579,36 @@ export class TradeDetailsComponent implements OnInit {
   }
 
   addTag() {
+    this.registeredTags = this.userTagService.getTags();
+    console.log('registeredTags', this.registeredTags);
     const dialogRef = this._dialog.open(EditableSelectComponent, {
       disableClose: true,
       width: 'auto',
-      data: { title: 'Tag', list: this.userTagService.getTags() }
+      data: { title: 'Tag', list: this.registeredTags }
     });
 
     dialogRef.afterClosed().subscribe((res) => {
       let userTag: UserTag = this.userTagService.getUserTagByName(res);
       if (userTag) {
         let tag: TradeTag = new TradeTag(userTag.id);
-        this.tags.push(tag);
+        if (res) {
+          this.tags.push(tag);
+        }
       } else {
+        this.registeredTags.filter((x) => {
+          console.log('item', x);
+          let val = x.toLowerCase();
+          if(val === res.toLowerCase()) {
+            this.toastr.error('This tag already exist', 'Error',
+            { 
+              tapToDismiss:false,
+              closeButton:true,
+              disableTimeOut: true
+            });
+            return;
+          }
+        })
+        
         this.userTagService.createTag(this.createUserTag(res, undefined)).subscribe(result => {
           this.userTagService.registerTag(result);
           let tag: TradeTag = new TradeTag(result.id);

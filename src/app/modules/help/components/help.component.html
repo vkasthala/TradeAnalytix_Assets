@@ -11,9 +11,27 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" [routerLink]="['trade-journal']" routerLinkActive="active-link">
+                            <div class="border p-2 px-3">
                                 <span>Trade Journal</span>
-                            </a>
+                            
+                                <ul class="sublist pl-3">
+                                    <li>
+                                        <a [routerLink]="['add-trade']" routerLinkActive="active-link">
+                                            <span>Add Trade</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a [routerLink]="['edit-trade']" routerLinkActive="active-link">
+                                            <span>Edit Trade</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a [routerLink]="['close-trade']" routerLinkActive="active-link">
+                                            <span>Close Trade</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
         
                         <li class="sidebar-item">
@@ -48,11 +66,11 @@
                                 <span>Reports</span>
                             </a>
                         </li>
-                        <li class="sidebar-item" [class.nav-active]="currentRoute == 'data-setup'">
+                        <!-- <li class="sidebar-item" [class.nav-active]="currentRoute == 'data-setup'">
                             <a class="sidebar-link" [routerLink]="['data-setup']" routerLinkActive="active-link">
                                 <span>Data Setup</span>
                             </a>
-                        </li>
+                        </li> -->
         
                     </ul>
                 </nav>
