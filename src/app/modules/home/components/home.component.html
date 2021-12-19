@@ -1,10 +1,10 @@
 <div class="wrapper trade-app-dashboard">
     <div class="sidebar" [ngClass]="isExpand ? 'toggled' : ''">
         <div *ngIf="isExpand" class="sidebar-brand cursor-pointer" [routerLink]="['/dashboard/']">
-            <img src="../../../../assets/images/logo_sm.svg" alt="Trade-app-logo" class="img-fluid">
+            <img src="../../../../assets/images/TA_logo_sm.jpg" alt="Trade-app-logo" class="img-fluid">
         </div>
         <div *ngIf="!isExpand" class="sidebar-brand cursor-pointer" [routerLink]="['/dashboard/']">
-            <img src="../../../../assets/images/logo.svg" alt="Trade-app-logo" class="img-fluid full-logo">
+            <img src="../../../../assets/images/TA_logo.jpg" alt="Trade-app-logo" class="img-fluid full-logo">
         </div>
 
         <nav class="trade-navbar">
@@ -77,7 +77,7 @@
                     <!-- <span matTooltip="{{description}}" matTooltipPosition="right" class="text-secondary ml-2" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay"><img src="../../../../assets/images/outline_info_icon.png" /></span> -->
                 </div>
                 <div class="user-details">
-                    <div class="global-search">
+                    <!-- <div class="global-search">
                         <div class="media-body">
                             <app-trade-search (symbolSelectEvent)="symbolSelectEventHandler($event)">
                             </app-trade-search>
@@ -85,7 +85,7 @@
                         <mat-icon class="material-icons-outlined cursor" (click)="enterSymbol()">
                             search
                         </mat-icon>
-                    </div>
+                    </div> -->
                     <div class="top-nav">
                         <!-- <span class="top-nav-item" [class.nav-active]="currentRoute == 'rules'">
                             <a class="top-nav-link" [routerLink]="['/rules/']">

@@ -85,7 +85,7 @@ export class LandingComponent implements OnInit {
         this.httpService.post(environment.apiUrl + '/wait-list-user/create', res).subscribe(resp => {
           this.toastr.success('Successfully added to waitlist. The activation details will be sent via email in 24 hours.', 'Success')
         }, err => {
-          this.toastr.error(err.error, '', 
+          this.toastr.error('Provide valid name and email address to join the waitlist.', 'Error', 
           { 
             tapToDismiss:false,
             closeButton:true,

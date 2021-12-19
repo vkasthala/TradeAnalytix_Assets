@@ -1,4 +1,4 @@
-<div class="trade-thesis-sec">
+<div class="trade-thesis-sec" *ngIf="!addTrade && tradeStatus !== 4">
     <div class="entry-thesis-header cursor" (click)="showExitRules()">
         <span>Exit Rules</span>
         <i class="negative-amt material-icons">{{hideExitRules ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}</i>

@@ -447,7 +447,7 @@ $button-active-blue: #1669F2;
 }
 .sidebar-item {
     position: relative;
-    padding: 3px 10px;
+    padding: 5px 10px;
     min-height: inherit;
 }
 .sidebar-link, a.sidebar-link {
@@ -472,6 +472,14 @@ $button-active-blue: #1669F2;
 .sublist {
     list-style-type: none;
     li {
-        padding: .5rem 0;
+        padding: 5px 10px;
     }
+}
+.list-item-link {
+    padding: .345rem 0.25rem;
+    line-height: 1.2;
+    font-size: 16px;
+}
+.parent-link {
+    color: #007bff;
 }

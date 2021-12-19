@@ -6,13 +6,13 @@
                 <nav class="trade-navbar">
                     <ul class="list-unstyled ">
                         <li class="sidebar-item">
-                            <a class="sidebar-link" routerLink="getting-started" routerLinkActive="active-link" >
+                            <a class="list-item-link" routerLink="getting-started" routerLinkActive="active-link" >
                                 <span>Getting Started</span>
                             </a>
                         </li>
-                        <li class="sidebar-item">
-                            <div class="border p-2 px-3">
-                                <span>Trade Journal</span>
+                        <li class="sidebar-item pb-0">
+                            <div class="list-item-link">
+                                <span class="parent-link">Trade Journal</span>
                             
                                 <ul class="sublist pl-3">
                                     <li>
@@ -21,12 +21,12 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a [routerLink]="['edit-trade']" routerLinkActive="active-link">
+                                        <a [routerLink]="['trade-journal-edit-trade']" routerLinkActive="active-link">
                                             <span>Edit Trade</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a [routerLink]="['close-trade']" routerLinkActive="active-link">
+                                        <a [routerLink]="['trade-journal-close-trade']" routerLinkActive="active-link">
                                             <span>Close Trade</span>
                                         </a>
                                     </li>
@@ -35,34 +35,34 @@
                         </li>
         
                         <li class="sidebar-item">
-                            <a class="sidebar-link" [routerLink]="['import-trade']" routerLinkActive="active-link">
+                            <a class="list-item-link" [routerLink]="['import-trade']" routerLinkActive="active-link">
                                 <span>Import Trades</span>
                             </a>
                         </li>
         
                         <li class="sidebar-item">
-                            <a class="sidebar-link" [routerLink]="['trade-plan']" routerLinkActive="active-link">
+                            <a class="list-item-link" [routerLink]="['trade-plan']" routerLinkActive="active-link">
                                 <span>Trade Plan</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" [routerLink]="['helprisk-analysis']" routerLinkActive="active-link">
+                            <a class="list-item-link" [routerLink]="['helprisk-analysis']" routerLinkActive="active-link">
                                 <span>Risk Analysis</span>
                             </a>
                         </li>
                         <li class="sidebar-item" [class.nav-active]="currentRoute == 'compare-strategy'">
-                            <a class="sidebar-link" [routerLink]="['compare-strategy']" routerLinkActive="active-link">
+                            <a class="list-item-link" [routerLink]="['compare-strategy']" routerLinkActive="active-link">
                                 <span>Strategy Comparison</span>
                             </a>
                         </li>
                         <li class="sidebar-item" [class.nav-active]="currentRoute == 'trading-rules'">
-                            <a class="sidebar-link" [routerLink]="['trading-rules']" routerLinkActive="active-link">
+                            <a class="list-item-link" [routerLink]="['trading-rules']" routerLinkActive="active-link">
                                 <span>Trading Rules</span>
                             </a>
                         </li>
         
                         <li class="sidebar-item" [class.nav-active]="currentRoute == 'helpreports'">
-                            <a class="sidebar-link" [routerLink]="['helpreports']" routerLinkActive="active-link">
+                            <a class="list-item-link" [routerLink]="['helpreports']" routerLinkActive="active-link">
                                 <span>Reports</span>
                             </a>
                         </li>

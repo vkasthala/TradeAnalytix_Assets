@@ -49,7 +49,7 @@
                                                         <mat-icon class="mat-icon-sm mat-icon-edit ml-2" (click)="StrategyDetailsModal(index)">info</mat-icon>
                                                     </div>
                                                     <div class="trade-sel position-relative">
-                                                        <select class="form-control select-input" (change)="onStrategyChange($event.target.value, index)">
+                                                        <select class="form-control select-input strategy_select" (change)="onStrategyChange($event.target.value, index)">
                                                             <option *ngFor="let key of userStrategies;let i = index"
                                                                 [value]="i">{{key.uid}}</option>
                                                         </select>

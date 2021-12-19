@@ -95,8 +95,8 @@ export class CompareStrategiesComponent implements OnInit {
     this.compareStrategyService.getStrategiesList(this.selectedStock.id).subscribe(result => {
       this.userStrategies = result;
       if (result.length > 0) {
-        this.strategiesList = result.slice(0, 2);;
-        this.selectedStrategies = this.strategiesList;
+        this.strategiesList = result.slice(0, 2);
+        this.selectedStrategies = result.slice(0, 2);
       }
     })
   }
@@ -107,12 +107,14 @@ export class CompareStrategiesComponent implements OnInit {
       index = this.strategiesList.length;
       strategyItem.push(this.userStrategies[index]);
       this.selectedItem = strategyItem;
+      //this.selectedStrategies.push(this.userStrategies[index]);
     }
     //this.compareResult = null;
     if (this.strategiesList.length < 5) {
       if (this.userStrategies.length > 0) {
         this.strategiesList.push(this.selectedItem[0]);
       }
+      this.selectedStrategies.push(this.userStrategies[index]);
     }
   }
 
@@ -151,7 +153,7 @@ export class CompareStrategiesComponent implements OnInit {
       }
     }
     this.strategiesList = newStratetegies;
-    this.selectedStrategies = selected;
+    this.selectedStrategies.splice(index, 1);
   }
 
   enforceMaxLength($event, min, max) {
@@ -211,11 +213,14 @@ export class CompareStrategiesComponent implements OnInit {
     return request;
   }
 
-  onStrategyChange(index: number) {
+  onStrategyChange(event:any, index: number) {
+    let ind = event;
     this.selectedItem = [];
-    console.log('selected: ', this.userStrategies[index]);
-    this.selectedStrategies[index] = this.userStrategies[index];
+    this.selectedStrategies[index] = this.userStrategies[ind];
     this.selectedItem.push(this.userStrategies[index]);
+    // let deleteLink = document.querySelector('.strategy_select');
+    //deleteLink.setAttribute();
+    // console.log('deleteLink', deleteLink)
   }
 
   editStrategyItem(index) {

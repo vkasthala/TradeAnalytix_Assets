@@ -370,6 +370,7 @@ export class RiskAnalysisComponent implements OnInit {
     let extras: NavigationExtras = this.router.getCurrentNavigation().extras;
     console.log('state---:', extras.state);
     if (extras.state) {
+      debugger;
       let state: TradeInputData = <TradeInputData>extras.state;
       console.log('state:', state);
       if (state.selectedStock && state.stockSummary) {
@@ -397,7 +398,6 @@ export class RiskAnalysisComponent implements OnInit {
               this.stockOptions.push(state.tradeStrategy.stockOptions[ind]);
             }
           }
-          
         }
         if (state.tradeStrategy && state.tradeStrategy.strategyTypeId) {
           this.selectedStrategy = state.tradeStrategy.strategyTypeId;
@@ -511,6 +511,7 @@ export class RiskAnalysisComponent implements OnInit {
   }
 
   loadImpliedVolatility() {
+    debugger;
     if (this.validateInputs() == false) {
       return;
     }

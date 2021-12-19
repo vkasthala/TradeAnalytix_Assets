@@ -39,6 +39,7 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
 
   protected hideEntryThesis: boolean = false;
   protected hideClosingThesis: boolean = false;
+  tradeStatus: number;
   constructor(
     private _renderer2: Renderer2,
     private _dialog: MatDialog,
@@ -61,6 +62,7 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
     console.log('trade thesis child view init:', this.inputState);
     if (this.inputState && this.inputState.tradeStrategy && this.inputState.tradeStrategy.tradeThesis && this.inputState.tradeStrategy.tradeThesis.length > 0) {
       this.tradeThesis = this.inputState.tradeStrategy.tradeThesis[0];
+      this.tradeStatus = this.inputState.tradeStrategy.statusId;
       if (!this.tradeThesis) {
         this.tradeThesis = new TradeThesis();
       }

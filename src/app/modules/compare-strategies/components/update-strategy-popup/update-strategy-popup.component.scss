@@ -97,7 +97,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 15px;
+    padding: 15px;
     @media #{$extra-small} { 
         display: none;
     }
@@ -107,7 +107,7 @@
     font-size: 14px;
     h6 {
         color: #fff;
-        font-size: 14px;
+        font-size: 16px;
     }
 }
 
@@ -201,7 +201,7 @@ select.form-control {
     text-align: center;
 }
 .center-content-field {
-    margin: 0 auto;
+    margin: 0;
     width: auto;
 }
 .center-content-group {
@@ -266,4 +266,9 @@ select.form-control {
         margin: 0 auto;
         width: 100%;
     }
+}
+.col-form-label {
+    color: #3A4C85;
+    font-size: 14px !important;
+    font-weight: 600;
 }

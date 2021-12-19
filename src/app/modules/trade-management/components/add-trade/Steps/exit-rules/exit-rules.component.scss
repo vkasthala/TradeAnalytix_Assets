@@ -355,8 +355,9 @@ input[type="checkbox"] {
 }
 
 .comment-cell{
-    width: 30%;
-    flex: 0 0 30% !important;
+    width: 40%;
+    flex: 0 0 40% !important;
+    word-break: break-all;
 }
 th.mat-header-cell {
     vertical-align: middle;
@@ -364,8 +365,8 @@ th.mat-header-cell {
     align-items: center;
 }
 .aligned-cell{
-    width: 20%;
-    flex: 0 0 20% !important;
+    width: 10%;
+    flex: 0 0 10% !important;
 }
 .mat-row {
     border: 0;
@@ -375,4 +376,7 @@ th.mat-header-cell {
 td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
+}
+tr.mat-footer-row, tr.mat-row {
+    height: inherit;
 }

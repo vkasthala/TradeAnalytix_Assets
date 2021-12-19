@@ -10,9 +10,6 @@ import { Router } from '@angular/router';
 })
 
 export class GettingStartedComponent implements OnInit {
-  name = 'Cuetrade';
-  GettingStartedHtml;
-  headers
   constructor(
     private router: Router,
     private http:HttpClient,

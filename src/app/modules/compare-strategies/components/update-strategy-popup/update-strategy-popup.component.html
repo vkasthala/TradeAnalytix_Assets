@@ -7,7 +7,7 @@
                 </h6>
             </div>
             <div class="right-close" (click)="closeModal()">
-                <span>close</span>
+                <mat-icon class="trade-form-icon cursor">close</mat-icon> 
             </div>
         </div>
         <div class="mobile-popup-header">
@@ -20,13 +20,13 @@
         <div class="main-pop-inner">
 
             <div class="row align-items-end mb-3" *ngIf="strategyDetails && strategyDetails.compareStrategyStock">
-                <div class="col-4">
+                <div class="col-3">
                     <label class="col-form-label">{{strategyDetails.compareStrategyStock.heading}}</label>
                 </div>
 
                 <div class="col-8">
-                    <div class="col-form-label text-center">Quantity</div>
-                    <div class="center-content-group">
+                    <div class="col-form-label col-5 text-center">Quantity</div>
+                    <div class="center-content-group px-2">
                         <div class="stock-inc center-content-field">
                             <a (click)="decreaseContracts(index)" (mousedown)="mousedown('decreaseQuantity', index)"
                                 (mouseup)="mouseup()" (mouseleave)="mouseup()">
@@ -49,8 +49,8 @@
             <div class="compare-popup-web"
                 *ngIf="strategyDetails && strategyDetails.compareStrategyOptions && strategyDetails.compareStrategyOptions.length">
                 <div class="d-flex justify-content-between">
-                    <label class="col-form-label col-4 px-0"></label>
-                    <label class="col-form-label px-2">Contracts</label>
+                    <label class="col-form-label col-3 px-0"></label>
+                    <label class="col-form-label px-0">Contracts</label>
                     <label class="col-form-label pr-2">Days Left</label>
                     <label class="col-form-label">Imp. Volatility(%)</label>
                 </div>
@@ -58,7 +58,7 @@
                     *ngFor="let item of strategyDetails.compareStrategyOptions; let index=index">
 
                     <div class="d-flex justify-content-between mb-3">
-                        <label class="col-form-label col-4 px-0">{{item.heading}}</label>
+                        <label class="col-form-label col-3 px-0">{{item.heading}}</label>
                         <div class="px-3">
                             <div class="stock-inc">
                                 <a (click)="decreaseContracts(index)"

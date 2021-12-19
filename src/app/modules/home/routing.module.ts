@@ -150,11 +150,11 @@ const routes: Routes = [
               path : 'add-trade',
               component: HelpAddNewTradeComponent
             }, {
-              path : 'edit-trade',
+              path : 'trade-journal-edit-trade',
               component: HelpEditTradeComponent
             },
             {
-              path : 'close-trade',
+              path : 'trade-journal-close-trade',
               component: HelpCloseTradeComponent
             },
             {
