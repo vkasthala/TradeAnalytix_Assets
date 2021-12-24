@@ -179,7 +179,7 @@ export class AddNewTradeComponent implements OnInit {
     console.log('add trade...', this.tradeStrategy);
     this.tradeStrategyService.addTrade(this.tradeStrategy).subscribe(result => {
       console.log('Trade strategy successfully created');
-      this.toastr.success('Trade strategy has been added. Can we include strategy ID in the banner message?', 'Success');
+      this.toastr.success('Trade strategy has been added.', 'Success');
       this.router.navigateByUrl("/trade-strategies");
       this.Loader = !this.Loader;
     },
@@ -197,7 +197,7 @@ export class AddNewTradeComponent implements OnInit {
     this.Loader = !this.Loader;
     this.updateTradeStrategyProps();
     this.tradeStrategyService.editTrade(this.tradeStrategy).subscribe(result => {
-      this.toastr.success('Trade strategy has been updated. Can we include strategy ID in the banner message?', 'Success');
+      this.toastr.success('Trade strategy has been updated.', 'Success');
       this.router.navigateByUrl("/trade-strategies");
       this.Loader = !this.Loader;
     },
