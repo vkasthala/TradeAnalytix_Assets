@@ -135,12 +135,13 @@ img.form-icon {
 }
 
 a.add-new {
-    font-weight: 600;
+    font-weight: 400;
+    height: 40px;
     text-decoration: none;
     cursor: pointer;
     align-items: center;
     display: flex;
-    font-size: 13px;
+    font-size: 14px;
 }
 
 label {
@@ -175,10 +176,12 @@ table.mat-table {
 
 .type-cell {
     width: 10%;
+    flex: 0 0 10%;
 }
 
 .date-cell {
-    width: 10%;
+    width: 12%;
+    flex: 0 0 12%;
 }
 
 .source-cell {
@@ -189,6 +192,8 @@ table.mat-table {
 .description-cell {
     width: 55%;
     min-width: 500px;
+    flex: 0 0 40%;
+    padding-right: 25px;
 }
 
 .action-cell {

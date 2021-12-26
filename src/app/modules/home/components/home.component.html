@@ -1,7 +1,7 @@
 <div class="wrapper trade-app-dashboard">
     <div class="sidebar" [ngClass]="isExpand ? 'toggled' : ''">
         <div *ngIf="isExpand" class="sidebar-brand cursor-pointer" [routerLink]="['/dashboard/']">
-            <img src="../../../../assets/images/TA_logo_sm.jpg" alt="Trade-app-logo" class="img-fluid">
+            <img src="../../../../assets/images/TA_logo_sm.jpg" alt="Trade-app-logo" class="img-fluid logo_sm">
         </div>
         <div *ngIf="!isExpand" class="sidebar-brand cursor-pointer" [routerLink]="['/dashboard/']">
             <img src="../../../../assets/images/TA_logo.jpg" alt="Trade-app-logo" class="img-fluid full-logo">
@@ -103,13 +103,13 @@
                                 <span class="notification_count">{{notificationService.notificationCount}}</span>
                         </a>
                         </span>
-                        <span class="top-nav-item" [class.nav-active]="currentRoute == 'help'">
+                        <span class="top-nav-item pr-0" [class.nav-active]="currentRoute == 'help'">
                             <a class="top-nav-link" [routerLink]="['/help']">
                                 <mat-icon>help_outline</mat-icon>
                             </a>
                         </span>
                     </div>
-                    <div class="login-img ml-3" (click)="logout()">
+                    <div class="login-img ml-2" (click)="logout()">
                         <span class="material-icons logout">logout</span>
                         <!-- <img src="../../../../assets/images/face-img.png" /> -->
                     </div>

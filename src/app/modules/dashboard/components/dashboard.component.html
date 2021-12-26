@@ -64,8 +64,11 @@
                                 </div>
 
                             </div>
+                            <div *ngIf="!latestTradePlan">
+                                <a class="text-link" routerLink="/add-new-trade-plan">Add Trade Plan</a>
+                            </div>
                         </div>
-                        <div class="trade-analytics-body px-3">
+                        <div class="trade-analytics-body px-3" *ngIf="latestTradePlan.notes || latestTradePlan.plannedTrades">
                             <div class="custom-grid pb-3">
                                 <div class="row custom-grid-head">
                                     <div class="col-12">
@@ -354,6 +357,9 @@
                     <h5>Goal Status</h5>
                 </div>
                 <div class="dsh-img">
+                    <!-- <div class="nodata-text" *ngIf="chart">
+                        <a routerLink="/add-new-trade-plan">Set up Goals</a>
+                    </div> -->
                     <app-user-goals-by-date-chart></app-user-goals-by-date-chart>
                 </div>
             </div>

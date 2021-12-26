@@ -16,7 +16,7 @@
                     <div class="trade-form">
                         <mat-icon class="trade-form-icon ml-1">insights</mat-icon>
                         <h2 class="pb-2 symbol-heading">Risk Analysis</h2>
-                        <div class="pb-3 symbol-description">Analyze the potential returns on a trade strategy involving options at present and in the future while varying stock price, implied volatility, and days to expiration. Risk analysis feature allows you to modify the trade strategy and keep assessing its profitability until you arrive at a trade that is aligned with your risk appetite.
+                        <div class="pb-3 symbol-description">Analyze potential returns on your trade strategies while varying stock price, implied volatility, and days to expiration. Update the strategy as needed and re-analyze until you are comfortable with the risk-reward potential of the trade.
                         </div>
                         <div class="d-flex mt-2">
                             <div class="media-body">
@@ -331,19 +331,19 @@
                                             <div class="risk_details risk_profit mr-3">
                                                 <div class="pr-3">
                                                     Maximum profit at the current implied volatility and days left to expiration is
-                                                    <span class="risk_details_count">{{maxRiskDetails.maxProfit}}</span>
+                                                    <span class="risk_details_count">{{maxRiskDetails.maxProfit | number:'1.0-0'}}</span>
                                                     when the stock price moves<span class="ml-2">{{maxRiskDetails.maxProfitChange}}</span>%
                                                 </div>
                                                 
                                             </div>
                                             <div class="risk_details risk_lose">
-                                                <div class="pr-3">Maximum risk at the current implied volatility and days left to expiration is <span class="risk_details_count">{{maxRiskDetails.maxRisk}}</span> when the stock moves <span class="ml-2">{{maxRiskDetails.maxRiskChange}}</span>%
+                                                <div class="pr-3">Maximum risk at the current implied volatility and days left to expiration is <span class="risk_details_count">{{maxRiskDetails.maxRisk | number:'1.0-0'}}</span> when the stock moves <span class="ml-2">{{maxRiskDetails.maxRiskChange}}</span>%
                                                 </div>
                                                 
                                             </div>
                                         </div>
                                         <div class="col-sm-3 pr-0">
-                                            <button class="btn btn-enter d-flex align-items-center ml-auto" (click)="calculateMaxRisk()">Estimate Maximum Profit and Risk <mat-icon matTooltip="Maximum risk and maximum profit is estimated at the current implied volatility and days left to expiration. The values might change as the IV and days left gets updated" matTooltipPosition="right" class="ml-2 mat-icon-sm cursor" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay">info</mat-icon></button>
+                                            <span class="text-link d-flex align-items-center ml-auto" (click)="calculateMaxRisk()">Estimate Maximum Profit and Risk <mat-icon matTooltip="Maximum risk and maximum profit is estimated at the current implied volatility and days left to expiration. The values might change as the IV and days left gets updated" matTooltipPosition="right" class="ml-2 mat-icon-sm cursor" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay">info</mat-icon></span>
                                         </div>
                                         
                                     </div>
