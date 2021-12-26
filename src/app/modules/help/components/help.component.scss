@@ -483,3 +483,61 @@ $button-active-blue: #1669F2;
 .parent-link {
     color: #007bff;
 }
+.vertical-tabs {
+    display: flex;
+    align-items: flex-start;
+    background: #fff;
+    margin-top: 15px;
+    width: 18%;
+    margin-left: 15px;
+}
+.nav-tabs {
+    list-style: none;
+    border: 0;
+}
+.tab .nav-tabs li {
+    padding: 0px;
+    flex-basis: 100%;
+    background: #fff;
+    position: relative;
+    height: 55px;
+}
+
+.tab .nav-tabs li a::before,
+.tab .nav-tabs li a.active::before {
+    background: rgb(214 219 225 / 42%);
+    content: "";
+    height: 1px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 20;
+}
+
+.tab .nav-tabs li a {
+    display: block;
+    padding: 15px;
+    background: transparent;
+    font-size: 14px;
+    font-weight: 600;
+    color: #9DA6BA;
+    border: none;
+    z-index: 2;
+    position: relative;
+    transition: all 0.3s ease 0s;
+    text-decoration: none;
+}
+
+.tab .nav-tabs li a:hover,
+.tab .nav-tabs li .active {
+    border: none;
+    background: #fff;
+    color: #3A4C85;
+}
+
+.tab .nav-tabs li a.active-link::before {
+    transition: all 0.3s ease 0s;
+    background: #3A4C85;
+    height: 3px;
+}

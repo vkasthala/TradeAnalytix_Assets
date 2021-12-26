@@ -129,6 +129,12 @@ export class ReportTypeService {
     reportSubTypes.push(reportSubType);
 
     reportSubType = new ReportSubType();
+    reportSubType.name = 'Strike Price';
+    reportSubType.id = "strike_price";
+    reportSubType.reportDetailList = [new ReportDetails('strike_price', 'Strike Price Chart title', ReportCategory.Net_Return, "This report shows the realized return of the user's portfolio by strike price slection (in the money, at the money, or out of the money)")];
+    reportSubTypes.push(reportSubType);
+
+    reportSubType = new ReportSubType();
     reportSubType.name = 'Entry Price';
     reportSubType.reportDetailList = [new ReportDetails('net_return_entryprice', 'Net Return by Entry Price', ReportCategory.Net_Return, "This report shows the realized return of the user's portfolio by entry price range of the trades"), new ReportDetails('win_loss_entryprice', 'Win/Loss by Entry Price', ReportCategory.Win_Loss, "This report shows the number of winning and losing trades by entry price range of the trades")];
     reportSubTypes.push(reportSubType);
@@ -169,16 +175,24 @@ export class ReportTypeService {
     reportSubType.reportDetailList = [new ReportDetails('net_return_mindset', 'Net Return by Mindset', ReportCategory.Net_Return, "This report shows the realized return of the user's portfolio by user's mindset at the time of opening the trade"), new ReportDetails('win_loss_mindset', 'Win/Loss by Mindset', ReportCategory.Win_Loss, "This report shows the number of winning and losing trades by user's mindset at the time of opening the trade")];
     reportSubTypes.push(reportSubType);
 
+    
+
     reportSubType = new ReportSubType();
-    reportSubType.name = 'Strike Price';
-    reportSubType.id = "strike_price";
-    reportSubType.reportDetailList = [new ReportDetails('strike_price', 'Strike Price Chart title', ReportCategory.Net_Return, "This report shows the realized return of the user's portfolio by strike price slection (in the money, at the money, or out of the money)")];
+    reportSubType.name = 'Close Date';
+    reportSubType.id = "closeDate";
+    reportSubType.reportDetailList = [new ReportDetails('close_date', 'Close Date Chart title', ReportCategory.Net_Return, "This report shows the realized return of the user's portfolio by Close Date")];
+    reportSubTypes.push(reportSubType);
+
+    reportSubType = new ReportSubType();
+    reportSubType.name = 'Stock Price ';
+    reportSubType.id = "stockPrice";
+    reportSubType.reportDetailList = [new ReportDetails('stock_price', 'stock Price title', ReportCategory.Net_Return, "This report shows the realized return of the user's portfolio by stock price")];
     reportSubTypes.push(reportSubType);
 
     reportSubType = new ReportSubType();
     reportSubType.name = 'Entry Date';
     reportSubType.id = "entry_date";
-    reportSubType.reportDetailList = [new ReportDetails('entry_date', 'Entry Date Chart title', ReportCategory.Net_Return, "This report shows the realized return of the user's portfolio by entry date")];
+    reportSubType.reportDetailList = [new ReportDetails('entry_date', 'Entry Date title', ReportCategory.Net_Return, "This report shows the realized return of the user's portfolio by entry date")];
     reportSubTypes.push(reportSubType);
 
     return reportSubTypes;

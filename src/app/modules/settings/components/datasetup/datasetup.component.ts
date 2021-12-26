@@ -235,10 +235,19 @@ export class DatasetupComponent implements OnInit {
     let cols: EditableGridColumn[] = [];
     let colIds: string[] = [];
     let col: EditableGridColumn = new EditableGridColumn();
+
+    
+    col.id = "brokerageValue";
+    col.name = "Brokerage";
+    col.type = 'text';
+    colIds.push('brokerageValue');
+    cols.push(col);
+
+    col = new EditableGridColumn();
     col.id = "name";
-    col.name = "Name";
+    col.name = "Instrument";
     col.type = 'select';
-    col.values = [['Forex Options', 'Forex Options'], ['Stock Options', 'Stock Options'], ['Stock Future', 'Stock Future']]
+    col.values = [['Stocks', 'Stocks'], ['Stock Options', 'Stock Options']]
     colIds.push('name');
     cols.push(col);
 

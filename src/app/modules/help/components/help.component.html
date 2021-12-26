@@ -2,78 +2,68 @@
     <!-- end: header-section -->
     <div class="main-body">
         <div class="wrapper trade-app-dashboard">
-            <div class="sidebar">
-                <nav class="trade-navbar">
-                    <ul class="list-unstyled ">
-                        <li class="sidebar-item">
-                            <a class="list-item-link" routerLink="getting-started" routerLinkActive="active-link" >
-                                <span>Getting Started</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item pb-0">
-                            <div class="list-item-link">
-                                <span class="parent-link">Trade Journal</span>
-                            
-                                <ul class="sublist pl-3">
-                                    <li>
-                                        <a [routerLink]="['add-trade']" routerLinkActive="active-link">
-                                            <span>Add Trade</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a [routerLink]="['trade-journal-edit-trade']" routerLinkActive="active-link">
-                                            <span>Edit Trade</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a [routerLink]="['trade-journal-close-trade']" routerLinkActive="active-link">
-                                            <span>Close Trade</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-        
-                        <li class="sidebar-item">
-                            <a class="list-item-link" [routerLink]="['import-trade']" routerLinkActive="active-link">
-                                <span>Import Trades</span>
-                            </a>
-                        </li>
-        
-                        <li class="sidebar-item">
-                            <a class="list-item-link" [routerLink]="['trade-plan']" routerLinkActive="active-link">
-                                <span>Trade Plan</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="list-item-link" [routerLink]="['helprisk-analysis']" routerLinkActive="active-link">
-                                <span>Risk Analysis</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item" [class.nav-active]="currentRoute == 'compare-strategy'">
-                            <a class="list-item-link" [routerLink]="['compare-strategy']" routerLinkActive="active-link">
-                                <span>Strategy Comparison</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item" [class.nav-active]="currentRoute == 'trading-rules'">
-                            <a class="list-item-link" [routerLink]="['trading-rules']" routerLinkActive="active-link">
-                                <span>Trading Rules</span>
-                            </a>
-                        </li>
-        
-                        <li class="sidebar-item" [class.nav-active]="currentRoute == 'helpreports'">
-                            <a class="list-item-link" [routerLink]="['helpreports']" routerLinkActive="active-link">
-                                <span>Reports</span>
-                            </a>
-                        </li>
-                        <!-- <li class="sidebar-item" [class.nav-active]="currentRoute == 'data-setup'">
-                            <a class="sidebar-link" [routerLink]="['data-setup']" routerLinkActive="active-link">
-                                <span>Data Setup</span>
-                            </a>
-                        </li> -->
-        
-                    </ul>
-                </nav>
+            <div class="tab vertical-tabs">
+                <ul class="nav-tabs w-100">
+                    <li>
+                        <a routerLink="getting-started" routerLinkActive="active-link" >
+                            <span>Getting Started</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['add-trade']" routerLinkActive="active-link">
+                            <span>Add Trade</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['trade-journal-edit-trade']" routerLinkActive="active-link">
+                            <span>Edit Trade</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['trade-journal-close-trade']" routerLinkActive="active-link">
+                            <span>Close Trade</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a [routerLink]="['import-trade']" routerLinkActive="active-link">
+                            <span>Import Trades</span>
+                        </a>
+                    </li>
+    
+                    <li>
+                        <a [routerLink]="['trade-plan']" routerLinkActive="active-link">
+                            <span>Trade Plan</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['helprisk-analysis']" routerLinkActive="active-link">
+                            <span>Risk Analysis</span>
+                        </a>
+                    </li>
+                    <li [class.nav-active]="currentRoute == 'compare-strategy'">
+                        <a [routerLink]="['compare-strategy']" routerLinkActive="active-link">
+                            <span>Strategy Comparison</span>
+                        </a>
+                    </li>
+                    <li [class.nav-active]="currentRoute == 'trading-rules'">
+                        <a [routerLink]="['trading-rules']" routerLinkActive="active-link">
+                            <span>Trading Rules</span>
+                        </a>
+                    </li>
+    
+                    <li [class.nav-active]="currentRoute == 'helpreports'">
+                        <a [routerLink]="['helpreports']" routerLinkActive="active-link">
+                            <span>Reports</span>
+                        </a>
+                    </li>
+                    <!-- <li [class.nav-active]="currentRoute == 'data-setup'">
+                        <a class="sidebar-link" [routerLink]="['data-setup']" routerLinkActive="active-link">
+                            <span>Data Setup</span>
+                        </a>
+                    </li> -->
+    
+                </ul>
             </div>
             <div class="main">
                 <router-outlet></router-outlet>
