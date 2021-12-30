@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Inject, ViewChild } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-editable-select',
@@ -21,7 +22,8 @@ export class EditableSelectComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<EditableSelectComponent>,
-    @Inject(MAT_DIALOG_DATA) data
+    @Inject(MAT_DIALOG_DATA) data,
+    private toastr: ToastrService,
   ) {
     this.title = data.title;
     if (data.list) {
@@ -36,6 +38,19 @@ export class EditableSelectComponent implements OnInit {
 
   closeModal() {
     this.dialogRef.close(this.value);
+  }
+  saveForm() {
+    if (this.value === undefined) {
+      this.toastr.error('Please enter a valid tag.', 'Error',
+          { 
+            tapToDismiss:false,
+            closeButton:true,
+            disableTimeOut: true
+          });
+          return;
+    }else {
+      this.dialogRef.close(this.value);
+    }
   }
 
   ngOnInit() {

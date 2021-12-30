@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { EditableGridColumn } from 'src/app/modules/shared/models/common/editable-grid-column.model';
+import { isArray } from 'util';
 import { UserCodedRule } from '../../models/user-coded-rule.model';
 import { CodedRuleService } from '../../services/coded-rule.service';
 
@@ -15,7 +16,8 @@ export class CodedRulesComponent implements OnInit {
   valueCol: EditableGridColumn;
 
   userCodedRules: UserCodedRule[];
-
+  tradeLevelRules=[];
+  portfolioLevelRules=[];
   constructor(private codedRuleService: CodedRuleService, private toastr: ToastrService) { }
 
   ngOnInit() {
@@ -26,11 +28,19 @@ export class CodedRulesComponent implements OnInit {
     this.loadCodedRulesData();
   }
 
+
   loadCodedRulesData() {
     this.codedRuleService.getUserCodedRules().subscribe(result => {
       this.userCodedRules = result;
-      this.userCodedRules.forEach(rule => {
+      this.tradeLevelRules=[];
+      this.portfolioLevelRules=[];
+      this.userCodedRules.forEach((rule, i) => {
         rule.checked = rule.id && rule.id !== null && rule.id > 0;
+        if(i <= 5) {
+          this.tradeLevelRules.push(rule);
+        } else {
+          this.portfolioLevelRules.push(rule)
+        }
       })
     });
   }

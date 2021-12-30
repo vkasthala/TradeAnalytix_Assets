@@ -176,9 +176,7 @@ export class AddNewTradeComponent implements OnInit {
   addTrade() {
     this.Loader = !this.Loader;
     this.updateTradeStrategyProps();
-    console.log('add trade...', this.tradeStrategy);
     this.tradeStrategyService.addTrade(this.tradeStrategy).subscribe(result => {
-      console.log('Trade strategy successfully created');
       this.toastr.success('Trade strategy has been added.', 'Success');
       this.router.navigateByUrl("/trade-strategies");
       this.Loader = !this.Loader;
