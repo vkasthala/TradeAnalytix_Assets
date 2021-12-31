@@ -588,11 +588,29 @@ export class TradeDetailsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((res) => {
+      let isTagExist = false;
       let userTag: UserTag = this.userTagService.getUserTagByName(res);
       if (userTag) {
         let tag: TradeTag = new TradeTag(userTag.id);
         if (res) {
-          this.tags.push(tag);
+          if(this.tags.length > 0) {
+            this.tags.filter((x) => {
+              if(tag.tagId === x.tagId) {
+                isTagExist = true;
+                this.toastr.error('This tag already added', 'Error',
+                { 
+                  tapToDismiss:false,
+                  closeButton:true,
+                  disableTimeOut: true
+                });
+                return false;
+              }
+            })
+            !isTagExist ?  this.tags.push(tag) : ''
+          }else {
+            this.tags.push(tag);
+          }
+          
         }
       } else {
         this.registeredTags.filter((x) => {

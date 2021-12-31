@@ -13,6 +13,8 @@ import { StockSymbol } from 'src/app/modules/shared/models/trade-management/stoc
 import { GenerateChartPopupComponent } from './generate-chart-popup/generate-chart-popup.component';
 import { DataSetupService } from 'src/app/modules/settings/services/data-setup.service';
 import { EditableListItem } from 'src/app/modules/shared/models/common/editable-list-item.model';
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-trade-thesis',
   templateUrl: './trade-thesis.component.html',
@@ -44,7 +46,8 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
     private _renderer2: Renderer2,
     private _dialog: MatDialog,
     private metadataService: UserMetadataService,
-    private dataSetupService: DataSetupService
+    private dataSetupService: DataSetupService,
+    private toastr: ToastrService,
   ) {
 
   }
@@ -158,9 +161,26 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
   }
 
   addSource(value: string) {
-    this.dataSetupService.createSourceType(this.createEditableItem(value)).subscribe(result => {
-      this.loadSourceTypes();
-    });
+    let isValueExist = false;
+    this.sourceTypes.filter((x) => {
+      if(value === x.name) {
+        isValueExist = true;
+        this.toastr.error('Duplicate value. Please provide a new value', 'Error',
+        { 
+          tapToDismiss:false,
+          closeButton:true,
+          disableTimeOut: true
+        });
+        return;
+      }
+    })
+    if (!isValueExist) {
+      this.dataSetupService.createSourceType(this.createEditableItem(value)).subscribe(result => {
+        this.loadSourceTypes();
+        this.toastr.success('Added new value successfully', 'Success');
+      });
+    }
+    
   }
 
   addTechnicalIndicator(value: string) {
@@ -176,9 +196,25 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
   }
 
   addMindset(value: string) {
-    this.dataSetupService.createMindsetType(this.createEditableItem(value)).subscribe(resuly => {
-      this.loadMindsets();
-    });
+    let isValueExist = false;
+    this.mindsetTypes.filter((x) => {
+      if(value === x.name) {
+        isValueExist = true;
+        this.toastr.error('Duplicate value. Please provide a new value', 'Error',
+        { 
+          tapToDismiss:false,
+          closeButton:true,
+          disableTimeOut: true
+        });
+        return;
+      }
+    })
+    if (!isValueExist) {
+      this.dataSetupService.createMindsetType(this.createEditableItem(value)).subscribe(resuly => {
+        this.loadMindsets();
+        this.toastr.success('Added new value successfully', 'Success');
+      });
+    }
   }
 
   createEditableItem(value: string): EditableListItem {

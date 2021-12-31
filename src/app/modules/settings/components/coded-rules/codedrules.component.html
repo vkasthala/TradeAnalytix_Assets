@@ -1,11 +1,36 @@
 <mat-accordion class="example-headers-align w-100" multi="true">
     <mat-expansion-panel class="coded_rules_body pt-3" [expanded]="true" (opened)="setStep(0)">
         <ng-template matExpansionPanelContent>
-            <div class="trade-dash-name px-2 mb-3">
-                <h3>Automatic rules are user-specific automated rules that trigger notifications or warning messages when the they are broken. Enable the rules that you are appropriate for you and update the values as needed by clicking on edit icon. Review and update the coded rules listed below to receive notifications automatically once the conditions are met.</h3>
+            <div class="trade-dash-name px-2">
+                <h3><strong>Trade-level Rules:</strong> User notified while adding or editing a trade when these rules are broken</h3>
             </div>
             
-            <div class="d-flex py-2 align-items-center" *ngFor="let coderule of userCodedRules">
+            <div class="d-flex py-2 align-items-center" *ngFor="let coderule of tradeLevelRules">
+                <span class="px-2 pr-3">
+                    <input type="checkbox" name="rule" class="checkbox mt-2"
+                        [checked]="coderule.id && coderule.id !== null && coderule.id > 0"
+                        [(ngModel)]="coderule.checked" (change)="onRuleSelectionChange(coderule)" />
+                </span>
+                <span class="code-label">
+                    {{coderule.uiLabel}}
+                </span>
+                <span class="px-2 mx-2" [ngClass]="coderule.val ? 'border' : ''" *ngIf="!coderule.editing">
+                    {{coderule.val ? coderule.val : coderule.defaultValue}}
+                </span>
+                <span class="px-1 d-flex align-items-center" *ngIf="coderule.editing">
+                    <input type="text" class="form-control col-5" [(ngModel)]="coderule.tempVal"/>
+                    <mat-icon class="ml-2 mat-icon-edit action-icon" (click)="onItemEdit(coderule)">check_circle
+                    </mat-icon>
+                    <mat-icon class="ml-2 text-danger action-icon" (click)="onCancel(coderule)">close</mat-icon>
+                </span>
+                <mat-icon class="mat-icon-sm mat-icon-edit" (click)="onRowEdit(coderule)" *ngIf="!coderule.editing && coderule.val">edit
+                </mat-icon>
+            </div>
+
+            <div class="trade-dash-name px-2 pt-3">
+                <h3><strong>Portfolio-level Rules:</strong> Notifications issued at the end of the day when these rules are broken</h3>
+            </div>
+            <div class="d-flex py-2 align-items-center" *ngFor="let coderule of portfolioLevelRules">
                 <span class="px-2 pr-3">
                     <input type="checkbox" name="rule" class="checkbox mt-2"
                         [checked]="coderule.id && coderule.id !== null && coderule.id > 0"
