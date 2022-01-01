@@ -615,7 +615,7 @@ export class TradeDetailsComponent implements OnInit {
       } else {
         this.registeredTags.filter((x) => {
           console.log('item', x);
-          let val = x.toLowerCase();
+          let val = x !== undefined ? x.toLowerCase() : '';
           if(val === res.toLowerCase()) {
             this.toastr.error('This tag already exist', 'Error',
             { 

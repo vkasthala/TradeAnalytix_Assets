@@ -1,0 +1,23 @@
+<div class="compare-popup">
+    <div class="compare-pop-inner">
+        <div class="right-close" (click)="closeModal()">
+            <mat-icon>clear</mat-icon>
+        </div>
+
+        <div class="main-pop-inner">
+            <h3 class="slider-title">{{data[currentInd].title}}</h3>
+            <p><img class="w-100" src="{{data[currentInd].imgUrl}}" /></p>
+            <p class="slider-description">{{data[currentInd].description}}</p>
+        </div>
+
+        <div class="modal-footer">
+            <span class="mr-3" *ngIf="currentInd > 0">
+                <button type="button" class="btn btn-back" (click)="priviousSlide()">Back</button>
+            </span>
+            <span *ngIf="currentInd !== (data.length -1)">
+                <button type="button" class="btn btn-next" (click)="nextSlide()">Next</button>
+            </span>
+            
+        </div>
+    </div>
+</div>

@@ -20,6 +20,7 @@ import { RiskByAssetChartComponent } from '../dashboard/charts/risk-by-asset-cha
 import { UserGoalsByDateChartComponent } from '../dashboard/charts/user-goals-by-date/user-goals-by-date.component.';
 import { DashboardComponent } from '../dashboard/components/dashboard.component';
 import { KeyInsightsComponent } from '../dashboard/components/key-insights/key-insights.component';
+import { SliderModalComponent } from '../dashboard/components/slider-modal/slider-modal.component';
 import { DefaultDashboardComponent } from '../default-dashboard/default-dashboard.component';
 import { EconomicCalendarComponent } from '../economic-calendar/economic-calendar.component';
 import { CompareStrategyComponent } from '../help/components/compare-strategy/compare-strategy.component';
@@ -236,7 +237,8 @@ export const MY_FORMATS = {
     CompareStrategyComponent,
     TradingRulesComponent,
     HelpReportsComponent,
-    HelpDataSetupComponent
+    HelpDataSetupComponent,
+    SliderModalComponent
   ],
   imports: [
     FormsModule,
@@ -255,7 +257,7 @@ export const MY_FORMATS = {
     MatCheckboxModule,
     MatRadioModule,
     MatProgressSpinnerModule
-    // MatTableDataSource
+    // MatTableDataSource,
   ],
   entryComponents: [
     AddTradeConfirmationPopupComponent,
@@ -283,7 +285,8 @@ export const MY_FORMATS = {
     CalendarComponent,
     ReportsRulesComponent,
     StrategySelectionComponent,
-    EditableSelectComponent
+    EditableSelectComponent,
+    SliderModalComponent
   ],
   // bootstrap: [TradeStrategiesGrid],
   providers: [

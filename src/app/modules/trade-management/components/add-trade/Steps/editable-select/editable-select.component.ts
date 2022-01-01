@@ -40,7 +40,8 @@ export class EditableSelectComponent implements OnInit {
     this.dialogRef.close(this.value);
   }
   saveForm() {
-    if (this.value === undefined) {
+    let val = this.value.trim();
+    if (val === undefined || val === "") {
       this.toastr.error('Please enter a valid tag.', 'Error',
           { 
             tapToDismiss:false,

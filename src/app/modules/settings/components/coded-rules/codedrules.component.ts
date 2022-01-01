@@ -37,7 +37,11 @@ export class CodedRulesComponent implements OnInit {
       this.userCodedRules.forEach((rule, i) => {
         rule.checked = rule.id && rule.id !== null && rule.id > 0;
         if(i <= 5) {
-          this.tradeLevelRules.push(rule);
+          if(i == 4) {
+            this.portfolioLevelRules.push(rule)
+          } else {
+            this.tradeLevelRules.push(rule);
+          }
         } else {
           this.portfolioLevelRules.push(rule)
         }

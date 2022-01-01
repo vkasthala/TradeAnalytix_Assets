@@ -129,17 +129,6 @@ export class ReportTypeService {
     reportSubTypes.push(reportSubType);
 
     reportSubType = new ReportSubType();
-    reportSubType.name = 'Strike Price';
-    reportSubType.id = "strike_price";
-    reportSubType.reportDetailList = [new ReportDetails('strike_price', 'Strike Price Chart title', ReportCategory.Net_Return, "This report shows the realized return of the user's portfolio by strike price slection (in the money, at the money, or out of the money)")];
-    reportSubTypes.push(reportSubType);
-
-    reportSubType = new ReportSubType();
-    reportSubType.name = 'Entry Price';
-    reportSubType.reportDetailList = [new ReportDetails('net_return_entryprice', 'Net Return by Entry Price', ReportCategory.Net_Return, "This report shows the realized return of the user's portfolio by entry price range of the trades"), new ReportDetails('win_loss_entryprice', 'Win/Loss by Entry Price', ReportCategory.Win_Loss, "This report shows the number of winning and losing trades by entry price range of the trades")];
-    reportSubTypes.push(reportSubType);
-
-    reportSubType = new ReportSubType();
     reportSubType.name = 'Trade Day';
     reportSubType.id = "initiated_day";
     reportSubType.reportDetailList = [new ReportDetails('net_return_tradeday', 'Net Return by Trade Day', ReportCategory.Net_Return, "This report shows the realized return of the user's portfolio by the day on which they are opened"), new ReportDetails('win_loss_tradeday', 'Win/Loss by Trade Day', ReportCategory.Win_Loss, "This report shows the number of winning and losing trades by the day on which the user opened the trade")];
@@ -175,8 +164,6 @@ export class ReportTypeService {
     reportSubType.reportDetailList = [new ReportDetails('net_return_mindset', 'Net Return by Mindset', ReportCategory.Net_Return, "This report shows the realized return of the user's portfolio by user's mindset at the time of opening the trade"), new ReportDetails('win_loss_mindset', 'Win/Loss by Mindset', ReportCategory.Win_Loss, "This report shows the number of winning and losing trades by user's mindset at the time of opening the trade")];
     reportSubTypes.push(reportSubType);
 
-    
-
     reportSubType = new ReportSubType();
     reportSubType.name = 'Close Date';
     reportSubType.id = "closeDate";
@@ -186,13 +173,24 @@ export class ReportTypeService {
     reportSubType = new ReportSubType();
     reportSubType.name = 'Stock Price ';
     reportSubType.id = "stockPrice";
-    reportSubType.reportDetailList = [new ReportDetails('stock_price', 'stock Price title', ReportCategory.Net_Return, "This report shows the realized return of the user's portfolio by stock price")];
+    reportSubType.reportDetailList = [new ReportDetails('stock_price', 'Coming Soon', ReportCategory.Net_Return, "")];
     reportSubTypes.push(reportSubType);
 
     reportSubType = new ReportSubType();
     reportSubType.name = 'Entry Date';
     reportSubType.id = "entry_date";
-    reportSubType.reportDetailList = [new ReportDetails('entry_date', 'Entry Date title', ReportCategory.Net_Return, "This report shows the realized return of the user's portfolio by entry date")];
+    reportSubType.reportDetailList = [new ReportDetails('entry_date', 'Coming Soon', ReportCategory.Net_Return, "")];
+    reportSubTypes.push(reportSubType);
+
+    reportSubType = new ReportSubType();
+    reportSubType.name = 'Strike Price';
+    reportSubType.id = "strike_price";
+    reportSubType.reportDetailList = [new ReportDetails('strike_price', 'Coming Soon', ReportCategory.Net_Return, "")];
+    reportSubTypes.push(reportSubType);
+
+    reportSubType = new ReportSubType();
+    reportSubType.name = 'Entry Price';
+    reportSubType.reportDetailList = [new ReportDetails('net_return_entryprice', 'Net Return by Entry Price', ReportCategory.Net_Return, "This report shows the realized return of the user's portfolio by entry price range of the trades"), new ReportDetails('win_loss_entryprice', 'Win/Loss by Entry Price', ReportCategory.Win_Loss, "This report shows the number of winning and losing trades by entry price range of the trades")];
     reportSubTypes.push(reportSubType);
 
     return reportSubTypes;

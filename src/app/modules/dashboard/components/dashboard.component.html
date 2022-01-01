@@ -390,3 +390,29 @@
 
     </div>
 </div>
+
+<button type="button" class="btn-get-started" (click)="showChecklist()" data-toggle="tooltip" data-placement="top"
+                title="Show Checklist">Get Started</button>
+
+<div class="checklist-slide" [ngClass]="checklist ? 'open' : ''">
+    <div class="checklist-slide-heading">
+        <span>Check list</span> 
+        <mat-icon class="mat-icon-sm cursor" (click)="showChecklist()">clear</mat-icon> 
+    </div>
+
+    <div class="p-1">
+        <div class="py-1">
+            <input type="checkbox" name="" class="checkbox mr-2" /> Configure data for trade journaling
+        </div>
+        <div class="py-1">
+            <input type="checkbox" name="" class="checkbox mr-2" /> Enable trading rules
+        </div>
+        <div class="py-1">
+            <input type="checkbox" name="" class="checkbox mr-2" /> Define goals
+        </div>
+        <div class="py-1">
+            <input type="checkbox" name="" class="checkbox mr-2" /> Add or import trades
+        </div>
+    </div>
+
+</div>

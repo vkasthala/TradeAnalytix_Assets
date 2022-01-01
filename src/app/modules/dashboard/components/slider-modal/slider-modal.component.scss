@@ -1,0 +1,124 @@
+@import "../../../../../assets/styles/variable.scss";
+.compare-popup {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.compare-pop-inner {
+    background: #fff;
+    max-width: 767px;
+    min-width: 767px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    box-shadow: 0px 0px 16px rgba(157, 157, 157, 0.2);
+    border-radius: 4px;
+    position: relative;
+}
+
+.main-pop-inner {
+    border: 0;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    padding-top: 0;
+}
+.w-60 {
+    width: 60% !important;
+}
+.w-80 {
+    width: 80% !important;
+}
+.main-inner-sec {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 15px;
+    .left-sec {
+        width: 36%;
+    }
+    .right-sec {
+        display: flex;
+        width: 66%;
+    }
+}
+
+.right-sec {
+    display: flex;
+}
+
+
+
+.main-inner-top {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+.right-close {
+    line-height: 0;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    z-index: 20;
+    span {
+        cursor: pointer;
+    }
+    .mat-icon {
+        cursor: pointer;
+        height: 20px;
+        width: 20px;
+        font-size: 22px;
+    }
+}
+
+
+
+.slider-title {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 24px;
+    padding: 10px 0;
+    color: #3A4C85;
+}
+.slider-description {
+    font-weight: 400;
+    font-size: 14px;
+    padding-top: 10px;
+}
+
+
+.btn-back {
+    background-color: #a7a7a7;
+    color: #ffffff;
+    font-size: 12px;
+    padding: 0.375rem 1.5rem !important;
+    border-radius: 4px;
+    line-height: 20px;
+}
+.btn-next {
+    background-color: #2285FA;
+    color: #ffffff;
+    font-size: 12px;
+    padding: 0.375rem 1.5rem !important;
+    border-radius: 4px;
+    line-height: 20px;
+}
+
+@media #{$extra-small} {
+    .compare-pop-inner {
+        max-width: 90%;
+        min-width: 90%;
+    }
+}

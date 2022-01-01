@@ -7,6 +7,8 @@ import { SummaryRequest } from '../../shared/models/reports/summary-request.mode
 import { UserService } from '../../shared/services/user.service';
 import { TradePlanGridRow } from '../../trade-plan/models/trade-plan-grid-row.model';
 import { TradePlansService } from '../../trade-plan/services/trade-plans.service';
+import { MatDialog } from '@angular/material/dialog';
+import { SliderModalComponent } from './slider-modal/slider-modal.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -22,8 +24,40 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   summaryItems: ReportSummaryItem[];
 
   userName: string = '';
+  checklist: boolean=false;
+  sliderData: any = [
+    {
+      title:"Hello Welcome to TradeAnalytix",
+      imgUrl:'../../assets/images/home/reports_thumb.png',
+      description: 'Learning from your trade history'
+    }, {
+      title:'Trade Journaling',
+      imgUrl:'../../assets/images/home/trade_journal_thumb.png',
+      description: 'Aligning with self-set rules'
+    }, {
+      title:'Import Trades',
+      imgUrl:'../../assets/images/home/import_trades_thumb.png',
+      description: 'Journaling your trades'
+    }, {
+      title:'Risk Analysis',
+      imgUrl:'../../assets/images/home/risk_analysis_thumb.png',
+      description: 'Analyzing risk of trades'
+    }, {
+      title:'Strategy Comparison',
+      imgUrl:'../../assets/images/home/strategy_comparison_thumb.png',
+      description: 'Picking the right strategies'
+    }, {
+      title:'Trade Plan',
+      imgUrl:'../../assets/images/home/trade_plan_thumb.png',
+      description: 'Picking the right strategies'
+    }
+  ];
 
-  constructor(private router: Router, private ref: ChangeDetectorRef, private tradePlanService: TradePlansService, private reportDataService: ReportDataService, private userService: UserService) { }
+  constructor(
+    private router: Router, private ref: ChangeDetectorRef, private tradePlanService: TradePlansService, private reportDataService: ReportDataService, 
+    private userService: UserService,
+    private _dialog: MatDialog,
+  ) { }
 
   ngOnInit() {
     this.loadLatestTradePlan();
@@ -34,6 +68,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     const today: Date = new Date();
     this.calendarReport.loadData(today.getFullYear(), today.getMonth() + 1);
     this.loadUserDetails();
+    this.loadSliderModal();
   }
 
   ngAfterContentChecked() {
@@ -124,6 +159,20 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         this.userName = details.name;
       }
     });
+  }
+
+  loadSliderModal() {
+    const dialogRef = this._dialog.open(SliderModalComponent, {
+      disableClose: true,
+      width: 'auto',
+      data: this.sliderData
+    });
+
+    dialogRef.afterClosed().subscribe((res) => {
+    });
+  }
+  showChecklist(){
+    this.checklist = !this.checklist;
   }
 
 }
