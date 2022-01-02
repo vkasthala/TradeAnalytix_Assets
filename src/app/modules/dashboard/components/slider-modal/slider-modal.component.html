@@ -1,20 +1,23 @@
 <div class="compare-popup">
     <div class="compare-pop-inner">
-        <div class="right-close" (click)="closeModal()">
-            <mat-icon>clear</mat-icon>
-        </div>
-
-        <div class="main-pop-inner">
+        <div class="slider-header">
+            <img class="slider-logo-sm" src="../../../../../assets/images/TA_logo_sm.jpg" />
             <h3 class="slider-title">{{data[currentInd].title}}</h3>
-            <p><img class="w-100" src="{{data[currentInd].imgUrl}}" /></p>
-            <p class="slider-description">{{data[currentInd].description}}</p>
+            <span class="right-close" (click)="closeModal()">
+                <mat-icon>clear</mat-icon>
+            </span>
+        </div>
+        <div class="main-pop-inner">
+            <div class="slider-description" [innerHTML]="data[currentInd].description"></div>
+            <p *ngIf="data[currentInd].imgUrl"><img class="slider-img" src="{{data[currentInd].imgUrl}}" /></p>
+            
         </div>
 
-        <div class="modal-footer">
-            <span class="mr-3" *ngIf="currentInd > 0">
+        <div class="modal-footer py-1 justify-content-between d-block">
+            <span class="float-left" *ngIf="currentInd > 0">
                 <button type="button" class="btn btn-back" (click)="priviousSlide()">Back</button>
             </span>
-            <span *ngIf="currentInd !== (data.length -1)">
+            <span class="float-right" *ngIf="currentInd !== (data.length -1)">
                 <button type="button" class="btn btn-next" (click)="nextSlide()">Next</button>
             </span>
             

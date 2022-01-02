@@ -3,7 +3,6 @@
 // Landing page
 .trade-app {
     width: 100%;
-    min-height: 100vh;
     height: auto;
     overflow: hidden;
     @media #{$extra-small} {
@@ -174,7 +173,8 @@
     
 }
 .main {
-    min-height: 87vh !important;
+    min-height: inherit !important;
+    padding: 0 !important;
 }
 .landing-footer {
     padding-bottom: 0 !important;

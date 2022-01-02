@@ -4,7 +4,8 @@
             <h5>
                 Key Metrics
             </h5>
-            <span>Welcome {{userName}}</span>
+            <span>Welcome {{userName}} <button type="button" class="btn-get-started ml-1" (click)="showChecklist()" data-toggle="tooltip" data-placement="top"
+                title="Show Checklist">Get Started</button></span>
         </div>
 
         <div class="trade-dash-cards">
@@ -39,7 +40,7 @@
                     <div class="trade-headiang">
                         <h5>Trade Plan</h5>
                     </div>
-                    <div class="dsh-img" style="height: 300px;">
+                    <div class="dsh-img" style="height: 300px;" *ngIf="(latestTradePlan | json) != '{}'">
                         <div class="custom-grid px-3">
                             <div class="row custom-grid-head pt-3">
                                 <div class="col-4">
@@ -63,9 +64,6 @@
                                     {{latestTradePlan ? latestTradePlan.mindsetType : ''}}
                                 </div>
 
-                            </div>
-                            <div *ngIf="!latestTradePlan">
-                                <a class="text-link" routerLink="/add-new-trade-plan">Add Trade Plan</a>
                             </div>
                         </div>
                         <div class="trade-analytics-body px-3" *ngIf="latestTradePlan && (latestTradePlan.notes || latestTradePlan.plannedTrades)">
@@ -110,6 +108,9 @@
                         <div class="px-3 pt-1 text-right">
                             <a routerLink="/view-trade-plan" class="view-more">View More</a>
                         </div>
+                    </div>
+                    <div class="dsh-img nodata-text" *ngIf="(latestTradePlan | json) == '{}'">
+                        <a routerLink="/add-new-trade-plan">Add Trade Plan</a>
                     </div>
                 </div>
             </div>
@@ -391,12 +392,11 @@
     </div>
 </div>
 
-<button type="button" class="btn-get-started" (click)="showChecklist()" data-toggle="tooltip" data-placement="top"
-                title="Show Checklist">Get Started</button>
+
 
 <div class="checklist-slide" [ngClass]="checklist ? 'open' : ''">
     <div class="checklist-slide-heading">
-        <span>Check list</span> 
+        <span>Here's your onboarding checklist to take complete advantage of TradeAnalytix.</span> 
         <mat-icon class="mat-icon-sm cursor" (click)="showChecklist()">clear</mat-icon> 
     </div>
 
