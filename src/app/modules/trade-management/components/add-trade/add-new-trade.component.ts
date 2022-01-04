@@ -207,7 +207,24 @@ export class AddNewTradeComponent implements OnInit {
         });
         this.Loader = !this.Loader;
       })
+  }
 
+  updateClosedTrade() {
+    this.Loader = !this.Loader;
+    this.updateTradeStrategyProps();
+    this.tradeStrategyService.updateClosedTrade(this.tradeStrategy).subscribe(result => {
+      this.toastr.success('Trade strategy has been updated.', 'Success');
+      this.router.navigateByUrl("/trade-strategies");
+      this.Loader = !this.Loader;
+    },
+      err => {
+        this.toastr.error('Internal Server Error', 'Error', { 
+          tapToDismiss:false,
+          closeButton:true,
+          disableTimeOut: true
+        });
+        this.Loader = !this.Loader;
+      })
   }
 
   closeTradeStrategy() {
@@ -259,11 +276,10 @@ export class AddNewTradeComponent implements OnInit {
     this.tradeStrategy.stockOptions = this.tradeDetails.stockOptions;
     this.tradeStrategy.direction = this.tradeThesis.tradeThesis.direction;
     this.tradeStrategy.rules = this.entryRules.entryRules;
-
+    if (this.tradeStrategy.rules && this.exitRules.exitRules) {
+      this.tradeStrategy.rules = this.tradeStrategy.rules.concat(this.exitRules.exitRules);
+    }
     if (this.close) {
-      if (this.tradeStrategy.rules && this.exitRules.exitRules) {
-        this.tradeStrategy.rules = this.tradeStrategy.rules.concat(this.exitRules.exitRules);
-      }
       this.tradeStrategy.closeDate = this.tradeDetailsBottomComponent.closeDate;
     }
     if (!this.add) {

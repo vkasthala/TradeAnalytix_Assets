@@ -14,10 +14,20 @@ export class TradeThesis {
 
     targetPrice: number;
 
+    targetCloseDate: string;
+
     technicalIndicatorId: number;
 
     contrarian: Number;
 
     direction: Number;
+
+    closeSourceId: number;
+
+    closeSurroundingEventId: number;
+
+    closedReason: string;
+
+    closedLessons: string;
 
 }

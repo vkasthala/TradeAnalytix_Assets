@@ -69,12 +69,14 @@ export class ReportTabContentComponent implements OnInit {
 
   initDateFilter(): any {
     let today = new Date();
+    let startDay = new Date();
+    startDay.setMonth(startDay.getMonth() - 11);
     let dateObj = {
-      beginDate: { year: today.getFullYear(), month: 1, day: 1 },
+      beginDate: { year: startDay.getFullYear(), month: startDay.getMonth(), day: 1 },
       endDate: { year: today.getFullYear(), month: today.getMonth() + 1, day: today.getDate() }
     };
-    this.reportFilter.fromDate = today.getFullYear() + '-01-01';
-    this.reportFilter.toDate = today.toISOString().slice(0, 10);;
+    this.reportFilter.fromDate = startDay.toISOString().slice(0, 10);
+    this.reportFilter.toDate = today.toISOString().slice(0, 10);
     console.log('init date:', dateObj);
     return dateObj;
   }
@@ -90,7 +92,7 @@ export class ReportTabContentComponent implements OnInit {
     this.filterChangeSubject.next(this.reportFilter);
   }
 
-  onClearSymbol(){
+  onClearSymbol() {
     delete this.reportFilter.stockId;
     delete this.reportFilter.symbol;
     this.tradeSearchComponent.clearSelection();

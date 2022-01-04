@@ -25,6 +25,11 @@ export class TradeStrategyService {
     return this.httpService.post<TradeStrategy, void>(url, tradeStrategy);
   }
 
+  public updateClosedTrade(tradeStrategy: TradeStrategy): Observable<void> {
+    let url = this.apiUrl + '/trade-strategy/close-update';
+    return this.httpService.post<TradeStrategy, void>(url, tradeStrategy);
+  }
+
   public closeTrade(tradeStrategy: TradeStrategy): Observable<void> {
     let url = this.apiUrl + '/trade-strategy/close';
     return this.httpService.post<TradeStrategy, void>(url, tradeStrategy);

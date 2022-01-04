@@ -73,14 +73,14 @@
                         <input 
                             class="form-control bg-white"
                             matInput 
-                            [matDatepicker]="holdingPeriod" 
-                            id="holdingPeriod" 
+                            [matDatepicker]="targetCloseDate" 
+                            id="targetCloseDate" 
                             (dateChange)="addEvent('input', $event, index)" 
-                            name="tradeThesis.holdingPeriod" 
-                            [(ngModel)]="tradeThesis.holdingPeriod" />
-                        <mat-datepicker-toggle matSuffix [for]="holdingPeriod">
+                            name="tradeThesis.targetCloseDate" 
+                            [(ngModel)]="tradeThesis.targetCloseDate" />
+                        <mat-datepicker-toggle matSuffix [for]="targetCloseDate">
                         </mat-datepicker-toggle>
-                        <mat-datepicker #holdingPeriod></mat-datepicker>
+                        <mat-datepicker #targetCloseDate></mat-datepicker>
                     </div>
                 </div>
             </div>
@@ -274,7 +274,7 @@
                     </div>
                     <div class="media align-items-center">
                         <div class="media-body">
-                            <select class="form-control select-input" id="inputState">
+                            <select class="form-control select-input" id="inputState" [(ngModel)]="tradeThesis.closeSourceId">
                                 <option [ngValue]="opt.id" *ngFor="let opt of sourceTypes; trackBy: id">{{opt.name}}
                                 </option>
                             </select>
@@ -294,7 +294,7 @@
                     <div class="thesis_item_title">
                         Specify the reasons for closing the trade
                     </div>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="tradeThesis.closedReason"></textarea>
                 </div>
             </div>
             <!-- end : thesis_item -->
@@ -306,7 +306,7 @@
                     </div>
                     <div class="media align-items-center">
                         <div class="media-body">
-                            <select class="form-control select-input" id="inputState">
+                            <select class="form-control select-input" id="inputState" [(ngModel)]="tradeThesis.closeSurroundingEventId">
                                 <option [ngValue]="opt.id" *ngFor="let opt of surroundingTypes; trackBy: id">
                                     {{opt.name}}</option>
                             </select>
@@ -324,7 +324,7 @@
                     <div class="thesis_item_title">
                         Specify the lessons learnt from the trade
                     </div>
-                    <textarea class="form-control" id="closingLessionsTrade" rows="3"></textarea>
+                    <textarea class="form-control" id="closingLessionsTrade" rows="3" [(ngModel)]="tradeThesis.closedLessons"></textarea>
                 </div>
             </div>
             <!-- end : thesis_item -->
