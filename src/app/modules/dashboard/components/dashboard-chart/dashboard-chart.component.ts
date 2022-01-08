@@ -12,6 +12,7 @@ import { ReportRequestService } from 'src/app/modules/reports/services/report-re
 export class DashboardChartComponent implements OnInit {
 
   protected chart: Chart;
+  protected isGoalChart: boolean;
 
   constructor(protected reportId: string, protected reportRequestService: ReportRequestService, protected reportDataService: ReportDataService) {
   }
@@ -19,7 +20,9 @@ export class DashboardChartComponent implements OnInit {
   ngOnInit() {
     let request: ChartRequest = this.reportRequestService.getDashboardChartRequest(this.reportId);
     let url = this.reportRequestService.getDashbpardReportUrl(this.reportId);
-
+    if ('userGoalByDate' === this.reportId) {
+      this.isGoalChart = true;
+    }
     //Load Chart
     this.reportDataService.getReportChart(url, request).subscribe(chartResult => {
       if (chartResult) {

@@ -1,4 +1,6 @@
 <div class="dsh-img reports-chart dashboard-chart">
-    
+    <div class="p-3 nodata-text" *ngIf="isGoalChart && (!chart || chart === undefined)">
+        <a routerLink="/setttings">Setup Goals</a>
+    </div>
     <div [chart]="chart" class="chart-cont"></div>
 </div>

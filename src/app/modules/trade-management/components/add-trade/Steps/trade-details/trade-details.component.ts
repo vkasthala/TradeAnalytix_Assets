@@ -140,6 +140,7 @@ export class TradeDetailsComponent implements OnInit {
         this.stockOptions[ind].display = false;
       }
     }
+    this.stockOrOptionAddedSubject.next(this.stockAdded || this.stockOptions.length > 0);
   }
 
   ngAfterContentInit() {

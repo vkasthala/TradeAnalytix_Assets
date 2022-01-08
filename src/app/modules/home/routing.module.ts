@@ -36,6 +36,10 @@ import { HelpRiskAnalysisComponent } from '../help/components/risk-analysis/risk
 import { HelpCloseTradeComponent } from '../help/components/trade-journal/clode-trade/clode-trade.component';
 import { HelpEditTradeComponent } from '../help/components/trade-journal/edit-trade/help-edit-trade.component';
 import { HelpAddNewTradeComponent } from '../help/components/trade-journal/add-trade/help-add-trade.component';
+import { TradePlansCanDeactivateGuard } from '../trade-plan/components/trade-plans.can-deactivate.guard';
+import { AddTradeCanDeactivateGuard } from '../trade-management/components/add-trade.can-deactivate.guard';
+import { EditTradeCanDeactivateGuard } from '../trade-management/components/edit-trade.can-deactivate.guard';
+import { CloseTradeCanDeactivateGuard } from '../trade-management/components/close-trade.can-deactivate.guard';
 
 const routes: Routes = [
   {
@@ -52,7 +56,8 @@ const routes: Routes = [
         },
         {
           path : 'new-trade',
-          component: AddNewTradeComponent
+          component: AddNewTradeComponent,
+          canDeactivate: [AddTradeCanDeactivateGuard]
         },
         {
           path : 'import-trades',
@@ -80,11 +85,13 @@ const routes: Routes = [
         },
         {
           path: 'close-trade/:id',
-          component: CloseTradeComponent
+          component: CloseTradeComponent,
+          canDeactivate: [CloseTradeCanDeactivateGuard]
         },
         {
           path: 'edit-trade/:id',
-          component: EditTradeComponent
+          component: EditTradeComponent,
+          canDeactivate: [EditTradeCanDeactivateGuard]
         },
         {
           path: 'view-trade/:id',
@@ -100,7 +107,8 @@ const routes: Routes = [
         },
         {
           path: 'edit-trade-plan',
-          component: EditTradePlanComponent
+          component: EditTradePlanComponent,
+          canDeactivate: [TradePlansCanDeactivateGuard]
         },
         {
           path: 'view-trade-plan',

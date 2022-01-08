@@ -74,6 +74,7 @@ import { StrategySelectionComponent } from '../shared/components/modals/strategy
 import { TradeExecutionDateComponent } from '../shared/components/modals/trade-execution-date/trade-execution-date.component';
 import { EditableGridComponent } from '../shared/components/widgets/editable-grid/editable-grid.component';
 import { EditableListComponent } from '../shared/components/widgets/editable-list/editable-list.component';
+import { AddTradeCanDeactivateGuard } from '../trade-management/components/add-trade.can-deactivate.guard';
 import { AddNewTradeComponent } from '../trade-management/components/add-trade/add-new-trade.component';
 import { AddTradeConfirmationPopupComponent } from '../trade-management/components/add-trade/add-trade-confirmation-popup/add-trade-confirmation-popup.component';
 import { RuleCommentDialogComponent } from '../trade-management/components/add-trade/rule-comment-dialog/rule-comment-dialog.component';
@@ -94,8 +95,10 @@ import { TradeThesisComponent } from '../trade-management/components/add-trade/S
 import { TradeDetailsAsideComponent } from '../trade-management/components/add-trade/trade-details-aside/trade-details-aside.component';
 import { TradeDetailsBottomComponent } from '../trade-management/components/add-trade/trade-details-bottom/trade-details-bottom.component';
 import { TradingViewComponent } from '../trade-management/components/add-trade/trading-view/trading-view.component';
+import { CloseTradeCanDeactivateGuard } from '../trade-management/components/close-trade.can-deactivate.guard';
 import { CloseTradeDetailsComponent } from '../trade-management/components/close-trade/close-trade-details/close-trade-details.component';
 import { CloseTradeComponent } from '../trade-management/components/close-trade/close-trade.component';
+import { EditTradeCanDeactivateGuard } from '../trade-management/components/edit-trade.can-deactivate.guard';
 import { EditTradeDetailsComponent } from '../trade-management/components/edit-trade/edit-trade-details/edit-trade-details.component';
 import { EditTradeComponent } from '../trade-management/components/edit-trade/edit-trade.component';
 import { TradeDetailsHeaderComponent } from '../trade-management/components/trade-details-header/trade-details-header.component';
@@ -107,6 +110,7 @@ import { PlannedTradeDialogComponent } from '../trade-plan/components/planned-tr
 import { PlannedTradesGridComponent } from '../trade-plan/components/planned-trades-grid/planned-trades-grid.component';
 import { StrategyActionTextDialogComponent } from '../trade-plan/components/strategy-action-text-dialog/strategy-action-text-dialog.component';
 import { TodayExecutedLegsComponent } from '../trade-plan/components/today-executed-legs/today-executed-legs.component';
+import { TradePlansCanDeactivateGuard } from '../trade-plan/components/trade-plans.can-deactivate.guard';
 import { TradePlansComponent } from '../trade-plan/components/trade-plans.component';
 import { ViewTradePlanComponent } from '../trade-plan/components/view-trade-plan.component';
 import { DraftTradesGrid } from '../trade-strategies/components/draft-trades-grid/draft-trades-grid.component';
@@ -296,6 +300,10 @@ export const MY_FORMATS = {
       deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
     },
     { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
+    AddTradeCanDeactivateGuard,
+    EditTradeCanDeactivateGuard,
+    CloseTradeCanDeactivateGuard,
+    TradePlansCanDeactivateGuard,
   ],
 })
 export class HomeModule { }
