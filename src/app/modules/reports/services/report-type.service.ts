@@ -30,20 +30,22 @@ export class ReportTypeService {
 
   getRuleReportsSubTypes(category: string, userCodedRules: UserCodedRule[]): ReportSubType[] {
     let reportSubTypes: ReportSubType[] = [];
+
+    if (userCodedRules && userCodedRules.length) {
+      for (let ind = 0; ind < userCodedRules.length; ind++) {
+        const reportSubType: ReportSubType = new ReportSubType();
+        reportSubType.name = userCodedRules[ind].ruleName;
+        reportSubType.id = userCodedRules[ind].id ? userCodedRules[ind].id + '' : '0';
+        const winRateReportDetails: ReportDetails = new ReportDetails('rule_winrate', 'Win Rate By Rule Alignment', ReportCategory.Rule, "This report illustrates the importance of a rule set by the user by showing the win rate on the trades in which the rule is aligned");
+        winRateReportDetails.url = '/reports/rule/win-rate/' + (userCodedRules[ind].id ? userCodedRules[ind].id + '' : '0');
+        const realizedReturnReportDetails: ReportDetails = new ReportDetails('rule_realizedreturn', 'Realized Return By Rule Alignment', ReportCategory.Rule, "This report illustrates the importance of a rule set by the user by showing the realized return on the trades in which the rule is aligned");
+        realizedReturnReportDetails.url = '/reports/rule/realized-return/' + (userCodedRules[ind].id ? userCodedRules[ind].id + '' : '0');
+        reportSubType.reportDetailList = [winRateReportDetails, realizedReturnReportDetails];
+        reportSubTypes.push(reportSubType);
+      }
+    }
     
-    // if (userCodedRules && userCodedRules.length) {
-    //   for (let ind = 0; ind < userCodedRules.length; ind++) {
-    //   const reportSubType: ReportSubType = new ReportSubType();
-    //     reportSubType.name = 'Rule ' + (ind + 1);
-    //     reportSubType.id = userCodedRules[ind].id ? userCodedRules[ind].id + '' : '0';
-    //     const winRateReportDetails: ReportDetails = new ReportDetails('rule_winrate', 'Win Rate By Rule Alignment', ReportCategory.Rule, "This report illustrates the importance of a rule set by the user by showing the win rate on the trades in which the rule is aligned");
-    //     winRateReportDetails.url = '/reports/rule/win-rate/' + (userCodedRules[ind].id ? userCodedRules[ind].id + '' : '0');
-    //     const realizedReturnReportDetails: ReportDetails = new ReportDetails('rule_realizedreturn', 'Realized Return By Rule Alignment', ReportCategory.Rule, "This report illustrates the importance of a rule set by the user by showing the realized return on the trades in which the rule is aligned");
-    //     realizedReturnReportDetails.url = '/reports/rule/realized-return/' + (userCodedRules[ind].id ? userCodedRules[ind].id + '' : '0');
-    //     reportSubType.reportDetailList = [winRateReportDetails, realizedReturnReportDetails];
-    //     reportSubTypes.push(reportSubType);
-    //   }
-    // }
+    /*
     let reportSubType: ReportSubType = new ReportSubType();
     reportSubType.name = 'Total Amount';
     reportSubType.id = "total_amount";
@@ -73,6 +75,7 @@ export class ReportTypeService {
     reportSubType.id = "maxProfit";
     reportSubType.reportDetailList = [new ReportDetails('maxProfit', 'Win Rate By Rule Alignment', ReportCategory.Rule, "This report illustrates the importance of a rule set by the user by showing the win rate on the trades in which the rule is aligned"), new ReportDetails('rule_realizedreturn', 'Realized Return By Rule Alignment', ReportCategory.Win_Loss, "This report illustrates the importance of a rule set by the user by showing the realized return on the trades in which the rule is aligned")];
     reportSubTypes.push(reportSubType);
+    */
 
     return reportSubTypes;
   }
