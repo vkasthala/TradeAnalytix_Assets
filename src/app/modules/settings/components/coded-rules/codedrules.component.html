@@ -2,7 +2,11 @@
     <mat-expansion-panel class="coded_rules_body pt-3" [expanded]="true" (opened)="setStep(0)">
         <ng-template matExpansionPanelContent>
             <div class="trade-dash-name px-2">
-                <h3><strong>Portfolio-level Rules:</strong> User notified while adding or editing a trade when these rules are broken</h3>
+                <h3><strong>Trade-level Rules</strong>
+                    <p class="pt-1">
+                        User notified while adding or editing a trade when the below conditions are met
+                    </p>
+                </h3>
             </div>
             
             <div class="d-flex p-2 align-items-center" *ngFor="let coderule of portfolioLevelRules">
@@ -28,7 +32,11 @@
             </div>
 
             <div class="trade-dash-name px-2 pt-3">
-                <h3><strong>Trade-level Rules:</strong> Notifications issued at the end of the day when these rules are broken</h3>
+                <h3><strong>Portfolio-level Rules</strong>
+                    <p class="pt-1">
+                        Notifications issued at the end of the day when the below conditions are met
+                    </p>
+                    </h3>
             </div>
             <div class="d-flex p-2 align-items-center" *ngFor="let coderule of tradeLevelRules">
                 <span class="px-2 pr-3">

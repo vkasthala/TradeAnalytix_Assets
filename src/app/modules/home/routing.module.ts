@@ -57,7 +57,7 @@ const routes: Routes = [
         {
           path : 'new-trade',
           component: AddNewTradeComponent,
-          canDeactivate: [AddTradeCanDeactivateGuard]
+          // canDeactivate: [AddTradeCanDeactivateGuard]
         },
         {
           path : 'import-trades',
@@ -86,12 +86,12 @@ const routes: Routes = [
         {
           path: 'close-trade/:id',
           component: CloseTradeComponent,
-          canDeactivate: [CloseTradeCanDeactivateGuard]
+          // canDeactivate: [CloseTradeCanDeactivateGuard]
         },
         {
           path: 'edit-trade/:id',
           component: EditTradeComponent,
-          canDeactivate: [EditTradeCanDeactivateGuard]
+          // canDeactivate: [EditTradeCanDeactivateGuard]
         },
         {
           path: 'view-trade/:id',

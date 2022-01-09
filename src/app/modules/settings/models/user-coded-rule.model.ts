@@ -22,4 +22,6 @@ export class UserCodedRule {
 
     checked: boolean;
 
+    ruleType: number;
+
 }

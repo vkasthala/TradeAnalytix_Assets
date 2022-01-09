@@ -2,11 +2,14 @@
     <div class="trade-dash-cards-web px-2">
         <div class="trade-cards-heading d-flex justify-content-between mt-3">
             <div>
-                <span>Welcome {{userName}}</span>
+                <div class="pb-2">
+                    <span style="font-size: 16px;">Welcome {{userName}}</span>
+                    <button type="button" class="btn-get-started ml-2" (click)="showChecklist()" data-toggle="tooltip" data-placement="top"
+                    title="Show Checklist">Get Started</button>
+                </div>
                 <h5>Key Metrics</h5>
             </div>
-            <span><button type="button" class="btn-get-started ml-1" (click)="showChecklist()" data-toggle="tooltip" data-placement="top"
-                title="Show Checklist">Get Started</button></span>
+            
         </div>
 
         <div class="trade-dash-cards">
@@ -397,7 +400,10 @@
 
 <div class="checklist-slide" [ngClass]="checklist ? 'open' : ''">
     <div class="checklist-slide-heading">
-        <span>Welcome Onboard, {{userName}}</span> 
+        <div>
+            <span>Welcome Onboard, {{userName}}</span>
+            <p class="py-2">Please find below all the items that will get you started in TradeAnalytix.</p>
+        </div>
         <mat-icon class="mat-icon-sm cursor" (click)="showChecklist()">clear</mat-icon> 
     </div>
 
