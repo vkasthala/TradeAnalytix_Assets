@@ -5,7 +5,7 @@
                 <h3><strong>Portfolio-level Rules:</strong> User notified while adding or editing a trade when these rules are broken</h3>
             </div>
             
-            <div class="d-flex p-2 align-items-center" *ngFor="let coderule of tradeLevelRules">
+            <div class="d-flex p-2 align-items-center" *ngFor="let coderule of portfolioLevelRules">
                 <span class="px-2 pr-3">
                     <input type="checkbox" name="rule" class="checkbox mt-2"
                         [checked]="coderule.id && coderule.id !== null && coderule.id > 0"
@@ -30,7 +30,7 @@
             <div class="trade-dash-name px-2 pt-3">
                 <h3><strong>Trade-level Rules:</strong> Notifications issued at the end of the day when these rules are broken</h3>
             </div>
-            <div class="d-flex p-2 align-items-center" *ngFor="let coderule of portfolioLevelRules">
+            <div class="d-flex p-2 align-items-center" *ngFor="let coderule of tradeLevelRules">
                 <span class="px-2 pr-3">
                     <input type="checkbox" name="rule" class="checkbox mt-2"
                         [checked]="coderule.id && coderule.id !== null && coderule.id > 0"
