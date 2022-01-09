@@ -1,10 +1,11 @@
 <div class="px-2 dashboard">
     <div class="trade-dash-cards-web px-2">
         <div class="trade-cards-heading d-flex justify-content-between mt-3">
-            <h5>
-                Key Metrics
-            </h5>
-            <span>Welcome {{userName}} <button type="button" class="btn-get-started ml-1" (click)="showChecklist()" data-toggle="tooltip" data-placement="top"
+            <div>
+                <span>Welcome {{userName}}</span>
+                <h5>Key Metrics</h5>
+            </div>
+            <span><button type="button" class="btn-get-started ml-1" (click)="showChecklist()" data-toggle="tooltip" data-placement="top"
                 title="Show Checklist">Get Started</button></span>
         </div>
 
@@ -40,7 +41,7 @@
                     <div class="trade-headiang">
                         <h5>Trade Plan</h5>
                     </div>
-                    <div class="dsh-img" style="height: 300px;" *ngIf="(latestTradePlan | json) != '{}'">
+                    <div class="dsh-img" style="height: 300px;" *ngIf="latestTradePlan && (latestTradePlan | json) != '{}'">
                         <div class="custom-grid px-3">
                             <div class="row custom-grid-head pt-3">
                                 <div class="col-4">
@@ -109,8 +110,8 @@
                             <a routerLink="/view-trade-plan" class="view-more">View More</a>
                         </div>
                     </div>
-                    <div class="dsh-img nodata-text" *ngIf="(latestTradePlan | json) == '{}'">
-                        <a routerLink="/add-new-trade-plan">Add Trade Plan</a>
+                    <div class="dsh-img nodata-text" *ngIf="latestTradePlan === undefined">
+                        <a routerLink="/add-new-trade-plan">Add Plan</a>
                     </div>
                 </div>
             </div>
@@ -396,22 +397,25 @@
 
 <div class="checklist-slide" [ngClass]="checklist ? 'open' : ''">
     <div class="checklist-slide-heading">
-        <span>Here's your onboarding checklist to take complete advantage of TradeAnalytix.</span> 
+        <span>Welcome Onboard, {{userName}}</span> 
         <mat-icon class="mat-icon-sm cursor" (click)="showChecklist()">clear</mat-icon> 
     </div>
 
     <div class="p-1">
         <div class="py-1">
-            <input type="checkbox" name="" class="checkbox mr-2" /> Configure data for trade journaling
+            <input type="checkbox" name="" class="checkbox mr-2" /> Configure data for trade journal. <a class="cursor" routerLink="/setttings"><mat-icon class="mat-icon-sm">launch</mat-icon></a> 
         </div>
         <div class="py-1">
-            <input type="checkbox" name="" class="checkbox mr-2" /> Enable trading rules
+            <input type="checkbox" name="" class="checkbox mr-2" /> Create manual rules. <a class="cursor" routerLink="/rules"><mat-icon class="mat-icon-sm">launch</mat-icon></a> 
         </div>
         <div class="py-1">
-            <input type="checkbox" name="" class="checkbox mr-2" /> Define goals
+            <input type="checkbox" name="" class="checkbox mr-2" /> Enable automatic rules. <a class="cursor" routerLink="/rules"><mat-icon class="mat-icon-sm">launch</mat-icon></a> 
         </div>
         <div class="py-1">
-            <input type="checkbox" name="" class="checkbox mr-2" /> Add or import trades
+            <input type="checkbox" name="" class="checkbox mr-2" /> Define trading goals. <a class="cursor" routerLink="/setttings"><mat-icon class="mat-icon-sm">launch</mat-icon></a> 
+        </div>
+        <div class="py-1">
+            <input type="checkbox" name="" class="checkbox mr-2" /> Add or Import trades. <a class="cursor" routerLink="/trade-strategies"><mat-icon class="mat-icon-sm">launch</mat-icon></a> 
         </div>
     </div>
 

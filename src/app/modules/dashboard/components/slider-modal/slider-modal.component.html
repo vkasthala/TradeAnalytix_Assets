@@ -8,8 +8,88 @@
             </span>
         </div>
         <div class="main-pop-inner">
-            <div class="slider-description" [innerHTML]="data[currentInd].description"></div>
-            <p *ngIf="data[currentInd].imgUrl"><img class="slider-img" src="{{data[currentInd].imgUrl}}" /></p>
+            <!-- <div class="slider-description" [innerHTML]="data[currentInd].description"></div> 
+            <p *ngIf="data[currentInd].imgUrl"><img class="slider-img" src="{{data[currentInd].imgUrl}}" /></p> -->
+           
+            <div *ngIf="currentInd == 0">
+                <div class="slider-description mb-3 py-3">
+                    Most of the people investing or trading actively in the financial markets end up on the losing side mainly due to indiscipline.
+                </div>
+                <p class="text-center"><img class="slider-img" src="../../../../../assets/images/slider/root-cause-graphic.svg" /></p>
+            </div>
+
+            <div *ngIf="currentInd == 1">
+                <div class="slider-description mb-3 py-3">
+                    TradeAnalytix addresses the root causes of indiscipline and boosts your trading performance
+                </div>
+                <p class="text-center"><img class="slider-img" src="../../../../../assets/images/slider/benefits-graphic.svg" /></p>
+            </div>
+            <div *ngIf="currentInd == 2">
+                <div class="slider-description mb-3 py-3">
+                    Adopt a systematic approach to investing or trading by recording your trades in detail with a comprehensive trading journal.
+                </div>
+                <p class="text-center"><img class="slider-img" src="../../../../../assets/images/slider/trade-details.jpg" /></p>
+            </div>
+            <div *ngIf="currentInd == 3">
+                <div class="slider-description mb-3 py-3">
+                    Add your trades in bulk to TradeAnalytix by importing trade history files exported from your brokerage or by filling in our standard template with your trades and uploading it.
+                </div>
+                <p class="text-center"><img class="slider-img" src="../../../../../assets/images/slider/import-trades.jpg" /></p>
+            </div>
+            <div *ngIf="currentInd == 4">
+                <div class="slider-description mb-3 py-3">
+                    Prepare for the day ahead with a meticulous trade plan, which makes you think objectively about the market and your positions without getting influenced by the price movements.
+                </div>
+                <p class="text-center"><img class="slider-img" src="../../../../../assets/images/slider/trade-plan.jpg" /></p>
+            </div>
+            <div *ngIf="currentInd == 5">
+                <div class="slider-description mb-3 py-3">
+                    Analyze potential returns on your trade strategies while varying the input parameters. Update the strategy and re-analyze until you are comfortable with the risk-reward potential of the trade.
+                </div>
+                <p class="text-center"><img class="slider-img" src="../../../../../assets/images/slider/risk-analysis.jpg" /></p>
+            </div>
+            <div *ngIf="currentInd == 6">
+                <div class="slider-description mb-3 py-3">
+                    Compare different trade strategies on a symbol and analyze their profitability in different scenarios so that you can pick a strategy that aligned with your risk appetite and reward expectations.
+                </div>
+                <p class="text-center"><img class="slider-img" src="../../../../../assets/images/slider/strategy-comparison.jpg" /></p>
+            </div>
+            <div *ngIf="currentInd == 7">
+                <div class="row align-items-center">
+                    <div class="col-4 slider-description px-3">
+                        Learn from reports and metrics derived from your trade history and improve your trading decisions. Reporting categories include portfolio, performance, risk, discipline, rules, and goals
+                    </div>
+                    <p class="col-8"><img class="w-100" src="../../../../../assets/images/slider/reports.jpg" /></p>
+                </div>
+            </div>
+            <div *ngIf="currentInd == 8">
+                <div class="slider-description mb-3 py-3">
+                    Set trading rules based on your experience and best practices and abide by them. Manual rules act like reminders while executing trades and automatic rules trigger alerts when they are broken.
+                </div>
+                <p class="text-center"><img class="slider-img" src="../../../../../assets/images/slider/trading-rules.jpg" /></p>
+            </div>
+            <div *ngIf="currentInd == 9">
+                <div class="slider-description mb-3 py-3">
+                    To take complete advantage of TradeAnalytix, you should complete the following setups:
+                    <ul>
+                        <li>Configure data for trade journal</li>
+                        <li>Create trading rules</li>
+                        <li>Define goals</li>
+                        <li>Add or import trades</li>
+                    </ul>
+                </div>
+            </div>
+            <div *ngIf="currentInd == 10">
+                <div class="slider-description mb-3 py-3">
+                    To take complete advantage of TradeAnalytix, you should complete the following setups:
+                    <ul>
+                        <li>Configure data for trade journal</li>
+                        <li>Create trading rules</li>
+                        <li>Define goals</li>
+                        <li>Add or import trades</li>
+                    </ul>
+                </div>
+            </div>
             
         </div>
 
