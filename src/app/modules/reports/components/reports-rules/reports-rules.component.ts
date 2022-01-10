@@ -50,8 +50,8 @@ export class ReportsRulesComponent extends ReportTabContentComponent implements 
 
   loadRules() {
     this.codedRuleService.getUserCodedRules().subscribe(codedRules => {
-      this.userCodedRules = codedRules;
-      this.reportSubTypes = this.reportTypeService.getRuleReportsSubTypes(this.type, codedRules);
+      this.userCodedRules = codedRules.filter(rule => (rule.ruleType === 1));
+      this.reportSubTypes = this.reportTypeService.getRuleReportsSubTypes(this.type, this.userCodedRules);
       this.onReportSubTypeSelect(this.reportSubTypes[0]);
     });
   }
