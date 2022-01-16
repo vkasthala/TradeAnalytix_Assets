@@ -393,9 +393,11 @@
 }
 
 .demo-toggle {
-    width: 100px;
+    width: 95px;
     position: relative;
     display: flex;
+    align-items: baseline;
+    margin-top: -8px;
 }
 // Toggle Customize
 .switch {
@@ -403,12 +405,12 @@
     width: 50%;
   }
   .switch label {
-    width: 50px;
-    height: 25px;
+    width: 46px;
+    height: 22px;
     position: absolute;
     background-color: #999;
-    top: -3px;
-    left: 0;
+    top: 0;
+    left: 2px;
     border-radius: 50px;
     margin-bottom: 0px;
   }
@@ -417,12 +419,12 @@
   }
   .switch label:after {
     content: "";
-    width: 21px;
-    height: 21px;
+    width: 18px;
+    height: 18px;
     border-radius: 50px;
     position: absolute;
     top: 2px;
-    left: 1px;
+    left: 2px;
     background-color: white;
     transition: all 0.3s;
   }

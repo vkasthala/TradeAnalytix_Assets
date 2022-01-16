@@ -272,6 +272,24 @@
     <ng-container [ngSwitch]="currentState">
         <!-- entry-third -->
         <div class="add-stock-sec" #tradeCards>
+            <div class="text-right">
+                <ul class="tags-list">
+                    <li *ngFor="let tag of tags; let i = index;" class="tag-item">
+                        <span class="tag-list-item">
+                            <span (click)="editTag(tag)">
+                                {{getTagName(tag.tagId)}}
+                            </span>
+                            <span class="material-icons delete-tag-icon" (click)="deleteTag(tag, i)">close_outline</span>
+                        </span>
+                    </li>
+                    <li class="d-flex align-items-center pl-2">
+                        <span (click)="addTag()" class="text-link" *ngIf="tags && tags.length < 3">
+                            Add Tag
+                        </span>
+                    </li>
+                </ul>
+            </div>
+
             <div class="trade-sec">
                 <div [ngClass]="closeTrade ? 'close_trade_module' : ''">
                     <div class="d-flex justify-content-between align-items-end">

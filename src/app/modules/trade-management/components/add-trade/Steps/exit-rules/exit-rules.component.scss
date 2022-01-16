@@ -41,6 +41,10 @@
     min-height: 145px;
     padding-bottom: 0;
     position: relative;
+    @media #{$extra-small} {
+        padding: 10px;
+        min-height: 90px;
+    }
     .thesis_item_title {
         font-weight: 600;
         font-size: 15px;

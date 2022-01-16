@@ -319,12 +319,23 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
 .msg-cell{
     width: 50%;
     flex: 0 0 50% !important;
+    @media #{$extra-small} {
+        width: 45%;
+        flex: 0 0 45% !important;
+        padding-left: 10px !important;
+    }
 }
 
 .comment-cell{
     width: 40%;
     flex: 0 0 40% !important;
     word-break: break-all;
+    @media #{$extra-small} {
+        width: 35%;
+        flex: 0 0 35% !important;
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
 }
 th.mat-header-cell {
     vertical-align: middle;
@@ -334,6 +345,11 @@ th.mat-header-cell {
 .aligned-cell{
     width: 10%;
     flex: 0 0 10% !important;
+    @media #{$extra-small} {
+        width: 20%;
+        flex: 0 0 20% !important;
+        padding-left: 10px !important;
+    }
 }
 tr.mat-footer-row, tr.mat-row {
     height: inherit;
