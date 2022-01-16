@@ -5,6 +5,8 @@ import { Store } from '@ngrx/store';
 import { NotificationService } from '../../notifications/services/notification.service';
 import { ConfirmDialogComponent } from '../../shared/components/modals/confirm-dialog/confirm-dialog.component';
 import { MatDialog } from '@angular/material';
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -17,12 +19,13 @@ export class HomeComponent implements OnInit, AfterViewInit {
   isExpand: boolean = true;
   title: string;
   description: string;
-
+  demoToggle: boolean = false;
   constructor(
     private globalStore: Store<fromGlobalConfig.State>,
     private router: Router,
     private notificationService: NotificationService,
-    private _dialog: MatDialog
+    private _dialog: MatDialog,
+    protected toastr: ToastrService
   ) {
     let globalSelector = (fromGlobalConfig.globalConfigFeatureKey as any);
     globalStore.select(globalSelector).subscribe(res => {
@@ -118,6 +121,14 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   loadNotificationCount() {
     this.notificationService.loadNotificationCount();
+  }
+
+  demoMsg() {
+    if(this.demoToggle) {
+      this.toastr.info('You entered the demo mode. Turn off the toggle switch anytime to exit the demo mode', '')
+    } else {
+      this.toastr.info('You exited the demo mode', '')
+    }
   }
 
 }

@@ -14,8 +14,10 @@
   z-index: 999;
   @media #{$extra-small} {
     justify-content: center;
-    margin-bottom: 70px;
+    padding-bottom: 70px;
     text-align: center;
+    position: relative;
+    flex-direction: column;
   }
   .container {
     padding: 6px 15px;

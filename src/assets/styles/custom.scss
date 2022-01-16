@@ -355,6 +355,9 @@ mat-header-cell:last-of-type,
     align-items: stretch;
     display: flex;
     // width: 100%;
+    @media #{$extra-small} {
+        display: block;
+    }
 }
 
 .sidebar-brand {
@@ -411,6 +414,9 @@ mat-header-cell:last-of-type,
     transition: margin-left .35s ease-in-out, left .35s ease-in-out, margin-right .35s ease-in-out, right .35s ease-in-out;
     flex-direction: column;
     padding-bottom: 60px;
+    @media #{$extra-small} {
+        padding-bottom: 0;
+    }
 }
 
 .sidebar-link,

@@ -87,11 +87,12 @@
                         </mat-icon>
                     </div> -->
                     <div class="top-nav">
-                        <!-- <span class="top-nav-item" [class.nav-active]="currentRoute == 'rules'">
-                            <a class="top-nav-link" [routerLink]="['/rules/']">
-                                Rules
-                            </a>
-                        </span> -->
+                        <span class="demo-toggle">
+                            Demo <div class="switch ml-2">
+                                <input type="checkbox" [(ngModel)]="demoToggle" (change)="demoMsg()" id="demoToggle" class="cursor" [checked]="demoToggle" />
+                                <label for="demoToggle"></label>
+                              </div>
+                        </span>
                         <span class="top-nav-item pr-0" [class.nav-active]="currentRoute == 'setttings'">
                             <a class="top-nav-link" [routerLink]="['/setttings/']">
                                 <mat-icon>settings</mat-icon>

@@ -391,3 +391,53 @@
 .logo_sm {
     max-width: 112%;
 }
+
+.demo-toggle {
+    width: 100px;
+    position: relative;
+    display: flex;
+}
+// Toggle Customize
+.switch {
+    position: relative;
+    width: 50%;
+  }
+  .switch label {
+    width: 50px;
+    height: 25px;
+    position: absolute;
+    background-color: #999;
+    top: -3px;
+    left: 0;
+    border-radius: 50px;
+    margin-bottom: 0px;
+  }
+  .switch input[type="checkbox"] {
+    visibility: hidden;
+  }
+  .switch label:after {
+    content: "";
+    width: 21px;
+    height: 21px;
+    border-radius: 50px;
+    position: absolute;
+    top: 2px;
+    left: 1px;
+    background-color: white;
+    transition: all 0.3s;
+  }
+  .switch input[type="checkbox"]:checked + label:after {
+    left: 26px;
+  }
+  .switch input[type="checkbox"]:checked + label {
+    background-color: $primary;
+  }
+  .switch input[type="checkbox"]:not(:checked) + label {
+    background-color: #ddd;
+  }
+  .switch-no {
+    color: #ddd;
+  }
+  .switch-yes {
+    color: $primary;
+  }

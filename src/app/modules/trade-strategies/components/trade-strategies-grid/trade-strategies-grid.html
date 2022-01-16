@@ -158,29 +158,31 @@
 
   <div class="trade-st-mobile-grid">
     <div class="row mb-1">
-      <div class="col-6 pl-4 cell-header">Identifier</div>
-      <div class="col-6 cell-header text-right">Symbol</div>
+      <div class="col-5 pl-4 cell-header">Identifier</div>
+      <div class="col-3 cell-header">Symbol</div>
+      <div class="col-4 cell-header text-right">Status</div>
     </div>
     <div class="pb-2 pt-3 mobile-grid-row" *ngFor="let element of gridData; let i=index">
       <div class="row">
-        <div class="col-6 pl-1 mobile-grid-cell">
+        <div class="col-5 pl-1 mobile-grid-cell">
           <span class="cursor" (click)="Collaps(i)">
             <i class="material-icons">{{hideRuleContent[i] ? 'keyboard_arrow_up' : 'keyboard_arrow_right'}}</i>
           </span>
           {{element.uid}}
         </div>
-        <div class="col-6 text-right">{{element.stockCode}}</div>
+        <div class="col-3">{{element.stockCode}}</div>
+        <div class="col-4 text-right">{{element.status}}</div>
       </div>
       <div class="" *ngIf="hideRuleContent[i]">
-        <div class="row py-1">
+        <!-- <div class="row py-1">
           <div class="col-6 pl-4">
             Status
           </div>
           <div class="col-6 text-right">
             {{element.status}}
           </div>
-        </div>
-        <div class="row py-1">
+        </div> -->
+        <!-- <div class="row py-1">
           <div class="col-6 pl-4">
             Strategy
           </div>
@@ -195,7 +197,7 @@
           <div class="col-6 text-right">
             {{element.direction}}
           </div>
-        </div>
+        </div> -->
         <div class="row py-1">
           <div class="col-6 pl-4">
             Open Date
@@ -206,17 +208,25 @@
         </div>
         <div class="row py-1">
           <div class="col-6 pl-4">
-            Close Date
+            Total Amount
           </div>
           <div class="col-6 text-right">
-            {{element.closeDate | date: 'dd-MMM-yyyy'}}
+            {{element.totalAmount}}
+          </div>
+        </div>
+        <div class="row py-1">
+          <div class="col-6 pl-4">
+            Realized Return
+          </div>
+          <div class="col-6 text-success text-right">
+            {{element.returnAmount}}
           </div>
         </div>
         <div class="row py-1">
           <div class="col-6 pl-4">
             Max Gain
           </div>
-          <div class="col-6 text-success text-right">
+          <div class="col-6 text-danger text-right">
             {{element.maxGain | number:'1.0-0'}}
           </div>
         </div>
@@ -224,24 +234,16 @@
           <div class="col-6 pl-4">
             Max Loss
           </div>
-          <div class="col-6 text-danger text-right">
+          <div class="col-6 text-right">
             {{element.maxLoss | number:'1.0-0'}}
           </div>
         </div>
         <div class="row py-1">
           <div class="col-6 pl-4">
-            Thesis
+            Tags
           </div>
           <div class="col-6 text-right">
-            {{element.returnAmount}}
-          </div>
-        </div>
-        <div class="row py-1">
-          <div class="col-6 pl-4">
-            Rules
-          </div>
-          <div class="col-6 text-right">
-            {{element.rules}}
+            {{element.tags}} 
           </div>
         </div>
         <div class="py-1 grid-bottom">
