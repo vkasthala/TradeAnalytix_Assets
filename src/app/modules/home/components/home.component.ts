@@ -6,6 +6,7 @@ import { NotificationService } from '../../notifications/services/notification.s
 import { ConfirmDialogComponent } from '../../shared/components/modals/confirm-dialog/confirm-dialog.component';
 import { MatDialog } from '@angular/material';
 import { ToastrService } from 'ngx-toastr';
+import { DemoModeDetailsService } from '../../shared/services/demo-mode-details.service';
 
 @Component({
   selector: 'app-home',
@@ -20,18 +21,28 @@ export class HomeComponent implements OnInit, AfterViewInit {
   title: string;
   description: string;
   demoToggle: boolean = false;
+  mySubscription;
+
   constructor(
     private globalStore: Store<fromGlobalConfig.State>,
     private router: Router,
     private notificationService: NotificationService,
     private _dialog: MatDialog,
-    protected toastr: ToastrService
+    protected toastr: ToastrService,
+    private demoService: DemoModeDetailsService
   ) {
     let globalSelector = (fromGlobalConfig.globalConfigFeatureKey as any);
     globalStore.select(globalSelector).subscribe(res => {
       this.currentRoute = res.currentRoute;
       this.updateModuleName();
-    })
+    });
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.mySubscription = this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        // Trick the Router into believing it's last link wasn't previously loaded
+        this.router.navigated = false;
+      }
+    });
   }
 
   ngAfterViewInit(): void {
@@ -39,6 +50,12 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
+  }
+
+  ngOnDestroy() {
+    if (this.mySubscription) {
+      this.mySubscription.unsubscribe();
+    }
   }
 
   sidebarToggle() {
@@ -124,11 +141,19 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   demoMsg() {
-    if(this.demoToggle) {
+    if (this.demoToggle) {
+      this.demoService.setDemoModeStatus(true);
       this.toastr.info('You entered the demo mode. Turn off the toggle switch anytime to exit the demo mode', '')
     } else {
+      this.demoService.setDemoModeStatus(false);
       this.toastr.info('You exited the demo mode', '')
     }
+    debugger;
+    let url: string = this.router.url;
+    if (url === '/') {
+      url = "/dashboard";
+    }
+    this.router.navigate([url]);
   }
 
 }

@@ -1,20 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { DemoModeDetailsService } from './demo-mode-details.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private demoService: DemoModeDetailsService) { }
 
   public get<T>(url: string): Observable<T> {
     return this.getWithParams(url, new Map(), new Map())
   }
 
   getWIthReponseType(url: string, requestParamsMap: Map<string, string>, headersMap: Map<string, string>): Observable<any> {
-    const options  = {
+    const options = {
       headers: this.createHttpHeaders(headersMap),
       params: this.createHttpParms(requestParamsMap),
       responseType: 'arraybuffer' as 'text'
@@ -64,7 +65,8 @@ export class HttpService {
 
   private createHttpHeaders(headersMap: Map<string, string>): HttpHeaders {
     let httpHeaders: HttpHeaders = new HttpHeaders({
-      Authorization: 'Bearer ' + sessionStorage.getItem('token')
+      Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+      'demo-mode': this.demoService.demoMode === true ? "1" : "0"
     });
     for (let key in headersMap.keys()) {
       httpHeaders.append(key, headersMap.get(key));
