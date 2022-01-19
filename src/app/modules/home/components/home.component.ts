@@ -50,6 +50,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
+    this.demoToggle = this.demoService.demoMode;
   }
 
   ngOnDestroy() {
