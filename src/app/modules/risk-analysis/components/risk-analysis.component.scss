@@ -19,6 +19,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    @media #{$extra-small} {
+        height: 74vh;
+    }
 }
 
 .trade-form {
@@ -914,10 +917,7 @@ a.btn.btn-skip {
         padding: 15px;
         display: block;
     }
-    .addnew-first {
-        align-items: baseline;
-        height: auto;
-    }
+    
     .symbol-heading {
         color: #242E3A;
         font-weight: 600;

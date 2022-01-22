@@ -1,10 +1,10 @@
 <div class="wrapper trade-app-dashboard">
     <div class="sidebar" [ngClass]="isExpand ? 'toggled' : ''">
         <div *ngIf="isExpand" class="sidebar-brand cursor-pointer" [routerLink]="['/dashboard/']">
-            <img src="../../../../assets/images/TA_logo_sm.jpg" alt="Trade-app-logo" class="img-fluid logo_sm">
+            <img src="../../../../assets/images/TA_logo_sm.svg" alt="Trade-app-logo" class="img-fluid logo_sm">
         </div>
         <div *ngIf="!isExpand" class="sidebar-brand cursor-pointer" [routerLink]="['/dashboard/']">
-            <img src="../../../../assets/images/TA_logo.jpg" alt="Trade-app-logo" class="img-fluid full-logo">
+            <img src="../../../../assets/images/TA_logo.svg" alt="Trade-app-logo" class="img-fluid full-logo">
         </div>
 
         <nav class="trade-navbar">
@@ -112,47 +112,97 @@
                     </div>
                     <div class="login-img ml-2" (click)="logout()">
                         <span class="material-icons logout">logout</span>
-                        <!-- <img src="../../../../assets/images/face-img.png" /> -->
                     </div>
-                    <!-- <ul *ngIf="userdetails" class="dropdown">
-                        <li>
-                            <a class="trade-nav-link" [routerLink]="['/setttings/']">SETTINGS</a>
-                        </li>
-
-                        <li>
-                            <a class="trade-nav-link" [routerLink]="['/help/']">
-                                    Help
-                                </a>
-                        </li>
-
-                        <li>
-                            <a class="trade-nav-link cursor" (click)="logout()">Logout</a>
-                        </li>
-                    </ul> -->
+                    
                 </div>
             </div>
         </div>
-        <div class="trade-header-mobile p-2">
+        <div class="trade-header-mobile">
             <div class="d-flex align-items-center justify-content-between">
-                <div class="db-mb-header-section-logo"><img alt="Trade-app-logo" class="img-fluid full-logo" src="../../../../assets/images/TA_logo.jpg" /></div>
+                <span class="ml-1" (click)="menuToggle()">
+                    <span class="material-icons logout">menu</span>
+                </span>
+                <nav class="trade-navbar hamburger-menu" [ngClass]="hamburgerMenu ? 'open' : ''">
+                    <ul class="list-unstyled ">
+                        <li class="sidebar-item" [class.nav-active]="currentRoute == 'dashboard'">
+                            <a class="sidebar-link" [routerLink]="['/dashboard/']">
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item" [class.nav-active]="currentRoute == 'trade-strategies'">
+                            <a class="sidebar-link" [routerLink]="['/trade-strategies/']">
+                                <span>Portfolio</span>
+                            </a>
+                        </li>
+        
+                        <li class="sidebar-item" [class.nav-active]="currentRoute == 'risk-analysis'">
+                            <a class="sidebar-link" [routerLink]="['/risk-analysis/']">
+                                <span>Risk Analysis</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item" [class.nav-active]="currentRoute == 'strategy-comparison'">
+                            <a class="sidebar-link" [routerLink]="['/strategy-comparison/']">
+                                <span>Strategy&nbsp;Comparison</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item" [class.nav-active]="currentRoute == 'trade-plans'">
+                            <a class="sidebar-link" [routerLink]="['/trade-plans/']">
+                                <span>Trade Plan</span>
+                            </a>
+                        </li>
+        
+        
+                        <li class="sidebar-item" [class.nav-active]="currentRoute == 'reports'">
+                            <a class="sidebar-link" [routerLink]="['/reports/']">
+                                <span>Reports</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item" [class.nav-active]="currentRoute == 'rules'">
+                            <a class="sidebar-link" [routerLink]="['/rules/']">
+                                <span>Rules</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item" [class.nav-active]="currentRoute == 'setttings'">
+                            <a class="sidebar-link" [routerLink]="['/setttings/']">
+                                <span>Settings</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item" [class.nav-active]="currentRoute == 'setttings'">
+                            <a class="sidebar-link" [routerLink]="['/setttings/']">
+                                <span>Settings</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item" [class.nav-active]="currentRoute == 'notifications'">
+                            <a class="sidebar-link" [routerLink]="['/notifications/']">
+                                <span>Notifications</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item" [class.nav-active]="currentRoute == 'help'">
+                            <a class="sidebar-link" [routerLink]="['/help/']">
+                                <span>Help</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item" (click)="logout()">
+                            <a class="sidebar-link">
+                                <span>Logout</span>
+                            </a>
+                        </li>
+        
+                    </ul>
+                    
+                </nav>
+
+                <div class="db-mb-header-section-logo"><img alt="Trade-app-logo" class="img-fluid full-logo" src="../../../../assets/images/TA_logo.svg" /></div>
                 <div class="user-details">
                     <div class="top-nav">
-                        <span class="top-nav-item" [class.nav-active]="currentRoute == 'rules'">
-                            <a class="top-nav-link" [routerLink]="['/rules/']">
-                                <mat-icon>Rules</mat-icon>
-                            </a>
+                        <span class="demo-toggle">
+                            Demo <div class="switch ml-1">
+                                <input type="checkbox" [(ngModel)]="demoToggle" (change)="demoMsg()" id="demoToggle" class="cursor" [checked]="demoToggle" />
+                                <label for="demoToggle"></label>
+                              </div>
                         </span>
-
-                        <span class="top-nav-item" [class.nav-active]="currentRoute == 'setttings'">
-                            <a class="top-nav-link" [routerLink]="['/setttings/']">
-                                <mat-icon>settings</mat-icon>
-                            </a>
-                        </span>
-                        <span class="top-nav-item" [class.nav-active]="currentRoute == 'notifications'">
-                            <a class="top-nav-link" [routerLink]="['/notifications/']">
-                                <mat-icon>notifications_none</mat-icon>
-                                <span class="notification_count">999</span>
-                        </a>
+                        <span class="login-img ml-2" (click)="logout()">
+                            <span class="material-icons logout">logout</span>
                         </span>
                     </div>
                 </div>

@@ -60,12 +60,14 @@ body {
 }
 
 .mat-horizontal-stepper-header-container {
-    background: #FFFFFF;
+    background: #f6f8fb;
     box-shadow: 0px -4px 16px rgba(157, 157, 157, 0.1);
     border-radius: 4px 4px 0 0;
     position: relative;
     @media #{$small} {
         padding: 10px 0px;
+        justify-content: space-between;
+        background: #f6f8fb;
     }
     &::before {
         position: absolute;
@@ -89,7 +91,12 @@ body {
 .mat-stepper-horizontal-line {
     display: none;
 }
-
+.mat-stepper-horizontal,
+.mat-stepper-vertical {
+    position: relative;
+    font-family: 'Poppins', sans-serif !important;
+    background-color: transparent !important;
+}
 .mat-horizontal-content-container {
     min-height: 40vh !important;
     padding: 0 !important;
@@ -110,7 +117,18 @@ body {
     height: 50px !important;
     padding: 0 20px !important;
     background: #F6F8FB;
+    @media #{$small} {
+        justify-content: space-between;
+        background: #f6f8fb;
+
+        .mat-horizontal-stepper-header-container {
+            padding: 10px 0px;
+            justify-content: space-between;
+            background: #f6f8fb;
+        }
+    }
 }
+
 
 .mat-horizontal-stepper-header:first-child {
     border-radius: 4px 0 0 0;
@@ -119,7 +137,7 @@ body {
 @media #{$extra-small} {
     .mat-stepper-horizontal,
     .mat-stepper-vertical {
-        background-color: transparent !important;
+        background-color: #f6f8fb !important;
     }
     .mat-horizontal-content-container {
         padding: 0px !important;
@@ -211,19 +229,6 @@ input:invalid {
 
 .height-auto {
     height: auto !important;
-}
-
-input[type="date"]::-webkit-inner-spin-button,
-input[type="date"]::-webkit-calendar-picker-indicator {
-    // display: none;
-    // -webkit-appearance: none;
-}
-
-.mat-stepper-horizontal,
-.mat-stepper-vertical {
-    position: relative;
-    font-family: 'Poppins', sans-serif !important;
-    background-color: transparent !important;
 }
 
 .mat-stepper-vertical {

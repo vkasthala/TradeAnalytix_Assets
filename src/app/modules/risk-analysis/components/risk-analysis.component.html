@@ -26,8 +26,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- <div class="col-9 offset-1 py-3 symbol-description text-center">Risk analysis feature allows the traders to analyze the proﬁtability and risk involved with a a complex trade strategy involving stock and options. Traders can assess the maximum gain and loss associated with the strategy by varying the
-                    stock and option inputs. Based on the analysis results, traders can tweak the strategy so that it aligns with the desired goal.</div> -->
             </ng-container>
             <ng-container *ngSwitchCase="2">
                 <div class="mask" *ngIf="Loader">
@@ -483,15 +481,16 @@
             <div class="addnew-first">
                 <div class="trade-form">
                     <mat-icon class="trade-form-icon ml-1">insights</mat-icon>
-                    <h2 class="py-3 symbol-heading">Risk Analysis</h2>
-                    <div class="pb-3 symbol-description">Enter the stock name or symbol to build a strategy and analyze its risk and profitability in different scenarios</div>
-                    <div class="my-2">
-                        <app-trade-search (symbolSelectEvent)="symbolSelectEventHandler($event)"></app-trade-search>
+                    <h2 class="pb-2 symbol-heading">Risk Analysis</h2>
+                    <div class="pb-3 symbol-description">Analyze potential returns on your trade strategies while varying stock price, implied volatility, and days to expiration. Update the strategy as needed and re-analyze until you are comfortable with the risk-reward potential of the trade.
                     </div>
-                    <button class="btn btn-enter mt-2" (click)="enterSymbol()">Submit </button>
+                    <div class="mt-2">
+                        <app-trade-search (symbolSelectEvent)="symbolSelectEventHandler($event)"></app-trade-search>
+                        <div class="text-center mt-2">
+                            <button class="btn btn-enter ml-3" (click)="enterSymbol()">Submit </button>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="py-3 symbol-description">Risk analysis feature allows the traders to analyze the profitability and risk involved with a a complex trade strategy involving stock and options. Traders can assess the maximum gain and loss associated with the strategy by varying the stock and option inputs. Based on the analysis results, traders can tweak the strategy so that it aligns with the desired goal. 
             </div>
         </ng-container>
         <!--end :: entry first-->

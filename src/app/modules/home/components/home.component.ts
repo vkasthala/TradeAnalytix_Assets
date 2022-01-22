@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   description: string;
   demoToggle: boolean = false;
   mySubscription;
-
+  hamburgerMenu: boolean = false;
   constructor(
     private globalStore: Store<fromGlobalConfig.State>,
     private router: Router,
@@ -42,6 +42,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
         // Trick the Router into believing it's last link wasn't previously loaded
         this.router.navigated = false;
       }
+      this.hamburgerMenu = false
     });
   }
 
@@ -149,12 +150,15 @@ export class HomeComponent implements OnInit, AfterViewInit {
       this.demoService.setDemoModeStatus(false);
       this.toastr.info('You exited the demo mode', '')
     }
-    debugger;
+
     let url: string = this.router.url;
     if (url === '/') {
       url = "/dashboard";
     }
     this.router.navigate([url]);
+  }
+  menuToggle() {
+    this.hamburgerMenu = !this.hamburgerMenu 
   }
 
 }

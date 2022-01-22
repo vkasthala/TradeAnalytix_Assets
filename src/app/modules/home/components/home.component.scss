@@ -28,35 +28,35 @@
                 // height: auto;
             }
         }
-        .user-details {
-            display: flex;
-            align-items: center;
-            font-size: .89rem;
-            @media #{$extra-small} {
-                display: none;
-            }
-            .login-img {
-                width: 30px;
-                height: 30px;
-                border-radius: 50%;
-                border: 1px solid $white;
-                overflow: hidden;
-                margin-right: 10px;
-                img {
-                    width: 100%;
-                    height: auto;
-                }
-            }
-            .login-member-name {
-                color: #000;
-                font-weight: 500;
-                font-size: .78rem;
-                h5 {
-                    font-weight: 500;
-                    font-size: .78rem;
-                    padding: .25rem 0;
-                }
-            }
+        
+    }
+}
+.user-details {
+    display: flex;
+    align-items: center;
+    font-size: .89rem;
+    
+    .login-img {
+        width: 30px;
+        height: 30px;
+        overflow: hidden;
+        margin-right: 10px;
+        @media #{$extra-small} {
+            margin-right: 0;
+        }
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+    .login-member-name {
+        color: #000;
+        font-weight: 500;
+        font-size: .78rem;
+        h5 {
+            font-weight: 500;
+            font-size: .78rem;
+            padding: .25rem 0;
         }
     }
 }
@@ -187,6 +187,9 @@
     color: #394C86;
     font-size: 24px;
     cursor: pointer;
+    @media #{$extra-small} {
+        color: #fff;
+    }
 }
 
 .trade-dash-section {
@@ -345,6 +348,9 @@
 
 .full-logo {
     margin: 0 auto;
+    @media #{$extra-small} {
+        margin-top: -10px;
+    }
 }
 .global-search {
     border: 1px solid #ced4da;
@@ -357,6 +363,8 @@
 
 .trade-header-mobile {
     background-color: #394c86;
+    height: 50px;
+    overflow: hidden;
     display: none;
     @media #{$extra-small} {
         display: block;
@@ -388,9 +396,6 @@
         
     }
 }
-.logo_sm {
-    max-width: 112%;
-}
 
 .demo-toggle {
     width: 95px;
@@ -398,6 +403,9 @@
     display: flex;
     align-items: baseline;
     margin-top: -8px;
+    @media #{$extra-small} {
+        color: rgb(255, 255, 255);
+    }
 }
 // Toggle Customize
 .switch {
@@ -433,13 +441,32 @@
   }
   .switch input[type="checkbox"]:checked + label {
     background-color: $primary;
+    @media #{$extra-small} {
+        background-color: #2285fa;
+    }
   }
-  .switch input[type="checkbox"]:not(:checked) + label {
+.switch input[type="checkbox"]:not(:checked) + label {
     background-color: #ddd;
-  }
-  .switch-no {
+}
+.switch-no {
     color: #ddd;
-  }
-  .switch-yes {
+}
+.switch-yes {
     color: $primary;
-  }
+}
+
+.hamburger-menu {
+    position: absolute;
+    top: 50px;
+    left: -100%;
+    z-index: 999;
+    background: #394C86;
+    transition: all 0.5s ease 0s;
+    -webkit-transition: all 0.5s ease 0s;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.35);
+}
+.hamburger-menu.open {
+    left: 0;
+    transition: all 0.5s ease 0s;
+    -webkit-transition: all 0.5s ease 0s;
+}

@@ -70,13 +70,13 @@
 <div class="trade-details-header-mobile">
     <div class="row mb-1">
         <div class="col-12 pl-2">
-            <div class="trade-header-row">
+            <div class="trade-header">
                 <div class="row">
                     <div class="col-6 d-flex align-items-center">
                         <span class="cursor" (click)="CollapsTradeHeader()">
                             <i class="material-icons mat-icon-sm">{{hideTradeHeader ? 'keyboard_arrow_down' : 'keyboard_arrow_right'}}</i>
                         </span>
-                        <span class="trade-r">{{getDisplayValue(selectedStock.code)}}</span>
+                        <span>{{getDisplayValue(selectedStock.code)}}</span>
                         <span class="ml-2">{{stockSummary.close}}</span>
                     </div>
                     <div class="col-6 d-flex align-items-center pr-3" [ngClass]="{'trade-rr': stockSummary.changePercent <= 0, 'd-flex trade-g' : stockSummary.changePercent > 0}">

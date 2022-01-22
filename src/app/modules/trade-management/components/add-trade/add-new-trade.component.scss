@@ -748,6 +748,13 @@
 .trade-details-body {
     flex: 0 0 70%;
     max-width: 70%;
+    .mat-horizontal-stepper-header-container {
+        @media #{$small} {
+            padding: 10px 0px;
+            justify-content: space-between;
+            background: #f6f8fb;
+        }
+    }
 }
 
 .right-sidebar {

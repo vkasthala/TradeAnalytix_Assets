@@ -199,15 +199,19 @@
 <div class="compare-strategies-mobile">
     <ng-container [ngSwitch]="currentState">
         <ng-container *ngSwitchCase="1">
-            <div class="addnew-first">
+            <div class="addnew-first p-3">
                 <div class="trade-form">
                     <mat-icon class="trade-form-icon ml-0">compare_arrows</mat-icon>
                     <h2 class="pb-2 symbol-heading">Strategy Comparison</h2>
-                    <div class="pb-3 symbol-description">Enter the stock symbol or name for which trade strategy is being added</div>
-                    <div class="my-2">
-                        <app-trade-search (symbolSelectEvent)="symbolSelectEventHandler($event)"></app-trade-search>
+                    <div class="pb-3 symbol-description">Compare up to five different trade strategies on a symbol and analyze their profitability in different scenarios so that you can pick a strategy that aligned with your risk appetite.
                     </div>
-                    <button class="btn btn-enter mt-2" (click)="enterSymbol()">Submit </button>
+                    <div class="mt-2">
+                        <app-trade-search (symbolSelectEvent)="symbolSelectEventHandler($event)">
+                        </app-trade-search>
+                        <div class="text-center mt-2">
+                            <button class="btn btn-enter ml-3" (click)="enterSymbol()">Submit </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </ng-container>
