@@ -294,22 +294,22 @@
                 <div [ngClass]="closeTrade ? 'close_trade_module' : ''">
                     <div class="d-flex justify-content-between align-items-end">
                         <button type="button" class="btn btn-add" (click)="addStock()"
-                            [ngClass]="[stockAdded ? 'disabled' : '']"> + Stock</button>
+                            [ngClass]="[stockAdded ? 'disabled' : '']"> Add Stock</button>
 
                         <button type="button" class="btn btn-add ml-2" (click)="showOptionForm()"
-                            [ngClass]="[stockOptions.length === 4 ? 'disabled' : '']"> + Option</button>
+                            [ngClass]="[stockOptions.length === 4 ? 'disabled' : '']"> Add Option</button>
                     </div>
                 </div>
             </div>
 
             <div class="show-stock-sec" *ngIf="showStockSec && stockEntry != undefined">
                 <div class="row pt-3">
-                    <div class="col-5">
+                    <div class="col-4">
                         <label class="col-form-label pt-0">Action</label>
                         <div class="col-form-value">{{stockEntry.actionType === 1 ? "Buy to Open" : "Sell to Open"}}
                         </div>
                     </div>
-                    <div class="col-3">
+                    <div class="col-4">
                         <label class="col-form-label pt-0">Quantity</label>
                         <div class="col-form-value">{{stockEntry.quantity}}</div>
                     </div>
@@ -319,7 +319,7 @@
                     </div>
                 </div>
                 <div class="row pt-3 align-items-end">
-                    <div class="col-5" *ngIf="!closeTrade">
+                    <div class="col-4" *ngIf="!closeTrade">
                         <label class="col-form-label pt-0">Cost</label>
                         <div class="col-form-value">
                             {{(stockEntry.quantity && stockEntry.price) ? (stockEntry.quantity * stockEntry.price *
@@ -343,13 +343,13 @@
 
                     <div class="col-4">
                         <span class="trade-edit" (click)="editStock(element)">
-                            <mat-icon class="mat-icon-sm mr-1">edit</mat-icon> Edit
+                            Edit
                         </span>
-                    </div>
-                    <div class="col-2"
-                        *ngIf="addTrade || tradeStatus == 4 || (editTrade && (StockPosition != undefined && StockPosition.quantity !== undefined && StockPosition.quantity == 0 ))">
-                        <span class="trade-delete mr-2" (click)="deleteStock()">
-                            <mat-icon>delete</mat-icon>
+                        <span class="ml-2"
+                            *ngIf="addTrade || tradeStatus == 4 || (editTrade && (StockPosition != undefined && StockPosition.quantity !== undefined && StockPosition.quantity == 0 ))">
+                            <span class="trade-delete" (click)="deleteStock()">
+                                <mat-icon>delete</mat-icon>
+                            </span>
                         </span>
                     </div>
                 </div>
@@ -361,22 +361,22 @@
                         <label class="col-form-label pt-0">Action</label>
                         <div class="col-form-value">{{option.actionType == 1 ? "Buy to Open" : "Sell to Open"}}</div>
                     </div>
-                    <div class="col-3">
+                    <div class="col-4">
                         <label class="col-form-label pt-0">Contracts</label>
                         <div class="col-form-value">{{option.contracts}}</div>
                     </div>
-                    <div class="col-3">
+                    <div class="col-4">
                         <label class="col-form-label pt-0">Expiration</label>
                         <div class="col-form-value">{{option.expireDate | date:
                             'MM/dd/yyyy'}}</div>
                     </div>
-                    <div class="col-2">
+                </div>
+                <div class="row pt-3 align-items-end">
+                    <div class="col-4">
                         <label class="col-form-label pt-0">Strike</label>
                         <div class="col-form-value">{{option.strikePrice}}</div>
                     </div>
-                </div>
-                <div class="row pt-3 align-items-end">
-                    <div class="col-3">
+                    <div class="col-4">
                         <label class="col-form-label pt-0">Call/Put</label>
                         <div class="col-form-value">{{option.optionType == 1 ? "Call" : "Put"}}</div>
                     </div>
@@ -384,16 +384,18 @@
                         <label class="col-form-label pt-0">Entry Price</label>
                         <div class="col-form-value">{{option.price}}</div>
                     </div>
-                    <div class="col-3">
+                    
+                </div>
+                <div class="row pt-2 align-items-end">
+                    <div class="offset-4 col-8">
                         <span class="trade-edit" (click)="editOptionLeg(index)">
-                            <mat-icon class="mat-icon-sm mr-1">edit</mat-icon> Edit
+                            Edit
                         </span>
-                    </div>
-                    <div class="col-2">
+
                         <span class="cursor"
                             *ngIf="addTrade || tradeStatus == 4 || (editTrade && stockOptions[index].contracts == 0 || !stockOptions[index].id || stockOptions[index].id == 0)"
                             (click)="deleteStockOption(index)">
-                            <mat-icon class="mat-icon-sm mr-1">
+                            <mat-icon class="mat-icon-sm mr-2">
                                 delete</mat-icon>
                         </span>
                     </div>

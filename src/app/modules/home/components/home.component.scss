@@ -349,7 +349,7 @@
 .full-logo {
     margin: 0 auto;
     @media #{$extra-small} {
-        margin-top: -10px;
+        height: 40px;
     }
 }
 .global-search {
@@ -396,6 +396,12 @@
         
     }
 }
+.trade-header-mobile-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+}
 
 .demo-toggle {
     width: 95px;
@@ -405,6 +411,7 @@
     margin-top: -8px;
     @media #{$extra-small} {
         color: rgb(255, 255, 255);
+        width: 55px;
     }
 }
 // Toggle Customize

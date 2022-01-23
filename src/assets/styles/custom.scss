@@ -575,6 +575,12 @@ a.sidebar-link {
     color: #9DA6BA;
     font-weight: 400;
     font-size: 16px;
+    @media #{$extra-small} {
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 22px;
+        color: #9DA6BA;
+    }
 }
 
 input,

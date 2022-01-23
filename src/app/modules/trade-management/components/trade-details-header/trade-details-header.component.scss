@@ -79,6 +79,10 @@ span.trade-rr {
     margin-left: 4px;
     display: flex;
     align-items: center;
+    @media #{$extra-small} {
+        font-weight: normal;
+        font-size: 16px;
+    }
 }
 
 span.trade-g {
@@ -843,6 +847,11 @@ a.btn.btn-skip {
         }
         .trade-header-col-1 {
             padding-left: 30px;
+        }
+        .trade-header-cell-value {
+            font-weight: normal;
+            font-size: 14px;
+            color: #3B5065;
         }
         
     }

@@ -9,7 +9,6 @@
                 </div>
                 <h5>Key Metrics</h5>
             </div>
-            
         </div>
 
         <div class="trade-dash-cards">
@@ -34,7 +33,6 @@
                         <h5>Calendar Report</h5>
                     </div>
                     <div class="dsh-img">
-                        <!--<app-returns-calendar-chart></app-returns-calendar-chart>-->
                         <app-calendar #calendarReport></app-calendar>
                     </div>
                 </div>
@@ -164,73 +162,34 @@
 
     <!-- Mobile -->
     <div class="trade-dash-cards-mobile">
-        <div class="container bg-white py-3">
-            <div class="trade-cards-heading">
-                <h5>Key Metrics</h5>
-            </div>
-            <div class="row">
-                <div class="trade-mobile-cards">
-                    <div class="flex-item card-first card-bm">
-                        <div class="flex-inner">
-                            <a>
-                                <h4 class="trade_count trade-green">+$12,560</h4>
-                                <span>Total Return</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="flex-item card-second card-bm">
-                        <div class="flex-inner">
-                            <a>
-                                <h4 class="trade_count trade-green">1.2R</h4>
-                                <span>Risk Adjusted<br/> Return (R)</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="trade-mobile-cards">
-                    <div class="flex-item card-second card-bm">
-                        <div class="flex-inner">
-                            <a>
-                                <h4 class="trade_count trade-red">49%</h4>
-                                <span>Win/Loss Ratio</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="flex-item card-first card-bm">
-                        <div class="flex-inner">
-                            <a>
-                                <h4 class="trade_count trade-red">-$1,546</h4>
-                                <span>Max. Amount at Risk</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="trade-mobile-cards">
-                    <div class="flex-item card-three card-bm">
-                        <div class="flex-inner">
-                            <a>
-                                <h4 class="trade_count">1.2 days</h4>
-                                <span>Average Holding Period</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="flex-item card-second card-bm">
-                        <div class="flex-inner">
-                            <a>
-                                <h4 class="trade_count trade-red">
-                                    21%
-                                </h4>
-                                <span>Alignment with
-                                    Trading Plan</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="trade-cards-heading px-3 mt-2 mb-0">
+            <span style="font-size: 16px;">Welcome {{userName}}</span>
+            <button type="button" class="btn-get-started ml-2" (click)="showChecklist()" data-toggle="tooltip" data-placement="top" title="Show Checklist">Get Started</button>
         </div>
+        <mat-accordion class="example-headers-align w-100" multi="true">
+            <mat-expansion-panel [expanded]="true" (opened)="setStep(0)">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Key Metrics
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <ng-template matExpansionPanelContent>
+                    <div class="trade-dash-cards">
+                        <div class="flex-item" *ngFor="let item of summaryItems;">
+                            <div class="flex-inner">
+                                <a>
+                                    <h3 class="trade_count trade-green" [style.color]="getSummaryTextColor(item)">{{item.value}}{{getValueSuffix(item)}}</h3>
+                                    <span class="trade_title">{{item.name}}</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </mat-expansion-panel>
+        </mat-accordion>
+
         <div class="trad-border"></div>
+
         <!-- Calendar Report -->
         <div class="trade-analytics">
             <div class="container">
@@ -239,7 +198,6 @@
                 </div>
                 <div class="dsh-img">
                     <app-calendar #calendarReport></app-calendar>
-                    <!--<app-returns-calendar-chart></app-returns-calendar-chart>-->
                 </div>
             </div>
         </div>
@@ -250,9 +208,9 @@
                 <div class="trade-headiang">
                     <h5>Trade Plan</h5>
                 </div>
-                <div class="dsh-img p-3" style="height: 330px;">
-                    <div class="custom-grid">
-                        <div class="row custom-grid-head">
+                <div class="dsh-img" style="height: 300px;" *ngIf="latestTradePlan && (latestTradePlan | json) != '{}'">
+                    <div class="custom-grid px-3">
+                        <div class="row custom-grid-head pt-3">
                             <div class="col-4">
                                 Date
                             </div>
@@ -263,83 +221,66 @@
                                 Mindset
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row custom-grid-body" *ngIf="latestTradePlan && latestTradePlan.day">
                             <div class="col-4">
-                                {{latestTradePlan ? latestTradePlan.day : 'N/A'}}
+                                {{latestTradePlan.day | date: 'dd-MMM-yyyy'}}
                             </div>
                             <div class="col-4 text-success">
-                                {{latestTradePlan ? latestTradePlan.marketStatus : 'N/A'}}
+                                {{latestTradePlan ? latestTradePlan.marketStatus : ''}}
                             </div>
                             <div class="col-4">
-                                {{latestTradePlan ? latestTradePlan.mindsetType : 'N/A'}}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="custom-grid">
-                        <div class="row custom-grid-head">
-                            <div class="col-12">
-                                Notes
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                {{latestTradePlan ? latestTradePlan.notes : 'N/A'}}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="custom-grid">
-                        <div class="row custom-grid-head">
-                            <div class="col-12">
-                                Planned Trades
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                {{latestTradePlan ? latestTradePlan.plannedTrades : 'N/A'}}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="custom-grid">
-                        <div class="row custom-grid-head">
-                            <div class="col-12">
-                                Executed Trades
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                no data
-                            </div>
-                        </div>
-                    </div>
-                    <div class="custom-grid">
-                        <div class="row custom-grid-head">
-                            <div class="col-4">
-                                Aligned
-                            </div>
-                            <div class="col-4">
-                                Self-Review
-                            </div>
-                            <div class="col-4">
-                                Lessons Learnt
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-4">
-                                {{latestTradePlan ? (latestTradePlan.aligned ? 'Yes' : 'No') : 'N/A'}}
-                            </div>
-                            <div class="col-4">
-                                {{latestTradePlan ? latestTradePlan.selfReview : 'N/A'}}
-                            </div>
-                            <div class="col-4">
-                                {{latestTradePlan ? latestTradePlan.lessons : 'N/A'}}
+                                {{latestTradePlan ? latestTradePlan.mindsetType : ''}}
                             </div>
 
                         </div>
-                        <div class="d-flex justify-content-end">
-                            <button class="btn btn-primary btn-sm">View More</button>
+                    </div>
+                    <div class="trade-analytics-body px-3" *ngIf="latestTradePlan && (latestTradePlan.notes || latestTradePlan.plannedTrades)">
+                        <div class="custom-grid pb-3">
+                            <div class="row custom-grid-head">
+                                <div class="col-12">
+                                    Market Perspective
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    {{latestTradePlan ? latestTradePlan.notes : ''}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="custom-grid pb-3">
+                            <div class="row custom-grid-head">
+                                <div class="col-12">
+                                    Planned Trades
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    {{latestTradePlan ? latestTradePlan.plannedTrades : ''}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="custom-grid">
+                            <div class="row custom-grid-head">
+                                <div class="col-12">
+                                    Executed Trades
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    no data
+                                </div>
+                            </div>
                         </div>
                     </div>
+                       
+                    <div class="px-3 pt-1 text-right">
+                        <a routerLink="/view-trade-plan" class="view-more">View More</a>
+                    </div>
                 </div>
+                <div class="dsh-img nodata-text" *ngIf="latestTradePlan === undefined">
+                    <a routerLink="/add-new-trade-plan">Add Plan</a>
+                </div>
+                
             </div>
         </div>
 

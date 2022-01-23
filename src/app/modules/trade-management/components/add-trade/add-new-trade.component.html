@@ -288,19 +288,18 @@
 <div class="add-newtrade-mobile">
     <ng-container [ngSwitch]="currentState">
         <ng-container *ngSwitchCase="1">
-            <div class="trade-top-heading">
+            <!-- <div class="trade-top-heading">
                 <h3>
                     <mat-icon class="trade-form-icon mr-2" routerLink="/trade-strategies">arrow_back</mat-icon> Add
                     Trade
                 </h3>
-            </div>
+            </div> -->
             <!--entry first-->
             <div class="addnew-first py-3">
                 <div class="trade-form">
                     <mat-icon class="trade-form-icon">attach_money</mat-icon>
                     <h2 class="py-3 symbol-heading">Add Trade</h2>
-                    <div class="pb-3 symbol-description">Enter the stock symbol or name for which trade strategy is
-                        being added</div>
+                    <div class="pb-3 symbol-description">Adopt a systematic approach to trading by recording your trades in detail with a comprehensive trade journal and align your trades with self-set trading rules.</div>
                     <div class="mt-2">
                         <app-trade-search (symbolSelectEvent)="symbolSelectEventHandler($event)">
                         </app-trade-search>
@@ -310,8 +309,8 @@
             </div>
         </ng-container>
         <ng-container *ngSwitchCase="2">
-            <div class="trade-actions d-flex justify-content-between">
-                <span class="text-danger" (click)="cancelTrade()">CANCEL</span>
+            <div class="trade-actions">
+                <span class="text-danger" (click)="cancelTrade()">Cancel</span>
                 <span class="mr-2" *ngIf="add" (click)="CheckExecutionDate('Confirm Trade Execution Date')">Add
                     Trade</span>
 

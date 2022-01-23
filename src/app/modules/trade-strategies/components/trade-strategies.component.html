@@ -118,16 +118,17 @@
 <!-- for-mobile -->
 <div class="trade-st-mobile">
     <div class="px-3 d-flex align-items-center justify-content-between">
-        <div class="page-heading">Portfolio</div> 
+        <div class="page-heading w-100 text-center">Portfolio</div> 
         <div class="d-flex">
-            <mat-icon class="cursor material-icons" (click)="searchFilter()">search</mat-icon>
+            <span class="ml-1">
+                <mat-icon class="cursor material-icons" routerLink="/new-trade">add</mat-icon>
+            </span>
+            <!-- <mat-icon class="cursor material-icons" (click)="searchFilter()">search</mat-icon> -->
             <span class="cursor ml-2" (click)="strategiesFilter()" data-toggle="tooltip" data-placement="top"
                 title="Show Filters"><img src="../../../../assets/images/filter.png" alt="" height="18" /></span>
         </div>
     </div>
-    <div class="py-2 px-3">
-        <button routerLink="/new-trade" class="btn btn-apply"><span class="add-icon mr-2">+</span> ADD TRADE</button>
-    </div>
+    
     <div class="filters-slide" [ngClass]="showFilters ? 'open' : ''">
         <div class="trade-top-heading">
             <h3>
@@ -135,6 +136,11 @@
             </h3>
         </div>
         <div class="filter-form">
+            <div class="form-group has-search position-relative">
+                <app-trade-search (symbolSelectEvent)="symbolSelectEventHandler($event)" #tradeSearchComponent>
+                </app-trade-search>
+                <mat-icon class="form-icon-down">search</mat-icon>
+            </div>
             <div class="trade-sel position-relative">
                 <span class="custom-label" *ngIf="strategyLabel">Strategy Type</span>
                 <select class="form-control select-input" id="strategy_inputState"
@@ -180,7 +186,15 @@
             </div>
         </div>
     </div>
-    <div class="trade-strategies-table p-2">
+
+    <div class="row m-0" *ngIf="isOpenPositions">
+        <span class="col-form-label font-size-14 col-6" *ngFor="let summary of summaryItems">
+            {{summary.name + ': '}} 
+            <span class="text-secondary" [ngClass]="{'text-success': summary.id === 'max_gain', 'text-danger' : summary.id === 'max_loss' }">{{summary.value}}</span>
+        </span>
+    </div>
+
+        <div class="trade-strategies-table px-2">
         <!-- Grid row -->
         <app-trade-strategies-grid #tradeStrategiesGrid>loading</app-trade-strategies-grid>
     </div>

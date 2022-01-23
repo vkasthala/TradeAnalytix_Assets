@@ -118,7 +118,7 @@
             </div>
         </div>
         <div class="trade-header-mobile">
-            <div class="d-flex align-items-center justify-content-between">
+            <div class="trade-header-mobile-row">
                 <span class="ml-1" (click)="menuToggle()">
                     <span class="material-icons logout">menu</span>
                 </span>
@@ -192,14 +192,14 @@
                     
                 </nav>
 
-                <div class="db-mb-header-section-logo"><img alt="Trade-app-logo" class="img-fluid full-logo" src="../../../../assets/images/TA_logo.svg" /></div>
+                <div class="db-mb-header-section-logo"><img alt="Trade-app-logo" class="img-fluid full-logo" src="../../../../assets/images/TA-full-logo.jpg" /></div>
                 <div class="user-details">
                     <div class="top-nav">
                         <span class="demo-toggle">
-                            Demo <div class="switch ml-1">
+                            <div class="switch ml-1">
                                 <input type="checkbox" [(ngModel)]="demoToggle" (change)="demoMsg()" id="demoToggle" class="cursor" [checked]="demoToggle" />
                                 <label for="demoToggle"></label>
-                              </div>
+                            </div>
                         </span>
                         <span class="login-img ml-2" (click)="logout()">
                             <span class="material-icons logout">logout</span>

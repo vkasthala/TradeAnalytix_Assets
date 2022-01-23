@@ -174,75 +174,52 @@
         <div class="col-4 text-right">{{element.status}}</div>
       </div>
       <div class="" *ngIf="hideRuleContent[i]">
-        <!-- <div class="row py-1">
-          <div class="col-6 pl-4">
-            Status
-          </div>
-          <div class="col-6 text-right">
-            {{element.status}}
-          </div>
-        </div> -->
-        <!-- <div class="row py-1">
-          <div class="col-6 pl-4">
-            Strategy
-          </div>
-          <div class="col-6 text-right">
-            {{element.strategy}}
-          </div>
-        </div>
+        
         <div class="row py-1">
-          <div class="col-6 pl-4">
-            Direction
-          </div>
-          <div class="col-6 text-right">
-            {{element.direction}}
-          </div>
-        </div> -->
-        <div class="row py-1">
-          <div class="col-6 pl-4">
+          <div class="col-6 pl-4 mobile-grid-cell">
             Open Date
           </div>
-          <div class="col-6 text-right">
+          <div class="col-6 text-right mobile-grid-cell-value">
             {{element.openDate | date: 'dd-MMM-yyyy'}}
           </div>
         </div>
         <div class="row py-1">
-          <div class="col-6 pl-4">
+          <div class="col-6 pl-4 mobile-grid-cell">
             Total Amount
           </div>
-          <div class="col-6 text-right">
+          <div class="col-6 text-right mobile-grid-cell-value">
             {{element.totalAmount}}
           </div>
         </div>
         <div class="row py-1">
-          <div class="col-6 pl-4">
+          <div class="col-6 pl-4 mobile-grid-cell">
             Realized Return
           </div>
-          <div class="col-6 text-success text-right">
+          <div class="col-6 mobile-grid-cell-value text-success text-right">
             {{element.returnAmount}}
           </div>
         </div>
         <div class="row py-1">
-          <div class="col-6 pl-4">
+          <div class="col-6 pl-4 mobile-grid-cell">
             Max Gain
           </div>
-          <div class="col-6 text-danger text-right">
+          <div class="col-6 mobile-grid-cell-value text-danger text-right">
             {{element.maxGain | number:'1.0-0'}}
           </div>
         </div>
         <div class="row py-1">
-          <div class="col-6 pl-4">
+          <div class="col-6 pl-4 mobile-grid-cell">
             Max Loss
           </div>
-          <div class="col-6 text-right">
+          <div class="col-6 mobile-grid-cell-value text-right">
             {{element.maxLoss | number:'1.0-0'}}
           </div>
         </div>
         <div class="row py-1">
-          <div class="col-6 pl-4">
+          <div class="col-6 pl-4 mobile-grid-cell">
             Tags
           </div>
-          <div class="col-6 text-right">
+          <div class="col-6 mobile-grid-cell-value text-right">
             {{element.tags}} 
           </div>
         </div>
@@ -260,7 +237,7 @@
           </button>
 
           <button type="button" class="btn mobile-grid-btn trade-view" *ngIf="element.status == 'Closed'" (click)="viewTrade(element);closeActionBox()">
-            <mat-icon  class="mat-icon-sm mr-1">visibility</mat-icon> Visibility
+            <mat-icon  class="mat-icon-sm mr-1">edit</mat-icon> Edit
           </button>
         </div>
       </div>

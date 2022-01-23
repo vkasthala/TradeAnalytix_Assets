@@ -708,7 +708,14 @@
     z-index: 20;
     top: 0;
     right: 0;
-    padding: 9px 25px;
+    padding: 9px 0;
+    @media #{$extra-small} {
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 27px;
+        display: flex;
+        justify-content:space-between;
+    }
 }
 
 .closed-legs-sec {
@@ -831,9 +838,10 @@
         }
     }
     .symbol-heading {
-        color: #242E3A;
-        font-weight: 600;
+        font-weight: 500;
         font-size: 20px;
+        line-height: 32px;
+        color: #242E3A;
     }
     
     .trade-details-body, .right-sidebar {

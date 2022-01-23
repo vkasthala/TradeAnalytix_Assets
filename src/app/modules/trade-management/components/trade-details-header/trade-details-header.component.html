@@ -56,16 +56,10 @@
                     <span>P/S</span>
                 </div>
             </div>
-
-            <!-- <div class="text-right read-more">
-        <span class="d-flex btn-link cursor" (click)="showMoreStats()">
-            <i *ngIf="allStats" class="negative-amt material-icons">arrow_upward</i>
-            <i *ngIf="!allStats" class="negative-amt material-icons">arrow_downward</i> 
-        </span>
-        </div> -->
         </div>
     </div>
 </div>
+
 <!-- trade-details-header-mobile -->
 <div class="trade-details-header-mobile">
     <div class="row mb-1">
@@ -79,10 +73,13 @@
                         <span>{{getDisplayValue(selectedStock.code)}}</span>
                         <span class="ml-2">{{stockSummary.close}}</span>
                     </div>
-                    <div class="col-6 d-flex align-items-center pr-3" [ngClass]="{'trade-rr': stockSummary.changePercent <= 0, 'd-flex trade-g' : stockSummary.changePercent > 0}">
-                        <i *ngIf="stockSummary.changePercent > 0" class="positive-amt material-icons mat-icon-xs">arrow_upward</i>
-                        <i *ngIf="stockSummary.changePercent <= 0" class="negative-amt material-icons mat-icon-xs">arrow_downward</i>
-                    {{getDisplayValue(stockSummary.changePercent, '%')}}
+                    <div class="col-6 d-flex align-items-center pr-3 justify-content-between">
+                        <span>{{stockSummary.close}}</span>
+                        <span [ngClass]="{'d-flex trade-rr': stockSummary.changePercent <= 0, 'd-flex trade-g' : stockSummary.changePercent > 0}">
+                            <i *ngIf="stockSummary.changePercent > 0" class="positive-amt material-icons mat-icon-xs">arrow_upward</i>
+                            <i *ngIf="stockSummary.changePercent <= 0" class="negative-amt material-icons mat-icon-xs">arrow_downward</i>
+                        {{getDisplayValue(stockSummary.changePercent, '%')}}
+                        </span>
                     </div>
                 </div>
             </div>
@@ -92,39 +89,39 @@
     <div *ngIf="hideTradeHeader">
         <div class="row trade-header-row">
             <span class="col-6 trade-header-col-1">Prev Close</span>
-            <span class="col-6">{{getDisplayValue(stockSummary.open)}}</span>
+            <span class="col-6 trade-header-cell-value">{{getDisplayValue(stockSummary.open)}}</span>
         </div>
         <div class="row trade-header-row">
             <span class="col-6 trade-header-col-1">Days Range</span>
-            <span class="col-6">{{getDisplayValue(stockSummary.low)}} - {{getDisplayValue(stockSummary.high)}}</span>
+            <span class="col-6 trade-header-cell-value">{{getDisplayValue(stockSummary.low)}} - {{getDisplayValue(stockSummary.high)}}</span>
         </div>
         <div class="row trade-header-row">
             <span class="col-6 trade-header-col-1">Volume</span>
-            <span class="col-6">{{getDisplayValue(stockSummary.volume)}}</span>
+            <span class="col-6 trade-header-cell-value">{{getDisplayValue(stockSummary.volume)}}</span>
         </div>
         <div class="row trade-header-row">
             <span class="col-6 trade-header-col-1">52-Wk Range</span>
-            <span class="col-6">{{getDisplayValue(stockSummary.week52Low)}} - {{getDisplayValue(stockSummary.week52High)}}</span>
+            <span class="col-6 trade-header-cell-value">{{getDisplayValue(stockSummary.week52Low)}} - {{getDisplayValue(stockSummary.week52High)}}</span>
         </div>
         <div class="row trade-header-row">
             <span class="col-6 trade-header-col-1">Mkt Cap</span>
-            <span class="col-6">{{getDisplayValue(stockSummary.marketCapitalBln)}}</span>
+            <span class="col-6 trade-header-cell-value">{{getDisplayValue(stockSummary.marketCapitalBln)}}</span>
         </div>
         <div class="row trade-header-row">
             <span class="col-6 trade-header-col-1">Revenue</span>
-            <span class="col-6">{{getDisplayValue(stockSummary.revenueBln, 'B')}}</span>
+            <span class="col-6 trade-header-cell-value">{{getDisplayValue(stockSummary.revenueBln, 'B')}}</span>
         </div>
         <div class="row trade-header-row">
             <span class="col-6 trade-header-col-1">Oper. Margin</span>
-            <span class="col-6">{{getDisplayValue(stockSummary.operatingMargin, '%')}}</span>
+            <span class="col-6 trade-header-cell-value">{{getDisplayValue(stockSummary.operatingMargin, '%')}}</span>
         </div>
         <div class="row trade-header-row">
             <span class="col-6 trade-header-col-1">P/E</span>
-            <span class="col-6">NA</span>
+            <span class="col-6 trade-header-cell-value">NA</span>
         </div>
         <div class="row trade-header-row">
             <span class="col-6 trade-header-col-1">P/S</span>
-            <span class="col-6">NA</span>
+            <span class="col-6 trade-header-cell-value">NA</span>
         </div>
     </div>
 </div>
