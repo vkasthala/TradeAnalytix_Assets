@@ -230,7 +230,7 @@ a.btn.btn-skip {
     padding: 20px 25px;
     .col-form-label {
         color: #3A4C85;
-        font-size: 13px !important;
+        font-size: 13px;
     }
 }
 
@@ -973,7 +973,7 @@ a.btn.btn-skip {
 @media (max-width:1024px) {
     .add-stock-sec {
         .col-form-label {
-            font-size: 12px !important;
+            font-size: 12px;
         }
     }
     .form-control {
@@ -1035,9 +1035,15 @@ a.btn.btn-skip {
     }
     .col-form-value {
         font-weight: 600;
-        font-size: 13px;
+        font-size: 14px;
         line-height: 21px;
         color: #3A4C85;
+    }
+    .form-stock-value {
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 21px;
+        color: #3B5065;
     }
     .trade-edit {
         font-weight: 500;

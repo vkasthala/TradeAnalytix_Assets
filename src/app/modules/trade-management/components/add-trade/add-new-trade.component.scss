@@ -631,7 +631,6 @@
     flex-wrap: wrap;
     @media #{$extra-small} {
         margin-bottom: 10px;
-        border: 1px solid #ddd;
     }
     .card-main {
         // text-align: center;
@@ -725,6 +724,9 @@
     padding: 10px 25px;
     position: relative;
     margin-top: 1rem;
+    @media #{$extra-small} {
+        padding: 10px 15px;
+    }
     .closed-legs-header {
         font-weight: 600;
         font-size: 15px;
@@ -741,6 +743,9 @@
         border-top: 1px solid #e2e5eb;
         border-bottom: 1px solid #e2e5eb;
         padding: 20px 0;
+        @media #{$extra-small} {
+            padding: 10px 0;
+        }
     }
     .closed-legs-footer {
         padding: 10px 0;
@@ -748,7 +753,7 @@
     .col-form-label,
     .card-main {
         color: #3A4C85;
-        font-size: 13px !important;
+        font-size: 13px;
     }
 }
 
@@ -882,5 +887,20 @@
     
     .widget_header-label {
         font-size: 14px;
+    }
+    .closed-legs-sec {
+        .col-form-label {
+            color: #3B5065;
+            font-size: 12px !important;
+            font-weight: normal;
+            font-size: 12px;
+            line-height: 18px;
+        }
+        .col-form-value {
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 21px;
+            color: #3A4C85;
+        }
     }
 }

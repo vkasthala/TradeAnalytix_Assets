@@ -292,7 +292,7 @@
 
             <div class="trade-sec">
                 <div [ngClass]="closeTrade ? 'close_trade_module' : ''">
-                    <div class="d-flex justify-content-between align-items-end">
+                    <div class="d-flex justify-content-between align-items-end" *ngIf="!closeTrade && !viewTrade">
                         <button type="button" class="btn btn-add" (click)="addStock()"
                             [ngClass]="[stockAdded ? 'disabled' : '']"> Add Stock</button>
 
@@ -334,15 +334,15 @@
                     </div>
                     <div class="col-4" *ngIf="closeTrade">
                         <label class="col-form-label pt-0">Return</label>
-                        <h6 class="input_text">
+                        <h6 class="col-form-value">
                             {{(stockEntry.quantity && stockEntry.closePrice) ? (stockEntry.quantity *
                             (stockEntry.closePrice - stockEntry.price) * (stockEntry.actionType == 2 ? -1 :
                             1)).toFixed(2) : 0}}
                         </h6>
                     </div>
 
-                    <div class="col-4">
-                        <span class="trade-edit" (click)="editStock(element)">
+                    <div class="col-4 d-flex align-items-center">
+                        <span class="trade-edit" *ngIf="!closeTrade && !viewTrade" (click)="editStock(element)">
                             Edit
                         </span>
                         <span class="ml-2"
@@ -384,20 +384,44 @@
                         <label class="col-form-label pt-0">Entry Price</label>
                         <div class="col-form-value">{{option.price}}</div>
                     </div>
-                    
                 </div>
                 <div class="row pt-2 align-items-end">
-                    <div class="offset-4 col-8">
-                        <span class="trade-edit" (click)="editOptionLeg(index)">
-                            Edit
+                    <div class="col-4">
+                        <label class="col-form-label pt-0">Cost</label>
+                        <div class="col-form-value">{{(stockOptions[index].contracts && stockOptions[index].price) ?
+                            (stockOptions[index].contracts * (stockOptions[index].price * 100) *
+                            (stockOptions[index].actionType == 2 ? -1 : 1)).toFixed(2) : 0}}</div>
+                    </div>
+                    <div class="col-8 d-flex align-items-center">
+                        <span class="trade-edit" *ngIf="!closeTrade && !viewTrade" (click)="editOptionLeg(index)">
+                            <mat-icon class="mat-icon-sm">edit</mat-icon>
                         </span>
 
-                        <span class="cursor"
+                        <span class="cursor ml-3"
                             *ngIf="addTrade || tradeStatus == 4 || (editTrade && stockOptions[index].contracts == 0 || !stockOptions[index].id || stockOptions[index].id == 0)"
                             (click)="deleteStockOption(index)">
                             <mat-icon class="mat-icon-sm mr-2">
                                 delete</mat-icon>
                         </span>
+                    </div>
+                </div>
+                <div class="row pt-2 align-items-start" *ngIf="closeTrade">
+                    <div class="col-4" >
+                        <label class="col-form-label pt-0">Exit Price <span class="text-danger">*</span></label>
+                        <div class="col-form-value">
+                            <input type="number" pattern="^\d*(\.\d{0,2})?$" step="0.01" min="0" (change)="checkForDecimalValidation($event)"
+                        class="form-control cards-input" placeholder=""
+                        [(ngModel)]="stockOptions[index].closePrice" />
+                        </div>
+                    </div>
+                    <div class="col-4" *ngIf="closeTrade">
+                        <label class="col-form-label pt-0">Return</label>
+                        <h6 class="col-form-value">
+                            {{(stockOptions[index].contracts && stockOptions[index].closePrice) ?
+                                (stockOptions[index].contracts * ((stockOptions[index].closePrice -
+                                stockOptions[index].price) * 100) * (stockOptions[index].actionType == 2 ?
+                                -1 : 1)).toFixed(2) : 0}}
+                        </h6>
                     </div>
                 </div>
             </ng-container>
@@ -408,7 +432,7 @@
                 <h3 *ngIf="editStockForm">Edit Stock</h3>
                 <div class="mb-2">
                     <label class="col-form-label pt-0">Action</label>
-                    <div class="mb-2">
+                    <div class="mb-2 form-stock-value">
                         <span class="mr-3">
                             <input type="radio" name="inputState" value="1" [(ngModel)]="stockEntry.actionType"
                                 class="radio" /> Buy to Open
@@ -438,7 +462,7 @@
                 <div class="d-flex justify-content-between mt-3 w-100">
                     <div *ngIf="!closeTrade">
                         <label class="col-form-label pt-0">Cost</label>
-                        <h6>
+                        <h6 class="form-stock-value">
                             {{(stockEntry.quantity && stockEntry.price) ? (stockEntry.quantity * stockEntry.price *
                             (stockEntry.actionType == 2 ? -1 : 1)).toFixed(2) : 0}}
                         </h6>
@@ -482,7 +506,7 @@
                     <h3 *ngIf="editOptionForm">Edit Option</h3>
                     <div class="mb-2">
                         <label class="col-form-label pt-0">Action</label>
-                        <div class="mb-2">
+                        <div class="mb-2 form-stock-value">
                             <span class="mr-3">
                                 <input type="radio" value="1" [(ngModel)]="optionGroup.actionType" class="radio"> Buy to
                                 Open
@@ -493,13 +517,13 @@
                             </span>
                         </div>
                     </div>
-                    <div class="d-flex justify-content-between mb-2">
-                        <div class="mr-3">
+                    <div class="row mb-2">
+                        <div class="col-6">
                             <label class="col-form-label pt-0">Contracts</label>
                             <input type="number" min="0" class="form-control" placeholder=""
                                 [(ngModel)]="optionGroup.contracts" />
                         </div>
-                        <div>
+                        <div class="col-6">
                             <label class="col-form-label pt-0">Expiration</label>
                             <div class="datepicker-group">
                                 <input matInput [matDatepicker]="expireDate" (click)="expireDate.open()" id="expireDate"
@@ -508,17 +532,16 @@
                                 <mat-datepicker #expireDate></mat-datepicker>
                             </div>
                         </div>
-
                     </div>
                     <div class="row mb-2">
-                        <div class="col-6 pr-1">
+                        <div class="col-6">
                             <label class="col-form-label pt-0">Strike</label>
                             <input type="number" pattern="^\d*(\.\d{0,2})?$" step="0.01" min="0"
                                 class="form-control cards-input" placeholder="" [(ngModel)]="optionGroup.strikePrice" />
                         </div>
                         <div class="col-6">
                             <label class="col-form-label pt-0">Call/Put</label>
-                            <div class="mb-2">
+                            <div class="mb-2 form-stock-value">
                                 <span class="mr-3">
                                     <input type="radio" name="optionType" value="1"
                                         [(ngModel)]="optionGroup.optionType" /> Call
@@ -530,16 +553,16 @@
                             </div>
                         </div>
                     </div>
-                    <div class="d-flex justify-content-between mb-2">
-                        <div class="mr-3">
+                    <div class="row mb-2">
+                        <div class="col-6">
                             <label class="col-form-label pt-0">Entry Price</label>
                             <input type="number" (change)="preventNegatives($event, true)" pattern="^\d*(\.\d{0,2})?$"
                                 (change)="checkForDecimalValidation($event)" step="0.01" min="0" class="form-control"
                                 placeholder="" [(ngModel)]="optionGroup.price" />
                         </div>
-                        <div>
+                        <div class="col-6">
                             <label class="col-form-label pt-0">Cost</label>
-                            <h6>
+                            <h6 class="form-stock-value">
                                 {{(optionGroup.contracts && optionGroup.closePrice) ?
                                 (optionGroup.contracts * ((optionGroup.closePrice -
                                 optionGroup.price) * 100) * (optionGroup.actionType == 2 ?
