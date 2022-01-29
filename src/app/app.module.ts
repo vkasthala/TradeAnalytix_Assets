@@ -35,8 +35,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
-
-
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
   return localStorageSync({ keys: [globalConfigFeatureKey], rehydrate: true })(reducer);
 }

@@ -8,6 +8,7 @@ import { MAT_MOMENT_DATE_ADAPTER_OPTIONS, MomentDateAdapter } from '@angular/mat
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
+import { AgGridModule } from 'ag-grid-angular';
 import { ChartModule } from 'angular-highcharts';
 import { CompareStrategiesChartComponent } from '../compare-strategies/components/compare-strategies-chart/compare-strategies-chart.component';
 import { CompareStrategiesComponent } from '../compare-strategies/components/compare-strategies.component';
@@ -113,6 +114,7 @@ import { TodayExecutedLegsComponent } from '../trade-plan/components/today-execu
 import { TradePlansCanDeactivateGuard } from '../trade-plan/components/trade-plans.can-deactivate.guard';
 import { TradePlansComponent } from '../trade-plan/components/trade-plans.component';
 import { ViewTradePlanComponent } from '../trade-plan/components/view-trade-plan.component';
+import { BulkUpdateUiComponent } from '../trade-strategies/components/bulk-update-ui/bulk-update-ui.component';
 import { DraftTradesGrid } from '../trade-strategies/components/draft-trades-grid/draft-trades-grid.component';
 import { HistoryGrid } from '../trade-strategies/components/history-grid/history-grid.component';
 import { PortfolioGrid } from '../trade-strategies/components/portfolio-grid/portfolio-grid.component';
@@ -242,7 +244,8 @@ export const MY_FORMATS = {
     TradingRulesComponent,
     HelpReportsComponent,
     HelpDataSetupComponent,
-    SliderModalComponent
+    SliderModalComponent,
+    BulkUpdateUiComponent
   ],
   imports: [
     FormsModule,
@@ -260,7 +263,8 @@ export const MY_FORMATS = {
     MatListModule,
     MatCheckboxModule,
     MatRadioModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    AgGridModule.withComponents([BulkUpdateUiComponent]),
     // MatTableDataSource,
   ],
   entryComponents: [
@@ -290,7 +294,8 @@ export const MY_FORMATS = {
     ReportsRulesComponent,
     StrategySelectionComponent,
     EditableSelectComponent,
-    SliderModalComponent
+    SliderModalComponent,
+    BulkUpdateUiComponent
   ],
   // bootstrap: [TradeStrategiesGrid],
   providers: [

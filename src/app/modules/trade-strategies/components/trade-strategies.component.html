@@ -13,6 +13,7 @@
             <div>
                 <button routerLink="/new-trade" class="add-new btn btn-apply d-inline-flex align-items-center"><span
                         class="add-icon mr-2">+</span> Add Trade</button>
+                <button class="add-new btn btn-apply d-inline-flex align-items-center mx-2" (click)="bulkUpdate()">Bulk Update</button>
                 <span class="cursor ml-2" (click)="strategiesFilter()">
                     <span *ngIf="!showFilters" class="text-blue text-sm" data-toggle="tooltip" data-placement="top"
                         title="Show Filters">Show Filters</span>

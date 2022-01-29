@@ -13,11 +13,13 @@ import { HistoryGrid } from './history-grid/history-grid.component';
 import { TradeStatus } from '../../shared/models/trade-management/trade-status.enum';
 import { TradeDirection } from '../../shared/models/trade-management/trade-direction.enum';
 import { TradeSearchComponent } from '../../trade-management/components/add-trade/Steps/search-trade/trade-search.component';
-import {FormGroup, FormControl} from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 import { TradeStrategyGridService } from '../services/trade-strategy-grid.service';
 import { SummaryItem } from '../../shared/models/reports/summary-item.model';
 import { SummaryRequest } from '../../shared/models/reports/summary-request.model';
 import { ReportDataService } from '../../reports/services/report-data.service';
+import { MatDialog } from '@angular/material';
+import { BulkUpdateUiComponent } from './bulk-update-ui/bulk-update-ui.component';
 
 @Component({
    selector: 'app-trade-strategies',
@@ -35,13 +37,13 @@ export class TradeStrategiesComponent implements OnInit {
    strategiesGridPage: StrategiesGridPage = new StrategiesGridPage();
    strategiesGridSort: StrategiesGridSort = new StrategiesGridSort();
 
-   isOpenPositions: boolean=true;
+   isOpenPositions: boolean = true;
    expandIndex: any;
    showDetailsIndex: any;
-   strategyLabel: boolean=true;
-   statusLabel: boolean=true;
-   showFilters: boolean=false;
-   showSearchFilter: boolean=false;
+   strategyLabel: boolean = true;
+   statusLabel: boolean = true;
+   showFilters: boolean = false;
+   showSearchFilter: boolean = false;
 
 
    summaryItems: SummaryItem[] = [];
@@ -55,7 +57,7 @@ export class TradeStrategiesComponent implements OnInit {
    range = new FormGroup({
       start: new FormControl(),
       end: new FormControl()
-    });
+   });
    strategies = StrategyType;
    strategyTypes: String[] = this.strategyCreateService.getStrategies();
 
@@ -66,21 +68,22 @@ export class TradeStrategiesComponent implements OnInit {
    tradeDirectionNames: String[] = this.strategyCreateService.getTradeDirections();
 
    constructor(
-      private router: Router, 
+      private router: Router,
       private strategyCreateService: StrategyCreateService,
       private tradeStrategyGridService: TradeStrategyGridService,
-      private reportDataService: ReportDataService
+      private reportDataService: ReportDataService,
+      private _dialog: MatDialog
    ) { }
 
    ngOnInit() {
       this.loadSummary();
    }
 
-   loadSummary(){
+   loadSummary() {
       let request: SummaryRequest = new SummaryRequest();
       request.summaryType = 'user_trade_summary';
       this.reportDataService.getReportSummary(request).subscribe(result => {
-         if(result){
+         if (result) {
             this.summaryItems = result;
          }
       });
@@ -146,28 +149,28 @@ export class TradeStrategiesComponent implements OnInit {
       this.draftTradesGrid.reload(this.strategiesGridFilter);
    }
 
-   onOptionsSelected(event){
+   onOptionsSelected(event) {
       let value = event.target.value;
-      if(value !== ''){
-         if(event.target.name == 'strategy'){
+      if (value !== '') {
+         if (event.target.name == 'strategy') {
             this.strategyLabel = false;
-         }else{
+         } else {
             this.statusLabel = false;
          }
       }
    }
 
-   strategiesFilter(){
+   strategiesFilter() {
       this.showFilters = !this.showFilters;
    }
-   searchFilter(){
+   searchFilter() {
       this.showSearchFilter = !this.showSearchFilter;
    }
 
    ngAfterViewInit() {
-      
+
    }
-  
+
    selectionChange(event) {
       let stepLabel = event.selectedStep.label
       if (stepLabel === "Open Positions") {
@@ -175,5 +178,14 @@ export class TradeStrategiesComponent implements OnInit {
       } else {
          this.isOpenPositions = false
       }
+   }
+
+   bulkUpdate() {
+      this._dialog.open(BulkUpdateUiComponent, {
+         disableClose: false,
+         width: 'auto',
+         height: 'auto',
+         data: {}
+      });
    }
 }
