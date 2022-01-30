@@ -2,7 +2,7 @@
     <div class="main-body">
         <ng-container [ngSwitch]="currentState">
             <ng-container *ngSwitchCase="1">
-                <div class="addnew-first p-3">
+                <div class="addnew-first">
                     <div class="trade-form">
                         <mat-icon class="trade-form-icon ml-0">compare_arrows</mat-icon>
                         <h2 class="pb-2 symbol-heading">Strategy Comparison</h2>
@@ -199,7 +199,7 @@
 <div class="compare-strategies-mobile">
     <ng-container [ngSwitch]="currentState">
         <ng-container *ngSwitchCase="1">
-            <div class="addnew-first p-3">
+            <div class="addnew-first">
                 <div class="trade-form">
                     <mat-icon class="trade-form-icon ml-0">compare_arrows</mat-icon>
                     <h2 class="pb-2 symbol-heading">Strategy Comparison</h2>
@@ -227,10 +227,8 @@
 
             <!-- {{strategiesList.length}} -->
             <div class="addnew-second" *ngIf="strategiesList.length == 0">
-                <div class="d-flex align-items-center justify-content-between">
-                    <span class="col-form-label p-0">No strategies exist for the symbol" and provide</span>
-                    <a class="btn btn-outline-primary ml-3" (click)="navigateToAddTrade()">Create Strategy</a>
-                </div>
+                <div class="col-form-label pb-2">No strategies exist for the symbol" and provide</div>
+                <a class="btn btn-outline-primary" (click)="navigateToAddTrade()">Create Strategy</a>
             </div>
             <div *ngIf="strategiesList.length > 0">
                 <mat-accordion class="example-headers-align" multi="true">

@@ -851,11 +851,14 @@ a.btn.btn-skip {
 }
 
 .mat-expansion-panel-header-title {
-    color: #3A4C85;
     font-family: "Poppins", sans-serif !important;
     font-weight: 600;
     font-size: 15px;
-    line-height: 24px;
+    line-height: 20px;
+    color: #3A4C85;
+    @media #{$extra-small} {
+        font-size: 14px;
+    }
 }
 
 .mat-icon {
@@ -917,7 +920,13 @@ a.btn.btn-skip {
         padding: 15px;
         display: block;
     }
-    
+    .trade-actions {
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 27px;
+        display: flex;
+        justify-content: space-between;
+    }
     .symbol-heading {
         color: #242E3A;
         font-weight: 600;
@@ -959,7 +968,7 @@ a.btn.btn-skip {
     }
     .col-form-value {
         font-weight: 600;
-        font-size: 13px;
+        font-size: 14px;
         line-height: 21px;
         color: #3A4C85;
     }
@@ -1018,8 +1027,10 @@ a.btn.btn-skip {
         margin: 0;
     }
     .col-form-label {
-        font-size: 14px !important;
-        font-weight: 300;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 1;
+        color: #3A4C85;
     }
     .risk-tabs-table {
         display: block;
