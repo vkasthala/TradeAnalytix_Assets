@@ -115,6 +115,7 @@ import { TradePlansCanDeactivateGuard } from '../trade-plan/components/trade-pla
 import { TradePlansComponent } from '../trade-plan/components/trade-plans.component';
 import { ViewTradePlanComponent } from '../trade-plan/components/view-trade-plan.component';
 import { BulkUpdateUiComponent } from '../trade-strategies/components/bulk-update-ui/bulk-update-ui.component';
+import { SourceEditorComponent } from '../trade-strategies/components/bulk-update-ui/source-editor/source-editor.component';
 import { DraftTradesGrid } from '../trade-strategies/components/draft-trades-grid/draft-trades-grid.component';
 import { HistoryGrid } from '../trade-strategies/components/history-grid/history-grid.component';
 import { PortfolioGrid } from '../trade-strategies/components/portfolio-grid/portfolio-grid.component';
@@ -245,7 +246,8 @@ export const MY_FORMATS = {
     HelpReportsComponent,
     HelpDataSetupComponent,
     SliderModalComponent,
-    BulkUpdateUiComponent
+    BulkUpdateUiComponent,
+    SourceEditorComponent
   ],
   imports: [
     FormsModule,
@@ -295,7 +297,8 @@ export const MY_FORMATS = {
     StrategySelectionComponent,
     EditableSelectComponent,
     SliderModalComponent,
-    BulkUpdateUiComponent
+    BulkUpdateUiComponent,
+    SourceEditorComponent
   ],
   // bootstrap: [TradeStrategiesGrid],
   providers: [
