@@ -1,15 +1,14 @@
-import { AfterViewInit, Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
-import { AgEditorComponent } from 'ag-grid-angular';
+import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { ICellEditorParams } from 'ag-grid-community';
 import { UserMetadataStoreService } from 'src/app/modules/shared/services/user-metadata-store.service';
 
 @Component({
-  selector: 'editor-cell',
+  selector: 'app-technical-indicator-editor',
   template: `<select class="form-control select-input" id="inputState" (change)="onChange($event)" [(ngModel)]="selectedId">
-      <option *ngFor="let key of metadataStoreService.sources" [value]="key.id" [label]="key.name"></option>
-  </select>`,
+  <option *ngFor="let key of metadataStoreService.technicalIndicators" [value]="key.id" [label]="key.name"></option>
+</select>`,
 })
-export class SourceEditorComponent implements OnInit, AgEditorComponent, AfterViewInit {
+export class TechnicalIndicatorEditorComponent implements OnInit {
 
   selectedId: number;
   params: ICellEditorParams;
@@ -28,11 +27,11 @@ export class SourceEditorComponent implements OnInit, AgEditorComponent, AfterVi
 
   agInit(params: ICellEditorParams): void {
     this.params = params;
-    this.selectedId = this.params ? this.params.data.sourceId : undefined;
+    this.selectedId = this.params ? this.params.data.technicalIndicatorId : undefined;
   }
 
   getValue() {
-    return this.params.data.source;
+    return this.params.data.technicalIndicator;
   }
 
   isPopup?(): boolean {
@@ -40,8 +39,8 @@ export class SourceEditorComponent implements OnInit, AgEditorComponent, AfterVi
   }
 
   onChange($event) {
-    this.params.data.source = this.metadataStoreService.sources[$event.target.selectedIndex].name;
-    this.params.data.sourceId = this.metadataStoreService.sources[$event.target.selectedIndex].id;
+    this.params.data.technicalIndicator = this.metadataStoreService.technicalIndicators[$event.target.selectedIndex].name;
+    this.params.data.technicalIndicatorId = this.metadataStoreService.technicalIndicators[$event.target.selectedIndex].id;
   }
 
 }

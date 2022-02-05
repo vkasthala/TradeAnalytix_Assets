@@ -10,6 +10,7 @@ import { UserTag } from '../models/user-tag.model';
 export class UserTagService {
 
   tags: Map<number, UserTag> = new Map();
+  tagsList: UserTag[] = [];
 
   constructor(private httpService: HttpService) {
     // Load tags on startup
@@ -19,6 +20,7 @@ export class UserTagService {
   loadTags() {
     this.httpService.get<UserTag[]>(environment.apiUrl + "/user-tags").subscribe(result => {
       this.tags.clear();
+      this.tagsList = result;
       result.map(tag => this.tags.set(tag.id, tag));
     });
   }

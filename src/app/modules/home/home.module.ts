@@ -115,7 +115,14 @@ import { TradePlansCanDeactivateGuard } from '../trade-plan/components/trade-pla
 import { TradePlansComponent } from '../trade-plan/components/trade-plans.component';
 import { ViewTradePlanComponent } from '../trade-plan/components/view-trade-plan.component';
 import { BulkUpdateUiComponent } from '../trade-strategies/components/bulk-update-ui/bulk-update-ui.component';
+import { CloseEventEditorComponent } from '../trade-strategies/components/bulk-update-ui/close-event-editor/close-event-editor.component';
+import { CloseSourceEditorComponent } from '../trade-strategies/components/bulk-update-ui/close-source-editor/close-source-editor.component';
+import { ContrarianEditorComponent } from '../trade-strategies/components/bulk-update-ui/contrarian-editor/contrarian-editor.component';
+import { DirectionEditorComponent } from '../trade-strategies/components/bulk-update-ui/direction-editor/direction-editor.component';
+import { EventEditorComponent } from '../trade-strategies/components/bulk-update-ui/event-editor/event-editor.component';
+import { MindsetEditorComponent } from '../trade-strategies/components/bulk-update-ui/mindset-editor/mindset-editor.component';
 import { SourceEditorComponent } from '../trade-strategies/components/bulk-update-ui/source-editor/source-editor.component';
+import { TechnicalIndicatorEditorComponent } from '../trade-strategies/components/bulk-update-ui/technical-indicator-editor/technical-indicator-editor.component';
 import { DraftTradesGrid } from '../trade-strategies/components/draft-trades-grid/draft-trades-grid.component';
 import { HistoryGrid } from '../trade-strategies/components/history-grid/history-grid.component';
 import { PortfolioGrid } from '../trade-strategies/components/portfolio-grid/portfolio-grid.component';
@@ -247,7 +254,14 @@ export const MY_FORMATS = {
     HelpDataSetupComponent,
     SliderModalComponent,
     BulkUpdateUiComponent,
-    SourceEditorComponent
+    SourceEditorComponent,
+    TechnicalIndicatorEditorComponent,
+    MindsetEditorComponent,
+    EventEditorComponent,
+    CloseSourceEditorComponent,
+    CloseEventEditorComponent,
+    DirectionEditorComponent,
+    ContrarianEditorComponent
   ],
   imports: [
     FormsModule,
@@ -298,7 +312,14 @@ export const MY_FORMATS = {
     EditableSelectComponent,
     SliderModalComponent,
     BulkUpdateUiComponent,
-    SourceEditorComponent
+    SourceEditorComponent,
+    TechnicalIndicatorEditorComponent,
+    MindsetEditorComponent,
+    EventEditorComponent,
+    CloseSourceEditorComponent,
+    CloseEventEditorComponent,
+    DirectionEditorComponent,
+    ContrarianEditorComponent
   ],
   // bootstrap: [TradeStrategiesGrid],
   providers: [

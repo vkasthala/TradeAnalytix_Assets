@@ -14,6 +14,7 @@ import { GenerateChartPopupComponent } from './generate-chart-popup/generate-cha
 import { DataSetupService } from 'src/app/modules/settings/services/data-setup.service';
 import { EditableListItem } from 'src/app/modules/shared/models/common/editable-list-item.model';
 import { ToastrService } from 'ngx-toastr';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-trade-thesis',
