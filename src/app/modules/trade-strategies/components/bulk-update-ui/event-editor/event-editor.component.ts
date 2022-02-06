@@ -35,12 +35,13 @@ export class EventEditorComponent implements OnInit {
   }
 
   isPopup?(): boolean {
-    return true;
+    return false;
   }
 
   onChange($event) {
     this.params.data.event = this.metadataStoreService.events[$event.target.selectedIndex].name;
     this.params.data.eventId = this.metadataStoreService.events[$event.target.selectedIndex].id;
+    this.params.data.dirty = true;
   }
 
 }

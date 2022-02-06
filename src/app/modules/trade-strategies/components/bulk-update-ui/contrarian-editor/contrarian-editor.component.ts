@@ -35,11 +35,12 @@ export class ContrarianEditorComponent implements OnInit {
   }
 
   isPopup?(): boolean {
-    return true;
+    return false;
   }
 
   onChange($event) {
     this.params.data.contrarian = this.metadataStoreService.contrarian[$event.target.selectedIndex].name;
     this.params.data.contrarianId = this.metadataStoreService.contrarian[$event.target.selectedIndex].id;
+    this.params.data.dirty = true;
   }
 }

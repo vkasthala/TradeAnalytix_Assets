@@ -35,12 +35,13 @@ export class MindsetEditorComponent implements OnInit {
   }
 
   isPopup?(): boolean {
-    return true;
+    return false;
   }
 
   onChange($event) {
     this.params.data.mindset = this.metadataStoreService.mindsets[$event.target.selectedIndex].name;
     this.params.data.mindsetId = this.metadataStoreService.mindsets[$event.target.selectedIndex].id;
+    this.params.data.dirty = true;
   }
 
 }

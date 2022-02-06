@@ -36,12 +36,13 @@ export class SourceEditorComponent implements OnInit, AgEditorComponent, AfterVi
   }
 
   isPopup?(): boolean {
-    return true;
+    return false;
   }
 
   onChange($event) {
     this.params.data.source = this.metadataStoreService.sources[$event.target.selectedIndex].name;
     this.params.data.sourceId = this.metadataStoreService.sources[$event.target.selectedIndex].id;
+    this.params.data.dirty = true;
   }
 
 }

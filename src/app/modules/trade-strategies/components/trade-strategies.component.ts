@@ -181,10 +181,16 @@ export class TradeStrategiesComponent implements OnInit {
    }
 
    bulkUpdate() {
-      this._dialog.open(BulkUpdateUiComponent, {
+      const dialogRef = this._dialog.open(BulkUpdateUiComponent, {
          width: 'auto',
          height: 'auto',
          data: {}
+      });
+      dialogRef.afterClosed().subscribe(dialogResult => {
+         if (dialogResult == true) {
+            // Reload
+            this.applyFilters();
+         }
       });
    }
 }
