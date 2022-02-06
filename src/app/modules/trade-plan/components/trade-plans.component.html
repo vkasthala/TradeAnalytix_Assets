@@ -109,13 +109,14 @@
     <div class="px-3 d-flex align-items-center justify-content-between">
         <div class="page-heading">Trade Plan</div>
         <div class="d-flex">
+            <span class="ml-1">
+                <mat-icon class="cursor material-icons" routerLink="/add-new-trade-plan">add</mat-icon>
+            </span>
+           
             <span class="cursor ml-2" (click)="strategiesFilter()" data-toggle="tooltip" data-placement="top" title="Show Filters"><img src="../../../../assets/images/filter.png" alt="" height="18" /></span>
         </div>
     </div>
-    <div class="py-2 px-3">
-        <button routerLink="/add-new-trade-plan" class="btn add-new d-flex align-items-center"><span
-                class="add-icon mr-2">+</span> New Plan</button>
-    </div>
+    
     <div class="filters-slide" [ngClass]="showFilters ? 'open' : ''">
         <div class="trade-top-heading">
             <h3>
@@ -131,7 +132,7 @@
             </div>
         </div>
     </div>
-    <div class="trade-plan-table p-2">
+    <div class="trade-plan-table px-2">
         <!-- Grid row -->
         <div class="trade-plan-mobile-grid">
             <div class="row mb-1 pl-3">
@@ -147,12 +148,12 @@
                                 'keyboard_arrow_right'}}</i>
                         </span> {{element.day | date: 'dd-MMM-yyyy'}}
                     </div>
-                    <div class="col-5">{{element.marketStatus}}</div>
+                    <div class="col-5 mobile-grid-cell-value">{{element.marketStatus}}</div>
 
                 </div>
                 <div *ngIf="hideRuleContent[i]" class="pl-3">
                     <div class="row py-1">
-                        <div class="col-7 pl-4 cell-header font-weight-normal">
+                        <div class="col-7 pl-4 cell-header">
                             Prediction
                         </div>
                         <div class="col-5">
@@ -160,7 +161,7 @@
                         </div>
                     </div>
                     <div class="row py-1">
-                        <div class="col-7 pl-4 cell-header font-weight-normal">
+                        <div class="col-7 pl-4 cell-header">
                             Planned Trades
                         </div>
                         <div class="col-5">
@@ -168,7 +169,7 @@
                         </div>
                     </div>
                     <div class="row py-1">
-                        <div class="col-7 pl-4 cell-header font-weight-normal">
+                        <div class="col-7 pl-4 cell-header">
                             Aligned
                         </div>
                         <div class="col-5">
@@ -176,7 +177,7 @@
                         </div>
                     </div>
                     <div class="row py-1">
-                        <div class="col-7 pl-4 cell-header font-weight-normal">
+                        <div class="col-7 pl-4 cell-header">
                             Self-Review
                         </div>
                         <div class="col-5">
@@ -184,7 +185,7 @@
                         </div>
                     </div>
                     <div class="row py-1">
-                        <div class="col-7 pl-4 cell-header font-weight-normal">
+                        <div class="col-7 pl-4 cell-header">
                             Trades
                         </div>
                         <div class="col-5 text-success">
@@ -195,19 +196,18 @@
                         <div class="col-7 pl-4">
                             Return
                         </div>
-                        <div class="col-5 text-danger font-weight-normal">
+                        <div class="col-5 text-danger">
                             {{element.returnAmount}}
                         </div>
                     </div>
                     <div class="row py-1">
-                        <div class="col-7 pl-4 cell-header font-weight-normal">
+                        <div class="col-7 pl-4 cell-header">
                             Mindset
                         </div>
                         <div class="col-5 text-danger">
                             {{element.mindsetType}}
                         </div>
                     </div>
-
 
                     <div class="py-1 grid-bottom">
                         <button type="button" class="btn mobile-grid-btn trade-edit">

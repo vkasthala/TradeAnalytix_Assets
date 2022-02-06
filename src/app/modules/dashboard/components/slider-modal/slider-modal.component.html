@@ -1,13 +1,13 @@
-<div class="compare-popup">
+<div class="compare-popup" *ngIf="currentInd == 0">
     <div class="compare-pop-inner">
         <div class="slider-header">
-            <img class="slider-logo-sm" src="../../../../../assets/images/TA_logo_sm.jpg" />
-            <h3 class="slider-title">{{data[currentInd].title}}</h3>
+            <!-- <h3 class="slider-title">{{data[currentInd].title}}</h3> -->
+            <h3 class="slider-title">Welcome {{userName}}</h3>
             <span class="right-close" (click)="closeModal()">
                 <mat-icon>clear</mat-icon>
             </span>
         </div>
-        <div class="main-pop-inner pb-1">
+        <div class="main-pop-inner">
             <!-- <div class="slider-description" [innerHTML]="data[currentInd].description"></div> 
             <p *ngIf="data[currentInd].imgUrl"><img class="slider-img" src="{{data[currentInd].imgUrl}}" /></p> -->
            
@@ -18,7 +18,7 @@
                 <!-- <div class="slider-description mb-3 py-3">
                     Most of the people investing or trading actively in the financial markets end up on the losing side mainly due to indiscipline.
                 </div> -->
-                <iframe width="720" height="400" src="https://www.youtube.com/embed/42FLXxQa4H4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <!-- <iframe width="720" height="400" src="https://www.youtube.com/embed/42FLXxQa4H4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
             </div>
 
             <!-- <div *ngIf="currentInd == 1">
@@ -96,17 +96,297 @@
             
         </div>
 
-        <!-- <div class="modal-footer py-1 justify-content-between d-block">
-            <span class="float-left" *ngIf="currentInd > 0">
+        <div class="modal-footer py-1 justify-content-center">
+            <!-- <span class="float-left" *ngIf="currentInd > 0">
                 <button type="button" class="btn btn-back" (click)="priviousSlide()">Back</button>
+            </span> -->
+            <button type="button" class="btn btn-next" (click)="nextSlide()">Start tour</button>
+            <button type="button" class="btn btn-white" (click)="closeModal()">Close</button>
+        </div>
+    </div>
+</div>
+
+<div class="compare-popup guided-tour-modal1" *ngIf="currentInd == 1">
+    <div class="compare-pop-inner">
+        <div class="slider-header">
+            <h3 class="slider-title">What is TradeAnalytix?</h3>
+            <span class="right-close" (click)="closeModal()">
+                <mat-icon>clear</mat-icon>
             </span>
-            <span class="float-right" *ngIf="currentInd !== (data.length -1)">
-                <button type="button" class="btn btn-next" (click)="nextSlide()">Next</button>
+        </div>
+        <div class="main-pop-inner">
+            <div class="slider-description mb-1">
+                TradeAnalytix addresses the root causes of indiscipline in trading by offering the following benefits
+            </div>
+            <div class="slider-description mb-3 py-3">
+                Most of the people investing or trading actively in the financial markets end up on the losing side mainly due to indiscipline.
+            </div>
+        </div>
+
+        <div class="modal-footer py-1 justify-content-center">
+            <button type="button" class="btn btn-white" (click)="priviousSlide()">Previous</button>
+            <button type="button" class="btn btn-next" (click)="nextSlide()">Next</button>
+        </div>
+    </div>
+</div>
+
+<div class="compare-popup guided-tour-modal1" *ngIf="currentInd == 2">
+    <div class="compare-pop-inner">
+        <div class="slider-header">
+            <h3 class="slider-title">TradeAnalytix as a Trade Planner</h3>
+            <span class="right-close" (click)="closeModal()">
+                <mat-icon>clear</mat-icon>
             </span>
-            <span class="float-right" *ngIf="currentInd !== (data.length -1)">
-                <button type="button" class="btn btn-next" (click)="closeModal()">Close</button>
+        </div>
+        <div class="main-pop-inner">
+            <div class="slider-description mb-1">
+                Adopt a systematic approach to investing or trading by recording your trades in detail with a comprehensive trading journal.
+            </div>
+        </div>
+
+        <div class="modal-footer py-1 justify-content-center">
+            <button type="button" class="btn btn-white" (click)="priviousSlide()">Previous</button>
+            <button type="button" class="btn btn-next" (click)="nextSlide()">Next</button>
+        </div>
+    </div>
+</div>
+<div class="compare-popup guided-tour-modal1" *ngIf="currentInd == 3">
+    <div class="compare-pop-inner">
+        <div class="slider-header">
+            <h3 class="slider-title">TradeAnalytix as a Trade Journal</h3>
+            <span class="right-close" (click)="closeModal()">
+                <mat-icon>clear</mat-icon>
             </span>
-            
-        </div> -->
+        </div>
+        <div class="main-pop-inner">
+            <div class="slider-description mb-1">
+                Add your trades in bulk to TradeAnalytix by importing trade history files exported from your brokerage or by filling in our standard template with your trades and uploading it.
+            </div>
+        </div>
+
+        <div class="modal-footer py-1 justify-content-center">
+            <button type="button" class="btn btn-white" (click)="priviousSlide()">Previous</button>
+            <button type="button" class="btn btn-next" (click)="nextSlide()">Next</button>
+        </div>
+    </div>
+</div>
+<div class="compare-popup top-pointer-modal demo-tour-slider" *ngIf="currentInd == 4">
+    <div class="compare-pop-inner">
+        <div class="slider-header">
+            <h3 class="slider-title">Demo Mode</h3>
+            <span class="right-close" (click)="closeModal()">
+                <mat-icon>clear</mat-icon>
+            </span>
+        </div>
+        <div class="main-pop-inner">
+            <div class="slider-description mb-1">
+                Prepare for the day ahead with a meticulous trade plan, which makes you think objectively about the market and your positions without getting influenced by the price movements.
+            </div>
+        </div>
+
+        <div class="modal-footer py-1 justify-content-center">
+            <button type="button" class="btn btn-white" (click)="priviousSlide()">Previous</button>
+            <button type="button" class="btn btn-next" (click)="nextSlide()">Next</button>
+        </div>
+    </div>
+</div>
+<div class="compare-popup left-pointer-modal add-trade-slider" *ngIf="currentInd == 5">
+    <div class="compare-pop-inner">
+        <div class="slider-header">
+            <h3 class="slider-title">Add Trade</h3>
+            <span class="right-close" (click)="closeModal()">
+                <mat-icon>clear</mat-icon>
+            </span>
+        </div>
+        <div class="main-pop-inner">
+            <div class="slider-description mb-1">
+                Adopt a systematic approach to trading by recording your trades in detail with a comprehensive trade journal and align your trades with self-set trading rules.
+            </div>
+        </div>
+
+        <div class="modal-footer py-1 justify-content-center">
+            <button type="button" class="btn btn-white" (click)="priviousSlide()">Previous</button>
+            <button type="button" class="btn btn-next" (click)="nextSlide()">Next</button>
+        </div>
+    </div>
+</div>
+<div class="compare-popup left-pointer-modal import-trade-slider" *ngIf="currentInd == 6">
+    <div class="compare-pop-inner">
+        <div class="slider-header">
+            <h3 class="slider-title">Import Trades</h3>
+            <span class="right-close" (click)="closeModal()">
+                <mat-icon>clear</mat-icon>
+            </span>
+        </div>
+        <div class="main-pop-inner">
+            <div class="slider-description mb-1">
+                Adopt a systematic approach to trading by recording your trades in detail with a comprehensive trade journal and align your trades with self-set trading rules.
+            </div>
+        </div>
+
+        <div class="modal-footer py-1 justify-content-center">
+            <button type="button" class="btn btn-white" (click)="priviousSlide()">Previous</button>
+            <button type="button" class="btn btn-next" (click)="nextSlide()">Next</button>
+        </div>
+    </div>
+</div>
+<div class="compare-popup left-pointer-modal risk-analysis-slider" *ngIf="currentInd == 7">
+    <div class="compare-pop-inner">
+        <div class="slider-header">
+            <h3 class="slider-title">Risk Analysis</h3>
+            <span class="right-close" (click)="closeModal()">
+                <mat-icon>clear</mat-icon>
+            </span>
+        </div>
+        <div class="main-pop-inner">
+            <div class="slider-description mb-1">
+                Adopt a systematic approach to trading by recording your trades in detail with a comprehensive trade journal and align your trades with self-set trading rules.
+            </div>
+        </div>
+
+        <div class="modal-footer py-1 justify-content-center">
+            <button type="button" class="btn btn-white" (click)="priviousSlide()">Previous</button>
+            <button type="button" class="btn btn-next" (click)="nextSlide()">Next</button>
+        </div>
+    </div>
+</div>
+<div class="compare-popup left-pointer-modal strategy-comparison-slider" *ngIf="currentInd == 8">
+    <div class="compare-pop-inner">
+        <div class="slider-header">
+            <h3 class="slider-title">Strategy Comparison</h3>
+            <span class="right-close" (click)="closeModal()">
+                <mat-icon>clear</mat-icon>
+            </span>
+        </div>
+        <div class="main-pop-inner">
+            <div class="slider-description mb-1">
+                Adopt a systematic approach to trading by recording your trades in detail with a comprehensive trade journal and align your trades with self-set trading rules.
+            </div>
+        </div>
+
+        <div class="modal-footer py-1 justify-content-center">
+            <button type="button" class="btn btn-white" (click)="priviousSlide()">Previous</button>
+            <button type="button" class="btn btn-next" (click)="nextSlide()">Next</button>
+        </div>
+    </div>
+</div>
+<div class="compare-popup left-pointer-modal trade-plane-slider" *ngIf="currentInd == 9">
+    <div class="compare-pop-inner">
+        <div class="slider-header">
+            <h3 class="slider-title">Trade Plan</h3>
+            <span class="right-close" (click)="closeModal()">
+                <mat-icon>clear</mat-icon>
+            </span>
+        </div>
+        <div class="main-pop-inner">
+            <div class="slider-description mb-1">
+                Adopt a systematic approach to trading by recording your trades in detail with a comprehensive trade journal and align your trades with self-set trading rules.
+            </div>
+        </div>
+
+        <div class="modal-footer py-1 justify-content-center">
+            <button type="button" class="btn btn-white" (click)="priviousSlide()">Previous</button>
+            <button type="button" class="btn btn-next" (click)="nextSlide()">Next</button>
+        </div>
+    </div>
+</div>
+<div class="compare-popup left-pointer-modal reports-slider" *ngIf="currentInd == 10">
+    <div class="compare-pop-inner">
+        <div class="slider-header">
+            <h3 class="slider-title">Reports and Metrics</h3>
+            <span class="right-close" (click)="closeModal()">
+                <mat-icon>clear</mat-icon>
+            </span>
+        </div>
+        <div class="main-pop-inner">
+            <div class="slider-description mb-1">
+                Adopt a systematic approach to trading by recording your trades in detail with a comprehensive trade journal and align your trades with self-set trading rules.
+            </div>
+        </div>
+
+        <div class="modal-footer py-1 justify-content-center">
+            <button type="button" class="btn btn-white" (click)="priviousSlide()">Previous</button>
+            <button type="button" class="btn btn-next" (click)="nextSlide()">Next</button>
+        </div>
+    </div>
+</div>
+<div class="compare-popup left-pointer-modal trading-rules-slider" *ngIf="currentInd == 11">
+    <div class="compare-pop-inner">
+        <div class="slider-header">
+            <h3 class="slider-title">Trading Rules</h3>
+            <span class="right-close" (click)="closeModal()">
+                <mat-icon>clear</mat-icon>
+            </span>
+        </div>
+        <div class="main-pop-inner">
+            <div class="slider-description mb-1">
+                Adopt a systematic approach to trading by recording your trades in detail with a comprehensive trade journal and align your trades with self-set trading rules.
+            </div>
+        </div>
+
+        <div class="modal-footer py-1 justify-content-center">
+            <button type="button" class="btn btn-white" (click)="priviousSlide()">Previous</button>
+            <button type="button" class="btn btn-next" (click)="nextSlide()">Next</button>
+        </div>
+    </div>
+</div>
+<div class="compare-popup top-pointer-modal notifications-slider" *ngIf="currentInd == 12">
+    <div class="compare-pop-inner">
+        <div class="slider-header">
+            <h3 class="slider-title">Notifications</h3>
+            <span class="right-close" (click)="closeModal()">
+                <mat-icon>clear</mat-icon>
+            </span>
+        </div>
+        <div class="main-pop-inner">
+            <div class="slider-description mb-1">
+                Adopt a systematic approach to trading by recording your trades in detail with a comprehensive trade journal and align your trades with self-set trading rules.
+            </div>
+        </div>
+
+        <div class="modal-footer py-1 justify-content-center">
+            <button type="button" class="btn btn-white" (click)="priviousSlide()">Previous</button>
+            <button type="button" class="btn btn-next" (click)="nextSlide()">Next</button>
+        </div>
+    </div>
+</div>
+<div class="compare-popup top-pointer-modal data-setup-slider" *ngIf="currentInd == 13">
+    <div class="compare-pop-inner">
+        <div class="slider-header">
+            <h3 class="slider-title">Data Setup</h3>
+            <span class="right-close" (click)="closeModal()">
+                <mat-icon>clear</mat-icon>
+            </span>
+        </div>
+        <div class="main-pop-inner">
+            <div class="slider-description mb-1">
+                Adopt a systematic approach to trading by recording your trades in detail with a comprehensive trade journal and align your trades with self-set trading rules.
+            </div>
+        </div>
+
+        <div class="modal-footer py-1 justify-content-center">
+            <button type="button" class="btn btn-white" (click)="priviousSlide()">Previous</button>
+            <button type="button" class="btn btn-next" (click)="nextSlide()">Next</button>
+        </div>
+    </div>
+</div>
+<div class="compare-popup top-pointer-modal help-slider" *ngIf="currentInd == 14">
+    <div class="compare-pop-inner">
+        <div class="slider-header">
+            <h3 class="slider-title">Help</h3>
+            <span class="right-close" (click)="closeModal()">
+                <mat-icon>clear</mat-icon>
+            </span>
+        </div>
+        <div class="main-pop-inner">
+            <div class="slider-description mb-1">
+                Adopt a systematic approach to trading by recording your trades in detail with a comprehensive trade journal and align your trades with self-set trading rules.
+            </div>
+        </div>
+
+        <div class="modal-footer py-1 justify-content-center">
+            <button type="button" class="btn btn-white" (click)="priviousSlide()">Previous</button>
+            <button type="button" class="btn btn-white" (click)="closeModal()">Close</button>
+        </div>
     </div>
 </div>

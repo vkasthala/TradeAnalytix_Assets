@@ -23,7 +23,7 @@
             <ng-container *ngSwitchCase="2">
                 <!-- {{strategiesList.length}} -->
                 <app-trade-details-header [addTrade]="add" [selectedStock]="selectedStock" [stockSummary]="stockSummary" (loadMoreStats)="loadMoreStatsHandler($event)"></app-trade-details-header>
-                <div class="addnew-second" *ngIf="strategiesList.length == 0">
+                <div class="addnew-second px-3" *ngIf="strategiesList.length == 0">
                     <div class="d-flex align-items-center justify-content-between">
                         <span class="col-form-label p-0">No strategies exist for the symbol" and provide</span>
                         <a class="btn btn-outline-primary ml-3" (click)="navigateToAddTrade()">Create Strategy</a>
@@ -114,23 +114,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!--<div class="col-6">
-                                    <div class="d-flex justify-content-end align-items-center mt-3">
-                                        <div class="k-font-bold d-flex justify-content-end" *ngIf="maxRiskDetails">
-                                            <div class="risk_details risk_profit mr-3">
-                                                <div class="pr-3">Maximum Proﬁt is when the stock is up <span>{{maxRiskDetails.maxProfitChange}}</span>% Maximum
-                                                </div>
-                                                <span class="risk_details_count">{{maxRiskDetails.maxProfit}}</span>
-                                            </div>
-                                            <div class="risk_details risk_lose">
-                                                <div class="pr-3">Risk is when the stock is down <span>{{maxRiskDetails.maxRiskChange}}</span>%
-                                                </div>
-                                                <span class="risk_details_count">{{maxRiskDetails.maxRisk}}</span>
-                                            </div>
-                                        </div>
-                                        <button class="col-3 btn btn-enter ml-3" (click)="calculateMaxRisk()">Max Profit/Risk</button>
-                                    </div>
-                                </div>-->
+                                    
                                 </div>
 
 
@@ -219,7 +203,7 @@
 
         <ng-container *ngSwitchCase="2">
             <div class="trade-actions d-flex justify-content-between mb-2">
-                <span class="text-danger" (click)="cancelCompareStrategy()">CANCEL</span>
+                <span class="text-danger" (click)="cancelCompareStrategy()">Cancel</span>
                 <span class="text-primary">Strategy</span>
 
                 <a class="text-primary" *ngIf="showCompareResult" (click)="analyzeRisk = true; submitStrategies();">Analyze</a>
@@ -242,7 +226,7 @@
                             <div class="trade-stoack-main" #tradeCards>
                                 <div class="row">
                                     <div class="col-4">
-                                        <label class="col-form-label pt-0">Symbol</label>
+                                        <label class="col-symbol-label pt-0">Symbol</label>
                                     </div>
                                     <div class="col-8 text-right col-form-value">
                                         {{ selectedStock.code}}
@@ -251,13 +235,13 @@
                                 <ng-container *ngFor="let item of strategiesList;let index = index">
                                     <div class="row py-2">
                                         <div class="col-5 d-flex align-items-start">
-                                            <label class="col-form-label">Strategy-{{index+1}} </label>
+                                            <label class="col-symbol-label">Strategy-{{index+1}} </label>
                                             <mat-icon class="mat-icon-sm mat-icon-edit ml-2" (click)="StrategyDetailsModal(index)">info</mat-icon>
                                         </div>
                                         <div class="col-5 col-form-value">
                                             {{ item.uid }} 
                                         </div>
-                                        <div class="col-2 pl-0">
+                                        <div class="col-2">
                                             <span class="cursor" (click)="editStrategyItem(index)">
                                                 <mat-icon class="mat-icon-sm mat-icon-edit">edit</mat-icon>
                                             </span>

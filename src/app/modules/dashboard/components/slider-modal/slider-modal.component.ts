@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { UserService } from 'src/app/modules/shared/services/user.service';
 
 @Component({
   selector: 'app-slider-modal',
@@ -9,6 +10,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 export class SliderModalComponent implements OnInit {
   currentInd: number = 0;
   title: string;
+  userName: string = '';
   public data: any = [
     {
       title:"Welcome to TradeAnalytix",
@@ -33,12 +35,21 @@ export class SliderModalComponent implements OnInit {
     }
   ];
   constructor(
-    public dialogRef: MatDialogRef<SliderModalComponent>, 
+    public dialogRef: MatDialogRef<SliderModalComponent>,
+    private userService: UserService,
   ) {
     //this.title = data.title;
   }
 
   ngOnInit() {
+  }
+
+  ngAfterViewInit(): void {
+    this.userService.getUserDetails().subscribe(details => {
+      if (details && details.name) {
+        this.userName = details.name;
+      }
+    });
   }
 
   closeModal() {
@@ -49,7 +60,7 @@ export class SliderModalComponent implements OnInit {
     this.currentInd--;
   }
   nextSlide() {
-    if (this.currentInd === (this.data.length - 1)) {
+    if (this.currentInd === 14) {
       this.currentInd = 0;
     } else {
       this.currentInd++;

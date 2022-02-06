@@ -318,7 +318,7 @@
                         <div class="col-form-value">{{stockEntry.price}}</div>
                     </div>
                 </div>
-                <div class="row pt-3 align-items-end">
+                <div class="row pt-3">
                     <div class="col-4" *ngIf="!closeTrade">
                         <label class="col-form-label pt-0">Cost</label>
                         <div class="col-form-value">
@@ -341,11 +341,11 @@
                         </h6>
                     </div>
 
-                    <div class="col-4 d-flex align-items-center">
+                    <div class="col-4 d-flex align-items-end">
                         <span class="trade-edit" *ngIf="!closeTrade && !viewTrade" (click)="editStock(element)">
-                            Edit
+                            <mat-icon class="mat-icon-edit">edit</mat-icon>
                         </span>
-                        <span class="ml-2"
+                        <span class="ml-2 d-flex align-items-center"
                             *ngIf="addTrade || tradeStatus == 4 || (editTrade && (StockPosition != undefined && StockPosition.quantity !== undefined && StockPosition.quantity == 0 ))">
                             <span class="trade-delete" (click)="deleteStock()">
                                 <mat-icon>delete</mat-icon>
@@ -385,22 +385,22 @@
                         <div class="col-form-value">{{option.price}}</div>
                     </div>
                 </div>
-                <div class="row pt-2 align-items-end">
+                <div class="row pt-2 align-items-center">
                     <div class="col-4">
                         <label class="col-form-label pt-0">Cost</label>
                         <div class="col-form-value">{{(stockOptions[index].contracts && stockOptions[index].price) ?
                             (stockOptions[index].contracts * (stockOptions[index].price * 100) *
                             (stockOptions[index].actionType == 2 ? -1 : 1)).toFixed(2) : 0}}</div>
                     </div>
-                    <div class="col-8 d-flex align-items-center">
+                    <div class="col-8 d-flex align-items-end">
                         <span class="trade-edit" *ngIf="!closeTrade && !viewTrade" (click)="editOptionLeg(index)">
-                            <mat-icon class="mat-icon-sm">edit</mat-icon>
+                            <mat-icon class="mat-icon-sm mat-icon-edit">edit</mat-icon>
                         </span>
 
-                        <span class="cursor ml-3"
+                        <span class="cursor ml-2 d-flex align-items-center"
                             *ngIf="addTrade || tradeStatus == 4 || (editTrade && stockOptions[index].contracts == 0 || !stockOptions[index].id || stockOptions[index].id == 0)"
                             (click)="deleteStockOption(index)">
-                            <mat-icon class="mat-icon-sm mr-2">
+                            <mat-icon class="mat-icon-sm">
                                 delete</mat-icon>
                         </span>
                     </div>
@@ -462,7 +462,7 @@
                 <div class="d-flex justify-content-between mt-3 w-100">
                     <div *ngIf="!closeTrade">
                         <label class="col-form-label pt-0">Cost</label>
-                        <h6 class="form-stock-value">
+                        <h6 class="form-stock-value mt-1">
                             {{(stockEntry.quantity && stockEntry.price) ? (stockEntry.quantity * stockEntry.price *
                             (stockEntry.actionType == 2 ? -1 : 1)).toFixed(2) : 0}}
                         </h6>
@@ -541,7 +541,7 @@
                         </div>
                         <div class="col-6">
                             <label class="col-form-label pt-0">Call/Put</label>
-                            <div class="mb-2 form-stock-value">
+                            <div class="mt-1 form-stock-value">
                                 <span class="mr-3">
                                     <input type="radio" name="optionType" value="1"
                                         [(ngModel)]="optionGroup.optionType" /> Call
@@ -562,7 +562,7 @@
                         </div>
                         <div class="col-6">
                             <label class="col-form-label pt-0">Cost</label>
-                            <h6 class="form-stock-value">
+                            <h6 class="form-stock-value mt-1">
                                 {{(optionGroup.contracts && optionGroup.closePrice) ?
                                 (optionGroup.contracts * ((optionGroup.closePrice -
                                 optionGroup.price) * 100) * (optionGroup.actionType == 2 ?

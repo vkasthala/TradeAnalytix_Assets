@@ -1009,6 +1009,9 @@ a.btn.btn-skip {
     
 }
 @media #{$extra-small} {
+    .mat-icon-edit {
+        line-height: 16px;
+    }
     .form-stock-sec {
         background: #FFFFFF;
         box-shadow: 0px 4px 16px rgb(157 157 157 / 10%);
@@ -1057,7 +1060,7 @@ a.btn.btn-skip {
     .trade-delete {
         font-weight: 500;
         font-size: 16px;
-        line-height: 24px;
+        line-height:14px;
         color: #3A4C85;
         cursor: pointer;
     }

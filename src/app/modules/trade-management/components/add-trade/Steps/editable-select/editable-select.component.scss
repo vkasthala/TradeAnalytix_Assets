@@ -11,6 +11,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    @media #{$extra-small} {
+      height: inherit;
+      top: 10%;
+      bottom: auto;
+    }
   }
   
   .exit-thesis-pop-inner{
@@ -24,6 +29,9 @@
     padding: 0;
     box-shadow: 0px 15px 45px #7d7d7d;
     font-size: 14px;
+    @media #{$extra-small} {
+      width: 90%;
+    }
   }
   
   .pop-top-heading{

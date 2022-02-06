@@ -374,16 +374,26 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
     padding: 1rem;
     font-size: 16px;
     .cell-header {
-        font-weight: 600;
+        font-weight: 500;
     }
     .mobile-grid-row {
         border-bottom: 1px solid rgb(157 166 186 / 30%);
     }
     .mobile-grid-cell {
         display: inline-flex;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+        color: #3B5065;
         .material-icons {
             color: #2285FA;
         }
+    }
+    .mobile-grid-cell-value {
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 24px;
+        color: #3B5065;
     }
 }
 
