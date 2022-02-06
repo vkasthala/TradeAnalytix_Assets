@@ -35,11 +35,12 @@ export class CloseEventEditorComponent implements OnInit {
   }
 
   isPopup?(): boolean {
-    return true;
+    return false;
   }
 
   onChange($event) {
     this.params.data.closeEvent = this.metadataStoreService.events[$event.target.selectedIndex].name;
     this.params.data.closeEventId = this.metadataStoreService.events[$event.target.selectedIndex].id;
+    this.params.data.dirty = true;
   }
 }

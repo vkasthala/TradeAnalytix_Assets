@@ -121,6 +121,7 @@ import { ContrarianEditorComponent } from '../trade-strategies/components/bulk-u
 import { DirectionEditorComponent } from '../trade-strategies/components/bulk-update-ui/direction-editor/direction-editor.component';
 import { EventEditorComponent } from '../trade-strategies/components/bulk-update-ui/event-editor/event-editor.component';
 import { MindsetEditorComponent } from '../trade-strategies/components/bulk-update-ui/mindset-editor/mindset-editor.component';
+import { PlannedEditorComponent } from '../trade-strategies/components/bulk-update-ui/planned-editor/planned-editor.component';
 import { SourceEditorComponent } from '../trade-strategies/components/bulk-update-ui/source-editor/source-editor.component';
 import { TechnicalIndicatorEditorComponent } from '../trade-strategies/components/bulk-update-ui/technical-indicator-editor/technical-indicator-editor.component';
 import { DraftTradesGrid } from '../trade-strategies/components/draft-trades-grid/draft-trades-grid.component';
@@ -261,7 +262,8 @@ export const MY_FORMATS = {
     CloseSourceEditorComponent,
     CloseEventEditorComponent,
     DirectionEditorComponent,
-    ContrarianEditorComponent
+    ContrarianEditorComponent,
+    PlannedEditorComponent
   ],
   imports: [
     FormsModule,
@@ -319,7 +321,8 @@ export const MY_FORMATS = {
     CloseSourceEditorComponent,
     CloseEventEditorComponent,
     DirectionEditorComponent,
-    ContrarianEditorComponent
+    ContrarianEditorComponent,
+    PlannedEditorComponent
   ],
   // bootstrap: [TradeStrategiesGrid],
   providers: [

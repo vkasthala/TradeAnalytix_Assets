@@ -35,12 +35,13 @@ export class TechnicalIndicatorEditorComponent implements OnInit {
   }
 
   isPopup?(): boolean {
-    return true;
+    return false;
   }
 
   onChange($event) {
     this.params.data.technicalIndicator = this.metadataStoreService.technicalIndicators[$event.target.selectedIndex].name;
     this.params.data.technicalIndicatorId = this.metadataStoreService.technicalIndicators[$event.target.selectedIndex].id;
+    this.params.data.dirty = true;
   }
 
 }

@@ -35,12 +35,13 @@ export class CloseSourceEditorComponent implements OnInit {
   }
 
   isPopup?(): boolean {
-    return true;
+    return false;
   }
 
   onChange($event) {
     this.params.data.closeSource = this.metadataStoreService.sources[$event.target.selectedIndex].name;
     this.params.data.closeSourceId = this.metadataStoreService.sources[$event.target.selectedIndex].id;
+    this.params.data.dirty = true;
   }
 
 }

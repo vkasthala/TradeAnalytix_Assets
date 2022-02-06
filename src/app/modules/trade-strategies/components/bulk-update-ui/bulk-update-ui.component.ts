@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { ColDef, ICellEditorParams } from 'ag-grid-community';
+import { ToastrService } from 'ngx-toastr';
 import { SourceType } from 'src/app/modules/trade-management/models/source-type.model';
 import { BulkStrategyUpdateModel } from '../../models/bulk-strategy-update-model.model';
 import { TradeStrategyGridService } from '../../services/trade-strategy-grid.service';
@@ -10,6 +11,7 @@ import { ContrarianEditorComponent } from './contrarian-editor/contrarian-editor
 import { DirectionEditorComponent } from './direction-editor/direction-editor.component';
 import { EventEditorComponent } from './event-editor/event-editor.component';
 import { MindsetEditorComponent } from './mindset-editor/mindset-editor.component';
+import { PlannedEditorComponent } from './planned-editor/planned-editor.component';
 import { SourceEditorComponent } from './source-editor/source-editor.component';
 import { TechnicalIndicatorEditorComponent } from './technical-indicator-editor/technical-indicator-editor.component';
 
@@ -29,9 +31,8 @@ export class BulkUpdateUiComponent implements OnInit {
 
   private frameworkComponents;
 
-
   constructor(public dialogRef: MatDialogRef<BulkUpdateUiComponent>,
-    @Inject(MAT_DIALOG_DATA) data, private tradeStrategyGridService: TradeStrategyGridService) { }
+    @Inject(MAT_DIALOG_DATA) data, private tradeStrategyGridService: TradeStrategyGridService, private toastr: ToastrService) { }
 
   ngOnInit() {
     this.frameworkComponents = {
@@ -42,7 +43,8 @@ export class BulkUpdateUiComponent implements OnInit {
       closeSourceEditor: CloseSourceEditorComponent,
       closeEventEditor: CloseEventEditorComponent,
       directionEditor: DirectionEditorComponent,
-      contrarianEditor: ContrarianEditorComponent
+      contrarianEditor: ContrarianEditorComponent,
+      plannedEditor: PlannedEditorComponent
     };
     this.initColumnDefns();
     this.tradeStrategyGridService.loadTradeStrategiesForBulkUpdate().subscribe(result => {
@@ -66,18 +68,39 @@ export class BulkUpdateUiComponent implements OnInit {
       { field: 'direction', headerName: 'Direction', editable: true, cellEditor: 'directionEditor' },
       { field: 'technicalIndicator', headerName: 'Technical Indicator', editable: true, cellEditor: 'technicalIndicatorEditor' },
       { field: 'event', headerName: 'Events', editable: true, cellEditor: 'eventEditor' },
-      { field: 'planned', headerName: 'Planned Trade', editable: true },
+      {
+        field: 'planned', headerName: 'Planned Trade', editable: true, cellEditor: 'plannedEditor', cellRenderer: prms => {
+          if (!prms.data.tradeType) {
+            return "";
+          }
+          return prms.data.tradeType === 'planned' ? 'Yes' : 'No';
+        }
+      },
       { field: 'mindset', headerName: 'Mindset', editable: true, cellEditor: 'mindsetEditor' },
       { field: 'closeSource', headerName: 'Trigger for Closure', editable: true, cellEditor: 'closeSourceEditor' },
       { field: 'closeReason', headerName: 'Reason for Closure', editable: true },
       { field: 'closeEvent', headerName: 'Gain or loss attributed to', editable: true, cellEditor: 'closeEventEditor' },
-      { field: 'lessons', headerName: 'Lessons learnt', editable: true }
+      { field: 'closeLesson', headerName: 'Lessons learnt', editable: true }
     ];
+  }
+
+  onSave() {
+    const changedStrategies: BulkStrategyUpdateModel[] = this.strategies.filter(str => str.dirty === true);
+    console.log('changed: ', changedStrategies);
+    this.tradeStrategyGridService.saveBulkUpdateData(changedStrategies).subscribe(result => {
+      this.toastr.success('Successfully updated ' + changedStrategies.length + ' strategies', 'Success');
+      this.closeModal();
+    }, err => {
+      this.toastr.error('Failed to update strategies', 'Error');
+    })
   }
 
   closeModal() {
     this.dialogRef.close();
   }
 
+  onCallValueDataChange($event) {
+    $event.data.dirty = true;
+  }
 
 }

@@ -8,9 +8,10 @@ import { CloseSourceEditorComponent } from './components/bulk-update-ui/close-so
 import { CloseEventEditorComponent } from './components/bulk-update-ui/close-event-editor/close-event-editor.component';
 import { DirectionEditorComponent } from './components/bulk-update-ui/direction-editor/direction-editor.component';
 import { ContrarianEditorComponent } from './components/bulk-update-ui/contrarian-editor/contrarian-editor.component';
+import { PlannedEditorComponent } from './components/bulk-update-ui/planned-editor/planned-editor.component';
 
 @NgModule({
-  declarations: [SourceEditorComponent, TechnicalIndicatorEditorComponent, MindsetEditorComponent, EventEditorComponent, CloseSourceEditorComponent, CloseEventEditorComponent, DirectionEditorComponent, ContrarianEditorComponent],
+  declarations: [SourceEditorComponent, TechnicalIndicatorEditorComponent, MindsetEditorComponent, EventEditorComponent, CloseSourceEditorComponent, CloseEventEditorComponent, DirectionEditorComponent, ContrarianEditorComponent, PlannedEditorComponent],
   imports: [
     CommonModule
   ]

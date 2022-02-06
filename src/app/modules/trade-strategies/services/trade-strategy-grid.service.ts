@@ -26,4 +26,9 @@ export class TradeStrategyGridService {
     return this.httpService.get<BulkStrategyUpdateModel[]>(url);
   }
 
+  public saveBulkUpdateData(updatedRows: BulkStrategyUpdateModel[]) {
+    let url = this.apiUrl + '/trade-strategy/strategies-bulk-update';
+    return this.httpService.post<BulkStrategyUpdateModel[], void>(url, updatedRows);
+  }
+
 }

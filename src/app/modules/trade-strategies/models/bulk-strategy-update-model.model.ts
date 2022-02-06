@@ -38,4 +38,6 @@ export class BulkStrategyUpdateModel {
 
     closeLesson: string;
 
+    dirty: boolean;
+
 }
