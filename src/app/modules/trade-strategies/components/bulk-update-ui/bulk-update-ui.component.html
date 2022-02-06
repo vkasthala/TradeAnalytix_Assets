@@ -1,11 +1,16 @@
 <div>
     <ag-grid-angular class="ag-theme-alpine bulk-update-grid" [rowData]="strategies" [columnDefs]="columnDefs"
-        [frameworkComponents]="frameworkComponents" (cellValueChanged)= "onCallValueDataChange($event)">
+        [frameworkComponents]="frameworkComponents" (cellEditingStarted)="onCallValueDataChangeStart($event)"
+        (gridReady)="onGridReady($event)">
     </ag-grid-angular>
 
     <div class="footer">
         <button type="button" class="btn btn-add" (click)="onSave()">Save</button>
         <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+    </div>
+
+    <div class="mask" *ngIf="Loader">
+        <div class="loader"></div>
     </div>
 
 </div>

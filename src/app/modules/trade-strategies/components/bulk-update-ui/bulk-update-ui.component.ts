@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { ColDef, ICellEditorParams } from 'ag-grid-community';
 import { ToastrService } from 'ngx-toastr';
+import { UserTagService } from 'src/app/modules/settings/services/user-tag.service';
 import { SourceType } from 'src/app/modules/trade-management/models/source-type.model';
 import { BulkStrategyUpdateModel } from '../../models/bulk-strategy-update-model.model';
 import { TradeStrategyGridService } from '../../services/trade-strategy-grid.service';
@@ -24,15 +25,17 @@ export class BulkUpdateUiComponent implements OnInit {
 
   test: ICellEditorParams;
   strategies: BulkStrategyUpdateModel[] = [];
+  Loader: boolean = false;
 
   sourceTypes: SourceType[] = [];
 
   columnDefs: ColDef[] = [];
 
+  private gridApi;
   private frameworkComponents;
 
   constructor(public dialogRef: MatDialogRef<BulkUpdateUiComponent>,
-    @Inject(MAT_DIALOG_DATA) data, private tradeStrategyGridService: TradeStrategyGridService, private toastr: ToastrService) { }
+    @Inject(MAT_DIALOG_DATA) data, private tradeStrategyGridService: TradeStrategyGridService, private userTagService: UserTagService, private toastr: ToastrService) { }
 
   ngOnInit() {
     this.frameworkComponents = {
@@ -47,8 +50,13 @@ export class BulkUpdateUiComponent implements OnInit {
       plannedEditor: PlannedEditorComponent
     };
     this.initColumnDefns();
+    this.Loader = true;
     this.tradeStrategyGridService.loadTradeStrategiesForBulkUpdate().subscribe(result => {
+      this.Loader = false;
       this.strategies = result;
+    }, err => {
+      this.Loader = false;
+      this.toastr.error('Failed to load strategies', 'Error');
     });
   }
 
@@ -85,21 +93,30 @@ export class BulkUpdateUiComponent implements OnInit {
   }
 
   onSave() {
+    this.gridApi.stopEditing();
+    this.Loader = true;
     const changedStrategies: BulkStrategyUpdateModel[] = this.strategies.filter(str => str.dirty === true);
     console.log('changed: ', changedStrategies);
     this.tradeStrategyGridService.saveBulkUpdateData(changedStrategies).subscribe(result => {
+      this.Loader = false;
       this.toastr.success('Successfully updated ' + changedStrategies.length + ' strategies', 'Success');
-      this.closeModal();
+      this.userTagService.loadTags();
+      this.closeModal(true);
     }, err => {
+      this.Loader = false;
       this.toastr.error('Failed to update strategies', 'Error');
-    })
+    });
   }
 
-  closeModal() {
-    this.dialogRef.close();
+  closeModal(data) {
+    this.dialogRef.close(data);
   }
 
-  onCallValueDataChange($event) {
+  onGridReady(params) {
+    this.gridApi = params.api;
+  }
+
+  onCallValueDataChangeStart($event) {
     $event.data.dirty = true;
   }
 
