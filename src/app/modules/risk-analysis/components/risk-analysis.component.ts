@@ -520,6 +520,8 @@ export class RiskAnalysisComponent implements OnInit {
     let riskAnalysisRequest: RiskAnalysisRequest = new RiskAnalysisRequest();
     riskAnalysisRequest.stockPrice = this.stockEntry;
     riskAnalysisRequest.options = this.stockOptions;
+    riskAnalysisRequest.module = 'RISK_ANALYSIS';
+    riskAnalysisRequest.stockId = this.selectedStock.id;
 
     console.log('implied volatility request:', JSON.stringify(riskAnalysisRequest));
 
@@ -630,6 +632,7 @@ export class RiskAnalysisComponent implements OnInit {
     let riskAnalysisRequest: RiskAnalysisRequest = new RiskAnalysisRequest();
     riskAnalysisRequest.stockPrice = this.stockEntry;
     riskAnalysisRequest.options = this.stockOptions;
+    riskAnalysisRequest.module = 'RISK_ANALYSIS';
     return riskAnalysisRequest;
   }
 

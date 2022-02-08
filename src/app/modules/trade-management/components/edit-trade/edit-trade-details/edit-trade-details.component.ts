@@ -242,6 +242,7 @@ export class EditTradeDetailsComponent implements OnInit {
     let riskAnalysisRequest: RiskAnalysisRequest = new RiskAnalysisRequest();
     riskAnalysisRequest.stockPrice = this.stockEntry;
     riskAnalysisRequest.options = this.stockOptions;
+    riskAnalysisRequest.module = 'EDIT_TRADE';
 
     console.log('risk analysis request:', JSON.stringify(riskAnalysisRequest));
 

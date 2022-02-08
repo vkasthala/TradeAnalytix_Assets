@@ -7,4 +7,8 @@ export class RiskAnalysisRequest {
 
     options: OptionEntry[];
 
+    module: string;
+
+    stockId: number;
+
 }

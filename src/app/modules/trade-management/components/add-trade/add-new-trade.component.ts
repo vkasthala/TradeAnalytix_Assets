@@ -156,6 +156,8 @@ export class AddNewTradeComponent implements OnInit {
     let riskAnalysisRequest: RiskAnalysisRequest = new RiskAnalysisRequest();
     riskAnalysisRequest.stockPrice = this.tradeDetails.stockEntry;
     riskAnalysisRequest.options = this.tradeDetails.stockOptions;
+    riskAnalysisRequest.module = 'ADD_TRADE';
+    riskAnalysisRequest.stockId = this.selectedStock.id;
     return riskAnalysisRequest;
   }
 
