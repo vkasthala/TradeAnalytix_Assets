@@ -16,5 +16,6 @@
         </div>
         <div [chart]="chart" *ngIf = "report.id !== 'calendar_report'"></div>
         <app-calendar *ngIf="report.id === 'calendar_report'" #calendarReport></app-calendar>
+        <div class="lbl-report-nodata" *ngIf="noData === true">No data available</div>
     </div>
 </div>

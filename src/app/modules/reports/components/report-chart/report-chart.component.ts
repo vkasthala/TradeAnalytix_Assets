@@ -42,6 +42,8 @@ export class ReportChartComponent implements OnInit, AfterViewInit {
 
   monthFilter: boolean = false;
 
+  noData: boolean = true;
+
   constructor(protected reportRequestService: ReportRequestService, protected reportDataService: ReportDataService) { }
 
   ngAfterViewInit(): void {
@@ -108,15 +110,20 @@ export class ReportChartComponent implements OnInit, AfterViewInit {
 
     //Load Chart
     if (url) {
+      this.noData = false;
       this.reportDataService.getReportChart(url, request).subscribe(chartResult => {
         if (chartResult) {
+          this.noData = false;
           if (url.indexOf('calendarChart') > 0) {
             this.addHeatmapFormatter(chartResult);
           }
           console.log('chart result:', chartResult);
           this.chart = new Chart(chartResult);
         } else if (this.chart) {
+          this.noData = true;
           this.chart.destroy();
+        } else {
+          this.noData = true;
         }
       });
     }
