@@ -62,33 +62,33 @@ export class BulkUpdateUiComponent implements OnInit {
 
   initColumnDefns() {
     this.columnDefs = [
-      { field: 'uid', headerName: 'ID' },
-      { field: 'symbol', headerName: 'Symbol' },
-      { field: 'status', headerName: 'Status' },
-      { field: 'openDate', headerName: 'Open Date' },
-      { field: 'totalAmount', headerName: 'Total Amount' },
-      { field: 'tags', headerName: 'Tags', editable: true },
-      { field: 'source', headerName: 'Source', editable: true, cellEditor: 'sourceEditor' },
-      { field: 'reason', headerName: ' Reasons for the trade', editable: true },
-      { field: 'targetPrice', headerName: 'Target price', editable: true },
-      { field: 'targetCloseDate', headerName: 'Target Close Date', editable: true },
-      { field: 'contrarian', headerName: 'Contrarian Trade', editable: true, cellEditor: 'contrarianEditor' },
-      { field: 'direction', headerName: 'Direction', editable: true, cellEditor: 'directionEditor' },
-      { field: 'technicalIndicator', headerName: 'Technical Indicator', editable: true, cellEditor: 'technicalIndicatorEditor' },
-      { field: 'event', headerName: 'Events', editable: true, cellEditor: 'eventEditor' },
+      { field: 'uid', headerName: 'ID', resizable: true, width: 100, maxWidth: 100 },
+      { field: 'symbol', headerName: 'Symbol', resizable: true, width: 100, maxWidth: 100 },
+      { field: 'status', headerName: 'Status', resizable: true, width: 100, maxWidth: 100 },
+      { field: 'openDate', headerName: 'Open Date', resizable: true, width: 100, maxWidth: 100},
+      { field: 'totalAmount', headerName: 'Total Amount', resizable: true, width: 100, maxWidth: 100 },
+      { field: 'tags', headerName: 'Tags', editable: true, resizable: true, width: 120, maxWidth: 120 },
+      { field: 'source', headerName: 'Source', editable: true, cellEditor: 'sourceEditor', resizable: true, width: 100, maxWidth: 100 },
+      { field: 'reason', headerName: ' Reasons for the trade', editable: true, resizable: true, width: 120, maxWidth: 120 },
+      { field: 'targetPrice', headerName: 'Target price', editable: true, resizable: true, width: 110, maxWidth: 100 },
+      { field: 'targetCloseDate', headerName: 'Target Close Date', editable: true, resizable: true, width: 120, maxWidth: 120 },
+      { field: 'contrarian', headerName: 'Contrarian Trade', editable: true, cellEditor: 'contrarianEditor', resizable: true, width: 100, maxWidth: 100 },
+      { field: 'direction', headerName: 'Direction', editable: true, cellEditor: 'directionEditor', resizable: true, width: 100, maxWidth: 100 },
+      { field: 'technicalIndicator', headerName: 'Technical Indicator', resizable: true, editable: true, cellEditor: 'technicalIndicatorEditor', width: 120, maxWidth: 120 },
+      { field: 'event', headerName: 'Events', editable: true, cellEditor: 'eventEditor', resizable: true, width: 100, maxWidth: 100 },
       {
-        field: 'planned', headerName: 'Planned Trade', editable: true, cellEditor: 'plannedEditor', cellRenderer: prms => {
+        field: 'planned', headerName: 'Planned Trade', editable: true, resizable: true, width: 110, maxWidth: 110, cellEditor: 'plannedEditor', cellRenderer: prms => {
           if (!prms.data.tradeType) {
             return "";
           }
           return prms.data.tradeType === 'planned' ? 'Yes' : 'No';
         }
       },
-      { field: 'mindset', headerName: 'Mindset', editable: true, cellEditor: 'mindsetEditor' },
-      { field: 'closeSource', headerName: 'Trigger for Closure', editable: true, cellEditor: 'closeSourceEditor' },
-      { field: 'closeReason', headerName: 'Reason for Closure', editable: true },
-      { field: 'closeEvent', headerName: 'Gain or loss attributed to', editable: true, cellEditor: 'closeEventEditor' },
-      { field: 'closeLesson', headerName: 'Lessons learnt', editable: true }
+      { field: 'mindset', headerName: 'Mindset', editable: true, cellEditor: 'mindsetEditor', resizable: true, width: 120, maxWidth: 120},
+      { field: 'closeSource', headerName: 'Trigger for Closure', editable: true, cellEditor: 'closeSourceEditor', resizable: true, width: 150, maxWidth: 150},
+      { field: 'closeReason', headerName: 'Reason for Closure', editable: true, width: 200, maxWidth: 200},
+      { field: 'closeEvent', headerName: 'Gain or loss attributed to', editable: true, cellEditor: 'closeEventEditor', width: 300, maxWidth: 300},
+      { field: 'closeLesson', headerName: 'Lessons learnt', editable: true, width: 400, maxWidth: 400 }
     ];
   }
 
