@@ -6,49 +6,18 @@
                 <ul class="list-unstyled ">
 
                     <li>
+                        <a class="landing-nav-link" href="landing#howit_works">
+                            How it Works
+                        </a>
+                    </li>
+                    <li>
                         <a class="landing-nav-link" href="landing#trade_journal">
                             Benefits
-                            <!-- Benefits <mat-icon>keyboard_arrow_down</mat-icon> -->
                         </a>
                         <!-- <ul class="sub-menu">
                             <li [class.nav-active]="currentRoute == 'trade-journal'">
                                 <a [routerLink]="['/trade-journal']">
                                 Trade Journal 
-                                </a>
-                            </li>
-                            <li [class.nav-active]="currentRoute == 'bulk-import-trades'">
-                                <a [routerLink]="['/bulk-import-trades']">
-                                    Bulk-Import Trades 
-                                </a>
-                            </li>
-                            <li [class.nav-active]="currentRoute == 'bulk-import-trades'">
-                                <a [routerLink]="['/bulk-import-trades']">
-                                    Risk Analysis
-                                </a>
-                            </li>
-                            <li [class.nav-active]="currentRoute == 'bulk-import-trades'">
-                                <a [routerLink]="['/bulk-import-trades']">
-                                    Compare Strategies
-                                </a>
-                            </li>
-                            <li [class.nav-active]="currentRoute == 'bulk-import-trades'">
-                                <a [routerLink]="['/bulk-import-trades']">
-                                    Trade Plan 
-                                </a>
-                            </li>
-                            <li [class.nav-active]="currentRoute == 'set-entry'">
-                                <a [routerLink]="['/set-entry']">
-                                    Set Entry And Exit Rules
-                                </a>
-                            </li>
-                            <li [class.nav-active]="currentRoute == 'reports'">
-                                <a [routerLink]="['/reports']">
-                                    Reports
-                                </a>
-                            </li>
-                            <li [class.nav-active]="currentRoute == 'insights'">
-                                <a [routerLink]="['/insights']">
-                                    Insights
                                 </a>
                             </li>
                         </ul> -->
@@ -64,35 +33,19 @@
                             Use Cases
                         </a>
                     </li>
-                    <!-- <li [class.nav-active]="currentRoute == 'partners'">
-                        <a class="landing-nav-link" [routerLink]="['/partners']">
-                        Partners
-                        </a>
-                    </li>
-                    <li [class.nav-active]="currentRoute == 'resources'">
-                        <a class="landing-nav-link" [routerLink]="['/resources']">
-                            Resources
-                        </a>
-                    </li> -->
+                    
                     <li [class.nav-active]="currentRoute == 'reviews'">
                         <a class="landing-nav-link" [routerLink]="['/reviews']">
                             Reviews
                         </a>
                     </li>
-                    <!-- <li [class.nav-active]="currentRoute == 'help'">
-                        <a class="landing-nav-link" [routerLink]="['/help']">
-                            Help
-                        </a>
-                    </li> -->
+                   
                     <li [class.nav-active]="currentRoute == 'contact-us'">
                         <a class="landing-nav-link" [routerLink]="['/contact-us']">
                             Contact Us
                         </a>
                     </li>
                     <li>
-                        <!-- <button type="button" class="btn login-btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="openLoginModal()">
-                            Login
-                        </button> -->
                         <div class="google-btn" (click)="login('google')">
                             <div class="google-icon-wrapper">
                               <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
@@ -110,7 +63,7 @@
                 <div class="col-sm-3 col-md-5 d-flex align-items-center">
                     <div class="banner-info LeaderBoardTop">
                         <h1 class="banner-info-title">
-                            Boost your trading performance
+                            TradeAnalytix is a new age trade planner and journal for retail investors.
                             <!-- Improve Trading Performance by -->
                         </h1>
                         <div class="pt-3 slideFeatures">
@@ -121,7 +74,7 @@
                             <!-- Learning from your trade history -->
                         </div>
                         <div class="banner-info-footer">
-                            <a class="btn btn-white mr-3" href="landing#trade_journal">See Benefits</a>
+                            <a class="btn btn-white mr-3" href="landing#howit_works">How it Works?</a>
                             <button type="button" class="btn btn-outline" (click)="joinWaitlist()">Join Waitlist</button>
                         </div>
                     </div>
@@ -214,16 +167,22 @@
 
     <div class="main-body">
         <div class="container">
-            <!-- <div class="main-body-title">
-                Product Benefits
-            </div> -->
-            <!-- <div class="main-body-dec">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-            </div> -->
-            <div class="features_section" id="trade_journal">
-                <div class="features_section_title">Record your trades with a comprehensive trade journal</div>
+            
+            <div class="features_section" id="howit_works" style="height: 300px;">
+                <div class="features_section_title">How it Works?</div>
                 <div class="features_section_dec">
-                    Adopt a systematic approach to trading by recording your trades in detail with the reasoning,source of the idea, events around the trade, target price, target close date, mindset, technical indicator, supporting documents, etc.<a href="#" class="read_more">Read More</a>
+                    
+                </div>
+                <div class="features_section_banner">
+                    
+                </div>
+            </div>
+            <!-- end: Comprehensive trade journal -->
+
+            <div class="features_section" id="trade_journal">
+                <div class="features_section_title">Adopt a systematic approach to trading by journaling your trades</div>
+                <div class="features_section_dec">
+                    Add your trades individually to a configurable and template-based trade journal or import trade history files from your brokerage account to add trades in bulk. Update the journal details in bulk as well with an intuitive excel-like grid
                 </div>
                 <div class="features_section_banner">
                     <img src="../../../../assets/images/trade-thesis.png" alt="" />
@@ -232,45 +191,21 @@
             <!-- end: Comprehensive trade journal -->
 
             <div class="features_section">
-                <div class="features_section_title">Prepare for the day ahead with a meticulous trade plan</div>
+                <div class="features_section_title">Improve trading decisions through in-depth reports and metrics on your trade journal</div>
                 <div class="features_section_dec">
-                    A trade plan created before the market hours allows you to think objectively about the market without getting influenced by the price movements. Within a trade plan, one can record their perspective on the market and intended actions during the day. It can be updated after the market hours to check actual actions against the planned actions.<a href="#" class="read_more">Read More</a>
-                </div>
-            
-                <div class="features_section_banner">
-                    <img src="../../../../assets/images/trade-plan.png" alt="" />
-                </div>
-            </div>
-            <!-- end: Trade Plan -->
-
-            <div class="features_section">
-                <div class="features_section_title">Improve trading decisions through in-depth reports on trade history</div>
-                <div class="features_section_dec">
-                    Identify your strengths and weaknesses by reviewing reports and metrics derived from your trading journal and history. Reports are generated across different categories such as portfolio, performance, risk, discipline, trading rules, and goals. Build on your strengths by doing more of what worked in the past and avoiding the kind of trades that didn’t work.<a href="#" class="read_more">Read More</a>
+                    Identify your strengths and limitations by reviewing reports and metrics derived from your trading journal. Reports are generated across different categories such as portfolio, performance, risk, discipline, trading rules, and goals.
                 </div>
             
                 <div class="features_section_banner">
                     <img src="../../../../assets/images/reports.png" alt="" />
                 </div>
             </div>
-            <!-- end: features_section -->
-            
-            <div class="features_section">
-                <div class="features_section_title">Set trading rules and abide by them to avoid repeating the mistakes</div>
-                <div class="features_section_dec">
-                    Market volatility, ease of trading, and influx of trading ideas makes it difficult to be disciplined and influences one to take impromptu decisions. Rules feature allows you to set trading rules (manual and automatic) and trade as per these rules so that past mistakes can be avoided. Manual rules are the notes that you would like to be reminded of, while opening or closing positions. Automatic rules are the rules that trigger alerts or notifications when they are broken.<a href="#" class="read_more">Read More</a>
-                </div>
-                <div class="features_section_banner">
-                    <img src="../../../../assets/images/rules_thumb.PNG" alt="" />
-                </div>
-            </div>
-            <!-- end: features_section -->
-            
+            <!-- end: Improve trading decisions -->
 
             <div class="features_section">
-                <div class="features_section_title">Analyze risk of complex trades by simulating possible future scenarios</div>
+                <div class="features_section_title">Analyze risk of option trade strategies by simulating possible future scenarios</div>
                 <div class="features_section_dec">
-                    Analyze the potential returns on a trade strategy involving options at present and in the future while varying stock price, implied volatility, and days to expiration. Risk analysis feature allows you to modify the trade strategy and keep assessing its profitability until you arrive at a trade that is aligned with your risk appetite.<a href="#" class="read_more">Read More</a>
+                    Analyze the potential returns of option trade strategies in the future while varying stock price, implied volatility, and days to expiration. Keep updating the strategy and assessing its potential returns until you arrive at a trade that is aligned with your risk appetite.
                 </div>
                 <div class="features_section_banner">
                     <img src="../../../../assets/images/risk-analysis.png" alt="" />
@@ -281,13 +216,37 @@
             <div class="features_section">
                 <div class="features_section_title">Pick the right strategy that is aligned with your risk appetite</div>
                 <div class="features_section_dec">
-                    Let's say you are bullish on a stock. Do you know which bullish strategy on the stock works well for you within your risk appetite? Strategy Comparison feature allows you to compare up to five different strategies on a symbol and analyze their profitability in different scenarios so that you can pick a strategy that aligned with your risk appetite. <a href="#" class="read_more">Read More</a>
+                    Let's say you are bullish on a stock. Do you know which strategy works well for you within your risk appetite? Strategy comparison feature allows you to compare trade strategies on a stock to know their profitability in different scenarios so that you can pick a strategy that aligned with your risk appetite.
                 </div>
                 <div class="features_section_banner">
                     <img src="../../../../assets/images/strategy-comparison.png" alt="" />
                 </div>
             </div>
             <!-- end: Strategy comparison section -->
+
+            <div class="features_section">
+                <div class="features_section_title">Avoid repeating the same mistakes by abiding with self-set trading rules</div>
+                <div class="features_section_dec">
+                    Market volatility, ease of trading, and influx of trading ideas makes it difficult to be disciplined and influences one to take impromptu decisions. Trading Rules feature allows you to set manual or automatic rules and trade as per them to avoid past mistakes
+                </div>
+                <div class="features_section_banner">
+                    <img src="../../../../assets/images/rules_thumb.PNG" alt="" />
+                </div>
+            </div>
+            <!-- end: features_section -->
+
+            <div class="features_section">
+                <div class="features_section_title">Prepare for the day ahead with a meticulous trade plan</div>
+                <div class="features_section_dec">
+                    A trade plan created before the market hours allows you to think objectively about the market without getting influenced by the price movements. You can record your perspective on the market and intended actions during the day in a trade plan. It can be updated after the market hours to check actual actions against the planned actions
+                </div>
+            
+                <div class="features_section_banner">
+                    <img src="../../../../assets/images/trade-plan.png" alt="" />
+                </div>
+            </div>
+            <!-- end: Trade Plan -->
+            
 
             <div class="features_section">
                 <div class="features_section_title">Add your trades in bulk by importing trade history files from brokerages</div>
@@ -303,18 +262,17 @@
     </div>
     <!-- end: main-body -->
 
-    <div class="demo_video_section text-center">
+    <!-- <div class="demo_video_section text-center">
         <div class="container">
             <div class="demo_video_section_header pb-3">
                 <div class="demo_video_section-title">Watch the demo</div>
-                <!-- <div class="demo_video_section-dec">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div> -->
                 <div class="py-3"><img src="../../../../assets/images/down_arrow.png" alt="" class="img-responsive"></div>
             </div>
             <div class="video_container">
                 <iframe width="100%" height="500" src="https://www.youtube.com/embed/42FLXxQa4H4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
-    </div>
+    </div> -->
 </div>
 <nav class="mobile-bottom-nav">
     <ul>
@@ -348,7 +306,7 @@
 
     </ul>
 </nav>
-<div class="landing-footer">
+<div class="landing-footer py-3">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-sm-6">

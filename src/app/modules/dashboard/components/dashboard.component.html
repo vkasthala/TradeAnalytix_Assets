@@ -1,7 +1,7 @@
 <div class="px-2 dashboard">
     <div class="trade-dash-cards-web px-2">
         <div class="row mt-3">
-            <div class="col-sm-12 col-md-7 pr-0">
+            <div class="col-sm-12 col-md-6 pr-0">
                 <div class="card">
                     <div class="px-2">
                         <img src="../../../../assets/images/welcome.svg"/>
@@ -10,25 +10,27 @@
                         <div class="card-title">Welcome {{userName}}</div>
                         <!-- <button type="button" class="btn-get-started ml-2" (click)="showChecklist()" data-toggle="tooltip" data-placement="top"
                         title="Show Checklist">Get Started</button> -->
-                        <p>To get started lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                        <div class="card-bottom pt-2">
-                            <a href="#">Start tour</a>
+                        <!-- <p>To get started lorem Ipsum is simply dummy text of the printing and typesetting industry.</p> -->
+                        <div class="card-bottom pt-3">
+                            <span class="mr-3 cursor" (click)="showChecklist()">Start Tour</span>
+                            <a href="#" class="ml-3">Demo Mode</a>
                         </div>
                     </div>
                 </div>
                 
             </div>
-            <div class="col-sm-12 col-md-5">
+            <div class="col-sm-12 col-md-6">
                 <div class="card">
                     <div class="px-2">
                         <img src="../../../../assets/images/hand.svg"/>
                     </div>
                     <div class="pl-2">
-                        <div class="card-title">Get things moving by adding your data,</div>
-                        <div class="pt-3">
-                            <button type="button" class="btn card-btn" data-toggle="tooltip" data-placement="top" title="Add trade">Add trade</button>
-                            <button type="button" class="btn card-btn ml-2" data-toggle="tooltip" data-placement="top" title="Analyze Risk">Analyze Risk</button>
-                            <button type="button" class="btn card-btn ml-2" data-toggle="tooltip" data-placement="top" title="Compare Strategies">Compare Strategies</button>
+                        <div class="card-title">Get things moving with our popular features</div>
+                        <div class="pt-2">
+                            <button type="button" class="btn card-btn" data-toggle="tooltip" data-placement="top" title="Add trade">Add Trade</button>
+                            <button type="button" class="btn card-btn ml-3" data-toggle="tooltip" data-placement="top" title="Import Trades">Import Trades</button>
+                            <button type="button" class="btn card-btn ml-3" data-toggle="tooltip" data-placement="top" title="Analyze Risk">Analyze Risk</button>
+                            <button type="button" class="btn card-btn ml-3" data-toggle="tooltip" data-placement="top" title="Set Up Rules">Set Up Rules</button>
                         </div>
                     </div>
                     
@@ -64,6 +66,68 @@
                 </div>
             </div>
             <div class="col-sm-12 col-md-4">
+                <div class="trade-analytics">
+                    <div class="trade-headiang">
+                        <h5>Realized Return</h5>
+                    </div>
+                    <div class="dsh-img">
+                        <a routerLink="/reports" class="cursor">
+                        <app-realized-return-chart></app-realized-return-chart></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4">
+                <div class="trade-analytics">
+                    <div class="trade-headiang">
+                        <h5>Quick links</h5>
+                    </div>
+                    <div class="dsh-img list-group-card" style="height: 300px;">
+                        <div class="list-group-row row">
+                            <div class="col-8">
+                                Facing Issues with the platform?
+                            </div>
+                            <div class="list-group-bottom col-4 text-right">
+                                <a href="#">Report Now</a>
+                            </div>
+                        </div>
+                        <div class="list-group-row row">
+                            <div class="col-8">
+                                Would you like to suggest any new feature?
+                            </div>
+                            <div class="list-group-bottom col-4 text-right">
+                                <a href="#">Suggest Now</a>
+                            </div>
+                        </div>
+                        <div class="list-group-row row">
+                            <div class="col-8">
+                                10+2 reasons on why you should consider keeping a trading journal!
+                            </div>
+                            <div class="list-group-bottom col-4 text-right">
+                                <a href="https://www.forexlive.com/Education/!/102-reasons-on-why-you-should-consider-keeping-a-trading-journal-20210525" target="_blank">Visit Link</a>
+                            </div>
+                        </div>
+                        <div class="list-group-row row">
+                            <div class="col-8">
+                                10 Benefits of Using a Trading Journal
+                            </div>
+                            <div class="list-group-bottom col-4 text-right">
+                                <a href="https://therobusttrader.com/10-benefits-of-using-trading-journals/" target="_blank">Visit Link</a>
+                            </div>
+                        </div>
+                        <div class="list-group-row row">
+                            <div class="col-8">
+                                4 Reasons You Need a Diary for Both Good and Bad Forex Trades
+                            </div>
+                            <div class="list-group-bottom col-4 text-right">
+                                <a href="https://www.investopedia.com/articles/forex/11/why-you-need-a-forex-trading-journal.asp" target="_blank">Visit Link</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <!-- <div class="col-sm-12 col-md-4">
                 <div class="trade-analytics">
                     <div class="trade-headiang">
                         <h5>Trade Plan</h5>
@@ -151,7 +215,7 @@
                         <app-key-insights></app-key-insights>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div class="col-sm-12 col-md-4">
                 <div class="trade-analytics">
                     <div class="trade-headiang">
@@ -162,17 +226,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-4">
-                <div class="trade-analytics">
-                    <div class="trade-headiang">
-                        <h5>Realized Return</h5>
-                    </div>
-                    <div class="dsh-img">
-                        <a routerLink="/reports" class="cursor">
-                        <app-realized-return-chart></app-realized-return-chart></a>
-                    </div>
-                </div>
-            </div>
+            
             <div class="col-sm-12 col-md-4">
                 <div class="trade-analytics">
                     <div class="trade-headiang">
@@ -183,6 +237,83 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col-sm-12 col-md-4">
+                <div class="trade-analytics">
+                    <div class="trade-headiang">
+                        <h5>How to Guides</h5>
+                    </div>
+                    <div class="dsh-img list-group-card" style="height: 300px;">
+                        <div class="list-group-row">
+                            <div class="list-group-title">
+                                Add Trade
+                            </div>
+                            <div class="py-2">
+                                Record your trades in our configurable and template-based trade journal. 
+                            </div>
+                            <div class="list-group-bottom">
+                                <a routerLink="/new-trade">Visit Link</a>
+                            </div>
+                        </div>
+                        <div class="list-group-row">
+                            <div class="list-group-title">
+                                Import Trades
+                            </div>
+                            <div class="py-2">
+                                Add your trades in bulk by uploading trade history files from your brokerage. 
+                            </div>
+                            <div class="list-group-bottom">
+                                <a routerLink="/import-trades-history">Visit Link</a>
+                            </div>
+                        </div>
+                        <div class="list-group-row">
+                            <div class="list-group-title">
+                                Risk Analysis
+                            </div>
+                            <div class="py-2">
+                                Analyze potential returns of option trade strategies in the future through simulation.
+                            </div>
+                            <div class="list-group-bottom">
+                                <a routerLink="/risk-analysis">Visit Link</a>
+                            </div>
+                        </div>
+                        <div class="list-group-row">
+                            <div class="list-group-title">
+                                Strategy Comparison
+                            </div>
+                            <div class="py-2">
+                                Pick the strategy that suits you by comparing different trade strategies on a symbol.
+                            </div>
+                            <div class="list-group-bottom">
+                                <a routerLink="/strategy-comparison">Visit Link</a>
+                            </div>
+                        </div>
+                        <div class="list-group-row">
+                            <div class="list-group-title">
+                                Reports
+                            </div>
+                            <div class="py-2">
+                                Review reports on your trade journal data to know your strengths and limitations.
+                            </div>
+                            <div class="list-group-bottom">
+                                <a routerLink="/reports">Visit Link</a>
+                            </div>
+                        </div>
+                        <div class="list-group-row">
+                            <div class="list-group-title">
+                                Trading Rules
+                            </div>
+                            <div class="py-2">
+                                Set manual or automatic rules and align your trades with them to avoid repeating mistakes. 
+                            </div>
+                            <div class="list-group-bottom">
+                                <a routerLink="/rules">Visit Link</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
         </div>
     </div>
 
