@@ -62,7 +62,7 @@ export class TradeSearchComponent implements OnInit, AfterViewInit {
             var str = this.searchData[i].name;
             var code = this.searchData[i].code;
             var value = term.toLowerCase();
-            if (str.toLowerCase().startsWith(value) || code.toLowerCase() === value) {
+            if ((str && str.toLowerCase().startsWith(value)) || (code && (code.toLowerCase() === value))) {
                 this.TradeList.push(this.searchData[i]);
             }
         }
