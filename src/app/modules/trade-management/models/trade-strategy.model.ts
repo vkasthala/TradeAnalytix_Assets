@@ -44,4 +44,6 @@ export class TradeStrategy {
     tradeTag: TradeTag[];
 
     isEditTrade: boolean;
+
+    returnAmount: number;
 }

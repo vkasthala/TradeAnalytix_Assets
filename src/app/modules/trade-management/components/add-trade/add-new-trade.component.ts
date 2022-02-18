@@ -231,6 +231,15 @@ export class AddNewTradeComponent implements OnInit {
 
   closeTradeStrategy() {
     this.updateTradeStrategyProps();
+    if (new Date(this.tradeStrategy.closeDate) < new Date(this.tradeStrategy.executedDate)) {
+      this.toastr.error('Invalid close date','Error', { 
+        tapToDismiss:false,
+        closeButton:true,
+        disableTimeOut: true
+      });
+      this.Loader = !this.Loader;
+      return;
+    }
     this.tradeStrategyService.closeTrade(this.tradeStrategy).subscribe(result => {
       this.toastr.success('Trade strategy closed', 'Success');
       this.router.navigateByUrl("/trade-strategies");

@@ -85,6 +85,7 @@ export class TradeDetailsComponent implements OnInit {
   showOptionLegForm: boolean = false;
   editStockForm: boolean = false;
   editOptionForm: boolean = false;
+  previousReturn: number = 0;
   protected optionIndex: number = 1;
   protected optionGroup: any = {};
   registeredTags: any = [];
@@ -124,6 +125,7 @@ export class TradeDetailsComponent implements OnInit {
       this.closeDate = this.inputState.tradeStrategy.closeDate;
       this.lastUpdatedDate = this.inputState.tradeStrategy.updateDateTime;
       this.tags = this.inputState.tradeStrategy.tradeTag;
+      this.previousReturn = this.inputState.tradeStrategy.returnAmount ? this.inputState.tradeStrategy.returnAmount : 0;
       this.updateStockOptionDisplayProperty();
     }
   }
@@ -305,11 +307,11 @@ export class TradeDetailsComponent implements OnInit {
   }
 
   calculateNetReturn(): string {
-    let netReturn: number = 0;
+    let netReturn: number = this.previousReturn;
     let tmp: number;
     if (this.stockEntry && this.stockEntry.quantity && this.stockEntry.closePrice) {
       tmp = this.stockEntry.quantity * (this.stockEntry.closePrice - this.stockEntry.price);
-      netReturn = tmp * (this.stockEntry.actionType == ActionType["Buy to Open"] ? 1 : -1);
+      netReturn = netReturn + (tmp * (this.stockEntry.actionType == ActionType["Buy to Open"] ? 1 : -1));
     }
     if (this.stockOptions) {
       for (let index = 0; index < this.stockOptions.length; index++) {
