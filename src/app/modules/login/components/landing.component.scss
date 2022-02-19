@@ -315,6 +315,11 @@
             line-height: 1.2;
             color: #000000;
             margin-bottom: 1rem;
+            text-align: left;
+            @media #{$extra-small} {
+                font-size: 22px;
+                margin-top: 1rem;
+            }
         }
         .features_section_dec {
             font-weight: normal;
@@ -737,6 +742,9 @@ $button-active-blue: #1669F2;
 .page-heading {
 	color:#394C86 !important;
 	font-size:32px !important;
+    @media #{$extra-small} {
+        font-size:28px !important;
+    }
 
 }
 .howit_works_section img {

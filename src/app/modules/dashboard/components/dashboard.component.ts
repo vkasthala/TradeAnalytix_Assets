@@ -8,6 +8,9 @@ import { UserService } from '../../shared/services/user.service';
 import { TradePlanGridRow } from '../../trade-plan/models/trade-plan-grid-row.model';
 import { TradePlansService } from '../../trade-plan/services/trade-plans.service';
 import { MatDialog } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
+import { DemoModeDetailsService } from '../../shared/services/demo-mode-details.service';
+import { SliderModalComponent } from './slider-modal/slider-modal.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -24,12 +27,15 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
   userName: string = '';
   checklist: boolean=false;
-  
+  demoToggle: boolean = true;
+  currentInd: number = 0;
 
   constructor(
     private router: Router, private ref: ChangeDetectorRef, private tradePlanService: TradePlansService, private reportDataService: ReportDataService, 
     private userService: UserService,
     private _dialog: MatDialog,
+    protected toastr: ToastrService,
+    private demoService: DemoModeDetailsService
   ) { }
 
   ngOnInit() {
@@ -135,6 +141,37 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
   showChecklist(){
     this.checklist = !this.checklist;
+  }
+
+  showDemoMsg() {
+    if (this.demoToggle) {
+      this.demoToggle = false;
+      this.demoService.setDemoModeStatus(true);
+      this.toastr.info('You entered the demo mode. Turn off the toggle switch anytime to exit the demo mode', '');
+    } else {
+      this.demoToggle = true;
+      this.demoService.setDemoModeStatus(false);
+      this.toastr.info('You exited the demo mode', '');
+    }
+
+    let url: string = this.router.url;
+    if (url === '/') {
+      url = "/dashboard";
+    }
+    this.router.navigate([url]);
+  }
+  startTour() {
+    this.loadSliderModal();
+  }
+
+  loadSliderModal() {
+    const dialogRef = this._dialog.open(SliderModalComponent, {
+      disableClose: true,
+      width: 'auto',
+    });
+
+    dialogRef.afterClosed().subscribe((res) => {
+    });
   }
 
 }
