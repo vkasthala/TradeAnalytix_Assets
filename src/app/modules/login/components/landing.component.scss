@@ -14,10 +14,17 @@
     .trade-header-section {
         background:#394c86 url('../../../../assets/images/headerbg.svg') no-repeat center 30px;
         padding: 20px;
-        height: 760px;
+        // height: 650px;
         width: 100%;
         background-size: cover;
         position: relative;
+        .landing-header {
+            align-items: center;
+            justify-content: space-between;
+            @media #{$extra-small} {
+                flex-direction: column;
+            }
+        }
         &-logo {
             //  display: none;
             background-image: url('../../../../assets/images/TA_logo.jpg');
@@ -28,6 +35,7 @@
             min-height: 50px;
             @media #{$extra-small} {
                 display: block;
+                width: 100%;
             }
         }
         // features section
@@ -59,14 +67,15 @@
         width: 66%;
         text-align: center;
         justify-content: center;
+        @media #{$extra-small} {
+            width: 100%;
+        }
         @include media(">tablet",
         "<laptop") {
             padding: 0px;
             height: auto;
         }
-        @media #{$extra-small} {
-            display: none;
-        }
+        
         ul {
             margin: 0px;
             display: flex;
@@ -82,6 +91,7 @@
             @media #{$extra-small} {
                 flex-wrap: wrap;
                 justify-content: flex-start;
+                padding: 0;
             }
             li {
                 cursor: pointer;
@@ -159,17 +169,24 @@
         line-height: 18px;
     }
     .trade-banner-section {
-        height: 675px;
+        height: 100%;
         width: 100%;
         display: flex;
         position: relative;
         align-items: flex-end;
+        padding-top: 50px;
     }
     .LeaderBoardTop {
         margin-top: -85px;
+        @media #{$extra-small} {
+            margin-top: -25px;
+        }
     }
     .slideFeatures {
         font-size: 22px;
+        @media #{$extra-small} {
+            font-size: 18px;
+        }
     }
     .banner-info {
         font-weight: normal;
@@ -182,6 +199,10 @@
         font-weight: 600;
         font-size: 30px;
         color: #fff;
+        @media #{$extra-small} {
+            font-size: 22px;
+            line-height: 30px;
+        }
     }
     .banner-info-footer {
         padding-top: 1.5rem;
@@ -218,64 +239,74 @@
     }
     .widgets_section {
         display: flex;
-        justify-content: flex-end;
+        // justify-content: flex-end;
     }
     .widgets_box_orange {
-        width: 185px;
-        height: 190px;
+        width: 140px;
+        height: 150px;
         background: #EC6B56;
-        border-radius: 10px;
-        font-size: 16px;
-        line-height: 22px;
+        border-radius: 5px;
+        font-size: 13px;
+        line-height: 20px;
         text-align: center;
         color: #FFFFFF;
-        padding: 1rem;
+        padding: 0.5rem;
     }
     .widgets_box_blue {
-        width: 185px;
-        height: 190px;
+        width: 140px;
+        height: 150px;
         background: #2285FA;
-        border-radius: 10px;
-        font-size: 16px;
-        line-height: 22px;
+        border-radius: 5px;
+        font-size: 13px;
+        line-height: 20px;
         text-align: center;
         color: #FFFFFF;
-        padding: 1rem;
+        padding: 0.5rem;
     }
     .widgets_box_icon {
         padding-bottom: 0.5rem;
+        height: 75px;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+    }
+    .widgets_box_blue .widgets_box_icon {
+        height: auto;
+        padding-top: 20px;
     }
     .widgets_box_transparent {
-        width: 179px;
-        height: 190px;
+        width: 138px;
+        height: 150px;
         text-align: center;
         display: flex;
         align-items: flex-end;
+        img {
+            max-width: 100%;
+        }
     }
     .widgets_box_thumb {
-        width: 175px;
-        height: 190px;
+        width: 138px;
+        height: 150px;
     }
     .widgets_box_vshape {
         width: 43px;
-        height: 190px;
+        height: 150px;
         background: #EC6B56;
         border-radius: 10px 0 0 10px;
     }
     .widgets_box_empty {
         width: 40px;
-        height: 190px;
+        height: 150px;
     }
     .widgets_box_empty-s {
         width: 40px;
-        height: 55px;
+        height: 45px;
     }
     .widgets_box_hshape {
         width: 185px;
-        height: 55px;
+        height: 45px;
         background: #2285FA;
         border-radius: 10px 10px 0 0;
-        margin-top: -4px;
     }
     .banner-img {
         position: absolute;
@@ -311,14 +342,16 @@
         padding-bottom: 3rem;
         text-align: center;
         .features_section_title {
-            font-size: 27px;
-            line-height: 1.2;
+            font-weight: bold;
+            font-size: 20px;
+            line-height: 30px;
             color: #000000;
-            margin-bottom: 1rem;
+            margin-bottom: .5rem;
             text-align: left;
             @media #{$extra-small} {
-                font-size: 22px;
-                margin-top: 1rem;
+                font-size: 20px;
+                margin-top: .5rem;
+                line-height: 28px;
             }
         }
         .features_section_dec {
@@ -335,7 +368,7 @@
             margin-left: .5rem;
         }
         .features_section_banner {
-            padding-top: 1rem;
+            // padding-top: 1rem;
             filter: drop-shadow(20px 20px 40px rgba(0, 0, 0, 0.12));
             img {
                 max-width: 100%;
@@ -590,8 +623,14 @@
     align-items: center;
     margin: 0;
     padding: 0;
+    @media #{$extra-small} {
+        justify-content: space-between;
+    }
     li {
         margin-right: 1rem;
+        @media #{$extra-small} {
+            margin-right: 0;
+        }
         a {
             color: #fff;
         }
@@ -742,11 +781,29 @@ $button-active-blue: #1669F2;
 .page-heading {
 	color:#394C86 !important;
 	font-size:32px !important;
+    text-align: center !important;
     @media #{$extra-small} {
-        font-size:28px !important;
+        font-size:24px !important;
     }
 
 }
 .howit_works_section img {
 	width:100% !important;
+}
+.intro-description {
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 28px;
+    text-align: center;
+    color: #3A4C85;
+    @media #{$extra-small} {
+        font-size: 18px;
+        line-height: 28px;
+    }
+}
+.row_reverse {
+    flex-direction: row-reverse;
+    @media #{$extra-small} {
+        flex-direction: column;
+    }
 }

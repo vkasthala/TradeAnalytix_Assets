@@ -28,7 +28,7 @@
                         <div class="card-title">Get things moving with our popular features</div>
                         <div class="pt-2">
                             <a routerLink="/new-trade" class="btn card-btn" data-toggle="tooltip" data-placement="top" title="Add trade">Add Trade</a>
-                            <a routerLink="/import-trades" class="btn card-btn ml-3" data-toggle="tooltip" data-placement="top" title="Import Trades">Import Trades</a>
+                            <a routerLink="/import-trades-history" class="btn card-btn ml-3" data-toggle="tooltip" data-placement="top" title="Import Trades">Import Trades</a>
                             <a routerLink="/risk-analysis" class="btn card-btn ml-3" data-toggle="tooltip" data-placement="top" title="Analyze Risk">Analyze Risk</a>
                             <a routerLink="/rules" class="btn card-btn ml-3" data-toggle="tooltip" data-placement="top" title="Set Up Rules">Set Up Rules</a>
                         </div>
@@ -81,7 +81,7 @@
                     <div class="trade-headiang">
                         <h5>Quick links</h5>
                     </div>
-                    <div class="dsh-img list-group-card" style="height: 300px;">
+                    <div class="dsh-img list-group-card py-2" style="height: 300px;">
                         <div class="list-group-row row">
                             <div class="col-8">
                                 Facing Issues with the platform?
@@ -244,72 +244,83 @@
                         <h5>How to Guides</h5>
                     </div>
                     <div class="dsh-img list-group-card" style="height: 300px;">
-                        <div class="list-group-row">
-                            <div class="list-group-title">
-                                Add Trade
+                        <div class="list-group-row row">
+                            <div class="col-9">
+                                Add trade to the journal.
                             </div>
-                            <div class="py-2">
-                                Record your trades in our configurable and template-based trade journal. 
-                            </div>
-                            <div class="list-group-bottom">
-                                <a routerLink="/new-trade">Visit Link</a>
+                            <div class="list-group-bottom col-3 text-right">
+                                <a routerLink="/help/add-trade">Visit Link</a>
                             </div>
                         </div>
-                        <div class="list-group-row">
-                            <div class="list-group-title">
-                                Import Trades
+
+                        <div class="list-group-row row">
+                            <div class="col-9">
+                                Import trade history files from brokerage. 
                             </div>
-                            <div class="py-2">
-                                Add your trades in bulk by uploading trade history files from your brokerage. 
-                            </div>
-                            <div class="list-group-bottom">
-                                <a routerLink="/import-trades-history">Visit Link</a>
+                            <div class="list-group-bottom col-3 text-right">
+                                <a routerLink="/help/import-trade">Visit Link</a>
                             </div>
                         </div>
-                        <div class="list-group-row">
-                            <div class="list-group-title">
-                                Risk Analysis
+                        <div class="list-group-row row">
+                            <div class="col-9">
+                                Edit existing trades.
                             </div>
-                            <div class="py-2">
-                                Analyze potential returns of option trade strategies in the future through simulation.
-                            </div>
-                            <div class="list-group-bottom">
-                                <a routerLink="/risk-analysis">Visit Link</a>
+                            <div class="list-group-bottom col-3 text-right">
+                                <a routerLink="/help/trade-journal-edit-trade">Visit Link</a>
                             </div>
                         </div>
-                        <div class="list-group-row">
-                            <div class="list-group-title">
-                                Strategy Comparison
+                        <div class="list-group-row row">
+                            <div class="col-9">
+                                Close trade strategies.
                             </div>
-                            <div class="py-2">
-                                Pick the strategy that suits you by comparing different trade strategies on a symbol.
-                            </div>
-                            <div class="list-group-bottom">
-                                <a routerLink="/strategy-comparison">Visit Link</a>
+                            <div class="list-group-bottom col-3 text-right">
+                                <a routerLink="/help/trade-journal-close-trade">Visit Link</a>
                             </div>
                         </div>
-                        <div class="list-group-row">
-                            <div class="list-group-title">
-                                Reports
+                        <div class="list-group-row row">
+                            <div class="col-9">
+                                Analyze risk of option strategies.
                             </div>
-                            <div class="py-2">
-                                Review reports on your trade journal data to know your strengths and limitations.
-                            </div>
-                            <div class="list-group-bottom">
-                                <a routerLink="/reports">Visit Link</a>
+                            <div class="list-group-bottom col-3 text-right">
+                                <a routerLink="/help/helprisk-analysis">Visit Link</a>
                             </div>
                         </div>
-                        <div class="list-group-row">
-                            <div class="list-group-title">
-                                Trading Rules
+                        <div class="list-group-row row">
+                            <div class="col-9">
+                                Compare strategies on a stock.
                             </div>
-                            <div class="py-2">
-                                Set manual or automatic rules and align your trades with them to avoid repeating mistakes. 
-                            </div>
-                            <div class="list-group-bottom">
-                                <a routerLink="/rules">Visit Link</a>
+                            <div class="list-group-bottom col-3 text-right">
+                                <a routerLink="/help/compare-strategy">Visit Link</a>
                             </div>
                         </div>
+                        <div class="list-group-row row">
+                            <div class="col-9">
+                                Set trading rules.
+                            </div>
+                            <div class="list-group-bottom col-3 text-right">
+                                <a routerLink="/help/trading-rules">Visit Link</a>
+                            </div>
+                        </div>
+                        <div class="list-group-row row">
+                            <div class="col-9">
+                                Reports and Metrics.
+                            </div>
+                            <div class="list-group-bottom col-3 text-right">
+                                <a routerLink="/help/helpreports">Visit Link</a>
+                            </div>
+                        </div>
+                        <div class="list-group-row row">
+                            <div class="col-9">
+                                Set up data for the journal.
+                            </div>
+                            <div class="list-group-bottom col-3 text-right">
+                                <a routerLink="/help/trade-plan">Visit Link</a>
+                            </div>
+                        </div>
+                        
+                       
+                        
+                       
                     </div>
                 </div>
             </div>

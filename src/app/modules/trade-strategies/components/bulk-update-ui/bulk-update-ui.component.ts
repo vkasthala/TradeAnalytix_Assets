@@ -62,15 +62,15 @@ export class BulkUpdateUiComponent implements OnInit {
 
   initColumnDefns() {
     this.columnDefs = [
-      { field: 'uid', headerName: 'ID', resizable: true, width: 100 },
-      { field: 'symbol', headerName: 'Symbol', resizable: true, width: 90},
-      { field: 'status', headerName: 'Status', resizable: true, width: 80},
-      { field: 'openDate', headerName: 'Open Date', resizable: true, width: 100},
-      { field: 'totalAmount', headerName: 'Total Amount', resizable: true, width: 110 },
+      { field: 'uid', headerName: 'Strategy ID', resizable: true, width: 100, cellClass: 'read-only-cell' },
+      { field: 'symbol', headerName: 'Symbol', resizable: true, width: 75, cellClass: 'read-only-cell'},
+      { field: 'status', headerName: 'Status', resizable: true, width: 75, cellClass: 'read-only-cell'},
+      { field: 'openDate', headerName: 'Open Date', resizable: true, width: 100, cellClass: 'read-only-cell'},
+      { field: 'totalAmount', headerName: 'Amount', resizable: true, width: 80, cellClass: 'read-only-cell' },
       { field: 'tags', headerName: 'Tags', editable: true, resizable: true, width: 150},
       { field: 'source', headerName: 'Source', editable: true, cellEditor: 'sourceEditor', resizable: true, width: 90},
       { field: 'reason', headerName: ' Reasons for the trade', editable: true, resizable: true, width: 150},
-      { field: 'targetPrice', headerName: 'Target price', editable: true, resizable: true, width: 110 },
+      { field: 'targetPrice', headerName: 'Target Price', editable: true, resizable: true, width: 100 },
       { field: 'targetCloseDate', headerName: 'Target Close Date', editable: true, resizable: true, width: 130},
       { field: 'contrarian', headerName: 'Contrarian Trade', editable: true, cellEditor: 'contrarianEditor', resizable: true, width: 140},
       { field: 'direction', headerName: 'Direction', editable: true, cellEditor: 'directionEditor', resizable: true, width: 100 },
@@ -87,8 +87,8 @@ export class BulkUpdateUiComponent implements OnInit {
       { field: 'mindset', headerName: 'Mindset', editable: true, cellEditor: 'mindsetEditor', resizable: true, width: 110},
       { field: 'closeSource', headerName: 'Trigger for Closure', editable: true, cellEditor: 'closeSourceEditor', resizable: true, width: 150},
       { field: 'closeReason', headerName: 'Reason for Closure', editable: true, width: 150, resizable: true,},
-      { field: 'closeEvent', headerName: 'Gain or loss attributed to', editable: true, cellEditor: 'closeEventEditor', width: 200, resizable: true,},
-      { field: 'closeLesson', headerName: 'Lessons learnt', editable: true, width: 300, resizable: true }
+      { field: 'closeEvent', headerName: 'Gain or Loss Attributed To', editable: true, cellEditor: 'closeEventEditor', width: 200, resizable: true,},
+      { field: 'closeLesson', headerName: 'Lessons Learnt', editable: true, width: 300, resizable: true }
     ];
   }
 

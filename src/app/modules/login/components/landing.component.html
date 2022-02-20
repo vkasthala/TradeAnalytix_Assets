@@ -1,6 +1,6 @@
 <div class="trade-app">
     <div class="trade-header-section">
-        <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex landing-header">
             <div class="trade-header-section-logo"></div>
             <nav class="landing-navbar">
                 <ul class="list-unstyled ">
@@ -24,22 +24,10 @@
                     </li>
                     <li [class.nav-active]="currentRoute == 'demo'">
                         <a class="landing-nav-link" [routerLink]="['/demo']">
-                            Demo
+                            Features
                         </a>
                     </li>
 
-                    <li [class.nav-active]="currentRoute == 'pricing'">
-                        <a class="landing-nav-link" [routerLink]="['/pricing']">
-                            Use Cases
-                        </a>
-                    </li>
-                    
-                    <li [class.nav-active]="currentRoute == 'reviews'">
-                        <a class="landing-nav-link" [routerLink]="['/reviews']">
-                            Reviews
-                        </a>
-                    </li>
-                   
                     <li [class.nav-active]="currentRoute == 'contact-us'">
                         <a class="landing-nav-link" [routerLink]="['/contact-us']">
                             Contact Us
@@ -60,10 +48,11 @@
 
         <div class="trade-banner-section">
             <div class="row w-100 m-0">
-                <div class="col-sm-3 col-md-5 d-flex align-items-center">
+                <div class="col-sm-3 col-md-6 d-flex align-items-center">
                     <div class="banner-info LeaderBoardTop">
                         <h1 class="banner-info-title">
-                            TradeAnalytix is a new age trade planner and journal for retail investors.
+                            TradeAnalytix is a new age trade planner <br/>
+                            and journal for the retail investors
                             <!-- Improve Trading Performance by -->
                         </h1>
                         <div class="pt-3 slideFeatures">
@@ -79,16 +68,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-9 col-md-7 pr-0">
+                <div class="col-sm-9 col-md-6 pr-0">
                     <div class="banner-rtside">
-                        <div class="banner-img"><img src="../../../../assets/images/banner-img.png" alt=""></div>
                         <div class="widgets_section">
                             <div class="widgets_box_orange">
                                 <div class="widgets_box_icon pb-2">
                                     <img src="../../../../assets/images/widgets_icon1.png" alt="">
                                 </div>
                                 <div class="widgets_box_dec">
-                                    Learn from the past and improve trading decisions
+                                    Know Strengths, Improve Decisions
                                 </div>
                             </div>
 
@@ -100,40 +88,45 @@
                                     <img src="../../../../assets/images/widgets_icon2.png" alt="">
                                 </div>
                                 <div class="widgets_box_dec">
-                                    Set rules and align your trades with them
+                                    Alignment with Self-Set Rules
                                 </div>
                             </div>
-                            <div class="widgets_box_thumb">
-                                <img src="../../../../assets/images/banner_thumb1.png" alt="">
-                            </div>
+                            <div class="widgets_box_thumb"></div>
                             <div class="widgets_box_vshape"></div>
                         </div>
                         <!-- end: widgets_section -->
 
                         <div class="widgets_section">
+                            <div class="widgets_box_thumb"></div>
                             <div class="widgets_box_blue">
                                 <div class="widgets_box_icon">
                                     <img src="../../../../assets/images/widgets_icon3.png" alt="">
                                 </div>
                                 <div class="widgets_box_dec">
-                                    Record trades in detail with hypothesis
+                                    Comprehensive Trade Journal
                                 </div>
                             </div>
-                            <div class="widgets_box_thumb">
-                                <img src="../../../../assets/images/banner_thumb2.png" alt="">
-                            </div>
+                            <div class="widgets_box_thumb"></div>
                             <div class="widgets_box_blue">
                                 <div class="widgets_box_icon">
                                     <img src="../../../../assets/images/widgets_icon4.png" alt="">
                                 </div>
                                 <div class="widgets_box_dec">
-                                    Risk Analysis and Simulation
+                                    Right Strategy Selection
                                 </div>
                             </div>
                             <div class="widgets_box_empty"></div>
                         </div>
                         <!-- end: widgets_section -->
                         <div class="widgets_section">
+                            <div class="widgets_box_orange">
+                                <div class="widgets_box_icon pb-2">
+                                    <img src="../../../../assets/images/widgets_icon6.png" alt="">
+                                </div>
+                                <div class="widgets_box_dec">
+                                    Share Trades with Community
+                                </div>
+                            </div>
                             <div class="widgets_box_transparent align-items-start">
                                 <img src="../../../../assets/images/shape2.png" alt="">
                             </div>
@@ -142,16 +135,16 @@
                                     <img src="../../../../assets/images/widgets_icon5.png" alt="">
                                 </div>
                                 <div class="widgets_box_dec">
-                                    Right Strategy Selection through Comparison
+                                    Risk Analysis and Simulation
                                 </div>
                             </div>
-                            <div class="widgets_box_thumb">
+                            <div class="widgets_box_transparent align-items-start">
                                 <img src="../../../../assets/images/shape3.png" alt="">
                             </div>
                             <div class="widgets_box_vshape"></div>
                         </div>
                         <!-- end: widgets_section -->
-                        <div class="widgets_section">
+                        <div class="widgets_section justify-content-end">
 
                             <div class="widgets_box_hshape"></div>
                             <div class="widgets_box_empty-s"></div>
@@ -167,11 +160,10 @@
 
     <div class="main-body">
         <div class="container">
-            
-            <div class="features_section howit_works_section" id="howit_works">
+            <div class="features_section howit_works_section pt-2" id="howit_works">
                 <div class="features_section_title page-heading">How it Works?</div>
-                <div class="features_section_dec">
-                    
+                <div class="intro-description">
+                    TradeAnalytix provides users with the perspective to plan trades, journal their trades and analyze the data to identify their strenghts and where they need improvement.
                 </div>
                 <div class="features_section_banner">
                     <img src="../../../../assets/images/portrait-Illustration.svg" alt="" />
@@ -180,17 +172,18 @@
             <!-- end: Comprehensive trade journal -->
             <div class="features_section pb-2">
                 <h2 class="features_section_title page-heading">Product Benefits</h2>
+                <div class="intro-description mt-2">TradeAnalytix provides users with everything they need to organize their trading habits, review their performance and manage risks.</div>
             </div>
             <div class="features_section" id="trade_journal">
-                <div class="row">
+                <div class="row row_reverse">
+                    <div class="col-md-4">
+                        <div class="features_section_title">Systematic approach to trading through journaling of trades</div>
+                        <div class="features_section_dec">
+                            Add your trades to a configurable, template-based trade journal with detailed notes. Add trades in bulk by importing trade history files exported from your brokerage account. Update the journal details of trades in bulk as well with an intuitive excel-like grid.
+                        </div>
+                    </div>
                     <div class="col-md-8 features_section_banner">
                         <img src="../../../../assets/images/trade-thesis.png" alt="" />
-                    </div>
-                    <div class="col-md-4">
-                        <div class="features_section_title">Adopt a systematic approach to trading by journaling your trades</div>
-                        <div class="features_section_dec">
-                            Add your trades individually to a configurable and template-based trade journal or import trade history files from your brokerage account to add trades in bulk. Update the journal details in bulk as well with an intuitive excel-like grid
-                        </div>
                     </div>
                 </div>
             </div>
@@ -199,7 +192,8 @@
             <div class="features_section">
                 <div class="row">
                     <div class="col-md-4">
-                        <div class="features_section_title">Improve trading decisions through in-depth reports and metrics on your trade journal</div>
+                        <div class="features_section_title">Improve trading decisions through 
+                            in-depth reporting on trade history</div>
                         <div class="features_section_dec">
                             Identify your strengths and limitations by reviewing reports and metrics derived from your trading journal. Reports are generated across different categories such as portfolio, performance, risk, discipline, trading rules, and goals.
                         </div>
@@ -212,15 +206,16 @@
             <!-- end: Improve trading decisions -->
 
             <div class="features_section">
-                <div class="row">
-                    <div class="col-md-8 features_section_banner">
-                        <img src="../../../../assets/images/risk-analysis.png" alt="" />
-                    </div>
+                <div class="row row_reverse">
                     <div class="col-md-4">
-                        <div class="features_section_title">Analyze risk of option trade strategies by simulating possible future scenarios</div>
+                        <div class="features_section_title">Risk analysis  of option trades 
+                            through simulation</div>
                         <div class="features_section_dec">
                             Analyze the potential returns of option trade strategies in the future while varying stock price, implied volatility, and days to expiration. Keep updating the strategy and assessing its potential returns until you arrive at a trade that is aligned with your risk appetite.
                         </div>
+                    </div>
+                    <div class="col-md-8 features_section_banner">
+                        <img src="../../../../assets/images/risk-analysis.png" alt="" />
                     </div>
                 </div>
             </div>
@@ -229,7 +224,8 @@
             <div class="features_section">
                 <div class="row">
                     <div class="col-md-4">
-                        <div class="features_section_title">Pick the right strategy that is aligned with your risk appetite</div>
+                        <div class="features_section_title">Pick the right strategy that is 
+                            aligned with your risk appetite</div>
                         <div class="features_section_dec">
                             Let's say you are bullish on a stock. Do you know which strategy works well for you within your risk appetite? Strategy comparison feature allows you to compare trade strategies on a stock to know their profitability in different scenarios so that you can pick a strategy that aligned with your risk appetite.
                         </div>
@@ -242,15 +238,16 @@
             <!-- end: Strategy comparison section -->
 
             <div class="features_section">
-                <div class="row">
-                    <div class="col-md-8 features_section_banner">
-                        <img src="../../../../assets/images/rules_thumb.PNG" alt="" />
-                    </div>
+                <div class="row row_reverse">
                     <div class="col-md-4">
-                        <div class="features_section_title">Avoid repeating the same mistakes by abiding with self-set trading rules</div>
+                        <div class="features_section_title">Avoid repeating the mistakes 
+                            by abiding with self-set trading rules</div>
                         <div class="features_section_dec">
                             Market volatility, ease of trading, and influx of trading ideas makes it difficult to be disciplined and influences one to take impromptu decisions. Trading Rules feature allows you to set manual or automatic rules and trade as per them to avoid past mistakes
                         </div>
+                    </div>
+                    <div class="col-md-8 features_section_banner">
+                        <img src="../../../../assets/images/rules_thumb.PNG" alt="" />
                     </div>
                 </div>
             </div>
@@ -271,6 +268,13 @@
             </div>
             <!-- end: Trade Plan -->
             
+            <!-- <div class="features_section howit_works_section" id="howit_works">
+                <div class="features_section_title page-heading">Product Features</div>
+                <div class="features_section_dec text-center">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                </div>
+                
+            </div> -->
 
             <!-- <div class="features_section">
                 <div class="features_section_title">Add your trades in bulk by importing trade history files from brokerages</div>
@@ -298,38 +302,7 @@
         </div>
     </div> -->
 </div>
-<nav class="mobile-bottom-nav">
-    <ul>
-        <li [class.nav-active]="currentRoute == 'about-us'">
-            <a class="landing-nav-link" [routerLink]="['/about-us']">
-              About Us
-            </a>
-        </li>
-        <li [class.nav-active]="currentRoute == 'features'">
-            <a class="landing-nav-link" [routerLink]="['/features']">
-                Features
-            </a>
 
-        </li>
-        <li [class.nav-active]="currentRoute == 'getting-started'">
-            <a class="landing-nav-link" [routerLink]="['/getting-started']">
-            Getting <br/> Started
-            </a>
-        </li>
-        <li [class.nav-active]="currentRoute == 'pricing'">
-            <a class="landing-nav-link" [routerLink]="['/pricing']">
-                Pricing
-            </a>
-        </li>
-        <li [class.nav-active]="currentRoute == 'blogs'">
-            <a class="landing-nav-link" [routerLink]="['/blogs']">
-                Blogs
-            </a>
-        </li>
-
-
-    </ul>
-</nav>
 <div class="landing-footer py-3">
     <div class="container">
         <div class="row align-items-center">
