@@ -43,7 +43,7 @@
             <div class="flex-item" *ngFor="let item of summaryItems;">
                 <div class="flex-inner">
                     <a>
-                        <h3 class="trade_count trade-green" [style.color]="getSummaryTextColor(item)">{{item.value}}{{getValueSuffix(item)}}</h3>
+                        <h3 class="trade_count trade-green" [style.color]="getSummaryTextColor(item)">{{getSummaryValue(item.value)}}{{getValueSuffix(item)}}</h3>
                         <span class="trade_title">{{item.name}}</span>
                     </a>
                 </div>

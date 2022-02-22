@@ -26,12 +26,12 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   summaryItems: ReportSummaryItem[];
 
   userName: string = '';
-  checklist: boolean=false;
+  checklist: boolean = false;
   demoToggle: boolean = true;
   currentInd: number = 0;
 
   constructor(
-    private router: Router, private ref: ChangeDetectorRef, private tradePlanService: TradePlansService, private reportDataService: ReportDataService, 
+    private router: Router, private ref: ChangeDetectorRef, private tradePlanService: TradePlansService, private reportDataService: ReportDataService,
     private userService: UserService,
     private _dialog: MatDialog,
     protected toastr: ToastrService,
@@ -68,7 +68,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       if (result) {
         this.summaryItems = result;
         this.summaryItems.forEach(item => {
-          if(item.value === undefined || item.value === null){
+          if (item.value === undefined || item.value === null) {
             item.value = 'N/A';
           }
         });
@@ -110,8 +110,17 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     return color;
   }
 
+  getSummaryValue(val) {
+    debugger;
+    if (typeof (val) === 'number') {
+      var num: number = +val;
+      return Math.round(num);
+    }
+    return val;
+  }
+
   getValueSuffix(summaryItem: ReportSummaryItem) {
-    if(summaryItem.value === undefined || summaryItem.value === null || summaryItem.value === 'N/A'){
+    if (summaryItem.value === undefined || summaryItem.value === null || summaryItem.value === 'N/A') {
       return "";
     }
     let suffix: string = "";
@@ -139,7 +148,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     });
   }
 
-  showChecklist(){
+  showChecklist() {
     this.checklist = !this.checklist;
   }
 
