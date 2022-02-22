@@ -4,11 +4,15 @@ export class TradePlanStrategy {
 
     tradeStrategyId: number;
 
+    strategyUid: string;
+
     symbol: string;
 
     strategyType: string;
 
     returnAmount: number;
+
+    totalAmount: number;
 
     maxRisk: number;
 

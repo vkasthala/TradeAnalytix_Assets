@@ -17,4 +17,7 @@ export class TodayExecutedLeg {
     entryPrice: number;
 
     exitPrice: number;
+
+    totalPrice: number;
+    
 }

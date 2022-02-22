@@ -106,9 +106,9 @@ export class AddNewTradeComponent implements OnInit {
 
   enterSymbol() {
     if (!this.selectedStock || !this.selectedStock.code) {
-      this.toastr.error('Please enter a valid symbol to proceed', 'Error', { 
-        tapToDismiss:false,
-        closeButton:true,
+      this.toastr.error('Please enter a valid symbol to proceed', 'Error', {
+        tapToDismiss: false,
+        closeButton: true,
         disableTimeOut: true
       });
       return false;
@@ -184,9 +184,9 @@ export class AddNewTradeComponent implements OnInit {
       this.Loader = !this.Loader;
     },
       err => {
-        this.toastr.error('Internal Server Error', 'Error', { 
-          tapToDismiss:false,
-          closeButton:true,
+        this.toastr.error('Internal Server Error', 'Error', {
+          tapToDismiss: false,
+          closeButton: true,
           disableTimeOut: true
         });
         this.Loader = !this.Loader;
@@ -202,9 +202,9 @@ export class AddNewTradeComponent implements OnInit {
       this.Loader = !this.Loader;
     },
       err => {
-        this.toastr.error('Internal Server Error', 'Error', { 
-          tapToDismiss:false,
-          closeButton:true,
+        this.toastr.error('Internal Server Error', 'Error', {
+          tapToDismiss: false,
+          closeButton: true,
           disableTimeOut: true
         });
         this.Loader = !this.Loader;
@@ -220,9 +220,9 @@ export class AddNewTradeComponent implements OnInit {
       this.Loader = !this.Loader;
     },
       err => {
-        this.toastr.error('Internal Server Error', 'Error', { 
-          tapToDismiss:false,
-          closeButton:true,
+        this.toastr.error('Internal Server Error', 'Error', {
+          tapToDismiss: false,
+          closeButton: true,
           disableTimeOut: true
         });
         this.Loader = !this.Loader;
@@ -232,9 +232,9 @@ export class AddNewTradeComponent implements OnInit {
   closeTradeStrategy() {
     this.updateTradeStrategyProps();
     if (new Date(this.tradeStrategy.closeDate) < new Date(this.tradeStrategy.executedDate)) {
-      this.toastr.error('Invalid close date','Error', { 
-        tapToDismiss:false,
-        closeButton:true,
+      this.toastr.error('Invalid close date', 'Error', {
+        tapToDismiss: false,
+        closeButton: true,
         disableTimeOut: true
       });
       this.Loader = !this.Loader;
@@ -246,12 +246,12 @@ export class AddNewTradeComponent implements OnInit {
       this.Loader = !this.Loader;
     },
       err => {
-        this.toastr.error('Internal Server Error', 'Error', 
-        { 
-          tapToDismiss:false,
-          closeButton:true,
-          disableTimeOut: true
-        });
+        this.toastr.error('Internal Server Error', 'Error',
+          {
+            tapToDismiss: false,
+            closeButton: true,
+            disableTimeOut: true
+          });
         this.Loader = !this.Loader;
       })
   }
@@ -281,6 +281,10 @@ export class AddNewTradeComponent implements OnInit {
 
     let stockEntries = [];
     if (this.tradeDetails.stockEntry) {
+      if ((!this.tradeDetails.stockEntry.quantity || this.tradeDetails.stockEntry.quantity === 0) && !this.tradeDetails.stockEntry.actionType) {
+        // In case of no stock leg considering action type as Buy to Open
+        this.tradeDetails.stockEntry.actionType = ActionType['Buy to Open'];
+      }
       stockEntries.push(this.tradeDetails.stockEntry);
     }
     this.tradeStrategy.stockEntry = stockEntries;
@@ -435,11 +439,11 @@ export class AddNewTradeComponent implements OnInit {
 
   showSuccess() {
     this.toastr.error('Hello world!', 'Toastr fun!',
-    { 
-      tapToDismiss:false,
-      closeButton:true,
-      disableTimeOut: true
-    });
+      {
+        tapToDismiss: false,
+        closeButton: true,
+        disableTimeOut: true
+      });
   }
 
   showClosedLegs() {
