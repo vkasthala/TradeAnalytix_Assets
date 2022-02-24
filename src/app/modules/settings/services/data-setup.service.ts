@@ -30,6 +30,14 @@ export class DataSetupService {
     return this.httpService.get<EditableListItem[]>(this.apiUrl + '/metadata/technical-indicator-types');
   }
 
+  public getCloseTriggers(): Observable<EditableListItem[]> {
+    return this.httpService.get<EditableListItem[]>(this.apiUrl + '/metadata/close-triggers');
+  }
+
+  public getGainOrLossAttributes(): Observable<EditableListItem[]> {
+    return this.httpService.get<EditableListItem[]>(this.apiUrl + '/metadata/gain-loss-attributes');
+  }
+
   public getBrokerageCommissions(): Observable<BockerageCommission[]> {
     return this.httpService.get<BockerageCommission[]>(this.apiUrl + '/metadata/brokerage-commissions');
   }
@@ -92,6 +100,30 @@ export class DataSetupService {
 
   public deleteBrokerageCommission(itemId: number): Observable<void> {
     return this.httpService.post<void, void>(this.apiUrl + '/metadata/brokerage-commission/' + itemId, null);
+  }
+
+  public createCloseTrigger(item: EditableListItem): Observable<void> {
+    return this.httpService.post<EditableListItem, void>(this.apiUrl + '/metadata/close-trigger', item);
+  }
+
+  public updateCloseTrigger(item: EditableListItem): Observable<void> {
+    return this.httpService.put<EditableListItem, void>(this.apiUrl + '/metadata/close-trigger', item);
+  }
+
+  public deleteCloseTrigger(itemId: number): Observable<void> {
+    return this.httpService.post<void, void>(this.apiUrl + '/metadata/close-trigger/' + itemId, null);
+  }
+
+  public createGainOrLossAttribute(item: EditableListItem): Observable<void> {
+    return this.httpService.post<EditableListItem, void>(this.apiUrl + '/metadata/gain-loss-attribute', item);
+  }
+
+  public updateGainOrLossAttribute(item: EditableListItem): Observable<void> {
+    return this.httpService.put<EditableListItem, void>(this.apiUrl + '/metadata/gain-loss-attribute', item);
+  }
+
+  public deleteGainOrLossAttribute(itemId: number): Observable<void> {
+    return this.httpService.post<void, void>(this.apiUrl + '/metadata/gain-loss-attribute/' + itemId, null);
   }
 
 }

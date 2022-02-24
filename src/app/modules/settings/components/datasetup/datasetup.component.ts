@@ -21,11 +21,15 @@ export class DatasetupComponent implements OnInit {
   @ViewChild('technicalIndicator', { static: false }) protected technicalIndicator: EditableListComponent;
   @ViewChild('event', { static: false }) protected event: EditableListComponent;
   @ViewChild('tradeIdea', { static: false }) protected tradeIdea: EditableListComponent;
+  @ViewChild('triggerClosing', { static: false }) protected triggerClosing: EditableListComponent;
+  @ViewChild('gainOrLossAttribution', { static: false }) protected gainOrLossAttribution: EditableListComponent;
 
   @ViewChild('brokerageCommissions', { static: false }) protected brokerageCommissions: EditableGridComponent<BockerageCommission>;
-  @ViewChild('triggerClosing', { static: false }) protected triggerClosing: EditableListComponent;
-  constructor(private dataSetupService: DataSetupService, private cdr: ChangeDetectorRef, private _dialog: MatDialog, private toastr: ToastrService) { }
+
   step = 0;
+
+  constructor(private dataSetupService: DataSetupService, private cdr: ChangeDetectorRef, private _dialog: MatDialog, private toastr: ToastrService) { }
+
   ngOnInit() {
 
   }
@@ -229,6 +233,100 @@ export class DatasetupComponent implements OnInit {
     });
   }
 
+  initTriggersForClosing() {
+    let addItemSubject: Subject<EditableListItem> = new Subject<EditableListItem>();
+    let editItemSubject: Subject<EditableListItem> = new Subject<EditableListItem>();
+    let deleteItemSubject: Subject<EditableListItem> = new Subject<EditableListItem>();
+    addItemSubject.asObservable().subscribe(data => {
+      this.dataSetupService.createCloseTrigger(data).subscribe(data => {
+        this.showSuccessMessage('Successfully added new trigger for close');
+        this.loadCloseTriggers();
+      }, err => {
+        console.log('error in creating trigger for close: ', data);
+        this.showErrorMessageDialog('Error! failed to add  trigger for close');
+      });
+    });
+    editItemSubject.asObservable().subscribe(data => {
+      this.dataSetupService.updateCloseTrigger(data).subscribe(data => {
+        this.showSuccessMessage('Successfully updated the trigger for close');
+        this.loadSurrEventTypes();
+      }, err => {
+        console.log('error in editing trigger for close: ', data)
+        this.showErrorMessageDialog('Error! failed to edit the trigger for close');
+      });
+    });
+    deleteItemSubject.asObservable().subscribe(data => {
+      this.getDeleteDialog().afterClosed().subscribe(dialogResult => {
+        if (dialogResult == true) {
+          this.dataSetupService.deleteCloseTrigger(data.id).subscribe(data => {
+            this.showSuccessMessage('Successfully deleted the trigger for close');
+            this.loadCloseTriggers();
+          }, err => {
+            console.log('error in deleting surr trigger for close: ', data)
+            this.showDeleteErrorMessage();
+          });
+        }
+      });
+    });
+    this.event.addItemSubject = addItemSubject;
+    this.event.editItemSubject = editItemSubject;
+    this.event.deleteItemSubject = deleteItemSubject;
+    this.loadCloseTriggers();
+  }
+
+  loadCloseTriggers() {
+    this.dataSetupService.getCloseTriggers().subscribe(result => {
+      this.triggerClosing.items = result;
+    });
+  }
+
+  initGainOrLossAttributes() {
+    let addItemSubject: Subject<EditableListItem> = new Subject<EditableListItem>();
+    let editItemSubject: Subject<EditableListItem> = new Subject<EditableListItem>();
+    let deleteItemSubject: Subject<EditableListItem> = new Subject<EditableListItem>();
+    addItemSubject.asObservable().subscribe(data => {
+      this.dataSetupService.createGainOrLossAttribute(data).subscribe(data => {
+        this.showSuccessMessage('Successfully added new gain or loss attribute');
+        this.loadGainOrLossAttributes();
+      }, err => {
+        console.log('error in creating gain or loss attribute: ', data);
+        this.showErrorMessageDialog('Error! failed to add gain or loss attribute');
+      });
+    });
+    editItemSubject.asObservable().subscribe(data => {
+      this.dataSetupService.updateGainOrLossAttribute(data).subscribe(data => {
+        this.showSuccessMessage('Successfully updated the gain or loss attribute');
+        this.loadGainOrLossAttributes();
+      }, err => {
+        console.log('error in editing gain or loss attribute: ', data)
+        this.showErrorMessageDialog('Error! failed to edit the gain or loss attribute');
+      });
+    });
+    deleteItemSubject.asObservable().subscribe(data => {
+      this.getDeleteDialog().afterClosed().subscribe(dialogResult => {
+        if (dialogResult == true) {
+          this.dataSetupService.deleteGainOrLossAttribute(data.id).subscribe(data => {
+            this.showSuccessMessage('Successfully deleted the gain or loss attribute:');
+            this.loadGainOrLossAttributes();
+          }, err => {
+            console.log('error in deleting gain or loss attribute: ', data)
+            this.showDeleteErrorMessage();
+          });
+        }
+      });
+    });
+    this.event.addItemSubject = addItemSubject;
+    this.event.editItemSubject = editItemSubject;
+    this.event.deleteItemSubject = deleteItemSubject;
+    this.loadGainOrLossAttributes();
+  }
+
+  loadGainOrLossAttributes() {
+    this.dataSetupService.getGainOrLossAttributes().subscribe(result => {
+      this.triggerClosing.items = result;
+    });
+  }
+
   initBrockerageCommisionsGrid() {
     this.loadBrockerageCommisionsData();
 
@@ -236,7 +334,7 @@ export class DatasetupComponent implements OnInit {
     let colIds: string[] = [];
     let col: EditableGridColumn = new EditableGridColumn();
 
-    
+
     col.id = "brokerageValue";
     col.name = "Brokerage";
     col.type = 'text';
@@ -324,18 +422,18 @@ export class DatasetupComponent implements OnInit {
   }
 
   showDeleteErrorMessage() {
-    this.toastr.error('Failed to delete entry. Please check if this has assigned to any trade strategy.', 'Error', 
-    { 
-      tapToDismiss:false,
-      closeButton:true,
-      disableTimeOut: true
-    });
+    this.toastr.error('Failed to delete entry. Please check if this has assigned to any trade strategy.', 'Error',
+      {
+        tapToDismiss: false,
+        closeButton: true,
+        disableTimeOut: true
+      });
   }
 
   showErrorMessageDialog(msg: string) {
-    this.toastr.error(msg, 'Error', { 
-      tapToDismiss:false,
-      closeButton:true,
+    this.toastr.error(msg, 'Error', {
+      tapToDismiss: false,
+      closeButton: true,
       disableTimeOut: true
     });
   }
