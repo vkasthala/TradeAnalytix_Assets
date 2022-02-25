@@ -42,6 +42,8 @@ export class DatasetupComponent implements OnInit {
     this.initTechIndicators();
     this.initMindsetTypes();
     this.initSurrEventTypes();
+    this.initTriggersForClosing();
+    this.initGainOrLossAttributes();
     this.cdr.detectChanges();
   }
 
@@ -268,9 +270,9 @@ export class DatasetupComponent implements OnInit {
         }
       });
     });
-    this.event.addItemSubject = addItemSubject;
-    this.event.editItemSubject = editItemSubject;
-    this.event.deleteItemSubject = deleteItemSubject;
+    this.triggerClosing.addItemSubject = addItemSubject;
+    this.triggerClosing.editItemSubject = editItemSubject;
+    this.triggerClosing.deleteItemSubject = deleteItemSubject;
     this.loadCloseTriggers();
   }
 
@@ -315,15 +317,15 @@ export class DatasetupComponent implements OnInit {
         }
       });
     });
-    this.event.addItemSubject = addItemSubject;
-    this.event.editItemSubject = editItemSubject;
-    this.event.deleteItemSubject = deleteItemSubject;
+    this.gainOrLossAttribution.addItemSubject = addItemSubject;
+    this.gainOrLossAttribution.editItemSubject = editItemSubject;
+    this.gainOrLossAttribution.deleteItemSubject = deleteItemSubject;
     this.loadGainOrLossAttributes();
   }
 
   loadGainOrLossAttributes() {
     this.dataSetupService.getGainOrLossAttributes().subscribe(result => {
-      this.triggerClosing.items = result;
+      this.gainOrLossAttribution.items = result;
     });
   }
 

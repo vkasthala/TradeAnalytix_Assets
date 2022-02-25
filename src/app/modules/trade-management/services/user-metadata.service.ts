@@ -6,6 +6,7 @@ import { SurroundingType } from '../models/surrounding-type.model';
 import { TechnicalIndicator } from '../models/technical-indicator.model';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
+import { EditableListItem } from '../../shared/models/common/editable-list-item.model';
 
 @Injectable({
   providedIn: 'root'

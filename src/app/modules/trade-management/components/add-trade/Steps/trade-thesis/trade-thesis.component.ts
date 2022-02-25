@@ -27,6 +27,8 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
   sourceTypes: SourceType[];
   technicalIndicators: TechnicalIndicator[];
   surroundingTypes: SurroundingType[];
+  closeTriggers: EditableListItem[];
+  gainLossAttributes: EditableListItem[];
   tradeThesis: TradeThesis;
 
   @ViewChild('thesisTradingview', { static: false }) thesisTradingview: ElementRef;
@@ -60,6 +62,8 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
     this.loadSourceTypes();
     this.loadSurroundingEvents();
     this.loadTechnicalIndicators();
+    this.loadCloseTriggers();
+    this.loadGainLossAttributes();
   }
 
   ngAfterViewInit(): void {
@@ -138,6 +142,33 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
     });
   }
 
+  loadCloseTriggers() {
+    this.dataSetupService.getCloseTriggers().subscribe(result => {
+      this.closeTriggers = [];
+      this.closeTriggers.push(new EditableListItem());
+      this.closeTriggers = this.closeTriggers.concat(result);
+      if (this.closeTriggers && this.closeTriggers.length) {
+        if (!this.tradeThesis.closeSourceId) {
+          this.tradeThesis.closeSourceId = this.closeTriggers[0].id;
+        }
+      }
+    });
+  }
+
+
+  loadGainLossAttributes() {
+    this.dataSetupService.getGainOrLossAttributes().subscribe(result => {
+      this.gainLossAttributes = [];
+      this.gainLossAttributes.push(new EditableListItem());
+      this.gainLossAttributes = this.gainLossAttributes.concat(result);
+      if (this.gainLossAttributes && this.gainLossAttributes.length) {
+        if (!this.tradeThesis.closeSurroundingEventId) {
+          this.tradeThesis.closeSurroundingEventId = this.gainLossAttributes[0].id;
+        }
+      }
+    });
+  }
+
   addValue(value) {
     const dialogRef = this._dialog.open(SingleInputModalComponent, {
       disableClose: true,
@@ -157,6 +188,10 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
         this.addSurroundingEvent(res);
       } else if ('Mindset' === value) {
         this.addMindset(res);
+      } else if ('Gain or loss attribute' === value) {
+        this.addGainLossAttribute(res);
+      } else if ('Trigger for close' === value) {
+        this.addCloseTrigger(res);
       }
     });
   }
@@ -164,14 +199,14 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
   addSource(value: string) {
     let isValueExist = false;
     this.sourceTypes.filter((x) => {
-      if(value === x.name) {
+      if (value === x.name) {
         isValueExist = true;
         this.toastr.error('Duplicate value. Please provide a new value', 'Error',
-        { 
-          tapToDismiss:false,
-          closeButton:true,
-          disableTimeOut: true
-        });
+          {
+            tapToDismiss: false,
+            closeButton: true,
+            disableTimeOut: true
+          });
         return;
       }
     })
@@ -181,7 +216,7 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
         this.toastr.success('Added new value successfully', 'Success');
       });
     }
-    
+
   }
 
   addTechnicalIndicator(value: string) {
@@ -199,14 +234,14 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
   addMindset(value: string) {
     let isValueExist = false;
     this.mindsetTypes.filter((x) => {
-      if(value === x.name) {
+      if (value === x.name) {
         isValueExist = true;
         this.toastr.error('Duplicate value. Please provide a new value', 'Error',
-        { 
-          tapToDismiss:false,
-          closeButton:true,
-          disableTimeOut: true
-        });
+          {
+            tapToDismiss: false,
+            closeButton: true,
+            disableTimeOut: true
+          });
         return;
       }
     })
@@ -243,8 +278,53 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
       }
     });
   }
+
   addEvent(input: any, event: any, index: number) {
     this.tradeThesis['holdingPeriod'] = event.value._d;
+  }
+
+  addCloseTrigger(value: string) {
+    let isValueExist = false;
+    this.closeTriggers.filter((x) => {
+      if (value === x.name) {
+        isValueExist = true;
+        this.toastr.error('Duplicate value. Please provide a new value', 'Error',
+          {
+            tapToDismiss: false,
+            closeButton: true,
+            disableTimeOut: true
+          });
+        return;
+      }
+    })
+    if (!isValueExist) {
+      this.dataSetupService.createCloseTrigger(this.createEditableItem(value)).subscribe(result => {
+        this.loadCloseTriggers();
+        this.toastr.success('Added new value successfully', 'Success');
+      });
+    }
+  }
+
+  addGainLossAttribute(value: string) {
+    let isValueExist = false;
+    this.gainLossAttributes.filter((x) => {
+      if (value === x.name) {
+        isValueExist = true;
+        this.toastr.error('Duplicate value. Please provide a new value', 'Error',
+          {
+            tapToDismiss: false,
+            closeButton: true,
+            disableTimeOut: true
+          });
+        return;
+      }
+    })
+    if (!isValueExist) {
+      this.dataSetupService.createGainOrLossAttribute(this.createEditableItem(value)).subscribe(result => {
+        this.loadGainLossAttributes();
+        this.toastr.success('Added new value successfully', 'Success');
+      });
+    }
   }
 
 }

@@ -5,7 +5,7 @@ import { UserMetadataStoreService } from 'src/app/modules/shared/services/user-m
 @Component({
   selector: 'app-close-source-editor',
   template: `<select class="form-control select-input" id="inputState" (change)="onChange($event)" [(ngModel)]="selectedId">
-      <option *ngFor="let key of metadataStoreService.sources" [value]="key.id" [label]="key.name"></option>
+      <option *ngFor="let key of metadataStoreService.closeTriggers" [value]="key.id" [label]="key.name"></option>
   </select>`
 })
 export class CloseSourceEditorComponent implements OnInit {
@@ -39,8 +39,8 @@ export class CloseSourceEditorComponent implements OnInit {
   }
 
   onChange($event) {
-    this.params.data.closeSource = this.metadataStoreService.sources[$event.target.selectedIndex].name;
-    this.params.data.closeSourceId = this.metadataStoreService.sources[$event.target.selectedIndex].id;
+    this.params.data.closeSource = this.metadataStoreService.closeTriggers[$event.target.selectedIndex].name;
+    this.params.data.closeSourceId = this.metadataStoreService.closeTriggers[$event.target.selectedIndex].id;
     this.params.data.dirty = true;
   }
 

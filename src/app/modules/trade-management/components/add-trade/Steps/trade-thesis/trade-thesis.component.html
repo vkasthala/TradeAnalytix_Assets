@@ -275,12 +275,12 @@
                     <div class="media align-items-center">
                         <div class="media-body">
                             <select class="form-control select-input" id="inputState" [(ngModel)]="tradeThesis.closeSourceId">
-                                <option [ngValue]="opt.id" *ngFor="let opt of sourceTypes; trackBy: id">{{opt.name}}
+                                <option [ngValue]="opt.id" *ngFor="let opt of closeTriggers; trackBy: id">{{opt.name}}
                                 </option>
                             </select>
                         </div>
                         <div class="px-3">
-                            <a class="add-new" (click)="addValue('Source')" *ngIf="addTrade || editTrade">+ Add New</a>
+                            <a class="add-new" (click)="addValue('Trigger for close')" *ngIf="addTrade || editTrade">+ Add New</a>
                         </div>
                     </div>
                 </div>
@@ -307,12 +307,12 @@
                     <div class="media align-items-center">
                         <div class="media-body">
                             <select class="form-control select-input" id="inputState" [(ngModel)]="tradeThesis.closeSurroundingEventId">
-                                <option [ngValue]="opt.id" *ngFor="let opt of surroundingTypes; trackBy: id">
+                                <option [ngValue]="opt.id" *ngFor="let opt of gainLossAttributes; trackBy: id">
                                     {{opt.name}}</option>
                             </select>
                         </div>
                         <div class="px-3">
-                            <a class="add-new" (click)="addValue('Surrounding Event')" *ngIf="addTrade || editTrade">+ Add New</a>
+                            <a class="add-new" (click)="addValue('Gain or loss attribute')" *ngIf="addTrade || editTrade">+ Add New</a>
                         </div>
                     </div>
                 </div>

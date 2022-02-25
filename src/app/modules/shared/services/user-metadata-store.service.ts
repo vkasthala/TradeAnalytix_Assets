@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
+import { DataSetupService } from '../../settings/services/data-setup.service';
 import { MindsetType } from '../../trade-management/models/mindset-type.model';
 import { SourceType } from '../../trade-management/models/source-type.model';
 import { SurroundingType } from '../../trade-management/models/surrounding-type.model';
 import { TechnicalIndicator } from '../../trade-management/models/technical-indicator.model';
 import { UserMetadataService } from '../../trade-management/services/user-metadata.service';
+import { EditableListItem } from '../models/common/editable-list-item.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,11 +16,13 @@ export class UserMetadataStoreService {
   events: SurroundingType[] = [];
   mindsets: MindsetType[] = [];
   technicalIndicators: TechnicalIndicator[] = [];
+  closeTriggers: EditableListItem[] = [];
+  gainLossAttributes: EditableListItem[] = [];
   directions: any[];
   contrarian: any[];
   tradeTypes: any[];
 
-  constructor(private metadataService: UserMetadataService) {
+  constructor(private metadataService: UserMetadataService, private dataSetupService: DataSetupService) {
     this.load();
   }
 
@@ -30,6 +34,8 @@ export class UserMetadataStoreService {
     this.initDirections();
     this.initContrarians();
     this.initTradeTypes();
+    this.loadCloseTriggers();
+    this.loadGainLLossAttributes();
   }
 
   loadMindsets() {
@@ -73,6 +79,28 @@ export class UserMetadataStoreService {
       techIndicator.id = 0;
       this.technicalIndicators.push(techIndicator);
       this.technicalIndicators = this.technicalIndicators.concat(result);
+    });
+  }
+
+  loadCloseTriggers() {
+    this.dataSetupService.getCloseTriggers().subscribe(result => {
+      this.closeTriggers = [];
+      let closeTrigger: EditableListItem = new EditableListItem();
+      closeTrigger.name = '';
+      closeTrigger.id = 0;
+      this.closeTriggers.push(closeTrigger);
+      this.closeTriggers = this.closeTriggers.concat(result);
+    });
+  }
+
+  loadGainLLossAttributes() {
+    this.dataSetupService.getGainOrLossAttributes().subscribe(result => {
+      this.gainLossAttributes = [];
+      let gainLossAttribute: EditableListItem = new EditableListItem();
+      gainLossAttribute.name = '';
+      gainLossAttribute.id = 0;
+      this.gainLossAttributes.push(gainLossAttribute);
+      this.gainLossAttributes = this.gainLossAttributes.concat(result);
     });
   }
 

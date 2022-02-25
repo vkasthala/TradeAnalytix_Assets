@@ -5,7 +5,7 @@ import { UserMetadataStoreService } from 'src/app/modules/shared/services/user-m
 @Component({
   selector: 'app-close-event-editor',
   template: `<select class="form-control select-input" id="inputState" (change)="onChange($event)" [(ngModel)]="selectedId">
-  <option *ngFor="let key of metadataStoreService.events" [value]="key.id" [label]="key.name"></option>
+  <option *ngFor="let key of metadataStoreService.gainLossAttributes" [value]="key.id" [label]="key.name"></option>
 </select>`
 })
 export class CloseEventEditorComponent implements OnInit {
@@ -39,8 +39,8 @@ export class CloseEventEditorComponent implements OnInit {
   }
 
   onChange($event) {
-    this.params.data.closeEvent = this.metadataStoreService.events[$event.target.selectedIndex].name;
-    this.params.data.closeEventId = this.metadataStoreService.events[$event.target.selectedIndex].id;
+    this.params.data.closeEvent = this.metadataStoreService.gainLossAttributes[$event.target.selectedIndex].name;
+    this.params.data.closeEventId = this.metadataStoreService.gainLossAttributes[$event.target.selectedIndex].id;
     this.params.data.dirty = true;
   }
 }
