@@ -743,30 +743,37 @@ $google-blue: #4285f4;
 $button-active-blue: #1669F2;
 
 .google-btn {
-    width: 170px;
     height: 32px;
     background-color: #4285f4;
     border-radius: 2px;
     box-shadow: 0 3px 4px 0 rgba(0,0,0,.25);
+    position: relative;
+    color: #fff;
+    line-height: 1.2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+
   .google-icon-wrapper {
-    position: absolute;
     margin-top: 1px;
     margin-left: 1px;
     width: 32px;
     height: 30px;
     border-radius: 2px;
     background-color: #fff;
+    left: 0;
+    top: 0;
+    text-align: center;
   }
   .google-icon {
-    position: absolute;
     margin-top: 6px;
-    margin-left: 6px;
     width: 18px;
     height: 18px;
+    left: 0;
   }
   .btn-text {
     float: right;
-    margin: 8px 6px 0 0;
+    margin: 0 10px;
     color: #fff;
     font-size: 13px;
   }
