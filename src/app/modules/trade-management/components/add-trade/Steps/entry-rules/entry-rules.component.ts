@@ -40,7 +40,7 @@ export class EntryRulesComponent implements OnInit {
 
   ngAfterViewInit(): void {
     let type = 'Entry';
-    if (this.inputState != undefined) {
+    if (this.inputState != undefined && this.inputState.tradeStrategy && this.inputState.tradeStrategy.id) {
       this.entryExitRuleService.getTradeEntryRules(this.inputState.tradeStrategy.id).subscribe(result => {
         this.entryRules = result;
       });
