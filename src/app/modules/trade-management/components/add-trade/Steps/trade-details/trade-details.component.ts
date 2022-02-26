@@ -105,6 +105,7 @@ export class TradeDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
+    
     if (!this.addTrade) {
       this.StockPosition = this.StockPosition.stockEntry[0];
       this.showStockSec = true;

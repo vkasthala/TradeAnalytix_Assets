@@ -372,7 +372,7 @@
             filter: drop-shadow(20px 20px 40px rgba(0, 0, 0, 0.12));
             img {
                 max-width: 100%;
-                width: 900px;
+                width: 800px;
             }
         }
     }
@@ -780,19 +780,23 @@ $button-active-blue: #1669F2;
 
 .page-heading {
 	color:#394C86 !important;
-	font-size:32px !important;
+	font-size:30px !important;
     text-align: center !important;
     @media #{$extra-small} {
         font-size:24px !important;
     }
 
 }
+.benefits-heading {
+	color:#5E5E5E !important;
+}
+
 .howit_works_section img {
 	width:100% !important;
 }
 .intro-description {
     font-weight: normal;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 28px;
     text-align: center;
     color: #3A4C85;

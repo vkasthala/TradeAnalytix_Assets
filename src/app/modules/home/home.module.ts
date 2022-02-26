@@ -19,8 +19,10 @@ import { RealizedReturnChartComponent } from '../dashboard/charts/realized-retur
 import { ReturnsCalendarChartComponent } from '../dashboard/charts/returns-calendar-chart/returns-calendar-chart.component';
 import { RiskByAssetChartComponent } from '../dashboard/charts/risk-by-asset-chart/risk-by-asset-chart.component';
 import { UserGoalsByDateChartComponent } from '../dashboard/charts/user-goals-by-date/user-goals-by-date.component.';
+import { AskForFeatureComponent } from '../dashboard/components/ask-for-feature/ask-for-feature.component';
 import { DashboardComponent } from '../dashboard/components/dashboard.component';
 import { KeyInsightsComponent } from '../dashboard/components/key-insights/key-insights.component';
+import { ReportAnIssueComponent } from '../dashboard/components/report-an-issue/report-an-issue.component';
 import { SliderModalComponent } from '../dashboard/components/slider-modal/slider-modal.component';
 import { DefaultDashboardComponent } from '../default-dashboard/default-dashboard.component';
 import { EconomicCalendarComponent } from '../economic-calendar/economic-calendar.component';
@@ -263,7 +265,9 @@ export const MY_FORMATS = {
     CloseEventEditorComponent,
     DirectionEditorComponent,
     ContrarianEditorComponent,
-    PlannedEditorComponent
+    PlannedEditorComponent,
+    ReportAnIssueComponent,
+    AskForFeatureComponent
   ],
   imports: [
     FormsModule,
@@ -322,7 +326,9 @@ export const MY_FORMATS = {
     CloseEventEditorComponent,
     DirectionEditorComponent,
     ContrarianEditorComponent,
-    PlannedEditorComponent
+    PlannedEditorComponent,
+    ReportAnIssueComponent,
+    AskForFeatureComponent
   ],
   // bootstrap: [TradeStrategiesGrid],
   providers: [

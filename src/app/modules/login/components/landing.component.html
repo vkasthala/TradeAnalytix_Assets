@@ -51,12 +51,12 @@
                 <div class="col-sm-3 col-md-6 d-flex align-items-center">
                     <div class="banner-info LeaderBoardTop">
                         <h1 class="banner-info-title">
-                            TradeAnalytix is a new age trade planner <br/>
-                            and journal for the retail investors
+                            Plan, record and analyze your trades with TradeAnalytix
                             <!-- Improve Trading Performance by -->
                         </h1>
                         <div class="pt-3 slideFeatures">
-                            {{features[currentInd]}}
+                            Provides users with everything they need to organize their trading habits, review their performance and manage risks 
+                            <!-- {{features[currentInd]}} -->
                             <!-- <div *ngFor="let datum of slideData; let i = index">
                                 {{datum}}
                               </div> -->
@@ -64,7 +64,15 @@
                         </div>
                         <div class="banner-info-footer">
                             <a class="btn btn-white mr-3" href="landing#howit_works">How it Works?</a>
-                            <button type="button" class="btn btn-outline" (click)="joinWaitlist()">Join Waitlist</button>
+                            <!-- <button type="button" class="btn btn-outline" (click)="joinWaitlist()">Sign-in</button> -->
+                            <button type="button" class="btn btn-outline" (click)="login('google')"><img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/> Sign-in</button>
+
+                            <!-- <div class="google-btn" (click)="login('google')">
+                                <div class="google-icon-wrapper">
+                                  <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+                                </div>
+                                <p class="btn-text">Sign-in with Google</p>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -162,8 +170,8 @@
         <div class="container">
             <div class="features_section howit_works_section pt-2" id="howit_works">
                 <div class="features_section_title page-heading">How it Works?</div>
-                <div class="intro-description">
-                    TradeAnalytix provides users with the perspective to plan trades, journal their trades and analyze the data to identify their strenghts and where they need improvement.
+                <div class="intro-description mb-3 py-2">
+                    TradeAnalytix acts as a decision support tool before and after executing the trades in the brokerage. It provides users with the perspective to plan trades, journal trades and analyze the data to identify their strengths and improvement areas
                 </div>
                 <div class="features_section_banner">
                     <img src="../../../../assets/images/portrait-Illustration.svg" alt="" />
@@ -171,7 +179,7 @@
             </div>
             <!-- end: Comprehensive trade journal -->
             <div class="features_section pb-2">
-                <h2 class="features_section_title page-heading">Product Benefits</h2>
+                <h2 class="features_section_title page-heading benefits-heading">Product Benefits</h2>
                 <div class="intro-description mt-2">TradeAnalytix provides users with everything they need to organize their trading habits, review their performance and manage risks.</div>
             </div>
             <div class="features_section" id="trade_journal">
@@ -179,7 +187,7 @@
                     <div class="col-md-4">
                         <div class="features_section_title">Systematic approach to trading through journaling of trades</div>
                         <div class="features_section_dec">
-                            Add your trades to a configurable, template-based trade journal with detailed notes. Add trades in bulk by importing trade history files exported from your brokerage account. Update the journal details of trades in bulk as well with an intuitive excel-like grid.
+                            Add your trades to our configurable, template-based trade journal either one-by-one or in bulk by importing trade history files from the brokerages. Update the journal details of your trades in bulk in an intuitive excel-like grid.
                         </div>
                     </div>
                     <div class="col-md-8 features_section_banner">

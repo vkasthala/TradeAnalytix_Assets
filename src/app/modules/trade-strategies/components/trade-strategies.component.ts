@@ -182,7 +182,8 @@ export class TradeStrategiesComponent implements OnInit {
 
    bulkUpdate() {
       const dialogRef = this._dialog.open(BulkUpdateUiComponent, {
-         width: 'auto',
+         width: '90vw',
+         maxWidth:'90vw',
          height: 'auto',
          data: {}
       });

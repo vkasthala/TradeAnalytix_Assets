@@ -13,6 +13,7 @@ import { TradeDirection } from 'src/app/modules/shared/models/trade-management/t
 import { TradeInputData } from 'src/app/modules/shared/models/trade-management/trade-input-data.model';
 import { TradeTag } from 'src/app/modules/shared/models/trade-management/trade-tag.model';
 import { UserStockSummary } from 'src/app/modules/shared/models/trade-management/user-stock-summary.model';
+import { DemoModeDetailsService } from 'src/app/modules/shared/services/demo-mode-details.service';
 import { UserStockStatsService } from 'src/app/modules/shared/services/user-stock-stats.service';
 import { OptionLegHistory } from '../../models/option-leg-history.model';
 import { RuleEvalResult } from '../../models/rule-eval-result.model';
@@ -82,6 +83,8 @@ export class AddNewTradeComponent implements OnInit {
   protected localTradeHistory: TradeHistory;
   protected serverTradeHistory: TradeHistory;
   errorMsg: string;
+  demoToggle: boolean = false;
+
   constructor(
     protected userStockStatsService: UserStockStatsService,
     protected tradeStrategyService: TradeStrategyService,
@@ -89,7 +92,9 @@ export class AddNewTradeComponent implements OnInit {
     protected entryExitRuleService: EntryExitRuleService,
     protected router: Router,
     protected toastr: ToastrService,
-    protected _dialog: MatDialog) {
+    protected _dialog: MatDialog,
+    private demoService: DemoModeDetailsService
+    ) {
     this.initState();
     this.localStockClosedSubject.asObservable().subscribe(data => {
       this.updateLocalTradeHistory(data, null);
@@ -101,6 +106,9 @@ export class AddNewTradeComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.demoToggle = this.demoService.demoMode;
+    debugger;
+    console.log('demoToggle', this.demoToggle)
     this.setState();
   }
 

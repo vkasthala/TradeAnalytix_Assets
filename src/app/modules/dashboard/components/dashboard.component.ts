@@ -11,6 +11,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { DemoModeDetailsService } from '../../shared/services/demo-mode-details.service';
 import { SliderModalComponent } from './slider-modal/slider-modal.component';
+import { ReportAnIssueComponent } from './report-an-issue/report-an-issue.component';
+import { AskForFeatureComponent } from './ask-for-feature/ask-for-feature.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -111,7 +113,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   }
 
   getSummaryValue(val) {
-    debugger;
     if (typeof (val) === 'number') {
       var num: number = +val;
       return Math.round(num);
@@ -177,6 +178,33 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     const dialogRef = this._dialog.open(SliderModalComponent, {
       disableClose: true,
       width: 'auto',
+    });
+
+    dialogRef.afterClosed().subscribe((res) => {
+    });
+  }
+
+  ReportNow() {
+    let dialogData = {
+      title: 'Report an Issue',
+    };
+    const dialogRef = this._dialog.open(ReportAnIssueComponent, {
+      disableClose: true,
+      width: 'auto',
+      data: dialogData
+    });
+
+    dialogRef.afterClosed().subscribe((res) => {
+    });
+  }
+  askFeature() {
+    let dialogData = {
+      title: 'Ask for a Feature',
+    };
+    const dialogRef = this._dialog.open(AskForFeatureComponent, {
+      disableClose: true,
+      width: 'auto',
+      data: dialogData
     });
 
     dialogRef.afterClosed().subscribe((res) => {
