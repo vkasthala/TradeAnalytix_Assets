@@ -20,19 +20,19 @@
                         </a>
                     </li>
 
-                    <li [class.nav-active]="currentRoute == 'contact-us'">
-                        <a class="landing-nav-link" [routerLink]="['/contact-us']">
+                    <li class="px-0" [class.nav-active]="currentRoute == 'contact-us'">
+                        <a class="landing-nav-link pr-0" [routerLink]="['/contact-us']">
                             Contact Us
                         </a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <div class="google-btn" (click)="login('google')">
                             <div class="google-icon-wrapper">
                               <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
                             </div>
                             <p class="btn-text">Sign-in with Google</p>
                         </div>
-                    </li>
+                    </li> -->
                 </ul>
             </nav>
 
@@ -67,14 +67,6 @@
                             Contact Us
                         </a>
                     </li>
-                    <li>
-                        <div class="google-btn" (click)="login('google')">
-                            <div class="google-icon-wrapper">
-                            <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
-                            </div>
-                            <p class="btn-text">Sign-in with Google</p>
-                        </div>
-                    </li>
                 </ul>
             </nav>
         </div>
@@ -89,13 +81,13 @@
                             <!-- Improve Trading Performance by -->
                         </h1>
                         <div class="pt-3 slideFeatures">
-                            Provides users with everything they need to organize their trading habits, review their performance and manage risks 
+                            Provides users with everything they need to organize their trading habits, review performance and manage risks 
                             <!-- {{features[currentInd]}} -->
                         </div>
                         <div class="banner-info-footer">
                             <a class="btn btn-white mr-3" href="landing#howit_works">How it Works?</a>
                             <!-- <button type="button" class="btn btn-outline" (click)="joinWaitlist()">Sign-in</button> -->
-                            <button type="button" class="btn google-btn pl-0 pr-3" (click)="login('google')"><span class="google-icon-wrapper mr-2"><img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/></span> Sign-in</button>
+                            <button type="button" class="btn google-btn pl-0 pr-3" (click)="login('google')"><span class="google-icon-wrapper mr-3"><img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/></span> Sign-in</button>
                         </div>
                     </div>
                 </div>
@@ -193,7 +185,7 @@
         <div class="container">
             <div class="features_section howit_works_section pt-2" id="howit_works">
                 <div class="features_section_title page-heading">How it Works?</div>
-                <div class="intro-description mb-3 py-2">
+                <div class="intro-description mb-3 pt-2 pb-3">
                     TradeAnalytix acts as a decision support tool before and after executing the trades in the brokerage. It provides users with the perspective to plan trades, journal trades and analyze the data to identify their strengths and improvement areas
                 </div>
                 <div class="features_section_banner">
@@ -203,8 +195,8 @@
             </div>
             <!-- end: Comprehensive trade journal -->
             <div class="features_section pb-2">
-                <h2 class="features_section_title page-heading benefits-heading">Product Benefits</h2>
-                <div class="intro-description mt-2">TradeAnalytix provides users with everything they need to organize their trading habits, review their performance and manage risks.</div>
+                <h2 class="features_section_title page-heading">Product Benefits</h2>
+                <div class="intro-description mt-1 pt-2 pb-3">TradeAnalytix provides users with everything they need to organize their trading habits, review their performance and manage risks.</div>
             </div>
             <div class="features_section" id="trade_journal">
                 <div class="row row_reverse">

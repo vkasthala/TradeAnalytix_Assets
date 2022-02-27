@@ -40,12 +40,11 @@
             background-image: url('../../../../assets/images/ta_logo_new.svg');
             background-size: contain;
             background-repeat: no-repeat;
-            width: 267px;
-            /* height: 100%; */
+            width: 230px;
             min-height: 50px;
             @media #{$extra-small} {
                 display: block;
-                width: 70%;
+                width: 65%;
             }
         }
         // features section
@@ -92,8 +91,7 @@
             display: flex;
             justify-content: flex-end;
             width: 100%;
-            // flex-flow: wrap;
-            padding: 0 10px;
+            padding: 0;
             @include media(">tablet",
             "<laptop") {
                 flex-wrap: wrap;
@@ -199,9 +197,10 @@
     }
     .slideFeatures {
         font-size: 18px;
-        line-height: 28px;
+        line-height: 22px;
         @media #{$extra-small} {
-            font-size: 16px;
+            font-size: 22px;
+            line-height: 28px;
         }
     }
     .banner-info {
@@ -213,11 +212,12 @@
     .banner-info-title {
         font-style: normal;
         font-weight: 600;
-        font-size: 28px;
+        font-size: 34px;
+        line-height: 1.3;
         color: #fff;
         @media #{$extra-small} {
-            font-size: 22px;
-            line-height: 30px;
+            font-size: 40px;
+            line-height: 1.3;
         }
     }
     .banner-info-footer {
@@ -225,8 +225,12 @@
         .google-btn {
             height: 45px;
             font-size: 14px;
+            width: 130px;
+            font-weight: 600;
+            box-shadow: none;
             @media #{$extra-small} {
                 width: 100%;
+                justify-content: center;
             }
             .google-icon-wrapper {
                 margin-top: 0;
@@ -236,6 +240,9 @@
                 align-items: center;
                 display: flex;
                 justify-content: center;
+                @media #{$extra-small} {
+                    position: absolute;
+                }
             }
             .google-icon {
                 margin-top: 0;
@@ -277,7 +284,7 @@
     .banner-rtside {
         float: right;
         position: relative;
-        margin-right: -15px;
+        margin-right: -10px;
         @media #{$extra-small} {
             display: none;
         }
@@ -292,7 +299,7 @@
         background: #EC6B56;
         border-radius: 5px;
         font-size: 13px;
-        line-height: 20px;
+        line-height: 18px;
         text-align: center;
         color: #FFFFFF;
         padding: 0.25rem;
@@ -303,7 +310,7 @@
         background: #2285FA;
         border-radius: 5px;
         font-size: 13px;
-        line-height: 20px;
+        line-height: 18px;
         text-align: center;
         color: #FFFFFF;
         padding: 0.25rem;
@@ -367,6 +374,10 @@
         margin-top: -25px;
         z-index: 90;
         position: relative;
+        @media #{$extra-small} {
+            padding-top: 1rem;
+            margin-top: -15px;
+        }
     }
     .main-body-title {
         font-weight: bold;
@@ -386,6 +397,9 @@
         padding-top: 1rem;
         padding-bottom: 3rem;
         text-align: center;
+        @media #{$extra-small} {
+            padding-bottom: 1rem;
+        }
         .features_section_title {
             font-weight: bold;
             font-size: 20px;
@@ -402,7 +416,7 @@
         .features_section_dec {
             font-weight: normal;
             font-size: 16px;
-            line-height: 24px;
+            line-height: 22px;
             color: #9DA6BA;
             text-align: left;
         }
@@ -849,12 +863,11 @@ $button-active-blue: #1669F2;
 .intro-description {
     font-weight: normal;
     font-size: 18px;
-    line-height: 28px;
+    line-height: 22px;
     text-align: center;
     color: #3A4C85;
     @media #{$extra-small} {
         font-size: 18px;
-        line-height: 28px;
     }
 }
 .row_reverse {

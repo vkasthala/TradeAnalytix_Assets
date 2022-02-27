@@ -5,11 +5,11 @@
                 <h5 class="text-primary">
                     <!-- {{add ? 'Add Trade' : ''}} {{view ? 'View Trade' : ''}} -->
                     <!-- <span *ngIf="!add">{{tradeStrategy.uid}}</span> -->
-
-                    <div *ngIf="add == false">
+                    <button class="btn btn-next btn-share mr-2" type="button">Share</button>
+                    <span *ngIf="add == false">
                         <label class="col-form-label">Last Updated Date : {{updatedDate | date:
                             'dd-MMM-yyyy'}}</label>
-                    </div>
+                    </span>
                 </h5>
             </div>
         </div>
