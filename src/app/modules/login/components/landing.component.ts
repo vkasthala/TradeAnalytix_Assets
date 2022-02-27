@@ -22,6 +22,8 @@ export class LandingComponent implements OnInit {
   currentInd: number = 0;
 
   protected loginModalOpen: boolean = false;
+  hamburgerMenu: boolean = false;
+
   constructor(
     private router: Router,
     private _dialog: MatDialog,
@@ -94,5 +96,8 @@ export class LandingComponent implements OnInit {
         });
       }
     });
+  }
+  menuToggle() {
+    this.hamburgerMenu = !this.hamburgerMenu 
   }
 }

@@ -1,10 +1,9 @@
 <div class="trade-app">
     <div class="trade-header-section">
-        <div class="d-flex landing-header">
+        <div class="container d-flex landing-header">
             <div class="trade-header-section-logo"></div>
             <nav class="landing-navbar">
                 <ul class="list-unstyled ">
-
                     <li>
                         <a class="landing-nav-link" href="landing#howit_works">
                             How it Works
@@ -14,13 +13,6 @@
                         <a class="landing-nav-link" href="landing#trade_journal">
                             Benefits
                         </a>
-                        <!-- <ul class="sub-menu">
-                            <li [class.nav-active]="currentRoute == 'trade-journal'">
-                                <a [routerLink]="['/trade-journal']">
-                                Trade Journal 
-                                </a>
-                            </li>
-                        </ul> -->
                     </li>
                     <li [class.nav-active]="currentRoute == 'demo'">
                         <a class="landing-nav-link" [routerLink]="['/demo']">
@@ -43,10 +35,52 @@
                     </li>
                 </ul>
             </nav>
+
+            <span class="material-icons hamburger-menu-icon" (click)="menuToggle()">menu</span>
+
+            
         </div>
         <!-- Trade-Navbar-Web -->
+        
+        <!-- Trade-Navbar-Mobile -->
+        <div class="trade-header-mobile">
+            <nav class="trade-navbar hamburger-menu" [ngClass]="hamburgerMenu ? 'open' : ''">
+                <ul class="list-unstyled ">
+                    <li>
+                        <a class="landing-nav-link" href="landing#howit_works">
+                            How it Works
+                        </a>
+                    </li>
+                    <li>
+                        <a class="landing-nav-link" href="landing#trade_journal">
+                            Benefits
+                        </a>
+                    </li>
+                    <li [class.nav-active]="currentRoute == 'demo'">
+                        <a class="landing-nav-link" [routerLink]="['/demo']">
+                            Features
+                        </a>
+                    </li>
 
-        <div class="trade-banner-section">
+                    <li [class.nav-active]="currentRoute == 'contact-us'">
+                        <a class="landing-nav-link" [routerLink]="['/contact-us']">
+                            Contact Us
+                        </a>
+                    </li>
+                    <li>
+                        <div class="google-btn" (click)="login('google')">
+                            <div class="google-icon-wrapper">
+                            <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+                            </div>
+                            <p class="btn-text">Sign-in with Google</p>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+
+        <div class="trade-banner-section container">
             <div class="row w-100 m-0">
                 <div class="col-sm-3 col-md-6 d-flex align-items-center">
                     <div class="banner-info LeaderBoardTop">
@@ -57,22 +91,11 @@
                         <div class="pt-3 slideFeatures">
                             Provides users with everything they need to organize their trading habits, review their performance and manage risks 
                             <!-- {{features[currentInd]}} -->
-                            <!-- <div *ngFor="let datum of slideData; let i = index">
-                                {{datum}}
-                              </div> -->
-                            <!-- Learning from your trade history -->
                         </div>
                         <div class="banner-info-footer">
                             <a class="btn btn-white mr-3" href="landing#howit_works">How it Works?</a>
                             <!-- <button type="button" class="btn btn-outline" (click)="joinWaitlist()">Sign-in</button> -->
-                            <button type="button" class="btn google-btn pl-0" (click)="login('google')"><span class="google-icon-wrapper mr-2"><img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/></span> Sign-in</button>
-
-                            <!-- <div class="google-btn" (click)="login('google')">
-                                <div class="google-icon-wrapper">
-                                  <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
-                                </div>
-                                <p class="btn-text">Sign-in with Google</p>
-                            </div> -->
+                            <button type="button" class="btn google-btn pl-0 pr-3" (click)="login('google')"><span class="google-icon-wrapper mr-2"><img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/></span> Sign-in</button>
                         </div>
                     </div>
                 </div>
@@ -135,7 +158,7 @@
                                     Share Trades with Community
                                 </div>
                             </div>
-                            <div class="widgets_box_transparent align-items-start">
+                            <div class="widgets_box_transparent align-items-center">
                                 <img src="../../../../assets/images/shape2.png" alt="">
                             </div>
                             <div class="widgets_box_orange">
@@ -146,7 +169,7 @@
                                     Risk Analysis and Simulation
                                 </div>
                             </div>
-                            <div class="widgets_box_transparent align-items-start">
+                            <div class="widgets_box_transparent align-items-center">
                                 <img src="../../../../assets/images/shape3.png" alt="">
                             </div>
                             <div class="widgets_box_vshape"></div>
@@ -174,7 +197,8 @@
                     TradeAnalytix acts as a decision support tool before and after executing the trades in the brokerage. It provides users with the perspective to plan trades, journal trades and analyze the data to identify their strengths and improvement areas
                 </div>
                 <div class="features_section_banner">
-                    <img src="../../../../assets/images/portrait-Illustration.svg" alt="" />
+                    <img class="howit_works_web_banner" src="../../../../assets/images/portrait-Illustration.svg" alt="" />
+                    <img class="howit_works_mobile_banner" src="../../../../assets/images/portrait-Illustration-mobile.svg" alt="" />
                 </div>
             </div>
             <!-- end: Comprehensive trade journal -->
