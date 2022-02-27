@@ -24,6 +24,7 @@ import { MaxRiskDetails } from '../models/max-risk-details.model';
 import { UpdateStockPricePopupComponent } from './update-stock-price-popup/update-stock-price-popup.component';
 import { MatDialog } from '@angular/material/dialog';
 import { TradeStrategyService } from '../../trade-management/services/trade-strategy.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-risk-analysis',
@@ -74,12 +75,14 @@ export class RiskAnalysisComponent implements OnInit {
   editStockForm: boolean = false;
   editOptionForm: boolean = false;
   showNextBtn: boolean = false;
-  protected optionGroup:any = {};
+  protected optionGroup: any = {};
   stockTable: boolean = true;
   optionTable: boolean = false;
   totalTable: boolean = false;
   selectedOptionResult: any;
   isEditTrade: boolean = false;
+  targetDt: moment.Moment;
+
   constructor(private utilService: UtilService,
     private riskAnalysisService: RiskAnalysisService,
     private userStockStatsService: UserStockStatsService,
@@ -88,8 +91,8 @@ export class RiskAnalysisComponent implements OnInit {
     private router: Router,
     private _dialog: MatDialog,
     private tradeStrategyService: TradeStrategyService,
-    
-    ) {
+
+  ) {
     this.stockEntry = this.createStockEntry();
     this.initState();
   }
@@ -106,12 +109,12 @@ export class RiskAnalysisComponent implements OnInit {
 
   enterSymbol() {
     if (!this.selectedStock || !this.selectedStock.code) {
-      this.toastr.error('Please enter a valid symbol to proceed', 'Error', 
-      { 
-        tapToDismiss:false,
-        closeButton:true,
-        disableTimeOut: true
-      });
+      this.toastr.error('Please enter a valid symbol to proceed', 'Error',
+        {
+          tapToDismiss: false,
+          closeButton: true,
+          disableTimeOut: true
+        });
       return false;
     }
     this.currentState++;
@@ -321,7 +324,7 @@ export class RiskAnalysisComponent implements OnInit {
     }
   }
 
-  riskAnalysisGridChange(value:string) {
+  riskAnalysisGridChange(value: string) {
     if (value === 'stockTb') {
       this.optionTable = false;
       this.totalTable = false;
@@ -362,7 +365,7 @@ export class RiskAnalysisComponent implements OnInit {
     this.editOptionForm = false;
     this.showOptionLegForm = false;
   }
-  
+
   initState(): void {
     if (!this.router.getCurrentNavigation()) {
       return;
@@ -392,8 +395,8 @@ export class RiskAnalysisComponent implements OnInit {
         }
         if (state.tradeStrategy && state.tradeStrategy.stockOptions) {
           console.log('stockOptions:', state.tradeStrategy.stockOptions);
-          for(let ind = 0; ind < state.tradeStrategy.stockOptions.length; ind++){
-            if(state.tradeStrategy.stockOptions[ind].contracts !== 0) {
+          for (let ind = 0; ind < state.tradeStrategy.stockOptions.length; ind++) {
+            if (state.tradeStrategy.stockOptions[ind].contracts !== 0) {
               this.stockOptions.push(state.tradeStrategy.stockOptions[ind]);
             }
           }
@@ -407,19 +410,19 @@ export class RiskAnalysisComponent implements OnInit {
         for (let ind = 0; ind < this.stockOptions.length; ind++) {
           console.log(this.stockOptions[ind].expireDate);
           let todayDate = new Date();
-          todayDate.setHours(0,0,0,0);
-          let currentDate = new Date(this.stockOptions[ind].expireDate);          
+          todayDate.setHours(0, 0, 0, 0);
+          let currentDate = new Date(this.stockOptions[ind].expireDate);
           if (currentDate < todayDate) {
-            this.toastr.error("Expiry date is in the past. Please change it to a future date", 'Error', 
-            { 
-              tapToDismiss:false,
-              closeButton:true,
-              disableTimeOut: true
-            });
-          } 
+            this.toastr.error("Expiry date is in the past. Please change it to a future date", 'Error',
+              {
+                tapToDismiss: false,
+                closeButton: true,
+                disableTimeOut: true
+              });
+          }
         }
       }
-    } 
+    }
   }
 
   initRiskAnalysisChart(riskAnalysisRequest: RiskAnalysisRequest) {
@@ -542,12 +545,12 @@ export class RiskAnalysisComponent implements OnInit {
   validateInputs(): boolean {
     if (this.stockAdded) {
       if (!this.stockEntry.price || this.stockEntry.price == 0) {
-        this.toastr.error('Invalid Stock Price', 'Error', 
-        { 
-          tapToDismiss:false,
-          closeButton:true,
-          disableTimeOut: true
-        });
+        this.toastr.error('Invalid Stock Price', 'Error',
+          {
+            tapToDismiss: false,
+            closeButton: true,
+            disableTimeOut: true
+          });
         return false;
       }
 
@@ -762,6 +765,15 @@ export class RiskAnalysisComponent implements OnInit {
       status = this.stockOptions[ind].actionType !== undefined && this.stockOptions[ind].strikePrice !== undefined && this.stockOptions[ind].strikePrice > 0 && this.stockOptions[ind].contracts > 0 && this.stockOptions[ind].expireDate !== undefined && this.stockOptions[ind].price !== undefined && this.stockOptions[ind].price > 0;
     }
     return status;
+  }
+
+  onTargetDateChange(): void {
+    if (this.targetDt) {
+      const days: number = this.targetDt.diff(moment(), 'days');
+      for (let ind = 0; ind < this.stockOptions.length; ind++) {
+        this.stockOptions[ind].daysLeft = days;
+      }
+    }
   }
 
 }

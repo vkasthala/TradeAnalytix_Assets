@@ -257,7 +257,7 @@
                                                         <label class="stock-name pb-1 m-0">Target Date</label>
                                                         <div class="w-80">
                                                             <div class="datepicker-group">
-                                                                <input matInput [matDatepicker]="targetDate" id="targetDate" name="targetDate" [min]="minDate" />
+                                                                <input matInput [matDatepicker]="targetDate" id="targetDate" name="targetDate" [min]="minDate" [(ngModel)]="targetDt" (dateChange)="onTargetDateChange()"/>
                                                                 <mat-datepicker-toggle matSuffix [for]="targetDate"></mat-datepicker-toggle>
                                                                 <mat-datepicker #targetDate></mat-datepicker>
                                                             </div>

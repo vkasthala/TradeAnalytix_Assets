@@ -8,6 +8,7 @@ import { TradeStrategyService } from '../../services/trade-strategy.service';
 import { AddNewTradeComponent } from '../add-trade/add-new-trade.component';
 import { RiskAnalysisService } from 'src/app/modules/risk-analysis/services/risk-analysis.service';
 import { EntryExitRuleService } from '../../services/entry-exit-rule.service';
+import { DemoModeDetailsService } from 'src/app/modules/shared/services/demo-mode-details.service';
 
 
 @Component({
@@ -23,8 +24,9 @@ export class CloseTradeComponent extends AddNewTradeComponent implements OnInit 
     entryExitRuleService: EntryExitRuleService,
     router: Router,
     toastr: ToastrService,
-    _dialog: MatDialog) {
-    super(userStockStatsService, tradeStrategyService, riskAnalysisService, entryExitRuleService, router, toastr, _dialog);
+    _dialog: MatDialog,
+    demoService: DemoModeDetailsService) {
+    super(userStockStatsService, tradeStrategyService, riskAnalysisService, entryExitRuleService, router, toastr, _dialog, demoService);
     this.close = true;
     this.edit = false;
     this.add = false;

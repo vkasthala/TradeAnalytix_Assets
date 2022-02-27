@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material';
 import { ToastrService } from 'ngx-toastr';
 import { RiskAnalysisService } from 'src/app/modules/risk-analysis/services/risk-analysis.service';
 import { EntryExitRuleService } from '../../services/entry-exit-rule.service';
+import { DemoModeDetailsService } from 'src/app/modules/shared/services/demo-mode-details.service';
 
 @Component({
   selector: 'app-edit-trade',
@@ -22,8 +23,9 @@ export class EditTradeComponent extends AddNewTradeComponent implements OnInit {
     entryExitRuleService: EntryExitRuleService,
     router: Router,
     toastr: ToastrService,
-    _dialog: MatDialog) {
-    super(userStockStatsService, tradeStrategyService, riskAnalysisService, entryExitRuleService, router, toastr, _dialog);
+    _dialog: MatDialog,
+    demoService: DemoModeDetailsService) {
+    super(userStockStatsService, tradeStrategyService, riskAnalysisService, entryExitRuleService, router, toastr, _dialog, demoService);
     this.edit = true;
     this.close = false;
     this.add = false;
