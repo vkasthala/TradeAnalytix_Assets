@@ -16,6 +16,7 @@ import { ImportTradesGridService } from 'src/app/modules/import-trades-history/s
 import { ImportTradePopupComponent } from './import-trade-popup/import-trade-popup.component';
 import { ToastrService } from 'ngx-toastr';
 import { UploadFileService } from 'src/app/modules/import-trades/services/upload-file.service';
+import { UtilService } from '../utilities/services/util.service';
 
 @Component({
   selector: 'app-import-trades-history',
@@ -42,6 +43,7 @@ export class ImportTradesHistory implements AfterViewInit, OnInit {
     protected toastr: ToastrService,
     private router: Router,
     private _dialog: MatDialog,
+    private utilService: UtilService
     //public dialogRef: MatDialogRef<ImportTradePopupComponent>
   ) {
   }
@@ -155,6 +157,10 @@ export class ImportTradesHistory implements AfterViewInit, OnInit {
         disableTimeOut: true
       });
     }
+  }
+
+  downloadStandardFile() {
+    this.utilService.downloadFile("TRADE_ANALYTIX_IMPORT_STANDARD.xlsx");
   }
 
   expandRowOptions(index) {
