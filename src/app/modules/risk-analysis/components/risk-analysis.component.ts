@@ -525,6 +525,7 @@ export class RiskAnalysisComponent implements OnInit {
     riskAnalysisRequest.options = this.stockOptions;
     riskAnalysisRequest.module = 'RISK_ANALYSIS';
     riskAnalysisRequest.stockId = this.selectedStock.id;
+    this.targetDt = null;
 
     console.log('implied volatility request:', JSON.stringify(riskAnalysisRequest));
 
@@ -769,11 +770,17 @@ export class RiskAnalysisComponent implements OnInit {
 
   onTargetDateChange(): void {
     if (this.targetDt) {
-      const days: number = this.targetDt.diff(moment(), 'days');
       for (let ind = 0; ind < this.stockOptions.length; ind++) {
-        this.stockOptions[ind].daysLeft = days;
+        if (this.stockOptions[ind].expireDate) {
+          let days: number = moment(this.stockOptions[ind].expireDate).diff(this.targetDt, 'days');
+          if (days < 0) {
+            days = 0;
+          }
+          this.stockOptions[ind].daysLeft = days;
+        }
       }
     }
+    console.log('target::', this.targetDt);
   }
 
 }
