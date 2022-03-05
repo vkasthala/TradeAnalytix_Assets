@@ -64,22 +64,22 @@
 
     <div class="mb-3">
         <select class="form-control" (change)="settingsTabChange($event.target.value)">
-            <option value="UserProﬁle" selected data-default>User Proﬁle</option>
-            <option value="InvestmentGoals">Investment Goals</option>
-            <option value="DepositsWithdrawals">Deposits & Withdrawals</option>
+            <!-- <option value="UserProﬁle" selected data-default>User Proﬁle</option> -->
+            <option value="InvestmentGoals" selected data-default>Investment Goals</option>
+            <!-- <option value="DepositsWithdrawals">Deposits & Withdrawals</option> -->
             <option value="DataSetup">Data Setup</option>
         </select>
     </div>
     <div class="tab-content tabs">
-        <div class="tab-pane active" id="UserProﬁle" role="tabpanel" [ngClass]="[selectedType === 'UserProﬁle' ? 'd-block' : 'd-none']">
+        <!-- <div class="tab-pane active" id="UserProﬁle" role="tabpanel" [ngClass]="[selectedType === 'UserProﬁle' ? 'd-block' : 'd-none']">
             <app-profile></app-profile>
-        </div>
+        </div> -->
         <div class="tab-pane" id="InvestmentGoals" role="tabpanel" [ngClass]="[selectedType === 'InvestmentGoals' ? 'd-block' : 'd-none']">
             <app-investmentgoals></app-investmentgoals>
         </div>
-        <div class="tab-pane" id="DepositsWithdrawals" role="tabpanel" [ngClass]="[selectedType === 'DepositsWithdrawals' ? 'd-block' : 'd-none']">
+        <!-- <div class="tab-pane" id="DepositsWithdrawals" role="tabpanel" [ngClass]="[selectedType === 'DepositsWithdrawals' ? 'd-block' : 'd-none']">
             <app-depositswithdrawals></app-depositswithdrawals>
-        </div>
+        </div> -->
         <div class="tab-pane settings-component" id="DataSetup" role="tabpanel" [ngClass]="[selectedType === 'DataSetup' ? 'd-block' : 'd-none']">
             <app-datasetup></app-datasetup>
         </div>

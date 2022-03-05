@@ -1,7 +1,7 @@
 <div class="px-2 dashboard">
     <div class="trade-dash-cards-web px-2">
-        <div class="row mt-3">
-            <div class="col-sm-12 col-md-6 pr-0">
+        <div class="row mt-3 dashboard-header-row">
+            <div class="col-sm-12 col-md-6 pr-0 dashboard-header-column">
                 <div class="card">
                     <div class="px-2">
                         <img src="../../../../assets/images/welcome.svg"/>
@@ -10,8 +10,8 @@
                         <div class="card-title">Welcome {{userName}}</div>
                         <!-- <button type="button" class="btn-get-started ml-2" (click)="showChecklist()" data-toggle="tooltip" data-placement="top"
                         title="Show Checklist">Get Started</button> -->
-                        <!-- <p>To get started lorem Ipsum is simply dummy text of the printing and typesetting industry.</p> -->
-                        <div class="card-bottom pt-3">
+                        <p>Take a tour of TA and turn on the demo mode to know its  benefits</p>
+                        <div class="card-bottom pt-1">
                             <span class="mr-3 cursor" (click)="startTour()">Start Tour</span>
                             <span class="ml-3 cursor" (click)="showDemoMsg()">Demo Mode</span>
                         </div>
@@ -26,7 +26,7 @@
                     </div>
                     <div class="pl-2">
                         <div class="card-title">Get things moving with our popular features</div>
-                        <div class="pt-2">
+                        <div class="pt-3 card-btns-row">
                             <a routerLink="/new-trade" class="btn card-btn" data-toggle="tooltip" data-placement="top" title="Add trade">Add Trade</a>
                             <a routerLink="/import-trades-history" class="btn card-btn ml-3" data-toggle="tooltip" data-placement="top" title="Import Trades">Import Trades</a>
                             <a routerLink="/risk-analysis" class="btn card-btn ml-3" data-toggle="tooltip" data-placement="top" title="Analyze Risk">Analyze Risk</a>
@@ -37,16 +37,24 @@
                 </div>
             </div>
         </div>
-        
-        <h5 class="mt-3 mb-2 metrics-title">Key Metrics</h5>
-        <div class="trade-dash-cards">
-            <div class="flex-item" *ngFor="let item of summaryItems;">
-                <div class="flex-inner">
-                    <a>
-                        <h3 class="trade_count trade-green" [style.color]="getSummaryTextColor(item)">{{getSummaryValue(item.value)}}{{getValueSuffix(item)}}</h3>
-                        <span class="trade_title">{{item.name}}</span>
-                    </a>
+        <div class="metrics-section">
+            <h5 class="mt-3 mb-2 metrics-title">Key Metrics</h5>
+            <div class="trade-dash-cards" [ngClass]="showMoreMetrics ? 'show-all' : ''">
+                <div class="flex-item" *ngFor="let item of summaryItems;">
+                    <div class="flex-inner">
+                        <a>
+                            <h3 class="trade_count trade-green" [style.color]="getSummaryTextColor(item)">{{getSummaryValue(item.value)}}{{getValueSuffix(item)}}</h3>
+                            <span class="trade_title">{{item.name}}</span>
+                        </a>
+                    </div>
                 </div>
+            </div>
+            <div class="metrics-bottom">
+                <span class="cursor" (click)="MoreStatistics()">
+                    
+                {{!showMoreMetrics ? 'More' : 'Less'}}  Statistics 
+                <mat-icon>{{!showMoreMetrics ? 'keyboard_arrow_down' : 'keyboard_arrow_up'}} </mat-icon>
+                </span>
             </div>
         </div>
     </div>
@@ -76,7 +84,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-4">
+            <div class="col-sm-12 col-md-4 quick-links-card-web">
                 <div class="trade-analytics">
                     <div class="trade-headiang">
                         <h5>Quick links</h5>
@@ -125,7 +133,6 @@
                     </div>
                 </div>
             </div>
-            
             
             <!-- <div class="col-sm-12 col-md-4">
                 <div class="trade-analytics">
@@ -324,185 +331,62 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col-sm-12 col-md-4 quick-links-card-mobile">
+                <div class="trade-analytics">
+                    <div class="trade-headiang">
+                        <h5>Quick links</h5>
+                    </div>
+                    <div class="dsh-img list-group-card py-2" style="height: 300px;">
+                        <div class="list-group-row row">
+                            <div class="col-8">
+                                Facing Issues with the platform?
+                            </div>
+                            <div class="list-group-bottom col-4 pl-0 text-right">
+                                <span class="cursor" (click)="ReportNow()">Report Now</span>
+                            </div>
+                        </div>
+                        <div class="list-group-row row">
+                            <div class="col-8">
+                                Ask for a new feature
+                            </div>
+                            <div class="list-group-bottom col-4 pl-0 text-right">
+                                <span class="cursor" (click)="askFeature()">Suggest Now</span>
+                            </div>
+                        </div>
+                        <div class="list-group-row row">
+                            <div class="col-8">
+                                10+2 reasons on why you should consider keeping a trading journal!
+                            </div>
+                            <div class="list-group-bottom col-4 pl-0 text-right">
+                                <a href="https://www.forexlive.com/Education/!/102-reasons-on-why-you-should-consider-keeping-a-trading-journal-20210525" target="_blank">Visit Link</a>
+                            </div>
+                        </div>
+                        <div class="list-group-row row">
+                            <div class="col-8">
+                                10 Benefits of Using a Trading Journal
+                            </div>
+                            <div class="list-group-bottom col-4 pl-0 text-right">
+                                <a href="https://therobusttrader.com/10-benefits-of-using-trading-journals/" target="_blank">Visit Link</a>
+                            </div>
+                        </div>
+                        <div class="list-group-row row">
+                            <div class="col-8">
+                                4 Reasons You Need a Diary for Both Good and Bad Forex Trades
+                            </div>
+                            <div class="list-group-bottom col-4 pl-0 text-right">
+                                <a href="https://www.investopedia.com/articles/forex/11/why-you-need-a-forex-trading-journal.asp" target="_blank">Visit Link</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             
         </div>
     </div>
 
     <!-- Mobile -->
-    <div class="trade-dash-cards-mobile">
-        <div class="trade-cards-heading px-3 mt-2 mb-0">
-            <span style="font-size: 16px;">Welcome {{userName}}</span>
-            <button type="button" class="btn-get-started ml-2" (click)="showChecklist()" data-toggle="tooltip" data-placement="top" title="Show Checklist">Get Started</button>
-        </div>
-        <mat-accordion class="example-headers-align w-100" multi="true">
-            <mat-expansion-panel [expanded]="true" (opened)="setStep(0)">
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        Key Metrics
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-                <ng-template matExpansionPanelContent>
-                    <div class="trade-dash-cards">
-                        <div class="flex-item" *ngFor="let item of summaryItems;">
-                            <div class="flex-inner">
-                                <a>
-                                    <h3 class="trade_count trade-green" [style.color]="getSummaryTextColor(item)">{{item.value}}{{getValueSuffix(item)}}</h3>
-                                    <span class="trade_title">{{item.name}}</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </ng-template>
-            </mat-expansion-panel>
-        </mat-accordion>
 
-        <div class="trad-border"></div>
-
-        <!-- Calendar Report -->
-        <div class="trade-analytics">
-            <div class="container">
-                <div class="trade-headiang">
-                    <h5>Calendar Report</h5>
-                </div>
-                <div class="dsh-img">
-                    <app-calendar #calendarReport></app-calendar>
-                </div>
-            </div>
-        </div>
-
-        <!-- Trade Plan Report -->
-        <div class="trade-analytics">
-            <div class="container">
-                <div class="trade-headiang">
-                    <h5>Trade Plan</h5>
-                </div>
-                <div class="dsh-img" style="height: 300px;" *ngIf="latestTradePlan && (latestTradePlan | json) != '{}'">
-                    <div class="custom-grid px-3">
-                        <div class="row custom-grid-head pt-3">
-                            <div class="col-4">
-                                Date
-                            </div>
-                            <div class="col-4">
-                                Market View
-                            </div>
-                            <div class="col-4">
-                                Mindset
-                            </div>
-                        </div>
-                        <div class="row custom-grid-body" *ngIf="latestTradePlan && latestTradePlan.day">
-                            <div class="col-4">
-                                {{latestTradePlan.day | date: 'dd-MMM-yyyy'}}
-                            </div>
-                            <div class="col-4 text-success">
-                                {{latestTradePlan ? latestTradePlan.marketStatus : ''}}
-                            </div>
-                            <div class="col-4">
-                                {{latestTradePlan ? latestTradePlan.mindsetType : ''}}
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="trade-analytics-body px-3" *ngIf="latestTradePlan && (latestTradePlan.notes || latestTradePlan.plannedTrades)">
-                        <div class="custom-grid pb-3">
-                            <div class="row custom-grid-head">
-                                <div class="col-12">
-                                    Market Perspective
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12">
-                                    {{latestTradePlan ? latestTradePlan.notes : ''}}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="custom-grid pb-3">
-                            <div class="row custom-grid-head">
-                                <div class="col-12">
-                                    Planned Trades
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12">
-                                    {{latestTradePlan ? latestTradePlan.plannedTrades : ''}}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="custom-grid">
-                            <div class="row custom-grid-head">
-                                <div class="col-12">
-                                    Executed Trades
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12">
-                                    no data
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                       
-                    <div class="px-3 pt-1 text-right">
-                        <a routerLink="/view-trade-plan" class="view-more">View More</a>
-                    </div>
-                </div>
-                <div class="dsh-img nodata-text" *ngIf="latestTradePlan === undefined">
-                    <a routerLink="/add-new-trade-plan">Add Plan</a>
-                </div>
-                
-            </div>
-        </div>
-
-        <!-- Key Insights -->
-        <div class="trade-analytics">
-            <div class="container">
-                <div class="trade-headiang">
-                    <h5>Key Insights</h5>
-                </div>
-                <div class="dsh-img" style="height: 300px;">
-                    <app-key-insights></app-key-insights>
-                </div>
-            </div>
-        </div>
-
-        <!-- performance -->
-        <div class="trade-performance">
-            <div class="container">
-                <div class="per-heading">
-                    <h5>Goal Status</h5>
-                </div>
-                <div class="dsh-img">
-                    <!-- <div class="nodata-text" *ngIf="chart">
-                        <a routerLink="/add-new-trade-plan">Set up Goals</a>
-                    </div> -->
-                    <app-user-goals-by-date-chart></app-user-goals-by-date-chart>
-                </div>
-            </div>
-        </div>
-        <!-- trade-analytics -->
-        <div class="trade-analytics">
-            <div class="container">
-                <div class="trade-headiang">
-                    <h5>Realized Return</h5>
-                </div>
-                <div class="dsh-img">
-                    <app-realized-return-chart></app-realized-return-chart>
-                </div>
-            </div>
-        </div>
-        <!-- Max Amount at Risk by Asset -->
-        <div class="trade-analytics">
-            <div class="container">
-                <div class="trade-headiang">
-                    <h5>Max Amount at Risk by Asset</h5>
-                </div>
-                <div class="dsh-img">
-                    <app-risk-by-asset-chart></app-risk-by-asset-chart>
-                </div>
-            </div>
-        </div>
-
-
-    </div>
 </div>
 
 

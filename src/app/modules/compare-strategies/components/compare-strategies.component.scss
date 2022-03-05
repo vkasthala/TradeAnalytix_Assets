@@ -703,6 +703,9 @@ a.btn.btn-skip {
     @media #{$small} {
         width: 9%;
     }
+    @media #{$extra-small} {
+        width: 100%;
+    }
     h6 {
         font-weight: 500;
         font-size: 16px;
@@ -1023,7 +1026,7 @@ a.btn.btn-skip {
     }
     .col-form-value {
         font-weight: 500;
-        font-size: 16px;
+        font-size: 14px;
         line-height: 24px;
         text-align: right;
         color: #3A4C85;
@@ -1074,9 +1077,11 @@ a.btn.btn-skip {
         margin-right: 0;
         box-shadow: none;
         display: inline-flex;
+        max-width: 50%;
     }
     .ChangeTable {
-        width: 40%;
+        width: 30%;
+        max-width: 30%;
     }
     .risk_details {
         height: auto;

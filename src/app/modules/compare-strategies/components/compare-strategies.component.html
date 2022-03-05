@@ -238,14 +238,14 @@
                                             <label class="col-symbol-label">Strategy-{{index+1}} </label>
                                             <mat-icon class="mat-icon-sm mat-icon-edit ml-2" (click)="StrategyDetailsModal(index)">info</mat-icon>
                                         </div>
-                                        <div class="col-5 col-form-value">
+                                        <div class="col-4 col-form-value">
                                             {{ item.uid }} 
                                         </div>
-                                        <div class="col-2">
+                                        <div class="col-3 text-right">
                                             <span class="cursor" (click)="editStrategyItem(index)">
                                                 <mat-icon class="mat-icon-sm mat-icon-edit">edit</mat-icon>
                                             </span>
-                                            <span class="cursor" *ngIf="index > 1" (click)="deleteStrategyItem(index)">
+                                            <span class="cursor ml-1" *ngIf="index > 1" (click)="deleteStrategyItem(index)">
                                                 <mat-icon class="mat-icon-sm">delete</mat-icon>
                                             </span>
                                         </div>

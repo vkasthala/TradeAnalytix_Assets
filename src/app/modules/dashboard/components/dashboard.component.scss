@@ -1,10 +1,4 @@
 @import "../../../../assets/styles/variable.scss";
-.dashboard {
-    // padding-bottom: 40px;
-    @media #{$extra-small} {
-        padding: 0 !important;
-    }
-}
 .view-more {
     font-weight: 400;
     color: #007bff;
@@ -12,21 +6,13 @@
     font-size: 12px;
 }
 .trade-dash-cards-web {
-    // margin-top: 20px;
-    @media #{$extra-small} {
-        display: none;
-    }
+    
     .flex-container {
         display: flex;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: -webkit-box;
-        display: -webkit-flex;
         justify-content: space-between;
         align-items: center;
         list-style: none;
         margin: 0;
-        // padding: 0px 14px;
         flex-flow: row wrap;
         -webkit-flex-flow: row wrap;
         position: relative;
@@ -47,14 +33,25 @@
         border-radius: 5px;
         &:not(:last-child) {
             margin-right: 10px;
+            @media #{$extra-small} {
+                margin-right: 0;
+            }
         }
         @media #{$small} {
             min-width: calc((100% - 69%));
+            margin-right: 0;
         }
         @media #{$medium} {
             min-width: calc((100% - 68%));
             margin-right: 0 !important;
             margin-bottom: 15px;
+        }
+        @media #{$extra-small} {
+            min-width: calc((100% - 68%));
+            margin-right: 0;
+            min-height: 75px;
+            padding: 0.2rem 0.5rem;
+            box-shadow: 0px 0px 6px rgb(157 157 157 / 30%);
         }
         .flex-inner {
             height: 100%;
@@ -64,10 +61,14 @@
                 cursor: pointer;
                 span {
                     display: block;
-                    // padding-bottom: 10px;
                     font-size: 14px;
                     line-height: 1.3;
                     color: #9DA6BA;
+                    @media #{$extra-small} {
+                        font-size: 12px;
+                        line-height: 16px;
+                        text-align: center;
+                    }
                 }
             }
             .card-icon {
@@ -134,7 +135,6 @@
         display: flex;
         border-radius: 4px;
         .flex-inner {
-            // height: 100%;
             text-align: center;
             width: 100%;
             padding: 10px 15px;
@@ -220,8 +220,10 @@
     margin: 10px 0px 0px 0px;
     padding: 0px 0.5rem;
     @media #{$extra-small} {
-        margin-bottom: 0px;
-        display: none;
+        padding: 1rem;
+        padding-top: 0;
+        margin-left: -8px;
+        margin-right: -8px;
     }
     .dsh-img {
         margin-bottom: 20px;
@@ -443,7 +445,11 @@
     align-items: flex-start;
     width: 100%;
     flex-flow: row wrap;
-    /* width: calc(100% - 0px); */
+    @media #{$extra-small} {
+        height: 85px;
+        overflow: hidden;
+        padding-top: 5px;
+    }
 }
 
 .trade-plan {
@@ -510,10 +516,20 @@
         @media #{$small} {
             font-size: 14px;
         }
+        @media #{$extra-small} {
+            font-size: 18px;
+            line-height: 22px;
+        }
     }
 }
 .metrics-title {
     font-weight: 600;
+    @media #{$extra-small} {
+        font-size: 18px;
+        line-height: 22px;
+        color: #242E3A;
+        margin-top: 0 !important;
+    }
 }
 .trade-cards-heading {
     margin-bottom: 10px;
@@ -594,6 +610,10 @@
     @media #{$medium} {
         font-size: 20px;
         line-height: 40px;
+    }
+    @media #{$extra-small} {
+        font-size: 24px;
+        line-height: 36px;
     }
 }
 
@@ -744,6 +764,13 @@
     font-size: 12px;
     line-height: 20px;
     color: #ffffff;
+    @media #{$extra-small} {
+        flex-direction: column;
+        margin-left: 0 !important;
+        margin-bottom: 10px;
+        flex: 0 0 48%;
+        max-width: 48%;
+    }
 }
 .list-group-card {
     overflow:auto;
@@ -777,4 +804,72 @@
     font-size: 14px;
     line-height: 21px;
     color: #2285FA;
+}
+.dashboard-header-row {
+    @media #{$extra-small} {
+        padding-top: 15px;
+        background: #fff;
+        margin-top: 0 !important;
+    } 
+    .card {
+        @media #{$extra-small} {
+            border: 1px solid #9DA6BA;
+            margin-bottom: 15px;
+        }
+    }
+}
+.dashboard-header-column {
+    @media #{$extra-small} {
+        padding-right: 15px !important;
+    }
+}
+.card-btns-row {
+    @media #{$extra-small} {
+        justify-content: space-between;
+        margin-left: -50px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
+
+.metrics-bottom {
+    display: none;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 20px;
+    color: #2285FA;
+    padding-top: 1rem;
+    text-align: center;
+    @media #{$extra-small} {
+        display: block;
+    }
+    span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+.show-all {
+    height: auto;
+    overflow: inherit;
+    transition: all 0.5s ease 0s;
+}
+.metrics-section {
+    @media #{$extra-small} {
+        background: #fff;
+        padding: 1rem;
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+}
+.quick-links-card-web {
+    @media #{$extra-small} {
+        display: none;
+    }
+}
+.quick-links-card-mobile {
+    display: none;
+    @media #{$extra-small} {
+        display: block;
+    }
 }

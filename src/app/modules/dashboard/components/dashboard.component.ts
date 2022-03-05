@@ -31,6 +31,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   checklist: boolean = false;
   demoToggle: boolean = true;
   currentInd: number = 0;
+  showMoreMetrics: boolean = false;
 
   constructor(
     private router: Router, private ref: ChangeDetectorRef, private tradePlanService: TradePlansService, private reportDataService: ReportDataService,
@@ -209,6 +210,10 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
     dialogRef.afterClosed().subscribe((res) => {
     });
+  }
+
+  MoreStatistics(){
+    this.showMoreMetrics = !this.showMoreMetrics
   }
 
 }
