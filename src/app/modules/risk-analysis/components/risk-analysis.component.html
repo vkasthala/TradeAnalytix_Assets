@@ -500,14 +500,6 @@
             <div class="mask" *ngIf="Loader">
                 <div class="loader"></div>
             </div>
-            <div class="trade-actions d-flex justify-content-between mb-2">
-                <span class="text-danger" (click)="cancelRiskAnalysis()">Cancel</span>
-                <span class="text-black">Risk Analysis</span>
-
-                <!-- <a class="text-primary" (click)="navigateToAddTrade()" *ngIf="selectedStock.name && (stockEntry || stockOptions.length > 0)">{{fromAddTrade ? 'Update' : 'Create'}}</a> -->
-
-                <a class="text-primary" *ngIf="displayRiskAnalysis" (click)="analyzeRisk = true; initRiskAnalysis(); calculateMaxRisk();">Analyze</a>
-            </div>
             
             <div class="mb-2">
                 <app-trade-details-header [addTrade]="add" [selectedStock]="selectedStock" [stockSummary]="stockSummary" (loadMoreStats)="loadMoreStatsHandler($event)"></app-trade-details-header>
@@ -525,9 +517,9 @@
                             <ng-template matExpansionPanelContent>
                                 <div class="trade-stoack-main pb-1" #tradeCards>
                                     <div class="d-flex justify-content-between align-items-end">
-                                        <button type="button" class="btn btn-add"  *ngIf="!stockAdded" (click)="enableStockForm()"> + Stock</button>
+                                        <button type="button" class="btn btn-add"  *ngIf="!stockAdded" (click)="enableStockForm()"> Add Stock</button>
 
-                                        <button type="button" class="btn btn-add ml-2" (click)="showOptionForm()" *ngIf="stockOptions.length < 4">+ Option</button>
+                                        <button type="button" class="btn btn-add ml-2" (click)="showOptionForm()" *ngIf="stockOptions.length < 4">Add Option</button>
                                     </div>
                                 
 
@@ -554,7 +546,7 @@
                                                     (stockEntry.actionType == 2 ? -1 : 1)).toFixed(2) : 0}}
                                                 </div>
                                             </div>
-                                            <div class="col-4">
+                                            <div class="col-4 offset-4">
                                                 <span class="trade-edit" (click)="editStock(element)">
                                                     <mat-icon class="mat-icon-sm mr-1">edit</mat-icon>
                                                 </span>
@@ -597,7 +589,7 @@
                                             </div>
                                         </div>
                                         <div class="row pt-3">
-                                            <div class="col-4">
+                                            <div class="col-4 offset-8">
                                                 <span class="trade-edit" (click)="editOptionLeg(index)">
                                                     <mat-icon class="mat-icon-sm mr-1">edit</mat-icon> 
                                                 </span>
@@ -813,6 +805,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <a class="btn btn-next w-100" *ngIf="displayRiskAnalysis" (click)="analyzeRisk = true; initRiskAnalysis(); calculateMaxRisk();">Analyze</a>
                                     </div>
                                 </ng-container>
                             </ng-template>

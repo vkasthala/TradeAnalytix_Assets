@@ -1,6 +1,9 @@
 @import '../../../../assets/styles/variable.scss';
 .reports-section {
     padding-top: 30px;
+    @media #{$extra-small} {
+        padding-bottom: 30px;
+    }
 }
 .settings_web {
     @media #{$extra-small} {
@@ -92,7 +95,13 @@
 
 @media #{$extra-small} {
     .settings-mobile {
-        padding: 15px;
         display: block;
+        margin-bottom: 1rem;
+    }
+    .mobile-tab-pane-show {
+        display: block;
+    }
+    .mobile-tab-pane-d-none {
+        display: none;
     }
 }

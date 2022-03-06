@@ -25,9 +25,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    @media #{$extra-small} {
-        height: 74vh;
-    }
 }
 
 .trade-form {
@@ -998,7 +995,8 @@ a.btn.btn-skip {
         padding: 25px;
     }
     .btn-enter {
-        width: 118px;
+        width: 100%;
+        margin-left: 0 !important;
     }
     .btn-add {
         width: 100%;

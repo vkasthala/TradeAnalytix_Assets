@@ -1,4 +1,4 @@
-<mat-accordion class="example-headers-align w-100 investment-web" multi="true">
+<mat-accordion class="example-headers-align w-100" multi="true">
     <mat-expansion-panel [expanded]="true" (opened)="setStep(1)">
         <mat-expansion-panel-header>
             <mat-panel-title>
@@ -7,7 +7,7 @@
         </mat-expansion-panel-header>
         <ng-template matExpansionPanelContent>
             <div class="mb-2 investment_body">
-                <div class="trade-cards-section mb-2">
+                <div class="trade-cards-section investmentgoals-form mb-2">
                     <span class="card-main">
                         <label class="col-form-label">Goal Name</label>
                         <input type="text" class="form-control" id="goalname" [(ngModel)]="goalName" />
@@ -30,17 +30,20 @@
                         <label class="col-form-label">Target Profit</label>
                         <input type="text" class="form-control" id="targetProfit" [(ngModel)]="targetProfit" />
                     </span>
-                    <span class="add-item d-flex align-items-end mb-2">
+                    <span class="add-item d-flex align-items-end mb-2 btn-next-web">
                         <mat-icon (click)="addGoal()">add_circle</mat-icon>
                     </span>
+
+                    <a class="btn btn-next-mobile" (click)="addGoal()">Save</a>
+
                 </div>
                 <ng-container *ngIf="GoalsList">
                     <div *ngFor="let goal of GoalsList;let index = index">
                         <div class="d-flex align-items-center py-2">
-                            <span class="card-main pl-3">{{goal.goalName}}</span>
-                            <span class="card-main pl-3">{{goal.entryDate}}</span>
-                            <span class="card-main card-main-lg pl-3">{{goal.startDate + ' - '+goal.endDate}}</span>
-                            <span class="card-main pl-3">{{goal.targetAmount}}</span>
+                            <span class="card-main">{{goal.goalName}}</span>
+                            <span class="card-main pl-3 date-column">{{goal.entryDate}}</span>
+                            <span class="card-main card-main-lg pl-3 date-rang-column">{{goal.startDate + ' - '+goal.endDate}}</span>
+                            <span class="card-main pl-3 amount-column">{{goal.targetAmount}}</span>
                             <mat-icon class="mr-3 mat-icon-sm mat-icon-edit" (click)="editinvestmentGoal(goal)">edit</mat-icon>
                             <mat-icon class="mat-icon-sm" (click)="deleteinvestmentGoal(goal)">delete</mat-icon>
                         </div>
@@ -52,7 +55,7 @@
 </mat-accordion>
 
 <!-- investment-mobile -->
-<div class="investment-mobile">
+<!-- <div class="investment-mobile">
     <div class="investment_mobile_sec">
         <div class="d-flex justify-content-between">
             <h3>
@@ -87,7 +90,6 @@
         </div>
     </div>
 
-    <!-- add new goal -->
     <div class="newgoal_slide" *ngIf="showGoalForm">
         <div class="newgoal_slide-header">
             <mat-icon class="arrow_back mr-2 cursor" (click)="hideGoalForm()">arrow_back</mat-icon> 
@@ -130,4 +132,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->

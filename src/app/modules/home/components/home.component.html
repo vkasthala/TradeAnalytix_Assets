@@ -119,7 +119,7 @@
         </div>
         <div class="trade-header-mobile">
             <div class="trade-header-mobile-row">
-                <span class="ml-1" (click)="menuToggle()">
+                <span class="ml-2 mt-1" (click)="menuToggle()">
                     <span class="material-icons logout">menu</span>
                 </span>
                 <nav class="trade-navbar hamburger-menu" [ngClass]="hamburgerMenu ? 'open' : ''">
@@ -187,7 +187,9 @@
                     
                 </nav>
 
-                <div class="db-mb-header-section-logo"><img alt="Trade-app-logo" class="img-fluid full-logo" src="../../../../assets/images/TA-full-logo.jpg" /></div>
+                <!-- <div class="db-mb-header-section-logo"><img alt="Trade-app-logo" class="img-fluid full-logo" src="../../../../assets/images/TA-full-logo.jpg" /></div> -->
+                <span class="page-heading text-white">{{title}}</span>
+
                 <div class="user-details">
                     <div class="top-nav">
                         <span class="demo-toggle">
@@ -196,9 +198,9 @@
                                 <label for="demoToggle"></label>
                             </div>
                         </span>
-                        <span class="login-img ml-2" (click)="logout()">
+                        <!-- <span class="login-img ml-2" (click)="logout()">
                             <span class="material-icons logout">logout</span>
-                        </span>
+                        </span> -->
                     </div>
                 </div>
             </div>

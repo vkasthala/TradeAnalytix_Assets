@@ -53,6 +53,9 @@
     font-size: 14px;
     line-height: 18px;
     width: 118px;
+    @media #{$extra-small} {
+        width: 100%;
+    }
 }
 
 // Addnew-trade-Mobile
@@ -769,6 +772,9 @@
             background: #f6f8fb;
         }
     }
+    @media #{$extra-small} {
+        padding-bottom: 30px;
+    }
 }
 
 .right-sidebar {
@@ -820,8 +826,8 @@
         display: block;
     }
     .addnew-first {
-        align-items: baseline;
-        height: 75vh;
+        align-items: center;
+        height: 80vh;
     }
     .trade-top-heading {
         background:#394C86;

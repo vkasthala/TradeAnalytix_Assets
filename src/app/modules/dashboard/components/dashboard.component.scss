@@ -804,6 +804,9 @@
     font-size: 14px;
     line-height: 21px;
     color: #2285FA;
+    @media #{$extra-small} {
+        font-size: 13px;
+    } 
 }
 .dashboard-header-row {
     @media #{$extra-small} {

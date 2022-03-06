@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SettingsComponent implements OnInit {
   stockAdded: boolean;
-  selectedType: string = "UserProﬁle";
+  selectedType: string = "InvestmentGoals";
   constructor() { }
 
   ngOnInit() {

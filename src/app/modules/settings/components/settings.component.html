@@ -1,14 +1,9 @@
-<div class="reports-section px-3 settings_web">
-    <!-- <div class="trade-dash-main">
-            <div class="trade-dash-name">
-                <h3>Settings</h3>
-            </div>
-        </div> -->
+<div class="reports-section px-3">
 
     <!-- risk-tabs -->
     <div class="trade-risk-tabs">
         <div class="tab" role="tabpanel">
-            <ul class="nav nav-tabs" role="tablist">
+            <ul class="nav nav-tabs settings_web" role="tablist">
                 <!-- <li class="active" role="presentation">
                     <a aria-controls="home" aria-expanded="true" data-toggle="tab" href="#UserProﬁle" role="tab">
                             User Proﬁle</a>
@@ -29,18 +24,30 @@
                     <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#CodedRules" role="tab">Coded Rules</a>
                 </li> -->
             </ul>
+
+            <!-- Settings-mobile -->
+            <div class="settings-mobile">
+                <div class="">
+                    <select class="form-control" (change)="settingsTabChange($event.target.value)">
+                        <!-- <option value="UserProﬁle" selected data-default>User Proﬁle</option> -->
+                        <option value="InvestmentGoals" selected data-default>Investment Goals</option>
+                        <!-- <option value="DepositsWithdrawals">Deposits & Withdrawals</option> -->
+                        <option value="DataSetup">Data Setup</option>
+                    </select>
+                </div>
+            </div>
             
             <div class="tab-content tabs">
                 <!-- <div class="tab-pane active" id="UserProﬁle" role="tabpanel">
                     <app-profile></app-profile>
                 </div> -->
-                <div class="tab-pane active" id="InvestmentGoals" role="tabpanel">
+                <div class="tab-pane active" id="InvestmentGoals" role="tabpanel" [ngClass]="[selectedType === 'InvestmentGoals' ? 'mobile-tab-pane-show' : 'mobile-tab-pane-d-none']">
                     <app-investmentgoals></app-investmentgoals>
                 </div>
                 <!-- <div class="tab-pane" id="DepositsWithdrawals" role="tabpanel">
                     <app-depositswithdrawals></app-depositswithdrawals>
                 </div> -->
-                <div class="tab-pane" id="DataSetup" role="tabpanel">
+                <div class="tab-pane settings-component" id="DataSetup" role="tabpanel" [ngClass]="[selectedType === 'DataSetup' ? 'd-block' : 'mobile-tab-pane-d-none']">
                     <app-datasetup></app-datasetup>
                 </div>
                 <!-- <div class="tab-pane" id="EntryExitRules" role="tabpanel">
@@ -54,34 +61,3 @@
     </div>
 </div>
 
-<!-- Settings-mobile -->
-<div class="settings-mobile">
-    <div class="trade-actions d-flex justify-content-between mb-2">
-        <span class="text-primary" (click)="cancelSettings()">CANCEL</span>
-        <span class="text-black">Settings</span>
-        <a class="text-primary">Save</a>
-    </div>
-
-    <div class="mb-3">
-        <select class="form-control" (change)="settingsTabChange($event.target.value)">
-            <!-- <option value="UserProﬁle" selected data-default>User Proﬁle</option> -->
-            <option value="InvestmentGoals" selected data-default>Investment Goals</option>
-            <!-- <option value="DepositsWithdrawals">Deposits & Withdrawals</option> -->
-            <option value="DataSetup">Data Setup</option>
-        </select>
-    </div>
-    <div class="tab-content tabs">
-        <!-- <div class="tab-pane active" id="UserProﬁle" role="tabpanel" [ngClass]="[selectedType === 'UserProﬁle' ? 'd-block' : 'd-none']">
-            <app-profile></app-profile>
-        </div> -->
-        <div class="tab-pane" id="InvestmentGoals" role="tabpanel" [ngClass]="[selectedType === 'InvestmentGoals' ? 'd-block' : 'd-none']">
-            <app-investmentgoals></app-investmentgoals>
-        </div>
-        <!-- <div class="tab-pane" id="DepositsWithdrawals" role="tabpanel" [ngClass]="[selectedType === 'DepositsWithdrawals' ? 'd-block' : 'd-none']">
-            <app-depositswithdrawals></app-depositswithdrawals>
-        </div> -->
-        <div class="tab-pane settings-component" id="DataSetup" role="tabpanel" [ngClass]="[selectedType === 'DataSetup' ? 'd-block' : 'd-none']">
-            <app-datasetup></app-datasetup>
-        </div>
-    </div>
-</div>

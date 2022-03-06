@@ -175,6 +175,9 @@
     height: auto;
     // min-height: 100vh;
     padding: 0;
+    @media #{$extra-small} {
+        padding-bottom: 30px;
+    }
 }
 
 .sidebar {
@@ -411,7 +414,9 @@
     margin-top: -8px;
     @media #{$extra-small} {
         color: rgb(255, 255, 255);
-        width: 55px;
+        width: 50px;
+        margin-top: 0;
+        margin-right: 10px;
     }
 }
 // Toggle Customize
