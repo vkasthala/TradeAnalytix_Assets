@@ -31,7 +31,6 @@ export class PlannedEditorComponent implements OnInit {
   }
 
   getValue() {
-    debugger;
     if (!this.params.data.tradeType) {
       return "";
     }

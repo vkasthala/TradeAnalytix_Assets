@@ -107,7 +107,6 @@ export class AddNewTradeComponent implements OnInit {
 
   ngOnInit() {
     this.demoToggle = this.demoService.demoMode;
-    debugger;
     console.log('demoToggle', this.demoToggle)
     this.setState();
   }
@@ -184,6 +183,7 @@ export class AddNewTradeComponent implements OnInit {
 
 
   addTrade() {
+    debugger;
     this.Loader = !this.Loader;
     this.updateTradeStrategyProps();
     this.tradeStrategyService.addTrade(this.tradeStrategy).subscribe(result => {

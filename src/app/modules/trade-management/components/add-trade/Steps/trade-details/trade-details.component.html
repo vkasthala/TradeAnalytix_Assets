@@ -434,11 +434,11 @@
                     <label class="col-form-label pt-0">Action</label>
                     <div class="mb-2 form-stock-value">
                         <span class="mr-3">
-                            <input type="radio" name="inputState" value="1" [(ngModel)]="stockEntry.actionType"
+                            <input type="radio" name="inputState" value="1" [(ngModel)]="editingStock.actionType"
                                 class="radio" /> Buy to Open
                         </span>
                         <span class="mr-3">
-                            <input type="radio" name="inputState" value="2" [(ngModel)]="stockEntry.actionType"
+                            <input type="radio" name="inputState" value="2" [(ngModel)]="editingStock.actionType"
                                 class="radio" /> Sell to Open
                         </span>
                     </div>
@@ -448,29 +448,29 @@
                         <label class="col-form-label pt-0">Quantity</label>
                         <input type="number" (change)="preventNegatives($event, false)" min="0"
                             class="form-control cards-input"
-                            [ngClass]="[closeTrade || viewTrade ? 'disabled' : '', editTrade && (StockPosition.quantity > 0 && StockPosition.quantity !== undefined ) ? 'disabled' : '']"
-                            [(ngModel)]="stockEntry.quantity" />
+                            [ngClass]="[closeTrade || viewTrade ? 'disabled' : '', editTrade && (editingStock.quantity > 0 && editingStock.quantity !== undefined ) ? 'disabled' : '']"
+                            [(ngModel)]="editingStock.quantity" />
                     </div>
                     <div>
                         <label class="col-form-label pt-0">Entry Price</label>
                         <input type="number" pattern="^\d*(\.\d{0,2})?$" (change)="checkForDecimalValidation($event)"
                             step="0.01" (change)="preventNegatives($event, true)" min="0" class="form-control"
-                            placeholder="" [(ngModel)]="stockEntry.price"
-                            [ngClass]="[closeTrade || viewTrade ? 'disabled' : '', editTrade && (StockPosition.quantity > 0 && StockPosition.quantity !== undefined ) ? 'disabled' : '']" />
+                            placeholder="" [(ngModel)]="editingStock.price"
+                            [ngClass]="[closeTrade || viewTrade ? 'disabled' : '', editTrade && (editingStock.quantity > 0 && editingStock.quantity !== undefined ) ? 'disabled' : '']" />
                     </div>
                 </div>
                 <div class="d-flex justify-content-between mt-3 w-100">
                     <div *ngIf="!closeTrade">
                         <label class="col-form-label pt-0">Cost</label>
                         <h6 class="form-stock-value mt-1">
-                            {{(stockEntry.quantity && stockEntry.price) ? (stockEntry.quantity * stockEntry.price *
-                            (stockEntry.actionType == 2 ? -1 : 1)).toFixed(2) : 0}}
+                            {{(editingStock.quantity && editingStock.price) ? (editingStock.quantity * editingStock.price *
+                            (editingStock.actionType == 2 ? -1 : 1)).toFixed(2) : 0}}
                         </h6>
                     </div>
                     <div class="card-main card-main-custom" *ngIf="closeTrade">
                         <label class="col-form-label pt-0">Exit Price <span class="text-danger">*</span></label>
                         <input type="number" pattern="^\d*(\.\d{0,2})?$" step="0.01" min="0"
-                            class="form-control cards-input" placeholder="" (change)="checkForDecimalValidation($event)" [(ngModel)]="stockEntry.closePrice"
+                            class="form-control cards-input" placeholder="" (change)="checkForDecimalValidation($event)" [(ngModel)]="editingStock.closePrice"
                             [ngClass]="[viewTrade ? 'disabled' : '']" />
                     </div>
                 </div>
@@ -508,11 +508,11 @@
                         <label class="col-form-label pt-0">Action</label>
                         <div class="mb-2 form-stock-value">
                             <span class="mr-3">
-                                <input type="radio" value="1" [(ngModel)]="optionGroup.actionType" class="radio"> Buy to
+                                <input type="radio" value="1" [(ngModel)]="editingOption.actionType" class="radio"> Buy to
                                 Open
                             </span>
                             <span>
-                                <input type="radio" value="2" [(ngModel)]="optionGroup.actionType" class="radio"> Sell
+                                <input type="radio" value="2" [(ngModel)]="editingOption.actionType" class="radio"> Sell
                                 to Open
                             </span>
                         </div>
@@ -521,13 +521,13 @@
                         <div class="col-6">
                             <label class="col-form-label pt-0">Contracts</label>
                             <input type="number" min="0" class="form-control" placeholder=""
-                                [(ngModel)]="optionGroup.contracts" />
+                                [(ngModel)]="editingOption.contracts" />
                         </div>
                         <div class="col-6">
                             <label class="col-form-label pt-0">Expiration</label>
                             <div class="datepicker-group">
                                 <input matInput [matDatepicker]="expireDate" (click)="expireDate.open()" id="expireDate"
-                                    name="optionGroup.expireDate" [(ngModel)]="optionGroup.expireDate" />
+                                    name="optionGroup.expireDate" [(ngModel)]="editingOption.expireDate" />
                                 <mat-datepicker-toggle matSuffix [for]="expireDate"></mat-datepicker-toggle>
                                 <mat-datepicker #expireDate></mat-datepicker>
                             </div>
@@ -537,18 +537,18 @@
                         <div class="col-6">
                             <label class="col-form-label pt-0">Strike</label>
                             <input type="number" pattern="^\d*(\.\d{0,2})?$" step="0.01" min="0"
-                                class="form-control cards-input" placeholder="" [(ngModel)]="optionGroup.strikePrice" />
+                                class="form-control cards-input" placeholder="" [(ngModel)]="editingOption.strikePrice" />
                         </div>
                         <div class="col-6">
                             <label class="col-form-label pt-0">Call/Put</label>
                             <div class="mt-1 form-stock-value">
                                 <span class="mr-3">
                                     <input type="radio" name="optionType" value="1"
-                                        [(ngModel)]="optionGroup.optionType" /> Call
+                                        [(ngModel)]="editingOption.optionType" /> Call
                                 </span>
                                 <span>
                                     <input type="radio" name="optionType" value="2"
-                                        [(ngModel)]="optionGroup.optionType" /> Put
+                                        [(ngModel)]="editingOption.optionType" /> Put
                                 </span>
                             </div>
                         </div>
@@ -558,14 +558,14 @@
                             <label class="col-form-label pt-0">Entry Price</label>
                             <input type="number" (change)="preventNegatives($event, true)" pattern="^\d*(\.\d{0,2})?$"
                                 (change)="checkForDecimalValidation($event)" step="0.01" min="0" class="form-control"
-                                placeholder="" [(ngModel)]="optionGroup.price" />
+                                placeholder="" [(ngModel)]="editingOption.price" />
                         </div>
                         <div class="col-6">
                             <label class="col-form-label pt-0">Cost</label>
                             <h6 class="form-stock-value mt-1">
-                                {{(optionGroup.contracts && optionGroup.closePrice) ?
-                                (optionGroup.contracts * ((optionGroup.closePrice -
-                                optionGroup.price) * 100) * (optionGroup.actionType == 2 ?
+                                {{(editingOption.contracts && editingOption.closePrice) ?
+                                (editingOption.contracts * ((editingOption.closePrice -
+                                editingOption.price) * 100) * (editingOption.actionType == 2 ?
                                 -1 : 1)).toFixed(2) : 0}}
                             </h6>
                         </div>

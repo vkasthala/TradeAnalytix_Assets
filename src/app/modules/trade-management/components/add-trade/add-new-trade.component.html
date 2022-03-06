@@ -313,10 +313,9 @@
                 <span class="text-danger" (click)="cancelTrade()">Cancel</span>
                 <span class="mr-2" *ngIf="add" (click)="CheckExecutionDate('Confirm Trade Execution Date')">Add
                     Trade</span>
-
                 <span class="mr-2" *ngIf="edit" (click)="editTrade()">Edit Trade</span>
-
-                <span class="text-primary" (click)="TradeReview()">Review</span>
+                <span class="mr-2" *ngIf="close && !view"
+                                (click)="closeTrade()">Close Trade</span>                
             </div>
 
             <app-trade-details-header [addTrade]="add" [editTrade]="edit" [closeTrade]="close"

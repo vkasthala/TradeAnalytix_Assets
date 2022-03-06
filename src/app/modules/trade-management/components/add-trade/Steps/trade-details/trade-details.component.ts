@@ -18,7 +18,7 @@ import { TradeInputData } from 'src/app/modules/shared/models/trade-management/t
 import { UserStockSummary } from 'src/app/modules/shared/models/trade-management/user-stock-summary.model';
 import { StrategyCreateService } from 'src/app/modules/shared/services/strategy-create.service';
 import { UtilService } from 'src/app/modules/utilities/services/util.service';
-import { Subject } from 'rxjs';
+import { of, Subject } from 'rxjs';
 import { StockLegHistory } from 'src/app/modules/trade-management/models/stock-leg-history.model';
 import { OptionLegHistory } from 'src/app/modules/trade-management/models/option-leg-history.model';
 import { TradeTag } from 'src/app/modules/shared/models/trade-management/trade-tag.model';
@@ -72,6 +72,8 @@ export class TradeDetailsComponent implements OnInit {
 
   stockEntry: StockEntry;
   stockOptions: OptionEntry[] = [];
+  editingStock: StockEntry;
+  editingOption: OptionEntry;
   selectedStrategy: number = 15;
   direction: TradeDirection = TradeDirection.Custom;
   executedDate: string;
@@ -89,23 +91,24 @@ export class TradeDetailsComponent implements OnInit {
   protected optionIndex: number = 1;
   protected optionGroup: any = {};
   registeredTags: any = [];
+
   public optionTypes: [
     { value: 1, name: 'radio1', id: "Call" },
     { value: 2, name: 'radio1', id: "Put" },
   ]
 
   constructor(
-    private utilService: UtilService,
-    private strategyCreateServiceService: StrategyCreateService,
-    private userTagService: UserTagService,
-    private router: Router,
-    private _dialog: MatDialog,
-    private toastr: ToastrService,
-    ) {
+    protected utilService: UtilService,
+    protected strategyCreateServiceService: StrategyCreateService,
+    protected userTagService: UserTagService,
+    protected router: Router,
+    protected _dialog: MatDialog,
+    protected toastr: ToastrService,
+  ) {
   }
 
   ngOnInit() {
-    
+
     if (!this.addTrade) {
       this.StockPosition = this.StockPosition.stockEntry[0];
       this.showStockSec = true;
@@ -155,7 +158,10 @@ export class TradeDetailsComponent implements OnInit {
   }
 
   addStock() {
-    this.stockEntry = this.createStockEntry();
+    if (!this.stockEntry) {
+      this.stockEntry = this.createStockEntry();
+    }
+    this.editingStock = JSON.parse(JSON.stringify(this.stockEntry));
     this.stockAdded = true;
     this.showFormSec = true;
     this.showStockForm = true;
@@ -167,19 +173,21 @@ export class TradeDetailsComponent implements OnInit {
     this.showFormSec = false;
     this.showStockSec = true;
     this.showStockForm = false;
+    this.stockEntry = this.editingStock;
   }
 
   showOptionForm() {
     this.showFormSec = true;
     this.showStockForm = false;
     this.showOptionLegForm = true;
+    this.editingOption = this.createStockOptionEntry();
   }
 
   addOption() {
     this.showStockForm = false;
     if (this.stockOptions.length < 4) {
       this.showFormSec = true;
-      this.stockOptions.push(this.createStockOptionEntry())
+      this.stockOptions.push(this.editingOption)
       this.updateStockOrOptionAddedStatus();
     }
   }
@@ -597,40 +605,40 @@ export class TradeDetailsComponent implements OnInit {
       if (userTag) {
         let tag: TradeTag = new TradeTag(userTag.id);
         if (res) {
-          if(this.tags.length > 0) {
+          if (this.tags.length > 0) {
             this.tags.filter((x) => {
-              if(tag.tagId === x.tagId) {
+              if (tag.tagId === x.tagId) {
                 isTagExist = true;
                 this.toastr.error('This tag already added', 'Error',
-                { 
-                  tapToDismiss:false,
-                  closeButton:true,
-                  disableTimeOut: true
-                });
+                  {
+                    tapToDismiss: false,
+                    closeButton: true,
+                    disableTimeOut: true
+                  });
                 return false;
               }
             })
-            !isTagExist ?  this.tags.push(tag) : ''
-          }else {
+            !isTagExist ? this.tags.push(tag) : ''
+          } else {
             this.tags.push(tag);
           }
-          
+
         }
       } else {
         this.registeredTags.filter((x) => {
           console.log('item', x);
           let val = x !== undefined ? x.toLowerCase() : '';
-          if(val === res.toLowerCase()) {
+          if (val === res.toLowerCase()) {
             this.toastr.error('This tag already exist', 'Error',
-            { 
-              tapToDismiss:false,
-              closeButton:true,
-              disableTimeOut: true
-            });
+              {
+                tapToDismiss: false,
+                closeButton: true,
+                disableTimeOut: true
+              });
             return;
           }
         })
-        
+
         this.userTagService.createTag(this.createUserTag(res, undefined)).subscribe(result => {
           this.userTagService.registerTag(result);
           let tag: TradeTag = new TradeTag(result.id);
