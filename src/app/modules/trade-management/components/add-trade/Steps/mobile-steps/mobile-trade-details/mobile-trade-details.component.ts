@@ -1,20 +1,42 @@
 import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
+import { MatDialog } from '@angular/material';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { UserTagService } from 'src/app/modules/settings/services/user-tag.service';
+import { StrategyCreateService } from 'src/app/modules/shared/services/strategy-create.service';
+import { UtilService } from 'src/app/modules/utilities/services/util.service';
+import { TradeDetailsComponent } from '../../trade-details/trade-details.component';
+
 @Component({
   selector: 'app-mobile-trade-details',
   templateUrl: './mobile-trade-details.component.html',
   styleUrls: ['./mobile-trade-details.component.scss']
 })
-export class MobileTradeDetailsComponent implements OnInit {
-  
+export class MobileTradeDetailsComponent extends TradeDetailsComponent implements OnInit {
+
   currentState: number = 1;
   @Output('nextStep') nextStep = new EventEmitter();
-  @Input('stockOptions') stockOptions:any[];
+  @Input('stockOptions') stockOptions: any[];
   @Input('stockAdded') stockAdded: boolean;
   @Output('updateStockAdded') updateStockAdded = new EventEmitter();
   quantity: number = 10;
-  constructor() { }
+
+  constructor(utilService: UtilService,
+    strategyCreateServiceService: StrategyCreateService,
+    userTagService: UserTagService,
+    router: Router,
+    dialog: MatDialog,
+    toastr: ToastrService) {
+    super(utilService, strategyCreateServiceService, userTagService, router, dialog, toastr);
+  }
 
   ngOnInit() {
+    super.ngOnInit();
+  }
+
+  ngAfterViewInit(): void {
+    debugger;
+    super.ngAfterViewInit();
   }
 
   enterSymbol() {
@@ -22,51 +44,21 @@ export class MobileTradeDetailsComponent implements OnInit {
   }
 
   addStock() {
-    this.stockAdded = true;
-    this.updateStockAdded.emit(true)
+    super.addStock();
   }
 
   removeStock() {
     this.stockAdded = false;
+    super.deleteStock();
     this.updateStockAdded.emit(false);
   }
 
   addOption() {
-    if (this.stockOptions.length < 4) {
-      if(this.stockOptions.length == 0) {
-        this.stockOptions.push({
-          title: 'Option-1 (Sell 460 Call)',
-          quantity: 2,
-          daysLeft: 10,
-          impliedValue: 10
-        })
-      }else if(this.stockOptions.length == 1) {
-        this.stockOptions.push({
-          title: 'Option-2 (Buy 500 Call)',
-          quantity: 2,
-          daysLeft: 10,
-          impliedValue: 10
-        })
-      }else if(this.stockOptions.length == 2) {
-        this.stockOptions.push({
-          title: 'Option-3 (Buy 380 Put)',
-          quantity: 2,
-          daysLeft: 10,
-          impliedValue: 10
-        })
-      }else if(this.stockOptions.length == 3) {
-        this.stockOptions.push({
-          title: 'Option-4 (Sell 420 Put)',
-          quantity: 2,
-          daysLeft: 10,
-          impliedValue: 10
-        })
-      }
-    }
+    super.addOption();
   }
 
   deleteStockOption(index) {
-    this.stockOptions.splice(index, 1);
+    super.deleteStockOption(index);
   }
 
   next() {
