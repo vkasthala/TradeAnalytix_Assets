@@ -44,7 +44,7 @@ export class MobileTradeDetailsComponent extends TradeDetailsComponent implement
   }
 
   addStock() {
-    super.addStock();
+    super.addMobileStock();
   }
 
   removeStock() {

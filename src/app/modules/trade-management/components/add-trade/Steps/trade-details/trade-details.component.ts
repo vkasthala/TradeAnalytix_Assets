@@ -74,6 +74,7 @@ export class TradeDetailsComponent implements OnInit {
   stockOptions: OptionEntry[] = [];
   editingStock: StockEntry;
   editingOption: OptionEntry;
+  editingOptionIndex: number;
   selectedStrategy: number = 15;
   direction: TradeDirection = TradeDirection.Custom;
   executedDate: string;
@@ -157,11 +158,13 @@ export class TradeDetailsComponent implements OnInit {
     this.currentState++;
   }
 
-  addStock() {
+  addMobileStock() {
+    debugger;
     if (!this.stockEntry) {
       this.stockEntry = this.createStockEntry();
     }
     this.editingStock = JSON.parse(JSON.stringify(this.stockEntry));
+    this.editingStock.price = this.stockSummary.close;
     this.stockAdded = true;
     this.showFormSec = true;
     this.showStockForm = true;
@@ -169,21 +172,53 @@ export class TradeDetailsComponent implements OnInit {
     this.updateStockOrOptionAddedStatus();
   }
 
-  showStock() {
+  updateMobileStock() {
+    debugger;
     this.showFormSec = false;
     this.showStockSec = true;
     this.showStockForm = false;
     this.stockEntry = this.editingStock;
   }
 
-  showOptionForm() {
+  cancelMobileStockEdit() {
+    this.showFormSec = false;
+    this.showStockSec = true;
+    this.showStockForm = false;
+  }
+
+  addMobileOption() {
+    debugger;
     this.showFormSec = true;
     this.showStockForm = false;
     this.showOptionLegForm = true;
     this.editingOption = this.createStockOptionEntry();
   }
 
+  editMobileOption(index) {
+    this.showFormSec = true;
+    this.editOptionForm = true;
+    this.showOptionLegForm = true;
+    this.editingOption =  JSON.parse(JSON.stringify(this.stockOptions[index]));
+    this.editingOptionIndex = index;
+  }
+
+  updateMobileOptionData() {
+    this.showFormSec = false;
+    this.editOptionForm = false;
+    this.showOptionLegForm = false;
+    this.showStockForm = false;
+    this.stockOptions[this.editingOptionIndex] = this.editingOption;
+  }
+
+  cancelMobileOption() {
+    this.showFormSec = false;
+    this.editOptionForm = false;
+    this.showOptionLegForm = false;
+    this.showStockForm = false;
+  }
+
   addOption() {
+    debugger;
     this.showStockForm = false;
     if (this.stockOptions.length < 4) {
       this.showFormSec = true;
@@ -192,13 +227,12 @@ export class TradeDetailsComponent implements OnInit {
     }
   }
 
-  addOption1() {
-    this.createStockOptionEntry()
-    let optionData = this.optionGroup;
+  createMobileOption() {
+    debugger;
     this.showStockForm = false;
     if (this.stockOptions.length < 4) {
       this.showFormSec = false;
-      this.stockOptions.push(optionData);
+      this.stockOptions.push(this.editingOption);
       this.updateStockOrOptionAddedStatus();
       // this.optionGroup = {}
       this.showOptionLegForm = false;
@@ -206,22 +240,27 @@ export class TradeDetailsComponent implements OnInit {
   }
 
   editStock(element) {
+    debugger;
+    this.editingStock = JSON.parse(JSON.stringify(this.stockEntry));
     this.showFormSec = true;
     this.editOptionForm = false;
     this.showStockForm = true;
     this.editStockForm = true;
   }
+
   cancelTradeStock(index) {
     this.showFormSec = false;
     this.editOptionForm = false;
     this.showOptionLegForm = false;
     this.showStockForm = false;
   }
+  
   editOptionLeg(index) {
     this.showFormSec = true;
     this.editOptionForm = true;
     this.showOptionLegForm = true;
   }
+
   cancelTradeOption(index) {
     this.showFormSec = false;
     this.editOptionForm = false;
