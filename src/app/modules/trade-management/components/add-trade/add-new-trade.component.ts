@@ -49,6 +49,10 @@ export class AddNewTradeComponent implements OnInit {
   @ViewChild('tradeThesis', { static: false }) protected tradeThesis: TradeThesisComponent;
   @ViewChild('entryRules', { static: false }) protected entryRules: EntryRulesComponent;
   @ViewChild('exitRules', { static: false }) protected exitRules: ExitRulesComponent;
+  @ViewChild('mobileTradeDetails', { static: false }) protected mobileTradeDetails: TradeDetailsComponent;
+  @ViewChild('mobileTradeThesis', { static: false }) protected mobileTradeThesis: TradeThesisComponent;
+  @ViewChild('mobileEntryRules', { static: false }) protected mobilEntryRules: EntryRulesComponent;
+  @ViewChild('mobileExitRules', { static: false }) protected mobileExitRules: ExitRulesComponent;
   @Input('matTooltipShowDelay') showDelay: number;
   @Input('matTooltipHideDelay') hideDelay: number;
   strategyTypeChangeSubject: Subject<number> = new Subject<number>();
@@ -94,7 +98,7 @@ export class AddNewTradeComponent implements OnInit {
     protected toastr: ToastrService,
     protected _dialog: MatDialog,
     private demoService: DemoModeDetailsService
-    ) {
+  ) {
     this.initState();
     this.localStockClosedSubject.asObservable().subscribe(data => {
       this.updateLocalTradeHistory(data, null);
@@ -135,9 +139,9 @@ export class AddNewTradeComponent implements OnInit {
     this.loadStockDetailSummary();
   }
 
-  calculateMaxRisk($event: any) {
+  calculateMaxRisk($event: any, source: string) {
     console.log('calculate max risk:', $event);
-    let riskAnalysisRequest: RiskAnalysisRequest = this.createRiskAnalysisRequest();
+    let riskAnalysisRequest: RiskAnalysisRequest = this.createRiskAnalysisRequest(source);
 
     console.log('max risk request:', JSON.stringify(riskAnalysisRequest));
 
@@ -159,10 +163,11 @@ export class AddNewTradeComponent implements OnInit {
     return this.tradeDetailsBottomComponent.netReturn = $event;
   }
 
-  createRiskAnalysisRequest(): RiskAnalysisRequest {
+  createRiskAnalysisRequest(source: string): RiskAnalysisRequest {
     let riskAnalysisRequest: RiskAnalysisRequest = new RiskAnalysisRequest();
-    riskAnalysisRequest.stockPrice = this.tradeDetails.stockEntry;
-    riskAnalysisRequest.options = this.tradeDetails.stockOptions;
+    const tradeDetailsComp: TradeDetailsComponent = this.getTradeDetails(source);
+    riskAnalysisRequest.stockPrice = tradeDetailsComp.stockEntry;
+    riskAnalysisRequest.options = tradeDetailsComp.stockOptions;
     riskAnalysisRequest.module = 'ADD_TRADE';
     riskAnalysisRequest.stockId = this.selectedStock.id;
     return riskAnalysisRequest;
@@ -182,10 +187,9 @@ export class AddNewTradeComponent implements OnInit {
   }
 
 
-  addTrade() {
-    debugger;
+  addTrade(source: string) {
     this.Loader = !this.Loader;
-    this.updateTradeStrategyProps();
+    this.updateTradeStrategyProps(source);
     this.tradeStrategyService.addTrade(this.tradeStrategy).subscribe(result => {
       this.toastr.success('Trade strategy has been added.', 'Success');
       this.router.navigateByUrl("/trade-strategies");
@@ -201,9 +205,9 @@ export class AddNewTradeComponent implements OnInit {
       })
   }
 
-  editTradeStrategy() {
+  editTradeStrategy(source: string) {
     this.Loader = !this.Loader;
-    this.updateTradeStrategyProps();
+    this.updateTradeStrategyProps(source);
     this.tradeStrategyService.editTrade(this.tradeStrategy).subscribe(result => {
       this.toastr.success('Trade strategy has been updated.', 'Success');
       this.router.navigateByUrl("/trade-strategies");
@@ -219,9 +223,9 @@ export class AddNewTradeComponent implements OnInit {
       })
   }
 
-  updateClosedTrade() {
+  updateClosedTrade(source: string) {
     this.Loader = !this.Loader;
-    this.updateTradeStrategyProps();
+    this.updateTradeStrategyProps(source);
     this.tradeStrategyService.updateClosedTrade(this.tradeStrategy).subscribe(result => {
       this.toastr.success('Trade strategy has been updated.', 'Success');
       this.router.navigateByUrl("/trade-strategies");
@@ -237,8 +241,8 @@ export class AddNewTradeComponent implements OnInit {
       })
   }
 
-  closeTradeStrategy() {
-    this.updateTradeStrategyProps();
+  closeTradeStrategy(source: string) {
+    this.updateTradeStrategyProps(source);
     if (new Date(this.tradeStrategy.closeDate) < new Date(this.tradeStrategy.executedDate)) {
       this.toastr.error('Invalid close date', 'Error', {
         tapToDismiss: false,
@@ -277,50 +281,42 @@ export class AddNewTradeComponent implements OnInit {
     });
   }
 
-  updateTradeStrategyProps() {
+  updateTradeStrategyProps(source: string) {
+    const tradeDetailsComp: TradeDetailsComponent = this.getTradeDetails(source);
+    const tradeThesisComp: TradeThesisComponent = this.getTradeThesis(source);
+    const entryRulesComp: EntryRulesComponent = this.getTradeEntryRules(source);
+    const exitRulesComp: ExitRulesComponent = this.getTradeExitRules(source);
     this.tradeStrategy.stockId = this.selectedStock.id;
-    this.tradeStrategy.strategyTypeId = this.tradeDetails.selectedStrategy;
+    this.tradeStrategy.strategyTypeId = tradeDetailsComp.selectedStrategy;
     let tradeThesisArray = [];
-    tradeThesisArray.push(this.tradeThesis.tradeThesis);
+    tradeThesisArray.push(tradeThesisComp.tradeThesis);
     this.tradeStrategy.tradeThesis = tradeThesisArray;
-    if (this.tradeDetails.tags) {
-      this.tradeStrategy.tradeTag = this.tradeDetails.tags;
+    if (tradeDetailsComp.tags) {
+      this.tradeStrategy.tradeTag = tradeDetailsComp.tags;
     }
 
     let stockEntries = [];
-    if (this.tradeDetails.stockEntry) {
-      if ((!this.tradeDetails.stockEntry.quantity || this.tradeDetails.stockEntry.quantity === 0) && !this.tradeDetails.stockEntry.actionType) {
+    if (tradeDetailsComp.stockEntry) {
+      if ((!tradeDetailsComp.stockEntry.quantity || tradeDetailsComp.stockEntry.quantity === 0) && !tradeDetailsComp.stockEntry.actionType) {
         // In case of no stock leg considering action type as Buy to Open
-        this.tradeDetails.stockEntry.actionType = ActionType['Buy to Open'];
+        tradeDetailsComp.stockEntry.actionType = ActionType['Buy to Open'];
       }
-      stockEntries.push(this.tradeDetails.stockEntry);
+      stockEntries.push(tradeDetailsComp.stockEntry);
     }
     this.tradeStrategy.stockEntry = stockEntries;
-    this.tradeStrategy.stockOptions = this.tradeDetails.stockOptions;
-    this.tradeStrategy.direction = this.tradeThesis.tradeThesis.direction;
-    this.tradeStrategy.rules = this.entryRules.entryRules;
-    if (this.tradeStrategy.rules && this.exitRules.exitRules) {
-      this.tradeStrategy.rules = this.tradeStrategy.rules.concat(this.exitRules.exitRules);
+    this.tradeStrategy.stockOptions = tradeDetailsComp.stockOptions;
+    this.tradeStrategy.direction = tradeThesisComp.tradeThesis.direction;
+    this.tradeStrategy.rules = entryRulesComp.entryRules;
+    if (this.tradeStrategy.rules && exitRulesComp.exitRules) {
+      this.tradeStrategy.rules = this.tradeStrategy.rules.concat(exitRulesComp.exitRules);
     }
     if (this.close) {
       this.tradeStrategy.closeDate = this.tradeDetailsBottomComponent.closeDate;
     }
     if (!this.add) {
-      this.tradeStrategy.executed = this.tradeDetails.executedDate != null && this.tradeDetails.executedDate != undefined && this.tradeDetails.executedDate != '';
-      this.tradeStrategy.executedDate = this.tradeDetails.executedDate;
+      this.tradeStrategy.executed = tradeDetailsComp.executedDate != null && tradeDetailsComp.executedDate != undefined && tradeDetailsComp.executedDate != '';
+      this.tradeStrategy.executedDate = tradeDetailsComp.executedDate;
     }
-  }
-
-  getDirection() {
-    let dir: TradeDirection = this.tradeDetails.direction;
-    if (this.tradeDetails.selectedStrategy == 1) {
-      if (this.tradeDetails.stockEntry.actionType == ActionType["Buy to Open"]) {
-        dir = TradeDirection.Long;
-      } else if (this.tradeDetails.stockEntry.actionType == ActionType["Sell to Open"]) {
-        dir = TradeDirection.Short;
-      }
-    }
-    return dir;
   }
 
   goBack(moveTwoSteps?, mobileView?) {
@@ -365,9 +361,9 @@ export class AddNewTradeComponent implements OnInit {
     }
   }
 
-  navigaeToRiskAnalysis() {
+  navigaeToRiskAnalysis(source: string) {
     let extras: NavigationExtras = {};
-    this.updateTradeStrategyProps();
+    this.updateTradeStrategyProps(source);
     this.tradeStrategy.isEditTrade = this.edit;
     let inputData: TradeInputData = new TradeInputData();
     inputData.selectedStock = this.selectedStock;
@@ -377,7 +373,7 @@ export class AddNewTradeComponent implements OnInit {
     this.router.navigate(['/risk-analysis'], extras);
   }
 
-  CheckExecutionDate(failedRules: RuleEvalResult[]) {
+  CheckExecutionDate(failedRules: RuleEvalResult[], source: string) {
     let dialogData = {
       title: 'Confirm Trade Execution Date',
       executed: this.tradeStrategy.executed + '',
@@ -395,17 +391,17 @@ export class AddNewTradeComponent implements OnInit {
       this.tradeStrategy.executed = res.executed;
       this.tradeStrategy.executedDate = res.executionDate;
       if (!this.add) {
-        this.tradeDetails.executedDate = res.executionDate;
-        this.editTradeStrategy();
+        this.getTradeDetails(source).executedDate = res.executionDate;
+        this.editTradeStrategy(source);
       } else {
-        this.addTrade();
+        this.addTrade(source);
       }
     });
   }
 
-  editTrade() {
+  editTrade(source: string) {
     if (this.tradeStrategy.statusId == 4) {
-      this.evaluateStrategyRules();
+      this.evaluateStrategyRules(source);
     } else {
       const dialogRef = this._dialog.open(ConfirmDialogComponent, {
         width: 'auto',
@@ -414,35 +410,35 @@ export class AddNewTradeComponent implements OnInit {
       });
       dialogRef.afterClosed().subscribe(dialogResult => {
         if (dialogResult == true) {
-          this.editTradeStrategy();
+          this.editTradeStrategy(source);
         }
       });
     }
   }
 
-  closeTrade() {
+  closeTrade(source: string) {
     const dialogRef = this._dialog.open(ConfirmDialogComponent, {
       data: { 'message': 'Are you sure you want to close this strategy?' }
     });
     dialogRef.afterClosed().subscribe(dialogResult => {
       if (dialogResult == true) {
         this.Loader = !this.Loader;
-        this.closeTradeStrategy();
+        this.closeTradeStrategy(source);
       }
     });
   }
 
-  evalGridRules(event: any) {
-    this.updateTradeStrategyProps();
+  evalGridRules(event: any, source: string) {
+    this.updateTradeStrategyProps(source);
     this.entryExitRuleService.evalTradeRules(this.tradeStrategy).subscribe(result => {
       this.entryRules.updateEntryRules(result);
     })
   }
 
-  saveTradeAsDraft() {
+  saveTradeAsDraft(source: string) {
     this.tradeStrategy.executed = false;
     this.tradeStrategy.executedDate = undefined;
-    this.addTrade();
+    this.addTrade(source);
   }
 
   showSuccess() {
@@ -533,23 +529,24 @@ export class AddNewTradeComponent implements OnInit {
     return returnAmt;
   }
 
-  evaluateStrategyRules() {
+  evaluateStrategyRules(source: string) {
     this.Loader = !this.Loader;
-    this.updateTradeStrategyProps();
+    this.updateTradeStrategyProps(source);
     this.tradeStrategyService.evaluateStrategyRules(this.tradeStrategy).subscribe(result => {
       this.Loader = !this.Loader;
-      this.CheckExecutionDate(result);
+      this.CheckExecutionDate(result, source);
     }, (err) => {
       console.error("Error while evaluating strategy rules for strategy: {}", this.tradeStrategy, err);
       this.Loader = !this.Loader;
     });
   }
 
-  protected isValidTradeStrategy(): boolean {
-    if (!this.tradeDetails) {
+  protected isValidTradeStrategy(source: string): boolean {
+    const tradeDetailsComp: TradeDetailsComponent = this.getTradeDetails(source);
+    if (!tradeDetailsComp) {
       return false;
     }
-    let status: boolean = this.tradeDetails.isValidTradeStrategy();
+    let status: boolean = tradeDetailsComp.isValidTradeStrategy();
     if (this.close) {
       status = status && this.tradeDetailsBottomComponent.closeDate !== undefined;
     }
@@ -558,6 +555,38 @@ export class AddNewTradeComponent implements OnInit {
 
   ShowStats() {
     this.StatsSlide = !this.StatsSlide;
+  }
+
+  getTradeDetails(source: string): TradeDetailsComponent {
+    var comp: TradeDetailsComponent = this.tradeDetails;
+    if ('MOBILE' === source) {
+      comp = this.mobileTradeDetails;
+    }
+    return comp;
+  }
+
+  getTradeThesis(source: string): TradeThesisComponent {
+    var comp: TradeThesisComponent = this.tradeThesis;
+    if ('MOBILE' === source) {
+      comp = this.mobileTradeThesis;
+    }
+    return comp;
+  }
+
+  getTradeEntryRules(source: string): EntryRulesComponent {
+    var comp: EntryRulesComponent = this.entryRules;
+    if ('MOBILE' === source) {
+      comp = this.mobilEntryRules;
+    }
+    return comp;
+  }
+
+  getTradeExitRules(source: string): ExitRulesComponent {
+    var comp: ExitRulesComponent = this.exitRules;
+    if ('MOBILE' === source) {
+      comp = this.exitRules;
+    }
+    return comp;
   }
 
 }

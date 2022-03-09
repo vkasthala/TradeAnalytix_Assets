@@ -72,9 +72,6 @@ export class TradeDetailsComponent implements OnInit {
 
   stockEntry: StockEntry;
   stockOptions: OptionEntry[] = [];
-  editingStock: StockEntry;
-  editingOption: OptionEntry;
-  editingOptionIndex: number;
   selectedStrategy: number = 15;
   direction: TradeDirection = TradeDirection.Custom;
   executedDate: string;
@@ -82,16 +79,19 @@ export class TradeDetailsComponent implements OnInit {
   tradeStatus: number;
   lastUpdatedDate: string;
   tags: TradeTag[] = [];
+  previousReturn: number = 0;
+  registeredTags: any = [];
+
+  // Mobile specific props
+  editingStock: StockEntry;
+  editingOption: OptionEntry;
+  editingOptionIndex: number;
   showFormSec: boolean = false;
   showStockSec: boolean = false;
   showStockForm: boolean = false;
   showOptionLegForm: boolean = false;
   editStockForm: boolean = false;
   editOptionForm: boolean = false;
-  previousReturn: number = 0;
-  protected optionIndex: number = 1;
-  protected optionGroup: any = {};
-  registeredTags: any = [];
 
   public optionTypes: [
     { value: 1, name: 'radio1', id: "Call" },
@@ -109,7 +109,6 @@ export class TradeDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-
     if (!this.addTrade) {
       this.StockPosition = this.StockPosition.stockEntry[0];
       this.showStockSec = true;
@@ -159,7 +158,6 @@ export class TradeDetailsComponent implements OnInit {
   }
 
   addMobileStock() {
-    debugger;
     if (!this.stockEntry) {
       this.stockEntry = this.createStockEntry();
     }
@@ -173,7 +171,6 @@ export class TradeDetailsComponent implements OnInit {
   }
 
   updateMobileStock() {
-    debugger;
     this.showFormSec = false;
     this.showStockSec = true;
     this.showStockForm = false;
@@ -187,7 +184,6 @@ export class TradeDetailsComponent implements OnInit {
   }
 
   addMobileOption() {
-    debugger;
     this.showFormSec = true;
     this.showStockForm = false;
     this.showOptionLegForm = true;
@@ -198,7 +194,7 @@ export class TradeDetailsComponent implements OnInit {
     this.showFormSec = true;
     this.editOptionForm = true;
     this.showOptionLegForm = true;
-    this.editingOption =  JSON.parse(JSON.stringify(this.stockOptions[index]));
+    this.editingOption = JSON.parse(JSON.stringify(this.stockOptions[index]));
     this.editingOptionIndex = index;
   }
 
@@ -218,7 +214,6 @@ export class TradeDetailsComponent implements OnInit {
   }
 
   addOption() {
-    debugger;
     this.showStockForm = false;
     if (this.stockOptions.length < 4) {
       this.showFormSec = true;
@@ -228,7 +223,6 @@ export class TradeDetailsComponent implements OnInit {
   }
 
   createMobileOption() {
-    debugger;
     this.showStockForm = false;
     if (this.stockOptions.length < 4) {
       this.showFormSec = false;
@@ -240,7 +234,6 @@ export class TradeDetailsComponent implements OnInit {
   }
 
   editStock(element) {
-    debugger;
     this.editingStock = JSON.parse(JSON.stringify(this.stockEntry));
     this.showFormSec = true;
     this.editOptionForm = false;
@@ -254,7 +247,7 @@ export class TradeDetailsComponent implements OnInit {
     this.showOptionLegForm = false;
     this.showStockForm = false;
   }
-  
+
   editOptionLeg(index) {
     this.showFormSec = true;
     this.editOptionForm = true;

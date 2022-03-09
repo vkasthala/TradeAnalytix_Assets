@@ -53,7 +53,7 @@
                                 <div class="stepper-content">
                                     <app-trade-details (nextStep)="goForward()" (activateRisk)="activeStep = true"
                                         (addTradeEvent)="addTrade($event)"
-                                        (navigateRiskAnalysisEvent)="navigaeToRiskAnalysis()"
+                                        (navigateRiskAnalysisEvent)="navigaeToRiskAnalysis('WEB')"
                                         [stockSummary]="stockSummary" [selectedStock]="selectedStock"
                                         [inputState]="inputState" [editTrade]="edit" [addTrade]="add"
                                         [closeTrade]="close" [viewTrade]="view"
@@ -216,7 +216,7 @@
                                     </div>
 
                                     <app-trade-details-bottom [editTrade]="edit" [addTrade]="add" [closeTrade]="close"
-                                        [viewTrade]="view" (calculateMaxRisk)="calculateMaxRisk($event)" 
+                                        [viewTrade]="view" (calculateMaxRisk)="calculateMaxRisk($event, 'WEB')" 
                                         [stockOrOptionAddedSubject]="stockOrOptionAddedSubject"
                                         #tradeDetailsBottom>
                                     </app-trade-details-bottom>
@@ -237,7 +237,7 @@
                                 <div class="stepper-content">
                                     <app-entry-rules (prevStep)="goBack()" [inputState]="inputState" [editTrade]="edit"
                                         [addTrade]="add" [closeTrade]="close" [viewTrade]="view"
-                                        (evalRulesEvent)="evalGridRules($event)" #entryRules></app-entry-rules>
+                                        (evalRulesEvent)="evalGridRules($event, 'WEB')" #entryRules></app-entry-rules>
                                         <app-exit-rules [inputState]="inputState" [addTrade]="add" [viewTrade]="view"
                                         [closeTrade]="close" #exitRules></app-exit-rules>
                                 </div>
@@ -246,32 +246,32 @@
                         <div class="trade-actions">
                             <button type="button" class="btn btn-next mr-2"
                                 *ngIf="(add && (tradeDetails.stockOptions.length || tradeDetails.stockAdded))"
-                                (click)="evaluateStrategyRules()" [disabled]="!isValidTradeStrategy()">ADD
+                                (click)="evaluateStrategyRules('WEB')" [disabled]="!isValidTradeStrategy('WEB')">ADD
                                 TRADE</button>
 
                             <span
                                 *ngIf="(tradeDetails.stockAdded || tradeDetails.stockOptions.length > 0) && (stepper.selectedIndex == 0)">
                                 <button type="button" class="btn btn-outline-primary"
-                                    *ngIf="!close && !tradeStrategy.executed && !edit" (click)="saveTradeAsDraft()"
-                                    [disabled]="!isValidTradeStrategy()">Save
+                                    *ngIf="!close && !tradeStrategy.executed && !edit" (click)="saveTradeAsDraft('WEB')"
+                                    [disabled]="!isValidTradeStrategy('WEB')">Save
                                     as Draft</button>
                             </span>
 
-                            <button type="button" class="btn btn-next mr-2" *ngIf="edit" (click)="editTrade()"
-                                [disabled]="!isValidTradeStrategy()">UPDATE</button>
+                            <button type="button" class="btn btn-next mr-2" *ngIf="edit" (click)="editTrade('WEB')"
+                                [disabled]="!isValidTradeStrategy('WEB')">UPDATE</button>
 
                             <button type="button" class="btn btn-next mr-2" *ngIf="close && !view"
-                                (click)="closeTrade()" [disabled]="!isValidTradeStrategy()">CLOSE TRADE</button>
+                                (click)="closeTrade('WEB')" [disabled]="!isValidTradeStrategy('WEB')">CLOSE TRADE</button>
 
                             <button type="button" class="btn btn-gray" *ngIf="edit" (click)="cancelTrade()">CANCEL</button>
 
-                            <button type="button" class="btn btn-next" *ngIf="view" (click)="updateClosedTrade()">Save</button>
+                            <button type="button" class="btn btn-next" *ngIf="view" (click)="updateClosedTrade('WEB')">Save</button>
                         </div>
                     </div>
                     <div class="col-4 right-sidebar">
                         <app-trade-details-aside [addTrade]="add" [editTrade]="edit" [closeTrade]="close"
                             [selectedStock]="selectedStock" [stockSummary]="stockSummary"
-                            (loadMoreStats)="loadMoreStatsHandler($event)" (calculateMaxRisk)="calculateMaxRisk($event)"
+                            (loadMoreStats)="loadMoreStatsHandler($event)" (calculateMaxRisk)="calculateMaxRisk($event, 'WEB')"
                             [strategyTypeChangeSubject]="strategyTypeChangeSubject"
                             [stockOrOptionAddedSubject]="stockOrOptionAddedSubject" [tradeStrategy]="tradeStrategy"
                             #tradeDetailsAside></app-trade-details-aside>
@@ -311,11 +311,11 @@
         <ng-container *ngSwitchCase="2">
             <div class="trade-actions">
                 <span class="text-danger" (click)="cancelTrade()">Cancel</span>
-                <span class="mr-2" *ngIf="add" (click)="CheckExecutionDate('Confirm Trade Execution Date')">Add
+                <span class="mr-2" *ngIf="add" (click)="evaluateStrategyRules('MOBILE')">Add
                     Trade</span>
-                <span class="mr-2" *ngIf="edit" (click)="editTrade()">Edit Trade</span>
+                <span class="mr-2" *ngIf="edit" (click)="editTrade('MOBILE')">Edit Trade</span>
                 <span class="mr-2" *ngIf="close && !view"
-                                (click)="closeTrade()">Close Trade</span>                
+                                (click)="closeTrade('MOBILE')">Close Trade</span>                
             </div>
 
             <app-trade-details-header [addTrade]="add" [editTrade]="edit" [closeTrade]="close"
@@ -333,7 +333,7 @@
                         <ng-template matStepLabel>Trade Details</ng-template>
                         <div class="stepper-content">
                             <app-trade-details (nextStep)="goForward()" (activateRisk)="activeStep = true"
-                                (addTradeEvent)="addTrade($event)" (navigateRiskAnalysisEvent)="navigaeToRiskAnalysis()"
+                                (addTradeEvent)="addTrade($event)" (navigateRiskAnalysisEvent)="navigaeToRiskAnalysis('MOBILE')"
                                 [stockSummary]="stockSummary" [selectedStock]="selectedStock" [inputState]="inputState"
                                 [editTrade]="edit" [addTrade]="add" [closeTrade]="close" [viewTrade]="view"
                                 [strategyTypeChangeSubject]="strategyTypeChangeSubject"
@@ -341,7 +341,7 @@
                                 [localStockClosedSubject]="localStockClosedSubject"
                                 [localOptionClosedSubject]="localOptionClosedSubject"
                                 (calcNetDebit)="calcNetDebit($event)" (calcNetReturn)="calcNetReturn($event)"
-                                [StockPosition]="tradeStrategy" #tradeDetails>
+                                [StockPosition]="tradeStrategy" #mobileTradeDetails>
                             </app-trade-details>
                         </div>
 
@@ -466,7 +466,7 @@
                                 </div>
                             </div>
                             <app-trade-details-bottom [editTrade]="edit" [addTrade]="add" [closeTrade]="close"
-                            [viewTrade]="view" (calculateMaxRisk)="calculateMaxRisk($event)" 
+                            [viewTrade]="view" (calculateMaxRisk)="calculateMaxRisk($event, 'MOBILE')" 
                             [stockOrOptionAddedSubject]="stockOrOptionAddedSubject"
                             #tradeDetailsBottom></app-trade-details-bottom>
                         </div>
@@ -477,7 +477,7 @@
                         <div class="stepper-content">
                             <app-trade-thesis (nextStep)="goForward()" (prevStep)="goBack(true)"
                                 [inputState]="inputState" [editTrade]="edit" [viewTrade]="view" [addTrade]="add"
-                                [closeTrade]="close" [selectedStock]="selectedStock" #tradeThesis>
+                                [closeTrade]="close" [selectedStock]="selectedStock" #mobileTradeThesis>
                             </app-trade-thesis>
                         </div>
                     </mat-step>
@@ -485,10 +485,10 @@
                         <ng-template matStepLabel>Rules</ng-template>
                         <div class="stepper-content">
                             <app-entry-rules (prevStep)="goBack()" [inputState]="inputState" [editTrade]="edit"
-                                [addTrade]="add" [closeTrade]="close" [viewTrade]="view" #entryRules></app-entry-rules>
+                                [addTrade]="add" [closeTrade]="close" [viewTrade]="view" #mobileEntryRules></app-entry-rules>
                             <div *ngIf="close || view">
                                 <app-exit-rules [inputState]="inputState" [addTrade]="add" [viewTrade]="view"
-                                    [closeTrade]="close" #exitRules></app-exit-rules>
+                                    [closeTrade]="close" #mobileExitRules></app-exit-rules>
                             </div>
                         </div>
                     </mat-step>

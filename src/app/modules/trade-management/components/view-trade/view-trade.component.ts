@@ -40,8 +40,8 @@ export class ViewTradeComponent extends AddNewTradeComponent implements OnInit {
     this.showClosedLegs();
   }
 
-  isValidTradeStrategy(): boolean {
-    return super.isValidTradeStrategy();
+  isValidTradeStrategy(source: string): boolean {
+    return super.isValidTradeStrategy(source);
   }
 
 }

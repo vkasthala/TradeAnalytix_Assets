@@ -35,7 +35,6 @@ export class MobileTradeDetailsComponent extends TradeDetailsComponent implement
   }
 
   ngAfterViewInit(): void {
-    debugger;
     super.ngAfterViewInit();
   }
 
