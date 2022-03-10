@@ -157,6 +157,41 @@ export class TradeDetailsComponent implements OnInit {
     this.currentState++;
   }
 
+  addStock() {
+    if (!this.stockEntry) {
+      this.stockEntry = this.createStockEntry();
+    }
+    this.editingStock = JSON.parse(JSON.stringify(this.stockEntry));
+    this.stockAdded = true;
+    this.showFormSec = true;
+    this.showStockForm = true;
+    this.showOptionLegForm = false;
+    this.updateStockOrOptionAddedStatus();
+  }
+
+  showStock() {
+    this.showFormSec = false;
+    this.showStockSec = true;
+    this.showStockForm = false;
+    this.stockEntry = this.editingStock;
+  }
+
+  showOptionForm() {
+    this.showFormSec = true;
+    this.showStockForm = false;
+    this.showOptionLegForm = true;
+    this.editingOption = this.createStockOptionEntry();
+  }
+
+  addOption() {
+    this.showStockForm = false;
+    if (this.stockOptions.length < 4) {
+      this.showFormSec = true;
+      this.stockOptions.push(this.createStockOptionEntry())
+      this.updateStockOrOptionAddedStatus();
+    }
+  }
+
   addMobileStock() {
     if (!this.stockEntry) {
       this.stockEntry = this.createStockEntry();
@@ -211,15 +246,6 @@ export class TradeDetailsComponent implements OnInit {
     this.editOptionForm = false;
     this.showOptionLegForm = false;
     this.showStockForm = false;
-  }
-
-  addOption() {
-    this.showStockForm = false;
-    if (this.stockOptions.length < 4) {
-      this.showFormSec = true;
-      this.stockOptions.push(this.editingOption)
-      this.updateStockOrOptionAddedStatus();
-    }
   }
 
   createMobileOption() {
