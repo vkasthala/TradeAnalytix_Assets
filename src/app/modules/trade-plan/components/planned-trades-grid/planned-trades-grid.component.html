@@ -87,10 +87,16 @@
 <!-- Mobile Code -->
 <div class="mb-2 ad-trade-plan-mobile">
     <div class="col-12 px-0 justify-content-between mb-1 pb-0">
-        <label class="col-form-label pt-0 pl-4 w-100 pr-2">Planned Trades <span class="cursor float-right"
-                (click)="Collaps(i)">
-                <i class="material-icons material-icons-outlined">{{hideRuleContent[i] ? 'add_circle_outline' :
-                    'remove_circle_outline'}}</i></span></label>
+        <label class="col-form-label pt-0 pl-4 w-100 pr-2">Planned Trades 
+            <span class="cursor float-right" (click)="Collaps(i)">
+                <i class="material-icons material-icons-outlined">{{hideRuleContent[i] ? 'add_circle_outline' : 'remove_circle_outline'}}</i>
+            </span>
+        </label>
+
+        <div class="text-primary px-2 d-flex justify-content-end align-items-center" *ngIf="!viewTradePlan">
+            <span class="cursor" (click)="openPlannedTradeDialog()">Add Trade</span>
+        </div>
+
         <div class="trade-plan-table" *ngIf="!hideRuleContent[i]">
             <!-- Grid row -->
             <div class="trade-plan-mobile-grid">

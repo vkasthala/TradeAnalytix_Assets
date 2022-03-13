@@ -1,14 +1,5 @@
 <div class="px-3 risk-analysis mt-3">
     <div class="main-body">
-        <!-- <div class="trade-dash-main">
-            <div class="trade-dash-name">
-                <h3 class="d-flex">
-                    Risk Analysis
-                    <mat-icon matTooltip="Risk analysis feature allows the traders to analyze the proﬁtability and risk involved with a a complex trade strategy involving stock and options. Traders can assess the maximum gain and loss associated with the strategy by varying the stock and option inputs. Based on the analysis results, traders can tweak the strategy so that it aligns with the desired goal. 
-                    " matTooltipPosition="right" class="text-success ml-2" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay">info</mat-icon>
-                </h3>
-            </div>
-        </div> -->
         <ng-container [ngSwitch]="currentState">
             <ng-container *ngSwitchCase="1">
                 <!--entry first-->
