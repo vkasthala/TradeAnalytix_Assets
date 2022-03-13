@@ -3,6 +3,7 @@ import { MatDialog, MatStepper } from '@angular/material';
 import { NavigationExtras, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Subject } from 'rxjs';
+import { MaxRiskDetails } from 'src/app/modules/risk-analysis/models/max-risk-details.model';
 import { RiskAnalysisRequest } from 'src/app/modules/risk-analysis/models/risk-analysis-request.model';
 import { RiskAnalysisService } from 'src/app/modules/risk-analysis/services/risk-analysis.service';
 import { ConfirmDialogComponent } from 'src/app/modules/shared/components/modals/confirm-dialog/confirm-dialog.component';
@@ -44,6 +45,7 @@ export class AddNewTradeComponent implements OnInit {
   @ViewChild('tradeMobileStepper', { static: false }) protected tradeMobileStepper: MatStepper;
   @ViewChild('tradeDetailsAside', { static: false }) protected tradeDetailsAsideComponent: TradeDetailsAsideComponent;
   @ViewChild('tradeDetailsBottom', { static: false }) protected tradeDetailsBottomComponent: TradeDetailsBottomComponent;
+  @ViewChild('mobileTradeDetailsBottom', { static: false }) protected mobileTradeDetailsBottomComponent: TradeDetailsBottomComponent;
 
   @ViewChild('tradeDetails', { static: false }) protected tradeDetails: TradeDetailsComponent;
   @ViewChild('tradeThesis', { static: false }) protected tradeThesis: TradeThesisComponent;
@@ -147,19 +149,26 @@ export class AddNewTradeComponent implements OnInit {
 
     this.riskAnalysisService.getMaxRiskDetails(riskAnalysisRequest).subscribe(result => {
       console.log("max details success:", result)
-      this.tradeDetailsAsideComponent.maxRiskDetails = result;
-      this.tradeDetailsBottomComponent.maxRiskDetails = result;
+      this.setMaxRiskDetails(result, source);
     },
       errResponse => {
         console.log("max details error:", errResponse);
       });
   }
 
+  setMaxRiskDetails(maxRiskDetails: MaxRiskDetails, source: string) {
+    this.tradeDetailsAsideComponent.maxRiskDetails = maxRiskDetails;
+    this.mobileTradeDetailsBottomComponent.maxRiskDetails = maxRiskDetails;
+    this.tradeDetailsAsideComponent.maxRiskDetails = maxRiskDetails;
+  }
+
   calcNetDebit($event: string): string {
+    this.mobileTradeDetailsBottomComponent.netDebit = $event;
     return this.tradeDetailsBottomComponent.netDebit = $event;
   }
 
   calcNetReturn($event: string): string {
+    this.mobileTradeDetailsBottomComponent.netReturn = $event;
     return this.tradeDetailsBottomComponent.netReturn = $event;
   }
 

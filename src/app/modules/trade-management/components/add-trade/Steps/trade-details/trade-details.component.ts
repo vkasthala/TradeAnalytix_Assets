@@ -210,6 +210,12 @@ export class TradeDetailsComponent implements OnInit {
     this.showStockSec = true;
     this.showStockForm = false;
     this.stockEntry = this.editingStock;
+    if (this.editingStock.partialLegChange && this.editingStock.partialLegChange[0].changeCount < 0) {
+      let stockLegHistory: StockLegHistory = this.createLocalStockLegHistory(this.editingStock.partialLegChange[0]);
+      console.log('stock leg history: ', stockLegHistory);
+      this.localStockClosedSubject.next(stockLegHistory);
+    }
+    this.updateStockOrOptionAddedStatus();
   }
 
   cancelMobileStockEdit() {
@@ -239,6 +245,11 @@ export class TradeDetailsComponent implements OnInit {
     this.showOptionLegForm = false;
     this.showStockForm = false;
     this.stockOptions[this.editingOptionIndex] = this.editingOption;
+    if (this.editingOption.partialLegChange && this.editingOption.partialLegChange[0].changeCount < 0) {
+      let optionLegHistory: OptionLegHistory = this.createLocalOptionLegHistory(this.editingOption.partialLegChange[0], this.editingOption);
+      this.localOptionClosedSubject.next(optionLegHistory);
+    }
+    this.updateStockOptionDisplayProperty();
   }
 
   cancelMobileOption() {
@@ -421,7 +432,8 @@ export class TradeDetailsComponent implements OnInit {
   checkForDecimalValidation(event) {
     event.target.value = parseFloat(event.target.value).toFixed(2);
   }
-  addToPosition() {
+
+  addToPosition(source: string) {
     let dialogData: any = this.getAddData(this.stockEntry.actionType);
     dialogData.title = this.getStockAddOrReduceTitle(true);
     const dialogRef = this._dialog.open(AddToPositionComponent, {
@@ -430,11 +442,15 @@ export class TradeDetailsComponent implements OnInit {
       data: dialogData
     });
     dialogRef.afterClosed().subscribe((res) => {
-      this.addOrReduceStock(res, true);
+      if ('MOBILE' === source) {
+        this.addOrReduceMobileStock(res, true);
+      } else {
+        this.addOrReduceStock(res, true);
+      }
     });
   }
 
-  reduceToPosition() {
+  reduceToPosition(source: string) {
     let dialogData: any = this.getReduceData(this.stockEntry.actionType);
     dialogData.title = this.getStockAddOrReduceTitle(false);
     const dialogRef = this._dialog.open(ReduceToPositionComponent, {
@@ -443,9 +459,14 @@ export class TradeDetailsComponent implements OnInit {
       data: dialogData
     });
     dialogRef.afterClosed().subscribe((res) => {
-      this.addOrReduceStock(res, false);
+      if ('MOBILE' === source) {
+        this.addOrReduceMobileStock(res, false);
+      } else {
+        this.addOrReduceStock(res, false);
+      }
     });
   }
+
   selectStrategy() {
     let dialogData: any = this.strategies;
     const dialogRef = this._dialog.open(StrategySelectionComponent, {
@@ -455,7 +476,7 @@ export class TradeDetailsComponent implements OnInit {
     });
   }
 
-  addToStockPosition(index: number) {
+  addToStockPosition(index: number, source: string) {
     let dialogData: any = this.getAddData(this.stockOptions[index].actionType);
     dialogData.title = this.getOptionAddOrReduceTitle(this.stockOptions[index].expireDate, this.stockOptions[index].strikePrice, this.stockOptions[index].optionType, true);
     const dialogRef = this._dialog.open(AddToStockPositionComponent, {
@@ -464,12 +485,15 @@ export class TradeDetailsComponent implements OnInit {
       data: dialogData
     });
     dialogRef.afterClosed().subscribe((res) => {
-      console.log('here...', res);
-      this.addOrReduceStockOption(res, this.stockOptions[index], true, index);
+      if ('MOBILE' === source) {
+        this.addOrReduceMobileStockOption(res, true);
+      } else {
+        this.addOrReduceStockOption(res, this.stockOptions[index], true, index);
+      }
     });
   }
 
-  reduceToStockOption(index: number) {
+  reduceToStockOption(index: number, source: string) {
     let dialogData: any = this.getReduceData(this.stockOptions[index].actionType);
     dialogData.title = this.getOptionAddOrReduceTitle(this.stockOptions[index].expireDate, this.stockOptions[index].strikePrice, this.stockOptions[index].optionType, false);
     const dialogRef = this._dialog.open(ReduceToStockPositionComponent, {
@@ -478,8 +502,11 @@ export class TradeDetailsComponent implements OnInit {
       data: dialogData
     });
     dialogRef.afterClosed().subscribe((res) => {
-      console.log('here...', res);
-      this.addOrReduceStockOption(res, this.stockOptions[index], false, index);
+      if ('MOBILE' === source) {
+        this.addOrReduceMobileStockOption(res, false);
+      } else {
+        this.addOrReduceStockOption(res, this.stockOptions[index], false, index);
+      }
     });
   }
 
@@ -512,6 +539,7 @@ export class TradeDetailsComponent implements OnInit {
   }
 
   addOrReduceStock(dialogResult: any, add: boolean) {
+    debugger;
     if (!dialogResult || (!dialogResult.price || !dialogResult.quantity) || (add == false && dialogResult.quantity > this.stockEntry.quantity)) {
       return;
     }
@@ -534,6 +562,47 @@ export class TradeDetailsComponent implements OnInit {
       console.log('stock leg history: ', stockLegHistory);
       this.localStockClosedSubject.next(stockLegHistory);
     }
+  }
+
+  addOrReduceMobileStockOption(dialogResult: any, add: boolean) {
+    if (!dialogResult || (!dialogResult.price || !dialogResult.contracts) || (add == false && dialogResult.contracts > this.editingOption.contracts)) {
+      return;
+    }
+    console.log('option result:', dialogResult);
+    let openPrice: number = this.editingOption.price;
+    if (add) {
+      this.editingOption.contracts = this.editingOption.contracts + dialogResult.contracts;
+      let price = +(((this.editingOption.price * this.editingOption.contracts) + (dialogResult.contracts * dialogResult.price)) / (this.editingOption.contracts + dialogResult.contracts)).toFixed(2);
+      this.editingOption.price = price;
+    } else if (dialogResult.contracts <= this.editingOption.contracts) {
+      this.editingOption.contracts = this.editingOption.contracts - dialogResult.contracts;
+    }
+
+    if (!this.editingOption.partialLegChange) {
+      this.editingOption.partialLegChange = [];
+    }
+    let legChange: PartialLegChange = this.createPartialLegClose(dialogResult.contracts, openPrice, dialogResult.price, add, dialogResult.actionType, dialogResult.notes, dialogResult.executedDate);
+    this.editingOption.partialLegChange.push(legChange);
+  }
+
+  addOrReduceMobileStock(dialogResult: any, add: boolean) {
+    if (!dialogResult || (!dialogResult.price || !dialogResult.quantity) || (add == false && dialogResult.quantity > this.editingStock.quantity)) {
+      return;
+    }
+    console.log('stock result:', dialogResult);
+    let openPrice: number = this.stockEntry.price;
+    if (add) {
+      this.editingStock.quantity = this.editingStock.quantity + dialogResult.quantity;
+      let price = +(((this.editingStock.price * this.editingStock.quantity) + (dialogResult.quantity * dialogResult.price)) / (this.editingStock.quantity + dialogResult.quantity)).toFixed(2);
+      this.editingStock.price = price;
+    } else {
+      this.editingStock.quantity = this.editingStock.quantity - dialogResult.quantity;
+    }
+    if (!this.editingStock.partialLegChange) {
+      this.editingStock.partialLegChange = [];
+    }
+    let legChange: PartialLegChange = this.createPartialLegClose(dialogResult.quantity, openPrice, dialogResult.price, add, dialogResult.actionType, dialogResult.notes, dialogResult.executedDate);
+    this.editingStock.partialLegChange.push(legChange);
   }
 
   addOrReduceStockOption(dialogResult: any, stockOption: OptionEntry, add: boolean, index: number) {
