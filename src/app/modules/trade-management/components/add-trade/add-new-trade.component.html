@@ -309,13 +309,11 @@
             </div>
         </ng-container>
         <ng-container *ngSwitchCase="2">
-            <div class="trade-actions">
+            <div class="trade-actions pt-0">
                 <span class="text-danger" (click)="cancelTrade()">Cancel</span>
-                <span class="mr-2" *ngIf="add" (click)="evaluateStrategyRules('MOBILE')">Add
-                    Trade</span>
-                <span class="mr-2" *ngIf="edit" (click)="editTrade('MOBILE')">Edit Trade</span>
-                <span class="mr-2" *ngIf="close && !view"
-                                (click)="closeTrade('MOBILE')">Close Trade</span>                
+                <span class="mr-2" *ngIf="add" (click)="evaluateStrategyRules('MOBILE')">Add</span>
+                <span class="mr-2" *ngIf="edit" (click)="editTrade('MOBILE')">Update</span>
+                <span class="mr-2" *ngIf="close && !view" (click)="closeTrade('MOBILE')">Close Trade</span>                
             </div>
 
             <app-trade-details-header [addTrade]="add" [editTrade]="edit" [closeTrade]="close"

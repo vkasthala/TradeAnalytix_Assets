@@ -159,7 +159,6 @@ th.mat-header-cell {
   display: none;
   @media #{$extra-small} {
       display: block;
-      margin-top: 10px;
       padding-bottom: 30px;
   }
 }
@@ -218,5 +217,8 @@ th.mat-header-cell {
   }
   .trade-delete {
     color: #EB5757;
+  }
+  .first-column {
+    padding-left: 2rem !important;
   }
 }
