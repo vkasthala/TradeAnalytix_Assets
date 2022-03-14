@@ -477,8 +477,14 @@ export class TradeDetailsComponent implements OnInit {
   }
 
   addToStockPosition(index: number, source: string) {
-    let dialogData: any = this.getAddData(this.stockOptions[index].actionType);
-    dialogData.title = this.getOptionAddOrReduceTitle(this.stockOptions[index].expireDate, this.stockOptions[index].strikePrice, this.stockOptions[index].optionType, true);
+    let dialogData: any;
+    if ('MOBILE' === source) {
+      dialogData = this.getAddData(this.editingOption.actionType);
+      dialogData.title = this.getOptionAddOrReduceTitle(this.editingOption.expireDate, this.editingOption.strikePrice, this.editingOption.optionType, true);
+    } else {
+      dialogData = this.getAddData(this.stockOptions[index].actionType);
+      dialogData.title = this.getOptionAddOrReduceTitle(this.stockOptions[index].expireDate, this.stockOptions[index].strikePrice, this.stockOptions[index].optionType, true);
+    }
     const dialogRef = this._dialog.open(AddToStockPositionComponent, {
       disableClose: false,
       width: 'auto',
@@ -494,8 +500,14 @@ export class TradeDetailsComponent implements OnInit {
   }
 
   reduceToStockOption(index: number, source: string) {
-    let dialogData: any = this.getReduceData(this.stockOptions[index].actionType);
-    dialogData.title = this.getOptionAddOrReduceTitle(this.stockOptions[index].expireDate, this.stockOptions[index].strikePrice, this.stockOptions[index].optionType, false);
+    let dialogData: any;
+    if ('MOBILE' === source) {
+      dialogData = this.getAddData(this.editingOption.actionType);
+      dialogData.title = this.getOptionAddOrReduceTitle(this.editingOption.expireDate, this.editingOption.strikePrice, this.editingOption.optionType, false);
+    } else {
+      dialogData = this.getReduceData(this.stockOptions[index].actionType);
+      dialogData.title = this.getOptionAddOrReduceTitle(this.stockOptions[index].expireDate, this.stockOptions[index].strikePrice, this.stockOptions[index].optionType, false);
+    }
     const dialogRef = this._dialog.open(ReduceToStockPositionComponent, {
       disableClose: false,
       width: 'auto',

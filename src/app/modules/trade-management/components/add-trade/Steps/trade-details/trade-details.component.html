@@ -434,12 +434,12 @@
                     <label class="col-form-label pt-0">Action</label>
                     <div class="mb-2 form-stock-value">
                         <span class="mr-3">
-                            <input type="radio" name="inputState" value="1" [(ngModel)]="editingStock.actionType"
-                                class="radio" /> Buy to Open
+                            <input type="radio" name="inputState" [value]="1" [(ngModel)]="editingStock.actionType"
+                                class="radio" [ngClass]="[closeTrade || viewTrade ? 'disabled' : '', editTrade && ((StockPosition.quantity > 0 && StockPosition.quantity !== undefined) || (StockPosition.partialLegChange && StockPosition.partialLegChange.length > 0) ) ? 'disabled' : '', tradeStatus == 4 ? 'input_enanled' : 'simha']"/> Buy to Open
                         </span>
                         <span class="mr-3">
-                            <input type="radio" name="inputState" value="2" [(ngModel)]="editingStock.actionType"
-                                class="radio" /> Sell to Open
+                            <input type="radio" name="inputState" [value]="2" [(ngModel)]="editingStock.actionType"
+                                class="radio" [ngClass]="[closeTrade || viewTrade ? 'disabled' : '', editTrade && ((StockPosition.quantity > 0 && StockPosition.quantity !== undefined) || (StockPosition.partialLegChange && StockPosition.partialLegChange.length > 0) ) ? 'disabled' : '', tradeStatus == 4 ? 'input_enanled' : 'simha']"/> Sell to Open
                         </span>
                     </div>
                 </div>
@@ -508,11 +508,11 @@
                         <label class="col-form-label pt-0">Action</label>
                         <div class="mb-2 form-stock-value">
                             <span class="mr-3">
-                                <input type="radio" value="1" [(ngModel)]="editingOption.actionType" class="radio"> Buy to
+                                <input type="radio" [value]="1" [(ngModel)]="editingOption.actionType" class="radio" [ngClass]="[closeTrade || viewTrade ? 'disabled' : '', editTrade && ((editingOption.partialLegChange && editingOption.partialLegChange.length > 0) ) ? 'disabled' : '', tradeStatus == 4 ? 'input_enanled' : 'simha']"> Buy to
                                 Open
                             </span>
                             <span>
-                                <input type="radio" value="2" [(ngModel)]="editingOption.actionType" class="radio"> Sell
+                                <input type="radio" [value]="2" [(ngModel)]="editingOption.actionType" class="radio" [ngClass]="[closeTrade || viewTrade ? 'disabled' : '', editTrade && ((editingOption.partialLegChange && editingOption.partialLegChange.length > 0) ) ? 'disabled' : '', tradeStatus == 4 ? 'input_enanled' : 'simha']"> Sell
                                 to Open
                             </span>
                         </div>
@@ -543,11 +543,11 @@
                             <label class="col-form-label pt-0">Call/Put</label>
                             <div class="mt-1 form-stock-value">
                                 <span class="mr-3">
-                                    <input type="radio" name="optionType" value="1"
+                                    <input type="radio" name="optionType" [value]="1"
                                         [(ngModel)]="editingOption.optionType" /> Call
                                 </span>
                                 <span>
-                                    <input type="radio" name="optionType" value="2"
+                                    <input type="radio" name="optionType" [value]="2"
                                         [(ngModel)]="editingOption.optionType" /> Put
                                 </span>
                             </div>

@@ -6,6 +6,7 @@ export class StockEntry {
     id: number;
 
     actionType: ActionType;
+    
     actionLabel: any;
     
     price: number;
