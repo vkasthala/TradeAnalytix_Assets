@@ -425,6 +425,11 @@
                     </div>
                 </div>
             </ng-container>
+            <div style="width: 0px; height: 0px;">
+                <span class="total_amount mx-1" style="display: none;"
+                    [ngClass]="closeTrade ? 'total_return' : ''">{{(closeTrade || viewTrade) ? calculateNetReturn() :
+                    calculateNetDebit()}}</span>
+            </div>
         </div>
 
         <div class="form-stock-sec" [ngClass]="showFormSec ? 'd-block' : 'd-none'">
