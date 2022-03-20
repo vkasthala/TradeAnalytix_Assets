@@ -105,10 +105,16 @@
                         <app-draft-trades-grid #draftTradesGrid>loading</app-draft-trades-grid>
                     </div>
                 </mat-step>
-                <mat-step label="Closed Positions">
+                <!-- <mat-step label="Closed Positions">
                     <ng-template matStepLabel>Closed Positions</ng-template>
                     <div class="stepper-content">
                         <app-history-grid #historyGrid>loading</app-history-grid>
+                    </div>
+                </mat-step> -->
+                <mat-step label="Shared Trades">
+                    <ng-template matStepLabel>Shared Trades</ng-template>
+                    <div class="stepper-content">
+                        <app-draft-trades-grid #draftTradesGrid>loading</app-draft-trades-grid>
                     </div>
                 </mat-step>
             </mat-horizontal-stepper>

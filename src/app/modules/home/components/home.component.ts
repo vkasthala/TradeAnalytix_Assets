@@ -107,9 +107,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
       case 'help': return { breadcrumb: 'HELP CENTER', title: 'Help Center', description: 'Help' };
 
       case 'setttings': return { breadcrumb: 'SETTINGS', title: 'Settings', description: 'Settings' };
-      case 'edit-trade': return { breadcrumb: 'Edit TRADE', title: 'Edit Trade', description: 'Dashboard' };
+      case 'edit-trade/': return { breadcrumb: 'Edit TRADE', title: 'Edit Trade', description: 'Dashboard' };
 
-      case 'close-trade': return { breadcrumb: 'TRADE STRATEGIES', title: 'Close Trade', description: 'Close Trade' };
+      case 'close-trade/': return { breadcrumb: 'TRADE STRATEGIES', title: 'Close Trade', description: 'Close Trade' };
 
       case 'exit-rules': return { breadcrumb: 'TRADE STRATEGIES', title: 'Exit Rules', description: 'Dashboard' };
 

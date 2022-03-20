@@ -602,8 +602,10 @@ a.btn.btn-skip {
 
 .tags-list {
     list-style: none;
-    display: inline-flex;
+    display: block;
     justify-content: flex-end;
+    margin: 0;
+    padding-top: .5rem;
 }
 
 .tag-icon {

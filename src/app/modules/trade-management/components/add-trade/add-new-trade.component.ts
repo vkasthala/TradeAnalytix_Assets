@@ -598,4 +598,11 @@ export class AddNewTradeComponent implements OnInit {
     return comp;
   }
 
+  onShareTradeChange(event) {
+    if (event.target.checked) {
+      this.toastr.success('Trade details are no longer shared with the followers', 'Success');
+      return false;
+    }
+  }
+
 }

@@ -196,6 +196,30 @@ export class ReportTypeService {
     reportSubType.reportDetailList = [new ReportDetails('net_return_entryprice', 'Net Return by Entry Price', ReportCategory.Net_Return, "This report shows the realized return of the user's portfolio by entry price range of the trades"), new ReportDetails('win_loss_entryprice', 'Win/Loss by Entry Price', ReportCategory.Win_Loss, "This report shows the number of winning and losing trades by entry price range of the trades")];
     reportSubTypes.push(reportSubType);
 
+    reportSubType = new ReportSubType();
+    reportSubType.name = 'Top-10 Symbols';
+    reportSubType.id = "top_10_symbols";
+    reportSubType.reportDetailList = [new ReportDetails('net_return_technicalindicator', 'Net Return by Technical Indicator', ReportCategory.Net_Return, ""), new ReportDetails('win_loss_technicalindicator', 'Win/Loss by Technical Indicator', ReportCategory.Win_Loss, "")];
+    reportSubTypes.push(reportSubType);
+
+    reportSubType = new ReportSubType();
+    reportSubType.name = 'Bottom-10 Symbols';
+    reportSubType.id = "bottom_10_symbols";
+    reportSubType.reportDetailList = [new ReportDetails('net_return_technicalindicator', 'Net Return by Technical Indicator', ReportCategory.Net_Return, ""), new ReportDetails('win_loss_technicalindicator', 'Win/Loss by Technical Indicator', ReportCategory.Win_Loss, "")];
+    reportSubTypes.push(reportSubType);
+
+    reportSubType = new ReportSubType();
+    reportSubType.name = 'Asset Type';
+    reportSubType.id = "asset_type";
+    reportSubType.reportDetailList = [new ReportDetails('net_return_technicalindicator', 'Net Return by Technical Indicator', ReportCategory.Net_Return, ""), new ReportDetails('win_loss_technicalindicator', 'Win/Loss by Technical Indicator', ReportCategory.Win_Loss, "")];
+    reportSubTypes.push(reportSubType);
+
+    reportSubType = new ReportSubType();
+    reportSubType.name = 'Price Range';
+    reportSubType.id = "price_range";
+    reportSubType.reportDetailList = [new ReportDetails('net_return_technicalindicator', 'Net Return by Technical Indicator', ReportCategory.Net_Return, ""), new ReportDetails('win_loss_technicalindicator', 'Win/Loss by Technical Indicator', ReportCategory.Win_Loss, "")];
+    reportSubTypes.push(reportSubType);
+
     return reportSubTypes;
   }
 

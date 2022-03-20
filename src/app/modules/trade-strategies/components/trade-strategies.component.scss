@@ -720,7 +720,7 @@ a.import-new img {
 }
 .summary-items {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: flex-start;
     width: 100%;
     @media #{$extra-small} {
@@ -733,7 +733,7 @@ a.import-new img {
     min-height: 85px;
     margin-bottom: 10px;
     padding: .5rem;
-    width: 24%;
+    width: 22%;
     position: relative;
     justify-content: center;
     display: flex;
@@ -742,7 +742,7 @@ a.import-new img {
     box-shadow: 0px 4px 16px rgba(157, 157, 157, 0.1);
     border-radius: 5px;
     &:not(:last-child) {
-        margin-right: 0;
+        margin-right: 10px;
         @media #{$extra-small} {
             margin-right: 0;
         }
