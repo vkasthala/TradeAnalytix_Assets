@@ -551,7 +551,6 @@ export class TradeDetailsComponent implements OnInit {
   }
 
   addOrReduceStock(dialogResult: any, add: boolean) {
-    debugger;
     if (!dialogResult || (!dialogResult.price || !dialogResult.quantity) || (add == false && dialogResult.quantity > this.stockEntry.quantity)) {
       return;
     }

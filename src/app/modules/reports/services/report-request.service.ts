@@ -117,4 +117,32 @@ export class ReportRequestService {
     return url;
   }
 
+  public getSymbolsByWinLossApiUrl(reportId: string): string {
+    let url: string;
+    if ('win_loss_top_symbols' === reportId) {
+      url = '/reports/performance/win_loss_top_symbols';
+    } else if ('win_loss_bottom_symbols' === reportId) {
+      url = '/reports/performance/win_loss_bottom_symbols';
+    }
+    return url;
+  }
+
+  public getSymbolsByReturnApiUrl(reportId: string): string {
+    let url: string;
+    if ('net_return_top_symbols' === reportId) {
+      url = '/reports/performance/net-return-top-symbols';
+    } else if ('net_return_bottom_symbols' === reportId) {
+      url = '/reports/performance/net-return-bottom-symbols';
+    }
+    return url;
+  }
+
+  public getAssetTypeApiUrl(reportId: string) : string {
+    let url: string;
+    if ('return_by_asset_type' === reportId) {
+      url = '/reports/performance/return_by_asset_type';
+    }
+    return url;
+  }
+
 }

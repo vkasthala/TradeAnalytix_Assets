@@ -108,6 +108,40 @@ export class ReportTypeService {
     reportSubTypes.push(reportSubType);
 
     reportSubType = new ReportSubType();
+    reportSubType.name = 'Top-10 Symbols';
+    reportSubType.reportDetailList = [new ReportDetails('net_return_top_symbols', 'Top 10 Symbols by Net Return', ReportCategory.Symbols_By_Net_Return, "This report shows the realized return of top 10 symbols"), new ReportDetails('win_loss_top_symbols', 'Top 10 Symbols by Win Rate', ReportCategory.Symbols_By_Win_Loss, "This report shows the win rate of top 10 symbols")];
+    reportSubTypes.push(reportSubType);
+
+    reportSubType = new ReportSubType();
+    reportSubType.name = 'Bottom-10 Symbols';
+    reportSubType.reportDetailList = [new ReportDetails('net_return_bottom_symbols', 'Bottom 10 Symbols by Net Return', ReportCategory.Symbols_By_Net_Return, "This report shows the realized return of bottom 10 symbols"), new ReportDetails('win_loss_bottom_symbols', 'Bottom 10 Symbols by Win Rate', ReportCategory.Symbols_By_Win_Loss, "This report shows the win rate of bottom 10 symbols")];
+    reportSubTypes.push(reportSubType);
+
+    reportSubType = new ReportSubType();
+    reportSubType.name = 'Holding Period';
+    reportSubType.id = "holding_period";
+    reportSubType.reportDetailList = [new ReportDetails('net_return_holdingperiod', 'Net Return by Holding Period', ReportCategory.Net_Return, "This report shows the realized return of the user's portfolio by holding period of the trades for the selected date range."), new ReportDetails('win_loss_holdingperiod', 'Win/Loss by Holding Period', ReportCategory.Win_Loss, "This report shows the number of winning and losing trades by tags assigned to the trades by the user")];
+    reportSubTypes.push(reportSubType);
+
+    reportSubType = new ReportSubType();
+    reportSubType.name = 'Trade Day';
+    reportSubType.id = "initiated_day";
+    reportSubType.reportDetailList = [new ReportDetails('net_return_tradeday', 'Net Return by Trade Day', ReportCategory.Net_Return, "This report shows the realized return of the user's portfolio by the day on which they are opened"), new ReportDetails('win_loss_tradeday', 'Win/Loss by Trade Day', ReportCategory.Win_Loss, "This report shows the number of winning and losing trades by the day on which the user opened the trade")];
+    reportSubTypes.push(reportSubType);
+
+    reportSubType = new ReportSubType();
+    reportSubType.name = 'Asset Type';
+    reportSubType.id = "asset_type";
+    reportSubType.reportDetailList = [new ReportDetails('return_by_asset_type', 'Realized Return by Asset Type', ReportCategory.Asset_Type, "This report shows the realized return by asset type")];
+    reportSubTypes.push(reportSubType);
+
+    reportSubType = new ReportSubType();
+    reportSubType.name = 'Stock Price ';
+    reportSubType.id = "stockPrice";
+    reportSubType.reportDetailList = [new ReportDetails('stock_price', 'Coming Soon', ReportCategory.Net_Return, "")];
+    reportSubTypes.push(reportSubType);
+
+    reportSubType = new ReportSubType();
     reportSubType.name = 'Tag';
     reportSubType.id = "trade_tags";
     reportSubType.reportDetailList = [new ReportDetails('net_return_trade_tags', 'Net Return by Tag', ReportCategory.Net_Return_Tag, "This report shows the realized return of the user's portfolio by tags assigned to the trades"), new ReportDetails('win_loss_trade_tags', 'Win/Loss by Tag', ReportCategory.Win_Loss_Tag, "This report shows the number of winning and losing trades by tags assigned to the trades by the user")];
@@ -123,18 +157,6 @@ export class ReportTypeService {
     reportSubType.name = 'Direction';
     reportSubType.id = "direction";
     reportSubType.reportDetailList = [new ReportDetails('net_return_direction', 'Net Return by Direction', ReportCategory.Net_Return, "This report shows the realized return of the user's portfolio by direction for the selected date range."), new ReportDetails('win_loss_direction', 'Win/Loss by Direction', ReportCategory.Win_Loss, "This report shows the number of winning and losing trades by direction for the selected date range.")];
-    reportSubTypes.push(reportSubType);
-
-    reportSubType = new ReportSubType();
-    reportSubType.name = 'Holding Period';
-    reportSubType.id = "holding_period";
-    reportSubType.reportDetailList = [new ReportDetails('net_return_holdingperiod', 'Net Return by Holding Period', ReportCategory.Net_Return, "This report shows the realized return of the user's portfolio by holding period of the trades for the selected date range."), new ReportDetails('win_loss_holdingperiod', 'Win/Loss by Holding Period', ReportCategory.Win_Loss, "This report shows the number of winning and losing trades by tags assigned to the trades by the user")];
-    reportSubTypes.push(reportSubType);
-
-    reportSubType = new ReportSubType();
-    reportSubType.name = 'Trade Day';
-    reportSubType.id = "initiated_day";
-    reportSubType.reportDetailList = [new ReportDetails('net_return_tradeday', 'Net Return by Trade Day', ReportCategory.Net_Return, "This report shows the realized return of the user's portfolio by the day on which they are opened"), new ReportDetails('win_loss_tradeday', 'Win/Loss by Trade Day', ReportCategory.Win_Loss, "This report shows the number of winning and losing trades by the day on which the user opened the trade")];
     reportSubTypes.push(reportSubType);
 
     reportSubType = new ReportSubType();
@@ -171,12 +193,6 @@ export class ReportTypeService {
     reportSubType.name = 'Close Date';
     reportSubType.id = "closeDate";
     reportSubType.reportDetailList = [new ReportDetails('close_date', 'Close Date Chart title', ReportCategory.Net_Return, "This report shows the realized return of the user's portfolio by Close Date")];
-    reportSubTypes.push(reportSubType);
-
-    reportSubType = new ReportSubType();
-    reportSubType.name = 'Stock Price ';
-    reportSubType.id = "stockPrice";
-    reportSubType.reportDetailList = [new ReportDetails('stock_price', 'Coming Soon', ReportCategory.Net_Return, "")];
     reportSubTypes.push(reportSubType);
 
     reportSubType = new ReportSubType();
