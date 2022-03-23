@@ -123,6 +123,8 @@ export class ReportRequestService {
       url = '/reports/performance/win_loss_top_symbols';
     } else if ('win_loss_bottom_symbols' === reportId) {
       url = '/reports/performance/win_loss_bottom_symbols';
+    } else if('win-loss-price-range' === reportId) {
+      url = '/reports/performance/win-loss-price-range';
     }
     return url;
   }
@@ -133,6 +135,8 @@ export class ReportRequestService {
       url = '/reports/performance/net-return-top-symbols';
     } else if ('net_return_bottom_symbols' === reportId) {
       url = '/reports/performance/net-return-bottom-symbols';
+    } else if('net-return-price-range' === reportId) {
+      url = '/reports/performance/net-return-price-range';
     }
     return url;
   }

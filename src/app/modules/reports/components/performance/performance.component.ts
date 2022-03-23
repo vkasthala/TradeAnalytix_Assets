@@ -16,7 +16,6 @@ export class PerformanceComponent extends ReportTabContentComponent implements O
   ngOnInit() {
     super.ngOnInit();
     this.reportSubTypes = this.reportTypeService.getSubTypesByCategory(this.type);
-    console.log('risk charts loading..', this.reportSubTypes);
     this.onReportSubTypeSelect(this.reportSubTypes[0]);
   }
 

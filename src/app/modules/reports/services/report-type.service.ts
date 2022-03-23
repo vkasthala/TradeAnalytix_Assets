@@ -138,7 +138,7 @@ export class ReportTypeService {
     reportSubType = new ReportSubType();
     reportSubType.name = 'Stock Price ';
     reportSubType.id = "stockPrice";
-    reportSubType.reportDetailList = [new ReportDetails('stock_price', 'Coming Soon', ReportCategory.Net_Return, "")];
+    reportSubType.reportDetailList = [new ReportDetails('net-return-price-range', 'Realized Return by Price Range', ReportCategory.Symbols_By_Net_Return, "This report shows the realized return by stock price range"), new ReportDetails('win-loss-price-range', 'Win Rate by Price Range', ReportCategory.Symbols_By_Win_Loss, "This report shows the win rate by stock price range")];
     reportSubTypes.push(reportSubType);
 
     reportSubType = new ReportSubType();
