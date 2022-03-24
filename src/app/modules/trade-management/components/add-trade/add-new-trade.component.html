@@ -36,7 +36,7 @@
                 </div>
             </ng-container>
             <ng-container *ngSwitchCase="2">
-                <span class="mr-2 float-right mt-2"><input class="checkbox mr-1" type="checkbox" (change)="onShareTradeChange($event)"> Share Trade</span>
+                <span class="mr-2 float-right mt-2  share-trade-field"><input class="checkbox mr-1" type="checkbox" (change)="onShareTradeChange($event)"> Share Trade</span>
                 <app-trade-details-header [addTrade]="add" [editTrade]="edit" [closeTrade]="close"
                     [selectedStock]="selectedStock" [stockSummary]="stockSummary"
                     (loadMoreStats)="loadMoreStatsHandler($event)" [StrategyId]="tradeStrategy">

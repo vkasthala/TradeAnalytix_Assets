@@ -35,7 +35,7 @@
                         <span class="d-inline-flex mr-2" *ngIf="(stockAdded || stockOptions.length) && !closeTrade && !viewTrade">
                             <a class="text-link assess-risk-btn" (click)="navigateToRiskAnalysis()">Assess Risk</a>
                         </span>
-                        <button type="button" class="btn btn-primary btn-sm">Compare</button>
+                        <a class="text-link assess-risk-btn">Compare</a>
                         
                         <ul class="tags-list">
                             <li *ngFor="let tag of tags; let i = index;" class="tag-item">
@@ -63,7 +63,7 @@
                 </span>
             </div>
             <div class="trade-cards-section" *ngIf="stockAdded && !viewTrade">
-                <h4 *ngIf="addTrade">Stock Positions</h4>
+                <h4>Stock Positions</h4>
                 <div class="trade-card-box mt-3">
                     <div class="card-main card-main-actions">
                         <label class="col-form-label pt-0">Action</label>

@@ -8,8 +8,8 @@
         <div class="trade-rate-box">
             <div class="trade-rate-box-header">
                 <div class="text-left trade-name-rate">
-                    <div class="d-flex align-items-center">
-                        <span class="trade-r">{{(stockSummary.close).toFixed(1)}}</span>
+                    <div class="d-flex align-items-center stock-symbol">
+                        <span class="trade-r">{{stockSummary.close}}</span>
                         <span [ngClass]="{'d-flex trade-rr': stockSummary.changePercent <= 0, 'd-flex trade-g' : stockSummary.changePercent > 0}">
                             <i *ngIf="stockSummary.changePercent > 0" class="positive-amt material-icons mat-icon-xs">arrow_upward</i>
                             <i *ngIf="stockSummary.changePercent <= 0" class="negative-amt material-icons mat-icon-xs">arrow_downward</i>
