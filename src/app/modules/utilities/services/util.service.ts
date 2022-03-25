@@ -16,10 +16,10 @@ export class UtilService {
     return `${value}%`;
   }
 
-  downloadFile(fileId: String): void {
+  downloadFile(fileId: String, mimeType: string): void {
     let url = this.apiUrl + '/download/' + fileId;
     this.httpService.getWIthReponseType(url, new Map(), new Map()).subscribe(response => {
-      const blob = new Blob([response]);
+      const blob = new Blob([response], { type: mimeType });
       FileSaver.saveAs(blob, fileId)
     },
       error => {

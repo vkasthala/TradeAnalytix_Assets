@@ -160,7 +160,7 @@ export class ImportTradesHistory implements AfterViewInit, OnInit {
   }
 
   downloadStandardFile() {
-    this.utilService.downloadFile("TRADE_ANALYTIX_IMPORT_STANDARD.xlsx");
+    this.utilService.downloadFile("TRADE_ANALYTIX_IMPORT_STANDARD.xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
   }
 
   expandRowOptions(index) {
