@@ -610,12 +610,6 @@ a.btn.btn-skip {
         width: 100%;
         text-align: center;
     }
-    .tab .nav-tabs li.active a:before {
-        content: "\f105";
-        bottom: 15%;
-        left: 0;
-        right: auto;
-    }
 }
 
 .charts {
@@ -638,10 +632,15 @@ a.btn.btn-skip {
 }
 
 .risk-table {
+    width: 17%;
     height: auto;
     min-height: 340px;
     padding: 0px;
     background: #FFFFFF;
+    box-shadow: 0px 4px 12px rgb(157 157 157 / 35%);
+    border-radius: 4px;
+    margin-right: 10px;
+    max-width: 17.5%;
     @media #{$small} {
         width: 50%;
     }
@@ -655,14 +654,17 @@ a.btn.btn-skip {
         color: #3A4C85;
     }
     table {
-        width: auto;
+        width: 100%;
+        margin: 0 auto;
+        text-align: center;
         thead {
             th {
                 background: rgb(157 166 186 / 20%);
                 color: #3A4C85;
-                font-size: 15px;
-                font-weight: 600;
-                padding: 1rem 0.45rem;
+                font-size: 13px;
+                font-weight: normal;
+                text-align: center;
+                padding: .5rem 0.25rem;
                 @media #{$small} {
                     font-size: 12px;
                 }
@@ -680,8 +682,8 @@ a.btn.btn-skip {
             font-weight: 400;
             //   color: #4f5051;
             border-bottom: 1px solid #bfbfbf;
+            text-align: center;
             padding: .5rem 0.25rem;
-            padding-left: 0;
             @media #{$small} {
                 padding: 0px 10px;
             }
@@ -720,10 +722,10 @@ a.btn.btn-skip {
             th {
                 background: rgb(157 166 186 / 20%);
                 color: #3A4C85;
-                font-size: 15px;
-                font-weight: 600;
-                padding: 1rem 0.25rem;
+                font-size: 13px;
+                font-weight: normal;
                 text-align: center;
+                padding: .5rem 0.25rem;
                 padding-left: 0;
                 @media #{$small} {
                     font-size: 12px;
