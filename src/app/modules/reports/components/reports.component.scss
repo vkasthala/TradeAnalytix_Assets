@@ -1,6 +1,10 @@
 @import '../../../../assets/styles/variable.scss';
 .reports-section {
     padding-top: 30px;
+    @media #{$extra-small} {
+        padding-top: 15px;
+        padding-bottom: 40px;
+    }
 }
 
 .main-body {
@@ -256,3 +260,16 @@
         color: #000;
     }
 }
+
+.web-parent-reports {
+    @media #{$extra-small} {
+        display: none !important;
+    }
+}
+.mobile-parent-reports {
+    display: none;
+    @media #{$extra-small} {
+        display: block;
+    }
+}
+

@@ -83,6 +83,9 @@
 
 .risk-manage-sec {
     padding: 10px 15px;
+    @media #{$extra-small} {
+        padding: 10px;
+    }
 }
 
 .top-sec {
@@ -95,10 +98,16 @@
         align-items: flex-start;
         flex-direction: column;
     }
+    @media #{$extra-small} {
+        display: block;
+    }
     .top-sec-label {
         font-size: 13px;
         line-height: 1;
         margin-bottom: 5px;
+        @media #{$extra-small} {
+            padding: 0 !important;
+        }
     }
 }
 
@@ -136,12 +145,22 @@
         padding: 0;
     }
 }
+.child-tabs-container {
+    @media #{$extra-small} {
+        border: 1px solid rgb(157 166 186 / 30%);;
+    }
+}
 
 .tab-content.tabs {
     display: flex;
     flex: 0 0 86%;
     max-width: 86%;
     border-left: 1px solid rgb(157 166 186 / 30%);
+    @media #{$extra-small} {
+        flex: 0 0 100%;
+        max-width: 100%;
+        border-left: 0;
+    }
 }
 
 .tab-content>.tab-pane {
@@ -168,4 +187,18 @@
     font-weight: bold;
     cursor: pointer;
     color: black !important;
+}
+.web-child-reports {
+    @media #{$extra-small} {
+        display: none !important;
+    }
+}
+.mobile-child-reports {
+    display: none;
+    @media #{$extra-small} {
+        display: block;
+    }
+}
+.row_reverse {
+    flex-direction: row-reverse;
 }

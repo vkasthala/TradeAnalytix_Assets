@@ -1,10 +1,18 @@
-<div class="trade-risk-tabs">
+<div class="trade-risk-tabs child-tabs-container">
+    <!-- mobile-tabs -->
+    <div class="mobile-child-reports p-2">
+        <select class="form-control" [(ngModel)]="selectedObject" (change)="onReportSubTypeSelect(selectedObject)">
+            <option *ngFor="let type of reportSubTypes;let i = index" [ngValue]="type" [selected]="type.id === 'allocation'">{{type.name}}</option>
+        </select>
+    </div>
     <div class="tab vertical-tabs" role="tabpanel">
-        <ul class="nav nav-tabs v-tabs" role="tablist">
+        <ul class="nav nav-tabs v-tabs web-child-reports" role="tablist">
             <li role="presentation" *ngFor="let type of reportSubTypes" [ngClass]="{'active': type.id === 'allocation'}">
                 <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#allocation" role="tab" (click)="onReportSubTypeSelect(type)">{{type.name}}</a>
             </li>
         </ul>
+
+        
         <div class="tab-content tabs">
             <div class="tab-pane active" id="allocation" role="tabpanel">
                 <div class="risk-manage-sec">
@@ -30,23 +38,17 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row row_reverse">
+                        <!-- Summary -->
+                        <div class="col-sm-4">
+                            <app-report-summary [reportFilter]="reportFilter" [filterChangeSubject]="filterChangeSubject" [reportTypeChangeSubject]="reportTypeChangeSubject" #reportSummary></app-report-summary>
+                        </div>
+
                         <div class="col-sm-8">
                             <!-- charts -->
                             <div class="trade-dash-con" *ngFor="let report of reports">
                                 <app-report-chart [report]="report" [subtype]="subtype" [reportFilter]="reportFilter" [description]="description" [filterChangeSubject]="filterChangeSubject" #reportChart></app-report-chart>
-                                <!--
-                                <div [ngSwitch]="report.id">
-                                    <app-calendar-chart [report]="report" [subtype]="subtype" [reportFilter]="reportFilter" [filterChangeSubject]="filterChangeSubject" *ngSwitchCase="calendar_report" #reportChart></app-calendar-chart>
-                                    <app-report-chart [report]="report" [subtype]="subtype" [reportFilter]="reportFilter" [filterChangeSubject]="filterChangeSubject" *ngSwitchDefault #reportChart></app-report-chart>
-                                </div>
-                                -->
                             </div>
-                        </div>
-
-                        <!-- Summary -->
-                        <div class="col-sm-4">
-                            <app-report-summary [reportFilter]="reportFilter" [filterChangeSubject]="filterChangeSubject" [reportTypeChangeSubject]="reportTypeChangeSubject" #reportSummary></app-report-summary>
                         </div>
                     </div>
                 </div>
@@ -55,3 +57,4 @@
         </div>
     </div>
 </div>
+

@@ -17,6 +17,9 @@ export class ReportsComponent implements OnInit {
   @ViewChild('GoalsReports', { static: false }) protected GoalsReports: PerformanceComponent;
   @ViewChild('disciplineReports', { static: false }) protected disciplineReports: DisciplineComponent;
   @ViewChild('riskReports', { static: false }) protected riskReports: RiskmanagementComponent;
+  public selectedParentReport: string = "Portfolio";
+
+  websiteList: any = ['HDTuto.com', 'HDTuto.com', 'Nicesnippets.com']
 
   constructor() { }
 
@@ -35,6 +38,17 @@ export class ReportsComponent implements OnInit {
     }else if (selectedTab === 'risk') {
       this.riskReports.reloadData(selectedTab);
     }
+  }
+
+  parentReportChange(e) {
+    console.log(e.target.value);
+    this.selectedParentReport = e.target.value;
+  }
+
+  changeWebsite(e) {
+
+    console.log(e.target.value);
+
   }
 
 }

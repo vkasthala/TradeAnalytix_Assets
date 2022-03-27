@@ -1,8 +1,9 @@
 <div class="reports-section px-3">
     <div class="main-body">
         <!-- risk-tabs -->
-        <div class="trade-risk-tabs">
+        <div class="trade-risk-tabs web-parent-reports">
             <div class="tab" role="tabpanel">
+                
                 <ul class="nav nav-tabs" role="tablist">
                     <li class="active" role="presentation">
                         <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#Portfolio" role="tab">Portfolio</a>
@@ -40,15 +41,51 @@
                     <div class="tab-pane fade" id="RiskManagement" role="tabpanel">
                         <app-riskmanagement #riskReports></app-riskmanagement>
                     </div>
-                    <div class="tab-pane fade" id="Rules" role="tabpanel">
+                    <div class="tab-pane fade" id="Rules" role="tabpanel" [ngClass]="selectedParentReport === 'Rules' ? 'd-block' : 'd-none'">
                         <app-reports-rules #rulesReports></app-reports-rules>
                      </div>
-                    <div class="tab-pane fade" id="Discipline" role="tabpanel">
+                    <div class="tab-pane fade" id="Discipline" role="tabpanel" [ngClass]="selectedParentReport === 'Discipline' ? 'd-block' : 'd-none'">
                         <app-discipline #disciplineReports></app-discipline>
                     </div>
-                    <div class="tab-pane fade" id="Commissions" role="tabpanel">
+                    <div class="tab-pane fade" id="Commissions" role="tabpanel" [ngClass]="selectedParentReport === 'Commissions' ? 'd-block' : 'd-none'">
                         <app-commissions></app-commissions>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- mobile-tabs -->
+        <div class="mobile-parent-reports p-3">
+            <select class="form-control" (change)="parentReportChange($event)" selected> 
+                <option value="Portfolio">Portfolio</option>
+                <option value="Performance">Performance</option>
+                <option value="Goals">Goals</option>
+                <option value="RiskManagement">Risk Management</option>
+                <option value="Rules">Trading Rules</option>
+                <option value="Discipline">Discipline</option>
+                <option value="Commissions">Commissions</option>
+            </select>
+            <div>
+                <div [ngClass]="selectedParentReport === 'Portfolio' ? 'd-block' : 'd-none'">
+                    <app-portfolio></app-portfolio>
+                </div>
+                <div [ngClass]="selectedParentReport === 'Performance' ? 'd-block' : 'd-none'">
+                    <app-performance></app-performance>
+                </div>
+                <div [ngClass]="selectedParentReport === 'Goals' ? 'd-block' : 'd-none'">
+                    <app-goals #GoalsReports></app-goals>
+                </div>
+                <div [ngClass]="selectedParentReport === 'RiskManagement' ? 'd-block' : 'd-none'">
+                    <app-riskmanagement #riskReports></app-riskmanagement>
+                </div>
+                <div [ngClass]="selectedParentReport === 'Rules' ? 'd-block' : 'd-none'">
+                    <app-reports-rules #rulesReports></app-reports-rules>
+                 </div>
+                <div [ngClass]="selectedParentReport === 'Discipline' ? 'd-block' : 'd-none'">
+                    <app-discipline #disciplineReports></app-discipline>
+                </div>
+                <div [ngClass]="selectedParentReport === 'Commissions' ? 'd-block' : 'd-none'">
+                    <app-commissions></app-commissions>
                 </div>
             </div>
         </div>

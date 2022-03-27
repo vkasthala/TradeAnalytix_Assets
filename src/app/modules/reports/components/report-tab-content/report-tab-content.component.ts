@@ -11,12 +11,18 @@ import { ReportTypeService } from '../../services/report-type.service';
 import { ReportChartComponent } from '../report-chart/report-chart.component';
 import { ReportSummaryComponent } from '../report-summary/report-summary.component';
 
+interface category{
+  id:number;
+  name:string;
+}
+
 @Component({
   selector: 'app-report-tab-content',
   templateUrl: './report-tab-content.component.html',
   styleUrls: ['./report-tab-content.component.scss']
 })
 export class ReportTabContentComponent implements OnInit {
+  selectedObject : category;
 
   @ViewChild('reportSummary', { static: false }) protected reportSummary: ReportSummaryComponent;
 
