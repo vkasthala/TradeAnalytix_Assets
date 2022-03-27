@@ -35,7 +35,10 @@
                         <span class="d-inline-flex mr-2" *ngIf="(stockAdded || stockOptions.length) && !closeTrade && !viewTrade">
                             <a class="text-link assess-risk-btn" (click)="navigateToRiskAnalysis()">Assess Risk</a>
                         </span>
-                        <a class="text-link assess-risk-btn">Compare</a>
+                        <span class="d-inline-flex">
+                            <a class="text-link assess-risk-btn">Compare</a>
+                        </span>
+                        
                         
                         <ul class="tags-list">
                             <li *ngFor="let tag of tags; let i = index;" class="tag-item">

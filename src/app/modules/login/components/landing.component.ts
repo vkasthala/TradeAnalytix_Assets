@@ -100,4 +100,11 @@ export class LandingComponent implements OnInit {
   menuToggle() {
     this.hamburgerMenu = !this.hamburgerMenu 
   }
+  displayStyle = "none";
+  openPopup() {
+    this.displayStyle = "block";
+  }
+  closePopup() {
+    this.displayStyle = "none";
+  }
 }

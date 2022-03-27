@@ -103,19 +103,19 @@
                             <!-- {{features[currentInd]}} -->
                         </div>
                         <div class="banner-info-footer">
-                            <a class="btn btn-white mr-3" href="landing#howit_works">Learn How</a>
+                            <button type="button" class="btn btn-white mr-3" (click)="openPopup()">Watch Video</button>
                             <!-- <button type="button" class="btn btn-outline" (click)="joinWaitlist()">Sign-in</button> -->
                             <button type="button" class="btn google-btn pl-0 pr-3" (click)="login('google')"><span class="google-icon-wrapper mr-3"><img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/></span> Sign-in</button>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-9 col-md-6">
-                    <div class="py-1">
-                        <iframe width="100%" height="400" src="https://www.youtube.com/embed/nG_HpDMR3nE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <!-- <div class="py-1">
+                        <iframe width="100%" height="480" src="https://www.youtube.com/embed/nG_HpDMR3nE" title="YouTube video player" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         
-                    </div>
-
-                    <!-- <div class="widgets_section">
+                    </div> -->
+                    <div class="banner-rtside">
+                    <div class="widgets_section">
                             <div class="widgets_box_orange">
                                 <div class="widgets_box_icon pb-2">
                                     <img src="../../../../assets/images/widgets_icon1.png" alt="">
@@ -138,10 +138,10 @@
                             </div>
                             <div class="widgets_box_thumb"></div>
                             <div class="widgets_box_vshape"></div>
-                        </div> -->
+                        </div>
                         <!-- end: widgets_section -->
 
-                        <!-- <div class="widgets_section">
+                        <div class="widgets_section">
                             <div class="widgets_box_thumb"></div>
                             <div class="widgets_box_blue">
                                 <div class="widgets_box_icon">
@@ -161,9 +161,9 @@
                                 </div>
                             </div>
                             <div class="widgets_box_empty"></div>
-                        </div> -->
+                        </div>
                         <!-- end: widgets_section -->
-                        <!-- <div class="widgets_section">
+                        <div class="widgets_section">
                             <div class="widgets_box_orange">
                                 <div class="widgets_box_icon pb-2">
                                     <img src="../../../../assets/images/widgets_icon6.png" alt="">
@@ -187,15 +187,15 @@
                                 <img src="../../../../assets/images/shape3.png" alt="">
                             </div>
                             <div class="widgets_box_vshape"></div>
-                        </div> -->
+                        </div>
                         <!-- end: widgets_section -->
-                        <!-- <div class="widgets_section justify-content-end">
-
+                        <div class="widgets_section justify-content-end">
                             <div class="widgets_box_hshape"></div>
                             <div class="widgets_box_empty-s"></div>
-                        </div> -->
+                        </div>
                         <!-- end: widgets_section -->
 
+                    </div>
                 </div>
             </div>
         </div>
@@ -451,3 +451,16 @@
 </div>
 
 <div *ngIf="loginModalOpen" class="modal-backdrop fade show"></div>
+
+<div class="modal video-modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="text-right px-2 pt-2">
+                <span class="cursor" (click)="closePopup()"><mat-icon class="mat-icon-sm">clear</mat-icon></span>
+            </div>
+            <div class="modal-body px-2 py-0">
+                <iframe width="100%" height="480" src="https://www.youtube.com/embed/nG_HpDMR3nE" title="YouTube video player" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</div>

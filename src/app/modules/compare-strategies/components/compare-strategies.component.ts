@@ -199,7 +199,7 @@ export class CompareStrategiesComponent implements OnInit {
     }
   }
 
-  stratgeyIndexChange(value) {
+  strategyIndexChange(value) {
     this.selectedStrategyTable = Number(value);
   }
 
