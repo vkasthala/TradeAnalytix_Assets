@@ -27,7 +27,7 @@
                             </a>
                         </li>
                         <li [class.nav-active]="currentRoute == 'FAQs'">
-                            <a class="landing-nav-link" href="landing#trade_journal">
+                            <a class="landing-nav-link" href="landing#Faqs">
                                 FAQs
                             </a>
                         </li>
@@ -314,13 +314,128 @@
             </div>
             <!-- end: Trade Plan -->
             
-            <!-- <div class="features_section howit_works_section" id="howit_works">
-                <div class="features_section_title page-heading">Product Features</div>
-                <div class="features_section_dec text-center">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                </div>
+            <div class="features_section howit_works_section" id="Faqs">
+                <div class="features_section_title page-heading mb-3">Frequently Asked Questions</div>
+
+                <mat-accordion class="example-headers-align w-100" multi="false">
+                    <mat-expansion-panel [expanded]="false" (opened)="setStep(1)">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                How is TradeAnalytix different from other trade journals?
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <ng-template matExpansionPanelContent>
+                            <div class="accordion-panel-body row">
+                            TradeAnalytix is built with active retail trader in mind and is different from other journals in many regards. Our trade journal is designed in Q&A format to help the trader think through their trade in different perspectives - rationale, emotional, technical, risk, etc. Reports and metrics are generated on almost every response provided by the trader in the journal not just on the trade history. We emphasize on risk management and trading rules, and these concepts are embedded in our trade journal. Read more about what makes TradeAnalytix unique here. </div>
+                        </ng-template>
+                    </mat-expansion-panel>
+
+                    <mat-expansion-panel [expanded]="false" (opened)="setStep(2)" (afterCollapse)="afterPanelClosed(1)" (afterExpand)="afterPanelOpened($event)" [disabled]="panelDisabled">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                When should trades be added to TradeAnalytix journal?
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+
+                        <ng-template matExpansionPanelContent>
+                            <div class="accordion-panel-body row">
+                                You can add a trade to TradeAnalytix both before and after you execute that trade in your brokerage account. If you add your trades to TradeAnalytix before you execute that trade, you can evaluate your trade from different perspectives (rationale behind the trade, risk assessment, past performance, rules alignment, comparison with other strategies) and make an informed decision as to whether to go ahead with the trade or not. If you chose to add trades to TradeAnalytix only after the execution of the trade in the brokerage, you can still derive insights from your trade history and journal in the form of detailed reports and metrics.
+                            </div>
+                        </ng-template>
+                    </mat-expansion-panel>
+
+                    <mat-expansion-panel [expanded]="false" (opened)="setStep(3)" (afterCollapse)="afterPanelClosed(1)" (afterExpand)="afterPanelOpened($event)" [disabled]="panelDisabled">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                How can I add my trades in the brokerage account to TradeAnalytix?
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <ng-template matExpansionPanelContent>
+                            <div class="accordion-panel-body row">
+                                Trades can be added manually one-by-one using our intuitive user interface or your trade history files from brokerage can be uploaded to TradeAnalytix so that all those trades get added in bulk.
+                            </div>
+                        </ng-template>
+                    </mat-expansion-panel>
+
+                    <mat-expansion-panel [expanded]="false" (opened)="setStep(4)" (afterCollapse)="afterPanelClosed(1)" (afterExpand)="afterPanelOpened($event)" [disabled]="panelDisabled">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                How many reports and metrics are available in TradeAnalytix?
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <ng-template matExpansionPanelContent>
+                            <div class="accordion-panel-body row">
+                                There are over 40 reports available in TradeAnalytix at present and the list is growing. These reports are generated on your trading history and the journal details provided. Click here to see the complete list of reports and metrics.
+                            </div>
+                        </ng-template>
+                    </mat-expansion-panel>
+
+                    <mat-expansion-panel [expanded]="false" (opened)="setStep(5)" (afterCollapse)="afterPanelClosed(1)" (afterExpand)="afterPanelOpened($event)" [disabled]="panelDisabled">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                How is the risk analysis feature in TradeAnalytix different from other option payoff tools?
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <ng-template matExpansionPanelContent>
+                            <div class="accordion-panel-body row">
+                                Many retail traders buy call or put options on a stock before earnings and get surprised as to why the option price didn’t move higher or lower inline with the stock price. Risk analysis feature in TradeAnalytix allows traders determine how much return can be expected on trade strategies involving options in the future date when stock price and implied volatility are at certain levels. With this information, traders can decide whether to go ahead with the trades in their current form or modify them so that they are inline with their risk appetite. We find the option payoff diagrams offered in the market difficult to use. Since  TradeAnalytix is built with retail traders in mind, we show the potential returns in a simple, easy to understand data table format.
+                            </div>
+                        </ng-template>
+                    </mat-expansion-panel>
+
+                    <mat-expansion-panel [expanded]="false" (opened)="setStep(6)" (afterCollapse)="afterPanelClosed(1)" (afterExpand)="afterPanelOpened($event)" [disabled]="panelDisabled">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                How does strategy comparison feature help the traders?
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <ng-template matExpansionPanelContent>
+                            <div class="accordion-panel-body row">
+                                Let’s say you are bullish on a stock and want to place a trade. Now there are numerous ways to take a bullish position on this stock - buy stock, buy naked call, buy call spread, sell put spread, etc. and different strikes and expiration dates to choose from. How does one choose the strategy and option contracts that is aligned with their risk appetite? This is where strategy comparison feature can help the retail traders. It allows the traders to compare multiple strategies on a stock and estimate their potential returns in the future by varying stock price, implied volatility, and days left for expiration so that they can choose the strategy that is aligned with their risk appetite.
+                            </div>
+                        </ng-template>
+                    </mat-expansion-panel>
+
+                    <mat-expansion-panel [expanded]="false" (opened)="setStep(7)" (afterCollapse)="afterPanelClosed(1)" (afterExpand)="afterPanelOpened($event)" [disabled]="panelDisabled">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                What is a trading rule in TradeAnalytix and how does it help a trader?
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <ng-template matExpansionPanelContent>
+                            <div class="accordion-panel-body row">
+                                Within TradeAnalytix, there is a provision to set rules based on your trading experience and best practices. There are two types of trading rules - manual and automatic. Manual rules are like reminders that show up while adding a trade so that you can indicate whether you are aligning with that rule or not. Automatic rules, as the name suggests, are automatically checked against every trade you add to trade journal. The objective of trading rules is to help you to trade within the boundaries you set for yourself without getting influenced by emotions.
+                            </div>
+                        </ng-template>
+                    </mat-expansion-panel>
+
+                    <mat-expansion-panel [expanded]="false" (opened)="setStep(8)" (afterCollapse)="afterPanelClosed(1)" (afterExpand)="afterPanelOpened($event)" [disabled]="panelDisabled">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Is TradeAnalytix free to use?
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <ng-template matExpansionPanelContent>
+                            <div class="accordion-panel-body row">
+                                Our app is in beta mode and the beta version is free to use. We will inform you and give you enough time when we make it a paid version.
+                            </div>
+                        </ng-template>
+                    </mat-expansion-panel>
+                    <mat-expansion-panel [expanded]="false" (opened)="setStep(9)" (afterCollapse)="afterPanelClosed(1)" (afterExpand)="afterPanelOpened($event)" [disabled]="panelDisabled">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Is TradeAnalytix available on mobile?
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <ng-template matExpansionPanelContent>
+                            <div class="accordion-panel-body row">
+                                Yes, you can use TradeAnalytix on mobile. However, it is not a native mobile app but a responsive mobile site.
+                            </div>
+                        </ng-template>
+                    </mat-expansion-panel>
+                </mat-accordion>
                 
-            </div> -->
+            </div>
 
             <!-- <div class="features_section">
                 <div class="features_section_title">Add your trades in bulk by importing trade history files from brokerages</div>
