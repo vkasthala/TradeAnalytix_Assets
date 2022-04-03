@@ -859,3 +859,9 @@ iframe {
     padding: 10px 30px;
 }
 
+.mat-expansion-panel-body {
+    @media #{$extra-small} {
+        padding: 0 5px 5px 15px !important;
+    }
+    
+}

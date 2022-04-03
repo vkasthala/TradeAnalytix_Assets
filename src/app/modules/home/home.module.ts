@@ -22,6 +22,7 @@ import { UserGoalsByDateChartComponent } from '../dashboard/charts/user-goals-by
 import { AskForFeatureComponent } from '../dashboard/components/ask-for-feature/ask-for-feature.component';
 import { DashboardComponent } from '../dashboard/components/dashboard.component';
 import { KeyInsightsComponent } from '../dashboard/components/key-insights/key-insights.component';
+import { LeaveReviewComponent } from '../dashboard/components/leave-review/leave-review.component';
 import { ReportAnIssueComponent } from '../dashboard/components/report-an-issue/report-an-issue.component';
 import { SliderModalComponent } from '../dashboard/components/slider-modal/slider-modal.component';
 import { DefaultDashboardComponent } from '../default-dashboard/default-dashboard.component';
@@ -267,7 +268,8 @@ export const MY_FORMATS = {
     ContrarianEditorComponent,
     PlannedEditorComponent,
     ReportAnIssueComponent,
-    AskForFeatureComponent
+    AskForFeatureComponent,
+    LeaveReviewComponent
   ],
   imports: [
     FormsModule,
@@ -328,7 +330,8 @@ export const MY_FORMATS = {
     ContrarianEditorComponent,
     PlannedEditorComponent,
     ReportAnIssueComponent,
-    AskForFeatureComponent
+    AskForFeatureComponent,
+    LeaveReviewComponent
   ],
   // bootstrap: [TradeStrategiesGrid],
   providers: [

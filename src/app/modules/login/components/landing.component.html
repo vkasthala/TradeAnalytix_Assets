@@ -16,14 +16,22 @@
                             </a>
                         </li>
                         <li [class.nav-active]="currentRoute == 'demo'">
-                            <a class="landing-nav-link" [routerLink]="['/demo']">
-                                Features
+                            <a class="landing-nav-link" target="_blank" href="https://cuetrade.wpcomstaging.com/2022/04/02/product-video/
+                            ">
+                            Demo
                             </a>
                         </li>
                         
                         <li [class.nav-active]="currentRoute == 'Reviews'">
-                            <a class="landing-nav-link" href="landing#trade_journal">
+                            <a class="landing-nav-link" target="_blank" href="https://cuetrade.wpcomstaging.com/2022/04/02/testimonials/
+                            ">
                                 Reviews
+                            </a>
+                        </li>
+                        <li [class.nav-active]="currentRoute == 'Blogs'">
+                            <a class="landing-nav-link" target="_blank" href="https://cuetrade.wpcomstaging.com/2022/04/02/blog-cards-for-landing-page/
+                            ">
+                            Blogs
                             </a>
                         </li>
                         <li [class.nav-active]="currentRoute == 'FAQs'">
@@ -32,7 +40,7 @@
                             </a>
                         </li>
                         <li class="px-0" [class.nav-active]="currentRoute == 'contact-us'">
-                            <a class="landing-nav-link pr-0" [routerLink]="['/contact-us']">
+                            <a class="landing-nav-link pr-0" target="_blank" href="https://cuetrade.wpcomstaging.com/2022/04/02/contact-us/">
                                 Contact Us
                             </a>
                         </li>
@@ -92,7 +100,7 @@
 
         <div class="trade-banner-section container">
             <div class="row">
-                <div class="col-sm-3 col-md-6 d-flex align-items-center">
+                <div class="col-sm-12 col-md-6 d-flex align-items-center">
                     <div class="banner-info LeaderBoardTop">
                         <h1 class="banner-info-title">
                             Trading journal that helps you make better, more informed decisions
@@ -109,13 +117,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-9 col-md-6">
+                <div class="col-sm-12 col-md-6">
                     <!-- <div class="py-1">
                         <iframe width="100%" height="480" src="https://www.youtube.com/embed/nG_HpDMR3nE" title="YouTube video player" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         
                     </div> -->
                     <div class="banner-rtside">
-                    <div class="widgets_section">
+                        <div class="widgets_section">
                             <div class="widgets_box_orange">
                                 <div class="widgets_box_icon pb-2">
                                     <img src="../../../../assets/images/widgets_icon1.png" alt="">
@@ -136,13 +144,13 @@
                                     Alignment with Self-Set Rules
                                 </div>
                             </div>
-                            <div class="widgets_box_thumb"></div>
+                            <div class="widgets_box_thumb last-thumb"></div>
                             <div class="widgets_box_vshape"></div>
                         </div>
                         <!-- end: widgets_section -->
 
                         <div class="widgets_section">
-                            <div class="widgets_box_thumb"></div>
+                            <div class="widgets_box_thumb blue-box-lt"></div>
                             <div class="widgets_box_blue">
                                 <div class="widgets_box_icon">
                                     <img src="../../../../assets/images/widgets_icon3.png" alt="">
@@ -183,7 +191,7 @@
                                     Risk Analysis and Simulation
                                 </div>
                             </div>
-                            <div class="widgets_box_transparent align-items-center">
+                            <div class="widgets_box_transparent align-items-center shape-last">
                                 <img src="../../../../assets/images/shape3.png" alt="">
                             </div>
                             <div class="widgets_box_vshape"></div>
@@ -434,19 +442,12 @@
                         </ng-template>
                     </mat-expansion-panel>
                 </mat-accordion>
+
+                <div class="d-flex justify-content-end">
+                    <a target="_blank" href="https://cuetrade.wpcomstaging.com/2022/04/02/frequently-asked-questions-faqs">View All</a>
+                </div>
                 
             </div>
-
-            <!-- <div class="features_section">
-                <div class="features_section_title">Add your trades in bulk by importing trade history files from brokerages</div>
-                <div class="features_section_dec">
-                    All the files imported at different points in time are displayed. Trades that failed to import can be downloaded into excel for review. Trades that got created or updated in the system because of importing a file can be downloaded to an excel as well. update the thesis for these trades in excel and upload the file back into the system. User can update trade thesis of multiple trades at once through excel upload.<a href="#" class="read_more">Read More</a>
-                </div>
-                <div class="features_section_banner">
-                    <img src="../../../../assets/images/import-trades.png" alt="" />
-                </div>
-            </div> -->
-            <!-- end: Import Trades section -->
         </div>
     </div>
     <!-- end: main-body -->

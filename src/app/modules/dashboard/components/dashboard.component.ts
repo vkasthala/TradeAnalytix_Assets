@@ -13,6 +13,7 @@ import { DemoModeDetailsService } from '../../shared/services/demo-mode-details.
 import { SliderModalComponent } from './slider-modal/slider-modal.component';
 import { ReportAnIssueComponent } from './report-an-issue/report-an-issue.component';
 import { AskForFeatureComponent } from './ask-for-feature/ask-for-feature.component';
+import { LeaveReviewComponent } from './leave-review/leave-review.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -203,6 +204,19 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       title: 'Ask for a Feature',
     };
     const dialogRef = this._dialog.open(AskForFeatureComponent, {
+      disableClose: true,
+      width: 'auto',
+      data: dialogData
+    });
+
+    dialogRef.afterClosed().subscribe((res) => {
+    });
+  }
+  leaveReview() {
+    let dialogData = {
+      title: 'Leave Review',
+    };
+    const dialogRef = this._dialog.open(LeaveReviewComponent, {
       disableClose: true,
       width: 'auto',
       data: dialogData
