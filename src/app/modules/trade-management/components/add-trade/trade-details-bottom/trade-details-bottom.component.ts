@@ -174,4 +174,8 @@ export class TradeDetailsBottomComponent implements OnInit {
     return (this.closeTrade || this.viewTrade) ? this.netReturn : this.netDebit;
   }
 
+  updateCloseDate(dateObject) {
+    this.closeDate = dateObject.value.format("YYYY-MM-DD");
+  }
+
 }
