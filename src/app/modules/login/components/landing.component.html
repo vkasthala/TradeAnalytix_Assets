@@ -16,26 +16,21 @@
                             </a>
                         </li>
                         <li [class.nav-active]="currentRoute == 'demo'">
-                            <a class="landing-nav-link" target="_blank" href="https://cuetrade.wpcomstaging.com/2022/04/02/product-video/
-                            ">
-                            Demo
-                            </a>
+                            <a class="landing-nav-link" href="landing#demo_video_section">Demo</a>
                         </li>
                         
                         <li [class.nav-active]="currentRoute == 'Reviews'">
-                            <a class="landing-nav-link" target="_blank" href="https://cuetrade.wpcomstaging.com/2022/04/02/testimonials/
-                            ">
+                            <a class="landing-nav-link" href="landing#reviews_section">
                                 Reviews
                             </a>
                         </li>
                         <li [class.nav-active]="currentRoute == 'Blogs'">
-                            <a class="landing-nav-link" target="_blank" href="https://cuetrade.wpcomstaging.com/2022/04/02/blog-cards-for-landing-page/
-                            ">
+                            <a class="landing-nav-link" href="landing#blogs_section">
                             Blogs
                             </a>
                         </li>
                         <li [class.nav-active]="currentRoute == 'FAQs'">
-                            <a class="landing-nav-link" href="landing#Faqs">
+                            <a class="landing-nav-link" href="landing#landing#Faqs">
                                 FAQs
                             </a>
                         </li>
@@ -218,12 +213,83 @@
                 <div class="intro-description mb-3 pt-2 pb-3">
                     Journaling in TradeAnalytix is unique and a multi-step process. A trader is navigated through a series of steps in an intuitive manner ensuring that the trader makes an informed decision based on strong rationale and data.
                 </div>
-                <div class="features_section_banner">
-                    <img class="howit_works_web_banner" src="../../../../assets/images/portrait-Illustration.svg" alt="" />
-                    <img class="howit_works_mobile_banner" src="../../../../assets/images/portrait-Illustration-mobile.svg" alt="" />
+                <div class="slideshow-component">
+                    <div class="row slideshow_row" *ngIf="currentInd == 0">
+                        <div class="col-sm-7">
+                            <img class="slideshow_banner" src="../../../../assets/images/slider/step1.png" alt="" />
+                        </div>
+                        <div class="col-sm-5">
+                            <h3 class="slideshow-title">Step 1</h3>
+                            <div class="slideshow-description">
+                                Update the journal details of your trades in bulk in an intuitive excel-like grid.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row slideshow_row" *ngIf="currentInd == 1">
+                        <div class="col-sm-7">
+                            <img class="slideshow_banner" src="../../../../assets/images/slider/step2.png" alt="" />
+                        </div>
+                        <div class="col-sm-5">
+                            <h3 class="slideshow-title">Step 2</h3>
+                            <div class="slideshow-description">
+                                Update the journal details of your trades in bulk in an intuitive excel-like grid.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row slideshow_row" *ngIf="currentInd == 2">
+                        <div class="col-sm-7">
+                            <img class="slideshow_banner" src="../../../../assets/images/slider/step3.png" alt="" />
+                        </div>
+                        <div class="col-sm-5">
+                            <h3 class="slideshow-title">Step 3</h3>
+                            <div class="slideshow-description">
+                                Update the journal details of your trades in bulk in an intuitive excel-like grid.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row slideshow_row" *ngIf="currentInd == 3">
+                        <div class="col-sm-7">
+                            <img class="slideshow_banner" src="../../../../assets/images/slider/step4.png" alt="" />
+                        </div>
+                        <div class="col-sm-5">
+                            <h3 class="slideshow-title">Step 4</h3>
+                            <div class="slideshow-description">
+                                Update the journal details of your trades in bulk in an intuitive excel-like grid.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row slideshow_row" *ngIf="currentInd == 4">
+                        <div class="col-sm-7">
+                            <img class="slideshow_banner" src="../../../../assets/images/slider/step5.png" alt="" />
+                        </div>
+                        <div class="col-sm-5">
+                            <h3 class="slideshow-title">Step 5</h3>
+                            <div class="slideshow-description">
+                                Update the journal details of your trades in bulk in an intuitive excel-like grid.
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="py-1 justify-content-center">
+                        <span class="swiper-button-prev cursor" (click)="priviousSlide()">
+                            <mat-icon>keyboard_arrow_left</mat-icon>
+                        </span>
+                        <span class="swiper-button-next cursor" (click)="nextSlide()"><mat-icon>keyboard_arrow_right</mat-icon>
+                        </span>
+                    </div>
+
                 </div>
             </div>
             <!-- end: Comprehensive trade journal -->
+
+            <div class="features_section pt-2" id="demo_video_section">
+                <div class="features_section_title page-heading">Demo </div>
+                <div class="text-center video_container">
+                    <iframe width="100%" height="500" src="https://www.youtube.com/embed/nG_HpDMR3nE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+
             <div class="features_section pb-2">
                 <h2 class="features_section_title page-heading">Product Benefits</h2>
                 <div class="intro-description mt-1 pt-2 pb-3">TradeAnalytix provides users with everything they need to organize their trading habits, review their performance and manage risks.</div>
@@ -321,6 +387,109 @@
                 </div>
             </div>
             <!-- end: Trade Plan -->
+            
+            <div class="py-2 mb-3" id="reviews_section">
+                <div class="features_section_title page-heading">Reviews</div>
+                <div class="carousel slide" data-ride ="carousel" id="quote-carousel">
+                    <!-- Carousel Slides / Quotes -->
+                    <div class="carousel-inner text-center">
+                        <!-- Quote 1 -->
+                        <div class="item active">
+                            <blockquote>
+                                <div class="row">
+                                    <div class="col-sm-8 offset-2">
+                                        <p class="testimonial__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+                                        <div class="reviewer_name">John Doe</div>
+                                    </div>
+                                </div>
+                            </blockquote>
+                        </div>
+
+                        <!-- Quote 2 -->
+                        <div class="item">
+                            <blockquote>
+                                <div class="row">
+                                    <div class="col-sm-8 offset-2">
+                                        <p class="testimonial__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+                                        <div class="reviewer_name">John Doe</div>
+                                    </div>
+                                </div>
+                            </blockquote>
+                        </div>
+                        
+                        <!-- Quote 3 -->
+                        <div class="item">
+                            <blockquote>
+                                <div class="row">
+                                    <div class="col-sm-8 offset-2">
+                                        <p class="testimonial__text">Edureka has the best online courses!</p>
+                                        <div class="reviewer_name">John Doe</div>
+                                    </div>
+                                </div>
+                            </blockquote>
+                        </div>
+                    </div>
+
+                    <!-- Bottom Carousel Indicators -->
+                    <ol class = "carousel-indicators">
+                        <li data-target = "#quote-carousel" data-slide-to = "0" class = "active"> <img class = "img-responsive " src = "https://s3.amazonaws.com/uifaces/faces/twitter/mantia/128.jpg" alt="">
+                        </li>
+                        <li data-target = "#quote-carousel" data-slide-to= "1"> <img class = "img-responsive" src = "https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg" alt = "">
+                        </li>
+                        <li data-target = "#quote-carousel" data-slide-to = "2"><img class = "img-responsive" src = "https://s3.amazonaws.com/uifaces/faces/twitter/brad_frost/128.jpg" alt="">
+                        </li>
+                    </ol>
+             
+                    <!-- Carousel Buttons Next/Prev -->
+                    <a data-slide="prev" href="#quote-carousel" class ="left_carousel"><mat-icon>keyboard_arrow_left</mat-icon></a>
+                    <a data-slide="next" href="#quote-carousel" class="right_carousel"><mat-icon>keyboard_arrow_right</mat-icon></a>
+                </div>                    
+            </div>
+            <!-- end: Reviews -->
+
+            <div class="pt-2" id="blogs_section">
+                <div class="features_section_title page-heading">Blog</div>
+                <div class="row py-3 my-3">
+                    <div class="col-sm-3">
+                        <div class="blogs_card">
+                            <h3 class="blog-post_title">Why does most retail traders end up losing money?</h3>
+                            <div class="blog-post_description">
+                                <p>Why does most retail traders end up losing money? Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar</p>
+                            </div>
+                            <a class="blog-post_read-more" target="_blank" href="https://cuetrade.wpcomstaging.com/2022/04/02/why-does-most-retail-traders-end-up-losing-money/">Read More »</a>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="blogs_card">
+                            <h3 class="blog-post_title">Set rules and align your trades with them to avoid repeating your mistakes</h3>
+                            <div class="blog-post_description">
+                                <p>Set rules and align your trades with them to avoidrepeating your mistakes   Trading looks easy in hindsight - you just have to buy low</p>
+                            </div>
+                            <a class="blog-post_read-more" target="_blank" href="https://cuetrade.wpcomstaging.com/2022/04/06/set-rules-and-align-your-trades-with-them-to-avoid-repeating-your-mistakes/">Read More »</a>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="blogs_card">
+                            <h3 class="blog-post_title">Estimate potential returns on option trades through simulation</h3>
+                            <div class="blog-post_description">
+                                <p>Estimate potential returns on option trades through simulation   In the last quarter of the year 2021, Robinhood generated more than 45% of its revenue</p>
+                            </div>
+                            <a class="blog-post_read-more" target="_blank" href="https://cuetrade.wpcomstaging.com/2022/04/06/set-rules-and-align-your-trades-with-them-to-avoid-repeating-your-mistakes/">Read More »</a>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="blogs_card">
+                            <h3 class="blog-post_title">Trading journal a key to success in the markets</h3>
+                            <div class="blog-post_description">
+                                <p>Trading journal a key to success in the markets Journaling trades on a regular basis is a best practice recommended by the experienced professional traders. However,</p>
+                            </div>
+                            <a class="blog-post_read-more" target="_blank" href="https://cuetrade.wpcomstaging.com/2022/04/04/trading-journal-a-key-to-success-in-the-markets/"> Read More »</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- end: blogs -->
             
             <div class="features_section howit_works_section" id="Faqs">
                 <div class="features_section_title page-heading mb-3">Frequently Asked Questions</div>
@@ -444,7 +613,7 @@
                 </mat-accordion>
 
                 <div class="d-flex justify-content-end">
-                    <a target="_blank" href="https://cuetrade.wpcomstaging.com/2022/04/02/frequently-asked-questions-faqs">View All</a>
+                    <a class="btn btn-outline-primary" target="_blank" href="https://cuetrade.wpcomstaging.com/2022/04/02/frequently-asked-questions-faqs">View All</a>
                 </div>
                 
             </div>
@@ -452,17 +621,7 @@
     </div>
     <!-- end: main-body -->
 
-    <!-- <div class="demo_video_section text-center">
-        <div class="container">
-            <div class="demo_video_section_header pb-3">
-                <div class="demo_video_section-title">Watch the demo</div>
-                <div class="py-3"><img src="../../../../assets/images/down_arrow.png" alt="" class="img-responsive"></div>
-            </div>
-            <div class="video_container">
-                <iframe width="100%" height="500" src="https://www.youtube.com/embed/42FLXxQa4H4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-        </div>
-    </div> -->
+    
 </div>
 
 <div class="landing-footer py-3">

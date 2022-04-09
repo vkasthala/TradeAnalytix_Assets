@@ -32,13 +32,13 @@ export class LandingComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    setInterval(() => {
-      if (this.currentInd === (this.features.length - 1)) {
-        this.currentInd = 0;
-      } else {
-        this.currentInd++;
-      }
-    }, 3000);
+    // setInterval(() => {
+    //   if (this.currentInd === (this.features.length - 1)) {
+    //     this.currentInd = 0;
+    //   } else {
+    //     this.currentInd++;
+    //   }
+    // }, 3000);
   }
 
   login(authProvider: string) {
@@ -106,5 +106,22 @@ export class LandingComponent implements OnInit {
   }
   closePopup() {
     this.displayStyle = "none";
+  }
+
+
+  priviousSlide() {
+    if (this.currentInd === 0) {
+      this.currentInd = 0;
+    } else {
+      this.currentInd--;
+    }
+  }
+
+  nextSlide() {
+    if (this.currentInd === 4) {
+      return;
+    } else {
+      this.currentInd++;
+    }
   }
 }
