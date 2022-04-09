@@ -1204,3 +1204,9 @@ $button-active-blue: #1669F2;
     right: 0;
     left: unset;
 }
+
+.required-field:after {
+    content: "*";
+    color: red;
+    padding-left: 0.2em;
+}

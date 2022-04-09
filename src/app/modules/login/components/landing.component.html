@@ -30,12 +30,12 @@
                             </a>
                         </li>
                         <li [class.nav-active]="currentRoute == 'FAQs'">
-                            <a class="landing-nav-link" href="landing#landing#Faqs">
+                            <a class="landing-nav-link" href="landing#Faqs">
                                 FAQs
                             </a>
                         </li>
                         <li class="px-0" [class.nav-active]="currentRoute == 'contact-us'">
-                            <a class="landing-nav-link pr-0" target="_blank" href="https://cuetrade.wpcomstaging.com/2022/04/02/contact-us/">
+                            <a class="landing-nav-link pr-0" (click)="openContactUsModal()">
                                 Contact Us
                             </a>
                         </li>
@@ -69,22 +69,26 @@
                         </a>
                     </li>
                     <li [class.nav-active]="currentRoute == 'demo'">
-                        <a class="landing-nav-link" [routerLink]="['/demo']">
-                            Features
-                        </a>
+                        <a class="landing-nav-link" href="landing#demo_video_section">Demo</a>
                     </li>
+                    
                     <li [class.nav-active]="currentRoute == 'Reviews'">
-                        <a class="landing-nav-link" href="landing#trade_journal">
+                        <a class="landing-nav-link" href="landing#reviews_section">
                             Reviews
                         </a>
                     </li>
+                    <li [class.nav-active]="currentRoute == 'Blogs'">
+                        <a class="landing-nav-link" href="landing#blogs_section">
+                        Blogs
+                        </a>
+                    </li>
                     <li [class.nav-active]="currentRoute == 'FAQs'">
-                        <a class="landing-nav-link" href="landing#trade_journal">
+                        <a class="landing-nav-link" href="landing#Faqs">
                             FAQs
                         </a>
                     </li>
                     <li [class.nav-active]="currentRoute == 'contact-us'">
-                        <a class="landing-nav-link" [routerLink]="['/contact-us']">
+                        <a class="landing-nav-link" (click)="openContactUsModal()">
                             Contact Us
                         </a>
                     </li>
@@ -737,5 +741,40 @@
                 <iframe width="100%" height="480" src="https://www.youtube.com/embed/nG_HpDMR3nE" title="YouTube video player" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
+    </div>
+</div>
+
+
+<div *ngIf="contactUsModal" class="modal-backdrop fade show"></div>
+<div class="modal" [ngClass]="contactUsModal ? 'show' : ''"  tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Contact Us</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeContactUsModal()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="form-group mb-3">
+                  <label class="required-field mb-1">Name</label>
+                  <input type="text" class="form-control" id="name" placeholder="Name" />
+                </div>
+                <div class="form-group mb-3">
+                  <label class="required-field mb-1">Email</label>
+                  <input type="email" class="form-control" id="email" placeholder="Email" />
+                </div>
+                <div class="form-group">
+                  <label class="required-field mb-1">Message </label>
+                  <textarea rows="4" class="form-control" id="message" placeholder="Message"></textarea>
+                </div>
+              </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary">Submit</button>
+            <button type="button" class="btn btn-secondary ml-3" (click)="closeContactUsModal()">Close</button>
+        </div>
+      </div>
     </div>
 </div>

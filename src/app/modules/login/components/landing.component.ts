@@ -23,6 +23,7 @@ export class LandingComponent implements OnInit {
 
   protected loginModalOpen: boolean = false;
   hamburgerMenu: boolean = false;
+  contactUsModal: boolean = false;
 
   constructor(
     private router: Router,
@@ -123,5 +124,12 @@ export class LandingComponent implements OnInit {
     } else {
       this.currentInd++;
     }
+  }
+
+  openContactUsModal() {
+    this.contactUsModal= !this.contactUsModal;
+  }
+  closeContactUsModal() {
+    this.contactUsModal = !this.contactUsModal;
   }
 }
