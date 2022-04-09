@@ -584,8 +584,8 @@
                                                 <span class="trade-edit" (click)="editOptionLeg(index)">
                                                     <mat-icon class="mat-icon-sm mr-1">edit</mat-icon> 
                                                 </span>
-                                                <span class="cursor" (click)="deleteStockOption(index)">
-                                                    <mat-icon class="mat-icon-sm mr-1">delete</mat-icon>
+                                                <span class="top-heading ml-3 cursor" (click)="deleteStockOption(index)">
+                                                    <mat-icon>delete</mat-icon>
                                                 </span>
                                             </div>
                                         </div>
@@ -796,7 +796,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <a class="btn btn-next w-100" *ngIf="displayRiskAnalysis" (click)="analyzeRisk = true; initRiskAnalysis(); calculateMaxRisk();">Analyze</a>
+                                        <button type="button" class="btn btn-next w-100" *ngIf="displayRiskAnalysis" (click)="analyzeRisk = true; initRiskAnalysis(); calculateMaxRisk();">Analyze</button>
                                     </div>
                                 </ng-container>
                             </ng-template>

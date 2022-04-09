@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
+
 @Component({
   selector: 'app-help',
   templateUrl: './help.component.html',
@@ -12,6 +13,7 @@ import { ToastrService } from 'ngx-toastr';
 export class HelpComponent implements OnInit {
 
   protected loginModalOpen: boolean = false;
+  selectedObject : any;
   constructor(
     private router: Router,
     protected toastr: ToastrService,
@@ -19,6 +21,11 @@ export class HelpComponent implements OnInit {
 
   ngOnInit() {
     
+  }
+
+  onNavigate(event){ 
+    this.selectedObject = event.target.value;
+    this.router.navigate([event.target.value]) 
   }
 
 }

@@ -1,7 +1,7 @@
-<div class="trade-app">
+<div class="trade-app help-section px-3">
     <!-- end: header-section -->
     <div class="main-body">
-        <div class="wrapper trade-app-dashboard">
+        <div class="wrapper trade-app-dashboard help-web-page">
             <div class="tab vertical-tabs">
                 <ul class="nav-tabs w-100">
                     <li>
@@ -69,6 +69,20 @@
                 <router-outlet></router-outlet>
             </div>
         </div>
+    
+        <!-- start: mobile-page -->
+        <div class="trade-app help-mobile-page">
+            <select class="form-control" [(ngModel)]="selectedObject" (change)="onNavigate($event)" selected> 
+                <option value="help/getting-started">Getting Started</option>
+                <option value="help/add-trade">Add Trade</option>
+                <option value="help/trade-journal-edit-trade">Edit Trade</option>
+                <option value="help/trade-journal-close-trade">Close Trade</option>
+                <option value="help/import-trade">Import Trades</option>
+            </select>
+
+            <div class="main">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
     </div>
-    <!-- end: banner-section -->
 </div>

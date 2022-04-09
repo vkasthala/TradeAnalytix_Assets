@@ -1,6 +1,7 @@
+@import "../../../assets/styles/variable.scss";
 
 mat-table {
-    width: 100%;
+  width: 100%;
 }
 
 th.mat-header-cell {
@@ -34,11 +35,21 @@ th.mat-header-cell {
 .mat-column-date-cell {
   flex: 0 0 25% !important;
   min-width: 100px !important;
+  @media #{$extra-small} {
+    width: 30%;
+    flex: 0 0 30% !important;
+    min-width: inherit !important;
+  }
 }
 .notification-cell{
   width: 60%;
   flex: 0 0 60% !important;
   min-width: 400px !important;
+  @media #{$extra-small} {
+    width: 51%;
+    flex: 0 0 51% !important;
+    min-width: inherit !important;
+  }
 }
 
 
@@ -46,6 +57,11 @@ th.mat-header-cell {
   width: 15%;
   flex: 0 0 15% !important;
   min-width: 100px !important;
+  @media #{$extra-small} {
+    width: 20%;
+    flex: 0 0 20% !important;
+    min-width: inherit !important;
+  }
 }
 .mat-column-notification-cell {
   flex: 0 0 60% !important;
@@ -58,6 +74,11 @@ th.mat-header-cell {
   flex: 0 0 15% !important;
   min-width: 100px !important;
   position: relative;
+  @media #{$extra-small} {
+    width: 20%;
+    flex: 0 0 20% !important;
+    min-width: inherit !important;
+  }
 }
 
 

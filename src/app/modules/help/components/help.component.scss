@@ -541,3 +541,23 @@ $button-active-blue: #1669F2;
     background: #3A4C85;
     height: 3px;
 }
+
+.help-web-page {
+    @media #{$extra-small} {
+        display: none !important;
+    }
+}
+.help-mobile-page {
+    display: none;
+    @media #{$extra-small} {
+        display: block;
+    }
+}
+
+.help-section {
+    padding-top: 30px;
+    @media #{$extra-small} {
+        padding-top: 15px;
+        padding-bottom: 40px;
+    }
+}
