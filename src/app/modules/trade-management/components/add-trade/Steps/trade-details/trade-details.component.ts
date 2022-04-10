@@ -128,7 +128,7 @@ export class TradeDetailsComponent implements OnInit {
       this.executedDate = this.inputState.tradeStrategy.executedDate;
       this.closeDate = this.inputState.tradeStrategy.closeDate;
       this.lastUpdatedDate = this.inputState.tradeStrategy.updateDateTime;
-      this.tags = this.inputState.tradeStrategy.tradeTag;
+      this.tags = this.inputState.tradeStrategy.tradeTag ? this.inputState.tradeStrategy.tradeTag : [];
       this.previousReturn = this.inputState.tradeStrategy.returnAmount ? this.inputState.tradeStrategy.returnAmount : 0;
       this.updateStockOptionDisplayProperty();
     }
