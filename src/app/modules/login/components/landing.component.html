@@ -219,57 +219,57 @@
                 </div>
                 <div class="slideshow-component">
                     <div class="row slideshow_row" *ngIf="currentInd == 0">
-                        <div class="col-sm-7">
+                        <div class="col-sm-8">
                             <img class="slideshow_banner" src="../../../../assets/images/slider/step1.png" alt="" />
                         </div>
-                        <div class="col-sm-5">
-                            <h3 class="slideshow-title">Step 1</h3>
+                        <div class="col-sm-4">
+                            <h3 class="slideshow-title">Add Trades</h3>
                             <div class="slideshow-description">
-                                Update the journal details of your trades in bulk in an intuitive excel-like grid.
+                                Add your trade details manually or import trades from your brokerage
                             </div>
                         </div>
                     </div>
                     <div class="row slideshow_row" *ngIf="currentInd == 1">
-                        <div class="col-sm-7">
+                        <div class="col-sm-8">
                             <img class="slideshow_banner" src="../../../../assets/images/slider/step2.png" alt="" />
                         </div>
-                        <div class="col-sm-5">
-                            <h3 class="slideshow-title">Step 2</h3>
+                        <div class="col-sm-4">
+                            <h3 class="slideshow-title">Add Notes</h3>
                             <div class="slideshow-description">
-                                Update the journal details of your trades in bulk in an intuitive excel-like grid.
+                                Provide justification on your trades in a unique, configurable, Q&A format trade journal
                             </div>
                         </div>
                     </div>
                     <div class="row slideshow_row" *ngIf="currentInd == 2">
-                        <div class="col-sm-7">
+                        <div class="col-sm-8">
                             <img class="slideshow_banner" src="../../../../assets/images/slider/step3.png" alt="" />
                         </div>
-                        <div class="col-sm-5">
-                            <h3 class="slideshow-title">Step 3</h3>
+                        <div class="col-sm-4">
+                            <h3 class="slideshow-title">Analyze Risk</h3>
                             <div class="slideshow-description">
-                                Update the journal details of your trades in bulk in an intuitive excel-like grid.
+                                Analyze the risk of the trade through simulation and explore other strategies though comparison
                             </div>
                         </div>
                     </div>
                     <div class="row slideshow_row" *ngIf="currentInd == 3">
-                        <div class="col-sm-7">
+                        <div class="col-sm-8">
                             <img class="slideshow_banner" src="../../../../assets/images/slider/step4.png" alt="" />
                         </div>
-                        <div class="col-sm-5">
-                            <h3 class="slideshow-title">Step 4</h3>
+                        <div class="col-sm-4">
+                            <h3 class="slideshow-title">Align with Rules</h3>
                             <div class="slideshow-description">
-                                Update the journal details of your trades in bulk in an intuitive excel-like grid.
+                                Check the trade against self-set trading rules to make sure past mistakes are avoided.
                             </div>
                         </div>
                     </div>
                     <div class="row slideshow_row" *ngIf="currentInd == 4">
-                        <div class="col-sm-7">
+                        <div class="col-sm-8">
                             <img class="slideshow_banner" src="../../../../assets/images/slider/step5.png" alt="" />
                         </div>
-                        <div class="col-sm-5">
-                            <h3 class="slideshow-title">Step 5</h3>
+                        <div class="col-sm-4">
+                            <h3 class="slideshow-title">Leverage Insights</h3>
                             <div class="slideshow-description">
-                                Update the journal details of your trades in bulk in an intuitive excel-like grid.
+                                Make an informed decision on the trade by evaluating your past performance on similar trades through reports
                             </div>
                         </div>
                     </div>
@@ -288,9 +288,13 @@
             <!-- end: Comprehensive trade journal -->
 
             <div class="features_section pt-2" id="demo_video_section">
-                <div class="features_section_title page-heading">Demo </div>
-                <div class="text-center video_container">
-                    <iframe width="100%" height="500" src="https://www.youtube.com/embed/nG_HpDMR3nE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="features_section_title page-heading">Product Explainer Video</div>
+                <div class="intro-description mb-3 pt-2 pb-3">
+                    Watch the short video to know the problems addressed by TradeAnalytix and the benefits of using it.
+                </div>
+                
+                <div class="text-center demo_video">
+                    <iframe width="100%" height="600" src="https://www.youtube.com/embed/nG_HpDMR3nE?autoplay=1&version=3&enablejsapi=1&showinfo=0&controls=0&rel=0&showinfo=0&disablekb=1&iv_load_policy=3&modestbranding=1" allowfullscreen></iframe>
                 </div>
             </div>
 
@@ -393,7 +397,7 @@
             <!-- end: Trade Plan -->
             
             <div class="py-2 mb-3" id="reviews_section">
-                <div class="features_section_title page-heading">Reviews</div>
+                <div class="features_section_title page-heading">Testimonials</div>
                 <div class="carousel slide" data-ride ="carousel" id="quote-carousel">
                     <!-- Carousel Slides / Quotes -->
                     <div class="carousel-inner text-center">
@@ -590,7 +594,7 @@
                         </ng-template>
                     </mat-expansion-panel>
 
-                    <mat-expansion-panel [expanded]="false" (opened)="setStep(8)" (afterCollapse)="afterPanelClosed(1)" (afterExpand)="afterPanelOpened($event)" [disabled]="panelDisabled">
+                    <!-- <mat-expansion-panel [expanded]="false" (opened)="setStep(8)" (afterCollapse)="afterPanelClosed(1)" (afterExpand)="afterPanelOpened($event)" [disabled]="panelDisabled">
                         <mat-expansion-panel-header>
                             <mat-panel-title>
                                 Is TradeAnalytix free to use?
@@ -613,7 +617,7 @@
                                 Yes, you can use TradeAnalytix on mobile. However, it is not a native mobile app but a responsive mobile site.
                             </div>
                         </ng-template>
-                    </mat-expansion-panel>
+                    </mat-expansion-panel> -->
                 </mat-accordion>
 
                 <div class="d-flex justify-content-end">

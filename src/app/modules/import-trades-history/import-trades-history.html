@@ -5,8 +5,9 @@
                 <h3>Trades can be added in bulk to TradeAnalytix by uploading a file that has your trades. You can add your trades to our standard template (click <a [routerLink]="" (click)="downloadStandardFile()">here</a> to download) or import the trade history files exported from your brokerages.</h3>
             </div>
             <div class="d-flex justify-content-end">
-                <button type="button" (click)="importTradesPopup();" class="btn btn-apply">Import Trades</button>
-                <button type="button" (click)="downloadStandardFile()" class="d-flex btn btn-apply ml-2 align-items-center"><mat-icon class="mr-2">download</mat-icon> Template</button>
+                <button type="button" (click)="importTradesPopup();" class="btn btn-apply">Manual Import</button>
+                <!-- <button type="button" (click)="downloadStandardFile()" class="d-flex btn btn-apply ml-2 align-items-center"><mat-icon class="mr-2">download</mat-icon> Template</button> -->
+                <button type="button" class="d-flex btn btn-apply ml-2 align-items-center">Auto-Import</button>
             </div>
         </div>
 

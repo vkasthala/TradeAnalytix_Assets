@@ -33,13 +33,13 @@ export class LandingComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // setInterval(() => {
-    //   if (this.currentInd === (this.features.length - 1)) {
-    //     this.currentInd = 0;
-    //   } else {
-    //     this.currentInd++;
-    //   }
-    // }, 3000);
+    setInterval(() => {
+      if (this.currentInd === 4) {
+        this.currentInd = 0;
+      } else {
+        this.currentInd++;
+      }
+    }, 3000);
   }
 
   login(authProvider: string) {

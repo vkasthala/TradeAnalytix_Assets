@@ -189,6 +189,7 @@
         @media #{$extra-small} {
             padding: 0;
             padding-top: 90px;
+            padding-bottom: 15px;
         }
     }
     .LeaderBoardTop {
@@ -288,8 +289,7 @@
         position: relative;
         margin-right: -10px;
         @media #{$extra-small} {
-            padding-top: 1rem;
-            margin:0
+            display: none;
         }
     }
     .widgets_section {
@@ -991,7 +991,7 @@ $button-active-blue: #1669F2;
 .mat-expansion-panel-header {
     background: transparent !important;
     border-radius: 0 !important;
-    padding: 20px 15px !important;
+    padding: 15px !important;
     height: inherit !important;
     border: 0;
     font-size: 18px;
@@ -1050,19 +1050,30 @@ $button-active-blue: #1669F2;
 }
 
 .slideshow-component {
-    text-align: left;
     position: relative;
+    @media #{$extra-small} {
+        width: 90%;
+        margin: 0 auto;
+    }
 }
 .slideshow_row {
-    transition: all 0.5s ease 0s;
-    -webkit-transition: all 0.5s ease 0s;
+    transition: all 0.15s ease 0s;
+    -webkit-transition: all 0.15s ease 0s;
+    min-height: 420px;
 }
 .slideshow_banner {
     max-width: 100%;
+    width: 100%;
+    height: 420px;
+    max-height: 420px;
+    @media #{$extra-small} {
+        height: 320px;
+        max-height: 320px;
+    }
 }
 .slideshow-title {
     font-weight: bold;
-    font-size: 20px;
+    font-size: 24px;
     line-height: 30px;
     color: #000000;
     padding-bottom: 0.5rem;
@@ -1072,7 +1083,7 @@ $button-active-blue: #1669F2;
     font-size: 16px;
     line-height: 22px;
     color: #9DA6BA;
-    text-align: left;
+    text-align: center;
 }
 .swiper-button-next, .swiper-button-prev {
     position: absolute;
@@ -1085,13 +1096,34 @@ $button-active-blue: #1669F2;
     border: 1px solid #394c86;
     text-align: center;
     font-size: 2rem;
+    @media #{$extra-small} {
+        font-size: 1rem;
+        width: 25px;
+        height: 25px;
+    }
 }
 .swiper-button-prev {
     left: -60px;
+    @media #{$extra-small} {
+        left: -28px;
+    }
 }
 .swiper-button-next {
     left: auto;
     right: -60px;
+    @media #{$extra-small} {
+        right: -28px;
+    }
+}
+.demo_video {
+    filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.42));
+    position: relative;
+    iframe {
+        @media #{$extra-small} {
+            height: 300px !important;
+            width: 100% !important;
+        }
+    }
 }
 
 .blogs_card {
@@ -1209,4 +1241,7 @@ $button-active-blue: #1669F2;
     content: "*";
     color: red;
     padding-left: 0.2em;
+}
+.mat-expansion-panel {
+    margin-bottom: 0 !important;
 }
