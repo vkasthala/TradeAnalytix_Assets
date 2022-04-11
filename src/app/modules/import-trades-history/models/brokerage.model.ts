@@ -8,4 +8,6 @@ export class Brokerage {
 
     country: string;
 
+    multipleExportFiles: boolean;
+
 }

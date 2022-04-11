@@ -11,6 +11,7 @@ import { UploadFileService } from 'src/app/modules/import-trades/services/upload
 export class ImportTradesComponent implements OnInit {
 
   selectedFiles: FileList;
+  optionFile: File;
   currentFile: File;
   selectedbroker: any;
   constructor(private uploadService: UploadFileService,
@@ -27,7 +28,7 @@ export class ImportTradesComponent implements OnInit {
     console.log('selectedbroker------>',this.selectedbroker);
     if(this.selectedFiles !== undefined && this.selectedFiles.length > 0) {
       this.currentFile = this.selectedFiles.item(0);
-      this.uploadService.importTrades(this.currentFile, this.selectedbroker).subscribe(
+      this.uploadService.importTrades(this.currentFile, this.optionFile, this.selectedbroker).subscribe(
         event => {
           window.location.reload();
           this.toastr.success('Your trades have been sucessfully imported. Uploaded Records: ____; Failed Records: ____', 'Success');

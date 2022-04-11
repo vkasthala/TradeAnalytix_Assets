@@ -16,9 +16,12 @@ export class ImportTradePopupComponent implements OnInit {
   brokerages: Brokerage[] = [];
 
   selectedFiles: FileList;
+  selectedOptionFiles: FileList;
   currentFile: File;
+  optionFile: File;
   selectedbroker: any = 1;
   processing: boolean = false;
+  selectedBrokerage: Brokerage;
 
   constructor(
     private uploadService: UploadFileService,
@@ -40,12 +43,23 @@ export class ImportTradePopupComponent implements OnInit {
     this.selectedFiles = event.target.files;
   }
 
+  selectOptionsFile(event) {
+    this.selectOptionsFile = event.target.files;
+  }
+
   importTrades() {
     console.log('selectedbroker------>', this.selectedbroker);
+
+    // Option file (optional)
+    if (this.selectedOptionFiles !== undefined && this.selectedOptionFiles.length > 0) {
+      this.optionFile = this.selectedOptionFiles.item(0);
+    }
+
+    // Equity file (manadatory)
     if (this.selectedFiles !== undefined && this.selectedFiles.length > 0) {
       this.currentFile = this.selectedFiles.item(0);
       this.processing = true;
-      this.uploadService.importTrades(this.currentFile, this.selectedbroker).subscribe(
+      this.uploadService.importTrades(this.currentFile, this.optionFile, this.selectedbroker).subscribe(
         result => {
           this.processing = false;
           this.dialogRef.close(true);
@@ -64,24 +78,32 @@ export class ImportTradePopupComponent implements OnInit {
         },
         err => {
           this.processing = false;
-          this.toastr.error('Failed to import trades.' + (err.error && err.error.message ? ' Error message: ' + err.error.message : ''), 'Error', { 
-            tapToDismiss:false,
-            closeButton:true,
+          this.toastr.error('Failed to import trades.' + (err.error && err.error.message ? ' Error message: ' + err.error.message : ''), 'Error', {
+            tapToDismiss: false,
+            closeButton: true,
             disableTimeOut: true,
-            timeOut: 0 
+            timeOut: 0
           });
           this.currentFile = undefined;
         });
       this.selectedFiles = undefined;
     }
     else {
-      this.toastr.error('Please select a file import trades', 'Error', 
-      { 
-        tapToDismiss:false,
-        closeButton:true,
-        disableTimeOut: true
-      });
+      this.toastr.error('Please select a file import trades', 'Error',
+        {
+          tapToDismiss: false,
+          closeButton: true,
+          disableTimeOut: true
+        });
     }
+  }
+
+  onBrokerageChange(val, index) {
+    debugger;
+    if (this.brokerages) {
+      this.brokerages.filter(brokerage => (brokerage.id == this.selectedbroker)).forEach(brokerage => this.selectedBrokerage = brokerage);
+    }
+    console.log('brokerage::', this.selectedBrokerage);
   }
 
   closeModal() {

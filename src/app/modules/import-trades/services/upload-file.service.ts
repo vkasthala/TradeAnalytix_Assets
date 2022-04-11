@@ -9,18 +9,26 @@ import { HttpService } from '../../shared/services/http.service';
 })
 
 export class UploadFileService {
-    private apiUrl = environment.apiUrl + "/trades";
-    constructor(private httpService: HttpService) { }
+  private apiUrl = environment.apiUrl + "/trades";
+  constructor(private httpService: HttpService) { }
 
-    importTrades(file: File, selectedbroker: number): Observable<HttpEvent<any>> {
-        const formData: FormData = new FormData();
-        formData.append('file', file);
-        return this.httpService.postWithForm(`${this.apiUrl}/upload/${selectedbroker}`,formData);
+  importTrades(file: File, optionFile: File, selectedbroker: number): Observable<HttpEvent<any>> {
+    const formData: FormData = new FormData();
+    formData.append('file', file);
+    if(optionFile) {
+      formData.append('optionsFile', optionFile);
     }
-
-    importTradesThesis(file: File, id: number): Observable<HttpEvent<any>> {
-      const formData: FormData = new FormData();
-      formData.append('file', file);
-      return this.httpService.postWithForm(`${this.apiUrl}/thesis/upload/${id}`,formData);
+    return this.httpService.postWithForm(`${this.apiUrl}/upload/${selectedbroker}`, formData);
   }
+
+  importTradesThesis(file: File, id: number): Observable<HttpEvent<any>> {
+    const formData: FormData = new FormData();
+    formData.append('file', file);
+    return this.httpService.postWithForm(`${this.apiUrl}/thesis/upload/${id}`, formData);
+  }
+
+  getImportRedirectUrl(): Observable<string> {
+    return this.httpService.get<string>(environment.apiUrl + '/import/user/redirect-url/zerodha');
+  }
+
 }
