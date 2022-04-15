@@ -89,7 +89,7 @@ export class AddNewTradeComponent implements OnInit {
   protected localTradeHistory: TradeHistory;
   protected serverTradeHistory: TradeHistory;
   errorMsg: string;
-  demoToggle: boolean = false;
+  isDemoMode: boolean = false;
 
   constructor(
     protected userStockStatsService: UserStockStatsService,
@@ -112,8 +112,6 @@ export class AddNewTradeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.demoToggle = this.demoService.demoMode;
-    console.log('demoToggle', this.demoToggle)
     this.setState();
   }
 
@@ -362,6 +360,7 @@ export class AddNewTradeComponent implements OnInit {
   }
 
   public setState() {
+    this.isDemoMode = this.demoService.demoMode;
     if (this.inputState) {
       this.selectedStock = this.inputState.selectedStock;
       this.stockSummary = this.inputState.stockSummary;

@@ -4,11 +4,11 @@
     <div class="trade-risk-tabs">
         <div class="tab" role="tabpanel">
             <ul class="nav nav-tabs settings_web" role="tablist">
-                <!-- <li class="active" role="presentation">
+                <li class="active" role="presentation">
                     <a aria-controls="home" aria-expanded="true" data-toggle="tab" href="#UserProﬁle" role="tab">
                             User Proﬁle</a>
-                </li> -->
-                <li class="active" role="presentation">
+                </li>
+                <li role="presentation">
                     <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#InvestmentGoals" role="tab">Investment Goals</a>
                 </li>
                 <!-- <li class="" role="presentation">
@@ -38,10 +38,10 @@
             </div>
             
             <div class="tab-content tabs">
-                <!-- <div class="tab-pane active" id="UserProﬁle" role="tabpanel">
+                <div class="tab-pane active" id="UserProﬁle" role="tabpanel">
                     <app-profile></app-profile>
-                </div> -->
-                <div class="tab-pane active" id="InvestmentGoals" role="tabpanel" [ngClass]="[selectedType === 'InvestmentGoals' ? 'mobile-tab-pane-show' : 'mobile-tab-pane-d-none']">
+                </div>
+                <div class="tab-pane" id="InvestmentGoals" role="tabpanel" [ngClass]="[selectedType === 'InvestmentGoals' ? 'mobile-tab-pane-show' : 'mobile-tab-pane-d-none']">
                     <app-investmentgoals></app-investmentgoals>
                 </div>
                 <!-- <div class="tab-pane" id="DepositsWithdrawals" role="tabpanel">

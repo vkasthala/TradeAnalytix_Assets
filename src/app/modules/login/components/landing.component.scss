@@ -271,17 +271,16 @@
         }
     }
     .banner-info-footer .btn-outline {
-        width: 128px;
-        height: 40px;
-        border: 1px solid #FFFFFF;
+        height: 45px;
+        border: 1px solid #394c86;
         box-sizing: border-box;
         border-radius: 4px;
-        border-color: #fff;
-        color: #fff;
+        border-color: #394c86;
+        color: #394c86;
         text-align: center;
         font-weight: 600;
-        font-size: 12px;
-        line-height: 18px;
+        font-size: 14px;
+        line-height: 34px;
         
     }
     .banner-rtside {
@@ -794,7 +793,7 @@
     font-size: 12px;
     line-height: 18px;
     text-align: center;
-    color: #3A4C85;
+    color: #fff;
 }
 
 .login_modal .form-control {
@@ -1060,16 +1059,11 @@ $button-active-blue: #1669F2;
     transition: all 0.15s ease 0s;
     -webkit-transition: all 0.15s ease 0s;
     min-height: 420px;
+    align-items: center;
 }
 .slideshow_banner {
     max-width: 100%;
     width: 100%;
-    height: 420px;
-    max-height: 420px;
-    @media #{$extra-small} {
-        height: 320px;
-        max-height: 320px;
-    }
 }
 .slideshow-title {
     font-weight: bold;
@@ -1116,7 +1110,6 @@ $button-active-blue: #1669F2;
     }
 }
 .demo_video {
-    filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.42));
     position: relative;
     iframe {
         @media #{$extra-small} {
@@ -1146,12 +1139,14 @@ $button-active-blue: #1669F2;
     font-size: 18px;
     margin-bottom: 15px !important;
     line-height: 1.45em;
+    min-height: 100px;
 }
 .blog-post_description {
     line-height: 1.5em;
     font-size: 14px;
     color: #777;
     margin-bottom: 10px;
+    min-height: 250px;
 }
 .blog-post_read-more {
     font-size: 12px;
@@ -1244,4 +1239,9 @@ $button-active-blue: #1669F2;
 }
 .mat-expansion-panel {
     margin-bottom: 0 !important;
+}
+.btn-video {
+    display: inline-flex;
+    align-items: center;
+    width: auto !important;
 }
