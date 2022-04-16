@@ -1,4 +1,18 @@
 <mat-accordion class="example-headers-align w-100" multi="true">
+    <mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Sharing
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ng-template matExpansionPanelContent>
+            <div class="mb-2 d-flex">
+                <span class="share-trade-field"><input class="checkbox mr-1" type="checkbox" (change)="onShareTradeChange($event)"> Share all my trades with my followers</span>
+
+                <span class="share-trade-field"><input class="checkbox mr-1" type="checkbox" (change)="findUsers($event)"> Allow other users to find me</span>
+            </div>
+        </ng-template>
+    </mat-expansion-panel>
     <mat-expansion-panel [expanded]="true" (opened)="setStep(0)">
         <mat-expansion-panel-header>
             <mat-panel-title>

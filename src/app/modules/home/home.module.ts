@@ -127,6 +127,7 @@ import { MindsetEditorComponent } from '../trade-strategies/components/bulk-upda
 import { PlannedEditorComponent } from '../trade-strategies/components/bulk-update-ui/planned-editor/planned-editor.component';
 import { SourceEditorComponent } from '../trade-strategies/components/bulk-update-ui/source-editor/source-editor.component';
 import { TechnicalIndicatorEditorComponent } from '../trade-strategies/components/bulk-update-ui/technical-indicator-editor/technical-indicator-editor.component';
+import { CommunityTradesGrid } from '../trade-strategies/components/community-trades-grid/community-trades-grid.component';
 import { DraftTradesGrid } from '../trade-strategies/components/draft-trades-grid/draft-trades-grid.component';
 import { HistoryGrid } from '../trade-strategies/components/history-grid/history-grid.component';
 import { PortfolioGrid } from '../trade-strategies/components/portfolio-grid/portfolio-grid.component';
@@ -269,7 +270,8 @@ export const MY_FORMATS = {
     PlannedEditorComponent,
     ReportAnIssueComponent,
     AskForFeatureComponent,
-    LeaveReviewComponent
+    LeaveReviewComponent,
+    CommunityTradesGrid
   ],
   imports: [
     FormsModule,
@@ -331,7 +333,8 @@ export const MY_FORMATS = {
     PlannedEditorComponent,
     ReportAnIssueComponent,
     AskForFeatureComponent,
-    LeaveReviewComponent
+    LeaveReviewComponent,
+    CommunityTradesGrid
   ],
   // bootstrap: [TradeStrategiesGrid],
   providers: [

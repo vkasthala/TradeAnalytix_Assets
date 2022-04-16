@@ -20,6 +20,7 @@ import { SummaryRequest } from '../../shared/models/reports/summary-request.mode
 import { ReportDataService } from '../../reports/services/report-data.service';
 import { MatDialog } from '@angular/material';
 import { BulkUpdateUiComponent } from './bulk-update-ui/bulk-update-ui.component';
+import { CommunityTradesGrid } from './community-trades-grid/community-trades-grid.component';
 
 @Component({
    selector: 'app-trade-strategies',
@@ -32,7 +33,8 @@ export class TradeStrategiesComponent implements OnInit {
    @ViewChild('draftTradesGrid', { static: false }) private draftTradesGrid: DraftTradesGrid;
    @ViewChild('historyGrid', { static: false }) private historyGrid: HistoryGrid;
    @ViewChild('tradeSearchComponent', { static: false }) private tradeSearchComponent: TradeSearchComponent;
-
+   @ViewChild('communityTradesGrid', { static: false }) private communityTradesGrid: CommunityTradesGrid;
+   
    strategiesGridFilter: StrategiesGridFilter = new StrategiesGridFilter();
    strategiesGridPage: StrategiesGridPage = new StrategiesGridPage();
    strategiesGridSort: StrategiesGridSort = new StrategiesGridSort();
@@ -126,6 +128,7 @@ export class TradeStrategiesComponent implements OnInit {
       this.portfolioGrid.reload(tradeStrategyGridRequest.filters);
       this.historyGrid.reload(tradeStrategyGridRequest.filters);
       this.draftTradesGrid.reload(tradeStrategyGridRequest.filters);
+      this.communityTradesGrid.reload(tradeStrategyGridRequest.filters);
    }
 
    onDateRangeChanged(event: IMyDateRangeModel) {
@@ -147,6 +150,7 @@ export class TradeStrategiesComponent implements OnInit {
       this.portfolioGrid.reload(this.strategiesGridFilter);
       this.historyGrid.reload(this.strategiesGridFilter);
       this.draftTradesGrid.reload(this.strategiesGridFilter);
+      this.communityTradesGrid.reload(this.strategiesGridFilter);
    }
 
    onOptionsSelected(event) {

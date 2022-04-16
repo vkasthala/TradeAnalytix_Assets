@@ -19,15 +19,15 @@ import { StrategiesGridFilter } from '../../models/strategies-grid-filter.model'
 import { BehaviorSubject } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 @Component({
-  selector: 'app-draft-trades-grid',
-  templateUrl: './draft-trades-grid.component.html',
-  styleUrls: ['./draft-trades-grid.component.scss']
+  selector: 'app-community-trades-grid',
+  templateUrl: './community-trades-grid.component.html',
+  styleUrls: ['./community-trades-grid.component.scss']
 })
-export class DraftTradesGrid implements AfterViewInit, OnInit {
+export class CommunityTradesGrid implements AfterViewInit, OnInit {
 
   protected Loader = false;
   expandIndex: any;
-  displayedColumns = ['id', 'stockName', 'openDate', 'totalAmount', 'maxGain', 'maxLoss', 'shared', 'tags', 'action'];
+  displayedColumns = ['id', 'stockName', 'openDate', 'totalAmount', 'maxGain', 'maxLoss', 'tags', 'action'];
   pageSize: number = 20
   totalCount: number = 1;
 

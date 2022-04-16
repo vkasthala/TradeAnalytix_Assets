@@ -46,10 +46,10 @@
 
 
       <!-- Thesis Column -->
-      <!-- <ng-container matColumnDef="thesis">
-        <mat-header-cell class="close-date-cell" *matHeaderCellDef mat-sort-header>Thesis</mat-header-cell>
-        <mat-cell class="close-date-cell" *matCellDef="let element"> {{element.thesis}} </mat-cell>
-      </ng-container> -->
+      <ng-container matColumnDef="shared">
+        <mat-header-cell class="shared-cell" *matHeaderCellDef mat-sort-header>Shared</mat-header-cell>
+        <mat-cell class="shared-cell" *matCellDef="let element"> {{element.shared}} </mat-cell>
+      </ng-container>
 
       <!-- Rules Column -->
       <!-- <ng-container matColumnDef="rules">
@@ -59,8 +59,8 @@
 
       <!-- Strategy Column -->
       <ng-container matColumnDef="tags">
-        <mat-header-cell class="stock-name-tags" *matHeaderCellDef mat-sort-header>Tags</mat-header-cell>
-        <mat-cell class="stock-name-tags" *matCellDef="let element">
+        <mat-header-cell class="tags-cell" *matHeaderCellDef mat-sort-header>Tags</mat-header-cell>
+        <mat-cell class="tags-cell" *matCellDef="let element">
           {{element.tags}} </mat-cell>
       </ng-container>
 

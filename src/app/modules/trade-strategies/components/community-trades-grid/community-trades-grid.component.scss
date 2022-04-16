@@ -58,19 +58,23 @@ th.mat-header-cell {
 }
 
 .open-date-cell, .rules-cell{
-  width: 12%;
-  flex: 0 0 12% !important;
+  width: 10%;
+  flex: 0 0 10% !important;
 }
 .return-cell, .total-amount-cell {
-  width: 11%;
-  flex: 0 0 11% !important;
+  width: 10%;
+  flex: 0 0 10% !important;
 }
 
 .close-date-cell{
-  width: 11%;
-  flex: 0 0 11% !important;
+  width: 8%;
+  flex: 0 0 8% !important;
 }
 
+.stock-name-tags {
+  width: 35%;
+  flex: 0 0 35% !important;
+}
 .action-cell {
   width: 7%;
   flex: 0 0 7% !important;
@@ -225,9 +229,4 @@ th.mat-header-cell {
   .trade-delete {
     color: #EB5757;
   }
-}
-
-.stock-name-tags {
-  width: 27%;
-  flex: 0 0 27% !important;
 }

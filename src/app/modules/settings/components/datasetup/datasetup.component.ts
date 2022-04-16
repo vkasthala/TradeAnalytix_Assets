@@ -444,4 +444,23 @@ export class DatasetupComponent implements OnInit {
     this.toastr.success(msg, 'Success');
   }
 
+  onShareTradeChange(event) {
+    if (event.target.checked) {
+      this.toastr.success('All of your trades will be shared with your followers by default.', 'Success');
+      return false;
+    }else {
+      this.toastr.success('Your trades will no longer be shared with your followers by default.', 'Success');
+      return false;
+    }
+  }
+  findUsers(event) {
+    if (event.target.checked) {
+      this.toastr.success('Users can search by your email and send the request to follow you.', 'Success');
+      return false;
+    }else {
+      this.toastr.success('Other users cannot find you in TradeAnalytix and cannot follow you', 'Success');
+      return false;
+    }
+  }
+
 }

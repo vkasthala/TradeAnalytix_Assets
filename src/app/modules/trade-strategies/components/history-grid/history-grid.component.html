@@ -37,11 +37,11 @@
         <mat-cell class="return-cell" *matCellDef="let element"> {{element.returnAmount}} </mat-cell>
       </ng-container>
 
-      <!-- Thesis Column -->
-      <!-- <ng-container matColumnDef="thesis">
-        <mat-header-cell class="close-date-cell" *matHeaderCellDef mat-sort-header>Thesis</mat-header-cell>
-        <mat-cell class="close-date-cell" *matCellDef="let element"> {{element.thesis}} </mat-cell>
-      </ng-container> -->
+      <!-- Shared Column -->
+      <ng-container matColumnDef="shared">
+        <mat-header-cell class="close-date-cell" *matHeaderCellDef mat-sort-header>Shared</mat-header-cell>
+        <mat-cell class="close-date-cell" *matCellDef="let element"> {{element.shared}} </mat-cell>
+      </ng-container>
 
       <!-- Rules Column -->
       <!-- <ng-container matColumnDef="rules">
