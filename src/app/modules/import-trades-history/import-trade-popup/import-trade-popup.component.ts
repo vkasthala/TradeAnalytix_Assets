@@ -44,7 +44,7 @@ export class ImportTradePopupComponent implements OnInit {
   }
 
   selectOptionsFile(event) {
-    this.selectOptionsFile = event.target.files;
+    this.selectedOptionFiles = event.target.files;
   }
 
   importTrades() {
@@ -58,6 +58,9 @@ export class ImportTradePopupComponent implements OnInit {
     // Equity file (manadatory)
     if (this.selectedFiles !== undefined && this.selectedFiles.length > 0) {
       this.currentFile = this.selectedFiles.item(0);
+    }
+
+    if(this.currentFile || this.optionFile) {
       this.processing = true;
       this.uploadService.importTrades(this.currentFile, this.optionFile, this.selectedbroker).subscribe(
         result => {
@@ -85,8 +88,10 @@ export class ImportTradePopupComponent implements OnInit {
             timeOut: 0
           });
           this.currentFile = undefined;
+          this.optionFile = undefined;
         });
       this.selectedFiles = undefined;
+      this.selectedOptionFiles = undefined;
     }
     else {
       this.toastr.error('Please select a file import trades', 'Error',
