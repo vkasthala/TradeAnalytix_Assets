@@ -13,7 +13,7 @@
            
             <div *ngIf="currentInd == 0">
                 <div class="slider-description">
-                    TradeAnalytix is a new age trade planner, journal and decision support tool for investors and traders.
+                    TradeAnalytix is a new age trading journal that helps you make better, more informed decisions based on strong rationale and data.
                 </div>
                 <!-- <div class="slider-description mb-3 py-3">
                     Most of the people investing or trading actively in the financial markets end up on the losing side mainly due to indiscipline.
@@ -32,7 +32,7 @@
     </div>
 </div>
 
-<div class="compare-popup guided-tour-modal1" *ngIf="currentInd == 1">
+<!-- <div class="compare-popup guided-tour-modal1" *ngIf="currentInd == 1">
     <div class="compare-pop-inner">
         <div class="slider-header">
             <h3 class="slider-title">What is TradeAnalytix?</h3>
@@ -52,32 +52,32 @@
             <button type="button" class="btn btn-next" (click)="nextSlide()">Next</button>
         </div>
     </div>
-</div>
+</div> -->
 
-<div class="compare-popup trade-planner-slider" *ngIf="currentInd == 2">
-    <div class="compare-pop-inner">
-        <div class="slider-header">
-            <h3 class="slider-title">TradeAnalytix as a Trade Planner</h3>
-            <span class="right-close" (click)="closeModal()">
-                <mat-icon>clear</mat-icon>
-            </span>
-        </div>
-        <div class="main-pop-inner">
-            <div class="slider-description mb-1">
-                Users can plan their trades in TradeAnalytix before executing the trades in the brokerage platforms. Such planning gives you an advantage in making a trade decision and helps you avoid mistakes due to emotions.
+    <!-- <div class="compare-popup trade-planner-slider" *ngIf="currentInd == 1">
+        <div class="compare-pop-inner">
+            <div class="slider-header">
+                <h3 class="slider-title">TradeAnalytix as a Trade Planner</h3>
+                <span class="right-close" (click)="closeModal()">
+                    <mat-icon>clear</mat-icon>
+                </span>
             </div>
-            <div class="slider-banner">
-                <img src="../../../../../assets/images/trade-planner-final.svg" />
+            <div class="main-pop-inner">
+                <div class="slider-description mb-1">
+                    Users can plan their trades in TradeAnalytix before executing the trades in the brokerage platforms. Such planning gives you an advantage in making a trade decision and helps you avoid mistakes due to emotions.
+                </div>
+                <div class="slider-banner">
+                    <img src="../../../../../assets/images/trade-planner-final.svg" />
+                </div>
             </div>
-        </div>
 
-        <div class="modal-footer py-1 justify-content-center">
-            <button type="button" class="btn btn-white" (click)="priviousSlide()">Previous</button>
-            <button type="button" class="btn btn-next" (click)="nextSlide()">Next</button>
+            <div class="modal-footer py-1 justify-content-center">
+                <button type="button" class="btn btn-white" (click)="priviousSlide()">Previous</button>
+                <button type="button" class="btn btn-next" (click)="nextSlide()">Next</button>
+            </div>
         </div>
-    </div>
-</div>
-<div class="compare-popup trade-planner-slider" *ngIf="currentInd == 3">
+    </div> -->
+<!-- <div class="compare-popup trade-planner-slider" *ngIf="currentInd == 3">
     <div class="compare-pop-inner">
         <div class="slider-header">
             <h3 class="slider-title">TradeAnalytix as a Trade Journal</h3>
@@ -99,8 +99,8 @@
             <button type="button" class="btn btn-next" (click)="nextSlide()">Next</button>
         </div>
     </div>
-</div>
-<div class="compare-popup top-pointer-modal demo-tour-slider" *ngIf="currentInd == 4">
+</div> -->
+<div class="compare-popup top-pointer-modal demo-tour-slider" *ngIf="currentInd == 1">
     <div class="compare-pop-inner">
         <div class="slider-header">
             <h3 class="slider-title">Demo Mode</h3>
@@ -110,7 +110,7 @@
         </div>
         <div class="main-pop-inner">
             <div class="slider-description mb-1">
-                Enable the toggle switch to turn on the demo mode. In the demo mode, dummy data is loaded across the app to give you an idea of how your data would look like once you start using TradeAnalytix. 
+                Turn on the demo mode to view the dummy data loaded across the application and to get a good idea of TradeAnalytix's benefits.
             </div>
         </div>
 
@@ -120,7 +120,7 @@
         </div>
     </div>
 </div>
-<div class="compare-popup left-pointer-modal add-trade-slider" *ngIf="currentInd == 5">
+<div class="compare-popup left-pointer-modal add-trade-slider" *ngIf="currentInd == 2">
     <div class="compare-pop-inner">
         <div class="slider-header">
             <h3 class="slider-title">Add Trade</h3>
@@ -130,7 +130,7 @@
         </div>
         <div class="main-pop-inner">
             <div class="slider-description mb-1">
-                Click here to add a trade to a configurable and template-based trade journal.
+                Click here to add your trades to our unique, configurable, Q&A format trade journal.
             </div>
         </div>
 
@@ -140,7 +140,7 @@
         </div>
     </div>
 </div>
-<div class="compare-popup left-pointer-modal import-trade-slider" *ngIf="currentInd == 6">
+<div class="compare-popup left-pointer-modal import-trade-slider" *ngIf="currentInd == 3">
     <div class="compare-pop-inner">
         <div class="slider-header">
             <h3 class="slider-title">Import Trades</h3>
@@ -160,7 +160,7 @@
         </div>
     </div>
 </div>
-<div class="compare-popup left-pointer-modal risk-analysis-slider" *ngIf="currentInd == 7">
+<div class="compare-popup left-pointer-modal risk-analysis-slider" *ngIf="currentInd == 4">
     <div class="compare-pop-inner">
         <div class="slider-header">
             <h3 class="slider-title">Risk Analysis</h3>
@@ -170,8 +170,7 @@
         </div>
         <div class="main-pop-inner">
             <div class="slider-description mb-1">
-                Click here to analyze the potential returns of option trade strategies while varying stock price, implied volatility, and days to expiration. <br/><br/>
-                Adjust the trades and reassess until you are comfortable with the risk being taken.
+                Click here to analyze the potential returns on your trade strategies involving options through simulation of future scenarios.
             </div>
         </div>
 
@@ -181,7 +180,7 @@
         </div>
     </div>
 </div>
-<div class="compare-popup left-pointer-modal strategy-comparison-slider" *ngIf="currentInd == 8">
+<div class="compare-popup left-pointer-modal strategy-comparison-slider" *ngIf="currentInd == 5">
     <div class="compare-pop-inner">
         <div class="slider-header">
             <h3 class="slider-title">Strategy Comparison</h3>
@@ -191,8 +190,7 @@
         </div>
         <div class="main-pop-inner">
             <div class="slider-description mb-1">
-                Let's say you are bullish on a stock. Do you know which strategy works well for you within your risk appetite? <br/><br/>
-                Click here to compare trade strategies and pick the right strategy.
+                Click here to analyze the potential returns on your trade strategies involving options through simulation of future scenarios.
             </div>
         </div>
 
@@ -202,7 +200,7 @@
         </div>
     </div>
 </div>
-<div class="compare-popup left-pointer-modal trade-plane-slider" *ngIf="currentInd == 9">
+<div class="compare-popup left-pointer-modal trade-plane-slider" *ngIf="currentInd == 6">
     <div class="compare-pop-inner">
         <div class="slider-header">
             <h3 class="slider-title">Trade Plan</h3>
@@ -212,7 +210,6 @@
         </div>
         <div class="main-pop-inner">
             <div class="slider-description mb-1">
-                A trade plan created before the market hours allows you to think objectively about the market without getting influenced by the price movements.<br/><br/>
                 Click here to add a trade plan in which you can record your perspective on the market and intended actions during the day.
             </div>
         </div>
@@ -223,7 +220,7 @@
         </div>
     </div>
 </div>
-<div class="compare-popup left-pointer-modal reports-slider" *ngIf="currentInd == 10">
+<div class="compare-popup left-pointer-modal reports-slider" *ngIf="currentInd == 7">
     <div class="compare-pop-inner">
         <div class="slider-header">
             <h3 class="slider-title">Reports and Metrics</h3>
@@ -244,7 +241,7 @@
         </div>
     </div>
 </div>
-<div class="compare-popup left-pointer-modal trading-rules-slider" *ngIf="currentInd == 11">
+<div class="compare-popup left-pointer-modal trading-rules-slider" *ngIf="currentInd == 8">
     <div class="compare-pop-inner">
         <div class="slider-header">
             <h3 class="slider-title">Trading Rules</h3>
@@ -254,8 +251,7 @@
         </div>
         <div class="main-pop-inner">
             <div class="slider-description mb-1">
-                Do you commit the same mistakes again and again? <br/><br/>
-                Click here to set manual or automatic rules and align your trades with these rules to avoid repeating the same mistakes.
+                Click here to set rules and align your trades with them to avoid repeating the same mistakes.
             </div>
         </div>
 
@@ -265,7 +261,7 @@
         </div>
     </div>
 </div>
-<div class="compare-popup top-pointer-modal notifications-slider" *ngIf="currentInd == 12">
+<div class="compare-popup top-pointer-modal notifications-slider" *ngIf="currentInd == 9">
     <div class="compare-pop-inner">
         <div class="slider-header">
             <h3 class="slider-title">Notifications</h3>
@@ -285,7 +281,7 @@
         </div>
     </div>
 </div>
-<div class="compare-popup top-pointer-modal data-setup-slider" *ngIf="currentInd == 13">
+<div class="compare-popup top-pointer-modal data-setup-slider" *ngIf="currentInd == 10">
     <div class="compare-pop-inner">
         <div class="slider-header">
             <h3 class="slider-title">Data Setup</h3>
@@ -305,7 +301,7 @@
         </div>
     </div>
 </div>
-<div class="compare-popup top-pointer-modal help-slider" *ngIf="currentInd == 14">
+<div class="compare-popup top-pointer-modal help-slider" *ngIf="currentInd == 11">
     <div class="compare-pop-inner">
         <div class="slider-header">
             <h3 class="slider-title">Help</h3>

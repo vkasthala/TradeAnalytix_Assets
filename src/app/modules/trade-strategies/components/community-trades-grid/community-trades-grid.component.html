@@ -45,17 +45,17 @@
       </ng-container>
 
 
-      <!-- Thesis Column -->
-      <!-- <ng-container matColumnDef="thesis">
-        <mat-header-cell class="close-date-cell" *matHeaderCellDef mat-sort-header>Thesis</mat-header-cell>
-        <mat-cell class="close-date-cell" *matCellDef="let element"> {{element.thesis}} </mat-cell>
-      </ng-container> -->
+      <!-- Realized Return Column -->
+      <ng-container matColumnDef="return">
+        <mat-header-cell class="return-cell" *matHeaderCellDef mat-sort-header>Realized Return</mat-header-cell>
+        <mat-cell class="return-cell" *matCellDef="let element"> {{element.return}} </mat-cell>
+      </ng-container>
 
-      <!-- Rules Column -->
-      <!-- <ng-container matColumnDef="rules">
-        <mat-header-cell class="rules-cell" *matHeaderCellDef mat-sort-header>Rules</mat-header-cell>
-        <mat-cell class="rules-cell" *matCellDef="let element"> {{element.rules}} </mat-cell>
-      </ng-container> -->
+      <!-- User Column -->
+      <ng-container matColumnDef="user">
+        <mat-header-cell class="user-cell" *matHeaderCellDef mat-sort-header>User</mat-header-cell>
+        <mat-cell class="user-cell" *matCellDef="let element"> {{element.user}} </mat-cell>
+      </ng-container>
 
       <!-- Strategy Column -->
       <ng-container matColumnDef="tags">

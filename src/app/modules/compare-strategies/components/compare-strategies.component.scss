@@ -1127,3 +1127,23 @@ a.btn.btn-skip {
     max-width: 16%;
     min-width: 200px;
 }
+.tags-list {
+    list-style: none;
+    display: inline-flex;
+    justify-content: flex-end;
+    margin: 0;
+    margin-top: 0.5rem;
+}
+
+.tags-list > li {
+    display: inline-flex;
+}
+
+.tag-item {
+    margin-right: 5px;;
+}
+.tag-list-item {
+    background: #ced2d7;
+    border-radius: 8px;
+    padding: 0.25rem 0.5rem;
+}

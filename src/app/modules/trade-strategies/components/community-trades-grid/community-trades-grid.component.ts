@@ -27,7 +27,7 @@ export class CommunityTradesGrid implements AfterViewInit, OnInit {
 
   protected Loader = false;
   expandIndex: any;
-  displayedColumns = ['id', 'stockName', 'openDate', 'totalAmount', 'maxGain', 'maxLoss', 'tags', 'action'];
+  displayedColumns = ['id', 'stockName', 'openDate', 'totalAmount', 'maxGain', 'maxLoss', 'return', 'user', 'tags', 'action'];
   pageSize: number = 20
   totalCount: number = 1;
 
