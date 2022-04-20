@@ -22,6 +22,10 @@ export class OauthRedirectComponent implements OnInit {
       console.log('token: ', token);
       if (token) {
         sessionStorage.setItem('token', token);
+        let country = params['country'];
+        if(country) {
+          sessionStorage.setItem('country', country);
+        }
         this.successLogin();
       } else {
         this.failureLogin();

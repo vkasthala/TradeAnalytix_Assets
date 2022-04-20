@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { DemoModeDetailsService } from './demo-mode-details.service';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -66,7 +67,8 @@ export class HttpService {
   private createHttpHeaders(headersMap: Map<string, string>): HttpHeaders {
     let httpHeaders: HttpHeaders = new HttpHeaders({
       Authorization: 'Bearer ' + sessionStorage.getItem('token'),
-      'demo-mode': this.demoService.demoMode === true ? "1" : "0"
+      'demo-mode': this.demoService.demoMode === true ? "1" : "0",
+      country: sessionStorage.getItem('country')
     });
     for (let key in headersMap.keys()) {
       httpHeaders.append(key, headersMap.get(key));
