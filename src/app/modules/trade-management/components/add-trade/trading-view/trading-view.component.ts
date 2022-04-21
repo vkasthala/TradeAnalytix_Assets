@@ -21,8 +21,15 @@ export class TradingViewComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     let script = this._renderer2.createElement('script');
     script.type = `text/javascript`;
+    let country = sessionStorage.getItem('country');
+    let exchange;
+    if(country == '1') {
+      exchange = 'NASDAQ';
+    } else if(country == '2') {
+      exchange = 'BSE';
+    }
     script.src = "https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js";
-    script.text = '{"symbol": " NASDAQ:' + this.selectedStock.code + '","width": "100%","height": 220,"locale": "in","dateRange": "12M","colorTheme": "light","trendLineColor": "#37a6ef","underLineColor": "#E3F2FD","isTransparent": false,"autosize": false,"largeChartUrl": ""}';
+    script.text = '{"symbol": " '  + exchange + ':' + this.selectedStock.code + '","width": "100%","height": 220,"locale": "in","dateRange": "12M","colorTheme": "light","trendLineColor": "#37a6ef","underLineColor": "#E3F2FD","isTransparent": false,"autosize": false,"largeChartUrl": ""}';
 
     this.tradingview.nativeElement.appendChild(script);
   }

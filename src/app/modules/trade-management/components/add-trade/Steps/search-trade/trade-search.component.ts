@@ -30,10 +30,6 @@ export class TradeSearchComponent implements OnInit, AfterViewInit {
     }
 
     ngOnInit(): void {
-
-    }
-
-    ngAfterViewInit(): void {
         //Load all stock symbols on load
         this.stockSymbolService.getStockSymbols().subscribe(result => {
             console.log("stock symbol result:", result);
@@ -41,6 +37,10 @@ export class TradeSearchComponent implements OnInit, AfterViewInit {
             this.searchData.map(ele => this.symbolMap.set(ele.id, ele));
             this.symbolLoadEvent.emit();
         });
+    }
+
+    ngAfterViewInit(): void {
+        
     }
 
     clearSelection() {

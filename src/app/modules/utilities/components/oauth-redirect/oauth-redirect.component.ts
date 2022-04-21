@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SliderModalComponent } from 'src/app/modules/dashboard/components/slider-modal/slider-modal.component';
 import { MatDialog } from '@angular/material/dialog';
+import { StockSymbolService } from 'src/app/modules/shared/services/stock-symbol.service';
 
 @Component({
   selector: 'app-oauth-redirect',
@@ -14,6 +15,7 @@ export class OauthRedirectComponent implements OnInit {
     private router: Router, 
     private route: ActivatedRoute,
     private _dialog: MatDialog,
+    private stockSymbolService: StockSymbolService
   ) { }
 
   ngOnInit() {
@@ -36,6 +38,7 @@ export class OauthRedirectComponent implements OnInit {
   successLogin() {
     this.router.navigate(['dashboard']);
     this.loadSliderModal();
+    this.stockSymbolService.getStockSymbols();
   }
 
   failureLogin() {

@@ -42,6 +42,13 @@ export class GenerateChartPopupComponent implements OnInit, AfterViewInit {
       return;
     }
 
+    let country = sessionStorage.getItem('country');
+    if(country == '1') {
+      this.exchange = 'NASDAQ';
+    } else if(country == '2') {
+      this.exchange = 'BSE';
+    }
+
     // Render trading view widget
     new TradingView.widget(
       {
