@@ -1,3 +1,6 @@
+
+<div class="py-3 description_text">Data added here under each section is visible in your trading journal.</div>
+
 <mat-accordion class="example-headers-align w-100" multi="true">
     <mat-expansion-panel [expanded]="true">
         <mat-expansion-panel-header>
@@ -6,9 +9,11 @@
             </mat-panel-title>
         </mat-expansion-panel-header>
         <ng-template matExpansionPanelContent>
-            <div class="mb-2 d-flex">
+            
+            <div class="mb-2">
                 <span class="share-trade-field"><input class="checkbox mr-1" type="checkbox" (change)="onShareTradeChange($event)"> Share all my trades with my followers</span>
-
+            </div>
+            <div class="mb-2">
                 <span class="share-trade-field"><input class="checkbox mr-1" type="checkbox" (change)="findUsers($event)"> Allow other users to find me</span>
             </div>
         </ng-template>
@@ -75,7 +80,7 @@
             <app-editable-list #gainOrLossAttribution></app-editable-list>
         </ng-template>
     </mat-expansion-panel>
-    <mat-expansion-panel [expanded]="true" (opened)="setStep(6)">
+    <!-- <mat-expansion-panel [expanded]="true" (opened)="setStep(6)">
         <mat-expansion-panel-header>
             <mat-panel-title>
                 Pre-Market Activities
@@ -91,8 +96,8 @@
                 </div>
             </div>
         </ng-template>
-    </mat-expansion-panel>
-    <mat-expansion-panel [expanded]="true" (opened)="setStep(7)">
+    </mat-expansion-panel> -->
+    <!-- <mat-expansion-panel [expanded]="true" (opened)="setStep(7)">
         <mat-expansion-panel-header>
             <mat-panel-title>
                 Brokerage Commission
@@ -103,7 +108,7 @@
                 <app-editable-grid #brokerageCommissions></app-editable-grid>
             </div>
         </ng-template>
-    </mat-expansion-panel>
+    </mat-expansion-panel> -->
 </mat-accordion>
 
 <!--<div class="pre-market-box col-sm-6 py-3">

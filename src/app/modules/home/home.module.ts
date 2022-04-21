@@ -20,6 +20,7 @@ import { ReturnsCalendarChartComponent } from '../dashboard/charts/returns-calen
 import { RiskByAssetChartComponent } from '../dashboard/charts/risk-by-asset-chart/risk-by-asset-chart.component';
 import { UserGoalsByDateChartComponent } from '../dashboard/charts/user-goals-by-date/user-goals-by-date.component.';
 import { AskForFeatureComponent } from '../dashboard/components/ask-for-feature/ask-for-feature.component';
+import { BecomeAnAffiliateComponent } from '../dashboard/components/become-an-affiliate/become-an-affiliate.component';
 import { DashboardComponent } from '../dashboard/components/dashboard.component';
 import { KeyInsightsComponent } from '../dashboard/components/key-insights/key-insights.component';
 import { LeaveReviewComponent } from '../dashboard/components/leave-review/leave-review.component';
@@ -271,7 +272,8 @@ export const MY_FORMATS = {
     ReportAnIssueComponent,
     AskForFeatureComponent,
     LeaveReviewComponent,
-    CommunityTradesGrid
+    CommunityTradesGrid,
+    BecomeAnAffiliateComponent
   ],
   imports: [
     FormsModule,
@@ -334,7 +336,8 @@ export const MY_FORMATS = {
     ReportAnIssueComponent,
     AskForFeatureComponent,
     LeaveReviewComponent,
-    CommunityTradesGrid
+    CommunityTradesGrid,
+    BecomeAnAffiliateComponent
   ],
   // bootstrap: [TradeStrategiesGrid],
   providers: [

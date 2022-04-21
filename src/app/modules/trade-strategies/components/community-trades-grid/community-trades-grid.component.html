@@ -69,11 +69,7 @@
         <mat-header-cell class="action-cell" *matHeaderCellDef mat-sort-header>Action</mat-header-cell>
         <mat-cell *matCellDef="let element, let i = index" class="action_colum action-cell">
           <div>
-            <mat-icon *ngIf="element.status == 'Open'" (click)="closeTrade(element);closeActionBox()"
-              class="mat-icon-sm ml-2 trade-close">cancel</mat-icon>
-
-            <mat-icon *ngIf="element.status == 'Closed'" (click)="viewTrade(element);closeActionBox()"
-              class="mat-icon-sm trade-view">visibility</mat-icon>
+            <mat-icon *ngIf="element.status == 'Closed'" (click)="viewTrade(element);closeActionBox()" class="mat-icon-sm trade-view">visibility</mat-icon>
           </div>
         </mat-cell>
       </ng-container>

@@ -14,6 +14,7 @@ import { SliderModalComponent } from './slider-modal/slider-modal.component';
 import { ReportAnIssueComponent } from './report-an-issue/report-an-issue.component';
 import { AskForFeatureComponent } from './ask-for-feature/ask-for-feature.component';
 import { LeaveReviewComponent } from './leave-review/leave-review.component';
+import { BecomeAnAffiliateComponent } from './become-an-affiliate/become-an-affiliate.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -228,6 +229,20 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
   MoreStatistics(){
     this.showMoreMetrics = !this.showMoreMetrics
+  }
+
+  BecomeAnAffiliate() {
+    let dialogData = {
+      title: 'Become an Affiliate',
+    };
+    const dialogRef = this._dialog.open(BecomeAnAffiliateComponent, {
+      disableClose: true,
+      width: 'auto',
+      data: dialogData
+    });
+
+    dialogRef.afterClosed().subscribe((res) => {
+    });
   }
 
 }

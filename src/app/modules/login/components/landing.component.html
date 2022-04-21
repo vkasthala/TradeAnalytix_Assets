@@ -21,12 +21,12 @@
                         
                         <li [class.nav-active]="currentRoute == 'Reviews'">
                             <a class="landing-nav-link" href="landing#reviews_section">
-                                Reviews
+                                Testimonials
                             </a>
                         </li>
-                        <li [class.nav-active]="currentRoute == 'Blogs'">
+                        <li [class.nav-active]="currentRoute == 'Blog'">
                             <a class="landing-nav-link" href="landing#blogs_section">
-                            Blogs
+                                Blog
                             </a>
                         </li>
                         <li [class.nav-active]="currentRoute == 'FAQs'">
@@ -74,12 +74,12 @@
                     
                     <li [class.nav-active]="currentRoute == 'Reviews'">
                         <a class="landing-nav-link" href="landing#reviews_section">
-                            Reviews
+                            Testimonials
                         </a>
                     </li>
-                    <li [class.nav-active]="currentRoute == 'Blogs'">
+                    <li [class.nav-active]="currentRoute == 'Blog'">
                         <a class="landing-nav-link" href="landing#blogs_section">
-                        Blogs
+                        Blog
                         </a>
                     </li>
                     <li [class.nav-active]="currentRoute == 'FAQs'">
@@ -109,7 +109,7 @@
                             <!-- Provides users with everything they need to organize their trading habits, review performance and manage risks  -->
                             <!-- {{features[currentInd]}} -->
                         </div>
-                        <div class="banner-info-footer">
+                        <div class="banner-info-footer text-left">
                             <button type="button" class="btn btn-white btn-video mr-3" (click)="openPopup()"><mat-icon class="mr-1">videocam</mat-icon> Watch Video</button>
                             <!-- <button type="button" class="btn btn-outline" (click)="joinWaitlist()">Sign-in</button> -->
                             <button type="button" class="btn google-btn pl-0 pr-3" (click)="login('google')"><span class="google-icon-wrapper mr-3"><img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/></span> Sign-in</button>
@@ -223,7 +223,7 @@
                             <img class="slideshow_banner" src="../../../../assets/images/slider/step1.png" alt="" />
                         </div>
                         <div class="col-sm-4">
-                            <h3 class="slideshow-title">Step 1 Add Trades</h3>
+                            <h3 class="slideshow-title">Step 1: Add Trades</h3>
                             <div class="slideshow-description">
                                 Add your trade details manually or import trades from your brokerage
                             </div>
@@ -234,7 +234,7 @@
                             <img class="slideshow_banner" src="../../../../assets/images/slider/step2.png" alt="" />
                         </div>
                         <div class="col-sm-4">
-                            <h3 class="slideshow-title">Step 2 Add Notes</h3>
+                            <h3 class="slideshow-title">Step 2: Add Notes</h3>
                             <div class="slideshow-description">
                                 Provide justification on your trades in a unique, configurable, Q&A format trade journal
                             </div>
@@ -245,7 +245,7 @@
                             <img class="slideshow_banner" src="../../../../assets/images/slider/step3.png" alt="" />
                         </div>
                         <div class="col-sm-4">
-                            <h3 class="slideshow-title">Step 3 Analyze Risk</h3>
+                            <h3 class="slideshow-title">Step 3: Analyze Risk</h3>
                             <div class="slideshow-description">
                                 Analyze the risk of the trade through simulation and explore other strategies though comparison
                             </div>
@@ -256,7 +256,7 @@
                             <img class="slideshow_banner" src="../../../../assets/images/slider/step4.png" alt="" />
                         </div>
                         <div class="col-sm-4">
-                            <h3 class="slideshow-title">Step 4 Align with Rules</h3>
+                            <h3 class="slideshow-title">Step 4: Align with Rules</h3>
                             <div class="slideshow-description">
                                 Check the trade against self-set trading rules to make sure past mistakes are avoided.
                             </div>
@@ -267,7 +267,7 @@
                             <img class="slideshow_banner" src="../../../../assets/images/slider/step5.png" alt="" />
                         </div>
                         <div class="col-sm-4">
-                            <h3 class="slideshow-title">Step 5 Leverage Insights</h3>
+                            <h3 class="slideshow-title">Step 5: Leverage Insights</h3>
                             <div class="slideshow-description">
                                 Make an informed decision on the trade by evaluating your past performance on similar trades through reports
                             </div>
@@ -307,7 +307,7 @@
                         <div class="features_section_title">Systematic approach to trading through journaling of trades</div>
                         <div class="features_section_dec">
                             Add your trades to our configurable, template-based trade journal either one-by-one or in bulk by importing trade history files from the brokerages. Update the journal details of your trades in bulk in an intuitive excel-like grid.
-                            <div class="banner-info-footer">
+                            <div class="banner-info-footer text-left">
                                 <button type="button" class="btn btn-outline btn-video mr-3" (click)="openPopup()"><mat-icon class="mr-1">videocam</mat-icon> Watch Video</button>
                                 <button type="button" class="btn google-btn pl-0 pr-3" (click)="login('google')"><span class="google-icon-wrapper mr-3"><img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/></span> Sign-in</button>
                             </div>
@@ -328,7 +328,7 @@
                         <div class="features_section_dec">
                             Identify your strengths and limitations by reviewing reports and metrics derived from your trading journal. Reports are generated across different categories such as portfolio, performance, risk, discipline, trading rules, and goals.
                         </div>
-                        <div class="banner-info-footer">
+                        <div class="banner-info-footer text-left">
                             <button type="button" class="btn btn-outline btn-video mr-3" (click)="openPopup()"><mat-icon class="mr-1">videocam</mat-icon> Watch Video</button>
                             <button type="button" class="btn google-btn pl-0 pr-3" (click)="login('google')"><span class="google-icon-wrapper mr-3"><img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/></span> Sign-in</button>
                         </div>
@@ -348,7 +348,7 @@
                         <div class="features_section_dec">
                             Analyze the potential returns of option trade strategies in the future while varying stock price, implied volatility, and days to expiration. Keep updating the strategy and assessing its potential returns until you arrive at a trade that is aligned with your risk appetite.
                         </div>
-                        <div class="banner-info-footer">
+                        <div class="banner-info-footer text-left">
                             <button type="button" class="btn btn-outline btn-video mr-3" (click)="openPopup()"><mat-icon class="mr-1">videocam</mat-icon> Watch Video</button>
                             <button type="button" class="btn google-btn pl-0 pr-3" (click)="login('google')"><span class="google-icon-wrapper mr-3"><img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/></span> Sign-in</button>
                         </div>
@@ -368,7 +368,7 @@
                         <div class="features_section_dec">
                             Let's say you are bullish on a stock. Do you know which strategy works well for you within your risk appetite? Strategy comparison feature allows you to compare trade strategies on a stock to know their profitability in different scenarios so that you can pick a strategy that aligned with your risk appetite.
                         </div>
-                        <div class="banner-info-footer">
+                        <div class="banner-info-footer text-left">
                             <button type="button" class="btn btn-outline btn-video mr-3" (click)="openPopup()"><mat-icon class="mr-1">videocam</mat-icon> Watch Video</button>
                             <button type="button" class="btn google-btn pl-0 pr-3" (click)="login('google')"><span class="google-icon-wrapper mr-3"><img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/></span> Sign-in</button>
                         </div>
@@ -388,7 +388,7 @@
                         <div class="features_section_dec">
                             Market volatility, ease of trading, and influx of trading ideas makes it difficult to be disciplined and influences one to take impromptu decisions. Trading Rules feature allows you to set manual or automatic rules and trade as per them to avoid past mistakes
                         </div>
-                        <div class="banner-info-footer">
+                        <div class="banner-info-footer text-left">
                             <button type="button" class="btn btn-outline btn-video mr-3" (click)="openPopup()"><mat-icon class="mr-1">videocam</mat-icon> Watch Video</button>
                             <button type="button" class="btn google-btn pl-0 pr-3" (click)="login('google')"><span class="google-icon-wrapper mr-3"><img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/></span> Sign-in</button>
                         </div>
@@ -407,7 +407,7 @@
                         <div class="features_section_dec">
                             A trade plan created before the market hours allows you to think objectively about the market without getting influenced by the price movements. You can record your perspective on the market and intended actions during the day in a trade plan. It can be updated after the market hours to check actual actions against the planned actions
                         </div>
-                        <div class="banner-info-footer">
+                        <div class="banner-info-footer text-left">
                             <button type="button" class="btn btn-outline btn-video mr-3" (click)="openPopup()"><mat-icon class="mr-1">videocam</mat-icon> Watch Video</button>
                             <button type="button" class="btn google-btn pl-0 pr-3" (click)="login('google')"><span class="google-icon-wrapper mr-3"><img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/></span> Sign-in</button>
                         </div>
@@ -664,8 +664,8 @@
                     <li><a href="#">About Us</a></li>
                     <li><a href="#">Blog</a></li>
                     <li><a href="#">Terms & Conditions</a></li>
-                    <li><a href="#">Privacy Polic</a></li>
-                    <li><a class="cursor" (click)="openContactUsModal()">Contact us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a class="cursor" (click)="openContactUsModal()">Contact Us</a></li>
                 </ul>
             </div>
             <div class="trade-socail-icon col-sm-6">

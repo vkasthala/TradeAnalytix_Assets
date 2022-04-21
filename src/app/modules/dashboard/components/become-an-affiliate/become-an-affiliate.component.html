@@ -1,0 +1,32 @@
+<div class="compare-popup">
+    <div class="compare-pop-inner">
+        <div class="top-pop-inner pb-0">
+            <!-- <div class="left-heading">
+                <h6>{{title}}</h6>
+            </div> -->
+            <div class="right-close" (click)="closeModal()">
+                <mat-icon>clear</mat-icon>
+            </div>
+        </div>
+
+        <div class="main-pop-inner">
+            <div class="modal-title mb-1">{{title}}</div>
+            <div class="pb-2">
+                <label class="col-form-label pb-0">Name</label>
+                <input class="form-control" matInput id="name" placeholder="Name" [(ngModel)]='data.name' />
+            </div>
+            <div class="pb-2">
+                <label class="col-form-label pb-0">Email</label>
+                <input class="form-control" placeholder="Email" matInput id="email" [(ngModel)]='data.email' />
+            </div>
+            <div class="pb-2">
+                <label class="col-form-label pb-0">Message</label>
+                <textarea class="form-control" placeholder="Message" matInput id="tellus" [(ngModel)]='data.message'></textarea>
+            </div>
+        </div>
+
+        <div class="px-3 pb-3 text-center">
+            <button type="button" class="btn btn-join" [mat-dialog-close]="data">Submit</button>
+        </div>
+    </div>
+</div>
