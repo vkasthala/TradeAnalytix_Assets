@@ -183,7 +183,7 @@
                                             <div class="card-main card-main-md">
                                                 <h6 class="input_text">
                                                     {{(item.contracts && item.exitPrice && item.entryPrice) ?
-                                                    (item.contracts * ((item.exitPrice - item.entryPrice) * 100) *
+                                                    (item.contracts * ((item.exitPrice - item.entryPrice)) *
                                                     (item.actionType == 3 ? -1 : 1)).toFixed(2) : 0}}
                                                 </h6>
                                             </div>
@@ -432,7 +432,7 @@
                                             <div class="col-4">
                                                 <label class="col-form-label pt-0">Return</label>
                                                 <div class="col-form-value">{{(item.contracts && item.exitPrice && item.entryPrice) ?
-                                                    (item.contracts * ((item.exitPrice - item.entryPrice) * 100) *
+                                                    (item.contracts * ((item.exitPrice - item.entryPrice)) *
                                                     (item.actionType == 3 ? -1 : 1)).toFixed(2) : 0}}</div>
                                             </div>
                                         </div>

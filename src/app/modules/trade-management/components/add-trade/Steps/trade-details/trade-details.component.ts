@@ -371,7 +371,7 @@ export class TradeDetailsComponent implements OnInit {
     }
     if (this.stockOptions) {
       for (let index = 0; index < this.stockOptions.length; index++) {
-        tmp = this.stockOptions[index].contracts && this.stockOptions[index].price ? Number.parseFloat((this.stockOptions[index].contracts * this.stockOptions[index].price * 100).toFixed(2)) : 0
+        tmp = this.stockOptions[index].contracts && this.stockOptions[index].price ? Number.parseFloat((this.stockOptions[index].contracts * this.stockOptions[index].price).toFixed(2)) : 0
         if (this.stockOptions[index].actionType == ActionType["Buy to Open"]) {
           netDebit += tmp;
         } else if (this.stockOptions[index].actionType == ActionType["Sell to Open"]) {
@@ -393,7 +393,7 @@ export class TradeDetailsComponent implements OnInit {
     }
     if (this.stockOptions) {
       for (let index = 0; index < this.stockOptions.length; index++) {
-        tmp = this.stockOptions[index].contracts && this.stockOptions[index].closePrice ? Number.parseFloat((this.stockOptions[index].contracts * (this.stockOptions[index].closePrice - this.stockOptions[index].price) * 100).toFixed(2)) : 0
+        tmp = this.stockOptions[index].contracts && this.stockOptions[index].closePrice ? Number.parseFloat((this.stockOptions[index].contracts * (this.stockOptions[index].closePrice - this.stockOptions[index].price)).toFixed(2)) : 0
         if (this.stockOptions[index].actionType == ActionType["Buy to Open"]) {
           netReturn += tmp;
         } else if (this.stockOptions[index].actionType == ActionType["Sell to Open"]) {

@@ -529,7 +529,7 @@ export class AddNewTradeComponent implements OnInit {
       for (let index = 0; index < this.tradeHistory.optionLegHistories.length; index++) {
         tmp = this.tradeHistory.optionLegHistories[index].contracts * ((this.tradeHistory.optionLegHistories[index].exitPrice ? this.tradeHistory.optionLegHistories[index].exitPrice : 0) - (this.tradeHistory.optionLegHistories[index].entryPrice ? this.tradeHistory.optionLegHistories[index].entryPrice : 0));
         /// netReturn = tmp * (this.tradeHistory.optionLegHistories[index].actionType == ActionType["Buy to Open"] ? 100 : -100);
-        netReturn = netReturn + (tmp * 100);
+        netReturn = netReturn + tmp;
       }
     }
     let returnAmt: string = netReturn.toFixed(2);

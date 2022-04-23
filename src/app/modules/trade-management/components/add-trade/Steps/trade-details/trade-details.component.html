@@ -225,7 +225,7 @@
                                     <div class="card-main card-main-md" *ngIf="!closeTrade">
                                         <h6 class="input_text justify-content-end">
                                             {{(stockOptions[index].contracts && stockOptions[index].price) ?
-                                            (stockOptions[index].contracts * (stockOptions[index].price * 100) *
+                                            (stockOptions[index].contracts * (stockOptions[index].price) *
                                             (stockOptions[index].actionType == 2 ? -1 : 1)).toFixed(2) : 0}}
                                         </h6>
                                     </div>
@@ -238,7 +238,7 @@
                                         <h6 class="input_text justify-content-start">
                                             {{(stockOptions[index].contracts && stockOptions[index].closePrice) ?
                                             (stockOptions[index].contracts * ((stockOptions[index].closePrice -
-                                            stockOptions[index].price) * 100) * (stockOptions[index].actionType == 2 ?
+                                            stockOptions[index].price)) * (stockOptions[index].actionType == 2 ?
                                             -1 : 1)).toFixed(2) : 0}}
                                         </h6>
                                     </div>
@@ -394,7 +394,7 @@
                     <div class="col-4">
                         <label class="col-form-label pt-0">Cost</label>
                         <div class="col-form-value">{{(stockOptions[index].contracts && stockOptions[index].price) ?
-                            (stockOptions[index].contracts * (stockOptions[index].price * 100) *
+                            (stockOptions[index].contracts * (stockOptions[index].price) *
                             (stockOptions[index].actionType == 2 ? -1 : 1)).toFixed(2) : 0}}</div>
                     </div>
                     <div class="col-8 d-flex align-items-end">
@@ -424,7 +424,7 @@
                         <h6 class="col-form-value">
                             {{(stockOptions[index].contracts && stockOptions[index].closePrice) ?
                                 (stockOptions[index].contracts * ((stockOptions[index].closePrice -
-                                stockOptions[index].price) * 100) * (stockOptions[index].actionType == 2 ?
+                                stockOptions[index].price)) * (stockOptions[index].actionType == 2 ?
                                 -1 : 1)).toFixed(2) : 0}}
                         </h6>
                     </div>
@@ -574,7 +574,7 @@
                             <label class="col-form-label pt-0">Cost</label>
                             <h6 class="form-stock-value mt-1">
                                 {{(editingOption.contracts && editingOption.price) ?
-                                    (editingOption.contracts * (editingOption.price * 100) *
+                                    (editingOption.contracts * (editingOption.price) *
                                     (editingOption.actionType == 2 ? -1 : 1)).toFixed(2) : 0}}
                             </h6>
                         </div>

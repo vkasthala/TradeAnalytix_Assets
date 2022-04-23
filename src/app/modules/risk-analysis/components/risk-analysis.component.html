@@ -180,7 +180,7 @@
                                                     <label class="col-form-label">Amount</label>
                                                     <div class="card-right">
                                                         <h6>
-                                                            {{stockOptions[index].contracts && stockOptions[index].price ? (stockOptions[index].contracts * stockOptions[index].price * 100).toFixed(2) : 0}}
+                                                            {{stockOptions[index].contracts && stockOptions[index].price ? (stockOptions[index].contracts * stockOptions[index].price).toFixed(2) : 0}}
                                                         </h6>
                                                     </div>
                                                 </div>
@@ -693,7 +693,7 @@
                                                     <h6>
                                                         {{(optionGroup.contracts && optionGroup.closePrice) ?
                                                         (optionGroup.contracts * ((optionGroup.closePrice -
-                                                        optionGroup.price) * 100) * (optionGroup.actionType == 2 ?
+                                                        optionGroup.price)) * (optionGroup.actionType == 2 ?
                                                         -1 : 1)).toFixed(2) : 0}}
                                                     </h6>
                                                 </div>
