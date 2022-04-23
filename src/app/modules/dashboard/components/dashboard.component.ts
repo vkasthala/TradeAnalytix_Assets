@@ -181,6 +181,8 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     const dialogRef = this._dialog.open(SliderModalComponent, {
       disableClose: true,
       width: 'auto',
+      panelClass: 'guided-tour-panel',
+      backdropClass:'guided-tour-modal'
     });
 
     dialogRef.afterClosed().subscribe((res) => {

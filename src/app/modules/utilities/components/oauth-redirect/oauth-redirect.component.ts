@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SliderModalComponent } from 'src/app/modules/dashboard/components/slider-modal/slider-modal.component';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { StockSymbolService } from 'src/app/modules/shared/services/stock-symbol.service';
 
 @Component({
@@ -48,7 +48,8 @@ export class OauthRedirectComponent implements OnInit {
   loadSliderModal() {
     const dialogRef = this._dialog.open(SliderModalComponent, {
       disableClose: true,
-      width: 'auto',
+      panelClass: 'guided-tour-panel',
+      backdropClass:'guided-tour-modal'
     });
 
     dialogRef.afterClosed().subscribe((res) => {

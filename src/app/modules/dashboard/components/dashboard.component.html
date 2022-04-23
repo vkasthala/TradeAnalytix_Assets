@@ -142,95 +142,7 @@
                 </div>
             </div>
             
-            <!-- <div class="col-sm-12 col-md-4">
-                <div class="trade-analytics">
-                    <div class="trade-headiang">
-                        <h5>Trade Plan</h5>
-                    </div>
-                    <div class="dsh-img" style="height: 300px;" *ngIf="latestTradePlan && (latestTradePlan | json) != '{}'">
-                        <div class="custom-grid px-3">
-                            <div class="row custom-grid-head pt-3">
-                                <div class="col-4">
-                                    Date
-                                </div>
-                                <div class="col-4">
-                                    Market View
-                                </div>
-                                <div class="col-4">
-                                    Mindset
-                                </div>
-                            </div>
-                            <div class="row" *ngIf="latestTradePlan && latestTradePlan.day">
-                                <div class="col-4">
-                                    {{latestTradePlan.day | date: 'dd-MMM-yyyy'}}
-                                </div>
-                                <div class="col-4 text-success">
-                                    {{latestTradePlan ? latestTradePlan.marketStatus : ''}}
-                                </div>
-                                <div class="col-4">
-                                    {{latestTradePlan ? latestTradePlan.mindsetType : ''}}
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="trade-analytics-body px-3" *ngIf="latestTradePlan && (latestTradePlan.notes || latestTradePlan.plannedTrades)">
-                            <div class="custom-grid pb-3">
-                                <div class="row custom-grid-head">
-                                    <div class="col-12">
-                                        Market Perspective
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        {{latestTradePlan ? latestTradePlan.notes : ''}}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="custom-grid pb-3">
-                                <div class="row custom-grid-head">
-                                    <div class="col-12">
-                                        Planned Trades
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        {{latestTradePlan ? latestTradePlan.plannedTrades : ''}}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="custom-grid">
-                                <div class="row custom-grid-head">
-                                    <div class="col-12">
-                                        Executed Trades
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        no data
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                           
-                        <div class="px-3 pt-1 text-right">
-                            <a routerLink="/view-trade-plan" class="view-more">View More</a>
-                        </div>
-                    </div>
-                    <div class="dsh-img nodata-text" *ngIf="latestTradePlan === undefined">
-                        <a routerLink="/add-new-trade-plan">Add Plan</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-4">
-                <div class="trade-analytics">
-                    <div class="trade-headiang">
-                        <h5>Key Insights</h5>
-                    </div>
-                    <div class="dsh-img" style="height: 300px;">
-                        <app-key-insights></app-key-insights>
-                    </div>
-                </div>
-            </div> -->
+            
             <div class="col-sm-12 col-md-4">
                 <div class="trade-analytics">
                     <div class="trade-headiang">
@@ -261,75 +173,43 @@
                     <div class="dsh-img list-group-card" style="height: 300px;">
                         <div class="list-group-row row">
                             <div class="col-9">
-                                Add trade to the journal.
+                                How-to videos on TA's features
                             </div>
                             <div class="list-group-bottom col-3 text-right">
-                                <a routerLink="/help/add-trade">Visit Link</a>
+                                <a href="https://www.youtube.com/channel/UC47hYnN1Hrfc_RiUyElwaMA/videos
+                                " target="_blank">Watch Now </a>
                             </div>
                         </div>
 
                         <div class="list-group-row row">
-                            <div class="col-9">
-                                Import trade history files from brokerage. 
+                            <div class="col-8">
+                                Step-by-step guides on using TA
                             </div>
-                            <div class="list-group-bottom col-3 text-right">
-                                <a routerLink="/help/import-trade">Visit Link</a>
-                            </div>
-                        </div>
-                        <div class="list-group-row row">
-                            <div class="col-9">
-                                Edit existing trades.
-                            </div>
-                            <div class="list-group-bottom col-3 text-right">
-                                <a routerLink="/help/trade-journal-edit-trade">Visit Link</a>
+                            <div class="list-group-bottom col-4 text-right">
+                                <a routerLink="">User Manuals</a>
                             </div>
                         </div>
                         <div class="list-group-row row">
                             <div class="col-9">
-                                Close trade strategies.
+                                Go through answers to FAQs on TA
                             </div>
                             <div class="list-group-bottom col-3 text-right">
-                                <a routerLink="/help/trade-journal-close-trade">Visit Link</a>
+                                <a href="https://cuetrade.wpcomstaging.com/2022/04/02/frequently-asked-questions-faqs/" target="_blank">Visit FAQs</a>
+                            </div>
+                        </div>
+                        <div class="list-group-row row">
+                            <div class="col-9">Read our blog</div>
+                            <div class="list-group-bottom col-3 text-right">
+                                <a>Visit Blog</a>
                             </div>
                         </div>
                         <div class="list-group-row row">
                             <div class="col-9">
-                                Analyze risk of option strategies.
+                                Follow us on social media
                             </div>
                             <div class="list-group-bottom col-3 text-right">
-                                <a routerLink="/help/helprisk-analysis">Visit Link</a>
-                            </div>
-                        </div>
-                        <div class="list-group-row row">
-                            <div class="col-9">
-                                Compare strategies on a stock.
-                            </div>
-                            <div class="list-group-bottom col-3 text-right">
-                                <a routerLink="/help/compare-strategy">Visit Link</a>
-                            </div>
-                        </div>
-                        <div class="list-group-row row">
-                            <div class="col-9">
-                                Set trading rules.
-                            </div>
-                            <div class="list-group-bottom col-3 text-right">
-                                <a routerLink="/help/trading-rules">Visit Link</a>
-                            </div>
-                        </div>
-                        <div class="list-group-row row">
-                            <div class="col-9">
-                                Reports and Metrics.
-                            </div>
-                            <div class="list-group-bottom col-3 text-right">
-                                <a routerLink="/help/helpreports">Visit Link</a>
-                            </div>
-                        </div>
-                        <div class="list-group-row row">
-                            <div class="col-9">
-                                Set up data for the journal.
-                            </div>
-                            <div class="list-group-bottom col-3 text-right">
-                                <a routerLink="/help/trade-plan">Visit Link</a>
+                                <a class="mr-2"><img src="../../../assets/images/twitter_sm.png" alt="twitter" class="socail-icon" /></a>
+                                <a><img src="../../../assets/images/facebook.png" alt="facebook" class="socail-icon" /></a>
                             </div>
                         </div>
                     </div>

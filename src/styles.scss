@@ -491,8 +491,16 @@ input:invalid {
     .investmentgoals-form .mydrp {
         width: 155px !important;
     }
+    .guided-tour-modal, .guided-tour-panel {
+        display: none;
+    }
 }
 
 .features_section .mat-expanded .mat-expansion-indicator::after {
     color: #ffffff !important;
+}
+
+.guided-tour-modal {
+    opacity: 1 !important;
+    background: rgba(0,0,0,.32) !important;
 }
