@@ -1067,6 +1067,9 @@ $button-active-blue: #1669F2;
     -webkit-transition: all 0.15s ease 0s;
     min-height: 420px;
     align-items: center;
+    @media #{$extra-small} {
+        min-height: inherit;
+    }
 }
 .slideshow_banner {
     max-width: 100%;
@@ -1078,6 +1081,10 @@ $button-active-blue: #1669F2;
     line-height: 30px;
     color: #000000;
     padding-bottom: 0.5rem;
+    @media #{$extra-small} {
+        font-size: 22px;
+        margin-top: 0.5rem;
+    }
 }
 .slideshow-description {
     font-weight: normal;
@@ -1101,6 +1108,7 @@ $button-active-blue: #1669F2;
         font-size: 1rem;
         width: 25px;
         height: 25px;
+        top: 40%;
     }
 }
 .swiper-button-prev {
