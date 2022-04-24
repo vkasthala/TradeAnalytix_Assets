@@ -31,6 +31,8 @@ import { DateAdapter } from '@angular/material';
 import { CustomDateAdapter } from './modules/shared/adapter/custom-date-adapter';
 import { JoinWaitlistComponent } from './modules/login/components/join-waitlist/join-waitlist.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PrivacyPolicyComponent } from './modules/privacy-policy/components/privacy-policy.component';
+import { TermsAndConditionsComponent } from './modules/terms-conditions/components/terms-conditions.component';
 
 
 
@@ -50,6 +52,8 @@ export function highchartsModules() {
     AppComponent,
     JoinWaitlistComponent,
     LandingComponent,
+    TermsAndConditionsComponent,
+    PrivacyPolicyComponent
   ],
   imports: [
     FormsModule,

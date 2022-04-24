@@ -663,8 +663,8 @@
                 <ul class="footer_nav">
                     <li><a href="#">About Us</a></li>
                     <li><a href="#">Blog</a></li>
-                    <li><a href="#">Terms & Conditions</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a [routerLink]="['/terms-conditions/']" target="_blank">Terms & Conditions</a></li>
+                    <li><a [routerLink]="['/privacy-policy/']" target="_blank">Privacy Policy</a></li>
                     <li><a class="cursor" (click)="openContactUsModal()">Contact Us</a></li>
                 </ul>
             </div>

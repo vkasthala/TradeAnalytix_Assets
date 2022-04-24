@@ -2,11 +2,9 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 
-
-
-
-
 import { LandingComponent } from './modules/login/components/landing.component';
+import { PrivacyPolicyComponent } from './modules/privacy-policy/components/privacy-policy.component';
+import { TermsAndConditionsComponent } from './modules/terms-conditions/components/terms-conditions.component';
 
 const routes: Routes = [
   {
@@ -17,6 +15,14 @@ const routes: Routes = [
   {
     path: 'landing',
     component : LandingComponent
+  },
+  {
+    path: 'terms-conditions',
+    component : TermsAndConditionsComponent
+  },
+  {
+    path: 'privacy-policy',
+    component : PrivacyPolicyComponent
   },
   {
     path : '',
