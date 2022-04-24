@@ -67,20 +67,20 @@
                                                 </div>
                                                 <ul class="tags-list">
                                                     <!-- Dynamic List -->
-                                                    <!-- <li *ngFor="let tag of tags; let i = index;" class="tag-item">
+                                                    <li *ngFor="let tag of getStrategyTags(item); let i = index;" class="tag-item">
                                                         <span class="tag-list-item">
-                                                            <span (click)="editTag(tag)">
-                                                                {{getTagName(tag.tagId)}}
+                                                            <span>
+                                                                {{tag}}
                                                             </span>
                                                         </span>
-                                                    </li> -->
+                                                    </li>
                                                     <!-- Static List -->
-                                                    <li class="tag-item">
+                                                    <!--<li class="tag-item">
                                                         <span class="tag-list-item">Long</span>
                                                     </li>
                                                     <li class="tag-item">
                                                         <span class="tag-list-item">Short Call</span>
-                                                    </li>
+                                                    </li>-->
                                                 </ul>
                                             </div>
                                         </ng-container>

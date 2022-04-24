@@ -7,6 +7,7 @@ import { CompareStrategyResponse } from '../../compare-strategies/models/compare
 import { StrategyCompareRequest } from '../../compare-strategies/models/strategy-compare-request.model';
 import { StrategyInput } from '../../compare-strategies/models/strategy-input.model';
 import { CompareStrategiesService } from '../../compare-strategies/services/compare-strategies.service';
+import { UserTagService } from '../../settings/services/user-tag.service';
 import { OptionEntry } from '../../shared/models/trade-management/option-entry.model';
 import { StockEntry } from '../../shared/models/trade-management/stock-entry.model';
 import { StockSymbol } from '../../shared/models/trade-management/stock-symbol.model';
@@ -62,6 +63,7 @@ export class CompareStrategiesComponent implements OnInit {
   constructor(
     private userStockStatsService: UserStockStatsService,
     private compareStrategyService: CompareStrategiesService,
+    private userTagService: UserTagService,
     private toastr: ToastrService,
     private router: Router,
     private _dialog: MatDialog) {
@@ -322,4 +324,18 @@ export class CompareStrategiesComponent implements OnInit {
     extras.state = input;
     this.router.navigate(['/new-trade'], extras);
   }
+
+  getStrategyTags(strategy: StrategyInput): string[] {
+    let tags: string[] = [];
+    if(strategy.tagIds) {
+      let tagIds: string[] = strategy.tagIds.split(',');
+      tagIds.forEach(tagId => {
+        if(tagId !== ''){
+          tags.push(this.userTagService.getTagNameById(parseInt(tagId)));
+        }
+      })
+    }
+    return tags;
+  }
+
 }

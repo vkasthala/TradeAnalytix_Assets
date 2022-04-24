@@ -6,6 +6,8 @@ export class StrategyInput {
 
     uid: string;
 
+    tagIds: string;
+
     details: CompareStrategyDetails;
 
 }
