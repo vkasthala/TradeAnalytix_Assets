@@ -5,6 +5,11 @@
                 <div class="trade-header-section-logo"></div>
                 <nav class="landing-navbar">
                     <ul class="list-unstyled ">
+                        <li [class.nav-active]="currentRoute == 'Home'">
+                            <a class="landing-nav-link" [routerLink]="['/landing/']">
+                                Home
+                            </a>
+                        </li>
                         <li [class.nav-active]="currentRoute == 'Testimonials'">
                             <a class="landing-nav-link" target="_blank" href="https://cuetrade.wpcomstaging.com/2022/">
                                 Testimonials

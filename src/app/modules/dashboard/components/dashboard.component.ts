@@ -15,6 +15,8 @@ import { ReportAnIssueComponent } from './report-an-issue/report-an-issue.compon
 import { AskForFeatureComponent } from './ask-for-feature/ask-for-feature.component';
 import { LeaveReviewComponent } from './leave-review/leave-review.component';
 import { BecomeAnAffiliateComponent } from './become-an-affiliate/become-an-affiliate.component';
+import { ViewFollowersComponent } from './view-followers/view-followers.component';
+import { FindUsersComponent } from './find-users/find-users.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -228,6 +230,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     dialogRef.afterClosed().subscribe((res) => {
     });
   }
+  
 
   MoreStatistics(){
     this.showMoreMetrics = !this.showMoreMetrics
@@ -238,6 +241,34 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       title: 'Become an Affiliate',
     };
     const dialogRef = this._dialog.open(BecomeAnAffiliateComponent, {
+      disableClose: true,
+      width: 'auto',
+      data: dialogData
+    });
+
+    dialogRef.afterClosed().subscribe((res) => {
+    });
+  }
+
+  viewFollowers() {
+    let dialogData = {
+      title: 'View Followers',
+    };
+    const dialogRef = this._dialog.open(ViewFollowersComponent, {
+      disableClose: true,
+      width: 'auto',
+      data: dialogData
+    });
+
+    dialogRef.afterClosed().subscribe((res) => {
+    });
+  }
+
+  findUsers() {
+    let dialogData = {
+      title: 'Find Traders to Follow',
+    };
+    const dialogRef = this._dialog.open(FindUsersComponent, {
       disableClose: true,
       width: 'auto',
       data: dialogData

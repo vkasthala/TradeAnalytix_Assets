@@ -22,10 +22,12 @@ import { UserGoalsByDateChartComponent } from '../dashboard/charts/user-goals-by
 import { AskForFeatureComponent } from '../dashboard/components/ask-for-feature/ask-for-feature.component';
 import { BecomeAnAffiliateComponent } from '../dashboard/components/become-an-affiliate/become-an-affiliate.component';
 import { DashboardComponent } from '../dashboard/components/dashboard.component';
+import { FindUsersComponent } from '../dashboard/components/find-users/find-users.component';
 import { KeyInsightsComponent } from '../dashboard/components/key-insights/key-insights.component';
 import { LeaveReviewComponent } from '../dashboard/components/leave-review/leave-review.component';
 import { ReportAnIssueComponent } from '../dashboard/components/report-an-issue/report-an-issue.component';
 import { SliderModalComponent } from '../dashboard/components/slider-modal/slider-modal.component';
+import { ViewFollowersComponent } from '../dashboard/components/view-followers/view-followers.component';
 import { DefaultDashboardComponent } from '../default-dashboard/default-dashboard.component';
 import { EconomicCalendarComponent } from '../economic-calendar/economic-calendar.component';
 import { CompareStrategyComponent } from '../help/components/compare-strategy/compare-strategy.component';
@@ -273,7 +275,9 @@ export const MY_FORMATS = {
     AskForFeatureComponent,
     LeaveReviewComponent,
     CommunityTradesGrid,
-    BecomeAnAffiliateComponent
+    BecomeAnAffiliateComponent,
+    ViewFollowersComponent,
+    FindUsersComponent
   ],
   imports: [
     FormsModule,
@@ -337,7 +341,9 @@ export const MY_FORMATS = {
     AskForFeatureComponent,
     LeaveReviewComponent,
     CommunityTradesGrid,
-    BecomeAnAffiliateComponent
+    BecomeAnAffiliateComponent,
+    ViewFollowersComponent,
+    FindUsersComponent
   ],
   // bootstrap: [TradeStrategiesGrid],
   providers: [
