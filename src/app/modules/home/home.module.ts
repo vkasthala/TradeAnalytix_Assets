@@ -43,6 +43,7 @@ import { HelpEditTradeComponent } from '../help/components/trade-journal/edit-tr
 import { TradeJournalComponent } from '../help/components/trade-journal/trade-journal.component';
 import { TradePlaneComponent } from '../help/components/trade-plan/trade-plan.component';
 import { TradingRulesComponent } from '../help/components/trading-rules/trading-rules.component';
+import { AutoImportTradePopupComponent } from '../import-trades-history/auto-import-trade-popup/auto-import-trade-popup.component';
 import { ImportTradePopupComponent } from '../import-trades-history/import-trade-popup/import-trade-popup.component';
 import { ImportTradesHistory } from '../import-trades-history/import-trades-history';
 import { ImportTradesComponent } from '../import-trades/components/import-trades.component';
@@ -241,6 +242,7 @@ export const MY_FORMATS = {
     TodayExecutedLegsComponent,
     KeyInsightsComponent,
     ImportTradePopupComponent,
+    AutoImportTradePopupComponent,
     RulesComponent,
     CalendarComponent,
     ReportsRulesComponent,
@@ -322,6 +324,7 @@ export const MY_FORMATS = {
     GenerateChartPopupComponent,
     RuleCommentDialogComponent,
     ImportTradePopupComponent,
+    AutoImportTradePopupComponent,
     CalendarComponent,
     ReportsRulesComponent,
     StrategySelectionComponent,

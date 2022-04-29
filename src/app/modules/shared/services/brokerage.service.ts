@@ -13,6 +13,8 @@ export class BrokerageService {
 
   private brokerages: Brokerage[] = [];
 
+  private autoBrokerages: Brokerage[] = [];
+
   constructor(private httpService: HttpService) { }
 
   public getBrokerages(): Observable<Brokerage[]> {
@@ -22,6 +24,18 @@ export class BrokerageService {
       let observable: Observable<Brokerage[]> = this.httpService.get<Brokerage[]>(this.apiUrl + '/brokerages');
       observable.subscribe(result => {
         this.brokerages = result;
+      });
+      return observable;
+    }
+  }
+
+  public getAutoBrokerages(): Observable<Brokerage[]> {
+    if (this.autoBrokerages.length) {
+      return new Observable(subscriber => subscriber.next(this.autoBrokerages));
+    } else {
+      let observable: Observable<Brokerage[]> = this.httpService.get<Brokerage[]>(this.apiUrl + '/api-brokerages');
+      observable.subscribe(result => {
+        this.autoBrokerages = result;
       });
       return observable;
     }

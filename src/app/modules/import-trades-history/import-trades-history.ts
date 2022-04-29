@@ -17,6 +17,7 @@ import { ImportTradePopupComponent } from './import-trade-popup/import-trade-pop
 import { ToastrService } from 'ngx-toastr';
 import { UploadFileService } from 'src/app/modules/import-trades/services/upload-file.service';
 import { UtilService } from '../utilities/services/util.service';
+import { AutoImportTradePopupComponent } from './auto-import-trade-popup/auto-import-trade-popup.component';
 
 @Component({
   selector: 'app-import-trades-history',
@@ -184,13 +185,16 @@ export class ImportTradesHistory implements AfterViewInit, OnInit {
     });
   }
 
-  redirectToBrokerageUrl() {
-    this.uploadService.getImportRedirectUrl().subscribe(result => {
-      console.log("url:",  result);
-      window.open(result, "_blank");
-    }, err => {
-      console.log("error:", err);
-      window.open(err.error.text, "_blank");
+  autoImportTradesPopup() {
+    const dialogRef = this._dialog.open(AutoImportTradePopupComponent, {
+      disableClose: true,
+      width: 'auto',
+      //data: dialogData
+    });
+    dialogRef.afterClosed().subscribe((res) => {
+      if (res === true) {
+        this.reload();
+      }
     });
   }
 
