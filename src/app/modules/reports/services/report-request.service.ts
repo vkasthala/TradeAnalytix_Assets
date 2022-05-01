@@ -99,10 +99,14 @@ export class ReportRequestService {
 
   public getAllocationReportUrl(reportId: string) {
     let url: string;
-    if ('allocation-stock' === reportId) {
-      url = '/reports/portfolio/allocation-stock';
-    } else if ('allocation-sector' === reportId) {
-      url = '/reports/portfolio/allocation-sector';
+    if ('allocation-long-stock' === reportId) {
+      url = '/reports/portfolio/allocation-long-stock';
+    } else if ('allocation-long-sector' === reportId) {
+      url = '/reports/portfolio/allocation-long-sector';
+    } else if ('allocation-short-stock' === reportId) {
+      url = '/reports/portfolio/allocation-short-stock';
+    } else if ('allocation-short-sector' === reportId) {
+      url = '/reports/portfolio/allocation-short-sector';
     }
     return url;
   }
