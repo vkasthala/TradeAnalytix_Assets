@@ -17,6 +17,8 @@ import { LeaveReviewComponent } from './leave-review/leave-review.component';
 import { BecomeAnAffiliateComponent } from './become-an-affiliate/become-an-affiliate.component';
 import { ViewFollowersComponent } from './view-followers/view-followers.component';
 import { FindUsersComponent } from './find-users/find-users.component';
+import { UserComment } from '../models/user-comment.model';
+import { DashboardChartService } from '../services/dashboard-chart.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -42,7 +44,8 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     private userService: UserService,
     private _dialog: MatDialog,
     protected toastr: ToastrService,
-    private demoService: DemoModeDetailsService
+    private demoService: DemoModeDetailsService,
+    private dashboardService: DashboardChartService
   ) { }
 
   ngOnInit() {
@@ -184,7 +187,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       disableClose: true,
       width: 'auto',
       panelClass: 'guided-tour-panel',
-      backdropClass:'guided-tour-modal'
+      backdropClass: 'guided-tour-modal'
     });
 
     dialogRef.afterClosed().subscribe((res) => {
@@ -202,8 +205,14 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     });
 
     dialogRef.afterClosed().subscribe((res) => {
+      if (res) {
+        this.dashboardService.reportIssue(this.createUserComment(res)).subscribe(res => {
+          this.toastr.info("Issue submitted");
+        });
+      }
     });
   }
+
   askFeature() {
     let dialogData = {
       title: 'Ask for a Feature',
@@ -215,8 +224,14 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     });
 
     dialogRef.afterClosed().subscribe((res) => {
+      if (res) {
+        this.dashboardService.createNewFeature(this.createUserComment(res)).subscribe(res => {
+          this.toastr.info("New feature request submitted");
+        });
+      }
     });
   }
+
   leaveReview() {
     let dialogData = {
       title: 'Leave Review',
@@ -228,11 +243,16 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     });
 
     dialogRef.afterClosed().subscribe((res) => {
+      if (res) {
+        this.dashboardService.createUserReview(this.createUserComment(res)).subscribe(res => {
+          this.toastr.info("Your review saved successfully");
+        });
+      }
     });
   }
-  
 
-  MoreStatistics(){
+
+  MoreStatistics() {
     this.showMoreMetrics = !this.showMoreMetrics
   }
 
@@ -247,6 +267,11 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     });
 
     dialogRef.afterClosed().subscribe((res) => {
+      if (res) {
+        this.dashboardService.createContactUsRequest(this.createUserComment(res)).subscribe(res => {
+          this.toastr.info("Your request received, our team will contact you ASAP");
+        });
+      }
     });
   }
 
@@ -276,6 +301,16 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
     dialogRef.afterClosed().subscribe((res) => {
     });
+  }
+
+  private createUserComment(data: any): UserComment {
+    let userComment: UserComment = new UserComment();
+    userComment.name = data.name;
+    userComment.email = data.email;
+    userComment.description = data.description;
+    userComment.contact = data.contact;
+    userComment.postAllowed = data.postAllowed;
+    return userComment;
   }
 
 }
