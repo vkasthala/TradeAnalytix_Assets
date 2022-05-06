@@ -23,13 +23,13 @@
             </div>
             <div class="pb-2">
                 <label class="col-form-label pb-0">Provide your comments</label>
-                <textarea class="form-control" matInput id="feature_details" [(ngModel)]='data.feature_details'></textarea>
+                <textarea class="form-control" matInput id="feature_details" [(ngModel)]='data.description'></textarea>
             </div>
             <div class="py-2 d-flex justify-content-between">
                 <span class="demo-toggle">Can we post this review in our landing page and third-party sites? </span>
                     
                 <div class="switch col-2">
-                    <input type="checkbox"  id="reviewToggle" class="cursor" checked >
+                    <input type="checkbox"  id="reviewToggle" class="cursor" [(ngModel)]="data.postAllowed" checked >
                     <label for="reviewToggle"></label>
                 </div>
             </div>
