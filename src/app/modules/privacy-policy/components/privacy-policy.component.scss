@@ -1151,49 +1151,6 @@ $button-active-blue: #1669F2;
     font-weight: 700;
 }
 
-#quote-carousel {
-    margin-top: 30px;
-    position: relative;
-}
-.carousel-inner .item {
-    display: none;
-    transition: all .4s ease-in;
-}
-.carousel-inner .item.active {
-    display: block;
-    transition: all .4s ease-in;
-}
-#quote-carousel .carousel-control {
-    background: none;
-    color: #CACACA;
-    font-size: 1em;
-    text-shadow: none;
-    margin-top: 30px;
-}
-#quote-carousel .carousel-indicators {
-    position: relative;
-    top: auto;
-    bottom: 0px;
-    margin-top: 20px;
-}
-#quote-carousel .carousel-indicators li {
-    width: 15px;
-    height: 15px;
-    cursor: pointer;
-    border: 1px solid #ccc;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
-    border-radius: 50%;
-    opacity: 0.4;
-    overflow: hidden;
-    transition: all .4s ease-in;
-    vertical-align: middle;
-    margin: 0 .5rem;
-}
-#quote-carousel .carousel-indicators .active {
-    opacity: 1;
-    transition: all .2s;
-    border: 1px solid #000;
-}
 .item blockquote {
     border-left: none;
     margin: 0;

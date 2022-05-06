@@ -14,7 +14,7 @@
                     <option value="5">Expired</option>
                 </select>
             </div> -->
-            <a class="btn btn-primary add-new" (click)="addEntryExitRule('Add', 'SAVE')">
+            <a class="btn btn-primary add-new" *ngIf="!isDemoMode" (click)="addEntryExitRule('Add', 'SAVE')">
                 <mat-icon class="mat-icon-sm text-white mr-1">add_circle</mat-icon>
                 Add Rule
             </a>

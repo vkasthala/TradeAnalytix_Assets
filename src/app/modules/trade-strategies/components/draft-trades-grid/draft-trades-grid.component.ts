@@ -18,6 +18,7 @@ import { TradeStrategyGridService } from '../../services/trade-strategy-grid.ser
 import { StrategiesGridFilter } from '../../models/strategies-grid-filter.model';
 import { BehaviorSubject } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
+import { DemoModeDetailsService } from 'src/app/modules/shared/services/demo-mode-details.service';
 @Component({
   selector: 'app-draft-trades-grid',
   templateUrl: './draft-trades-grid.component.html',
@@ -44,6 +45,7 @@ export class DraftTradesGrid implements AfterViewInit, OnInit {
   expandedIndex: any;
 
   public hideRuleContent: boolean[] = [];
+  isDemoMode: boolean = false;
 
   constructor(private tradeStrategyGridService: TradeStrategyGridService,
     private tradeStrategyService: TradeStrategyService,
@@ -52,6 +54,7 @@ export class DraftTradesGrid implements AfterViewInit, OnInit {
     private router: Router,
     private dialog: MatDialog,
     protected toastr: ToastrService,
+    private demoService: DemoModeDetailsService
     ) {
   }
 
@@ -62,6 +65,7 @@ export class DraftTradesGrid implements AfterViewInit, OnInit {
   }
 
   loadPage() {
+    this.isDemoMode = this.demoService.demoMode;
     this.tradeStrategyGridRequest.filters = this.strategiesGridFilter;
     this.tradeStrategyGridService.loadTradeStrategies(this.tradeStrategyGridRequest).subscribe(result => {
       if (result) {

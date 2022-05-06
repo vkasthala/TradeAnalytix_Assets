@@ -1,36 +1,33 @@
 <div class="compare-popup">
     <div class="compare-pop-inner">
-        <div class="top-pop-inner modal-header">
-            <div class="modal-title">{{title}}</div>
+        <div class="top-pop-inner pb-0">
             <div class="right-close" (click)="closeModal()">
                 <mat-icon>clear</mat-icon>
             </div>
         </div>
 
-        <div class="main-pop-inner p-3">
-            <p class="followers-count">Number of Followers : 6</p>
-            <div class="mb-2">
-                <label class="col-form-label pb-0">Search by email ID</label>
-                <div class="row">
-                    <div class="col-9"><input class="form-control" matInput id="name" placeholder="Name" [(ngModel)]='data.name' />
-                    </div>
-                    <button type="button" class="btn btn-secondary">Block All</button>
+        <div class="main-pop-inner">
+            <div class="modal-title mb-1">{{title}}</div>
+            <p class="followers-count mb-1">Number of Followers : 6</p>
+            <div class="mb-3">
+                <label class="col-form-label">Search by email ID</label>
+                <div class="d-flex justify-content-between">
+                    <input class="form-control form-control-sm" matInput id="name" placeholder="Name" [(ngModel)]='data.name' />
+                    <button type="button" class="btn btn-secondary ml-3">Block All</button>
                 </div>
             </div>
 
-            <div class="col-9">
-                <div class="row mb-2 d-flex justify-content-between align-items-center">
-                    <span>Kiran.Chintala@gmail.com</span>
-                    <button type="button" class="btn btn-secondary">Block</button>
-                </div>
-                <div class="row mb-2 d-flex justify-content-between align-items-center">
-                    <span>Kiran.Chintala@gmail.com</span>
-                    <button type="button" class="btn btn-secondary">Block</button>
-                </div>
-                <div class="row mb-2 d-flex justify-content-between align-items-center">
-                    <span>Mahesh.Thakur@gmail.com</span>
-                    <button type="button" class="btn btn-secondary">Block</button>
-                </div>
+            <div class="mb-2 d-flex justify-content-between align-items-center">
+                <span>Kiran.Chintala@gmail.com</span>
+                <button type="button" class="btn btn-secondary">Block</button>
+            </div>
+            <div class="mb-2 d-flex justify-content-between align-items-center">
+                <span>Kiran.Chintala@gmail.com</span>
+                <button type="button" class="btn btn-secondary">Block</button>
+            </div>
+            <div class="mb-2 d-flex justify-content-between align-items-center">
+                <span>Mahesh.Thakur@gmail.com</span>
+                <button type="button" class="btn btn-secondary">Block</button>
             </div>
         </div>
 

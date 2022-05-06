@@ -1,15 +1,15 @@
 <div class="compare-popup">
     <div class="compare-pop-inner">
-        <div class="top-pop-inner modal-header">
-            <div class="modal-title">{{title}}</div>
+        <div class="top-pop-inner pb-0">
             <div class="right-close" (click)="closeModal()">
                 <mat-icon>clear</mat-icon>
             </div>
         </div>
 
-        <div class="main-pop-inner p-3">
-            <p class="followers-count">Number of traders you follow : 27</p>
-            <div class="mb-2">
+        <div class="main-pop-inner">
+            <div class="modal-title mb-1">{{title}}</div>
+            <p class="followers-count mb-1">Number of traders you follow : 27</p>
+            <div class="mb-3">
                 <label class="col-form-label pb-0">Search by email ID</label>
                 <div class="row">
                     <div class="col-9"><input class="form-control" matInput id="name" placeholder="Name" [(ngModel)]='data.name' />
@@ -18,20 +18,20 @@
             </div>
 
             <div class="mt-2">
-                <div class="row mb-2 d-flex justify-content-between align-items-center">
+                <div class="row mb-2 align-items-center">
                     <span class="col-6">Kiran.Chintala@gmail.com</span>
-                    <span class="col-3">220 Followers</span>
-                    <span class="col-3"><button type="button" class="btn btn-follow">Follow</button></span>
+                    <span class="px-3 followers-col">220 Followers</span>
+                    <button type="button" class="btn btn-follow">Follow</button>
                 </div>
-                <div class="row mb-2 d-flex justify-content-between align-items-center">
+                <div class="row mb-2 align-items-center">
                     <span class="col-6">Mahesh.Thakur@gmail.com</span>
-                    <span class="col-3">13 Followers</span>
-                    <span class="col-3"><button type="button" class="btn btn-secondary">Unfollow</button></span>
+                    <span class="px-3 followers-col">13 Followers</span>
+                    <button type="button" class="btn btn-secondary">Unfollow</button>
                 </div>
-                <div class="row mb-2 d-flex justify-content-between align-items-center">
+                <div class="row mb-2 align-items-center">
                     <span class="col-6">Mahesh.Thakur@gmail.com</span>
-                    <span class="col-3">13 Followers</span>
-                    <span class="col-3"><button type="button" class="btn btn-secondary">Follow</button></span>
+                    <span class="px-3 followers-col">13 Followers</span>
+                    <button type="button" class="btn btn-secondary">Follow</button>
                 </div>
             </div>
         </div>

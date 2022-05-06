@@ -75,7 +75,7 @@
             <mat-icon *ngIf="element.status == 'Open'" (click)="closeTrade(element);closeActionBox()"
               class="mat-icon-sm ml-2 trade-close">cancel</mat-icon>
 
-            <mat-icon *ngIf="element.status == 'Draft'" (click)="deleteTrade(element);closeActionBox()"
+            <mat-icon *ngIf="element.status == 'Draft' && !isDemoMode" (click)="deleteTrade(element);closeActionBox()"
               class="mat-icon-sm mx-2 trade-delete">delete</mat-icon>
 
             <mat-icon *ngIf="element.status == 'Closed'" (click)="viewTrade(element);closeActionBox()"

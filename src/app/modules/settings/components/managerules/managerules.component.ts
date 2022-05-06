@@ -13,6 +13,7 @@ import { EntryExitRulesGridStore} from '../../services/entry-exit-rules-grid-sto
 import { EntryExitRulesGridRequest} from '../../models/entry-exit-rules-grid-request.model';
 import { EntryExitRulesGridPage} from '../../models/entry-exit-rules-grid-page.model';
 import { ToastrService } from 'ngx-toastr';
+import { DemoModeDetailsService } from 'src/app/modules/shared/services/demo-mode-details.service';
 
 
 // EntryExitRulesService
@@ -32,11 +33,13 @@ export class ManagerulesComponent implements OnInit {
   tentryExitRulesGridRequest: EntryExitRulesGridRequest = this.getInitialRequest();
   public event: EventEmitter<any> = new EventEmitter();
   public gridData = [];
+  isDemoMode: boolean = false;
   constructor(private _dialog: MatDialog,
     private router: Router,
     private entryExitRulesService: EntryExitRulesService,
     private settingsService: SettingsService,
-    protected toastr: ToastrService
+    protected toastr: ToastrService,
+    private demoService: DemoModeDetailsService
     ) { }
   
   entryExitRulesResults: EntryExitRulesResult;
@@ -50,6 +53,7 @@ export class ManagerulesComponent implements OnInit {
 
 
   loadPage() {
+    this.isDemoMode = this.demoService.demoMode;
     this.dataSource.loadEntryExitRulesStore(this.getInitialRequest());
   }
 

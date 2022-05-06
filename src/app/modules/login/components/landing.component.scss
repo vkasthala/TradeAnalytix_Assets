@@ -1147,7 +1147,11 @@ $button-active-blue: #1669F2;
     -webkit-transition: all .25s;
     -o-transition: all .25s;
     transition: all .25s;
-    padding: 15px;    
+    padding: 15px;
+    @media #{$extra-small} {
+        margin-bottom: 15px;
+        min-height: auto;
+    }
 }
 
 .blog-post_title {
@@ -1155,6 +1159,9 @@ $button-active-blue: #1669F2;
     margin-bottom: 15px !important;
     line-height: 1.45em;
     min-height: 100px;
+    @media #{$extra-small} {
+        min-height: inherit;
+    }
 }
 .blog-post_description {
     line-height: 1.5em;
@@ -1162,6 +1169,9 @@ $button-active-blue: #1669F2;
     color: #777;
     margin-bottom: 10px;
     min-height: 250px;
+    @media #{$extra-small} {
+        min-height: inherit;
+    }
 }
 .blog-post_read-more {
     font-size: 12px;
@@ -1171,6 +1181,9 @@ $button-active-blue: #1669F2;
 #quote-carousel {
     margin-top: 30px;
     position: relative;
+    @media #{$extra-small} {
+        margin-top: 0.25rem;
+    }
 }
 .carousel-inner .item {
     display: none;
