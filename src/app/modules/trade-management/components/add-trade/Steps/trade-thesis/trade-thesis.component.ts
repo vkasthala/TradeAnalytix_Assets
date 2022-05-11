@@ -15,6 +15,7 @@ import { DataSetupService } from 'src/app/modules/settings/services/data-setup.s
 import { EditableListItem } from 'src/app/modules/shared/models/common/editable-list-item.model';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
+import { ChubUploadService } from 'src/app/modules/utilities/services/chub-upload.service';
 
 @Component({
   selector: 'app-trade-thesis',
@@ -50,6 +51,7 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
     private _dialog: MatDialog,
     private metadataService: UserMetadataService,
     private dataSetupService: DataSetupService,
+    private chubUploadService: ChubUploadService,
     private toastr: ToastrService,
   ) {
 
@@ -324,6 +326,17 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
         this.loadGainLossAttributes();
         this.toastr.success('Added new value successfully', 'Success');
       });
+    }
+  }
+
+  selectFile(event) {
+    var selectedFiles: FileList = event.target.files;
+    if (selectedFiles) {
+      for (var ind = 0; ind < selectedFiles.length; ind++) {
+        this.chubUploadService.uploadFile(selectedFiles.item(ind)).subscribe(result => {
+          console.log('resp::', result);
+        });
+      }
     }
   }
 

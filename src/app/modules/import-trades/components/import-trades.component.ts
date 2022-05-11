@@ -21,9 +21,11 @@ export class ImportTradesComponent implements OnInit {
 
   ngOnInit() {
   }
+  
   selectFile(event) {
     this.selectedFiles = event.target.files;
   }
+
   importTrades() {    
     console.log('selectedbroker------>',this.selectedbroker);
     if(this.selectedFiles !== undefined && this.selectedFiles.length > 0) {
