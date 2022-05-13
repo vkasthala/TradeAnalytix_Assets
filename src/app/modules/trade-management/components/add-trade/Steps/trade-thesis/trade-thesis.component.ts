@@ -15,7 +15,7 @@ import { DataSetupService } from 'src/app/modules/settings/services/data-setup.s
 import { EditableListItem } from 'src/app/modules/shared/models/common/editable-list-item.model';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
-import { ChubUploadService } from 'src/app/modules/utilities/services/chub-upload.service';
+import { ChubUploadService } from 'src/app/modules/shared/services/chub-upload.service';
 
 @Component({
   selector: 'app-trade-thesis',
@@ -334,6 +334,7 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
     if (selectedFiles) {
       for (var ind = 0; ind < selectedFiles.length; ind++) {
         this.chubUploadService.uploadFile(selectedFiles.item(ind)).subscribe(result => {
+          var jsonObj = JSON.parse(result + '');
           console.log('resp::', result);
         });
       }
