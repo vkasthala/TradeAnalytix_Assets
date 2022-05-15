@@ -16,6 +16,8 @@ import { EditableListItem } from 'src/app/modules/shared/models/common/editable-
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { ChubUploadService } from 'src/app/modules/shared/services/chub-upload.service';
+import { TradeStrategyService } from 'src/app/modules/trade-management/services/trade-strategy.service';
+import { TradeChubFile } from 'src/app/modules/trade-management/models/trade-chub-file.model';
 
 @Component({
   selector: 'app-trade-thesis',
@@ -30,6 +32,7 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
   surroundingTypes: SurroundingType[];
   closeTriggers: EditableListItem[];
   gainLossAttributes: EditableListItem[];
+  tradeChubFiles: TradeChubFile[] = [];
   tradeThesis: TradeThesis;
 
   @ViewChild('thesisTradingview', { static: false }) thesisTradingview: ElementRef;
@@ -53,6 +56,7 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
     private dataSetupService: DataSetupService,
     private chubUploadService: ChubUploadService,
     private toastr: ToastrService,
+    private tradeStrategySevice: TradeStrategyService
   ) {
 
   }
@@ -80,6 +84,9 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
         this.tradeThesis.tradeType = 'planned';
       }
       this.tradeThesis.direction = this.inputState.tradeStrategy.direction;
+      if (this.inputState.tradeStrategy.id) {
+        this.loadTradeChubFiles(this.inputState.tradeStrategy.id);
+      }
     }
   }
 
@@ -171,6 +178,13 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
     });
   }
 
+  loadTradeChubFiles(strategyId: number) {
+    this.tradeStrategySevice.getTradeChubFiles(strategyId).subscribe(result => {
+      this.tradeChubFiles = this.tradeChubFiles.concat(result);
+      console.log('chub files: ', this.tradeChubFiles);
+    });
+  }
+
   addValue(value) {
     const dialogRef = this._dialog.open(SingleInputModalComponent, {
       disableClose: true,
@@ -218,7 +232,6 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
         this.toastr.success('Added new value successfully', 'Success');
       });
     }
-
   }
 
   addTechnicalIndicator(value: string) {
@@ -335,10 +348,24 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
       for (var ind = 0; ind < selectedFiles.length; ind++) {
         this.chubUploadService.uploadFile(selectedFiles.item(ind)).subscribe(result => {
           var jsonObj = JSON.parse(result + '');
-          console.log('resp::', result);
+          var chubFile: TradeChubFile = this.createTradeChubFile(jsonObj);
+          if(chubFile) {
+            this.tradeChubFiles.push(chubFile);
+            console.log('chub files after: ', this.tradeChubFiles);
+          }
         });
       }
     }
+  }
+
+  createTradeChubFile(result: any): TradeChubFile {
+    if(result.id) {
+      var tradeChubFile: TradeChubFile = new TradeChubFile();
+      tradeChubFile.chubFileId = result.id;
+      tradeChubFile.fileName = result.name;
+      return tradeChubFile;
+    }
+    return undefined;
   }
 
 }
