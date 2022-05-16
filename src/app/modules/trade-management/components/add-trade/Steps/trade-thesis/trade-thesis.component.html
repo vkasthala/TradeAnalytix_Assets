@@ -241,6 +241,7 @@
                     <div class="thesis_item_title">
                         Upload files
                     </div>
+                    <div *ngFor="let file of tradeChubFiles;let i = index"><span (click) = "downloadFile(i)" style="cursor: pointer;">{{file.fileName}}</span><mat-icon class="mat-icon-sm" style="cursor: pointer;" (click)="deleteFileName(i)">delete</mat-icon></div>
                     <div class="media">
                         <div class="media-body">
                             <input type="file" (change)="selectFile($event)" />

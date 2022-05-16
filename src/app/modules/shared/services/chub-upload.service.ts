@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HttpService } from './http.service';
+import * as FileSaver from 'file-saver'
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,17 @@ export class ChubUploadService {
     const formData: FormData = new FormData();
     formData.append('file', file);
     return this.httpService.postWithForm(`${this.apiUrl}/file-upload`, formData);
+  }
+
+  downloadFile(fileId: number) {
+    let url = this.apiUrl + '/file-download/' + fileId;
+    this.httpService.getWIthReponseType(url, new Map(), new Map()).subscribe(response => {
+      const blob = new Blob([response]);
+      FileSaver.saveAs(blob, fileId)
+    },
+      error => {
+        console.log('error in chub file downloading', error);
+      });
   }
 
 }

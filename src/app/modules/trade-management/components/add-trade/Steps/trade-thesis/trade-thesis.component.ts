@@ -347,9 +347,8 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
     if (selectedFiles) {
       for (var ind = 0; ind < selectedFiles.length; ind++) {
         this.chubUploadService.uploadFile(selectedFiles.item(ind)).subscribe(result => {
-          var jsonObj = JSON.parse(result + '');
-          var chubFile: TradeChubFile = this.createTradeChubFile(jsonObj);
-          if(chubFile) {
+          var chubFile: TradeChubFile = this.createTradeChubFile(result);
+          if (chubFile) {
             this.tradeChubFiles.push(chubFile);
             console.log('chub files after: ', this.tradeChubFiles);
           }
@@ -359,13 +358,36 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
   }
 
   createTradeChubFile(result: any): TradeChubFile {
-    if(result.id) {
+    if (result.id) {
       var tradeChubFile: TradeChubFile = new TradeChubFile();
       tradeChubFile.chubFileId = result.id;
       tradeChubFile.fileName = result.name;
       return tradeChubFile;
     }
     return undefined;
+  }
+
+  deleteFileName(index: number) {
+    if (index < this.tradeChubFiles.length) {
+      var chubFile: TradeChubFile = this.tradeChubFiles[index];
+      if (chubFile) {
+        this.deleteChubFile(chubFile);
+      }
+    }
+  }
+
+  deleteChubFile(chubFile: TradeChubFile) {
+    // TODO
+  }
+
+  downloadFile(index: number) {
+    debugger;
+    if (index < this.tradeChubFiles.length) {
+      var chubFile: TradeChubFile = this.tradeChubFiles[index];
+      if (chubFile) {
+        this.chubUploadService.downloadFile(chubFile.chubFileId);
+      }
+    }
   }
 
 }

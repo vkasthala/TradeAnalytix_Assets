@@ -324,6 +324,7 @@ export class AddNewTradeComponent implements OnInit {
       this.tradeStrategy.executed = tradeDetailsComp.executedDate != null && tradeDetailsComp.executedDate != undefined && tradeDetailsComp.executedDate != '';
       this.tradeStrategy.executedDate = tradeDetailsComp.executedDate;
     }
+    this.tradeStrategy.tradeChubFiles = tradeThesisComp.tradeChubFiles;
   }
 
   goBack(moveTwoSteps?, mobileView?) {

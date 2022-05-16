@@ -5,6 +5,7 @@ import { EntryExitRule } from './entry-exit-rule.model';
 import { TradeDirection } from '../../shared/models/trade-management/trade-direction.enum';
 import { TradeTag } from '../../shared/models/trade-management/trade-tag.model';
 import { RuleDto } from './rule-dto.model';
+import { TradeChubFile } from './trade-chub-file.model';
 
 export class TradeStrategy {
     statusId: number;
@@ -46,4 +47,7 @@ export class TradeStrategy {
     isEditTrade: boolean;
 
     returnAmount: number;
+
+    tradeChubFiles: TradeChubFile[]
+    
 }
