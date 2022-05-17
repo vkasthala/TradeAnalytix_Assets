@@ -20,11 +20,20 @@ export class ChubUploadService {
     return this.httpService.postWithForm(`${this.apiUrl}/file-upload`, formData);
   }
 
-  downloadFile(fileId: number) {
+  deleteFile(fileId: number): Observable<void> {
+    return this.httpService.post<string, void>(this.apiUrl + '/delete-file/' + fileId, '');
+  }
+
+  downloadFile(fileId: number, fileName: string) {
     let url = this.apiUrl + '/file-download/' + fileId;
     this.httpService.getWIthReponseType(url, new Map(), new Map()).subscribe(response => {
-      const blob = new Blob([response]);
-      FileSaver.saveAs(blob, fileId)
+      var blob;
+      if (fileName.toLocaleLowerCase().endsWith('.xlsx')) {
+        blob = new Blob([response], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+      } else {
+        blob = new Blob([response]);
+      }
+      FileSaver.saveAs(blob, fileName)
     },
       error => {
         console.log('error in chub file downloading', error);
