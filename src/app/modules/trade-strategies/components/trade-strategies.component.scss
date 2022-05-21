@@ -232,17 +232,20 @@ img.form-icon {
     color: #ffffff;
     font-size: 14px;
     font-weight: 400;
-    padding: 0.375rem 1.5rem !important;
+    padding: 0.375rem !important;
     border-radius: 4px;
     height: 40px;
     line-height: 26px;
+    min-width: 130px;
     @media #{$extra-small} {
         justify-content: center;
         width: 100% !important;
         display: inline-flex !important;
     }
 }
-
+.btn-clear {
+    min-width: 130px;
+}
 .btn-outline-primary {
     border: 1px solid #2285FA;
     border-radius: 4px;

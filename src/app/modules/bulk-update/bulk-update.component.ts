@@ -4,8 +4,8 @@ import { ColDef, ICellEditorParams } from 'ag-grid-community';
 import { ToastrService } from 'ngx-toastr';
 import { UserTagService } from 'src/app/modules/settings/services/user-tag.service';
 import { SourceType } from 'src/app/modules/trade-management/models/source-type.model';
-import { BulkStrategyUpdateModel } from '../../models/bulk-strategy-update-model.model';
-import { TradeStrategyGridService } from '../../services/trade-strategy-grid.service';
+import { BulkStrategyUpdateModel } from './models/bulk-strategy-update-model.model';
+import { TradeStrategyGridService } from './services/trade-strategy-grid.service';
 import { CloseEventEditorComponent } from './close-event-editor/close-event-editor.component';
 import { CloseSourceEditorComponent } from './close-source-editor/close-source-editor.component';
 import { ContrarianEditorComponent } from './contrarian-editor/contrarian-editor.component';
@@ -17,11 +17,11 @@ import { SourceEditorComponent } from './source-editor/source-editor.component';
 import { TechnicalIndicatorEditorComponent } from './technical-indicator-editor/technical-indicator-editor.component';
 
 @Component({
-  selector: 'app-bulk-update-ui',
-  templateUrl: './bulk-update-ui.component.html',
-  styleUrls: ['./bulk-update-ui.component.scss']
+  selector: 'app-bulk-update',
+  templateUrl: './bulk-update.component.html',
+  styleUrls: ['./bulk-update.component.scss']
 })
-export class BulkUpdateUiComponent implements OnInit {
+export class BulkUpdateComponent implements OnInit {
 
   test: ICellEditorParams;
   strategies: BulkStrategyUpdateModel[] = [];
@@ -34,8 +34,11 @@ export class BulkUpdateUiComponent implements OnInit {
   private gridApi;
   private frameworkComponents;
 
-  constructor(public dialogRef: MatDialogRef<BulkUpdateUiComponent>,
-    @Inject(MAT_DIALOG_DATA) data, private tradeStrategyGridService: TradeStrategyGridService, private userTagService: UserTagService, private toastr: ToastrService) { }
+  constructor(
+    private tradeStrategyGridService: TradeStrategyGridService, 
+    private userTagService: UserTagService, 
+    private toastr: ToastrService
+    ) { }
 
   ngOnInit() {
     this.frameworkComponents = {
@@ -101,16 +104,12 @@ export class BulkUpdateUiComponent implements OnInit {
       this.Loader = false;
       this.toastr.success('Successfully updated ' + changedStrategies.length + ' strategies', 'Success');
       this.userTagService.loadTags();
-      this.closeModal(true);
     }, err => {
       this.Loader = false;
       this.toastr.error('Failed to update strategies', 'Error');
     });
   }
 
-  closeModal(data) {
-    this.dialogRef.close(data);
-  }
 
   onGridReady(params) {
     this.gridApi = params.api;

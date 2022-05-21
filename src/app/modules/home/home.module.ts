@@ -28,7 +28,6 @@ import { LeaveReviewComponent } from '../dashboard/components/leave-review/leave
 import { ReportAnIssueComponent } from '../dashboard/components/report-an-issue/report-an-issue.component';
 import { SliderModalComponent } from '../dashboard/components/slider-modal/slider-modal.component';
 import { ViewFollowersComponent } from '../dashboard/components/view-followers/view-followers.component';
-import { DefaultDashboardComponent } from '../default-dashboard/default-dashboard.component';
 import { EconomicCalendarComponent } from '../economic-calendar/economic-calendar.component';
 import { CompareStrategyComponent } from '../help/components/compare-strategy/compare-strategy.component';
 import { HelpDataSetupComponent } from '../help/components/data-setup/data-setup.component';
@@ -46,6 +45,7 @@ import { TradingRulesComponent } from '../help/components/trading-rules/trading-
 import { AutoImportTradePopupComponent } from '../import-trades-history/auto-import-trade-popup/auto-import-trade-popup.component';
 import { ImportTradePopupComponent } from '../import-trades-history/import-trade-popup/import-trade-popup.component';
 import { ImportTradesHistory } from '../import-trades-history/import-trades-history';
+import { ZerodhaPopupComponent } from '../import-trades-history/zerodha-popup/zerodha-popup.component';
 import { ImportTradesComponent } from '../import-trades/components/import-trades.component';
 import { NotificationsComponent } from '../notifications/notifications.component';
 import { CalendarComponent } from '../reports/components/calendar/calendar.component';
@@ -121,16 +121,15 @@ import { TodayExecutedLegsComponent } from '../trade-plan/components/today-execu
 import { TradePlansCanDeactivateGuard } from '../trade-plan/components/trade-plans.can-deactivate.guard';
 import { TradePlansComponent } from '../trade-plan/components/trade-plans.component';
 import { ViewTradePlanComponent } from '../trade-plan/components/view-trade-plan.component';
-import { BulkUpdateUiComponent } from '../trade-strategies/components/bulk-update-ui/bulk-update-ui.component';
-import { CloseEventEditorComponent } from '../trade-strategies/components/bulk-update-ui/close-event-editor/close-event-editor.component';
-import { CloseSourceEditorComponent } from '../trade-strategies/components/bulk-update-ui/close-source-editor/close-source-editor.component';
-import { ContrarianEditorComponent } from '../trade-strategies/components/bulk-update-ui/contrarian-editor/contrarian-editor.component';
-import { DirectionEditorComponent } from '../trade-strategies/components/bulk-update-ui/direction-editor/direction-editor.component';
-import { EventEditorComponent } from '../trade-strategies/components/bulk-update-ui/event-editor/event-editor.component';
-import { MindsetEditorComponent } from '../trade-strategies/components/bulk-update-ui/mindset-editor/mindset-editor.component';
-import { PlannedEditorComponent } from '../trade-strategies/components/bulk-update-ui/planned-editor/planned-editor.component';
-import { SourceEditorComponent } from '../trade-strategies/components/bulk-update-ui/source-editor/source-editor.component';
-import { TechnicalIndicatorEditorComponent } from '../trade-strategies/components/bulk-update-ui/technical-indicator-editor/technical-indicator-editor.component';
+import { CloseEventEditorComponent } from '../bulk-update/close-event-editor/close-event-editor.component';
+import { CloseSourceEditorComponent } from '../bulk-update/close-source-editor/close-source-editor.component';
+import { ContrarianEditorComponent } from '../bulk-update/contrarian-editor/contrarian-editor.component';
+import { DirectionEditorComponent } from '../bulk-update/direction-editor/direction-editor.component';
+import { EventEditorComponent } from '../bulk-update/event-editor/event-editor.component';
+import { MindsetEditorComponent } from '../bulk-update/mindset-editor/mindset-editor.component';
+import { PlannedEditorComponent } from '../bulk-update/planned-editor/planned-editor.component';
+import { SourceEditorComponent } from '../bulk-update/source-editor/source-editor.component';
+import { TechnicalIndicatorEditorComponent } from '../bulk-update/technical-indicator-editor/technical-indicator-editor.component';
 import { CommunityTradesGrid } from '../trade-strategies/components/community-trades-grid/community-trades-grid.component';
 import { DraftTradesGrid } from '../trade-strategies/components/draft-trades-grid/draft-trades-grid.component';
 import { HistoryGrid } from '../trade-strategies/components/history-grid/history-grid.component';
@@ -141,7 +140,7 @@ import { ProfileComponent } from '../user-profile/components/profile.component';
 import { UtilitiesModule } from '../utilities/utilities.module';
 import { HomeComponent } from './components/home.component';
 import { RoutingModule } from './routing.module';
-
+import { BulkUpdateComponent } from '../bulk-update/bulk-update.component';
 export const MY_FORMATS = {
   parse: {
     dateInput: 'DD-MMM-YY'
@@ -248,7 +247,6 @@ export const MY_FORMATS = {
     ReportsRulesComponent,
     StrategySelectionComponent,
     EditableSelectComponent,
-    DefaultDashboardComponent,
     HelpComponent,
     GettingStartedComponent,
     TradeJournalComponent,
@@ -263,7 +261,6 @@ export const MY_FORMATS = {
     HelpReportsComponent,
     HelpDataSetupComponent,
     SliderModalComponent,
-    BulkUpdateUiComponent,
     SourceEditorComponent,
     TechnicalIndicatorEditorComponent,
     MindsetEditorComponent,
@@ -279,7 +276,9 @@ export const MY_FORMATS = {
     CommunityTradesGrid,
     BecomeAnAffiliateComponent,
     ViewFollowersComponent,
-    FindUsersComponent
+    FindUsersComponent,
+    ZerodhaPopupComponent,
+    BulkUpdateComponent
   ],
   imports: [
     FormsModule,
@@ -298,7 +297,7 @@ export const MY_FORMATS = {
     MatCheckboxModule,
     MatRadioModule,
     MatProgressSpinnerModule,
-    AgGridModule.withComponents([BulkUpdateUiComponent]),
+    AgGridModule.withComponents([BulkUpdateComponent]),
     // MatTableDataSource,
   ],
   entryComponents: [
@@ -330,7 +329,7 @@ export const MY_FORMATS = {
     StrategySelectionComponent,
     EditableSelectComponent,
     SliderModalComponent,
-    BulkUpdateUiComponent,
+    BulkUpdateComponent,
     SourceEditorComponent,
     TechnicalIndicatorEditorComponent,
     MindsetEditorComponent,
@@ -346,7 +345,8 @@ export const MY_FORMATS = {
     CommunityTradesGrid,
     BecomeAnAffiliateComponent,
     ViewFollowersComponent,
-    FindUsersComponent
+    FindUsersComponent,
+    ZerodhaPopupComponent
   ],
   // bootstrap: [TradeStrategiesGrid],
   providers: [

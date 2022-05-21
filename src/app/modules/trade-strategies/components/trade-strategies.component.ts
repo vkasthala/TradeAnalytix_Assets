@@ -19,8 +19,8 @@ import { SummaryItem } from '../../shared/models/reports/summary-item.model';
 import { SummaryRequest } from '../../shared/models/reports/summary-request.model';
 import { ReportDataService } from '../../reports/services/report-data.service';
 import { MatDialog } from '@angular/material';
-import { BulkUpdateUiComponent } from './bulk-update-ui/bulk-update-ui.component';
 import { CommunityTradesGrid } from './community-trades-grid/community-trades-grid.component';
+import { DemoModeDetailsService } from '../../shared/services/demo-mode-details.service';
 
 @Component({
    selector: 'app-trade-strategies',
@@ -68,16 +68,18 @@ export class TradeStrategiesComponent implements OnInit {
 
    tradeDirections = TradeDirection;
    tradeDirectionNames: String[] = this.strategyCreateService.getTradeDirections();
-
+   isDemoMode: boolean = false;
    constructor(
       private router: Router,
       private strategyCreateService: StrategyCreateService,
       private tradeStrategyGridService: TradeStrategyGridService,
       private reportDataService: ReportDataService,
-      private _dialog: MatDialog
+      private _dialog: MatDialog,
+      private demoService: DemoModeDetailsService,
    ) { }
 
    ngOnInit() {
+      this.isDemoMode = this.demoService.demoMode;
       this.loadSummary();
    }
 
@@ -184,18 +186,18 @@ export class TradeStrategiesComponent implements OnInit {
       }
    }
 
-   bulkUpdate() {
-      const dialogRef = this._dialog.open(BulkUpdateUiComponent, {
-         width: '90vw',
-         maxWidth:'90vw',
-         height: 'auto',
-         data: {}
-      });
-      dialogRef.afterClosed().subscribe(dialogResult => {
-         if (dialogResult == true) {
-            // Reload
-            this.applyFilters();
-         }
-      });
-   }
+   // bulkUpdate() {
+   //    const dialogRef = this._dialog.open(BulkUpdateUiComponent, {
+   //       width: '90vw',
+   //       maxWidth:'90vw',
+   //       height: 'auto',
+   //       data: {}
+   //    });
+   //    dialogRef.afterClosed().subscribe(dialogResult => {
+   //       if (dialogResult == true) {
+   //          // Reload
+   //          this.applyFilters();
+   //       }
+   //    });
+   // }
 }

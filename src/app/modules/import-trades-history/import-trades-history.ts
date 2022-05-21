@@ -18,6 +18,7 @@ import { ToastrService } from 'ngx-toastr';
 import { UploadFileService } from 'src/app/modules/import-trades/services/upload-file.service';
 import { UtilService } from '../utilities/services/util.service';
 import { AutoImportTradePopupComponent } from './auto-import-trade-popup/auto-import-trade-popup.component';
+import { DemoModeDetailsService } from '../shared/services/demo-mode-details.service';
 
 @Component({
   selector: 'app-import-trades-history',
@@ -35,6 +36,7 @@ export class ImportTradesHistory implements AfterViewInit, OnInit {
 
   dataSource: ImportTradesGridStore;
   importTradesGridRequest: ImportTradesGridRequest = this.getInitialRequest();
+  isDemoMode: boolean = false;
 
   constructor(private importTradesGridService: ImportTradesGridService,
     private tradeStrategyService: TradeStrategyService,
@@ -44,7 +46,8 @@ export class ImportTradesHistory implements AfterViewInit, OnInit {
     protected toastr: ToastrService,
     private router: Router,
     private _dialog: MatDialog,
-    private utilService: UtilService
+    private utilService: UtilService,
+    protected demoService: DemoModeDetailsService,
     //public dialogRef: MatDialogRef<ImportTradePopupComponent>
   ) {
   }
@@ -55,6 +58,7 @@ export class ImportTradesHistory implements AfterViewInit, OnInit {
   }
 
   loadPage() {
+    this.isDemoMode = this.demoService.demoMode;
     this.dataSource.loadTradeStrategies(this.importTradesGridRequest);
   }
 

@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatStepper } from '@angular/material';
 import { NavigationExtras, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { DemoModeDetailsService } from 'src/app/modules/shared/services/demo-mode-details.service';
 import { MindsetType } from 'src/app/modules/trade-management/models/mindset-type.model';
 import { UserMetadataService } from 'src/app/modules/trade-management/services/user-metadata.service';
 import { ManageRulePopupComponent } from '../../../settings/components/managerules/manage-rule-popup/manage-rule-popup.component';
@@ -23,9 +24,11 @@ export class AddnewtradeplanComponent implements OnInit {
   protected add = true;
   protected edit = false;
   protected view = false;
+  protected isDemoMode = false;
+  
   tradePlanId: number = 0;
   day: string;
-
+  
   marketStatuses: MarketStatus[];
   mindsetTypes: MindsetType[];
 
@@ -40,7 +43,8 @@ export class AddnewtradeplanComponent implements OnInit {
     protected router: Router,
     protected metadataService: UserMetadataService,
     protected tradePlanService: TradePlansService,
-    protected toastr: ToastrService
+    protected toastr: ToastrService,
+    protected demoService: DemoModeDetailsService,
   ) {
     this.initState();
   }
@@ -56,6 +60,7 @@ export class AddnewtradeplanComponent implements OnInit {
   }
 
   initState(): void {
+    this.isDemoMode = this.demoService.demoMode;
     if (!this.router.getCurrentNavigation()) {
       return;
     }

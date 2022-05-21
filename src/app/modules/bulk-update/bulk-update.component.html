@@ -1,0 +1,22 @@
+<div class="p-3 mt-1">
+    <div class="main-body">
+        <div class="trade-dash-main">
+            <div class="trade-dash-name col-8 pl-0">
+                <h3>Update journal details of one or more trades in an an intuitive excel-style grid.</h3>
+            </div>
+            <div>
+                <button type="button" class="btn btn-add" (click)="onSave()">Save</button>
+            </div>
+        </div>
+        <div class="trade-table">
+            <ag-grid-angular class="ag-theme-alpine bulk-update-grid" [rowData]="strategies" [columnDefs]="columnDefs"
+            [frameworkComponents]="frameworkComponents" (cellEditingStarted)="onCallValueDataChangeStart($event)"
+            (gridReady)="onGridReady($event)">
+            </ag-grid-angular>
+        </div>
+
+        <div class="mask" *ngIf="Loader">
+            <div class="loader"></div>
+        </div>
+    </div>
+</div>

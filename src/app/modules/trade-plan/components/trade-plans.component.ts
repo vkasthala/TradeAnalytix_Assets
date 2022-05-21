@@ -12,6 +12,7 @@ import { TradePlanGridSort } from '../models/trade-plan-grid-sort.model';
 import { tap } from 'rxjs/operators';
 import { TradePlanGridRow } from '../models/trade-plan-grid-row.model';
 import { TradePlanGridFilter } from '../models/trade-plan-grid-filter.model';
+import { DemoModeDetailsService } from '../../shared/services/demo-mode-details.service';
 
 @Component({
   selector: 'app-trade-plans',
@@ -30,11 +31,12 @@ export class TradePlansComponent implements OnInit {
   expandedIndex:any;
 
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
-
+  isDemoMode: boolean = false;
   constructor(
     private _dialog: MatDialog,
     private router: Router,
-    private tradeplansService: TradePlansService
+    private tradeplansService: TradePlansService,
+    private demoService: DemoModeDetailsService,
   ) { }
 
   ngOnInit() {
@@ -47,6 +49,7 @@ export class TradePlansComponent implements OnInit {
   }
 
   loadPage() {
+    this.isDemoMode = this.demoService.demoMode;
     this.dataSource.loadTradePlanStore(this.tradePlanGridRequest);
   }
 

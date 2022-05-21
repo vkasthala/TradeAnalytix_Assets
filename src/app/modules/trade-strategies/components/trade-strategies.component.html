@@ -14,9 +14,8 @@
             </div>
 
             <div>
-                <button routerLink="/new-trade" class="add-new btn btn-apply d-inline-flex align-items-center"><span
-                        class="add-icon mr-2">+</span> Add Trade</button>
-                <button class="add-new btn btn-apply d-inline-flex align-items-center mx-2" (click)="bulkUpdate()">Bulk Update</button>
+                <button routerLink="/new-trade" class="btn btn-apply" *ngIf="!isDemoMode">Add Trade</button>
+                <a routerLink="/bulk-update" class="btn btn-apply mx-2" *ngIf="!isDemoMode">Bulk Update</a>
                 <span class="cursor ml-2" (click)="strategiesFilter()">
                     <span *ngIf="!showFilters" class="text-blue text-sm" data-toggle="tooltip" data-placement="top"
                         title="Show Filters">Show Filters</span>
@@ -86,9 +85,9 @@
                 </div>
 
                 <div class=" st-slect-section select-btn">
-                    <a href="javascript:void(0)" class="btn btn-apply mr-3" (click)="applyFilters()">Apply</a>
+                    <a href="javascript:void(0)" class="btn btn-apply mr-2" (click)="applyFilters()">Apply</a>
 
-                    <a href="javascript:void(0)" class="btn btn-outline-primary" (click)="clearFilters()">Clear</a>
+                    <a href="javascript:void(0)" class="btn btn-outline-primary btn-clear ml-1" (click)="clearFilters()">Clear</a>
                 </div>
             </div>
             <!-- start : Tabs section -->

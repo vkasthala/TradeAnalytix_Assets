@@ -4,8 +4,8 @@
             <div class="trade-dash-name">
                 <h3>{{edit ? 'Edit' : "" }} {{view ? 'View' : "" }} Trade Plan</h3>
             </div>
-            <div class="text-center position-fixed-btn">
-                <button type="button" class="btn btn-primary btn-add-plan d-flex align-items-center" *ngIf="add" (click)="addTradePlan()">
+            <div class="text-center position-fixed-btn" *ngIf="!isDemoMode">
+                <button type="button" class="btn btn-primary btn-add-plan d-flex align-items-center" *ngIf="add && !isDemoMode" (click)="addTradePlan()">
                     <span class="add-icon mr-2">+</span> Add Plan
                 </button>
                 <button type="button" class="btn btn-primary btn-submit" *ngIf="edit && !view" (click)="submitTradePlan()">SUBMIT</button>
@@ -121,7 +121,7 @@
         </ng-container>
         <!-- end: table-custom -->
 
-        <div class="trade-plan-bottom">
+        <div class="trade-plan-bottom" *ngIf="!isDemoMode">
             <button type="button" class="btn btn-primary btn-add-plan" *ngIf="add" (click)="addTradePlan()">
                 <span class="add-icon mr-2">+</span> Add Plan
             </button>

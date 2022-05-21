@@ -22,7 +22,6 @@ import { ImportTradesHistory } from '../../modules/import-trades-history/import-
 import { NotificationsComponent } from '../../modules/notifications/notifications.component';
 import { ViewTradePlanComponent } from '../../modules/trade-plan/components/view-trade-plan.component';
 import { RulesComponent } from '../rules/components/rules.component';
-import { DefaultDashboardComponent } from '../default-dashboard/default-dashboard.component';
 import { HelpComponent } from '../help/components/help.component';
 import { GettingStartedComponent } from '../help/components/getting-started/getting-started.component';
 import { TradeJournalComponent } from '../help/components/trade-journal/trade-journal.component';
@@ -40,6 +39,7 @@ import { TradePlansCanDeactivateGuard } from '../trade-plan/components/trade-pla
 import { AddTradeCanDeactivateGuard } from '../trade-management/components/add-trade.can-deactivate.guard';
 import { EditTradeCanDeactivateGuard } from '../trade-management/components/edit-trade.can-deactivate.guard';
 import { CloseTradeCanDeactivateGuard } from '../trade-management/components/close-trade.can-deactivate.guard';
+import { BulkUpdateComponent } from '../bulk-update/bulk-update.component';
 
 const routes: Routes = [
   {
@@ -49,10 +49,6 @@ const routes: Routes = [
         {
           path : '',
           component: DashboardComponent
-        },
-        {
-          path : 'home',
-          component: DefaultDashboardComponent
         },
         {
           path : 'new-trade',
@@ -121,6 +117,10 @@ const routes: Routes = [
         {
           path : 'profile',
           component : ProfileComponent
+        },
+        {
+          path : 'bulk-update',
+          component: BulkUpdateComponent
         },
         {
           path: 'oauth-redirect',

@@ -11,8 +11,7 @@
                         <my-date-range-picker placeholder="Date range" name="mydaterange" [options]="myDateRangePickerOptions" (dateRangeChanged)="onDateRangeChanged($event)">
                         </my-date-range-picker>
                     </div>
-                    <button class="btn add-new d-flex align-items-center" (click)="addEntry()"> <span
-                            class="add-icon mr-2">+</span> Add Plan</button>
+                    <button class="btn add-new d-flex align-items-center" *ngIf="!isDemoMode" (click)="addEntry()">Add Plan</button>
                 </div>
             </div>
 

@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material';
 import { UserMetadataService } from '../../trade-management/services/user-metadata.service';
 import { TradePlansService } from '../services/trade-plans.service';
 import { ToastrService } from 'ngx-toastr';
+import { DemoModeDetailsService } from '../../shared/services/demo-mode-details.service';
 
 @Component({
   selector: 'app-edit-trade-plan',
@@ -19,8 +20,10 @@ export class EditTradePlanComponent extends AddnewtradeplanComponent implements 
     router: Router,
     metadataService: UserMetadataService,
     tradePlanService: TradePlansService,
-    toastr: ToastrService) {
-    super(_dialog, router, metadataService, tradePlanService, toastr);
+    demoService: DemoModeDetailsService,
+    toastr: ToastrService
+    ) {
+    super(_dialog, router, metadataService, tradePlanService, toastr, demoService);
     this.edit = true;
     this.add = false;
     this.view = false;
