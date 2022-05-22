@@ -30,7 +30,7 @@
                         <input class="w-100" type="file" (change)="selectOptionsFile($event)" />
                     </div>
                     <div class="pt-2 col-sm-6">
-                        <button class="btn btn-enter btn-sm" *ngIf="!processing" [disabled]="!selectedFiles"
+                        <button class="btn btn-enter btn-sm" *ngIf="!processing" [disabled]="!selectedFiles && !selectedOptionFiles"
                             (click)="importTrades()">Upload</button>
                         <mat-spinner [diameter]="30" *ngIf="processing"></mat-spinner>
                     </div>
