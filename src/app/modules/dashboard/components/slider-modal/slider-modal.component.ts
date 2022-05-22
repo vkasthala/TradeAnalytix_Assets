@@ -13,9 +13,9 @@ export class SliderModalComponent implements OnInit {
   userName: string = '';
   public data: any = [
     {
-      title:"Welcome to TradeAnalytix",
+      title:"Welcome to CueTrade",
     }, {
-      title:'TradeAnalytix Benefits',
+      title:'CueTrade Benefits',
     }, {
       title:'Trade Journal',
     }, {

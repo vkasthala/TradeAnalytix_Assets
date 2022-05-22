@@ -26,6 +26,13 @@ body {
         @media #{$extra-small} {
             padding: 15px;
         }
+        .header-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            padding-top: 1rem;
+            justify-content: space-between;
+        }
         .landing-header {
             align-items: center;
             justify-content: space-between;
@@ -42,12 +49,13 @@ body {
         }
         &-logo {
             //  display: none;
-            background-image: url('../../../../assets/images/ta_logo_new.svg');
+            background-image: url('../../../../assets/images/cuetrade-logo.svg');
             background-size: contain;
             background-repeat: no-repeat;
-            width: 230px;
-            min-height: 50px;
+            width: 298px;
+            min-height: 45px;
             margin-top: 0.678rem;
+            margin-left: 1rem;
             @media #{$extra-small} {
                 display: block;
                 width: 65%;
@@ -83,6 +91,7 @@ body {
         width: 66%;
         text-align: center;
         justify-content: center;
+        margin-top: 0.678rem;
         @media #{$extra-small} {
             width: 100%;
             display: none;
@@ -120,7 +129,7 @@ body {
                     text-decoration: none;
                     color: #1d2d35;
                     padding: 5px;
-                    font-size: 1rem;
+                    font-size: 18px;
                     font-weight: 600;
                     @include media(">tablet",
                     "<laptop") {
@@ -192,8 +201,8 @@ body {
         display: flex;
         position: relative;
         align-items: flex-end;
-        padding-top: 100px;
-        padding-bottom: 25px;
+        padding-top: 180px;
+        padding-bottom: 90px;
         justify-content: center;
         @media #{$extra-small} {
             padding: 0;
@@ -208,7 +217,7 @@ body {
         }
     }
     .slideFeatures {
-        font-size: 22px;
+        font-size: 24px;
         line-height: 1.345;
         color: #1d2d35;
         margin-top: 1rem;
@@ -225,20 +234,30 @@ body {
         text-align: center;
     }
     .banner-info-title {
-        font-weight: 900;
-        font-size: 4.5rem;
-        line-height: 1.12;
+        font-weight: 1000;
+        font-size: 5rem;
+        line-height: 1;
         color: #1d2d35;
+        @media #{$extra-small} {
+            font-size: 3.5rem;
+            line-height: 1;
+        }
         
     }
     .banner-info-footer {
         padding-top: 1.5rem;
         .google-btn {
-            height: 51px;
-            font-size: 14px;
-            width: 150px;
+            height: 60px;
+            font-size: 20px;
             font-weight: 600;
             box-shadow: none;
+            padding: 1rem;
+            width: 330px;
+            text-align: center;
+            border: 0;
+            letter-spacing: 1px;
+            background-color: #000;
+            color: #fff;
             @media #{$extra-small} {
                 width: 100%;
                 justify-content: center;
@@ -457,7 +476,7 @@ body {
             font-weight: bold;
             font-size: 20px;
             line-height: 30px;
-            color: #000000;
+            color: #1d2d35;
             margin-bottom: .5rem;
             text-align: left;
             @media #{$extra-small} {
@@ -470,7 +489,7 @@ body {
             font-weight: normal;
             font-size: 16px;
             line-height: 22px;
-            color: #9DA6BA;
+            color: #1d2d35;
             text-align: left;
         }
         .read_more {
@@ -853,53 +872,12 @@ $white: #fff;
 $google-blue: #4285f4;
 $button-active-blue: #1669F2;
 
-.google-btn {
-    height: 32px;
-    background-color: #4285f4;
-    border-radius: 2px;
-    box-shadow: 0 3px 4px 0 rgba(0,0,0,.25);
-    position: relative;
-    color: #fff;
-    line-height: 1.2;
-    display: inline-flex;
-    align-items: center;
-    justify-content: space-between;
-
-  .google-icon-wrapper {
-    margin-top: 1px;
-    margin-left: 1px;
-    width: 32px;
-    height: 30px;
-    border-radius: 2px;
-    background-color: #fff;
-    left: 0;
-    top: 0;
-    text-align: center;
-  }
-  .google-icon {
-    margin-top: 6px;
-    width: 18px;
-    height: 18px;
-    left: 0;
-  }
-  .btn-text {
-    float: right;
-    margin: 0 10px;
-    color: #fff;
-    font-size: 13px;
-  }
-  &:hover {
-    box-shadow: 0 0 6px #4285f4;
-  }
-  &:active {
-    background: #1669F2;
-  }
-}
-
 .page-heading {
-	color:#394C86 !important;
-	font-size:30px !important;
+	color:#1d2d35 !important;
+	font-size:40px !important;
     text-align: center !important;
+    font-weight: 900 !important;
+    font-family: "Graphik", "Helvetica Neue", helvetica, "Apple Color Emoji", arial, sans-serif !important;
     @media #{$extra-small} {
         font-size:24px !important;
     }
@@ -914,10 +892,13 @@ $button-active-blue: #1669F2;
 }
 .intro-description {
     font-weight: normal;
-    font-size: 18px;
-    line-height: 22px;
+    font-size: 20px;
+    line-height: 28px;
     text-align: center;
-    color: #3A4C85;
+
+    color:#1d2d35 !important;
+    font-family: "Graphik", "Helvetica Neue", helvetica, "Apple Color Emoji", arial, sans-serif !important;
+
     @media #{$extra-small} {
         font-size: 18px;
     }
@@ -1292,4 +1273,16 @@ $button-active-blue: #1669F2;
 }
 .contact-modal {
     top:15%;
+}
+.nav-btn {
+    height: 40px;
+    font-size: 16px;
+    font-weight: 600;
+    box-shadow: none;
+    padding: 0.25rem 1.5rem;
+    text-align: center;
+    border: 0;
+    letter-spacing: 1px;
+    background-color: #000;
+    color: #fff;
 }

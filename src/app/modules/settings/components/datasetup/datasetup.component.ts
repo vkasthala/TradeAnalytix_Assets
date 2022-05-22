@@ -458,7 +458,7 @@ export class DatasetupComponent implements OnInit {
       this.toastr.success('Users can search by your email and send the request to follow you.', 'Success');
       return false;
     }else {
-      this.toastr.success('Other users cannot find you in TradeAnalytix and cannot follow you', 'Success');
+      this.toastr.success('Other users cannot find you in CueTrade and cannot follow you', 'Success');
       return false;
     }
   }

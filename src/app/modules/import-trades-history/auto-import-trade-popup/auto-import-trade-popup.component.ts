@@ -1,10 +1,11 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { Component, Inject, OnInit, Output, EventEmitter } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UploadFileService } from '../../import-trades/services/upload-file.service';
 import { BrokerageService } from '../../shared/services/brokerage.service';
 import { Brokerage } from '../models/brokerage.model';
+import { ZerodhaPopupComponent } from '../zerodha-popup/zerodha-popup.component';
 
 @Component({
   selector: 'app-auto-import-trade-popup',
@@ -29,7 +30,8 @@ export class AutoImportTradePopupComponent implements OnInit {
     protected toastr: ToastrService,
     protected router: Router,
     public dialogRef: MatDialogRef<AutoImportTradePopupComponent>,
-    @Inject(MAT_DIALOG_DATA) data
+    @Inject(MAT_DIALOG_DATA) data,
+    private _dialog: MatDialog,
   ) { }
 
 
@@ -45,6 +47,7 @@ export class AutoImportTradePopupComponent implements OnInit {
     this.uploadService.getImportRedirectUrl(this.selectedBrokerage.uid).subscribe(result => {
       this.processing = false;
       console.log("url:", result);
+      this.zerodhaModal(result)
       window.open(result, "_blank");
       this.dialogRef.close();
 
@@ -64,6 +67,19 @@ export class AutoImportTradePopupComponent implements OnInit {
 
   closeModal() {
     this.dialogRef.close();
+  }
+
+  zerodhaModal(result) {
+    const dialogRef = this._dialog.open(ZerodhaPopupComponent, {
+      disableClose: true,
+      width: 'auto',
+      data: result
+    });
+    dialogRef.afterClosed().subscribe((res) => {
+      if (res === true) {
+        //this.reload();
+      }
+    });
   }
 
 }
