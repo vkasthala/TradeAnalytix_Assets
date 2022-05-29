@@ -41,13 +41,13 @@
                     <div class="tab-pane fade" id="RiskManagement" role="tabpanel">
                         <app-riskmanagement #riskReports></app-riskmanagement>
                     </div>
-                    <div class="tab-pane fade" id="Rules" role="tabpanel" [ngClass]="selectedParentReport === 'Rules' ? 'd-block' : 'd-none'">
+                    <div class="tab-pane fade" id="Rules" role="tabpanel" >
                         <app-reports-rules #rulesReports></app-reports-rules>
                      </div>
-                    <div class="tab-pane fade" id="Discipline" role="tabpanel" [ngClass]="selectedParentReport === 'Discipline' ? 'd-block' : 'd-none'">
+                    <div class="tab-pane fade" id="Discipline" role="tabpanel">
                         <app-discipline #disciplineReports></app-discipline>
                     </div>
-                    <div class="tab-pane fade" id="Commissions" role="tabpanel" [ngClass]="selectedParentReport === 'Commissions' ? 'd-block' : 'd-none'">
+                    <div class="tab-pane fade" id="Commissions" role="tabpanel">
                         <app-commissions></app-commissions>
                     </div>
                 </div>
