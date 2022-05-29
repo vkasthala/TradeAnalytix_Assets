@@ -533,7 +533,7 @@ export class RiskAnalysisComponent implements OnInit {
       console.log("get implied volatility result:", result);
       result.forEach((value, index) => {
         this.stockOptions[index].daysLeft = value.daysLeft;
-        this.stockOptions[index].impliedVolatility = Math.floor(value.impliedVolatility);
+        this.stockOptions[index].impliedVolatility = value.impliedVolatility;
         this.stockOptions[index].initialImpliedVolatility = this.stockOptions[index].impliedVolatility;
       });
     }, errorResponse => {

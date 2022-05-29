@@ -282,7 +282,7 @@
                                                                 <mat-icon>remove_circle</mat-icon>
                                                             </a>
                                                             <div class="stock-p">
-                                                                <input type="number" class="hide-bars" min="1" minlength="1"  [(ngModel)]="item.impliedVolatility" (input)="enforceMaxLength($event, 1, 500)">
+                                                                <input type="number" class="hide-bars" min="0" step="0.01" pattern="^\d*(\.\d{0,2})?$"  [(ngModel)]="item.impliedVolatility" (input)="enforceMaxLength($event, 1, 500)">
                                                                 <p>&#37;</p>
                                                             </div>
                                                             <a (click)="increaseImpliedValue(index)" (mousedown)="mousedown('increaseImpliedValue', index)" (mouseup)="mouseup()" (mouseleave)="mouseup()">
@@ -786,7 +786,7 @@
                                                                 <mat-icon>remove_circle</mat-icon>
                                                             </a>
                                                             <div class="stock-p">
-                                                                <input type="number" class="hide-bars" min="1" minlength="1" [(ngModel)]="item.impliedVolatility" (input)="enforceMaxLength($event, 1, 500)">
+                                                                <input type="number" class="hide-bars" [(ngModel)]="item.impliedVolatility" pattern="^\d*(\.\d{0,2})?$" min="0" max="500" step="0.01">
                                                                 <p>&#37;</p>
                                                             </div>
                                                             <a (click)="increaseImpliedValue(index)" (mousedown)="mousedown('increaseImpliedValue', index)" (mouseup)="mouseup()" (mouseleave)="mouseup()">
