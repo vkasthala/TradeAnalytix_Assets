@@ -1,5 +1,5 @@
 import { Component, OnInit, HostListener, AfterViewInit } from '@angular/core';
-import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd, NavigationStart } from '@angular/router';
 import * as fromGlobalConfig from '../../../modules/utilities/reducers/global-config.reducer';
 import { Store } from '@ngrx/store';
 import { NotificationService } from '../../notifications/services/notification.service';
@@ -18,11 +18,12 @@ export class HomeComponent implements OnInit, AfterViewInit {
   currentRoute: string;
   userdetails: boolean = false;
   isExpand: boolean = true;
-  title: string;
+  title: string = '';
   description: string;
   demoToggle: boolean = false;
   mySubscription;
   hamburgerMenu: boolean = false;
+
   constructor(
     private globalStore: Store<fromGlobalConfig.State>,
     private router: Router,
@@ -31,16 +32,22 @@ export class HomeComponent implements OnInit, AfterViewInit {
     protected toastr: ToastrService,
     private demoService: DemoModeDetailsService
   ) {
+    
     let globalSelector = (fromGlobalConfig.globalConfigFeatureKey as any);
     globalStore.select(globalSelector).subscribe(res => {
-      this.currentRoute = res.currentRoute;
-      this.updateModuleName();
+      //this.currentRoute = res.currentRoute;
+      //this.updateModuleName(res.currentRoute);
+      this.title = sessionStorage.getItem('current-module');
     });
+    
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.mySubscription = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         // Trick the Router into believing it's last link wasn't previously loaded
         this.router.navigated = false;
+      } else if (event instanceof NavigationStart) {
+        this.currentRoute = this.identifyCurrentRoute(event.url);
+        this.updateModuleName();
       }
       this.hamburgerMenu = false
     });
@@ -107,6 +114,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       case 'help': return { breadcrumb: 'How-To Guides', title: 'How-To Guides', description: 'Help' };
 
       case 'setttings': return { breadcrumb: 'SETTINGS', title: 'Settings', description: 'Settings' };
+
       case 'edit-trade/': return { breadcrumb: 'Edit TRADE', title: 'Edit Trade', description: 'Dashboard' };
 
       case 'close-trade/': return { breadcrumb: 'TRADE STRATEGIES', title: 'Close Trade', description: 'Close Trade' };
@@ -136,8 +144,22 @@ export class HomeComponent implements OnInit, AfterViewInit {
     let module: any = this.currentNavigation;
     if (module) {
       this.title = module.title;
+      sessionStorage.setItem('current-module', module.title);
       this.description = module.description;
     }
+  }
+
+  identifyCurrentRoute(url: string) {
+    let route: string;
+    if (url.indexOf('/edit-trade/') > -1) {
+      route = 'edit-trade/';
+    } else if (url.indexOf('/close-trade/') > -1) {
+      route = 'close-trade/';
+    } else {
+      const lastSlashInd = url.lastIndexOf('/');
+      route = url.substring(lastSlashInd + 1);
+    }
+    return route;
   }
 
   loadNotificationCount() {
@@ -159,8 +181,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
     }
     this.router.navigate([url]);
   }
+  
   menuToggle() {
-    this.hamburgerMenu = !this.hamburgerMenu 
+    this.hamburgerMenu = !this.hamburgerMenu
   }
 
 }
