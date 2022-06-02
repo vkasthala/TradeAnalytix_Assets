@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output  } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MaxRiskDetails } from 'src/app/modules/risk-analysis/models/max-risk-details.model';
 import { StockSymbol } from 'src/app/modules/shared/models/trade-management/stock-symbol.model';
 import { UserStockSummary } from 'src/app/modules/shared/models/trade-management/user-stock-summary.model';
@@ -42,7 +42,7 @@ export class TradeDetailsAsideComponent implements OnInit {
 
   strategyName: string;
 
-  
+
   constructor(private userStockStatsService: UserStockStatsService) { }
 
   ngOnInit() {
@@ -62,8 +62,8 @@ export class TradeDetailsAsideComponent implements OnInit {
 
     this.stockOrOptionAddedSubject.asObservable().subscribe(data => {
       console.log('stock/option added: ', data);
-      if (!this.strategyTypeSummaryResult &&  data === true) {
-        if(!this.strategyTypeId){
+      if (!this.strategyTypeSummaryResult && data === true) {
+        if (!this.strategyTypeId) {
           this.strategyTypeId = 15;
         }
         this.updateStrategyName(this.strategyTypeId);
@@ -74,7 +74,7 @@ export class TradeDetailsAsideComponent implements OnInit {
   }
 
 
-  
+
 
   loadSummary() {
     this.userStockStatsService.getStockMetricsSummaryResult(this.selectedStock.id).subscribe(result => {
@@ -89,8 +89,13 @@ export class TradeDetailsAsideComponent implements OnInit {
   }
 
   getDisplayValue(value, postfix) {
-    if (value) {
-      return value + (postfix ? postfix : '');
+    let finalVal = value;
+    if (finalVal && typeof (finalVal) === 'number') {
+      let num: number = +finalVal;
+      finalVal = Math.round(num);
+    }
+    if (finalVal) {
+      return finalVal + (postfix ? postfix : '');
     }
     return "NA";
   }
@@ -130,7 +135,7 @@ export class TradeDetailsAsideComponent implements OnInit {
 //           locale: locale,
 //           colorTheme: colorTheme,
 //           referral_id: referral_id,
-//           isTransparent: isTransparent            
+//           isTransparent: isTransparent
 //       });
 //       document.getElementById(elementId)!.appendChild(script);
 //   }

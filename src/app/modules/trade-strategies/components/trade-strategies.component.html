@@ -6,7 +6,7 @@
                     <div class="flex-item" *ngFor="let summary of summaryItems">
                         <div class="flex-inner">
                             <h3 class="text-secondary trade_count"
-                            [ngClass]="{'text-success': summary.id === 'max_gain', 'text-danger' : summary.id === 'max_loss' }">{{summary.value}}</h3>
+                            [ngClass]="{'text-success': summary.id === 'max_gain', 'text-danger' : summary.id === 'max_loss' }">{{getSummaryValue(summary.value)}}</h3>
                             <span class="trade_title">{{summary.name}}</span>
                         </div>
                     </div>

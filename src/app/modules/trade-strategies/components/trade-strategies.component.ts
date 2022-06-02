@@ -186,6 +186,14 @@ export class TradeStrategiesComponent implements OnInit {
       }
    }
 
+   getSummaryValue(val) {
+      if (typeof (val) === 'number') {
+        var num: number = +val;
+        return Math.round(num);
+      }
+      return val;
+    }
+
    // bulkUpdate() {
    //    const dialogRef = this._dialog.open(BulkUpdateUiComponent, {
    //       width: '90vw',
