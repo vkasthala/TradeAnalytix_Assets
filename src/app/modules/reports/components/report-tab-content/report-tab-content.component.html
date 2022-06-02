@@ -49,6 +49,7 @@
                             <div class="trade-dash-con" *ngFor="let report of reports">
                                 <app-report-chart [report]="report" [subtype]="subtype" [reportFilter]="reportFilter" [description]="description" [filterChangeSubject]="filterChangeSubject" #reportChart></app-report-chart>
                             </div>
+                            <div *ngIf="!reports || reports.length == 0" class="lbl-coming-soon">Coming Soon</div>
                         </div>
                     </div>
                 </div>

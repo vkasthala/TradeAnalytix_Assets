@@ -17,7 +17,7 @@ export class DisciplineComponent extends ReportTabContentComponent {
     super.ngOnInit();
     this.reportSubTypes = this.reportTypeService.getSubTypesByCategory(this.type);
     console.log('discipline charts loading..', this.reportSubTypes);
-    //this.onReportSubTypeSelect(this.reportSubTypes[0]);
+    this.onReportSubTypeSelect(this.reportSubTypes[0]);
   }
 
   reloadData(tab: string){

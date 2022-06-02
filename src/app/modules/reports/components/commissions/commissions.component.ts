@@ -1,39 +1,29 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ReportsItem } from '../../model/reports-item.model';
+import { Component, OnInit } from '@angular/core';
+import { ReportTypeService } from '../../services/report-type.service';
+import { ReportTabContentComponent } from '../report-tab-content/report-tab-content.component';
 
 @Component({
   selector: 'app-commissions',
-  templateUrl: './commissions.component.html',
-  styleUrls: ['./commissions.component.scss']
+  templateUrl: '../report-tab-content/report-tab-content.component.html',
+  styleUrls: ['../report-tab-content/report-tab-content.component.scss']
 })
-export class CommissionsComponent implements OnInit {
+export class CommissionsComponent extends ReportTabContentComponent implements OnInit {
 
-  reportsitems: ReportsItem[] = [];
-
-  reportsItemsData = {
-    commissions: [
-      { name: 'Total Commission Paid', value: "$2874" },
-      { name: 'Average Daily Commission', value: "$45.20" },
-      { name: 'Commission as a % of Return', value: "12%" },
-      { name: 'Most Commissions Paid for', value: "Short Puts" },
-    ]
-    ,
-    netr: [
-      { name: 'Current Net R', value: "1.2R" }
-    ],
-    
-  };
-
-  constructor() { }
-
-  ngOnInit() {
-    this.geCommissionsItems();
-
+  constructor(reportTypeService: ReportTypeService) {
+    super('commission', reportTypeService);
   }
 
-  geCommissionsItems(): ReportsItem[] {
-    this.reportsitems = this.reportsItemsData.commissions;
-    return this.reportsitems;
+  ngOnInit() {
+    super.ngOnInit();
+    this.reportSubTypes = this.reportTypeService.getSubTypesByCategory(this.type);
+    this.onReportSubTypeSelect(this.reportSubTypes[0]);
+  }
+
+  reloadData(tab: string) {
+    if (this.reportSubTypes.length == 0) {
+      this.reportSubTypes = this.reportTypeService.getSubTypesByCategory(this.type);
+    }
+    this.onReportSubTypeSelect(this.reportSubTypes[0]);
   }
 
 }

@@ -192,24 +192,24 @@ export class ReportTypeService {
     reportSubType = new ReportSubType();
     reportSubType.name = 'Close Date';
     reportSubType.id = "closeDate";
-    reportSubType.reportDetailList = [new ReportDetails('close_date', 'Close Date Chart title', ReportCategory.Net_Return, "This report shows the realized return of the user's portfolio by Close Date")];
+    reportSubType.reportDetailList = [];
     reportSubTypes.push(reportSubType);
 
     reportSubType = new ReportSubType();
     reportSubType.name = 'Entry Date';
     reportSubType.id = "entry_date";
-    reportSubType.reportDetailList = [new ReportDetails('entry_date', 'Coming Soon', ReportCategory.Net_Return, "")];
+    reportSubType.reportDetailList = [];
     reportSubTypes.push(reportSubType);
 
     reportSubType = new ReportSubType();
     reportSubType.name = 'Strike Price';
     reportSubType.id = "strike_price";
-    reportSubType.reportDetailList = [new ReportDetails('strike_price', 'Coming Soon', ReportCategory.Net_Return, "")];
+    reportSubType.reportDetailList = [];
     reportSubTypes.push(reportSubType);
 
     reportSubType = new ReportSubType();
     reportSubType.name = 'Entry Price';
-    reportSubType.reportDetailList = [new ReportDetails('net_return_entryprice', 'Net Return by Entry Price', ReportCategory.Net_Return, "This report shows the realized return of the user's portfolio by entry price range of the trades"), new ReportDetails('win_loss_entryprice', 'Win/Loss by Entry Price', ReportCategory.Win_Loss, "This report shows the number of winning and losing trades by entry price range of the trades")];
+    reportSubType.reportDetailList = [];
     reportSubTypes.push(reportSubType);
 
     return reportSubTypes;
@@ -257,7 +257,7 @@ export class ReportTypeService {
     reportSubType = new ReportSubType();
     reportSubType.name = 'Portfolio Systematic Risk';
     reportSubType.id = "portfolio_systematic_risk";
-    reportSubType.reportDetailList = [new ReportDetails('portfolio_systematic_risk', 'Portfolio Systematic Risk Chart title', ReportCategory.Risk, "This report shows the portfolio systematic risk (beta) of the user's portfolio")];
+    reportSubType.reportDetailList = [];
     reportSubTypes.push(reportSubType);
 
     return reportSubTypes;
