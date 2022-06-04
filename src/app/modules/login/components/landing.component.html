@@ -54,8 +54,8 @@
             <nav class="trade-navbar hamburger-menu" [ngClass]="hamburgerMenu ? 'open' : ''">
                 <ul class="list-unstyled ">
                     <li>
-                        <a class="landing-nav-link" href="landing#howit_works_mob">
-                            How it Works
+                        <a class="landing-nav-link" href="landing#howit_works">
+                            How It Works
                         </a>
                     </li>
                     <li>
@@ -64,9 +64,8 @@
                         </a>
                     </li>
                     <li [class.nav-active]="currentRoute == 'demo'">
-                        <a class="landing-nav-link" href="landing#demo_video_section">Demo</a>
+                        <a class="landing-nav-link" href="landing#demo_video_section">Partners</a>
                     </li>
-                    
                     <li [class.nav-active]="currentRoute == 'Reviews'">
                         <a class="landing-nav-link" href="landing#reviews_section">
                             Testimonials
@@ -74,7 +73,7 @@
                     </li>
                     <li [class.nav-active]="currentRoute == 'Blog'">
                         <a class="landing-nav-link" href="landing#blogs_section">
-                        Blog
+                            Pricing
                         </a>
                     </li>
                     <li [class.nav-active]="currentRoute == 'FAQs'">
@@ -84,8 +83,11 @@
                     </li>
                     <li [class.nav-active]="currentRoute == 'contact-us'">
                         <a class="landing-nav-link" (click)="openContactUsModal()">
-                            Contact Us
+                            Support
                         </a>
+                    </li>
+                    <li [class.nav-active]="currentRoute == 'contact-us'">
+                        <button type="button" class="nav-btn" (click)="login('google')">Sign-in</button>
                     </li>
                 </ul>
             </nav>
@@ -676,9 +678,11 @@
                 <img src="../../../assets/images/facebook.png" alt="facebook" />
                 <img src="../../../assets/images/youtube.png" alt="youtube" />
             </div>
-
         </div>
-        <div class="copyright pt-3"><span>&#169;</span> 2022 Uptick Systems Private Limited. All rights reserved.</div>
+        <div class="row align-items-center">
+            <div class="copyright col-sm-6"><span>&#169;</span> 2022 Uptick Systems Private Limited. All rights reserved.</div>
+            <div class="powered-by col-sm-6">Content powered by CMOTS Internet Technologies Pvt. Ltd.</div>
+        </div>
     </div>
 </div>
 

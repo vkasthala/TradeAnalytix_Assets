@@ -326,6 +326,9 @@ body {
         font-weight: 600;
         font-size: 14px;
         line-height: 34px;
+        @media #{$extra-small} {
+            margin-left: 0 !important;
+        }
         
     }
     .banner-rtside {
@@ -827,6 +830,10 @@ body {
     font-size: 14px;
     line-height: 34px;
     min-width: 160px;
+    @media #{$extra-small} {
+        width: 100%;
+        margin-bottom: .5rem;
+    }
 }
 
 .follow_us {
@@ -851,8 +858,18 @@ body {
     font-size: 12px;
     line-height: 18px;
     color: #fff;
+    padding-top: 1rem;
 }
-
+.powered-by {
+    font-size: 12px;
+    line-height: 18px;
+    color: #fff;
+    padding-top: 1rem;
+    text-align: right;
+    @media #{$extra-small} {
+        text-align: left;
+    }
+}
 .login_modal .form-control {
     border: 1px solid #2285FA;
     box-sizing: border-box;
@@ -1070,7 +1087,7 @@ $button-active-blue: #1669F2;
 .slideshow-component {
     position: relative;
     @media #{$extra-small} {
-        width: 90%;
+        width: 100%;
         margin: 0 auto;
     }
 }
@@ -1145,7 +1162,12 @@ $button-active-blue: #1669F2;
         }
     }
 }
-
+.slideshow-component iframe {
+    @media #{$extra-small} {
+        width: 100% !important;
+        height: 200px !important;
+    }
+}
 .blogs_card {
     -webkit-box-shadow: 0 0 10px 0 rgb(0 0 0 / 15%);
     box-shadow: 0 0 10px 0 rgb(0 0 0 / 15%);

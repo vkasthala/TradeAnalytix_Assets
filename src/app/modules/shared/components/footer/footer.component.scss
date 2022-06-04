@@ -1,8 +1,6 @@
 @import "../../../../../assets/styles/variable.scss";
 
 .trade-app-footer {
-  display: flex;
-  justify-content: space-between;
   align-items: center;
   color:#9DA6BA;
   font-size: 12px;
@@ -50,5 +48,16 @@
       padding: 0 10px;
       display: inline-flex;
     }
+  }
+}
+
+.powered-by {
+  font-size: 12px;
+  line-height: 18px;
+  color: #000;
+  padding-bottom: 0.25rem;
+  text-align: right;
+  @media #{$extra-small} {
+      text-align: left;
   }
 }
