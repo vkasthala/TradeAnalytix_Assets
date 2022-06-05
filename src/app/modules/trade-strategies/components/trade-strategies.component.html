@@ -14,7 +14,7 @@
             </div>
 
             <div>
-                <button routerLink="/new-trade" class="btn btn-apply" *ngIf="!isDemoMode">Add Trade</button>
+                <button routerLink="/new-trade" class="btn btn-apply">Add Trade</button>
                 <a routerLink="/bulk-update" class="btn btn-apply mx-2" *ngIf="!isDemoMode">Bulk Update</a>
                 <span class="cursor ml-2" (click)="strategiesFilter()">
                     <span *ngIf="!showFilters" class="text-blue text-sm" data-toggle="tooltip" data-placement="top"
@@ -111,7 +111,7 @@
                     </div>
                 </mat-step>
                 <mat-step label="Shared Trades">
-                    <ng-template matStepLabel>Community Trades</ng-template>
+                    <ng-template matStepLabel>Community Trades<img src="../../../../assets/images/beta-icon.png" class="beta-icon"/></ng-template>
                     <div class="stepper-content">
                         <app-community-trades-grid #draftTradesGrid>loading</app-community-trades-grid>
                     </div>

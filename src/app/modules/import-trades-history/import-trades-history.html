@@ -1,13 +1,17 @@
 <div class="p-3 mt-1">
     <div class="main-body">
         <div class="trade-dash-main px-0">
-            <div class="trade-dash-name col-8 pl-0">
-                <h3>Trades can be added in bulk to CueTrade by uploading a file that has your trades. You can add your trades to our standard template (click <a [routerLink]="" (click)="downloadStandardFile()">here</a> to download) or import the trade history files exported from your brokerages.</h3>
+            <div class="trade-dash-name col-11 pl-0">
+                <h3>Add your trades in bulk to CueTrade by clicking on Manual Import button and attaching trade history file.<br/>
+                    1. Download standard template (click <a [routerLink]="" (click)="downloadStandardFile()">here</a>), add your trades to it as per the instructions, and upload by choosing Standard option in the dropdown <br/>
+                    2. Download trade history file from your brokerage and upload it by choosing your brokerage in the dropdown<br/>
+                    
+                    <a href="#">Watch Video</a></h3>
             </div>
             <div class="d-flex justify-content-end" *ngIf="!isDemoMode">
                 <button type="button" (click)="importTradesPopup();" class="btn btn-apply">Manual Import</button>
                 <!-- <button type="button" (click)="downloadStandardFile()" class="d-flex btn btn-apply ml-2 align-items-center"><mat-icon class="mr-2">download</mat-icon> Template</button> -->
-                <button type="button" class="btn btn-apply ml-2" (click)="autoImportTradesPopup();">Auto-Import</button>
+                <!-- <button type="button" class="btn btn-apply ml-2" (click)="autoImportTradesPopup();">Auto-Import</button> -->
                 <!--<button type="button" (click)="redirectToBrokerageUrl()" class="d-flex btn btn-apply ml-2 align-items-center">Zerodha</button> -->
             </div>
         </div>

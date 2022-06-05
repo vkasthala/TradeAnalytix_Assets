@@ -6,8 +6,11 @@
                 <div class="addnew-first">
                     <div class="trade-form">
                         <mat-icon class="trade-form-icon ml-1">insights</mat-icon>
-                        <h2 class="pb-2 symbol-heading">Risk Analysis</h2>
-                        <div class="pb-3 symbol-description">Analyze the potential returns on your trade strategies involving options through simulation of future scenarios.
+                        <div class="d-flex justify-content-between">
+                            <h2 class="pb-2 symbol-heading">Risk Analysis</h2>
+                            <div><a href="#" class="d-flex watch-video mt-2"><mat-icon class="mr-1" style="margin-top:-1px;">videocam</mat-icon> Watch Video</a></div>
+                        </div>
+                        <div class="pb-3 symbol-description">Analyze the potential returns on your trade strategies involving options through simulation of future scenarios. Adjust your trades until the trade is aligned with your risk appetite and mitigate the risk exposure.
                         </div>
                         <div class="d-flex mt-2">
                             <div class="media-body">
@@ -15,6 +18,7 @@
                             </div>
                             <button class="btn btn-enter ml-3" (click)="enterSymbol()">Submit </button>
                         </div>
+                        
                     </div>
                 </div>
             </ng-container>
@@ -478,7 +482,7 @@
                 <div class="trade-form">
                     <mat-icon class="trade-form-icon ml-1">insights</mat-icon>
                     <h2 class="pb-2 symbol-heading">Risk Analysis</h2>
-                    <div class="pb-3 symbol-description">Analyze the potential returns on your trade strategies involving options through simulation of future scenarios.
+                    <div class="pb-3 symbol-description">Analyze the potential returns on your trade strategies involving options through simulation of future scenarios. Adjust your trades until the trade is aligned with your risk appetite and mitigate the risk exposure.
                     </div>
                     <div class="mt-2">
                         <app-trade-search (symbolSelectEvent)="symbolSelectEventHandler($event)"></app-trade-search>
@@ -486,6 +490,7 @@
                             <button class="btn btn-enter ml-3" (click)="enterSymbol()">Submit </button>
                         </div>
                     </div>
+                    <div class="mt-2"><a href="#">Watch a Demo</a></div>
                 </div>
             </div>
         </ng-container>

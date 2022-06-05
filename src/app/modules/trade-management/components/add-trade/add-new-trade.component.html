@@ -22,8 +22,11 @@
 
                     <div class="trade-form">
                         <mat-icon class="trade-form-icon">attach_money</mat-icon>
-                        <h2 class="py-3 symbol-heading">Add Trade</h2>
-                        <div class="pb-3 symbol-description">Record your trades in detail to our comprehensive trading journal and make informed decisions based on strong rationale and data.</div>
+                        <div class="d-flex justify-content-between">
+                            <h2 class="pb-2 symbol-heading">Add Trade</h2>
+                            <div><a href="#" class="d-flex watch-video mt-2"><mat-icon class="mr-1" style="margin-top:-1px;">videocam</mat-icon> Watch Video</a></div>
+                        </div>
+                        <div class="pb-3 symbol-description">Use CueTrade to evaluate your trades both before and after executing the trades in the brokerage. Add your trades to our comprehensive trading journal and analyze them from risk, statistical, rationale, and rules perspective to make informed decisions.</div>
                         <div class="d-flex mt-2">
                             <div class="media-body">
                                 <app-trade-search (symbolSelectEvent)="symbolSelectEventHandler($event)">
@@ -31,12 +34,11 @@
                             </div>
                             <button class="btn btn-enter ml-3" (click)="enterSymbol()">Submit </button>
                         </div>
-
                     </div>
                 </div>
             </ng-container>
             <ng-container *ngSwitchCase="2">
-                <span class="mr-2 float-right mt-2 share-trade-field"><input class="checkbox mr-2" type="checkbox" (change)="onShareTradeChange($event)"> Share Trade</span>
+                <span class="mr-2 float-right mt-2 share-trade-field"><input class="checkbox mr-2" type="checkbox" (change)="onShareTradeChange($event)"> Share Trade<img src="../../../../assets/images/beta-icon.png" class="beta-icon"/></span>
                 <app-trade-details-header [addTrade]="add" [editTrade]="edit" [closeTrade]="close"
                     [selectedStock]="selectedStock" [stockSummary]="stockSummary"
                     (loadMoreStats)="loadMoreStatsHandler($event)" [StrategyId]="tradeStrategy">
@@ -301,7 +303,7 @@
                 <div class="trade-form">
                     <mat-icon class="trade-form-icon">attach_money</mat-icon>
                     <h2 class="py-3 symbol-heading">Add Trade</h2>
-                    <div class="pb-3 symbol-description">Record your trades in detail to our comprehensive trading journal and make informed decisions based on strong rationale and data.</div>
+                    <div class="pb-3 symbol-description">Use CueTrade to evaluate your trades both before and after executing the trades in the brokerage. Add your trades to our comprehensive trading journal and analyze them from risk, statistical, rationale, and rules perspective to make informed decisions.</div>
                     <div class="mt-2">
                         <app-trade-search (symbolSelectEvent)="symbolSelectEventHandler($event)">
                         </app-trade-search>
