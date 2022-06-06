@@ -325,8 +325,8 @@
                                             <div class="risk_details risk_profit mr-3">
                                                 <div class="pr-3">
                                                     Maximum profit at the current implied volatility and days left to expiration is
-                                                    <span class="risk_details_count">{{maxRiskDetails.maxProfit | number:'1.0-0'}}</span>
-                                                    when the stock price moves<span class="ml-2">{{maxRiskDetails.maxProfitChange}}</span>%
+                                                    <span class="risk_details_count">{{maxRiskDetails ? (maxRiskDetails.maxProfit | number:'1.0-0') : ''}}</span>
+                                                    when the stock price moves<span class="ml-2">{{maxRiskDetails ? maxRiskDetails.maxProfitChange : ''}}</span>%
                                                 </div>
                                                 
                                             </div>
@@ -821,14 +821,14 @@
                             <ng-template matExpansionPanelContent>
                                 <div class="trade-stoack-main">
                                     <div class="risk_details risk_profit mb-3">
-                                        <div class="pr-3">Maximum Proﬁt is when the stock is up <span>{{maxRiskDetails.maxProfitChange}}</span>% Maximum
+                                        <div class="pr-3">Maximum Proﬁt is when the stock is up <span>{{maxRiskDetails ? maxRiskDetails.maxProfitChange : ''}}</span>% Maximum
                                         </div>
-                                        <span class="risk_details_count">{{maxRiskDetails.maxProfit}}</span>
+                                        <span class="risk_details_count">{{maxRiskDetails ? maxRiskDetails.maxProfit : ''}}</span>
                                     </div>
                                     <div class="risk_details risk_lose">
-                                        <div class="pr-3">Risk is when the stock is down <span>{{maxRiskDetails.maxRiskChange}}</span>%
+                                        <div class="pr-3">Risk is when the stock is down <span>{{maxRiskDetails ? maxRiskDetails.maxRiskChange : ''}}</span>%
                                         </div>
-                                        <span class="risk_details_count">{{maxRiskDetails.maxRisk}}</span>
+                                        <span class="risk_details_count">{{maxRiskDetails ? maxRiskDetails.maxRisk : ''}}</span>
                                     </div>
                                 </div>
                                 <ng-container *ngIf="displayRiskAnalysis && analyzeRisk && (stockAdded || stockOptions.length > 0)">
