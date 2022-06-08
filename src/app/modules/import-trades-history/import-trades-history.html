@@ -6,7 +6,7 @@
                     1. Download standard template (click <a [routerLink]="" (click)="downloadStandardFile()">here</a>), add your trades to it as per the instructions, and upload by choosing Standard option in the dropdown <br/>
                     2. Download trade history file from your brokerage and upload it by choosing your brokerage in the dropdown<br/>
                     
-                    <a href="#">Watch Video</a></h3>
+                    <a class="watch-video-sm cursor" data-toggle="modal" data-target="#modal1">Watch Video</a></h3>
             </div>
             <div class="d-flex justify-content-end" *ngIf="!isDemoMode">
                 <button type="button" (click)="importTradesPopup();" class="btn btn-apply">Manual Import</button>
@@ -68,6 +68,19 @@
             <!-- Angular 8 pagination -->
             <mat-paginator *ngIf="dataSource.totalCount > 0" [pageSize]="20" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true" [length]="dataSource.totalCount">
             </mat-paginator>
+        </div>
+    </div>
+</div>
+
+<div class="modal video-modal" id="modal1" tabindex="-1" role="dialog" aria-labelledby="modallabel1" aria-hidden= "true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="text-right px-2 pt-2">
+                <span class="cursor" data-dismiss="modal"><mat-icon class="mat-icon-sm">clear</mat-icon></span>
+            </div>
+            <div class="modal-body px-2 py-0">
+                <iframe width="100%" height="480" src="https://www.youtube.com/embed/TvKh6RyVzxw" allowfullscreen></iframe>
+            </div>
         </div>
     </div>
 </div>

@@ -1,7 +1,7 @@
 <div class="managerules-sec">
     <div class="d-flex mb-2">
         <div class="trade-dash-name col-8 col-md-9 px-0">
-            <h3>Manual rules are user-specific rules that show up in the Rules section of a trade when the user adds, edits, or closes a trade. User can review these rules and should manually mark them aligned or not aligned. <a href="#" class="watch-video-sm">Watch Video</a></h3>
+            <h3>Manual rules are user-specific rules that show up in the Rules section of a trade when the user adds, edits, or closes a trade. User can review these rules and should manually mark them aligned or not aligned. <a data-toggle="modal" data-target="#modal1" class="watch-video-sm cursor">Watch Video</a></h3>
         </div>
         <div class="trade-st-box pt-0 col-4 col-sm-2">
             <!-- <label class="m-0">Filter By</label>
@@ -63,6 +63,19 @@
             <div class="p-3 text-center" *ngIf="dataSource.totalCount === 0">No rules are added yet</div>
 
             <mat-paginator *ngIf="dataSource.totalCount > 0" [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true" [length]="dataSource.totalCount"></mat-paginator>
+        </div>
+    </div>
+</div>
+
+<div class="modal video-modal" id="modal1" tabindex="-1" role="dialog" aria-labelledby="modallabel1" aria-hidden= "true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="text-right px-2 pt-2">
+                <span class="cursor" data-dismiss="modal"><mat-icon class="mat-icon-sm">clear</mat-icon></span>
+            </div>
+            <div class="modal-body px-2 py-0">
+                <iframe width="100%" height="480" src="https://www.youtube.com/embed/suUpnTQ1OAc" allowfullscreen></iframe>
+            </div>
         </div>
     </div>
 </div>

@@ -102,7 +102,10 @@ export class LandingComponent implements OnInit {
     this.hamburgerMenu = !this.hamburgerMenu 
   }
   displayStyle = "none";
-  openPopup() {
+  videoType:string;
+  openPopup(type) {
+    this.videoType = "";
+    this.videoType = type;
     this.displayStyle = "block";
   }
   closePopup() {
@@ -133,3 +136,7 @@ export class LandingComponent implements OnInit {
     this.contactUsModal = !this.contactUsModal;
   }
 }
+function BulkUpdateUiComponent(BulkUpdateUiComponent: any, arg1: { width: string; maxWidth: string; height: string; data: {}; }) {
+  throw new Error('Function not implemented.');
+}
+

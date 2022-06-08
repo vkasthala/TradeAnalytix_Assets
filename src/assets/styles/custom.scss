@@ -871,7 +871,17 @@ iframe {
 }
 .watch-video-sm {
     font-weight: 800;
+    color: #0056b3;
 }
 .beta-icon {
     width: 16px;
+}
+.modal-backdrop {
+    background-color: rgb(0 0 0 / 28%) !important;
+}
+.video-modal iframe {
+    @media #{$extra-small} {
+        width: 100% !important;
+        height: 200px !important;
+    }
 }

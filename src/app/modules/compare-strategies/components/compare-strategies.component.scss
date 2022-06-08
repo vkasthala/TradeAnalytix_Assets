@@ -1129,21 +1129,33 @@ a.btn.btn-skip {
 }
 .tags-list {
     list-style: none;
-    display: inline-flex;
-    justify-content: flex-end;
+    display: block;
     margin: 0;
     margin-top: 0.5rem;
 }
 
 .tags-list > li {
-    display: inline-flex;
+    display: block;
+    margin: 0;
+    padding-bottom: 0.5rem;
 }
 
-.tag-item {
-    margin-right: 5px;;
-}
 .tag-list-item {
     background: #ced2d7;
     border-radius: 8px;
     padding: 0.25rem 0.5rem;
+}
+.video-modal .modal-dialog {
+    max-width: 699px;
+}
+
+.modal {
+    top: 10% !important;
+}
+
+.action-icons {
+    align-items: flex-end;
+    display: flex;
+    justify-content: end;
+    flex-direction: column;
 }

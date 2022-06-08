@@ -108,7 +108,6 @@
                            repetition of mistakes, and excessive risk. <strong>With CueTrade:</strong> Trade based on strong rationale, align with trading rules, manage risk effectively, and improve trading decisions.
                         </div>
                         <div class="banner-info-footer" id="howit_works">
-                            <!-- <button type="button" class="btn btn-white btn-video mr-3" (click)="openPopup()"> Watch Video</button> -->
                             <button type="button" class="google-btn" (click)="login('google')">Try CueTrade for Free</button>
                         </div>
                     </div>
@@ -206,7 +205,7 @@
                     CueTrade helps you as a trade planner or a journal depending on whether you use it before or after executing the trade. CueTrade evaluates your trades from historical performance, risk management, rationale, trading rules, and emotional perspective to ensure that you take an informed decision made based on strong rationale and data.
                 </div>
                 <div class="slideshow-component">
-                    <iframe width="82%" height="510" src="https://www.youtube.com/embed/JlRinQiXHmM" frameborder="0" allowfullscreen></iframe>
+                    <iframe width="82%" height="510" src="https://www.youtube.com/embed/4OMMcwbUiBA"  allowfullscreen></iframe>
 
                     <!-- <div class="row slideshow_row" *ngIf="currentInd == 0">
                         <div class="col-sm-8">
@@ -298,8 +297,8 @@
                         <div class="features_section_dec">
                             Add your trades to CueTrade's configurable, template-based trade journal and evaluate them from logical, risk management, historical performance, trading rules, technical perpsective to make informed decisions based on strong rationale and data. Trades can be added to CueTrade either one-by-one or in bulk by importing trade history files from the brokerages.
                             <div class="banner-info-footer text-left">
-                                <button type="button" class="btn btn-custom">Import your Trades</button>
-                                <button type="button" class="btn btn-outline btn-video ml-3" (click)="openPopup()"><mat-icon class="mr-1">videocam</mat-icon> Watch a Demo</button>
+                                <button type="button" class="btn btn-custom" (click)="login('google')">Import your Trades</button>
+                                <button type="button" class="btn btn-outline btn-video ml-3" (click)="openPopup('Systematic')"><mat-icon class="mr-1">videocam</mat-icon> Watch a Demo</button>
                             </div>
                         </div>
                     </div>
@@ -318,8 +317,8 @@
                             Identify your strengths and limitations as a trader by reviewing 40+ reports and 50+ metrics derived from your trading journal and trade history. Reports are generated across different categories including portfolio, performance, risk management, discipline, trading rules, goals, and commissions.
                         </div>
                         <div class="banner-info-footer text-left">
-                            <button type="button" class="btn btn-custom">Try for Free</button>
-                            <button type="button" class="btn btn-outline btn-video ml-3" (click)="openPopup()"><mat-icon class="mr-1">videocam</mat-icon> Watch a Demo</button>
+                            <button type="button" class="btn btn-custom" (click)="login('google')">Try for Free</button>
+                            <button type="button" class="btn btn-outline btn-video ml-3"><mat-icon class="mr-1">videocam</mat-icon> Watch a Demo</button>
                         </div>
                     </div>
                     <div class="col-md-8 features_section_banner">
@@ -337,8 +336,8 @@
                             Assess risk exposure of the portfolio through reports and metrics. Mitigate risk of the trade strategies by analyzing the potential returns in the future and optimizing the trades until the trade is aligned with your risk appetite.
                         </div>
                         <div class="banner-info-footer text-left">
-                            <button type="button" class="btn btn-custom">Try for Free</button>
-                            <button type="button" class="btn btn-outline btn-video ml-3" (click)="openPopup()"><mat-icon class="mr-1">videocam</mat-icon> Watch a Demo</button>
+                            <button type="button" class="btn btn-custom" (click)="login('google')">Try for Free</button>
+                            <button type="button" class="btn btn-outline btn-video ml-3" (click)="openPopup('Effective')"><mat-icon class="mr-1">videocam</mat-icon> Watch a Demo</button>
                         </div>
                     </div>
                     <div class="col-md-8 features_section_banner">
@@ -356,8 +355,8 @@
                             Let's say you are bullish on a stock. Do you know which strategy works well for you within your risk appetite? Strategy comparison feature allows you to compare trade strategies on a stock to know their profitability in different scenarios so that you can pick a strategy that aligned with your risk appetite.
                         </div>
                         <div class="banner-info-footer text-left">
-                            <button type="button" class="btn btn-custom">Try for Free</button>
-                            <button type="button" class="btn btn-outline btn-video ml-3" (click)="openPopup()"><mat-icon class="mr-1">videocam</mat-icon> Watch a Demo</button>
+                            <button type="button" class="btn btn-custom" (click)="login('google')">Try for Free</button>
+                            <button type="button" class="btn btn-outline btn-video ml-3"><mat-icon class="mr-1">videocam</mat-icon> Watch a Demo</button>
                         </div>
                     </div>
                     <div class="col-md-8 features_section_banner">
@@ -375,8 +374,8 @@
                             Market volatility, ease of trading, and influx of trading ideas in the social media makes it difficult to be disciplined and influences one to take impromptu decisions. You can now set manual or automatic trading rules within CueTrade and align your trades with these rules to avoid repeating the mistakes.
                         </div>
                         <div class="banner-info-footer text-left">
-                            <button type="button" class="btn btn-custom">Set your Rules</button>
-                            <button type="button" class="btn btn-outline btn-video ml-3" (click)="openPopup()"><mat-icon class="mr-1">videocam</mat-icon> Watch a Demo</button>
+                            <button type="button" class="btn btn-custom" (click)="login('google')">Set your Rules</button>
+                            <button type="button" class="btn btn-outline btn-video ml-3" (click)="openPopup('Manual Rules')"><mat-icon class="mr-1">videocam</mat-icon> Watch a Demo</button>
                         </div>
                     </div>
                     <div class="col-md-8 features_section_banner">
@@ -394,8 +393,8 @@
                             Create a trade plan in CueTrade, which allows you to think objectively about the market without getting influenced by the price movements once the market opens. You can record your perspective on the market and intended actions during the day in a trade plan.
                         </div>
                         <div class="banner-info-footer text-left">
-                            <button type="button" class="btn btn-custom">Create a Plan</button>
-                            <button type="button" class="btn btn-outline btn-video ml-3" (click)="openPopup()"><mat-icon class="mr-1">videocam</mat-icon> Watch a Demo</button>
+                            <button type="button" class="btn btn-custom" (click)="login('google')">Create a Plan</button>
+                            <button type="button" class="btn btn-outline btn-video ml-3" (click)="openPopup('tradePlan')"><mat-icon class="mr-1">videocam</mat-icon> Watch a Demo</button>
                         </div>
                     </div>
                     <div class="col-md-8 features_section_banner">
@@ -773,7 +772,10 @@
                 <span class="cursor" (click)="closePopup()"><mat-icon class="mat-icon-sm">clear</mat-icon></span>
             </div>
             <div class="modal-body px-2 py-0">
-                <iframe width="100%" height="480" src="https://www.youtube.com/embed/nG_HpDMR3nE" title="YouTube video player" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe *ngIf="videoType === 'Systematic'" width="100%" height="480" src="https://www.youtube.com/embed/nG_HpDMR3nE" allowfullscreen></iframe>
+                <iframe *ngIf="videoType === 'Effective'" width="100%" height="480" src="https://www.youtube.com/embed/YuIdSJ7TU7s" allowfullscreen></iframe>
+                <iframe *ngIf="videoType === 'tradePlan'" width="100%" height="480" src="https://www.youtube.com/embed/ufmRUgzvP5g" allowfullscreen></iframe>
+                <iframe *ngIf="videoType === 'Manual Rules'" width="100%" height="480" src="https://www.youtube.com/embed/suUpnTQ1OAc" allowfullscreen></iframe>
             </div>
         </div>
     </div>
