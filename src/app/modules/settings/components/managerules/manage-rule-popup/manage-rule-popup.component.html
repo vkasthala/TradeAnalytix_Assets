@@ -34,7 +34,7 @@
                 <div class="separator"></div>
 
                 <div class="btn-up mb-0">
-                    <button type="button" class="btn btn-save" [mat-dialog-close]="data" (click)="closeModal(entryexitruleform)">{{btnText}}</button>
+                    <button *ngIf="!isDemoMode" type="button" class="btn btn-save" [mat-dialog-close]="data" (click)="closeModal(entryexitruleform)">{{btnText}}</button>
                 </div>
             </div>
         </form>

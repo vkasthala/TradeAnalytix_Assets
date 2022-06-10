@@ -12,6 +12,7 @@ export class ManageRulePopupComponent implements OnInit {
   btnText:string;
   rowData:string;
   entryexitruleform;
+  isDemoMode:boolean;
   public event: EventEmitter<any> = new EventEmitter();
 
   constructor(
@@ -22,6 +23,7 @@ export class ManageRulePopupComponent implements OnInit {
     this.title = data.title;
     this.btnText = data.btnText;
     this.rowData = data.formData;
+    this.isDemoMode = data.isDemoMode;
     this.entryexitruleform = this.formBuilder.group({
       type: "",
       description:"",

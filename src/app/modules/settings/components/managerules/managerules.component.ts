@@ -77,6 +77,7 @@ export class ManagerulesComponent implements OnInit {
       data : {
         title: title,
         btnText: btnText,
+        isDemoMode:this.isDemoMode,
         formData:''
       }
     });
