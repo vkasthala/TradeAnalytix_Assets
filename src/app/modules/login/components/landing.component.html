@@ -356,7 +356,7 @@
                         </div>
                         <div class="banner-info-footer text-left">
                             <button type="button" class="btn btn-custom" (click)="login('google')">Try for Free</button>
-                            <button type="button" class="btn btn-outline btn-video ml-3"><mat-icon class="mr-1">videocam</mat-icon> Watch a Demo</button>
+                            <button type="button" class="btn btn-outline btn-video ml-3" (click)="openPopup('CompareStrategy')"><mat-icon class="mr-1">videocam</mat-icon> Watch a Demo</button>
                         </div>
                     </div>
                     <div class="col-md-8 features_section_banner">
@@ -775,7 +775,8 @@
                 <iframe *ngIf="videoType === 'Systematic'" width="100%" height="480" src="https://www.youtube.com/embed/JlRinQiXHmM" allowfullscreen></iframe>
                 <iframe *ngIf="videoType === 'Effective'" width="100%" height="480" src="https://www.youtube.com/embed/YuIdSJ7TU7s" allowfullscreen></iframe>
                 <iframe *ngIf="videoType === 'tradePlan'" width="100%" height="480" src="https://www.youtube.com/embed/ufmRUgzvP5g" allowfullscreen></iframe>
-                <iframe *ngIf="videoType === 'Manual Rules'" width="100%" height="480" src="https://www.youtube.com/embed/suUpnTQ1OAc" allowfullscreen></iframe>
+                <iframe *ngIf="videoType === 'Manual Rules'" width="100%" height="480" src="https://www.youtube.com/embed/z_MMEzxPbGw" allowfullscreen></iframe>
+                <iframe *ngIf="videoType === 'CompareStrategy'" width="100%" height="480" src="https://www.youtube.com/embed/pzpvE4bqyTs" allowfullscreen></iframe>
             </div>
         </div>
     </div>

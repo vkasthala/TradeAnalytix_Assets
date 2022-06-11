@@ -14,14 +14,20 @@
             </div>
 
             <div>
-                <button routerLink="/new-trade" class="btn btn-apply">Add Trade</button>
-                <a routerLink="/bulk-update" class="btn btn-apply mx-2" *ngIf="!isDemoMode">Bulk Update</a>
-                <span class="cursor ml-2" (click)="strategiesFilter()">
-                    <span *ngIf="!showFilters" class="text-blue text-sm" data-toggle="tooltip" data-placement="top"
-                        title="Show Filters">Show Filters</span>
-                    <span *ngIf="showFilters" class="text-primary text-sm" data-toggle="tooltip" data-placement="top"
-                        title="Close Filters">Hide Filters</span>
-                </span>
+                <div class="pb-2">
+                    <button routerLink="/new-trade" class="btn btn-apply">Add Trade</button>
+                    <a routerLink="/bulk-update" class="btn btn-apply mx-2" *ngIf="!isDemoMode">Bulk Update</a>
+                    <span class="cursor ml-2" (click)="strategiesFilter()">
+                        <span *ngIf="!showFilters" class="text-blue text-sm" data-toggle="tooltip" data-placement="top"
+                            title="Show Filters">Show Filters</span>
+                        <span *ngIf="showFilters" class="text-primary text-sm" data-toggle="tooltip" data-placement="top"
+                            title="Close Filters">Hide Filters</span>
+                    </span>
+                    
+                </div>
+                <div class="text-center pl-5">
+                    <a data-toggle="modal" data-target="#modal1" class="watch-video-sm cursor">Watch Video</a>
+                </div>
             </div>
         </div>
         <div class="trade-strategies-table px-3 py-2 trade-strategies-filters">
@@ -213,6 +219,17 @@
         <!-- Grid row -->
         <app-trade-strategies-grid #tradeStrategiesGrid>loading</app-trade-strategies-grid>
     </div>
+</div>
 
-
+<div class="modal video-modal" id="modal1" tabindex="-1" role="dialog" aria-labelledby="modallabel1" aria-hidden= "true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="text-right px-2 pt-2">
+                <span class="cursor" data-dismiss="modal"><mat-icon class="mat-icon-sm">clear</mat-icon></span>
+            </div>
+            <div class="modal-body px-2 py-0">
+                <iframe width="100%" height="480" src="https://www.youtube.com/embed/pzpvE4bqyTs" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
 </div>
