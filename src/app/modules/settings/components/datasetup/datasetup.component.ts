@@ -37,7 +37,7 @@ export class DatasetupComponent implements OnInit {
     this.step = index;
   }
   ngAfterViewInit() {
-    this.initBrockerageCommisionsGrid();
+    //this.initBrockerageCommisionsGrid();
     this.initSourceTypes();
     this.initTechIndicators();
     this.initMindsetTypes();
