@@ -157,6 +157,7 @@ export class AddNewTradeComponent implements OnInit {
   setMaxRiskDetails(maxRiskDetails: MaxRiskDetails, source: string) {
     this.tradeDetailsAsideComponent.maxRiskDetails = maxRiskDetails;
     this.mobileTradeDetailsBottomComponent.maxRiskDetails = maxRiskDetails;
+    this.tradeDetailsBottomComponent.maxRiskDetails = maxRiskDetails;
     this.tradeDetailsAsideComponent.maxRiskDetails = maxRiskDetails;
   }
 
