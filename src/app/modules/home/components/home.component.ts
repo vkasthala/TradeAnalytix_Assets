@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   demoToggle: boolean = false;
   mySubscription;
   hamburgerMenu: boolean = false;
+  public demoModeIsStarted: boolean = false;
 
   constructor(
     private globalStore: Store<fromGlobalConfig.State>,
@@ -169,10 +170,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
   demoMsg() {
     if (this.demoToggle) {
       this.demoService.setDemoModeStatus(true);
-      this.toastr.info('You entered the demo mode. Turn off the toggle switch anytime to exit the demo mode', '')
+      this.toastr.info('You entered the demo mode. Turn off the toggle switch anytime to exit the demo mode', '');
     } else {
       this.demoService.setDemoModeStatus(false);
-      this.toastr.info('You exited the demo mode', '')
+      this.toastr.info('You exited the demo mode', '');
     }
 
     let url: string = this.router.url;
@@ -180,6 +181,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       url = "/dashboard";
     }
     this.router.navigate([url]);
+    // this.demoModeIsStarted = !this.demoModeIsStarted;
   }
   
   menuToggle() {

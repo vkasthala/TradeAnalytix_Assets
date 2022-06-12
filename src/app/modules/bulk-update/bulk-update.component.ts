@@ -15,6 +15,7 @@ import { MindsetEditorComponent } from './mindset-editor/mindset-editor.componen
 import { PlannedEditorComponent } from './planned-editor/planned-editor.component';
 import { SourceEditorComponent } from './source-editor/source-editor.component';
 import { TechnicalIndicatorEditorComponent } from './technical-indicator-editor/technical-indicator-editor.component';
+import { DemoModeDetailsService } from '../shared/services/demo-mode-details.service';
 
 @Component({
   selector: 'app-bulk-update',
@@ -33,11 +34,12 @@ export class BulkUpdateComponent implements OnInit {
 
   private gridApi;
   private frameworkComponents;
-
+  isDemoMode: boolean = false;
   constructor(
     private tradeStrategyGridService: TradeStrategyGridService,
     private userTagService: UserTagService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private demoService: DemoModeDetailsService,
   ) { }
 
   ngOnInit() {
@@ -93,6 +95,7 @@ export class BulkUpdateComponent implements OnInit {
       { field: 'closeEvent', headerName: 'Gain or Loss Attributed To', editable: true, cellEditor: 'closeEventEditor', width: 200, resizable: true, filter: 'agTextColumnFilter' },
       { field: 'closeLesson', headerName: 'Lessons Learnt', editable: true, width: 300, resizable: true, filter: 'agTextColumnFilter' }
     ];
+    this.isDemoMode = this.demoService.demoMode;
   }
 
   onSave() {

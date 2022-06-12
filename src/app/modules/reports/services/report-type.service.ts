@@ -86,13 +86,13 @@ export class ReportTypeService {
     let reportSubType: ReportSubType = new ReportSubType();
     reportSubType.name = 'Allocation By Stock';
     reportSubType.id = "allocation-stock";
-    reportSubType.reportDetailList = [new ReportDetails('allocation-long-stock', 'Allocation By Long Stock', ReportCategory.Allocation, "This report shows the diversification of the portfolio by symbol by depicting the proportion of the amount currently put in different trades by symbol. User's cash on-hand is ignored in this report."), new ReportDetails('allocation-short-stock', 'Allocation By Short Stock', ReportCategory.Allocation, "This report shows the diversification of the portfolio by symbol by depicting the proportion of the amount currently put in different trades by symbol. User's cash on-hand is ignored in this report.")];
+    reportSubType.reportDetailList = [new ReportDetails('allocation-long-stock', 'Allocation By Net Debit ', ReportCategory.Allocation, "This report shows the diversification of the portfolio by symbol by depicting the proportion of the amount currently put in different trades by symbol. User's cash on-hand is ignored in this report."), new ReportDetails('allocation-short-stock', 'Allocation By Net Credit', ReportCategory.Allocation, "This report shows the diversification of the portfolio by symbol by depicting the proportion of the amount currently put in different trades by symbol. User's cash on-hand is ignored in this report.")];
     reportSubTypes.push(reportSubType);
 
     reportSubType = new ReportSubType();
     reportSubType.name = 'Allocation By Sector';
     reportSubType.id = "allocation-sector";
-    reportSubType.reportDetailList = [new ReportDetails('allocation-long-sector', 'Allocation By Long Sector', ReportCategory.Allocation, "This report shows the diversification of the portfolio by sector by depicting the proportion of the amount currently put in different trades by sector. User's cash on-hand is ignored in this report."), new ReportDetails('allocation-short-sector', 'Allocation By Short Sector', ReportCategory.Allocation, "This report shows the diversification of the portfolio by sector by depicting the proportion of the amount currently put in different trades by sector. User's cash on-hand is ignored in this report.")];
+    reportSubType.reportDetailList = [new ReportDetails('allocation-long-sector', 'Allocation By Net Debit', ReportCategory.Allocation, "This report shows the diversification of the portfolio by sector by depicting the proportion of the amount currently put in different trades by sector. User's cash on-hand is ignored in this report."), new ReportDetails('allocation-short-sector', 'Allocation By Net Credit', ReportCategory.Allocation, "This report shows the diversification of the portfolio by sector by depicting the proportion of the amount currently put in different trades by sector. User's cash on-hand is ignored in this report.")];
     reportSubTypes.push(reportSubType);
 
     return reportSubTypes;

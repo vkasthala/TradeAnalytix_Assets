@@ -4,7 +4,7 @@
             <div class="trade-dash-name col-8 pl-0">
                 <h3>Update journal details of one or more trades in an an intuitive excel-style grid.</h3>
             </div>
-            <div>
+            <div *ngIf="!isDemoMode">
                 <button type="button" class="btn btn-add" (click)="onSave()">Save</button>
             </div>
         </div>

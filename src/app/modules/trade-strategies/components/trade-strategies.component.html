@@ -14,9 +14,9 @@
             </div>
 
             <div>
-                <div class="pb-2">
+                <div>
                     <button routerLink="/new-trade" class="btn btn-apply">Add Trade</button>
-                    <a routerLink="/bulk-update" class="btn btn-apply mx-2" *ngIf="!isDemoMode">Bulk Update</a>
+                    <a routerLink="/bulk-update" class="btn btn-apply mx-2">Bulk Update</a>
                     <span class="cursor ml-2" (click)="strategiesFilter()">
                         <span *ngIf="!showFilters" class="text-blue text-sm" data-toggle="tooltip" data-placement="top"
                             title="Show Filters">Show Filters</span>
@@ -25,8 +25,8 @@
                     </span>
                     
                 </div>
-                <div class="text-center pl-5">
-                    <a data-toggle="modal" data-target="#modal1" class="watch-video-sm cursor">Watch Video</a>
+                <div class="text-right">
+                    <a data-toggle="modal" data-target="#modal1" class="watch-video-xs cursor" style="margin-right:90px">Watch Video</a>
                 </div>
             </div>
         </div>

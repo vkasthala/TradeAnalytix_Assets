@@ -249,7 +249,7 @@
                         </mat-horizontal-stepper>
                         <div class="trade-actions">
                             <button type="button" class="btn btn-next mr-2"
-                                *ngIf="(add && (tradeDetails.stockOptions.length || tradeDetails.stockAdded))"
+                                *ngIf="(add && (tradeDetails.stockOptions.length || tradeDetails.stockAdded)) && !isDemoMode"
                                 (click)="evaluateStrategyRules('WEB')" [disabled]="!isValidTradeStrategy('WEB')">ADD
                                 TRADE</button>
 
