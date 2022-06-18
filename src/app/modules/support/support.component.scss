@@ -1,5 +1,5 @@
-@import "../../../../assets/styles/variable.scss";
-@import '../../../../assets/styles/breakpoints.scss';
+@import "../../../assets/styles/variable.scss";
+@import '../../../assets/styles/breakpoints.scss';
 
 body {
     font-family: "Graphik", "Helvetica Neue", helvetica, "Apple Color Emoji", arial, sans-serif !important;
@@ -17,7 +17,7 @@ body {
     }
     // left-section
     .trade-header-section {
-        background:#394c86 url('../../../../assets/images/headerbg.svg') no-repeat center 30px;
+        background:#394c86 url('../../../assets/images/headerbg.svg') no-repeat center 30px;
         padding: 20px;
         // height: 650px;
         width: 100%;
@@ -49,7 +49,7 @@ body {
         }
         &-logo {
             //  display: none;
-            background-image: url('../../../../assets/images/cuetrade-logo.svg');
+            background-image: url('../../../assets/images/cuetrade-logo.svg');
             background-size: contain;
             background-repeat: no-repeat;
             width: 298px;
@@ -848,7 +848,7 @@ input::placeholder {
 }
 
 .footer-logo {
-    background-image: url('../../../../assets/images/logo.svg');
+    background-image: url('../../../assets/images/logo.svg');
     background-size: contain;
     background-repeat: no-repeat;
     width: 170px;
@@ -1281,4 +1281,31 @@ h5, .h5 {
     @media #{$extra-small} {
         text-align: left;
     }
+}
+.custom-card {
+    min-height: 180px;
+    margin-bottom: 1.5rem;
+    padding: 0;
+    position: relative;
+    display: flex;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 16px rgb(157 157 157 / 45%);
+    border-radius: 5px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.custom-card-body {
+    padding: 0 1rem;
+    font-size: 14px;
+    line-height: 1.345;
+    color: #9DA6BA;
+    text-align: center;
+}
+.custom-card-title {
+    font-weight: bold;
+    font-size: 27px;
+    color: #242E3A;
+    margin: 0 auto;
+    min-height: 50px;
 }

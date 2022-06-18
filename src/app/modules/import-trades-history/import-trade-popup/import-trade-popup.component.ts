@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { UploadFileService } from 'src/app/modules/import-trades/services/upload-file.service';
 import { BrokerageService } from '../../shared/services/brokerage.service';
 import { Brokerage } from '../models/brokerage.model';
+import { DemoModeDetailsService } from '../../shared/services/demo-mode-details.service';
 
 @Component({
   selector: 'app-import-trade-popup',
@@ -22,18 +23,20 @@ export class ImportTradePopupComponent implements OnInit {
   selectedbroker: any = 1;
   processing: boolean = false;
   selectedBrokerage: Brokerage;
-
+  isDemoMode: boolean = false;
   constructor(
     private uploadService: UploadFileService,
     private brokerageService: BrokerageService,
     protected toastr: ToastrService,
     protected router: Router,
     public dialogRef: MatDialogRef<ImportTradePopupComponent>,
-    @Inject(MAT_DIALOG_DATA) data
+    @Inject(MAT_DIALOG_DATA) data,
+    protected demoService: DemoModeDetailsService,
   ) { }
 
 
   ngOnInit() {
+    this.isDemoMode = this.demoService.demoMode;
     this.brokerageService.getBrokerages().subscribe(result => {
       this.brokerages = result;
     });

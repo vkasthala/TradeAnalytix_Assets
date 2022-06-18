@@ -1,13 +1,13 @@
 <div class="trade-app">
     <div class="trade-header-section">
-        <div class="d-flex landing-header">
-            <div class="container d-flex justify-content-between align-items-center">
+        <div class="landing-header">
+            <div class="header-row p-3">
                 <div class="trade-header-section-logo"></div>
                 <nav class="landing-navbar">
                     <ul class="list-unstyled ">
                         <li>
                             <a class="landing-nav-link" href="landing#howit_works">
-                                How it Works
+                                How It Works
                             </a>
                         </li>
                         <li>
@@ -16,9 +16,8 @@
                             </a>
                         </li>
                         <li [class.nav-active]="currentRoute == 'demo'">
-                            <a class="landing-nav-link" href="landing#demo_video_section">Demo</a>
+                            <a class="landing-nav-link" href="landing#demo_video_section">Partners</a>
                         </li>
-                        
                         <li [class.nav-active]="currentRoute == 'Reviews'">
                             <a class="landing-nav-link" href="landing#reviews_section">
                                 Testimonials
@@ -26,7 +25,7 @@
                         </li>
                         <li [class.nav-active]="currentRoute == 'Blog'">
                             <a class="landing-nav-link" href="landing#blogs_section">
-                                Blog
+                                Pricing
                             </a>
                         </li>
                         <li [class.nav-active]="currentRoute == 'FAQs'">
@@ -34,11 +33,15 @@
                                 FAQs
                             </a>
                         </li>
-                        <li class="px-0" [class.nav-active]="currentRoute == 'contact-us'">
-                            <a class="landing-nav-link pr-0" (click)="openContactUsModal()">
-                                Contact Us
+                        <li [class.nav-active]="currentRoute == 'support'">
+                            <a class="landing-nav-link" [routerLink]="['/support/']">
+                                Support
                             </a>
                         </li>
+                        <li [class.nav-active]="currentRoute == 'contact-us'">
+                            <button type="button" class="nav-btn" (click)="login('google')">Sign-in</button>
+                        </li>
+                        
                     </ul>
                 </nav>
                 <span class="material-icons hamburger-menu-icon" (click)="menuToggle()">menu</span>

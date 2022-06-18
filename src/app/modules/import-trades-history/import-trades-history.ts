@@ -36,7 +36,7 @@ export class ImportTradesHistory implements AfterViewInit, OnInit {
 
   dataSource: ImportTradesGridStore;
   importTradesGridRequest: ImportTradesGridRequest = this.getInitialRequest();
-  isDemoMode: boolean = false;
+  
 
   constructor(private importTradesGridService: ImportTradesGridService,
     private tradeStrategyService: TradeStrategyService,
@@ -47,7 +47,6 @@ export class ImportTradesHistory implements AfterViewInit, OnInit {
     private router: Router,
     private _dialog: MatDialog,
     private utilService: UtilService,
-    protected demoService: DemoModeDetailsService,
     //public dialogRef: MatDialogRef<ImportTradePopupComponent>
   ) {
   }
@@ -58,7 +57,7 @@ export class ImportTradesHistory implements AfterViewInit, OnInit {
   }
 
   loadPage() {
-    this.isDemoMode = this.demoService.demoMode;
+    
     this.dataSource.loadTradeStrategies(this.importTradesGridRequest);
   }
 
@@ -180,6 +179,7 @@ export class ImportTradesHistory implements AfterViewInit, OnInit {
     const dialogRef = this._dialog.open(ImportTradePopupComponent, {
       disableClose: true,
       width: 'auto',
+      isDemoMode: this.isDemoMode
       //data: dialogData
     });
     dialogRef.afterClosed().subscribe((res) => {

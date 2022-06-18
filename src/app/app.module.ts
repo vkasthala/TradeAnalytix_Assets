@@ -33,6 +33,7 @@ import { JoinWaitlistComponent } from './modules/login/components/join-waitlist/
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PrivacyPolicyComponent } from './modules/privacy-policy/components/privacy-policy.component';
 import { TermsAndConditionsComponent } from './modules/terms-conditions/components/terms-conditions.component';
+import { SupportComponent } from './modules/support/support.component';
 
 
 
@@ -53,7 +54,8 @@ export function highchartsModules() {
     JoinWaitlistComponent,
     LandingComponent,
     TermsAndConditionsComponent,
-    PrivacyPolicyComponent
+    PrivacyPolicyComponent,
+    SupportComponent
   ],
   imports: [
     FormsModule,

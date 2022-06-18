@@ -39,35 +39,23 @@ export class PrivacyPolicyComponent implements OnInit {
   menuToggle() {
     this.hamburgerMenu = !this.hamburgerMenu 
   }
-  displayStyle = "none";
-  openPopup() {
-    this.displayStyle = "block";
-  }
-  closePopup() {
-    this.displayStyle = "none";
-  }
+  
+  login(authProvider: string) {
+    let url: string;
+    if ('google' === authProvider) {
+      url = this.GOOGLE_AUTH_URL;
+    } else if ("facebook" === authProvider) {
+      url = this.FACEBOOK_AUTH_URL;
+    } else if ("microsoft" === authProvider) {
+      url = this.MICROSOFT_AUTH_URL;
+    } else if ("local" === authProvider) {
 
-
-  priviousSlide() {
-    if (this.currentInd === 0) {
-      this.currentInd = 0;
-    } else {
-      this.currentInd--;
+    }
+    if (url) {
+      let authUrl = environment.apiUrl + url + '?redirect_uri=' + environment.redirectUri;
+      window.location.href = authUrl;
     }
   }
 
-  nextSlide() {
-    if (this.currentInd === 4) {
-      return;
-    } else {
-      this.currentInd++;
-    }
-  }
-
-  openContactUsModal() {
-    this.contactUsModal= !this.contactUsModal;
-  }
-  closeContactUsModal() {
-    this.contactUsModal = !this.contactUsModal;
-  }
+ 
 }

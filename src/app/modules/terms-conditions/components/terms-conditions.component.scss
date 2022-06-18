@@ -1,7 +1,12 @@
 @import "../../../../assets/styles/variable.scss";
 @import '../../../../assets/styles/breakpoints.scss';
+
+body {
+    font-family: "Graphik", "Helvetica Neue", helvetica, "Apple Color Emoji", arial, sans-serif !important;
+}
 // Landing page
 .trade-app {
+    font-family: "Graphik", "Helvetica Neue", helvetica, "Apple Color Emoji", arial, sans-serif !important;
     width: 100%;
     min-height: 100vh;
     height: auto;
@@ -21,6 +26,13 @@
         @media #{$extra-small} {
             padding: 15px;
         }
+        .header-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            padding-top: 1rem;
+            justify-content: space-between;
+        }
         .landing-header {
             align-items: center;
             justify-content: space-between;
@@ -37,16 +49,17 @@
         }
         &-logo {
             //  display: none;
-            background-image: url('../../../../assets/images/ta_logo_new.svg');
+            background-image: url('../../../../assets/images/cuetrade-logo.svg');
             background-size: contain;
             background-repeat: no-repeat;
-            width: 230px;
-            min-height: 50px;
-            margin-top: 0.678rem;
+            width: 298px;
+            min-height: 45px;
+            margin-left: 1rem;
             @media #{$extra-small} {
                 display: block;
                 width: 65%;
                 margin-top: 0;
+                margin-left: 0;
             }
         }
         // features section
@@ -112,9 +125,19 @@
                 a.landing-nav-link {
                     display: flex;
                     align-items: center;
+                    color: #fff;
+                    padding: 5px;
+                    font-size: 16px;
+                    font-weight: 600;
                     text-decoration: none;
-                    color: $white;
-                    padding: 5px 10px;
+                    line-height: 2;
+                    &:hover {
+                        text-underline-offset: 30%;
+                        text-decoration: underline;
+                        text-decoration-color: #EC6B56;
+                        text-decoration-thickness: 3px;
+                    }
+                    
                     @include media(">tablet",
                     "<laptop") {
                         margin-bottom: 9px;
@@ -1236,4 +1259,16 @@ h5, .h5 {
 	color:#394C86 !important;
 	font-size:22px !important;
     font-weight: 600;
+}
+.nav-btn {
+    height: 40px;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: none;
+    padding: 0.25rem 1.5rem;
+    text-align: center;
+    border: 0;
+    letter-spacing: 1px;
+    background-color: #EC6B56;
+    color: #fff;
 }

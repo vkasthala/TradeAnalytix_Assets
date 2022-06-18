@@ -33,8 +33,8 @@
                                 FAQs
                             </a>
                         </li>
-                        <li [class.nav-active]="currentRoute == 'contact-us'">
-                            <a class="landing-nav-link" (click)="openContactUsModal()">
+                        <li [class.nav-active]="currentRoute == 'support'">
+                            <a class="landing-nav-link" [routerLink]="['/support/']">
                                 Support
                             </a>
                         </li>
@@ -81,12 +81,12 @@
                             FAQs
                         </a>
                     </li>
-                    <li [class.nav-active]="currentRoute == 'contact-us'">
-                        <a class="landing-nav-link" (click)="openContactUsModal()">
+                    <li [class.nav-active]="currentRoute == 'support'">
+                        <a class="landing-nav-link" [routerLink]="['/support/']">
                             Support
                         </a>
                     </li>
-                    <li [class.nav-active]="currentRoute == 'contact-us'">
+                    <li>
                         <button type="button" class="nav-btn" (click)="login('google')">Sign-in</button>
                     </li>
                 </ul>
@@ -482,50 +482,6 @@
             </div>
             <!-- end: Reviews -->
 
-            <!-- <div class="pt-2">
-                <div class="features_section_title page-heading">Blog</div>
-                <div class="row py-3 my-3">
-                    <div class="col-sm-3">
-                        <div class="blogs_card">
-                            <h3 class="blog-post_title">There is just ONE thing that distinguishes successful traders from the rest</h3>
-                            <div class="blog-post_description">
-                                <p>Tesla and NIO stock prices have increased by 740% and 1100% respectively in the year 2020 alone. Success stories such as these lure retail investors into the market because no one wants to miss on the next big thing. The intention of every retail investor is to make money on the side without spending a lot of time on it...</p>
-                            </div>
-                            <a class="blog-post_read-more" target="_blank" href="https://cuetrade.wpcomstaging.com/2022/04/02/there-is-just-one-thing-that-distinguishes-successful-traders-from-the-rest/">Read More »</a>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="blogs_card">
-                            <h3 class="blog-post_title">Trading journal is the key to success in the financial markets</h3>
-                            <div class="blog-post_description">
-                                <p>Journaling trades on a regular basis is a best practice recommended by the experienced professional traders. However, the usage of trading journals in any form is mostly limited to professional traders;  most retail traders do not even know that such practice is recommended.</p>
-                            </div>
-                            <a class="blog-post_read-more" target="_blank" href="https://cuetrade.wpcomstaging.com/2022/04/04/trading-journal-is-the-key-to-success-in-the-financial-markets/">Read More »</a>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="blogs_card">
-                            <h3 class="blog-post_title">Analyze your option trade strategies through simulation</h3>
-                            <div class="blog-post_description">
-                                <p>In the last quarter of the year 2021, Robinhood generated more than 45% of its revenue from option trading. Most of the users of Robinhood are retail investors. The conclusion that can be drawn from this is that many retail investors are trading in options either for speculation or hedging. With this being the trend,</p>
-                            </div>
-                            <a class="blog-post_read-more" target="_blank" href="https://cuetrade.wpcomstaging.com/2022/04/05/analyze-your-option-trade-strategies-through-simulation/">Read More »</a>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="blogs_card">
-                            <h3 class="blog-post_title">Set trading rules and align your trades with them to avoid repeating the mistakes</h3>
-                            <div class="blog-post_description">
-                                <p>Trading looks easy in hindsight – you just have to buy low and sell high and be patient in the interim. The truth is that making money trading in the financial markets is hard. Don’t listen to anyone who tells you otherwise. Markets teach us a lot of things about the world and about us as well</p>
-                            </div>
-                            <a class="blog-post_read-more" target="_blank" href="https://cuetrade.wpcomstaging.com/2022/04/06/set-trading-rules-and-align-your-trades-with-them-to-avoid-repeating-the-mistakes/"> Read More »</a>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-
-            <!-- end: blogs -->
-            
             <div class="features_section howit_works_section" id="Faqs">
                 <div class="features_section_title page-heading mb-3">Frequently Asked Questions</div>
 
@@ -620,31 +576,6 @@
                             </div>
                         </ng-template>
                     </mat-expansion-panel>
-
-                    <!-- <mat-expansion-panel [expanded]="false" (opened)="setStep(8)" (afterCollapse)="afterPanelClosed(1)" (afterExpand)="afterPanelOpened($event)" [disabled]="panelDisabled">
-                        <mat-expansion-panel-header>
-                            <mat-panel-title>
-                                Is CueTrade free to use?
-                            </mat-panel-title>
-                        </mat-expansion-panel-header>
-                        <ng-template matExpansionPanelContent>
-                            <div class="accordion-panel-body row">
-                                Our app is in beta mode and the beta version is free to use. We will inform you and give you enough time when we make it a paid version.
-                            </div>
-                        </ng-template>
-                    </mat-expansion-panel>
-                    <mat-expansion-panel [expanded]="false" (opened)="setStep(9)" (afterCollapse)="afterPanelClosed(1)" (afterExpand)="afterPanelOpened($event)" [disabled]="panelDisabled">
-                        <mat-expansion-panel-header>
-                            <mat-panel-title>
-                                Is CueTrade available on mobile?
-                            </mat-panel-title>
-                        </mat-expansion-panel-header>
-                        <ng-template matExpansionPanelContent>
-                            <div class="accordion-panel-body row">
-                                Yes, you can use CueTrade on mobile. However, it is not a native mobile app but a responsive mobile site.
-                            </div>
-                        </ng-template>
-                    </mat-expansion-panel> -->
                 </mat-accordion>
 
                 <div class="d-flex justify-content-end">
