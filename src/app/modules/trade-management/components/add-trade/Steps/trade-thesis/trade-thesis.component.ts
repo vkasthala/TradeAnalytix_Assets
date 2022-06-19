@@ -423,7 +423,6 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
   }
 
   downloadFile(index: number) {
-    debugger;
     if (index < this.tradeChubFiles.length) {
       var chubFile: TradeChubFile = this.tradeChubFiles[index];
       if (chubFile) {

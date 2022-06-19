@@ -107,7 +107,6 @@ export class ImportTradePopupComponent implements OnInit {
   }
 
   onBrokerageChange(val, index) {
-    debugger;
     if (this.brokerages) {
       this.brokerages.filter(brokerage => (brokerage.id == this.selectedbroker)).forEach(brokerage => this.selectedBrokerage = brokerage);
     }

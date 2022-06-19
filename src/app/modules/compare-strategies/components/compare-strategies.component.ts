@@ -45,6 +45,7 @@ export class CompareStrategiesComponent implements OnInit {
   userStrategies: StrategyInput[] = [];
   strategiesList: StrategyInput[] = [];
   selectedStrategies: StrategyInput[] = new Array<StrategyInput>(5);
+  tags: string[][] = [];
 
   riskFreeRate: number = 6;
   lowerBound: number = -10;
@@ -76,11 +77,11 @@ export class CompareStrategiesComponent implements OnInit {
   enterSymbol() {
     if (!this.selectedStock || !this.selectedStock.code) {
       this.toastr.error('Please enter a valid symbol to proceed', 'Error',
-      { 
-        tapToDismiss:false,
-        closeButton:true,
-        disableTimeOut: true
-      });
+        {
+          tapToDismiss: false,
+          closeButton: true,
+          disableTimeOut: true
+        });
       return false;
     }
     this.currentState++;
@@ -99,6 +100,7 @@ export class CompareStrategiesComponent implements OnInit {
       if (result.length > 0) {
         this.strategiesList = result.slice(0, 2);
         this.selectedStrategies = result.slice(0, 2);
+        this.refreshTags();
       }
     })
   }
@@ -106,7 +108,7 @@ export class CompareStrategiesComponent implements OnInit {
   addStrategy(index) {
     let strategyItem = [];
     if (index === undefined) {
-      index = this.strategiesList.length;
+      index = this.strategiesList.length - 1;
       strategyItem.push(this.userStrategies[index]);
       this.selectedItem = strategyItem;
       //this.selectedStrategies.push(this.userStrategies[index]);
@@ -118,6 +120,7 @@ export class CompareStrategiesComponent implements OnInit {
       }
       this.selectedStrategies.push(this.userStrategies[index]);
     }
+    this.refreshTags();
   }
 
   loadMoreStatsHandler($event: any) {
@@ -156,6 +159,8 @@ export class CompareStrategiesComponent implements OnInit {
     }
     this.strategiesList = newStratetegies;
     this.selectedStrategies.splice(index, 1);
+    this.tags = [];
+    this.selectedStrategies.forEach(strategy => this.tags.push(this.getStrategyTags(strategy)));
   }
 
   enforceMaxLength($event, min, max) {
@@ -215,14 +220,20 @@ export class CompareStrategiesComponent implements OnInit {
     return request;
   }
 
-  onStrategyChange(event:any, index: number) {
+  onStrategyChange(event: any, index: number) {
     let ind = event;
     this.selectedItem = [];
     this.selectedStrategies[index] = this.userStrategies[ind];
     this.selectedItem.push(this.userStrategies[index]);
+    this.refreshTags();
     // let deleteLink = document.querySelector('.strategy_select');
     //deleteLink.setAttribute();
     // console.log('deleteLink', deleteLink)
+  }
+
+  refreshTags() {
+    this.tags = [];
+    this.selectedStrategies.forEach(strategy => this.tags.push(this.getStrategyTags(strategy)));
   }
 
   editStrategyItem(index) {
@@ -326,11 +337,14 @@ export class CompareStrategiesComponent implements OnInit {
   }
 
   getStrategyTags(strategy: StrategyInput): string[] {
+    if(!strategy) {
+      return undefined;
+    }
     let tags: string[] = [];
-    if(strategy.tagIds) {
+    if (strategy.tagIds) {
       let tagIds: string[] = strategy.tagIds.split(',');
       tagIds.forEach(tagId => {
-        if(tagId !== ''){
+        if (tagId !== '') {
           tags.push(this.userTagService.getTagNameById(parseInt(tagId)));
         }
       })

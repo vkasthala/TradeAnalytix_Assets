@@ -55,7 +55,7 @@
                                                         <div class="trade-sel position-relative">
                                                             <select class="form-control select-input strategy_select" (change)="onStrategyChange($event.target.value, index)">
                                                                 <option *ngFor="let key of userStrategies;let i = index"
-                                                                    [value]="i">{{key.uid}}</option>
+                                                                    [value]="i" [selected]="key && key.uid && item.uid && key.uid == item.uid">{{key.uid}}</option>
                                                             </select>
                                                             <mat-icon class="form-icon-down">keyboard_arrow_down</mat-icon>
                                                         </div>
@@ -71,7 +71,7 @@
                                                 </div>
                                                 <ul class="tags-list">
                                                     <!-- Dynamic List -->
-                                                    <li *ngFor="let tag of getStrategyTags(item); let i = index;" class="tag-item">
+                                                    <li *ngFor="let tag of tags[index]; let i = index;" class="tag-item">
                                                         <span class="tag-list-item">
                                                             <span>
                                                                 {{tag}}

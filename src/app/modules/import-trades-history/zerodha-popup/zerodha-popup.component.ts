@@ -21,7 +21,6 @@ export class ZerodhaPopupComponent implements OnInit {
 
 
   ngOnInit() {
-    debugger;
     this.safeUrl = 'https://www.youtube.com/watch?v=1Fm-tdceB-8';
   }
 
