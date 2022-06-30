@@ -206,8 +206,8 @@ body {
         display: flex;
         position: relative;
         align-items: flex-end;
-        padding-top: 180px;
-        padding-bottom: 90px;
+        padding-top: 110px;
+        padding-bottom: 50px;
         justify-content: center;
         @media #{$extra-small} {
             padding: 0;
@@ -240,7 +240,7 @@ body {
     }
     .banner-info-title {
         font-weight: 1000;
-        font-size: 4.5rem;
+        font-size: 4rem;
         line-height: 1;
         color: #fff;
         @media #{$extra-small} {
@@ -1332,4 +1332,27 @@ $button-active-blue: #1669F2;
 .btn-outline-orange {
     color: #ec6b56;
     border: 1px solid #ec6b56;
+}
+.banner-info h4 {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 1;
+    color: #fff;
+    text-align: left;
+}
+.banner-list {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    text-align: left;
+    font-size: 16px;
+    margin-top: 5px;
+    li {
+        padding-top: 5px;
+        align-items: center;
+        display: flex;
+        img {
+            margin-right: .5rem;
+        }
+    }
 }

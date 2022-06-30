@@ -15,19 +15,19 @@
                                 Benefits
                             </a>
                         </li>
-                        <li [class.nav-active]="currentRoute == 'demo'">
+                        <!-- <li [class.nav-active]="currentRoute == 'demo'">
                             <a class="landing-nav-link" href="landing#demo_video_section">Partners</a>
-                        </li>
+                        </li> -->
                         <li [class.nav-active]="currentRoute == 'Reviews'">
                             <a class="landing-nav-link" href="landing#reviews_section">
                                 Testimonials
                             </a>
                         </li>
-                        <li [class.nav-active]="currentRoute == 'Blog'">
+                        <!-- <li [class.nav-active]="currentRoute == 'Blog'">
                             <a class="landing-nav-link" href="landing#blogs_section">
                                 Pricing
                             </a>
-                        </li>
+                        </li> -->
                         <li [class.nav-active]="currentRoute == 'FAQs'">
                             <a class="landing-nav-link" href="landing#Faqs">
                                 FAQs
@@ -63,19 +63,19 @@
                             Benefits
                         </a>
                     </li>
-                    <li [class.nav-active]="currentRoute == 'demo'">
+                    <!-- <li [class.nav-active]="currentRoute == 'demo'">
                         <a class="landing-nav-link" href="landing#demo_video_section">Partners</a>
-                    </li>
+                    </li> -->
                     <li [class.nav-active]="currentRoute == 'Reviews'">
                         <a class="landing-nav-link" href="landing#reviews_section">
                             Testimonials
                         </a>
                     </li>
-                    <li [class.nav-active]="currentRoute == 'Blog'">
+                    <!-- <li [class.nav-active]="currentRoute == 'Blog'">
                         <a class="landing-nav-link" href="landing#blogs_section">
                             Pricing
                         </a>
-                    </li>
+                    </li> -->
                     <li [class.nav-active]="currentRoute == 'FAQs'">
                         <a class="landing-nav-link" href="landing#Faqs">
                             FAQs
@@ -99,13 +99,33 @@
                 <div class="col-sm-12">
                     <div class="banner-info" id="howit_works_mob">
                         <h1 class="banner-info-title">
-                            Transform yourself into a <br/>successful trader.
+                            The trading journal and planner <br/>to improve your trading <br/>performance
                         </h1>
                         <div class="py-3 slideFeatures">
+                            <div class="row col-sm-9 ml-auto">
+                                <div style="padding-left:32px">
+                                    <h4>Before CueTrade</h4>
+                                    <ul class="banner-list">
+                                        <li><img src="../../../../assets/images/cancel-icon.png" /> Impulsive trading</li>
+                                        <li><img src="../../../../assets/images/cancel-icon.png" /> Emotional decisions</li>
+                                        <li><img src="../../../../assets/images/cancel-icon.png" /> No insights from the past</li>
+                                        <li><img src="../../../../assets/images/cancel-icon.png" /> Lack of risk controls</li>
+                                    </ul>
+                                </div>
+                                <div style="padding-left:40px">
+                                    <h4>After CueTrade</h4>
+                                    <ul class="banner-list">
+                                        <li><img src="../../../../assets/images/tickmark-icon.png" /> Data-driven, rationale trading</li>
+                                        <li><img src="../../../../assets/images/tickmark-icon.png" /> Rules-based decisions</li>
+                                        <li><img src="../../../../assets/images/tickmark-icon.png" /> Track and learn from trading history</li>
+                                        <li><img src="../../../../assets/images/tickmark-icon.png" /> Risk management</li>
+                                    </ul>
+                                </div>
+                            </div>
                             <!-- Provides users with everything they need to organize their trading habits, review performance and manage risks  -->
                             <!-- {{features[currentInd]}} -->
-                           <strong>Without CueTrade:</strong> Trade based on tips without research, emotional decisions, overtrading, <br/>
-                           repetition of mistakes, and excessive risk. <strong>With CueTrade:</strong> Trade based on strong rationale, align with trading rules, manage risk effectively, and improve trading decisions.
+                           <!-- <strong>Without CueTrade:</strong> Trade based on tips without research, emotional decisions, overtrading, <br/>
+                           repetition of mistakes, and excessive risk. <strong>With CueTrade:</strong> Trade based on strong rationale, align with trading rules, manage risk effectively, and improve trading decisions. -->
                         </div>
                         <div class="banner-info-footer" id="howit_works">
                             <button type="button" class="google-btn" (click)="login('google')">Try CueTrade for Free</button>
