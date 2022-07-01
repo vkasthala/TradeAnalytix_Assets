@@ -211,7 +211,7 @@ body {
         justify-content: center;
         @media #{$extra-small} {
             padding: 0;
-            padding-top: 90px;
+            padding-top: 70px;
             padding-bottom: 15px;
         }
     }
@@ -228,7 +228,8 @@ body {
         margin-top: 1rem;
         @media #{$extra-small} {
             font-size: 16px;
-            line-height: 24px;
+            line-height: 22px;
+            margin-top: 0.5rem;
         }
     }
     .banner-info {
@@ -244,13 +245,16 @@ body {
         line-height: 1;
         color: #fff;
         @media #{$extra-small} {
-            font-size: 2.7rem;
+            font-size: 2rem;
             line-height: 1;
         }
         
     }
     .banner-info-footer {
         padding-top: 1.5rem;
+        @media #{$extra-small} {
+            padding:0;
+        }
         .google-btn {
             height: 60px;
             font-size: 20px;
@@ -268,7 +272,7 @@ body {
                 height: 55px;
                 font-size: 17px;
                 justify-content: center;
-                margin-bottom: .5rem;
+                margin-bottom: 0;
             }
             .google-icon-wrapper {
                 margin-top: 0;
@@ -1334,11 +1338,14 @@ $button-active-blue: #1669F2;
     border: 1px solid #ec6b56;
 }
 .banner-info h4 {
-    font-weight: 600;
+    font-weight: 800;
     font-size: 20px;
     line-height: 1;
     color: #fff;
     text-align: left;
+    @media #{$extra-small} {
+        font-size: 18px;
+    }
 }
 .banner-list {
     padding: 0;
@@ -1347,12 +1354,37 @@ $button-active-blue: #1669F2;
     text-align: left;
     font-size: 16px;
     margin-top: 5px;
+    @media #{$extra-small} {
+        font-size: 14px;
+        margin-top: 0;
+    }
     li {
         padding-top: 5px;
         align-items: center;
         display: flex;
+        font-weight: 600;
+        @media #{$extra-small} {
+            line-height: 1.25;
+        }
         img {
             margin-right: .5rem;
         }
+    }
+}
+.small-text {
+    font-size: 13px;
+    font-weight: 600;
+}
+.before-cueTrade {
+    padding-left:15px;
+    @media #{$extra-small} {
+        padding-left:0;
+    }
+}
+.after-cueTrade {
+    padding-left:40px;
+    @media #{$extra-small} {
+        padding-left:0;
+        margin-top: 1rem;
     }
 }

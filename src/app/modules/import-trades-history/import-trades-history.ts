@@ -37,7 +37,8 @@ export class ImportTradesHistory implements AfterViewInit, OnInit {
   dataSource: ImportTradesGridStore;
   importTradesGridRequest: ImportTradesGridRequest = this.getInitialRequest();
   
-
+  isDemoMode: boolean = false;
+  
   constructor(private importTradesGridService: ImportTradesGridService,
     private tradeStrategyService: TradeStrategyService,
     private stockSymbolService: StockSymbolService,
