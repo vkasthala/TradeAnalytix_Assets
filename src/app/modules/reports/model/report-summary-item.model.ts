@@ -6,4 +6,6 @@ export class ReportSummaryItem {
 
     value: string;
 
+    defaultValue: any;
+
 }

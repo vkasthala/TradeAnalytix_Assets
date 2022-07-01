@@ -34,7 +34,7 @@ export class TradeStrategiesComponent implements OnInit {
    @ViewChild('historyGrid', { static: false }) private historyGrid: HistoryGrid;
    @ViewChild('tradeSearchComponent', { static: false }) private tradeSearchComponent: TradeSearchComponent;
    @ViewChild('communityTradesGrid', { static: false }) private communityTradesGrid: CommunityTradesGrid;
-   
+
    strategiesGridFilter: StrategiesGridFilter = new StrategiesGridFilter();
    strategiesGridPage: StrategiesGridPage = new StrategiesGridPage();
    strategiesGridSort: StrategiesGridSort = new StrategiesGridSort();
@@ -186,13 +186,17 @@ export class TradeStrategiesComponent implements OnInit {
       }
    }
 
-   getSummaryValue(val) {
+   getSummaryValue(item: SummaryItem) {
+      let val: any = item.value;
+      if (!val || val == '') {
+         val = item.defaultValue;
+      }
       if (typeof (val) === 'number') {
-        var num: number = +val;
-        return Math.round(num);
+         var num: number = +val;
+         return Math.round(num);
       }
       return val;
-    }
+   }
 
    // bulkUpdate() {
    //    const dialogRef = this._dialog.open(BulkUpdateUiComponent, {

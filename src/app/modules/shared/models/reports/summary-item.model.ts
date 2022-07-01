@@ -5,5 +5,7 @@ export class SummaryItem {
     id: string;
 
     value: any;
+
+    defaultValue: any;
     
 }
