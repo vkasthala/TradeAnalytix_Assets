@@ -1,24 +1,24 @@
 import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { CalendarComponent } from '../../reports/components/calendar/calendar.component';
 import { ReportSummaryItem } from '../../reports/model/report-summary-item.model';
 import { ReportDataService } from '../../reports/services/report-data.service';
 import { SummaryRequest } from '../../shared/models/reports/summary-request.model';
+import { DemoModeDetailsService } from '../../shared/services/demo-mode-details.service';
 import { UserService } from '../../shared/services/user.service';
 import { TradePlanGridRow } from '../../trade-plan/models/trade-plan-grid-row.model';
 import { TradePlansService } from '../../trade-plan/services/trade-plans.service';
-import { MatDialog } from '@angular/material/dialog';
-import { ToastrService } from 'ngx-toastr';
-import { DemoModeDetailsService } from '../../shared/services/demo-mode-details.service';
-import { SliderModalComponent } from './slider-modal/slider-modal.component';
-import { ReportAnIssueComponent } from './report-an-issue/report-an-issue.component';
-import { AskForFeatureComponent } from './ask-for-feature/ask-for-feature.component';
-import { LeaveReviewComponent } from './leave-review/leave-review.component';
-import { BecomeAnAffiliateComponent } from './become-an-affiliate/become-an-affiliate.component';
-import { ViewFollowersComponent } from './view-followers/view-followers.component';
-import { FindUsersComponent } from './find-users/find-users.component';
 import { UserComment } from '../models/user-comment.model';
 import { DashboardChartService } from '../services/dashboard-chart.service';
+import { AskForFeatureComponent } from './ask-for-feature/ask-for-feature.component';
+import { BecomeAnAffiliateComponent } from './become-an-affiliate/become-an-affiliate.component';
+import { FindUsersComponent } from './find-users/find-users.component';
+import { LeaveReviewComponent } from './leave-review/leave-review.component';
+import { ReportAnIssueComponent } from './report-an-issue/report-an-issue.component';
+import { SliderModalComponent } from './slider-modal/slider-modal.component';
+import { ViewFollowersComponent } from './view-followers/view-followers.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -77,11 +77,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     this.reportDataService.getReportSummary(this.createSummaryRequest()).subscribe(result => {
       if (result) {
         this.summaryItems = result;
-        this.summaryItems.forEach(item => {
-          if (item.value === undefined || item.value === null) {
-            item.value = 'N/A';
-          }
-        });
 
         //Add Volatility of Returns static item //TODO
         /*let volatilityReturn: ReportSummaryItem = new ReportSummaryItem();
@@ -120,7 +115,11 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     return color;
   }
 
-  getSummaryValue(val) {
+  getSummaryValue(item: ReportSummaryItem) {
+    let val: any = item.value;
+    if(!val || val === '') {
+      val = item.defaultValue;
+    }
     if (typeof (val) === 'number') {
       var num: number = +val;
       return Math.round(num);
