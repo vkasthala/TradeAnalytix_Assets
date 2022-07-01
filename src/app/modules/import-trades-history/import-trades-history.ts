@@ -37,8 +37,6 @@ export class ImportTradesHistory implements AfterViewInit, OnInit {
   dataSource: ImportTradesGridStore;
   importTradesGridRequest: ImportTradesGridRequest = this.getInitialRequest();
   
-  isDemoMode: boolean = false;
-  
   constructor(private importTradesGridService: ImportTradesGridService,
     private tradeStrategyService: TradeStrategyService,
     private stockSymbolService: StockSymbolService,
@@ -180,7 +178,6 @@ export class ImportTradesHistory implements AfterViewInit, OnInit {
     const dialogRef = this._dialog.open(ImportTradePopupComponent, {
       disableClose: true,
       width: 'auto',
-      isDemoMode: this.isDemoMode
       //data: dialogData
     });
     dialogRef.afterClosed().subscribe((res) => {
