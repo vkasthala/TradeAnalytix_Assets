@@ -109,6 +109,7 @@ export class LandingComponent implements OnInit {
     this.displayStyle = "block";
   }
   closePopup() {
+    this.videoType = "";
     this.displayStyle = "none";
   }
 

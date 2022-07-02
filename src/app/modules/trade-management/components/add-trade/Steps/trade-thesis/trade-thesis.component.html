@@ -1,7 +1,10 @@
 <div class="trade-thesis-sec">
     <div class="entry-thesis-header cursor" (click)="showEntryThesis()">
         <span>Entry Thesis</span>
-        <i class="negative-amt material-icons">{{hideEntryThesis ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}</i>
+        <span class="d-flex align-items-center">
+            <a>Configure Questions <img src="../../../../assets/images/beta-icon.png" class="beta-icon"/></a>
+            <i class="negative-amt material-icons">{{hideEntryThesis ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}</i>
+        </span>
     </div>
 
     <div class="trade-thesis-body" *ngIf="!hideEntryThesis">
@@ -263,7 +266,11 @@
 <div class="trade-thesis-sec trade-close-thesis-sec" *ngIf="!addTrade && tradeStatus !== 4">
     <div class="entry-thesis-header cursor" (click)="showClosingThesis()">
         <span>Closing Thesis</span>
-        <i class="negative-amt material-icons">{{hideClosingThesis ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}</i>
+        <span class="d-flex align-items-center">
+            <a>Configure Questions <img src="../../../../assets/images/beta-icon.png" class="beta-icon"/></a>
+            <i class="negative-amt material-icons">{{hideClosingThesis ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}</i>
+        </span>
+        
     </div>
 
     <div class="trade-thesis-body" *ngIf="!hideClosingThesis">

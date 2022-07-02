@@ -13,7 +13,7 @@ export class GenerateChartPopupComponent implements OnInit, AfterViewInit {
 
   @ViewChild('thesisTradingview', { static: false }) thesisTradingview: ElementRef;
 
-  width: number = 690;
+  width: number = 900;
   height: number = 490;
 
   timezone: string = 'Asia/Kolkata';
