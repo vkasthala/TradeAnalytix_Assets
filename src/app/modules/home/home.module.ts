@@ -141,6 +141,7 @@ import { UtilitiesModule } from '../utilities/utilities.module';
 import { HomeComponent } from './components/home.component';
 import { RoutingModule } from './routing.module';
 import { BulkUpdateComponent } from '../bulk-update/bulk-update.component';
+import { ReferralModalComponent } from '../dashboard/components/referral-modal/referral-modal.component';
 export const MY_FORMATS = {
   parse: {
     dateInput: 'DD-MMM-YY'
@@ -278,7 +279,8 @@ export const MY_FORMATS = {
     ViewFollowersComponent,
     FindUsersComponent,
     ZerodhaPopupComponent,
-    BulkUpdateComponent
+    BulkUpdateComponent,
+    ReferralModalComponent
   ],
   imports: [
     FormsModule,
@@ -346,7 +348,8 @@ export const MY_FORMATS = {
     BecomeAnAffiliateComponent,
     ViewFollowersComponent,
     FindUsersComponent,
-    ZerodhaPopupComponent
+    ZerodhaPopupComponent,
+    ReferralModalComponent
   ],
   // bootstrap: [TradeStrategiesGrid],
   providers: [

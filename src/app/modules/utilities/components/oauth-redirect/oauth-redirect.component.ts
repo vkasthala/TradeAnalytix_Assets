@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { SliderModalComponent } from 'src/app/modules/dashboard/components/slider-modal/slider-modal.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { StockSymbolService } from 'src/app/modules/shared/services/stock-symbol.service';
+import { ReferralModalComponent } from 'src/app/modules/dashboard/components/referral-modal/referral-modal.component';
 
 @Component({
   selector: 'app-oauth-redirect',
@@ -37,7 +38,7 @@ export class OauthRedirectComponent implements OnInit {
 
   successLogin() {
     this.router.navigate(['dashboard']);
-    this.loadSliderModal();
+    this.loadReferralModal();
     this.stockSymbolService.getStockSymbols();
   }
 
@@ -53,6 +54,15 @@ export class OauthRedirectComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((res) => {
+    });
+  }
+
+  loadReferralModal() {
+    const dialogRef = this._dialog.open(ReferralModalComponent, {
+      disableClose: true
+    });
+    dialogRef.afterClosed().subscribe((res) => {
+      this.loadSliderModal()
     });
   }
 
