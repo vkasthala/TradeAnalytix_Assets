@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatPaginator, MatSort, MatDialogRef } from '@angular/material';
 import { NavigationExtras, Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
@@ -46,6 +46,7 @@ export class ImportTradesHistory implements AfterViewInit, OnInit {
     private router: Router,
     private _dialog: MatDialog,
     private utilService: UtilService,
+    private myElement: ElementRef
     //public dialogRef: MatDialogRef<ImportTradePopupComponent>
   ) {
   }
@@ -198,6 +199,12 @@ export class ImportTradesHistory implements AfterViewInit, OnInit {
         this.reload();
       }
     });
+  }
+
+  closePopup(e) {
+    let iframe = document.querySelector('iframe');
+    iframe.src='';
+    iframe.setAttribute("src",'https://www.youtube.com/embed/txIqoIys3GI');
   }
 
 }

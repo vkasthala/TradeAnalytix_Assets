@@ -783,5 +783,11 @@ export class RiskAnalysisComponent implements OnInit {
     console.log('target::', this.targetDt);
   }
 
+  closePopup(e) {
+    let iframe = document.querySelector('iframe');
+    iframe.src='';
+    iframe.setAttribute("src",'https://www.youtube.com/embed/YuIdSJ7TU7s');
+  }
+
 }
 

@@ -198,18 +198,9 @@ export class TradeStrategiesComponent implements OnInit {
       return val;
    }
 
-   // bulkUpdate() {
-   //    const dialogRef = this._dialog.open(BulkUpdateUiComponent, {
-   //       width: '90vw',
-   //       maxWidth:'90vw',
-   //       height: 'auto',
-   //       data: {}
-   //    });
-   //    dialogRef.afterClosed().subscribe(dialogResult => {
-   //       if (dialogResult == true) {
-   //          // Reload
-   //          this.applyFilters();
-   //       }
-   //    });
-   // }
+   closePopup(e) {
+      let iframe = document.querySelector('iframe');
+      iframe.src='';
+      iframe.setAttribute("src",'https://www.youtube.com/embed/pzpvE4bqyTs');
+    }
 }

@@ -149,6 +149,12 @@ export class TradePlansComponent implements OnInit {
  Collaps(index: number) {  
   // this.expandedIndex[index] = !this.expandedIndex[index];
   this.hideRuleContent[index] = !this.hideRuleContent[index]; 
-  } 
+  }
+
+  closePopup(e) {
+    let iframe = document.querySelector('iframe');
+    iframe.src='';
+    iframe.setAttribute("src",'https://www.youtube.com/embed/ufmRUgzvP5g');
+  }
 }
 

@@ -46,9 +46,13 @@ export class ReportsComponent implements OnInit {
   }
 
   changeWebsite(e) {
-
     console.log(e.target.value);
+  }
 
+  closePopup(e) {
+    let iframe = document.querySelector('iframe');
+    iframe.src='';
+    iframe.setAttribute("src",'https://www.youtube.com/embed/oTOw-wUL1Jw');
   }
 
 }

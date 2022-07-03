@@ -98,9 +98,11 @@ export class LandingComponent implements OnInit {
       }
     });
   }
+
   menuToggle() {
     this.hamburgerMenu = !this.hamburgerMenu 
   }
+
   displayStyle = "none";
   videoType:string;
   openPopup(type) {
@@ -108,11 +110,11 @@ export class LandingComponent implements OnInit {
     this.videoType = type;
     this.displayStyle = "block";
   }
+
   closePopup() {
     this.videoType = "";
     this.displayStyle = "none";
   }
-
 
   priviousSlide() {
     if (this.currentInd === 0) {
@@ -133,6 +135,7 @@ export class LandingComponent implements OnInit {
   openContactUsModal() {
     this.contactUsModal= !this.contactUsModal;
   }
+  
   closeContactUsModal() {
     this.contactUsModal = !this.contactUsModal;
   }

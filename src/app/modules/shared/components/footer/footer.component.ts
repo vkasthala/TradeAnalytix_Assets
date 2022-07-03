@@ -8,7 +8,9 @@ import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+  ) { }
 
   ngOnInit() {
   }

@@ -15,26 +15,20 @@
                                 Benefits
                             </a>
                         </li>
-                        <!-- <li [class.nav-active]="currentRoute == 'demo'">
-                            <a class="landing-nav-link" href="landing#demo_video_section">Partners</a>
-                        </li> -->
+
                         <li [class.nav-active]="currentRoute == 'Reviews'">
                             <a class="landing-nav-link" href="landing#reviews_section">
                                 Testimonials
                             </a>
                         </li>
-                        <!-- <li [class.nav-active]="currentRoute == 'Blog'">
-                            <a class="landing-nav-link" href="landing#blogs_section">
-                                Pricing
-                            </a>
-                        </li> -->
+
                         <li [class.nav-active]="currentRoute == 'FAQs'">
                             <a class="landing-nav-link" href="landing#Faqs">
                                 FAQs
                             </a>
                         </li>
                         <li [class.nav-active]="currentRoute == 'support'">
-                            <a class="landing-nav-link" [routerLink]="['/support/']">
+                            <a class="landing-nav-link" href="landing#support">
                                 Support
                             </a>
                         </li>
@@ -531,7 +525,7 @@
                 </div>
             </div>
 
-            <div class="features_section pb-2">
+            <div class="features_section pb-2" id="support">
                 <h2 class="features_section_title page-heading">Support</h2>
                 <div class="row mt-3 pt-3">
                     <div class="col-md-3">
@@ -581,9 +575,9 @@
             </div>
             <div class="trade-socail-icon col-sm-6">
                 <p>Follow us on</p>  &nbsp;
-                <img src="../../../assets/images/twitter.png" alt="twitter" />
-                <img src="../../../assets/images/facebook.png" alt="facebook" />
-                <img src="../../../assets/images/youtube.png" alt="youtube" />
+                <a href="#"><img src="../../../assets/images/twitter.png" alt="twitter" /></a>
+                <a href="#" class="mx-1"><img src="../../../assets/images/facebook.png" alt="facebook" /></a>
+                <a href="https://www.youtube.com/channel/UC2VXwmZeSkAjY1bZTcnObwQ" target="_blank"><img src="../../../assets/images/youtube.png" alt="youtube" /></a>
             </div>
         </div>
         <div class="row align-items-center">
