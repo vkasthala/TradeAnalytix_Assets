@@ -11,9 +11,9 @@ import { ReferralModalComponent } from 'src/app/modules/dashboard/components/ref
   styleUrls: ['./oauth-redirect.component.scss']
 })
 export class OauthRedirectComponent implements OnInit {
-  
+
   constructor(
-    private router: Router, 
+    private router: Router,
     private route: ActivatedRoute,
     private _dialog: MatDialog,
     private stockSymbolService: StockSymbolService
@@ -26,9 +26,16 @@ export class OauthRedirectComponent implements OnInit {
       if (token) {
         sessionStorage.setItem('token', token);
         let country = params['country'];
-        if(country) {
+        if (country) {
           sessionStorage.setItem('country', country);
         }
+
+        let setReferralInfo = params['setReferralInfo'];
+        if (!setReferralInfo) {
+          setReferralInfo = "1";
+        }
+        sessionStorage.setItem('setReferralInfo', setReferralInfo);
+
         this.successLogin();
       } else {
         this.failureLogin();
@@ -50,7 +57,7 @@ export class OauthRedirectComponent implements OnInit {
     const dialogRef = this._dialog.open(SliderModalComponent, {
       disableClose: true,
       panelClass: 'guided-tour-panel',
-      backdropClass:'guided-tour-modal'
+      backdropClass: 'guided-tour-modal'
     });
 
     dialogRef.afterClosed().subscribe((res) => {
@@ -58,12 +65,17 @@ export class OauthRedirectComponent implements OnInit {
   }
 
   loadReferralModal() {
-    const dialogRef = this._dialog.open(ReferralModalComponent, {
-      disableClose: true
-    });
-    dialogRef.afterClosed().subscribe((res) => {
+    let setRefellInfo: string = sessionStorage.getItem("setReferralInfo");
+    if ("1" === setRefellInfo) {
+      const dialogRef = this._dialog.open(ReferralModalComponent, {
+        disableClose: true
+      });
+      dialogRef.afterClosed().subscribe((res) => {
+        this.loadSliderModal();
+      });
+    } else {
       this.loadSliderModal()
-    });
+    }
   }
 
 }

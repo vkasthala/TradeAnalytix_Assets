@@ -7,13 +7,13 @@
         <div class="main-pop-inner">
             <div class="mb-3">
                 <label class="col-form-label">How did you hear about CueTrade?</label>
-                <select class="form-control">
-                    <option value="0">Select</option>
+                <select class="form-control select-input" id="inputState" [(ngModel)]='referralInfo.registrationSourceId'>
+                    <option *ngFor="let key of registrationSources" [value]="key.id" [label]="key.name"></option>
                 </select>
             </div>
             <div class="mb-3">
                 <label class="col-form-label">Who referred you to CueTrade?</label>
-                <input class="form-control" matInput id="referred" [(ngModel)]='data.referred' />
+                <input class="form-control" matInput id="referred" [(ngModel)]='referralInfo.referralName' />
             </div>
         </div>
 
