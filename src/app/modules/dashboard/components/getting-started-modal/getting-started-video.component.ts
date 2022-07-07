@@ -5,11 +5,11 @@ import { ReferralInfo } from '../../models/referral-info.model';
 import { RegistrationSource } from '../../models/registration-source.model';
 
 @Component({
-  selector: 'app-referral-modal',
-  templateUrl: './referral-modal.component.html',
-  styleUrls: ['./referral-modal.component.scss']
+  selector: 'app-getting-started-video',
+  templateUrl: './getting-started-video.component.html',
+  styleUrls: ['./getting-started-video.component.scss']
 })
-export class ReferralModalComponent implements OnInit {
+export class GettingStartedVideoComponent implements OnInit {
   currentInd: number = 0;
   title: string;
 
@@ -18,12 +18,12 @@ export class ReferralModalComponent implements OnInit {
 
   public data: any = [
     {
-      title: "Referral Information",
+      title: "Getting Started",
     }
   ];
 
   constructor(
-    public dialogRef: MatDialogRef<ReferralModalComponent>,
+    public dialogRef: MatDialogRef<GettingStartedVideoComponent>,
     private userService: UserService,
   ) {
     this.loadRegistrationSources();
@@ -38,14 +38,10 @@ export class ReferralModalComponent implements OnInit {
     });
   }
 
-  submitReferral() {
-    this.userService.saveReferralInfo(this.referralInfo).subscribe(result => {
-    });
+  closeVideoPopup() {
     this.dialogRef.close();
-  }
-
-  closeModal() {
-    this.dialogRef.close();
+    let iframe = document.querySelector('iframe');
+    iframe.src='';
   }
 
 }

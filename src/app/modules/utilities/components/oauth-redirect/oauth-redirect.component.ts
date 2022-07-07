@@ -4,6 +4,7 @@ import { SliderModalComponent } from 'src/app/modules/dashboard/components/slide
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { StockSymbolService } from 'src/app/modules/shared/services/stock-symbol.service';
 import { ReferralModalComponent } from 'src/app/modules/dashboard/components/referral-modal/referral-modal.component';
+import { GettingStartedVideoComponent } from 'src/app/modules/dashboard/components/getting-started-modal/getting-started-video.component';
 
 @Component({
   selector: 'app-oauth-redirect',
@@ -71,11 +72,22 @@ export class OauthRedirectComponent implements OnInit {
         disableClose: true
       });
       dialogRef.afterClosed().subscribe((res) => {
-        this.loadSliderModal();
+        this.openGettingStartedVideo();
       });
     } else {
-      this.loadSliderModal()
+      this.openGettingStartedVideo()
     }
+  }
+
+  openGettingStartedVideo() {
+    const dialogRef = this._dialog.open(GettingStartedVideoComponent, {
+      panelClass: 'guided-tour-panel',
+      backdropClass: 'guided-tour-modal'
+    });
+
+    dialogRef.afterClosed().subscribe((res) => {
+      this.loadSliderModal();
+    });
   }
 
 }
