@@ -294,20 +294,15 @@
         <div class="row align-items-center">
             <div class="col-sm-6">
                 <ul class="footer_nav">
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Terms & Conditions</a></li>
-                    <li><a [routerLink]="['/privacy-policy/']">Privacy Policy</a></li>
-                    <li><a class="cursor" (click)="openContactUsModal()">Contact Us</a></li>
+                    <li><a [routerLink]="['/terms-conditions/']" target="_blank">Terms & Conditions</a></li>
+                    <li><a [routerLink]="['/privacy-policy/']" target="_blank">Privacy Policy</a></li>
                 </ul>
             </div>
             <div class="trade-socail-icon col-sm-6">
                 <p>Follow us on</p>  &nbsp;
-                <img src="../../../assets/images/twitter.png" alt="twitter" />
-                <img src="../../../assets/images/facebook.png" alt="facebook" />
-                <img src="../../../assets/images/youtube.png" alt="youtube" />
+                <a href="https://twitter.com/CueTrade" target="_blank" class="mx-1"><img src="../../../assets/images/twitter.png" alt="twitter" /></a>
+                <a href="https://www.youtube.com/channel/UC2VXwmZeSkAjY1bZTcnObwQ" target="_blank"><img src="../../../assets/images/youtube.png" alt="youtube" /></a>
             </div>
-
         </div>
         <div class="copyright pt-3"><span>&#169;</span> 2022 Uptick Systems Private Limited. All rights reserved.</div>
     </div>

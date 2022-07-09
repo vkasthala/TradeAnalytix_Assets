@@ -483,14 +483,18 @@
     -webkit-transition: all 0.5s ease 0s;
 }
 .flash-bar {
-    color: #fff;
-    font-size: 18px;
-    font-weight: 800;
+    color: rgb(231, 112, 108);
+    font-size: 16px;
+    font-weight: 1000;
     /* border: 2px solid #23c0e0; */
-    padding: 10px;
+    padding: 8px;
     line-height: 1;
-    background: #61BD6E;
+    // background: rgb(231, 112, 108);
     width: 50%;
     text-align: center;
+    animation: blinker 1s linear infinite;
+}
+@keyframes blinker {  
+    50% { opacity: 0; }
 }
 

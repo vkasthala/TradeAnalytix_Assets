@@ -15,6 +15,7 @@ import { DashboardChartService } from '../services/dashboard-chart.service';
 import { AskForFeatureComponent } from './ask-for-feature/ask-for-feature.component';
 import { BecomeAnAffiliateComponent } from './become-an-affiliate/become-an-affiliate.component';
 import { FindUsersComponent } from './find-users/find-users.component';
+import { GettingStartedVideoComponent } from './getting-started-modal/getting-started-video.component';
 import { LeaveReviewComponent } from './leave-review/leave-review.component';
 import { ReportAnIssueComponent } from './report-an-issue/report-an-issue.component';
 import { SliderModalComponent } from './slider-modal/slider-modal.component';
@@ -310,6 +311,16 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     userComment.contact = data.contact;
     userComment.postAllowed = data.postAllowed;
     return userComment;
+  }
+
+  gettingStartedVideo() {
+    const dialogRef = this._dialog.open(GettingStartedVideoComponent, {
+      panelClass: 'guided-tour-panel',
+      backdropClass: 'guided-tour-modal'
+    });
+
+    dialogRef.afterClosed().subscribe((res) => {
+    });
   }
 
 }
