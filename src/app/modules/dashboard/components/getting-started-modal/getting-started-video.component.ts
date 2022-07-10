@@ -12,21 +12,25 @@ import { RegistrationSource } from '../../models/registration-source.model';
 export class GettingStartedVideoComponent implements OnInit {
   currentInd: number = 0;
   title: string;
+  videoType: any;
 
   registrationSources: RegistrationSource[] = [];
   referralInfo: ReferralInfo = new ReferralInfo();
 
-  public data: any = [
-    {
-      title: "Getting Started",
-    }
-  ];
+  // public data: any = [
+  //   {
+  //     title: "Quick Intro to CueTrade",
+  //   }
+  // ];
 
   constructor(
     public dialogRef: MatDialogRef<GettingStartedVideoComponent>,
     private userService: UserService,
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.loadRegistrationSources();
+    this.title = data.title;
+    this.videoType = data.videoType;
   }
 
   ngOnInit() {

@@ -57,7 +57,7 @@
                 </div>
             </div>
             <div class="text-right">
-                <a href="https://www.tradingview.com/widget/fundamental-data" target="_blank">View Financials</a>
+                <a class="configure-questions" data-toggle="modal" data-target="#modal1">View Financials</a>
             </div>
         </div>
     </div>
@@ -125,6 +125,23 @@
         <div class="row trade-header-row">
             <span class="col-6 trade-header-col-1">P/S</span>
             <span class="col-6 trade-header-cell-value">NA</span>
+        </div>
+    </div>
+</div>
+
+<div class="modal financials-modal" id="modal1" tabindex="-1" role="dialog" aria-labelledby="modallabel1" aria-hidden= "true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="text-right px-2 pt-2">
+                <span class="cursor" data-dismiss="modal"><mat-icon class="mat-icon-sm">clear</mat-icon></span>
+            </div>
+            <div class="modal-body px-2 py-0">
+                <div class="tradingview-widget-container">
+                    <div class="tradingview-widget-container__widget tradingview-chart"></div>
+                    <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/NASDAQ-AAPL/financials-overview/" rel="noopener" target="_blank"></a></div>
+                    <div class="financials-view" #tradingview></div>
+                  </div>
+            </div>
         </div>
     </div>
 </div>

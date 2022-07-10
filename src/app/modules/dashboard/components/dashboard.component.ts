@@ -314,9 +314,14 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   }
 
   gettingStartedVideo() {
+    let dialogData = {
+      title: 'Getting Started',
+      videoType: "GettingStarted",
+    };
     const dialogRef = this._dialog.open(GettingStartedVideoComponent, {
       panelClass: 'guided-tour-panel',
-      backdropClass: 'guided-tour-modal'
+      backdropClass: 'guided-tour-modal',
+      data:dialogData
     });
 
     dialogRef.afterClosed().subscribe((res) => {

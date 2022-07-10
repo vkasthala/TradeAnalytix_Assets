@@ -80,9 +80,14 @@ export class OauthRedirectComponent implements OnInit {
   }
 
   openGettingStartedVideo() {
+    let dialogData = {
+      title: 'Quick Intro to CueTrade',
+      videoType: "QuickIntro",
+    };
     const dialogRef = this._dialog.open(GettingStartedVideoComponent, {
       panelClass: 'guided-tour-panel',
-      backdropClass: 'guided-tour-modal'
+      backdropClass: 'guided-tour-modal',
+      data:dialogData
     });
 
     dialogRef.afterClosed().subscribe((res) => {

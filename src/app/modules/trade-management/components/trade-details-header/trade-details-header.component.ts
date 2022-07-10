@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, ViewChild } from '@angular/core';
 import { StockSymbol } from 'src/app/modules/shared/models/trade-management/stock-symbol.model';
 import { UserStockSummary } from 'src/app/modules/shared/models/trade-management/user-stock-summary.model';
 
@@ -9,7 +9,7 @@ import { UserStockSummary } from 'src/app/modules/shared/models/trade-management
 })
 export class TradeDetailsHeaderComponent implements OnInit {
   allStats: boolean = false;
-
+  @ViewChild('tradingview', { static: false }) tradingview: ElementRef;
   @Input() selectedStock: StockSymbol;
   @Input() stockSummary: UserStockSummary;
   @Output('loadMoreStats') loadMoreStats = new EventEmitter();
@@ -21,7 +21,9 @@ export class TradeDetailsHeaderComponent implements OnInit {
 
   public hideTradeHeader:boolean= false;
 
-  constructor() { }
+  constructor(
+    private _renderer1: Renderer2
+  ) { }
 
   ngOnInit() {
   }
@@ -41,4 +43,14 @@ export class TradeDetailsHeaderComponent implements OnInit {
     this.hideTradeHeader = !this.hideTradeHeader; 
   }
 
+  ngAfterViewInit() {
+    let script = this._renderer1.createElement('script');
+    script.type = `text/javascript`;
+    script.src = "https://s3.tradingview.com/external-embedding/embed-widget-financials.js";
+    script.text = '{"width": "800","height": "520","symbol": "NASDAQ:AAPL","locale": "en",""colorTheme": "light","trendLineColor": "#37a6ef","isTransparent": false,"autosize": false,"displayMode": "regular"}';
+
+    this.tradingview.nativeElement.appendChild(script);
+  }
+
 }
+

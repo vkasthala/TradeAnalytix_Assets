@@ -483,7 +483,7 @@
     -webkit-transition: all 0.5s ease 0s;
 }
 .flash-bar {
-    color: rgb(231, 112, 108);
+    color: #61BD6E;
     font-size: 16px;
     font-weight: 1000;
     /* border: 2px solid #23c0e0; */
@@ -492,7 +492,7 @@
     // background: rgb(231, 112, 108);
     width: 50%;
     text-align: center;
-    animation: blinker 1s linear infinite;
+    animation: blinker 4s linear infinite;
 }
 @keyframes blinker {  
     50% { opacity: 0; }
