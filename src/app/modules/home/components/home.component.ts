@@ -106,9 +106,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
       case 'trade-strategies': return { breadcrumb: 'Trade Strategies', title: 'Portfolio', description: "Trades are segregated by status and displayed as a list. Trades that are not yet executed remain in Draft status. Trades that are executed remain in Open Status. Trades that are fully closed remain in Closed status." };
 
-      case 'compare-strategies': return { breadcrumb: 'Strategy Comparison', title: 'Strategy Comparison', description: "Enter the first few letters of the symbol or company name and choose a stock from the list. Compare up to five trades on that symbol to pick the right trade strategy that’s in line with your risk appetite." };
+      case 'compare-strategies': return { breadcrumb: 'Strategy Picker', title: 'Strategy Picker', description: "Enter the first few letters of the symbol or company name and choose a stock from the list. Compare up to five trades on that symbol to pick the right trade strategy that’s in line with your risk appetite." };
 
-      case 'strategy-comparison': return { breadcrumb: 'Strategy Comparison', title: 'Strategy Comparison', description: "Enter the first few letters of the symbol or company name and choose a stock from the list. Compare up to five trades on that symbol to pick the right trade strategy that’s in line with your risk appetite" };
+      case 'strategy-comparison': return { breadcrumb: 'Strategy Picker', title: 'Strategy Picker', description: "Enter the first few letters of the symbol or company name and choose a stock from the list. Compare up to five trades on that symbol to pick the right trade strategy that’s in line with your risk appetite" };
 
       case 'reports': return { breadcrumb: 'REPORTS', title: 'Reports', description: 'Reports' };
 
@@ -126,7 +126,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
       case 'profile': return { breadcrumb: 'USER PROFILE', title: 'User Profile', description: "User Profile" };
 
-      case 'risk-analysis': return { breadcrumb: 'RISK ANALYSIS', title: 'Risk Analysis', description: "Enter the first few letters of the symbol or company name and choose a stock from the list. Build a trade strategy on that stock to analyze its risk and profitability in different scenarios while varying stock price, implied volatility, and days to expiration" };
+      case 'risk-analysis': return { breadcrumb: 'Strategy Builder', title: 'Strategy Builder', description: "Enter the first few letters of the symbol or company name and choose a stock from the list. Build a trade strategy on that stock to analyze its risk and profitability in different scenarios while varying stock price, implied volatility, and days to expiration" };
 
       case 'add-new-trade-plan': return { breadcrumb: 'TRADING PLAN', breadcrumbChild: 'ADD TRADE PLAN', title: 'Add Trade Plan', description: 'Add Trade Plan' };
 

@@ -8,7 +8,7 @@
 
         <div class="popup-body">
             <div class="element">
-                <span>Do you want to update stock price for risk analysis?</span>
+                <span>Do you want to update stock price for Strategy Builder?</span>
                 <span>
                     <span><input type="radio" name="confirm_update" value="true" [(ngModel)]='data.update'
                             class="radio" />Yes</span>
@@ -18,7 +18,7 @@
             </div>
 
             <div class="element row mb-2">
-                <span class="col-9 sp-label">Enter the stock price to be used as input to risk analysis: </span>
+                <span class="col-9 sp-label">Enter the stock price to be used as input to Strategy Builder: </span>
                 <input type="number" (keydown)="preventNegatives($event, false)" min="0"
                     class="form-control cards-input col-2" [(ngModel)]="data.stockPrice" />
             </div>

@@ -140,10 +140,7 @@ export class AddNewTradeComponent implements OnInit {
   }
 
   calculateMaxRisk($event: any, source: string) {
-    console.log('calculate max risk:', $event);
     let riskAnalysisRequest: RiskAnalysisRequest = this.createRiskAnalysisRequest(source);
-
-    console.log('max risk request:', JSON.stringify(riskAnalysisRequest));
 
     this.riskAnalysisService.getMaxRiskDetails(riskAnalysisRequest).subscribe(result => {
       console.log("max details success:", result)

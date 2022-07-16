@@ -613,8 +613,6 @@ export class RiskAnalysisComponent implements OnInit {
     this.riskAnalysisResults = [];
     let riskAnalysisRequest: RiskAnalysisRequest = this.createRiskAnalysisRequest();
 
-    console.log('risk analysis request:', JSON.stringify(riskAnalysisRequest));
-
     this.riskAnalysisService.getRiskAnalysisResult(riskAnalysisRequest).subscribe(result => {
       console.log("success:", result)
       this.riskAnalysisResults = result.records;
@@ -692,8 +690,6 @@ export class RiskAnalysisComponent implements OnInit {
 
   calculateMaxRisk() {
     let riskAnalysisRequest: RiskAnalysisRequest = this.createRiskAnalysisRequest();
-
-    console.log('max risk request:', JSON.stringify(riskAnalysisRequest));
 
     this.riskAnalysisService.getMaxRiskDetails(riskAnalysisRequest).subscribe(result => {
       console.log("max details success:", result)

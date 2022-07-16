@@ -244,8 +244,6 @@ export class EditTradeDetailsComponent implements OnInit {
     riskAnalysisRequest.options = this.stockOptions;
     riskAnalysisRequest.module = 'EDIT_TRADE';
 
-    console.log('risk analysis request:', JSON.stringify(riskAnalysisRequest));
-
     this.riskAnalysisService.getRiskAnalysisResult(riskAnalysisRequest).subscribe(result => {
       console.log("success:", result)
       this.riskAnalysisResults = result.records;

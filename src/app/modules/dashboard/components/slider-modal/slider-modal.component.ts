@@ -23,9 +23,9 @@ export class SliderModalComponent implements OnInit {
     }, {
       title:'Trade Plan',
     }, {
-      title:'Risk Analysis',
+      title:'Strategy Builder',
     }, {
-      title:'Strategy Comparison',
+      title:'Strategy Picker',
     }, {
       title:'Reports and Metrics',
     }, {

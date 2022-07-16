@@ -65,13 +65,13 @@ export class ReportTypeService {
     reportSubTypes.push(reportSubType);
 
     reportSubType = new ReportSubType();
-    reportSubType.name = 'Max Risk';
+    reportSubType.name = 'Value at Risk';
     reportSubType.id = "maxRisk";
     reportSubType.reportDetailList = [new ReportDetails('maxRisk', 'Win Rate By Rule Alignment', ReportCategory.Rule, "This report illustrates the importance of a rule set by the user by showing the win rate on the trades in which the rule is aligned"), new ReportDetails('rule_realizedreturn', 'Realized Return By Rule Alignment', ReportCategory.Win_Loss, "This report illustrates the importance of a rule set by the user by showing the realized return on the trades in which the rule is aligned")];
     reportSubTypes.push(reportSubType);
 
     reportSubType = new ReportSubType();
-    reportSubType.name = 'Max Profit';
+    reportSubType.name = 'Potential Profit';
     reportSubType.id = "maxProfit";
     reportSubType.reportDetailList = [new ReportDetails('maxProfit', 'Win Rate By Rule Alignment', ReportCategory.Rule, "This report illustrates the importance of a rule set by the user by showing the win rate on the trades in which the rule is aligned"), new ReportDetails('rule_realizedreturn', 'Realized Return By Rule Alignment', ReportCategory.Win_Loss, "This report illustrates the importance of a rule set by the user by showing the realized return on the trades in which the rule is aligned")];
     reportSubTypes.push(reportSubType);
@@ -237,15 +237,15 @@ export class ReportTypeService {
     let reportSubTypes: ReportSubType[] = [];
 
     let reportSubType: ReportSubType = new ReportSubType();
-    reportSubType.name = 'Max Risk and Profit';
+    reportSubType.name = 'Value at Risk and Profit';
     reportSubType.id = "risk_max_risk_profit";
     reportSubType.reportDetailList = [new ReportDetails('max_risk_profit', 'Maximum Risk and Proﬁt Potential', ReportCategory.Risk, "This report shows the potential maximum risk and maximum profit of the portfolio during the selected range. Maximum risk and profit are calculated based on the previous 30-day volatility of the stocks.")];
     reportSubTypes.push(reportSubType);
 
     reportSubType = new ReportSubType();
-    reportSubType.name = 'Max Risk by Asset';
+    reportSubType.name = 'Value at Risk by Asset';
     reportSubType.id = "max_risk_asset";
-    reportSubType.reportDetailList = [new ReportDetails('max_risk_asset', 'Max Risk by Asset Chart', ReportCategory.Dashboard, "This report shows the current maximum risk of the user's portfolio by symbol. Maximum risk is calculated based on the previous 30-day volatility of the stocks.")];
+    reportSubType.reportDetailList = [new ReportDetails('max_risk_asset', 'Value at Risk by Asset Chart', ReportCategory.Dashboard, "This report shows the current maximum risk of the user's portfolio by symbol. Maximum risk is calculated based on the previous 30-day volatility of the stocks.")];
     reportSubTypes.push(reportSubType);
 
     reportSubType = new ReportSubType();

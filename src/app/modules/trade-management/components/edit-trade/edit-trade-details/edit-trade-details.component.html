@@ -497,23 +497,6 @@
         ">
         <a class="btn btn-next" (click)="displayRiskAnalysis = true">Next</a>
       </div>
-  
-      <!-- risk-analysis -->
-      <!-- <div class="trade-risk" *ngIf="promptPerformRiskAnalysis && !displayRiskAnalysis">
-        <div class="row d-flex  align-items-center">
-          <div class="col-sm-6 col-md-6 col-g-5 ">
-            <h6>
-              Do you want to perform risk analysis of the trade strategy by simulation?
-            </h6>
-          </div>
-  
-          <div class="col-sm-6 col-md-4">
-            <a class="btn btn-yes"
-              (click)="performRiskAnalysis = true; displayRiskAnalysis = true; activateRiskAnalysisStep()">Yes</a>
-            <a class="btn btn-no" (click)="promptPerformRiskAnalysis = false; navigateToTradeThesis()">No</a>
-          </div>
-        </div>
-      </div> -->
     </ng-container>
   
     <ng-container *ngIf="displayRiskAnalysis">
@@ -521,7 +504,7 @@
       <div class="trade-risk-section">
         <div class="trade-risk-heading">
           <h6>
-            Risk Analysis By Simulation
+            Strategy Builder By Simulation
           </h6>
   
           <p>
@@ -664,7 +647,7 @@
       <!-- next-button -->
       <div class="order-btn text-center">
         <a class="btn btn-next" (click)="analyzeRisk = true;initRiskAnalysis();">Analyze</a>
-        <a class="btn btn-skip" *ngIf="!analyzeRisk" (click)="next()">Skip Risk Analysis</a>
+        <a class="btn btn-skip" *ngIf="!analyzeRisk" (click)="next()">Skip Strategy Builder</a>
       </div>
     </ng-container>
   
