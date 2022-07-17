@@ -6,6 +6,7 @@ import { PerformanceComponent } from './performance/performance.component';
 import { GoalsComponent } from './goals/goals.component';
 import { DisciplineComponent } from './discipline/discipline.component';
 import { RiskmanagementComponent } from './riskmanagement/riskmanagement.component';
+import { ReportsRulesComponent } from './reports-rules/reports-rules.component';
 
 @Component({
   selector: 'app-reports',
@@ -15,9 +16,9 @@ import { RiskmanagementComponent } from './riskmanagement/riskmanagement.compone
 export class ReportsComponent implements OnInit {
 
   @ViewChild('GoalsReports', { static: false }) protected GoalsReports: PerformanceComponent;
-  @ViewChild('disciplineReports', { static: false }) protected disciplineReports: DisciplineComponent;
+  @ViewChild('rulesReports', { static: false }) protected rulesReports: ReportsRulesComponent;
   @ViewChild('riskReports', { static: false }) protected riskReports: RiskmanagementComponent;
-  public selectedParentReport: string = "Portfolio";
+  public selectedParentReport: string = "Holding Reports";
 
   websiteList: any = ['HDTuto.com', 'HDTuto.com', 'Nicesnippets.com']
 
@@ -33,10 +34,10 @@ export class ReportsComponent implements OnInit {
   }
 
   onTabSelect(selectedTab: string) {
-    if (selectedTab === 'discipline') {
+    if (selectedTab === 'risk') {
       this.riskReports.reloadData(selectedTab);
-    }else if (selectedTab === 'risk') {
-      this.riskReports.reloadData(selectedTab);
+    }else if (selectedTab === 'rules') {
+      this.rulesReports.reloadData(selectedTab);
     }
   }
 

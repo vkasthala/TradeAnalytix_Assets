@@ -6,27 +6,18 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="active" role="presentation">
-                            <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#Portfolio" role="tab">Portfolio</a>
+                            <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#Portfolio" role="tab">Holding Reports</a>
                         </li>
                         <li class="" role="presentation">
-                            <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#Performance" role="tab" (click)="onTabSelect('performance')">Performance</a>
+                            <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#Performance" role="tab" (click)="onTabSelect('performance')">Tradebook Reports</a>
                         </li>
                         <li class="" role="presentation">
-                            <a aria-controls="Goals" aria-expanded="false" data-toggle="tab" href="#Goals" role="tab" (click)="onTabSelect('goals')">Goals</a>
-                        </li>
-                        <li class="" role="presentation">
-                            <a aria-controls="Risk Management" aria-expanded="false" data-toggle="tab" href="#RiskManagement" role="tab" (click)="onTabSelect('risk')">Risk Management</a>
-                        </li>
+                            <a aria-controls="Journal Reports" aria-expanded="false" data-toggle="tab" href="#RiskManagement" role="tab" (click)="onTabSelect('risk')">Journal Reports</a>
+                        </li>                      
                         <li class="" role="presentation">
                             <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#Rules" role="tab" (click)="onTabSelect('rules')">Trading Rules<img src="../../../../assets/images/beta-icon.png" class="beta-icon"/></a>
                         </li>
-                        <li class="" role="presentation">
-                            <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#Discipline" role="tab" (click)="onTabSelect('discipline')">Discipline</a>
-                        </li>
                         
-                        <li class="" role="presentation">
-                            <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#Commissions" role="tab">Commissions<img src="../../../../assets/images/beta-icon.png" class="beta-icon"/></a>
-                        </li>
                     </ul>
                     <a data-toggle="modal" data-target="#modal1" class="watch-video-sm cursor mr-3">Watch Video</a>
                 </div>
@@ -37,21 +28,21 @@
                     <div class="tab-pane" id="Performance" role="tabpanel">
                         <app-performance></app-performance>
                     </div>
-                    <div class="tab-pane fade" id="Goals" role="tabpanel">
+                    <!-- <div class="tab-pane fade" id="Goals" role="tabpanel">
                         <app-goals #GoalsReports></app-goals>
-                    </div>
+                    </div> -->
                     <div class="tab-pane fade" id="RiskManagement" role="tabpanel">
                         <app-riskmanagement #riskReports></app-riskmanagement>
                     </div>
                     <div class="tab-pane fade" id="Rules" role="tabpanel" >
                         <app-reports-rules #rulesReports></app-reports-rules>
                      </div>
-                    <div class="tab-pane fade" id="Discipline" role="tabpanel">
+                    <!-- <div class="tab-pane fade" id="Discipline" role="tabpanel">
                         <app-discipline #disciplineReports></app-discipline>
                     </div>
                     <div class="tab-pane fade" id="Commissions" role="tabpanel">
                         <app-commissions></app-commissions>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -59,7 +50,7 @@
         <!-- mobile-tabs -->
         <div class="mobile-parent-reports p-3">
             <select class="form-control" (change)="parentReportChange($event)" selected> 
-                <option value="Portfolio">Portfolio</option>
+                <option value="Portfolio">Holding Reports</option>
                 <option value="Performance">Performance</option>
                 <option value="Goals">Goals</option>
                 <option value="RiskManagement">Risk Management</option>
@@ -74,21 +65,21 @@
                 <div [ngClass]="selectedParentReport === 'Performance' ? 'd-block' : 'd-none'">
                     <app-performance></app-performance>
                 </div>
-                <div [ngClass]="selectedParentReport === 'Goals' ? 'd-block' : 'd-none'">
+                <!-- <div [ngClass]="selectedParentReport === 'Goals' ? 'd-block' : 'd-none'">
                     <app-goals #GoalsReports></app-goals>
-                </div>
+                </div> -->
                 <div [ngClass]="selectedParentReport === 'RiskManagement' ? 'd-block' : 'd-none'">
                     <app-riskmanagement #riskReports></app-riskmanagement>
                 </div>
                 <div [ngClass]="selectedParentReport === 'Rules' ? 'd-block' : 'd-none'">
                     <app-reports-rules #rulesReports></app-reports-rules>
                  </div>
-                <div [ngClass]="selectedParentReport === 'Discipline' ? 'd-block' : 'd-none'">
+                <!-- <div [ngClass]="selectedParentReport === 'Discipline' ? 'd-block' : 'd-none'">
                     <app-discipline #disciplineReports></app-discipline>
                 </div>
                 <div [ngClass]="selectedParentReport === 'Commissions' ? 'd-block' : 'd-none'">
                     <app-commissions></app-commissions>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
