@@ -84,7 +84,7 @@ export class ImportTradePopupComponent implements OnInit {
         },
         err => {
           this.processing = false;
-          this.toastr.error('Failed to import trades.' + (err.error && err.error.message ? ' Error message: ' + err.error.message : ''), 'Error', {
+          this.toastr.error('Failed to import trades.' + (err.error ? ' Error message: ' + err.error : ''), 'Error', {
             tapToDismiss: false,
             closeButton: true,
             disableTimeOut: true,
