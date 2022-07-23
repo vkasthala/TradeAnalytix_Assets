@@ -143,6 +143,7 @@ import { RoutingModule } from './routing.module';
 import { BulkUpdateComponent } from '../bulk-update/bulk-update.component';
 import { ReferralModalComponent } from '../dashboard/components/referral-modal/referral-modal.component';
 import { GettingStartedVideoComponent } from '../dashboard/components/getting-started-modal/getting-started-video.component';
+import { ImportTradeBookComponent } from '../dashboard/components/import-tradebook/import-tradebook.component';
 export const MY_FORMATS = {
   parse: {
     dateInput: 'DD-MMM-YY'
@@ -282,7 +283,8 @@ export const MY_FORMATS = {
     ZerodhaPopupComponent,
     BulkUpdateComponent,
     ReferralModalComponent,
-    GettingStartedVideoComponent
+    GettingStartedVideoComponent,
+    ImportTradeBookComponent
   ],
   imports: [
     FormsModule,
@@ -352,7 +354,8 @@ export const MY_FORMATS = {
     FindUsersComponent,
     ZerodhaPopupComponent,
     ReferralModalComponent,
-    GettingStartedVideoComponent
+    GettingStartedVideoComponent,
+    ImportTradeBookComponent
   ],
   // bootstrap: [TradeStrategiesGrid],
   providers: [

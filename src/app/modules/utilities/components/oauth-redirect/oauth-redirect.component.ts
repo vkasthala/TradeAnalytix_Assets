@@ -5,6 +5,8 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { StockSymbolService } from 'src/app/modules/shared/services/stock-symbol.service';
 import { ReferralModalComponent } from 'src/app/modules/dashboard/components/referral-modal/referral-modal.component';
 import { GettingStartedVideoComponent } from 'src/app/modules/dashboard/components/getting-started-modal/getting-started-video.component';
+import { ImportTradeBookComponent } from 'src/app/modules/dashboard/components/import-tradebook/import-tradebook.component';
+import { ImportTradePopupComponent } from 'src/app/modules/import-trades-history/import-trade-popup/import-trade-popup.component';
 
 @Component({
   selector: 'app-oauth-redirect',
@@ -46,7 +48,7 @@ export class OauthRedirectComponent implements OnInit {
 
   successLogin() {
     this.router.navigate(['dashboard']);
-    this.loadReferralModal();
+    this.openGettingStartedVideo();
     this.stockSymbolService.getStockSymbols();
   }
 
@@ -91,7 +93,38 @@ export class OauthRedirectComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((res) => {
-      this.loadSliderModal();
+      this.ImportTradeBookModal();
+    });
+  }
+
+  ImportTradeBookModal() {
+    let dialogData = {
+      title: 'Import Trade Book',
+    };
+    const dialogRef = this._dialog.open(ImportTradeBookComponent, {
+      disableClose: true,
+      width: 'auto',
+      data: dialogData
+    });
+
+    dialogRef.afterClosed().subscribe((res) => {
+      if (res === true) {
+        this.importTradesPopup();
+      }
+    });
+  }
+
+  importTradesPopup() {
+    const dialogRef = this._dialog.open(ImportTradePopupComponent, {
+      disableClose: true,
+      width: 'auto',
+      //data: dialogData
+    });
+    dialogRef.afterClosed().subscribe((res) => {
+      debugger;
+      if (res === true) {
+        // this.reload();
+      }
     });
   }
 

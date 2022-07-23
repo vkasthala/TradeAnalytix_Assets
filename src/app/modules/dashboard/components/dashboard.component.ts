@@ -2,6 +2,7 @@ import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { ImportTradePopupComponent } from '../../import-trades-history/import-trade-popup/import-trade-popup.component';
 import { CalendarComponent } from '../../reports/components/calendar/calendar.component';
 import { ReportSummaryItem } from '../../reports/model/report-summary-item.model';
 import { ReportDataService } from '../../reports/services/report-data.service';
@@ -327,5 +328,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     dialogRef.afterClosed().subscribe((res) => {
     });
   }
+
 
 }
