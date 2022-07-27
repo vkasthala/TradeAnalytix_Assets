@@ -107,6 +107,8 @@ export class ReportRequestService {
       url = '/reports/portfolio/allocation-short-stock';
     } else if ('allocation-short-sector' === reportId) {
       url = '/reports/portfolio/allocation-short-sector';
+    } else if ('trade_count' === reportId) {
+      url = '/reports/portfolio/trade-count';
     }
     return url;
   }

@@ -116,7 +116,7 @@ export class ReportTypeService {
     reportSubType = new ReportSubType();
     reportSubType.name = 'Trade Count';
     reportSubType.id = "trade_count";
-    reportSubType.reportDetailList = [];
+    reportSubType.reportDetailList = [new ReportDetails('trade_count', 'Trade Count by Day', ReportCategory.Allocation, "This report shows the transactions of user by executed day")];
     reportSubTypes.push(reportSubType);
 
     reportSubType = new ReportSubType();
