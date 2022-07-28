@@ -34,7 +34,7 @@ export class ImportTradePopupComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) data,
     protected demoService: DemoModeDetailsService,
   ) {
-    if (data.selectedbroker) {
+    if (data && data.selectedbroker) {
       this.selectedbroker = data.selectedbroker;
     }
   }
