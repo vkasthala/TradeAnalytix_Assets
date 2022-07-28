@@ -34,6 +34,8 @@
                                     </option>
                                 </select>
                             </div>
+                            <button class="btn btn-enter btn-sm" *ngIf="!isDemoMode" (click)="importTrades()">Upload</button>
+                            <!--
                             <div class="col-sm-4">
                                 <label class="col-form-label pt-0">{{ (selectedBrokerage && selectedBrokerage.multipleExportFiles === true) ? 'Choose Equity File' : 'Choose File' }}</label>
                                 <input class="w-100" type="file" (change)="selectFile($event)" style="margin-bottom: 5px;" />
@@ -43,6 +45,7 @@
                                     (click)="importTrades()">Upload</button>
                                 <mat-spinner [diameter]="30" *ngIf="processing"></mat-spinner>
                             </div>
+                            -->
                             <!-- <a (click)="gettingStartedVideo()" class="btn card-btn" data-toggle="tooltip" data-placement="top" title="Getting Started">Getting Started</a>
                             <a routerLink="/new-trade" class="btn card-btn ml-2" data-toggle="tooltip" data-placement="top" title="Add trade">Add Trade</a>
                             <a routerLink="/import-trades-history" class="btn card-btn ml-2" data-toggle="tooltip" data-placement="top" title="Import Trades">Import Trades</a>

@@ -3,10 +3,12 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ImportTradePopupComponent } from '../../import-trades-history/import-trade-popup/import-trade-popup.component';
+import { Brokerage } from '../../import-trades-history/models/brokerage.model';
 import { CalendarComponent } from '../../reports/components/calendar/calendar.component';
 import { ReportSummaryItem } from '../../reports/model/report-summary-item.model';
 import { ReportDataService } from '../../reports/services/report-data.service';
 import { SummaryRequest } from '../../shared/models/reports/summary-request.model';
+import { BrokerageService } from '../../shared/services/brokerage.service';
 import { DemoModeDetailsService } from '../../shared/services/demo-mode-details.service';
 import { UserService } from '../../shared/services/user.service';
 import { TradePlanGridRow } from '../../trade-plan/models/trade-plan-grid-row.model';
@@ -40,6 +42,8 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   demoToggle: boolean = true;
   currentInd: number = 0;
   showMoreMetrics: boolean = false;
+  brokerages: Brokerage[] = [];
+  selectedbroker: number = 1;
 
   constructor(
     private router: Router, private ref: ChangeDetectorRef, private tradePlanService: TradePlansService, private reportDataService: ReportDataService,
@@ -47,12 +51,14 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     private _dialog: MatDialog,
     protected toastr: ToastrService,
     private demoService: DemoModeDetailsService,
-    private dashboardService: DashboardChartService
+    private dashboardService: DashboardChartService,
+    private brokerageService: BrokerageService
   ) { }
 
   ngOnInit() {
     this.loadLatestTradePlan();
     this.loadSummaryItems();
+    this.loadBrokerges();
   }
 
   ngAfterViewInit(): void {
@@ -91,6 +97,13 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     });
   }
 
+  loadBrokerges() {
+    this.brokerageService.getBrokerages().subscribe(result => {
+      this.brokerages = result;
+      this.selectedbroker = result[0].id;
+    });
+  }
+
   createSummaryRequest(): SummaryRequest {
     let summaryRequest: SummaryRequest = new SummaryRequest();
     summaryRequest.summaryType = 'dashboard';
@@ -119,7 +132,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
   getSummaryValue(item: ReportSummaryItem) {
     let val: any = item.value;
-    if(!val || val === '') {
+    if (!val || val === '') {
       val = item.defaultValue;
     }
     if (typeof (val) === 'number') {
@@ -322,12 +335,25 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     const dialogRef = this._dialog.open(GettingStartedVideoComponent, {
       panelClass: 'guided-tour-panel',
       backdropClass: 'guided-tour-modal',
-      data:dialogData
+      data: dialogData
     });
 
     dialogRef.afterClosed().subscribe((res) => {
     });
   }
 
+  importTrades() {
+    let dialogData = {
+      selectedbroker: this.selectedbroker
+    }
+    const dialogRef = this._dialog.open(ImportTradePopupComponent, {
+      disableClose: true,
+      width: 'auto',
+      data: dialogData
+    });
+    dialogRef.afterClosed().subscribe((res) => {
+      
+    });
+  }
 
 }

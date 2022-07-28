@@ -24,6 +24,7 @@ export class ImportTradePopupComponent implements OnInit {
   processing: boolean = false;
   selectedBrokerage: Brokerage;
   isDemoMode: boolean = false;
+
   constructor(
     private uploadService: UploadFileService,
     private brokerageService: BrokerageService,
@@ -32,13 +33,20 @@ export class ImportTradePopupComponent implements OnInit {
     public dialogRef: MatDialogRef<ImportTradePopupComponent>,
     @Inject(MAT_DIALOG_DATA) data,
     protected demoService: DemoModeDetailsService,
-  ) { }
+  ) {
+    if (data.selectedbroker) {
+      this.selectedbroker = data.selectedbroker;
+    }
+  }
 
 
   ngOnInit() {
     this.isDemoMode = this.demoService.demoMode;
     this.brokerageService.getBrokerages().subscribe(result => {
       this.brokerages = result;
+      if (this.selectedbroker) {
+        this.brokerages.filter(brokerage => brokerage.id == this.selectedbroker).forEach(brokerage => this.selectedBrokerage = brokerage);
+      }
     });
   }
 
@@ -63,7 +71,7 @@ export class ImportTradePopupComponent implements OnInit {
       this.currentFile = this.selectedFiles.item(0);
     }
 
-    if(this.currentFile || this.optionFile) {
+    if (this.currentFile || this.optionFile) {
       this.processing = true;
       this.uploadService.importTrades(this.currentFile, this.optionFile, this.selectedbroker).subscribe(
         result => {
