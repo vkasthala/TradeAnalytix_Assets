@@ -2,7 +2,7 @@
     <div class="entry-thesis-header cursor" (click)="showEntryThesis()">
         <span>Entry Thesis</span>
         <span class="d-flex align-items-center">
-            <a class="configure-questions">Configure Questions <img src="../../../../assets/images/beta-icon.png" class="beta-icon"/></a>
+            <a class="configure-questions" href="javascript:void(0)" (click)="openEntryQuestions()" >Configure Questions <img src="../../../../assets/images/beta-icon.png" class="beta-icon"/></a>
             <i class="negative-amt material-icons">{{hideEntryThesis ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}</i>
         </span>
     </div>
@@ -267,7 +267,7 @@
     <div class="entry-thesis-header cursor" (click)="showClosingThesis()">
         <span>Closing Thesis</span>
         <span class="d-flex align-items-center">
-            <a class="configure-questions">Configure Questions <img src="../../../../assets/images/beta-icon.png" class="beta-icon"/></a>
+            <a class="configure-questions" href="javascript:void(0)" (click)="openExitQuestions()" >Configure Questions <img src="../../../../assets/images/beta-icon.png" class="beta-icon"/></a>
             <i class="negative-amt material-icons">{{hideClosingThesis ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}</i>
         </span>
         

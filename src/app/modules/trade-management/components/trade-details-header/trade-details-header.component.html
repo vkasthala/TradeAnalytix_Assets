@@ -57,7 +57,7 @@
                 </div>
             </div>
             <div class="text-right">
-                <a class="configure-questions" data-toggle="modal" data-target="#modal1">View Financials</a>
+                <a class="configure-questions" data-toggle="modal" data-target="#modal1" (click)="openContactUsModal()">View Financials</a>
             </div>
         </div>
     </div>
@@ -139,7 +139,7 @@
                 <div class="tradingview-widget-container">
                     <div class="tradingview-widget-container__widget tradingview-chart"></div>
                     <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/NASDAQ-AAPL/financials-overview/" rel="noopener" target="_blank"></a></div>
-                    <div class="financials-view" #tradingview></div>
+                    <div id="financialsView" class="financials-view" #tradingview></div>
                   </div>
             </div>
         </div>

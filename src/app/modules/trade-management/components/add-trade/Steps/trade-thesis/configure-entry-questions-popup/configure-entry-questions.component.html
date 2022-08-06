@@ -1,0 +1,75 @@
+<div class="compare-popup">
+    <div class="compare-pop-inner">
+        <div class="top-pop-inner">
+            <div class="modal-title mb-1">{{title}}</div>
+            <div class="right-close" (click)="closeModal()">
+                <mat-icon>clear</mat-icon>
+            </div>
+        </div>
+
+        <div class="main-pop-inner">
+            <div class="mt-2">
+                <div class="row mb-2 align-items-center">
+                    <span class="col-8">Who suggested this trade to you ?</span>
+                    <span class="px-3 followers-col"><input type="radio" class="mr-2" /> Show</span>
+                    <span class="px-3 followers-col"><input type="radio" class="mr-2" /> Hide</span>
+                </div>
+                <div class="row mb-2 align-items-center">
+                    <span class="col-8">Specify the reasons for executing this trade</span>
+                    <span class="px-3 followers-col"><input type="radio" class="mr-2" /> Show</span>
+                    <span class="px-3 followers-col"><input type="radio" class="mr-2" /> Hide</span>
+                </div>
+                <div class="row mb-2 align-items-center">
+                    <span class="col-8">What is your target price for the stock?</span>
+                    <span class="px-3 followers-col"><input type="radio" class="mr-2" /> Show</span>
+                    <span class="px-3 followers-col"><input type="radio" class="mr-2" /> Hide</span>
+                </div>
+                <div class="row mb-2 align-items-center">
+                    <span class="col-8">What is the target date to close this trade ?</span>
+                    <span class="px-3 followers-col"><input type="radio" class="mr-2" /> Show</span>
+                    <span class="px-3 followers-col"><input type="radio" class="mr-2" /> Hide</span>
+                </div>
+                <div class="row mb-2 align-items-center">
+                    <span class="col-8">Is this a contrarian trade ?</span>
+                    <span class="px-3 followers-col"><input type="radio" class="mr-2" /> Show</span>
+                    <span class="px-3 followers-col"><input type="radio" class="mr-2" /> Hide</span>
+                </div>
+                <div class="row mb-2 align-items-center">
+                    <span class="col-8">Specify the direction of the trade ?</span>
+                    <span class="px-3 followers-col"><input type="radio" class="mr-2" /> Show</span>
+                    <span class="px-3 followers-col"><input type="radio" class="mr-2" /> Hide</span>
+                </div>
+                <div class="row mb-2 align-items-center">
+                    <span class="col-8">Select the technical indicator used for this trade</span>
+                    <span class="px-3 followers-col"><input type="radio" class="mr-2" /> Show</span>
+                    <span class="px-3 followers-col"><input type="radio" class="mr-2" /> Hide</span>
+                </div>
+                <div class="row mb-2 align-items-center">
+                    <span class="col-8">Select any event surrounding this trade</span>
+                    <span class="px-3 followers-col"><input type="radio" class="mr-2" /> Show</span>
+                    <span class="px-3 followers-col"><input type="radio" class="mr-2" /> Hide</span>
+                </div>
+                <div class="row mb-2 align-items-center">
+                    <span class="col-8">Is this a planned or an impromptu trade ?</span>
+                    <span class="px-3 followers-col"><input type="radio" class="mr-2" /> Show</span>
+                    <span class="px-3 followers-col"><input type="radio" class="mr-2" /> Hide</span>
+                </div>
+                <div class="row mb-2 align-items-center">
+                    <span class="col-8">What is your mindset while executing this trade ?</span>
+                    <span class="px-3 followers-col"><input type="radio" class="mr-2" /> Show</span>
+                    <span class="px-3 followers-col"><input type="radio" class="mr-2" /> Hide</span>
+                </div>
+                <div class="row mb-2 align-items-center">
+                    <span class="col-8">Upload files</span>
+                    <span class="px-3 followers-col"><input type="radio" class="mr-2" /> Show</span>
+                    <span class="px-3 followers-col"><input type="radio" class="mr-2" /> Hide</span>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="modal-footer py-2">
+            <button type="button" class="btn btn-join" [mat-dialog-close]="data">Save</button>
+        </div>
+    </div>
+</div>

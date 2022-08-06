@@ -44,10 +44,19 @@ export class TradeDetailsHeaderComponent implements OnInit {
   }
 
   ngAfterViewInit() {
+
+  }
+
+  openContactUsModal() {
+    var e = document.getElementById('financialsView');
+    e.innerHTML = "";
+
     let script = this._renderer1.createElement('script');
+    script.text = '';
     script.type = `text/javascript`;
     script.src = "https://s3.tradingview.com/external-embedding/embed-widget-financials.js";
-    script.text = '{"width": "800","height": "520","symbol": "NASDAQ:AAPL","locale": "en",""colorTheme": "light","trendLineColor": "#37a6ef","isTransparent": false,"autosize": false,"displayMode": "regular"}';
+    
+    script.text = '{"width": "800","height": "800","symbol": "NASDAQ:AAPL","locale": "en",""colorTheme": "light","trendLineColor": "#37a6ef","isTransparent": false,"autosize": false,"displayMode": "regular"}';
 
     this.tradingview.nativeElement.appendChild(script);
   }

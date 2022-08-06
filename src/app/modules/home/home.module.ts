@@ -144,6 +144,9 @@ import { BulkUpdateComponent } from '../bulk-update/bulk-update.component';
 import { ReferralModalComponent } from '../dashboard/components/referral-modal/referral-modal.component';
 import { GettingStartedVideoComponent } from '../dashboard/components/getting-started-modal/getting-started-video.component';
 import { ImportTradeBookComponent } from '../dashboard/components/import-tradebook/import-tradebook.component';
+import { ConfigureEntryQuestionsComponent } from '../trade-management/components/add-trade/Steps/trade-thesis/configure-entry-questions-popup/configure-entry-questions.component';
+import { ConfigureExitQuestionsComponent } from '../trade-management/components/add-trade/Steps/trade-thesis/configure-exit-questions-popup/configure-exit-questions.component';
+
 export const MY_FORMATS = {
   parse: {
     dateInput: 'DD-MMM-YY'
@@ -284,7 +287,9 @@ export const MY_FORMATS = {
     BulkUpdateComponent,
     ReferralModalComponent,
     GettingStartedVideoComponent,
-    ImportTradeBookComponent
+    ImportTradeBookComponent,
+    ConfigureEntryQuestionsComponent,
+    ConfigureExitQuestionsComponent
   ],
   imports: [
     FormsModule,
@@ -355,7 +360,9 @@ export const MY_FORMATS = {
     ZerodhaPopupComponent,
     ReferralModalComponent,
     GettingStartedVideoComponent,
-    ImportTradeBookComponent
+    ImportTradeBookComponent,
+    ConfigureEntryQuestionsComponent,
+    ConfigureExitQuestionsComponent
   ],
   // bootstrap: [TradeStrategiesGrid],
   providers: [
