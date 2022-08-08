@@ -155,4 +155,14 @@ export class ReportRequestService {
     return url;
   }
 
+  public getCommissionApiUrl(reportId: string): string {
+    let url: string;
+    if ('daily-commission' === reportId) {
+      url = '/reports/commission/daily-commission';
+    } else if ('commission-by-asset' === reportId) {
+      url = '/reports/commission/commission-by-asset';
+    }
+    return url;
+  }
+
 }

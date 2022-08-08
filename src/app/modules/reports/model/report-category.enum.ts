@@ -26,6 +26,8 @@ export enum ReportCategory {
 
     "Asset_Type" = "asset_type",
 
-    "Rule" = "rule"
+    "Rule" = "rule",
+    
+    "Commission" = "commission"
 
 }

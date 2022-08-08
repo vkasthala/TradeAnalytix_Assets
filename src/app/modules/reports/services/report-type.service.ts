@@ -122,7 +122,7 @@ export class ReportTypeService {
     reportSubType = new ReportSubType();
     reportSubType.name = 'Commissions';
     reportSubType.id = "commissions";
-    reportSubType.reportDetailList = [];
+    reportSubType.reportDetailList = [new ReportDetails('daily-commission', 'Daily Commission', ReportCategory.Commission, "This report shows commission amount by day"), new ReportDetails('commission-by-asset', 'Commission Paid by Asset Type', ReportCategory.Commission, "This report shows commission amount by asset type")];
     reportSubTypes.push(reportSubType);
 
     reportSubType = new ReportSubType();

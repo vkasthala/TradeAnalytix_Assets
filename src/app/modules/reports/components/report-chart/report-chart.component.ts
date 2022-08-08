@@ -115,6 +115,9 @@ export class ReportChartComponent implements OnInit, AfterViewInit {
     } else if(category == ReportCategory.Asset_Type) {
       request = this.reportRequestService.getCommonChartRequest(this.report, this.subtype, this.reportFilter);
       url = this.reportRequestService.getAssetTypeApiUrl(this.report.id);
+    } else if(category == ReportCategory.Commission) {
+      request = this.reportRequestService.getCommonChartRequest(this.report, this.subtype, this.reportFilter);
+      url = this.reportRequestService.getCommissionApiUrl(this.report.id);
     }
 
     //Load Chart
