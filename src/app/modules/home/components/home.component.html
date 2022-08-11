@@ -45,13 +45,13 @@
                 <li class="sidebar-item" [class.nav-active]="currentRoute == 'reports'">
                     <a class="sidebar-link" [routerLink]="['/reports/']">
                         <mat-icon>pie_chart</mat-icon>
-                        <span>Reports</span>
+                        <span>Trade Analytics</span>
                     </a>
                 </li>
                 <li class="sidebar-item" [class.nav-active]="currentRoute == 'rules'">
                     <a class="sidebar-link" [routerLink]="['/rules/']">
                         <mat-icon>rule</mat-icon>
-                        <span>Rules</span>
+                        <span>Trading Rules</span>
                     </a>
                 </li>
             </ul>
@@ -74,10 +74,10 @@
                     </a>
                 </li>
             </ul>
-            <span class="menu-toggle cursor-pointer" (click)="sidebarToggle()">
+            <!-- <span class="menu-toggle cursor-pointer" (click)="sidebarToggle()">
                 <mat-icon *ngIf="!isExpand">arrow_forward</mat-icon>
                 <mat-icon *ngIf="isExpand">arrow_back</mat-icon>
-            </span>
+            </span> -->
         </nav>
     </div>
     <div class="main">

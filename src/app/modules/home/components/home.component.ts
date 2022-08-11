@@ -110,7 +110,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
       case 'strategy-comparison': return { breadcrumb: 'Strategy Picker', title: 'Strategy Picker', description: "Enter the first few letters of the symbol or company name and choose a stock from the list. Compare up to five trades on that symbol to pick the right trade strategy that’s in line with your risk appetite" };
 
-      case 'reports': return { breadcrumb: 'REPORTS', title: 'Reports', description: 'Reports' };
+      case 'reports': return { breadcrumb: 'Trade Analytics', title: 'Trade Analytics', description: 'Reports' };
 
       case 'help': return { breadcrumb: 'How-To Guides', title: 'How-To Guides', description: 'Help' };
 
@@ -126,13 +126,13 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
       case 'profile': return { breadcrumb: 'USER PROFILE', title: 'User Profile', description: "User Profile" };
 
-      case 'risk-analysis': return { breadcrumb: 'Strategy Builder', title: 'Strategy Builder', description: "Enter the first few letters of the symbol or company name and choose a stock from the list. Build a trade strategy on that stock to analyze its risk and profitability in different scenarios while varying stock price, implied volatility, and days to expiration" };
+      case 'risk-analysis': return { breadcrumb: 'Strategy Analyzer', title: 'Strategy Analyzer', description: "Enter the first few letters of the symbol or company name and choose a stock from the list. Build a trade strategy on that stock to analyze its risk and profitability in different scenarios while varying stock price, implied volatility, and days to expiration" };
 
       case 'add-new-trade-plan': return { breadcrumb: 'TRADING PLAN', breadcrumbChild: 'ADD TRADE PLAN', title: 'Add Trade Plan', description: 'Add Trade Plan' };
 
       case 'import-trades-history': return { breadcrumb: 'Import Trades', title: 'Import Trades', description: 'Trade history files exported from brokerages can be imported into the system to add trades in bulk. All the files imported into the system are displayed as a list.' };
 
-      case 'rules': return { breadcrumb: 'Rules', title: 'Rules', description: "Manual rules are user-specific rules that show up in the Rules section of a trade when the user adds, edits, or closes a trade. User can review these rules and should manually mark them aligned or not aligned." };
+      case 'rules': return { breadcrumb: 'Trading Rules', title: 'Trading Rules', description: "Manual rules are user-specific rules that show up in the Rules section of a trade when the user adds, edits, or closes a trade. User can review these rules and should manually mark them aligned or not aligned." };
 
       case 'notifications': return { breadcrumb: 'Notifications', title: 'Notifications', description: 'Notifications' };
 

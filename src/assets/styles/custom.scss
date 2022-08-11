@@ -380,8 +380,8 @@ mat-header-cell:last-of-type,
 }
 
 .sidebar {
-    min-width: 220px;
-    max-width: 220px;
+    min-width: 200px;
+    max-width: 200px;
     // transition: margin-left .35s ease-in-out, left .35s ease-in-out, margin-right .35s ease-in-out, right .35s ease-in-out;
     direction: ltr;
     background: #394c86;
@@ -441,6 +441,7 @@ a.sidebar-link {
 
 .sidebar-link>.mat-icon {
     color: #7684ac;
+    display: none;
 }
 
 .sidebar-link>span {
@@ -508,8 +509,8 @@ a.sidebar-link {
 
 .sidebar-item {
     position: relative;
-    padding: 0 10px;
-    min-height: 40px;
+    padding: 0 10px 0 28px;
+    min-height: 32px;
     @media #{$extra-small} {
         padding: 0;
         min-height: 40px;
@@ -896,16 +897,16 @@ iframe {
     color: #fff;
     box-shadow: none;
     padding: 0;
-    font-weight: 500;
-    font-size: 16px;
+    font-weight: 600;
+    font-size: 15px;
     padding: 6px 18px;
     position: relative;
 }
 .parent-item:before {
     content: '';
     position: absolute;
-    top: 15px;
-    right: 10px;
+    top: 13px;
+    right: 30px;
     border-top: 8px solid #fff;
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
@@ -919,5 +920,5 @@ iframe {
     margin: 0;
 }
 .trade-navbar {
-    margin-top: 1rem;
+    margin-top: 2rem;
 }
