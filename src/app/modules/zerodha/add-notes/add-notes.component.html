@@ -1,0 +1,203 @@
+<div class="compare-popup">
+    <div class="compare-pop-inner">
+        <div class="top-pop-inner">
+            <div class="left-heading">
+                <div class="modal-title m-0">Add Notes</div>
+            </div>
+            <div class="right-close" (click)="closeModal()">
+                <mat-icon>clear</mat-icon>
+            </div>
+        </div>
+
+        <div class="main-pop-inner">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="thesis_item">
+                        <div class="thesis_item_title">
+                            Who suggested this trade to you ?
+                        </div>
+                        <div class="media align-items-center">
+                            <div class="media-body">
+                                <select class="form-control select-input" id="inputState" [(ngModel)]="tradeThesis.sourceId">
+                                    <option [ngValue]="opt.id" *ngFor="let opt of sourceTypes; trackBy: id">{{opt.name}}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="px-3">
+                                <a class="add-new" (click)="addValue('Source')" *ngIf="addTrade || editTrade">+ Add New</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end : thesis_item -->
+                <div class="col-sm-6">
+                    <div class="thesis_item">
+                        <div class="thesis_item_title">
+                            Specify the reasons for executing this trade
+                        </div>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                            [(ngModel)]="tradeThesis.reasons"></textarea>
+                    </div>
+                </div>
+                <!-- end : thesis_item -->
+    
+                <div class="col-sm-6">
+                    <div class="thesis_item">
+                        <div class="thesis_item_title">
+                            What is your target price for the stock?
+                        </div>
+                        <input type="text" class="form-control" placeholder="Enter the price"
+                            [(ngModel)]="tradeThesis.targetPrice" />
+                    </div>
+                </div>
+                <!-- end : thesis_item -->
+    
+                <div class="col-sm-6">
+                    <div class="thesis_item">
+                        <div class="thesis_item_title">
+                            What is the target date to close this trade? 
+                        </div>
+                        <div class="datepicker-group">
+                            <input type="date" class="form-control bg-white" id="targetCloseDate" 
+                                (dateChange)="addEvent('input', $event, index)" 
+                                name="tradeThesis.targetCloseDate" 
+                                [(ngModel)]="tradeThesis.targetCloseDate" />
+                        </div>
+                    </div>
+                </div>
+                <!-- end : thesis_item -->
+    
+                <div class="col-sm-6">
+                    <div class="thesis_item">
+                        <div class="thesis_item_title">
+                            Is this a contrarian trade? 
+                        </div>
+                        <div class="media align-items-center">
+                            <input type="radio" [value]=2 class="trade-type-radio"> No
+                            <input type="radio" [value]=1 class="trade-type-radio ml-4"> Yes
+                        </div>
+                    </div>
+                </div>
+                <!-- end : thesis_item -->
+    
+                <div class="col-sm-6">
+                    <div class="thesis_item">
+                        <div class="thesis_item_title">
+                            Specify the direction of the trade? 
+                        </div>
+                        <div class="media align-items-center">
+                            <select class="form-control select-input" id="inputState"
+                                [(ngModel)]="tradeThesis.direction">
+                                <option [ngValue]=1>Long</option>
+                                <option [ngValue]=2>Neutral</option>
+                                <option [ngValue]=3>Short</option>
+                                <option [ngValue]=4>Custom</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <!-- end : thesis_item -->
+    
+                <div class="col-sm-6">
+                    <div class="thesis_item">
+                        <div class="thesis_item_title">
+                            Select the technical indicator used for this trade
+                        </div>
+                        <div class="media align-items-center">
+                            <div class="media-body">
+                                <select class="form-control select-input" id="inputState"
+                                    [(ngModel)]="tradeThesis.technicalIndicatorId">
+                                    <option [ngValue]="opt.id" *ngFor="let opt of technicalIndicators; trackBy: id">
+                                        {{opt.name}}</option>
+                                </select>
+                            </div>
+                            <div class="px-3">
+                                <a class="add-new" (click)="addValue('Technical Indicator')" *ngIf="addTrade || editTrade"> + Add New</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end : thesis_item -->
+    
+                <div class="col-sm-6">
+                    <div class="thesis_item">
+                        <div class="thesis_item_title">
+                            Select any event surrounding this trade
+                        </div>
+                        <div class="media align-items-center">
+                            <div class="media-body">
+                                <select class="form-control select-input" id="inputState"
+                                    [(ngModel)]="tradeThesis.surroundingEventId">
+                                    <option [ngValue]="opt.id" *ngFor="let opt of surroundingTypes; trackBy: id">
+                                        {{opt.name}}</option>
+                                </select>
+                            </div>
+                            <div class="px-3">
+                                <a class="add-new" (click)="addValue('Surrounding Type')" *ngIf="addTrade || editTrade">+ Add New</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end : thesis_item -->
+    
+                <div class="col-sm-6">
+                    <div class="thesis_item">
+                        <div class="thesis_item_title">
+                            Is this a planned or an impromptu trade ? 
+                        </div>
+                        <div class="media align-items-center">        
+                            <input type="radio" value="planned" class="trade-type-radio">planned
+                            <input type="radio" value="impromptu" class="trade-type-radio ml-4">Impromptu
+                        </div>
+    
+                    </div>
+                </div>
+                <!-- end : thesis_item -->
+    
+                <div class="col-sm-6">
+                    <div class="thesis_item">
+                        <div class="thesis_item_title">
+                            What is your mindset while executing this trade? 
+                        </div>
+                        <div class="media align-items-center">
+                            <div class="media-body">
+                                <select class="form-control select-input" id="inputState"
+                                    [(ngModel)]="tradeThesis.mindsetId">
+                                    <option [ngValue]="opt.id" *ngFor="let opt of mindsetTypes; trackBy: id">{{opt.name}}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="px-3">
+                                <a class="add-new" (click)="addValue('Mindset')" *ngIf="addTrade || editTrade">+ Add New</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end : thesis_item -->
+    
+                <div class="col-sm-12">
+                    <div class="thesis_item upload_item">
+                        <div class="thesis_item_title">
+                            Upload files
+                        </div>
+                        <div *ngFor="let file of tradeChubFiles;let i = index"><span (click) = "downloadFile(i)" style="cursor: pointer">{{file.fileName}}</span><mat-icon class="mat-icon-sm" style="cursor: pointer;" (click)="deleteFileName(i)">delete</mat-icon></div>
+                        <div class="media">
+                            <div class="media-body">
+                                <input type="file" (change)="selectFile($event)" accept=".pdf,.png,.jpg,.jpeg,.bmp,.docx,.doc,.xls,.xlsx,.pptx,.ppt" style="padding-top: 10px;" />
+                            </div>
+                        </div>
+                        <div class="text-right pt-2">
+                            <a class="add-new" (click)="generateChart()" *ngIf="addTrade || editTrade">Generate Chart</a>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- end : thesis_item -->
+            </div>           
+        </div>
+        <div class="modal-footer justify-content-center py-2">
+            <button type="button" class="btn btn-cancel mr-3" (click)="closeModal()">Cancel</button>
+            <button type="button" class="btn btn-join" (click)="submitReferral()">Save</button>
+        </div>
+    </div>
+</div>

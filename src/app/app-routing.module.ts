@@ -6,6 +6,8 @@ import { LandingComponent } from './modules/login/components/landing.component';
 import { PrivacyPolicyComponent } from './modules/privacy-policy/components/privacy-policy.component';
 import { SupportComponent } from './modules/support/support.component';
 import { TermsAndConditionsComponent } from './modules/terms-conditions/components/terms-conditions.component';
+import { TradeBookComponent } from './modules/tradebook/tradebook.component';
+import { ZerodhaComponent } from './modules/zerodha/zerodha.component';
 
 const routes: Routes = [
   {
@@ -20,6 +22,14 @@ const routes: Routes = [
   {
     path: 'support',
     component : SupportComponent
+  },
+  {
+    path: 'zerodha',
+    component : ZerodhaComponent
+  },
+  {
+    path: 'tradebook',
+    component : TradeBookComponent
   },
   {
     path: 'terms-conditions',
