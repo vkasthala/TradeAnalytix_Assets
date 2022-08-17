@@ -1,0 +1,360 @@
+@import '../../../../assets/styles/variable.scss';
+@import '../../../../assets/styles/breakpoints.scss';
+
+.compare-popup {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99;
+  // background-color: rgba(0,0,0,0.1);
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.compare-pop-inner {
+  background: #fff;
+  max-width: 767px;
+  min-width: 767px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  box-shadow: 0px 0px 16px rgba(157, 157, 157, 0.2);
+  border-radius: 4px;
+}
+
+.main-pop-inner {
+  border: 0;
+  padding:0.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+}
+
+.main-inner-sec {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 15px;
+  .left-sec {
+      width: 36%;
+  }
+  .right-sec {
+      display: flex;
+      width: 66%;
+  }
+}
+
+.right-sec {
+  display: flex;
+}
+
+
+
+.main-inner-top {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.top-pop-inner {
+  align-items: center;
+  padding: 10px 15px;
+  justify-content: space-between;
+  display: flex;
+  border-bottom: 2px solid #2285FA;
+  position: relative;
+}
+.modal-title {
+  font-size: 16px;
+  text-align: center;
+  font-weight: 600;
+}
+.left-heading {
+  font-size: 14px;
+  h6 {
+      font-size: 14px;
+  }
+}
+
+.right-close {
+  line-height: 0;
+  span {
+      cursor: pointer;
+  }
+  .mat-icon {
+      cursor: pointer;
+      height: 20px;
+      width: 20px;
+      font-size: 20px !important;
+  }
+}
+
+.btn-up {
+  padding-top: 0.5rem;
+  text-align: right;
+}
+
+.btn-add {
+  padding: 0.375rem 1.5rem !important;
+  background: #2285FA;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 400;
+  height: 40px;
+  cursor: pointer;
+  border-radius: 0;
+  &:hover {
+      color: white !important;
+  }
+}
+
+.col-form-label {
+  color: #000;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.form-control {
+  padding: 0.375rem 0.5rem;
+  font-size: 12px;
+}
+
+select.form-control {
+  padding: 0.375rem 0.25rem;
+}
+
+.pop-inner-title {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 24px;
+  padding: 10px 0;
+  color: #3A4C85;
+}
+
+.rule-item{
+  margin-left: 20px;
+  padding: 1px;
+  color: #EC6B56;
+}
+
+.failed-rules{
+  margin-top: 10px;
+  font-size: 12px !important;
+}
+.form-control {
+  display: block;
+  height: 30px;
+  margin: auto;
+  border: 1px solid #878484;
+}
+.btn-join {
+  background-color: #2D50AB;
+  color: #ffffff;
+  font-size: 12px;
+  padding: 0.375rem 1.5rem !important;
+  border-radius: 0;
+  height: 40px;
+  line-height: 26px;
+  width: 105px;
+}
+
+.btn-cancel {
+  background-color: #D9D9D9;
+  color: #000;
+  font-size: 12px;
+  padding: 0.375rem 1.5rem !important;
+  border-radius: 0;
+  height: 40px;
+  line-height: 26px;
+  width: 105px;
+}
+
+
+.trade-thesis-sec {
+    background: #FFFFFF;
+    box-shadow: 0px 4px 16px rgba(157, 157, 157, 0.1);
+    border-radius: 0 0 4px 4px;
+    padding: 0;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.trade-close-thesis-sec {
+    background: #FFFFFF;
+    box-shadow: 0px 4px 16px rgba(157, 157, 157, 0.1);
+    border-radius: 4px;
+    padding: 0;
+    position: relative;
+}
+
+.entry-thesis-header {
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 24px;
+    padding: 10px 25px;
+    color: #3A4C85;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.thesis_item {
+    background: #F6F8FB;
+    border: 1px solid rgb(157 166 186 / 22%);
+    box-shadow: 0px 4px 12px rgba(157, 166, 186, 0.4);
+    border-radius: 4px;
+    padding: 5px 10px;
+    margin-bottom: .5rem;
+    min-height: 70px;
+    .thesis_item_title {
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 18px;
+        color: #3A4C85;
+        margin-bottom: .25rem;
+        align-items: center;
+        display: flex;
+    }
+}
+
+.form-control {
+    border: 1px solid #70707070;
+    font-size: 12px;
+    padding: 0.375rem 0.5rem;
+    width: 100%;
+    color: #242E3A;
+}
+
+select.form-control {
+    padding: 0.375rem 0.25rem;
+}
+
+.add-new {
+    color: #2285FA;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.trade-type-radio {
+    margin-right: 5px;
+}
+
+.left-trade,
+.right-trade {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    @media #{$small} {
+        width: 100%;
+    }
+}
+
+.Trade-type .form-control {
+    height: 30px;
+    width: 240px;
+    font-size: 12px;
+    @media #{$extra-small} {
+        width: 100%;
+    }
+    @media #{$small} {
+        width: 100%;
+    }
+}
+
+.trade-date .form-control {
+    height: 30px;
+}
+
+.trade-input .has-search {
+    height: 45px;
+    width: 150%;
+    @media #{$extra-small} {
+        width: 100%;
+    }
+    @media #{$small} {
+        width: 100%;
+    }
+}
+
+.trade-inputt .form-control {
+    height: 30px;
+}
+
+.trad-border {
+    border: 1px solid #acacac;
+    opacity: 0.3;
+}
+
+.trade-new-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    .btn-per {
+        color: $primary;
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+    }
+    .btn-next {
+        color: $primary;
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+    }
+}
+
+textarea.form-control {
+    height: 40px;
+    resize: none;
+}
+
+.trade-input {
+    // width: 70%;
+    @media #{$small} {
+        width: 70%;
+    }
+}
+
+.disabled {
+    background: #dedede !important;
+    pointer-events: none !important;
+}
+.upload_item {
+    border: 1px dashed #ccc;
+}
+.upload_title {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 36px;
+    color: #9DA6BA;
+    text-align: center;
+}
+@media (max-width:1024px) {
+    .thesis_item {
+        padding: 10px !important;
+    }
+    .thesis_item_title {
+        font-size: 12px !important;
+        line-height: 1.5 !important;
+    }
+    .add-new {
+        font-size: 12px !important;
+    }
+}
+@media #{$extra-small} {
+    .thesis_item {
+        padding: 10px !important;
+        min-height: 90px;
+    }
+}
+.configure-questions {
+    font-size: 13px;
+    color: #2285FA;
+}

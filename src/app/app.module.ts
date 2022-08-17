@@ -34,8 +34,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PrivacyPolicyComponent } from './modules/privacy-policy/components/privacy-policy.component';
 import { TermsAndConditionsComponent } from './modules/terms-conditions/components/terms-conditions.component';
 import { SupportComponent } from './modules/support/support.component';
-
-
+import { ZerodhaComponent } from './modules/zerodha/zerodha.component';
+import { ViewInsightsComponent } from './modules/zerodha/view-insights/view-insights.component';
+import { CopyCueTradeComponent } from './modules/zerodha/copy-cueTrade/copy-cueTrade.component';
+import { AddNotesComponent } from './modules/zerodha/add-notes/add-notes.component';
+import { TradeBookComponent } from './modules/tradebook/tradebook.component';
 
 
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
@@ -55,7 +58,12 @@ export function highchartsModules() {
     LandingComponent,
     TermsAndConditionsComponent,
     PrivacyPolicyComponent,
-    SupportComponent
+    SupportComponent,
+    ZerodhaComponent,
+    ViewInsightsComponent,
+    CopyCueTradeComponent,
+    AddNotesComponent,
+    TradeBookComponent
   ],
   imports: [
     FormsModule,
@@ -92,7 +100,10 @@ export function highchartsModules() {
   ],
   bootstrap: [AppComponent],
   entryComponents: [
-    JoinWaitlistComponent
+    JoinWaitlistComponent,
+    ViewInsightsComponent,
+    CopyCueTradeComponent,
+    AddNotesComponent,
   ]
 })
 export class AppModule { }
