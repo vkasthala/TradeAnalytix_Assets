@@ -10,14 +10,11 @@ export const environment = {
   redirectUri: 'https://tradeanalytix.com/oauth-redirect',*/
   /*apiUrl: 'https://tradeanalytix.com/service/us',
   redirectUri: 'https://us.tradeanalytix.com/oauth-redirect',*/
-  /*apiUrl: 'https://in.cuetrade.io/service',
-  redirectUri: 'https://in.cuetrade.io/oauth-redirect',*/
-  /*apiUrl: 'https://us.cuetrade.io/service',
-  redirectUri: 'https://us.cuetrade.io/oauth-redirect',*/
-  /*apiUrl: 'https://cuetrade.io/in/service',
-  redirectUri: 'https://www.in.cuetrade.io/oauth-redirect',*/
-  apiUrl: 'http://localhost:8080/service',
-  redirectUri: 'http://localhost:4200/oauth-redirect',
+  apiUrl: 'https://in.cuetrade.io/service',
+  redirectUri: 'https://in.cuetrade.io/oauth-redirect',
+  /*apiUrl: 'http://localhost:8080/service',
+  redirectUri: 'http://localhost:4200/oauth-redirect',*/
+  tz: 'Asia/Calcutta'
 };
 
 /*
