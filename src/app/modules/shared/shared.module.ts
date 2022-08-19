@@ -4,9 +4,10 @@ import { TradeExecutionDateComponent } from './components/modals/trade-execution
 import { EditableListComponent } from './components/widgets/editable-list/editable-list.component';
 import { EditableGridComponent } from './components/widgets/editable-grid/editable-grid.component';
 import { StrategyDetailsComponent } from '../compare-strategies/components/strategy-details/strategy-details.component';
+import { ConfigureFieldsPopupComponent } from './components/widgets/configure-fields-popup/configure-fields-popup.component';
 
 @NgModule({
-  declarations: [TradeExecutionDateComponent, EditableListComponent, EditableGridComponent, StrategyDetailsComponent],
+  declarations: [TradeExecutionDateComponent, EditableListComponent, EditableGridComponent, StrategyDetailsComponent, ConfigureFieldsPopupComponent],
   imports: [
     CommonModule
   ]

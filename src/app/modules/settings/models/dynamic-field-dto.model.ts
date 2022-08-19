@@ -1,5 +1,7 @@
 export class DynamicFieldDto {
 
+    id: number;
+
     name: string;
 
     type: string;
@@ -9,5 +11,7 @@ export class DynamicFieldDto {
     label: string;
 
     userFieldId: number;
+    
+    show: string;
 
 }
