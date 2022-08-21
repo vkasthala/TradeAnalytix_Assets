@@ -45,7 +45,12 @@
                 <li class="sidebar-item" [class.nav-active]="currentRoute == 'reports'">
                     <a class="sidebar-link" [routerLink]="['/reports/']">
                         <mat-icon>pie_chart</mat-icon>
-                        <span>Trade Analytics</span>
+                        <span>Analytics</span>
+                    </a>
+                </li>
+                <li class="sidebar-item" [class.nav-active]="currentRoute == 'insights'">
+                    <a class="sidebar-link" [routerLink]="['/insights/']">
+                        <span>Insights</span>
                     </a>
                 </li>
                 <li class="sidebar-item" [class.nav-active]="currentRoute == 'rules'">
@@ -63,7 +68,6 @@
             <ul class="list-unstyled ">
                 <li class="sidebar-item" [class.nav-active]="currentRoute == 'risk-analysis'">
                     <a class="sidebar-link" [routerLink]="['/risk-analysis/']">
-                        <mat-icon>insights</mat-icon>
                         <span>Strategy Analyzer</span>
                     </a>
                 </li>
@@ -74,6 +78,12 @@
                     </a>
                 </li>
             </ul>
+
+            <div class="parent-item">
+                <a class="sidebar-link" [routerLink]="['/setttings/']">
+                    Settings
+                </a>
+            </div>
             <!-- <span class="menu-toggle cursor-pointer" (click)="sidebarToggle()">
                 <mat-icon *ngIf="!isExpand">arrow_forward</mat-icon>
                 <mat-icon *ngIf="isExpand">arrow_back</mat-icon>
@@ -105,17 +115,11 @@
                                 <label for="demoToggle"></label>
                               </div>
                         </span>
-                        <span class="top-nav-item pr-0" [class.nav-active]="currentRoute == 'setttings'">
+                        <!-- <span class="top-nav-item pr-0" [class.nav-active]="currentRoute == 'setttings'">
                             <a class="top-nav-link" [routerLink]="['/setttings/']">
                                 <mat-icon>settings</mat-icon>
                             </a>
-                        </span>
-                        <span class="top-nav-item pl-0" [class.nav-active]="currentRoute == 'notifications'">
-                            <a class="top-nav-link" [routerLink]="['/notifications/']">
-                                <mat-icon>notifications_none</mat-icon>
-                                <span class="notification_count">{{notificationService.notificationCount}}</span>
-                        </a>
-                        </span>
+                        </span> -->
                         <span class="top-nav-item pr-0" [class.nav-active]="currentRoute == 'help'">
                             <a class="top-nav-link" [routerLink]="['/help']">
                                 <mat-icon>help_outline</mat-icon>

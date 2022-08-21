@@ -104,6 +104,86 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col-sm-12 col-md-4">
+                <div class="trade-analytics">
+                    <div class="trade-headiang">
+                        <h5>Daily Insights</h5>
+                    </div>
+                    <div class="dsh-img list-group-card px-0" style="height: 300px;">
+                        <ul class="insights-list">
+                            <li><mat-icon class="close-icon">close</mat-icon> Value at Risk is higher than the amount set in the daily trade plan</li>
+                            <li><mat-icon class="check-icon">check</mat-icon> Goal for the period 06/01/2022 - 06/30/2022 reached!</li>
+                            <li><mat-icon class="check-icon">check</mat-icon> Daily trade count decreased the daily trade count by 50%</li>
+                            <li><mat-icon class="priority-icon">priority_high</mat-icon> AMZN has the highest risk exposure (24,832) in your portfolio Consider heding</li>
+                            <li><mat-icon class="priority-icon">priority_high</mat-icon> Stop loss hit for CIPLA (0722-104181) Consider closing the trade</li>
+                        </ul>
+                        <!-- <div class="list-group-row">
+                            <div class="col-9">
+                                How-to videos on CueTrade's features
+                            </div>
+                            <div class="list-group-bottom col-3 text-right">
+                                <a href="https://www.youtube.com/channel/UC2VXwmZeSkAjY1bZTcnObwQ/videos" target="_blank">Watch Now </a>
+                            </div>
+                        </div>
+
+                        <div class="list-group-row row">
+                            <div class="col-8">
+                                Step-by-step guides on using CueTrade
+                            </div>
+                            <div class="list-group-bottom col-4 text-right">
+                                <a [routerLink]="['/help']">User Manuals</a>
+                            </div>
+                        </div>
+                        <div class="list-group-row row">
+                            <div class="col-9">
+                                Go through answers to FAQs on CueTrade
+                            </div>
+                            <div class="list-group-bottom col-3 text-right">
+                                <a href="https://cuetrade.wpcomstaging.com/2022/04/02/frequently-asked-questions-faqs/" target="_blank">Visit FAQs</a>
+                            </div>
+                        </div>
+                        <div class="list-group-row row">
+                            <div class="col-9">Read our blog</div>
+                            <div class="list-group-bottom col-3 text-right">
+                                <a>Visit Blog</a>
+                            </div>
+                        </div>
+                        <div class="list-group-row row">
+                            <div class="col-9">
+                                Follow us on social media<img src="../../../../assets/images/beta-icon.png" class="beta-icon"/>
+                            </div>
+                            <div class="list-group-bottom col-3 text-right">
+                                <a class="mr-2"><img src="../../../assets/images/twitter_sm.png" alt="twitter" class="socail-icon" /></a>
+                                <a><img src="../../../assets/images/facebook.png" alt="facebook" class="socail-icon" /></a>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-sm-12 col-md-4">
+                <div class="trade-analytics">
+                    <div class="trade-headiang">
+                        <h5>Goal Status</h5>
+                    </div>
+                    <div class="dsh-img">
+                        <app-user-goals-by-date-chart></app-user-goals-by-date-chart>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-sm-12 col-md-4">
+                <div class="trade-analytics">
+                    <div class="trade-headiang">
+                        <h5>Max Amount at Risk by Asset</h5>
+                    </div>
+                    <div class="dsh-img">
+                        <a routerLink="/reports" class="cursor"><app-risk-by-asset-chart></app-risk-by-asset-chart></a>
+                    </div>
+                </div>
+            </div>
+
             <div class="col-sm-12 col-md-4 quick-links-card-web">
                 <div class="trade-analytics">
                     <div class="trade-headiang">
@@ -156,79 +236,6 @@
                             </div>
                             <div class="list-group-bottom col-4 text-right">
                                 <span class="cursor" (click)="BecomeAnAffiliate()">Contact Us</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            
-            <div class="col-sm-12 col-md-4">
-                <div class="trade-analytics">
-                    <div class="trade-headiang">
-                        <h5>Goal Status</h5>
-                    </div>
-                    <div class="dsh-img">
-                        <app-user-goals-by-date-chart></app-user-goals-by-date-chart>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-sm-12 col-md-4">
-                <div class="trade-analytics">
-                    <div class="trade-headiang">
-                        <h5>Max Amount at Risk by Asset</h5>
-                    </div>
-                    <div class="dsh-img">
-                        <a routerLink="/reports" class="cursor"><app-risk-by-asset-chart></app-risk-by-asset-chart></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-12 col-md-4">
-                <div class="trade-analytics">
-                    <div class="trade-headiang">
-                        <h5>Help Center</h5>
-                    </div>
-                    <div class="dsh-img list-group-card" style="height: 300px;">
-                        <div class="list-group-row row">
-                            <div class="col-9">
-                                How-to videos on CueTrade's features
-                            </div>
-                            <div class="list-group-bottom col-3 text-right">
-                                <a href="https://www.youtube.com/channel/UC2VXwmZeSkAjY1bZTcnObwQ/videos" target="_blank">Watch Now </a>
-                            </div>
-                        </div>
-
-                        <div class="list-group-row row">
-                            <div class="col-8">
-                                Step-by-step guides on using CueTrade
-                            </div>
-                            <div class="list-group-bottom col-4 text-right">
-                                <a [routerLink]="['/help']">User Manuals</a>
-                            </div>
-                        </div>
-                        <div class="list-group-row row">
-                            <div class="col-9">
-                                Go through answers to FAQs on CueTrade
-                            </div>
-                            <div class="list-group-bottom col-3 text-right">
-                                <a href="https://cuetrade.wpcomstaging.com/2022/04/02/frequently-asked-questions-faqs/" target="_blank">Visit FAQs</a>
-                            </div>
-                        </div>
-                        <div class="list-group-row row">
-                            <div class="col-9">Read our blog</div>
-                            <div class="list-group-bottom col-3 text-right">
-                                <a>Visit Blog</a>
-                            </div>
-                        </div>
-                        <div class="list-group-row row">
-                            <div class="col-9">
-                                Follow us on social media<img src="../../../../assets/images/beta-icon.png" class="beta-icon"/>
-                            </div>
-                            <div class="list-group-bottom col-3 text-right">
-                                <a class="mr-2"><img src="../../../assets/images/twitter_sm.png" alt="twitter" class="socail-icon" /></a>
-                                <a><img src="../../../assets/images/facebook.png" alt="facebook" class="socail-icon" /></a>
                             </div>
                         </div>
                     </div>

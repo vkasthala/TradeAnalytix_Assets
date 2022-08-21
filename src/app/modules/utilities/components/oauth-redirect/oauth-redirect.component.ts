@@ -48,7 +48,7 @@ export class OauthRedirectComponent implements OnInit {
 
   successLogin() {
     this.router.navigate(['dashboard']);
-    this.openGettingStartedVideo();
+    // this.openGettingStartedVideo();
     this.stockSymbolService.getStockSymbols();
   }
 
@@ -74,10 +74,10 @@ export class OauthRedirectComponent implements OnInit {
         disableClose: true
       });
       dialogRef.afterClosed().subscribe((res) => {
-        this.openGettingStartedVideo();
+        //this.openGettingStartedVideo();
       });
     } else {
-      this.openGettingStartedVideo()
+      //this.openGettingStartedVideo()
     }
   }
 
@@ -99,7 +99,7 @@ export class OauthRedirectComponent implements OnInit {
 
   ImportTradeBookModal() {
     let dialogData = {
-      title: 'Import Trade Book',
+      title: 'Add Trades in Bulk',
     };
     const dialogRef = this._dialog.open(ImportTradeBookComponent, {
       disableClose: true,

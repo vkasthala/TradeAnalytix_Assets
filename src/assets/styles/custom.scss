@@ -367,7 +367,7 @@ mat-header-cell:last-of-type,
     font-family: "Poppins", sans-serif;
     font-size: 22px;
     font-weight: 500;
-    padding-top: 5px;
+    padding-top: 10px;
 }
 
 .sidebar-brand>span {
@@ -901,6 +901,10 @@ iframe {
     font-size: 15px;
     padding: 6px 18px;
     position: relative;
+    a {
+        color: #fff;
+        font-weight: 600;
+    }
 }
 .parent-item:before {
     content: '';

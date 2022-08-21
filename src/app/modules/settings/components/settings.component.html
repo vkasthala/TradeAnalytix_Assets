@@ -17,10 +17,10 @@
                 <li class="" role="presentation">
                     <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#DataSetup" role="tab">Data Setup</a>
                 </li>
-                <!-- <li class="" role="presentation">
-                    <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#EntryExitRules" role="tab">Entry/Exit Rules</a>
-                </li>
                 <li class="" role="presentation">
+                    <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#ConfigureQuestions" role="tab">Configure Questions</a>
+                </li>
+                <!-- <li class="" role="presentation">
                     <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#CodedRules" role="tab">Coded Rules</a>
                 </li> -->
             </ul>
@@ -50,10 +50,13 @@
                 <div class="tab-pane settings-component" id="DataSetup" role="tabpanel" [ngClass]="[selectedType === 'DataSetup' ? 'd-block' : 'mobile-tab-pane-d-none']">
                     <app-datasetup></app-datasetup>
                 </div>
-                <!-- <div class="tab-pane" id="EntryExitRules" role="tabpanel">
-                    <app-managerules></app-managerules>
+                <div class="tab-pane" id="ConfigureQuestions" role="tabpanel">
+                    <div class="profile-body">
+                        <div class="mb-2"><a class="configure-questions" href="javascript:void(0)" (click)="openExitQuestions()" >Configure Entry Questions</a></div>
+                        <div><a class="configure-questions" href="javascript:void(0)" (click)="openExitQuestions()" >Configure Exit Questions</a></div>
+                    </div>
                 </div>
-                <div class="tab-pane" id="CodedRules" role="tabpanel">
+                <!-- <div class="tab-pane" id="CodedRules" role="tabpanel">
                     <app-codedrules></app-codedrules>
                 </div> -->
             </div>
