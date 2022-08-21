@@ -144,8 +144,7 @@ import { BulkUpdateComponent } from '../bulk-update/bulk-update.component';
 import { ReferralModalComponent } from '../dashboard/components/referral-modal/referral-modal.component';
 import { GettingStartedVideoComponent } from '../dashboard/components/getting-started-modal/getting-started-video.component';
 import { ImportTradeBookComponent } from '../dashboard/components/import-tradebook/import-tradebook.component';
-import { ConfigureEntryQuestionsComponent } from '../trade-management/components/add-trade/Steps/trade-thesis/configure-entry-questions-popup/configure-entry-questions.component';
-import { ConfigureExitQuestionsComponent } from '../trade-management/components/add-trade/Steps/trade-thesis/configure-exit-questions-popup/configure-exit-questions.component';
+import { ConfigureFieldsPopupComponent } from '../shared/components/widgets/configure-fields-popup/configure-fields-popup.component';
 
 export const MY_FORMATS = {
   parse: {
@@ -288,8 +287,7 @@ export const MY_FORMATS = {
     ReferralModalComponent,
     GettingStartedVideoComponent,
     ImportTradeBookComponent,
-    ConfigureEntryQuestionsComponent,
-    ConfigureExitQuestionsComponent
+    ConfigureFieldsPopupComponent
   ],
   imports: [
     FormsModule,
@@ -361,8 +359,7 @@ export const MY_FORMATS = {
     ReferralModalComponent,
     GettingStartedVideoComponent,
     ImportTradeBookComponent,
-    ConfigureEntryQuestionsComponent,
-    ConfigureExitQuestionsComponent
+    ConfigureFieldsPopupComponent
   ],
   // bootstrap: [TradeStrategiesGrid],
   providers: [

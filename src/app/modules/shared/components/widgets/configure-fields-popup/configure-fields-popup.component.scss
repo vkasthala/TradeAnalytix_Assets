@@ -1,4 +1,4 @@
-@import "../../../../../../../../assets/styles/variable.scss";
+@import '../../../../../../assets/styles/variable.scss';
 
 
 
@@ -41,12 +41,13 @@
 }
 
 .top-pop-inner {
-    display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 10px 1.5rem;
-}
-
+    padding: 10px 15px;
+    justify-content: space-between;
+    display: flex;
+    border-bottom: 3px solid #2285FA;
+    position: relative;
+  }
 
 
 .right-close {

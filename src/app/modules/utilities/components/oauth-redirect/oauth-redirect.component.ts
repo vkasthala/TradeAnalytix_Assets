@@ -48,7 +48,7 @@ export class OauthRedirectComponent implements OnInit {
 
   successLogin() {
     this.router.navigate(['dashboard']);
-    this.openGettingStartedVideo();
+    this.ImportTradeBookModal();
     this.stockSymbolService.getStockSymbols();
   }
 
@@ -99,7 +99,7 @@ export class OauthRedirectComponent implements OnInit {
 
   ImportTradeBookModal() {
     let dialogData = {
-      title: 'Import Trade Book',
+      title: 'Add Trades in Bulk',
     };
     const dialogRef = this._dialog.open(ImportTradeBookComponent, {
       disableClose: true,

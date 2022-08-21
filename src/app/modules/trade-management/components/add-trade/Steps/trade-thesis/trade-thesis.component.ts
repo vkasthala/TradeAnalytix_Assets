@@ -18,8 +18,7 @@ import { Observable } from 'rxjs';
 import { ChubUploadService } from 'src/app/modules/shared/services/chub-upload.service';
 import { TradeStrategyService } from 'src/app/modules/trade-management/services/trade-strategy.service';
 import { TradeChubFile } from 'src/app/modules/trade-management/models/trade-chub-file.model';
-import { ConfigureEntryQuestionsComponent } from './configure-entry-questions-popup/configure-entry-questions.component';
-import { ConfigureExitQuestionsComponent } from './configure-exit-questions-popup/configure-exit-questions.component';
+import { ConfigureFieldsPopupComponent } from 'src/app/modules/shared/components/widgets/configure-fields-popup/configure-fields-popup.component';
 
 @Component({
   selector: 'app-trade-thesis',
@@ -434,20 +433,23 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
   }
 
   openEntryQuestions() {
-    const dialogRef = this._dialog.open(ConfigureEntryQuestionsComponent, {
+    const dialogRef = this._dialog.open(ConfigureFieldsPopupComponent, {
       disableClose: true,
       width: 'auto',
       data: {
         title: 'Configure Entry Questions',
+        category: 'EntryThesis'
       }
     });
   }
+
   openExitQuestions() {
-    const dialogRef = this._dialog.open(ConfigureExitQuestionsComponent, {
+    const dialogRef = this._dialog.open(ConfigureFieldsPopupComponent, {
       disableClose: true,
       width: 'auto',
       data: {
         title: 'Configure Exit Questions',
+        category: 'ExitThesis'
       }
     });
   }

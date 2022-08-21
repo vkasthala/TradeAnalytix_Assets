@@ -134,7 +134,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
       case 'rules': return { breadcrumb: 'Trading Rules', title: 'Trading Rules', description: "Manual rules are user-specific rules that show up in the Rules section of a trade when the user adds, edits, or closes a trade. User can review these rules and should manually mark them aligned or not aligned." };
 
-      case 'notifications': return { breadcrumb: 'Notifications', title: 'Notifications', description: 'Notifications' };
+      case 'insights': return { breadcrumb: 'Insights', title: 'Insights', description: 'Insights' };
 
       case 'bulk-update': return { breadcrumb: 'Bulk Update', title: 'Bulk Update', description: 'Bulk Update Journal' };
       default: return null;

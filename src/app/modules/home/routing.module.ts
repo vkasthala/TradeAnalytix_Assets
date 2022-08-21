@@ -135,7 +135,7 @@ const routes: Routes = [
           component: ImportTradesHistory
         },
         {
-          path: 'notifications',
+          path: 'insights',
           component: NotificationsComponent
         },
         {
