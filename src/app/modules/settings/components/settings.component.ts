@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
 import { ConfigureFieldsPopupComponent } from '../../shared/components/widgets/configure-fields-popup/configure-fields-popup.component';
 
 @Component({
@@ -9,7 +10,9 @@ import { ConfigureFieldsPopupComponent } from '../../shared/components/widgets/c
 export class SettingsComponent implements OnInit {
   stockAdded: boolean;
   selectedType: string = "InvestmentGoals";
-  constructor() { }
+  constructor(
+    private _dialog: MatDialog,
+  ) { }
 
   ngOnInit() {
   }

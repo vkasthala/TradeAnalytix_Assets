@@ -48,7 +48,7 @@ export class OauthRedirectComponent implements OnInit {
 
   successLogin() {
     this.router.navigate(['dashboard']);
-    // this.openGettingStartedVideo();
+    this.ImportTradeBookModal();
     this.stockSymbolService.getStockSymbols();
   }
 
@@ -74,10 +74,10 @@ export class OauthRedirectComponent implements OnInit {
         disableClose: true
       });
       dialogRef.afterClosed().subscribe((res) => {
-        //this.openGettingStartedVideo();
+        this.openGettingStartedVideo();
       });
     } else {
-      //this.openGettingStartedVideo()
+      this.openGettingStartedVideo()
     }
   }
 

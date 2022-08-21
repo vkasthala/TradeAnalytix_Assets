@@ -120,6 +120,12 @@
                                 <mat-icon>settings</mat-icon>
                             </a>
                         </span> -->
+                        <span class="top-nav-item pl-0" [class.nav-active]="currentRoute == 'insights'">
+                            <a class="top-nav-link" [routerLink]="['/insights/']">
+                                <mat-icon>notifications_none</mat-icon>
+                                <span class="notification_count">{{notificationService.notificationCount}}</span>
+                        </a>
+                        </span>
                         <span class="top-nav-item pr-0" [class.nav-active]="currentRoute == 'help'">
                             <a class="top-nav-link" [routerLink]="['/help']">
                                 <mat-icon>help_outline</mat-icon>

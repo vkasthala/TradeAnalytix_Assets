@@ -781,9 +781,9 @@
     overflow:auto;
     padding: 1rem;
     font-weight: normal;
-    font-size: 14px;
     line-height: 21px;
-    color: #242E3A;
+    font-size: 13px;
+    color: #5B5B5B;
 }
 .list-group-row {
     border-bottom: 1px solid rgb(157 166 186 / 25%);
@@ -806,7 +806,7 @@
 }
 .list-group-bottom {
     font-weight: bold;
-    font-size: 14px;
+    font-size: 13px;
     line-height: 21px;
     color: #2285FA;
     @media #{$extra-small} {
@@ -897,11 +897,14 @@
     list-style-type: none;
     li {
       margin: 0;
-      padding: 5px 15px;
+      padding: 5px 10px;
       list-style-type: none;
       border-bottom: 1px solid #E8E8E8;
       display: flex;
       flex-direction: row;
+    }
+    li:last-child {
+      border-bottom: 0;
     }
    }
   .check-icon {
