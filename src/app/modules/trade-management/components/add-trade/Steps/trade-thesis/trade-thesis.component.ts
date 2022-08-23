@@ -19,6 +19,8 @@ import { ChubUploadService } from 'src/app/modules/shared/services/chub-upload.s
 import { TradeStrategyService } from 'src/app/modules/trade-management/services/trade-strategy.service';
 import { TradeChubFile } from 'src/app/modules/trade-management/models/trade-chub-file.model';
 import { ConfigureFieldsPopupComponent } from 'src/app/modules/shared/components/widgets/configure-fields-popup/configure-fields-popup.component';
+import { DynamicFieldDto } from 'src/app/modules/settings/models/dynamic-field-dto.model';
+import { DynamicFieldsService } from 'src/app/modules/settings/services/dynamic-fields.service';
 
 @Component({
   selector: 'app-trade-thesis',
@@ -35,6 +37,8 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
   gainLossAttributes: EditableListItem[];
   tradeChubFiles: TradeChubFile[] = [];
   tradeThesis: TradeThesis;
+  entryThesisFields: DynamicFieldDto[] = [];
+  exitThesisFields: DynamicFieldDto[] = [];
 
   @ViewChild('thesisTradingview', { static: false }) thesisTradingview: ElementRef;
   @Output('nextStep') nextStep = new EventEmitter();
@@ -50,6 +54,7 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
   protected hideEntryThesis: boolean = false;
   protected hideClosingThesis: boolean = false;
   tradeStatus: number;
+
   constructor(
     private _renderer2: Renderer2,
     private _dialog: MatDialog,
@@ -57,7 +62,8 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
     private dataSetupService: DataSetupService,
     private chubUploadService: ChubUploadService,
     private toastr: ToastrService,
-    private tradeStrategySevice: TradeStrategyService
+    private tradeStrategySevice: TradeStrategyService,
+    private dynamicFieldsService: DynamicFieldsService
   ) {
 
   }
@@ -71,6 +77,8 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
     this.loadTechnicalIndicators();
     this.loadCloseTriggers();
     this.loadGainLossAttributes();
+    this.loadEntryThesisUiFields();
+    this.loadExitThesisUiFields();
   }
 
   ngAfterViewInit(): void {
@@ -451,6 +459,18 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
         title: 'Configure Exit Questions',
         category: 'ExitThesis'
       }
+    });
+  }
+
+  loadEntryThesisUiFields() {
+    this.dynamicFieldsService.getUserDynamicFields('EntryThesis').subscribe(result => {
+      this.entryThesisFields = result;
+    });
+  }
+
+  loadExitThesisUiFields() {
+    this.dynamicFieldsService.getUserDynamicFields('ExitThesis').subscribe(result => {
+      this.entryThesisFields = result;
     });
   }
 
