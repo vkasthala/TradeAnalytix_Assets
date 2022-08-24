@@ -8,8 +8,8 @@ import { DropdownOption } from '../../../models/dropdown-option.model';
 })
 export class DropdownComponent implements OnInit {
 
-  @Input('uid') uid: string;
-  
+  //@Input('uid') uid: string;
+                      
   options: DropdownOption[];
   selectedId: number;
 

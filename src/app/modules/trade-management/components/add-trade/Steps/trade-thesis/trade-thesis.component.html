@@ -12,30 +12,6 @@
             <div class="col-sm-6">
                 <div class="thesis_item">
                     <div class="thesis_item_title">
-                        Who suggested this trade to you ?
-                        <mat-icon
-                            matTooltip="Specify the person, channel, service, website which recommended this trade. "
-                            matTooltipPosition="above" matTooltipClass="custom-tooltip"
-                            [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay"
-                            class="mat-icon-xs cursor info-icon">info_outline</mat-icon>
-                    </div>
-                    <div class="media align-items-center">
-                        <div class="media-body">
-                            <select class="form-control select-input" id="inputState" [(ngModel)]="tradeThesis.sourceId">
-                                <option [ngValue]="opt.id" *ngFor="let opt of sourceTypes; trackBy: id">{{opt.name}}
-                                </option>
-                            </select>
-                        </div>
-                        <div class="px-3">
-                            <a class="add-new" (click)="addValue('Source')" *ngIf="addTrade || editTrade">+ Add New</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- end : thesis_item -->
-            <div class="col-sm-6">
-                <div class="thesis_item">
-                    <div class="thesis_item_title">
                         Specify the reasons for executing this trade
                         <mat-icon
                             matTooltip="Write notes on why you are executing this trade at this point in time. This will make you think through your logic and avoid rash decisions."
@@ -47,198 +23,44 @@
                         [(ngModel)]="tradeThesis.reasons"></textarea>
                 </div>
             </div>
-            <!-- end : thesis_item -->
 
-            <div class="col-sm-6">
-                <div class="thesis_item">
+            <div class="col-sm-6" *ngFor="let field of entryThesisFields">
+                <div class="thesis_item" *ngIf = "field.type === 'dropdown'">
                     <div class="thesis_item_title">
-                        What is your target price for the stock?
-                        <mat-icon matTooltip="Enter the target profit you intend to make on this trade."
-                            matTooltipPosition="above" matTooltipClass="custom-tooltip"
-                            [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay"
-                            class="mat-icon-xs cursor info-icon">info_outline</mat-icon>
-                    </div>
-                    <input type="text" class="form-control" placeholder="Enter the price"
-                        [(ngModel)]="tradeThesis.targetPrice" />
-                </div>
-            </div>
-            <!-- end : thesis_item -->
-
-            <div class="col-sm-6">
-                <div class="thesis_item">
-                    <div class="thesis_item_title">
-                        What is the target date to close this trade? <mat-icon matTooltip="What is the target date to close this trade" matTooltipPosition="above"
-                            matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay"
-                            [matTooltipHideDelay]="this.hideDelay" class="mat-icon-xs cursor info-icon">info_outline
-                        </mat-icon>
-                    </div>
-                    <div class="datepicker-group">
-                        <input 
-                            class="form-control bg-white"
-                            matInput 
-                            [matDatepicker]="targetCloseDate" 
-                            id="targetCloseDate" 
-                            (dateChange)="addEvent('input', $event, index)" 
-                            name="tradeThesis.targetCloseDate" 
-                            [(ngModel)]="tradeThesis.targetCloseDate" />
-                        <mat-datepicker-toggle matSuffix [for]="targetCloseDate">
-                        </mat-datepicker-toggle>
-                        <mat-datepicker #targetCloseDate></mat-datepicker>
-                    </div>
-                </div>
-            </div>
-            <!-- end : thesis_item -->
-
-            <div class="col-sm-6">
-                <div class="thesis_item">
-                    <div class="thesis_item_title">
-                        Is this a contrarian trade? <mat-icon matTooltip="Is this a contrarian trade" matTooltipPosition="above"
-                            matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay"
-                            [matTooltipHideDelay]="this.hideDelay" class="mat-icon-xs cursor info-icon">info_outline
-                        </mat-icon>
-                    </div>
-                    <div class="media align-items-center">
-                        <mat-radio-group [(ngModel)]="tradeThesis.contrarian">
-                            <mat-radio-button [value]=2 class="trade-type-radio">No</mat-radio-button>
-                            <mat-radio-button [value]=1 class="trade-type-radio">Yes</mat-radio-button>
-                        </mat-radio-group>
-                    </div>
-                </div>
-            </div>
-            <!-- end : thesis_item -->
-
-            <div class="col-sm-6">
-                <div class="thesis_item">
-                    <div class="thesis_item_title">
-                        Specify the direction of the trade? <mat-icon matTooltip="Is this a contrarian trade" matTooltipPosition="above"
-                            matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay"
-                            [matTooltipHideDelay]="this.hideDelay" class="mat-icon-xs cursor info-icon">info_outline
-                        </mat-icon>
-                    </div>
-                    <div class="media align-items-center">
-                        <select class="form-control select-input" id="inputState"
-                            [(ngModel)]="tradeThesis.direction">
-                            <option [ngValue]=1>Long</option>
-                            <option [ngValue]=2>Neutral</option>
-                            <option [ngValue]=3>Short</option>
-                            <option [ngValue]=4>Custom</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <!-- end : thesis_item -->
-
-            <div class="col-sm-6">
-                <div class="thesis_item">
-                    <div class="thesis_item_title">
-                        Select the technical indicator used for this trade
+                        {{field.label}}
                         <mat-icon
-                            matTooltip="If this trade is based on any technical indicator, add the indicator to the list and select it. "
+                            matTooltip="{{field.tooltip}}"
                             matTooltipPosition="above" matTooltipClass="custom-tooltip"
                             [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay"
                             class="mat-icon-xs cursor info-icon">info_outline</mat-icon>
                     </div>
                     <div class="media align-items-center">
                         <div class="media-body">
-                            <select class="form-control select-input" id="inputState"
-                                [(ngModel)]="tradeThesis.technicalIndicatorId">
-                                <option [ngValue]="opt.id" *ngFor="let opt of technicalIndicators; trackBy: id">
-                                    {{opt.name}}</option>
-                            </select>
-                        </div>
-                        <div class="px-3">
-                            <a class="add-new" (click)="addValue('Technical Indicator')" *ngIf="addTrade || editTrade"> + Add New</a>
+                            <app-dropdown></app-dropdown>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- end : thesis_item -->
-
-            <div class="col-sm-6">
-                <div class="thesis_item">
+                <div class="thesis_item" *ngIf = "field.type === 'textbox'">
                     <div class="thesis_item_title">
-                        Select any event surrounding this trade
-                        <mat-icon
-                            matTooltip="If you are executing this order to take advantage of any event (e.g., before or after earnings, before or after product launch etc.), create the event and select it"
+                        {{field.label}}
+                        <mat-icon matTooltip="{{field.tooltip}}"
                             matTooltipPosition="above" matTooltipClass="custom-tooltip"
                             [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay"
                             class="mat-icon-xs cursor info-icon">info_outline</mat-icon>
                     </div>
-                    <div class="media align-items-center">
-                        <div class="media-body">
-                            <select class="form-control select-input" id="inputState"
-                                [(ngModel)]="tradeThesis.surroundingEventId">
-                                <option [ngValue]="opt.id" *ngFor="let opt of surroundingTypes; trackBy: id">
-                                    {{opt.name}}</option>
-                            </select>
-                        </div>
-                        <div class="px-3">
-                            <a class="add-new" (click)="addValue('Surrounding Type')" *ngIf="addTrade || editTrade">+ Add New</a>
-                        </div>
-                    </div>
+                    <app-textbox ></app-textbox>
                 </div>
-            </div>
-            <!-- end : thesis_item -->
-
-            <div class="col-sm-6">
-                <div class="thesis_item">
+                <div class="thesis_item" *ngIf = "field.type === 'datefield'">
                     <div class="thesis_item_title">
-                        Is this a planned or an impromptu trade ? <mat-icon
-                            matTooltip="Specify whether you planned this trade before market hours or decided to trade on the fly."
-                            matTooltipPosition="above" matTooltipClass="custom-tooltip"
-                            [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay"
-                            class="mat-icon-xs cursor info-icon">info_outline</mat-icon>
+                        {{field.label}} <mat-icon matTooltip="{{field.tooltip}}" matTooltipPosition="above"
+                            matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay"
+                            [matTooltipHideDelay]="this.hideDelay" class="mat-icon-xs cursor info-icon">info_outline
+                        </mat-icon>
                     </div>
-                    <div class="media align-items-center">
-                        <!--
-                        <span class="form-check form-check-inline">
-                            <input type="radio" name="tradeType" value="planned"
-                            [disabled]="viewTrade"/>
-
-                            <label class="form-check-label ml-1">Planned</label> 
-                        </span>
-                        <span class="form-check form-check-inline">
-                            <input type="radio" class="form-check-input" name="tradeType" value="impromptu" /> 
-                            <label class="form-check-label ml-1">Impromptu</label>
-                        </span>
-                    -->
-
-                        <mat-radio-group [(ngModel)]="tradeThesis.tradeType">
-                            <mat-radio-button value="planned" class="trade-type-radio">Planned</mat-radio-button>
-                            <mat-radio-button value="impromptu" class="trade-type-radio">Impromptu</mat-radio-button>
-                        </mat-radio-group>
-
-                    </div>
-
+                    <app-datefield></app-datefield>
                 </div>
             </div>
-            <!-- end : thesis_item -->
-
-            <div class="col-sm-6">
-                <div class="thesis_item">
-                    <div class="thesis_item_title">
-                        What is your mindset while executing this trade? <mat-icon
-                            matTooltip="Specify how you are feeling at the time of placing this trade (e.g., anxious, confident, fear of missing out, etc.). Create mindset and select from the dropdown."
-                            matTooltipPosition="above" matTooltipClass="custom-tooltip"
-                            [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay"
-                            class="mat-icon-xs cursor info-icon">info_outline</mat-icon>
-                    </div>
-                    <div class="media align-items-center">
-                        <div class="media-body">
-                            <select class="form-control select-input" id="inputState"
-                                [(ngModel)]="tradeThesis.mindsetId">
-                                <option [ngValue]="opt.id" *ngFor="let opt of mindsetTypes; trackBy: id">{{opt.name}}
-                                </option>
-                            </select>
-                        </div>
-                        <div class="px-3">
-                            <a class="add-new" (click)="addValue('Mindset')" *ngIf="addTrade || editTrade">+ Add New</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- end : thesis_item -->
-
+            
             <div class="col-sm-12">
                 <div class="thesis_item upload_item">
                     <div class="thesis_item_title">
@@ -278,84 +100,48 @@
             <div class="col-sm-6">
                 <div class="thesis_item">
                     <div class="thesis_item_title">
-                        What is the trigger for closing the trade?
-                    </div>
-                    <div class="media align-items-center">
-                        <div class="media-body">
-                            <select class="form-control select-input" id="inputState" [(ngModel)]="tradeThesis.closeSourceId">
-                                <option [ngValue]="opt.id" *ngFor="let opt of closeTriggers; trackBy: id">{{opt.name}}
-                                </option>
-                            </select>
-                        </div>
-                        <div class="px-3">
-                            <a class="add-new" (click)="addValue('Trigger for close')" *ngIf="addTrade || editTrade">+ Add New</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- end : thesis_item -->
-
-           
-
-            <div class="col-sm-6">
-                <div class="thesis_item">
-                    <div class="thesis_item_title">
                         Specify the reasons for closing the trade
                     </div>
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="tradeThesis.closedReason"></textarea>
                 </div>
             </div>
-            <!-- end : thesis_item -->
 
-            <div class="col-sm-6">
-                <div class="thesis_item">
+            <div class="col-sm-6" *ngFor="let field of exitThesisFields">
+                <div class="thesis_item" *ngIf = "field.type === 'dropdown'">
                     <div class="thesis_item_title">
-                        Gain or loss from the trade attributed to
+                        {{field.label}}
+                        <mat-icon
+                            matTooltip="{{field.tooltip}}"
+                            matTooltipPosition="above" matTooltipClass="custom-tooltip"
+                            [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay"
+                            class="mat-icon-xs cursor info-icon">info_outline</mat-icon>
                     </div>
                     <div class="media align-items-center">
                         <div class="media-body">
-                            <select class="form-control select-input" id="inputState" [(ngModel)]="tradeThesis.closeSurroundingEventId">
-                                <option [ngValue]="opt.id" *ngFor="let opt of gainLossAttributes; trackBy: id">
-                                    {{opt.name}}</option>
-                            </select>
-                        </div>
-                        <div class="px-3">
-                            <a class="add-new" (click)="addValue('Gain or loss attribute')" *ngIf="addTrade || editTrade">+ Add New</a>
+                            <app-dropdown></app-dropdown>
                         </div>
                     </div>
+                </div>
+                <div class="thesis_item" *ngIf = "field.type === 'textbox'">
+                    <div class="thesis_item_title">
+                        {{field.label}}
+                        <mat-icon matTooltip="{{field.tooltip}}"
+                            matTooltipPosition="above" matTooltipClass="custom-tooltip"
+                            [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay"
+                            class="mat-icon-xs cursor info-icon">info_outline</mat-icon>
+                    </div>
+                    <app-textbox ></app-textbox>
+                </div>
+                <div class="thesis_item" *ngIf = "field.type === 'datefield'">
+                    <div class="thesis_item_title">
+                        {{field.label}} <mat-icon matTooltip="{{field.tooltip}}" matTooltipPosition="above"
+                            matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay"
+                            [matTooltipHideDelay]="this.hideDelay" class="mat-icon-xs cursor info-icon">info_outline
+                        </mat-icon>
+                    </div>
+                    <app-datefield></app-datefield>
                 </div>
             </div>
-            <!-- end : thesis_item -->
-
-            <div class="col-sm-6">
-                <div class="thesis_item">
-                    <div class="thesis_item_title">
-                        Specify the lessons learnt from the trade
-                    </div>
-                    <textarea class="form-control" id="closingLessionsTrade" rows="3" [(ngModel)]="tradeThesis.closedLessons"></textarea>
-                </div>
-            </div>
-            <!-- end : thesis_item -->
-
-            <!-- <div class="col-sm-6">
-                <div class="thesis_item">
-                    <div class="thesis_item_title">
-                        Specify the technical indicator used for the trade
-                    </div>
-                    <div class="media align-items-center">
-                        <div class="media-body">
-                            <select class="form-control select-input" id="inputState" [(ngModel)]="tradeThesis.technicalIndicatorId" [ngClass]="viewTrade ? 'disabled' : ''">
-                                <option [ngValue]="opt.id" *ngFor="let opt of technicalIndicators; trackBy: id">{{opt.name}}
-                                </option>
-                            </select>
-                        </div>
-                        <div class="px-3">
-                            <a class="add-new" (click)="addValue('Source')" *ngIf="addTrade || editTrade">+ Add New</a>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-            <!-- end : thesis_item -->
 
         </div>
     </div>

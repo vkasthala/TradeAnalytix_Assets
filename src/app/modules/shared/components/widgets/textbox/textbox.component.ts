@@ -7,8 +7,8 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TextboxComponent implements OnInit {
 
-  @Input('uid') uid: string;
-  @Input('placeholder') placeholder: string;
+  //@Input('uid') uid: string;
+  //@Input('placeholder') placeholder: string;
 
   value: string;
 

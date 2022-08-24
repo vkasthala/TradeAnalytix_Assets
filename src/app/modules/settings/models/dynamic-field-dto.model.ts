@@ -10,6 +10,8 @@ export class DynamicFieldDto {
 
     label: string;
 
+    tooltip: string;
+
     userFieldId: number;
     
     show: string;

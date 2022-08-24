@@ -6,9 +6,10 @@ import { EditableGridComponent } from './components/widgets/editable-grid/editab
 import { StrategyDetailsComponent } from '../compare-strategies/components/strategy-details/strategy-details.component';
 import { DropdownComponent } from './components/widgets/dropdown/dropdown.component';
 import { TextboxComponent } from './components/widgets/textbox/textbox.component';
+import { DatefieldComponent } from './components/widgets/datefield/datefield.component';
 
 @NgModule({
-  declarations: [TradeExecutionDateComponent, EditableListComponent, EditableGridComponent, StrategyDetailsComponent, DropdownComponent, TextboxComponent],
+  declarations: [TradeExecutionDateComponent, EditableListComponent, EditableGridComponent, StrategyDetailsComponent, DropdownComponent, TextboxComponent, DatefieldComponent],
   imports: [
     CommonModule
   ]
