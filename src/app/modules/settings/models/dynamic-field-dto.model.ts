@@ -16,4 +16,6 @@ export class DynamicFieldDto {
     
     show: string;
 
+    value: any;
+
 }

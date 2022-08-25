@@ -1,4 +1,4 @@
-<select class="form-control select-input" [(ngModel)]="selectedId">
+<select class="form-control select-input" [(ngModel)]="field.value">
     <option [ngValue]="opt.id" *ngFor="let opt of options; trackBy: id">
         {{opt.name}}</option>
 </select>

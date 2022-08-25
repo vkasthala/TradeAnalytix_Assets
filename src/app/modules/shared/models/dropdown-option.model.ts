@@ -1,7 +1,7 @@
 export class DropdownOption {
 
-    id: number;
+    id: string;
 
-    value: string;
+    name: string;
     
 }

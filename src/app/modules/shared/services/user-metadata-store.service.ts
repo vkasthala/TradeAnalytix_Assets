@@ -116,4 +116,28 @@ export class UserMetadataStoreService {
     this.tradeTypes = [{ id: 'planned', name: 'Yes' }, { id: 'impromptu', name: 'No' }];;
   }
 
+  getDynamicFieldDropdownOptions(dropdownId: string): any[] {
+    let result: any[] = [];
+    if ('sourceId' === dropdownId) {
+      result = this.sources;
+    } else if ('contrarian' === dropdownId) {
+      result = this.contrarian;
+    } else if ('direction' === dropdownId) {
+      result = this.directions;
+    } else if ('technicalIndicatorId' === dropdownId) {
+      result = this.technicalIndicators;
+    } else if ('surroundingEventId' === dropdownId) {
+      result = this.events;
+    } else if ('tradeType' === dropdownId) {
+      result = this.tradeTypes;
+    } else if ('mindsetId' === dropdownId) {
+      result = this.mindsets;
+    } else if ('closeSourceId' === dropdownId) {
+      result = this.closeTriggers;
+    } else if ('closeSurroundingEventId' === dropdownId) {
+      result = this.gainLossAttributes;
+    }
+    return result;
+  }
+
 }

@@ -36,7 +36,7 @@
                     </div>
                     <div class="media align-items-center">
                         <div class="media-body">
-                            <app-dropdown></app-dropdown>
+                            <app-dropdown [field] = "field"></app-dropdown>
                         </div>
                     </div>
                 </div>
@@ -48,7 +48,7 @@
                             [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay"
                             class="mat-icon-xs cursor info-icon">info_outline</mat-icon>
                     </div>
-                    <app-textbox ></app-textbox>
+                    <app-textbox [field] = "field"></app-textbox>
                 </div>
                 <div class="thesis_item" *ngIf = "field.type === 'datefield'">
                     <div class="thesis_item_title">
@@ -57,7 +57,18 @@
                             [matTooltipHideDelay]="this.hideDelay" class="mat-icon-xs cursor info-icon">info_outline
                         </mat-icon>
                     </div>
-                    <app-datefield></app-datefield>
+                    <app-datefield [field] = "field"></app-datefield>
+                </div>
+                <div class="thesis_item" *ngIf = "field.type === 'textarea'">
+                    <div class="thesis_item_title">
+                        {{field.label}}
+                        <mat-icon
+                            matTooltip="{{field.tooltip}}"
+                            matTooltipPosition="above" matTooltipClass="custom-tooltip"
+                            [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay"
+                            class="mat-icon-xs cursor info-icon">info_outline</mat-icon>
+                    </div>
+                    <app-text-area [field] = "field"></app-text-area>
                 </div>
             </div>
             
@@ -118,7 +129,7 @@
                     </div>
                     <div class="media align-items-center">
                         <div class="media-body">
-                            <app-dropdown></app-dropdown>
+                            <app-dropdown [field] = "field"></app-dropdown>
                         </div>
                     </div>
                 </div>
@@ -130,7 +141,7 @@
                             [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay"
                             class="mat-icon-xs cursor info-icon">info_outline</mat-icon>
                     </div>
-                    <app-textbox ></app-textbox>
+                    <app-textbox [field] = "field" ></app-textbox>
                 </div>
                 <div class="thesis_item" *ngIf = "field.type === 'datefield'">
                     <div class="thesis_item_title">
@@ -139,7 +150,18 @@
                             [matTooltipHideDelay]="this.hideDelay" class="mat-icon-xs cursor info-icon">info_outline
                         </mat-icon>
                     </div>
-                    <app-datefield></app-datefield>
+                    <app-datefield [field] = "field"></app-datefield>
+                </div>
+                <div class="thesis_item" *ngIf = "field.type === 'textarea'">
+                    <div class="thesis_item_title">
+                        {{field.label}}
+                        <mat-icon
+                            matTooltip="{{field.tooltip}}"
+                            matTooltipPosition="above" matTooltipClass="custom-tooltip"
+                            [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay"
+                            class="mat-icon-xs cursor info-icon">info_outline</mat-icon>
+                    </div>
+                    <app-text-area [field] = "field"></app-text-area>
                 </div>
             </div>
 

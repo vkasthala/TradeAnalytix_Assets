@@ -2,11 +2,11 @@
     <input 
         class="form-control bg-white"
         matInput 
-        [matDatepicker]="datePicker" 
-        id="dateField"
-        name="dateField" 
-        [(ngModel)]="dateValue" />
-    <mat-datepicker-toggle matSuffix [for]="dateField">
+        [matDatepicker]="datePickerId" 
+        id="dynamicDateField"
+        name="field.value" 
+        [(ngModel)]="field.value" />
+    <mat-datepicker-toggle matSuffix [for]="dynamicDateField">
     </mat-datepicker-toggle>
-    <mat-datepicker #datePicker></mat-datepicker>
+    <mat-datepicker #datePickerId></mat-datepicker>
 </div>

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { DynamicFieldDto } from 'src/app/modules/settings/models/dynamic-field-dto.model';
 
 @Component({
   selector: 'app-datefield',
@@ -6,10 +7,8 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./datefield.component.scss']
 })
 export class DatefieldComponent implements OnInit {
-
-  //@Input('uid') uid: string;
   
-  dateValue: string = '';
+  @Input('field') field: DynamicFieldDto;
 
   constructor() { }
 

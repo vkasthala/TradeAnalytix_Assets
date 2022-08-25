@@ -464,13 +464,25 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
 
   loadEntryThesisUiFields() {
     this.dynamicFieldsService.getUserDynamicFields('EntryThesis').subscribe(result => {
-      this.entryThesisFields = result;
+      let validFields = [];
+      result.forEach(field => {
+        if (field.userFieldId && field.userFieldId > 0) {
+          validFields.push(field);
+        }
+      });
+      this.entryThesisFields = validFields;
     });
   }
 
   loadExitThesisUiFields() {
     this.dynamicFieldsService.getUserDynamicFields('ExitThesis').subscribe(result => {
-      this.entryThesisFields = result;
+      let validFields = [];
+      result.forEach(field => {
+        if (field.userFieldId && field.userFieldId > 0) {
+          validFields.push(field);
+        }
+      });
+      this.exitThesisFields = validFields;
     });
   }
 
