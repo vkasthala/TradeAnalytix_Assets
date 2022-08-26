@@ -449,6 +449,9 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
         category: 'EntryThesis'
       }
     });
+    dialogRef.afterClosed().subscribe((res) => {
+      this.loadEntryThesisUiFields();
+    });
   }
 
   openExitQuestions() {
@@ -460,29 +463,65 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
         category: 'ExitThesis'
       }
     });
+    dialogRef.afterClosed().subscribe((res) => {
+      this.loadExitThesisUiFields();
+    });
   }
 
   loadEntryThesisUiFields() {
     this.dynamicFieldsService.getUserDynamicFields('EntryThesis').subscribe(result => {
-      let validFields = [];
-      result.forEach(field => {
-        if (field.userFieldId && field.userFieldId > 0) {
-          validFields.push(field);
-        }
-      });
-      this.entryThesisFields = validFields;
+      this.updateEntryThesisFields(result);
     });
   }
 
   loadExitThesisUiFields() {
     this.dynamicFieldsService.getUserDynamicFields('ExitThesis').subscribe(result => {
-      let validFields = [];
-      result.forEach(field => {
-        if (field.userFieldId && field.userFieldId > 0) {
-          validFields.push(field);
-        }
-      });
-      this.exitThesisFields = validFields;
+      this.updateExitThesisFields(result);
+    });
+  }
+
+  updateEntryThesisFields(newFields: DynamicFieldDto[]) {
+    let resultFields = [];
+    newFields.filter(field => field.userFieldId && field.userFieldId > 0).forEach(newField => {
+      let matchedFields = this.entryThesisFields.filter(field => field.name === newField.name);
+      if (matchedFields.length > 0) {
+        resultFields.push(matchedFields[0]);
+      } else {
+        newField.value = this.tradeThesis[newField.name];
+        resultFields.push(newField);
+      }
+    });
+    this.entryThesisFields = resultFields;
+  }
+
+  updateExitThesisFields(newFields: DynamicFieldDto[]) {
+    let resultFields = [];
+    newFields.filter(field => field.userFieldId && field.userFieldId > 0).forEach(newField => {
+      let matchedFields = this.exitThesisFields.filter(field => field.name === newField.name);
+      if (matchedFields.length > 0) {
+        resultFields.push(matchedFields[0]);
+      } else {
+        newField.value = this.tradeThesis[newField.name];
+        resultFields.push(newField);
+      }
+    });
+    this.exitThesisFields = resultFields;
+  }
+
+  updateTradeThesisData() {
+    this.updateEntryThesisData();
+    this.updateExitThesisData();
+  }
+
+  updateEntryThesisData() {
+    this.entryThesisFields.forEach(field => {
+      this.tradeThesis[field.name] = field.value;
+    });
+  }
+
+  updateExitThesisData() {
+    this.exitThesisFields.forEach(field => {
+      this.tradeThesis[field.name] = field.value;
     });
   }
 
