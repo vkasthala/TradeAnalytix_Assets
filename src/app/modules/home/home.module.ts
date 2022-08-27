@@ -144,8 +144,11 @@ import { BulkUpdateComponent } from '../bulk-update/bulk-update.component';
 import { ReferralModalComponent } from '../dashboard/components/referral-modal/referral-modal.component';
 import { GettingStartedVideoComponent } from '../dashboard/components/getting-started-modal/getting-started-video.component';
 import { ImportTradeBookComponent } from '../dashboard/components/import-tradebook/import-tradebook.component';
-import { ConfigureEntryQuestionsComponent } from '../trade-management/components/add-trade/Steps/trade-thesis/configure-entry-questions-popup/configure-entry-questions.component';
-import { ConfigureExitQuestionsComponent } from '../trade-management/components/add-trade/Steps/trade-thesis/configure-exit-questions-popup/configure-exit-questions.component';
+import { ConfigureFieldsPopupComponent } from '../shared/components/widgets/configure-fields-popup/configure-fields-popup.component';
+import { TextboxComponent } from '../shared/components/widgets/textbox/textbox.component';
+import { DropdownComponent } from '../shared/components/widgets/dropdown/dropdown.component';
+import { DatefieldComponent } from '../shared/components/widgets/datefield/datefield.component';
+import { TextAreaComponent } from '../shared/components/widgets/text-area/text-area.component';
 
 export const MY_FORMATS = {
   parse: {
@@ -288,8 +291,11 @@ export const MY_FORMATS = {
     ReferralModalComponent,
     GettingStartedVideoComponent,
     ImportTradeBookComponent,
-    ConfigureEntryQuestionsComponent,
-    ConfigureExitQuestionsComponent
+    ConfigureFieldsPopupComponent,
+    TextboxComponent,
+    DropdownComponent,
+    DatefieldComponent,
+    TextAreaComponent
   ],
   imports: [
     FormsModule,
@@ -361,8 +367,11 @@ export const MY_FORMATS = {
     ReferralModalComponent,
     GettingStartedVideoComponent,
     ImportTradeBookComponent,
-    ConfigureEntryQuestionsComponent,
-    ConfigureExitQuestionsComponent
+    ConfigureFieldsPopupComponent,
+    TextboxComponent,
+    DropdownComponent,
+    DatefieldComponent,
+    TextAreaComponent
   ],
   // bootstrap: [TradeStrategiesGrid],
   providers: [

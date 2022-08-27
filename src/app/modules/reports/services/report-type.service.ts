@@ -131,34 +131,11 @@ export class ReportTypeService {
     reportSubType.reportDetailList = [new ReportDetails('net-return-price-range', 'Realized Return by Price Range', ReportCategory.Symbols_By_Net_Return, "This report shows the realized return by stock price range"), new ReportDetails('win-loss-price-range', 'Win Rate by Price Range', ReportCategory.Symbols_By_Win_Loss, "This report shows the win rate by stock price range")];
     reportSubTypes.push(reportSubType);
 
+    reportSubType.name = 'Value at Risk by Asset';
+    reportSubType.id = "max_risk_asset";
+    reportSubType.reportDetailList = [new ReportDetails('max_risk_asset', 'Value at Risk by Asset Chart', ReportCategory.Dashboard, "This report shows the current maximum risk of the user's portfolio by symbol. Maximum risk is calculated based on the previous 30-day volatility of the stocks.")];
+    reportSubTypes.push(reportSubType);
     
-
-    // reportSubType = new ReportSubType();
-    // reportSubType.name = 'Strategy Type';
-    // reportSubType.id = "type";
-    // reportSubType.reportDetailList = [new ReportDetails('net_return_strategy_type', 'Net Return by Strategy Type', ReportCategory.Net_Return, "This report shows the realized return of the user's portfolio by strategy type for the selected date range."), new ReportDetails('win_loss_strategy_type', 'Win/Loss by Strategy Type', ReportCategory.Win_Loss, "This report shows the number of winning and losing trades by strategy type for the selected date range.")];
-    // reportSubTypes.push(reportSubType);
-
-    
-
-    
-
-    // reportSubType = new ReportSubType();
-    // reportSubType.name = 'Close Date';
-    // reportSubType.id = "closeDate";
-    // reportSubType.reportDetailList = [];
-    // reportSubTypes.push(reportSubType);
-
-    // reportSubType = new ReportSubType();
-    // reportSubType.name = 'Entry Date';
-    // reportSubType.id = "entry_date";
-    // reportSubType.reportDetailList = [];
-    // reportSubTypes.push(reportSubType);
-
-    
-
-    
-
     reportSubType = new ReportSubType();
     reportSubType.name = 'Maximum Risk and Proﬁt Potential';
     reportSubType.id = "risk_max_risk_profit";

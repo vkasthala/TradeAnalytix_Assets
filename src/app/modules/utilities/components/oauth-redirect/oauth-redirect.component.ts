@@ -7,6 +7,8 @@ import { ReferralModalComponent } from 'src/app/modules/dashboard/components/ref
 import { GettingStartedVideoComponent } from 'src/app/modules/dashboard/components/getting-started-modal/getting-started-video.component';
 import { ImportTradeBookComponent } from 'src/app/modules/dashboard/components/import-tradebook/import-tradebook.component';
 import { ImportTradePopupComponent } from 'src/app/modules/import-trades-history/import-trade-popup/import-trade-popup.component';
+import { UserMetadataService } from 'src/app/modules/trade-management/services/user-metadata.service';
+import { UserMetadataStoreService } from 'src/app/modules/shared/services/user-metadata-store.service';
 
 @Component({
   selector: 'app-oauth-redirect',
@@ -19,13 +21,13 @@ export class OauthRedirectComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private _dialog: MatDialog,
-    private stockSymbolService: StockSymbolService
+    private stockSymbolService: StockSymbolService,
+    private metdataStoreService: UserMetadataStoreService
   ) { }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       let token = params['token'];
-      console.log('token: ', token);
       if (token) {
         sessionStorage.setItem('token', token);
         let country = params['country'];
@@ -48,8 +50,9 @@ export class OauthRedirectComponent implements OnInit {
 
   successLogin() {
     this.router.navigate(['dashboard']);
-    this.openGettingStartedVideo();
+    this.ImportTradeBookModal();
     this.stockSymbolService.getStockSymbols();
+    this.metdataStoreService.load();
   }
 
   failureLogin() {
@@ -89,7 +92,7 @@ export class OauthRedirectComponent implements OnInit {
     const dialogRef = this._dialog.open(GettingStartedVideoComponent, {
       panelClass: 'guided-tour-panel',
       backdropClass: 'guided-tour-modal',
-      data:dialogData
+      data: dialogData
     });
 
     dialogRef.afterClosed().subscribe((res) => {
@@ -99,7 +102,7 @@ export class OauthRedirectComponent implements OnInit {
 
   ImportTradeBookModal() {
     let dialogData = {
-      title: 'Import Trade Book',
+      title: 'Add Trades in Bulk',
     };
     const dialogRef = this._dialog.open(ImportTradeBookComponent, {
       disableClose: true,
@@ -121,7 +124,6 @@ export class OauthRedirectComponent implements OnInit {
       //data: dialogData
     });
     dialogRef.afterClosed().subscribe((res) => {
-      debugger;
       if (res === true) {
         // this.reload();
       }

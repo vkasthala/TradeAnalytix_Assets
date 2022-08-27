@@ -48,15 +48,25 @@ export class TradeDetailsHeaderComponent implements OnInit {
   }
 
   openContactUsModal() {
+    debugger;
+    console.log(this.selectedStock)
     var e = document.getElementById('financialsView');
     e.innerHTML = "";
 
     let script = this._renderer1.createElement('script');
+    let country = sessionStorage.getItem('country');
+    let exchange;
+    if(country == '1') {
+      exchange = 'NASDAQ';
+    } else if(country == '2') {
+      exchange = 'BSE';
+    }
+
     script.text = '';
     script.type = `text/javascript`;
     script.src = "https://s3.tradingview.com/external-embedding/embed-widget-financials.js";
     
-    script.text = '{"width": "800","height": "800","symbol": "NASDAQ:AAPL","locale": "en",""colorTheme": "light","trendLineColor": "#37a6ef","isTransparent": false,"autosize": false,"displayMode": "regular"}';
+    script.text = '{"width": "800","height": "800","symbol": " '  + exchange + ':' + this.selectedStock.name + '","locale": "en",""colorTheme": "light","trendLineColor": "#37a6ef","isTransparent": false,"autosize": false,"displayMode": "regular"}';
 
     this.tradingview.nativeElement.appendChild(script);
   }
