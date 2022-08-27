@@ -16,23 +16,36 @@ export class DropdownComponent implements OnInit {
 
   constructor(public metdataStoreService: UserMetadataStoreService) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   ngAfterViewInit(): void {
+    this.loadDropdownOptions();
+    if (this.field.changeEvent) {
+      this.field.changeEvent.subscribe({
+        next: (event: any) => {
+          if (event.name === this.field.name) {
+            this.loadDropdownOptions();
+          }
+        }
+      });
+    }
+  }
+
+  loadDropdownOptions() {
     this.initDropdownOptions(this.metdataStoreService.getDynamicFieldDropdownOptions(this.field.name));
   }
 
-  initDropdownOptions(options: any[]) {
+  initDropdownOptions(newOptions: any[]) {
     let optionsArray: DropdownOption[] = [];
-    if (options) {
-      options.forEach(option => {
+    if (newOptions) {
+      newOptions.forEach(opt => {
         let dropdownOpt = new DropdownOption();
-        dropdownOpt.id = option.id + '';
-        dropdownOpt.name = option.name + '';
+        dropdownOpt.id = opt.id + '';
+        dropdownOpt.name = opt.name + '';
         optionsArray.push(dropdownOpt);
       });
     }
-    this.options = options;
+    this.options = optionsArray;
   }
 
 }

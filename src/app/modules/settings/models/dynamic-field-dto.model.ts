@@ -1,8 +1,12 @@
+import { EventEmitter } from "@angular/core";
+
 export class DynamicFieldDto {
 
     id: number;
 
     name: string;
+
+    displayName: string;
 
     type: string;
 
@@ -16,6 +20,10 @@ export class DynamicFieldDto {
     
     show: string;
 
+    customValueSupported: boolean;
+
     value: any;
+
+    changeEvent: EventEmitter<any>;
 
 }

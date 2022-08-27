@@ -38,6 +38,9 @@
                         <div class="media-body">
                             <app-dropdown [field] = "field"></app-dropdown>
                         </div>
+                        <div class="px-3" *ngIf = "field.customValueSupported">
+                            <a class="add-new" (click)="addFieldValue(field)" *ngIf="addTrade || editTrade">+ Add New</a>
+                        </div>
                     </div>
                 </div>
                 <div class="thesis_item" *ngIf = "field.type === 'textbox'">
@@ -130,6 +133,9 @@
                     <div class="media align-items-center">
                         <div class="media-body">
                             <app-dropdown [field] = "field"></app-dropdown>
+                        </div>
+                        <div class="px-3" *ngIf = "field.customValueSupported">
+                            <a class="add-new" (click)="addFieldValue(field)" *ngIf="addTrade || editTrade || closeTrade">+ Add New</a>
                         </div>
                     </div>
                 </div>

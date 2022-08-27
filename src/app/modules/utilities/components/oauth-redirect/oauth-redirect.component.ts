@@ -92,7 +92,7 @@ export class OauthRedirectComponent implements OnInit {
     const dialogRef = this._dialog.open(GettingStartedVideoComponent, {
       panelClass: 'guided-tour-panel',
       backdropClass: 'guided-tour-modal',
-      data:dialogData
+      data: dialogData
     });
 
     dialogRef.afterClosed().subscribe((res) => {
@@ -124,7 +124,6 @@ export class OauthRedirectComponent implements OnInit {
       //data: dialogData
     });
     dialogRef.afterClosed().subscribe((res) => {
-      debugger;
       if (res === true) {
         // this.reload();
       }

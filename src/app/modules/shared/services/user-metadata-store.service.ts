@@ -23,7 +23,7 @@ export class UserMetadataStoreService {
   tradeTypes: any[];
 
   constructor(private metadataService: UserMetadataService, private dataSetupService: DataSetupService) {
-    this.load();
+    //this.load();
   }
 
   load() {
@@ -138,6 +138,22 @@ export class UserMetadataStoreService {
       result = this.gainLossAttributes;
     }
     return result;
+  }
+
+  setDynamicFieldDropdownOptions(dropdownId: string, values: any[]) {
+    if ('sourceId' === dropdownId) {
+      this.sources = values;
+    } else if ('technicalIndicatorId' === dropdownId) {
+      this.technicalIndicators = values;
+    } else if ('surroundingEventId' === dropdownId) {
+      this.events = values;
+    } else if ('mindsetId' === dropdownId) {
+      this.mindsets = values;
+    } else if ('closeSourceId' === dropdownId) {
+      this.closeTriggers = values;
+    } else if ('closeSurroundingEventId' === dropdownId) {
+      this.gainLossAttributes = values;
+    }
   }
 
 }
