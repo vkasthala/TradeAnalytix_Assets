@@ -19,6 +19,9 @@ import { ChubUploadService } from 'src/app/modules/shared/services/chub-upload.s
 import { TradeStrategyService } from 'src/app/modules/trade-management/services/trade-strategy.service';
 import { TradeChubFile } from 'src/app/modules/trade-management/models/trade-chub-file.model';
 import { ConfigureFieldsPopupComponent } from 'src/app/modules/shared/components/widgets/configure-fields-popup/configure-fields-popup.component';
+import { DynamicFieldDto } from 'src/app/modules/settings/models/dynamic-field-dto.model';
+import { DynamicFieldsService } from 'src/app/modules/settings/services/dynamic-fields.service';
+import { UserMetadataStoreService } from 'src/app/modules/shared/services/user-metadata-store.service';
 
 @Component({
   selector: 'app-trade-thesis',
@@ -27,18 +30,15 @@ import { ConfigureFieldsPopupComponent } from 'src/app/modules/shared/components
 })
 export class TradeThesisComponent implements OnInit, AfterViewInit {
 
-  mindsetTypes: MindsetType[];
-  sourceTypes: SourceType[];
-  technicalIndicators: TechnicalIndicator[];
-  surroundingTypes: SurroundingType[];
-  closeTriggers: EditableListItem[];
-  gainLossAttributes: EditableListItem[];
   tradeChubFiles: TradeChubFile[] = [];
   tradeThesis: TradeThesis;
+  entryThesisFields: DynamicFieldDto[] = [];
+  exitThesisFields: DynamicFieldDto[] = [];
 
   @ViewChild('thesisTradingview', { static: false }) thesisTradingview: ElementRef;
   @Output('nextStep') nextStep = new EventEmitter();
   @Output('prevStep') prevStep = new EventEmitter();
+  @Output() dropdownItemAddedEvent = new EventEmitter();
 
   @Input("inputState") inputState: TradeInputData;
   @Input("addTrade") addTrade: boolean;
@@ -50,6 +50,7 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
   protected hideEntryThesis: boolean = false;
   protected hideClosingThesis: boolean = false;
   tradeStatus: number;
+
   constructor(
     private _renderer2: Renderer2,
     private _dialog: MatDialog,
@@ -57,7 +58,9 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
     private dataSetupService: DataSetupService,
     private chubUploadService: ChubUploadService,
     private toastr: ToastrService,
-    private tradeStrategySevice: TradeStrategyService
+    private tradeStrategySevice: TradeStrategyService,
+    private dynamicFieldsService: DynamicFieldsService,
+    private userMetadataStoreService: UserMetadataStoreService
   ) {
 
   }
@@ -65,12 +68,8 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.tradeThesis = new TradeThesis();
     this.tradeThesis.tradeType = 'planned';
-    this.loadMindsets();
-    this.loadSourceTypes();
-    this.loadSurroundingEvents();
-    this.loadTechnicalIndicators();
-    this.loadCloseTriggers();
-    this.loadGainLossAttributes();
+    this.loadEntryThesisUiFields();
+    this.loadExitThesisUiFields();
   }
 
   ngAfterViewInit(): void {
@@ -100,81 +99,94 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
   }
 
 
-  loadMindsets() {
+  loadMindsets(field: DynamicFieldDto) {
     this.metadataService.getMindsetTypes().subscribe(result => {
-      this.mindsetTypes = [];
-      this.mindsetTypes.push(new MindsetType());
-      this.mindsetTypes = this.mindsetTypes.concat(result);
-      if (this.mindsetTypes && this.mindsetTypes.length) {
-        if (!this.tradeThesis.mindsetId) {
-          this.tradeThesis.mindsetId = this.mindsetTypes[0].id;
-        }
+      let mindsetTypes = [];
+      mindsetTypes.push(new MindsetType());
+      mindsetTypes = mindsetTypes.concat(result);
+      if (!this.tradeThesis.mindsetId) {
+        this.tradeThesis.mindsetId = mindsetTypes[0].id;
+      }
+      this.userMetadataStoreService.mindsets = mindsetTypes;
+      if (field) {
+        this.updateDropdownValues(field, mindsetTypes);
       }
     });
   }
 
-  loadSourceTypes() {
+  loadSourceTypes(field: DynamicFieldDto) {
     this.metadataService.getTradeSourceTypes().subscribe(result => {
-      this.sourceTypes = [];
-      this.sourceTypes.push(new SourceType());
-      this.sourceTypes = this.sourceTypes.concat(result);
-      if (this.sourceTypes && this.sourceTypes.length) {
-        if (!this.tradeThesis.sourceId) {
-          this.tradeThesis.sourceId = this.sourceTypes[0].id;
-        }
+      let sourceTypes: SourceType[] = [];
+      sourceTypes.push(new SourceType());
+      sourceTypes = sourceTypes.concat(result);
+      if (!this.tradeThesis.sourceId) {
+        this.tradeThesis.sourceId = sourceTypes[0].id;
+      }
+      this.userMetadataStoreService.sources = sourceTypes;
+      if (field) {
+        this.updateDropdownValues(field, sourceTypes);
       }
     });
   }
 
-  loadSurroundingEvents() {
+  loadSurroundingEvents(field: DynamicFieldDto) {
     this.metadataService.getSurroundingTypes().subscribe(result => {
-      this.surroundingTypes = [];
-      this.surroundingTypes.push(new SurroundingType());
-      this.surroundingTypes = this.surroundingTypes.concat(result);
-      if (this.surroundingTypes && this.surroundingTypes.length) {
-        if (!this.tradeThesis.surroundingEventId) {
-          this.tradeThesis.surroundingEventId = this.surroundingTypes[0].id;
-        }
+      let surroundingTypes: SurroundingType[] = [];
+      surroundingTypes.push(new SurroundingType());
+      surroundingTypes = surroundingTypes.concat(result);
+
+      if (!this.tradeThesis.surroundingEventId) {
+        this.tradeThesis.surroundingEventId = surroundingTypes[0].id;
+      }
+      this.userMetadataStoreService.events = surroundingTypes;
+      if (field) {
+        this.updateDropdownValues(field, surroundingTypes);
       }
     });
   }
 
-  loadTechnicalIndicators() {
+  loadTechnicalIndicators(field: DynamicFieldDto) {
     this.metadataService.getTechIndicators().subscribe(result => {
-      this.technicalIndicators = [];
-      this.technicalIndicators.push(new TechnicalIndicator());
-      this.technicalIndicators = this.technicalIndicators.concat(result);
-      if (this.technicalIndicators && this.technicalIndicators.length) {
-        if (!this.tradeThesis.technicalIndicatorId) {
-          this.tradeThesis.technicalIndicatorId = this.technicalIndicators[0].id;
-        }
+      let technicalIndicators: TechnicalIndicator[] = [];
+      technicalIndicators.push(new TechnicalIndicator());
+      technicalIndicators = technicalIndicators.concat(result);
+      if (!this.tradeThesis.technicalIndicatorId) {
+        this.tradeThesis.technicalIndicatorId = technicalIndicators[0].id;
+      }
+      this.userMetadataStoreService.technicalIndicators = technicalIndicators;
+      if (field) {
+        this.updateDropdownValues(field, technicalIndicators);
       }
     });
   }
 
-  loadCloseTriggers() {
+  loadCloseTriggers(field: DynamicFieldDto) {
     this.dataSetupService.getCloseTriggers().subscribe(result => {
-      this.closeTriggers = [];
-      this.closeTriggers.push(new EditableListItem());
-      this.closeTriggers = this.closeTriggers.concat(result);
-      if (this.closeTriggers && this.closeTriggers.length) {
-        if (!this.tradeThesis.closeSourceId) {
-          this.tradeThesis.closeSourceId = this.closeTriggers[0].id;
-        }
+      let closeTriggers: EditableListItem[] = [];
+      closeTriggers.push(new EditableListItem());
+      closeTriggers = closeTriggers.concat(result);
+      if (!this.tradeThesis.closeSourceId) {
+        this.tradeThesis.closeSourceId = closeTriggers[0].id;
+      }
+      this.userMetadataStoreService.closeTriggers = closeTriggers;
+      if (field) {
+        this.updateDropdownValues(field, closeTriggers);
       }
     });
   }
 
 
-  loadGainLossAttributes() {
+  loadGainLossAttributes(field: DynamicFieldDto) {
     this.dataSetupService.getGainOrLossAttributes().subscribe(result => {
-      this.gainLossAttributes = [];
-      this.gainLossAttributes.push(new EditableListItem());
-      this.gainLossAttributes = this.gainLossAttributes.concat(result);
-      if (this.gainLossAttributes && this.gainLossAttributes.length) {
-        if (!this.tradeThesis.closeSurroundingEventId) {
-          this.tradeThesis.closeSurroundingEventId = this.gainLossAttributes[0].id;
-        }
+      let gainLossAttributes = [];
+      gainLossAttributes.push(new EditableListItem());
+      gainLossAttributes = gainLossAttributes.concat(result);
+      if (!this.tradeThesis.closeSurroundingEventId) {
+        this.tradeThesis.closeSurroundingEventId = gainLossAttributes[0].id;
+      }
+      this.userMetadataStoreService.gainLossAttributes = gainLossAttributes;
+      if (field) {
+        this.updateDropdownValues(field, gainLossAttributes);
       }
     });
   }
@@ -186,87 +198,64 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
     });
   }
 
-  addValue(value) {
+  addValue(value, field: DynamicFieldDto) {
+    let title: string = value;
+    if (field) {
+      title = field.displayName;
+    }
+
     const dialogRef = this._dialog.open(SingleInputModalComponent, {
       disableClose: true,
       width: 'auto',
-      data: { title: value }
+      data: { title: title }
     });
 
     dialogRef.afterClosed().subscribe((res) => {
       if (!res || res === '') {
         return;
       }
-      if ('Source' === value) {
-        this.addSource(res);
-      } else if ('Technical Indicator' === value) {
-        this.addTechnicalIndicator(res);
-      } else if ('Surrounding Type' === value) {
-        this.addSurroundingEvent(res);
-      } else if ('Mindset' === value) {
-        this.addMindset(res);
-      } else if ('Gain or loss attribute' === value) {
-        this.addGainLossAttribute(res);
-      } else if ('Trigger for close' === value) {
-        this.addCloseTrigger(res);
+      if ('Source' === value || 'sourceId' === value) {
+        this.addSource(res, field);
+      } else if ('Technical Indicator' === value || 'technicalIndicatorId' === value) {
+        this.addTechnicalIndicator(res, field);
+      } else if ('Surrounding Type' === value || 'surroundingEventId' === value) {
+        this.addSurroundingEvent(res, field);
+      } else if ('Mindset' === value || 'mindsetId' === value) {
+        this.addMindset(res, field);
+      } else if ('Gain or loss attribute' === value || 'closeSurroundingEventId' === value) {
+        this.addGainLossAttribute(res, field);
+      } else if ('Trigger for close' === value || 'closeSourceId' === value) {
+        this.addCloseTrigger(res, field);
       }
     });
   }
 
-  addSource(value: string) {
-    let isValueExist = false;
-    this.sourceTypes.filter((x) => {
-      if (value === x.name) {
-        isValueExist = true;
-        this.toastr.error('Duplicate value. Please provide a new value', 'Error',
-          {
-            tapToDismiss: false,
-            closeButton: true,
-            disableTimeOut: true
-          });
-        return;
-      }
-    })
-    if (!isValueExist) {
-      this.dataSetupService.createSourceType(this.createEditableItem(value)).subscribe(result => {
-        this.loadSourceTypes();
-        this.toastr.success('Added new value successfully', 'Success');
-      });
-    }
+  addSource(value: string, field: DynamicFieldDto) {
+    this.dataSetupService.createSourceType(this.createEditableItem(value)).subscribe(result => {
+      this.loadSourceTypes(field);
+      this.toastr.success('Added new value successfully', 'Success');
+    });
   }
 
-  addTechnicalIndicator(value: string) {
+  addTechnicalIndicator(value: string, field: DynamicFieldDto) {
     this.dataSetupService.createTechnicalIndicatorType(this.createEditableItem(value)).subscribe(result => {
-      this.loadTechnicalIndicators();
+      this.loadTechnicalIndicators(field);
+      this.toastr.success('Added new value successfully', 'Success');
     });
   }
 
-  addSurroundingEvent(value: string) {
+  addSurroundingEvent(value: string, field: DynamicFieldDto) {
     this.dataSetupService.createSurrEventType(this.createEditableItem(value)).subscribe(result => {
-      this.loadSurroundingEvents();
+      this.loadSurroundingEvents(field);
+      this.toastr.success('Added new value successfully', 'Success');
     });
   }
 
-  addMindset(value: string) {
-    let isValueExist = false;
-    this.mindsetTypes.filter((x) => {
-      if (value === x.name) {
-        isValueExist = true;
-        this.toastr.error('Duplicate value. Please provide a new value', 'Error',
-          {
-            tapToDismiss: false,
-            closeButton: true,
-            disableTimeOut: true
-          });
-        return;
-      }
-    })
-    if (!isValueExist) {
-      this.dataSetupService.createMindsetType(this.createEditableItem(value)).subscribe(resuly => {
-        this.loadMindsets();
-        this.toastr.success('Added new value successfully', 'Success');
-      });
-    }
+  addMindset(value: string, field: DynamicFieldDto) {
+    this.dataSetupService.createMindsetType(this.createEditableItem(value)).subscribe(resuly => {
+      this.loadMindsets(field);
+      this.toastr.success('Added new value successfully', 'Success');
+    });
   }
 
   createEditableItem(value: string): EditableListItem {
@@ -299,48 +288,19 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
     this.tradeThesis['holdingPeriod'] = event.value._d;
   }
 
-  addCloseTrigger(value: string) {
-    let isValueExist = false;
-    this.closeTriggers.filter((x) => {
-      if (value === x.name) {
-        isValueExist = true;
-        this.toastr.error('Duplicate value. Please provide a new value', 'Error',
-          {
-            tapToDismiss: false,
-            closeButton: true,
-            disableTimeOut: true
-          });
-        return;
-      }
-    })
-    if (!isValueExist) {
-      this.dataSetupService.createCloseTrigger(this.createEditableItem(value)).subscribe(result => {
-        this.loadCloseTriggers();
-        this.toastr.success('Added new value successfully', 'Success');
-      });
-    }
+  addCloseTrigger(value: string, field: DynamicFieldDto) {
+    this.dataSetupService.createCloseTrigger(this.createEditableItem(value)).subscribe(result => {
+      this.loadCloseTriggers(field);
+      this.toastr.success('Added new value successfully', 'Success');
+    });
   }
 
-  addGainLossAttribute(value: string) {
-    let isValueExist = false;
-    this.gainLossAttributes.filter((x) => {
-      if (value === x.name) {
-        isValueExist = true;
-        this.toastr.error('Duplicate value. Please provide a new value', 'Error',
-          {
-            tapToDismiss: false,
-            closeButton: true,
-            disableTimeOut: true
-          });
-        return;
-      }
-    })
-    if (!isValueExist) {
-      this.dataSetupService.createGainOrLossAttribute(this.createEditableItem(value)).subscribe(result => {
-        this.loadGainLossAttributes();
-        this.toastr.success('Added new value successfully', 'Success');
-      });
-    }
+  addGainLossAttribute(value: string, field: DynamicFieldDto) {
+    this.dataSetupService.createGainOrLossAttribute(this.createEditableItem(value)).subscribe(result => {
+      this.loadGainLossAttributes(field);
+      this.toastr.success('Added new value successfully', 'Success');
+    });
+
   }
 
   selectFile(event) {
@@ -441,6 +401,9 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
         category: 'EntryThesis'
       }
     });
+    dialogRef.afterClosed().subscribe((res) => {
+      this.loadEntryThesisUiFields();
+    });
   }
 
   openExitQuestions() {
@@ -452,6 +415,101 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
         category: 'ExitThesis'
       }
     });
+    dialogRef.afterClosed().subscribe((res) => {
+      this.loadExitThesisUiFields();
+    });
+  }
+
+  loadEntryThesisUiFields() {
+    this.dynamicFieldsService.getUserDynamicFields('EntryThesis').subscribe(result => {
+      this.updateEntryThesisFields(result);
+    });
+  }
+
+  loadExitThesisUiFields() {
+    this.dynamicFieldsService.getUserDynamicFields('ExitThesis').subscribe(result => {
+      this.updateExitThesisFields(result);
+    });
+  }
+
+  updateEntryThesisFields(newFields: DynamicFieldDto[]) {
+    let resultFields = [];
+    newFields.filter(field => field.userFieldId && field.userFieldId > 0).forEach(newField => {
+      let matchedFields = this.entryThesisFields.filter(field => field.name === newField.name);
+      if (matchedFields.length > 0) {
+        resultFields.push(matchedFields[0]);
+      } else {
+        newField.value = this.tradeThesis[newField.name] ? this.tradeThesis[newField.name] + '' : this.tradeThesis[newField.name];
+        newField.changeEvent = this.dropdownItemAddedEvent;
+        resultFields.push(newField);
+      }
+    });
+    this.entryThesisFields = resultFields;
+  }
+
+  updateExitThesisFields(newFields: DynamicFieldDto[]) {
+    let resultFields = [];
+    newFields.filter(field => field.userFieldId && field.userFieldId > 0).forEach(newField => {
+      let matchedFields = this.exitThesisFields.filter(field => field.name === newField.name);
+      if (matchedFields.length > 0) {
+        resultFields.push(matchedFields[0]);
+      } else {
+        newField.value = this.tradeThesis[newField.name] ? this.tradeThesis[newField.name] + '' : this.tradeThesis[newField.name];
+        newField.changeEvent = this.dropdownItemAddedEvent;
+        resultFields.push(newField);
+      }
+    });
+    this.exitThesisFields = resultFields;
+  }
+
+  updateTradeThesisData() {
+    this.updateEntryThesisData();
+    this.updateExitThesisData();
+  }
+
+  updateEntryThesisData() {
+    this.entryThesisFields.forEach(field => {
+      this.tradeThesis[field.name] = field.value;
+    });
+  }
+
+  updateExitThesisData() {
+    this.exitThesisFields.forEach(field => {
+      this.tradeThesis[field.name] = field.value;
+    });
+  }
+
+  addFieldValue(field: DynamicFieldDto) {
+    this.addValue(field.name, field);
+  }
+
+  loadDynamicDropdownValues(field: DynamicFieldDto) {
+    if ('sourceId' === field.name) {
+      this.loadSourceTypes(field);
+    } else if ('technicalIndicatorId' === field.name) {
+      this.loadTechnicalIndicators(field);
+    } else if ('surroundingEventId' === field.name) {
+      this.loadSurroundingEvents(field);
+    } else if ('mindsetId' === field.name) {
+      this.loadMindsets(field);
+    } else if ('closeSourceId' === field.name) {
+      this.loadCloseTriggers(field);
+    } else if ('closeSurroundingEventId' === field.name) {
+      this.loadGainLossAttributes(field);
+    } else if ('contrarian' === field.name) {
+      this.userMetadataStoreService.initContrarians();
+      this.updateDropdownValues(field, this.userMetadataStoreService.contrarian);
+    } else if ('direction' === field.name) {
+      this.userMetadataStoreService.initDirections();
+      this.updateDropdownValues(field, this.userMetadataStoreService.directions);
+    } else if ('tradeType' === field.name) {
+      this.userMetadataStoreService.initTradeTypes();
+      this.updateDropdownValues(field, this.userMetadataStoreService.tradeTypes);
+    }
+  }
+
+  updateDropdownValues(field: DynamicFieldDto, values: any[]) {
+    this.dropdownItemAddedEvent.emit(field);
   }
 
 }

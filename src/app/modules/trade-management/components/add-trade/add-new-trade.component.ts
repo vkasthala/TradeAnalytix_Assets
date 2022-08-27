@@ -294,6 +294,7 @@ export class AddNewTradeComponent implements OnInit {
     this.tradeStrategy.stockId = this.selectedStock.id;
     this.tradeStrategy.strategyTypeId = tradeDetailsComp.selectedStrategy;
     let tradeThesisArray = [];
+    tradeThesisComp.updateTradeThesisData();
     tradeThesisArray.push(tradeThesisComp.tradeThesis);
     this.tradeStrategy.tradeThesis = tradeThesisArray;
     if (tradeDetailsComp.tags) {
