@@ -40,8 +40,8 @@ export class DropdownComponent implements OnInit {
     if (newOptions) {
       newOptions.forEach(opt => {
         let dropdownOpt = new DropdownOption();
-        dropdownOpt.id = opt.id + '';
-        dropdownOpt.name = opt.name + '';
+        dropdownOpt.id = opt.id ? opt.id + '' : opt.id;
+        dropdownOpt.name = opt.name ? opt.name + '' : '';
         optionsArray.push(dropdownOpt);
       });
     }
