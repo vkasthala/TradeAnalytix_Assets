@@ -145,6 +145,10 @@ import { ReferralModalComponent } from '../dashboard/components/referral-modal/r
 import { GettingStartedVideoComponent } from '../dashboard/components/getting-started-modal/getting-started-video.component';
 import { ImportTradeBookComponent } from '../dashboard/components/import-tradebook/import-tradebook.component';
 import { ConfigureFieldsPopupComponent } from '../shared/components/widgets/configure-fields-popup/configure-fields-popup.component';
+import { TextboxComponent } from '../shared/components/widgets/textbox/textbox.component';
+import { DropdownComponent } from '../shared/components/widgets/dropdown/dropdown.component';
+import { DatefieldComponent } from '../shared/components/widgets/datefield/datefield.component';
+import { TextAreaComponent } from '../shared/components/widgets/text-area/text-area.component';
 
 export const MY_FORMATS = {
   parse: {
@@ -287,7 +291,11 @@ export const MY_FORMATS = {
     ReferralModalComponent,
     GettingStartedVideoComponent,
     ImportTradeBookComponent,
-    ConfigureFieldsPopupComponent
+    ConfigureFieldsPopupComponent,
+    TextboxComponent,
+    DropdownComponent,
+    DatefieldComponent,
+    TextAreaComponent
   ],
   imports: [
     FormsModule,
@@ -359,7 +367,11 @@ export const MY_FORMATS = {
     ReferralModalComponent,
     GettingStartedVideoComponent,
     ImportTradeBookComponent,
-    ConfigureFieldsPopupComponent
+    ConfigureFieldsPopupComponent,
+    TextboxComponent,
+    DropdownComponent,
+    DatefieldComponent,
+    TextAreaComponent
   ],
   // bootstrap: [TradeStrategiesGrid],
   providers: [

@@ -23,7 +23,7 @@ export class UserMetadataStoreService {
   tradeTypes: any[];
 
   constructor(private metadataService: UserMetadataService, private dataSetupService: DataSetupService) {
-    this.load();
+    //this.load();
   }
 
   load() {
@@ -114,6 +114,46 @@ export class UserMetadataStoreService {
 
   initTradeTypes() {
     this.tradeTypes = [{ id: 'planned', name: 'Yes' }, { id: 'impromptu', name: 'No' }];;
+  }
+
+  getDynamicFieldDropdownOptions(dropdownId: string): any[] {
+    let result: any[] = [];
+    if ('sourceId' === dropdownId) {
+      result = this.sources;
+    } else if ('contrarian' === dropdownId) {
+      result = this.contrarian;
+    } else if ('direction' === dropdownId) {
+      result = this.directions;
+    } else if ('technicalIndicatorId' === dropdownId) {
+      result = this.technicalIndicators;
+    } else if ('surroundingEventId' === dropdownId) {
+      result = this.events;
+    } else if ('tradeType' === dropdownId) {
+      result = this.tradeTypes;
+    } else if ('mindsetId' === dropdownId) {
+      result = this.mindsets;
+    } else if ('closeSourceId' === dropdownId) {
+      result = this.closeTriggers;
+    } else if ('closeSurroundingEventId' === dropdownId) {
+      result = this.gainLossAttributes;
+    }
+    return result;
+  }
+
+  setDynamicFieldDropdownOptions(dropdownId: string, values: any[]) {
+    if ('sourceId' === dropdownId) {
+      this.sources = values;
+    } else if ('technicalIndicatorId' === dropdownId) {
+      this.technicalIndicators = values;
+    } else if ('surroundingEventId' === dropdownId) {
+      this.events = values;
+    } else if ('mindsetId' === dropdownId) {
+      this.mindsets = values;
+    } else if ('closeSourceId' === dropdownId) {
+      this.closeTriggers = values;
+    } else if ('closeSurroundingEventId' === dropdownId) {
+      this.gainLossAttributes = values;
+    }
   }
 
 }
