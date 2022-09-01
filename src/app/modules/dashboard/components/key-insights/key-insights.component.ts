@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NotificationService } from 'src/app/modules/notifications/services/notification.service';
 
 @Component({
@@ -10,7 +11,7 @@ export class KeyInsightsComponent implements OnInit {
 
   insights: Notification[];
 
-  constructor(private notificationService: NotificationService) {
+  constructor(private notificationService: NotificationService, private router: Router) {
 
   }
 
@@ -24,6 +25,8 @@ export class KeyInsightsComponent implements OnInit {
     });
   }
 
-
+  navigateToInsights() {
+    this.router.navigate(['/insights']);
+  }
 
 }
