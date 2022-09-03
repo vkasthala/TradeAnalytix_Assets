@@ -9,5 +9,5 @@
     </li>
 </ul>
 <div class="px-3 text-right" *ngIf="insights">
-    <a href="/notifications" class="view-more">View More</a>
+    <a (click) = "navigateToInsights()" class="view-more cursor">View More</a>
 </div>

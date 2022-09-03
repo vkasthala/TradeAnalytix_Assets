@@ -43,7 +43,7 @@ export class UserMetadataStoreService {
       this.mindsets = [];
       let mindset: MindsetType = new MindsetType();
       mindset.name = '';
-      mindset.id = 0;
+      mindset.id = undefined;
       this.mindsets.push(mindset);
       this.mindsets = this.mindsets.concat(result);
     });
@@ -54,7 +54,7 @@ export class UserMetadataStoreService {
       this.sources = [];
       let source: SourceType = new SourceType();
       source.name = '';
-      source.id = 0;
+      source.id = undefined;
       this.sources.push(source);
       this.sources = this.sources.concat(result);
     });
@@ -65,7 +65,7 @@ export class UserMetadataStoreService {
       this.events = [];
       let event: SurroundingType = new SurroundingType();
       event.name = '';
-      event.id = 0;
+      event.id = undefined;
       this.events.push(event);
       this.events = this.events.concat(result);
     });
@@ -76,7 +76,7 @@ export class UserMetadataStoreService {
       this.technicalIndicators = [];
       let techIndicator: TechnicalIndicator = new TechnicalIndicator();
       techIndicator.name = '';
-      techIndicator.id = 0;
+      techIndicator.id = undefined;
       this.technicalIndicators.push(techIndicator);
       this.technicalIndicators = this.technicalIndicators.concat(result);
     });
@@ -87,7 +87,7 @@ export class UserMetadataStoreService {
       this.closeTriggers = [];
       let closeTrigger: EditableListItem = new EditableListItem();
       closeTrigger.name = '';
-      closeTrigger.id = 0;
+      closeTrigger.id = undefined;
       this.closeTriggers.push(closeTrigger);
       this.closeTriggers = this.closeTriggers.concat(result);
     });
@@ -98,7 +98,7 @@ export class UserMetadataStoreService {
       this.gainLossAttributes = [];
       let gainLossAttribute: EditableListItem = new EditableListItem();
       gainLossAttribute.name = '';
-      gainLossAttribute.id = 0;
+      gainLossAttribute.id = undefined;
       this.gainLossAttributes.push(gainLossAttribute);
       this.gainLossAttributes = this.gainLossAttributes.concat(result);
     });
