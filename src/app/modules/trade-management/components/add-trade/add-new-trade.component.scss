@@ -651,8 +651,8 @@
         }
     }
     .card-main-actions {
-        min-width: 160px;
-        max-width: 160px;
+        min-width: 130px;
+        max-width: 130px;
     }
 }
 
@@ -712,7 +712,7 @@
     z-index: 20;
     top: 0;
     right: 0;
-    padding: 9px 0;
+    padding: 0;
     @media #{$extra-small} {
         font-weight: 600;
         font-size: 18px;
@@ -764,9 +764,10 @@
 }
 
 .trade-details-body {
-    flex: 0 0 70%;
-    max-width: 70%;
+    flex: 0 0 68%;
+    max-width: 68%;
     .mat-horizontal-stepper-header-container {
+        display: none;
         @media #{$small} {
             padding: 10px 0px;
             justify-content: space-between;
@@ -779,11 +780,14 @@
 }
 
 .right-sidebar {
-    flex: 0 0 30%;
-    max-width: 30%;
+    flex: 0 0 32%;
+    max-width: 32%;
 }
 .addnew-trade {
     position: relative;
+    .mat-horizontal-stepper-header-container {
+        display: none !important;
+    }
 }
 .mask {
     background-color: rgb(36 46 58 / 41%);

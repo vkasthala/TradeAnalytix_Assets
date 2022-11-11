@@ -380,8 +380,8 @@ mat-header-cell:last-of-type,
 }
 
 .sidebar {
-    min-width: 200px;
-    max-width: 200px;
+    min-width: 180px;
+    max-width: 180px;
     // transition: margin-left .35s ease-in-out, left .35s ease-in-out, margin-right .35s ease-in-out, right .35s ease-in-out;
     direction: ltr;
     background: #394c86;
@@ -929,4 +929,10 @@ iframe {
 
 .checkbox-red .mat-checkbox-background {
     background-color: #e71c1c !important;
+}
+.addnew-trade {
+    position: relative;
+    .mat-horizontal-stepper-header-container {
+        display: none !important;
+    }
 }
