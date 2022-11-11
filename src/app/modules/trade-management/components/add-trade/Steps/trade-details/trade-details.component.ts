@@ -836,4 +836,10 @@ export class TradeDetailsComponent implements OnInit {
     return userTag;
   }
 
+  @Output() eventChange = new EventEmitter<Event>();
+
+  onClick(event: Event) {
+    this.eventChange.emit(event);
+  }
+
 }

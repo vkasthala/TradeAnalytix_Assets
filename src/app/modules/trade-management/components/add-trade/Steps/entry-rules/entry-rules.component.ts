@@ -28,7 +28,7 @@ export class EntryRulesComponent implements OnInit {
   entryRules: RuleDto[];
 
   protected hideEntryRules: boolean = false;
-
+  showMoreRules:boolean = false;
   constructor(
     private _dialog: MatDialog,
     private router: Router,
@@ -107,5 +107,9 @@ export class EntryRulesComponent implements OnInit {
       console.log('after:', res);
       ele.comment = res.comment;
     });
+  }
+
+  toggleTradingRules() {
+    this.showMoreRules = !this.showMoreRules;
   }
 }

@@ -188,3 +188,100 @@ textarea {
     font-size: 13px;
     color: #2285FA;
 }
+
+.custom-card {
+    background: #FFFFFF;
+    box-shadow: 0px 4px 16px rgba(157, 157, 157, 0.1);
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.custom-card-body {
+    padding: 0.25rem 1rem;
+    font-size: 14px;
+    line-height: 1.345;
+    color: #9DA6BA;
+}
+.custom-card-header {
+    border-bottom: 1px solid #E8E8E8;
+    padding: 0.25rem 1rem;
+    justify-content: space-between;
+    display: flex;
+}
+.custom-card-title {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #394C86;
+}
+.sub-title {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    color: #394C86;
+}
+.link-item {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 18px;
+    color: #2285FA;
+}
+.col-form-label {
+    font-weight: 500;
+    font-size: 12px !important;
+    line-height: 18px;
+    color: #242E3A;
+    padding-top: 0;
+}
+.col-form-value {
+    font-weight: 500;
+    font-size: 12px !important;
+    line-height: 18px;
+    color: #242E3A;
+}
+.tags-list {
+    list-style: none;
+    display: inline-flex;
+    justify-content: flex-end;
+    margin: 0;
+}
+
+.tag-icon {
+    font-size: 12px !important;
+    vertical-align: middle;
+    color: #2285FA;
+}
+
+.tags-list > li {
+    display: inline-flex;
+}
+
+.tag-item {
+    
+    margin-left: 5px;;
+}
+.tag-list-item {
+    cursor: pointer;
+    background: #ced2d7;
+    border-radius: 8px;
+    padding: 0.25rem 0.5rem;
+    padding-right: 0;
+}
+
+.add-tag {
+    cursor: pointer;
+    margin-left: 10px;
+    border: 2px solid #9da6ba !important;
+    border-radius: 3px;
+    padding: 0.235rem;
+    font-size: 12px;
+}
+
+.delete-tag-icon {
+    cursor: pointer;
+    font-size: 12px !important;
+    color: #ff0000 !important;
+    width: 15px;
+}

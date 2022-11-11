@@ -4,7 +4,7 @@
         <div class="add-stock-sec" #tradeCards>
             <div class="trade-sec">
                 <div class="row justify-content-between">
-                    <div class="col-sm-5">
+                    <div class="col-sm-10">
                         <span class="col-form-label pt-0" *ngIf="addTrade">{{ addTrade ? 'Select' : 'Current' }} Strategy </span>
 
                         <!-- <span class="col-form-label pt-0 ml-2" *ngIf="!addTrade">: {{ strategies[selectedStrategy] }}
@@ -15,7 +15,7 @@
                                 <div class="trade-section m-0">
                                     <div class="pr-3 d-flex">
                                         <div class="Trade-type mr-3" *ngIf="addTrade">
-                                            <div class="form-group">
+                                            <div class="form-group mb-3">
                                                 <select class="form-control select-input pl-0" id="inputState"
                                                     (change)="onStrategyTypeChange($event.target.value)"
                                                     [(ngModel)]='selectedStrategy'
@@ -31,15 +31,10 @@
                         </div>
                     </div>
 
-                    <div class="col-sm-7 px-0 text-right">
+                    <!-- <div class="col-sm-7 px-0 text-right">
                         <span class="d-inline-flex mr-2" *ngIf="(stockAdded || stockOptions.length) && !closeTrade && !viewTrade">
                             <a class="text-link assess-risk-btn" (click)="navigateToRiskAnalysis()">Assess Risk</a>
                         </span>
-                        <!-- <span class="d-inline-flex">
-                            <a class="text-link assess-risk-btn">Compare</a>
-                        </span> -->
-                        
-                        
                         <ul class="tags-list">
                             <li *ngFor="let tag of tags; let i = index;" class="tag-item">
                                 <span class="tag-list-item">
@@ -55,7 +50,7 @@
                                 </span>
                             </li>
                         </ul>
-                    </div>
+                    </div> -->
                 </div>
 
             </div>
@@ -67,7 +62,7 @@
             </div>
             <div class="trade-cards-section" *ngIf="stockAdded && !viewTrade">
                 <h4>Stock Positions</h4>
-                <div class="trade-card-box mt-3">
+                <div class="trade-card-box mt-2">
                     <div class="card-main card-main-actions">
                         <label class="col-form-label pt-0">Action</label>
                         <select id="inputState"

@@ -1,4 +1,4 @@
-<div class="trade-thesis-sec">
+<!-- <div class="trade-thesis-sec">
     <div class="entry-thesis-header cursor" (click)="showEntryThesis()">
         <span>Entry Thesis</span>
         <span class="d-flex align-items-center">
@@ -91,15 +91,13 @@
                     </div>
                 </div>
             </div>
-
-            <!-- end : thesis_item -->
         </div>
     </div>
-</div>
+</div> -->
 
 
 <!-- start: Closing Thesis -->
-<div class="trade-thesis-sec trade-close-thesis-sec" *ngIf="!addTrade && tradeStatus !== 4">
+<!-- <div class="trade-thesis-sec trade-close-thesis-sec" *ngIf="!addTrade && tradeStatus !== 4">
     <div class="entry-thesis-header cursor" (click)="showClosingThesis()">
         <span>Closing Thesis</span>
         <span class="d-flex align-items-center">
@@ -171,6 +169,75 @@
                 </div>
             </div>
 
+        </div>
+    </div>
+</div> -->
+
+<div class="custom-card">
+    <div class="custom-card-header">
+        <div class="custom-card-title">Journal</div>
+        <a class="add-new" (click)="generateChart()" *ngIf="addTrade || editTrade">Generate Chart</a>
+    </div>
+    <div class="custom-card-body">
+        <div class="row mb-2 align-items-center">
+            <label class="col-5 col-form-label">Tags</label>
+            <div class="col-7 col-form-value">
+                <ul class="tags-list">
+                    <li *ngFor="let tag of tags; let i = index;" class="tag-item">
+                        <span class="tag-list-item">
+                            <span (click)="editTag(tag)">
+                                {{getTagName(tag.tagId)}}
+                            </span>
+                            <span class="material-icons delete-tag-icon" (click)="deleteTag(tag, i)">close_outline</span>
+                        </span>
+                    </li>
+                    <li class="align-items-center pl-2">
+                        <span (click)="addTag()" class="text-link" *ngIf="tags && tags.length < 3">
+                            Add Tag
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row mb-2 align-items-center">
+            <label class="col-5 col-form-label">Strategy</label>
+            <div class="col-7 col-form-value">
+                <select class="form-control">
+                    <option value="0">Call Spread</option>
+                </select>
+            </div>
+        </div>
+        <div class="row mb-2 align-items-center">
+            <label class="col-5 col-form-label">Direction</label>
+            <div class="col-7 col-form-value">
+                <select class="form-control">
+                    <option value="0">Long</option>
+                </select>
+            </div>
+        </div>
+        <div class="row mb-2 align-items-center">
+            <label class="col-5 col-form-label">Contrarian Trade</label>
+            <div class="col-7 col-form-value">
+                <select class="form-control">
+                    <option value="0">Yes</option>
+                </select>
+            </div>
+        </div>
+        <div class="row mb-2 align-items-center">
+            <label class="col-5 col-form-label">Planned Trade</label>
+            <div class="col-7 col-form-value">
+                <select class="form-control">
+                    <option value="0">Yes</option>
+                </select>
+            </div>
+        </div>
+        <div class="row mb-2 align-items-center">
+            <label class="col-5 col-form-label">Upload Files</label>
+            <div class="col-7 col-form-value">
+                <input type="file" (change)="selectFile($event)" accept=".pdf,.png,.jpg,.jpeg,.bmp,.docx,.doc,.xls,.xlsx,.pptx,.ppt" style="padding-top: 10px; width: 100%;" />
+
+                <div class="d-flex align-items-center mt-1" *ngFor="let file of tradeChubFiles;let i = index"><span (click) = "downloadFile(i)" style="cursor: pointer">{{file.fileName}}</span><mat-icon class="mat-icon-sm" style="cursor: pointer;" (click)="deleteFileName(i)">delete</mat-icon></div>
+            </div>
         </div>
     </div>
 </div>
