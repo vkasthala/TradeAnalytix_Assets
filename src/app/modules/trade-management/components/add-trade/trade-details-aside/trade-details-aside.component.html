@@ -61,78 +61,86 @@
 <div class="custom-card" *ngIf="selectedStock && stockSummaryResult">
     <div class="custom-card-header">
         <div class="custom-card-title">Trade Statistics</div>
+        <a class="add-new" (click)="generateChart()">Refresh</a>
     </div>
     <div class="custom-card-body">
-        <div class="row align-items-center">
-            <label class="col-5 col-form-label">Open Date</label>
-            <div class="col-7 col-form-value">06/04/2022 14:23</div>
+        <div class="d-flex mb-2 align-items-center">
+            <label class="col-form-label">Open Date</label>
+            <div class="col-8 col-md-7 col-form-value">06/04/2022 14:23</div>
         </div>
-        <div class="row align-items-center">
-            <label class="col-5 col-form-label">Close Date</label>
-            <div class="col-7 col-form-value">
+        <div class="d-flex mb-2 align-items-center">
+            <label class="col-form-label">Close Date</label>
+            <div class="col-8 col-md-7 col-form-value">
                 NA
-                <mat-icon class="mat-icon-xs cursor info-icon ml-3">edit</mat-icon>
             </div>
         </div>
-        <div class="row align-items-center">
-            <label class="col-5 col-form-label">Stoploss Range</label>
-            <div class="col-7 col-form-value">445.25 - 535.35</div>
-        </div>
-        <div class="row align-items-center">
-            <label class="col-5 col-form-label">Maximum Risk</label>
-            <div class="col-7 col-form-value">
-                3344.23
-                <span class="d-inline-flex ml-3" *ngIf="!closeTrade && !viewTrade">
-                    <a class="text-link assess-risk-btn" (click)="navigateToRiskAnalysis()">Assess Risk</a>
-                </span>
+        <div class="d-flex mb-2 align-items-center">
+            <label class="col-form-label">Stoploss Range</label>
+            <div class="col-8 col-form-value">
+                <div class="d-flex justify-content-between">
+                    <span>445.25 - 535.35</span>
+                    <a class="add-new ml-3" (click)="Edit()">Edit</a>
+                </div>
             </div>
         </div>
-        <div class="row align-items-center">
-            <label class="col-5 col-form-label">Net R</label>
-            <div class="col-7 col-form-value">1.25R</div>
+        <div class="d-flex mb-2 align-items-center">
+            <label class="col-form-label">Maximum Risk</label>
+            <div class="col-8 col-form-value">
+                <div class="d-flex justify-content-between align-items-center">
+                    <span>3344.23</span>
+                    <span class="d-inline-flex ml-3" *ngIf="!closeTrade && !viewTrade">
+                        <a class="text-link assess-risk-btn" (click)="navigateToRiskAnalysis()">Assess Risk</a>
+                    </span>
+                </div>
+                
+            </div>
         </div>
-        <div class="row align-items-center">
-            <label class="col-5 col-form-label">Realized Return</label>
-            <div class="col-7 col-form-value">1235.35</div>
+        <div class="d-flex mb-2 align-items-center">
+            <label class="col-form-label">Net R</label>
+            <div class="col-8 col-md-7 col-form-value">1.25R</div>
         </div>
-        <div class="row align-items-center">
-            <label class="col-5 col-form-label">Status</label>
-            <div class="col-7 col-form-value">Open</div>
+        <div class="d-flex mb-2 align-items-center">
+            <label class="col-form-label">Realized Return</label>
+            <div class="col-8 col-md-7 col-form-value">1235.35</div>
+        </div>
+        <div class="d-flex mb-2 align-items-center">
+            <label class="col-form-label">Status</label>
+            <div class="col-8 col-md-7 col-form-value">Open</div>
         </div>
 
-        <div class="mt-3" *ngIf="showMoreStatistics">
+        <div class="mt-2" *ngIf="showMoreStatistics">
             <div class="sub-title mb-2">CIPLA Histiorical Stats</div>
-            <div class="row align-items-center">
-                <label class="col-5 col-form-label">Transactions</label>
-                <div class="col-7 col-form-value">44</div>
+            <div class="d-flex mb-2 align-items-center">
+                <label class="col-form-label">Transactions</label>
+                <div class="col-8 col-md-7 col-form-value">44</div>
             </div>
-            <div class="row align-items-center">
-                <label class="col-5 col-form-label">Trade Strategies</label>
-                <div class="col-7 col-form-value">14</div>
+            <div class="d-flex mb-2 align-items-center">
+                <label class="col-form-label">Trade Strategies</label>
+                <div class="col-8 col-md-7 col-form-value">14</div>
             </div>
-            <div class="row align-items-center">
-                <label class="col-5 col-form-label">Win Rate</label>
-                <div class="col-7 col-form-value">44%</div>
+            <div class="d-flex mb-2 align-items-center">
+                <label class="col-form-label">Win Rate</label>
+                <div class="col-8 col-md-7 col-form-value">44%</div>
             </div>
-            <div class="row align-items-center">
-                <label class="col-5 col-form-label">Avg Holding Period</label>
-                <div class="col-7 col-form-value">3344.23</div>
+            <div class="d-flex mb-2 align-items-center">
+                <label class="col-form-label">Avg Holding Period</label>
+                <div class="col-8 col-md-7 col-form-value">3344.23</div>
             </div>
-            <div class="row align-items-center">
-                <label class="col-5 col-form-label">Highest Return</label>
-                <div class="col-7 col-form-value">1.25R</div>
+            <div class="d-flex mb-2 align-items-center">
+                <label class="col-form-label">Highest Return</label>
+                <div class="col-8 col-md-7 col-form-value">1.25R</div>
             </div>
-            <div class="row align-items-center">
-                <label class="col-5 col-form-label">Lowest Return</label>
-                <div class="col-7 col-form-value">1235.35</div>
+            <div class="d-flex mb-2 align-items-center">
+                <label class="col-form-label">Lowest Return</label>
+                <div class="col-8 col-md-7 col-form-value">1235.35</div>
             </div>
-            <div class="row align-items-center">
-                <label class="col-5 col-form-label">Successful Strategy</label>
-                <div class="col-7 col-form-value">Closed</div>
+            <div class="d-flex mb-2 align-items-center">
+                <label class="col-form-label">Successful Strategy</label>
+                <div class="col-8 col-md-7 col-form-value">Closed</div>
             </div>
-            <div class="row align-items-center">
-                <label class="col-5 col-form-label">Failed Strategy</label>
-                <div class="col-7 col-form-value">Closed</div>
+            <div class="d-flex mb-2 align-items-center">
+                <label class="col-form-label">Failed Strategy</label>
+                <div class="col-8 col-md-7 col-form-value">Closed</div>
             </div>
         </div>
 

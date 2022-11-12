@@ -179,9 +179,9 @@
         <a class="add-new" (click)="generateChart()" *ngIf="addTrade || editTrade">Generate Chart</a>
     </div>
     <div class="custom-card-body">
-        <div class="row mb-2 align-items-center">
-            <label class="col-5 col-form-label">Tags</label>
-            <div class="col-7 col-form-value">
+        <div class="d-flex mb-2 align-items-center">
+            <label class="col-form-label">Tags</label>
+            <div class="col-8">
                 <ul class="tags-list">
                     <li *ngFor="let tag of tags; let i = index;" class="tag-item">
                         <span class="tag-list-item">
@@ -199,41 +199,41 @@
                 </ul>
             </div>
         </div>
-        <div class="row mb-2 align-items-center">
-            <label class="col-5 col-form-label">Strategy</label>
-            <div class="col-7 col-form-value">
+        <div class="d-flex mb-2 align-items-center">
+            <label class="col-form-label">Strategy</label>
+            <div class="col-8 col-md-6">
                 <select class="form-control">
                     <option value="0">Call Spread</option>
                 </select>
             </div>
         </div>
-        <div class="row mb-2 align-items-center">
-            <label class="col-5 col-form-label">Direction</label>
-            <div class="col-7 col-form-value">
+        <div class="d-flex mb-2 align-items-center">
+            <label class="col-form-label">Direction</label>
+            <div class="col-8 col-md-6">
                 <select class="form-control">
                     <option value="0">Long</option>
                 </select>
             </div>
         </div>
-        <div class="row mb-2 align-items-center">
-            <label class="col-5 col-form-label">Contrarian Trade</label>
-            <div class="col-7 col-form-value">
+        <div class="d-flex mb-2 align-items-center">
+            <label class="col-form-label">Contrarian Trade</label>
+            <div class="col-8 col-md-6">
                 <select class="form-control">
                     <option value="0">Yes</option>
                 </select>
             </div>
         </div>
-        <div class="row mb-2 align-items-center">
-            <label class="col-5 col-form-label">Planned Trade</label>
-            <div class="col-7 col-form-value">
+        <div class="d-flex mb-2 align-items-center">
+            <label class="col-form-label">Planned Trade</label>
+            <div class="col-8 col-md-6">
                 <select class="form-control">
                     <option value="0">Yes</option>
                 </select>
             </div>
         </div>
-        <div class="row mb-2 align-items-center">
-            <label class="col-5 col-form-label">Upload Files</label>
-            <div class="col-7 col-form-value">
+        <div class="d-flex mb-2 align-items-center">
+            <label class="col-form-label">Upload Files</label>
+            <div class="col-8 col-md-7">
                 <input type="file" (change)="selectFile($event)" accept=".pdf,.png,.jpg,.jpeg,.bmp,.docx,.doc,.xls,.xlsx,.pptx,.ppt" style="padding-top: 10px; width: 100%;" />
 
                 <div class="d-flex align-items-center mt-1" *ngFor="let file of tradeChubFiles;let i = index"><span (click) = "downloadFile(i)" style="cursor: pointer">{{file.fileName}}</span><mat-icon class="mat-icon-sm" style="cursor: pointer;" (click)="deleteFileName(i)">delete</mat-icon></div>

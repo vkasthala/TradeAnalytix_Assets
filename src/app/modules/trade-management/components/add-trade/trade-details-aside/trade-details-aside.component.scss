@@ -859,14 +859,16 @@ a.btn.btn-skip {
     flex-direction: column;
 }
 .custom-card-body {
-    padding: 0.25rem 1rem;
+    padding: 0.45rem 1rem;
     font-size: 14px;
     line-height: 1.345;
     color: #9DA6BA;
 }
 .custom-card-header {
     border-bottom: 1px solid #E8E8E8;
-    padding: 0.25rem 1rem;
+    padding: 0.45rem 1rem;
+    justify-content: space-between;
+    display: flex;
 }
 .custom-card-title {
     font-weight: 500;
@@ -887,14 +889,18 @@ a.btn.btn-skip {
 }
 .col-form-label {
     font-weight: 500;
-    font-size: 12px !important;
+    font-size: 14px !important;
     line-height: 18px;
-    color: #242E3A;
+    color: #9DA6BA;
     padding-top: 0;
+    padding-bottom: 0;
+    min-width: 38%;
+    flex: 0 0 38%;
 }
+
 .col-form-value {
     font-weight: 500;
-    font-size: 12px !important;
+    font-size: 14px !important;
     line-height: 18px;
     color: #242E3A;
 }
@@ -902,4 +908,14 @@ a.btn.btn-skip {
     margin-top: -15px;
     justify-content: end;
     position: relative;
+}
+.assess-risk-btn {
+    height: 30px;
+    background: #FFFFFF;
+    border: 1px solid #2285FA;
+    border-radius: 4px;
+    color: #2285FA;
+    font-size: 13px;
+    line-height: 1;
+    padding: .5rem;
 }

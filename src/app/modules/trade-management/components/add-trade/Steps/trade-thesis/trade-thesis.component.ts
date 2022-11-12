@@ -26,6 +26,7 @@ import { TradeTag } from 'src/app/modules/shared/models/trade-management/trade-t
 import { UserTagService } from 'src/app/modules/settings/services/user-tag.service';
 import { EditableSelectComponent } from '../editable-select/editable-select.component';
 import { UserTag } from 'src/app/modules/settings/models/user-tag.model';
+import { ConfirmDialogComponent } from 'src/app/modules/shared/components/modals/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-trade-thesis',
@@ -589,6 +590,22 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
     }
     userTag.tag = tagName;
     return userTag;
+  }
+
+  deleteTag(tag: TradeTag, ind: number) {
+    const dialogRef = this._dialog.open(ConfirmDialogComponent, {
+      width: 'auto',
+      height: 'auto',
+      data: { 'message': 'Are you sure you want to delete tag: ' + this.getTagName(tag.id) + '?' }
+    });
+
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      if (dialogResult == true) {
+        if (this.tags.length > ind) {
+          this.tags.splice(ind, 1);
+        }
+      }
+    });
   }
 
 }

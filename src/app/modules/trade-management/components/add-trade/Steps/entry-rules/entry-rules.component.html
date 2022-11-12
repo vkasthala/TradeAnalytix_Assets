@@ -54,60 +54,59 @@
         <div class="custom-card-title">Trading Rules</div>
     </div>
     <div class="custom-card-body">
-        <div class="row mb-1">
-            <label class="col-8 col-form-label">Maximum amount at risk on a trade strategy should be less than 5000</label>
-            <div class="col-4 link-item">
+        <div class="d-flex justify-content-between mb-2">
+            <label class="col-form-label">Maximum amount at risk on a trade strategy should be less than 5000</label>
+            <div class="pl-2 link-item">
                 <mat-checkbox [checked]="true" class="checkbox-red"> Remarks</mat-checkbox>
             </div>
         </div>
-        <div class="row mb-1">
-            <label class="col-8 col-form-label">Amount invested on a trade strategy should be less than 10000</label>       
-            <div class="col-4 link-item">
+        <div class="d-flex justify-content-between mb-2">
+            <label class="col-form-label">Amount invested on a trade strategy should be less than 10000</label>       
+            <div class="pl-2 link-item">
                 <mat-checkbox [checked]="true" class="checkbox-green"> Remarks</mat-checkbox>
             </div>
         </div>
-        <div class="row mb-1">
-            <label class="col-8 col-form-label">Do not chase a trade and average once they start moving in unfavorable direction</label>       
-            <div class="col-4 link-item">
+        <div class="d-flex justify-content-between mb-2">
+            <label class="col-form-label">Do not chase a trade and average once they start moving in unfavorable direction</label>       
+            <div class="pl-2 link-item">
                 <mat-checkbox [checked]="true" class="checkbox-green"> Remarks</mat-checkbox>
             </div>
         </div>
-        <div class="row mb-1">
-            <label class="col-8 col-form-label">Always hedge your positions that are at a risk of losing over 2000</label>       
-            <div class="col-4 link-item">
+        <div class="d-flex justify-content-between mb-2">
+            <label class="col-form-label">Always hedge your positions that are at a risk of losing over 2000</label>       
+            <div class="pl-2 link-item">
                 <mat-checkbox [checked]="true" class="checkbox-red"> Remarks</mat-checkbox>
             </div>
         </div>
-        <div class="row mb-1">
-            <label class="col-8 col-form-label">Do not execute more than 10 trades in a day</label>
-            <div class="col-4 link-item">
+        <div class="d-flex justify-content-between mb-2">
+            <label class="col-form-label">Do not execute more than 10 trades in a day</label>
+            <div class="pl-2 link-item">
                 <mat-checkbox> Remarks</mat-checkbox>
             </div>
         </div>
-        
 
-        <div class="mt-3" *ngIf="showMoreRules">
-            <div class="row mb-1">
-                <label class="col-8 col-form-label">Maximum amount at risk on a trade strategy should be less than 5000</label>       
-                <div class="col-4 link-item">
+        <div *ngIf="showMoreRules">
+            <div class="d-flex justify-content-between mb-2">
+                <label class="col-form-label">Maximum amount at risk on a trade strategy should be less than 5000</label>       
+                <div class="pl-2 link-item">
                     <mat-checkbox [checked]="true" class="checkbox-red"> Remarks</mat-checkbox>
                 </div>
             </div>
-            <div class="row mb-1">
-                <label class="col-8 col-form-label">Amount invested on a trade strategy should be less than 10000</label>       
-                <div class="col-4 link-item">
+            <div class="d-flex justify-content-between mb-2">
+                <label class="col-form-label">Amount invested on a trade strategy should be less than 10000</label>       
+                <div class="pl-2 link-item">
                     <mat-checkbox [checked]="true" class="checkbox-red"> Remarks</mat-checkbox>
                 </div>
             </div>
-            <div class="row mb-1">
-                <label class="col-8 col-form-label">Do not chase a trade and average once they start moving in unfavorable direction</label>       
-                <div class="col-4 link-item">
+            <div class="d-flex justify-content-between mb-2">
+                <label class="col-form-label">Do not chase a trade and average once they start moving in unfavorable direction</label>       
+                <div class="pl-2 link-item">
                     <mat-checkbox [checked]="true" class="checkbox-red"> Remarks</mat-checkbox>
                 </div>
             </div>
-            <div class="row mb-1">
-                <label class="col-8 col-form-label">Always hedge your positions that are at a risk of losing over 2000</label>       
-                <div class="col-4 link-item">
+            <div class="d-flex justify-content-between mb-2">
+                <label class="col-form-label">Always hedge your positions that are at a risk of losing over 2000</label>       
+                <div class="pl-2 link-item">
                     <mat-checkbox [checked]="true" class="checkbox-red"> Remarks</mat-checkbox>
                 </div>
             </div>
