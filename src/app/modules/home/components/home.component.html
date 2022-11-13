@@ -39,7 +39,13 @@
                 <li class="sidebar-item" [class.nav-active]="currentRoute == 'trade-strategies'">
                     <a class="sidebar-link" [routerLink]="['/trade-strategies/']">
                         <mat-icon>attach_money</mat-icon>
-                        <span>Journal Trades</span>
+                        <span>Trade Book</span>
+                    </a>
+                </li>
+                
+                <li class="sidebar-item" [class.nav-active]="currentRoute == 'bulk-update'">
+                    <a class="sidebar-link" [routerLink]="['/bulk-update/']">
+                        <span>Bulk Update</span>
                     </a>
                 </li>
                 <li class="sidebar-item" [class.nav-active]="currentRoute == 'rules'">
@@ -48,11 +54,7 @@
                         <span>Trading Rules</span>
                     </a>
                 </li>
-                <li class="sidebar-item" [class.nav-active]="currentRoute == 'setttings'">
-                    <a class="sidebar-link" [routerLink]="['/setttings/']">
-                        <span>Data Setup</span>
-                    </a>
-                </li>
+                
             </ul>
 
             <div class="parent-item">
@@ -86,6 +88,17 @@
                     <a class="sidebar-link" [routerLink]="['/strategy-comparison/']">
                         <mat-icon>compare_arrows</mat-icon>
                         <span>Strategy&nbsp;Picker</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="parent-item">
+                Settings
+            </div>
+            <ul class="list-unstyled ">
+                <li class="sidebar-item" [class.nav-active]="currentRoute == 'setttings'">
+                    <a class="sidebar-link" [routerLink]="['/setttings/']">
+                        <span>Data Setup</span>
                     </a>
                 </li>
             </ul>

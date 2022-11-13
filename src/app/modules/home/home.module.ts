@@ -149,6 +149,8 @@ import { TextboxComponent } from '../shared/components/widgets/textbox/textbox.c
 import { DropdownComponent } from '../shared/components/widgets/dropdown/dropdown.component';
 import { DatefieldComponent } from '../shared/components/widgets/datefield/datefield.component';
 import { TextAreaComponent } from '../shared/components/widgets/text-area/text-area.component';
+import { JournalPopupComponent } from '../trade-management/components/add-trade/Steps/trade-thesis/journal-popup/journal-popup.component';
+import { TradeTagsComponent } from '../trade-management/components/add-trade/Steps/trade-tags/trade-tags.component';
 
 export const MY_FORMATS = {
   parse: {
@@ -295,7 +297,9 @@ export const MY_FORMATS = {
     TextboxComponent,
     DropdownComponent,
     DatefieldComponent,
-    TextAreaComponent
+    TextAreaComponent,
+    JournalPopupComponent,
+    TradeTagsComponent
   ],
   imports: [
     FormsModule,
@@ -371,7 +375,9 @@ export const MY_FORMATS = {
     TextboxComponent,
     DropdownComponent,
     DatefieldComponent,
-    TextAreaComponent
+    TextAreaComponent,
+    JournalPopupComponent,
+    TradeTagsComponent
   ],
   // bootstrap: [TradeStrategiesGrid],
   providers: [

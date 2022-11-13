@@ -27,6 +27,7 @@ import { UserTagService } from 'src/app/modules/settings/services/user-tag.servi
 import { EditableSelectComponent } from '../editable-select/editable-select.component';
 import { UserTag } from 'src/app/modules/settings/models/user-tag.model';
 import { ConfirmDialogComponent } from 'src/app/modules/shared/components/modals/confirm-dialog/confirm-dialog.component';
+import { JournalPopupComponent } from './journal-popup/journal-popup.component';
 
 @Component({
   selector: 'app-trade-thesis',
@@ -605,6 +606,20 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
           this.tags.splice(ind, 1);
         }
       }
+    });
+  }
+
+  openJournalModal() {
+    const dialogRef = this._dialog.open(JournalPopupComponent, {
+      disableClose: true,
+      width: 'auto',
+      data: {
+        title: 'Journal',
+        category: 'EntryThesis'
+      }
+    });
+    dialogRef.afterClosed().subscribe((res) => {
+
     });
   }
 

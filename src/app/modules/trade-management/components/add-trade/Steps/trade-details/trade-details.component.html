@@ -1,16 +1,18 @@
 <div class="addnew-trade-body">
+    <h4 class="addnew-trade-header">Trade Details</h4>
     <ng-container [ngSwitch]="currentState">
         <!-- entry-third -->
         <div class="add-stock-sec" #tradeCards>
             <div class="trade-sec">
+                
                 <div class="row justify-content-between">
                     <div class="col-sm-10">
-                        <span class="col-form-label pt-0" *ngIf="addTrade">{{ addTrade ? 'Select' : 'Current' }} Strategy </span>
+                        <!-- <span class="col-form-label pt-0" *ngIf="addTrade">{{ addTrade ? 'Select' : 'Current' }} Strategy </span> -->
 
                         <!-- <span class="col-form-label pt-0 ml-2" *ngIf="!addTrade">: {{ strategies[selectedStrategy] }}
                             <mat-icon class="mat-icon-sm mr-1 cursor" (click)="selectStrategy()">edit</mat-icon>
                         </span> -->
-                        <div [ngClass]="closeTrade ? 'row close_trade_module' : 'row'">
+                        <!-- <div [ngClass]="closeTrade ? 'row close_trade_module' : 'row'">
                             <div class="col-sm-12">
                                 <div class="trade-section m-0">
                                     <div class="pr-3 d-flex">
@@ -28,7 +30,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
 
                     <!-- <div class="col-sm-7 px-0 text-right">
