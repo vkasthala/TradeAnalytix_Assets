@@ -313,9 +313,9 @@ export class AddNewTradeComponent implements OnInit {
     this.tradeStrategy.stockOptions = tradeDetailsComp.stockOptions;
     this.tradeStrategy.direction = tradeThesisComp.tradeThesis.direction;
     this.tradeStrategy.rules = entryRulesComp.entryRules;
-    if (this.tradeStrategy.rules && exitRulesComp.exitRules) {
+    /*if (this.tradeStrategy.rules && exitRulesComp.exitRules) {
       this.tradeStrategy.rules = this.tradeStrategy.rules.concat(exitRulesComp.exitRules);
-    }
+    }*/
     if (this.close) {
       this.tradeStrategy.closeDate = this.tradeDetailsBottomComponent.closeDate;
     }

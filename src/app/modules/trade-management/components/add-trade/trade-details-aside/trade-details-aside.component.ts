@@ -94,6 +94,9 @@ export class TradeDetailsAsideComponent implements OnInit {
   }
 
   loadStrategyTypeSummary(strategyId: number) {
+    if(!strategyId) {
+      return;
+    }
     this.userStockStatsService.getStrategyTypeSummaryResult(strategyId).subscribe(result => {
       this.strategyTypeSummaryResult = result;
     });
