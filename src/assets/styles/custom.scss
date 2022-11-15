@@ -380,8 +380,8 @@ mat-header-cell:last-of-type,
 }
 
 .sidebar {
-    min-width: 200px;
-    max-width: 200px;
+    min-width: 210px;
+    max-width: 210px;
     // transition: margin-left .35s ease-in-out, left .35s ease-in-out, margin-right .35s ease-in-out, right .35s ease-in-out;
     direction: ltr;
     background: #394c86;
@@ -426,14 +426,14 @@ a.sidebar-link {
     padding: 0.25rem;
     color: rgba(255, 255, 255, 0.55);
     font-weight: 400;
-    background: transparent;
-    transition: background 0.5s ease-in-out;
     text-decoration: none;
     cursor: pointer;
     line-height: 1;
     display: flex;
     align-items: center;
     border-radius: 6px;
+    font-weight: 600;
+    font-size: 15px;
     @media #{$extra-small} {
         border-radius: 0;
     }
@@ -509,7 +509,7 @@ a.sidebar-link {
 
 .sidebar-item {
     position: relative;
-    padding: 0 10px 0 28px;
+    padding: 0 10px 0 45px;
     min-height: 32px;
     @media #{$extra-small} {
         padding: 0;
@@ -924,7 +924,7 @@ iframe {
     margin: 0;
 }
 .trade-navbar {
-    margin-top: 2rem;
+    margin-top: 1.5rem;
 }
 
 .checkbox-red .mat-checkbox-background {

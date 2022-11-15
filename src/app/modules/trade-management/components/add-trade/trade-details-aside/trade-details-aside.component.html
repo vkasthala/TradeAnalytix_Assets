@@ -60,8 +60,8 @@
 
 <div class="custom-card" *ngIf="selectedStock && stockSummaryResult">
     <div class="custom-card-header">
-        <div class="custom-card-title">Trade Statistics</div>
-        <a class="add-new" (click)="generateChart()">Refresh</a>
+        <div class="custom-card-title pl-0 col-9">Trade Statistics</div>
+        <a class="add-new ml-2" (click)="generateChart()">Refresh</a>
     </div>
     <div class="custom-card-body">
         <div class="d-flex mb-2 align-items-center">
@@ -77,18 +77,18 @@
         <div class="d-flex mb-2 align-items-center">
             <label class="col-form-label">Stoploss Range</label>
             <div class="col-8 col-form-value">
-                <div class="d-flex justify-content-between">
-                    <span>445.25 - 535.35</span>
-                    <a class="add-new ml-3" (click)="Edit()">Edit</a>
+                <div class="d-flex align-items-center">
+                    <span class="col-8 pl-0">445.25 - 535.35</span>
+                    <a class="add-new" (click)="Edit()">Edit</a>
                 </div>
             </div>
         </div>
         <div class="d-flex mb-2 align-items-center">
             <label class="col-form-label">Maximum Risk</label>
-            <div class="col-8 col-form-value">
-                <div class="d-flex justify-content-between align-items-center">
-                    <span>3344.23</span>
-                    <span class="d-inline-flex ml-3" *ngIf="!closeTrade && !viewTrade">
+            <div class="col-9 col-form-value">
+                <div class="d-flex align-items-center">
+                    <span class="col-7 pl-0">3344.23</span>
+                    <span *ngIf="!closeTrade && !viewTrade">
                         <a class="text-link assess-risk-btn" (click)="navigateToRiskAnalysis()">Assess Risk</a>
                     </span>
                 </div>
@@ -103,13 +103,9 @@
             <label class="col-form-label">Realized Return</label>
             <div class="col-8 col-md-7 col-form-value">1235.35</div>
         </div>
-        <div class="d-flex mb-2 align-items-center">
-            <label class="col-form-label">Status</label>
-            <div class="col-8 col-md-7 col-form-value">Open</div>
-        </div>
 
-        <div class="mt-2" *ngIf="showMoreStatistics">
-            <div class="sub-title mb-2">CIPLA Histiorical Stats</div>
+        <div class="mt-3" *ngIf="showMoreStatistics">
+            <div class="sub-title">CIPLA Histiorical Stats</div>
             <div class="d-flex mb-2 align-items-center">
                 <label class="col-form-label">Transactions</label>
                 <div class="col-8 col-md-7 col-form-value">44</div>
@@ -144,8 +140,8 @@
             </div>
         </div>
 
-        <div class="text-right d-flex showMore">
-            <span class="cursor link-item" (click)="toggleStatistics()">{{showMoreStatistics ? 'Show Less' : 'Show More'}}</span>                 
+        <div class="col-11 mb-2 d-flex ml-1 showMore">
+            <span class="cursor link-item" (click)="toggleStatistics()">{{showMoreStatistics ? 'Less' : 'More'}}</span>                 
         </div>
     </div>
 </div>
