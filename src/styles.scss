@@ -526,20 +526,3 @@ input:invalid {
 .financials-view .tv-feed-widget__scroll-wrapper {
     height: 100% !important;
 }
-
-.checkbox-red {
-    .mat-checkbox-checked.mat-accent .mat-checkbox-background,
-    .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background,
-    .mat-checkbox-checked.mat-accent .mat-checkbox-background,
-    .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
-        background-color: #61BC6D !important;
-    }
-
-    .mat-checkbox-checked:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element,
-    .mat-checkbox:active:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element {
-        background-color: #e71c1c !important;
-    }
-    .mat-checkbox-background {
-        background-color: #e71c1c !important;
-    }
-}

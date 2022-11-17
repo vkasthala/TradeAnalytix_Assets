@@ -1,7 +1,7 @@
 <div class="compare-popup">
     <div class="compare-pop-inner">
         <div class="top-pop-inner">
-            <div class="modal-title mb-1">{{title}}</div>
+            <div class="modal-title">{{title}}</div>
             <div class="right-close" (click)="closeModal()">
                 <mat-icon>clear</mat-icon>
             </div>
@@ -16,7 +16,7 @@
             </div>
             <div class="d-flex mb-2 align-items-center">
                 <label class="col-form-label">Strategy</label>
-                <div class="col-8 col-md-5">
+                <div class="col-8 col-md-4">
                     <select class="form-control">
                         <option value="0">Call Spread</option>
                     </select>
@@ -24,7 +24,7 @@
             </div>
             <div class="d-flex mb-2 align-items-center">
                 <label class="col-form-label">Direction</label>
-                <div class="col-8 col-md-5">
+                <div class="col-8 col-md-4">
                     <select class="form-control">
                         <option value="0">Long</option>
                     </select>
@@ -32,7 +32,7 @@
             </div>
             <div class="d-flex mb-2 align-items-center">
                 <label class="col-form-label">Contrarian Trade</label>
-                <div class="col-8 col-md-5">
+                <div class="col-8 col-md-4">
                     <select class="form-control">
                         <option value="0">Yes</option>
                     </select>
@@ -40,7 +40,7 @@
             </div>
             <div class="d-flex mb-2 align-items-center">
                 <label class="col-form-label">Planned Trade</label>
-                <div class="col-8 col-md-5">
+                <div class="col-8 col-md-4">
                     <select class="form-control">
                         <option value="0">Yes</option>
                     </select>
@@ -54,29 +54,19 @@
             </div>
             <div class="d-flex mb-2 align-items-center">
                 <label class="col-form-label">Upload Files</label>
-                <div class="col-8">
-                    <div *ngFor="let file of tradeChubFiles;let i = index"><span (click) = "downloadFile(i)" style="cursor: pointer">{{file.fileName}}</span><mat-icon class="mat-icon-sm" style="cursor: pointer;" (click)="deleteFileName(i)">delete</mat-icon></div>
-                    <div class="media">
-                        <div class="media-body">
-                            <input type="file" (change)="selectFile($event)" accept=".pdf,.png,.jpg,.jpeg,.bmp,.docx,.doc,.xls,.xlsx,.pptx,.ppt" style="padding-top: 10px;" />
-                        </div>
-                    </div>
-                    <div class="text-right pt-2">
-                        <a class="add-new" (click)="generateChart()" *ngIf="addTrade || editTrade">Generate Chart</a>
-                    </div>
+                <div class="col-9">
+                    <app-upload-files></app-upload-files>
                 </div>
             </div>
 
             <div class="d-flex mb-2 align-items-center">
                 <label class="col-form-label">Source of Trade</label>
-                <div class="col-8">
+                <div class="col-9">
                     <div class="d-flex align-items-center">
-                        <div class="col-8 pl-0">
-                            <select class="form-control">
-                                <option value="0">Self</option>
-                            </select>
-                        </div>
-                        <span class="text-primary">
+                        <select class="form-control">
+                            <option value="0">Self</option>
+                        </select>
+                        <span class="text-primary ml-3">
                             <mat-icon class="text-primary cursor" (click)="onItemAdd()">add_circle</mat-icon>
                         </span>
                     </div>
@@ -92,10 +82,8 @@
                 <label class="col-form-label">Technical Indicator</label>
                 <div class="col-9">
                     <div class="d-flex align-items-center">
-                        <div class="col-7 pl-0">
-                            <input type="text" class="form-control" value="Support" />
-                        </div>
-                        <span class="text-primary">
+                        <input type="text" class="form-control" value="Support" />
+                        <span class="d-flex text-primary ml-3">
                             <mat-icon class="text-primary cursor" (click)="onItemAdd()">add_circle</mat-icon>
                         </span>
                         <a class="add-new ml-3" (click)="generateChart()">Generate Chart</a>
@@ -106,10 +94,8 @@
                 <label class="col-form-label">Event</label>
                 <div class="col-8">
                     <div class="d-flex align-items-center">
-                        <div class="col-8 pl-0">
-                            <input type="text" class="form-control" value="Earnings" />  
-                        </div>
-                        <span class="text-primary">
+                        <input type="text" class="form-control" value="Earnings" /> 
+                        <span class="text-primary ml-3">
                             <mat-icon class="text-primary cursor" (click)="onItemAdd()">add_circle</mat-icon>
                         </span>
                     </div>
@@ -119,21 +105,16 @@
                 <label class="col-form-label">Mindset</label>
                 <div class="col-8">
                     <div class="d-flex align-items-center">
-                        <div class="col-8 pl-0">
-                            <input type="text" class="form-control" value="FOMO" />  
-                        </div>
-                        <span class="text-primary">
+                        <input type="text" class="form-control" value="FOMO" /> 
+                        <span class="text-primary ml-3">
                             <mat-icon class="text-primary cursor" (click)="onItemAdd()">add_circle</mat-icon>
                         </span>
                     </div>
                 </div>
             </div>
-
-            
         </div>
-
         <div class="modal-footer py-2">
-            <button type="button" class="btn btn-join" (click) = "saveFieldSettings()">Save</button>
+            <button type="button" class="btn btn-join m-0" (click) = "saveFieldSettings()">Save</button>
         </div>
     </div>
 </div>

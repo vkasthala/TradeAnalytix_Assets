@@ -176,26 +176,13 @@
 <div class="custom-card">
     <div class="custom-card-header">
         <div class="custom-card-title">Journal</div>
+        <a class="add-new cursor" (click)="openJournalModal()"><img src="../../../../../../../assets/images/expand.svg" /></a>
     </div>
     <div class="custom-card-body">
         <div class="d-flex mb-2 align-items-center">
             <label class="col-form-label">Tags</label>
-            <div class="col-8">
-                <ul class="tags-list">
-                    <li *ngFor="let tag of tags; let i = index;" class="tag-item">
-                        <span class="tag-list-item">
-                            <span (click)="editTag(tag)">
-                                {{getTagName(tag.tagId)}}
-                            </span>
-                            <span class="material-icons delete-tag-icon" (click)="deleteTag(tag, i)">close_outline</span>
-                        </span>
-                    </li>
-                    <li class="align-items-center">
-                        <span (click)="addTag()" class="add-new" *ngIf="tags && tags.length < 3">
-                            Add Tag
-                        </span>
-                    </li>
-                </ul>
+            <div class="col-9">
+                <app-trade-tags></app-trade-tags>
             </div>
         </div>
         <div class="d-flex mb-2 align-items-center">

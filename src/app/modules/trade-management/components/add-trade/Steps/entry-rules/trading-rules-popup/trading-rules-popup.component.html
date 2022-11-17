@@ -1,0 +1,66 @@
+<div class="compare-popup">
+    <div class="compare-pop-inner">
+        <div class="top-pop-inner">
+            <div class="modal-title">{{title}}</div>
+            <div class="right-close" (click)="closeModal()">
+                <mat-icon>clear</mat-icon>
+            </div>
+        </div>
+
+        <div class="main-pop-inner">
+            <div class="d-flex justify-content-between mb-2">
+                <div class="col-11 pl-0">
+                    <label class="col-form-label">Maximum amount at risk on a trade strategy should be less than 5000</label>
+                    <input type="text" class="form-control" />
+                </div>
+                <mat-checkbox [checked]="true" class="checkbox-red mt-1"></mat-checkbox>
+            </div>
+            <div class="d-flex justify-content-between mb-2">
+                <div class="col-11 pl-0">
+                    <label class="col-form-label">Amount invested on a trade strategy should be less than 10000</label>
+                    <input type="text" class="form-control" />
+                </div>
+                <mat-checkbox [checked]="true" class="checkbox-red mt-1"></mat-checkbox>
+            </div>
+            <div class="d-flex justify-content-between mb-2">
+                <div class="col-11 pl-0">
+                    <label class="col-form-label">Do not chase a trade and average once they start moving in unfavorable direction</label>
+                    <input type="text" class="form-control" />
+                </div>
+                <mat-checkbox [checked]="true" class="checkbox-red mt-1"></mat-checkbox>
+            </div>
+            <div class="d-flex justify-content-between mb-2">
+                <div class="col-11 pl-0">
+                    <label class="col-form-label">Always hedge your positions that are at a risk of losing over 2000</label>
+                    <input type="text" class="form-control" />
+                </div>
+                <mat-checkbox [checked]="true" class="checkbox-red mt-1"></mat-checkbox>
+            </div>
+            <div class="d-flex justify-content-between mb-2">
+                <div class="col-11 pl-0">
+                    <label class="col-form-label">Do not execute more than 10 trades in a day</label>
+                    <input type="text" class="form-control" />
+                </div>
+                <mat-checkbox [checked]="true" class="checkbox-red mt-1"></mat-checkbox>
+            </div>
+            <div class="d-flex justify-content-between mb-2">
+                <div class="col-11 pl-0">
+                    <label class="col-form-label">Maximum amount at risk on a trade strategy should be less than 5000</label>
+                    <input type="text" class="form-control" />
+                </div>
+                <mat-checkbox [checked]="true" class="checkbox-red mt-1"></mat-checkbox>
+            </div>
+            <div class="d-flex justify-content-between mb-2">
+                <div class="col-11 pl-0">
+                    <label class="col-form-label">Amount invested on a trade strategy should be less than 10000</label>
+                    <input type="text" class="form-control" />
+                </div>
+                <mat-checkbox [checked]="true" class="checkbox-red mt-1"></mat-checkbox>
+            </div>
+        </div>
+        <div class="modal-footer py-2">
+            <button type="button" class="btn btn-join m-0" (click)="closeModal()">Cancel</button>
+            <button type="button" class="btn btn-join m-0 ml-3">Save</button>
+        </div>
+    </div>
+</div>

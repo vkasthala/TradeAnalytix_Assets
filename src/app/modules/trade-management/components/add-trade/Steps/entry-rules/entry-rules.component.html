@@ -52,37 +52,28 @@
 <div class="custom-card">
     <div class="custom-card-header">
         <div class="custom-card-title">Trading Rules</div>
+        <a class="add-new cursor" (click)="openTradingRulesModal()">Remarks</a>
     </div>
     <div class="custom-card-body">
         <div class="d-flex justify-content-between mb-2">
             <label class="col-form-label">Maximum amount at risk on a trade strategy should be less than 5000</label>
-            <div class="pl-2 link-item">
-                <mat-checkbox [checked]="true" class="checkbox-red"> Remarks</mat-checkbox>
-            </div>
+            <mat-checkbox [checked]="true" class="checkbox-red"></mat-checkbox>
         </div>
         <div class="d-flex justify-content-between mb-2">
             <label class="col-form-label">Amount invested on a trade strategy should be less than 10000</label>       
-            <div class="pl-2 link-item">
-                <mat-checkbox [checked]="true" class="checkbox-green"> Remarks</mat-checkbox>
-            </div>
+            <mat-checkbox [checked]="true" class="checkbox-red"></mat-checkbox>
         </div>
         <div class="d-flex justify-content-between mb-2">
             <label class="col-form-label">Do not chase a trade and average once they start moving in unfavorable direction</label>       
-            <div class="pl-2 link-item">
-                <mat-checkbox [checked]="true" class="checkbox-green"> Remarks</mat-checkbox>
-            </div>
+            <mat-checkbox [checked]="true" class="checkbox-red"></mat-checkbox>
         </div>
         <div class="d-flex justify-content-between mb-2">
             <label class="col-form-label">Always hedge your positions that are at a risk of losing over 2000</label>       
-            <div class="pl-2 link-item">
-                <mat-checkbox [checked]="true" class="checkbox-red"> Remarks</mat-checkbox>
-            </div>
+            <mat-checkbox [checked]="true" class="checkbox-red"></mat-checkbox>
         </div>
         <div class="d-flex justify-content-between mb-2">
             <label class="col-form-label">Do not execute more than 10 trades in a day</label>
-            <div class="pl-2 link-item">
-                <mat-checkbox> Remarks</mat-checkbox>
-            </div>
+            <mat-checkbox [checked]="true" class="checkbox-red"></mat-checkbox>
         </div>
 
         <div *ngIf="showMoreRules">
@@ -113,7 +104,7 @@
         </div>
 
         <div class="text-right">
-            <span class="cursor link-item" (click)="toggleTradingRules()">Show More</span>
+            <span class="cursor link-item" (click)="toggleTradingRules()">More</span>
         </div>
     </div>
 </div>

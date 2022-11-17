@@ -54,14 +54,18 @@
 
 .form-control {
     border: 1px solid #70707070;
-    font-size: 12px;
     padding: 0.375rem 0.5rem;
     width: 100%;
-    color: #242E3A;
+
+    font-weight: 500;
+    font-size: 14px !important;
+    line-height: 18px;
+    color: #000;
+    height: 32px;
 }
 
 select.form-control {
-    padding: 0.375rem 0.25rem;
+    padding: 0.2375rem 0.25rem;
 }
 
 .trade-type-radio {
@@ -183,7 +187,7 @@ textarea {
     background: #FFFFFF;
     box-shadow: 0px 4px 16px rgba(157, 157, 157, 0.1);
     border-radius: 4px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -199,6 +203,7 @@ textarea {
     padding: 0.45rem 1rem;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 .custom-card-title {
     font-weight: 600;
@@ -235,51 +240,7 @@ textarea {
     line-height: 18px;
     color: #000;
 }
-.tags-list {
-    list-style: none;
-    display: inline-flex;
-    justify-content: flex-end;
-    margin: 0;
-    font-size: 12px;
-}
 
-.tag-icon {
-    font-size: 12px !important;
-    vertical-align: middle;
-    color: #2285FA;
-}
-
-.tags-list > li {
-    display: inline-flex;
-}
-
-.tag-item {
-    
-    margin-left: 5px;;
-}
-.tag-list-item {
-    cursor: pointer;
-    background: #ced2d7;
-    border-radius: 6px;
-    padding: 0.25rem 0.5rem;
-    padding-right: 0;
-}
-
-.add-tag {
-    cursor: pointer;
-    margin-left: 10px;
-    border: 2px solid #9da6ba !important;
-    border-radius: 3px;
-    padding: 0.235rem;
-    font-size: 12px;
-}
-
-.delete-tag-icon {
-    cursor: pointer;
-    font-size: 12px !important;
-    color: #ff0000 !important;
-    width: 15px;
-}
 .add-new {
     color: #007bff;
     font-size: 13px;

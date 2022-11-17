@@ -362,7 +362,7 @@ tr.mat-footer-row, tr.mat-row {
     background: #FFFFFF;
     box-shadow: 0px 4px 16px rgba(157, 157, 157, 0.1);
     border-radius: 4px;
-    margin-bottom: 0.5rem;
+    margin-bottom: 10px;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -376,20 +376,20 @@ tr.mat-footer-row, tr.mat-row {
 .custom-card-header {
     border-bottom: 1px solid #E8E8E8;
     padding: 0.45rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 .custom-card-title {
-    font-weight: 500;
+    font-weight: 600;
     font-size: 16px;
     line-height: 24px;
-    color: #394C86;
+    color: #3A4C85;
 }
-.sub-title {
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 18px;
-    color: #394C86;
-}
+
 .link-item {
+    font-weight: 600;
+    font-size: 12px;
     line-height: 18px;
     color: #2285FA;
 }
@@ -397,9 +397,22 @@ tr.mat-footer-row, tr.mat-row {
     font-weight: 500;
     font-size: 14px !important;
     line-height: 18px;
-    color: #9DA6BA;
-    padding-bottom: 0;
+    color: #929292;
     padding-top: 0;
+    padding-bottom: 0;
 }
 
+.col-form-value {
+    font-weight: 500;
+    font-size: 14px !important;
+    line-height: 18px;
+    color: #000;
+}
+
+.add-new {
+    color: #007bff;
+    font-size: 13px;
+    line-height: 1;
+    font-weight: 600;
+}
 

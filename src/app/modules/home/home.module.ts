@@ -151,6 +151,8 @@ import { DatefieldComponent } from '../shared/components/widgets/datefield/datef
 import { TextAreaComponent } from '../shared/components/widgets/text-area/text-area.component';
 import { JournalPopupComponent } from '../trade-management/components/add-trade/Steps/trade-thesis/journal-popup/journal-popup.component';
 import { TradeTagsComponent } from '../trade-management/components/add-trade/Steps/trade-tags/trade-tags.component';
+import { UploadFilesComponent } from '../trade-management/components/add-trade/Steps/trade-thesis/upload-files/upload-files.component';
+import { TradingRulesPopupComponent } from '../trade-management/components/add-trade/Steps/entry-rules/trading-rules-popup/trading-rules-popup.component';
 
 export const MY_FORMATS = {
   parse: {
@@ -299,7 +301,9 @@ export const MY_FORMATS = {
     DatefieldComponent,
     TextAreaComponent,
     JournalPopupComponent,
-    TradeTagsComponent
+    TradeTagsComponent,
+    UploadFilesComponent,
+    TradingRulesPopupComponent
   ],
   imports: [
     FormsModule,
@@ -377,7 +381,9 @@ export const MY_FORMATS = {
     DatefieldComponent,
     TextAreaComponent,
     JournalPopupComponent,
-    TradeTagsComponent
+    TradeTagsComponent,
+    UploadFilesComponent,
+    TradingRulesPopupComponent
   ],
   // bootstrap: [TradeStrategiesGrid],
   providers: [
