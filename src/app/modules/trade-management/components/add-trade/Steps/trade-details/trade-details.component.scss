@@ -215,7 +215,6 @@ a.btn.btn-skip {
 .Trade-type .form-control {
     height: 40px;
     width: 140px;
-    font-size: 12px;
 }
 
 .trade-sec h6 {
@@ -224,13 +223,12 @@ a.btn.btn-skip {
 }
 
 .add-stock-sec {
-    background: #FFFFFF;
-    box-shadow: 0px 4px 16px rgba(157, 157, 157, 0.1);
-    border-radius: 0 0 4px 4px;
     padding: 20px;
+    padding-bottom: 5px;
     .col-form-label {
-        color: #3A4C85;
-        font-size: 13px;
+        color: #929292;
+        font-size: 14px;
+        font-weight: 500;
     }
 }
 
@@ -299,15 +297,15 @@ a.btn.btn-skip {
         // margin-bottom: 10px;
     }
     h4 {
-        font-weight: 500;
-        font-size: 15px;
+        font-weight: 600;
+        font-size: 14px;
         line-height: 24px;
         color: #3A4C85;
     }
     .trade-card-box {
         display: flex;
         align-items: stretch;
-        margin-bottom: 10px;
+        margin-top: 10px;
         flex-wrap: wrap;
         @media #{$extra-small} {
             margin-bottom: 10px;
@@ -331,8 +329,9 @@ a.btn.btn-skip {
             padding-right: .5678rem;
             min-width: 125px;
             max-width: 125px;
-            color: #3A4C85;
-            font-size: 13px;
+            color: #929292;
+            font-size: 14px;
+            font-weight: 500;
             h6 {
                 font-size: 1.25rem;
                 @media #{$medium} {
@@ -834,12 +833,13 @@ a.btn.btn-skip {
 .form-control {
     height: 40px;
     padding: 0.375rem .5rem;
-    font-size: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #000;
 }
 
 .col-form-label {
     padding-bottom: .25rem;
-    font-size: 13px;
 }
 
 .input_text {
@@ -905,12 +905,8 @@ a.btn.btn-skip {
 }
 
 .add-options-sec {
-    background: #FFFFFF;
-    box-shadow: 0px 4px 16px rgba(157, 157, 157, 0.1);
-    border-radius: 4px;
     padding: 0;
     position: relative;
-    margin-top: 2px;
     .add-options-header {
         font-weight: 500;
         font-size: 24px;
@@ -933,8 +929,9 @@ a.btn.btn-skip {
         min-height: 250px;
     }
     .col-form-label {
-        color: #3A4C85;
-        font-size: 13px !important;
+        color: #929292;
+        font-size: 14px;
+        font-weight: 500;
     }
     .btn-link {
         font-weight: 600;
@@ -949,7 +946,6 @@ a.btn.btn-skip {
     .mat-expansion-panel {
         box-shadow: none;
         margin: 0 !important;
-        border-radius: 4px !important;
     }
     .mat-expansion-panel-header {
         font-family: 'Poppins', sans-serif !important;
@@ -958,8 +954,7 @@ a.btn.btn-skip {
         line-height: 24px;
         color: #3A4C85;
         background: transparent !important;
-        border-radius: 4px 4px 0 !important;
-        padding: 20px 25px !important;
+        padding: 15px 25px !important;
         height: inherit !important;
         border: 0;
         .mat-expansion-panel-header-title {
@@ -1094,11 +1089,15 @@ a.btn.btn-skip {
     pointer-events: inherit !important;
 }
 .addnew-trade-header {
-    font-weight: 500;
+    font-weight: 600;
     font-size: 16px;
     line-height: 24px;
-    color: #394C86;
+    color: #3A4C85;
     border-bottom: 1px solid rgb(157 166 186 / 30%);
     background: #fff;
     padding: 10px 20px;
+}
+
+.mat-expansion-panel-body {
+    padding: 0 24px 10px;
 }

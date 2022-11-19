@@ -9,6 +9,10 @@
     }
 }
 
+.trade-rate-box {
+    display: flex;
+    justify-content:space-between ;
+}
 .trade-rate-box-title {
     font-weight: 500;
     font-size: 18px;
@@ -96,60 +100,15 @@ span.trade-g {
     align-items: center;
 }
 
-.trade-rate-sec {
-    margin-top: 10px;
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    @media #{$small} {
-        flex-wrap: wrap;
-    }
-}
-
-.rate-box-right {
-    width: 50%;
-    border-right: 1px solid #bdbdbdb3;
-    @media #{$small} {
-        border-right: unset;
-    }
-}
-
-.rate-box-left {
-    width: 50%;
-    @media #{$small} {
-        width: 53%;
-    }
-}
-
 .trade-rate-heading {
     h6 {
         color: $primary;
     }
 }
 
-.rate-box-s {
-    width: 15%;
-    @media #{$small} {
-        width: 50%;
-        border: 1px solid #ddd;
-        padding: 10px;
-    }
-}
-
-.rate-box {
-    width: 26%;
-    display: flex;
-    justify-content: flex-start;
-    @media #{$small} {
-        width: 50%;
-        border: 1px solid #ddd;
-        padding: 10px;
-    }
-}
-
 .trade-rate-box-header {
     display: flex;
-    // justify-content: space-between;
+    width: 100%;
 }
 
 .trade-rate-box-row {
@@ -164,13 +123,13 @@ span.trade-g {
     border-left: 2px solid #F5F8FA;
     padding: 10px 5px;
     span {
-        color: #9DA6BA;
+        color: #929292;
         font-weight: 500;
         font-size: 14px;
     }
     h6 {
         font-weight: 500;
-        color: #242E3A;
+        color: #000;
         font-size: 14px;
     }
 }
@@ -190,29 +149,6 @@ span.trade-g {
 
 .mat-stepper-horizontal.mat-horizontal-content-container {
     padding: 0px !important;
-}
-
-.search_btn .btn-add {
-    width: 110px;
-    height: 40px;
-    line-height: 28px;
-    background: $appbtn-color;
-    color: #fff;
-    font-size: 14px;
-    font-weight: 400;
-    cursor: pointer;
-    text-transform: uppercase;
-    // margin-top: 24px;
-}
-
-.btn-next {
-    padding: 8px 40px;
-    background: $appbtn-color;
-    color: #fff;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    text-transform: uppercase;
 }
 
 .btn:hover {

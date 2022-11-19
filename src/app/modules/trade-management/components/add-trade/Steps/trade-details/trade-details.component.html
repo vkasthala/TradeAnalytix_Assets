@@ -64,7 +64,7 @@
             </div>
             <div class="trade-cards-section" *ngIf="stockAdded && !viewTrade">
                 <h4>Stock Positions</h4>
-                <div class="trade-card-box mt-2">
+                <div class="trade-card-box">
                     <div class="card-main card-main-actions">
                         <label class="col-form-label pt-0">Action</label>
                         <select id="inputState"
@@ -151,7 +151,7 @@
                         </mat-expansion-panel-header>
                         <ng-template matExpansionPanelContent>
                             <ng-container>
-                                <div class="trade-card-box mb-1">
+                                <div class="trade-card-box mt-0">
                                     <div class="card-main card-main-actions">Action</div>
                                     <div class="card-main card-main-md">Contracts</div>
                                     <div class="card-main card-main-custom">Strike Price</div>
@@ -165,7 +165,7 @@
                                 </div>
                             </ng-container>
                             <ng-container *ngFor="let item of stockOptions;let index = index">
-                                <div class="trade-card-box" *ngIf="item.display != false">
+                                <div class="trade-card-box mt-2" *ngIf="item.display != false">
                                     <div class="card-main card-main-actions">
                                         <select id="inputState"
                                             [ngClass]="[closeTrade || viewTrade ? 'disabled' : '', editTrade && tradeStatus !== 4 && item.id > index  ? 'disabled' : '']"
