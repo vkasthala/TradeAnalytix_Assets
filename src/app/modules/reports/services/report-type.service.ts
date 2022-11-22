@@ -107,6 +107,12 @@ export class ReportTypeService {
     reportSubType.reportDetailList = [new ReportDetails('return_by_asset_type', 'Realized Return by Asset Type', ReportCategory.Asset_Type, "This report shows the realized return by asset type")];
     reportSubTypes.push(reportSubType);
 
+    reportSubType = new ReportSubType();
+    reportSubType.name = 'Strategy Type';
+    reportSubType.id = "type";
+    reportSubType.reportDetailList = [new ReportDetails('net_return_strategy_type', 'Net Return by Strategy Type', ReportCategory.Net_Return, "This report shows the realized return by strategy type"), new ReportDetails('win_loss_strategy_type', 'Win/Loss by Strategy Type', ReportCategory.Win_Loss, "This report shows the win rate by strategy type")];
+    reportSubTypes.push(reportSubType);
+
      reportSubType = new ReportSubType();
     reportSubType.name = 'Trade Day and Time';
     reportSubType.id = "initiated_day";
@@ -137,9 +143,9 @@ export class ReportTypeService {
     reportSubTypes.push(reportSubType);
     
     reportSubType = new ReportSubType();
-    reportSubType.name = 'Maximum Risk and Proﬁt Potential';
+    reportSubType.name = 'Maximum Risk';
     reportSubType.id = "risk_max_risk_profit";
-    reportSubType.reportDetailList = [new ReportDetails('max_risk_profit', 'Maximum Risk and Proﬁt Potential', ReportCategory.Risk, "This report shows the potential maximum risk and maximum profit of the portfolio during the selected range. Maximum risk and profit are calculated based on the previous 30-day volatility of the stocks.")];
+    reportSubType.reportDetailList = [new ReportDetails('max_risk_profit', 'Maximum Risk', ReportCategory.Risk, "This report shows the maximum risk of the portfolio during the selected range. Maximum risk is calculated based on the previous 30-day volatility of the stocks.")];
     reportSubTypes.push(reportSubType);
 
     return reportSubTypes;
@@ -208,11 +214,11 @@ export class ReportTypeService {
     reportSubType.reportDetailList = [new ReportDetails('net_return_contrarian', 'Net Return by Contrarian', ReportCategory.Net_Return, "This report shows the realized return by contrarian type"), new ReportDetails('win_loss_contrarian', 'Win/Loss by Contrarian', ReportCategory.Win_Loss, "This report shows the number of winning and losing trades by contrarian")];
     reportSubTypes.push(reportSubType);
 
-    // reportSubType = new ReportSubType();
-    // reportSubType.name = 'Net R';
-    // reportSubType.id = "net_r";
-    // reportSubType.reportDetailList = [new ReportDetails('net_r', 'Net R', ReportCategory.Risk, "This report shows the risk adjusted return of the user's portfolio.")];
-    // reportSubTypes.push(reportSubType);
+    reportSubType = new ReportSubType();
+    reportSubType.name = 'Net R';
+    reportSubType.id = "net_r";
+    reportSubType.reportDetailList = [new ReportDetails('net_r', 'Net R', ReportCategory.Risk, "This report shows the risk adjusted return of the user's portfolio.")];
+    reportSubTypes.push(reportSubType);
 
     // reportSubType = new ReportSubType();
     // reportSubType.name = 'Portfolio Systematic Risk';

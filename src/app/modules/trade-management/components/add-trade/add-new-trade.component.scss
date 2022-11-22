@@ -21,7 +21,7 @@
 }
 
 .addnew-first {
-    height: 80vh;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -651,8 +651,8 @@
         }
     }
     .card-main-actions {
-        min-width: 160px;
-        max-width: 160px;
+        min-width: 130px;
+        max-width: 130px;
     }
 }
 
@@ -712,7 +712,7 @@
     z-index: 20;
     top: 0;
     right: 0;
-    padding: 9px 0;
+    padding: 0;
     @media #{$extra-small} {
         font-weight: 600;
         font-size: 18px;
@@ -724,20 +724,12 @@
 }
 
 .closed-legs-sec {
-    background: #FFFFFF;
-    box-shadow: 0px 4px 16px rgba(157, 157, 157, 0.1);
-    border-radius: 4px;
-    padding: 10px 25px;
     position: relative;
-    margin-top: 1rem;
-    @media #{$extra-small} {
-        padding: 10px 15px;
-    }
     .closed-legs-header {
         font-weight: 600;
-        font-size: 15px;
+        font-size: 14px;
         line-height: 24px;
-        padding: 10px 0;
+        padding: 10px 25px;
         color: #3A4C85;
         .closed-legs-title {
             display: flex;
@@ -746,12 +738,8 @@
         }
     }
     .closed-legs-body {
-        border-top: 1px solid #e2e5eb;
         border-bottom: 1px solid #e2e5eb;
-        padding: 20px 0;
-        @media #{$extra-small} {
-            padding: 10px 0;
-        }
+        padding: 10px 25px;
     }
     .closed-legs-footer {
         padding: 10px 0;
@@ -764,9 +752,10 @@
 }
 
 .trade-details-body {
-    flex: 0 0 70%;
-    max-width: 70%;
+    flex: 0 0 68%;
+    max-width: 68%;
     .mat-horizontal-stepper-header-container {
+        display: none;
         @media #{$small} {
             padding: 10px 0px;
             justify-content: space-between;
@@ -779,11 +768,14 @@
 }
 
 .right-sidebar {
-    flex: 0 0 30%;
-    max-width: 30%;
+    flex: 0 0 31%;
+    max-width: 31%;
 }
 .addnew-trade {
     position: relative;
+    .mat-horizontal-stepper-header-container {
+        display: none !important;
+    }
 }
 .mask {
     background-color: rgb(36 46 58 / 41%);
@@ -899,26 +891,23 @@
     }
     .closed-legs-sec {
         .col-form-label {
-            color: #3B5065;
-            font-size: 12px !important;
-            font-weight: normal;
-            font-size: 12px;
+            color: #929292;
+            font-weight: 500;
+            font-size: 14px;
             line-height: 18px;
         }
         .col-form-value {
-            font-weight: 600;
+            font-weight: 500;
             font-size: 14px;
             line-height: 21px;
-            color: #3A4C85;
+            color: #000;
         }
     }
 }
 .share-trade-field {
-    float: right;
     display: flex;
     align-items: center;
-    margin-right: 1.5rem !important;
-    margin-top: 0.45rem !important;
+    margin-right: 1rem !important;
     color: #61bd6e;
     font-size: 14px;
     font-weight: 600;
@@ -934,4 +923,14 @@
 
 .modal {
     top: 10% !important;
+}
+.stepper-content {
+    background: #FFFFFF;
+    box-shadow: 0px 4px 16px rgb(157 157 157 / 10%);
+    border-radius: 0 0 4px 4px;
+}
+.col-form-label {
+    color: #929292;
+    font-weight: 500;
+    font-size: 14px;
 }

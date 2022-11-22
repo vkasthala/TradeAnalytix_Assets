@@ -1,0 +1,15 @@
+<ul class="tags-list">
+    <li *ngFor="let tag of tags; let i = index;" class="tag-item">
+        <span class="tag-list-item">
+            <span (click)="editTag(tag)">
+                {{getTagName(tag.tagId)}}
+            </span>
+            <span class="material-icons delete-tag-icon" (click)="deleteTag(tag, i)">close_outline</span>
+        </span>
+    </li>
+    <li class="align-items-center">
+        <span (click)="addTag()" class="text-link" *ngIf="tags && tags.length < 3">
+            Add Tag
+        </span>
+    </li>
+</ul>

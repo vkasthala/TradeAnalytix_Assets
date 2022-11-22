@@ -267,12 +267,8 @@ input.mat-input-element {
     font-size: 16px !important;
 }
 
-.col-form-label {
-    font-size: 12px !important;
-}
-
 .main-body {
-    min-height: 81vh;
+    min-height: 100vh;
 }
 
 .strategies_filter .form-control {
@@ -380,8 +376,8 @@ mat-header-cell:last-of-type,
 }
 
 .sidebar {
-    min-width: 200px;
-    max-width: 200px;
+    min-width: 210px;
+    max-width: 210px;
     // transition: margin-left .35s ease-in-out, left .35s ease-in-out, margin-right .35s ease-in-out, right .35s ease-in-out;
     direction: ltr;
     background: #394c86;
@@ -426,14 +422,14 @@ a.sidebar-link {
     padding: 0.25rem;
     color: rgba(255, 255, 255, 0.55);
     font-weight: 400;
-    background: transparent;
-    transition: background 0.5s ease-in-out;
     text-decoration: none;
     cursor: pointer;
     line-height: 1;
     display: flex;
     align-items: center;
     border-radius: 6px;
+    font-weight: 600;
+    font-size: 15px;
     @media #{$extra-small} {
         border-radius: 0;
     }
@@ -509,7 +505,7 @@ a.sidebar-link {
 
 .sidebar-item {
     position: relative;
-    padding: 0 10px 0 28px;
+    padding: 0 10px 0 45px;
     min-height: 32px;
     @media #{$extra-small} {
         padding: 0;
@@ -627,11 +623,6 @@ textarea {
 .info-icon {
     color: rgb(157 166 186 / 64%);
     font-size: 16px !important;
-}
-
-.col-form-label {
-    color: #3A4C85;
-    font-size: 13px !important;
 }
 
 .coded_rules_body .mat-table {
@@ -797,7 +788,7 @@ textarea {
 
 @media screen and (min-width: 320px) and (max-width:599px) {
     .col-form-label {
-        color: #3B5065;
+        color: #929292;
         font-size: 12px !important;
     }
 }
@@ -924,5 +915,15 @@ iframe {
     margin: 0;
 }
 .trade-navbar {
-    margin-top: 2rem;
+    margin-top: 1.5rem;
+}
+
+.checkbox-red .mat-checkbox-background {
+    background-color: #e71c1c !important;
+}
+.addnew-trade {
+    position: relative;
+    .mat-horizontal-stepper-header-container {
+        display: none !important;
+    }
 }

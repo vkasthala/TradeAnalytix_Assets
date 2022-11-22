@@ -1,4 +1,4 @@
-<div class="wrapper trade-app-dashboard">
+<div class="wrapper trade-app-dashboard zoom">
     <div class="sidebar" [ngClass]="!isExpand ? 'toggled' : ''">
         <div *ngIf="!isExpand" class="sidebar-brand cursor-pointer" [routerLink]="['/dashboard/']">
             <img src="../../../../assets/images/cuetrade-blue-logo-sm.svg" alt="Trade-app-logo" class="img-fluid logo_sm">
@@ -9,25 +9,23 @@
 
         <nav class="trade-navbar">
             <div class="parent-item">
-                Pre-Market
+                <img src="../../../../assets/images/plan.svg" class="mr-1"> Plan
             </div>
             <ul class="list-unstyled ">
                 <li class="sidebar-item" [class.nav-active]="currentRoute == 'trade-plans'">
                     <a class="sidebar-link" [routerLink]="['/trade-plans/']">
-                        <mat-icon>note_add</mat-icon>
-                        <span>Daily Trade Plan</span>
+                        <span>Daily Plan</span>
                     </a>
                 </li>
                 <li class="sidebar-item" [class.nav-active]="currentRoute == 'new-trade'">
                     <a class="sidebar-link" [routerLink]="['/new-trade/']">
-                        <mat-icon>attach_money</mat-icon>
                         <span>Trade Builder</span>
                     </a>
                 </li>
             </ul>
 
             <div class="parent-item">
-                Post-Market
+                <img src="../../../../assets/images/journal.svg" class="mr-1"> Journal
             </div>
             <ul class="list-unstyled ">
                 <li class="sidebar-item" [class.nav-active]="currentRoute == 'import-trades-history'">
@@ -39,12 +37,23 @@
                 <li class="sidebar-item" [class.nav-active]="currentRoute == 'trade-strategies'">
                     <a class="sidebar-link" [routerLink]="['/trade-strategies/']">
                         <mat-icon>attach_money</mat-icon>
-                        <span>Journal Trades</span>
+                        <span>Trade Book</span>
                     </a>
                 </li>
+                
+                <li class="sidebar-item" [class.nav-active]="currentRoute == 'bulk-update'">
+                    <a class="sidebar-link" [routerLink]="['/bulk-update/']">
+                        <span>Bulk Update</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="parent-item">
+                <img src="../../../../assets/images/review.svg" class="mr-1"> Review
+            </div>
+            <ul class="list-unstyled ">
                 <li class="sidebar-item" [class.nav-active]="currentRoute == 'reports'">
                     <a class="sidebar-link" [routerLink]="['/reports/']">
-                        <mat-icon>pie_chart</mat-icon>
                         <span>Analytics</span>
                     </a>
                 </li>
@@ -61,14 +70,14 @@
                 </li>
             </ul>
 
-            <div class="parent-item">
-                Strategy Tools
+
+            <!-- <div class="parent-item">
+                <img src="../../../../assets/images/analyze.svg" class="mr-1"> Analyze
             </div>
-            
             <ul class="list-unstyled ">
                 <li class="sidebar-item" [class.nav-active]="currentRoute == 'risk-analysis'">
                     <a class="sidebar-link" [routerLink]="['/risk-analysis/']">
-                        <span>Strategy Analyzer</span>
+                        <span>Options Analyzer</span>
                     </a>
                 </li>
                 <li class="sidebar-item" [class.nav-active]="currentRoute == 'strategy-comparison'">
@@ -77,13 +86,7 @@
                         <span>Strategy&nbsp;Picker</span>
                     </a>
                 </li>
-            </ul>
-
-            <div class="parent-item">
-                <a class="sidebar-link" [routerLink]="['/setttings/']">
-                    Settings
-                </a>
-            </div>
+            </ul> -->
             <!-- <span class="menu-toggle cursor-pointer" (click)="sidebarToggle()">
                 <mat-icon *ngIf="!isExpand">arrow_forward</mat-icon>
                 <mat-icon *ngIf="isExpand">arrow_back</mat-icon>
@@ -115,11 +118,11 @@
                                 <label for="demoToggle"></label>
                               </div>
                         </span>
-                        <!-- <span class="top-nav-item pr-0" [class.nav-active]="currentRoute == 'setttings'">
+                        <span class="top-nav-item pr-0" [class.nav-active]="currentRoute == 'setttings'">
                             <a class="top-nav-link" [routerLink]="['/setttings/']">
                                 <mat-icon>settings</mat-icon>
                             </a>
-                        </span> -->
+                        </span>
                         <span class="top-nav-item pl-0" [class.nav-active]="currentRoute == 'insights'">
                             <a class="top-nav-link" [routerLink]="['/insights/']">
                                 <mat-icon>notifications_none</mat-icon>

@@ -6,6 +6,7 @@ import { RuleDto } from 'src/app/modules/trade-management/models/rule-dto.model'
 import { EntryExitRuleService } from 'src/app/modules/trade-management/services/entry-exit-rule.service';
 import { AddTradeConfirmationPopupComponent } from '../../add-trade-confirmation-popup/add-trade-confirmation-popup.component';
 import { RuleCommentDialogComponent } from '../../rule-comment-dialog/rule-comment-dialog.component';
+import { TradingRulesPopupComponent } from './trading-rules-popup/trading-rules-popup.component';
 
 @Component({
   selector: 'app-entry-rules',
@@ -28,7 +29,7 @@ export class EntryRulesComponent implements OnInit {
   entryRules: RuleDto[];
 
   protected hideEntryRules: boolean = false;
-
+  showMoreRules:boolean = false;
   constructor(
     private _dialog: MatDialog,
     private router: Router,
@@ -106,6 +107,23 @@ export class EntryRulesComponent implements OnInit {
     dialogRef.afterClosed().subscribe((res) => {
       console.log('after:', res);
       ele.comment = res.comment;
+    });
+  }
+
+  toggleTradingRules() {
+    this.showMoreRules = !this.showMoreRules;
+  }
+
+  openTradingRulesModal() {
+    const dialogRef = this._dialog.open(TradingRulesPopupComponent, {
+      disableClose: false,
+      width: 'auto',
+      data: {
+        title: 'Trading Rules',
+      }
+    });
+    dialogRef.afterClosed().subscribe((res) => {
+      
     });
   }
 }
