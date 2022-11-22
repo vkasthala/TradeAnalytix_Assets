@@ -22,6 +22,12 @@ import { ConfigureFieldsPopupComponent } from 'src/app/modules/shared/components
 import { DynamicFieldDto } from 'src/app/modules/settings/models/dynamic-field-dto.model';
 import { DynamicFieldsService } from 'src/app/modules/settings/services/dynamic-fields.service';
 import { UserMetadataStoreService } from 'src/app/modules/shared/services/user-metadata-store.service';
+import { TradeTag } from 'src/app/modules/shared/models/trade-management/trade-tag.model';
+import { UserTagService } from 'src/app/modules/settings/services/user-tag.service';
+import { EditableSelectComponent } from '../editable-select/editable-select.component';
+import { UserTag } from 'src/app/modules/settings/models/user-tag.model';
+import { ConfirmDialogComponent } from 'src/app/modules/shared/components/modals/confirm-dialog/confirm-dialog.component';
+import { JournalPopupComponent } from './journal-popup/journal-popup.component';
 
 @Component({
   selector: 'app-trade-thesis',
@@ -50,7 +56,9 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
   protected hideEntryThesis: boolean = false;
   protected hideClosingThesis: boolean = false;
   tradeStatus: number;
-
+  tags: TradeTag[] = [];
+  registeredTags: any = [];
+  
   constructor(
     private _renderer2: Renderer2,
     private _dialog: MatDialog,
@@ -60,7 +68,8 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
     private toastr: ToastrService,
     private tradeStrategySevice: TradeStrategyService,
     private dynamicFieldsService: DynamicFieldsService,
-    private userMetadataStoreService: UserMetadataStoreService
+    private userMetadataStoreService: UserMetadataStoreService,
+    protected userTagService: UserTagService,
   ) {
 
   }
@@ -87,6 +96,7 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
       if (this.inputState.tradeStrategy.id) {
         this.loadTradeChubFiles(this.inputState.tradeStrategy.id);
       }
+      this.tags = this.inputState.tradeStrategy.tradeTag ? this.inputState.tradeStrategy.tradeTag : [];
     }
   }
 
@@ -510,6 +520,107 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
 
   updateDropdownValues(field: DynamicFieldDto, values: any[]) {
     this.dropdownItemAddedEvent.emit(field);
+  }
+
+  addTag() {
+    this.registeredTags = this.userTagService.getTags();
+    console.log('registeredTags', this.registeredTags);
+    const dialogRef = this._dialog.open(EditableSelectComponent, {
+      disableClose: true,
+      width: 'auto',
+      data: { title: 'Tag', list: this.registeredTags }
+    });
+
+    dialogRef.afterClosed().subscribe((res) => {
+      let isTagExist = false;
+      let userTag: UserTag = this.userTagService.getUserTagByName(res);
+      if (userTag) {
+        let tag: TradeTag = new TradeTag(userTag.id);
+        if (res) {
+          if (this.tags.length > 0) {
+            this.tags.filter((x) => {
+              if (tag.tagId === x.tagId) {
+                isTagExist = true;
+                this.toastr.error('This tag already added', 'Error',
+                  {
+                    tapToDismiss: false,
+                    closeButton: true,
+                    disableTimeOut: true
+                  });
+                return false;
+              }
+            })
+            !isTagExist ? this.tags.push(tag) : ''
+          } else {
+            this.tags.push(tag);
+          }
+
+        }
+      } else {
+        this.registeredTags.filter((x) => {
+          console.log('item', x);
+          let val = x !== undefined ? x.toLowerCase() : '';
+          if (val === res.toLowerCase()) {
+            this.toastr.error('This tag already exist', 'Error',
+              {
+                tapToDismiss: false,
+                closeButton: true,
+                disableTimeOut: true
+              });
+            return;
+          }
+        })
+
+        this.userTagService.createTag(this.createUserTag(res, undefined)).subscribe(result => {
+          this.userTagService.registerTag(result);
+          let tag: TradeTag = new TradeTag(result.id);
+          this.tags.push(tag);
+        });
+      }
+    });
+  }
+
+  getTagName(id: number): string {
+    return this.userTagService.getTagNameById(id);
+  }
+
+  createUserTag(tagName: string, tagId: number): UserTag {
+    let userTag: UserTag = new UserTag();
+    if (tagId) {
+      userTag.id = tagId;
+    }
+    userTag.tag = tagName;
+    return userTag;
+  }
+
+  deleteTag(tag: TradeTag, ind: number) {
+    const dialogRef = this._dialog.open(ConfirmDialogComponent, {
+      width: 'auto',
+      height: 'auto',
+      data: { 'message': 'Are you sure you want to delete tag: ' + this.getTagName(tag.id) + '?' }
+    });
+
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      if (dialogResult == true) {
+        if (this.tags.length > ind) {
+          this.tags.splice(ind, 1);
+        }
+      }
+    });
+  }
+
+  openJournalModal() {
+    const dialogRef = this._dialog.open(JournalPopupComponent, {
+      disableClose: true,
+      width: 'auto',
+      data: {
+        title: 'Journal',
+        category: 'EntryThesis'
+      }
+    });
+    dialogRef.afterClosed().subscribe((res) => {
+
+    });
   }
 
 }

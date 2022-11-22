@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { MaxRiskDetails } from 'src/app/modules/risk-analysis/models/max-risk-details.model';
 import { StockSymbol } from 'src/app/modules/shared/models/trade-management/stock-symbol.model';
 import { UserStockSummary } from 'src/app/modules/shared/models/trade-management/user-stock-summary.model';
@@ -9,6 +9,7 @@ import { Subject } from 'rxjs';
 import { TradeStrategy } from '../../../models/trade-strategy.model';
 import { StrategyType } from 'src/app/modules/shared/models/trade-management/strategy-type.enum';
 import { TradeInputData } from 'src/app/modules/shared/models/trade-management/trade-input-data.model';
+import { TradeDetailsComponent } from '../Steps/trade-details/trade-details.component';
 
 
 @Component({
@@ -27,8 +28,18 @@ export class TradeDetailsAsideComponent implements OnInit {
   @Input("addTrade") addTrade: boolean;
   @Input("editTrade") editTrade: boolean;
   @Input("closeTrade") closeTrade: boolean;
+  @Input("viewTrade") viewTrade: boolean;
+
   @Output('loadMoreStats') loadMoreStats = new EventEmitter();
   @Output('calculateMaxRisk') calculateMaxRisk: EventEmitter<any> = new EventEmitter();
+
+  @Output('tradeDetails') tradeDetails = new EventEmitter();
+
+  showMoreStatistics:boolean = false;
+
+  toggleStatistics() {
+    this.showMoreStatistics = !this.showMoreStatistics;
+  }
 
   maxRiskDetails: MaxRiskDetails;
 
@@ -83,6 +94,9 @@ export class TradeDetailsAsideComponent implements OnInit {
   }
 
   loadStrategyTypeSummary(strategyId: number) {
+    if(!strategyId) {
+      return;
+    }
     this.userStockStatsService.getStrategyTypeSummaryResult(strategyId).subscribe(result => {
       this.strategyTypeSummaryResult = result;
     });

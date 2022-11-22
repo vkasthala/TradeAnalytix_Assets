@@ -1,75 +1,12 @@
-<div class="trade-thesis-sec">
+<!-- <div class="trade-thesis-sec">
     <div class="entry-thesis-header cursor" (click)="showEntryRules()">
         <span>Entry Rules</span>
         <span>
-            
             <i class="negative-amt material-icons mat-icon-sm">{{hideEntryRules ? 'keyboard_arrow_up' :
                 'keyboard_arrow_down'}}</i>
         </span>
     </div>
     <div class="trade-thesis-body pt-1" *ngIf="!hideEntryRules">
-        <!--
-        <div class="row" *ngFor="let entry of entryRules;">
-            <div class="col-sm-6">
-                <div class="thesis_item">
-                    <div class="thesis_item_title">
-                        {{entry.description}}
-                    </div>
-                    <div class="switch">
-                        <input type="checkbox" checked id="hedging" [(ngModel)]="entry.aligned" [disabled]="closeTrade" [ngClass]="closeTrade ? 'disabled' : ''" />
-                    </div>
-                    <input type="text" class="trade-check" placeholder="Add notes" [disabled]="closeTrade" [ngClass]="closeTrade ? 'disabled' : ''" />
-                </div>
-            </div>
-            
-            <div class="col-sm-6">
-                <div class="thesis_item">
-                    <div class="thesis_item_title">
-                        Always protect your investment by hedging
-                    </div>
-                    <div class="switch">
-                        <input type="checkbox" checked id="hedging" [(ngModel)]="entryRules[0].aligned" [disabled]="closeTrade" [ngClass]="closeTrade ? 'disabled' : ''" />
-                    </div>
-                    <input type="text" class="trade-check" placeholder="Add notes" [(ngModel)]="entryRules[0].comment" [disabled]="closeTrade" [ngClass]="closeTrade ? 'disabled' : ''" />
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="thesis_item">
-                    <div class="thesis_item_title">
-                        Do not trade options expiring in the same week
-                    </div>
-                    <div class="switch">
-                        <input type="checkbox" id="same_week" name="same_week" [(ngModel)]="entryRules[1].aligned" [disabled]="closeTrade" [ngClass]="closeTrade ? 'disabled' : ''" />
-                    </div>
-                    <input type="text" class="trade-check" placeholder="Add notes" [(ngModel)]="entryRules[1].comment" [disabled]="closeTrade" [ngClass]="closeTrade ? 'disabled' : ''" />
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="thesis_item">
-                    <div class="thesis_item_title">
-                        Do not put more than 100,000 in a stock
-                    </div>
-                    <div class="switch">
-                        <input type="checkbox" checked id="onelack_stock" name="onelack_stock" [(ngModel)]="entryRules[2].aligned" [disabled]="closeTrade" [ngClass]="closeTrade ? 'disabled' : ''" />
-                    </div>
-                    <input type="text" class="trade-check" placeholder="Add notes" [(ngModel)]="entryRules[2].comment" [disabled]="closeTrade" [ngClass]="closeTrade ? 'disabled' : ''" />
-                </div>
-            </div>
-
-            <div class="col-sm-6">
-                <div class="thesis_item">
-                    <div class="thesis_item_title">
-                        Trade only the stocks that were planned for the day
-                    </div>
-                    <div class="switch">
-                        <input type="checkbox" id="planned_day" name="planned_day" [(ngModel)]="entryRules[3].aligned" [disabled]="closeTrade" [ngClass]="closeTrade ? 'disabled' : ''" />
-                    </div>
-                    <input type="text" class="trade-check" placeholder="Add notes" [(ngModel)]="entryRules[3].comment" [disabled]="closeTrade" [ngClass]="closeTrade ? 'disabled' : ''" />
-                </div>
-            </div>
-            
-        </div>
-        -->
         <div class="text-right">
             <span class="cursor" (click)="evalRules($event)"><mat-icon class="form-icon-down">refresh</mat-icon></span>
         </div>
@@ -109,5 +46,57 @@
             <tr mat-row *matRowDef="let row; columns: ruleGridColumns;"></tr>
         </mat-table>
         <div class="p-3 text-center" *ngIf="entryRules && entryRules.length === 0">Entry rules have not been set up</div>
+    </div>
+</div> -->
+
+<div class="custom-card">
+    <div class="custom-card-header">
+        <div class="custom-card-title">Trading Rules</div>
+        <a class="add-new cursor" (click)="openTradingRulesModal()">Remarks</a>
+    </div>
+    <div class="custom-card-body">
+        <div class="d-flex justify-content-between mb-2">
+            <label class="col-form-label">Maximum amount at risk on a trade strategy should be less than 5000</label>
+            <mat-checkbox [checked]="true" class="checkbox-red"></mat-checkbox>
+        </div>
+        <div class="d-flex justify-content-between mb-2">
+            <label class="col-form-label">Amount invested on a trade strategy should be less than 10000</label>       
+            <mat-checkbox [checked]="true" class="checkbox-red"></mat-checkbox>
+        </div>
+        <div class="d-flex justify-content-between mb-2">
+            <label class="col-form-label">Do not chase a trade and average once they start moving in unfavorable direction</label>       
+            <mat-checkbox [checked]="true" class="checkbox-red"></mat-checkbox>
+        </div>
+        <div class="d-flex justify-content-between mb-2">
+            <label class="col-form-label">Always hedge your positions that are at a risk of losing over 2000</label>       
+            <mat-checkbox [checked]="true" class="checkbox-red"></mat-checkbox>
+        </div>
+        <div class="d-flex justify-content-between mb-2">
+            <label class="col-form-label">Do not execute more than 10 trades in a day</label>
+            <mat-checkbox [checked]="true" class="checkbox-red"></mat-checkbox>
+        </div>
+
+        <div *ngIf="showMoreRules">
+            <div class="d-flex justify-content-between mb-2">
+                <label class="col-form-label">Maximum amount at risk on a trade strategy should be less than 5000</label>       
+                <mat-checkbox [checked]="true" class="checkbox-red"></mat-checkbox>
+            </div>
+            <div class="d-flex justify-content-between mb-2">
+                <label class="col-form-label">Amount invested on a trade strategy should be less than 10000</label>       
+                <mat-checkbox [checked]="true" class="checkbox-red"></mat-checkbox>
+            </div>
+            <div class="d-flex justify-content-between mb-2">
+                <label class="col-form-label">Do not chase a trade and average once they start moving in unfavorable direction</label>       
+                <mat-checkbox [checked]="true" class="checkbox-red"></mat-checkbox>
+            </div>
+            <div class="d-flex justify-content-between mb-2">
+                <label class="col-form-label">Always hedge your positions that are at a risk of losing over 2000</label>       
+                <mat-checkbox [checked]="true" class="checkbox-red"></mat-checkbox>
+            </div>
+        </div>
+
+        <div class="text-right">
+            <span class="cursor link-item" (click)="toggleTradingRules()">More</span>
+        </div>
     </div>
 </div>

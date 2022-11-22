@@ -1,4 +1,4 @@
-<div class="trade-thesis-sec">
+<!-- <div class="trade-thesis-sec">
     <div class="entry-thesis-header cursor" (click)="showEntryThesis()">
         <span>Entry Thesis</span>
         <span class="d-flex align-items-center">
@@ -91,15 +91,13 @@
                     </div>
                 </div>
             </div>
-
-            <!-- end : thesis_item -->
         </div>
     </div>
-</div>
+</div> -->
 
 
 <!-- start: Closing Thesis -->
-<div class="trade-thesis-sec trade-close-thesis-sec" *ngIf="!addTrade && tradeStatus !== 4">
+<!-- <div class="trade-thesis-sec trade-close-thesis-sec" *ngIf="!addTrade && tradeStatus !== 4">
     <div class="entry-thesis-header cursor" (click)="showClosingThesis()">
         <span>Closing Thesis</span>
         <span class="d-flex align-items-center">
@@ -171,6 +169,74 @@
                 </div>
             </div>
 
+        </div>
+    </div>
+</div> -->
+
+<div class="custom-card">
+    <div class="custom-card-header">
+        <div class="custom-card-title">Journal</div>
+        <a class="add-new cursor" (click)="openJournalModal()"><img src="../../../../../../../assets/images/expand.svg" /></a>
+    </div>
+    <div class="custom-card-body">
+        <div class="d-flex mb-2 align-items-center">
+            <label class="col-form-label">Tags</label>
+            <div class="col-9">
+                <app-trade-tags></app-trade-tags>
+            </div>
+        </div>
+        <div class="d-flex mb-2 align-items-center">
+            <label class="col-form-label">Strategy</label>
+            <div class="col-8 col-md-5">
+                <select class="form-control">
+                    <option value="0">Call Spread</option>
+                </select>
+            </div>
+        </div>
+        <div class="d-flex mb-2 align-items-center">
+            <label class="col-form-label">Direction</label>
+            <div class="col-8 col-md-5">
+                <select class="form-control">
+                    <option value="0">Long</option>
+                </select>
+            </div>
+        </div>
+        <div class="d-flex mb-2 align-items-center">
+            <label class="col-form-label">Contrarian Trade</label>
+            <div class="col-8 col-md-5">
+                <select class="form-control">
+                    <option value="0">Yes</option>
+                </select>
+            </div>
+        </div>
+        <div class="d-flex mb-2 align-items-center">
+            <label class="col-form-label">Planned Trade</label>
+            <div class="col-8 col-md-5">
+                <select class="form-control">
+                    <option value="0">Yes</option>
+                </select>
+            </div>
+        </div>
+        <div class="d-flex mb-2 align-items-center">
+            <label class="col-form-label">Trade Thesis</label>
+            <div class="col-8">
+                <textarea rows="4" class="form-control"></textarea>
+            </div>
+        </div>
+        <div class="d-flex mb-2 align-items-center">
+            <label class="col-form-label">Technical Analysis</label>
+            <div class="col-8 col-md-7">
+                <a class="add-new" (click)="generateChart()" *ngIf="addTrade || editTrade">Open Chart</a>
+            </div>
+        </div>
+        <div class="d-flex mb-2 align-items-center">
+            <label class="col-form-label">Attach Files</label>
+            <div class="col-8">
+                <div class="d-flex align-items-center justify-content-between">
+                    <a class="add-new" (click)="openJournalModal()">Click Here</a>
+                    <!-- <a class="add-new" (click)="openJournalModal()">Show More</a> -->
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -1,21 +1,23 @@
 <div class="addnew-trade-body">
+    <h4 class="addnew-trade-header">Trade Details</h4>
     <ng-container [ngSwitch]="currentState">
         <!-- entry-third -->
         <div class="add-stock-sec" #tradeCards>
             <div class="trade-sec">
+                
                 <div class="row justify-content-between">
-                    <div class="col-sm-5">
-                        <span class="col-form-label pt-0" *ngIf="addTrade">{{ addTrade ? 'Select' : 'Current' }} Strategy </span>
+                    <div class="col-sm-10">
+                        <!-- <span class="col-form-label pt-0" *ngIf="addTrade">{{ addTrade ? 'Select' : 'Current' }} Strategy </span> -->
 
                         <!-- <span class="col-form-label pt-0 ml-2" *ngIf="!addTrade">: {{ strategies[selectedStrategy] }}
                             <mat-icon class="mat-icon-sm mr-1 cursor" (click)="selectStrategy()">edit</mat-icon>
                         </span> -->
-                        <div [ngClass]="closeTrade ? 'row close_trade_module' : 'row'">
+                        <!-- <div [ngClass]="closeTrade ? 'row close_trade_module' : 'row'">
                             <div class="col-sm-12">
                                 <div class="trade-section m-0">
                                     <div class="pr-3 d-flex">
                                         <div class="Trade-type mr-3" *ngIf="addTrade">
-                                            <div class="form-group">
+                                            <div class="form-group mb-3">
                                                 <select class="form-control select-input pl-0" id="inputState"
                                                     (change)="onStrategyTypeChange($event.target.value)"
                                                     [(ngModel)]='selectedStrategy'
@@ -28,18 +30,13 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
 
-                    <div class="col-sm-7 px-0 text-right">
+                    <!-- <div class="col-sm-7 px-0 text-right">
                         <span class="d-inline-flex mr-2" *ngIf="(stockAdded || stockOptions.length) && !closeTrade && !viewTrade">
                             <a class="text-link assess-risk-btn" (click)="navigateToRiskAnalysis()">Assess Risk</a>
                         </span>
-                        <!-- <span class="d-inline-flex">
-                            <a class="text-link assess-risk-btn">Compare</a>
-                        </span> -->
-                        
-                        
                         <ul class="tags-list">
                             <li *ngFor="let tag of tags; let i = index;" class="tag-item">
                                 <span class="tag-list-item">
@@ -55,7 +52,7 @@
                                 </span>
                             </li>
                         </ul>
-                    </div>
+                    </div> -->
                 </div>
 
             </div>
@@ -67,7 +64,7 @@
             </div>
             <div class="trade-cards-section" *ngIf="stockAdded && !viewTrade">
                 <h4>Stock Positions</h4>
-                <div class="trade-card-box mt-3">
+                <div class="trade-card-box">
                     <div class="card-main card-main-actions">
                         <label class="col-form-label pt-0">Action</label>
                         <select id="inputState"
@@ -154,7 +151,7 @@
                         </mat-expansion-panel-header>
                         <ng-template matExpansionPanelContent>
                             <ng-container>
-                                <div class="trade-card-box mb-1">
+                                <div class="trade-card-box mt-0">
                                     <div class="card-main card-main-actions">Action</div>
                                     <div class="card-main card-main-md">Contracts</div>
                                     <div class="card-main card-main-custom">Strike Price</div>
@@ -168,7 +165,7 @@
                                 </div>
                             </ng-container>
                             <ng-container *ngFor="let item of stockOptions;let index = index">
-                                <div class="trade-card-box" *ngIf="item.display != false">
+                                <div class="trade-card-box mt-2" *ngIf="item.display != false">
                                     <div class="card-main card-main-actions">
                                         <select id="inputState"
                                             [ngClass]="[closeTrade || viewTrade ? 'disabled' : '', editTrade && tradeStatus !== 4 && item.id > index  ? 'disabled' : '']"

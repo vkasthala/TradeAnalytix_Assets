@@ -4,7 +4,7 @@
         {{getDisplayValue(selectedStock.name)}} ({{getDisplayValue(selectedStock.code)}})
         <span *ngIf="!addTrade"> - {{StrategyId.uid}}</span>
     </div>
-    <div class="addnew-second">
+    <div class="addnew-second mt-2">
         <div class="trade-rate-box">
             <div class="trade-rate-box-header">
                 <div class="text-left trade-name-rate">
@@ -43,10 +43,10 @@
                     <h6>{{getDisplayValue(stockSummary.revenueBln, 'B')}}</h6>
                     <span>Revenue</span>
                 </div>
-                <div class="bxo-name">
+                <!-- <div class="bxo-name">
                     <h6>{{getDisplayValue(stockSummary.operatingMargin, '%')}}</h6>
                     <span>Oper. Margin</span>
-                </div>
+                </div> -->
                 <div class="bxo-name bxo-name-sm">
                     <h6>NA</h6>
                     <span>P/E</span>
@@ -57,7 +57,7 @@
                 </div>
             </div>
             <div class="text-right">
-                <a class="configure-questions" data-toggle="modal" data-target="#modal1" (click)="openContactUsModal()">View Financials</a>
+                <a class="configure-questions" data-toggle="modal" data-target="#modal1" (click)="openContactUsModal()">Show&nbsp;More</a>
             </div>
         </div>
     </div>
