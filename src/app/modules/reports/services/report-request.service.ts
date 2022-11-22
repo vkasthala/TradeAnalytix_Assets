@@ -93,6 +93,8 @@ export class ReportRequestService {
     } else if ('returnsCalendar' === reportId) {
       let today = new Date();
       url = '/reports/dashboard/calendarChart/' + today.getFullYear() + '/' + today.getMonth();
+    } else if ('equityCurveChart' === reportId) {
+      url = '/reports/performance/equity';
     }
     return url;
   }

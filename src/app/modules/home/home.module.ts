@@ -153,6 +153,7 @@ import { JournalPopupComponent } from '../trade-management/components/add-trade/
 import { TradeTagsComponent } from '../trade-management/components/add-trade/Steps/trade-tags/trade-tags.component';
 import { UploadFilesComponent } from '../trade-management/components/add-trade/Steps/trade-thesis/upload-files/upload-files.component';
 import { TradingRulesPopupComponent } from '../trade-management/components/add-trade/Steps/entry-rules/trading-rules-popup/trading-rules-popup.component';
+import { EquityCurveChartComponent } from '../dashboard/charts/equity-curve/equity-curve-chart.component';
 
 export const MY_FORMATS = {
   parse: {
@@ -240,6 +241,7 @@ export const MY_FORMATS = {
     StrategyActionTextDialogComponent,
     RuleCommentDialogComponent,
     RealizedReturnChartComponent,
+    EquityCurveChartComponent,
     RiskByAssetChartComponent,
     UserGoalsByDateChartComponent,
     ReturnsCalendarChartComponent,
