@@ -28,6 +28,8 @@ import { EditableSelectComponent } from '../editable-select/editable-select.comp
 import { UserTag } from 'src/app/modules/settings/models/user-tag.model';
 import { ConfirmDialogComponent } from 'src/app/modules/shared/components/modals/confirm-dialog/confirm-dialog.component';
 import { JournalPopupComponent } from './journal-popup/journal-popup.component';
+import { StrategyCreateService } from 'src/app/modules/shared/services/strategy-create.service';
+import { StrategyType } from 'src/app/modules/shared/models/trade-management/strategy-type.enum';
 
 @Component({
   selector: 'app-trade-thesis',
@@ -56,8 +58,14 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
   protected hideEntryThesis: boolean = false;
   protected hideClosingThesis: boolean = false;
   tradeStatus: number;
+  strategies = StrategyType;
   tags: TradeTag[] = [];
   registeredTags: any = [];
+  strategyTypes: String[];
+  strategyTypeId: number = 1;
+  directionId: number = 1;
+  contrarianId: number = 1;
+  plannedId: number = 1;
   
   constructor(
     private _renderer2: Renderer2,
@@ -70,6 +78,7 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
     private dynamicFieldsService: DynamicFieldsService,
     private userMetadataStoreService: UserMetadataStoreService,
     protected userTagService: UserTagService,
+    private strategyCreateService: StrategyCreateService
   ) {
 
   }
@@ -77,6 +86,7 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.tradeThesis = new TradeThesis();
     this.tradeThesis.tradeType = 'planned';
+    this.strategyTypes = this.strategyCreateService.getStrategies();
     this.loadEntryThesisUiFields();
     this.loadExitThesisUiFields();
   }
