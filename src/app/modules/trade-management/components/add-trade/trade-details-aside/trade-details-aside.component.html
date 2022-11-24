@@ -60,7 +60,7 @@
 
 <div class="custom-card" *ngIf="selectedStock && stockSummaryResult">
     <div class="custom-card-header">
-        <div class="custom-card-title pl-0 col-9">Trade Statistics</div>
+        <div class="custom-card-title">Trade Statistics</div>
         <a class="add-new ml-2" (click)="generateChart()">Refresh</a>
     </div>
     <div class="custom-card-body">
@@ -76,9 +76,9 @@
         </div>
         <div class="d-flex mb-2 align-items-center">
             <label class="col-form-label">Stoploss Range</label>
-            <div class="col-8 col-form-value">
+            <div class="col-9 col-form-value">
                 <div class="d-flex align-items-center">
-                    <span class="col-8 pl-0">445.25 - 535.35</span>
+                    <span class="col-6 pl-0">445.25 - 535.35</span>
                     <a class="add-new" (click)="Edit()">Edit</a>
                 </div>
             </div>
@@ -87,7 +87,7 @@
             <label class="col-form-label">Maximum Risk</label>
             <div class="col-9 col-form-value">
                 <div class="d-flex align-items-center">
-                    <span class="col-7 pl-0">3344.23</span>
+                    <span class="col-6 pl-0">3344.23</span>
                     <span *ngIf="!closeTrade && !viewTrade">
                         <a class="text-link assess-risk-btn" (click)="navigateToRiskAnalysis()">Assess Risk</a>
                     </span>
@@ -140,7 +140,7 @@
             </div>
         </div>
 
-        <div class="col-11 mb-2 d-flex ml-1 showMore">
+        <div class="mb-2 d-flex showMore">
             <span class="cursor link-item" (click)="toggleStatistics()">{{showMoreStatistics ? 'Less' : 'More'}}</span>                 
         </div>
     </div>

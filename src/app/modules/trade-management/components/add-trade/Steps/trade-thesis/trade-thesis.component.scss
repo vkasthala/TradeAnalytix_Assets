@@ -137,9 +137,10 @@ select.form-control {
     }
 }
 
-textarea {
-    height: 60px;
+textarea.form-control {
+    height: 50px !important;
     resize: none;
+    overflow: auto;
 }
 
 .trade-input {
