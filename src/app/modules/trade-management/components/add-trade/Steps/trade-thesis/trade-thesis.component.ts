@@ -62,10 +62,7 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
   tags: TradeTag[] = [];
   registeredTags: any = [];
   strategyTypes: String[];
-  strategyTypeId: number = 1;
-  directionId: number = 1;
-  contrarianId: number = 1;
-  plannedId: number = 1;
+  strategyTypeId: number;
   
   constructor(
     private _renderer2: Renderer2,
@@ -107,6 +104,7 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
         this.loadTradeChubFiles(this.inputState.tradeStrategy.id);
       }
       this.tags = this.inputState.tradeStrategy.tradeTag ? this.inputState.tradeStrategy.tradeTag : [];
+      this.strategyTypeId = this.inputState.tradeStrategy.strategyTypeId;
     }
   }
 

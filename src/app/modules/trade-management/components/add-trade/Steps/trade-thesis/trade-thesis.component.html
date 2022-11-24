@@ -196,7 +196,7 @@
         <div class="d-flex mb-2 align-items-center">
             <label class="col-form-label">Direction</label>
             <div class="col-8 col-md-5">
-                <select class="form-control" [(ngModel)]='directionId'>
+                <select class="form-control" [(ngModel)]='tradeThesis.direction'>
                     <option *ngFor="let key of userMetadataStoreService.directions" [value]="key.id" [label]="key.name"></option>
                 </select>
             </div>
@@ -204,7 +204,7 @@
         <div class="d-flex mb-2 align-items-center">
             <label class="col-form-label">Contrarian Trade</label>
             <div class="col-8 col-md-5">
-                <select class="form-control" [(ngModel)]='contrarianId'>
+                <select class="form-control" [(ngModel)]='tradeThesis.contrarian'>
                     <option value="1">Yes</option>
                     <option value="2">No</option>
                 </select>
@@ -213,9 +213,9 @@
         <div class="d-flex mb-2 align-items-center">
             <label class="col-form-label">Planned Trade</label>
             <div class="col-8 col-md-5">
-                <select class="form-control" [(ngModel)]='plannedId'>
-                    <option value="1">Yes</option>
-                    <option value="2">No</option>
+                <select class="form-control" [(ngModel)]='tradeThesis.tradeType'>
+                    <option value="planned">Yes</option>
+                    <option value="impromptu">No</option>
                 </select>
             </div>
         </div>
