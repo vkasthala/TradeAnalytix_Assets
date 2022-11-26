@@ -241,7 +241,7 @@ a.btn.btn-skip {
     padding-top: 3rem;
     .btn-link {
         font-weight: 600;
-        font-size: 16px;
+        font-size: 15px;
         line-height: 24px;
         text-align: center;
         color: #2285FA;
@@ -305,7 +305,7 @@ a.btn.btn-skip {
     .trade-card-box {
         display: flex;
         align-items: stretch;
-        margin-top: 10px;
+        margin-top: 4px;
         flex-wrap: wrap;
         @media #{$extra-small} {
             margin-bottom: 10px;
@@ -846,9 +846,9 @@ a.btn.btn-skip {
     height: 40px;
     align-items: center;
     display: flex;
-    justify-content: center;
-    font-weight: 300;
-    font-size: 12px !important;
+    font-weight: 500;
+    font-size: 14px !important;
+    color: #000;
 }
 
 .card-main-md {
@@ -935,7 +935,7 @@ a.btn.btn-skip {
     }
     .btn-link {
         font-weight: 600;
-        font-size: 16px;
+        font-size: 15px;
         line-height: 24px;
         text-align: center;
         color: #2285FA;
@@ -950,11 +950,11 @@ a.btn.btn-skip {
     .mat-expansion-panel-header {
         font-family: 'Poppins', sans-serif !important;
         font-weight: 600;
-        font-size: 15px;
+        font-size: 14px;
         line-height: 24px;
         color: #3A4C85;
         background: transparent !important;
-        padding: 15px 25px !important;
+        padding: 5px 25px !important;
         height: inherit !important;
         border: 0;
         .mat-expansion-panel-header-title {
@@ -966,11 +966,7 @@ a.btn.btn-skip {
     }
 }
 @media (max-width:1024px) {
-    .add-stock-sec {
-        .col-form-label {
-            font-size: 12px;
-        }
-    }
+    
     .form-control {
         height: 35px;
     }

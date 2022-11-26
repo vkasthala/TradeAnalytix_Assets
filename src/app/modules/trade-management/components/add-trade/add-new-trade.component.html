@@ -56,7 +56,7 @@
                                     </app-trade-details>
 
                                     <div class="closed-legs-sec" *ngIf="!add && tradeStrategy.statusId !=4">
-                                        <div class="cursor closed-legs-header" (click)="showClosedLegs()">
+                                        <div class="cursor closed-legs-header pb-0" (click)="showClosedLegs()">
                                             <div class="closed-legs-title">
                                                 <span>Closed Positions</span>
                                                 <i class="negative-amt material-icons"
@@ -65,12 +65,14 @@
                                                     *ngIf="!closedLegs">keyboard_arrow_right</i>
                                             </div>
                                         </div>
-                                        <div class="closed-legs-body" *ngIf="closedLegs && tradeHistory">
+                                        <div class="closed-legs-body pt-1" *ngIf="closedLegs && tradeHistory">
                                             <div class="text-center" *ngIf="tradeHistory.stockLegHistories.length === 0 && tradeHistory.optionLegHistories.length === 0">
                                                 No closed positions
                                             </div>
+                                            
                                             <div class="trade-card-box"
                                                 *ngFor="let item of tradeHistory.stockLegHistories;let index = index">
+                                                
                                                 <div class="card-main card-main-actions">
                                                     <label class="col-form-label pt-0">Action</label>
                                                     <select id="inputState" class="form-control disabled px-0"
@@ -108,6 +110,16 @@
                                                 </div>
                                             </div>
                                             
+                                            <div class="trade-card-box mb-1">
+                                                <div class="card-main card-main-actions">Action</div>
+                                                <div class="card-main card-main-md">Contracts</div>
+                                                <div class="card-main card-main-md">Strike</div>
+                                                <div class="card-main">Expiration</div>
+                                                <div class="card-main card-main-md">Call / Put</div>
+                                                <div class="card-main card-main-md">Entry Price</div>
+                                                <div class="card-main card-main-md">Exit Price</div>
+                                                <div class="card-main card-main-md">Return</div>
+                                            </div>
                                             <div class="mb-1 trade-card-box"
                                                 *ngFor="let item of tradeHistory.optionLegHistories;let index = index">
                                                 <div class="card-main card-main-actions">
