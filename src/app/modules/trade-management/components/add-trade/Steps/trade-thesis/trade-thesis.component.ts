@@ -63,7 +63,7 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
   registeredTags: any = [];
   strategyTypes: String[];
   strategyTypeId: number;
-  
+
   constructor(
     private _renderer2: Renderer2,
     private _dialog: MatDialog,
@@ -627,7 +627,8 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
       }
     });
     dialogRef.afterClosed().subscribe((res) => {
-
+      this.strategyTypeId = res.strategyTypeId;
+      this.tradeThesis = res.tradeThesis;
     });
   }
 

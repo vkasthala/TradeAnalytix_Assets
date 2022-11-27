@@ -148,7 +148,7 @@ export class TradeDetailsBottomComponent implements OnInit {
     if(!strategyId) {
       return;
     }
-    this.userStockStatsService.getStrategyTypeSummaryResult(strategyId).subscribe(result => {
+    this.userStockStatsService.getStrategySummaryResult(strategyId).subscribe(result => {
       this.strategyTypeSummaryResult = result;
     });
   }
