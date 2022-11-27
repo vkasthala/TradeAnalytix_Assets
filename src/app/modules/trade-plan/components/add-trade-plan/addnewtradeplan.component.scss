@@ -536,3 +536,32 @@ td.mat-cell {
     font-size: 14px;
     font-weight: 500;
 }
+
+.date-filter-list {
+    background:rgb(157 166 186 / 21%);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #3B5065;
+    .title {
+        color: #3A4C85;
+        font-weight: 600;
+        padding: 0.789rem 1rem;
+        font-size: 14px;
+    }
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        li {
+            background:rgb(157 166 186 / 21%);
+            border-bottom: 1px solid rgb(157 166 186 / 55%);
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+        }
+        li.active {
+            background:#fff;
+            color: #242E3A;
+        }
+    }
+ }

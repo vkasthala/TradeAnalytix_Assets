@@ -154,6 +154,7 @@ import { TradeTagsComponent } from '../trade-management/components/add-trade/Ste
 import { UploadFilesComponent } from '../trade-management/components/add-trade/Steps/trade-thesis/upload-files/upload-files.component';
 import { TradingRulesPopupComponent } from '../trade-management/components/add-trade/Steps/entry-rules/trading-rules-popup/trading-rules-popup.component';
 import { EquityCurveChartComponent } from '../dashboard/charts/equity-curve/equity-curve-chart.component';
+import { DailyStatisticsComponent } from '../trade-plan/components/daily-statistics/daily-statistics.component';
 
 export const MY_FORMATS = {
   parse: {
@@ -305,7 +306,8 @@ export const MY_FORMATS = {
     JournalPopupComponent,
     TradeTagsComponent,
     UploadFilesComponent,
-    TradingRulesPopupComponent
+    TradingRulesPopupComponent,
+    DailyStatisticsComponent
   ],
   imports: [
     FormsModule,
@@ -385,7 +387,8 @@ export const MY_FORMATS = {
     JournalPopupComponent,
     TradeTagsComponent,
     UploadFilesComponent,
-    TradingRulesPopupComponent
+    TradingRulesPopupComponent,
+    DailyStatisticsComponent
   ],
   // bootstrap: [TradeStrategiesGrid],
   providers: [
