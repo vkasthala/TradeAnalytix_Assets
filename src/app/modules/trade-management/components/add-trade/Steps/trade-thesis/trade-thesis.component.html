@@ -219,13 +219,13 @@
                 </select>
             </div>
         </div>
-        <div class="d-flex mb-2 align-items-center">
+        <div class="d-flex mb-2">
             <label class="col-form-label">Trade Thesis</label>
             <div class="col-8">
                 <textarea rows="4" class="form-control" [(ngModel)]='tradeThesis.reasons'></textarea>
             </div>
         </div>
-        <div class="d-flex mb-2 align-items-center">
+        <div class="d-flex mb-3 align-items-center">
             <label class="col-form-label">Technical Analysis</label>
             <div class="col-8 col-md-7">
                 <a class="add-new" (click)="generateChart()" *ngIf="addTrade || editTrade">Open Chart</a>

@@ -1,5 +1,5 @@
 <div class="addnew-trade">
-    <div class="px-3 mt-3">
+    <div class="px-3 mt-2">
         <ng-container [ngSwitch]="currentState">
             <ng-container *ngSwitchCase="1">
                 <!--entry first-->
@@ -26,7 +26,7 @@
                 <div class="mask" *ngIf="Loader">
                     <div class="loader"></div>
                 </div>
-
+                
                 <div class="row">
                     <div class="col-8 trade-details-body pr-0">
                         <app-trade-details-header 
@@ -56,7 +56,7 @@
                                     </app-trade-details>
 
                                     <div class="closed-legs-sec" *ngIf="!add && tradeStrategy.statusId !=4">
-                                        <div class="cursor closed-legs-header" (click)="showClosedLegs()">
+                                        <div class="cursor closed-legs-header pb-0" (click)="showClosedLegs()">
                                             <div class="closed-legs-title">
                                                 <span>Closed Positions</span>
                                                 <i class="negative-amt material-icons"
@@ -65,12 +65,14 @@
                                                     *ngIf="!closedLegs">keyboard_arrow_right</i>
                                             </div>
                                         </div>
-                                        <div class="closed-legs-body" *ngIf="closedLegs && tradeHistory">
+                                        <div class="closed-legs-body pt-1" *ngIf="closedLegs && tradeHistory">
                                             <div class="text-center" *ngIf="tradeHistory.stockLegHistories.length === 0 && tradeHistory.optionLegHistories.length === 0">
                                                 No closed positions
                                             </div>
+                                            
                                             <div class="trade-card-box"
                                                 *ngFor="let item of tradeHistory.stockLegHistories;let index = index">
+                                                
                                                 <div class="card-main card-main-actions">
                                                     <label class="col-form-label pt-0">Action</label>
                                                     <select id="inputState" class="form-control disabled px-0"
@@ -108,6 +110,16 @@
                                                 </div>
                                             </div>
                                             
+                                            <div class="trade-card-box mb-1">
+                                                <div class="card-main card-main-actions">Action</div>
+                                                <div class="card-main card-main-md">Contracts</div>
+                                                <div class="card-main card-main-md">Strike</div>
+                                                <div class="card-main">Expiration</div>
+                                                <div class="card-main card-main-md">Call / Put</div>
+                                                <div class="card-main card-main-md">Entry Price</div>
+                                                <div class="card-main card-main-md">Exit Price</div>
+                                                <div class="card-main card-main-md">Return</div>
+                                            </div>
                                             <div class="mb-1 trade-card-box"
                                                 *ngFor="let item of tradeHistory.optionLegHistories;let index = index">
                                                 <div class="card-main card-main-actions">
@@ -204,12 +216,14 @@
 
                             </mat-step>
                         </mat-horizontal-stepper>
-                        <div class="trade-actions">
+                    </div>
+                    <div class="col-4 right-sidebar">
+                        <div class="trade-actions mb-1">
                             <button type="button" class="btn btn-next mr-2"
                                 *ngIf="(add && (tradeDetails.stockOptions.length || tradeDetails.stockAdded)) && !isDemoMode"
                                 (click)="evaluateStrategyRules('WEB')" [disabled]="!isValidTradeStrategy('WEB')">ADD
                                 TRADE</button>
-
+        
                             <span
                                 *ngIf="(tradeDetails.stockAdded || tradeDetails.stockOptions.length > 0) && (stepper.selectedIndex == 0) && !isDemoMode">
                                 <button type="button" class="btn btn-outline-primary"
@@ -217,27 +231,25 @@
                                     [disabled]="!isValidTradeStrategy('WEB')">Save
                                     as Draft</button>
                             </span>
-
+        
                             <button type="button" class="btn btn-next mr-3" *ngIf="edit && !isDemoMode" (click)="editTrade('WEB')"
                                 [disabled]="!isValidTradeStrategy('WEB')">UPDATE</button>
-
+        
                             <button type="button" class="btn btn-next mr-2" *ngIf="close && !view && !isDemoMode"
                                 (click)="closeTrade('WEB')" [disabled]="!isValidTradeStrategy('WEB')">CLOSE TRADE</button>
-
+        
                             <button type="button" class="btn btn-gray mr-2" *ngIf="edit" (click)="cancelTrade()">CANCEL</button>
-
+        
                             <button type="button" class="btn btn-next" *ngIf="view && !isDemoMode" (click)="updateClosedTrade('WEB')">Save</button>
                         </div>
-                    </div>
-                    <div class="col-4 right-sidebar">
-                        <div class="d-flex justify-content-end mb-1">
+                        <!-- <div class="d-flex justify-content-end mb-1">
                             <span class="share-trade-field"><input class="checkbox mr-1" type="checkbox" (change)="onShareTradeChange($event)"> Share Trade<img src="../../../../assets/images/beta-icon.png" class="beta-icon"/></span>
                             <div class="trade-dash-name text-primary">
                                 <span *ngIf="add == false">
                                     <label class="col-form-label">Last Updated Date : {{updatedDate | date: 'dd-MMM-yyyy'}}</label>
                                 </span>
                             </div>
-                        </div>
+                        </div> -->
                         
                         <app-trade-details-aside 
                             [addTrade]="add" 

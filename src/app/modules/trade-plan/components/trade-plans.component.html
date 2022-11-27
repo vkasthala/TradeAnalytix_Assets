@@ -3,7 +3,7 @@
         <div class="main-body">
             <div class="trade-dash-main">
                 <div class="trade-dash-name col-sm-8 pl-0">
-                    <h3>A trade plan allows you to think objectively about the market without getting influenced by the price movements once the market opens. You can record your perspective on the market, intended actions during the day in a trade plan. A trade plan can be updated with your notes after the market hours as well. <!--<a data-toggle="modal" data-target="#modal1" class="watch-video-sm cursor">Watch Video</a>--></h3>
+                    <!-- <h3>A trade plan allows you to think objectively about the market without getting influenced by the price movements once the market opens. You can record your perspective on the market, intended actions during the day in a trade plan. A trade plan can be updated with your notes after the market hours as well. </h3> -->
                 </div>
                 <div class="trade_plans_header">
                     <span class="col-form-label mr-2">Filter By</span>
@@ -11,11 +11,12 @@
                         <my-date-range-picker placeholder="Date range" name="mydaterange" [options]="myDateRangePickerOptions" (dateRangeChanged)="onDateRangeChanged($event)">
                         </my-date-range-picker>
                     </div>
-                    <button class="btn add-new d-flex align-items-center" (click)="addEntry()">Add Plan</button>
+                    <button class="btn add-new d-flex align-items-center" (click)="addEntry()">New Plan</button>
                 </div>
             </div>
 
             <div class="card-body px-3">
+                <app-addnewtradeplan></app-addnewtradeplan>
                 <div class="mat-elevation-z8 trade-table">
                     <table mat-table [dataSource]="dataSource">
                         <!-- Position Column -->
@@ -40,13 +41,7 @@
                             <td mat-cell *matCellDef="let element"> {{element.mindsetType}} </td>
                         </ng-container>
 
-                        <!-- Planned Trades Column -->
-                        <!--
-                        <ng-container matColumnDef="plannedTrades">
-                            <th mat-header-cell *matHeaderCellDef> Planned Trades </th>
-                            <td mat-cell *matCellDef="let element"> {{element.plannedTrades}} </td>
-                        </ng-container>
-                    -->
+                       
 
                         <!--Aligned Column -->
                         <ng-container matColumnDef="aligned">

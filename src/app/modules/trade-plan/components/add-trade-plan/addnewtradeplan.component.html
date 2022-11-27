@@ -1,16 +1,154 @@
+<div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-10">
+        <div class="trade-plan-container pb-1">
+            <div class="row mb-3">
+                <div class="col-sm-7">
+                    <div class="trade-plan-header justify-content-between">
+                        <span>Pre-Market Notes</span>
+                        <a class="add-new">Economic Calendar</a>
+                    </div>
+                    <div>
+                        <textarea placeholder="Write about your trading performance and lessons learnt during the day" class="textarea-lg"></textarea>
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <div class="trade-plan-header">
+                        Holdings
+                    </div>
+                    <div class="table-container">
+                        <table class="d-lg-table mat-table">
+                            <thead>
+                                <tr class="mat-header-row">
+                                    <th class="mat-header-cell">Strategy ID</th>
+                                    <th class="mat-header-cell">Symbol</th>
+                                    <th class="mat-header-cell">Amount</th>
+                                    <th class="mat-header-cell">Return</th>
+                                    <th class="mat-header-cell">Max. Risk</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="mat-header-row">
+                                    <td class="mat-cell">3948-23345</td>
+                                    <td class="mat-cell">NIO</td>
+                                    <td class="mat-cell">398457</td>
+                                    <td class="mat-cell">9823</td>
+                                    <td class="mat-cell">3094</td>
+                                </tr>
+                                <tr class="mat-header-row">
+                                    <td class="mat-cell">3948-22342</td>
+                                    <td class="mat-cell">XPEV</td>
+                                    <td class="mat-cell">34985</td>
+                                    <td class="mat-cell">932</td>
+                                    <td class="mat-cell">29384</td>
+                                </tr>
+                                <tr class="mat-header-row">
+                                    <td class="mat-cell">3948-23344</td>
+                                    <td class="mat-cell">LL</td>
+                                    <td class="mat-cell">98563</td>
+                                    <td class="mat-cell">459</td>
+                                    <td class="mat-cell">9283</td>
+                                </tr>
+                                <tr class="mat-header-row">
+                                    <td class="mat-cell">3948-22342</td>
+                                    <td class="mat-cell">XPEV</td>
+                                    <td class="mat-cell">34985</td>
+                                    <td class="mat-cell">-43985</td>
+                                    <td class="mat-cell">56</td>
+                                </tr>
+                                <tr class="mat-header-row">
+                                    <td class="mat-cell">3948-23344</td>
+                                    <td class="mat-cell">LL</td>
+                                    <td class="mat-cell">98563</td>
+                                    <td class="mat-cell">-456</td>
+                                    <td class="mat-cell">4586</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <app-planned-trades-grid [tradePlanId]="tradePlanId" [viewTradePlan]="view" #plannedTradesGrid></app-planned-trades-grid>
+
+            <div class="row mb-3">
+                <div class="col-sm-7">
+                    <div class="trade-plan-header justify-content-between">
+                        <span>Post-Market Notes</span>
+                    </div>
+                    <div>
+                        <textarea placeholder="Write about your trading performance and lessons learnt during the day" class="textarea-lg"></textarea>
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <div class="trade-plan-header">
+                        Executed Trades
+                    </div>
+                    <div class="table-container">
+                        <table class="d-lg-table mat-table">
+                            <thead>
+                                <tr class="mat-header-row">
+                                    <th class="mat-header-cell">Strategy ID</th>
+                                    <th class="mat-header-cell">Symbol</th>
+                                    <th class="mat-header-cell">Amount</th>
+                                    <th class="mat-header-cell">Return</th>
+                                    <th class="mat-header-cell">Max. Risk</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="mat-header-row">
+                                    <td class="mat-cell">3948-23345</td>
+                                    <td class="mat-cell">NIO</td>
+                                    <td class="mat-cell">398457</td>
+                                    <td class="mat-cell">9823</td>
+                                    <td class="mat-cell">3094</td>
+                                </tr>
+                                <tr class="mat-header-row">
+                                    <td class="mat-cell">3948-22342</td>
+                                    <td class="mat-cell">XPEV</td>
+                                    <td class="mat-cell">34985</td>
+                                    <td class="mat-cell">932</td>
+                                    <td class="mat-cell">29384</td>
+                                </tr>
+                                <tr class="mat-header-row">
+                                    <td class="mat-cell">3948-23344</td>
+                                    <td class="mat-cell">LL</td>
+                                    <td class="mat-cell">98563</td>
+                                    <td class="mat-cell">459</td>
+                                    <td class="mat-cell">9283</td>
+                                </tr>
+                                <tr class="mat-header-row">
+                                    <td class="mat-cell">3948-22342</td>
+                                    <td class="mat-cell">XPEV</td>
+                                    <td class="mat-cell">34985</td>
+                                    <td class="mat-cell">-43985</td>
+                                    <td class="mat-cell">56</td>
+                                </tr>
+                                <tr class="mat-header-row">
+                                    <td class="mat-cell">3948-23344</td>
+                                    <td class="mat-cell">LL</td>
+                                    <td class="mat-cell">98563</td>
+                                    <td class="mat-cell">-456</td>
+                                    <td class="mat-cell">4586</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="px-3 mt-2">
     <div class="inner-trade">
-        <div class="trade-dash-main px-0">
-            <div class="trade-dash-name">
-                <h3>{{edit ? 'Edit' : "" }} {{view ? 'View' : "" }} Trade Plan</h3>
-            </div>
+        <!-- <div class="trade-dash-main px-0">
             <div class="text-center position-fixed-btn" *ngIf="!isDemoMode">
                 <button type="button" class="btn btn-primary btn-add-plan d-flex align-items-center" *ngIf="add && !isDemoMode" (click)="addTradePlan()">
                     <span class="add-icon mr-2">+</span> Add Plan
                 </button>
                 <button type="button" class="btn btn-primary btn-submit" *ngIf="edit && !view" (click)="submitTradePlan()">SUBMIT</button>
             </div>
-        </div>
+        </div> -->
         <div class="inner-trade-plan">
             <div class="row">
                 <div class="col-sm-7">
@@ -76,7 +214,7 @@
 
         <app-open-strategies-grid [tradePlanId]="tradePlanId" [viewTradePlan]="view" #tradeStrategiesGrid></app-open-strategies-grid>
         
-        <app-planned-trades-grid [tradePlanId]="tradePlanId" [viewTradePlan]="view" #plannedTradesGrid></app-planned-trades-grid>
+        
 
         <div *ngIf="edit || view">
             <app-today-executed-legs [day]="day" #todayExecutedLegsGrid></app-today-executed-legs>

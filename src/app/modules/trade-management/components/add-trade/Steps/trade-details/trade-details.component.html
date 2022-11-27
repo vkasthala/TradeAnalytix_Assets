@@ -102,9 +102,9 @@
                             1)).toFixed(2) : 0}}
                         </h6>
                     </div>
-                    <div class="card-main text-right" *ngIf="!closeTrade">
+                    <div class="card-main" *ngIf="!closeTrade">
                         <label class="col-form-label pt-0">Cost</label>
-                        <h6 class="input_text justify-content-end">
+                        <h6 class="input_text">
                             {{(stockEntry.quantity && stockEntry.price) ? (stockEntry.quantity * stockEntry.price *
                             (stockEntry.actionType == 2 ? -1 : 1)).toFixed(2) : 0}}
                         </h6>
@@ -141,7 +141,7 @@
                     [ngClass]="closeTrade ? 'total_return' : ''">{{(closeTrade || viewTrade) ? calculateNetReturn() :
                     calculateNetDebit()}}</span>
             </div>
-            <div class="trade-cards-section" *ngIf="stockOptions.length">
+            <div class="trade-cards-section mt-3" *ngIf="stockOptions.length">
                 <mat-accordion class="example-headers-align w-100" multi="true">
                     <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
                         <mat-expansion-panel-header>
@@ -158,7 +158,7 @@
                                     <div class="card-main">Expiry Date</div>
                                     <div class="card-main card-main-md">Call / Put</div>
                                     <div class="card-main card-main-custom">Entry Price</div>
-                                    <div class="card-main card-main-md text-right" *ngIf="!closeTrade">Cost</div>
+                                    <div class="card-main card-main-md" *ngIf="!closeTrade">Cost</div>
                                     <div class="card-main card-main-custom" *ngIf="closeTrade">Exit Price <span
                                             class="text-danger">*</span></div>
                                     <div class="card-main card-main-sm" *ngIf="closeTrade">Return</div>
@@ -220,7 +220,7 @@
                                             [(ngModel)]="stockOptions[index].price" />
                                     </div>
                                     <div class="card-main card-main-md" *ngIf="!closeTrade">
-                                        <h6 class="input_text justify-content-end">
+                                        <h6 class="input_text">
                                             {{(stockOptions[index].contracts && stockOptions[index].price) ?
                                             (stockOptions[index].contracts * (stockOptions[index].price) *
                                             (stockOptions[index].actionType == 2 ? -1 : 1)).toFixed(2) : 0}}
