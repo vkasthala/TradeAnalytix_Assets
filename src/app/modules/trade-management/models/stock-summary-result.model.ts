@@ -14,4 +14,8 @@ export class StockSummaryResult {
 
     failedStrategy: string;
 
+    totalTransactions: number;
+
+    totalStrategies: number;
+
 }
