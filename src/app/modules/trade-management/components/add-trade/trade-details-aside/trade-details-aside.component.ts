@@ -45,7 +45,7 @@ export class TradeDetailsAsideComponent implements OnInit {
 
   stockSummaryResult: StockSummaryResult;
 
-  strategyTypeSummaryResult: StrategySummaryResult;
+  strategySummaryResult: StrategySummaryResult;
 
   stockOrOptionAdded: boolean;
 
@@ -60,7 +60,7 @@ export class TradeDetailsAsideComponent implements OnInit {
     this.loadSummary();
     if (this.tradeStrategy) {
       this.strategyTypeId = this.tradeStrategy.strategyTypeId;
-      this.loadStrategyTypeSummary(this.tradeStrategy.strategyTypeId);
+      this.loadStrategySummary(this.tradeStrategy.id);
       this.stockOrOptionAdded = ((this.tradeStrategy.stockOptions && this.tradeStrategy.stockOptions.length > 0) || (this.tradeStrategy.stockEntry && this.tradeStrategy.stockEntry.length > 0 && this.tradeStrategy.stockEntry[0].quantity > 0));
       this.updateStrategyName(this.strategyTypeId);
     }
@@ -68,24 +68,21 @@ export class TradeDetailsAsideComponent implements OnInit {
     this.strategyTypeChangeSubject.asObservable().subscribe(data => {
       this.strategyTypeId = data;
       this.updateStrategyName(this.strategyTypeId);
-      this.loadStrategyTypeSummary(data);
+      //this.loadStrategyTypeSummary(data);
     });
 
     this.stockOrOptionAddedSubject.asObservable().subscribe(data => {
       console.log('stock/option added: ', data);
-      if (!this.strategyTypeSummaryResult && data === true) {
+      if (!this.strategySummaryResult && data === true) {
         if (!this.strategyTypeId) {
           this.strategyTypeId = 15;
         }
         this.updateStrategyName(this.strategyTypeId);
-        this.loadStrategyTypeSummary(this.strategyTypeId);
+        //this.loadStrategyTypeSummary(this.strategyTypeId);
       }
       this.stockOrOptionAdded = data;
     });
   }
-
-
-
 
   loadSummary() {
     this.userStockStatsService.getStockMetricsSummaryResult(this.selectedStock.id).subscribe(result => {
@@ -93,12 +90,12 @@ export class TradeDetailsAsideComponent implements OnInit {
     });
   }
 
-  loadStrategyTypeSummary(strategyId: number) {
+  loadStrategySummary(strategyId: number) {
     if(!strategyId) {
       return;
     }
-    this.userStockStatsService.getStrategyTypeSummaryResult(strategyId).subscribe(result => {
-      this.strategyTypeSummaryResult = result;
+    this.userStockStatsService.getStrategySummaryResult(strategyId).subscribe(result => {
+      this.strategySummaryResult = result;
     });
   }
 

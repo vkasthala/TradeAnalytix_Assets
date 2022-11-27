@@ -27,7 +27,7 @@ export class UserStockStatsService {
     return this.http.get<StockSummaryResult>(this.apiUrl + '/stats/user-stock/stock-summary?stock_id=' + stockId);
   }
 
-  public getStrategyTypeSummaryResult(strategyId: Number): Observable<StrategySummaryResult> {
+  public getStrategySummaryResult(strategyId: Number): Observable<StrategySummaryResult> {
     return this.http.get<StrategySummaryResult>(this.apiUrl + '/stats/user-stock/strategy-summary?strategy_id=' + strategyId);
   }
 
