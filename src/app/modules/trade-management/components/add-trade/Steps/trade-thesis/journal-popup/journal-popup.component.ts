@@ -61,6 +61,10 @@ export class JournalPopupComponent implements OnInit {
 
   ngOnInit() {
     this.strategyTypes = this.strategyCreateService.getStrategies();
+    this.loadSourceTypes();
+    this.loadTechnicalIndicators();
+    this.loadSurroundingEvents();
+    this.loadMindsets();
   }
 
   addValue(value, field: DynamicFieldDto) {
@@ -97,28 +101,28 @@ export class JournalPopupComponent implements OnInit {
 
   addSource(value: string, field: DynamicFieldDto) {
     this.dataSetupService.createSourceType(this.createEditableItem(value)).subscribe(result => {
-      this.loadSourceTypes(field);
+      this.loadSourceTypes();
       this.toastr.success('Added new value successfully', 'Success');
     });
   }
 
   addTechnicalIndicator(value: string, field: DynamicFieldDto) {
     this.dataSetupService.createTechnicalIndicatorType(this.createEditableItem(value)).subscribe(result => {
-      this.loadTechnicalIndicators(field);
+      this.loadTechnicalIndicators();
       this.toastr.success('Added new value successfully', 'Success');
     });
   }
 
   addSurroundingEvent(value: string, field: DynamicFieldDto) {
     this.dataSetupService.createSurrEventType(this.createEditableItem(value)).subscribe(result => {
-      this.loadSurroundingEvents(field);
+      this.loadSurroundingEvents();
       this.toastr.success('Added new value successfully', 'Success');
     });
   }
 
   addMindset(value: string, field: DynamicFieldDto) {
     this.dataSetupService.createMindsetType(this.createEditableItem(value)).subscribe(resuly => {
-      this.loadMindsets(field);
+      this.loadMindsets();
       this.toastr.success('Added new value successfully', 'Success');
     });
   }
@@ -149,7 +153,7 @@ export class JournalPopupComponent implements OnInit {
 
   }
 
-  loadMindsets(field: DynamicFieldDto) {
+  loadMindsets() {
     this.metadataService.getMindsetTypes().subscribe(result => {
       let mindsetTypes = [];
       mindsetTypes.push(new MindsetType());
@@ -158,13 +162,15 @@ export class JournalPopupComponent implements OnInit {
         this.tradeThesis.mindsetId = mindsetTypes[0].id;
       }
       this.userMetadataStoreService.mindsets = mindsetTypes;
+      /*
       if (field) {
         this.updateDropdownValues(field, mindsetTypes);
       }
+      */
     });
   }
 
-  loadSourceTypes(field: DynamicFieldDto) {
+  loadSourceTypes() {
     this.metadataService.getTradeSourceTypes().subscribe(result => {
       let sourceTypes: SourceType[] = [];
       sourceTypes.push(new SourceType());
@@ -173,13 +179,15 @@ export class JournalPopupComponent implements OnInit {
         this.tradeThesis.sourceId = sourceTypes[0].id;
       }
       this.userMetadataStoreService.sources = sourceTypes;
+      /*
       if (field) {
         this.updateDropdownValues(field, sourceTypes);
       }
+      */
     });
   }
 
-  loadSurroundingEvents(field: DynamicFieldDto) {
+  loadSurroundingEvents() {
     this.metadataService.getSurroundingTypes().subscribe(result => {
       let surroundingTypes: SurroundingType[] = [];
       surroundingTypes.push(new SurroundingType());
@@ -189,13 +197,15 @@ export class JournalPopupComponent implements OnInit {
         this.tradeThesis.surroundingEventId = surroundingTypes[0].id;
       }
       this.userMetadataStoreService.events = surroundingTypes;
+      /*
       if (field) {
         this.updateDropdownValues(field, surroundingTypes);
       }
+      */
     });
   }
 
-  loadTechnicalIndicators(field: DynamicFieldDto) {
+  loadTechnicalIndicators() {
     this.metadataService.getTechIndicators().subscribe(result => {
       let technicalIndicators: TechnicalIndicator[] = [];
       technicalIndicators.push(new TechnicalIndicator());
@@ -204,9 +214,11 @@ export class JournalPopupComponent implements OnInit {
         this.tradeThesis.technicalIndicatorId = technicalIndicators[0].id;
       }
       this.userMetadataStoreService.technicalIndicators = technicalIndicators;
+      /*
       if (field) {
         this.updateDropdownValues(field, technicalIndicators);
       }
+      */
     });
   }
 

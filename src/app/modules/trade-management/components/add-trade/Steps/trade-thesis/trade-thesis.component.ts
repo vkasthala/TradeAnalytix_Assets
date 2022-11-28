@@ -623,7 +623,9 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
       width: 'auto',
       data: {
         title: 'Journal',
-        category: 'EntryThesis'
+        category: 'EntryThesis',
+        strategyTypeId: this.strategyTypeId,
+        tradeThesis: this.tradeThesis
       }
     });
     dialogRef.afterClosed().subscribe((res) => {

@@ -67,9 +67,8 @@
                 <div class="col-9">
                     <div class="d-flex align-items-center">
                         <select class="form-control select-input" id="inputState" [(ngModel)]="tradeThesis.sourceId">
-                            <option [ngValue]="opt.id" *ngFor="let opt of sourceTypes; trackBy: id">{{opt.name}}
+                            <option [ngValue]="opt.id" *ngFor="let opt of userMetadataStoreService.sources; trackBy: id">{{opt.name}}
                             </option>
-                        </select>
                         </select>
                         <span class="text-primary ml-3">
                             <mat-icon class="text-primary cursor" (click)="addValue('Source')">add_circle</mat-icon>
@@ -89,7 +88,7 @@
                     <div class="d-flex align-items-center">
                         <select class="form-control select-input" id="inputState"
                             [(ngModel)]="tradeThesis.technicalIndicatorId">
-                            <option [ngValue]="opt.id" *ngFor="let opt of technicalIndicators; trackBy: id">
+                            <option [ngValue]="opt.id" *ngFor="let opt of userMetadataStoreService.technicalIndicators; trackBy: id">
                                 {{opt.name}}</option>
                         </select>
                         <span class="d-flex text-primary ml-3">
@@ -104,7 +103,7 @@
                     <div class="d-flex align-items-center">
                         <select class="form-control select-input" id="inputState"
                             [(ngModel)]="tradeThesis.surroundingEventId">
-                            <option [ngValue]="opt.id" *ngFor="let opt of surroundingTypes; trackBy: id">
+                            <option [ngValue]="opt.id" *ngFor="let opt of userMetadataStoreService.events; trackBy: id">
                                 {{opt.name}}</option>
                         </select>
                         <span class="text-primary ml-3">
@@ -118,7 +117,7 @@
                 <div class="col-8">
                     <div class="d-flex align-items-center">
                         <select class="form-control select-input" id="inputState" [(ngModel)]="tradeThesis.mindsetId">
-                            <option [ngValue]="opt.id" *ngFor="let opt of mindsetTypes; trackBy: id">{{opt.name}}
+                            <option [ngValue]="opt.id" *ngFor="let opt of userMetadataStoreService.mindsets; trackBy: id">{{opt.name}}
                             </option>
                         </select>
                         <span class="text-primary ml-3">
