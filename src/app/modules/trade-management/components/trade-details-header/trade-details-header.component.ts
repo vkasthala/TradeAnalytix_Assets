@@ -48,7 +48,6 @@ export class TradeDetailsHeaderComponent implements OnInit {
   }
 
   openContactUsModal() {
-    debugger;
     console.log(this.selectedStock)
     var e = document.getElementById('financialsView');
     e.innerHTML = "";

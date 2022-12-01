@@ -45,7 +45,6 @@ export class TradeTagsComponent implements OnInit {
   strategies = StrategyType;
 
   @Input("inputState") inputState: TradeInputData;
-
   @Input('stockSummary') stockSummary: UserStockSummary;
   @Input("selectedStock") selectedStock: StockSymbol;
   @Input("StockPosition") StockPosition: any;
@@ -86,13 +85,10 @@ export class TradeTagsComponent implements OnInit {
     }
   }
 
-  
-
   ngAfterContentInit() {
 
   }
 
-  
   addTag() {
     this.registeredTags = this.userTagService.getTags();
     console.log('registeredTags', this.registeredTags);
@@ -183,8 +179,6 @@ export class TradeTagsComponent implements OnInit {
       }
     });
   }
-
-  
 
   getTagName(id: number): string {
     return this.userTagService.getTagNameById(id);

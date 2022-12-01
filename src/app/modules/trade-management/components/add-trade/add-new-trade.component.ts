@@ -55,6 +55,7 @@ export class AddNewTradeComponent implements OnInit {
   @ViewChild('mobileTradeThesis', { static: false }) protected mobileTradeThesis: TradeThesisComponent;
   @ViewChild('mobileEntryRules', { static: false }) protected mobilEntryRules: EntryRulesComponent;
   @ViewChild('mobileExitRules', { static: false }) protected mobileExitRules: ExitRulesComponent;
+  @ViewChild('mobileTradeDetailsAside', { static: false }) protected mobileTradeDetailsAsideComponent: TradeDetailsAsideComponent;
   @Input('matTooltipShowDelay') showDelay: number;
   @Input('matTooltipHideDelay') hideDelay: number;
   strategyTypeChangeSubject: Subject<number> = new Subject<number>();
@@ -294,11 +295,11 @@ export class AddNewTradeComponent implements OnInit {
     this.tradeStrategy.stockId = this.selectedStock.id;
     this.tradeStrategy.strategyTypeId = tradeDetailsComp.selectedStrategy;
     let tradeThesisArray = [];
-    tradeThesisComp.updateTradeThesisData();
+    //tradeThesisComp.updateTradeThesisData();
     tradeThesisArray.push(tradeThesisComp.tradeThesis);
     this.tradeStrategy.tradeThesis = tradeThesisArray;
-    if (tradeDetailsComp.tags) {
-      this.tradeStrategy.tradeTag = tradeDetailsComp.tags;
+    if (tradeThesisComp.tradeTagsComponent.tags) {
+      this.tradeStrategy.tradeTag = tradeThesisComp.tradeTagsComponent.tags;
     }
 
     let stockEntries = [];
@@ -313,6 +314,7 @@ export class AddNewTradeComponent implements OnInit {
     this.tradeStrategy.stockOptions = tradeDetailsComp.stockOptions;
     this.tradeStrategy.direction = tradeThesisComp.tradeThesis.direction;
     this.tradeStrategy.rules = entryRulesComp.entryRules;
+    this.tradeStrategy.strategyTypeId = tradeThesisComp.strategyTypeId;
     /*if (this.tradeStrategy.rules && exitRulesComp.exitRules) {
       this.tradeStrategy.rules = this.tradeStrategy.rules.concat(exitRulesComp.exitRules);
     }*/
@@ -589,6 +591,14 @@ export class AddNewTradeComponent implements OnInit {
     return comp;
   }
 
+  getTradeDetailsAsideComponent(source: string): TradeDetailsAsideComponent {
+    var comp: TradeDetailsAsideComponent = this.tradeDetailsAsideComponent;
+    if ('MOBILE' === source) {
+      comp = this.mobileTradeDetailsAsideComponent;
+    }
+    return comp;
+  }
+
   getTradeExitRules(source: string): ExitRulesComponent {
     var comp: ExitRulesComponent = this.exitRules;
     if ('MOBILE' === source) {
@@ -597,11 +607,13 @@ export class AddNewTradeComponent implements OnInit {
     return comp;
   }
 
+
+
   onShareTradeChange(event) {
     if (event.target.checked) {
       this.toastr.success('Trade details are shared with all of your followers', 'Success');
       return false;
-    }else {
+    } else {
       this.toastr.success('Trade details are no longer shared with the followers', 'Success');
       return false;
     }
@@ -609,8 +621,8 @@ export class AddNewTradeComponent implements OnInit {
 
   closePopup(e) {
     let iframe = document.querySelector('iframe');
-    iframe.src='';
-    iframe.setAttribute("src",'https://www.youtube.com/embed/JlRinQiXHmM');
+    iframe.src = '';
+    iframe.setAttribute("src", 'https://www.youtube.com/embed/JlRinQiXHmM');
   }
 
 }

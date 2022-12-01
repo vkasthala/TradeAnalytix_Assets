@@ -30,6 +30,7 @@ import { ConfirmDialogComponent } from 'src/app/modules/shared/components/modals
 import { JournalPopupComponent } from './journal-popup/journal-popup.component';
 import { StrategyCreateService } from 'src/app/modules/shared/services/strategy-create.service';
 import { StrategyType } from 'src/app/modules/shared/models/trade-management/strategy-type.enum';
+import { TradeTagsComponent } from '../trade-tags/trade-tags.component';
 
 @Component({
   selector: 'app-trade-thesis',
@@ -44,6 +45,8 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
   exitThesisFields: DynamicFieldDto[] = [];
 
   @ViewChild('thesisTradingview', { static: false }) thesisTradingview: ElementRef;
+  @ViewChild('tradeTag', { static: false }) tradeTagsComponent: TradeTagsComponent;
+  
   @Output('nextStep') nextStep = new EventEmitter();
   @Output('prevStep') prevStep = new EventEmitter();
   @Output() dropdownItemAddedEvent = new EventEmitter();
@@ -103,7 +106,7 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
       if (this.inputState.tradeStrategy.id) {
         this.loadTradeChubFiles(this.inputState.tradeStrategy.id);
       }
-      this.tags = this.inputState.tradeStrategy.tradeTag ? this.inputState.tradeStrategy.tradeTag : [];
+      this.tradeTagsComponent.tags = this.inputState.tradeStrategy.tradeTag ? this.inputState.tradeStrategy.tradeTag : [];
       this.strategyTypeId = this.inputState.tradeStrategy.strategyTypeId;
     }
   }
@@ -625,12 +628,14 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
         title: 'Journal',
         category: 'EntryThesis',
         strategyTypeId: this.strategyTypeId,
-        tradeThesis: this.tradeThesis
+        tradeThesis: this.tradeThesis,
+        tags: this.tradeTagsComponent.tags
       }
     });
     dialogRef.afterClosed().subscribe((res) => {
       this.strategyTypeId = res.strategyTypeId;
       this.tradeThesis = res.tradeThesis;
+      this.tradeTagsComponent.tags = res.tags
     });
   }
 

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Inject, OnInit, Output, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { ToastrService } from 'ngx-toastr';
 import { DynamicFieldDto } from 'src/app/modules/settings/models/dynamic-field-dto.model';
@@ -8,6 +8,7 @@ import { UserTagService } from 'src/app/modules/settings/services/user-tag.servi
 import { SingleInputModalComponent } from 'src/app/modules/shared/components/modals/single-input-modal/single-input-modal.component';
 import { EditableListItem } from 'src/app/modules/shared/models/common/editable-list-item.model';
 import { StrategyType } from 'src/app/modules/shared/models/trade-management/strategy-type.enum';
+import { TradeTag } from 'src/app/modules/shared/models/trade-management/trade-tag.model';
 import { ChubUploadService } from 'src/app/modules/shared/services/chub-upload.service';
 import { StrategyCreateService } from 'src/app/modules/shared/services/strategy-create.service';
 import { UserMetadataStoreService } from 'src/app/modules/shared/services/user-metadata-store.service';
@@ -18,6 +19,7 @@ import { TechnicalIndicator } from 'src/app/modules/trade-management/models/tech
 import { TradeThesis } from 'src/app/modules/trade-management/models/trade-thesis.model';
 import { TradeStrategyService } from 'src/app/modules/trade-management/services/trade-strategy.service';
 import { UserMetadataService } from 'src/app/modules/trade-management/services/user-metadata.service';
+import { TradeTagsComponent } from '../../trade-tags/trade-tags.component';
 import { GenerateChartPopupComponent } from '../generate-chart-popup/generate-chart-popup.component';
 
 @Component({
@@ -25,14 +27,16 @@ import { GenerateChartPopupComponent } from '../generate-chart-popup/generate-ch
   templateUrl: './journal-popup.component.html',
   styleUrls: ['./journal-popup.component.scss']
 })
-export class JournalPopupComponent implements OnInit {
+export class JournalPopupComponent implements OnInit, AfterViewInit {
 
-  
+  @ViewChild('tradeTags', { static: false }) tradeTagsComponent: TradeTagsComponent;
+
   @Output() dropdownItemAddedEvent = new EventEmitter();
 
   category: string;
   title: string;
   strategies = StrategyType;
+  tags: TradeTag[];
 
   tradeThesis: TradeThesis;
 
@@ -57,6 +61,10 @@ export class JournalPopupComponent implements OnInit {
     this.title = data.title;
     this.strategyTypeId = data.strategyTypeId;
     this.tradeThesis = data.tradeThesis;
+    //this.tradeTagsComponent.tags = data.tags;
+  }
+
+  ngAfterViewInit(): void {
   }
 
   ngOnInit() {
@@ -264,7 +272,8 @@ export class JournalPopupComponent implements OnInit {
   saveFieldSettings() {
     this.dialogRef.close({
       strategyTypeId: this.strategyTypeId,
-      tradeThesis: this.tradeThesis
+      tradeThesis: this.tradeThesis,
+      tags: this.tradeTagsComponent.tags
     });
   }
 
