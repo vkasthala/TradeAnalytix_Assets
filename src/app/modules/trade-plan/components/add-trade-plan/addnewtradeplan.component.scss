@@ -564,4 +564,17 @@ td.mat-cell {
             color: #242E3A;
         }
     }
- }
+}
+.new-plan {
+    background-color: #2285FA;
+    color: $white;
+    font-size: 14px;
+    padding: 0.375rem 16px !important;
+    border-radius: 4px;
+    height: 40px;
+    @media #{$extra-small} {
+        justify-content: center;
+        width: 100% !important;
+        display: inline-flex !important;
+    }
+}

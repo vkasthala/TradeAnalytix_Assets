@@ -14,6 +14,12 @@ import { TradePlansService } from '../../services/trade-plans.service';
 import { OpenStrategiesGridComponent } from '../open-strategies-grid/open-strategies-grid.component';
 import { PlannedTradesGridComponent } from '../planned-trades-grid/planned-trades-grid.component';
 
+import {MatDatepickerInputEvent} from '@angular/material/datepicker';
+import { DateAdapter } from '@angular/material';
+
+import * as _moment from 'moment';
+import { EconomicDialogComponent } from '../economic-dialog/economic-dialog.component';
+const moment = _moment;
 
 @Component({
   selector: 'app-addnewtradeplan',
@@ -28,7 +34,7 @@ export class AddnewtradeplanComponent implements OnInit {
   
   tradePlanId: number = 0;
   day: string;
-  
+  planDate;
   marketStatuses: MarketStatus[];
   mindsetTypes: MindsetType[];
 
@@ -38,6 +44,8 @@ export class AddnewtradeplanComponent implements OnInit {
   @ViewChild('tradeStrategiesGrid', { static: false }) protected tradeStrategiesGrid: OpenStrategiesGridComponent;
   @ViewChild('plannedTradesGrid', { static: false }) protected plannedTradesGrid: PlannedTradesGridComponent;
 
+  planDates: any= ['Nov 18, 2022','Nov 17, 2022','Nov 16, 2022','Nov 15, 2022','Nov 14, 2022','Nov 13, 2022','Nov 12, 2022','Nov 11, 2022','Nov 10, 2022','Nov 9, 2022','Nov 8, 2022','Nov 7, 2022','Nov 6, 2022','Nov 5, 2022','Nov 4, 2022' ]
+
   constructor(
     protected _dialog: MatDialog,
     protected router: Router,
@@ -45,6 +53,7 @@ export class AddnewtradeplanComponent implements OnInit {
     protected tradePlanService: TradePlansService,
     protected toastr: ToastrService,
     protected demoService: DemoModeDetailsService,
+    private dateAdapter: DateAdapter<Date>
   ) {
     this.initState();
   }
@@ -162,5 +171,29 @@ export class AddnewtradeplanComponent implements OnInit {
     return symbols;
   }
 
+  addTradePlanDate() {
+    let xx = ((document.getElementById('tradePlanDate') as HTMLInputElement).value)
+    this.planDates.unshift(xx);
+    (document.getElementById('tradePlanDate') as HTMLInputElement).value = '';
+    this.planDate = null;
+  }
+
+  addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
+    let dd = moment(event.value);
+    (document.getElementById('tradePlanDate') as HTMLInputElement).value = dd.format('MMM DD, YYYY');
+  }
+
+  openEconomicModal() {
+    const dialogRef = this._dialog.open(EconomicDialogComponent, {
+      disableClose: false,
+      width: 'auto',
+      data: {
+        title: 'Economic Calendar',
+      }
+    });
+    dialogRef.afterClosed().subscribe((res) => {
+      
+    });
+  }
 
 }

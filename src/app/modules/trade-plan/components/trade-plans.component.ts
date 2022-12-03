@@ -64,14 +64,14 @@ export class TradePlansComponent implements OnInit {
 
   ngAfterViewInit() {
 
-    this.paginator.page.pipe(
-      tap(() => {
-        console.log('here...');
-        this.updatePageSortParams();
-        this.loadPage();
-      })
-    )
-      .subscribe();
+    // this.paginator.page.pipe(
+    //   tap(() => {
+    //     console.log('here...');
+    //     this.updatePageSortParams();
+    //     this.loadPage();
+    //   })
+    // )
+    //   .subscribe();
   }
 
   getInitialRequest(): TradePlanGridRequest {
