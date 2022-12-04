@@ -6,7 +6,7 @@
     background: #FFFFFF;
     box-shadow: 0px 4px 16px rgba(157, 157, 157, 0.1);
     position: relative;
-    padding: 0 1rem;
+    padding: 10px 1rem;
 }
 .trade-plan-header {
     font-weight: 600;
@@ -515,8 +515,8 @@ tr.mat-row {
 .mat-header-cell {
     background: rgb(157 166 186 / 20%);
     color: #3A4C85;
-    font-size: 15px;
-    font-weight: 500;
+    font-size: 14px;
+    font-weight: 600;
     border: 0;
     flex: 0 0 10% !important;
     min-width: 100px !important;
@@ -546,8 +546,9 @@ td.mat-cell {
     .title {
         color: #3A4C85;
         font-weight: 600;
-        padding: 0.789rem 1rem;
-        font-size: 14px;
+        padding: 1rem;
+        font-size: 16px;
+        text-align: center;
     }
     ul {
         margin: 0;
@@ -558,6 +559,7 @@ td.mat-cell {
             border-bottom: 1px solid rgb(157 166 186 / 55%);
             cursor: pointer;
             padding: 0.5rem 1rem;
+            text-align: center;
         }
         li.active {
             background:#fff;
@@ -577,4 +579,12 @@ td.mat-cell {
         width: 100% !important;
         display: inline-flex !important;
     }
+}
+.trade-plan-lt {
+    max-width: 13%;
+    flex: 0 0 13.666667%;
+}
+.trade-plan-rt {
+    max-width: 87%;
+    flex: 0 0 87.333333%;
 }

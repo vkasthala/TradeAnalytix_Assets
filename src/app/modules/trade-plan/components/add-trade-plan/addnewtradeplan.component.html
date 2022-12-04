@@ -17,17 +17,17 @@
 
 <div class="card-body pt-0 px-3">
     <div class="row">
-        <div class="col-sm-2">
+        <div class="col-sm-2 trade-plan-lt">
             <div class="date-filter-list">
                 <h3 class="title">Date</h3>
                 <ul *ngFor="let date of planDates; let index = index">
-                    <li [ngClass]="index === 0 ? 'active' : '' ">{{date}} {{index}}</li>
+                    <li [ngClass]="index === 0 ? 'active' : '' ">{{date}}</li>
                 </ul>
             </div>
         </div>
-        <div class="col-sm-10 pl-0">
+        <div class="col-sm-10 pl-0 trade-plan-rt">
             <div class="trade-plan-container pb-1">
-                <div class="row mb-3">
+                <div class="row mb-3 pb-2">
                     <div class="col-sm-6">
                         <div class="trade-plan-header justify-content-between">
                             <span>Pre-Market Notes</span>
@@ -95,7 +95,7 @@
                 </div>
                 <app-planned-trades-grid [tradePlanId]="tradePlanId" [viewTradePlan]="view" #plannedTradesGrid></app-planned-trades-grid>
 
-                <div class="row mb-3">
+                <div class="row my-3 pt-3">
                     <div class="col-sm-6">
                         <div class="trade-plan-header justify-content-between">
                             <span>Post-Market Notes</span>

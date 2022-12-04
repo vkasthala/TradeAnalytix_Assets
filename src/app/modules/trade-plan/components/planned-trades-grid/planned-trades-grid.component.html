@@ -5,47 +5,53 @@
     </div>
 
     <mat-table [dataSource]="plannedTradesDataSource" class="d-lg-table">
+        element :: {{element | json}}
+        <ng-container matColumnDef="strategyId">
+            <th mat-header-cell *matHeaderCellDef class="cell-w-12">Strategy ID</th>
+            <td mat-cell *matCellDef="let element"> {{element.actionType}} </td>
+        </ng-container>
+
         <ng-container matColumnDef="symbol">
             <th mat-header-cell *matHeaderCellDef class="symbol-cell">Symbol</th>
             <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
         </ng-container>
 
         <ng-container matColumnDef="strategyType">
-            <th mat-header-cell *matHeaderCellDef class="cell-w-12">Strategy Type</th>
+            <th mat-header-cell *matHeaderCellDef class="cell-w-12">Strategy</th>
             <td mat-cell *matCellDef="let element"> {{element.strategyType}} </td>
         </ng-container>
 
-        <!-- <ng-container matColumnDef="actionType">
-            <th mat-header-cell *matHeaderCellDef class="cell-w-12">Buy to Open</th>
+        <ng-container matColumnDef="profit">
+            <th mat-header-cell *matHeaderCellDef class="cell-w-12">Amount</th>
             <td mat-cell *matCellDef="let element"> {{element.actionType}} </td>
-        </ng-container> -->
+        </ng-container>
 
         <ng-container matColumnDef="maxRisk">
-            <th mat-header-cell *matHeaderCellDef class="cell-w-12">Value at Risk</th>
+            <th mat-header-cell *matHeaderCellDef class="cell-w-12">Max Risk</th>
             <td mat-cell *matCellDef="let element"> {{element.maxRisk | number:'1.0-0'}} </td>
         </ng-container>
 
-        <ng-container matColumnDef="profit">
+        <!-- <ng-container matColumnDef="profit">
             <th mat-header-cell *matHeaderCellDef class="cell-w-12">Expected Profit</th>
             <td mat-cell *matCellDef="let element"> {{element.profit | number:'1.0-0'}} </td>
-        </ng-container>
+        </ng-container> -->
 
         <ng-container matColumnDef="reason">
-            <th mat-header-cell *matHeaderCellDef class="justification-cell">Pre-Market Comments</th>
+            <th mat-header-cell *matHeaderCellDef class="justification-cell">Reasons for the Trade</th>
             <td mat-cell *matCellDef="let element, let i = index">
                 <span class="mr-1">{{element.reason}}</span>
                 <mat-icon *ngIf="!viewTradePlan" class="mat-icon-edit mat-icon-sm" (click)="openPlannedTradeDialog(element, i)">edit
                 </mat-icon>
             </td>
         </ng-container>
-        <ng-container matColumnDef="postMarketComments">
+        <!-- <ng-container matColumnDef="postMarketComments">
             <th mat-header-cell *matHeaderCellDef class="justification-cell">Post-Market Comments</th>
             <td mat-cell *matCellDef="let element, let i = index">
                 <span class="mr-1">{{element.postMarketComments}}</span>
                 <mat-icon *ngIf="!viewTradePlan" class="mat-icon-edit mat-icon-sm" (click)="openPlannedTradeDialog(element, i)">edit
                 </mat-icon>
             </td>
-        </ng-container>
+        </ng-container> -->
 
         <ng-container matColumnDef="executed" *ngIf="tradePlanId > 0">
             <th mat-header-cell *matHeaderCellDef>Executed</th>

@@ -26,7 +26,7 @@
                         <td class="mat-cell">Less Than</td>
                         <td class="mat-cell value-cell">
                             <span class="d-flex align-items-center">
-                                <input type="text" class="form-control col-5" [ngClass]="!coderule.editing ? 'disabled' : ''" [(ngModel)]="coderule.defaultValue" />
+                                <input type="text" class="form-control col-5" [ngClass]="!coderule.editing ? 'disabled' : ''" [(ngModel)]="coderule.tempVal" />
                                 <mat-icon class="ml-2 mat-icon-edit action-icon" (click)="onItemEdit(coderule)" *ngIf="coderule.editing">check_circle
                                 </mat-icon>
                                 <mat-icon class="ml-2 text-danger action-icon" (click)="onCancel(coderule)" *ngIf="coderule.editing">close</mat-icon>
