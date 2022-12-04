@@ -1,4 +1,68 @@
-<mat-accordion class="example-headers-align w-100" multi="true">
+<div class="trade-table p-3">
+    <div class="row">
+        <div class="col-sm-6">
+            <h4 class="header-title">Automatic Rules</h4>
+            <table class="mt-2 mat-table">
+                <thead>
+                    <tr class="mat-header-row">
+                        <th class="mat-header-cell"></th>
+                        <th class="mat-header-cell">Parameter</th>
+                        <th class="mat-header-cell">Condition</th>
+                        <th class="mat-header-cell value-cell">Value</th>
+                        <th class="mat-header-cell action-cell">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="mat-header-row" *ngFor="let coderule of portfolioLevelRules">
+                        <td class="mat-cell">
+                            <span class="cursor position-relative">
+                                <input type="checkbox" name="rule" class="checkbox checkbox-custom"
+                                [checked]="coderule.id && coderule.id !== null && coderule.id > 0"
+                                [(ngModel)]="coderule.checked" (change)="onRuleSelectionChange(coderule)" />
+                                <span [ngClass]="coderule.checked ? 'disabled-text' : 'add-new'">{{coderule.checked ? 'Disable' : 'Enable' }}</span>
+                            </span>
+                        </td>
+                        <td class="mat-cell">{{coderule.uiLabel}}</td>
+                        <td class="mat-cell">Less Than</td>
+                        <td class="mat-cell value-cell">
+                            <span class="d-flex align-items-center">
+                                <input type="text" class="form-control col-5" [ngClass]="!coderule.editing ? 'disabled' : ''" [(ngModel)]="coderule.defaultValue" />
+                                <mat-icon class="ml-2 mat-icon-edit action-icon" (click)="onItemEdit(coderule)" *ngIf="coderule.editing">check_circle
+                                </mat-icon>
+                                <mat-icon class="ml-2 text-danger action-icon" (click)="onCancel(coderule)" *ngIf="coderule.editing">close</mat-icon>
+                            </span>
+                        </td>
+                        <td class="mat-cell action-cell"><mat-icon class="mat-icon-sm mat-icon-edit" (click)="onRowEdit(coderule)">edit
+                        </mat-icon></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-sm-6">
+            <div class="d-flex justify-content-between align-items-center">
+                <h4 class="header-title">Manual Rules</h4>
+                <a class="add-new">Add Rule</a>
+            </div>
+            <table class="mt-2 mat-table">
+                <thead>
+                    <tr class="mat-header-row">
+                        <th class="mat-header-cell">Date</th>
+                        <th class="mat-header-cell">Rule</th>
+                        <th class="mat-header-cell action-cell">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="mat-header-row">
+                        <td class="mat-cell text-center" colspan="3">You have not set any manual rules yet. <br>
+                            Click <a class="add-new">Add Rule</a> to add a new manual rule</td>
+                    </tr>
+                <tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- <mat-accordion class="example-headers-align w-100" multi="true">
     <mat-expansion-panel class="coded_rules_body pt-3" [expanded]="true" (opened)="setStep(0)">
         <ng-template matExpansionPanelContent>
             <div class="trade-dash-name px-2">
@@ -60,9 +124,9 @@
                 </mat-icon>
             </div>
 
-            <!-- <div class="col-sm-8 col-md-6 mt-3">
+            <div class="col-sm-8 col-md-6 mt-3">
                 <app-editable-grid #codedRules></app-editable-grid>
-            </div> -->
+            </div>
         </ng-template>
     </mat-expansion-panel>
-</mat-accordion>
+</mat-accordion> -->

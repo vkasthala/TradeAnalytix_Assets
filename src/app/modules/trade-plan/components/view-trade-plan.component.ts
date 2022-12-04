@@ -22,7 +22,7 @@ export class ViewTradePlanComponent extends AddnewtradeplanComponent implements 
     tradePlanService: TradePlansService,
     demoService: DemoModeDetailsService,
     toastr: ToastrService) {
-    super(_dialog, router, metadataService, tradePlanService, toastr, demoService);
+    super(_dialog, router, metadataService, tradePlanService, toastr, demoService, null);
     this.view = true;
     this.edit = false;
     this.add = false;

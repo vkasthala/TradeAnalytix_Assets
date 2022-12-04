@@ -66,6 +66,7 @@
 
 .form-control {
     height: 40px;
+    min-width: 80px;
 }
 
 .col-form-label {
@@ -156,4 +157,77 @@ textarea {
     font-weight: 500;
     color: #242E3A;
     margin-bottom: .5rem !important;
+}
+
+.mat-table {
+    background: #FFFFFF;
+    border: 1px solid rgb(157 166 186 / 20%);
+    box-shadow: 0px 4px 4px rgba(157, 157, 157, 0.5);
+}
+
+tr.mat-header-row,
+tr.mat-footer-row,
+tr.mat-row {
+    height: 50px;
+    min-height: 50px;
+    line-height: 40px;
+}
+
+.mat-header-cell {
+    background: rgb(157 166 186 / 20%);
+    color: #3A4C85;
+    font-size: 15px;
+    font-weight: 500;
+    border: 0;
+    flex: 0 0 10%;
+}
+
+td.mat-cell,
+td.mat-footer-cell,
+th.mat-header-cell {
+    padding: .75rem 1rem !important;
+    border-radius: 0;
+    line-height: 20px;
+    border: 0;
+}
+td.mat-cell {
+    color: #000;
+    font-size: 14px;
+    font-weight: 500;
+}
+.action-cell {
+    width: 10%;
+    flex: 0 0 10%;
+}
+.value-cell {
+    width: 10%;
+    flex: 0 0 10%;
+    min-width: 80px;
+}
+.add-new {
+    color: #007bff;
+    font-size: 14px;
+    line-height: 1;
+    font-weight: 600;
+}
+.disabled-text {
+    color: #ACAFB3;
+    font-size: 14px;
+    line-height: 1;
+    font-weight: 600;
+}
+.checkbox-custom {
+    opacity: 0;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 22px;
+    cursor: pointer;
+}
+.header-title {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: #3A4C85;
 }
