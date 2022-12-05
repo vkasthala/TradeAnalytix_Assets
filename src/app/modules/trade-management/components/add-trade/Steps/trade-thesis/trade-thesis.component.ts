@@ -629,13 +629,15 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
         category: 'EntryThesis',
         strategyTypeId: this.strategyTypeId,
         tradeThesis: this.tradeThesis,
-        tags: this.tradeTagsComponent.tags
+        tags: this.tradeTagsComponent.tags,
+        tradeChubFiles: this.tradeChubFiles
       }
     });
     dialogRef.afterClosed().subscribe((res) => {
       this.strategyTypeId = res.strategyTypeId;
       this.tradeThesis = res.tradeThesis;
-      this.tradeTagsComponent.tags = res.tags
+      this.tradeTagsComponent.tags = res.tags;
+      this.tradeChubFiles = res.tradeChubFiles;
     });
   }
 

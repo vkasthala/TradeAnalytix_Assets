@@ -16,11 +16,13 @@ import { MindsetType } from 'src/app/modules/trade-management/models/mindset-typ
 import { SourceType } from 'src/app/modules/trade-management/models/source-type.model';
 import { SurroundingType } from 'src/app/modules/trade-management/models/surrounding-type.model';
 import { TechnicalIndicator } from 'src/app/modules/trade-management/models/technical-indicator.model';
+import { TradeChubFile } from 'src/app/modules/trade-management/models/trade-chub-file.model';
 import { TradeThesis } from 'src/app/modules/trade-management/models/trade-thesis.model';
 import { TradeStrategyService } from 'src/app/modules/trade-management/services/trade-strategy.service';
 import { UserMetadataService } from 'src/app/modules/trade-management/services/user-metadata.service';
 import { TradeTagsComponent } from '../../trade-tags/trade-tags.component';
 import { GenerateChartPopupComponent } from '../generate-chart-popup/generate-chart-popup.component';
+import { UploadFilesComponent } from '../upload-files/upload-files.component';
 
 @Component({
   selector: 'app-journal-popup',
@@ -30,6 +32,7 @@ import { GenerateChartPopupComponent } from '../generate-chart-popup/generate-ch
 export class JournalPopupComponent implements OnInit, AfterViewInit {
 
   @ViewChild('tradeTags', { static: false }) tradeTagsComponent: TradeTagsComponent;
+  @ViewChild('uploadFiles', { static: false }) uploadFilesComponent: UploadFilesComponent;
 
   @Output() dropdownItemAddedEvent = new EventEmitter();
 
@@ -37,6 +40,7 @@ export class JournalPopupComponent implements OnInit, AfterViewInit {
   title: string;
   strategies = StrategyType;
   tags: TradeTag[];
+  tradeChubFiles: TradeChubFile[] = [];
 
   tradeThesis: TradeThesis;
 
@@ -61,10 +65,13 @@ export class JournalPopupComponent implements OnInit, AfterViewInit {
     this.title = data.title;
     this.strategyTypeId = data.strategyTypeId;
     this.tradeThesis = data.tradeThesis;
-    //this.tradeTagsComponent.tags = data.tags;
+    this.tags = data.tags;
+    this.tradeChubFiles = data.tradeChubFiles;
   }
 
   ngAfterViewInit(): void {
+    this.tradeTagsComponent.tags = this.tags;
+    this.uploadFilesComponent.tradeChubFiles = this.tradeChubFiles;
   }
 
   ngOnInit() {
@@ -273,7 +280,8 @@ export class JournalPopupComponent implements OnInit, AfterViewInit {
     this.dialogRef.close({
       strategyTypeId: this.strategyTypeId,
       tradeThesis: this.tradeThesis,
-      tags: this.tradeTagsComponent.tags
+      tags: this.tradeTagsComponent.tags,
+      tradeChubFiles: this.tradeChubFiles
     });
   }
 
