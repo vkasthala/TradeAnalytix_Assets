@@ -58,6 +58,8 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
   @Input("viewTrade") viewTrade: boolean;
   @Input() selectedStock: StockSymbol;
 
+  @Output('evalRulesEvent') evalRulesEvent = new EventEmitter();
+
   protected hideEntryThesis: boolean = false;
   protected hideClosingThesis: boolean = false;
   tradeStatus: number;
@@ -118,7 +120,6 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
   next() {
     this.nextStep.emit()
   }
-
 
   loadMindsets(field: DynamicFieldDto) {
     this.metadataService.getMindsetTypes().subscribe(result => {

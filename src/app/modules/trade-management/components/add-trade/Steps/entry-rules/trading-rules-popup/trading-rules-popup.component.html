@@ -8,6 +8,15 @@
         </div>
 
         <div class="main-pop-inner">
+            <div class="d-flex justify-content-between mb-2" *ngFor="let item of entryRules; let index=index">
+                <div class="col-11 pl-0">
+                    <label class="col-form-label">{{item.msg}}</label>
+                    <textarea class="form-control" [(ngModel)]="item.comment"></textarea>
+                </div>
+                <mat-checkbox [(ngModel)]="item.aligned" class="checkbox-red mt-2"></mat-checkbox>
+            </div>
+
+            <!--
             <div class="d-flex justify-content-between mb-2">
                 <div class="col-11 pl-0">
                     <label class="col-form-label">Maximum amount at risk on a trade strategy should be less than 5000</label>
@@ -57,6 +66,7 @@
                 </div>
                 <mat-checkbox [checked]="true" class="checkbox-red mt-2"></mat-checkbox>
             </div>
+        -->
         </div>
         <div class="modal-footer py-2">
             <button type="button" class="btn btn-join m-0" (click)="closeModal()">Cancel</button>

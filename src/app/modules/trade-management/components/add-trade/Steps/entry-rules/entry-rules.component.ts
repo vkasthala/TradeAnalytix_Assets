@@ -120,6 +120,7 @@ export class EntryRulesComponent implements OnInit {
       width: 'auto',
       data: {
         title: 'Trading Rules',
+        entryRules: this.entryRules
       }
     });
     dialogRef.afterClosed().subscribe((res) => {

@@ -265,7 +265,7 @@
 
                         <app-trade-thesis (nextStep)="goForward()" (prevStep)="goBack(true)"
                             [inputState]="inputState" [editTrade]="edit" [viewTrade]="view" [addTrade]="add"
-                            [closeTrade]="close" [selectedStock]="selectedStock" #tradeThesis>
+                            [closeTrade]="close" [selectedStock]="selectedStock" (evalRulesEvent)="evalGridRules($event, 'WEB')" #tradeThesis>
                         </app-trade-thesis>
 
                         <app-entry-rules 
