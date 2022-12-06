@@ -61,24 +61,28 @@
 <div class="custom-card" *ngIf="selectedStock && stockSummaryResult">
     <div class="custom-card-header">
         <div class="custom-card-title">Trade Statistics</div>
-        <a class="add-new cursor" (click)="generateChart()"><mat-icon>refresh</mat-icon></a>
+        <a class="add-new cursor" (click)="generateChart()">
+            <mat-icon>refresh</mat-icon>
+        </a>
     </div>
     <div class="custom-card-body">
         <div class="d-flex mb-1 align-items-center">
             <label class="col-form-label">Open Date</label>
-            <div class="col-8 col-md-7 col-form-value">{{tradeStrategy.openDate}}</div>
+            <div class="col-8 col-md-7 col-form-value">{{tradeStrategy.openDate | date: 'dd-MMM-yyyy'}}</div>
         </div>
         <div class="d-flex mb-1 align-items-center">
             <label class="col-form-label">Close Date</label>
             <div class="col-8 col-md-7 col-form-value">
-                {{tradeStrategy.closeDate}}
+                {{tradeStrategy.closeDate | date: 'dd-MMM-yyyy'}}
             </div>
         </div>
         <div class="d-flex mb-1 align-items-center">
             <label class="col-form-label">Stoploss Range</label>
             <div class="col-9 col-form-value">
                 <div class="d-flex align-items-center">
-                    <span class="col-6 pl-0">{{strategySummaryResult.minStopLoss}} - {{strategySummaryResult.maxStopLoss}}</span>
+                    <span class="col-6 pl-0">{{(strategySummaryResult.minStopLoss ? strategySummaryResult.minStopLoss +
+                        '-' : '')}} {{strategySummaryResult.maxStopLoss ? strategySummaryResult.maxStopLoss :
+                        ''}}</span>
                     <a class="add-new cursor" (click)="Edit()">Edit</a>
                 </div>
             </div>
@@ -92,7 +96,7 @@
                         <a class="text-link assess-risk-btn" (click)="navigateToRiskAnalysis()">Assess Risk</a>
                     </span>
                 </div>
-                
+
             </div>
         </div>
         <div class="d-flex mb-1 align-items-center">
@@ -141,7 +145,7 @@
         </div>
 
         <div class="mb-2 d-flex showMore">
-            <span class="cursor link-item" (click)="toggleStatistics()">{{showMoreStatistics ? 'Less' : 'More'}}</span>                 
+            <span class="cursor link-item" (click)="toggleStatistics()">{{showMoreStatistics ? 'Less' : 'More'}}</span>
         </div>
     </div>
 </div>

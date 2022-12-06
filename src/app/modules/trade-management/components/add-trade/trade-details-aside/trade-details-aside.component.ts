@@ -41,11 +41,11 @@ export class TradeDetailsAsideComponent implements OnInit {
     this.showMoreStatistics = !this.showMoreStatistics;
   }
 
-  maxRiskDetails: MaxRiskDetails;
+  maxRiskDetails: MaxRiskDetails = new MaxRiskDetails();
 
-  stockSummaryResult: StockSummaryResult;
+  stockSummaryResult: StockSummaryResult = new StockSummaryResult();
 
-  strategySummaryResult: StrategySummaryResult;
+  strategySummaryResult: StrategySummaryResult = new StrategySummaryResult();
 
   stockOrOptionAdded: boolean;
 
