@@ -551,6 +551,20 @@ export class AddNewTradeComponent implements OnInit {
     });
   }
 
+  evaluateStrategyValues($event, source: string) {
+    this.Loader = !this.Loader;
+    this.updateTradeStrategyProps(source);
+    this.tradeStrategyService.getTradeEvaluationResult(this.tradeStrategy).subscribe(result => {
+      this.Loader = !this.Loader;
+      this.tradeThesis.updateTradeEvaluationResult(result);
+      this.tradeDetailsAsideComponent.updateTradeEvaluationResult(result);
+      this.entryRules.updateTradeEvaluationResult(result);
+    }, (err) => {
+      console.error("Error while evaluating strategy values for strategy: {}", this.tradeStrategy, err);
+      this.Loader = !this.Loader;
+    });
+  }
+
   protected isValidTradeStrategy(source: string): boolean {
     const tradeDetailsComp: TradeDetailsComponent = this.getTradeDetails(source);
     if (!tradeDetailsComp) {

@@ -31,6 +31,7 @@ import { JournalPopupComponent } from './journal-popup/journal-popup.component';
 import { StrategyCreateService } from 'src/app/modules/shared/services/strategy-create.service';
 import { StrategyType } from 'src/app/modules/shared/models/trade-management/strategy-type.enum';
 import { TradeTagsComponent } from '../trade-tags/trade-tags.component';
+import { TradeEvaluationResult } from 'src/app/modules/trade-management/models/trade-evaluation-result.model';
 
 @Component({
   selector: 'app-trade-thesis',
@@ -46,7 +47,7 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
 
   @ViewChild('thesisTradingview', { static: false }) thesisTradingview: ElementRef;
   @ViewChild('tradeTag', { static: false }) tradeTagsComponent: TradeTagsComponent;
-  
+
   @Output('nextStep') nextStep = new EventEmitter();
   @Output('prevStep') prevStep = new EventEmitter();
   @Output() dropdownItemAddedEvent = new EventEmitter();
@@ -293,6 +294,12 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
 
   showClosingThesis() {
     this.hideClosingThesis = !this.hideClosingThesis;
+  }
+
+  updateTradeEvaluationResult(evalResult: TradeEvaluationResult): void {
+    this.strategyTypeId = evalResult.strategyTypeId;
+    this.tradeThesis.contrarian = evalResult.contrarianId;
+    this.tradeThesis.direction = evalResult.directionId;
   }
 
   generateChart() {

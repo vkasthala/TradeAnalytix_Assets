@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { TradeHistory } from '../models/trade-history.model';
 import { RuleEvalResult } from '../models/rule-eval-result.model';
 import { TradeChubFile } from '../models/trade-chub-file.model';
+import { TradeEvaluationResult } from '../models/trade-evaluation-result.model';
 
 @Injectable({
   providedIn: 'root'
@@ -54,6 +55,10 @@ export class TradeStrategyService {
 
   public getTradeChubFiles(tradeStrategyId: number): Observable<TradeChubFile[]> {
     return this.httpService.get<TradeChubFile[]>(this.apiUrl + '/trade-strategy/trade-chub-files/' + tradeStrategyId);
+  }
+
+  public getTradeEvaluationResult(tradeStrategy: TradeStrategy): Observable<TradeEvaluationResult> {
+    return this.httpService.post<TradeStrategy, TradeEvaluationResult>(this.apiUrl + '/trade-strategy/evaluate-trade', tradeStrategy);
   }
 
 }

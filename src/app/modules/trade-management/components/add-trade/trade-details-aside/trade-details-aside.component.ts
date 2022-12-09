@@ -10,6 +10,7 @@ import { TradeStrategy } from '../../../models/trade-strategy.model';
 import { StrategyType } from 'src/app/modules/shared/models/trade-management/strategy-type.enum';
 import { TradeInputData } from 'src/app/modules/shared/models/trade-management/trade-input-data.model';
 import { TradeDetailsComponent } from '../Steps/trade-details/trade-details.component';
+import { TradeEvaluationResult } from '../../../models/trade-evaluation-result.model';
 
 
 @Component({
@@ -32,6 +33,7 @@ export class TradeDetailsAsideComponent implements OnInit {
 
   @Output('loadMoreStats') loadMoreStats = new EventEmitter();
   @Output('calculateMaxRisk') calculateMaxRisk: EventEmitter<any> = new EventEmitter();
+  @Output('reloadTradeDetails') reloadTradeDetails = new EventEmitter();
 
   @Output('tradeDetails') tradeDetails = new EventEmitter();
 
@@ -122,6 +124,18 @@ export class TradeDetailsAsideComponent implements OnInit {
         this.strategyName = key;
       }
     });
+  }
+
+
+  refreshTradeDetails() {
+    this.reloadTradeDetails.emit();
+  }
+
+  updateTradeEvaluationResult(evalResult: TradeEvaluationResult): void {
+    this.strategySummaryResult.maxLoss = evalResult.maxLoss;
+    this.strategySummaryResult.maxGain = evalResult.maxGain;
+    this.strategySummaryResult.maxStopLoss = evalResult.maxStopLoss;
+    this.strategySummaryResult.minStopLoss = evalResult.minStopLoss;
   }
 
 }

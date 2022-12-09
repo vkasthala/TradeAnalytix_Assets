@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
 import { TradeInputData } from 'src/app/modules/shared/models/trade-management/trade-input-data.model';
 import { RuleDto } from 'src/app/modules/trade-management/models/rule-dto.model';
+import { TradeEvaluationResult } from 'src/app/modules/trade-management/models/trade-evaluation-result.model';
 import { EntryExitRuleService } from 'src/app/modules/trade-management/services/entry-exit-rule.service';
 import { AddTradeConfirmationPopupComponent } from '../../add-trade-confirmation-popup/add-trade-confirmation-popup.component';
 import { RuleCommentDialogComponent } from '../../rule-comment-dialog/rule-comment-dialog.component';
@@ -29,7 +30,7 @@ export class EntryRulesComponent implements OnInit {
   entryRules: RuleDto[];
 
   protected hideEntryRules: boolean = false;
-  showMoreRules:boolean = false;
+  showMoreRules: boolean = false;
   constructor(
     private _dialog: MatDialog,
     private router: Router,
@@ -73,7 +74,7 @@ export class EntryRulesComponent implements OnInit {
   evalRules(event) {
     event.stopPropagation();
     this.evalRulesEvent.emit(event);
-    
+
   }
 
   previous() {
@@ -124,7 +125,12 @@ export class EntryRulesComponent implements OnInit {
       }
     });
     dialogRef.afterClosed().subscribe((res) => {
-      
+
     });
   }
+
+  updateTradeEvaluationResult(evalResult: TradeEvaluationResult): void {
+    this.updateEntryRules(evalResult.rules);
+  }
+
 }
