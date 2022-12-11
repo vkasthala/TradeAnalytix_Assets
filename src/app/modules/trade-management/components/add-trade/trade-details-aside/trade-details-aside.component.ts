@@ -34,6 +34,7 @@ export class TradeDetailsAsideComponent implements OnInit {
   @Output('loadMoreStats') loadMoreStats = new EventEmitter();
   @Output('calculateMaxRisk') calculateMaxRisk: EventEmitter<any> = new EventEmitter();
   @Output('reloadTradeDetails') reloadTradeDetails = new EventEmitter();
+  @Output('navigateRiskAnalysisEvent') navigateRiskAnalysisEvent = new EventEmitter();
 
   @Output('tradeDetails') tradeDetails = new EventEmitter();
 
@@ -99,6 +100,10 @@ export class TradeDetailsAsideComponent implements OnInit {
     this.userStockStatsService.getStrategySummaryResult(strategyId).subscribe(result => {
       this.strategySummaryResult = result;
     });
+  }
+
+  navigateToRiskAnalysis(): void {
+    this.navigateRiskAnalysisEvent.emit();
   }
 
   getDisplayValue(value, postfix) {

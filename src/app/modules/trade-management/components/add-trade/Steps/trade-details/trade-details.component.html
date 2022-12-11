@@ -109,6 +109,7 @@
                             (stockEntry.actionType == 2 ? -1 : 1)).toFixed(2) : 0}}
                         </h6>
                     </div>
+                    <!--
                     <div *ngIf="editTrade == true && tradeStatus !=4" class="top-heading mr-2 text-success"
                         (click)="addToPosition('WEB')">
                         <mat-icon class="text-primary">add_circle</mat-icon>
@@ -117,6 +118,7 @@
                         (click)="reduceToPosition('WEB')">
                         <mat-icon class="text-primary">remove_circle</mat-icon>
                     </div>
+                -->
                     <div *ngIf="addTrade || tradeStatus == 4 || (StockPosition != undefined && StockPosition.quantity !== undefined && StockPosition.quantity == 0 )"
                         class="top-heading mr-2" (click)="deleteStock()">
                         <mat-icon>delete</mat-icon>
@@ -239,6 +241,7 @@
                                             -1 : 1)).toFixed(2) : 0}}
                                         </h6>
                                     </div>
+                                    <!--
                                     <div *ngIf="editTrade == true && tradeStatus !=4"
                                         class="top-heading p-0 mr-2 text-success" (click)="addToStockPosition(index, 'WEB')">
                                         <mat-icon class="text-primary">add_circle</mat-icon>
@@ -247,6 +250,7 @@
                                         class="top-heading p-0 mr-2 text-danger" (click)="reduceToStockOption(index, 'WEB')">
                                         <mat-icon class="text-primary">remove_circle</mat-icon>
                                     </div>
+                                -->
                                     <div *ngIf="addTrade || tradeStatus == 4 || (editTrade && stockOptions[index].contracts == 0 || !stockOptions[index].id || stockOptions[index].id == 0)"
                                         class="top-heading p-0 mr-2" (click)="deleteStockOption(index)">
                                         <mat-icon>
@@ -486,6 +490,7 @@
 
                 <div *ngIf="editStockForm" class="w-100">
                     <div class="d-flex justify-content-center mb-2">
+                        <!--
                         <span *ngIf="editTrade == true && tradeStatus !=4" class="top-heading mr-2 text-success"
                             (click)="addToPosition('MOBILE')">
                             <mat-icon class="text-primary">add_circle</mat-icon>
@@ -494,6 +499,7 @@
                             (click)="reduceToPosition('MOBILE')">
                             <mat-icon class="text-primary">remove_circle</mat-icon>
                         </span>
+                    -->
                         <!-- <span *ngIf="editTrade == true && tradeStatus !=4" class="top-heading">
                             <mat-icon>history</mat-icon>
                         </span> -->
@@ -578,6 +584,7 @@
                     </div>
                     <div *ngIf="editOptionForm">
                         <div class="d-flex justify-content-center mb-2">
+                            <!--
                             <span class="top-heading p-0 mr-2 text-success" (click)="addToStockPosition(index, 'MOBILE')"
                                 *ngIf="editTrade == true && tradeStatus !=4">
                                 <mat-icon class="text-primary">add_circle</mat-icon>
@@ -586,6 +593,7 @@
                                 *ngIf="editTrade == true && tradeStatus !=4">
                                 <mat-icon class="text-primary">remove_circle</mat-icon>
                             </span>
+                        -->
                             <!-- <span class="top-heading p-0" *ngIf="editTrade == true && tradeStatus !=4">
                                 <mat-icon>history</mat-icon>
                             </span> -->
