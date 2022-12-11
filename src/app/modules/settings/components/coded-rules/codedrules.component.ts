@@ -1,9 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { EditableGridColumn } from 'src/app/modules/shared/models/common/editable-grid-column.model';
 import { isArray } from 'util';
+import { EntryExitRulesGridRow } from '../../models/entry-exit-rules-grid-row.model';
+import { EntryExitRulesResult } from '../../models/entry-exit-rules-result.model';
 import { UserCodedRule } from '../../models/user-coded-rule.model';
 import { CodedRuleService } from '../../services/coded-rule.service';
+import { EntryExitRulesService } from '../../services/entry-exit-rules.service';
+import { SettingsService } from '../../services/settings.service';
+import { ManageRulePopupComponent } from '../managerules/manage-rule-popup/manage-rule-popup.component';
+import { ManagerulesComponent } from '../managerules/managerules.component';
+import { MatDialog, MatSort } from '@angular/material';
+import { EntryExitRule } from '../../models/entry-exit-rules.model';
+
 
 @Component({
   selector: 'app-codedrules',
@@ -11,14 +20,28 @@ import { CodedRuleService } from '../../services/coded-rule.service';
   styleUrls: ['./codedrules.component.scss']
 })
 export class CodedRulesComponent implements OnInit {
-
+  
+  @ViewChild('tradeDetails', { static: false }) protected tradeDetails: ManagerulesComponent;
   ruleOperatorCol: EditableGridColumn;
   valueCol: EditableGridColumn;
 
   userCodedRules: UserCodedRule[];
   tradeLevelRules=[];
   portfolioLevelRules=[];
-  constructor(private codedRuleService: CodedRuleService, private toastr: ToastrService) { }
+  isDemoMode: boolean = false;
+  
+  constructor(private codedRuleService: CodedRuleService, 
+    private toastr: ToastrService,
+    private entryExitRulesService: EntryExitRulesService,
+    private settingsService: SettingsService,
+    private _dialog: MatDialog,
+    ) { 
+
+  }
+
+  entryExitRulesResults: EntryExitRulesResult;
+  entryExitRules: EntryExitRule[] = [];
+  rule: EntryExitRule = new EntryExitRule();
 
   ngOnInit() {
 
@@ -211,6 +234,85 @@ export class CodedRulesComponent implements OnInit {
 
   onCancel(element: UserCodedRule) {
     element.editing = false;
+  }
+
+
+  addEntryExitRule(title, btnText) {
+    const dialogRef = this._dialog.open(ManageRulePopupComponent, {
+      disableClose: true,
+      width: 'auto',
+      data : {
+        title: title,
+        btnText: btnText,
+        isDemoMode:this.isDemoMode,
+        formData:''
+      }
+    });
+    
+    dialogRef.afterClosed().subscribe((res) => {
+      this.settingsService.saveEntryExitRule(res).subscribe(data => {
+        this.toastr.success('Manual rule added', 'Success');
+        // this.loadPage();
+      }, err => {
+        this.toastr.error('Failed to add entry exit rule', 'Error', 
+        { 
+          tapToDismiss:false,
+          closeButton:true,
+          disableTimeOut: true
+        });
+      });
+    });
+  
+  }
+
+  editRule(rowModel: EntryExitRulesGridRow, title, btnText) {
+    const dialogRef = this._dialog.open(ManageRulePopupComponent, {
+      disableClose: true,
+      width: 'auto',
+      data : {
+        title: title,
+        btnText: btnText,
+        formData:rowModel
+      }
+    });
+
+    dialogRef.afterClosed().subscribe((res) => {
+
+      this.rule.id = rowModel.id;
+      this.rule.type = rowModel.type;
+      this.rule.description = rowModel.description;
+      this.rule.source = rowModel.source;
+
+      this.settingsService.updateEntryExitRule(this.rule).subscribe(data => {
+        this.toastr.success('Manual rule updated', 'Success');
+        // this.loadPage();
+      }, err => {
+        this.toastr.error('Failed to update entry exit rule', 'Error', { 
+          tapToDismiss:false,
+          closeButton:true,
+          disableTimeOut: true
+        });
+      });
+    });
+  }
+
+
+  deleteRule(rowModel: EntryExitRulesGridRow) {
+    this.rule.id = rowModel.id;
+    this.rule.type = rowModel.type;
+    this.rule.description = rowModel.description;
+    this.rule.source = rowModel.source;
+
+    this.settingsService.deleteEntryExitRule(this.rule).subscribe(data => {
+      this.toastr.success('Entry exit rule deleted successfully', 'Success');
+      // this.loadPage();
+    }, err => {
+      this.toastr.error('Failed to delete entry exit rule', 'Error', { 
+        tapToDismiss:false,
+        closeButton:true,
+        disableTimeOut: true
+      });
+    });
   }
 
 }

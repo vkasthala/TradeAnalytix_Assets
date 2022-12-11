@@ -16,9 +16,10 @@ import { PlannedTradesGridComponent } from '../planned-trades-grid/planned-trade
 
 import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 import { DateAdapter } from '@angular/material';
-
+import { IMyDateRangeModel, IMyDrpOptions } from 'mydaterangepicker';
 import * as _moment from 'moment';
 import { EconomicDialogComponent } from '../economic-dialog/economic-dialog.component';
+import { SettingsService } from 'src/app/modules/settings/services/settings.service';
 const moment = _moment;
 
 @Component({
@@ -31,7 +32,8 @@ export class AddnewtradeplanComponent implements OnInit {
   protected edit = false;
   protected view = false;
   protected isDemoMode = false;
-  
+  showMmydaterange:boolean=false;
+
   tradePlanId: number = 0;
   day: string;
   planDate;
@@ -53,7 +55,8 @@ export class AddnewtradeplanComponent implements OnInit {
     protected tradePlanService: TradePlansService,
     protected toastr: ToastrService,
     protected demoService: DemoModeDetailsService,
-    private dateAdapter: DateAdapter<Date>
+    private dateAdapter: DateAdapter<Date>,
+    private settingsService: SettingsService,
   ) {
     this.initState();
   }
@@ -194,6 +197,57 @@ export class AddnewtradeplanComponent implements OnInit {
     dialogRef.afterClosed().subscribe((res) => {
       
     });
+  }
+  myDateRangePickerOptions: IMyDrpOptions = {
+    dateFormat: 'dd.mm.yyyy',
+    editableDateRangeField: false,
+    ariaLabelInputField: 'Date'
+  };
+
+  mydaterangeOpen() {
+    this.showMmydaterange = !this.showMmydaterange;
+  }
+  
+  onDateRangeChanged(event: IMyDateRangeModel) {
+    console.log('date change: ', event);
+    let filter;
+    
+    if (event.beginJsDate && event.endJsDate) {
+      filter.fromDate = event.beginDate.year + '-' + event.beginDate.month + '-' + event.beginDate.day;
+      filter.toDate = event.endDate.year + '-' + event.endDate.month + '-' + event.endDate.day;
+    } else {
+      filter.fromDate = undefined;
+      filter.toDate = undefined;
+    }
+    console.log('trade plans filter after date range: ', filter);
+  }
+
+  addEntryExitRule(title, btnText) {
+    const dialogRef = this._dialog.open(ManageRulePopupComponent, {
+      disableClose: true,
+      width: 'auto',
+      data : {
+        title: title,
+        btnText: btnText,
+        isDemoMode:this.isDemoMode,
+        formData:''
+      }
+    });
+    
+    dialogRef.afterClosed().subscribe((res) => {
+      this.settingsService.saveEntryExitRule(res).subscribe(data => {
+        this.toastr.success('Manual rule added', 'Success');
+        // this.loadPage();
+      }, err => {
+        this.toastr.error('Failed to add entry exit rule', 'Error', 
+        { 
+          tapToDismiss:false,
+          closeButton:true,
+          disableTimeOut: true
+        });
+      });
+    });
+  
   }
 
 }

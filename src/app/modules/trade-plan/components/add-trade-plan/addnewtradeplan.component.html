@@ -19,7 +19,13 @@
     <div class="row">
         <div class="col-sm-2 trade-plan-lt">
             <div class="date-filter-list">
-                <h3 class="title">Date</h3>
+                <div class="date-filter-header">
+                    <h3 class="title">Date</h3>
+                    <span class="cursor" (click)="mydaterangeOpen()"><img src="../../../../assets/images/filter-black.png" /></span>
+                </div>
+                <div *ngIf="showMmydaterange" class="trade-date date-range-sm px-1">
+                    <my-date-range-picker placeholder="Date range" id="mydaterange" name="mydaterange" [options]="myDateRangePickerOptions" (dateRangeChanged)="onDateRangeChanged($event)"></my-date-range-picker>
+                </div>
                 <ul *ngFor="let date of planDates; let index = index">
                     <li [ngClass]="index === 0 ? 'active' : '' ">{{date}}</li>
                 </ul>
@@ -104,7 +110,7 @@
                             <textarea placeholder="Write about your trading performance and lessons learnt during the day" class="textarea-lg"></textarea>
                         </div>
                         <div class="text-right">
-                            <a class="add-new cursor">Add Rule</a>
+                            <a class="add-new cursor" (click)="addEntryExitRule('Add', 'SAVE')">Add Rule</a>
                         </div>
                     </div>
                     <div class="col-sm-6">
