@@ -27,7 +27,7 @@
                     <my-date-range-picker placeholder="Date range" id="mydaterange" name="mydaterange" [options]="myDateRangePickerOptions" (dateRangeChanged)="onDateRangeChanged($event)"></my-date-range-picker>
                 </div>
                 <ul *ngFor="let date of planDates; let index = index">
-                    <li [ngClass]="index === 0 ? 'active' : '' ">{{date}}</li>
+                    <li [ngClass]="index === 0 ? 'active' : '' ">{{date.day}}</li>
                 </ul>
             </div>
         </div>

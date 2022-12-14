@@ -14,12 +14,13 @@ import { TradePlansService } from '../../services/trade-plans.service';
 import { OpenStrategiesGridComponent } from '../open-strategies-grid/open-strategies-grid.component';
 import { PlannedTradesGridComponent } from '../planned-trades-grid/planned-trades-grid.component';
 
-import {MatDatepickerInputEvent} from '@angular/material/datepicker';
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { DateAdapter } from '@angular/material';
 import { IMyDateRangeModel, IMyDrpOptions } from 'mydaterangepicker';
 import * as _moment from 'moment';
 import { EconomicDialogComponent } from '../economic-dialog/economic-dialog.component';
 import { SettingsService } from 'src/app/modules/settings/services/settings.service';
+import { TradePlanEntry } from '../../models/trade-plan-entry.model';
 const moment = _moment;
 
 @Component({
@@ -32,7 +33,7 @@ export class AddnewtradeplanComponent implements OnInit {
   protected edit = false;
   protected view = false;
   protected isDemoMode = false;
-  showMmydaterange:boolean=false;
+  showMmydaterange: boolean = false;
 
   tradePlanId: number = 0;
   day: string;
@@ -46,7 +47,7 @@ export class AddnewtradeplanComponent implements OnInit {
   @ViewChild('tradeStrategiesGrid', { static: false }) protected tradeStrategiesGrid: OpenStrategiesGridComponent;
   @ViewChild('plannedTradesGrid', { static: false }) protected plannedTradesGrid: PlannedTradesGridComponent;
 
-  planDates: any= ['Nov 18, 2022','Nov 17, 2022','Nov 16, 2022','Nov 15, 2022','Nov 14, 2022','Nov 13, 2022','Nov 12, 2022','Nov 11, 2022','Nov 10, 2022','Nov 9, 2022','Nov 8, 2022','Nov 7, 2022','Nov 6, 2022','Nov 5, 2022','Nov 4, 2022' ]
+  planDates: TradePlanEntry[] = [];
 
   constructor(
     protected _dialog: MatDialog,
@@ -62,6 +63,7 @@ export class AddnewtradeplanComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loadPlanEntries();
     this.loadMetadata();
   }
 
@@ -116,6 +118,12 @@ export class AddnewtradeplanComponent implements OnInit {
     this.tradeMobileStepper.next();
   }
 
+  loadPlanEntries() {
+    this.tradePlanService.getTopPlanEntries().subscribe(result => {
+      this.planDates = result;
+    });
+  }
+
   loadMetadata() {
     this.metadataService.getMindsetTypes().subscribe(result => {
       this.mindsetTypes = result;
@@ -135,12 +143,12 @@ export class AddnewtradeplanComponent implements OnInit {
       this.toastr.success('Trade plan created', 'Success');
       this.router.navigate(['/trade-plans']);
     }, () => {
-      this.toastr.error("Failed to create trade plan for the day", 'Error', 
-      { 
-        tapToDismiss:false,
-        closeButton:true,
-        disableTimeOut: true
-      })
+      this.toastr.error("Failed to create trade plan for the day", 'Error',
+        {
+          tapToDismiss: false,
+          closeButton: true,
+          disableTimeOut: true
+        })
     });
   }
 
@@ -175,10 +183,10 @@ export class AddnewtradeplanComponent implements OnInit {
   }
 
   addTradePlanDate() {
-    let xx = ((document.getElementById('tradePlanDate') as HTMLInputElement).value)
-    this.planDates.unshift(xx);
-    (document.getElementById('tradePlanDate') as HTMLInputElement).value = '';
-    this.planDate = null;
+    //let xx = ((document.getElementById('tradePlanDate') as HTMLInputElement).value)
+    //this.planDates.unshift(xx);
+    //(document.getElementById('tradePlanDate') as HTMLInputElement).value = '';
+    //this.planDate = null;
   }
 
   addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
@@ -195,7 +203,7 @@ export class AddnewtradeplanComponent implements OnInit {
       }
     });
     dialogRef.afterClosed().subscribe((res) => {
-      
+
     });
   }
   myDateRangePickerOptions: IMyDrpOptions = {
@@ -207,47 +215,52 @@ export class AddnewtradeplanComponent implements OnInit {
   mydaterangeOpen() {
     this.showMmydaterange = !this.showMmydaterange;
   }
-  
+
   onDateRangeChanged(event: IMyDateRangeModel) {
     console.log('date change: ', event);
-    let filter;
-    
+    let fromDate;
+    let toDate;
+
     if (event.beginJsDate && event.endJsDate) {
-      filter.fromDate = event.beginDate.year + '-' + event.beginDate.month + '-' + event.beginDate.day;
-      filter.toDate = event.endDate.year + '-' + event.endDate.month + '-' + event.endDate.day;
-    } else {
-      filter.fromDate = undefined;
-      filter.toDate = undefined;
+      fromDate = event.beginDate.year + '-' + event.beginDate.month + '-' + event.beginDate.day;
+      toDate = event.endDate.year + '-' + event.endDate.month + '-' + event.endDate.day;
     }
-    console.log('trade plans filter after date range: ', filter);
+
+    if (fromDate && toDate) {
+      this.tradePlanService.getTradePlanEntries(fromDate, toDate).subscribe(result => {
+        this.planDates = result;
+      });
+    } else {
+      this.loadPlanEntries();
+    }
   }
 
   addEntryExitRule(title, btnText) {
     const dialogRef = this._dialog.open(ManageRulePopupComponent, {
       disableClose: true,
       width: 'auto',
-      data : {
+      data: {
         title: title,
         btnText: btnText,
-        isDemoMode:this.isDemoMode,
-        formData:''
+        isDemoMode: this.isDemoMode,
+        formData: ''
       }
     });
-    
+
     dialogRef.afterClosed().subscribe((res) => {
       this.settingsService.saveEntryExitRule(res).subscribe(data => {
         this.toastr.success('Manual rule added', 'Success');
         // this.loadPage();
       }, err => {
-        this.toastr.error('Failed to add entry exit rule', 'Error', 
-        { 
-          tapToDismiss:false,
-          closeButton:true,
-          disableTimeOut: true
-        });
+        this.toastr.error('Failed to add entry exit rule', 'Error',
+          {
+            tapToDismiss: false,
+            closeButton: true,
+            disableTimeOut: true
+          });
       });
     });
-  
+
   }
 
 }
