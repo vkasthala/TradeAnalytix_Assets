@@ -27,11 +27,11 @@
                     <my-date-range-picker placeholder="Date range" id="mydaterange" name="mydaterange" [options]="myDateRangePickerOptions" (dateRangeChanged)="onDateRangeChanged($event)"></my-date-range-picker>
                 </div>
                 <ul *ngFor="let date of planDates; let index = index">
-                    <li [ngClass]="index === 0 ? 'active' : '' ">{{date.day}}</li>
+                    <li [ngClass]="(selectedPlan && selectedPlan.id === date.id) ? 'active' : '' " (click) = "onPlanSelect(date)">{{date.day}}</li>
                 </ul>
             </div>
         </div>
-        <div class="col-sm-10 pl-0 trade-plan-rt">
+        <div class="col-sm-10 pl-0 trade-plan-rt" *ngIf = "selectedPlan">
             <div class="trade-plan-container pb-1">
                 <div class="row mb-3 pb-2">
                     <div class="col-sm-6">
@@ -59,40 +59,12 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="mat-header-row">
-                                        <td class="mat-cell">3948-23345</td>
-                                        <td class="mat-cell">NIO</td>
-                                        <td class="mat-cell">398457</td>
-                                        <td class="mat-cell">9823</td>
-                                        <td class="mat-cell">3094</td>
-                                    </tr>
-                                    <tr class="mat-header-row">
-                                        <td class="mat-cell">3948-22342</td>
-                                        <td class="mat-cell">XPEV</td>
-                                        <td class="mat-cell">34985</td>
-                                        <td class="mat-cell">932</td>
-                                        <td class="mat-cell">29384</td>
-                                    </tr>
-                                    <tr class="mat-header-row">
-                                        <td class="mat-cell">3948-23344</td>
-                                        <td class="mat-cell">LL</td>
-                                        <td class="mat-cell">98563</td>
-                                        <td class="mat-cell">459</td>
-                                        <td class="mat-cell">9283</td>
-                                    </tr>
-                                    <tr class="mat-header-row">
-                                        <td class="mat-cell">3948-22342</td>
-                                        <td class="mat-cell">XPEV</td>
-                                        <td class="mat-cell">34985</td>
-                                        <td class="mat-cell">-43985</td>
-                                        <td class="mat-cell">56</td>
-                                    </tr>
-                                    <tr class="mat-header-row">
-                                        <td class="mat-cell">3948-23344</td>
-                                        <td class="mat-cell">LL</td>
-                                        <td class="mat-cell">98563</td>
-                                        <td class="mat-cell">-456</td>
-                                        <td class="mat-cell">4586</td>
+                                    <tr class="mat-header-row" *ngFor="let strategy of openStrategies; let index = index">
+                                        <td class="mat-cell">{{strategy.strategyUid}}</td>
+                                        <td class="mat-cell">{{strategy.symbol}}</td>
+                                        <td class="mat-cell">{{strategy.totalAmount}}</td>
+                                        <td class="mat-cell">{{strategy.returnAmount}}</td>
+                                        <td class="mat-cell">{{strategy.maxRisk}}</td>
                                     </tr>
                                 </tbody>
                             </table>

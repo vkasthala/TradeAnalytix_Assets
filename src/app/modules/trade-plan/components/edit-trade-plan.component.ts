@@ -1,11 +1,12 @@
 import { ViewChild, Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { AddnewtradeplanComponent } from './add-trade-plan/addnewtradeplan.component';
 import { Router } from '@angular/router';
-import { MatDialog } from '@angular/material';
+import { DateAdapter, MatDialog } from '@angular/material';
 import { UserMetadataService } from '../../trade-management/services/user-metadata.service';
 import { TradePlansService } from '../services/trade-plans.service';
 import { ToastrService } from 'ngx-toastr';
 import { DemoModeDetailsService } from '../../shared/services/demo-mode-details.service';
+import { SettingsService } from '../../settings/services/settings.service';
 
 @Component({
   selector: 'app-edit-trade-plan',
@@ -20,10 +21,12 @@ export class EditTradePlanComponent extends AddnewtradeplanComponent implements 
     router: Router,
     metadataService: UserMetadataService,
     tradePlanService: TradePlansService,
+    toastr: ToastrService,
     demoService: DemoModeDetailsService,
-    toastr: ToastrService
-    ) {
-    super(_dialog, router, metadataService, tradePlanService, toastr, demoService, null);
+    dateAdapter: DateAdapter<Date>,
+    settingsService: SettingsService,
+  ) {
+    super(_dialog, router, metadataService, tradePlanService, toastr, demoService, dateAdapter, settingsService);
     this.edit = true;
     this.add = false;
     this.view = false;

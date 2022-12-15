@@ -21,6 +21,7 @@ import * as _moment from 'moment';
 import { EconomicDialogComponent } from '../economic-dialog/economic-dialog.component';
 import { SettingsService } from 'src/app/modules/settings/services/settings.service';
 import { TradePlanEntry } from '../../models/trade-plan-entry.model';
+import { TradePlanStrategy } from '../../models/trade-plan-strategy.model';
 const moment = _moment;
 
 @Component({
@@ -48,6 +49,9 @@ export class AddnewtradeplanComponent implements OnInit {
   @ViewChild('plannedTradesGrid', { static: false }) protected plannedTradesGrid: PlannedTradesGridComponent;
 
   planDates: TradePlanEntry[] = [];
+  selectedPlan: TradePlanEntry;
+
+  openStrategies: TradePlanStrategy[];
 
   constructor(
     protected _dialog: MatDialog,
@@ -64,6 +68,7 @@ export class AddnewtradeplanComponent implements OnInit {
 
   ngOnInit() {
     this.loadPlanEntries();
+    this.loadHoldings();
     this.loadMetadata();
   }
 
@@ -121,7 +126,25 @@ export class AddnewtradeplanComponent implements OnInit {
   loadPlanEntries() {
     this.tradePlanService.getTopPlanEntries().subscribe(result => {
       this.planDates = result;
+      this.initTradePlanSelect();
     });
+  }
+
+  loadHoldings() {
+    this.tradePlanService.getOpenStrategies().subscribe(result => {
+      this.openStrategies = result;
+    });
+  }
+
+  initTradePlanSelect() {
+    if (this.planDates.length) {
+      this.selectedPlan = this.planDates[0];
+    } else {
+      this.selectedPlan = undefined;
+    }
+    if(this.selectedPlan) {
+      
+    }
   }
 
   loadMetadata() {
@@ -229,10 +252,15 @@ export class AddnewtradeplanComponent implements OnInit {
     if (fromDate && toDate) {
       this.tradePlanService.getTradePlanEntries(fromDate, toDate).subscribe(result => {
         this.planDates = result;
+        this.initTradePlanSelect();
       });
     } else {
       this.loadPlanEntries();
     }
+  }
+
+  onPlanSelect(plan: TradePlanEntry) {
+    this.selectedPlan = plan;
   }
 
   addEntryExitRule(title, btnText) {
