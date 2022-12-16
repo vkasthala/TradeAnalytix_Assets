@@ -52,6 +52,7 @@ export class AddnewtradeplanComponent implements OnInit {
   selectedPlan: TradePlanEntry;
 
   openStrategies: TradePlanStrategy[];
+  plannedTradesDataSource: PlannedTrade[] = [];
 
   constructor(
     protected _dialog: MatDialog,
@@ -68,7 +69,6 @@ export class AddnewtradeplanComponent implements OnInit {
 
   ngOnInit() {
     this.loadPlanEntries();
-    this.loadHoldings();
     this.loadMetadata();
   }
 
@@ -131,9 +131,23 @@ export class AddnewtradeplanComponent implements OnInit {
   }
 
   loadHoldings() {
-    this.tradePlanService.getOpenStrategies().subscribe(result => {
-      this.openStrategies = result;
-    });
+    if (this.selectedPlan.id > 0) {
+      this.tradePlanService.getTradePlanStrategies(this.selectedPlan.id).subscribe(result => {
+        this.openStrategies = result;
+      });
+    } else {
+      this.tradePlanService.getOpenStrategies().subscribe(result => {
+        this.openStrategies = result;
+      });
+    }
+  }
+
+  loadPlannedTrades() {
+    if (this.selectedPlan.id > 0) {
+      this.tradePlanService.getPlannedTrades(this.tradePlanId).subscribe(result => {
+        this.plannedTradesDataSource = result;
+      });
+    }
   }
 
   initTradePlanSelect() {
@@ -142,8 +156,8 @@ export class AddnewtradeplanComponent implements OnInit {
     } else {
       this.selectedPlan = undefined;
     }
-    if(this.selectedPlan) {
-      
+    if (this.selectedPlan) {
+      this.loadHoldings();
     }
   }
 
