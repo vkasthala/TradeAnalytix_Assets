@@ -9,11 +9,18 @@ import { ReportTypeService } from '../../services/report-type.service';
   styleUrls: ['./metrics.component.scss']
 })
 export class MetricsComponent extends ReportTabContentComponent implements OnInit {
-
+  public showMoreMetrics:boolean = false;
   constructor(reportTypeService: ReportTypeService) {
     super('portfolio', reportTypeService);
     this.reportSubTypes = this.reportTypeService.getSubTypesByCategory(this.type);
     this.onReportSubTypeSelect(this.reportSubTypes[0]);
   }
 
+  ngOnInit() {
+    
+  }
+
+  toggleMetrics() {
+    this.showMoreMetrics = !this.showMoreMetrics;
+  }
 }

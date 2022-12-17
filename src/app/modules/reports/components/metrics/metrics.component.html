@@ -1,66 +1,397 @@
 <div class="trade-risk-tabs">
     <div class="metrics-header">
-        <div class="metrics-title mb-2">
-            Portfolio Metrics
-        </div>
-        <div class="row">
-            <div class="col-sm-4">
-                <div class="row md-2">
-                    <label class="col-sm-7">Current Balance</label>
-                    <span class="col-sm-5">137246</span>
-                </div>
-                <div class="row md-2">
-                    <label class="col-sm-7">Realized Return</label>
-                    <span class="col-sm-5">84375</span>
-                </div>
-                <div class="row md-2">
-                    <label class="col-sm-7">Max Risk of Portfolio</label>
-                    <span class="col-sm-5">15348</span>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="row md-2">
-                    <label class="col-sm-7">Highest Risk Strategy</label>
-                    <span class="col-sm-5">8324-234741</span>
-                </div>
-                <div class="row md-2">
-                    <label class="col-sm-7">Lowest Risk Strategy</label>
-                    <span class="col-sm-5">9342-34553</span>
-                </div>
-                <div class="row md-2">
-                    <label class="col-sm-7">Open Positions</label>
-                    <span class="col-sm-5">12</span>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="row md-2">
-                    <label class="col-sm-7">Draft Positions</label>
-                    <span class="col-sm-5">4</span>
-                </div>
-                <div class="row md-2">
-                    <label class="col-sm-7">Goal Achieved (%)</label>
-                    <span class="col-sm-5">65%</span>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="metrics-body">
         <div class="d-flex align-items-center">
-            <label>Choose the date range for which metrics are to be shown</label>
-            <span>
-                <a>YTD</a>
+            <label class="m-0">Choose the date range for which metrics are to be shown</label>
+            <span class="page-nav">
+                <a class="page-nav-item">1M</a>
+                <a class="page-nav-item">YTD</a>
+                <a class="page-nav-item">6M</a>
+                <a class="page-nav-item">1Y</a>
             </span>
             <div class="datepicker-group">
-                <!-- <input matInput [matDatepicker]="metricsDate" (click)="metricsDate.open()"
-                    id="metricsDate" (dateChange)="addEvent('input', $event, index)"
-                    name="metricsDate"
-                    [(ngModel)]="metricsDate" />
-                <mat-datepicker-toggle matSuffix [for]="metricsDate">
-                </mat-datepicker-toggle>
-                <mat-datepicker #metricsDate></mat-datepicker> -->
+                <input matInput [matDatepicker]="metricDate" name="metricDate">
+                <mat-datepicker-toggle matSuffix [for]="metricDate"></mat-datepicker-toggle>
+                <mat-datepicker #metricDate></mat-datepicker>
             </div>
         </div>
-    
+        
+    </div>
+    <div class="metrics-body">
+        <div class="row">
+            <div class="col-sm-6 metrics-column">
+                <div class="metrics-title mb-2">
+                    Portfolio Metrics
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Realized Return</label>
+                    <span class="col-sm-5"></span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Pay off Ratio</label>
+                    <span class="col-sm-5"></span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Profit Factor</label>
+                    <span class="col-sm-5"></span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Net R</label>
+                    <span class="col-sm-5"></span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Average P&L per Trade</label>
+                    <span class="col-sm-5"></span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Average Daily P&L</label>
+                    <span class="col-sm-5">84375</span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">P&L Volatility</label>
+                    <span class="col-sm-5">4358</span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Largest Profit</label>
+                    <span class="col-sm-5">80017</span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Largest Loss</label>
+                    <span class="col-sm-5">4.2</span>
+                </div>
+
+                <div class="metrics-title mb-2">
+                    Trade Volume
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Total Strategies</label>
+                    <span class="col-sm-5">1.6R</span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Total Trades</label>
+                    <span class="col-sm-5">58%</span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Winning Trades</label>
+                    <span class="col-sm-5">3984</span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Losing Trades</label>
+                    <span class="col-sm-5">839</span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Contrarian Trades (%)</label>
+                    <span class="col-sm-5"></span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Planned Trades Count (%)</label>
+                    <span class="col-sm-5"></span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Average Daily Trade Count</label>
+                    <span class="col-sm-5"></span>
+                </div>
+
+                <div class="metrics-title mb-2">
+                    Strategy
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Best Strategy by Return</label>
+                    <span class="col-sm-5"></span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Best Strategy by Win/Loss</label>
+                    <span class="col-sm-5"></span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Worst Strategy by Return</label>
+                    <span class="col-sm-5"></span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Worst Strategy by Win/Loss</label>
+                    <span class="col-sm-5"></span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Most-Used Strategy</label>
+                    <span class="col-sm-5"></span>
+                </div>
+
+                <div class="metrics-title mb-2">
+                    Direction
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Long | Neutral | Short Trades</label>
+                    <span class="col-sm-5"></span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Return from Long Trades</label>
+                    <span class="col-sm-5"></span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Return from Neutral Trades</label>
+                    <span class="col-sm-5"></span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Return from Short Trades</label>
+                    <span class="col-sm-5"></span>
+                </div>
+            </div>
+            <div class="col-sm-6 metrics-column">
+                <div class="metrics-title mb-2">
+                    Win-Rate
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Win-Rate</label>
+                    <span class="col-sm-5"></span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Average Winning Trade</label>
+                    <span class="col-sm-5"></span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Average Losing Trade</label>
+                    <span class="col-sm-5"></span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Average Win Size</label>
+                    <span class="col-sm-5"></span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Average Loss Size</label>
+                    <span class="col-sm-5"></span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Max Consecutive Wins</label>
+                    <span class="col-sm-5"></span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Max Consecutive Losses</label>
+                    <span class="col-sm-5"></span>
+                </div>
+
+                <div class="metrics-title mb-2">
+                    Holding Period
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Average Holding Period</label>
+                    <span class="col-sm-5"></span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Average Holding Period (Winning Trades)</label>
+                    <span class="col-sm-5"></span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Average Holding Period (Losing Trades)</label>
+                    <span class="col-sm-5"></span>
+                </div>
+
+                <div class="metrics-title mb-2">
+                    Commissions
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Commissions</label>
+                    <span class="col-sm-5"></span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Average Daily Commission</label>
+                    <span class="col-sm-5"></span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Commission as a % of Return</label>
+                    <span class="col-sm-5"></span>
+                </div>
+
+                <div class="metrics-title mb-2">
+                    Symbol
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Most Profitable Symbol</label>
+                    <span class="col-sm-5"></span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Least Profitable Symbol</label>
+                    <span class="col-sm-5"></span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Frequently Traded Stock</label>
+                    <span class="col-sm-5"></span>
+                </div>
+
+                <div class="metrics-title mb-2">
+                    Trade Plan Alignment
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Trade Plan Creation (%)</label>
+                    <span class="col-sm-5"></span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Trade Plan Alignment (%)</label>
+                    <span class="col-sm-5"></span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">P&L on Aligned Trades</label>
+                    <span class="col-sm-5"></span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Win-Rate of Aligned Trades</label>
+                    <span class="col-sm-5"></span>
+                </div>
+
+                <div class="metrics-title mb-2">
+                    Trading Rules
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Rules Compliance %</label>
+                    <span class="col-sm-5"></span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">P&L on Compliant Trades</label>
+                    <span class="col-sm-5"></span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Win-Rate of Compliant Trades</label>
+                    <span class="col-sm-5"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row more-metrics" *ngIf="showMoreMetrics">
+            <div class="col-sm-6 metrics-column">
+                <div class="metrics-title mb-2">
+                    Tags
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Most Successful Tag by Return</label>
+                    <span class="col-sm-5"></span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Most Successful Tag by Win Rate</label>
+                    <span class="col-sm-5"></span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Least Successful Tag by Return</label>
+                    <span class="col-sm-5"></span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Least Successful Tag by Win Rate</label>
+                    <span class="col-sm-5"></span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Most Used Tag</label>
+                    <span class="col-sm-5"></span>
+                </div>
+
+                <div class="metrics-title mb-2">
+                    Technical Indicators
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Most Used Indicator</label>
+                    <span class="col-sm-5"></span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Best Indicator by Return</label>
+                    <span class="col-sm-5"></span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Best Indicator by Win-Loss</label>
+                    <span class="col-sm-5"></span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Worst Indicator by Return</label>
+                    <span class="col-sm-5"></span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Worst Indicator by Win-Loss</label>
+                    <span class="col-sm-5"></span>
+                </div>
+
+                <div class="metrics-title mb-2">
+                    Trading Days
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Most Profitable Day by Return</label>
+                    <span class="col-sm-5"></span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Most Profitable Day by Win Rate</label>
+                    <span class="col-sm-5"></span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Least Profitable Day by Return</label>
+                    <span class="col-sm-5"></span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Least Profitable Day by Win Rate</label>
+                    <span class="col-sm-5"></span>
+                </div>
+            </div>
+            <div class="col-sm-6 metrics-column">
+                <div class="metrics-title mb-2">
+                    Source
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Top Source of Trade Ideas</label>
+                    <span class="col-sm-5"></span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Best Source by Net Return</label>
+                    <span class="col-sm-5"></span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Best Source by Win-Loss</label>
+                    <span class="col-sm-5"></span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Worst Source by Net Return</label>
+                    <span class="col-sm-5"></span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Worst Source by Win-Loss</label>
+                    <span class="col-sm-5"></span>
+                </div>
+
+                <div class="metrics-title mb-2">
+                    Events
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Best Event to Trade by Return</label>
+                    <span class="col-sm-5"></span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Worst Event to Trade by Return</label>
+                    <span class="col-sm-5"></span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Best Event to Trade by Win-Loss</label>
+                    <span class="col-sm-5"></span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Worst Event to Trade by Win-Loss</label>
+                    <span class="col-sm-5"></span>
+                </div>
+
+                <div class="metrics-title mb-2">
+                    Mindset
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Best Mindset by Return</label>
+                    <span class="col-sm-5"></span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Best Mindset by Win-Loss</label>
+                    <span class="col-sm-5"></span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Worst Mindset by Return</label>
+                    <span class="col-sm-5"></span>
+                </div>
+                <div class="d-flex mb-2">
+                    <label class="col-sm-7 mb-0">Worst Mindset by Win-Loss</label>
+                    <span class="col-sm-5"></span>
+                </div>
+            </div>
+        </div>
+        <div class="metrics-footer">
+        <span class="cursor" (click)="toggleMetrics()">More Statistics</span>
+        </div>
 
     </div>
 </div>

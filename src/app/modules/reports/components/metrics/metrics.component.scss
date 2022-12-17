@@ -12,6 +12,7 @@
   color: #000;
   font-weight: 600;
   font-size: 15px;
+  margin-top: 1rem;
 }
 
 .trade-date .mydrp, .mydrp .headerclearbtn, .mydrp .headerokbtn {
@@ -20,8 +21,34 @@
 }
 
 .metrics-body {
-  padding: 15px;
+  padding: 0 25px;
   color: #000;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 15px;
+}
+.page-nav {
+  padding: 0 1rem;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 40px;
+  color: #0066FF;
+}
+.page-nav-item {
+  color: #0066FF;
+  margin: 0 1rem;
+}
+.metrics-column {
+  border-left: 1px solid #B9B7B7;
+}
+.metrics-column:first-child {
+  border-left: 0;
+}
+.metrics-footer {
+  border-top: 1px solid #B9B7B7;
+  text-align: center;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 40px;
+  color: #0066FF;
+  padding: 15px;
 }
