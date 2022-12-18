@@ -1,21 +1,4 @@
 <div class="trade-risk-tabs">
-    <div class="metrics-header">
-        <div class="d-flex align-items-center">
-            <label class="m-0">Choose the date range for which metrics are to be shown</label>
-            <span class="page-nav">
-                <a class="page-nav-item">1M</a>
-                <a class="page-nav-item">YTD</a>
-                <a class="page-nav-item">6M</a>
-                <a class="page-nav-item">1Y</a>
-            </span>
-            <div class="datepicker-group">
-                <input matInput [matDatepicker]="metricDate" name="metricDate">
-                <mat-datepicker-toggle matSuffix [for]="metricDate"></mat-datepicker-toggle>
-                <mat-datepicker #metricDate></mat-datepicker>
-            </div>
-        </div>
-        
-    </div>
     <div class="metrics-body">
         <div class="row">
             <div class="col-sm-6 metrics-column">
