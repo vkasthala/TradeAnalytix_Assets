@@ -156,8 +156,13 @@ export class AddnewtradeplanComponent implements OnInit {
     } else {
       this.selectedPlan = undefined;
     }
+    this.refreshSelectedPlanData();
+  }
+
+  refreshSelectedPlanData() {
     if (this.selectedPlan) {
       this.loadHoldings();
+      this.plannedTradesGrid.initPlannedTradesGrid(this.selectedPlan.id, false);
     }
   }
 
@@ -275,6 +280,7 @@ export class AddnewtradeplanComponent implements OnInit {
 
   onPlanSelect(plan: TradePlanEntry) {
     this.selectedPlan = plan;
+    this.refreshSelectedPlanData();
   }
 
   addEntryExitRule(title, btnText) {
