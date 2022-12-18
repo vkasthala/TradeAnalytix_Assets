@@ -22,4 +22,8 @@ export class PlannedTrade {
 
     actionType: string;
 
+    strategyUid: string;
+
+    amount: number;
+
 }

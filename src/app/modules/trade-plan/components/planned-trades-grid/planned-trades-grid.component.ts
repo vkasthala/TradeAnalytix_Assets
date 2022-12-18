@@ -15,23 +15,37 @@ export class PlannedTradesGridComponent implements OnInit {
 
   plannedTradesDataSource: PlannedTrade[] = [];
 
-  plannedTradesGridColumns: string[] = ['strategyId', 'symbol', 'strategyType', 'maxRisk', 'profit', 'reason', 'actions'];
+  plannedTradesGridColumns: string[] = ['strategyUid', 'symbol', 'strategyType', 'maxRisk', 'amount', 'reason', 'actions'];
 
   public hideRuleContent: boolean[] = [];
   protected planOpenGridData: any;
 
-  @Input('tradePlanId') tradePlanId: number;
-  @Input('viewTradePlan') viewTradePlan: boolean;
+  tradePlanId: number;
+  viewTradePlan: boolean;
+
+  //@Input('tradePlanId') tradePlanId: number;
+  //@Input('viewTradePlan') viewTradePlan: boolean;
   
   constructor(private tradePlanService: TradePlansService, private _dialog: MatDialog) {
 
   }
 
   ngOnInit() {
+    // if (this.tradePlanId > 0) {
+    //   this.plannedTradesGridColumns.push('executed');
+    // }
+    // this.loadPlannedTrades();    
+  }
+
+  initPlannedTradesGrid(tradePlanId: number, view: boolean) {
+    this.tradePlanId = tradePlanId;
+    this.viewTradePlan = view;
+    /*
     if (this.tradePlanId > 0) {
       this.plannedTradesGridColumns.push('executed');
     }
-    this.loadPlannedTrades();    
+    */
+    this.loadPlannedTrades();
   }
 
   loadPlannedTrades() {
