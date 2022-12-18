@@ -40,6 +40,7 @@ import { AddTradeCanDeactivateGuard } from '../trade-management/components/add-t
 import { EditTradeCanDeactivateGuard } from '../trade-management/components/edit-trade.can-deactivate.guard';
 import { CloseTradeCanDeactivateGuard } from '../trade-management/components/close-trade.can-deactivate.guard';
 import { BulkUpdateComponent } from '../bulk-update/bulk-update.component';
+import { TradeBuilderComponent } from '../trade-builder/components/trade-builder.component';
 
 const routes: Routes = [
   {
@@ -66,6 +67,10 @@ const routes: Routes = [
         {
           path : 'trade-strategies',
           component: TradeStrategiesComponent
+        },
+        {
+          path : 'trade-builder',
+          component: TradeBuilderComponent
         },
         {
           path : 'compare-strategies',

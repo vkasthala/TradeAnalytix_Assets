@@ -106,6 +106,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
       case 'trade-strategies': return { breadcrumb: 'Trade Strategies', title: 'Trade Book', description: "Trades are segregated by status and displayed as a list. Trades that are not yet executed remain in Draft status. Trades that are executed remain in Open Status. Trades that are fully closed remain in Closed status." };
 
+      case 'trade-builder': return { breadcrumb: 'Trade Builder', title: 'Trade Builder', description: "Trades are segregated by status and displayed as a list. Trades that are not yet executed remain in Draft status. Trades that are executed remain in Open Status. Trades that are fully closed remain in Closed status." };
+
       case 'compare-strategies': return { breadcrumb: 'Strategy Picker', title: 'Strategy Picker', description: "Enter the first few letters of the symbol or company name and choose a stock from the list. Compare up to five trades on that symbol to pick the right trade strategy that’s in line with your risk appetite." };
 
       case 'strategy-comparison': return { breadcrumb: 'Strategy Picker', title: 'Strategy Picker', description: "Enter the first few letters of the symbol or company name and choose a stock from the list. Compare up to five trades on that symbol to pick the right trade strategy that’s in line with your risk appetite" };

@@ -34,4 +34,8 @@ export class TradeStrategyGridRow {
 
     createDate: string;
 
+    maxRisk: number;
+
+    identifier: string;
+
 }

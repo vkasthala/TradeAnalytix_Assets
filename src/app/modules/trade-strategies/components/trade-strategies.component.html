@@ -2,7 +2,7 @@
     <div class="main-body">
         <div class="trade-dash-main">
             <div class="col-sm-8 pl-1">
-                <div class="summary-items" *ngIf="isOpenPositions">
+                <!-- <div class="summary-items" *ngIf="isOpenPositions">
                     <div class="flex-item" *ngFor="let summary of summaryItems">
                         <div class="flex-inner">
                             <h3 class="text-secondary trade_count"
@@ -10,12 +10,11 @@
                             <span class="trade_title">{{summary.name}}</span>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
 
             <div>
                 <div>
-                    <button routerLink="/new-trade" class="btn btn-apply">Add Trade</button>
                     <a routerLink="/bulk-update" class="btn btn-apply mx-2">Bulk Update</a>
                     <span class="cursor ml-2" (click)="strategiesFilter()">
                         <span *ngIf="!showFilters" class="text-blue text-sm" data-toggle="tooltip" data-placement="top"
@@ -104,12 +103,12 @@
                         <app-portfolio-grid #portfolioGrid>loading</app-portfolio-grid>
                     </div>
                 </mat-step>
-                <mat-step label="Draft Trades">
+                <!-- <mat-step label="Draft Trades">
                     <ng-template matStepLabel>Draft Trades</ng-template>
                     <div class="stepper-content">
                         <app-draft-trades-grid #draftTradesGrid>loading</app-draft-trades-grid>
                     </div>
-                </mat-step>
+                </mat-step> -->
                 <mat-step label="Closed Positions">
                     <ng-template matStepLabel>Closed Positions</ng-template>
                     <div class="stepper-content">

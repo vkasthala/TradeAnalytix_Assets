@@ -4,69 +4,9 @@
 <div class="trade-strategies-grid">
   <div class="trade-table">
     <mat-table [dataSource]="draftDataSource" matSort>
-      <!-- Strategy ID Column -->
-      <ng-container matColumnDef="id">
-        <mat-header-cell class="strategy-id-cell" *matHeaderCellDef mat-sort-header>Identifier</mat-header-cell>
-        <mat-cell class="strategy-id-cell" *matCellDef="let element"> {{element.uid ? element.uid : element.id}}
-        </mat-cell>
-      </ng-container>
-
-      <!-- Symbol Column -->
-      <ng-container matColumnDef="stockName">
-        <mat-header-cell class="stock-name-cell" *matHeaderCellDef mat-sort-header>Symbol</mat-header-cell>
-        <mat-cell class="stock-name-cell" *matCellDef="let element"> {{element.stockCode}} </mat-cell>
-      </ng-container>
-
-      <!-- Open Date Column -->
-      <ng-container matColumnDef="openDate">
-        <mat-header-cell class="open-date-cell" *matHeaderCellDef mat-sort-header>Create Date</mat-header-cell>
-        <mat-cell class="open-date-cell" *matCellDef="let element"> {{element.createDate | date: 'dd-MMM-yyyy'}}
-        </mat-cell>
-      </ng-container>
-
-      <!-- Total Amount Column -->
-      <ng-container matColumnDef="totalAmount">
-        <mat-header-cell class="total-amount-cell" *matHeaderCellDef mat-sort-header>Total Amount</mat-header-cell>
-        <mat-cell class="total-amount-cell" *matCellDef="let element"> {{element.totalAmount}} </mat-cell>
-      </ng-container>
-
-      <!-- Max Gain Column -->
-      <ng-container matColumnDef="maxGain">
-        <mat-header-cell class="close-date-cell" *matHeaderCellDef mat-sort-header>Max Gain*</mat-header-cell>
-        <mat-cell *matCellDef="let element" class="text-success close-date-cell"> {{element.maxGain | number:'1.0-0'}}
-        </mat-cell>
-      </ng-container>
-
-      <!-- Max Loss Column -->
-      <ng-container matColumnDef="maxLoss">
-        <mat-header-cell class="close-date-cell" *matHeaderCellDef mat-sort-header>Max Loss*</mat-header-cell>
-        <mat-cell *matCellDef="let element" class="text-danger close-date-cell"> {{element.maxLoss | number:'1.0-0'}}
-        </mat-cell>
-      </ng-container>
-
-
-      <!-- Thesis Column -->
-      <ng-container matColumnDef="shared">
-        <mat-header-cell class="shared-cell" *matHeaderCellDef mat-sort-header>Shared</mat-header-cell>
-        <mat-cell class="shared-cell" *matCellDef="let element"> {{element.shared}} </mat-cell>
-      </ng-container>
-
-      <!-- Rules Column -->
-      <!-- <ng-container matColumnDef="rules">
-        <mat-header-cell class="rules-cell" *matHeaderCellDef mat-sort-header>Rules</mat-header-cell>
-        <mat-cell class="rules-cell" *matCellDef="let element"> {{element.rules}} </mat-cell>
-      </ng-container> -->
-
-      <!-- Strategy Column -->
-      <ng-container matColumnDef="tags">
-        <mat-header-cell class="tags-cell" *matHeaderCellDef mat-sort-header>Tags</mat-header-cell>
-        <mat-cell class="tags-cell" *matCellDef="let element">
-          {{element.tags}} </mat-cell>
-      </ng-container>
-
       <!-- Closed Date Column -->
       <ng-container matColumnDef="action">
-        <mat-header-cell class="action-cell" *matHeaderCellDef mat-sort-header>Action</mat-header-cell>
+        <mat-header-cell class="action-cell" *matHeaderCellDef mat-sort-header> </mat-header-cell>
         <mat-cell *matCellDef="let element, let i = index" class="action_colum action-cell">
           <div>
             <mat-icon *ngIf="element.status == 'Open' || element.status == 'Draft'"
@@ -83,6 +23,62 @@
           </div>
         </mat-cell>
       </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="stockName">
+        <mat-header-cell class="stock-name-cell" *matHeaderCellDef mat-sort-header>Symbol</mat-header-cell>
+        <mat-cell class="stock-name-cell" *matCellDef="let element"> {{element.stockCode}} </mat-cell>
+      </ng-container>
+
+      <!-- Strategy ID Column -->
+      <ng-container matColumnDef="id">
+        <mat-header-cell class="strategy-id-cell" *matHeaderCellDef mat-sort-header>Identifier</mat-header-cell>
+        <mat-cell class="strategy-id-cell" *matCellDef="let element"> {{element.uid ? element.uid : element.id}}
+        </mat-cell>
+      </ng-container>
+
+      <!-- Open Date Column -->
+      <ng-container matColumnDef="openDate">
+        <mat-header-cell class="open-date-cell" *matHeaderCellDef mat-sort-header>Create Date</mat-header-cell>
+        <mat-cell class="open-date-cell" *matCellDef="let element"> {{element.createDate | date: 'dd-MMM-yyyy'}}
+        </mat-cell>
+      </ng-container>
+
+      <!-- strategy Column -->
+      <ng-container matColumnDef="strategy">
+        <mat-header-cell class="strategy-id-cell" *matHeaderCellDef mat-sort-header>Strategy</mat-header-cell>
+        <mat-cell class="strategy-id-cell" *matCellDef="let element"> {{element.strategy}}
+        </mat-cell>
+      </ng-container>
+
+      <!-- Direction Column -->
+      <ng-container matColumnDef="direction">
+        <mat-header-cell class="direction-cell" *matHeaderCellDef mat-sort-header>Direction</mat-header-cell>
+        <mat-cell *matCellDef="let element" class="text-danger direction-cell"> {{element.direction}}
+        </mat-cell>
+      </ng-container>
+
+      <!-- Total Amount Column -->
+      <ng-container matColumnDef="totalAmount">
+        <mat-header-cell class="total-amount-cell" *matHeaderCellDef mat-sort-header>Total Amount</mat-header-cell>
+        <mat-cell class="total-amount-cell" *matCellDef="let element"> {{element.totalAmount}} </mat-cell>
+      </ng-container>
+
+      <!-- Max Risk Column -->
+      <ng-container matColumnDef="maxRisk">
+        <mat-header-cell class="close-date-cell" *matHeaderCellDef mat-sort-header>Max Risk</mat-header-cell>
+        <mat-cell *matCellDef="let element" class="text-success close-date-cell"> {{element.maxRisk | number:'1.0-0'}}
+        </mat-cell>
+      </ng-container>
+
+      <!-- Strategy Column -->
+      <ng-container matColumnDef="tags">
+        <mat-header-cell class="tags-cell" *matHeaderCellDef mat-sort-header>Tags</mat-header-cell>
+        <mat-cell class="tags-cell" *matCellDef="let element">
+          {{element.tags}} </mat-cell>
+      </ng-container>
+
+      
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;">
@@ -155,7 +151,7 @@
             Max Gain
           </div>
           <div class="col-6 text-success text-right">
-            {{element.maxGain | number:'1.0-0'}}
+            {{element.maxRisk | number:'1.0-0'}}
           </div>
         </div>
         <div class="row py-1">

@@ -3,40 +3,27 @@ import { Router } from '@angular/router';
 import { IMyDrpOptions, IMyDateRangeModel } from 'mydaterangepicker';
 import { StrategyType } from '../../shared/models/trade-management/strategy-type.enum';
 import { StrategyCreateService } from '../../shared/services/strategy-create.service';
-import { StrategiesGridFilter } from '../models/strategies-grid-filter.model';
-import { StrategiesGridPage } from '../models/strategies-grid-page.model';
-import { StrategiesGridSort } from '../models/strategies-grid-sort.model';
-import { TradeStrategiesGrid } from './trade-strategies-grid/trade-strategies-grid';
-import { PortfolioGrid } from './portfolio-grid/portfolio-grid.component';
-import { HistoryGrid } from './history-grid/history-grid.component';
 import { TradeStatus } from '../../shared/models/trade-management/trade-status.enum';
 import { TradeDirection } from '../../shared/models/trade-management/trade-direction.enum';
 import { TradeSearchComponent } from '../../trade-management/components/add-trade/Steps/search-trade/trade-search.component';
 import { FormGroup, FormControl } from '@angular/forms';
-import { TradeStrategyGridService } from '../services/trade-strategy-grid.service';
 import { SummaryItem } from '../../shared/models/reports/summary-item.model';
 import { SummaryRequest } from '../../shared/models/reports/summary-request.model';
 import { ReportDataService } from '../../reports/services/report-data.service';
 import { MatDialog } from '@angular/material';
-import { CommunityTradesGrid } from './community-trades-grid/community-trades-grid.component';
 import { DemoModeDetailsService } from '../../shared/services/demo-mode-details.service';
+import { DraftTradesGrid } from '../../trade-strategies/components/draft-trades-grid/draft-trades-grid.component';
 
 @Component({
-   selector: 'app-trade-strategies',
-   templateUrl: './trade-strategies.component.html',
-   styleUrls: ['./trade-strategies.component.scss']
+   selector: 'app-trade-builder',
+   templateUrl: './trade-builder.component.html',
+   styleUrls: ['./trade-builder.component.scss']
 })
-export class TradeStrategiesComponent implements OnInit {
-   @ViewChild('tradeStrategiesGrid', { static: false }) private tradeStrategiesGrid: TradeStrategiesGrid;
-   @ViewChild('portfolioGrid', { static: false }) private portfolioGrid: PortfolioGrid;
-   @ViewChild('historyGrid', { static: false }) private historyGrid: HistoryGrid;
+export class TradeBuilderComponent implements OnInit {
+   @ViewChild('draftTradesGrid', { static: false }) private draftTradesGrid: DraftTradesGrid;
    @ViewChild('tradeSearchComponent', { static: false }) private tradeSearchComponent: TradeSearchComponent;
-   @ViewChild('communityTradesGrid', { static: false }) private communityTradesGrid: CommunityTradesGrid;
 
-   strategiesGridFilter: StrategiesGridFilter = new StrategiesGridFilter();
-   strategiesGridPage: StrategiesGridPage = new StrategiesGridPage();
-   strategiesGridSort: StrategiesGridSort = new StrategiesGridSort();
-
+  
    isOpenPositions: boolean = true;
    expandIndex: any;
    showDetailsIndex: any;
@@ -70,7 +57,6 @@ export class TradeStrategiesComponent implements OnInit {
    constructor(
       private router: Router,
       private strategyCreateService: StrategyCreateService,
-      private tradeStrategyGridService: TradeStrategyGridService,
       private reportDataService: ReportDataService,
       private _dialog: MatDialog,
       private demoService: DemoModeDetailsService,
@@ -118,38 +104,9 @@ export class TradeStrategiesComponent implements OnInit {
       this.showDetailsIndex = this.showDetailsIndex == index ? null : index;
    }
 
-   symbolSelectEventHandler($event) {
-      this.strategiesGridFilter.stockCode = $event.code;
-   }
+   
 
-   applyFilters() {
-      let tradeStrategyGridRequest = this.tradeStrategiesGrid.tradeStrategyGridRequest;
-      tradeStrategyGridRequest.filters = this.strategiesGridFilter;
-      this.portfolioGrid.reload(tradeStrategyGridRequest.filters);
-      this.historyGrid.reload(tradeStrategyGridRequest.filters);
-      this.communityTradesGrid.reload(tradeStrategyGridRequest.filters);
-   }
-
-   onDateRangeChanged(event: IMyDateRangeModel) {
-      if (event.beginJsDate && event.endJsDate) {
-         this.strategiesGridFilter.fromDate = event.beginDate.year + '-' + event.beginDate.month + '-' + event.beginDate.day;
-         this.strategiesGridFilter.toDate = event.endDate.year + '-' + event.endDate.month + '-' + event.endDate.day;
-      } else {
-         this.strategiesGridFilter.fromDate = undefined;
-         this.strategiesGridFilter.toDate = undefined;
-      }
-      console.log('trade strategies filter after date range: ', this.strategiesGridFilter);
-   }
-
-   clearFilters() {
-      let tradeStrategyGridRequest = this.tradeStrategiesGrid.tradeStrategyGridRequest;
-      this.tradeSearchComponent.clearSelection();
-      tradeStrategyGridRequest.filters = new StrategiesGridFilter();
-      this.strategiesGridFilter = new StrategiesGridFilter();
-      this.portfolioGrid.reload(this.strategiesGridFilter);
-      this.historyGrid.reload(this.strategiesGridFilter);
-      this.communityTradesGrid.reload(this.strategiesGridFilter);
-   }
+   
 
    onOptionsSelected(event) {
       let value = event.target.value;
@@ -160,13 +117,6 @@ export class TradeStrategiesComponent implements OnInit {
             this.statusLabel = false;
          }
       }
-   }
-
-   strategiesFilter() {
-      this.showFilters = !this.showFilters;
-   }
-   searchFilter() {
-      this.showSearchFilter = !this.showSearchFilter;
    }
 
    ngAfterViewInit() {
@@ -194,9 +144,5 @@ export class TradeStrategiesComponent implements OnInit {
       return val;
    }
 
-   closePopup(e) {
-      let iframe = document.querySelector('iframe');
-      iframe.src='';
-      iframe.setAttribute("src",'https://www.youtube.com/embed/pzpvE4bqyTs');
-    }
+   
 }

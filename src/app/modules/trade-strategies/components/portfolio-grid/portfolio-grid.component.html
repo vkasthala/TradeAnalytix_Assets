@@ -5,10 +5,20 @@
   <div class="trade-table">
     <mat-table [dataSource]="portfolioDataSource" matSort>
       <div *ngIf="portfolioDataSource && portfolioDataSource.length !== 0">No records found</div>
-      <!-- Strategy ID Column -->
-      <ng-container matColumnDef="id">
-        <mat-header-cell class="strategy-id-cell" *matHeaderCellDef mat-sort-header>Identifier</mat-header-cell>
-        <mat-cell class="strategy-id-cell" *matCellDef="let element"> {{element.uid ? element.uid : element.id}}
+      
+      <!-- Action Column -->
+      <ng-container matColumnDef="action">
+        <mat-header-cell class="action-cell" *matHeaderCellDef mat-sort-header></mat-header-cell>
+        <mat-cell *matCellDef="let element, let i = index" class="action_colum action-cell">
+          <div>
+            <mat-icon *ngIf="element.status == 'Open' || element.status == 'Draft'"
+              (click)="editTrade(element);closeActionBox()" class="mat-icon-sm trade-edit">edit</mat-icon>
+            <mat-icon *ngIf="element.status == 'Draft'" (click)="deleteTrade(element);closeActionBox()"
+              class="mat-icon-sm mx-2 trade-delete">delete</mat-icon>
+
+            <mat-icon *ngIf="element.status == 'Closed'" (click)="viewTrade(element);closeActionBox()"
+              class="mat-icon-sm trade-view">visibility</mat-icon>
+          </div>
         </mat-cell>
       </ng-container>
 
@@ -18,10 +28,31 @@
         <mat-cell class="stock-name-cell" *matCellDef="let element"> {{element.stockCode}} </mat-cell>
       </ng-container>
 
+      <!-- Strategy ID Column -->
+      <ng-container matColumnDef="id">
+        <mat-header-cell class="strategy-id-cell" *matHeaderCellDef mat-sort-header>Identifier</mat-header-cell>
+        <mat-cell class="strategy-id-cell" *matCellDef="let element"> {{element.uid ? element.uid : element.id}}
+        </mat-cell>
+      </ng-container>
+      
       <!-- Open Date Column -->
       <ng-container matColumnDef="openDate">
         <mat-header-cell class="open-date-cell" *matHeaderCellDef mat-sort-header>Open Date</mat-header-cell>
         <mat-cell class="open-date-cell" *matCellDef="let element"> {{element.openDate | date: 'dd-MMM-yyyy'}}
+        </mat-cell>
+      </ng-container>
+
+      <!-- strategy Column -->
+      <ng-container matColumnDef="strategy">
+        <mat-header-cell class="open-date-cell" *matHeaderCellDef mat-sort-header>Strategy</mat-header-cell>
+        <mat-cell class="open-date-cell" *matCellDef="let element"> {{element.strategy}}
+        </mat-cell>
+      </ng-container>
+
+      <!-- Direction Column -->
+      <ng-container matColumnDef="direction">
+        <mat-header-cell class="open-date-cell" *matHeaderCellDef mat-sort-header>Direction</mat-header-cell>
+        <mat-cell *matCellDef="let element" class="text-danger open-date-cell"> {{element.direction}}
         </mat-cell>
       </ng-container>
 
@@ -31,17 +62,11 @@
         <mat-cell class="total-amount-cell" *matCellDef="let element"> {{element.totalAmount}} </mat-cell>
       </ng-container>
 
-      <!-- Max Gain Column -->
-      <ng-container matColumnDef="maxGain">
-        <mat-header-cell class="close-date-cell" *matHeaderCellDef mat-sort-header>Max Gain*</mat-header-cell>
-        <mat-cell *matCellDef="let element" class="text-success close-date-cell"> {{element.maxGain | number:'1.0-0'}}
-        </mat-cell>
-      </ng-container>
 
-      <!-- Max Loss Column -->
-      <ng-container matColumnDef="maxLoss">
-        <mat-header-cell class="close-date-cell" *matHeaderCellDef mat-sort-header>Max Loss*</mat-header-cell>
-        <mat-cell *matCellDef="let element" class="text-danger close-date-cell"> {{element.maxLoss | number:'1.0-0'}}
+      <!-- Max Risk Column -->
+      <ng-container matColumnDef="maxRisk">
+        <mat-header-cell class="close-date-cell" *matHeaderCellDef mat-sort-header>Max Risk</mat-header-cell>
+        <mat-cell *matCellDef="let element" class="text-success close-date-cell"> {{element.maxRisk | number:'1.0-0'}}
         </mat-cell>
       </ng-container>
 
@@ -51,44 +76,12 @@
         <mat-cell class="return-cell" *matCellDef="let element"> {{element.returnAmount}} </mat-cell>
       </ng-container>
 
-      <!-- Shared Column -->
-      <ng-container matColumnDef="shared">
-        <mat-header-cell class="shared-cell" *matHeaderCellDef mat-sort-header>Shared</mat-header-cell>
-        <mat-cell class="shared-cell" *matCellDef="let element"> {{element.shared}} </mat-cell>
-      </ng-container>
-
-      <!-- Rules Column -->
-      <!-- <ng-container matColumnDef="rules">
-        <mat-header-cell class="rules-cell" *matHeaderCellDef mat-sort-header>Rules</mat-header-cell>
-        <mat-cell class="rules-cell" *matCellDef="let element"> {{element.rules}} </mat-cell>
-      </ng-container> -->
 
       <!-- Tags Column -->
       <ng-container matColumnDef="tags">
         <mat-header-cell class="tags-cell" *matHeaderCellDef mat-sort-header>Tags</mat-header-cell>
         <mat-cell class="tags-cell" *matCellDef="let element">
           {{element.tags}} </mat-cell>
-      </ng-container>
-
-      <!-- Closed Date Column -->
-      <ng-container matColumnDef="action">
-        <mat-header-cell class="action-cell" *matHeaderCellDef mat-sort-header>Action</mat-header-cell>
-        <mat-cell *matCellDef="let element, let i = index" class="action_colum action-cell">
-          <div>
-            <mat-icon *ngIf="element.status == 'Open' || element.status == 'Draft'"
-              (click)="editTrade(element);closeActionBox()" class="mat-icon-sm trade-edit">edit</mat-icon>
-
-            <!--
-            <mat-icon *ngIf="element.status == 'Open'" (click)="closeTrade(element);closeActionBox()"
-              class="mat-icon-sm ml-2 trade-close">cancel</mat-icon>
-            --> 
-            <mat-icon *ngIf="element.status == 'Draft'" (click)="deleteTrade(element);closeActionBox()"
-              class="mat-icon-sm mx-2 trade-delete">delete</mat-icon>
-
-            <mat-icon *ngIf="element.status == 'Closed'" (click)="viewTrade(element);closeActionBox()"
-              class="mat-icon-sm trade-view">visibility</mat-icon>
-          </div>
-        </mat-cell>
       </ng-container>
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

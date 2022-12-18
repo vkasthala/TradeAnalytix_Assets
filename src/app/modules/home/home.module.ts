@@ -157,6 +157,7 @@ import { EquityCurveChartComponent } from '../dashboard/charts/equity-curve/equi
 import { DailyStatisticsComponent } from '../trade-plan/components/daily-statistics/daily-statistics.component';
 import { MetricsComponent } from '../reports/components/metrics/metrics.component';
 import { EconomicDialogComponent } from '../trade-plan/components/economic-dialog/economic-dialog.component';
+import { TradeBuilderComponent } from '../trade-builder/components/trade-builder.component';
 
 export const MY_FORMATS = {
   parse: {
@@ -311,7 +312,8 @@ export const MY_FORMATS = {
     TradingRulesPopupComponent,
     DailyStatisticsComponent,
     MetricsComponent,
-    EconomicDialogComponent
+    EconomicDialogComponent,
+    TradeBuilderComponent
   ],
   imports: [
     FormsModule,
