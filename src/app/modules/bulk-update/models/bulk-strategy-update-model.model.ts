@@ -40,4 +40,9 @@ export class BulkStrategyUpdateModel {
 
     dirty: boolean;
 
+    source: string;
+    strategyType: string;
+    realizedReturn: string;
+    tradeThesis: string;
+
 }

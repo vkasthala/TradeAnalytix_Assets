@@ -478,10 +478,18 @@ input:invalid {
 }
 .ag-theme-alpine .ag-ltr .ag-cell {
     border-right: 1px solid #dde2eb;
-    background: #fff;
+    // background: #fff;
+}
+.ag-row-odd {
+    background-color: #f3f3f3 !important;
 }
 .read-only-cell {
     background: #fcfcfc !important;
+}
+.autoHeight-cell {
+    white-space: normal;
+    word-break: break-all;
+    line-height: 22px !important;
 }
 .w-80 {
     width: 80%;

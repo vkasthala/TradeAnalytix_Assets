@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { ColDef, ICellEditorParams } from 'ag-grid-community';
+import { ColDef, ColGroupDef, ICellEditorParams } from 'ag-grid-community';
 import { ToastrService } from 'ngx-toastr';
 import { UserTagService } from 'src/app/modules/settings/services/user-tag.service';
 import { SourceType } from 'src/app/modules/trade-management/models/source-type.model';
@@ -30,8 +30,8 @@ export class BulkUpdateComponent implements OnInit {
 
   sourceTypes: SourceType[] = [];
 
-  columnDefs: ColDef[] = [];
-
+  // columnDefs: ColDef[] = [];
+  columnDefs: (ColDef | ColGroupDef)[];
   private gridApi;
   private frameworkComponents;
   isDemoMode: boolean = false;
@@ -67,33 +67,82 @@ export class BulkUpdateComponent implements OnInit {
 
   initColumnDefns() {
     this.columnDefs = [
-      { field: 'uid', headerName: 'Strategy ID', resizable: true, width: 110, cellClass: 'read-only-cell', filter: 'agTextColumnFilter' },
       { field: 'symbol', headerName: 'Symbol', resizable: true, width: 100, cellClass: 'read-only-cell', filter: 'agTextColumnFilter' },
-      { field: 'status', headerName: 'Status', resizable: true, width: 80, cellClass: 'read-only-cell', filter: 'agTextColumnFilter' },
-      { field: 'openDate', headerName: 'Open Date', resizable: true, width: 110, cellClass: 'read-only-cell', filter: 'agTextColumnFilter' },
-      { field: 'totalAmount', headerName: 'Amount', resizable: true, width: 100, cellClass: 'read-only-cell', filter: 'agTextColumnFilter' },
-      { field: 'tags', headerName: 'Tags', editable: true, resizable: true, width: 180, filter: 'agTextColumnFilter' },
+      { field: 'uid', headerName: 'Strategy ID', resizable: true, width: 110, cellClass: 'read-only-cell', filter: 'agTextColumnFilter' },
+      
+
+      { 
+        headerName: "Details",
+        width: 140,
+        resizable: true,
+        children: [
+          { field: 'status', headerName: 'Status', resizable: true, width: 90, cellClass: 'read-only-cell', filter: 'agTextColumnFilter' },
+          { 
+            headerName: "Strategy Type",
+            field: 'strategyType',
+            columnGroupShow: 'open',
+            width: 100, 
+          },
+          { 
+            headerName: 'Direction',
+            field: 'direction', editable: true, cellEditor: 'directionEditor', resizable: true, width: 100, filter: 'agTextColumnFilter',
+            columnGroupShow: 'open',
+          },
+          { 
+            headerName: 'Contrarian',
+            field: 'contrarian',  editable: true, cellEditor: 'contrarianEditor', resizable: true, width: 100, filter: 'agTextColumnFilter',
+            columnGroupShow: 'open',
+          },
+          {
+            headerName: 'Planned Trade',
+            field: 'planned', editable: true, resizable: true, width: 140, cellEditor: 'plannedEditor', filter: 'agTextColumnFilter', cellRenderer: prms => {
+              if (!prms.data.tradeType) {
+                return "";
+              }
+              return prms.data.tradeType === 'planned' ? 'Yes' : 'No';
+            },
+            columnGroupShow: 'open',
+          },
+          { 
+            headerName: "Amount",
+            field: 'totalAmount',
+            columnGroupShow: 'open',
+            width: 100, 
+          },
+          { 
+            headerName: 'Realized Return',
+            field: 'realizedReturn', 
+            columnGroupShow: 'open',
+            width: 140, 
+          }
+        ]
+      },
+
+      { field: 'tags', headerName: 'Tags', editable: true, resizable: true, width: 180, filter: 'agTextColumnFilter',
+      autoHeight: true,
+      cellClass: 'autoHeight-cell',
+    },
+
+      { field: 'tradeThesis', headerName: 'Trade Thesis', resizable: true, width: 220, filter: 'agTextColumnFilter',
+      cellClass: 'autoHeight-cell',
+        autoHeight: true,
+      },
+
       { field: 'source', headerName: 'Source', editable: true, cellEditor: 'sourceEditor', resizable: true, width: 90, filter: 'agTextColumnFilter' },
-      { field: 'reason', headerName: ' Reasons for the trade', editable: true, resizable: true, width: 180, filter: 'agTextColumnFilter' },
+
       { field: 'targetPrice', headerName: 'Target Price', editable: true, resizable: true, width: 120, filter: 'agTextColumnFilter' },
       { field: 'targetCloseDate', headerName: 'Target Close Date', editable: true, resizable: true, width: 160, filter: 'agTextColumnFilter' },
-      { field: 'contrarian', headerName: 'Contrarian Trade', editable: true, cellEditor: 'contrarianEditor', resizable: true, width: 140, filter: 'agTextColumnFilter' },
-      { field: 'direction', headerName: 'Direction', editable: true, cellEditor: 'directionEditor', resizable: true, width: 100, filter: 'agTextColumnFilter' },
       { field: 'technicalIndicator', headerName: 'Technical Indicator', resizable: true, editable: true, cellEditor: 'technicalIndicatorEditor', width: 160, filter: 'agTextColumnFilter' },
       { field: 'event', headerName: 'Events', editable: true, cellEditor: 'eventEditor', resizable: true, width: 100, filter: 'agTextColumnFilter' },
-      {
-        field: 'planned', headerName: 'Planned Trade', editable: true, resizable: true, width: 140, cellEditor: 'plannedEditor', filter: 'agTextColumnFilter', cellRenderer: prms => {
-          if (!prms.data.tradeType) {
-            return "";
-          }
-          return prms.data.tradeType === 'planned' ? 'Yes' : 'No';
-        }
-      },
       { field: 'mindset', headerName: 'Mindset', editable: true, cellEditor: 'mindsetEditor', resizable: true, width: 110, filter: 'agTextColumnFilter' },
-      { field: 'closeSource', headerName: 'Trigger for Closure', editable: true, cellEditor: 'closeSourceEditor', resizable: true, width: 150, filter: 'agTextColumnFilter' },
-      { field: 'closeReason', headerName: 'Reason for Closure', editable: true, width: 150, resizable: true, filter: 'agTextColumnFilter' },
-      { field: 'closeEvent', headerName: 'Gain or Loss Attributed To', editable: true, cellEditor: 'closeEventEditor', width: 200, resizable: true, filter: 'agTextColumnFilter' },
-      { field: 'closeLesson', headerName: 'Lessons Learnt', editable: true, width: 300, resizable: true, filter: 'agTextColumnFilter' }
+
+      // { field: 'openDate', headerName: 'Open Date', resizable: true, width: 110, cellClass: 'read-only-cell', filter: 'agTextColumnFilter' },
+      // { field: 'totalAmount', headerName: 'Amount', resizable: true, width: 100, cellClass: 'read-only-cell', filter: 'agTextColumnFilter' },
+      // { field: 'reason', headerName: ' Reasons for the trade', editable: true, resizable: true, width: 180, filter: 'agTextColumnFilter' },
+      // { field: 'closeSource', headerName: 'Trigger for Closure', editable: true, cellEditor: 'closeSourceEditor', resizable: true, width: 150, filter: 'agTextColumnFilter' },
+      // { field: 'closeReason', headerName: 'Reason for Closure', editable: true, width: 150, resizable: true, filter: 'agTextColumnFilter' },
+      // { field: 'closeEvent', headerName: 'Gain or Loss Attributed To', editable: true, cellEditor: 'closeEventEditor', width: 200, resizable: true, filter: 'agTextColumnFilter' },
+      // { field: 'closeLesson', headerName: 'Lessons Learnt', editable: true, width: 300, resizable: true, filter: 'agTextColumnFilter' }
     ];
     this.isDemoMode = this.demoService.demoMode;
   }
@@ -116,6 +165,7 @@ export class BulkUpdateComponent implements OnInit {
 
   onGridReady(params) {
     this.gridApi = params.api;
+    params.api.sizeColumnsToFit()
   }
 
   onCallValueDataChangeStart($event) {
