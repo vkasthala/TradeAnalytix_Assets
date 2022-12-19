@@ -22,6 +22,7 @@ import { EconomicDialogComponent } from '../economic-dialog/economic-dialog.comp
 import { SettingsService } from 'src/app/modules/settings/services/settings.service';
 import { TradePlanEntry } from '../../models/trade-plan-entry.model';
 import { TradePlanStrategy } from '../../models/trade-plan-strategy.model';
+import { TodayExecutedTrade } from '../../models/today-executed-trade.model';
 const moment = _moment;
 
 @Component({
@@ -51,7 +52,8 @@ export class AddnewtradeplanComponent implements OnInit {
   planDates: TradePlanEntry[] = [];
   selectedPlan: TradePlanEntry;
 
-  openStrategies: TradePlanStrategy[];
+  openStrategies: TradePlanStrategy[] = [];
+  executedStrategies: TodayExecutedTrade[] = [];
   plannedTradesDataSource: PlannedTrade[] = [];
 
   constructor(
@@ -140,6 +142,12 @@ export class AddnewtradeplanComponent implements OnInit {
         this.openStrategies = result;
       });
     }
+  }
+
+  loadTodayTrades() {
+    this.tradePlanService.getTodayExecutedTrades(this.selectedPlan.day).subscribe(result => {
+      this.executedStrategies = result;
+    });
   }
 
   loadPlannedTrades() {

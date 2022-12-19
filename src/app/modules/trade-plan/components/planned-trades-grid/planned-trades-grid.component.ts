@@ -25,7 +25,7 @@ export class PlannedTradesGridComponent implements OnInit {
 
   //@Input('tradePlanId') tradePlanId: number;
   //@Input('viewTradePlan') viewTradePlan: boolean;
-  
+
   constructor(private tradePlanService: TradePlansService, private _dialog: MatDialog) {
 
   }
@@ -54,6 +54,11 @@ export class PlannedTradesGridComponent implements OnInit {
         this.plannedTradesDataSource = result;
         this.planOpenGridData = result;
         console.log("test 3 rs", this.planOpenGridData);
+      });
+    } else {
+      this.tradePlanService.getTodayDraftTrades().subscribe(result => {
+        this.plannedTradesDataSource = result;
+        this.planOpenGridData = result;
       });
     }
   }

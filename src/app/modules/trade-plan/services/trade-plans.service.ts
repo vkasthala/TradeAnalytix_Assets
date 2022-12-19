@@ -5,6 +5,7 @@ import { HttpService } from '../../shared/services/http.service';
 import { MarketStatus } from '../models/market-status.model';
 import { PlannedTrade } from '../models/planned-trade.model';
 import { TodayExecutedLeg } from '../models/today-executed-leg.model';
+import { TodayExecutedTrade } from '../models/today-executed-trade.model';
 import { TradePlanEntry } from '../models/trade-plan-entry.model';
 import { TradePlanGridRequest } from '../models/trade-plan-grid-request.model';
 import { TradePlanGridResult } from '../models/trade-plan-grid-result.model';
@@ -39,8 +40,16 @@ export class TradePlansService {
         return this.http.get<TradePlanStrategy[]>(this.apiUrl + '/trade-plan/strategies/' + tradePlanId);
     }
 
+    getTodayExecutedTrades(day: string): Observable<TodayExecutedTrade[]> {
+        return this.http.get<TodayExecutedTrade[]>(this.apiUrl + '/trade-plan/executed-trades');
+    }
+
     getPlannedTrades(tradePlanId: number): Observable<PlannedTrade[]> {
         return this.http.get<PlannedTrade[]>(this.apiUrl + '/trade-plan/planned-trades/' + tradePlanId);
+    }
+
+    getTodayDraftTrades(): Observable<PlannedTrade[]> {
+        return this.http.get<PlannedTrade[]>(this.apiUrl + '/trade-plan/today-draft-trades');
     }
 
     createTradePlan(tradePlan: TradePlan): Observable<void> {

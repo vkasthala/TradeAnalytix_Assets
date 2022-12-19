@@ -74,7 +74,7 @@
         <tr mat-header-row *matHeaderRowDef="plannedTradesGridColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: plannedTradesGridColumns;"></tr>
     </mat-table>
-    <div *ngIf="plannedTradesDataSource.length==0" class="text-center pt-3">There are no planned trades today.</div>
+    <div *ngIf="plannedTradesDataSource.length==0" class="text-center pt-3">No planned trades to display</div>
 </div>
 
 
