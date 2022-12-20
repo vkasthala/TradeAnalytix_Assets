@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatStepper } from '@angular/material';
 import { NavigationExtras, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -16,7 +16,7 @@ import { PlannedTradesGridComponent } from '../planned-trades-grid/planned-trade
 
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { DateAdapter } from '@angular/material';
-import { IMyDateRangeModel, IMyDrpOptions } from 'mydaterangepicker';
+import { IMyDate, IMyDateRangeModel, IMyDrpOptions } from 'mydaterangepicker';
 import * as _moment from 'moment';
 import { EconomicDialogComponent } from '../economic-dialog/economic-dialog.component';
 import { SettingsService } from 'src/app/modules/settings/services/settings.service';
@@ -30,7 +30,7 @@ const moment = _moment;
   templateUrl: './addnewtradeplan.component.html',
   styleUrls: ['./addnewtradeplan.component.scss']
 })
-export class AddnewtradeplanComponent implements OnInit {
+export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
   protected add = true;
   protected edit = false;
   protected view = false;
@@ -39,7 +39,7 @@ export class AddnewtradeplanComponent implements OnInit {
 
   tradePlanId: number = 0;
   day: string;
-  planDate;
+  planDate: _moment.Moment;
   marketStatuses: MarketStatus[];
   mindsetTypes: MindsetType[];
 
@@ -68,10 +68,13 @@ export class AddnewtradeplanComponent implements OnInit {
   ) {
     this.initState();
   }
-
-  ngOnInit() {
+  
+  ngAfterViewInit(): void {
     this.loadPlanEntries();
     this.loadMetadata();
+  }
+
+  ngOnInit() {
   }
 
   loadTradePlanData() {
@@ -233,6 +236,22 @@ export class AddnewtradeplanComponent implements OnInit {
   }
 
   addTradePlanDate() {
+    if (this.planDate) {
+      let entry: TradePlanEntry = new TradePlanEntry();
+      entry.day = this.planDate.year() + '-' + (this.planDate.month() + 1) + '-' + this.planDate.date();
+      entry.id = 0;
+      this.planDates.unshift(entry);
+      this.selectedPlan = entry;
+      this.refreshSelectedPlanData();
+    } else {
+      this.toastr.error('Please select valid date', 'Invalid Date',
+        {
+          tapToDismiss: false,
+          closeButton: true,
+          disableTimeOut: true
+        });
+    }
+
     //let xx = ((document.getElementById('tradePlanDate') as HTMLInputElement).value)
     //this.planDates.unshift(xx);
     //(document.getElementById('tradePlanDate') as HTMLInputElement).value = '';

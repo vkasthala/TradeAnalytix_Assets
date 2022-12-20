@@ -56,7 +56,7 @@ export class PlannedTradesGridComponent implements OnInit {
         console.log("test 3 rs", this.planOpenGridData);
       });
     } else {
-      this.tradePlanService.getTodayDraftTrades().subscribe(result => {
+      this.tradePlanService.getDraftTrades().subscribe(result => {
         this.plannedTradesDataSource = result;
         this.planOpenGridData = result;
       });
