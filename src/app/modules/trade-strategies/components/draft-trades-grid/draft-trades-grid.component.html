@@ -54,7 +54,7 @@
       <!-- Direction Column -->
       <ng-container matColumnDef="direction">
         <mat-header-cell class="direction-cell" *matHeaderCellDef mat-sort-header>Direction</mat-header-cell>
-        <mat-cell *matCellDef="let element" class="text-danger direction-cell"> {{element.direction}}
+        <mat-cell *matCellDef="let element" class="direction-cell"> {{element.direction}}
         </mat-cell>
       </ng-container>
 
@@ -65,9 +65,9 @@
       </ng-container>
 
       <!-- Max Risk Column -->
-      <ng-container matColumnDef="maxRisk">
+      <ng-container matColumnDef="maxLoss">
         <mat-header-cell class="close-date-cell" *matHeaderCellDef mat-sort-header>Max Risk</mat-header-cell>
-        <mat-cell *matCellDef="let element" class="text-success close-date-cell"> {{element.maxRisk | number:'1.0-0'}}
+        <mat-cell *matCellDef="let element" class="text-danger close-date-cell"> {{element.maxLoss | number:'1.0-0'}}
         </mat-cell>
       </ng-container>
 

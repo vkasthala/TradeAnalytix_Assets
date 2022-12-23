@@ -28,7 +28,7 @@ export class DraftTradesGrid implements AfterViewInit, OnInit {
 
   protected Loader = false;
   expandIndex: any;
-  displayedColumns = ['action', 'stockName', 'id', 'openDate', 'strategy', 'direction', 'totalAmount', 'maxRisk', 'tags', ];
+  displayedColumns = ['action', 'stockName', 'id', 'openDate', 'strategy', 'direction', 'totalAmount', 'maxLoss', 'tags', ];
   pageSize: number = 20
   totalCount: number = 1;
 

@@ -198,7 +198,7 @@ export class AddNewTradeComponent implements OnInit {
     this.updateTradeStrategyProps(source);
     this.tradeStrategyService.addTrade(this.tradeStrategy).subscribe(result => {
       this.toastr.success('Trade strategy has been added.', 'Success');
-      this.router.navigateByUrl("/trade-strategies");
+      this.router.navigateByUrl("/trade-builder");
       this.Loader = !this.Loader;
     },
       err => {
@@ -216,7 +216,11 @@ export class AddNewTradeComponent implements OnInit {
     this.updateTradeStrategyProps(source);
     this.tradeStrategyService.editTrade(this.tradeStrategy).subscribe(result => {
       this.toastr.success('Trade strategy has been updated.', 'Success');
-      this.router.navigateByUrl("/trade-strategies");
+      if (this.tradeStrategy.statusId === 4) {
+        this.router.navigateByUrl("/trade-builder");
+      } else {
+        this.router.navigateByUrl("/trade-strategies");
+      }
       this.Loader = !this.Loader;
     },
       err => {
@@ -384,6 +388,12 @@ export class AddNewTradeComponent implements OnInit {
   }
 
   CheckExecutionDate(failedRules: RuleEvalResult[], source: string) {
+    if (!this.add) {
+      this.editTradeStrategy(source);
+    } else {
+      this.addTrade(source);
+    }
+    /*
     let dialogData = {
       title: 'Confirm Trade Execution Date',
       executed: this.tradeStrategy.executed + '',
@@ -407,6 +417,7 @@ export class AddNewTradeComponent implements OnInit {
         this.addTrade(source);
       }
     });
+    */
   }
 
   editTrade(source: string) {
