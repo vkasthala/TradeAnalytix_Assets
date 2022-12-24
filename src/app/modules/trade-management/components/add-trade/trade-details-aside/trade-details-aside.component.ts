@@ -37,7 +37,7 @@ export class TradeDetailsAsideComponent implements OnInit {
   @Output('navigateRiskAnalysisEvent') navigateRiskAnalysisEvent = new EventEmitter();
 
   @Output('tradeDetails') tradeDetails = new EventEmitter();
-
+  tradeStatus: number;
   showMoreStatistics:boolean = false;
 
   toggleStatistics() {
@@ -87,6 +87,11 @@ export class TradeDetailsAsideComponent implements OnInit {
     });
   }
 
+  ngAfterViewInit(): void {
+    if (this.inputState) {
+      this.tradeStatus = this.inputState.tradeStrategy.statusId;
+    }
+  }
   loadSummary() {
     this.userStockStatsService.getStockMetricsSummaryResult(this.selectedStock.id).subscribe(result => {
       this.stockSummaryResult = result;

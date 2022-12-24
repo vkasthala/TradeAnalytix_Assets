@@ -3,17 +3,8 @@
         <div class="trade-dash-main justify-content-end">
             <button routerLink="/new-trade" class="btn btn-apply">Add Trade</button>
         </div>
-        <div class="trade-strategies-table px-3 py-2 trade-strategies-filters">
-            <!-- start : Tabs section -->
-            <mat-horizontal-stepper labelPosition="left" #stepper [linear]="false" (selectionChange)="selectionChange($event)">
-                <mat-step label="Draft Trades">
-                    <ng-template matStepLabel>Draft Trades</ng-template>
-                    <div class="stepper-content">
-                        <app-draft-trades-grid #draftTradesGrid>loading</app-draft-trades-grid>
-                    </div>
-                </mat-step>
-            </mat-horizontal-stepper>
-            <!-- Grid row -->
+        <div class="trade-strategies-table px-3 trade-strategies-filters">
+            <app-draft-trades-grid #draftTradesGrid>loading</app-draft-trades-grid>
         </div>
     </div>
 </div>

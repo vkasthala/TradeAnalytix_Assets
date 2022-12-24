@@ -11,7 +11,7 @@
         </div>
         <form [formGroup]="entryexitruleform">
             <div class="main-pop-inner">
-                <div class="row mb-2">
+                <!-- <div class="row mb-2">
                     <label class="col-12 col-form-label">Rule Type</label>
                     <div class="col-8">
                         <select class="form-control" formControlName="type" id="exampleFormControlSelect1" [(ngModel)]="rowData.type">
@@ -19,21 +19,21 @@
                             <option value="Exit">Exit</option>
                         </select>
                     </div>
-                </div>
+                </div> -->
 
                 <div class="mb-2">
                     <label class="col-form-label">Description</label>
                     <textarea class="form-control" formControlName="description" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="rowData.description"></textarea>
                 </div>
-                <div class="row mb-2">
+                <!-- <div class="row mb-2">
                     <label class="col-12 col-form-label">Source</label>
                     <div class="col-8 has-search">
                         <input class="form-control" formControlName="source" placeholder="" type="text" [(ngModel)]="rowData.source" />
                     </div>
-                </div>
-                <div class="separator"></div>
+                </div> -->
+                <div class="row separator"></div>
 
-                <div class="btn-up mb-0">
+                <div class="btn-up">
                     <button *ngIf="!isDemoMode" type="button" class="btn btn-save" [mat-dialog-close]="data" (click)="closeModal(entryexitruleform)">{{btnText}}</button>
                 </div>
             </div>

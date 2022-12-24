@@ -15,7 +15,7 @@ export class PlannedTradesGridComponent implements OnInit {
 
   plannedTradesDataSource: PlannedTrade[] = [];
 
-  plannedTradesGridColumns: string[] = ['strategyUid', 'symbol', 'strategyType', 'maxRisk', 'amount', 'reason', 'actions'];
+  plannedTradesGridColumns: string[] = ['symbol', 'strategyUid', 'createDate', 'strategyType', 'direction', 'amount', 'maxRisk', 'tags'];
 
   public hideRuleContent: boolean[] = [];
   protected planOpenGridData: any;

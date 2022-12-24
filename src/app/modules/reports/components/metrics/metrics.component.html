@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-sm-6 metrics-column">
                 <div class="metrics-title mb-2">
-                    Portfolio Metrics
+                    P&L
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Realized Return</label>
@@ -373,7 +373,7 @@
             </div>
         </div>
         <div class="metrics-footer">
-        <span class="cursor" (click)="toggleMetrics()">More Statistics</span>
+        <span class="cursor" (click)="toggleMetrics()">{{showMoreMetrics ? 'Less' : 'More' }} Statistics</span>
         </div>
 
     </div>

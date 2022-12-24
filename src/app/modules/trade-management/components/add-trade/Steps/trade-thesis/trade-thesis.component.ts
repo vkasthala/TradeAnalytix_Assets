@@ -638,7 +638,9 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
         strategyTypeId: this.strategyTypeId,
         tradeThesis: this.tradeThesis,
         tags: this.tradeTagsComponent.tags,
-        tradeChubFiles: this.tradeChubFiles
+        tradeChubFiles: this.tradeChubFiles,
+        tradeStatus: this.tradeStatus,
+        addTrade:this.addTrade
       }
     });
     dialogRef.afterClosed().subscribe((res) => {

@@ -46,6 +46,8 @@ export class JournalPopupComponent implements OnInit, AfterViewInit {
 
   strategyTypes: String[];
   strategyTypeId: number;
+  addTrade: boolean;
+  tradeStatus: number;
 
   constructor(
     public dialogRef: MatDialogRef<JournalPopupComponent>,
@@ -67,6 +69,8 @@ export class JournalPopupComponent implements OnInit, AfterViewInit {
     this.tradeThesis = data.tradeThesis;
     this.tags = data.tags;
     this.tradeChubFiles = data.tradeChubFiles;
+    this.addTrade = data.addTrade;
+    this.tradeStatus = data.tradeStatus;
   }
 
   ngAfterViewInit(): void {

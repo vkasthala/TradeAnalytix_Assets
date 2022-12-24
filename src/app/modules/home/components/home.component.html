@@ -9,7 +9,7 @@
 
         <nav class="trade-navbar">
             <div class="parent-item">
-                <img src="../../../../assets/images/plan.svg" class="mr-1"> Plan
+                <img src="../../../../assets/images/plan.svg" class="nav-icon"> Plan
             </div>
             <ul class="list-unstyled ">
                 <li class="sidebar-item" [class.nav-active]="currentRoute == 'trade-plans'">
@@ -22,10 +22,15 @@
                         <span>Trade Builder</span>
                     </a>
                 </li>
+                <li class="sidebar-item" [class.nav-active]="currentRoute == 'risk-analysis'">
+                    <a class="sidebar-link" [routerLink]="['/risk-analysis/']">
+                        <span>Payoff Analyzer</span>
+                    </a>
+                </li>
             </ul>
 
             <div class="parent-item">
-                <img src="../../../../assets/images/journal.svg" class="mr-1"> Journal
+                <img src="../../../../assets/images/journal.svg" class="nav-icon"> Journal
             </div>
             <ul class="list-unstyled ">
                 <li class="sidebar-item" [class.nav-active]="currentRoute == 'import-trades-history'">
@@ -49,12 +54,12 @@
             </ul>
 
             <div class="parent-item">
-                <img src="../../../../assets/images/review.svg" class="mr-1"> Review
+                <img src="../../../../assets/images/review.svg" class="nav-icon"> Review
             </div>
             <ul class="list-unstyled ">
                 <li class="sidebar-item" [class.nav-active]="currentRoute == 'reports'">
                     <a class="sidebar-link" [routerLink]="['/reports/']">
-                        <span>Analytics</span>
+                        <span>Reports</span>
                     </a>
                 </li>
                 <li class="sidebar-item" [class.nav-active]="currentRoute == 'insights'">

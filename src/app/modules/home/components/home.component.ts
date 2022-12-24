@@ -124,7 +124,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
       case 'exit-rules': return { breadcrumb: 'TRADE STRATEGIES', title: 'Exit Rules', description: 'Dashboard' };
 
-      case 'trade-plans': return { breadcrumb: 'TRADING PLAN', title: 'Trade Plan', description: "Trade plans created by the user are segregated by status and displayed as a list. A trade plan would be in Open status when created. Once the user updates the trade plan after market hours, it status would change to Closed." };
+      case 'trade-plans': return { breadcrumb: 'Daily Plan', title: 'Daily Plan', description: "Trade plans created by the user are segregated by status and displayed as a list. A trade plan would be in Open status when created. Once the user updates the trade plan after market hours, it status would change to Closed." };
 
       case 'profile': return { breadcrumb: 'USER PROFILE', title: 'User Profile', description: "User Profile" };
 

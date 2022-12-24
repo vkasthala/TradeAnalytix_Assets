@@ -1,7 +1,7 @@
 <div class="mb-1">
-    <input type="file" (change)="selectFile($event)" accept=".pdf,.png,.jpg,.jpeg,.bmp,.docx,.doc,.xls,.xlsx,.pptx,.ppt" />
+    <input type="file" class="input-file" (change)="selectFile($event)" accept=".pdf,.png,.jpg,.jpeg,.bmp,.docx,.doc,.xls,.xlsx,.pptx,.ppt" />
 </div>
-<div class="d-flex align-items-center" *ngFor="let file of tradeChubFiles;let i = index">
+<div class="d-flex file-list" *ngFor="let file of tradeChubFiles;let i = index">
     <span (click) = "downloadFile(i)" style="cursor: pointer">{{file.fileName}}</span>
     <mat-icon class="cursor mat-icon-sm ml-3" (click)="deleteFileName(i)">delete</mat-icon>
 </div>
