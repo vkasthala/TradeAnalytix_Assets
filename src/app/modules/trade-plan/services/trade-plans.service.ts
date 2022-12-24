@@ -41,7 +41,7 @@ export class TradePlansService {
     }
 
     getTodayExecutedTrades(day: string): Observable<TodayExecutedTrade[]> {
-        return this.http.get<TodayExecutedTrade[]>(this.apiUrl + '/trade-plan/executed-trades');
+        return this.http.get<TodayExecutedTrade[]>(this.apiUrl + '/trade-plan/executed-trades/' + day);
     }
 
     getPlannedTrades(tradePlanId: number): Observable<PlannedTrade[]> {

@@ -174,6 +174,7 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
     if (this.selectedPlan) {
       this.loadHoldings();
       this.plannedTradesGrid.initPlannedTradesGrid(this.selectedPlan.id, false);
+      this.loadTodayTrades();
     }
   }
 
