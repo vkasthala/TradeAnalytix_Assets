@@ -20,6 +20,12 @@ export class ReportTypeService {
       subTypes = this.getPerformanceSubTypes();
     } else if (category === 'risk') {
       subTypes = this.getRiskReportSubTypes();
+    } else if (category === 'commissions') {
+      subTypes = this.getCommissionsSubTypes();
+    } else if (category === 'goals') {
+      subTypes = this.getGoalsReportSubTypes();
+    } else if (category === 'discipline') {
+      subTypes = this.getDisciplineReportSubTypes();
     }
     return subTypes;
   }
@@ -113,7 +119,19 @@ export class ReportTypeService {
     reportSubType.reportDetailList = [new ReportDetails('net_return_strategy_type', 'Net Return by Strategy Type', ReportCategory.Net_Return, "This report shows the realized return by strategy type"), new ReportDetails('win_loss_strategy_type', 'Win/Loss by Strategy Type', ReportCategory.Win_Loss, "This report shows the win rate by strategy type")];
     reportSubTypes.push(reportSubType);
 
-     reportSubType = new ReportSubType();
+    reportSubType = new ReportSubType();
+    reportSubType.name = 'Direction';
+    reportSubType.id = "direction";
+    reportSubType.reportDetailList = [new ReportDetails('net_return_direction', 'Net Return by Direction', ReportCategory.Net_Return, "This report shows the realized return of the user's portfolio by direction for the selected date range."), new ReportDetails('win_loss_direction', 'Win/Loss by Direction', ReportCategory.Win_Loss, "This report shows the number of winning and losing trades by direction for the selected date range.")];
+    reportSubTypes.push(reportSubType);
+
+    reportSubType = new ReportSubType();
+    reportSubType.name = 'Contrarian';
+    reportSubType.id = "contrarian";
+    reportSubType.reportDetailList = [new ReportDetails('net_return_contrarian', 'Net Return by Contrarian', ReportCategory.Net_Return, "This report shows the realized return by contrarian type"), new ReportDetails('win_loss_contrarian', 'Win/Loss by Contrarian', ReportCategory.Win_Loss, "This report shows the number of winning and losing trades by contrarian")];
+    reportSubTypes.push(reportSubType);
+
+    reportSubType = new ReportSubType();
     reportSubType.name = 'Trade Day and Time';
     reportSubType.id = "initiated_day";
     reportSubType.reportDetailList = [new ReportDetails('net_return_tradeday', 'Net Return by Trade Day', ReportCategory.Net_Return, "This report shows the realized return of the user's portfolio by the day on which they are opened"), new ReportDetails('win_loss_tradeday', 'Win/Loss by Trade Day', ReportCategory.Win_Loss, "This report shows the number of winning and losing trades by the day on which the user opened the trade")];
@@ -123,59 +141,6 @@ export class ReportTypeService {
     reportSubType.name = 'Trade Count';
     reportSubType.id = "trade_count";
     reportSubType.reportDetailList = [new ReportDetails('trade_count', 'Trade Count by Day', ReportCategory.Allocation, "This report shows the transactions of user by executed day")];
-    reportSubTypes.push(reportSubType);
-
-    reportSubType = new ReportSubType();
-    reportSubType.name = 'Commissions';
-    reportSubType.id = "commissions";
-    reportSubType.reportDetailList = [new ReportDetails('daily-commission', 'Daily Commission', ReportCategory.Commission, "This report shows commission amount by day"), new ReportDetails('commission-by-asset', 'Commission Paid by Asset Type', ReportCategory.Commission, "This report shows commission amount by asset type")];
-    reportSubTypes.push(reportSubType);
-
-    reportSubType = new ReportSubType();
-    reportSubType.name = 'Stock Price Range';
-    reportSubType.id = "stockPrice";
-    reportSubType.reportDetailList = [new ReportDetails('net-return-price-range', 'Realized Return by Price Range', ReportCategory.Symbols_By_Net_Return, "This report shows the realized return by stock price range"), new ReportDetails('win-loss-price-range', 'Win Rate by Price Range', ReportCategory.Symbols_By_Win_Loss, "This report shows the win rate by stock price range")];
-    reportSubTypes.push(reportSubType);
-
-    reportSubType.name = 'Value at Risk by Asset';
-    reportSubType.id = "max_risk_asset";
-    reportSubType.reportDetailList = [new ReportDetails('max_risk_asset', 'Value at Risk by Asset Chart', ReportCategory.Dashboard, "This report shows the current maximum risk of the user's portfolio by symbol. Maximum risk is calculated based on the previous 30-day volatility of the stocks.")];
-    reportSubTypes.push(reportSubType);
-    
-    reportSubType = new ReportSubType();
-    reportSubType.name = 'Maximum Risk';
-    reportSubType.id = "risk_max_risk_profit";
-    reportSubType.reportDetailList = [new ReportDetails('max_risk_profit', 'Maximum Risk', ReportCategory.Risk, "This report shows the maximum risk of the portfolio during the selected range. Maximum risk is calculated based on the previous 30-day volatility of the stocks.")];
-    reportSubTypes.push(reportSubType);
-
-    return reportSubTypes;
-  }
-
-  private getDisciplineReportSubTypes(): ReportSubType[] {
-    let reportSubTypes: ReportSubType[] = [];
-
-    let reportSubType: ReportSubType = new ReportSubType();
-    reportSubType.name = 'Planned Trades';
-    reportSubType.id = "discipline_performance";
-    reportSubType.reportDetailList = [new ReportDetails('discipline_trade_type', 'Return and Win Rate by planned trades', ReportCategory.Discipline, "This report compares the realized return of the user's portfolio by planned and impromptu trades")];
-    reportSubTypes.push(reportSubType);
-
-    reportSubType = new ReportSubType();
-    reportSubType.name = 'Trade Plan Compliance';
-    reportSubType.id = "discipline_compliance";
-    reportSubType.reportDetailList = [new ReportDetails('discipline_netreturn', 'Net Return by Trade Plan Compliance', ReportCategory.Discipline, "This report illustrates the importance of creating a trade plan by showing the realized return on the days trade plan was created"), new ReportDetails('discipline_winrate', 'Win Rate by Trade Plan Compliance', ReportCategory.Discipline, "This report illustrates the importance of creating a trade plan by showing the realized return on the days trade plan was created")];
-    reportSubTypes.push(reportSubType);
-
-    return reportSubTypes;
-  }
-
-  private getRiskReportSubTypes(): ReportSubType[] {
-    let reportSubTypes: ReportSubType[] = [];
-
-    let reportSubType: ReportSubType = new ReportSubType();
-    reportSubType.name = 'Goal Status';
-    reportSubType.id = "goal_status";
-    reportSubType.reportDetailList = [new ReportDetails('goal_status', 'Goal Status', ReportCategory.Goal_Status, "This report compares the goals set by the user for a given period against the realized return during that period.")];
     reportSubTypes.push(reportSubType);
 
     reportSubType = new ReportSubType();
@@ -203,41 +168,24 @@ export class ReportTypeService {
     reportSubTypes.push(reportSubType);
 
     reportSubType = new ReportSubType();
-    reportSubType.name = 'Direction';
-    reportSubType.id = "direction";
-    reportSubType.reportDetailList = [new ReportDetails('net_return_direction', 'Net Return by Direction', ReportCategory.Net_Return, "This report shows the realized return of the user's portfolio by direction for the selected date range."), new ReportDetails('win_loss_direction', 'Win/Loss by Direction', ReportCategory.Win_Loss, "This report shows the number of winning and losing trades by direction for the selected date range.")];
-    reportSubTypes.push(reportSubType);
-
-    reportSubType = new ReportSubType();
-    reportSubType.name = 'Contrarian';
-    reportSubType.id = "contrarian";
-    reportSubType.reportDetailList = [new ReportDetails('net_return_contrarian', 'Net Return by Contrarian', ReportCategory.Net_Return, "This report shows the realized return by contrarian type"), new ReportDetails('win_loss_contrarian', 'Win/Loss by Contrarian', ReportCategory.Win_Loss, "This report shows the number of winning and losing trades by contrarian")];
-    reportSubTypes.push(reportSubType);
-
-    reportSubType = new ReportSubType();
-    reportSubType.name = 'Net R';
-    reportSubType.id = "net_r";
-    reportSubType.reportDetailList = [new ReportDetails('net_r', 'Net R', ReportCategory.Risk, "This report shows the risk adjusted return of the user's portfolio.")];
-    reportSubTypes.push(reportSubType);
-
-    // reportSubType = new ReportSubType();
-    // reportSubType.name = 'Portfolio Systematic Risk';
-    // reportSubType.id = "portfolio_systematic_risk";
-    // reportSubType.reportDetailList = [];
-    // reportSubTypes.push(reportSubType);
-
-    reportSubType = new ReportSubType();
     reportSubType.name = 'Mindset';
     reportSubType.id = "mindset";
     reportSubType.reportDetailList = [new ReportDetails('net_return_mindset', 'Net Return by Mindset', ReportCategory.Net_Return, "This report shows the realized return of the user's portfolio by user's mindset at the time of opening the trade"), new ReportDetails('win_loss_mindset', 'Win/Loss by Mindset', ReportCategory.Win_Loss, "This report shows the number of winning and losing trades by user's mindset at the time of opening the trade")];
     reportSubTypes.push(reportSubType);
 
-    reportSubType = new ReportSubType();
-    reportSubType.name = 'Entry Price';
-    reportSubType.reportDetailList = [];
-    reportSubTypes.push(reportSubType);
+    // reportSubType = new ReportSubType();
+    // reportSubType.name = 'Stock Price Range';
+    // reportSubType.id = "stockPrice";
+    // reportSubType.reportDetailList = [new ReportDetails('net-return-price-range', 'Realized Return by Price Range', ReportCategory.Symbols_By_Net_Return, "This report shows the realized return by stock price range"), new ReportDetails('win-loss-price-range', 'Win Rate by Price Range', ReportCategory.Symbols_By_Win_Loss, "This report shows the win rate by stock price range")];
+    // reportSubTypes.push(reportSubType);
 
-    reportSubType = new ReportSubType();
+    return reportSubTypes;
+  }
+
+  private getDisciplineReportSubTypes(): ReportSubType[] {
+    let reportSubTypes: ReportSubType[] = [];
+
+    let reportSubType: ReportSubType = new ReportSubType();
     reportSubType.name = 'Planned Trades';
     reportSubType.id = "discipline_performance";
     reportSubType.reportDetailList = [new ReportDetails('discipline_trade_type', 'Return and Win Rate by planned trades', ReportCategory.Discipline, "This report compares the realized return of the user's portfolio by planned and impromptu trades")];
@@ -252,7 +200,44 @@ export class ReportTypeService {
     return reportSubTypes;
   }
 
-  /*private getGoalsReportSubTypes(): ReportSubType[] {
+  private getRiskReportSubTypes(): ReportSubType[] {
+    let reportSubTypes: ReportSubType[] = [];
+
+    let reportSubType = new ReportSubType();
+    reportSubType.name = 'Max Risk by Asset';
+    reportSubType.id = "max_risk_asset";
+    reportSubType.reportDetailList = [new ReportDetails('max_risk_asset', 'Max Risk by Asset', ReportCategory.Risk, "This report shows the maximum risk of the portfolio during the selected range. Maximum risk is calculated based on the previous 30-day volatility of the stocks.")];
+    reportSubTypes.push(reportSubType);
+
+    reportSubType = new ReportSubType();
+    reportSubType.name = 'Max Risk Trend';
+    reportSubType.id = "risk_max_risk_profit";
+    reportSubType.reportDetailList = [new ReportDetails('risk_max_risk_profit', 'Max Risk Trend', ReportCategory.Risk, "This report shows the current maximum risk of the user's portfolio by symbol. Maximum risk is calculated based on the previous 30-day volatility of the stocks.")];
+    reportSubTypes.push(reportSubType);
+
+    reportSubType = new ReportSubType();
+    reportSubType.name = 'Net R';
+    reportSubType.id = "net_r";
+    reportSubType.reportDetailList = [new ReportDetails('net_r', 'Net R', ReportCategory.Risk, "This report shows the risk adjusted return of the user's portfolio.")];
+    reportSubTypes.push(reportSubType);
+
+    // reportSubType = new ReportSubType();
+    // reportSubType.name = 'Portfolio Systematic Risk';
+    // reportSubType.id = "portfolio_systematic_risk";
+    // reportSubType.reportDetailList = [];
+    // reportSubTypes.push(reportSubType);
+
+    
+
+    // reportSubType = new ReportSubType();
+    // reportSubType.name = 'Entry Price';
+    // reportSubType.reportDetailList = [];
+    // reportSubTypes.push(reportSubType);
+
+    return reportSubTypes;
+  }
+
+  private getGoalsReportSubTypes(): ReportSubType[] {
     let reportSubTypes: ReportSubType[] = [];
 
     let reportSubType: ReportSubType = new ReportSubType();
@@ -262,6 +247,17 @@ export class ReportTypeService {
     reportSubTypes.push(reportSubType);
 
     return reportSubTypes;
-  }*/
+  }
+  private getCommissionsSubTypes(): ReportSubType[] {
+    let reportSubTypes: ReportSubType[] = [];
+
+    let reportSubType: ReportSubType = new ReportSubType();
+    reportSubType.name = 'Daily Commission';
+    reportSubType.id = "commissions";
+    reportSubType.reportDetailList = [new ReportDetails('daily-commission', 'Daily Commission', ReportCategory.Commission, "This report shows commission amount by day"), new ReportDetails('commission-by-asset', 'Commission Paid by Asset Type', ReportCategory.Commission, "This report shows commission amount by asset type")];
+    reportSubTypes.push(reportSubType);
+
+    return reportSubTypes;
+  }
 
 }

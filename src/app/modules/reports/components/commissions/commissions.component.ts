@@ -10,7 +10,7 @@ import { ReportTabContentComponent } from '../report-tab-content/report-tab-cont
 export class CommissionsComponent extends ReportTabContentComponent implements OnInit {
 
   constructor(reportTypeService: ReportTypeService) {
-    super('commission', reportTypeService);
+    super('commissions', reportTypeService);
   }
 
   ngOnInit() {

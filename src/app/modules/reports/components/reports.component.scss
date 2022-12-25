@@ -183,8 +183,6 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
     @media #{$small} {
         justify-content: flex-start;
         align-items: flex-start;
@@ -298,8 +296,21 @@
     font-size: 14px;
     line-height: 40px;
     color: #0066FF;
-  }
-  .page-nav-item {
+}
+.page-nav-item {
     color: #0066FF;
     margin: 0 0.5rem;
-  }
+}
+.report-trade-symbol {
+    height: 42px;
+}
+.form-icon-down {
+    position: relative;
+    right: 5px;
+    top: -25px;
+    float: right;
+    font-size: 16px !important;
+    font-weight: bold;
+    cursor: pointer;
+    color: black !important;
+}

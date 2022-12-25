@@ -112,7 +112,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
       case 'strategy-comparison': return { breadcrumb: 'Strategy Picker', title: 'Strategy Picker', description: "Enter the first few letters of the symbol or company name and choose a stock from the list. Compare up to five trades on that symbol to pick the right trade strategy that’s in line with your risk appetite" };
 
-      case 'reports': return { breadcrumb: 'Trade Analytics', title: 'Trade Analytics', description: 'Reports' };
+      case 'reports': return { breadcrumb: 'Reports', title: 'Reports', description: 'Reports' };
 
       case 'help': return { breadcrumb: 'How-To Guides', title: 'How-To Guides', description: 'Help' };
 

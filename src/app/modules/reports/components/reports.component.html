@@ -9,14 +9,20 @@
                             <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#Metrics" role="tab">Statistics</a>
                         </li>
                         <li role="presentation">
-                            <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#Performance" role="tab" (click)="onTabSelect('performance')">Tradebook Reports</a>
+                            <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#Performance" role="tab" (click)="onTabSelect('performance')">Performance</a>
                         </li>
                         <li class="" role="presentation">
-                            <a aria-controls="Journal Reports" aria-expanded="false" data-toggle="tab" href="#RiskManagement" role="tab" (click)="onTabSelect('risk')">Journal Reports</a>
+                            <a aria-controls="Journal Reports" aria-expanded="false" data-toggle="tab" href="#RiskManagement" role="tab" (click)="onTabSelect('risk')">Risk</a>
                         </li>                      
-                        <!-- <li class="" role="presentation">
-                            <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#Rules" role="tab" (click)="onTabSelect('rules')">Trading Rules<img src="../../../../assets/images/beta-icon.png" class="beta-icon"/></a>
-                        </li> -->
+                        <li class="" role="presentation">
+                            <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#Commissions" role="tab" (click)="onTabSelect('commissions')">Commissions</a>
+                        </li>
+                        <li class="" role="presentation">
+                            <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#Goals" role="tab" (click)="onTabSelect('goals')">Goals</a>
+                        </li>
+                        <li class="" role="presentation">
+                            <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#Discipline" role="tab" (click)="onTabSelect('discipline')">Discipline</a>
+                        </li>
                         
                     </ul>
                     <!-- <a data-toggle="modal" data-target="#modal1" class="watch-video-sm cursor mr-3">Watch Video</a> -->
@@ -29,8 +35,22 @@
                                 <a class="page-nav-item">3M</a>
                                 <a class="page-nav-item">1Y</a>
                             </span>
-                            <div>
-                                <my-date-range-picker placeholder="Date range" name="metricDate" [options]="metricDate" (dateRangeChanged)="onmetricDateChanged($event)"></my-date-range-picker>
+                            
+                            <div class="top-sec">
+                                <div class="report-trade-symbol mr-2" *ngIf="selectedTabReport === 'performance'">
+                                    <div class="form-group has-search">
+                                        <app-trade-search (symbolSelectEvent)="symbolSelectEventHandler($event)" #tradeSearchComponent>
+                                        </app-trade-search>
+                                        <mat-icon class="form-icon-down" (click)="onClearSymbol()">clear</mat-icon>
+                                    </div>
+                                </div>
+                                <div class="trade-date">
+                                    <div class="form-group m-0">
+                                        <div class='input-group date' id='datetimepicker1'>
+                                            <my-date-range-picker placeholder="Date range" name="mydaterange" [options]="myDateRangePickerOptions" (dateRangeChanged)="onDateRangeChanged($event)" [(ngModel)]="dateFilter"></my-date-range-picker>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -45,9 +65,16 @@
                     <div class="tab-pane fade" id="RiskManagement" role="tabpanel">
                         <app-riskmanagement #riskReports></app-riskmanagement>
                     </div>
-                    <!-- <div class="tab-pane fade" id="Rules" role="tabpanel" >
-                        <app-reports-rules #rulesReports></app-reports-rules>
-                     </div> -->
+                    <div class="tab-pane fade" id="Commissions" role="tabpanel">
+                        <app-commissions #commissionsReports></app-commissions>
+                    </div>
+                    <div class="tab-pane fade" id="Goals" role="tabpanel" >
+                        <app-goals #goalsReports></app-goals>
+                     </div>
+                    <div class="tab-pane fade" id="Discipline" role="tabpanel" >
+                        <app-discipline #disciplineReports></app-discipline>
+                     </div>
+                     
                 </div>
             </div>
         </div>
@@ -70,21 +97,21 @@
                 <div [ngClass]="selectedParentReport === 'Performance' ? 'd-block' : 'd-none'">
                     <app-performance></app-performance>
                 </div>
-                <!-- <div [ngClass]="selectedParentReport === 'Goals' ? 'd-block' : 'd-none'">
-                    <app-goals #GoalsReports></app-goals>
-                </div> -->
+                <div [ngClass]="selectedParentReport === 'Goals' ? 'd-block' : 'd-none'">
+                    <app-goals #goalsReports></app-goals>
+                </div>
                 <div [ngClass]="selectedParentReport === 'RiskManagement' ? 'd-block' : 'd-none'">
                     <app-riskmanagement #riskReports></app-riskmanagement>
                 </div>
                 <div [ngClass]="selectedParentReport === 'Rules' ? 'd-block' : 'd-none'">
                     <app-reports-rules #rulesReports></app-reports-rules>
                  </div>
-                <!-- <div [ngClass]="selectedParentReport === 'Discipline' ? 'd-block' : 'd-none'">
+                <div [ngClass]="selectedParentReport === 'Discipline' ? 'd-block' : 'd-none'">
                     <app-discipline #disciplineReports></app-discipline>
                 </div>
                 <div [ngClass]="selectedParentReport === 'Commissions' ? 'd-block' : 'd-none'">
-                    <app-commissions></app-commissions>
-                </div> -->
+                    <app-commissions #commissionsReports></app-commissions>
+                </div>
             </div>
         </div>
     </div>
