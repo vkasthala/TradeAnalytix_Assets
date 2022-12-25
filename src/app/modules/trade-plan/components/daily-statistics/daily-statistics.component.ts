@@ -3,6 +3,7 @@ import { ReportDataService } from 'src/app/modules/reports/services/report-data.
 import { SummaryRequest } from 'src/app/modules/shared/models/reports/summary-request.model';
 import { TradePlanEntry } from '../../models/trade-plan-entry.model';
 import { TradePlanSummary } from '../../models/trade-plan-summary.model';
+import { TradePlansService } from '../../services/trade-plans.service';
 
 @Component({
   selector: 'app-dailystatistics',
@@ -13,21 +14,16 @@ export class DailyStatisticsComponent implements OnInit {
 
   tradePlanSummary: TradePlanSummary = new TradePlanSummary();
 
-  constructor(private reportDataService: ReportDataService) {
+  constructor(private reportDataService: ReportDataService, protected tradePlanService: TradePlansService) {
   }
 
   ngOnInit() {
   }
 
   loadSummary(selectedPlan: TradePlanEntry): void {
-    this.reportDataService.getReportSummary(this.createSummaryRequest(selectedPlan)).subscribe(result => {
-      debugger;
-      if (result && result.length) {
-        let summary: TradePlanSummary = new TradePlanSummary();
-        result.forEach(item => {
-          summary[item.id] = item.value ? item.value : item.defaultValue;
-        });
-        this.tradePlanSummary = summary;
+    this.tradePlanService.getTradePlanSummary(this.createSummaryRequest(selectedPlan)).subscribe(result => {
+      if (result) {
+        this.tradePlanSummary = result;
       }
     });
   }

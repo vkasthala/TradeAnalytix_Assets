@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { SummaryRequest } from '../../shared/models/reports/summary-request.model';
 import { HttpService } from '../../shared/services/http.service';
 import { MarketStatus } from '../models/market-status.model';
 import { PlannedTrade } from '../models/planned-trade.model';
@@ -11,6 +12,7 @@ import { TradePlanGridRequest } from '../models/trade-plan-grid-request.model';
 import { TradePlanGridResult } from '../models/trade-plan-grid-result.model';
 import { TradePlanGridRow } from '../models/trade-plan-grid-row.model';
 import { TradePlanStrategy } from '../models/trade-plan-strategy.model';
+import { TradePlanSummary } from '../models/trade-plan-summary.model';
 import { TradePlan } from '../models/trade-plan.model';
 import { TradePlans } from '../models/trade-plans.model';
 @Injectable({
@@ -82,6 +84,10 @@ export class TradePlansService {
 
     getTradePlanEntries(fromDay: string, toDay: string): Observable<TradePlanEntry[]> {
         return this.http.get<TradePlanEntry[]>(this.apiUrl + '/trade-plan/trade-plan-entries' + '?fromDay=' + fromDay + "&toDay=" + toDay);
+    }
+
+    getTradePlanSummary(request: SummaryRequest): Observable<TradePlanSummary> {
+        return this.http.post<SummaryRequest, TradePlanSummary>(this.apiUrl + '/trade-plan/summary', request);
     }
 
 }
