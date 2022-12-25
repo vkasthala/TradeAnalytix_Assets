@@ -11,5 +11,7 @@ export class SummaryRequest {
     strategyTypeId: number;
 
     symbol: string;
+
+    day: string;
     
 }

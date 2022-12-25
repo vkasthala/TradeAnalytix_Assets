@@ -23,6 +23,10 @@ import { SettingsService } from 'src/app/modules/settings/services/settings.serv
 import { TradePlanEntry } from '../../models/trade-plan-entry.model';
 import { TradePlanStrategy } from '../../models/trade-plan-strategy.model';
 import { TodayExecutedTrade } from '../../models/today-executed-trade.model';
+import { SummaryRequest } from 'src/app/modules/shared/models/reports/summary-request.model';
+import { ReportDataService } from 'src/app/modules/reports/services/report-data.service';
+import { TradePlanSummary } from '../../models/trade-plan-summary.model';
+import { DailyStatisticsComponent } from '../daily-statistics/daily-statistics.component';
 const moment = _moment;
 
 @Component({
@@ -48,6 +52,7 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
   @ViewChild('tradeMobileStepper', { static: false }) private tradeMobileStepper: MatStepper;
   @ViewChild('tradeStrategiesGrid', { static: false }) protected tradeStrategiesGrid: OpenStrategiesGridComponent;
   @ViewChild('plannedTradesGrid', { static: false }) protected plannedTradesGrid: PlannedTradesGridComponent;
+  @ViewChild('dailyPlanStats', { static: false }) protected dailyPlanStats: DailyStatisticsComponent;
 
   planDates: TradePlanEntry[] = [];
   selectedPlan: TradePlanEntry;
@@ -64,11 +69,11 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
     protected toastr: ToastrService,
     protected demoService: DemoModeDetailsService,
     private dateAdapter: DateAdapter<Date>,
-    private settingsService: SettingsService,
+    private settingsService: SettingsService
   ) {
     this.initState();
   }
-  
+
   ngAfterViewInit(): void {
     this.loadPlanEntries();
     this.loadMetadata();
@@ -175,6 +180,7 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
       this.loadHoldings();
       this.plannedTradesGrid.initPlannedTradesGrid(this.selectedPlan.id, false);
       this.loadTodayTrades();
+      this.dailyPlanStats.loadSummary(this.selectedPlan);
     }
   }
 
