@@ -77,6 +77,12 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.loadPlanEntries();
     this.loadMetadata();
+    if (this.plannedTradesGrid) {
+      this.plannedTradesGrid.initPlannedTradesGrid(this.selectedPlan.id, false);
+    }
+    if (this.dailyPlanStats) {
+      this.dailyPlanStats.loadSummary(this.selectedPlan);
+    }
   }
 
   ngOnInit() {
@@ -178,9 +184,13 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
   refreshSelectedPlanData() {
     if (this.selectedPlan) {
       this.loadHoldings();
-      this.plannedTradesGrid.initPlannedTradesGrid(this.selectedPlan.id, false);
+      if (this.plannedTradesGrid) {
+        this.plannedTradesGrid.initPlannedTradesGrid(this.selectedPlan.id, false);
+      }
       this.loadTodayTrades();
-      this.dailyPlanStats.loadSummary(this.selectedPlan);
+      if (this.dailyPlanStats) {
+        this.dailyPlanStats.loadSummary(this.selectedPlan);
+      }
     }
   }
 

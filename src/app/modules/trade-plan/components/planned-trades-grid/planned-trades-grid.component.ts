@@ -1,17 +1,20 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 import { PlannedTrade } from '../../models/planned-trade.model';
 import { TradePlansService } from '../../services/trade-plans.service';
 import { Subject } from 'rxjs';
 import { MatDialog } from '@angular/material';
 import { PlannedTradeDialogComponent } from '../planned-trade-dialog/planned-trade-dialog.component';
 import { ConfirmDialogComponent } from 'src/app/modules/shared/components/modals/confirm-dialog/confirm-dialog.component';
+import { TradePlanEntry } from '../../models/trade-plan-entry.model';
 
 @Component({
   selector: 'app-planned-trades-grid',
   templateUrl: './planned-trades-grid.component.html',
   styleUrls: ['./planned-trades-grid.component.scss']
 })
-export class PlannedTradesGridComponent implements OnInit {
+export class PlannedTradesGridComponent implements OnInit, AfterViewInit {
+
+  @Input('selectedPlan') selectedPlan: TradePlanEntry;
 
   plannedTradesDataSource: PlannedTrade[] = [];
 
@@ -35,6 +38,12 @@ export class PlannedTradesGridComponent implements OnInit {
     //   this.plannedTradesGridColumns.push('executed');
     // }
     // this.loadPlannedTrades();    
+  }
+
+  ngAfterViewInit(): void {
+    if (this.selectedPlan) {
+      this.initPlannedTradesGrid(this.selectedPlan.id, false);
+    }
   }
 
   initPlannedTradesGrid(tradePlanId: number, view: boolean) {

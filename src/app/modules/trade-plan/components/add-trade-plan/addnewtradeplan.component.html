@@ -79,7 +79,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <app-planned-trades-grid #plannedTradesGrid></app-planned-trades-grid>
+                            <app-planned-trades-grid [selectedPlan]="selectedPlan" #plannedTradesGrid></app-planned-trades-grid>
                         </ng-template>
                     </mat-expansion-panel>
                 </mat-accordion>
@@ -162,7 +162,7 @@
                     </div>
                 </div>
                 <div class="py-3">
-                    <app-dailystatistics #dailyPlanStats></app-dailystatistics>
+                    <app-dailystatistics [selectedPlan]="selectedPlan" #dailyPlanStats></app-dailystatistics>
                 </div>
             </div>
         </div>

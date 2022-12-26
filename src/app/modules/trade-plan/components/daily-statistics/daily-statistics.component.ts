@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { ReportDataService } from 'src/app/modules/reports/services/report-data.service';
 import { SummaryRequest } from 'src/app/modules/shared/models/reports/summary-request.model';
 import { TradePlanEntry } from '../../models/trade-plan-entry.model';
@@ -10,7 +10,9 @@ import { TradePlansService } from '../../services/trade-plans.service';
   templateUrl: './daily-statistics.component.html',
   styleUrls: ['./daily-statistics.component.scss']
 })
-export class DailyStatisticsComponent implements OnInit {
+export class DailyStatisticsComponent implements OnInit, AfterViewInit {
+
+  @Input('selectedPlan') selectedPlan: TradePlanEntry;
 
   tradePlanSummary: TradePlanSummary = new TradePlanSummary();
 
@@ -18,6 +20,12 @@ export class DailyStatisticsComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  ngAfterViewInit(): void {
+    if (this.selectedPlan) {
+      this.loadSummary(this.selectedPlan);
+    }
   }
 
   loadSummary(selectedPlan: TradePlanEntry): void {
