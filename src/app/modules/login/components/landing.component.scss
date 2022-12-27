@@ -224,7 +224,7 @@ body {
     .slideFeatures {
         font-size: 22px;
         line-height: 1.345;
-        color: #fff;
+        color: #9DA6BA;
         margin-top: 1rem;
         @media #{$extra-small} {
             font-size: 16px;
@@ -241,7 +241,7 @@ body {
     }
     .banner-info-title {
         font-weight: 1000;
-        font-size: 4rem;
+        font-size: 3rem;
         line-height: 1;
         color: #fff;
         @media #{$extra-small} {
@@ -256,17 +256,17 @@ body {
             padding:0;
         }
         .google-btn {
-            height: 60px;
-            font-size: 20px;
+            height: 50px;
+            font-size: 16px;
             font-weight: 600;
             box-shadow: none;
-            padding: 1rem;
-            width: 330px;
+            padding: 0 1rem;
             text-align: center;
             border: 0;
             letter-spacing: 1px;
             background-color: #EC6B56;
             color: #fff;
+            border-radius: 4px;
             @media #{$extra-small} {
                 width: 90%;
                 height: 55px;
@@ -320,16 +320,20 @@ body {
         }
     }
     .banner-info-footer .btn-outline {
-        height: 50px;
-        border: 1px solid #394c86;
+        background: transparent;
+        height: 48px;
+        border: 1px solid #fff;
         box-sizing: border-box;
         border-radius: 4px;
-        border-color: #394c86;
-        color: #394c86;
+        color: #fff;
         text-align: center;
-        font-weight: 600;
-        font-size: 14px;
         line-height: 34px;
+
+        font-size: 16px;
+        font-weight: 600;
+        box-shadow: none;
+        padding: 0 1rem;
+
         @media #{$extra-small} {
             margin-left: 0 !important;
         }
@@ -455,7 +459,7 @@ body {
         width: 90%;
     }
     .main-body {
-        background: #fff;
+        background: #F5F5F5;
         padding-top: 2rem;
         margin-top: -25px;
         z-index: 90;
@@ -507,10 +511,8 @@ body {
             text-align: left;
         }
         .read_more {
-            font-weight: bold;
-            font-size: 13px;
+            font-size: 14px;
             color: #2285FA;
-            margin-left: .5rem;
         }
         .features_section_banner {
             // padding-top: 1rem;
@@ -928,9 +930,6 @@ $button-active-blue: #1669F2;
 	color:#5E5E5E !important;
 }
 
-.howit_works_section img {
-	width:100% !important;
-}
 .intro-description {
     font-weight: normal;
     font-size: 20px;
@@ -1414,3 +1413,78 @@ $button-active-blue: #1669F2;
     margin: 0 auto;
     min-height: 40px;
 }
+.trade-logos {
+    background-color: #EAF3FE;
+    height: 120px;
+    .description {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        text-align: center;
+        color: #9DA6BA;
+        text-align: center;
+    }
+}
+.white-box {
+    background: #FFFFFF;
+    border-radius: 25px;
+    position: relative;
+    width: 90%;
+}
+.white-box-count {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    width: 35px;
+    height: 35px;
+    background: #2285FA;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    border-radius: 50%;
+    top: -17px;
+    position: relative;
+}
+.white-box-title {
+    font-size: 18px;
+    font-weight: 500;
+    color: #000000;
+    margin-top: -5px;
+}
+.orange-list {
+    position: relative;
+    padding: 1rem;
+    margin: 0;
+    list-style-type: none;
+}
+.orange-list li {
+    position: relative;
+    list-style-type: none;
+    font-size: 14px;
+    color: #9DA6BA;
+    padding-left: 25px;
+    text-align: left;
+    margin-bottom: .5rem;
+}
+.orange-list li::before {
+    position: absolute;
+    width: 20px;
+    height: 15px;
+    content: "";
+    left: 0;
+    top: 5px;
+    border-left: 12px solid #EC6B56;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+}
+  
+.arrow-rt {
+    position: absolute;
+    top: 30%;
+    right: 0;
+    img {
+        width: 90%;
+    }
+  }
+  

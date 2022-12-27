@@ -39,7 +39,8 @@ import { ViewInsightsComponent } from './modules/zerodha/view-insights/view-insi
 import { CopyCueTradeComponent } from './modules/zerodha/copy-cueTrade/copy-cueTrade.component';
 import { AddNotesComponent } from './modules/zerodha/add-notes/add-notes.component';
 import { TradeBookComponent } from './modules/tradebook/tradebook.component';
-
+import { NgImageSliderModule } from 'ng-image-slider';
+import { ImageService } from './modules/login/components/image.service';
 
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
   return localStorageSync({ keys: [globalConfigFeatureKey], rehydrate: true })(reducer);
@@ -66,6 +67,7 @@ export function highchartsModules() {
     TradeBookComponent
   ],
   imports: [
+    NgImageSliderModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserModule,
@@ -96,7 +98,8 @@ export function highchartsModules() {
     PwaService, UtilService,
     { provide: HIGHCHARTS_MODULES, useFactory: highchartsModules },
     { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true },
-    { provide: DateAdapter, useClass: CustomDateAdapter }
+    { provide: DateAdapter, useClass: CustomDateAdapter },
+    ImageService
   ],
   bootstrap: [AppComponent],
   entryComponents: [

@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment';
 import { HttpService } from '../../shared/services/http.service';
 import { JoinWaitlistComponent } from './join-waitlist/join-waitlist.component';
+import { ImageService } from './image.service';
 
 @Component({
   selector: 'app-landing',
@@ -12,6 +13,10 @@ import { JoinWaitlistComponent } from './join-waitlist/join-waitlist.component';
   styleUrls: ['./landing.component.scss']
 })
 export class LandingComponent implements OnInit {
+
+  showSlider = true;
+  imageObject;
+
   private createAcSec: boolean = false;
   private logonBodySec: boolean = true;
   GOOGLE_AUTH_URL: string = '/oauth2/authorize/google';
@@ -29,9 +34,15 @@ export class LandingComponent implements OnInit {
     private router: Router,
     private _dialog: MatDialog,
     private httpService: HttpService,
-    protected toastr: ToastrService
-  ) { }
+    protected toastr: ToastrService,
+    private _imageService: ImageService
+  ) {
+    this.setImageObject();
+   }
 
+  setImageObject() {
+    this.imageObject = this._imageService.getImagesWithOrder();
+  }
   ngOnInit() {
     // setInterval(() => {
     //   if (this.currentInd === 4) {
@@ -42,6 +53,7 @@ export class LandingComponent implements OnInit {
     // }, 3000);
   }
 
+  
   login(authProvider: string) {
     let url: string;
     if ('google' === authProvider) {
