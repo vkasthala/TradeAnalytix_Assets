@@ -1,7 +1,7 @@
 <div class="plannedTrades-container mb-3">
     <div class="trade-plan-header justify-content-between">
         <span>Planned Trades</span>
-        <span class="cursor add-new mr-3" *ngIf="!viewTradePlan" [routerLink]="['/new-trade/']">Add Trade</span>
+        <span class="cursor add-new mr-3" *ngIf="!viewTradePlan" (click)="openPlannedTradeDialog()">Add Trade</span>
     </div>
 
     <mat-table [dataSource]="plannedTradesDataSource" class="d-lg-table">

@@ -75,7 +75,7 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.loadPlanEntries();
+    this.loadPlanEntries(null);
     this.loadMetadata();
     if (this.plannedTradesGrid) {
       this.plannedTradesGrid.initPlannedTradesGrid(this.selectedPlan.id, false);
@@ -139,10 +139,10 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
     this.tradeMobileStepper.next();
   }
 
-  loadPlanEntries() {
+  loadPlanEntries(selectedDay: string) {
     this.tradePlanService.getTopPlanEntries().subscribe(result => {
       this.planDates = result;
-      this.initTradePlanSelect();
+      this.initTradePlanSelect(selectedDay);
     });
   }
 
@@ -172,9 +172,18 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
     }
   }
 
-  initTradePlanSelect() {
+  initTradePlanSelect(selectedDay: string) {
     if (this.planDates.length) {
-      this.selectedPlan = this.planDates[0];
+      if (!selectedDay) {
+        this.selectedPlan = this.planDates[0];
+      } else {
+        let filtered: TradePlanEntry[] = this.planDates.filter(date => date.day == selectedDay);
+        if (filtered && filtered.length) {
+          this.selectedPlan = filtered[0];
+        } else {
+          this.selectedPlan = this.planDates[0];
+        }
+      }
     } else {
       this.selectedPlan = undefined;
     }
@@ -206,12 +215,11 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
   }
 
   addTradePlan() {
-    let tradePlan: TradePlan = this.createTradePlan();
-    tradePlan.statusId = 1;
-    console.log('trade plan to be created: ', tradePlan);
-    this.tradePlanService.createTradePlan(tradePlan).subscribe(result => {
-      this.toastr.success('Trade plan created', 'Success');
-      this.router.navigate(['/trade-plans']);
+    let plan: TradePlan = this.createTradePlan();
+    plan.statusId = 1;
+    console.log('trade plan to be created: ', plan);
+    this.tradePlanService.createTradePlan(plan).subscribe(result => {
+      this.loadPlanEntries(plan.day);
     }, () => {
       this.toastr.error("Failed to create trade plan for the day", 'Error',
         {
@@ -233,9 +241,10 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
   }
 
   createTradePlan(): TradePlan {
-    this.tradePlan.tradePlanStrategies = this.tradeStrategiesGrid.getOpenStrategies();
-    this.tradePlan.plannedTrades = this.plannedTradesGrid.getPlannedTrades();
-    this.tradePlan.tradeItemsPlanned = this.getPlannedTradeSymbols(this.tradePlan.plannedTrades);
+    //this.tradePlan.tradePlanStrategies = this.tradeStrategiesGrid.getOpenStrategies();
+    //this.tradePlan.plannedTrades = this.plannedTradesGrid.getPlannedTrades();
+    //this.tradePlan.tradeItemsPlanned = this.getPlannedTradeSymbols(this.tradePlan.plannedTrades);
+    this.tradePlan.day = this.planDate.year() + '-' + (this.planDate.month() + 1) + '-' + this.planDate.date();
     return this.tradePlan;
   }
 
@@ -253,21 +262,26 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
   }
 
   addTradePlanDate() {
-    if (this.planDate) {
-      let entry: TradePlanEntry = new TradePlanEntry();
-      entry.day = this.planDate.year() + '-' + (this.planDate.month() + 1) + '-' + this.planDate.date();
-      entry.id = 0;
-      this.planDates.unshift(entry);
-      this.selectedPlan = entry;
-      this.refreshSelectedPlanData();
-    } else {
+    if (!this.planDate) {
       this.toastr.error('Please select valid date', 'Invalid Date',
         {
           tapToDismiss: false,
           closeButton: true,
           disableTimeOut: true
         });
+      return;
     }
+
+    this.addTradePlan();
+
+    /*
+    let entry: TradePlanEntry = new TradePlanEntry();
+    entry.day = this.planDate.year() + '-' + (this.planDate.month() + 1) + '-' + this.planDate.date();
+    entry.id = 0;
+    this.planDates.unshift(entry);
+    this.selectedPlan = entry;
+    this.refreshSelectedPlanData();
+    */
 
     //let xx = ((document.getElementById('tradePlanDate') as HTMLInputElement).value)
     //this.planDates.unshift(xx);
@@ -315,10 +329,10 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
     if (fromDate && toDate) {
       this.tradePlanService.getTradePlanEntries(fromDate, toDate).subscribe(result => {
         this.planDates = result;
-        this.initTradePlanSelect();
+        this.initTradePlanSelect(null);
       });
     } else {
-      this.loadPlanEntries();
+      this.loadPlanEntries(null);
     }
   }
 
