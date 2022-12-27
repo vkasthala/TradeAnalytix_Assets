@@ -5,7 +5,7 @@ body {
 }
 // Landing page
 .trade-app {
-    font-family: "Graphik", "Helvetica Neue", helvetica, "Apple Color Emoji", arial, sans-serif !important;
+    // font-family: "Graphik", "Helvetica Neue", helvetica, "Apple Color Emoji", arial, sans-serif !important;
     width: 100%;
     min-height: 100vh;
     height: auto;
@@ -240,10 +240,11 @@ body {
         text-align: center;
     }
     .banner-info-title {
-        font-weight: 1000;
-        font-size: 3rem;
+        font-weight: 700;
+        font-size: 3.25rem;
         line-height: 1;
         color: #fff;
+        font-family: "Graphik", "Helvetica Neue", helvetica, "Apple Color Emoji", arial, sans-serif !important;
         @media #{$extra-small} {
             font-size: 2rem;
             line-height: 1;
@@ -1448,7 +1449,7 @@ $button-active-blue: #1669F2;
 }
 .white-box-title {
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 600;
     color: #000000;
     margin-top: -5px;
 }
