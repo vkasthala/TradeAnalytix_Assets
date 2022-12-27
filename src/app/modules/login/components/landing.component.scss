@@ -267,6 +267,7 @@ body {
             background-color: #EC6B56;
             color: #fff;
             border-radius: 4px;
+            min-width: 220px;
             @media #{$extra-small} {
                 width: 90%;
                 height: 55px;
@@ -328,7 +329,7 @@ body {
         color: #fff;
         text-align: center;
         line-height: 34px;
-
+        min-width: 220px;
         font-size: 16px;
         font-weight: 600;
         box-shadow: none;
@@ -507,7 +508,7 @@ body {
             font-weight: normal;
             font-size: 16px;
             line-height: 22px;
-            color: #1d2d35;
+            color: #9DA6BA;
             text-align: left;
         }
         .read_more {
@@ -835,7 +836,7 @@ body {
     font-weight: 600;
     font-size: 14px;
     line-height: 34px;
-    min-width: 160px;
+    min-width: 180px;
     @media #{$extra-small} {
         width: 100%;
         margin-bottom: .5rem;
@@ -916,7 +917,7 @@ $google-blue: #4285f4;
 $button-active-blue: #1669F2;
 
 .page-heading {
-	color:#1d2d35 !important;
+	color:#394C86 !important;
 	font-size:40px !important;
     text-align: center !important;
     font-weight: 900 !important;
@@ -935,8 +936,7 @@ $button-active-blue: #1669F2;
     font-size: 20px;
     line-height: 28px;
     text-align: center;
-
-    color:#1d2d35 !important;
+    color:#9DA6BA !important;
     font-family: "Graphik", "Helvetica Neue", helvetica, "Apple Color Emoji", arial, sans-serif !important;
 
     @media #{$extra-small} {
