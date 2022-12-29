@@ -55,7 +55,7 @@
                                     <div class="trade-plan-header">
                                         Holdings
                                     </div>
-                                    <div class="table-container">
+                                    <!-- <div class="table-container">
                                         <table class="d-lg-table mat-table">
                                             <thead>
                                                 <tr class="mat-header-row">
@@ -76,7 +76,8 @@
                                                 </tr>
                                             </tbody>
                                         </table>
-                                    </div>
+                                    </div> -->
+                                    <app-open-strategies-grid [selectedPlan]="selectedPlan" #openStrategiesGrid></app-open-strategies-grid>
                                 </div>
                             </div>
                             <app-planned-trades-grid [selectedPlan]="selectedPlan" #plannedTradesGrid></app-planned-trades-grid>
@@ -109,7 +110,10 @@
                                     <div class="trade-plan-header">
                                         Executed Trades
                                     </div>
-                                    <div class="table-container">
+
+                                    <app-today-executed-legs [selectedPlan]="selectedPlan" #todayExcutedTradesGrid></app-today-executed-legs>
+
+                                    <!-- <div class="table-container">
                                         <table class="d-lg-table mat-table">
                                             <thead>
                                                 <tr class="mat-header-row">
@@ -130,7 +134,7 @@
                                                 </tr>
                                             </tbody>
                                         </table>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </ng-template>
@@ -143,6 +147,8 @@
                         <div class="col-md-6 px-0">
                             <select class="form-control" [(ngModel)]="tradePlan.selfReview">
                                 <option value="good">Good</option>
+                                <option value="average">Average</option>
+                                <option value="bad">Bad</option>
                             </select>
                         </div>
                     </div>

@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { TodayExecutedLeg } from '../../models/today-executed-leg.model';
+import { TodayExecutedTrade } from '../../models/today-executed-trade.model';
+import { TradePlanEntry } from '../../models/trade-plan-entry.model';
 import { TradePlansService } from '../../services/trade-plans.service';
 
 @Component({
@@ -9,7 +11,11 @@ import { TradePlansService } from '../../services/trade-plans.service';
 })
 export class TodayExecutedLegsComponent implements OnInit {
 
-  todayExecutedGridColumns: string[] = ['strategyUid', 'symbol', 'totalAmount', 'action', 'quantity', 'strike', 'entryPrice', 'exitPrice'];
+  @Input('selectedPlan') selectedPlan: TradePlanEntry;
+
+  todayExecutedGridColumns: string[] = ['symbol', 'strategyUid', 'amount', 'maxRisk', 'returnAmount'];
+
+  todayExecutedTrades: TodayExecutedTrade[] = [];
 
   todayExecutedLegsDatasource: TodayExecutedLeg[] = [];
   todayexecutedGridData: TodayExecutedLeg[] = [];
@@ -20,15 +26,18 @@ export class TodayExecutedLegsComponent implements OnInit {
 
   ngOnInit() {
     console.log('day::', this.day);
-    this.loadTodayExecutedLegs();
+    // this.loadTodayExecutedLegs();
   }
 
-  loadTodayExecutedLegs() {
-    this.tradePlanService.getTodayExecutedLegs(this.day).subscribe(result => {
-      console.log('today legs::', result);
-      this.todayExecutedLegsDatasource = result;
-      this.todayexecutedGridData = result;
+  loadTodayExecutedLegs(day) {
+    this.tradePlanService.getTodayExecutedTrades(day).subscribe(result => {
+      this.todayExecutedTrades = result;
     });
+    // this.tradePlanService.getTodayExecutedLegs(this.day).subscribe(result => {
+    //   console.log('today legs::', result);
+    //   this.todayExecutedLegsDatasource = result;
+    //   this.todayexecutedGridData = result;
+    // });
   }
 
   Collaps(index: number) {

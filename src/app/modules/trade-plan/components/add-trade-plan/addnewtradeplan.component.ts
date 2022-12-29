@@ -27,6 +27,7 @@ import { SummaryRequest } from 'src/app/modules/shared/models/reports/summary-re
 import { ReportDataService } from 'src/app/modules/reports/services/report-data.service';
 import { TradePlanSummary } from '../../models/trade-plan-summary.model';
 import { DailyStatisticsComponent } from '../daily-statistics/daily-statistics.component';
+import { TodayExecutedLegsComponent } from '../today-executed-legs/today-executed-legs.component';
 const moment = _moment;
 
 @Component({
@@ -50,9 +51,11 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
   tradePlan: TradePlan = new TradePlan();
 
   @ViewChild('tradeMobileStepper', { static: false }) private tradeMobileStepper: MatStepper;
-  @ViewChild('tradeStrategiesGrid', { static: false }) protected tradeStrategiesGrid: OpenStrategiesGridComponent;
+  @ViewChild('openStrategiesGrid', { static: false }) protected tradeStrategiesGrid: OpenStrategiesGridComponent;
   @ViewChild('plannedTradesGrid', { static: false }) protected plannedTradesGrid: PlannedTradesGridComponent;
+  @ViewChild('todayExcutedTradesGrid', { static: false }) protected todayExcutedTradesGrid: TodayExecutedLegsComponent;
   @ViewChild('dailyPlanStats', { static: false }) protected dailyPlanStats: DailyStatisticsComponent;
+
 
   planDates: TradePlanEntry[] = [];
   selectedPlan: TradePlanEntry;
@@ -77,11 +80,19 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.loadPlanEntries(null);
     this.loadMetadata();
-    if (this.plannedTradesGrid) {
-      this.plannedTradesGrid.initPlannedTradesGrid(this.selectedPlan.id, false);
-    }
-    if (this.dailyPlanStats) {
-      this.dailyPlanStats.loadSummary(this.selectedPlan);
+    if (this.selectedPlan) {
+      if (this.plannedTradesGrid) {
+        this.plannedTradesGrid.initPlannedTradesGrid(this.selectedPlan.id, false);
+      }
+      if (this.dailyPlanStats) {
+        this.dailyPlanStats.loadSummary(this.selectedPlan);
+      }
+      if (this.tradeStrategiesGrid) {
+        this.tradeStrategiesGrid.loadStrategies(this.selectedPlan.id);
+      }
+      if (this.todayExcutedTradesGrid) {
+        this.todayExcutedTradesGrid.loadTodayExecutedLegs(this.selectedPlan.day);
+      }
     }
   }
 
@@ -199,6 +210,12 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
       this.loadTodayTrades();
       if (this.dailyPlanStats) {
         this.dailyPlanStats.loadSummary(this.selectedPlan);
+      }
+      if (this.tradeStrategiesGrid) {
+        this.tradeStrategiesGrid.loadStrategies(this.selectedPlan.id);
+      }
+      if (this.todayExcutedTradesGrid) {
+        this.todayExcutedTradesGrid.loadTodayExecutedLegs(this.selectedPlan.day);
       }
     }
   }

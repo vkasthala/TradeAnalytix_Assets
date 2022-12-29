@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
+import { TradePlanEntry } from '../../models/trade-plan-entry.model';
 import { TradePlanStrategy } from '../../models/trade-plan-strategy.model';
 import { TradePlansService } from '../../services/trade-plans.service';
 import { StrategyActionTextDialogComponent } from '../strategy-action-text-dialog/strategy-action-text-dialog.component';
@@ -9,13 +10,15 @@ import { StrategyActionTextDialogComponent } from '../strategy-action-text-dialo
   templateUrl: './open-strategies-grid.component.html',
   styleUrls: ['./open-strategies-grid.component.scss']
 })
-export class OpenStrategiesGridComponent implements OnInit {
+export class OpenStrategiesGridComponent implements OnInit, AfterViewInit {
 
   strategiesDataSource: TradePlanStrategy[];
   public hideRuleContent: boolean[] = [];
   protected openStategiesGridData: any;
 
-  strategiesGridColumns: string[] = ['symbol', 'strategyUid', 'totalAmount', 'returnAmount', 'maxRisk', 'maxProfit', 'actionText', 'postMarketComments'];
+  @Input('selectedPlan') selectedPlan: TradePlanEntry;
+
+  strategiesGridColumns: string[] = ['symbol', 'strategyUid', 'totalAmount', 'maxRisk', 'returnAmount'];
 
   @Input('tradePlanId') tradePlanId: number;
   @Input('viewTradePlan') viewTradePlan: boolean;
@@ -25,17 +28,23 @@ export class OpenStrategiesGridComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.tradePlanId > 0) {
-      this.strategiesGridColumns.push('aligned');
-    }
-    this.loadStrategies();
+    // if (this.tradePlanId > 0) {
+    //   this.strategiesGridColumns.push('aligned');
+    // }
+    // this.loadStrategies();
 
   }
 
-  loadStrategies() {
-    console.log('open strategies-- trade plan id: ', this.tradePlanId);
-    if (this.tradePlanId > 0) {
-      this.tradePlanService.getTradePlanStrategies(this.tradePlanId).subscribe(result => {
+  ngAfterViewInit(): void {
+    if (this.selectedPlan) {
+      this.loadStrategies(this.selectedPlan.id);
+    }
+  }
+
+  loadStrategies(tradePlanId: number) {
+    console.log('open strategies-- trade plan id: ', tradePlanId);
+    if (tradePlanId > 0) {
+      this.tradePlanService.getTradePlanStrategies(tradePlanId).subscribe(result => {
         this.strategiesDataSource = result;
         //console.log('test rs2', result);
         this.openStategiesGridData = result;
@@ -64,9 +73,9 @@ export class OpenStrategiesGridComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe((res) => {
       console.log('after:', res);
-      if('Pre-Market Comments' === commentType){
+      if ('Pre-Market Comments' === commentType) {
         ele.preMarketComment = res.actionText;
-      }else{
+      } else {
         ele.postMarketComment = res.actionText;
       }
     });
