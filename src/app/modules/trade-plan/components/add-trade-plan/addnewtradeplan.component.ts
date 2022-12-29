@@ -100,7 +100,7 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
   }
 
   loadTradePlanData() {
-    this.tradePlanService.getTradePlanData(this.tradePlanId).subscribe(result => {
+    this.tradePlanService.getTradePlanData(this.selectedPlan.id).subscribe(result => {
       this.tradePlan = result;
     });
   }
@@ -118,10 +118,10 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
       this.day = state.day;
       console.log('trade pla id: ', this.tradePlanId);
     }
-    if (this.tradePlanId > 0) {
-      console.log('here..');
-      this.loadTradePlanData();
-    }
+    // if (this.tradePlanId > 0) {
+    //   console.log('here..');
+    //   this.loadTradePlanData();
+    // }
   }
 
   addRule(title, btnText) {
@@ -203,6 +203,7 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
 
   refreshSelectedPlanData() {
     if (this.selectedPlan) {
+      this.loadTradePlanData();
       this.loadHoldings();
       if (this.plannedTradesGrid) {
         this.plannedTradesGrid.initPlannedTradesGrid(this.selectedPlan.id, false);
@@ -247,13 +248,14 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
     });
   }
 
-  submitTradePlan() {
-    let tradePlan: TradePlan = this.createTradePlan();
-    tradePlan.statusId = 2;
-    console.log('trade plan to be updated: ', tradePlan);
-    this.tradePlanService.updateTradePlan(tradePlan).subscribe(result => {
+  updateTradePlan() {
+    this.tradePlan.id = this.selectedPlan.id;
+    this.tradePlan.day = this.selectedPlan.day;
+    this.tradePlan.statusId = 2;
+    console.log('trade plan to be updated: ', this.tradePlan);
+    this.tradePlanService.updateTradePlan(this.tradePlan).subscribe(result => {
       this.toastr.success('Trade plan updated', 'Success');
-      this.router.navigate(['/trade-plans']);
+      //this.router.navigate(['/trade-plans']);
     });
   }
 
@@ -261,8 +263,9 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
     //this.tradePlan.tradePlanStrategies = this.tradeStrategiesGrid.getOpenStrategies();
     //this.tradePlan.plannedTrades = this.plannedTradesGrid.getPlannedTrades();
     //this.tradePlan.tradeItemsPlanned = this.getPlannedTradeSymbols(this.tradePlan.plannedTrades);
-    this.tradePlan.day = this.planDate.year() + '-' + (this.planDate.month() + 1) + '-' + this.planDate.date();
-    return this.tradePlan;
+    let plan: TradePlan = new TradePlan();
+    plan.day = this.planDate.year() + '-' + (this.planDate.month() + 1) + '-' + this.planDate.date();
+    return plan;
   }
 
   getPlannedTradeSymbols(plannedTrades: PlannedTrade[]) {
