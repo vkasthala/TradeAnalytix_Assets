@@ -27,7 +27,7 @@
                     <div class="loader"></div>
                 </div>
                 
-                <div class="row">
+                <div class="row pt-1">
                     <div class="col-8 trade-details-body pr-0">
                         <app-trade-details-header 
                             [addTrade]="add" 
@@ -51,7 +51,11 @@
                                         [stockOrOptionAddedSubject]="stockOrOptionAddedSubject"
                                         [localStockClosedSubject]="localStockClosedSubject"
                                         [localOptionClosedSubject]="localOptionClosedSubject"
-                                        (calcNetDebit)="calcNetDebit($event)" (calcNetReturn)="calcNetReturn($event)"
+                                        (calcNetDebit)="calcNetDebit($event)" 
+                                        (calcNetReturn)="calcNetReturn($event)"
+
+                                        (calculateMaxRisk)="calculateMaxRisk($event, 'WEB')" 
+
                                         [StockPosition]="tradeStrategy" #tradeDetails>
                                     </app-trade-details>
 
@@ -205,12 +209,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <app-trade-details-bottom [editTrade]="edit" [addTrade]="add" [closeTrade]="close"
-                                            [viewTrade]="view" (calculateMaxRisk)="calculateMaxRisk($event, 'WEB')" 
-                                            [stockOrOptionAddedSubject]="stockOrOptionAddedSubject"
-                                            #tradeDetailsBottom>
-                                        </app-trade-details-bottom>
                                     </div>
                                 </div>
 
@@ -218,7 +216,7 @@
                         </mat-horizontal-stepper>
                     </div>
                     <div class="col-4 right-sidebar">
-                        <div class="trade-actions mb-1">
+                        <div class="trade-actions mb-2">
                             <button type="button" class="btn btn-next mr-2"
                                 *ngIf="(add && (tradeDetails.stockOptions.length || tradeDetails.stockAdded)) && !isDemoMode"
                                 (click)="evaluateStrategyRules('WEB')" [disabled]="!isValidTradeStrategy('WEB')">ADD

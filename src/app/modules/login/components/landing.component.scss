@@ -125,8 +125,8 @@ body {
                     align-items: center;
                     color: #fff;
                     padding: 5px;
-                    font-size: 16px;
-                    font-weight: 600;
+                    font-size: 14px;
+                    font-weight: 500;
                     text-decoration: none;
                     line-height: 2;
                     &:hover {
@@ -206,8 +206,8 @@ body {
         display: flex;
         position: relative;
         align-items: flex-end;
-        padding-top: 110px;
-        padding-bottom: 50px;
+        padding-top: 150px;
+        padding-bottom: 90px;
         justify-content: center;
         @media #{$extra-small} {
             padding: 0;
@@ -222,10 +222,11 @@ body {
         }
     }
     .slideFeatures {
-        font-size: 22px;
+        font-size: 20px;
+        font-weight: 400;
         line-height: 1.345;
-        color: #9DA6BA;
-        margin-top: 1rem;
+        color: #c7c7c8;
+        margin-top: 0;
         @media #{$extra-small} {
             font-size: 16px;
             line-height: 22px;
@@ -240,11 +241,10 @@ body {
         text-align: center;
     }
     .banner-info-title {
-        font-weight: 700;
-        font-size: 3.25rem;
-        line-height: 1;
+        font-weight: 1000;
+        font-size: 3.5rem;
+        line-height: 1.1;
         color: #fff;
-        font-family: "Graphik", "Helvetica Neue", helvetica, "Apple Color Emoji", arial, sans-serif !important;
         @media #{$extra-small} {
             font-size: 2rem;
             line-height: 1;
@@ -487,14 +487,14 @@ body {
     }
     .features_section {
         padding-top: 1rem;
-        padding-bottom: 3rem;
+        padding-bottom: 2rem;
         text-align: center;
         @media #{$extra-small} {
             padding-bottom: 1rem;
         }
         .features_section_title {
-            font-weight: bold;
-            font-size: 22px;
+            font-weight:600;
+            font-size: 20px;
             line-height: 28px;
             color: #1d2d35;
             margin-bottom: .5rem;
@@ -513,6 +513,7 @@ body {
             text-align: left;
         }
         .read_more {
+            font-weight: bolder;
             font-size: 14px;
             color: #2285FA;
         }
@@ -918,11 +919,12 @@ $google-blue: #4285f4;
 $button-active-blue: #1669F2;
 
 .page-heading {
+    font-weight:bolder;
+    font-size: 32px;
+    line-height: 28px;
 	color:#394C86 !important;
-	font-size:40px !important;
     text-align: center !important;
-    font-weight: 900 !important;
-    font-family: "Graphik", "Helvetica Neue", helvetica, "Apple Color Emoji", arial, sans-serif !important;
+    margin-bottom: .5rem;
     @media #{$extra-small} {
         font-size:24px !important;
     }
@@ -934,10 +936,10 @@ $button-active-blue: #1669F2;
 
 .intro-description {
     font-weight: normal;
-    font-size: 20px;
-    line-height: 28px;
+    font-size: 16px;
+    line-height: 24px;
     text-align: center;
-    color:#9DA6BA !important;
+    color:#212529 !important;
     font-family: "Graphik", "Helvetica Neue", helvetica, "Apple Color Emoji", arial, sans-serif !important;
 
     @media #{$extra-small} {
@@ -1448,9 +1450,9 @@ $button-active-blue: #1669F2;
     position: relative;
 }
 .white-box-title {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 600;
-    color: #000000;
+    color: #394C86;
     margin-top: -5px;
 }
 .orange-list {
@@ -1463,7 +1465,7 @@ $button-active-blue: #1669F2;
     position: relative;
     list-style-type: none;
     font-size: 14px;
-    color: #9DA6BA;
+    color: #212529;
     padding-left: 25px;
     text-align: left;
     margin-bottom: .5rem;

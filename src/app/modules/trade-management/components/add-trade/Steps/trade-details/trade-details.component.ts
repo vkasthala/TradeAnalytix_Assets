@@ -56,6 +56,7 @@ export class TradeDetailsComponent implements OnInit {
   @Output('navigateRiskAnalysisEvent') navigateRiskAnalysisEvent = new EventEmitter();
   @Output('calcNetDebit') calcNetDebit: EventEmitter<string> = new EventEmitter();
   @Output('calcNetReturn') calcNetReturn: EventEmitter<string> = new EventEmitter();
+  @Output('calculateMaxRisk') calculateMaxRisk: EventEmitter<any> = new EventEmitter();
 
   @Input('stockSummary') stockSummary: UserStockSummary;
   @Input("selectedStock") selectedStock: StockSymbol;
@@ -92,6 +93,9 @@ export class TradeDetailsComponent implements OnInit {
   showOptionLegForm: boolean = false;
   editStockForm: boolean = false;
   editOptionForm: boolean = false;
+
+  netDebit: string;
+  netReturn: string;
 
   public optionTypes: [
     { value: 1, name: 'radio1', id: "Call" },
@@ -840,6 +844,14 @@ export class TradeDetailsComponent implements OnInit {
 
   onClick(event: Event) {
     this.eventChange.emit(event);
+  }
+
+  calculateMaxProfitAndRisk() {
+    this.calculateMaxRisk.emit();
+  }
+
+  getTotalAmount(): string {
+    return (this.closeTrade || this.viewTrade) ? this.netReturn : this.netDebit;
   }
 
 }

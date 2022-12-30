@@ -159,7 +159,7 @@ export class AddNewTradeComponent implements OnInit {
     this.tradeDetailsAsideComponent.maxRiskDetails = maxRiskDetails;
   }
 
-  calcNetDebit($event: string): string {
+  calcNetDebit($event: string):any {
     this.mobileTradeDetailsBottomComponent.netDebit = $event;
     return this.tradeDetailsBottomComponent.netDebit = $event;
   }

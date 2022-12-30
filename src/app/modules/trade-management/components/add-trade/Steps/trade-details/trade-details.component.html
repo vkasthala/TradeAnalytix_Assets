@@ -1,5 +1,12 @@
 <div class="addnew-trade-body">
-    <h4 class="addnew-trade-header">Trade Details</h4>
+    <div class="addnew-trade-header">
+        <h4>Trade Details</h4>
+        <div class="d-flex align-items-center">
+            <span class="widget_item-title mr-3">{{ (closeTrade || viewTrade) ? 'Return' : 'Cost of Trade'}}</span>
+            <h6 class="widget_item-value" [ngClass]="(closeTrade || viewTrade) ? 'total_return' : ''">4607.80 {{getTotalAmount()}}</h6>
+        </div>
+    </div>
+
     <ng-container [ngSwitch]="currentState">
         <!-- entry-third -->
         <div class="add-stock-sec" #tradeCards>

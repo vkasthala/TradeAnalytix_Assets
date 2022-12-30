@@ -1085,13 +1085,24 @@ a.btn.btn-skip {
     pointer-events: inherit !important;
 }
 .addnew-trade-header {
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 24px;
-    color: #3A4C85;
     border-bottom: 1px solid rgb(157 166 186 / 30%);
     background: #fff;
     padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    h4 {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
+        color: #3A4C85;
+    }
+    .widget_item-value {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
+        color: #3A4C85;
+    }
 }
 
 .mat-expansion-panel-body {
