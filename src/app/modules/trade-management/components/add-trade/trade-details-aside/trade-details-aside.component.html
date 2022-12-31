@@ -89,7 +89,7 @@
         </div>
         <div class="d-flex mb-1 align-items-center">
             <label class="col-form-label">Maximum Risk</label>
-            <div class="col-9 col-form-value">
+            <div class="col-8 col-form-value">
                 <div class="d-flex align-items-center">
                     <span class="col-6 pl-0">{{strategySummaryResult.maxLoss}}</span>
                     <span *ngIf="!closeTrade && !viewTrade">
@@ -148,7 +148,7 @@
             </div>
         </div>
 
-        <div class="mb-2 d-flex showMore">
+        <div class="mb-2 showMore">
             <span class="cursor link-item" (click)="toggleStatistics()">{{showMoreStatistics ? 'Less' : 'More'}}</span>
         </div>
     </div>

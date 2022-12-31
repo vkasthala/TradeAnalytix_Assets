@@ -158,6 +158,7 @@ import { DailyStatisticsComponent } from '../trade-plan/components/daily-statist
 import { MetricsComponent } from '../reports/components/metrics/metrics.component';
 import { EconomicDialogComponent } from '../trade-plan/components/economic-dialog/economic-dialog.component';
 import { TradeBuilderComponent } from '../trade-builder/components/trade-builder.component';
+import { TransactionHistoryComponent } from '../shared/components/modals/transaction-history/transaction-history.component';
 
 export const MY_FORMATS = {
   parse: {
@@ -313,7 +314,8 @@ export const MY_FORMATS = {
     DailyStatisticsComponent,
     MetricsComponent,
     EconomicDialogComponent,
-    TradeBuilderComponent
+    TradeBuilderComponent,
+    TransactionHistoryComponent
   ],
   imports: [
     FormsModule,
@@ -396,7 +398,8 @@ export const MY_FORMATS = {
     TradingRulesPopupComponent,
     DailyStatisticsComponent,
     MetricsComponent,
-    EconomicDialogComponent
+    EconomicDialogComponent,
+    TransactionHistoryComponent
   ],
   // bootstrap: [TradeStrategiesGrid],
   providers: [

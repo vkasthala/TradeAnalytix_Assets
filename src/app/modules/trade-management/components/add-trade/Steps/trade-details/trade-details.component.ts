@@ -29,6 +29,7 @@ import { EditableSelectComponent } from '../editable-select/editable-select.comp
 import { UserTagService } from 'src/app/modules/settings/services/user-tag.service';
 import { UserTag } from 'src/app/modules/settings/models/user-tag.model';
 import { ToastrService } from 'ngx-toastr';
+import { TransactionHistoryComponent } from 'src/app/modules/shared/components/modals/transaction-history/transaction-history.component';
 
 @Component({
   selector: 'app-trade-details',
@@ -847,11 +848,24 @@ export class TradeDetailsComponent implements OnInit {
   }
 
   calculateMaxProfitAndRisk() {
-    this.calculateMaxRisk.emit();
+    // this.calculateMaxRisk.emit();
   }
 
   getTotalAmount(): string {
     return (this.closeTrade || this.viewTrade) ? this.netReturn : this.netDebit;
+  }
+
+  openeHistoryModal(source: string) {
+    let dialogData: any = this.inputState;
+    dialogData.title = '';
+    const dialogRef = this._dialog.open(TransactionHistoryComponent, {
+      disableClose: false,
+      width: 'auto',
+      data: dialogData
+    });
+    dialogRef.afterClosed().subscribe((res) => {
+      
+    });
   }
 
 }

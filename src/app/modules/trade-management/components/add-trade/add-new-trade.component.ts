@@ -160,8 +160,8 @@ export class AddNewTradeComponent implements OnInit {
   }
 
   calcNetDebit($event: string):any {
-    this.mobileTradeDetailsBottomComponent.netDebit = $event;
-    return this.tradeDetailsBottomComponent.netDebit = $event;
+    // this.mobileTradeDetailsBottomComponent.netDebit = $event;
+    // return this.tradeDetailsBottomComponent.netDebit = $event;
   }
 
   calcNetReturn($event: string): string {
