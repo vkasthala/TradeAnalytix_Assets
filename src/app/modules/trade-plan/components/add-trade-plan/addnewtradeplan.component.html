@@ -55,28 +55,6 @@
                                     <div class="trade-plan-header">
                                         Holdings
                                     </div>
-                                    <!-- <div class="table-container">
-                                        <table class="d-lg-table mat-table">
-                                            <thead>
-                                                <tr class="mat-header-row">
-                                                    <th class="mat-header-cell">Symbol</th>
-                                                    <th class="mat-header-cell">Identifier</th>
-                                                    <th class="mat-header-cell">Cost</th>
-                                                    <th class="mat-header-cell">Max. Risk</th>
-                                                    <th class="mat-header-cell">Return</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr class="mat-header-row" *ngFor="let strategy of openStrategies; let index = index">
-                                                    <td class="mat-cell">{{strategy.symbol}}</td>
-                                                    <td class="mat-cell">{{strategy.strategyUid}}</td>
-                                                    <td class="mat-cell">{{strategy.totalAmount}}</td>
-                                                    <td class="mat-cell">{{strategy.maxRisk}}</td>
-                                                    <td class="mat-cell">{{strategy.returnAmount}}</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div> -->
                                     <app-open-strategies-grid [selectedPlan]="selectedPlan" #openStrategiesGrid></app-open-strategies-grid>
                                 </div>
                             </div>
@@ -113,29 +91,7 @@
                                     </div>
 
                                     <app-today-executed-legs [selectedPlan]="selectedPlan" #todayExcutedTradesGrid></app-today-executed-legs>
-
-                                    <!-- <div class="table-container">
-                                        <table class="d-lg-table mat-table">
-                                            <thead>
-                                                <tr class="mat-header-row">
-                                                    <th class="mat-header-cell">Symbol</th>
-                                                    <th class="mat-header-cell">Identifier</th>
-                                                    <th class="mat-header-cell">Cost</th>
-                                                    <th class="mat-header-cell">Max. Risk</th>
-                                                    <th class="mat-header-cell">Return</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr class="mat-header-row" *ngFor="let strategy of executedStrategies; let index = index">
-                                                    <td class="mat-cell">{{strategy.symbol}}</td>
-                                                    <td class="mat-cell">{{strategy.strategyUid}}</td>
-                                                    <td class="mat-cell">{{strategy.amount}}</td>
-                                                    <td class="mat-cell">{{strategy.maxRisk}}</td>
-                                                    <td class="mat-cell">{{strategy.returnAmount}}</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div> -->
+                                    
                                 </div>
                             </div>
 
