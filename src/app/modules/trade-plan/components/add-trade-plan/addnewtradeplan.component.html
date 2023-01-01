@@ -1,5 +1,4 @@
 <div class="d-flex justify-content-end px-3 pb-2">
-    <!-- <span class="col-form-label mr-2">Filter By</span> -->
     <div class="trade-plan-date mr-2">
         <div class="datepicker-group">
             <input matInput [matDatepicker]="tradePlanDate" 
@@ -110,11 +109,11 @@
                             <div class="row mb-3">
                                 <div class="col-sm-4">
                                     <span class="d-flex align-items-center">
-                                        <label class="col-form-label">Did you align with your trading plan?</label>
-                                        <label class="toggle ml-2">
+                                        <label class="col-form-label mr-3">Did you align with your trading plan?</label>
+                                        <label class="toggle m-0">
                                             <input type="checkbox" id="tradingToggle" class="cursor" [checked]="tradePlan.tradeplanAligned" [(ngModel)]="tradePlan.tradeplanAligned" (ngModelChange)="updateTradePlan()">
                                             <span class="slider"></span>
-                                            <span class="labels" data-on="ON" data-off="OFF"></span>
+                                            <span class="labels" data-on="Yes" data-off="No"></span>
                                         </label>
                                     </span>
                                     <!-- <div class="col-md-6 px-0">
@@ -135,124 +134,3 @@
     </div>
 </div>
 
-
-<!--
-<div class="px-3 mt-2">
-    <div class="inner-trade">
-        <div class="inner-trade-plan">
-            <div class="row">
-                <div class="col-sm-7">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="mb-3">
-                                <label class="col-form-label">Select the date for which trade plan is being created</label>
-                                <div class="col-sm-11 px-0">
-                                    <div class="datepicker-group">
-                                        <input matInput [matDatepicker]="tradedate" (click)="tradedate.open()" id="tradedate" name="tradedate" [(ngModel)]="tradePlan.day" [ngClass]="[view ? 'disabled' : '']">
-                                        <mat-datepicker-toggle matSuffix [for]="tradedate"></mat-datepicker-toggle>
-                                        <mat-datepicker #tradedate></mat-datepicker>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <label class="col-form-label">Where do you think market is headed today?</label>
-                                <div class="col-sm-11 px-0">
-                                    <select class="form-control" id="tradePlanMarketStatus" [(ngModel)]="tradePlan.marketHeadingId" [ngClass]="[view ? 'disabled' : '']">
-                                        <option [ngValue]="opt.id" *ngFor="let opt of marketStatuses; trackBy: id">{{opt.name}}
-                                        </option>
-                                    </select>
-                                    
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="mb-3">
-                                <label class="col-form-label">Did you complete the pre-market activities?</label>
-                                <div class="position-relative">
-                                    <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="tradePlan.premarketActivityStatus" [ngClass]="[view ? 'disabled' : '']">
-                                        <option value=true>Yes</option>
-                                        <option value=false>No</option>
-                                    </select>
-                                    
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <label class="col-form-label">What is your mindset today?</label>
-                                <div class="position-relative px-0">
-                                    <select class="form-control" id="tradePlanMindsetType" [(ngModel)]="tradePlan.mindSetTypeId" [ngClass]="[view ? 'disabled' : '']">
-                                        <option [ngValue]="opt.id" *ngFor="let opt of mindsetTypes; trackBy: id">{{opt.name}}
-                                        </option>
-                                    </select>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label class="col-form-label">What’s your perspective on the market and open positions?</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" [(ngModel)]="tradePlan.perspective" [ngClass]="[view ? 'disabled' : '']"></textarea>
-                    </div>
-                </div>
-                <div class="col-sm-5">
-                    <h5 class="col-form-label pb-1">Economic Calendar</h5>
-                    <app-economic-calendar></app-economic-calendar>
-                </div>
-            </div>
-        </div>
-
-
-        <app-open-strategies-grid [tradePlanId]="tradePlanId" [viewTradePlan]="view" #tradeStrategiesGrid></app-open-strategies-grid>
-        
-        
-
-        <div *ngIf="edit || view">
-            <app-today-executed-legs [day]="day" #todayExecutedLegsGrid></app-today-executed-legs>
-        </div>
-
-        <ng-container class="inner-trade-plan px-0" *ngIf="edit">
-            <div class="inner-trade-plan">
-                <div class="mb-2">
-                    <label class="col-form-label pt-0">Did you align with the trading plan?</label>
-                    <div class="trade-sel-cl col-10 px-0 media">
-                        <div class="trade-sel mr-md-3 mb-md-0  mb-2">
-                            <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="tradePlan.tradeplanAligned" [ngClass]="[view ? 'disabled' : '']">
-                                    <option value=true>Yes</option>
-                                    <option value=false>No</option>
-                                </select>
-                            <mat-icon class="form-icon-down text-success">keyboard_arrow_down</mat-icon>
-                        </div>
-                        <div class="media-body">
-                            <input type="text" placeholder=" If no, specify reason" class="form-control" [(ngModel)]="tradePlan.notAlignedReason" [ngClass]="[view ? 'disabled' : '']" />
-                        </div>
-                    </div>
-                </div>
-                <div class="mb-2">
-                    <label class="col-form-label pt-0">How do you rate your trading performance today? </label>
-                    <div class="col-md-3 px-0 trade-sel">
-                        <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="tradePlan.selfReview" [ngClass]="[view ? 'disabled' : '']">
-                                <option value="Good">Good</option>
-                                <option value="Average">Average</option>
-                                <option value="Bad">Bad</option>
-                            </select>
-                        <mat-icon class="form-icon-down text-success">keyboard_arrow_down</mat-icon>
-                    </div>
-                </div>
-                <div class="mb-2">
-                    <label class="col-form-label pt-0">What lessons did you learn today?</label>
-                    <div class="col-10 px-0 trade-sel-cl">
-                        <textarea class="form-control" [(ngModel)]="tradePlan.lessons" [ngClass]="[view ? 'disabled' : '']"></textarea>
-                        <div class="text-md-right text-center mt-1" *ngIf="!view"><span class="add-new font-weight-bold" (click)="addRule('Add', 'Save')">+ Add as Rule</span></div>
-                    </div>
-                </div>
-            </div>
-        </ng-container>
-
-        <div class="trade-plan-bottom" *ngIf="!isDemoMode">
-            <button type="button" class="btn btn-primary btn-add-plan" *ngIf="add" (click)="addTradePlan()">
-                <span class="add-icon mr-2">+</span> Add Plan
-            </button>
-            <button type="button" class="btn btn-primary btn-submit" *ngIf="edit && !view" (click)="submitTradePlan()">SUBMIT</button>
-        </div>
-    </div>
-</div>-->
