@@ -193,6 +193,14 @@ export class TradeTagsComponent implements OnInit {
     return userTag;
   }
 
+  getCommaSeperatedTagNames() {
+    let arr = [];
+    this.tags.forEach( tag => {
+      arr.push(this.getTagName(tag.tagId));
+    })
+    return arr.toString();
+  }
+
   @Output() eventChange = new EventEmitter<Event>();
 
   onClick(event: Event) {

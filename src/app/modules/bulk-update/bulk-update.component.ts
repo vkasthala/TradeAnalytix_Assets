@@ -16,6 +16,8 @@ import { PlannedEditorComponent } from './planned-editor/planned-editor.componen
 import { SourceEditorComponent } from './source-editor/source-editor.component';
 import { TechnicalIndicatorEditorComponent } from './technical-indicator-editor/technical-indicator-editor.component';
 import { DemoModeDetailsService } from '../shared/services/demo-mode-details.service';
+import { TargetDateComponent } from './target-date/target-date.component';
+import { TagEditorComponent } from './tag-editor/tag-editor.component';
 
 @Component({
   selector: 'app-bulk-update',
@@ -52,7 +54,9 @@ export class BulkUpdateComponent implements OnInit {
       closeEventEditor: CloseEventEditorComponent,
       directionEditor: DirectionEditorComponent,
       contrarianEditor: ContrarianEditorComponent,
-      plannedEditor: PlannedEditorComponent
+      plannedEditor: PlannedEditorComponent,
+      targetCloseDate: TargetDateComponent,
+      tagEditor: TagEditorComponent
     };
     this.initColumnDefns();
     this.Loader = true;
@@ -76,13 +80,16 @@ export class BulkUpdateComponent implements OnInit {
           { 
             headerName: "Identifier",
             field: 'uid',
-            width: 180, 
+            width: 120,
+            resizable: true,
           },
           { 
             headerName: "Strategy",
             field: 'strategyType',
             columnGroupShow: 'open',
-            width: 100, 
+            width: 100,
+            editable: true,
+            resizable: true,
           },
           { 
             headerName: 'Direction',
@@ -91,12 +98,12 @@ export class BulkUpdateComponent implements OnInit {
           },
           { 
             headerName: 'Contrarian',
-            field: 'contrarian',  editable: true, cellEditor: 'contrarianEditor', resizable: true, width: 100, filter: 'agTextColumnFilter',
+            field: 'contrarian',  editable: true, cellEditor: 'contrarianEditor', resizable: true, width: 120, filter: 'agTextColumnFilter',
             columnGroupShow: 'open',
           },
           {
-            headerName: 'Planned Trade',
-            field: 'planned', editable: true, resizable: true, width: 140, cellEditor: 'plannedEditor', filter: 'agTextColumnFilter', cellRenderer: prms => {
+            headerName: 'Planned',
+            field: 'planned', editable: true, resizable: true, width: 120, cellEditor: 'plannedEditor', filter: 'agTextColumnFilter', cellRenderer: prms => {
               if (!prms.data.tradeType) {
                 return "";
               }
@@ -112,29 +119,33 @@ export class BulkUpdateComponent implements OnInit {
         resizable: true,
         children: [
           { 
-            field: 'tradeThesis', 
+            field: 'reason', 
             headerName: 'Trade Thesis', 
             resizable: true, width: 400, 
             filter: 'agTextColumnFilter',
             cellClass: 'autoHeight-cell',
             autoHeight: true,
+            editable: true,
           },
           { 
             field: 'tags', headerName: 'Tags', editable: true, 
-            width: 250, 
+            width: 180, 
             filter: 'agTextColumnFilter',
-            cellClass: 'autoHeight-cell',
-            autoHeight: true
+            cellClass: 'autoHeight-cell tags-cell',
+            autoHeight: true,
+            resizable: true,
+            cellEditor: 'tagEditor',
           },
           { 
             field: 'targetPrice', headerName: 'Target Price', editable: true, 
-            resizable: true, width: 180, 
+            resizable: true, width: 130, 
             filter: 'agTextColumnFilter'
           },
-          { 
+          /*{ 
             field: 'targetCloseDate', headerName: 'Target Close Date', editable: true, resizable: true, width: 250, 
-            filter: 'agTextColumnFilter'
-          }, 
+            filter: 'agTextColumnFilter',
+            cellEditor: 'targetCloseDate',
+          }, */
           { 
             field: 'source', headerName: 'Source', editable: true, cellEditor: 'sourceEditor', resizable: true, width: 120, 
             filter: 'agTextColumnFilter'
@@ -146,10 +157,12 @@ export class BulkUpdateComponent implements OnInit {
             filter: 'agTextColumnFilter'
           }, 
           { 
-            field: 'event', headerName: 'Events', editable: true, cellEditor: 'eventEditor', resizable: true, width: 100, filter: 'agTextColumnFilter'
+            field: 'event', headerName: 'Events', editable: true, cellEditor: 'eventEditor', resizable: true, width: 100, filter: 'agTextColumnFilter',
+            columnGroupShow: 'open',
           }, 
           { 
-            field: 'mindset', headerName: 'Mindset', editable: true, cellEditor: 'mindsetEditor', resizable: true, width: 110, filter: 'agTextColumnFilter'
+            field: 'mindset', headerName: 'Mindset', editable: true, cellEditor: 'mindsetEditor', resizable: true, width: 110, filter: 'agTextColumnFilter',
+            columnGroupShow: 'open',
           }
         ]
       },
@@ -162,25 +175,28 @@ export class BulkUpdateComponent implements OnInit {
             headerName: "Cost",
             field: 'cost',
             width: 100,
-            // columnGroupShow: 'open',
+            resizable: true,
           },
           { 
             headerName: "Max Risk",
             field: 'maxRisk',
             width: 100,
             columnGroupShow: 'open',
+            resizable: true,
           },
           { 
             headerName: "Net R",
             field: 'totalAmount',
             columnGroupShow: 'open',
-            width: 100, 
+            width: 100,
+            resizable: true,
           },
           { 
             headerName: 'Realized Return',
             field: 'realizedReturn', 
             columnGroupShow: 'open',
-            width: 140, 
+            width: 140,
+            resizable: true,
           }
         ]
       }
@@ -222,7 +238,8 @@ export class BulkUpdateComponent implements OnInit {
 
   onGridReady(params) {
     this.gridApi = params.api;
-    params.api.sizeColumnsToFit()
+    // params.api.sizeColumnsToFit();
+    this.gridApi.columnApi.autoSizeColumns();
   }
 
   onCallValueDataChangeStart($event) {
