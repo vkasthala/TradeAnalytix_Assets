@@ -311,7 +311,7 @@
                     <div class="col-md-4">
                         <div class="features_section_title">Remarkable Improvement in Trading Decisions</div>
                         <div class="features_section_dec">
-                            Track your performance over time with statistics and reports derived from your trading history. Leverage the insights to identify your strengths/limitations and make better trading decisions in the future. <a class="read_more">Read More</a>
+                            Track your performance over time with analytics derived from your trading history. Identify your strengths/limitations in a historical context and use that information to make better trading decisions in the future. <a class="read_more">Read More</a>
                         </div>
                         <div class="banner-info-footer text-left">
                             <button type="button" class="btn btn-custom" (click)="login('google')">Try Beta for Free</button>
@@ -349,7 +349,7 @@
                     <div class="col-md-4">
                         <div class="features_section_title">Easy to Use Journal</div>
                         <div class="features_section_dec">
-                            CueTrade auto-fills trade parameters so that you don’t have to provide that information manually. Users can update journal details on multiple trades in bulk in an excel-like intuitive grid. <a class="read_more">Read More</a>
+                            CueTrade determines certain parameters of your trades automatically so that you don't have to provide this data manually. Also, you can provide notes on multiple trades in a single excel-like intuitive user interface, i.e., you don't have to open each trade to update its journal details rather multiple trades can be updated from a single page. <a class="read_more">Read More</a>
                         </div>
                         <div class="banner-info-footer text-left">
                             <button type="button" class="btn btn-custom" (click)="login('google')">Try Beta for Free</button>
@@ -368,7 +368,7 @@
                     <div class="col-md-4">
                         <div class="features_section_title">Rules-based Trading</div>
                         <div class="features_section_dec">
-                            Set manual or automatic trading rules based on your experience and best practices. Align your trades with the self-set rules to avoid making costly mistakes. <a class="read_more">Read More</a>
+                            Set manual or automatic trading rules based on your experience and best practices. Align your trades with the self-set rules to avoid repeating the same or common mistakes. <a class="read_more">Read More</a>
                         </div>
                         <div class="banner-info-footer text-left">
                             <button type="button" class="btn btn-custom" (click)="login('google')">Try Beta for Free</button>
@@ -407,7 +407,7 @@
                     <div class="col-md-4">
                         <div class="features_section_title">Payoff Analysis</div>
                         <div class="features_section_dec">
-                            Analyze the potential returns on your trade strategies involving options through simulation of future scenarios. Adjust your trades until the trade is aligned with your risk appetite...<a class="read_more">Read More</a>
+                            Analyze the potential returns on your trade strategies involving options through simulation of future scenarios. Adjust your trades until the trade is aligned with your risk appetite and return expectations.<a class="read_more">Read More</a>
                             <div class="banner-info-footer text-left">
                                 <button type="button" class="btn btn-custom" (click)="login('google')">Try Beta for Free</button>
                                 <!-- <button type="button" class="btn btn-outline btn-video ml-3" (click)="openPopup('Systematic')"><mat-icon class="mr-1">videocam</mat-icon> Watch a Demo</button> -->
@@ -501,25 +501,28 @@
                     <mat-expansion-panel [expanded]="false" (opened)="setStep(1)">
                         <mat-expansion-panel-header>
                             <mat-panel-title>
-                                How is CueTrade different from other trade journals?
+                                Who should use CueTrade?
                             </mat-panel-title>
                         </mat-expansion-panel-header>
                         <ng-template matExpansionPanelContent>
                             <div class="accordion-panel-body row">
-                            CueTrade is built with active retail trader in mind and is different from other journals in many regards. Our trade journal is designed in Q&A format to help the trader think through their trade in different perspectives - rationale, emotional, technical, risk, etc. Reports and metrics are generated on almost every response provided by the trader in the journal not just on the trade history. We emphasize on risk management and trading rules, and these concepts are embedded in our trade journal. Read more about what makes CueTrade unique here. </div>
+                                CueTrade is meant for all those traders who struggle to maintain discipline. Indiscipline includes trading without rationale, excessive trading, taking excessive risk, lack of control over emotions, etc. It helps such traders adopt a systematic approach to trading by allowing them to create a detailed trading plan before the market opens and reviewing their trades with reports and insights after the market closes so that they can identify their mistakes and learn from them. Also, it offers the ability to set rules so that traders can align their trades with the self-set rules.
+                            </div>
                         </ng-template>
                     </mat-expansion-panel>
 
                     <mat-expansion-panel [expanded]="false" (opened)="setStep(2)" (afterCollapse)="afterPanelClosed(1)" (afterExpand)="afterPanelOpened($event)" [disabled]="panelDisabled">
                         <mat-expansion-panel-header>
                             <mat-panel-title>
-                                When should trades be added to CueTrade journal?
+                                When should one use CueTrade?
                             </mat-panel-title>
                         </mat-expansion-panel-header>
 
                         <ng-template matExpansionPanelContent>
                             <div class="accordion-panel-body row">
-                                You can add a trade to CueTrade both before and after you execute that trade in your brokerage account. If you add your trades to CueTrade before you execute that trade, you can evaluate your trade from different perspectives (rationale behind the trade, risk assessment, past performance, rules alignment, comparison with other strategies) and make an informed decision as to whether to go ahead with the trade or not. If you chose to add trades to CueTrade only after the execution of the trade in the brokerage, you can still derive insights from your trade history and journal in the form of detailed reports and metrics.
+                                CueTrade can be used both before and after the market hours. It can be used before the market hours to prepare for the day ahead by creating a trading plan and analyzing the potential trades from rationale, risk and statistical perspective to make an informed decision.<br/>
+                                
+                                After the market hours, it can be used to write notes on the trades imported from your brokerage account and review the analytics derived from your trading history. Based on the insights, one can update their trading rules and determine the actions to be taken the following trading day
                             </div>
                         </ng-template>
                     </mat-expansion-panel>
@@ -527,12 +530,14 @@
                     <mat-expansion-panel [expanded]="false" (opened)="setStep(3)" (afterCollapse)="afterPanelClosed(1)" (afterExpand)="afterPanelOpened($event)" [disabled]="panelDisabled">
                         <mat-expansion-panel-header>
                             <mat-panel-title>
-                                How can I add my trades in the brokerage account to CueTrade?
+                                What makes CueTrade easy-to-use and intuitive journaling software? 
                             </mat-panel-title>
                         </mat-expansion-panel-header>
                         <ng-template matExpansionPanelContent>
                             <div class="accordion-panel-body row">
-                                Trades can be added manually one-by-one using our intuitive user interface or your trade history files from brokerage can be uploaded to CueTrade so that all those trades get added in bulk.
+                                Our objective is to make journaling simple and easy to use. We understand that providing data for each and every trade is a tedious task and that is why most traders do not journal their trades despite knowing its benefits. CueTrade saves you from most of the manual entry by auto-calculating certain parameters of your trades so that you don't have to provide this data.<br/>
+                                
+                                With CueTrade, one can provide notes on multiple trades in a single excel-like intuitive user interface, i.e., you don't have to open each trade to update its journal details rather multiple trades can be updated from a single page.
                             </div>
                         </ng-template>
                     </mat-expansion-panel>
@@ -540,12 +545,14 @@
                     <mat-expansion-panel [expanded]="false" (opened)="setStep(4)" (afterCollapse)="afterPanelClosed(1)" (afterExpand)="afterPanelOpened($event)" [disabled]="panelDisabled">
                         <mat-expansion-panel-header>
                             <mat-panel-title>
-                                How many reports and metrics are available in CueTrade?
+                                What are trading rules in CueTrade?
                             </mat-panel-title>
                         </mat-expansion-panel-header>
                         <ng-template matExpansionPanelContent>
                             <div class="accordion-panel-body row">
-                                There are over 40 reports available in CueTrade at present and the list is growing. These reports are generated on your trading history and the journal details provided. Click here to see the complete list of reports and metrics.
+                                CueTrade allows you to set trading rules based on your prior experience or best practices. The objective of trading rules is to help you to trade within the boundaries you set for yourself and avoid repeating the same or common mistakes.<br/>
+                                
+                                There are two types of trading rules within CueTrade: automatic and manual. Automatic rules are checked for every trade strategy added to CueTrade automatically and indicated as aligned or non-aligned. Manual rules are text-based reminders - you need to indicate manually whether a trade strategy is aligned with the manual rule or not.
                             </div>
                         </ng-template>
                     </mat-expansion-panel>
@@ -553,12 +560,20 @@
                     <mat-expansion-panel [expanded]="false" (opened)="setStep(5)" (afterCollapse)="afterPanelClosed(1)" (afterExpand)="afterPanelOpened($event)" [disabled]="panelDisabled">
                         <mat-expansion-panel-header>
                             <mat-panel-title>
-                                How is the Strategy Builder feature in CueTrade different from other option payoff tools?
+                                How is CueTrade different from other trade journals?
                             </mat-panel-title>
                         </mat-expansion-panel-header>
                         <ng-template matExpansionPanelContent>
                             <div class="accordion-panel-body row">
-                                Many retail traders buy call or put options on a stock before earnings and get surprised as to why the option price didn’t move higher or lower inline with the stock price. Strategy Builder feature in CueTrade allows traders determine how much return can be expected on trade strategies involving options in the future date when stock price and implied volatility are at certain levels. With this information, traders can decide whether to go ahead with the trades in their current form or modify them so that they are inline with their risk appetite. We find the option payoff diagrams offered in the market difficult to use. Since  CueTrade is built with retail traders in mind, we show the potential returns in a simple, easy to understand data table format.
+                                CueTrade is built with retail traders in mind and is different from other journals in many regards. 
+
+                                <ol>
+                                    <li>Our trade journal is designed to help the trader think through their trade from rationale, statistical, risk, and emotional perspectives</li>
+                                    <li>We allow users to set up automatic and manual trading rules so that they can make sure their trades are aligned with these trading rules</li>
+                                    <li>CueTrade groups all the trades on a symbol into a trade strategy. This allows users to enter notes, assess risk, review stats, and check alignment with rules at the trade strategy level instead of trade level. </li>
+                                    <li>With CueTrade, one can provide notes on multiple trades in a single excel-like intuitive user interface, i.e., you don't have to open each trade to update its journal details rather multiple trades can be updated from a single page.</li>
+                                    <li>Our emphasis on risk management differentiates us from others. Our Payoff Analysis tool allows you to analyze the P&L of trades involving options at a specific date in the future by varying stock price and implied volatility.</li>
+                                </ol>                                
                             </div>
                         </ng-template>
                     </mat-expansion-panel>
@@ -566,12 +581,12 @@
                     <mat-expansion-panel [expanded]="false" (opened)="setStep(6)" (afterCollapse)="afterPanelClosed(1)" (afterExpand)="afterPanelOpened($event)" [disabled]="panelDisabled">
                         <mat-expansion-panel-header>
                             <mat-panel-title>
-                                How does strategy Picker feature help the traders?
+                                What kind of statistics and reports are available in CueTrade?
                             </mat-panel-title>
                         </mat-expansion-panel-header>
                         <ng-template matExpansionPanelContent>
                             <div class="accordion-panel-body row">
-                                Let’s say you are bullish on a stock and want to place a trade. Now there are numerous ways to take a bullish position on this stock - buy stock, buy naked call, buy call spread, sell put spread, etc. and different strikes and expiration dates to choose from. How does one choose the strategy and option contracts that is aligned with their risk appetite? This is where strategy Picker feature can help the retail traders. It allows the traders to compare multiple strategies on a stock and estimate their potential returns in the future by varying stock price, implied volatility, and days left for expiration so that they can choose the strategy that is aligned with their risk appetite.
+                                CueTrade provides statistics and reports across multiple categories including performance, risk management, commissions, goals, and discipline. 
                             </div>
                         </ng-template>
                     </mat-expansion-panel>
@@ -579,12 +594,77 @@
                     <mat-expansion-panel [expanded]="false" (opened)="setStep(7)" (afterCollapse)="afterPanelClosed(1)" (afterExpand)="afterPanelOpened($event)" [disabled]="panelDisabled">
                         <mat-expansion-panel-header>
                             <mat-panel-title>
-                                What is a trading rule in CueTrade and how does it help a trader?
+                                How is the payoff analysis tool in CueTrade different from other option payoff tools? 
                             </mat-panel-title>
                         </mat-expansion-panel-header>
                         <ng-template matExpansionPanelContent>
                             <div class="accordion-panel-body row">
-                                Within CueTrade, there is a provision to set rules based on your trading experience and best practices. There are two types of trading rules - manual and automatic. Manual rules are like reminders that show up while adding a trade so that you can indicate whether you are aligning with that rule or not. Automatic rules, as the name suggests, are automatically checked against every trade you add to trade journal. The objective of trading rules is to help you to trade within the boundaries you set for yourself without getting influenced by emotions.
+                                Payoff analysis feature allows you to build trade strategies involving options and analyze the P&L of the strategy at a specific point in the future at a specific stock price and implied volatility levels.  User can update the stock price, implied volatility and days to expiration of the options to see its impact on the P&L. With this information, users can decide whether to go ahead with the trades in their current form or modify them so that they are inline with their risk appetite and return expectations. The biggest benefit of Payoff Analysis in CueTrade is its simplicity and easy to use.
+                            </div>
+                        </ng-template>
+                    </mat-expansion-panel>
+
+                    <mat-expansion-panel [expanded]="false" (opened)="setStep(8)" (afterCollapse)="afterPanelClosed(1)" (afterExpand)="afterPanelOpened($event)" [disabled]="panelDisabled">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                How can one add trades in their brokerage account to CueTrade automatically? 
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <ng-template matExpansionPanelContent>
+                            <div class="accordion-panel-body row">
+                                Trades can be imported from your brokerage accounts either automatically or manually. If your brokerage account is in this list, you can connect CueTrade to your brokerage and the trade history will get imported from your brokerage account to CueTrade every day automatically. For all the other brokerages, trade history files from brokerages should be downloaded and imported manually to CueTrade to add your trades in bulk.
+                            </div>
+                        </ng-template>
+                    </mat-expansion-panel>
+
+                    <mat-expansion-panel [expanded]="false" (opened)="setStep(9)" (afterCollapse)="afterPanelClosed(1)" (afterExpand)="afterPanelOpened($event)" [disabled]="panelDisabled">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Can I place trades from CueTrade?
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <ng-template matExpansionPanelContent>
+                            <div class="accordion-panel-body row">
+                                No, you cannot place trades from CueTrade. CueTrade is a journaling and analytics software that should ideally be used before or after market hours.
+                            </div>
+                        </ng-template>
+                    </mat-expansion-panel>
+
+                    <mat-expansion-panel [expanded]="false" (opened)="setStep(10)" (afterCollapse)="afterPanelClosed(1)" (afterExpand)="afterPanelOpened($event)" [disabled]="panelDisabled">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Is CueTrade free to use?
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <ng-template matExpansionPanelContent>
+                            <div class="accordion-panel-body row">
+                                CueTrade is in beta mode and is free to use. We will inform you and give you enough time if and when we make it a paid version.
+                            </div>
+                        </ng-template>
+                    </mat-expansion-panel>
+
+                    <mat-expansion-panel [expanded]="false" (opened)="setStep(11)" (afterCollapse)="afterPanelClosed(1)" (afterExpand)="afterPanelOpened($event)" [disabled]="panelDisabled">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Which markets are currently supported by CueTrade?
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <ng-template matExpansionPanelContent>
+                            <div class="accordion-panel-body row">
+                                At present, we support US and Indian markets.
+                            </div>
+                        </ng-template>
+                    </mat-expansion-panel>
+
+                    <mat-expansion-panel [expanded]="false" (opened)="setStep(12)" (afterCollapse)="afterPanelClosed(1)" (afterExpand)="afterPanelOpened($event)" [disabled]="panelDisabled">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                What asset classes does CueTrade support?
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <ng-template matExpansionPanelContent>
+                            <div class="accordion-panel-body row">
+                                We support stock and options currently but are in the process of adding future contracts as well.
                             </div>
                         </ng-template>
                     </mat-expansion-panel>

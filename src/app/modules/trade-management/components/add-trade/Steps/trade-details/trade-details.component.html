@@ -73,7 +73,7 @@
             <div class="trade-cards-section" *ngIf="stockAdded && !viewTrade">
                 <h4>Stock Positions</h4>
                 <div class="trade-card-box">
-                    <div class="card-main card-main-actions" *ngIf="tradeStatus !== 4">
+                    <!-- <div class="card-main card-main-actions" *ngIf="tradeStatus !== 4">
                         <label class="col-form-label pt-0">Transaction Date</label>
                         <div class="datepicker-group">
                             <input matInput [matDatepicker]="transactionDate"
@@ -83,7 +83,7 @@
                             </mat-datepicker-toggle>
                             <mat-datepicker #transactionDate></mat-datepicker>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="card-main card-main-actions">
                         <label class="col-form-label pt-0">Action</label>
                         <select id="inputState"
@@ -173,8 +173,8 @@
                         <ng-template matExpansionPanelContent>
                             <ng-container>
                                 <div class="trade-card-box mt-0">
-                                    <div class="card-main card-main-actions" 
-                                    *ngIf="tradeStatus !== 4">Transaction Date</div>
+                                    <!-- <div class="card-main card-main-actions" 
+                                    *ngIf="tradeStatus !== 4">Transaction Date</div> -->
                                     <div class="card-main card-main-actions">Action</div>
                                     <div class="card-main card-main-md">Contracts</div>
                                     <div class="card-main card-main-custom">Strike Price</div>
@@ -189,7 +189,7 @@
                             </ng-container>
                             <ng-container *ngFor="let item of stockOptions;let index = index">
                                 <div class="trade-card-box mt-2" *ngIf="item.display != false">
-                                    <div class="card-main" *ngIf="tradeStatus !== 4">
+                                    <!-- <div class="card-main" *ngIf="tradeStatus !== 4">
                                         <div class="datepicker-group">
                                             <input matInput [matDatepicker]="transactionDate"
                                             [ngClass]="[closeTrade || viewTrade ? 'disabled' : '', editTrade && item.id > 0  ? 'disabled' : '']" />
@@ -198,7 +198,7 @@
                                             </mat-datepicker-toggle>
                                             <mat-datepicker #transactionDate></mat-datepicker>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="card-main card-main-actions">
                                         <select id="inputState"
                                             [ngClass]="[closeTrade || viewTrade ? 'disabled' : '', editTrade && tradeStatus !== 4 && item.id > index  ? 'disabled' : '']"

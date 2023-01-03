@@ -1,7 +1,7 @@
 @import "../../../../assets/styles/variable.scss";
 @import '../../../../assets/styles/breakpoints.scss';
 body {
-    font-family: "Graphik", "Helvetica Neue", helvetica, "Apple Color Emoji", arial, sans-serif !important;
+    font-family: 'Poppins', sans-serif !important;
 }
 // Landing page
 .trade-app {
@@ -1042,12 +1042,14 @@ $button-active-blue: #1669F2;
     color: rgb(15, 10, 77) !important;
 }
 .accordion-panel-body {
+    font-family: 'Poppins', sans-serif !important;
     padding:10px 5px;
     font-weight: normal;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 25px;
     color: #0f0a4d;
     text-align: left;
+    padding-bottom: 0;
     @media #{$extra-small} {
         padding: 5px;
         font-size: 13px;
@@ -1073,7 +1075,7 @@ $button-active-blue: #1669F2;
     }
 }
 .mat-expansion-panel-header.mat-expanded{
-    background-color: rgb(15, 10, 77) !important;
+    background-color: #394c86  !important;
 }
 .mat-expansion-panel-header.mat-expanded .mat-expansion-panel-header-title {
     color: #fff !important;
@@ -1305,7 +1307,7 @@ $button-active-blue: #1669F2;
     padding-left: 0.2em;
 }
 .mat-expansion-panel {
-    margin-bottom: 0 !important;
+    margin: 0 !important;
 }
 .btn-video {
     display: inline-flex;
@@ -1488,5 +1490,26 @@ $button-active-blue: #1669F2;
     img {
         width: 90%;
     }
-  }
-  
+}
+
+ol {
+    margin-left: 1rem;
+    padding: 1rem;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    li {
+        padding-left: 10px;
+        margin-bottom: .5rem;
+    }
+}
+.mat-expansion-panel {
+    background: transparent !important;
+    border-bottom: 1px solid #ccc;
+}
+.mat-expansion-panel-header {
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 14px;
+}
+.mat-expansion-panel-body {
+    padding: 0 24px !important;
+}
