@@ -2,6 +2,8 @@ export class SummaryRequest {
 
     summaryType: string;
 
+    summaryTypes: string[];
+
     fromDate: string;
     
     toDate: string;

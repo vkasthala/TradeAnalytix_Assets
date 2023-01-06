@@ -7,39 +7,39 @@
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Realized Return</label>
-                    <span class="col-sm-5"></span>
+                    <span class="col-sm-5">{{plSummary.realized_return || 0}}</span>
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Pay off Ratio</label>
-                    <span class="col-sm-5"></span>
+                    <span class="col-sm-5">-</span>
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Profit Factor</label>
-                    <span class="col-sm-5"></span>
+                    <span class="col-sm-5">{{plSummary.profit_factor || 0}}</span>
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Net R</label>
-                    <span class="col-sm-5"></span>
+                    <span class="col-sm-5">{{plSummary.net_r || 0}}</span>
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Average P&L per Trade</label>
-                    <span class="col-sm-5"></span>
+                    <span class="col-sm-5">-</span>
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Average Daily P&L</label>
-                    <span class="col-sm-5">84375</span>
+                    <span class="col-sm-5">-</span>
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">P&L Volatility</label>
-                    <span class="col-sm-5">4358</span>
+                    <span class="col-sm-5">-</span>
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Largest Profit</label>
-                    <span class="col-sm-5">80017</span>
+                    <span class="col-sm-5">{{plSummary.largest_profit || 0}}</span>
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Largest Loss</label>
-                    <span class="col-sm-5">4.2</span>
+                    <span class="col-sm-5">{{plSummary.largest_loss || 0}}</span>
                 </div>
 
                 <div class="metrics-title mb-2">
@@ -47,31 +47,33 @@
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Total Strategies</label>
-                    <span class="col-sm-5">1.6R</span>
+                    <span class="col-sm-5">{{volumeSummary.strategy_count || 0}}</span>
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Total Trades</label>
-                    <span class="col-sm-5">58%</span>
+                    <span class="col-sm-5">{{volumeSummary.total_trades || 0}}</span>
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Winning Trades</label>
-                    <span class="col-sm-5">3984</span>
+                    <span class="col-sm-5">{{volumeSummary.winning_trades || 0}}</span>
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Losing Trades</label>
-                    <span class="col-sm-5">839</span>
+                    <span class="col-sm-5">{{volumeSummary.losing_trades || 0}}</span>
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Contrarian Trades (%)</label>
-                    <span class="col-sm-5"></span>
+                    <span class="col-sm-5">{{percentage(volumeSummary.contrarian_trades,
+                        volumeSummary.total_trades)| number:'1.0-1'}}</span>
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Planned Trades Count (%)</label>
-                    <span class="col-sm-5"></span>
+                    <span class="col-sm-5">{{percentage(volumeSummary.planned_trades,
+                        volumeSummary.total_trades) | number:'1.0-1'}}</span>
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Average Daily Trade Count</label>
-                    <span class="col-sm-5"></span>
+                    <span class="col-sm-5">{{getAvgTradeCount(volumeSummary.total_trades) | number:'1.0-1'}}</span>
                 </div>
 
                 <div class="metrics-title mb-2">
@@ -79,23 +81,23 @@
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Best Strategy by Return</label>
-                    <span class="col-sm-5"></span>
+                    <span class="col-sm-5">{{strategySummary.best_strategy_by_return}}</span>
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Best Strategy by Win/Loss</label>
-                    <span class="col-sm-5"></span>
+                    <span class="col-sm-5">{{strategySummary.best_strategy_by_winloss}}</span>
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Worst Strategy by Return</label>
-                    <span class="col-sm-5"></span>
+                    <span class="col-sm-5">{{strategySummary.worst_strategy_by_return}}</span>
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Worst Strategy by Win/Loss</label>
-                    <span class="col-sm-5"></span>
+                    <span class="col-sm-5">{{strategySummary.worst_strategy_by_winloss}}</span>
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Most-Used Strategy</label>
-                    <span class="col-sm-5"></span>
+                    <span class="col-sm-5">{{strategySummary.most_used_strategy}}</span>
                 </div>
 
                 <div class="metrics-title mb-2">
@@ -103,19 +105,20 @@
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Long | Neutral | Short Trades</label>
-                    <span class="col-sm-5"></span>
+                    <span class="col-sm-5">{{directionSummary.long_trade_count || 0}} |
+                        {{directionSummary.neutral_trade_count|| 0}} | {{directionSummary.short_trade_count|| 0}}</span>
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Return from Long Trades</label>
-                    <span class="col-sm-5"></span>
+                    <span class="col-sm-5">{{directionSummary.long_trade_total_return || 0}}</span>
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Return from Neutral Trades</label>
-                    <span class="col-sm-5"></span>
+                    <span class="col-sm-5">{{directionSummary.neutral_trade_total_return || 0}}</span>
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Return from Short Trades</label>
-                    <span class="col-sm-5"></span>
+                    <span class="col-sm-5">{{directionSummary.short_trade_total_return || 0}}</span>
                 </div>
             </div>
             <div class="col-sm-6 metrics-column">
@@ -373,7 +376,11 @@
             </div>
         </div>
         <div class="metrics-footer">
-        <span class="cursor" (click)="toggleMetrics()">{{showMoreMetrics ? 'Less' : 'More' }} Statistics</span>
+            <span class="cursor" (click)="toggleMetrics()">{{showMoreMetrics ? 'Less' : 'More' }} Statistics</span>
+        </div>
+
+        <div class="mask" *ngIf="loader">
+            <div class="loader"></div>
         </div>
 
     </div>

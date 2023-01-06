@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { SummaryItem } from '../../shared/models/reports/summary-item.model';
 import { SummaryRequest } from '../../shared/models/reports/summary-request.model';
 import { CalReportDayData } from '../model/cal-report-day-data.model';
+import { UserStats } from '../model/user-stats.model';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,10 @@ export class ReportDataService {
 
   public getReportSummary(summaryRequest: SummaryRequest): Observable<SummaryItem[]> {
     return this.httpService.post<SummaryRequest, SummaryItem[]>(environment.apiUrl + "/reports/summary", summaryRequest);
+  }
+
+  public getReportStats(summaryRequest: SummaryRequest): Observable<UserStats> {
+    return this.httpService.post<SummaryRequest, UserStats>(environment.apiUrl + "/reports/stats", summaryRequest);
   }
 
   public getCalendarReportData(month: number, year: number): Observable<CalReportDayData[]> {
