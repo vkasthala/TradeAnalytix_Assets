@@ -127,19 +127,19 @@
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Win-Rate</label>
-                    <span class="col-sm-5"></span>
+                    <span class="col-sm-5">{{winRateSummary.win_rate | number:'1.0-1'}}</span>
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Average Winning Trade</label>
-                    <span class="col-sm-5"></span>
+                    <span class="col-sm-5">-</span>
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Average Losing Trade</label>
-                    <span class="col-sm-5"></span>
+                    <span class="col-sm-5">-</span>
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Average Win Size</label>
-                    <span class="col-sm-5"></span>
+                    <span class="col-sm-5">-</span>
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Average Loss Size</label>
@@ -147,11 +147,11 @@
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Max Consecutive Wins</label>
-                    <span class="col-sm-5"></span>
+                    <span class="col-sm-5">-</span>
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Max Consecutive Losses</label>
-                    <span class="col-sm-5"></span>
+                    <span class="col-sm-5">-</span>
                 </div>
 
                 <div class="metrics-title mb-2">
@@ -159,15 +159,15 @@
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Average Holding Period</label>
-                    <span class="col-sm-5"></span>
+                    <span class="col-sm-5">{{holdingPeriodSummary.avg_holding_period}}</span>
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Average Holding Period (Winning Trades)</label>
-                    <span class="col-sm-5"></span>
+                    <span class="col-sm-5">{{holdingPeriodSummary.avg_holding_period_win_trades}}</span>
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Average Holding Period (Losing Trades)</label>
-                    <span class="col-sm-5"></span>
+                    <span class="col-sm-5">{{holdingPeriodSummary.avg_holding_period_lost_trades}}</span>
                 </div>
 
                 <div class="metrics-title mb-2">
@@ -175,15 +175,15 @@
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Commissions</label>
-                    <span class="col-sm-5"></span>
+                    <span class="col-sm-5">-</span>
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Average Daily Commission</label>
-                    <span class="col-sm-5"></span>
+                    <span class="col-sm-5">-</span>
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Commission as a % of Return</label>
-                    <span class="col-sm-5"></span>
+                    <span class="col-sm-5">-</span>
                 </div>
 
                 <div class="metrics-title mb-2">
@@ -191,15 +191,15 @@
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Most Profitable Symbol</label>
-                    <span class="col-sm-5"></span>
+                    <span class="col-sm-5">-</span>
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Least Profitable Symbol</label>
-                    <span class="col-sm-5"></span>
+                    <span class="col-sm-5">-</span>
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Frequently Traded Stock</label>
-                    <span class="col-sm-5"></span>
+                    <span class="col-sm-5">-</span>
                 </div>
 
                 <div class="metrics-title mb-2">
@@ -207,19 +207,19 @@
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Trade Plan Creation (%)</label>
-                    <span class="col-sm-5"></span>
+                    <span class="col-sm-5">{{tradePlanSummary.trade_plan_creation_percent}}</span>
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Trade Plan Alignment (%)</label>
-                    <span class="col-sm-5"></span>
+                    <span class="col-sm-5">{{tradePlanSummary.trade_plan_align_percent}}</span>
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">P&L on Aligned Trades</label>
-                    <span class="col-sm-5"></span>
+                    <span class="col-sm-5">-</span>
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Win-Rate of Aligned Trades</label>
-                    <span class="col-sm-5"></span>
+                    <span class="col-sm-5">-</span>
                 </div>
 
                 <div class="metrics-title mb-2">
@@ -227,15 +227,15 @@
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Rules Compliance %</label>
-                    <span class="col-sm-5"></span>
+                    <span class="col-sm-5">-</span>
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">P&L on Compliant Trades</label>
-                    <span class="col-sm-5"></span>
+                    <span class="col-sm-5">-</span>
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Win-Rate of Compliant Trades</label>
-                    <span class="col-sm-5"></span>
+                    <span class="col-sm-5">-</span>
                 </div>
             </div>
         </div>

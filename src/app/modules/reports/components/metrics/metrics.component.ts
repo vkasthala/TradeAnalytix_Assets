@@ -18,10 +18,16 @@ export class MetricsComponent extends ReportTabContentComponent implements OnIni
   private STRATEGY_TYPE: string = "type";
   private VOLUME_TYPE: string = "trade_volume";
   private DIRECTION_TYPE: string = "direction";
+  private WINRATE_TYPE = "win_rate";
+  private HOLDING_PERIOD_TYPE = "holding_period";
+  private COMMISSION_TYPE = "commission";
+  private SYMBOL_TYPE = "symbol";
+  private TRADEPLAN_COMPLIANCE = "discipline_compliance";
+  private RULES_COMPLIANCE = "rules_compliance";
 
-  private initialTypes: string[] = [this.USER_PL_TYPE, this.STRATEGY_TYPE, this.VOLUME_TYPE, this.DIRECTION_TYPE];
+  private initialTypes: string[] = [this.USER_PL_TYPE, this.STRATEGY_TYPE, this.VOLUME_TYPE, this.DIRECTION_TYPE, this.WINRATE_TYPE, this.HOLDING_PERIOD_TYPE, this.COMMISSION_TYPE, this.SYMBOL_TYPE, this.TRADEPLAN_COMPLIANCE, this.RULES_COMPLIANCE];
   private secondLevelTypes: string[] = [];
-  private allTypes: string[] = [this.USER_PL_TYPE, this.STRATEGY_TYPE, this.VOLUME_TYPE, this.DIRECTION_TYPE];
+  private allTypes: string[] = [this.USER_PL_TYPE, this.STRATEGY_TYPE, this.VOLUME_TYPE, this.DIRECTION_TYPE, this.WINRATE_TYPE, this.HOLDING_PERIOD_TYPE, this.COMMISSION_TYPE, this.SYMBOL_TYPE, this.TRADEPLAN_COMPLIANCE, this.RULES_COMPLIANCE];
 
   showMoreMetrics: boolean = false;
   allTypesLoaded: boolean = false;
@@ -31,7 +37,12 @@ export class MetricsComponent extends ReportTabContentComponent implements OnIni
   volumeSummary: any = {};
   strategySummary: any = {};
   directionSummary: any = {};
-
+  winRateSummary: any = {};
+  holdingPeriodSummary: any = {};
+  commisionSummary: any = {};
+  symbolSummary: any = {};
+  tradePlanSummary: any = {};
+  rulesSummary: any = {};
 
   constructor(reportTypeService: ReportTypeService, private reportDataService: ReportDataService) {
     super('stats', reportTypeService);
@@ -76,6 +87,18 @@ export class MetricsComponent extends ReportTabContentComponent implements OnIni
         this.volumeSummary = map[key];
       } else if (key == this.DIRECTION_TYPE) {
         this.directionSummary = map[key];
+      } else if (key === this.HOLDING_PERIOD_TYPE) {
+        this.holdingPeriodSummary = map[key];
+      } else if (key === this.WINRATE_TYPE) {
+        this.winRateSummary = map[key];
+      } else if (key === this.COMMISSION_TYPE) {
+        this.commisionSummary = map[key];
+      } else if (key === this.SYMBOL_TYPE) {
+        this.symbolSummary = map[key];
+      } else if (key === this.TRADEPLAN_COMPLIANCE) {
+        this.tradePlanSummary = map[key];
+      } else if (key === this.RULES_COMPLIANCE) {
+        this.rulesSummary = map[key];
       }
     });
   }
