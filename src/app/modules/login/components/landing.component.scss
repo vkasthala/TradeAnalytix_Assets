@@ -769,15 +769,13 @@ body {
 }
 .footer_nav {
     list-style: none;
-    display: flex;
-    align-items: center;
-    margin: 0;
-    padding: 0;
+    font-size: 13px;
+    color: #FFFFFF;
     @media #{$extra-small} {
         justify-content: space-between;
     }
     li {
-        margin-right: 1rem;
+        margin-top: 0.567rem;
         @media #{$extra-small} {
             margin-right: 0;
         }
@@ -786,7 +784,10 @@ body {
         }
     }
 }
-
+.footer_nav_title {
+    font-size: 16px;
+    font-weight: 500;
+}
 .footer_tradelogo {
     font-weight: 300;
     font-size: 18px;
@@ -874,7 +875,6 @@ body {
     line-height: 18px;
     color: #fff;
     padding-top: 0.5rem;
-    text-align: right;
     @media #{$extra-small} {
         text-align: left;
     }
