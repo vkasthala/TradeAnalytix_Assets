@@ -539,12 +539,12 @@ input:invalid {
     border-bottom: 1px solid rgba(157, 157, 157, 0.345);
 }
 .ng-image-slider {
-    height: 40px !important;
+    height: 50px !important;
 }
 .ng-image-slider .ng-image-slider-container .main {
     min-height: inherit;
     padding: 0;
-    height: 40px !important;
+    height: 50px !important;
 }
 .ng-image-slider .ng-image-slider-container .main .main-inner .img-div {
     margin-left: 1rem !important;
@@ -560,4 +560,8 @@ input:invalid {
 .ng-image-slider .ng-image-slider-container .main .main-inner .img-div img {
     height: inherit !important;
     border-radius: 0 !important;
+}
+.ng-image-slider .ng-image-slider-container .main .next,
+.ng-image-slider .ng-image-slider-container .main .prev {
+    display: none !important;
 }
