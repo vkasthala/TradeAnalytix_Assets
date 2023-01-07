@@ -24,10 +24,16 @@ export class MetricsComponent extends ReportTabContentComponent implements OnIni
   private SYMBOL_TYPE = "symbol";
   private TRADEPLAN_COMPLIANCE = "discipline_compliance";
   private RULES_COMPLIANCE = "rules_compliance";
+  private TRADE_TAGS = "trade_tags";
+  private TECHNICAL_INDICATOR = "technical_indicator";
+  private TRADE_DAY = "initiated_day";
+  private SOURCE = "source";
+  private MINDSET = "mindset";
+  private EVENT = "event";
 
   private initialTypes: string[] = [this.USER_PL_TYPE, this.STRATEGY_TYPE, this.VOLUME_TYPE, this.DIRECTION_TYPE, this.WINRATE_TYPE, this.HOLDING_PERIOD_TYPE, this.COMMISSION_TYPE, this.SYMBOL_TYPE, this.TRADEPLAN_COMPLIANCE, this.RULES_COMPLIANCE];
-  private secondLevelTypes: string[] = [];
-  private allTypes: string[] = [this.USER_PL_TYPE, this.STRATEGY_TYPE, this.VOLUME_TYPE, this.DIRECTION_TYPE, this.WINRATE_TYPE, this.HOLDING_PERIOD_TYPE, this.COMMISSION_TYPE, this.SYMBOL_TYPE, this.TRADEPLAN_COMPLIANCE, this.RULES_COMPLIANCE];
+  private secondLevelTypes: string[] = [this.TRADE_TAGS, this.TECHNICAL_INDICATOR, this.TRADE_DAY, this.SOURCE, this.MINDSET, this.EVENT];
+  private allTypes: string[] = [this.USER_PL_TYPE, this.STRATEGY_TYPE, this.VOLUME_TYPE, this.DIRECTION_TYPE, this.WINRATE_TYPE, this.HOLDING_PERIOD_TYPE, this.COMMISSION_TYPE, this.SYMBOL_TYPE, this.TRADEPLAN_COMPLIANCE, this.RULES_COMPLIANCE, this.TRADE_TAGS, this.TECHNICAL_INDICATOR, this.TRADE_DAY, this.SOURCE, this.MINDSET, this.EVENT];
 
   showMoreMetrics: boolean = false;
   allTypesLoaded: boolean = false;
@@ -43,6 +49,12 @@ export class MetricsComponent extends ReportTabContentComponent implements OnIni
   symbolSummary: any = {};
   tradePlanSummary: any = {};
   rulesSummary: any = {};
+  tradeTagsSummary: any = {};
+  techIndicatorSummary: any = {};
+  tradeDaySummary: any = {};
+  sourceSummary: any = {};
+  mindsetSummary: any = {};
+  eventSummary: any = {};
 
   constructor(reportTypeService: ReportTypeService, private reportDataService: ReportDataService) {
     super('stats', reportTypeService);
@@ -67,7 +79,7 @@ export class MetricsComponent extends ReportTabContentComponent implements OnIni
   }
 
   loadStats(types: string[], allLoaded: boolean) {
-    this.loader = true;
+    //this.loader = true;
     this.reportDataService.getReportStats(this.createSummaryRequest(types)).subscribe(result => {
       this.loader = false;
       if (result && result.stats) {
@@ -99,6 +111,18 @@ export class MetricsComponent extends ReportTabContentComponent implements OnIni
         this.tradePlanSummary = map[key];
       } else if (key === this.RULES_COMPLIANCE) {
         this.rulesSummary = map[key];
+      } else if (key === this.TRADE_TAGS) {
+        this.rulesSummary = map[key];
+      } else if (key === this.TECHNICAL_INDICATOR) {
+        this.techIndicatorSummary = map[key];
+      } else if (key === this.TRADE_DAY) {
+        this.tradeDaySummary = map[key];
+      } else if (key == this.SOURCE) {
+        this.sourceSummary = map[key];
+      } else if (key == this.MINDSET) {
+        this.mindsetSummary = map[key];
+      } else if (key == this.EVENT) {
+        this.eventSummary = map[key];
       }
     });
   }
