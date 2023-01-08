@@ -26,7 +26,7 @@ import { StrategyEditorComponent } from './strategy-editor/strategy-editor.compo
   styleUrls: ['./bulk-update.component.scss']
 })
 export class BulkUpdateComponent implements OnInit {
-
+  
   test: ICellEditorParams;
   strategies: BulkStrategyUpdateModel[] = [];
   Loader: boolean = false;
@@ -73,20 +73,23 @@ export class BulkUpdateComponent implements OnInit {
 
   initColumnDefns() {
     this.columnDefs = [
-      
       { 
         headerName: "Trade Details ",
         resizable: true,
         children: [
           { 
             field: 'symbol', 
-            headerName: 'Symbol', resizable: true, width: 110, 
-            filter: 'agTextColumnFilter' 
+            headerName: 'Symbol', resizable: true, 
+            filter: 'agTextColumnFilter',
+            width: 110,
+            cellClass: 'read-only-cell',
           }, 
           { 
             field: 'status', 
             headerName: 'Status', 
-            resizable: true, width: 90, filter: 'agTextColumnFilter'
+            resizable: true, width: 95, 
+            filter: 'agTextColumnFilter',
+            cellClass: 'read-only-cell',
           },
           { 
             headerName: "Identifier",
@@ -99,7 +102,7 @@ export class BulkUpdateComponent implements OnInit {
             headerName: "Strategy",
             field: 'strategyType',
             columnGroupShow: 'open',
-            width: 130,
+            width: 120,
             editable: true,
             resizable: true,
             cellEditor: 'strategyEditor',
@@ -196,24 +199,24 @@ export class BulkUpdateComponent implements OnInit {
             cellEditor: 'targetCloseDate',
           }, */
           { 
-            field: 'source', headerName: 'Source', editable: true, cellEditor: 'sourceEditor', resizable: true, width: 120, 
+            field: 'source', headerName: 'Source', editable: true, cellEditor: 'sourceEditor', resizable: true, width: 130, 
             filter: 'agTextColumnFilter',
             columnGroupShow: 'closed',
           }, 
           { 
             field: 'technicalIndicator', headerName: 'Technical Indicator', 
             resizable: true, editable: true, cellEditor: 'technicalIndicatorEditor', 
-            width: 180, 
+            width: 170, 
             filter: 'agTextColumnFilter',
             columnGroupShow: 'closed',
           }, 
           { 
-            field: 'event', headerName: 'Events', editable: true, cellEditor: 'eventEditor', resizable: true, width: 100, filter: 'agTextColumnFilter',
-            columnGroupShow: 'open',
+            field: 'event', headerName: 'Events', editable: true, cellEditor: 'eventEditor', resizable: true, width: 130, filter: 'agTextColumnFilter',
+            columnGroupShow: 'closed',
           }, 
           { 
-            field: 'mindset', headerName: 'Mindset', editable: true, cellEditor: 'mindsetEditor', resizable: true, width: 110, filter: 'agTextColumnFilter',
-            columnGroupShow: 'open',
+            field: 'mindset', headerName: 'Mindset', editable: true, cellEditor: 'mindsetEditor', resizable: true, width: 130, filter: 'agTextColumnFilter',
+            columnGroupShow: 'closed',
           }
         ]
       },
@@ -228,7 +231,10 @@ export class BulkUpdateComponent implements OnInit {
     ];
     this.isDemoMode = this.demoService.demoMode;
   }
-
+  public defaultColDef: ColDef = {
+    flex: 0,
+    floatingFilter: true,
+  };
   onSave() {
     this.gridApi.stopEditing();
     this.Loader = true;

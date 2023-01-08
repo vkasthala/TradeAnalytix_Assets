@@ -46,4 +46,6 @@ export class BulkStrategyUpdateModel {
     tradeThesis: string;
     Identifier: string;
 
+    strategyTypeId: number;
+
 }

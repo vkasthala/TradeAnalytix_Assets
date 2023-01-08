@@ -9,9 +9,14 @@
             </div>
         </div>
         <div class="trade-table">
-            <ag-grid-angular class="ag-theme-alpine bulk-update-grid" [rowData]="strategies" [columnDefs]="columnDefs"
-            [frameworkComponents]="frameworkComponents" (cellEditingStarted)="onCallValueDataChangeStart($event)"
-            (gridReady)="onGridReady($event)">
+            <ag-grid-angular 
+                class="ag-theme-alpine bulk-update-grid" 
+                [rowData]="strategies" 
+                [columnDefs]="columnDefs" 
+                [defaultColDef]="defaultColDef"
+                [frameworkComponents]="frameworkComponents" 
+                (cellEditingStarted)="onCallValueDataChangeStart($event)"
+                (gridReady)="onGridReady($event)">
             </ag-grid-angular>
         </div>
 

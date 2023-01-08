@@ -1,9 +1,9 @@
 <div class="wrapper trade-app-dashboard zoom">
-    <div class="sidebar" [ngClass]="!isExpand ? 'toggled' : ''">
-        <div *ngIf="!isExpand" class="sidebar-brand cursor-pointer" [routerLink]="['/dashboard/']">
+    <div class="sidebar" [ngClass]="!isExpand ? '' : 'toggled'">
+        <div *ngIf="isExpand" class="sidebar-brand cursor-pointer" [routerLink]="['/dashboard/']">
             <img src="../../../../assets/images/cuetrade-blue-logo-sm.svg" alt="Trade-app-logo" class="img-fluid logo_sm">
         </div>
-        <div *ngIf="isExpand" class="sidebar-brand cursor-pointer" [routerLink]="['/dashboard/']">
+        <div *ngIf="!isExpand" class="sidebar-brand cursor-pointer" [routerLink]="['/dashboard/']">
             <img src="../../../../assets/images/cuetrade-blue-logo.svg" alt="Trade-app-logo" class="img-fluid full-logo">
         </div>
 
@@ -14,16 +14,19 @@
             <ul class="list-unstyled ">
                 <li class="sidebar-item" [class.nav-active]="currentRoute == 'trade-plans'">
                     <a class="sidebar-link" [routerLink]="['/trade-plans/']">
+                        <mat-icon>note_add</mat-icon>
                         <span>Daily Plan</span>
                     </a>
                 </li>
                 <li class="sidebar-item" [class.nav-active]="currentRoute == 'trade-builder'">
                     <a class="sidebar-link" [routerLink]="['/trade-builder/']">
+                        <mat-icon>compare_arrows</mat-icon>
                         <span>Trade Builder</span>
                     </a>
                 </li>
                 <li class="sidebar-item" [class.nav-active]="currentRoute == 'risk-analysis'">
                     <a class="sidebar-link" [routerLink]="['/risk-analysis/']">
+                        <mat-icon>insights</mat-icon>
                         <span>Payoff Analyzer</span>
                     </a>
                 </li>
@@ -48,6 +51,7 @@
                 
                 <li class="sidebar-item" [class.nav-active]="currentRoute == 'bulk-update'">
                     <a class="sidebar-link" [routerLink]="['/bulk-update/']">
+                        <mat-icon>update</mat-icon>
                         <span>Bulk Update</span>
                     </a>
                 </li>
@@ -59,11 +63,13 @@
             <ul class="list-unstyled ">
                 <li class="sidebar-item" [class.nav-active]="currentRoute == 'reports'">
                     <a class="sidebar-link" [routerLink]="['/reports/']">
+                        <mat-icon>pie_chart</mat-icon>
                         <span>Reports</span>
                     </a>
                 </li>
                 <li class="sidebar-item" [class.nav-active]="currentRoute == 'insights'">
                     <a class="sidebar-link" [routerLink]="['/insights/']">
+                        <mat-icon>insights</mat-icon>
                         <span>Insights</span>
                     </a>
                 </li>

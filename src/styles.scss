@@ -477,10 +477,10 @@ input:invalid {
     overflow: hidden !important;
 }
 .ag-row-odd {
-    background-color: #f3f3f3 !important;
+    background-color:rgb(234 243 254 / 34%) !important;
 }
 .read-only-cell {
-    background: #fcfcfc !important;
+    background: rgb(243 243 243 / 46%) !important;
 }
 .autoHeight-cell {
     white-space: normal;
@@ -564,4 +564,17 @@ input:invalid {
 .ng-image-slider .ng-image-slider-container .main .next,
 .ng-image-slider .ng-image-slider-container .main .prev {
     display: none !important;
+}
+.ag-text-field-input {
+    min-height: 30px !important;
+}
+.ag-theme-alpine .ag-ltr .ag-floating-filter-button {
+    margin-left: 5px !important;
+    display: none;
+}
+.ag-header-cell-menu-button {
+    display: none !important;
+}
+.ag-theme-alpine .ag-root-wrapper {
+    border-color: #c6c8cb7d !important;
 }

@@ -39,6 +39,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       //this.currentRoute = res.currentRoute;
       //this.updateModuleName(res.currentRoute);
       this.title = sessionStorage.getItem('current-module');
+      this.isExpand = 'Bulk Update' === this.title;
     });
     
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
