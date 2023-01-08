@@ -23,7 +23,7 @@ import { DemoModeDetailsService } from 'src/app/modules/shared/services/demo-mod
   styleUrls: ['./managerules.component.scss']
 })
 export class ManagerulesComponent implements OnInit {
-  displayedColumns: string[] = ['date', 'type', 'description', 'source', 'action'];
+  displayedColumns: string[] = ['date', 'description', 'action'];
   expandIndex: any;
   pageSize: number = 20
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;

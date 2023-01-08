@@ -1,4 +1,48 @@
-<div class="trade-table p-3">
+<div>
+    <h4 class="header-title">Automatic Rules</h4>
+    <table class="mt-2 mat-table">
+        <thead>
+            <tr class="mat-header-row">
+                <th class="mat-header-cell"></th>
+                <th class="mat-header-cell">Parameter</th>
+                <th class="mat-header-cell">Condition</th>
+                <th class="mat-header-cell value-cell">Value</th>
+                <th class="mat-header-cell action-cell">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="mat-header-row" *ngFor="let coderule of portfolioLevelRules">
+                <td class="mat-cell">
+                    <span class="cursor position-relative">
+                        <input type="checkbox" name="rule" class="checkbox checkbox-custom"
+                            [checked]="coderule.id && coderule.id !== null && coderule.id > 0"
+                            [(ngModel)]="coderule.checked" (change)="onRuleSelectionChange(coderule)" />
+                        <span [ngClass]="coderule.checked ? 'disabled-text' : 'add-new'">{{coderule.checked ? 'Disable'
+                            : 'Enable' }}</span>
+                    </span>
+                </td>
+                <td class="mat-cell">{{coderule.uiLabel}}</td>
+                <td class="mat-cell">Less Than</td>
+                <td class="mat-cell value-cell">
+                    <span class="d-flex align-items-center">
+                        <input type="text" class="form-control col-5" [ngClass]="!coderule.editing ? 'disabled' : ''"
+                            [(ngModel)]="coderule.val" />
+                        <mat-icon class="ml-2 mat-icon-edit action-icon" (click)="onItemEdit(coderule)"
+                            *ngIf="coderule.editing">check_circle
+                        </mat-icon>
+                        <mat-icon class="ml-2 text-danger action-icon" (click)="onCancel(coderule)"
+                            *ngIf="coderule.editing">close</mat-icon>
+                    </span>
+                </td>
+                <td class="mat-cell action-cell"><mat-icon class="mat-icon-sm mat-icon-edit"
+                        (click)="onRowEdit(coderule)">edit
+                    </mat-icon></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- <div class="trade-table p-3">
     <div class="row">
         <div class="col-sm-6">
             <h4 class="header-title">Automatic Rules</h4>
@@ -60,7 +104,7 @@
             </table>
         </div>
     </div>
-</div>
+</div> -->
 
 <!-- <mat-accordion class="example-headers-align w-100" multi="true">
     <mat-expansion-panel class="coded_rules_body pt-3" [expanded]="true" (opened)="setStep(0)">

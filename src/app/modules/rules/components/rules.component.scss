@@ -84,3 +84,57 @@
 .trade-dash-name h3 {
     font-size: 14px !important;
 }
+.header-title {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: #3A4C85;
+}
+.trade-table {
+    min-height: 100vh;
+}
+.mat-table {
+    background: #FFFFFF;
+    border: 1px solid rgb(157 166 186 / 20%);
+    box-shadow: 0px 4px 4px rgba(157, 157, 157, 0.5);
+}
+
+tr.mat-header-row,
+tr.mat-footer-row,
+tr.mat-row {
+    height: 40px;
+    min-height: 40px;
+    line-height: 40px;
+}
+
+.mat-header-cell {
+    background: rgb(157 166 186 / 20%);
+    color: #3A4C85;
+    font-size: 15px;
+    font-weight: 600;
+    border: 0;
+    flex: 0 0 10%;
+}
+
+td.mat-cell,
+td.mat-footer-cell,
+th.mat-header-cell {
+    padding: .75rem 1rem !important;
+    border-radius: 0;
+    line-height: 20px;
+    border: 0;
+}
+td.mat-cell {
+    color: #000;
+    font-size: 14px;
+    font-weight: 500;
+}
+.action-cell {
+    width: 10%;
+    flex: 0 0 10%;
+}
+.value-cell {
+    width: 10%;
+    flex: 0 0 10%;
+    min-width: 80px;
+}

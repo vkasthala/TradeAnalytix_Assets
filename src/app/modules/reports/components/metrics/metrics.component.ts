@@ -79,7 +79,7 @@ export class MetricsComponent extends ReportTabContentComponent implements OnIni
   }
 
   loadStats(types: string[], allLoaded: boolean) {
-    //this.loader = true;
+    this.loader = true;
     this.reportDataService.getReportStats(this.createSummaryRequest(types)).subscribe(result => {
       this.loader = false;
       if (result && result.stats) {

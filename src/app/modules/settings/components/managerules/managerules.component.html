@@ -1,10 +1,12 @@
 <div class="managerules-sec">
-    <div class="d-flex mb-2">
+    <h4 class="header-title">Manual Rules</h4>
+    <a class="add-new cursor" (click)="addEntryExitRule('Add', 'SAVE')">Add Rule</a>
+    <!-- <div class="d-flex mb-2">
         <div class="trade-dash-name col-8 col-md-9 px-0">
-            <h3>Manual rules are user-specific rules that show up in the Rules section of a trade when the user adds, edits, or closes a trade. User can review these rules and should manually mark them aligned or not aligned. <!--<a data-toggle="modal" data-target="#modal1" class="watch-video-sm cursor">Watch Video</a>--></h3>
+            <h3>Manual rules are user-specific rules that show up in the Rules section of a trade when the user adds, edits, or closes a trade. User can review these rules and should manually mark them aligned or not aligned. <a data-toggle="modal" data-target="#modal1" class="watch-video-sm cursor">Watch Video</a></h3>
         </div>
         <div class="trade-st-box pt-0 col-4 col-sm-2">
-            <!-- <label class="m-0">Filter By</label>
+            <label class="m-0">Filter By</label>
             <div class="px-2">
                 <select class="form-control" id="exampleFormControlSelect1">
                     <option value="1">Source</option>
@@ -13,10 +15,10 @@
                     <option value="4">Closed</option>
                     <option value="5">Expired</option>
                 </select>
-            </div> -->
+            </div>
             <a class="btn btn-primary add-new" (click)="addEntryExitRule('Add', 'SAVE')">Add Rule</a>
         </div>
-    </div>
+    </div> -->
 
     <div class="trade-strategies-table">
         <div class="trade-table">
@@ -28,22 +30,22 @@
                 </ng-container>
 
                 <!-- Name Column -->
-                <ng-container matColumnDef="type">
+                <!-- <ng-container matColumnDef="type">
                     <mat-header-cell class="type-cell" *matHeaderCellDef> Type</mat-header-cell>
                     <mat-cell class="type-cell" *matCellDef="let element" class="type-cell"> {{element.type === '2' ? 'Exit' : 'Entry'}} </mat-cell>
-                </ng-container>
+                </ng-container> -->
 
                 <!-- Weight Column -->
                 <ng-container matColumnDef="description">
-                    <mat-header-cell class="description-cell" *matHeaderCellDef> Description</mat-header-cell>
+                    <mat-header-cell class="description-cell" *matHeaderCellDef>Rule</mat-header-cell>
                     <mat-cell *matCellDef="let element" class="description-cell"> {{element.description}} </mat-cell>
                 </ng-container>
 
                 <!-- Symbol Column -->
-                <ng-container matColumnDef="source">
+                <!-- <ng-container matColumnDef="source">
                     <mat-header-cell class="source-cell" *matHeaderCellDef> Source </mat-header-cell>
                     <mat-cell class="source-cell" *matCellDef="let element"> {{element.source}} </mat-cell>
-                </ng-container>
+                </ng-container> -->
 
                 <!-- Action Column -->
                 <ng-container matColumnDef="action">
@@ -57,7 +59,7 @@
                 <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
                 <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
             </mat-table>
-            <div class="p-3 text-center" *ngIf="dataSource.totalCount === 0">No rules are added yet</div>
+            <span class="p-3 text-center" *ngIf="dataSource.totalCount === 0">You have not set any manual rules yet. Click 'Add Rule' to add a new manual rule</span>
 
             <mat-paginator *ngIf="dataSource.totalCount > 0" [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true" [length]="dataSource.totalCount"></mat-paginator>
         </div>
