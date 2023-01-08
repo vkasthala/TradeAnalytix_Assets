@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { IMyDateRangeModel } from 'mydaterangepicker';
 import { Subject } from 'rxjs';
 import { StockSymbol } from 'src/app/modules/shared/models/trade-management/stock-symbol.model';
@@ -30,7 +30,7 @@ export class ReportTabContentComponent implements OnInit {
 
   @ViewChild('tradeSearchComponent', { static: false }) protected tradeSearchComponent: TradeSearchComponent;
 
-  filterChangeSubject: Subject<ReportFilter> = new Subject<ReportFilter>();
+  @Input("filterChangeSubject") filterChangeSubject: Subject<ReportFilter>;
 
   reportTypeChangeSubject: Subject<ReportFilter> = new Subject<ReportFilter>();
 
