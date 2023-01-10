@@ -92,25 +92,25 @@
             </select>
             <div>
                 <div [ngClass]="selectedParentReport === 'Portfolio' ? 'd-block' : 'd-none'">
-                    <app-portfolio></app-portfolio>
+                    <app-portfolio [filterChangeSubject] = "filterChangeSubject"></app-portfolio>
                 </div>
                 <div [ngClass]="selectedParentReport === 'Performance' ? 'd-block' : 'd-none'">
-                    <app-performance></app-performance>
+                    <app-performance [filterChangeSubject] = "filterChangeSubject"></app-performance>
                 </div>
                 <div [ngClass]="selectedParentReport === 'Goals' ? 'd-block' : 'd-none'">
-                    <app-goals #goalsReports></app-goals>
+                    <app-goals [filterChangeSubject] = "filterChangeSubject" [dateChangeSubject] = "dateChangeSubject"  [symbolChangeSubject]="symbolChangeSubject" #goalsReports></app-goals>
                 </div>
                 <div [ngClass]="selectedParentReport === 'RiskManagement' ? 'd-block' : 'd-none'">
-                    <app-riskmanagement #riskReports></app-riskmanagement>
+                    <app-riskmanagement [filterChangeSubject] = "filterChangeSubject" [dateChangeSubject] = "dateChangeSubject"  [symbolChangeSubject]="symbolChangeSubject" #riskReports></app-riskmanagement>
                 </div>
                 <div [ngClass]="selectedParentReport === 'Rules' ? 'd-block' : 'd-none'">
-                    <app-reports-rules #rulesReports></app-reports-rules>
+                    <app-reports-rules [filterChangeSubject] = "filterChangeSubject" [dateChangeSubject] = "dateChangeSubject"  [symbolChangeSubject]="symbolChangeSubject" #rulesReports></app-reports-rules>
                  </div>
                 <div [ngClass]="selectedParentReport === 'Discipline' ? 'd-block' : 'd-none'">
-                    <app-discipline #disciplineReports></app-discipline>
+                    <app-discipline [filterChangeSubject] = "filterChangeSubject" [dateChangeSubject] = "dateChangeSubject"  [symbolChangeSubject]="symbolChangeSubject" #disciplineReports></app-discipline>
                 </div>
                 <div [ngClass]="selectedParentReport === 'Commissions' ? 'd-block' : 'd-none'">
-                    <app-commissions #commissionsReports></app-commissions>
+                    <app-commissions [filterChangeSubject] = "filterChangeSubject" [dateChangeSubject] = "dateChangeSubject"  [symbolChangeSubject]="symbolChangeSubject" #commissionsReports></app-commissions>
                 </div>
             </div>
         </div>

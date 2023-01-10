@@ -88,7 +88,7 @@ export class ReportTypeService {
     reportSubType = new ReportSubType();
     reportSubType.name = 'Calendar Report';
     reportSubType.id = "calendar_report";
-    reportSubType.reportDetailList = [new ReportDetails('return_by_asset_type', 'Calendar Report', ReportCategory.Calendar_Report, "This report shows the unrealized return and number of trades executed by the user on all the days in the selected month")];
+    reportSubType.reportDetailList = [new ReportDetails('calendar_report', 'Calendar Report', ReportCategory.Calendar_Report, "This report shows the unrealized return and number of trades executed by the user on all the days in the selected month")];
     reportSubTypes.push(reportSubType);
 
     reportSubType = new ReportSubType();
@@ -212,7 +212,7 @@ export class ReportTypeService {
     reportSubType = new ReportSubType();
     reportSubType.name = 'Max Risk Trend';
     reportSubType.id = "risk_max_risk_profit";
-    reportSubType.reportDetailList = [new ReportDetails('risk_max_risk_profit', 'Max Risk Trend', ReportCategory.Risk, "This report shows the current maximum risk of the user's portfolio by symbol. Maximum risk is calculated based on the previous 30-day volatility of the stocks.")];
+    reportSubType.reportDetailList = [new ReportDetails('max_risk_trend', 'Max Risk Trend', ReportCategory.Risk, "This report shows the current maximum risk of the user's portfolio by symbol. Maximum risk is calculated based on the previous 30-day volatility of the stocks.")];
     reportSubTypes.push(reportSubType);
 
     reportSubType = new ReportSubType();

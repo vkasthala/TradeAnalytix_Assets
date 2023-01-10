@@ -1,18 +1,14 @@
-import { ViewChild } from '@angular/core';
-import { Component, OnInit } from '@angular/core';
-import { IMyDrpOptions } from 'mydaterangepicker';
-import { RiskManagementComponent } from '../../trade-management/components/add-trade/Steps/risk-management/risk-management.component';
-import { PerformanceComponent } from './performance/performance.component';
-import { GoalsComponent } from './goals/goals.component';
-import { DisciplineComponent } from './discipline/discipline.component';
-import { RiskmanagementComponent } from './riskmanagement/riskmanagement.component';
-import { ReportsRulesComponent } from './reports-rules/reports-rules.component';
-import { IMyDateRangeModel } from 'mydaterangepicker';
-import { ReportFilter } from '../model/report-filter.model';
-import { Subject } from 'rxjs';
-import { CommissionsComponent } from './commissions/commissions.component';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import * as moment from 'moment';
+import { IMyDateRangeModel, IMyDrpOptions } from 'mydaterangepicker';
+import { Subject } from 'rxjs';
 import { StockSymbol } from '../../shared/models/trade-management/stock-symbol.model';
+import { ReportFilter } from '../model/report-filter.model';
+import { CommissionsComponent } from './commissions/commissions.component';
+import { DisciplineComponent } from './discipline/discipline.component';
+import { PerformanceComponent } from './performance/performance.component';
+import { ReportsRulesComponent } from './reports-rules/reports-rules.component';
+import { RiskmanagementComponent } from './riskmanagement/riskmanagement.component';
 
 @Component({
   selector: 'app-reports',
@@ -21,6 +17,8 @@ import { StockSymbol } from '../../shared/models/trade-management/stock-symbol.m
 })
 export class ReportsComponent implements OnInit {
   filterChangeSubject: Subject<ReportFilter> = new Subject<ReportFilter>();
+  dateChangeSubject: Subject<ReportFilter> = new Subject<ReportFilter>();
+  symbolChangeSubject: Subject<StockSymbol> = new Subject<StockSymbol>();
 
   protected reportFilter: ReportFilter = new ReportFilter();
   @ViewChild('goalsReports', { static: false }) protected goalsReports: PerformanceComponent;
@@ -119,8 +117,7 @@ export class ReportsComponent implements OnInit {
         day: toDate.date()
       }
     }
-
-    this.filterChangeSubject.next(this.reportFilter);
+    this.dateChangeSubject.next(this.reportFilter);
   }
 
   onDateRangeChanged(event: IMyDateRangeModel) {
@@ -128,10 +125,12 @@ export class ReportsComponent implements OnInit {
     let formattedText = event.formatted;
     let seperatorInd = formattedText.indexOf(' - ');
     if (seperatorInd > -1) {
-      this.reportFilter.fromDate = formattedText.substring(0, seperatorInd).trim();
-      this.reportFilter.toDate = formattedText.substring(seperatorInd + 3).trim();
+      let fromDate =  formattedText.substring(0, seperatorInd).trim()
+      let toDate = formattedText.substring(seperatorInd + 3).trim();
+      this.reportFilter.fromDate = moment(fromDate, 'DD.MM.YYYY').format('YYYY-MM-DD');
+      this.reportFilter.toDate = moment(toDate, 'DD.MM.YYYY').format('YYYY-MM-DD');
     }
-    this.filterChangeSubject.next(this.reportFilter);
+    this.dateChangeSubject.next(this.reportFilter);
   }
 
 }

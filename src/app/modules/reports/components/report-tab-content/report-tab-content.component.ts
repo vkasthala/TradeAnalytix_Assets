@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { IMyDateRangeModel } from 'mydaterangepicker';
 import { Subject } from 'rxjs';
 import { StockSymbol } from 'src/app/modules/shared/models/trade-management/stock-symbol.model';
@@ -11,9 +11,9 @@ import { ReportTypeService } from '../../services/report-type.service';
 import { ReportChartComponent } from '../report-chart/report-chart.component';
 import { ReportSummaryComponent } from '../report-summary/report-summary.component';
 
-interface category{
-  id:number;
-  name:string;
+interface category {
+  id: number;
+  name: string;
 }
 
 @Component({
@@ -21,8 +21,8 @@ interface category{
   templateUrl: './report-tab-content.component.html',
   styleUrls: ['./report-tab-content.component.scss']
 })
-export class ReportTabContentComponent implements OnInit {
-  selectedObject : category;
+export class ReportTabContentComponent implements OnInit, AfterViewInit {
+  selectedObject: category;
 
   @ViewChild('reportSummary', { static: false }) protected reportSummary: ReportSummaryComponent;
 
@@ -31,6 +31,8 @@ export class ReportTabContentComponent implements OnInit {
   @ViewChild('tradeSearchComponent', { static: false }) protected tradeSearchComponent: TradeSearchComponent;
 
   @Input("filterChangeSubject") filterChangeSubject: Subject<ReportFilter>;
+  @Input("dateChangeSubject") dateChangeSubject: Subject<ReportFilter>;
+  @Input("symbolChangeSubject") symbolChangeSubject: Subject<StockSymbol>;
 
   reportTypeChangeSubject: Subject<ReportFilter> = new Subject<ReportFilter>();
 
@@ -51,7 +53,17 @@ export class ReportTabContentComponent implements OnInit {
   constructor(protected type: string, protected reportTypeService: ReportTypeService) { }
 
   ngOnInit() {
+
+  }
+
+  ngAfterViewInit(): void {
     this.dateFilter = this.initDateFilter();
+    this.dateChangeSubject.asObservable().subscribe(data => {
+      this.onDateChange(data);
+    });
+    this.symbolChangeSubject.asObservable().subscribe(data => {
+      this.symbolSelectEventHandler(data);
+    });
   }
 
   onReportSubTypeSelect(type: ReportSubType): void {
@@ -71,6 +83,14 @@ export class ReportTabContentComponent implements OnInit {
       this.reportFilter.toDate = formattedText.substring(seperatorInd + 3).trim();
     }
     this.filterChangeSubject.next(this.reportFilter);
+  }
+
+  onDateChange(event: ReportFilter) {
+    if (event.fromDate && event.toDate) {
+      this.reportFilter.fromDate = event.fromDate;
+      this.reportFilter.toDate = event.toDate;
+      this.filterChangeSubject.next(this.reportFilter);
+    }
   }
 
   initDateFilter(): any {

@@ -23,7 +23,7 @@ export class ReportChartComponent implements OnInit, AfterViewInit {
   @Input("report") report: ReportDetails;
 
   @Input("subtype") subtype: string;
-  
+
   @Input("description") description: string;
 
   @Input("reportFilter") reportFilter: ReportFilter;
@@ -106,16 +106,16 @@ export class ReportChartComponent implements OnInit, AfterViewInit {
     } else if (category == ReportCategory.Rule) {
       request = this.reportRequestService.getCommonChartRequest(this.report, this.subtype, this.reportFilter);
       url = this.report.url;
-    } else if(category == ReportCategory.Symbols_By_Net_Return) {
+    } else if (category == ReportCategory.Symbols_By_Net_Return) {
       request = this.reportRequestService.getCommonChartRequest(this.report, this.subtype, this.reportFilter);
       url = this.reportRequestService.getSymbolsByReturnApiUrl(this.report.id);
-    } else if(category == ReportCategory.Symbols_By_Win_Loss) {
+    } else if (category == ReportCategory.Symbols_By_Win_Loss) {
       request = this.reportRequestService.getCommonChartRequest(this.report, this.subtype, this.reportFilter);
       url = this.reportRequestService.getSymbolsByWinLossApiUrl(this.report.id);
-    } else if(category == ReportCategory.Asset_Type) {
+    } else if (category == ReportCategory.Asset_Type) {
       request = this.reportRequestService.getCommonChartRequest(this.report, this.subtype, this.reportFilter);
       url = this.reportRequestService.getAssetTypeApiUrl(this.report.id);
-    } else if(category == ReportCategory.Commission) {
+    } else if (category == ReportCategory.Commission) {
       request = this.reportRequestService.getCommonChartRequest(this.report, this.subtype, this.reportFilter);
       url = this.reportRequestService.getCommissionApiUrl(this.report.id);
     }
@@ -171,6 +171,9 @@ export class ReportChartComponent implements OnInit, AfterViewInit {
 
   onFilterChange(reportFilter: ReportFilter): void {
     console.log('here...', reportFilter);
+    if (this.subtype !== reportFilter.summaryType) {
+      return;
+    }
     this.loadChart();
   }
 

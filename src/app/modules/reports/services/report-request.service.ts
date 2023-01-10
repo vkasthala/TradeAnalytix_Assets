@@ -74,10 +74,12 @@ export class ReportRequestService {
 
   public getRiskReportApiUrl(reportId: string): string {
     let url: string;
-    if ('max_risk_profit' === reportId) {
+    if ('max_risk_trend' === reportId) {
       url = '/reports/risk/max-risk-profit';
     } else if ('net_r' === reportId) {
       url = '/reports/risk/netr';
+    } else if ('max_risk_asset' === reportId) {
+      url = '/reports/risk/risk-amount-by-asset';
     }
     return url;
   }

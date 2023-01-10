@@ -72,11 +72,26 @@ export class MetricsComponent extends ReportTabContentComponent implements OnIni
   }
 
   ngAfterViewInit(): void {
+    this.initDateFilter();
     this.loadStats(this.initialTypes, false);
     this.filterChangeSubject.asObservable().subscribe(data => {
       this.reportFilter = data;
       this.loadStats(this.allTypes, true);
     });
+  }
+
+  initDateFilter(): any {
+    let today = new Date();
+    let startDay = new Date();
+    startDay.setMonth(startDay.getMonth() - 11);
+    let dateObj = {
+      beginDate: { year: startDay.getFullYear(), month: startDay.getMonth(), day: 1 },
+      endDate: { year: today.getFullYear(), month: today.getMonth() + 1, day: today.getDate() }
+    };
+    this.reportFilter.fromDate = startDay.toISOString().slice(0, 10);
+    this.reportFilter.toDate = today.toISOString().slice(0, 10);
+    console.log('init date:', dateObj);
+    return dateObj;
   }
 
   loadStats(types: string[], allLoaded: boolean) {

@@ -68,7 +68,7 @@
     <div class="custom-card-body">
         <div class="d-flex mb-1 align-items-center" *ngIf="editTrade || closeTrade && tradeStatus !== 4">
             <label class="col-form-label">Open Date</label>
-            <div class="col-8 col-md-7 col-form-value">{{tradeStrategy.openDate | date: 'dd-MMM-yyyy'}}</div>
+            <div class="col-8 col-md-7 col-form-value">{{(tradeStrategy.executedDate ? tradeStrategy.executedDate : tradeStrategy.openDate) | date: 'dd-MMM-yyyy'}}</div>
         </div>
         <div class="d-flex mb-1 align-items-center" *ngIf="!addTrade && tradeStatus !== 4">
             <label class="col-form-label">Close Date</label>

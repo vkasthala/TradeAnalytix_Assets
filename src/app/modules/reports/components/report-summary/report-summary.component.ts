@@ -1,17 +1,18 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ReportSummaryItem } from '../../model/report-summary-item.model';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
 import { SummaryItem } from 'src/app/modules/shared/models/reports/summary-item.model';
+import { SummaryRequest } from 'src/app/modules/shared/models/reports/summary-request.model';
 import { ReportFilter } from '../../model/report-filter.model';
 import { ReportDataService } from '../../services/report-data.service';
-import { SummaryRequest } from 'src/app/modules/shared/models/reports/summary-request.model';
-import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-report-summary',
   templateUrl: './report-summary.component.html',
   styleUrls: ['./report-summary.component.scss']
 })
-export class ReportSummaryComponent implements OnInit {
+export class ReportSummaryComponent implements OnInit, AfterViewInit {
+
+  @Input("subtype") subtype: string;
 
   @Input("reportFilter") reportFilter: ReportFilter;
 
@@ -24,6 +25,10 @@ export class ReportSummaryComponent implements OnInit {
   constructor(private reportDataService: ReportDataService) { }
 
   ngOnInit() {
+
+  }
+
+  ngAfterViewInit(): void {
     this.loadSummary(this.reportFilter);
     this.filterChangeSubject.asObservable().subscribe(data => {
       this.onFilterChange(data);
@@ -34,6 +39,9 @@ export class ReportSummaryComponent implements OnInit {
   }
 
   loadSummary(reportFilter: ReportFilter): void {
+    if (this.subtype !== reportFilter.summaryType) {
+      return;
+    }
     this.reportDataService.getReportSummary(this.createSummaryRequest(reportFilter)).subscribe(result => {
       this.reportSummaryItems = result;
     });
