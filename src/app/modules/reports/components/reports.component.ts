@@ -26,6 +26,8 @@ export class ReportsComponent implements OnInit {
   @ViewChild('riskReports', { static: false }) protected riskReports: RiskmanagementComponent;
   @ViewChild('disciplineReports', { static: false }) protected disciplineReports: DisciplineComponent;
   @ViewChild('commissionsReports', { static: false }) protected commissionsReports: CommissionsComponent;
+  @ViewChild('performanceReports', { static: false }) protected performanceReports: PerformanceComponent;
+  
   public selectedParentReport: string = "Holding Reports";
   protected dateFilter: any;
   websiteList: any = ['HDTuto.com', 'HDTuto.com', 'Nicesnippets.com']
@@ -68,6 +70,14 @@ export class ReportsComponent implements OnInit {
       this.riskReports.reloadData(selectedTab);
     } else if (selectedTab === 'rules') {
       this.rulesReports.reloadData(selectedTab);
+    } else if(selectedTab === 'performance') {
+      this.performanceReports.reloadData(selectedTab);
+    } else if(selectedTab === 'commissions') {
+      this.commissionsReports.reloadData(selectedTab);
+    } else if(selectedTab === 'goals') {
+      this.goalsReports.reloadData(selectedTab);
+    } else if(selectedTab === 'discipline') {
+      this.disciplineReports.reloadData(selectedTab);
     }
     this.selectedTabReport = selectedTab;
   }

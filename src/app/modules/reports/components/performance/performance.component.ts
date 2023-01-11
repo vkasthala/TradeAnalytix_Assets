@@ -16,7 +16,7 @@ export class PerformanceComponent extends ReportTabContentComponent implements O
   ngOnInit() {
     super.ngOnInit();
     this.reportSubTypes = this.reportTypeService.getSubTypesByCategory(this.type);
-    this.onReportSubTypeSelect(this.reportSubTypes[0]);
+    //this.onReportSubTypeSelect(this.reportSubTypes[0]);
   }
 
   reloadData(tab: string) {

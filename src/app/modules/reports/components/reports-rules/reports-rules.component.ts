@@ -45,7 +45,7 @@ export class ReportsRulesComponent extends ReportTabContentComponent implements 
 
   ngOnInit() {
     super.ngOnInit();
-    this.loadRules();
+    //this.loadRules();
   }
 
   loadRules() {

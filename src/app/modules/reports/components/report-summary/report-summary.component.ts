@@ -29,7 +29,7 @@ export class ReportSummaryComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.loadSummary(this.reportFilter);
+    //this.loadSummary(this.reportFilter);
     this.filterChangeSubject.asObservable().subscribe(data => {
       this.onFilterChange(data);
     });

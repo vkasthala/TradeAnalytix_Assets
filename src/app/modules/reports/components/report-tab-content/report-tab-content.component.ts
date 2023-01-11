@@ -53,11 +53,10 @@ export class ReportTabContentComponent implements OnInit, AfterViewInit {
   constructor(protected type: string, protected reportTypeService: ReportTypeService) { }
 
   ngOnInit() {
-
+    this.dateFilter = this.initDateFilter();
   }
 
   ngAfterViewInit(): void {
-    this.dateFilter = this.initDateFilter();
     this.dateChangeSubject.asObservable().subscribe(data => {
       this.onDateChange(data);
     });
@@ -68,10 +67,12 @@ export class ReportTabContentComponent implements OnInit, AfterViewInit {
 
   onReportSubTypeSelect(type: ReportSubType): void {
     this.subtype = type.id;
+    this.reportSummary.subtype = type.id;
     this.description = type.description;
     this.reportFilter.summaryType = type.id;
     this.reports = type.reportDetailList;
-    this.reportTypeChangeSubject.next(this.reportFilter);
+    this.filterChangeSubject.next(this.reportFilter);
+    //this.reportTypeChangeSubject.next(this.reportFilter);
   }
 
   onDateRangeChanged(event: IMyDateRangeModel) {

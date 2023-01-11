@@ -13,7 +13,7 @@ export class PortfolioComponent extends ReportTabContentComponent implements OnI
   constructor(reportTypeService: ReportTypeService) {
     super('portfolio', reportTypeService);
     this.reportSubTypes = this.reportTypeService.getSubTypesByCategory(this.type);
-    this.onReportSubTypeSelect(this.reportSubTypes[0]);
+    //this.onReportSubTypeSelect(this.reportSubTypes[0]);
   }
 
 }

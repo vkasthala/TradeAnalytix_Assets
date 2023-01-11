@@ -6,7 +6,7 @@ import { ReportDetails } from '../../model/report-details.model';
 import { ReportDataService } from '../../services/report-data.service';
 import { ReportRequestService } from '../../services/report-request.service';
 import { ReportFilter } from '../../model/report-filter.model';
-import { Subject } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 import { ReportSubType } from '../../model/report-sub-type.model';
 import { CalendarComponent } from '../calendar/calendar.component';
 
@@ -44,11 +44,13 @@ export class ReportChartComponent implements OnInit, AfterViewInit {
 
   noData: boolean = true;
 
+  subscription: Subscription;
+
   constructor(protected reportRequestService: ReportRequestService, protected reportDataService: ReportDataService) { }
 
   ngAfterViewInit(): void {
     this.loadChart();
-    this.filterChangeSubject.asObservable().subscribe(data => {
+    this.subscription = this.filterChangeSubject.asObservable().subscribe(data => {
       this.onFilterChange(data);
     });
     this.monthFilter = (this.report.category === ReportCategory.Calendar_Report);
@@ -136,6 +138,9 @@ export class ReportChartComponent implements OnInit, AfterViewInit {
           this.chart.destroy();
         } else {
           this.noData = true;
+        }
+        if (this.subscription) {
+          this.subscription.unsubscribe();
         }
       });
     }

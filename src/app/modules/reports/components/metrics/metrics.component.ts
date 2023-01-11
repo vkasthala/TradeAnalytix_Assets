@@ -74,10 +74,19 @@ export class MetricsComponent extends ReportTabContentComponent implements OnIni
   ngAfterViewInit(): void {
     this.initDateFilter();
     this.loadStats(this.initialTypes, false);
-    this.filterChangeSubject.asObservable().subscribe(data => {
-      this.reportFilter = data;
+    // this.filterChangeSubject.asObservable().subscribe(data => {
+    //   this.reportFilter = data;
+    //   this.loadStats(this.allTypes, true);
+    // });
+  }
+
+  onDateChange(event: ReportFilter): void {
+    super.onDateChange(event);
+    if (this.allTypesLoaded) {
       this.loadStats(this.allTypes, true);
-    });
+    } else {
+      this.loadStats(this.initialTypes, true);
+    }
   }
 
   initDateFilter(): any {
