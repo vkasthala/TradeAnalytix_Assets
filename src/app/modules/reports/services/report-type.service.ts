@@ -93,11 +93,13 @@ export class ReportTypeService {
 
     reportSubType = new ReportSubType();
     reportSubType.name = 'Top-10 Symbols';
+    reportSubType.id = "top10_symbols";
     reportSubType.reportDetailList = [new ReportDetails('net_return_top_symbols', 'Top 10 Symbols by Net Return', ReportCategory.Symbols_By_Net_Return, "This report shows the realized return of top 10 symbols"), new ReportDetails('win_loss_top_symbols', 'Top 10 Symbols by Win Rate', ReportCategory.Symbols_By_Win_Loss, "This report shows the win rate of top 10 symbols")];
     reportSubTypes.push(reportSubType);
 
     reportSubType = new ReportSubType();
     reportSubType.name = 'Bottom-10 Symbols';
+    reportSubType.id = "bottom10_symbols";
     reportSubType.reportDetailList = [new ReportDetails('net_return_bottom_symbols', 'Bottom 10 Symbols by Net Return', ReportCategory.Symbols_By_Net_Return, "This report shows the realized return of bottom 10 symbols"), new ReportDetails('win_loss_bottom_symbols', 'Bottom 10 Symbols by Win Rate', ReportCategory.Symbols_By_Win_Loss, "This report shows the win rate of bottom 10 symbols")];
     reportSubTypes.push(reportSubType);
 

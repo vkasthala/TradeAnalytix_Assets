@@ -39,7 +39,7 @@ export class ReportSummaryComponent implements OnInit, AfterViewInit {
   }
 
   loadSummary(reportFilter: ReportFilter): void {
-    if (this.subtype !== reportFilter.summaryType) {
+    if (!this.subtype || this.subtype !== reportFilter.summaryType) {
       return;
     }
     this.reportDataService.getReportSummary(this.createSummaryRequest(reportFilter)).subscribe(result => {

@@ -1,6 +1,6 @@
-import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { IMyDateRangeModel } from 'mydaterangepicker';
-import { Subject } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 import { StockSymbol } from 'src/app/modules/shared/models/trade-management/stock-symbol.model';
 import { TradeSearchComponent } from 'src/app/modules/trade-management/components/add-trade/Steps/search-trade/trade-search.component';
 import { ReportDetails } from '../../model/report-details.model';
@@ -21,7 +21,7 @@ interface category {
   templateUrl: './report-tab-content.component.html',
   styleUrls: ['./report-tab-content.component.scss']
 })
-export class ReportTabContentComponent implements OnInit, AfterViewInit {
+export class ReportTabContentComponent implements OnInit, AfterViewInit, OnDestroy {
   selectedObject: category;
 
   @ViewChild('reportSummary', { static: false }) protected reportSummary: ReportSummaryComponent;
@@ -50,6 +50,10 @@ export class ReportTabContentComponent implements OnInit, AfterViewInit {
 
   protected dateFilter: any;
 
+  dateChangeSubscription: Subscription;
+  symbolChangeSubscription: Subscription;
+
+
   constructor(protected type: string, protected reportTypeService: ReportTypeService) { }
 
   ngOnInit() {
@@ -57,12 +61,22 @@ export class ReportTabContentComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.dateChangeSubject.asObservable().subscribe(data => {
+    this.dateChangeSubscription = this.dateChangeSubject.asObservable().subscribe(data => {
       this.onDateChange(data);
     });
-    this.symbolChangeSubject.asObservable().subscribe(data => {
+    this.symbolChangeSubscription = this.symbolChangeSubject.asObservable().subscribe(data => {
       this.symbolSelectEventHandler(data);
     });
+  }
+
+  ngOnDestroy(): void {
+    if (this.dateChangeSubscription) {
+      this.dateChangeSubscription.unsubscribe();
+    }
+
+    if (this.symbolChangeSubscription) {
+      this.symbolChangeSubscription.unsubscribe();
+    }
   }
 
   onReportSubTypeSelect(type: ReportSubType): void {
@@ -90,6 +104,7 @@ export class ReportTabContentComponent implements OnInit, AfterViewInit {
     if (event.fromDate && event.toDate) {
       this.reportFilter.fromDate = event.fromDate;
       this.reportFilter.toDate = event.toDate;
+      this.reportFilter.summaryType = this.subtype;
       this.filterChangeSubject.next(this.reportFilter);
     }
   }

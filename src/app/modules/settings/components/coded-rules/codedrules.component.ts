@@ -181,7 +181,7 @@ export class CodedRulesComponent implements OnInit {
     if (!element.tempVal || element.tempVal.length === 0) {
       return;
     }
-    element.val = element.tempVal;
+    //element.val = element.tempVal;
     element.editing = false;
     if (!element.checked) {
       return;
@@ -234,6 +234,7 @@ export class CodedRulesComponent implements OnInit {
 
   onCancel(element: UserCodedRule) {
     element.editing = false;
+    element.val = element.tempVal;
   }
 
 

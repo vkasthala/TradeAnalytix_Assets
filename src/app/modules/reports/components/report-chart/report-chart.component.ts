@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Chart } from 'angular-highcharts';
 import { ChartRequest } from '../../model/chart-request.model';
 import { ReportCategory } from '../../model/report-category.enum';
@@ -16,7 +16,7 @@ import { CalendarComponent } from '../calendar/calendar.component';
   styleUrls: ['./report-chart.component.scss'],
   inputs: ['report', 'subtype', 'reportFilter', 'filterChangeSubject']
 })
-export class ReportChartComponent implements OnInit, AfterViewInit {
+export class ReportChartComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @ViewChild('calendarReport', { static: false }) private calendarReport: CalendarComponent;
 
@@ -56,6 +56,12 @@ export class ReportChartComponent implements OnInit, AfterViewInit {
     this.monthFilter = (this.report.category === ReportCategory.Calendar_Report);
     if (this.monthFilter) {
       this.initYearsAndMonths();
+    }
+  }
+
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
     }
   }
 
@@ -139,9 +145,6 @@ export class ReportChartComponent implements OnInit, AfterViewInit {
         } else {
           this.noData = true;
         }
-        if (this.subscription) {
-          this.subscription.unsubscribe();
-        }
       });
     }
   }
@@ -176,6 +179,7 @@ export class ReportChartComponent implements OnInit, AfterViewInit {
 
   onFilterChange(reportFilter: ReportFilter): void {
     console.log('here...', reportFilter);
+    debugger;
     if (this.subtype !== reportFilter.summaryType) {
       return;
     }
