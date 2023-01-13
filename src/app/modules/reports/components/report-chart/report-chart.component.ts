@@ -26,9 +26,9 @@ export class ReportChartComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @Input("description") description: string;
 
-  @Input("reportFilter") reportFilter: ReportFilter;
-
   @Input("filterChangeSubject") filterChangeSubject: Subject<ReportFilter>;
+
+  @Input("reportFilter") reportFilter: ReportFilter;
 
   chart: Chart;
 
@@ -49,7 +49,6 @@ export class ReportChartComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(protected reportRequestService: ReportRequestService, protected reportDataService: ReportDataService) { }
 
   ngAfterViewInit(): void {
-    this.loadChart();
     this.subscription = this.filterChangeSubject.asObservable().subscribe(data => {
       this.onFilterChange(data);
     });
@@ -57,6 +56,7 @@ export class ReportChartComponent implements OnInit, AfterViewInit, OnDestroy {
     if (this.monthFilter) {
       this.initYearsAndMonths();
     }
+    this.loadChart(this.reportFilter);
   }
 
   ngOnDestroy(): void {
@@ -68,30 +68,30 @@ export class ReportChartComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit() {
   }
 
-  loadChart(): void {
+  loadChart(reportFilter: ReportFilter): void {
     let category: ReportCategory = this.report.category
     let request: ChartRequest;
     let url: string;
     //Body and URL identification
     if (category == ReportCategory.Net_Return) {
-      request = this.reportRequestService.getNetReturnChartRequest(this.report, this.subtype, this.reportFilter);
+      request = this.reportRequestService.getNetReturnChartRequest(this.report, this.subtype, reportFilter);
       url = '/reports/performance/netreturn';
     } else if (category == ReportCategory.Win_Loss) {
-      request = this.reportRequestService.getWinLossChartRequest(this.report, this.subtype, this.reportFilter);
+      request = this.reportRequestService.getWinLossChartRequest(this.report, this.subtype, reportFilter);
       url = '/reports/performance/winloss';
     } if (category == ReportCategory.Net_Return_Tag) {
-      request = this.reportRequestService.getNetReturnChartRequest(this.report, this.subtype, this.reportFilter);
+      request = this.reportRequestService.getNetReturnChartRequest(this.report, this.subtype, reportFilter);
       url = '/reports/performance/netreturnbytag';
     } else if (category == ReportCategory.Win_Loss_Tag) {
-      request = this.reportRequestService.getWinLossChartRequest(this.report, this.subtype, this.reportFilter);
+      request = this.reportRequestService.getWinLossChartRequest(this.report, this.subtype, reportFilter);
       url = '/reports/performance/winlossbytag';
     } else if (category == ReportCategory.Goal_Status) {
-      request = this.reportRequestService.getCommonChartRequest(this.report, this.subtype, this.reportFilter);
+      request = this.reportRequestService.getCommonChartRequest(this.report, this.subtype, reportFilter);
       url = '/reports/performance/goalstatus';
     } else if (category == ReportCategory.Calendar_Report) {
       //request = this.reportRequestService.getCommonChartRequest(this.report, this.subtype, this.reportFilter);
-      let month = this.reportFilter.month;
-      let year = this.reportFilter.year;
+      let month = reportFilter.month;
+      let year = reportFilter.year;
       if (!month || !year) {
         let today = new Date();
         month = today.getMonth() + 1;
@@ -100,31 +100,31 @@ export class ReportChartComponent implements OnInit, AfterViewInit, OnDestroy {
       url = null;
       this.calendarReport.loadData(year, month);
     } else if (category == ReportCategory.Discipline) {
-      request = this.reportRequestService.getDisciplineChartRequest(this.report, this.subtype, this.reportFilter);
+      request = this.reportRequestService.getDisciplineChartRequest(this.report, this.subtype, reportFilter);
       url = this.reportRequestService.getDisciplineReportApiUrl(this.report.id);
     } else if (category == ReportCategory.Risk) {
-      request = this.reportRequestService.getCommonChartRequest(this.report, this.subtype, this.reportFilter);
+      request = this.reportRequestService.getCommonChartRequest(this.report, this.subtype, reportFilter);
       url = this.reportRequestService.getRiskReportApiUrl(this.report.id);
     } else if (category == ReportCategory.Allocation) {
-      request = this.reportRequestService.getCommonChartRequest(this.report, this.subtype, this.reportFilter);
+      request = this.reportRequestService.getCommonChartRequest(this.report, this.subtype, reportFilter);
       url = this.reportRequestService.getAllocationReportUrl(this.report.id);
     } else if (category == ReportCategory.Dashboard) {
-      request = this.reportRequestService.getCommonChartRequest(this.report, this.subtype, this.reportFilter);
+      request = this.reportRequestService.getCommonChartRequest(this.report, this.subtype, reportFilter);
       url = this.reportRequestService.getDashboardReportApiUrl(this.report.id);
     } else if (category == ReportCategory.Rule) {
-      request = this.reportRequestService.getCommonChartRequest(this.report, this.subtype, this.reportFilter);
+      request = this.reportRequestService.getCommonChartRequest(this.report, this.subtype, reportFilter);
       url = this.report.url;
     } else if (category == ReportCategory.Symbols_By_Net_Return) {
-      request = this.reportRequestService.getCommonChartRequest(this.report, this.subtype, this.reportFilter);
+      request = this.reportRequestService.getCommonChartRequest(this.report, this.subtype, reportFilter);
       url = this.reportRequestService.getSymbolsByReturnApiUrl(this.report.id);
     } else if (category == ReportCategory.Symbols_By_Win_Loss) {
-      request = this.reportRequestService.getCommonChartRequest(this.report, this.subtype, this.reportFilter);
+      request = this.reportRequestService.getCommonChartRequest(this.report, this.subtype, reportFilter);
       url = this.reportRequestService.getSymbolsByWinLossApiUrl(this.report.id);
     } else if (category == ReportCategory.Asset_Type) {
-      request = this.reportRequestService.getCommonChartRequest(this.report, this.subtype, this.reportFilter);
+      request = this.reportRequestService.getCommonChartRequest(this.report, this.subtype, reportFilter);
       url = this.reportRequestService.getAssetTypeApiUrl(this.report.id);
     } else if (category == ReportCategory.Commission) {
-      request = this.reportRequestService.getCommonChartRequest(this.report, this.subtype, this.reportFilter);
+      request = this.reportRequestService.getCommonChartRequest(this.report, this.subtype, reportFilter);
       url = this.reportRequestService.getCommissionApiUrl(this.report.id);
     }
 
@@ -179,11 +179,11 @@ export class ReportChartComponent implements OnInit, AfterViewInit, OnDestroy {
 
   onFilterChange(reportFilter: ReportFilter): void {
     console.log('here...', reportFilter);
-    debugger;
     if (this.subtype !== reportFilter.summaryType) {
       return;
     }
-    this.loadChart();
+    this.reportFilter = reportFilter;
+    this.loadChart(reportFilter);
   }
 
   initYearsAndMonths() {

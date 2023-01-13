@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { IMyDateRangeModel } from 'mydaterangepicker';
 import { Subject, Subscription } from 'rxjs';
 import { StockSymbol } from 'src/app/modules/shared/models/trade-management/stock-symbol.model';
@@ -28,11 +28,12 @@ export class ReportTabContentComponent implements OnInit, AfterViewInit, OnDestr
 
   @ViewChild('reportChart', { static: false }) protected reportChart: ReportChartComponent;
 
-  @ViewChild('tradeSearchComponent', { static: false }) protected tradeSearchComponent: TradeSearchComponent;
+  //@ViewChild('tradeSearchComponent', { static: false }) protected tradeSearchComponent: TradeSearchComponent;
 
   @Input("filterChangeSubject") filterChangeSubject: Subject<ReportFilter>;
-  @Input("dateChangeSubject") dateChangeSubject: Subject<ReportFilter>;
-  @Input("symbolChangeSubject") symbolChangeSubject: Subject<StockSymbol>;
+  @Input("reportFilter") reportFilter: ReportFilter;
+
+  @Output('reportTypeChangeEmitter') reportTypeChangeEmitter: EventEmitter<string> = new EventEmitter();
 
   reportTypeChangeSubject: Subject<ReportFilter> = new Subject<ReportFilter>();
 
@@ -46,7 +47,7 @@ export class ReportTabContentComponent implements OnInit, AfterViewInit, OnDestr
 
   protected description: string;
 
-  protected reportFilter: ReportFilter = new ReportFilter();
+  //protected reportFilter: ReportFilter = new ReportFilter();
 
   protected dateFilter: any;
 
@@ -57,16 +58,10 @@ export class ReportTabContentComponent implements OnInit, AfterViewInit, OnDestr
   constructor(protected type: string, protected reportTypeService: ReportTypeService) { }
 
   ngOnInit() {
-    this.dateFilter = this.initDateFilter();
+    //this.dateFilter = this.initDateFilter();
   }
 
   ngAfterViewInit(): void {
-    this.dateChangeSubscription = this.dateChangeSubject.asObservable().subscribe(data => {
-      this.onDateChange(data);
-    });
-    this.symbolChangeSubscription = this.symbolChangeSubject.asObservable().subscribe(data => {
-      this.symbolSelectEventHandler(data);
-    });
   }
 
   ngOnDestroy(): void {
@@ -85,7 +80,8 @@ export class ReportTabContentComponent implements OnInit, AfterViewInit, OnDestr
     this.description = type.description;
     this.reportFilter.summaryType = type.id;
     this.reports = type.reportDetailList;
-    this.filterChangeSubject.next(this.reportFilter);
+    this.reportTypeChangeEmitter.emit(type.id);
+    // this.filterChangeSubject.next(this.reportFilter);
     //this.reportTypeChangeSubject.next(this.reportFilter);
   }
 
@@ -97,16 +93,18 @@ export class ReportTabContentComponent implements OnInit, AfterViewInit, OnDestr
       this.reportFilter.fromDate = formattedText.substring(0, seperatorInd).trim();
       this.reportFilter.toDate = formattedText.substring(seperatorInd + 3).trim();
     }
-    this.filterChangeSubject.next(this.reportFilter);
+    //this.filterChangeSubject.next(this.reportFilter);
   }
 
   onDateChange(event: ReportFilter) {
-    if (event.fromDate && event.toDate) {
-      this.reportFilter.fromDate = event.fromDate;
-      this.reportFilter.toDate = event.toDate;
-      this.reportFilter.summaryType = this.subtype;
-      this.filterChangeSubject.next(this.reportFilter);
-    }
+    // if (event.fromDate && event.toDate) {
+    //   this.reportFilter.fromDate = event.fromDate;
+    //   this.reportFilter.toDate = event.toDate;
+    //   this.reportFilter.summaryType = this.subtype;
+    //   this.filterChangeSubject.next(this.reportFilter);
+    // }
+    this.reportFilter = event;
+    this.reportFilter.summaryType = this.subtype;
   }
 
   initDateFilter(): any {
@@ -125,21 +123,6 @@ export class ReportTabContentComponent implements OnInit, AfterViewInit, OnDestr
 
   protected reloadData(tab: string) {
 
-  }
-
-  symbolSelectEventHandler(selectedSymbol: StockSymbol) {
-    this.reportFilter.stockId = selectedSymbol.id;
-    this.reportFilter.symbol = selectedSymbol.code + '';
-    console.log('filter after selecting symbol:', this.reportFilter);
-    this.filterChangeSubject.next(this.reportFilter);
-  }
-
-  onClearSymbol() {
-    delete this.reportFilter.stockId;
-    delete this.reportFilter.symbol;
-    this.tradeSearchComponent.clearSelection();
-    console.log('filter after clear symbol:', this.reportFilter);
-    this.filterChangeSubject.next(this.reportFilter);
   }
 
 }
