@@ -906,22 +906,102 @@
     li:last-child {
       border-bottom: 0;
     }
-   }
-  .check-icon {
+}
+.check-icon {
     color: #61BC6D;
     font-size: 18px !important;
-    height: 20px;
-    width: 20px;
-  }
-  .priority-icon {
+    height: 22px;
+    width: 22px;
+    border: 2px solid #3A4C85;
+    border-radius: 4px;
+    font-weight: 600;
+}
+.priority-icon {
     color: #FFB967;
     font-size: 18px !important;
     height: 20px;
     width: 20px;
-  }
-  .close-icon {
+}
+.close-icon {
     color: #FF2400;
     font-size: 18px !important;
-    height: 20px;
-    width: 20px;
-  }
+    height: 22px;
+    width: 22px;
+    border: 2px solid #3A4C85;
+    border-radius: 4px;
+    font-weight: 600;
+}
+.white-box {
+    background: #FFFFFF;
+    border-radius: 25px;
+    position: relative;
+    width: 90%;
+}
+.white-box-header {
+    background: #FFFFFF;
+    border: 0.5px solid #B9B9B9;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    text-align: center;
+ }
+ .thumb-sm {
+    height: 100px;
+ }
+.white-box-count {
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    width: 30px;
+    height: 30px;
+    background: #2285FA;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    border-radius: 50%;
+    top: -15px;
+    position: relative;
+}
+.white-box-title {
+    font-size: 17px;
+    font-weight: 600;
+    color: #394C86;
+    margin-top: -5px;
+}
+.orange-list {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    padding-top: 1.5rem;
+}
+.orange-list li {
+    position: relative;
+    list-style-type: none;
+    font-size: 14px;
+    color: #212529;
+    padding-left: 30px;
+    text-align: left;
+    margin-bottom: 1rem;
+    .mat-icon {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+}
+  
+.arrow-rt {
+    position: absolute;
+    top: 25%;
+    right: 0;
+    text-align: center;
+    img {
+        width: 60%;
+    }
+}
+.add-new {
+    color: #007bff;
+    font-size: 14px;
+    line-height: 1;
+    font-weight: 500;
+}

@@ -11,6 +11,7 @@ import { SummaryRequest } from '../../shared/models/reports/summary-request.mode
 import { BrokerageService } from '../../shared/services/brokerage.service';
 import { DemoModeDetailsService } from '../../shared/services/demo-mode-details.service';
 import { UserService } from '../../shared/services/user.service';
+import { EconomicDialogComponent } from '../../trade-plan/components/economic-dialog/economic-dialog.component';
 import { TradePlanGridRow } from '../../trade-plan/models/trade-plan-grid-row.model';
 import { TradePlansService } from '../../trade-plan/services/trade-plans.service';
 import { UserComment } from '../models/user-comment.model';
@@ -353,6 +354,19 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     });
     dialogRef.afterClosed().subscribe((res) => {
       
+    });
+  }
+
+  openEconomicModal() {
+    const dialogRef = this._dialog.open(EconomicDialogComponent, {
+      disableClose: false,
+      width: 'auto',
+      data: {
+        title: 'Economic Calendar',
+      }
+    });
+    dialogRef.afterClosed().subscribe((res) => {
+
     });
   }
 
