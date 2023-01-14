@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -53,19 +53,26 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     protected toastr: ToastrService,
     private demoService: DemoModeDetailsService,
     private dashboardService: DashboardChartService,
-    private brokerageService: BrokerageService
+    private brokerageService: BrokerageService,
+    private _renderer1: Renderer2,
+    private _renderer2: Renderer2
   ) { }
 
   ngOnInit() {
     this.loadLatestTradePlan();
     this.loadSummaryItems();
     this.loadBrokerges();
+    // this.loadEconomic();
   }
 
   ngAfterViewInit(): void {
     const today: Date = new Date();
     this.calendarReport.loadData(today.getFullYear(), today.getMonth() + 1);
     this.loadUserDetails();
+    this.loadEconomic();
+    this.loadActiveStocks();
+
+    
   }
 
   ngAfterContentChecked() {
@@ -369,5 +376,32 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
     });
   }
+  @ViewChild('tradingview', { static: false }) tradingview: ElementRef;
+  @ViewChild('activeStocks', { static: false }) activeStocks: ElementRef;
+
+  loadEconomic() {
+    let script = this._renderer1.createElement('script');
+    script.type = `text/javascript`;
+    script.src = "https://s3.tradingview.com/external-embedding/embed-widget-events.js";
+    script.text = '{"width": "100%","height": 410,"locale": "USD","dateRange": "12M","colorTheme": "light","trendLineColor": "#37a6ef","underLineColor": "#E3F2FD","isTransparent": false,"autosize": false,"importanceFilter": "-1,0,1", "currencyFilter": "USD"}';
+
+    this.tradingview.nativeElement.appendChild(script);
+  }
+
+  loadActiveStocks() {
+    let script = this._renderer2.createElement('script');
+    script.type = `text/javascript`;
+    script.src = "https://s3.tradingview.com/external-embedding/embed-widget-hotlists.js";
+    script.text = '{"width": "100%","height": 410,"locale": "USD","dateRange": "12M","colorTheme": "light","exchange": "US","showChart": true,"trendLineColor": "#37a6ef","underLineColor": "#E3F2FD","isTransparent": false,"showSymbolLogo": false,"showFloatingTooltip": false,"autosize": false,"importanceFilter": "-1,0,1", "currencyFilter": "USD","plotLineColorGrowing": "rgba(41, 98, 255, 1)","plotLineColorFalling": "rgba(41, 98, 255, 1)","gridLineColor": "rgba(240, 243, 250, 0)","scaleFontColor": "rgba(106, 109, 120, 1)","belowLineFillColorGrowing": "rgba(41, 98, 255, 0.12)","belowLineFillColorFalling": "rgba(41, 98, 255, 0.12)","belowLineFillColorGrowingBottom": "rgba(41, 98, 255, 0)","belowLineFillColorFallingBottom": "rgba(41, 98, 255, 0)","symbolActiveColor": "rgba(41, 98, 255, 0.12)"}';
+
+    this.activeStocks.nativeElement.appendChild(script);
+  }
+
+  selectedId:number=1;
+  onChange($event) {
+    this.selectedId = Number($event.target.value);
+  }
+  
+
 
 }

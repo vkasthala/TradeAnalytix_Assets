@@ -457,6 +457,8 @@ input:invalid {
 }
 .bulk-update-grid .ag-cell {
     font-size: 14px !important;
+    align-items: center;
+    display: flex;
 }
 .ag-cell-value, .ag-group-value {
     font-size: 12px !important;
@@ -468,6 +470,7 @@ input:invalid {
 .ag-theme-alpine .ag-header-cell, .ag-theme-alpine .ag-header-group-cell {
     padding-left: 10px !important;
     padding-right: 10px !important;
+    border-top-color: rgb(186 191 199 / 41%) !important;
 }
 .cdk-overlay-pane {
     // max-width: 90vw !important;
@@ -477,7 +480,7 @@ input:invalid {
     overflow: hidden !important;
 }
 .ag-row-odd {
-    background-color:rgb(234 243 254 / 34%) !important;
+    background-color: #f6f8fb !important;
 }
 .read-only-cell {
     background: rgb(243 243 243 / 46%) !important;
@@ -577,4 +580,36 @@ input:invalid {
 }
 .ag-theme-alpine .ag-root-wrapper {
     border-color: #c6c8cb7d !important;
+}
+.ag-theme-alpine .ag-header {
+    background: #eaecf1 !important;
+}
+.ag-theme-alpine .ag-header-row {
+    background: #eaecf1;
+    color: #3A4C85 !important;
+    font-size: 14px;
+    font-weight: 600;
+}
+.ag-theme-alpine .ag-header-cell-resize::after {
+    background-color: rgb(58 76 133 / 41%) !important;
+    width: 1px;
+}
+.ag-theme-alpine .ag-row {
+    border-color: #dbdde1 !important;
+}
+.ag-theme-alpine .ag-cell-inline-editing {
+    border: 0 !important;
+    box-shadow: none !important;
+    background: transparent;
+    padding: 0 !important;
+}
+.bulk-update .form-control {
+    font-size: 14px !important;
+    margin-top: 3px;
+}
+.ag-header-row-column .ag-header-cell-label {
+    justify-content: center;
+}
+.thesis-cell, .tags-cell {
+    text-align: left !important;
 }

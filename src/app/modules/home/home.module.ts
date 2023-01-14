@@ -162,6 +162,7 @@ import { TransactionHistoryComponent } from '../shared/components/modals/transac
 import { TargetDateComponent } from '../bulk-update/target-date/target-date.component';
 import { TagEditorComponent } from '../bulk-update/tag-editor/tag-editor.component';
 import { StrategyEditorComponent } from '../bulk-update/strategy-editor/strategy-editor.component';
+import { RecentTradesComponent } from '../dashboard/components/recent-trades/recent-trades.component';
 
 export const MY_FORMATS = {
   parse: {
@@ -321,7 +322,8 @@ export const MY_FORMATS = {
     TransactionHistoryComponent,
     TargetDateComponent,
     TagEditorComponent,
-    StrategyEditorComponent
+    StrategyEditorComponent,
+    RecentTradesComponent
   ],
   imports: [
     FormsModule,
@@ -408,7 +410,8 @@ export const MY_FORMATS = {
     TransactionHistoryComponent,
     TargetDateComponent,
     TagEditorComponent,
-    StrategyEditorComponent
+    StrategyEditorComponent,
+    RecentTradesComponent
   ],
   // bootstrap: [TradeStrategiesGrid],
   providers: [

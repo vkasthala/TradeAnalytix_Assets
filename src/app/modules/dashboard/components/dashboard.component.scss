@@ -978,7 +978,7 @@
 .orange-list li {
     position: relative;
     list-style-type: none;
-    font-size: 14px;
+    font-size: 15px;
     color: #212529;
     padding-left: 30px;
     text-align: left;
@@ -1004,4 +1004,24 @@
     font-size: 14px;
     line-height: 1;
     font-weight: 500;
+}
+.widget {
+    background: #ffffff;
+    border-radius: 4px;
+}
+.widget-header {
+    padding: 0.678rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    h5 {
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 30px;
+        color: #242E3A;
+        margin: 0;
+    }
+}
+.form-control-sm {
+    font-size: 0.75rem;
 }

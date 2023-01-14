@@ -1,14 +1,14 @@
 <div class="px-2 dashboard">
     <div class="trade-dash-cards-web px-2">
         <div class="row mt-3 dashboard-header-row">
-            <div class="col-sm-12 col-md-6 pr-0 dashboard-header-column">
+            <div class="col-sm-12 col-md-7 dashboard-header-column">
                 <div class="card px-2">
                     <div class="px-1">
                         <img src="../../../../assets/images/welcome.svg"/>
                     </div>
                     <div class="px-1">
                         <div class="card-title">Welcome {{userName}}</div>
-                        <p>Our three-step process is designed to help you adopt a systematic approach to trading. Track your daily activities in each phase, and you'll be on your way to success!</p>
+                        <p class="mt-2" style="font-size:15px">Our three-step process is designed to help you adopt a systematic approach to trading. Track your daily activities in each phase, and you'll be on your way to success!</p>
                         <!-- <div class="card-bottom pt-1">
                             <span class="mr-3 cursor" (click)="startTour()">Start Tour</span>
                             <span class="ml-3 cursor" (click)="showDemoMsg()">Demo Mode</span>
@@ -41,8 +41,7 @@
                                     </div>
                                     <ul class="orange-list">
                                         <li><mat-icon class="check-icon">check</mat-icon> Import Trades</li>
-                                        <li><mat-icon class="close-icon">close</mat-icon>  Review and Journal</li>
-                                        <li><mat-icon class="check-icon">check</mat-icon> Close Daily Plan</li>
+                                        <li><mat-icon class="check-icon">check</mat-icon> Journal Trades</li>
                                     </ul>
                                 </div>
                                 <div class="arrow-rt">
@@ -59,8 +58,8 @@
                                         </div>
                                     </div>
                                     <ul class="orange-list">
-                                        <li><mat-icon class="check-icon">check</mat-icon> Review Reports</li>
-                                        <li><mat-icon class="check-icon">check</mat-icon> Review Insights</li>
+                                        <li><mat-icon class="check-icon">check</mat-icon> Review Reports & Insights</li>
+                                        <li><mat-icon class="check-icon">check</mat-icon> Close Daily Plan</li>
                                         <li><mat-icon class="close-icon">close</mat-icon> Update Trading Rules</li>
                                     </ul>
                                 </div>
@@ -70,29 +69,34 @@
                 </div>
             </div>
 
-            <div class="col-sm-12 col-md-3">
-                <div class="trade-analytics">
-                    <div class="trade-headiang">
-                        <h5>Market Overview</h5>
+            <div class="col-sm-12 col-md-5">
+                <div class="widget">
+                    <div class="widget-header">
+                        <h5>{{selectedId === 1 ? 'Market Overview' : 'Active Stocks' }}</h5>
+                        <div>
+                            <select class="form-control form-control-sm" [(ngModel)]="selectedId" (change)="onChange($event)">
+                                <option value="1">Economic Calendar</option>
+                                <option value="2">Active Stocks</option>
+                            </select>
+                        </div>
+                        <!-- <a class="add-new" (click)="openEconomicModal()">Economic Calendar</a> -->
                     </div>
-                    <div class="dsh-img bg-white" style="height:420px">
-                        <app-equity-curve-chart></app-equity-curve-chart>
+                    <div [ngClass]="selectedId === 1 ? 'd-block' : 'd-none'">
+                        <div class="tradingview-widget-container">
+                            <div class="tradingview-widget-container__widget"></div>
+                            <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/markets/currencies/economic-calendar/" rel="noopener" target="_blank"></a></div>
+                            <div #tradingview></div>
+                        </div>
+                    </div>
+                    <div [ngClass]="selectedId === 2 ? 'd-block' : 'd-none'">
+                        <div class="tradingview-widget-container">
+                            <div class="tradingview-widget-container__widget"></div>
+                            <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/markets/stocks-usa/" rel="noopener" target="_blank"></a></div>
+                            <div #activeStocks></div>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <div class="col-sm-12 col-md-3">
-                <div class="trade-analytics">
-                    <div class="d-flex trade-headiang justify-content-between align-items-center">
-                        <h5>Active Stocks</h5>
-                        <a class="add-new" (click)="openEconomicModal()">Economic Calendar</a>
-                    </div>
-                    <div class="dsh-img bg-white" style="height:420px">
-                        <app-equity-curve-chart></app-equity-curve-chart>
-                    </div>
-                </div>
-            </div>
-
             <!-- <div class="col-sm-12 col-md-6">
                 <div class="card">
                     <div class="pr-2">
@@ -138,10 +142,9 @@
     </div>
 
     <!-- Web -->
-    <div class="trade-dash-con mt-2">
+    <div class="trade-dash-con mt-3">
         <div class="row">
-
-            <div class="col-sm-12 col-md-4">
+            <div class="col-sm-12 col-md-6" style="padding-right: 2%">
                 <div class="trade-analytics">
                     <div class="trade-headiang">
                         <h5>Calendar Report</h5>
@@ -151,19 +154,28 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-4">
+            <div class="col-sm-12 col-md-6" style="padding-left: 2%">
                 <div class="trade-analytics">
                     <div class="trade-headiang">
                         <h5>Equity Curve</h5>
                     </div>
                     <div class="dsh-img">
-                        <a routerLink="/reports" class="cursor">
-                        <!-- <app-realized-return-chart></app-realized-return-chart> --> <app-equity-curve-chart></app-equity-curve-chart></a>
+                        <a routerLink="/reports" class="cursor"><app-equity-curve-chart></app-equity-curve-chart></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 mt-3" style="padding-right: 2%">
+                <div class="trade-analytics">
+                    <div class="trade-headiang">
+                        <h5>Recent Trades</h5>
+                    </div>
+                    <div class="dsh-img">
+                        <app-recent-trades></app-recent-trades>
                     </div>
                 </div>
             </div>
 
-            <div class="col-sm-12 col-md-4">
+            <div class="col-sm-12 col-md-6 mt-3" style="padding-left: 2%">
                 <div class="trade-analytics">
                     <div class="trade-headiang">
                         <h5>Daily Insights</h5>
@@ -224,7 +236,7 @@
                 </div>
             </div>
             
-            <div class="col-sm-12 col-md-4">
+            <!-- <div class="col-sm-12 col-md-4">
                 <div class="trade-analytics">
                     <div class="trade-headiang">
                         <h5>Goal Status</h5>
@@ -233,9 +245,9 @@
                         <app-user-goals-by-date-chart></app-user-goals-by-date-chart>
                     </div>
                 </div>
-            </div>
+            </div> -->
             
-            <div class="col-sm-12 col-md-4">
+            <!-- <div class="col-sm-12 col-md-4">
                 <div class="trade-analytics">
                     <div class="trade-headiang">
                         <h5>Max Amount at Risk by Asset</h5>
@@ -244,124 +256,7 @@
                         <a routerLink="/reports" class="cursor"><app-risk-by-asset-chart></app-risk-by-asset-chart></a>
                     </div>
                 </div>
-            </div>
-
-            <div class="col-sm-12 col-md-4 quick-links-card-web">
-                <div class="trade-analytics">
-                    <div class="trade-headiang">
-                        <h5>Quick links</h5>
-                    </div>
-                    <div class="dsh-img list-group-card py-2" style="height: 300px;">
-                        <div class="list-group-row row">
-                            <div class="col-8">
-                                Facing issues with the application?
-                            </div>
-                            <div class="list-group-bottom col-4 text-right">
-                                <span class="cursor" (click)="ReportNow()">Report Now</span>
-                            </div>
-                        </div>
-                        <div class="list-group-row row">
-                            <div class="col-8">
-                                Ask for a new feature
-                            </div>
-                            <div class="list-group-bottom col-4 text-right">
-                                <span class="cursor" (click)="askFeature()">Suggest Now</span>
-                            </div>
-                        </div>
-                        <div class="list-group-row row">
-                            <div class="col-8">
-                                Leave a Review 
-                            </div>
-                            <div class="list-group-bottom col-4 text-right">
-                                <span class="cursor" (click)="leaveReview()">Write Now</span>
-                            </div>
-                        </div>
-                        <div class="list-group-row row">
-                            <div class="col-8">
-                                See who is following you<img src="../../../../assets/images/beta-icon.png" class="beta-icon"/>
-                            </div>
-                            <div class="list-group-bottom col-4 text-right">
-                                <span class="cursor" (click)="viewFollowers()">View Followers</span>
-                            </div>
-                        </div>
-                        <div class="list-group-row row">
-                            <div class="col-8 pr-0">
-                                Would like to follow fellow traders?<img src="../../../../assets/images/beta-icon.png" class="beta-icon"/>
-                            </div>
-                            <div class="list-group-bottom col-4 text-right">
-                                <span class="cursor" (click)="findUsers()">Find Users</span>
-                            </div>
-                        </div>
-                        <div class="list-group-row row">
-                            <div class="col-8">
-                                Become an Affiliate
-                            </div>
-                            <div class="list-group-bottom col-4 text-right">
-                                <span class="cursor" (click)="BecomeAnAffiliate()">Contact Us</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-12 col-md-4 quick-links-card-mobile">
-                <div class="trade-analytics">
-                    <div class="trade-headiang">
-                        <h5>Quick links</h5>
-                    </div>
-                    <div class="dsh-img list-group-card py-2" style="height: 300px;">
-                        <div class="list-group-row row">
-                            <div class="col-8">
-                                Facing issues with the application?
-                            </div>
-                            <div class="list-group-bottom col-4 text-right">
-                                <span class="cursor" (click)="ReportNow()">Report Now</span>
-                            </div>
-                        </div>
-                        <div class="list-group-row row">
-                            <div class="col-8">
-                                Ask for a new feature
-                            </div>
-                            <div class="list-group-bottom col-4 text-right">
-                                <span class="cursor" (click)="askFeature()">Suggest Now</span>
-                            </div>
-                        </div>
-                        <div class="list-group-row row">
-                            <div class="col-8">
-                                Leave a Review 
-                            </div>
-                            <div class="list-group-bottom col-4 text-right">
-                                <span class="cursor" (click)="leaveReview()">Write Now</span>
-                            </div>
-                        </div>
-                        <div class="list-group-row row">
-                            <div class="col-8">
-                                See who is following you
-                            </div>
-                            <div class="list-group-bottom col-4 text-right">
-                                View Followers
-                            </div>
-                        </div>
-                        <div class="list-group-row row">
-                            <div class="col-8">
-                                Would like to follow fellow traders?
-                            </div>
-                            <div class="list-group-bottom col-4 text-right">
-                                Find Users
-                            </div>
-                        </div>
-                        <div class="list-group-row row">
-                            <div class="col-8">
-                                Become an Affiliate
-                            </div>
-                            <div class="list-group-bottom col-4 text-right">
-                                <span class="cursor" (click)="leaveReview()">Contact Us</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
+            </div> -->
         </div>
     </div>
 
