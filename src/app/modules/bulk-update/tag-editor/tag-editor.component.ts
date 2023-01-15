@@ -2,6 +2,9 @@ import { AfterViewInit, Component, OnInit, ViewChild, ViewContainerRef } from '@
 import { AgEditorComponent } from 'ag-grid-angular';
 import { ICellEditorParams } from 'ag-grid-community';
 import { UserMetadataStoreService } from 'src/app/modules/shared/services/user-metadata-store.service';
+import { UserTag } from '../../settings/models/user-tag.model';
+import { UserTagService } from '../../settings/services/user-tag.service';
+import { TradeTag } from '../../shared/models/trade-management/trade-tag.model';
 import { TradeTagsComponent } from '../../trade-management/components/add-trade/Steps/trade-tags/trade-tags.component';
 
 @Component({
@@ -16,7 +19,7 @@ export class TagEditorComponent implements OnInit, AgEditorComponent, AfterViewI
 
   public input: ViewContainerRef;
   @ViewChild('tradeTags', { static: false }) tradeTagsComponent: TradeTagsComponent;
-  
+
   constructor(private metadataStoreService: UserMetadataStoreService) { }
 
   ngOnInit() {
@@ -24,6 +27,7 @@ export class TagEditorComponent implements OnInit, AgEditorComponent, AfterViewI
 
   ngAfterViewInit(): void {
     //setTimeout(() => this.input.element.nativeElement.focus());
+    this.tradeTagsComponent.tags = this.getTradeTags(this.params.data.tags);
   }
 
   agInit(params: ICellEditorParams): void {
@@ -32,7 +36,10 @@ export class TagEditorComponent implements OnInit, AgEditorComponent, AfterViewI
   }
 
   getValue() {
-    return this.tradeTagsComponent.getCommaSeperatedTagNames();
+    this.params.data.tags = this.getTagIds();
+    this.params.data.dirty = true;
+    return this.params.data.tags;
+    //return this.tradeTagsComponent.getCommaSeperatedTagNames();
   }
 
   isPopup?(): boolean {
@@ -41,6 +48,27 @@ export class TagEditorComponent implements OnInit, AgEditorComponent, AfterViewI
 
   onChange($event) {
     this.params.data.dirty = true;
+  }
+
+  getTagIds(): string {
+    let tagIds: number[] = [];
+    this.tradeTagsComponent.tags.forEach(tag => {
+      tagIds.push(tag.tagId);
+    });
+    return tagIds.join(',');
+  }
+
+  getTradeTags(tagIds: string): TradeTag[] {
+    let tagArr: TradeTag[] = [];
+    if (tagIds) {
+      tagIds.split(',').forEach(tagId => {
+        let tradeTag: TradeTag = new TradeTag(parseInt(tagId));
+        //tradeTag.id = this.params.data.id;
+        //tradeTag.tagId = tagId;
+        tagArr.push(tradeTag);
+      });
+    }
+    return tagArr;
   }
 
 }

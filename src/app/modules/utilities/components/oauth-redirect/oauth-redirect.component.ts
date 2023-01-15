@@ -9,6 +9,7 @@ import { ImportTradeBookComponent } from 'src/app/modules/dashboard/components/i
 import { ImportTradePopupComponent } from 'src/app/modules/import-trades-history/import-trade-popup/import-trade-popup.component';
 import { UserMetadataService } from 'src/app/modules/trade-management/services/user-metadata.service';
 import { UserMetadataStoreService } from 'src/app/modules/shared/services/user-metadata-store.service';
+import { UserTagService } from 'src/app/modules/settings/services/user-tag.service';
 
 @Component({
   selector: 'app-oauth-redirect',
@@ -22,7 +23,8 @@ export class OauthRedirectComponent implements OnInit {
     private route: ActivatedRoute,
     private _dialog: MatDialog,
     private stockSymbolService: StockSymbolService,
-    private metdataStoreService: UserMetadataStoreService
+    private metdataStoreService: UserMetadataStoreService,
+    private userTagService: UserTagService
   ) { }
 
   ngOnInit() {
@@ -53,6 +55,7 @@ export class OauthRedirectComponent implements OnInit {
     this.ImportTradeBookModal();
     this.stockSymbolService.getStockSymbols();
     this.metdataStoreService.load();
+    this.userTagService.loadTags();
   }
 
   failureLogin() {

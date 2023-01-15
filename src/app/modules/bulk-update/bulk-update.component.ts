@@ -26,7 +26,7 @@ import { StrategyEditorComponent } from './strategy-editor/strategy-editor.compo
   styleUrls: ['./bulk-update.component.scss']
 })
 export class BulkUpdateComponent implements OnInit {
-  
+
   test: ICellEditorParams;
   strategies: BulkStrategyUpdateModel[] = [];
   Loader: boolean = false;
@@ -42,7 +42,7 @@ export class BulkUpdateComponent implements OnInit {
     private tradeStrategyGridService: TradeStrategyGridService,
     private userTagService: UserTagService,
     private toastr: ToastrService,
-    private demoService: DemoModeDetailsService,
+    private demoService: DemoModeDetailsService
   ) { }
 
   ngOnInit() {
@@ -73,26 +73,26 @@ export class BulkUpdateComponent implements OnInit {
 
   initColumnDefns() {
     this.columnDefs = [
-      { 
+      {
         headerName: "Trade Details ",
         resizable: true,
         children: [
-          { 
-            field: 'symbol', 
-            headerName: 'Symbol', resizable: true, 
+          {
+            field: 'symbol',
+            headerName: 'Symbol', resizable: true,
             filter: 'agTextColumnFilter',
             width: 120,
             // cellClass: 'read-only-cell',
-          }, 
-          { 
-            field: 'status', 
-            headerName: 'Status', 
-            resizable: true, 
-            width: 120, 
+          },
+          {
+            field: 'status',
+            headerName: 'Status',
+            resizable: true,
+            width: 120,
             filter: 'agTextColumnFilter',
             // cellClass: 'read-only-cell',
           },
-          { 
+          {
             headerName: "Identifier",
             field: 'uid',
             width: 120,
@@ -100,7 +100,7 @@ export class BulkUpdateComponent implements OnInit {
             resizable: true,
             columnGroupShow: 'closed',
           },
-          { 
+          {
             headerName: "Strategy",
             field: 'strategyType',
             columnGroupShow: 'closed',
@@ -110,18 +110,18 @@ export class BulkUpdateComponent implements OnInit {
             resizable: true,
             cellEditor: 'strategyEditor',
           },
-          { 
+          {
             headerName: 'Direction',
-            field: 'direction', editable: true, cellEditor: 'directionEditor', resizable: true, 
-            width: 120, 
+            field: 'direction', editable: true, cellEditor: 'directionEditor', resizable: true,
+            width: 120,
             filter: 'agTextColumnFilter',
             columnGroupShow: 'closed',
           },
-          { 
+          {
             headerName: 'Contrarian',
-            field: 'contrarian',  editable: true, cellEditor: 'contrarianEditor', 
-            resizable: true, 
-            width: 120, 
+            field: 'contrarian', editable: true, cellEditor: 'contrarianEditor',
+            resizable: true,
+            width: 120,
             filter: 'agTextColumnFilter',
             columnGroupShow: 'closed',
           },
@@ -137,12 +137,12 @@ export class BulkUpdateComponent implements OnInit {
           },
         ]
       },
-      { 
+      {
         headerName: "Profit and Loss ",
         width: 200,
         resizable: true,
         children: [
-          { 
+          {
             headerName: "Cost of Trade",
             field: 'cost',
             width: 145,
@@ -150,7 +150,7 @@ export class BulkUpdateComponent implements OnInit {
             filter: true,
             cellClass: 'justify-content-end'
           },
-          { 
+          {
             headerName: "Max Risk",
             field: 'maxRisk',
             width: 120,
@@ -159,7 +159,7 @@ export class BulkUpdateComponent implements OnInit {
             filter: true,
             cellClass: 'justify-content-end'
           },
-          { 
+          {
             headerName: "Net R",
             field: 'totalAmount',
             columnGroupShow: 'closed',
@@ -168,9 +168,9 @@ export class BulkUpdateComponent implements OnInit {
             filter: true,
             cellClass: 'justify-content-end'
           },
-          { 
+          {
             headerName: 'Realized Return',
-            field: 'realizedReturn', 
+            field: 'realizedReturn',
             columnGroupShow: 'closed',
             width: 140,
             resizable: true,
@@ -179,34 +179,49 @@ export class BulkUpdateComponent implements OnInit {
           }
         ]
       },
-      { 
+      {
         headerName: "Journal",
         width: 140,
         resizable: true,
         children: [
-          { 
-            field: 'reason', 
-            headerName: 'Trade Thesis', 
-            resizable: true, width: 400, 
+          {
+            field: 'reason',
+            headerName: 'Trade Thesis',
+            resizable: true, width: 400,
             filter: 'agTextColumnFilter',
             cellClass: 'autoHeight-cell thesis-cell',
             autoHeight: true,
             editable: true,
           },
-          { 
-            field: 'tags', headerName: 'Tags', editable: true, 
-            width: 180, 
+          {
+            field: 'tags', headerName: 'Tags', editable: true,
+            width: 180,
             filter: 'agTextColumnFilter',
             cellClass: 'autoHeight-cell tags-cell',
             autoHeight: true,
             resizable: true,
             cellEditor: 'tagEditor',
             columnGroupShow: 'closed',
+            cellRenderer: prms => {
+              if (!prms.data.tags) {
+                return "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+              }
+              if (prms.data.tags) {
+                let names: string[] = [];
+                prms.data.tags.split(',').forEach(tag => {
+                  if (tag && tag.length > 0) {
+                    names.push(this.userTagService.getTagNameById(parseInt(tag)));
+                  }
+                });
+                return names.join(', ');
+              }
+              return "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+            }
           },
-          { 
-            field: 'targetPrice', headerName: 'Target Price', editable: true, 
-            resizable: true, 
-            width: 130, 
+          {
+            field: 'targetPrice', headerName: 'Target Price', editable: true,
+            resizable: true,
+            width: 130,
             filter: 'agTextColumnFilter',
             columnGroupShow: 'closed',
             cellClass: 'justify-content-end'
@@ -216,34 +231,34 @@ export class BulkUpdateComponent implements OnInit {
             filter: 'agTextColumnFilter',
             cellEditor: 'targetCloseDate',
           }, */
-          { 
-            field: 'source', headerName: 'Source', editable: true, cellEditor: 'sourceEditor', resizable: true, 
-            width: 150, 
+          {
+            field: 'source', headerName: 'Source', editable: true, cellEditor: 'sourceEditor', resizable: true,
+            width: 150,
             filter: 'agTextColumnFilter',
             columnGroupShow: 'closed',
-          }, 
-          { 
-            field: 'technicalIndicator', headerName: 'Technical Indicator', 
-            resizable: true, editable: true, cellEditor: 'technicalIndicatorEditor', 
-            width: 170, 
+          },
+          {
+            field: 'technicalIndicator', headerName: 'Technical Indicator',
+            resizable: true, editable: true, cellEditor: 'technicalIndicatorEditor',
+            width: 170,
             filter: 'agTextColumnFilter',
             columnGroupShow: 'closed',
-          }, 
-          { 
-            field: 'event', headerName: 'Events', editable: true, cellEditor: 'eventEditor', resizable: true, 
-            width: 150, 
+          },
+          {
+            field: 'event', headerName: 'Events', editable: true, cellEditor: 'eventEditor', resizable: true,
+            width: 150,
             filter: 'agTextColumnFilter',
             columnGroupShow: 'closed',
-          }, 
-          { 
-            field: 'mindset', headerName: 'Mindset', editable: true, cellEditor: 'mindsetEditor', resizable: true, 
-            width: 150, 
+          },
+          {
+            field: 'mindset', headerName: 'Mindset', editable: true, cellEditor: 'mindsetEditor', resizable: true,
+            width: 150,
             filter: 'agTextColumnFilter',
             columnGroupShow: 'closed',
           }
         ]
       },
-      
+
       // { field: 'openDate', headerName: 'Open Date', resizable: true, width: 110, cellClass: 'read-only-cell', filter: 'agTextColumnFilter' },
       // { field: 'totalAmount', headerName: 'Amount', resizable: true, width: 100, cellClass: 'read-only-cell', filter: 'agTextColumnFilter' },
       // { field: 'reason', headerName: ' Reasons for the trade', editable: true, resizable: true, width: 180, filter: 'agTextColumnFilter' },

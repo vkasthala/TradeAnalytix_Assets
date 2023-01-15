@@ -15,7 +15,7 @@ export class StrategyEditorComponent implements OnInit {
   strategies = StrategyType;
   strategyTypes: String[] = [];
 
-  
+
   selectedId: number;
   params: ICellEditorParams;
 
@@ -24,7 +24,7 @@ export class StrategyEditorComponent implements OnInit {
 
   constructor(
     private metadataStoreService: UserMetadataStoreService,
-    private strategyCreateService : StrategyCreateService
+    private strategyCreateService: StrategyCreateService
   ) { }
 
   ngOnInit() {
@@ -50,8 +50,10 @@ export class StrategyEditorComponent implements OnInit {
   }
 
   onChange($event) {
-    this.params.data.strategyType = this.strategies[this.selectedId];
-    this.params.data.strategyTypeId = this.selectedId;
-    this.params.data.dirty = true;
+    if (this.selectedId) {
+      this.params.data.strategyType = this.strategies[$event.target.selectedIndex];
+      this.params.data.strategyTypeId =  parseInt(this.selectedId + '');
+      this.params.data.dirty = true;
+    }
   }
 }
