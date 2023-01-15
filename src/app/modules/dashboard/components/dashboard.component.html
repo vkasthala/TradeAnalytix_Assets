@@ -22,8 +22,8 @@
                                         <div class="py-3"><img src="../../../../assets/images/plan-trade.png" alt=""  class="thumb-sm" /></div>
                                     </div>
                                     <ul class="orange-list">
-                                        <li><mat-icon class="check-icon">check</mat-icon> Create Daily Plan</li>
-                                        <li><mat-icon class="close-icon">close</mat-icon>  Analyze Potential Trades</li>
+                                        <li><mat-checkbox [checked]="true"><mat-icon class="close-icon">close</mat-icon> Create Daily Plan</mat-checkbox></li>
+                                        <li><mat-checkbox [checked]="false"><mat-icon class="close-icon">close</mat-icon> Analyze Potential Trades</mat-checkbox></li>
                                     </ul>
                                 </div>
                                 <div class="arrow-rt">
@@ -40,8 +40,9 @@
                                         </div>
                                     </div>
                                     <ul class="orange-list">
-                                        <li><mat-icon class="check-icon">check</mat-icon> Import Trades</li>
-                                        <li><mat-icon class="check-icon">check</mat-icon> Journal Trades</li>
+                                        <li><mat-checkbox [checked]="true"><mat-icon class="close-icon">close</mat-icon> Import Trades</mat-checkbox></li>
+                                        <li><mat-checkbox><mat-icon class="close-icon">close</mat-icon> Journal Trades</mat-checkbox></li>
+                                        <li><mat-checkbox [checked]="true"><mat-icon class="close-icon">close</mat-icon> Close Daily Plan</mat-checkbox></li>
                                     </ul>
                                 </div>
                                 <div class="arrow-rt">
@@ -58,9 +59,9 @@
                                         </div>
                                     </div>
                                     <ul class="orange-list">
-                                        <li><mat-icon class="check-icon">check</mat-icon> Review Reports & Insights</li>
-                                        <li><mat-icon class="check-icon">check</mat-icon> Close Daily Plan</li>
-                                        <li><mat-icon class="close-icon">close</mat-icon> Update Trading Rules</li>
+                                        <li><mat-checkbox [checked]="true"><mat-icon class="close-icon">close</mat-icon> Review Reports</mat-checkbox></li>
+                                        <li><mat-checkbox [checked]="true"><mat-icon class="close-icon">close</mat-icon> Review Insights</mat-checkbox></li>
+                                        <li><mat-checkbox [checked]="false"><mat-icon class="close-icon">close</mat-icon> Update Trading Rules</mat-checkbox></li>
                                     </ul>
                                 </div>
                             </div>
@@ -72,11 +73,12 @@
             <div class="col-sm-12 col-md-5">
                 <div class="widget">
                     <div class="widget-header">
-                        <h5>{{selectedId === 1 ? 'Market Overview' : 'Active Stocks' }}</h5>
+                        <h5>{{selectedId === 1 ? 'Market Overview' : selectedId === 2 ? 'Economic Calendar' : 'Active Stocks' }}</h5>
                         <div>
                             <select class="form-control form-control-sm" [(ngModel)]="selectedId" (change)="onChange($event)">
-                                <option value="1">Economic Calendar</option>
-                                <option value="2">Active Stocks</option>
+                                <option value="1">Market Overview</option>
+                                <option value="2">Economic Calendar</option>
+                                <option value="3">Active Stocks</option>
                             </select>
                         </div>
                         <!-- <a class="add-new" (click)="openEconomicModal()">Economic Calendar</a> -->
@@ -89,6 +91,13 @@
                         </div>
                     </div>
                     <div [ngClass]="selectedId === 2 ? 'd-block' : 'd-none'">
+                        <div class="tradingview-widget-container">
+                            <div class="tradingview-widget-container__widget"></div>
+                            <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/markets/currencies/economic-calendar/" rel="noopener" target="_blank"></a></div>
+                            <div #calendarview></div>
+                        </div>
+                    </div>
+                    <div [ngClass]="selectedId === 3 ? 'd-block' : 'd-none'">
                         <div class="tradingview-widget-container">
                             <div class="tradingview-widget-container__widget"></div>
                             <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/markets/stocks-usa/" rel="noopener" target="_blank"></a></div>
@@ -180,83 +189,12 @@
                     <div class="trade-headiang">
                         <h5>Daily Insights</h5>
                     </div>
-                    <div class="dsh-img list-group-card px-0" style="height: 300px;">
+                    <div class="dsh-img list-group-card px-0 m-0" style="height: 400px;">
                         <app-key-insights></app-key-insights>
-                        <!--
-                        <ul class="insights-list">
-                            <li><mat-icon class="close-icon mr-2">close</mat-icon> Value at Risk is higher than the amount set in the daily trade plan</li>
-                            <li><mat-icon class="check-icon mr-2">check</mat-icon> Goal for the period 06/01/2022 - 06/30/2022 reached!</li>
-                            <li><mat-icon class="check-icon mr-2">check</mat-icon> Daily trade count decreased the daily trade count by 50%</li>
-                            <li><mat-icon class="priority-icon mr-2">priority_high</mat-icon> AMZN has the highest risk exposure (24,832) in your portfolio Consider heding</li>
-                            <li><mat-icon class="priority-icon mr-2">priority_high</mat-icon> Stop loss hit for CIPLA (0722-104181) Consider closing the trade</li>
-                            <li><mat-icon class="priority-icon mr-2">priority_high</mat-icon> HDFC is down 15% in the last 30 days. You are going against the trend by taking a long position</li>
-                        </ul>
-                        -->
-                        <!-- <div class="list-group-row">
-                            <div class="col-9">
-                                How-to videos on CueTrade's features
-                            </div>
-                            <div class="list-group-bottom col-3 text-right">
-                                <a href="https://www.youtube.com/channel/UC2VXwmZeSkAjY1bZTcnObwQ/videos" target="_blank">Watch Now </a>
-                            </div>
-                        </div>
-
-                        <div class="list-group-row row">
-                            <div class="col-8">
-                                Step-by-step guides on using CueTrade
-                            </div>
-                            <div class="list-group-bottom col-4 text-right">
-                                <a [routerLink]="['/help']">User Manuals</a>
-                            </div>
-                        </div>
-                        <div class="list-group-row row">
-                            <div class="col-9">
-                                Go through answers to FAQs on CueTrade
-                            </div>
-                            <div class="list-group-bottom col-3 text-right">
-                                <a href="https://cuetrade.wpcomstaging.com/2022/04/02/frequently-asked-questions-faqs/" target="_blank">Visit FAQs</a>
-                            </div>
-                        </div>
-                        <div class="list-group-row row">
-                            <div class="col-9">Read our blog</div>
-                            <div class="list-group-bottom col-3 text-right">
-                                <a>Visit Blog</a>
-                            </div>
-                        </div>
-                        <div class="list-group-row row">
-                            <div class="col-9">
-                                Follow us on social media<img src="../../../../assets/images/beta-icon.png" class="beta-icon"/>
-                            </div>
-                            <div class="list-group-bottom col-3 text-right">
-                                <a class="mr-2"><img src="../../../assets/images/twitter_sm.png" alt="twitter" class="socail-icon" /></a>
-                                <a><img src="../../../assets/images/facebook.png" alt="facebook" class="socail-icon" /></a>
-                            </div>
-                        </div> -->
+                       
                     </div>
                 </div>
             </div>
-            
-            <!-- <div class="col-sm-12 col-md-4">
-                <div class="trade-analytics">
-                    <div class="trade-headiang">
-                        <h5>Goal Status</h5>
-                    </div>
-                    <div class="dsh-img">
-                        <app-user-goals-by-date-chart></app-user-goals-by-date-chart>
-                    </div>
-                </div>
-            </div> -->
-            
-            <!-- <div class="col-sm-12 col-md-4">
-                <div class="trade-analytics">
-                    <div class="trade-headiang">
-                        <h5>Max Amount at Risk by Asset</h5>
-                    </div>
-                    <div class="dsh-img">
-                        <a routerLink="/reports" class="cursor"><app-risk-by-asset-chart></app-risk-by-asset-chart></a>
-                    </div>
-                </div>
-            </div> -->
         </div>
     </div>
 
