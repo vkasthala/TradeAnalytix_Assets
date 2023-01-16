@@ -37,7 +37,7 @@ export class ReportsComponent implements OnInit {
   protected reportFilter: ReportFilter = new ReportFilter();
 
   websiteList: any = ['HDTuto.com', 'HDTuto.com', 'Nicesnippets.com']
-  selectedTabReport;
+  selectedTabReport: string = 'stats';
 
   constructor() { }
 
@@ -84,6 +84,7 @@ export class ReportsComponent implements OnInit {
   */
 
   onTabSelect(selectedTab: string) {
+    this.selectedTabReport = selectedTab;
     if (selectedTab === 'risk') {
       this.riskReports.reloadData(selectedTab);
     } else if (selectedTab === 'rules') {
@@ -99,7 +100,6 @@ export class ReportsComponent implements OnInit {
     } else if (selectedTab === 'stats') {
       this.statsComponent.reload();
     }
-    this.selectedTabReport = selectedTab;
   }
 
   parentReportChange(e) {
@@ -148,7 +148,7 @@ export class ReportsComponent implements OnInit {
       }
     }
     this.dateChangeSubject.next(this.reportFilter);
-    this.filterChangeSubject.next(this.reportFilter);
+    this.reloadData();
   }
 
   onDateRangeChanged(event: IMyDateRangeModel) {
@@ -162,12 +162,20 @@ export class ReportsComponent implements OnInit {
       this.reportFilter.toDate = moment(toDate, 'DD.MM.YYYY').format('YYYY-MM-DD');
     }
     this.dateChangeSubject.next(this.reportFilter);
-    this.filterChangeSubject.next(this.reportFilter);
+    this.reloadData();
+  }
+
+  reloadData() {
+    if ('stats' === this.selectedTabReport) {
+      this.statsComponent.reload();
+    } else {
+      this.filterChangeSubject.next(this.reportFilter);
+    }
   }
 
   onSubTypeChange($event: any) {
     this.reportFilter.summaryType = $event;
-    this.filterChangeSubject.next(this.reportFilter);
+    this.reloadData();
   }
 
 }
