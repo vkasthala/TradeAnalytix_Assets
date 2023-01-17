@@ -144,7 +144,7 @@ export class BulkUpdateComponent implements OnInit {
         children: [
           {
             headerName: "Cost of Trade",
-            field: 'cost',
+            field: 'totalAmount',
             width: 145,
             resizable: true,
             filter: true,
@@ -161,7 +161,7 @@ export class BulkUpdateComponent implements OnInit {
           },
           {
             headerName: "Net R",
-            field: 'totalAmount',
+            field: 'netr',
             columnGroupShow: 'closed',
             width: 120,
             resizable: true,

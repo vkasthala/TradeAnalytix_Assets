@@ -41,9 +41,19 @@ export class BulkStrategyUpdateModel {
     dirty: boolean;
 
     source: string;
+
     strategyType: string;
-    realizedReturn: string;
+
+    realizedReturn: number;
+
+    netr: number;
+
+    totalAmount: number;
+
+    maxRisk: number;
+
     tradeThesis: string;
+
     Identifier: string;
 
     strategyTypeId: number;
