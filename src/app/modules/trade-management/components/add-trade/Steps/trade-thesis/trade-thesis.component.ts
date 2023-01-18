@@ -96,10 +96,11 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     console.log('trade thesis child view init:', this.inputState);
-    if (this.inputState && this.inputState.tradeStrategy && this.inputState.tradeStrategy.tradeThesis && this.inputState.tradeStrategy.tradeThesis.length > 0) {
-      this.tradeThesis = this.inputState.tradeStrategy.tradeThesis[0];
-      this.tradeStatus = this.inputState.tradeStrategy.statusId;
-      if (!this.tradeThesis) {
+    if (this.inputState && this.inputState.tradeStrategy) {
+      if (this.inputState.tradeStrategy.tradeThesis && this.inputState.tradeStrategy.tradeThesis.length > 0) {
+        this.tradeThesis = this.inputState.tradeStrategy.tradeThesis[0];
+        this.tradeStatus = this.inputState.tradeStrategy.statusId;
+      } else {
         this.tradeThesis = new TradeThesis();
       }
       if (!this.tradeThesis.tradeType) {
@@ -640,7 +641,7 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
         tags: this.tradeTagsComponent.tags,
         tradeChubFiles: this.tradeChubFiles,
         tradeStatus: this.tradeStatus,
-        addTrade:this.addTrade
+        addTrade: this.addTrade
       }
     });
     dialogRef.afterClosed().subscribe((res) => {
