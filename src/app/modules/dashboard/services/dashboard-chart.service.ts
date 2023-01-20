@@ -3,6 +3,7 @@ import { HttpService } from '../../shared/services/http.service';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { UserComment } from '../models/user-comment.model';
+import { RecentTrade } from '../models/recent-trade.model';
 
 @Injectable({
   providedIn: 'root'
@@ -30,5 +31,9 @@ export class DashboardChartService {
   public createContactUsRequest(contactUsRequest: UserComment): Observable<void> {
     return this.httpService.post<UserComment, void>(environment.apiUrl + "/user/contact-us-request", contactUsRequest);
   }
+
+  public getRecentTrades(): Observable<RecentTrade[]> {
+    return this.httpService.get(environment.apiUrl + '/dashboard/recent-trades');
+  }  
 
 }

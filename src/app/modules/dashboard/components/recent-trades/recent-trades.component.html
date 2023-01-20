@@ -5,71 +5,28 @@
                 <th>Identifier</th>
                 <th>Open Date</th>
                 <th>Symbol</th>
+                <th>Status</th>
                 <th>Return</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>0722-244744</td>
-                <td>24Jun2022</td>
-                <td>NIO</td>
-                <td>2341.21</td>
-                <td><mat-icon class="mat-icon-edit cursor">edit</mat-icon></td>
-            </tr>
-            <tr>
-                <td>9455-394867</td>
-                <td>24Jun2022</td>
-                <td>META</td>
-                <td>-6324.21</td>
-                <td><mat-icon class="mat-icon-edit cursor">edit</mat-icon></td>
-            </tr>
-            <tr>
-                <td>0845-348755</td>
-                <td>23Jun2022</td>
-                <td>INFY</td>
-                <td>-762.41</td>
-                <td><mat-icon class="mat-icon-edit cursor">edit</mat-icon></td>
-            </tr>
-            <tr>
-                <td>3485-346787</td>
-                <td>23Jun2022</td>
-                <td>GOOG</td>
-                <td>-52.45</td>
-                <td><mat-icon class="mat-icon-edit cursor">edit</mat-icon></td>
-            </tr>
-            <tr>
-                <td>4568-435966</td>
-                <td>23Jun2022</td>
-                <td>XOM</td>
-                <td>323.75</td>
-                <td><mat-icon class="mat-icon-edit cursor">edit</mat-icon></td>
-            </tr>
-            <tr>
-                <td>4568-435966</td>
-                <td>23Jun2022</td>
-                <td>XOM</td>
-                <td>323.75</td>
-                <td><mat-icon class="mat-icon-edit cursor">edit</mat-icon></td>
-            </tr>
-            
-            <tr *ngIf="showMoreTrades">
-                <td>4567-459867</td>
-                <td>22Jun2022</td>
-                <td>COP</td>
-                <td>8457.34</td>
-                <td><mat-icon class="mat-icon-edit cursor">edit</mat-icon></td>
-            </tr>
-            <tr *ngIf="showMoreTrades">
-                <td>0045-569834</td>
-                <td>22Jun2022</td>
-                <td>SQ</td>
-                <td>857.34</td>
-                <td><mat-icon class="mat-icon-edit cursor">edit</mat-icon></td>
-            </tr>
+            <ng-container *ngFor="let trade of recentTrades; let rowIndex=index">
+                <tr *ngIf="rowIndex < 6 || showMoreTrades">
+                    <td>{{trade.strategyUid}}</td>
+                    <td>{{trade.openDate | date: 'dd-MMM-yyyy'}}</td>
+                    <td>{{trade.symbol}}</td>
+                    <td>{{trade.status}}</td>
+                    <td>{{trade.returnAmount}}</td>
+                    <td><mat-icon class="mat-icon-edit cursor" (click)="onTradeEdit(trade)">edit</mat-icon></td>
+                </tr>
+            </ng-container>
         </tbody>
     </table>
 </div>
 <div class="p-3 text-right">
     <span class="cursor view-more" (click)="MoreRecentTrades()">Show {{!showMoreTrades ? 'More' : 'Less'}}</span>
+</div>
+<div class="mask" *ngIf="Loader">
+    <div class="loader"></div>
 </div>
