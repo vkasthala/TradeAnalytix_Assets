@@ -932,14 +932,15 @@
 }
 .white-box {
     background: #FFFFFF;
-    border-radius: 25px;
+    border-radius: 20px;
     position: relative;
-    width: 90%;
+    width: 95%;
+    border: 0.5px solid #B9B9B9;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    min-height: 322px;
 }
 .white-box-header {
     background: #FFFFFF;
-    border: 0.5px solid #B9B9B9;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
     text-align: center;
  }
@@ -972,7 +973,8 @@
     padding: 0;
     margin: 0;
     list-style-type: none;
-    padding-top: 1.5rem;
+    padding-top: 1rem;
+    padding-left: 10px;
 }
 .orange-list li {
     position: relative;
@@ -990,8 +992,8 @@
   
 .arrow-rt {
     position: absolute;
-    top: 25%;
-    right: 0;
+    top: 30%;
+    right: -3px;
     text-align: center;
     img {
         width: 60%;

@@ -222,13 +222,13 @@
                                 (click)="evaluateStrategyRules('WEB')" [disabled]="!isValidTradeStrategy('WEB')">ADD
                                 TRADE</button>
         
-                            <span
+                            <!-- <span
                                 *ngIf="(tradeDetails.stockAdded || tradeDetails.stockOptions.length > 0) && (stepper.selectedIndex == 0) && !isDemoMode">
                                 <button type="button" class="btn btn-outline-primary"
                                     *ngIf="!close && !tradeStrategy.executed && !edit" (click)="saveTradeAsDraft('WEB')"
                                     [disabled]="!isValidTradeStrategy('WEB')">Save
                                     as Draft</button>
-                            </span>
+                            </span> -->
         
                             <button type="button" class="btn btn-next mr-3" *ngIf="edit && !isDemoMode" (click)="editTrade('WEB')"
                                 [disabled]="!isValidTradeStrategy('WEB')">UPDATE</button>
