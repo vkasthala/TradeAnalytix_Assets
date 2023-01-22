@@ -72,6 +72,8 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     this.loadMarketOverview();
     this.loadEconomic();
     this.loadActiveStocks();
+
+    
   }
 
   ngAfterContentChecked() {
@@ -119,7 +121,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
   getSummaryTextColor(summaryItem: ReportSummaryItem): string {
     let color: string = '#242E3A';
-    if (summaryItem.id == 'total_realized_return' || summaryItem.id == 'risk_adjusted_return') {
+    if (summaryItem.id == 'realizedReturn' || summaryItem.id == 'netR' || summaryItem.id == 'profitFactor') {
       let value: number = parseFloat(summaryItem.value);
       if (summaryItem.value && value > 0) {
         color = '#61BC6D';
@@ -133,6 +135,23 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       } else {
         color = '#E7706C';
       }
+    } else if (summaryItem.id == 'maxRisk') {
+      color = '#E7706C';
+    } else if (summaryItem.id == 'avgLosingTrade') {
+      color = '#E7706C';
+    } else if (summaryItem.id == 'avgWinningTrade') {
+      color = '#61BC6D';
+    } else if (summaryItem.id == 'avgTradeCount') {
+      let value: string = summaryItem.defaultValue;
+      if (summaryItem.value) {
+        value = summaryItem.value;
+      }
+      let val: number = parseInt(value);
+      if (val === 0) {
+        color = '#E7706C';
+      } else {
+        color = '#61BC6D';
+      }
     }
     return color;
   }
@@ -144,7 +163,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     }
     if (typeof (val) === 'number') {
       var num: number = +val;
-      return Math.round(num);
+      return num;
     }
     return val;
   }
@@ -156,7 +175,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     let suffix: string = "";
     if (summaryItem.id == 'win_rate') {
       suffix = '%';
-    } else if (summaryItem.id == 'risk_adjusted_return') {
+    } else if (summaryItem.id == 'netR') {
       suffix = 'R';
     }
     return suffix;
@@ -359,7 +378,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       data: dialogData
     });
     dialogRef.afterClosed().subscribe((res) => {
-      
+
     });
   }
 
@@ -387,7 +406,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
     this.tradingview.nativeElement.appendChild(script);
   }
-  
+
   loadEconomic() {
     let script = this._renderer1.createElement('script');
     script.type = `text/javascript`;
@@ -406,11 +425,11 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     this.activeStocks.nativeElement.appendChild(script);
   }
 
-  selectedId:number=1;
+  selectedId: number = 1;
   onChange($event) {
     this.selectedId = Number($event.target.value);
   }
-  
+
 
 
 }
