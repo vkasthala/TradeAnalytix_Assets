@@ -1,36 +1,33 @@
-<div class="compare-popup" *ngIf="currentInd == 0">
+<!-- <div class="compare-popup" *ngIf="currentInd == 0">
     <div class="compare-pop-inner">
         <div class="slider-header">
-            <!-- <h3 class="slider-title">{{data[currentInd].title}}</h3> -->
+            <h3 class="slider-title">{{data[currentInd].title}}</h3>
             <h3 class="slider-title">Welcome {{userName}}</h3>
             <span class="right-close" (click)="closeModal()">
                 <mat-icon>clear</mat-icon>
             </span>
         </div>
         <div class="main-pop-inner">
-            <!-- <div class="slider-description" [innerHTML]="data[currentInd].description"></div> 
-            <p *ngIf="data[currentInd].imgUrl"><img class="slider-img" src="{{data[currentInd].imgUrl}}" /></p> -->
+            <div class="slider-description" [innerHTML]="data[currentInd].description"></div> 
+            <p *ngIf="data[currentInd].imgUrl"><img class="slider-img" src="{{data[currentInd].imgUrl}}" /></p>
            
             <div *ngIf="currentInd == 0">
                 <div class="slider-description">
                     CueTrade is a new age trading journal that helps you make better, more informed decisions based on strong rationale and data.
                 </div>
-                <!-- <div class="slider-description mb-3 py-3">
+                <div class="slider-description mb-3 py-3">
                     Most of the people investing or trading actively in the financial markets end up on the losing side mainly due to indiscipline.
-                </div> -->
-                <!-- <iframe width="720" height="400" src="https://www.youtube.com/embed/42FLXxQa4H4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+                </div>
+                <iframe width="720" height="400" src="https://www.youtube.com/embed/42FLXxQa4H4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
 
         <div class="modal-footer py-1 justify-content-center">
-            <!-- <span class="float-left" *ngIf="currentInd > 0">
-                <button type="button" class="btn btn-back" (click)="priviousSlide()">Back</button>
-            </span> -->
             <button type="button" class="btn btn-next" (click)="nextSlide()">Start tour</button>
             <button type="button" class="btn btn-white" (click)="closeModal()">Close</button>
         </div>
     </div>
-</div>
+</div> -->
 
 <!-- <div class="compare-popup guided-tour-modal1" *ngIf="currentInd == 1">
     <div class="compare-pop-inner">
@@ -100,7 +97,7 @@
         </div>
     </div>
 </div> -->
-<div class="compare-popup top-pointer-modal demo-tour-slider" *ngIf="currentInd == 1">
+<!-- <div class="compare-popup top-pointer-modal demo-tour-slider" *ngIf="currentInd == 1">
     <div class="compare-pop-inner">
         <div class="slider-header">
             <h3 class="slider-title">Demo Mode</h3>
@@ -320,4 +317,156 @@
             <button type="button" class="btn btn-white" (click)="closeModal()">Close</button>
         </div>
     </div>
+</div> -->
+
+<div class="compare-popup">
+    <div class="slider-container">
+        
+        <div class="slider-inner" *ngIf="currentInd == 0">
+            <div class="slider-description mb-3">
+                Welcome {{userName}}<br/>
+                Before we get started, do you agree with CueTrade terms and conditions?
+            </div>
+            <div class="slider-description mb-3 d-flex"><input type="checkbox" name="" class="mr-2" />      I read and accept the CueTrade <a href="" class="mx-3">terms and service</a> and <a href="" class="mx-3">policy</a></div>
+            <div class="text-center">
+                <button type="button" class="btn btn-next" (click)="nextSlide()">Accept</button>
+            </div> 
+        </div>
+
+        <div class="slider-inner" *ngIf="currentInd == 1">
+            <div class="slider-body">
+                <div class="slider-description mb-3">
+                    Hello {{userName}}<br/>
+                    Let's get to know each other better. It would not take more than a minute.
+                </div>
+                <div class="slider-description mb-3">How many trades do you execute per week on an average across all your accounts?</div>
+                <div class="buttons-section">
+                    <button type="button" class="btn btn-plain" (click)="nextSlide()">Less than 5</button>
+                    <button type="button" class="btn btn-plain" (click)="nextSlide()">5 to 10</button>
+                </div>
+                <div class="buttons-section">
+                    <button type="button" class="btn btn-plain" (click)="nextSlide()">10 to 20</button>
+                    <button type="button" class="btn btn-plain" (click)="nextSlide()">More than 20</button>
+                </div>
+            </div>
+            <ul class="slider-nav">
+                <li class="nav-bar nav-bar-active">
+                    1/5
+                </li>
+                <li class="nav-bar"></li>
+                <li class="nav-bar"></li>
+                <li class="nav-bar"></li>
+                <li class="nav-bar"></li>
+            </ul> 
+        </div>
+
+        <div class="slider-inner" *ngIf="currentInd == 2">
+            <div class="slider-body">
+                <div class="slider-description mb-2">
+                    What's your biggest pain point in trading? Select all that are applicable
+                </div>
+                <div class="slider-description">
+                    <div class="d-flex mb-3"><input type="checkbox" name="" class="mr-2" />  Lack of skill (i.e., inability to find trading opportunities)</div>
+                    <div class="d-flex mb-3"><input type="checkbox" name="" class="mr-2" />  Lack of discipline (control over emotions, excessive trading, etc.)</div>
+                    <div class="d-flex mb-3"><input type="checkbox" name="" class="mr-2" />  Inability to manage risk effectively</div>
+                    <div class="row mb-3 align-items-center">
+                        <span class="col-4"><input type="checkbox" name="" class="mr-2" /> Lack of tools</span>
+                        <span class="col-6">
+                            <button type="button" class="btn btn-plain btn-plain-sm" (click)="nextSlide()">Please specify</button>
+                        </span>
+                    </div>
+                    <div class="row mb-3 align-items-center">
+                        <span class="col-3"><input type="checkbox" name="" class="mr-2" />   Other</span>
+                        <span class="col-6">
+                            <button type="button" class="btn btn-plain btn-plain-sm" (click)="nextSlide()">Please specify</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <ul class="slider-nav">
+                <li class="nav-bar nav-bar-active"></li>
+                <li class="nav-bar nav-bar-active">2/5</li>
+                <li class="nav-bar"></li>
+                <li class="nav-bar"></li>
+                <li class="nav-bar"></li>
+            </ul> 
+        </div>
+
+        <div class="slider-inner" *ngIf="currentInd == 3">
+            <div class="slider-body">
+                <div class="slider-description mb-3">
+                    Have you used any kind of trading journal including excel, diary, etc.?
+                </div>
+                
+                <div class="buttons-section w-100">
+                    <button type="button" class="btn btn-next" (click)="nextSlide()">Yes</button>
+                    <button type="button" class="btn btn-back">No</button>
+                </div>
+            </div>
+            <ul class="slider-nav">
+                <li class="nav-bar nav-bar-active"></li>
+                <li class="nav-bar nav-bar-active"></li>
+                <li class="nav-bar nav-bar-active">3/5</li>
+                <li class="nav-bar"></li>
+                <li class="nav-bar"></li>
+            </ul> 
+        </div>
+
+        <div class="slider-inner" *ngIf="currentInd == 4">
+            <div class="slider-body">
+                <div class="slider-description mb-3">
+                    Do you agree that journaling and analytics from trading history will help improve your trading performance?
+                </div>
+                
+                <div class="buttons-section w-100">
+                    <button type="button" class="btn btn-next" (click)="nextSlide()">Yes</button>
+                    <button type="button" class="btn btn-back">No</button>
+                </div>
+            </div>
+            <ul class="slider-nav">
+                <li class="nav-bar nav-bar-active"></li>
+                <li class="nav-bar nav-bar-active"></li>
+                <li class="nav-bar nav-bar-active"></li>
+                <li class="nav-bar nav-bar-active">4/5</li>
+                <li class="nav-bar"></li>
+            </ul> 
+        </div>
+
+        <div class="slider-inner" *ngIf="currentInd == 5">
+            <div class="slider-body">
+                <div class="slider-description mb-3">
+                    How did you hear about CueTrade?
+                </div>
+                
+                <div class="slider-description">
+                    <div class="d-flex mb-3"><input type="checkbox" name="" class="mr-2" />  We reached out to you directly</div>
+                    <div class="d-flex mb-3"><input type="checkbox" name="" class="mr-2" />  StockTwits</div>
+                    <div class="d-flex mb-3"><input type="checkbox" name="" class="mr-2" />  WhatsApp</div>
+                    <div class="d-flex mb-3"><input type="checkbox" name="" class="mr-2" />  YouTube</div>
+                    <div class="d-flex mb-3"><input type="checkbox" name="" class="mr-2" />  Twitter</div>
+                    <div class="row mb-3 align-items-center">
+                        <span class="col-3"><input type="checkbox" name="" class="mr-2" /> Referral</span>
+                        <span class="col-5">
+                            <button type="button" class="btn btn-plain btn-plain-sm" (click)="closeModal()">Referral Code</button>
+                        </span>
+                    </div>
+                    <div class="row mb-3 align-items-center">
+                        <span class="col-3"><input type="checkbox" name="" class="mr-2" />   Other</span>
+                        <span class="col-5">
+                            <button type="button" class="btn btn-plain btn-plain-sm" (click)="closeModal()">Please specify</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <ul class="slider-nav">
+                <li class="nav-bar nav-bar-active"></li>
+                <li class="nav-bar nav-bar-active"></li>
+                <li class="nav-bar nav-bar-active"></li>
+                <li class="nav-bar nav-bar-active"></li>
+                <li class="nav-bar nav-bar-active">5/8</li>
+            </ul> 
+        </div>
+    </div>
 </div>
+    
+    

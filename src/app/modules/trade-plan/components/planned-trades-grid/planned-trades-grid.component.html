@@ -26,9 +26,8 @@
 
         <!-- Direction Column -->
         <ng-container matColumnDef="direction">
-            <mat-header-cell class="cell-w-12" *matHeaderCellDef>Direction</mat-header-cell>
-            <mat-cell *matCellDef="let element" class="cell-w-12"> {{element.direction}}
-            </mat-cell>
+            <th mat-header-cell class="cell-w-12" *matHeaderCellDef>Direction</th>
+            <td *matCellDef="let element" class="cell-w-12"> {{element.direction}}</td>
         </ng-container>
 
         <ng-container matColumnDef="amount">

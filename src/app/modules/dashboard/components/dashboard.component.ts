@@ -72,8 +72,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     this.loadMarketOverview();
     this.loadEconomic();
     this.loadActiveStocks();
-
-    
   }
 
   ngAfterContentChecked() {
