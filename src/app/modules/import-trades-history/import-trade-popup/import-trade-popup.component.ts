@@ -78,21 +78,11 @@ export class ImportTradePopupComponent implements OnInit {
           this.processing = false;
           this.dialogRef.close(true);
           console.log('import result:', result);
-          let newCount: any = result['newRecordCount'] ? result['newRecordCount'] : '0';
-          let updatedCount: any = result['updateRecordCount'] ? result['updateRecordCount'] : '0';
-          let closedCount: any = result['closedRecordCount'] ? result['closedRecordCount'] : '0';
-          let failedCount: any = result['failedPersistRecordCount'] ? result['failedPersistRecordCount'] : '0';
-          let failedRows: any = result['failedRecords'] ? result['failedRecords'].length : 0;
-          let message = 'New positions count: ' + newCount
-            + ',  Updated positions count: ' + updatedCount
-            + ',  Closed positions count: ' + closedCount
-            + ',  Failed positions count: ' + failedCount
-            + ',  Unprocessed rows count: ' + failedRows;
-          this.toastr.success(message, 'Import Trade Result', { timeOut: 0 });
+          this.processImportFileResult(result);
         },
         err => {
           this.processing = false;
-          this.toastr.error('Failed to import trades.' + (err.error ? ' Error message: ' + err.error : ''), 'Error', {
+          this.toastr.error(err.error ?  err.error : 'Upload Failed', 'Error', {
             tapToDismiss: false,
             closeButton: true,
             disableTimeOut: true,
@@ -112,6 +102,31 @@ export class ImportTradePopupComponent implements OnInit {
           disableTimeOut: true
         });
     }
+  }
+
+  processImportFileResult(result: any) {
+    debugger;
+    let newCount: number = result['newRecordCount'] ? result['newRecordCount'] : '0';
+    let updatedCount: number = result['updateRecordCount'] ? result['updateRecordCount'] : '0';
+    let closedCount: number = result['closedRecordCount'] ? result['closedRecordCount'] : '0';
+    let failedTradeCount: number = result['failedPersistRecordCount'] ? result['failedPersistRecordCount'] : '0';
+    let failedRowsCount: number = result['failedRecords'] ? result['failedRecords'].length : 0;
+
+    let anyFailed: boolean = failedTradeCount > 0 || failedRowsCount > 0;
+    let anySuccessful: boolean = newCount > 0 || updatedCount > 0 || closedCount > 0;
+
+    let message: string;
+    if (anyFailed && anySuccessful) {
+      message = 'Upload Partially Successful. Trades Added:' + newCount + ', Trades Updated:' + updatedCount + ', Trades Closed:' + closedCount + ', Trades Failed:' + (failedTradeCount + failedRowsCount);
+      this.toastr.warning(message, 'Import Trade Result', { timeOut: 0 });
+    } else if (anySuccessful && !anyFailed) {
+      message = 'Upload Successful. Trades Added:' + newCount + ', Trades Updated:' + updatedCount + ', Trades Closed:' + closedCount;
+      this.toastr.success(message, 'Import Trade Result', { timeOut: 0 });
+    } else if (!anySuccessful && anyFailed) {
+      message = 'Upload Failed';
+      this.toastr.error(message, 'Import Trade Result', { timeOut: 0 });
+    }
+    return message;
   }
 
   onBrokerageChange(val, index) {
