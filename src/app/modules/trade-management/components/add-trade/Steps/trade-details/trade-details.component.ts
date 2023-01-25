@@ -30,6 +30,8 @@ import { UserTagService } from 'src/app/modules/settings/services/user-tag.servi
 import { UserTag } from 'src/app/modules/settings/models/user-tag.model';
 import { ToastrService } from 'ngx-toastr';
 import { TransactionHistoryComponent } from 'src/app/modules/shared/components/modals/transaction-history/transaction-history.component';
+import { TransactionHistory } from 'src/app/modules/shared/models/trade-management/transaction-history.model';
+import { TradeStrategyService } from 'src/app/modules/trade-management/services/trade-strategy.service';
 
 @Component({
   selector: 'app-trade-details',
@@ -107,6 +109,7 @@ export class TradeDetailsComponent implements OnInit {
     protected utilService: UtilService,
     protected strategyCreateServiceService: StrategyCreateService,
     protected userTagService: UserTagService,
+    protected tradeStrategyService: TradeStrategyService,
     protected router: Router,
     protected _dialog: MatDialog,
     protected toastr: ToastrService,
@@ -855,16 +858,29 @@ export class TradeDetailsComponent implements OnInit {
     return (this.closeTrade || this.viewTrade) ? this.netReturn : this.netDebit;
   }
 
-  openeHistoryModal(source: string) {
+  showStockLegHistory(stockLegId: number) {
+    this.tradeStrategyService.getStockLegHistory(stockLegId).subscribe(result => {
+      this.openHistoryModal('', result);
+    });
+  }
+
+  showOptionLegHistory(optionLegId: number) {
+    this.tradeStrategyService.getOptionLegHistory(optionLegId).subscribe(result => {
+      this.openHistoryModal('', result);
+    });
+  }
+
+  openHistoryModal(source: string, history: TransactionHistory[]) {
     let dialogData: any = this.inputState;
     dialogData.title = '';
+    dialogData.history = history;
     const dialogRef = this._dialog.open(TransactionHistoryComponent, {
       disableClose: false,
       width: 'auto',
       data: dialogData
     });
     dialogRef.afterClosed().subscribe((res) => {
-      
+
     });
   }
 

@@ -7,6 +7,7 @@ import { TradeHistory } from '../models/trade-history.model';
 import { RuleEvalResult } from '../models/rule-eval-result.model';
 import { TradeChubFile } from '../models/trade-chub-file.model';
 import { TradeEvaluationResult } from '../models/trade-evaluation-result.model';
+import { TransactionHistory } from '../../shared/models/trade-management/transaction-history.model';
 
 @Injectable({
   providedIn: 'root'
@@ -59,6 +60,14 @@ export class TradeStrategyService {
 
   public getTradeEvaluationResult(tradeStrategy: TradeStrategy): Observable<TradeEvaluationResult> {
     return this.httpService.post<TradeStrategy, TradeEvaluationResult>(this.apiUrl + '/trade-strategy/evaluate-trade', tradeStrategy);
+  }
+
+  public getStockLegHistory(stockLegId: number): Observable<TransactionHistory[]> {
+    return this.httpService.get<TransactionHistory[]>(this.apiUrl + '/stock-leg/history/' +  stockLegId);
+  }
+
+  public getOptionLegHistory(optionLegId: number): Observable<TransactionHistory[]> {
+    return this.httpService.get<TransactionHistory[]>(this.apiUrl + '/option-leg/history/' +  optionLegId);
   }
 
 }

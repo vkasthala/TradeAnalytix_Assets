@@ -144,7 +144,7 @@
                         <mat-icon>delete</mat-icon>
                     </div>
                     <div *ngIf="editTrade == true && tradeStatus !=4" class="top-heading">
-                        <mat-icon (click)="openeHistoryModal()">history</mat-icon>
+                        <mat-icon (click)="showStockLegHistory(stockEntry.id)">history</mat-icon>
                     </div>
                 </div>
 
@@ -289,7 +289,7 @@
                                             delete</mat-icon>
                                     </div>
                                     <div *ngIf="editTrade == true && tradeStatus !=4" class="top-heading p-0">
-                                        <mat-icon (click)="openeHistoryModal()">history</mat-icon>
+                                        <mat-icon (click)="showOptionLegHistory(stockOptions[index].id)">history</mat-icon>
                                     </div>
                                 </div>
                             </ng-container>
