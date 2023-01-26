@@ -29,7 +29,7 @@
         display: flex;
         align-items: flex-start;
         background: #FFFFFF;
-        box-shadow: 0px 4px 16px rgba(157, 157, 157, 0.1);
+        box-shadow: 0px 0px 8px rgb(100 100 100 / 75%);
         border-radius: 5px;
         &:not(:last-child) {
             margin-right: 10px;
@@ -734,8 +734,8 @@
 }
 .card {
     background: #FFFFFF;
-    box-shadow: 0px 4px 16px rgba(157, 157, 157, 0.1);
-    border-radius: 5px;
+    box-shadow: 0px 0px 8px rgb(100 100 100 / 75%);
+    border-radius: 6px;
     justify-content: flex-start;
     border: 0;
     padding: 1rem;
@@ -784,6 +784,8 @@
     line-height: 21px;
     font-size: 13px;
     color: #5B5B5B;
+    box-shadow: 0px 0px 8px rgb(100 100 100 / 75%) !important;
+    border-radius: 6px !important;
 }
 .list-group-row {
     border-bottom: 1px solid rgb(157 166 186 / 25%);
@@ -1007,7 +1009,8 @@
 }
 .widget {
     background: #ffffff;
-    border-radius: 4px;
+    box-shadow: 0px 0px 8px rgb(100 100 100 / 75%);
+    border-radius: 6px;
 }
 .widget-header {
     padding: 0.678rem 1rem;
