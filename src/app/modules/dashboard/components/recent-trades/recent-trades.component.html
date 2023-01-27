@@ -1,31 +1,33 @@
-<div style="height: 345px; overflow-y: auto;">
-    <table class="recent-trades">
-        <thead>
-            <tr>
-                <th>Identifier</th>
-                <th>Open Date</th>
-                <th>Symbol</th>
-                <th>Status</th>
-                <th>Return</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <ng-container *ngFor="let trade of recentTrades; let rowIndex=index">
-                <tr *ngIf="rowIndex < 6 || showMoreTrades">
-                    <td>{{trade.strategyUid}}</td>
-                    <td>{{trade.openDate | date: 'dd-MMM-yyyy'}}</td>
-                    <td>{{trade.symbol}}</td>
-                    <td>{{trade.status}}</td>
-                    <td>{{trade.returnAmount}}</td>
-                    <td><mat-icon class="mat-icon-edit cursor" (click)="onTradeEdit(trade)">edit</mat-icon></td>
+<div class="recent-trades-container">
+    <div style="height: 345px; overflow-y: auto;">
+        <table class="recent-trades">
+            <thead>
+                <tr>
+                    <th>Identifier</th>
+                    <th>Open Date</th>
+                    <th>Symbol</th>
+                    <th>Status</th>
+                    <th>Return</th>
+                    <th></th>
                 </tr>
-            </ng-container>
-        </tbody>
-    </table>
-</div>
-<div class="p-3 text-right">
-    <span class="cursor view-more" (click)="MoreRecentTrades()">Show {{!showMoreTrades ? 'More' : 'Less'}}</span>
+            </thead>
+            <tbody>
+                <ng-container *ngFor="let trade of recentTrades; let rowIndex=index">
+                    <tr *ngIf="rowIndex < 6 || showMoreTrades">
+                        <td>{{trade.strategyUid}}</td>
+                        <td>{{trade.openDate | date: 'dd-MMM-yyyy'}}</td>
+                        <td>{{trade.symbol}}</td>
+                        <td>{{trade.status}}</td>
+                        <td>{{trade.returnAmount}}</td>
+                        <td><mat-icon class="mat-icon-edit cursor" (click)="onTradeEdit(trade)">edit</mat-icon></td>
+                    </tr>
+                </ng-container>
+            </tbody>
+        </table>
+    </div>
+    <div class="p-3 text-right">
+        <span class="cursor view-more" (click)="MoreRecentTrades()">Show {{!showMoreTrades ? 'More' : 'Less'}}</span>
+    </div>
 </div>
 <div class="mask" *ngIf="Loader">
     <div class="loader"></div>

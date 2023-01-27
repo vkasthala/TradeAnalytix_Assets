@@ -42,7 +42,7 @@ export class ReportsComponent implements OnInit {
   constructor() { }
 
   myDateRangePickerOptions: IMyDrpOptions = {
-    dateFormat: 'dd.mm.yyyy',
+    dateFormat: 'mmm dd, yyyy',
     editableDateRangeField: false,
     ariaLabelInputField: 'Date'
   };
@@ -158,8 +158,8 @@ export class ReportsComponent implements OnInit {
     if (seperatorInd > -1) {
       let fromDate = formattedText.substring(0, seperatorInd).trim()
       let toDate = formattedText.substring(seperatorInd + 3).trim();
-      this.reportFilter.fromDate = moment(fromDate, 'DD.MM.YYYY').format('YYYY-MM-DD');
-      this.reportFilter.toDate = moment(toDate, 'DD.MM.YYYY').format('YYYY-MM-DD');
+      this.reportFilter.fromDate = moment(fromDate).format('YYYY-MM-DD');
+      this.reportFilter.toDate = moment(toDate).format('YYYY-MM-DD');
     }
     this.dateChangeSubject.next(this.reportFilter);
     this.reloadData();

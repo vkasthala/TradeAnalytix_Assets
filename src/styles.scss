@@ -462,6 +462,7 @@ input:invalid {
 }
 .ag-cell-value, .ag-group-value {
     font-size: 12px !important;
+    min-height: 45px;
 }
 .ag-theme-alpine .ag-cell {
     padding-left: 10px !important;
@@ -650,13 +651,7 @@ input:invalid {
     font-size: 15px;
     font-weight: 600;
 }
-// .ag-row-no-animation .ag-row {
-//     height: auto !important;
-//     min-height: 42px;
-// }
-// .ag-center-cols-viewport {
-//     overflow-y:hidden !important;
-// }
-// .ag-row-position-absolute {
-//     position:inherit !important;
-// }
+
+.thesis-cell .ag-text-field-input {
+    height: 120px !important;
+}

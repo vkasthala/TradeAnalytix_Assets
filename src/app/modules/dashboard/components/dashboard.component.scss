@@ -29,7 +29,7 @@
         display: flex;
         align-items: flex-start;
         background: #FFFFFF;
-        box-shadow: 0px 4px 16px rgba(157, 157, 157, 0.1);
+        box-shadow: 0px 0px 16px rgb(188 188 188 / 50%);
         border-radius: 5px;
         &:not(:last-child) {
             margin-right: 10px;
@@ -524,6 +524,7 @@
 }
 .metrics-title {
     font-weight: 600;
+    font-size: 20px;
     @media #{$extra-small} {
         font-size: 18px;
         line-height: 22px;
@@ -734,8 +735,8 @@
 }
 .card {
     background: #FFFFFF;
-    box-shadow: 0px 4px 16px rgba(157, 157, 157, 0.1);
-    border-radius: 5px;
+    box-shadow: 0px 0px 16px rgb(188 188 188 / 50%);
+    border-radius: 6px;
     justify-content: flex-start;
     border: 0;
     padding: 1rem;
@@ -784,6 +785,8 @@
     line-height: 21px;
     font-size: 13px;
     color: #5B5B5B;
+    box-shadow: 0px 0px 16px rgb(188 188 188 / 50%) !important;
+    border-radius: 6px !important;
 }
 .list-group-row {
     border-bottom: 1px solid rgb(157 166 186 / 25%);
@@ -814,6 +817,7 @@
     } 
 }
 .dashboard-header-row {
+    padding-top: 14px;
     @media #{$extra-small} {
         padding-top: 15px;
         background: #fff;
@@ -864,6 +868,7 @@
     transition: all 0.5s ease 0s;
 }
 .metrics-section {
+    padding: 18px 0 10px 0;
     @media #{$extra-small} {
         background: #fff;
         padding: 1rem;
@@ -1007,7 +1012,8 @@
 }
 .widget {
     background: #ffffff;
-    border-radius: 4px;
+    box-shadow: 0px 0px 16px rgb(188 188 188 / 50%);
+    border-radius: 6px;
 }
 .widget-header {
     padding: 0.678rem 1rem;

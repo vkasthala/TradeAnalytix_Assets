@@ -38,6 +38,7 @@ export class BulkUpdateComponent implements OnInit {
   private gridApi;
   private frameworkComponents;
   isDemoMode: boolean = false;
+  suppressRowTransform: boolean = true;
   constructor(
     private tradeStrategyGridService: TradeStrategyGridService,
     private userTagService: UserTagService,
@@ -292,11 +293,16 @@ export class BulkUpdateComponent implements OnInit {
   onGridReady(params) {
     this.gridApi = params.api;
     // params.api.sizeColumnsToFit();
-    this.gridApi.columnApi.autoSizeColumns();
+    //this.gridApi.columnApi.autoSizeColumns();
   }
 
   onCallValueDataChangeStart($event) {
     $event.data.dirty = true;
+    this.gridApi.forEachNode((rowNode) => {
+      if (rowNode.data) {
+        rowNode.setRowHeight(120);
+      }
+    });
   }
 
 }
