@@ -83,10 +83,10 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
     protected userTagService: UserTagService,
     private strategyCreateService: StrategyCreateService
   ) {
-
   }
 
   ngOnInit() {
+    this.userMetadataStoreService.loadMetadata(false);
     this.tradeThesis = new TradeThesis();
     this.tradeThesis.tradeType = 'planned';
     this.strategyTypes = this.strategyCreateService.getStrategies();

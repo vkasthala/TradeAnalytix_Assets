@@ -22,6 +22,8 @@ export class UserMetadataStoreService {
   contrarian: any[];
   tradeTypes: any[];
 
+  loaded: boolean = false;
+
   constructor(private metadataService: UserMetadataService, private dataSetupService: DataSetupService) {
     //this.load();
   }
@@ -36,6 +38,13 @@ export class UserMetadataStoreService {
     this.initTradeTypes();
     this.loadCloseTriggers();
     this.loadGainLLossAttributes();
+    this.loaded = true;
+  }
+
+  loadMetadata(forceLoad: boolean) {
+    if (forceLoad || !this.loaded) {
+      this.load();
+    }
   }
 
   loadMindsets() {

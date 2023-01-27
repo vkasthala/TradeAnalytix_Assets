@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UserTagService } from 'src/app/modules/settings/services/user-tag.service';
 import { StrategyCreateService } from 'src/app/modules/shared/services/strategy-create.service';
+import { TradeStrategyService } from 'src/app/modules/trade-management/services/trade-strategy.service';
 import { UtilService } from 'src/app/modules/utilities/services/util.service';
 import { TradeDetailsComponent } from '../../trade-details/trade-details.component';
 
@@ -24,10 +25,11 @@ export class MobileTradeDetailsComponent extends TradeDetailsComponent implement
   constructor(utilService: UtilService,
     strategyCreateServiceService: StrategyCreateService,
     userTagService: UserTagService,
+    tradeStrategyService: TradeStrategyService,
     router: Router,
     dialog: MatDialog,
     toastr: ToastrService) {
-    super(utilService, strategyCreateServiceService, userTagService, router, dialog, toastr);
+    super(utilService, strategyCreateServiceService, userTagService,tradeStrategyService, router, dialog, toastr);
   }
 
   ngOnInit() {
