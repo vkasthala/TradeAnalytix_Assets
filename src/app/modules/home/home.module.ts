@@ -163,6 +163,7 @@ import { TargetDateComponent } from '../bulk-update/target-date/target-date.comp
 import { TagEditorComponent } from '../bulk-update/tag-editor/tag-editor.component';
 import { StrategyEditorComponent } from '../bulk-update/strategy-editor/strategy-editor.component';
 import { RecentTradesComponent } from '../dashboard/components/recent-trades/recent-trades.component';
+import { ThesisEditorComponent } from '../bulk-update/thesis-editor/thesis-editor.component';
 
 export const MY_FORMATS = {
   parse: {
@@ -323,7 +324,8 @@ export const MY_FORMATS = {
     TargetDateComponent,
     TagEditorComponent,
     StrategyEditorComponent,
-    RecentTradesComponent
+    RecentTradesComponent,
+    ThesisEditorComponent
   ],
   imports: [
     FormsModule,
@@ -411,7 +413,8 @@ export const MY_FORMATS = {
     TargetDateComponent,
     TagEditorComponent,
     StrategyEditorComponent,
-    RecentTradesComponent
+    RecentTradesComponent,
+    ThesisEditorComponent
   ],
   // bootstrap: [TradeStrategiesGrid],
   providers: [

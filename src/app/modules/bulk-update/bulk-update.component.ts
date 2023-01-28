@@ -1,6 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { ColDef, ColGroupDef, ICellEditorParams } from 'ag-grid-community';
+import { ColDef, GridApi,ColGroupDef, ICellEditorParams, GridReadyEvent,
+  RowNode,
+  RefreshCellsParams } from 'ag-grid-community';
 import { ToastrService } from 'ngx-toastr';
 import { UserTagService } from 'src/app/modules/settings/services/user-tag.service';
 import { SourceType } from 'src/app/modules/trade-management/models/source-type.model';
@@ -19,6 +21,7 @@ import { DemoModeDetailsService } from '../shared/services/demo-mode-details.ser
 import { TargetDateComponent } from './target-date/target-date.component';
 import { TagEditorComponent } from './tag-editor/tag-editor.component';
 import { StrategyEditorComponent } from './strategy-editor/strategy-editor.component';
+import { ThesisEditorComponent } from './thesis-editor/thesis-editor.component';
 
 @Component({
   selector: 'app-bulk-update',
@@ -38,7 +41,7 @@ export class BulkUpdateComponent implements OnInit {
   private gridApi;
   private frameworkComponents;
   isDemoMode: boolean = false;
-  suppressRowTransform: boolean = true;
+
   constructor(
     private tradeStrategyGridService: TradeStrategyGridService,
     private userTagService: UserTagService,
@@ -59,7 +62,8 @@ export class BulkUpdateComponent implements OnInit {
       plannedEditor: PlannedEditorComponent,
       targetCloseDate: TargetDateComponent,
       tagEditor: TagEditorComponent,
-      strategyEditor: StrategyEditorComponent
+      strategyEditor: StrategyEditorComponent,
+      thesisEditor: ThesisEditorComponent
     };
     this.initColumnDefns();
     this.Loader = true;
@@ -191,6 +195,7 @@ export class BulkUpdateComponent implements OnInit {
             resizable: true, width: 400,
             filter: 'agTextColumnFilter',
             cellClass: 'autoHeight-cell thesis-cell',
+            cellEditor: 'thesisEditor',
             autoHeight: true,
             editable: true,
           },
@@ -259,14 +264,6 @@ export class BulkUpdateComponent implements OnInit {
           }
         ]
       },
-
-      // { field: 'openDate', headerName: 'Open Date', resizable: true, width: 110, cellClass: 'read-only-cell', filter: 'agTextColumnFilter' },
-      // { field: 'totalAmount', headerName: 'Amount', resizable: true, width: 100, cellClass: 'read-only-cell', filter: 'agTextColumnFilter' },
-      // { field: 'reason', headerName: ' Reasons for the trade', editable: true, resizable: true, width: 180, filter: 'agTextColumnFilter' },
-      // { field: 'closeSource', headerName: 'Trigger for Closure', editable: true, cellEditor: 'closeSourceEditor', resizable: true, width: 150, filter: 'agTextColumnFilter' },
-      // { field: 'closeReason', headerName: 'Reason for Closure', editable: true, width: 150, resizable: true, filter: 'agTextColumnFilter' },
-      // { field: 'closeEvent', headerName: 'Gain or Loss Attributed To', editable: true, cellEditor: 'closeEventEditor', width: 200, resizable: true, filter: 'agTextColumnFilter' },
-      // { field: 'closeLesson', headerName: 'Lessons Learnt', editable: true, width: 300, resizable: true, filter: 'agTextColumnFilter' }
     ];
     this.isDemoMode = this.demoService.demoMode;
   }
@@ -283,6 +280,7 @@ export class BulkUpdateComponent implements OnInit {
       this.Loader = false;
       this.toastr.success('Successfully updated ' + changedStrategies.length + ' strategies', 'Success');
       this.userTagService.loadTags();
+      this.gridApi.refreshRows();
     }, err => {
       this.Loader = false;
       this.toastr.error('Failed to update strategies', 'Error');
@@ -299,10 +297,18 @@ export class BulkUpdateComponent implements OnInit {
   onCallValueDataChangeStart($event) {
     $event.data.dirty = true;
     this.gridApi.forEachNode((rowNode) => {
-      if (rowNode.data) {
+      if (rowNode.data && $event.rowIndex === rowNode.rowIndex) {
         rowNode.setRowHeight(120);
       }
     });
+    this.gridApi.refreshCells();
+  }
+
+  refreshRow(rowNode: RowNode, api: GridApi) {
+    var rowNodes = [rowNode]; // params needs an array
+    var params: RefreshCellsParams = {
+      rowNodes: rowNodes,
+    };
   }
 
 }

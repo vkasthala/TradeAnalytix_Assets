@@ -11,6 +11,8 @@ export class SliderModalComponent implements OnInit {
   currentInd: number = 0;
   title: string;
   userName: string = '';
+  referralInput: boolean = false;
+  otherInput: boolean = false;
   public data: any = [
     {
       title:"Welcome to CueTrade",
@@ -65,6 +67,14 @@ export class SliderModalComponent implements OnInit {
     } else {
       this.currentInd++;
     }
+  }
+
+  onChange($event) {
+    this.referralInput = $event.target.value === "Referral" ? true : false
+    this.otherInput = $event.target.value === "Other" ? true : false
+  }
+  goToSlide(index) {
+    this.currentInd = index;
   }
 
 }

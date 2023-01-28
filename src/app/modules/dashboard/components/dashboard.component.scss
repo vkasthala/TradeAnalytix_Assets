@@ -746,6 +746,9 @@
     color: #242E3A;
     flex-direction: row;
 }
+.card-row {
+    flex-direction: column;
+}
 .card-title {
     font-weight: bold;
     font-size: 18px;
@@ -783,7 +786,7 @@
     padding: 1rem;
     font-weight: normal;
     line-height: 21px;
-    font-size: 13px;
+    font-size: 14px;
     color: #5B5B5B;
     box-shadow: 0px 0px 16px rgb(188 188 188 / 50%) !important;
     border-radius: 6px !important;
@@ -803,13 +806,13 @@
 }
 .list-group-title {
     font-weight: bold;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 18px;
     color: #242E3A;
 }
 .list-group-bottom {
     font-weight: bold;
-    font-size: 13px;
+    font-size: 14px;
     line-height: 21px;
     color: #2285FA;
     @media #{$extra-small} {
@@ -997,11 +1000,11 @@
   
 .arrow-rt {
     position: absolute;
-    top: 30%;
-    right: -3px;
+    top: 45%;
+    right: -8px;
     text-align: center;
     img {
-        width: 60%;
+        width: 70%;
     }
 }
 .add-new {
@@ -1016,7 +1019,7 @@
     border-radius: 6px;
 }
 .widget-header {
-    padding: 0.678rem 1rem;
+    padding-bottom: 6px;
     display: flex;
     align-items: center;
     justify-content: space-between;

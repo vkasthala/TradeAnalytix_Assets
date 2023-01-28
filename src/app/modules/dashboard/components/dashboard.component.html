@@ -1,93 +1,118 @@
 <div class="px-2 dashboard">
     <div class="trade-dash-cards-web px-2">
-        <div class="row mt-3 dashboard-header-row">
-            <div class="col-sm-12 col-md-7 dashboard-header-column">
-                <div class="card px-2">
-                    <div class="px-1">
-                        <img src="../../../../assets/images/welcome.svg"/>
+        <div class="mt-3 dashboard-header-row">
+            <div class="card px-x">
+                <div class="px-1">
+                    <img src="../../../../assets/images/welcome.svg"/>
+                </div>
+                <div class="px-1">
+                    <div class="card-title">Welcome {{userName}}</div>
+                    <p class="mt-2" style="font-size:15px">CueTrade helps you adopt a systematic approach to trading with its three-step approach. It automatically tracks the recommended daily activities in each phase for you.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="mt-3">
+            <div class="card">
+                <div class="pr-2">
+                    <img src="../../../../assets/images/hand.svg"/>
+                </div>
+                <div class="pl-1">
+                    <div class="card-title">Upload tradebook and analyze your performance instantly</div>
+                    <div class="row align-items-end">
+                        <div class="col-sm-4">
+                            <label class="m-0">Select Brokerage</label>
+                            <select class="form-control form-control-sm" [(ngModel)]="selectedbroker" (change)="onBrokerageChange($event.target.value, index)">
+                                <option *ngFor="let item of brokerages;let index = index" value={{item.id}}>{{item.name}}
+                                </option>
+                            </select>
+                        </div>
+                        <button class="btn btn-upload btn-sm" *ngIf="!isDemoMode" (click)="importTrades()">Upload</button>
+                        
                     </div>
-                    <div class="px-1">
-                        <div class="card-title">Welcome {{userName}}</div>
-                        <p class="mt-2" style="font-size:15px">CueTrade helps you adopt a systematic approach to trading with its three-step approach. It automatically tracks the recommended daily activities in each phase for you.</p>
-                        <!-- <div class="card-bottom pt-1">
-                            <span class="mr-3 cursor" (click)="startTour()">Start Tour</span>
-                            <span class="ml-3 cursor" (click)="showDemoMsg()">Demo Mode</span>
-                        </div> -->
-                        <div class="row pt-3 mt-3">
-                            <div class="col-sm-4 pl-1">
-                                <div class="white-box">
-                                    <div class="white-box-header">
-                                        <span class="white-box-count">1</span>
-                                        <div class="white-box-title">Plan Trades</div>
-                                        <div class="pt-2"><img src="../../../../assets/images/plan-trade.png" alt=""  class="thumb-sm" /></div>
-                                    </div>
-                                    <ul class="orange-list">
-                                        <li><mat-checkbox [checked]="true"><mat-icon class="close-icon">close</mat-icon> Create Daily Plan</mat-checkbox></li>
-                                        <li><mat-checkbox [checked]="false"><mat-icon class="close-icon">close</mat-icon> Analyze Potential Trades</mat-checkbox></li>
-                                    </ul>
+                </div>
+            </div>
+        </div> -->
+
+        <div class="row mt-3 dashboard-header-row">
+            <div class="col-sm-12 col-md-8 dashboard-header-column">
+                <div class="trade-headiang pb-1">
+                    <h5>Daily Workspace</h5>
+                </div>
+                <div class="card card-row pr-0">
+                    <div class="row mt-3">
+                        <div class="col-sm-4">
+                            <div class="white-box">
+                                <div class="white-box-header">
+                                    <span class="white-box-count">1</span>
+                                    <div class="white-box-title">Plan Trades</div>
+                                    <div class="pt-2"><img src="../../../../assets/images/plan-trade.png" alt=""  class="thumb-sm" /></div>
                                 </div>
-                                <div class="arrow-rt">
-                                    <img src="../../../../assets/images/arrow-rt.png" alt="" />
-                                </div>
+                                <ul class="orange-list">
+                                    <li><mat-checkbox [checked]="true"><mat-icon class="close-icon">close</mat-icon> Create a daily trading plan</mat-checkbox></li>
+                                    <li><mat-checkbox [checked]="false"><mat-icon class="close-icon">close</mat-icon> Build and analyze potential trades</mat-checkbox></li>
+                                </ul>
                             </div>
-                            <div class="col-sm-4 pl-1">
-                                <div class="white-box">
-                                    <div class="white-box-header">
-                                        <span class="white-box-count">2</span>
-                                        <div class="white-box-title">Journal Trades</div>
-                                        <div class="pt-2">
-                                            <img src="../../../../assets/images/journal_trades_sm.png" alt="" class="thumb-sm" />
-                                        </div>
-                                    </div>
-                                    <ul class="orange-list">
-                                        <li><mat-checkbox [checked]="true"><mat-icon class="close-icon">close</mat-icon> Import Trades</mat-checkbox></li>
-                                        <li><mat-checkbox><mat-icon class="close-icon">close</mat-icon> Journal Trades</mat-checkbox></li>
-                                        <li><mat-checkbox [checked]="true"><mat-icon class="close-icon">close</mat-icon> Close Daily Plan</mat-checkbox></li>
-                                    </ul>
-                                </div>
-                                <div class="arrow-rt">
-                                    <img src="../../../../assets/images/arrow-rt.png" alt="" />
-                                </div>
+                            <div class="arrow-rt">
+                                <img src="../../../../assets/images/arrow-rt.png" alt="" />
                             </div>
-                            <div class="col-sm-4 pl-1">
-                                <div class="white-box">
-                                    <div class="white-box-header">
-                                        <span class="white-box-count">3</span>
-                                        <div class="white-box-title">Review Insights</div>
-                                        <div class="pt-2">
-                                            <img src="../../../../assets/images/review_insights.png" alt="" class="thumb-sm" />
-                                        </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="white-box">
+                                <div class="white-box-header">
+                                    <span class="white-box-count">2</span>
+                                    <div class="white-box-title">Journal Trades</div>
+                                    <div class="pt-2">
+                                        <img src="../../../../assets/images/journal_trades_sm.png" alt="" class="thumb-sm" />
                                     </div>
-                                    <ul class="orange-list">
-                                        <li><mat-checkbox [checked]="true"><mat-icon class="close-icon">close</mat-icon> Review Reports</mat-checkbox></li>
-                                        <li><mat-checkbox [checked]="true"><mat-icon class="close-icon">close</mat-icon> Review Insights</mat-checkbox></li>
-                                        <li><mat-checkbox [checked]="false"><mat-icon class="close-icon">close</mat-icon> Update Trading Rules</mat-checkbox></li>
-                                    </ul>
                                 </div>
+                                <ul class="orange-list">
+                                    <li><mat-checkbox [checked]="true"><mat-icon class="close-icon">close</mat-icon> Import trades from brokerage</mat-checkbox></li>
+                                    <li><mat-checkbox><mat-icon class="close-icon">close</mat-icon> Add notes to your trades</mat-checkbox></li>
+                                    <li><mat-checkbox [checked]="true"><mat-icon class="close-icon">close</mat-icon> Review performance and close plan</mat-checkbox></li>
+                                </ul>
+                            </div>
+                            <div class="arrow-rt">
+                                <img src="../../../../assets/images/arrow-rt.png" alt="" />
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="white-box">
+                                <div class="white-box-header">
+                                    <span class="white-box-count">3</span>
+                                    <div class="white-box-title">Review Insights</div>
+                                    <div class="pt-2">
+                                        <img src="../../../../assets/images/review_insights.png" alt="" class="thumb-sm" />
+                                    </div>
+                                </div>
+                                <ul class="orange-list">
+                                    <li><mat-checkbox [checked]="true"><mat-icon class="close-icon">close</mat-icon> Review statistics and reports</mat-checkbox></li>
+                                    <li><mat-checkbox [checked]="true"><mat-icon class="close-icon">close</mat-icon> Review daily insights</mat-checkbox></li>
+                                    <li><mat-checkbox [checked]="false"><mat-icon class="close-icon">close</mat-icon> Add or update trading rules</mat-checkbox></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-sm-12 col-md-5">
-                <div class="widget">
-                    <div class="widget-header">
-                        <h5>{{selectedId === 1 ? 'Market Overview' : selectedId === 2 ? 'Economic Calendar' : 'Active Stocks' }}</h5>
-                        <div>
-                            <select class="form-control form-control-sm" [(ngModel)]="selectedId" (change)="onChange($event)">
-                                <option value="1">Market Overview</option>
-                                <option value="2">Economic Calendar</option>
-                                <option value="3">Active Stocks</option>
-                            </select>
-                        </div>
-                        <!-- <a class="add-new" (click)="openEconomicModal()">Economic Calendar</a> -->
+            <div class="col-sm-12 col-md-4">
+                <div class="widget-header">
+                    <h5>{{selectedId === 1 ? 'Market Overview' : selectedId === 2 ? 'Economic Calendar' : 'Active Stocks' }}</h5>
+                    <div>
+                        <select class="form-control form-control-sm" [(ngModel)]="selectedId" (change)="onChange($event)">
+                            <option value="1">Market Overview</option>
+                            <option value="2">Economic Calendar</option>
+                            <option value="3">Active Stocks</option>
+                        </select>
                     </div>
+                </div>
+                <div class="widget">
                     <div [ngClass]="selectedId === 1 ? 'd-block' : 'd-none'">
                         <div class="tradingview-widget-container">
                             <div class="tradingview-widget-container__widget"></div>
                             <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/markets/currencies/economic-calendar/" rel="noopener" target="_blank"></a></div>
-                            <div #tradingview></div>
+                            <div #tradingview id="tradingview"></div>
                         </div>
                     </div>
                     <div [ngClass]="selectedId === 2 ? 'd-block' : 'd-none'">
@@ -106,27 +131,7 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="col-sm-12 col-md-6">
-                <div class="card">
-                    <div class="pr-2">
-                        <img src="../../../../assets/images/hand.svg"/>
-                    </div>
-                    <div class="pl-1">
-                        <div class="card-title">Upload tradebook and analyze your performance instantly</div>
-                        <div class="row align-items-end">
-                            <div class="col-sm-4">
-                                <label class="m-0">Select Brokerage</label>
-                                <select class="form-control form-control-sm" [(ngModel)]="selectedbroker" (change)="onBrokerageChange($event.target.value, index)">
-                                    <option *ngFor="let item of brokerages;let index = index" value={{item.id}}>{{item.name}}
-                                    </option>
-                                </select>
-                            </div>
-                            <button class="btn btn-upload btn-sm" *ngIf="!isDemoMode" (click)="importTrades()">Upload</button>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div> -->
+            
         </div>
         <div class="metrics-section">
             <h5 class="mt-3 mb-2 metrics-title">Key Metrics</h5>

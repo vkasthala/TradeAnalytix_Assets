@@ -428,7 +428,7 @@ input:invalid {
     // height: 270px;
 }
 .dashboard .custom-calendar ul li {
-    font-size: 11px !important;
+    font-size: 14px !important;
     height: 67px !important;
     justify-content: end !important;
 }
@@ -607,6 +607,14 @@ input:invalid {
 .bulk-update .form-control {
     font-size: 14px !important;
     margin-top: 3px;
+}
+.bulk-update app-thesis-editor {
+    width: 100%;
+}
+.bulk-update textarea.form-control {
+    height: auto;
+    width: 100%;
+    min-height: 100px;
 }
 .ag-header-row-column .ag-header-cell-label {
     justify-content: center;

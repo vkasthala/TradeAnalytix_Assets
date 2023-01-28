@@ -327,7 +327,7 @@
                 <h3 class="slider-header">Welcome {{userName}}</h3>
                 Before we get started, do you agree with CueTrade terms and conditions?
             </div>
-            <div class="slider-description mb-3 d-flex"><input type="checkbox" name="" class="mr-2" />      I read and accept the CueTrade <a href="" class="mx-3">terms and service</a> and <a href="" class="mx-3">policy</a></div>
+            <div class="slider-description mb-3 d-flex"><input type="checkbox" name="" class="mr-2" />      I read and accept the CueTrade <a href="" class="mx-2">terms and service</a> and <a href="" class="mx-2">policy</a></div>
             <div class="text-center">
                 <button type="button" class="btn btn-next" (click)="nextSlide()">Accept</button>
             </div> 
@@ -336,7 +336,7 @@
         <div class="slider-inner" *ngIf="currentInd == 1">
             <div class="slider-body">
                 <div class="slider-description mb-3">
-                    Hello {{userName}}<br/>
+                    <h3 class="slider-header">Hello {{userName}}</h3>
                     Let's get to know each other better. It would not take more than a minute.
                 </div>
                 <div class="slider-description mb-3">How many trades do you execute per week on an average across all your accounts?</div>
@@ -350,9 +350,7 @@
                 </div>
             </div>
             <ul class="slider-nav">
-                <li class="nav-bar nav-bar-active">
-                    1/5
-                </li>
+                <li class="nav-bar nav-bar-active">1/5</li>
                 <li class="nav-bar"></li>
                 <li class="nav-bar"></li>
                 <li class="nav-bar"></li>
@@ -363,7 +361,7 @@
         <div class="slider-inner" *ngIf="currentInd == 2">
             <div class="slider-body">
                 <div class="slider-description mb-2">
-                    What's your biggest pain point in trading? Select all that are applicable
+                    <h3 class="slider-header">What's your biggest pain point in trading? Select all that are applicable</h3>
                 </div>
                 <div class="slider-description">
                     <div class="d-flex mb-3"><input type="checkbox" name="" class="mr-2" />  Lack of skill (i.e., inability to find trading opportunities)</div>
@@ -372,19 +370,22 @@
                     <div class="row mb-3 align-items-center">
                         <span class="col-4"><input type="checkbox" name="" class="mr-2" /> Lack of tools</span>
                         <span class="col-6">
-                            <button type="button" class="btn btn-plain btn-plain-sm" (click)="nextSlide()">Please specify</button>
+                            <input type="text" class="form-control btn-plain btn-plain-sm" placeholder="Referral Code" />
                         </span>
                     </div>
                     <div class="row mb-3 align-items-center">
                         <span class="col-3"><input type="checkbox" name="" class="mr-2" />   Other</span>
                         <span class="col-6">
-                            <button type="button" class="btn btn-plain btn-plain-sm" (click)="nextSlide()">Please specify</button>
+                            <input type="text" class="form-control btn-plain btn-plain-sm" placeholder="Please specify" />
                         </span>
+                    </div>
+                    <div class="mt-3">
+                        <button type="button" (click)="nextSlide()" class="btn btn-next-sm">Next</button>
                     </div>
                 </div>
             </div>
             <ul class="slider-nav">
-                <li class="nav-bar nav-bar-active"></li>
+                <li class="nav-bar nav-bar-active" (click)="goToSlide(1)"></li>
                 <li class="nav-bar nav-bar-active">2/5</li>
                 <li class="nav-bar"></li>
                 <li class="nav-bar"></li>
@@ -395,17 +396,19 @@
         <div class="slider-inner" *ngIf="currentInd == 3">
             <div class="slider-body">
                 <div class="slider-description mb-3">
-                    Have you used any kind of trading journal including excel, diary, etc.?
+                    <div class="slider-header pb-2">
+                        Have you used any kind of trading journal including excel, diary, etc.?
+                    </div>
                 </div>
                 
-                <div class="buttons-section w-100">
-                    <button type="button" class="btn btn-next" (click)="nextSlide()">Yes</button>
+                <div class="buttons-section justify-content-start">
+                    <button type="button" class="btn btn-next mr-3" (click)="nextSlide()">Yes</button>
                     <button type="button" class="btn btn-back">No</button>
                 </div>
             </div>
             <ul class="slider-nav">
-                <li class="nav-bar nav-bar-active"></li>
-                <li class="nav-bar nav-bar-active"></li>
+                <li class="nav-bar nav-bar-active" (click)="goToSlide(1)"></li>
+                <li class="nav-bar nav-bar-active" (click)="goToSlide(2)"></li>
                 <li class="nav-bar nav-bar-active">3/5</li>
                 <li class="nav-bar"></li>
                 <li class="nav-bar"></li>
@@ -418,51 +421,53 @@
                     Do you agree that journaling and analytics from trading history will help improve your trading performance?
                 </div>
                 
-                <div class="buttons-section w-100">
-                    <button type="button" class="btn btn-next" (click)="nextSlide()">Yes</button>
+                <div class="buttons-section justify-content-start">
+                    <button type="button" class="btn btn-next mr-3" (click)="nextSlide()">Yes</button>
                     <button type="button" class="btn btn-back">No</button>
                 </div>
             </div>
             <ul class="slider-nav">
-                <li class="nav-bar nav-bar-active"></li>
-                <li class="nav-bar nav-bar-active"></li>
-                <li class="nav-bar nav-bar-active"></li>
-                <li class="nav-bar nav-bar-active">4/5</li>
+                <li class="nav-bar nav-bar-active" (click)="goToSlide(1)"></li>
+                <li class="nav-bar nav-bar-active" (click)="goToSlide(2)"></li>
+                <li class="nav-bar nav-bar-active" (click)="goToSlide(3)"></li>
+                <li class="nav-bar nav-bar-active" (click)="goToSlide(4)">4/5</li>
                 <li class="nav-bar"></li>
             </ul> 
         </div>
 
         <div class="slider-inner" *ngIf="currentInd == 5">
             <div class="slider-body">
-                <div class="slider-description mb-3">
+                <div class="slider-header pb-2">
                     How did you hear about CueTrade?
                 </div>
                 
                 <div class="slider-description">
-                    <div class="d-flex mb-3"><input type="checkbox" name="" class="mr-2" />  We reached out to you directly</div>
-                    <div class="d-flex mb-3"><input type="checkbox" name="" class="mr-2" />  StockTwits</div>
-                    <div class="d-flex mb-3"><input type="checkbox" name="" class="mr-2" />  WhatsApp</div>
-                    <div class="d-flex mb-3"><input type="checkbox" name="" class="mr-2" />  YouTube</div>
-                    <div class="d-flex mb-3"><input type="checkbox" name="" class="mr-2" />  Twitter</div>
-                    <div class="row mb-3 align-items-center">
-                        <span class="col-3"><input type="checkbox" name="" class="mr-2" /> Referral</span>
-                        <span class="col-5">
-                            <button type="button" class="btn btn-plain btn-plain-sm" (click)="closeModal()">Referral Code</button>
-                        </span>
+                    <select class="form-control" (change)="onChange($event)">
+                        <option value="directly">We reached out to you directly</option>
+                        <option value="StockTwits">StockTwits</option>
+                        <option value="WhatsApp">WhatsApp</option>
+                        <option value="YouTube">YouTube</option>
+                        <option value="Twitter">Twitter</option>
+                        <option value="Referral">Referral</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    
+                    <div class="py-3" *ngIf="referralInput">
+                        <input type="text" class="form-control btn-plain btn-plain-sm" placeholder="Referral Code" />
                     </div>
-                    <div class="row mb-3 align-items-center">
-                        <span class="col-3"><input type="checkbox" name="" class="mr-2" />   Other</span>
-                        <span class="col-5">
-                            <button type="button" class="btn btn-plain btn-plain-sm" (click)="closeModal()">Please specify</button>
-                        </span>
+                    <div class="py-3" *ngIf="otherInput">
+                        <input type="text" class="form-control btn-plain btn-plain-sm" placeholder="Please specify" />
+                    </div>
+                    <div class="text-right mt-3">
+                        <button type="button" (click)="closeModal()" class="btn btn-next-sm">Submit</button>
                     </div>
                 </div>
             </div>
             <ul class="slider-nav">
-                <li class="nav-bar nav-bar-active"></li>
-                <li class="nav-bar nav-bar-active"></li>
-                <li class="nav-bar nav-bar-active"></li>
-                <li class="nav-bar nav-bar-active"></li>
+                <li class="nav-bar nav-bar-active" (click)="goToSlide(1)"></li>
+                <li class="nav-bar nav-bar-active" (click)="goToSlide(2)"></li>
+                <li class="nav-bar nav-bar-active" (click)="goToSlide(3)"></li>
+                <li class="nav-bar nav-bar-active" (click)="goToSlide(4)"></li>
                 <li class="nav-bar nav-bar-active">5/8</li>
             </ul> 
         </div>
