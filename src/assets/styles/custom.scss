@@ -403,6 +403,12 @@ mat-header-cell:last-of-type,
     width: 60px;
     max-width: 60px;
 }
+.sidebar.toggled .home-link a {
+    justify-content: center;
+}
+.sidebar.toggled .home-link a > .nav-icon {
+    width: 22px;
+}
 
 .main {
     display: flex;
@@ -963,9 +969,6 @@ iframe {
     margin-top: 1.5rem;
 }
 
-.checkbox-red .mat-checkbox-background {
-    background-color: #e71c1c !important;
-}
 .addnew-trade {
     position: relative;
     .mat-horizontal-stepper-header-container {

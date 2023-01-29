@@ -1,13 +1,21 @@
 <div class="px-2 dashboard">
     <div class="trade-dash-cards-web px-2">
-        <div class="mt-3 dashboard-header-row">
+        <div class="mt-1 dashboard-header-row">
             <div class="card px-x">
                 <div class="px-1">
                     <img src="../../../../assets/images/welcome.svg"/>
                 </div>
                 <div class="px-1">
                     <div class="card-title">Welcome {{userName}}</div>
-                    <p class="mt-2" style="font-size:15px">CueTrade helps you adopt a systematic approach to trading with its three-step approach. It automatically tracks the recommended daily activities in each phase for you.</p>
+                    <p style="font-size:16px">Take a tour of CueTrade and turn on the demo mode to see how it works. <span class="mx-2 card-bottom cursor" (click)="startTour()">Start Tour</span>
+                        <span class="ml-2 card-bottom cursor" (click)="showDemoMsg()">Demo Mode</span>
+                    </p>
+
+                    <!-- <p>Take a tour of CueTrade and turn on the demo mode to know its  benefits</p>
+                    <div class="card-bottom pt-1">
+                        <span class="mr-3 cursor" (click)="startTour()">Start Tour</span>
+                        <span class="ml-3 cursor" (click)="showDemoMsg()">Demo Mode</span>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -40,7 +48,7 @@
                     <h5>Daily Workspace</h5>
                 </div>
                 <div class="card card-row pr-0">
-                    <div class="row mt-3">
+                    <div class="row mt-3 py-3">
                         <div class="col-sm-4">
                             <div class="white-box">
                                 <div class="white-box-header">
@@ -50,7 +58,7 @@
                                 </div>
                                 <ul class="orange-list">
                                     <li><mat-checkbox [checked]="true"><mat-icon class="close-icon">close</mat-icon> Create a daily trading plan</mat-checkbox></li>
-                                    <li><mat-checkbox [checked]="false"><mat-icon class="close-icon">close</mat-icon> Build and analyze potential trades</mat-checkbox></li>
+                                    <li><mat-checkbox [checked]="false"><mat-icon class="close-icon">close</mat-icon> Build and analyze potential <br/>trades</mat-checkbox></li>
                                 </ul>
                             </div>
                             <div class="arrow-rt">
@@ -67,9 +75,9 @@
                                     </div>
                                 </div>
                                 <ul class="orange-list">
-                                    <li><mat-checkbox [checked]="true"><mat-icon class="close-icon">close</mat-icon> Import trades from brokerage</mat-checkbox></li>
+                                    <li><mat-checkbox [checked]="true"><mat-icon class="close-icon">close</mat-icon> Import trades from brokers</mat-checkbox></li>
                                     <li><mat-checkbox><mat-icon class="close-icon">close</mat-icon> Add notes to your trades</mat-checkbox></li>
-                                    <li><mat-checkbox [checked]="true"><mat-icon class="close-icon">close</mat-icon> Review performance and close plan</mat-checkbox></li>
+                                    <li><mat-checkbox [checked]="true"><mat-icon class="close-icon">close</mat-icon> Review performance and <br/>close plan</mat-checkbox></li>
                                 </ul>
                             </div>
                             <div class="arrow-rt">
@@ -107,7 +115,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="widget">
+                <div class="widget pb-2">
                     <div [ngClass]="selectedId === 1 ? 'd-block' : 'd-none'">
                         <div class="tradingview-widget-container">
                             <div class="tradingview-widget-container__widget"></div>

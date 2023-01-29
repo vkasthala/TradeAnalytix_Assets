@@ -298,7 +298,7 @@ export class BulkUpdateComponent implements OnInit {
     $event.data.dirty = true;
     this.gridApi.forEachNode((rowNode) => {
       if (rowNode.data && $event.rowIndex === rowNode.rowIndex) {
-        rowNode.setRowHeight(120);
+        //rowNode.setRowHeight(120);
       }
     });
     this.gridApi.refreshCells();

@@ -327,7 +327,7 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
     });
   }
   myDateRangePickerOptions: IMyDrpOptions = {
-    dateFormat: 'dd.mm.yyyy',
+    dateFormat: 'mmm dd, yyyy',
     editableDateRangeField: false,
     ariaLabelInputField: 'Date'
   };
