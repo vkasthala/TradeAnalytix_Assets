@@ -16,6 +16,7 @@
                             <option *ngFor="let item of brokerages;let index = index" value={{item.id}}>{{item.name}}
                             </option>
                         </select>
+                        <button (click)="linkPlaidAccount()">Link Account</button>
                     </div>
                     <div class="pt-2 col-sm-6">
                         <button class="btn btn-enter btn-sm" [disabled]="!selectedBrokerage"

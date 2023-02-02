@@ -82,4 +82,16 @@ export class AutoImportTradePopupComponent implements OnInit {
     });
   }
 
+  // linkPlaidAccount() {
+  //   const handler = Plaid.create({
+  //     token: 'GENERATED_LINK_TOKEN',
+  //     onSuccess: (public_token, metadata) => {},
+  //     onLoad: () => {},
+  //     onExit: (err, metadata) => {},
+  //     onEvent: (eventName, metadata) => {},
+  //     //required for OAuth; if not using OAuth, set to null or omit:
+  //     receivedRedirectUri: window.location.href,
+  //   });
+  // }
+
 }
