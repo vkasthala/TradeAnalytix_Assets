@@ -14,7 +14,7 @@ import { TradeSearchComponent } from 'src/app/modules/trade-management/component
 })
 export class PlannedTradeDialogComponent implements OnInit {
 
-  @ViewChild('stockSymbolsSearch', { static: false }) private tradeSearchComponent: TradeSearchComponent;
+  @ViewChild('stockSymbolsSearch') private tradeSearchComponent: TradeSearchComponent;
 
   selectedStock: StockSymbol;
 

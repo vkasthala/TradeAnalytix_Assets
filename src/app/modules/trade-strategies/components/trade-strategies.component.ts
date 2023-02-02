@@ -27,11 +27,11 @@ import { DemoModeDetailsService } from '../../shared/services/demo-mode-details.
    styleUrls: ['./trade-strategies.component.scss']
 })
 export class TradeStrategiesComponent implements OnInit {
-   @ViewChild('tradeStrategiesGrid', { static: false }) private tradeStrategiesGrid: TradeStrategiesGrid;
-   @ViewChild('portfolioGrid', { static: false }) private portfolioGrid: PortfolioGrid;
-   @ViewChild('historyGrid', { static: false }) private historyGrid: HistoryGrid;
-   @ViewChild('tradeSearchComponent', { static: false }) private tradeSearchComponent: TradeSearchComponent;
-   @ViewChild('communityTradesGrid', { static: false }) private communityTradesGrid: CommunityTradesGrid;
+   @ViewChild('tradeStrategiesGrid') private tradeStrategiesGrid: TradeStrategiesGrid;
+   @ViewChild('portfolioGrid') private portfolioGrid: PortfolioGrid;
+   @ViewChild('historyGrid') private historyGrid: HistoryGrid;
+   @ViewChild('tradeSearchComponent') private tradeSearchComponent: TradeSearchComponent;
+   @ViewChild('communityTradesGrid') private communityTradesGrid: CommunityTradesGrid;
 
    strategiesGridFilter: StrategiesGridFilter = new StrategiesGridFilter();
    strategiesGridPage: StrategiesGridPage = new StrategiesGridPage();

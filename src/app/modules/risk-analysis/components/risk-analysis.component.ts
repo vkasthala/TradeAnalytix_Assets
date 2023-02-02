@@ -37,7 +37,7 @@ export class RiskAnalysisComponent implements OnInit {
   @Input('matTooltipShowDelay') showDelay: number;
   @Input('matTooltipHideDelay') hideDelay: number;
   @Input("editTrade") editTrade: boolean;
-  @ViewChild('riskAnalysisChart', { static: false }) private riskAnalysisChartComponent: RiskAnalysisChartComponent;
+  @ViewChild('riskAnalysisChart') private riskAnalysisChartComponent: RiskAnalysisChartComponent;
   minDate = new Date();
 
   currentState: number = 1;

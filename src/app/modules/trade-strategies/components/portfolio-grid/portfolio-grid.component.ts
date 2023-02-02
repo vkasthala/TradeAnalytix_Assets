@@ -29,8 +29,8 @@ export class PortfolioGrid implements AfterViewInit, OnInit {
   displayedColumns = ['action', 'stockName', 'id', 'openDate', 'strategy', 'direction', 'totalAmount', 'maxLoss', 'return', 'tags'];
   pageSize: number = 20
 
-  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
-  @ViewChild(MatSort, { static: false }) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   portfolioDataSource: TradeStrategyGridRow[];
   tradeStrategyGridRequest: TradeStrategyGridRequest = this.getInitialRequest();

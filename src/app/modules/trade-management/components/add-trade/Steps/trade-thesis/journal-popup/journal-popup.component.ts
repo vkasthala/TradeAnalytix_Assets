@@ -31,8 +31,8 @@ import { UploadFilesComponent } from '../upload-files/upload-files.component';
 })
 export class JournalPopupComponent implements OnInit, AfterViewInit {
 
-  @ViewChild('tradeTags', { static: false }) tradeTagsComponent: TradeTagsComponent;
-  @ViewChild('uploadFiles', { static: false }) uploadFilesComponent: UploadFilesComponent;
+  @ViewChild('tradeTags') tradeTagsComponent: TradeTagsComponent;
+  @ViewChild('uploadFiles') uploadFilesComponent: UploadFilesComponent;
 
   @Output() dropdownItemAddedEvent = new EventEmitter();
 

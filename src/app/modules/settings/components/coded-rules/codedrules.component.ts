@@ -21,7 +21,7 @@ import { EntryExitRule } from '../../models/entry-exit-rules.model';
 })
 export class CodedRulesComponent implements OnInit {
   
-  @ViewChild('tradeDetails', { static: false }) protected tradeDetails: ManagerulesComponent;
+  @ViewChild('tradeDetails') protected tradeDetails: ManagerulesComponent;
   ruleOperatorCol: EditableGridColumn;
   valueCol: EditableGridColumn;
 

@@ -18,7 +18,7 @@ export class TargetDateComponent implements OnInit, AgEditorComponent, AfterView
   selectedId: number;
   params: ICellEditorParams;
 
-  @ViewChild('mat-datepicker', { read: ViewContainerRef, static: false })
+  @ViewChild('mat-datepicker', { read: ViewContainerRef })
   public input: ViewContainerRef;
 
   constructor(private metadataStoreService: UserMetadataStoreService) { }

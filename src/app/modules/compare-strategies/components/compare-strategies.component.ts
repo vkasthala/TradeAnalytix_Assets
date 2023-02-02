@@ -28,7 +28,7 @@ export class CompareStrategiesComponent implements OnInit {
   @Input('matTooltipShowDelay') showDelay: number;
   @Input('matTooltipHideDelay') hideDelay: number;
 
-  @ViewChild('compareStrategiesChart', { static: false }) private compareStrategiesChartComponent: CompareStrategiesChartComponent;
+  @ViewChild('compareStrategiesChart') private compareStrategiesChartComponent: CompareStrategiesChartComponent;
 
   currentState: number = 1;
 

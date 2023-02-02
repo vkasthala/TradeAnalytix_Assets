@@ -30,7 +30,7 @@ export class TradePlansComponent implements OnInit {
   protected gridData: any;
   expandedIndex:any;
 
-  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   isDemoMode: boolean = false;
   constructor(
     private _dialog: MatDialog,

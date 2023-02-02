@@ -22,13 +22,13 @@ export class ReportsComponent implements OnInit {
   dateChangeSubject: Subject<ReportFilter> = new Subject<ReportFilter>();
   symbolChangeSubject: Subject<StockSymbol> = new Subject<StockSymbol>();
 
-  @ViewChild('goalsReports', { static: false }) protected goalsReports: PerformanceComponent;
-  @ViewChild('rulesReports', { static: false }) protected rulesReports: ReportsRulesComponent;
-  @ViewChild('riskReports', { static: false }) protected riskReports: RiskmanagementComponent;
-  @ViewChild('disciplineReports', { static: false }) protected disciplineReports: DisciplineComponent;
-  @ViewChild('commissionsReports', { static: false }) protected commissionsReports: CommissionsComponent;
-  @ViewChild('performanceReports', { static: false }) protected performanceReports: PerformanceComponent;
-  @ViewChild('stats', { static: false }) protected statsComponent: MetricsComponent;
+  @ViewChild('goalsReports') protected goalsReports: PerformanceComponent;
+  @ViewChild('rulesReports') protected rulesReports: ReportsRulesComponent;
+  @ViewChild('riskReports') protected riskReports: RiskmanagementComponent;
+  @ViewChild('disciplineReports') protected disciplineReports: DisciplineComponent;
+  @ViewChild('commissionsReports') protected commissionsReports: CommissionsComponent;
+  @ViewChild('performanceReports') protected performanceReports: PerformanceComponent;
+  @ViewChild('stats') protected statsComponent: MetricsComponent;
   // @ViewChild('tradeSearchComponent', { static: false }) protected tradeSearchComponent: TradeSearchComponent;
 
   public selectedParentReport: string = "Holding Reports";

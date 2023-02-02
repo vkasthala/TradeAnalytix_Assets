@@ -20,8 +20,8 @@ import { DraftTradesGrid } from '../../trade-strategies/components/draft-trades-
    styleUrls: ['./trade-builder.component.scss']
 })
 export class TradeBuilderComponent implements OnInit {
-   @ViewChild('draftTradesGrid', { static: false }) private draftTradesGrid: DraftTradesGrid;
-   @ViewChild('tradeSearchComponent', { static: false }) private tradeSearchComponent: TradeSearchComponent;
+   @ViewChild('draftTradesGrid') private draftTradesGrid: DraftTradesGrid;
+   @ViewChild('tradeSearchComponent') private tradeSearchComponent: TradeSearchComponent;
 
   
    isOpenPositions: boolean = true;

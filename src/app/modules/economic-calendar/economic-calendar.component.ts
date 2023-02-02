@@ -7,7 +7,7 @@ import { AfterViewInit, Component, ElementRef, Input, OnInit, Renderer2, ViewChi
   styleUrls: ['./economic-calendar.component.scss']
 })
 export class EconomicCalendarComponent implements OnInit, AfterViewInit {
-  @ViewChild('tradingview', { static: false }) tradingview: ElementRef;
+  @ViewChild('tradingview') tradingview: ElementRef;
   constructor(private _renderer2: Renderer2) { }
 
   ngOnInit() {

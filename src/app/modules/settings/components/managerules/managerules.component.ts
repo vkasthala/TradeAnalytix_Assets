@@ -26,8 +26,8 @@ export class ManagerulesComponent implements OnInit {
   displayedColumns: string[] = ['date', 'description', 'action'];
   expandIndex: any;
   pageSize: number = 20
-  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
-  @ViewChild(MatSort, { static: false }) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   dataSource: EntryExitRulesGridStore;
   tentryExitRulesGridRequest: EntryExitRulesGridRequest = this.getInitialRequest();

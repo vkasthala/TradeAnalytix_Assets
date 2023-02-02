@@ -31,8 +31,8 @@ export class ImportTradesHistory implements AfterViewInit, OnInit {
   displayedColumns = ['openDate', 'stockName', 'direction', 'status', 'action'];
   pageSize: number = 20
 
-  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
-  @ViewChild(MatSort, { static: false }) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   dataSource: ImportTradesGridStore;
   importTradesGridRequest: ImportTradesGridRequest = this.getInitialRequest();

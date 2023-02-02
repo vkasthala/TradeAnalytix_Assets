@@ -24,9 +24,9 @@ interface category {
 export class ReportTabContentComponent implements OnInit, AfterViewInit, OnDestroy {
   selectedObject: category;
 
-  @ViewChild('reportSummary', { static: false }) protected reportSummary: ReportSummaryComponent;
+  @ViewChild('reportSummary') protected reportSummary: ReportSummaryComponent;
 
-  @ViewChild('reportChart', { static: false }) protected reportChart: ReportChartComponent;
+  @ViewChild('reportChart') protected reportChart: ReportChartComponent;
 
   //@ViewChild('tradeSearchComponent', { static: false }) protected tradeSearchComponent: TradeSearchComponent;
 

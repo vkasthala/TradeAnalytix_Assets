@@ -31,8 +31,8 @@ export class CommunityTradesGrid implements AfterViewInit, OnInit {
   pageSize: number = 20
   totalCount: number = 1;
 
-  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
-  @ViewChild(MatSort, { static: false }) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   draftDataSource: TradeStrategyGridRow[];
 

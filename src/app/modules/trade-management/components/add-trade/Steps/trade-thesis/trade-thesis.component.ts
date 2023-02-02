@@ -45,8 +45,8 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
   entryThesisFields: DynamicFieldDto[] = [];
   exitThesisFields: DynamicFieldDto[] = [];
 
-  @ViewChild('thesisTradingview', { static: false }) thesisTradingview: ElementRef;
-  @ViewChild('tradeTag', { static: false }) tradeTagsComponent: TradeTagsComponent;
+  @ViewChild('thesisTradingview') thesisTradingview: ElementRef;
+  @ViewChild('tradeTag') tradeTagsComponent: TradeTagsComponent;
 
   @Output('nextStep') nextStep = new EventEmitter();
   @Output('prevStep') prevStep = new EventEmitter();

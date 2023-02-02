@@ -18,7 +18,7 @@ export class TagEditorComponent implements OnInit, AgEditorComponent, AfterViewI
   params: ICellEditorParams;
 
   public input: ViewContainerRef;
-  @ViewChild('tradeTags', { static: false }) tradeTagsComponent: TradeTagsComponent;
+  @ViewChild('tradeTags') tradeTagsComponent: TradeTagsComponent;
 
   constructor(private metadataStoreService: UserMetadataStoreService) { }
 

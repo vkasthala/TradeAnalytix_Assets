@@ -10,7 +10,7 @@ export class ThesisEditorComponent implements OnInit {
   selectedValue:any;
   params: ICellEditorParams;
 
-  @ViewChild('textarea', { read: ViewContainerRef, static: false })
+  @ViewChild('textarea', { read: ViewContainerRef })
   public input: ViewContainerRef;
 
   constructor(private metadataStoreService: UserMetadataStoreService) { }

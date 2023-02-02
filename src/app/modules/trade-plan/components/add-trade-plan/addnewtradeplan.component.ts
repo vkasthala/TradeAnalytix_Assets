@@ -50,11 +50,11 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
 
   tradePlan: TradePlan = new TradePlan();
 
-  @ViewChild('tradeMobileStepper', { static: false }) private tradeMobileStepper: MatStepper;
-  @ViewChild('openStrategiesGrid', { static: false }) protected tradeStrategiesGrid: OpenStrategiesGridComponent;
-  @ViewChild('plannedTradesGrid', { static: false }) protected plannedTradesGrid: PlannedTradesGridComponent;
-  @ViewChild('todayExcutedTradesGrid', { static: false }) protected todayExcutedTradesGrid: TodayExecutedLegsComponent;
-  @ViewChild('dailyPlanStats', { static: false }) protected dailyPlanStats: DailyStatisticsComponent;
+  @ViewChild('tradeMobileStepper') private tradeMobileStepper: MatStepper;
+  @ViewChild('openStrategiesGrid') protected tradeStrategiesGrid: OpenStrategiesGridComponent;
+  @ViewChild('plannedTradesGrid') protected plannedTradesGrid: PlannedTradesGridComponent;
+  @ViewChild('todayExcutedTradesGrid') protected todayExcutedTradesGrid: TodayExecutedLegsComponent;
+  @ViewChild('dailyPlanStats') protected dailyPlanStats: DailyStatisticsComponent;
 
 
   planDates: TradePlanEntry[] = [];

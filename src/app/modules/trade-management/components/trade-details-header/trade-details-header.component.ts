@@ -9,7 +9,7 @@ import { UserStockSummary } from 'src/app/modules/shared/models/trade-management
 })
 export class TradeDetailsHeaderComponent implements OnInit {
   allStats: boolean = false;
-  @ViewChild('tradingview', { static: false }) tradingview: ElementRef;
+  @ViewChild('tradingview') tradingview: ElementRef;
   @Input() selectedStock: StockSymbol;
   @Input() stockSummary: UserStockSummary;
   @Output('loadMoreStats') loadMoreStats = new EventEmitter();

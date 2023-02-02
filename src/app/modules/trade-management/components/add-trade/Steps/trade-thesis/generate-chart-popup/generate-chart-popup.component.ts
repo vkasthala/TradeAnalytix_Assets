@@ -11,7 +11,7 @@ declare const TradingView: any;
 })
 export class GenerateChartPopupComponent implements OnInit, AfterViewInit {
 
-  @ViewChild('thesisTradingview', { static: false }) thesisTradingview: ElementRef;
+  @ViewChild('thesisTradingview') thesisTradingview: ElementRef;
 
   width: number = 900;
   height: number = 550;

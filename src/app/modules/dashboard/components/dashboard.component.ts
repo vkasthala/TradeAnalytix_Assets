@@ -33,7 +33,7 @@ import $ from "jquery";
 })
 export class DashboardComponent implements OnInit, AfterViewInit {
 
-  @ViewChild('calendarReport', { static: false }) private calendarReport: CalendarComponent;
+  @ViewChild('calendarReport') private calendarReport: CalendarComponent;
 
   latestTradePlan: TradePlanGridRow;
 
@@ -397,9 +397,9 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
     });
   }
-  @ViewChild('tradingview', { static: false }) tradingview: ElementRef;
-  @ViewChild('calendarview', { static: false }) calendarview: ElementRef;
-  @ViewChild('activeStocks', { static: false }) activeStocks: ElementRef;
+  @ViewChild('tradingview') tradingview: ElementRef;
+  @ViewChild('calendarview') calendarview: ElementRef;
+  @ViewChild('activeStocks') activeStocks: ElementRef;
 
   loadMarketOverview() {
     let style = this._renderer2.createElement('style');

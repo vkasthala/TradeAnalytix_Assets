@@ -26,8 +26,8 @@ export class TradeStrategiesGrid implements AfterViewInit, OnInit {
   displayedColumns = ['id', 'stockName', 'strategy', 'direction', 'openDate', 'closeDate', 'maxGain', 'maxLoss', 'return', 'thesis', 'rules', 'status', 'action'];
   pageSize: number = 20
 
-  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
-  @ViewChild(MatSort, { static: false }) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   dataSource: TradeStrategyGridStore;
   tradeStrategyGridRequest: TradeStrategyGridRequest = this.getInitialRequest();

@@ -17,14 +17,14 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class DatasetupComponent implements OnInit {
 
-  @ViewChild('mindSetType', { static: false }) protected mindSetType: EditableListComponent;
-  @ViewChild('technicalIndicator', { static: false }) protected technicalIndicator: EditableListComponent;
-  @ViewChild('event', { static: false }) protected event: EditableListComponent;
-  @ViewChild('tradeIdea', { static: false }) protected tradeIdea: EditableListComponent;
-  @ViewChild('triggerClosing', { static: false }) protected triggerClosing: EditableListComponent;
-  @ViewChild('gainOrLossAttribution', { static: false }) protected gainOrLossAttribution: EditableListComponent;
+  @ViewChild('mindSetType') protected mindSetType: EditableListComponent;
+  @ViewChild('technicalIndicator') protected technicalIndicator: EditableListComponent;
+  @ViewChild('event') protected event: EditableListComponent;
+  @ViewChild('tradeIdea') protected tradeIdea: EditableListComponent;
+  @ViewChild('triggerClosing') protected triggerClosing: EditableListComponent;
+  @ViewChild('gainOrLossAttribution') protected gainOrLossAttribution: EditableListComponent;
 
-  @ViewChild('brokerageCommissions', { static: false }) protected brokerageCommissions: EditableGridComponent<BockerageCommission>;
+  @ViewChild('brokerageCommissions') protected brokerageCommissions: EditableGridComponent<BockerageCommission>;
 
   step = 0;
 

@@ -22,8 +22,8 @@ export class NotificationsComponent implements AfterViewInit, OnInit {
   displayedColumns = ['day', 'msg', 'read'];
   pageSize: number = 20
 
-  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
-  @ViewChild(MatSort, { static: false }) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   dataSource: NotificationStore;
   notificationGridRequest: NotificationGridRequest = this.getInitialRequest();

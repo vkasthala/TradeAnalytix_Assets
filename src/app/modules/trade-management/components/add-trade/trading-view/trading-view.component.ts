@@ -9,7 +9,7 @@ import { StockSymbol } from 'src/app/modules/shared/models/trade-management/stoc
 })
 export class TradingViewComponent implements OnInit, AfterViewInit {
 
-  @ViewChild('tradingview', { static: false }) tradingview: ElementRef;
+  @ViewChild('tradingview') tradingview: ElementRef;
 
   @Input() selectedStock: StockSymbol;
 

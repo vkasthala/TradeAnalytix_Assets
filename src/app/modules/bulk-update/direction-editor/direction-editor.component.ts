@@ -13,7 +13,7 @@ export class DirectionEditorComponent implements OnInit {
   selectedId: number;
   params: ICellEditorParams;
 
-  @ViewChild('select', { read: ViewContainerRef, static: false })
+  @ViewChild('select', { read: ViewContainerRef })
   public input: ViewContainerRef;
 
   constructor(private metadataStoreService: UserMetadataStoreService) { }

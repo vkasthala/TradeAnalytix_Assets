@@ -18,7 +18,7 @@ import { CalendarComponent } from '../calendar/calendar.component';
 })
 export class ReportChartComponent implements OnInit, AfterViewInit, OnDestroy {
 
-  @ViewChild('calendarReport', { static: false }) private calendarReport: CalendarComponent;
+  @ViewChild('calendarReport') private calendarReport: CalendarComponent;
 
   @Input("report") report: ReportDetails;
 

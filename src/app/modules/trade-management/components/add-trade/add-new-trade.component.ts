@@ -40,22 +40,22 @@ export class AddNewTradeComponent implements OnInit {
   maxDate = new Date();
   title = 'toaster-not';
 
-  @ViewChild('tradeSearchComponent', { static: false }) protected tradeSearchComponent: TradeSearchComponent;
-  @ViewChild('stepper', { static: false }) protected tradeStepper: MatStepper;
-  @ViewChild('tradeMobileStepper', { static: false }) protected tradeMobileStepper: MatStepper;
-  @ViewChild('tradeDetailsAside', { static: false }) protected tradeDetailsAsideComponent: TradeDetailsAsideComponent;
-  @ViewChild('tradeDetailsBottom', { static: false }) protected tradeDetailsBottomComponent: TradeDetailsBottomComponent;
-  @ViewChild('mobileTradeDetailsBottom', { static: false }) protected mobileTradeDetailsBottomComponent: TradeDetailsBottomComponent;
+  @ViewChild('tradeSearchComponent') protected tradeSearchComponent: TradeSearchComponent;
+  @ViewChild('stepper') protected tradeStepper: MatStepper;
+  @ViewChild('tradeMobileStepper') protected tradeMobileStepper: MatStepper;
+  @ViewChild('tradeDetailsAside') protected tradeDetailsAsideComponent: TradeDetailsAsideComponent;
+  @ViewChild('tradeDetailsBottom') protected tradeDetailsBottomComponent: TradeDetailsBottomComponent;
+  @ViewChild('mobileTradeDetailsBottom') protected mobileTradeDetailsBottomComponent: TradeDetailsBottomComponent;
 
-  @ViewChild('tradeDetails', { static: false }) protected tradeDetails: TradeDetailsComponent;
-  @ViewChild('tradeThesis', { static: false }) protected tradeThesis: TradeThesisComponent;
-  @ViewChild('entryRules', { static: false }) protected entryRules: EntryRulesComponent;
-  @ViewChild('exitRules', { static: false }) protected exitRules: ExitRulesComponent;
-  @ViewChild('mobileTradeDetails', { static: false }) protected mobileTradeDetails: TradeDetailsComponent;
-  @ViewChild('mobileTradeThesis', { static: false }) protected mobileTradeThesis: TradeThesisComponent;
-  @ViewChild('mobileEntryRules', { static: false }) protected mobilEntryRules: EntryRulesComponent;
-  @ViewChild('mobileExitRules', { static: false }) protected mobileExitRules: ExitRulesComponent;
-  @ViewChild('mobileTradeDetailsAside', { static: false }) protected mobileTradeDetailsAsideComponent: TradeDetailsAsideComponent;
+  @ViewChild('tradeDetails') protected tradeDetails: TradeDetailsComponent;
+  @ViewChild('tradeThesis') protected tradeThesis: TradeThesisComponent;
+  @ViewChild('entryRules') protected entryRules: EntryRulesComponent;
+  @ViewChild('exitRules') protected exitRules: ExitRulesComponent;
+  @ViewChild('mobileTradeDetails') protected mobileTradeDetails: TradeDetailsComponent;
+  @ViewChild('mobileTradeThesis') protected mobileTradeThesis: TradeThesisComponent;
+  @ViewChild('mobileEntryRules') protected mobilEntryRules: EntryRulesComponent;
+  @ViewChild('mobileExitRules') protected mobileExitRules: ExitRulesComponent;
+  @ViewChild('mobileTradeDetailsAside') protected mobileTradeDetailsAsideComponent: TradeDetailsAsideComponent;
   @Input('matTooltipShowDelay') showDelay: number;
   @Input('matTooltipHideDelay') hideDelay: number;
   strategyTypeChangeSubject: Subject<number> = new Subject<number>();
