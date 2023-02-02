@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { ConfigureFieldsPopupComponent } from '../../shared/components/widgets/configure-fields-popup/configure-fields-popup.component';
 
 @Component({

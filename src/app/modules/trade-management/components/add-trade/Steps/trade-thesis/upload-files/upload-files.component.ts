@@ -1,5 +1,5 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { ChubUploadService } from 'src/app/modules/shared/services/chub-upload.service';
 import { TradeChubFile } from 'src/app/modules/trade-management/models/trade-chub-file.model';

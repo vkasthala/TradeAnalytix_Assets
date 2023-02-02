@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { TradeInputData } from 'src/app/modules/shared/models/trade-management/trade-input-data.model';
 import { RuleDto } from 'src/app/modules/trade-management/models/rule-dto.model';

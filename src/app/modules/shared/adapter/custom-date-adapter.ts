@@ -1,4 +1,4 @@
-import { NativeDateAdapter } from "@angular/material";
+import { NativeDateAdapter } from "@angular/material/core";
 import { CustomDateFormatPipe } from "../pipes/custom-date-format-pipe";
 import { Injectable } from "@angular/core";
 

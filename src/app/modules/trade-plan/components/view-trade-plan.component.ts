@@ -1,7 +1,8 @@
 import { ViewChild, Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { AddnewtradeplanComponent } from './add-trade-plan/addnewtradeplan.component';
 import { Router } from '@angular/router';
-import { DateAdapter, MatDialog } from '@angular/material';
+import { DateAdapter } from '@angular/material/core';
+import { MatDialog } from '@angular/material/dialog';
 import { UserMetadataService } from '../../trade-management/services/user-metadata.service';
 import { TradePlansService } from '../services/trade-plans.service';
 import { ToastrService } from 'ngx-toastr';

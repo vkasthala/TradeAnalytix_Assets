@@ -10,7 +10,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { SummaryItem } from '../../shared/models/reports/summary-item.model';
 import { SummaryRequest } from '../../shared/models/reports/summary-request.model';
 import { ReportDataService } from '../../reports/services/report-data.service';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { DemoModeDetailsService } from '../../shared/services/demo-mode-details.service';
 import { DraftTradesGrid } from '../../trade-strategies/components/draft-trades-grid/draft-trades-grid.component';
 

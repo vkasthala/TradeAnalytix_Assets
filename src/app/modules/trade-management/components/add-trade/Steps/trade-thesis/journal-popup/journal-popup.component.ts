@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, EventEmitter, Inject, OnInit, Output, ViewChild } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { DynamicFieldDto } from 'src/app/modules/settings/models/dynamic-field-dto.model';
 import { DataSetupService } from 'src/app/modules/settings/services/data-setup.service';

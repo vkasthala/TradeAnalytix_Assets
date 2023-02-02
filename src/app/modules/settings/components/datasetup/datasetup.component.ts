@@ -7,7 +7,7 @@ import { EditableGridColumn } from 'src/app/modules/shared/models/common/editabl
 import { EditableListItem } from 'src/app/modules/shared/models/common/editable-list-item.model';
 import { Subject } from 'rxjs';
 import { ConfirmDialogComponent } from 'src/app/modules/shared/components/modals/confirm-dialog/confirm-dialog.component';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({

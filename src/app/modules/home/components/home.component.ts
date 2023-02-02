@@ -4,7 +4,7 @@ import * as fromGlobalConfig from '../../../modules/utilities/reducers/global-co
 import { Store } from '@ngrx/store';
 import { NotificationService } from '../../notifications/services/notification.service';
 import { ConfirmDialogComponent } from '../../shared/components/modals/confirm-dialog/confirm-dialog.component';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { DemoModeDetailsService } from '../../shared/services/demo-mode-details.service';
 

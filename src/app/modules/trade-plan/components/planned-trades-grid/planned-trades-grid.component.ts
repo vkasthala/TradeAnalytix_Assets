@@ -2,7 +2,7 @@ import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 import { PlannedTrade } from '../../models/planned-trade.model';
 import { TradePlansService } from '../../services/trade-plans.service';
 import { Subject } from 'rxjs';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { PlannedTradeDialogComponent } from '../planned-trade-dialog/planned-trade-dialog.component';
 import { ConfirmDialogComponent } from 'src/app/modules/shared/components/modals/confirm-dialog/confirm-dialog.component';
 import { TradePlanEntry } from '../../models/trade-plan-entry.model';

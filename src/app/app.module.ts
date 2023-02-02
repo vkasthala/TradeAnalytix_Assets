@@ -27,7 +27,7 @@ import more from 'highcharts/highcharts-more.src';
 import exporting from 'highcharts/modules/exporting.src';
 import highmaps from 'highcharts/modules/map.src';
 import exportingdata from 'highcharts/modules/export-data.src';
-import { DateAdapter } from '@angular/material';
+import { DateAdapter } from '@angular/material/core';
 import { CustomDateAdapter } from './modules/shared/adapter/custom-date-adapter';
 import { JoinWaitlistComponent } from './modules/login/components/join-waitlist/join-waitlist.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';

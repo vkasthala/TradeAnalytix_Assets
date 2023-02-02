@@ -1,6 +1,7 @@
 import { Component, ViewChild, OnInit, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
-import { MatDialog, MatSort } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSort } from '@angular/material/sort';
 import { ManageRulePopupComponent } from './manage-rule-popup/manage-rule-popup.component';
 import { MatPaginator } from '@angular/material/paginator';
 import { EntryExitRulesService } from '../../services/entry-exit-rules.service';

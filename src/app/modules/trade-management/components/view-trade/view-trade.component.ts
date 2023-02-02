@@ -3,7 +3,7 @@ import { AddNewTradeComponent } from '../add-trade/add-new-trade.component';
 import { UserStockStatsService } from 'src/app/modules/shared/services/user-stock-stats.service';
 import { TradeStrategyService } from '../../services/trade-strategy.service';
 import { Router } from '@angular/router';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { RiskAnalysisService } from 'src/app/modules/risk-analysis/services/risk-analysis.service';
 import { EntryExitRuleService } from '../../services/entry-exit-rule.service';

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, ElementRef, Output, Input, Renderer2, ViewChild, AfterViewInit } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { SingleInputModalComponent } from 'src/app/modules/shared/components/modals/single-input-modal/single-input-modal.component';
 import { MindsetType } from 'src/app/modules/trade-management/models/mindset-type.model';
 import { SourceType } from 'src/app/modules/trade-management/models/source-type.model';

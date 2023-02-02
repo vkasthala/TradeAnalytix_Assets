@@ -17,7 +17,7 @@ import { TradeStrategyGridService } from '../services/trade-strategy-grid.servic
 import { SummaryItem } from '../../shared/models/reports/summary-item.model';
 import { SummaryRequest } from '../../shared/models/reports/summary-request.model';
 import { ReportDataService } from '../../reports/services/report-data.service';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { CommunityTradesGrid } from './community-trades-grid/community-trades-grid.component';
 import { DemoModeDetailsService } from '../../shared/services/demo-mode-details.service';
 

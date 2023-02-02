@@ -10,7 +10,8 @@ import { EntryExitRulesService } from '../../services/entry-exit-rules.service';
 import { SettingsService } from '../../services/settings.service';
 import { ManageRulePopupComponent } from '../managerules/manage-rule-popup/manage-rule-popup.component';
 import { ManagerulesComponent } from '../managerules/managerules.component';
-import { MatDialog, MatSort } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSort } from '@angular/material/sort';
 import { EntryExitRule } from '../../models/entry-exit-rules.model';
 
 

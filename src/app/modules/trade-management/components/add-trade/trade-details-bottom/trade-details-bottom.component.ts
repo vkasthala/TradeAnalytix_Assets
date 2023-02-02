@@ -5,7 +5,7 @@ import { StockSummaryResult } from '../../../models/stock-summary-result.model';
 import { StrategySummaryResult } from '../../../models/strategy-summary-result.model';
 import { TradeStrategy } from '../../../models/trade-strategy.model';
 
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AddToPositionComponent } from 'src/app/modules/shared/components/modals/add-to-position/add-to-position.component';
 import { AddToStockPositionComponent } from 'src/app/modules/shared/components/modals/add-to-stock-position/add-to-stock-position.component';

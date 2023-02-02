@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialog, MatStepper } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
+import { MatStepper } from '@angular/material/stepper';
 import { NavigationExtras, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { DemoModeDetailsService } from 'src/app/modules/shared/services/demo-mode-details.service';
@@ -15,7 +16,7 @@ import { OpenStrategiesGridComponent } from '../open-strategies-grid/open-strate
 import { PlannedTradesGridComponent } from '../planned-trades-grid/planned-trades-grid.component';
 
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
-import { DateAdapter } from '@angular/material';
+import { DateAdapter } from '@angular/material/core';
 import { IMyDate, IMyDateRangeModel, IMyDrpOptions } from 'mydaterangepicker';
 import * as _moment from 'moment';
 import { EconomicDialogComponent } from '../economic-dialog/economic-dialog.component';

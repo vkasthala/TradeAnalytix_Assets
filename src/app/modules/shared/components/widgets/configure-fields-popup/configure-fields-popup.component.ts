@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DynamicFieldDto } from 'src/app/modules/settings/models/dynamic-field-dto.model';
 import { DynamicFieldUpdateDto } from 'src/app/modules/settings/models/dynamic-field-update-dto.model';
 import { DynamicFieldsService } from 'src/app/modules/settings/services/dynamic-fields.service';

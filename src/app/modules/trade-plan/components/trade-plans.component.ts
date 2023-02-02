@@ -4,7 +4,7 @@ import { IMyDateRangeModel, IMyDrpOptions } from 'mydaterangepicker';
 import { MatPaginator } from '@angular/material/paginator';
 import { TradePlansService } from '../services/trade-plans.service';
 
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { TradePlanGridStoreService } from '../services/trade-plan-grid-store.service';
 import { TradePlanGridRequest } from '../models/trade-plan-grid-request.model';
 import { TradePlanGridPage } from '../models/trade-plan-grid-page.model';

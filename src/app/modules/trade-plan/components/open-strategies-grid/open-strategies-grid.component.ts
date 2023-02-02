@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { TradePlanEntry } from '../../models/trade-plan-entry.model';
 import { TradePlanStrategy } from '../../models/trade-plan-strategy.model';
 import { TradePlansService } from '../../services/trade-plans.service';
