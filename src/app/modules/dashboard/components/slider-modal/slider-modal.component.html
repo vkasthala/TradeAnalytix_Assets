@@ -321,15 +321,14 @@
 
 <div class="compare-popup">
     <div class="slider-container">
-        
         <div class="slider-inner" *ngIf="currentInd == 0">
             <div class="slider-description mb-3">
                 <h3 class="slider-header">Welcome {{userName}}</h3>
                 Before we get started, do you agree with CueTrade terms and conditions?
             </div>
-            <div class="slider-description mb-3 d-flex"><input type="checkbox" name="" class="mr-2" />      I read and accept the CueTrade <a href="" class="mx-2">terms and service</a> and <a href="" class="mx-2">policy</a></div>
-            <div class="text-center">
-                <button type="button" class="btn btn-next" (click)="nextSlide()">Accept</button>
+            <div class="slider-description mb-3 d-flex"><input type="checkbox" name="" class="mr-2 checkbox" (change)="acceptChange()" /> I read and accept the CueTrade <a href="" class="mx-2">terms and service</a> and <a href="" class="mx-2">policy</a></div>
+            <div class="text-center pt-3">
+                <button type="button" class="btn btn-next" [ngClass]="!isAcceptChecked ? 'disabled' : ''" (click)="isAcceptChecked ? nextSlide() : ''">Accept</button>
             </div> 
         </div>
 
@@ -359,27 +358,29 @@
 
         <div class="slider-inner" *ngIf="currentInd == 2">
             <div class="slider-body">
-                <div class="slider-description mb-2">
+                <div class="slider-description mb-3">
                     <h3 class="slider-header">What's your biggest pain point in trading? Select all that are applicable</h3>
                 </div>
                 <div class="slider-description">
-                    <div class="d-flex mb-3"><input type="checkbox" name="" class="mr-2" />  Lack of skill (i.e., inability to find trading opportunities)</div>
-                    <div class="d-flex mb-3"><input type="checkbox" name="" class="mr-2" />  Lack of discipline (control over emotions, excessive trading, etc.)</div>
-                    <div class="d-flex mb-3"><input type="checkbox" name="" class="mr-2" />  Inability to manage risk effectively</div>
+                    <div class="d-flex mb-3">
+                        <input type="checkbox" name="Lack of skill" class="mr-2" (change)="applicableCheck($event)" [checked]="applicableList.includes('Lack of skill')" />  Lack of skill (i.e., inability to find trading opportunities)
+                    </div>
+                    <div class="d-flex mb-3"><input type="checkbox" name="Lack of discipline" class="mr-2" (change)="applicableCheck($event)" [checked]="applicableList.includes('Lack of discipline')" />  Lack of discipline (control over emotions, excessive trading, etc.)</div>
+                    <div class="d-flex mb-3"><input type="checkbox" name="Inability" class="mr-2" (change)="applicableCheck($event)" [checked]="applicableList.includes('Inability')"  />  Inability to manage risk effectively</div>
                     <div class="d-flex mb-3 align-items-center">
-                        <span><input type="checkbox" name="" class="mr-1" /> Lack of tools</span>
+                        <span><input type="checkbox" name="Lack of tools" class="mr-1" (change)="applicableCheck($event)" [checked]="applicableList.includes('Lack of tools')" /> Lack of tools</span>
                         <span class="col-6">
-                            <input type="text" class="form-control btn-plain btn-plain-sm" placeholder="Referral Code" />
+                            <input type="text" class="form-control form-control-sm" placeholder="Referral Code" />
                         </span>
                     </div>
                     <div class="d-flex mb-3 align-items-center">
-                        <span><input type="checkbox" name="" class="mr-1" />   Other</span>
+                        <span><input type="checkbox" name="Other" class="mr-1" (change)="applicableCheck($event)" [checked]="applicableList.includes('Other')" />   Other</span>
                         <span class="col-6">
-                            <input type="text" class="form-control btn-plain btn-plain-sm" placeholder="Please specify" />
+                            <input type="text" class="form-control form-control-sm" placeholder="Please specify" />
                         </span>
                     </div>
-                    <div class="text-center mt-3">
-                        <button type="button" (click)="nextSlide()" class="btn btn-next">Next</button>
+                    <div class="text-center mt-3 pt-3">
+                        <button type="button" class="btn btn-next" [ngClass]="applicableList.length === 0 ? 'disabled' : ''" (click)="applicableList.length > 0 ? nextSlide() : ''">Next</button>
                     </div>
                 </div>
             </div>
@@ -400,9 +401,9 @@
                     </div>
                 </div>
                 
-                <div class="buttons-section">
+                <div class="buttons-center">
                     <button type="button" class="btn btn-next" (click)="nextSlide()">Yes</button>
-                    <button type="button" class="btn btn-back">No</button>
+                    <button type="button" class="btn btn-back ml-3" (click)="nextSlide()">No</button>
                 </div>
             </div>
             <ul class="slider-nav">
@@ -418,9 +419,9 @@
             <div class="slider-body">
                 <h3 class="slider-header">Do you agree that journaling and analytics from trading history will help improve your trading performance?</h3>
                 
-                <div class="buttons-section">
+                <div class="buttons-center">
                     <button type="button" class="btn btn-next" (click)="nextSlide()">Yes</button>
-                    <button type="button" class="btn btn-back">No</button>
+                    <button type="button" class="btn btn-back ml-3" (click)="nextSlide()">No</button>
                 </div>
             </div>
             <ul class="slider-nav">
@@ -439,7 +440,7 @@
                 </div>
                 
                 <div class="slider-description">
-                    <select class="form-control" (change)="onChange($event)">
+                    <select class="form-control col-9" (change)="onChange($event)">
                         <option value="directly">We reached out to you directly</option>
                         <option value="StockTwits">StockTwits</option>
                         <option value="WhatsApp">WhatsApp</option>
@@ -449,13 +450,13 @@
                         <option value="Other">Other</option>
                     </select>
                     
-                    <div class="py-3" *ngIf="referralInput">
-                        <input type="text" class="form-control btn-plain btn-plain-sm" placeholder="Referral Code" />
+                    <div class="py-3 col-9 px-0" *ngIf="referralInput">
+                        <input type="text" class="form-control form-control-sm" placeholder="Referral Code" />
                     </div>
-                    <div class="py-3" *ngIf="otherInput">
-                        <input type="text" class="form-control btn-plain btn-plain-sm" placeholder="Please specify" />
+                    <div class="py-3 col-9 px-0" *ngIf="otherInput">
+                        <input type="text" class="form-control form-control-sm" placeholder="Please specify" />
                     </div>
-                    <div class="text-center mt-3">
+                    <div class="buttons-center pt-3">
                         <button type="button" (click)="closeModal()" class="btn btn-next">Submit</button>
                     </div>
                 </div>

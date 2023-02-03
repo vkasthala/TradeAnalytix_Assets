@@ -8,6 +8,9 @@ import { UserService } from 'src/app/modules/shared/services/user.service';
   styleUrls: ['./slider-modal.component.scss']
 })
 export class SliderModalComponent implements OnInit {
+  public isAcceptChecked = false;
+  public applicableList = [];
+
   currentInd: number = 0;
   title: string;
   userName: string = '';
@@ -74,7 +77,39 @@ export class SliderModalComponent implements OnInit {
     this.otherInput = $event.target.value === "Other" ? true : false
   }
   goToSlide(index) {
+    // this.applicableList = index === 2 ? [] : this.applicableList;
     this.currentInd = index;
+  }
+
+  acceptChange() {
+    this.isAcceptChecked = !this.isAcceptChecked
+  }
+  applicableCheck(event: Event): void {
+    const isChecked: boolean = event.target['checked'];
+    const name: any = event.target['name'];
+    if(isChecked) {
+      if (this.applicableList.length > 0) {
+        if(this.applicableList.includes(name)){
+          this.applicableList.filter((x, i) => {
+            if(x === name) {
+              this.applicableList.splice(i, 1)
+            }
+          })
+        }else {
+          this.applicableList.push(name)
+        }
+      }else {
+        this.applicableList.push(name)
+      }
+      
+    } else {
+      this.applicableList.filter((x, i) => {
+        if(x === name) {
+          this.applicableList.splice(i, 1)
+        }
+      })
+    }
+    
   }
 
 }
