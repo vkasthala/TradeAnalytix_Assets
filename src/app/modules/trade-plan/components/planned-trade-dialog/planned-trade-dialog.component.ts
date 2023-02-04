@@ -6,6 +6,8 @@ import { StrategyType } from 'src/app/modules/shared/models/trade-management/str
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActionType } from 'src/app/modules/shared/models/trade-management/action-type.enum';
 import { TradeSearchComponent } from 'src/app/modules/trade-management/components/add-trade/Steps/search-trade/trade-search.component';
+import { TradeDirection } from 'src/app/modules/shared/models/trade-management/trade-direction.enum';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-planned-trade-dialog',
@@ -19,14 +21,17 @@ export class PlannedTradeDialogComponent implements OnInit {
   selectedStock: StockSymbol;
 
 
+  directionTypes: String[];
   strategyTypes: String[];
   strategies = StrategyType;
+  directions = TradeDirection;
   actionTypes = ActionType;
 
   stockId: number;
 
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: PlannedTrade, private strategyCreateService: StrategyCreateService, private dialogRef: MatDialogRef<PlannedTradeDialogComponent>) {
+    let today = new Date();
     console.log('planned trade::', data);
     this.strategyTypes = this.strategyCreateService.getStrategies();
     this.data.actionType = this.data.actionType;
@@ -34,14 +39,21 @@ export class PlannedTradeDialogComponent implements OnInit {
     this.data.strategyType = this.data.strategyType;
     this.data.strategyTypeId = this.data.strategyTypeId;
     this.data.maxRisk = this.data.maxRisk;
-    this.data.profit = this.data.profit;
+    this.data.amount = this.data.amount;
     this.data.executed = this.data.executed;
     this.data.reason = this.data.reason;
     this.data.id = this.data.id;
+    this.directionTypes = this.strategyCreateService.getTradeDirections();
+    this.data.direction = this.data.direction;
+    this.data.directionTypeId = this.data.directionTypeId;
+    this.data.strategyUid = "NA";
+    this.data.openDate = moment(today).format('MMM DD, YYYY');
+    debugger;
+    console.log('today', today)
+    console.log('this.data.openDate', this.data.openDate)
   }
 
   ngOnInit() {
-
   }
 
   ngAfterViewInit() {
@@ -82,6 +94,9 @@ export class PlannedTradeDialogComponent implements OnInit {
   onStrategyTypeChange(strategyTypeId) {
     console.log('str type', strategyTypeId);
     this.data.strategyType = this.strategies[strategyTypeId];
+  }
+  ondirectionTypeChange(directionTypeId) {
+    this.data.direction = this.directions[directionTypeId];
   }
 
   onActionTypeChange(actType: string) {

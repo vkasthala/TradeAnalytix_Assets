@@ -18,13 +18,13 @@
         </div>
     </div>
 
-    <div class="py-3 profile-web">
+    <!-- <div class="py-3 profile-web">
         <span class="cursor">Reset Password</span>
-    </div>
+    </div> -->
     <div class="py-3 text-right profile-mobile" *ngIf="!showResetForm">
         <button type="button" class="btn btn-reset" (click)="resetPassword()">Reset Password</button>
     </div>
-    <div class="row" *ngIf="showResetForm">
+    <div class="row mb-3" *ngIf="showResetForm">
         <div class="col-sm-3 mb-2">
             <label class="col-form-label">Current Password</label>
             <input class="form-control" id="currentpassword" type="password" />
@@ -39,7 +39,7 @@
         </div>
     </div>
 
-    <div class="row mb-3 profile-web">
+    <!-- <div class="row mb-3 profile-web">
         <div class="col-sm-3 mb-2">
             <label class="col-form-label">Brokerages Used</label>
             <select class="form-control">
@@ -61,11 +61,11 @@
         </select>
         </div>
 
-    </div>
+    </div> -->
 
-    <div class="trade-btn profile-bottom pt-3 profile-web">
+    <!-- <div class="trade-btn profile-bottom pt-3 profile-web">
         <div class="btn btn-apply" (click)="saveprofile()">
             Save
         </div>
-    </div>
+    </div> -->
 </div>

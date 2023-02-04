@@ -27,9 +27,9 @@ th.mat-header-cell {
 }
 
 .date-cell{
-  width: 25%;
-  flex: 0 0 25% !important;
-  min-width: 100px !important;
+  width: 15%;
+  flex: 0 0 15% !important;
+  min-width: 80px !important;
   
 }
 .mat-column-date-cell {
@@ -42,9 +42,11 @@ th.mat-header-cell {
   }
 }
 .notification-cell{
-  width: 60%;
-  flex: 0 0 60% !important;
+  width: 70%;
+  flex: 0 0 70% !important;
   min-width: 400px !important;
+  text-align: left;
+  justify-content: start;
   @media #{$extra-small} {
     width: 51%;
     flex: 0 0 51% !important;

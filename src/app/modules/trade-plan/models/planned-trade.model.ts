@@ -26,4 +26,10 @@ export class PlannedTrade {
 
     amount: number;
 
+    directionTypeId: number;
+
+    direction: string;
+
+    openDate: string;
+
 }

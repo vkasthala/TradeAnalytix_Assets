@@ -5,7 +5,7 @@
                 <!-- Date Column -->
                 <ng-container matColumnDef="day">
                     <mat-header-cell class="date-cell" *matHeaderCellDef mat-sort-header>Date</mat-header-cell>
-                    <mat-cell class="date-cell" *matCellDef="let element"> {{element.day | date: 'yyyy-MMM-dd'}} </mat-cell>
+                    <mat-cell class="date-cell" *matCellDef="let element"> {{element.day | date: 'dd-MMM-yyyy'}} </mat-cell>
                 </ng-container>
 
                 <!-- Notification Column -->

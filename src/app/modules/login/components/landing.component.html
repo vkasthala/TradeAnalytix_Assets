@@ -7,28 +7,33 @@
                     <ul class="list-unstyled ">
                         <li>
                             <a class="landing-nav-link" href="landing#howit_works">
-                                Our Story
+                                How It Works
                             </a>
                         </li>
+                        <!-- <li>
+                            <a class="landing-nav-link" href="landing#howit_works">
+                                Our Story
+                            </a>
+                        </li> -->
                         <li>
-                            <a class="landing-nav-link" href="landing#trade_journal">
+                            <a class="landing-nav-link" href="landing#Benefits">
                                 Why CueTrade?
                             </a>
                         </li>
 
-                        <li [class.nav-active]="currentRoute == 'Reviews'">
+                        <!-- <li [class.nav-active]="currentRoute == 'Reviews'">
                             <a class="landing-nav-link" href="landing#reviews_section">
                                 Features
                             </a>
-                        </li>
+                        </li> -->
 
                         <li [class.nav-active]="currentRoute == 'FAQs'">
                             <a class="landing-nav-link" href="landing#Faqs">
-                                Reviews
+                                FAQs
                             </a>
                         </li>
                         <li [class.nav-active]="currentRoute == 'support'">
-                            <a class="landing-nav-link" href="landing#support">
+                            <a class="landing-nav-link" href="javascript:void(0)" (click)="openContactUsModal()">
                                 Contact Us
                             </a>
                         </li>
@@ -289,6 +294,7 @@
                         </div>
                     </div>
                 </div>
+                <div id="Benefits"></div>
                 <!-- <div class="slideshow-component">
                     <iframe width="82%" height="510" src="https://www.youtube.com/embed/4OMMcwbUiBA"  allowfullscreen></iframe>
 
@@ -300,7 +306,7 @@
            
 
             <div class="features_section pb-2">
-                <h2 class="page-heading">Why CueTrade?</h2>
+                <h2 class="page-heading" >Why CueTrade?</h2>
                 <!-- <div class="intro-description mt-1 pt-2 pb-3">Take informed trading decisions based on strong rationale and data by analyzing your trades from logical, historical performance, risk, trading rules, and emotional perspectives.</div> -->
             </div>
             
@@ -723,17 +729,17 @@
             <div class="col-sm-3">
                 <div class="footer_nav_title">Useful Links</div>
                 <ul class="footer_nav">
-                    <li><a [routerLink]="['//']">Our Story</a></li>
-                    <li><a [routerLink]="['/privacy-policy/']" target="_blank">Privacy Policy</a></li>
-                    <li><a [routerLink]="['/terms-conditions/']" target="_blank">Terms and Conditions</a></li>
+                    <!-- <li><a [routerLink]="['//']">Our Story</a></li> -->
+                    <!-- <li><a [routerLink]="['/privacy-policy/']" target="_blank">Privacy Policy</a></li>
+                    <li><a [routerLink]="['/terms-conditions/']" target="_blank">Terms and Conditions</a></li> -->
                     <li><a [routerLink]="['//']">Partner with Us</a></li>
                 </ul>
             </div>
             <div class="col-sm-2">
                 <div class="footer_nav_title">Product</div>
                 <ul class="footer_nav">
-                    <li><a [routerLink]="['//']">How It Works</a></li>
-                    <li><a [routerLink]="['//']">Benefits</a></li>
+                    <li><a href="landing#howit_works">How It Works</a></li>
+                    <li><a href="landing#Benefits">Benefits</a></li>
                     <li><a [routerLink]="['//']">Features</a></li>
                     <li><a [routerLink]="['//']">Pricing</a></li>
                     <li><a [routerLink]="['//']">Reviews</a></li>
@@ -744,14 +750,14 @@
                 <ul class="footer_nav">
                     <li><a [routerLink]="['//']">Frequently Asked Questions</a></li>
                     <li><a [routerLink]="['//']">Help Center</a></li>
-                    <li><a [routerLink]="['//']">Contact Us</a></li>
+                    <li><a href="javascript:void(0)" (click)="openContactUsModal()">Contact Us</a></li>
                 </ul>
             </div>
         </div>
 
         <div class="row align-items-center">
             <div class="col-sm-6">
-                <div class="copyright"><span>&#169;</span> 2022 Uptick Systems Private Limited. All rights reserved.</div>
+                <div class="copyright"><span>&#169;</span> 2023 Uptick Systems Private Limited. All rights reserved.</div>
                 <div class="powered-by">Content powered by CMOTS Internet Technologies Pvt. Ltd.</div>
             </div>
             <div class="trade-socail-icon col-sm-6">

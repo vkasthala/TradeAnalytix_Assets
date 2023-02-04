@@ -4,7 +4,7 @@
 <ul class="insights-list" *ngIf="insights">
     <li *ngFor="let insght of insights; let i = index;" class="insight-item">
         <!-- <span>&#9654;&nbsp;&nbsp;{{insght.day}}:&nbsp;{{insght.msg}}</span> -->
-        <div class="insights_date">{{insght.day}}</div>
+        <span class="insights_date">{{insght.day | date: 'dd-MMM-yyyy'}}</span>
         <span>{{insght.msg}}</span>
     </li>
 </ul>
