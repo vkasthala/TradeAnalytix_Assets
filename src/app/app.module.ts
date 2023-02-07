@@ -41,6 +41,7 @@ import { AddNotesComponent } from './modules/zerodha/add-notes/add-notes.compone
 import { TradeBookComponent } from './modules/tradebook/tradebook.component';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { ImageService } from './modules/login/components/image.service';
+import { NgxPlaidLinkModule } from 'ngx-plaid-link';
 
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
   return localStorageSync({ keys: [globalConfigFeatureKey], rehydrate: true })(reducer);
@@ -78,6 +79,7 @@ export function highchartsModules() {
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     BrowserAnimationsModule,
     ChartModule,
+    NgxPlaidLinkModule,
     ToastrModule.forRoot({
       timeOut: 1500,
       positionClass: 'toast-top-center',

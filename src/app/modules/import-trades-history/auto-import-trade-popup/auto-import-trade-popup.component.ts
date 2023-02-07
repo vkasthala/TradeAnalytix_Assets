@@ -14,6 +14,8 @@ import { ZerodhaPopupComponent } from '../zerodha-popup/zerodha-popup.component'
 })
 export class AutoImportTradePopupComponent implements OnInit {
 
+  plaidToken: string = 'link-sandbox-d81fd073-6ebc-48a2-b6a4-c6932a068e81'; 
+
   brokerages: Brokerage[] = [];
 
   selectedFiles: FileList;
@@ -80,6 +82,30 @@ export class AutoImportTradePopupComponent implements OnInit {
         //this.reload();
       }
     });
+  }
+
+  openPlaidDialog() {
+    
+  }
+
+  onPlaidSuccess(event) {
+    // Send the public token to your server so you can do the token exchange.
+  }
+
+  onPlaidExit(event) {
+    // Get errors or exit reason.
+  }
+
+  onPlaidEvent(event) {
+    // Log events so you can have insight into how your users are using plaid link.
+  }
+
+  onPlaidLoad(event) {
+    // Do something when the iframe loads.
+  }
+
+  onPlaidClick(event) {
+    // Do something when the button is clicked.
   }
 
 }

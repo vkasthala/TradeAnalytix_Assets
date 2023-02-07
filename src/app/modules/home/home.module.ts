@@ -164,6 +164,7 @@ import { TagEditorComponent } from '../bulk-update/tag-editor/tag-editor.compone
 import { StrategyEditorComponent } from '../bulk-update/strategy-editor/strategy-editor.component';
 import { RecentTradesComponent } from '../dashboard/components/recent-trades/recent-trades.component';
 import { ThesisEditorComponent } from '../bulk-update/thesis-editor/thesis-editor.component';
+import { NgxPlaidLinkModule } from 'ngx-plaid-link';
 
 export const MY_FORMATS = {
   parse: {
@@ -344,6 +345,7 @@ export const MY_FORMATS = {
     MatCheckboxModule,
     MatRadioModule,
     MatProgressSpinnerModule,
+    NgxPlaidLinkModule,
     AgGridModule.withComponents([BulkUpdateComponent]),
     // MatTableDataSource,
   ],
