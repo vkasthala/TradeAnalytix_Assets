@@ -670,4 +670,11 @@ input:invalid {
 html.theme-light .group-wWM3zP_M- {
     background: #1E1E1F !important;
 }
-  
+.cdk-overlay-container {
+   
+}
+.cdk-overlay-pane  {
+    --width: 100vw;
+    left: calc(var(--width) - 23%) !important;
+    // zoom: 0.97;
+} 
