@@ -46,6 +46,10 @@ export class TradePlansService {
         return this.http.get<TodayExecutedTrade[]>(this.apiUrl + '/trade-plan/executed-trades/' + day);
     }
 
+    createPlannedTrade(tradePlanId: number, plannedTrade: PlannedTrade) {
+        return this.http.post<PlannedTrade, void>(this.apiUrl + '/trade-plan/planned-trade/create/' + tradePlanId, plannedTrade);
+    }
+
     getPlannedTrades(tradePlanId: number): Observable<PlannedTrade[]> {
         return this.http.get<PlannedTrade[]>(this.apiUrl + '/trade-plan/planned-trades/' + tradePlanId);
     }

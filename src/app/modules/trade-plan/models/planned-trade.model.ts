@@ -23,10 +23,12 @@ export class PlannedTrade {
     actionType: string;
 
     strategyUid: string;
+    
+    tradeStrategyId: number;
 
     amount: number;
 
-    directionTypeId: number;
+    directionId: number;
 
     direction: string;
 

@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { Component, Inject, Input, OnInit, ViewChild } from '@angular/core';
 import { StockSymbol } from 'src/app/modules/shared/models/trade-management/stock-symbol.model';
 import { PlannedTrade } from '../../models/planned-trade.model';
 import { StrategyCreateService } from 'src/app/modules/shared/services/strategy-create.service';
@@ -8,6 +8,7 @@ import { ActionType } from 'src/app/modules/shared/models/trade-management/actio
 import { TradeSearchComponent } from 'src/app/modules/trade-management/components/add-trade/Steps/search-trade/trade-search.component';
 import { TradeDirection } from 'src/app/modules/shared/models/trade-management/trade-direction.enum';
 import * as moment from 'moment';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-planned-trade-dialog',
@@ -45,12 +46,8 @@ export class PlannedTradeDialogComponent implements OnInit {
     this.data.id = this.data.id;
     this.directionTypes = this.strategyCreateService.getTradeDirections();
     this.data.direction = this.data.direction;
-    this.data.directionTypeId = this.data.directionTypeId;
-    this.data.strategyUid = "NA";
-    this.data.openDate = moment(today).format('MMM DD, YYYY');
-    debugger;
-    console.log('today', today)
-    console.log('this.data.openDate', this.data.openDate)
+    this.data.directionId = this.data.directionId;
+    this.data.openDate = moment(today).format('YYYY-MM-DD');
   }
 
   ngOnInit() {
@@ -97,6 +94,7 @@ export class PlannedTradeDialogComponent implements OnInit {
   }
   ondirectionTypeChange(directionTypeId) {
     this.data.direction = this.directions[directionTypeId];
+    this.data.directionId = directionTypeId;
   }
 
   onActionTypeChange(actType: string) {

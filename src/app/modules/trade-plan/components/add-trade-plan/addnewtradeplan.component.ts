@@ -28,6 +28,7 @@ import { ReportDataService } from 'src/app/modules/reports/services/report-data.
 import { TradePlanSummary } from '../../models/trade-plan-summary.model';
 import { DailyStatisticsComponent } from '../daily-statistics/daily-statistics.component';
 import { TodayExecutedLegsComponent } from '../today-executed-legs/today-executed-legs.component';
+import { Subject } from 'rxjs';
 const moment = _moment;
 
 @Component({
@@ -55,6 +56,8 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
   @ViewChild('plannedTradesGrid', { static: false }) protected plannedTradesGrid: PlannedTradesGridComponent;
   @ViewChild('todayExcutedTradesGrid', { static: false }) protected todayExcutedTradesGrid: TodayExecutedLegsComponent;
   @ViewChild('dailyPlanStats', { static: false }) protected dailyPlanStats: DailyStatisticsComponent;
+
+  dataChangeSubject: Subject<void> = new Subject<void>();
 
 
   planDates: TradePlanEntry[] = [];
@@ -94,6 +97,9 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
         this.todayExcutedTradesGrid.loadTodayExecutedLegs(this.selectedPlan.day);
       }
     }
+    this.dataChangeSubject.asObservable().subscribe((res) => {
+      this.updateTradePlan();
+    });
   }
 
   ngOnInit() {

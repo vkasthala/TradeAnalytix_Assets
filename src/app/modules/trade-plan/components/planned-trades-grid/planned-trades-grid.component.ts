@@ -15,6 +15,7 @@ import { TradePlanEntry } from '../../models/trade-plan-entry.model';
 export class PlannedTradesGridComponent implements OnInit, AfterViewInit {
 
   @Input('selectedPlan') selectedPlan: TradePlanEntry;
+  @Input("dataChangeSubject") dataChangeSubject: Subject<void>;
 
   plannedTradesDataSource: PlannedTrade[] = [];
 
@@ -103,14 +104,21 @@ export class PlannedTradesGridComponent implements OnInit, AfterViewInit {
     dialogRef.afterClosed().subscribe((res) => {
       if (res) {
         console.log('result..', res);
-        if (ind != undefined && ind > -1) {
-          this.plannedTradesDataSource[ind] = res;
-        } else {
-          this.plannedTradesDataSource.push(res);
-        }
-        let cloned = this.plannedTradesDataSource.slice()
-        this.plannedTradesDataSource = cloned;
+        // if (ind != undefined && ind > -1) {
+        //   this.plannedTradesDataSource[ind] = res;
+        // } else {
+        //   this.plannedTradesDataSource.push(res);
+        // }
+        // let cloned = this.plannedTradesDataSource.slice()
+        // this.plannedTradesDataSource = cloned;
+        this.createPlannedTrade(res);
       }
+    });
+  }
+
+  createPlannedTrade(plannedTrade: PlannedTrade) {
+    this.tradePlanService.createPlannedTrade(this.tradePlanId, plannedTrade).subscribe(result => {
+      this.loadPlannedTrades();
     });
   }
 
