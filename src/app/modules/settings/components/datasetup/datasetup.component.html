@@ -1,8 +1,5 @@
-
-
-
 <mat-accordion class="example-headers-align w-100" multi="true">
-    <mat-expansion-panel [expanded]="true">
+    <!-- <mat-expansion-panel [expanded]="true">
         <mat-expansion-panel-header>
             <mat-panel-title>
                 Trade Share Settings<img src="../../../../assets/images/beta-icon.png" class="beta-icon"/>
@@ -17,8 +14,8 @@
                 <span class="share-trade-field"><input class="checkbox mr-1" type="checkbox" (change)="findUsers($event)"> Allow other users to find me</span>
             </div>
         </ng-template>
-    </mat-expansion-panel>
-    <div class="description_text">Data added here under each section is visible in your trading journal.</div>
+    </mat-expansion-panel> -->
+    <div class="description_text pt-2">Data added here under each section is visible in your trading journal.</div>
     <mat-expansion-panel [expanded]="true" (opened)="setStep(0)">
         <mat-expansion-panel-header>
             <mat-panel-title>
@@ -61,7 +58,7 @@
             <app-editable-list #event></app-editable-list>
         </ng-template>
     </mat-expansion-panel>
-    <mat-expansion-panel [expanded]="true" (opened)="setStep(4)">
+    <!-- <mat-expansion-panel [expanded]="true" (opened)="setStep(4)">
         <mat-expansion-panel-header>
             <mat-panel-title>
                 Trigger for Closing
@@ -80,7 +77,7 @@
         <ng-template matExpansionPanelContent>
             <app-editable-list #gainOrLossAttribution></app-editable-list>
         </ng-template>
-    </mat-expansion-panel>
+    </mat-expansion-panel> -->
     <!-- <mat-expansion-panel [expanded]="true" (opened)="setStep(6)">
         <mat-expansion-panel-header>
             <mat-panel-title>
