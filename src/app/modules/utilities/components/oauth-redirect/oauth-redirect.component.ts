@@ -10,6 +10,7 @@ import { ImportTradePopupComponent } from 'src/app/modules/import-trades-history
 import { UserMetadataService } from 'src/app/modules/trade-management/services/user-metadata.service';
 import { UserMetadataStoreService } from 'src/app/modules/shared/services/user-metadata-store.service';
 import { UserTagService } from 'src/app/modules/settings/services/user-tag.service';
+import { FirstUserComponent } from 'src/app/modules/dashboard/components/first-users/first-user.component';
 
 @Component({
   selector: 'app-oauth-redirect',
@@ -52,7 +53,7 @@ export class OauthRedirectComponent implements OnInit {
 
   successLogin() {
     this.router.navigate(['dashboard']);
-    this.loadSliderModal();
+    this.loadFirstUser();
     this.stockSymbolService.getStockSymbols();
     this.metdataStoreService.load();
     this.userTagService.loadTags();
@@ -64,6 +65,16 @@ export class OauthRedirectComponent implements OnInit {
 
   loadSliderModal() {
     const dialogRef = this._dialog.open(SliderModalComponent, {
+      disableClose: true,
+      panelClass: 'guided-tour-panel',
+      backdropClass: 'guided-tour-modal'
+    });
+
+    dialogRef.afterClosed().subscribe((res) => {
+    });
+  }
+  loadFirstUser() {
+    const dialogRef = this._dialog.open(FirstUserComponent, {
       disableClose: true,
       panelClass: 'guided-tour-panel',
       backdropClass: 'guided-tour-modal'

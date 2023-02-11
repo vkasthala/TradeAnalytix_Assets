@@ -11,7 +11,7 @@ export class SliderModalComponent implements OnInit {
   public isAcceptChecked = false;
   public applicableList = [];
 
-  currentInd: number = 0;
+  currentInd: number = 1;
   title: string;
   userName: string = '';
   referralInput: boolean = false;
@@ -65,51 +65,12 @@ export class SliderModalComponent implements OnInit {
     this.currentInd--;
   }
   nextSlide() {
-    if (this.currentInd === 5) {
+    if (this.currentInd === 11) {
       this.currentInd = 0;
     } else {
       this.currentInd++;
     }
   }
 
-  onChange($event) {
-    this.referralInput = $event.target.value === "Referral" ? true : false
-    this.otherInput = $event.target.value === "Other" ? true : false
-  }
-  goToSlide(index) {
-    // this.applicableList = index === 2 ? [] : this.applicableList;
-    this.currentInd = index;
-  }
-
-  acceptChange() {
-    this.isAcceptChecked = !this.isAcceptChecked
-  }
-  applicableCheck(event: Event): void {
-    const isChecked: boolean = event.target['checked'];
-    const name: any = event.target['name'];
-    if(isChecked) {
-      if (this.applicableList.length > 0) {
-        if(this.applicableList.includes(name)){
-          this.applicableList.filter((x, i) => {
-            if(x === name) {
-              this.applicableList.splice(i, 1)
-            }
-          })
-        }else {
-          this.applicableList.push(name)
-        }
-      }else {
-        this.applicableList.push(name)
-      }
-      
-    } else {
-      this.applicableList.filter((x, i) => {
-        if(x === name) {
-          this.applicableList.splice(i, 1)
-        }
-      })
-    }
-    
-  }
 
 }

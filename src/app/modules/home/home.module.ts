@@ -165,6 +165,7 @@ import { StrategyEditorComponent } from '../bulk-update/strategy-editor/strategy
 import { RecentTradesComponent } from '../dashboard/components/recent-trades/recent-trades.component';
 import { ThesisEditorComponent } from '../bulk-update/thesis-editor/thesis-editor.component';
 import { NgxPlaidLinkModule } from 'ngx-plaid-link';
+import { FirstUserComponent } from '../dashboard/components/first-users/first-user.component';
 
 export const MY_FORMATS = {
   parse: {
@@ -326,7 +327,8 @@ export const MY_FORMATS = {
     TagEditorComponent,
     StrategyEditorComponent,
     RecentTradesComponent,
-    ThesisEditorComponent
+    ThesisEditorComponent,
+    FirstUserComponent
   ],
   imports: [
     FormsModule,
@@ -416,7 +418,8 @@ export const MY_FORMATS = {
     TagEditorComponent,
     StrategyEditorComponent,
     RecentTradesComponent,
-    ThesisEditorComponent
+    ThesisEditorComponent,
+    FirstUserComponent
   ],
   // bootstrap: [TradeStrategiesGrid],
   providers: [
