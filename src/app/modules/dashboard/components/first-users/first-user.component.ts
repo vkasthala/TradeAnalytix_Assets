@@ -12,7 +12,7 @@ export class FirstUserComponent implements OnInit {
   public isLastSlide = false;
   public applicableList = [];
 
-  currentInd: number = 0;
+  currentInd: number = 1;
   title: string;
   userName: string = '';
   referralInput: boolean = false;
