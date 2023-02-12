@@ -65,7 +65,7 @@ export class SliderModalComponent implements OnInit {
     this.currentInd--;
   }
   nextSlide() {
-    if (this.currentInd === 11) {
+    if (this.currentInd === 13) {
       this.currentInd = 0;
     } else {
       this.currentInd++;
