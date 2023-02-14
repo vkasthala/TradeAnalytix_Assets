@@ -82,12 +82,7 @@ export class ImportTradePopupComponent implements OnInit {
         },
         err => {
           this.processing = false;
-          this.toastr.error(err.error ?  err.error : 'Upload Failed', 'Error', {
-            tapToDismiss: false,
-            closeButton: true,
-            disableTimeOut: true,
-            timeOut: 0
-          });
+          this.toastr.error(err.error ?  err.error : 'Upload Failed', 'Error');
           this.currentFile = undefined;
           this.optionFile = undefined;
         });
@@ -95,12 +90,7 @@ export class ImportTradePopupComponent implements OnInit {
       this.selectedOptionFiles = undefined;
     }
     else {
-      this.toastr.error('Please select a file import trades', 'Error',
-        {
-          tapToDismiss: false,
-          closeButton: true,
-          disableTimeOut: true
-        });
+      this.toastr.error('Please select a file import trades', 'Error');
     }
   }
 
@@ -118,13 +108,13 @@ export class ImportTradePopupComponent implements OnInit {
     let message: string;
     if (anyFailed && anySuccessful) {
       message = 'Upload Partially Successful. Trades Added:' + newCount + ', Trades Updated:' + updatedCount + ', Trades Closed:' + closedCount + ', Trades Failed:' + (failedTradeCount + failedRowsCount);
-      this.toastr.warning(message, 'Import Trade Result', { timeOut: 0 });
+      this.toastr.warning(message, 'Import Trade Result');
     } else if (anySuccessful && !anyFailed) {
-      message = 'Upload Successful. Trades Added:' + newCount + ', Trades Updated:' + updatedCount + ', Trades Closed:' + closedCount;
-      this.toastr.success(message, 'Import Trade Result', { timeOut: 0 });
+      message = 'Trades Added:' + newCount + ', Trades Updated:' + updatedCount + ', Trades Closed:' + closedCount;
+      this.toastr.success(message, 'Upload Successful');
     } else if (!anySuccessful && anyFailed) {
       message = 'Upload Failed';
-      this.toastr.error(message, 'Import Trade Result', { timeOut: 0 });
+      this.toastr.error(message, 'Import Trade Result');
     }
     return message;
   }

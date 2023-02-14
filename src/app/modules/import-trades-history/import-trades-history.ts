@@ -144,22 +144,12 @@ export class ImportTradesHistory implements AfterViewInit, OnInit {
           this.toastr.success('Your trades have been sucessfully imported. Uploaded Records: ____; Failed Records: ____', 'Success');
         },
         err => {
-          this.toastr.error('Failed to import trades thesis', 'Error',
-            {
-              tapToDismiss: false,
-              closeButton: true,
-              disableTimeOut: true
-            });
+          this.toastr.error('Failed to import trades thesis', 'Error');
         });
       this.selectedFiles = undefined;
     }
     else {
-      this.toastr.error('Please select a file import trades thesis', 'Error',
-        {
-          tapToDismiss: false,
-          closeButton: true,
-          disableTimeOut: true
-        });
+      this.toastr.error('Please select a file import trades thesis', 'Error');
     }
   }
 

@@ -70,22 +70,12 @@ export class UploadFilesComponent implements OnInit {
       && !file.name.toLocaleLowerCase().endsWith('.ppt')
       && !file.name.toLocaleLowerCase().endsWith('.pptx')) {
       valid = false;
-      this.toastr.error('Please select valid file', 'Invalid File',
-        {
-          tapToDismiss: false,
-          closeButton: true,
-          disableTimeOut: true
-        });
+      this.toastr.error('Please select valid file', 'Invalid File');
       return valid;
     }
 
     if (file.size > 1048576) {
-      this.toastr.error('Please select file with size less than 1MB', 'File size exceeded',
-        {
-          tapToDismiss: false,
-          closeButton: true,
-          disableTimeOut: true
-        });
+      this.toastr.error('Please select file with size less than 1MB', 'File size exceeded');
       valid = false;
     }
     return valid;

@@ -245,12 +245,7 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
     this.tradePlanService.createTradePlan(plan).subscribe(result => {
       this.loadPlanEntries(plan.day);
     }, () => {
-      this.toastr.error("Failed to create trade plan for the day", 'Error',
-        {
-          tapToDismiss: false,
-          closeButton: true,
-          disableTimeOut: true
-        })
+      this.toastr.error("Failed to create trade plan for the day", 'Error')
     });
   }
 
@@ -289,12 +284,7 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
 
   addTradePlanDate() {
     if (!this.planDate) {
-      this.toastr.error('Please select valid date', 'Invalid Date',
-        {
-          tapToDismiss: false,
-          closeButton: true,
-          disableTimeOut: true
-        });
+      this.toastr.error('Please select valid date', 'Invalid Date');
       return;
     }
 
@@ -384,12 +374,7 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
         this.toastr.success('Manual rule added', 'Success');
         // this.loadPage();
       }, err => {
-        this.toastr.error('Failed to add entry exit rule', 'Error',
-          {
-            tapToDismiss: false,
-            closeButton: true,
-            disableTimeOut: true
-          });
+        this.toastr.error('Failed to add entry exit rule', 'Error');
       });
     });
 

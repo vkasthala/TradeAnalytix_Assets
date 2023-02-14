@@ -76,12 +76,7 @@ export class CompareStrategiesComponent implements OnInit {
 
   enterSymbol() {
     if (!this.selectedStock || !this.selectedStock.code) {
-      this.toastr.error('Please enter a valid symbol to proceed', 'Error',
-        {
-          tapToDismiss: false,
-          closeButton: true,
-          disableTimeOut: true
-        });
+      this.toastr.error('Please enter a valid symbol to proceed', 'Error');
       return false;
     }
     this.currentState++;
@@ -193,12 +188,7 @@ export class CompareStrategiesComponent implements OnInit {
       this.compareResult = result;
       this.showCompareResult = true;
     }, err => {
-      this.toastr.error('Please check the data within the strategies and try again.', 'Error',
-        {
-          tapToDismiss: false,
-          closeButton: true,
-          disableTimeOut: true
-        });
+      this.toastr.error('Please check the data within the strategies and try again.', 'Error');
     });
     //Load chart if it is already rendered
     if (this.compareStrategiesChartComponent && this.compareStrategiesChartComponent.rendered === true) {

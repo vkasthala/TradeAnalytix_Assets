@@ -65,7 +65,7 @@
                 </div>
 
             </div>
-            <div class="add-stock-body" *ngIf="!stockAdded && !closeTrade && !viewTrade">
+            <div class="add-stock-body" *ngIf="!stockAdded && !closeTrade && !viewTrade && tradeStatus !== 1">
                 <p>You can add stocks</p>
                 <span class="search_btn gap-btn">
                     <a class="btn btn-link" (click)="addStock()"> + Add Stock</a>
@@ -151,7 +151,7 @@
             </div>
         </div>
         <div class="add-options-sec" *ngIf="!viewTrade">
-            <div class="add-stock-body add-options-body" *ngIf="stockOptions.length <= 0 && !closeTrade && !viewTrade">
+            <div class="add-stock-body add-options-body" *ngIf="stockOptions.length <= 0 && !closeTrade && !viewTrade && tradeStatus !== 1">
                 <span class="add-options-header">OR</span>
                 <p>You can add options too</p>
                 <span class="search_btn gap-btn">
@@ -294,7 +294,7 @@
                                 </div>
                             </ng-container>
                             <a class="btn btn-link" (click)="addOption()"
-                                *ngIf="stockOptions.length < 4 && !closeTrade && !viewTrade"> + Add another option</a>
+                                *ngIf="stockOptions.length < 4 && !closeTrade && !viewTrade && tradeStatus !== 1"> + Add another option</a>
                         </ng-template>
                     </mat-expansion-panel>
                 </mat-accordion>
