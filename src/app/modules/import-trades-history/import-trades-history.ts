@@ -19,6 +19,7 @@ import { UploadFileService } from 'src/app/modules/import-trades/services/upload
 import { UtilService } from '../utilities/services/util.service';
 import { AutoImportTradePopupComponent } from './auto-import-trade-popup/auto-import-trade-popup.component';
 import { DemoModeDetailsService } from '../shared/services/demo-mode-details.service';
+import { PlaidService } from './services/plaid.service';
 
 @Component({
   selector: 'app-import-trades-history',
@@ -36,7 +37,7 @@ export class ImportTradesHistory implements AfterViewInit, OnInit {
 
   dataSource: ImportTradesGridStore;
   importTradesGridRequest: ImportTradesGridRequest = this.getInitialRequest();
-  
+
   constructor(private importTradesGridService: ImportTradesGridService,
     private tradeStrategyService: TradeStrategyService,
     private stockSymbolService: StockSymbolService,
@@ -46,7 +47,8 @@ export class ImportTradesHistory implements AfterViewInit, OnInit {
     private router: Router,
     private _dialog: MatDialog,
     private utilService: UtilService,
-    private myElement: ElementRef
+    private myElement: ElementRef,
+    private plaidService: PlaidService,
     //public dialogRef: MatDialogRef<ImportTradePopupComponent>
   ) {
   }
@@ -57,7 +59,7 @@ export class ImportTradesHistory implements AfterViewInit, OnInit {
   }
 
   loadPage() {
-    
+
     this.dataSource.loadTradeStrategies(this.importTradesGridRequest);
   }
 
@@ -179,22 +181,24 @@ export class ImportTradesHistory implements AfterViewInit, OnInit {
   }
 
   autoImportTradesPopup() {
-    const dialogRef = this._dialog.open(AutoImportTradePopupComponent, {
-      disableClose: true,
-      width: 'auto',
-      //data: dialogData
-    });
-    dialogRef.afterClosed().subscribe((res) => {
-      if (res === true) {
-        this.reload();
-      }
+    this.plaidService.createLinkToken().subscribe(result => {
+      const dialogRef = this._dialog.open(AutoImportTradePopupComponent, {
+        disableClose: true,
+        width: 'auto',
+        data: { 'token': result.token }
+      });
+      dialogRef.afterClosed().subscribe((res) => {
+        if (res === true) {
+          this.reload();
+        }
+      });
     });
   }
 
   closePopup(e) {
     let iframe = document.querySelector('iframe');
-    iframe.src='';
-    iframe.setAttribute("src",'https://www.youtube.com/embed/txIqoIys3GI');
+    iframe.src = '';
+    iframe.setAttribute("src", 'https://www.youtube.com/embed/txIqoIys3GI');
   }
 
 }

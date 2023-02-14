@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { UploadFileService } from '../../import-trades/services/upload-file.service';
 import { BrokerageService } from '../../shared/services/brokerage.service';
 import { Brokerage } from '../models/brokerage.model';
+import { PlaidService } from '../services/plaid.service';
 import { ZerodhaPopupComponent } from '../zerodha-popup/zerodha-popup.component';
 
 @Component({
@@ -14,7 +15,7 @@ import { ZerodhaPopupComponent } from '../zerodha-popup/zerodha-popup.component'
 })
 export class AutoImportTradePopupComponent implements OnInit {
 
-  plaidToken: string = 'link-sandbox-d81fd073-6ebc-48a2-b6a4-c6932a068e81'; 
+  plaidToken: string = '';
 
   brokerages: Brokerage[] = [];
 
@@ -29,13 +30,15 @@ export class AutoImportTradePopupComponent implements OnInit {
   constructor(
     private uploadService: UploadFileService,
     private brokerageService: BrokerageService,
+    private plaidService: PlaidService,
     protected toastr: ToastrService,
     protected router: Router,
     public dialogRef: MatDialogRef<AutoImportTradePopupComponent>,
     @Inject(MAT_DIALOG_DATA) data,
     private _dialog: MatDialog,
-  ) { }
-
+  ) {
+    this.plaidToken = data.token;
+  }
 
   ngOnInit() {
     this.brokerageService.getAutoBrokerages().subscribe(result => {
@@ -85,11 +88,13 @@ export class AutoImportTradePopupComponent implements OnInit {
   }
 
   openPlaidDialog() {
-    
+
   }
 
   onPlaidSuccess(event) {
-    // Send the public token to your server so you can do the token exchange.
+    this.plaidService.createAccessToken(event.token).subscribe(result => {
+      this.toastr.info('Successfully linked your account', '');
+    });
   }
 
   onPlaidExit(event) {
