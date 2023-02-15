@@ -8,6 +8,7 @@ import { EntryExitRuleService } from 'src/app/modules/trade-management/services/
 import { AddTradeConfirmationPopupComponent } from '../../add-trade-confirmation-popup/add-trade-confirmation-popup.component';
 import { RuleCommentDialogComponent } from '../../rule-comment-dialog/rule-comment-dialog.component';
 import { TradingRulesPopupComponent } from './trading-rules-popup/trading-rules-popup.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-entry-rules',
@@ -34,7 +35,8 @@ export class EntryRulesComponent implements OnInit {
   constructor(
     private _dialog: MatDialog,
     private router: Router,
-    private entryExitRuleService: EntryExitRuleService
+    private entryExitRuleService: EntryExitRuleService,
+    protected toastr: ToastrService,
   ) { }
 
   ngOnInit() {
@@ -125,7 +127,7 @@ export class EntryRulesComponent implements OnInit {
       }
     });
     dialogRef.afterClosed().subscribe((res) => {
-
+      this.toastr.success('Manual rule updated', 'Success');
     });
   }
 

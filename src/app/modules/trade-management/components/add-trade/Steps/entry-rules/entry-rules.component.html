@@ -55,12 +55,14 @@
         <a class="add-new cursor" (click)="openTradingRulesModal()">Remarks</a>
         <!-- <span class="cursor" (click)="evalRules($event)"><mat-icon class="form-icon-down">refresh</mat-icon></span>  -->
     </div>
+    <!-- {{entryRules | json}} -->
     <div class="custom-card-body">
-        {{entryRules | json}}
         <div *ngFor="let item of entryRules; let index=index">
             <div class="d-flex justify-content-between mb-2" *ngIf = "index < 5 || showMoreRules">
                 <label class="col-form-label">{{item.msg}}</label>
-                <mat-checkbox [(ngModel)]="item.aligned" class="checkbox-red"></mat-checkbox>
+                <mat-checkbox [(ngModel)]="item.aligned" [ngClass]="item.type === 'Coded' ? 'automatic-rule' : '' ">
+                    <mat-icon *ngIf="item.type === 'Coded' && item.aligned === false" class="close-icon">close</mat-icon>
+                </mat-checkbox>
             </div>
         </div>
         <div class="text-right">
@@ -68,3 +70,7 @@
         </div>
     </div>
 </div>
+
+<!-- { "ruleDay": "2023-02-15", "aligned": true, "comment": null, "createDate": "2023-02-15T20:48:11", "strategyId": 2315, "msg": "Cost of stocks per strategy should be less than 200", "ruleId": 1, "id": 19449, "type": "Coded" },
+
+{ "ruleDay": null, "aligned": false, "comment": null, "createDate": "2023-02-15T20:48:11", "strategyId": 2315, "msg": "Lorem Ipsum sample content...", "ruleId": 173, "id": 7915, "type": "Entry" } -->

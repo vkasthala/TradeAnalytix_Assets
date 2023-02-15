@@ -416,4 +416,22 @@ tr.mat-footer-row, tr.mat-row {
     line-height: 1;
     font-weight: 600;
 }
+.automatic-rule {
+    pointer-events: none !important;
+}
+.mat-checkbox {
+    height: 18px;
+    position: relative;
+}
 
+.close-icon {
+    color: #FF2400;
+    font-size: 16px !important;
+    height: 18px;
+    width: 18px;
+    border-radius: 4px;
+    font-weight: 600;
+    position: absolute;
+    left: 1px;
+    top: 1px;
+}
