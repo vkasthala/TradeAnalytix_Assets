@@ -56,55 +56,13 @@
         <!-- <span class="cursor" (click)="evalRules($event)"><mat-icon class="form-icon-down">refresh</mat-icon></span>  -->
     </div>
     <div class="custom-card-body">
+        {{entryRules | json}}
         <div *ngFor="let item of entryRules; let index=index">
             <div class="d-flex justify-content-between mb-2" *ngIf = "index < 5 || showMoreRules">
                 <label class="col-form-label">{{item.msg}}</label>
                 <mat-checkbox [(ngModel)]="item.aligned" class="checkbox-red"></mat-checkbox>
             </div>
         </div>
-        
-        <!--
-        <div class="d-flex justify-content-between mb-2">
-            <label class="col-form-label">Maximum amount at risk on a trade strategy should be less than 5000</label>
-            <mat-checkbox [checked]="true" class="checkbox-red"></mat-checkbox>
-        </div>
-        <div class="d-flex justify-content-between mb-2">
-            <label class="col-form-label">Amount invested on a trade strategy should be less than 10000</label>       
-            <mat-checkbox [checked]="true" class="checkbox-red"></mat-checkbox>
-        </div>
-        <div class="d-flex justify-content-between mb-2">
-            <label class="col-form-label">Do not chase a trade and average once they start moving in unfavorable direction</label>       
-            <mat-checkbox [checked]="true" class="checkbox-red"></mat-checkbox>
-        </div>
-        <div class="d-flex justify-content-between mb-2">
-            <label class="col-form-label">Always hedge your positions that are at a risk of losing over 2000</label>       
-            <mat-checkbox [checked]="true" class="checkbox-red"></mat-checkbox>
-        </div>
-        <div class="d-flex justify-content-between mb-2">
-            <label class="col-form-label">Do not execute more than 10 trades in a day</label>
-            <mat-checkbox [checked]="true" class="checkbox-red"></mat-checkbox>
-        </div>
-
-        <div *ngIf="showMoreRules">
-            <div class="d-flex justify-content-between mb-2">
-                <label class="col-form-label">Maximum amount at risk on a trade strategy should be less than 5000</label>       
-                <mat-checkbox [checked]="true" class="checkbox-red"></mat-checkbox>
-            </div>
-            <div class="d-flex justify-content-between mb-2">
-                <label class="col-form-label">Amount invested on a trade strategy should be less than 10000</label>       
-                <mat-checkbox [checked]="true" class="checkbox-red"></mat-checkbox>
-            </div>
-            <div class="d-flex justify-content-between mb-2">
-                <label class="col-form-label">Do not chase a trade and average once they start moving in unfavorable direction</label>       
-                <mat-checkbox [checked]="true" class="checkbox-red"></mat-checkbox>
-            </div>
-            <div class="d-flex justify-content-between mb-2">
-                <label class="col-form-label">Always hedge your positions that are at a risk of losing over 2000</label>       
-                <mat-checkbox [checked]="true" class="checkbox-red"></mat-checkbox>
-            </div>
-        </div>
-        -->
-
         <div class="text-right">
             <span class="cursor link-item" (click)="toggleTradingRules()">{{showMoreRules ? 'Less' : 'More'}}</span>
         </div>

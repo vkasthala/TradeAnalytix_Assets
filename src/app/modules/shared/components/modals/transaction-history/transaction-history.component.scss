@@ -23,6 +23,7 @@
     flex-direction: column;
     padding: 0;
     box-shadow: 0px 0px 16px rgba(157, 157, 157, 0.2);
+    border-radius: 5px;
 }
 
 .main-pop-inner {
@@ -31,6 +32,7 @@
     display: flex;
     flex-direction: column;
     background-color: #ffffff;
+    border-radius: 0 0 5px 5px;
 }
 
 .main-inner-sec {
@@ -96,6 +98,8 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 15px;
+    background: #394c86;
+    border-radius: 5px 5px 0 0;
     @media #{$extra-small} { 
         display: none;
     }
@@ -104,8 +108,9 @@
 .left-heading {
     font-size: 14px;
     h6 {
-        color: #3A4C85;
+        color: #fff;
         font-size: 14px;
+        font-weight: 600;
     }
 }
 
@@ -120,6 +125,7 @@
         height: 20px;
         width: 20px;
         font-size: 22px;
+        color: #fff;
     }
 }
 
