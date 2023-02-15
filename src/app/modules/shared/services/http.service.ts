@@ -59,7 +59,7 @@ export class HttpService {
     let httpParams: HttpParams = new HttpParams();
     let paramText: string = '';
     for (let key of requestParams.keys()) {
-      httpParams.set(key, requestParams.get(key));
+      httpParams = httpParams.set(key, requestParams.get(key));
     }
     return httpParams;
   }

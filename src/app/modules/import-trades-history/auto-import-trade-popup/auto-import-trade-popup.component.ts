@@ -92,7 +92,11 @@ export class AutoImportTradePopupComponent implements OnInit {
   }
 
   onPlaidSuccess(event) {
-    this.plaidService.createAccessToken(event.token).subscribe(result => {
+    let institutionId: string = '';
+    if (event.metadata && event.metadata.institution && event.metadata.institution.institution_id) {
+      institutionId = event.metadata.institution.institution_id;
+    }
+    this.plaidService.createAccessToken(event.token, institutionId).subscribe(result => {
       this.toastr.info('Successfully linked your account', '');
     });
   }
