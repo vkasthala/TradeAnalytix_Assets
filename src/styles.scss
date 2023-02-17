@@ -457,7 +457,6 @@ input:invalid {
 }
 .bulk-update-grid .ag-cell {
     font-size: 14px !important;
-    align-items: center;
     display: flex;
 }
 .ag-cell-value, .ag-group-value {
@@ -607,6 +606,7 @@ input:invalid {
 .bulk-update .form-control {
     font-size: 14px !important;
     margin-top: 3px;
+    min-width: 130px;
 }
 .bulk-update app-thesis-editor {
     width: 100%;

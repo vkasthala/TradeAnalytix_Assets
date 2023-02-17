@@ -8,13 +8,13 @@
         </div>
         <!-- <form [formGroup]="entryexitruleform"> -->
             <div class="main-pop-inner">
-                <div class="d-flex justify-content-between mb-2" *ngFor="let item of entryRules; let index=index">
+                <div class="d-flex justify-content-between mb-2" *ngFor="let rule of entryRules; let index=index">
                     <div class="col-11 pl-0">
-                        <label class="col-form-label">{{item.msg}}</label>
-                        <textarea class="form-control" [(ngModel)]="item.comment"></textarea>
+                        <label class="col-form-label">{{rule.msg}}</label>
+                        <textarea class="form-control" [(ngModel)]="rule.comment"></textarea>
                     </div>
-                    <mat-checkbox [(ngModel)]="item.aligned" class="mt-2" [ngClass]="item.type === 'Coded' ? 'automatic-rule' : '' ">
-                        <mat-icon *ngIf="item.type === 'Coded' && item.aligned === false" class="close-icon">close</mat-icon>
+                    <mat-checkbox [(ngModel)]="rule.aligned" class="mt-2" [ngClass]="rule.type === 'Coded' ? 'automatic-rule' : '' ">
+                        <mat-icon *ngIf="rule.type === 'Coded' && rule.aligned === false" class="close-icon">close</mat-icon>
                     </mat-checkbox>
                 </div>
 
