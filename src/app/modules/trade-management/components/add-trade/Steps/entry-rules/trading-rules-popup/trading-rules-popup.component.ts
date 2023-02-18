@@ -9,7 +9,6 @@ import { RuleDto } from 'src/app/modules/trade-management/models/rule-dto.model'
   styleUrls: ['./trading-rules-popup.component.scss']
 })
 export class TradingRulesPopupComponent implements OnInit {
-
   category: string;
   title: string;
   entryexitruleform;
@@ -40,6 +39,10 @@ export class TradingRulesPopupComponent implements OnInit {
     this.dialogRef.close();
     // this.event.emit({ data: form.value });
     // this.dialogRef.close(form.value);
+  }
+
+  saveRules() {
+    this.dialogRef.close(this.entryRules);
   }
 
 }

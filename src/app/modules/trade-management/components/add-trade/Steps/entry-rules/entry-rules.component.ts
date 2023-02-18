@@ -9,6 +9,8 @@ import { AddTradeConfirmationPopupComponent } from '../../add-trade-confirmation
 import { RuleCommentDialogComponent } from '../../rule-comment-dialog/rule-comment-dialog.component';
 import { TradingRulesPopupComponent } from './trading-rules-popup/trading-rules-popup.component';
 import { ToastrService } from 'ngx-toastr';
+import { TradeStrategyService } from 'src/app/modules/trade-management/services/trade-strategy.service';
+import { TradeStrategy } from 'src/app/modules/trade-management/models/trade-strategy.model';
 
 @Component({
   selector: 'app-entry-rules',
@@ -29,10 +31,12 @@ export class EntryRulesComponent implements OnInit {
 
   ruleGridColumns = ['msg', 'aligned', 'comment'];
   entryRules: RuleDto[];
-
+  protected tradeStrategy: TradeStrategy = new TradeStrategy();
+  
   protected hideEntryRules: boolean = false;
   showMoreRules: boolean = false;
   constructor(
+    protected tradeStrategyService: TradeStrategyService,
     private _dialog: MatDialog,
     private router: Router,
     private entryExitRuleService: EntryExitRuleService,
@@ -45,6 +49,7 @@ export class EntryRulesComponent implements OnInit {
   ngAfterViewInit(): void {
     let type = 'Entry';
     if (this.inputState != undefined && this.inputState.tradeStrategy && this.inputState.tradeStrategy.id) {
+      this.tradeStrategy = this.inputState.tradeStrategy;
       this.entryExitRuleService.getTradeEntryRules(this.inputState.tradeStrategy.id).subscribe(result => {
         this.entryRules = result;
       });
@@ -127,7 +132,14 @@ export class EntryRulesComponent implements OnInit {
       }
     });
     dialogRef.afterClosed().subscribe((res) => {
-      this.toastr.success('Manual rule updated', 'Success');
+      this.tradeStrategy.rules = this.entryRules;
+      if(res !== undefined) {
+        this.tradeStrategyService.evaluateStrategyRules(this.tradeStrategy).subscribe(result => {
+          this.toastr.success('Manual rule updated', 'Success');
+        }, (err) => {
+          console.error("Error while evaluating strategy rules for strategy: {}", this.tradeStrategy, err);
+        });
+      }
     });
   }
 
