@@ -45,14 +45,13 @@
 
 .slider-inner {
     width: 100%;
+    padding: 10px 30px;
 }
 .slider-title {
     font-weight: 600;
-    font-size: 20px;
-    line-height: 24px;
-    padding: 0;
+    font-size: 18px;
+    line-height: 22px;
     color: #000;
-    text-align: center;
 }
 
 .btn-white {
@@ -132,8 +131,7 @@
     min-width: 600px;
     height: 450px;
     display: flex;
-    flex-direction: row;
-    padding: 15px 30px;
+    flex-direction: column;
     position: relative;
     box-shadow: 0px 4px 16px rgba(157, 157, 157, 0.5);
     border-radius: 4px;
@@ -152,7 +150,7 @@
     }
 }
 .slider-body {
-    min-height: 340px;
+    min-height: 315px;
     align-items: flex-start;
     display: flex;
     flex-direction: column;
@@ -228,4 +226,10 @@
 }
 .checkbox {
     outline: none;
+}
+
+.modal-header {
+    padding: 0.678rem 1rem;
+    border-bottom: 1px solid rgb(34 133 250);
+    width: 100%;
 }

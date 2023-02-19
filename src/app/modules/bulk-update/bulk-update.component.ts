@@ -230,7 +230,7 @@ export class BulkUpdateComponent implements OnInit {
             width: 130,
             filter: 'agTextColumnFilter',
             columnGroupShow: 'closed',
-            cellClass: 'justify-content-end'
+            cellClass: 'justify-content-end targe-price'
           },
           /*{ 
             field: 'targetCloseDate', headerName: 'Target Close Date', editable: true, resizable: true, width: 250, 
