@@ -64,12 +64,12 @@
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Contrarian Trades (%)</label>
                     <span class="col-sm-5">{{percentage(volumeSummary.contrarian_trades,
-                        volumeSummary.total_trades)| number:'1.0-1'}}</span>
+                        volumeSummary.strategy_count)| number:'1.0-1'}}</span>
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Planned Trades Count (%)</label>
                     <span class="col-sm-5">{{percentage(volumeSummary.planned_trades,
-                        volumeSummary.total_trades) | number:'1.0-1'}}</span>
+                        volumeSummary.strategy_count) | number:'1.0-1'}}</span>
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Average Daily Trade Count</label>
@@ -104,9 +104,9 @@
                     Direction
                 </div>
                 <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">Long | Neutral | Short Trades</label>
+                    <label class="col-sm-7 mb-0">Long | Neutral | Short | Custom Trades</label>
                     <span class="col-sm-5">{{directionSummary.long_trade_count || 0}} |
-                        {{directionSummary.neutral_trade_count|| 0}} | {{directionSummary.short_trade_count|| 0}}</span>
+                        {{directionSummary.neutral_trade_count|| 0}} | {{directionSummary.short_trade_count|| 0}} | {{directionSummary.custom_trade_count|| 0}}</span>
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Return from Long Trades</label>
