@@ -32,7 +32,7 @@ export class EntryRulesComponent implements OnInit {
   ruleGridColumns = ['msg', 'aligned', 'comment'];
   entryRules: RuleDto[];
   protected tradeStrategy: TradeStrategy = new TradeStrategy();
-  
+
   protected hideEntryRules: boolean = false;
   showMoreRules: boolean = false;
   constructor(
@@ -132,13 +132,9 @@ export class EntryRulesComponent implements OnInit {
       }
     });
     dialogRef.afterClosed().subscribe((res) => {
-      this.tradeStrategy.rules = this.entryRules;
-      if(res !== undefined) {
-        this.tradeStrategyService.evaluateStrategyRules(this.tradeStrategy).subscribe(result => {
-          this.toastr.success('Manual rule updated', 'Success');
-        }, (err) => {
-          console.error("Error while evaluating strategy rules for strategy: {}", this.tradeStrategy, err);
-        });
+      if (res && res.length) {
+        this.tradeStrategy.rules = res;
+        this.entryRules = res;
       }
     });
   }

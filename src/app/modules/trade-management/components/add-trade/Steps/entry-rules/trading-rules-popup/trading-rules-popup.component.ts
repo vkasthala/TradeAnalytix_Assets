@@ -21,7 +21,7 @@ export class TradingRulesPopupComponent implements OnInit {
     ) {
     this.category = data.category;
     this.title = data.title;
-    this.entryRules = data.entryRules;
+    this.entryRules = this.initRules(data.entryRules);
     this.entryexitruleform = this.formBuilder.group({
       type: "",
       description:"",
@@ -33,7 +33,15 @@ export class TradingRulesPopupComponent implements OnInit {
     
   }
 
-  
+  initRules(rules: RuleDto[]) {
+    let rulesList: RuleDto[] = [];
+    if(rules) {
+      rules.forEach(rule => {
+        rulesList.push(Object.assign({}, rule));
+      });
+    }
+    return rulesList;
+  }
 
   closeModal(form) {
     this.dialogRef.close();
