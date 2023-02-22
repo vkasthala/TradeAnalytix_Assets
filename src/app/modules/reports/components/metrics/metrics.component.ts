@@ -170,6 +170,13 @@ export class MetricsComponent extends ReportTabContentComponent implements OnIni
     return (100 * partialValue) / totalValue;
   }
 
+  getAverage(actValue: number, totalValue: number): number {
+    if(actValue && totalValue) {
+      return actValue / totalValue;
+    }
+    return 0;
+  }
+
   getAvgTradeCount(totatlTradeCount: number) {
     if (totatlTradeCount) {
       return totatlTradeCount / this.calculateWorkdays();
