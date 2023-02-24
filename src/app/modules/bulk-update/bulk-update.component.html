@@ -18,6 +18,8 @@
                 [defaultColDef]="defaultColDef"
                 [frameworkComponents]="frameworkComponents" 
                 (cellEditingStarted)="onCallValueDataChangeStart($event)"
+                (cellEditingStopped)="onCellEditingStopped($event)"
+                (cellValueChanged)="onCellValueChanged($event)"
                 (gridReady)="onGridReady($event)">
             </ag-grid-angular>
         </div>

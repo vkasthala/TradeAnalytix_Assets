@@ -1,8 +1,13 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, EventEmitter, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { ColDef, GridApi,ColGroupDef, ICellEditorParams, GridReadyEvent,
   RowNode,
-  RefreshCellsParams } from 'ag-grid-community';
+  RefreshCellsParams,
+  CellEditingStoppedEvent,
+  ICellEditorComp,
+  RowValueChangedEvent,
+  CellValueChangedEvent
+ } from 'ag-grid-community';
 import { ToastrService } from 'ngx-toastr';
 import { UserTagService } from 'src/app/modules/settings/services/user-tag.service';
 import { SourceType } from 'src/app/modules/trade-management/models/source-type.model';
@@ -29,7 +34,6 @@ import { ThesisEditorComponent } from './thesis-editor/thesis-editor.component';
   styleUrls: ['./bulk-update.component.scss']
 })
 export class BulkUpdateComponent implements OnInit {
-
   test: ICellEditorParams;
   strategies: BulkStrategyUpdateModel[] = [];
   Loader: boolean = false;
@@ -41,6 +45,9 @@ export class BulkUpdateComponent implements OnInit {
   private gridApi;
   private frameworkComponents;
   isDemoMode: boolean = false;
+  thesisValue: any;
+  cellNewValue: any;
+
 
   constructor(
     private tradeStrategyGridService: TradeStrategyGridService,
@@ -280,7 +287,8 @@ export class BulkUpdateComponent implements OnInit {
       this.Loader = false;
       this.toastr.success('Successfully updated ' + changedStrategies.length + ' strategies', 'Success');
       this.userTagService.loadTags();
-      this.gridApi.refreshRows();
+      this.strategies = [];
+      this.refreshGrid();
     }, err => {
       this.Loader = false;
       this.toastr.error('Failed to update strategies', 'Error');
@@ -295,20 +303,46 @@ export class BulkUpdateComponent implements OnInit {
   }
 
   onCallValueDataChangeStart($event) {
+    if($event.column.colId === "reason") {
+      this.thesisValue = $event.value;
+    }
     $event.data.dirty = true;
-    this.gridApi.forEachNode((rowNode) => {
-      if (rowNode.data && $event.rowIndex === rowNode.rowIndex) {
-        //rowNode.setRowHeight(120);
-      }
-    });
     this.gridApi.refreshCells();
   }
 
-  refreshRow(rowNode: RowNode, api: GridApi) {
-    var rowNodes = [rowNode]; // params needs an array
-    var params: RefreshCellsParams = {
-      rowNodes: rowNodes,
-    };
+  onCellValueChanged(event: CellValueChangedEvent) {
+    this.cellNewValue = event.newValue;
+    let colName = event.column.getColId();
+    if(this.cellNewValue !== undefined && colName === 'tags') {
+      this.updateCellData();
+    }
+  }
+
+  refreshGrid() {
+    this.tradeStrategyGridService.loadTradeStrategiesForBulkUpdate().subscribe(result => {
+      this.strategies = result;
+    }, err => {
+      this.toastr.error('Failed to load strategies', 'Error');
+    });
+  }
+
+  onCellEditingStopped(event: CellEditingStoppedEvent) {
+    this.cellNewValue = event.value;
+    let colName = event.column.getColId();
+    if(colName === "reason" && this.cellNewValue !== this.thesisValue) {
+      this.updateCellData();
+    }
+  }
+
+  updateCellData() {
+    const changedStrategies: BulkStrategyUpdateModel[] = this.strategies.filter(str => str.dirty === true);
+    this.tradeStrategyGridService.saveBulkUpdateData(changedStrategies).subscribe(result => {
+      this.userTagService.loadTags();
+      this.strategies = [];
+      this.refreshGrid();
+    }, err => {
+      this.toastr.error('Failed to update strategies', 'Error');
+    });
   }
 
 }
