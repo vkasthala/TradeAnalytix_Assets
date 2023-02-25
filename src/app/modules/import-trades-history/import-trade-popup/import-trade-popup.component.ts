@@ -20,7 +20,7 @@ export class ImportTradePopupComponent implements OnInit {
   selectedOptionFiles: FileList;
   currentFile: File;
   optionFile: File;
-  selectedbroker: any = 1;
+  selectedbroker: any = 8;
   processing: boolean = false;
   selectedBrokerage: Brokerage;
   isDemoMode: boolean = false;
@@ -95,7 +95,6 @@ export class ImportTradePopupComponent implements OnInit {
   }
 
   processImportFileResult(result: any) {
-    debugger;
     let newCount: number = result['newRecordCount'] ? result['newRecordCount'] : '0';
     let updatedCount: number = result['updateRecordCount'] ? result['updateRecordCount'] : '0';
     let closedCount: number = result['closedRecordCount'] ? result['closedRecordCount'] : '0';

@@ -137,10 +137,10 @@ export class ManagerulesComponent implements OnInit {
     this.rule.source = rowModel.source;
 
     this.settingsService.deleteEntryExitRule(this.rule).subscribe(data => {
-      this.toastr.success('Entry exit rule deleted successfully', 'Success');
+      this.toastr.success('Manual Rule deleted successfully', 'Success');
       this.loadPage();
     }, err => {
-      this.toastr.error('Failed to delete entry exit rule', 'Error', { 
+      this.toastr.error('Failed to delete Manual Rule', 'Error', { 
         tapToDismiss:false,
         closeButton:true,
         disableTimeOut: true
