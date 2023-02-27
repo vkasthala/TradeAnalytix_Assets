@@ -11,7 +11,7 @@
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Pay off Ratio</label>
-                    <span class="col-sm-5">-</span>
+                    <span class="col-sm-5">{{plSummary.payoff_ratio || 0}}</span>
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Profit Factor</label>
@@ -137,14 +137,14 @@
                     <label class="col-sm-7 mb-0">Average Losing Trade</label>
                     <span class="col-sm-5">{{winRateSummary.avgLosingTrade || 0}}</span>
                 </div>                              
-                <div class="metrics-row">
+                <!-- <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Average Win Size</label>
                     <span class="col-sm-5">{{getAverage(volumeSummary.winning_trades, (volumeSummary.winning_trades + volumeSummary.losing_trades)) | number:'1.0-1'}}</span>
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Average Loss Size</label>
                     <span class="col-sm-5">{{getAverage(volumeSummary.losing_trades, (volumeSummary.winning_trades + volumeSummary.losing_trades)) | number:'1.0-1'}}</span>
-                </div>
+                </div> -->
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Max Consecutive Wins</label>
                     <span class="col-sm-5">-</span>
@@ -246,23 +246,23 @@
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Most Successful Tag by Return</label>
-                    <span class="col-sm-5">{{tradeTagsSummary.most_successful_tag}}</span>
+                    <span class="col-sm-5">{{tradeTagsSummary.most_successful_tag || 'N/A'}}</span>
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Most Successful Tag by Win Rate</label>
-                    <span class="col-sm-5">-</span>
+                    <span class="col-sm-5">{{tradeTagsSummary.most_successful_tag_winrate || 'N/A'}}</span>
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Least Successful Tag by Return</label>
-                    <span class="col-sm-5">{{tradeTagsSummary.least_successful_tag}}</span>
+                    <span class="col-sm-5">{{tradeTagsSummary.least_successful_tag || 'N/A'}}</span>
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Least Successful Tag by Win Rate</label>
-                    <span class="col-sm-5">-</span>
+                    <span class="col-sm-5">{{tradeTagsSummary.least_successful_tag_winrate || 'N/A'}}</span>
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Most Used Tag</label>
-                    <span class="col-sm-5">{{tradeTagsSummary.most_used_tag}}</span>
+                    <span class="col-sm-5">{{tradeTagsSummary.most_used_tag || 'N/A'}}</span>
                 </div>
 
                 <div class="metrics-title mb-2">

@@ -140,8 +140,6 @@ export class MetricsComponent extends ReportTabContentComponent implements OnIni
         this.tradePlanSummary = map[key];
       } else if (key === this.RULES_COMPLIANCE) {
         this.rulesSummary = map[key];
-      } else if (key === this.TRADE_TAGS) {
-        this.rulesSummary = map[key];
       } else if (key === this.TECHNICAL_INDICATOR) {
         this.techIndicatorSummary = map[key];
       } else if (key === this.TRADE_DAY) {
@@ -152,6 +150,9 @@ export class MetricsComponent extends ReportTabContentComponent implements OnIni
         this.mindsetSummary = map[key];
       } else if (key == this.EVENT) {
         this.eventSummary = map[key];
+      } else if (key == this.TRADE_TAGS) {
+        debugger;
+        this.tradeTagsSummary =  map[key];
       }
     });
   }
