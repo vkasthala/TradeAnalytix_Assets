@@ -151,7 +151,6 @@ export class MetricsComponent extends ReportTabContentComponent implements OnIni
       } else if (key == this.EVENT) {
         this.eventSummary = map[key];
       } else if (key == this.TRADE_TAGS) {
-        debugger;
         this.tradeTagsSummary =  map[key];
       }
     });
@@ -181,6 +180,13 @@ export class MetricsComponent extends ReportTabContentComponent implements OnIni
   getAvgTradeCount(totatlTradeCount: number) {
     if (totatlTradeCount) {
       return totatlTradeCount / this.calculateWorkdays();
+    }
+    return 0;
+  }
+
+  getAvgDailyPl(returnAmount: number) {
+    if(returnAmount) {
+      return returnAmount / this.calculateWorkdays();
     }
     return 0;
   }

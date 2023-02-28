@@ -21,13 +21,13 @@
                     <label class="col-sm-7 mb-0">Net R</label>
                     <span class="col-sm-5">{{plSummary.net_r || 0}}</span>
                 </div>
-                <div class="metrics-row">
+                <!-- <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Average P&L per Trade</label>
                     <span class="col-sm-5">-</span>
-                </div>
+                </div> -->
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Average Daily P&L</label>
-                    <span class="col-sm-5">-</span>
+                    <span class="col-sm-5">{{getAvgDailyPl(plSummary.realized_return) | number:'1.0-1'}}</span>
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">P&L Volatility</label>
@@ -191,15 +191,15 @@
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Most Profitable Symbol</label>
-                    <span class="col-sm-5">-</span>
+                    <span class="col-sm-5">{{symbolSummary.most_profitable_symbol || 'N/A'}}</span>
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Least Profitable Symbol</label>
-                    <span class="col-sm-5">-</span>
+                    <span class="col-sm-5">{{symbolSummary.least_profitable_symbol || 'N/A'}}</span>
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Frequently Traded Stock</label>
-                    <span class="col-sm-5">-</span>
+                    <span class="col-sm-5">{{symbolSummary.most_used_symbol || 'N/A'}}</span>
                 </div>
 
                 <div class="metrics-title mb-2">
@@ -214,12 +214,12 @@
                     <span class="col-sm-5">{{tradePlanSummary.trade_plan_align_percent}}</span>
                 </div>
                 <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">P&L on Aligned Trades</label>
-                    <span class="col-sm-5">-</span>
+                    <label class="col-sm-7 mb-0">P&L on Planned Trades</label>
+                    <span class="col-sm-5">{{tradePlanSummary.planned_trades_pl || 0}}</span>
                 </div>
                 <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">Win-Rate of Aligned Trades</label>
-                    <span class="col-sm-5">-</span>
+                    <label class="col-sm-7 mb-0">Win-Rate of Planned Trades</label>
+                    <span class="col-sm-5">{{tradePlanSummary.planned_trades_winrate || 0}}</span>
                 </div>
 
                 <div class="metrics-title mb-2">
