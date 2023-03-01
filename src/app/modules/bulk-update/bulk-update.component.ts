@@ -27,6 +27,7 @@ import { TargetDateComponent } from './target-date/target-date.component';
 import { TagEditorComponent } from './tag-editor/tag-editor.component';
 import { StrategyEditorComponent } from './strategy-editor/strategy-editor.component';
 import { ThesisEditorComponent } from './thesis-editor/thesis-editor.component';
+import { UserMetadataStoreService } from '../shared/services/user-metadata-store.service';
 
 @Component({
   selector: 'app-bulk-update',
@@ -53,10 +54,12 @@ export class BulkUpdateComponent implements OnInit {
     private tradeStrategyGridService: TradeStrategyGridService,
     private userTagService: UserTagService,
     private toastr: ToastrService,
-    private demoService: DemoModeDetailsService
+    private demoService: DemoModeDetailsService,
+    private metadataStoreService: UserMetadataStoreService
   ) { }
 
   ngOnInit() {
+    this.metadataStoreService.loadMetadata(false);
     this.frameworkComponents = {
       sourceEditor: SourceEditorComponent,
       technicalIndicatorEditor: TechnicalIndicatorEditorComponent,
