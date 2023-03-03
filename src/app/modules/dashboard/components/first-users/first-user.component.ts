@@ -11,6 +11,7 @@ export class FirstUserComponent implements OnInit {
   public isAcceptChecked = false;
   public isLastSlide = false;
   public applicableList = [];
+  public instrumentsList = [];
 
   currentInd: number = 1;
   title: string;
@@ -108,6 +109,33 @@ export class FirstUserComponent implements OnInit {
       this.applicableList.filter((x, i) => {
         if(x === name) {
           this.applicableList.splice(i, 1)
+        }
+      })
+    }
+  }
+
+  instrumentsCheck(event: Event): void {
+    const isChecked: boolean = event.target['checked'];
+    const name: any = event.target['name'];
+    if(isChecked) {
+      if (this.instrumentsList.length > 0) {
+        if(this.instrumentsList.includes(name)){
+          this.instrumentsList.filter((x, i) => {
+            if(x === name) {
+              this.instrumentsList.splice(i, 1)
+            }
+          })
+        }else {
+          this.instrumentsList.push(name)
+        }
+      }else {
+        this.instrumentsList.push(name)
+      }
+      
+    } else {
+      this.instrumentsList.filter((x, i) => {
+        if(x === name) {
+          this.instrumentsList.splice(i, 1)
         }
       })
     }

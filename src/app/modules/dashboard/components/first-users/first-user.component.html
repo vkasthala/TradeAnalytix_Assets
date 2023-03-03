@@ -46,6 +46,40 @@
                 </div>
                 <div class="slider-description">
                     <div class="d-flex align-items-center mb-3">
+                        <input type="checkbox" name="Stocks" class="mr-2" (change)="instrumentsCheck($event)" [checked]="instrumentsList.includes('Stocks')" />  Stocks
+                    </div>
+                    <div class="d-flex align-items-center mb-3"><input type="checkbox" name="Options" class="mr-2" (change)="instrumentsCheck($event)" [checked]="instrumentsList.includes('Options')" />  Options</div>
+                    <div class="d-flex align-items-center mb-3"><input type="checkbox" name="Features" class="mr-2" (change)="instrumentsCheck($event)" [checked]="instrumentsList.includes('Features')"  />  Features</div>
+                    <div class="d-flex align-items-center mb-3"><input type="checkbox" name="Forex" class="mr-2" (change)="instrumentsCheck($event)" [checked]="instrumentsList.includes('Forex')"  />  Forex</div>
+                    <div class="d-flex align-items-center mb-3"><input type="checkbox" name="Commodities" class="mr-2" (change)="instrumentsCheck($event)" [checked]="instrumentsList.includes('Commodities')"  />  Commodities</div>
+                    
+                    <div class="d-flex mb-3 align-items-center">
+                        <span class="d-flex align-items-center"><input type="checkbox" name="Other" class="mr-2" (change)="instrumentsCheck($event)" [checked]="instrumentsList.includes('Other')" />   Other</span>
+                        <span class="col-6">
+                            <input type="text" class="form-control form-control-sm" placeholder="Please specify" />
+                        </span>
+                    </div>
+                    <div class="text-center mt-3 pt-3">
+                        <button type="button" class="btn btn-next" [ngClass]="instrumentsList.length === 0 ? 'disabled' : ''" (click)="instrumentsList.length > 0 ? nextSlide() : ''">Next</button>
+                    </div>
+                </div>
+            </div>
+            <ul class="slider-nav">
+                <li class="nav-bar nav-bar-active" (click)="goToSlide(1)"></li>
+                <li class="nav-bar nav-bar-active">2/5</li>
+                <li class="nav-bar"></li>
+                <li class="nav-bar"></li>
+                <li class="nav-bar"></li>
+            </ul> 
+        </div>
+
+        <div class="slider-inner" *ngIf="currentInd == 3">
+            <div class="slider-body">
+                <div class="slider-description mb-3">
+                    What's your biggest pain point in trading? Select all that are applicable
+                </div>
+                <div class="slider-description">
+                    <div class="d-flex align-items-center mb-3">
                         <input type="checkbox" name="Lack of skill" class="mr-2" (change)="applicableCheck($event)" [checked]="applicableList.includes('Lack of skill')" />  Lack of skill (i.e., inability to find trading opportunities)
                     </div>
                     <div class="d-flex align-items-center mb-3"><input type="checkbox" name="Lack of discipline" class="mr-2" (change)="applicableCheck($event)" [checked]="applicableList.includes('Lack of discipline')" />  Lack of discipline (control over emotions, excessive trading, etc.)</div>
@@ -69,14 +103,14 @@
             </div>
             <ul class="slider-nav">
                 <li class="nav-bar nav-bar-active" (click)="goToSlide(1)"></li>
-                <li class="nav-bar nav-bar-active">2/5</li>
-                <li class="nav-bar"></li>
+                <li class="nav-bar nav-bar-active" (click)="goToSlide(2)"></li>
+                <li class="nav-bar nav-bar-active">3/5</li>
                 <li class="nav-bar"></li>
                 <li class="nav-bar"></li>
             </ul> 
         </div>
 
-        <div class="slider-inner" *ngIf="currentInd == 3">
+        <div class="slider-inner" *ngIf="currentInd == 4">
             <div class="slider-body">
                 <div class="slider-description">
                     <div class="text-center w-100">
@@ -92,29 +126,13 @@
             <ul class="slider-nav">
                 <li class="nav-bar nav-bar-active" (click)="goToSlide(1)"></li>
                 <li class="nav-bar nav-bar-active" (click)="goToSlide(2)"></li>
-                <li class="nav-bar nav-bar-active">3/5</li>
-                <li class="nav-bar"></li>
+                <li class="nav-bar nav-bar-active" (click)="goToSlide(3)"></li>
+                <li class="nav-bar nav-bar-active">4/5</li>
                 <li class="nav-bar"></li>
             </ul> 
         </div>
 
-        <div class="slider-inner" *ngIf="currentInd == 4">
-            <div class="slider-body">
-                <!-- <h3 class="slider-description text-center w-100">Do you agree that journaling and analytics from trading history will help improve your trading performance?</h3> -->
-                
-                <div class="buttons-center">
-                    <button type="button" class="btn btn-next" (click)="nextSlide()">Yes</button>
-                    <button type="button" class="btn btn-back ml-3" (click)="nextSlide()">No</button>
-                </div>
-            </div>
-            <ul class="slider-nav">
-                <li class="nav-bar nav-bar-active" (click)="goToSlide(1)"></li>
-                <li class="nav-bar nav-bar-active" (click)="goToSlide(2)"></li>
-                <li class="nav-bar nav-bar-active" (click)="goToSlide(3)"></li>
-                <li class="nav-bar nav-bar-active" (click)="goToSlide(4)">4/5</li>
-                <li class="nav-bar"></li>
-            </ul> 
-        </div>
+        
 
         <div class="slider-inner" *ngIf="currentInd == 5">
             <div class="slider-body">
