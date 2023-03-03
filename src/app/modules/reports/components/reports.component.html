@@ -35,11 +35,11 @@
                     <div class="metrics-header px-3 pt-2">
                         <div class="d-flex align-items-center">
                             <span class="page-nav">
-                                <a class="page-nav-item" (click)="onDateOptionSelect('1d')">1D</a>
-                                <a class="page-nav-item" (click)="onDateOptionSelect('5d')">5D</a>
-                                <a class="page-nav-item" (click)="onDateOptionSelect('1m')">1M</a>
-                                <a class="page-nav-item" (click)="onDateOptionSelect('3m')">3M</a>
-                                <a class="page-nav-item" (click)="onDateOptionSelect('1y')">1Y</a>
+                                <a class="page-nav-item" [ngClass]="currentItem === '1d' ? 'selected' : ''" (click)="onDateOptionSelect('1d')">1D</a>
+                                <a class="page-nav-item" [ngClass]="currentItem === '5d' ? 'selected' : ''" (click)="onDateOptionSelect('5d')">5D</a>
+                                <a class="page-nav-item" [ngClass]="currentItem === '1m' ? 'selected' : ''" (click)="onDateOptionSelect('1m')">1M</a>
+                                <a class="page-nav-item" [ngClass]="currentItem === '3m' ? 'selected' : ''" (click)="onDateOptionSelect('3m')">3M</a>
+                                <a class="page-nav-item" [ngClass]="currentItem === '1y' ? 'selected' : ''" (click)="onDateOptionSelect('1y')">1Y</a>
                             </span>
 
                             <div class="top-sec">

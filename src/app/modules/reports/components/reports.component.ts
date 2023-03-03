@@ -38,7 +38,7 @@ export class ReportsComponent implements OnInit {
 
   websiteList: any = ['HDTuto.com', 'HDTuto.com', 'Nicesnippets.com']
   selectedTabReport: string = 'stats';
-
+  currentItem: string="1d";
   constructor() { }
 
   myDateRangePickerOptions: IMyDrpOptions = {
@@ -122,14 +122,19 @@ export class ReportsComponent implements OnInit {
     let toDate: moment.Moment;
     toDate = moment();
     if ("1d" === option) {
+      this.currentItem = option;
       fromDate = moment();
     } else if ("5d" === option) {
+      this.currentItem = option;
       fromDate = moment().subtract(5, 'd');
     } else if ("1m" === option) {
+      this.currentItem = option;
       fromDate = moment().subtract(1, 'M');
     } else if ("3m" === option) {
+      this.currentItem = option;
       fromDate = moment().subtract(3, 'M');
     } else if ("1y" === option) {
+      this.currentItem = option;
       fromDate = moment().subtract(1, 'y');
     }
     this.reportFilter.fromDate = fromDate.format('YYYY-MM-DD');

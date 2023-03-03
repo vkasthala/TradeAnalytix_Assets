@@ -10,7 +10,7 @@
                     <span class="col-sm-5">{{plSummary.realized_return || 0}}</span>
                 </div>
                 <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">Pay off Ratio</label>
+                    <label class="col-sm-7 mb-0">Payoff Ratio</label>
                     <span class="col-sm-5">{{plSummary.payoff_ratio || 0}}</span>
                 </div>
                 <div class="metrics-row">
@@ -22,7 +22,7 @@
                     <span class="col-sm-5">{{plSummary.net_r || 0}}</span>
                 </div>
                 <!-- <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">Average P&L per Trade</label>
+                    <label class="col-sm-7 mb-0">Average P&L Per Strategy</label>
                     <span class="col-sm-5">-</span>
                 </div> -->
                 <div class="metrics-row">
@@ -54,20 +54,20 @@
                     <span class="col-sm-5">{{volumeSummary.total_trades || 0}}</span>
                 </div>
                 <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">Winning Trades</label>
+                    <label class="col-sm-7 mb-0">Winning Strategies</label>
                     <span class="col-sm-5">{{volumeSummary.winning_trades || 0}}</span>
                 </div>
                 <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">Losing Trades</label>
+                    <label class="col-sm-7 mb-0">Losing Strategies</label>
                     <span class="col-sm-5">{{volumeSummary.losing_trades || 0}}</span>
                 </div>
                 <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">Contrarian Trades (%)</label>
+                    <label class="col-sm-7 mb-0">Contrarian Strategies (%)</label>
                     <span class="col-sm-5">{{percentage(volumeSummary.contrarian_trades,
                         volumeSummary.strategy_count)| number:'1.0-1'}}</span>
                 </div>
                 <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">Planned Trades Count (%)</label>
+                    <label class="col-sm-7 mb-0">Planned Strategies (%)</label>
                     <span class="col-sm-5">{{percentage(volumeSummary.planned_trades,
                         volumeSummary.strategy_count) | number:'1.0-1'}}</span>
                 </div>
@@ -84,7 +84,7 @@
                     <span class="col-sm-5">{{strategySummary.best_strategy_by_return}}</span>
                 </div>
                 <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">Best Strategy by Win/Loss</label>
+                    <label class="col-sm-7 mb-0">Best Strategy by Win-Rate</label>
                     <span class="col-sm-5">{{strategySummary.best_strategy_by_winloss}}</span>
                 </div>
                 <div class="metrics-row">
@@ -92,7 +92,7 @@
                     <span class="col-sm-5">{{strategySummary.worst_strategy_by_return}}</span>
                 </div>
                 <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">Worst Strategy by Win/Loss</label>
+                    <label class="col-sm-7 mb-0">Worst Strategy by Win-Rate</label>
                     <span class="col-sm-5">{{strategySummary.worst_strategy_by_winloss}}</span>
                 </div>
                 <div class="metrics-row">
@@ -118,6 +118,10 @@
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Return from Short Trades</label>
+                    <span class="col-sm-5">{{directionSummary.short_trade_total_return || 0}}</span>
+                </div>
+                <div class="metrics-row">
+                    <label class="col-sm-7 mb-0">Return from Custom Trades</label>
                     <span class="col-sm-5">{{directionSummary.short_trade_total_return || 0}}</span>
                 </div>
             </div>
@@ -249,7 +253,7 @@
                     <span class="col-sm-5">{{tradeTagsSummary.most_successful_tag || 'N/A'}}</span>
                 </div>
                 <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">Most Successful Tag by Win Rate</label>
+                    <label class="col-sm-7 mb-0">Most Successful Tag by Win-Rate</label>
                     <span class="col-sm-5">{{tradeTagsSummary.most_successful_tag_winrate || 'N/A'}}</span>
                 </div>
                 <div class="metrics-row">
@@ -257,7 +261,7 @@
                     <span class="col-sm-5">{{tradeTagsSummary.least_successful_tag || 'N/A'}}</span>
                 </div>
                 <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">Least Successful Tag by Win Rate</label>
+                    <label class="col-sm-7 mb-0">Least Successful Tag by Win-Rate</label>
                     <span class="col-sm-5">{{tradeTagsSummary.least_successful_tag_winrate || 'N/A'}}</span>
                 </div>
                 <div class="metrics-row">
@@ -277,7 +281,7 @@
                     <span class="col-sm-5">{{techIndicatorSummary.best_technical_strategy_by_return}}</span>
                 </div>
                 <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">Best Indicator by Win-Loss</label>
+                    <label class="col-sm-7 mb-0">Best Indicator by Win-Rate</label>
                     <span class="col-sm-5">{{techIndicatorSummary.best_technical_strategy_by_winloss}}</span>
                 </div>
                 <div class="metrics-row">
@@ -285,7 +289,7 @@
                     <span class="col-sm-5">{{techIndicatorSummary.worst_technical_strategy_by_return}}</span>
                 </div>
                 <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">Worst Indicator by Win-Loss</label>
+                    <label class="col-sm-7 mb-0">Worst Indicator by Win-Rate</label>
                     <span class="col-sm-5">{{techIndicatorSummary.worst_technical_strategy_by_winloss}}</span>
                 </div>
 
@@ -297,7 +301,7 @@
                     <span class="col-sm-5">{{tradeDaySummary.best_trade_day}}</span>
                 </div>
                 <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">Most Profitable Day by Win Rate</label>
+                    <label class="col-sm-7 mb-0">Most Profitable Day by Win-Rate</label>
                     <span class="col-sm-5">-</span>
                 </div>
                 <div class="metrics-row">
@@ -305,7 +309,7 @@
                     <span class="col-sm-5">{{tradeDaySummary.worst_trade_day}}</span>
                 </div>
                 <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">Least Profitable Day by Win Rate</label>
+                    <label class="col-sm-7 mb-0">Least Profitable Day by Win-Rate</label>
                     <span class="col-sm-5">-</span>
                 </div>
             </div>
@@ -322,7 +326,7 @@
                     <span class="col-sm-5">{{sourceSummary.best_source_by_return}}</span>
                 </div>
                 <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">Best Source by Win-Loss</label>
+                    <label class="col-sm-7 mb-0">Best Source by Win-Rate</label>
                     <span class="col-sm-5">{{sourceSummary.best_source_by_winloss}}</span>
                 </div>
                 <div class="metrics-row">
@@ -330,7 +334,7 @@
                     <span class="col-sm-5">{{sourceSummary.worst_source_by_return}}</span>
                 </div>
                 <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">Worst Source by Win-Loss</label>
+                    <label class="col-sm-7 mb-0">Worst Source by Win-Rate</label>
                     <span class="col-sm-5">{{sourceSummary.worst_source_by_winloss}}</span>
                 </div>
 
@@ -346,11 +350,11 @@
                     <span class="col-sm-5">{{eventSummary.worst_event_by_return}}</span>
                 </div>
                 <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">Best Event to Trade by Win-Loss</label>
+                    <label class="col-sm-7 mb-0">Best Event to Trade by Win-Rate</label>
                     <span class="col-sm-5">{{eventSummary.best_event_by_winloss}}</span>
                 </div>
                 <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">Worst Event to Trade by Win-Loss</label>
+                    <label class="col-sm-7 mb-0">Worst Event to Trade by Win-Rate</label>
                     <span class="col-sm-5">{{eventSummary.worst_event_by_winloss}}</span>
                 </div>
 
@@ -362,7 +366,7 @@
                     <span class="col-sm-5">{{mindsetSummary.best_mindset_by_return}}</span>
                 </div>
                 <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">Best Mindset by Win-Loss</label>
+                    <label class="col-sm-7 mb-0">Best Mindset by Win-Rate</label>
                     <span class="col-sm-5">{{mindsetSummary.best_mindset_by_winloss}}</span>
                 </div>
                 <div class="metrics-row">
@@ -370,7 +374,7 @@
                     <span class="col-sm-5">{{mindsetSummary.worst_mindset_by_return}}</span>
                 </div>
                 <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">Worst Mindset by Win-Loss</label>
+                    <label class="col-sm-7 mb-0">Worst Mindset by Win-Rate</label>
                     <span class="col-sm-5">{{mindsetSummary.worst_mindset_by_winloss}}</span>
                 </div>
             </div>
