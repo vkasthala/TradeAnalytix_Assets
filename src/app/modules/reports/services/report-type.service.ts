@@ -110,7 +110,7 @@ export class ReportTypeService {
     reportSubTypes.push(reportSubType);
 
     reportSubType = new ReportSubType();
-    reportSubType.name = 'Asset Type';
+    reportSubType.name = 'Instrument';
     reportSubType.id = "asset_type";
     reportSubType.reportDetailList = [new ReportDetails('return_by_asset_type', 'Realized Return by Instrument', ReportCategory.Asset_Type, "This report shows the realized return on your account by trading instrument")];
     reportSubTypes.push(reportSubType);

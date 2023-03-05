@@ -1,4 +1,4 @@
-<div>
+<div class="position-relative">
     <h4 class="header-title">Automatic Rules</h4>
     <table class="mt-2 mat-table">
         <thead>
@@ -40,6 +40,9 @@
             </tr>
         </tbody>
     </table>
+    <div class="mask" *ngIf="Loader">
+        <div class="loader"></div>
+    </div>
 </div>
 
 <!-- <div class="trade-table p-3">

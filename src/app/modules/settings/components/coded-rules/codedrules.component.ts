@@ -29,6 +29,7 @@ export class CodedRulesComponent implements OnInit {
   tradeLevelRules=[];
   portfolioLevelRules=[];
   isDemoMode: boolean = false;
+  Loader: boolean = false;
   
   constructor(private codedRuleService: CodedRuleService, 
     private toastr: ToastrService,
@@ -190,6 +191,7 @@ export class CodedRulesComponent implements OnInit {
   }
 
   addOrUpdateRule(element: UserCodedRule) {
+    this.Loader = true;
     // Set rule value
     if (!element.val) {
       element.val = element.defaultValue;
@@ -199,28 +201,42 @@ export class CodedRulesComponent implements OnInit {
       this.codedRuleService.createCodedRule(element).subscribe(data => {
         this.toastr.success('Automatic rule enabled', 'Success');
         this.loadCodedRulesData();
+        setTimeout(() => {
+          this.Loader = false;
+        }, 500);
+        
       }, err => {
         console.log('error in creating coded rule: ', element)
         this.showErrorMessageDialog('Error! failed to add coded rule');
+        this.Loader = false;
       });
     } else {
       this.codedRuleService.updateCodedRule(element).subscribe(data => {
         this.toastr.success('Automatic rule updated', 'Success');
         this.loadCodedRulesData();
+        this.Loader = false;setTimeout(() => {
+          this.Loader = false;
+        }, 500);
       }, err => {
         console.log('error in editing coded rule: ', element)
         this.showErrorMessageDialog('Error! failed to edit coded rule');
+        this.Loader = false;
       });
     }
   }
 
   deleteCodedRule(rule: UserCodedRule) {
+    this.Loader = true;
     this.codedRuleService.deleteCodedRule(rule.id).subscribe(data => {
       this.toastr.success('Automatic rule disabled.', 'Success');
       this.loadCodedRulesData();
+      setTimeout(() => {
+        this.Loader = false;
+      }, 500);
     }, err => {
       console.log('error in deleteing coded rule: ', rule)
       this.showErrorMessageDialog('Failed to remove from rules list');
+      this.Loader = false;
     });
   }
 
