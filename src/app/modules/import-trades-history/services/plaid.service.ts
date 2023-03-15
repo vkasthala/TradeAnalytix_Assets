@@ -22,4 +22,10 @@ export class PlaidService {
     return this.httpService.getWithParams<void>(environment.apiUrl + '/plaid/access-token/create', requestMap, new Map());
   }
 
+  initInvestmentsFetch(institutionId: string){
+    let requestMap: Map<string, string> = new Map();
+    requestMap.set('brokerId', institutionId);
+    return this.httpService.getWithParams<void>(environment.apiUrl + '/plaid/init-investments-fetch', requestMap, new Map());
+  }
+
 }

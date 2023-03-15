@@ -97,6 +97,9 @@ export class AutoImportTradePopupComponent implements OnInit {
       institutionId = event.metadata.institution.institution_id;
     }
     this.plaidService.createAccessToken(event.token, institutionId).subscribe(result => {
+      this.plaidService.initInvestmentsFetch(institutionId).subscribe(result => {
+        console.log('Auto fetch completed');
+      });
       this.toastr.info('Successfully linked your account', '');
     });
   }
