@@ -48,6 +48,8 @@ export class TradeStrategy {
 
     returnAmount: number;
 
-    tradeChubFiles: TradeChubFile[]
+    tradeChubFiles: TradeChubFile[];
+
+    userMaxRisk: number;
     
 }
