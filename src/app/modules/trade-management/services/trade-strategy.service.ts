@@ -8,6 +8,7 @@ import { RuleEvalResult } from '../models/rule-eval-result.model';
 import { TradeChubFile } from '../models/trade-chub-file.model';
 import { TradeEvaluationResult } from '../models/trade-evaluation-result.model';
 import { TransactionHistory } from '../../shared/models/trade-management/transaction-history.model';
+import { MaxRiskUpdateRequest } from '../models/max-risk-update-request.model';
 
 @Injectable({
   providedIn: 'root'
@@ -63,11 +64,15 @@ export class TradeStrategyService {
   }
 
   public getStockLegHistory(stockLegId: number): Observable<TransactionHistory[]> {
-    return this.httpService.get<TransactionHistory[]>(this.apiUrl + '/stock-leg/history/' +  stockLegId);
+    return this.httpService.get<TransactionHistory[]>(this.apiUrl + '/stock-leg/history/' + stockLegId);
   }
 
   public getOptionLegHistory(optionLegId: number): Observable<TransactionHistory[]> {
-    return this.httpService.get<TransactionHistory[]>(this.apiUrl + '/option-leg/history/' +  optionLegId);
+    return this.httpService.get<TransactionHistory[]>(this.apiUrl + '/option-leg/history/' + optionLegId);
+  }
+
+  public updateMaxRisk(maxRiskUpdateRequest: MaxRiskUpdateRequest): Observable<void> {
+    return this.httpService.post<MaxRiskUpdateRequest, void>(this.apiUrl + '/trade-strategy/update-max-risk', maxRiskUpdateRequest);
   }
 
 }

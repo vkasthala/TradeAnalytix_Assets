@@ -11,6 +11,8 @@ import { StrategyType } from 'src/app/modules/shared/models/trade-management/str
 import { TradeInputData } from 'src/app/modules/shared/models/trade-management/trade-input-data.model';
 import { TradeDetailsComponent } from '../Steps/trade-details/trade-details.component';
 import { TradeEvaluationResult } from '../../../models/trade-evaluation-result.model';
+import { MaxRiskUpdateRequest } from '../../../models/max-risk-update-request.model';
+import { TradeStrategyService } from '../../../services/trade-strategy.service';
 
 
 @Component({
@@ -38,7 +40,9 @@ export class TradeDetailsAsideComponent implements OnInit {
 
   @Output('tradeDetails') tradeDetails = new EventEmitter();
   tradeStatus: number;
-  showMoreStatistics:boolean = false;
+  userDefinedRisk: number;
+  showMoreStatistics: boolean = false;
+  riskEditing: boolean = false;
 
   toggleStatistics() {
     this.showMoreStatistics = !this.showMoreStatistics;
@@ -57,7 +61,7 @@ export class TradeDetailsAsideComponent implements OnInit {
   strategyName: string;
 
 
-  constructor(private userStockStatsService: UserStockStatsService) { }
+  constructor(private userStockStatsService: UserStockStatsService, private tradeStrategyService: TradeStrategyService) { }
 
   ngOnInit() {
     this.loadSummary();
@@ -99,11 +103,12 @@ export class TradeDetailsAsideComponent implements OnInit {
   }
 
   loadStrategySummary(strategyId: number) {
-    if(!strategyId) {
+    if (!strategyId) {
       return;
     }
     this.userStockStatsService.getStrategySummaryResult(strategyId).subscribe(result => {
       this.strategySummaryResult = result;
+      this.userDefinedRisk = result.maxLoss;
     });
   }
 
@@ -146,6 +151,26 @@ export class TradeDetailsAsideComponent implements OnInit {
     this.strategySummaryResult.maxGain = evalResult.maxGain;
     this.strategySummaryResult.maxStopLoss = evalResult.maxStopLoss;
     this.strategySummaryResult.minStopLoss = evalResult.minStopLoss;
+  }
+
+  onMaxRiskEdit() {
+    this.riskEditing = true;
+  }
+
+  onMaxRiskEditCancel() {
+    this.riskEditing = false;
+    this.userDefinedRisk = this.strategySummaryResult.maxLoss;
+  }
+
+  updateMaxRisk() {
+    let riskUpdateRequest: MaxRiskUpdateRequest = new MaxRiskUpdateRequest();
+    riskUpdateRequest.strategyId = this.tradeStrategy.id;
+    riskUpdateRequest.maxRisk = this.userDefinedRisk ? this.userDefinedRisk : 0;
+    this.tradeStrategyService.updateMaxRisk(riskUpdateRequest).subscribe(result => {
+      console.log('max risk updated successfully for strategy:', this.tradeStrategy.id);
+      this.riskEditing = false;
+      this.strategySummaryResult.maxLoss = riskUpdateRequest.maxRisk;
+    });
   }
 
 }
