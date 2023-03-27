@@ -16,7 +16,7 @@
                             <option *ngFor="let item of brokerages;let index = index" value={{item.id}}>{{item.name}}
                             </option>
                         </select> -->
-                        <mr-ngx-plaid-link-button env="sandbox" [token]="plaidToken" (Success)="onPlaidSuccess($event)" (Exit)="onPlaidExit($event)" (Load)="onPlaidLoad($event)" (Event)="onPlaidEvent($event)" className="plaid-button" buttonText="Link Account" (Click)="onPlaidClick($event)"></mr-ngx-plaid-link-button>
+                        <mr-ngx-plaid-link-button env="development" [token]="plaidToken" (Success)="onPlaidSuccess($event)" (Exit)="onPlaidExit($event)" (Load)="onPlaidLoad($event)" (Event)="onPlaidEvent($event)" className="plaid-button" buttonText="Link Account" (Click)="onPlaidClick($event)"></mr-ngx-plaid-link-button>
                     </div>
                     <!-- <div class="pt-2 col-sm-6">
                         <button class="btn btn-enter btn-sm" [disabled]="!selectedBrokerage"
