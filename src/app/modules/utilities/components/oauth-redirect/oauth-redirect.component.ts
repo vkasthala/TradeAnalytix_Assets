@@ -53,7 +53,7 @@ export class OauthRedirectComponent implements OnInit {
 
   successLogin() {
     this.router.navigate(['dashboard']);
-    this.loadFirstUser();
+    // this.loadFirstUser();
     this.stockSymbolService.getStockSymbols();
     this.metdataStoreService.load();
     this.userTagService.loadTags();

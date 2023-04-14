@@ -66,9 +66,12 @@ export class MetricsComponent extends ReportTabContentComponent implements OnIni
 
   toggleMetrics() {
     this.showMoreMetrics = !this.showMoreMetrics;
-    if (!this.allTypesLoaded) {
-      this.loadStats(this.secondLevelTypes, true);
-    }
+    setTimeout( ()=> {
+      if (!this.allTypesLoaded) {
+        this.loadStats(this.secondLevelTypes, true);
+      }
+    }, 500)
+    
   }
 
   ngAfterViewInit(): void {

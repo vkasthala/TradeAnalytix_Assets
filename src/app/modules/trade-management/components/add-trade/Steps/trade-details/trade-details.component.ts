@@ -438,7 +438,7 @@ export class TradeDetailsComponent implements OnInit {
     }
   }
   checkForDecimalValidation(event) {
-    event.target.value = parseFloat(event.target.value).toFixed(2);
+    event.target.value = parseFloat(event.target.value).toFixed(3);
   }
 
   addToPosition(source: string) {
@@ -566,7 +566,7 @@ export class TradeDetailsComponent implements OnInit {
     let openPrice: number = this.stockEntry.price;
     if (add) {
       this.stockEntry.quantity = this.stockEntry.quantity + dialogResult.quantity;
-      let price = +(((this.stockEntry.price * this.stockEntry.quantity) + (dialogResult.quantity * dialogResult.price)) / (this.stockEntry.quantity + dialogResult.quantity)).toFixed(2);
+      let price = +(((this.stockEntry.price * this.stockEntry.quantity) + (dialogResult.quantity * dialogResult.price)) / (this.stockEntry.quantity + dialogResult.quantity)).toFixed(3);
       this.stockEntry.price = price;
     } else {
       this.stockEntry.quantity = this.stockEntry.quantity - dialogResult.quantity;
@@ -591,7 +591,7 @@ export class TradeDetailsComponent implements OnInit {
     let openPrice: number = this.editingOption.price;
     if (add) {
       this.editingOption.contracts = this.editingOption.contracts + dialogResult.contracts;
-      let price = +(((this.editingOption.price * this.editingOption.contracts) + (dialogResult.contracts * dialogResult.price)) / (this.editingOption.contracts + dialogResult.contracts)).toFixed(2);
+      let price = +(((this.editingOption.price * this.editingOption.contracts) + (dialogResult.contracts * dialogResult.price)) / (this.editingOption.contracts + dialogResult.contracts)).toFixed(3);
       this.editingOption.price = price;
     } else if (dialogResult.contracts <= this.editingOption.contracts) {
       this.editingOption.contracts = this.editingOption.contracts - dialogResult.contracts;
@@ -612,7 +612,7 @@ export class TradeDetailsComponent implements OnInit {
     let openPrice: number = this.stockEntry.price;
     if (add) {
       this.editingStock.quantity = this.editingStock.quantity + dialogResult.quantity;
-      let price = +(((this.editingStock.price * this.editingStock.quantity) + (dialogResult.quantity * dialogResult.price)) / (this.editingStock.quantity + dialogResult.quantity)).toFixed(2);
+      let price = +(((this.editingStock.price * this.editingStock.quantity) + (dialogResult.quantity * dialogResult.price)) / (this.editingStock.quantity + dialogResult.quantity)).toFixed(3);
       this.editingStock.price = price;
     } else {
       this.editingStock.quantity = this.editingStock.quantity - dialogResult.quantity;
@@ -632,7 +632,7 @@ export class TradeDetailsComponent implements OnInit {
     let openPrice: number = stockOption.price;
     if (add) {
       stockOption.contracts = stockOption.contracts + dialogResult.contracts;
-      let price = +(((stockOption.price * stockOption.contracts) + (dialogResult.contracts * dialogResult.price)) / (stockOption.contracts + dialogResult.contracts)).toFixed(2);
+      let price = +(((stockOption.price * stockOption.contracts) + (dialogResult.contracts * dialogResult.price)) / (stockOption.contracts + dialogResult.contracts)).toFixed(3);
       stockOption.price = price;
     } else if (dialogResult.contracts <= stockOption.contracts) {
       stockOption.contracts = stockOption.contracts - dialogResult.contracts;
