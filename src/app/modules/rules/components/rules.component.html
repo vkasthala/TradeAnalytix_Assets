@@ -1,5 +1,5 @@
 <div class="reports-section px-3">
-    <div class="trade-table p-3">
+    <div class="trade-table p-3 pb-0 mb-0">
         <div class="row">
             <div class="col-sm-6">
                 <app-codedrules></app-codedrules>
@@ -9,95 +9,4 @@
             </div>
         </div>
     </div>
-    
-    <!-- <mat-accordion class="example-headers-align w-100" multi="true">
-        <mat-expansion-panel class="coded_rules_body pt-3" [expanded]="true" (opened)="setStep(0)">
-            <ng-template matExpansionPanelContent>
-                <div class="trade-dash-name px-2">
-                    <h3><strong>Trade-level Rules</strong>
-                        <p class="pt-1">
-                            User notified while adding or editing a trade when the below conditions are met
-                        </p>
-                    </h3>
-                </div>
-                
-                <div class="d-flex p-2 align-items-center" *ngFor="let coderule of portfolioLevelRules">
-                    <span class="px-2 pr-3">
-                        <input type="checkbox" name="rule" class="checkbox mt-2"
-                            [checked]="coderule.id && coderule.id !== null && coderule.id > 0"
-                            [(ngModel)]="coderule.checked" (change)="onRuleSelectionChange(coderule)" />
-                    </span>
-                    <span class="code-label">
-                        {{coderule.uiLabel}}
-                    </span>
-                    <span class="px-2 mx-2" [ngClass]="coderule.val ? 'border' : ''" *ngIf="!coderule.editing">
-                        {{coderule.val ? coderule.val : coderule.defaultValue}}
-                    </span>
-                    <span class="px-1 d-flex align-items-center" *ngIf="coderule.editing">
-                        <input type="text" class="form-control col-5" [(ngModel)]="coderule.tempVal"/>
-                        <mat-icon class="ml-2 mat-icon-edit action-icon" (click)="onItemEdit(coderule)">check_circle
-                        </mat-icon>
-                        <mat-icon class="ml-2 text-danger action-icon" (click)="onCancel(coderule)">close</mat-icon>
-                    </span>
-                    <mat-icon class="mat-icon-sm mat-icon-edit" (click)="onRowEdit(coderule)" *ngIf="!coderule.editing && coderule.val">edit
-                    </mat-icon>
-                </div>
-    
-                <div class="trade-dash-name px-2 pt-3">
-                    <h3><strong>Portfolio-level Rules</strong>
-                        <p class="pt-1">
-                            Notifications issued at the end of the day when the below conditions are met
-                        </p>
-                        </h3>
-                </div>
-                <div class="d-flex p-2 align-items-center" *ngFor="let coderule of tradeLevelRules">
-                    <span class="px-2 pr-3">
-                        <input type="checkbox" name="rule" class="checkbox mt-2"
-                            [checked]="coderule.id && coderule.id !== null && coderule.id > 0"
-                            [(ngModel)]="coderule.checked" (change)="onRuleSelectionChange(coderule)" />
-                    </span>
-                    <span class="code-label">
-                        {{coderule.uiLabel}}
-                    </span>
-                    <span class="px-2 mx-2" [ngClass]="coderule.val ? 'border' : ''" *ngIf="!coderule.editing">
-                        {{coderule.val ? coderule.val : coderule.defaultValue}}
-                    </span>
-                    <span class="px-1 d-flex align-items-center" *ngIf="coderule.editing">
-                        <input type="text" class="form-control col-5" [(ngModel)]="coderule.tempVal"/>
-                        <mat-icon class="ml-2 mat-icon-edit action-icon" (click)="onItemEdit(coderule)">check_circle
-                        </mat-icon>
-                        <mat-icon class="ml-2 text-danger action-icon" (click)="onCancel(coderule)">close</mat-icon>
-                    </span>
-                    <mat-icon class="mat-icon-sm mat-icon-edit" (click)="onRowEdit(coderule)" *ngIf="!coderule.editing && coderule.val">edit
-                    </mat-icon>
-                </div>
-    
-                <div class="col-sm-8 col-md-6 mt-3">
-                    <app-editable-grid #codedRules></app-editable-grid>
-                </div>
-            </ng-template>
-        </mat-expansion-panel>
-    </mat-accordion> -->
-    <!-- <app-codedrules></app-codedrules> -->
-
-    <!-- <div class="trade-risk-tabs">
-        <div class="tab" role="tabpanel">
-            <ul class="nav nav-tabs" role="tablist">
-                <li class="active" role="presentation">
-                    <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#EntryExitRules" role="tab">Manual Rules</a>
-                </li>
-                <li role="presentation">
-                    <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#CodedRules" role="tab">Automatic Rules</a>
-                </li>
-            </ul>
-            <div class="tab-content tabs">
-                <div class="tab-pane active" id="EntryExitRules" role="tabpanel">
-                    <app-managerules></app-managerules>
-                </div>
-                <div class="tab-pane" id="CodedRules" role="tabpanel">
-                    <app-codedrules></app-codedrules>
-                </div>
-            </div>
-        </div>
-    </div> -->
 </div>

@@ -21,7 +21,7 @@
 
 .tab .nav-tabs li {
     padding: 0;
-    background: #F6F8FB;
+    background: #e8eff6;
 }
 
 .tab .nav-tabs li:first-child>a {
@@ -117,4 +117,8 @@
     font-size: 14px;
     color: #2285FA;
     font-weight: 600;
+}
+.tab-content > .tab-pane {
+    height: 100vh;
+    overflow: auto;
 }

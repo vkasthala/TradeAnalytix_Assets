@@ -1,22 +1,27 @@
 <div class="wrapper trade-app-dashboard zoom">
     <div class="sidebar" [ngClass]="!isExpand ? '' : 'toggled'">
-        <div *ngIf="isExpand" class="sidebar-brand cursor-pointer" [routerLink]="['/dashboard/']">
+        <span *ngIf="isExpand" class="sidebar-brand cursor-pointer" [routerLink]="['/dashboard/']">
             <img src="../../../../assets/images/cuetrade-blue-logo-sm.svg" alt="Trade-app-logo" class="img-fluid logo_sm">
-        </div>
-        <div *ngIf="!isExpand" class="sidebar-brand cursor-pointer" [routerLink]="['/dashboard/']">
-            <img src="../../../../assets/images/cuetrade-blue-logo.svg" alt="Trade-app-logo" class="img-fluid full-logo">
-        </div>
+        </span>
+        <span *ngIf="!isExpand" class="sidebar-brand cursor-pointer" [routerLink]="['/dashboard/']">
+            <img src="../../../../assets/images/logo.svg" alt="Trade-app-logo" class="img-fluid full-logo">
+        </span>
 
         <nav class="trade-navbar">
             
             <div class="home-link">
                 <a [routerLink]="['/dashboard/']">
-                    <img src="../../../../assets/images/home-icon.png" class="nav-icon"> <span>Home</span>
+                    <img src="../../../../assets/images/home.svg" class="nav-icon nav-icon-md"> 
+                    <img src="../../../../assets/images/home_r.svg" class="nav-icon nav-icon-md nav-icon_r"> 
+                    
+                    <span>Home</span>
                 </a>
             </div>
 
             <div class="parent-item">
-                <img src="../../../../assets/images/plan.svg" class="nav-icon"> Plan
+                <img src="../../../../assets/images/plan.svg" class="nav-icon nav-icon-md"> 
+                <img src="../../../../assets/images/plan_r.svg" class="nav-icon nav-icon-md nav-icon_r">
+                Plan
             </div>
             <ul class="list-unstyled ">
                 <li class="sidebar-item" [class.nav-active]="currentRoute == 'trade-plans'">
@@ -40,7 +45,9 @@
             </ul>
 
             <div class="parent-item">
-                <img src="../../../../assets/images/journal.svg" class="nav-icon"> Journal
+                <img src="../../../../assets/images/journal.svg" class="nav-icon nav-icon-md"> 
+                <img src="../../../../assets/images/journal_r.svg" class="nav-icon nav-icon-md nav-icon_r">
+                Journal
             </div>
             <ul class="list-unstyled ">
                 <li class="sidebar-item" [class.nav-active]="currentRoute == 'import-trades-history'">
@@ -65,7 +72,9 @@
             </ul>
 
             <div class="parent-item">
-                <img src="../../../../assets/images/review.svg" class="nav-icon"> Review
+                <img src="../../../../assets/images/review.svg" class="nav-icon review-icon"> 
+                <img src="../../../../assets/images/review_r.svg" class="nav-icon review-icon nav-icon_r"> 
+                Review
             </div>
             <ul class="list-unstyled ">
                 <li class="sidebar-item" [class.nav-active]="currentRoute == 'reports'">
@@ -250,9 +259,9 @@
         </div>
         <router-outlet></router-outlet>
     </div>
-    <app-footer></app-footer>
+    
 </div>
-
+<app-footer></app-footer>
 <!-- Trade-Navbar-Mobile -->
 <nav class="mobile-bottom-nav">
     <ul>
