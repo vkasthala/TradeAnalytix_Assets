@@ -66,6 +66,7 @@ export class CloseTradeDetailsComponent implements OnInit {
     let option: OptionEntry = new OptionEntry();
     option.actionType = ActionType["Buy to Open"];
     option.optionType = OptionType.Call;
+    option.statusId = 1;
     return option;
   }
 
