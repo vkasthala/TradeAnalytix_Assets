@@ -11,16 +11,13 @@
             
             <div class="home-link">
                 <a [routerLink]="['/dashboard/']">
-                    <img src="../../../../assets/images/home.svg" class="nav-icon nav-icon-md"> 
-                    <img src="../../../../assets/images/home_r.svg" class="nav-icon nav-icon-md nav-icon_r"> 
-                    
+                    <img src="../../../../assets/images/home_r.svg" class="nav-icon nav-icon-md"> 
                     <span>Home</span>
                 </a>
             </div>
 
             <div class="parent-item">
-                <img src="../../../../assets/images/plan.svg" class="nav-icon nav-icon-md"> 
-                <img src="../../../../assets/images/plan_r.svg" class="nav-icon nav-icon-md nav-icon_r">
+                <img src="../../../../assets/images/plan_r.svg" class="nav-icon nav-icon-md">
                 Plan
             </div>
             <ul class="list-unstyled ">
@@ -45,8 +42,7 @@
             </ul>
 
             <div class="parent-item">
-                <img src="../../../../assets/images/journal.svg" class="nav-icon nav-icon-md"> 
-                <img src="../../../../assets/images/journal_r.svg" class="nav-icon nav-icon-md nav-icon_r">
+                <img src="../../../../assets/images/journal_r.svg" class="nav-icon nav-icon-md">
                 Journal
             </div>
             <ul class="list-unstyled ">
@@ -72,8 +68,7 @@
             </ul>
 
             <div class="parent-item">
-                <img src="../../../../assets/images/review.svg" class="nav-icon review-icon"> 
-                <img src="../../../../assets/images/review_r.svg" class="nav-icon review-icon nav-icon_r"> 
+                <img src="../../../../assets/images/review_r.svg" class="nav-icon review-icon"> 
                 Review
             </div>
             <ul class="list-unstyled ">
@@ -97,23 +92,6 @@
                 </li>
             </ul>
 
-
-            <!-- <div class="parent-item">
-                <img src="../../../../assets/images/analyze.svg" class="mr-1"> Analyze
-            </div>
-            <ul class="list-unstyled ">
-                <li class="sidebar-item" [class.nav-active]="currentRoute == 'risk-analysis'">
-                    <a class="sidebar-link" [routerLink]="['/risk-analysis/']">
-                        <span>Options Analyzer</span>
-                    </a>
-                </li>
-                <li class="sidebar-item" [class.nav-active]="currentRoute == 'strategy-comparison'">
-                    <a class="sidebar-link" [routerLink]="['/strategy-comparison/']">
-                        <mat-icon>compare_arrows</mat-icon>
-                        <span>Strategy&nbsp;Picker</span>
-                    </a>
-                </li>
-            </ul> -->
             <span class="menu-toggle cursor-pointer" (click)="sidebarToggle()">
                 <mat-icon *ngIf="!isExpand">arrow_back</mat-icon>
                 <mat-icon *ngIf="isExpand">arrow_forward</mat-icon>
@@ -258,10 +236,11 @@
             </div>
         </div>
         <router-outlet></router-outlet>
+        <app-footer></app-footer>
     </div>
     
 </div>
-<app-footer></app-footer>
+
 <!-- Trade-Navbar-Mobile -->
 <nav class="mobile-bottom-nav">
     <ul>

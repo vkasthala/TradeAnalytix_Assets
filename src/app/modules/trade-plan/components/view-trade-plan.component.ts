@@ -7,6 +7,7 @@ import { TradePlansService } from '../services/trade-plans.service';
 import { ToastrService } from 'ngx-toastr';
 import { DemoModeDetailsService } from '../../shared/services/demo-mode-details.service';
 import { SettingsService } from '../../settings/services/settings.service';
+import { CodedRuleService } from '../../settings/services/coded-rule.service';
 
 @Component({
   selector: 'app-view-trade-plan',
@@ -24,8 +25,10 @@ export class ViewTradePlanComponent extends AddnewtradeplanComponent implements 
     demoService: DemoModeDetailsService,
     toastr: ToastrService,
     dateAdapter: DateAdapter<Date>,
-    settingsService: SettingsService,) {
-    super(_dialog, router, metadataService, tradePlanService, toastr, demoService, dateAdapter, settingsService);
+    settingsService: SettingsService,
+    codedRuleService: CodedRuleService,
+    ) {
+    super(_dialog, router, metadataService, tradePlanService, toastr, demoService, dateAdapter, settingsService, codedRuleService);
     this.view = true;
     this.edit = false;
     this.add = false;
