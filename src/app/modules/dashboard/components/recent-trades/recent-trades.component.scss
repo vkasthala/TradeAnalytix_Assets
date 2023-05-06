@@ -1,29 +1,30 @@
 .recent-trades-container {
-    box-shadow: 0px 0px 16px rgb(188 188 188 / 50%);
-    border-radius: 6px;
+    box-shadow: none;
+    border-radius: 12px;
+    border: 1px solid #E3E4E7;
 }
 .recent-trades{
     
     width: 100%;
     th {
-        font-weight: 500;
+        font-weight: 600;
         font-size: 14px;
         line-height: 20px;
-        color: #9DA6BA;
+        color: #394C86;
         padding: 1rem;
     }
     td {
         font-weight: 500;
         font-size: 14px;
         line-height: 20px;
-        color: #242E3A;
+        color: #717785;
         border-top: 1px solid rgb(157 166 186 / 68%);
         padding: 0.5rem 1rem;
     }
 }
 
 .mat-icon-edit {
-    color: #9DA6BA;
+    color: #394C86;
 }
 
 .view-more {

@@ -29,6 +29,7 @@ import { TradePlanSummary } from '../../models/trade-plan-summary.model';
 import { DailyStatisticsComponent } from '../daily-statistics/daily-statistics.component';
 import { TodayExecutedLegsComponent } from '../today-executed-legs/today-executed-legs.component';
 import { Subject } from 'rxjs';
+import { UserCodedRule } from 'src/app/modules/settings/models/user-coded-rule.model';
 import { CodedRuleService } from 'src/app/modules/settings/services/coded-rule.service';
 const moment = _moment;
 
@@ -71,6 +72,11 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
   executedStrategies: TodayExecutedTrade[] = [];
   plannedTradesDataSource: PlannedTrade[] = [];
 
+  tradeLevelRules=[];
+  userCodedRules: UserCodedRule[];
+  portfolioLevelRules=[];
+  selecedDate:any;
+
   constructor(
     protected _dialog: MatDialog,
     protected router: Router,
@@ -80,7 +86,7 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
     protected demoService: DemoModeDetailsService,
     private dateAdapter: DateAdapter<Date>,
     private settingsService: SettingsService,
-    private codedService: CodedRuleService
+    private codedRuleService: CodedRuleService,
   ) {
     this.initState();
   }
@@ -105,6 +111,7 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
     this.dataChangeSubject.asObservable().subscribe((res) => {
       this.updateTradePlan();
     });
+    this.loadCodedRulesData();
   }
 
   ngOnInit() {
@@ -173,6 +180,7 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
   loadPlanEntries(selectedDay: string) {
     this.tradePlanService.getTopPlanEntries().subscribe(result => {
       this.planDates = result;
+      this.selecedDate = result[0];
       this.initTradePlanSelect(selectedDay);
     });
   }
@@ -368,6 +376,7 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
 
   onPlanSelect(plan: TradePlanEntry) {
     this.selectedPlan = plan;
+    this.selecedDate = plan;
     this.refreshSelectedPlanData();
   }
 
@@ -392,6 +401,18 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
       });
     });
 
+  }
+
+  loadCodedRulesData() {
+    this.codedRuleService.getUserCodedRules().subscribe(result => {
+      this.userCodedRules = result;
+      this.tradeLevelRules=[];
+      this.portfolioLevelRules=[];
+      this.userCodedRules.forEach((rule, i) => {
+        rule.checked = rule.id && rule.id !== null && rule.id > 0;
+        this.portfolioLevelRules.push(rule);
+      })
+    });
   }
 
 }

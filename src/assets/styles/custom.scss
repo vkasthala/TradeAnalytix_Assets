@@ -1,5 +1,8 @@
 @import "./variable.scss";
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+
 .dark-theme-body {
     @media #{$extra-small} {
         display: none;
@@ -148,16 +151,6 @@
     color: #33b5e5 !important;
 }
 
-// .toast-message::before {
-//     position: absolute;
-//     right: 5px;
-//     top: 5px;
-//     width: 20px;
-//     height: 20px;
-//     content: "x";
-//     font-size: 16px;
-//     font-weight: 800;
-// }
 
 .card {
     box-shadow: 0px 0px 10px 0px rgba(103, 103, 103, 0.49);
@@ -352,20 +345,24 @@ mat-header-cell:last-of-type,
 .wrapper {
     align-items: stretch;
     display: flex;
-    // width: 100%;
+    height: 100%;
     @media #{$extra-small} {
         display: block;
     }
 }
 
 .sidebar-brand {
-    padding-left: 8px;
+    margin-left: 30px;
     color: #f8f9fa;
-    display: block;
+    display: inline-flex;
     font-family: "Poppins", sans-serif;
     font-size: 22px;
     font-weight: 500;
-    padding-top: 10px;
+    margin-top: 14px;
+    padding: 10px;
+    .full-logo {
+        width: 85%;
+    }
 }
 
 .sidebar-brand>span {
@@ -378,16 +375,17 @@ mat-header-cell:last-of-type,
 }
 
 .sidebar {
-    min-width: 210px;
-    max-width: 210px;
+    min-width: 330px;
+    max-width: 330px;
     // transition: margin-left .35s ease-in-out, left .35s ease-in-out, margin-right .35s ease-in-out, right .35s ease-in-out;
     direction: ltr;
-    background: #394c86;
+    background: #394C86;
     -webkit-transform: translate3d(0, 0px, 0px);
     transform: translate3d(0, 0px, 0px);
     visibility: visible;
     transition: all 0.5s ease 0s;
     -webkit-transition: all 0.5s ease 0s;
+    border-radius: 60px 0 0 20px;
 }
 
 .sidebar.toggled {
@@ -418,6 +416,8 @@ mat-header-cell:last-of-type,
     transition: margin-left .35s ease-in-out, left .35s ease-in-out, margin-right .35s ease-in-out, right .35s ease-in-out;
     flex-direction: column;
     padding-bottom: 60px;
+    border-radius: 0 60px 50px 0;
+    background-color: #f5f7f9;
     @media #{$extra-small} {
         padding-bottom: 0;
         min-height: inherit;
@@ -427,37 +427,27 @@ mat-header-cell:last-of-type,
 .sidebar-link,
 a.sidebar-link {
     display: block;
-    padding: 0.25rem;
-    color: rgba(255, 255, 255, 0.55);
+    padding: 0 18px;
+    color: #fff;
     font-weight: 400;
     text-decoration: none;
     cursor: pointer;
-    line-height: 1;
     display: flex;
     align-items: center;
     border-radius: 6px;
-    font-weight: 600;
-    font-size: 15px;
-    @media #{$extra-small} {
-        border-radius: 0;
-    }
+    height: 35px;
 }
 
 .sidebar-link>.mat-icon {
-    color: #fff;
+    color: #000;
     display: none;
 }
 
-.sidebar-link>span {
-    color: #fff;
-    padding-left: 0.5rem;
-}
 
 .sidebar-link:hover,
 .nav-active .sidebar-link {
     color: #fff;
-    background: #2285FA;
-    box-shadow: 0px 4px 16px rgba(157, 157, 157, 0.2);
+    background: #4BB964;
     text-decoration: none;
 }
 
@@ -474,7 +464,7 @@ a.sidebar-link {
         box-shadow: none;
     }
     .sidebar-link>.mat-icon {
-        color: #fff;
+        color: #000;
         display: block;
     }
     .sidebar-link:hover>.mat-icon {
@@ -519,7 +509,6 @@ a.sidebar-link {
 
 .sidebar-item {
     position: relative;
-    padding: 0 10px 0 45px;
     min-height: 32px;
     @media #{$extra-small} {
         padding: 0;
@@ -528,12 +517,11 @@ a.sidebar-link {
 }
 
 .page-heading {
-    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 600;
-    font-size: 22px;
-    line-height: 36px;
-    color: #242E3A;
+    font-size: 30px;
+    line-height: 55px;
+    color: #121D33;
 }
 
 .top-nav-item {
@@ -901,18 +889,18 @@ iframe {
 .home-link {
     color: #fff;
     box-shadow: none;
-    padding: 0;
-    font-weight: 600;
-    font-size: 16px;
-    padding: 8px 18px;
     position: relative;
     a {
         color: #fff;
-        font-weight: 600;
         display: flex;
         align-items: center;
         text-decoration: none;
+        border-radius: 6px;
+        height: 40px;
+        padding-left: 20px;
+        font-weight: 600;
         &:hover {
+            background: #4BB964;
             color: #fff;
             text-decoration: none;
         }
@@ -924,7 +912,6 @@ iframe {
     }
     span {
         margin-left: 3px;
-        margin-top: 5px;
     }
 }
 
@@ -940,9 +927,11 @@ iframe {
     box-shadow: none;
     padding: 0;
     font-weight: 600;
-    font-size: 16px;
-    padding: 10px 18px;
+    padding: 5px 20px;
     position: relative;
+    border-radius: 6px;
+    margin-top: 3px;
+    height: 40px;
     a {
         color: #fff;
         font-weight: 600;
@@ -952,12 +941,22 @@ iframe {
 .parent-item:before {
     content: '';
     position: absolute;
-    top: 20px;
+    top: 16px;
     right: 30px;
     border-top: 8px solid #fff;
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
 }
+.parent-item:hover:before {
+    border-top: 8px solid #fff;
+}
+
+.parent-item:hover {
+    background: #4BB964;
+    color: #fff;
+    text-decoration: none;
+}
+
 
 .sidebar.toggled .parent-item {
     display: none;
@@ -965,9 +964,13 @@ iframe {
 
 .trade-navbar .list-unstyled {
     margin: 0;
+    padding-left: 41px;
+    font-size: 18px;
 }
 .trade-navbar {
     margin-top: 1.5rem;
+    padding: 0 10px 0 20px;
+    font-size: 18px;
 }
 
 .addnew-trade {
@@ -986,4 +989,40 @@ iframe body {
     margin-top: 4px;
     height: 16px !important;
     width: 16px !important;
+}
+
+.btn-default {
+    color: #fff !important;
+    background-color: #4BB964 !important;
+    border-color: #4BB964 !important;
+}
+.btn-start-tour {
+    color: #fff !important;
+    background-color: #4BB964 !important;
+    border-color: #4BB964 !important;
+    width: 176px;
+    height: 57px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    .mat-icon {
+        height: 16px;
+        width: 11px;
+        font-size: 21px !important;
+        margin-left: 5px;
+    }
+}
+
+.dashboard-header {
+    font-size: 16px;
+    background: linear-gradient(91.71deg, #4BB964 -17.07%, #3794E8 105.91%);
+    padding: 10px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #fff;
+    min-height: 90px;
+    @media #{$extra-small} {
+        padding: 15px;
+    } 
 }
