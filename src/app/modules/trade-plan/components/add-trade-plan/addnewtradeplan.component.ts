@@ -29,8 +29,9 @@ import { TradePlanSummary } from '../../models/trade-plan-summary.model';
 import { DailyStatisticsComponent } from '../daily-statistics/daily-statistics.component';
 import { TodayExecutedLegsComponent } from '../today-executed-legs/today-executed-legs.component';
 import { Subject } from 'rxjs';
-import { CodedRuleService } from 'src/app/modules/settings/services/coded-rule.service';
 import { UserCodedRule } from 'src/app/modules/settings/models/user-coded-rule.model';
+import { CodedRuleService } from 'src/app/modules/settings/services/coded-rule.service';
+import { ConfirmDialogComponent } from 'src/app/modules/shared/components/modals/confirm-dialog/confirm-dialog.component';
 const moment = _moment;
 
 @Component({
@@ -52,6 +53,9 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
   mindsetTypes: MindsetType[];
 
   tradePlan: TradePlan = new TradePlan();
+  minDate : Date;
+  maxDate: Date;
+
 
   @ViewChild('tradeMobileStepper', { static: false }) private tradeMobileStepper: MatStepper;
   @ViewChild('openStrategiesGrid', { static: false }) protected tradeStrategiesGrid: OpenStrategiesGridComponent;
@@ -133,11 +137,26 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
       this.day = state.day;
       console.log('trade pla id: ', this.tradePlanId);
     }
+    this.setDateRange();
     // if (this.tradePlanId > 0) {
     //   console.log('here..');
     //   this.loadTradePlanData();
     // }
   }
+
+  setDateRange() {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // set time to midnight
+    const tomorrow = new Date(today);
+    tomorrow.setDate(today.getDate() + 1); // set to the next day
+    this.minDate = today;
+    this.maxDate = tomorrow;
+  }
+
+  isWithinTodayOrTomorrow = (date) => {
+    return date >= this.minDate && date <= this.maxDate;
+  }
+  
 
   addRule(title, btnText) {
     const dialogRef = this._dialog.open(ManageRulePopupComponent, {
@@ -279,6 +298,26 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
     return plan;
   }
 
+  deleteTradePlan(plan: TradePlanEntry) {
+    const dialogRef = this._dialog.open(ConfirmDialogComponent, {
+      width: 'auto',
+      height: 'auto',
+      data: { 'message': 'Are you sure you want to delete?' }
+    });
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      if (dialogResult == true) {
+        this.tradePlanService.deleteTradePlan(plan.id).subscribe(() => {
+          console.log('Trade strategy deleted..', plan.id);
+          this.loadPlanEntries(null);
+          this.toastr.success("Successfully deleted trade plan")
+        }, err => {
+          this.toastr.error("Failed to delete trade plan", 'Error')
+        });
+      }
+    });
+
+  }
+
   getPlannedTradeSymbols(plannedTrades: PlannedTrade[]) {
     let symbols: string = ""
     if (plannedTrades && plannedTrades.length > 0) {
@@ -293,7 +332,7 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
   }
 
   addTradePlanDate() {
-    if (!this.planDate) {
+    if (!this.planDate || !this.isWithinTodayOrTomorrow(this.planDate.toDate())) {
       this.toastr.error('Please select valid date', 'Invalid Date');
       return;
     }

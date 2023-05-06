@@ -66,6 +66,10 @@ export class TradePlansService {
         return this.http.post<TradePlan, void>(this.apiUrl + '/trade-plan/update', tradePlan);
     }
 
+    deleteTradePlan(tradePlanId: number): Observable<void> {
+        return this.http.post(this.apiUrl + '/trade-plan/delete/'+tradePlanId, null);
+    }
+
     getTradePlansGridResult(gridRequest: TradePlanGridRequest): Observable<TradePlanGridResult> {
         return this.http.post<TradePlanGridRequest, TradePlanGridResult>(this.apiUrl + '/trade-plan/grid-result', gridRequest);
     }
