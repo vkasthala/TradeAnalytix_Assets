@@ -32,7 +32,7 @@
                 <ul *ngFor="let date of planDates; let index = index">
                     <li [ngClass]="(selectedPlan && selectedPlan.id === date.id) ? 'active' : '' ">
                         <span (click) = "onPlanSelect(date)">{{date.day | date: 'dd-MMM-yyyy'}}</span>
-                        <mat-icon class="ml-2 mat-icon-md delete_date">delete</mat-icon>
+                        <mat-icon class="ml-2 mat-icon-md delete_date" (click)="deleteTradePlan(date)">delete</mat-icon>
                     </li>
                 </ul>
             </div>
