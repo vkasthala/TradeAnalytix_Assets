@@ -1,23 +1,16 @@
-<div class="px-2 dashboard">
-    <div class="trade-dash-cards-web px-2">
-        <div class="mt-1 dashboard-header-row">
-            <div class="card px-x">
-                <div class="px-1">
-                    <img src="../../../../assets/images/welcome.svg"/>
-                </div>
-                <div class="px-1">
-                    <div class="card-title">Welcome {{userName}}</div>
-                    <p style="font-size:16px">Take a tour of CueTrade and turn on the demo mode to see how it works. <span class="mx-2 card-bottom cursor" (click)="startTour()">Start Tour</span>
-                        <span class="ml-2 card-bottom cursor" (click)="showDemoMsg()">Demo Mode</span>
-                    </p>
-
-                    <!-- <p>Take a tour of CueTrade and turn on the demo mode to know its  benefits</p>
-                    <div class="card-bottom pt-1">
-                        <span class="mr-3 cursor" (click)="startTour()">Start Tour</span>
-                        <span class="ml-3 cursor" (click)="showDemoMsg()">Demo Mode</span>
-                    </div> -->
-                </div>
+<div class="dashboard">
+    <div class="trade-dash-cards-web">
+        <div class="dashboard-header">
+            <!-- <div class="px-1">
+                <img src="../../../../assets/images/welcome.svg"/>
+            </div> -->
+            <div>
+                <div class="card-title">Welcome {{userName}}</div>
+                <p>Take a tour of CueTrade and turn on the demo mode to see how it works. 
+                    <!-- <span class="ml-2 card-bottom cursor" (click)="showDemoMsg()">Demo Mode</span> -->
+                </p>
             </div>
+            <span class="btn btn-start-tour" (click)="startTour()">Start Tour <mat-icon>arrow_forward</mat-icon></span>
         </div>
 
         <!-- <div class="mt-3">
@@ -42,177 +35,165 @@
             </div>
         </div> -->
 
-        <div class="row mt-3 dashboard-header-row">
-            <div class="col-sm-12 col-md-8 dashboard-header-column">
-                <div class="trade-headiang pb-1">
-                    <h5>Daily Workspace</h5>
-                </div>
-                <div class="card card-row pr-0">
-                    <div class="row mt-3 py-3">
-                        <div class="col-sm-4">
-                            <div class="white-box">
-                                <div class="white-box-header">
-                                    <span class="white-box-count">1</span>
-                                    <div class="white-box-title">Plan Trades</div>
-                                    <div class="pt-2"><img src="../../../../assets/images/plan-trade.png" alt=""  class="thumb-sm" /></div>
-                                </div>
-                                <ul class="orange-list">
-                                    <li><mat-checkbox [checked]="true"><mat-icon class="close-icon">close</mat-icon> Create a daily trading plan</mat-checkbox></li>
-                                    <li><mat-checkbox [checked]="false"><mat-icon class="close-icon">close</mat-icon> Build and analyze potential <br/>trades</mat-checkbox></li>
-                                </ul>
+        <div class="dashboard-body">
+            <div class="mt-3 dashboard-header-row">
+                <div class="daily-workspace dashboard-header-column">
+                    <div class="trade-headiang daily-workspace-header">
+                        <h5>Daily Workspace</h5>
+                    </div>
+                    <div class="daily-workspace-body">
+                        <div class="row align-items-center">
+                            <div class="col-7 text-center">
+                                <img src="../../../../assets/images/daily-workspace.svg" />
                             </div>
-                            <div class="arrow-rt">
-                                <img src="../../../../assets/images/arrow-rt.png" alt="" />
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="white-box">
-                                <div class="white-box-header">
-                                    <span class="white-box-count">2</span>
-                                    <div class="white-box-title">Journal Trades</div>
-                                    <div class="pt-2">
-                                        <img src="../../../../assets/images/journal_trades_sm.png" alt="" class="thumb-sm" />
+
+                            <div class="col-sm-4">
+                                <div class="workspace-content">
+                                    <div class="white-box-header">
+                                        <div class="white-box-title">Plan Trades</div>
                                     </div>
-                                </div>
-                                <ul class="orange-list">
-                                    <li><mat-checkbox [checked]="true"><mat-icon class="close-icon">close</mat-icon> Import trades from brokers</mat-checkbox></li>
-                                    <li><mat-checkbox><mat-icon class="close-icon">close</mat-icon> Add notes to your trades</mat-checkbox></li>
-                                    <li><mat-checkbox [checked]="true"><mat-icon class="close-icon">close</mat-icon> Review performance and <br/>close plan</mat-checkbox></li>
-                                </ul>
-                            </div>
-                            <div class="arrow-rt">
-                                <img src="../../../../assets/images/arrow-rt.png" alt="" />
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="white-box">
-                                <div class="white-box-header">
-                                    <span class="white-box-count">3</span>
-                                    <div class="white-box-title">Review Insights</div>
-                                    <div class="pt-2">
-                                        <img src="../../../../assets/images/review_insights.png" alt="" class="thumb-sm" />
+                                    <ul class="orange-list">
+                                        <li><mat-checkbox [checked]="true"><mat-icon class="close-icon">close</mat-icon> Create a daily trading plan</mat-checkbox></li>
+                                        <li><mat-checkbox [checked]="false"><mat-icon class="close-icon">close</mat-icon> Build and analyze potential trades</mat-checkbox></li>
+                                    </ul>
+                                
+                                    <div class="white-box-header">
+                                        <div class="white-box-title">Journal Trades</div>
                                     </div>
+                                    <ul class="orange-list">
+                                        <li><mat-checkbox [checked]="true"><mat-icon class="close-icon">close</mat-icon> Import trades from brokers</mat-checkbox></li>
+                                        <li><mat-checkbox><mat-icon class="close-icon">close</mat-icon> Add notes to your trades</mat-checkbox></li>
+                                        <li><mat-checkbox [checked]="true"><mat-icon class="close-icon">close</mat-icon> Review performance and close plan</mat-checkbox></li>
+                                    </ul>
+
+                                    <div class="white-box-header">
+                                        <div class="white-box-title">Review Insights</div>
+                                        
+                                    </div>
+                                    <ul class="orange-list pb-0">
+                                        <li><mat-checkbox [checked]="true"><mat-icon class="close-icon">close</mat-icon> Review statistics and reports</mat-checkbox></li>
+                                        <li><mat-checkbox [checked]="true"><mat-icon class="close-icon">close</mat-icon> Review daily insights</mat-checkbox></li>
+                                        <li><mat-checkbox [checked]="false"><mat-icon class="close-icon">close</mat-icon> Add or update trading rules</mat-checkbox></li>
+                                    </ul>
                                 </div>
-                                <ul class="orange-list">
-                                    <li><mat-checkbox [checked]="true"><mat-icon class="close-icon">close</mat-icon> Review statistics and reports</mat-checkbox></li>
-                                    <li><mat-checkbox [checked]="true"><mat-icon class="close-icon">close</mat-icon> Review daily insights</mat-checkbox></li>
-                                    <li><mat-checkbox [checked]="false"><mat-icon class="close-icon">close</mat-icon> Add or update trading rules</mat-checkbox></li>
-                                </ul>
                             </div>
                         </div>
                     </div>
+                </div>
+
+                <!-- <div class="col-sm-12 col-md-4">
+                    <div class="widget-header">
+                        <h5>{{selectedId === 1 ? 'Market Overview' : selectedId === 2 ? 'Economic Calendar' : 'Active Stocks' }}</h5>
+                        <div>
+                            <select class="form-control form-control-sm" [(ngModel)]="selectedId" (change)="onChange($event)">
+                                <option value="1">Market Overview</option>
+                                <option value="2">Economic Calendar</option>
+                                <option value="3">Active Stocks</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="widget pb-2">
+                        <div [ngClass]="selectedId === 1 ? 'd-block' : 'd-none'">
+                            <div class="tradingview-widget-container">
+                                <div class="tradingview-widget-container__widget"></div>
+                                <div #tradingview id="tradingview"></div>
+                                <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/markets/" rel="noopener" target="_blank"><span class="blue-text">World markets</span></a> by TradingView</div>
+                                
+                            </div>
+                        </div>
+                        <div [ngClass]="selectedId === 2 ? 'd-block' : 'd-none'">
+                            <div class="tradingview-widget-container">
+                                <div class="tradingview-widget-container__widget"></div>
+                                <div #calendarview></div>
+                                <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/economic-calendar/" rel="noopener" target="_blank"><span class="blue-text">Economic calendar</span></a> by TradingView</div>
+                                
+                            </div>
+                        </div>
+                        <div [ngClass]="selectedId === 3 ? 'd-block' : 'd-none'">
+                            <div class="tradingview-widget-container">
+                                <div class="tradingview-widget-container__widget"></div>
+                                <div #activeStocks></div>
+                                <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/markets/stocks-usa/" rel="noopener" target="_blank"><span class="blue-text">Stocks today</span></a> by TradingView</div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                
+            </div>
+
+            <div class="metrics-section">
+                <h5 class="mt-3 mb-2 metrics-title">Key Metrics</h5>
+                <div class="trade-dash-cards" [ngClass]="showMoreMetrics ? 'show-all' : ''">
+                    <div class="flex-item" *ngFor="let item of summaryItems;">
+                        <div class="flex-inner">
+                            <a>
+                                <h3 class="trade_count trade-green" [style.color]="getSummaryTextColor(item)">{{getSummaryValue(item)}}{{getValueSuffix(item)}}</h3>
+                                <span class="trade_title">{{item.name}}</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="metrics-bottom">
+                    <span class="cursor" (click)="MoreStatistics()">
+                        
+                    {{!showMoreMetrics ? 'More' : 'Less'}}  Statistics 
+                    <mat-icon>{{!showMoreMetrics ? 'keyboard_arrow_down' : 'keyboard_arrow_up'}} </mat-icon>
+                    </span>
                 </div>
             </div>
 
-            <div class="col-sm-12 col-md-4">
-                <div class="widget-header">
-                    <h5>{{selectedId === 1 ? 'Market Overview' : selectedId === 2 ? 'Economic Calendar' : 'Active Stocks' }}</h5>
-                    <div>
-                        <select class="form-control form-control-sm" [(ngModel)]="selectedId" (change)="onChange($event)">
-                            <option value="1">Market Overview</option>
-                            <option value="2">Economic Calendar</option>
-                            <option value="3">Active Stocks</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="widget pb-2">
-                    <div [ngClass]="selectedId === 1 ? 'd-block' : 'd-none'">
-                        <div class="tradingview-widget-container">
-                            <div class="tradingview-widget-container__widget"></div>
-                            <div #tradingview id="tradingview"></div>
-                            <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/markets/" rel="noopener" target="_blank"><span class="blue-text">World markets</span></a> by TradingView</div>
-                            
+            <div class="trade-dash-con mt-3">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6" style="padding-right: 2%">
+                        <div class="trade-analytics">
+                            <div class="trade-headiang">
+                                <h5>Calendar Report</h5>
+                            </div>
+                            <div class="dsh-img border-0">
+                                <app-calendar #calendarReport></app-calendar>
+                            </div>
                         </div>
                     </div>
-                    <div [ngClass]="selectedId === 2 ? 'd-block' : 'd-none'">
-                        <div class="tradingview-widget-container">
-                            <div class="tradingview-widget-container__widget"></div>
-                            <div #calendarview></div>
-                            <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/economic-calendar/" rel="noopener" target="_blank"><span class="blue-text">Economic calendar</span></a> by TradingView</div>
-                            
+                    <div class="col-sm-12 col-md-6" style="padding-left: 2%">
+                        <div class="trade-analytics">
+                            <div class="trade-headiang">
+                                <h5>Realized Return</h5>
+                            </div>
+                            <div class="dsh-img">
+                                <app-realized-return-chart></app-realized-return-chart>
+                            </div>
                         </div>
                     </div>
-                    <div [ngClass]="selectedId === 3 ? 'd-block' : 'd-none'">
-                        <div class="tradingview-widget-container">
-                            <div class="tradingview-widget-container__widget"></div>
-                            <div #activeStocks></div>
-                            <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/markets/stocks-usa/" rel="noopener" target="_blank"><span class="blue-text">Stocks today</span></a> by TradingView</div>
-                            
+                    <div class="col-sm-12 col-md-6 mt-3" style="padding-right: 2%">
+                        <div class="trade-analytics">
+                            <div class="trade-headiang">
+                                <h5>Recent Trades</h5>
+                            </div>
+                            <div class="dsh-img border-0">
+                                <app-recent-trades></app-recent-trades>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="col-sm-12 col-md-6 mt-3" style="padding-left: 2%">
+                        <div class="trade-analytics">
+                            <div class="trade-headiang">
+                                <h5>Daily Insights</h5>
+                            </div>
+                            <div class="dsh-img list-group-card px-0 m-0" style="height: 400px;">
+                                <app-key-insights></app-key-insights>
+                               
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            
-        </div>
-        <div class="metrics-section">
-            <h5 class="mt-3 mb-2 metrics-title">Key Metrics</h5>
-            <div class="trade-dash-cards" [ngClass]="showMoreMetrics ? 'show-all' : ''">
-                <div class="flex-item" *ngFor="let item of summaryItems;">
-                    <div class="flex-inner">
-                        <a>
-                            <h3 class="trade_count trade-green" [style.color]="getSummaryTextColor(item)">{{getSummaryValue(item)}}{{getValueSuffix(item)}}</h3>
-                            <span class="trade_title">{{item.name}}</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="metrics-bottom">
-                <span class="cursor" (click)="MoreStatistics()">
-                    
-                {{!showMoreMetrics ? 'More' : 'Less'}}  Statistics 
-                <mat-icon>{{!showMoreMetrics ? 'keyboard_arrow_down' : 'keyboard_arrow_up'}} </mat-icon>
-                </span>
             </div>
         </div>
     </div>
 
     <!-- Web -->
-    <div class="trade-dash-con mt-3">
-        <div class="row">
-            <div class="col-sm-12 col-md-6" style="padding-right: 2%">
-                <div class="trade-analytics">
-                    <div class="trade-headiang">
-                        <h5>Calendar Report</h5>
-                    </div>
-                    <div class="dsh-img">
-                        <app-calendar #calendarReport></app-calendar>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-6" style="padding-left: 2%">
-                <div class="trade-analytics">
-                    <div class="trade-headiang">
-                        <h5>Realized Return</h5>
-                    </div>
-                    <div class="dsh-img">
-                        <app-realized-return-chart></app-realized-return-chart>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-6 mt-3" style="padding-right: 2%">
-                <div class="trade-analytics">
-                    <div class="trade-headiang">
-                        <h5>Recent Trades</h5>
-                    </div>
-                    <div class="dsh-img">
-                        <app-recent-trades></app-recent-trades>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-12 col-md-6 mt-3" style="padding-left: 2%">
-                <div class="trade-analytics">
-                    <div class="trade-headiang">
-                        <h5>Daily Insights</h5>
-                    </div>
-                    <div class="dsh-img list-group-card px-0 m-0" style="height: 400px;">
-                        <app-key-insights></app-key-insights>
-                       
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    
 
     <!-- Mobile -->
 

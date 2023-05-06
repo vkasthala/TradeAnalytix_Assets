@@ -25,6 +25,9 @@ export class ViewTradePlanComponent extends AddnewtradeplanComponent implements 
     demoService: DemoModeDetailsService,
     toastr: ToastrService,
     dateAdapter: DateAdapter<Date>,
+    settingsService: SettingsService,
+    codedRuleService: CodedRuleService,
+    ) {
     settingsService: SettingsService, codedRuleService: CodedRuleService) {
     super(_dialog, router, metadataService, tradePlanService, toastr, demoService, dateAdapter, settingsService, codedRuleService);
     this.view = true;

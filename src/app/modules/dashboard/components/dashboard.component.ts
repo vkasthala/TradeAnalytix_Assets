@@ -127,23 +127,23 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     if (summaryItem.id == 'realizedReturn' || summaryItem.id == 'netR' || summaryItem.id == 'profitFactor') {
       let value: number = parseFloat(summaryItem.value);
       if (summaryItem.value && value > 0) {
-        color = '#61BC6D';
+        color = '#12B76A';
       } else {
-        color = '#E7706C';
+        color = '#F04438';
       }
     } else if (summaryItem.id == 'win_rate') {
       let value: number = parseFloat(summaryItem.value);
       if (summaryItem.value && value > 80) {
         color = '#61BC6D';
       } else {
-        color = '#E7706C';
+        color = '#F04438';
       }
     } else if (summaryItem.id == 'maxRisk') {
-      color = '#E7706C';
+      color = '#F04438';
     } else if (summaryItem.id == 'avgLosingTrade') {
-      color = '#E7706C';
+      color = '#F04438';
     } else if (summaryItem.id == 'avgWinningTrade') {
-      color = '#61BC6D';
+      color = '#12B76A';
     } else if (summaryItem.id == 'avgTradeCount') {
       let value: string = summaryItem.defaultValue;
       if (summaryItem.value) {
