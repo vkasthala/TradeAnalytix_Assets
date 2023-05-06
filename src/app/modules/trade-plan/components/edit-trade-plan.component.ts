@@ -28,7 +28,7 @@ export class EditTradePlanComponent extends AddnewtradeplanComponent implements 
     settingsService: SettingsService,
     codedRuleService: CodedRuleService,
   ) {
-    super(_dialog, router, metadataService, tradePlanService, toastr, demoService, dateAdapter, settingsService,codedRuleService);
+    super(_dialog, router, metadataService, tradePlanService, toastr, demoService, dateAdapter, settingsService, codedRuleService);
     this.edit = true;
     this.add = false;
     this.view = false;

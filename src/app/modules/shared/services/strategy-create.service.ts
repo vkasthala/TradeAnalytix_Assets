@@ -127,6 +127,7 @@ export class StrategyCreateService {
     optionEntry.actionType = actionType;
     optionEntry.optionType = optionType;
     optionEntry.contracts = contracts;
+    optionEntry.statusId = 1;
     return optionEntry;
   }
 

@@ -26,6 +26,8 @@ export class OptionEntry {
 
     closePrice: number;
 
+    statusId: number;
+
     expireDate: string;
 
     partialLegChange: PartialLegChange[];
