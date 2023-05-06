@@ -12,7 +12,7 @@
     font-weight: 600;
     font-size: 16px;
     line-height: 24px;
-    color: #135EA4;
+    color: #394C86;
     display: flex;
     align-items: center;
     padding: 0.25rem 0;
@@ -29,7 +29,7 @@
         text-decoration: none;
     }
     li.active a {
-        color: #135EA4;
+        color: #394C86;
     }
 }
 
@@ -557,7 +557,10 @@ td.mat-cell {
     font-size: 14px;
     font-weight: 500;
 }
-
+.delete_date {
+    display: none;
+    
+}
 .date-filter-list {
     background:rgb(157 166 186 / 21%);
     font-weight: 400;
@@ -572,9 +575,8 @@ td.mat-cell {
     .title {
         color: #3A4C85;
         font-weight: 600;
-        padding: 1rem;
+        padding: 1rem 0;
         font-size: 16px;
-        text-align: center;
     }
     ul {
         margin: 0;
@@ -585,7 +587,12 @@ td.mat-cell {
             border-bottom: 1px solid rgb(157 166 186 / 55%);
             cursor: pointer;
             padding: 0.5rem 1rem;
-            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            &:hover .delete_date {
+                display: block;
+            }
         }
         li.active {
             background:#fff;
@@ -600,6 +607,7 @@ td.mat-cell {
     padding: 0.375rem 16px !important;
     border-radius: 4px;
     height: 40px;
+    line-height: 30px;
     @media #{$extra-small} {
         justify-content: center;
         width: 100% !important;
@@ -609,7 +617,7 @@ td.mat-cell {
 .trade-plan-lt {
     max-width: 13%;
     flex: 0 0 13.666667%;
-    padding-right: 0;
+    padding: 0;
 }
 .trade-plan-rt {
     max-width: 87%;
@@ -799,4 +807,9 @@ th.mat-header-cell {
     height: calc(1.5em + 0.678rem + 2px) !important;
     font-size: 0.875rem !important;
     line-height: 1.5 !important;
+}
+
+.mat-icon-md {
+    font-size: 20px !important;
+    height: 20px;
 }

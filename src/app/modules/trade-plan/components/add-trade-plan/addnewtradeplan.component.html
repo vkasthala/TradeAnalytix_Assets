@@ -28,7 +28,10 @@
                     <my-date-range-picker placeholder="Date range" id="mydaterange" name="mydaterange" [options]="myDateRangePickerOptions" (dateRangeChanged)="onDateRangeChanged($event)"></my-date-range-picker>
                 </div>
                 <ul *ngFor="let date of planDates; let index = index">
-                    <li [ngClass]="(selectedPlan && selectedPlan.id === date.id) ? 'active' : '' " (click) = "onPlanSelect(date)">{{date.day | date: 'dd-MMM-yyyy'}}</li>
+                    <li [ngClass]="(selectedPlan && selectedPlan.id === date.id) ? 'active' : '' ">
+                        <span (click) = "onPlanSelect(date)">{{date.day | date: 'dd-MMM-yyyy'}}</span>
+                        <mat-icon class="ml-2 mat-icon-md delete_date">delete</mat-icon>
+                    </li>
                 </ul>
             </div>
         </div>
