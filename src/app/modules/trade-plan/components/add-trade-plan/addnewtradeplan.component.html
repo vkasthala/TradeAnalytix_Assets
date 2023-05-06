@@ -4,6 +4,8 @@
         <div class="trade-plan-date mr-2">
             <div class="datepicker-group">
                 <input matInput [matDatepicker]="tradePlanDate" 
+                [min]="minDate"
+                [max]="maxDate"
                 [(ngModel)]="planDate"
                 placeholder="Date"
                 (dateInput)="addEvent('input', $event)"

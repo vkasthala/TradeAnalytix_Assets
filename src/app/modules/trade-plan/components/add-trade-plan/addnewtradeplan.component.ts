@@ -29,6 +29,7 @@ import { TradePlanSummary } from '../../models/trade-plan-summary.model';
 import { DailyStatisticsComponent } from '../daily-statistics/daily-statistics.component';
 import { TodayExecutedLegsComponent } from '../today-executed-legs/today-executed-legs.component';
 import { Subject } from 'rxjs';
+import { CodedRuleService } from 'src/app/modules/settings/services/coded-rule.service';
 const moment = _moment;
 
 @Component({
@@ -50,6 +51,9 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
   mindsetTypes: MindsetType[];
 
   tradePlan: TradePlan = new TradePlan();
+  minDate : Date;
+  maxDate: Date;
+
 
   @ViewChild('tradeMobileStepper', { static: false }) private tradeMobileStepper: MatStepper;
   @ViewChild('openStrategiesGrid', { static: false }) protected tradeStrategiesGrid: OpenStrategiesGridComponent;
@@ -75,7 +79,8 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
     protected toastr: ToastrService,
     protected demoService: DemoModeDetailsService,
     private dateAdapter: DateAdapter<Date>,
-    private settingsService: SettingsService
+    private settingsService: SettingsService,
+    private codedService: CodedRuleService
   ) {
     this.initState();
   }
@@ -124,10 +129,19 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
       this.day = state.day;
       console.log('trade pla id: ', this.tradePlanId);
     }
+    const today = new Date();
+    this.minDate = today;
+    this.maxDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1);
     // if (this.tradePlanId > 0) {
     //   console.log('here..');
     //   this.loadTradePlanData();
     // }
+  }
+
+  dateFilter = (date: Date) => {
+    const today = new Date();
+    const tomorrow = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1);
+    return date >= today && date <= tomorrow;
   }
 
   addRule(title, btnText) {
@@ -283,7 +297,7 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
   }
 
   addTradePlanDate() {
-    if (!this.planDate) {
+    if (!this.planDate || !this.dateFilter(this.planDate.toDate())) {
       this.toastr.error('Please select valid date', 'Invalid Date');
       return;
     }
