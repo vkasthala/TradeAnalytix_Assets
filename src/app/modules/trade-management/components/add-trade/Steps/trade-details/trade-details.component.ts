@@ -149,7 +149,7 @@ export class TradeDetailsComponent implements OnInit {
     console.log('update stock options: ', this.stockOptions);
 
     for (let ind = 0; ind < this.stockOptions.length; ind++) {
-      if (this.stockOptions[ind].contracts === 0) {
+      if (this.stockOptions[ind].contracts === 0 || this.stockOptions[ind].statusId === 3) {
         console.log('this ind: ', ind);
         this.stockOptions[ind].display = false;
       }
@@ -356,6 +356,7 @@ export class TradeDetailsComponent implements OnInit {
     let option: OptionEntry = new OptionEntry();
     option.actionType = ActionType["Buy to Open"];
     option.optionType = OptionType.Call;
+    option.statusId = 1;
     return option;
   }
 
