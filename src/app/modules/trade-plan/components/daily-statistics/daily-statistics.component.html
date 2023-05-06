@@ -28,6 +28,14 @@
         
         <div class="col-sm-3">
             <div class="row align-items-center mb-2">
+                <label class="col-form-label col-7">Commission Paid</label>
+                <span class="col-form-value col-1">{{tradePlanSummary.commission}}</span>
+            </div>
+            <div class="row align-items-center mb-2">
+                <label class="col-form-label col-7">Win Rate</label>
+                <span class="col-form-value col-1">{{tradePlanSummary.winRate}}%</span>
+            </div>
+            <div class="row align-items-center mb-2">
                 <label class="col-form-label col-7">Realized Return</label>
                 <span class="col-form-value col-1">{{tradePlanSummary.realizedReturn}}</span>
             </div>
@@ -35,21 +43,19 @@
                 <label class="col-form-label col-7">Net R</label>
                 <span class="col-form-value col-1">{{tradePlanSummary.netR}}</span>
             </div>
-            <div class="row align-items-center mb-2">
-                <label class="col-form-label col-7">Win Rate</label>
-                <span class="col-form-value col-1">{{tradePlanSummary.winRate}}%</span>
-            </div>
+            
             <div class="row align-items-center mb-2">
                 <label class="col-form-label col-7">Profit Factor</label>
                 <span class="col-form-value col-1">{{tradePlanSummary.profitFactor}}</span>
             </div>
-            <div class="row align-items-center mb-2">
-                <label class="col-form-label col-7">Commission Paid</label>
-                <span class="col-form-value col-1">{{tradePlanSummary.commission}}</span>
-            </div>
+            
         </div>
         
         <div class="col-sm-4">
+            <div class="row align-items-center mb-2">
+                <label class="col-form-label col-9">Payoff Ratio</label>
+                <span class="col-form-value col-2">TBD</span>
+            </div>
             <div class="row align-items-center mb-2">
                 <label class="col-form-label col-9">Portfolio Risk</label>
                 <span class="col-form-value col-2">{{tradePlanSummary.maxRisk}}</span>
@@ -61,10 +67,6 @@
             <div class="row align-items-center mb-2">
                 <label class="col-form-label col-9">Symbol with Lowest Risk</label>
                 <span class="col-form-value col-2">{{tradePlanSummary.minRiskSymbol}}</span>
-            </div>
-            <div class="row align-items-center mb-2">
-                <label class="col-form-label col-9">Ending Balance</label>
-                <span class="col-form-value col-2">{{tradePlanSummary.unrealizedReturn}}</span>
             </div>
         </div>
     </div>
