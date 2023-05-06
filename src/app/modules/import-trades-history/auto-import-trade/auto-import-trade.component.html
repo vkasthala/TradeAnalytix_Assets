@@ -1,0 +1,9 @@
+<div class="trade-form">
+    <div class="pb-3">
+        <div class="col-form-label symbol-description">Link your brokerage account to CueTrade with Plaid by logging into your account.</div>
+        <div class="d-flex align-items-center">
+            <mr-ngx-plaid-link-button env="development" [token]="plaidToken" (Success)="onPlaidSuccess($event)" (Exit)="onPlaidExit($event)" (Load)="onPlaidLoad($event)" (Event)="onPlaidEvent($event)" className="plaid-button" buttonText="Link Account" (Click)="onPlaidClick($event)"></mr-ngx-plaid-link-button>
+            <a class="ml-3" [routerLink]="">List of brokerages supported</a>
+        </div>
+    </div>
+</div>

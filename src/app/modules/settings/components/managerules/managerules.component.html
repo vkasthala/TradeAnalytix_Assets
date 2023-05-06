@@ -63,7 +63,7 @@
             </mat-table>
             <span class="p-3 text-center" *ngIf="dataSource.totalCount === 0">You have not set any manual rules yet. Click 'Add Rule' to add a new manual rule</span>
 
-            <mat-paginator *ngIf="dataSource.totalCount > 0" [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true" [length]="dataSource.totalCount"></mat-paginator>
+            <!-- <mat-paginator *ngIf="dataSource.totalCount > 0" [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true" [length]="dataSource.totalCount"></mat-paginator> -->
         </div>
     </div>
 </div>

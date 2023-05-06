@@ -1,5 +1,23 @@
-<div class="p-3 mt-1">
+<div class="dashboard-header">
+    Add your trades from your brokerage to CueTrade in two ways: Manual Import or Auto-Import. If your brokerage supports auto-import, you link your brokerage account to CueTrade and the trades you execute in the brokerage from that juncture will added to CueTrade automatically.
+    If you prefer manual import, you upload the trade history files from your brokerage and your trades would be added to CueTrade.
+</div>
+<div class="px-3">
     <div class="main-body">
+        <div class="import_trade_header">
+            <span class="header-title">{{importType == 1 ? "Manual Import" : "Auto-Import" }}</span>
+            <div class="d-flex align-items-center justify-content-between">
+                <label class="col-form-label col-6">Select Import Type</label>
+                <select [(value)]="importType" (change)="selectionChange($event.target.value)" class="form-control">
+                    <option value="1">Manual Import</option>
+                    <option value="2">Auto-Import</option>
+                </select>
+            </div>
+        </div>
+        <app-manual-import (newItemEvent)="reload()" *ngIf="importType == 1"></app-manual-import>
+        <app-auto-import *ngIf="importType == 2"></app-auto-import>
+        
+        
         <div class="trade-dash-main px-0">
             <div class="trade-dash-name col-10 pl-0">
                 <h3>Trades can be added in bulk to CueTrade in two ways:<br/>

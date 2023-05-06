@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { MatDialog, MatPaginator, MatSort, MatDialogRef } from '@angular/material';
 import { NavigationExtras, Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
@@ -31,10 +31,11 @@ export class ImportTradesHistory implements AfterViewInit, OnInit {
   expandIndex: any;
   displayedColumns = ['openDate', 'stockName', 'direction', 'status', 'action'];
   pageSize: number = 20
+  importType:number = 1;
 
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort: MatSort;
-
+ 
   dataSource: ImportTradesGridStore;
   importTradesGridRequest: ImportTradesGridRequest = this.getInitialRequest();
 
@@ -200,6 +201,16 @@ export class ImportTradesHistory implements AfterViewInit, OnInit {
     iframe.src = '';
     iframe.setAttribute("src", 'https://www.youtube.com/embed/txIqoIys3GI');
   }
+
+  selectionChange(event: any){
+    if(this.importType == 2) {
+      this.plaidService.createLinkToken().subscribe(result => {
+        this.plaidService.sendClickEvent.emit(result.token);
+      });
+    }
+    this.importType = event;
+  }
+
 
 }
 

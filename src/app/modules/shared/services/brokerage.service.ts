@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Brokerage } from '../../import-trades-history/models/brokerage.model';
@@ -14,7 +14,7 @@ export class BrokerageService {
   private brokerages: Brokerage[] = [];
 
   private autoBrokerages: Brokerage[] = [];
-
+  
   constructor(private httpService: HttpService) { }
 
   public getBrokerages(): Observable<Brokerage[]> {

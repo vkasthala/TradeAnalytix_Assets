@@ -22,9 +22,9 @@
                     </span>
                 </td>
                 <td class="mat-cell">{{coderule.uiLabel}}</td>
-                <td class="mat-cell">Less Than</td>
+                <td class="mat-cell">{{coderule.uiLabel !== 'Daily trading plan creation' ? 'Less Than' : ''}}</td>
                 <td class="mat-cell value-cell">
-                    <span class="d-flex align-items-center">
+                    <span class="d-flex align-items-center" *ngIf="coderule.uiLabel !== 'Daily trading plan creation'">
                         <input type="text" class="form-control col-5" [ngClass]="!coderule.editing ? 'disabled' : ''"
                             [(ngModel)]="coderule.val" />
                         <mat-icon class="ml-2 mat-icon-edit action-icon" (click)="onItemEdit(coderule)"
@@ -35,7 +35,7 @@
                     </span>
                 </td>
                 <td class="mat-cell action-cell"><mat-icon class="mat-icon-sm mat-icon-edit"
-                        (click)="onRowEdit(coderule)">edit
+                        (click)="onRowEdit(coderule)" *ngIf="coderule.uiLabel !== 'Daily trading plan creation'">edit
                     </mat-icon></td>
             </tr>
         </tbody>

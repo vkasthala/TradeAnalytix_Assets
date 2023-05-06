@@ -149,7 +149,7 @@ th.mat-header-cell {
   color: #0190CA !important;
 }
 .btn-apply {
-  background-color: #2285FA;
+  background-color: #4BB964;
   color: #ffffff;
   color: #ffffff;
   font-size: 12px;
@@ -197,14 +197,24 @@ th.mat-header-cell {
   text-align: left !important;
   justify-content: start;
 }
-/* .mat-cell, .mat-footer-cell, .mat-header-cell {
-  text-align: center;
-  justify-content: center;
-} */
+
 .video-modal .modal-dialog {
   max-width: 699px;
 }
 
 .modal {
   top: 10% !important;
+}
+
+.import_trade_header {
+  line-height: 24px;
+  color: #3A4C85;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0.25rem;
+  justify-content: space-between;
+}
+.header-title {
+  font-weight: 600;
+  font-size: 18px;
 }

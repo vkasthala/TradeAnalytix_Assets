@@ -377,7 +377,6 @@ mat-header-cell:last-of-type,
 .sidebar {
     min-width: 330px;
     max-width: 330px;
-    // transition: margin-left .35s ease-in-out, left .35s ease-in-out, margin-right .35s ease-in-out, right .35s ease-in-out;
     direction: ltr;
     background: #394C86;
     -webkit-transform: translate3d(0, 0px, 0px);
@@ -385,7 +384,6 @@ mat-header-cell:last-of-type,
     visibility: visible;
     transition: all 0.5s ease 0s;
     -webkit-transition: all 0.5s ease 0s;
-    border-radius: 60px 0 0 20px;
 }
 
 .sidebar.toggled {
@@ -416,7 +414,6 @@ mat-header-cell:last-of-type,
     transition: margin-left .35s ease-in-out, left .35s ease-in-out, margin-right .35s ease-in-out, right .35s ease-in-out;
     flex-direction: column;
     padding-bottom: 60px;
-    border-radius: 0 60px 50px 0;
     background-color: #f5f7f9;
     @media #{$extra-small} {
         padding-bottom: 0;
