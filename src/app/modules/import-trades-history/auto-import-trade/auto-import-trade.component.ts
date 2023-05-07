@@ -15,8 +15,8 @@ import { ZerodhaPopupComponent } from '../zerodha-popup/zerodha-popup.component'
 })
 export class AutoImportTradeComponent implements OnInit {
   @Output() newItemEvent = new EventEmitter<string>();
-  plaidToken:String = '';
-
+  plaidToken: string = '';
+  // @Input("plaidToken") plaidToken:any;
   
   brokerages: Brokerage[] = [];
 
@@ -37,16 +37,16 @@ export class AutoImportTradeComponent implements OnInit {
     // @Inject(MAT_DIALOG_DATA) data,
     private _dialog: MatDialog,
   ) {
-    debugger;
     console.log('plaidToken',this.plaidToken);
-    plaidService.sendClickEvent.subscribe((res) => {
-      debugger;
-      this.plaidToken = res;
-    });
+    
   }
 
 
   ngOnInit() {
+    this.plaidService.sendClickEvent.subscribe((res) => {
+      this.plaidToken = res;
+    });
+
     console.log('plaidToken',this.plaidToken)
     this.brokerageService.getAutoBrokerages().subscribe(result => {
       this.brokerages = result;
@@ -97,6 +97,7 @@ export class AutoImportTradeComponent implements OnInit {
       institutionId = event.metadata.institution.institution_id;
     }
     this.plaidService.createAccessToken(event.token, institutionId).subscribe(result => {
+      this.newItemEvent.emit();
       this.plaidService.initInvestmentsFetch(institutionId).subscribe(result => {
         console.log('Auto fetch completed');
       });
