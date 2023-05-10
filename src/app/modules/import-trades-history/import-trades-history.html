@@ -1,9 +1,9 @@
 <div class="dashboard-header">
-    Add your trades from your brokerage to CueTrade in two ways: Manual Import or Auto-Import. If your brokerage supports auto-import, you link your brokerage account to CueTrade and the trades you execute in the brokerage from that juncture will added to CueTrade automatically.
+    Add your trades from your brokerage to CueTrade in two ways: Manual Import or Auto-Import. <br/>If your brokerage supports auto-import, you link your brokerage account to CueTrade and the trades you execute in the brokerage from that juncture will added to CueTrade automatically.
     If you prefer manual import, you upload the trade history files from your brokerage and your trades would be added to CueTrade.
 </div>
 <div class="px-3">
-    <div class="main-body">
+    <div class="main-body px-3">
         <div class="import_trade_header">
             <span class="header-title">{{importType == 1 ? "Manual Import" : "Auto-Import" }}</span>
             <div class="d-flex align-items-center justify-content-between">
@@ -80,11 +80,11 @@
                 <table class="mat-table">
                     <thead>
                         <tr class="mat-header-row">
-                            <th class="mat-header-cell">Brokerage</th>
-                            <th class="mat-header-cell">Status</th>
-                            <th class="mat-header-cell">Linked Date</th>
-                            <th class="mat-header-cell">Last Successful Fetch Date</th>
-                            <th class="mat-header-cell">Action</th>
+                            <th class="mat-header-cell brokerage_cell">Brokerage</th>
+                            <th class="mat-header-cell Linked_cell">Status</th>
+                            <th class="mat-header-cell Linked_cell">Linked Date</th>
+                            <th class="mat-header-cell Fetch_cell">Last Successful Fetch Date</th>
+                            <th class="mat-header-cell Action_cell">Action</th>
                             <th class="mat-header-cell"></th>
                         </tr>
                     </thead>
@@ -94,7 +94,7 @@
                             <td class="mat-cell">Not Linked</td>
                             <td class="mat-cell">NA</td>
                             <td class="mat-cell">NA</td>
-                            <td class="mat-cell"><a href="#">Link</a></td>
+                            <td class="mat-cell"><span class="cursor-text">Link</span></td>
                             <td class="mat-cell"></td>
                         </tr>
                         <tr class="mat-row">
@@ -102,7 +102,7 @@
                             <td class="mat-cell">Linked</td>
                             <td class="mat-cell">23-Feb-2023</td>
                             <td class="mat-cell">04-May-2023</td>
-                            <td class="mat-cell"><a href="#">Unlink</a></td>
+                            <td class="mat-cell"><span class="cursor-text">Unlink</span></td>
                             <td class="mat-cell">
                                 <button type="button" class="btn btn-green">Fetch Trades</button>
                             </td>
@@ -112,7 +112,7 @@
                             <td class="mat-cell">Not Linked</td>
                             <td class="mat-cell">23-Feb-2023</td>
                             <td class="mat-cell">04-May-2023</td>
-                            <td class="mat-cell"><a href="#">Unlink</a></td>
+                            <td class="mat-cell"><span class="cursor-text">Link</span></td>
                             <td class="mat-cell">
                                 <button type="button" class="btn btn-green">Fetch Trades</button>
                             </td>
@@ -122,7 +122,7 @@
                             <td class="mat-cell">Not Linked</td>
                             <td class="mat-cell">23-Feb-2023</td>
                             <td class="mat-cell">04-May-2023</td>
-                            <td class="mat-cell"><a href="#">Unlink</a></td>
+                            <td class="mat-cell"><span class="cursor-text">Link</span></td>
                             <td class="mat-cell">
                                 <button type="button" class="btn btn-green">Fetch Trades</button>
                             </td>
@@ -132,7 +132,7 @@
                             <td class="mat-cell">Not Linked</td>
                             <td class="mat-cell">NA</td>
                             <td class="mat-cell">NA</td>
-                            <td class="mat-cell"><a href="#">Unlink</a></td>
+                            <td class="mat-cell"><span class="cursor-text">Unlink</span></td>
                             <td class="mat-cell">
                                 
                             </td>

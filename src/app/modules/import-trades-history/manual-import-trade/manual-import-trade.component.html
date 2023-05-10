@@ -12,7 +12,7 @@
     </div>
     <div class="pb-3">
         <div class="col-form-label symbol-description">
-            Step 2: Select the file exported from your brokerage. Click <a [routerLink]="" (click)="downloadStandardFile()">here</a> for instructions on how to export trade history files from your brokerage
+            Step 2: Select the file exported from your brokerage. Click <a [routerLink]="">here</a> for instructions on how to export trade history files from your brokerage
         </div>
         <input class="w-100" type="file" (change)="selectFile($event)" />
     </div>
@@ -21,7 +21,7 @@
         <div class="col-form-label symbol-description">
             Choose Options File
         </div>
-        <input class="w-100" type="file" (change)="selectOptionsFile($event)" />
+        <input type="file" (change)="selectOptionsFile($event)" />
     </div>
 
     <div class="pb-3">
@@ -31,6 +31,12 @@
         <button class="btn btn-enter btn-sm" *ngIf="!processing && !isDemoMode" [disabled]="!selectedFiles && !selectedOptionFiles"
                 (click)="importTrades()">Upload</button>
             <mat-spinner [diameter]="30" *ngIf="processing"></mat-spinner>
+    </div>
+
+    <div class="pb-3">
+        <div class="col-form-label symbol-description">
+            Step 4: Check the status of  your import and visit <a [routerLink]="['/trade-strategies/']">Trade Book</a> to view the trade strategies created or updated as a result of your import
+        </div>
     </div>
     
 </div>

@@ -6,6 +6,7 @@ import { UploadFileService } from 'src/app/modules/import-trades/services/upload
 import { BrokerageService } from '../../shared/services/brokerage.service';
 import { Brokerage } from '../models/brokerage.model';
 import { DemoModeDetailsService } from '../../shared/services/demo-mode-details.service';
+import { UtilService } from '../../utilities/services/util.service';
 
 @Component({
   selector: 'app-manual-import',
@@ -32,7 +33,7 @@ export class ManualImportTradeComponent implements OnInit {
     private brokerageService: BrokerageService,
     protected toastr: ToastrService,
     protected router: Router,
-    // public dialogRef: MatDialogRef<ImportTradePopupComponent>,
+    private utilService: UtilService,
     protected demoService: DemoModeDetailsService,
   ) {
     
@@ -125,5 +126,8 @@ export class ManualImportTradeComponent implements OnInit {
     console.log('brokerage::', this.selectedBrokerage);
   }
 
+  downloadStandardFile() {
+    this.utilService.downloadFile("CueTrade_ImportTrades_Standard.xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+  }
 
 }

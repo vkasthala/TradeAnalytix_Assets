@@ -912,8 +912,18 @@ iframe {
     }
 }
 
+.sidebar.toggled .sidebar-brand {
+    margin-left: 0;
+}
+.sidebar.toggled .trade-navbar {
+    padding-left: 0;
+}
+.sidebar.toggled .trade-navbar .list-unstyled {
+    display: none;
+}
 .sidebar.toggled .home-link {
-    padding: 10px;
+    display: none;
+    padding: 0;
     span {
         display: none;
     }
@@ -1013,7 +1023,7 @@ iframe body {
 
 .dashboard-header {
     font-size: 16px;
-    background: linear-gradient(91.71deg, #4BB964 -17.07%, #3794E8 105.91%);
+    background: linear-gradient(91.71deg, rgba(57, 76, 134, 0.774) -17.07%, rgba(55, 148, 232, 0.9) 48.91%);
     padding: 10px 30px;
     display: flex;
     align-items: center;
@@ -1023,4 +1033,12 @@ iframe body {
     @media #{$extra-small} {
         padding: 15px;
     } 
+}
+.auto-import-container button {
+    background-color: #4BB964 !important;
+    border-color: #4BB964 !important;
+    width: 140px;
+    height: 47px !important;
+    font-size: 14px !important;
+    padding: 0 1rem !important;
 }
