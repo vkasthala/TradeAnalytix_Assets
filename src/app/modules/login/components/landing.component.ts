@@ -51,7 +51,9 @@ export class LandingComponent implements OnInit {
     //     this.currentInd++;
     //   }
     // }, 3000);
+    this.login('google');
   }
+  
 
   
   login(authProvider: string) {
