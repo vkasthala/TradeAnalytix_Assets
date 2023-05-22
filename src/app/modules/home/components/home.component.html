@@ -1,7 +1,7 @@
 <div class="wrapper trade-app-dashboard zoom">
     <div class="sidebar" [ngClass]="!isExpand ? '' : 'toggled'">
         <span *ngIf="isExpand" class="sidebar-brand cursor-pointer" [routerLink]="['/dashboard/']">
-            <img src="../../../../assets/images/cuetrade-blue-logo-sm.svg" alt="Trade-app-logo" class="img-fluid logo_sm">
+            <img src="../../../../assets/images/logo-sm.svg" alt="Trade-app-logo" class="img-fluid logo_sm">
         </span>
         <span *ngIf="!isExpand" class="sidebar-brand cursor-pointer" [routerLink]="['/dashboard/']">
             <img src="../../../../assets/images/logo.svg" alt="Trade-app-logo" class="img-fluid full-logo">
@@ -118,7 +118,7 @@
                     </div> -->
                     <div class="top-nav">
                         <span class="demo-toggle">
-                            Demo <div class="switch ml-2">
+                            Demo&nbsp;Mode <div class="switch ml-2">
                                 <input type="checkbox" [(ngModel)]="demoToggle" (change)="demoMsg()" id="demoToggle" class="cursor" [checked]="demoToggle" />
                                 <label for="demoToggle"></label>
                               </div>

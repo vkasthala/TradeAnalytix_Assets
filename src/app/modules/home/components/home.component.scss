@@ -6,7 +6,6 @@
     background: #FFFFFF;
     box-shadow: 0px 2px 2px rgba(105, 105, 105, 0.1);
     display: flex;
-    border-top-right-radius: 60px;
     @media #{$extra-small} {
         display: none;
     }
@@ -412,11 +411,13 @@
 }
 
 .demo-toggle {
-    width: 95px;
+    width: 135px;
     position: relative;
     display: flex;
     align-items: baseline;
     margin-top: -8px;
+    font-weight: 600;
+    color: #121D33;
     @media #{$extra-small} {
         color: rgb(255, 255, 255);
         width: 50px;

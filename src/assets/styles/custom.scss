@@ -377,7 +377,6 @@ mat-header-cell:last-of-type,
 .sidebar {
     min-width: 330px;
     max-width: 330px;
-    // transition: margin-left .35s ease-in-out, left .35s ease-in-out, margin-right .35s ease-in-out, right .35s ease-in-out;
     direction: ltr;
     background: #394C86;
     -webkit-transform: translate3d(0, 0px, 0px);
@@ -385,7 +384,6 @@ mat-header-cell:last-of-type,
     visibility: visible;
     transition: all 0.5s ease 0s;
     -webkit-transition: all 0.5s ease 0s;
-    border-radius: 60px 0 0 20px;
 }
 
 .sidebar.toggled {
@@ -416,7 +414,6 @@ mat-header-cell:last-of-type,
     transition: margin-left .35s ease-in-out, left .35s ease-in-out, margin-right .35s ease-in-out, right .35s ease-in-out;
     flex-direction: column;
     padding-bottom: 60px;
-    border-radius: 0 60px 50px 0;
     background-color: #f5f7f9;
     @media #{$extra-small} {
         padding-bottom: 0;
@@ -429,7 +426,7 @@ a.sidebar-link {
     display: block;
     padding: 0 18px;
     color: #fff;
-    font-weight: 400;
+    font-weight: 600;
     text-decoration: none;
     cursor: pointer;
     display: flex;
@@ -915,8 +912,18 @@ iframe {
     }
 }
 
+.sidebar.toggled .sidebar-brand {
+    margin-left: 0;
+}
+.sidebar.toggled .trade-navbar {
+    padding-left: 0;
+}
+.sidebar.toggled .trade-navbar .list-unstyled {
+    display: none;
+}
 .sidebar.toggled .home-link {
-    padding: 10px;
+    display: none;
+    padding: 0;
     span {
         display: none;
     }
@@ -965,7 +972,8 @@ iframe {
 .trade-navbar .list-unstyled {
     margin: 0;
     padding-left: 41px;
-    font-size: 18px;
+    font-size: 16px;
+    margin-bottom: 5px;
 }
 .trade-navbar {
     margin-top: 1.5rem;
@@ -1015,7 +1023,7 @@ iframe body {
 
 .dashboard-header {
     font-size: 16px;
-    background: linear-gradient(91.71deg, #4BB964 -17.07%, #3794E8 105.91%);
+    background: linear-gradient(91.71deg, rgba(57, 76, 134, 0.774) -17.07%, rgba(55, 148, 232, 0.9) 48.91%);
     padding: 10px 30px;
     display: flex;
     align-items: center;
@@ -1025,4 +1033,12 @@ iframe body {
     @media #{$extra-small} {
         padding: 15px;
     } 
+}
+.auto-import-container button {
+    background-color: #4BB964 !important;
+    border-color: #4BB964 !important;
+    width: 140px;
+    height: 47px !important;
+    font-size: 14px !important;
+    padding: 0 1rem !important;
 }

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HttpService } from '../../shared/services/http.service';
@@ -8,7 +8,7 @@ import { LinkTokenResp } from '../models/plaid/link-token-resp';
   providedIn: 'root'
 })
 export class PlaidService {
-
+  sendClickEvent: EventEmitter<any> = new EventEmitter();
   constructor(private httpService: HttpService) { }
 
   createLinkToken(): Observable<LinkTokenResp> {

@@ -89,22 +89,28 @@
         </div>
         <div class="d-flex mb-1 align-items-center">
             <label class="col-form-label">Maximum Risk</label>
-            <div class="col-8 col-form-value">
-                <div class="d-flex align-items-center">
-                    <span class="col-3 pl-0" *ngIf="!riskEditing">{{strategySummaryResult.maxLoss}}</span>
-                    <mat-icon class="mat-icon-sm mat-icon-edit" *ngIf="!riskEditing" (click)="onMaxRiskEdit()">edit</mat-icon>
-                    <span *ngIf="riskEditing">
-                        <input type="text" class="form-control user-risk-input col-6" [(ngModel)]="userDefinedRisk" *ngIf="riskEditing"/>
-                        <mat-icon class="ml-2 mat-icon-edit action-icon" (click)="updateMaxRisk()" *ngIf="riskEditing">check_circle</mat-icon>
-                        <mat-icon class="ml-2 text-danger action-icon" (click)="onMaxRiskEditCancel()" *ngIf="riskEditing">close</mat-icon>
-                    </span>
+            <div class="col-8 col-form-value pr-0">
+                <div class="d-flex align-items-center justify-content-between">
+                    <div>
+                        <span class="col-3 pl-0" *ngIf="!riskEditing">{{strategySummaryResult.maxLoss}}</span>
+                        <mat-icon class="mat-icon-sm mat-icon-edit" *ngIf="!riskEditing" (click)="onMaxRiskEdit()">edit</mat-icon>
+                        <span *ngIf="riskEditing">
+                            <input type="text" class="form-control user-risk-input col-6" [(ngModel)]="userDefinedRisk" *ngIf="riskEditing"/>
+                            <mat-icon class="ml-2 mat-icon-edit action-icon" (click)="updateMaxRisk()" *ngIf="riskEditing">check_circle</mat-icon>
+                            <mat-icon class="ml-2 text-danger action-icon" (click)="onMaxRiskEditCancel()" *ngIf="riskEditing">close</mat-icon>
+                        </span>
+                    </div>
                     <span *ngIf="!closeTrade && !viewTrade">
                         <a class="assess-risk-btn" (click)="navigateToRiskAnalysis()">Assess Risk</a>
                     </span>
                 </div>
             </div>
         </div>
-        <div class="d-flex mb-1 align-items-center" *ngIf="!addTrade && tradeStatus !== 4">
+        <div class="d-flex mb-1 align-items-center" *ngIf="tradeStatus == 1 || tradeStatus == 2">
+            <label class="col-form-label">Realized Return</label>
+            <div class="col-8 col-md-7 col-form-value">{{strategySummaryResult.realizedReturn}}</div>
+        </div>
+        <div class="d-flex mb-1 align-items-center" *ngIf="tradeStatus == 2">
             <label class="col-form-label">Net R</label>
             <div class="col-8 col-md-7 col-form-value">{{strategySummaryResult.netR}}</div>
         </div>
@@ -126,7 +132,7 @@
                 <div class="col-8 col-md-7 col-form-value">{{stockSummaryResult.totalStrategies}}</div>
             </div>
             <div class="d-flex mb-1 align-items-center">
-                <label class="col-form-label">Transactions</label>
+                <label class="col-form-label">Total Trades</label>
                 <div class="col-8 col-md-7 col-form-value">{{stockSummaryResult.totalTransactions}}</div>
             </div>
             <div class="d-flex mb-1 align-items-center">
@@ -153,7 +159,7 @@
             </div>
         </div>
 
-        <div class="mb-2 showMore">
+        <div class="mb-2 text-right" [ngClass]="tradeStatus !== 4 ? 'showMore' : '' ">
             <span class="cursor link-item" (click)="toggleStatistics()">{{showMoreStatistics ? 'Less' : 'More'}}</span>
         </div>
     </div>

@@ -1,73 +1,151 @@
-<div class="p-3 mt-1">
-    <div class="main-body">
-        <div class="trade-dash-main px-0">
-            <div class="trade-dash-name col-10 pl-0">
-                <h3>Trades can be added in bulk to CueTrade in two ways:<br/>
-                    1. Download standard template (click <a [routerLink]="" (click)="downloadStandardFile()">here</a>), add your trades to it, click on Manual Import button, choose Standard as the option and upload the file<br/>
-                    2. Download trade history file from your brokerage, click on Manual Import button, choose your brokerage from the dropdown and upload the file
-                </h3>
+<div class="dashboard-header">
+    Add your trades from your brokerage to CueTrade in two ways: Manual Import or Auto-Import. <br/>If your brokerage supports auto-import, you link your brokerage account to CueTrade and the trades you execute in the brokerage from that juncture will added to CueTrade automatically.
+    If you prefer manual import, you upload the trade history files from your brokerage and your trades would be added to CueTrade.
+</div>
+<div class="px-3">
+    <div class="main-body px-3">
+        <div class="import_trade_header">
+            <span class="header-title">{{importType == 1 ? "Manual Import" : "Auto-Import" }}</span>
+            <div class="d-flex align-items-center justify-content-between">
+                <label class="col-form-label col-6">Select Import Type</label>
+                <select [(value)]="importType" (change)="selectionChange($event.target.value)" class="form-control">
+                    <option value="1">Manual Import</option>
+                    <option value="2">Auto-Import</option>
+                </select>
             </div>
-            <div class="d-flex justify-content-end align-items-center">
-                <!-- <a class="watch-video-sm cursor mr-3" data-toggle="modal" data-target="#modal1">Watch Video</a> -->
-                <button type="button" (click)="importTradesPopup();" class="btn btn-apply">Manual Import</button>
-                <!-- <button type="button" (click)="downloadStandardFile()" class="d-flex btn btn-apply ml-2 align-items-center"><mat-icon class="mr-2">download</mat-icon> Template</button> -->
-                <button type="button" class="btn btn-apply ml-2" (click)="autoImportTradesPopup();">Auto-Import</button>
-                <!--<button type="button" (click)="redirectToBrokerageUrl()" class="d-flex btn btn-apply ml-2 align-items-center">Zerodha</button> -->
+        </div>
+        
+        
+        <div *ngIf="importType == 1">
+            <app-manual-import (newItemEvent)="reload()"></app-manual-import>
+            <div class="trade-table">
+                <mat-table [dataSource]="dataSource" matSort>
+                    <!-- Date Column -->
+                    <ng-container matColumnDef="openDate">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header class="date-cell">Date</mat-header-cell>
+                        <mat-cell class="date-cell" *matCellDef="let element"> {{element.createDateTime | date: 'dd-MMM-yyyy'}} </mat-cell>
+                    </ng-container>
+
+                    <!-- File name Column -->
+                    <ng-container matColumnDef="stockName">
+                        <mat-header-cell class="stock-name-cell" *matHeaderCellDef mat-sort-header>File name</mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.fileName}} </mat-cell>
+                    </ng-container>
+
+                    <!-- Uploaded Records Column -->
+                    <ng-container matColumnDef="direction">
+                        <mat-header-cell class="records-cell" *matHeaderCellDef mat-sort-header>Uploaded Records</mat-header-cell>
+                        <mat-cell *matCellDef="let element" class="text-success records-cell"> {{element.totalRecords}} </mat-cell>
+                    </ng-container>
+
+                    <!-- Failed Records Column -->
+                    <ng-container matColumnDef="status">
+                        <mat-header-cell class="records-cell" *matHeaderCellDef mat-sort-header>Failed Records</mat-header-cell>
+                        <mat-cell *matCellDef="let element" class="text-danger records-cell"> {{element.failedRecords}} </mat-cell>
+                    </ng-container>
+
+                    <!-- Closed Date Column -->
+                    <ng-container matColumnDef="action">
+                        <mat-header-cell class="action-cell" *matHeaderCellDef mat-sort-header>Action</mat-header-cell>
+                        <mat-cell *matCellDef="let element, let i = index" class="action-cell action_colum">
+                            <div class="d-flex align-items-center">
+                                <span class="mr-3 import_trade_actions" (click)="downloadFailedTrade(element)">
+                                    <mat-icon class="mat-icon-sm">download</mat-icon> Failed Records
+                                </span>
+                                <!-- <span class="mr-3 import_trade_actions" (click)="downloadTradeThesis(element)">
+                                    <mat-icon  class="mat-icon-sm">download</mat-icon> Impacted Trades
+                                </span>
+                                <span class="d-flex align-items-center position-relative">
+                                    <mat-icon class="mat-icon-sm">cloud_upload</mat-icon>
+                                    <input class="custom-browse" type="file" (change)="uploadTradeThesis($event, element)" /> Upload Trade Thesis
+                                </span> -->
+                            </div>
+                        </mat-cell>
+                    </ng-container>
+
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                </mat-table>
+                <div class="p-3 text-center" *ngIf="dataSource.length === 0">No trades are imported yet</div>
+                <!-- Angular 8 pagination -->
+                <mat-paginator *ngIf="dataSource.totalCount > 0" [pageSize]="20" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true" [length]="dataSource.totalCount">
+                </mat-paginator>
             </div>
         </div>
 
-        <div class="trade-table">
-            <mat-table [dataSource]="dataSource" matSort>
-                <!-- Date Column -->
-                <ng-container matColumnDef="openDate">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header class="date-cell">Date</mat-header-cell>
-                    <mat-cell class="date-cell" *matCellDef="let element"> {{element.createDateTime | date: 'dd-MMM-yyyy'}} </mat-cell>
-                </ng-container>
+        <div *ngIf="importType == 2">
+            <app-auto-import (newItemEvent)="reload()"></app-auto-import>
+            <h4 class="sub-title py-2">Brokerage Accounts</h4>
+            <div class="trade-table">
+                <table class="mat-table">
+                    <thead>
+                        <tr class="mat-header-row">
+                            <th class="mat-header-cell brokerage_cell">Brokerage</th>
+                            <th class="mat-header-cell Linked_cell">Status</th>
+                            <th class="mat-header-cell Linked_cell">Linked Date</th>
+                            <th class="mat-header-cell Fetch_cell">Last Successful Fetch Date</th>
+                            <th class="mat-header-cell Action_cell">Action</th>
+                            <th class="mat-header-cell"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="mat-row">
+                            <td class="mat-cell">Robinhood</td>
+                            <td class="mat-cell">Not Linked</td>
+                            <td class="mat-cell">NA</td>
+                            <td class="mat-cell">NA</td>
+                            <td class="mat-cell"><span class="cursor-text">Link</span></td>
+                            <td class="mat-cell"></td>
+                        </tr>
+                        <tr class="mat-row">
+                            <td class="mat-cell">eTrade</td>
+                            <td class="mat-cell">Linked</td>
+                            <td class="mat-cell">23-Feb-2023</td>
+                            <td class="mat-cell">04-May-2023</td>
+                            <td class="mat-cell"><span class="cursor-text">Unlink</span></td>
+                            <td class="mat-cell">
+                                <button type="button" class="btn btn-green">Fetch Trades</button>
+                            </td>
+                        </tr>
+                        <tr class="mat-row">
+                            <td class="mat-cell">Fidelity</td>
+                            <td class="mat-cell">Not Linked</td>
+                            <td class="mat-cell">23-Feb-2023</td>
+                            <td class="mat-cell">04-May-2023</td>
+                            <td class="mat-cell"><span class="cursor-text">Link</span></td>
+                            <td class="mat-cell">
+                                <button type="button" class="btn btn-green">Fetch Trades</button>
+                            </td>
+                        </tr>
+                        <tr class="mat-row">
+                            <td class="mat-cell">Trade King</td>
+                            <td class="mat-cell">Not Linked</td>
+                            <td class="mat-cell">23-Feb-2023</td>
+                            <td class="mat-cell">04-May-2023</td>
+                            <td class="mat-cell"><span class="cursor-text">Link</span></td>
+                            <td class="mat-cell">
+                                <button type="button" class="btn btn-green">Fetch Trades</button>
+                            </td>
+                        </tr>
+                        <tr class="mat-row">
+                            <td class="mat-cell">Trade Station</td>
+                            <td class="mat-cell">Not Linked</td>
+                            <td class="mat-cell">NA</td>
+                            <td class="mat-cell">NA</td>
+                            <td class="mat-cell"><span class="cursor-text">Unlink</span></td>
+                            <td class="mat-cell">
+                                
+                            </td>
+                        </tr>
+                    </tbody>
+                   
 
-                <!-- File name Column -->
-                <ng-container matColumnDef="stockName">
-                    <mat-header-cell class="stock-name-cell" *matHeaderCellDef mat-sort-header>File name</mat-header-cell>
-                    <mat-cell *matCellDef="let element"> {{element.fileName}} </mat-cell>
-                </ng-container>
-
-                <!-- Uploaded Records Column -->
-                <ng-container matColumnDef="direction">
-                    <mat-header-cell class="records-cell" *matHeaderCellDef mat-sort-header>Uploaded Records</mat-header-cell>
-                    <mat-cell *matCellDef="let element" class="text-success records-cell"> {{element.totalRecords}} </mat-cell>
-                </ng-container>
-
-                <!-- Failed Records Column -->
-                <ng-container matColumnDef="status">
-                    <mat-header-cell class="records-cell" *matHeaderCellDef mat-sort-header>Failed Records</mat-header-cell>
-                    <mat-cell *matCellDef="let element" class="text-danger records-cell"> {{element.failedRecords}} </mat-cell>
-                </ng-container>
-
-                <!-- Closed Date Column -->
-                <ng-container matColumnDef="action">
-                    <mat-header-cell class="action-cell" *matHeaderCellDef mat-sort-header>Action</mat-header-cell>
-                    <mat-cell *matCellDef="let element, let i = index" class="action-cell action_colum">
-                        <div class="d-flex align-items-center">
-                            <span class="mr-3 import_trade_actions" (click)="downloadFailedTrade(element)">
-                                <mat-icon class="mat-icon-sm">download</mat-icon> Failed Records
-                            </span>
-                            <!-- <span class="mr-3 import_trade_actions" (click)="downloadTradeThesis(element)">
-                                <mat-icon  class="mat-icon-sm">download</mat-icon> Impacted Trades
-                            </span>
-                            <span class="d-flex align-items-center position-relative">
-                                <mat-icon class="mat-icon-sm">cloud_upload</mat-icon>
-                                <input class="custom-browse" type="file" (change)="uploadTradeThesis($event, element)" /> Upload Trade Thesis
-                            </span> -->
-                        </div>
-                    </mat-cell>
-                </ng-container>
-
-                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-            </mat-table>
-            <div class="p-3 text-center" *ngIf="dataSource.length === 0">No trades are imported yet</div>
-            <!-- Angular 8 pagination -->
-            <mat-paginator *ngIf="dataSource.totalCount > 0" [pageSize]="20" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true" [length]="dataSource.totalCount">
-            </mat-paginator>
+                </table>
+                
+                
+                <!-- <mat-paginator *ngIf="dataSource.totalCount > 0" [pageSize]="20" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true" [length]="dataSource.totalCount">
+                </mat-paginator> -->
+            </div>
         </div>
     </div>
 </div>

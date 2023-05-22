@@ -32,6 +32,10 @@ import { Subject } from 'rxjs';
 import { UserCodedRule } from 'src/app/modules/settings/models/user-coded-rule.model';
 import { CodedRuleService } from 'src/app/modules/settings/services/coded-rule.service';
 import { ConfirmDialogComponent } from 'src/app/modules/shared/components/modals/confirm-dialog/confirm-dialog.component';
+import { EntryExitRulesGridStore } from 'src/app/modules/settings/services/entry-exit-rules-grid-store';
+import { EntryExitRulesService } from 'src/app/modules/settings/services/entry-exit-rules.service';
+import { EntryExitRulesGridRequest } from 'src/app/modules/settings/models/entry-exit-rules-grid-request.model';
+import { EntryExitRulesGridPage } from 'src/app/modules/settings/models/entry-exit-rules-grid-page.model';
 const moment = _moment;
 
 @Component({
@@ -77,7 +81,8 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
   userCodedRules: UserCodedRule[];
   portfolioLevelRules=[];
   selecedDate:any;
-
+  dataSource: EntryExitRulesGridStore;
+  displayedColumns: string[] = ['description'];
   constructor(
     protected _dialog: MatDialog,
     protected router: Router,
@@ -88,6 +93,7 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
     private dateAdapter: DateAdapter<Date>,
     private settingsService: SettingsService,
     private codedRuleService: CodedRuleService,
+    private entryExitRulesService: EntryExitRulesService,
   ) {
     this.initState();
   }
@@ -113,9 +119,19 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
       this.updateTradePlan();
     });
     this.loadCodedRulesData();
+    this.dataSource.loadEntryExitRulesStore(this.getInitialRequest());
   }
 
   ngOnInit() {
+    this.dataSource = new EntryExitRulesGridStore(this.entryExitRulesService, this.settingsService);
+  }
+  getInitialRequest(): EntryExitRulesGridRequest {
+    let request: EntryExitRulesGridRequest = new EntryExitRulesGridRequest();
+    let pageRequest: EntryExitRulesGridPage = new EntryExitRulesGridPage();
+    pageRequest.pageNumber = 0;
+    pageRequest.pageSize = 20;
+    request.page = pageRequest;
+    return request;
   }
 
   loadTradePlanData() {
@@ -189,6 +205,9 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
       this.planDates = result;
       this.selecedDate = result[0];
       this.initTradePlanSelect(selectedDay);
+      if(result.length === 0) {
+        this.toastr.error("Trade plan does not exist for the selected date range");
+      }
     });
   }
 
@@ -395,6 +414,10 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
       this.tradePlanService.getTradePlanEntries(fromDate, toDate).subscribe(result => {
         this.planDates = result;
         this.initTradePlanSelect(null);
+        if(result.length === 0) {
+          this.toastr.error("Trade plan does not exist for the selected date range");
+        }
+        
       });
     } else {
       this.loadPlanEntries(null);

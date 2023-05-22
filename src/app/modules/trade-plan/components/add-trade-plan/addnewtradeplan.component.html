@@ -1,4 +1,4 @@
-<div class="row m-0 dashboard-header">
+<div class="row m-0 dashboard-header px-2">
     <span class="col-6">Select a date and click New Plan to create a trading plan for the day.</span>
     <div class="d-flex justify-content-end col-6">
         <div class="trade-plan-date mr-3">
@@ -112,8 +112,17 @@
                                                 </div>
                                             </div>
                                             <div class="tab-pane" id="EntryExitRules" role="tabpanel">
-                                                <div class="d-flex table-container">
-                                                    <app-managerules></app-managerules>
+                                                <div class="d-flex table-container manual-rules">
+                                                    <mat-table [dataSource]="dataSource" matSort>
+                                                        <ng-container matColumnDef="description">
+                                                            <mat-header-cell class="rule-cell" *matHeaderCellDef>Rule</mat-header-cell>
+                                                            <mat-cell *matCellDef="let element" class="rule-cell"> {{element.description}} </mat-cell>
+                                                        </ng-container>
+                                        
+                                                        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                                                        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                                                    </mat-table>
+                                                    <span class="p-3 text-center" *ngIf="dataSource.totalCount === 0">You have not set any manual rules yet. Click 'Add Rule' to add a new manual rule</span>
                                                 </div>
                                             </div>
                                         </div>

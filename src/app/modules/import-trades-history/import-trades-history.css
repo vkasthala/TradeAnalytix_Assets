@@ -2,28 +2,34 @@
 mat-table {
     width: 100%;
 }
-
+table.mat-table {
+  border-spacing: 0;
+  width: 100%;
+}
 th.mat-header-cell {
-  background: #979797;
-  color: #fff;
   font-size: 14px;
-  font-weight: 500;
-  border-bottom: 1px solid #dee2e6;
+  font-weight: 600;
+  border-bottom: 0;
+  padding-right: 15px;
 }
 
 .mat-row:nth-child(even){
   background-color: transparent;
   border: 0;
 }
-
+.mat-cell, .mat-footer-cell {
+  font-size: 14px;
+  color: #3B5065;
+  border: 0;
+}
 .mat-row:nth-child(odd){
   
   background-color: transparent;
   border: 0;
 }
 .date-cell {
-  width: 10%;
-  flex: 0 0 10% !important;
+  width: 12%;
+  flex: 0 0 12% !important;
 }
 .strategy-id-cell{
   width: 15%;
@@ -36,8 +42,8 @@ th.mat-header-cell {
 }
 
 .stock-name-cell{
-  width: 28%;
-  flex: 0 0 28% !important;
+  width: 26%;
+  flex: 0 0 26% !important;
 }
 
 .direction-cell{
@@ -149,8 +155,7 @@ th.mat-header-cell {
   color: #0190CA !important;
 }
 .btn-apply {
-  background-color: #2285FA;
-  color: #ffffff;
+  background-color: #4BB964;
   color: #ffffff;
   font-size: 12px;
   padding: 0.375rem !important;
@@ -197,14 +202,61 @@ th.mat-header-cell {
   text-align: left !important;
   justify-content: start;
 }
-/* .mat-cell, .mat-footer-cell, .mat-header-cell {
-  text-align: center;
-  justify-content: center;
-} */
+
 .video-modal .modal-dialog {
   max-width: 699px;
 }
 
 .modal {
   top: 10% !important;
+}
+
+.import_trade_header {
+  line-height: 24px;
+  color: #3A4C85;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0.25rem;
+  justify-content: space-between;
+}
+.header-title {
+  font-weight: 600;
+  font-size: 18px;
+}
+.sub-title {
+  font-weight: 500;
+  font-size: 16px;
+  color: #394C86;
+}
+
+.btn-green {
+  background-color: #4BB964;
+  color: #ffffff;
+  font-size: 14px;
+  padding: 0.375rem 1rem !important;
+  border-radius: 4px;
+  height: 40px;
+  line-height: 26px;
+}
+
+.form-control {
+  font-size: 15px !important;
+}
+.cursor-text {
+  color: #007bff;
+  text-decoration: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.brokerage_cell {
+  width: 15%;
+}
+.Linked_cell {
+  width: 12%;
+}
+.Fetch_cell {
+  width: 20%;
+}
+.Action_cell {
+  width: 10%;
 }

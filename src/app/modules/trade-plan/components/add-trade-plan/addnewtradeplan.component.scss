@@ -607,7 +607,7 @@ td.mat-cell {
     padding: 0.375rem 16px !important;
     border-radius: 4px;
     height: 40px;
-    line-height: 30px;
+    line-height: 28px;
     @media #{$extra-small} {
         justify-content: center;
         width: 100% !important;
@@ -812,4 +812,9 @@ th.mat-header-cell {
 .mat-icon-md {
     font-size: 20px !important;
     height: 20px;
+}
+
+.rule-cell {
+    flex: 0 0 100% !important;
+    width: 100%;
 }

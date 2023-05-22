@@ -157,7 +157,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     } else if (summaryItem.id == 'win_rate') {
       let value: number = parseFloat(summaryItem.value);
       if (summaryItem.value && value > 80) {
-        color = '#61BC6D';
+        color = '#12B76A';
       } else {
         color = '#F04438';
       }
@@ -174,9 +174,9 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       }
       let val: number = parseInt(value);
       if (val === 0) {
-        color = '#E7706C';
+        color = '#F04438';
       } else {
-        color = '#61BC6D';
+        color = '#12B76A';
       }
     }
     return color;

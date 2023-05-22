@@ -5,7 +5,7 @@
     <ul class="custom_dates">
         <li *ngFor="let date of calendarDates">
             <span class="" [ngClass]="{'default_day' : date.day, 'abc' : !date.returnAmount, 'working_day' : date.returnAmount > 0,  'negitive_return' : date.returnAmount < 0 }">{{date.day}}</span>
-            <p class="w-100 text-right">{{date.returnAmount}}</p>
+            <p class="w-100 returnAmount">{{date.returnAmount | number:'1.0-0'}}</p>
             <p class="w-100 text-right" *ngIf="date.tradeCount && date.tradeCount > 0">{{date.tradeCount}}</p>
         </li>
     </ul>

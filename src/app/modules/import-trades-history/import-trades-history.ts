@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { MatDialog, MatPaginator, MatSort, MatDialogRef } from '@angular/material';
 import { NavigationExtras, Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
@@ -20,6 +20,8 @@ import { UtilService } from '../utilities/services/util.service';
 import { AutoImportTradePopupComponent } from './auto-import-trade-popup/auto-import-trade-popup.component';
 import { DemoModeDetailsService } from '../shared/services/demo-mode-details.service';
 import { PlaidService } from './services/plaid.service';
+import { AutoImportTradeComponent } from './auto-import-trade/auto-import-trade.component'
+
 
 @Component({
   selector: 'app-import-trades-history',
@@ -31,10 +33,13 @@ export class ImportTradesHistory implements AfterViewInit, OnInit {
   expandIndex: any;
   displayedColumns = ['openDate', 'stockName', 'direction', 'status', 'action'];
   pageSize: number = 20
+  importType:number = 1;
+
+  plaidToken:any = '';
 
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort: MatSort;
-
+ 
   dataSource: ImportTradesGridStore;
   importTradesGridRequest: ImportTradesGridRequest = this.getInitialRequest();
 
@@ -51,6 +56,7 @@ export class ImportTradesHistory implements AfterViewInit, OnInit {
     private plaidService: PlaidService,
     //public dialogRef: MatDialogRef<ImportTradePopupComponent>
   ) {
+    
   }
 
   ngOnInit() {
@@ -108,10 +114,7 @@ export class ImportTradesHistory implements AfterViewInit, OnInit {
       sortRequest = new ImportTradesGridSort();
       this.importTradesGridRequest.sort = sortRequest;
     }
-    /*sortRequest.column = this.sort.active;
-    if (this.sort.active) {
-      sortRequest.order = this.sort.direction;
-    }*/
+    
   }
 
   downloadFailedTrade(rowModel: TradeStrategyGridRow) {
@@ -200,6 +203,27 @@ export class ImportTradesHistory implements AfterViewInit, OnInit {
     iframe.src = '';
     iframe.setAttribute("src", 'https://www.youtube.com/embed/txIqoIys3GI');
   }
+
+  selectionChange(event: any){
+    
+    this.importType = event;
+    if(this.importType == 2) {
+        this.plaidService.createLinkToken().subscribe(result => {
+        this.plaidToken = result.token;
+        this.plaidService.sendClickEvent.emit(result.token);
+      });
+    }else {
+      this.importTradesGridService.loadImportTrades(this.importTradesGridRequest).subscribe(result => {
+        if (result) {
+          localStorage.setItem('importTradesGridData', JSON.stringify(result.rows));
+          this.dataSource =JSON.parse(localStorage.getItem('importTradesGridData'));
+          this.dataSource.totalCount = result.totalCount;
+        }
+      })
+    }
+    
+  }
+
 
 }
 
