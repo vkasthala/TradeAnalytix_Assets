@@ -36,4 +36,12 @@ export class DashboardChartService {
     return this.httpService.get(environment.apiUrl + '/dashboard/recent-trades');
   }  
 
+  public getDailyWorkspace(): Observable<any> {
+    return this.httpService.get(environment.apiUrl + '/dashboard/daily-workspace');
+  } 
+
+  public updateDailyWorkspace(workspaceReq: DailyWorkspaceUpdate): Observable<any> {
+    return this.httpService.post<DailyWorkspaceUpdate, void>(environment.apiUrl + '/dashboard/daily-workspace-update', workspaceReq);
+  } 
+
 }

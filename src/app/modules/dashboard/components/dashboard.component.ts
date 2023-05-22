@@ -25,6 +25,7 @@ import { ReportAnIssueComponent } from './report-an-issue/report-an-issue.compon
 import { SliderModalComponent } from './slider-modal/slider-modal.component';
 import { ViewFollowersComponent } from './view-followers/view-followers.component';
 import $ from "jquery";
+import { DailyWorkspace } from '../models/daily-workspace.model';
 
 @Component({
   selector: 'app-dashboard',
@@ -36,6 +37,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   @ViewChild('calendarReport', { static: false }) private calendarReport: CalendarComponent;
 
   latestTradePlan: TradePlanGridRow;
+  dailyWorkspaceViewModel = new DailyWorkspace();
 
   summaryItems: ReportSummaryItem[];
 
@@ -63,6 +65,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     this.loadLatestTradePlan();
     this.loadSummaryItems();
     this.loadBrokerges();
+    this.loadDailyWorkspace();
     // this.loadEconomic();
   }
 
@@ -89,6 +92,26 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       if (result) {
         this.latestTradePlan = result;
       }
+    });
+  }
+
+  loadDailyWorkspace() {
+    this.dashboardService.getDailyWorkspace().subscribe(result => {
+      console.log("daily workspace:", result);
+      if (result) {
+        this.dailyWorkspaceViewModel = result;
+      }
+    });
+  }
+
+  updateDailyWorkspace(change: DailyWorkspaceUpdate) {
+    console.log('Checkbox for '+change.field+' is '+ change.checked);
+    this.dashboardService.updateDailyWorkspace(change).subscribe(result => {
+      if (result) {
+       this.toastr.success("Successfully Updated DailyWorkspace");
+      }
+    }, err => {
+      this.toastr.error("Failed to Update DailyWorkspace");
     });
   }
 
