@@ -7,6 +7,7 @@ import { ConfirmDialogComponent } from '../../shared/components/modals/confirm-d
 import { MatDialog } from '@angular/material';
 import { ToastrService } from 'ngx-toastr';
 import { DemoModeDetailsService } from '../../shared/services/demo-mode-details.service';
+import { SliderModalComponent } from '../../dashboard/components/slider-modal/slider-modal.component';
 
 @Component({
   selector: 'app-home',
@@ -189,6 +190,22 @@ export class HomeComponent implements OnInit, AfterViewInit {
   
   menuToggle() {
     this.hamburgerMenu = !this.hamburgerMenu
+  }
+
+  startTour() {
+    this.loadSliderModal();
+  }
+
+  loadSliderModal() {
+    const dialogRef = this._dialog.open(SliderModalComponent, {
+      disableClose: true,
+      width: 'auto',
+      panelClass: 'guided-tour-panel',
+      backdropClass: 'guided-tour-modal'
+    });
+
+    dialogRef.afterClosed().subscribe((res) => {
+    });
   }
 
 }

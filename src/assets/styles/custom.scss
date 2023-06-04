@@ -1042,3 +1042,15 @@ iframe body {
     font-size: 14px !important;
     padding: 0 1rem !important;
 }
+
+.mat-progress-bar {
+    height: 12px !important;
+    border-radius: 8px;
+}
+.mat-progress-bar-buffer {
+    background-color: #D9EDFF;
+    border-radius: 8px;
+}
+.mat-progress-bar-fill::after {
+    background-color: #33CB39;
+}

@@ -26,11 +26,12 @@ import { SliderModalComponent } from './slider-modal/slider-modal.component';
 import { ViewFollowersComponent } from './view-followers/view-followers.component';
 import $ from "jquery";
 import { DailyWorkspace } from '../models/daily-workspace.model';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit, AfterViewInit {
 

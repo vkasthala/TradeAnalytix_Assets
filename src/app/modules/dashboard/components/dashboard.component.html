@@ -1,81 +1,99 @@
 <div class="dashboard">
     <div class="trade-dash-cards-web">
-        <div class="dashboard-header">
-            <!-- <div class="px-1">
-                <img src="../../../../assets/images/welcome.svg"/>
-            </div> -->
-            <div>
-                <div class="card-title">Welcome {{userName}}</div>
-                <p>Take a tour of CueTrade and turn on the demo mode to see how it works. 
-                    <!-- <span class="ml-2 card-bottom cursor" (click)="showDemoMsg()">Demo Mode</span> -->
-                </p>
-            </div>
-            <span class="btn btn-start-tour" (click)="startTour()">Start Tour <mat-icon>arrow_forward</mat-icon></span>
-        </div>
-
-        <!-- <div class="mt-3">
-            <div class="card">
-                <div class="pr-2">
-                    <img src="../../../../assets/images/hand.svg"/>
-                </div>
-                <div class="pl-1">
-                    <div class="card-title">Upload tradebook and analyze your performance instantly</div>
-                    <div class="row align-items-end">
-                        <div class="col-sm-4">
-                            <label class="m-0">Select Brokerage</label>
-                            <select class="form-control form-control-sm" [(ngModel)]="selectedbroker" (change)="onBrokerageChange($event.target.value, index)">
-                                <option *ngFor="let item of brokerages;let index = index" value={{item.id}}>{{item.name}}
-                                </option>
-                            </select>
-                        </div>
-                        <button class="btn btn-upload btn-sm" *ngIf="!isDemoMode" (click)="importTrades()">Upload</button>
-                        
-                    </div>
-                </div>
-            </div>
-        </div> -->
-
         <div class="dashboard-body">
+            <div style="margin-left:-15px;">
+                <div class="card-title">Welcome {{userName}}</div>
+                <p>Let’s complete Today’s tasks quickly and start with today’s trading plan and review it tomarrow</p>
+            </div>
+            
             <div class="mt-3 dashboard-header-row">
-                <div class="daily-workspace dashboard-header-column">
-                    <div class="trade-headiang daily-workspace-header">
-                        <h5>Daily Workspace</h5>
-                    </div>
-                    <div class="daily-workspace-body">
-                        <div class="row align-items-center">
-                            <div class="col-7 text-center">
-                                <img src="../../../../assets/images/daily-workspace.svg" />
+                <div class="daily-workspace">
+                    <div class="row">
+                        <div class="col-4 daily-workspace-lt">
+                            <div class="daily-workspace-lt-header">
+                                3 Steps To Create your journal
+                            </div>
+                            <div class="step-container">
+                                <div class="step-count">Step 1</div>
+                                <div class="step-pic"><img src="../../../../assets/images/step1-pic.png" /></div>
+                                <div class="step-description">Create daily trading <br/>goal/plan</div>
+                            </div>
+                            <div class="step-container">
+                                <div class="step-count">Step 2</div>
+                                <div class="step-pic"><img src="../../../../assets/images/step2-pic.png" /></div>
+                                <div class="step-description">Keep Journal and<br/>
+                                    write down today's trades</div>
+                            </div>
+                            <div class="step-container">
+                                <div class="step-count">Step 3</div>
+                                <div class="step-pic"><img src="../../../../assets/images/step3-pic.png" /></div>
+                                <div class="step-description">Review insights <br/>and trade for tomorrow</div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-8">
+                            <div class="daily-workspace-header">
+                                <div>
+                                    <h5 class="daily-workspace-header-title">Today’s tasks</h5>
+                                    <span>(28 May 2023)</span>
+                                </div>
+                                <div class="daily-workspace-progress">
+                                    <div>
+                                        <p class="mb-2">Completed tasks today</p>
+                                        <div><mat-progress-bar mode="determinate" value="40"></mat-progress-bar></div>
+                                    </div>
+                                    <span class="progress-count">1/7</span>
+                                </div>
                             </div>
 
-                            <div class="col-sm-4">
-                                <div class="workspace-content">
-                                    <div class="white-box-header">
-                                        <div class="white-box-title">Plan Trades</div>
-                                    </div>
-                                    <ul class="orange-list">
-                                        <li><mat-checkbox [checked]="dailyWorkspaceViewModel.dailyPlan" (change)="updateDailyWorkspace({ checked: $event.checked, field: 'DAILY_PLAN' })"><mat-icon class="close-icon">close</mat-icon> Create a daily trading plan</mat-checkbox></li>
-                                        <li><mat-checkbox [checked]="dailyWorkspaceViewModel.analyzeTrades" (change)="updateDailyWorkspace({ checked: $event.checked, field: 'ANALYZE_TRADES' })"><mat-icon class="close-icon">close</mat-icon> Build and analyze potential trades</mat-checkbox></li>
-                                    </ul>
-                                
-                                    <div class="white-box-header">
-                                        <div class="white-box-title">Journal Trades</div>
-                                    </div>
-                                    <ul class="orange-list">
-                                        <li><mat-checkbox [checked]="dailyWorkspaceViewModel.importTrades" (change)="updateDailyWorkspace({ checked: $event.checked, field: 'IMPORT_TRADES' })"><mat-icon class="close-icon">close</mat-icon> Import trades from brokers</mat-checkbox></li>
-                                        <li><mat-checkbox [checked]="dailyWorkspaceViewModel.addNotes" (change)="updateDailyWorkspace({ checked: $event.checked, field: 'ADD_NOTES' })"><mat-icon class="close-icon">close</mat-icon> Add notes to your trades</mat-checkbox></li>
-                                        <li><mat-checkbox [checked]="dailyWorkspaceViewModel.reviewPerformance" (change)="updateDailyWorkspace({ checked: $event.checked, field: 'REVIEW_PERFORMANCE' })"><mat-icon class="close-icon">close</mat-icon> Review performance and close plan</mat-checkbox></li>
-                                    </ul>
-
-                                    <div class="white-box-header">
-                                        <div class="white-box-title">Review Insights</div>
-                                        
-                                    </div>
-                                    <ul class="orange-list pb-0">
-                                        <li><mat-checkbox [checked]="dailyWorkspaceViewModel.reviewStats" (change)="updateDailyWorkspace({ checked: $event.checked, field: 'REVIEW_STATS' })"><mat-icon class="close-icon">close</mat-icon> Review statistics and reports</mat-checkbox></li>
-                                        <li><mat-checkbox [checked]="dailyWorkspaceViewModel.reviewInsights" (change)="updateDailyWorkspace({ checked: $event.checked, field: 'REVIEW_INSIGHTS' })"><mat-icon class="close-icon">close</mat-icon> Review daily insights</mat-checkbox></li>
-                                        <li><mat-checkbox [checked]="dailyWorkspaceViewModel.addRules" (change)="updateDailyWorkspace({ checked: $event.checked, field: 'ADD_RULES' })"><mat-icon class="close-icon">close</mat-icon> Add or update trading rules</mat-checkbox></li>
-                                    </ul>
+                            <div class="workspace-content">
+                                <div class="white-box-header">
+                                    <div class="white-box-title">Plan Trades</div>
                                 </div>
+                                <ul class="orange-list">
+                                    <li><mat-checkbox [checked]="dailyWorkspaceViewModel.dailyPlan" (change)="updateDailyWorkspace({ checked: $event.checked, field: 'DAILY_PLAN' })"><mat-icon class="close-icon">close</mat-icon> Create a daily trading plan</mat-checkbox></li>
+                                    <li>
+                                        <mat-checkbox [checked]="dailyWorkspaceViewModel.analyzeTrades" (change)="updateDailyWorkspace({ checked: $event.checked, field: 'ANALYZE_TRADES' })"><mat-icon class="close-icon">close</mat-icon> Build and analyze potential trades</mat-checkbox>
+                                        <a class="workspace-link" [routerLink]="['/risk-analysis/']">Add</a>
+                                    </li>
+                                </ul>
+                            
+                                <div class="white-box-header">
+                                    <div class="white-box-title">Journal Trades</div>
+                                </div>
+                                <ul class="orange-list">
+                                    <li>
+                                        <mat-checkbox [checked]="dailyWorkspaceViewModel.importTrades" (change)="updateDailyWorkspace({ checked: $event.checked, field: 'IMPORT_TRADES' })"><mat-icon class="close-icon">close</mat-icon> Import trades from brokers</mat-checkbox>
+                                        <a class="workspace-link" [routerLink]="['/import-trades-history/']">Import</a>
+                                    </li>
+                                    <li>
+                                        <mat-checkbox [checked]="dailyWorkspaceViewModel.addNotes" (change)="updateDailyWorkspace({ checked: $event.checked, field: 'ADD_NOTES' })"><mat-icon class="close-icon">close</mat-icon> Add notes to your trades</mat-checkbox>
+                                        <a class="workspace-link" [routerLink]="['/trade-strategies/']">Add</a>
+                                    </li>
+                                    <li>
+                                        <mat-checkbox [checked]="dailyWorkspaceViewModel.reviewPerformance" (change)="updateDailyWorkspace({ checked: $event.checked, field: 'REVIEW_PERFORMANCE' })"><mat-icon class="close-icon">close</mat-icon> Review performance and close plan</mat-checkbox>
+                                        <a class="workspace-link" [routerLink]="['/reports/']">Review</a>
+                                    </li>
+                                </ul>
+
+                                <div class="white-box-header">
+                                    <div class="white-box-title">Review Insights</div>
+                                    
+                                </div>
+                                <ul class="orange-list pb-0">
+                                    <li>
+                                        <mat-checkbox [checked]="dailyWorkspaceViewModel.reviewStats" (change)="updateDailyWorkspace({ checked: $event.checked, field: 'REVIEW_STATS' })"><mat-icon class="close-icon">close</mat-icon> Review statistics and reports</mat-checkbox>
+                                        <a class="workspace-link" [routerLink]="['/reports/']">Review</a>
+                                    </li>
+                                    <li>
+                                        <mat-checkbox [checked]="dailyWorkspaceViewModel.reviewInsights" (change)="updateDailyWorkspace({ checked: $event.checked, field: 'REVIEW_INSIGHTS' })"><mat-icon class="close-icon">close</mat-icon> Review daily insights</mat-checkbox>
+                                        <a class="workspace-link" [routerLink]="['/reports/']">Review</a>
+                                    </li>
+                                    <li>
+                                        <mat-checkbox [checked]="dailyWorkspaceViewModel.addRules" (change)="updateDailyWorkspace({ checked: $event.checked, field: 'ADD_RULES' })"><mat-icon class="close-icon">close</mat-icon> Add or update trading rules</mat-checkbox>
+                                        <a class="workspace-link" [routerLink]="['/rules/']">Add / Update</a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>

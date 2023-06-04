@@ -117,6 +117,7 @@
                         </mat-icon>
                     </div> -->
                     <div class="top-nav">
+                        <span class="btn btn-start mr-3" (click)="startTour()">Start Tour <mat-icon>arrow_forward</mat-icon></span>
                         <span class="demo-toggle">
                             Demo&nbsp;Mode <div class="switch ml-2">
                                 <input type="checkbox" [(ngModel)]="demoToggle" (change)="demoMsg()" id="demoToggle" class="cursor" [checked]="demoToggle" />
