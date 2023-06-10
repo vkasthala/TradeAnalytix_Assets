@@ -1,778 +1,676 @@
-<div class="trade-app">
-    <div class="trade-header-section">
-        <div class="landing-header">
-            <div class="header-row p-3 container">
-                <div class="trade-header-section-logo"></div>
-                <nav class="landing-navbar">
-                    <ul class="list-unstyled ">
-                        <li>
-                            <a class="landing-nav-link" href="landing#howit_works">
-                                How It Works
-                            </a>
-                        </li>
-                        <!-- <li>
-                            <a class="landing-nav-link" href="landing#howit_works">
-                                Our Story
-                            </a>
-                        </li> -->
-                        <li>
-                            <a class="landing-nav-link" href="landing#Benefits">
-                                Why CueTrade?
-                            </a>
-                        </li>
-
-                        <!-- <li [class.nav-active]="currentRoute == 'Reviews'">
-                            <a class="landing-nav-link" href="landing#reviews_section">
-                                Features
-                            </a>
-                        </li> -->
-
-                        <li [class.nav-active]="currentRoute == 'FAQs'">
-                            <a class="landing-nav-link" href="landing#Faqs">
-                                FAQs
-                            </a>
-                        </li>
-                        <li [class.nav-active]="currentRoute == 'support'">
-                            <a class="landing-nav-link" href="javascript:void(0)" (click)="openContactUsModal()">
-                                Contact Us
-                            </a>
-                        </li>
-                        <li [class.nav-active]="currentRoute == 'contact-us'">
-                            <button type="button" class="nav-btn" (click)="login('google')">Login</button>
-                        </li>
-                        
-                    </ul>
-                </nav>
-                <span class="material-icons hamburger-menu-icon" (click)="menuToggle()">menu</span>
-            </div>
+<nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top" style="padding: 25px 0; background-color: #fff;">
+    <div class="container-fluid">
+        <div class="cue-logo">
+            <img src="../../../../assets/img/cuetrade-logo.svg" alt="">
         </div>
-        <!-- Trade-Navbar-Web -->
-        
-        <!-- Trade-Navbar-Mobile -->
-        <div class="trade-header-mobile">
-            <nav class="trade-navbar hamburger-menu" [ngClass]="hamburgerMenu ? 'open' : ''">
-                <ul class="list-unstyled ">
-                    <li>
-                        <a class="landing-nav-link" href="landing#howit_works">
-                            How It Works
-                        </a>
-                    </li>
-                    <li>
-                        <a class="landing-nav-link" href="landing#trade_journal">
-                            Benefits
-                        </a>
-                    </li>
-                    <!-- <li [class.nav-active]="currentRoute == 'demo'">
-                        <a class="landing-nav-link" href="landing#demo_video_section">Partners</a>
-                    </li> -->
-                    <li [class.nav-active]="currentRoute == 'Reviews'">
-                        <a class="landing-nav-link" href="landing#reviews_section">
-                            Testimonials
-                        </a>
-                    </li>
-                    <!-- <li [class.nav-active]="currentRoute == 'Blog'">
-                        <a class="landing-nav-link" href="landing#blogs_section">
-                            Pricing
-                        </a>
-                    </li> -->
-                    <li [class.nav-active]="currentRoute == 'FAQs'">
-                        <a class="landing-nav-link" href="landing#Faqs">
-                            FAQs
-                        </a>
-                    </li>
-                    <li [class.nav-active]="currentRoute == 'support'">
-                        <a class="landing-nav-link" [routerLink]="['/support/']">
-                            Support
-                        </a>
-                    </li>
-                    <li>
-                        <button type="button" class="nav-btn" (click)="login('google')">Sign-in</button>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-
-
-        <div class="trade-banner-section container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="banner-info" id="howit_works_mob">
-                        <h1 class="banner-info-title">
-                            Improve trading results with a <br/>data-driven systematic approach
-                        </h1>
-                        <div class="py-3 slideFeatures">
-                            CueTrade helps you become a better trader through planning, journaling, 
-                            <br/>and tracking your trading performance over time
-
-                            <!-- <div class="row col-sm-9 ml-auto">
-                                <div class="before-cueTrade" style="">
-                                    <h4>Before CueTrade</h4>
-                                    <ul class="banner-list">
-                                        <li><img src="../../../../assets/images/cancel-icon.png" /> Impulsive trading</li>
-                                        <li><img src="../../../../assets/images/cancel-icon.png" /> Emotional decisions</li>
-                                        <li><img src="../../../../assets/images/cancel-icon.png" /> No insights from the past</li>
-                                        <li><img src="../../../../assets/images/cancel-icon.png" /> Lack of risk controls</li>
-                                    </ul>
-                                </div>
-                                <div class="after-cueTrade">
-                                    <h4>After CueTrade</h4>
-                                    <ul class="banner-list">
-                                        <li><img src="../../../../assets/images/tickmark-icon.png" /> Data-driven, rationale trading</li>
-                                        <li><img src="../../../../assets/images/tickmark-icon.png" /> Rules-based decisions</li>
-                                        <li><img src="../../../../assets/images/tickmark-icon.png" /> Track and learn from trading history</li>
-                                        <li><img src="../../../../assets/images/tickmark-icon.png" /> Risk management</li>
-                                    </ul>
-                                </div>
-                            </div> -->
-                            <!-- Provides users with everything they need to organize their trading habits, review performance and manage risks  -->
-                            <!-- {{features[currentInd]}} -->
-                           <!-- <strong>Without CueTrade:</strong> Trade based on tips without research, emotional decisions, overtrading, <br/>
-                           repetition of mistakes, and excessive risk. <strong>With CueTrade:</strong> Trade based on strong rationale, align with trading rules, manage risk effectively, and improve trading decisions. -->
-                        </div>
-                        <div class="banner-info-footer" id="howit_works">
-                            <button type="button" class="google-btn mr-3" (click)="login('google')">Try Beta for Free</button>
-                            <a class="btn btn-outline" href="landing#howit_works">
-                                How It Works
-                            </a>
-                        </div>
-                        <!-- <div class="text-white small-text">Payment details not required</div> -->
-                    </div>
-                </div>
-                <!-- <div class="col-sm-12 col-md-6">
-                    <div class="banner-rtside">
-                        <div class="widgets_section">
-                            <div class="widgets_box_orange">
-                                <div class="widgets_box_icon pb-2">
-                                    <img src="../../../../assets/images/widgets_icon1.png" alt="">
-                                </div>
-                                <div class="widgets_box_dec">
-                                    Know Strengths, Improve Decisions
-                                </div>
-                            </div>
-
-                            <div class="widgets_box_transparent">
-                                <img src="../../../../assets/images/shape1.png" alt="">
-                            </div>
-                            <div class="widgets_box_orange">
-                                <div class="widgets_box_icon">
-                                    <img src="../../../../assets/images/widgets_icon2.png" alt="">
-                                </div>
-                                <div class="widgets_box_dec">
-                                    Alignment with Self-Set Rules
-                                </div>
-                            </div>
-                            <div class="widgets_box_thumb last-thumb"></div>
-                            <div class="widgets_box_vshape"></div>
-                        </div>
-
-                        <div class="widgets_section">
-                            <div class="widgets_box_thumb blue-box-lt"></div>
-                            <div class="widgets_box_blue">
-                                <div class="widgets_box_icon">
-                                    <img src="../../../../assets/images/widgets_icon3.png" alt="">
-                                </div>
-                                <div class="widgets_box_dec">
-                                    Comprehensive Trade Journal
-                                </div>
-                            </div>
-                            <div class="widgets_box_thumb"></div>
-                            <div class="widgets_box_blue">
-                                <div class="widgets_box_icon">
-                                    <img src="../../../../assets/images/widgets_icon4.png" alt="">
-                                </div>
-                                <div class="widgets_box_dec">
-                                    Right Strategy Selection
-                                </div>
-                            </div>
-                            <div class="widgets_box_empty"></div>
-                        </div>
-                        <div class="widgets_section">
-                            <div class="widgets_box_orange">
-                                <div class="widgets_box_icon pb-2">
-                                    <img src="../../../../assets/images/widgets_icon6.png" alt="">
-                                </div>
-                                <div class="widgets_box_dec">
-                                    Share Trades with Community
-                                </div>
-                            </div>
-                            <div class="widgets_box_transparent align-items-center">
-                                <img src="../../../../assets/images/shape2.png" alt="">
-                            </div>
-                            <div class="widgets_box_orange">
-                                <div class="widgets_box_icon">
-                                    <img src="../../../../assets/images/widgets_icon5.png" alt="">
-                                </div>
-                                <div class="widgets_box_dec">
-                                    Strategy Builder and Simulation
-                                </div>
-                            </div>
-                            <div class="widgets_box_transparent align-items-center shape-last">
-                                <img src="../../../../assets/images/shape3.png" alt="">
-                            </div>
-                            <div class="widgets_box_vshape"></div>
-                        </div>
-                        <div class="widgets_section justify-content-end" id="howit_works">
-                            <div class="widgets_box_hshape"></div>
-                            <div class="widgets_box_empty-s"></div>
-                        </div>
-                    </div>
-                </div> -->
-            </div>
-        </div>
-        <!-- end: banner-section -->
-    </div>
-    <!-- end: header-section -->
-
-    <div class="mb-3 py-3 trade-logos">
-        <div class="description mb-1">Supports integration with popular brokerages</div>
-        <div class="container">
-                <ng-image-slider #nav
-            [images]="imageObject"
-            [infinite]="true"
-            [imagePopup]="false"
-            [autoSlide]="1"
-            [imageSize]="{width: '11%', height: 100}"
-            slideImage="1"></ng-image-slider>
-        </div> 
-    </div>
-    <!-- end: Reviews -->
-
-    <div class="main-body">
-        <div class="container">
-            <div class="features_section howit_works_section pt-2">
-                <div class="page-heading">How it Works?</div>
-                <div class="intro-description mb-3 pt-2 pb-3">
-                    CueTrade is an intuitive trading journal that is designed to help you take informed trading decisions. It can be used before or after the market hours to plan trades, journal trades, and review insights from trading history to adjust your trades accordingly
-                </div>
-                
-                <div class="row mb-3">
-                    <div class="col-sm-4">
-                        <div class="white-box">
-                            <div class="text-center">
-                                <span class="white-box-count">1</span>
-                            </div>
-                            <div class="white-box-title">Plan Trades</div>
-                            <div class="py-3"><img src="../../../../assets/images/plan-trade.png" alt="" /></div>
-                            <ul class="orange-list">
-                                <li>Prepare for the day ahead with a meticulous trading plan</li>
-                                <li>Analyze potential trades from risk, statistical, and rules perspectives</li>
-                                <li>Evaluate your trading performance after the market hours</li>
-                            </ul>
-                        </div>
-                        <div class="arrow-rt">
-                            <img src="../../../../assets/images/arrow-rt.png" alt="" />
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="white-box">
-                            <div class="text-center">
-                                <span class="white-box-count">2</span>
-                            </div>
-                            <div class="white-box-title">Journal Trades</div>
-                            <div class="py-3"><img src="../../../../assets/images/journal_trades_sm.png" alt="" /></div>
-                            <ul class="orange-list">
-                                <li>Review trades auto-imported from your brokerages</li>
-                                <li>Add notes to trades in bulk through an excel-like intuitive grid</li>
-                                <li>Check alignment of your trades with self-set trading rules</li>
-                            </ul>
-                        </div>
-                        <div class="arrow-rt">
-                            <img src="../../../../assets/images/arrow-rt.png" alt="" />
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="white-box">
-                            <div class="text-center">
-                                <span class="white-box-count">3</span>
-                            </div>
-                            <div class="white-box-title">Review Insights</div>
-                            <div class="py-3"><img src="../../../../assets/images/review_insights.png" alt="" /></div>
-                            <div id="Benefits"></div>
-                            <ul class="orange-list">
-                                <li>Review stats, reports and insights derived from your trading history</li>
-                                <li>Add or update trading rules based on the lessons learnt</li>
-                                <li>Plan the next trading day based on the reports and insights</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- <div class="slideshow-component">
-                    <iframe width="82%" height="510" src="https://www.youtube.com/embed/4OMMcwbUiBA"  allowfullscreen></iframe>
-
-                    <div id="trade_journal"></div>
-                </div> -->
-            </div>
-            <!-- end: Comprehensive trade journal -->
-
-            
-
-            <div class="features_section pb-2">
-                <h2 class="page-heading" >Why CueTrade?</h2>
-                <!-- <div class="intro-description mt-1 pt-2 pb-3">Take informed trading decisions based on strong rationale and data by analyzing your trades from logical, historical performance, risk, trading rules, and emotional perspectives.</div> -->
-            </div>
-            
-            <!-- end: Comprehensive trade journal -->
-
-            <div class="features_section">
-                <div class="row row_reverse">
-                    <div class="col-md-4">
-                        <div class="features_section_title">Remarkable Improvement in Trading Decisions</div>
-                        <div class="features_section_dec">
-                            Track your performance over time with analytics derived from your trading history. Identify your strengths/limitations in a historical context and use that information to make better trading decisions in the future. <a class="read_more">Read More</a>
-                        </div>
-                        <div class="banner-info-footer text-left">
-                            <button type="button" class="btn btn-custom" (click)="login('google')">Try Beta for Free</button>
-                            <!-- <button type="button" class="btn btn-outline btn-video ml-3" (click)="openPopup('Reports')"><mat-icon class="mr-1">videocam</mat-icon> Watch a Demo</button> -->
-                        </div>
-                    </div>
-                    <div class="col-md-8 features_section_banner">
-                        <img src="../../../../assets/images/reports.png" alt="" />
-                    </div>
-                </div>
-            </div>
-            <!-- end: Improve trading decisions -->
-
-            <!-- <div class="features_section">
-                <div class="row row_reverse">
-                    <div class="col-md-4">
-                        <div class="features_section_title">Effective management of portfolio and trade risk</div>
-                        <div class="features_section_dec">
-                            Analyze the potential returns on your trade strategies involving options through simulation of future scenarios. Adjust your trades until the trade is aligned with your risk appetite. Mitigate the risk exposure of your portfolio by reviewing risk management metrics and reports.
-                        </div>
-                        <div class="banner-info-footer text-left">
-                            <button type="button" class="btn btn-custom" (click)="login('google')">Analyze Risk</button>
-                            <button type="button" class="btn btn-outline btn-video ml-3" (click)="openPopup('Effective')"><mat-icon class="mr-1">videocam</mat-icon> Watch a Demo</button>
-                        </div>
-                    </div>
-                    <div class="col-md-8 features_section_banner">
-                        <img src="../../../../assets/images/risk-analysis.gif" alt="" />
-                    </div>
-                </div>
-            </div> -->
-            <!-- end: Strategy Builder section -->
-
-            <div class="features_section">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="features_section_title">Easy to Use Journal</div>
-                        <div class="features_section_dec">
-                            CueTrade determines certain parameters of your trades automatically so that you don't have to provide this data manually. Also, you can provide notes on multiple trades in a single excel-like intuitive user interface, i.e., you don't have to open each trade to update its journal details rather multiple trades can be updated from a single page. <a class="read_more">Read More</a>
-                        </div>
-                        <div class="banner-info-footer text-left">
-                            <button type="button" class="btn btn-custom" (click)="login('google')">Try Beta for Free</button>
-                            <!-- <button type="button" class="btn btn-outline btn-video ml-3" (click)="openPopup('CompareStrategy')"><mat-icon class="mr-1">videocam</mat-icon> Watch a Demo</button> -->
-                        </div>
-                    </div>
-                    <div class="col-md-8 features_section_banner">
-                        <img src="../../../../assets/images/journal_trades.png" alt="" />
-                    </div>
-                </div>
-            </div>
-            <!-- end: Strategy Picker section -->
-
-            <div class="features_section">
-                <div class="row row_reverse">
-                    <div class="col-md-4">
-                        <div class="features_section_title">Rules-based Trading</div>
-                        <div class="features_section_dec">
-                            Set manual or automatic trading rules based on your experience and best practices. Align your trades with the self-set rules to avoid repeating the same or common mistakes. <a class="read_more">Read More</a>
-                        </div>
-                        <div class="banner-info-footer text-left">
-                            <button type="button" class="btn btn-custom" (click)="login('google')">Try Beta for Free</button>
-                            <!-- <button type="button" class="btn btn-outline btn-video ml-3" (click)="openPopup('Manual Rules')"><mat-icon class="mr-1">videocam</mat-icon> Watch a Demo</button> -->
-                        </div>
-                    </div>
-                    <div class="col-md-8 features_section_banner">
-                        <img src="../../../../assets/images/rules_thumb.PNG" alt="" />
-                    </div>
-                </div>
-            </div>
-            <!-- end: features_section -->
-
-            <div class="features_section">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="features_section_title">Prepare for the day ahead with a meticulous trade plan </div>
-                        <div class="features_section_dec">
-                            Creating a trading plan before the market opens will help you think objectively about the market without getting influenced by the price movements. <a class="read_more">Read More</a>
-                        </div>
-                        <div class="banner-info-footer text-left">
-                            <button type="button" class="btn btn-custom" (click)="login('google')">Try Beta for Free</button>
-                            <!-- <button type="button" class="btn btn-outline btn-video ml-3" (click)="openPopup('tradePlan')"><mat-icon class="mr-1">videocam</mat-icon> Watch a Demo</button> -->
-                        </div>
-                    </div>
-                    <div class="col-md-8 features_section_banner">
-                        <img src="../../../../assets/images/trade-plan.png" alt="" />
-                    </div>
-                    <div id="reviews_section"></div>
-                </div>
-            </div>
-            <!-- end: Trade Plan -->
-
-            <div class="features_section">
-                <div class="row row_reverse">
-                    <div class="col-md-4">
-                        <div class="features_section_title">Payoff Analysis</div>
-                        <div class="features_section_dec">
-                            Analyze the potential returns on your trade strategies involving options through simulation of future scenarios. Adjust your trades until the trade is aligned with your risk appetite and return expectations.<a class="read_more">Read More</a>
-                            <div class="banner-info-footer text-left">
-                                <button type="button" class="btn btn-custom" (click)="login('google')">Try Beta for Free</button>
-                                <!-- <button type="button" class="btn btn-outline btn-video ml-3" (click)="openPopup('Systematic')"><mat-icon class="mr-1">videocam</mat-icon> Watch a Demo</button> -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-8 features_section_banner">
-                        <img src="../../../../assets/images/trade-thesis.png" alt="" />
-                    </div>
-                    
-                </div>
-            </div>
-            <div id="Faqs"></div>
-            <!-- <div class="features_section">
-                <div class="row row_reverse">
-                    <div class="col-md-4">
-                        <div class="features_section_title">Learn from others to become a better trader</div>
-                        <div class="features_section_dec">
-                            Follow other traders to view not just their trades but the rationale behind their trades to make your own judgement. Let others follow you to see your trade details and have a meaningful conversation on them.
-                        </div>
-                        <div class="banner-info-footer text-left">
-                            <button type="button" class="btn btn-custom">Try for Free</button>
-                        </div>
-                    </div>
-                    <div class="col-md-8 features_section_banner">
-                        <img src="../../../../assets/images/rules_thumb.PNG" alt="" />
-                    </div>
-                </div>
-            </div> -->
-            <!-- end: features_section -->
-            
-            <!-- <div class="py-2 mb-3">
-                <div class="features_section_title page-heading">Testimonials</div>
-                <div class="carousel slide" data-ride ="carousel" id="quote-carousel">
-                    <div class="carousel-inner text-center">
-                        
-                        <div class="item active">
-                            <blockquote>
-                                <div class="row">
-                                    <div class="col-sm-8 offset-md-2">
-                                        <p class="testimonial__text">I knew the benefits of journaling trades but couldn't adopt the habit mainly due to its tedious nature. CueTrade's user experience, journal format, and bulk update feature makes trade journaling trades a breeze</p>
-                                        <div class="reviewer_name">Srinivas Kukunoor</div>
-                                    </div>
-                                </div>
-                            </blockquote>
-                        </div>
-
-                        
-                        <div class="item">
-                            <blockquote>
-                                <div class="row">
-                                    <div class="col-sm-8 offset-md-2">
-                                        <p class="testimonial__text">With CueTrade intuitive and in-depth reporting, I figured what kind of trades worked for me and what kind of trades didn't work for me in the past. I incorporated the insights derived from my trading history into the rules to stock with my strengths and avoid past mistakes</p>
-                                        <div class="reviewer_name">Krishna Lanka</div>
-                                    </div>
-                                </div>
-                            </blockquote>
-                        </div>
-                        
-                        
-                        <div class="item">
-                            <blockquote>
-                                <div class="row">
-                                    <div class="col-sm-8 offset-md-2">
-                                        <p class="testimonial__text">I have been using Strategy Builder feature regularly and it's an eye opener. It helped me understand the potential return of my option trades in different scenarios in a user-friendly format. It has become a must for me to analyze my trades in CueTrade before executing them</p>
-                                        <div class="reviewer_name">Syam Narindi</div>
-                                    </div>
-                                </div>
-                            </blockquote>
-                        </div>
-                    </div>
-
-                    <ol class = "carousel-indicators" id="blogs_section">
-                        <li data-target = "#quote-carousel" data-slide-to = "0" class = "active"> <img class = "img-responsive " src = "https://s3.amazonaws.com/uifaces/faces/twitter/mantia/128.jpg" alt="">
-                        </li>
-                        <li data-target = "#quote-carousel" data-slide-to= "1"> <img class = "img-responsive" src = "https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg" alt = "">
-                        </li>
-                        <li data-target = "#quote-carousel" data-slide-to = "2"><img class = "img-responsive" src = "https://s3.amazonaws.com/uifaces/faces/twitter/brad_frost/128.jpg" alt="">
-                        </li>
-                    </ol>
-             
-                    <a data-slide="prev" href="#quote-carousel" class ="left_carousel"><mat-icon>keyboard_arrow_left</mat-icon></a>
-                    <a data-slide="next" href="#quote-carousel" class="right_carousel"><mat-icon>keyboard_arrow_right</mat-icon></a>
-                </div>                    
-            </div> -->
-            <!-- end: Reviews -->
-
-            <div class="features_section howit_works_section">
-                <div class="features_section_title page-heading mb-3">Frequently Asked Questions</div>
-
-                <mat-accordion class="example-headers-align w-100" multi="false">
-                    <mat-expansion-panel [expanded]="false" (opened)="setStep(1)">
-                        <mat-expansion-panel-header>
-                            <mat-panel-title>
-                                Who should use CueTrade?
-                            </mat-panel-title>
-                        </mat-expansion-panel-header>
-                        <ng-template matExpansionPanelContent>
-                            <div class="accordion-panel-body row">
-                                CueTrade is meant for all those traders who struggle to maintain discipline. Indiscipline includes trading without rationale, excessive trading, taking excessive risk, lack of control over emotions, etc. It helps such traders adopt a systematic approach to trading by allowing them to create a detailed trading plan before the market opens and reviewing their trades with reports and insights after the market closes so that they can identify their mistakes and learn from them. Also, it offers the ability to set rules so that traders can align their trades with the self-set rules.
-                            </div>
-                        </ng-template>
-                    </mat-expansion-panel>
-
-                    <mat-expansion-panel [expanded]="false" (opened)="setStep(2)" (afterCollapse)="afterPanelClosed(1)" (afterExpand)="afterPanelOpened($event)" [disabled]="panelDisabled">
-                        <mat-expansion-panel-header>
-                            <mat-panel-title>
-                                When should one use CueTrade?
-                            </mat-panel-title>
-                        </mat-expansion-panel-header>
-
-                        <ng-template matExpansionPanelContent>
-                            <div class="accordion-panel-body row">
-                                CueTrade can be used both before and after the market hours. It can be used before the market hours to prepare for the day ahead by creating a trading plan and analyzing the potential trades from rationale, risk and statistical perspective to make an informed decision.<br/>
-                                
-                                After the market hours, it can be used to write notes on the trades imported from your brokerage account and review the analytics derived from your trading history. Based on the insights, one can update their trading rules and determine the actions to be taken the following trading day
-                            </div>
-                        </ng-template>
-                    </mat-expansion-panel>
-
-                    <mat-expansion-panel [expanded]="false" (opened)="setStep(3)" (afterCollapse)="afterPanelClosed(1)" (afterExpand)="afterPanelOpened($event)" [disabled]="panelDisabled">
-                        <mat-expansion-panel-header>
-                            <mat-panel-title>
-                                What makes CueTrade easy-to-use and intuitive journaling software? 
-                            </mat-panel-title>
-                        </mat-expansion-panel-header>
-                        <ng-template matExpansionPanelContent>
-                            <div class="accordion-panel-body row">
-                                Our objective is to make journaling simple and easy to use. We understand that providing data for each and every trade is a tedious task and that is why most traders do not journal their trades despite knowing its benefits. CueTrade saves you from most of the manual entry by auto-calculating certain parameters of your trades so that you don't have to provide this data.<br/>
-                                
-                                With CueTrade, one can provide notes on multiple trades in a single excel-like intuitive user interface, i.e., you don't have to open each trade to update its journal details rather multiple trades can be updated from a single page.
-                            </div>
-                        </ng-template>
-                    </mat-expansion-panel>
-
-                    <mat-expansion-panel [expanded]="false" (opened)="setStep(4)" (afterCollapse)="afterPanelClosed(1)" (afterExpand)="afterPanelOpened($event)" [disabled]="panelDisabled">
-                        <mat-expansion-panel-header>
-                            <mat-panel-title>
-                                What are trading rules in CueTrade?
-                            </mat-panel-title>
-                        </mat-expansion-panel-header>
-                        <ng-template matExpansionPanelContent>
-                            <div class="accordion-panel-body row">
-                                CueTrade allows you to set trading rules based on your prior experience or best practices. The objective of trading rules is to help you to trade within the boundaries you set for yourself and avoid repeating the same or common mistakes.<br/>
-                                
-                                There are two types of trading rules within CueTrade: automatic and manual. Automatic rules are checked for every trade strategy added to CueTrade automatically and indicated as aligned or non-aligned. Manual rules are text-based reminders - you need to indicate manually whether a trade strategy is aligned with the manual rule or not.
-                            </div>
-                        </ng-template>
-                    </mat-expansion-panel>
-
-                    <mat-expansion-panel [expanded]="false" (opened)="setStep(5)" (afterCollapse)="afterPanelClosed(1)" (afterExpand)="afterPanelOpened($event)" [disabled]="panelDisabled">
-                        <mat-expansion-panel-header>
-                            <mat-panel-title>
-                                How is CueTrade different from other trade journals?
-                            </mat-panel-title>
-                        </mat-expansion-panel-header>
-                        <ng-template matExpansionPanelContent>
-                            <div class="accordion-panel-body row">
-                                CueTrade is built with retail traders in mind and is different from other journals in many regards. 
-
-                                <ol>
-                                    <li>Our trade journal is designed to help the trader think through their trade from rationale, statistical, risk, and emotional perspectives</li>
-                                    <li>We allow users to set up automatic and manual trading rules so that they can make sure their trades are aligned with these trading rules</li>
-                                    <li>CueTrade groups all the trades on a symbol into a trade strategy. This allows users to enter notes, assess risk, review stats, and check alignment with rules at the trade strategy level instead of trade level. </li>
-                                    <li>With CueTrade, one can provide notes on multiple trades in a single excel-like intuitive user interface, i.e., you don't have to open each trade to update its journal details rather multiple trades can be updated from a single page.</li>
-                                    <li>Our emphasis on risk management differentiates us from others. Our Payoff Analysis tool allows you to analyze the P&L of trades involving options at a specific date in the future by varying stock price and implied volatility.</li>
-                                </ol>                                
-                            </div>
-                        </ng-template>
-                    </mat-expansion-panel>
-
-                    <mat-expansion-panel [expanded]="false" (opened)="setStep(6)" (afterCollapse)="afterPanelClosed(1)" (afterExpand)="afterPanelOpened($event)" [disabled]="panelDisabled">
-                        <mat-expansion-panel-header>
-                            <mat-panel-title>
-                                What kind of statistics and reports are available in CueTrade?
-                            </mat-panel-title>
-                        </mat-expansion-panel-header>
-                        <ng-template matExpansionPanelContent>
-                            <div class="accordion-panel-body row">
-                                CueTrade provides statistics and reports across multiple categories including performance, risk management, commissions, goals, and discipline. 
-                            </div>
-                        </ng-template>
-                    </mat-expansion-panel>
-
-                    <mat-expansion-panel [expanded]="false" (opened)="setStep(7)" (afterCollapse)="afterPanelClosed(1)" (afterExpand)="afterPanelOpened($event)" [disabled]="panelDisabled">
-                        <mat-expansion-panel-header>
-                            <mat-panel-title>
-                                How is the payoff analysis tool in CueTrade different from other option payoff tools? 
-                            </mat-panel-title>
-                        </mat-expansion-panel-header>
-                        <ng-template matExpansionPanelContent>
-                            <div class="accordion-panel-body row">
-                                Payoff analysis feature allows you to build trade strategies involving options and analyze the P&L of the strategy at a specific point in the future at a specific stock price and implied volatility levels.  User can update the stock price, implied volatility and days to expiration of the options to see its impact on the P&L. With this information, users can decide whether to go ahead with the trades in their current form or modify them so that they are inline with their risk appetite and return expectations. The biggest benefit of Payoff Analysis in CueTrade is its simplicity and easy to use.
-                            </div>
-                        </ng-template>
-                    </mat-expansion-panel>
-
-                    <mat-expansion-panel [expanded]="false" (opened)="setStep(8)" (afterCollapse)="afterPanelClosed(1)" (afterExpand)="afterPanelOpened($event)" [disabled]="panelDisabled">
-                        <mat-expansion-panel-header>
-                            <mat-panel-title>
-                                How can one add trades in their brokerage account to CueTrade automatically? 
-                            </mat-panel-title>
-                        </mat-expansion-panel-header>
-                        <ng-template matExpansionPanelContent>
-                            <div class="accordion-panel-body row">
-                                Trades can be imported from your brokerage accounts either automatically or manually. If your brokerage account is in this list, you can connect CueTrade to your brokerage and the trade history will get imported from your brokerage account to CueTrade every day automatically. For all the other brokerages, trade history files from brokerages should be downloaded and imported manually to CueTrade to add your trades in bulk.
-                            </div>
-                        </ng-template>
-                    </mat-expansion-panel>
-
-                    <mat-expansion-panel [expanded]="false" (opened)="setStep(9)" (afterCollapse)="afterPanelClosed(1)" (afterExpand)="afterPanelOpened($event)" [disabled]="panelDisabled">
-                        <mat-expansion-panel-header>
-                            <mat-panel-title>
-                                Can I place trades from CueTrade?
-                            </mat-panel-title>
-                        </mat-expansion-panel-header>
-                        <ng-template matExpansionPanelContent>
-                            <div class="accordion-panel-body row">
-                                No, you cannot place trades from CueTrade. CueTrade is a journaling and analytics software that should ideally be used before or after market hours.
-                            </div>
-                        </ng-template>
-                    </mat-expansion-panel>
-
-                    <mat-expansion-panel [expanded]="false" (opened)="setStep(10)" (afterCollapse)="afterPanelClosed(1)" (afterExpand)="afterPanelOpened($event)" [disabled]="panelDisabled">
-                        <mat-expansion-panel-header>
-                            <mat-panel-title>
-                                Is CueTrade free to use?
-                            </mat-panel-title>
-                        </mat-expansion-panel-header>
-                        <ng-template matExpansionPanelContent>
-                            <div class="accordion-panel-body row">
-                                CueTrade is in beta mode and is free to use. We will inform you and give you enough time if and when we make it a paid version.
-                            </div>
-                        </ng-template>
-                    </mat-expansion-panel>
-
-                    <mat-expansion-panel [expanded]="false" (opened)="setStep(11)" (afterCollapse)="afterPanelClosed(1)" (afterExpand)="afterPanelOpened($event)" [disabled]="panelDisabled">
-                        <mat-expansion-panel-header>
-                            <mat-panel-title>
-                                Which markets are currently supported by CueTrade?
-                            </mat-panel-title>
-                        </mat-expansion-panel-header>
-                        <ng-template matExpansionPanelContent>
-                            <div class="accordion-panel-body row">
-                                At present, we support US and Indian markets.
-                            </div>
-                        </ng-template>
-                    </mat-expansion-panel>
-
-                    <mat-expansion-panel [expanded]="false" (opened)="setStep(12)" (afterCollapse)="afterPanelClosed(1)" (afterExpand)="afterPanelOpened($event)" [disabled]="panelDisabled">
-                        <mat-expansion-panel-header>
-                            <mat-panel-title>
-                                What asset classes does CueTrade support?
-                            </mat-panel-title>
-                        </mat-expansion-panel-header>
-                        <ng-template matExpansionPanelContent>
-                            <div class="accordion-panel-body row">
-                                We support stock and options currently but are in the process of adding future contracts as well.
-                            </div>
-                        </ng-template>
-                    </mat-expansion-panel>
-                </mat-accordion>
-            </div>
-
-            <!-- <div class="features_section pb-2" id="support">
-                <h2 class="features_section_title page-heading">Support</h2>
-                <div class="row mt-3 pt-3">
-                    <div class="col-md-3">
-                        <div class="custom-card">
-                            <div class="custom-card-title">Help Guides</div>
-                            <div class="custom-card-body"> Step-by-Step guides on different features of CueTrade</div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <a href="https://www.youtube.com/channel/UC2VXwmZeSkAjY1bZTcnObwQ" target="_blank">
-                            <div class="custom-card">
-                                <div class="custom-card-title">Videos</div>
-                                <div class="custom-card-body"> List of all the how-to videos</div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="custom-card">
-                            <div class="custom-card-title">Blog</div>
-                            <div class="custom-card-body"> Read our perspective on various topics pertaining to trading</div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <a href="javascript:void(0)" (click)="openContactUsModal()">
-                            <div class="custom-card">
-                                <div class="custom-card-title">Contact Us</div>
-                                <div class="custom-card-body"> Reach out to us for any questions, feedback, or affiliations</div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div> -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation" (click)="menuToggle()">
+            <span class="material-icons hamburger-menu-icon">menu</span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText" [ngClass]="hamburgerMenu ? 'show' : ''">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="landing#howit_works">How it works</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="landing#benefits">Benefits</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="landing#features">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="landing#reviews">Reviews</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="landing#faq">FAQ</a>
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0)" (click)="openContactUsModal()">
+                        Contact Us
+                    </a>
+                </li> -->
+            </ul>
+            <button type="button" class="btn btn-success" (click)="login('google')">Login</button>
         </div>
     </div>
-    <!-- end: main-body -->
+</nav>
 
-    
-</div>
-
-<div class="landing-footer py-3">
-    <div class="container">
-        <div class="row footer_nav py-3">
-            <div class="col-sm-4">
-                <div class="mb-2">
-                    <img src="../../../assets/images/cuetrade_logo_white.png" alt="Cuetrade" />
-                </div>
-                CueTrade is an easy to use, intuitive trading journal that helps you adopt data-driven, systematic approach to trading thus improve your trading performance.
-            </div>
-            <div class="col-sm-3">
-                <div class="footer_nav_title">Useful Links</div>
-                <ul class="footer_nav">
-                    <!-- <li><a [routerLink]="['//']">Our Story</a></li> -->
-                    <!-- <li><a [routerLink]="['/privacy-policy/']" target="_blank">Privacy Policy</a></li>
-                    <li><a [routerLink]="['/terms-conditions/']" target="_blank">Terms and Conditions</a></li> -->
-                    <li><a [routerLink]="['//']">Partner with Us</a></li>
-                </ul>
-            </div>
-            <div class="col-sm-2">
-                <div class="footer_nav_title">Product</div>
-                <ul class="footer_nav">
-                    <li><a href="landing#howit_works">How It Works</a></li>
-                    <li><a href="landing#Benefits">Benefits</a></li>
-                    <li><a [routerLink]="['//']">Features</a></li>
-                    <li><a [routerLink]="['//']">Pricing</a></li>
-                    <li><a [routerLink]="['//']">Reviews</a></li>
-                </ul>
-            </div>
-            <div class="col-sm-3">
-                <div class="footer_nav_title">Support</div>
-                <ul class="footer_nav">
-                    <li><a [routerLink]="['//']">Frequently Asked Questions</a></li>
-                    <li><a [routerLink]="['//']">Help Center</a></li>
-                    <li><a href="javascript:void(0)" (click)="openContactUsModal()">Contact Us</a></li>
-                </ul>
-            </div>
-        </div>
-
+<section class="">
+    <div class="container-fluid banner-section">
         <div class="row align-items-center">
-            <div class="col-sm-6">
-                <div class="copyright"><span>&#169;</span> 2023 Uptick Systems Private Limited. All rights reserved.</div>
-                <div class="powered-by">Content powered by CMOTS Internet Technologies Pvt. Ltd.</div>
+            <div class="col-md-6">
+                <h1>Achieve better trading outcomes with a systematic, data-driven approach</h1>
+                <p class="pt-4">CueTrade helps you become a better trader through planning, journaling, and tracking
+                    your trading performance over time.</p>
+                <a href="#"><button type="button" class="btn-banner">Try Beta for free&nbsp;&nbsp;&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                  </svg></button></a>&nbsp;&nbsp;<a href="#howworks"><button
+                        type="button" class="btn-how-banner">How it Works</button></a>
             </div>
-            <div class="trade-socail-icon col-sm-6">
-                <p>Follow us on</p>  &nbsp;
-                <a href="https://twitter.com/CueTrade" target="_blank" class="mx-1"><img src="../../../assets/images/twitter.png" alt="twitter" /></a>
-                <a href="https://www.youtube.com/channel/UC2VXwmZeSkAjY1bZTcnObwQ" target="_blank"><img src="../../../assets/images/youtube.png" alt="youtube" /></a>
+            <div class="col-md-6">
+                <!-- <center><img src="assests/img/banner-asset.png" alt="" width="70%"></center>-->
+                <ng-lottie width="110%" height="600%" [options]="banner"></ng-lottie>
             </div>
-
         </div>
     </div>
-</div>
+</section>
 
+<section class="brands-sec">
+    <div class="container-fluid">
+        <h5 class="pb-3">CueTrade works with popular brokers</h5>
+        <div class="marquee-container">
+            <marquee direction="right" behavior="loop" stoponhover="true">
+                <div class="marquee">
+                    <img src="../../../../assets/img/brands/Extrade-Icons.png" alt="Image 1" width="100%">
+                    <img src="../../../../assets/img/brands/Fidelity-Icons.png" alt="Image 2" width="100%">
+                    <img src="../../../../assets/img/brands/Merrill-Icons.png" alt="Image 3" width="100%">
+                    <img src="../../../../assets/img/brands/Wealthfront-Icons.png" alt="Image 1" width="100%">
+                    <img src="../../../../assets/img/brands/Zerodha-Icons.png" alt="Image 2" width="100%">
+                    <img src="../../../../assets/img/brands/Ameritrade-Icons.png" alt="Image 2" width="100%">
+                    <img src="../../../../assets/img/brands/Robinhood-Icons.png" alt="Image 2" width="100%">
+                    <img src="../../../../assets/img/brands/InteractiveBrokers-Icons.png" alt="Image 2" width="100%">
+                </div>
+            </marquee>
+        </div>
+    </div>
+</section>
+
+<section id="howworks">
+    <div id="carouselExampleIndicators" class="carousel slide how-works">
+        <h2>How it works?</h2>
+        <p>CueTrade is an intuitive trading journal that is designed to help you take informed trading decisions.
+            Use it
+            before and after market hours to plan, journal, and review trades with ease, and use insights from your
+            trading history to adjust trades for maximum success</p>
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-md-5 slide-content">
+                            <h3>Plan Trades</h3>
+                            <!--Point 1-->
+                            <div class="img-container">
+                                <div class="slide-image">
+                                    <img src="../../../../assets/img/tick-icon.png">
+                                </div>
+                                <div class="slide-text">
+                                    <p>Prepare for the day ahead with a meticulous trading plan.</p>
+                                </div>
+                            </div>
+
+                            <!--Point 2-->
+                            <div class="img-container">
+                                <div class="slide-image">
+                                    <img src="../../../../assets/img/tick-icon.png">
+                                </div>
+                                <div class="slide-text">
+                                    <p>Analyze potential trades from risk, statistical, and rules perspectives.</p>
+                                </div>
+                            </div>
+
+                            <!--Point 3-->
+                            <div class="img-container">
+                                <div class="slide-image">
+                                    <img src="../../../../assets/img/tick-icon.png">
+                                </div>
+                                <div class="slide-text">
+                                    <p>Evaluate your trading performance after the market hours.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <ng-lottie width="100%" height="600%" [options]="tradeplan"></ng-lottie>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-md-5  slide-content">
+                            <h3>Journal Trades</h3>
+                            <!--Point 1-->
+                            <div class="img-container">
+                                <div class="slide-image">
+                                    <img src="../../../../assets/img/tick-icon.png">
+                                </div>
+                                <div class="slide-text">
+                                    <p>Prepare for the day ahead with a meticulous trading plan.</p>
+                                </div>
+                            </div>
+
+                            <!--Point 2-->
+                            <div class="img-container">
+                                <div class="slide-image">
+                                    <img src="../../../../assets/img/tick-icon.png">
+                                </div>
+                                <div class="slide-text">
+                                    <p>Analyze potential trades from risk, statistical, and rules perspectives.</p>
+                                </div>
+                            </div>
+
+                            <!--Point 3-->
+                            <div class="img-container">
+                                <div class="slide-image">
+                                    <img src="../../../../assets/img/tick-icon.png">
+                                </div>
+                                <div class="slide-text">
+                                    <p>Evaluate your trading performance after the market hours.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <ng-lottie width="100%" height="600%" [options]="tradejournal"></ng-lottie>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-md-5  slide-content">
+                            <h3>Review Insights</h3>
+                            <!--Point 1-->
+                            <div class="img-container">
+                                <div class="slide-image">
+                                    <img src="../../../../assets/img/tick-icon.png">
+                                </div>
+                                <div class="slide-text">
+                                    <p>Prepare for the day ahead with a meticulous trading plan.</p>
+                                </div>
+                            </div>
+
+                            <!--Point 2-->
+                            <div class="img-container">
+                                <div class="slide-image">
+                                    <img src="../../../../assets/img/tick-icon.png">
+                                </div>
+                                <div class="slide-text">
+                                    <p>Analyze potential trades from risk, statistical, and rules perspectives.</p>
+                                </div>
+                            </div>
+
+                            <!--Point 3-->
+                            <div class="img-container">
+                                <div class="slide-image">
+                                    <img src="../../../../assets/img/tick-icon.png">
+                                </div>
+                                <div class="slide-text">
+                                    <p>Evaluate your trading performance after the market hours.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <ng-lottie width="100%" height="600%" [options]="tradereview"></ng-lottie>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+</section>
+
+<section class="pb-5 bg-white" style="padding-top: 4rem;" id="benefits">
+    <div class="container text-center">
+        <h2 class="text-black">How CueTrade Helps You</h2>
+    </div>
+</section>
+
+<section class="pb-5 bg-white">
+    <div class="container">
+        <div class="row cue-help align-items-center">
+            <div class="col-md-6">
+                <img src="../../../../assets/img/how-cuetrade-helps/Meticulous-Planning.svg" alt="" width="100%">
+                
+            </div>
+            <div class="col-md-6 cue-help-icon">
+                <img src="../../../../assets/img/meticulous-planning-icon.png" alt="">
+                <h3>Meticulous Planning</h3>
+                <p>Maximize your chances of success in trading with meticulous planning. By creating a daily trading
+                    plan and planning your trades carefully before the market opens, you can mitigate risk, make
+                    informed decisions, and achieve desired outcomes in the market.</p>
+                <a href="#howworks">Try Beta for free&nbsp;&nbsp;&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+</svg></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="pt-5 pb-5 bg-white">
+    <div class="container">
+        <div class="row cue-help align-items-center">
+            <div class="col-md-6 cue-help-icon order-1">
+                <img src="../../../../assets/img/improved-decisions.png" alt="">
+                <h3>Improved Decisions</h3>
+                <p>Empower yourself with better decision-making capabilities by following a clear and structured
+                    framework for trading decisions. By adhering to predetermined trading rules, you can avoid
+                    impulsive decision-making that can result in losses and make informed, calculated choices that
+                    maximize your profits in the market.</p>
+                <a href="#howworks">Try Beta for free&nbsp;&nbsp;&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+</svg></a>
+            </div>
+            <div class="col-md-6 order-md-1">
+                <img src="../../../../assets/img/how-cuetrade-helps/Improved-Decisions.svg" alt="" width="100%">
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="pt-5 pb-5 bg-white">
+    <div class="container">
+        <div class="row cue-help align-items-center">
+            <div class="col-md-6">
+                <img src="../../../../assets/img/how-cuetrade-helps/better-performance.svg" alt="" width="100%">
+                
+            </div>
+            <div class="col-md-6 cue-help-icon">
+                <img src="../../../../assets/img/better-performance.png" alt="">
+                <h3>Better Performance</h3>
+                <p>Unleash your trading potential and improve your performance by consistently tracking your
+                    progress over time. Gain valuable insights into your strengths and weaknesses, evaluate the
+                    effectiveness of your trading strategies, and make necessary adjustments to continually improve
+                    your results in the market, and maximize your profits.</p>
+                <a href="#howworks">Try Beta for free&nbsp;&nbsp;&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+</svg></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="pt-5 pb-5 bg-white">
+    <div class="container">
+        <div class="row cue-help align-items-center">
+            <div class="col-md-6 cue-help-icon order-1">
+                <img src="../../../../assets/img/risk-management.png" alt="">
+                <h3>Risk Management</h3>
+                <p>Protect your trading portfolio with proactive risk assessment. By assessing the risk exposure of
+                    your trade strategies, you can minimize losses and safeguard your investments, ensuring
+                    long-term success in the market.</p>
+                <a href="#howworks">Try Beta for free&nbsp;&nbsp;&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+</svg></a>
+            </div>
+            <div class="col-md-6 order-md-1">
+                <img src="../../../../assets/img/how-cuetrade-helps/Risk-Management.svg" alt="" width="100%">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="pt-5 pb-5 bg-white">
+    <div class="container">
+        <div class="row cue-help align-items-center">
+            <div class="col-md-6">
+                <img src="../../../../assets/img/how-cuetrade-helps/Effortless-Journaling.svg" alt="" width="100%">
+                
+            </div>
+            <div class="col-md-6 cue-help-icon">
+                <img src="../../../../assets/img/effortless-journaling.png" alt="">
+                <h3>Effortless Journaling</h3>
+                <p>Boost your trading performance effortlessly with CueTrade's easy-to-use journaling feature. Enjoy
+                    hassle-free trade journaling with our auto-import feature, bulk updates, auto-populating and
+                    grouping of related trades. Simplify your journaling process and unlock the power of trading
+                    data to improve your strategies and achieve greater success in the market.</p>
+                <a href="#howworks">Try Beta for free&nbsp;&nbsp;&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+</svg></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="pt-5 bg-white" style="padding-bottom: 4rem;">
+    <div class="container">
+        <div class="row cue-help align-items-center">
+            <div class="col-md-6 cue-help-icon order-1">
+                <img src="../../../../assets/img/boosts-confidence.png" alt="">
+                <h3>Boosts confidence</h3>
+                <p>Build unshakable confidence in your trading abilities and reinforce positive habits with regular
+                    reviews of your successful trades and outcomes. By consistently reflecting on your successes,
+                    you can cultivate a winning mindset and approach trading with a greater sense of self-assurance,
+                    leading to more profitable trades and overall success in the market.</p>
+                <a href="#howworks">Try Beta for free&nbsp;&nbsp;&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+</svg></a>
+            </div>
+            <div class="col-md-6 order-md-1">
+                <img src="../../../../assets/img/how-cuetrade-helps/Boosts-Confidence.svg" alt="" width="100%">
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="features">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="text-black">Features of Cuetrade</h2>
+            <p class="feature-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+                totam rem aperiam, es is lit der.</p><br>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="feature-box">
+                    <img src="../../assets/img/trading-plan.png" alt="">
+                    <h4>Trading Plan</h4>
+                    <p>Prior to market opening, users can create a trading plan and later, post-market hours,
+                        they can review their executed trades, notes, statistics, and any valuable insights
+                        gained from that day's trades.<br><br></p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-box">
+                    <img src="../../assets/img/trade-builder.png" alt="">
+                    <h4>Trade Builder</h4>
+                    <p>Users can create trades and analyze them based on risk and statistics. They can also add
+                        notes, attach documents, and check if they align with the self-set trading
+                        rules.<br><br><br></p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-box">
+                    <img src="../../assets/img/payoff-analyzer.png" alt="">
+                    <h4>Payoff Analyzer</h4>
+                    <p>Enables users to simulate future scenarios and analyze potential returns on option trade
+                        strategies. Users can adjust their trades until they align with their desired risk level
+                        and return expectations.<br><br></p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-box">
+                    <img src="../../assets/img/trade-journal.png" alt="">
+                    <h4>Trade Journal</h4>
+                    <p>Users can keep a journal of their trades by importing them manually or automatically from
+                        their brokerages. They can also add notes, attach documents, and indicate whether the
+                        trades aligned with their self-set trading rules.<br><br></p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-box">
+                    <img src="../../assets/img/trading-rules.png" alt="">
+                    <h4>Trading Rules</h4>
+                    <p>Users can set manual or automatic trading rules based on their experience and best
+                        practices. Aligning trades with these rules helps avoid repeating common
+                        mistakes.<br><br><br></p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-box">
+                    <img src="../../assets/img/analytics.png" alt="">
+                    <h4>Analytics</h4>
+                    <p>Users can track their trading performance over time with reports and analytics. By
+                        identifying strengths and limitations in a historical context, users can make better
+                        trading decisions in the future.<br><br></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="bg-white" id="reviews">
+    <div class="text-center">
+        <h2 class="text-black" style="margin: 10px;">What people are saying about us</h2><br>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="testimonial">
+                    <div class="testimonial-copy">
+                        <div class="testimonial-name">
+                        <h4>Joseph Martin</h4>
+                        </div>
+                        <img src="../../../../assets/img/5star-testi.svg" alt="">
+                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+                            laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="testimonial">
+                    <div class="testimonial-copy">
+                        <div class="testimonial-name">
+                        <h4>Joseph Martin</h4>
+                        </div>
+                        <img src="../../../../assets/img/5star-testi.svg" alt="">
+                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+                            laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="testimonial">
+                    <div class="testimonial-copy">
+                        <div class="testimonial-name">
+                        <h4>Joseph Martin</h4>
+                        </div>
+                        <img src="../../../../assets/img/5star-testi.svg" alt="">
+                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+                            laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="pt-5 pb-5 bg-white" id="faq">
+    <div class="container accordion-wrapper">
+        <div class="row">
+            <div class="col-12 col-lg-12">
+                <h2 class="text-black font-weight-light" style="padding-bottom: 40px; text-align: center;"><strong>Frequently
+                        Asked Questions</strong></h2>
+            </div>
+        </div>
+        <div class="accordion">
+            <input type="radio" name="radio-a" id="check1">
+            <label class="accordion-label" for="check1">Who should use CueTrade?</label>
+            <div class="accordion-content">
+                <p>CueTrade is meant for all those traders who struggle to maintain discipline. Indiscipline
+                    includes trading without rationale, excessive trading, taking excessive risk, lack of control
+                    over emotions, etc. It helps such traders adopt a systematic approach to trading by allowing
+                    them to create a detailed trading plan before the market opens and reviewing their trades with
+                    reports and insights after the market closes so that they can identify their mistakes and learn
+                    from them. Also, it offers the ability to set rules so that traders can align their trades with
+                    the self-set rules.</p>
+            </div>
+        </div>
+        <div class="accordion">
+            <input type="radio" name="radio-a" id="check2">
+            <label class="accordion-label" for="check2">When should someone use CueTrade?</label>
+            <div class="accordion-content">
+                <p>You can use CueTrade before and after the market hours. Before the market opens, you
+                    can create a trading plan and analyze trades using risk and statistical measures to make
+                    informed decisions. After the market closes, you can write notes on your trades and review
+                    analytics from your trading history to update your rules and plan for the next trading day.</p>
+            </div>
+        </div>
+        <div class="accordion">
+            <input type="radio" name="radio-a" id="check3">
+            <label class="accordion-label" for="check3">Why is CueTrade considered simple and easy-to-use journaling
+                software?</label>
+            <div class="accordion-content">
+                <p>Our goal is to make journaling simple and effortless. We know that recording data for each
+                    trade can be a hassle, and that&#39;s why many traders don&#39;t journal their trades even
+                    though it&#39;s
+                    beneficial. CueTrade saves you time by automatically calculating some parameters of your
+                    trades, so you don&#39;t have to enter them manually. With CueTrade, you can take notes on
+                    multiple trades in a single easy-to-use interface, so you don&#39;t have to update each trade
+                    individually.</p>
+            </div>
+        </div>
+        <div class="accordion">
+            <input type="radio" name="radio-a" id="check4">
+            <label class="accordion-label" for="check4">What are CueTrade&#39;s trading rules, and how do they
+                assist?</label>
+            <div class="accordion-content">
+                <p>With CueTrade, you can create trading rules based on your experience or best practices.
+                    These rules help you to stay within your boundaries and avoid making the same mistakes.
+                    There are two types of rules: automatic and manual. Automatic rules are checked for every
+                    trade, and CueTrade shows if the trade is aligned with the rule or not. Manual rules are text-
+                    based reminders that you need to update manually.</p>
+            </div>
+        </div>
+        <div class="accordion">
+            <input type="radio" name="radio-a" id="check5">
+            <label class="accordion-label" for="check5">What makes CueTrade stand out compared to other trade
+                journals?</label>
+            <div class="accordion-content">
+                <p>CueTrade is a unique trade journal that caters to retail traders. It offers several features that
+                    set it apart from other journals:</p>
+                <ul>
+                    <li>CueTrade helps traders analyze their trades from various perspectives like rationale,
+                        statistics, risk, and emotions.</li>
+                    <li>It allows users to set up automatic and manual trading rules to ensure that their
+                        trades align with these rules.</li>
+                    <li>CueTrade groups all trades on a symbol into a trade strategy, making it easier for
+                        users to enter notes, assess risk, review stats, and check alignment with rules at the
+                        trade strategy level instead of individual trades.</li>
+                    <li>You can provide notes on multiple trades in a single, user-friendly interface similar to
+                        an Excel sheet.</li>
+                    <li>CueTrade prioritizes risk management, and its Payoff Analyzer tool helps traders
+                        analyze the potential profit or loss of trades involving options at a specific date in the
+                        future by varying stock price and implied volatility.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="accordion">
+            <input type="radio" name="radio-a" id="check6">
+            <label class="accordion-label" for="check6">How to add trades to CueTrade from a brokerage
+                account?</label>
+            <div class="accordion-content">
+                <p>You can add trades to CueTrade from your brokerage account in three ways:</p>
+                <ul>
+                    <li>Connect your brokerage account with CueTrade if it&#39;s supported, and the trade history
+                        will be automatically imported every day.</li>
+                    <li>For tdAmeritrade or Zerodha, download trade history files from your brokerage and
+                        upload them to CueTrade&#39;s Import Trades page.</li>
+                    <li>For unsupported brokerages, download the trade history files, add trades to CueTrade&#39;s
+                        standard template, and upload it to the Import Trades page.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="accordion">
+            <input type="radio" name="radio-a" id="check7">
+            <label class="accordion-label" for="check7">What types of statistics and reports does CueTrade
+                offer?</label>
+            <div class="accordion-content">
+                <p>CueTrade offers stats and reports in several categories, such as performance, risk
+                    management, commissions, goals, and discipline. CueTrade offers over 40 reports, and the list
+                    is expanding. These reports are based on your trading history and journal details.</p>
+            </div>
+        </div>
+        <div class="accordion">
+            <input type="radio" name="radio-a" id="check8">
+            <label class="accordion-label" for="check8">What sets CueTrade&#39;s payoff analysis tool apart from
+                other option payoff tools?</label>
+            <div class="accordion-content">
+                <p>Payoff analyzer tool in CueTrade helps you analyze option-based trade strategies to determine
+                    their potential profit or loss at a future date, given a particular stock price and implied
+                    volatility.
+                    You can adjust the stock price, implied volatility, and days to expiration to see how they
+                    impact
+                    the potential profit or loss. This helps you make informed decisions on whether to modify the
+                    trade strategy to align it with your risk tolerance and return expectations. The best part is,
+                    the
+                    tool is straightforward and user-friendly.</p>
+            </div>
+        </div>
+        <div class="accordion">
+            <input type="radio" name="radio-a" id="check9">
+            <label class="accordion-label" for="check9">Does CueTrade cost anything to use?</label>
+            <div class="accordion-content">
+                <p>CueTrade is currently in beta mode and is free to use. If we make it a paid version in the
+                    future,
+                    we will notify you with enough time to prepare.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="pt-5 pb-5 bg-white">
+    <div class="container cta-box">
+        <div class="row align-items-center">
+            <div class="col-md-7">
+                <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod.</h3>
+            </div>
+            <div class="col-md-2">
+
+            </div>
+            <div class="col-md-3">
+                <a href="#howworks"><button>Try Beta for free &nbsp;&nbsp;&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                  </svg></button></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="cue-footer pt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="../../../../assets/img/cuetrade-logo.svg" alt="">
+                <p>CueTrade is an easy to use, intuitive trading journal that helps you adopt data-driven,
+                    systematic approach to trading thus improve your trading performance.</p>
+                <ul class="social-icons">
+                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+
+            </div>
+            <div class="col-md-3">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="#howworks">How it works</a></li>
+                    <li><a href="#benefits">Benefits</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Terms</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="cue-copyright">
+            <p> © 2023 Uptick Systems Private Limited. All rights reserved.
+                Content powered by CMOTS Internet Technologies Pvt. Ltd.
+            </p>
+        </div>
+    </div>
+</footer>
 
 <!-- Modal -->
 <div class="modal fade custom_modal" [ngClass]="loginModalOpen ? 'show' : ''" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

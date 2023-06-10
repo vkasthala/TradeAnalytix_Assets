@@ -39,9 +39,13 @@ import { ViewInsightsComponent } from './modules/zerodha/view-insights/view-insi
 import { CopyCueTradeComponent } from './modules/zerodha/copy-cueTrade/copy-cueTrade.component';
 import { AddNotesComponent } from './modules/zerodha/add-notes/add-notes.component';
 import { TradeBookComponent } from './modules/tradebook/tradebook.component';
-import { NgImageSliderModule } from 'ng-image-slider';
 import { ImageService } from './modules/login/components/image.service';
 import { NgxPlaidLinkModule } from 'ngx-plaid-link';
+
+import SwiperCore, { SwiperOptions } from 'swiper';
+
+import { LottieModule } from "ngx-lottie";
+import player from "lottie-web";
 
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
   return localStorageSync({ keys: [globalConfigFeatureKey], rehydrate: true })(reducer);
@@ -51,6 +55,9 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
 export function highchartsModules() {
   // apply Highcharts Modules to this array
   return [more, exporting, highmaps, exportingdata];
+}
+export function playerFactory() {
+  return player;
 }
 
 @NgModule({
@@ -68,7 +75,6 @@ export function highchartsModules() {
     TradeBookComponent
   ],
   imports: [
-    NgImageSliderModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserModule,
@@ -78,6 +84,7 @@ export function highchartsModules() {
     UtilitiesModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     BrowserAnimationsModule,
+    LottieModule.forRoot({ player: playerFactory }),
     ChartModule,
     NgxPlaidLinkModule,
     ToastrModule.forRoot({

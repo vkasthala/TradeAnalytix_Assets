@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { HttpService } from '../../shared/services/http.service';
 import { JoinWaitlistComponent } from './join-waitlist/join-waitlist.component';
 import { ImageService } from './image.service';
+import { AnimationOptions } from "ngx-lottie";
 
 @Component({
   selector: 'app-landing',
@@ -14,8 +15,22 @@ import { ImageService } from './image.service';
 })
 export class LandingComponent implements OnInit {
 
+  title = 'ngSlick';
+  banner: AnimationOptions = {
+    path: "../../../../assets/animations/hero-cuetrade-ani.json"
+  };
+  tradeplan: AnimationOptions = {
+    path: "../../../../assets/animations/cuetrade-plan-ani.json"
+  };
+  tradejournal: AnimationOptions = {
+    path: "../../../../assets/animations/cuetrade-journal-ani.json"
+  };
+  tradereview: AnimationOptions = {
+    path: "../../../../assets/animations/cuetrade-review-ani.json"
+  };
+  
+
   showSlider = true;
-  imageObject;
 
   private createAcSec: boolean = false;
   private logonBodySec: boolean = true;
@@ -37,12 +52,8 @@ export class LandingComponent implements OnInit {
     protected toastr: ToastrService,
     private _imageService: ImageService
   ) {
-    this.setImageObject();
    }
 
-  setImageObject() {
-    this.imageObject = this._imageService.getImagesWithOrder();
-  }
   ngOnInit() {
     // setInterval(() => {
     //   if (this.currentInd === 4) {
@@ -112,7 +123,7 @@ export class LandingComponent implements OnInit {
   }
 
   menuToggle() {
-    this.hamburgerMenu = !this.hamburgerMenu 
+    this.hamburgerMenu = !this.hamburgerMenu;
   }
 
   displayStyle = "none";
