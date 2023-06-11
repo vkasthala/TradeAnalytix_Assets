@@ -102,7 +102,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   get currentNavigation() {
     // console.log('route:', this.currentRoute);
     switch (this.currentRoute) {
-      case 'dashboard': return { breadcrumb: 'Daily Workspace', title: 'Daily Workspace', description: '' };
+      case 'dashboard': return { breadcrumb: 'Dashboard', title: 'Dashboard', description: '' };
       case 'new-trade': return { breadcrumb: 'ADD NEW TRADE', title: 'Add New Trade', description: 'Enter the stock symbol or name for which trade strategy is being added' };
 
       case 'import-trades': return { breadcrumb: 'IMPORT TRADES', title: 'Import Trades', description: "Trade history files exported from brokerages can be imported into the system to add trades in bulk. All the files imported into the system are displayed as a list." };
