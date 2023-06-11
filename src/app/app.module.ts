@@ -46,6 +46,8 @@ import SwiperCore, { SwiperOptions } from 'swiper';
 
 import { LottieModule } from "ngx-lottie";
 import player from "lottie-web";
+import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
   return localStorageSync({ keys: [globalConfigFeatureKey], rehydrate: true })(reducer);
@@ -84,6 +86,8 @@ export function playerFactory() {
     UtilitiesModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     BrowserAnimationsModule,
+    SlickCarouselModule,
+    CarouselModule,
     LottieModule.forRoot({ player: playerFactory }),
     ChartModule,
     NgxPlaidLinkModule,

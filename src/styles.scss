@@ -696,3 +696,46 @@ html.theme-light .group-wWM3zP_M- {
 .tv-widget-watch-list__head-embed {
     margin-top: 5px !important;
 }
+
+.owl-dots {
+    flex-direction: column;
+    margin: 0 10px;
+    // bottom: 480px;
+    position: absolute;
+    right: 0;
+    left: 0;
+    z-index: 15;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+.owl-dot {
+    box-sizing: content-box;
+    flex: 0 1 auto;
+    padding: 0;
+    margin-right: 3px;
+    margin-left: 3px;
+    text-indent: -999px;
+    cursor: pointer;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    
+    transition: opacity .6s ease;
+    height: 12px;
+    width: 12px;
+}
+.owl-theme .owl-dots .owl-dot span {
+    margin: 0;
+    opacity: .5;
+    height: 12px;
+    width: 12px;
+    background-color: #135EA4 !important;
+    border-radius: 0;
+}
+.owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
+    background: #135EA4 !important;
+    opacity: 1;
+}

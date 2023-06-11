@@ -147,12 +147,12 @@ h2 {
     padding: 30px 10px;
 }
 
-.carousel-indicators {
+.carousel-indicators, .owl-dots {
     flex-direction: column;
     margin: 0 10px;
     bottom: 480px;
 }
-.carousel-indicators [data-bs-target] {
+.carousel-indicators [data-bs-target], .owl-dot {
     box-sizing: content-box;
     flex: 0 1 auto;
     width: 30px;
@@ -171,7 +171,7 @@ h2 {
     transition: opacity .6s ease;
 }
 
-.carousel-indicators [data-bs-target] {
+.carousel-indicators [data-bs-target], .owl-dot {
     height: 12px;
     width: 12px;
     background-color: #135EA4 !important;
@@ -247,7 +247,9 @@ h2 {
     color: #717785;
     padding-bottom: 1rem;
 }
-
+.slide-content {
+    padding-top: 50px;
+}
 .slide-content p {
     text-align: left;
     padding: 0;
@@ -929,4 +931,7 @@ input:checked~.accordion-content {
 }
 .me-auto {
     margin-right: auto!important;
+}
+.carousel-control-prev, .carousel-control-next {
+    width: 8%;
 }

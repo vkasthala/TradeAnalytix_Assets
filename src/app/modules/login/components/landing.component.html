@@ -79,22 +79,12 @@
 </section>
 
 <section id="howworks">
-    <div id="carouselExampleIndicators" class="carousel slide how-works">
+    <div class="carousel slide how-works">
         <h2>How it works?</h2>
-        <p>CueTrade is an intuitive trading journal that is designed to help you take informed trading decisions.
-            Use it
-            before and after market hours to plan, journal, and review trades with ease, and use insights from your
-            trading history to adjust trades for maximum success</p>
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-                aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                aria-label="Slide 3"></button>
-        </div>
+        <p>CueTrade is an intuitive trading journal that is designed to help you take informed trading decisions. Use it before and after market hours to plan, journal, and review trades with ease, and use insights from your trading history to adjust trades for maximum success</p>
+        
         <div class="carousel-inner">
-            <div class="carousel-item active">
+            <div class="carousel-item" [ngClass]="startPosition == 0 ? 'active': ''">
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-md-5 slide-content">
@@ -135,7 +125,7 @@
                     </div>
                 </div>
             </div>
-            <div class="carousel-item">
+            <div class="carousel-item" [ngClass]="startPosition == 1 ? 'active': ''">
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-md-5  slide-content">
@@ -176,7 +166,7 @@
                     </div>
                 </div>
             </div>
-            <div class="carousel-item">
+            <div class="carousel-item" [ngClass]="startPosition == 2 ? 'active': ''">
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-md-5  slide-content">
@@ -217,19 +207,24 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div>
 
+            <owl-carousel-o [options]="customOptions" (translated)="getPassedData($event)" #owlCar>
+                <ng-template carouselSlide>
+                    
+                    
+                </ng-template>
+                
+                <ng-template carouselSlide>
+                    
+                    
+                </ng-template>
+                <ng-template carouselSlide>
+                    
+                </ng-template>
+            </owl-carousel-o>
+        </div>
+        
+    </div>
 </section>
 
 <section class="pb-5 bg-white" style="padding-top: 4rem;" id="benefits">
@@ -803,3 +798,29 @@
       </div>
     </div>
 </div>
+
+<script>
+    $('.owl-carousel').owlCarousel({
+        loop: true,
+        margin: 15,
+        nav: true,
+        navText: [
+            "<i class='fa fa-caret-left'></i>",
+            "<i class='fa fa-caret-right'></i>"
+        ],
+        autoplay: true,
+        autoplayHoverPause: true,
+        autoplayTimeout: 5000,
+        responsive: {
+            0: {
+                items: 1
+            },
+            600: {
+                items: 3
+            },
+            1000: {
+                items: 4
+            }
+        }
+    })
+</script>
