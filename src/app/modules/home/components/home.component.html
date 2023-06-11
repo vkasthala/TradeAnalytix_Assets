@@ -10,25 +10,27 @@
         <nav class="trade-navbar">
             
             <div class="home-link">
-                <a [routerLink]="['/dashboard/']">
+                <a [routerLink]="['/dashboard/']" [class.nav-active]="currentRoute === ''">
                     <img src="../../../../assets/images/home_r.svg" class="nav-icon nav-icon-md"> 
+                    <img src="../../../../assets/images/home.svg" class="nav-icon nav-icon-md nav-icon_r"> 
                     <span>Home</span>
                 </a>
             </div>
 
             <div class="parent-item">
                 <img src="../../../../assets/images/plan_r.svg" class="nav-icon nav-icon-md">
+                <img src="../../../../assets/images/plan.svg" class="nav-icon nav-icon_r"> 
                 Plan
             </div>
             <ul class="list-unstyled ">
-                <li class="sidebar-item" [class.nav-active]="currentRoute == 'trade-plans'">
-                    <a class="sidebar-link" [routerLink]="['/trade-plans/']">
+                <li class="sidebar-item" [class.nav-active]="currentRoute === 'trade-plans'">
+                    <a class="sidebar-link" [routerLink]="['/trade-plans/']" routerLinkActive="active">
                         <mat-icon>note_add</mat-icon>
                         <span>Daily Plan</span>
                     </a>
                 </li>
-                <li class="sidebar-item" [class.nav-active]="currentRoute == 'trade-builder'">
-                    <a class="sidebar-link" [routerLink]="['/trade-builder/']">
+                <li class="sidebar-item" [class.nav-active]="currentRoute === 'trade-builder'">
+                    <a class="sidebar-link" [routerLink]="['/trade-builder/']" routerLinkActive="active">
                         <mat-icon>compare_arrows</mat-icon>
                         <span>Trade Builder</span>
                     </a>
@@ -43,17 +45,18 @@
 
             <div class="parent-item">
                 <img src="../../../../assets/images/journal_r.svg" class="nav-icon nav-icon-md">
+                <img src="../../../../assets/images/journal.svg" class="nav-icon nav-icon_r">
                 Journal
             </div>
             <ul class="list-unstyled ">
                 <li class="sidebar-item" [class.nav-active]="currentRoute == 'import-trades-history'">
-                    <a class="sidebar-link" [routerLink]="['/import-trades-history/']">
+                    <a class="sidebar-link" [routerLink]="['/import-trades-history/']" routerLinkActive="active">
                         <mat-icon class="mat-lg">import_export</mat-icon>
                         <span>Import Trades</span>
                     </a>
                 </li>
                 <li class="sidebar-item" [class.nav-active]="currentRoute == 'trade-strategies'">
-                    <a class="sidebar-link" [routerLink]="['/trade-strategies/']">
+                    <a class="sidebar-link" [routerLink]="['/trade-strategies/']" routerLinkActive="active">
                         <mat-icon>attach_money</mat-icon>
                         <span>Trade Book</span>
                     </a>
@@ -69,6 +72,7 @@
 
             <div class="parent-item">
                 <img src="../../../../assets/images/review_r.svg" class="nav-icon review-icon"> 
+                <img src="../../../../assets/images/review.svg" class="nav-icon nav-icon_r"> 
                 Review
             </div>
             <ul class="list-unstyled ">
@@ -97,6 +101,17 @@
                 <mat-icon *ngIf="isExpand">arrow_forward</mat-icon>
             </span>
         </nav>
+
+        <div class="sidebar-bottom">
+            <a class="bottom-link" [routerLink]="['/setttings']" [class.nav-active]="currentRoute == 'setttings'">
+                <mat-icon class="nav-icon">settings</mat-icon>
+                <span>Settings</span>
+            </a>
+            <a class="bottom-link" [routerLink]="['/contact-us/']" [class.nav-active]="currentRoute == 'contact-us'">
+                <mat-icon class="nav-icon">phone</mat-icon>
+                <span>Contact Us</span>
+            </a>
+        </div>
     </div>
     <div class="main">
         <div class="trade-dashboard-topbar">
@@ -124,11 +139,11 @@
                                 <label for="demoToggle"></label>
                               </div>
                         </span>
-                        <span class="top-nav-item pr-0" [class.nav-active]="currentRoute == 'setttings'">
+                        <!-- <span class="top-nav-item pr-0" [class.nav-active]="currentRoute == 'setttings'">
                             <a class="top-nav-link" [routerLink]="['/setttings/']">
                                 <mat-icon>settings</mat-icon>
                             </a>
-                        </span>
+                        </span> -->
                         <!-- <span class="top-nav-item pl-0" [class.nav-active]="currentRoute == 'insights'">
                             <a class="top-nav-link" [routerLink]="['/insights/']">
                                 <mat-icon>notifications_none</mat-icon>

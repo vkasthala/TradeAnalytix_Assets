@@ -88,10 +88,7 @@
                                             <mat-checkbox [checked]="dailyWorkspaceViewModel.reviewStats" (change)="updateDailyWorkspace({ checked: $event.checked, field: 'REVIEW_STATS' })"><mat-icon class="close-icon">close</mat-icon> Review statistics and reports</mat-checkbox>
                                             <a class="workspace-link" [routerLink]="['/reports/']">Review</a>
                                         </li>
-                                        <li>
-                                            <mat-checkbox [checked]="dailyWorkspaceViewModel.reviewInsights" (change)="updateDailyWorkspace({ checked: $event.checked, field: 'REVIEW_INSIGHTS' })"><mat-icon class="close-icon">close</mat-icon> Review daily insights</mat-checkbox>
-                                            <a class="workspace-link" [routerLink]="['/reports/']">Review</a>
-                                        </li>
+                                        
                                         <li>
                                             <mat-checkbox [checked]="dailyWorkspaceViewModel.addRules" (change)="updateDailyWorkspace({ checked: $event.checked, field: 'ADD_RULES' })"><mat-icon class="close-icon">close</mat-icon> Add or update trading rules</mat-checkbox>
                                             <a class="workspace-link" [routerLink]="['/rules/']">Add / Update</a>
