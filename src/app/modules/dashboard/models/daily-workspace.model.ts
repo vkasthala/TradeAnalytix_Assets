@@ -5,7 +5,6 @@ export class DailyWorkspace {
     public addNotes: boolean;
     public reviewPerformance: boolean;
     public reviewStats: boolean;
-    public reviewInsights: boolean;
     public addRules: boolean;
     public day: Date;
 }

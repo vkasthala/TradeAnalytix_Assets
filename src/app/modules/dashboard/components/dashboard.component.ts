@@ -51,6 +51,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   selectedbroker: number = 1;
   dailyProgress: number = 0;
   progressPercent: number = 0;
+  totalTasks: number = 7;
 
 
   constructor(
@@ -105,7 +106,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       if (result) {
         this.dailyWorkspaceViewModel = result;
         this.dailyProgress = Object.values(this.dailyWorkspaceViewModel).filter(value => value === true).length;
-        this.progressPercent = (this.dailyProgress / 8) * 100;
+        this.progressPercent = (this.dailyProgress / this.totalTasks) * 100;
       }
     });
   }
@@ -116,7 +117,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       if (result) {
        this.dailyWorkspaceViewModel = result;
        this.dailyProgress = Object.values(this.dailyWorkspaceViewModel).filter(value => value === true).length;
-       this.progressPercent = (this.dailyProgress / 8) * 100;
+       this.progressPercent = (this.dailyProgress / this.totalTasks) * 100;
        this.toastr.success("Successfully Updated DailyWorkspace");
       }
     }, err => {
