@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -6,6 +6,18 @@ import { environment } from 'src/environments/environment';
 import { HttpService } from '../../shared/services/http.service';
 import { JoinWaitlistComponent } from './join-waitlist/join-waitlist.component';
 import { ImageService } from './image.service';
+import { AnimationOptions } from "ngx-lottie";
+import { SlidesOutputData, OwlOptions } from 'ngx-owl-carousel-o';
+
+export class CarouselData {
+  id?: string;
+  text: string;
+  dataMerge?: number;
+  width?: number;
+  dotContent?: string;
+  src?: string;
+  dataHash?: string;
+}
 
 @Component({
   selector: 'app-landing',
@@ -13,9 +25,23 @@ import { ImageService } from './image.service';
   styleUrls: ['./landing.component.scss']
 })
 export class LandingComponent implements OnInit {
+  startPosition: number = 0;
+  activeSlides: any;
+  title = 'ngSlick';
+  banner: AnimationOptions = {
+    path: "../../../../assets/animations/hero-cuetrade-ani.json"
+  };
+  tradeplan: AnimationOptions = {
+    path: "../../../../assets/animations/cuetrade-plan-ani.json"
+  };
+  tradejournal: AnimationOptions = {
+    path: "../../../../assets/animations/cuetrade-journal-ani.json"
+  };
+  tradereview: AnimationOptions = {
+    path: "../../../../assets/animations/cuetrade-review-ani.json"
+  };
+  
 
-  showSlider = true;
-  imageObject;
 
   private createAcSec: boolean = false;
   private logonBodySec: boolean = true;
@@ -35,14 +61,11 @@ export class LandingComponent implements OnInit {
     private _dialog: MatDialog,
     private httpService: HttpService,
     protected toastr: ToastrService,
-    private _imageService: ImageService
+    private _imageService: ImageService,
+    private el: ElementRef
   ) {
-    this.setImageObject();
    }
 
-  setImageObject() {
-    this.imageObject = this._imageService.getImagesWithOrder();
-  }
   ngOnInit() {
     // setInterval(() => {
     //   if (this.currentInd === 4) {
@@ -112,7 +135,7 @@ export class LandingComponent implements OnInit {
   }
 
   menuToggle() {
-    this.hamburgerMenu = !this.hamburgerMenu 
+    this.hamburgerMenu = !this.hamburgerMenu;
   }
 
   displayStyle = "none";
@@ -151,8 +174,43 @@ export class LandingComponent implements OnInit {
   closeContactUsModal() {
     this.contactUsModal = !this.contactUsModal;
   }
+
+  carouselData: CarouselData[] = [];
+
+  customOptions: OwlOptions = {
+    loop: false,
+    autoplay: true,
+    autoplayHoverPause: true,
+		autoplaySpeed: 600,
+    dotsSpeed: 300,
+    dotsData: true,
+    smartSpeed: 500,
+    dragEndSpeed: 200,
+    rewind: true,
+    // rtl: true,
+    startPosition: 1,
+    // navText: [ '<i class=fa-chevron-left>left</i>', '<i class=fa-chevron-right>right</i>' ],
+    responsive: {
+      0: {
+        items: 1
+      },
+      600: {
+        items: 2
+      },
+      900: {
+        items: 1
+      }
+    },
+    nav: false
+  }
+
+  getPassedData(data: SlidesOutputData) {
+    this.activeSlides = data;
+    this.startPosition = this.activeSlides.startPosition;
+    console.log(this.activeSlides);
+  }
+
 }
 function BulkUpdateUiComponent(BulkUpdateUiComponent: any, arg1: { width: string; maxWidth: string; height: string; data: {}; }) {
   throw new Error('Function not implemented.');
 }
-

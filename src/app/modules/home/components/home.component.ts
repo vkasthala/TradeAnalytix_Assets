@@ -32,12 +32,13 @@ export class HomeComponent implements OnInit, AfterViewInit {
     private notificationService: NotificationService,
     private _dialog: MatDialog,
     protected toastr: ToastrService,
-    private demoService: DemoModeDetailsService
+    private demoService: DemoModeDetailsService,
+    public  route: ActivatedRoute
   ) {
     
     let globalSelector = (fromGlobalConfig.globalConfigFeatureKey as any);
     globalStore.select(globalSelector).subscribe(res => {
-      //this.currentRoute = res.currentRoute;
+      this.currentRoute = res.currentRoute;
       //this.updateModuleName(res.currentRoute);
       this.title = sessionStorage.getItem('current-module');
       // this.isExpand = 'Bulk Update' === this.title;
@@ -99,9 +100,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   get currentNavigation() {
-    //console.log('route:', this.currentRoute);
+    // console.log('route:', this.currentRoute);
     switch (this.currentRoute) {
-      case 'dashboard': return { breadcrumb: 'Daily Workspace', title: 'Daily Workspace', description: '' };
+      case 'dashboard': return { breadcrumb: 'Dashboard', title: 'Dashboard', description: '' };
       case 'new-trade': return { breadcrumb: 'ADD NEW TRADE', title: 'Add New Trade', description: 'Enter the stock symbol or name for which trade strategy is being added' };
 
       case 'import-trades': return { breadcrumb: 'IMPORT TRADES', title: 'Import Trades', description: "Trade history files exported from brokerages can be imported into the system to add trades in bulk. All the files imported into the system are displayed as a list." };
