@@ -49,6 +49,9 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   showMoreMetrics: boolean = false;
   brokerages: Brokerage[] = [];
   selectedbroker: number = 1;
+  dailyProgress: number = 0;
+  progressPercent: number = 0;
+
 
   constructor(
     private router: Router, private ref: ChangeDetectorRef, private tradePlanService: TradePlansService, private reportDataService: ReportDataService,
@@ -101,6 +104,8 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       console.log("daily workspace:", result);
       if (result) {
         this.dailyWorkspaceViewModel = result;
+        this.dailyProgress = Object.values(this.dailyWorkspaceViewModel).filter(value => value === true).length;
+        this.progressPercent = (this.dailyProgress / 8) * 100;
       }
     });
   }
@@ -109,6 +114,9 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     console.log('Checkbox for '+change.field+' is '+ change.checked);
     this.dashboardService.updateDailyWorkspace(change).subscribe(result => {
       if (result) {
+       this.dailyWorkspaceViewModel = result;
+       this.dailyProgress = Object.values(this.dailyWorkspaceViewModel).filter(value => value === true).length;
+       this.progressPercent = (this.dailyProgress / 8) * 100;
        this.toastr.success("Successfully Updated DailyWorkspace");
       }
     }, err => {

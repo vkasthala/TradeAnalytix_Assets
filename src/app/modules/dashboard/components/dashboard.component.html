@@ -40,9 +40,9 @@
                                 <div class="daily-workspace-progress">
                                     <div style="min-width:300px ;">
                                         <p class="mb-2">Completed tasks today</p>
-                                        <div><mat-progress-bar mode="determinate" value="40"></mat-progress-bar></div>
+                                        <div><mat-progress-bar mode="determinate" value="{{ progressPercent }}"></mat-progress-bar></div>
                                     </div>
-                                    <span class="progress-count">1/7</span>
+                                    <span class="progress-count">{{dailyProgress}}/8</span>
                                 </div>
                             </div>
 
@@ -55,7 +55,7 @@
                                         <li><mat-checkbox [checked]="dailyWorkspaceViewModel.dailyPlan" (change)="updateDailyWorkspace({ checked: $event.checked, field: 'DAILY_PLAN' })"><mat-icon class="close-icon">close</mat-icon> Create a daily trading plan</mat-checkbox></li>
                                         <li>
                                             <mat-checkbox [checked]="dailyWorkspaceViewModel.analyzeTrades" (change)="updateDailyWorkspace({ checked: $event.checked, field: 'ANALYZE_TRADES' })"><mat-icon class="close-icon">close</mat-icon> Build and analyze potential trades</mat-checkbox>
-                                            <a class="workspace-link" [routerLink]="['/risk-analysis/']">Add</a>
+                                            <a class="workspace-link" [routerLink]="['/risk-analysis/']" *ngIf="!dailyWorkspaceViewModel.analyzeTrades">Add</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -66,15 +66,15 @@
                                     <ul class="orange-list">
                                         <li>
                                             <mat-checkbox [checked]="dailyWorkspaceViewModel.importTrades" (change)="updateDailyWorkspace({ checked: $event.checked, field: 'IMPORT_TRADES' })"><mat-icon class="close-icon">close</mat-icon> Import trades from brokers</mat-checkbox>
-                                            <a class="workspace-link" [routerLink]="['/import-trades-history/']">Import</a>
+                                            <a class="workspace-link" [routerLink]="['/import-trades-history/']" *ngIf="!dailyWorkspaceViewModel.importTrades">Import</a>
                                         </li>
                                         <li>
                                             <mat-checkbox [checked]="dailyWorkspaceViewModel.addNotes" (change)="updateDailyWorkspace({ checked: $event.checked, field: 'ADD_NOTES' })"><mat-icon class="close-icon">close</mat-icon> Add notes to your trades</mat-checkbox>
-                                            <a class="workspace-link" [routerLink]="['/trade-strategies/']">Add</a>
+                                            <a class="workspace-link" [routerLink]="['/trade-strategies/']" *ngIf="!dailyWorkspaceViewModel.addNotes">Add</a>
                                         </li>
                                         <li>
                                             <mat-checkbox [checked]="dailyWorkspaceViewModel.reviewPerformance" (change)="updateDailyWorkspace({ checked: $event.checked, field: 'REVIEW_PERFORMANCE' })"><mat-icon class="close-icon">close</mat-icon> Review performance and close plan</mat-checkbox>
-                                            <a class="workspace-link" [routerLink]="['/reports/']">Review</a>
+                                            <a class="workspace-link" [routerLink]="['/reports/']" *ngIf="!dailyWorkspaceViewModel.reviewPerformance">Review</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -86,15 +86,15 @@
                                     <ul class="orange-list pb-0">
                                         <li>
                                             <mat-checkbox [checked]="dailyWorkspaceViewModel.reviewStats" (change)="updateDailyWorkspace({ checked: $event.checked, field: 'REVIEW_STATS' })"><mat-icon class="close-icon">close</mat-icon> Review statistics and reports</mat-checkbox>
-                                            <a class="workspace-link" [routerLink]="['/reports/']">Review</a>
+                                            <a class="workspace-link" [routerLink]="['/reports/']" *ngIf="!dailyWorkspaceViewModel.reviewStats">Review</a>
                                         </li>
                                         <li>
                                             <mat-checkbox [checked]="dailyWorkspaceViewModel.reviewInsights" (change)="updateDailyWorkspace({ checked: $event.checked, field: 'REVIEW_INSIGHTS' })"><mat-icon class="close-icon">close</mat-icon> Review daily insights</mat-checkbox>
-                                            <a class="workspace-link" [routerLink]="['/reports/']">Review</a>
+                                            <a class="workspace-link" [routerLink]="['/reports/']" *ngIf="!dailyWorkspaceViewModel.reviewInsights">Review</a>
                                         </li>
                                         <li>
                                             <mat-checkbox [checked]="dailyWorkspaceViewModel.addRules" (change)="updateDailyWorkspace({ checked: $event.checked, field: 'ADD_RULES' })"><mat-icon class="close-icon">close</mat-icon> Add or update trading rules</mat-checkbox>
-                                            <a class="workspace-link" [routerLink]="['/rules/']">Add / Update</a>
+                                            <a class="workspace-link" [routerLink]="['/rules/']" *ngIf="!dailyWorkspaceViewModel.addRules">Add / Update</a>
                                         </li>
                                     </ul>
                                 </div>
