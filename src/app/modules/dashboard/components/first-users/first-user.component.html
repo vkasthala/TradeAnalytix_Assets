@@ -17,28 +17,32 @@
 
         <div class="slider-inner" *ngIf="currentInd == 1">
             <div class="slider-body">
-                <div class="slider-description mb-3">
-                    Let's get to know each other better. It would not take more than a minute.
+              <div class="slider-description mb-3">
+                {{ questions[currentInd].description }}
+              </div>
+              <div class="slider-description">
+                {{ questions[currentInd].questionText }}
+              </div>
+              <div class="buttons-section">
+                <div class="row">
+                  <div class="col">
+                    <ng-container *ngFor="let option of questions[currentInd].options; let i = index">
+                      <button type="button" class="btn btn-plain mx-2 my-2" (click)="nextSlide()">{{ option.label }}</button>
+                      <br *ngIf="(i + 1) % 2 === 0">
+                    </ng-container>
+                  </div>
                 </div>
-                <div class="slider-description">How many trades do you execute per week on an average across all your accounts?</div>
-                <div class="buttons-section">
-                    <button type="button" class="btn btn-plain" (click)="nextSlide()">Less than 5</button>
-                    <button type="button" class="btn btn-plain" (click)="nextSlide()">5 to 10</button>
-                </div>
-                <div class="buttons-section">
-                    <button type="button" class="btn btn-plain" (click)="nextSlide()">10 to 20</button>
-                    <button type="button" class="btn btn-plain" (click)="nextSlide()">More than 20</button>
-                </div>
+              </div>
             </div>
             <ul class="slider-nav">
-                <li class="nav-bar nav-bar-active">1/5</li>
-                <li class="nav-bar"></li>
-                <li class="nav-bar"></li>
-                <li class="nav-bar"></li>
-                <li class="nav-bar"></li>
-            </ul> 
-        </div>
-
+              <li class="nav-bar nav-bar-active">1/5</li>
+              <li class="nav-bar"></li>
+              <li class="nav-bar"></li>
+              <li class="nav-bar"></li>
+              <li class="nav-bar"></li>
+            </ul>
+          </div>
+            
         <div class="slider-inner" *ngIf="currentInd == 2">
             <div class="slider-body">
                 <div class="slider-description mb-3">

@@ -18,6 +18,46 @@ export class FirstUserComponent implements OnInit {
   userName: string = '';
   referralInput: boolean = false;
   otherInput: boolean = false;
+  questions = [
+    {
+      title: "Welcome {{userName}}",
+      description: "Before we get started, do you agree with CueTrade terms and conditions?",
+      inputType: "checkbox",
+      inputName: "termsAndConditions",
+      options: [
+        { label: "I read and accept the CueTrade terms and service and privacy policy", value: "accepted" }
+      ]
+    },
+    {
+      title: "Let's get to know each other better",
+      description: "How many trades do you execute per week on an average across all your accounts?",
+      inputType: "button",
+      inputName: "tradesPerWeek",
+      options: [
+        { label: "Less than 5", value: "lessThan5" },
+        { label: "5 to 10", value: "5to10" },
+        { label: "10 to 20", value: "10to20" },
+        { label: "More than 20", value: "moreThan20" },
+        { label: "Less than 5", value: "lessThan5" },
+      ]
+    },
+    {
+    title: "Instrument Preferences",
+    description: "What instruments do you trade the most?",
+    inputType: "checkbox",
+    inputName: "instruments",
+    options: [
+      { label: "Stocks", value: "stocks" },
+      { label: "Options", value: "options" },
+      { label: "Futures", value: "futures" },
+      { label: "Forex", value: "forex" },
+      { label: "Commodities", value: "commodities" },
+      { label: "Other", value: "other" }
+    ]
+    }
+    // Add more question objects as needed
+  ];
+  
   public data: any = [
     {
       title:"Welcome to CueTrade",
