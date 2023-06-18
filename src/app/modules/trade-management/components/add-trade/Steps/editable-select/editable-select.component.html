@@ -11,16 +11,17 @@
       </div>
 
       <div class="exit-con">
+        <label class="col-form-label pl-3">Enter/select Tag Name</label>
         <div class="combobox">
-            <input type="text" [(ngModel)]='value' (ngModelChange)="getFilteredList()" class="combobox-input" (keyup)="onKeyPress($event)" (blur)="toggleListDisplay(value)" (focus)="toggleListDisplay(1, value)" placeholder="Select one..." >
+          <input type="text" [(ngModel)]='value' (ngModelChange)="getFilteredList()" class="combobox-input" (keyup)="onKeyPress($event)" (blur)="toggleListDisplay(value)" (focus)="toggleListDisplay(1, value)" placeholder="Select one..." >
 
-            <div class="combobox-options" *ngIf="listHidden">
-                <li *ngFor="let item of filteredList;let i = index" (click)="selectItem(i)" [ngClass]="{'selected': i===selectedIndex}">{{item}}</li>
-            </div>
+          <div class="combobox-options" *ngIf="listHidden">
+              <li *ngFor="let item of filteredList;let i = index" (click)="selectItem(i)" [ngClass]="{'selected': i===selectedIndex}">{{item}}</li>
+          </div>
         </div>
       </div>
       <div class="separator"></div>
-      <div class="px-3 pt-1 text-right">
+      <div class="px-3 pb-1 text-right">
         <button type="button" class="btn btn-add" (click)="saveForm()">Save</button>
       </div>
 
