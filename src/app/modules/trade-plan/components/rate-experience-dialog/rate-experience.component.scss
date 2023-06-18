@@ -1,0 +1,245 @@
+@import "../../../../../assets/styles/variable.scss";
+.plannedtrade-popup {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+    // background-color: rgba(0,0,0,0.1);
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.plannedtrade-pop-inner {
+    max-width: 600px;
+    min-width: 600px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    background: #FFFFFF;
+    border-radius: 8px;
+    @media #{$extra-small} {
+        max-width: 90%;
+        min-width: 90%;
+    }
+}
+
+.main-pop-inner {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+}
+
+.top-pop-inner {
+    background: #3A4C85;
+    border-radius: 8px 8px 0px 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+}
+
+.left-heading {
+    font-size: 14px;
+    h6 {
+        color: #fff;
+        font-size: 14px;
+        margin: 0;
+    }
+}
+
+.right-close {
+    line-height: 0;
+    span {
+        cursor: pointer;
+        color: #fff;
+    }
+    .mat-icon {
+        cursor: pointer;
+        height: 20px;
+        width: 20px;
+        color: #fff;
+        font-size: 22px;
+    }
+}
+
+.btn-up {
+    padding-top: 0.5rem;
+    text-align: right;
+}
+
+.btn-add {
+    color: #fff !important;
+    background: radial-gradient(159.03% 392.94% at 26.8% -25.69%, rgba(24, 255, 61, 0.2) 0%, rgba(155, 216, 186, 0.182) 97.92%), linear-gradient(180deg, #33CB39 0%, #1BD022 100%);
+    border-color: #1BD022 !important;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100px;
+    font-size: 14px;
+    padding: 5px 15px !important;
+}
+
+.col-form-label {
+    color: #3A4C85;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.form-control {
+    padding: 0.375rem 0.5rem;
+    font-size: 12px;
+    height: 40px;
+}
+
+select.form-control {
+    padding: 0.375rem 0.25rem;
+}
+
+textarea.form-control {
+    height: auto;
+}
+
+// Toggle Customize
+.switch {
+    position: relative;
+}
+.switch label {
+width: 46px;
+height: 22px;
+position: absolute;
+background-color: #999;
+top: 0;
+left: 2px;
+border-radius: 50px;
+margin-bottom: 0px;
+}
+.switch input[type="checkbox"] {
+visibility: hidden;
+}
+.switch label:after {
+content: "";
+width: 18px;
+height: 18px;
+border-radius: 50px;
+position: absolute;
+top: 2px;
+left: 2px;
+background-color: white;
+transition: all 0.3s;
+}
+.switch input[type="checkbox"]:checked + label:after {
+left: 26px;
+}
+.switch input[type="checkbox"]:checked + label {
+background-color: $primary;
+@media #{$extra-small} {
+    background-color: #4BB964;
+}
+}
+.switch input[type="checkbox"]:not(:checked) + label {
+    background-color: #ddd;
+}
+.switch-no {
+    color: #ddd;
+}
+.switch-yes {
+    color: $primary;
+}
+
+.switch input:checked~.labels::after {
+    opacity: 0;
+}
+
+.switch input:checked~.labels::before {
+    opacity: 1;
+}
+.toggle {
+    --width: 50px;
+    --height: 26px;
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 26px;
+    border-radius: 50px;
+    cursor: pointer;
+  }
+
+  .toggle input {
+    display: none;
+  }
+
+  .toggle .slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50px;
+    background-color: #ccc;
+    transition: all 0.4s ease-in-out;
+  }
+
+  .toggle .slider::before {
+    content: "";
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: 23px;
+    height: 23px;
+    border-radius: 50%;
+    background-color: #fff;
+    transition: all 0.4s ease-in-out;
+  }
+
+  .toggle input:checked+.slider {
+    background-color: #4BB964;
+  }
+
+  .toggle input:checked+.slider::before {
+    transform: translateX(calc(var(--width) - var(--height)));
+  }
+
+  .toggle .labels {
+    position: absolute;
+    top: 4px;
+    left: 55px;
+    width: 100%;
+    height: 100%;
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 15px;
+    transition: all 0.4s ease-in-out;
+  }
+
+  .toggle .labels::after {
+    content: attr(data-off);
+    position: absolute;
+    right: auto;
+    color: #4d4d4d;
+    opacity: 1;
+    transition: all 0.4s ease-in-out;
+  }
+
+  .toggle .labels::before {
+    content: attr(data-on);
+    position: absolute;
+    left: 2px;
+    color: #000;
+    opacity: 0;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.4);
+    transition: all 0.4s ease-in-out;
+  }
+
+  .toggle input:checked~.labels::after {
+    opacity: 0;
+  }
+
+  .toggle input:checked~.labels::before {
+    opacity: 1;
+  }

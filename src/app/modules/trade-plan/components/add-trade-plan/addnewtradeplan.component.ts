@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialog, MatStepper } from '@angular/material';
+import { MatCardModule, MatDialog, MatNativeDateModule, MatStepper } from '@angular/material';
 import { NavigationExtras, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { DemoModeDetailsService } from 'src/app/modules/shared/services/demo-mode-details.service';
@@ -14,7 +14,7 @@ import { TradePlansService } from '../../services/trade-plans.service';
 import { OpenStrategiesGridComponent } from '../open-strategies-grid/open-strategies-grid.component';
 import { PlannedTradesGridComponent } from '../planned-trades-grid/planned-trades-grid.component';
 
-import { MatDatepickerInputEvent } from '@angular/material/datepicker';
+import { MatDatepickerInputEvent, MatDatepickerModule } from '@angular/material/datepicker';
 import { DateAdapter } from '@angular/material';
 import { IMyDate, IMyDateRangeModel, IMyDrpOptions } from 'mydaterangepicker';
 import * as _moment from 'moment';
@@ -36,19 +36,25 @@ import { EntryExitRulesGridStore } from 'src/app/modules/settings/services/entry
 import { EntryExitRulesService } from 'src/app/modules/settings/services/entry-exit-rules.service';
 import { EntryExitRulesGridRequest } from 'src/app/modules/settings/models/entry-exit-rules-grid-request.model';
 import { EntryExitRulesGridPage } from 'src/app/modules/settings/models/entry-exit-rules-grid-page.model';
+import { PlannedTradeDialogComponent } from '../planned-trade-dialog/planned-trade-dialog.component';
+import { RateExperienceDialogComponent } from '../rate-experience-dialog/rate-experience.component';
 const moment = _moment;
 
 @Component({
   selector: 'app-addnewtradeplan',
   templateUrl: './addnewtradeplan.component.html',
-  styleUrls: ['./addnewtradeplan.component.scss']
+  styleUrls: ['./addnewtradeplan.component.scss'],
+  // standalone: true,
+  // imports: [MatCardModule, MatDatepickerModule, MatNativeDateModule],
 })
 export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
+  selected = new Date();
   protected add = true;
   protected edit = false;
   protected view = false;
   protected isDemoMode = false;
   showMmydaterange: boolean = false;
+  showCreatePlan: boolean = false;
 
   tradePlanId: number = 0;
   day: string;
@@ -123,6 +129,7 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
+    this.planDate = moment(this.selected);
     this.dataSource = new EntryExitRulesGridStore(this.entryExitRulesService, this.settingsService);
   }
   getInitialRequest(): EntryExitRulesGridRequest {
@@ -399,6 +406,9 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
   mydaterangeOpen() {
     this.showMmydaterange = !this.showMmydaterange;
   }
+  openCreatePlan() {
+    this.showCreatePlan = !this.showCreatePlan;
+  }
 
   onDateRangeChanged(event: IMyDateRangeModel) {
     console.log('date change: ', event);
@@ -462,6 +472,50 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
         rule.checked = rule.id && rule.id !== null && rule.id > 0;
         this.portfolioLevelRules.push(rule);
       })
+    });
+  }
+
+  openPlannedTradeDialog(plannedTrade: PlannedTrade, ind: number) {
+    let dialogData: PlannedTrade;
+    if (!plannedTrade) {
+      dialogData = new PlannedTrade();
+    } else {
+      dialogData = Object.create(plannedTrade);
+    }
+
+    const dialogRef = this._dialog.open(PlannedTradeDialogComponent, {
+      disableClose: false,
+      width: 'auto',
+      data: dialogData
+    });
+    dialogRef.afterClosed().subscribe((res) => {
+      if (res) {
+        console.log('result..', res);
+        
+        this.createPlannedTrade(res);
+      }
+    });
+  }
+
+  createPlannedTrade(plannedTrade: PlannedTrade) {
+    this.tradePlanService.createPlannedTrade(this.tradePlanId, plannedTrade).subscribe(result => {
+      this.loadPlannedTrades();
+    });
+  }
+
+  openRateExperienceDialog() {
+    const dialogRef = this._dialog.open(RateExperienceDialogComponent, {
+      disableClose: false,
+      width: 'auto',
+      data: {
+        title: 'Rate Your Experience',
+      }
+    });
+    dialogRef.afterClosed().subscribe((res) => {
+      if (res) {
+        console.log('result..', res);
+        
+      }
     });
   }
 
