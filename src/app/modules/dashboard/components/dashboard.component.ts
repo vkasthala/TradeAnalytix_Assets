@@ -52,6 +52,8 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   dailyProgress: number = 0;
   progressPercent: number = 0;
   totalTasks: number = 7;
+  currentDate: Date = new Date();
+ 
 
 
   constructor(

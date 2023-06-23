@@ -1,0 +1,49 @@
+<div class="plannedtrade-popup">
+    <div class="plannedtrade-pop-inner">
+        <div class="top-pop-inner">
+            <div class="left-heading">
+                <h6>Rate Your Experience</h6>
+            </div>
+            <div class="right-close" (click)="closeModal()">
+                <mat-icon>clear</mat-icon>
+            </div>
+        </div>
+
+        <div class="main-pop-inner">
+            <div class="d-flex mb-3 align-items-center justify-content-between">
+                <label class="col-form-label">Did you align with your trading plan?</label>
+                <div class="col-sm-2">
+                    <span class="d-flex align-items-center">
+                        <label class="toggle m-0">
+                            <input type="checkbox" id="tradingToggle" class="cursor" [checked]="tradePlan.tradeplanAligned" [(ngModel)]="tradePlan.tradeplanAligned" (ngModelChange)="updateTradePlan()">
+                            <span class="slider"></span>
+                            <span class="labels" data-on="Yes" data-off="No"></span>
+                        </label>
+                    </span>
+                </div>
+            </div>
+
+            <div class="d-flex mb-3 align-items-center justify-content-between">
+                <label class="col-form-label">Rate your trading performance</label>
+                <div class="col-md-5 px-0">
+                    <select class="form-control" [(ngModel)]="tradePlan.selfReview" (ngModelChange)="updateTradePlan()">
+                        <option value="good">Good</option>
+                        <option value="average">Average</option>
+                        <option value="bad">Bad</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="d-flex mb-3 align-items-center justify-content-between">
+                <label class="col-form-label">Do you want to set a new rule based on lessons learnt today?</label>
+                <div>
+                    <a class="btn btn-add" (click)="addEntryExitRule('Add', 'SAVE')">Add Rule</a>
+                </div>
+            </div>
+
+            <div class="border-top pt-3 text-right">
+                <button type="button" class="btn btn-add" [mat-dialog-close]="data">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>

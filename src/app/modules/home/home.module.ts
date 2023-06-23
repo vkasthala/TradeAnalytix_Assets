@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
+  MatCardModule,
   MatCheckboxModule, MatDatepickerModule, MatInputModule, MatListModule, MatNativeDateModule, MatProgressBarModule, MatProgressSpinnerModule, MatRadioModule, MatTooltipModule
 } from '@angular/material';
 import { MAT_MOMENT_DATE_ADAPTER_OPTIONS, MomentDateAdapter } from '@angular/material-moment-adapter';
@@ -168,6 +169,7 @@ import { NgxPlaidLinkModule } from 'ngx-plaid-link';
 import { FirstUserComponent } from '../dashboard/components/first-users/first-user.component';
 import { ManualImportTradeComponent } from '../import-trades-history/manual-import-trade/manual-import-trade.component';
 import { AutoImportTradeComponent } from '../import-trades-history/auto-import-trade/auto-import-trade.component';
+import { RateExperienceDialogComponent } from '../trade-plan/components/rate-experience-dialog/rate-experience.component';
 
 export const MY_FORMATS = {
   parse: {
@@ -332,7 +334,8 @@ export const MY_FORMATS = {
     ThesisEditorComponent,
     FirstUserComponent,
     ManualImportTradeComponent,
-    AutoImportTradeComponent
+    AutoImportTradeComponent,
+    RateExperienceDialogComponent
   ],
   imports: [
     FormsModule,
@@ -353,7 +356,8 @@ export const MY_FORMATS = {
     MatProgressSpinnerModule,
     NgxPlaidLinkModule,
     AgGridModule.withComponents([BulkUpdateComponent]),
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatCardModule
   ],
   entryComponents: [
     AddTradeConfirmationPopupComponent,
@@ -425,7 +429,8 @@ export const MY_FORMATS = {
     ThesisEditorComponent,
     FirstUserComponent,
     ManualImportTradeComponent,
-    AutoImportTradeComponent
+    AutoImportTradeComponent,
+    RateExperienceDialogComponent
   ],
   // bootstrap: [TradeStrategiesGrid],
   providers: [
