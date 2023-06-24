@@ -15,7 +15,7 @@
                 <mat-calendar [(selected)]="selected"></mat-calendar>
             </mat-card>
             
-            <button class="btn btn-enter" (click)="addTradePlanDate()">Submit </button>
+            <button class="btn btn-enter" (click)="addTradePlanDate()">New Plan</button>
         </div>
     </div>
 </div>
@@ -43,7 +43,11 @@
 <div class="card-body pt-0 px-3">
     <div class="row">
         <div class="col-sm-2 trade-plan-lt pt-2">
-            <div class="trade-plan-title pl-3 mb-2" *ngIf="planDates.length > 0">All Trades</div>
+            <div class="trade-plan-title pl-3 mb-2" *ngIf="planDates.length > 0">All Trades <span class="cursor ml-3" (click)="mydaterangeOpen()"><img src="../../../../assets/images/filter-black.png" /></span></div>
+            <div *ngIf="showMmydaterange" class="trade-date date-range-sm px-1">
+                <my-date-range-picker placeholder="Date range" id="mydaterange" name="mydaterange" [options]="myDateRangePickerOptions" (dateRangeChanged)="onDateRangeChanged($event)"></my-date-range-picker>
+            </div>
+            
             <div class="date-filter-list" *ngIf="planDates.length > 0">
                 <div class="date-filter-header border-bottom">
                     <span class="title cursor" (click)="openCreatePlan()">Create a New Plan <mat-icon class="ml-2 mat-icon-md">add</mat-icon></span>
@@ -67,13 +71,12 @@
                         <mat-icon class="ml-2 mat-icon-md cursor" (click)="addTradePlanDate()">add</mat-icon>
                     </div>
                 </div>
-                <div class="date-filter-header">
+                <!-- <div class="date-filter-header">
                     <span class="title">Plan Date</span>
                     <span class="cursor" (click)="mydaterangeOpen()"><img src="../../../../assets/images/filter-black.png" /></span>
-                </div>
-                <div *ngIf="showMmydaterange" class="trade-date date-range-sm px-1">
-                    <my-date-range-picker placeholder="Date range" id="mydaterange" name="mydaterange" [options]="myDateRangePickerOptions" (dateRangeChanged)="onDateRangeChanged($event)"></my-date-range-picker>
-                </div>
+                </div> -->
+                
+                
                 <ul *ngFor="let date of planDates; let index = index">
                     <li [ngClass]="(selectedPlan && selectedPlan.id === date.id) ? 'active' : '' ">
                         <span (click) = "onPlanSelect(date)">{{date.day | date: 'dd-MMM-yyyy'}}</span>
@@ -94,9 +97,9 @@
                     <mat-expansion-panel [expanded]="false">
                         <mat-expansion-panel-header>
                             <mat-panel-title style="flex-direction:column">
-                                Pre-Market
+                                Pre Market analysis
                                 <br/>
-                                <small>Let's create a plan before market hours (09:15 AM)</small>
+                                <span class="sub-heading">Let's create a plan before market hours (09:15 AM)</span>
                             </mat-panel-title>
                         </mat-expansion-panel-header>
                         <ng-template matExpansionPanelContent>
@@ -116,7 +119,7 @@
                                 <div class="mb-3 d-flex align-items-center justify-content-between">
                                     <div>
                                         <div class="title">Planned Trades</div>
-                                        Create your 1st trade by clicking add trade
+                                        <span class="sub-heading">Create your 1st trade by clicking add trade</span>
                                     </div>
                                     <button class="btn btn-sm btn-outline-black" *ngIf="!viewTradePlan" (click)="openPlannedTradeDialog()">
                                         <mat-icon class="mat-icon-md">add</mat-icon> Add Trade
@@ -227,7 +230,7 @@
                             <mat-panel-title style="flex-direction:column">
                                 Post-Market
                                 <br/>
-                                <small>Trading experience post market hours (3:30PM)</small>
+                                <span class="sub-heading">Trading experience post market hours (3:30PM)</span>
                             </mat-panel-title>
                         </mat-expansion-panel-header>
                         <ng-template matExpansionPanelContent>
@@ -246,7 +249,7 @@
                                 <div class="mb-3 d-flex align-items-center justify-content-between">
                                     <div>
                                         <div class="title">Today's Executed Trades</div>
-                                        Upload the trades you have done today click upload and add the file from zerodha or other platform
+                                        <span class="sub-heading">Upload the trades you have done today click upload and add the file from zerodha or other platform</span>
                                     </div>
                                     <button class="btn btn-sm btn-outline-black" *ngIf="!viewTradePlan" (click)="openRateExperienceDialog()">
                                         <mat-icon class="mat-icon-md">download</mat-icon> Upload document

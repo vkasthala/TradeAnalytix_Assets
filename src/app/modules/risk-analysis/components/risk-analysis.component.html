@@ -3,22 +3,32 @@
         <ng-container [ngSwitch]="currentState">
             <ng-container *ngSwitchCase="1">
                 <!--entry first-->
-                <div class="addnew-first">
+                <div class="addnew-first p-3">
+                    <div class="tb-container-box">
+                        <div class="tb-container-box-header">How to use trade builder?</div>
+                        <div class="tb-container-box-body">
+                            <ul>
+                                <li><img src="../../../../assets/images/tb_icon_1.svg" class="mr-3" /> Create Trades</li>
+                                <li><img src="../../../../assets/images/tb_icon_2.svg" class="mr-3" /> Add stock, option positions</li>
+                                <li><img src="../../../../assets/images/tb_icon_3.svg" class="mr-3" /> Calculate maximum risk, stoploss</li>
+                                <li><img src="../../../../assets/images/tb_icon_4.svg" class="mr-3" /> Create journal aligning with trading rules</li>
+                            </ul>
+                        </div>
+                    </div>
+                
+    
                     <div class="trade-form">
-                        <!-- <mat-icon class="trade-form-icon ml-1">insights</mat-icon> -->
-                        <div class="d-flex justify-content-between">
-                            <h2 class="pb-2 symbol-heading">Payoff Analyzer</h2>
-                            <!-- <div><a data-toggle="modal" data-target="#modal1" class="d-flex watch-video cursor mt-2">Watch Video</a></div> -->
+                        <app-trade-search (symbolSelectEvent)="symbolSelectEventHandler($event)">
+                        </app-trade-search>
+                        <div class="trade-form-body">
+                            <h4 class="py-2 mt-3">popular user search</h4>
+                            <ul>
+                                <li>Nifty 50</li>
+                                <li>Nifty Next 50</li>
+                                <li>Nifty Next 50</li>
+                            </ul>
                         </div>
-                        <div class="pb-3 symbol-description">Analyze the potential returns on your trade strategies involving options through simulation of future scenarios. Adjust your trades until the trade is aligned with your risk appetite and mitigate the risk exposure.
-                        </div>
-                        <div class="d-flex mt-2">
-                            <div class="media-body">
-                                <app-trade-search (symbolSelectEvent)="symbolSelectEventHandler($event)"></app-trade-search>
-                            </div>
-                            <button class="btn btn-enter ml-3" (click)="enterSymbol()">Submit </button>
-                        </div>
-                        
+                        <button class="btn btn-enter" (click)="enterSymbol()">Submit </button>
                     </div>
                 </div>
             </ng-container>

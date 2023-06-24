@@ -138,7 +138,7 @@ select.form-control {
 }
 
 textarea.form-control {
-    height: 80px !important;
+    height: 100px !important;
     resize: none;
     overflow: auto;
 }
@@ -234,8 +234,6 @@ textarea.form-control {
     color: #121D33;
     padding-top: 0;
     padding-bottom: 0;
-    min-width: 35%;
-    flex: 0 0 35%;
 }
 
 .col-form-value {
@@ -250,4 +248,12 @@ textarea.form-control {
     font-size: 13px;
     line-height: 1;
     font-weight: 600;
+}
+.custom-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    align-items: center;
+    justify-content: space-between;
 }
