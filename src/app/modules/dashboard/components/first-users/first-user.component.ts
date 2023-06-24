@@ -1,6 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { UserService } from 'src/app/modules/shared/services/user.service';
+import { FirstUserResponse } from '../../models/first-user.model';
+import { DashboardChartService } from '../../services/dashboard-chart.service';
 
 @Component({
   selector: 'app-first-user',
@@ -18,65 +20,36 @@ export class FirstUserComponent implements OnInit {
   userName: string = '';
   referralInput: boolean = false;
   otherInput: boolean = false;
-  questions = [
-    {
-      title: "Welcome {{userName}}",
-      description: "Before we get started, do you agree with CueTrade terms and conditions?",
-      inputType: "checkbox",
-      inputName: "termsAndConditions",
-      options: [
-        { label: "I read and accept the CueTrade terms and service and privacy policy", value: "accepted" }
-      ]
-    },
-    {
-      title: "Let's get to know each other better",
-      description: "How many trades do you execute per week on an average across all your accounts?",
-      inputType: "button",
-      inputName: "tradesPerWeek",
-      options: [
-        { label: "Less than 5", value: "lessThan5" },
-        { label: "5 to 10", value: "5to10" },
-        { label: "10 to 20", value: "10to20" },
-        { label: "More than 20", value: "moreThan20" },
-        { label: "Less than 5", value: "lessThan5" },
-      ]
-    },
-    {
-    title: "Instrument Preferences",
-    description: "What instruments do you trade the most?",
-    inputType: "checkbox",
-    inputName: "instruments",
-    options: [
-      { label: "Stocks", value: "stocks" },
-      { label: "Options", value: "options" },
-      { label: "Futures", value: "futures" },
-      { label: "Forex", value: "forex" },
-      { label: "Commodities", value: "commodities" },
-      { label: "Other", value: "other" }
-    ]
-    }
-    // Add more question objects as needed
-  ];
-  
+  questions = [];
+  userResponse = new Map<number, FirstUserResponse[]>();
+
+  referralInputValue: string = '';
+  otherInputValue: string = '';
+  otherInstrumentValue: string = '';
+  lackOfToolsValue: string = '';
+  otherApplicableValue: string = '';
+  selectedOption: string = '';
+
+
   public data: any = [
     {
-      title:"Welcome to CueTrade",
+      title: "Welcome to CueTrade",
     }, {
-      title:'CueTrade Benefits',
+      title: 'CueTrade Benefits',
     }, {
-      title:'Trade Journal',
+      title: 'Trade Journal',
     }, {
-      title:'Import Trades',
+      title: 'Import Trades',
     }, {
-      title:'Trade Plan',
+      title: 'Trade Plan',
     }, {
-      title:'Strategy Builder',
+      title: 'Strategy Builder',
     }, {
-      title:'Strategy Picker',
+      title: 'Strategy Picker',
     }, {
-      title:'Reports and Metrics',
+      title: 'Reports and Metrics',
     }, {
-      title:'Trading Rules',
+      title: 'Trading Rules',
     }, {
       title: "Prerequisites"
     }
@@ -84,8 +57,10 @@ export class FirstUserComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<FirstUserComponent>,
     private userService: UserService,
+    private dashboardService: DashboardChartService,
+    @Inject(MAT_DIALOG_DATA) public questionOptions: any
   ) {
-    //this.title = data.title;
+    this.questions = questionOptions;
   }
 
   ngOnInit() {
@@ -100,6 +75,8 @@ export class FirstUserComponent implements OnInit {
   }
 
   closeModal() {
+    this.getDropdownResponse();
+    this.updateSurveyResponse();
     this.dialogRef.close();
   }
 
@@ -115,6 +92,7 @@ export class FirstUserComponent implements OnInit {
   }
 
   onChange($event) {
+    this.selectedOption = $event.target.value;
     this.referralInput = $event.target.value === "Referral" ? true : false
     this.otherInput = $event.target.value === "Other" ? true : false
     this.isLastSlide = $event.target.value !== "" ? true : false
@@ -130,24 +108,24 @@ export class FirstUserComponent implements OnInit {
   applicableCheck(event: Event): void {
     const isChecked: boolean = event.target['checked'];
     const name: any = event.target['name'];
-    if(isChecked) {
+    if (isChecked) {
       if (this.applicableList.length > 0) {
-        if(this.applicableList.includes(name)){
+        if (this.applicableList.includes(name)) {
           this.applicableList.filter((x, i) => {
-            if(x === name) {
+            if (x === name) {
               this.applicableList.splice(i, 1)
             }
           })
-        }else {
+        } else {
           this.applicableList.push(name)
         }
-      }else {
+      } else {
         this.applicableList.push(name)
       }
-      
+
     } else {
       this.applicableList.filter((x, i) => {
-        if(x === name) {
+        if (x === name) {
           this.applicableList.splice(i, 1)
         }
       })
@@ -157,29 +135,80 @@ export class FirstUserComponent implements OnInit {
   instrumentsCheck(event: Event): void {
     const isChecked: boolean = event.target['checked'];
     const name: any = event.target['name'];
-    if(isChecked) {
+    if (isChecked) {
       if (this.instrumentsList.length > 0) {
-        if(this.instrumentsList.includes(name)){
+        if (this.instrumentsList.includes(name)) {
           this.instrumentsList.filter((x, i) => {
-            if(x === name) {
+            if (x === name) {
               this.instrumentsList.splice(i, 1)
             }
           })
-        }else {
+        } else {
           this.instrumentsList.push(name)
         }
-      }else {
+      } else {
         this.instrumentsList.push(name)
       }
-      
+
     } else {
       this.instrumentsList.filter((x, i) => {
-        if(x === name) {
+        if (x === name) {
           this.instrumentsList.splice(i, 1)
         }
       })
     }
-    
+
   }
 
+  buttonResponse(option) {
+    let response = this.createResponseObj(option);
+    this.userResponse.set(response.questionId, [response]);
+    this.nextSlide();
+  }
+
+  checkboxResponse() {
+    let currentQuestion = this.questions[this.currentInd];
+    let options: [] = currentQuestion.surveyOptions;
+    let checkboxResponse: FirstUserResponse[] = [];
+    options.forEach(option => {
+      if (this.instrumentsList.includes(option['value']) || this.applicableList.includes(option['value'])) {
+        let response = this.createResponseObj(option);
+        if (option['value'] == 'otherInstrument') {
+          response.customText = this.otherInstrumentValue;
+        }
+        if (option['value'] == 'lackOfTools') {
+          response.customText = this.lackOfToolsValue;
+        }
+        if (option['value'] == 'otherApplicable') {
+          response.customText = this.otherApplicableValue;
+        }
+        checkboxResponse.push(response);
+      }
+    })
+    this.userResponse.set(currentQuestion.id, checkboxResponse);
+    this.nextSlide();
+  }
+
+  createResponseObj(option) {
+    let response = new FirstUserResponse();
+    response.optionId = option.id;
+    response.questionId = this.questions[this.currentInd].id;
+    return response;
+  }
+
+  getDropdownResponse() {
+    let currentQuestion = this.questions[this.currentInd];
+    let option = currentQuestion.surveyOptions.find(option => option['value'] == this.selectedOption);
+    let response = this.createResponseObj(option);
+    response.customText = this.referralInput ? this.referralInputValue : this.otherInput ? this.otherInputValue : "";
+    this.userResponse.set(currentQuestion.id, [response]);
+  }
+
+  updateSurveyResponse() {
+    const requestObj = {};
+    this.userResponse.forEach((value, key) => {
+      requestObj[key] = value;
+    });
+    this.dashboardService.updateSurveyResponse(requestObj).subscribe(res => { });
+  }
 }

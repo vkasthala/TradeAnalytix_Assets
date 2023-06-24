@@ -44,4 +44,12 @@ export class DashboardChartService {
     return this.httpService.post<DailyWorkspaceUpdate, void>(environment.apiUrl + '/dashboard/daily-workspace-update', workspaceReq);
   } 
 
+  public getSurveyQuestions(): Observable<any> {
+    return this.httpService.get(environment.apiUrl + '/first-user/questions');
+  }
+
+  public updateSurveyResponse(request): Observable<any> {
+    return this.httpService.put(environment.apiUrl + '/first-user/update', (request));
+  }
+
 }

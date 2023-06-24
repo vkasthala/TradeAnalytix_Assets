@@ -11,6 +11,7 @@ import { UserMetadataService } from 'src/app/modules/trade-management/services/u
 import { UserMetadataStoreService } from 'src/app/modules/shared/services/user-metadata-store.service';
 import { UserTagService } from 'src/app/modules/settings/services/user-tag.service';
 import { FirstUserComponent } from 'src/app/modules/dashboard/components/first-users/first-user.component';
+import { DashboardChartService } from 'src/app/modules/dashboard/services/dashboard-chart.service';
 
 @Component({
   selector: 'app-oauth-redirect',
@@ -25,7 +26,8 @@ export class OauthRedirectComponent implements OnInit {
     private _dialog: MatDialog,
     private stockSymbolService: StockSymbolService,
     private metdataStoreService: UserMetadataStoreService,
-    private userTagService: UserTagService
+    private userTagService: UserTagService,
+    private dashboardService: DashboardChartService
   ) { }
 
   ngOnInit() {
@@ -74,14 +76,23 @@ export class OauthRedirectComponent implements OnInit {
     });
   }
   loadFirstUser() {
-    const dialogRef = this._dialog.open(FirstUserComponent, {
-      disableClose: true,
-      panelClass: 'guided-tour-panel',
-      backdropClass: 'guided-tour-modal'
-    });
+    this.dashboardService.getSurveyQuestions().subscribe(res => {
+      let questions: [] = res;
+      let surveyCompleted: boolean = questions.length == 0 ? true : false;
+      if (!surveyCompleted) {
+        const dialogRef = this._dialog.open(FirstUserComponent, {
+          disableClose: true,
+          panelClass: 'guided-tour-panel',
+          backdropClass: 'guided-tour-modal',
+          data: questions
+        });
 
-    dialogRef.afterClosed().subscribe((res) => {
-    });
+        dialogRef.afterClosed().subscribe((res) => {
+        });
+      }
+    }, err => {
+
+    })
   }
 
   loadReferralModal() {
