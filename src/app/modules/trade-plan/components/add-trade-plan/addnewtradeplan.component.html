@@ -5,8 +5,8 @@
             <div class="tb-container-box-body">
                 <img src="../../../../../assets/images/newtade-plan.svg" class="mr-3" />
             </div>
-            <div class="tb-container-box-header">Let's Create Your 1st Trading Plan</div>
-            Select a date from date picker to create the plan
+            <div class="tb-container-box-header">Create Your 1st Trading Plan</div>
+            Select a date from the date picker to create a trading plan
         </div>
 
 
@@ -43,7 +43,7 @@
 <div class="card-body pt-0 px-3">
     <div class="row">
         <div class="col-sm-2 trade-plan-lt pt-2">
-            <div class="trade-plan-title pl-3 mb-2" *ngIf="planDates.length > 0">All Trades <span class="cursor ml-3" (click)="mydaterangeOpen()"><img src="../../../../assets/images/filter-black.png" /></span></div>
+            <div class="trade-plan-title pl-3 mb-2" *ngIf="planDates.length > 0">Trade Plans <span class="cursor ml-3" (click)="mydaterangeOpen()"><img src="../../../../assets/images/filter-black.png" /></span></div>
             <div *ngIf="showMmydaterange" class="trade-date date-range-sm px-1">
                 <my-date-range-picker placeholder="Date range" id="mydaterange" name="mydaterange" [options]="myDateRangePickerOptions" (dateRangeChanged)="onDateRangeChanged($event)"></my-date-range-picker>
             </div>
@@ -97,20 +97,20 @@
                     <mat-expansion-panel [expanded]="false">
                         <mat-expansion-panel-header>
                             <mat-panel-title style="flex-direction:column">
-                                Pre Market analysis
+                                Pre-Market Analysis
                                 <br/>
-                                <span class="sub-heading">Let's create a plan before market hours (09:15 AM)</span>
+                                <span class="sub-heading">Get ready for the day ahead by crafting a pre-market trading plan.</span>
                             </mat-panel-title>
                         </mat-expansion-panel-header>
                         <ng-template matExpansionPanelContent>
                             <div class="row mb-3 mt-2">
                                 <div class="col-sm-12">
                                     <div class="trade-plan-header justify-content-between">
-                                        <span>Create notes</span>
+                                        <span>Create Notes</span>
                                         <a class="add-new" (click)="openEconomicModal()">Economic Calendar</a>
                                     </div>
                                     <div>
-                                        <textarea placeholder="Write about your trading performance and lessons learnt during the day" class="textarea-lg"  [(ngModel)]="tradePlan.perspective" (blur)="updateTradePlan()"></textarea>
+                                        <textarea placeholder="Share your insights on today's market and outline your planned trades for the day, providing rationale behind your decisions." class="textarea-lg"  [(ngModel)]="tradePlan.perspective" (blur)="updateTradePlan()"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -119,7 +119,7 @@
                                 <div class="mb-3 d-flex align-items-center justify-content-between">
                                     <div>
                                         <div class="title">Planned Trades</div>
-                                        <span class="sub-heading">Create your 1st trade by clicking add trade</span>
+                                        <span class="sub-heading">Here's the list of planned trades for today. Click "Add Trade" to add new trades to the list</span>
                                     </div>
                                     <button class="btn btn-sm btn-outline-black" *ngIf="!viewTradePlan" (click)="openPlannedTradeDialog()">
                                         <mat-icon class="mat-icon-md">add</mat-icon> Add Trade
@@ -134,7 +134,7 @@
                                         <mat-accordion>
                                             <mat-expansion-panel [expanded]="false">
                                                 <mat-expansion-panel-header>
-                                                    <mat-panel-title>Holding</mat-panel-title>
+                                                    <mat-panel-title>Positions</mat-panel-title>
                                                 </mat-expansion-panel-header>
                                                 <ng-template matExpansionPanelContent>
                                                     <app-open-strategies-grid [selectedPlan]="selectedPlan" #openStrategiesGrid></app-open-strategies-grid>
@@ -149,7 +149,7 @@
                                         <mat-accordion>
                                             <mat-expansion-panel [expanded]="false">
                                                 <mat-expansion-panel-header>
-                                                    <mat-panel-title>All predefined Rules (Set Your Rules)</mat-panel-title>
+                                                    <mat-panel-title>Trading Rules</mat-panel-title>
                                                 </mat-expansion-panel-header>
                                                 <ng-template matExpansionPanelContent>
                                                     <div class="tab" role="tabpanel">
@@ -228,19 +228,19 @@
                     <mat-expansion-panel [expanded]="false">
                         <mat-expansion-panel-header>
                             <mat-panel-title style="flex-direction:column">
-                                Post-Market
+                                Post-Market Analysis
                                 <br/>
-                                <span class="sub-heading">Trading experience post market hours (3:30PM)</span>
+                                <span class="sub-heading">Write about your experience in the market today </span>
                             </mat-panel-title>
                         </mat-expansion-panel-header>
                         <ng-template matExpansionPanelContent>
                             <div class="row mb-3">
                                 <div class="col-sm-12">
                                     <div class="trade-plan-header justify-content-between">
-                                        <span>Create notes</span>
+                                        <span>Create Notes</span>
                                     </div>
                                     <div>
-                                        <textarea placeholder="Write about your trading performance and lessons learnt during the day" class="textarea-lg" [(ngModel)]="tradePlan.lessons" (blur)="updateTradePlan()"></textarea>
+                                        <textarea placeholder="Take a moment to reflect on your trading performance and analyze both the successes and challenges encountered throughout the day" class="textarea-lg" [(ngModel)]="tradePlan.lessons" (blur)="updateTradePlan()"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -248,11 +248,11 @@
                             <div class="planed-trades mb-3">
                                 <div class="mb-3 d-flex align-items-center justify-content-between">
                                     <div>
-                                        <div class="title mb-2">Today's Executed Trades</div>
-                                        <span class="sub-heading">Upload the trades you have done today click upload and add the file from zerodha or other platform</span>
+                                        <div class="title mb-2">Executed Trades</div>
+                                        <span class="sub-heading">Here's the list of trades executed today. Click "Import Trades" to add trades from your brokerage accounts.</span>
                                     </div>
                                     <button class="btn btn-sm btn-outline-black" *ngIf="!viewTradePlan" [routerLink]="['/import-trades-history/']">
-                                        <mat-icon class="mat-icon-md">download</mat-icon> Upload document
+                                        <mat-icon class="mat-icon-md">download</mat-icon> Import Trades
                                     </button>
                                 </div>
                                 <app-today-executed-legs [selectedPlan]="selectedPlan" #todayExcutedTradesGrid></app-today-executed-legs>
