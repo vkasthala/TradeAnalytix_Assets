@@ -1,4 +1,4 @@
-<div class="addnew-first" *ngIf="planDates.length === 0">
+<div class="addnew-first trade-plan-first" *ngIf="showIntro">
     <div class="addnew-inner">
         <div class="tb-container-box">
             
@@ -68,7 +68,7 @@
                                 </mat-datepicker>
                             </div>
                         </div>
-                        <mat-icon class="ml-2 mat-icon-md cursor" (click)="addTradePlanDate()">add</mat-icon>
+                        <span class="ml-2 add-new" (click)="addTradePlanDate()">Add</span>
                     </div>
                 </div>
                 <!-- <div class="date-filter-header">
@@ -103,7 +103,7 @@
                             </mat-panel-title>
                         </mat-expansion-panel-header>
                         <ng-template matExpansionPanelContent>
-                            <div class="row mb-3">
+                            <div class="row mb-3 mt-2">
                                 <div class="col-sm-12">
                                     <div class="trade-plan-header justify-content-between">
                                         <span>Create notes</span>
@@ -248,10 +248,10 @@
                             <div class="planed-trades mb-3">
                                 <div class="mb-3 d-flex align-items-center justify-content-between">
                                     <div>
-                                        <div class="title">Today's Executed Trades</div>
+                                        <div class="title mb-2">Today's Executed Trades</div>
                                         <span class="sub-heading">Upload the trades you have done today click upload and add the file from zerodha or other platform</span>
                                     </div>
-                                    <button class="btn btn-sm btn-outline-black" *ngIf="!viewTradePlan" (click)="openRateExperienceDialog()">
+                                    <button class="btn btn-sm btn-outline-black" *ngIf="!viewTradePlan" [routerLink]="['/import-trades-history/']">
                                         <mat-icon class="mat-icon-md">download</mat-icon> Upload document
                                     </button>
                                 </div>

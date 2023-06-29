@@ -29,20 +29,20 @@
         </div>
         <div class="d-flex mb-1 align-items-center">
             <label class="col-form-label">Maximum Risk</label>
-            <div class="col-8 col-form-value pr-0">
-                <div class="d-flex align-items-center">
-                    <div>
-                        <span class="col-3 pl-0" *ngIf="!riskEditing">{{strategySummaryResult.maxLoss}}</span>
-                        <span class="inline-flex align-items-center">
-                            <mat-icon class="mat-icon-sm mat-icon-edit" *ngIf="!riskEditing" (click)="onMaxRiskEdit()">edit</mat-icon> Edit
+            <div class="col-form-value">
+                <div class="d-flex align-items-center justify-content-start">
+                    <span class="mr-2">
+                        <span class="pr-3" *ngIf="!riskEditing">{{strategySummaryResult.maxLoss}}</span>
+                        <span class="inline-flex align-items-center" *ngIf="!riskEditing">
+                            <mat-icon class="mat-icon-sm mat-icon-edit" (click)="onMaxRiskEdit()">edit</mat-icon> Edit
                         </span>
-                        <span *ngIf="riskEditing">
-                            <input type="text" class="form-control user-risk-input col-6" [(ngModel)]="userDefinedRisk" *ngIf="riskEditing"/>
+                        <span class="d-flex" *ngIf="riskEditing">
+                            <input type="text" class="form-control user-risk-input" [(ngModel)]="userDefinedRisk" *ngIf="riskEditing"/>
                             <mat-icon class="ml-2 mat-icon-edit action-icon" (click)="updateMaxRisk()" *ngIf="riskEditing">check_circle</mat-icon>
                             <mat-icon class="ml-2 text-danger action-icon" (click)="onMaxRiskEditCancel()" *ngIf="riskEditing">close</mat-icon>
                         </span>
-                    </div>
-                    <span class="ml-3" *ngIf="!closeTrade && !viewTrade">
+                    </span>
+                    <span *ngIf="!closeTrade && !viewTrade">
                         <a class="assess-risk-btn" (click)="navigateToRiskAnalysis()">Assess Risk</a>
                     </span>
                 </div>

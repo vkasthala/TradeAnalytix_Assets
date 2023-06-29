@@ -1,54 +1,3 @@
-<!-- <div class="trade-thesis-sec">
-    <div class="entry-thesis-header cursor" (click)="showEntryRules()">
-        <span>Entry Rules</span>
-        <span>
-            <i class="negative-amt material-icons mat-icon-sm">{{hideEntryRules ? 'keyboard_arrow_up' :
-                'keyboard_arrow_down'}}</i>
-        </span>
-    </div>
-    <div class="trade-thesis-body pt-1" *ngIf="!hideEntryRules">
-        <div class="text-right">
-            <span class="cursor" (click)="evalRules($event)"><mat-icon class="form-icon-down">refresh</mat-icon></span>
-        </div>
-        
-
-        <mat-table [dataSource]="entryRules" class="w-100">
-            <ng-container matColumnDef="msg">
-                <th mat-header-cell *matHeaderCellDef class="msg-cell">Rule</th>
-                <td mat-cell *matCellDef="let element" class="msg-cell"> {{element.msg}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="aligned">
-                <th mat-header-cell *matHeaderCellDef class="aligned-cell px-2"><span>Aligned</span></th>
-                <td mat-cell *matCellDef="let element" class="aligned-cell px-2">
-                    <mat-icon class="mat-icon-warning mat-icon-sm" *ngIf="element.type === 'Coded' && !element.aligned">warning
-                    </mat-icon>
-                    <mat-checkbox *ngIf="element.type === 'Coded' && element.aligned === true" [disabled] = "true" [checked] = "true" class="checkbox-green">
-                    </mat-checkbox>
-                    <mat-checkbox *ngIf="element.type !== 'Coded'" [(ngModel)]="element.aligned" class="checkbox-green">
-                    </mat-checkbox>
-                </td>
-            </ng-container>
-
-            <ng-container matColumnDef="comment">
-                <th mat-header-cell *matHeaderCellDef class="comment-cell"><span>Comment</span></th>
-                <td mat-cell *matCellDef="let element" class="comment-cell">
-                    <span class="d-flex align-items-center"
-                        *ngIf="!viewTradePlan && !(element.type === 'Coded' && (!element.id || element.id === 0))">
-                        {{element.comment}}
-                        <mat-icon class="mat-icon-edit mat-icon-sm" (click)="onCommentEdit(element)">edit
-                        </mat-icon>
-                    </span>
-                </td>
-            </ng-container>
-
-            <tr mat-header-row *matHeaderRowDef="ruleGridColumns" style="height: 50px;"></tr>
-            <tr mat-row *matRowDef="let row; columns: ruleGridColumns;"></tr>
-        </mat-table>
-        <div class="p-3 text-center" *ngIf="entryRules && entryRules.length === 0">Entry rules have not been set up</div>
-    </div>
-</div> -->
-
 <div class="custom-card">
     <div class="custom-card-header">
         <div class="custom-card-title">Trading Rules</div>
@@ -58,7 +7,7 @@
     <!-- {{entryRules | json}} -->
     <div class="custom-card-body">
         <div *ngFor="let item of entryRules; let index=index">
-            <div class="d-flex justify-content-between mb-2" *ngIf = "index < 5 || showMoreRules">
+            <div class="d-flex justify-content-between mb-3" *ngIf = "index < 5 || showMoreRules">
                 <label class="col-form-label">{{item.msg}}</label>
                 <mat-checkbox [(ngModel)]="item.aligned" [ngClass]="item.type === 'Coded' ? 'automatic-rule' : '' ">
                     <mat-icon *ngIf="item.type === 'Coded' && item.aligned === false" class="close-icon">close</mat-icon>
@@ -70,7 +19,3 @@
         </div>
     </div>
 </div>
-
-<!-- { "ruleDay": "2023-02-15", "aligned": true, "comment": null, "createDate": "2023-02-15T20:48:11", "strategyId": 2315, "msg": "Cost of stocks per strategy should be less than 200", "ruleId": 1, "id": 19449, "type": "Coded" },
-
-{ "ruleDay": null, "aligned": false, "comment": null, "createDate": "2023-02-15T20:48:11", "strategyId": 2315, "msg": "Lorem Ipsum sample content...", "ruleId": 173, "id": 7915, "type": "Entry" } -->
