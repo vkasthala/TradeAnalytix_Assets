@@ -1,6 +1,8 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material';
 import { StockSymbol } from 'src/app/modules/shared/models/trade-management/stock-symbol.model';
 import { UserStockSummary } from 'src/app/modules/shared/models/trade-management/user-stock-summary.model';
+import { GenerateChartPopupComponent } from '../add-trade/Steps/trade-thesis/generate-chart-popup/generate-chart-popup.component';
 
 @Component({
   selector: 'app-trade-details-header',
@@ -22,7 +24,8 @@ export class TradeDetailsHeaderComponent implements OnInit {
   public hideTradeHeader:boolean= false;
 
   constructor(
-    private _renderer1: Renderer2
+    private _renderer1: Renderer2,
+    private _dialog: MatDialog,
   ) { }
 
   ngOnInit() {
@@ -68,6 +71,17 @@ export class TradeDetailsHeaderComponent implements OnInit {
     script.text = '{"width": "800","height": "800","symbol": " '  + exchange + ':' + this.selectedStock.name + '","locale": "en",""colorTheme": "light","trendLineColor": "#37a6ef","isTransparent": false,"autosize": false,"displayMode": "regular"}';
 
     this.tradingview.nativeElement.appendChild(script);
+  }
+
+  generateChart() {
+    const dialogRef = this._dialog.open(GenerateChartPopupComponent, {
+      disableClose: true,
+      width: 'auto',
+      data: {
+        title: 'Generate Chart',
+        selectedStock: this.selectedStock
+      }
+    });
   }
 
 }

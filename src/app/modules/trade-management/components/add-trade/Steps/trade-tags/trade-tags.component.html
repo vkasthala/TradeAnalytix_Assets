@@ -8,9 +8,8 @@
         </span>
     </li>
     <li class="align-items-center">
-        <span style="line-height: 0;" (click)="addTag()" class="text-link" *ngIf="tags && tags.length < 3">
-            <img src="../../../../../../../assets/images/add-md.png" width="22" height="22" />
-            <!-- <mat-icon>add_circle</mat-icon> -->
+        <span style="line-height: 0;" (click)="addTag()" class="text-link d-flex align-items-center" *ngIf="tags && tags.length < 3">
+            <mat-icon class="mat-icon-sm mt-1">add</mat-icon> Add Tag
         </span>
     </li>
 </ul>

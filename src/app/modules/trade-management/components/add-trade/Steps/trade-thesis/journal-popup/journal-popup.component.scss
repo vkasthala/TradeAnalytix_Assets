@@ -113,7 +113,7 @@ select.form-control {
 
 .compare-popup {
     position: fixed;
-    left: 0;
+    left: 5%;
     top: 0;
     right: 0;
     bottom: 0;
@@ -128,8 +128,8 @@ select.form-control {
 
 .compare-pop-inner {
     background: #fff;
-    max-width: 700px;
-    min-width: 700px;
+    max-width: 600px;
+    min-width: 600px;
     height: auto;
     display: flex;
     flex-direction: column;
@@ -143,7 +143,6 @@ select.form-control {
     padding: 10px 1rem;
     display: flex;
     flex-direction: column;
-    background-color: #ffffff;
     height: 70vh;
     overflow: auto;
 }
@@ -189,7 +188,7 @@ select.form-control {
     font-weight: 600;
     font-size: 16px;
     line-height: 24px;
-    color: #3A4C85;
+    color: #fff;
 }
 .left-heading {
     font-size: 14px;
@@ -232,7 +231,6 @@ select.form-control {
 
 select.form-control {
     padding: 0.25rem;
-    width: 180px;
 }
 
 .separator {
@@ -265,7 +263,6 @@ select.form-control {
     height: 30px;
     border: 1px solid #cfcfcf;
     padding: 0.25rem 0.5rem;
-    width: 180px;
     font-weight: 500;
     font-size: 12px !important;
     line-height: 18px;
@@ -288,7 +285,7 @@ select.form-control {
     color: #ccc;
 }
 textarea.form-control {
-    height: 120px;
+    height: 200px;
     width: 100%;
     overflow: auto;
 }
@@ -320,11 +317,11 @@ textarea.form-control {
     font-weight: 500;
     font-size: 12px !important;
     line-height: 18px;
-    color: #929292;
+    color: #393B40;
     padding-top: 0;
     padding-bottom: 0;
-    min-width: 16.666667%;
-    flex: 0 0 16.666667%;
+    max-width: 41.666667%;
+    flex: 0 0 41.666667%;
 }
 .col-form-value {
     font-weight: 500;

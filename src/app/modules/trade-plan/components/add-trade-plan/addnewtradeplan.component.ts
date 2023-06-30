@@ -75,7 +75,7 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
 
   dataChangeSubject: Subject<void> = new Subject<void>();
 
-
+  showIntro:boolean = false;
   planDates: TradePlanEntry[] = [];
   selectedPlan: TradePlanEntry;
 
@@ -213,7 +213,7 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
       this.selecedDate = result[0];
       this.initTradePlanSelect(selectedDay);
       if(result.length === 0) {
-        this.toastr.error("Trade plan does not exist for the selected date range");
+        this.showIntro = true;
       }
     });
   }
@@ -299,6 +299,8 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
     console.log('trade plan to be created: ', plan);
     this.tradePlanService.createTradePlan(plan).subscribe(result => {
       this.loadPlanEntries(plan.day);
+      this.showCreatePlan = false;
+      this.showIntro = false;
     }, () => {
       this.toastr.error("Failed to create trade plan for the day", 'Error')
     });

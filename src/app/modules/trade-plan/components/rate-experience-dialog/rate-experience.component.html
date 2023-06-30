@@ -24,25 +24,31 @@
             </div>
 
             <div class="d-flex mb-3 align-items-center justify-content-between">
-                <label class="col-form-label">Rate your trading performance</label>
-                <div class="col-md-5 px-0">
-                    <select class="form-control" [(ngModel)]="tradePlan.selfReview" (ngModelChange)="updateTradePlan()">
+                <label class="col-form-label">What your today's P&L looks like</label>
+                <div class="text-right">
+                    <span class="choose-btn" [ngClass]="selectedPL === 'Red' ? 'red' : ''"><input type="radio" name="pl" value="Red" class="disable-radio" (change)="changePL($event)" /> Red</span>
+                    <span class="choose-btn ml-2" [ngClass]="selectedPL === 'Green' ? 'green' : ''"><input type="radio" name="pl" value="Green" class="disable-radio" (change)="changePL($event)" /> Green</span>
+                    <span class="choose-btn ml-2" [ngClass]="selectedPL === 'noTade' ? 'black' : ''"><input type="radio" name="pl" value="noTade" class="disable-radio" (change)="changePL($event)" /> No trade</span>
+                    
+                    <!-- <select class="form-control" [(ngModel)]="tradePlan.selfReview" (ngModelChange)="updateTradePlan()">
                         <option value="good">Good</option>
                         <option value="average">Average</option>
                         <option value="bad">Bad</option>
-                    </select>
+                    </select> -->
                 </div>
             </div>
             
             <div class="d-flex mb-3 align-items-center justify-content-between">
-                <label class="col-form-label">Do you want to set a new rule based on lessons learnt today?</label>
-                <div>
-                    <a class="btn btn-add" (click)="addEntryExitRule('Add', 'SAVE')">Add Rule</a>
+                <label class="col-form-label">Rate Your trading experience</label>
+                <div class="text-right">
+                    <span class="choose-btn" [ngClass]="selectedRating === 'Good' ? 'green' : ''"><input type="radio" name="rating" value="Good" class="disable-radio" (change)="updateTradePlan($event)" /> Good <img src="../../../../../assets/images/good.svg" class="ml-1" /></span>
+                    <span class="choose-btn ml-2" [ngClass]="selectedRating === 'Bad' ? 'red' : ''"><input type="radio" name="rating" value="Bad" class="disable-radio" (change)="updateTradePlan($event)" /> Bad <img src="../../../../../assets/images/bad.svg" class="ml-1" /></span>
+                    <span class="choose-btn ml-2" [ngClass]="selectedRating === 'Neutral' ? 'active' : ''"><input type="radio" name="rating" value="Neutral" class="disable-radio" (change)="updateTradePlan($event)" /> Neutral <img src="../../../../../assets/images/neutral.svg" class="ml-1" /></span>
                 </div>
             </div>
 
             <div class="border-top pt-3 text-right">
-                <button type="button" class="btn btn-add" [mat-dialog-close]="data">Submit</button>
+                <button type="button" class="btn btn-add" (click)="addEntryExitRule('Add', 'SAVE')">Submit</button>
             </div>
         </div>
     </div>

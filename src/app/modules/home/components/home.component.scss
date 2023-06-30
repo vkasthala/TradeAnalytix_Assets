@@ -43,9 +43,9 @@
     align-items: center;
     .login-img {
         width: 30px;
-        height: 30px;
         overflow: hidden;
         margin-right: 10px;
+        display: flex;
         @media #{$extra-small} {
             margin-right: 0;
         }
@@ -191,7 +191,7 @@
 }
 
 .logout {
-    color: #394C86;
+    color: #000;
     font-size: 24px;
     cursor: pointer;
     @media #{$extra-small} {

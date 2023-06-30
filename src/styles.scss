@@ -22,6 +22,7 @@ body {
     color: #717785 !important;
     background-color: #f5f7f9 !important;
     font-size: 14px !important;
+    min-height: 100vh;
 }
 
 .form-control:focus {
@@ -84,7 +85,6 @@ body {
     background-color: transparent !important;
 }
 .mat-horizontal-content-container {
-    min-height: 40vh !important;
     padding: 0 !important;
     @media #{$small} {
         padding: 0 24px 9px 24px;
@@ -519,7 +519,6 @@ input:invalid {
 }
 .trade-plan-accordion .mat-expansion-panel-body {
     padding: 0 0 5px 0 !important;
-    border-bottom: 1px solid rgba(157, 157, 157, 0.345);
 }
 .ng-image-slider {
     height: 50px !important;
@@ -742,4 +741,33 @@ html.theme-light .group-wWM3zP_M- {
 .inner-accordion .mat-expansion-panel {
     background: transparent;
     margin-bottom: 0 !important;
+}
+.trade-plan-lt .mydrp {
+    width: 100% !important;
+    font-family: 'Poppins', sans-serif !important;
+}
+.mat-calendar-body-selected {
+    background-color: #4A93D4 !important;
+    color: #fff;
+}
+.mat-calendar-table-header {
+    color: #393B40 !important;
+}
+.mat-calendar-table-header th, .mat-calendar-body {
+    font-size: 16px !important;
+    color: #393B40 !important;
+    font-weight: 500;
+}
+.trade-plan-first .mat-calendar-body-label {
+    font-size: 16px !important;
+    color: #393B40 !important;
+    font-weight: 500;
+}
+.trade-plan-first .mat-button-wrapper {
+    font-size: 16px !important;
+    color: #393B40 !important;
+    font-weight: 500;
+}
+.trade-plan-first .mat-card {
+    box-shadow: 0 0px 0px 1px rgb(118 118 118 / 12%) !important;
 }

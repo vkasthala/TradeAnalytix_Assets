@@ -5,7 +5,7 @@
             {{getDisplayValue(selectedStock.name)}} ({{getDisplayValue(selectedStock.code)}})
             <span *ngIf="!addTrade"> - {{StrategyId.uid}}</span>
         </div>
-        <a class="configure-questions" data-toggle="modal" data-target="#modal1" (click)="openContactUsModal()">Trading View</a>
+        <a class="configure-questions" (click)="generateChart()" *ngIf="addTrade || editTrade"><img src="../../../../../assets/images/trading_view.svg" /> Trading View</a>
     </div>
     <div class="addnew-second mt-1">
         <div class="trade-rate-box">

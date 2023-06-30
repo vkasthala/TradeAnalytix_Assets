@@ -12,7 +12,7 @@
     font-weight: 600;
     font-size: 16px;
     line-height: 24px;
-    color: #394C86;
+    color: #393B40;
     display: flex;
     align-items: center;
     padding: 0.25rem 0;
@@ -35,17 +35,12 @@
 
 .trade-plan-title {
     font-weight: 600;
-    font-size: 17px;
+    font-size: 20px;
     line-height: 30px;
     color: #000;
     padding: 0.5rem 0;
 }
-.add-new {
-    color: #007bff;
-    font-size: 13px;
-    line-height: 1;
-    font-weight: 600;
-}
+
 .inner-trade {
     width: 100%;
     padding: 0;
@@ -122,25 +117,6 @@
                 width: 50%;
             }
             .add-new {
-                color: $primary;
-                font-size: 14px;
-                cursor: pointer;
-                font-weight: 500;
-                margin-left: 20px;
-            }
-        }
-        .list-inner-rights {
-            display: flex;
-            align-items: flex-start;
-            width: 100%;
-            @media #{$extra-small} {
-                width: 50%;
-            }
-            .add-new {
-                color: $primary;
-                font-size: 14px;
-                cursor: pointer;
-                font-weight: 500;
                 margin-left: 20px;
             }
         }
@@ -451,10 +427,11 @@ textarea.form-control {
 }
 
 .add-new {
-    color: #0075ff;
+    color: #394C86;
     text-decoration: none;
     cursor: pointer;
-    font-size: 12px;
+    font-size: 14px;
+    font-weight: 600;
 }
 
 .btn-add-plan {
@@ -508,7 +485,7 @@ textarea.form-control {
 .textarea-lg {
     height: 288px;
     background: #FFFFFF;
-    border: 1px solid rgb(157 166 186 / 50%);
+    border: 1px solid #7C97A5;
     border-radius: 4px;
     font-weight: 500;
     font-size: 14px;
@@ -516,7 +493,7 @@ textarea.form-control {
 }
 .table-container {
     background: #FFFFFF;
-    border: 1px solid rgb(157 166 186 / 50%);
+    border: 1px solid #7C97A5;
     border-radius: 4px;
     overflow:auto;
     height: 287px;
@@ -571,14 +548,15 @@ td.mat-cell {
         display: flex;
         align-items: center;
         justify-content: space-around;
-        background: radial-gradient(0% 100% at 50% 50%, #4A93D5 0%, rgba(42, 114, 180, 0.9) 100%, #1065B3 100%);
+        background: #4A93D4;
         color: #fff;
-        padding: 8px;
+        padding: 12px;
     }
     .title {
         color: #fff;
         font-weight: 500;
         display: flex;
+        font-size: 16px;
     }
     ul {
         margin: 0;
@@ -617,13 +595,13 @@ td.mat-cell {
     }
 }
 .trade-plan-lt {
-    max-width: 14%;
-    flex: 0 0 14.666667%;
+    max-width: 15%;
+    flex: 0 0 15.666667%;
     padding: 0;
 }
 .trade-plan-rt {
-    max-width: 86%;
-    flex: 0 0 86.333333%;
+    max-width: 85%;
+    flex: 0 0 85.333333%;
 }
 .mat-expansion-panel {
     box-shadow:none;
@@ -633,14 +611,14 @@ td.mat-cell {
     font-weight: 600;
     font-size: 15px;
     line-height: 24px;
-    color: #3A4C85;
+    color: #393B40;
     background: transparent !important;
     border-radius: 4px 4px 0 !important;
     padding: 5px 10px 5px 0 !important;
     height: inherit !important;
     border: 0;
     .mat-expansion-panel-header-title {
-        color: #3A4C85;
+        color: #393B40;
         font-size: 18px;
         font-weight: bolder;
     }
@@ -868,13 +846,13 @@ th.mat-header-cell {
 }
 
 .btn-enter {
-    background: radial-gradient(55% 100% at 50% 50%, #4A93D5 0%, rgba(42, 114, 180, 0.9) 100%, #1065B3 100%);
+    background: #4A93D4;
     border-radius: 8px;
     color: $white;
     padding: 5px 20px !important;
-    height: 45px;
-    font-weight: 400;
-    font-size: 14px;
+    height: 54px;
+    font-weight: 600;
+    font-size: 16px;
     line-height: 18px;
     width: 90%;
 }
@@ -915,6 +893,7 @@ th.mat-header-cell {
     font-size: 14px;
     padding: 0.25rem 0.5rem !important;
     display: flex;
+    font-weight: 600;
 }
 
 .inner-accordion {
@@ -929,3 +908,8 @@ th.mat-header-cell {
     }
 }
 
+.sub-heading {
+    font-size: 14px;
+    font-weight: 500;
+    padding-top: 5px;
+}

@@ -1,209 +1,34 @@
-<!-- <div class="trade-thesis-sec">
-    <div class="entry-thesis-header cursor" (click)="showEntryThesis()">
-        <span>Entry Thesis</span>
-        <span class="d-flex align-items-center">
-            <a class="configure-questions" href="javascript:void(0)" (click)="openEntryQuestions()" >Configure Questions <img src="../../../../assets/images/beta-icon.png" class="beta-icon"/></a>
-            <i class="negative-amt material-icons">{{hideEntryThesis ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}</i>
-        </span>
-    </div>
-
-    <div class="trade-thesis-body" *ngIf="!hideEntryThesis">
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="thesis_item">
-                    <div class="thesis_item_title">
-                        Specify the reasons for executing this trade
-                        <mat-icon
-                            matTooltip="Write notes on why you are executing this trade at this point in time. This will make you think through your logic and avoid rash decisions."
-                            matTooltipPosition="above" matTooltipClass="custom-tooltip"
-                            [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay"
-                            class="mat-icon-xs cursor info-icon">info_outline</mat-icon>
-                    </div>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                        [(ngModel)]="tradeThesis.reasons"></textarea>
-                </div>
-            </div>
-
-            <div class="col-sm-6" *ngFor="let field of entryThesisFields">
-                <div class="thesis_item" *ngIf = "field.type === 'dropdown'">
-                    <div class="thesis_item_title">
-                        {{field.label}}
-                        <mat-icon
-                            matTooltip="{{field.tooltip}}"
-                            matTooltipPosition="above" matTooltipClass="custom-tooltip"
-                            [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay"
-                            class="mat-icon-xs cursor info-icon">info_outline</mat-icon>
-                    </div>
-                    <div class="media align-items-center">
-                        <div class="media-body">
-                            <app-dropdown [field] = "field"></app-dropdown>
-                        </div>
-                        <div class="px-3" *ngIf = "field.customValueSupported">
-                            <a class="add-new" (click)="addFieldValue(field)" *ngIf="addTrade || editTrade">+ Add New</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="thesis_item" *ngIf = "field.type === 'textbox'">
-                    <div class="thesis_item_title">
-                        {{field.label}}
-                        <mat-icon matTooltip="{{field.tooltip}}"
-                            matTooltipPosition="above" matTooltipClass="custom-tooltip"
-                            [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay"
-                            class="mat-icon-xs cursor info-icon">info_outline</mat-icon>
-                    </div>
-                    <app-textbox [field] = "field"></app-textbox>
-                </div>
-                <div class="thesis_item" *ngIf = "field.type === 'datefield'">
-                    <div class="thesis_item_title">
-                        {{field.label}} <mat-icon matTooltip="{{field.tooltip}}" matTooltipPosition="above"
-                            matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay"
-                            [matTooltipHideDelay]="this.hideDelay" class="mat-icon-xs cursor info-icon">info_outline
-                        </mat-icon>
-                    </div>
-                    <app-datefield [field] = "field"></app-datefield>
-                </div>
-                <div class="thesis_item" *ngIf = "field.type === 'textarea'">
-                    <div class="thesis_item_title">
-                        {{field.label}}
-                        <mat-icon
-                            matTooltip="{{field.tooltip}}"
-                            matTooltipPosition="above" matTooltipClass="custom-tooltip"
-                            [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay"
-                            class="mat-icon-xs cursor info-icon">info_outline</mat-icon>
-                    </div>
-                    <app-text-area [field] = "field"></app-text-area>
-                </div>
-            </div>
-            
-            <div class="col-sm-12">
-                <div class="thesis_item upload_item">
-                    <div class="thesis_item_title">
-                        Upload files
-                    </div>
-                    <div *ngFor="let file of tradeChubFiles;let i = index"><span (click) = "downloadFile(i)" style="cursor: pointer">{{file.fileName}}</span><mat-icon class="mat-icon-sm" style="cursor: pointer;" (click)="deleteFileName(i)">delete</mat-icon></div>
-                    <div class="media">
-                        <div class="media-body">
-                            <input type="file" (change)="selectFile($event)" accept=".pdf,.png,.jpg,.jpeg,.bmp,.docx,.doc,.xls,.xlsx,.pptx,.ppt" style="padding-top: 10px;" />
-                        </div>
-                    </div>
-                    <div class="text-right pt-2">
-                        <a class="add-new" (click)="generateChart()" *ngIf="addTrade || editTrade">Generate Chart</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
-
-
-<!-- start: Closing Thesis -->
-<!-- <div class="trade-thesis-sec trade-close-thesis-sec" *ngIf="!addTrade && tradeStatus !== 4">
-    <div class="entry-thesis-header cursor" (click)="showClosingThesis()">
-        <span>Closing Thesis</span>
-        <span class="d-flex align-items-center">
-            <a class="configure-questions" href="javascript:void(0)" (click)="openExitQuestions()" >Configure Questions <img src="../../../../assets/images/beta-icon.png" class="beta-icon"/></a>
-            <i class="negative-amt material-icons">{{hideClosingThesis ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}</i>
-        </span>
-        
-    </div>
-
-    <div class="trade-thesis-body" *ngIf="!hideClosingThesis">
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="thesis_item">
-                    <div class="thesis_item_title">
-                        Specify the reasons for closing the trade
-                    </div>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="tradeThesis.closedReason"></textarea>
-                </div>
-            </div>
-
-            <div class="col-sm-6" *ngFor="let field of exitThesisFields">
-                <div class="thesis_item" *ngIf = "field.type === 'dropdown'">
-                    <div class="thesis_item_title">
-                        {{field.label}}
-                        <mat-icon
-                            matTooltip="{{field.tooltip}}"
-                            matTooltipPosition="above" matTooltipClass="custom-tooltip"
-                            [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay"
-                            class="mat-icon-xs cursor info-icon">info_outline</mat-icon>
-                    </div>
-                    <div class="media align-items-center">
-                        <div class="media-body">
-                            <app-dropdown [field] = "field"></app-dropdown>
-                        </div>
-                        <div class="px-3" *ngIf = "field.customValueSupported">
-                            <a class="add-new" (click)="addFieldValue(field)" *ngIf="addTrade || editTrade || closeTrade">+ Add New</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="thesis_item" *ngIf = "field.type === 'textbox'">
-                    <div class="thesis_item_title">
-                        {{field.label}}
-                        <mat-icon matTooltip="{{field.tooltip}}"
-                            matTooltipPosition="above" matTooltipClass="custom-tooltip"
-                            [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay"
-                            class="mat-icon-xs cursor info-icon">info_outline</mat-icon>
-                    </div>
-                    <app-textbox [field] = "field" ></app-textbox>
-                </div>
-                <div class="thesis_item" *ngIf = "field.type === 'datefield'">
-                    <div class="thesis_item_title">
-                        {{field.label}} <mat-icon matTooltip="{{field.tooltip}}" matTooltipPosition="above"
-                            matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay"
-                            [matTooltipHideDelay]="this.hideDelay" class="mat-icon-xs cursor info-icon">info_outline
-                        </mat-icon>
-                    </div>
-                    <app-datefield [field] = "field"></app-datefield>
-                </div>
-                <div class="thesis_item" *ngIf = "field.type === 'textarea'">
-                    <div class="thesis_item_title">
-                        {{field.label}}
-                        <mat-icon
-                            matTooltip="{{field.tooltip}}"
-                            matTooltipPosition="above" matTooltipClass="custom-tooltip"
-                            [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay"
-                            class="mat-icon-xs cursor info-icon">info_outline</mat-icon>
-                    </div>
-                    <app-text-area [field] = "field"></app-text-area>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div> -->
-
 <div class="custom-card">
     <div class="custom-card-header">
         <div class="custom-card-title">Journal</div>
-        <a class="add-new cursor" (click)="openJournalModal()"><img src="../../../../../../../assets/images/expand.svg" /></a>
+        <a class="add-new cursor" (click)="openJournalModal()">View</a>
     </div>
     <div class="custom-card-body">
-        <div class="d-flex mb-2 align-items-center">
-            <label class="col-form-label">Tags</label>
-            <div class="col-9" style="overflow:hidden;">
+        <div class="custom-row mb-3">
+            <label class="col-form-label col-3">Tags</label>
+            <div class="col-9 text-right" style="overflow:hidden;">
                 <app-trade-tags #tradeTag></app-trade-tags>
             </div>
         </div>
-        <div class="d-flex mb-2 align-items-center">
-            <label class="col-form-label">Strategy</label>
-            <div class="col-8 col-md-5">
+        <div class="custom-row mb-3">
+            <label class="col-form-label col-5">Strategy</label>
+            <div class="col-md-5">
                 <select class="form-control" [(ngModel)]='strategyTypeId'>
                     <option *ngFor="let key of strategyTypes" [value]="key" [label]="strategies[key]"></option>
                 </select>
             </div>
         </div>
-        <div class="d-flex mb-2 align-items-center">
-            <label class="col-form-label">Direction</label>
-            <div class="col-8 col-md-5">
+        <div class="custom-row mb-3">
+            <label class="col-form-label col-5">Direction</label>
+            <div class="col-5">
                 <select class="form-control" [(ngModel)]='tradeThesis.direction'>
                     <option *ngFor="let key of userMetadataStoreService.directions" [value]="key.id" [label]="key.name"></option>
                 </select>
             </div>
         </div>
-        <div class="d-flex mb-2 align-items-center">
-            <label class="col-form-label">Contrarian Trade</label>
-            <div class="col-8 col-md-5">
+        <div class="custom-row mb-3">
+            <label class="col-form-label col-5">Contrarian Trade</label>
+            <div class="col-5">
                 <select class="form-control" [(ngModel)]='tradeThesis.contrarian'>
                     <option value="1">Yes</option>
                     <option value="2">No</option>
@@ -211,34 +36,31 @@
             </div>
         </div>
         
-        <div class="d-flex mb-2 align-items-center" *ngIf="!addTrade && tradeStatus !== 4">
-            <label class="col-form-label">Planned Trade</label>
-            <div class="col-8 col-md-5">
+        <div class="custom-row mb-3" *ngIf="!addTrade && tradeStatus !== 4">
+            <label class="col-form-label col-5">Planned Trade</label>
+            <div class="col-5">
                 <select class="form-control" [(ngModel)]='tradeThesis.tradeType'>
                     <option value="planned">Yes</option>
                     <option value="impromptu">No</option>
                 </select>
             </div>
         </div>
-        <div class="d-flex mb-2">
-            <label class="col-form-label">Trade Thesis</label>
-            <div class="col-8 pr-1">
-                <textarea rows="4" class="form-control" [(ngModel)]='tradeThesis.reasons'></textarea>
+        <div class="custom-row mb-3 align-items-start">
+            <label class="col-form-label col-4">Trade Thesis</label>
+            <div class="col-8">
+                <textarea class="form-control" [(ngModel)]='tradeThesis.reasons'></textarea>
             </div>
         </div>
-        <div class="d-flex mb-3 align-items-center">
+        <!-- <div class="d-flex mb-3 align-items-center">
             <label class="col-form-label">Technical Analysis</label>
             <div class="col-8 col-md-7">
                 <a class="add-new" (click)="generateChart()" *ngIf="addTrade || editTrade">Open Chart</a>
             </div>
-        </div>
-        <div class="d-flex mb-2 align-items-center">
-            <label class="col-form-label">Attach Files</label>
-            <div class="col-8">
-                <div class="d-flex align-items-center justify-content-between">
-                    <a class="add-new" (click)="openJournalModal()">Click Here</a>
-                    <!-- <a class="add-new" (click)="openJournalModal()">Show More</a> -->
-                </div>
+        </div> -->
+        <div class="custom-row mb-3">
+            <label class="col-form-label col-5">Attach Files</label>
+            <div class="col-6 text-right">
+                <a class="add-new" (click)="openJournalModal()">Upload Files</a>
             </div>
         </div>
     </div>

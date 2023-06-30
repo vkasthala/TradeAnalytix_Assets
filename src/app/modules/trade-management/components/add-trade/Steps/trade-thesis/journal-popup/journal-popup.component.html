@@ -11,13 +11,13 @@
         <div class="main-pop-inner">
             <div class="d-flex mb-2 align-items-center">
                 <label class="col-form-label">Tags</label>
-                <div class="col-10">
+                <div class="col-7">
                     <app-trade-tags #tradeTags></app-trade-tags>
                 </div>
             </div>
             <div class="d-flex mb-2 align-items-center">
                 <label class="col-form-label">Strategy</label>
-                <div class="col-9 col-md-4">
+                <div class="col-7">
                     <select class="form-control" [(ngModel)]='strategyTypeId'>
                         <option *ngFor="let key of strategyTypes" [value]="key" [label]="strategies[key]"></option>
                     </select>
@@ -25,7 +25,7 @@
             </div>
             <div class="d-flex mb-2 align-items-center">
                 <label class="col-form-label">Direction</label>
-                <div class="col-9 col-md-4">
+                <div class="col-7">
                     <select class="form-control" [(ngModel)]='tradeThesis.direction'>
                         <option *ngFor="let key of userMetadataStoreService.directions" [value]="key.id"
                             [label]="key.name"></option>
@@ -34,7 +34,7 @@
             </div>
             <div class="d-flex mb-2 align-items-center">
                 <label class="col-form-label">Contrarian Trade</label>
-                <div class="col-10 col-md-4">
+                <div class="col-7">
                     <select class="form-control" [(ngModel)]='tradeThesis.contrarian'>
                         <option value="1">Yes</option>
                         <option value="2">No</option>
@@ -43,7 +43,7 @@
             </div>
             <div class="d-flex mb-2 align-items-center" *ngIf="!addTrade && tradeStatus !== 4">
                 <label class="col-form-label">Planned Trade</label>
-                <div class="col-10 col-md-4">
+                <div class="col-7">
                     <select class="form-control" [(ngModel)]='tradeThesis.tradeType'>
                         <option value="planned">Yes</option>
                         <option value="impromptu">No</option>
@@ -52,21 +52,21 @@
             </div>
             <div class="d-flex mb-2 align-items-center">
                 <label class="col-form-label">Trade Thesis</label>
-                <div class="col-10 pr-0">
+                <div class="col-7">
                     <textarea rows="6" class="form-control" [(ngModel)]='tradeThesis.reasons'></textarea>
                 </div>
             </div>
             <div class="d-flex mb-2">
                 <label class="col-form-label">Upload Files</label>
-                <div class="col-10">
+                <div class="col-7 text-right">
                     <app-upload-files #uploadFiles></app-upload-files>
                 </div>
             </div>
 
             <div class="d-flex mb-2 align-items-center">
                 <label class="col-form-label">Source of Trade</label>
-                <div class="col-10">
-                    <div class="d-flex align-items-center">
+                <div class="col-7">
+                    <div class="d-flex align-items-center justify-content-end">
                         <select class="form-control select-input" id="inputState" [(ngModel)]="tradeThesis.sourceId">
                             <option [ngValue]="opt.id" *ngFor="let opt of userMetadataStoreService.sources; trackBy: id">{{opt.name}}
                             </option>
@@ -79,14 +79,14 @@
             </div>
             <div class="d-flex mb-2 align-items-center">
                 <label class="col-form-label">Target Price </label>
-                <div class="col-8 col-md-5 pr-0">
+                <div class="col-6 pr-2">
                     <input type="text" class="form-control" [(ngModel)]='tradeThesis.targetPrice' />
                 </div>
             </div>
             <div class="d-flex mb-2 align-items-center">
                 <label class="col-form-label">Technical Indicator</label>
-                <div class="col-10">
-                    <div class="d-flex align-items-center">
+                <div class="col-7">
+                    <div class="d-flex align-items-center justify-content-end">
                         <select class="form-control select-input" id="inputState"
                             [(ngModel)]="tradeThesis.technicalIndicatorId">
                             <option [ngValue]="opt.id" *ngFor="let opt of userMetadataStoreService.technicalIndicators; trackBy: id">
@@ -100,8 +100,8 @@
             </div>
             <div class="d-flex mb-2 align-items-center">
                 <label class="col-form-label">Event</label>
-                <div class="col-8">
-                    <div class="d-flex align-items-center">
+                <div class="col-7">
+                    <div class="d-flex align-items-center justify-content-end">
                         <select class="form-control select-input" id="inputState"
                             [(ngModel)]="tradeThesis.surroundingEventId">
                             <option [ngValue]="opt.id" *ngFor="let opt of userMetadataStoreService.events; trackBy: id">
@@ -115,8 +115,8 @@
             </div>
             <div class="d-flex mb-2 align-items-center">
                 <label class="col-form-label">Mindset</label>
-                <div class="col-8">
-                    <div class="d-flex align-items-center">
+                <div class="col-7">
+                    <div class="d-flex align-items-center justify-content-end">
                         <select class="form-control select-input" id="inputState" [(ngModel)]="tradeThesis.mindsetId">
                             <option [ngValue]="opt.id" *ngFor="let opt of userMetadataStoreService.mindsets; trackBy: id">{{opt.name}}
                             </option>
