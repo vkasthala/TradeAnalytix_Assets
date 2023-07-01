@@ -2,7 +2,7 @@
     <mat-expansion-panel [expanded]="true" (opened)="setStep(1)">
         <mat-expansion-panel-header>
             <mat-panel-title>
-                Specify your investment goals for a given date range
+                Set goals for a specific date range
             </mat-panel-title>
         </mat-expansion-panel-header>
         <ng-template matExpansionPanelContent>
@@ -21,7 +21,7 @@
                         </div>
                     </span>
                     <span class="card-main card-main-lg">
-                        <label class="col-form-label">Target Date range</label>
+                        <label class="col-form-label">Target Date Range</label>
                         <div class='input-group date date-rang' id='datetimepicker1'>
                             <my-date-range-picker name="targetdate" id="targetdate" (dateRangeChanged)="onDateRangeChanged($event)" [(ngModel)]="targetDate"></my-date-range-picker>
                         </div>
