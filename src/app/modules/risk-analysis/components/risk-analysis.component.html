@@ -8,10 +8,10 @@
                         <div class="tb-container-box-header">How to use Payoff Analyzer?</div>
                         <div class="tb-container-box-body">
                             <ul>
-                                <li><img src="../../../../assets/images/tb_icon_1.svg" class="mr-3" /> Build a trade strategy by adding stock or option legs</li>
-                                <li><img src="../../../../assets/images/tb_icon_2.svg" class="mr-3" /> Provide inputs for analysis (e.g., stock range, implied volatility, days left)</li>
-                                <li><img src="../../../../assets/images/tb_icon_3.svg" class="mr-3" /> Analyze profit or loss of the trade strategy</li>
-                                <li><img src="../../../../assets/images/tb_icon_4.svg" class="mr-3" /> Update trade strategy and inputs as needed to reassess the risk-reward profile</li>
+                                <li><img src="../../../../assets/images/tb_icon_1.svg" class="mr-3" /> Build a trade strategy</li>
+                                <li><img src="../../../../assets/images/tb_icon_2.svg" class="mr-3" /> Provide inputs for analysis (e.g., implied volatility, days left)</li>
+                                <li><img src="../../../../assets/images/tb_icon_3.svg" class="mr-3" /> Analyze profit or loss of the strategy</li>
+                                <li><img src="../../../../assets/images/tb_icon_4.svg" class="mr-3" /> Update the strategy and inputs as needed to reassess the risk-reward profile</li>
                             </ul>
                         </div>
                     </div>
@@ -24,8 +24,8 @@
                             <h4 class="py-2 mt-3">popular user search</h4>
                             <ul>
                                 <li>Nifty 50</li>
-                                <li>Nifty Next 50</li>
-                                <li>Nifty Next 50</li>
+                                <li>BankNifty</li>
+                                <li>Reliance</li>
                             </ul>
                         </div>
                         <button class="btn btn-enter" (click)="enterSymbol()">Submit </button>
@@ -45,7 +45,7 @@
                             <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
                                 <mat-expansion-panel-header>
                                     <mat-panel-title>
-                                        Build a trade with a pre-deﬁned or a custom strategy
+                                        Build a trade strategy with stock and option legs
                                     </mat-panel-title>
                                 </mat-expansion-panel-header>
 
@@ -144,7 +144,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="card-main">
-                                                    <label class="col-form-label">Contracts</label>
+                                                    <label class="col-form-label">Quantity</label>
                                                     <div class="card-right">
                                                         <div class="form-group">
                                                             <input type="number" (keydown)="preventNegatives($event, false)" min="0" class="form-control cards-input" placeholder="" [(ngModel)]="stockOptions[index].contracts" />
@@ -213,7 +213,7 @@
 
                             <mat-expansion-panel [expanded]="panelOpenState" (opened)="setStep(1)" (afterCollapse)="afterPanelClosed(1)" (afterExpand)="afterPanelOpened($event)" [disabled]="panelDisabled">
                                 <mat-expansion-panel-header>
-                                    Provide stock and option leg inputs
+                                Provide the inputs for analysis
                                 </mat-expansion-panel-header>
 
                                 <ng-template matExpansionPanelContent>
@@ -326,7 +326,7 @@
                             <mat-expansion-panel [expanded]="panelExpand" (opened)="setStep(2)" [disabled]="panel3Disabled" (afterCollapse)="afterPanelClosed(2)">
                                 <mat-expansion-panel-header>
                                     <mat-panel-title>
-                                        Analyze the risk and proﬁtability associated with the trade for the given inputs
+                                        Analyze the payoff or risk-reward profile of the trade for the given inputs
                                     </mat-panel-title>
                                 </mat-expansion-panel-header>
                                 <ng-template matExpansionPanelContent>
@@ -521,7 +521,7 @@
                         <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
                             <mat-expansion-panel-header>
                                 <mat-panel-title>
-                                    Build a trade with a pre-deﬁned or a custom strategy
+                                    Build a trade strategy with stock and option legs
                                 </mat-panel-title>
                             </mat-expansion-panel-header>
 
@@ -671,7 +671,7 @@
                                             </div>
                                             <div class="row mb-2">
                                                 <div class="col-6">
-                                                    <label class="col-form-label pt-0">Contracts</label>
+                                                    <label class="col-form-label pt-0">Quantity</label>
                                                     <input type="number" min="0" class="form-control" placeholder="" [(ngModel)]="optionGroup.contracts" />
                                                 </div>
                                                 <div class="col-6">
@@ -733,7 +733,7 @@
 
                         <mat-expansion-panel [expanded]="panelOpenState" (opened)="setStep(1)" (afterCollapse)="afterPanelClosed(1)" (afterExpand)="afterPanelOpened($event)" [disabled]="panelDisabled">
                             <mat-expansion-panel-header>
-                                Provide stock and option leg inputs
+                                Provide the inputs for analysis
                             </mat-expansion-panel-header>
 
                             <ng-template matExpansionPanelContent>
@@ -826,7 +826,7 @@
                         <mat-expansion-panel [expanded]="panelExpand" (opened)="setStep(2)" [disabled]="panel3Disabled" (afterCollapse)="afterPanelClosed(2)">
                             <mat-expansion-panel-header>
                                 <mat-panel-title>
-                                    Analyze the risk and proﬁtability associated with the trade for the given inputs
+                                    Analyze the payoff or risk-reward profile of the trade for the given inputs
                                 </mat-panel-title>
                             </mat-expansion-panel-header>
                             <ng-template matExpansionPanelContent>
