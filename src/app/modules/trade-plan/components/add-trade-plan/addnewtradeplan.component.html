@@ -90,7 +90,7 @@
                 <div class="trade-plan-title">
                     Trading Plan for {{selecedDate.day | date: 'dd-MMM-yyyy'}}
                 </div>
-                <button type="button" class="btn btn-save">Save Plan</button>
+                <button type="button" class="btn btn-save" (click)="saveTradePlan()">Save Plan</button>
             </div>
             <div class="trade-plan-container pb-1 mb-3">
                 <mat-accordion class="trade-plan-accordion w-100">
@@ -110,7 +110,7 @@
                                         <a class="add-new" (click)="openEconomicModal()">Economic Calendar</a>
                                     </div>
                                     <div>
-                                        <textarea placeholder="Share your insights on today's market and outline your planned trades for the day, providing rationale behind your decisions." class="textarea-lg"  [(ngModel)]="tradePlan.perspective" (blur)="updateTradePlan()"></textarea>
+                                        <textarea placeholder="Share your insights on today's market and outline your planned trades for the day, providing rationale behind your decisions." class="textarea-lg"  [(ngModel)]="tradePlan.perspective"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -240,7 +240,7 @@
                                         <span>Create Notes</span>
                                     </div>
                                     <div>
-                                        <textarea placeholder="Take a moment to reflect on your trading performance and analyze both the successes and challenges encountered throughout the day" class="textarea-lg" [(ngModel)]="tradePlan.lessons" (blur)="updateTradePlan()"></textarea>
+                                        <textarea placeholder="Take a moment to reflect on your trading performance and analyze both the successes and challenges encountered throughout the day" class="textarea-lg" [(ngModel)]="tradePlan.lessons"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -253,6 +253,9 @@
                                     </div>
                                     <button class="btn btn-sm btn-outline-black" *ngIf="!viewTradePlan" [routerLink]="['/import-trades-history/']">
                                         <mat-icon class="mat-icon-md">download</mat-icon> Import Trades
+                                    </button>
+                                    <button class="btn btn-sm" *ngIf="!viewTradePlan" (click)="openRateExperienceDialog()">
+                                        <mat-icon class="mat-icon-md">download</mat-icon> Review
                                     </button>
                                 </div>
                                 <app-today-executed-legs [selectedPlan]="selectedPlan" #todayExcutedTradesGrid></app-today-executed-legs>

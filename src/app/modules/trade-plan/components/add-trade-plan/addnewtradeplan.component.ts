@@ -63,7 +63,7 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
   mindsetTypes: MindsetType[];
 
   tradePlan: TradePlan = new TradePlan();
-  minDate : Date;
+  minDate: Date;
   maxDate: Date;
 
 
@@ -75,7 +75,7 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
 
   dataChangeSubject: Subject<void> = new Subject<void>();
 
-  showIntro:boolean = false;
+  showIntro: boolean = false;
   planDates: TradePlanEntry[] = [];
   selectedPlan: TradePlanEntry;
 
@@ -83,10 +83,10 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
   executedStrategies: TodayExecutedTrade[] = [];
   plannedTradesDataSource: PlannedTrade[] = [];
 
-  tradeLevelRules=[];
+  tradeLevelRules = [];
   userCodedRules: UserCodedRule[];
-  portfolioLevelRules=[];
-  selecedDate:any;
+  portfolioLevelRules = [];
+  selecedDate: any;
   dataSource: EntryExitRulesGridStore;
   displayedColumns: string[] = ['description'];
   constructor(
@@ -179,7 +179,7 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
   isWithinTodayOrTomorrow = (date) => {
     return date >= this.minDate && date <= this.maxDate;
   }
-  
+
 
   addRule(title, btnText) {
     const dialogRef = this._dialog.open(ManageRulePopupComponent, {
@@ -212,7 +212,7 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
       this.planDates = result;
       this.selecedDate = result[0];
       this.initTradePlanSelect(selectedDay);
-      if(result.length === 0) {
+      if (result.length === 0) {
         this.showIntro = true;
       }
     });
@@ -426,10 +426,10 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
       this.tradePlanService.getTradePlanEntries(fromDate, toDate).subscribe(result => {
         this.planDates = result;
         this.initTradePlanSelect(null);
-        if(result.length === 0) {
+        if (result.length === 0) {
           this.toastr.error("Trade plan does not exist for the selected date range");
         }
-        
+
       });
     } else {
       this.loadPlanEntries(null);
@@ -468,8 +468,8 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
   loadCodedRulesData() {
     this.codedRuleService.getUserCodedRules().subscribe(result => {
       this.userCodedRules = result;
-      this.tradeLevelRules=[];
-      this.portfolioLevelRules=[];
+      this.tradeLevelRules = [];
+      this.portfolioLevelRules = [];
       this.userCodedRules.forEach((rule, i) => {
         rule.checked = rule.id && rule.id !== null && rule.id > 0;
         this.portfolioLevelRules.push(rule);
@@ -493,10 +493,10 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
     dialogRef.afterClosed().subscribe((res) => {
       if (res) {
         console.log('result..', res);
-        
+
         this.createPlannedTrade(res);
       }
-    });
+    }, (err) => { console.log(err) });
   }
 
   createPlannedTrade(plannedTrade: PlannedTrade) {
@@ -509,16 +509,38 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
     const dialogRef = this._dialog.open(RateExperienceDialogComponent, {
       disableClose: false,
       width: 'auto',
-      data: {
-        title: 'Rate Your Experience',
-      }
+      data: { tradePlan: this.tradePlan }
     });
+
     dialogRef.afterClosed().subscribe((res) => {
+      console.log(res);
       if (res) {
         console.log('result..', res);
-        
+        this.updateTradePlan();
       }
     });
   }
+
+  saveTradePlan() {
+    if (this.shouldOpenRateExperienceDialog()) {
+      this.openRateExperienceDialog()
+    } else {
+      this.updateTradePlan();
+    }
+  }
+
+  shouldOpenRateExperienceDialog() {
+    const tradeDateString = this.tradePlan.day;
+    const tradeDate = new Date(tradeDateString);
+    const today = new Date();
+    const currentTime = today.getHours() * 100 + today.getMinutes(); // check if time has passed 3.30pm
+    let lessons = this.tradePlan.lessons;
+    console.log(currentTime + "->" + tradeDate.toDateString() + "->" + today.toDateString());
+    if ((lessons && lessons.length > 0) || (tradeDate.toDateString() === today.toDateString() && currentTime >= 1530)) {
+      return true;
+    }
+    return false;
+  }
+
 
 }

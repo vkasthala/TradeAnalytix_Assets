@@ -15,7 +15,7 @@
                 <div class="col-sm-2">
                     <span class="d-flex align-items-center">
                         <label class="toggle m-0">
-                            <input type="checkbox" id="tradingToggle" class="cursor" [checked]="tradePlan.tradeplanAligned" [(ngModel)]="tradePlan.tradeplanAligned" (ngModelChange)="updateTradePlan()">
+                            <input type="checkbox" id="tradingToggle" class="cursor" [checked]="tradePlan.tradeplanAligned" [(ngModel)]="tradePlan.tradeplanAligned">
                             <span class="slider"></span>
                             <span class="labels" data-on="Yes" data-off="No"></span>
                         </label>
@@ -26,9 +26,9 @@
             <div class="d-flex mb-3 align-items-center justify-content-between">
                 <label class="col-form-label">What your today's P&L looks like</label>
                 <div class="text-right">
-                    <span class="choose-btn" [ngClass]="selectedPL === 'Red' ? 'red' : ''"><input type="radio" name="pl" value="Red" class="disable-radio" (change)="changePL($event)" /> Red</span>
-                    <span class="choose-btn ml-2" [ngClass]="selectedPL === 'Green' ? 'green' : ''"><input type="radio" name="pl" value="Green" class="disable-radio" (change)="changePL($event)" /> Green</span>
-                    <span class="choose-btn ml-2" [ngClass]="selectedPL === 'noTade' ? 'black' : ''"><input type="radio" name="pl" value="noTade" class="disable-radio" (change)="changePL($event)" /> No trade</span>
+                    <span class="choose-btn" [ngClass]="tradePlan.notAlignedReason === 'Red' ? 'red' : ''"><input type="radio" name="pl" value="Red" class="disable-radio" [(ngModel)]="tradePlan.notAlignedReason" /> Red</span>
+                    <span class="choose-btn ml-2" [ngClass]="tradePlan.notAlignedReason === 'Green' ? 'green' : ''"><input type="radio" name="pl" value="Green" class="disable-radio" [(ngModel)]="tradePlan.notAlignedReason" /> Green</span>
+                    <span class="choose-btn ml-2" [ngClass]="tradePlan.notAlignedReason === 'noTrade' ? 'black' : ''"><input type="radio" name="pl" value="noTrade" class="disable-radio" [(ngModel)]="tradePlan.notAlignedReason" /> No trade</span>
                     
                     <!-- <select class="form-control" [(ngModel)]="tradePlan.selfReview" (ngModelChange)="updateTradePlan()">
                         <option value="good">Good</option>
@@ -41,14 +41,14 @@
             <div class="d-flex mb-3 align-items-center justify-content-between">
                 <label class="col-form-label">Rate Your trading experience</label>
                 <div class="text-right">
-                    <span class="choose-btn" [ngClass]="selectedRating === 'Good' ? 'green' : ''"><input type="radio" name="rating" value="Good" class="disable-radio" (change)="updateTradePlan($event)" /> Good <img src="../../../../../assets/images/good.svg" class="ml-1" /></span>
-                    <span class="choose-btn ml-2" [ngClass]="selectedRating === 'Bad' ? 'red' : ''"><input type="radio" name="rating" value="Bad" class="disable-radio" (change)="updateTradePlan($event)" /> Bad <img src="../../../../../assets/images/bad.svg" class="ml-1" /></span>
-                    <span class="choose-btn ml-2" [ngClass]="selectedRating === 'Neutral' ? 'active' : ''"><input type="radio" name="rating" value="Neutral" class="disable-radio" (change)="updateTradePlan($event)" /> Neutral <img src="../../../../../assets/images/neutral.svg" class="ml-1" /></span>
+                    <span class="choose-btn" [ngClass]="tradePlan.selfReview === 'Good' ? 'green' : ''"><input type="radio" name="rating" value="Good" class="disable-radio" [(ngModel)]="tradePlan.selfReview" /> Good <img src="../../../../../assets/images/good.svg" class="ml-1" /></span>
+                    <span class="choose-btn ml-2" [ngClass]="tradePlan.selfReview === 'Bad' ? 'red' : ''"><input type="radio" name="rating" value="Bad" class="disable-radio" [(ngModel)]="tradePlan.selfReview" /> Bad <img src="../../../../../assets/images/bad.svg" class="ml-1" /></span>
+                    <span class="choose-btn ml-2" [ngClass]="tradePlan.selfReview === 'Neutral' ? 'active' : ''"><input type="radio" name="rating" value="Neutral" class="disable-radio" [(ngModel)]="tradePlan.selfReview" /> Neutral <img src="../../../../../assets/images/neutral.svg" class="ml-1" /></span>
                 </div>
             </div>
 
             <div class="border-top pt-3 text-right">
-                <button type="button" class="btn btn-add" (click)="addEntryExitRule('Add', 'SAVE')">Submit</button>
+                <button type="button" class="btn btn-add" (click)="closeModal()">Submit</button>
             </div>
         </div>
     </div>
