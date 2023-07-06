@@ -124,7 +124,7 @@ export class BulkUpdateComponent implements OnInit {
             filter: true,
             resizable: true,
             cellEditor: 'strategyEditor',
-            headerComponentParams: { template: '<div class="d-flex pt-1"><span>Strategy</span><mat-icon class="mat-icon-xs mat-icon material-icons ml-1">edit</mat-icon></div>'}
+            headerComponentParams: { template: '<div class="d-flex"><span>Strategy</span><mat-icon class="mat-icon-xs mat-icon material-icons ml-1">edit</mat-icon></div>'}
           },
           {
             headerName: 'Direction',
@@ -132,7 +132,7 @@ export class BulkUpdateComponent implements OnInit {
             width: 120,
             filter: 'agTextColumnFilter',
             columnGroupShow: 'closed',
-            headerComponentParams: { template: '<div class="d-flex pt-1"><span>Direction</span><mat-icon class="mat-icon-xs mat-icon material-icons ml-1">edit</mat-icon></div>'}
+            headerComponentParams: { template: '<div class="d-flex"><span>Direction</span><mat-icon class="mat-icon-xs mat-icon material-icons ml-1">edit</mat-icon></div>'}
           },
           {
             headerName: 'Contrarian',
@@ -141,7 +141,7 @@ export class BulkUpdateComponent implements OnInit {
             width: 120,
             filter: 'agTextColumnFilter',
             columnGroupShow: 'closed',
-            headerComponentParams: { template: '<div class="d-flex pt-1"><span>Contrarian</span><mat-icon class="mat-icon-xs mat-icon material-icons ml-1">edit</mat-icon></div>'}
+            headerComponentParams: { template: '<div class="d-flex"><span>Contrarian</span><mat-icon class="mat-icon-xs mat-icon material-icons ml-1">edit</mat-icon></div>'}
           },
           {
             headerName: 'Planned',
@@ -152,7 +152,7 @@ export class BulkUpdateComponent implements OnInit {
               return prms.data.tradeType === 'planned' ? 'Yes' : 'No';
             },
             columnGroupShow: 'closed',
-            headerComponentParams: { template: '<div class="d-flex pt-1"><span>Planned</span><mat-icon class="mat-icon-xs mat-icon material-icons ml-1">edit</mat-icon></div>'}
+            headerComponentParams: { template: '<div class="d-flex"><span>Planned</span><mat-icon class="mat-icon-xs mat-icon material-icons ml-1">edit</mat-icon></div>'}
           },
         ]
       },
@@ -212,7 +212,7 @@ export class BulkUpdateComponent implements OnInit {
             cellEditor: 'thesisEditor',
             autoHeight: true,
             editable: true,
-            headerComponentParams: { template: '<div class="d-flex pt-1"><span>Trade Thesis</span><mat-icon class="mat-icon-xs mat-icon material-icons ml-1">edit</mat-icon></div>'}
+            headerComponentParams: { template: '<div class="d-flex"><span>Trade Thesis</span><mat-icon class="mat-icon-xs mat-icon material-icons ml-1">edit</mat-icon></div>'}
           },
           {
             field: 'tags', headerName: 'Tags', editable: true,
@@ -238,7 +238,7 @@ export class BulkUpdateComponent implements OnInit {
               }
               return "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
             },
-            headerComponentParams: { template: '<div class="d-flex pt-1"><span>Tags</span><mat-icon class="mat-icon-xs mat-icon material-icons ml-1">edit</mat-icon></div>'}
+            headerComponentParams: { template: '<div class="d-flex"><span>Tags</span><mat-icon class="mat-icon-xs mat-icon material-icons ml-1">edit</mat-icon></div>'}
           },
           {
             field: 'targetPrice', headerName: 'Target Price', editable: true,
@@ -247,7 +247,7 @@ export class BulkUpdateComponent implements OnInit {
             filter: 'agTextColumnFilter',
             columnGroupShow: 'closed',
             cellClass: 'justify-content-end targe-price',
-            headerComponentParams: { template: '<div class="d-flex pt-1"><span>Target Price</span><mat-icon class="mat-icon-xs mat-icon material-icons ml-1">edit</mat-icon></div>'}
+            headerComponentParams: { template: '<div class="d-flex"><span>Target Price</span><mat-icon class="mat-icon-xs mat-icon material-icons ml-1">edit</mat-icon></div>'}
           },
           /*{ 
             field: 'targetCloseDate', headerName: 'Target Close Date', editable: true, resizable: true, width: 250, 
@@ -259,7 +259,7 @@ export class BulkUpdateComponent implements OnInit {
             width: 150,
             filter: 'agTextColumnFilter',
             columnGroupShow: 'closed',
-            headerComponentParams: { template: '<div class="d-flex pt-1"><span>Source</span><mat-icon class="mat-icon-xs mat-icon material-icons ml-1">edit</mat-icon></div>'}
+            headerComponentParams: { template: '<div class="d-flex"><span>Source</span><mat-icon class="mat-icon-xs mat-icon material-icons ml-1">edit</mat-icon></div>'}
           },
           {
             field: 'technicalIndicator', headerName: 'Technical Indicator',
@@ -267,21 +267,21 @@ export class BulkUpdateComponent implements OnInit {
             width: 170,
             filter: 'agTextColumnFilter',
             columnGroupShow: 'closed',
-            headerComponentParams: { template: '<div class="d-flex pt-1"><span>Technical Indicator</span><mat-icon class="mat-icon-xs mat-icon material-icons ml-1">edit</mat-icon></div>'}
+            headerComponentParams: { template: '<div class="d-flex"><span>Technical Indicator</span><mat-icon class="mat-icon-xs mat-icon material-icons ml-1">edit</mat-icon></div>'}
           },
           {
             field: 'event', headerName: 'Events', editable: true, cellEditor: 'eventEditor', resizable: true,
             width: 150,
             filter: 'agTextColumnFilter',
             columnGroupShow: 'closed',
-            headerComponentParams: { template: '<div class="d-flex pt-1"><span>Events</span><mat-icon class="mat-icon-xs mat-icon material-icons ml-1">edit</mat-icon></div>'}
+            headerComponentParams: { template: '<div class="d-flex"><span>Events</span><mat-icon class="mat-icon-xs mat-icon material-icons ml-1">edit</mat-icon></div>'}
           },
           {
             field: 'mindset', headerName: 'Mindset', editable: true, cellEditor: 'mindsetEditor', resizable: true,
             width: 150,
             filter: 'agTextColumnFilter',
             columnGroupShow: 'closed',
-            headerComponentParams: { template: '<div class="d-flex pt-1"><span>Mindset</span><mat-icon class="mat-icon-xs mat-icon material-icons ml-1">edit</mat-icon></div>'}
+            headerComponentParams: { template: '<div class="d-flex"><span>Mindset</span><mat-icon class="mat-icon-xs mat-icon material-icons ml-1">edit</mat-icon></div>'}
           }
         ]
       },

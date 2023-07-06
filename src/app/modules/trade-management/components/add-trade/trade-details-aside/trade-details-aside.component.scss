@@ -928,11 +928,12 @@ a.btn.btn-skip {
     float: right;
 }
 .assess-risk-btn {
-    font-size: 13px;
-    padding: 0.375rem 1rem !important;
+    font-size: 14px;
+    padding: 0.6rem 1rem !important;
     background: radial-gradient(159.03% 392.94% at 26.8% -25.69%, rgba(24, 255, 61, 0.2) 0%, rgba(155, 216, 186, 0.182) 97.92%), linear-gradient(180deg, #33CB39 0%, #1BD022 100%);
     border-radius: 16px;
     color: #fff;
+    cursor: pointer;
 }
 .assess-risk-btn:hover {
     text-decoration: none;
@@ -952,6 +953,8 @@ a.btn.btn-skip {
 
 .mat-icon-edit {
     color: #394C86;
+    font-size: 19px !important;
+    height: 18px !important;
 }
 
 .action-icon {
@@ -960,4 +963,5 @@ a.btn.btn-skip {
 
 .user-risk-input  {
     display: inline-block;
+    font-size: 14px;
 }

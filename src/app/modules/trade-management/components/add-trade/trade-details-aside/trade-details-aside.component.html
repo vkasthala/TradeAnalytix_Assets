@@ -31,18 +31,18 @@
             <label class="col-form-label">Maximum Risk</label>
             <div class="col-form-value">
                 <div class="d-flex align-items-center justify-content-start">
-                    <span class="mr-2">
-                        <span class="pr-3" *ngIf="!riskEditing">{{strategySummaryResult.maxLoss}}</span>
+                    <span class="mr-2 d-flex align-items-center">
+                        <span class="px-3" *ngIf="!riskEditing">{{strategySummaryResult.maxLoss}}</span>
                         <span class="inline-flex align-items-center" *ngIf="!riskEditing">
                             <mat-icon class="mat-icon-sm mat-icon-edit" (click)="onMaxRiskEdit()">edit</mat-icon> Edit
                         </span>
-                        <span class="d-flex" *ngIf="riskEditing">
+                        <span class="d-flex pl-3 align-items-center" *ngIf="riskEditing">
                             <input type="text" class="form-control user-risk-input" [(ngModel)]="userDefinedRisk" *ngIf="riskEditing"/>
-                            <mat-icon class="ml-2 mat-icon-edit action-icon" (click)="updateMaxRisk()" *ngIf="riskEditing">check_circle</mat-icon>
+                            <mat-icon class="ml-2 action-icon" (click)="updateMaxRisk()" *ngIf="riskEditing">check_circle</mat-icon>
                             <mat-icon class="ml-2 text-danger action-icon" (click)="onMaxRiskEditCancel()" *ngIf="riskEditing">close</mat-icon>
                         </span>
                     </span>
-                    <span *ngIf="!closeTrade && !viewTrade">
+                    <span class="ml-3 pl-1" *ngIf="!closeTrade && !viewTrade">
                         <a class="assess-risk-btn" (click)="navigateToRiskAnalysis()">Assess Risk</a>
                     </span>
                 </div>

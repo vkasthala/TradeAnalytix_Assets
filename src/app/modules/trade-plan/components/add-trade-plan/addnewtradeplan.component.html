@@ -238,6 +238,7 @@
                                 <div class="col-sm-12">
                                     <div class="trade-plan-header justify-content-between">
                                         <span>Create Notes</span>
+                                        <span class="add-new" *ngIf="!viewTradePlan" (click)="openRateExperienceDialog()">Rate Your Perfomance</span>
                                     </div>
                                     <div>
                                         <textarea placeholder="Take a moment to reflect on your trading performance and analyze both the successes and challenges encountered throughout the day" class="textarea-lg" [(ngModel)]="tradePlan.lessons"></textarea>
@@ -254,9 +255,7 @@
                                     <button class="btn btn-sm btn-outline-black" *ngIf="!viewTradePlan" [routerLink]="['/import-trades-history/']">
                                         <mat-icon class="mat-icon-md">download</mat-icon> Import Trades
                                     </button>
-                                    <button class="btn btn-sm" *ngIf="!viewTradePlan" (click)="openRateExperienceDialog()">
-                                        <mat-icon class="mat-icon-md">download</mat-icon> Review
-                                    </button>
+                                    
                                 </div>
                                 <app-today-executed-legs [selectedPlan]="selectedPlan" #todayExcutedTradesGrid></app-today-executed-legs>
                             </div>
