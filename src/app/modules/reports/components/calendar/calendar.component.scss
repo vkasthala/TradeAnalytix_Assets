@@ -27,7 +27,7 @@
             padding: 5px;
             flex-direction: column;
             line-height: 1.5;
-            color: #000;
+            color: #212529;
         }
         li.days {
             border-top: 1px solid #dee2e6;
@@ -83,5 +83,6 @@
 }
 .returnAmount {
     text-align: right;
-    min-height: 22px;
+    min-height: 6px;
+    margin:16px;          //Added this to adjust the formatting of return amount and trade count in calendar report
 }

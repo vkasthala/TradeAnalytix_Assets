@@ -173,7 +173,7 @@
 
 .trade-form .form-control {
     padding: 0.375rem 0.75rem;
-    font-size: 13px !important;
+    font-size: 13px !important;   
     line-height: 1.5;
     color: #242E3A !important;
     height: 40px;
@@ -271,7 +271,7 @@ input.mat-input-element {
 
 .form-control,
 .trade-thesis-sec {
-    font-size: 12px;
+    font-size: 14px; //Updated to increase font size of month dropdown in the calendar report
 }
 
 .with-130 {
@@ -377,7 +377,7 @@ mat-header-cell:last-of-type,
     bottom: 90px;
     position: fixed;
     width: 300px;
-    font-size: 16px;
+    font-size: 18px;
 }
 .bottom-link {
     color: #fff;
@@ -415,8 +415,8 @@ mat-header-cell:last-of-type,
 }
 
 .sidebar {
-    min-width: 320px;
-    max-width: 320px;
+    min-width: 330px;
+    max-width: 330px;
     direction: ltr;
     background: linear-gradient(180deg, #FFFFFF 0%, #165792 0.01%, #085397 100%);
     // -webkit-transform: translate3d(0, 0px, 0px);
@@ -1039,7 +1039,7 @@ iframe {
     content: '';
     position: absolute;
     top: 16px;
-    right: 30px;
+    right: 50px;     //Moved chevrons in the menu to the left
     border-top: 8px solid #fff;
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
