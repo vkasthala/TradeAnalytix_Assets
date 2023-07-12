@@ -11,7 +11,7 @@
       </div>
 
       <div class="exit-con">
-        <label class="col-form-label pl-3">Enter/select Tag Name</label>
+        <label class="col-form-label pl-3">Enter the tag</label>
         <div class="combobox">
           <input type="text" [(ngModel)]='value' (ngModelChange)="getFilteredList()" class="combobox-input" (keyup)="onKeyPress($event)" (blur)="toggleListDisplay(value)" (focus)="toggleListDisplay(1, value)" placeholder="Select one..." >
 

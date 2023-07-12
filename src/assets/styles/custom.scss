@@ -17,7 +17,7 @@
 }
 .mydrp .selection::placeholder {
     color: #a3a3a3 ;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .datepicker-group {
@@ -89,13 +89,14 @@
 }
 
 .mat-step-header[aria-selected="true"] {
-    background-color: #3A4C85;
+    background-color: #275C9F;
     position: relative;
     overflow: inherit;
 }
 
 .text-link {
-    color: #394C86;
+    color: #275C9F;
+    font-weight: 600;
     text-decoration: none !important;
     cursor: pointer;
     font-size: 14px !important;
@@ -320,7 +321,7 @@ mat-header-cell:last-of-type,
 .mat-cell,
 .mat-footer-cell {
     font-size: 14px;
-    color: #3B5065;
+    color: #212529;
 }
 
 .mat-row:nth-child(even) {
@@ -395,10 +396,10 @@ mat-header-cell:last-of-type,
 }
 .bottom-link:hover, .bottom-link.nav-active {
     background-color: #fff;
-    color: #394C86;
+    color: #275C9F;
     text-decoration: none;
     .nav-icon {
-        color: #394C86;
+        color: #275C9F;
     }
 }
 .bottom-link:before {
@@ -496,7 +497,7 @@ a.sidebar-link {
 .sidebar-link:hover, 
 .nav-active .sidebar-link {
     background-color: #fff;
-    color: #394C86;
+    color: #275C9F;
     text-decoration: none;
 }
 .sidebar-link:hover:before, .nav-active .sidebar-link:before {
@@ -519,13 +520,13 @@ a.sidebar-link {
         display: block;
     }
     .sidebar-link:hover>.mat-icon {
-        color: #394C86;
+        color: #275C9F;
     }
     .sidebar-link>span {
         display: none;
     }
     .sidebar-link:hover {
-        color: #394C86;
+        color: #275C9F;
         background: #FDFDFD;
         box-shadow: 0px 4px 16px rgba(157, 157, 157, 0.2);
         border-radius: 6px;
@@ -535,7 +536,7 @@ a.sidebar-link {
     }
     .sidebar-link:hover>span {
         display: block !important;
-        color: #394C86;
+        color: #275C9F;
     }
     .sidebar-item {
         padding-left: 10px;
@@ -584,7 +585,7 @@ a.sidebar-link {
 
 .top-nav-link {
     padding: 0 0.5rem;
-    color: #394C86;
+    color: #275C9F;
     font-weight: 400;
     transition: background 50ms ease-in-out;
     text-decoration: none;
@@ -677,7 +678,7 @@ textarea {
 }
 
 #search-box {
-    font-size: 12px !important;
+    font-size: 14px !important;
     height: 40px;
 }
 
@@ -759,7 +760,7 @@ textarea {
     }
 }
 .global-search #search-box {
-    font-size: 12px !important;
+    font-size: 14px !important;
     height: 33px;
     border: 0;
     padding: 0;
@@ -800,7 +801,7 @@ textarea {
         height: 35px;
     }
     .mydrp .selection {
-        font-size: 12px !important;
+        font-size: 14px !important;
         padding: 0 25px 0 6px !important;
     }
     .date-range-md .mydrp .selection {
@@ -814,13 +815,13 @@ textarea {
     }
     .trade-name-rate,
     .bxo-name {
-        font-size: 12px !important;
+        font-size: 14px !important;
         padding: 5px !important;
     }
     .bxo-name {
         h6,
         span {
-            font-size: 12px !important;
+            font-size: 14px !important;
         }
     }
     .addnew-second {
@@ -854,7 +855,7 @@ textarea {
 @media screen and (min-width: 320px) and (max-width:599px) {
     .col-form-label {
         color: #929292;
-        font-size: 12px !important;
+        font-size: 14px !important;
     }
 }
 
@@ -932,7 +933,7 @@ iframe {
     color: #0056b3;
 }
 .watch-video-xs {
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 800;
     color: #0056b3;
 }
@@ -964,7 +965,7 @@ iframe {
         position: relative;
         &:hover {
             background-color: #fff;
-            color: #394C86;
+            color: #275C9F;
             text-decoration: none;
         }
         .nav-icon_r {
@@ -1045,12 +1046,12 @@ iframe {
     border-right: 8px solid transparent;
 }
 .parent-item:hover:before {
-    border-top: 8px solid #394C86;
+    border-top: 8px solid #275C9F;
 }
 
 .parent-item:hover {
     background: #fff;
-    color: #394C86;
+    color: #275C9F;
     text-decoration: none;
     border-left: 7px solid #61bd6e;
 }
@@ -1087,8 +1088,9 @@ iframe body {
 }
 
 .bulk-update-grid .mat-icon-xs {
-    font-size: 16px !important;
+    font-size: 14px !important;
     margin-top: 4px;
+    color: #275C9F;
     height: 16px !important;
     width: 16px !important;
 }
@@ -1155,5 +1157,6 @@ iframe body {
     color: #000 !important;
 }
 .blue-link {
-    color: #394C86;
+    color: #275C9F;
+    font-weight: 600;
 }

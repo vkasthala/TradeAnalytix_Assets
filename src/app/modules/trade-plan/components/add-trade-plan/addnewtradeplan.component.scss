@@ -541,11 +541,11 @@ td.mat-cell {
 }
 .date-filter-list {
     background:rgb(157 166 186 / 21%);
-    font-weight: 400;
-    font-size: 14px;              // font size of trade plan dates
+    font-weight: 500;
+    font-size: 16px;               // font size of trade plan dates
     line-height: 24px;
-    color: #3B5065;
-    margin-left: 10px;       //Venkat added to move dates a little to the right
+    color: #393B40;             //color of the date and delete icon for the inactive trade plana
+    margin-left: 10px;            //Venkat added to move dates a little to the right
     .date-filter-header {
         display: flex;
         align-items: center;
@@ -556,10 +556,10 @@ td.mat-cell {
     }
     .title {
         color: #fff;
-        font-weight: 500; 
+        font-weight: 600; 
         display: flex;
-        font-size: 14px;      // font size of Create Plan button
-        margin-left: 0px;
+        font-size: 16px;      // font size of Create Plan button
+        margin-left: -18px;   // left spacing for the Create Plan button
     }
     ul {
         margin: 0;
@@ -579,7 +579,9 @@ td.mat-cell {
         }
         li.active {
             background:#fff;
-            color: #242E3A;
+            color: #393B40;  //color of the date and delete icon for the active trade plan
+            font-size: 16px;
+            font-weight: 600;
         }
     }
 }

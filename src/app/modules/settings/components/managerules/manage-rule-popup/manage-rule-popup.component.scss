@@ -92,7 +92,7 @@
 }
 
 .top-pop-inner {
-    background: linear-gradient(91.71deg, #4BB964 -17.07%, #3794E8 105.91%);
+    background: #275C9F;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -100,7 +100,9 @@
 }
 
 .left-heading {
-    font-size: 14px;
+    font-size: 16px;
+    margin-top: 10px;
+    font-weight: 600;
     h6 {
         color: #fff;
         font-size: 14px;
@@ -132,9 +134,10 @@
     color: #fff;
     font-size: 14px;
     font-weight: 400;
-    height: 36px;
+    width: 100px;
+    height: 38px;
     cursor: pointer;
-    border-radius: 0;
+    border-radius: 5px;
     &:hover {
         color: white !important;
     }
