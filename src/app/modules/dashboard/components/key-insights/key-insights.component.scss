@@ -5,18 +5,18 @@
 }
 
 .insight-item{
-    padding: 8px 10px;
+    padding: 11px 14px;        //spacing between each insight item
     border-bottom: 1px solid rgb(157 166 186 / 68%);
 }
 .insights_date {
-    font-size: 14px;
+    font-size: 16px;      //Updated font size of Key Insights
     line-height: 18px;
     color: #9DA6BA;
     margin-right: 1rem;
 }
 .view-more {
     font-weight: 600;
-    color: #394C86;
+    color: #275C9F;   //Updated color of View More hyperlink
     text-decoration: none;
     font-size: 14px;
 }
@@ -26,7 +26,8 @@
     justify-content: center;
     height: 94%;
     font-weight: 500;
-    font-size: 22px;
+    vertical-align: middle;  //Venkat added to center-align Setup Data in the dashboard
+    font-size: 18px;
     a {
         text-decoration: none;
     }

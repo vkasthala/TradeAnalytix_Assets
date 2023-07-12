@@ -563,7 +563,7 @@
 }
 .key-insight-grid {
     background: #fff;
-    // padding: 12px;
+    padding: 12px;
     border: 1px solid #ddd;
     height: 100%;
     min-height: 63vh;
@@ -767,10 +767,10 @@
     font-weight: bold;
     font-size: 16px;
     line-height: 28px;
-    color: #2285FA;
+    color: #275C9F;
 }
 .card-btn {
-    background: #2285FA;
+    background: #275C9F;
     border-radius: 4px;
     padding: 0.375rem 1rem !important;
     border-radius: 4px;
@@ -790,7 +790,7 @@
 }
 .list-group-card {
     overflow:auto;
-    padding: 1rem;
+    padding: 0.5rem;      //reduce the space above the first daily insight
     font-weight: normal;
     line-height: 24px;    //Increased font size and changed text color in Daily Insights
     font-size: 16px;
@@ -1013,7 +1013,7 @@
     }
 }
 .add-new {
-    color: #007bff;
+    color: #275C9F;
     font-size: 14px;
     line-height: 1;
     font-weight: 500;
