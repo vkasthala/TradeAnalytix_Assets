@@ -15,11 +15,11 @@
             </div>
         </ng-template>
     </mat-expansion-panel> -->
-    <div class="description_text pt-2">Data added here under each section is visible in your trading journal.</div>
+    <div class="description_text pt-2">CueTrade journal allows you to record the source, technical indicator, mindset and events for the trade strategies. You can add, update or delete the droppowns values for these attributes.</div>
     <mat-expansion-panel [expanded]="true" (opened)="setStep(0)">
         <mat-expansion-panel-header>
             <mat-panel-title>
-                Source of Trade Ideas
+                Sources of Trade: Add, update or delete the possible sources of your trades (e.g., Self, Twitter, Subscription Service)
             </mat-panel-title>
         </mat-expansion-panel-header>
         <ng-template matExpansionPanelContent>
@@ -30,7 +30,7 @@
     <mat-expansion-panel [expanded]="true" (opened)="setStep(1)">
         <mat-expansion-panel-header>
             <mat-panel-title>
-                Technical Indicators
+                Technical Indicators: Add, update or delete the technical indicators you use for your trades (e.g., RSI, Support)
             </mat-panel-title>
         </mat-expansion-panel-header>
         <ng-template matExpansionPanelContent>
@@ -41,7 +41,7 @@
     <mat-expansion-panel [expanded]="true" (opened)="setStep(2)">
         <mat-expansion-panel-header>
             <mat-panel-title>
-                Mindset
+                Mindset: Add, update or delete the mindsets applicable while placing a trade (e.g., FOMO, Confident)
             </mat-panel-title>
         </mat-expansion-panel-header>
         <ng-template matExpansionPanelContent>
@@ -51,7 +51,7 @@
     <mat-expansion-panel [expanded]="true" (opened)="setStep(3)">
         <mat-expansion-panel-header>
             <mat-panel-title>
-                Events
+                Events: Add, update or delete the events around which you would place trades (e.g., Pre-Earnings, Post-Earnings).
             </mat-panel-title>
         </mat-expansion-panel-header>
         <ng-template matExpansionPanelContent>
