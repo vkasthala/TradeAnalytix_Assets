@@ -8,10 +8,10 @@
                         <div class="tb-container-box-header">How to use trade builder?</div>
                         <div class="tb-container-box-body">
                             <ul>
-                                <li><img src="../../../../../assets/images/tb_icon_1.svg" class="mr-3" /> Build a trade strategy with stock and option legs</li>
-                                <li><img src="../../../../../assets/images/tb_icon_2.svg" class="mr-3" /> Assess risk of the strategy and review historical statistics</li>
-                                <li><img src="../../../../../assets/images/tb_icon_3.svg" class="mr-3" /> Journal trade, analyze charts, and attach files</li>
-                                <li><img src="../../../../../assets/images/tb_icon_4.svg" class="mr-3" /> Check alignment with trading rules</li>
+                                <li><img src="../../../../../assets/images/tb_icon_1.svg" class="mr-3" />Build a trade strategy with stock and option legs</li>
+                                <li><img src="../../../../../assets/images/tb_icon_2.svg" class="mr-3" />Analyze risk of the strategy and review historical statistics</li>
+                                <li><img src="../../../../../assets/images/tb_icon_3.svg" class="mr-3" />Journal trade, analyze charts, and attach files</li>
+                                <li><img src="../../../../../assets/images/tb_icon_4.svg" class="mr-3" />Check alignment with trading rules</li>
                             </ul>
                         </div>
                     </div>
@@ -21,11 +21,12 @@
                         <app-trade-search (symbolSelectEvent)="symbolSelectEventHandler($event)">
                         </app-trade-search>
                         <div class="trade-form-body">
-                            <h4 class="py-2 mt-3">Popular Symbols</h4>
+                            <h4 class="py-2 mt-3">Popular User Searches</h4>
                             <ul>
                                 <li>Nifty 50</li>
                                 <li>BankNifty</li>
                                 <li>Reliance</li>
+                                <li>TCS</li>
                             </ul>
                         </div>
                         <button class="btn btn-enter" (click)="enterSymbol()">Submit </button>
