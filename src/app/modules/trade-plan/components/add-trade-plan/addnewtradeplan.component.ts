@@ -238,8 +238,8 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
 
   loadPlannedTrades() {
     if (this.selectedPlan.id > 0) {
-      this.tradePlanService.getPlannedTrades(this.tradePlanId).subscribe(result => {
-        this.plannedTradesDataSource = result;
+      this.tradePlanService.getPlannedTrades(this.selectedPlan.id).subscribe(result => {
+      this.plannedTradesDataSource = result;
       });
     }
   }
@@ -500,8 +500,8 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
   }
 
   createPlannedTrade(plannedTrade: PlannedTrade) {
-    this.tradePlanService.createPlannedTrade(this.tradePlanId, plannedTrade).subscribe(result => {
-      this.loadPlannedTrades();
+    this.tradePlanService.createPlannedTrade(this.selectedPlan.id, plannedTrade).subscribe(result => {
+    this.plannedTradesGrid.initPlannedTradesGrid(this.selectedPlan.id, false);
     });
   }
 
