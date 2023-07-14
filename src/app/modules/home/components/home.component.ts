@@ -141,7 +141,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
       case 'insights': return { breadcrumb: 'Insights', title: 'Insights', description: 'Insights' };
 
-      case 'bulk-update': return { breadcrumb: 'Bulk Update', title: 'Bulk Update', description: 'Bulk Update Journal' };
+      case 'bulk-update': return { breadcrumb: 'Bulk Journal', title: 'Bulk Journal', description: 'Bulk Update Journal' };
       default: return null;
     }
   }
