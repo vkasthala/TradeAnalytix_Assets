@@ -502,6 +502,7 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
   createPlannedTrade(plannedTrade: PlannedTrade) {
     this.tradePlanService.createPlannedTrade(this.selectedPlan.id, plannedTrade).subscribe(result => {
     this.plannedTradesGrid.initPlannedTradesGrid(this.selectedPlan.id, false);
+    this.loadTradePlanData()
     });
   }
 
