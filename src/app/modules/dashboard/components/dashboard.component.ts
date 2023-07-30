@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, HostListener, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -53,7 +53,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   progressPercent: number = 0;
   totalTasks: number = 7;
   currentDate: Date = new Date();
- 
+  isMobileDevice: any;
 
 
   constructor(
@@ -69,6 +69,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   ) { }
 
   ngOnInit() {
+    this.checkDevice();
     this.loadLatestTradePlan();
     this.loadSummaryItems();
     this.loadBrokerges();
@@ -474,6 +475,23 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     this.selectedId = Number($event.target.value);
   }
 
+  checkDevice() {
+    setTimeout(() => {
+      const agent = window.navigator.userAgent.toLowerCase();
+      let regexp = /android|iphone|kindle|ipad/i;
+      let deviceType = regexp.test(agent);
+      if (deviceType) {
+        this.isMobileDevice = true;
+      } else {
+        this.isMobileDevice = false;
+      }
+    }, 100)
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.checkDevice()
+  }
 
 
 }
