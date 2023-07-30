@@ -25,6 +25,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   mySubscription;
   hamburgerMenu: boolean = false;
   public demoModeIsStarted: boolean = false;
+  contactUsModal: boolean = false;
 
   constructor(
     private globalStore: Store<fromGlobalConfig.State>,
@@ -207,6 +208,14 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
     dialogRef.afterClosed().subscribe((res) => {
     });
+  }
+
+  openContactUsModal() {
+    this.contactUsModal= !this.contactUsModal;
+  }
+  
+  closeContactUsModal() {
+    this.contactUsModal = !this.contactUsModal;
   }
 
 }

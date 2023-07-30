@@ -96,22 +96,24 @@
                 </li>
             </ul>
 
+            <div class="sidebar-bottom">
+                <a class="bottom-link" [routerLink]="['/setttings']" [class.nav-active]="currentRoute == 'setttings'">
+                    <mat-icon class="nav-icon">settings</mat-icon>
+                    <span>Settings</span>
+                </a>
+                <a class="bottom-link" href="javascript:void(0)" (click)="openContactUsModal()" [class.nav-active]="currentRoute == 'contact-us'">
+                    <mat-icon class="nav-icon">phone</mat-icon>
+                    <span>Contact Us</span>
+                </a>
+            </div>
+
             <span class="menu-toggle cursor-pointer" (click)="sidebarToggle()">
                 <mat-icon *ngIf="!isExpand">arrow_back</mat-icon>
                 <mat-icon *ngIf="isExpand">arrow_forward</mat-icon>
             </span>
         </nav>
 
-        <div class="sidebar-bottom">
-            <a class="bottom-link" [routerLink]="['/setttings']" [class.nav-active]="currentRoute == 'setttings'">
-                <mat-icon class="nav-icon">settings</mat-icon>
-                <span>Settings</span>
-            </a>
-            <a class="bottom-link" [routerLink]="['/contact-us/']" [class.nav-active]="currentRoute == 'contact-us'">
-                <mat-icon class="nav-icon">phone</mat-icon>
-                <span>Contact Us</span>
-            </a>
-        </div>
+        
     </div>
     <div class="main">
         <div class="trade-dashboard-topbar">
@@ -296,3 +298,37 @@
         </li> -->
     </ul>
 </nav>
+
+<div *ngIf="contactUsModal" class="modal-backdrop fade show"></div>
+<div class="modal contact-modal" [ngClass]="contactUsModal ? 'show' : ''"  tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Contact Us</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeContactUsModal()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body pt-0">
+            <form>
+                <div class="mb-2">
+                  <label class="col-form-label">Name</label>
+                  <input type="text" class="form-control" id="name" placeholder="Name" />
+                </div>
+                <div class="mb-2">
+                  <label class="col-form-label">Email</label>
+                  <input type="email" class="form-control" id="email" placeholder="Email" />
+                </div>
+                <div class="form-group">
+                  <label class="col-form-label">Message </label>
+                  <textarea rows="4" class="form-control" id="message" placeholder="Message"></textarea>
+                </div>
+              </form>
+        </div>
+        <div class="modal-footer py-1">
+            <button type="button" class="btn btn-add">Submit</button>
+            <button type="button" class="btn btn-secondary ml-1" (click)="closeContactUsModal()">Close</button>
+        </div>
+      </div>
+    </div>
+</div>
