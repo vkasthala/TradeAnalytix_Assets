@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins');
+.custom-calendar {
+    padding: 0;
+    min-height: 400px;
+    box-shadow: none;
+    border-radius: 12px;
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        border-left: 1px solid #dee2e6;
+        display: flex;
+        flex-wrap: wrap;
+        li {
+            border: 1px solid #dee2e6;
+            display: inline-flex;
+            width: 14.2857%;
+            max-width: 14.2857%;
+            flex: 0 0 14.2857%;
+            border-left: 0;
+            border-top: 0;
+            font-size: 14px;
+            height: 63px;
+            position: relative;
+            justify-content: center;
+            align-items: center;
+            padding: 5px;
+            flex-direction: column;
+            line-height: 1.5;
+            color: #212529;
+        }
+        li.days {
+            border-top: 1px solid #dee2e6;
+            height: 40px;
+            justify-content: center;
+            align-items: center;
+            font-weight: 600;
+            font-size: 15px;
+        }
+        .default_day {
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #8a8989;
+            color: #fff;
+            border-radius: 0 0 15px 0;
+            width: 30px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            height: 25px;
+            line-height: 25px;
+        }
+        .working_day {
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #12B76A;
+            color: #fff;
+            border-radius: 0 0 15px 0;
+            width: 30px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            height: 25px;
+            line-height: 25px;
+        }
+        .negitive_return {
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #F04438;
+            color: #fff;
+            border-radius: 0 0 15px 0;
+            width: 30px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            height: 25px;
+            line-height: 25px;
+        }
+    }
+}
+.returnAmount {
+    text-align: right;
+    min-height: 6px;
+    margin:16px;          //Added this to adjust the formatting of return amount and trade count in calendar report
+}

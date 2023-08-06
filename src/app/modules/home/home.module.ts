@@ -170,6 +170,7 @@ import { FirstUserComponent } from '../dashboard/components/first-users/first-us
 import { ManualImportTradeComponent } from '../import-trades-history/manual-import-trade/manual-import-trade.component';
 import { AutoImportTradeComponent } from '../import-trades-history/auto-import-trade/auto-import-trade.component';
 import { RateExperienceDialogComponent } from '../trade-plan/components/rate-experience-dialog/rate-experience.component';
+import { CalendarComponentTradeplan } from '../reports/components/calendar-tradeplan/calendar-tradeplan.component';
 
 export const MY_FORMATS = {
   parse: {
@@ -275,6 +276,7 @@ export const MY_FORMATS = {
     AutoImportTradePopupComponent,
     RulesComponent,
     CalendarComponent,
+    CalendarComponentTradeplan,
     ReportsRulesComponent,
     StrategySelectionComponent,
     EditableSelectComponent,
@@ -384,6 +386,7 @@ export const MY_FORMATS = {
     ImportTradePopupComponent,
     AutoImportTradePopupComponent,
     CalendarComponent,
+    CalendarComponentTradeplan,
     ReportsRulesComponent,
     StrategySelectionComponent,
     EditableSelectComponent,

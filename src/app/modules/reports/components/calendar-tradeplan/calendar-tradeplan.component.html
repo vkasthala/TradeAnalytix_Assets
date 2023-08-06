@@ -1,0 +1,11 @@
+<div class="custom-calendar">
+    <ul>
+        <li class="days" *ngFor="let day of calendarDays">{{day}}</li>
+    </ul>
+    <ul class="custom_dates">
+        <li *ngFor="let date of calendarDates">
+                <span class="" [ngClass]="{'default_day' : date.day, 'working_day' : date.returnAmount > 0,  'negitive_return' : date.returnAmount < 0 }">{{date.day}}</span>
+                <mat-icon [style.color]="isSuccess ? 'green' : 'red'">{{ isSuccess ? 'check_circle' : 'cancel'}}</mat-icon>
+        </li>
+    </ul>
+</div>

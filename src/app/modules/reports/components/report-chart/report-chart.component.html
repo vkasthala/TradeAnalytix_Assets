@@ -14,8 +14,9 @@
                 <option *ngFor="let month of months" [value]="month.key" [label]="month.label"></option>
             </select>
         </div>
-        <div [chart]="chart" *ngIf = "report.id !== 'calendar_report'"></div>
+        <div [chart]="chart" *ngIf = "report.id !== 'calendar_report' && report.id !== 'calendar_report_tradeplan'"></div>
         <app-calendar *ngIf="report.id === 'calendar_report'" #calendarReport></app-calendar>
+        <app-calendar-tradeplan *ngIf="report.id === 'calendar_report_tradeplan'" #calendarReportTradePlan></app-calendar-tradeplan>
         <div class="lbl-report-nodata" *ngIf="noData === true">No data available</div>
     </div>
 </div>
