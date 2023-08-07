@@ -9,6 +9,7 @@ import { ReportFilter } from '../../model/report-filter.model';
 import { Subject, Subscription } from 'rxjs';
 import { ReportSubType } from '../../model/report-sub-type.model';
 import { CalendarComponent } from '../calendar/calendar.component';
+import { CalendarComponentTradeplan } from '../calendar-tradeplan/calendar-tradeplan.component';
 
 @Component({
   selector: 'app-report-chart',
@@ -19,6 +20,8 @@ import { CalendarComponent } from '../calendar/calendar.component';
 export class ReportChartComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @ViewChild('calendarReport', { static: false }) private calendarReport: CalendarComponent;
+
+  @ViewChild('calendarReportTradePlan', { static: false }) private calendarReportTradePlan: CalendarComponentTradeplan;
 
   @Input("report") report: ReportDetails;
 
@@ -52,7 +55,7 @@ export class ReportChartComponent implements OnInit, AfterViewInit, OnDestroy {
     this.subscription = this.filterChangeSubject.asObservable().subscribe(data => {
       this.onFilterChange(data);
     });
-    this.monthFilter = (this.report.category === ReportCategory.Calendar_Report);
+    this.monthFilter = (this.report.category === ReportCategory.Calendar_Report || this.report.category === ReportCategory.Calendar_Report_Tradeplan);
     if (this.monthFilter) {
       this.initYearsAndMonths();
     }
@@ -99,6 +102,16 @@ export class ReportChartComponent implements OnInit, AfterViewInit, OnDestroy {
       }
       url = null;
       this.calendarReport.loadData(year, month);
+    } else if (category == ReportCategory.Calendar_Report_Tradeplan) {
+      let month = reportFilter.month;
+      let year = reportFilter.year;
+      if (!month || !year) {
+        let today = new Date();
+        month = today.getMonth() + 1;
+        year = today.getFullYear();
+      }
+      url = null;
+      this.calendarReportTradePlan.loadData(year, month);
     } else if (category == ReportCategory.Discipline) {
       request = this.reportRequestService.getDisciplineChartRequest(this.report, this.subtype, reportFilter);
       url = this.reportRequestService.getDisciplineReportApiUrl(this.report.id);

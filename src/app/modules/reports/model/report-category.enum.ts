@@ -12,6 +12,8 @@ export enum ReportCategory {
 
     "Calendar_Report" =  "returnsCalendar",
 
+    "Calendar_Report_Tradeplan" =  "returnsCalendarTradeplan",
+
     "Allocation" = "allocation",
 
     "Dashboard" = "dashboard",

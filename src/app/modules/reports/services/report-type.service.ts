@@ -199,6 +199,12 @@ export class ReportTypeService {
     reportSubType.reportDetailList = [new ReportDetails('discipline_netreturn', 'Net Return by Trade Plan Compliance', ReportCategory.Discipline, "This report illustrates the importance of creating a trade plan by showing the realized return on the days trade plan was created"), new ReportDetails('discipline_winrate', 'Win Rate by Trade Plan Compliance', ReportCategory.Discipline, "This report illustrates the importance of creating a trade plan by showing the realized return on the days trade plan was created")];
     reportSubTypes.push(reportSubType);
 
+    reportSubType = new ReportSubType();
+    reportSubType.name = 'Trade Plan Calendar';
+    reportSubType.id = "discipline_calendar";
+    reportSubType.reportDetailList = [new ReportDetails('calendar_report_tradeplan', 'Net Return by Trade Plan Compliance', ReportCategory.Calendar_Report_Tradeplan, "This report illustrates the importance of creating a trade plan by showing the realized return on the days trade plan was created")];
+    reportSubTypes.push(reportSubType);
+
     return reportSubTypes;
   }
 
