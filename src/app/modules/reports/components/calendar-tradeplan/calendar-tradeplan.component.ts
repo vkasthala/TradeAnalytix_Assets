@@ -24,7 +24,7 @@ export class CalendarComponentTradeplan implements OnInit, AfterViewInit {
   }
 
   loadData(year: number, month: number) {
-    this.reportDataService.getCalendarReportData(month, year).subscribe(result => {
+    this.reportDataService.getCalendarTradeData(month, year).subscribe(result => {
       this.calendarDates = result;
     });
   }

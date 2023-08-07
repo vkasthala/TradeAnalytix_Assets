@@ -4,8 +4,9 @@
     </ul>
     <ul class="custom_dates">
         <li *ngFor="let date of calendarDates">
-                <span class="" [ngClass]="{'default_day' : date.day, 'working_day' : date.returnAmount > 0,  'negitive_return' : date.returnAmount < 0 }">{{date.day}}</span>
-                <mat-icon [style.color]="isSuccess ? 'green' : 'red'">{{ isSuccess ? 'check_circle' : 'cancel'}}</mat-icon>
+                <span class="" [ngClass]="{'default_day' : date.day, 'working_day' : date.tradePlanCreated == 'true',  'negitive_return' : date.tradePlanCreated == 'false' }">{{date.day}}</span>
+                <mat-icon *ngIf="date.tradePlanCreated == 'true'" [style.color]="date.tradePlanAligned ? 'green' : 'red'">{{ date.tradePlanAligned ? 'check_circle' : 'cancel'}}</mat-icon>
         </li>
+        
     </ul>
 </div>

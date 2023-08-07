@@ -6,8 +6,8 @@ export class CalReportDayData {
 
     tradeCount: number;
 
-    tradePlanCreated: boolean = false;
+    tradePlanCreated: string;
 
-    tradePlanAligned: boolean = false;
+    tradePlanAligned: boolean;
 
 }
