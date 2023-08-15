@@ -58,17 +58,24 @@
             <app-editable-list #event></app-editable-list>
         </ng-template>
     </mat-expansion-panel>
-    <!-- <mat-expansion-panel [expanded]="true" (opened)="setStep(4)">
+    <mat-expansion-panel [expanded]="true" (opened)="setStep(4)">
         <mat-expansion-panel-header>
             <mat-panel-title>
-                Trigger for Closing
+                Data Deletion
             </mat-panel-title>
         </mat-expansion-panel-header>
         <ng-template matExpansionPanelContent>
-            <app-editable-list #triggerClosing></app-editable-list>
+            <div class="d-flex mb-3 justify-content-between">
+                <div>Delete all of your trade strategies from CueTrade</div>
+                <button type="button" class="btn btn-danger">Delete All Strategies</button>
+            </div>
+            <div class="d-flex mb-3 justify-content-between">
+                <div>Delete all of your data om CueTrade including trade strategies, trade plans, statistics, notifications etc.</div>
+                <button type="button" class="btn btn-danger">Delete All Your Data</button>
+            </div>
         </ng-template>
     </mat-expansion-panel>
-    <mat-expansion-panel [expanded]="true" (opened)="setStep(5)">
+    <!-- <mat-expansion-panel [expanded]="true" (opened)="setStep(5)">
         <mat-expansion-panel-header>
             <mat-panel-title>
                 Gain or Loss Attribution

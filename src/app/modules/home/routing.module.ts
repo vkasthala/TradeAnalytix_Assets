@@ -48,7 +48,7 @@ const routes: Routes = [
     component : HomeComponent,
     children: [
         {
-          path : '',
+          path : 'dashboard',
           component: DashboardComponent
         },
         {
