@@ -15,11 +15,11 @@
             </div>
         </ng-template>
     </mat-expansion-panel> -->
-    <div class="description_text pt-2">CueTrade journal allows you to record the source, technical indicator, mindset and events for the trade strategies. You can add, update or delete the droppowns values for these attributes.</div>
+    <div class="description_text pt-2">Personalize the data in the trading journal template.</div>
     <mat-expansion-panel [expanded]="true" (opened)="setStep(0)">
         <mat-expansion-panel-header>
             <mat-panel-title>
-                Sources of Trade: Add, update or delete the possible sources of your trades (e.g., Self, Twitter, Subscription Service)
+                Sources of Trade: Manage the sources of your trades (e.g., Self, Subscription Service, Twitter)
             </mat-panel-title>
         </mat-expansion-panel-header>
         <ng-template matExpansionPanelContent>
@@ -30,7 +30,7 @@
     <mat-expansion-panel [expanded]="true" (opened)="setStep(1)">
         <mat-expansion-panel-header>
             <mat-panel-title>
-                Technical Indicators: Add, update or delete the technical indicators you use for your trades (e.g., RSI, Support)
+                Technical Indicators: Manage the technical indicators you use to find trading opportunities.
             </mat-panel-title>
         </mat-expansion-panel-header>
         <ng-template matExpansionPanelContent>
@@ -41,7 +41,7 @@
     <mat-expansion-panel [expanded]="true" (opened)="setStep(2)">
         <mat-expansion-panel-header>
             <mat-panel-title>
-                Mindset: Add, update or delete the mindsets applicable while placing a trade (e.g., FOMO, Confident)
+                Mindset: Manage the mindsets applicable while placing a trade (e.g., FOMO, Confident)
             </mat-panel-title>
         </mat-expansion-panel-header>
         <ng-template matExpansionPanelContent>
@@ -51,7 +51,7 @@
     <mat-expansion-panel [expanded]="true" (opened)="setStep(3)">
         <mat-expansion-panel-header>
             <mat-panel-title>
-                Events: Add, update or delete the events around which you would place trades (e.g., Pre-Earnings, Post-Earnings).
+                Events: Manage the events around which you would place trades (e.g., Pre-Earnings, Post-Earnings).
             </mat-panel-title>
         </mat-expansion-panel-header>
         <ng-template matExpansionPanelContent>
@@ -66,11 +66,11 @@
         </mat-expansion-panel-header>
         <ng-template matExpansionPanelContent>
             <div class="d-flex mb-3 justify-content-between">
-                <div>Delete all of your trade strategies from CueTrade</div>
+                <div>Delete all the trade strategies from CueTrade</div>
                 <button type="button" class="btn btn-danger">Delete All Strategies</button>
             </div>
             <div class="d-flex mb-3 justify-content-between">
-                <div>Delete all of your data om CueTrade including trade strategies, trade plans, statistics, notifications etc.</div>
+                <div>Delete all the data including trade strategies, trade plans, statistics, notifications, etc.</div>
                 <button type="button" class="btn btn-danger">Delete All Your Data</button>
             </div>
         </ng-template>
