@@ -171,6 +171,8 @@ import { ManualImportTradeComponent } from '../import-trades-history/manual-impo
 import { AutoImportTradeComponent } from '../import-trades-history/auto-import-trade/auto-import-trade.component';
 import { RateExperienceDialogComponent } from '../trade-plan/components/rate-experience-dialog/rate-experience.component';
 import { CalendarComponentTradeplan } from '../reports/components/calendar-tradeplan/calendar-tradeplan.component';
+import { ZerodhaInstructionsComponent } from '../import-trades-history/zerodha-instructions/zerodha-instructions.component';
+import { RobinhoodInstructionsComponent } from '../import-trades-history/robinhood-instructions/robinhood-instructions.component';
 
 export const MY_FORMATS = {
   parse: {
@@ -337,7 +339,9 @@ export const MY_FORMATS = {
     FirstUserComponent,
     ManualImportTradeComponent,
     AutoImportTradeComponent,
-    RateExperienceDialogComponent
+    RateExperienceDialogComponent,
+    ZerodhaInstructionsComponent,
+    RobinhoodInstructionsComponent
   ],
   imports: [
     FormsModule,
@@ -433,7 +437,9 @@ export const MY_FORMATS = {
     FirstUserComponent,
     ManualImportTradeComponent,
     AutoImportTradeComponent,
-    RateExperienceDialogComponent
+    RateExperienceDialogComponent,
+    ZerodhaInstructionsComponent,
+    RobinhoodInstructionsComponent
   ],
   // bootstrap: [TradeStrategiesGrid],
   providers: [

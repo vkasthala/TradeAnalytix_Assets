@@ -1,0 +1,75 @@
+<div class="compare-popup">
+    <div class="compare-pop-inner">
+        <div class="pop-top-heading">
+            <div class="left-heading">
+              <h5>Zerodha Instructions</h5>
+            </div>
+            <div class="right-close" (click)="closeModal()">
+              <mat-icon>clear</mat-icon>
+            </div>
+          </div>
+
+        
+
+        <div class="main-pop-inner">
+            <div class="instructions-container">
+                <h6>Instructions for Exporting Your Trades from Zerodha:</h6>
+                <ul>
+                    <li>Log in to Kite trading platform (<a href="https://kite.zerodha.com" target="_blank">https://kite.zerodha.com</a>)</li>
+                    <li>Access the user menu and choose Console or login directly to Kite Console (<a href="https://console.zerodha.com" target="_blank">https://console.zerodha.com</a>)</li>
+                    <li>Access the Reports menu and choose Tradebook</li>
+                    <li>Download Equity transactions as follows
+                        <ul>
+                            <li>Choose Equity from Segment dropdown, select the date range, and click submit</li>
+                            <li>Click the Download CSV option to save the equity transactions in CSV format.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Download F&O transactions as follows
+                        <ul>
+                            <li>Choose F&O from Segment dropdown, select the date range, and click submit</li>
+                            <li>Click the Download CSV option to save the F&O transactions in CSV format.
+                                <div class="pt-2">
+                                    <img src="../../../../assets/images/instructions/zerodha-instructions-1.jpg" />
+                                </div>
+                                <div class="pt-2">
+                                    <img src="../../../../assets/images/instructions/zerodha-instructions-2.jpg" />
+                                </div>
+                                <div class="pt-2">
+                                    <img src="../../../../assets/images/instructions/zerodha-instructions-3.jpg" />
+                                </div>
+                                <div class="pt-2">
+                                    <img src="../../../../assets/images/instructions/zerodha-instructions-4.jpg" />
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+
+
+            <div class="instructions-container">
+                <h6>Instructions for Adding Zerodha Trades to CueTrade:</h6>
+                <ul>
+                    <li>Navigate to the Import Trades page within CueTrade.</li>
+                    <li>From the Select Brokerage dropdown, opt for Zerodha.</li>
+                    <li>Choose the Equity file that you downloaded from Zerodha in step 4 above.</li>
+                    <li>Choose the F&O file that you downloaded from Zerodha in step 5 above.</li>
+                    <li>Click the Upload button to initiate the import process.</li>
+                    <li>Your trades from Robinhood will now be accessible in CueTrade. To view them, go to the Positions page.
+                        <div class="pt-2">
+                            <img src="../../../../assets/images/instructions/zerodha-instructions-5.jpg" />
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="px-3 py-2 text-right">
+            <button type="button" class="btn btn-secondary btn-sm" [mat-dialog-close]="data">Close</button>
+        </div>
+    </div>
+</div>

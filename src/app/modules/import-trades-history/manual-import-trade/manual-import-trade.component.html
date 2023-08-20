@@ -12,7 +12,7 @@
     </div>
     <div class="py-3">
         <div class="col-form-label symbol-description">
-            Step 2: Select the trade history file(s) exported from your brokerage. Click <a [routerLink]="" class="blue-link">here</a> for instructions for the supported brokerages.
+            Step 2: Select the trade history file(s) exported from your brokerage. Click <span class="cursor blue-link" (click)="showInstructionsPopup(selectedbroker)">here</span> for instructions for the supported brokerages.
         </div>
         <input class="w-100" type="file" (change)="selectFile($event)" />
     </div>

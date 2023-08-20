@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject, EventEmitter, Output } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { UploadFileService } from 'src/app/modules/import-trades/services/upload-file.service';
@@ -7,6 +7,8 @@ import { BrokerageService } from '../../shared/services/brokerage.service';
 import { Brokerage } from '../models/brokerage.model';
 import { DemoModeDetailsService } from '../../shared/services/demo-mode-details.service';
 import { UtilService } from '../../utilities/services/util.service';
+import { ZerodhaInstructionsComponent } from '../zerodha-instructions/zerodha-instructions.component';
+import { RobinhoodInstructionsComponent } from '../robinhood-instructions/robinhood-instructions.component';
 
 @Component({
   selector: 'app-manual-import',
@@ -23,7 +25,7 @@ export class ManualImportTradeComponent implements OnInit {
   selectedOptionFiles: FileList;
   currentFile: File;
   optionFile: File;
-  selectedbroker: any = 8;
+  selectedbroker: any = "8";
   processing: boolean = false;
   selectedBrokerage: Brokerage;
   isDemoMode: boolean = false;
@@ -35,6 +37,7 @@ export class ManualImportTradeComponent implements OnInit {
     protected router: Router,
     private utilService: UtilService,
     protected demoService: DemoModeDetailsService,
+    private _dialog: MatDialog,
   ) {
     
   }
@@ -128,6 +131,23 @@ export class ManualImportTradeComponent implements OnInit {
 
   downloadStandardFile() {
     this.utilService.downloadFile("CueTrade_ImportTrades_Standard.xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+  }
+
+  showInstructionsPopup(val) {
+    let type :any = ZerodhaInstructionsComponent;
+    if(val === "8") {
+      type = RobinhoodInstructionsComponent;
+    }
+    const dialogRef = this._dialog.open(type, {
+      disableClose: true,
+      width: 'auto',
+      data: ''
+    });
+    dialogRef.afterClosed().subscribe((res) => {
+      if (res === true) {
+        //this.reload();
+      }
+    });
   }
 
 }
