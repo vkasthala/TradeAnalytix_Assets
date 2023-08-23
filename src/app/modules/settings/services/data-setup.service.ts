@@ -126,4 +126,11 @@ export class DataSetupService {
     return this.httpService.post<void, void>(this.apiUrl + '/metadata/gain-loss-attribute/' + itemId, null);
   }
 
+  public deleteAllStrategies(): Observable<void> {
+    return this.httpService.post(this.apiUrl + '/metadata/clear-strategies', null);
+  }
+
+  public deleteAllData(): Observable<void> {
+    return this.httpService.post(this.apiUrl + '/metadata/clear-user-data', null);
+  }
 }

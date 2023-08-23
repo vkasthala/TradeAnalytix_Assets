@@ -448,7 +448,7 @@ export class DatasetupComponent implements OnInit {
     if (event.target.checked) {
       this.toastr.success('All of your trades will be shared with your followers by default.', 'Success');
       return false;
-    }else {
+    } else {
       this.toastr.success('Your trades will no longer be shared with your followers by default.', 'Success');
       return false;
     }
@@ -457,10 +457,46 @@ export class DatasetupComponent implements OnInit {
     if (event.target.checked) {
       this.toastr.success('Users can search by your email and send the request to follow you.', 'Success');
       return false;
-    }else {
+    } else {
       this.toastr.success('Other users cannot find you in CueTrade and cannot follow you', 'Success');
       return false;
     }
+  }
+
+  deleteAllStrategies() {
+    const dialogRef = this._dialog.open(ConfirmDialogComponent, {
+      width: 'auto',
+      height: 'auto',
+      data: { 'message': 'Are you sure you want to delete All Strategies?' }
+    });
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      if (dialogResult == true) {
+        this.dataSetupService.deleteAllStrategies().subscribe(() => {
+          this.showSuccessMessage("Successfully deleted strategies");
+          console.log('All user strategies deleted..');
+        }, err => {
+          this.showErrorMessageDialog("Error");
+        });
+      }
+    });
+  }
+
+  deleteAllData() {
+    const dialogRef = this._dialog.open(ConfirmDialogComponent, {
+      width: 'auto',
+      height: 'auto',
+      data: { 'message': 'Are you sure you want to clear All Data?' }
+    });
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      if (dialogResult == true) {
+        this.dataSetupService.deleteAllData().subscribe(() => {
+          this.showSuccessMessage("Successfully deleted all data")
+          console.log('All user data deleted..');
+        }, err => {
+           this.showErrorMessageDialog("Error");
+        });
+      }
+    });
   }
 
 }

@@ -67,11 +67,11 @@
         <ng-template matExpansionPanelContent>
             <div class="d-flex mb-3 justify-content-between">
                 <div>Delete all the trade strategies from CueTrade</div>
-                <button type="button" class="btn btn-danger">Delete All Strategies</button>
+                <button type="button" class="btn btn-danger" (click)="deleteAllStrategies()">Delete All Strategies</button>
             </div>
             <div class="d-flex mb-3 justify-content-between">
                 <div>Delete all the data including trade strategies, trade plans, statistics, notifications, etc.</div>
-                <button type="button" class="btn btn-danger">Delete All Your Data</button>
+                <button type="button" class="btn btn-danger" (click)="deleteAllData()">Delete All Your Data</button>
             </div>
         </ng-template>
     </mat-expansion-panel>
