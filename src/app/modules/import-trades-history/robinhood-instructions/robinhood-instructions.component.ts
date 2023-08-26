@@ -20,4 +20,12 @@ export class RobinhoodInstructionsComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  scrollToTop(): void {
+    document.getElementsByClassName('main-pop-inner')[0].scrollTo(0, 0);
+  }
+
+  scrollToMiddle(): void {
+    document.getElementsByClassName('main-pop-inner')[0].scrollTo(0, 700);
+  }
+
 }

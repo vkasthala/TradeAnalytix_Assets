@@ -54,7 +54,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   totalTasks: number = 7;
   currentDate: Date = new Date();
   isMobileDevice: any;
-
+  fiveRowsCalendar: boolean = true;
 
   constructor(
     private router: Router, private ref: ChangeDetectorRef, private tradePlanService: TradePlansService, private reportDataService: ReportDataService,
@@ -86,12 +86,17 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     this.loadActiveStocks();
 
     
-
     
   }
 
   ngAfterContentChecked() {
     this.ref.detectChanges();
+    let calendarDates = this.calendarReport.calendarDates;
+    calendarDates.filter((item, i) => {
+      if(item.day === '1' && i === 6) {
+        this.fiveRowsCalendar = false;
+      }
+    })
   }
 
   loadLatestTradePlan() {

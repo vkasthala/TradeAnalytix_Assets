@@ -9,6 +9,7 @@ import { DemoModeDetailsService } from '../../shared/services/demo-mode-details.
 import { UtilService } from '../../utilities/services/util.service';
 import { ZerodhaInstructionsComponent } from '../zerodha-instructions/zerodha-instructions.component';
 import { RobinhoodInstructionsComponent } from '../robinhood-instructions/robinhood-instructions.component';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-manual-import',
@@ -134,20 +135,33 @@ export class ManualImportTradeComponent implements OnInit {
   }
 
   showInstructionsPopup(val) {
-    let type :any = ZerodhaInstructionsComponent;
-    if(val === "8") {
-      type = RobinhoodInstructionsComponent;
-    }
-    const dialogRef = this._dialog.open(type, {
-      disableClose: true,
-      width: 'auto',
-      data: ''
-    });
-    dialogRef.afterClosed().subscribe((res) => {
-      if (res === true) {
-        //this.reload();
+    let id = parseInt(val)
+    let showPopup :boolean = false;
+    let type :any
+    this.brokerages.filter(item => {
+      if(item.country === "IN" && item.id === id) {
+        type = ZerodhaInstructionsComponent;
+        showPopup = true;
+        return;
+      } else if(item.country === "US" && item.id === id) {
+        type = RobinhoodInstructionsComponent;
+        showPopup = true;
+        return;
       }
-    });
+    })
+
+    if(showPopup) {
+      const dialogRef = this._dialog.open(type, {
+        disableClose: true,
+        width: 'auto',
+        data: ''
+      });
+      dialogRef.afterClosed().subscribe((res) => {
+        if (res === true) {
+          //this.reload();
+        }
+      });
+    }
   }
 
 }
