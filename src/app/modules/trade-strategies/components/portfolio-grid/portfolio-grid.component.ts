@@ -26,7 +26,7 @@ export class PortfolioGrid implements AfterViewInit, OnInit {
   totalCount: number = 1;
   protected Loader = false;
   expandIndex: any;
-  displayedColumns = ['action', 'delete', 'stockName', 'id', 'openDate', 'strategy', 'direction', 'totalAmount', 'maxLoss', 'return', 'tags'];
+  displayedColumns = ['action', 'stockName', 'id', 'openDate', 'strategy', 'direction', 'totalAmount', 'maxLoss', 'return', 'tags'];
   pageSize: number = 20
 
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;

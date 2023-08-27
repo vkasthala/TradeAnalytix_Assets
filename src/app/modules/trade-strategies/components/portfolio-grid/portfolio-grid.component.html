@@ -13,21 +13,16 @@
           <div>
             <mat-icon *ngIf="element.status == 'Open' || element.status == 'Draft'"
               (click)="editTrade(element);closeActionBox()" class="mat-icon-sm trade-edit">edit</mat-icon>
-            <mat-icon *ngIf="element.status == 'Draft'" (click)="deleteTrade(element);closeActionBox()"
-              class="mat-icon-sm mx-2 trade-delete">delete</mat-icon>
+            <!-- <mat-icon *ngIf="element.status == 'Draft'" (click)="deleteTrade(element);closeActionBox()"
+              class="mat-icon-sm trade-delete">delete</mat-icon> -->
 
             <mat-icon *ngIf="element.status == 'Closed'" (click)="viewTrade(element);closeActionBox()"
               class="mat-icon-sm trade-view">visibility</mat-icon>
           </div>
-        </mat-cell>
-      </ng-container>
-
-      <ng-container matColumnDef="delete">
-        <mat-header-cell class="action-cell" *matHeaderCellDef mat-sort-header></mat-header-cell>
-        <mat-cell *matCellDef="let element, let i = index" class="action_colum action-cell">
-          <div>
+        
+          <div class="ml-2">
             <mat-icon (click)="deleteTrade(element);closeActionBox()"
-              class="mat-icon-sm mx-2 trade-delete">delete</mat-icon>
+              class="mat-icon-sm trade-delete">delete</mat-icon>
           </div>
         </mat-cell>
       </ng-container>

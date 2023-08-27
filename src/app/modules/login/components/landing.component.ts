@@ -56,6 +56,8 @@ export class LandingComponent implements OnInit {
   hamburgerMenu: boolean = false;
   contactUsModal: boolean = false;
 
+  
+
   constructor(
     private router: Router,
     private _dialog: MatDialog,
@@ -189,7 +191,7 @@ export class LandingComponent implements OnInit {
     rewind: true,
     // rtl: true,
     startPosition: 1,
-    // navText: [ '<i class=fa-chevron-left>left</i>', '<i class=fa-chevron-right>right</i>' ],
+    navText: [ '<', '>' ],
     responsive: {
       0: {
         items: 1
@@ -201,7 +203,7 @@ export class LandingComponent implements OnInit {
         items: 1
       }
     },
-    nav: false
+    nav: true
   }
 
   getPassedData(data: SlidesOutputData) {
@@ -211,6 +213,8 @@ export class LandingComponent implements OnInit {
   }
 
 }
+
+
 function BulkUpdateUiComponent(BulkUpdateUiComponent: any, arg1: { width: string; maxWidth: string; height: string; data: {}; }) {
   throw new Error('Function not implemented.');
 }

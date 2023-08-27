@@ -446,51 +446,97 @@
     </div>
 </section>
 
-<!-- <section class="bg-white" id="reviews">
-    <div class="text-center">
-        <h2 class="text-black" style="margin: 10px;">What people are saying about us</h2><br>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="testimonial">
-                    <div class="testimonial-copy">
-                        <div class="testimonial-name">
-                        <h4>Joseph Martin</h4>
+<section>
+    <div class="carousel slide blog-section">
+        <h2>Blog</h2>
+        <div class="container">
+            <div class="carousel-inner">
+                <owl-carousel-o [options]="customOptions" (translated)="getPassedData($event)" #owlCar>
+                    <ng-template carouselSlide>
+                        <div class="row align-items-center">
+                            <div class="col-md-4">
+                                <div class="blog-box">
+                                    <h4>Daily Tracker</h4>
+                                    <p>CueTrade focuses on three daily steps to improve as a trader</p>
+                                    <a href="#">Link</a>
+                                </div>
+                            </div>  
+                            <div class="col-md-4">
+                                <div class="blog-box">
+                                    <h4>Daily Tracker</h4>
+                                    <p>CueTrade focuses on three daily steps to improve as a trader</p>
+                                    <a href="#">Link</a>
+                                </div>
+                            </div>  
+                            <div class="col-md-4">
+                                <div class="blog-box">
+                                    <h4>Daily Tracker</h4>
+                                    <p>CueTrade focuses on three daily steps to improve as a trader</p>
+                                    <a href="#">Link</a>
+                                </div>
+                            </div>  
                         </div>
-                        <img src="../../../../assets/img/5star-testi.svg" alt="">
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                            laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="testimonial">
-                    <div class="testimonial-copy">
-                        <div class="testimonial-name">
-                        <h4>Joseph Martin</h4>
+                        
+                    </ng-template>
+                    
+                    <ng-template carouselSlide>
+                        <div class="row align-items-center">
+                            <div class="col-md-4">
+                                <div class="blog-box">
+                                    <h4>Daily Tracker</h4>
+                                    <p>CueTrade focuses on three daily steps to improve as a trader</p>
+                                    <a href="#">Link</a>
+                                </div>
+                            </div>  
+                            <div class="col-md-4">
+                                <div class="blog-box">
+                                    <h4>Daily Tracker</h4>
+                                    <p>CueTrade focuses on three daily steps to improve as a trader</p>
+                                    <a href="#">Link</a>
+                                </div>
+                            </div>  
+                            <div class="col-md-4">
+                                <div class="blog-box">
+                                    <h4>Daily Tracker</h4>
+                                    <p>CueTrade focuses on three daily steps to improve as a trader</p>
+                                    <a href="#">Link</a>
+                                </div>
+                            </div>  
+                            
                         </div>
-                        <img src="../../../../assets/img/5star-testi.svg" alt="">
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                            laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="testimonial">
-                    <div class="testimonial-copy">
-                        <div class="testimonial-name">
-                        <h4>Joseph Martin</h4>
+                        
+                    </ng-template>
+                    <ng-template carouselSlide>
+                        <div class="row align-items-center">
+                            <div class="col-md-4">
+                                <div class="blog-box">
+                                    <h4>Daily Tracker</h4>
+                                    <p>CueTrade focuses on three daily steps to improve as a trader</p>
+                                    <a href="#">Link</a>
+                                </div>
+                            </div>  
+                            <div class="col-md-4">
+                                <div class="blog-box">
+                                    <h4>Daily Tracker</h4>
+                                    <p>CueTrade focuses on three daily steps to improve as a trader</p>
+                                    <a href="#">Link</a>
+                                </div>
+                            </div>  
+                            <div class="col-md-4">
+                                <div class="blog-box">
+                                    <h4>Daily Tracker</h4>
+                                    <p>CueTrade focuses on three daily steps to improve as a trader</p>
+                                    <a href="#">Link</a>
+                                </div>
+                            </div>  
+                            
                         </div>
-                        <img src="../../../../assets/img/5star-testi.svg" alt="">
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                            laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.</p>
-                    </div>
-                </div>
+                    </ng-template>
+                </owl-carousel-o>
             </div>
         </div>
     </div>
-</section> -->
+</section>
 
 <section class="pt-5 pb-5 bg-white" id="faq">
     <div class="container accordion-wrapper">

@@ -25,7 +25,7 @@ export class ZerodhaInstructionsComponent implements OnInit {
   }
 
   scrollToMiddle(): void {
-    document.getElementsByClassName('main-pop-inner')[0].scrollTo(0, 1500);
+    document.getElementsByClassName('main-pop-inner')[0].scrollTo(0, 2050);
   }
 
   
