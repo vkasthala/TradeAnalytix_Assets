@@ -548,20 +548,12 @@ h2 {
     z-index: -1;
 }
 
-/*.accordion-wrapper {
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.5);
-     width: 600px;
-    margin:0 auto;
-} */
 .accordion {
     width: 100%;
     color: white;
     overflow: hidden;
-    margin-bottom: 16px;
-    border-bottom: 1px solid #121D331F;
-    ;
+    margin-bottom: 4px;
+
 }
 
 .accordion:last-child {
@@ -579,6 +571,7 @@ h2 {
     cursor: pointer;
     font-size: 20px;
     color: #000;
+    margin: 0;
 }
 
 @media only screen and (max-width: 600px) {
@@ -940,8 +933,6 @@ input:checked~.accordion-content {
 
 .blog-section {
     font-family: 'Inter', sans-serif !important;
-    background: #F1F5F9;
-    padding-bottom:30px;
 }
 .blog-section h2 {
     font-family: 'Inter', sans-serif !important;
@@ -957,7 +948,10 @@ input:checked~.accordion-content {
     font-size: 13px;
     color: #212529;
     font-family: 'Inter', sans-serif !important;
-    margin-bottom: 1rem;
+    box-shadow: 0 0 5px rgb(201 201 201 / 80%);
+    margin: 5px;
+    position: relative;
+    display: block;
 }
 
 .blog-box h4 {
@@ -979,7 +973,28 @@ input:checked~.accordion-content {
     font-family: 'Inter', sans-serif !important;
     margin-bottom: .5rem;
 }
-.blog-box a {
-    color: #034D82;
-    text-decoration: underline;
+.blog-linkText {
+    color: #9e0000;
+    text-decoration: none;
+    font-weight: 600;
 }
+.blog-box:hover .blog-linkText {
+    color: #eb0000;
+}
+.blog-box::after {
+    clear: both;
+    content: '';
+    display: table;
+}
+.blog-box:hover::after {
+    border-bottom: 3px solid #eb0000;
+    bottom: -1px;
+    left: -1px;
+    margin-left: 0;
+    position: absolute;
+    width: calc(100% + 2px);
+}
+.blog-box:hover {
+    text-decoration: none;
+}
+

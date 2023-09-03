@@ -92,9 +92,10 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   ngAfterContentChecked() {
     this.ref.detectChanges();
     let calendarDates = this.calendarReport.calendarDates;
+    console.log(calendarDates.length)
     calendarDates.filter((item, i) => {
-      if(item.day === '1' && i === 6) {
-        this.fiveRowsCalendar = false;
+      if((item.day === '1' && i === 5 && calendarDates.length === 35) || (item.day === '1' && i === 6 && calendarDates.length > 35)) {
+        this.fiveRowsCalendar = true;
       }
     })
   }
