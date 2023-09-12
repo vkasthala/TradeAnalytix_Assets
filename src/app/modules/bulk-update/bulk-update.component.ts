@@ -145,7 +145,7 @@ export class BulkUpdateComponent implements OnInit {
           },
           {
             headerName: 'Planned',
-            field: 'planned', editable: true, resizable: true, width: 120, cellEditor: 'plannedEditor', filter: 'agTextColumnFilter', cellRenderer: prms => {
+            field: 'tradeType', editable: true, resizable: true, width: 120, cellEditor: 'plannedEditor', filter: 'agTextColumnFilter', cellRenderer: prms => {
               if (!prms.data.tradeType) {
                 return "";
               }
