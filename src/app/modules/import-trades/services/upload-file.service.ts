@@ -27,8 +27,8 @@ export class UploadFileService {
     return this.httpService.postWithForm(`${this.apiUrl}/thesis/upload/${id}`, formData);
   }
 
-  getImportRedirectUrl(brokerageUid: string): Observable<string> {
-    return this.httpService.get<string>(environment.apiUrl + '/import/user/redirect-url/' + brokerageUid);
+  getImportRedirectUrl(brokerageUid: string) {
+    return this.httpService.getWIthReponseType(environment.apiUrl + '/import/user/redirect-url/' + brokerageUid, new Map(), new Map());
   }
 
 }

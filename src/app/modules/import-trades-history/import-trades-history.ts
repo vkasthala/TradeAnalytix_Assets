@@ -224,6 +224,21 @@ export class ImportTradesHistory implements AfterViewInit, OnInit {
     
   }
 
+  kiteConnect() {
+    this.uploadService.getImportRedirectUrl("zerodha").subscribe((result: ArrayBuffer) => {
+      const decoder = new TextDecoder('utf-8');
+      let urlString = decoder.decode(result);
+      const url = new URL(urlString);
+      window.open(url,"_blank");
+      const redirectParams = url.searchParams.get('redirect_params');
+      console.log(redirectParams);
+      
+    }, err =>{
+      console.log(err);
+    })
+    // localStorage.setItem("session",Array.from({ length: 10 }, () => String.fromCharCode(97 + Math.floor(Math.random() * 26))).join(''));
+  }
+
 
 }
 
