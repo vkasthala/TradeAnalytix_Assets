@@ -20,14 +20,21 @@
     text-decoration: none;
     font-size: 14px;
 }
+
 .nodata-text {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 94%;
+    height: 100%;
     font-weight: 500;
-    vertical-align: middle;  //Venkat added to center-align Setup Data in the dashboard
     font-size: 18px;
+    color: #275C9F;
+    text-decoration: none;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    flex-direction: column;
+    top: 0;
     a {
         text-decoration: none;
     }

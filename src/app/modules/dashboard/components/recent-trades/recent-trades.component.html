@@ -1,4 +1,4 @@
-<div class="recent-trades-container">
+<div class="recent-trades-container" *ngIf="recentTrades">
     <div style="height: 345px; overflow-y: auto;">
         <table class="recent-trades">
             <thead>
@@ -31,4 +31,11 @@
 </div>
 <div class="mask" *ngIf="Loader">
     <div class="loader"></div>
+</div>
+
+<div class="p-3 nodata-text" *ngIf="!recentTrades && (recentTrades === undefined)">
+    <div style="min-height: 342px">No Data Available</div>
+    <div class="px-3 view-more text-right">
+        Click <a routerLink="/import-trades-history" class="view-more cursor">here</a> to import your trades
+    </div>
 </div>

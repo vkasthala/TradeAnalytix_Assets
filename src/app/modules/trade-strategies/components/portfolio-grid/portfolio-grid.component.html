@@ -61,6 +61,13 @@
         </mat-cell>
       </ng-container>
 
+      <!-- Journaled Column -->
+      <ng-container matColumnDef="journaled">
+        <mat-header-cell class="open-date-cell" *matHeaderCellDef mat-sort-header>Journaled</mat-header-cell>
+        <mat-cell *matCellDef="let element" class="open-date-cell"> {{element.journaled}}
+        </mat-cell>
+      </ng-container>
+
       <!-- Total Amount Column -->
       <ng-container matColumnDef="totalAmount">
         <mat-header-cell class="total-amount-cell" *matHeaderCellDef mat-sort-header>Cost of Trade</mat-header-cell>

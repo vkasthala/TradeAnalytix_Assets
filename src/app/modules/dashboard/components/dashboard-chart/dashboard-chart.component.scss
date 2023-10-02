@@ -1,6 +1,7 @@
 .dashboard-chart {
     box-shadow: none;
     border-radius: 12px;
+    min-height: 400px;
 }
 
 .chart-cont{
@@ -24,6 +25,7 @@
     position: absolute;
     width: 100%;
     left: 0;
+    flex-direction: column;
     a {
         text-decoration: none;
     }

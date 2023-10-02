@@ -1,15 +1,21 @@
 <div style="min-height:342px">
-    <div class="p-3 nodata-text" *ngIf="!insights || !insights.length">
+    <!-- <div class="p-3 nodata-text" *ngIf="!insights || !insights.length">
         <a routerLink="/rules">Setup Rules</a>
-    </div>
+    </div> -->
     <ul class="insights-list" *ngIf="insights">
         <li *ngFor="let insght of insights; let i = index;" class="insight-item">
-            <!-- <span>&#9654;&nbsp;&nbsp;{{insght.day}}:&nbsp;{{insght.msg}}</span> -->
             <span class="insights_date">{{insght.day | date: 'dd-MMM-yyyy'}}</span>
             <span>{{insght.msg}}</span>
         </li>
     </ul>
 </div>
-<div class="px-3 text-right" *ngIf="insights">
+<div class="px-3 text-right" *ngIf="insights && insights.length">
     <a (click) = "navigateToInsights()" class="view-more cursor">View More</a>
+</div>
+
+<div class="p-3 nodata-text" *ngIf="!insights || !insights.length">
+    <div style="min-height: 342px">No Data Available</div>
+    <div class="px-3 view-more text-right">
+        Click <a routerLink="/import-trades-history" class="view-more cursor">here</a> to import your trades
+    </div>
 </div>

@@ -31,7 +31,7 @@ export class HistoryGrid implements AfterViewInit, OnInit {
 
   protected Loader = false;
   expandIndex: any;
-  displayedColumns = ['action', 'stockName', 'id', 'openDate', 'closeDate', 'strategy', 'direction', 'return', 'tags'];
+  displayedColumns = ['action', 'stockName', 'id', 'openDate', 'closeDate', 'strategy', 'direction', 'journaled', 'return', 'tags'];
   pageSize: number = 20
 
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;

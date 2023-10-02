@@ -66,6 +66,13 @@
         </mat-cell>
       </ng-container>
 
+      <!-- Journaled Column -->
+      <ng-container matColumnDef="journaled">
+        <mat-header-cell class="open-date-cell" *matHeaderCellDef mat-sort-header>Journaled</mat-header-cell>
+        <mat-cell *matCellDef="let element" class="open-date-cell"> {{element.journaled}}
+        </mat-cell>
+      </ng-container>
+      
       <!-- Realized Return Column -->
       <ng-container matColumnDef="return">
         <mat-header-cell class="return-cell" *matHeaderCellDef mat-sort-header>Realized Return</mat-header-cell>
