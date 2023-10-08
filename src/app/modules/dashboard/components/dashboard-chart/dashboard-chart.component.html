@@ -1,6 +1,9 @@
 <div class="dsh-img reports-chart dashboard-chart">
     <div class="p-3 nodata-text" *ngIf="isGoalChart && (!chart || chart === undefined)">
-        <div style="min-height: 342px">No Data Available for Chart</div>
+        <div style="min-height: 342px">
+            <p>No Data Available for Chart</p>
+            <p><img src="../../../../../assets/images/no-records.jpg" /></p>
+        </div>
         <div class="px-3 view-more text-right">
             Click <a routerLink="/import-trades-history" class="view-more cursor">here</a> to import your trades
         </div>
