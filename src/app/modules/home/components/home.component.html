@@ -35,8 +35,8 @@
                         <span>Trade Builder</span>
                     </a>
                 </li>
-                <li class="sidebar-item" [class.nav-active]="currentRoute == 'risk-analysis'">
-                    <a class="sidebar-link" [routerLink]="['/risk-analysis/']">
+                <li class="sidebar-item" [class.nav-active]="currentRoute == 'payoff-analyzer'">
+                    <a class="sidebar-link" [routerLink]="['/payoff-analyzer/']">
                         <mat-icon>insights</mat-icon>
                         <span>Payoff Analyzer</span>
                     </a>
@@ -55,8 +55,8 @@
                         <span>Import Trades</span>
                     </a>
                 </li>
-                <li class="sidebar-item" [class.nav-active]="currentRoute == 'trade-strategies'">
-                    <a class="sidebar-link" [routerLink]="['/trade-strategies/']" routerLinkActive="active">
+                <li class="sidebar-item" [class.nav-active]="currentRoute == 'positions'">
+                    <a class="sidebar-link" [routerLink]="['/positions/']" routerLinkActive="active">
                         <mat-icon>attach_money</mat-icon>
                         <span>Positions</span>
                     </a>
@@ -97,14 +97,14 @@
             </ul>
 
             <div class="sidebar-bottom">
-                <a class="bottom-link" [routerLink]="['/setttings']" [class.nav-active]="currentRoute == 'setttings'">
+                <a class="bottom-link" [routerLink]="['/settings']" [class.nav-active]="currentRoute == 'settings'">
                     <mat-icon class="nav-icon">settings</mat-icon>
                     <span>Settings</span>
                 </a>
-                <a class="bottom-link" href="javascript:void(0)" (click)="openContactUsModal()" [class.nav-active]="currentRoute == 'contact-us'">
+                <!-- <a class="bottom-link" href="javascript:void(0)" (click)="openContactUsModal()" [class.nav-active]="currentRoute == 'contact-us'">
                     <mat-icon class="nav-icon">phone</mat-icon>
                     <span>Contact Us</span>
-                </a>
+                </a> -->
             </div>
 
             <span class="menu-toggle cursor-pointer" (click)="sidebarToggle()">
@@ -141,22 +141,7 @@
                                 <label for="demoToggle"></label>
                               </div>
                         </span>
-                        <!-- <span class="top-nav-item pr-0" [class.nav-active]="currentRoute == 'setttings'">
-                            <a class="top-nav-link" [routerLink]="['/setttings/']">
-                                <mat-icon>settings</mat-icon>
-                            </a>
-                        </span> -->
-                        <!-- <span class="top-nav-item pl-0" [class.nav-active]="currentRoute == 'insights'">
-                            <a class="top-nav-link" [routerLink]="['/insights/']">
-                                <mat-icon>notifications_none</mat-icon>
-                                <span class="notification_count">{{notificationService.notificationCount}}</span>
-                        </a>
-                        </span>
-                        <span class="top-nav-item pr-0" [class.nav-active]="currentRoute == 'help'">
-                            <a class="top-nav-link" [routerLink]="['/help']">
-                                <mat-icon>help_outline</mat-icon>
-                            </a>
-                        </span> -->
+                       
                     </div>
                     <div class="login-img ml-3" (click)="logout()">
                         <span class="material-icons logout">logout</span>
@@ -177,14 +162,14 @@
                                 <span>Dashboard</span>
                             </a>
                         </li>
-                        <li class="sidebar-item" [class.nav-active]="currentRoute == 'trade-strategies'">
-                            <a class="sidebar-link" [routerLink]="['/trade-strategies/']">
+                        <li class="sidebar-item" [class.nav-active]="currentRoute == 'positions'">
+                            <a class="sidebar-link" [routerLink]="['/positions/']">
                                 <span>Portfolio</span>
                             </a>
                         </li>
         
-                        <li class="sidebar-item" [class.nav-active]="currentRoute == 'risk-analysis'">
-                            <a class="sidebar-link" [routerLink]="['/risk-analysis/']">
+                        <li class="sidebar-item" [class.nav-active]="currentRoute == 'payoff-analyzer'">
+                            <a class="sidebar-link" [routerLink]="['/payoff-analyzer/']">
                                 <span>Strategy Builder</span>
                             </a>
                         </li>
@@ -210,8 +195,8 @@
                                 <span>Rules</span>
                             </a>
                         </li>
-                        <li class="sidebar-item" [class.nav-active]="currentRoute == 'setttings'">
-                            <a class="sidebar-link" [routerLink]="['/setttings/']">
+                        <li class="sidebar-item" [class.nav-active]="currentRoute == 'settings'">
+                            <a class="sidebar-link" [routerLink]="['/settings/']">
                                 <span>Settings</span>
                             </a>
                         </li>
@@ -258,42 +243,6 @@
     </div>
     
 </div>
-
-<!-- Trade-Navbar-Mobile -->
-<!-- <nav class="mobile-bottom-nav">
-    <ul>
-        <li>
-            <a [routerLink]="['/dashboard/']" [class.nav-active]="currentRoute == 'dashboard'">
-                <mat-icon _ngcontent-moq-c1="" class="mat-icon notranslate material-icons mat-icon-no-color nav1" role="img" aria-hidden="true">dashboard</mat-icon>
-            </a>
-        </li>
-        <li>
-            <a [class.nav-active]="currentRoute == 'trade-strategies'" [routerLink]="['/trade-strategies']">
-                <mat-icon _ngcontent-moq-c1="" class="mat-icon notranslate material-icons mat-icon-no-color" role="img" aria-hidden="true">attach_money</mat-icon>
-            </a>
-        </li>
-        <li>
-            <a [class.nav-active]="currentRoute == 'strategy-comparison'" [routerLink]="['/strategy-comparison/']">
-                <mat-icon _ngcontent-moq-c1="" class="mat-icon notranslate material-icons mat-icon-no-color" role="img" aria-hidden="true">compare_arrows</mat-icon>
-            </a>
-        </li>
-        <li>
-            <a [class.nav-active]="currentRoute == 'risk-analysis'" [routerLink]="['/risk-analysis/']">
-                <mat-icon _ngcontent-moq-c1="" class="mat-icon notranslate material-icons mat-icon-no-color" role="img" aria-hidden="true">insights</mat-icon>
-            </a>
-        </li>
-        <li>
-            <a [class.nav-active]="currentRoute == 'trade-plan'" [routerLink]="['/trade-plans']">
-                <mat-icon _ngcontent-moq-c1="" class="mat-icon notranslate material-icons mat-icon-no-color" role="img" aria-hidden="true">note_add</mat-icon>
-            </a>
-        </li>
-        <li>
-            <a [class.nav-active]="currentRoute == 'reports'" [routerLink]="['/reports']">
-                <mat-icon _ngcontent-moq-c1="" class="mat-icon notranslate material-icons mat-icon-no-color" role="img" aria-hidden="true">pie_chart</mat-icon>
-            </a>
-        </li>
-    </ul>
-</nav> -->
 
 <div *ngIf="contactUsModal" class="modal-backdrop fade show"></div>
 <div class="modal contact-modal" [ngClass]="contactUsModal ? 'show' : ''"  tabindex="-1" aria-hidden="true">

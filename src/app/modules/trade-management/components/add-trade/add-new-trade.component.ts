@@ -384,7 +384,7 @@ export class AddNewTradeComponent implements OnInit {
     inputData.tradeStrategy = this.tradeStrategy;
     inputData.stockSummary = this.stockSummary;
     extras.state = inputData;
-    this.router.navigate(['/risk-analysis'], extras);
+    this.router.navigate(['/payoff-analyzer'], extras);
   }
 
   CheckExecutionDate(failedRules: RuleEvalResult[], source: string) {

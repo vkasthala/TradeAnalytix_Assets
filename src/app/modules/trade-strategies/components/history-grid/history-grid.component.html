@@ -72,6 +72,20 @@
         <mat-cell *matCellDef="let element" class="open-date-cell"> {{element.journaled}}
         </mat-cell>
       </ng-container>
+
+      <!-- Max Risk Column -->
+      <ng-container matColumnDef="maxLoss">
+        <mat-header-cell class="netR-cell" *matHeaderCellDef mat-sort-header>Max Risk</mat-header-cell>
+        <mat-cell *matCellDef="let element" class="netR-cell"> {{element.maxLoss | number:'1.0-0'}}
+        </mat-cell>
+      </ng-container>
+
+      <!-- Net R Column -->
+      <ng-container matColumnDef="netR">
+        <mat-header-cell class="netR-cell" *matHeaderCellDef mat-sort-header>Net R</mat-header-cell>
+        <mat-cell *matCellDef="let element" class="netR-cell"> {{element.netR}}
+        </mat-cell>
+      </ng-container>
       
       <!-- Realized Return Column -->
       <ng-container matColumnDef="return">

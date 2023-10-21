@@ -61,11 +61,11 @@ const routes: Routes = [
           component: ImportTradesComponent
         },
         {
-          path : 'risk-analysis',
+          path : 'payoff-analyzer',
           component : RiskAnalysisComponent
         },
         {
-          path : 'trade-strategies',
+          path : 'positions',
           component: TradeStrategiesComponent
         },
         {
@@ -81,7 +81,7 @@ const routes: Routes = [
           component: ReportsComponent
         },
         {
-          path : 'setttings',
+          path : 'settings',
           component: SettingsComponent
         },
         {

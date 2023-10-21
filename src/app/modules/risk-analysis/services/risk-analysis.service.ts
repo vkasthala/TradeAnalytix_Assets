@@ -12,7 +12,7 @@ import { MaxRiskDetails } from '../models/max-risk-details.model';
 })
 export class RiskAnalysisService {
 
-  private apiUrl = environment.apiUrl + "/risk-analysis";
+  private apiUrl = environment.apiUrl + "/payoff-analyzer";
 
   constructor(private httpService: HttpService) { }
 

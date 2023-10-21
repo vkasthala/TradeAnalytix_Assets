@@ -31,7 +31,7 @@ export class HistoryGrid implements AfterViewInit, OnInit {
 
   protected Loader = false;
   expandIndex: any;
-  displayedColumns = ['action', 'stockName', 'id', 'openDate', 'closeDate', 'strategy', 'direction', 'journaled', 'return', 'tags'];
+  displayedColumns = ['action', 'stockName', 'id', 'openDate', 'closeDate', 'strategy', 'direction', 'journaled', 'netR', 'maxLoss', 'return', 'tags'];
   pageSize: number = 20
 
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
@@ -174,5 +174,15 @@ export class HistoryGrid implements AfterViewInit, OnInit {
     // this.expandedIndex[index] = !this.expandedIndex[index];
     this.hideRuleContent[index] = !this.hideRuleContent[index];
   }
+
+  getPageSizes(): number[] {
+    if (this.historyDataSource && this.historyDataSource.length > 0) {
+      return [5, 10, 20, this.historyDataSource.length];
+    }
+    else {
+     return [5, 10, 20];
+    }
+  }
+
 
 }

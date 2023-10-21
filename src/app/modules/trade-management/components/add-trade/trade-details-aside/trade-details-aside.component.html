@@ -16,17 +16,17 @@
                 {{tradeStrategy.closeDate | date: 'dd-MMM-yyyy'}}
             </div>
         </div>
-        <div class="d-flex mb-1 align-items-center" *ngIf="tradeStatus !== 2">
+        <!-- <div class="d-flex mb-1 align-items-center" *ngIf="tradeStatus !== 2">
             <label class="col-form-label">Stoploss Range</label>
             <div class="col-9 col-form-value">
                 <div class="d-flex align-items-center">
                     <span class="col-6 pl-0">{{(strategySummaryResult.minStopLoss ? strategySummaryResult.minStopLoss +
                         ' - ' : '')}} {{strategySummaryResult.maxStopLoss ? strategySummaryResult.maxStopLoss :
                         ''}}</span>
-                    <!-- <a class="add-new cursor" (click)="Edit()">Edit</a> -->
+                    <a class="add-new cursor" (click)="Edit()">Edit</a>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="d-flex mb-1 align-items-center">
             <label class="col-form-label">Maximum Risk</label>
             <div class="col-form-value">
