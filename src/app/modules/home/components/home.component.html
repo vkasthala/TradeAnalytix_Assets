@@ -9,13 +9,13 @@
 
         <nav class="trade-navbar">
             
-            <div class="home-link">
+            <!-- <div class="home-link">
                 <a [routerLink]="['/dashboard/']" [class.nav-active]="currentRoute === ''">
                     <img src="../../../../assets/images/home_r.svg" class="nav-icon nav-icon-md"> 
                     <img src="../../../../assets/images/home.svg" class="nav-icon nav-icon-md nav-icon_r"> 
                     <span>Home</span>
                 </a>
-            </div>
+            </div> -->
 
             <div class="parent-item">
                 <img src="../../../../assets/images/plan_r.svg" class="nav-icon nav-icon-md">
@@ -35,12 +35,12 @@
                         <span>Trade Builder</span>
                     </a>
                 </li>
-                <li class="sidebar-item" [class.nav-active]="currentRoute == 'payoff-analyzer'">
+                <!-- <li class="sidebar-item" [class.nav-active]="currentRoute == 'payoff-analyzer'">
                     <a class="sidebar-link" [routerLink]="['/payoff-analyzer/']">
                         <mat-icon>insights</mat-icon>
                         <span>Payoff Analyzer</span>
                     </a>
-                </li>
+                </li> -->
             </ul>
 
             <div class="parent-item">
@@ -62,12 +62,12 @@
                     </a>
                 </li>
                 
-                <li class="sidebar-item" [class.nav-active]="currentRoute == 'bulk-update'">
+                <!-- <li class="sidebar-item" [class.nav-active]="currentRoute == 'bulk-update'">
                     <a class="sidebar-link" [routerLink]="['/bulk-update/']">
                         <mat-icon>update</mat-icon>
                         <span>Bulk Journal</span>
                     </a>
-                </li>
+                </li> -->
             </ul>
 
             <div class="parent-item">
@@ -82,12 +82,12 @@
                         <span>Reports</span>
                     </a>
                 </li>
-                <li class="sidebar-item" [class.nav-active]="currentRoute == 'insights'">
+                <!-- <li class="sidebar-item" [class.nav-active]="currentRoute == 'insights'">
                     <a class="sidebar-link" [routerLink]="['/insights/']">
                         <mat-icon>insights</mat-icon>
                         <span>Insights</span>
                     </a>
-                </li>
+                </li> -->
                 <li class="sidebar-item" [class.nav-active]="currentRoute == 'rules'">
                     <a class="sidebar-link" [routerLink]="['/rules/']">
                         <mat-icon>rule</mat-icon>
@@ -97,10 +97,10 @@
             </ul>
 
             <div class="sidebar-bottom">
-                <a class="bottom-link" [routerLink]="['/settings']" [class.nav-active]="currentRoute == 'settings'">
+                <!-- <a class="bottom-link" [routerLink]="['/settings']" [class.nav-active]="currentRoute == 'settings'">
                     <mat-icon class="nav-icon">settings</mat-icon>
                     <span>Settings</span>
-                </a>
+                </a> -->
                 <!-- <a class="bottom-link" href="javascript:void(0)" (click)="openContactUsModal()" [class.nav-active]="currentRoute == 'contact-us'">
                     <mat-icon class="nav-icon">phone</mat-icon>
                     <span>Contact Us</span>
@@ -140,6 +140,11 @@
                                 <input type="checkbox" [(ngModel)]="demoToggle" (change)="demoMsg()" id="demoToggle" class="cursor" [checked]="demoToggle" />
                                 <label for="demoToggle"></label>
                               </div>
+                        </span>
+                        <span class="top-nav-item pr-0" [class.nav-active]="currentRoute == 'setttings'">
+                            <a class="top-nav-link" [routerLink]="['/settings/']">
+                                <mat-icon>settings</mat-icon>
+                            </a>
                         </span>
                        
                     </div>
