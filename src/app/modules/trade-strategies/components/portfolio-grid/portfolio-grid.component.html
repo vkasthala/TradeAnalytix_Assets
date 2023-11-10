@@ -65,6 +65,8 @@
       <ng-container matColumnDef="journaled">
         <mat-header-cell class="open-date-cell" *matHeaderCellDef mat-sort-header>Journaled</mat-header-cell>
         <mat-cell *matCellDef="let element" class="open-date-cell"> {{element.journaled}}
+          <mat-icon *ngIf="" class="mat-icon-sm text-success">check</mat-icon>
+          <mat-icon *ngIf="" class="mat-icon-sm text-danger">close</mat-icon>
         </mat-cell>
       </ng-container>
 
@@ -87,8 +89,7 @@
         <mat-header-cell class="return-cell" *matHeaderCellDef mat-sort-header>Realized Return</mat-header-cell>
         <mat-cell class="return-cell" *matCellDef="let element"> 
           {{element.returnAmount}} 
-          <mat-icon class="mat-icon-sm text-success">check</mat-icon>
-          <mat-icon class="mat-icon-sm text-danger">close</mat-icon>
+          
         </mat-cell>
       </ng-container>
       
