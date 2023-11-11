@@ -107,10 +107,10 @@
                 </a> -->
             </div>
 
-            <span class="menu-toggle cursor-pointer" (click)="sidebarToggle()">
+            <!-- <span class="menu-toggle cursor-pointer" (click)="sidebarToggle()">
                 <mat-icon *ngIf="!isExpand">arrow_back</mat-icon>
                 <mat-icon *ngIf="isExpand">arrow_forward</mat-icon>
-            </span>
+            </span> -->
         </nav>
 
         
@@ -145,6 +145,13 @@
                             <a class="top-nav-link" [routerLink]="['/settings/']">
                                 <mat-icon>settings</mat-icon>
                             </a>
+                        </span>
+
+                        <span class="top-nav-item pl-0" [class.nav-active]="currentRoute == 'insights'">
+                            <a class="top-nav-link" [routerLink]="['/insights/']">
+                                <mat-icon>notifications_none</mat-icon>
+                                <span class="notification_count">{{notificationService.notificationCount}}</span>
+                        </a>
                         </span>
                        
                     </div>
