@@ -3,26 +3,16 @@
     <table class="mt-3 mat-table">
         <thead>
             <tr class="mat-header-row">
-                <th class="mat-header-cell"></th>
-                <th class="mat-header-cell">Parameter</th>
-                <th class="mat-header-cell">Condition</th>
+                <th class="mat-header-cell">Trading Rule</th>
+                <!-- <th class="mat-header-cell">Condition</th> -->
                 <th class="mat-header-cell value-cell">Value</th>
                 <th class="mat-header-cell action-cell">Action</th>
             </tr>
         </thead>
         <tbody>
             <tr class="mat-header-row" *ngFor="let coderule of portfolioLevelRules">
-                <td class="mat-cell">
-                    <span class="cursor position-relative">
-                        <input type="checkbox" name="rule" class="checkbox checkbox-custom"
-                            [checked]="coderule.id && coderule.id !== null && coderule.id > 0"
-                            [(ngModel)]="coderule.checked" (change)="onRuleSelectionChange(coderule)" />
-                        <span [ngClass]="coderule.checked ? 'disabled-text' : 'add-new'">{{coderule.checked ? 'Disable'
-                            : 'Enable' }}</span>
-                    </span>
-                </td>
                 <td class="mat-cell">{{coderule.uiLabel}}</td>
-                <td class="mat-cell">{{coderule.uiLabel !== 'Daily trading plan creation' ? 'Less Than' : ''}}</td>
+                <!-- <td class="mat-cell">{{coderule.uiLabel !== 'Daily trading plan creation' ? 'Less Than' : ''}}</td> -->
                 <td class="mat-cell value-cell">
                     <span class="d-flex align-items-center" *ngIf="coderule.uiLabel !== 'Daily trading plan creation'">
                         <input type="text" class="form-control col-5" [ngClass]="!coderule.editing ? 'disabled' : ''"
@@ -34,9 +24,25 @@
                             *ngIf="coderule.editing">close</mat-icon>
                     </span>
                 </td>
-                <td class="mat-cell action-cell"><mat-icon class="mat-icon-sm mat-icon-edit"
-                        (click)="onRowEdit(coderule)" *ngIf="coderule.uiLabel !== 'Daily trading plan creation'">edit
-                    </mat-icon></td>
+                <td class="mat-cell action-cell">
+                    <span class="cursor text-link mr-2"
+                        (click)="activateRule(coderule)" *ngIf="coderule.uiLabel !== 'Daily trading plan creation'">Activate
+                    </span>
+                    <!-- <span class="cursor text-link"
+                        (click)="onRowEdit(coderule)" *ngIf="coderule.uiLabel !== 'Daily trading plan creation'">Activate
+                    </span> -->
+                    <span class="cursor position-relative">
+                            <!-- <input type="checkbox" name="rule" class="checkbox checkbox-custom"
+                                [checked]="coderule.id && coderule.id !== null && coderule.id > 0"
+                                [(ngModel)]="coderule.checked" (change)="onRuleSelectionChange(coderule)" />
+                            <span [ngClass]="coderule.checked ? 'disabled-text' : 'add-new'">{{coderule.checked ? 'Disable'
+                                : 'Enable' }}</span> -->
+                            <input type="checkbox" name="rule" class="checkbox checkbox-custom"
+                                [checked]="coderule.id && coderule.id !== null && coderule.id > 0"
+                            [(ngModel)]="coderule.checked" (change)="onCheckBoxChange(coderule)" />
+                            <span class="disabled-text" *ngIf="coderule.val">Disable</span>
+                        </span>
+                    </td>
             </tr>
         </tbody>
     </table>

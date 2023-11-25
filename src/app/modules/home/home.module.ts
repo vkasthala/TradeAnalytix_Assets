@@ -173,6 +173,8 @@ import { RateExperienceDialogComponent } from '../trade-plan/components/rate-exp
 import { CalendarComponentTradeplan } from '../reports/components/calendar-tradeplan/calendar-tradeplan.component';
 import { ZerodhaInstructionsComponent } from '../import-trades-history/zerodha-instructions/zerodha-instructions.component';
 import { RobinhoodInstructionsComponent } from '../import-trades-history/robinhood-instructions/robinhood-instructions.component';
+import { ActivateRuleModalComponent } from '../settings/components/activate-rule-modal/activate-rule-modal.component';
+import { DisableeRuleModalComponent } from '../settings/components/disable-rule-modal/disable-rule-modal.component';
 
 export const MY_FORMATS = {
   parse: {
@@ -341,7 +343,9 @@ export const MY_FORMATS = {
     AutoImportTradeComponent,
     RateExperienceDialogComponent,
     ZerodhaInstructionsComponent,
-    RobinhoodInstructionsComponent
+    RobinhoodInstructionsComponent,
+    ActivateRuleModalComponent,
+    DisableeRuleModalComponent
   ],
   imports: [
     FormsModule,
@@ -439,7 +443,9 @@ export const MY_FORMATS = {
     AutoImportTradeComponent,
     RateExperienceDialogComponent,
     ZerodhaInstructionsComponent,
-    RobinhoodInstructionsComponent
+    RobinhoodInstructionsComponent,
+    ActivateRuleModalComponent,
+    DisableeRuleModalComponent
   ],
   // bootstrap: [TradeStrategiesGrid],
   providers: [
