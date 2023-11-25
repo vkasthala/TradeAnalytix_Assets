@@ -16,9 +16,11 @@
               <input class="form-control disabled" placeholder="" type="text" [(ngModel)]='value' />
             </div>
           </div> -->
-          <p class="mb-0">As a result of deactivating this trading rule, your trades will no longer be checked
+          <p class="mb-0" *ngIf="jsonData.ruleType === 1">As a result of deactivating this trading rule, your trades will no longer be checked
             against this rule going forward. 
             Notifications will NOT be issued when the trading rule is broken.</p>
+
+            <p class="mb-0" *ngIf="jsonData.ruleType === 2">As a result of deactivating this trading rule, your account will no longer be checked against this rule going forward. Notifications will NOT be issued when the trading rule is broken.</p>
         </div>
 
         <div class="px-3 py-2 text-right">

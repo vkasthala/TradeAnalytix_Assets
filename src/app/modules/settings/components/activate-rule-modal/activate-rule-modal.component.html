@@ -10,15 +10,17 @@
       <div class="main-pop-inner">
           <p>{{jsonData.uiLabel }} the amount stated below</p>
 
-          <div class="d-flex justify-content-center align-items-center">
+          <div class="d-flex justify-content-center align-items-center" *ngIf="jsonData.uiLabel !== 'A trading plan should be created everyday'">
             <label class="col-form-label px-3">Enter the amount</label>
             <div class="form-group">
               <input class="form-control" placeholder="" type="text" [(ngModel)]='value' />
             </div>
           </div>
-          <p class="mt-3 mb-0">As a result of activating this trading rule, your trades will be checked against 
+          <p class="mt-3 mb-0" *ngIf="jsonData.ruleType === 1">As a result of activating this trading rule, your trades will be checked against 
             this rule going forward and indicated as aligned or broken. 
             Notifications will be issued when the trading rule is broken.</p>
+
+          <p class="mt-3 mb-0" *ngIf="jsonData.ruleType === 2">As a result of activating this trading rule, your account will be checked against this rule going forward and notifications are issued when the trading rule is broken.</p>
         </div>
 
         <div class="px-3 py-2 text-right">
