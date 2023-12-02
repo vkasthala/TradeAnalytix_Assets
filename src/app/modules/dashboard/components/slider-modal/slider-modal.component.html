@@ -161,7 +161,7 @@
     </div>
 </div>
 
-<div class="compare-popup left-pointer-modal risk-analysis-slider" *ngIf="currentInd == 4">
+<!-- <div class="compare-popup left-pointer-modal risk-analysis-slider" *ngIf="currentInd == 4">
     <div class="compare-pop-inner">
         <div class="slider-header">
             <h3 class="slider-title">Payoff Analyzer</h3>
@@ -180,9 +180,9 @@
             <button type="button" class="btn btn-next" (click)="nextSlide()">Next</button>
         </div>
     </div>
-</div>
+</div> -->
 
-<div class="compare-popup left-pointer-modal import-trade-slider" *ngIf="currentInd == 5">
+<div class="compare-popup left-pointer-modal import-trade-slider" *ngIf="currentInd == 4">
     <div class="compare-pop-inner">
         <div class="slider-header">
             <h3 class="slider-title">Import Trades</h3>
@@ -203,7 +203,7 @@
     </div>
 </div>
 
-<div class="compare-popup left-pointer-modal trade-book" *ngIf="currentInd == 6">
+<div class="compare-popup left-pointer-modal trade-book" *ngIf="currentInd == 5">
     <div class="compare-pop-inner">
         <div class="slider-header">
             <h3 class="slider-title">Positions</h3>
@@ -223,7 +223,7 @@
         </div>
     </div>
 </div>
-<div class="compare-popup left-pointer-modal bulkUpdate" *ngIf="currentInd == 7">
+<!-- <div class="compare-popup left-pointer-modal bulkUpdate" *ngIf="currentInd == 7">
     <div class="compare-pop-inner">
         <div class="slider-header">
             <h3 class="slider-title">Bulk Journal</h3>
@@ -242,9 +242,9 @@
             <button type="button" class="btn btn-next" (click)="nextSlide()">Next</button>
         </div>
     </div>
-</div>
+</div> -->
 
-<div class="compare-popup left-pointer-modal reports-slider" *ngIf="currentInd == 8">
+<div class="compare-popup left-pointer-modal reports-slider" *ngIf="currentInd == 6">
     <div class="compare-pop-inner">
         <div class="slider-header">
             <h3 class="slider-title">Reports</h3>
@@ -264,27 +264,8 @@
         </div>
     </div>
 </div>
-<div class="compare-popup left-pointer-modal trade-plane-slider" *ngIf="currentInd == 9">
-    <div class="compare-pop-inner">
-        <div class="slider-header">
-            <h3 class="slider-title">Insights</h3>
-            <span class="right-close" (click)="closeModal()">
-                <mat-icon>clear</mat-icon>
-            </span>
-        </div>
-        <div class="main-pop-inner">
-            <div class="slider-description mb-1">
-                Gain valuable insights on your trades.
-            </div>
-        </div>
 
-        <div class="modal-footer py-1 justify-content-center">
-            <button type="button" class="btn btn-white" (click)="priviousSlide()">Previous</button>
-            <button type="button" class="btn btn-next" (click)="nextSlide()">Next</button>
-        </div>
-    </div>
-</div>
-<div class="compare-popup left-pointer-modal trading-rules-slider" *ngIf="currentInd == 10">
+<div class="compare-popup left-pointer-modal trading-rules-slider" *ngIf="currentInd == 7">
     <div class="compare-pop-inner">
         <div class="slider-header">
             <h3 class="slider-title">Trading Rules</h3>
@@ -295,6 +276,26 @@
         <div class="main-pop-inner">
             <div class="slider-description mb-1">
                 Establish trading rules or guidelines that you want all your trades to follow.
+            </div>
+        </div>
+
+        <div class="modal-footer py-1 justify-content-center">
+            <button type="button" class="btn btn-white" (click)="priviousSlide()">Previous</button>
+            <button type="button" class="btn btn-next" (click)="nextSlide()">Next</button>
+        </div>
+    </div>
+</div>
+<div class="compare-popup top-pointer-modal insights-slider" *ngIf="currentInd == 8">
+    <div class="compare-pop-inner">
+        <div class="slider-header">
+            <h3 class="slider-title">Insights</h3>
+            <span class="right-close" (click)="closeModal()">
+                <mat-icon>clear</mat-icon>
+            </span>
+        </div>
+        <div class="main-pop-inner">
+            <div class="slider-description mb-1">
+                Gain valuable insights on your trades.
             </div>
         </div>
 
@@ -324,7 +325,7 @@
         </div>
     </div>
 </div> -->
-<div class="compare-popup left-pointer-modal data-setup-slider" *ngIf="currentInd == 11">
+<div class="compare-popup top-pointer-modal demo-tour-slider" *ngIf="currentInd == 9">
     <div class="compare-pop-inner">
         <div class="slider-header">
             <h3 class="slider-title">Settings</h3>

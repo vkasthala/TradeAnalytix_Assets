@@ -5,7 +5,7 @@
     <ul class="custom_dates">
         <li *ngFor="let date of calendarDates">
                 <span class="" [ngClass]="{'default_day' : date.day, 'working_day' : date.tradePlanCreated == 'true',  'negitive_return' : date.tradePlanCreated == 'false' }">{{date.day}}</span>
-                <mat-icon *ngIf="date.tradePlanCreated == 'true'" [style.color]="date.tradePlanAligned ? 'green' : 'gray'" [ngClass]="date.tradePlanAligned ? 'calendar-check-icon' : 'calendar-close-icon'">{{ date.tradePlanAligned ? 'check_circle' : 'cancel'}}</mat-icon>
+                <span class="align-text" *ngIf="date.tradePlanCreated == 'true'" [style.color]="date.tradePlanAligned ? 'green' : 'gray'" [ngClass]="date.tradePlanAligned ? '' : ''">{{ date.tradePlanAligned ? 'Aligned' : 'Not Aligned'}}</span>
         </li>
         
     </ul>

@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { CalReportDayData } from '../../model/cal-report-day-data.model';
 import { ReportDataService } from '../../services/report-data.service';
 
@@ -12,11 +13,18 @@ export class CalendarComponent implements OnInit, AfterViewInit {
   calendarDays: any[] = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
   calendarDates: CalReportDayData[] = [];
+  isUsInstances: boolean | undefined;
 
-  constructor(private reportDataService: ReportDataService) { }
+  constructor(private reportDataService: ReportDataService, private _route: ActivatedRoute) { 
+    
+
+  }
 
   ngOnInit() {
-
+    const hostname:any = window.location.hostname;
+    if(hostname === 'us.cuetrade.io') {
+      this.isUsInstances = true;
+    }
   }
 
   ngAfterViewInit(): void {

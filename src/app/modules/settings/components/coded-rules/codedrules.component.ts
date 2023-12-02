@@ -12,6 +12,8 @@ import { ManageRulePopupComponent } from '../managerules/manage-rule-popup/manag
 import { ManagerulesComponent } from '../managerules/managerules.component';
 import { MatDialog, MatSort } from '@angular/material';
 import { EntryExitRule } from '../../models/entry-exit-rules.model';
+import { ActivateRuleModalComponent } from '../activate-rule-modal/activate-rule-modal.component';
+import { DisableeRuleModalComponent } from '../disable-rule-modal/disable-rule-modal.component';
 
 
 @Component({
@@ -82,6 +84,21 @@ export class CodedRulesComponent implements OnInit {
   }
 
   onRowEdit(element: UserCodedRule) {
+    const dialogRef = this._dialog.open(ActivateRuleModalComponent, {
+      width: 'auto',
+      height: 'auto',
+      data: element
+    });
+    dialogRef.afterClosed().subscribe((res) => {
+      if (res) {
+        // this.dashboardService.reportIssue(this.createUserComment(res)).subscribe(res => {
+        //   this.toastr.info("Issue submitted");
+        // });
+        element.val = res;
+      }
+    });
+
+
     console.log(element);
     element.editing = true;
     element.tempVal = element.val ? element.val : element.defaultValue;
@@ -238,6 +255,43 @@ export class CodedRulesComponent implements OnInit {
         closeButton:true,
         disableTimeOut: true
       });
+    });
+  }
+
+  activateRule(element: UserCodedRule) {
+    const dialogRef = this._dialog.open(ActivateRuleModalComponent, {
+      width: 'auto',
+      height: 'auto',
+      data: element
+    });
+    dialogRef.afterClosed().subscribe((res) => {
+      if (res) {
+        element.val = res;
+        this.addOrUpdateRule(element);
+      }
+    });
+    console.log(element);
+    element.tempVal = element.val ? element.val : element.defaultValue;
+  }
+
+  onCheckBoxChange(rule: UserCodedRule) {
+    if (rule.checked) {
+      this.onDisableRule(rule);
+    } else if (rule.id && rule.id > 0) {
+      this.onDisableRule(rule);
+    }
+  }
+
+  onDisableRule(rule: UserCodedRule) {
+    const dialogRef = this._dialog.open(DisableeRuleModalComponent, {
+      width: 'auto',
+      height: 'auto',
+      data: rule
+    });
+    dialogRef.afterClosed().subscribe((res) => {
+      if (res) {
+        this.deleteCodedRule(rule);
+      }
     });
   }
 

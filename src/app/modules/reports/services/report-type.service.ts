@@ -193,11 +193,11 @@ export class ReportTypeService {
     reportSubType.reportDetailList = [new ReportDetails('discipline_trade_type', 'Realized Return by Planned Trades', ReportCategory.Discipline, "This report shows the realized return and win-rate of the planned trades")];
     reportSubTypes.push(reportSubType);
 
-    reportSubType = new ReportSubType();
-    reportSubType.name = 'Trade Plan Compliance';
-    reportSubType.id = "discipline_compliance";
-    reportSubType.reportDetailList = [new ReportDetails('discipline_netreturn', 'Net Return by Trade Plan Compliance', ReportCategory.Discipline, "This report illustrates the importance of creating a trade plan by showing the realized return on the days trade plan was created"), new ReportDetails('discipline_winrate', 'Win Rate by Trade Plan Compliance', ReportCategory.Discipline, "This report illustrates the importance of creating a trade plan by showing the realized return on the days trade plan was created")];
-    reportSubTypes.push(reportSubType);
+    // reportSubType = new ReportSubType();
+    // reportSubType.name = 'Trade Plan Compliance';
+    // reportSubType.id = "discipline_compliance";
+    // reportSubType.reportDetailList = [new ReportDetails('discipline_netreturn', 'Net Return by Trade Plan Compliance', ReportCategory.Discipline, "This report illustrates the importance of creating a trade plan by showing the realized return on the days trade plan was created"), new ReportDetails('discipline_winrate', 'Win Rate by Trade Plan Compliance', ReportCategory.Discipline, "This report illustrates the importance of creating a trade plan by showing the realized return on the days trade plan was created")];
+    // reportSubTypes.push(reportSubType);
 
     reportSubType = new ReportSubType();
     reportSubType.name = 'Trade Plan Calendar';
