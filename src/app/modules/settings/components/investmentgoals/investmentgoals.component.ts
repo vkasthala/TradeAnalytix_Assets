@@ -4,6 +4,8 @@ import { IMyDateRangeModel } from 'mydaterangepicker';
 import { GoalsService } from '../../services/goals.service';
 import { InvestmentGoals } from '../../models/investment-goals.model';
 import { ToastrService } from 'ngx-toastr';
+import { ConfirmDialogComponent } from 'src/app/modules/shared/components/modals/confirm-dialog/confirm-dialog.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-investmentgoals',
@@ -24,7 +26,9 @@ export class InvestmentGoalsComponent implements OnInit {
   constructor(
     private toastr: ToastrService,
     private router: Router,
-    private goalsService: GoalsService) {
+    private goalsService: GoalsService,
+    private _dialog: MatDialog
+    ) {
   }
   step = 0;
 
@@ -70,9 +74,21 @@ export class InvestmentGoalsComponent implements OnInit {
   }
 
   deleteinvestmentGoal(goal: InvestmentGoals) {
-    this.goalsService.deleteInvestmentGoals(goal).subscribe((data: []) => {
-      this.GoalsList = data;
+    const dialogRef = this._dialog.open(ConfirmDialogComponent, {
+      width: 'auto',
+      height: 'auto',
+      data: { 'message': 'Are you sure you want to delete Goal?' }
     });
+
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      if (dialogResult == true) {
+        this.goalsService.deleteInvestmentGoals(goal).subscribe((data: []) => {
+          this.GoalsList = data;
+        });
+      }
+    });
+    
+    
   }
 
   createGoalsEntry() {

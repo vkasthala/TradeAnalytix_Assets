@@ -219,7 +219,7 @@ export class AddNewTradeComponent implements OnInit {
       if (this.tradeStrategy.statusId === 4) {
         this.router.navigateByUrl("/trade-builder");
       } else {
-        this.router.navigateByUrl("/trade-strategies");
+        this.router.navigateByUrl("/positions");
       }
       this.Loader = !this.Loader;
     },
@@ -238,7 +238,7 @@ export class AddNewTradeComponent implements OnInit {
     this.updateTradeStrategyProps(source);
     this.tradeStrategyService.updateClosedTrade(this.tradeStrategy).subscribe(result => {
       this.toastr.success('Trade strategy has been updated.', 'Success');
-      this.router.navigateByUrl("/trade-strategies");
+      this.router.navigateByUrl("/positions");
       this.Loader = !this.Loader;
     },
       err => {
@@ -264,7 +264,7 @@ export class AddNewTradeComponent implements OnInit {
     }
     this.tradeStrategyService.closeTrade(this.tradeStrategy).subscribe(result => {
       this.toastr.success('Trade strategy closed', 'Success');
-      this.router.navigateByUrl("/trade-strategies");
+      this.router.navigateByUrl("/positions");
       this.Loader = !this.Loader;
     },
       err => {
@@ -286,7 +286,7 @@ export class AddNewTradeComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(dialogResult => {
       if (dialogResult == true) {
-        this.router.navigateByUrl("/trade-strategies");
+        this.router.navigateByUrl("/positions");
       }
     });
   }
