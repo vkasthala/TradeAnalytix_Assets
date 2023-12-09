@@ -49,22 +49,22 @@
 
       <!-- strategy Column -->
       <ng-container matColumnDef="strategy">
-        <mat-header-cell class="open-date-cell" *matHeaderCellDef mat-sort-header>Strategy</mat-header-cell>
-        <mat-cell class="open-date-cell" *matCellDef="let element"> {{element.strategy}}
+        <mat-header-cell class="strategy-cell" *matHeaderCellDef mat-sort-header>Strategy</mat-header-cell>
+        <mat-cell class="strategy-cell" *matCellDef="let element"> {{element.strategy}}
         </mat-cell>
       </ng-container>
 
       <!-- Direction Column -->
       <ng-container matColumnDef="direction">
-        <mat-header-cell class="open-date-cell" *matHeaderCellDef mat-sort-header>Direction</mat-header-cell>
-        <mat-cell *matCellDef="let element" class="open-date-cell"> {{element.direction}}
+        <mat-header-cell class="direction-cell" *matHeaderCellDef mat-sort-header>Direction</mat-header-cell>
+        <mat-cell *matCellDef="let element" class="direction-cell"> {{element.direction}}
         </mat-cell>
       </ng-container>
 
       <!-- Journaled Column -->
       <ng-container matColumnDef="journaled">
-        <mat-header-cell class="open-date-cell" *matHeaderCellDef mat-sort-header>Journaled</mat-header-cell>
-        <mat-cell *matCellDef="let element" class="open-date-cell"> 
+        <mat-header-cell class="journal-cell" *matHeaderCellDef mat-sort-header>Journaled</mat-header-cell>
+        <mat-cell *matCellDef="let element" class="journal-cell"> 
           <mat-icon class="mat-icon-sm text-success" *ngIf="element.isJournaled === 1">check</mat-icon>
           <mat-icon class="mat-icon-sm text-danger" *ngIf="element.isJournaled === 0">close</mat-icon>
         </mat-cell>

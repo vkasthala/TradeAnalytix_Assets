@@ -42,6 +42,12 @@
                     <mat-cell *matCellDef="let element"> {{element.fileName}} </mat-cell>
                 </ng-container>
 
+                <!-- Status Column -->
+                <ng-container matColumnDef="status">
+                    <mat-header-cell class="status-cell" *matHeaderCellDef mat-sort-header>Status</mat-header-cell>
+                    <mat-cell *matCellDef="let element" class="text-success status-cell"> In Progress </mat-cell>
+                </ng-container>
+
                 <!-- Uploaded Records Column -->
                 <ng-container matColumnDef="direction">
                     <mat-header-cell class="records-cell" *matHeaderCellDef mat-sort-header>Uploaded Records</mat-header-cell>
@@ -49,7 +55,7 @@
                 </ng-container>
 
                 <!-- Failed Records Column -->
-                <ng-container matColumnDef="status">
+                <ng-container matColumnDef="failedRecords">
                     <mat-header-cell class="records-cell" *matHeaderCellDef mat-sort-header>Failed Records</mat-header-cell>
                     <mat-cell *matCellDef="let element" class="text-danger records-cell"> {{element.failedRecords}} </mat-cell>
                 </ng-container>

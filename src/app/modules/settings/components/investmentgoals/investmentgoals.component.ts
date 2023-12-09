@@ -77,12 +77,13 @@ export class InvestmentGoalsComponent implements OnInit {
     const dialogRef = this._dialog.open(ConfirmDialogComponent, {
       width: 'auto',
       height: 'auto',
-      data: { 'message': 'Are you sure you want to delete Goal?' }
+      data: { 'message': 'Are you sure you want to delete the goal?' }
     });
 
     dialogRef.afterClosed().subscribe(dialogResult => {
       if (dialogResult == true) {
         this.goalsService.deleteInvestmentGoals(goal).subscribe((data: []) => {
+          this.toastr.success('Goal has been deleted', 'Success');
           this.GoalsList = data;
         });
       }

@@ -31,7 +31,7 @@ import { AutoImportTradeComponent } from './auto-import-trade/auto-import-trade.
 export class ImportTradesHistory implements AfterViewInit, OnInit {
   selectedFiles: FileList;
   expandIndex: any;
-  displayedColumns = ['openDate', 'stockName', 'direction', 'status', 'action'];
+  displayedColumns = ['openDate', 'stockName', 'status', 'direction', 'failedRecords', 'action'];
   pageSize: number = 20
   importType:number = 1;
 
@@ -215,6 +215,7 @@ export class ImportTradesHistory implements AfterViewInit, OnInit {
     }else {
       this.importTradesGridService.loadImportTrades(this.importTradesGridRequest).subscribe(result => {
         if (result) {
+          debugger;
           localStorage.setItem('importTradesGridData', JSON.stringify(result.rows));
           this.dataSource =JSON.parse(localStorage.getItem('importTradesGridData'));
           this.dataSource.totalCount = result.totalCount;

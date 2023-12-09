@@ -169,6 +169,7 @@ export class TradeDetailsAsideComponent implements OnInit {
     this.tradeStrategyService.updateMaxRisk(riskUpdateRequest).subscribe(result => {
       console.log('max risk updated successfully for strategy:', this.tradeStrategy.id);
       this.riskEditing = false;
+      this.strategySummaryResult.netR = this.strategySummaryResult.realizedReturn/this.userDefinedRisk;
       this.strategySummaryResult.maxLoss = this.userDefinedRisk;
       this.tradeStrategy.userMaxRisk = riskUpdateRequest.maxRisk;
     });
