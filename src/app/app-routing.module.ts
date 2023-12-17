@@ -8,6 +8,8 @@ import { SupportComponent } from './modules/support/support.component';
 import { TermsAndConditionsComponent } from './modules/terms-conditions/components/terms-conditions.component';
 import { TradeBookComponent } from './modules/tradebook/tradebook.component';
 import { ZerodhaComponent } from './modules/zerodha/zerodha.component';
+import { OauthRedirectComponent } from './modules/utilities/components/oauth-redirect/oauth-redirect.component';
+import { AuthGuard } from './modules/shared/services/auth/auth.guard';
 
 const routes: Routes = [
   {
@@ -40,8 +42,13 @@ const routes: Routes = [
     component : PrivacyPolicyComponent
   },
   {
+    path: 'oauth-redirect',
+    component: OauthRedirectComponent
+  },
+  {
     path : '',
-    loadChildren : './modules/home/home.module#HomeModule'
+    loadChildren : './modules/home/home.module#HomeModule',
+    canActivate:[AuthGuard]
   },
   {
     path : '**',

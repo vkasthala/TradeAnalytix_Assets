@@ -12,6 +12,7 @@ import { UserMetadataStoreService } from 'src/app/modules/shared/services/user-m
 import { UserTagService } from 'src/app/modules/settings/services/user-tag.service';
 import { FirstUserComponent } from 'src/app/modules/dashboard/components/first-users/first-user.component';
 import { DashboardChartService } from 'src/app/modules/dashboard/services/dashboard-chart.service';
+import { AuthService } from 'src/app/modules/shared/services/auth/auth.service';
 
 @Component({
   selector: 'app-oauth-redirect',
@@ -20,6 +21,8 @@ import { DashboardChartService } from 'src/app/modules/dashboard/services/dashbo
 })
 export class OauthRedirectComponent implements OnInit {
 
+  urlToNavigateAfterLogin: string = '';
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -27,12 +30,14 @@ export class OauthRedirectComponent implements OnInit {
     private stockSymbolService: StockSymbolService,
     private metdataStoreService: UserMetadataStoreService,
     private userTagService: UserTagService,
-    private dashboardService: DashboardChartService
+    private dashboardService: DashboardChartService,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       let token = params['token'];
+      this.urlToNavigateAfterLogin = params['navigateUrl'];
       if (token) {
         sessionStorage.setItem('token', token);
         let country = params['country'];
@@ -54,7 +59,7 @@ export class OauthRedirectComponent implements OnInit {
   }
 
   successLogin() {
-    this.router.navigate(['dashboard']);
+    this.router.navigate([this.urlToNavigateAfterLogin]);
     this.loadFirstUser();
     this.stockSymbolService.getStockSymbols();
     this.metdataStoreService.load();
