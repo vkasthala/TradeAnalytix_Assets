@@ -84,6 +84,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     });
     dialogRef.afterClosed().subscribe(dialogResult => {
       if (dialogResult == true) {
+        sessionStorage.clear();
         this.router.navigate(['/landing']);
       }
     });

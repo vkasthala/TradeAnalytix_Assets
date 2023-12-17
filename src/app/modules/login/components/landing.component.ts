@@ -8,6 +8,7 @@ import { JoinWaitlistComponent } from './join-waitlist/join-waitlist.component';
 import { ImageService } from './image.service';
 import { AnimationOptions } from "ngx-lottie";
 import { SlidesOutputData, OwlOptions } from 'ngx-owl-carousel-o';
+import { AuthService } from '../../shared/services/auth/auth.service';
 
 export class CarouselData {
   id?: string;
@@ -64,7 +65,8 @@ export class LandingComponent implements OnInit {
     private httpService: HttpService,
     protected toastr: ToastrService,
     private _imageService: ImageService,
-    private el: ElementRef
+    private el: ElementRef,
+    private authService: AuthService
   ) {
    }
 
@@ -76,6 +78,10 @@ export class LandingComponent implements OnInit {
     //     this.currentInd++;
     //   }
     // }, 3000);
+    let token = sessionStorage.getItem('token');
+    if(token != null || this.authService.getRedirectUrl() != 'dashboard'){
+    this.login('google');
+    }
   }
 
   
@@ -91,7 +97,7 @@ export class LandingComponent implements OnInit {
 
     }
     if (url) {
-      let authUrl = environment.apiUrl + url + '?redirect_uri=' + environment.redirectUri;
+      let authUrl = environment.apiUrl + url + '?redirect_uri=' + environment.redirectUri+'?navigateUrl='+this.authService.getRedirectUrl();
       window.location.href = authUrl;
     }
   }

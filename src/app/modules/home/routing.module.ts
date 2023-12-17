@@ -127,10 +127,10 @@ const routes: Routes = [
           path : 'bulk-update',
           component: BulkUpdateComponent
         },
-        {
-          path: 'oauth-redirect',
-          component: OauthRedirectComponent
-        },
+        // {
+        //   path: 'oauth-redirect',
+        //   component: OauthRedirectComponent
+        // },
         {
           path: 'strategy-comparison',
           component: CompareStrategiesComponent
