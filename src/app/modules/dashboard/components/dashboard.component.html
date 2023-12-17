@@ -3,7 +3,13 @@
         <div class="dashboard-body">
             <div>
                 <div class="card-title">Welcome {{userName}}</div>
-                <p class="text-black header-description">Start the Day with a Trading Plan and Analyze Potential Trades</p>
+                <div class="d-flex justify-content-between">
+                    <p class="text-black header-description">Start the Day with a Trading Plan and Analyze Potential Trades</p>
+                    <div>
+                        <a class="bold-link" [routerLink]="['/settings/']">Set Goals</a>
+                        <a class="bold-link ml-3" [routerLink]="['/rules/']">Add Rules</a>
+                    </div>
+                </div>
             </div>
             
             <div class="mt-3 dashboard-header-row">
