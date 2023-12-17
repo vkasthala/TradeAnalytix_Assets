@@ -86,10 +86,14 @@ export class ManualImportTradeComponent implements OnInit {
           this.newItemEvent.emit();
         },
         err => {
+          if(err.status == 202) {
+            this.toastr.error("Retry after sometime");
+          } else { 
           this.processing = false;
           this.toastr.error(err.error ?  err.error : 'Upload Failed', 'Error');
           this.currentFile = undefined;
           this.optionFile = undefined;
+          }
         });
       this.selectedFiles = undefined;
       this.selectedOptionFiles = undefined;

@@ -45,7 +45,7 @@
                 <!-- Status Column -->
                 <ng-container matColumnDef="status">
                     <mat-header-cell class="status-cell" *matHeaderCellDef mat-sort-header>Status</mat-header-cell>
-                    <mat-cell *matCellDef="let element" class="text-success status-cell"> In Progress </mat-cell>
+                    <mat-cell *matCellDef="let element" class="text-success status-cell"> {{element.status}} </mat-cell>
                 </ng-container>
 
                 <!-- Uploaded Records Column -->
