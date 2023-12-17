@@ -215,7 +215,6 @@ export class ImportTradesHistory implements AfterViewInit, OnInit {
     }else {
       this.importTradesGridService.loadImportTrades(this.importTradesGridRequest).subscribe(result => {
         if (result) {
-          debugger;
           localStorage.setItem('importTradesGridData', JSON.stringify(result.rows));
           this.dataSource =JSON.parse(localStorage.getItem('importTradesGridData'));
           this.dataSource.totalCount = result.totalCount;
