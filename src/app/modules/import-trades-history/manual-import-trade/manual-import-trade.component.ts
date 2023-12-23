@@ -87,7 +87,7 @@ export class ManualImportTradeComponent implements OnInit {
         },
         err => {
           if(err.status == 202) {
-            this.toastr.error("Retry after sometime");
+            this.toastr.error("Trades are being processed. Please try again a few minutes later", "Error");
           } else { 
           this.processing = false;
           this.toastr.error(err.error ?  err.error : 'Upload Failed', 'Error');
