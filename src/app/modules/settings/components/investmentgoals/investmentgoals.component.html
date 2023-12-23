@@ -7,12 +7,8 @@
         </mat-expansion-panel-header>
         <ng-template matExpansionPanelContent>
             <div class="mb-2 investment_body">
-                <div class="trade-cards-section investmentgoals-form mb-2">
-                    <span class="card-main">
-                        <label class="col-form-label">Goal Name</label>
-                        <input type="text" class="form-control" id="goalname" [(ngModel)]="goalName" />
-                    </span>
-                    <span class="card-main">
+                <div class="trade-cards-section investmentgoals-form mb-3">
+                    <span class="td-cell pl-0 pb-0">
                         <label class="col-form-label">Entry Date</label>
                         <div class="datepicker-group">
                             <input matInput [matDatepicker]="entrydate" (click)="entrydate.open()" id="entrydate"  name="entrydate" (dateChange)="addEvent($event)" [(ngModel)]="entry_date">
@@ -20,35 +16,53 @@
                             <mat-datepicker #entrydate></mat-datepicker>
                         </div>
                     </span>
-                    <span class="card-main card-main-lg">
+                    <span class="td-cell pb-0">
+                        <label class="col-form-label">Goal Name</label>
+                        <input type="text" class="form-control" id="goalname" [(ngModel)]="goalName" />
+                    </span>
+                    
+                    <span class="td-cell td-cell-lg pb-0 target_date">
                         <label class="col-form-label">Target Date Range</label>
                         <div class='input-group date date-rang' id='datetimepicker1'>
                             <my-date-range-picker name="targetdate" id="targetdate" (dateRangeChanged)="onDateRangeChanged($event)" [(ngModel)]="targetDate"></my-date-range-picker>
                         </div>
                     </span>
-                    <span class="card-main">
+                    <span class="td-cell pb-0">
                         <label class="col-form-label">Target Profit</label>
                         <input type="text" class="form-control" id="targetProfit" [(ngModel)]="targetProfit" />
                     </span>
-                    <span class="add-item d-flex align-items-end mb-2 btn-next-web">
-                        <mat-icon (click)="addGoal()">add_circle</mat-icon>
+                    <span class="d-flex align-items-end mb-2 btn-next-web">
+                        <span class="text-link" (click)="addGoal()">Add Goal</span>
                     </span>
 
                     <a class="btn btn-next-mobile" (click)="addGoal()">Save</a>
 
                 </div>
-                <ng-container *ngIf="GoalsList">
-                    <div *ngFor="let goal of GoalsList;let index = index">
-                        <div class="d-flex align-items-center py-2">
-                            <span class="card-main">{{goal.goalName}}</span>
-                            <span class="card-main pl-3 date-column">{{goal.entryDate}}</span>
-                            <span class="card-main card-main-lg pl-3 date-rang-column">{{goal.startDate + ' - '+goal.endDate}}</span>
-                            <span class="card-main pl-3 amount-column">{{goal.targetAmount}}</span>
-                            <mat-icon class="mr-3 mat-icon-sm mat-icon-edit" (click)="editinvestmentGoal(goal)">edit</mat-icon>
-                            <mat-icon class="mat-icon-sm" (click)="deleteinvestmentGoal(goal)">delete</mat-icon>
-                        </div>
+                <div class="planed-trades mb-3">
+                    <div class="d-flex align-items-center">
+                        <span class="header-cell">Entry Date</span>
+                        <span class="header-cell">Goal Name</span>
+                        <span class="header-cell header-cell-lg">Target Date Range</span>
+                        <span class="header-cell">Target Profit</span>
+                        <span class="header-cell header-cell-lg">Description</span>
+                        <span class="header-cell action-cell">Action</span>
                     </div>
-                </ng-container>
+                    <ng-container *ngIf="GoalsList">
+                        <div *ngFor="let goal of GoalsList;let index = index">
+                            <div class="d-flex align-items-center">
+                                <span class="td-cell">{{goal.entryDate}}</span>
+                                <span class="td-cell">{{goal.goalName}}</span>
+                                <span class="td-cell td-cell-lg">{{goal.startDate + ' - '+goal.endDate}}</span>
+                                <span class="td-cell">{{goal.targetAmount}}</span>
+                                <span class="td-cell td-cell-lg">{{goal.goalName}}</span>
+                                <span class="td-cell">
+                                    <span class="mr-3 text-link" (click)="editinvestmentGoal(goal)">Edit</span>
+                                    <span class="text-link" (click)="deleteinvestmentGoal(goal)">Delete</span>
+                                </span>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
             </div>
         </ng-template>
     </mat-expansion-panel>

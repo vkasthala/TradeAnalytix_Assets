@@ -48,15 +48,12 @@
 }
 
 .card-main {
-    padding-right: 1rem;
-    min-width: 135px;
-    max-width: 135px;
+    padding: 0.5rem;
+    // min-width: 135px;
+    // max-width: 135px;
     font-size: 0.89rem;
-    @media #{$extra-small} {
-        padding-right: .5rem;
-        min-width: 100px;
-        max-width: 100px;
-    }
+    padding-bottom: 0;
+   
 }
 
 .card-main-lg {
@@ -64,23 +61,12 @@
     max-width: 230px;
     
 }
-.date-rang-column {
-    @media #{$extra-small} {
-        display: none;
-    }
+.card-main-md {
+    min-width: 150px;
+    max-width: 150px;
+    
 }
-.date-column {
-    @media #{$extra-small} {
-        padding-left: 0 !important;
-    }
-}
-.amount-column {
-    @media #{$extra-small} {
-        min-width: 70px;
-        max-width: 70px;
-        padding-left: 0 !important;
-    }
-}
+
 
 .form-control {
     background: #FFFFFF;
@@ -281,4 +267,37 @@
     @media #{$extra-small} {
         display: block;
     }
+}
+
+.planed-trades {
+    border: 1px solid #7C97A5;
+    border-radius: 8px;
+    color: #393B40;
+}
+
+.header-cell {
+    background: rgba(157, 166, 186, 0.2);
+    color: #393B40;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 0.789rem 0.5rem;
+    flex: 0 0 11.333333%;
+    max-width: 11.333333%;
+}
+.header-cell-lg {
+    flex: 0 0 20.333333%;
+    max-width: 20.333333%;
+}
+.td-cell {
+    padding: 0.789rem 0.5rem;
+    flex: 0 0 11.333333%;
+    max-width: 11.333333%;
+}
+.td-cell-lg {
+    flex: 0 0 20.333333%;
+    max-width: 20.333333%;
+}
+.action-cell {
+    flex: 0 0 25.333333%;
+    max-width: 25.333333%;
 }
