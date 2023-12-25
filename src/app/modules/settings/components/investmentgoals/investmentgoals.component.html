@@ -1,10 +1,9 @@
-<mat-accordion class="example-headers-align w-100" multi="true">
-    <mat-expansion-panel [expanded]="true" (opened)="setStep(1)">
-        <mat-expansion-panel-header>
-            <mat-panel-title>
-                Set goals for a specific date range and track your performance against these goals.
-            </mat-panel-title>
-        </mat-expansion-panel-header>
+<div class="outer-container">
+    <div class="panel-header">
+        Set goals for a specific date range and track your performance against these goals.
+    </div>
+    <mat-expansion-panel [expanded]="true">
+        
         <ng-template matExpansionPanelContent>
             <div class="mb-2 investment_body">
                 <div class="trade-cards-section investmentgoals-form mb-3">
@@ -18,7 +17,11 @@
                     </span>
                     <span class="td-cell pb-0">
                         <label class="col-form-label">Goal Name</label>
-                        <input type="text" class="form-control" id="goalname" [(ngModel)]="goalName" />
+                        <input type="text" class="form-control" id="goalname" [(ngModel)]="goalName" maxlength="10" />
+                    </span>
+                    <span class="td-cell pb-0">
+                        <label class="col-form-label">Description</label>
+                        <input type="text" class="form-control" id="description" [(ngModel)]="description" maxlength="1000" />
                     </span>
                     
                     <span class="td-cell td-cell-lg pb-0 target_date">
@@ -66,7 +69,7 @@
             </div>
         </ng-template>
     </mat-expansion-panel>
-</mat-accordion>
+</div>
 
 <!-- investment-mobile -->
 <!-- <div class="investment-mobile">

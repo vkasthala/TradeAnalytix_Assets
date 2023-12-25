@@ -454,7 +454,7 @@ export class RiskAnalysisComponent implements OnInit {
   }
 
   checkForDecimalValidation(event) {
-    event.target.value = parseFloat(event.target.value).toFixed(2);
+    event.target.value = parseFloat(event.target.value).toFixed(3);
   }
 
 
