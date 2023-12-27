@@ -93,7 +93,7 @@
       <ng-container matColumnDef="return">
         <mat-header-cell class="return-cell" *matHeaderCellDef mat-sort-header>Realized Return</mat-header-cell>
         <mat-cell class="return-cell" *matCellDef="let element"> 
-          {{element.returnAmount}} 
+          {{element.returnAmount | number: '1.0-0'}} 
           
         </mat-cell>
       </ng-container>

@@ -45,7 +45,12 @@
                 <!-- Status Column -->
                 <ng-container matColumnDef="status">
                     <mat-header-cell class="status-cell" *matHeaderCellDef mat-sort-header>Status</mat-header-cell>
-                    <mat-cell *matCellDef="let element" class="text-success status-cell"> {{element.status}} </mat-cell>
+                    <mat-cell *matCellDef="let element" class="status-cell">
+                        <span class="text-primary" *ngIf="element.status === 'IN_PROGRESS'">
+                            In Progress
+                        </span>
+                        <span class="text-success" *ngIf="element.status === 'COMPLETE'">Complete</span>
+                    </mat-cell>
                 </ng-container>
 
                 <!-- Uploaded Records Column -->
@@ -59,6 +64,7 @@
                     <mat-header-cell class="records-cell" *matHeaderCellDef mat-sort-header>Failed Records</mat-header-cell>
                     <mat-cell *matCellDef="let element" class="text-danger records-cell"> {{element.failedRecords}} </mat-cell>
                 </ng-container>
+                
 
                 <!-- Closed Date Column -->
                 <ng-container matColumnDef="action">
@@ -77,6 +83,12 @@
                             </span> -->
                         </div>
                     </mat-cell>
+                </ng-container>
+
+                <!-- Refresh Column -->
+                <ng-container matColumnDef="refresh">
+                    <mat-header-cell class="refresh-cell" *matHeaderCellDef mat-sort-header>Refresh</mat-header-cell>
+                    <mat-cell *matCellDef="let element" class="refresh-cell"><span class="text-link" (click)="reload()">Refresh</span></mat-cell>
                 </ng-container>
 
                 <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

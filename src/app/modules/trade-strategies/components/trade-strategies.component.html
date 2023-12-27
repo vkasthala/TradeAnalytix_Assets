@@ -29,9 +29,7 @@
         </div>
         <div class="trade-strategies-table px-3 py-2 trade-strategies-filters">
             <div class="d-flex justify-content-between align-items-center">
-                <a class="bold-link" [routerLink]="['/bulk-update/']">Bulk&nbsp;Journal</a>
-            
-                <div class="trade-st-box pt-0">
+                <div class="trade-st-box py-0">
                     <div class="st-slect-section">
                         <div class="trade-form strategies_filter">
                             <div class="form-group has-search">
@@ -97,6 +95,7 @@
                     </div>
                 </div>
             </div>
+            <div class="text-right pr-3 pb-2"><a class="bold-link" [routerLink]="['/bulk-update/']">Bulk&nbsp;Journal</a></div>
             <!-- start : Tabs section -->
             <mat-horizontal-stepper labelPosition="left" #stepper [linear]="false" (selectionChange)="selectionChange($event)">
                 <mat-step [class.active]="stepone.completed" label="Open Positions" #stepone>
