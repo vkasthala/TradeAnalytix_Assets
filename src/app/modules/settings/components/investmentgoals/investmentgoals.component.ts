@@ -22,6 +22,7 @@ export class InvestmentGoalsComponent implements OnInit {
   goalName: string;
   public GoalsList: [];
   public showGoalForm: boolean = false;
+  isEdit: boolean = false;
 
   constructor(
     private toastr: ToastrService,
@@ -58,6 +59,7 @@ export class InvestmentGoalsComponent implements OnInit {
   }
 
   editinvestmentGoal(goal: InvestmentGoals) {
+    this.isEdit = true;
     this.entry_date = new Date(goal.entryDate);
     this.entryDate = goal.entryDate;
     this.targetProfit = goal.targetAmount;
@@ -114,6 +116,7 @@ export class InvestmentGoalsComponent implements OnInit {
     this.targetDateRange = null;
     this.entryDate = null;
     this.goalName = null;
+    this.isEdit = false;
   }
   onDateRangeChanged(event: IMyDateRangeModel) {
     this.targetDateRange = event.formatted;

@@ -31,7 +31,7 @@ import { AutoImportTradeComponent } from './auto-import-trade/auto-import-trade.
 export class ImportTradesHistory implements AfterViewInit, OnInit {
   selectedFiles: FileList;
   expandIndex: any;
-  displayedColumns = ['openDate', 'stockName', 'status', 'direction', 'failedRecords', 'action', 'refresh'];
+  displayedColumns = ['openDate', 'stockName', 'status', 'direction', 'failedRecords', 'action'];
   pageSize: number = 20
   importType:number = 1;
 

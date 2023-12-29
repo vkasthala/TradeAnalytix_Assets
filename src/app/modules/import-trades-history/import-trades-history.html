@@ -28,6 +28,11 @@
     </div>
 
     <div *ngIf="importType == 1" class="mt-3">
+        <div class="d-flex justify-content-end pb-2 px-3">
+            <a class="d-flex text-link" (click)="reload()">
+                <mat-icon>refresh</mat-icon> Refresh
+            </a>
+        </div>
         <div class="trade-table">
             <mat-table [dataSource]="dataSource" matSort>
                 <!-- Date Column -->
@@ -83,12 +88,6 @@
                             </span> -->
                         </div>
                     </mat-cell>
-                </ng-container>
-
-                <!-- Refresh Column -->
-                <ng-container matColumnDef="refresh">
-                    <mat-header-cell class="refresh-cell" *matHeaderCellDef mat-sort-header>Refresh</mat-header-cell>
-                    <mat-cell *matCellDef="let element" class="refresh-cell"><span class="text-link" (click)="reload()">Refresh</span></mat-cell>
                 </ng-container>
 
                 <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

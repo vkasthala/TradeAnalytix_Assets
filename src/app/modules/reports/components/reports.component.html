@@ -17,13 +17,17 @@
                             <a aria-controls="Journal Reports" aria-expanded="false" data-toggle="tab"
                                 href="#RiskManagement" role="tab" (click)="onTabSelect('risk')">Risk Management</a>
                         </li>
-                        <li class="" role="presentation">
+                        <!-- <li class="" role="presentation">
                             <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#Goals" role="tab"
                                 (click)="onTabSelect('goals')">Goals</a>
-                        </li>
+                        </li> -->
                         <li class="" role="presentation">
                             <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#Discipline"
                                 role="tab" (click)="onTabSelect('discipline')">Discipline</a>
+                        </li>
+                        <li class="" role="presentation">
+                            <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#rules"
+                                role="tab" (click)="onTabSelect('rules')">Rules</a>
                         </li>
                         <!-- <li class="" role="presentation">
                             <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#Commissions"
@@ -43,14 +47,14 @@
                             </span>
 
                             <div class="top-sec">
-                                <div class="report-trade-symbol mr-2" *ngIf="selectedTabReport === 'performance'">
+                                <!-- <div class="report-trade-symbol mr-2" *ngIf="selectedTabReport === 'performance'">
                                     <div class="form-group has-search">
-                                        <!-- <app-trade-search (symbolSelectEvent)="symbolSelectEventHandler($event)"
+                                        <app-trade-search (symbolSelectEvent)="symbolSelectEventHandler($event)"
                                             #tradeSearchComponent>
-                                        </app-trade-search> -->
-                                     <!--   <mat-icon class="form-icon-down" (click)="onClearSymbol()">clear</mat-icon> -->
+                                        </app-trade-search>
+                                       <mat-icon class="form-icon-down" (click)="onClearSymbol()">clear</mat-icon>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="trade-date">
                                     <div class="form-group m-0">
                                         <div class='input-group date' id='datetimepicker1'>
@@ -77,13 +81,17 @@
                         <app-riskmanagement [filterChangeSubject]="filterChangeSubject" [reportFilter]="reportFilter"
                             #riskReports></app-riskmanagement>
                     </div>
-                    <div class="tab-pane fade" id="Goals" role="tabpanel">
+                    <!-- <div class="tab-pane fade" id="Goals" role="tabpanel">
                         <app-goals [filterChangeSubject]="filterChangeSubject" [reportFilter]="reportFilter"
                             #goalsReports></app-goals>
-                    </div>
+                    </div> -->
                     <div class="tab-pane fade" id="Discipline" role="tabpanel">
                         <app-discipline [filterChangeSubject]="filterChangeSubject" [reportFilter]="reportFilter"
                             #disciplineReports></app-discipline>
+                    </div>
+                    <div class="tab-pane fade" id="rules" role="tabpanel">
+                        <app-reports-rules [filterChangeSubject]="filterChangeSubject" [reportFilter]="reportFilter"
+                            #disciplineReports></app-reports-rules>
                     </div>
                     <!-- <div class="tab-pane fade" id="Commissions" role="tabpanel">
                         <app-commissions [filterChangeSubject]="filterChangeSubject" [reportFilter]="reportFilter"

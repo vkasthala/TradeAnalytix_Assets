@@ -1,8 +1,8 @@
 <div class="trade-strategies-sec">
     <div class="main-body">
-        <div class="trade-dash-main">
+        <!-- <div class="trade-dash-main">
             <div class="col-sm-8 pl-1">
-                <!-- <div class="summary-items" *ngIf="isOpenPositions">
+                <div class="summary-items" *ngIf="isOpenPositions">
                     <div class="flex-item" *ngFor="let summary of summaryItems">
                         <div class="flex-inner">
                             <h3 class="text-secondary trade_count"
@@ -10,26 +10,27 @@
                             <span class="trade_title">{{summary.name}}</span>
                         </div>
                     </div>
-                </div> -->
+                </div>
             </div>
 
             <div>
                 <div>
-                    <!-- <a routerLink="/bulk-update" class="btn btn-apply mx-2">Bulk Update</a> -->
-                    <!-- <span class="cursor ml-2" (click)="strategiesFilter()">
+                   <a routerLink="/bulk-update" class="btn btn-apply mx-2">Bulk Update</a>
+                    <span class="cursor ml-2" (click)="strategiesFilter()">
                         <span *ngIf="!showFilters" class="text-blue text-sm" data-toggle="tooltip" data-placement="top"
                             title="Show Filters">Show Filters</span>
                         <span *ngIf="showFilters" class="text-primary text-sm" data-toggle="tooltip" data-placement="top"
                             title="Close Filters">Hide Filters</span>
-                    </span> -->
+                    </span>
                     
                 </div>
                 
             </div>
-        </div>
+        </div> -->
         <div class="trade-strategies-table px-3 py-2 trade-strategies-filters">
+            <div class="text-right pr-3 pb-2"><a class="bold-link" [routerLink]="['/bulk-update/']">Bulk&nbsp;Journal</a></div>
             <div class="d-flex justify-content-between align-items-center">
-                <div class="trade-st-box py-0">
+                <div class="trade-st-box pt-0 pb-2">
                     <div class="st-slect-section">
                         <div class="trade-form strategies_filter">
                             <div class="form-group has-search">
@@ -95,7 +96,7 @@
                     </div>
                 </div>
             </div>
-            <div class="text-right pr-3 pb-2"><a class="bold-link" [routerLink]="['/bulk-update/']">Bulk&nbsp;Journal</a></div>
+            
             <!-- start : Tabs section -->
             <mat-horizontal-stepper labelPosition="left" #stepper [linear]="false" (selectionChange)="selectionChange($event)">
                 <mat-step [class.active]="stepone.completed" label="Open Positions" #stepone>

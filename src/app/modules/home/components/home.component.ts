@@ -36,7 +36,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
     private demoService: DemoModeDetailsService,
     public  route: ActivatedRoute
   ) {
-    
     let globalSelector = (fromGlobalConfig.globalConfigFeatureKey as any);
     globalStore.select(globalSelector).subscribe(res => {
       this.currentRoute = res.currentRoute;
@@ -133,7 +132,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
       case 'profile': return { breadcrumb: 'USER PROFILE', title: 'User Profile', description: "User Profile" };
 
-      case 'risk-analysis': return { breadcrumb: 'Payoff  Analyzer', title: 'Payoff  Analyzer', description: "Enter the first few letters of the symbol or company name and choose a stock from the list. Build a trade strategy on that stock to analyze its risk and profitability in different scenarios while varying stock price, implied volatility, and days to expiration" };
+      case 'payoff-analyzer': return { breadcrumb: 'Payoff  Analyzer', title: 'Payoff  Analyzer', description: "Enter the first few letters of the symbol or company name and choose a stock from the list. Build a trade strategy on that stock to analyze its risk and profitability in different scenarios while varying stock price, implied volatility, and days to expiration" };
 
       case 'add-new-trade-plan': return { breadcrumb: 'TRADING PLAN', breadcrumbChild: 'ADD TRADE PLAN', title: 'Add Trade Plan', description: 'Add Trade Plan' };
 

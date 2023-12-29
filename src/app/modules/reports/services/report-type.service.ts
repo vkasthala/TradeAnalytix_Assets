@@ -188,6 +188,18 @@ export class ReportTypeService {
     let reportSubTypes: ReportSubType[] = [];
 
     let reportSubType: ReportSubType = new ReportSubType();
+    reportSubType.name = 'Goal Status';
+    reportSubType.id = "goal_status";
+    reportSubType.reportDetailList = [new ReportDetails('goal_status', 'Goal Status', ReportCategory.Goal_Status, "This report compares the goals set by the user for a given period against the realized return during that period")];
+    reportSubTypes.push(reportSubType);
+
+    reportSubType = new ReportSubType();
+    reportSubType.name = 'Trade Plan Calendar';
+    reportSubType.id = "discipline_calendar";
+    reportSubType.reportDetailList = [new ReportDetails('calendar_report_tradeplan', 'Net Return by Trade Plan Compliance', ReportCategory.Calendar_Report_Tradeplan, "This report illustrates the importance of creating a trade plan by showing the realized return on the days trade plan was created")];
+    reportSubTypes.push(reportSubType);
+
+    reportSubType = new ReportSubType();
     reportSubType.name = 'Planned Trades';
     reportSubType.id = "discipline_performance";
     reportSubType.reportDetailList = [new ReportDetails('discipline_trade_type', 'Realized Return by Planned Trades', ReportCategory.Discipline, "This report shows the realized return and win-rate of the planned trades")];
@@ -198,12 +210,6 @@ export class ReportTypeService {
     // reportSubType.id = "discipline_compliance";
     // reportSubType.reportDetailList = [new ReportDetails('discipline_netreturn', 'Net Return by Trade Plan Compliance', ReportCategory.Discipline, "This report illustrates the importance of creating a trade plan by showing the realized return on the days trade plan was created"), new ReportDetails('discipline_winrate', 'Win Rate by Trade Plan Compliance', ReportCategory.Discipline, "This report illustrates the importance of creating a trade plan by showing the realized return on the days trade plan was created")];
     // reportSubTypes.push(reportSubType);
-
-    reportSubType = new ReportSubType();
-    reportSubType.name = 'Trade Plan Calendar';
-    reportSubType.id = "discipline_calendar";
-    reportSubType.reportDetailList = [new ReportDetails('calendar_report_tradeplan', 'Net Return by Trade Plan Compliance', ReportCategory.Calendar_Report_Tradeplan, "This report illustrates the importance of creating a trade plan by showing the realized return on the days trade plan was created")];
-    reportSubTypes.push(reportSubType);
 
     return reportSubTypes;
   }
@@ -217,11 +223,11 @@ export class ReportTypeService {
     reportSubType.reportDetailList = [new ReportDetails('max_risk_asset', 'Max Risk by Symbol', ReportCategory.Risk, "This report shows the maximum risk of the portfolio by symbol at this point in time")];
     reportSubTypes.push(reportSubType);
 
-    reportSubType = new ReportSubType();
-    reportSubType.name = 'Max Risk Trend';
-    reportSubType.id = "risk_max_risk_profit";
-    reportSubType.reportDetailList = [new ReportDetails('max_risk_trend', 'Max Risk Trend', ReportCategory.Risk, "This report shows the historical maximum risk of your account for the selected date range")];
-    reportSubTypes.push(reportSubType);
+    // reportSubType = new ReportSubType();
+    // reportSubType.name = 'Max Risk Trend';
+    // reportSubType.id = "risk_max_risk_profit";
+    // reportSubType.reportDetailList = [new ReportDetails('max_risk_trend', 'Max Risk Trend', ReportCategory.Risk, "This report shows the historical maximum risk of your account for the selected date range")];
+    // reportSubTypes.push(reportSubType);
 
     reportSubType = new ReportSubType();
     reportSubType.name = 'Net R';

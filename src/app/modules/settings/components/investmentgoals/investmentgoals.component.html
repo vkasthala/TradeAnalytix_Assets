@@ -1,9 +1,8 @@
 <div class="outer-container">
-    <div class="panel-header">
+    <div class="import-header">
         Goal-Driven Trading: Set and Track Your Profit Goals within a Defined Date Range for Optimal Performance
     </div>
     <mat-expansion-panel [expanded]="true">
-        
         <ng-template matExpansionPanelContent>
             <div class="mb-2 investment_body">
                 <div class="trade-cards-section investmentgoals-form mb-3">
@@ -33,13 +32,13 @@
                         <input type="text" class="form-control" id="targetProfit" [(ngModel)]="targetProfit" />
                     </span>
 
-                    <span class="td-cell td-cell-lg pb-0">
+                    <span class="td-cell description-cell pb-0">
                         <label class="col-form-label">Description</label>
-                        <textarea rows="2" class="form-control form-control-lg" id="description" [(ngModel)]="description" maxlength="1000"></textarea>
+                        <input type="text" class="form-control" id="description" [(ngModel)]="description" maxlength="1000" />
                     </span>
 
-                    <span class="d-flex align-items-end mb-3 btn-next-web">
-                        <span class="text-link" (click)="addGoal()">Add Goal</span>
+                    <span class="d-flex align-items-end mb-2 btn-next-web">
+                        <span class="text-link" (click)="addGoal()">{{!isEdit ? 'Add Goal': 'Submit'}}</span>
                     </span>
 
                     <a class="btn btn-next-mobile" (click)="addGoal()">Save</a>
@@ -51,17 +50,17 @@
                         <span class="header-cell">Goal Name</span>
                         <span class="header-cell header-cell-lg">Target Date Range</span>
                         <span class="header-cell">Target Profit</span>
-                        <span class="header-cell header-cell-lg">Description</span>
+                        <span class="header-cell description-cell">Description</span>
                         <span class="header-cell action-cell">Action</span>
                     </div>
                     <ng-container *ngIf="GoalsList">
-                        <div *ngFor="let goal of GoalsList;let index = index">
+                        <div class="goal-row" *ngFor="let goal of GoalsList;let index = index">
                             <div class="d-flex align-items-center">
                                 <span class="td-cell">{{goal.entryDate}}</span>
                                 <span class="td-cell">{{goal.goalName}}</span>
                                 <span class="td-cell td-cell-lg">{{goal.startDate | date: 'dd MMM yyyy'}} - {{goal.endDate | date: 'dd MMM yyyy'}}</span>
                                 <span class="td-cell">{{goal.targetAmount}}</span>
-                                <span class="td-cell td-cell-lg">{{goal.goalName}}</span>
+                                <span class="td-cell description-cell">{{goal.goalName}}</span>
                                 <span class="td-cell">
                                     <span class="mr-3 text-link" (click)="editinvestmentGoal(goal)">Edit</span>
                                     <span class="text-link" (click)="deleteinvestmentGoal(goal)">Delete</span>
