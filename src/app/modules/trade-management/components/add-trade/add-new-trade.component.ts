@@ -92,6 +92,21 @@ export class AddNewTradeComponent implements OnInit {
   errorMsg: string;
   isDemoMode: boolean = false;
 
+  isUsInstances: boolean | undefined;
+
+  indiaInstances = [
+    {code:"BANKNIFTY", id:  138190, name:"Nifty Bank"},
+    {code: "NIFTY", name: "Nifty 50", id: 137916},
+    {code: "TCS", name: "Tata Consultancy Services Ltd", id: 137041},
+    {code: "SBIN", name: "State Bank of India", id: 135567},
+  ]
+  usInstances = [
+    {code:"BANKNIFTY", id:  138190, name:"Nifty Bank"},
+    {code: "NIFTY", name: "Nifty 50", id: 137916},
+    {code: "TCS", name: "Tata Consultancy Services Ltd", id: 137041},
+    {code: "SBIN", name: "State Bank of India", id: 135567},
+  ]
+
   constructor(
     protected userStockStatsService: UserStockStatsService,
     protected tradeStrategyService: TradeStrategyService,
@@ -114,6 +129,10 @@ export class AddNewTradeComponent implements OnInit {
 
   ngOnInit() {
     this.setState();
+    const hostname:any = window.location.hostname;
+    if(hostname === 'us.cuetrade.io') {
+      this.isUsInstances = true;
+    }
   }
 
   enterSymbol() {
@@ -648,6 +667,12 @@ export class AddNewTradeComponent implements OnInit {
     let iframe = document.querySelector('iframe');
     iframe.src = '';
     iframe.setAttribute("src", 'https://www.youtube.com/embed/JlRinQiXHmM');
+  }
+
+  submitInstance($event: any) {
+    this.selectedStock = $event;
+    this.loadStockBriefSummary();
+    this.currentState++;
   }
 
 }

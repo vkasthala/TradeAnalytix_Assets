@@ -3,12 +3,21 @@
         <div class="dashboard-body">
             <div>
                 <div class="card-title">Welcome {{userName}}</div>
+                <p>Transform your trading journey with CueTrade - your gateway to success! Take charge of your financial objectives by setting clear trading goals, crafting effective trading rules, and embracing a disciplined daily routine that puts you in control. Start now and experience the power of a systematic approach to trading!</p>
+
+                <div class="card-title">Your Trading Goals</div>
                 <div class="d-flex justify-content-between">
-                    <p class="text-black header-description">Start the Day with a Trading Plan and Analyze Potential Trades</p>
+                    <p class="text-black header-description">Define your financial targets and trading milestones for the selected date range</p>
                     <div>
-                        <a class="bold-link" [routerLink]="['/settings/']">Set Goals</a>
-                        <a class="bold-link ml-3" [routerLink]="['/rules/']">Add Rules</a>
+                        <a class="btn btn-start" [routerLink]="['/settings/']">Set Trading Goals</a>
                     </div>
+                </div>
+
+                <div class="card-title">Your Trading Rules</div>
+                <div class="d-flex justify-content-between">
+                    <p>Establish clear rules based on best practices and lessons learned to enhance your trading strategy</p>
+                    <a class="btn btn-start" [routerLink]="['/rules/']">Create Trading Goals
+                    </a>
                 </div>
             </div>
             

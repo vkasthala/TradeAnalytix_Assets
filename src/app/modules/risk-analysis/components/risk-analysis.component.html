@@ -22,11 +22,11 @@
                         </app-trade-search>
                         <div class="trade-form-body">
                             <h4 class="py-2 mt-3">Popular User Searches</h4>
-                            <ul>
-                                <li>Nifty 50</li>
-                                <li>BankNifty</li>
-                                <li>Reliance</li>
-                                <li>TCS</li>
+                            <ul *ngIf="!isUsInstances">
+                                <li *ngFor="let instance of indiaInstances; let i = index;"><span class="text-link" (click)="submitInstance(instance)">{{instance.name}}</span></li>
+                            </ul>
+                            <ul *ngIf="isUsInstances">
+                                <li *ngFor="let instance of usInstances; let i = index;"><span class="text-link" (click)="submitInstance(instance)">{{instance.name}}</span></li>
                             </ul>
                         </div>
                         <button class="btn btn-enter" (click)="enterSymbol()">Submit </button>

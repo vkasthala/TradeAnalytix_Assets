@@ -88,7 +88,7 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.userMetadataStoreService.loadMetadata(false);
     this.tradeThesis = new TradeThesis();
-    this.tradeThesis.tradeType = 'planned';
+    // this.tradeThesis.tradeType = 'planned';
     this.strategyTypes = this.strategyCreateService.getStrategies();
     this.loadEntryThesisUiFields();
     this.loadExitThesisUiFields();

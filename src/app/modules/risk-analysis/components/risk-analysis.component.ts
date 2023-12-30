@@ -83,6 +83,19 @@ export class RiskAnalysisComponent implements OnInit {
   isEditTrade: boolean = false;
   targetDt: moment.Moment;
 
+  indiaInstances = [
+    {code:"BANKNIFTY", id:  138190, name:"Nifty Bank"},
+    {code: "NIFTY", name: "Nifty 50", id: 137916},
+    {code: "TCS", name: "Tata Consultancy Services Ltd", id: 137041},
+    {code: "SBIN", name: "State Bank of India", id: 135567},
+  ]
+  usInstances = [
+    {code:"BANKNIFTY", id:  138190, name:"Nifty Bank"},
+    {code: "NIFTY", name: "Nifty 50", id: 137916},
+    {code: "TCS", name: "Tata Consultancy Services Ltd", id: 137041},
+    {code: "SBIN", name: "State Bank of India", id: 135567},
+  ]
+
   constructor(private utilService: UtilService,
     private riskAnalysisService: RiskAnalysisService,
     private userStockStatsService: UserStockStatsService,
@@ -102,12 +115,18 @@ export class RiskAnalysisComponent implements OnInit {
   panelDisabled = true;
   panel3Disabled = true;
   panelExpand = false;
+  isUsInstances: boolean | undefined;
 
   ngOnInit() {
+    const hostname:any = window.location.hostname;
+    if(hostname === 'us.cuetrade.io') {
+      this.isUsInstances = true;
+    }
   }
 
 
   enterSymbol() {
+    debugger;
     if (!this.selectedStock || !this.selectedStock.code) {
       this.toastr.error('Please enter a valid symbol to proceed', 'Error');
       return false;
@@ -769,6 +788,12 @@ export class RiskAnalysisComponent implements OnInit {
     let iframe = document.querySelector('iframe');
     iframe.src='';
     iframe.setAttribute("src",'https://www.youtube.com/embed/YuIdSJ7TU7s');
+  }
+
+  submitInstance($event: any) {
+    this.selectedStock = $event;
+    this.loadStockBriefSummary();
+    this.currentState++;
   }
 
 }
