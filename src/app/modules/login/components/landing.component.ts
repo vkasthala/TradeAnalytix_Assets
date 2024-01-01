@@ -79,7 +79,7 @@ export class LandingComponent implements OnInit {
     //   }
     // }, 3000);
     let token = sessionStorage.getItem('token');
-    if(token != null || this.authService.getRedirectUrl() != 'dashboard'){
+    if(token != null){
     this.login('google');
     }
   }
