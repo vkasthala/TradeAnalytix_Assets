@@ -101,10 +101,10 @@ export class AddNewTradeComponent implements OnInit {
     {code: "SBIN", name: "State Bank of India", id: 135567},
   ]
   usInstances = [
-    {code:"BANKNIFTY", id:  138190, name:"Nifty Bank"},
-    {code: "NIFTY", name: "Nifty 50", id: 137916},
-    {code: "TCS", name: "Tata Consultancy Services Ltd", id: 137041},
-    {code: "SBIN", name: "State Bank of India", id: 135567},
+    {code:"AAPL", name:"Apple Inc", id: 73792},
+    {code: "TSLA", name: "Tesla Inc", id: 122942},
+    {code: "NVDA", name: "NVIDIA Corporation", id: 109066},
+    {code: "QQQ", name: "Invesco QQQ Trust Series 1", id: 114464},
   ]
 
   constructor(
