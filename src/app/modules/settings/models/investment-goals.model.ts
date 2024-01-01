@@ -5,5 +5,5 @@ export class InvestmentGoals {
     endDate: string;
     targetAmount: number;
     goalName: string;
-    description: string;
+    goalDescription: string;
 }

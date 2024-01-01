@@ -20,6 +20,7 @@ export class InvestmentGoalsComponent implements OnInit {
   entryDate: string;
   targetDateRange: string;
   goalName: string;
+  goalDescription: string;
   public GoalsList: [];
   public showGoalForm: boolean = false;
   isEdit: boolean = false;
@@ -65,6 +66,7 @@ export class InvestmentGoalsComponent implements OnInit {
     this.targetProfit = goal.targetAmount;
     this.id = goal.id;
     this.goalName = goal.goalName;
+    this.goalDescription = goal.goalDescription;
     this.targetDateRange = goal.startDate + ' - ' + goal.endDate;
     const startDate = new Date(goal.startDate.trim());
     const endDate = new Date(goal.endDate.trim());
@@ -100,6 +102,7 @@ export class InvestmentGoalsComponent implements OnInit {
       goalEntry.id = this.id;
     }
     goalEntry.goalName = this.goalName;
+    goalEntry.goalDescription = this.goalDescription;
     goalEntry.entryDate = this.entryDate;
     goalEntry.targetAmount = this.targetProfit;
     const dateRange: string[] = this.targetDateRange.split(' - ');

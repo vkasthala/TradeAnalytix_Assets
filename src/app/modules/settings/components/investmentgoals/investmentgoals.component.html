@@ -34,7 +34,7 @@
 
                     <span class="td-cell description-cell pb-0">
                         <label class="col-form-label">Description</label>
-                        <input type="text" class="form-control" id="description" [(ngModel)]="description" maxlength="1000" />
+                        <input type="text" class="form-control" id="description" [(ngModel)]="goalDescription" maxlength="1000" />
                     </span>
 
                     <span class="d-flex align-items-end mb-2 btn-next-web">
@@ -60,7 +60,7 @@
                                 <span class="td-cell">{{goal.goalName}}</span>
                                 <span class="td-cell td-cell-lg">{{goal.startDate | date: 'dd MMM yyyy'}} - {{goal.endDate | date: 'dd MMM yyyy'}}</span>
                                 <span class="td-cell">{{goal.targetAmount}}</span>
-                                <span class="td-cell description-cell">{{goal.goalName}}</span>
+                                <span class="td-cell description-cell">{{goal.goalDescription}}</span>
                                 <span class="td-cell">
                                     <span class="mr-3 text-link" (click)="editinvestmentGoal(goal)">Edit</span>
                                     <span class="text-link" (click)="deleteinvestmentGoal(goal)">Delete</span>
