@@ -48,6 +48,7 @@ import { LottieModule } from "ngx-lottie";
 import player from "lottie-web";
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { AboutUsComponent } from './modules/about-us/components/about-us.component';
 
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
   return localStorageSync({ keys: [globalConfigFeatureKey], rehydrate: true })(reducer);
@@ -74,7 +75,8 @@ export function playerFactory() {
     ViewInsightsComponent,
     CopyCueTradeComponent,
     AddNotesComponent,
-    TradeBookComponent
+    TradeBookComponent,
+    AboutUsComponent
   ],
   imports: [
     FormsModule,

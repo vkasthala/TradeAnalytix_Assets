@@ -10,6 +10,7 @@ export class ActivateRuleModalComponent implements OnInit {
 
   title: string;
   value: any;
+  btnText: string;
 
   jsonData:any;
 
@@ -18,9 +19,10 @@ export class ActivateRuleModalComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) data
   ) {
     this.title = data.title;
-    this.jsonData = data;
+    this.jsonData = data.res;
+    this.btnText = data.btnText;
     if (data) {
-      this.value = data.val;
+      this.value = data.res.val;
     }
   }
 

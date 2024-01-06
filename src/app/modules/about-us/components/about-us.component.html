@@ -1,0 +1,146 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top" style="padding: 25px 0; background-color: #fff;">
+    <div class="container-fluid">
+        <div class="cue-logo">
+            <img src="../../../../assets/img/cuetrade-logo.svg" alt="">
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation" (click)="menuToggle()">
+            <span class="material-icons hamburger-menu-icon">menu</span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText" [ngClass]="hamburgerMenu ? 'show' : ''">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="landing#howit_works">How it works</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="landing#benefits">Benefits</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="landing#features">Features</a>
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link" href="landing#reviews">Reviews</a>
+                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link" href="landing#faq">FAQ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0)" (click)="openContactUsModal()">
+                        Contact Us
+                    </a>
+                </li>
+            </ul>
+            <button type="button" class="btn btn-success" (click)="login('google')">Login</button>
+        </div>
+    </div>
+</nav>
+
+<div class="trade-app">
+   
+
+    <div class="main-body">
+        <div class="container">
+            <div class="features_section pt-4 mt-4">
+                <div class="features_section_title page-heading">About Us</div>
+                <div class="intro-description pt-2">
+                    Uptick Systems recognizes the importance of maintaining your privacy. We value your privacy and appreciate your trust in us. This Privacy Policy sets out how Uptick Systems uses and protects any information that you give Uptick Systems when you use this www.CueTrade.com or the Uptick Systems mobile application or any other digital medium and other offline sources of our Company. Uptick Systems is committed to ensure that your privacy is protected. Should we ask you to provide certain information by which you can be identified when using this website, then you can be assured that it will only be used in accordance with this Privacy Policy as it describes how we treat user information we collect from you, the policies and procedures on the collection, use, disclosure, and protection of your information when you use our Uptick Systems Platform.
+                    <br/><br/>
+                    This Privacy Policy applies to current and former visitors to our Uptick Systems Platform and to our online customers. By visiting and/or using our website, you agree to this Privacy Policy. Uptick Systems may change this policy from time to time by updating this page. You should check this page from time to time to ensure that you are happy with any changes.<br/><br/>
+                    
+                    www.CueTrade.com is a property of Uptick Systems, Private Limited, established under laws of India, having its registered office at Private Limited, Telangana - 500044.
+
+                </div>
+            </div>
+            <!-- end: Comprehensive trade journal -->
+
+        </div>
+    </div>
+    <!-- end: main-body -->
+
+    
+</div>
+
+
+
+<footer class="cue-footer pt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="../../../../assets/img/cuetrade-logo.svg" alt="">
+                <p>CueTrade is an easy to use, intuitive trading journal that helps you adopt data-driven,
+                    systematic approach to trading thus improve your trading performance.</p>
+                <ul class="social-icons">
+                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+
+            </div>
+            <div class="col-md-3">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="#howworks">How it works</a></li>
+                    <li><a href="#benefits">Benefits</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h4>Company</h4>
+                <ul>
+                    <li><a [routerLink]="['/about-us/']">About</a></li>
+                    <li><a [routerLink]="['/terms-conditions/']">Terms</a></li>
+                    <li><a [routerLink]="['/privacy-policy/']">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="cue-copyright">
+            <p> © 2023 Uptick Systems Private Limited. All rights reserved.
+                Content powered by CMOTS Internet Technologies Pvt. Ltd.
+            </p>
+        </div>
+    </div>
+</footer>
+
+<!-- Modal -->
+
+<div *ngIf="contactUsModal" class="modal-backdrop fade show"></div>
+<div class="modal contact-modal" [ngClass]="contactUsModal ? 'show' : ''"  tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Contact Us</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeContactUsModal()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <h5>Contact us at <a href="mailto:support@cuetrade.io">support@cuetrade.io</a></h5>
+            <!-- Uncomment the following code to show the contact us form. -->
+            <!-- <form>
+                <div class="mb-3">
+                  <label class="required-field mb-1">Name</label>
+                  <input type="text" class="form-control" id="name" placeholder="Name" />
+                </div>
+                <div class="mb-3">
+                  <label class="required-field mb-1">Email</label>
+                  <input type="email" class="form-control" id="email" placeholder="Email" />
+                </div>
+                <div class="form-group">
+                  <label class="required-field mb-1">Message </label>
+                  <textarea rows="4" class="form-control" id="message" placeholder="Message"></textarea>
+                </div>
+              </form> -->
+        </div>
+        <div class="modal-footer">
+            <!-- <button type="button" class="btn btn-primary" (click)="submitContact()">Submit</button> -->
+            <button type="button" class="btn btn-secondary ml-3" (click)="closeContactUsModal()">Close</button>
+        </div>
+      </div>
+    </div>
+</div>

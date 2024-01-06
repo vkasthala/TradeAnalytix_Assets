@@ -7,18 +7,19 @@ import { AuthService } from '../../shared/services/auth/auth.service';
 import { HttpService } from '../../shared/services/http.service';
 
 @Component({
-  selector: 'app-terms-conditions',
-  templateUrl: './terms-conditions.component.html',
-  styleUrls: ['./terms-conditions.component.scss']
+  selector: 'app-about-us',
+  templateUrl: './about-us.component.html',
+  styleUrls: ['./about-us.component.scss']
 })
-export class TermsAndConditionsComponent implements OnInit {
+export class AboutUsComponent implements OnInit {
   private createAcSec: boolean = false;
   private logonBodySec: boolean = true;
   GOOGLE_AUTH_URL: string = '/oauth2/authorize/google';
   FACEBOOK_AUTH_URL: string = '/oauth2/authorize/facebook';
   MICROSOFT_AUTH_URL: string = '/oauth2/authorize/microsoft';
   closeResult = '';
-
+  features: string[] = ['Learning from your trade history', 'Aligning with self-set rules', 'Journaling your trades', 'Analyzing risk of trades', 'Picking the right strategies'];
+  currentInd: number = 0;
 
   protected loginModalOpen: boolean = false;
   hamburgerMenu: boolean = false;
@@ -65,4 +66,6 @@ export class TermsAndConditionsComponent implements OnInit {
   closeContactUsModal() {
     this.contactUsModal = !this.contactUsModal;
   }
+
+ 
 }

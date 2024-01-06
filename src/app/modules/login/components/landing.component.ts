@@ -218,6 +218,10 @@ export class LandingComponent implements OnInit {
     console.log(this.activeSlides);
   }
 
+  submitContact() {
+    
+  }
+
 }
 
 

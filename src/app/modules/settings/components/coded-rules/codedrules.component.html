@@ -28,9 +28,7 @@
                     <span class="cursor text-link mr-2"
                         (click)="activateRule(coderule)" *ngIf="coderule.uiLabel !== 'Daily trading plan creation' && coderule.val === null">Activate
                     </span>
-                    <!-- <span class="cursor text-link"
-                        (click)="onRowEdit(coderule)" *ngIf="coderule.uiLabel !== 'Daily trading plan creation'">Activate
-                    </span> -->
+                    <span class="cursor text-link mr-3" (click)="onUpdateRule(coderule)" *ngIf="coderule.val && coderule.uiLabel !== 'A trading plan should be created everyday'">Update</span>
                     <span class="cursor position-relative">
                             <!-- <input type="checkbox" name="rule" class="checkbox checkbox-custom"
                                 [checked]="coderule.id && coderule.id !== null && coderule.id > 0"
@@ -42,6 +40,7 @@
                             [(ngModel)]="coderule.checked" (change)="onCheckBoxChange(coderule)" />
                             <span class="disabled-text" *ngIf="coderule.val">Disable</span>
                         </span>
+                        
                     </td>
             </tr>
         </tbody>

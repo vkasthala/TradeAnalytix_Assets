@@ -1,9 +1,22 @@
+@import "../../../../assets/styles/variable.scss";
+@import '../../../../assets/styles/breakpoints.scss';
+
 @import url('https://fonts.googleapis.com/css2?family=Inter&family=Montserrat&display=swap');
 
 
 body {
     font-family: 'Inter', sans-serif !important;
+    color: #717785 !important;
+    font-size: 16px !important;
 }
+
+.intro-description {
+    font-weight: normal;
+    line-height: 24px;
+    color: #717785;
+    font-size: 16px;
+}
+
 input,
 button,
 select,
@@ -1002,3 +1015,88 @@ input:checked~.accordion-content {
     display: block;
 }
 
+.features_section_title {
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 30px;
+    color: #000000;
+    margin-bottom: 0.5rem;
+    text-align: left;
+}
+
+.required-field:after {
+    content: "*";
+    color: red;
+    padding-left: 0.2em;
+}
+.mat-expansion-panel {
+    margin-bottom: 0 !important;
+}
+.btn-video {
+    display: inline-flex;
+    align-items: center;
+    width: 150px !important;
+    @media #{$extra-small} {
+        width: 100% !important;
+        justify-content: center;
+        font-size: 16px !important;
+        margin-bottom: .5rem;
+    }
+}
+.contact-modal {
+    top:15%;
+}
+
+.bullet-list {
+    padding-left: 1rem;
+    list-style: disc;
+    margin: 0;
+}
+.bullet-list li {
+    margin-bottom: 0.5rem;
+}
+
+h5, .h5 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: .5rem !important;
+}
+.description {
+    margin-bottom: 1rem !important;
+    line-height: 22px;
+    color: #9DA6BA;
+    font-size: 15px;
+}
+
+.page-sub-heading {
+	color:#394C86 !important;
+	font-size:22px !important;
+    font-weight: 600;
+}
+.nav-btn {
+    height: 40px;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: none;
+    padding: 0.25rem 1.5rem;
+    text-align: center;
+    border: 0;
+    letter-spacing: 1px;
+    background-color: #EC6B56;
+    color: #fff;
+}
+.powered-by {
+    font-size: 12px;
+    line-height: 18px;
+    color: #fff;
+    padding-top: 1rem;
+    text-align: right;
+    @media #{$extra-small} {
+        text-align: left;
+    }
+}
+
+.main-body {
+    padding-top: 5rem;
+}

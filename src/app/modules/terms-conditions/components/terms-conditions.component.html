@@ -1,99 +1,44 @@
-<div class="trade-app">
-    <div class="trade-header-section">
-        <div class="landing-header">
-            <div class="header-row p-3">
-                <div class="trade-header-section-logo"></div>
-                <nav class="landing-navbar">
-                    <ul class="list-unstyled ">
-                        <li>
-                            <a class="landing-nav-link" href="landing#howit_works">
-                                How It Works
-                            </a>
-                        </li>
-                        <li>
-                            <a class="landing-nav-link" href="landing#trade_journal">
-                                Benefits
-                            </a>
-                        </li>
-                        <li [class.nav-active]="currentRoute == 'demo'">
-                            <a class="landing-nav-link" href="landing#demo_video_section">Partners</a>
-                        </li>
-                        <li [class.nav-active]="currentRoute == 'Reviews'">
-                            <a class="landing-nav-link" href="landing#reviews_section">
-                                Testimonials
-                            </a>
-                        </li>
-                        <li [class.nav-active]="currentRoute == 'Blog'">
-                            <a class="landing-nav-link" href="landing#blogs_section">
-                                Pricing
-                            </a>
-                        </li>
-                        <li [class.nav-active]="currentRoute == 'FAQs'">
-                            <a class="landing-nav-link" href="landing#Faqs">
-                                FAQs
-                            </a>
-                        </li>
-                        <li [class.nav-active]="currentRoute == 'support'">
-                            <a class="landing-nav-link" [routerLink]="['/support/']">
-                                Support
-                            </a>
-                        </li>
-                        <li [class.nav-active]="currentRoute == 'contact-us'">
-                            <button type="button" class="nav-btn" (click)="login('google')">Sign-in</button>
-                        </li>
-                        
-                    </ul>
-                </nav>
-                <span class="material-icons hamburger-menu-icon" (click)="menuToggle()">menu</span>
-            </div>
+<nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top" style="padding: 25px 0; background-color: #fff;">
+    <div class="container-fluid">
+        <div class="cue-logo">
+            <img src="../../../../assets/img/cuetrade-logo.svg" alt="">
         </div>
-        <!-- Trade-Navbar-Web -->
-        
-        <!-- Trade-Navbar-Mobile -->
-        <div class="trade-header-mobile">
-            <nav class="trade-navbar hamburger-menu" [ngClass]="hamburgerMenu ? 'open' : ''">
-                <ul class="list-unstyled ">
-                    <li>
-                        <a class="landing-nav-link" href="landing#howit_works_mob">
-                            How it Works
-                        </a>
-                    </li>
-                    <li>
-                        <a class="landing-nav-link" href="landing#trade_journal">
-                            Benefits
-                        </a>
-                    </li>
-                    <li [class.nav-active]="currentRoute == 'demo'">
-                        <a class="landing-nav-link" href="landing#demo_video_section">Demo</a>
-                    </li>
-                    
-                    <li [class.nav-active]="currentRoute == 'Reviews'">
-                        <a class="landing-nav-link" href="landing#reviews_section">
-                            Testimonials
-                        </a>
-                    </li>
-                    <li [class.nav-active]="currentRoute == 'Blog'">
-                        <a class="landing-nav-link" href="landing#blogs_section">
-                        Blog
-                        </a>
-                    </li>
-                    <li [class.nav-active]="currentRoute == 'FAQs'">
-                        <a class="landing-nav-link" href="landing#Faqs">
-                            FAQs
-                        </a>
-                    </li>
-                    <li [class.nav-active]="currentRoute == 'contact-us'">
-                        <a class="landing-nav-link" (click)="openContactUsModal()">
-                            Contact Us
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation" (click)="menuToggle()">
+            <span class="material-icons hamburger-menu-icon">menu</span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText" [ngClass]="hamburgerMenu ? 'show' : ''">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="landing#howit_works">How it works</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="landing#benefits">Benefits</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="landing#features">Features</a>
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link" href="landing#reviews">Reviews</a>
+                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link" href="landing#faq">FAQ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0)" (click)="openContactUsModal()">
+                        Contact Us
+                    </a>
+                </li>
+            </ul>
+            <button type="button" class="btn btn-success" (click)="login('google')">Login</button>
         </div>
-        <!-- end: banner-section -->
     </div>
-    <!-- end: header-section -->
+</nav>
 
+<div class="trade-app">
     <div class="main-body">
         <div class="container">
             <div class="features_section pt-2 mt-4">
@@ -289,28 +234,50 @@
     <!-- end: main-body -->
 </div>
 
-<div class="landing-footer py-3">
+<footer class="cue-footer pt-5">
     <div class="container">
-        <div class="row align-items-center">
-            <div class="col-sm-6">
-                <ul class="footer_nav">
-                    <li><a [routerLink]="['/terms-conditions/']" target="_blank">Terms & Conditions</a></li>
-                    <li><a [routerLink]="['/privacy-policy/']" target="_blank">Privacy Policy</a></li>
+        <div class="row">
+            <div class="col-md-4">
+                <img src="../../../../assets/img/cuetrade-logo.svg" alt="">
+                <p>CueTrade is an easy to use, intuitive trading journal that helps you adopt data-driven,
+                    systematic approach to trading thus improve your trading performance.</p>
+                <ul class="social-icons">
+                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
                 </ul>
             </div>
-            <div class="trade-socail-icon col-sm-6">
-                <p>Follow us on</p>  &nbsp;
-                <a href="https://twitter.com/CueTrade" target="_blank" class="mx-1"><img src="../../../assets/images/twitter.png" alt="twitter" /></a>
-                <a href="https://www.youtube.com/channel/UC2VXwmZeSkAjY1bZTcnObwQ" target="_blank"><img src="../../../assets/images/youtube.png" alt="youtube" /></a>
+            <div class="col-md-2">
+
+            </div>
+            <div class="col-md-3">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="#howworks">How it works</a></li>
+                    <li><a href="#benefits">Benefits</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h4>Company</h4>
+                <ul>
+                    <li><a [routerLink]="['/about-us/']">About</a></li>
+                    <li><a [routerLink]="['/terms-conditions/']">Terms</a></li>
+                    <li><a [routerLink]="['/privacy-policy/']">Privacy Policy</a></li>
+                </ul>
             </div>
         </div>
-        <div class="copyright pt-3"><span>&#169;</span> 2022 Uptick Systems Private Limited. All rights reserved.</div>
+        <div class="cue-copyright">
+            <p> © 2023 Uptick Systems Private Limited. All rights reserved.
+                Content powered by CMOTS Internet Technologies Pvt. Ltd.
+            </p>
+        </div>
     </div>
-</div>
+</footer>
 
 
 <!-- Modal -->
-
 <div *ngIf="contactUsModal" class="modal-backdrop fade show"></div>
 <div class="modal contact-modal" [ngClass]="contactUsModal ? 'show' : ''"  tabindex="-1" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -322,12 +289,14 @@
           </button>
         </div>
         <div class="modal-body">
-            <form>
-                <div class="form-group mb-3">
+            <h5>Contact us at <a href="mailto:support@cuetrade.io">support@cuetrade.io</a></h5>
+            <!-- Uncomment the following code to show the contact us form. -->
+            <!-- <form>
+                <div class="mb-3">
                   <label class="required-field mb-1">Name</label>
                   <input type="text" class="form-control" id="name" placeholder="Name" />
                 </div>
-                <div class="form-group mb-3">
+                <div class="mb-3">
                   <label class="required-field mb-1">Email</label>
                   <input type="email" class="form-control" id="email" placeholder="Email" />
                 </div>
@@ -335,10 +304,10 @@
                   <label class="required-field mb-1">Message </label>
                   <textarea rows="4" class="form-control" id="message" placeholder="Message"></textarea>
                 </div>
-              </form>
+              </form> -->
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-primary">Submit</button>
+            <!-- <button type="button" class="btn btn-primary" (click)="submitContact()">Submit</button> -->
             <button type="button" class="btn btn-secondary ml-3" (click)="closeContactUsModal()">Close</button>
         </div>
       </div>

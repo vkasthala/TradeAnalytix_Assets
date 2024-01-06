@@ -262,7 +262,11 @@ export class CodedRulesComponent implements OnInit {
     const dialogRef = this._dialog.open(ActivateRuleModalComponent, {
       width: 'auto',
       height: 'auto',
-      data: element
+      data: {
+        res:element,
+        title: "Activate the automatic trading rule",
+        btnText: "Activate",
+      }
     });
     dialogRef.afterClosed().subscribe((res) => {
       if (res) {
@@ -271,6 +275,25 @@ export class CodedRulesComponent implements OnInit {
       }
     });
     console.log(element);
+    element.tempVal = element.val ? element.val : element.defaultValue;
+  }
+
+  onUpdateRule(element: UserCodedRule) {
+    const dialogRef = this._dialog.open(ActivateRuleModalComponent, {
+      width: 'auto',
+      height: 'auto',
+      data: {
+        res:element,
+        title: "Update the automatic trading rule",
+        btnText: "Submit",
+      }
+    });
+    dialogRef.afterClosed().subscribe((res) => {
+      if (res) {
+        element.val = res;
+        this.addOrUpdateRule(element);
+      }
+    });
     element.tempVal = element.val ? element.val : element.defaultValue;
   }
 

@@ -10,6 +10,7 @@ import { TradeBookComponent } from './modules/tradebook/tradebook.component';
 import { ZerodhaComponent } from './modules/zerodha/zerodha.component';
 import { OauthRedirectComponent } from './modules/utilities/components/oauth-redirect/oauth-redirect.component';
 import { AuthGuard } from './modules/shared/services/auth/auth.guard';
+import { AboutUsComponent } from './modules/about-us/components/about-us.component';
 
 const routes: Routes = [
   {
@@ -40,6 +41,10 @@ const routes: Routes = [
   {
     path: 'privacy-policy',
     component : PrivacyPolicyComponent
+  },
+  {
+    path: 'about-us',
+    component : AboutUsComponent
   },
   {
     path: 'oauth-redirect',

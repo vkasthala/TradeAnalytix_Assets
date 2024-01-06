@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment';
+import { AuthService } from '../../shared/services/auth/auth.service';
 import { HttpService } from '../../shared/services/http.service';
 
 @Component({
@@ -28,7 +29,8 @@ export class PrivacyPolicyComponent implements OnInit {
     private router: Router,
     private _dialog: MatDialog,
     private httpService: HttpService,
-    protected toastr: ToastrService
+    protected toastr: ToastrService,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
@@ -52,9 +54,17 @@ export class PrivacyPolicyComponent implements OnInit {
 
     }
     if (url) {
-      let authUrl = environment.apiUrl + url + '?redirect_uri=' + environment.redirectUri;
+      let authUrl = environment.apiUrl + url + '?redirect_uri=' + environment.redirectUri+'?navigateUrl='+this.authService.getRedirectUrl();
       window.location.href = authUrl;
     }
+  }
+
+  openContactUsModal() {
+    this.contactUsModal= !this.contactUsModal;
+  }
+  
+  closeContactUsModal() {
+    this.contactUsModal = !this.contactUsModal;
   }
 
  

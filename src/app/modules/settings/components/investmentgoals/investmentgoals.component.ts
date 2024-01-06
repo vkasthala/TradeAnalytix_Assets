@@ -120,6 +120,7 @@ export class InvestmentGoalsComponent implements OnInit {
     this.entryDate = null;
     this.goalName = null;
     this.isEdit = false;
+    this.goalDescription = null;
   }
   onDateRangeChanged(event: IMyDateRangeModel) {
     this.targetDateRange = event.formatted;
