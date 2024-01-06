@@ -9,6 +9,9 @@ import { ImageService } from './image.service';
 import { AnimationOptions } from "ngx-lottie";
 import { SlidesOutputData, OwlOptions } from 'ngx-owl-carousel-o';
 import { AuthService } from '../../shared/services/auth/auth.service';
+import { ContactUs } from './contact-us.model';
+import { FormBuilder } from '@angular/forms';
+import { ContactService } from './contact.service';
 
 export class CarouselData {
   id?: string;
@@ -57,6 +60,7 @@ export class LandingComponent implements OnInit {
   hamburgerMenu: boolean = false;
   contactUsModal: boolean = false;
 
+  contactForm: ContactUs = new ContactUs();
   
 
   constructor(
@@ -66,7 +70,8 @@ export class LandingComponent implements OnInit {
     protected toastr: ToastrService,
     private _imageService: ImageService,
     private el: ElementRef,
-    private authService: AuthService
+    private authService: AuthService,
+    private _contactService: ContactService
   ) {
    }
 
@@ -219,6 +224,17 @@ export class LandingComponent implements OnInit {
   }
 
   submitContact() {
+    if(this.contactForm.name === undefined || this.contactForm.email === undefined) {
+      this.toastr.error('Please fill all fields.', 'Error');
+      return;
+    }
+    
+    this._contactService.contactData(this.contactForm).subscribe(data => {
+      this.toastr.success('Your details sumitted scuccessfully', 'Success');
+      this.contactUsModal = !this.contactUsModal;
+    }, err => {
+      this.toastr.error(err);
+    });
     
   }
 
