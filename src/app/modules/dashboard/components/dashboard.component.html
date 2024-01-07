@@ -84,7 +84,7 @@
                                         </li>
                                         <li>
                                             <mat-checkbox [checked]="dailyWorkspaceViewModel.addNotes" (change)="updateDailyWorkspace({ checked: $event.checked, field: 'ADD_NOTES' })"><mat-icon class="close-icon">close</mat-icon>Journal trades and check alignment with your trading rules</mat-checkbox>
-                                            <a class="workspace-link" [routerLink]="['/trade-strategies/']" *ngIf="!dailyWorkspaceViewModel.addNotes">Journal Trades</a>
+                                            <a class="workspace-link" [routerLink]="['/positions/']" *ngIf="!dailyWorkspaceViewModel.addNotes">Journal Trades</a>
                                         </li>
                                         <li>
                                             <mat-checkbox [checked]="dailyWorkspaceViewModel.reviewPerformance" (change)="updateDailyWorkspace({ checked: $event.checked, field: 'REVIEW_PERFORMANCE' })"><mat-icon class="close-icon">close</mat-icon>Update daily trading plan after the market close</mat-checkbox>
