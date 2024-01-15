@@ -1,0 +1,291 @@
+<div class="wrapper trade-app-dashboard zoom">
+    <div class="sidebar" [ngClass]="!isExpand ? '' : 'toggled'">
+        <span *ngIf="isExpand" class="sidebar-brand cursor-pointer" [routerLink]="['/dashboard/']">
+            <img src="../../../../assets/images/logo-sm.svg" alt="Trade-app-logo" class="img-fluid logo_sm">
+        </span>
+        <span *ngIf="!isExpand" class="sidebar-brand cursor-pointer" [routerLink]="['/dashboard/']">
+            <img src="../../../../assets/images/logo.svg" alt="Trade-app-logo" class="img-fluid full-logo">
+        </span>
+
+        <nav class="trade-navbar">
+            
+            <!-- <div class="home-link">
+                <a [routerLink]="['/dashboard/']" [class.nav-active]="currentRoute === ''">
+                    <img src="../../../../assets/images/home_r.svg" class="nav-icon nav-icon-md"> 
+                    <img src="../../../../assets/images/home.svg" class="nav-icon nav-icon-md nav-icon_r"> 
+                    <span>Home</span>
+                </a>
+            </div> -->
+
+            <div class="parent-item">
+                <img src="../../../../assets/images/plan_r.svg" class="nav-icon nav-icon-md">
+                <img src="../../../../assets/images/plan.svg" class="nav-icon nav-icon_r"> 
+                Plan
+            </div>
+            <ul class="list-unstyled ">
+                <li class="sidebar-item" [class.nav-active]="currentRoute === 'trade-plans'">
+                    <a class="sidebar-link" [routerLink]="['/trade-plans/']" routerLinkActive="active">
+                        <mat-icon>note_add</mat-icon>
+                        <span>Daily Plan</span>
+                    </a>
+                </li>
+                <li class="sidebar-item" [class.nav-active]="currentRoute === 'trade-builder'">
+                    <a class="sidebar-link" [routerLink]="['/trade-builder/']" routerLinkActive="active">
+                        <mat-icon>compare_arrows</mat-icon>
+                        <span>Trade Builder</span>
+                    </a>
+                </li>
+                <!-- <li class="sidebar-item" [class.nav-active]="currentRoute == 'payoff-analyzer'">
+                    <a class="sidebar-link" [routerLink]="['/payoff-analyzer/']">
+                        <mat-icon>insights</mat-icon>
+                        <span>Payoff Analyzer</span>
+                    </a>
+                </li> -->
+            </ul>
+
+            <div class="parent-item">
+                <img src="../../../../assets/images/journal_r.svg" class="nav-icon nav-icon-md">
+                <img src="../../../../assets/images/journal.svg" class="nav-icon nav-icon_r">
+                Journal
+            </div>
+            <ul class="list-unstyled ">
+                <li class="sidebar-item" [class.nav-active]="currentRoute == 'import-trades-history'">
+                    <a class="sidebar-link" [routerLink]="['/import-trades-history/']" routerLinkActive="active">
+                        <mat-icon class="mat-lg">import_export</mat-icon>
+                        <span>Import Trades</span>
+                    </a>
+                </li>
+                <li class="sidebar-item" [class.nav-active]="currentRoute == 'positions'">
+                    <a class="sidebar-link" [routerLink]="['/positions/']" routerLinkActive="active">
+                        <mat-icon>attach_money</mat-icon>
+                        <span>Positions</span>
+                    </a>
+                </li>
+                
+                <!-- <li class="sidebar-item" [class.nav-active]="currentRoute == 'bulk-update'">
+                    <a class="sidebar-link" [routerLink]="['/bulk-update/']">
+                        <mat-icon>update</mat-icon>
+                        <span>Bulk Journal</span>
+                    </a>
+                </li> -->
+            </ul>
+
+            <div class="parent-item">
+                <img src="../../../../assets/images/review_r.svg" class="nav-icon review-icon"> 
+                <img src="../../../../assets/images/review.svg" class="nav-icon nav-icon_r"> 
+                Review
+            </div>
+            <ul class="list-unstyled ">
+                <li class="sidebar-item" [class.nav-active]="currentRoute == 'reports'">
+                    <a class="sidebar-link" [routerLink]="['/reports/']">
+                        <mat-icon>pie_chart</mat-icon>
+                        <span>Reports</span>
+                    </a>
+                </li>
+                <!-- <li class="sidebar-item" [class.nav-active]="currentRoute == 'insights'">
+                    <a class="sidebar-link" [routerLink]="['/insights/']">
+                        <mat-icon>insights</mat-icon>
+                        <span>Insights</span>
+                    </a>
+                </li> -->
+                <li class="sidebar-item" [class.nav-active]="currentRoute == 'rules'">
+                    <a class="sidebar-link" [routerLink]="['/rules/']">
+                        <mat-icon>rule</mat-icon>
+                        <span>Trading Rules</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="sidebar-bottom">
+                <!-- <a class="bottom-link" [routerLink]="['/settings']" [class.nav-active]="currentRoute == 'settings'">
+                    <mat-icon class="nav-icon">settings</mat-icon>
+                    <span>Settings</span>
+                </a> -->
+                <!-- <a class="bottom-link" href="javascript:void(0)" (click)="openContactUsModal()" [class.nav-active]="currentRoute == 'contact-us'">
+                    <mat-icon class="nav-icon">phone</mat-icon>
+                    <span>Contact Us</span>
+                </a> -->
+            </div>
+
+            <!-- <span class="menu-toggle cursor-pointer" (click)="sidebarToggle()">
+                <mat-icon *ngIf="!isExpand">arrow_back</mat-icon>
+                <mat-icon *ngIf="isExpand">arrow_forward</mat-icon>
+            </span> -->
+        </nav>
+
+        
+    </div>
+    <div class="main">
+        <div class="trade-dashboard-topbar">
+            <div class="trade-dash-sections">
+                <div class="d-flex align-items-center px-3">
+                    <span class="page-heading">{{title}}</span>
+                    <!-- <span matTooltip="{{description}}" matTooltipPosition="right" class="text-secondary ml-2" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay"><img src="../../../../assets/images/outline_info_icon.png" /></span> -->
+                </div>
+                <div *ngIf="demoService.demoMode" class="flash-bar">You are viewing CueTrade in demo mode</div>
+                <div class="user-details">
+                    <!-- <div class="global-search">
+                        <div class="media-body">
+                            <app-trade-search (symbolSelectEvent)="symbolSelectEventHandler($event)">
+                            </app-trade-search>
+                        </div>
+                        <mat-icon class="material-icons-outlined cursor" (click)="enterSymbol()">
+                            search
+                        </mat-icon>
+                    </div> -->
+                    <div class="top-nav">
+                        <span class="btn btn-start mr-3" (click)="startTour()">Start Tour <mat-icon>arrow_forward</mat-icon></span>
+                        <span class="demo-toggle">
+                            Demo&nbsp;Mode <div class="switch ml-2">
+                                <input type="checkbox" [(ngModel)]="demoToggle" (change)="demoMsg()" id="demoToggle" class="cursor" [checked]="demoToggle" />
+                                <label for="demoToggle"></label>
+                              </div>
+                        </span>
+                        <span class="top-nav-item pr-0" [class.nav-active]="currentRoute == 'setttings'">
+                            <a class="top-nav-link" [routerLink]="['/settings/']">
+                                <mat-icon>settings</mat-icon>
+                            </a>
+                        </span>
+
+                        <span class="top-nav-item pl-0" [class.nav-active]="currentRoute == 'insights'">
+                            <a class="top-nav-link" [routerLink]="['/insights/']">
+                                <mat-icon>notifications_none</mat-icon>
+                                <span class="notification_count">{{notificationService.notificationCount}}</span>
+                        </a>
+                        </span>
+                       
+                    </div>
+                    <div class="login-img ml-3" (click)="logout()">
+                        <span class="material-icons logout">logout</span>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="trade-header-mobile">
+            <div class="trade-header-mobile-row">
+                <span class="ml-2 mt-1" (click)="menuToggle()">
+                    <span class="material-icons logout">menu</span>
+                </span>
+                <nav class="trade-navbar hamburger-menu" [ngClass]="hamburgerMenu ? 'open' : ''">
+                    <ul class="list-unstyled ">
+                        <li class="sidebar-item" [class.nav-active]="currentRoute == 'dashboard'">
+                            <a class="sidebar-link" [routerLink]="['/dashboard/']">
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item" [class.nav-active]="currentRoute == 'positions'">
+                            <a class="sidebar-link" [routerLink]="['/positions/']">
+                                <span>Portfolio</span>
+                            </a>
+                        </li>
+        
+                        <li class="sidebar-item" [class.nav-active]="currentRoute == 'payoff-analyzer'">
+                            <a class="sidebar-link" [routerLink]="['/payoff-analyzer/']">
+                                <span>Strategy Builder</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item" [class.nav-active]="currentRoute == 'strategy-comparison'">
+                            <a class="sidebar-link" [routerLink]="['/strategy-comparison/']">
+                                <span>Strategy&nbsp;Comparison</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item" [class.nav-active]="currentRoute == 'trade-plans'">
+                            <a class="sidebar-link" [routerLink]="['/trade-plans/']">
+                                <span>Trade Plan</span>
+                            </a>
+                        </li>
+        
+        
+                        <li class="sidebar-item" [class.nav-active]="currentRoute == 'reports'">
+                            <a class="sidebar-link" [routerLink]="['/reports/']">
+                                <span>Reports</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item" [class.nav-active]="currentRoute == 'rules'">
+                            <a class="sidebar-link" [routerLink]="['/rules/']">
+                                <span>Rules</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item" [class.nav-active]="currentRoute == 'settings'">
+                            <a class="sidebar-link" [routerLink]="['/settings/']">
+                                <span>Settings</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item" [class.nav-active]="currentRoute == 'notifications'">
+                            <a class="sidebar-link" [routerLink]="['/notifications/']">
+                                <span>Notifications</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item" [class.nav-active]="currentRoute == 'help'">
+                            <a class="sidebar-link" [routerLink]="['/help/']">
+                                <span>Help</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item" (click)="logout()">
+                            <a class="sidebar-link">
+                                <span>Logout</span>
+                            </a>
+                        </li>
+        
+                    </ul>
+                    
+                </nav>
+
+                <!-- <div class="db-mb-header-section-logo"><img alt="Trade-app-logo" class="img-fluid full-logo" src="../../../../assets/images/TA-full-logo.jpg" /></div> -->
+                <span class="page-heading text-white">{{title}}</span>
+
+                <div class="user-details">
+                    <div class="top-nav">
+                        <span class="demo-toggle">
+                            <div class="switch ml-1">
+                                <input type="checkbox" [(ngModel)]="demoToggle" (change)="demoMsg()" id="demoToggle" class="cursor" [checked]="demoToggle" />
+                                <label for="demoToggle"></label>
+                            </div>
+                        </span>
+                        <!-- <span class="login-img ml-2" (click)="logout()">
+                            <span class="material-icons logout">logout</span>
+                        </span> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <router-outlet></router-outlet>
+        <app-footer></app-footer>
+    </div>
+    
+</div>
+
+<div *ngIf="contactUsModal" class="modal-backdrop fade show"></div>
+<div class="modal contact-modal" [ngClass]="contactUsModal ? 'show' : ''"  tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Contact Us</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeContactUsModal()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body pt-0">
+            <form>
+                <div class="mb-2">
+                  <label class="col-form-label">Name</label>
+                  <input type="text" class="form-control" id="name" placeholder="Name" />
+                </div>
+                <div class="mb-2">
+                  <label class="col-form-label">Email</label>
+                  <input type="email" class="form-control" id="email" placeholder="Email" />
+                </div>
+                <div class="form-group">
+                  <label class="col-form-label">Message </label>
+                  <textarea rows="4" class="form-control" id="message" placeholder="Message"></textarea>
+                </div>
+              </form>
+        </div>
+        <div class="modal-footer py-1">
+            <button type="button" class="btn btn-add">Submit</button>
+            <button type="button" class="btn btn-secondary ml-1" (click)="closeContactUsModal()">Close</button>
+        </div>
+      </div>
+    </div>
+</div>

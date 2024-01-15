@@ -1,0 +1,27 @@
+<div class="compare-popup">
+    <div class="compare-pop-inner">
+        <div class="top-pop-inner">
+            <!-- <div class="left-heading">
+                <h6>{{title}}</h6>
+            </div> -->
+            <div class="right-close" (click)="closeModal()">
+                <mat-icon>clear</mat-icon>
+            </div>
+        </div>
+
+        <div class="main-pop-inner">
+            <div class="modal-title mb-3">{{title}}</div>
+            <p class="mb-2">Get on the list today and become one of the earliest users of the product.</p>
+            <div class="py-2">
+                <input class="form-control" matInput id="name" placeholder="Name" [(ngModel)]='data.name' />
+            </div>
+            <div class="py-2">
+                <input class="form-control" placeholder="Email" matInput id="email" [(ngModel)]='data.email' />
+            </div>
+        </div>
+
+        <div class="px-3 pb-3 text-center">
+            <button type="button" class="btn btn-join" [mat-dialog-close]="data">Join</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+export enum StrategyType {
+    "Long Stock" = 1,
+    "Short Stock" = 2,
+    "Long Call" = 3,
+    "Short Call" = 4,
+    "Long Put" = 5,
+    "Short Put" = 6,
+    "Bull Call Spread" = 7,
+    "Bear Call Spread" = 8,
+    "Bear Put Spread" = 9,
+    "Bull Put Spread" = 10,
+    "Covered Call" = 11,
+    "Protective Put" = 12,
+    // "Collar" = 13,
+    // "Long Straddle" = 14,
+    // "Short Straddle" = 15,
+    // "Long Strangle" = 16,
+    // "Short Strangle" = 17,
+    // "Diagonal Call Spread" = 18,
+    // "Diagonal Put Spread" = 19,
+    "Iron Condor" = 20,
+    "Custom" = 21
+}

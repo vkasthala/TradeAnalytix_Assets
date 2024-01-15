@@ -1,0 +1,257 @@
+import { AfterViewInit, Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Chart } from 'angular-highcharts';
+import { ChartRequest } from '../../model/chart-request.model';
+import { ReportCategory } from '../../model/report-category.enum';
+import { ReportDetails } from '../../model/report-details.model';
+import { ReportDataService } from '../../services/report-data.service';
+import { ReportRequestService } from '../../services/report-request.service';
+import { ReportFilter } from '../../model/report-filter.model';
+import { Subject, Subscription } from 'rxjs';
+import { ReportSubType } from '../../model/report-sub-type.model';
+import { CalendarComponent } from '../calendar/calendar.component';
+import { CalendarComponentTradeplan } from '../calendar-tradeplan/calendar-tradeplan.component';
+
+@Component({
+  selector: 'app-report-chart',
+  templateUrl: './report-chart.component.html',
+  styleUrls: ['./report-chart.component.scss'],
+  inputs: ['report', 'subtype', 'reportFilter', 'filterChangeSubject']
+})
+export class ReportChartComponent implements OnInit, AfterViewInit, OnDestroy {
+
+  @ViewChild('calendarReport', { static: false }) private calendarReport: CalendarComponent;
+
+  @ViewChild('calendarReportTradePlan', { static: false }) private calendarReportTradePlan: CalendarComponentTradeplan;
+
+  @Input("report") report: ReportDetails;
+
+  @Input("subtype") subtype: string;
+
+  @Input("description") description: string;
+
+  @Input("filterChangeSubject") filterChangeSubject: Subject<ReportFilter>;
+
+  @Input("reportFilter") reportFilter: ReportFilter;
+
+  chart: Chart;
+
+  years: number[] = [];
+
+  months: any[] = [];
+
+  year: number;
+
+  month: number;
+
+  monthFilter: boolean = false;
+
+  noData: boolean = true;
+
+  subscription: Subscription;
+
+  constructor(protected reportRequestService: ReportRequestService, protected reportDataService: ReportDataService) { }
+
+  ngAfterViewInit(): void {
+    this.subscription = this.filterChangeSubject.asObservable().subscribe(data => {
+      this.onFilterChange(data);
+    });
+    this.monthFilter = (this.report.category === ReportCategory.Calendar_Report || this.report.category === ReportCategory.Calendar_Report_Tradeplan);
+    if (this.monthFilter) {
+      this.initYearsAndMonths();
+    }
+    this.loadChart(this.reportFilter);
+  }
+
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
+
+  ngOnInit() {
+  }
+
+  loadChart(reportFilter: ReportFilter): void {
+    let category: ReportCategory = this.report.category
+    let request: ChartRequest;
+    let url: string;
+    //Body and URL identification
+    if (category == ReportCategory.Net_Return) {
+      request = this.reportRequestService.getNetReturnChartRequest(this.report, this.subtype, reportFilter);
+      url = '/reports/performance/netreturn';
+    } else if (category == ReportCategory.Win_Loss) {
+      request = this.reportRequestService.getWinLossChartRequest(this.report, this.subtype, reportFilter);
+      url = '/reports/performance/winloss';
+    } if (category == ReportCategory.Net_Return_Tag) {
+      request = this.reportRequestService.getNetReturnChartRequest(this.report, this.subtype, reportFilter);
+      url = '/reports/performance/netreturnbytag';
+    } else if (category == ReportCategory.Win_Loss_Tag) {
+      request = this.reportRequestService.getWinLossChartRequest(this.report, this.subtype, reportFilter);
+      url = '/reports/performance/winlossbytag';
+    } else if (category == ReportCategory.Goal_Status) {
+      request = this.reportRequestService.getCommonChartRequest(this.report, this.subtype, reportFilter);
+      url = '/reports/performance/goalstatus';
+    } else if (category == ReportCategory.Calendar_Report) {
+      //request = this.reportRequestService.getCommonChartRequest(this.report, this.subtype, this.reportFilter);
+      let month = reportFilter.month;
+      let year = reportFilter.year;
+      if (!month || !year) {
+        let today = new Date();
+        month = today.getMonth() + 1;
+        year = today.getFullYear();
+      }
+      url = null;
+      this.calendarReport.loadData(year, month);
+    } else if (category == ReportCategory.Calendar_Report_Tradeplan) {
+      let month = reportFilter.month;
+      let year = reportFilter.year;
+      if (!month || !year) {
+        let today = new Date();
+        month = today.getMonth() + 1;
+        year = today.getFullYear();
+      }
+      url = null;
+      this.calendarReportTradePlan.loadData(year, month);
+    } else if (category == ReportCategory.Discipline) {
+      request = this.reportRequestService.getDisciplineChartRequest(this.report, this.subtype, reportFilter);
+      url = this.reportRequestService.getDisciplineReportApiUrl(this.report.id);
+    } else if (category == ReportCategory.Risk) {
+      request = this.reportRequestService.getCommonChartRequest(this.report, this.subtype, reportFilter);
+      url = this.reportRequestService.getRiskReportApiUrl(this.report.id);
+    } else if (category == ReportCategory.Allocation) {
+      request = this.reportRequestService.getCommonChartRequest(this.report, this.subtype, reportFilter);
+      url = this.reportRequestService.getAllocationReportUrl(this.report.id);
+    } else if (category == ReportCategory.Dashboard) {
+      request = this.reportRequestService.getCommonChartRequest(this.report, this.subtype, reportFilter);
+      url = this.reportRequestService.getDashboardReportApiUrl(this.report.id);
+    } else if (category == ReportCategory.Rule) {
+      request = this.reportRequestService.getCommonChartRequest(this.report, this.subtype, reportFilter);
+      url = this.report.url;
+    } else if (category == ReportCategory.Symbols_By_Net_Return) {
+      request = this.reportRequestService.getCommonChartRequest(this.report, this.subtype, reportFilter);
+      url = this.reportRequestService.getSymbolsByReturnApiUrl(this.report.id);
+    } else if (category == ReportCategory.Symbols_By_Win_Loss) {
+      request = this.reportRequestService.getCommonChartRequest(this.report, this.subtype, reportFilter);
+      url = this.reportRequestService.getSymbolsByWinLossApiUrl(this.report.id);
+    } else if (category == ReportCategory.Asset_Type) {
+      request = this.reportRequestService.getCommonChartRequest(this.report, this.subtype, reportFilter);
+      url = this.reportRequestService.getAssetTypeApiUrl(this.report.id);
+    } else if (category == ReportCategory.Commission) {
+      request = this.reportRequestService.getCommonChartRequest(this.report, this.subtype, reportFilter);
+      url = this.reportRequestService.getCommissionApiUrl(this.report.id);
+    }
+
+    //Load Chart
+    if (url) {
+      this.noData = false;
+      this.reportDataService.getReportChart(url, request).subscribe(chartResult => {
+        if (chartResult) {
+          this.noData = false;
+          if (url.indexOf('calendarChart') > 0) {
+            this.addHeatmapFormatter(chartResult);
+          }
+          console.log('chart result:', chartResult);
+          this.chart = new Chart(chartResult);
+        } else if (this.chart) {
+          this.noData = true;
+          this.chart.destroy();
+        } else {
+          this.noData = true;
+        }
+      });
+    }
+  }
+
+  addHeatmapFormatter(chartResult: any) {
+    chartResult.series[0].dataLabels['formatter'] = function () {
+      const day = this.point.value.gain;
+      if (day === 0) {
+        return '<span>' + this.point.value.val + '</span>';
+      } else if (day < 0) {
+        return '<span class="dateloss">' + this.point.value.val + '</span>'
+          + '<br>' + '<span class="material-icons calendar-day-icon">price_change</span><span class=valLoss>' + this.point.value.gain * -1 + '<br><span class="material-icons calendar-day-icon">add_box</span>'
+          + this.point.value.trades + '</span>';
+      } else {
+        return '<span class=dateGain>' + this.point.value.val + '</span>' + '<br>'
+          + '<span class="material-icons calendar-day-icon">price_change</span><span class=valGain> ' + this.point.value.gain + '<br><span class="material-icons calendar-day-icon">add_box</span>' + this.point.value.trades + '</span>'
+      }
+    };
+
+    chartResult.tooltip['formatter'] = function () {
+      const gl = this.point.value.gain;
+      if (gl < 0) {
+        return '<b>' + 'Jun' + '_' + this.point.value.val + '<br>' + 'Net Loss: ' + '<b>' + '$' +
+          this.point.value.gain * -1 + '<br>' + ' Trades: ' + '<b>' + this.point.value.trades + '</b>';
+      } else if (gl === 0) {
+        return '<b>Jun' + '_' + this.point.value.val + '</b>';
+      }
+      return '<b>' + 'Jun' + '_' + this.point.value.val + '<br>' + 'Net Gain: ' + '<b>' + '$'
+        + this.point.value.gain + '<br>' + 'Trades: ' + '<b>' + this.point.value.trades + '</b>';
+    };
+  }
+
+  onFilterChange(reportFilter: ReportFilter): void {
+    console.log('here...', reportFilter);
+    if (this.subtype !== reportFilter.summaryType) {
+      return;
+    }
+    this.reportFilter = reportFilter;
+    this.loadChart(reportFilter);
+  }
+
+  initYearsAndMonths() {
+    // Years
+    let today = new Date();
+    let year = today.getFullYear();
+    for (let ind = year; ind >= year - 10; ind--) {
+      this.years.push(ind);
+    }
+    this.reportFilter.year = this.years[0];
+
+    //Months
+    this.months = [{
+      'key': 1,
+      'label': 'Jan'
+    }, {
+      'key': 2,
+      'label': 'Feb'
+    }, {
+      'key': 3,
+      'label': 'Mar'
+    }, {
+      'key': 4,
+      'label': 'Apr'
+    }, {
+      'key': 5,
+      'label': 'May'
+    }, {
+      'key': 6,
+      'label': 'Jun'
+    }, {
+      'key': 7,
+      'label': 'Jul'
+    }, {
+      'key': 8,
+      'label': 'Aug'
+    }, {
+      'key': 9,
+      'label': 'Sep'
+    }, {
+      'key': 10,
+      'label': 'Oct'
+    }, {
+      'key': 11,
+      'label': 'Nov'
+    }, {
+      'key': 12,
+      'label': 'Dec'
+    }];
+    this.reportFilter.month = this.months[today.getMonth()].key;
+
+  }
+
+  onYearAndMonthChange() {
+    this.onFilterChange(this.reportFilter);
+  }
+
+}

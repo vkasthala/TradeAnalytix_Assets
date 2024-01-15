@@ -1,0 +1,55 @@
+.recent-trades-container {
+    box-shadow: none;
+    border-radius: 12px;
+    border: 1px solid #E3E4E7;
+}
+.recent-trades{
+    
+    width: 100%;
+    th {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 20px;  //Updated the color to black and font size to 16px
+        color: #212529;
+        padding: 1rem;
+    }
+    td {
+        font-weight: 500;
+        font-size: 16px;  //Updated the color to black and font size to 16px
+        line-height: 20px;
+        color: #212529;
+        border-top: 1px solid rgb(157 166 186 / 68%);
+        padding: 0.5rem 1rem;
+    }
+}
+
+.mat-icon-edit {
+    color: #275C9F;  //Updated color to #275C9F
+}
+
+.view-more {
+    font-weight: 600;
+    color: #275C9F;   //Updated color to #275C9F
+    text-decoration: none; 
+    font-size: 14px;
+}
+.dsh-img {
+    min-height: 400px;
+}
+.nodata-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 400px;
+    font-weight: 500;
+    font-size: 18px;
+    color: #275C9F;
+    text-decoration: none;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    flex-direction: column;
+    a {
+        text-decoration: none;
+    }
+}

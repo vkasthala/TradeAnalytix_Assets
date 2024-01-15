@@ -1,0 +1,195 @@
+<div class="plannedTrades-container mb-3">
+    <!-- <div class="trade-plan-header justify-content-between">
+        <span>Planned Trades</span>
+        <span class="cursor add-new mr-3" *ngIf="!viewTradePlan" (click)="openPlannedTradeDialog()">Add Trade</span>
+    </div> -->
+
+    <mat-table [dataSource]="plannedTradesDataSource" class="d-lg-table">
+        <ng-container matColumnDef="symbol">
+            <th mat-header-cell *matHeaderCellDef class="symbol-cell">Symbol</th>
+            <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="strategyUid">
+            <th mat-header-cell *matHeaderCellDef class="cell-w-12">Identifier</th>
+            <td mat-cell *matCellDef="let element"> {{element.strategyUid ? element.strategyUid : 'N/A'}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="createDate">
+            <th mat-header-cell *matHeaderCellDef class="cell-w-12">Create Date</th>
+            <td mat-cell *matCellDef="let element"> {{element.openDate | date: 'dd-MMM-yyyy'}} </td>
+        </ng-container>
+        <ng-container matColumnDef="strategyType">
+            <th mat-header-cell *matHeaderCellDef class="cell-w-12">Strategy</th>
+            <td mat-cell *matCellDef="let element"> {{element.strategyType}} </td>
+        </ng-container>
+
+        <!-- Direction Column -->
+        <ng-container matColumnDef="direction">
+            <th mat-header-cell class="cell-w-12" *matHeaderCellDef>Direction</th>
+            <td mat-cell *matCellDef="let element" class="cell-w-12"> {{element.direction}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="amount">
+            <th mat-header-cell *matHeaderCellDef class="cell-w-12">Cost of Trade</th>
+            <td mat-cell *matCellDef="let element"> {{element.amount}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="maxRisk">
+            <th mat-header-cell *matHeaderCellDef class="cell-w-12">Max Risk</th>
+            <td mat-cell *matCellDef="let element"> {{element.maxRisk | number:'1.0-0'}} </td>
+        </ng-container>
+
+        <!-- <ng-container matColumnDef="profit">
+            <th mat-header-cell *matHeaderCellDef class="cell-w-12">Expected Profit</th>
+            <td mat-cell *matCellDef="let element"> {{element.profit | number:'1.0-0'}} </td>
+        </ng-container> -->
+
+        <ng-container matColumnDef="tags">
+            <th mat-header-cell *matHeaderCellDef class="justification-cell">Tags</th>
+            <td mat-cell *matCellDef="let element"> {{element.tags}} </td>
+        </ng-container>
+        <!-- <ng-container matColumnDef="postMarketComments">
+            <th mat-header-cell *matHeaderCellDef class="justification-cell">Post-Market Comments</th>
+            <td mat-cell *matCellDef="let element, let i = index">
+                <span class="mr-1">{{element.postMarketComments}}</span>
+                <mat-icon *ngIf="!viewTradePlan" class="mat-icon-edit mat-icon-sm" (click)="openPlannedTradeDialog(element, i)">edit
+                </mat-icon>
+            </td>
+        </ng-container> -->
+
+        <!-- <ng-container matColumnDef="executed" *ngIf="tradePlanId > 0">
+            <th mat-header-cell *matHeaderCellDef>Executed</th>
+            <td mat-cell *matCellDef="let element">
+                <mat-checkbox [(ngModel)]="element.executed"></mat-checkbox>
+            </td>
+        </ng-container> -->
+        <!-- <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>
+                
+            </th>
+            <td mat-cell *matCellDef="let element; let i = index;">
+                <div *ngIf="!viewTradePlan">
+                    <mat-icon class="mat-icon-sm mat-icon-sm ml-2" (click)="deletePlannedTrade(i)">delete
+                    </mat-icon>
+                </div>
+            </td>
+        </ng-container> -->
+
+        <tr mat-header-row *matHeaderRowDef="plannedTradesGridColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: plannedTradesGridColumns;"></tr>
+    </mat-table>
+    <div *ngIf="plannedTradesDataSource.length==0" class="text-center pt-3">No planned trades to display</div>
+</div>
+
+
+<!-- <div class="mb-2 ad-trade-plan-web">
+    <mat-accordion multi="false">
+        <mat-expansion-panel [expanded]="true">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <ng-template matExpansionPanelContent>
+                
+                
+            </ng-template>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div> -->
+
+<!-- Mobile Code -->
+<div class="mb-2 ad-trade-plan-mobile">
+    <div class="col-12 px-0 justify-content-between mb-1 pb-0">
+        <label class="col-form-label pt-0 pl-4 w-100 pr-2">Planned Trades 
+            <span class="cursor float-right" (click)="Collaps(i)">
+                <i class="material-icons material-icons-outlined">{{hideRuleContent[i] ? 'add_circle_outline' : 'remove_circle_outline'}}</i>
+            </span>
+        </label>
+
+        <div class="text-primary px-2 d-flex justify-content-end align-items-center" *ngIf="!viewTradePlan">
+            <span class="cursor" (click)="openPlannedTradeDialog()">Add Trade</span>
+        </div>
+
+        <div class="trade-plan-table" *ngIf="!hideRuleContent[i]">
+            <!-- Grid row -->
+            <div class="trade-plan-mobile-grid">
+                <div class="row mb-1 pl-3">
+                    <div class="col-7 pl-4 cell-header">Symbol</div>
+                    <div class="col-5 cell-header cell-header pl-2">Strategy</div>
+                </div>
+                <div class="pb-2 pt-3 mobile-grid-row" *ngFor="let element of planOpenGridData; let i=index">
+                    <div class="row">
+                        <div class="col-7 pl-3 mobile-grid-cell">
+                            <span class="cursor" (click)="Collaps(i)">
+                                <i class="material-icons">{{hideRuleContent[i] ? 'keyboard_arrow_up' :
+                                    'keyboard_arrow_right'}}</i>
+                            </span> {{element.symbol}}
+                        </div>
+                        <div class="col-5">{{element.strategyType}}</div>
+                    </div>
+                    <div class="pl-3" *ngIf="hideRuleContent[i]">
+                        <div class="row py-1">
+                            <div class="col-7 pl-4">
+                                Buy to Open
+                            </div>
+                            <div class="col-5">
+                                {{element.returnAmount}}
+                            </div>
+                        </div>
+                        <div class="row py-1">
+                            <div class="col-7 pl-4">
+                                Max. Risk
+                            </div>
+                            <div class="col-5">
+                                {{element.maxRisk | number:'1.0-0' }}
+                            </div>
+                        </div>
+                        <div class="row py-1">
+                            <div class="col-7 pl-4">
+                                Profit (Exp)
+                            </div>
+                            <div class="col-5">
+                                {{element.maxProfit | number:'1.0-0' }}
+                            </div>
+                        </div>
+                        <div class="row py-1">
+                            <div class="col-7 pl-4">
+                                Specify reasons for the trade
+                            </div>
+                            <div class="col-5">
+                                <span>{{element.actionText}}</span>
+                            </div>
+                        </div>
+                        <div class="row py-1">
+                            <div class="col-7 pl-4">
+                                Action
+                            </div>
+                            <div class="col-5">
+
+                                <span class="d-flex align-items-center" *ngIf="!viewTradePlan">
+                                    Action
+                                    <mat-icon class="text-primary mat-icon-md cursor ml-3"
+                                        (click)="openPlannedTradeDialog()">add_circle</mat-icon>
+                                </span>
+
+                                <div *ngIf="!viewTradePlan">
+                                    <mat-icon class="mat-icon-edit mat-icon-sm" (click)="openPlannedTradeDialog(element, i)">edit
+                                    </mat-icon>
+
+                                    <mat-icon class="mat-icon-sm mat-icon-sm ml-2" (click)="deletePlannedTrade(i)">
+                                        delete
+                                    </mat-icon>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

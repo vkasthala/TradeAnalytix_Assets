@@ -1,0 +1,88 @@
+<div class="trade-app help-section px-3">
+    <!-- end: header-section -->
+    <div class="main-body">
+        <div class="wrapper trade-app-dashboard help-web-page">
+            <div class="tab vertical-tabs">
+                <ul class="nav-tabs w-100">
+                    <li>
+                        <a routerLink="getting-started" routerLinkActive="active-link" >
+                            <span>Getting Started</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['add-trade']" routerLinkActive="active-link">
+                            <span>Add Trade</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['trade-journal-edit-trade']" routerLinkActive="active-link">
+                            <span>Edit Trade</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['trade-journal-close-trade']" routerLinkActive="active-link">
+                            <span>Close Trade</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a [routerLink]="['import-trade']" routerLinkActive="active-link">
+                            <span>Import Trades</span>
+                        </a>
+                    </li>
+    
+                    <li>
+                        <a [routerLink]="['trade-plan']" routerLinkActive="active-link">
+                            <span>Trade Plan</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['helprisk-analysis']" routerLinkActive="active-link">
+                            <span>Strategy Builder</span>
+                        </a>
+                    </li>
+                    <li [class.nav-active]="currentRoute == 'compare-strategy'">
+                        <a [routerLink]="['compare-strategy']" routerLinkActive="active-link">
+                            <span>Strategy Picker</span>
+                        </a>
+                    </li>
+                    <li [class.nav-active]="currentRoute == 'trading-rules'">
+                        <a [routerLink]="['trading-rules']" routerLinkActive="active-link">
+                            <span>Trading Rules</span>
+                        </a>
+                    </li>
+    
+                    <li [class.nav-active]="currentRoute == 'helpreports'">
+                        <a [routerLink]="['helpreports']" routerLinkActive="active-link">
+                            <span>Reports</span>
+                        </a>
+                    </li>
+                    <!-- <li [class.nav-active]="currentRoute == 'data-setup'">
+                        <a class="sidebar-link" [routerLink]="['data-setup']" routerLinkActive="active-link">
+                            <span>Data Setup</span>
+                        </a>
+                    </li> -->
+    
+                </ul>
+            </div>
+            <div class="main">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    
+        <!-- start: mobile-page -->
+        <div class="trade-app help-mobile-page">
+            <select class="form-control" [(ngModel)]="selectedObject" (change)="onNavigate($event)" selected> 
+                <option value="help/getting-started">Getting Started</option>
+                <option value="help/add-trade">Add Trade</option>
+                <option value="help/trade-journal-edit-trade">Edit Trade</option>
+                <option value="help/trade-journal-close-trade">Close Trade</option>
+                <option value="help/import-trade">Import Trades</option>
+            </select>
+
+            <div class="main">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>

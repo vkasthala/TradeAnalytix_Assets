@@ -1,0 +1,162 @@
+<div class="reports-section px-3">
+    <div class="main-body">
+        <!-- risk-tabs -->
+        <div class="trade-risk-tabs web-parent-reports">
+            <div class="tab" role="tabpanel">
+                <div class="reports-header">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="active" role="presentation">
+                            <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#Metrics"
+                                role="tab" (click)="onTabSelect('stats')">Statistics</a>
+                        </li>
+                        <li role="presentation">
+                            <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#Performance"
+                                role="tab" (click)="onTabSelect('performance')">Performance</a>
+                        </li>
+                        <li class="" role="presentation">
+                            <a aria-controls="Journal Reports" aria-expanded="false" data-toggle="tab"
+                                href="#RiskManagement" role="tab" (click)="onTabSelect('risk')">Risk Management</a>
+                        </li>
+                        <!-- <li class="" role="presentation">
+                            <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#Goals" role="tab"
+                                (click)="onTabSelect('goals')">Goals</a>
+                        </li> -->
+                        <li class="" role="presentation">
+                            <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#Discipline"
+                                role="tab" (click)="onTabSelect('discipline')">Discipline</a>
+                        </li>
+                        <li class="" role="presentation">
+                            <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#rules"
+                                role="tab" (click)="onTabSelect('rules')">Rules</a>
+                        </li>
+                        <!-- <li class="" role="presentation">
+                            <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#Commissions"
+                                role="tab" (click)="onTabSelect('commissions')">Commissions</a>
+                        </li> -->
+
+                    </ul>
+                    <!-- <a data-toggle="modal" data-target="#modal1" class="watch-video-sm cursor mr-3">Watch Video</a> -->
+                    <div class="metrics-header px-3 pt-2">
+                        <div class="d-flex align-items-center">
+                            <span class="page-nav">
+                                <a class="page-nav-item" [ngClass]="currentItem === '1d' ? 'selected' : ''" (click)="onDateOptionSelect('1d')">1D</a>
+                                <a class="page-nav-item" [ngClass]="currentItem === '5d' ? 'selected' : ''" (click)="onDateOptionSelect('5d')">5D</a>
+                                <a class="page-nav-item" [ngClass]="currentItem === '1m' ? 'selected' : ''" (click)="onDateOptionSelect('1m')">1M</a>
+                                <a class="page-nav-item" [ngClass]="currentItem === '3m' ? 'selected' : ''" (click)="onDateOptionSelect('3m')">3M</a>
+                                <a class="page-nav-item" [ngClass]="currentItem === '1y' ? 'selected' : ''" (click)="onDateOptionSelect('1y')">1Y</a>
+                            </span>
+
+                            <div class="top-sec">
+                                <!-- <div class="report-trade-symbol mr-2" *ngIf="selectedTabReport === 'performance'">
+                                    <div class="form-group has-search">
+                                        <app-trade-search (symbolSelectEvent)="symbolSelectEventHandler($event)"
+                                            #tradeSearchComponent>
+                                        </app-trade-search>
+                                       <mat-icon class="form-icon-down" (click)="onClearSymbol()">clear</mat-icon>
+                                    </div>
+                                </div> -->
+                                <div class="trade-date">
+                                    <div class="form-group m-0">
+                                        <div class='input-group date' id='datetimepicker1'>
+                                            <my-date-range-picker placeholder="Date range" name="mydaterange"
+                                                [options]="myDateRangePickerOptions"
+                                                (dateRangeChanged)="onDateRangeChanged($event)"
+                                                [(ngModel)]="dateFilter"></my-date-range-picker>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-content tabs">
+                    <div class="tab-pane active" id="Metrics" role="tabpanel">
+                        <app-metrics [filterChangeSubject]="filterChangeSubject"  [reportFilter]="reportFilter" #stats></app-metrics>
+                    </div>
+                    <div class="tab-pane" id="Performance" role="tabpanel">
+                        <app-performance [filterChangeSubject]="filterChangeSubject" [reportFilter]="reportFilter"
+                            (reportTypeChangeEmitter)="onSubTypeChange($event)" #performanceReports></app-performance>
+                    </div>
+                    <div class="tab-pane fade" id="RiskManagement" role="tabpanel">
+                        <app-riskmanagement [filterChangeSubject]="filterChangeSubject" [reportFilter]="reportFilter"
+                            #riskReports></app-riskmanagement>
+                    </div>
+                    <!-- <div class="tab-pane fade" id="Goals" role="tabpanel">
+                        <app-goals [filterChangeSubject]="filterChangeSubject" [reportFilter]="reportFilter"
+                            #goalsReports></app-goals>
+                    </div> -->
+                    <div class="tab-pane fade" id="Discipline" role="tabpanel">
+                        <app-discipline [filterChangeSubject]="filterChangeSubject" [reportFilter]="reportFilter"
+                            #disciplineReports></app-discipline>
+                    </div>
+                    <div class="tab-pane fade" id="rules" role="tabpanel">
+                        <app-reports-rules [filterChangeSubject]="filterChangeSubject" [reportFilter]="reportFilter"
+                            #disciplineReports></app-reports-rules>
+                    </div>
+                    <!-- <div class="tab-pane fade" id="Commissions" role="tabpanel">
+                        <app-commissions [filterChangeSubject]="filterChangeSubject" [reportFilter]="reportFilter"
+                            #commissionsReports></app-commissions>
+                    </div> -->
+
+                </div>
+            </div>
+        </div>
+
+        <!-- mobile-tabs -->
+        <div class="mobile-parent-reports p-3">
+            <select class="form-control" (change)="parentReportChange($event)" selected>
+                <option value="Portfolio">Holding Reports</option>
+                <option value="Performance">Performance</option>
+                <option value="Goals">Goals</option>
+                <option value="RiskManagement">Risk Management</option>
+                <option value="Rules">Trading Rules</option>
+                <option value="Discipline">Discipline</option>
+                <option value="Commissions">Commissions</option>
+            </select>
+            <div>
+                <div [ngClass]="selectedParentReport === 'Portfolio' ? 'd-block' : 'd-none'">
+                    <app-portfolio [filterChangeSubject]="filterChangeSubject"
+                        [reportFilter]="reportFilter"></app-portfolio>
+                </div>
+                <div [ngClass]="selectedParentReport === 'Performance' ? 'd-block' : 'd-none'">
+                    <app-performance [filterChangeSubject]="filterChangeSubject"
+                        [reportFilter]="reportFilter"></app-performance>
+                </div>
+                <div [ngClass]="selectedParentReport === 'Goals' ? 'd-block' : 'd-none'">
+                    <app-goals [filterChangeSubject]="filterChangeSubject" [reportFilter]="reportFilter"
+                        #goalsReports></app-goals>
+                </div>
+                <div [ngClass]="selectedParentReport === 'RiskManagement' ? 'd-block' : 'd-none'">
+                    <app-riskmanagement [filterChangeSubject]="filterChangeSubject" [reportFilter]="reportFilter"
+                        #riskReports></app-riskmanagement>
+                </div>
+                <div [ngClass]="selectedParentReport === 'Rules' ? 'd-block' : 'd-none'">
+                    <app-reports-rules [filterChangeSubject]="filterChangeSubject" [reportFilter]="reportFilter"
+                        #rulesReports></app-reports-rules>
+                </div>
+                <div [ngClass]="selectedParentReport === 'Discipline' ? 'd-block' : 'd-none'">
+                    <app-discipline [filterChangeSubject]="filterChangeSubject" [reportFilter]="reportFilter"
+                        #disciplineReports></app-discipline>
+                </div>
+                <div [ngClass]="selectedParentReport === 'Commissions' ? 'd-block' : 'd-none'">
+                    <app-commissions [filterChangeSubject]="filterChangeSubject" [reportFilter]="reportFilter"
+                        #commissionsReports></app-commissions>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal video-modal" id="modal1" tabindex="-1" role="dialog" aria-labelledby="modallabel1" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="text-right px-2 pt-2">
+                <span class="cursor" (click)="closePopup()" data-dismiss="modal"><mat-icon
+                        class="mat-icon-sm">clear</mat-icon></span>
+            </div>
+            <div class="modal-body px-2 py-0">
+                <iframe width="100%" height="480" src="https://www.youtube.com/embed/oTOw-wUL1Jw"
+                    allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,101 @@
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { SummaryRequest } from '../../shared/models/reports/summary-request.model';
+import { HttpService } from '../../shared/services/http.service';
+import { MarketStatus } from '../models/market-status.model';
+import { PlannedTrade } from '../models/planned-trade.model';
+import { TodayExecutedLeg } from '../models/today-executed-leg.model';
+import { TodayExecutedTrade } from '../models/today-executed-trade.model';
+import { TradePlanEntry } from '../models/trade-plan-entry.model';
+import { TradePlanGridRequest } from '../models/trade-plan-grid-request.model';
+import { TradePlanGridResult } from '../models/trade-plan-grid-result.model';
+import { TradePlanGridRow } from '../models/trade-plan-grid-row.model';
+import { TradePlanStrategy } from '../models/trade-plan-strategy.model';
+import { TradePlanSummary } from '../models/trade-plan-summary.model';
+import { TradePlan } from '../models/trade-plan.model';
+import { TradePlans } from '../models/trade-plans.model';
+@Injectable({
+    providedIn: 'root'
+})
+export class TradePlansService {
+    // private gridData:EntryExitRules[] = [];
+
+    private apiUrl = environment.apiUrl;
+
+    constructor(private http: HttpService) { }
+    private _url = "./assets/settings.json";
+
+    getTradePlans() {
+        return this.http.get<TradePlans[]>(this._url);
+    }
+
+    getMarketStatusValues(): Observable<MarketStatus[]> {
+        return this.http.get<MarketStatus[]>(this.apiUrl + '/trade-plan/market-status-values');
+    }
+
+    getOpenStrategies(): Observable<TradePlanStrategy[]> {
+        return this.http.get<TradePlanStrategy[]>(this.apiUrl + '/trade-plan/open-strategies');
+    }
+
+    getTradePlanStrategies(tradePlanId: number): Observable<TradePlanStrategy[]> {
+        return this.http.get<TradePlanStrategy[]>(this.apiUrl + '/trade-plan/strategies/' + tradePlanId);
+    }
+
+    getTodayExecutedTrades(day: string): Observable<TodayExecutedTrade[]> {
+        return this.http.get<TodayExecutedTrade[]>(this.apiUrl + '/trade-plan/executed-trades/' + day);
+    }
+
+    createPlannedTrade(tradePlanId: number, plannedTrade: PlannedTrade) {
+        return this.http.post<PlannedTrade, void>(this.apiUrl + '/trade-plan/planned-trade/create/' + tradePlanId, plannedTrade);
+    }
+
+    getPlannedTrades(tradePlanId: number): Observable<PlannedTrade[]> {
+        return this.http.get<PlannedTrade[]>(this.apiUrl + '/trade-plan/planned-trades/' + tradePlanId);
+    }
+
+    getDraftTrades(): Observable<PlannedTrade[]> {
+        return this.http.get<PlannedTrade[]>(this.apiUrl + '/trade-plan/draft-trades');
+    }
+
+    createTradePlan(tradePlan: TradePlan): Observable<void> {
+        return this.http.post<TradePlan, void>(this.apiUrl + '/trade-plan/create', tradePlan);
+    }
+
+    updateTradePlan(tradePlan: TradePlan): Observable<void> {
+        return this.http.post<TradePlan, void>(this.apiUrl + '/trade-plan/update', tradePlan);
+    }
+
+    deleteTradePlan(tradePlanId: number): Observable<void> {
+        return this.http.post(this.apiUrl + '/trade-plan/delete/'+tradePlanId, null);
+    }
+
+    getTradePlansGridResult(gridRequest: TradePlanGridRequest): Observable<TradePlanGridResult> {
+        return this.http.post<TradePlanGridRequest, TradePlanGridResult>(this.apiUrl + '/trade-plan/grid-result', gridRequest);
+    }
+
+    getTradePlanData(tradePlanId: number): Observable<TradePlan> {
+        return this.http.get<TradePlan>(this.apiUrl + '/trade-plan/' + tradePlanId);
+    }
+
+    getLatestTradePlan(): Observable<TradePlanGridRow> {
+        return this.http.get<TradePlanGridRow>(this.apiUrl + '/trade-plan/latest');
+    }
+
+    getTodayExecutedLegs(day: string): Observable<TodayExecutedLeg[]> {
+        return this.http.get<TodayExecutedLeg[]>(this.apiUrl + '/trade-plan/executed/' + day);
+    }
+
+    getTopPlanEntries(): Observable<TradePlanEntry[]> {
+        return this.http.get<TradePlanEntry[]>(this.apiUrl + '/trade-plan/top-entries');
+    }
+
+    getTradePlanEntries(fromDay: string, toDay: string): Observable<TradePlanEntry[]> {
+        return this.http.get<TradePlanEntry[]>(this.apiUrl + '/trade-plan/trade-plan-entries' + '?fromDay=' + fromDay + "&toDay=" + toDay);
+    }
+
+    getTradePlanSummary(request: SummaryRequest): Observable<TradePlanSummary> {
+        return this.http.post<SummaryRequest, TradePlanSummary>(this.apiUrl + '/trade-plan/summary', request);
+    }
+
+}

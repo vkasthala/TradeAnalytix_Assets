@@ -1,0 +1,221 @@
+@import '../../../../../../assets/styles/variable.scss';
+.card-main {
+    padding-right: 10px;
+}
+
+.editable-text {
+    width: 100px;
+}
+
+.trade-cards-section {
+    display: flex;
+    align-items: stretch;
+    flex-wrap: wrap;
+    padding-bottom: .25rem;
+}
+
+.mat-row:nth-child(odd) {
+    background-color: transparent !important;
+    border: 0;
+}
+
+mat-cell:first-of-type,
+mat-footer-cell:first-of-type,
+mat-header-cell:first-of-type {
+    padding-left: 10px !important;
+    flex: 0 0 25%;
+}
+
+mat-cell:last-of-type,
+mat-footer-cell:last-of-type,
+mat-header-cell:last-of-type {
+    padding-right: 0 !important;
+}
+
+.editable-list .mat-list-item-content {
+    padding: 0 10px !important;
+}
+
+.right-icon {
+    float: right;
+    cursor: pointer;
+}
+
+.action-icon {
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.mat-list-base .mat-list-item,
+.mat-list-base .mat-list-option {
+    height: 32px;
+    font-size: 14px;
+}
+
+.mat-row {
+    min-height: 36px;
+}
+
+.mat-nav-list .mat-list-item:hover {
+    background: rgba(0, 0, 0, .0567);
+}
+
+.form-control {
+    background: #FFFFFF;
+    border: 1px solid #9DA6BA;
+    border-radius: 4px;
+    font-size: 13px;
+    height: 40px;
+}
+
+.mat-icon {
+    color: #275C9F;
+    cursor: pointer;
+}
+
+.mat-icon-edit {
+    color: #9DA6BA;
+}
+
+.actions-column {
+    width: 100px;
+    text-align: right;
+}
+
+option[value=""][disabled] {
+    display: none;
+}
+
+option {
+    color: #495057;
+}
+
+option:first {
+    color: #999;
+}
+
+.trade-cards-section .card-main:first-child,
+.trade-cards-section .card-main:nth-child(2) {
+    width: 35%;
+}
+
+.editable-grid-web {
+    @media #{$extra-small} {
+        display: none !important;
+    }
+}
+.editable-grid-mobile {
+    display: none;
+}
+.editable-grid-container {
+    padding: 0.5rem !important;
+    border: 1px solid #dee2e6;
+}
+
+@media #{$extra-small} {
+    .editable-grid-mobile {
+        display: block;
+    }
+    .editable-grid_mobile_sec {
+        padding: 15px;
+        background: #FFFFFF;
+        box-shadow: 0px 4px 16px rgb(157 157 157 / 30%);
+        border-radius: 5px;
+        margin-bottom: 20px;
+        h3 {
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 24px;
+            color: #275C9F;
+            padding-bottom: 0.5rem;
+        }
+        .show-stock-sec {
+            border-bottom: 1px solid rgb(157 166 186 / 30%);
+            padding-bottom: .5rem;
+            margin-bottom: .5rem;
+        }
+        .col-form-value {
+            font-weight: 600;
+            font-size: 13px;
+            line-height: 21px;
+            color: #275C9F;
+        }
+    }
+
+    .newgoal_slide {
+        position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 99;
+        background: #f2f4f6;
+        width: 100vw;
+        height: 100%;
+    }
+    .newgoal_slide-header {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 21px;
+        color: #FFFFFF;
+        background: #275C9F;
+        padding: 15px;
+        align-items: center;
+        display: flex;
+    }
+    .arrow_back {
+        color: #FFFFFF; 
+    }
+    
+    .newitem_slide_body {
+        background: #FFFFFF;
+        box-shadow: 0px 4px 16px rgba(157, 157, 157, 0.1);
+        border-radius: 4px;
+        padding: 15px;
+    }
+    .newitem_slide_heading { 
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
+        color: #275C9F;
+    }
+    .newitem_bottom {
+        border-top: 1px solid rgb(157 166 186 / 30%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
+        color: #2285FA;
+    }
+
+    .editable-grid-mobile .form-control {
+        height: 33px;
+    }
+    .trade-cards-section .card-main {
+        width: 50% !important;
+        margin-bottom: 0.5rem;
+    }
+    .editable-text {
+        width: 100% !important;
+    }
+    
+    mat-cell:first-of-type,
+    mat-footer-cell:first-of-type,
+    mat-header-cell:first-of-type {
+        padding-left: 0 !important;
+    }
+    .editable-grid-container {
+        padding: 0 !important;
+        border: 0;
+    }
+    .mat-cell:nth-child(3) {
+        flex: 0 0 13%;
+        width: 13%;
+    }
+    .mat-cell:nth-child(4) {
+        flex: 0 0 22%;
+        width: 22%;
+    }
+}

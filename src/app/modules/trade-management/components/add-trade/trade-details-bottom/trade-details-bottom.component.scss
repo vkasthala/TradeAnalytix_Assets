@@ -1,0 +1,56 @@
+.widget_item {
+    padding: 0.345rem 0.25rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.widget_item-title {
+    font-weight: 300;
+    font-size: 14px;
+    color: #242E3A;
+}
+
+.widget_item-value,
+.widget_item-label {
+    font-weight: 600;
+    font-size: 20px;
+    color: #275C9F;
+}
+
+.maximum_proﬁt {
+    color: #61BC6D;
+}
+
+.maximum_risk {
+    color: #EC6B56;
+}
+.text-black {
+    color: #000 !important;
+}
+
+@media (min-width:768px) {
+    .net_debit {
+        font-weight: 300;
+        font-size: 15px;
+    }
+    .total_label {
+        display: flex;
+        justify-content: flex-end;
+    }
+    .total_amount {
+        display: flex;
+        justify-content: flex-end;
+    }
+}
+
+.closed_date_sec {
+    border-left: 1px solid #9DA6BA;
+    padding: 0 1rem;
+}
+.custom-tooltip {
+    max-width: 50% !important;
+}
+.net_debit {
+    padding: 10px 25px;
+}

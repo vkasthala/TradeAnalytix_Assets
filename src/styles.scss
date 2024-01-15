@@ -1,67 +1,94 @@
 /* You can add global styles to this file, and also import other style files */
-@import './assets/styles/variable.scss';
 
-*{
+@import './assets/styles/variable.scss';
+@import './assets/styles/custom.scss';
+@import "ag-grid-community/dist/styles/ag-grid.css";
+@import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+
+* {
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
 }
 
-h1,h2,h3,h4,h5,h6{
+
+.form-group {
     margin-bottom: 0px !important;
 }
 
-p{
-    margin-bottom: 0px !important;
-
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif !important;
+    color: #393B40 !important;
+    background-color: #f5f7f9 !important;
+    font-size: 14px !important;
+    min-height: 100vh;
 }
 
-.form-group{
-    margin-bottom: 0px !important;
-}
-  
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif !important; 
-
-}
-
-
-.form-control:focus{
-    outline: none ;
+.form-control:focus {
+    outline: none;
     box-shadow: none !important;
 }
 
-.mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
-    background-color: #0183C0 !important;
+.mat-horizontal-stepper-header .mat-step-icon {
+    margin-right: 0 !important;
+    width: 20px !important;
+    background: transparent !important;
+    color: rgba(0, 0, 0, .87);
+    font-size: 14px;
+    display: none;
+}
+
+.mat-step-header .mat-step-icon-selected,
+.mat-step-header .mat-step-icon-state-done,
+.mat-step-header .mat-step-icon-state-edit {
+    color: #37a01a;
+    background: transparent !important;
 }
 
 .mat-horizontal-stepper-header-container {
-    background: #DBDBDB !important;
-    padding: 10px 100px;
+    background: #f6f8fb;
+    box-shadow: 0px -4px 16px rgba(157, 157, 157, 0.1);
+    border-radius: 4px 4px 0 0;
+    position: relative;
     @media #{$small} {
         padding: 10px 0px;
-      }
+        justify-content: space-between;
+        background: #f6f8fb;
+    }
+    &::before {
+        position: absolute;
+        height: 2px;
+        background: #f1f2f5;
+        content: "";
+        width: 100%;
+        bottom: 0;
+        left: 0;
+        z-index: 9;
+    }
 }
 
-.mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:first-child)::before, .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:last-child)::after, [dir=rtl] .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:first-child)::after, [dir=rtl] .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:last-child)::before {
+.mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:first-child)::before,
+.mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:last-child)::after,
+[dir=rtl] .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:first-child)::after,
+[dir=rtl] .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:last-child)::before {
     border-top-width: 2px !important;
-}
-
-.mat-horizontal-stepper-header::after, .mat-horizontal-stepper-header::before, .mat-stepper-horizontal-line {
-    border-top-color: #AAAAAA !important;
 }
 
 .mat-stepper-horizontal-line {
-    border-top-width: 2px !important;
+    display: none;
 }
-
+.mat-stepper-horizontal,
+.mat-stepper-vertical {
+    position: relative;
+    font-family: 'Poppins', sans-serif !important;
+    background-color: transparent !important;
+}
 .mat-horizontal-content-container {
-    overflow: auto !important;
-    min-height: 40vh !important;
-
+    padding: 0 !important;
     @media #{$small} {
         padding: 0 24px 9px 24px;
-      }
+    }
 }
 
 .cursor-pointer {
@@ -72,71 +99,682 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif !important;
     padding: 0 !important;
 }
 
-.mat-step-label-selected {
-    color: $appbtn-color !important;
+.mat-horizontal-stepper-header {
+    height: 50px !important;
+    padding: 0 20px !important;
+    background: #F6F8FB;
+    @media #{$small} {
+        justify-content: space-between;
+        background: #f6f8fb;
+
+        .mat-horizontal-stepper-header-container {
+            padding: 10px 0px;
+            justify-content: space-between;
+            background: #f6f8fb;
+        }
+    }
 }
 
-.mat-horizontal-stepper-header{
-    pointer-events: none !important;
-}
 
+.mat-horizontal-stepper-header:first-child {
+    border-radius: 4px 0 0 0;
+}
 
 @media #{$extra-small} {
-    .mat-horizontal-stepper-header-container {
-        display: none !important;
-      }
-
-      .mat-stepper-horizontal, .mat-stepper-vertical{
-          background-color: transparent !important;
-      }
-      .mat-horizontal-content-container{
-          padding: 0px !important;
-      }
-  }
+    .mat-stepper-horizontal,
+    .mat-stepper-vertical {
+        background-color: #f6f8fb !important;
+    }
+    .mat-horizontal-content-container {
+        padding: 0px !important;
+    }
+}
 
 .mat-expansion-panel-header-title {
     width: 100%;
 }
 
-.mat-step-label{
-    font-size: 16px !important;
+.mat-step-label {
+    font-size: 15px !important;
     font-weight: 500 !important;
     @media #{$small} {
         white-space: break-spaces !important;
         font-size: 14px !important;
-      }
+    }
+}
+
+.mat-step-label {
+    color: #9DA6BA !important;
+}
+
+.mat-step-label-selected {
+    color: #fff !important;
+}
+
+.mydrp {
+    width: 210px !important;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.trade-plan-date .mydrp {
+    background: #F5F8FA;
+    border: 1px solid #9DA6BA;
+    box-sizing: border-box;
+    border-radius: 4px;
+    height: 40px;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.trade-plan-date .mydrp .selectiongroup,
+.trade-plan-date .mydrp .selection {
+    background: transparent !important;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.trade-plan-date .mydrp .btnclear,
+.trade-plan-date .mydrp .btnpicker {
+    width: 20px !important;
+    background: transparent !important;
+}
+
+.mat-paginator,
+.mat-paginator-page-size .mat-select-trigger {
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 13px;
+}
+
+.date-range-md .mydrp .selectiongroup {
+    height: 38px !important;
+}
+
+.date-range-md .mydrp .selection {
+    height: 37px !important;
+}
+
+input:invalid {
+    box-shadow: 0 0 1.5px 1px red;
+}
+
+.hide-bars::-webkit-inner-spin-button,
+.hide-bars::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+.hide-bars {
+    border: none !important;
+    width: 100%;
+    text-align: center;
+}
+
+.hide-bars:focus {
+    outline: none !important;
+}
+
+.height-auto {
+    height: auto !important;
+}
+
+.mat-stepper-vertical {
+    border-top: 1px solid #cecece;
+    min-height: 200px;
+}
+
+.mat-vertical-stepper-header {
+    position: absolute !important;
+    z-index: 20;
+    width: 190px;
+    left: 0;
+    top: 0;
+    height: 60px !important;
+    box-sizing: border-box !important;
+    border-bottom: 1px solid #cecece;
+}
+
+.mat-vertical-content-container {
+    margin-left: 0 !important;
+    padding-left: 190px;
+}
+
+.mat-vertical-stepper-content {
+    border-left: 1px solid #cecece;
+}
+
+.mat-vertical-stepper-header:last-child {
+    border-top-width: 2px !important;
+}
+
+.mat-stepper-vertical .mat-step:nth-child(2)>.mat-vertical-stepper-header {
+    top: 60px;
+}
+
+.mat-stepper-vertical .mat-step:nth-child(3)>.mat-vertical-stepper-header {
+    top: 120px;
+}
+
+.mat-stepper-vertical .mat-step:nth-child(4)>.mat-vertical-stepper-header {
+    top: 180px;
+}
+
+.mat-stepper-vertical-line::before {
+    border-left: 0 !important;
+}
+
+.mat-stepper-vertical .mat-step:nth-child(1)>.mat-vertical-content-container .mat-vertical-content {
+    min-height: 250px;
+}
+
+.mat-expansion-indicator::after {
+    color: #275C9F !important;
+}
+
+.highcharts-figure,
+.highcharts-data-table table {
+    min-width: 360px;
+    max-width: 800px;
+    margin: 1em auto;
 }
 
 
-.mydrp{
-    width: 220px !important;
-  }
-  input:invalid {   box-shadow: 0 0 1.5px 1px red;   }
+/*.highcharts-background {
+	fill: #F6F8FB;
+	stroke: #9DA6BA;
+	stroke-width: 1px solid;
+} */
 
+.highcharts-data-table table {
+    border-collapse: collapse;
+    border: 1px solid #EBEBEB;
+    margin: 10px auto;
+    text-align: center;
+    width: 100%;
+    max-height: 400px;
+    max-width: 500px;
+    font-family: 'Poppins', sans-serif !important;
+    color: #242E3A !important;
+    font-size: 14px !important;
+    background: #fff;
+}
 
-  .hide-bars::-webkit-inner-spin-button, 
-  .hide-bars::-webkit-outer-spin-button { 
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
-      margin: 0; 
-  }
-  .hide-bars {
-      border: none !important;
-      width: 100%;
-      text-align: center;
-  }
-  
-  .hide-bars:focus {
-    outline: none !important;
-  }
+.highcharts-data-table caption {
+    padding: 1em 0;
+    font-size: 1.2em;
+    color: #555;
+}
 
-  .height-auto {
+.highcharts-data-table th {
+    font-weight: 600;
+    padding: 0.5em;
+}
+
+.highcharts-data-table td,
+.highcharts-data-table th,
+.highcharts-data-table caption {
+    padding: 0.5em;
+}
+
+.highcharts-data-table thead tr,
+.highcharts-data-table tr:nth-child(even) {
+    background: #f8f8f8;
+}
+
+.highcharts-data-table tr:hover {
+    background: #f1f7ff;
+}
+
+.highcharts-tooltip>span {
+    padding: 8px;
+    background-color: rgba(255, 255, 255, 1);
+    z-index: 9999 !important;
+    box-shadow: 1px 1px 2px #888;
+}
+
+.dateGain {
+    position: absolute;
+    text-align: center;
+    background: #61BC6D;
+    font-family: 'Poppins';
+    color: #fff;
+    width: 25px;
+    z-index: 1 !important;
+    border-bottom-right-radius: 5px;
+}
+
+.valGain {
+    position: relative;
+    z-index: 1 !important;
+    font-family: 'Poppins';
+    color: #61BC6D;
+}
+
+.dateloss {
+    position: absolute;
+    text-align: center;
+    background: #EC6B56;
+    font-family: 'Poppins';
+    color: #fff;
+    width: 25px;
+    z-index: 1 !important;
+    border-bottom-right-radius: 5px;
+}
+
+.valLoss {
+    position: relative;
+    z-index: 1 !important;
+    font-family: 'Poppins';
+    color: #EC6B56;
+}
+
+// overwrite the checkbox background
+.mat-checkbox-checked.mat-accent .mat-checkbox-background,
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background,
+.mat-checkbox-checked.mat-accent .mat-checkbox-background,
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+    background-color: transparent !important;
+}
+
+.mat-checkbox-checked:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element,
+.mat-checkbox:active:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element {
+    background-color: transparent !important;
+}
+
+@media (max-width:1024px) {
+    .mydrp {
+        width: 170px !important;
+    }
+    .date-range-md .mydrp .selection {
+        height: 32px !important;
+    }
+    .date-range-md .mydrp .selectiongroup {
+        height: 33px !important;
+    }
+}
+
+.filters-slide .mydrp {
+    width: 100% !important;
+}
+
+.calendar-day-icon{
+    font-size: 18px !important;
+    vertical-align: middle !important;
+}
+
+.report-trade-symbol #search-component input {
+    height: 37px;
+}
+.ad-trade-plan-web .mat-expansion-panel-body {
+    padding: 0 !important;
+}
+.dashboard .custom-calendar ul.custom_dates {
+    // height: 270px;
+}
+.dashboard .custom-calendar ul li {
+    font-size: 14px !important;           //Updated font size in Calendar report
+    height: 57px !important;
+    justify-content: end !important;
+}
+.reports-chart .highcharts-data-table {
+    height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: absolute;
+    top: 0;
+    margin: 5px;
+    background: #fff;
+    border: 1px solid #EBEBEB;
+}
+.reports-chart .highcharts-data-table table {
+    margin: 0;
+    max-width: 100%;
+}
+.reports-chart .highcharts-data-table caption {
+    padding: 0.5em 1rem;
+    
+}
+.toast-info {
+    color: #2F96B4 !important;
+    border-left: 6px solid #2F96B4;
+    background: #fff !important;
+}
+.bulk-update-grid .ag-cell {
+    font-size: 14px !important;
+    display: flex;
+}
+.ag-cell-value, .ag-group-value {
+    font-size: 12px !important;
+    min-height: 45px;
+}
+.ag-theme-alpine .ag-cell {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+.ag-theme-alpine .ag-header-cell, .ag-theme-alpine .ag-header-group-cell {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    border-top-color: rgb(186 191 199 / 41%) !important;
+}
+
+.mat-dialog-container {
+    overflow: hidden !important;
+}
+.ag-row-odd {
+    background-color: #f6f8fb !important;
+}
+.read-only-cell {
+    background: rgb(243 243 243 / 46%) !important;
+}
+.autoHeight-cell {
+    white-space: normal;
+    word-break: break-all;
+    line-height: 22px !important;
+}
+.w-80 {
+    width: 80%;
+}
+
+@media #{$extra-small} {
+    .investmentgoals-form .mydrp {
+        width: 155px !important;
+    }
+    .guided-tour-modal, .guided-tour-panel {
+        display: none;
+    }
+}
+
+.features_section .mat-expanded .mat-expansion-indicator::after {
+    color: #ffffff !important;
+}
+
+.guided-tour-modal {
+    opacity: 1 !important;
+    background: rgba(0,0,0,.32) !important;
+}
+.tradingview-chart > div {
+    width: 100% !important;
+}
+.tradingview-chart > div > div {
+    width: 100% !important;
+}
+
+.financials-view > div {
+    width: 100% !important;
+    height: 520px !important;
+}
+.financials-view iframe {
+    height: 100% !important;
+    width: 100% !important;
+}
+.financials-view iframe div {
+    height: 100% !important;
+}
+
+.financials-view .tv-feed-widget__scroll-wrapper {
+    height: 100% !important;
+}
+.date-filter-list .mydrp {
+    width: 100% !important;
+    font-family: 'Poppins', sans-serif !important;
+}
+.trade-plan-accordion .mat-expansion-panel-body {
+    padding: 0 0 5px 0 !important;
+}
+.ng-image-slider {
+    height: 50px !important;
+}
+.ng-image-slider .ng-image-slider-container .main {
+    min-height: inherit;
+    padding: 0;
+    height: 50px !important;
+}
+.ng-image-slider .ng-image-slider-container .main .main-inner .img-div {
+    margin-left: 1rem !important;
+    margin-right: 1rem !important;
+}
+.thesis-cell {
     height: auto !important;
-  }
+}
+.tags-cell.ag-cell-inline-editing {
+    height: auto !important;
+}
+.ng-image-slider .ng-image-slider-container .main .main-inner .img-div {
+    box-shadow:none !important;
+}
+.ng-image-slider .ng-image-slider-container .main .main-inner .img-div img {
+    height: inherit !important;
+    border-radius: 0 !important;
+}
+.ng-image-slider .ng-image-slider-container .main .next,
+.ng-image-slider .ng-image-slider-container .main .prev {
+    display: none !important;
+}
+.ag-text-field-input {
+    min-height: 30px !important;
+}
+.ag-theme-alpine .ag-ltr .ag-floating-filter-button {
+    margin-left: 5px !important;
+    display: none;
+}
+.ag-header-cell-menu-button {
+    display: none !important;
+}
+.ag-theme-alpine .ag-root-wrapper {
+    border-color: #c6c8cb7d !important;
+}
+.ag-theme-alpine .ag-header {
+    background: #eaecf1 !important;
+}
+.ag-theme-alpine .ag-header-row {
+    background: #eaecf1;
+    color: #393B40 !important;
+    font-size: 14px;
+    font-weight: 600;
+}
+.ag-theme-alpine .ag-header-cell-resize::after {
+    background-color: rgb(58 76 133 / 41%) !important;
+    width: 1px;
+}
+.ag-theme-alpine .ag-row {
+    border-color: #dbdde1 !important;
+}
+.ag-theme-alpine .ag-cell-inline-editing {
+    border: 0 !important;
+    box-shadow: none !important;
+    background: transparent;
+    padding: 0 !important;
+}
 
-  input[type="date"]::-webkit-inner-spin-button,
-input[type="date"]::-webkit-calendar-picker-indicator {
-    // display: none;
-    // -webkit-appearance: none;
+.ag-cell app-close-event-editor,
+.ag-cell app-close-source-editor,
+.ag-cell app-contrarian-editor,
+.ag-cell app-event-editor,
+.ag-cell app-planned-editor, 
+.ag-cell app-direction-editor, 
+.ag-cell app-mindset-editor, 
+.ag-cell editor-cell, 
+.ag-cell app-strategy-editor, 
+.ag-cell app-technical-indicator-editor, 
+.ag-cell app-thesis-editor {
+    width: 100%;
+    padding: 3px 10px;
+}
+.bulk-update .form-control {
+    font-size: 14px !important;
+}
+.targe-price .ag-cell-edit-wrapper {
+    padding: 3px 10px;
+}
+.bulk-update textarea.form-control {
+    height: auto;
+    width: 100%;
+    min-height: 100px;
+}
+.ag-header-row-column .ag-header-cell-label {
+    justify-content: center;
+}
+.thesis-cell, .tags-cell {
+    text-align: left !important;
+}
+
+.orange-list .mat-checkbox-checked .mat-checkbox-persistent-ripple {
+    background-color: #EC4344 !important;
+}
+.orange-list .mat-checkbox-checked.mat-accent .mat-checkbox-background,
+.orange-list .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background,
+.orange-list .mat-checkbox-checked.mat-accent .mat-checkbox-background,
+.orange-list .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+    background-color: #49B763 !important;
+}
+.orange-list .mat-checkbox-inner-container {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    border: 0;
+    border-radius: 4px;
+    padding: 0;
+    margin-top: 3px;
+    box-shadow: none;
+    position: absolute;
+    right: 0;
+}
+.orange-list .mat-checkbox-frame {
+    border: 0 !important;
+    background: #EC4344;
+}
+.orange-list .mat-checkbox-checkmark-path {
+    stroke: #d31818!important;
+}
+.orange-list .mat-checkbox-checked .mat-checkbox-checkmark-path {
+    stroke: #fff !important;
+}
+.orange-list .mat-checkbox-checked .mat-icon {
+    display: none;
+}
+.mat-checkbox {
+    font-family: "Poppins", sans-serif !important;
+}
+.mat-checkbox-layout .mat-checkbox-label {
+    line-height: 24px;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: "Poppins", sans-serif !important;
+}
+
+.thesis-cell .ag-text-field-input {
+    height: 120px !important;
+}
+html.theme-light .group-wWM3zP_M- {
+    background: #1E1E1F !important;
+}
+.cdk-overlay-pane  {
+    //--width: 100vw;
+    //left: calc(var(--width) - 23%) !important;
+    zoom: 0.8;
+} 
+.mat-dialog-container {
+    zoom: 1.1;
+}
+.automatic-rule .mat-checkbox-inner-container {
+    margin-right: 0 !important;
+}
+.automatic-rule .mat-checkbox-frame {
+    border:1px solid #ccc;
+}
+.mat-checkbox-checkmark-path {
+    stroke: #1aa92d !important;
+}
+.mat-checkbox-inner-container {
+    width: 18px;
+    height: 18px;
+}
+.mat-checkbox-frame {
+    border:1px solid #ccc;
+    border-width: 1px !important;
+}
+.tv-widget-watch-list__head-embed {
+    margin-top: 5px !important;
+}
+
+.owl-dots {
+    flex-direction: column;
+    margin: 0 10px;
+    // bottom: 480px;
+    position: absolute;
+    right: 0;
+    left: 0;
+    z-index: 15;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+.owl-dot {
+    box-sizing: content-box;
+    flex: 0 1 auto;
+    padding: 0;
+    margin-right: 3px;
+    margin-left: 3px;
+    text-indent: -999px;
+    cursor: pointer;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    
+    transition: opacity .6s ease;
+    height: 12px;
+    width: 12px;
+}
+.owl-theme .owl-dots .owl-dot span {
+    margin: 0;
+    opacity: .5;
+    height: 12px;
+    width: 12px;
+    background-color: #135EA4 !important;
+    border-radius: 0;
+}
+.owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
+    background: #135EA4 !important;
+    opacity: 1;
+}
+.inner-accordion .mat-expansion-panel {
+    background: transparent;
+    margin-bottom: 0 !important;
+}
+.trade-plan-lt .mydrp {
+    width: 100% !important;
+    font-family: 'Poppins', sans-serif !important;
+}
+.mat-calendar-body-selected {
+    background-color: #4A93D4 !important;
+    color: #fff;
+}
+.mat-calendar-table-header {
+    color: #393B40 !important;
+}
+.mat-calendar-table-header th, .mat-calendar-body {
+    font-size: 16px !important;
+    color: #393B40 !important;
+    font-weight: 500;
+}
+.trade-plan-first .mat-calendar-body-label {
+    font-size: 16px !important;
+    color: #393B40 !important;
+    font-weight: 500;
+}
+.trade-plan-first .mat-button-wrapper {
+    font-size: 16px !important;
+    color: #393B40 !important;
+    font-weight: 500;
+}
+.trade-plan-first .mat-card {
+    box-shadow: 0 0px 0px 1px rgb(118 118 118 / 12%) !important;
+}
+
+.dashboard .firve-rows-calendar .custom-calendar ul li {
+    height: 67px !important;
+}
+.how-works .owl-nav {
+    display: none;
 }

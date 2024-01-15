@@ -1,0 +1,183 @@
+<div class="import-header">
+   <p>Adding trades to CueTrade from your brokerage account is a breeze, and you have two convenient options: Manual Import and Auto-Import</p> 
+   <strong>Manual Import: </strong>Simply download the trade history files from your brokerage account and effortlessly upload them into CueTrade. This allows you to add your trades to CueTrade manually.
+    <br/><br/>
+   <strong>Auto-Import: </strong>Seamlessly connect your brokerage account to CueTrade, allowing for automatic importation of all your trades from the brokerage directly into CueTrade.
+
+</div>
+<div class="import-body">
+    <div class="import-container">
+        <div class="import_trade_header">
+            <span class="header-title">{{importType == 1 ? "Manual Import" : "Auto-Import" }}</span>
+            <div class="d-flex align-items-center justify-content-between">
+                <label class="col-form-label col-6">Select Import Type</label>
+                <select [(value)]="importType" (change)="selectionChange($event.target.value)" class="form-control">
+                    <option value="1">Manual Import</option>
+                    <option value="2">Auto-Import</option>
+                </select>
+            </div>
+        </div>
+        
+        <div *ngIf="importType == 1">
+            <app-manual-import (newItemEvent)="reload()"></app-manual-import>
+        </div>
+
+        <div *ngIf="importType == 2">
+            <app-auto-import (newItemEvent)="reload()"></app-auto-import>
+        </div>
+    </div>
+
+    <div *ngIf="importType == 1" class="mt-3">
+        <div class="d-flex justify-content-end pb-2 px-3">
+            <a class="d-flex text-link" (click)="reload()">
+                <mat-icon>refresh</mat-icon> Refresh
+            </a>
+        </div>
+        <div class="trade-table">
+            <mat-table [dataSource]="dataSource" matSort>
+                <!-- Date Column -->
+                <ng-container matColumnDef="openDate">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header class="date-cell">Date</mat-header-cell>
+                    <mat-cell class="date-cell" *matCellDef="let element"> {{element.createDateTime | date: 'dd-MMM-yyyy'}} </mat-cell>
+                </ng-container>
+
+                <!-- File name Column -->
+                <ng-container matColumnDef="stockName">
+                    <mat-header-cell class="stock-name-cell" *matHeaderCellDef mat-sort-header>File name</mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.fileName}} </mat-cell>
+                </ng-container>
+
+                <!-- Status Column -->
+                <ng-container matColumnDef="status">
+                    <mat-header-cell class="status-cell" *matHeaderCellDef mat-sort-header>Status</mat-header-cell>
+                    <mat-cell *matCellDef="let element" class="status-cell">
+                        <span class="text-primary" *ngIf="element.status === 'IN_PROGRESS'">
+                            In Progress
+                        </span>
+                        <span class="text-success" *ngIf="element.status === 'COMPLETE'">Complete</span>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Uploaded Records Column -->
+                <ng-container matColumnDef="direction">
+                    <mat-header-cell class="records-cell" *matHeaderCellDef mat-sort-header>Uploaded Records</mat-header-cell>
+                    <mat-cell *matCellDef="let element" class="text-success records-cell"> {{element.totalRecords}} </mat-cell>
+                </ng-container>
+
+                <!-- Failed Records Column -->
+                <ng-container matColumnDef="failedRecords">
+                    <mat-header-cell class="records-cell" *matHeaderCellDef mat-sort-header>Failed Records</mat-header-cell>
+                    <mat-cell *matCellDef="let element" class="text-danger records-cell"> {{element.failedRecords}} </mat-cell>
+                </ng-container>
+                
+
+                <!-- Closed Date Column -->
+                <ng-container matColumnDef="action">
+                    <mat-header-cell class="action-cell" *matHeaderCellDef mat-sort-header>Action</mat-header-cell>
+                    <mat-cell *matCellDef="let element, let i = index" class="action-cell action_colum">
+                        <div class="d-flex align-items-center">
+                            <span class="mr-3 import_trade_actions" (click)="downloadFailedTrade(element)">
+                                <mat-icon class="mat-icon-sm">download</mat-icon> Failed Records
+                            </span>
+                            <!-- <span class="mr-3 import_trade_actions" (click)="downloadTradeThesis(element)">
+                                <mat-icon  class="mat-icon-sm">download</mat-icon> Impacted Trades
+                            </span>
+                            <span class="d-flex align-items-center position-relative">
+                                <mat-icon class="mat-icon-sm">cloud_upload</mat-icon>
+                                <input class="custom-browse" type="file" (change)="uploadTradeThesis($event, element)" /> Upload Trade Thesis
+                            </span> -->
+                        </div>
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+            <div class="p-3 text-center" *ngIf="dataSource.length === 0">No trades are imported yet</div>
+            <!-- Angular 8 pagination -->
+            <mat-paginator *ngIf="dataSource.totalCount > 0" [pageSize]="20" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true" [length]="dataSource.totalCount">
+            </mat-paginator>
+        </div>
+    </div>
+
+    <!-- Venkat commented the code to display the grid that shows brokerages from whom trades can be auto-imported, status, last fecthed date, etc. Uncomment this when auto-import is implemented.
+    <div *ngIf="importType == 2" class="mt-3">
+        <h4 class="sub-title py-2">Brokerage Accounts</h4>
+        <div class="trade-table">
+            <table class="mat-table">
+                <thead>
+                    <tr class="mat-header-row">
+                        <th class="mat-header-cell brokerage_cell">Brokerage</th>
+                        <th class="mat-header-cell Linked_cell">Status</th>
+                        <th class="mat-header-cell Linked_cell">Linked Date</th>
+                        <th class="mat-header-cell Fetch_cell">Last Successful Fetch Date</th>
+                        <th class="mat-header-cell Action_cell">Action</th>
+                        <th class="mat-header-cell"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="mat-row">
+                        <td class="mat-cell">Robinhood</td>
+                        <td class="mat-cell">Not Linked</td>
+                        <td class="mat-cell">NA</td>
+                        <td class="mat-cell">NA</td>
+                        <td class="mat-cell"><span class="cursor-text">Link</span></td>
+                        <td class="mat-cell"></td>
+                    </tr>
+                    <tr class="mat-row">
+                        <td class="mat-cell">eTrade</td>
+                        <td class="mat-cell">Linked</td>
+                        <td class="mat-cell">23-Feb-2023</td>
+                        <td class="mat-cell">04-May-2023</td>
+                        <td class="mat-cell"><span class="cursor-text">Unlink</span></td>
+                        <td class="mat-cell">
+                            <button type="button" class="btn btn-green">Fetch Trades</button>
+                        </td>
+                    </tr>
+                    <tr class="mat-row">
+                        <td class="mat-cell">Fidelity</td>
+                        <td class="mat-cell">Not Linked</td>
+                        <td class="mat-cell">23-Feb-2023</td>
+                        <td class="mat-cell">04-May-2023</td>
+                        <td class="mat-cell"><span class="cursor-text">Link</span></td>
+                        <td class="mat-cell">
+                            <button type="button" class="btn btn-green">Fetch Trades</button>
+                        </td>
+                    </tr>
+                    <tr class="mat-row">
+                        <td class="mat-cell">Trade King</td>
+                        <td class="mat-cell">Not Linked</td>
+                        <td class="mat-cell">23-Feb-2023</td>
+                        <td class="mat-cell">04-May-2023</td>
+                        <td class="mat-cell"><span class="cursor-text">Link</span></td>
+                        <td class="mat-cell">
+                            <button type="button" class="btn btn-green">Fetch Trades</button>
+                        </td>
+                    </tr>
+                    <tr class="mat-row">
+                        <td class="mat-cell">Trade Station</td>
+                        <td class="mat-cell">Not Linked</td>
+                        <td class="mat-cell">NA</td>
+                        <td class="mat-cell">NA</td>
+                        <td class="mat-cell"><span class="cursor-text">Unlink</span></td>
+                        <td class="mat-cell"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div> -->
+
+<!-- This must be the link to an old video. Venkat commented it.
+<div class="modal video-modal" id="modal1" tabindex="-1" role="dialog" aria-labelledby="modallabel1" aria-hidden= "true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="text-right px-2 pt-2">
+                <span class="cursor" (click)="closePopup()" data-dismiss="modal"><mat-icon class="mat-icon-sm">clear</mat-icon></span>
+            </div>
+            <div class="modal-body px-2 py-0">
+                <iframe width="100%" height="480" src="https://www.youtube.com/embed/txIqoIys3GI" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</div> -->

@@ -1,0 +1,110 @@
+<div class="custom-card" *ngIf="selectedStock && stockSummaryResult">
+    <div class="custom-card-header">
+        <div class="custom-card-title">Trade Statistics</div>
+        <a class="add-new cursor d-flex" (click)="refreshTradeDetails()">
+            <mat-icon>refresh</mat-icon> Refresh
+        </a>
+    </div>
+    <div class="custom-card-body">
+        <div class="d-flex mb-1 align-items-center" *ngIf="(editTrade || closeTrade || tradeStatus === 2) && (tradeStatus !== 4 )">
+            <label class="col-form-label">Open Date</label>
+            <div class="col-8 col-md-7 col-form-value">{{(tradeStrategy.executedDate ? tradeStrategy.executedDate : tradeStrategy.openDate) | date: 'dd-MMM-yyyy'}}</div>
+        </div>
+        <div class="d-flex mb-1 align-items-center" *ngIf="!addTrade && tradeStatus !== 4">
+            <label class="col-form-label">Close Date</label>
+            <div class="col-8 col-md-7 col-form-value">
+                {{tradeStrategy.closeDate | date: 'dd-MMM-yyyy'}}
+            </div>
+        </div>
+        <!-- <div class="d-flex mb-1 align-items-center" *ngIf="tradeStatus !== 2">
+            <label class="col-form-label">Stoploss Range</label>
+            <div class="col-9 col-form-value">
+                <div class="d-flex align-items-center">
+                    <span class="col-6 pl-0">{{(strategySummaryResult.minStopLoss ? strategySummaryResult.minStopLoss +
+                        ' - ' : '')}} {{strategySummaryResult.maxStopLoss ? strategySummaryResult.maxStopLoss :
+                        ''}}</span>
+                    <a class="add-new cursor" (click)="Edit()">Edit</a>
+                </div>
+            </div>
+        </div> -->
+        <div class="d-flex mb-1 align-items-center">
+            <label class="col-form-label">Maximum Risk</label>
+            <div class="col-form-value">
+                <div class="d-flex align-items-center justify-content-start">
+                    <span class="mr-2 d-flex align-items-center">
+                        <span class="px-3" *ngIf="!riskEditing">{{strategySummaryResult.maxLoss}}</span>
+                        <span class="inline-flex align-items-center" *ngIf="!riskEditing">
+                            <mat-icon class="mat-icon-sm mat-icon-edit" (click)="onMaxRiskEdit()">edit</mat-icon> Edit
+                        </span>
+                        <span class="d-flex pl-3 align-items-center" *ngIf="riskEditing">
+                            <input type="text" class="form-control user-risk-input" [(ngModel)]="userDefinedRisk" *ngIf="riskEditing"/>
+                            <mat-icon class="ml-2 action-icon" (click)="updateMaxRisk()" *ngIf="riskEditing">check_circle</mat-icon>
+                            <mat-icon class="ml-2 text-danger action-icon" (click)="onMaxRiskEditCancel()" *ngIf="riskEditing">close</mat-icon>
+                        </span>
+                    </span>
+                    <span class="ml-3 pl-1" *ngIf="!closeTrade && !viewTrade">
+                        <a class="assess-risk-btn" (click)="navigateToRiskAnalysis()">Analyze Risk</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex mb-1 align-items-center" *ngIf="!closeTrade && (tradeStatus == 1 || tradeStatus == 2)">
+            <label class="col-form-label">Realized Return</label>
+            <div class="col-8 col-md-7 col-form-value">{{strategySummaryResult.realizedReturn}}</div>
+        </div>
+        <div class="d-flex mb-1 align-items-center" *ngIf="tradeStatus == 2">
+            <label class="col-form-label">Net R</label>
+            <div class="col-8 col-md-7 col-form-value">{{strategySummaryResult.netR}}</div>
+        </div>
+        
+        <div class="sub-title mt-3">{{selectedStock.code}} Histiorical Statistics</div>
+
+        <div class="show-more-stats" *ngIf="showMoreStatistics">
+            <div class="h-line mb-3"></div>
+            
+            <div class="d-flex mb-1 align-items-center" *ngIf="!addTrade && tradeStatus !== 4">
+                <label class="col-form-label">Realized Return</label>
+                <div class="col-8 col-md-7 col-form-value">{{stockSummaryResult.realizedReturn}}</div>
+            </div>
+            <div class="d-flex mb-1 align-items-center">
+                <label class="col-form-label">Win Rate</label>
+                <div class="col-8 col-md-7 col-form-value">{{stockSummaryResult.winRate}}%</div>
+            </div>
+            
+            <div class="d-flex mb-1 align-items-center">
+                <label class="col-form-label">Total Strategies</label>
+                <div class="col-8 col-md-7 col-form-value">{{stockSummaryResult.totalStrategies}}</div>
+            </div>
+            <div class="d-flex mb-1 align-items-center">
+                <label class="col-form-label">Total Trades</label>
+                <div class="col-8 col-md-7 col-form-value">{{stockSummaryResult.totalTransactions}}</div>
+            </div>
+            <div class="d-flex mb-1 align-items-center">
+                <label class="col-form-label">Avg Holding Period</label>
+                <div class="col-8 col-md-7 col-form-value">{{stockSummaryResult.avgHoldingPeriod}}</div>
+            </div>
+            
+            
+            <div class="d-flex mb-1 align-items-center">
+                <label class="col-form-label">Most Successful Strategy</label>
+                <div class="col-8 col-md-7 col-form-value">{{stockSummaryResult.successStrategy}}</div>
+            </div>
+            <!-- <div class="d-flex mb-1 align-items-center">
+                <label class="col-form-label">Failed Strategy</label>
+                <div class="col-8 col-md-7 col-form-value">{{stockSummaryResult.failedStrategy}}</div>
+            </div> -->
+            <div class="d-flex mb-1 align-items-center">
+                <label class="col-form-label">Highest Return</label>
+                <div class="col-8 col-md-7 col-form-value">{{stockSummaryResult.highestReturn}}</div>
+            </div>
+            <div class="d-flex mb-1 align-items-center">
+                <label class="col-form-label">Lowest Return</label>
+                <div class="col-8 col-md-7 col-form-value">{{stockSummaryResult.largestLoss}}</div>
+            </div>
+        </div>
+
+        <div class="mb-2 text-right" [ngClass]="tradeStatus !== 4 ? 'showMore' : '' ">
+            <span class="cursor link-item" (click)="toggleStatistics()">{{showMoreStatistics ? 'Less' : 'More'}}</span>
+        </div>
+    </div>
+</div>

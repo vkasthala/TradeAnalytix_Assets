@@ -1,0 +1,74 @@
+@import '../../../../../assets/styles/variable.scss';
+
+.metrics-header {
+  border-bottom: 1px solid #B9B7B7;
+  padding: 15px;
+  color: #000;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.metrics-title {
+  color: #000;
+  font-weight: 600;
+  font-size: 15px;
+  margin-top: 1rem;
+}
+
+.trade-date .mydrp, .mydrp .headerclearbtn, .mydrp .headerokbtn {
+    border: 1px solid #37a01a !important;
+    border-radius: 0 !important;
+}
+
+.metrics-body {
+  padding: 0 25px;
+  color: #000;
+  font-weight: 500;
+  font-size: 15px;
+}
+.page-nav {
+  padding: 0 1rem;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 40px;
+  color: #0066FF;
+}
+.page-nav-item {
+  color: #0066FF;
+  margin: 0 1rem;
+}
+.metrics-column {
+  border-left: 1px solid rgb(185 183 183 / 39%);
+}
+.metrics-column:first-child {
+  border-left: 0;
+}
+.metrics-footer {
+  border-top: 1px solid #B9B7B7;
+  text-align: center;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 40px;
+  color: #0066FF;
+  padding: 15px;
+}
+.metrics-row {
+  padding-top: 0.345rem !important;
+  padding-bottom: 0.345rem !important;
+  display: flex;
+  margin-left: 5px;
+}
+.metrics-row:nth-child(even) {background-color: rgb(255 255 255 / 90%);}
+.metrics-row:nth-child(odd) {background-color: rgb(219 219 219 / 30%);}
+
+.less-metrics {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  max-height: 20px;
+  transition: max-height 5s ease-in;
+}
+.more-metrics {
+  max-height: 100%;
+  transition: max-height 5s ease-in;
+}

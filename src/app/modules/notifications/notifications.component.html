@@ -1,0 +1,37 @@
+<div class="p-3 mt-1">
+    <div class="main-body">
+        <div class="trade-table">
+            <mat-table [dataSource]="dataSource" matSort>
+                <!-- Date Column -->
+                <ng-container matColumnDef="day">
+                    <mat-header-cell class="date-cell" *matHeaderCellDef mat-sort-header>Date</mat-header-cell>
+                    <mat-cell class="date-cell" *matCellDef="let element"> {{element.day | date: 'dd-MMM-yyyy'}} </mat-cell>
+                </ng-container>
+
+                <!-- Notification Column -->
+                <ng-container matColumnDef="msg">
+                    <mat-header-cell class="notification-cell" *matHeaderCellDef mat-sort-header>Insights</mat-header-cell>
+                    <mat-cell class="notification-cell" *matCellDef="let element"> {{element.msg}} </mat-cell>
+                </ng-container>
+
+                <!-- Read Column-->
+                <ng-container matColumnDef="read">
+                    <mat-header-cell class="action-cell" *matHeaderCellDef mat-sort-header>Read</mat-header-cell>
+                    <mat-cell *matCellDef="let element" class="action_colum">
+                        <div>
+                            <mat-icon *ngIf="element.read === true" class="mat-icon-sm">mark_email_read</mat-icon>
+                            <mat-icon *ngIf="element.read === false" (click)="markAsRead(element)" class="mat-icon-sm text-success cursor-pointer">markunread</mat-icon>
+                        </div>
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+
+            <!-- Angular 8 pagination -->
+            <mat-paginator [pageSize]="20" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true" [length]="dataSource.totalCount">
+            </mat-paginator>
+        </div>
+    </div>
+</div>

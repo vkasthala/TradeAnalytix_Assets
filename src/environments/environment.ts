@@ -4,7 +4,17 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8080'
+  /*apiUrl: 'https://tradeanalytix.com/service',
+  redirectUri: 'http://localhost:4200/oauth-redirect',*/
+  /*apiUrl: 'https://tradeanalytix.com/service',
+  redirectUri: 'https://tradeanalytix.com/oauth-redirect',*/
+  /*apiUrl: 'https://tradeanalytix.com/service/us',
+  redirectUri: 'https://us.tradeanalytix.com/oauth-redirect',*/
+  apiUrl: 'https://in.cuetrade.io/service',
+  redirectUri: 'https://in.cuetrade.io/oauth-redirect',
+  /*apiUrl: 'http://localhost:8080/service',
+  redirectUri: 'http://localhost:4200/oauth-redirect',*/
+  tz: 'Asia/Calcutta'
 };
 
 /*

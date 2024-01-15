@@ -1,0 +1,166 @@
+<div class="trade-app">
+    <div class="trade-header-section">
+        <div class="landing-header">
+            <div class="header-row p-3">
+                <div class="trade-header-section-logo"></div>
+                <nav class="landing-navbar">
+                    <ul class="list-unstyled ">
+                        <li>
+                            <a class="landing-nav-link" href="landing#howit_works">
+                                How It Works
+                            </a>
+                        </li>
+                        <li>
+                            <a class="landing-nav-link" href="landing#trade_journal">
+                                Benefits
+                            </a>
+                        </li>
+                        <li [class.nav-active]="currentRoute == 'demo'">
+                            <a class="landing-nav-link" href="landing#demo_video_section">Partners</a>
+                        </li>
+                        <li [class.nav-active]="currentRoute == 'Reviews'">
+                            <a class="landing-nav-link" href="landing#reviews_section">
+                                Testimonials
+                            </a>
+                        </li>
+                        <li [class.nav-active]="currentRoute == 'Blog'">
+                            <a class="landing-nav-link" href="landing#blogs_section">
+                                Pricing
+                            </a>
+                        </li>
+                        <li [class.nav-active]="currentRoute == 'FAQs'">
+                            <a class="landing-nav-link" href="landing#Faqs">
+                                FAQs
+                            </a>
+                        </li>
+                        <li [class.nav-active]="currentRoute == 'support'">
+                            <a class="landing-nav-link" [routerLink]="['/support/']">
+                                Support
+                            </a>
+                        </li>
+                        <li>
+                            <button type="button" class="nav-btn" (click)="login('google')">Sign-in</button>
+                        </li>
+                        
+                    </ul>
+                </nav>
+                <span class="material-icons hamburger-menu-icon" (click)="menuToggle()">menu</span>
+            </div>
+        </div>
+        <!-- Trade-Navbar-Web -->
+        
+        <!-- Trade-Navbar-Mobile -->
+        <div class="trade-header-mobile">
+            <nav class="trade-navbar hamburger-menu" [ngClass]="hamburgerMenu ? 'open' : ''">
+                <ul class="list-unstyled ">
+                    <li>
+                        <a class="landing-nav-link" href="landing#howit_works">
+                            How It Works
+                        </a>
+                    </li>
+                    <li>
+                        <a class="landing-nav-link" href="landing#trade_journal">
+                            Benefits
+                        </a>
+                    </li>
+                    <li [class.nav-active]="currentRoute == 'demo'">
+                        <a class="landing-nav-link" href="landing#demo_video_section">Partners</a>
+                    </li>
+                    <li [class.nav-active]="currentRoute == 'Reviews'">
+                        <a class="landing-nav-link" href="landing#reviews_section">
+                            Testimonials
+                        </a>
+                    </li>
+                    <li [class.nav-active]="currentRoute == 'Blog'">
+                        <a class="landing-nav-link" href="landing#blogs_section">
+                            Pricing
+                        </a>
+                    </li>
+                    <li [class.nav-active]="currentRoute == 'FAQs'">
+                        <a class="landing-nav-link" href="landing#Faqs">
+                            FAQs
+                        </a>
+                    </li>
+                    <li [class.nav-active]="currentRoute == 'support'">
+                        <a class="landing-nav-link" [routerLink]="['/support/']">
+                            Support
+                        </a>
+                    </li>
+                    <li>
+                        <button type="button" class="nav-btn" (click)="login('google')">Sign-in</button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <!-- end: header-section -->
+
+    <div class="main-body">
+        <div class="container">
+            <div class="features_section pt-3 mt-4">
+                <div class="features_section_title page-heading py-3">Support</div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="custom-card">
+                            <div class="custom-card-title">FAQs</div>
+                            <div class="custom-card-body"> Find answers to the frequently asked questions on CueTrade.</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="custom-card">
+                            <div class="custom-card-title">Help Guides</div>
+                            <div class="custom-card-body"> Step-by-Step guides on different features of CueTrade</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="custom-card">
+                            <div class="custom-card-title">Videos</div>
+                            <div class="custom-card-body"> List of all the how-to videos</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="custom-card">
+                            <div class="custom-card-title">Blog</div>
+                            <div class="custom-card-body"> Read our perspective on various topics pertaining to trading</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="custom-card">
+                            <div class="custom-card-title">Contact Us</div>
+                            <div class="custom-card-body"> Reach out to us for any questions, feedback, or affiliations</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end: main-body -->
+
+    
+</div>
+
+<div class="landing-footer py-3">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-sm-6">
+                <ul class="footer_nav">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a [routerLink]="['/terms-conditions/']" target="_blank">Terms & Conditions</a></li>
+                    <li><a [routerLink]="['/privacy-policy/']" target="_blank">Privacy Policy</a></li>
+                    <li><a class="cursor" (click)="openContactUsModal()">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="trade-socail-icon col-sm-6">
+                <p>Follow us on</p>  &nbsp;
+                <img src="../../../assets/images/twitter.png" alt="twitter" />
+                <img src="../../../assets/images/facebook.png" alt="facebook" />
+                <img src="../../../assets/images/youtube.png" alt="youtube" />
+            </div>
+        </div>
+        <div class="row align-items-center">
+            <div class="copyright col-sm-6"><span>&#169;</span> 2022 Uptick Systems Private Limited. All rights reserved.</div>
+            <div class="powered-by col-sm-6">Content powered by CMOTS Internet Technologies Pvt. Ltd.</div>
+        </div>
+    </div>
+</div>

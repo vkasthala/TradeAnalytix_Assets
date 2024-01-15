@@ -1,0 +1,149 @@
+<!-- entry second -->
+<div class="trade-details-header">
+    <div class="trade-rate-box-title mb-2">
+        <div>
+            {{getDisplayValue(selectedStock.name)}} ({{getDisplayValue(selectedStock.code)}})
+            <span *ngIf="!addTrade"> - {{StrategyId.uid}}</span>
+        </div>
+        <a class="configure-questions" (click)="generateChart()" *ngIf="addTrade || editTrade"><img src="../../../../../assets/images/trading_view.svg" /> Trading View</a>
+    </div>
+    <div class="addnew-second mt-1">
+        <div class="trade-rate-box">
+            <div class="trade-rate-box-header">
+                <div class="text-left trade-name-rate">
+                    <div class="d-flex align-items-center stock-symbol">
+                        <span class="trade-r">{{stockSummary.close}}</span>
+                        <span [ngClass]="{'d-flex trade-rr': stockSummary.changePercent <= 0, 'd-flex trade-g' : stockSummary.changePercent > 0}">
+                            <i *ngIf="stockSummary.changePercent > 0" class="positive-amt material-icons mat-icon-xs">arrow_upward</i>
+                            <i *ngIf="stockSummary.changePercent <= 0" class="negative-amt material-icons mat-icon-xs">arrow_downward</i>
+                        {{getDisplayValue(stockSummary.changePercent, '%')}}
+                        </span>
+                    </div>
+                    <span>{{getDisplayValue(selectedStock.code)}}</span>
+                </div>
+
+                <div class="bxo-name">
+                    <h6>{{getDisplayValue(stockSummary.open)}}</h6>
+                    <span>Prev Close</span>
+                </div>
+                <div class="bxo-name bxo-name-lg">
+                    <h6>{{getDisplayValue(stockSummary.low)}} - {{getDisplayValue(stockSummary.high)}}</h6>
+                    <span>Days Range</span>
+                </div>
+                <div class="bxo-name">
+                    <h6>{{getDisplayValue(stockSummary.volume)}}</h6>
+                    <span>Volume</span>
+                </div>
+                <div class="bxo-name bxo-name-lg">
+                    <h6>{{getDisplayValue(stockSummary.week52Low)}} - {{getDisplayValue(stockSummary.week52High)}}</h6>
+                    <span>52-Wk Range</span>
+                </div>
+                <div class="bxo-name">
+                    <h6>{{getDisplayValue(stockSummary.marketCapitalBln)}}</h6>
+                    <span>Mkt Cap</span>
+                </div>
+                <div class="bxo-name">
+                    <h6>{{getDisplayValue(stockSummary.revenueBln, 'B')}}</h6>
+                    <span>Revenue</span>
+                </div>
+                <!-- <div class="bxo-name">
+                    <h6>{{getDisplayValue(stockSummary.operatingMargin, '%')}}</h6>
+                    <span>Oper. Margin</span>
+                </div> -->
+                <div class="bxo-name bxo-name-sm">
+                    <h6>NA</h6>
+                    <span>P/E</span>
+                </div>
+                <div class="bxo-name bxo-name-sm">
+                    <h6>NA</h6>
+                    <span>P/S</span>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<!-- trade-details-header-mobile -->
+<div class="trade-details-header-mobile">
+    <div class="row mb-1">
+        <div class="col-12 pl-2">
+            <div class="trade-header">
+                <div class="row">
+                    <div class="col-6 d-flex align-items-center">
+                        <span class="cursor" (click)="CollapsTradeHeader()">
+                            <i class="material-icons mat-icon-sm">{{hideTradeHeader ? 'keyboard_arrow_down' : 'keyboard_arrow_right'}}</i>
+                        </span>
+                        <span>{{getDisplayValue(selectedStock.code)}}</span>
+                        <span class="ml-2">{{stockSummary.close}}</span>
+                    </div>
+                    <div class="col-6 d-flex align-items-center pr-3 justify-content-between">
+                        <span>{{stockSummary.close}}</span>
+                        <span [ngClass]="{'d-flex trade-rr': stockSummary.changePercent <= 0, 'd-flex trade-g' : stockSummary.changePercent > 0}">
+                            <i *ngIf="stockSummary.changePercent > 0" class="positive-amt material-icons mat-icon-xs">arrow_upward</i>
+                            <i *ngIf="stockSummary.changePercent <= 0" class="negative-amt material-icons mat-icon-xs">arrow_downward</i>
+                        {{getDisplayValue(stockSummary.changePercent, '%')}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <div *ngIf="hideTradeHeader">
+        <div class="row trade-header-row">
+            <span class="col-6 trade-header-col-1">Prev Close</span>
+            <span class="col-6 trade-header-cell-value">{{getDisplayValue(stockSummary.open)}}</span>
+        </div>
+        <div class="row trade-header-row">
+            <span class="col-6 trade-header-col-1">Days Range</span>
+            <span class="col-6 trade-header-cell-value">{{getDisplayValue(stockSummary.low)}} - {{getDisplayValue(stockSummary.high)}}</span>
+        </div>
+        <div class="row trade-header-row">
+            <span class="col-6 trade-header-col-1">Volume</span>
+            <span class="col-6 trade-header-cell-value">{{getDisplayValue(stockSummary.volume)}}</span>
+        </div>
+        <div class="row trade-header-row">
+            <span class="col-6 trade-header-col-1">52-Wk Range</span>
+            <span class="col-6 trade-header-cell-value">{{getDisplayValue(stockSummary.week52Low)}} - {{getDisplayValue(stockSummary.week52High)}}</span>
+        </div>
+        <div class="row trade-header-row">
+            <span class="col-6 trade-header-col-1">Mkt Cap</span>
+            <span class="col-6 trade-header-cell-value">{{getDisplayValue(stockSummary.marketCapitalBln)}}</span>
+        </div>
+        <div class="row trade-header-row">
+            <span class="col-6 trade-header-col-1">Revenue</span>
+            <span class="col-6 trade-header-cell-value">{{getDisplayValue(stockSummary.revenueBln, 'B')}}</span>
+        </div>
+        <div class="row trade-header-row">
+            <span class="col-6 trade-header-col-1">Oper. Margin</span>
+            <span class="col-6 trade-header-cell-value">{{getDisplayValue(stockSummary.operatingMargin, '%')}}</span>
+        </div>
+        <div class="row trade-header-row">
+            <span class="col-6 trade-header-col-1">P/E</span>
+            <span class="col-6 trade-header-cell-value">NA</span>
+        </div>
+        <div class="row trade-header-row">
+            <span class="col-6 trade-header-col-1">P/S</span>
+            <span class="col-6 trade-header-cell-value">NA</span>
+        </div>
+    </div>
+</div>
+
+<div class="modal financials-modal" id="modal1" tabindex="-1" role="dialog" aria-labelledby="modallabel1" aria-hidden= "true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="text-right px-2 pt-2">
+                <span class="cursor" data-dismiss="modal"><mat-icon class="mat-icon-sm">clear</mat-icon></span>
+            </div>
+            <div class="modal-body px-2 py-0">
+                <div class="tradingview-widget-container">
+                    <div class="tradingview-widget-container__widget tradingview-chart"></div>
+                    <div id="financialsView" class="financials-view" #tradingview></div>
+                    <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/NASDAQ-AAPL/financials-overview/" rel="noopener" target="_blank"><span class="blue-text">{{symbol}}</span></a> by TradingView</div>
+                    
+                  </div>
+            </div>
+        </div>
+    </div>
+</div>

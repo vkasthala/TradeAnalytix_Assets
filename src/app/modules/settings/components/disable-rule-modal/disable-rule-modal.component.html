@@ -1,0 +1,31 @@
+
+<div class="compare-popup">
+  <div class="compare-pop-inner">
+      <div class="top-pop-inner">
+        <div class="left-heading">
+          <h5>Disable the automatic trading rule</h5>
+        </div>
+      </div>
+
+      <div class="main-pop-inner">
+          <p>{{jsonData.uiLabel }} the amount stated below</p>
+
+          <!-- <div class="d-flex justify-content-center align-items-center">
+            <label class="col-form-label px-3">Enter the amount</label>
+            <div class="form-group">
+              <input class="form-control disabled" placeholder="" type="text" [(ngModel)]='value' />
+            </div>
+          </div> -->
+          <p class="mb-0" *ngIf="jsonData.ruleType === 1">As a result of deactivating this trading rule, your trades will no longer be checked
+            against this rule going forward. 
+            Notifications will NOT be issued when the trading rule is broken.</p>
+
+            <p class="mb-0" *ngIf="jsonData.ruleType === 2">As a result of deactivating this trading rule, your account will no longer be checked against this rule going forward. Notifications will NOT be issued when the trading rule is broken.</p>
+        </div>
+
+        <div class="px-3 py-2 text-right">
+          <button type="button" class="btn btn-cancel mr-2" (click)="closeModal()">Cancel</button>
+          <button type="button" class="btn btn-save" (click)="Disable()">Disable</button>
+        </div>
+    </div>
+</div>

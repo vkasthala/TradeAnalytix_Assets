@@ -1,0 +1,173 @@
+<div class="profile-body">
+    <div class="row">
+        <div class="col-sm-3 mb-2">
+            <label class="col-form-label">Sign-In Method</label>
+            <input class="form-control disabled" id="exampleInputEmail1" value="Google" type="text" />
+        </div>
+        <div class="col-sm-3 mb-2">
+            <label class="col-form-label">Email Address</label>
+            <input class="form-control disabled" id="exampleInputEmail1" value="venkat.kasthala@gmail.com" type="email" />
+        </div>
+
+    <!--    <div class="col-sm-3 mb-2">
+            <label class="col-form-label">Country</label>
+            <select class="form-control">
+            <option value="1">USA</option>
+            <option value="2">India</option>
+        </select>
+        </div> -->
+    </div>
+
+    <!-- <div class="py-3 profile-web">
+        <span class="cursor">Reset Password</span>
+    </div> 
+    <div class="py-3 text-right profile-mobile" *ngIf="!showResetForm">
+        <button type="button" class="btn btn-reset" (click)="resetPassword()">Reset Password</button>
+    </div>
+    <div class="row mb-3" *ngIf="showResetForm">
+        <div class="col-sm-3 mb-2">
+            <label class="col-form-label">Current Password</label>
+            <input class="form-control" id="currentpassword" type="password" />
+        </div>
+        <div class="col-sm-3 mb-2">
+            <label class="col-form-label">New Password</label>
+            <input class="form-control" id="newpassword" type="password" />
+        </div>
+        <div class="col-sm-3 mb-2">
+            <label class="col-form-label">Confirm Password</label>
+            <input class="form-control" id="confirmpassword" type="password" />
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-between mt-3">
+        <div class="slider-title">User Profile</div>
+        <button type="button" class="btn btn-save">Save</button>
+    </div>
+    <div class="slider-body">
+        <div class="slider-description">How many trades do you execute per week on an average across all your accounts?</div>
+        <div class="buttons-section">
+            <button type="button" class="btn btn-plain" (click)="nextSlide()">Less than 5</button>
+            <button type="button" class="btn btn-plain" (click)="nextSlide()">5 to 10</button>
+        </div>
+        <div class="buttons-section">
+            <button type="button" class="btn btn-plain" (click)="nextSlide()">10 to 20</button>
+            <button type="button" class="btn btn-plain" (click)="nextSlide()">More than 20</button>
+        </div>
+    </div>
+
+    <div class="slider-body">
+        <div class="slider-description mb-3">
+            What's your biggest pain point in trading? Select all that are applicable
+        </div>
+        <div class="slider-description">
+            <div class="d-flex align-items-center mb-3">
+                <input type="checkbox" name="Lack of skill" class="mr-2" (change)="applicableCheck($event)" [checked]="applicableList.includes('Lack of skill')" />  Lack of skill (i.e., inability to find trading opportunities)
+            </div>
+            <div class="d-flex align-items-center mb-3"><input type="checkbox" name="Lack of discipline" class="mr-2" (change)="applicableCheck($event)" [checked]="applicableList.includes('Lack of discipline')" />  Lack of discipline (control over emotions, excessive trading, etc.)</div>
+            <div class="d-flex align-items-center mb-3"><input type="checkbox" name="Inability" class="mr-2" (change)="applicableCheck($event)" [checked]="applicableList.includes('Inability')"  />  Inability to manage risk effectively</div>
+            <div class="d-flex mb-3 align-items-center">
+                <span class="d-flex align-items-center"><input type="checkbox" name="Lack of tools" class="mr-2" (change)="applicableCheck($event)" [checked]="applicableList.includes('Lack of tools')" /> Lack of tools</span>
+                <span class="col-6">
+                    <input type="text" class="form-control form-control-sm" placeholder="Please Specify" />
+                </span>
+            </div>
+            <div class="d-flex mb-3 align-items-center">
+                <span class="d-flex align-items-center"><input type="checkbox" name="Other" class="mr-2" (change)="applicableCheck($event)" [checked]="applicableList.includes('Other')" />   Other</span>
+                <span class="col-6">
+                    <input type="text" class="form-control form-control-sm" placeholder="Please specify" />
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="slider-body">
+        <div class="slider-description">
+            Have you used any kind of trading journal including excel, diary, etc.?
+        </div>
+        
+        <div class="buttons-center">
+            <button type="button" class="btn btn-next" (click)="nextSlide()">Yes</button>
+            <button type="button" class="btn btn-back ml-3" (click)="nextSlide()">No</button>
+        </div>
+    </div>
+
+    <div class="slider-body">
+        <div class="slider-description">
+            Do you agree that journaling and analytics from trading history will help improve your trading performance?
+        </div>
+        
+        <div class="buttons-center">
+            <button type="button" class="btn btn-next" (click)="nextSlide()">Yes</button>
+            <button type="button" class="btn btn-back ml-3" (click)="nextSlide()">No</button>
+        </div>
+    </div>
+
+    <div class="slider-body">
+        <div class="w-100 pb-2">
+            How did you hear about CueTrade?
+        </div>
+
+        <div class="slider-description">
+            <div class="d-flex align-items-center mb-3">
+                <input type="checkbox" name="directly" class="mr-2" />  We reached out to you directly
+            </div>
+            <div class="d-flex align-items-center mb-3">
+                <input type="checkbox" name="StockTwits" class="mr-2" />  StockTwits
+            </div>
+            <div class="d-flex align-items-center mb-3">
+                <input type="checkbox" name="WhatsApp" class="mr-2" />  WhatsApp
+            </div>
+            <div class="d-flex align-items-center mb-3">
+                <input type="checkbox" name="YouTube" class="mr-2" />  YouTube
+            </div>
+            <div class="d-flex align-items-center mb-3">
+                <input type="checkbox" name="Twitter" class="mr-2" />  Twitter
+            </div>
+            <div class="d-flex mb-3 align-items-center">
+                <span class="d-flex align-items-center"><input type="checkbox" name="Referral" value="Referral" class="mr-2" (change)="onReferralChange($event)" [checked]="referralInput" />   Referral</span>
+                <span class="col-6" *ngIf="referralInput">
+                    <input type="text" class="form-control form-control-sm" placeholder="Please Specify"
+                            [(ngModel)]="referralInputValue" />
+                </span>
+            </div>
+            <div class="d-flex mb-3 align-items-center">
+                <span class="d-flex align-items-center"><input type="checkbox" name="Other" value="Other" class="mr-2" (change)="onChange($event)" [checked]="otherInput" />   Other</span>
+                <span class="col-6" *ngIf="otherInput">
+                    <input type="text" class="form-control form-control-sm" placeholder="Please specify" />
+                </span>
+            </div>
+        </div>
+        
+        
+    </div>
+-->
+    <!-- <div class="row mb-3 profile-web">
+        <div class="col-sm-3 mb-2">
+            <label class="col-form-label">Brokerages Used</label>
+            <select class="form-control">
+            <option value="1">tdAmeritrade</option>
+            <option value="2">Robinhood</option>
+            <option value="3">WebBull</option>
+            <option value="4">Charles Schwab</option>
+            <option value="5">Interactive Brokers</option>
+        </select>
+        </div>
+        <div class="col-sm-3 mb-2">
+            <label class="col-form-label">Traded Instruments</label>
+            <select class="form-control">
+            <option value="1">Stocks</option>
+            <option value="2">Stock Options</option>
+            <option value="3">Stock Futures</option>
+            <option value="4">Commodity Futures</option>
+            <option value="5">Forex Options</option>
+        </select>
+        </div>
+
+    </div> -->
+
+    <!-- <div class="trade-btn profile-bottom pt-3 profile-web">
+        <div class="btn btn-apply" (click)="saveprofile()">
+            Save
+        </div>
+    </div> -->
+</div>

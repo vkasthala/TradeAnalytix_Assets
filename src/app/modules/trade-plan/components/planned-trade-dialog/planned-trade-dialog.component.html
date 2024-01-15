@@ -1,0 +1,59 @@
+<div class="plannedtrade-popup">
+    <div class="plannedtrade-pop-inner">
+        <div class="top-pop-inner">
+            <div class="left-heading">
+                <h6>Add Trade details</h6>
+            </div>
+            <div class="right-close" (click)="closeModal()">
+                <mat-icon>clear</mat-icon>
+            </div>
+        </div>
+
+        <div class="main-pop-inner">
+
+            <div class="row mb-2 align-items-center">
+                <label class="col-6 col-form-label">Symbol</label>
+                <div class="col-6">
+                    <app-trade-search (symbolSelectEvent)="symbolSelectEventHandler($event)" (symbolLoadEvent)="symbolLoadHandler()" #stockSymbolsSearch></app-trade-search>
+                </div>
+            </div>
+
+            <div class="row mb-2 align-items-center">
+                <label class="col-6 col-form-label">Strategy</label>
+                <div class="col-6">
+                    <select class="form-control select-input pl-0" id="inputState" [(ngModel)]='data.strategyTypeId' (change)="onStrategyTypeChange($event.target.value)">
+                        <option *ngFor="let key of strategyTypes" [value]="key" [label]="strategies[key]"></option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row mb-2 align-items-center">
+                <label class="col-6 col-form-label">Max Risk</label>
+                <div class="col-6">
+                    <input type="number" (keydown)="preventNegatives($event, false)" min="0" class="form-control cards-input" [(ngModel)]="data.maxRisk" />
+                </div>
+            </div>
+
+            <div class="row mb-2 align-items-center">
+                <label class="col-6 col-form-label">Cost of Trade</label>
+                <div class="col-6">
+                    <input type="number" (keydown)="preventNegatives($event, false)" min="0" class="form-control cards-input" [(ngModel)]="data.amount" />
+                </div>
+            </div>
+
+            <div class="row mb-2 align-items-center">
+                <label class="col-6 col-form-label">Direction</label>
+                <div class="col-6">
+                    <select class="form-control select-input pl-0" id="inputState" [(ngModel)]='data.directionTypeId' (change)="ondirectionTypeChange($event.target.value)">
+                        <option *ngFor="let key of directionTypes" [value]="key" [label]="directions[key]"></option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="btn-up mb-0">
+                <button type="button" class="btn btn-add" [mat-dialog-close]="data">Save</button>
+            </div>
+        </div>
+
+    </div>
+</div>

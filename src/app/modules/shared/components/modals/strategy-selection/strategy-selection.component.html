@@ -1,0 +1,45 @@
+<div class="compare-popup">
+    <div class="compare-pop-inner">
+        <div class="top-pop-inner">
+            <div class="left-heading">
+                <h6>Strategy Selection </h6>
+            </div>
+            <div class="right-close" (click)="closeModal()">
+                <mat-icon>clear</mat-icon>
+            </div>
+        </div>
+        <div class="mobile-popup-header">
+            <h6>
+                <mat-icon class="trade-form-icon mr-2 cursor" (click)="closeModal()">arrow_back</mat-icon> 
+                Strategy Selection
+            </h6>
+        </div>
+
+        <div class="main-pop-inner">
+            <div class="row mb-2 align-items-center">
+                <div class="col-6">
+                    <label class="col-form-label">Strategy Selection</label>
+                    <select class="form-control select-input pl-0" id="inputState"
+                        (change)="onStrategyTypeChange($event.target.value)"
+                        [(ngModel)]='selectedStrategy'>
+                        <option *ngFor="let item of data | keyvalue" [value]="item.value"
+                        [label]="item.key">{{key}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="separator"></div>
+
+
+          
+            <div class="mobile-separator"></div>
+            <div class="btn-up mb-0 popup-footer">
+                <button type="button" class="btn btn-add" [mat-dialog-close]="data">Save</button>
+            </div>
+            <div class="mobile-popup-footer pt-3">
+                <button type="button" class="btn btn-add w-100 mr-2" [mat-dialog-close]="data">Save</button>
+                <button type="button" class="btn btn-outline-secondary w-100 ml-2" (click)="closeModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

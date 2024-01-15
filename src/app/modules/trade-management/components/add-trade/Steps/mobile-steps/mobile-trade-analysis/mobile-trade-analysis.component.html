@@ -1,0 +1,169 @@
+      <!-- step-fourth -->
+ <div class="trade-analysis-table">
+        <div class="container">
+
+          <div class="trade-stategy-heading">
+            <h6>
+              Gain/Loss for a defined stock price range
+            </h6>
+          </div>
+        </div>
+
+        <div class="trade-table">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Change</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="text-primary">-5%</td>
+            
+              </tr>
+              <tr>
+                <td class="text-primary">-5%</td>
+            
+              </tr>
+              <tr>
+                <td class="text-primary">-5%</td>
+            
+              </tr>
+              <tr>
+                <td class="text-primary">-5%</td>
+            
+              </tr>
+              <tr>
+                <td class="text-primary">-5%</td>
+            
+              </tr>
+              <tr>
+                <td class="text-primary">-5%</td>
+            
+              </tr>
+              <tr>
+                <td class="text-primary">-5%</td>
+            
+              </tr>
+
+
+            </tbody>
+          </table>
+          <table class="table table-striped" *ngIf="stockAdded">
+            <thead>
+              <tr>
+
+        
+                <th>Stock </th>
+              
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>-$429</td>
+              </tr>
+              <tr>
+                <td>-$429</td>
+              </tr>
+              <tr>
+                <td>-$429</td>
+              </tr>
+              <tr>
+                <td>-$429</td>
+              </tr>
+              <tr>
+                <td>-$429</td>
+              </tr>
+              <tr>
+                <td>-$429</td>
+              </tr>
+              <tr>
+                <td>-$429</td>
+              </tr>
+ 
+
+            </tbody>
+          </table>
+
+
+          <ng-container *ngFor="let item of stockOptions; let i=index">
+          
+          
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Option-{{i+1}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>-$225</td>
+              </tr>
+              <tr>
+                <td>-$225</td>
+              </tr>
+              <tr>
+                <td>-$225</td>
+              </tr>
+              <tr>
+                <td>-$225</td>
+              </tr>
+              <tr>
+                <td>-$225</td>
+              </tr>
+              <tr>
+                <td>-$225</td>
+              </tr>
+              <tr>
+                <td>-$225</td>
+              </tr>
+
+
+            </tbody>
+          </table>
+        </ng-container>
+
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Net</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+          
+                <td>-$225</td>
+              </tr>
+              <tr>
+                <td>-$225</td>
+              </tr>
+              <tr>
+                <td>-$225</td>
+              </tr>
+              <tr>
+                <td>-$225</td>
+              </tr>
+              <tr>
+                <td>-$225</td>
+              </tr>
+              <tr>
+                <td>-$225</td>
+              </tr>
+              <tr>
+                <td>-$225</td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+
+        <div class="container">
+          <div class="trade-btn-p">
+            <a class=" btn-pre" (click)="previous()">Previous</a>
+            <a class="btn-pre" (click)="next()">Next</a>
+
+          </div>
+        </div>
+      </div> 

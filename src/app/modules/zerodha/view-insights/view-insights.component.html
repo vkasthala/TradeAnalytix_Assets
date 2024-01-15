@@ -1,0 +1,29 @@
+<div class="compare-popup">
+    <div class="compare-pop-inner">
+        <div class="top-pop-inner">
+            <div class="left-heading">
+                <div class="modal-title m-0">{{title}}</div>
+            </div>
+            <div class="right-close" (click)="closeModal()">
+                <mat-icon>clear</mat-icon>
+            </div>
+        </div>
+
+        <div class="main-pop-inner">
+           <ul class="insights-list">
+                <li><mat-icon class="check-icon">check</mat-icon> You reached the profit target set for the day</li>
+                <li><mat-icon class="check-icon">check</mat-icon> Trades held for 3-5 days accounted for 78% of your profits</li>
+                <li><mat-icon class="priority-icon">priority_high</mat-icon> Stop loss (7%) hit. Consider closing the trade. Most traders hold losing trades hoping they go back and turn small losses into big losses. </li>
+                <li><mat-icon class="priority-icon">priority_high</mat-icon> HDFC is trading at price to sales ratio of 7</li>
+                <li><mat-icon class="priority-icon">priority_high</mat-icon> HDFC is down 15% in the last 30 days. You are going against the trend by taking a long position</li>
+
+                <li><mat-icon class="priority-icon">priority_high</mat-icon> Your win-rate and realized return on HDFC is 55% and 39854. Your most successful and failed strategy on ABC are Long Stock and Naked Call respectively</li>
+
+                <li><mat-icon class="close-icon">close</mat-icon> Realized or unrealized loss today exceeds 10,000</li>
+                <li><mat-icon class="close-icon">close</mat-icon> Value at Risk of the trade strategy exceeds 50,000</li>
+                <li><mat-icon class="close-icon">close</mat-icon> You recorded a big profit on a trade. Do not chase after performance and take excessive risk.</li>
+           </ul> 
+           
+        </div>
+    </div>
+</div>

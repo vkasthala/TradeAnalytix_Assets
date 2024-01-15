@@ -1,0 +1,193 @@
+<div class="compare-popup">
+    <div class="slider-container">
+        <div class="modal-header">
+            <h3 class="slider-title">Know Your User</h3>
+        </div>
+
+        <div class="slider-inner" *ngIf="currentInd == 0">
+            <div class="slider-description mb-3">
+                <h3 class="slider-header">Welcome {{userName}}</h3>
+                Before we get started, do you agree with CueTrade terms and conditions?
+            </div>
+            <div class="slider-description mb-3 d-flex"><input type="checkbox" name="" class="mr-2 checkbox"
+                    (change)="acceptChange()" /> I read and accept the CueTrade <a href="" class="mx-2">terms and
+                    service</a> and <a href="" class="mx-1">privacy policy</a></div>
+            <div class="text-center pt-3">
+                <button type="button" class="btn btn-next" [ngClass]="!isAcceptChecked ? 'disabled' : ''"
+                    (click)="isAcceptChecked ? nextSlide() : ''">Accept</button>
+            </div>
+        </div>
+
+        <div class="slider-inner" *ngIf="currentInd == 1">
+            <div class="slider-body">
+                <div class="slider-description mb-3">
+                    {{ questions[currentInd].description }}
+                </div>
+                <div class="slider-description">
+                    {{ questions[currentInd].questionText }}
+                </div>
+                <div class="buttons-section">
+                    <div class="row">
+                        <div class="col">
+                            <ng-container *ngFor="let option of questions[currentInd].surveyOptions; let i = index">
+                                <button type="button" class="btn btn-plain mx-2 my-2"
+                                    (click)="buttonResponse(option)">{{
+                                    option.label }}</button>
+                                <br *ngIf="(i + 1) % 2 === 0">
+                            </ng-container>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ul class="slider-nav">
+                <li class="nav-bar nav-bar-active">1/5</li>
+                <li class="nav-bar"></li>
+                <li class="nav-bar"></li>
+                <li class="nav-bar"></li>
+                <li class="nav-bar"></li>
+            </ul>
+        </div>
+
+        <div class="slider-inner" *ngIf="currentInd === 2">
+            <div class="slider-body">
+                <div class="slider-description mb-3">
+                    {{ questions[currentInd].title }}
+                </div>
+                <div class="slider-description">
+                    {{ questions[currentInd].description }}
+                    <div class="d-flex align-items-center mb-3"
+                        *ngFor="let option of questions[currentInd].surveyOptions">
+                        <input type="checkbox" [name]="option.value" class="mr-2" (change)="instrumentsCheck($event)"
+                            [checked]="instrumentsList.includes(option.value)" />
+                        {{ option.label }}
+                        <ng-container *ngIf="option.value === 'otherInstrument'">
+                            <span class="col-6">
+                                <input type="text" class="form-control form-control-sm" placeholder="Please specify"
+                                    [(ngModel)]="otherInstrumentValue" />
+                            </span>
+                        </ng-container>
+                    </div>
+                    <div class="text-center mt-3 pt-3">
+                        <button type="button" class="btn btn-next" name="instruments"
+                            [ngClass]="instrumentsList.length === 0 ? 'disabled' : ''"
+                            (click)="instrumentsList.length > 0 ? checkboxResponse() : ''">Next</button>
+                    </div>
+                </div>
+            </div>
+            <ul class="slider-nav">
+                <li class="nav-bar nav-bar-active" (click)="goToSlide(1)"></li>
+                <li class="nav-bar nav-bar-active">2/5</li>
+                <li class="nav-bar"></li>
+                <li class="nav-bar"></li>
+                <li class="nav-bar"></li>
+            </ul>
+        </div>
+
+        <div class="slider-inner" *ngIf="currentInd === 3">
+            <div class="slider-body">
+                <div class="slider-description mb-3">
+                    {{ questions[currentInd].description }}
+                </div>
+                <div class="slider-description">
+                    <div *ngFor="let option of questions[currentInd].surveyOptions"
+                        class="d-flex align-items-center mb-3">
+                        <input type="checkbox" [name]="option.value" class="mr-2" (change)="applicableCheck($event)"
+                            [checked]="applicableList.includes(option.value)" />
+                        {{ option.label }}
+                        <ng-container *ngIf="option.value === 'lackOfTools'">
+                            <span class="col-6">
+                                <input type="text" class="form-control form-control-sm" placeholder="Please specify"
+                                    [(ngModel)]="lackOfToolsValue" />
+                            </span>
+                        </ng-container>
+                        <ng-container *ngIf="option.value === 'otherApplicable'">
+                            <span class="col-6">
+                                <input type="text" class="form-control form-control-sm" placeholder="Please specify"
+                                    [(ngModel)]="otherApplicableValue" />
+                            </span>
+                        </ng-container>
+                    </div>
+                    <div class="text-center mt-3 pt-3">
+                        <button type="button" class="btn btn-next" name="applicable"
+                            [ngClass]="applicableList.length === 0 ? 'disabled' : ''"
+                            (click)="applicableList.length > 0 ? checkboxResponse() : ''">Next</button>
+                    </div>
+                </div>
+            </div>
+            <ul class="slider-nav">
+                <li class="nav-bar nav-bar-active" (click)="goToSlide(1)"></li>
+                <li class="nav-bar nav-bar-active" (click)="goToSlide(2)"></li>
+                <li class="nav-bar nav-bar-active">3/5</li>
+                <li class="nav-bar"></li>
+                <li class="nav-bar"></li>
+            </ul>
+        </div>
+
+        <div class="slider-inner" *ngIf="currentInd === 4">
+            <div class="slider-body">
+                <div class="slider-description">
+                    <div class="text-center w-100">
+                        {{ questions[currentInd].title }}
+                    </div>
+                </div>
+
+                <div class="buttons-center">
+                    <button type="button" class="btn btn-next" *ngIf="questions[currentInd].surveyOptions[0]"
+                        (click)="buttonResponse(questions[currentInd].surveyOptions[0])">
+                        {{ questions[currentInd].surveyOptions[0].label }}
+                    </button>
+
+                    <button type="button" class="btn btn-back ml-3" *ngIf="questions[currentInd].surveyOptions[1]"
+                        (click)="buttonResponse(questions[currentInd].surveyOptions[1])">
+                        {{ questions[currentInd].surveyOptions[1].label }}
+                    </button>
+                </div>
+            </div>
+            <ul class="slider-nav">
+                <li class="nav-bar nav-bar-active" (click)="goToSlide(1)"></li>
+                <li class="nav-bar nav-bar-active" (click)="goToSlide(2)"></li>
+                <li class="nav-bar nav-bar-active" (click)="goToSlide(3)"></li>
+                <li class="nav-bar nav-bar-active">4/5</li>
+                <li class="nav-bar"></li>
+            </ul>
+        </div>
+
+        <div class="slider-inner" *ngIf="currentInd === 5">
+            <div class="slider-body">
+                <div class="text-center w-100 pb-2">
+                    {{ questions[currentInd].title }}
+                </div>
+
+                <div class="form-center">
+                    <select class="form-control" (change)="onChange($event)">
+                        <option *ngFor="let option of questions[currentInd].surveyOptions" [value]="option.value">
+                            {{ option.label }}
+                        </option>
+                    </select>
+
+                    <div class="py-3 px-0" *ngIf="referralInput">
+                        <input type="text" class="form-control form-control-sm" placeholder="Please Specify"
+                            [(ngModel)]="referralInputValue" />
+                    </div>
+                    <div class="mt-3 px-0" *ngIf="otherInput">
+                        <input type="text" class="form-control form-control-sm" placeholder="Please specify"
+                            [(ngModel)]="otherInputValue" />
+                    </div>
+                    <div class="buttons-center">
+                        <button type="button" (click)="isLastSlide ? closeModal() : ''" class="btn btn-next"
+                            [ngClass]="!isLastSlide ? 'disabled' : ''">Submit</button>
+                    </div>
+                </div>
+            </div>
+            <ul class="slider-nav">
+                <li class="nav-bar nav-bar-active" (click)="goToSlide(1)"></li>
+                <li class="nav-bar nav-bar-active" (click)="goToSlide(2)"></li>
+                <li class="nav-bar nav-bar-active" (click)="goToSlide(3)"></li>
+                <li class="nav-bar nav-bar-active" (click)="goToSlide(4)"></li>
+                <li class="nav-bar nav-bar-active">5/5</li>
+            </ul>
+        </div>
+
+
+    </div>
+</div>

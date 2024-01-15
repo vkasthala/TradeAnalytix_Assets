@@ -1,0 +1,32 @@
+<div class="trade-dash-main dashboard-header mb-2">
+    <div class="trade-dash-name col-10 pt-2">
+        <p class="m-0">With CueTrade's Bulk Journal feature, conveniently access and manage all your trade strategies in a single, intuitive interface that allows you to effortlessly review trades, and update journal details for multiple trades at once, eliminating the need to update each trade individually.
+        </p>
+    </div>
+    <div class="col-2 text-right" *ngIf="!isDemoMode">
+        <button type="button" class="btn btn-add" (click)="onSave()">Save</button>
+    </div>
+</div>
+
+<div class="p-3 mt-1 bulk-update">
+    <div class="main-body">
+        <div class="trade-table">
+            <ag-grid-angular 
+                class="ag-theme-alpine bulk-update-grid" 
+                [animateRows]="true"
+                [rowData]="strategies" 
+                [columnDefs]="columnDefs" 
+                [defaultColDef]="defaultColDef"
+                [frameworkComponents]="frameworkComponents" 
+                (cellEditingStarted)="onCallValueDataChangeStart($event)"
+                (cellEditingStopped)="onCellEditingStopped($event)"
+                (cellValueChanged)="onCellValueChanged($event)"
+                (gridReady)="onGridReady($event)">
+            </ag-grid-angular>
+        </div>
+
+        <div class="mask" *ngIf="Loader">
+            <div class="loader"></div>
+        </div>
+    </div>
+</div>

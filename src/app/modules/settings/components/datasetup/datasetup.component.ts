@@ -1,0 +1,502 @@
+import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { EditableListComponent } from 'src/app/modules/shared/components/widgets/editable-list/editable-list.component';
+import { DataSetupService } from '../../services/data-setup.service';
+import { EditableGridComponent } from 'src/app/modules/shared/components/widgets/editable-grid/editable-grid.component';
+import { BockerageCommission } from '../../models/brockerage-commission.model';
+import { EditableGridColumn } from 'src/app/modules/shared/models/common/editable-grid-column.model';
+import { EditableListItem } from 'src/app/modules/shared/models/common/editable-list-item.model';
+import { Subject } from 'rxjs';
+import { ConfirmDialogComponent } from 'src/app/modules/shared/components/modals/confirm-dialog/confirm-dialog.component';
+import { MatDialog } from '@angular/material';
+import { ToastrService } from 'ngx-toastr';
+
+@Component({
+  selector: 'app-datasetup',
+  templateUrl: './datasetup.component.html',
+  styleUrls: ['./datasetup.component.scss']
+})
+export class DatasetupComponent implements OnInit {
+
+  @ViewChild('mindSetType', { static: false }) protected mindSetType: EditableListComponent;
+  @ViewChild('technicalIndicator', { static: false }) protected technicalIndicator: EditableListComponent;
+  @ViewChild('event', { static: false }) protected event: EditableListComponent;
+  @ViewChild('tradeIdea', { static: false }) protected tradeIdea: EditableListComponent;
+  @ViewChild('triggerClosing', { static: false }) protected triggerClosing: EditableListComponent;
+  @ViewChild('gainOrLossAttribution', { static: false }) protected gainOrLossAttribution: EditableListComponent;
+
+  @ViewChild('brokerageCommissions', { static: false }) protected brokerageCommissions: EditableGridComponent<BockerageCommission>;
+
+  step = 0;
+
+  constructor(private dataSetupService: DataSetupService, private cdr: ChangeDetectorRef, private _dialog: MatDialog, private toastr: ToastrService) { }
+
+  ngOnInit() {
+
+  }
+  setStep(index: number) {
+    this.step = index;
+  }
+  ngAfterViewInit() {
+    //this.initBrockerageCommisionsGrid();
+    this.initSourceTypes();
+    this.initTechIndicators();
+    this.initMindsetTypes();
+    this.initSurrEventTypes();
+    this.initTriggersForClosing();
+    this.initGainOrLossAttributes();
+    this.cdr.detectChanges();
+  }
+
+  initSourceTypes() {
+    let addItemSubject: Subject<EditableListItem> = new Subject<EditableListItem>();
+    let editItemSubject: Subject<EditableListItem> = new Subject<EditableListItem>();
+    let deleteItemSubject: Subject<EditableListItem> = new Subject<EditableListItem>();
+    addItemSubject.asObservable().subscribe(data => {
+      this.dataSetupService.createSourceType(data).subscribe(data => {
+        this.showSuccessMessage('Successfully added the new source type');
+        this.loadSourceItems();
+      }, err => {
+        console.log('error in creating source type: ', data);
+        this.showErrorMessageDialog('Error! failed to add source type');
+      });
+    });
+    editItemSubject.asObservable().subscribe(data => {
+      this.dataSetupService.updateSourceType(data).subscribe(data => {
+        this.showSuccessMessage('Successfully updated the selected source type');
+        this.loadSourceItems();
+      }, err => {
+        console.log('error in editing source type: ', data);
+        this.showErrorMessageDialog('Error! failed to edit the selected source type');
+      });
+    });
+    deleteItemSubject.asObservable().subscribe(data => {
+      this.getDeleteDialog().afterClosed().subscribe(dialogResult => {
+        if (dialogResult == true) {
+          this.dataSetupService.deleteSourceType(data.id).subscribe(data => {
+            this.showSuccessMessage('Successfully deleted the selected source type');
+            this.loadSourceItems();
+          }, err => {
+            console.log('error in deleteing source type: ', data);
+            this.showDeleteErrorMessage();
+          });
+        }
+      });
+    });
+    this.tradeIdea.addItemSubject = addItemSubject;
+    this.tradeIdea.editItemSubject = editItemSubject;
+    this.tradeIdea.deleteItemSubject = deleteItemSubject;
+    this.loadSourceItems();
+  }
+
+  loadSourceItems() {
+    this.dataSetupService.getTradeSourceTypes().subscribe(result => {
+      this.tradeIdea.items = result;
+    });
+  }
+
+  initTechIndicators() {
+    let addItemSubject: Subject<EditableListItem> = new Subject<EditableListItem>();
+    let editItemSubject: Subject<EditableListItem> = new Subject<EditableListItem>();
+    let deleteItemSubject: Subject<EditableListItem> = new Subject<EditableListItem>();
+    addItemSubject.asObservable().subscribe(data => {
+      this.dataSetupService.createTechnicalIndicatorType(data).subscribe(data => {
+        this.showSuccessMessage('Successfully added new technical indicator');
+        this.loadTechnicalIndicators();
+      }, err => {
+        console.log('error in creating tech ind type: ', data);
+        this.showErrorMessageDialog('Error! failed to add technical indicator');
+      });
+    });
+    editItemSubject.asObservable().subscribe(data => {
+      this.dataSetupService.updateTechnicalIndicatorType(data).subscribe(data => {
+        this.showSuccessMessage('Successfully updated the selected technical indicator');
+        this.loadTechnicalIndicators();
+      }, err => {
+        console.log('error in editing tech ind type: ', data);
+        this.showErrorMessageDialog('Error! failed to edit the selected technical indicator');
+      });
+    });
+    deleteItemSubject.asObservable().subscribe(data => {
+      this.getDeleteDialog().afterClosed().subscribe(dialogResult => {
+        if (dialogResult == true) {
+          this.dataSetupService.deleteTechnicalIndicatorType(data.id).subscribe(data => {
+            this.showSuccessMessage('Successfully deleted the selected technical indicator');
+            this.loadTechnicalIndicators();
+          }, err => {
+            console.log('error in deleting tech indicator type: ', data)
+            this.showDeleteErrorMessage();
+          });
+        }
+      });
+    });
+    this.technicalIndicator.addItemSubject = addItemSubject;
+    this.technicalIndicator.editItemSubject = editItemSubject;
+    this.technicalIndicator.deleteItemSubject = deleteItemSubject;
+    this.loadTechnicalIndicators();
+  }
+
+  loadTechnicalIndicators() {
+    this.dataSetupService.getTechIndicators().subscribe(result => {
+      this.technicalIndicator.items = result;
+    });
+  }
+
+  initMindsetTypes() {
+    let addItemSubject: Subject<EditableListItem> = new Subject<EditableListItem>();
+    let editItemSubject: Subject<EditableListItem> = new Subject<EditableListItem>();
+    let deleteItemSubject: Subject<EditableListItem> = new Subject<EditableListItem>();
+    addItemSubject.asObservable().subscribe(data => {
+      this.dataSetupService.createMindsetType(data).subscribe(data => {
+        this.showSuccessMessage('Successfully added new mindset');
+        this.loadMindsetTypes();
+      }, err => {
+        console.log('error in creating mindset type: ', data);
+        this.showErrorMessageDialog('Error! failed to add mindset');
+      });
+    });
+    editItemSubject.asObservable().subscribe(data => {
+      this.dataSetupService.updateMindsetType(data).subscribe(data => {
+        this.showSuccessMessage('Successfully updated the selected mindset');
+        this.loadMindsetTypes();
+      }, err => {
+        console.log('error in editing mindset type: ', data);
+        this.showErrorMessageDialog('Error! failed to edit the selected mindset');
+      });
+    });
+    deleteItemSubject.asObservable().subscribe(data => {
+      this.getDeleteDialog().afterClosed().subscribe(dialogResult => {
+        if (dialogResult == true) {
+          this.dataSetupService.deleteMindsetType(data.id).subscribe(data => {
+            this.showSuccessMessage('Successfully deleted the selected mindset');
+            this.loadMindsetTypes();
+          }, err => {
+            console.log('error in deleting mindset type: ', data)
+            this.showDeleteErrorMessage();
+          });
+        }
+      });
+    });
+    this.mindSetType.addItemSubject = addItemSubject;
+    this.mindSetType.editItemSubject = editItemSubject;
+    this.mindSetType.deleteItemSubject = deleteItemSubject;
+    this.loadMindsetTypes();
+  }
+
+  loadMindsetTypes() {
+    this.dataSetupService.getMindsetTypes().subscribe(result => {
+      this.mindSetType.items = result;
+    });
+  }
+
+  initSurrEventTypes() {
+    let addItemSubject: Subject<EditableListItem> = new Subject<EditableListItem>();
+    let editItemSubject: Subject<EditableListItem> = new Subject<EditableListItem>();
+    let deleteItemSubject: Subject<EditableListItem> = new Subject<EditableListItem>();
+    addItemSubject.asObservable().subscribe(data => {
+      this.dataSetupService.createSurrEventType(data).subscribe(data => {
+        this.showSuccessMessage('Successfully added new event');
+        this.loadSurrEventTypes();
+      }, err => {
+        console.log('error in creating surr event type: ', data);
+        this.showErrorMessageDialog('Error! failed to add event');
+      });
+    });
+    editItemSubject.asObservable().subscribe(data => {
+      this.dataSetupService.updateSurrEventType(data).subscribe(data => {
+        this.showSuccessMessage('Successfully updated the selected event');
+        this.loadSurrEventTypes();
+      }, err => {
+        console.log('error in editing surr event type: ', data)
+        this.showErrorMessageDialog('Error! failed to edit the selected event');
+      });
+    });
+    deleteItemSubject.asObservable().subscribe(data => {
+      this.getDeleteDialog().afterClosed().subscribe(dialogResult => {
+        if (dialogResult == true) {
+          this.dataSetupService.deleteSurrEventType(data.id).subscribe(data => {
+            this.showSuccessMessage('Successfully deleted the selected event');
+            this.loadSurrEventTypes();
+          }, err => {
+            console.log('error in deleting surr event type: ', data)
+            this.showDeleteErrorMessage();
+          });
+        }
+      });
+    });
+    this.event.addItemSubject = addItemSubject;
+    this.event.editItemSubject = editItemSubject;
+    this.event.deleteItemSubject = deleteItemSubject;
+    this.loadSurrEventTypes();
+  }
+
+  loadSurrEventTypes() {
+    this.dataSetupService.getSurroundingTypes().subscribe(result => {
+      this.event.items = result;
+    });
+  }
+
+  initTriggersForClosing() {
+    let addItemSubject: Subject<EditableListItem> = new Subject<EditableListItem>();
+    let editItemSubject: Subject<EditableListItem> = new Subject<EditableListItem>();
+    let deleteItemSubject: Subject<EditableListItem> = new Subject<EditableListItem>();
+    addItemSubject.asObservable().subscribe(data => {
+      this.dataSetupService.createCloseTrigger(data).subscribe(data => {
+        this.showSuccessMessage('Successfully added new trigger for close');
+        this.loadCloseTriggers();
+      }, err => {
+        console.log('error in creating trigger for close: ', data);
+        this.showErrorMessageDialog('Error! failed to add  trigger for close');
+      });
+    });
+    editItemSubject.asObservable().subscribe(data => {
+      this.dataSetupService.updateCloseTrigger(data).subscribe(data => {
+        this.showSuccessMessage('Successfully updated the trigger for close');
+        this.loadSurrEventTypes();
+      }, err => {
+        console.log('error in editing trigger for close: ', data)
+        this.showErrorMessageDialog('Error! failed to edit the trigger for close');
+      });
+    });
+    deleteItemSubject.asObservable().subscribe(data => {
+      this.getDeleteDialog().afterClosed().subscribe(dialogResult => {
+        if (dialogResult == true) {
+          this.dataSetupService.deleteCloseTrigger(data.id).subscribe(data => {
+            this.showSuccessMessage('Successfully deleted the trigger for close');
+            this.loadCloseTriggers();
+          }, err => {
+            console.log('error in deleting surr trigger for close: ', data)
+            this.showDeleteErrorMessage();
+          });
+        }
+      });
+    });
+    this.triggerClosing.addItemSubject = addItemSubject;
+    this.triggerClosing.editItemSubject = editItemSubject;
+    this.triggerClosing.deleteItemSubject = deleteItemSubject;
+    this.loadCloseTriggers();
+  }
+
+  loadCloseTriggers() {
+    this.dataSetupService.getCloseTriggers().subscribe(result => {
+      this.triggerClosing.items = result;
+    });
+  }
+
+  initGainOrLossAttributes() {
+    let addItemSubject: Subject<EditableListItem> = new Subject<EditableListItem>();
+    let editItemSubject: Subject<EditableListItem> = new Subject<EditableListItem>();
+    let deleteItemSubject: Subject<EditableListItem> = new Subject<EditableListItem>();
+    addItemSubject.asObservable().subscribe(data => {
+      this.dataSetupService.createGainOrLossAttribute(data).subscribe(data => {
+        this.showSuccessMessage('Successfully added new gain or loss attribute');
+        this.loadGainOrLossAttributes();
+      }, err => {
+        console.log('error in creating gain or loss attribute: ', data);
+        this.showErrorMessageDialog('Error! failed to add gain or loss attribute');
+      });
+    });
+    editItemSubject.asObservable().subscribe(data => {
+      this.dataSetupService.updateGainOrLossAttribute(data).subscribe(data => {
+        this.showSuccessMessage('Successfully updated the gain or loss attribute');
+        this.loadGainOrLossAttributes();
+      }, err => {
+        console.log('error in editing gain or loss attribute: ', data)
+        this.showErrorMessageDialog('Error! failed to edit the gain or loss attribute');
+      });
+    });
+    deleteItemSubject.asObservable().subscribe(data => {
+      this.getDeleteDialog().afterClosed().subscribe(dialogResult => {
+        if (dialogResult == true) {
+          this.dataSetupService.deleteGainOrLossAttribute(data.id).subscribe(data => {
+            this.showSuccessMessage('Successfully deleted the gain or loss attribute:');
+            this.loadGainOrLossAttributes();
+          }, err => {
+            console.log('error in deleting gain or loss attribute: ', data)
+            this.showDeleteErrorMessage();
+          });
+        }
+      });
+    });
+    this.gainOrLossAttribution.addItemSubject = addItemSubject;
+    this.gainOrLossAttribution.editItemSubject = editItemSubject;
+    this.gainOrLossAttribution.deleteItemSubject = deleteItemSubject;
+    this.loadGainOrLossAttributes();
+  }
+
+  loadGainOrLossAttributes() {
+    this.dataSetupService.getGainOrLossAttributes().subscribe(result => {
+      this.gainOrLossAttribution.items = result;
+    });
+  }
+
+  initBrockerageCommisionsGrid() {
+    this.loadBrockerageCommisionsData();
+
+    let cols: EditableGridColumn[] = [];
+    let colIds: string[] = [];
+    let col: EditableGridColumn = new EditableGridColumn();
+
+
+    col.id = "brokerageValue";
+    col.name = "Brokerage";
+    col.type = 'text';
+    colIds.push('brokerageValue');
+    cols.push(col);
+
+    col = new EditableGridColumn();
+    col.id = "name";
+    col.name = "Instrument";
+    col.type = 'select';
+    col.values = [['Stocks', 'Stocks'], ['Stock Options', 'Stock Options']]
+    colIds.push('name');
+    cols.push(col);
+
+    col = new EditableGridColumn();
+    col.id = "type";
+    col.name = "Type";
+    col.type = 'select';
+    col.values = [['Percentage', 'Percentage'], ['Fixed', 'Fixed']];
+    colIds.push('type');
+    cols.push(col);
+
+    col = new EditableGridColumn();
+    col.id = "value";
+    col.name = "Value";
+    col.type = 'text';
+    colIds.push('value');
+    cols.push(col);
+
+    this.brokerageCommissions.setColumnConfigs(cols);
+    this.brokerageCommissions.setColumns(colIds);
+
+    let addItemSubject: Subject<BockerageCommission> = new Subject<BockerageCommission>();
+    let editItemSubject: Subject<BockerageCommission> = new Subject<BockerageCommission>();
+    let deleteItemSubject: Subject<BockerageCommission> = new Subject<BockerageCommission>();
+    addItemSubject.asObservable().subscribe(data => {
+      this.dataSetupService.createBrokerageCommission(data).subscribe(data => {
+        this.showSuccessMessage('Successfully added the new brokerage commission');
+        this.loadBrockerageCommisionsData();
+      }, err => {
+        console.log('error in creating brokerage commission: ', data)
+        this.showErrorMessageDialog('Error! failed to add brokerage commission');
+      });
+    });
+    editItemSubject.asObservable().subscribe(data => {
+      this.dataSetupService.updateBrokerageCommission(data).subscribe(data => {
+        this.showSuccessMessage('Successfully updated the selected brokerage commission');
+        this.loadBrockerageCommisionsData();
+      }, err => {
+        console.log('error in editing brokerage commission: ', data)
+        this.showErrorMessageDialog('Error! failed to edit selected brokerage commission');
+      });
+    });
+    deleteItemSubject.asObservable().subscribe(data => {
+      this.getDeleteDialog().afterClosed().subscribe(dialogResult => {
+        if (dialogResult == true) {
+          this.dataSetupService.deleteBrokerageCommission(data.id).subscribe(data => {
+            this.showSuccessMessage('Successfully deleted the selected brokerage commission');
+            this.loadBrockerageCommisionsData();
+          }, err => {
+            console.log('error in deleteing brokerage commission: ', data)
+            this.showDeleteErrorMessage();
+          });
+        }
+      });
+    });
+    this.brokerageCommissions.addItemSubject = addItemSubject;
+    this.brokerageCommissions.editItemSubject = editItemSubject;
+    this.brokerageCommissions.deleteItemSubject = deleteItemSubject;
+  }
+
+  loadBrockerageCommisionsData() {
+    this.dataSetupService.getBrokerageCommissions().subscribe(result => {
+      this.brokerageCommissions.dataSource = result;
+    });
+  }
+
+  getDeleteDialog() {
+    const dialogRef = this._dialog.open(ConfirmDialogComponent, {
+      width: 'auto',
+      height: 'auto',
+      data: { 'message': 'Are you sure you want to delete this entry?' }
+    });
+    return dialogRef;
+  }
+
+  showDeleteErrorMessage() {
+    this.toastr.error('Failed to delete entry. Please check if this has assigned to any trade strategy.', 'Error',
+      {
+        tapToDismiss: false,
+        closeButton: true,
+        disableTimeOut: true
+      });
+  }
+
+  showErrorMessageDialog(msg: string) {
+    this.toastr.error(msg, 'Error', {
+      tapToDismiss: false,
+      closeButton: true,
+      disableTimeOut: true
+    });
+  }
+
+  showSuccessMessage(msg: string) {
+    this.toastr.success(msg, 'Success');
+  }
+
+  onShareTradeChange(event) {
+    if (event.target.checked) {
+      this.toastr.success('All of your trades will be shared with your followers by default.', 'Success');
+      return false;
+    } else {
+      this.toastr.success('Your trades will no longer be shared with your followers by default.', 'Success');
+      return false;
+    }
+  }
+  findUsers(event) {
+    if (event.target.checked) {
+      this.toastr.success('Users can search by your email and send the request to follow you.', 'Success');
+      return false;
+    } else {
+      this.toastr.success('Other users cannot find you in CueTrade and cannot follow you', 'Success');
+      return false;
+    }
+  }
+
+  deleteAllStrategies() {
+    const dialogRef = this._dialog.open(ConfirmDialogComponent, {
+      width: 'auto',
+      height: 'auto',
+      data: { 'message': 'Are you sure you want to delete All Strategies?' }
+    });
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      if (dialogResult == true) {
+        this.dataSetupService.deleteAllStrategies().subscribe(() => {
+          this.showSuccessMessage("Successfully deleted strategies");
+          console.log('All user strategies deleted..');
+        }, err => {
+          this.showErrorMessageDialog("Error");
+        });
+      }
+    });
+  }
+
+  deleteAllData() {
+    const dialogRef = this._dialog.open(ConfirmDialogComponent, {
+      width: 'auto',
+      height: 'auto',
+      data: { 'message': 'Are you sure you want to clear All Data?' }
+    });
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      if (dialogResult == true) {
+        this.dataSetupService.deleteAllData().subscribe(() => {
+          this.showSuccessMessage("Successfully deleted all data")
+          console.log('All user data deleted..');
+        }, err => {
+           this.showErrorMessageDialog("Error");
+        });
+      }
+    });
+  }
+
+}

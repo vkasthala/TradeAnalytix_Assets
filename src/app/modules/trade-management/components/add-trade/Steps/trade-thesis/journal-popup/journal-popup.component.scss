@@ -1,0 +1,342 @@
+@import '../../../../../../../../assets/styles/variable.scss';
+
+
+
+.main-inner-sec {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 15px;
+    .left-sec {
+        width: 36%;
+    }
+    .right-sec {
+        display: flex;
+        width: 66%;
+    }
+}
+
+.right-sec {
+    display: flex;
+}
+
+
+
+.sec-m {
+    margin: 0px 10px;
+}
+
+.main-inner-headings {
+    width: 21%;
+    text-align: center;
+}
+
+.main-inner-heading {
+    width: 25%;
+}
+
+.main-inner-top {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.top-pop-inner {
+    align-items: center;
+    padding: 10px 15px;
+    justify-content: space-between;
+    display: flex;
+    border-bottom: 1px solid rgb(157 166 186 / 30%);
+    position: relative;
+    background: #275C9F;
+    border-radius: 8px 8px 0px 0px;
+}
+
+
+.right-close {
+    line-height: 0;
+    span {
+        cursor: pointer;
+    }
+    .mat-icon {
+        cursor: pointer;
+        height: 20px;
+        width: 20px;
+        font-size: 22px;
+    }
+}
+
+.btn-up {
+    padding-top: 0.25rem;
+    text-align: right;
+}
+
+.btn-add {
+    padding: 0.375rem 1.5rem !important;
+    background: #2285FA;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 400;
+    height: 40px;
+    cursor: pointer;
+    border-radius: 0;
+    &:hover {
+        color: white !important;
+    }
+}
+
+.form-control {
+    padding: 0.375rem 0.5rem;
+    font-size: 12px;
+}
+
+select.form-control {
+    padding: 0.375rem 0.25rem;
+}
+
+.separator {
+    background: #9DA6BA;
+    opacity: 0.2;
+    margin: .5rem 0;
+    height: 1px;
+}
+
+.pop-inner-title {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+    padding: 10px 0;
+    color: #275C9F;
+}
+.tradingview-chart {
+    width: 100% !important;
+}
+
+.compare-popup {
+    position: fixed;
+    left: 5%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+    // background-color: rgba(0,0,0,0.1);
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.compare-pop-inner {
+    background: #fff;
+    max-width: 700px;     //Venkat changed the width and height of the Journal popup
+    min-width: 700px;
+    height: 780px;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    box-shadow: 0px 0px 16px rgba(157, 157, 157, 0.2);
+    border-radius: 8px;
+}
+
+.main-pop-inner {
+    border: 0;
+    padding: 10px 1rem;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;            //Venkat changed the height to increase the display area within the Journal popup
+    overflow: auto;
+}
+.w-60 {
+    width: 60% !important;
+}
+.w-80 {
+    width: 80% !important;
+}
+.main-inner-sec {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 15px;
+    .left-sec {
+        width: 36%;
+    }
+    .right-sec {
+        display: flex;
+        width: 66%;
+    }
+}
+
+.right-sec {
+    display: flex;
+}
+
+.main-inner-headings {
+    width: 21%;
+    text-align: center;
+}
+
+.main-inner-heading {
+    width: 25%;
+}
+
+.main-inner-top {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.modal-title {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: #fff;
+}
+.left-heading {
+    font-size: 14px;
+    h6 {
+        font-size: 14px;
+    }
+}
+
+.right-close {
+    line-height: 0;
+    span {
+        cursor: pointer;
+    }
+    .mat-icon {
+        cursor: pointer;
+        height: 20px;
+        width: 20px;
+        font-size: 22px;
+    }
+}
+
+.btn-up {
+    padding-top: 0.5rem;
+    text-align: right;
+}
+
+.btn-add {
+    padding: 0.375rem 1.5rem !important;
+    background: #2285FA;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 400;
+    height: 40px;
+    cursor: pointer;
+    border-radius: 0;
+    &:hover {
+        color: white !important;
+    }
+}
+
+select.form-control {
+    padding: 0.25rem;
+}
+
+.separator {
+    background: #9DA6BA;
+    opacity: 0.2;
+    margin: .5rem 0;
+    height: 1px;
+}
+
+.pop-inner-title {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+    padding: 10px 0;
+    color: #275C9F;
+}
+
+.rule-item{
+    margin-left: 20px;
+    padding: 1px;
+    color: #EC6B56;
+}
+
+.failed-rules{
+    margin-top: 10px;
+    font-size: 12px !important;
+}
+.form-control {
+    display: block;
+    height: 30px;
+    border: 1px solid #cfcfcf;
+    padding: 0.25rem 0.5rem;
+    font-weight: 500;
+    font-size: 12px !important;
+    line-height: 18px;
+    color: #000;
+}
+.btn-join {                          // formatted the save button in Journal popup
+    background: radial-gradient(159.03% 392.94% at 26.8% -25.69%, rgba(24, 255, 61, 0.2) 0%, rgba(155, 216, 186, 0.182) 97.92%), linear-gradient(180deg, #33CB39 0%, #1BD022 100%);
+    color: #ffffff;
+    font-size: 12px;
+    border-radius: 16px;
+    padding: 0.375rem 1rem !important;
+    height: 30px;
+    width: 80px;
+    line-height: 1;
+    box-shadow: none;
+}
+
+
+.small-text {
+    font-size: 12px;
+    color: #ccc;
+}
+textarea.form-control {
+    height: 230px;
+    width: 130%;
+    overflow: auto;
+}
+
+.btn-secondary {                        // formatted the cancel button in Journal popup
+    color: #212529;
+    background: #DCDCDC;
+    border-color: #DCDCDC;
+    font-size: 12px;
+    padding: 0.375rem 1rem !important;
+    height: 30px;
+    width: 80px;
+    line-height: 1;
+    border-radius: 16px;
+    box-shadow: none;
+}
+
+.followers-col {
+    flex: 0 0 15%;
+    min-width: 15%;
+    align-items: center;
+    display: flex;
+}
+.modal-footer {
+    align-items: center;
+    justify-content: center;
+}
+
+.col-form-label {
+    font-weight: 500;
+    font-size: 12px !important;      // Venkat changed to reduce font size of labels to be consistent
+    line-height: 18px;
+    color: #212529;
+    padding-top: 0;
+    padding-bottom: 0;
+    max-width: 25%;             // Venkat changed to reduce the space between labels and dropdowns
+    flex: 0 0 41.666667%;
+}
+.col-form-value {
+    font-weight: 500;
+    font-size: 14px !important;
+    line-height: 18px;
+    color: #000;
+}
+.add-new {
+    color: #275C9F;
+    font-size: 13px;
+    line-height: 1;
+    font-weight: 600;
+}
+.text-primary {
+    color: #275C9F !important;
+}

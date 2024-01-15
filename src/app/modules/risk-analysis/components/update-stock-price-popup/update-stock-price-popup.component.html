@@ -1,0 +1,33 @@
+<div class="update-price-popup">
+    <div class="update-price-pop-inner">
+        <div class="pop-top-heading">
+            <div class="left-heading">
+                <h5>Update Stock Price</h5>
+            </div>
+        </div>
+
+        <div class="popup-body">
+            <div class="element">
+                <span>Do you want to update stock price for Strategy Builder?</span>
+                <span>
+                    <span><input type="radio" name="confirm_update" value="true" [(ngModel)]='data.update'
+                            class="radio" />Yes</span>
+                    <span><input type="radio" value="false" name="confirm_update" [(ngModel)]='data.update'
+                            class="radio" />No</span>
+                </span>
+            </div>
+
+            <div class="element row mb-2">
+                <span class="col-9 sp-label">Enter the stock price to be used as input to Strategy Builder: </span>
+                <input type="number" (keydown)="preventNegatives($event, false)" min="0"
+                    class="form-control cards-input col-2" [(ngModel)]="data.stockPrice" />
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-save" [mat-dialog-close]="data">Update</button>
+            <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+        </div>
+
+    </div>
+</div>

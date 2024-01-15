@@ -1,0 +1,138 @@
+<!-- ste-sixs -->
+<div class="trade-risk-managment">
+  <div class="container">
+
+    <div class="trade-stategy-heading">
+      <h6>
+        Risk Management
+      </h6>
+    </div>
+
+    <div class="trade-thesis-inner">
+
+      <div class="tranding-thesis">
+        <div class="left-thesis">
+          <h6>Mindset at trade execution</h6>
+        </div>
+        <div class="right-thesis">
+          <div class="form-group">
+            <select class="form-control select-input" id="inputState">
+              <option selected="">Custom</option>
+              <option>Trade Type</option>
+              <option>Naked call</option>
+              <option>Naked put</option>
+              <option>Covered Call</option>
+              <option>Protective Put</option>
+              <option>Iron Condor</option>
+              <option>Call Spread</option>
+              <option>Put Spread</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="tranding-thesis">
+        <div class="left-thesis">
+          <h6>% of total capital invested on the trade</h6>
+        </div>
+        <div class="right-thesis">
+          <div class="form-group">
+            <input type="number" (keydown)="preventNegatives($event, true)" pattern="^\d*(\.\d{0,2})?$" min="0" class="form-control cards-input" placeholder="" />
+          </div>
+        </div>
+      </div>
+
+      <div class="tranding-thesis">
+        <div class="left-thesis">
+          <h6>% of the capital left as cash post this trade</h6>
+        </div>
+        <div class="right-thesis">
+          <div class="form-group">
+            <input type="number" (keydown)="preventNegatives($event, true)" pattern="^\d*(\.\d{0,2})?$" min="0" class="form-control cards-input" placeholder="" />
+           
+          </div>
+        </div>
+      </div>
+
+      <div class="tranding-thesis">
+        <div class="left-thesis">
+          <h6>% amount hedged</h6>
+        </div>
+        <div class="right-thesis">
+          <div class="form-group">
+            <input type="number" (keydown)="preventNegatives($event, true)" pattern="^\d*(\.\d{0,2})?$" min="0" class="form-control cards-input" placeholder="" />
+          </div>
+        </div>
+      </div>
+
+      <div class="tranding-thesis">
+        <div class="left-thesis">
+          <h6>Stoploss set for the stock</h6>
+        </div>
+        <div class="right-thesis">
+          <div class="form-group">
+            <input class="form-control"  type="number">
+          </div>
+        </div>
+      </div>
+
+      <div class="tranding-thesis">
+        <div class="left-thesis">
+          <h6>Is this a contrarion trade?</h6>
+        </div>
+        <div class="right-thesis">
+          <div class="form-group">
+            <select class="form-control select-input" id="inputState">
+              <option>Yes</option>
+              <option>No</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="tranding-thesis">
+        <div class="left-thesis">
+          <h6>Specify the technical indicator used for the trade</h6>
+        </div>
+        <div class="right-thesis">
+          <div class="form-group">
+           <select  class="form-control select-input" id="inputState">
+              <option  selected="">MACD</option>
+              <option >RSI</option>
+              <option >SMA</option>
+              <option >EMA</option>
+              <option >Bollinger Bands</option>
+              <option >Support</option>
+              <option >Resistance</option>
+              <option >On-Balance Volume</option>
+              <option >Stochastic Oscillator</option>
+              <option >Fibonacci Retracement</option>
+              <option >Ichimoku Cloud</option>
+              <option >Average Directional Index</option>
+              <option >Standard Deviation</option>
+              <option >Williams %R</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="tranding-thesis">
+        <div class="left-thesis">
+          <h6>Specify the value</h6>
+        </div>
+        <div class="right-thesis">
+          <div class="form-group">
+            <input class="form-control"  type="number">
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="trade-btn-p">
+      <a class=" btn-pre" (click)="previous()">Previous</a>
+      <a class="btn-pre" (click)="next()">Entry Rules </a>
+
+    </div>
+  </div>
+</div>
