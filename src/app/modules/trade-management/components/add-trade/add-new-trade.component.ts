@@ -349,6 +349,9 @@ export class AddNewTradeComponent implements OnInit {
       this.tradeStrategy.executedDate = tradeDetailsComp.executedDate;
     }
     this.tradeStrategy.tradeChubFiles = tradeThesisComp.tradeChubFiles;
+    if(tradeDetailsComp.tradeStatus == 1){
+      this.tradeStrategy.maxLoss = tradeDetailsComp.maxLoss;
+    }
   }
 
   goBack(moveTwoSteps?, mobileView?) {

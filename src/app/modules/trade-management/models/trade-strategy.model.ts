@@ -51,5 +51,7 @@ export class TradeStrategy {
     tradeChubFiles: TradeChubFile[];
 
     userMaxRisk: number;
+
+    maxLoss: number;
     
 }
