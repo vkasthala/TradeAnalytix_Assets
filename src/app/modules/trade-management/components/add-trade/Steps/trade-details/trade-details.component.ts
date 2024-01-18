@@ -81,7 +81,7 @@ export class TradeDetailsComponent implements OnInit {
   executedDate: string;
   closeDate: string;
   tradeStatus: number;
-  maxLoss: number;
+  userMaxRisk: number;
   lastUpdatedDate: string;
   tags: TradeTag[] = [];
   previousReturn: number = 0;
@@ -139,7 +139,7 @@ export class TradeDetailsComponent implements OnInit {
       this.lastUpdatedDate = this.inputState.tradeStrategy.updateDateTime;
       this.tags = this.inputState.tradeStrategy.tradeTag ? this.inputState.tradeStrategy.tradeTag : [];
       this.previousReturn = this.inputState.tradeStrategy.returnAmount ? this.inputState.tradeStrategy.returnAmount : 0;
-      this.maxLoss = this.inputState.tradeStrategy.maxLoss;
+      this.userMaxRisk = this.inputState.tradeStrategy.userMaxRisk;
       this.updateStockOptionDisplayProperty();
     }
   }

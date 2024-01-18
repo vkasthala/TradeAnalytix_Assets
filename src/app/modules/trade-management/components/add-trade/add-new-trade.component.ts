@@ -350,7 +350,7 @@ export class AddNewTradeComponent implements OnInit {
     }
     this.tradeStrategy.tradeChubFiles = tradeThesisComp.tradeChubFiles;
     if(tradeDetailsComp.tradeStatus == 1){
-      this.tradeStrategy.maxLoss = tradeDetailsComp.maxLoss;
+      this.tradeStrategy.maxLoss = this.tradeStrategy.userMaxRisk;
     }
   }
 
