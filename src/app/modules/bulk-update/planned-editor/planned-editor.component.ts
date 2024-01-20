@@ -34,7 +34,7 @@ export class PlannedEditorComponent implements OnInit {
     if (!this.params.data.tradeType) {
       return "";
     }
-    return this.params.data.tradeType === 'planned' ? 'Yes' : 'No';
+    return this.params.data.tradeType === 'planned' ? 'planned' : 'impromptu';
   }
 
   isPopup?(): boolean {
