@@ -17,6 +17,7 @@ export class PrivacyPolicyComponent implements OnInit {
   GOOGLE_AUTH_URL: string = '/oauth2/authorize/google';
   FACEBOOK_AUTH_URL: string = '/oauth2/authorize/facebook';
   MICROSOFT_AUTH_URL: string = '/oauth2/authorize/microsoft';
+  FYERS_AUTH_URL: string = '/oauth2/authorize/fyers';
   closeResult = '';
   features: string[] = ['Learning from your trade history', 'Aligning with self-set rules', 'Journaling your trades', 'Analyzing risk of trades', 'Picking the right strategies'];
   currentInd: number = 0;
@@ -50,6 +51,8 @@ export class PrivacyPolicyComponent implements OnInit {
       url = this.FACEBOOK_AUTH_URL;
     } else if ("microsoft" === authProvider) {
       url = this.MICROSOFT_AUTH_URL;
+    } else if("fyers" === authProvider){
+      url = this.FYERS_AUTH_URL;
     } else if ("local" === authProvider) {
 
     }

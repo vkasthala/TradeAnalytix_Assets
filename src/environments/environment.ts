@@ -10,10 +10,10 @@ export const environment = {
   redirectUri: 'https://tradeanalytix.com/oauth-redirect',*/
   /*apiUrl: 'https://tradeanalytix.com/service/us',
   redirectUri: 'https://us.tradeanalytix.com/oauth-redirect',*/
-  apiUrl: 'https://in.cuetrade.io/service',
-  redirectUri: 'https://in.cuetrade.io/oauth-redirect',
-  /*apiUrl: 'http://localhost:8080/service',
-  redirectUri: 'http://localhost:4200/oauth-redirect',*/
+  // apiUrl: 'https://in.cuetrade.io/service',
+  // redirectUri: 'https://in.cuetrade.io/oauth-redirect',
+  apiUrl: 'http://localhost:8080/service',
+  redirectUri: 'http://localhost:4200/oauth-redirect',
   tz: 'Asia/Calcutta'
 };
 
@@ -24,4 +24,4 @@ export const environment = {
  * This import should be commented out in production mode because it will have a negative impact
  * on performance if an error is thrown.
  */
-// import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+import 'zone.js/dist/zone-error';  // Included with Angular CLI.
