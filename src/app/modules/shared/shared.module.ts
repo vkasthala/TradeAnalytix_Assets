@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders, NgModule } from '@angular/core';
 import { TradeExecutionDateComponent } from './components/modals/trade-execution-date/trade-execution-date.component';
 import { EditableListComponent } from './components/widgets/editable-list/editable-list.component';
 import { EditableGridComponent } from './components/widgets/editable-grid/editable-grid.component';
@@ -8,11 +8,53 @@ import { DropdownComponent } from './components/widgets/dropdown/dropdown.compon
 import { TextboxComponent } from './components/widgets/textbox/textbox.component';
 import { DatefieldComponent } from './components/widgets/datefield/datefield.component';
 import { TextAreaComponent } from './components/widgets/text-area/text-area.component';
+import { ClickOutsideDirective } from 'src/app/clickOutside';
+import { SharedService } from './services/shared.service';
+
+const modules = [
+  CommonModule
+
+]
+const components = [
+  TradeExecutionDateComponent, 
+  EditableListComponent, 
+  EditableGridComponent, 
+  StrategyDetailsComponent, 
+  DropdownComponent, 
+  TextboxComponent, 
+  DatefieldComponent, 
+  TextAreaComponent,
+    
+  // ClickOutsideDirective,
+  // IndianNumberPipe
+];
+
+const providers = [
+  // SharedService
+];
 
 @NgModule({
-  declarations: [TradeExecutionDateComponent, EditableListComponent, EditableGridComponent, StrategyDetailsComponent, DropdownComponent, TextboxComponent, DatefieldComponent, TextAreaComponent],
+  declarations: [
+    ...components,
+  ],
   imports: [
-    CommonModule
-  ]
+    ...modules
+  ],
+  exports: [
+    ...modules,
+    ...components,
+  ],
+  providers: [
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class SharedModule { }
+export class SharedModule {
+  static forRoot(): ModuleWithProviders<SharedModule> {
+    return {
+      ngModule: SharedModule,
+      providers: [
+        ...providers,
+      ]
+    };
+  }
+}

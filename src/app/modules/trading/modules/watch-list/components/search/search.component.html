@@ -1,0 +1,81 @@
+<div class="omnisearch">
+  <div class="search">
+    <div class="su-input-group su-has-icon search-input-field">
+      <input type="text" class="search-input" placeholder="Search: stocks" autocorrect="off"
+        autocomplete="off" dynamicwidthsize="8" #searchBox id="search-box" (input)="search(searchBox.value)" />
+      <mat-icon class="mat-icon prefix-icon icon icon-search">search</mat-icon>
+    </div>
+    <span class="counts">{{currentWatchListSize}} / 10</span>
+  </div>
+  
+  <ul class="omnisearch-results" *ngIf="searchResult.length > 0" (mouseleave)="fadeOutActions(null)">
+    <div>
+      <li class="search-result-item" [ngClass]="{'selected':index == 0,'isadded':searchItem.addedToWatchList}"
+        *ngFor="let searchItem of searchResult, let index=index" (mouseover)="showSearchActions($event, index)"
+        (mouseout)="fadeOutActions(index)"  (click)="addToWatchList(searchItem)">
+        <span class="symbol" (click)="addToWatchList(searchItem)">
+          <span class="tradingsymbol">{{searchItem.code}}</span>
+          <span class="ins-added-label" data-balloon="Added" data-balloon-pos="up" *ngIf="searchItem.addedToWatchList">
+            <span class="icon icon-check"></span>
+          </span>
+        </span>
+        <span class="exchange">
+          <span class="company">{{searchItem.name}}</span>
+          <span *ngIf="isMobileDevice">
+            <button type="button" class="button-green button-xsmall" data-balloon="Add" data-balloon-pos="up"
+            (click)="addNewItem(searchItem); $event.stopPropagation();" *ngIf="!searchItem.addedToWatchList">
+              <span class="icon icon-plus"></span>
+            </button>
+            <button type="button" class="button-outline button-grey button-xsmall" data-balloon="Added" data-balloon-pos="up"
+            *ngIf="searchItem.addedToWatchList" (click)="closePanel()">
+              <span class="icon icon-check"></span>
+            </button>
+          </span>
+        </span>
+        <span class="action-buttons" *ngIf="searchListIndex == index && !isMobileDevice">
+          <button type="button" class="button-blue" data-balloon="Buy" data-balloon-pos="up"
+            (click)="buyOrders(searchItem)" *ngIf="!isNiftyStock(searchItem)">B</button>
+
+          <button type="button" class="button-orange" data-balloon="Sell" data-balloon-pos="up"
+            (click)="sellOrders(searchItem)" *ngIf="!isNiftyStock(searchItem)">S</button>
+
+          <button type="button" class="button-outline" data-balloon="Chart" data-balloon-pos="up" [routerLink]="['/chart/',searchItem.code, searchItem.symbolId]">
+            <mat-icon class="material-icons mat-icon-sm">show_chart</mat-icon>
+          </button>
+
+          <button type="button" class="button-green" data-balloon="Add" data-balloon-pos="up"
+            (click)="addNewItem(searchItem); $event.stopPropagation();" *ngIf="!searchItem.addedToWatchList">
+            <mat-icon class="material-icons mat-icon-sm">add</mat-icon>
+          </button>
+
+          <button type="button" class="button-outline button-grey" data-balloon="Added" data-balloon-pos="up"
+            *ngIf="searchItem.addedToWatchList" (click)="closePanel()">
+            <mat-icon class="material-icons mat-icon-sm">check</mat-icon>
+          </button>
+        </span>
+      </li>
+    </div>
+  </ul>
+</div>
+
+<div *ngIf="isMobileDevice">
+  <div class="mobile-context-menu search-mobile-menu" *ngIf="showMobileContextMenu">
+    <div class="mobile-context-menu-list list-flat" (clickOutside)="closeMobileContextMenu($event)">
+      <div class="search-screen-header">
+        <h4>{{selectedSymbol.code}}</h4>
+      </div>
+      <div class="d-flex justify-content-between p-3">
+        <button type="button" class="button button-blue" (click)="buyOrders(selectedSymbol)">BUY</button>
+        <button type="button" class="button button-orange" (click)="sellOrders(selectedSymbol)">SELL</button>
+      </div>
+      <div class="text-center p-2">
+        <span data-balloon="Chart (C)" data-balloon-pos="up"
+        [routerLink]="['/chart/',selectedSymbol.code, selectedSymbol.symbolId]">
+            <span class="icon icon-trending-up"></span> Chart
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <app-orders-modal *ngIf="showOrdersModal" [orderToggle]="orderToggle" [margins]="marginsSource"
+  (cancelOrder)="cancelOrders()"></app-orders-modal> -->

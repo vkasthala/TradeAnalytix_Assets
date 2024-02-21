@@ -1,0 +1,10 @@
+<div class="app page-dashboard reports-section p-3" [ngClass]="isMobileDevice ? 'mobile' : ''" (window:resize)="onResize($event)">
+    <div class="trading-container">
+        <div class="watch-list-container">
+            <app-watch-list></app-watch-list>
+        </div>
+        <div class="container-right">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

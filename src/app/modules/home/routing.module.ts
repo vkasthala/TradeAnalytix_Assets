@@ -41,6 +41,7 @@ import { EditTradeCanDeactivateGuard } from '../trade-management/components/edit
 import { CloseTradeCanDeactivateGuard } from '../trade-management/components/close-trade.can-deactivate.guard';
 import { BulkUpdateComponent } from '../bulk-update/bulk-update.component';
 import { TradeBuilderComponent } from '../trade-builder/components/trade-builder.component';
+import { TradingComponent } from '../trading/trading.component';
 
 const routes: Routes = [
   {
@@ -200,6 +201,24 @@ const routes: Routes = [
             },
           ]
         },
+        {
+          path: 'trading',
+          component : TradingComponent,
+          children: [
+            {
+              path : '',
+              loadChildren: () => import('../trading/modules/trading-dashboard/trading-dashboard.module').then(m => m.TradingDashboardModule),
+            },
+            {
+              path : 'orders',
+              loadChildren: () => import('../trading/modules/orders/orders.module').then(m => m.OrdersModule),
+            },
+            {
+              path : 'holdings',
+              loadChildren: () => import('../trading/modules/holdings/holdings.module').then(m => m.HoldingsModule),
+            }
+          ]
+        }
     ]
   },
   {

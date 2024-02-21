@@ -175,6 +175,10 @@ import { ZerodhaInstructionsComponent } from '../import-trades-history/zerodha-i
 import { RobinhoodInstructionsComponent } from '../import-trades-history/robinhood-instructions/robinhood-instructions.component';
 import { ActivateRuleModalComponent } from '../settings/components/activate-rule-modal/activate-rule-modal.component';
 import { DisableeRuleModalComponent } from '../settings/components/disable-rule-modal/disable-rule-modal.component';
+import { TradingComponent } from '../trading/trading.component';
+import { WatchListComponent } from '../trading/modules/watch-list/components/watch-list/watch-list.component';
+import { SearchComponent } from '../trading/modules/watch-list/components/search/search.component';
+import { ClickOutsideDirective } from 'src/app/clickOutside';
 
 export const MY_FORMATS = {
   parse: {
@@ -345,7 +349,11 @@ export const MY_FORMATS = {
     ZerodhaInstructionsComponent,
     RobinhoodInstructionsComponent,
     ActivateRuleModalComponent,
-    DisableeRuleModalComponent
+    DisableeRuleModalComponent,
+    TradingComponent,
+    WatchListComponent,
+    SearchComponent,
+    ClickOutsideDirective
   ],
   imports: [
     FormsModule,
@@ -445,7 +453,10 @@ export const MY_FORMATS = {
     ZerodhaInstructionsComponent,
     RobinhoodInstructionsComponent,
     ActivateRuleModalComponent,
-    DisableeRuleModalComponent
+    DisableeRuleModalComponent,
+    TradingComponent,
+    WatchListComponent,
+    SearchComponent,
   ],
   // bootstrap: [TradeStrategiesGrid],
   providers: [
