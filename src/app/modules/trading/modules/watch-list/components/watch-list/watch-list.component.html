@@ -1,7 +1,7 @@
 <div [ngClass]="isMobileDevice ? 'page-content marketwatch' : ''">
     <div class="marketwatch-sidebar marketwatch-wrap">
-        <app-search [pageIndex]="pageIndex" [watchListData]="watchListData" (clickOutside)="closeSarchUI(true)"
-            [isMobileDevice]="isMobileDevice"></app-search>
+       
+        <app-search [pageIndex]="pageIndex" [watchListData]="watchListData" (clickOutside)="closeSarchUI(true)" [isMobileDevice]="isMobileDevice"></app-search>
         <div class="instruments" (mouseleave)="out(null)">
             <div *ngFor="let list of watchListData">
                 <div *ngIf="pageIndex == list.pageNumber && list.items.length === 0" class="empty-state">

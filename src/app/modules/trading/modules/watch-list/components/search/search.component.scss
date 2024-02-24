@@ -52,7 +52,7 @@
 
 .omnisearch .omnisearch-results .search-result-item {
     position: relative;
-    padding: 6px 30px;
+    padding: 10px 30px;
     margin-bottom: 0;
     cursor: pointer;
     border-bottom: 1px solid #eee
@@ -60,7 +60,8 @@
 
 .omnisearch .omnisearch-results .search-result-item .exchange {
     position: absolute;
-    right: 10px
+    right: 10px;
+    
 }
 
 .omnisearch .omnisearch-results .search-result-item .company {
@@ -90,40 +91,7 @@
     opacity: .6
 }
 
-.omnisearch .omnisearch-results .search-result-item.isadded .ins-added-label {
-    opacity: 1;
-    color: var(--color-text-1)
-}
 
-.omnisearch .omnisearch-results .search-result-item .exchange .text-label.NSE,.text-label.red {
-    color: var(--color-caranation-red);
-    background-color: rgba(var(--color-caranation-red--rgb),.1)
-}
-
-.omnisearch .omnisearch-results .search-result-item .exchange .text-label.MCX,.text-label.green {
-    color: var(--color-text-8);
-    background-color: rgba(var(--color-fruit-salad-green--rgb),.1)
-}
-
-.omnisearch .omnisearch-results .search-result-item .exchange .text-label.BSE,.text-label.blue {
-    color: var(--color-text-4);
-    background-color: rgba(var(--color-bg-5--rgb),.1)
-}
-
-.omnisearch .omnisearch-results .search-result-item .exchange .text-label.NSE,.text-label.red {
-    color: var(--color-caranation-red);
-    background-color: rgba(var(--color-caranation-red--rgb),.1)
-}
-
-.omnisearch .omnisearch-results .search-result-item .exchange .text-label.MCX,.text-label.green {
-    color: var(--color-text-8);
-    background-color: rgba(var(--color-fruit-salad-green--rgb),.1)
-}
-
-.omnisearch .omnisearch-results .search-result-item .exchange .text-label.BSE,.text-label.blue {
-    color: var(--color-text-4);
-    background-color: rgba(var(--color-bg-5--rgb),.1)
-}
 .omnisearch .omnisearch-results .search-result-item .exchange .text-box.MCX,.text-box.green {
     background-color: #ebf8f2;
     border-color: #ebf8f2
@@ -142,6 +110,8 @@
     position: absolute;
     right: 10px;
     background-color: #f9f9f9;
+    top:6px;
+    display: flex;
 }
 
 .marketwatch-sidebar .omnisearch .su-input-group {
@@ -168,8 +138,8 @@
 
 .omnisearch .omnisearch-results .search-result-item .action-buttons button {
     margin: 0 2px;
-    padding: 1px 5px;
-    min-width: 35px
+    padding: 0 10px;
+    min-width: 45px;
 }
 .search-mobile-menu {
     background-color: rgba(0, 0, 0, 0.74);

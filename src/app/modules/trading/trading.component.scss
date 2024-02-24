@@ -444,15 +444,8 @@
 .mobile-nav {
     align-items: center;
 }
-.learn-icon {
-    align-items: center;
-    line-height: 0 !important;
-    position: relative;
-    top: 3px;
-    img {
-        height: 25px;
-    }
-}
+
+
 .trading-container {
     background: #FFFFFF;
     box-shadow: 0px 4px 16px rgba(157, 157, 157, 0.1);
@@ -464,6 +457,8 @@
     border-right: 1px solid rgba(157, 166, 186, 0.2);
     width: 30%;
     position: relative;
+    height: calc(100% - 50px);
+    z-index: 1;
 }
 .container-right {
     width: 70%;

@@ -123,7 +123,127 @@ export class WatchListComponent implements OnInit {
              "sequence":"",
              "priceModel":"",
              "symbol_id":""
-          }
+          },
+          {
+            "id": "NSE:INE423Y01016",
+            "weight": 8,
+            "tradingsymbol": "SBFC",
+            "instrument_token": 4614657,
+            "segment": "NSE",
+            "exchange": "NSE",
+            "expiry":"",
+             "sequence":"",
+             "priceModel":"",
+             "symbol_id":""
+        },
+        {
+            "id": "BSE:50950916",
+            "weight": 9,
+            "tradingsymbol": "SBIGETSINAV",
+            "instrument_token": 50950916,
+            "segment": "BSE",
+            "exchange": "BSE",
+            "expiry":"",
+             "sequence":"",
+             "priceModel":"",
+             "symbol_id":""
+        },
+        {
+            "id": "NSE:INE850D01014",
+            "weight": 10,
+            "tradingsymbol": "GODREJAGRO",
+            "instrument_token": 36865,
+            "segment": "NSE",
+            "exchange": "NSE",
+            "expiry":"",
+             "sequence":"",
+             "priceModel":"",
+             "symbol_id":""
+        },
+        {
+            "id": "NSE:INE769A01020",
+            "weight": 11,
+            "tradingsymbol": "AARTIIND",
+            "instrument_token": 1793,
+            "segment": "NSE",
+            "exchange": "NSE",
+            "expiry":"",
+             "sequence":"",
+             "priceModel":"",
+             "symbol_id":""
+        },
+        {
+            "id": "NSE:INE423A01024",
+            "weight": 12,
+            "tradingsymbol": "ADANIENT",
+            "instrument_token": 6401,
+            "segment": "NSE",
+            "exchange": "NSE",
+            "expiry":"",
+             "sequence":"",
+             "priceModel":"",
+             "symbol_id":""
+        },
+        {
+            "id": "NSE:INE932X01018",
+            "weight": 13,
+            "tradingsymbol": "SHAREINDIA",
+            "instrument_token": 26625,
+            "segment": "NSE",
+            "exchange": "NSE",
+            "expiry":"",
+            "sequence":"",
+            "priceModel":"",
+            "symbol_id":""
+        },
+        {
+            "id": "NSE:INE610C01014",
+            "weight": 14,
+            "tradingsymbol": "ARENTERP",
+            "instrument_token": 46337,
+            "segment": "NSE",
+            "exchange": "NSE",
+            "expiry":"",
+             "sequence":"",
+             "priceModel":"",
+             "symbol_id":""
+        },
+        {
+            "id": "NSE:INE822C01015",
+            "weight": 15,
+            "tradingsymbol": "TCPLPACK",
+            "instrument_token": 47105,
+            "segment": "NSE",
+            "exchange": "NSE",
+            "expiry":"",
+             "sequence":"",
+             "priceModel":"",
+             "symbol_id":""
+        },
+        {
+            "id": "NSE:INE034A01011",
+            "weight": 16,
+            "tradingsymbol": "ARVIND",
+            "instrument_token": 49409,
+            "segment": "NSE",
+            "exchange": "NSE",
+            "expiry":"",
+             "sequence":"",
+             "priceModel":"",
+             "symbol_id":""
+        },
+        {
+            "id": "NSE:INE440A01010",
+            "weight": 17,
+            "tradingsymbol": "ASHIMASYN",
+            "instrument_token": 52737,
+            "segment": "NSE",
+            "exchange": "NSE",
+            "expiry":"",
+             "sequence":"",
+             "priceModel":"",
+             "symbol_id":""
+        }
        ],
        "pageNumber":1
     },
