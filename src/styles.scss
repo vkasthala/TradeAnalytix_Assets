@@ -1091,9 +1091,9 @@ html.theme-light .group-wWM3zP_M- {
 
 
 .marketwatch-sidebar .instruments {
-    max-height: calc(100% - 84px);
+    max-height: calc(100% - 115px);
     width: 100%;
-    height: calc(100% - 84px);
+    height: calc(100% - 115px);
     overflow-x: hidden
 }
 
@@ -1854,7 +1854,7 @@ input {
     position: relative;
     -webkit-transition: background-color .15s ease;
     transition: background-color .15s ease;
-    color: var(--color-text-default);
+    color: #212529;
     border-bottom: 1px solid var(--color-border-1)
 }
 
@@ -1895,4 +1895,449 @@ input {
     top: 18px;
     left: 14px;
     opacity: .5
+}
+
+
+.su-input-group {
+    position: relative;
+    margin-bottom: 30px
+}
+
+.su-input-group input,.su-input-group textarea {
+    border: 1px solid var(--color-border-default);
+    border-radius: 3px;
+    padding: 10px 15px;
+    color: var(--color-text-default);
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+.su-input-group input:disabled,.su-input-group textarea:disabled {
+    background-color: var(--color-bg-default);
+    background-image: var(--bg-input-disabled);
+    color: var(--color-text-2);
+    cursor: not-allowed;
+}
+
+.su-input-group input:focus,.su-input-group textarea:focus {
+    outline: 0;
+    border-color: var(--color-border-2)
+}
+
+.su-input-group input:focus+.icon,.su-input-group textarea:focus+.icon {
+    border-color: var(--color-border-2)
+}
+
+.su-input-group input::-webkit-input-placeholder,.su-input-group textarea::-webkit-input-placeholder {
+    color: var(--color-text-1)
+}
+
+.su-input-group input::-moz-placeholder,.su-input-group textarea::-moz-placeholder {
+    color: var(--color-text-1)
+}
+
+.su-input-group input:-ms-input-placeholder,.su-input-group textarea:-ms-input-placeholder {
+    color: var(--color-text-1)
+}
+
+.su-input-group input::-ms-input-placeholder,.su-input-group textarea::-ms-input-placeholder {
+    color: var(--color-text-1)
+}
+
+.su-input-group input::placeholder,.su-input-group textarea::placeholder {
+    color: var(--color-text-1)
+}
+
+.su-input-group.disabled .su-input-label {
+    color: var(--color-text-2)
+}
+
+.su-input-group .su-input-label {
+    display: block;
+    visibility: hidden;
+    z-index: 5;
+    position: absolute;
+    top: -8px;
+    background-color: var(--color-bg-default);
+    padding: 0 5px;
+    margin-left: 10px
+}
+
+.su-input-group .su-input-label.su-visible {
+    visibility: visible
+}
+
+.su-input-group.su-static-label .su-input-label {
+    visibility: visible;
+    -webkit-animation: none;
+    animation: none
+}
+
+.su-input-group.uppercase input,.su-input-group.uppercase select,.su-input-group.uppercase textarea {
+    text-transform: uppercase
+}
+
+.su-input-group.su-has-icon input {
+    padding-left: 55px
+}
+
+.su-input-group .prefix-icon.icon {
+    left: 0;
+    border-right: 1px solid var(--color-border-default)
+}
+
+.su-input-group .prefix-icon.icon,.su-input-group .reveal-password-icon {
+    position: absolute;
+    line-height: 0;
+    top: 8px;
+    padding: 7px 8px 8px 10px;
+    z-index: 4
+}
+
+.su-input-group .reveal-password-icon {
+    right: 0;
+    color: var(--color-text-1)
+}
+
+.su-input-group .reveal-password-icon:focus,.su-input-group .reveal-password-icon:hover {
+    color: var(--color-text-default)
+}
+
+.su-input-group .su-message {
+    display: inline-block;
+    margin-top: 5px
+}
+
+.su-input-group .su-message:empty:before {
+    content: "\200b"
+}
+
+.su-input-group.su-error-state input,.su-input-group.su-error-state select,.su-input-group.su-error-state textarea {
+    border-color: var(--color-border-8)
+}
+
+.su-input-group.su-error-state .su-message {
+    color: var(--color-text-7)
+}
+.su-radio-group .su-radio-wrap {
+    display: inline-block;
+    margin-right: 20px
+}
+
+.su-radio-group .su-radio-wrap:last-child {
+    margin-right: 0
+}
+
+.su-radio-group .su-radio {
+    opacity: 0;
+    position: absolute
+}
+
+.su-radio-group .su-radio,.su-radio-group .su-radio-label {
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer
+}
+
+.su-radio-group .su-radio-label {
+    position: relative;
+    border-bottom: 1px solid rgba(var(--color-border-4--rgb),0)
+}
+
+.su-radio-group .su-radio+.su-radio-label:before {
+    content: "";
+    background-color: var(--color-bg-default);
+    border: 2px solid var(--color-border-2);
+    display: inline-block;
+    vertical-align: middle;
+    width: 6px;
+    height: 6px;
+    padding: 6px;
+    margin: -1px 5px 0 0;
+    text-align: center;
+    border-radius: 50%
+}
+
+.su-radio-group .su-radio:checked+.su-radio-label:before {
+    padding: 7px;
+    background-color: var(--color-bg-5);
+    -webkit-box-shadow: inset 0 0 0 2px var(--color-border-4);
+    box-shadow: inset 0 0 0 2px var(--color-border-4);
+    border: 1px solid var(--color-border-6)
+}
+
+.su-radio-group .su-radio:focus+.su-radio-label {
+    outline: none;
+    border-bottom: 1px solid var(--color-border-default)
+}
+
+.su-radio-group .disabled .su-radio-label {
+    opacity: .5!important;
+    cursor: not-allowed
+}
+
+.su-checkbox-group {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    line-height: 1
+}
+
+.su-checkbox-group .su-checkbox {
+    opacity: 0;
+    position: absolute
+}
+
+.su-checkbox-group .su-checkbox:disabled+.su-checkbox-label {
+    opacity: .5;
+    cursor: not-allowed
+}
+
+.su-checkbox-group .su-checkbox:focus+.su-checkbox-label .su-checkbox-value {
+    outline: none;
+    border-bottom: 1px solid var(--color-mercury-grey)
+}
+
+.su-checkbox-group .su-checkbox:checked+.su-checkbox-label .su-checkbox-tick {
+    top: 3px;
+    display: block
+}
+
+.su-checkbox-group .su-checkbox-label {
+    cursor: pointer;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center
+}
+
+.su-checkbox-group .su-checkbox-value {
+    vertical-align: middle;
+    margin-left: 5px;
+    border-bottom: 1px solid rgba(var(--color-border-4--rgb),0)
+}
+
+.su-checkbox-group .su-checkbox-box {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px solid var(--color-border-3);
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 2px
+}
+
+.su-checkbox-group .su-checkbox-tick {
+    display: none;
+    top: 20px;
+    left: 2px;
+    right: 2px;
+    width: 8px;
+    height: 3px;
+    content: "";
+    position: absolute;
+    border-left: 2px solid;
+    border-bottom: 2px solid;
+    margin: auto;
+    -webkit-transform: rotate(-45deg) translateZ(0);
+    transform: rotate(-45deg) translateZ(0);
+    -webkit-transform-origin: center center;
+    transform-origin: center center;
+    border-color: var(--color-border-6)
+}
+
+.su-checkbox-group.indeterminate .su-checkbox-tick {
+    -webkit-transform: none;
+    transform: none;
+    border-left: none
+}
+.su-switch-group {
+    display: inline-block
+}
+
+.su-switch-group .su-switch[type=checkbox] {
+    display: none
+}
+
+.su-switch-group .su-switch-label {
+    color: var(--color-text-1)
+}
+
+.su-switch-group .su-switch-control {
+    background-color: var(--color-bg-7);
+    position: relative;
+    text-indent: -9999px;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    width: 42px;
+    height: 22px;
+    border-radius: 100px
+}
+
+.su-switch-group .su-switch-control:after {
+    background-color: var(--color-bg-default);
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 14px;
+    height: 14px;
+    -webkit-transition: .2s;
+    transition: .2s;
+    border-radius: 90px
+}
+
+.su-switch-group .su-switch:checked+.su-switch-control {
+    background-color: var(--color-bg-7)
+}
+
+.su-switch-group .su-switch:checked+.su-switch-control:after {
+    left: calc(100% - 5px);
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%)
+}
+
+.su-switch-group .su-switch:disabled+.su-switch-control {
+    cursor: not-allowed
+}
+
+.su-switch-group .su-switch-control:active:after {
+    width: 14px
+}
+
+@media (min-width: 550px) {
+    .container {
+        width:80%
+    }
+
+    .column,.columns {
+        margin-left: 4%
+    }
+
+    .column:first-child,.columns:first-child {
+        margin-left: 0
+    }
+
+    .one.column,.one.columns {
+        width: 4.66667%
+    }
+
+    .two.columns {
+        width: 13.33333%
+    }
+
+    .three.columns {
+        width: 22%
+    }
+
+    .four.columns {
+        width: 30.66667%
+    }
+
+    .five.columns {
+        width: 39.33333%
+    }
+
+    .six.columns {
+        width: 48%
+    }
+
+    .seven.columns {
+        width: 56.66667%
+    }
+
+    .eight.columns {
+        width: 65.33333%
+    }
+
+    .nine.columns {
+        width: 74%
+    }
+
+    .ten.columns {
+        width: 82.66667%
+    }
+
+    .eleven.columns {
+        width: 91.33333%
+    }
+
+    .twelve.columns {
+        width: 100%;
+        margin-left: 0
+    }
+
+    .one-third.column {
+        width: 30.66667%
+    }
+
+    .two-thirds.column {
+        width: 65.33333%
+    }
+
+    .one-half.column {
+        width: 48%
+    }
+
+    .offset-by-one.column,.offset-by-one.columns {
+        margin-left: 8.66667%
+    }
+
+    .offset-by-two.column,.offset-by-two.columns {
+        margin-left: 17.33333%
+    }
+
+    .offset-by-three.column,.offset-by-three.columns {
+        margin-left: 26%
+    }
+
+    .offset-by-four.column,.offset-by-four.columns {
+        margin-left: 34.66667%
+    }
+
+    .offset-by-five.column,.offset-by-five.columns {
+        margin-left: 43.33333%
+    }
+
+    .offset-by-six.column,.offset-by-six.columns {
+        margin-left: 52%
+    }
+
+    .offset-by-seven.column,.offset-by-seven.columns {
+        margin-left: 60.66667%
+    }
+
+    .offset-by-eight.column,.offset-by-eight.columns {
+        margin-left: 69.33333%
+    }
+
+    .offset-by-nine.column,.offset-by-nine.columns {
+        margin-left: 78%
+    }
+
+    .offset-by-ten.column,.offset-by-ten.columns {
+        margin-left: 86.66667%
+    }
+
+    .offset-by-eleven.column,.offset-by-eleven.columns {
+        margin-left: 95.33333%
+    }
+
+    .offset-by-one-third.column,.offset-by-one-third.columns {
+        margin-left: 34.66667%
+    }
+
+    .offset-by-two-thirds.column,.offset-by-two-thirds.columns {
+        margin-left: 69.33333%
+    }
+
+    .offset-by-one-half.column {
+        margin-left: 52%
+    }
 }

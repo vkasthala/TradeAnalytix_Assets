@@ -1,19 +1,19 @@
-<!-- <div class="example-box" cdkDrag>
+<div class="example-box" cdkDrag>
 <form data-drag-boundary="true" class="order-window layer-2 place" [ngClass]="orderToggle ? 'sell' : 'buy' ">
     <header>
-        <div class="row">
+        <div class="d-flex">
             <div class="eight columns">
                 <div class="instrument">
-                    <span class="transaction-type">{{margins.transaction_type | titlecase}}</span> 
+                    <span class="transaction-type">BUY{{margins.transaction_type | titlecase}}</span> 
                     <span class="tradingsymbol">
-                        <span class="name">{{margins.tradingsymbol}}</span> 
+                        <span class="name">SBILIFE{{margins.tradingsymbol}}</span> 
                     </span>
                     ×
-                    <span class="qty">{{margins.quantity}} Qty</span>
+                    <span class="qty">22{{margins.quantity}} Qty</span>
                 </div>
                 <div class="su-radio-group">
                     <div class="type su-radio-wrap checked">
-                        <label class="su-radio-label">₹{{margins.price}}</label>
+                        <label class="su-radio-label">₹{{margins.price}}1,550</label>
                     </div>
                 </div>
             </div>
@@ -50,7 +50,7 @@
             </div>
 
             <div class="body">
-                <div class="product row">
+                <div class="product">
                     <div class="su-radio-group">
                         <div class="type four columns su-radio-wrap checked" 
                             data-balloon="Margin Intraday Squareoff: Requires lower margin for equity. Has to be exited before market close." data-balloon-pos="up" data-balloon-length="large" [ngClass]="margins.order_id ? 'disabled' : ''">
@@ -66,7 +66,7 @@
                     </div>
                 </div>
                 <div class="first-fields">
-                    <div class="row">
+                    <div class="d-flex">
                         <div class="four columns quantity">
                             <div class="no su-input-group su-static-label">
                                 <label class="su-input-label su-visible">Qty.</label> 
@@ -90,7 +90,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="d-flex">
                         <div class="four columns">
                             &nbsp;
                         </div>
@@ -124,7 +124,7 @@
                 </div>
             </div>
 
-            <footer class="footer row">
+            <footer class="footer d-flex">
                 <div class="seven columns">
                     <div class="row margins">
                        
@@ -141,4 +141,4 @@
     
 </form>
 </div>
-<div toastContainer></div> -->
+<div toastContainer></div>

@@ -179,6 +179,8 @@ import { TradingComponent } from '../trading/trading.component';
 import { WatchListComponent } from '../trading/modules/watch-list/components/watch-list/watch-list.component';
 import { SearchComponent } from '../trading/modules/watch-list/components/search/search.component';
 import { ClickOutsideDirective } from 'src/app/clickOutside';
+import { OrdersModalComponent } from '../trading/modules/watch-list/components/orders-modal/orders-modal.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 export const MY_FORMATS = {
   parse: {
@@ -353,6 +355,7 @@ export const MY_FORMATS = {
     TradingComponent,
     WatchListComponent,
     SearchComponent,
+    OrdersModalComponent,
     ClickOutsideDirective
   ],
   imports: [
@@ -375,7 +378,8 @@ export const MY_FORMATS = {
     NgxPlaidLinkModule,
     AgGridModule.withComponents([BulkUpdateComponent]),
     MatProgressBarModule,
-    MatCardModule
+    MatCardModule,
+    DragDropModule
   ],
   entryComponents: [
     AddTradeConfirmationPopupComponent,
@@ -457,6 +461,7 @@ export const MY_FORMATS = {
     TradingComponent,
     WatchListComponent,
     SearchComponent,
+    OrdersModalComponent
   ],
   // bootstrap: [TradeStrategiesGrid],
   providers: [

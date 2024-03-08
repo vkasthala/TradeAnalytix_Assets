@@ -8,11 +8,12 @@ import { DropdownComponent } from './components/widgets/dropdown/dropdown.compon
 import { TextboxComponent } from './components/widgets/textbox/textbox.component';
 import { DatefieldComponent } from './components/widgets/datefield/datefield.component';
 import { TextAreaComponent } from './components/widgets/text-area/text-area.component';
-import { ClickOutsideDirective } from 'src/app/clickOutside';
 import { SharedService } from './services/shared.service';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 const modules = [
-  CommonModule
+  CommonModule,
+  
 
 ]
 const components = [
@@ -25,7 +26,6 @@ const components = [
   DatefieldComponent, 
   TextAreaComponent,
     
-  // ClickOutsideDirective,
   // IndianNumberPipe
 ];
 

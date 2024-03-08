@@ -9,6 +9,7 @@ import { Watchlist } from 'src/app/modules/shared/models/watchlist.model';
 import { Watchlistsymbol } from 'src/app/modules/shared/models/watchlistsymbol.model';
 import { SharedService } from 'src/app/modules/shared/services/shared.service';
 import { Margins } from 'src/app/modules/shared/models/margins.model';
+import { OmsService } from 'src/app/modules/shared/services/oms.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -293,12 +294,12 @@ export class WatchListComponent implements OnInit {
     private _sharedService: SharedService,
     private _watchlistService: WatchlistService,
     // private quoteUpdateService: QuoteUpdateStompService,
-    // private _omsService: OmsService,
+    private _omsService: OmsService,
     private toastr: ToastrService,
   ) {
     _sharedService.addItemEvent.subscribe(
       (res) => {
-        // this.addNewItem(res);
+        this.addNewItem(res);
       }
     );
     _sharedService.transactionsEvent.subscribe(
@@ -308,7 +309,7 @@ export class WatchListComponent implements OnInit {
         if (res.transaction_type === 'BUY') {
           this.orderToggle = false;
         }
-        // this.createMargin(res)
+        this.createMargin(res)
       }
     );
     _sharedService.orderToggleStatus.subscribe(
@@ -320,7 +321,7 @@ export class WatchListComponent implements OnInit {
     _sharedService.orderModifyEvent.subscribe(
       (orderData) => {
         console.log(orderData);
-        // this.modifyOrder(orderData.order_id);
+        this.modifyOrder(orderData.order_id);
       }
     );
     _sharedService.loaderEvent.subscribe(
@@ -429,7 +430,7 @@ export class WatchListComponent implements OnInit {
 
   buyOrders($event: any) {
     $event.transaction_type = 'BUY';
-    // this.createMargin($event);
+    this.createMargin($event);
     
   }
 
@@ -437,7 +438,7 @@ export class WatchListComponent implements OnInit {
     $event.transaction_type = 'SELL';
     this.showOrdersModal = true;
     this.orderToggle = true;
-    // this.createMargin($event)
+    this.createMargin($event)
   }
 
   deleteOrder(item: Watchlistsymbol) {
@@ -501,7 +502,7 @@ export class WatchListComponent implements OnInit {
   }
 
   createMargin($event: any) {
-    this.loader = true;
+    // this.loader = true;
     console.log($event);
     let tradingsymbol = $event.tradingsymbol ? $event.tradingsymbol : $event.code;
     const defaultOrderRequest = {
@@ -513,19 +514,20 @@ export class WatchListComponent implements OnInit {
       transaction_type: $event.transaction_type,
       variety: "regular"
     }
-    // this._omsService.getMargin(defaultOrderRequest).subscribe(response =>{
-    //   this.marginsSource = response;
-    //   this.showOrdersModal = true;
-    //   this.orderToggle = true;
-    //   if (response.transaction_type === 'BUY') {
-    //     this.orderToggle = false;
-    //   }
-    //   this.showMobileContextMenu = false;
-    //   this.loader = false;
-    // }, error =>{
-    //   this.toastr.error(error.error, "Error", {timeOut: 3000, positionClass: 'toast-bottom-right'});
-    //   this.loader = false;
-    // });
+    this.showOrdersModal = true;
+    /*this._omsService.getMargin(defaultOrderRequest).subscribe(response =>{
+      this.marginsSource = response;
+      this.showOrdersModal = true;
+      this.orderToggle = true;
+      if (response.transaction_type === 'BUY') {
+        this.orderToggle = false;
+      }
+      this.showMobileContextMenu = false;
+      this.loader = false;
+    }, error =>{
+      this.toastr.error(error.error, "Error", {timeOut: 3000, positionClass: 'toast-bottom-right'});
+      this.loader = false;
+    });*/
     return this.marginsSource;
   }
 
@@ -555,24 +557,24 @@ export class WatchListComponent implements OnInit {
     }
   }
 
-  // modifyOrder(orderId : string) {
-  //   this.loader = true;
-  //   this._omsService.getEditOrderDetail(orderId).subscribe(response =>{
-  //     if(response){
-  //       this.marginsSource = response;
-  //       console.log(this.marginsSource);
-  //       this.showOrdersModal = true;
-  //       this.orderToggle = true;
-  //       if (response.transaction_type === 'BUY') {
-  //         this.orderToggle = false;
-  //       }
-  //       this.loader = false;
-  //     }
-  //   }, error =>{
-  //     this.toastr.error(error.error, "Error", {timeOut: 3000, positionClass: 'toast-bottom-right'});
-  //     this.loader = false;
-  //   });
-  // }
+  modifyOrder(orderId : string) {
+    this.loader = true;
+    this._omsService.getEditOrderDetail(orderId).subscribe(response =>{
+      if(response){
+        this.marginsSource = response;
+        console.log(this.marginsSource);
+        this.showOrdersModal = true;
+        this.orderToggle = true;
+        if (response.transaction_type === 'BUY') {
+          this.orderToggle = false;
+        }
+        this.loader = false;
+      }
+    }, error =>{
+      this.toastr.error(error.error, "Error", {timeOut: 3000, positionClass: 'toast-bottom-right'});
+      this.loader = false;
+    });
+  }
 
   drop(event: CdkDragDrop<unknown>) {
     let watchList = this.watchListData[this.pageIndex - 1].items;
