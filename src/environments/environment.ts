@@ -11,7 +11,8 @@ export const environment = {
   /*apiUrl: 'https://tradeanalytix.com/service/us',
   redirectUri: 'https://us.tradeanalytix.com/oauth-redirect',*/
   apiUrl: 'https://in.cuetrade.io/service',
-  redirectUri: 'https://in.cuetrade.io/oauth-redirect',
+  redirectUri: 'http://localhost:4200/oauth-redirect',
+  // redirectUri: 'https://in.cuetrade.io/oauth-redirect',
   /*apiUrl: 'http://localhost:8080/service',
   redirectUri: 'http://localhost:4200/oauth-redirect',*/
   tz: 'Asia/Calcutta'

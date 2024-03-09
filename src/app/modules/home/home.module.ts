@@ -176,11 +176,15 @@ import { RobinhoodInstructionsComponent } from '../import-trades-history/robinho
 import { ActivateRuleModalComponent } from '../settings/components/activate-rule-modal/activate-rule-modal.component';
 import { DisableeRuleModalComponent } from '../settings/components/disable-rule-modal/disable-rule-modal.component';
 import { TradingComponent } from '../trading/trading.component';
-import { WatchListComponent } from '../trading/modules/watch-list/components/watch-list/watch-list.component';
-import { SearchComponent } from '../trading/modules/watch-list/components/search/search.component';
+
 import { ClickOutsideDirective } from 'src/app/clickOutside';
-import { OrdersModalComponent } from '../trading/modules/watch-list/components/orders-modal/orders-modal.component';
+
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { WatchListComponent } from '../watch-list/components/watch-list/watch-list.component';
+import { SearchComponent } from '../watch-list/components/search/search.component';
+import { OrdersModalComponent } from '../watch-list/components/orders-modal/orders-modal.component';
+import { OrdersComponent } from '../orders/orders.component';
+// import { ChartComponent } from '../chart-new/chart.component';
 
 export const MY_FORMATS = {
   parse: {
@@ -356,7 +360,8 @@ export const MY_FORMATS = {
     WatchListComponent,
     SearchComponent,
     OrdersModalComponent,
-    ClickOutsideDirective
+    ClickOutsideDirective,
+    OrdersComponent
   ],
   imports: [
     FormsModule,
@@ -461,7 +466,8 @@ export const MY_FORMATS = {
     TradingComponent,
     WatchListComponent,
     SearchComponent,
-    OrdersModalComponent
+    OrdersModalComponent,
+    OrdersComponent
   ],
   // bootstrap: [TradeStrategiesGrid],
   providers: [
