@@ -1,8 +1,5 @@
 @import "./variable.scss";
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-
-
 .dark-theme-body {
     @media #{$extra-small} {
         display: none;
@@ -38,7 +35,7 @@
         font-size: 14px;
         font-weight: 500;
         color: #000;
-        font-family: 'Poppins', sans-serif !important;
+        font-family: Open Sans,sans-serif !important;
         &:focus {
             border: 0;
             outline: 0;
@@ -280,7 +277,7 @@ input.mat-input-element {
 }
 
 .mat-table {
-    font-family: 'Poppins', sans-serif !important;
+    font-family: Open Sans,sans-serif !important;
 }
 
 .mat-header-row {
@@ -641,7 +638,7 @@ button,
 select,
 optgroup,
 textarea {
-    font-family: 'Poppins', sans-serif !important;
+    font-family: Open Sans,sans-serif !important;
 }
 
 .material-icons {
@@ -649,7 +646,7 @@ textarea {
 }
 
 .mat-expansion-panel-content {
-    font: 400 15px/20px 'Poppins', sans-serif !important;
+    font: 400 15px/20px Open Sans,sans-serif !important;
 }
 
 .input-group.date-rang .selection {

@@ -325,9 +325,9 @@
 
 body {
     margin: 0;
-    font-family: 'Poppins', sans-serif !important;
+    font-family: Open Sans,sans-serif !important;
     color: #393B40 !important;
-    font-size: 14px !important;
+    font-size: 15px !important;
     min-height: 100vh;
 }
 
@@ -387,7 +387,7 @@ body {
 .mat-stepper-horizontal,
 .mat-stepper-vertical {
     position: relative;
-    font-family: 'Poppins', sans-serif !important;
+    font-family: Open Sans,sans-serif !important;
     background-color: transparent !important;
 }
 .mat-horizontal-content-container {
@@ -459,7 +459,7 @@ body {
 
 .mydrp {
     width: 210px !important;
-    font-family: 'Poppins', sans-serif !important;
+    font-family: Open Sans,sans-serif !important;
 }
 
 .trade-plan-date .mydrp {
@@ -468,13 +468,13 @@ body {
     box-sizing: border-box;
     border-radius: 4px;
     height: 40px;
-    font-family: 'Poppins', sans-serif !important;
+    font-family: Open Sans,sans-serif !important;
 }
 
 .trade-plan-date .mydrp .selectiongroup,
 .trade-plan-date .mydrp .selection {
     background: transparent !important;
-    font-family: 'Poppins', sans-serif !important;
+    font-family: Open Sans,sans-serif !important;
 }
 
 .trade-plan-date .mydrp .btnclear,
@@ -485,7 +485,7 @@ body {
 
 .mat-paginator,
 .mat-paginator-page-size .mat-select-trigger {
-    font-family: 'Poppins', sans-serif !important;
+    font-family: Open Sans,sans-serif !important;
     font-size: 13px;
 }
 
@@ -598,7 +598,7 @@ input:invalid {
     width: 100%;
     max-height: 400px;
     max-width: 500px;
-    font-family: 'Poppins', sans-serif !important;
+    font-family: Open Sans,sans-serif !important;
     color: #242E3A !important;
     font-size: 14px !important;
     background: #fff;
@@ -641,7 +641,7 @@ input:invalid {
     position: absolute;
     text-align: center;
     background: #61BC6D;
-    font-family: 'Poppins';
+    font-family: Open Sans,sans-serif !important;
     color: #fff;
     width: 25px;
     z-index: 1 !important;
@@ -651,7 +651,7 @@ input:invalid {
 .valGain {
     position: relative;
     z-index: 1 !important;
-    font-family: 'Poppins';
+    font-family: Open Sans,sans-serif !important;
     color: #61BC6D;
 }
 
@@ -659,7 +659,7 @@ input:invalid {
     position: absolute;
     text-align: center;
     background: #EC6B56;
-    font-family: 'Poppins';
+    font-family: Open Sans,sans-serif !important;
     color: #fff;
     width: 25px;
     z-index: 1 !important;
@@ -669,7 +669,7 @@ input:invalid {
 .valLoss {
     position: relative;
     z-index: 1 !important;
-    font-family: 'Poppins';
+    font-family: Open Sans,sans-serif !important;
     color: #EC6B56;
 }
 
@@ -821,7 +821,7 @@ input:invalid {
 }
 .date-filter-list .mydrp {
     width: 100% !important;
-    font-family: 'Poppins', sans-serif !important;
+    font-family: Open Sans,sans-serif !important;
 }
 .trade-plan-accordion .mat-expansion-panel-body {
     padding: 0 0 5px 0 !important;
@@ -958,13 +958,13 @@ input:invalid {
     display: none;
 }
 .mat-checkbox {
-    font-family: "Poppins", sans-serif !important;
+    font-family: Open Sans,sans-serif !important;
 }
 .mat-checkbox-layout .mat-checkbox-label {
     line-height: 24px;
     font-size: 16px;
     font-weight: 500;
-    font-family: "Poppins", sans-serif !important;
+    font-family: Open Sans,sans-serif !important;
 }
 
 .thesis-cell .ag-text-field-input {
@@ -1050,7 +1050,7 @@ html.theme-light .group-wWM3zP_M- {
 }
 .trade-plan-lt .mydrp {
     width: 100% !important;
-    font-family: 'Poppins', sans-serif !important;
+    font-family: Open Sans,sans-serif !important;
 }
 .mat-calendar-body-selected {
     background-color: #4A93D4 !important;
@@ -1449,7 +1449,7 @@ html.theme-light .group-wWM3zP_M- {
     height: 40px;
     display: inline-block;
     margin-left: 3px;
-    font-weight: 600
+    // font-weight: 600
 }
 
 .marketwatch-sidebar .instruments .instrument .actions button.buy,.marketwatch-sidebar .instruments .instrument .actions button.sell {
@@ -2233,7 +2233,7 @@ input {
     visibility: hidden;
     z-index: 5;
     position: absolute;
-    top: -8px;
+    top: -10px;
     background-color: var(--color-bg-default);
     padding: 0 5px;
     margin-left: 10px
@@ -2698,4 +2698,38 @@ button.sell {
     color: #fff;
     background-color: #E0261A !important;
     border-color: #E0261A !important;
+}
+
+.sub-nav {
+    padding: 20px;
+    color: #5B5C60;
+    font-size: 18px;
+    box-shadow: 0 1px 5px 0 rgba(var(--color-border-5--rgb), 0.1);
+}
+
+.sub-nav a {
+    padding: 20px 0;
+    margin: 0 10px;
+    color: #5B5C60;
+    position: relative;
+    font-weight: 500;
+}
+.sub-nav a:hover {
+    color: #394C86;
+    text-decoration: none;
+}
+
+.sub-nav a.active-item {
+    color: #394C86;
+}
+.sub-nav a.active-item::before,
+.sub-nav a:hover::before
+{
+    content: '';
+    width: 100%;
+    height: 4px;
+    border-radius: 4px 4px 0px 0px;
+    background: #4A69CB;
+    position: absolute;
+    bottom: -4px;
 }

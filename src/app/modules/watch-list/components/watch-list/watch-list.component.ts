@@ -98,7 +98,9 @@ export class WatchListComponent implements OnInit {
              "exchange":"NSE",
              "expiry":"",
              "sequence":"",
-             "priceModel":"",
+             "priceModel":{
+              "winFlag":true
+             },
              "symbol_id":""
           },
           {
