@@ -4,11 +4,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 declare const TradingView: any;
 
 @Component({
-  selector: 'app-trading-dashboard',
-  templateUrl: './trading-dashboard.component.html',
-  styleUrls: ['./trading-dashboard.component.scss']
+  selector: 'app-main-chart',
+  templateUrl: './main-chart.component.html',
+  styleUrls: ['./main-chart.component.scss']
 })
-export class TradingDashboardComponent implements OnInit {
+export class MainChartComponent implements OnInit {
   // @ViewChild('tradingview') tradingview?: ElementRef;
   symbol: any = 'ICICIBANK';
   exchange: string = 'NASDAQ';

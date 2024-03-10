@@ -47,11 +47,11 @@
 
                                 <span class="actions fade-leave fade-leave-active" *ngIf="watchItem == i">
                                     <span data-balloon="Buy (B)" data-balloon-pos="up">
-                                        <button type="button" class="button-blue buy"
+                                        <button type="button" class="buy"
                                             (click)="buyOrders(item)" *ngIf="!isNiftyStock(item)">B</button>
                                     </span>
                                     <span data-balloon="Sell (S)" data-balloon-pos="up">
-                                        <button type="button" class="button-orange sell"
+                                        <button type="button" class="sell"
                                             (click)="sellOrders(item)" *ngIf="!isNiftyStock(item)">S</button>
                                     </span>
 
@@ -63,7 +63,7 @@
                                     </span>
                                     <span data-balloon="Delete (del)" data-balloon-pos="up">
                                         <button type="button" class="button-outline" (click)="deleteOrder(item)">
-                                            <mat-icon class="material-icons">delete</mat-icon>
+                                            <mat-icon class="material-icons">delete_outline</mat-icon>
                                         </button>
                                     </span>
                                 </span>

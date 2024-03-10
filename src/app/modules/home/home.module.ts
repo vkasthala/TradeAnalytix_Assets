@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   MatCardModule,
@@ -175,7 +175,6 @@ import { ZerodhaInstructionsComponent } from '../import-trades-history/zerodha-i
 import { RobinhoodInstructionsComponent } from '../import-trades-history/robinhood-instructions/robinhood-instructions.component';
 import { ActivateRuleModalComponent } from '../settings/components/activate-rule-modal/activate-rule-modal.component';
 import { DisableeRuleModalComponent } from '../settings/components/disable-rule-modal/disable-rule-modal.component';
-import { TradingComponent } from '../trading/trading.component';
 
 import { ClickOutsideDirective } from 'src/app/clickOutside';
 
@@ -184,6 +183,7 @@ import { WatchListComponent } from '../watch-list/components/watch-list/watch-li
 import { SearchComponent } from '../watch-list/components/search/search.component';
 import { OrdersModalComponent } from '../watch-list/components/orders-modal/orders-modal.component';
 import { OrdersComponent } from '../orders/orders.component';
+import { MainChartComponent } from '../main-chart/main-chart.component';
 // import { ChartComponent } from '../chart-new/chart.component';
 
 export const MY_FORMATS = {
@@ -356,12 +356,12 @@ export const MY_FORMATS = {
     RobinhoodInstructionsComponent,
     ActivateRuleModalComponent,
     DisableeRuleModalComponent,
-    TradingComponent,
     WatchListComponent,
     SearchComponent,
     OrdersModalComponent,
     ClickOutsideDirective,
-    OrdersComponent
+    OrdersComponent,
+    MainChartComponent
   ],
   imports: [
     FormsModule,
@@ -463,11 +463,11 @@ export const MY_FORMATS = {
     RobinhoodInstructionsComponent,
     ActivateRuleModalComponent,
     DisableeRuleModalComponent,
-    TradingComponent,
     WatchListComponent,
     SearchComponent,
     OrdersModalComponent,
-    OrdersComponent
+    OrdersComponent,
+    MainChartComponent
   ],
   // bootstrap: [TradeStrategiesGrid],
   providers: [
@@ -482,5 +482,6 @@ export const MY_FORMATS = {
     CloseTradeCanDeactivateGuard,
     TradePlansCanDeactivateGuard,
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class HomeModule { }

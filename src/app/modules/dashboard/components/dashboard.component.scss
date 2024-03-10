@@ -244,10 +244,6 @@
 }
 
 .trade-strategies-section {
-    padding: 0px 20px;
-}
-
-.trade-strategies-section {
     @media #{$extra-small} {
         display: none;
     }
@@ -1200,4 +1196,11 @@
     border-radius: 100px;
     font-size: 14px;
     padding: 0 16px !important;
+}
+
+.tradingview-widget-container {
+    height: 84vh !important;
+}
+.tradingview-widget-container > div:first-child {
+    height: 100% !important;
 }
