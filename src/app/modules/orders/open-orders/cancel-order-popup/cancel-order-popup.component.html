@@ -1,0 +1,49 @@
+
+<div class="compare-popup">
+    <div class="compare-pop-inner">
+        <div class="top-pop-inner">
+          <div class="left-heading">
+            <h5>Cancel Orders</h5>
+          </div>
+        </div>
+  
+        <div class="main-pop-inner">
+            <div class="data-table instruments-table fold-header">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="sortable"></th>
+                            <th class="sortable"><span>Qty</span></th>
+                            <th class="sortable"><span>Price</span></th>
+                            <th class="sortable"><span>Type</span></th>
+                            <th class="sortable"><span>Product</span></th>
+                            <th class="right"><span>Validity</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <tr *ngFor = "let order of data; let i=index">
+                            <td>
+                                <button type="button" class="button button-small button-outline mr-2" (click)="cancelSingleOrder(order, i)">Cancel</button> 
+                                {{order.instrument.symbol}}
+                            </td>
+                            <td>{{order.quantity}}</td>
+                            <td>{{order.price}}</td>
+                            <td>
+                                <span class="text-label transaction-type-label" [ngClass]="order.type === 'SELL' ? 'orange' : 'blue'">{{order.type}}</span>
+                            </td>
+                            <td>{{order.product}}</td>
+                            <td>Day</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+          </div>
+  
+          <div class="px-3 py-2 text-right">
+            <button type="button" class="button button-blue mr-2" (click)="cancelAllOpenOrders()">Cancel</button>
+            <button type="button" class="button-outline cancel ml-1" (click)="closeModal()">Close</button>
+          </div>
+      </div>
+  </div>
+  

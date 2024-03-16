@@ -46,21 +46,22 @@ export interface OrderPurchasehistoryResponse{
 }
 
 export interface OrderPurchasehistory{
-    id: number,
-    order_id: string
-    time: string
-    type: string
-    instrument: InstrumentResponse
-    product: string
-    quantity: number
-    ltp: number
-    price: number
+    id: number;
+    order_id: string;
+    time: string;
+    type: string;
+    instrument: InstrumentResponse;
+    product: string;
+    quantity: number;
+    ltp: number;
+    price: number;
     status: string;
+    journal: string;
     selected: boolean;
 }
 
 export interface InstrumentResponse{
-    symbol: string
-    exchange: string
-    symbolId: number
+    symbol: string;
+    exchange: string;
+    symbolId: number;
 }

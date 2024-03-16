@@ -175,16 +175,8 @@ import { ZerodhaInstructionsComponent } from '../import-trades-history/zerodha-i
 import { RobinhoodInstructionsComponent } from '../import-trades-history/robinhood-instructions/robinhood-instructions.component';
 import { ActivateRuleModalComponent } from '../settings/components/activate-rule-modal/activate-rule-modal.component';
 import { DisableeRuleModalComponent } from '../settings/components/disable-rule-modal/disable-rule-modal.component';
-
-import { ClickOutsideDirective } from 'src/app/clickOutside';
-
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { WatchListComponent } from '../watch-list/components/watch-list/watch-list.component';
-import { SearchComponent } from '../watch-list/components/search/search.component';
-import { OrdersModalComponent } from '../watch-list/components/orders-modal/orders-modal.component';
-import { OrdersComponent } from '../orders/orders.component';
-import { MainChartComponent } from '../main-chart/main-chart.component';
-// import { ChartComponent } from '../chart-new/chart.component';
+import { SharedModule } from '../shared/shared.module';
 
 export const MY_FORMATS = {
   parse: {
@@ -356,12 +348,6 @@ export const MY_FORMATS = {
     RobinhoodInstructionsComponent,
     ActivateRuleModalComponent,
     DisableeRuleModalComponent,
-    WatchListComponent,
-    SearchComponent,
-    OrdersModalComponent,
-    ClickOutsideDirective,
-    OrdersComponent,
-    MainChartComponent
   ],
   imports: [
     FormsModule,
@@ -384,7 +370,8 @@ export const MY_FORMATS = {
     AgGridModule.withComponents([BulkUpdateComponent]),
     MatProgressBarModule,
     MatCardModule,
-    DragDropModule
+    DragDropModule,
+    SharedModule
   ],
   entryComponents: [
     AddTradeConfirmationPopupComponent,
@@ -463,11 +450,6 @@ export const MY_FORMATS = {
     RobinhoodInstructionsComponent,
     ActivateRuleModalComponent,
     DisableeRuleModalComponent,
-    WatchListComponent,
-    SearchComponent,
-    OrdersModalComponent,
-    OrdersComponent,
-    MainChartComponent
   ],
   // bootstrap: [TradeStrategiesGrid],
   providers: [

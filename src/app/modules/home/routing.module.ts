@@ -42,7 +42,6 @@ import { CloseTradeCanDeactivateGuard } from '../trade-management/components/clo
 import { BulkUpdateComponent } from '../bulk-update/bulk-update.component';
 import { TradeBuilderComponent } from '../trade-builder/components/trade-builder.component';
 import { OrdersComponent } from '../orders/orders.component';
-import { MainChartComponent } from '../main-chart/main-chart.component';
 
 const routes: Routes = [
   {
@@ -51,7 +50,7 @@ const routes: Routes = [
     children: [
         {
           path : 'dashboard',
-          component: MainChartComponent
+          loadChildren: () => import('../main-chart/main-chart.module').then(m => m.MainChartModule),
         },
         {
           path : 'new-trade',
@@ -149,62 +148,10 @@ const routes: Routes = [
           path: 'rules',
           component: RulesComponent
         },
-        {
-          path: 'help',
-          component : HelpComponent,
-          children: [
-            {
-              path : '',
-              component: GettingStartedComponent
-            },
-            {
-              path : 'getting-started',
-              component: GettingStartedComponent
-            },
-            {
-              path : 'add-trade',
-              component: HelpAddNewTradeComponent
-            }, {
-              path : 'trade-journal-edit-trade',
-              component: HelpEditTradeComponent
-            },
-            {
-              path : 'trade-journal-close-trade',
-              component: HelpCloseTradeComponent
-            },
-            {
-              path : 'import-trade',
-              component: ImportTradeComponent
-            },
-            {
-              path : 'trade-plan',
-              component: TradePlaneComponent
-            },
-            {
-              path : 'helprisk-analysis',
-              component: HelpRiskAnalysisComponent
-            },
-            {
-              path : 'compare-strategy',
-              component: CompareStrategyComponent
-            },
-            {
-              path : 'trading-rules',
-              component: TradingRulesComponent
-            },
-            {
-              path : 'helpreports',
-              component: HelpReportsComponent
-            },
-            {
-              path : 'data-setup',
-              component: HelpDataSetupComponent
-            },
-          ]
-        },
+        
         {
           path : 'orders',
-          component : OrdersComponent
+          loadChildren: () => import('../orders/orders.module').then(m => m.OrdersModule)
         },
         {
           path : 'holdings',

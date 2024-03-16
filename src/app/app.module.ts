@@ -49,6 +49,7 @@ import player from "lottie-web";
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { AboutUsComponent } from './modules/about-us/components/about-us.component';
+import { SharedModule } from './modules/shared/shared.module';
 
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
   return localStorageSync({ keys: [globalConfigFeatureKey], rehydrate: true })(reducer);
@@ -98,7 +99,7 @@ export function playerFactory() {
       positionClass: 'toast-top-center',
       preventDuplicates: false
     }),
-
+    SharedModule.forRoot(),
     StoreModule.forRoot(reducers, {
       metaReducers,
       runtimeChecks: {
