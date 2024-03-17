@@ -4,6 +4,8 @@ import { ToastContainerDirective, ToastrService } from 'ngx-toastr';
 import { Margins } from 'src/app/modules/shared/models/margins.model';
 import { OmsService } from 'src/app/modules/shared/services/oms.service';
 import { SharedService } from 'src/app/modules/shared/services/shared.service';
+import { IntradayOrderPopupComponent } from '../intraday-order-popup/intraday-order-popup.component';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-orders-modal',
@@ -25,7 +27,8 @@ export class OrdersModalComponent implements OnInit {
   constructor(
     private _sharedService: SharedService,
     private toastr: ToastrService,
-    private _omsService: OmsService
+    private _omsService: OmsService,
+    private _dialog: MatDialog
   ) { }
 
   ngOnInit() {
@@ -184,7 +187,6 @@ export class OrdersModalComponent implements OnInit {
   }
 
   modifyOrder(){
-    debugger;
     this._sharedService.loaderEvent.emit(true);
     console.log("modify");
     let price = this.getPrice();
@@ -242,6 +244,20 @@ export class OrdersModalComponent implements OnInit {
     }
     this._sharedService.loaderEvent.emit(false);
     return isvalid;
+  }
+
+  openIntradayOrderPopup() {
+    console.log(this.margins);
+    const dialogRef = this._dialog.open(IntradayOrderPopupComponent, {
+      width: 'auto',
+      height: 'auto',
+      data: this.margins
+    });
+    dialogRef.afterClosed().subscribe((res) => {
+      if (res) {
+        this.modifyOrder();
+      }
+    });
   }
 
 }

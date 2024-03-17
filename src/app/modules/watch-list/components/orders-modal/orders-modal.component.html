@@ -4,16 +4,16 @@
         <div class="d-flex">
             <div class="eight columns">
                 <div class="instrument">
-                    <span class="transaction-type">BUY{{margins.transaction_type | titlecase}}</span> 
+                    <span class="transaction-type">{{margins.transaction_type | titlecase}}</span> 
                     <span class="tradingsymbol">
-                        <span class="name">SBILIFE{{margins.tradingsymbol}}</span> 
+                        <span class="name">{{margins.tradingsymbol}}</span> 
                     </span>
                     ×
-                    <span class="qty">22{{margins.quantity}} Qty</span>
+                    <span class="qty">{{margins.quantity}} Qty</span>
                 </div>
                 <div class="su-radio-group">
                     <div class="type su-radio-wrap checked">
-                        <label class="su-radio-label">₹{{margins.price}}1,550</label>
+                        <label class="su-radio-label">₹{{margins.price}}</label>
                     </div>
                 </div>
             </div>
@@ -131,7 +131,7 @@
                     </div>
                 </div>
                 <div class="five columns text-right actions">
-                    <button *ngIf = "!isOrderModify" type="submit" class="submit" (click)="orderPlacement()"><span>{{margins.transaction_type | titlecase}}</span></button>
+                    <button *ngIf = "!isOrderModify" type="submit" class="submit" (click)="openIntradayOrderPopup()"><span>{{margins.transaction_type | titlecase}}</span></button>
                     <button *ngIf = "isOrderModify" type="submit" class="submit" (click)="modifyOrder()"><span>Modify</span></button> 
                     <button type="button" class="button-outline cancel ml-1" (click)="closePopup()">Cancel</button>
                 </div>
