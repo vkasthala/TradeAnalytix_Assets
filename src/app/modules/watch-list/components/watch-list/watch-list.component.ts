@@ -44,7 +44,7 @@ export class WatchListComponent implements OnInit {
           {
              "id":"NSE:INE033L07GN7",
              "weight":0,
-             "tradingsymbol":"TATACAPHSG-N3",
+             "tradingsymbol":"NSE:IDEA-EQ",
              "instrument_token":4297985,
              "segment":"NSE",
              "exchange":"NSE",
@@ -510,7 +510,7 @@ export class WatchListComponent implements OnInit {
     const defaultOrderRequest = {
       exchange: "NSE",
       order_type: "MARKET",
-      product: "MIS",
+      product: "INTRADAY",
       quantity: 1,
       tradingsymbol: tradingsymbol,
       transaction_type: $event.transaction_type,
@@ -530,6 +530,8 @@ export class WatchListComponent implements OnInit {
       this.toastr.error(error.error, "Error", {timeOut: 3000, positionClass: 'toast-bottom-right'});
       this.loader = false;
     });*/
+    this.marginsSource.transaction_type = $event.transaction_type;
+    this.marginsSource.tradingsymbol = tradingsymbol;
     return this.marginsSource;
   }
 

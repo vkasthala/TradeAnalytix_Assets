@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { OrderPurchasehistoryResponse, OrdersRequest, OrdersResponse, PlaceOrderRequest, PurchaseOrderResponse } from '../models/orders.model';
@@ -11,6 +11,15 @@ export class OmsService {
 
   constructor(private http: HttpClient) { }
 
+  private createHttpHeaders(): HttpHeaders {
+    let httpHeaders: HttpHeaders = new HttpHeaders({
+      Authorization: environment.clientCode + ':' + 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhcGkuZnllcnMuaW4iLCJpYXQiOjE3MTA2NTA5MDYsImV4cCI6MTcxMDcyMTgyNiwibmJmIjoxNzEwNjUwOTA2LCJhdWQiOlsieDowIiwieDoxIiwieDoyIiwiZDoxIiwiZDoyIl0sInN1YiI6ImFjY2Vzc190b2tlbiIsImF0X2hhc2giOiJnQUFBQUFCbDluWWFBanBCbmZscEZ1WHY4VjRYZDR3bWh3MHdOUUZJVFZYVW8teFg3ajdYQUpVSzJCMjlKRHpacjRnVHFqY1FiY2ktaHY5aGNGbnNKSDBIVVNmcWk1OFh2RG41cWd1ZVRJT1ZlTDB1SG1HMmNVTT0iLCJkaXNwbGF5X25hbWUiOiJOSVRISU4gQkFMQUtSSVNITkEgTkFZQUsiLCJvbXMiOiJLMSIsImhzbV9rZXkiOiJjMGFkOTA4MTc2NmY5NDk1NjFlNGVjNDhhMjczZjBjMjc2NGY5NWMwMDFiMTdkZGY1ZGYyM2ViYSIsImZ5X2lkIjoiWU4wMjA0NyIsImFwcFR5cGUiOjEwMiwicG9hX2ZsYWciOiJOIn0.5Vcf9gc87nVQZJY6-BwrSadYehuJzdqaoaW2QdgoKuA',
+      Brokerage: 'FYERS'
+    });
+    console.log('http heades:', httpHeaders);
+    return httpHeaders;
+  }
+
   getMargin(orderRequest: OrdersRequest) : Observable<OrdersResponse>{
      const url = environment.apiUrl + "/v0/oms/margins/orders";
      return this.http.post<OrdersResponse>(url, orderRequest);
@@ -18,8 +27,8 @@ export class OmsService {
 
   placeOrder(orderRequest: PlaceOrderRequest, orderType: string) : Observable<PurchaseOrderResponse>{
     console.log(orderRequest);
-    const url = environment.apiUrl + "/v0/oms/orders/" + orderType;
-    return this.http.post<PurchaseOrderResponse>(url, orderRequest);
+    const url = environment.tradingApiUrl + "/orders/place";
+    return this.http.post<PurchaseOrderResponse>(url, orderRequest, { headers: this.createHttpHeaders() });
   }
   
   getOpenOrders() : Observable<OrderPurchasehistoryResponse>{
