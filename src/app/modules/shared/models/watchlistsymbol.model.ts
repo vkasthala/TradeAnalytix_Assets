@@ -1,14 +1,13 @@
 import { PriceUpdateModel } from "./price-update-model";
 
 export interface Watchlistsymbol {
-    id : number,
-    weight : number,
-    tradingsymbol : String,
-    instrument_token : String,
-    segment : String,
-    exchange : String,
-    expiry : String,
-    sequence : number,
-    priceModel: PriceUpdateModel
+    id: number,
+    exchange: string,
+    expiry: string,
+    segment: string,
+    sequence: number,
+    instrument_token: string,
+    trading_symbol: string
+    priceModel: PriceUpdateModel,
     symbol_id: number;
 }

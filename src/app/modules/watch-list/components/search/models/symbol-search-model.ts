@@ -11,5 +11,13 @@ export class SymbolSearchModel {
     exchange: string | undefined;
 
     addedToWatchList: boolean = false;
-
+    id: number;
+    token: string;
+    symbol: string;
+    tickSize: number | undefined;
+    lotSize: number | undefined;
+    optionType: string | undefined;
+    expiryDate: string | undefined;
+    segment: string | undefined;
+    strike: number | undefined;
 }
