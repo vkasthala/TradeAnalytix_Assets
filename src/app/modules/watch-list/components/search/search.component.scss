@@ -77,10 +77,6 @@
     background-color: #f9f9f9;
 }
 
-.omnisearch .omnisearch-results .search-result-item.selected .symbol,.omnisearch .omnisearch-results .search-result-item:hover .symbol {
-    font-weight: 600
-}
-
 .omnisearch .omnisearch-results .search-result-item.isadded {
     cursor: pointer
 }
@@ -88,7 +84,6 @@
 .omnisearch .omnisearch-results .search-result-item.isadded .exchange,.omnisearch .omnisearch-results .search-result-item.isadded .tradingsymbol {
     opacity: .6
 }
-
 
 .omnisearch .omnisearch-results .search-result-item .exchange .text-box.MCX,.text-box.green {
     background-color: #ebf8f2;
@@ -132,8 +127,6 @@
     opacity: .5
 }
 
-
-
 .omnisearch .omnisearch-results .search-result-item .action-buttons button {
     margin: 0 2px;
     padding: 0 10px;
@@ -149,4 +142,11 @@
 }
 .search-mobile-menu .button {
     width: 48%;
+}
+
+.icon.icon-check {
+    margin-left: 5px;
+    font-size: 18px !important;
+    height: 18px;
+    width: 18px;
 }
