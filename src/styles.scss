@@ -2480,7 +2480,7 @@ input {
 }
 
 .su-checkbox-group .su-checkbox:checked+.su-checkbox-label .su-checkbox-tick {
-    top: 3px;
+    top: 4px;
     display: block
 }
 
@@ -2491,7 +2491,8 @@ input {
     display: flex;
     -webkit-box-align: center;
     -ms-flex-align: center;
-    align-items: center
+    align-items: center;
+    margin-bottom: 0;
 }
 
 .su-checkbox-group .su-checkbox-value {
@@ -2502,8 +2503,8 @@ input {
 
 .su-checkbox-group .su-checkbox-box {
     display: inline-block;
-    width: 15px;
-    height: 15px;
+    width: 18px;
+    height: 18px;
     position: relative;
     overflow: hidden;
     cursor: pointer;
@@ -2517,13 +2518,13 @@ input {
     display: none;
     top: 20px;
     left: 2px;
-    right: 2px;
-    width: 8px;
-    height: 3px;
+    right: 1px;
+    width: 11px;
+    height: 6px;
     content: "";
     position: absolute;
-    border-left: 2px solid;
-    border-bottom: 2px solid;
+    border-left: 3px solid;
+    border-bottom: 3px solid;
     margin: auto;
     -webkit-transform: rotate(-45deg) translateZ(0);
     transform: rotate(-45deg) translateZ(0);
@@ -3182,4 +3183,8 @@ button.button-outline {
     color: var(--color-text-default);
     background-color: var(--color-bg-default);
     border-color: var(--color-border-2);
+}
+
+.orderbook .trades-modal, .orderbook .trades-modal table tbody td, .orderbook .trades-modal table thead th, .orderbook .trades-wrap .page-title .icon, .positions .product-modify-modal label, .text-small {
+    font-size: .875rem;
 }
