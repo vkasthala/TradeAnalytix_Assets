@@ -9,13 +9,19 @@ import { SharedService } from './services/shared.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatStepperModule } from '@angular/material/stepper';
 
 const modules = [
   CommonModule,
   FormsModule,
   ReactiveFormsModule,
   RouterModule,
-  DragDropModule
+  DragDropModule,
+  MatTableModule,
+  MatPaginatorModule,
+  MatStepperModule
 ];
 
 const components = [

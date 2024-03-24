@@ -20,13 +20,15 @@
                     
                     <a [routerLink]="['/positions/']" routerLinkActive="router-link-active"><span>Positions</span></a>
 
-                    <a [routerLink]="['/holdings/']" routerLinkActive="router-link-active"><span>Holdings</span></a>
+                    <a [routerLink]="['/stravtegies/']" routerLinkActive="router-link-active"><span>Stravtegies</span></a>
 
                     <a [class.router-link-active]="currentRoute === 'trade-plans'" [routerLink]="['/trade-plans/']" routerLinkActive="router-link-active"><span>Plan</span></a>
 
                     <a [class.router-link-active]="currentRoute === 'import-trades-history'" [routerLink]="['/import-trades-history/']" routerLinkActive="router-link-active"><span>Journal</span></a>
 
                     <a [class.router-link-active]="currentRoute === 'reports'" [routerLink]="['/reports/']" routerLinkActive="router-link-active"><span>Analytics</span></a>
+
+                    <a [class.router-link-active]="currentRoute === 'reports'" [routerLink]="['/reports/']" routerLinkActive="router-link-active"><span>Reports</span></a>
                 </div>
 
                 <div class="right-nav">
