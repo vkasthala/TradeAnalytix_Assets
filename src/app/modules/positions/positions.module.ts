@@ -5,13 +5,11 @@ import { PositionsGridComponent } from './components/positions-grid/positions-gr
 import { SharedModule } from '../shared/shared.module';
 import { PositionsComponent } from './positions.component';
 import { PositionsRoutingModule } from './positions-routing.module';
-import { HoldingsComponent } from './components/holdings/holdings.component';
 
 @NgModule({
   declarations: [
     PositionsComponent, 
     PositionsGridComponent,
-    HoldingsComponent
   ],
   imports: [
     PositionsRoutingModule,

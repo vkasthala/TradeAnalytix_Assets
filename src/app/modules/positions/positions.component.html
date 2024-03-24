@@ -1,21 +1,9 @@
 
+<div class="sub-nav">
+    <a [routerLink]="['/positions/']" routerLinkActive="router-link-active" class="active-item"><span>Positions</span></a>
+    <a [routerLink]="['/holdings/']" routerLinkActive="router-link-active"><span>Holdings</span></a>
+</div>
 
-<mat-horizontal-stepper labelPosition="left" #stepper [linear]="false">
-    <mat-step [class.active]="stepone.completed" label="Positions" #stepone>
-        <ng-template matStepLabel> Positions</ng-template>
-        <div class="stepper-content">
-            <app-positions-grid [positionsData]="positionResponse"></app-positions-grid>
-        </div>
-    </mat-step>
-    <mat-step label="Holdings">
-        <ng-template matStepLabel>Holdings</ng-template>
-        <div class="stepper-content">
-            <app-holdings #holdingsGrid>loading</app-holdings>
-        </div>
-    </mat-step>
-    
-</mat-horizontal-stepper>
-<!-- <div class="card px-3">
-    <h3>Positions (<span *ngIf="positionResponse">{{positionResponse.data!.length}}</span>)</h3>
+<div class="card px-3">
     <app-positions-grid [positionsData]="positionResponse"></app-positions-grid>
-</div> -->
+</div>

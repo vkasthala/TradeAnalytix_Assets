@@ -156,6 +156,10 @@ const routes: Routes = [
         {
           path : 'positions',
           loadChildren: () => import('../positions/positions.module').then(m => m.PositionsModule),
+        },
+        {
+          path : 'holdings',
+          loadChildren: () => import('../holdings/holdings.module').then(m => m.HoldingsModule),
         }
         
     ]

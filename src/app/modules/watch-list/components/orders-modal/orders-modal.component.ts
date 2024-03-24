@@ -20,9 +20,6 @@ export class OrdersModalComponent implements OnInit {
   isOrderModify: boolean = false;
   ltp: number = 0;
 
-  stoplossChecked: boolean = false;
-  targetChecked: boolean = false;
-
   loader: boolean = false;
   @Input() isPositionsOrder: boolean=false;
   @Input() isHoldingOrder: boolean=false;
@@ -263,19 +260,5 @@ export class OrdersModalComponent implements OnInit {
     });
   }
 
-  gttChange(event:any) {
-    let val = event.target.value;
-    console.log(event.target.value);
-    console.log(event.currentTarget.checked);
-    if(event.target.name === "Stoploss"){
-      this.stoplossChecked = !this.stoplossChecked;
-      
-    } else if(event.target.name === "Target"){
-      this.targetChecked = !this.targetChecked;
-    }
-    
-    // Stoploss
-
-  }
 
 }

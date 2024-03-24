@@ -18,10 +18,7 @@ const modules = [
   FormsModule,
   ReactiveFormsModule,
   RouterModule,
-  DragDropModule,
-  MatTableModule,
-  MatPaginatorModule,
-  MatStepperModule
+  DragDropModule
 ];
 
 const components = [

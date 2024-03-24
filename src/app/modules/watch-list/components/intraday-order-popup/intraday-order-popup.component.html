@@ -156,23 +156,25 @@
                             </div>
                         </div>
 
-                        <div class="px-3 mt-2 text-right">
-                            <app-trade-tags #tradeTag></app-trade-tags>
-                        </div>
                         <div class="px-3">
-                            <label class="col-form-label pt-0">Trade Thesis</label>
-                            <textarea class="form-control" rows="4"></textarea>
+                            <div class="d-flex align-items-center justify-content-between pt-2">
+                                <label class="sub-heading m-0">Trade Thesis</label>
+                                <div class="text-right">
+                                    <app-trade-tags #tradeTag></app-trade-tags>
+                                </div>
+                            </div>
+                            <textarea class="form-control" rows="3"></textarea>
                         </div>
                         <div class="d-flex align-items-center p-3 text-right actions">
                             <input type="file">
-                            <button type="submit" class="button submit"><span class="text-white">Upload file</span></button>
+                            <button type="submit" class="button submit button-md"><span class="text-white">Upload file</span></button>
                         </div>
                     </div>
 
                     <footer class="footer">
                         <div class="text-right actions">
-                            <button type="submit" class="button submit" (click)="orderPlacement(margins)"><span>{{margins.transaction_type | titlecase}}</span></button>
-                            <button type="button" class="button button-outline cancel ml-1" (click)="closeModal()">Cancel</button>
+                            <button type="submit" class="button submit button-md" (click)="orderPlacement(margins)"><span>{{margins.transaction_type | titlecase}}</span></button>
+                            <button type="button" class="button button-outline cancel button-md ml-1" (click)="closeModal()">Cancel</button>
                         </div>
                     </footer>
 
