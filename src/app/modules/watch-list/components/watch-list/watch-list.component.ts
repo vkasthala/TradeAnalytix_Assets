@@ -10,6 +10,8 @@ import { Watchlistsymbol } from 'src/app/modules/shared/models/watchlistsymbol.m
 import { SharedService } from 'src/app/modules/shared/services/shared.service';
 import { Margins } from 'src/app/modules/shared/models/margins.model';
 import { OmsService } from 'src/app/modules/shared/services/oms.service';
+import { InstrumentPriceUpdateService } from 'src/app/modules/shared/services/instrument-price-update.service';
+import { PriceUpdateModel } from 'src/app/modules/shared/models/price-update-model';
 @Injectable({
   providedIn: 'root'
 })
@@ -42,7 +44,7 @@ export class WatchListComponent implements OnInit {
     private renderer: Renderer2,
     private _sharedService: SharedService,
     private _watchlistService: WatchlistService,
-    // private quoteUpdateService: QuoteUpdateStompService,
+    private instrumentPriceUpdateService: InstrumentPriceUpdateService,
     private _omsService: OmsService,
     private toastr: ToastrService,
   ) {
@@ -129,21 +131,22 @@ export class WatchListComponent implements OnInit {
           let callback = (data: any) => {
             this.updatePriceModel(wlItem, data);
           };
-          // this.quoteUpdateService.subscribePriceUpdate(wlItem.symbol_id, callback);
+          this.instrumentPriceUpdateService.subscribePriceUpdate(wlItem.id, callback);
         });
       }
     }
   }
 
   updatePriceModel(symbol: Watchlistsymbol, data: any) {
+    console.log(data);
     if (!symbol.priceModel && data && data.body) {
-      // symbol.priceModel = new PriceUpdateModel();
+      symbol.priceModel = new PriceUpdateModel();
     }
     if (data && data.body) {
       let jsonResult = JSON.parse(data.body);
-      if (jsonResult.price) {
+      if (jsonResult.ltp) {
         symbol.priceModel.price = jsonResult.price;
-        symbol.priceModel.close = jsonResult.previousDayClose;
+        symbol.priceModel.ltp = jsonResult.ltp;
         symbol.priceModel.updateChangeProps();
       }
     }

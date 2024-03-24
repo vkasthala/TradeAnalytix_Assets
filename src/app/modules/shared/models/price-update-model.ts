@@ -2,7 +2,9 @@ export class PriceUpdateModel {
 
     price: number | undefined;
 
-    close: number | undefined;
+    ltp: number | undefined;
+
+    symbol: string | undefined;
 
     change: number | undefined;
 
@@ -14,11 +16,11 @@ export class PriceUpdateModel {
         if (!this.price) {
             return;
         }
-        if (!this.close) {
-            this.close = this.price;
+        if (!this.ltp) {
+            this.ltp = this.price;
         }
-        this.change = parseFloat((this.price - this.close).toFixed(3));
-        this.changePercent = parseFloat(((this.change / this.close) * 100).toFixed(2));
+        this.change = parseFloat((this.price - this.ltp).toFixed(3));
+        this.changePercent = parseFloat(((this.change / this.ltp) * 100).toFixed(2));
         this.winFlag = (this.change >= 0);
     }
 

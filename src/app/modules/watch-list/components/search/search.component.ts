@@ -150,7 +150,7 @@ export class SearchComponent implements OnInit {
           this._sharedService.addItemEvent.emit(item);
         }
       }, error => {
-        this.toastr.error(error.error, "Error");
+        this.toastr.error(error.message, "Error");
         console.log(error);
       }
     );
