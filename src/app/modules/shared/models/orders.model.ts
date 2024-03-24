@@ -45,7 +45,7 @@ export interface OrderPurchasehistoryResponse{
 
 export interface OrderPurchasehistory{
     id: number;
-    order_id: string;
+    orderId: string;
     time: string;
     type: string;
     instrument: InstrumentResponse;

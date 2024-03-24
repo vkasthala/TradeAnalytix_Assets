@@ -103,7 +103,7 @@ export class OrdersModalComponent implements OnInit {
     }
     const placeOrderRequest = {
       orderType: orderPlaceType,
-      productType: this.margins.product ? this.margins.product == 'MIS' ? "INTRADAY" : this.margins.product : "INTRADAY",
+      productType: this.margins.product ? this.margins.product : "MIS",
       quantity: this.margins.quantity,
       symbol: this.margins.tradingsymbol,
       transactionType: this.margins.transaction_type,
@@ -112,7 +112,6 @@ export class OrdersModalComponent implements OnInit {
       stopPrice : triggerPrice,
       stopLossTriggerPrice: 0
     }
-    debugger;
     this._omsService.placeOrder(placeOrderRequest, orderType).subscribe(response=>{
       if(response){
         this.toastr.success('Order placed successfully', 'Success', {timeOut: 3000, positionClass: 'toast-bottom-right'});
@@ -122,6 +121,7 @@ export class OrdersModalComponent implements OnInit {
       }
     }, error => {
       this.toastr.error(error.error.errorMessage, 'Error', {timeOut: 3000, positionClass: 'toast-bottom-right'});
+      this._sharedService.ordersReloadEvent.emit(true);
       this._sharedService.loaderEvent.emit(false);
     });
   }
