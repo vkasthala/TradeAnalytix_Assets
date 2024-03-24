@@ -1,13 +1,26 @@
+.compare-popup {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+    // background-color: rgba(0,0,0,0.1);
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .order-window {
     border-radius: 3px 3px 0 0;
     background-color: #fff;
     -webkit-box-shadow: 0 0 2px 0 rgba(0,0,0,.2),0 4px 10px 0 rgba(0,0,0,.05);
     box-shadow: 0 0 2px 0 rgba(0,0,0,.2),0 4px 10px 0 rgba(0,0,0,.05);
-    // position: absolute;
     z-index: 99;
-    // bottom: 0;
-    left: calc(50% - 700px/2);
-    width: 700px;
+    left: calc(50% - 600px/2);
+    width: 100%;
 }
 
 .order-window .no {
@@ -40,10 +53,8 @@
 
 .order-window header {
     border-radius: 3px 3px 0 0;
-    padding: 15px 20px
+    padding: 10px 20px
 }
-
-
 
 .order-window header .transaction-type {
     display: inline-block;
@@ -83,28 +94,8 @@
     padding: 7px 0
 }
 
-.order-window header .last-price {
-    min-width: 50px;
-    display: inline-block
-}
-
-.order-window header .exchange-selector .su-radio-group .su-radio-label {
-    color: #fff;
-    opacity: .6
-}
-
-.order-window header .exchange-selector .su-radio-group .su-radio-wrap.checked .su-radio-label {
-    opacity: 1
-}
-
-.order-window header .exchange-selector .su-radio-group .su-radio-label:before {
-    float: left;
-    margin-top: 3px
-}
-
-.order-window header .exchange-selector .su-radio-group .su-radio:checked+.su-radio-label:before {
-    -webkit-box-shadow: inset 0 0 0 3px #fff;
-    box-shadow: inset 0 0 0 3px #fff
+.price {
+    font-weight: 600;
 }
 
 .order-window .wrap-right {
@@ -320,7 +311,7 @@
 }
 
 .order-window .body {
-    padding: 20px 20px 15px 20px
+    padding: 0;
 }
 
 .order-window .body .su-radio-label span {
@@ -388,9 +379,11 @@
     color: #105C9F
 }
 
-.order-window.buy .variety .su-radio-group .su-radio:checked+.su-radio-label {
+.order-window.buy .button {
     color: #105C9F;
-    border-bottom: 2px solid #105C9F
+}
+.order-window.sell .button {
+    color: #E0261A;
 }
 
 .order-window.buy .actions .submit {
@@ -398,10 +391,6 @@
     border-color: #105C9F
 }
 
-.order-window.sell .su-radio:checked+.su-radio-label:before {
-    background-color: #E0261A;
-    border-color: #E0261A
-}
 
 .order-window.sell header {
     color: #fff;
@@ -478,25 +467,7 @@
     width: 60px;
     padding: 0 5px;
     margin: 0;
-    color: #9b9b9b;
-    font-size: .875rem;
-}
-
-.order-window .gtt .input .su-input-group input[type=number]::inner-spin-button,.order-window .gtt .input .su-input-group input[type=number]::outer-spin-button {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    margin: 0
-}
-
-.order-window .gtt .input .su-input-group input[type=number] {
-    -webkit-appearance: textfield;
-    -moz-appearance: textfield;
-    appearance: textfield
-}
-
-.order-window .gtt .input .su-input-group input[type=number]:disabled {
-    color: transparent
+    color: #9b9b9b
 }
 
 .order-window .first-fields {
@@ -543,18 +514,19 @@
     margin-top: 15px
 }
 .order-window header .instrument {
-    font-weight: 500
+    font-weight: 500;
+    font-size: 18px;
 }
 
 .example-box {
-    bottom: 50px;
-    left: calc(50% - 600px/2);
-    width: 700px;
-    cursor: move;
+    bottom: auto;
+    left: calc(50% - 900px/2);
+    width: 900px;
     display: flex;
     position: fixed;
     z-index: 99;
     transition: box-shadow 200ms cubic-bezier(0, 0, 0.2, 1);
+    top: 20px;
 }
 
 @media (max-width: 767px) {
@@ -591,4 +563,24 @@
         margin-top: 0;
         margin-bottom: 20px;
     }
+}
+
+.intraday-panel {
+    border-bottom: 1px solid #e7e7e7;
+}
+.intraday-panel-header {
+    padding: 10px 15px;
+    font-size: 18px;
+    font-weight: 600;
+    border-bottom: 2px solid #e7e7e7;
+}
+.intraday-panel-body {
+    padding: 10px 0;
+    height: 250px;
+    overflow: auto;
+}
+.rule-type {
+    color: #908F8F;
+    font-size: 14px;
+    padding-left: 0.25rem;
 }

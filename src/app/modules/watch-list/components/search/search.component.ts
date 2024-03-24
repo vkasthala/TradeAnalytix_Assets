@@ -42,7 +42,7 @@ export class SearchComponent implements OnInit {
         "name":"AARTIIND",
         "type":"NSE",
         "exchange":"NSE",
-        "addedToWatchList": false
+        "addedToWatchList": true
     },
     {
         "code":"STYRENIX",

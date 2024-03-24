@@ -5,8 +5,6 @@ import { WatchListComponent } from '../watch-list/components/watch-list/watch-li
 import { SearchComponent } from '../watch-list/components/search/search.component';
 import { OrdersModalComponent } from '../watch-list/components/orders-modal/orders-modal.component';
 import { ClickOutsideDirective } from 'src/app/clickOutside';
-import { OrdersComponent } from '../orders/orders.component';
-import { MainChartComponent } from '../main-chart/main-chart.component';
 import { SharedService } from './services/shared.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -16,7 +14,8 @@ const modules = [
   CommonModule,
   FormsModule,
   ReactiveFormsModule,
-  RouterModule
+  RouterModule,
+  DragDropModule
 ];
 
 const components = [
@@ -24,7 +23,6 @@ const components = [
   SearchComponent,
   OrdersModalComponent,
   ClickOutsideDirective,
-  // OrdersComponent  
 ];
 const providers = [
   SharedService
