@@ -13,14 +13,14 @@
       <li class="search-result-item" [ngClass]="{'selected':index == 0,'isadded':searchItem.addedToWatchList}"
         *ngFor="let searchItem of searchResult, let index=index" (mouseover)="showSearchActions($event, index)"
         (mouseout)="fadeOutActions(index)"  (click)="addToWatchList(searchItem)">
-        <span class="symbol d-inline-flex align-items-center" (click)="addToWatchList(searchItem)">
-          <span class="tradingsymbol">{{searchItem.code}}</span>
+        <span class="symbol" (click)="addToWatchList(searchItem)">
+          <span class="tradingsymbol">{{searchItem.symbol}}</span>
           <span class="ins-added-label" data-balloon="Added" data-balloon-pos="up" *ngIf="searchItem.addedToWatchList">
             <mat-icon class="mat-icon material-icons mat-icon-sm icon icon-check">check</mat-icon>
           </span>
         </span>
         <span class="exchange">
-          <span class="company">{{searchItem.name}}</span>
+          <span class="company">{{searchItem.symbol}}</span>
           <span *ngIf="isMobileDevice">
             <button type="button" class="button-green button-xsmall" data-balloon="Add" data-balloon-pos="up"
             (click)="addNewItem(searchItem); $event.stopPropagation();" *ngIf="!searchItem.addedToWatchList">
@@ -39,7 +39,7 @@
           <button type="button" class="sell" data-balloon="Sell" data-balloon-pos="up"
             (click)="sellOrders(searchItem)" *ngIf="!isNiftyStock(searchItem)">S</button>
 
-          <button type="button" class="button-outline" data-balloon="Chart" data-balloon-pos="up" [routerLink]="['/chart/',searchItem.code, searchItem.symbolId]">
+          <button type="button" class="button-outline" data-balloon="Chart" data-balloon-pos="up" [routerLink]="['/chart/',searchItem.symbol, searchItem.token]">
             <mat-icon class="material-icons mat-icon-sm">show_chart</mat-icon>
           </button>
 
@@ -62,7 +62,7 @@
   <div class="mobile-context-menu search-mobile-menu" *ngIf="showMobileContextMenu">
     <div class="mobile-context-menu-list list-flat" (clickOutside)="closeMobileContextMenu($event)">
       <div class="search-screen-header">
-        <h4>{{selectedSymbol.code}}</h4>
+        <h4>{{selectedSymbol.symjbol}}</h4>
       </div>
       <div class="d-flex justify-content-between p-3">
         <button type="button" class="button button-blue" (click)="buyOrders(selectedSymbol)">BUY</button>
@@ -70,7 +70,7 @@
       </div>
       <div class="text-center p-2">
         <span data-balloon="Chart (C)" data-balloon-pos="up"
-        [routerLink]="['/chart/',selectedSymbol.code, selectedSymbol.symbolId]">
+        [routerLink]="['/chart/',selectedSymbol.symbol, selectedSymbol.token]">
             <span class="icon icon-trending-up"></span> Chart
         </span>
       </div>

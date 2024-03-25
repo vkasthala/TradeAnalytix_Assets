@@ -13,7 +13,6 @@ export class SymbolSearchService {
   constructor(private httpService: HttpService) { }
 
   searchSymbols(input: string): Observable<SymbolSearchModel[]> {
-    return this.httpService.get<SymbolSearchModel[]>(environment.apiUrl + '/symbol/search/' + input);
+    return this.httpService.get<SymbolSearchModel[]>(environment.tradingServiceUri + '/v0/watchlist/search?keyword='+ input);
   }
-
 };

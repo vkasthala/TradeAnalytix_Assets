@@ -1,4 +1,4 @@
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { WatchListRequest, Watchlist, Watchlists } from '../models/watchlist.model';
@@ -16,20 +16,24 @@ export class WatchlistService {
     // private quoteUpdateService: QuoteUpdateStompService
     ) { }
 
+  //TODO : Make it dynamic
   getWatchListItems() : Observable<Watchlists>{
-    const url = environment.apiUrl + "/v0/watchlist";
-    return this.http.get<Watchlists>(url);
+    const url = environment.tradingServiceUri + "/v0/watchlist";
+    let headers = this.getHeaders();
+    return this.http.get<Watchlists>(url, {headers});
   }
 
   addSymbolToWatchList(watchListRequest : WatchListRequest) : Observable<Watchlist>{
     console.log(watchListRequest);
-    const url = environment.apiUrl + "/v0/watchlist";
-    return this.http.post<Watchlist>(url, watchListRequest);
+    let headers = this.getHeaders();
+    const url = environment.tradingServiceUri + "/v0/watchlist";
+    return this.http.post<Watchlist>(url, watchListRequest, {headers});
   }
 
   deleteSymbolFromWatchList(watchListSymbolId : number) : Observable<Watchlist>{
-    const url = environment.apiUrl + "/v0/watchlist/" + watchListSymbolId;
-    return this.http.delete<Watchlist>(url);
+    const url = environment.tradingServiceUri + "/v0/watchlist/symbols/" + watchListSymbolId;
+    let headers = this.getHeaders();
+    return this.http.delete<Watchlist>(url, {headers});
   }
 
   public setSelectedIndex(currentIndex:number){
@@ -38,5 +42,13 @@ export class WatchlistService {
 
   public getSelectedIndex(){
     return this.selectedIndex;
+  }
+
+  private getHeaders(): HttpHeaders{
+    let headers = new HttpHeaders({
+      'X-BROKER-ID':  'fyers',
+      'X-USER-ID': '1'
+    });
+    return headers;
   }
 }
