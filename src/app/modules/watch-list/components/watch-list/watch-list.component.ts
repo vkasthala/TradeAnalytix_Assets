@@ -257,7 +257,7 @@ export class WatchListComponent implements OnInit {
     const defaultOrderRequest = {
       exchange: "NSE",
       order_type: "MARKET",
-      product: "MIS",
+      product: "INTRADAY",
       quantity: 1,
       tradingsymbol: tradingsymbol,
       transaction_type: $event.transaction_type,
@@ -277,6 +277,8 @@ export class WatchListComponent implements OnInit {
       this.toastr.error(error.error, "Error", {timeOut: 3000, positionClass: 'toast-bottom-right'});
       this.loader = false;
     });*/
+    this.marginsSource.transaction_type = $event.transaction_type;
+    this.marginsSource.tradingsymbol = tradingsymbol;
     return this.marginsSource;
   }
 

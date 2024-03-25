@@ -3,6 +3,7 @@ import { ToastrService } from 'ngx-toastr';
 import { SharedService } from 'src/app/modules/shared/services/shared.service';
 import { OrderPurchasehistory, OrderPurchasehistoryResponse } from '../shared/models/orders.model';
 import { OmsService } from '../shared/services/oms.service';
+import { OrdersWebsocketService } from '../shared/services/websocket/orders-websocket.service';
 
 @Component({
   selector: 'app-orders',
@@ -18,18 +19,14 @@ export class OrdersComponent implements OnInit {
     private _orderService: OmsService,
     private _sharedService: SharedService,
     private toastr: ToastrService,
-    // private quoteUpdateService: QuoteUpdateStompService,
-    // private ordersWebsocketService: OrdersWebsocketService,
-    // private _userService: UserService,
-    // private postionsWSService: PositionsWebsocketService
+    private ordersWebsocketService: OrdersWebsocketService,
   ) {
 
     _sharedService.ordersReloadEvent.subscribe(
       (res) => {
         if(res){
           this.newOrder = res;
-          this.loadOpenOrders();
-          this.loadExecutedOrders();
+          this.loadOrders();
           if(this.newOrder) {
             setTimeout(() => {
             }, 4000)
@@ -40,11 +37,17 @@ export class OrdersComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loadOpenOrders();
-    this.loadExecutedOrders();
+    this.loadOrders();
     this.unsubscribe();
-    // this.loadUserId();
+    this.subscribeOrdersUpdate("1");
   }
+
+  subscribeOrdersUpdate(userId: string) {
+    let callback = (data: any) => {
+      this.moveOrderToExecutedTab(data);
+    };
+    this.ordersWebsocketService.subscribeOrdersUpdate(userId, callback);
+}
 
   unsubscribe(){
     // this.postionsWSService.unsubscribeAll();
@@ -52,13 +55,15 @@ export class OrdersComponent implements OnInit {
 
   moveOrderToExecutedTab(data: any) {
     if (data && data.body) {
-      let orderId = data.body;
-      if (orderId) {
+      let payload = JSON.parse(data.body);
+      if (payload.orderId) {
+        let orderId = payload.orderId;
+        let orderStatus = payload.status;
         if(null != this.openOrders.data){
-        let openOrder  = this.openOrders.data.find(openOrder => openOrder.id == orderId);
-        this.openOrders.data = this.openOrders.data.filter(openOrder => openOrder.id != orderId);
+        let openOrder  = this.openOrders.data.find(openOrder => openOrder.orderId == orderId);
+        this.openOrders.data = this.openOrders.data.filter(openOrder => openOrder.orderId != orderId);
         if(openOrder){
-        openOrder.status = 'COMPLETE';
+        openOrder.status = orderStatus;
         if(null != this.executedOrders.data){
           this.executedOrders.data.push(openOrder);
       } else{
@@ -79,95 +84,34 @@ export class OrdersComponent implements OnInit {
     }
   }
 
-  loadOpenOrders(){
-    this.openOrders.data = 
-       [
-        {'id': 123,
-    'order_id': 'string',
-    'time': '10:46:59',
-    'type': 'BUY',
-    'instrument': {
-      'symbol':'HDFC',
-      'exchange':'',
-      'symbolId':0
-    },
-    'product': 'MIS',
-    'quantity': 1/1,
-    'ltp': 131.05,
-    'price': 172.05,
-    'status': 'OPEN',
-    'journal': 'ADD',
-    'selected': false
-    },
-    {'id': 123,
-    'order_id': 'string',
-    'time': '10:46:59',
-    'type': 'SELL',
-    'instrument': {
-      'symbol':'HDFC',
-      'exchange':'',
-      'symbolId':0
-    },
-    'product': 'MIS',
-    'quantity': 1/1,
-    'ltp': 131.05,
-    'price': 172.05,
-    'status': 'OPEN',
-    'journal': 'ADD',
-    'selected': false
+  loadOrders(){
+    this._orderService.getOrders().subscribe(response => {
+      if(response){
+        console.log(response);
+        this.loadOpenOrders(response);
+        this.loadExecutedOrders(response);
+        // this.subscribeSymbolsPriceUpdate();
+      }
+    }, error => {
+      this.toastr.error(error.error.errorMessage, 'Error', {timeOut: 3000, positionClass: 'toast-bottom-right'});
     }
-  ]
-    // this._orderService.getOpenOrders().subscribe(response => {
-    //   if(response){
-    //     console.log(response);
-    //     this.openOrders.data = response.data?.reverse();
-    //     this.subscribeSymbolsPriceUpdate();
-    //   }
-    // });
+    );
   }
 
-  loadExecutedOrders(){
+  loadOpenOrders(response){
+    response.data.openOrders.forEach(obj => {
+      obj.journal = 'ADD';
+      obj.selected = false;
+  });
+    this.openOrders.data = response.data.openOrders;
+  }
 
-    this.executedOrders.data = 
-       [
-        {'id': 123,
-    'order_id': 'string',
-    'time': '10:46:59',
-    'type': 'BUY',
-    'instrument': {
-      'symbol':'HDFC',
-      'exchange':'',
-      'symbolId':0
-    },
-    'product': 'MIS',
-    'quantity': 1/1,
-    'ltp': 131.05,
-    'price': 172.05,
-    'status': 'COMPLETED',
-    'journal': 'ADD',
-    'selected': false
-    },
-    {'id': 123,
-    'order_id': 'string',
-    'time': '10:46:59',
-    'type': 'SELL',
-    'instrument': {
-      'symbol':'HDFC',
-      'exchange':'',
-      'symbolId':0
-    },
-    'product': 'MIS',
-    'quantity': 1/1,
-    'ltp': 131.05,
-    'price': 172.05,
-    'status': 'COMPLETED',
-    'journal': 'ADD',
-    'selected': false
-    }
-  ]
-
-
-
+  loadExecutedOrders(response){
+    response.data.executedOrders.forEach(obj => {
+      obj.journal = 'ADD';
+      obj.selected = false;
+  });
+    this.executedOrders.data = response.data.executedOrders;
     // this._orderService.getExecutedOrders().subscribe(response => {
     //   if(response){
     //     this.executedOrders.data = response.data?.reverse();
