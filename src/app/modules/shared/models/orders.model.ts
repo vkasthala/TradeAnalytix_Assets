@@ -24,17 +24,15 @@ export interface OrdersRequest {
 }
 
 export interface PlaceOrderRequest {
-    exchange: string;
-    order_type: string;
-    product: string;
+    symbol: string;
     quantity: number;
-    tradingsymbol: string;
-    transaction_type: string;
-    variety: string;
-    price: number;
-    trigger_price : number;
-    stop_loss_enabled: boolean;
-    stop_loss_trigger_price: number;
+    orderType: string;
+    transactionType: string;
+    productType: string;
+    limitPrice: number;
+    stopPrice : number;
+    validity: string;
+    stopLossTriggerPrice: number;
 }
 
 export interface PurchaseOrderResponse {
@@ -47,7 +45,7 @@ export interface OrderPurchasehistoryResponse{
 
 export interface OrderPurchasehistory{
     id: number;
-    order_id: string;
+    orderId: string;
     time: string;
     type: string;
     instrument: InstrumentResponse;

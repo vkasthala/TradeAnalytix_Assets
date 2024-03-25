@@ -27,32 +27,7 @@ export class SearchComponent implements OnInit {
   showMobileContextMenu: boolean = false;
   selectedSymbol: any;
 
-  searchData:SymbolSearchModel[] = [
-    {
-        "code":"NSE:INE033L07GN7",
-        "symbolId":1,
-        "name":"TATACAPHSG-N3",
-        "type":"NSE",
-        "exchange":"NSE",
-        "addedToWatchList": false
-    },
-    {
-        "code":"AARTIIND",
-        "symbolId":2,
-        "name":"AARTIIND",
-        "type":"NSE",
-        "exchange":"NSE",
-        "addedToWatchList": true
-    },
-    {
-        "code":"STYRENIX",
-        "symbolId":3,
-        "name":"STYRENIX",
-        "type":"NSE",
-        "exchange":"NSE",
-        "addedToWatchList": false
-    },
-  ]
+  searchData:SymbolSearchModel[] = [];
 
   niftyList = ['NIFTY 50','NIFTY NEXT 50','NIFTY 100','NIFTY 200','NIFTY 500','NIFTY MIDCAP 50','NIFTY MIDCAP 100','NIFTY SMALLCAP 100','INDIA VIX','NIFTY MIDCAP 150','NIFTY SMALLCAP 50','NIFTY SMALLCAP 250','NIFTY MIDSMALLCAP 400','NIFTY500 MULTICAP 50:25:25','NIFTY LARGEMIDCAP 250','NIFTY MIDCAP SELECT','NIFTY TOTAL MARKET','NIFTY MICROCAP 250','NIFTY BANK','NIFTY AUTO','NIFTY FINANCIAL SERVICES','NIFTY FINANCIAL SERVICES 25/50','NIFTY FMCG','NIFTY IT','NIFTY MEDIA','NIFTY METAL','NIFTY PHARMA','NIFTY PSU BANK','NIFTY PRIVATE BANK','NIFTY REALTY','NIFTY HEALTHCARE INDEX',  'NIFTY CONSUMER DURABLES','NIFTY OIL & GAS'];
 
@@ -92,15 +67,10 @@ export class SearchComponent implements OnInit {
   }
 
   search(term: string): void {
-    this.searchResult = this.searchData;
-    if (!term) {
-      return;
-    }
-    // this._symbolSearchService.searchSymbols(term).subscribe(result => {
-      
-    //   this.searchResult = result;
-    //   this.compareData(this.pageIndex)
-    // });
+    this._symbolSearchService.searchSymbols(term).subscribe(result => {
+      this.searchResult = result;
+      this.compareData(this.pageIndex)
+    });
   }
 
   showSearchActions(event: any, index: any) {
@@ -141,6 +111,7 @@ export class SearchComponent implements OnInit {
   }
 
   addToWatchList(item: SymbolSearchModel) {
+    console.log("Added to watchlist");
     if (!item || !item.symbolId) {
       return;
     }
@@ -165,11 +136,12 @@ export class SearchComponent implements OnInit {
   }
 
   addNewItem(item: SymbolSearchModel) {
-    if (!item || !item.symbolId) {
+    console.log(item);
+    if (!item || !item.symbol) {
       return;
     }
     const request: WatchListRequest = {
-      symbolId: item.symbolId,
+      symbolId: item.id,
       pageNumber: this._watchListService.getSelectedIndex()
     };
     this._watchListService.addSymbolToWatchList(request).subscribe(
@@ -178,7 +150,7 @@ export class SearchComponent implements OnInit {
           this._sharedService.addItemEvent.emit(item);
         }
       }, error => {
-        this.toastr.error(error.error, "Error");
+        this.toastr.error(error.message, "Error");
         console.log(error);
       }
     );
@@ -202,13 +174,12 @@ export class SearchComponent implements OnInit {
     let wlItems = this.watchListData[index - 1].items;
     this.searchResult.forEach(searchItem => {
       wlItems.forEach((wlItem: { tradingsymbol: string | undefined; }) => {
-        if (searchItem.code === wlItem.tradingsymbol) {
+        if (searchItem.symbol === wlItem.tradingsymbol) {
           searchItem.addedToWatchList = true;
-          this.currentWatchListSize = this.watchListData[this.pageIndex + 1].items.length;
+          this.currentWatchListSize = this.watchListData[this.pageIndex].items.length;
         }
       })
     })
-    console.log(this.searchResult);
   }
 
   openMobileActions(symbol: any) {

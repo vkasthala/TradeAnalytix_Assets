@@ -19,7 +19,7 @@
                                 <div class="info price-change-type-close-all">
                                     <div class="symbol-wrapper">
                                         <div class="symbol">
-                                            <span class="nice-name">{{item.tradingsymbol}}</span>
+                                            <span class="nice-name">{{item.trading_symbol}}</span>
                                             <span class="tag dim index-xsmall" *ngIf="isNiftyStock(item)">INDEX</span>
                                         </div>
                                     </div>
@@ -136,7 +136,7 @@
 <app-orders-modal 
     *ngIf="showOrdersModal" 
     [orderToggle]="orderToggle" 
-     (cancelOrder)="cancelOrders()">
+    [margins]="marginsSource" (cancelOrder)="cancelOrders()">
 </app-orders-modal>
 
 <mat-spinner *ngIf="loader"></mat-spinner>

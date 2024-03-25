@@ -60,7 +60,7 @@ export class OrdersModalComponent implements OnInit {
     let val = event.target.value;
     console.log(event.target.value);
     if  (val === 'cover') {
-      this.margins.product = 'MIS';
+      this.margins.product = 'INTRADAY';
       let isLimitChecked = (document.getElementById('LIMIT') as HTMLInputElement).checked;
       if(!isLimitChecked) {
         setTimeout(() => {
@@ -96,23 +96,18 @@ export class OrdersModalComponent implements OnInit {
     let stopLossEnabled = this.margins.order_type == 'SL' || this.margins.order_type == 'SL-M';
     let triggerPrice = this.getTriggerPrice();
     if(stopLossEnabled){
-      orderPlaceType = this.margins.order_type == 'SL' ? 'LIMIT' : 'MARKET';
-      if(!this.isValidPricesForStopLoss(triggerPrice)){
-        return;
-      }
+      orderPlaceType = this.margins.order_type == 'SL' ? 'STOPLOSS_LIMIT' : 'STOPLOSS_MARKET';
     }
     const placeOrderRequest = {
-      exchange: "NSE",
-      order_type: orderPlaceType,
-      product: this.margins.product ? this.margins.product : "MIS",
+      orderType: orderPlaceType,
+      productType: this.margins.product ? this.margins.product : "MIS",
       quantity: this.margins.quantity,
-      tradingsymbol: this.margins.tradingsymbol,
-      transaction_type: this.margins.transaction_type,
-      variety: this.margins.variety,
-      price: price,
-      trigger_price : triggerPrice,
-      stop_loss_enabled: stopLossEnabled,
-      stop_loss_trigger_price: 0
+      symbol: this.margins.tradingsymbol,
+      transactionType: this.margins.transaction_type,
+      validity: 'DAY',
+      limitPrice: price,
+      stopPrice : triggerPrice,
+      stopLossTriggerPrice: 0
     }
     this._omsService.placeOrder(placeOrderRequest, orderType).subscribe(response=>{
       if(response){
@@ -122,7 +117,8 @@ export class OrdersModalComponent implements OnInit {
         this.closePopup();
       }
     }, error => {
-      this.toastr.error(error.error, 'Error', {timeOut: 3000, positionClass: 'toast-bottom-right'});
+      this.toastr.error(error.error.errorMessage, 'Error', {timeOut: 3000, positionClass: 'toast-bottom-right'});
+      this._sharedService.ordersReloadEvent.emit(true);
       this._sharedService.loaderEvent.emit(false);
     });
   }
@@ -148,12 +144,7 @@ export class OrdersModalComponent implements OnInit {
   }
 
   getTriggerPrice(): number{
-    let isLimitChecked = this.isLimitChecked();
     let price = (document.getElementById('trigger_price') as HTMLInputElement).value;
-    console.log(isLimitChecked);
-    if(!isLimitChecked){
-      price = this.margins.trigger_price;
-    }
     return parseFloat(price);
   }
 

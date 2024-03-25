@@ -10,6 +10,8 @@ import { Watchlistsymbol } from 'src/app/modules/shared/models/watchlistsymbol.m
 import { SharedService } from 'src/app/modules/shared/services/shared.service';
 import { Margins } from 'src/app/modules/shared/models/margins.model';
 import { OmsService } from 'src/app/modules/shared/services/oms.service';
+import { InstrumentPriceUpdateService } from 'src/app/modules/shared/services/instrument-price-update.service';
+import { PriceUpdateModel } from 'src/app/modules/shared/models/price-update-model';
 @Injectable({
   providedIn: 'root'
 })
@@ -36,266 +38,13 @@ export class WatchListComponent implements OnInit {
 
   niftyList = ['NIFTY 50','NIFTY NEXT 50','NIFTY 100','NIFTY 200','NIFTY 500','NIFTY MIDCAP 50','NIFTY MIDCAP 100','NIFTY SMALLCAP 100','INDIA VIX','NIFTY MIDCAP 150','NIFTY SMALLCAP 50','NIFTY SMALLCAP 250','NIFTY MIDSMALLCAP 400','NIFTY500 MULTICAP 50:25:25','NIFTY LARGEMIDCAP 250','NIFTY MIDCAP SELECT','NIFTY TOTAL MARKET','NIFTY MICROCAP 250','NIFTY BANK','NIFTY AUTO','NIFTY FINANCIAL SERVICES','NIFTY FINANCIAL SERVICES 25/50','NIFTY FMCG','NIFTY IT','NIFTY MEDIA','NIFTY METAL','NIFTY PHARMA','NIFTY PSU BANK','NIFTY PRIVATE BANK','NIFTY REALTY','NIFTY HEALTHCARE INDEX',  'NIFTY CONSUMER DURABLES','NIFTY OIL & GAS'];
 
-  sampleData:any =[
-    {
-       "id":1,
-       "name":"1",
-       "items":[
-          {
-             "id":"NSE:INE033L07GN7",
-             "weight":0,
-             "tradingsymbol":"TATACAPHSG-N3",
-             "instrument_token":4297985,
-             "segment":"NSE",
-             "exchange":"NSE",
-             "expiry":"",
-             "sequence":"",
-             "priceModel":"",
-             "symbol_id":""
-          },
-          {
-             "id":"NSE:INE033L07GO5",
-             "weight":1,
-             "tradingsymbol":"TATACAPHSG-N4",
-             "instrument_token":4298497,
-             "segment":"NSE",
-             "exchange":"NSE",
-             "expiry":"",
-             "sequence":"",
-             "priceModel":"",
-             "symbol_id":""
-          },
-          {
-             "id":"BSE:INE029H01016",
-             "weight":2,
-             "tradingsymbol":"SUJALA",
-             "instrument_token":138013956,
-             "segment":"BSE",
-             "exchange":"BSE",
-             "expiry":"",
-             "sequence":"",
-             "priceModel":"",
-             "symbol_id":""
-          },
-          {
-             "id":"NSE:INE560A01015",
-             "weight":3,
-             "tradingsymbol":"INDIAGLYCO",
-             "instrument_token":389377,
-             "segment":"NSE",
-             "exchange":"NSE",
-             "expiry":"",
-             "sequence":"",
-             "priceModel":"",
-             "symbol_id":""
-          },
-          {
-             "id":"NSE:INE0N5H01017",
-             "weight":4,
-             "tradingsymbol":"JIWANRAM-SM",
-             "instrument_token":4750849,
-             "segment":"NSE",
-             "exchange":"NSE",
-             "expiry":"",
-             "sequence":"",
-             "priceModel":{
-              "winFlag":true
-             },
-             "symbol_id":""
-          },
-          {
-             "id":"NSE:INE399K01017",
-             "weight":5,
-             "tradingsymbol":"RTNPOWER-BE",
-             "instrument_token":4486145,
-             "segment":"NSE",
-             "exchange":"NSE",
-             "expiry":"",
-             "sequence":"",
-             "priceModel":"",
-             "symbol_id":""
-          },
-          {
-             "id":"NSE:256265",
-             "weight":6,
-             "tradingsymbol":"NIFTY 50",
-             "instrument_token":256265,
-             "segment":"INDICES",
-             "exchange":"NSE",
-             "expiry":"",
-             "sequence":"",
-             "priceModel":"",
-             "symbol_id":""
-          },
-          {
-            "id": "NSE:INE423Y01016",
-            "weight": 8,
-            "tradingsymbol": "SBFC",
-            "instrument_token": 4614657,
-            "segment": "NSE",
-            "exchange": "NSE",
-            "expiry":"",
-             "sequence":"",
-             "priceModel":"",
-             "symbol_id":""
-        },
-        {
-            "id": "BSE:50950916",
-            "weight": 9,
-            "tradingsymbol": "SBIGETSINAV",
-            "instrument_token": 50950916,
-            "segment": "BSE",
-            "exchange": "BSE",
-            "expiry":"",
-             "sequence":"",
-             "priceModel":"",
-             "symbol_id":""
-        },
-        {
-            "id": "NSE:INE850D01014",
-            "weight": 10,
-            "tradingsymbol": "GODREJAGRO",
-            "instrument_token": 36865,
-            "segment": "NSE",
-            "exchange": "NSE",
-            "expiry":"",
-             "sequence":"",
-             "priceModel":"",
-             "symbol_id":""
-        },
-        {
-            "id": "NSE:INE769A01020",
-            "weight": 11,
-            "tradingsymbol": "AARTIIND",
-            "instrument_token": 1793,
-            "segment": "NSE",
-            "exchange": "NSE",
-            "expiry":"",
-             "sequence":"",
-             "priceModel":"",
-             "symbol_id":""
-        },
-        {
-            "id": "NSE:INE423A01024",
-            "weight": 12,
-            "tradingsymbol": "ADANIENT",
-            "instrument_token": 6401,
-            "segment": "NSE",
-            "exchange": "NSE",
-            "expiry":"",
-             "sequence":"",
-             "priceModel":"",
-             "symbol_id":""
-        },
-        {
-            "id": "NSE:INE932X01018",
-            "weight": 13,
-            "tradingsymbol": "SHAREINDIA",
-            "instrument_token": 26625,
-            "segment": "NSE",
-            "exchange": "NSE",
-            "expiry":"",
-            "sequence":"",
-            "priceModel":"",
-            "symbol_id":""
-        },
-        {
-            "id": "NSE:INE610C01014",
-            "weight": 14,
-            "tradingsymbol": "ARENTERP",
-            "instrument_token": 46337,
-            "segment": "NSE",
-            "exchange": "NSE",
-            "expiry":"",
-             "sequence":"",
-             "priceModel":"",
-             "symbol_id":""
-        },
-        {
-            "id": "NSE:INE822C01015",
-            "weight": 15,
-            "tradingsymbol": "TCPLPACK",
-            "instrument_token": 47105,
-            "segment": "NSE",
-            "exchange": "NSE",
-            "expiry":"",
-             "sequence":"",
-             "priceModel":"",
-             "symbol_id":""
-        },
-        {
-            "id": "NSE:INE034A01011",
-            "weight": 16,
-            "tradingsymbol": "ARVIND",
-            "instrument_token": 49409,
-            "segment": "NSE",
-            "exchange": "NSE",
-            "expiry":"",
-             "sequence":"",
-             "priceModel":"",
-             "symbol_id":""
-        },
-        {
-            "id": "NSE:INE440A01010",
-            "weight": 17,
-            "tradingsymbol": "ASHIMASYN",
-            "instrument_token": 52737,
-            "segment": "NSE",
-            "exchange": "NSE",
-            "expiry":"",
-             "sequence":"",
-             "priceModel":"",
-             "symbol_id":""
-        }
-       ],
-       "pageNumber":1
-    },
-    {
-       "id":2,
-       "name":"2",
-       "items":[
-          {
-             "id":"BSE:INE742F01042",
-             "weight":0,
-             "tradingsymbol":"ADANIPORTS",
-             "instrument_token":136427780,
-             "segment":"BSE",
-             "exchange":"BSE",
-             "expiry":"",
-             "sequence":"",
-             "priceModel":"",
-             "symbol_id":""
-          }
-       ],
-       "pageNumber":2
-    },
-    {
-       "id":3,
-       "name":"3",
-       "items":[
-          {
-             "id":"NSE:INE012A01025",
-             "weight":0,
-             "tradingsymbol":"ACC",
-             "instrument_token":5633,
-             "segment":"NSE",
-             "exchange":"NSE",
-             "expiry":"",
-             "sequence":"",
-             "priceModel":"",
-             "symbol_id":""
-          }
-       ],
-       "pageNumber":3
-    }
-    
- ]
+  sampleData:any =[];
 
   constructor(
     private renderer: Renderer2,
     private _sharedService: SharedService,
     private _watchlistService: WatchlistService,
-    // private quoteUpdateService: QuoteUpdateStompService,
+    private instrumentPriceUpdateService: InstrumentPriceUpdateService,
     private _omsService: OmsService,
     private toastr: ToastrService,
   ) {
@@ -335,7 +84,6 @@ export class WatchListComponent implements OnInit {
 
 
   ngOnInit() {
-    this.watchListData = this.sampleData;
     this.checkDevice();
     this.loadWatchList();
 
@@ -346,11 +94,10 @@ export class WatchListComponent implements OnInit {
 
   loadWatchList() {
     // this.loader = true;
-    
-    /*
     this._watchlistService.getWatchListItems().subscribe(
       response => {
         if (response) {
+          console.log(response)
           this.watchListData = response.watch_lists;
           this._sharedService.watchListReloadEvent.emit(this.watchListData);
           this.subscribeSymbolsPriceUpdate(this.pageIndex);
@@ -361,7 +108,7 @@ export class WatchListComponent implements OnInit {
         this.loader = false;
         console.log(error);
       }
-    );*/
+    );
   }
 
   unSubscribeSymbolsPriceUpdate(pageIndex: number) {
@@ -384,21 +131,22 @@ export class WatchListComponent implements OnInit {
           let callback = (data: any) => {
             this.updatePriceModel(wlItem, data);
           };
-          // this.quoteUpdateService.subscribePriceUpdate(wlItem.symbol_id, callback);
+          this.instrumentPriceUpdateService.subscribePriceUpdate(wlItem.id, callback);
         });
       }
     }
   }
 
   updatePriceModel(symbol: Watchlistsymbol, data: any) {
+    console.log(data);
     if (!symbol.priceModel && data && data.body) {
-      // symbol.priceModel = new PriceUpdateModel();
+      symbol.priceModel = new PriceUpdateModel();
     }
     if (data && data.body) {
       let jsonResult = JSON.parse(data.body);
-      if (jsonResult.price) {
+      if (jsonResult.ltp) {
         symbol.priceModel.price = jsonResult.price;
-        symbol.priceModel.close = jsonResult.previousDayClose;
+        symbol.priceModel.ltp = jsonResult.ltp;
         symbol.priceModel.updateChangeProps();
       }
     }
@@ -449,7 +197,6 @@ export class WatchListComponent implements OnInit {
       response => {
         if (response) {
           this.removeItemFromWatchList(item);
-          // this._sharedService.watchListCountEvent.emit();
         }
         this.showMobileContextMenu = false;
         this.loader = false;
@@ -471,7 +218,7 @@ export class WatchListComponent implements OnInit {
     );
     if (watchlist) {
       const itemIndexToRemove = watchlist.items.findIndex(
-        (symbol) => symbol.id === item.id
+        (symbol) => symbol.trading_symbol == item.trading_symbol
       );
       if (itemIndexToRemove !== -1) {
         watchlist.items.splice(itemIndexToRemove, 1);
@@ -510,7 +257,7 @@ export class WatchListComponent implements OnInit {
     const defaultOrderRequest = {
       exchange: "NSE",
       order_type: "MARKET",
-      product: "MIS",
+      product: "INTRADAY",
       quantity: 1,
       tradingsymbol: tradingsymbol,
       transaction_type: $event.transaction_type,
@@ -530,6 +277,8 @@ export class WatchListComponent implements OnInit {
       this.toastr.error(error.error, "Error", {timeOut: 3000, positionClass: 'toast-bottom-right'});
       this.loader = false;
     });*/
+    this.marginsSource.transaction_type = $event.transaction_type;
+    this.marginsSource.tradingsymbol = tradingsymbol;
     return this.marginsSource;
   }
 
