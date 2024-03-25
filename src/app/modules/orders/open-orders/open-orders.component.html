@@ -1,0 +1,110 @@
+<h3 class="page-title">Open Orders (<span *ngIf="openOrders">{{openOrders.length}}</span>)</h3>
+<div class="data-table instruments-table fold-header" *ngIf="!isMobileDevice">
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    <span>
+                        <input type="checkbox" [(ngModel)]="selectAll" 
+                        (change)="toggleSelectAll()" 
+                        [checked]="selectAll"
+                        />
+                    </span>
+                </th>
+                <th class="sortable"><span>Time</span></th>
+                <th class="sortable"><span>Type</span></th>
+                <th class="sortable"><span>Instrument</span></th>
+                <th class="sortable"><span>Product</span></th>
+                <th class="sortable"><span>Qty</span></th>
+                <th class="sortable"><span>LTP</span></th>
+                <th class="sortable"><span>Price</span></th>
+                <th class="sortable"><span>Status</span></th>
+                <th class="sortable"><span>Journal</span></th>
+                <!-- <th></th> -->
+            </tr>
+        </thead>
+        <tbody>
+            
+            <tr *ngFor = "let order of openOrders">
+                <td>
+                    <input type="checkbox" [(ngModel)]="order.selected" (change)="toggleOrder(order)" />
+                </td>
+                <td>{{order.time}}</td>
+                <td>
+                    <span class="text-label transaction-type-label" [ngClass]="order.type === 'SELL' ? 'orange' : 'blue'">{{order.type}}</span>
+                </td>
+                <td>{{order.instrument.symbol}}</td>
+                <td>{{order.product}}</td>
+                <td>{{order.quantity}}</td>
+                <td>{{order.ltp}}</td>
+                <td>{{order.price}}</td>
+                
+                <td>
+                    <span class="status-tag text-label caps">{{order.status}}</span>
+                </td>
+                <td><span class="text-link" (click)="openIntradayOrder(order)">{{order.journal}}</span></td>
+                <!-- <td><button type="button" class="button button-small button-outline button-blue" (click)="editOrder(order)">Edit</button> <button type="button" class="button button-small button-outline ml-2" (click)="cancelOrder(order)">Cancel</button></td> -->
+            </tr>
+            <!-- <tr>
+                <td colspan="10">
+                    <div *ngIf="cancelOrdersList.length > 0">
+                        <button type="button" class="button button-small button-blue" (click)="openCancelOrderPopup()">Cancel {{cancelOrdersList.length}} orders</button>
+                    </div>
+                    
+                </td>
+            </tr> -->
+        </tbody>
+    </table>
+</div>
+
+<div class="gtt-list cards" *ngIf="isMobileDevice">
+    <div class="mb-2 d-flex justify-content-between">
+        <span>
+            <input type="checkbox" [(ngModel)]="selectAll" 
+            (change)="toggleSelectAll()" 
+            [checked]="selectAll"
+            />
+        </span>
+        <div *ngIf="cancelOrdersList.length > 0">
+            <button type="button" class="button button-small button-blue" (click)="openCancelOrderPopup()">Cancel {{cancelOrdersList.length}} orders</button>
+        </div>
+    </div>
+    <!-- card:: start -->
+    <div class="card" *ngFor = "let order of openOrders">
+        <div class="top flex">
+            <div class="flex6">
+                <input type="checkbox" [(ngModel)]="order.selected" (change)="toggleOrder(order)" />
+                <span class="text-label small order-status-label green ml-2">{{order.status}}</span>
+            </div>
+            <div class="flex6 text-right text-small">
+                <span class="dim">{{order.time}}</span>
+            </div>
+        </div>
+        <div class="middle flex">
+            <div class="flex6">
+                {{order.instrument.symbol}}
+            </div>
+            <div class="flex6 text-right">
+                <span class="text-xsmall dim mr-2">{{order.product}}</span>
+                <span class="text-label transaction-type-label" [ngClass]="order.type === 'SELL' ? 'orange' : 'blue'">{{order.type}}</span>
+            </div>
+        </div>
+        <div class="flex">
+            <div class="flex6">
+                <span>{{order.price}}</span>
+                <span class="ml-2">
+                    <span class="text-xsmall dim">Qty</span> 
+                    <span class="ml-1">{{order.quantity}}</span>
+                </span>
+            </div>
+            <div class="flex6 text-right">
+                <button type="button" class="button button-xsmall button-outline button-blue" (click)="editOrder(order)"><span class="icon icon-edit"></span> Edit</button> 
+                <button type="button" class="button button-xsmall button-outline ml-2" (click)="cancelOrder(order)">Cancel</button>
+            </div>
+        </div>
+        
+    </div>
+    <!-- card:: end -->
+    <app-orders-modal *ngIf="showOrdersModal" [orderToggle]="orderToggle" [margins]="marginsSource"
+    (cancelOrder)="closeModal()"></app-orders-modal>
+</div>

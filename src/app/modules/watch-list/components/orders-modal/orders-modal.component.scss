@@ -1,0 +1,594 @@
+.order-window {
+    border-radius: 3px 3px 0 0;
+    background-color: #fff;
+    -webkit-box-shadow: 0 0 2px 0 rgba(0,0,0,.2),0 4px 10px 0 rgba(0,0,0,.05);
+    box-shadow: 0 0 2px 0 rgba(0,0,0,.2),0 4px 10px 0 rgba(0,0,0,.05);
+    // position: absolute;
+    z-index: 99;
+    // bottom: 0;
+    left: calc(50% - 700px/2);
+    width: 700px;
+}
+
+.order-window .no {
+    margin: 0 0 10px 0
+}
+
+.order-window .su-input-group input {
+    font-size: 1.5em
+}
+
+.order-window .su-select select {
+    font-size: 1.3em
+}
+
+.order-window .su-input-label {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 100px;
+    overflow: hidden
+}
+
+.order-window .drag-handle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 65px;
+    cursor: move
+}
+
+.order-window header {
+    border-radius: 3px 3px 0 0;
+    padding: 15px 20px
+}
+
+
+
+.order-window header .transaction-type {
+    display: inline-block;
+    min-width: 28px
+}
+
+.order-window header .tradingsymbol {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center
+}
+
+.order-window header .tradingsymbol .exchange {
+    margin-left: 2px;
+    display: inline-block;
+    min-width: 18px
+}
+
+.order-window header .tradingsymbol sup .weekly {
+    background-color: #fff;
+    line-height: 1.2em
+}
+
+.order-window header .tx-toggle .su-switch-control,.order-window header .tx-toggle .su-switch:checked+.su-switch-control {
+    background-color: rgba(255,255,255,.3)
+}
+
+.order-window header .info {
+    margin-left: 5px;
+    color: #fff;
+    padding: 7px 0
+}
+
+.order-window header .last-price {
+    min-width: 50px;
+    display: inline-block
+}
+
+.order-window header .exchange-selector .su-radio-group .su-radio-label {
+    color: #fff;
+    opacity: .6
+}
+
+.order-window header .exchange-selector .su-radio-group .su-radio-wrap.checked .su-radio-label {
+    opacity: 1
+}
+
+.order-window header .exchange-selector .su-radio-group .su-radio-label:before {
+    float: left;
+    margin-top: 3px
+}
+
+.order-window header .exchange-selector .su-radio-group .su-radio:checked+.su-radio-label:before {
+    -webkit-box-shadow: inset 0 0 0 3px #fff;
+    box-shadow: inset 0 0 0 3px #fff
+}
+
+.order-window .wrap-right {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-end
+}
+
+.order-window .margin-value .leverage {
+    margin-left: 2px
+}
+
+.order-window .nudge {
+    display: inline-block;
+    position: relative;
+    margin: 0 30px 0 0;
+    padding-top: 4px
+}
+
+.order-window .nudge a {
+    display: block;
+    line-height: .1em
+}
+
+.order-window .nudge img {
+    width: 16px;
+    cursor: pointer
+}
+
+.order-window .nudge .count {
+    position: absolute;
+    right: -3px;
+    top: -4px;
+    background-color: #fff;
+    color: #444;
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+    font-size: 8px;
+    font-weight: 700;
+    text-align: center
+}
+
+.order-window .nudge .popup {
+    background-color: #333;
+    padding: 10px 20px;
+    position: absolute;
+    bottom: 37px;
+    width: 325px;
+    right: -78px;
+    color: #fff;
+    border-radius: 4px;
+    text-align: left
+}
+
+.order-window .nudge .popup h4 {
+    margin: 0;
+    margin-bottom: 10px;
+    color: #fff;
+    font-weight: 600;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-line-pack: center;
+    align-content: center
+}
+
+.order-window .nudge .popup h4 img {
+    width: 64px;
+    margin-right: 5px
+}
+
+.order-window .nudge .popup .close {
+    position: absolute;
+    right: 0;
+    padding: 10px 5px;
+    color: #9b9b9b;
+    top: 0;
+    cursor: pointer
+}
+
+.order-window .nudge .popup li {
+    padding-left: 10px;
+    margin-bottom: 10px;
+    border-left: 4px solid #9b9b9b
+}
+
+.order-window .nudge .popup li.severity-high {
+    border-left-color: #df514c
+}
+
+.order-window .nudge .popup li.severity-low {
+    border-left-color: #ff8f00
+}
+
+.order-window .nudge .popup li.severity-medium {
+    border-left-color: #4184f3
+}
+
+.order-window .nudge .popup li .message a {
+    display: unset
+}
+
+.order-window .nudge .popup:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 67px;
+    width: 0;
+    height: 0;
+    border: 20px solid transparent;
+    border-top-color: #333;
+    border-bottom: 0;
+    margin-bottom: -10px
+}
+
+.order-window .wrap {
+    margin: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+    -ms-flex-direction: row-reverse;
+    flex-direction: row-reverse
+}
+
+.order-window .wrap .variety {
+    background-color: #f9f9f9;
+    border-bottom: 2px solid #eee;
+    color: #212529;
+}
+
+.order-window .wrap .variety .su-radio-wrap {
+    margin: 0
+}
+
+.order-window .wrap .variety .su-radio-label {
+    text-align: center;
+    padding: 10px 20px;
+    margin-bottom: -2px;
+    border-bottom: 2px solid #eee
+}
+
+.order-window .wrap .variety .su-radio-label:before {
+    display: none
+}
+
+.order-window .wrap .variety .toggle-tags {
+    float: right;
+    padding: 10px 15px 0 0
+}
+
+.order-window .content {
+    -webkit-box-flex: 600px;
+    -ms-flex: 600px;
+    flex: 600px
+}
+
+.order-window .tags {
+    border-left: 1px solid #eee;
+    position: relative;
+    -webkit-box-flex: 175px;
+    -ms-flex: 175px;
+    flex: 175px
+}
+
+.order-window .tags .actions {
+    padding-right: 15px;
+    text-align: right
+}
+
+.order-window .tags .actions a {
+    margin: 0;
+    padding: 5px 2px;
+    display: inline-block
+}
+
+.order-window .tags .su-tag {
+    max-width: 93%
+}
+
+.order-window .tags .su-input-group {
+    position: sticky
+}
+
+.order-window .tags .su-tag-selector {
+    position: absolute;
+    top: 25px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 10px;
+    overflow: hidden;
+    overflow-y: scroll
+}
+
+.order-window .tags .arrow {
+    background: #fff;
+    display: block;
+    width: 10px;
+    height: 10px;
+    rotate: -45deg;
+    border: 2px solid #eee;
+    border-bottom: 0;
+    border-right: 0;
+    position: absolute;
+    top: 14px;
+    left: -7px
+}
+
+.order-window .body {
+    padding: 20px 20px 15px 20px
+}
+
+.order-window .body .su-radio-label span {
+    color: #ccc;
+    margin: 0 10px 0 5px
+}
+
+.order-window .body .product {
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+.order-window .body .product .type {
+    margin-right: 0
+}
+
+.order-window .body .more {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #eee
+}
+
+.order-window .body .bo-fields {
+    margin-top: 30px
+}
+
+.order-window .footer {
+    padding: 15px 20px;
+    background-color: #f9f9f9;
+    border-top: 1px solid #eee
+}
+
+.order-window .footer .margins {
+    margin-top: 5px
+}
+
+.order-window .footer .margins .block {
+    display: inline-block;
+    margin-right: 8px
+}
+
+.order-window .footer .margins .block label {
+    margin-right: 3px
+}
+
+.order-window .footer .submit {
+    color: #fff;
+    min-width: 75px
+}
+
+.order-window.buy header {
+    color: #fff;
+    background-color: #4BB964;
+}
+
+.order-window.buy header .exchange-selector .su-radio+.su-radio-label:before {
+    padding: 4px;
+    background-color: #4BB964;
+    -webkit-box-shadow: inset 0 0 0 2px #fff;
+    box-shadow: inset 0 0 0 2px #fff;
+    border: 1px solid #4BB964
+}
+
+.order-window.buy header .tradingsymbol sup .weekly {
+    color: #4BB964
+}
+
+.order-window.buy .variety .su-radio-group .su-radio:checked+.su-radio-label {
+    color: #4BB964;
+    border-bottom: 2px solid #4BB964
+}
+
+.order-window.buy .actions .submit {
+    background-color: #4BB964;
+    border-color: #4BB964
+}
+
+.order-window.sell .su-radio:checked+.su-radio-label:before {
+    background-color: #E0261A;
+    border-color: #E0261A
+}
+
+.order-window.sell header {
+    color: #fff;
+    background-color: #E0261A
+}
+
+.order-window.sell header .exchange-selector .su-radio+.su-radio-label:before {
+    padding: 4px;
+    background-color: #E0261A;
+    -webkit-box-shadow: inset 0 0 0 2px #fff;
+    box-shadow: inset 0 0 0 2px #fff;
+    border: 1px solid #E0261A
+}
+
+.order-window.sell header .tradingsymbol sup .weekly {
+    color: #E0261A
+}
+
+.order-window.sell .variety .su-radio-group .su-radio:checked+.su-radio-label {
+    color: #E0261A;
+    border-bottom: 2px solid #E0261A
+}
+
+.order-window.sell .actions .submit {
+    background-color: #E0261A;
+    border-color: #E0261A
+}
+
+.order-window .gtt {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border-top: 1px solid #eee
+}
+
+.order-window .gtt .gtt-logo img {
+    display: inline-block;
+    width: 32px;
+    margin: 4px 10px 0 0
+}
+
+.order-window .gtt .group {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-right: 20px;
+    height: 20px;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center
+}
+
+.order-window .gtt .group.stoploss {
+    margin-right: 30px
+}
+
+.order-window .gtt .input {
+    display: inline-block;
+    text-align: left;
+    color: #9b9b9b
+}
+
+.order-window .gtt .input .su-input-group {
+    margin: 0;
+    margin-left: 10px;
+    display: inline-block
+}
+
+.order-window .gtt .input .su-input-group input {
+    display: inline-block;
+    text-align: center;
+    width: 60px;
+    padding: 0 5px;
+    margin: 0;
+    color: #9b9b9b;
+    font-size: .875rem;
+}
+
+.order-window .gtt .input .su-input-group input[type=number]::inner-spin-button,.order-window .gtt .input .su-input-group input[type=number]::outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0
+}
+
+.order-window .gtt .input .su-input-group input[type=number] {
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    appearance: textfield
+}
+
+.order-window .gtt .input .su-input-group input[type=number]:disabled {
+    color: transparent
+}
+
+.order-window .first-fields {
+    margin-bottom: 20px
+}
+
+.order-window .more-options {
+    text-align: right
+}
+
+.order-window .tag-manager .su-modal-container {
+    width: 450px;
+    padding-top: 0
+}
+
+.order-window .tag-manager .su-modal-body {
+    padding: 0
+}
+
+.order-window .tag-manager .su-modal-body iframe {
+    border: none;
+    width: 100%;
+    height: 450px
+}
+
+.order-window .tag-manager .su-modal-footer {
+    margin-top: 0
+}
+
+.order-window .charges-breakdown .su-modal-container {
+    width: 400px
+}
+
+.order-window .charges-breakdown .su-modal-body .total {
+    margin-top: 10px;
+    border-top: 1px solid #f1f1f1
+}
+
+.order-window .charges-breakdown .su-modal-body .total h3 {
+    margin: 10px 0
+}
+
+.order-window .charges-breakdown .su-modal-footer {
+    margin-top: 15px
+}
+.order-window header .instrument {
+    font-weight: 500
+}
+
+.example-box {
+    bottom: 50px;
+    left: calc(50% - 600px/2);
+    width: 700px;
+    cursor: move;
+    display: flex;
+    position: fixed;
+    z-index: 99;
+    transition: box-shadow 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+@media (max-width: 767px) {
+    .example-box {
+        top: 0!important;
+        left: 0!important;
+        right: 0!important;
+        margin: 0;
+        width: 100%;
+        overflow-y: auto;
+        z-index: 999;
+        transform:inherit !important;
+    }
+    .order-window header .eight.columns {
+        width: 75%;
+    }
+    .order-window header .four.columns {
+        width: 25%;
+    }
+    .order-window .body .product .type {
+        width: 50%;
+    }
+    .order-window .body .price .order-type {
+        margin-bottom: 20px;
+    }
+    .order-window .body .order-type {
+        text-align: left;
+        margin-left: 5px;
+    }
+    .order-window .footer .actions button {
+        width: 49%;
+    }
+    .order-window .footer .margins {
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
+}

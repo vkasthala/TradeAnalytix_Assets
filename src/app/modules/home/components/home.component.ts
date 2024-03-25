@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material';
 import { ToastrService } from 'ngx-toastr';
 import { DemoModeDetailsService } from '../../shared/services/demo-mode-details.service';
 import { SliderModalComponent } from '../../dashboard/components/slider-modal/slider-modal.component';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -26,7 +27,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
   hamburgerMenu: boolean = false;
   public demoModeIsStarted: boolean = false;
   contactUsModal: boolean = false;
-
+  userDropDown: boolean = false;
+  isMobileDevice: any;
   constructor(
     private globalStore: Store<fromGlobalConfig.State>,
     private router: Router,
@@ -34,7 +36,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     private _dialog: MatDialog,
     protected toastr: ToastrService,
     private demoService: DemoModeDetailsService,
-    public  route: ActivatedRoute
+    public  _activatedRoute: ActivatedRoute,
   ) {
     let globalSelector = (fromGlobalConfig.globalConfigFeatureKey as any);
     globalStore.select(globalSelector).subscribe(res => {
@@ -63,6 +65,14 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.demoToggle = this.demoService.demoMode;
+    this._activatedRoute.url.subscribe(console.log);
+    let state = this._activatedRoute.paramMap.pipe(map(() => window.history.state ));
+    console.log('state', state);
+
+    this._activatedRoute.queryParamMap.subscribe(params => {
+      console.log('params', params.get.name);
+      //const ss = params.snapshot.queryParamMap;
+    });
   }
 
   ngOnDestroy() {
@@ -216,6 +226,37 @@ export class HomeComponent implements OnInit, AfterViewInit {
   
   closeContactUsModal() {
     this.contactUsModal = !this.contactUsModal;
+  }
+
+  showUserDropDown() {
+    this.userDropDown = !this.userDropDown
+  }
+
+  closeUserDropDownUI(event: any) {
+    this.userDropDown = false;
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.checkDevice();
+  }
+
+  checkDevice() {
+    setTimeout(() => {
+      const agent = window.navigator.userAgent.toLowerCase();
+      let regexp = /android|iphone|kindle|ipad/i;
+      let deviceType = regexp.test(agent);
+
+      if (deviceType) {
+        this.isMobileDevice = true;
+      } else {
+        this.isMobileDevice = false;
+        if (this.router.url === "/market-watch") {
+          this.router.navigate(['/dashboard'])
+        }
+      }
+    }, 100)
+
   }
 
 }

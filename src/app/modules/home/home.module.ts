@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   MatCardModule,
@@ -175,6 +175,8 @@ import { ZerodhaInstructionsComponent } from '../import-trades-history/zerodha-i
 import { RobinhoodInstructionsComponent } from '../import-trades-history/robinhood-instructions/robinhood-instructions.component';
 import { ActivateRuleModalComponent } from '../settings/components/activate-rule-modal/activate-rule-modal.component';
 import { DisableeRuleModalComponent } from '../settings/components/disable-rule-modal/disable-rule-modal.component';
+import { SharedModule } from '../shared/shared.module';
+import { IntradayOrderPopupComponent } from '../watch-list/components/intraday-order-popup/intraday-order-popup.component';
 
 export const MY_FORMATS = {
   parse: {
@@ -345,7 +347,8 @@ export const MY_FORMATS = {
     ZerodhaInstructionsComponent,
     RobinhoodInstructionsComponent,
     ActivateRuleModalComponent,
-    DisableeRuleModalComponent
+    DisableeRuleModalComponent,
+    IntradayOrderPopupComponent
   ],
   imports: [
     FormsModule,
@@ -367,7 +370,8 @@ export const MY_FORMATS = {
     NgxPlaidLinkModule,
     AgGridModule.withComponents([BulkUpdateComponent]),
     MatProgressBarModule,
-    MatCardModule
+    MatCardModule,
+    SharedModule
   ],
   entryComponents: [
     AddTradeConfirmationPopupComponent,
@@ -445,7 +449,8 @@ export const MY_FORMATS = {
     ZerodhaInstructionsComponent,
     RobinhoodInstructionsComponent,
     ActivateRuleModalComponent,
-    DisableeRuleModalComponent
+    DisableeRuleModalComponent,
+    IntradayOrderPopupComponent
   ],
   // bootstrap: [TradeStrategiesGrid],
   providers: [
@@ -460,5 +465,6 @@ export const MY_FORMATS = {
     CloseTradeCanDeactivateGuard,
     TradePlansCanDeactivateGuard,
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class HomeModule { }

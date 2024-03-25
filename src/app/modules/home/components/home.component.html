@@ -1,22 +1,94 @@
-<div class="wrapper trade-app-dashboard zoom">
-    <div class="sidebar" [ngClass]="!isExpand ? '' : 'toggled'">
+<div class="app page-dashboard zoom" [ngClass]="isMobileDevice ? 'mobile' : ''" (window:resize)="onResize($event)">
+    <div class="header">
+        <div class="wrapper">
+            <div class="header-left" *ngIf="!isMobileDevice">
+                <div class="pinned-instruments">
+                    <div class="instrument-widget">
+                        <span *ngIf="isExpand" class="sidebar-brand cursor-pointer" [routerLink]="['/dashboard/']">
+                            <img src="../../../../assets/images/logo-sm.svg" alt="Trade-app-logo" class="img-fluid logo_sm">
+                        </span>
+                        <span *ngIf="!isExpand" class="sidebar-brand cursor-pointer" [routerLink]="['/dashboard/']">
+                            <img src="../../../../assets/images/cuetrade-logo.svg" alt="Trade-app-logo" class="img-fluid full-logo">
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="app-nav" *ngIf="!isMobileDevice">
+                    <a [class.router-link-active]="currentRoute === 'dashboard'" [routerLink]="['/dashboard/']" routerLinkActive="router-link-active" ><span>Dashboard</span></a>
+                    <a [routerLink]="['/orders/']" routerLinkActive="router-link-active"><span>Orders</span></a>
+                    
+                    <a [routerLink]="['/positions/']" routerLinkActive="router-link-active"><span>Positions</span></a>
+
+                    <a [class.router-link-active]="currentRoute === 'trade-plans'" [routerLink]="['/trade-plans/']" routerLinkActive="router-link-active"><span>Plan</span></a>
+
+                    <a [class.router-link-active]="currentRoute === 'import-trades-history'" [routerLink]="['/import-trades-history/']" routerLinkActive="router-link-active"><span>Journal</span></a>
+
+                    <a [class.router-link-active]="currentRoute === 'reports'" [routerLink]="['/reports/']" routerLinkActive="router-link-active"><span>Analytics</span></a>
+
+                    <a [class.router-link-active]="currentRoute === 'rules'" [routerLink]="['/rules/']" routerLinkActive="router-link-active"><span>Rules</span></a>
+                </div>
+
+                <div class="right-nav">
+                    <!-- <span class="btn btn-start mr-3" (click)="startTour()">
+                        Start Tour <mat-icon>arrow_forward</mat-icon>
+                    </span> -->
+                    <div class="user-nav perspective px-0" (clickOutside)="closeUserDropDownUI(true)">
+                        <div class="dropdown-label cursor" (click)="showUserDropDown()">
+                            <div id="avatar-44">
+                                <div class="avatar">
+                                    <span>{{avatarName}}</span>
+                                </div>
+                            </div>
+                            <span class="user-id">{{userId}}</span>
+                        </div>
+                        <div *ngIf="userDropDown" class="dropdown-nav layer-2">
+                            <div class="dropdown-nav-header"><a href="/profile" class="">
+                                    <h4 class="username">Narasimha{{userDetails.name}}</h4>
+                                    <div class="email">test@gamil.com{{userDetails.email}}</div>
+                                </a></div>
+                            <hr>
+                            <ul class="m-0">
+                                <li class="p-2">
+                                    <span class="demo-toggle">
+                                        Demo&nbsp;Mode <div class="switch ml-2">
+                                            <input type="checkbox" [(ngModel)]="demoToggle" (change)="demoMsg()" id="demoToggle" class="cursor" [checked]="demoToggle" />
+                                            <label for="demoToggle"></label>
+                                          </div>
+                                    </span>
+                                </li>
+                                <hr>
+                                <li class="list-flat-item">
+                                    <a class="p-0" [routerLink]="['/settings/']">
+                                        Settings
+                                    </a>
+                                </li>
+
+                                <hr>
+                                <li class="list-flat-item">
+                                    <span class="d-flex align-items-center" (click)="logout()">
+                                        <mat-icon class="material-icons mr-1">logout</mat-icon> Logout
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                   
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+
+    <!-- <div class="sidebar" [ngClass]="!isExpand ? '' : 'toggled'">
         <span *ngIf="isExpand" class="sidebar-brand cursor-pointer" [routerLink]="['/dashboard/']">
             <img src="../../../../assets/images/logo-sm.svg" alt="Trade-app-logo" class="img-fluid logo_sm">
         </span>
         <span *ngIf="!isExpand" class="sidebar-brand cursor-pointer" [routerLink]="['/dashboard/']">
             <img src="../../../../assets/images/logo.svg" alt="Trade-app-logo" class="img-fluid full-logo">
         </span>
-
         <nav class="trade-navbar">
-            
-            <!-- <div class="home-link">
-                <a [routerLink]="['/dashboard/']" [class.nav-active]="currentRoute === ''">
-                    <img src="../../../../assets/images/home_r.svg" class="nav-icon nav-icon-md"> 
-                    <img src="../../../../assets/images/home.svg" class="nav-icon nav-icon-md nav-icon_r"> 
-                    <span>Home</span>
-                </a>
-            </div> -->
-
             <div class="parent-item">
                 <img src="../../../../assets/images/plan_r.svg" class="nav-icon nav-icon-md">
                 <img src="../../../../assets/images/plan.svg" class="nav-icon nav-icon_r"> 
@@ -35,12 +107,6 @@
                         <span>Trade Builder</span>
                     </a>
                 </li>
-                <!-- <li class="sidebar-item" [class.nav-active]="currentRoute == 'payoff-analyzer'">
-                    <a class="sidebar-link" [routerLink]="['/payoff-analyzer/']">
-                        <mat-icon>insights</mat-icon>
-                        <span>Payoff Analyzer</span>
-                    </a>
-                </li> -->
             </ul>
 
             <div class="parent-item">
@@ -62,12 +128,6 @@
                     </a>
                 </li>
                 
-                <!-- <li class="sidebar-item" [class.nav-active]="currentRoute == 'bulk-update'">
-                    <a class="sidebar-link" [routerLink]="['/bulk-update/']">
-                        <mat-icon>update</mat-icon>
-                        <span>Bulk Journal</span>
-                    </a>
-                </li> -->
             </ul>
 
             <div class="parent-item">
@@ -82,12 +142,7 @@
                         <span>Reports</span>
                     </a>
                 </li>
-                <!-- <li class="sidebar-item" [class.nav-active]="currentRoute == 'insights'">
-                    <a class="sidebar-link" [routerLink]="['/insights/']">
-                        <mat-icon>insights</mat-icon>
-                        <span>Insights</span>
-                    </a>
-                </li> -->
+               
                 <li class="sidebar-item" [class.nav-active]="currentRoute == 'rules'">
                     <a class="sidebar-link" [routerLink]="['/rules/']">
                         <mat-icon>rule</mat-icon>
@@ -95,163 +150,19 @@
                     </a>
                 </li>
             </ul>
-
-            <div class="sidebar-bottom">
-                <!-- <a class="bottom-link" [routerLink]="['/settings']" [class.nav-active]="currentRoute == 'settings'">
-                    <mat-icon class="nav-icon">settings</mat-icon>
-                    <span>Settings</span>
-                </a> -->
-                <!-- <a class="bottom-link" href="javascript:void(0)" (click)="openContactUsModal()" [class.nav-active]="currentRoute == 'contact-us'">
-                    <mat-icon class="nav-icon">phone</mat-icon>
-                    <span>Contact Us</span>
-                </a> -->
-            </div>
-
-            <!-- <span class="menu-toggle cursor-pointer" (click)="sidebarToggle()">
-                <mat-icon *ngIf="!isExpand">arrow_back</mat-icon>
-                <mat-icon *ngIf="isExpand">arrow_forward</mat-icon>
-            </span> -->
         </nav>
+    </div> -->
 
-        
-    </div>
-    <div class="main">
-        <div class="trade-dashboard-topbar">
-            <div class="trade-dash-sections">
-                <div class="d-flex align-items-center px-3">
-                    <span class="page-heading">{{title}}</span>
-                    <!-- <span matTooltip="{{description}}" matTooltipPosition="right" class="text-secondary ml-2" matTooltipClass="custom-tooltip" [matTooltipShowDelay]="this.showDelay" [matTooltipHideDelay]="this.hideDelay"><img src="../../../../assets/images/outline_info_icon.png" /></span> -->
-                </div>
-                <div *ngIf="demoService.demoMode" class="flash-bar">You are viewing CueTrade in demo mode</div>
-                <div class="user-details">
-                    <!-- <div class="global-search">
-                        <div class="media-body">
-                            <app-trade-search (symbolSelectEvent)="symbolSelectEventHandler($event)">
-                            </app-trade-search>
-                        </div>
-                        <mat-icon class="material-icons-outlined cursor" (click)="enterSymbol()">
-                            search
-                        </mat-icon>
-                    </div> -->
-                    <div class="top-nav">
-                        <span class="btn btn-start mr-3" (click)="startTour()">Start Tour <mat-icon>arrow_forward</mat-icon></span>
-                        <span class="demo-toggle">
-                            Demo&nbsp;Mode <div class="switch ml-2">
-                                <input type="checkbox" [(ngModel)]="demoToggle" (change)="demoMsg()" id="demoToggle" class="cursor" [checked]="demoToggle" />
-                                <label for="demoToggle"></label>
-                              </div>
-                        </span>
-                        <span class="top-nav-item pr-0" [class.nav-active]="currentRoute == 'setttings'">
-                            <a class="top-nav-link" [routerLink]="['/settings/']">
-                                <mat-icon>settings</mat-icon>
-                            </a>
-                        </span>
-
-                        <span class="top-nav-item pl-0" [class.nav-active]="currentRoute == 'insights'">
-                            <a class="top-nav-link" [routerLink]="['/insights/']">
-                                <mat-icon>notifications_none</mat-icon>
-                                <span class="notification_count">{{notificationService.notificationCount}}</span>
-                        </a>
-                        </span>
-                       
-                    </div>
-                    <div class="login-img ml-3" (click)="logout()">
-                        <span class="material-icons logout">logout</span>
-                    </div>
-                    
-                </div>
+    <div class="trading-container wrapper">
+        <div class="container-left">
+            <div class="watch-list-container">
+                <app-watch-list></app-watch-list>
             </div>
         </div>
-        <div class="trade-header-mobile">
-            <div class="trade-header-mobile-row">
-                <span class="ml-2 mt-1" (click)="menuToggle()">
-                    <span class="material-icons logout">menu</span>
-                </span>
-                <nav class="trade-navbar hamburger-menu" [ngClass]="hamburgerMenu ? 'open' : ''">
-                    <ul class="list-unstyled ">
-                        <li class="sidebar-item" [class.nav-active]="currentRoute == 'dashboard'">
-                            <a class="sidebar-link" [routerLink]="['/dashboard/']">
-                                <span>Dashboard</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item" [class.nav-active]="currentRoute == 'positions'">
-                            <a class="sidebar-link" [routerLink]="['/positions/']">
-                                <span>Portfolio</span>
-                            </a>
-                        </li>
-        
-                        <li class="sidebar-item" [class.nav-active]="currentRoute == 'payoff-analyzer'">
-                            <a class="sidebar-link" [routerLink]="['/payoff-analyzer/']">
-                                <span>Strategy Builder</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item" [class.nav-active]="currentRoute == 'strategy-comparison'">
-                            <a class="sidebar-link" [routerLink]="['/strategy-comparison/']">
-                                <span>Strategy&nbsp;Comparison</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item" [class.nav-active]="currentRoute == 'trade-plans'">
-                            <a class="sidebar-link" [routerLink]="['/trade-plans/']">
-                                <span>Trade Plan</span>
-                            </a>
-                        </li>
-        
-        
-                        <li class="sidebar-item" [class.nav-active]="currentRoute == 'reports'">
-                            <a class="sidebar-link" [routerLink]="['/reports/']">
-                                <span>Reports</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item" [class.nav-active]="currentRoute == 'rules'">
-                            <a class="sidebar-link" [routerLink]="['/rules/']">
-                                <span>Rules</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item" [class.nav-active]="currentRoute == 'settings'">
-                            <a class="sidebar-link" [routerLink]="['/settings/']">
-                                <span>Settings</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item" [class.nav-active]="currentRoute == 'notifications'">
-                            <a class="sidebar-link" [routerLink]="['/notifications/']">
-                                <span>Notifications</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item" [class.nav-active]="currentRoute == 'help'">
-                            <a class="sidebar-link" [routerLink]="['/help/']">
-                                <span>Help</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item" (click)="logout()">
-                            <a class="sidebar-link">
-                                <span>Logout</span>
-                            </a>
-                        </li>
-        
-                    </ul>
-                    
-                </nav>
-
-                <!-- <div class="db-mb-header-section-logo"><img alt="Trade-app-logo" class="img-fluid full-logo" src="../../../../assets/images/TA-full-logo.jpg" /></div> -->
-                <span class="page-heading text-white">{{title}}</span>
-
-                <div class="user-details">
-                    <div class="top-nav">
-                        <span class="demo-toggle">
-                            <div class="switch ml-1">
-                                <input type="checkbox" [(ngModel)]="demoToggle" (change)="demoMsg()" id="demoToggle" class="cursor" [checked]="demoToggle" />
-                                <label for="demoToggle"></label>
-                            </div>
-                        </span>
-                        <!-- <span class="login-img ml-2" (click)="logout()">
-                            <span class="material-icons logout">logout</span>
-                        </span> -->
-                    </div>
-                </div>
-            </div>
+        <div class="container-right">
+            <router-outlet></router-outlet>
+            <app-footer></app-footer>
         </div>
-        <router-outlet></router-outlet>
-        <app-footer></app-footer>
     </div>
     
 </div>
@@ -289,3 +200,5 @@
       </div>
     </div>
 </div>
+
+

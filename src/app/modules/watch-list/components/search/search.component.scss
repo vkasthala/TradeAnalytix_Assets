@@ -1,0 +1,152 @@
+
+.omnisearch {
+    position: relative;
+}
+
+.omnisearch .icon-search {
+    position: absolute;
+    left: 10px;
+    top: 28px
+}
+
+.omnisearch .icon-search:before {
+    color: #444
+}
+
+.omnisearch .counts {
+    top: 0;
+    right: 0;
+    bottom: 1px;
+    padding: 0 10px;
+    color: #ccc;
+    height: calc(100% - 1px);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-end
+}
+
+.omnisearch .counts,.omnisearch .omnisearch-results {
+    position: absolute;
+}
+
+.omnisearch .omnisearch-results {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    z-index: 100;
+    top: 63px;
+    border: 1px solid #eee;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+}
+
+.omnisearch .omnisearch-results .search-result-item {
+    position: relative;
+    padding: 14px 30px;
+    margin-bottom: 0;
+    cursor: pointer;
+    border-bottom: 1px solid #eee
+}
+
+.omnisearch .omnisearch-results .search-result-item .exchange {
+    position: absolute;
+    right: 10px;
+    
+}
+
+.omnisearch .omnisearch-results .search-result-item .company {
+    font-size: .725rem
+}
+
+.omnisearch .omnisearch-results .search-result-item .exchange-tag {
+    padding: 1px 5px;
+    margin-left: 5px;
+    font-size: .575rem;
+    text-transform: uppercase
+}
+
+.omnisearch .omnisearch-results .search-result-item.selected,.omnisearch .omnisearch-results .search-result-item:hover {
+    background-color: #f9f9f9;
+}
+
+.omnisearch .omnisearch-results .search-result-item.isadded {
+    cursor: pointer
+}
+
+.omnisearch .omnisearch-results .search-result-item.isadded .exchange,.omnisearch .omnisearch-results .search-result-item.isadded .tradingsymbol {
+    opacity: .6
+}
+
+.omnisearch .omnisearch-results .search-result-item .exchange .text-box.MCX,.text-box.green {
+    background-color: #ebf8f2;
+    border-color: #ebf8f2
+}
+
+.omnisearch .omnisearch-results .search-result-item .exchange .text-box.BSE,.text-box.blue {
+    background-color: #ecf6fd;
+    border-color: #d2eafb
+}
+
+.omnisearch .omnisearch-results .search-result-item .exchange .text-box.NSE,.text-box.red {
+    background-color: #fef0ef;
+    border-color: #fcdbd9
+}
+.omnisearch .omnisearch-results .search-result-item .action-buttons {
+    position: absolute;
+    right: 10px;
+    background-color: #f9f9f9;
+    top:6px;
+    display: flex;
+}
+
+.marketwatch-sidebar .omnisearch .su-input-group {
+    margin: 0
+}
+
+.search-input {
+    border: 0;
+    border-bottom: 1px solid #f1f1f1;
+    padding: 15px 10px 15px 40px;
+    width: 100%;
+    color: #73738C;
+}
+
+.marketwatch-sidebar .omnisearch .icon {
+    border: 0;
+    padding: 0;
+    top: 18px;
+    left: 14px;
+    opacity: .5
+}
+
+.omnisearch .omnisearch-results .search-result-item .action-buttons button {
+    margin: 0 2px;
+    padding: 0 10px;
+    min-width: 45px;
+}
+.search-mobile-menu {
+    background-color: rgba(0, 0, 0, 0.74);
+    opacity: 1;
+}
+.search-screen-header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.74);
+    padding: 0 1rem;
+}
+.search-mobile-menu .button {
+    width: 48%;
+}
+
+.icon.icon-check {
+    margin-left: 5px;
+    font-size: 18px !important;
+    height: 18px;
+    width: 18px;
+}

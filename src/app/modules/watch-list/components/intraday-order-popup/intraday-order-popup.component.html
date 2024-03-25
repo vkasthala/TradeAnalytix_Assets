@@ -1,0 +1,185 @@
+
+<div class="compare-popup">
+    <div class="example-box">
+        <div data-drag-boundary="true" class="order-window layer-2 place" [ngClass]="margins.transaction_type === 'SELL' ? 'sell' : 'buy' ">
+            <header>
+                <div class="d-flex align-items-center">
+                    <div class="eight columns">
+                        <div class="instrument">
+                            Intraday Order : <span class="transaction-type">{{margins.transaction_type | titlecase}}</span> 
+                            <span class="tradingsymbol">
+                                <span class="name">{{margins.tradingsymbol}}</span> 
+                            </span>
+                            <span class="qty px-1">{{margins.quantity}}</span>
+                            <span class="su-radio-label">qty at Limit Price of</span>
+                            <span class="price pl-1">₹{{margins.price}}</span>
+                        </div>
+                    </div>
+                    <div class="four columns text-right">
+                        <div class="wrap-right">
+                            <button type="button" class="button button-md button-outline">Skip and Buy</button>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            
+            <section class="wrap">
+                <div class="content">
+                    <div class="body">
+                        <div class="row">
+                            <div class="col-6 pr-0">
+                                <div class="intraday-panel">
+                                    <div class="intraday-panel-header">Check Your Rules</div>
+                                    <div class="intraday-panel-body">
+                                        <div class="d-flex py-2 align-items-center">
+                                            <div class="col-10">
+                                                Stock trade cost should be < 15000
+                                                <span class="rule-type">(Auto)</span>
+                                            </div>
+                                            <div class="col-2 price text-right">
+                                                <input type="checkbox" name="" />
+                                            </div>
+                                        </div>
+                                        <div class="d-flex py-2 align-items-center">
+                                            <div class="col-10">
+                                                Intraday trade cost should be < 1999
+                                                <span class="rule-type">(Auto)</span>
+                                            </div>
+                                            <div class="col-2 price text-right">
+                                                <input type="checkbox" name="" />
+                                            </div>
+                                        </div>
+                                        <div class="d-flex py-2 align-items-center">
+                                            <div class="col-10">
+                                                Do not trade between 9:15 and 9:45
+                                                <span class="rule-type">(Auto)</span>
+                                            </div>
+                                            <div class="col-2 price text-right">
+                                                <input type="checkbox" name="" />
+                                            </div>
+                                        </div>
+                                        <div class="d-flex py-2 align-items-center">
+                                            <div class="col-10">
+                                                Stop-Loss not set for the trade
+                                                <span class="rule-type">(Auto)</span>
+                                            </div>
+                                            <div class="col-2 price text-right">
+                                                <input type="checkbox" name="" />
+                                            </div>
+                                        </div>
+                                        <div class="d-flex py-2 align-items-center">
+                                            <div class="col-10">
+                                                Cash percentage is less than 10%
+                                                <span class="rule-type">(Auto)</span>
+                                            </div>
+                                            <div class="col-2 price text-right">
+                                                <input type="checkbox" name="" />
+                                            </div>
+                                        </div>
+                                        <div class="d-flex py-2 align-items-center">
+                                            <div class="col-10">
+                                                Avoid Same-Day Expiry Options Trades
+                                                <span class="rule-type">(Auto)</span>
+                                            </div>
+                                            <div class="col-2 price text-right">
+                                                <input type="checkbox" name="" />
+                                            </div>
+                                        </div>
+                                        <div class="d-flex py-2 align-items-center">
+                                            <div class="col-10">
+                                                Do not go against the trend
+                                                <span class="rule-type">(Manual)</span>
+                                            </div>
+                                            <div class="col-2 price text-right">
+                                                <input type="checkbox" name="" />
+                                            </div>
+                                        </div>
+                                        <div class="d-flex py-2 align-items-center">
+                                            <div class="col-10">
+                                                Think in terms of probabilities
+                                                <span class="rule-type">(Manual)</span>
+                                            </div>
+                                            <div class="col-2 price text-right">
+                                                <input type="checkbox" name="" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 border-left pl-0">
+                                <div class="intraday-panel">
+                                    <div class="intraday-panel-header">Review Performance</div>
+                                    <div class="intraday-panel-body">
+                                        <div class="d-flex py-2 align-items-center">
+                                            <div class="col-8">Realized Return</div>
+                                            <div class="col-4 price text-right">₹4119.15</div>
+                                        </div>
+                                        <div class="d-flex py-2 align-items-center">
+                                            <div class="col-8">Win Rate</div>
+                                            <div class="col-4 price text-right">30.2%</div>
+                                        </div>
+                                        <div class="d-flex py-2 align-items-center">
+                                            <div class="col-8">Total Strategies</div>
+                                            <div class="col-4 price text-right">12</div>
+                                        </div>
+                                        <div class="d-flex py-2 align-items-center">
+                                            <div class="col-8">Total Trades</div>
+                                            <div class="col-4 price text-right">36</div>
+                                        </div>
+                                        <div class="d-flex py-2 align-items-center">
+                                            <div class="col-8">Avg Holding Period</div>
+                                            <div class="col-4 price text-right">3.5 days</div>
+                                        </div>
+                                        <div class="d-flex py-2 align-items-center">
+                                            <div class="col-8">Most Successful Strategy</div>
+                                            <div class="col-4 price text-right">Long Stock</div>
+                                        </div>
+                                        <div class="d-flex py-2 align-items-center">
+                                            <div class="col-8">Highest Return</div>
+                                            <div class="col-4 price text-right">₹48374</div>
+                                        </div>
+                                        <div class="d-flex py-2 align-items-center">
+                                            <div class="col-8">Lowest Return</div>
+                                            <div class="col-4 price text-right">-₹13842</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="px-3">
+                            <div class="d-flex align-items-center justify-content-between pt-2">
+                                <label class="sub-heading m-0">Add Notes</label>
+                                <div class="text-right">
+                                    <app-trade-tags #tradeTag></app-trade-tags>
+                                </div>
+                            </div>
+                            <textarea class="form-control" rows="4"></textarea>
+                        </div>
+
+                        <div class="px-3">
+                            <div class="d-flex align-items-center justify-content-between pt-2">
+                                <label class="sub-heading m-0">Attach Files</label>
+                            
+                        <div class="d-flex align-items-center p-3 text-right actions">
+                            <!--    <input type="file"> Venkat Commented it -->
+                            <button type="submit" class="button submit button-md"><span class="text-white">Upload file</span></button>
+                        </div>
+                    </div>
+                    </div>
+
+                    </div>
+
+                    <footer class="footer">
+                        <div class="text-right actions">
+                            <button type="submit" class="button submit button-md" (click)="orderPlacement(margins)"><span>{{margins.transaction_type | titlecase}}</span></button>
+                            <button type="button" class="button button-outline cancel button-md ml-1" (click)="closeModal()">Cancel</button>
+                        </div>
+                    </footer>
+
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+  

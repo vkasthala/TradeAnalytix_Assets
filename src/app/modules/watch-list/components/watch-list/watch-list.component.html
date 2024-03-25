@@ -1,0 +1,142 @@
+<div [ngClass]="isMobileDevice ? 'page-content marketwatch' : ''">
+    <div class="marketwatch-sidebar marketwatch-wrap">
+       
+        <app-search [pageIndex]="pageIndex" [watchListData]="watchListData" (clickOutside)="closeSarchUI(true)" [isMobileDevice]="isMobileDevice"></app-search>
+        <div class="instruments" (mouseleave)="out(null)">
+            <div *ngFor="let list of watchListData">
+                <div *ngIf="pageIndex == list.pageNumber && list.items.length === 0" class="empty-state">
+                    <img src="../../../../../assets/images/marketwatch.svg" class="empty-img">
+                    <h2>Nothing here</h2>
+                    <p>Use the search bar to add instruments.</p>
+                </div>
+                <div *ngIf="pageIndex == list.pageNumber">
+                    <div class="vddl-list list-flat">
+                        <div cdkDropList draggable="true" *ngIf="!isMobileDevice" (cdkDropListDropped)="drop($event)">
+                            <div class="vddl-draggable instrument index0"
+                                [ngClass]="{'up': item.priceModel && item.priceModel.winFlag === true, 'down' : item.priceModel && item.priceModel.winFlag === false }"
+                                *ngFor="let item of list.items, let i=index" (mouseover)="showActions($event, i)"
+                                (mouseout)="out(i)">
+                                <div class="info price-change-type-close-all">
+                                    <div class="symbol-wrapper">
+                                        <div class="symbol">
+                                            <span class="nice-name">{{item.trading_symbol}}</span>
+                                            <span class="tag dim index-xsmall" *ngIf="isNiftyStock(item)">INDEX</span>
+                                        </div>
+                                    </div>
+                                    <div class="price-wrapper">
+                                        <div class="price-change">
+                                            <div class="dim">
+                                               
+                                                <span class="price-percentage">{{item.priceModel &&
+                                                    item.priceModel.changePercent !== undefined ?
+                                                    item.priceModel.changePercent : '-'}}
+                                                    <span class="text-xxsmall">%</span>
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="price">
+                                            <span class="change-indicator icon"
+                                                [ngClass]="{'icon-chevron-up': item.priceModel && item.priceModel.winFlag === true, 'icon-chevron-down' : item.priceModel && item.priceModel.winFlag === false }"></span>
+                                            <span class="last-price">{{item.priceModel && item.priceModel.price !==
+                                                undefined?
+                                                item.priceModel.price : '-'}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <span class="actions fade-leave fade-leave-active" *ngIf="watchItem == i">
+                                    <span data-balloon="Buy (B)" data-balloon-pos="up">
+                                        <button type="button" class="buy"
+                                            (click)="buyOrders(item)" *ngIf="!isNiftyStock(item)">B</button>
+                                    </span>
+                                    <span data-balloon="Sell (S)" data-balloon-pos="up">
+                                        <button type="button" class="sell"
+                                            (click)="sellOrders(item)" *ngIf="!isNiftyStock(item)">S</button>
+                                    </span>
+
+                                    <span data-balloon="Chart (C)" data-balloon-pos="up"
+                                        [routerLink]="['/chart/',item.tradingsymbol, item.symbol_id]">
+                                        <button type="button" class="button-outline">
+                                            <mat-icon class="material-icons mat-icon-sm">show_chart</mat-icon>
+                                        </button>
+                                    </span>
+                                    <span data-balloon="Delete (del)" data-balloon-pos="up">
+                                        <button type="button" class="button-outline" (click)="deleteOrder(item)">
+                                            <mat-icon class="material-icons">delete_outline</mat-icon>
+                                        </button>
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                        <div *ngIf="isMobileDevice">
+                            <div class="vddl-draggable instrument up index0"
+                                *ngFor="let item of list.items, let i=index">
+                                <div class="info price-change-type-close-all" (click)="openMobileActions(item)">
+                                    <div class="symbol-wrapper">
+                                        <div class="symbol">
+                                            <span class="nice-name">{{item.tradingsymbol}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="price-wrapper">
+                                        <div class="price-change">
+                                            <div class="dim">
+                                               
+                                                <span class="price-percentage">{{item.priceModel &&
+                                                    item.priceModel.changePercent !== undefined ?
+                                                    item.priceModel.changePercent : '-'}}
+                                                    <span class="text-xxsmall">%</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="price">
+                                            <span class="change-indicator icon icon-chevron-up"></span>
+                                            <span class="last-price">{{item.priceModel && item.priceModel.price !==
+                                                undefined?
+                                                item.priceModel.price : '-'}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mobile-context-menu" *ngIf="showMobileContextMenu">
+                                    <ul class="mobile-context-menu-list list-flat"
+                                        (clickOutside)="closeMobileContextMenu($event)">
+                                        <li (click)="buyOrders(selectedSymbol)" *ngIf="!isNiftyStock(selectedSymbol)"><span class="icon icon-plus"></span> Buy
+                                        </li>
+                                        <li (click)="sellOrders(selectedSymbol)"><span class="icon icon-minus" *ngIf="!isNiftyStock(selectedSymbol)"></span>
+                                            Sell</li>
+                                        <li (click)="deleteOrder(selectedSymbol)"><span class="icon icon-trash"></span>
+                                            Delete</li>
+                                        <li class="d-flex justify-content-between">
+                                            <span data-balloon="Chart (C)" data-balloon-pos="up"
+                                                [routerLink]="['/chart/',selectedSymbol.tradingsymbol, selectedSymbol]">
+                                                <span class="icon icon-trending-up"></span> Chart
+                                            </span>
+                                            <span title="Popout" class="options">
+                                                <a href="#"><span class="icon icon-external-link"></span></a>
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <ul class="marketwatch-selector list-flat">
+            <li class="item" *ngFor="let page of watchListData, let index=index"
+                [ngClass]="selecedIndex === page.pageNumber ? 'selected' : ''" [attr.data-balloon]="page.name"
+                data-balloon-pos="up" (click)="nextPage(page.pageNumber)">{{page.pageNumber}}</li>
+        </ul>
+    </div>
+</div>
+
+<app-orders-modal 
+    *ngIf="showOrdersModal" 
+    [orderToggle]="orderToggle" 
+    [margins]="marginsSource" (cancelOrder)="cancelOrders()">
+</app-orders-modal>
+
+<mat-spinner *ngIf="loader"></mat-spinner>

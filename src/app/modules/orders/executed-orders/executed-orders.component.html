@@ -1,0 +1,57 @@
+<h3 class="page-title pt-3 mt-3">Executed Orders (<span *ngIf="executedOrders">{{executedOrders.length}}</span>)</h3>
+<div class="data-table instruments-table fold-header" *ngIf="!isMobileDevice">
+    <table>
+        <thead>
+            <tr>
+                <th class="sortable"><span>Time</span></th>
+                <th class="sortable"><span>Type</span></th>
+                <th class="sortable"><span>Instrument</span></th>
+                <th class="sortable"><span>Product</span></th>
+                <th class="sortable"><span>Qty</span></th>
+                <th class="sortable"><span>Price</span></th>
+                <th class="sortable"><span>Status</span></th>
+                <th class="sortable"><span>Journal</span></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor = "let order of executedOrders">
+                <td>{{order.time}}</td>
+                <td>
+                    <span class="text-label transaction-type-label" [ngClass]="order.type === 'SELL' ? 'orange' : 'blue'">{{order.type}}</span>
+                </td>
+                <td>{{order.instrument.symbol}}</td>
+                <td>{{order.product}}</td>
+                <td>{{order.quantity}}</td>
+                <td>{{order.price}}</td>
+                <td>
+                    <span class="text-label small order-status-label green">{{order.status}}</span>
+                </td>
+                <td><span class="text-link" (click)="openIntradayOrder(order)">{{order.journal}}</span></td>
+            </tr>
+        </tbody>
+        
+    </table>
+</div>
+<!-- <div class="gtt-list cards" *ngIf="isMobileDevice">
+    <div class="card" *ngFor = "let order of executedOrders">
+        <div class="top flex">
+            <div class="flex4">
+                <span class="text-label transaction-type-label" [ngClass]="order.type === 'SELL' ? 'orange' : 'blue'">{{order.type}}</span>
+                <span class="text-label small order-status-label green ml-1">{{order.status}}</span>
+            </div>
+            <div class="flex4 text-right text-small">
+                <span class="dim">{{order.time}}</span>
+            </div>
+        </div>
+        <div class="middle flex">
+            <div class="flex6">
+                <span>{{order.instrument.symbol}}</span>
+                <span class="text-xsmall dim ml-2">{{order.product}}</span>
+            </div>
+            <div class="flex6 text-right">
+                <span class="text-xsmall dim">Qty</span> 
+                <span class="ml-1">{{order.quantity}}/{{order.quantity}}</span>
+            </div>
+        </div>
+    </div>
+</div> -->
