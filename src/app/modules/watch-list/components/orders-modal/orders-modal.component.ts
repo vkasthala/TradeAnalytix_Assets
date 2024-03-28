@@ -246,7 +246,7 @@ export class OrdersModalComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe((res) => {
       if (res) {
-        this.modifyOrder();
+        this.orderPlacement();
       }
     });
   }
