@@ -253,7 +253,7 @@ export class WatchListComponent implements OnInit {
   createMargin($event: any) {
     // this.loader = true;
     console.log($event);
-    let tradingsymbol = $event.tradingsymbol ? $event.tradingsymbol : $event.code;
+    let tradingsymbol = $event.symbol ? $event.symbol : $event.id;
     const defaultOrderRequest = {
       exchange: "NSE",
       order_type: "MARKET",
