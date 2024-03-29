@@ -1373,30 +1373,30 @@ html.theme-light .group-wWM3zP_M- {
 }
 
 
-.marketwatch-sidebar,.stripe-select {
+.watchlist-sidebar,.stripe-select {
     background-color: #fff
 }
 
-.marketwatch-sidebar {
+.watchlist-sidebar {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
 
-.marketwatch-sidebar .error-state {
+.watchlist-sidebar .error-state {
     padding: 20px
 }
 
-.marketwatch-sidebar .context-menu .context-menu-list {
+.watchlist-sidebar .context-menu .context-menu-list {
     min-width: 150px
 }
 
-.marketwatch-sidebar .context-menu .context-menu-list li.multiple.pin a {
+.watchlist-sidebar .context-menu .context-menu-list li.multiple.pin a {
     padding: 0 8px
 }
 
 
 
-.marketwatch-sidebar .instruments {
+.watchlist-sidebar .instruments {
     max-height: calc(100% - 114px);
     width: 100%;
     height: calc(100% - 114px);
@@ -1404,35 +1404,35 @@ html.theme-light .group-wWM3zP_M- {
 }
 
 
-.marketwatch-sidebar .instruments .loader-marketwatch {
+.watchlist-sidebar .instruments .loader-marketwatch {
     margin: 10px 15px
 }
 
-.marketwatch-sidebar .instruments .vddl-list {
+.watchlist-sidebar .instruments .vddl-list {
     min-height: 46px
 }
 
-.marketwatch-sidebar .instruments .vddl-dragging {
+.watchlist-sidebar .instruments .vddl-dragging {
     opacity: .7
 }
 
-.marketwatch-sidebar .instruments .vddl-dragging-source {
+.watchlist-sidebar .instruments .vddl-dragging-source {
     display: none
 }
 
-.marketwatch-sidebar .instruments .vddl-placeholder {
+.watchlist-sidebar .instruments .vddl-placeholder {
     height: 46px;
     text-align: center;
     background-color: #f9f9f9
 }
 
-.marketwatch-sidebar .instruments .instrument .change-indicator {
+.watchlist-sidebar .instruments .instrument .change-indicator {
     padding-left: 5px
 }
 
 
 
-.marketwatch-sidebar .instruments .instrument .actions {
+.watchlist-sidebar .instruments .instrument .actions {
     display: flex;
     position: absolute;
     top: 0;
@@ -1443,7 +1443,7 @@ html.theme-light .group-wWM3zP_M- {
     padding: 6px 15px 6px 2px;
 }
 
-.marketwatch-sidebar .instruments .instrument .actions button {
+.watchlist-sidebar .instruments .instrument .actions button {
     padding: 3px 10px;
     width: 42px;
     height: 40px;
@@ -1452,33 +1452,33 @@ html.theme-light .group-wWM3zP_M- {
     // font-weight: 600
 }
 
-.marketwatch-sidebar .instruments .instrument .actions button.buy,.marketwatch-sidebar .instruments .instrument .actions button.sell {
+.watchlist-sidebar .instruments .instrument .actions button.buy,.watchlist-sidebar .instruments .instrument .actions button.sell {
     padding: 4px 10px
 }
 
-.marketwatch-sidebar .instruments .instrument .draggable-area {
+.watchlist-sidebar .instruments .instrument .draggable-area {
     display: none
 }
 
-.marketwatch-sidebar .instruments .instrument.draggedover .draggable-area {
+.watchlist-sidebar .instruments .instrument.draggedover .draggable-area {
     height: 46px;
     display: block;
     text-align: center;
     background-color: #f9f9f9
 }
 
-.marketwatch-sidebar .instruments .instrument .instrument-loader {
+.watchlist-sidebar .instruments .instrument .instrument-loader {
     float: right;
     margin: 15px 10px 0 0
 }
 
-.marketwatch-sidebar .instruments .instrument .info {
+.watchlist-sidebar .instruments .instrument .info {
     --padding-lr: 15px;
     --min-price-width: 200px;
     padding: 15px;
 }
 
-.marketwatch-sidebar .instruments .instrument .info,.marketwatch-sidebar .instruments .instrument .info .symbol-wrapper {
+.watchlist-sidebar .instruments .instrument .info,.watchlist-sidebar .instruments .instrument .info .symbol-wrapper {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -1495,31 +1495,31 @@ html.theme-light .group-wWM3zP_M- {
     height: 100%;
 }
 
-.marketwatch-sidebar .instruments .instrument .info .symbol-wrapper {
+.watchlist-sidebar .instruments .instrument .info .symbol-wrapper {
     -webkit-box-flex: 1;
     -ms-flex-positive: 1;
     flex-grow: 1
 }
 
-.marketwatch-sidebar .instruments .instrument .info .symbol-wrapper .symbol .nice-name,.marketwatch-sidebar .instruments .instrument .info .symbol-wrapper .symbol .tags {
+.watchlist-sidebar .instruments .instrument .info .symbol-wrapper .symbol .nice-name,.watchlist-sidebar .instruments .instrument .info .symbol-wrapper .symbol .tags {
     display: inline-block
 }
 
-.marketwatch-sidebar .instruments .instrument .info .symbol-wrapper .symbol .nice-name {
+.watchlist-sidebar .instruments .instrument .info .symbol-wrapper .symbol .nice-name {
     margin-right: 5px
 }
 
-.marketwatch-sidebar .instruments .instrument .info .symbol-wrapper .symbol .tags .tag {
+.watchlist-sidebar .instruments .instrument .info .symbol-wrapper .symbol .tags .tag {
     font-size: .4375rem;
     margin-right: 5px;
     vertical-align: middle
 }
 
-.marketwatch-sidebar .instruments .instrument .info .symbol-wrapper .symbol .tags .tag:last-child {
+.watchlist-sidebar .instruments .instrument .info .symbol-wrapper .symbol .tags .tag:last-child {
     margin-right: 0
 }
 
-.marketwatch-sidebar .instruments .instrument .info .price-wrapper {
+.watchlist-sidebar .instruments .instrument .info .price-wrapper {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -1536,22 +1536,22 @@ html.theme-light .group-wWM3zP_M- {
     max-width: var(--min-price-width)
 }
 
-.marketwatch-sidebar .instruments .instrument .info .price-wrapper .last-price,.marketwatch-sidebar .instruments .instrument .info .price-wrapper .price-change {
+.watchlist-sidebar .instruments .instrument .info .price-wrapper .last-price,.watchlist-sidebar .instruments .instrument .info .price-wrapper .price-change {
     text-align: right;
     display: inline-block
 }
 
-.marketwatch-sidebar .instruments .instrument .info .price-wrapper .price-change {
+.watchlist-sidebar .instruments .instrument .info .price-wrapper .price-change {
     min-width: 50px
 }
 
-.marketwatch-sidebar .instruments .instrument .info .price-wrapper .price-change .price-percentage {
+.watchlist-sidebar .instruments .instrument .info .price-wrapper .price-change .price-percentage {
     margin-left: 5px;
     display: inline-block;
     min-width: 45px
 }
 
-.marketwatch-sidebar .instruments .instrument .info .price-wrapper .price {
+.watchlist-sidebar .instruments .instrument .info .price-wrapper .price {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -1567,33 +1567,33 @@ html.theme-light .group-wWM3zP_M- {
     align-items: center
 }
 
-.marketwatch-sidebar .instruments .instrument .info .price-wrapper .price .last-price {
+.watchlist-sidebar .instruments .instrument .info .price-wrapper .price .last-price {
     min-width: 60px
 }
 
-.marketwatch-sidebar .instruments .instrument .info.price-change-type-close-all .price-wrapper .price-change .price-absolute,.marketwatch-sidebar .instruments .instrument .info.price-change-type-open-all .price-wrapper .price-change .price-absolute {
+.watchlist-sidebar .instruments .instrument .info.price-change-type-close-all .price-wrapper .price-change .price-absolute,.watchlist-sidebar .instruments .instrument .info.price-change-type-open-all .price-wrapper .price-change .price-absolute {
     padding-right: 2px;
     opacity: .65
 }
 
-.marketwatch-sidebar .instruments .instrument.active-marketdepth {
+.watchlist-sidebar .instruments .instrument.active-marketdepth {
     -webkit-box-shadow: 0 0 15px #eee;
     box-shadow: 0 0 15px #eee
 }
 
-.marketwatch-sidebar .instruments .instrument.list-enter,.marketwatch-sidebar .instruments .instrument.list-leave-to {
+.watchlist-sidebar .instruments .instrument.list-enter,.watchlist-sidebar .instruments .instrument.list-leave-to {
     opacity: 0;
     -webkit-transform: translateY(5px);
     transform: translateY(5px)
 }
 
 
-.marketwatch-sidebar .marketwatch-selector li {
+.watchlist-sidebar .watchlist-selector li {
     float: left;
     vertical-align: middle
 }
 
-.marketwatch-sidebar .marketwatch-selector li.item {
+.watchlist-sidebar .watchlist-selector li.item {
     padding: 10px 20px;
     cursor: pointer;
     text-align: center;
@@ -1603,17 +1603,17 @@ html.theme-light .group-wWM3zP_M- {
     height: 48px;
 }
 
-.marketwatch-sidebar .marketwatch-selector li.item.selected,.marketwatch-sidebar .marketwatch-selector li.item:hover {
+.watchlist-sidebar .watchlist-selector li.item.selected,.watchlist-sidebar .watchlist-selector li.item:hover {
     background-color: #f5f5f5;
     color: #E0261A
 }
 
 
-.marketwatch-sidebar .instruments .instrument .symbol {
+.watchlist-sidebar .instruments .instrument .symbol {
     position: relative
 }
 
-.marketwatch-sidebar .instruments .instrument .holding-quantities {
+.watchlist-sidebar .instruments .instrument .holding-quantities {
     opacity: .4;
     line-height: 18px;
     font-size: .725rem;
@@ -1795,22 +1795,22 @@ button[data-balloon] {
 
 
 
-.marketwatch-sidebar .instruments .instrument.selected .info,.marketwatch-sidebar .instruments .instrument:hover .info {
+.watchlist-sidebar .instruments .instrument.selected .info,.watchlist-sidebar .instruments .instrument:hover .info {
     background-color: #f9f9f9;
 }
 
-.marketwatch-sidebar .instruments .instrument.selected .info {
+.watchlist-sidebar .instruments .instrument.selected .info {
     -webkit-box-shadow: 0 3px 0 #eee;
     box-shadow: 0 3px 0 #eee;
     font-weight: 600
 }
 
-.marketwatch-sidebar .instruments .instrument.highlight .info {
+.watchlist-sidebar .instruments .instrument.highlight .info {
     background-color: #fffaeb;
     border-color: #fff2cc
 }
 
-.marketwatch-sidebar .instruments .instrument:hover .nice-name,.marketwatch-sidebar .instruments .instrument:hover .price {
+.watchlist-sidebar .instruments .instrument:hover .nice-name,.watchlist-sidebar .instruments .instrument:hover .price {
     cursor: pointer
 }
 
@@ -1915,7 +1915,7 @@ a.button-md, button.button-md {
 }
 
 
-.page-content.marketwatch,
+.page-content.watchlist,
 .app.mobile.page-marketwatch .page-content {
     position: fixed;
     height: calc(100% - 50px);
@@ -1959,17 +1959,17 @@ a.button-md, button.button-md {
     background-color: rgba(var(--color-bg-3--rgb),.1)
 }
 
-.omnisearch .omnisearch-results .search-result-item .exchange .text-label.NSE,.text-label.red {
+.stocks-search .stocks-search-results .search-result-item .exchange .text-label.NSE,.text-label.red {
     color: var(--color-caranation-red);
     background-color: rgba(var(--color-caranation-red--rgb),.1)
 }
 
-.omnisearch .omnisearch-results .search-result-item .exchange .text-label.MCX,.text-label.green {
+.stocks-search .stocks-search-results .search-result-item .exchange .text-label.MCX,.text-label.green {
     color: var(--color-text-8);
     background-color: rgba(var(--color-fruit-salad-green--rgb),.1)
 }
 
-.omnisearch .omnisearch-results .search-result-item .exchange .text-label.BSE,.text-label.blue {
+.stocks-search .stocks-search-results .search-result-item .exchange .text-label.BSE,.text-label.blue {
     color: var(--color-text-4);
     background-color: rgba(var(--color-bg-5--rgb),.1)
 }
@@ -2029,11 +2029,11 @@ a.button-md, button.button-md {
     border-left: 5px solid var(--color-border-1)
 }
 
-.omnisearch,.omnisearch .search {
+.stocks-search,.stocks-search .search {
     position: relative
 }
 
-.omnisearch .search input {
+.stocks-search .search input {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     height: 64px;
@@ -2042,17 +2042,17 @@ a.button-md, button.button-md {
 }
 
 
-.omnisearch .icon-search:before {
+.stocks-search .icon-search:before {
     color: #444;
 }
 
-.omnisearch .search-header .su-loader {
+.stocks-search .search-header .su-loader {
     position: absolute;
     right: 15px;
     top: 25px
 }
 
-.omnisearch .counts {
+.stocks-search .counts {
     top: 0;
     bottom: 0;
     padding: 0 10px;
@@ -2221,7 +2221,7 @@ input {
 }
 
 
-.marketwatch-sidebar .omnisearch {
+.watchlist-sidebar .stocks-search {
     z-index: 1;
     position: sticky;
     top: 0;
@@ -2229,7 +2229,7 @@ input {
     background-color: #fff;
 }
 
-.marketwatch-sidebar .instruments .instrument {
+.watchlist-sidebar .instruments .instrument {
     position: relative;
     -webkit-transition: background-color .15s ease;
     transition: background-color .15s ease;
@@ -2238,11 +2238,11 @@ input {
     height: 56px;
 }
 
-.marketwatch-sidebar .instruments .instrument .symbol {
+.watchlist-sidebar .instruments .instrument .symbol {
     position: relative
 }
 
-.marketwatch-sidebar .marketwatch-selector {
+.watchlist-sidebar .watchlist-selector {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     background-color:#fff;
@@ -2254,7 +2254,7 @@ input {
 
 
 
-.marketwatch-sidebar .omnisearch {
+.watchlist-sidebar .stocks-search {
     z-index: 1;
     position: sticky;
     top: 0;
@@ -2264,13 +2264,13 @@ input {
 
 
 
-.marketwatch-sidebar .omnisearch input {
+.watchlist-sidebar .stocks-search input {
     border: 0;
     border-bottom: 1px solid #f1f1f1;
     padding: 15px 10px 15px 40px
 }
 
-.marketwatch-sidebar .omnisearch .icon {
+.watchlist-sidebar .stocks-search .icon {
     border: 0;
     padding: 0;
     top: 18px;
@@ -2792,7 +2792,7 @@ input {
     
 }
 
-.marketwatch-wrap {
+.watchlist-wrap {
     position: fixed;
     height: calc(100% - 80px);
     width: var(--left-content-width);

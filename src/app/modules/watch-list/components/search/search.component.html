@@ -1,4 +1,4 @@
-<div class="omnisearch">
+<div class="stocks-search">
   <div class="search">
     <div class="su-input-group su-has-icon search-input-field">
       <input type="text" class="search-input" placeholder="Search: stocks" autocorrect="off"
@@ -8,7 +8,7 @@
     <span class="counts">{{currentWatchListSize}} / 10</span>
   </div>
   
-  <ul class="omnisearch-results" *ngIf="searchResult.length > 0" (mouseleave)="fadeOutActions(null)">
+  <ul class="stocks-search-results" *ngIf="searchResult.length > 0" (mouseleave)="fadeOutActions(null)">
     <div>
       <li class="search-result-item" [ngClass]="{'selected':index == 0,'isadded':searchItem.addedToWatchList}"
         *ngFor="let searchItem of searchResult, let index=index" (mouseover)="showSearchActions($event, index)"

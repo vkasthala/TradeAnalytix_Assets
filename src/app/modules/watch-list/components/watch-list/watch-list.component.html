@@ -1,5 +1,5 @@
 <div [ngClass]="isMobileDevice ? 'page-content marketwatch' : ''">
-    <div class="marketwatch-sidebar marketwatch-wrap">
+    <div class="watchlist-sidebar watchlist-wrap">
        
         <app-search [pageIndex]="pageIndex" [watchListData]="watchListData" (clickOutside)="closeSarchUI(true)" [isMobileDevice]="isMobileDevice"></app-search>
         <div class="instruments" (mouseleave)="out(null)">
