@@ -1,0 +1,37 @@
+<div class="chatbot-icon" (mousedown)="startDragging($event)" (click)="toggleChat()">
+  <img src="../../../assets/images/chatbot-icon.png" alt="Chatbot Icon" />
+</div>
+  
+<div class="chatbot" *ngIf="chatOpen">
+  <div class="chat-header">
+    <mat-icon class="cursor">menu</mat-icon>
+    <div class="chat-header-center">
+      <img src="../../../assets/images/chatbot-header.png" alt="Chatbot Icon" /> CueTrade ChatBot
+    </div>
+    <mat-icon class="cursor" (click)="toggleChat()">keyboard_arrow_down</mat-icon>
+  </div>
+
+  <div class="chat-history">
+      <div class="chat-history-title">Welcome Akash!</div>
+      <div class="chatbot-body" *ngIf="messages.length === 0">
+        <p><img src="../../../assets/images/chatbot-body.svg" alt="Chatbot Icon" /></p>
+        How can i help you today?
+      </div>
+    <div *ngFor="let message of messages">
+      <div class="message" [ngClass]="{'user': message.isFromUser, 'bot': !message.isFromUser}">
+        {{ message.text }}
+      </div>
+    </div>
+  </div>
+
+  <div class="chatbot-bottom">
+    <div class="chat-input">
+      <input type="text" class="form-control" [(ngModel)]="inputMessage" (keyup.enter)="sendMessage()" placeholder="Ask me something...">
+      <button type="button" class="btn btn-send" [ngClass]="inputMessage.length > 0 ? 'btn-send-active' : ''" (click)="sendMessage()"><mat-icon class="mat-icon-sm">send</mat-icon></button>
+    </div>
+    <div class="voice">
+      <mat-icon>keyboard_voice</mat-icon>
+    </div>
+  </div>
+</div>
+  

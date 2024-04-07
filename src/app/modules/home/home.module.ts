@@ -177,6 +177,7 @@ import { ActivateRuleModalComponent } from '../settings/components/activate-rule
 import { DisableeRuleModalComponent } from '../settings/components/disable-rule-modal/disable-rule-modal.component';
 import { SharedModule } from '../shared/shared.module';
 import { IntradayOrderPopupComponent } from '../watch-list/components/intraday-order-popup/intraday-order-popup.component';
+import { ChatbotComponent } from '../chatbot/chatbot.component';
 
 export const MY_FORMATS = {
   parse: {
@@ -348,7 +349,8 @@ export const MY_FORMATS = {
     RobinhoodInstructionsComponent,
     ActivateRuleModalComponent,
     DisableeRuleModalComponent,
-    IntradayOrderPopupComponent
+    IntradayOrderPopupComponent,
+    ChatbotComponent
   ],
   imports: [
     FormsModule,
@@ -450,7 +452,8 @@ export const MY_FORMATS = {
     RobinhoodInstructionsComponent,
     ActivateRuleModalComponent,
     DisableeRuleModalComponent,
-    IntradayOrderPopupComponent
+    IntradayOrderPopupComponent,
+    ChatbotComponent
   ],
   // bootstrap: [TradeStrategiesGrid],
   providers: [
