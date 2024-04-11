@@ -86,9 +86,19 @@
 }
 
 .mat-step-header[aria-selected="true"] {
-    background-color: #4A69CB;
     position: relative;
     overflow: inherit;
+}
+.mat-step-header[aria-selected="true"]::before,
+.mat-step-header:hover::before {
+    content: '';
+    width: 100%;
+    height: 4px;
+    border-radius: 4px 4px 0px 0px;
+    background: #4A69CB;
+    position: absolute;
+    bottom: -4px;
+    left: 0;
 }
 
 .text-link {
