@@ -4,15 +4,32 @@
         <p>Automatic rules are consistently verified for each trade, with CueTrade promptly indicating whether a trade complies with the rule or not. On the other hand, manual rules act as text-based reminders, requiring manual updates as needed.</p>
     </div>
 </div>
-<div class="reports-section px-3">
-    <div class="trade-table p-3 pb-0 mb-0">
-        <div class="row">
-            <div class="col-sm-6">
-                <app-codedrules></app-codedrules>
+<div class="reports-section">
+    <div class="trade-risk-tabs web-parent-reports">
+        <div class="tab" role="tabpanel">
+            <div class="reports-header">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="active" role="presentation">
+                        <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#codedRules" role="tab">Automatic Rules</a>
+                    </li>
+                    <li role="presentation">
+                        <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#manageRules" role="tab">Manage Rules</a>
+                    </li>
+                </ul>
             </div>
-            <div class="col-sm-6">
-                <app-managerules></app-managerules>
+
+            <div class="tab-content tabs">
+                <div class="tab-pane active" id="codedRules" role="tabpanel">
+                    <app-codedrules></app-codedrules>
+                </div>
+                <div class="tab-pane" id="manageRules" role="tabpanel">
+                    <app-managerules></app-managerules>
+                </div>
             </div>
         </div>
+    </div>
+
+    <div class="trade-table p-3 pb-0 mb-0">
+        
     </div>
 </div>
