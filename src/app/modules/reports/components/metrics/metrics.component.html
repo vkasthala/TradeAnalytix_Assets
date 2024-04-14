@@ -381,13 +381,14 @@
                 </div>
             </div>
         </div>
-        <div class="metrics-footer">
-            <span class="cursor" (click)="toggleMetrics()">{{showMoreMetrics ? 'Less' : 'More' }} Statistics</span>
-        </div>
+        
 
         <div class="mask" *ngIf="loader">
             <div class="loader"></div>
         </div>
 
+    </div>
+    <div class="metrics-footer">
+        <span class="cursor" (click)="toggleMetrics()">{{showMoreMetrics ? 'Less' : 'More' }} Statistics</span>
     </div>
 </div>
