@@ -51,7 +51,7 @@
             
             <div class="date-filter-list" *ngIf="planDates.length > 0">
                 <div class="date-filter-header border-bottom">
-                    <span class="title cursor" (click)="openCreatePlan()">Create Plan <mat-icon class="ml-2 mat-icon-md">add</mat-icon></span>
+                    <span class="title cursor" (click)="openCreatePlan()">Create Plan </span>
                 </div>
                 <div *ngIf="showCreatePlan" class="bg-white p-2">
                     <div class="d-flex align-items-center">
@@ -129,7 +129,7 @@
                                 <app-planned-trades-grid [selectedPlan]="selectedPlan" [dataChangeSubject] = "dataChangeSubject" #plannedTradesGrid></app-planned-trades-grid>
                             </div>
 
-                            <div class="row">
+                     <!--       <div class="row">
                                 <div class="col-sm-6">
                                     <div class="inner-accordion">
                                         <mat-accordion>
@@ -143,9 +143,9 @@
                                             </mat-expansion-panel>
                                         </mat-accordion>
                                     </div>
-                                </div>
+                                </div> -->
 
-                                <div class="col-sm-6">
+                     <!--           <div class="col-sm-6">
                                     <div class="inner-accordion">
                                         <mat-accordion>
                                             <mat-expansion-panel [expanded]="false">
@@ -217,7 +217,7 @@
                                     </div>
                                     
                                 </div>
-                            </div>
+                            </div> -->
                             
                         </ng-template>
                     </mat-expansion-panel>
@@ -253,9 +253,9 @@
                                         <div class="title mb-2">Executed Trades</div>
                                         <span class="sub-heading">Here's the list of trades executed today. Click "Import Trades" to add trades from your brokerage accounts.</span>
                                     </div>
-                                    <button class="btn btn-sm btn-outline-black" *ngIf="!viewTradePlan" [routerLink]="['/import-trades-history/']">
+                              <!--      <button class="btn btn-sm btn-outline-black" *ngIf="!viewTradePlan" [routerLink]="['/import-trades-history/']">
                                         <mat-icon class="mat-icon-md">download</mat-icon> Import Trades
-                                    </button>
+                                    </button> -->
                                     
                                 </div>
                                 <app-today-executed-legs [selectedPlan]="selectedPlan" #todayExcutedTradesGrid></app-today-executed-legs>
@@ -295,9 +295,9 @@
 
                             
                             
-                            <!-- <div class="py-3">
+                             <div class="py-3">
                                 <app-dailystatistics [selectedPlan]="selectedPlan" #dailyPlanStats></app-dailystatistics>
-                            </div> -->
+                            </div> 
                         </ng-template>
                     </mat-expansion-panel>
                 </mat-accordion>
