@@ -1,15 +1,17 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { OrderPurchasehistoryResponse, OrdersRequest, OrdersResponse, PlaceOrderRequest, PurchaseOrderResponse } from '../models/orders.model';
+import { OrderPurchasehistoryResponse, OrderRuleCheckRequest, OrderRuleResponse, OrdersRequest, OrdersResponse, PlaceOrderRequest, PurchaseOrderResponse } from '../models/orders.model';
 import { Observable } from 'rxjs';
+import { HttpService } from './http.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OmsService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+    private httpService: HttpService) { }
 
   private createHttpHeaders(): HttpHeaders {
     let httpHeaders: HttpHeaders = new HttpHeaders({
@@ -65,5 +67,15 @@ export class OmsService {
   cancelOrder(orderId: string) : Observable<PurchaseOrderResponse> {
     const url = environment.apiUrl + "/v0/oms/orders/" + orderId;
     return this.http.delete<PurchaseOrderResponse>(url);
+  }
+
+  checkRules(data: OrderRuleCheckRequest) : Observable<OrderRuleResponse[]> {
+    const url = environment.apiUrl + "/order/coded-rule-check";
+    return this.httpService.post<OrderRuleCheckRequest,OrderRuleResponse[]>(url,data);
+  }
+
+  saveRules(orderRules: OrderRuleResponse, orderId: string) :  Observable<string> {
+    const url = environment.apiUrl + "/order/save-coded-rule/"+orderId;
+    return this.httpService.post<OrderRuleResponse,string>(url,orderRules);
   }
 }

@@ -182,18 +182,18 @@ export class HoldingsComponent implements OnInit {
     }
 
     createMargin(payload:any) {
-      this._sharedService.loaderEvent.emit(true);
-      this._omsService.getMargin(payload).subscribe(response =>{
-        this.marginsSource = response;
-        this.showOrdersModal = true;
-        this.isHoldingOrder = true;
-        this.showMobileContextMenu = false;
-        this._sharedService.loaderEvent.emit(false);
-      }, error =>{
-        this.toastr.error(error.error, "Error", {timeOut: 3000, positionClass: 'toast-bottom-right'});
-        this._sharedService.loaderEvent.emit(false);
-      });
-      return this.marginsSource;
+      // this._sharedService.loaderEvent.emit(true);
+      // this._omsService.getMargin(payload).subscribe(response =>{
+      //   this.marginsSource = response;
+      //   this.showOrdersModal = true;
+      //   this.isHoldingOrder = true;
+      //   this.showMobileContextMenu = false;
+      //   this._sharedService.loaderEvent.emit(false);
+      // }, error =>{
+      //   this.toastr.error(error.error, "Error", {timeOut: 3000, positionClass: 'toast-bottom-right'});
+      //   this._sharedService.loaderEvent.emit(false);
+      // });
+      // return this.marginsSource;
     }
   
     closeModal() {

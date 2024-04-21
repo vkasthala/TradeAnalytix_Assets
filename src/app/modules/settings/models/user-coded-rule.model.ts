@@ -24,4 +24,6 @@ export class UserCodedRule {
 
     ruleType: number;
 
+    dataType: string;
+
 }

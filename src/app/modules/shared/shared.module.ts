@@ -1,6 +1,6 @@
 import { CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders, NgModule } from '@angular/core';
 
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { WatchListComponent } from '../watch-list/components/watch-list/watch-list.component';
 import { SearchComponent } from '../watch-list/components/search/search.component';
 import { OrdersModalComponent } from '../watch-list/components/orders-modal/orders-modal.component';
@@ -28,7 +28,8 @@ const components = [
   ClickOutsideDirective,
 ];
 const providers = [
-  SharedService
+  SharedService,
+  DatePipe
 ];
 
 @NgModule({

@@ -31,77 +31,18 @@
                                 <div class="intraday-panel">
                                     <div class="intraday-panel-header">Check Your Rules</div>
                                     <div class="intraday-panel-body">
+                                        <div *ngFor="let item of orderRules; let index=index">
                                         <div class="d-flex py-2 align-items-center">
                                             <div class="col-10">
-                                                Stock trade cost should be < 15000
-                                                <span class="rule-type">(Auto)</span>
+                                                {{item.msg}}
+                                                <span class="rule-type">{{item.type==='Automatic' ? '(Aut)' : '(Man)'}}</span>
                                             </div>
                                             <div class="col-2 price text-right">
-                                                <input type="checkbox" name="" />
+                                                <input type="checkbox" *ngIf="item.type === 'Automatic'" [disabled]="item.type === 'Automatic'" class="custom-checkbox" [ngClass]="{ 'checked': item.aligned, 'cross': !item.aligned }">
+                                                <input type="checkbox" *ngIf="item.type === 'Manual'" [(ngModel)]="item.aligned"  class="manual-checkbox">
                                             </div>
+
                                         </div>
-                                        <div class="d-flex py-2 align-items-center">
-                                            <div class="col-10">
-                                                Intraday trade cost should be < 1999
-                                                <span class="rule-type">(Auto)</span>
-                                            </div>
-                                            <div class="col-2 price text-right">
-                                                <input type="checkbox" name="" />
-                                            </div>
-                                        </div>
-                                        <div class="d-flex py-2 align-items-center">
-                                            <div class="col-10">
-                                                Do not trade between 9:15 and 9:45
-                                                <span class="rule-type">(Auto)</span>
-                                            </div>
-                                            <div class="col-2 price text-right">
-                                                <input type="checkbox" name="" />
-                                            </div>
-                                        </div>
-                                        <div class="d-flex py-2 align-items-center">
-                                            <div class="col-10">
-                                                Stop-Loss not set for the trade
-                                                <span class="rule-type">(Auto)</span>
-                                            </div>
-                                            <div class="col-2 price text-right">
-                                                <input type="checkbox" name="" />
-                                            </div>
-                                        </div>
-                                        <div class="d-flex py-2 align-items-center">
-                                            <div class="col-10">
-                                                Cash percentage is less than 10%
-                                                <span class="rule-type">(Auto)</span>
-                                            </div>
-                                            <div class="col-2 price text-right">
-                                                <input type="checkbox" name="" />
-                                            </div>
-                                        </div>
-                                        <div class="d-flex py-2 align-items-center">
-                                            <div class="col-10">
-                                                Avoid Same-Day Expiry Options Trades
-                                                <span class="rule-type">(Auto)</span>
-                                            </div>
-                                            <div class="col-2 price text-right">
-                                                <input type="checkbox" name="" />
-                                            </div>
-                                        </div>
-                                        <div class="d-flex py-2 align-items-center">
-                                            <div class="col-10">
-                                                Do not go against the trend
-                                                <span class="rule-type">(Manual)</span>
-                                            </div>
-                                            <div class="col-2 price text-right">
-                                                <input type="checkbox" name="" />
-                                            </div>
-                                        </div>
-                                        <div class="d-flex py-2 align-items-center">
-                                            <div class="col-10">
-                                                Think in terms of probabilities
-                                                <span class="rule-type">(Manual)</span>
-                                            </div>
-                                            <div class="col-2 price text-right">
-                                                <input type="checkbox" name="" />
-                                            </div>
                                         </div>
                                     </div>
                                 </div>

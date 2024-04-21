@@ -279,6 +279,9 @@ export class WatchListComponent implements OnInit {
     });*/
     this.marginsSource.transaction_type = $event.transaction_type;
     this.marginsSource.tradingsymbol = tradingsymbol;
+    this.marginsSource.price = $event.strike;
+    this.marginsSource.expiry = $event.expiryDate;
+    this.marginsSource.tradeType = $event.instrumenType == 14 ? 'STOCK' : 'OPTION';
     return this.marginsSource;
   }
 

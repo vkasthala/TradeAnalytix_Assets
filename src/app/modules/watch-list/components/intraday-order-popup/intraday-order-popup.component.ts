@@ -2,6 +2,7 @@ import { Component, Inject, Input, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { Margins } from 'src/app/modules/shared/models/margins.model';
+import { OrderRuleCheckRequest, OrderRuleResponse } from 'src/app/modules/shared/models/orders.model';
 import { OmsService } from 'src/app/modules/shared/services/oms.service';
 import { SharedService } from 'src/app/modules/shared/services/shared.service';
 
@@ -13,7 +14,8 @@ import { SharedService } from 'src/app/modules/shared/services/shared.service';
 export class IntradayOrderPopupComponent implements OnInit {
   @Input('orderToggle') orderToggle: boolean=false;
   @Input('margins') margins:any = Margins;
-  data:any;
+  data:OrderRuleCheckRequest;
+  orderRules: OrderRuleResponse[];
 
   constructor(
     public dialogRef: MatDialogRef<IntradayOrderPopupComponent>,
@@ -26,7 +28,15 @@ export class IntradayOrderPopupComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.margins);
+    console.log(this.data);
+    this._orderService.checkRules(this.data).subscribe(response=>{
+      if(response){
+        this.orderRules = response;
+        console.log("Check rules response "+response);
+      }
+    }, error => {
+      console.log("Error "+error);
+    });
   }
 
   ngAfterViewInit(): void {
@@ -39,7 +49,7 @@ export class IntradayOrderPopupComponent implements OnInit {
 
   orderPlacement(order:any) {
     let orderIds = order.order_id;
-    this.dialogRef.close(order);
+    this.dialogRef.close(this.orderRules);
   }
 
   cancelAllOpenOrders() {
