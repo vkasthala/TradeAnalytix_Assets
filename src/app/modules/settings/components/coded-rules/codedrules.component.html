@@ -6,7 +6,7 @@
         </div>
     </div>
 
-    <table class="mat-table">
+    <table class="mat-table table">
         <thead>
             <tr class="mat-header-row">
                 <th class="mat-header-cell">Trading Rule</th>
@@ -17,11 +17,16 @@
         </thead>
         <tbody>
             <tr class="mat-header-row" *ngFor="let coderule of portfolioLevelRules">
-                <td class="mat-cell">{{coderule.uiLabel}}</td>
-                <!-- <td class="mat-cell">{{coderule.uiLabel !== 'Daily trading plan creation' ? 'Less Than' : ''}}</td> -->
+                <td class="mat-cell rule-cell">
+                    <span class="d-flex align-items-center">
+                        {{coderule.uiLabel}}
+                        <mat-icon class="mat-icon-sm  mat-icon material-icons ml-3 pl-3" [ngClass]="coderule.val ? 'text-success' : 'text-danger'">{{coderule.val ? 'check' : 'close'}}</mat-icon>
+                    </span>
+                </td>
+                <!-- <mat-icon class="mat-icon-sm text-success mat-icon material-icons mat-icon-no-color ng-star-inserted">{{coderule.uiLabel !== 'Daily trading plan creation' ? 'Less Than' : ''}}</mat-icon> -->
                 <td class="mat-cell value-cell">
                     <span class="d-flex align-items-center" *ngIf="coderule.uiLabel !== 'A trading plan should be created everyday'">
-                        <input type="text" class="form-control col-5" [ngClass]="!coderule.editing ? 'disabled' : ''"
+                        <input type="text" class="form-control col-5" *ngIf="coderule.ruleType === 1" [ngClass]="!coderule.editing ? 'disabled' : ''"
                             [(ngModel)]="coderule.val" />
                         <mat-icon class="ml-2 mat-icon-edit action-icon" (click)="onItemEdit(coderule)"
                             *ngIf="coderule.editing">check_circle
@@ -36,18 +41,17 @@
                     </span>
                     <span class="cursor text-link mr-3" (click)="onUpdateRule(coderule)" *ngIf="coderule.val && coderule.uiLabel !== 'A trading plan should be created everyday'">Update</span>
                     <span class="cursor position-relative">
-                            <!-- <input type="checkbox" name="rule" class="checkbox checkbox-custom"
-                                [checked]="coderule.id && coderule.id !== null && coderule.id > 0"
-                                [(ngModel)]="coderule.checked" (change)="onRuleSelectionChange(coderule)" />
-                            <span [ngClass]="coderule.checked ? 'disabled-text' : 'add-new'">{{coderule.checked ? 'Disable'
-                                : 'Enable' }}</span> -->
-                            <input type="checkbox" name="rule" class="checkbox checkbox-custom"
-                                [checked]="coderule.id && coderule.id !== null && coderule.id > 0"
-                            [(ngModel)]="coderule.checked" (change)="onCheckBoxChange(coderule)" />
-                            <span class="disabled-text" *ngIf="coderule.val">Disable</span>
-                        </span>
-                        
-                    </td>
+                        <!-- <input type="checkbox" name="rule" class="checkbox checkbox-custom"
+                            [checked]="coderule.id && coderule.id !== null && coderule.id > 0"
+                            [(ngModel)]="coderule.checked" (change)="onRuleSelectionChange(coderule)" />
+                        <span [ngClass]="coderule.checked ? 'disabled-text' : 'add-new'">{{coderule.checked ? 'Disable'
+                            : 'Enable' }}</span> -->
+                        <input type="checkbox" name="rule" class="checkbox checkbox-custom"
+                            [checked]="coderule.id && coderule.id !== null && coderule.id > 0"
+                        [(ngModel)]="coderule.checked" (change)="onCheckBoxChange(coderule)" />
+                        <span class="disabled-text" *ngIf="coderule.val">Disable</span>
+                    </span>
+                </td>
             </tr>
         </tbody>
     </table>

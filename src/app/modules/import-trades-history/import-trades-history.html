@@ -15,7 +15,7 @@
         <div class="import_trade_header">
             <span class="header-title">{{importType == 1 ? "Manual Import" : "Auto-Import" }}</span>
             <div class="d-flex align-items-center justify-content-between">
-                <label class="col-form-label col-6">Select Import Type</label>
+                <label class="col-form-label col-7">Select Import Type</label>
                 <select [(value)]="importType" (change)="selectionChange($event.target.value)" class="form-control">
                     <option value="1">Manual Import</option>
                     <option value="2">Auto-Import</option>

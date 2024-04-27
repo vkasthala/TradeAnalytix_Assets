@@ -49,18 +49,15 @@
                                 </a></div>
                             <hr>
                             <ul class="m-0">
-                                <li class="p-2">
-                                    <span class="demo-toggle">
-                                        Demo&nbsp;Mode <div class="switch ml-2">
-                                            <input type="checkbox" [(ngModel)]="demoToggle" (change)="demoMsg()" id="demoToggle" class="cursor" [checked]="demoToggle" />
-                                            <label for="demoToggle"></label>
-                                          </div>
-                                    </span>
+                                <li class="list-flat-item">
+                                    <a class="p-0" [routerLink]="['/settings/']">
+                                        Trading Goals
+                                    </a>
                                 </li>
                                 <hr>
                                 <li class="list-flat-item">
                                     <a class="p-0" [routerLink]="['/settings/']">
-                                        Settings
+                                        Data Setup
                                     </a>
                                 </li>
 

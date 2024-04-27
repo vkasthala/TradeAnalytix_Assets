@@ -10,6 +10,7 @@ export class ActivateRuleModalComponent implements OnInit {
 
   title: string;
   value: any;
+  ruleType: any;
   btnText: string;
 
   jsonData:any;
@@ -23,6 +24,7 @@ export class ActivateRuleModalComponent implements OnInit {
     this.btnText = data.btnText;
     if (data) {
       this.value = data.res.val;
+      this.ruleType = data.res.ruleType;
     }
   }
 
@@ -38,6 +40,8 @@ export class ActivateRuleModalComponent implements OnInit {
     this.dialogRef.close();
     if (this.jsonData.uiLabel === "A trading plan should be created everyday") {
       this.value = 1;
+    } else if (this.value === null || this.value === undefined) {
+      this.value = 0;
     }
     // this.event.emit({ data: form.value });
     this.dialogRef.close(this.value);

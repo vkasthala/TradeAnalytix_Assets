@@ -1,306 +1,308 @@
 <div class="addnew-trade">
-    <div class="px-3 mt-2">
-        <ng-container [ngSwitch]="currentState">
-            <ng-container *ngSwitchCase="1">
-                <!--entry first-->
-                <div class="addnew-first p-3">
-                    <div class="tb-container-box">
-                        <div class="tb-container-box-header">How to use trade builder?</div>
-                        <div class="tb-container-box-body">
-                            <ul>
-                                <li><img src="../../../../../assets/images/tb_icon_1.svg" class="mr-3" />Build a trade strategy with stock and option legs</li>
-                                <li><img src="../../../../../assets/images/tb_icon_2.svg" class="mr-3" />Analyze risk of the strategy and review historical statistics</li>
-                                <li><img src="../../../../../assets/images/tb_icon_3.svg" class="mr-3" />Journal trade, analyze charts, and attach files</li>
-                                <li><img src="../../../../../assets/images/tb_icon_4.svg" class="mr-3" />Check alignment with trading rules</li>
-                            </ul>
-                        </div>
-                    </div>
-                
-
-                    <div class="trade-form">
-                        <app-trade-search (symbolSelectEvent)="symbolSelectEventHandler($event)">
-                        </app-trade-search>
-                        <div class="trade-form-body">
-                            <h4 class="py-2 mt-3">Popular User Searches</h4>
-                            <ul *ngIf="!isUsInstances">
-                                <li *ngFor="let instance of indiaInstances; let i = index;"><span class="text-link" (click)="submitInstance(instance)">{{instance.name}}</span></li>
-                            </ul>
-                            <ul *ngIf="isUsInstances">
-                                <li *ngFor="let instance of usInstances; let i = index;"><span class="text-link" (click)="submitInstance(instance)">{{instance.name}}</span></li>
-                            </ul>
-                        </div>
-                        <button class="btn btn-enter" (click)="enterSymbol()">Submit </button>
+    <ng-container [ngSwitch]="currentState">
+        <ng-container *ngSwitchCase="1">
+            <!--entry first-->
+            <div class="addnew-first p-3">
+                <div class="tb-container-box">
+                    <div class="tb-container-box-header">How to use trade builder?</div>
+                    <div class="tb-container-box-body">
+                        <ul>
+                            <li><img src="../../../../../assets/images/tb_icon_1.svg" class="mr-3" />Build a trade strategy with stock and option legs</li>
+                            <li><img src="../../../../../assets/images/tb_icon_2.svg" class="mr-3" />Analyze risk of the strategy and review historical statistics</li>
+                            <li><img src="../../../../../assets/images/tb_icon_3.svg" class="mr-3" />Journal trade, analyze charts, and attach files</li>
+                            <li><img src="../../../../../assets/images/tb_icon_4.svg" class="mr-3" />Check alignment with trading rules</li>
+                        </ul>
                     </div>
                 </div>
-            </ng-container>
-            <ng-container *ngSwitchCase="2">
-                <div class="mask" *ngIf="Loader">
-                    <div class="loader"></div>
+            
+
+                <div class="trade-form">
+                    <app-trade-search (symbolSelectEvent)="symbolSelectEventHandler($event)">
+                    </app-trade-search>
+                    <div class="trade-form-body">
+                        <h4 class="py-2 mt-3">Popular User Searches</h4>
+                        <ul *ngIf="!isUsInstances">
+                            <li *ngFor="let instance of indiaInstances; let i = index;"><span class="text-link" (click)="submitInstance(instance)">{{instance.name}}</span></li>
+                        </ul>
+                        <ul *ngIf="isUsInstances">
+                            <li *ngFor="let instance of usInstances; let i = index;"><span class="text-link" (click)="submitInstance(instance)">{{instance.name}}</span></li>
+                        </ul>
+                    </div>
+                    <button class="btn btn-enter" (click)="enterSymbol()">Submit </button>
                 </div>
-                
-                <div class="row pt-1">
-                    <div class="col-8 trade-details-body pr-0">
-                        <app-trade-details-header 
-                            [addTrade]="add" 
-                            [editTrade]="edit" 
-                            [closeTrade]="close" 
-                            [selectedStock]="selectedStock" 
-                            [stockSummary]="stockSummary" 
-                            (loadMoreStats)="loadMoreStatsHandler($event)" 
-                            [StrategyId]="tradeStrategy">
-                        </app-trade-details-header>
-                        <mat-horizontal-stepper #stepper [linear]="false" class="mb-3">
-                            <mat-step>
-                                <div class="stepper-content">
-                                    <app-trade-details (nextStep)="goForward()" (activateRisk)="activeStep = true"
-                                        (addTradeEvent)="addTrade($event)"
-                                        (navigateRiskAnalysisEvent)="navigaeToRiskAnalysis('WEB')"
-                                        [stockSummary]="stockSummary" [selectedStock]="selectedStock"
-                                        [inputState]="inputState" [editTrade]="edit" [addTrade]="add"
-                                        [closeTrade]="close" [viewTrade]="view"
-                                        [strategyTypeChangeSubject]="strategyTypeChangeSubject"
-                                        [stockOrOptionAddedSubject]="stockOrOptionAddedSubject"
-                                        [localStockClosedSubject]="localStockClosedSubject"
-                                        [localOptionClosedSubject]="localOptionClosedSubject"
-                                        (calcNetDebit)="calcNetDebit($event)" 
-                                        (calcNetReturn)="calcNetReturn($event)"
+            </div>
+        </ng-container>
+        <ng-container *ngSwitchCase="2">
+            <div class="mask" *ngIf="Loader">
+                <div class="loader"></div>
+            </div>
 
-                                        (calculateMaxRisk)="calculateMaxRisk($event, 'WEB')" 
+            <div class="sub-nav bg-white">
+                <a [routerLink]="['/import-trades-history/']" routerLinkActive="router-link-active"><span>Import Trades</span></a>
+                <a [routerLink]="['/stravtegies/']" routerLinkActive="router-link-active" class="active-item"><span>Trade History</span></a>
+            </div>
+            
+            <div class="row p-3">
+                <div class="col-8 trade-details-body pr-0">
+                    <app-trade-details-header 
+                        [addTrade]="add" 
+                        [editTrade]="edit" 
+                        [closeTrade]="close" 
+                        [selectedStock]="selectedStock" 
+                        [stockSummary]="stockSummary" 
+                        (loadMoreStats)="loadMoreStatsHandler($event)" 
+                        [StrategyId]="tradeStrategy">
+                    </app-trade-details-header>
+                    <mat-horizontal-stepper #stepper [linear]="false" class="mb-3">
+                        <mat-step>
+                            <div class="stepper-content">
+                                <app-trade-details (nextStep)="goForward()" (activateRisk)="activeStep = true"
+                                    (addTradeEvent)="addTrade($event)"
+                                    (navigateRiskAnalysisEvent)="navigaeToRiskAnalysis('WEB')"
+                                    [stockSummary]="stockSummary" [selectedStock]="selectedStock"
+                                    [inputState]="inputState" [editTrade]="edit" [addTrade]="add"
+                                    [closeTrade]="close" [viewTrade]="view"
+                                    [strategyTypeChangeSubject]="strategyTypeChangeSubject"
+                                    [stockOrOptionAddedSubject]="stockOrOptionAddedSubject"
+                                    [localStockClosedSubject]="localStockClosedSubject"
+                                    [localOptionClosedSubject]="localOptionClosedSubject"
+                                    (calcNetDebit)="calcNetDebit($event)" 
+                                    (calcNetReturn)="calcNetReturn($event)"
 
-                                        [StockPosition]="tradeStrategy" #tradeDetails>
-                                    </app-trade-details>
+                                    (calculateMaxRisk)="calculateMaxRisk($event, 'WEB')" 
 
-                                    <div class="closed-legs-sec" *ngIf="!add && tradeStrategy.statusId !=4">
-                                        <div class="cursor closed-legs-header pb-0" (click)="showClosedLegs()">
-                                            <div class="closed-legs-title">
-                                                <span>Closed Positions</span>
-                                                <i class="negative-amt material-icons"
-                                                    *ngIf="closedLegs">keyboard_arrow_down</i>
-                                                <i class="negative-amt material-icons"
-                                                    *ngIf="!closedLegs">keyboard_arrow_right</i>
-                                            </div>
+                                    [StockPosition]="tradeStrategy" #tradeDetails>
+                                </app-trade-details>
+
+                                <div class="closed-legs-sec" *ngIf="!add && tradeStrategy.statusId !=4">
+                                    <div class="cursor closed-legs-header pb-0" (click)="showClosedLegs()">
+                                        <div class="closed-legs-title">
+                                            <span>Closed Positions</span>
+                                            <i class="negative-amt material-icons"
+                                                *ngIf="closedLegs">keyboard_arrow_down</i>
+                                            <i class="negative-amt material-icons"
+                                                *ngIf="!closedLegs">keyboard_arrow_right</i>
                                         </div>
-                                        <div class="closed-legs-body pt-1" *ngIf="closedLegs && tradeHistory">
-                                            <div class="text-center" *ngIf="tradeHistory.stockLegHistories.length === 0 && tradeHistory.optionLegHistories.length === 0">
-                                                No closed positions
-                                            </div>
-                                            
-                                            <div class="trade-card-box"
-                                                *ngFor="let item of tradeHistory.stockLegHistories;let index = index">
-                                                
-                                                <div class="card-main card-main-actions">
-                                                    <label class="col-form-label pt-0">Action</label>
-                                                    <select id="inputState" class="form-control disabled px-0"
-                                                        [(ngModel)]="item.actionType">
-                                                        <option value=1 selected data-default>Buy to Open</option>
-                                                        <option value=2>Sell to Open</option>
-                                                        <option value=3>Buy to Close</option>
-                                                        <option value=4>Sell to Close</option>
-                                                    </select>
-                                                </div>
-                                                <div class="card-main card-main-md">
-                                                    <label class="col-form-label pt-0">Quantity</label>
-                                                    <input type="number" min="0" class="form-control cards-input disabled"
-                                                        [(ngModel)]="item.quantity" />
-                                                </div>
-                                                <div class="card-main card-main-custom pr-1">
-                                                    <label class="col-form-label pt-0">Entry Price</label>
-                                                    <input type="number" min="0" class="form-control cards-input disabled"
-                                                        [(ngModel)]="item.entryPrice" pattern="^\d*(\.\d{0,3})?$"
-                                                        step="0.0001" />
-                                                </div>
-                                                <div class="card-main card-main-custom">
-                                                    <label class="col-form-label pt-0">Exit Price</label>
-                                                    <input type="number" min="0" class="form-control cards-input disabled"
-                                                        [(ngModel)]="item.exitPrice" pattern="^\d*(\.\d{0,3})?$"
-                                                        step="0.0001" />
-                                                </div>
-                                                <div class="card-main card-main-sm">
-                                                    <label class="col-form-label pt-0">Return</label>
-                                                    <h6 class="input_text">
-                                                        {{(item.quantity && item.exitPrice !== undefined && item.entryPrice != undefined) ?
-                                                        (item.quantity * (item.exitPrice - item.entryPrice) *
-                                                        (item.actionType == 3 ? -1 : 1)).toFixed(2) : 0}}
-                                                    </h6>
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="trade-card-box mb-1" *ngIf="tradeHistory.optionLegHistories.length > 0">
-                                                <div class="card-main card-main-actions">Action</div>
-                                                <div class="card-main card-main-md">Quantity</div>
-                                                <div class="card-main card-main-md">Strike</div>
-                                                <div class="card-main">Expiration</div>
-                                                <div class="card-main card-main-md">Call / Put</div>
-                                                <div class="card-main card-main-md">Entry Price</div>
-                                                <div class="card-main card-main-md">Exit Price</div>
-                                                <div class="card-main card-main-md">Return</div>
-                                            </div>
-                                            <div class="mb-1 trade-card-box"
-                                                *ngFor="let item of tradeHistory.optionLegHistories;let index = index">
-                                                <div class="card-main card-main-actions">
-                                                    <select id="inputState" class="form-control disabled px-0"
-                                                        [(ngModel)]="item.actionType">
-                                                        <option value=1 selected data-default>Buy to Open</option>
-                                                        <option value=2>Sell to Open</option>
-                                                        <option value=3>Buy to Close</option>
-                                                        <option value=4>Sell to Close</option>
-                                                    </select>
-                                                </div>
-                                                <div class="card-main card-main-md">
-                                                    <input type="number" min="0" class="form-control cards-input disabled"
-                                                        [(ngModel)]="item.contracts" />
-                                                </div>
-
-                                                <div class="card-main card-main-md">
-                                                    <input type="number" step="0.0001" min="0"
-                                                        class="form-control cards-input disabled"
-                                                        [(ngModel)]="item.strikePrice" pattern="^\d*(\.\d{0,3})?$" />
-                                                </div>
-                                                <div class="card-main">
-                                                    <div class="datepicker-group">
-                                                        <input matInput [matDatepicker]="expireDate" id="expireDate"
-                                                            name="item.expireDate" class="disabled"
-                                                            [(ngModel)]="item.expireDate" />
-                                                        <mat-datepicker-toggle matSuffix [for]="expireDate"
-                                                            class="disabled">
-                                                        </mat-datepicker-toggle>
-                                                        <mat-datepicker #expireDate></mat-datepicker>
-                                                    </div>
-                                                </div>
-                                                <div class="card-main card-main-md">
-                                                    <select id="inputState" class="form-control select-input disabled px-0"
-                                                        [(ngModel)]="item.optionType">
-                                                        <option value=1 selected data-default>Call</option>
-                                                        <option value=2>Put</option>
-                                                    </select>
-                                                </div>
-
-                                                <div class="card-main card-main-md">
-                                                    <input type="number" min="0" class="form-control cards-input disabled"
-                                                        [(ngModel)]="item.entryPrice" pattern="^\d*(\.\d{0,3})?$"
-                                                        step="0.0001" />
-                                                </div>
-                                                <div class="card-main card-main-md">
-                                                    <input type="number" min="0" class="form-control cards-input disabled"
-                                                        [(ngModel)]="item.exitPrice" pattern="^\d*(\.\d{0,3})?$"
-                                                        step="0.0001" />
-                                                </div>
-                                                <div class="card-main card-main-md">
-                                                    <h6 class="input_text">
-                                                        {{(item.contracts && item.exitPrice != undefined && item.entryPrice != undefined) ?
-                                                        (item.contracts * ((item.exitPrice - item.entryPrice)) *
-                                                        (item.actionType == 3 ? -1 : 1)).toFixed(2) : 0}}
-                                                    </h6>
-                                                </div>
-                                            </div>
-                                        </div>
-
                                     </div>
-                                    <div class="closed-legs-sec">
-                                        <div class="widget-2 mt-1"
-                                            *ngIf="stockOrOptionAdded == true && strategyTypeSummaryResult">
-                                            <div class="widget_header">
-                                                <h5 class="widget_header-label">Proﬁt Potential and Risk</h5>
-                                                <button type="button" class="btn p-0 text-link"
-                                                    (click)="calculateMaxProfitAndRisk()">Calculate</button>
+                                    <div class="closed-legs-body pt-1" *ngIf="closedLegs && tradeHistory">
+                                        <div class="text-center" *ngIf="tradeHistory.stockLegHistories.length === 0 && tradeHistory.optionLegHistories.length === 0">
+                                            No closed positions
+                                        </div>
+                                        
+                                        <div class="trade-card-box"
+                                            *ngFor="let item of tradeHistory.stockLegHistories;let index = index">
+                                            
+                                            <div class="card-main card-main-actions">
+                                                <label class="col-form-label pt-0">Action</label>
+                                                <select id="inputState" class="form-control disabled px-0"
+                                                    [(ngModel)]="item.actionType">
+                                                    <option value=1 selected data-default>Buy to Open</option>
+                                                    <option value=2>Sell to Open</option>
+                                                    <option value=3>Buy to Close</option>
+                                                    <option value=4>Sell to Close</option>
+                                                </select>
+                                            </div>
+                                            <div class="card-main card-main-md">
+                                                <label class="col-form-label pt-0">Quantity</label>
+                                                <input type="number" min="0" class="form-control cards-input disabled"
+                                                    [(ngModel)]="item.quantity" />
+                                            </div>
+                                            <div class="card-main card-main-custom pr-1">
+                                                <label class="col-form-label pt-0">Entry Price</label>
+                                                <input type="number" min="0" class="form-control cards-input disabled"
+                                                    [(ngModel)]="item.entryPrice" pattern="^\d*(\.\d{0,3})?$"
+                                                    step="0.0001" />
+                                            </div>
+                                            <div class="card-main card-main-custom">
+                                                <label class="col-form-label pt-0">Exit Price</label>
+                                                <input type="number" min="0" class="form-control cards-input disabled"
+                                                    [(ngModel)]="item.exitPrice" pattern="^\d*(\.\d{0,3})?$"
+                                                    step="0.0001" />
+                                            </div>
+                                            <div class="card-main card-main-sm">
+                                                <label class="col-form-label pt-0">Return</label>
+                                                <h6 class="input_text">
+                                                    {{(item.quantity && item.exitPrice !== undefined && item.entryPrice != undefined) ?
+                                                    (item.quantity * (item.exitPrice - item.entryPrice) *
+                                                    (item.actionType == 3 ? -1 : 1)).toFixed(2) : 0}}
+                                                </h6>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="trade-card-box mb-1" *ngIf="tradeHistory.optionLegHistories.length > 0">
+                                            <div class="card-main card-main-actions">Action</div>
+                                            <div class="card-main card-main-md">Quantity</div>
+                                            <div class="card-main card-main-md">Strike</div>
+                                            <div class="card-main">Expiration</div>
+                                            <div class="card-main card-main-md">Call / Put</div>
+                                            <div class="card-main card-main-md">Entry Price</div>
+                                            <div class="card-main card-main-md">Exit Price</div>
+                                            <div class="card-main card-main-md">Return</div>
+                                        </div>
+                                        <div class="mb-1 trade-card-box"
+                                            *ngFor="let item of tradeHistory.optionLegHistories;let index = index">
+                                            <div class="card-main card-main-actions">
+                                                <select id="inputState" class="form-control disabled px-0"
+                                                    [(ngModel)]="item.actionType">
+                                                    <option value=1 selected data-default>Buy to Open</option>
+                                                    <option value=2>Sell to Open</option>
+                                                    <option value=3>Buy to Close</option>
+                                                    <option value=4>Sell to Close</option>
+                                                </select>
+                                            </div>
+                                            <div class="card-main card-main-md">
+                                                <input type="number" min="0" class="form-control cards-input disabled"
+                                                    [(ngModel)]="item.contracts" />
                                             </div>
 
-                                            <div class="row no-gutters justify-content-between">
-                                                <div class="widget_item">
-                                                    <h6 class="widget_item-value"
-                                                        *ngIf="maxRiskDetails && maxRiskDetails.maxProfit">
-                                                        {{maxRiskDetails.maxProfit}}</h6>
-                                                    <span class="widget_item-title">Maximum Proﬁt</span>
+                                            <div class="card-main card-main-md">
+                                                <input type="number" step="0.0001" min="0"
+                                                    class="form-control cards-input disabled"
+                                                    [(ngModel)]="item.strikePrice" pattern="^\d*(\.\d{0,3})?$" />
+                                            </div>
+                                            <div class="card-main">
+                                                <div class="datepicker-group">
+                                                    <input matInput [matDatepicker]="expireDate" id="expireDate"
+                                                        name="item.expireDate" class="disabled"
+                                                        [(ngModel)]="item.expireDate" />
+                                                    <mat-datepicker-toggle matSuffix [for]="expireDate"
+                                                        class="disabled">
+                                                    </mat-datepicker-toggle>
+                                                    <mat-datepicker #expireDate></mat-datepicker>
                                                 </div>
-                                                <div class="widget_item widget_item_danger">
-                                                    <h6 class="widget_item-value"
-                                                        *ngIf="maxRiskDetails && maxRiskDetails.maxRisk">
-                                                        {{maxRiskDetails.maxRisk}}</h6>
-                                                    <span class="widget_item-title">Maximum Risk </span>
-                                                </div>
+                                            </div>
+                                            <div class="card-main card-main-md">
+                                                <select id="inputState" class="form-control select-input disabled px-0"
+                                                    [(ngModel)]="item.optionType">
+                                                    <option value=1 selected data-default>Call</option>
+                                                    <option value=2>Put</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="card-main card-main-md">
+                                                <input type="number" min="0" class="form-control cards-input disabled"
+                                                    [(ngModel)]="item.entryPrice" pattern="^\d*(\.\d{0,3})?$"
+                                                    step="0.0001" />
+                                            </div>
+                                            <div class="card-main card-main-md">
+                                                <input type="number" min="0" class="form-control cards-input disabled"
+                                                    [(ngModel)]="item.exitPrice" pattern="^\d*(\.\d{0,3})?$"
+                                                    step="0.0001" />
+                                            </div>
+                                            <div class="card-main card-main-md">
+                                                <h6 class="input_text">
+                                                    {{(item.contracts && item.exitPrice != undefined && item.entryPrice != undefined) ?
+                                                    (item.contracts * ((item.exitPrice - item.entryPrice)) *
+                                                    (item.actionType == 3 ? -1 : 1)).toFixed(2) : 0}}
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="closed-legs-sec">
+                                    <div class="widget-2 mt-1"
+                                        *ngIf="stockOrOptionAdded == true && strategyTypeSummaryResult">
+                                        <div class="widget_header">
+                                            <h5 class="widget_header-label">Proﬁt Potential and Risk</h5>
+                                            <button type="button" class="btn p-0 text-link"
+                                                (click)="calculateMaxProfitAndRisk()">Calculate</button>
+                                        </div>
+
+                                        <div class="row no-gutters justify-content-between">
+                                            <div class="widget_item">
+                                                <h6 class="widget_item-value"
+                                                    *ngIf="maxRiskDetails && maxRiskDetails.maxProfit">
+                                                    {{maxRiskDetails.maxProfit}}</h6>
+                                                <span class="widget_item-title">Maximum Proﬁt</span>
+                                            </div>
+                                            <div class="widget_item widget_item_danger">
+                                                <h6 class="widget_item-value"
+                                                    *ngIf="maxRiskDetails && maxRiskDetails.maxRisk">
+                                                    {{maxRiskDetails.maxRisk}}</h6>
+                                                <span class="widget_item-title">Maximum Risk </span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
-                            </mat-step>
-                        </mat-horizontal-stepper>
-
-                        <app-trade-details-aside 
-                            [addTrade]="add" 
-                            [editTrade]="edit" 
-                            [closeTrade]="close"
-                            [viewTrade]="view"
-                            [inputState]="inputState"
-                            (reloadTradeDetails)="evaluateStrategyValues($event, 'WEB')"
-                            (navigateRiskAnalysisEvent)="navigaeToRiskAnalysis('WEB')"
-                            [selectedStock]="selectedStock" [stockSummary]="stockSummary"
-                            (loadMoreStats)="loadMoreStatsHandler($event)" (calculateMaxRisk)="calculateMaxRisk($event, 'WEB')"
-                            [strategyTypeChangeSubject]="strategyTypeChangeSubject"
-                            [stockOrOptionAddedSubject]="stockOrOptionAddedSubject" [tradeStrategy]="tradeStrategy" #tradeDetailsAside>
-                        </app-trade-details-aside>
-                    </div>
-                    <div class="col-4 right-sidebar">
-                        <div class="trade-actions mb-2">
-                            <button type="button" class="btn btn-next mr-2"
-                                *ngIf="(add && (tradeDetails.stockOptions.length || tradeDetails.stockAdded)) && !isDemoMode"
-                                (click)="evaluateStrategyRules('WEB')" [disabled]="!isValidTradeStrategy('WEB')">ADD
-                                TRADE</button>
-        
-                            <!-- <span
-                                *ngIf="(tradeDetails.stockAdded || tradeDetails.stockOptions.length > 0) && (stepper.selectedIndex == 0) && !isDemoMode">
-                                <button type="button" class="btn btn-outline-primary"
-                                    *ngIf="!close && !tradeStrategy.executed && !edit" (click)="saveTradeAsDraft('WEB')"
-                                    [disabled]="!isValidTradeStrategy('WEB')">Save
-                                    as Draft</button>
-                            </span> -->
-        
-                            <button type="button" class="btn btn-next mr-3" *ngIf="edit && !isDemoMode" (click)="editTrade('WEB')"
-                                [disabled]="!isValidTradeStrategy('WEB')">UPDATE</button>
-        
-                            <button type="button" class="btn btn-next mr-2" *ngIf="close && !view && !isDemoMode"
-                                (click)="closeTrade('WEB')" [disabled]="!isValidTradeStrategy('WEB')">CLOSE TRADE</button>
-        
-                            <button type="button" class="btn btn-gray mr-2" *ngIf="edit" (click)="cancelTrade()">CANCEL</button>
-        
-                            <button type="button" class="btn btn-next" *ngIf="view && !isDemoMode" (click)="updateClosedTrade('WEB')">Save</button>
-                        </div>
-                        <!-- <div class="d-flex justify-content-end mb-1">
-                            <span class="share-trade-field"><input class="checkbox mr-1" type="checkbox" (change)="onShareTradeChange($event)"> Share Trade<img src="../../../../assets/images/beta-icon.png" class="beta-icon"/></span>
-                            <div class="trade-dash-name text-primary">
-                                <span *ngIf="add == false">
-                                    <label class="col-form-label">Last Updated Date : {{updatedDate | date: 'dd-MMM-yyyy'}}</label>
-                                </span>
                             </div>
-                        </div> -->
-                        
-                        <app-trade-thesis (nextStep)="goForward()" (prevStep)="goBack(true)"
-                            [inputState]="inputState" [editTrade]="edit" [viewTrade]="view" [addTrade]="add"
-                            [closeTrade]="close" [selectedStock]="selectedStock" (evalRulesEvent)="evalGridRules($event, 'WEB')" #tradeThesis>
-                        </app-trade-thesis>
 
-                        <app-entry-rules 
-                            (prevStep)="goBack()" 
-                            [inputState]="inputState" 
-                            [editTrade]="edit"
-                            [addTrade]="add" 
-                            [closeTrade]="close" 
-                            [viewTrade]="view"
-                            (evalRulesEvent)="evalGridRules($event, 'WEB')" #entryRules>
-                        </app-entry-rules>
-                        
-                        <!-- <app-exit-rules 
-                            [inputState]="inputState" 
-                            [addTrade]="add" 
-                            [viewTrade]="view"
-                            [closeTrade]="close" #exitRules>
-                        </app-exit-rules> -->
-                    </div>
+                        </mat-step>
+                    </mat-horizontal-stepper>
+
+                    <app-trade-details-aside 
+                        [addTrade]="add" 
+                        [editTrade]="edit" 
+                        [closeTrade]="close"
+                        [viewTrade]="view"
+                        [inputState]="inputState"
+                        (reloadTradeDetails)="evaluateStrategyValues($event, 'WEB')"
+                        (navigateRiskAnalysisEvent)="navigaeToRiskAnalysis('WEB')"
+                        [selectedStock]="selectedStock" [stockSummary]="stockSummary"
+                        (loadMoreStats)="loadMoreStatsHandler($event)" (calculateMaxRisk)="calculateMaxRisk($event, 'WEB')"
+                        [strategyTypeChangeSubject]="strategyTypeChangeSubject"
+                        [stockOrOptionAddedSubject]="stockOrOptionAddedSubject" [tradeStrategy]="tradeStrategy" #tradeDetailsAside>
+                    </app-trade-details-aside>
                 </div>
-            </ng-container>
-        </ng-container>
+                <div class="col-4 right-sidebar">
+                    <div class="trade-actions mb-2">
+                        <button type="button" class="btn btn-next mr-2"
+                            *ngIf="(add && (tradeDetails.stockOptions.length || tradeDetails.stockAdded)) && !isDemoMode"
+                            (click)="evaluateStrategyRules('WEB')" [disabled]="!isValidTradeStrategy('WEB')">ADD
+                            TRADE</button>
+    
+                        <!-- <span
+                            *ngIf="(tradeDetails.stockAdded || tradeDetails.stockOptions.length > 0) && (stepper.selectedIndex == 0) && !isDemoMode">
+                            <button type="button" class="btn btn-outline-primary"
+                                *ngIf="!close && !tradeStrategy.executed && !edit" (click)="saveTradeAsDraft('WEB')"
+                                [disabled]="!isValidTradeStrategy('WEB')">Save
+                                as Draft</button>
+                        </span> -->
+    
+                        <button type="button" class="btn btn-next mr-3" *ngIf="edit && !isDemoMode" (click)="editTrade('WEB')"
+                            [disabled]="!isValidTradeStrategy('WEB')">UPDATE</button>
+    
+                        <button type="button" class="btn btn-next mr-2" *ngIf="close && !view && !isDemoMode"
+                            (click)="closeTrade('WEB')" [disabled]="!isValidTradeStrategy('WEB')">CLOSE TRADE</button>
+    
+                        <button type="button" class="btn btn-gray mr-2" *ngIf="edit" (click)="cancelTrade()">CANCEL</button>
+    
+                        <button type="button" class="btn btn-next" *ngIf="view && !isDemoMode" (click)="updateClosedTrade('WEB')">Save</button>
+                    </div>
+                    <!-- <div class="d-flex justify-content-end mb-1">
+                        <span class="share-trade-field"><input class="checkbox mr-1" type="checkbox" (change)="onShareTradeChange($event)"> Share Trade<img src="../../../../assets/images/beta-icon.png" class="beta-icon"/></span>
+                        <div class="trade-dash-name text-primary">
+                            <span *ngIf="add == false">
+                                <label class="col-form-label">Last Updated Date : {{updatedDate | date: 'dd-MMM-yyyy'}}</label>
+                            </span>
+                        </div>
+                    </div> -->
+                    
+                    <app-trade-thesis (nextStep)="goForward()" (prevStep)="goBack(true)"
+                        [inputState]="inputState" [editTrade]="edit" [viewTrade]="view" [addTrade]="add"
+                        [closeTrade]="close" [selectedStock]="selectedStock" (evalRulesEvent)="evalGridRules($event, 'WEB')" #tradeThesis>
+                    </app-trade-thesis>
 
-    </div>
+                    <app-entry-rules 
+                        (prevStep)="goBack()" 
+                        [inputState]="inputState" 
+                        [editTrade]="edit"
+                        [addTrade]="add" 
+                        [closeTrade]="close" 
+                        [viewTrade]="view"
+                        (evalRulesEvent)="evalGridRules($event, 'WEB')" #entryRules>
+                    </app-entry-rules>
+                    
+                    <!-- <app-exit-rules 
+                        [inputState]="inputState" 
+                        [addTrade]="add" 
+                        [viewTrade]="view"
+                        [closeTrade]="close" #exitRules>
+                    </app-exit-rules> -->
+                </div>
+            </div>
+        </ng-container>
+    </ng-container>
 </div>
 
 <!-- Add-new-trade-mobile -->
