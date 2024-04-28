@@ -39,7 +39,7 @@
     font-size: 18px;
     line-height: 30px;
     color: #5B5C60;
-    padding: 0.5rem 0;
+    padding: 0.5rem;
 }
 
 .inner-trade {
@@ -545,7 +545,6 @@ td.mat-cell {
     font-size: 15px;               // font size of trade plan dates
     line-height: 24px;
     color: #5B5C60;             //color of the date and delete icon for the inactive trade plana
-    margin-left: 10px;            //Venkat added to move dates a little to the right
     .date-filter-header {
         display: flex;
         align-items: center;
@@ -569,7 +568,7 @@ td.mat-cell {
             background:rgb(157 166 186 / 21%);
             border-bottom: 1px solid rgb(157 166 186 / 55%);
             cursor: pointer;
-            padding: 0.5rem 1rem;
+            padding: 0.5rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -581,7 +580,6 @@ td.mat-cell {
             background:#fff;
             color: #5B5C60;  //color of the date and delete icon for the active trade plan
             font-size: 15px;
-            font-weight: 600;
         }
     }
 }
@@ -600,13 +598,13 @@ td.mat-cell {
     }
 }
 .trade-plan-lt {
-    max-width: 15%;
-    flex: 0 0 15.666667%;
+    max-width: 12%;
+    flex: 0 0 12.666667%;
     padding: 0;
 }
 .trade-plan-rt {
-    max-width: 85%;
-    flex: 0 0 85.333333%;
+    max-width: 87%;
+    flex: 0 0 87.333333%;
 }
 .mat-expansion-panel {
     box-shadow:none;

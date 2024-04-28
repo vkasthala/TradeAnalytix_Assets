@@ -1,4 +1,7 @@
 @import '../../../../assets/styles/variable.scss';
+.reports-section {
+    padding-bottom: 2rem;
+}
 // tabs
 .tab .nav-tabs {
     display: flex;
@@ -55,6 +58,7 @@
     padding: 0px;
     margin-top: 0;
     font-size: 15px;
+    background: #F2F4F6;
     @media #{$extra-small} {
         overflow-y: scroll;
     }

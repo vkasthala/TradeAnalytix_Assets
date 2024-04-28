@@ -4,7 +4,9 @@
 .main-body {
     background: #FFFFFF;
 }
-
+.tab-pane {
+    background: #FFFFFF;
+}
 // risk tabs
 .tab .nav-tabs {
     display: flex;
@@ -58,9 +60,10 @@
 }
 
 .tab .tab-content {
-    padding: 0px;
+    padding: 10px;
     margin-top: 0;
     font-size: 15px;
+    background-color: #F2F4F6;
     @media #{$extra-small} {
         overflow-y: scroll;
     }
