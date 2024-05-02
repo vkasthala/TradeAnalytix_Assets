@@ -286,7 +286,7 @@
 }
 
 .app .header .right-nav .user-nav .dropdown-nav .dropdown-nav-header {
-    padding: 10px 15px
+    padding: 10px;
 }
 
 .app .header .right-nav .user-nav .dropdown-nav .dropdown-nav-header a {
@@ -298,21 +298,24 @@
 }
 
 .app .header .right-nav .user-nav .dropdown-nav .dropdown-nav-header h4 {
-    margin: 0
+    margin: 0;
+    font-size: 1.25rem;
 }
 
 .app .header .right-nav .user-nav .dropdown-nav .dropdown-nav-header .email {
-    color: var(--color-text-1)
+    color: var(--color-text-1);
+    font-size: 18px;
 }
 
 .app .header .right-nav .user-nav .dropdown-nav li a, .list-flat-item {
     display: inline-block;
     vertical-align: middle;
-    line-height: 35px;
-    padding: 0 10px;
+    padding: 8px 10px;
     color: var(--color-text-default);
     width: 100%;
     position: relative;
+    font-size: 18px;
+    font-weight: 500;
 }
 
 .app .header .right-nav .user-nav .dropdown-nav li:hover {
@@ -355,11 +358,11 @@ body {
 .mat-horizontal-stepper-header-container {
     color: #5B5C60;
     font-size: 18px;
-    box-shadow: 0 1px 5px 0 rgba(var(--color-border-5--rgb), 0.1);
-    background: #fff;
+    box-shadow: 0px -4px 16px rgba(157, 157, 157, 0.1);
+    background: #f6f8fb;
     align-items: center;
     display: flex;
-    padding: 3px 20px;
+    padding: 3px 0;
     position: relative;
 }
 
@@ -3169,4 +3172,8 @@ button.button-outline {
 
 .orderbook .trades-modal, .orderbook .trades-modal table tbody td, .orderbook .trades-modal table thead th, .orderbook .trades-wrap .page-title .icon, .positions .product-modify-modal label, .text-small {
     font-size: .875rem;
+}
+
+.settings-container .mat-expansion-panel-body {
+    padding: 0 1rem;
 }
