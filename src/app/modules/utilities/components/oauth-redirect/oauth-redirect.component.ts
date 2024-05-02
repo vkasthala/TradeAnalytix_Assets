@@ -36,6 +36,7 @@ export class OauthRedirectComponent implements OnInit {
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
+      debugger;
       let token = params['token'];
       this.urlToNavigateAfterLogin = params['navigateUrl'];
       if (token) {

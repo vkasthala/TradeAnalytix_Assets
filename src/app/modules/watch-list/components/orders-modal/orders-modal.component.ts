@@ -223,26 +223,6 @@ export class OrdersModalComponent implements OnInit {
   openIntradayOrderPopup() {
     console.log(this.margins);
     let ruleCheckdata: OrderRuleCheckRequest = this.getOrderPlacementRequest();
-    // ruleCheckdata.cost = this.getPrice();
-    // let price = this.getPrice();
-    // if(!price){
-    //   price = this.getTriggerPrice();
-    // }
-    // if(this.margins.quantity < 0) {
-    //   ruleCheckdata.quantity = Math.abs(this.margins.quantity);
-    // }
-    // ruleCheckdata.cost = ruleCheckdata.quantity * price;
-    // if(this.margins.product === "MIS"){
-    //   ruleCheckdata.intradayCost = ruleCheckdata.cost;
-    // } else {
-    //   ruleCheckdata.intradayCost = 0;
-    // }
-    // let stopLossEnabled = this.margins.order_type == 'SL' || this.margins.order_type == 'SL-M';
-    // ruleCheckdata.stopLossEnabled = stopLossEnabled ? 'Yes' : 'No';
-    // if(ruleCheckdata.tradeType == 'OPTION'){
-    // ruleCheckdata.sameDayExpiryExcluded = this.checkIfSameDayExpiryExcluded(this.margins.expiry);
-    // ruleCheckdata.nextDayExpiryExcluded = this.checkIfNextDayExpiryExcluded(this.margins.expiry);
-    // }
     ruleCheckdata.tradeType = this.margins.tradeType;
     if(ruleCheckdata.tradeType == 'OPTION') {
       ruleCheckdata.expiryDate = this.margins.expiry;
