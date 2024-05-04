@@ -41,267 +41,265 @@
         <button class="btn new-plan d-flex align-items-center" (click)="addTradePlanDate()">New Plan</button>
     </div>
 </div> -->
-<div class="card-body p-0" style="margin-bottom: 3rem;">
-    <div class="d-flex">
-        <div class="col-sm-2 trade-plan-lt">
-            <div class="trade-plan-title" *ngIf="planDates.length > 0">Trade Plans <span class="cursor ml-1" (click)="mydaterangeOpen()"><img src="../../../../assets/images/filter-black.png" /></span></div>
-            <div *ngIf="showMmydaterange" class="trade-date date-range-sm px-1">
-                <my-date-range-picker placeholder="Date range" id="mydaterange" name="mydaterange" [options]="myDateRangePickerOptions" (dateRangeChanged)="onDateRangeChanged($event)"></my-date-range-picker>
+<div class="row mx-0" style="margin-bottom: 3rem;">
+    <div class="col-sm-2 trade-plan-lt">
+        <div class="trade-plan-title" *ngIf="planDates.length > 0">Trade Plans <span class="cursor ml-1" (click)="mydaterangeOpen()"><img src="../../../../assets/images/filter-black.png" /></span></div>
+        <div *ngIf="showMmydaterange" class="trade-date date-range-sm px-1">
+            <my-date-range-picker placeholder="Date range" id="mydaterange" name="mydaterange" [options]="myDateRangePickerOptions" (dateRangeChanged)="onDateRangeChanged($event)"></my-date-range-picker>
+        </div>
+        
+        <div class="date-filter-list" *ngIf="planDates.length > 0">
+            <div class="date-filter-header border-bottom">
+                <span class="title cursor" (click)="openCreatePlan()">Create Plan </span>
             </div>
-            
-            <div class="date-filter-list" *ngIf="planDates.length > 0">
-                <div class="date-filter-header border-bottom">
-                    <span class="title cursor" (click)="openCreatePlan()">Create Plan </span>
+            <div *ngIf="showCreatePlan" class="bg-white p-2">
+                <div class="d-flex align-items-center">
+                    <div class="trade-plan-date">
+                        <div class="datepicker-group bg-white">
+                            <input matInput [matDatepicker]="tradePlanDate" 
+                            [min]="minDate"
+                            [max]="maxDate"
+                            [(ngModel)]="planDate"
+                            placeholder="Date"
+                            (dateInput)="addEvent('input', $event)"
+                            id="tradePlanDate" (dateChange)="addEvent('change', $event)">
+                            <mat-datepicker-toggle matSuffix [for]="tradePlanDate"></mat-datepicker-toggle>
+                            <mat-datepicker #tradePlanDate>
+                            </mat-datepicker>
+                        </div>
+                    </div>
+                    <span class="ml-2 add-new" (click)="addTradePlanDate()">Add</span>
                 </div>
-                <div *ngIf="showCreatePlan" class="bg-white p-2">
-                    <div class="d-flex align-items-center">
-                        <div class="trade-plan-date">
-                            <div class="datepicker-group bg-white">
-                                <input matInput [matDatepicker]="tradePlanDate" 
-                                [min]="minDate"
-                                [max]="maxDate"
-                                [(ngModel)]="planDate"
-                                placeholder="Date"
-                                (dateInput)="addEvent('input', $event)"
-                                id="tradePlanDate" (dateChange)="addEvent('change', $event)">
-                                <mat-datepicker-toggle matSuffix [for]="tradePlanDate"></mat-datepicker-toggle>
-                                <mat-datepicker #tradePlanDate>
-                                </mat-datepicker>
+            </div>
+            <!-- <div class="date-filter-header">
+                <span class="title">Plan Date</span>
+                <span class="cursor" (click)="mydaterangeOpen()"><img src="../../../../assets/images/filter-black.png" /></span>
+            </div> -->
+            
+            
+            <ul *ngFor="let date of planDates; let index = index">
+                <li [ngClass]="(selectedPlan && selectedPlan.id === date.id) ? 'active' : '' ">
+                    <span (click) = "onPlanSelect(date)">{{date.day | date: 'dd-MMM-yyyy'}}</span>
+                    <mat-icon class="ml-2 mat-icon-md delete_date" (click)="deleteTradePlan(date)">delete</mat-icon>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-sm-10 trade-plan-rt" *ngIf = "selectedPlan">
+        <div class="d-flex justify-content-between py-2">
+            <div class="trade-plan-title">
+                Trading Plan for {{selecedDate.day | date: 'dd-MMM-yyyy'}}
+            </div>
+            <button type="button" class="btn btn-save" (click)="saveTradePlan()">Save Plan</button>
+        </div>
+        <div class="trade-plan-container pb-1 mb-3">
+            <mat-accordion class="trade-plan-accordion w-100">
+                <mat-expansion-panel [expanded]="false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title style="flex-direction:column">
+                            Pre-Market Analysis
+                            <br/>
+                            <span class="sub-heading">Get ready for the day ahead by crafting a pre-market trading plan.</span>
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <ng-template matExpansionPanelContent>
+                        <div class="row mb-3 mt-2">
+                            <div class="col-sm-12">
+                                <div class="trade-plan-header justify-content-between">
+                                    <span>Create Notes</span>
+                                    <a class="add-new" (click)="openEconomicModal()">Economic Calendar</a>
+                                </div>
+                                <div>
+                                    <textarea placeholder="Share your insights on today's market and outline your planned trades for the day, providing rationale behind your decisions." class="textarea-lg"  [(ngModel)]="tradePlan.perspective"></textarea>
+                                </div>
                             </div>
                         </div>
-                        <span class="ml-2 add-new" (click)="addTradePlanDate()">Add</span>
-                    </div>
-                </div>
-                <!-- <div class="date-filter-header">
-                    <span class="title">Plan Date</span>
-                    <span class="cursor" (click)="mydaterangeOpen()"><img src="../../../../assets/images/filter-black.png" /></span>
-                </div> -->
-                
-                
-                <ul *ngFor="let date of planDates; let index = index">
-                    <li [ngClass]="(selectedPlan && selectedPlan.id === date.id) ? 'active' : '' ">
-                        <span (click) = "onPlanSelect(date)">{{date.day | date: 'dd-MMM-yyyy'}}</span>
-                        <mat-icon class="ml-2 mat-icon-md delete_date" (click)="deleteTradePlan(date)">delete</mat-icon>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="col-sm-10 trade-plan-rt" *ngIf = "selectedPlan">
-            <div class="d-flex justify-content-between py-2">
-                <div class="trade-plan-title">
-                    Trading Plan for {{selecedDate.day | date: 'dd-MMM-yyyy'}}
-                </div>
-                <button type="button" class="btn btn-save" (click)="saveTradePlan()">Save Plan</button>
-            </div>
-            <div class="trade-plan-container pb-1 mb-3">
-                <mat-accordion class="trade-plan-accordion w-100">
-                    <mat-expansion-panel [expanded]="false">
-                        <mat-expansion-panel-header>
-                            <mat-panel-title style="flex-direction:column">
-                                Pre-Market Analysis
-                                <br/>
-                                <span class="sub-heading">Get ready for the day ahead by crafting a pre-market trading plan.</span>
-                            </mat-panel-title>
-                        </mat-expansion-panel-header>
-                        <ng-template matExpansionPanelContent>
-                            <div class="row mb-3 mt-2">
-                                <div class="col-sm-12">
-                                    <div class="trade-plan-header justify-content-between">
-                                        <span>Create Notes</span>
-                                        <a class="add-new" (click)="openEconomicModal()">Economic Calendar</a>
-                                    </div>
-                                    <div>
-                                        <textarea placeholder="Share your insights on today's market and outline your planned trades for the day, providing rationale behind your decisions." class="textarea-lg"  [(ngModel)]="tradePlan.perspective"></textarea>
-                                    </div>
+
+                        <div class="planed-trades mb-3">
+                            <div class="mb-3 d-flex align-items-center justify-content-between">
+                                <div>
+                                    <div class="title">Planned Trades</div>
+                                    <span class="sub-heading">Here's the list of planned trades for today. Click "Add Trade" to add new trades to the list</span>
                                 </div>
+                                <button class="btn btn-sm btn-outline-black" *ngIf="!viewTradePlan" (click)="openPlannedTradeDialog()">
+                                    <mat-icon class="mat-icon-md">add</mat-icon> Add Trade
+                                </button>
                             </div>
+                            <app-planned-trades-grid [selectedPlan]="selectedPlan" [dataChangeSubject] = "dataChangeSubject" #plannedTradesGrid></app-planned-trades-grid>
+                        </div>
 
-                            <div class="planed-trades mb-3">
-                                <div class="mb-3 d-flex align-items-center justify-content-between">
-                                    <div>
-                                        <div class="title">Planned Trades</div>
-                                        <span class="sub-heading">Here's the list of planned trades for today. Click "Add Trade" to add new trades to the list</span>
-                                    </div>
-                                    <button class="btn btn-sm btn-outline-black" *ngIf="!viewTradePlan" (click)="openPlannedTradeDialog()">
-                                        <mat-icon class="mat-icon-md">add</mat-icon> Add Trade
-                                    </button>
+                    <!--       <div class="row">
+                            <div class="col-sm-6">
+                                <div class="inner-accordion">
+                                    <mat-accordion>
+                                        <mat-expansion-panel [expanded]="false">
+                                            <mat-expansion-panel-header>
+                                                <mat-panel-title>Positions</mat-panel-title>
+                                            </mat-expansion-panel-header>
+                                            <ng-template matExpansionPanelContent>
+                                                <app-open-strategies-grid [selectedPlan]="selectedPlan" #openStrategiesGrid></app-open-strategies-grid>
+                                            </ng-template>
+                                        </mat-expansion-panel>
+                                    </mat-accordion>
                                 </div>
-                                <app-planned-trades-grid [selectedPlan]="selectedPlan" [dataChangeSubject] = "dataChangeSubject" #plannedTradesGrid></app-planned-trades-grid>
-                            </div>
+                            </div> -->
 
-                     <!--       <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="inner-accordion">
-                                        <mat-accordion>
-                                            <mat-expansion-panel [expanded]="false">
-                                                <mat-expansion-panel-header>
-                                                    <mat-panel-title>Positions</mat-panel-title>
-                                                </mat-expansion-panel-header>
-                                                <ng-template matExpansionPanelContent>
-                                                    <app-open-strategies-grid [selectedPlan]="selectedPlan" #openStrategiesGrid></app-open-strategies-grid>
-                                                </ng-template>
-                                            </mat-expansion-panel>
-                                        </mat-accordion>
-                                    </div>
-                                </div> -->
-
-                     <!--           <div class="col-sm-6">
-                                    <div class="inner-accordion">
-                                        <mat-accordion>
-                                            <mat-expansion-panel [expanded]="false">
-                                                <mat-expansion-panel-header>
-                                                    <mat-panel-title>Trading Rules</mat-panel-title>
-                                                </mat-expansion-panel-header>
-                                                <ng-template matExpansionPanelContent>
-                                                    <div class="tab" role="tabpanel">
-                                                        <div class="trade-plan-header justify-content-between">
-                                                            <ul class="nav nav-tabs" role="tablist">
-                                                                <li class="active" role="presentation">
-                                                                    <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#CodedRules" role="tab">Automatic Rules</a>
-                                                                </li>
-                                                                <span class="mx-2">|</span>
-                                                                <li role="presentation">
-                                                                    <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#EntryExitRules" role="tab">Manual Rules</a>
-                                                                </li>
-                                                            </ul>
-                                                            <a class="add-new">Set Rules</a>
-                                                        </div>
-                                                        <div class="tab-content tabs">
-                                                            <div class="tab-pane active" id="CodedRules" role="tabpanel">
-                                                                <div class="d-flex table-container">
-                                                                    <table class="mat-table">
-                                                                        <thead>
-                                                                            <tr class="mat-header-row">
-                                                                                <th class="mat-header-cell">Trading Rule</th>
-                                                                                <th class="mat-header-cell value-cell">Value</th>
-                                                                            </tr>
-                                                                        </thead>
-                                                                        <tbody>
-                                                                            <tr class="mat-header-row" *ngFor="let coderule of portfolioLevelRules">
-                                                                                <td class="mat-cell">{{coderule.uiLabel}}</td>
-                                                                                <td class="mat-cell value-cell">
-                                                                                    <span class="d-flex align-items-center">
-                                                                                        <input type="text" class="form-control col-8 form-control-sm" [ngClass]="!coderule.editing ? 'disabled' : ''"
-                                                                                            [(ngModel)]="coderule.val" />
-                                                                                        <mat-icon class="ml-2 mat-icon-edit action-icon" (click)="onItemEdit(coderule)"
-                                                                                            *ngIf="coderule.editing">check_circle
-                                                                                        </mat-icon>
-                                                                                        <mat-icon class="ml-2 text-danger action-icon" (click)="onCancel(coderule)"
-                                                                                            *ngIf="coderule.editing">close</mat-icon>
-                                                                                    </span>
-                                                                                </td>
-                                                                            </tr>
-                                                                        </tbody>
-                                                                    </table>
-                                                                </div>
+                    <!--           <div class="col-sm-6">
+                                <div class="inner-accordion">
+                                    <mat-accordion>
+                                        <mat-expansion-panel [expanded]="false">
+                                            <mat-expansion-panel-header>
+                                                <mat-panel-title>Trading Rules</mat-panel-title>
+                                            </mat-expansion-panel-header>
+                                            <ng-template matExpansionPanelContent>
+                                                <div class="tab" role="tabpanel">
+                                                    <div class="trade-plan-header justify-content-between">
+                                                        <ul class="nav nav-tabs" role="tablist">
+                                                            <li class="active" role="presentation">
+                                                                <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#CodedRules" role="tab">Automatic Rules</a>
+                                                            </li>
+                                                            <span class="mx-2">|</span>
+                                                            <li role="presentation">
+                                                                <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#EntryExitRules" role="tab">Manual Rules</a>
+                                                            </li>
+                                                        </ul>
+                                                        <a class="add-new">Set Rules</a>
+                                                    </div>
+                                                    <div class="tab-content tabs">
+                                                        <div class="tab-pane active" id="CodedRules" role="tabpanel">
+                                                            <div class="d-flex table-container">
+                                                                <table class="mat-table">
+                                                                    <thead>
+                                                                        <tr class="mat-header-row">
+                                                                            <th class="mat-header-cell">Trading Rule</th>
+                                                                            <th class="mat-header-cell value-cell">Value</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <tr class="mat-header-row" *ngFor="let coderule of portfolioLevelRules">
+                                                                            <td class="mat-cell">{{coderule.uiLabel}}</td>
+                                                                            <td class="mat-cell value-cell">
+                                                                                <span class="d-flex align-items-center">
+                                                                                    <input type="text" class="form-control col-8 form-control-sm" [ngClass]="!coderule.editing ? 'disabled' : ''"
+                                                                                        [(ngModel)]="coderule.val" />
+                                                                                    <mat-icon class="ml-2 mat-icon-edit action-icon" (click)="onItemEdit(coderule)"
+                                                                                        *ngIf="coderule.editing">check_circle
+                                                                                    </mat-icon>
+                                                                                    <mat-icon class="ml-2 text-danger action-icon" (click)="onCancel(coderule)"
+                                                                                        *ngIf="coderule.editing">close</mat-icon>
+                                                                                </span>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
                                                             </div>
-                                                            <div class="tab-pane" id="EntryExitRules" role="tabpanel">
-                                                                <div class="d-flex table-container manual-rules">
-                                                                    <mat-table [dataSource]="dataSource" matSort>
-                                                                        <ng-container matColumnDef="description">
-                                                                            <mat-header-cell class="rule-cell" *matHeaderCellDef>Rule</mat-header-cell>
-                                                                            <mat-cell *matCellDef="let element" class="rule-cell"> {{element.description}} </mat-cell>
-                                                                        </ng-container>
-                                                        
-                                                                        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-                                                                        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-                                                                    </mat-table>
-                                                                    <span class="p-3 text-center" *ngIf="dataSource.totalCount === 0">You have not set any manual rules yet. Click 'Add Rule' to add a new manual rule</span>
-                                                                </div>
+                                                        </div>
+                                                        <div class="tab-pane" id="EntryExitRules" role="tabpanel">
+                                                            <div class="d-flex table-container manual-rules">
+                                                                <mat-table [dataSource]="dataSource" matSort>
+                                                                    <ng-container matColumnDef="description">
+                                                                        <mat-header-cell class="rule-cell" *matHeaderCellDef>Rule</mat-header-cell>
+                                                                        <mat-cell *matCellDef="let element" class="rule-cell"> {{element.description}} </mat-cell>
+                                                                    </ng-container>
+                                                    
+                                                                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                                                                    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                                                                </mat-table>
+                                                                <span class="p-3 text-center" *ngIf="dataSource.totalCount === 0">You have not set any manual rules yet. Click 'Add Rule' to add a new manual rule</span>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </ng-template>
-                                            </mat-expansion-panel>
-                                        </mat-accordion>
-                                    </div>
-                                    
+                                                </div>
+                                            </ng-template>
+                                        </mat-expansion-panel>
+                                    </mat-accordion>
                                 </div>
-                            </div> -->
-                            
-                        </ng-template>
-                    </mat-expansion-panel>
-                </mat-accordion>
-            </div>
+                                
+                            </div>
+                        </div> -->
+                        
+                    </ng-template>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
 
-            <div class="trade-plan-container pb-1">
-                <mat-accordion class="trade-plan-accordion w-100">
-                    <mat-expansion-panel [expanded]="false">
-                        <mat-expansion-panel-header>
-                            <mat-panel-title style="flex-direction:column">
-                                Post-Market Analysis
-                                <br/>
-                                <span class="sub-heading">Write about your experience in the market today </span>
-                            </mat-panel-title>
-                        </mat-expansion-panel-header>
-                        <ng-template matExpansionPanelContent>
-                            <div class="row mb-3">
-                                <div class="col-sm-12">
-                                    <div class="trade-plan-header justify-content-between">
-                                        <span>Create Notes</span>
-                                        <span class="add-new" *ngIf="!viewTradePlan" (click)="openRateExperienceDialog()">Rate Your Perfomance</span>
+        <div class="trade-plan-container pb-1">
+            <mat-accordion class="trade-plan-accordion w-100">
+                <mat-expansion-panel [expanded]="false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title style="flex-direction:column">
+                            Post-Market Analysis
+                            <br/>
+                            <span class="sub-heading">Write about your experience in the market today </span>
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <ng-template matExpansionPanelContent>
+                        <div class="row mb-3">
+                            <div class="col-sm-12">
+                                <div class="trade-plan-header justify-content-between">
+                                    <span>Create Notes</span>
+                                    <span class="add-new" *ngIf="!viewTradePlan" (click)="openRateExperienceDialog()">Rate Your Perfomance</span>
+                                </div>
+                                <div>
+                                    <textarea placeholder="Take a moment to reflect on your trading performance and analyze both the successes and challenges encountered throughout the day" class="textarea-lg" [(ngModel)]="tradePlan.lessons"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="planed-trades mb-3">
+                            <div class="mb-3 d-flex align-items-center justify-content-between">
+                                <div>
+                                    <div class="title mb-2">Executed Trades</div>
+                                    <span class="sub-heading">Here's the list of trades executed today. Click "Import Trades" to add trades from your brokerage accounts.</span>
+                                </div>
+                            <!--      <button class="btn btn-sm btn-outline-black" *ngIf="!viewTradePlan" [routerLink]="['/import-trades-history/']">
+                                    <mat-icon class="mat-icon-md">download</mat-icon> Import Trades
+                                </button> -->
+                                
+                            </div>
+                            <app-today-executed-legs [selectedPlan]="selectedPlan" #todayExcutedTradesGrid></app-today-executed-legs>
+                        </div>
+                        <!-- <div class="row">
+                            <div class="col-sm-6">
+                                <div class="mt-4 mb-3">
+                                    <label class="col-form-label">Rate your trading performance</label>
+                                    <div class="col-md-6 px-0">
+                                        <select class="form-control" [(ngModel)]="tradePlan.selfReview" (ngModelChange)="updateTradePlan()">
+                                            <option value="good">Good</option>
+                                            <option value="average">Average</option>
+                                            <option value="bad">Bad</option>
+                                        </select>
                                     </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="col-form-label">Did you align with your trading plan?</label>
+                                    <div class="col-sm-4 px-0">
+                                        <span class="d-flex align-items-center">
+                                            <label class="toggle m-0">
+                                                <input type="checkbox" id="tradingToggle" class="cursor" [checked]="tradePlan.tradeplanAligned" [(ngModel)]="tradePlan.tradeplanAligned" (ngModelChange)="updateTradePlan()">
+                                                <span class="slider"></span>
+                                                <span class="labels" data-on="Yes" data-off="No"></span>
+                                            </label>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="col-form-label">Do you want to set a new rule based on lessons learnt today?</label>
                                     <div>
-                                        <textarea placeholder="Take a moment to reflect on your trading performance and analyze both the successes and challenges encountered throughout the day" class="textarea-lg" [(ngModel)]="tradePlan.lessons"></textarea>
+                                        <a class="btn new-plan" (click)="addEntryExitRule('Add', 'SAVE')">Add Rule</a>
                                     </div>
                                 </div>
                             </div>
+                        </div> -->
 
-                            <div class="planed-trades mb-3">
-                                <div class="mb-3 d-flex align-items-center justify-content-between">
-                                    <div>
-                                        <div class="title mb-2">Executed Trades</div>
-                                        <span class="sub-heading">Here's the list of trades executed today. Click "Import Trades" to add trades from your brokerage accounts.</span>
-                                    </div>
-                              <!--      <button class="btn btn-sm btn-outline-black" *ngIf="!viewTradePlan" [routerLink]="['/import-trades-history/']">
-                                        <mat-icon class="mat-icon-md">download</mat-icon> Import Trades
-                                    </button> -->
-                                    
-                                </div>
-                                <app-today-executed-legs [selectedPlan]="selectedPlan" #todayExcutedTradesGrid></app-today-executed-legs>
-                            </div>
-                            <!-- <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="mt-4 mb-3">
-                                        <label class="col-form-label">Rate your trading performance</label>
-                                        <div class="col-md-6 px-0">
-                                            <select class="form-control" [(ngModel)]="tradePlan.selfReview" (ngModelChange)="updateTradePlan()">
-                                                <option value="good">Good</option>
-                                                <option value="average">Average</option>
-                                                <option value="bad">Bad</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="col-form-label">Did you align with your trading plan?</label>
-                                        <div class="col-sm-4 px-0">
-                                            <span class="d-flex align-items-center">
-                                                <label class="toggle m-0">
-                                                    <input type="checkbox" id="tradingToggle" class="cursor" [checked]="tradePlan.tradeplanAligned" [(ngModel)]="tradePlan.tradeplanAligned" (ngModelChange)="updateTradePlan()">
-                                                    <span class="slider"></span>
-                                                    <span class="labels" data-on="Yes" data-off="No"></span>
-                                                </label>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="col-form-label">Do you want to set a new rule based on lessons learnt today?</label>
-                                        <div>
-                                            <a class="btn new-plan" (click)="addEntryExitRule('Add', 'SAVE')">Add Rule</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> -->
-
-                            
-                            
-                             <div class="py-3">
-                                <app-dailystatistics [selectedPlan]="selectedPlan" #dailyPlanStats></app-dailystatistics>
-                            </div> 
-                        </ng-template>
-                    </mat-expansion-panel>
-                </mat-accordion>
-            </div>
+                        
+                        
+                            <div class="py-3">
+                            <app-dailystatistics [selectedPlan]="selectedPlan" #dailyPlanStats></app-dailystatistics>
+                        </div> 
+                    </ng-template>
+                </mat-expansion-panel>
+            </mat-accordion>
         </div>
     </div>
 </div>

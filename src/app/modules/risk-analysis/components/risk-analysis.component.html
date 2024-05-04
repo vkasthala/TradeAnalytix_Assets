@@ -1,5 +1,9 @@
-<div class="px-3 risk-analysis mt-3">
-    <div class="main-body">
+<div class="risk-analysis">
+    <div class="sub-nav">
+        <a [routerLink]="['/trade-plans/']" routerLinkActive="router-link-active"><span>Daily Plan</span></a>
+        <a [routerLink]="['/payoff-analyzer/']" routerLinkActive="router-link-active" class="active-item"><span>Payoff Analyzer</span></a>
+    </div>
+    <div class="main-body risk-analysis-body">
         <ng-container [ngSwitch]="currentState">
             <ng-container *ngSwitchCase="1">
                 <!--entry first-->

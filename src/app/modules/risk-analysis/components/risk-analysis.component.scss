@@ -2,9 +2,8 @@
 @import '../../../../assets/styles/breakpoints.scss';
 
 .risk-analysis {
-    @media #{$extra-small} {
-        display: none;
-    }
+    background: #f1f3f5;
+    
 }
 .trade-dash-name h3 {
     font-size: 14px !important;
@@ -868,7 +867,7 @@ a.btn.btn-skip {
 }
 
 .mat-expansion-panel {
-    box-shadow: none;
+    box-shadow: 0px 4px 16px rgba(157, 157, 157, 0.5);
     margin-bottom: 20px;
     border-radius: 4px !important;
 }
@@ -1129,4 +1128,11 @@ a.btn.btn-skip {
 
 .modal {
     top: 10% !important;
+}
+
+.risk-analysis-body {
+    padding:15px 20px;
+}
+.risk-inner {
+    margin-bottom: 3rem;
 }

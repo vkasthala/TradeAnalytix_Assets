@@ -4,7 +4,7 @@
 }
 .trade-plan-container {
     background: #FFFFFF;
-    box-shadow: 0px 4px 16px rgba(157, 157, 157, 0.1);
+    box-shadow: 0px 4px 16px rgba(157, 157, 157, 0.51);
     position: relative;
     padding: 10px 1rem;
 }
@@ -39,7 +39,7 @@
     font-size: 18px;
     line-height: 30px;
     color: #5B5C60;
-    padding: 0.5rem;
+    padding: 0.5rem 0;
 }
 
 .inner-trade {
@@ -599,12 +599,13 @@ td.mat-cell {
 }
 .trade-plan-lt {
     max-width: 12%;
-    flex: 0 0 12.666667%;
+    flex: 0 0 12%;
     padding: 0;
 }
 .trade-plan-rt {
-    max-width: 87%;
-    flex: 0 0 87.333333%;
+    max-width: 88%;
+    flex: 0 0 88%;
+    padding-right: 0;
 }
 .mat-expansion-panel {
     box-shadow:none;
