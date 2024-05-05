@@ -3,10 +3,10 @@
     <a [routerLink]="['/holdings/']" routerLinkActive="router-link-active" class="active-item"><span>Holdings</span></a>
 </div>
 
-<div class="px-3">
+<div class="container-main">
     <!-- <h3><button *ngIf="!environment.production" class="button-transparent" (click)='adminCreateHolding()'>Holdings ({{holdingsCount}})</button></h3>
     <h3 *ngIf="environment.production">Holdings ({{holdingsCount}})</h3> -->
-    <div class="data-table instruments-table fold-header" *ngIf="!isMobileDevice">
+    <div class="data-table instruments-table fold-header bg-white" *ngIf="!isMobileDevice">
         <table>
             <thead (mouseover)="hidePositionsActions(null)">
                 <tr>

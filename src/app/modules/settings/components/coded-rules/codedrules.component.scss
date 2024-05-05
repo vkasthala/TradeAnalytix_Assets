@@ -162,7 +162,7 @@ textarea {
 .mat-table {
     background: #FFFFFF;
     border: 1px solid rgb(157 166 186 / 20%);
-  //  box-shadow: 0px 4px 4px rgba(157, 157, 157, 0.5);
+   box-shadow: 0px 4px 4px rgba(157, 157, 157, 0.4);
 }
 
 tr.mat-header-row,
@@ -200,17 +200,17 @@ td.mat-cell {
     flex: 0 0 30%;
 }
 .action-cell {
-    width: 20%;
-    flex: 0 0 20%;
-}
-
-.value-cell {
     width: 15%;
     flex: 0 0 15%;
 }
+
+.value-cell {
+    width: 10%;
+    flex: 0 0 10%;
+}
 .status-cell {
-    width: 35%;
-    flex: 0 0 35%;
+    width: 45%;
+    flex: 0 0 45%;
 }
 .add-new {
     color: #4A69CB;

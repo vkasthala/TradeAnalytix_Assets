@@ -6,6 +6,8 @@
 }
 .tab-pane {
     background: #FFFFFF;
+    min-height: 100vh;
+    margin-bottom: 3rem;
 }
 // risk tabs
 .tab .nav-tabs {
@@ -61,10 +63,10 @@
 }
 
 .tab .tab-content {
-    padding: 0 1rem;
+    padding: 10px 20px;
     margin-top: 0;
     font-size: 15px;
-    background-color: #F2F4F6;
+    background-color: #f1f3f5;
     @media #{$extra-small} {
         overflow-y: scroll;
     }
@@ -335,12 +337,13 @@
 }
 .reports-header {
     color: #5B5C60;
-    font-size: 18px;
-    box-shadow: 0 1px 5px 0 rgba(var(--color-border-5--rgb), 0.1);
-    background: #fff;
     align-items: center;
     justify-content:space-between;
     display: flex;
-    padding: 3px 1rem;
-    background: #f5f8fa;
+
+    padding: 10px;
+    color: #5B5C60;
+    font-size: 18px;
+    box-shadow: 0 1px 5px 0 rgba(var(--color-border-5--rgb), 0.1);
+    background: #fff;
 }

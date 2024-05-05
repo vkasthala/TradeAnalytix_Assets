@@ -46,8 +46,8 @@
                         </div>
                         <div *ngIf="userDropDown" class="dropdown-nav layer-2">
                             <div class="dropdown-nav-header"><a href="/profile" class="">
-                                    <h4 class="username">Narasimha{{userDetails.name}}</h4>
-                                    <div class="email">test@gamil.com{{userDetails.email}}</div>
+                                    <h4 class="username">{{userDetails.name}}</h4>
+                                    <div class="email">{{userDetails | json}}</div>
                                 </a></div>
                             <hr>
                             <ul class="m-0">
