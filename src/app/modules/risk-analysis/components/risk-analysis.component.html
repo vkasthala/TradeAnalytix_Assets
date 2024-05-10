@@ -50,7 +50,7 @@
                             <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
                                 <mat-expansion-panel-header>
                                     <mat-panel-title>
-                                        Build a trade strategy with stock and option legs
+                                        Step 1: Build a trade strategy with stock and option legs
                                     </mat-panel-title>
                                 </mat-expansion-panel-header>
 
@@ -218,7 +218,7 @@
 
                             <mat-expansion-panel [expanded]="panelOpenState" (opened)="setStep(1)" (afterCollapse)="afterPanelClosed(1)" (afterExpand)="afterPanelOpened($event)" [disabled]="panelDisabled">
                                 <mat-expansion-panel-header>
-                                Provide the inputs to analyze the strategy (i.e., stock price range, days left to expiration, implied volatility))
+                                Step 2: Provide the inputs to analyze the strategy (i.e., stock price range, days left to expiration, implied volatility)
                                 </mat-expansion-panel-header>
 
                                 <ng-template matExpansionPanelContent>
@@ -331,7 +331,7 @@
                             <mat-expansion-panel [expanded]="panelExpand" (opened)="setStep(2)" [disabled]="panel3Disabled" (afterCollapse)="afterPanelClosed(2)">
                                 <mat-expansion-panel-header>
                                     <mat-panel-title>
-                                        Analyze the profit or loss of the trade strategy for the given inputs and update the strategy and inputs as needed to reassess the risk-reward profile
+                                        Step 3: Analyze the profitability of the strategy for the given inputs. Update the strategy and inputs to reassess the risk-reward profile
                                     </mat-panel-title>
                                 </mat-expansion-panel-header>
                                 <ng-template matExpansionPanelContent>
