@@ -2985,71 +2985,9 @@ button.sell {
     background-color: var(--color-bg-1)
 }
 
-.data-table table thead th.sortable:hover:after {
-    right: 0;
-    position: absolute;
-    padding-right: 7px;
-    padding-top: 3px;
-    font-family: kiteicons;
-    font-size: 10px;
-    content: "\e8f0"
-}
-
-.data-table table thead th.sortable.right:hover:after {
-    content: ""
-}
-
-.data-table table thead th.sortable.right:hover:before {
-    position: absolute;
-    left: 0;
-    padding-left: 7px;
-    padding-top: 3px;
-    font-family: kiteicons;
-    font-size: 10px;
-    content: "\e8f3"
-}
-
 .data-table table thead th.sorted {
     position: relative;
     background-color: var(--color-bg-1)
-}
-
-.data-table table thead th.sorted:after {
-    position: absolute;
-    right: 0;
-    padding-right: 7px;
-    padding-top: 3px;
-    font-family: kiteicons;
-    font-size: 10px
-}
-
-.data-table table thead th.sorted.asc:after {
-    content: "\e8f3"
-}
-
-.data-table table thead th.sorted.desc:after {
-    content: "\e8f0"
-}
-
-.data-table table thead th.sorted.right:after {
-    content: ""
-}
-
-.data-table table thead th.sorted.right:before {
-    position: absolute;
-    left: 0;
-    padding-left: 7px;
-    padding-top: 3px;
-    font-family: kiteicons;
-    font-size: 10px
-}
-
-.data-table table thead th.sorted.right.asc:before {
-    content: "\e8f3"
-}
-
-.data-table table thead th.sorted.right.desc:before {
-    content: "\e8f0"
 }
 
 .data-table table thead th.right-border {
