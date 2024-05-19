@@ -1,7 +1,11 @@
+<div class="sub-nav">
+    <a [routerLink]="['/import-trades-history/']" routerLinkActive="router-link-active"><span>Import Trades</span></a>
+    <a [routerLink]="['/stravtegies/']" routerLinkActive="router-link-active" class="active-item"><span>Trade History</span></a>
+</div>
 <div class="trade-strategies-sec">
     <div class="main-body">
-        <!-- <div class="trade-dash-main">
-            <div class="col-sm-8 pl-1">
+        <div class="text-right p-3">
+            <!-- <div class="col-sm-8 pl-1">
                 <div class="summary-items" *ngIf="isOpenPositions">
                     <div class="flex-item" *ngFor="let summary of summaryItems">
                         <div class="flex-inner">
@@ -11,25 +15,19 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
-            <div>
-                <div>
-                   <a routerLink="/bulk-update" class="btn btn-apply mx-2">Bulk Update</a>
-                    <span class="cursor ml-2" (click)="strategiesFilter()">
-                        <span *ngIf="!showFilters" class="text-blue text-sm" data-toggle="tooltip" data-placement="top"
-                            title="Show Filters">Show Filters</span>
-                        <span *ngIf="showFilters" class="text-primary text-sm" data-toggle="tooltip" data-placement="top"
-                            title="Close Filters">Hide Filters</span>
-                    </span>
-                    
-                </div>
-                
-            </div>
-        </div> -->
+            <a class="bold-link mr-2" [routerLink]="['/bulk-update/']">Bulk&nbsp;Journal</a>
+            <span class="cursor ml-2" (click)="strategiesFilter()">
+                <span *ngIf="!showFilters" class="text-blue" data-toggle="tooltip" data-placement="top"
+                    title="Show Filters">Show Filters</span>
+                <span *ngIf="showFilters" class="text-primary" data-toggle="tooltip" data-placement="top"
+                    title="Close Filters">Hide Filters</span>
+            </span>
+        </div>
+
         <div class="trade-strategies-table py-2 trade-strategies-filters">
-            <div class="text-right pr-3 pb-2"><a class="bold-link" [routerLink]="['/bulk-update/']">Bulk&nbsp;Journal</a></div>
-            <div class="d-flex justify-content-between align-items-center">
+            <div *ngIf="showFilters" class="d-flex justify-content-between align-items-center">
                 <div class="trade-st-box pt-0 pb-2">
                     <div class="st-slect-section">
                         <div class="trade-form strategies_filter">

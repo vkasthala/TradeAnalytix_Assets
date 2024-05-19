@@ -269,7 +269,7 @@ export class CodedRulesComponent implements OnInit {
       }
     });
     dialogRef.afterClosed().subscribe((res) => {
-      if (res) {
+      if (res || element.ruleType === 2) {
         element.val = res;
         this.addOrUpdateRule(element);
       }

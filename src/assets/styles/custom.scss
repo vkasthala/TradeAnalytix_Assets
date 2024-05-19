@@ -32,9 +32,9 @@
         width: 100%;
         text-align: left;
         height: 38px;
-        font-size: 14px;
+        font-size: 15px;
         font-weight: 500;
-        color: #000;
+        color: #5B5C60;
         font-family: Open Sans,sans-serif !important;
         &:focus {
             border: 0;
@@ -86,21 +86,31 @@
 }
 
 .mat-step-header[aria-selected="true"] {
-    background-color: #275C9F;
     position: relative;
     overflow: inherit;
 }
+.mat-step-header[aria-selected="true"]::before,
+.mat-step-header:hover::before {
+    content: '';
+    width: 100%;
+    height: 4px;
+    border-radius: 4px 4px 0px 0px;
+    background: #4A69CB;
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+}
 
 .text-link {
-    color: #275C9F;
+    color: #4A69CB;
     font-weight: 600;
     text-decoration: none !important;
     cursor: pointer;
-    font-size: 14px !important;
+    font-size: 15px !important;
 }
 
 .text-link:hover {
-    color: #000 !important;
+    color: #5B5C60 !important;
     text-decoration: none !important;
 }
 
@@ -123,7 +133,7 @@
     display: flex;
     width: 430px !important;
     flex-direction: column;
-    color: #000 !important;
+    color: #5B5C60 !important;
 }
 .toast-message, .toast-title {
     width: 100%;
@@ -171,7 +181,7 @@
 
 .trade-form .form-control {
     padding: 0.375rem 0.75rem;
-    font-size: 13px !important;   
+    font-size: 15px !important;   
     line-height: 1.5;
     color: #242E3A !important;
     height: 40px;
@@ -182,7 +192,7 @@
 }
 
 .mydrp .selection {
-    font-size: .89rem !important;
+    font-size: 0.9rem !important;
     padding: 0 40px 0 6px !important;
 }
 
@@ -269,7 +279,7 @@ input.mat-input-element {
 
 .form-control,
 .trade-thesis-sec {
-    font-size: 14px; //Updated to increase font size of month dropdown in the calendar report
+    font-size: 15px; //Updated to increase font size of month dropdown in the calendar report
 }
 
 .with-130 {
@@ -311,14 +321,14 @@ mat-header-cell:last-of-type,
 .mat-header-cell {
     background: #eaecf1;
     color: #393B40;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 600;
 }
 
 .mat-cell,
 .mat-footer-cell {
-    font-size: 14px;
-    color: #212529;
+    font-size: 15px;
+    color: #393B40;
 }
 
 .mat-row:nth-child(even) {
@@ -381,10 +391,10 @@ mat-header-cell:last-of-type,
 }
 .bottom-link:hover, .bottom-link.nav-active {
     background-color: #fff;
-    color: #275C9F;
+    color: #4A69CB;
     text-decoration: none;
     .nav-icon {
-        color: #275C9F;
+        color: #4A69CB;
     }
 }
 .bottom-link:before {
@@ -484,7 +494,7 @@ a.sidebar-link {
 .sidebar-link:hover, 
 .nav-active .sidebar-link {
     background-color: #fff;
-    color: #275C9F;
+    color: #4A69CB;
     text-decoration: none;
 }
 .sidebar-link:hover:before, .nav-active .sidebar-link:before {
@@ -503,17 +513,17 @@ a.sidebar-link {
         box-shadow: none;
     }
     .sidebar-link>.mat-icon {
-        color: #000;
+        color: #5B5C60;
         display: block;
     }
     .sidebar-link:hover>.mat-icon {
-        color: #275C9F;
+        color: #4A69CB;
     }
     .sidebar-link>span {
         display: none;
     }
     .sidebar-link:hover {
-        color: #275C9F;
+        color: #4A69CB;
         background: #FDFDFD;
         box-shadow: 0px 4px 16px rgba(157, 157, 157, 0.2);
         border-radius: 6px;
@@ -523,7 +533,7 @@ a.sidebar-link {
     }
     .sidebar-link:hover>span {
         display: block !important;
-        color: #275C9F;
+        color: #4A69CB;
     }
     .sidebar-item {
         padding-left: 10px;
@@ -561,7 +571,7 @@ a.sidebar-link {
     font-weight: 600;
     font-size: 26px;
     line-height: 55px;
-    color: #121D33;
+    color: #5B5C60;
     margin-left: 0px;      // Venkat addded this to move page headings to the left
 }
 
@@ -572,7 +582,7 @@ a.sidebar-link {
 
 .top-nav-link {
     padding: 0 0.5rem;
-    color: #275C9F;
+    color: #4A69CB;
     font-weight: 400;
     transition: background 50ms ease-in-out;
     text-decoration: none;
@@ -624,7 +634,7 @@ a.sidebar-link {
 .symbol-description {
     color: #9DA6BA;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 15px;
     @media #{$extra-small} {
         font-weight: normal;
         font-size: 14px;
@@ -762,7 +772,7 @@ textarea {
     .mat-cell,
     .mat-footer-cell,
     .custom-label {
-        font-size: 14px !important;
+        font-size: 15px !important;
     }
     .st-slect-section {
         margin-right: 0.5rem;
@@ -783,7 +793,7 @@ textarea {
         height: 35px;
     }
     .mydrp .selection {
-        font-size: 14px !important;
+        font-size: 15px !important;
         padding: 0 25px 0 6px !important;
     }
     .date-range-md .mydrp .selection {
@@ -797,13 +807,13 @@ textarea {
     }
     .trade-name-rate,
     .bxo-name {
-        font-size: 14px !important;
+        font-size: 15px !important;
         padding: 5px !important;
     }
     .bxo-name {
         h6,
         span {
-            font-size: 14px !important;
+            font-size: 15px !important;
         }
     }
     .addnew-second {
@@ -837,7 +847,7 @@ textarea {
 @media screen and (min-width: 320px) and (max-width:599px) {
     .col-form-label {
         color: #929292;
-        font-size: 14px !important;
+        font-size: 15px !important;
     }
 }
 
@@ -947,7 +957,7 @@ iframe {
         position: relative;
         &:hover {
             background-color: #fff;
-            color: #275C9F;
+            color: #4A69CB;
             text-decoration: none;
         }
         .nav-icon_r {
@@ -1029,12 +1039,12 @@ iframe {
 }
 /*
 .parent-item:hover:before {
-    border-top: 8px solid #275C9F;
+    border-top: 8px solid #4A69CB;
 }
 
 .parent-item:hover {
     background: #fff;
-    color: #275C9F;
+    color: #4A69CB;
     text-decoration: none;
     border-left: 7px solid #61bd6e;
 }
@@ -1073,19 +1083,19 @@ iframe body {
 .bulk-update-grid .mat-icon-xs {
     font-size: 14px !important;
     margin-top: 4px;
-    color: #275C9F;
+    color: #4A69CB;
     height: 16px !important;
     width: 16px !important;
 }
 
 .btn-default {
     color: #fff !important;
-    background-color: #4BB964 !important;
-    border-color: #4BB964 !important;
+    background-color: #4A69CB !important;
+    border-color: #4A69CB !important;
 }
 .btn-start-tour {
     color: #fff !important;
-    background-color: #4BB964 !important;
+    background-color: #4A69CB !important;
  //   border-color: #4BB964 !important;
     width: 150px;
     height: 57px;
@@ -1108,15 +1118,15 @@ iframe body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    color: #393B40;
+    color: #5B5C60;
     min-height: 90px;
     @media #{$extra-small} {
         padding: 15px;
     } 
 }
 .auto-import-container button {
-    background: radial-gradient(159.03% 392.94% at 26.8% -25.69%, rgba(24, 255, 61, 0.2) 0%, rgba(155, 216, 186, 0.182) 97.92%), linear-gradient(180deg, #33CB39 0%, #1BD022 100%) !important;
-    border-color: #4BB964 !important;
+    background: #4A69CB;
+    border-color: #4A69CB !important;
     width: 140px;
     height: 47px !important;
     font-size: 14px !important;
@@ -1133,14 +1143,14 @@ iframe body {
     border-radius: 8px;
 }
 .mat-progress-bar-fill::after {
-    background-color: #33CB39;
+    background-color: #4A69CB;
 }
 
 .text-black {
-    color: #000 !important;
+    color: #5B5C60 !important;
 }
 .blue-link {
-    color: #275C9F;
+    color: #4A69CB;
     font-weight: 600;
 }
 .calendar-check-icon, .calendar-close-icon {
@@ -1152,7 +1162,7 @@ iframe body {
 }
 
 .bold-link {
-    color: #275C9F;
+    color: #4A69CB;
     font-weight: 600;
     text-decoration: none !important;
     cursor: pointer;
@@ -1165,4 +1175,9 @@ iframe body {
     .target_date .mydrp {
         width: 210px !important;
     }
+}
+
+.chatbot-bottom .mat-icon {
+    height: auto;
+    width: 18px;
 }

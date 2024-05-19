@@ -1,4 +1,4 @@
-<div class="custom-card" *ngIf="selectedStock && stockSummaryResult">
+<div class="custom-card" style="margin-bottom: 1rem;" *ngIf="selectedStock && stockSummaryResult">
     <div class="custom-card-header">
         <div class="custom-card-title">Trade Statistics</div>
         <a class="add-new cursor d-flex" (click)="refreshTradeDetails()">
@@ -56,55 +56,56 @@
             <label class="col-form-label">Net R</label>
             <div class="col-8 col-md-7 col-form-value">{{strategySummaryResult.netR}}</div>
         </div>
-        
-        <div class="sub-title mt-3">{{selectedStock.code}} Histiorical Statistics</div>
 
-        <div class="show-more-stats" *ngIf="showMoreStatistics">
-            <div class="h-line mb-3"></div>
-            
-            <div class="d-flex mb-1 align-items-center" *ngIf="!addTrade && tradeStatus !== 4">
-                <label class="col-form-label">Realized Return</label>
-                <div class="col-8 col-md-7 col-form-value">{{stockSummaryResult.realizedReturn}}</div>
-            </div>
-            <div class="d-flex mb-1 align-items-center">
-                <label class="col-form-label">Win Rate</label>
-                <div class="col-8 col-md-7 col-form-value">{{stockSummaryResult.winRate}}%</div>
-            </div>
-            
-            <div class="d-flex mb-1 align-items-center">
-                <label class="col-form-label">Total Strategies</label>
-                <div class="col-8 col-md-7 col-form-value">{{stockSummaryResult.totalStrategies}}</div>
-            </div>
-            <div class="d-flex mb-1 align-items-center">
-                <label class="col-form-label">Total Trades</label>
-                <div class="col-8 col-md-7 col-form-value">{{stockSummaryResult.totalTransactions}}</div>
-            </div>
-            <div class="d-flex mb-1 align-items-center">
-                <label class="col-form-label">Avg Holding Period</label>
-                <div class="col-8 col-md-7 col-form-value">{{stockSummaryResult.avgHoldingPeriod}}</div>
-            </div>
-            
-            
-            <div class="d-flex mb-1 align-items-center">
-                <label class="col-form-label">Most Successful Strategy</label>
-                <div class="col-8 col-md-7 col-form-value">{{stockSummaryResult.successStrategy}}</div>
-            </div>
-            <!-- <div class="d-flex mb-1 align-items-center">
-                <label class="col-form-label">Failed Strategy</label>
-                <div class="col-8 col-md-7 col-form-value">{{stockSummaryResult.failedStrategy}}</div>
-            </div> -->
-            <div class="d-flex mb-1 align-items-center">
-                <label class="col-form-label">Highest Return</label>
-                <div class="col-8 col-md-7 col-form-value">{{stockSummaryResult.highestReturn}}</div>
-            </div>
-            <div class="d-flex mb-1 align-items-center">
-                <label class="col-form-label">Lowest Return</label>
-                <div class="col-8 col-md-7 col-form-value">{{stockSummaryResult.largestLoss}}</div>
-            </div>
-        </div>
-
-        <div class="mb-2 text-right" [ngClass]="tradeStatus !== 4 ? 'showMore' : '' ">
+        <!-- <div class="mb-2 text-right" [ngClass]="tradeStatus !== 4 ? 'showMore' : '' ">
             <span class="cursor link-item" (click)="toggleStatistics()">{{showMoreStatistics ? 'Less' : 'More'}}</span>
+        </div> -->
+    </div>
+</div>
+
+<div class="custom-card" style="margin-bottom: 3rem;" *ngIf="selectedStock && stockSummaryResult">
+    <div class="custom-card-header">
+        <div class="custom-card-title">Historical Statistics</div>
+    </div>
+    <div class="custom-card-body">
+        <div class="d-flex mb-1 align-items-center" *ngIf="!addTrade && tradeStatus !== 4">
+            <label class="col-form-label">Realized Return</label>
+            <div class="col-8 col-md-7 col-form-value">{{stockSummaryResult.realizedReturn}}</div>
+        </div>
+        <div class="d-flex mb-1 align-items-center">
+            <label class="col-form-label">Win Rate</label>
+            <div class="col-8 col-md-7 col-form-value">{{stockSummaryResult.winRate}}%</div>
+        </div>
+        
+        <div class="d-flex mb-1 align-items-center">
+            <label class="col-form-label">Total Strategies</label>
+            <div class="col-8 col-md-7 col-form-value">{{stockSummaryResult.totalStrategies}}</div>
+        </div>
+        <div class="d-flex mb-1 align-items-center">
+            <label class="col-form-label">Total Trades</label>
+            <div class="col-8 col-md-7 col-form-value">{{stockSummaryResult.totalTransactions}}</div>
+        </div>
+        <div class="d-flex mb-1 align-items-center">
+            <label class="col-form-label">Avg Holding Period</label>
+            <div class="col-8 col-md-7 col-form-value">{{stockSummaryResult.avgHoldingPeriod}}</div>
+        </div>
+        
+        
+        <div class="d-flex mb-1 align-items-center">
+            <label class="col-form-label">Most Successful Strategy</label>
+            <div class="col-8 col-md-7 col-form-value">{{stockSummaryResult.successStrategy}}</div>
+        </div>
+        <!-- <div class="d-flex mb-1 align-items-center">
+            <label class="col-form-label">Failed Strategy</label>
+            <div class="col-8 col-md-7 col-form-value">{{stockSummaryResult.failedStrategy}}</div>
+        </div> -->
+        <div class="d-flex mb-1 align-items-center">
+            <label class="col-form-label">Highest Return</label>
+            <div class="col-8 col-md-7 col-form-value">{{stockSummaryResult.highestReturn}}</div>
+        </div>
+        <div class="d-flex mb-1 align-items-center">
+            <label class="col-form-label">Lowest Return</label>
+            <div class="col-8 col-md-7 col-form-value">{{stockSummaryResult.largestLoss}}</div>
         </div>
     </div>
 </div>

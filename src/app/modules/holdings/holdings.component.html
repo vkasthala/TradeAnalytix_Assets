@@ -1,1 +1,104 @@
-Holdings
+<div class="sub-nav">
+    <a [routerLink]="['/positions/']" routerLinkActive="router-link-active"><span>Positions</span></a>
+    <a [routerLink]="['/holdings/']" routerLinkActive="router-link-active" class="active-item"><span>Holdings</span></a>
+</div>
+
+<div class="container-main">
+    <!-- <h3><button *ngIf="!environment.production" class="button-transparent" (click)='adminCreateHolding()'>Holdings ({{holdingsCount}})</button></h3>
+    <h3 *ngIf="environment.production">Holdings ({{holdingsCount}})</h3> -->
+    <div class="data-table instruments-table fold-header bg-white" *ngIf="!isMobileDevice">
+        <table>
+            <thead (mouseover)="hidePositionsActions(null)">
+                <tr>
+                    <th>Instrument</th>
+                    <th class="text-right">Qty.</th>
+                    <th class="text-right">Avg.cost</th>
+                    <th class="text-right">LTP</th>
+                    <th class="text-right">Cur.Val</th>
+                    <th class="text-right">P&L</th>
+                    <th class="text-right">Net Chg.</th>
+                    <th class="text-right">Day Chg.</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- <tr *ngFor="let rowData of holdingsResponse.data, let i=index">
+                    <td class="instrument-td" (mouseover)="showPositionsActions(rowData, i)" (mouseout)="hidePositionsActions(i)">
+                        {{rowData.instrument.symbol}}
+                        <span class="actions fade-leave fade-leave-active" *ngIf="rowId == i">
+                            <span data-balloon="Add" data-balloon-pos="up">
+                                <button type="button" class="button button-xsmall button-blue"
+                                    (click)="add(rowData)">Add</button>
+                            </span>
+                            <span data-balloon="Exit" data-balloon-pos="up">
+                                <button type="button" class="button button-xsmall button-orange ml-2" (click)="exit(rowData)">Exit</button>
+                            </span>
+                        </span>
+                    </td>
+                    <td class="text-right">{{rowData.quantity}}</td>
+                    <td class="text-right">{{rowData.average | indianNumber }}</td>
+                    <td class="text-right">{{rowData.ltp | indianNumber}}</td>
+                    <td class="text-right">{{rowData.current_value | indianNumber }}</td>
+                    <td class="text-right"><span class="text-green" [ngClass]="rowData.p_and_l > -1 ? 'text-green' : 'text-red'">{{rowData.p_and_l | indianNumber}}</span></td>
+                    <td class="text-right"><span [ngClass]="rowData.net_change > 0 ? 'text-green' : 'text-red'">{{rowData.net_change | number:'1.2-2'}}%</span></td>
+                    <td class="text-right"><span [ngClass]="rowData.net_change > 0 ? 'text-green' : 'text-red'">{{rowData.day_change | number:'1.2-2'}}%</span></td>
+                </tr> -->
+            </tbody>
+        </table>
+    </div>
+    <div class="p-3" (mouseover)="hidePositionsActions(null)"></div>
+
+    <div class="gtt-list cards" *ngIf="isMobileDevice">
+        <!-- card:: start -->
+        <!-- <div class="card" *ngFor = "let rowData of holdingsResponse.data">
+            <div class="top flex" (click)="openMobileActions(rowData)">
+                <div class="flex6">
+                    {{rowData.instrument.symbol}}
+                </div>
+                <div class="flex6 text-right">
+                    <span class="text-xsmall dim">Qty</span> 
+                    <span class="ml-1">{{rowData.quantity}}</span>
+                </div>
+            </div>
+            <div class="middle flex">
+                <div class="flex6">
+                    <span class="text-xsmall dim">Avg.cost</span> 
+                    <span class="ml-1">{{rowData.average}}</span>
+                </div>
+                <div class="flex6 text-right">
+                    <span class="text-xsmall dim">Cur.val</span> 
+                    <span class="ml-1">{{rowData.current_value}}</span>
+                </div>
+            </div>
+            <div class="flex">
+                <div class="flex6">
+                    <span class="text-xsmall dim">P&L</span> 
+                    <span class="ml-1" [ngClass]="rowData.p_and_l > 0 ? 'text-green' : 'text-red'">{{rowData.p_and_l}}</span>
+
+                    <span class="ml-3 pl-3">
+                        <span class="text-xsmall dim">Net chg</span> 
+                        <span class="ml-1" [ngClass]="rowData.net_change > 0 ? 'text-green' : 'text-red'">{{rowData.net_change}}</span>
+                    </span>
+                </div>
+                <div class="flex6 text-right">
+                    <span class="text-xsmall dim">Day chg</span>
+                    <span class="ml-1" [ngClass]="rowData.day_change > 0 ? 'text-green' : 'text-red'">{{rowData.day_change}}</span>
+                </div>
+            </div>
+        </div>         -->
+    </div>
+</div>
+
+<div *ngIf="isMobileDevice">
+    <div class="mobile-context-menu search-mobile-menu" *ngIf="showMobileContextMenu">
+      <div class="mobile-context-menu-list list-flat" (clickOutside)="closeMobileContextMenu($event)">
+        
+        <div class="d-flex justify-content-between p-3">
+          <button type="button" class="button button-blue" (click)="add(mobileRowData)">Add</button>
+          <button type="button" class="button button-orange" (click)="exit(mobileRowData)">Exit</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+<app-orders-modal *ngIf="showOrdersModal" [orderToggle]="orderToggle" [margins]="marginsSource"
+    (cancelOrder)="closeModal()" [isHoldingOrder]="isHoldingOrder"></app-orders-modal>

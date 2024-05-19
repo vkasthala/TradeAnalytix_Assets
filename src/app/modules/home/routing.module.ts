@@ -66,7 +66,7 @@ const routes: Routes = [
           component : RiskAnalysisComponent
         },
         {
-          path : 'positions',
+          path : 'stravtegies',
           component: TradeStrategiesComponent
         },
         {
@@ -152,6 +152,10 @@ const routes: Routes = [
         {
           path : 'orders',
           loadChildren: () => import('../orders/orders.module').then(m => m.OrdersModule)
+        },
+        {
+          path : 'positions',
+          loadChildren: () => import('../positions/positions.module').then(m => m.PositionsModule),
         },
         {
           path : 'holdings',

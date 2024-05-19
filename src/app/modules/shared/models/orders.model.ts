@@ -11,6 +11,8 @@ export interface OrdersResponse {
     trigger_price : number;
     order_id: string | undefined;
     ltp: number | undefined;
+    expiry: string | undefined;
+    tradeType: string | undefined;
 }
 
 export interface OrdersRequest {
@@ -24,21 +26,32 @@ export interface OrdersRequest {
 }
 
 export interface PlaceOrderRequest {
-    exchange: string;
-    order_type: string;
-    product: string;
+    symbol: string;
     quantity: number;
-    tradingsymbol: string;
-    transaction_type: string;
-    variety: string;
-    price: number;
-    trigger_price : number;
-    stop_loss_enabled: boolean;
-    stop_loss_trigger_price: number;
+    orderType: string;
+    transactionType: string;
+    productType: string;
+    limitPrice: number;
+    stopPrice : number;
+    validity: string;
+    stopLossTriggerPrice: number;
+}
+
+export interface OrderRuleCheckRequest extends PlaceOrderRequest {
+    tradeType: string;
+    expiryDate: string;
 }
 
 export interface PurchaseOrderResponse {
     order_id: string
+}
+
+export interface OrderRuleResponse {
+    msg: string;
+    ruleId: number;
+    aligned: boolean;
+    type: string;
+    ruleParamId: number;
 }
 
 export interface OrderPurchasehistoryResponse{
@@ -47,7 +60,7 @@ export interface OrderPurchasehistoryResponse{
 
 export interface OrderPurchasehistory{
     id: number;
-    order_id: string;
+    orderId: string;
     time: string;
     type: string;
     instrument: InstrumentResponse;

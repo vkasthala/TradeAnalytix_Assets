@@ -175,8 +175,9 @@ import { ZerodhaInstructionsComponent } from '../import-trades-history/zerodha-i
 import { RobinhoodInstructionsComponent } from '../import-trades-history/robinhood-instructions/robinhood-instructions.component';
 import { ActivateRuleModalComponent } from '../settings/components/activate-rule-modal/activate-rule-modal.component';
 import { DisableeRuleModalComponent } from '../settings/components/disable-rule-modal/disable-rule-modal.component';
-import { DragDropModule } from '@angular/cdk/drag-drop';
 import { SharedModule } from '../shared/shared.module';
+import { IntradayOrderPopupComponent } from '../watch-list/components/intraday-order-popup/intraday-order-popup.component';
+import { ChatbotComponent } from '../chatbot/chatbot.component';
 
 export const MY_FORMATS = {
   parse: {
@@ -348,6 +349,8 @@ export const MY_FORMATS = {
     RobinhoodInstructionsComponent,
     ActivateRuleModalComponent,
     DisableeRuleModalComponent,
+    IntradayOrderPopupComponent,
+    ChatbotComponent
   ],
   imports: [
     FormsModule,
@@ -370,7 +373,6 @@ export const MY_FORMATS = {
     AgGridModule.withComponents([BulkUpdateComponent]),
     MatProgressBarModule,
     MatCardModule,
-    DragDropModule,
     SharedModule
   ],
   entryComponents: [
@@ -450,6 +452,8 @@ export const MY_FORMATS = {
     RobinhoodInstructionsComponent,
     ActivateRuleModalComponent,
     DisableeRuleModalComponent,
+    IntradayOrderPopupComponent,
+    ChatbotComponent
   ],
   // bootstrap: [TradeStrategiesGrid],
   providers: [

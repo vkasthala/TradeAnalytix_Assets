@@ -1,4 +1,7 @@
 @import '../../../../../assets/styles/variable.scss';
+.trade-risk-tabs {
+    min-height: 100vh;
+}
 .tab .nav-tabs li {
     padding: 0px;
     flex-basis: 100%;
@@ -23,9 +26,9 @@
     display: block;
     padding: 15px;
     background: transparent;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 600;
-    color: #9DA6BA;
+    color: #5B5C60;
     border: none;
     z-index: 2;
     position: relative;
@@ -37,12 +40,12 @@
 .tab .nav-tabs li.active a {
     border: none;
     background: #fff;
-    color: #3A4C85;
+    color: #4A69CB;
 }
 
 .tab .nav-tabs li.active::before {
     transition: all 0.3s ease 0s;
-    background: #3A4C85;
+    background: #4A69CB;
     height: 4px;
 }
 
@@ -171,7 +174,7 @@
     position: absolute;
     right: 5px;
     top: 8px;
-    color: #9DA6BA !important;
+    color: #5B5C60 !important;
 }
 
 .report-trade-symbol {

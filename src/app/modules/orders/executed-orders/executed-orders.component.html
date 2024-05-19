@@ -1,5 +1,5 @@
-<h3 class="page-title pt-3 mt-3">Executed Orders (<span *ngIf="executedOrders">{{executedOrders.length}}</span>)</h3>
-<div class="data-table instruments-table fold-header" *ngIf="!isMobileDevice">
+<h3 class="page-title p-3 bg-white mt-3 mb-0">Executed Orders (<span *ngIf="executedOrders">{{executedOrders.length}}</span>)</h3>
+<div class="data-table instruments-table fold-header bg-white" *ngIf="!isMobileDevice">
     <table>
         <thead>
             <tr>
@@ -9,8 +9,8 @@
                 <th class="sortable"><span>Product</span></th>
                 <th class="sortable"><span>Qty</span></th>
                 <th class="sortable"><span>Price</span></th>
+                <th class="sortable"><span>Status</span></th>
                 <th class="sortable"><span>Journal</span></th>
-                <th class="right"><span>Status</span></th>
             </tr>
         </thead>
         <tbody>
@@ -21,11 +21,12 @@
                 </td>
                 <td>{{order.instrument.symbol}}</td>
                 <td>{{order.product}}</td>
-                <td>{{order.quantity}}/{{order.quantity}}</td>
+                <td>{{order.quantity}}</td>
                 <td>{{order.price}}</td>
-                <td><span class="text-link" (click)="openIntradayOrder(order)">{{order.journal}}</span></td>
-                <td class="col-status right">
+                <td>
                     <span class="text-label small order-status-label green">{{order.status}}</span>
+                </td>
+                <td><span class="text-link" (click)="openIntradayOrder(order)">{{order.journal}}</span></td>
             </tr>
         </tbody>
         

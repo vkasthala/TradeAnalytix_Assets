@@ -268,11 +268,11 @@ export class WatchListComponent implements OnInit {
   createMargin($event: any) {
     // this.loader = true;
     console.log($event);
-    let tradingsymbol = $event.tradingsymbol ? $event.tradingsymbol : $event.code;
+    let tradingsymbol = $event.symbol ? $event.symbol : $event.id;
     const defaultOrderRequest = {
       exchange: "NSE",
       order_type: "MARKET",
-      product: "MIS",
+      product: "INTRADAY",
       quantity: 1,
       tradingsymbol: tradingsymbol,
       transaction_type: $event.transaction_type,
@@ -292,6 +292,11 @@ export class WatchListComponent implements OnInit {
       this.toastr.error(error.error, "Error", {timeOut: 3000, positionClass: 'toast-bottom-right'});
       this.loader = false;
     });*/
+    this.marginsSource.transaction_type = $event.transaction_type;
+    this.marginsSource.tradingsymbol = tradingsymbol;
+    this.marginsSource.price = $event.strike;
+    this.marginsSource.expiry = $event.expiryDate;
+    this.marginsSource.tradeType = $event.instrumenType == 14 ? 'STOCK' : 'OPTION';
     return this.marginsSource;
   }
 

@@ -7,12 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RulesComponent implements OnInit {
   stockAdded: boolean;
+  selectedTabReport: string = 'codedRules';
   constructor() { }
 
   ngOnInit() {
   }
   addStock() {
     this.stockAdded = true;
+  }
+
+  onTabSelect(selectedTab: string) {
+    this.selectedTabReport = selectedTab;
   }
 
 }

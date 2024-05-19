@@ -1,19 +1,19 @@
 
-.omnisearch {
+.stocks-search {
     position: relative;
 }
 
-.omnisearch .icon-search {
+.stocks-search .icon-search {
     position: absolute;
     left: 10px;
     top: 28px
 }
 
-.omnisearch .icon-search:before {
+.stocks-search .icon-search:before {
     color: #444
 }
 
-.omnisearch .counts {
+.stocks-search .counts {
     top: 0;
     right: 0;
     bottom: 1px;
@@ -31,11 +31,11 @@
     justify-content: flex-end
 }
 
-.omnisearch .counts,.omnisearch .omnisearch-results {
+.stocks-search .counts,.stocks-search .stocks-search-results {
     position: absolute;
 }
 
-.omnisearch .omnisearch-results {
+.stocks-search .stocks-search-results {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     width: 100%;
@@ -48,7 +48,7 @@
     background: #fff;
 }
 
-.omnisearch .omnisearch-results .search-result-item {
+.stocks-search .stocks-search-results .search-result-item {
     position: relative;
     padding: 14px 30px;
     margin-bottom: 0;
@@ -56,55 +56,50 @@
     border-bottom: 1px solid #eee
 }
 
-.omnisearch .omnisearch-results .search-result-item .exchange {
+.stocks-search .stocks-search-results .search-result-item .exchange {
     position: absolute;
     right: 10px;
     
 }
 
-.omnisearch .omnisearch-results .search-result-item .company {
+.stocks-search .stocks-search-results .search-result-item .company {
     font-size: .725rem
 }
 
-.omnisearch .omnisearch-results .search-result-item .exchange-tag {
+.stocks-search .stocks-search-results .search-result-item .exchange-tag {
     padding: 1px 5px;
     margin-left: 5px;
     font-size: .575rem;
     text-transform: uppercase
 }
 
-.omnisearch .omnisearch-results .search-result-item.selected,.omnisearch .omnisearch-results .search-result-item:hover {
+.stocks-search .stocks-search-results .search-result-item.selected,.stocks-search .stocks-search-results .search-result-item:hover {
     background-color: #f9f9f9;
 }
 
-.omnisearch .omnisearch-results .search-result-item.selected .symbol,.omnisearch .omnisearch-results .search-result-item:hover .symbol {
-    font-weight: 600
-}
-
-.omnisearch .omnisearch-results .search-result-item.isadded {
+.stocks-search .stocks-search-results .search-result-item.isadded {
     cursor: pointer
 }
 
-.omnisearch .omnisearch-results .search-result-item.isadded .exchange,.omnisearch .omnisearch-results .search-result-item.isadded .tradingsymbol {
+.stocks-search .stocks-search-results .search-result-item.isadded .exchange,.stocks-search .stocks-search-results .search-result-item.isadded .tradingsymbol {
     opacity: .6
 }
 
-
-.omnisearch .omnisearch-results .search-result-item .exchange .text-box.MCX,.text-box.green {
+.stocks-search .stocks-search-results .search-result-item .exchange .text-box.MCX,.text-box.green {
     background-color: #ebf8f2;
     border-color: #ebf8f2
 }
 
-.omnisearch .omnisearch-results .search-result-item .exchange .text-box.BSE,.text-box.blue {
+.stocks-search .stocks-search-results .search-result-item .exchange .text-box.BSE,.text-box.blue {
     background-color: #ecf6fd;
     border-color: #d2eafb
 }
 
-.omnisearch .omnisearch-results .search-result-item .exchange .text-box.NSE,.text-box.red {
+.stocks-search .stocks-search-results .search-result-item .exchange .text-box.NSE,.text-box.red {
     background-color: #fef0ef;
     border-color: #fcdbd9
 }
-.omnisearch .omnisearch-results .search-result-item .action-buttons {
+.stocks-search .stocks-search-results .search-result-item .action-buttons {
     position: absolute;
     right: 10px;
     background-color: #f9f9f9;
@@ -112,7 +107,7 @@
     display: flex;
 }
 
-.marketwatch-sidebar .omnisearch .su-input-group {
+.marketwatch-sidebar .stocks-search .su-input-group {
     margin: 0
 }
 
@@ -124,7 +119,7 @@
     color: #73738C;
 }
 
-.marketwatch-sidebar .omnisearch .icon {
+.marketwatch-sidebar .stocks-search .icon {
     border: 0;
     padding: 0;
     top: 18px;
@@ -132,9 +127,7 @@
     opacity: .5
 }
 
-
-
-.omnisearch .omnisearch-results .search-result-item .action-buttons button {
+.stocks-search .stocks-search-results .search-result-item .action-buttons button {
     margin: 0 2px;
     padding: 0 10px;
     min-width: 45px;
@@ -149,4 +142,11 @@
 }
 .search-mobile-menu .button {
     width: 48%;
+}
+
+.icon.icon-check {
+    margin-left: 5px;
+    font-size: 18px !important;
+    height: 18px;
+    width: 18px;
 }

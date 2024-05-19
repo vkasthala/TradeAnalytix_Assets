@@ -15,18 +15,20 @@
             </div>
             <div class="header-right">
                 <div class="app-nav" *ngIf="!isMobileDevice">
-                    <a [class.router-link-active]="currentRoute === 'dashboard'" [routerLink]="['/dashboard/']" routerLinkActive="router-link-active" ><span>Dashboard</span></a>
+                    <a [class.router-link-active]="currentRoute === 'dashboard'" [routerLink]="['/dashboard/']" routerLinkActive="router-link-active" ><span>Home</span></a>
                     <a [routerLink]="['/orders/']" routerLinkActive="router-link-active"><span>Orders</span></a>
                     
                     <a [routerLink]="['/positions/']" routerLinkActive="router-link-active"><span>Positions</span></a>
-
-                    <a [routerLink]="['/holdings/']" routerLinkActive="router-link-active"><span>Holdings</span></a>
 
                     <a [class.router-link-active]="currentRoute === 'trade-plans'" [routerLink]="['/trade-plans/']" routerLinkActive="router-link-active"><span>Plan</span></a>
 
                     <a [class.router-link-active]="currentRoute === 'import-trades-history'" [routerLink]="['/import-trades-history/']" routerLinkActive="router-link-active"><span>Journal</span></a>
 
                     <a [class.router-link-active]="currentRoute === 'reports'" [routerLink]="['/reports/']" routerLinkActive="router-link-active"><span>Analytics</span></a>
+
+                    <a [class.router-link-active]="currentRoute === 'rules'" [routerLink]="['/rules/']" routerLinkActive="router-link-active"><span>Rules</span></a>
+
+                    <a [class.router-link-active]="currentRoute === 'rules'" [routerLink]="['/rules/']" routerLinkActive="router-link-active"><span>FYERS Login</span></a>
                 </div>
 
                 <div class="right-nav">
@@ -44,23 +46,20 @@
                         </div>
                         <div *ngIf="userDropDown" class="dropdown-nav layer-2">
                             <div class="dropdown-nav-header"><a href="/profile" class="">
-                                    <h4 class="username">Narasimha{{userDetails.name}}</h4>
-                                    <div class="email">test@gamil.com{{userDetails.email}}</div>
+                                    <h4 class="username">{{userDetails.name}}</h4>
+                                    <div class="email">{{userDetails | json}}</div>
                                 </a></div>
                             <hr>
                             <ul class="m-0">
-                                <li class="p-2">
-                                    <span class="demo-toggle">
-                                        Demo&nbsp;Mode <div class="switch ml-2">
-                                            <input type="checkbox" [(ngModel)]="demoToggle" (change)="demoMsg()" id="demoToggle" class="cursor" [checked]="demoToggle" />
-                                            <label for="demoToggle"></label>
-                                          </div>
-                                    </span>
+                                <li class="list-flat-item">
+                                    <a class="p-0" [routerLink]="['/settings/']">
+                                        Trading Goals
+                                    </a>
                                 </li>
                                 <hr>
                                 <li class="list-flat-item">
                                     <a class="p-0" [routerLink]="['/settings/']">
-                                        Settings
+                                        Data Setup
                                     </a>
                                 </li>
 
@@ -201,4 +200,4 @@
     </div>
 </div>
 
-
+<app-chatbot></app-chatbot>

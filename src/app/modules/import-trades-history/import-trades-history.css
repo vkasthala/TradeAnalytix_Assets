@@ -7,7 +7,7 @@ table.mat-table {
   width: 100%;
 }
 th.mat-header-cell {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
   border-bottom: 0;
   padding-right: 15px;
@@ -18,8 +18,8 @@ th.mat-header-cell {
   border: 0;
 }
 .mat-cell, .mat-footer-cell {
-  font-size: 14px;
-  color: #3B5065;
+  font-size: 15px;
+  color: #393B40;
   border: 0;
 }
 .mat-row:nth-child(odd){
@@ -143,10 +143,10 @@ th.mat-header-cell {
   color: #EC6B56;
 }
 .trade-delete {
-  color: #3A4C85;
+  color: #4A69CB;
 }
 .trade-view {
-  color: #3A4C85;
+  color: #4A69CB;
 }
 
 .text-success {
@@ -156,12 +156,12 @@ th.mat-header-cell {
   color: #0190CA !important;
 }
 .btn-apply {
-  background-color: #4BB964;
+  background-color: #4A69CB;
   color: #ffffff;
-  font-size: 12px;
+  font-size: 15px;
   padding: 0.375rem !important;
-  border-radius: 4px;
-  height: 40px;
+  border-radius: 0;
+  height: 44px;
   line-height: 26px;
   min-width: 120px;
   text-align: center;
@@ -182,7 +182,7 @@ th.mat-header-cell {
   flex: 0 0 10% !important;
 }
 .import_trade_actions {
-  font-size: 12px !important;
+  font-size: 15px !important;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -201,7 +201,7 @@ th.mat-header-cell {
   position: absolute;
 }
 .trade-dash-name h3 {
-  font-size: 14px !important;
+  font-size: 15px !important;
 }
 .mat-cell:first-of-type, .mat-footer-cell:first-of-type, .mat-header-cell:first-of-type {
   text-align: left !important;
@@ -235,9 +235,9 @@ th.mat-header-cell {
 }
 
 .btn-green {
-  background: radial-gradient(159.03% 392.94% at 26.8% -25.69%, rgba(24, 255, 61, 0.2) 0%, rgba(155, 216, 186, 0.182) 97.92%), linear-gradient(180deg, #33CB39 0%, #1BD022 100%);
+  background: #4A69CB;
   color: #ffffff;
-  font-size: 14px;
+  font-size: 15px;
   padding: 0.375rem 1rem !important;
   border-radius: 16px;
   height: 40px;
@@ -275,7 +275,7 @@ th.mat-header-cell {
 }
 .import-body {
   background: #f1f3f5;
-  padding: 20px 30px;
+  padding: 20px;
   font-size: 16px;
   line-height: 24px;
 }
@@ -283,13 +283,19 @@ th.mat-header-cell {
   background: #fff;
   color:#393B40;
   padding: 15px 20px;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 24px;
   border-radius: 8px;
+  box-shadow: 0px 4px 16px rgba(157, 157, 157, 0.45);
 }
 .mat-header-cell {
   background: #F7F9FA;
   color: #393B40;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
+}
+
+.trade-table {
+  box-shadow: 0px 4px 16px rgba(157, 157, 157, 0.5) !important;
+  margin-bottom: 3rem !important;
 }

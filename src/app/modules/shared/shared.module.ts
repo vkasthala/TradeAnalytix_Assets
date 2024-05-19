@@ -1,22 +1,24 @@
 import { CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders, NgModule } from '@angular/core';
 
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { WatchListComponent } from '../watch-list/components/watch-list/watch-list.component';
 import { SearchComponent } from '../watch-list/components/search/search.component';
 import { OrdersModalComponent } from '../watch-list/components/orders-modal/orders-modal.component';
 import { ClickOutsideDirective } from 'src/app/clickOutside';
-import { OrdersComponent } from '../orders/orders.component';
-import { MainChartComponent } from '../main-chart/main-chart.component';
 import { SharedService } from './services/shared.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatStepperModule } from '@angular/material/stepper';
 
 const modules = [
   CommonModule,
   FormsModule,
   ReactiveFormsModule,
-  RouterModule
+  RouterModule,
+  DragDropModule
 ];
 
 const components = [
@@ -24,10 +26,10 @@ const components = [
   SearchComponent,
   OrdersModalComponent,
   ClickOutsideDirective,
-  // OrdersComponent  
 ];
 const providers = [
-  SharedService
+  SharedService,
+  DatePipe
 ];
 
 @NgModule({

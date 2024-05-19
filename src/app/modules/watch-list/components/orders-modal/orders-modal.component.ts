@@ -4,6 +4,10 @@ import { ToastContainerDirective, ToastrService } from 'ngx-toastr';
 import { Margins } from 'src/app/modules/shared/models/margins.model';
 import { OmsService } from 'src/app/modules/shared/services/oms.service';
 import { SharedService } from 'src/app/modules/shared/services/shared.service';
+import { IntradayOrderPopupComponent } from '../intraday-order-popup/intraday-order-popup.component';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { DatePipe } from '@angular/common';
+import { OrderRuleCheckRequest, OrderRuleResponse } from 'src/app/modules/shared/models/orders.model';
 
 @Component({
   selector: 'app-orders-modal',
@@ -25,7 +29,9 @@ export class OrdersModalComponent implements OnInit {
   constructor(
     private _sharedService: SharedService,
     private toastr: ToastrService,
-    private _omsService: OmsService
+    private _omsService: OmsService,
+    private _dialog: MatDialog,
+    private datePipe: DatePipe
   ) { }
 
   ngOnInit() {
@@ -57,7 +63,7 @@ export class OrdersModalComponent implements OnInit {
     let val = event.target.value;
     console.log(event.target.value);
     if  (val === 'cover') {
-      this.margins.product = 'MIS';
+      this.margins.product = 'INTRADAY';
       let isLimitChecked = (document.getElementById('LIMIT') as HTMLInputElement).checked;
       if(!isLimitChecked) {
         setTimeout(() => {
@@ -75,51 +81,27 @@ export class OrdersModalComponent implements OnInit {
     }
   }
 
-  orderPlacement() {
+  orderPlacement(orderRules: OrderRuleResponse) {
     this._sharedService.loaderEvent.emit(true);
-    let price = this.getPrice();
-    if(!this.isValid(price)){
-      this.displayNearestValidPriceErrorMsg(price);
-      this._sharedService.loaderEvent.emit(false);
-      return; 
-    }
-
+    const placeOrderRequest = this.getOrderPlacementRequest();
     const orderType = this.margins.variety;
-
-    if(this.margins.quantity < 0) {
-      this.margins.quantity = Math.abs(this.margins.quantity);
-    }
-    let orderPlaceType = this.margins.order_type;
-    let stopLossEnabled = this.margins.order_type == 'SL' || this.margins.order_type == 'SL-M';
-    let triggerPrice = this.getTriggerPrice();
-    if(stopLossEnabled){
-      orderPlaceType = this.margins.order_type == 'SL' ? 'LIMIT' : 'MARKET';
-      if(!this.isValidPricesForStopLoss(triggerPrice)){
-        return;
-      }
-    }
-    const placeOrderRequest = {
-      exchange: "NSE",
-      order_type: orderPlaceType,
-      product: this.margins.product ? this.margins.product : "MIS",
-      quantity: this.margins.quantity,
-      tradingsymbol: this.margins.tradingsymbol,
-      transaction_type: this.margins.transaction_type,
-      variety: this.margins.variety,
-      price: price,
-      trigger_price : triggerPrice,
-      stop_loss_enabled: stopLossEnabled,
-      stop_loss_trigger_price: 0
-    }
     this._omsService.placeOrder(placeOrderRequest, orderType).subscribe(response=>{
       if(response){
         this.toastr.success('Order placed successfully', 'Success', {timeOut: 3000, positionClass: 'toast-bottom-right'});
         this._sharedService.ordersReloadEvent.emit(true);
         this._sharedService.loaderEvent.emit(false);
         this.closePopup();
+        this._omsService.saveRules(orderRules, response.order_id).subscribe(response=>{
+          if(response){
+            this.toastr.success('Order rules saved successfully', 'Success', {timeOut: 3000, positionClass: 'toast-bottom-right'});
+          }
+        }, error => {
+          this.toastr.error("Error while saving order rules", 'Error', {timeOut: 3000, positionClass: 'toast-bottom-right'});
+        });
       }
     }, error => {
-      this.toastr.error(error.error, 'Error', {timeOut: 3000, positionClass: 'toast-bottom-right'});
+      this.toastr.error(error.error.errorMessage, 'Error', {timeOut: 3000, positionClass: 'toast-bottom-right'});
+      this._sharedService.ordersReloadEvent.emit(true);
       this._sharedService.loaderEvent.emit(false);
     });
   }
@@ -145,12 +127,7 @@ export class OrdersModalComponent implements OnInit {
   }
 
   getTriggerPrice(): number{
-    let isLimitChecked = this.isLimitChecked();
     let price = (document.getElementById('trigger_price') as HTMLInputElement).value;
-    console.log(isLimitChecked);
-    if(!isLimitChecked){
-      price = this.margins.trigger_price;
-    }
     return parseFloat(price);
   }
 
@@ -184,7 +161,6 @@ export class OrdersModalComponent implements OnInit {
   }
 
   modifyOrder(){
-    debugger;
     this._sharedService.loaderEvent.emit(true);
     console.log("modify");
     let price = this.getPrice();
@@ -243,5 +219,96 @@ export class OrdersModalComponent implements OnInit {
     this._sharedService.loaderEvent.emit(false);
     return isvalid;
   }
+
+  openIntradayOrderPopup() {
+    console.log(this.margins);
+    let ruleCheckdata: OrderRuleCheckRequest = this.getOrderPlacementRequest();
+    // ruleCheckdata.cost = this.getPrice();
+    // let price = this.getPrice();
+    // if(!price){
+    //   price = this.getTriggerPrice();
+    // }
+    // if(this.margins.quantity < 0) {
+    //   ruleCheckdata.quantity = Math.abs(this.margins.quantity);
+    // }
+    // ruleCheckdata.cost = ruleCheckdata.quantity * price;
+    // if(this.margins.product === "MIS"){
+    //   ruleCheckdata.intradayCost = ruleCheckdata.cost;
+    // } else {
+    //   ruleCheckdata.intradayCost = 0;
+    // }
+    // let stopLossEnabled = this.margins.order_type == 'SL' || this.margins.order_type == 'SL-M';
+    // ruleCheckdata.stopLossEnabled = stopLossEnabled ? 'Yes' : 'No';
+    // if(ruleCheckdata.tradeType == 'OPTION'){
+    // ruleCheckdata.sameDayExpiryExcluded = this.checkIfSameDayExpiryExcluded(this.margins.expiry);
+    // ruleCheckdata.nextDayExpiryExcluded = this.checkIfNextDayExpiryExcluded(this.margins.expiry);
+    // }
+    ruleCheckdata.tradeType = this.margins.tradeType;
+    if(ruleCheckdata.tradeType == 'OPTION') {
+      ruleCheckdata.expiryDate = this.margins.expiry;
+    }
+    const dialogRef = this._dialog.open(IntradayOrderPopupComponent, {
+      width: 'auto',
+      height: 'auto',
+      data: ruleCheckdata
+    });
+    dialogRef.afterClosed().subscribe((orderRules) => {
+      if (orderRules) {
+        this.orderPlacement(orderRules);
+      }
+    });
+  }
+
+  getOrderPlacementRequest(): any {
+    let price = this.getPrice();
+    if(!this.isValid(price)){
+      this.displayNearestValidPriceErrorMsg(price);
+      this._sharedService.loaderEvent.emit(false);
+      return; 
+    }
+
+    if(this.margins.quantity < 0) {
+      this.margins.quantity = Math.abs(this.margins.quantity);
+    }
+    let orderPlaceType = this.margins.order_type;
+    let stopLossEnabled = this.margins.order_type == 'SL' || this.margins.order_type == 'SL-M';
+    let triggerPrice = this.getTriggerPrice();
+    if(stopLossEnabled){
+      orderPlaceType = this.margins.order_type == 'SL' ? 'STOPLOSS_LIMIT' : 'STOPLOSS_MARKET';
+    }
+    let placeOrderRequest = {
+      orderType: orderPlaceType,
+      productType: this.margins.product ? this.margins.product : "MIS",
+      quantity: this.margins.quantity,
+      symbol: this.margins.tradingsymbol,
+      transactionType: this.margins.transaction_type,
+      validity: 'DAY',
+      limitPrice: price,
+      stopPrice : triggerPrice,
+      stopLossTriggerPrice: 0
+    }
+    return placeOrderRequest;
+  }
+
+  checkIfSameDayExpiryExcluded(expiryDate: string): string {
+    let today = this.datePipe.transform(new Date(), 'yyyy-MM-dd');
+    if(today == expiryDate){
+      return 'No';
+    } else{
+      return 'Yes';
+    }
+  }
+
+  checkIfNextDayExpiryExcluded(expiryDate: string): string {
+    let today = new Date(new Date());
+    today.setDate(today.getDate() + 1);
+    let tomorrow = this.datePipe.transform(today, 'yyyy-MM-dd');
+    if(tomorrow == expiryDate){
+      return 'No';
+    } else{
+      return 'Yes';
+    }
+  }
+
 
 }

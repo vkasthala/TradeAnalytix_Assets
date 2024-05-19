@@ -118,7 +118,7 @@
     line-height: 30px;
     display: inline-block;
     text-decoration: none;
-    color: #5B5C60;
+    color: #000;   //Venkat changed from #5B5C60
     display: -webkit-inline-box;
     display: -ms-inline-flexbox;
     display: inline-flex;
@@ -132,7 +132,7 @@
 
 .app .header .app-nav a.router-link-active,.app .header .app-nav a:hover,.app .header .right-nav a.router-link-active,.app .header .right-nav a:hover {
     cursor: pointer;
-    color: #394C86;
+    color: #4A69CB;
 }
 
 .app .header .app-nav a.orders-nav-item,.app .header .right-nav a.orders-nav-item {
@@ -286,7 +286,7 @@
 }
 
 .app .header .right-nav .user-nav .dropdown-nav .dropdown-nav-header {
-    padding: 10px 15px
+    padding: 10px;
 }
 
 .app .header .right-nav .user-nav .dropdown-nav .dropdown-nav-header a {
@@ -298,21 +298,24 @@
 }
 
 .app .header .right-nav .user-nav .dropdown-nav .dropdown-nav-header h4 {
-    margin: 0
+    margin: 0;
+    font-size: 1.25rem;
 }
 
 .app .header .right-nav .user-nav .dropdown-nav .dropdown-nav-header .email {
-    color: var(--color-text-1)
+    color: var(--color-text-1);
+    font-size: 18px;
 }
 
 .app .header .right-nav .user-nav .dropdown-nav li a, .list-flat-item {
     display: inline-block;
     vertical-align: middle;
-    line-height: 35px;
-    padding: 0 10px;
-    color: var(--color-text-default);
+    padding: 8px 10px;
+    color: #000;
     width: 100%;
     position: relative;
+    font-size: 18px;
+    font-weight: 500;
 }
 
 .app .header .right-nav .user-nav .dropdown-nav li:hover {
@@ -326,7 +329,7 @@
 body {
     margin: 0;
     font-family: Open Sans,sans-serif !important;
-    color: #393B40 !important;
+    color: #000 !important;   // Venkat changed from #5B5C60
     font-size: 15px !important;
     min-height: 100vh;
 }
@@ -353,25 +356,14 @@ body {
 }
 
 .mat-horizontal-stepper-header-container {
-    background: #f6f8fb;
+    color: #000;    //Venkat changed from #5B5C60
+    font-size: 18px;
     box-shadow: 0px -4px 16px rgba(157, 157, 157, 0.1);
-    border-radius: 4px 4px 0 0;
+    background: #f6f8fb;
+    align-items: center;
+    display: flex;
+    padding: 3px 0;
     position: relative;
-    @media #{$small} {
-        padding: 10px 0px;
-        justify-content: space-between;
-        background: #f6f8fb;
-    }
-    &::before {
-        position: absolute;
-        height: 2px;
-        background: #f1f2f5;
-        content: "";
-        width: 100%;
-        bottom: 0;
-        left: 0;
-        z-index: 9;
-    }
 }
 
 .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:first-child)::before,
@@ -407,8 +399,10 @@ body {
 
 .mat-horizontal-stepper-header {
     height: 50px !important;
-    padding: 0 20px !important;
-    background: #F6F8FB;
+    padding: 0 !important;
+    margin: 0 10px;
+    background: transparent !important;
+    overflow: inherit !important;
     @media #{$small} {
         justify-content: space-between;
         background: #f6f8fb;
@@ -419,11 +413,6 @@ body {
             background: #f6f8fb;
         }
     }
-}
-
-
-.mat-horizontal-stepper-header:first-child {
-    border-radius: 4px 0 0 0;
 }
 
 @media #{$extra-small} {
@@ -441,20 +430,16 @@ body {
 }
 
 .mat-step-label {
-    font-size: 15px !important;
+    font-size: 18px !important;
     font-weight: 500 !important;
-    @media #{$small} {
-        white-space: break-spaces !important;
-        font-size: 14px !important;
-    }
 }
 
 .mat-step-label {
-    color: #9DA6BA !important;
+    color: #000 !important; //Venkat changed from #5B5C60
 }
 
 .mat-step-label-selected {
-    color: #fff !important;
+    color: #4A69CB !important;
 }
 
 .mydrp {
@@ -573,7 +558,7 @@ input:invalid {
 }
 
 .mat-expansion-indicator::after {
-    color: #275C9F !important;
+    color: #4A69CB !important;
 }
 
 .highcharts-figure,
@@ -873,7 +858,7 @@ input:invalid {
 }
 .ag-theme-alpine .ag-header-row {
     background: #eaecf1;
-    color: #393B40 !important;
+    color: #000 !important; //Venkat changed from #5B5C60
     font-size: 14px;
     font-weight: 600;
 }
@@ -1053,11 +1038,11 @@ html.theme-light .group-wWM3zP_M- {
     font-family: Open Sans,sans-serif !important;
 }
 .mat-calendar-body-selected {
-    background-color: #4A93D4 !important;
+    background-color: #4A69CB !important;
     color: #fff;
 }
 .mat-calendar-table-header {
-    color: #393B40 !important;
+    color: #000 !important;  //Venkat changed from #5B5C60
 }
 .mat-calendar-table-header th, .mat-calendar-body {
     font-size: 16px !important;
@@ -1066,12 +1051,12 @@ html.theme-light .group-wWM3zP_M- {
 }
 .trade-plan-first .mat-calendar-body-label {
     font-size: 16px !important;
-    color: #393B40 !important;
+    color: #000 !important; //Venkat changed from #5B5C60
     font-weight: 500;
 }
 .trade-plan-first .mat-button-wrapper {
     font-size: 16px !important;
-    color: #393B40 !important;
+    color: #000 !important;  //Venkat changed from #5B5C60
     font-weight: 500;
 }
 .trade-plan-first .mat-card {
@@ -1373,30 +1358,30 @@ html.theme-light .group-wWM3zP_M- {
 }
 
 
-.marketwatch-sidebar,.stripe-select {
+.watchlist-sidebar,.stripe-select {
     background-color: #fff
 }
 
-.marketwatch-sidebar {
+.watchlist-sidebar {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
 
-.marketwatch-sidebar .error-state {
+.watchlist-sidebar .error-state {
     padding: 20px
 }
 
-.marketwatch-sidebar .context-menu .context-menu-list {
+.watchlist-sidebar .context-menu .context-menu-list {
     min-width: 150px
 }
 
-.marketwatch-sidebar .context-menu .context-menu-list li.multiple.pin a {
+.watchlist-sidebar .context-menu .context-menu-list li.multiple.pin a {
     padding: 0 8px
 }
 
 
 
-.marketwatch-sidebar .instruments {
+.watchlist-sidebar .instruments {
     max-height: calc(100% - 114px);
     width: 100%;
     height: calc(100% - 114px);
@@ -1404,35 +1389,35 @@ html.theme-light .group-wWM3zP_M- {
 }
 
 
-.marketwatch-sidebar .instruments .loader-marketwatch {
+.watchlist-sidebar .instruments .loader-marketwatch {
     margin: 10px 15px
 }
 
-.marketwatch-sidebar .instruments .vddl-list {
+.watchlist-sidebar .instruments .vddl-list {
     min-height: 46px
 }
 
-.marketwatch-sidebar .instruments .vddl-dragging {
+.watchlist-sidebar .instruments .vddl-dragging {
     opacity: .7
 }
 
-.marketwatch-sidebar .instruments .vddl-dragging-source {
+.watchlist-sidebar .instruments .vddl-dragging-source {
     display: none
 }
 
-.marketwatch-sidebar .instruments .vddl-placeholder {
+.watchlist-sidebar .instruments .vddl-placeholder {
     height: 46px;
     text-align: center;
     background-color: #f9f9f9
 }
 
-.marketwatch-sidebar .instruments .instrument .change-indicator {
+.watchlist-sidebar .instruments .instrument .change-indicator {
     padding-left: 5px
 }
 
 
 
-.marketwatch-sidebar .instruments .instrument .actions {
+.watchlist-sidebar .instruments .instrument .actions {
     display: flex;
     position: absolute;
     top: 0;
@@ -1443,7 +1428,7 @@ html.theme-light .group-wWM3zP_M- {
     padding: 6px 15px 6px 2px;
 }
 
-.marketwatch-sidebar .instruments .instrument .actions button {
+.watchlist-sidebar .instruments .instrument .actions button {
     padding: 3px 10px;
     width: 42px;
     height: 40px;
@@ -1452,33 +1437,33 @@ html.theme-light .group-wWM3zP_M- {
     // font-weight: 600
 }
 
-.marketwatch-sidebar .instruments .instrument .actions button.buy,.marketwatch-sidebar .instruments .instrument .actions button.sell {
+.watchlist-sidebar .instruments .instrument .actions button.buy,.watchlist-sidebar .instruments .instrument .actions button.sell {
     padding: 4px 10px
 }
 
-.marketwatch-sidebar .instruments .instrument .draggable-area {
+.watchlist-sidebar .instruments .instrument .draggable-area {
     display: none
 }
 
-.marketwatch-sidebar .instruments .instrument.draggedover .draggable-area {
+.watchlist-sidebar .instruments .instrument.draggedover .draggable-area {
     height: 46px;
     display: block;
     text-align: center;
     background-color: #f9f9f9
 }
 
-.marketwatch-sidebar .instruments .instrument .instrument-loader {
+.watchlist-sidebar .instruments .instrument .instrument-loader {
     float: right;
     margin: 15px 10px 0 0
 }
 
-.marketwatch-sidebar .instruments .instrument .info {
+.watchlist-sidebar .instruments .instrument .info {
     --padding-lr: 15px;
     --min-price-width: 200px;
     padding: 15px;
 }
 
-.marketwatch-sidebar .instruments .instrument .info,.marketwatch-sidebar .instruments .instrument .info .symbol-wrapper {
+.watchlist-sidebar .instruments .instrument .info,.watchlist-sidebar .instruments .instrument .info .symbol-wrapper {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -1495,31 +1480,31 @@ html.theme-light .group-wWM3zP_M- {
     height: 100%;
 }
 
-.marketwatch-sidebar .instruments .instrument .info .symbol-wrapper {
+.watchlist-sidebar .instruments .instrument .info .symbol-wrapper {
     -webkit-box-flex: 1;
     -ms-flex-positive: 1;
     flex-grow: 1
 }
 
-.marketwatch-sidebar .instruments .instrument .info .symbol-wrapper .symbol .nice-name,.marketwatch-sidebar .instruments .instrument .info .symbol-wrapper .symbol .tags {
+.watchlist-sidebar .instruments .instrument .info .symbol-wrapper .symbol .nice-name,.watchlist-sidebar .instruments .instrument .info .symbol-wrapper .symbol .tags {
     display: inline-block
 }
 
-.marketwatch-sidebar .instruments .instrument .info .symbol-wrapper .symbol .nice-name {
+.watchlist-sidebar .instruments .instrument .info .symbol-wrapper .symbol .nice-name {
     margin-right: 5px
 }
 
-.marketwatch-sidebar .instruments .instrument .info .symbol-wrapper .symbol .tags .tag {
+.watchlist-sidebar .instruments .instrument .info .symbol-wrapper .symbol .tags .tag {
     font-size: .4375rem;
     margin-right: 5px;
     vertical-align: middle
 }
 
-.marketwatch-sidebar .instruments .instrument .info .symbol-wrapper .symbol .tags .tag:last-child {
+.watchlist-sidebar .instruments .instrument .info .symbol-wrapper .symbol .tags .tag:last-child {
     margin-right: 0
 }
 
-.marketwatch-sidebar .instruments .instrument .info .price-wrapper {
+.watchlist-sidebar .instruments .instrument .info .price-wrapper {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -1536,22 +1521,22 @@ html.theme-light .group-wWM3zP_M- {
     max-width: var(--min-price-width)
 }
 
-.marketwatch-sidebar .instruments .instrument .info .price-wrapper .last-price,.marketwatch-sidebar .instruments .instrument .info .price-wrapper .price-change {
+.watchlist-sidebar .instruments .instrument .info .price-wrapper .last-price,.watchlist-sidebar .instruments .instrument .info .price-wrapper .price-change {
     text-align: right;
     display: inline-block
 }
 
-.marketwatch-sidebar .instruments .instrument .info .price-wrapper .price-change {
+.watchlist-sidebar .instruments .instrument .info .price-wrapper .price-change {
     min-width: 50px
 }
 
-.marketwatch-sidebar .instruments .instrument .info .price-wrapper .price-change .price-percentage {
+.watchlist-sidebar .instruments .instrument .info .price-wrapper .price-change .price-percentage {
     margin-left: 5px;
     display: inline-block;
     min-width: 45px
 }
 
-.marketwatch-sidebar .instruments .instrument .info .price-wrapper .price {
+.watchlist-sidebar .instruments .instrument .info .price-wrapper .price {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -1567,33 +1552,33 @@ html.theme-light .group-wWM3zP_M- {
     align-items: center
 }
 
-.marketwatch-sidebar .instruments .instrument .info .price-wrapper .price .last-price {
+.watchlist-sidebar .instruments .instrument .info .price-wrapper .price .last-price {
     min-width: 60px
 }
 
-.marketwatch-sidebar .instruments .instrument .info.price-change-type-close-all .price-wrapper .price-change .price-absolute,.marketwatch-sidebar .instruments .instrument .info.price-change-type-open-all .price-wrapper .price-change .price-absolute {
+.watchlist-sidebar .instruments .instrument .info.price-change-type-close-all .price-wrapper .price-change .price-absolute,.watchlist-sidebar .instruments .instrument .info.price-change-type-open-all .price-wrapper .price-change .price-absolute {
     padding-right: 2px;
     opacity: .65
 }
 
-.marketwatch-sidebar .instruments .instrument.active-marketdepth {
+.watchlist-sidebar .instruments .instrument.active-marketdepth {
     -webkit-box-shadow: 0 0 15px #eee;
     box-shadow: 0 0 15px #eee
 }
 
-.marketwatch-sidebar .instruments .instrument.list-enter,.marketwatch-sidebar .instruments .instrument.list-leave-to {
+.watchlist-sidebar .instruments .instrument.list-enter,.watchlist-sidebar .instruments .instrument.list-leave-to {
     opacity: 0;
     -webkit-transform: translateY(5px);
     transform: translateY(5px)
 }
 
 
-.marketwatch-sidebar .marketwatch-selector li {
+.watchlist-sidebar .watchlist-selector li {
     float: left;
     vertical-align: middle
 }
 
-.marketwatch-sidebar .marketwatch-selector li.item {
+.watchlist-sidebar .watchlist-selector li.item {
     padding: 10px 20px;
     cursor: pointer;
     text-align: center;
@@ -1603,17 +1588,17 @@ html.theme-light .group-wWM3zP_M- {
     height: 48px;
 }
 
-.marketwatch-sidebar .marketwatch-selector li.item.selected,.marketwatch-sidebar .marketwatch-selector li.item:hover {
+.watchlist-sidebar .watchlist-selector li.item.selected,.watchlist-sidebar .watchlist-selector li.item:hover {
     background-color: #f5f5f5;
     color: #E0261A
 }
 
 
-.marketwatch-sidebar .instruments .instrument .symbol {
+.watchlist-sidebar .instruments .instrument .symbol {
     position: relative
 }
 
-.marketwatch-sidebar .instruments .instrument .holding-quantities {
+.watchlist-sidebar .instruments .instrument .holding-quantities {
     opacity: .4;
     line-height: 18px;
     font-size: .725rem;
@@ -1795,22 +1780,22 @@ button[data-balloon] {
 
 
 
-.marketwatch-sidebar .instruments .instrument.selected .info,.marketwatch-sidebar .instruments .instrument:hover .info {
+.watchlist-sidebar .instruments .instrument.selected .info,.watchlist-sidebar .instruments .instrument:hover .info {
     background-color: #f9f9f9;
 }
 
-.marketwatch-sidebar .instruments .instrument.selected .info {
+.watchlist-sidebar .instruments .instrument.selected .info {
     -webkit-box-shadow: 0 3px 0 #eee;
     box-shadow: 0 3px 0 #eee;
     font-weight: 600
 }
 
-.marketwatch-sidebar .instruments .instrument.highlight .info {
+.watchlist-sidebar .instruments .instrument.highlight .info {
     background-color: #fffaeb;
     border-color: #fff2cc
 }
 
-.marketwatch-sidebar .instruments .instrument:hover .nice-name,.marketwatch-sidebar .instruments .instrument:hover .price {
+.watchlist-sidebar .instruments .instrument:hover .nice-name,.watchlist-sidebar .instruments .instrument:hover .price {
     cursor: pointer
 }
 
@@ -1836,7 +1821,7 @@ button[data-balloon] {
 
 .trading-container .page-nav a {
     padding: 0 10px;
-    font-size: .75rem;
+    font-size: 15px;
     line-height: 30px;
     display: inline-block;
     text-decoration: none;
@@ -1890,6 +1875,9 @@ a.button-small,button.button-small {
     padding: 6px 12px;
     line-height: 1;
 }
+a.button-md, button.button-md {
+    padding: 6px 15px;
+}
 .watch-list-container button .material-icons {
     width: 100%;
     height: 100%;
@@ -1912,7 +1900,7 @@ a.button-small,button.button-small {
 }
 
 
-.page-content.marketwatch,
+.page-content.watchlist,
 .app.mobile.page-marketwatch .page-content {
     position: fixed;
     height: calc(100% - 50px);
@@ -1956,17 +1944,17 @@ a.button-small,button.button-small {
     background-color: rgba(var(--color-bg-3--rgb),.1)
 }
 
-.omnisearch .omnisearch-results .search-result-item .exchange .text-label.NSE,.text-label.red {
+.stocks-search .stocks-search-results .search-result-item .exchange .text-label.NSE,.text-label.red {
     color: var(--color-caranation-red);
     background-color: rgba(var(--color-caranation-red--rgb),.1)
 }
 
-.omnisearch .omnisearch-results .search-result-item .exchange .text-label.MCX,.text-label.green {
+.stocks-search .stocks-search-results .search-result-item .exchange .text-label.MCX,.text-label.green {
     color: var(--color-text-8);
     background-color: rgba(var(--color-fruit-salad-green--rgb),.1)
 }
 
-.omnisearch .omnisearch-results .search-result-item .exchange .text-label.BSE,.text-label.blue {
+.stocks-search .stocks-search-results .search-result-item .exchange .text-label.BSE,.text-label.blue {
     color: var(--color-text-4);
     background-color: rgba(var(--color-bg-5--rgb),.1)
 }
@@ -2026,11 +2014,11 @@ a.button-small,button.button-small {
     border-left: 5px solid var(--color-border-1)
 }
 
-.omnisearch,.omnisearch .search {
+.stocks-search,.stocks-search .search {
     position: relative
 }
 
-.omnisearch .search input {
+.stocks-search .search input {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     height: 64px;
@@ -2039,17 +2027,17 @@ a.button-small,button.button-small {
 }
 
 
-.omnisearch .icon-search:before {
+.stocks-search .icon-search:before {
     color: #444;
 }
 
-.omnisearch .search-header .su-loader {
+.stocks-search .search-header .su-loader {
     position: absolute;
     right: 15px;
     top: 25px
 }
 
-.omnisearch .counts {
+.stocks-search .counts {
     top: 0;
     bottom: 0;
     padding: 0 10px;
@@ -2218,7 +2206,7 @@ input {
 }
 
 
-.marketwatch-sidebar .omnisearch {
+.watchlist-sidebar .stocks-search {
     z-index: 1;
     position: sticky;
     top: 0;
@@ -2226,20 +2214,20 @@ input {
     background-color: #fff;
 }
 
-.marketwatch-sidebar .instruments .instrument {
+.watchlist-sidebar .instruments .instrument {
     position: relative;
     -webkit-transition: background-color .15s ease;
     transition: background-color .15s ease;
-    color: #212529;
+    color: #000;   //Venkat changed from #5B5C60
     border-bottom: 1px solid var(--color-border-1);
     height: 56px;
 }
 
-.marketwatch-sidebar .instruments .instrument .symbol {
+.watchlist-sidebar .instruments .instrument .symbol {
     position: relative
 }
 
-.marketwatch-sidebar .marketwatch-selector {
+.watchlist-sidebar .watchlist-selector {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     background-color:#fff;
@@ -2251,7 +2239,7 @@ input {
 
 
 
-.marketwatch-sidebar .omnisearch {
+.watchlist-sidebar .stocks-search {
     z-index: 1;
     position: sticky;
     top: 0;
@@ -2261,13 +2249,13 @@ input {
 
 
 
-.marketwatch-sidebar .omnisearch input {
+.watchlist-sidebar .stocks-search input {
     border: 0;
     border-bottom: 1px solid #f1f1f1;
     padding: 15px 10px 15px 40px
 }
 
-.marketwatch-sidebar .omnisearch .icon {
+.watchlist-sidebar .stocks-search .icon {
     border: 0;
     padding: 0;
     top: 18px;
@@ -2477,7 +2465,7 @@ input {
 }
 
 .su-checkbox-group .su-checkbox:checked+.su-checkbox-label .su-checkbox-tick {
-    top: 3px;
+    top: 4px;
     display: block
 }
 
@@ -2488,7 +2476,8 @@ input {
     display: flex;
     -webkit-box-align: center;
     -ms-flex-align: center;
-    align-items: center
+    align-items: center;
+    margin-bottom: 0;
 }
 
 .su-checkbox-group .su-checkbox-value {
@@ -2499,8 +2488,8 @@ input {
 
 .su-checkbox-group .su-checkbox-box {
     display: inline-block;
-    width: 15px;
-    height: 15px;
+    width: 18px;
+    height: 18px;
     position: relative;
     overflow: hidden;
     cursor: pointer;
@@ -2514,13 +2503,13 @@ input {
     display: none;
     top: 20px;
     left: 2px;
-    right: 2px;
-    width: 8px;
-    height: 3px;
+    right: 1px;
+    width: 11px;
+    height: 6px;
     content: "";
     position: absolute;
-    border-left: 2px solid;
-    border-bottom: 2px solid;
+    border-left: 3px solid;
+    border-bottom: 3px solid;
     margin: auto;
     -webkit-transform: rotate(-45deg) translateZ(0);
     transform: rotate(-45deg) translateZ(0);
@@ -2788,7 +2777,7 @@ input {
     
 }
 
-.marketwatch-wrap {
+.watchlist-wrap {
     position: fixed;
     height: calc(100% - 80px);
     width: var(--left-content-width);
@@ -2808,8 +2797,8 @@ input {
 
 button.buy {
     color: #fff;
-    background-color: #394C86 !important;
-    border-color: #394C86 !important;
+    background-color: #4A69CB !important;
+    border-color: #4A69CB !important;
 }
 button.sell {
     color: #fff;
@@ -2818,26 +2807,27 @@ button.sell {
 }
 
 .sub-nav {
-    padding: 20px;
-    color: #5B5C60;
+    padding: 20px 10px;
+    color: #000;  //Venkat changed from #5B5C60
     font-size: 18px;
     box-shadow: 0 1px 5px 0 rgba(var(--color-border-5--rgb), 0.1);
+    background: #fff;
 }
 
 .sub-nav a {
-    padding: 20px 0;
+    padding: 10px 0;
     margin: 0 10px;
-    color: #5B5C60;
+    color: #000; //Venkat changed from #5B5C60
     position: relative;
     font-weight: 500;
 }
 .sub-nav a:hover {
-    color: #394C86;
+    color:#4A69CB;
     text-decoration: none;
 }
 
 .sub-nav a.active-item {
-    color: #394C86;
+    color: #4A69CB;
 }
 .sub-nav a.active-item::before,
 .sub-nav a:hover::before
@@ -2978,7 +2968,7 @@ button.sell {
 .data-table table thead th {
     font-weight: 400;
     padding: 15px 12px;
-    color: var(--color-text-1);
+    color: #393B40;
     border-bottom: 1px solid var(--color-border-1)
 }
 
@@ -3173,4 +3163,22 @@ ul.list-flat, ul.list-flat li {
     list-style: none;
     margin: 0;
     padding: 0;
+}
+
+button.button-outline {
+    color: var(--color-text-default);
+    background-color: var(--color-bg-default);
+    border-color: var(--color-border-2);
+}
+
+.orderbook .trades-modal, .orderbook .trades-modal table tbody td, .orderbook .trades-modal table thead th, .orderbook .trades-wrap .page-title .icon, .positions .product-modify-modal label, .text-small {
+    font-size: .875rem;
+}
+
+.settings-container .mat-expansion-panel-body {
+    padding: 0 1rem;
+}
+
+.w-auto {
+    width: auto !important;
 }

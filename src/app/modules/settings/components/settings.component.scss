@@ -1,10 +1,9 @@
 @import '../../../../assets/styles/variable.scss';
 .reports-section {
-    padding-top: 30px;
+    background-color: #f5f8fa;
+    padding: 0 1rem;
     min-height: 100vh;
-    @media #{$extra-small} {
-        padding-bottom: 30px;
-    }
+    
 }
 .settings_web {
     @media #{$extra-small} {
@@ -17,46 +16,58 @@
     display: flex;
     align-items: center;
     padding: 0;
-    border-bottom: 1px solid rgb(157 166 186 / 30%);
+    border: none;
 }
 
 .tab .nav-tabs li {
     padding: 0;
-    background: #e8eff6;
 }
 
 .tab .nav-tabs li:first-child>a {
-    border-radius: 4px 0 0 0;
+    border-radius: 0;
 }
 
 .tab .nav-tabs li a {
     display: block;
-    padding: 12px 20px;
-    margin: 0;
     background: transparent;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 24px;
-    color: #212529;
+    font-size: 18px;
+    line-height: 16px;
     text-align: center;
     border: none;
     z-index: 2;
-    position: relative;
     transition: all 0.3s ease 0s;
     text-decoration: none;
-    height: 50px;
+
+    padding: 22px 10px;
+    margin: 0 10px;
+    color: #393B40;
+    position: relative;
+    font-weight: 500;
 }
 
 .tab .nav-tabs li a:hover,
 .tab .nav-tabs li.active a {
-    border: none;
-    background-color: #275C9F;
-    color: #fff;
+    color: #394C86;
+    text-decoration: none;
+}
+
+.tab .nav-tabs li.active a::before,
+.tab .nav-tabs li a:hover::before
+{
+    content: '';
+    width: 100%;
+    height: 4px;
+    border-radius: 4px 4px 0px 0px;
+    background: #4A69CB;
+    position: absolute;
+    bottom: -4px;
 }
 
 .tab .tab-content {
-    padding: 0;
+    padding: 0px;
     margin-top: 0;
+    font-size: 15px;
+    background: #F2F4F6;
     @media #{$extra-small} {
         overflow-y: scroll;
     }
@@ -87,8 +98,8 @@
 }
 
 .col-form-label {
-    color: #275C9F;
-    font-size: 13px !important;
+    color: #4A69CB;
+    font-size: 15px !important;
 }
 .settings-mobile {
     display: none;
@@ -115,7 +126,7 @@
     min-height: 72vh;
 }
 .configure-questions {
-    font-size: 14px;
+    font-size: 15px;
     color: #2285FA;
     font-weight: 600;
 }

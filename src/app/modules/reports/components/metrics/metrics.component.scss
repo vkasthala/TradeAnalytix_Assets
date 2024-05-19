@@ -3,15 +3,15 @@
 .metrics-header {
   border-bottom: 1px solid #B9B7B7;
   padding: 15px;
-  color: #000;
+  color: #393B40;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .metrics-title {
-  color: #000;
+  color: #393B40;
   font-weight: 600;
-  font-size: 15px;
+  font-size: 16px;
   margin-top: 1rem;
 }
 
@@ -22,9 +22,10 @@
 
 .metrics-body {
   padding: 0 25px;
-  color: #000;
+  color: #393B40;
   font-weight: 500;
-  font-size: 15px;
+  font-size: 16px;
+  padding-bottom: 20px;
 }
 .page-nav {
   padding: 0 1rem;
@@ -51,6 +52,7 @@
   line-height: 40px;
   color: #0066FF;
   padding: 15px;
+  position: relative;
 }
 .metrics-row {
   padding-top: 0.345rem !important;
@@ -69,6 +71,5 @@
   transition: max-height 5s ease-in;
 }
 .more-metrics {
-  max-height: 100%;
   transition: max-height 5s ease-in;
 }

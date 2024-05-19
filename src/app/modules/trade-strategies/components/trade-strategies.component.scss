@@ -209,14 +209,14 @@ img.form-icon {
 }
 
 .trade-form .form-control ::placeholder {
-    color: #000;
+    color: #5B5C60;
 }
 
 .trade-date {
     line-height: 1;
     .trade-date .form-control {
         font-size: 0.89rem;
-        color: #000;
+        color: #5B5C60;
     }
 }
 
@@ -227,14 +227,14 @@ img.form-icon {
 }
 
 .btn-apply {
-    background-color: #33CB39;
+    background-color: #4A69CB;
     color: $white;
     color: #ffffff;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 400;
     padding: 0.375rem !important;
-    border-radius: 4px;
-    height: 40px;
+    border-radius: 0;
+    height: 44px;
     line-height: 26px;
     min-width: 130px;
     @media #{$extra-small} {
@@ -247,11 +247,11 @@ img.form-icon {
     min-width: 130px;
 }
 .btn-outline-primary {
-    border: 1px solid #4BB964;
+    border: 1px solid #4A69CB;
     border-radius: 4px;
     font-weight: 400;
     font-size: 14px;
-    color: #4BB964;
+    color: #4A69CB;
     height: 40px;
     line-height: 26px;
     padding: 0.375rem 1.5rem !important;
@@ -325,6 +325,8 @@ a.import-new img {
 }
 
 .trade-strategies-sec {
+    background: #f1f3f5;
+    padding: 0 20px;
     @media #{$extra-small} {
         display: none;
     }
@@ -622,7 +624,7 @@ a.import-new img {
     position: absolute;
     left: 10px;
     top: 10px;
-    color: #000;
+    color: #5B5C60;
     font-size: .89rem;
 }
 .trade-sel .custom-label {
@@ -640,19 +642,18 @@ a.import-new img {
 }
 
 .text-blue {
-    color: #275C9F !important;
-    font-size: 14px;
+    color: #4A69CB !important;
 }
 
 .trade-form .form-control {
     font-size: 0.89rem;
-    color: #000;
+    color: #5B5C60;
     height: 40px;
 }
 
 .trade-dash-name {
     h3 {
-        font-size: 14px !important;
+        font-size: 15px !important;
     }
 }
 
@@ -672,8 +673,8 @@ a.import-new img {
 
 .btn-outline-primary:hover {
     color: #fff;
-    background-color: #007bff;
-    border-color: #007bff;
+    background-color: #4A69CB;
+    border-color: #4A69CB;
 }
 
 @media (max-width:1024px) {
@@ -691,7 +692,7 @@ a.import-new img {
         height: 35px;
     }
     .mydrp .selection {
-        font-size: 12px !important;
+        font-size: 15px !important;
         padding: 0 25px 0 6px !important;
     }
     .date-range-md .mydrp .selection {
@@ -705,7 +706,7 @@ a.import-new img {
 @media #{$extra-small} {
     .btn-apply {
         font-size: 14px !important;
-        height: 40px;
+        height: 44px;
         line-height: 1.8;
         .add-icon {
             font-size: 22px;
@@ -805,4 +806,10 @@ a.import-new img {
 
 .modal {
     top: 5% !important;
+}
+.stepper-content {
+    margin-bottom: 3rem;
+}
+.trade-table {
+    box-shadow: 0px 4px 16px rgba(157, 157, 157, 0.51) !important;
 }

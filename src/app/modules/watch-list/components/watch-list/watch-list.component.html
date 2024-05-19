@@ -1,5 +1,5 @@
 <div [ngClass]="isMobileDevice ? 'page-content marketwatch' : ''">
-    <div class="marketwatch-sidebar marketwatch-wrap">
+    <div class="watchlist-sidebar watchlist-wrap">
        
         <app-search [pageIndex]="pageIndex" [watchListData]="watchListData" (clickOutside)="closeSarchUI(true)" [isMobileDevice]="isMobileDevice"></app-search>
         <div class="instruments" (mouseleave)="out(null)">
@@ -136,7 +136,7 @@
 <app-orders-modal 
     *ngIf="showOrdersModal" 
     [orderToggle]="orderToggle" 
-     (cancelOrder)="cancelOrders()">
+    [margins]="marginsSource" (cancelOrder)="cancelOrders()">
 </app-orders-modal>
 
 <mat-spinner *ngIf="loader"></mat-spinner>
