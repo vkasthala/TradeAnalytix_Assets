@@ -86,6 +86,7 @@ export class WatchListComponent implements OnInit {
   ngOnInit() {
     this.checkDevice();
     this.loadWatchList();
+    this.registerinstrumentPriceUpdateListner();
 
     setTimeout(()=>{
       this.loader = false;
@@ -106,6 +107,18 @@ export class WatchListComponent implements OnInit {
       }, error => {
         this.toastr.error(error, 'Error', {timeOut: 3000, positionClass: 'toast-bottom-right'});
         this.loader = false;
+        console.log(error);
+      }
+    );
+  }
+
+  registerinstrumentPriceUpdateListner() {
+    this._watchlistService.registerinstrumentPriceUpdateListner().subscribe(
+      response => {
+        if (response) {
+          console.log(response)
+        }
+      }, error => {
         console.log(error);
       }
     );
@@ -197,6 +210,7 @@ export class WatchListComponent implements OnInit {
       response => {
         if (response) {
           this.removeItemFromWatchList(item);
+          this.registerinstrumentPriceUpdateListner();
         }
         this.showMobileContextMenu = false;
         this.loader = false;
@@ -248,6 +262,7 @@ export class WatchListComponent implements OnInit {
       }
     })
     this.loadWatchList();
+    this.registerinstrumentPriceUpdateListner();
   }
 
   createMargin($event: any) {
