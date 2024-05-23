@@ -43,7 +43,9 @@
                     <span class="status-tag text-label caps">{{order.status}}</span>
                 </td>
                 <td><span class="text-link" (click)="openIntradayOrder(order)">{{order.journal}}</span></td>
-                <!-- <td><button type="button" class="button button-small button-outline button-blue" (click)="editOrder(order)">Edit</button> <button type="button" class="button button-small button-outline ml-2" (click)="cancelOrder(order)">Cancel</button></td> -->
+                <td><button type="button" class="button button-small button-outline button-blue" (click)="editOrder(order)">Edit</button> 
+                    <!-- <button type="button" class="button button-small button-outline ml-2" (click)="cancelOrder(order)">Cancel</button> -->
+                </td>
             </tr>
             <!-- <tr>
                 <td colspan="10">
@@ -99,7 +101,7 @@
             </div>
             <div class="flex6 text-right">
                 <button type="button" class="button button-xsmall button-outline button-blue" (click)="editOrder(order)"><span class="icon icon-edit"></span> Edit</button> 
-                <button type="button" class="button button-xsmall button-outline ml-2" (click)="cancelOrder(order)">Cancel</button>
+                <!-- <button type="button" class="button button-xsmall button-outline ml-2" (click)="cancelOrder(order)">Cancel</button> -->
             </div>
         </div>
         

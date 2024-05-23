@@ -87,7 +87,7 @@ export class OpenOrdersComponent implements OnInit {
         console.log(this.marginsSource);
         this.showOrdersModal = true;
         this.orderToggle = true;
-        if (response.transaction_type === 'BUY') {
+        if (response.type === 'BUY') {
           this.orderToggle = false;
         }
       }

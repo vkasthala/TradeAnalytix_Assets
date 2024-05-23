@@ -24,8 +24,10 @@ export class HoldingsComponent implements OnInit {
   mobileRowData: any;
 
   holdingsResponse: HoldingResponse = {
+    data:{
     data: [],
     total_p_and_l: 0
+    }
   }
   holdingsCount: number = 0;
   environment = environment;
@@ -38,7 +40,7 @@ export class HoldingsComponent implements OnInit {
 
   ngOnInit() {
     this.checkDevice();
-    // this.loadHoldingData();
+    this.loadHoldingData();
     // this.postionsWSService.unsubscribeAll();
     // this.ordersWebsocketService.unsubscribeAll();
   }
@@ -47,8 +49,8 @@ export class HoldingsComponent implements OnInit {
     this._holdingService.getHoldings().subscribe(response=>{
       if(response){
         this.holdingsResponse.data = response.data;
-        this.holdingsResponse.total_p_and_l = response.total_p_and_l;
-        this.holdingsCount = this.holdingsResponse.data!.length;
+        this.holdingsResponse.data.total_p_and_l = response.data.total_p_and_l;
+        this.holdingsCount = this.holdingsResponse.data.data!.length;
         this.subscribeSymbolsPriceUpdate();
         console.log(this.holdingsResponse);
       }
@@ -58,8 +60,8 @@ export class HoldingsComponent implements OnInit {
   }
 
   subscribeSymbolsPriceUpdate() {
-    if (this.holdingsResponse.data && this.holdingsResponse.data.length > 0) {
-      this.holdingsResponse.data.forEach(holding => {
+    if (this.holdingsResponse.data && this.holdingsResponse.data.data.length > 0) {
+      this.holdingsResponse.data.data.forEach(holding => {
           let callback = (data: any) => {
             this.updateChangeProps(holding, data);
           };

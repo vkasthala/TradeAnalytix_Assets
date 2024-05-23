@@ -71,6 +71,13 @@ export interface OrderPurchasehistory{
     status: string;
     journal: string;
     selected: boolean;
+
+    expiry: string;
+    tradeType: string;
+    order_type: String;
+    trigger_price: number;
+    qty: number | undefined;
+    instrumenType: number | undefined;
 }
 
 export interface InstrumentResponse{

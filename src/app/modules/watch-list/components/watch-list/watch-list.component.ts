@@ -72,7 +72,7 @@ export class WatchListComponent implements OnInit {
     _sharedService.orderModifyEvent.subscribe(
       (orderData) => {
         console.log(orderData);
-        this.modifyOrder(orderData.order_id);
+        this.modifyOrder(orderData.orderId);
       }
     );
     _sharedService.loaderEvent.subscribe(
@@ -277,11 +277,11 @@ export class WatchListComponent implements OnInit {
       this.toastr.error(error.error, "Error", {timeOut: 3000, positionClass: 'toast-bottom-right'});
       this.loader = false;
     });*/
-    this.marginsSource.transaction_type = $event.transaction_type;
-    this.marginsSource.tradingsymbol = tradingsymbol;
+    this.marginsSource.type = $event.transaction_type;
+    this.marginsSource.instrument.symbol = tradingsymbol;
     this.marginsSource.price = $event.strike;
     this.marginsSource.expiry = $event.expiryDate;
-    this.marginsSource.tradeType = $event.instrumenType == 14 ? 'STOCK' : 'OPTION';
+    this.marginsSource.tradeType = $event.instrumenType == 14 ? 'OPTION' : 'STOCK';
     return this.marginsSource;
   }
 
@@ -316,10 +316,12 @@ export class WatchListComponent implements OnInit {
     this._omsService.getEditOrderDetail(orderId).subscribe(response =>{
       if(response){
         this.marginsSource = response;
+        this.marginsSource.quantity = response.qty;
+        this.marginsSource.tradeType = response.instrumenType == 14 ? 'OPTION' : 'STOCK';
         console.log(this.marginsSource);
         this.showOrdersModal = true;
         this.orderToggle = true;
-        if (response.transaction_type === 'BUY') {
+        if (response.type === 'BUY') {
           this.orderToggle = false;
         }
         this.loader = false;

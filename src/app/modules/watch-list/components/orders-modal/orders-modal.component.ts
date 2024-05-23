@@ -35,7 +35,7 @@ export class OrdersModalComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.isOrderModify = this.margins.order_id != null;
+    this.isOrderModify = this.margins.orderId != null;
     this.orderPlacementPrice = this.margins.price;
     this.ltp = this.margins.price;
   }
@@ -173,21 +173,9 @@ export class OrdersModalComponent implements OnInit {
       return;
     }
     console.log(this.margins);
-    const placeOrderRequest = {
-      exchange: "NSE",
-      order_type: this.margins.order_type,
-      product: this.margins.product,
-      quantity: this.margins.quantity,
-      tradingsymbol: this.margins.tradingsymbol,
-      transaction_type: this.margins.transaction_type,
-      variety: this.margins.variety,
-      price: price,
-      trigger_price : triggerPrice,
-      stop_loss_enabled: true,
-      stop_loss_trigger_price: this.margins.trigger_price
-    }
+    const placeOrderRequest = this.getOrderPlacementRequest();
     this._sharedService.ordersReloadEvent.emit(true);
-    /*this._omsService.modifyOrder(this.margins.order_id, placeOrderRequest).subscribe(response=>{
+    this._omsService.modifyOrder(this.margins.orderId, placeOrderRequest).subscribe(response=>{
       if(response){
         this.toastr.success('Order Updated successfully', 'Success', {timeOut: 3000, positionClass: 'toast-bottom-right'});
         this._sharedService.ordersReloadEvent.emit(true);
@@ -195,10 +183,10 @@ export class OrdersModalComponent implements OnInit {
         this._sharedService.loaderEvent.emit(false);
       }
     }, error => {
-      this.toastr.error(error.error, 'Error', {timeOut: 3000, positionClass: 'toast-bottom-right'});
+      this.toastr.error(error.error.errorMessage, 'Error', {timeOut: 3000, positionClass: 'toast-bottom-right'});
       this.closePopup();
       this._sharedService.loaderEvent.emit(false);
-    });*/
+    });
   }
 
   changeOrderQty(event:any) {
@@ -260,12 +248,12 @@ export class OrdersModalComponent implements OnInit {
       orderType: orderPlaceType,
       productType: this.margins.product ? this.margins.product : "MIS",
       quantity: this.margins.quantity,
-      symbol: this.margins.tradingsymbol,
-      transactionType: this.margins.transaction_type,
+      symbol: this.margins.instrument.symbol,
+      transactionType: this.margins.type,
       validity: 'DAY',
       limitPrice: price,
       stopPrice : triggerPrice,
-      stopLossTriggerPrice: 0
+      stopLossTriggerPrice: this.margins.trigger_price
     }
     return placeOrderRequest;
   }

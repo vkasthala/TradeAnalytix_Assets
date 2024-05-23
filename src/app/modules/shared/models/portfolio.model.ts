@@ -1,12 +1,16 @@
 export interface PositionsResponse {
+    data?:{
     data?: Position[] | null;
     total_day_p_and_l: number;
     total_p_and_l: number;
+    }
 }
 
 export interface HoldingResponse {
+    data?:{
     data?: Holding[] | null;
     total_p_and_l: number;
+    }
 }
 
 export interface Position {
