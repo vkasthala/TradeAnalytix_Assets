@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
@@ -9,12 +9,21 @@ import { PositionsResponse } from '../models/portfolio.model';
 })
 export class PositionService {
 
-  portfolio_base_url = "/v0/portfolio/";
+  portfolio_base_url = "/portfolio/";
+
+  private createHttpHeaders(): HttpHeaders {
+    let httpHeaders: HttpHeaders = new HttpHeaders({
+      Authorization: environment.clientCode + ':' + environment.authToken,
+      Brokerage: 'FYERS'
+    });
+    console.log('http heades:', httpHeaders);
+    return httpHeaders;
+  }
 
   constructor(private http: HttpClient) { }
 
   getPositions() : Observable<PositionsResponse>{
-     const url = environment.apiUrl + this.portfolio_base_url + "positions";
-     return this.http.get<PositionsResponse>(url);
+     const url = environment.tradingServiceUri + this.portfolio_base_url + "positions";
+     return this.http.get<PositionsResponse>(url, { headers: this.createHttpHeaders() });
   }
 }

@@ -37,8 +37,8 @@
     transition: all 0.3s ease 0s;
     text-decoration: none;
 
-    padding: 25px 10px;
-    margin: 0 10px 0 0;
+    padding: 25px 0;
+    margin: 0 10px;
     color: #000; //Venkat changed from #5B5C60
     position: relative;
     font-weight: 500;
@@ -59,14 +59,14 @@
     border-radius: 4px 4px 0px 0px;
     background: #4A69CB;
     position: absolute;
-    bottom: -4px;
+    bottom: 2px;
 }
 
 .tab .tab-content {
-    padding: 10px 20px;
+    padding: 20px;
     margin-top: 0;
     font-size: 15px;
-    background-color: #f1f3f5;
+    background-color: #f5f8fa;
     @media #{$extra-small} {
         overflow-y: scroll;
     }

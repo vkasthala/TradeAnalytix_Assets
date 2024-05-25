@@ -11,9 +11,11 @@ import { PositionService } from '../shared/services/position.service';
 export class PositionsComponent implements OnInit {
   
   positionResponse: PositionsResponse = {
+    data: {
     data: [],
     total_day_p_and_l: 0,
     total_p_and_l: 0
+    }
   }
   positionsCount: number = 0;
   userId: string = "";
@@ -23,16 +25,16 @@ export class PositionsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.loadPositions();
+    this.loadPositions();
   }
 
   loadPositions(){
     this._positionService.getPositions().subscribe(response=>{
       if(response){
-        this.positionResponse.data = response.data;
-        this.positionResponse.total_p_and_l = response.total_day_p_and_l;
-        this.positionResponse.total_p_and_l = response.total_p_and_l;
-        this.positionsCount = this.positionResponse.data!.length;
+        this.positionResponse.data.data = response.data.data;
+        this.positionResponse.data.total_p_and_l = response.data.total_day_p_and_l;
+        this.positionResponse.data.total_p_and_l = response.data.total_p_and_l;
+        this.positionsCount = this.positionResponse.data.data!.length;
       }
     }, error => {
       console.log(error);
@@ -41,12 +43,9 @@ export class PositionsComponent implements OnInit {
 
   updateChangeProps(data: any) {
     if (data && data.body) {
-      let jsonResult = JSON.parse(data.body);
-      if (jsonResult) {
-        this.positionResponse.data = jsonResult.data;
-        this.positionResponse.total_p_and_l = jsonResult.total_day_p_and_l;
-        this.positionResponse.total_p_and_l = jsonResult.total_p_and_l;
-        this.positionsCount = this.positionResponse.data!.length;
+      let payload = JSON.parse(data.body);
+      if (payload.status) {
+        this.loadPositions();
       }
     }
   }

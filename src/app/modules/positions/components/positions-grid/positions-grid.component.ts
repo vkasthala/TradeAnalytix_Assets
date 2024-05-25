@@ -5,6 +5,8 @@ import { Margins } from 'src/app/modules/shared/models/margins.model';
 import { SharedService } from 'src/app/modules/shared/services/shared.service';
 import { OmsService } from 'src/app/modules/shared/services/oms.service';
 import { UserService } from 'src/app/modules/shared/services/user.service';
+import { PositionsWebsocketService } from 'src/app/modules/shared/services/websocket/positions-websocket.service';
+import { NavigationStart, Router } from '@angular/router';
 
 @Component({
   selector: 'app-positions-grid',
@@ -30,18 +32,28 @@ export class PositionsGridComponent implements OnInit {
     private _sharedService: SharedService,
     private toastr: ToastrService,
     private _userService: UserService,
-    private positionsComponent: PositionsComponent
-  ) { }
+    private positionsComponent: PositionsComponent,
+    private postionsWSService: PositionsWebsocketService,
+    private router: Router
+  ) {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationStart) {
+        // Fire your event or perform any action here
+        this.postionsWSService.unsubscribeAll();
+      }
+    });
+   }
 
   ngOnInit(): void {
     this.checkDevice();
+    this.subscribePositionUpdate("1");
   }
-
 
   subscribePositionUpdate(userId: string) {
     let callback = (data: any) => {
       this.positionsComponent.updateChangeProps(data);
     };
+    this.postionsWSService.subscribePositionsUpdate(userId, callback);
 }
 
 
@@ -56,7 +68,7 @@ exit(rowData:any) {
     this.orderToggle = true;
     payload.quantity = Math.abs(rowData.quantity);
   }
-  this.createMargin(payload)
+  // this.createMargin(payload)
 }
 
 add(rowData:any) {
@@ -70,7 +82,7 @@ add(rowData:any) {
     this.orderToggle = false;
     payload.quantity = Math.abs(rowData.quantity);
   }
-  this.createMargin(payload)
+  // this.createMargin(payload)
 }
 
   generatePayload(rowData:any) {
@@ -127,20 +139,20 @@ add(rowData:any) {
     }
   }
 
-  createMargin(payload:any) {
-    this._sharedService.loaderEvent.emit(true);
-    this._omsService.getMargin(payload).subscribe(response =>{
-      this.marginsSource = response;
-      this.showOrdersModal = true;
-      this.isPositionsOrder = true;
-      this.showMobileContextMenu = false;
-      this._sharedService.loaderEvent.emit(false);
-    }, error =>{
-      this.toastr.error(error.error, "Error", {timeOut: 3000, positionClass: 'toast-bottom-right'});
-      this._sharedService.loaderEvent.emit(false);
-    });
-    return this.marginsSource;
-  }
+  // createMargin(payload:any) {
+  //   this._sharedService.loaderEvent.emit(true);
+  //   this._omsService.getMargin(payload).subscribe(response =>{
+  //     this.marginsSource = response;
+  //     this.showOrdersModal = true;
+  //     this.isPositionsOrder = true;
+  //     this.showMobileContextMenu = false;
+  //     this._sharedService.loaderEvent.emit(false);
+  //   }, error =>{
+  //     this.toastr.error(error.error, "Error", {timeOut: 3000, positionClass: 'toast-bottom-right'});
+  //     this._sharedService.loaderEvent.emit(false);
+  //   });
+  //   return this.marginsSource;
+  // }
 
   closeModal() {
     this.showOrdersModal = false;

@@ -1,22 +1,32 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HoldingResponse } from '../models/portfolio.model';
+import { env } from 'process';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HoldingService {
 
-  portfolio_base_url = "/v0/portfolio/";
+  portfolio_base_url = "/portfolio/";
   admin_base_url = "/v0/admin/";
 
   constructor(private http: HttpClient) { }
+  
+  private createHttpHeaders(): HttpHeaders {
+    let httpHeaders: HttpHeaders = new HttpHeaders({
+      Authorization: environment.clientCode + ':' + environment.authToken,
+      Brokerage: 'FYERS'
+    });
+    console.log('http heades:', httpHeaders);
+    return httpHeaders;
+  }
 
   getHoldings() : Observable<HoldingResponse>{
-     const url = environment.apiUrl + this.portfolio_base_url + "holdings";
-     return this.http.get<HoldingResponse>(url);
+    const url = environment.tradingServiceUri + this.portfolio_base_url + "holdings";
+     return this.http.get<HoldingResponse>(url, { headers: this.createHttpHeaders() });
   }
 
   adminCreateHoldings() : Observable<String>{

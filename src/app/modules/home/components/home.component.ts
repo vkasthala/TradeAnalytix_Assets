@@ -28,6 +28,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   hamburgerMenu: boolean = false;
   public demoModeIsStarted: boolean = false;
   contactUsModal: boolean = false;
+  brokerageModal: boolean = false;
   userDropDown: boolean = false;
   isMobileDevice: any;
   constructor(
@@ -272,4 +273,12 @@ export class HomeComponent implements OnInit, AfterViewInit {
       }
     });
   }
+  openBrokerageModal() {
+    this.brokerageModal= !this.brokerageModal;
+  }
+  
+  closeBrokerageModal() {
+    this.brokerageModal = !this.brokerageModal;
+  }
+
 }

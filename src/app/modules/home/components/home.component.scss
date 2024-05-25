@@ -536,34 +536,43 @@
 }
 .contact-modal {
     left: 10%;
-    top: 10%;
+    top: 25%;
 }
 .contact-modal.show {
     display: block;
 }
+.contact-modal .modal-dialog {
+    width: 430px;
+}
+
 .contact-modal .modal-content {
     border-radius: 8px;
     border: 0;
     font-size: 12px;
 }
 .contact-modal .modal-header {
-    background: #4A69CB;
     border-radius: 8px 8px 0px 0px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 15px;
+    padding: 15px;
+    border: 0;
 }
 .contact-modal .modal-header .modal-title{
-    color: #fff;
+    color: #394C86;
     font-size: 14px;
     margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    line-height: 1;
 }
 .contact-modal .modal-header .close{
-    color: #fff;
-    font-weight: 500;
+    color: #000;
+    font-weight: 300;
     opacity: 1;
     padding: 0 1rem;
+    font-size: 2rem;
 }
 
 .contact-modal .btn-add {

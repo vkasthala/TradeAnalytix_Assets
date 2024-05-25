@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { OrderPurchasehistoryResponse, OrderRuleCheckRequest, OrderRuleResponse, OrdersRequest, OrdersResponse, PlaceOrderRequest, PurchaseOrderResponse } from '../models/orders.model';
+import { OrderPurchasehistory, OrderPurchasehistoryResponse, OrderRuleCheckRequest, OrderRuleResponse, OrdersRequest, OrdersResponse, PlaceOrderRequest, PurchaseOrderResponse } from '../models/orders.model';
 import { Observable } from 'rxjs';
 import { HttpService } from './http.service';
 
@@ -15,7 +15,7 @@ export class OmsService {
 
   private createHttpHeaders(): HttpHeaders {
     let httpHeaders: HttpHeaders = new HttpHeaders({
-      Authorization: environment.clientCode + ':' + 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhcGkuZnllcnMuaW4iLCJpYXQiOjE3MTE0NjM5MzksImV4cCI6MTcxMTQ5OTQ1OSwibmJmIjoxNzExNDYzOTM5LCJhdWQiOlsieDowIiwieDoxIiwieDoyIiwiZDoxIiwiZDoyIl0sInN1YiI6ImFjY2Vzc190b2tlbiIsImF0X2hhc2giOiJnQUFBQUFCbUF0NERhWGhzRWVXUW40dzZvdGVLUDI3eHVDczllMlFsUk1waFdWaW5tdk05Tk5KaG9DSkdFYW5GRkFBRzlGWWVnS0xCOFpSMTdUN2Y4VDlIVlFGX3JhY0lyWWFkTmlQVWtnRGI4OWtzemRMX25rbz0iLCJkaXNwbGF5X25hbWUiOiJOSVRISU4gQkFMQUtSSVNITkEgTkFZQUsiLCJvbXMiOiJLMSIsImhzbV9rZXkiOiJjMGFkOTA4MTc2NmY5NDk1NjFlNGVjNDhhMjczZjBjMjc2NGY5NWMwMDFiMTdkZGY1ZGYyM2ViYSIsImZ5X2lkIjoiWU4wMjA0NyIsImFwcFR5cGUiOjEwMiwicG9hX2ZsYWciOiJOIn0.nDrBtx9k0HIoPWv1q-HGwUUlyFKTjmY_jnHA4MQt33o',
+      Authorization: environment.clientCode + ':' + environment.authToken,
       Brokerage: 'FYERS'
     });
     console.log('http heades:', httpHeaders);
@@ -52,16 +52,14 @@ export class OmsService {
     return this.http.get<OrderPurchasehistoryResponse>(url, { headers: this.createHttpHeaders() });
   }
 
-  getEditOrderDetail(orderId: string) : Observable<OrdersResponse>{
-    let queryParams = new HttpParams();
-    queryParams = queryParams.append("orderId", orderId);
-    const url = environment.apiUrl + "/v0/oms/margins/orders";
-    return this.http.post<OrdersResponse>(url, null, {params:queryParams});
+  getEditOrderDetail(orderId: string) : Observable<OrderPurchasehistory>{
+    const url = environment.tradingServiceUri + "/orders/" + orderId;
+    return this.http.get<OrderPurchasehistory>(url, { headers: this.createHttpHeaders() });
   }
 
-  modifyOrder(orderId: string, orderRequest: PlaceOrderRequest) : Observable<PurchaseOrderResponse> {
-    const url = environment.apiUrl + "/v0/oms/orders/" + orderId;
-    return this.http.put<PurchaseOrderResponse>(url, orderRequest);
+  modifyOrder(orderId: string, orderRequest: PlaceOrderRequest) : Observable<String> {
+    const url = environment.tradingServiceUri + "/orders/" + orderId;
+    return this.http.put<String>(url, orderRequest, { headers: this.createHttpHeaders() });
   }
 
   cancelOrder(orderId: string) : Observable<PurchaseOrderResponse> {

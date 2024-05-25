@@ -28,9 +28,9 @@
 
                     <a [class.router-link-active]="currentRoute === 'rules'" [routerLink]="['/rules/']" routerLinkActive="router-link-active"><span>Rules</span></a>
 
-                    <a ><span (click)="fyersLogin()">Fyers Login</span></a>
+                    <a (click)="fyersLogin()"><span>FYERS Login</span></a>
                 </div>
-
+                
                 <div class="right-nav">
                     <!-- <span class="btn btn-start mr-3" (click)="startTour()">
                         Start Tour <mat-icon>arrow_forward</mat-icon>
@@ -166,35 +166,29 @@
     
 </div>
 
-<div *ngIf="contactUsModal" class="modal-backdrop fade show"></div>
-<div class="modal contact-modal" [ngClass]="contactUsModal ? 'show' : ''"  tabindex="-1" aria-hidden="true">
+<div *ngIf="brokerageModal" class="modal-backdrop fade show"></div>
+<div class="modal contact-modal" [ngClass]="brokerageModal ? 'show' : ''"  tabindex="-1" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Contact Us</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeContactUsModal()">
+          <h5 class="modal-title">
+            <!-- <img src="../../../../assets/img/account_child.png" />  -->
+            <span class="">Please login with your broker credentials</span>
+        </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeBrokerageModal()">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body pt-0">
             <form>
-                <div class="mb-2">
-                  <label class="col-form-label">Name</label>
-                  <input type="text" class="form-control" id="name" placeholder="Name" />
-                </div>
-                <div class="mb-2">
-                  <label class="col-form-label">Email</label>
-                  <input type="email" class="form-control" id="email" placeholder="Email" />
-                </div>
-                <div class="form-group">
-                  <label class="col-form-label">Message </label>
-                  <textarea rows="4" class="form-control" id="message" placeholder="Message"></textarea>
+                <div class="">
+                  <label class="col-form-label">Select a broker</label>
+                  <select class="form-control">
+                    <option value="0">Choose a broker from the list</option>
+                    <option value="FYERS">FYERS</option>
+                  </select>
                 </div>
               </form>
-        </div>
-        <div class="modal-footer py-1">
-            <button type="button" class="btn btn-add">Submit</button>
-            <button type="button" class="btn btn-secondary ml-1" (click)="closeContactUsModal()">Close</button>
         </div>
       </div>
     </div>

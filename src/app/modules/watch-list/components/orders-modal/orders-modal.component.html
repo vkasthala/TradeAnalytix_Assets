@@ -181,7 +181,7 @@
                     </div>
                     <div class="five columns text-right actions">
                         <button *ngIf="!isOrderModify" type="submit" class="submit"
-                            (click)="openIntradayOrderPopup()"><span>{{margins.transaction_type |
+                            (click)="openIntradayOrderPopup()"><span>{{margins.type |
                                 titlecase}}</span></button>
                         <button *ngIf="isOrderModify" type="submit" class="submit"
                             (click)="modifyOrder()"><span>Modify</span></button>
