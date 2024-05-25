@@ -41,12 +41,12 @@
         <button class="btn new-plan d-flex align-items-center" (click)="addTradePlanDate()">New Plan</button>
     </div>
 </div> -->
-<div class="row mx-0" style="margin-bottom: 3rem;">
-    <div class="col-sm-2 trade-plan-lt">
-        <div class="trade-plan-title" *ngIf="planDates.length > 0">Trade Plans <span class="cursor ml-1" (click)="mydaterangeOpen()"><img src="../../../../assets/images/filter-black.png" /></span></div>
+ <div class="row mx-0" style="margin-bottom: 3rem;">
+     <div class="col-sm-2 trade-plan-lt">
+       <!-- <div class="trade-plan-title" *ngIf="planDates.length > 0">Trade Plans <span class="cursor ml-1" (click)="mydaterangeOpen()"><img src="../../../../assets/images/filter-black.png" /></span></div>
         <div *ngIf="showMmydaterange" class="trade-date date-range-sm px-1">
             <my-date-range-picker placeholder="Date range" id="mydaterange" name="mydaterange" [options]="myDateRangePickerOptions" (dateRangeChanged)="onDateRangeChanged($event)"></my-date-range-picker>
-        </div>
+        </div>  -->
         
         <div class="date-filter-list" *ngIf="planDates.length > 0">
             <div class="date-filter-header border-bottom">
@@ -88,7 +88,7 @@
     <div class="col-sm-10 trade-plan-rt" *ngIf = "selectedPlan">
         <div class="d-flex justify-content-between py-1">
             <div class="trade-plan-title pt-1">
-                Trading Plan for {{selecedDate.day | date: 'dd-MMM-yyyy'}}
+                Trade Plan for {{selecedDate.day | date: 'dd-MMM-yyyy'}}
             </div>
             <button type="button" class="btn btn-save" (click)="saveTradePlan()">Save Plan</button>
         </div>
@@ -106,7 +106,7 @@
                         <div class="row mb-3 mt-2">
                             <div class="col-sm-12">
                                 <div class="trade-plan-header justify-content-between">
-                                    <span>Create Notes</span>
+                                    <span>Add Notes</span>
                                     <a class="add-new" (click)="openEconomicModal()">Economic Calendar</a>
                                 </div>
                                 <div>
@@ -237,7 +237,7 @@
                         <div class="row mb-3">
                             <div class="col-sm-12">
                                 <div class="trade-plan-header justify-content-between">
-                                    <span>Create Notes</span>
+                                    <span>Add Notes</span>
                                     <span class="add-new" *ngIf="!viewTradePlan" (click)="openRateExperienceDialog()">Rate Your Perfomance</span>
                                 </div>
                                 <div>
