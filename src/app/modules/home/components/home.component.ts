@@ -9,6 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 import { DemoModeDetailsService } from '../../shared/services/demo-mode-details.service';
 import { SliderModalComponent } from '../../dashboard/components/slider-modal/slider-modal.component';
 import { map } from 'rxjs/operators';
+import { UserService } from '../../shared/services/user.service';
 
 @Component({
   selector: 'app-home',
@@ -37,6 +38,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     protected toastr: ToastrService,
     private demoService: DemoModeDetailsService,
     public  _activatedRoute: ActivatedRoute,
+    private userService: UserService
   ) {
     let globalSelector = (fromGlobalConfig.globalConfigFeatureKey as any);
     globalStore.select(globalSelector).subscribe(res => {
@@ -259,4 +261,16 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   }
 
+  fyersLogin(){
+    this.userService.fyersLogin().subscribe(response => {
+      console.log("response");
+      if (response.status === 200) {
+        console.log("response");
+        const location = response.headers.get('Location');
+        if (location) {
+          window.location.href = location;
+        }
+      }
+    });
+  }
 }

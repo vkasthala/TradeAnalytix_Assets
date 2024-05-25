@@ -28,7 +28,7 @@
 
                     <a [class.router-link-active]="currentRoute === 'rules'" [routerLink]="['/rules/']" routerLinkActive="router-link-active"><span>Rules</span></a>
 
-                    <a [class.router-link-active]="currentRoute === 'rules'" [routerLink]="['/rules/']" routerLinkActive="router-link-active"><span>FYERS Login</span></a>
+                    <a ><span (click)="fyersLogin()">Fyers Login</span></a>
                 </div>
 
                 <div class="right-nav">
