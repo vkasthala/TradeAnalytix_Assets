@@ -36,6 +36,12 @@ export class WatchlistService {
     return this.http.delete<Watchlist>(url, {headers});
   }
 
+  registerinstrumentPriceUpdateListner() : Observable<string>{
+    const url = environment.tradingServiceUri + "/v0/cuetrade/system/listener/price-update/register";
+    let headers = this.getHeaders();
+    return this.http.post<string>(url, {headers});
+  }
+
   public setSelectedIndex(currentIndex:number){
     this.selectedIndex = currentIndex;
   }
@@ -47,7 +53,8 @@ export class WatchlistService {
   private getHeaders(): HttpHeaders{
     let headers = new HttpHeaders({
       'X-BROKER-ID':  'fyers',
-      'X-USER-ID': '1'
+      'X-USER-ID': '1',
+      'Authorization': 'xyz'
     });
     return headers;
   }

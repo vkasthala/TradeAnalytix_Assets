@@ -197,4 +197,16 @@ export class SearchComponent implements OnInit {
   isNiftyStock(item:any) {
     return this.niftyList.includes(item.code);
   }
+
+  registerinstrumentPriceUpdateListner() {
+    this._watchListService.registerinstrumentPriceUpdateListner().subscribe(
+      response => {
+        if (response) {
+          console.log(response)
+        }
+      }, error => {
+        console.log(error);
+      }
+    );
+  }
 }
