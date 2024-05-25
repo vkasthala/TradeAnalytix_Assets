@@ -263,10 +263,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   fyersLogin(){
     this.userService.fyersLogin().subscribe(response => {
-      console.log("response");
-      if (response.status === 200) {
+      if (response != null) {
         console.log("response");
-        const location = response.headers.get('Location');
+        const location = response['redirectUri'];
         if (location) {
           window.location.href = location;
         }

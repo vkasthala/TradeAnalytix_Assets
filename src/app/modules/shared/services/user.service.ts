@@ -39,14 +39,13 @@ export class UserService {
   }
 
   fyersLogin(): Observable<HttpResponse<string>>{
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'demo-mode': 'true'  
-    });
-    const options = {
-      headers: headers,
-      observe: 'response' as 'body'  
-    };
-    return this.http.get<any>('http://localhost:8080/service/v0/brokerage/login/fyers', options);
+    // const headers = new HttpHeaders({
+    //   'Content-Type': 'application/json'
+    // });
+    // // const options = {
+    // //   headers: headers,
+    // //   observe: 'response' as 'body'  
+    // // };
+    return this.httpService.get<any>(this.apiUrl+ '/v0/brokerage/login/fyers');
   }
 }
