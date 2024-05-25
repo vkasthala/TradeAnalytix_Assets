@@ -86,8 +86,8 @@
         </div>
     </div>
     <div class="col-sm-10 trade-plan-rt" *ngIf = "selectedPlan">
-        <div class="d-flex justify-content-between py-2">
-            <div class="trade-plan-title">
+        <div class="d-flex justify-content-between py-1">
+            <div class="trade-plan-title pt-1">
                 Trading Plan for {{selecedDate.day | date: 'dd-MMM-yyyy'}}
             </div>
             <button type="button" class="btn btn-save" (click)="saveTradePlan()">Save Plan</button>

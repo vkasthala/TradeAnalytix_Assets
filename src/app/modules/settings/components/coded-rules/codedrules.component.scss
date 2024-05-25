@@ -170,11 +170,11 @@ tr.mat-footer-row,
 tr.mat-row {
     height: 40px;
     min-height: 40px;
-    line-height: 40px;
+    line-height: 36px;
 }
 
 .mat-header-cell {
-    background: rgb(157 166 186 / 20%);
+    background: #eaecf1;
     color: #393B40;
     font-size: 15px;
     font-weight: 600;
@@ -187,7 +187,6 @@ td.mat-footer-cell,
 th.mat-header-cell {
     padding: .5rem .25rem .5rem 1rem !important;
     border-radius: 0;
-    line-height: 20px;
     border: 0;
 }
 td.mat-cell {
@@ -200,17 +199,17 @@ td.mat-cell {
     flex: 0 0 30%;
 }
 .action-cell {
-    width: 15%;
-    flex: 0 0 15%;
+    width: 12%;
+    flex: 0 0 12%;
 }
 
 .value-cell {
-    width: 10%;
-    flex: 0 0 10%;
+    width: 8%;
+    flex: 0 0 8%;
 }
 .status-cell {
-    width: 45%;
-    flex: 0 0 45%;
+    width: 50%;
+    flex: 0 0 50%;
 }
 .add-new {
     color: #4A69CB;
@@ -241,4 +240,13 @@ td.mat-cell {
 }
 .trade-table {
     min-height: 100vh;
+}
+.mat-header-row:nth-child(odd) {
+    background-color: #f6f7fa;
+    border: 0;
+}
+
+thead tr.mat-header-row {
+    height: 46px;
+    min-height: 46px;
 }
