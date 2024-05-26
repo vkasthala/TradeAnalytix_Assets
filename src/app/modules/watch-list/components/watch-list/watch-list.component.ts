@@ -86,6 +86,7 @@ export class WatchListComponent implements OnInit {
   ngOnInit() {
     this.checkDevice();
     this.loadWatchList();
+    this.registerinstrumentPriceUpdateListner();
 
     setTimeout(()=>{
       this.loader = false;
@@ -106,6 +107,18 @@ export class WatchListComponent implements OnInit {
       }, error => {
         this.toastr.error(error, 'Error', {timeOut: 3000, positionClass: 'toast-bottom-right'});
         this.loader = false;
+        console.log(error);
+      }
+    );
+  }
+
+  registerinstrumentPriceUpdateListner() {
+    this._watchlistService.registerinstrumentPriceUpdateListner().subscribe(
+      response => {
+        if (response) {
+          console.log(response)
+        }
+      }, error => {
         console.log(error);
       }
     );
@@ -197,6 +210,7 @@ export class WatchListComponent implements OnInit {
       response => {
         if (response) {
           this.removeItemFromWatchList(item);
+          this.registerinstrumentPriceUpdateListner();
         }
         this.showMobileContextMenu = false;
         this.loader = false;
@@ -248,10 +262,10 @@ export class WatchListComponent implements OnInit {
       }
     })
     this.loadWatchList();
+    this.registerinstrumentPriceUpdateListner();
   }
 
   createMargin($event: any) {
-    // this.loader = true;
     console.log($event);
     let tradingsymbol = $event.symbol ? $event.symbol : $event.id;
     const defaultOrderRequest = {
@@ -278,7 +292,7 @@ export class WatchListComponent implements OnInit {
       this.loader = false;
     });*/
     this.marginsSource.type = $event.transaction_type;
-    this.marginsSource.instrument.symbol = tradingsymbol;
+    this.marginsSource.instrument = {'symbol':tradingsymbol, 'symbolId':$event.token, 'exchange':''};
     this.marginsSource.price = $event.strike;
     this.marginsSource.expiry = $event.expiryDate;
     this.marginsSource.tradeType = $event.instrumenType == 14 ? 'OPTION' : 'STOCK';

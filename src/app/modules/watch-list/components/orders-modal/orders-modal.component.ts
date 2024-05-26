@@ -210,15 +210,15 @@ export class OrdersModalComponent implements OnInit {
 
   openIntradayOrderPopup() {
     console.log(this.margins);
-    let ruleCheckdata: OrderRuleCheckRequest = this.getOrderPlacementRequest();
-    ruleCheckdata.tradeType = this.margins.tradeType;
-    if(ruleCheckdata.tradeType == 'OPTION') {
-      ruleCheckdata.expiryDate = this.margins.expiry;
+    let ruleCheckPayload: OrderRuleCheckRequest = this.getOrderPlacementRequest();
+    ruleCheckPayload.tradeType = this.margins.tradeType;
+    if(ruleCheckPayload.tradeType == 'OPTION') {
+      ruleCheckPayload.expiryDate = this.margins.expiry;
     }
     const dialogRef = this._dialog.open(IntradayOrderPopupComponent, {
       width: 'auto',
       height: 'auto',
-      data: ruleCheckdata
+      data: {'ruleCheckPayload':ruleCheckPayload, 'margins': this.margins}
     });
     dialogRef.afterClosed().subscribe((orderRules) => {
       if (orderRules) {

@@ -24,6 +24,7 @@ export class UserStockStatsService {
   }
 
   public getStockMetricsSummaryResult(stockId: Number): Observable<StockSummaryResult> {
+    debugger;
     return this.http.get<StockSummaryResult>(this.apiUrl + '/stats/user-stock/stock-summary?stock_id=' + stockId);
   }
 

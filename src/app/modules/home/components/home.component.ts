@@ -9,6 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 import { DemoModeDetailsService } from '../../shared/services/demo-mode-details.service';
 import { SliderModalComponent } from '../../dashboard/components/slider-modal/slider-modal.component';
 import { map } from 'rxjs/operators';
+import { UserService } from '../../shared/services/user.service';
 
 @Component({
   selector: 'app-home',
@@ -38,6 +39,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     protected toastr: ToastrService,
     private demoService: DemoModeDetailsService,
     public  _activatedRoute: ActivatedRoute,
+    private userService: UserService
   ) {
     let globalSelector = (fromGlobalConfig.globalConfigFeatureKey as any);
     globalStore.select(globalSelector).subscribe(res => {
@@ -260,6 +262,17 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   }
 
+  fyersLogin(){
+    this.userService.fyersLogin().subscribe(response => {
+      if (response != null) {
+        console.log("response");
+        const location = response['redirectUri'];
+        if (location) {
+          window.location.href = location;
+        }
+      }
+    });
+  }
   openBrokerageModal() {
     this.brokerageModal= !this.brokerageModal;
   }
