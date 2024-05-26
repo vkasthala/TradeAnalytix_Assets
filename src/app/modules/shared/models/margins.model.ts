@@ -29,4 +29,5 @@ export class Margins {
     status: string | undefined;
     journal: string | undefined;
     selected: boolean | undefined;
+    symbolId: string | undefined;
 }

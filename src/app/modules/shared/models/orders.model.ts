@@ -46,7 +46,7 @@ export interface PurchaseOrderResponse {
     order_id: string
 }
 
-export interface OrderRuleResponse {
+export class OrderRuleResponse {
     msg: string;
     ruleId: number;
     aligned: boolean;
@@ -78,10 +78,11 @@ export interface OrderPurchasehistory{
     trigger_price: number;
     qty: number | undefined;
     instrumenType: number | undefined;
+    symbolId: string | undefined;
 }
 
 export interface InstrumentResponse{
     symbol: string;
     exchange: string;
-    symbolId: number;
+    symbolId: string;
 }
