@@ -98,7 +98,7 @@
             <!-- start : Tabs section -->
             <mat-horizontal-stepper labelPosition="left" #stepper [linear]="false" (selectionChange)="selectionChange($event)">
                 <mat-step [class.active]="stepone.completed" label="Open Positions" #stepone>
-                    <ng-template matStepLabel> Open Positions</ng-template>
+                    <ng-template matStepLabel>Open Trades</ng-template>
                     <div class="stepper-content">
                         <app-portfolio-grid #portfolioGrid>loading</app-portfolio-grid>
                     </div>
@@ -110,7 +110,7 @@
                     </div>
                 </mat-step> -->
                 <mat-step label="Closed Positions">
-                    <ng-template matStepLabel>Closed Positions</ng-template>
+                    <ng-template matStepLabel>Closed Trades</ng-template>
                     <div class="stepper-content">
                         <app-history-grid #historyGrid>loading</app-history-grid>
                     </div>
