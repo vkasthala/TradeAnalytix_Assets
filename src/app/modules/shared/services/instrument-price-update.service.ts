@@ -16,12 +16,12 @@ export class InstrumentPriceUpdateService {
   symbolsToRegister: Map<number, Function[]> = new Map();
 
   constructor() {
-    this.socket = new SockJS(environment.tradingServiceUri + '/price-update-websocket');
-    this.stompClient = Stomp.over(this.socket);
-    this.connect(() => {
-      this.connectInProgress = false;
-      this.registerPendingSymbols();
-    });
+    // this.socket = new SockJS(environment.tradingServiceUri + '/price-update-websocket');
+    // this.stompClient = Stomp.over(this.socket);
+    // this.connect(() => {
+    //   this.connectInProgress = false;
+    //   this.registerPendingSymbols();
+    // });
   }
 
   connect(callback: Function) {
@@ -38,6 +38,8 @@ export class InstrumentPriceUpdateService {
   }
 
   subscribePriceUpdate(stockId: number, callback: Function) {
+    if(true)
+      return;
     if (this.connectInProgress) {
       let callbacks: Function[] | undefined = this.symbolsToRegister.get(stockId);
       if (!callbacks) {
@@ -72,9 +74,9 @@ export class InstrumentPriceUpdateService {
   }
 
   unSubscribePriceUpdate(stockId: number) {
-    if (this.stompClient.connected) {
-      this.unSubscribeTopic('/topic/price.' + stockId);
-    }
+    // if (this.stompClient.connected) {
+    //   this.unSubscribeTopic('/topic/price.' + stockId);
+    // }
   }
 
   unsubscribeAll() {

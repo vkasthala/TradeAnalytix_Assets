@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SliderModalComponent } from 'src/app/modules/dashboard/components/slider-modal/slider-modal.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { StockSymbolService } from 'src/app/modules/shared/services/stock-symbol.service';
+// import { StockSymbolService } from 'src/app/modules/shared/services/stock-symbol.service';
 import { ReferralModalComponent } from 'src/app/modules/dashboard/components/referral-modal/referral-modal.component';
 import { GettingStartedVideoComponent } from 'src/app/modules/dashboard/components/getting-started-modal/getting-started-video.component';
 import { ImportTradeBookComponent } from 'src/app/modules/dashboard/components/import-tradebook/import-tradebook.component';
@@ -27,7 +27,7 @@ export class OauthRedirectComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private _dialog: MatDialog,
-    private stockSymbolService: StockSymbolService,
+    // private stockSymbolService: StockSymbolService,
     private metdataStoreService: UserMetadataStoreService,
     private userTagService: UserTagService,
     private dashboardService: DashboardChartService,
@@ -61,7 +61,7 @@ export class OauthRedirectComponent implements OnInit {
   successLogin() {
     this.router.navigate([this.urlToNavigateAfterLogin]);
     this.loadFirstUser();
-    this.stockSymbolService.getStockSymbols();
+    //this.stockSymbolService.getStockSymbols();
     this.metdataStoreService.load();
     this.userTagService.loadTags();
   }

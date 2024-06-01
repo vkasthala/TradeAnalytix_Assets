@@ -1,4 +1,8 @@
 export const environment = {
-  production: true,
-  apiUrl: 'http://ec2-3-16-154-191.us-east-2.compute.amazonaws.com:8080'
+  apiUrl: 'https://in.cuetrade.io/service',
+  redirectUri: 'https://in.cuetrade.io/oauth-redirect',
+  tradingServiceUri: 'http://localhost:8081/tradingservice',
+  clientCode: 'GPJIG4CRFK-102',
+  authToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhcGkuZnllcnMuaW4iLCJpYXQiOjE3MTY0NDEzNTQsImV4cCI6MTcxNjUxMDY1NCwibmJmIjoxNzE2NDQxMzU0LCJhdWQiOlsieDowIiwieDoxIiwieDoyIiwiZDoxIiwiZDoyIixbIng6MCIsIng6MSIsIng6MiIsImQ6MSIsImQ6MiJdXSwic3ViIjoiYWNjZXNzX3Rva2VuIiwiYXRfaGFzaCI6ImdBQUFBQUJtVHRFSzUwVUtyNFZlRnZsLVA4YXZrLWJ2dEwtQkVZajFBQWhyV2x5QmpLR1g2ZDF0U0VSVXBDbVFUc2VXUTQ1elNLNjdKdzBYUGNaTkY3R0FfTUZveGJEcGczTGt2b1FEZzRITXpNRU15SUtZa2I4PSIsImRpc3BsYXlfbmFtZSI6Ik5JVEhJTiBCQUxBS1JJU0hOQSBOQVlBSyIsIm9tcyI6IksxIiwiaHNtX2tleSI6ImMwYWQ5MDgxNzY2Zjk0OTU2MWU0ZWM0OGEyNzNmMGMyNzY0Zjk1YzAwMWIxN2RkZjVkZjIzZWJhIiwiZnlfaWQiOiJZTjAyMDQ3IiwiYXBwVHlwZSI6MTAyLCJwb2FfZmxhZyI6Ik4ifQ.oPhx6_gkl_PRN13ZI5xd4SE2chbNPuoDH_ER9CUqVNI',
+  tz: 'Asia/Calcutta'
 };
