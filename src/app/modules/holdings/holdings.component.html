@@ -3,9 +3,9 @@
     <a [routerLink]="['/holdings/']" routerLinkActive="router-link-active" class="active-item"><span>Holdings</span></a>
 </div>
 <div class="container-main">
-    <div class="content-main p-2">
-        <h3><button class="button-transparent" (click)='adminCreateHolding()'>Holdings ({{holdingsCount}})</button></h3>
-        <div class="data-table instruments-table fold-header" *ngIf="!isMobileDevice">
+    <div class="content-main">
+        <!-- <h3><button class="button-transparent" (click)='adminCreateHolding()'>Holdings ({{holdingsCount}})</button></h3> -->
+        <div class="data-table instruments-table fold-header mt-2" *ngIf="!isMobileDevice">
             <table>
                 <thead>
                     <tr>

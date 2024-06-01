@@ -362,7 +362,7 @@ body {
     background: #f6f8fb;
     align-items: center;
     display: flex;
-    padding: 3px 0;
+    padding: 0;
     position: relative;
 }
 
@@ -399,8 +399,8 @@ body {
 
 .mat-horizontal-stepper-header {
     height: 50px !important;
-    padding: 0 !important;
-    margin: 0 10px;
+    padding: 0  18px !important;
+    margin: 0;
     background: transparent !important;
     overflow: inherit !important;
     @media #{$small} {
@@ -439,7 +439,7 @@ body {
 }
 
 .mat-step-label-selected {
-    color: #4A69CB !important;
+    color: #fff !important;
 }
 
 .mydrp {
@@ -2969,7 +2969,8 @@ button.sell {
     font-weight: 400;
     padding: 15px 12px;
     color: #393B40;
-    border-bottom: 1px solid var(--color-border-1)
+    border-bottom: 1px solid var(--color-border-1);
+    background-color: #eaecf1;
 }
 
 .data-table table thead th.right {
@@ -2982,12 +2983,12 @@ button.sell {
 }
 
 .data-table table thead th.sortable:hover {
-    background-color: var(--color-bg-1)
+    background-color: #eaecf1;
 }
 
 .data-table table thead th.sorted {
     position: relative;
-    background-color: var(--color-bg-1)
+    background-color: #eaecf1;
 }
 
 .data-table table thead th.right-border {
@@ -2995,7 +2996,7 @@ button.sell {
 }
 
 .data-table table thead th.pnl {
-    background-color: var(--color-bg-1);
+    background-color: #eaecf1;
     min-width: 50px
 }
 
