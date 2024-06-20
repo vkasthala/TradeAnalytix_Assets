@@ -4,6 +4,7 @@ import { SharedService } from 'src/app/modules/shared/services/shared.service';
 import { OrderPurchasehistory, OrderPurchasehistoryResponse } from '../shared/models/orders.model';
 import { OmsService } from '../shared/services/oms.service';
 import { OrdersWebsocketService } from '../shared/services/websocket/orders-websocket.service';
+import { UserService } from '../shared/services/user.service';
 
 @Component({
   selector: 'app-orders',
@@ -15,11 +16,13 @@ export class OrdersComponent implements OnInit {
   openOrders: OrderPurchasehistoryResponse = { data: null };
   executedOrders: OrderPurchasehistoryResponse = {data: null};
   newOrder:boolean = false;
+  userId: number = undefined;
   constructor(
     private _orderService: OmsService,
     private _sharedService: SharedService,
     private toastr: ToastrService,
     private ordersWebsocketService: OrdersWebsocketService,
+    private userService: UserService
   ) {
 
     _sharedService.ordersReloadEvent.subscribe(
@@ -39,7 +42,16 @@ export class OrdersComponent implements OnInit {
   ngOnInit() {
     this.loadOrders();
     this.unsubscribe();
-    this.subscribeOrdersUpdate("1");
+    this.loadUserDetails();
+  }
+
+  loadUserDetails() {
+    this.userService.getUserDetails().subscribe(details => {
+      if (details && details.userId) {
+        this.userId = details.userId;
+        this.subscribeOrdersUpdate(this.userId+'');
+      }
+    });
   }
 
   subscribeOrdersUpdate(userId: string) {

@@ -13,7 +13,6 @@ export class PositionService {
 
   private createHttpHeaders(): HttpHeaders {
     let httpHeaders: HttpHeaders = new HttpHeaders({
-      Authorization: environment.clientCode + ':' + environment.authToken,
       Brokerage: 'FYERS'
     });
     console.log('http heades:', httpHeaders);
