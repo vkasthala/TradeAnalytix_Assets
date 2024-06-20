@@ -26,6 +26,7 @@ export class PositionsGridComponent implements OnInit {
   showOrdersModal: boolean | undefined;
   mobileRowData: any;
   isPositionsOrder:any;
+  userId: number = undefined;
 
   constructor(
     private _omsService: OmsService,
@@ -34,7 +35,8 @@ export class PositionsGridComponent implements OnInit {
     private _userService: UserService,
     private positionsComponent: PositionsComponent,
     private postionsWSService: PositionsWebsocketService,
-    private router: Router
+    private router: Router,
+    private userService: UserService
   ) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
@@ -46,7 +48,16 @@ export class PositionsGridComponent implements OnInit {
 
   ngOnInit(): void {
     this.checkDevice();
-    this.subscribePositionUpdate("1");
+    this.loadUserDetails();
+  }
+
+  loadUserDetails() {
+    this.userService.getUserDetails().subscribe(details => {
+      if (details && details.userId) {
+        this.userId = details.userId;
+        this.subscribePositionUpdate(this.userId+'');
+      }
+    });
   }
 
   subscribePositionUpdate(userId: string) {
