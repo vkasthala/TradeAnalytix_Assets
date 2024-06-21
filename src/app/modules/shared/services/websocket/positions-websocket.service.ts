@@ -21,7 +21,7 @@ export class PositionsWebsocketService {
   }
 
   connect(callback: Function) {
-    this.socket = new SockJS(environment.tradingServiceUri + '/positions-websocket');
+    this.socket = new SockJS(environment.tradingServiceUri + '/positions-websocket' + '?access_token=' + this.getAccessToken());
     this.stompClient = Stomp.over(this.socket);
     console.log('Connecting socket..');
     this.stompClient.connect(this.getAuthHeaders(), (): any => {
