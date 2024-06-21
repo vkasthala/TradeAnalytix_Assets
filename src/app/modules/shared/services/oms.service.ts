@@ -15,10 +15,9 @@ export class OmsService {
 
   private createHttpHeaders(): HttpHeaders {
     let httpHeaders: HttpHeaders = new HttpHeaders({
-      Authorization: environment.clientCode + ':' + environment.authToken,
-      Brokerage: 'FYERS'
+      Brokerage: 'FYERS',
+      Authorization: 'Bearer ' + sessionStorage.getItem('token')
     });
-    console.log('http heades:', httpHeaders);
     return httpHeaders;
   }
 

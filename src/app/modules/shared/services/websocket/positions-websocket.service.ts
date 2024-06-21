@@ -21,7 +21,7 @@ export class PositionsWebsocketService {
   }
 
   connect(callback: Function) {
-    this.socket = new SockJS(environment.tradingServiceUri + '/positions-websocket');
+    this.socket = new SockJS(environment.tradingServiceUri + '/positions-websocket' + '?access_token=' + this.getAccessToken());
     this.stompClient = Stomp.over(this.socket);
     console.log('Connecting socket..');
     this.stompClient.connect(this.getAuthHeaders(), (): any => {
@@ -125,11 +125,11 @@ export class PositionsWebsocketService {
 
   private getAuthHeaders(): any {
     return {
-      'Authorization': this.getAccessToken()
+      'Authorization': 'Bearer ' + this.getAccessToken()
     };
   }
 
   private getAccessToken() {
-    return environment.clientCode+":"+environment.authToken;
+    return sessionStorage.getItem('token');
   }
 }
