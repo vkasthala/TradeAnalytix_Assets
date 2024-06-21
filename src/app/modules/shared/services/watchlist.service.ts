@@ -54,7 +54,7 @@ export class WatchlistService {
     let headers = new HttpHeaders({
       'X-BROKER-ID':  'fyers',
       'X-USER-ID': '1',
-      'Authorization': 'xyz'
+      'Authorization': 'Bearer ' + sessionStorage.getItem('token')
     });
     return headers;
   }
