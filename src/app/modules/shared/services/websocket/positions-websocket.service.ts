@@ -125,11 +125,11 @@ export class PositionsWebsocketService {
 
   private getAuthHeaders(): any {
     return {
-      'Authorization': this.getAccessToken()
+      'Authorization': 'Bearer ' + this.getAccessToken()
     };
   }
 
   private getAccessToken() {
-    return 'Bearer ' + sessionStorage.getItem('token');
+    return sessionStorage.getItem('token');
   }
 }
