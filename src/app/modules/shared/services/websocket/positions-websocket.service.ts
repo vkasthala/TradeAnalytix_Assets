@@ -130,6 +130,6 @@ export class PositionsWebsocketService {
   }
 
   private getAccessToken() {
-    return environment.clientCode+":"+environment.authToken;
+    return 'Bearer ' + sessionStorage.getItem('token');
   }
 }
