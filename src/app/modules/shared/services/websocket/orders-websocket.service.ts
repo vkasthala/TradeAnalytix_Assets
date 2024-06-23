@@ -21,10 +21,10 @@ export class OrdersWebsocketService {
   }
 
   connect(callback: Function) {
-    this.socket = new SockJS(environment.tradingServiceUri + '/order-update-websocket');
+    this.socket = new SockJS(environment.tradingServiceUri + '/order-update-websocket' + '?access_token=' + this.getAccessToken());
     this.stompClient = Stomp.over(this.socket);
     console.log('Connecting socket..');
-    this.stompClient.connect({}, (): any => {
+    this.stompClient.connect(this.getAuthHeaders(), (): any => {
       // connected
       console.log('socket connected');
       callback();
@@ -115,5 +115,15 @@ export class OrdersWebsocketService {
       }
       this.subscriptions.delete(topic);
     }
+  }
+
+  private getAuthHeaders(): any {
+    return {
+      'Authorization': 'Bearer ' + this.getAccessToken()
+    };
+  }
+
+  private getAccessToken() {
+    return sessionStorage.getItem('token');
   }
 }

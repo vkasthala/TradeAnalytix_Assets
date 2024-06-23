@@ -17,9 +17,9 @@ export class HoldingService {
   
   private createHttpHeaders(): HttpHeaders {
     let httpHeaders: HttpHeaders = new HttpHeaders({
-      Brokerage: 'FYERS'
+      Brokerage: 'FYERS',
+      Authorization: 'Bearer ' + sessionStorage.getItem('token')
     });
-    console.log('http heades:', httpHeaders);
     return httpHeaders;
   }
 
