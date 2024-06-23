@@ -10,13 +10,18 @@ export const environment = {
   redirectUri: 'https://tradeanalytix.com/oauth-redirect',*/
   /*apiUrl: 'https://tradeanalytix.com/service/us',
   redirectUri: 'https://us.tradeanalytix.com/oauth-redirect',*/
-  apiUrl: 'https://in.cuetrade.io/service',
-  // redirectUri: 'http://localhost:4200/oauth-redirect',
-  redirectUri: 'https://in.cuetrade.io/oauth-redirect',
-  // apiUrl: 'http://localhost:8080/service',
-  // redirectUri: 'http://localhost:4200/oauth-redirect',
-  // tradingServiceUri: 'http://localhost:8081/tradingservice',
-  tradingServiceUri: 'https://trading.cuetrade.io/tradingservice',
+
+  //Local Dev
+  // apiUrl: 'https://in.cuetrade.io/service',
+  // redirectUri: 'https://in.cuetrade.io/oauth-redirect',
+  // tradingServiceUri: 'https://trading.cuetrade.io/tradingservice',
+
+  //Prod
+  apiUrl: 'http://localhost:8080/service',
+  redirectUri: 'http://localhost:4200/oauth-redirect',
+  tradingServiceUri: 'http://localhost:8081/tradingservice',
+
+
   clientCode: 'GPJIG4CRFK-102',
   authToken: '',
   tz: 'Asia/Calcutta'

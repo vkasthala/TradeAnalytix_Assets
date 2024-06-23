@@ -38,6 +38,7 @@ export class WatchlistService {
 
   registerinstrumentPriceUpdateListner() : Observable<string>{
     const url = environment.tradingServiceUri + "/v0/cuetrade/system/listener/price-update/register";
+    console.log("registering the price update");
     let headers = this.getHeaders();
     return this.http.post<string>(url, {headers});
   }
@@ -56,6 +57,7 @@ export class WatchlistService {
       'X-USER-ID': '1',
       'Authorization': 'Bearer ' + sessionStorage.getItem('token')
     });
+    console.log("Token  : " + sessionStorage.getItem('token'));
     return headers;
   }
 }
