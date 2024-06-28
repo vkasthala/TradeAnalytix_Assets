@@ -16,9 +16,9 @@ export class InstrumentPriceUpdateService {
   symbolsToRegister: Map<number, Function[]> = new Map();
 
   constructor() {
-    this.socket = new SockJS(environment.tradingServiceUri + '/price-update-websocket');
+    this.socket = new SockJS(environment.tradingServiceUri + '/price-update-websocket' + '?access_token=' + this.getAccessToken());
     this.stompClient = Stomp.over(this.socket);
-    this.connect(() => {
+    this.stompClient.connect(this.getAuthHeaders(), (): any => {
       this.connectInProgress = false;
       this.registerPendingSymbols();
     });
@@ -117,5 +117,15 @@ export class InstrumentPriceUpdateService {
       }
       this.subscriptions.delete(topic);
     }
+  }
+
+  private getAuthHeaders(): any {
+    return {
+      'Authorization': 'Bearer ' + this.getAccessToken()
+    };
+  }
+
+  private getAccessToken() {
+    return sessionStorage.getItem('token');
   }
 }
