@@ -86,20 +86,22 @@ export class WatchListComponent implements OnInit {
   ngOnInit() {
     this.checkDevice();
     this.loadWatchList();
-    this.registerinstrumentPriceUpdateListner();
-
     setTimeout(()=>{
       this.loader = false;
     }, 3000);
   }
 
   loadWatchList() {
-    // this.loader = true;
+    this.loader = true;
     this._watchlistService.getWatchListItems().subscribe(
       response => {
         if (response) {
           console.log(response)
           this.watchListData = response.watch_lists;
+          if(this.watchListData){
+            console.log(sessionStorage.getItem('token'));
+            this.registerinstrumentPriceUpdateListner();
+          }
           this._sharedService.watchListReloadEvent.emit(this.watchListData);
           this.subscribeSymbolsPriceUpdate(this.pageIndex);
         }
@@ -113,15 +115,17 @@ export class WatchListComponent implements OnInit {
   }
 
   registerinstrumentPriceUpdateListner() {
-    this._watchlistService.registerinstrumentPriceUpdateListner().subscribe(
-      response => {
-        if (response) {
-          console.log(response)
-        }
-      }, error => {
-        console.log(error);
-      }
-    );
+    // TODO : Revert this once the fyers websocket is fixed
+    // this._watchlistService.registerinstrumentPriceUpdateListner().subscribe(
+    //   response => {
+    //     if (response) {
+    //       console.log(response)
+    //     }
+    //   }, error => {
+    //     console.log(error);
+    //   }
+    // );
+    console.log("Supposed to register the price update listener");
   }
 
   unSubscribeSymbolsPriceUpdate(pageIndex: number) {
@@ -129,7 +133,7 @@ export class WatchListComponent implements OnInit {
       let watchList = this.watchListData[pageIndex - 1];
       if (watchList.items) {
         watchList.items.forEach(wlItem => {
-          // this.quoteUpdateService.unSubscribePriceUpdate(wlItem.symbol_id);
+          this.instrumentPriceUpdateService.unSubscribePriceUpdate(wlItem.symbol_id);
         });
       }
     }
