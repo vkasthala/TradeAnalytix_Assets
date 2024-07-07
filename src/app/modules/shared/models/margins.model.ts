@@ -5,7 +5,7 @@ export class Margins {
     // exchange: String | undefined;
     // tradingsymbol: String | undefined;
     // transaction_type: String | undefined;
-    // variety: String | undefined;
+    variety: string | undefined;
     // product: String | undefined;
     // quantity: number | undefined;
     // price: number | undefined;
@@ -25,7 +25,7 @@ export class Margins {
     product: string | undefined;
     quantity: number | undefined;
     ltp: number | undefined;
-    price: number | undefined;
+    price: any | undefined;
     status: string | undefined;
     journal: string | undefined;
     selected: boolean | undefined;

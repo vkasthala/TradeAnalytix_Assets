@@ -119,9 +119,9 @@ export class CodedRulesComponent implements OnInit {
   addOrUpdateRule(element: UserCodedRule) {
     this.Loader = true;
     // Set rule value
-    if (!element.val) {
-      element.val = element.defaultValue;
-    }
+    // if (!element.val && element.dataType !== "boolean") {
+    //   element.val = element.defaultValue;
+    // }
 
     if (!element.id || element.id === 0) {
       this.codedRuleService.createCodedRule(element).subscribe(data => {
@@ -269,7 +269,7 @@ export class CodedRulesComponent implements OnInit {
       }
     });
     dialogRef.afterClosed().subscribe((res) => {
-      if (res || element.ruleType === 2) {
+      if (res || element.dataType === "boolean") {
         element.val = res;
         this.addOrUpdateRule(element);
       }
@@ -289,7 +289,7 @@ export class CodedRulesComponent implements OnInit {
       }
     });
     dialogRef.afterClosed().subscribe((res) => {
-      if (res) {
+      if (res || element.dataType === "boolean") {
         element.val = res;
         this.addOrUpdateRule(element);
       }

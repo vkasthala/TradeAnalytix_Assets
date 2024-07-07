@@ -43,7 +43,7 @@ export interface OrderRuleCheckRequest extends PlaceOrderRequest {
 }
 
 export interface PurchaseOrderResponse {
-    order_id: string
+    data: {orderId: string}
 }
 
 export class OrderRuleResponse {
@@ -79,6 +79,7 @@ export interface OrderPurchasehistory{
     qty: number | undefined;
     instrumenType: number | undefined;
     symbolId: string | undefined;
+    variety: string | undefined;
 }
 
 export interface InstrumentResponse{

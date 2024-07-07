@@ -91,7 +91,7 @@ export class OrdersModalComponent implements OnInit {
         this._sharedService.ordersReloadEvent.emit(true);
         this._sharedService.loaderEvent.emit(false);
         this.closePopup();
-        this._omsService.saveRules(orderRules, response.order_id).subscribe(response=>{
+        this._omsService.saveRules(orderRules, response.data.orderId).subscribe(response=>{
           if(response){
             this.toastr.success('Order rules saved successfully', 'Success', {timeOut: 3000, positionClass: 'toast-bottom-right'});
           }
@@ -161,6 +161,7 @@ export class OrdersModalComponent implements OnInit {
   }
 
   modifyOrder(){
+    debugger;
     this._sharedService.loaderEvent.emit(true);
     console.log("modify");
     let price = this.getPrice();

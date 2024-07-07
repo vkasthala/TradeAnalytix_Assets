@@ -6,14 +6,14 @@
                     <div class="instrument">
                         <span class="transaction-type">{{margins.transaction_type | titlecase}}</span>
                         <span class="tradingsymbol">
-                            <span class="name">{{margins.tradingsymbol}}</span>
+                            <span class="name">{{margins.trading_symbol}}</span>
                         </span>
                         ×
                         <span class="qty">{{margins.quantity}} Qty</span>
                     </div>
                     <div class="su-radio-group">
                         <div class="type su-radio-wrap checked">
-                            <label class="su-radio-label">₹{{margins.price}}</label>
+                            <label class="su-radio-label m-0">₹{{margins.price}}</label>
                         </div>
                     </div>
                 </div>
@@ -59,7 +59,7 @@
                             <div class="type four columns su-radio-wrap checked"
                                 data-balloon="Margin Intraday Squareoff: Requires lower margin for equity. Has to be exited before market close."
                                 data-balloon-pos="up" data-balloon-length="large"
-                                [ngClass]="margins.order_id ? 'disabled' : ''">
+                                [ngClass]="margins.orderId ? 'disabled' : ''">
                                 <input id="MIS" type="radio" name="product" class="su-radio" value="MIS"
                                     [(ngModel)]="margins.product" checked>
                                 <label for="MIS" class="su-radio-label">Intraday <span>MIS</span></label>
@@ -67,7 +67,7 @@
                             <div class="type four columns su-radio-wrap"
                                 data-balloon="CashNCarry: Longterm investment. Requires full upfront margin."
                                 data-balloon-pos="up" data-balloon-length="large"
-                                [ngClass]="margins.order_id ? 'disabled' : ''">
+                                [ngClass]="margins.orderId ? 'disabled' : ''">
                                 <input id="CNC" type="radio" name="product" class="su-radio" value="CNC"
                                     [(ngModel)]="margins.product">
                                 <label for="CNC" class="su-radio-label">Longterm <span>CNC</span></label>
@@ -86,13 +86,11 @@
                                 </div>
                             </div>
                             <div class="four columns price">
-                                <div class="no su-input-group su-static-label"
-                                    [ngClass]="margins.order_type === 'MARKET' || margins.order_type === 'SL-M' ? 'disabled' : ''">
+                                <div class="no su-input-group su-static-label" [ngClass]="margins.order_type === 'MARKET' || margins.order_type === 'SL-M' ? 'disabled' : ''">
                                     <label class="su-input-label su-visible">Price</label>
-                                    <input type="number" autocorrect="off" min="0.05" step="0.05" nativeerror="true"
-                                        staticlabel="true" animate="true" label="Price" id="price" dynamicwidthsize="8"
-                                        [disabled]="margins.order_type === 'MARKET' || margins.order_type === 'SL-M'"
-                                        [value]="margins.order_type === 'MARKET' || margins.order_type === 'SL-M' ? '0' : orderPlacementPrice">
+                                    <input type="number" autocorrect="off" min="0" step="0.01" nativeerror="true" staticlabel="true" animate="true" label="Price" id="price" dynamicwidthsize="8" [disabled]="margins.order_type === 'MARKET' || margins.order_type === 'SL-M'" [value]="margins.order_type === 'MARKET' || margins.order_type === 'SL-M' ? '0' : orderPlacementPrice" />
+
+                                    <!-- <input type="number" autocorrect="off" min="0.05" step="0.05" nativeerror="true" staticlabel="true" animate="true" label="Price" id="price" dynamicwidthsize="8" [disabled]="margins.order_type === 'MARKET' || margins.order_type === 'SL-M'" [value]="margins.order_type === 'MARKET' || margins.order_type === 'SL-M' ? '0' : orderPlacementPrice"> -->
                                 </div>
                             </div>
                             <div class="four columns trigger">
@@ -121,7 +119,7 @@
                             <div class="four columns price">
                                 <div class="su-radio-group order-type">
                                     <div class="su-radio-wrap" tooltip-pos="down" data-balloon="Buy at market price"
-                                        data-balloon-pos="down" [ngClass]="margins.order_id ? 'disabled' : ''">
+                                        data-balloon-pos="down" [ngClass]="margins.orderId ? 'disabled' : ''">
                                         <input id="MARKET" type="radio" name="orderType" label="Market" class="su-radio"
                                             value="MARKET" [(ngModel)]="margins.order_type"
                                             [disabled]="margins.variety !== 'regular' && margins.variety !== 'co'">
@@ -129,7 +127,7 @@
                                     </div>
                                     <div class="su-radio-wrap checked" tooltip-pos="down"
                                         data-balloon="Buy at a preferred price" data-balloon-pos="down"
-                                        [ngClass]="margins.order_id ? 'disabled' : ''">
+                                        [ngClass]="margins.orderId ? 'disabled' : ''">
                                         <input id="LIMIT" type="radio" name="orderType" label="Limit" class="su-radio"
                                             value="LIMIT" [(ngModel)]="margins.order_type"
                                             [disabled]="margins.variety !== 'regular' && margins.variety !== 'co'">

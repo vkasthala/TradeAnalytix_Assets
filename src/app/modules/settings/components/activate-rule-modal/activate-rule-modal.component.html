@@ -10,7 +10,7 @@
       <div class="main-pop-inner">
           <p  *ngIf="jsonData.ruleType === 1">{{jsonData.uiLabel }} the amount stated below</p>
 
-          <div class="d-flex justify-content-center align-items-center" *ngIf="jsonData.ruleType === 1 && jsonData.uiLabel !== 'A trading plan should be created everyday'">
+          <div class="d-flex justify-content-center align-items-center" *ngIf="jsonData.dataType === 'double'">
             <label class="col-form-label px-3">Enter the amount</label>
             <div class="form-group">
               <input class="form-control" placeholder="" type="text" [(ngModel)]='value' />
