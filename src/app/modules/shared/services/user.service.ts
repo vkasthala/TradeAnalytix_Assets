@@ -46,6 +46,6 @@ export class UserService {
     // //   headers: headers,
     // //   observe: 'response' as 'body'  
     // // };
-    return this.httpService.get<any>(this.apiUrl+ '/v0/brokerage/login/fyers');
+    return this.httpService.get<any>(this.apiUrl+ '/v0/brokerage/login/fyers?env='+environment.env);
   }
 }

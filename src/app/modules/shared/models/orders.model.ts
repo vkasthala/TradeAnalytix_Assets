@@ -43,7 +43,7 @@ export interface OrderRuleCheckRequest extends PlaceOrderRequest {
 }
 
 export interface PurchaseOrderResponse {
-    order_id: string
+    data: {orderId: string}
 }
 
 export class OrderRuleResponse {
