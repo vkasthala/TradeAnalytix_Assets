@@ -79,6 +79,7 @@ export interface OrderPurchasehistory{
     qty: number | undefined;
     instrumenType: number | undefined;
     symbolId: string | undefined;
+    variety: string | undefined;
 }
 
 export interface InstrumentResponse{

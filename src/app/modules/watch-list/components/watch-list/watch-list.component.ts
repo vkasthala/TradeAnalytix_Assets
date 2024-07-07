@@ -98,10 +98,6 @@ export class WatchListComponent implements OnInit {
         if (response) {
           console.log(response)
           this.watchListData = response.watch_lists;
-          if(this.watchListData){
-            console.log(sessionStorage.getItem('token'));
-            this.registerinstrumentPriceUpdateListner();
-          }
           this._sharedService.watchListReloadEvent.emit(this.watchListData);
           this.subscribeSymbolsPriceUpdate(this.pageIndex);
         }
@@ -155,7 +151,7 @@ export class WatchListComponent implements OnInit {
   }
 
   updatePriceModel(symbol: Watchlistsymbol, data: any) {
-    console.log(data);
+    console.log('data', data);
     if (!symbol.priceModel && data && data.body) {
       symbol.priceModel = new PriceUpdateModel();
     }
@@ -272,34 +268,25 @@ export class WatchListComponent implements OnInit {
   createMargin($event: any) {
     console.log($event);
     let tradingsymbol = $event.symbol ? $event.symbol : $event.id;
-    const defaultOrderRequest = {
-      exchange: "NSE",
-      order_type: "MARKET",
-      product: "INTRADAY",
-      quantity: 1,
-      tradingsymbol: tradingsymbol,
-      transaction_type: $event.transaction_type,
-      variety: "regular"
-    }
+
     this.showOrdersModal = true;
-    /*this._omsService.getMargin(defaultOrderRequest).subscribe(response =>{
-      this.marginsSource = response;
-      this.showOrdersModal = true;
-      this.orderToggle = true;
-      if (response.transaction_type === 'BUY') {
-        this.orderToggle = false;
-      }
-      this.showMobileContextMenu = false;
-      this.loader = false;
-    }, error =>{
-      this.toastr.error(error.error, "Error", {timeOut: 3000, positionClass: 'toast-bottom-right'});
-      this.loader = false;
-    });*/
+    this.marginsSource = $event;
+    this.marginsSource.product = "MIS";
+    this.marginsSource.order_type = "MARKET";
+    this.marginsSource.quantity = 1;
+    this.marginsSource.variety= "regular";
+    this.marginsSource.trigger_price= $event.price;
+    this.orderToggle = true;
+    if ($event.transaction_type === 'BUY') {
+      this.orderToggle = false;
+    }
+
     this.marginsSource.type = $event.transaction_type;
     this.marginsSource.instrument = {'symbol':tradingsymbol, 'symbolId':$event.token, 'exchange':''};
-    this.marginsSource.price = $event.strike;
-    this.marginsSource.expiry = $event.expiryDate;
-    this.marginsSource.tradeType = $event.instrumenType == 14 ? 'OPTION' : 'STOCK';
+    // this.marginsSource.price = $event.strike;
+   
+    this.marginsSource.expiry = $event.expiry;
+    this.marginsSource.tradeType = $event.instrument_id == 14 ? 'OPTION' : 'STOCK';
     return this.marginsSource;
   }
 

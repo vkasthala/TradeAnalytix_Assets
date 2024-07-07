@@ -37,7 +37,6 @@ export class ActivateRuleModalComponent implements OnInit {
   }
 
   Activate() {
-    this.dialogRef.close();
     if (this.jsonData.uiLabel === "A trading plan should be created everyday") {
       this.value = 1;
     } else if (this.value === null || this.value === undefined) {

@@ -24,7 +24,7 @@
                 </td>
                 
                 <td class="mat-cell value-cell">
-                    <span class="d-flex align-items-center" *ngIf="coderule.uiLabel !== 'A trading plan should be created everyday'">
+                    <span class="d-flex align-items-center" *ngIf="coderule.dataType === 'double'">
                         <input type="text" class="form-control col-5" [ngClass]="!coderule.editing ? 'disabled' : ''"
                             [(ngModel)]="coderule.val" />
                         <mat-icon class="ml-2 mat-icon-edit action-icon" (click)="onItemEdit(coderule)"
