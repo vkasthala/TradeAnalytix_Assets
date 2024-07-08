@@ -283,10 +283,9 @@ export class WatchListComponent implements OnInit {
 
     this.marginsSource.type = $event.transaction_type;
     this.marginsSource.instrument = {'symbol':tradingsymbol, 'symbolId':$event.token, 'exchange':''};
-    // this.marginsSource.price = $event.strike;
-   
-    this.marginsSource.expiry = $event.expiry;
-    this.marginsSource.tradeType = $event.instrument_id == 14 ? 'OPTION' : 'STOCK';
+    this.marginsSource.price = $event.price;
+    this.marginsSource.expiry = $event.expiryDate;
+    this.marginsSource.tradeType = $event.instrumenType == 14 ? 'OPTION' : 'STOCK';
     return this.marginsSource;
   }
 
