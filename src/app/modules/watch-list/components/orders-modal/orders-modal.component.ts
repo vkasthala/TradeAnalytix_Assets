@@ -121,7 +121,8 @@ export class OrdersModalComponent implements OnInit {
     let price = (document.getElementById('price') as HTMLInputElement).value;
     console.log(isLimitChecked);
     if(!isLimitChecked){
-      price = this.margins.price;
+      // price = this.margins.price;
+      price = '0.0';
     }
     return parseFloat(price);
   }
