@@ -16,7 +16,8 @@ export const environment = {
   redirectUri: 'https://in.cuetrade.io/oauth-redirect',
   tradingServiceUri: 'https://trading.cuetrade.io/tradingservice',
   //Uncomment this only in local
-  //env: 'local',
+  // env: 'local',
+  //Comment this only in local
   env: 'prod',
 
   //Local Dev
