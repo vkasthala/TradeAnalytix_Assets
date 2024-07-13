@@ -172,9 +172,10 @@ export class SearchComponent implements OnInit {
   compareData(index: any) {
     console.log(this.searchResult);
     let wlItems = this.watchListData[index - 1].items;
+    debugger;
     this.searchResult.forEach(searchItem => {
-      wlItems.forEach((wlItem: { tradingsymbol: string | undefined; }) => {
-        if (searchItem.symbol === wlItem.tradingsymbol) {
+      wlItems.forEach((wlItem: { tradingSymbolShort: string | undefined; }) => {
+        if (searchItem.symbolShort === wlItem.tradingSymbolShort) {
           searchItem.addedToWatchList = true;
           this.currentWatchListSize = this.watchListData[this.pageIndex].items.length;
         }

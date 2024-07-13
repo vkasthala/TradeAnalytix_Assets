@@ -8,6 +8,7 @@ export class Watchlistsymbol {
     sequence: number;
     instrument_token: string;
     trading_symbol: string;
+    tradingSymbolShort: string;
     priceModel: PriceUpdateModel;
     symbol_id: number;
 

@@ -14,13 +14,13 @@
         *ngFor="let searchItem of searchResult, let index=index" (mouseover)="showSearchActions($event, index)"
         (mouseout)="fadeOutActions(index)"  (click)="addToWatchList(searchItem)">
         <span class="symbol" (click)="addToWatchList(searchItem)">
-          <span class="tradingsymbol">{{searchItem.symbol}}</span>
+          <span class="tradingsymbol">{{searchItem.symbolShort}}</span>
           <span class="ins-added-label" data-balloon="Added" data-balloon-pos="up" *ngIf="searchItem.addedToWatchList">
             <mat-icon class="mat-icon material-icons mat-icon-sm icon icon-check">check</mat-icon>
           </span>
         </span>
         <span class="exchange">
-          <span class="company">{{searchItem.symbol}}</span>
+          <span class="company">{{searchItem.symbolFull}}</span>
           <span *ngIf="isMobileDevice">
             <button type="button" class="button-green button-xsmall" data-balloon="Add" data-balloon-pos="up"
             (click)="addNewItem(searchItem); $event.stopPropagation();" *ngIf="!searchItem.addedToWatchList">
