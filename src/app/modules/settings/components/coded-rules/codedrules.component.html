@@ -9,30 +9,16 @@
     <table class="mat-table table">
         <thead>
             <tr class="mat-header-row">
+                <th class="mat-header-cell"></th>
+                <th class="mat-header-cell action-cell">Action</th>
                 <th class="mat-header-cell">Trading Rule</th>
                 <th class="mat-header-cell value-cell">Value</th>
-                <th class="mat-header-cell action-cell">Action</th>
-                <th class="mat-header-cell"></th>
             </tr>
         </thead>
         <tbody>
             <tr class="mat-header-row" *ngFor="let coderule of portfolioLevelRules">
-                <td class="mat-cell rule-cell">
-                    <span class="d-flex align-items-center">
-                        {{coderule.uiLabel}}
-                    </span>
-                </td>
-                
                 <td class="mat-cell value-cell">
-                    <span class="d-flex align-items-center" *ngIf="coderule.dataType === 'double'">
-                        <input type="text" class="form-control col-5" [ngClass]="!coderule.editing ? 'disabled' : ''"
-                            [(ngModel)]="coderule.val" />
-                        <mat-icon class="ml-2 mat-icon-edit action-icon" (click)="onItemEdit(coderule)"
-                            *ngIf="coderule.editing">check_circle
-                        </mat-icon>
-                        <mat-icon class="ml-2 text-danger action-icon" (click)="onCancel(coderule)"
-                            *ngIf="coderule.editing">close</mat-icon>
-                    </span>
+                    <mat-icon class="mat-icon-sm  mat-icon material-icons ml-3 pl-3" [ngClass]="coderule.val ? 'text-success' : 'text-danger'">{{coderule.val ? 'check' : 'close'}}</mat-icon>
                 </td>
                 <td class="mat-cell action-cell">
                     <span class="cursor text-link mr-2"
@@ -51,8 +37,22 @@
                         <span class="disabled-text" *ngIf="coderule.val">Disable</span>
                     </span>
                 </td>
+                <td class="mat-cell rule-cell">
+                    <span class="d-flex align-items-center">
+                        {{coderule.uiLabel}}
+                    </span>
+                </td>
+                
                 <td class="mat-cell status-cell">
-                    <mat-icon class="mat-icon-sm  mat-icon material-icons ml-3 pl-3" [ngClass]="coderule.val ? 'text-success' : 'text-danger'">{{coderule.val ? 'check' : 'close'}}</mat-icon>
+                    <span class="d-flex align-items-center col-3" *ngIf="coderule.dataType === 'double' || coderule.dataType === 'time'">
+                        <input type="text" class="form-control" [ngClass]="!coderule.editing ? 'disabled' : ''"
+                            [(ngModel)]="coderule.val" />
+                        <mat-icon class="ml-2 mat-icon-edit action-icon" (click)="onItemEdit(coderule)"
+                            *ngIf="coderule.editing">check_circle
+                        </mat-icon>
+                        <mat-icon class="ml-2 text-danger action-icon" (click)="onCancel(coderule)"
+                            *ngIf="coderule.editing">close</mat-icon>
+                    </span>
                 </td>
             </tr>
         </tbody>

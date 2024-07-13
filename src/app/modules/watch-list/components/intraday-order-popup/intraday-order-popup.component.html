@@ -17,7 +17,7 @@
                     </div>
                     <div class="four columns text-right">
                         <div class="wrap-right">
-                            <button type="button" class="button button-md button-outline">Skip and Buy</button>
+                            <button type="button" class="button button-md button-outline" (click)="orderPlacement(margins)">Skip and {{margins.transaction_type | titlecase}}</button>
                         </div>
                     </div>
                 </div>

@@ -53,8 +53,10 @@ export class OrdersModalComponent implements OnInit {
     console.log('event', event)
     if (this.orderToggle) {
       this.margins.transaction_type = "SELL"
+      this.margins.type = "SELL"
     } else {
       this.margins.transaction_type = "BUY"
+      this.margins.type = "BUY"
     }
     this._sharedService.orderToggleStatus.emit(this.orderToggle);
   }

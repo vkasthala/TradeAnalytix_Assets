@@ -29,6 +29,7 @@ export class IntradayOrderPopupComponent implements OnInit {
     private userStockStatsService: UserStockStatsService
   ) {
     this.data = data;
+    this.margins = data.margins;
   }
 
   ngOnInit() {
