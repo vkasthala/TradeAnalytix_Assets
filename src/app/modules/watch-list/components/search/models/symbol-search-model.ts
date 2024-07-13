@@ -14,6 +14,8 @@ export class SymbolSearchModel {
     id: number;
     token: string;
     symbol: string;
+    symbolShort: string;
+    symbolFull: string;
     tickSize: number | undefined;
     lotSize: number | undefined;
     optionType: string | undefined;

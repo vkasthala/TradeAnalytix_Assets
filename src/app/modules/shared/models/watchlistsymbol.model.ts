@@ -8,8 +8,10 @@ export class Watchlistsymbol {
     sequence: number;
     instrument_token: string;
     trading_symbol: string;
+    tradingSymbolShort: string;
     priceModel: PriceUpdateModel;
     symbol_id: number;
+    instrumentType: number;
 
     //TODO : Remove this once the price update listener is fixed.
     price: number | undefined;
