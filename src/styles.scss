@@ -2226,6 +2226,15 @@ input {
 .watchlist-sidebar .instruments .instrument .symbol {
     position: relative
 }
+.watchlist-sidebar .instruments .instrument.up .nice-name,
+.watchlist-sidebar .instruments .instrument.up .last-price {
+    color: var(--color-text-8)
+}
+
+.watchlist-sidebar .instruments .instrument.down .nice-name,
+.watchlist-sidebar .instruments .instrument.down .last-price {
+    color: var(--color-text-10)
+}
 
 .watchlist-sidebar .watchlist-selector {
     -webkit-box-sizing: border-box;
