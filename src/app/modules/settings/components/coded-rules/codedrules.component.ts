@@ -270,7 +270,7 @@ export class CodedRulesComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe((res) => {
       if (res || element.dataType === "boolean") {
-        element.val = res;
+        element.val = "TRUE";
         this.addOrUpdateRule(element);
       }
     });

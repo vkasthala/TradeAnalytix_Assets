@@ -164,7 +164,6 @@ export class OrdersModalComponent implements OnInit {
   }
 
   modifyOrder(){
-    debugger;
     this._sharedService.loaderEvent.emit(true);
     console.log("modify");
     let price = this.getPrice();

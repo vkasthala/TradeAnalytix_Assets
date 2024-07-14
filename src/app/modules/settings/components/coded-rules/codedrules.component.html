@@ -22,9 +22,9 @@
                 </td>
                 <td class="mat-cell action-cell">
                     <span class="cursor text-link mr-2"
-                        (click)="activateRule(coderule)" *ngIf="coderule.uiLabel !== 'Daily trading plan creation' && coderule.val === null">Activate
+                        (click)="activateRule(coderule)" *ngIf="coderule.val === null">Activate
                     </span>
-                    <span class="cursor text-link mr-3" (click)="onUpdateRule(coderule)" *ngIf="coderule.val && coderule.uiLabel !== 'A trading plan should be created everyday'">Update</span>
+                    <span class="cursor text-link mr-3" (click)="onUpdateRule(coderule)" *ngIf="coderule.val && coderule.dataType !== 'boolean'">Update</span>
                     <span class="cursor position-relative">
                         <!-- <input type="checkbox" name="rule" class="checkbox checkbox-custom"
                             [checked]="coderule.id && coderule.id !== null && coderule.id > 0"

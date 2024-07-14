@@ -12,8 +12,8 @@ export class ActivateRuleModalComponent implements OnInit {
   value: any;
   ruleType: any;
   btnText: string;
-
   jsonData:any;
+  error: string
 
   constructor(
     public dialogRef: MatDialogRef<ActivateRuleModalComponent>,
@@ -44,6 +44,15 @@ export class ActivateRuleModalComponent implements OnInit {
     }
     // this.event.emit({ data: form.value });
     this.dialogRef.close(this.value);
+  }
+
+  validateInput(value: any) {
+    this.error = undefined;
+    const dataType = this.jsonData.dataType;
+
+    if (dataType === 'double' && value && isNaN(value)) {
+      this.error = "Invalid input. Expected number";
+    }
   }
 
 }
