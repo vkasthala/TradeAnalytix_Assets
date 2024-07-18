@@ -112,12 +112,12 @@ export class SearchComponent implements OnInit {
 
   addToWatchList(item: SymbolSearchModel) {
     console.log("Added to watchlist");
-    if (!item || !item.symbolId) {
+    if (!item || !item.symbol) {
       return;
     }
     if (!this.isMobileDevice) {
       const request: WatchListRequest = {
-        symbolId: item.symbolId ? item.symbolId : 0,
+        symbolId: item.id ? item.id : 0,
         pageNumber: this._watchListService.getSelectedIndex()
       };
       this._watchListService.addSymbolToWatchList(request).subscribe(

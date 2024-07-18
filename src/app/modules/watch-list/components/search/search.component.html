@@ -12,7 +12,7 @@
     <div>
       <li class="search-result-item" [ngClass]="{'selected':index == 0,'isadded':searchItem.addedToWatchList}"
         *ngFor="let searchItem of searchResult, let index=index" (mouseover)="showSearchActions($event, index)"
-        (mouseout)="fadeOutActions(index)"  (click)="addToWatchList(searchItem)">
+        (mouseout)="fadeOutActions(index)" (click)="addToWatchList(searchItem)">
         <span class="symbol" (click)="addToWatchList(searchItem)">
           <span class="tradingsymbol">{{searchItem.symbolShort}}</span>
           <span class="ins-added-label" data-balloon="Added" data-balloon-pos="up" *ngIf="searchItem.addedToWatchList">
