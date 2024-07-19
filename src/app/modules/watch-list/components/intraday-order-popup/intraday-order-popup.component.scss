@@ -337,10 +337,10 @@
     -moz-appearance: none;
     width: 20px;
     height: 20px;
-    border: 2px solid #ccc;
-    border-radius: 4px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
     outline: none;
-     background-color: #ccc; /* Set background color to grey */
+     background-color: transparent !important;
   }
   
   .custom-checkbox:checked {
@@ -356,7 +356,7 @@
   
   .checked:after {
     content: "✔"; /* Right mark character */
-    color: #00ff00; /* Green color for right mark */
+    color: #1aa92d ; /* Green color for right mark */
   }
   
   .cross:after {
@@ -386,7 +386,7 @@
     height: 100%;
     background-color: #fff;
     border: 2px solid #ccc; /* Grey border */
-    border-radius: 4px;
+    border-radius: 2px;
   }
   
   .manual-checkbox:checked:before {
@@ -395,6 +395,7 @@
     font-size: 14px; /* Adjust font size */
     line-height: 20px; /* Center vertically */
     text-align: center; /* Center horizontally */
-    background-color: #26e126;
+    background-color: transparent;
+    color: #1aa92d ;
   }
   

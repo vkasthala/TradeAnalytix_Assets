@@ -112,12 +112,12 @@ export class SearchComponent implements OnInit {
 
   addToWatchList(item: SymbolSearchModel) {
     console.log("Added to watchlist");
-    if (!item || !item.symbolId) {
+    if (!item || !item.symbol) {
       return;
     }
     if (!this.isMobileDevice) {
       const request: WatchListRequest = {
-        symbolId: item.symbolId ? item.symbolId : 0,
+        symbolId: item.id ? item.id : 0,
         pageNumber: this._watchListService.getSelectedIndex()
       };
       this._watchListService.addSymbolToWatchList(request).subscribe(
@@ -172,7 +172,6 @@ export class SearchComponent implements OnInit {
   compareData(index: any) {
     console.log(this.searchResult);
     let wlItems = this.watchListData[index - 1].items;
-    debugger;
     this.searchResult.forEach(searchItem => {
       wlItems.forEach((wlItem: { tradingSymbolShort: string | undefined; }) => {
         if (searchItem.symbolShort === wlItem.tradingSymbolShort) {

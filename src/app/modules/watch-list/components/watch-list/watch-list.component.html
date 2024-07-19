@@ -14,7 +14,7 @@
                     <div class="vddl-list list-flat">
                         <div cdkDropList draggable="true" *ngIf="!isMobileDevice" (cdkDropListDropped)="drop($event)">
                             <div class="vddl-draggable instrument index0"
-                                [ngClass]="{'up': item && item.winFlag === true, 'down' : item && item.winFlag === false }"
+                                [ngClass]="{'up': item && item.changePercent >= 0, 'down' : item && item.changePercent < 0 }"
                                 *ngFor="let item of list.items, let i=index" (mouseover)="showActions($event, i)"
                                 (mouseout)="out(i)">
                                 <div class="info price-change-type-close-all">
@@ -27,7 +27,6 @@
                                     <div class="price-wrapper">
                                         <div class="price-change">
                                             <div class="dim">
-                                               
                                                 <span class="price-percentage">{{item &&
                                                     item.changePercent !== undefined ?
                                                     item.changePercent : '-'}}
@@ -39,6 +38,8 @@
                                         <div class="price">
                                             <span class="change-indicator icon"
                                                 [ngClass]="{'icon-chevron-up': item && item.winFlag === true, 'icon-chevron-down' : item && item.winFlag === false }"></span>
+                                                <mat-icon class="mat-icon material-icons text-success" *ngIf="item && item.changePercent >= 0">keyboard_arrow_up</mat-icon>
+                                                <mat-icon class="mat-icon material-icons text-danger" *ngIf="item && item.changePercent < 0">keyboard_arrow_down</mat-icon>
                                             <span class="last-price">{{item && item.price !==
                                                 undefined?
                                                 item.price : '-'}}</span>
