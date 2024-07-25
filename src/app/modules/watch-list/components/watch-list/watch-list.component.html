@@ -6,9 +6,9 @@
         <div class="instruments" (mouseleave)="out(null)">
             <div *ngFor="let list of watchListData">
                 <div *ngIf="pageIndex == list.pageNumber && list.items.length === 0" class="empty-state">
-                    <img src="../../../../../assets/images/marketwatch.svg" class="empty-img">
-                    <h2>Nothing here</h2>
-                    <p>Use the search bar to add instruments.</p>
+                    <br>
+                    <h4>No Symbols in Your Watchlist</h4>
+                    <p>Add stocks and options to start tracking prices and trading</p>
                 </div>
                 <div *ngIf="pageIndex == list.pageNumber">
                     <div class="vddl-list list-flat">
