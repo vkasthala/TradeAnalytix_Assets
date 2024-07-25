@@ -87,6 +87,7 @@ export class OrdersModalComponent implements OnInit {
     this._sharedService.loaderEvent.emit(true);
     const placeOrderRequest = this.getOrderPlacementRequest();
     const orderType = this.margins.variety;
+    placeOrderRequest.stopLossTriggerPrice = 0;
     this._omsService.placeOrder(placeOrderRequest, orderType).subscribe(response=>{
       if(response){
         this.toastr.success('Order placed successfully', 'Success', {timeOut: 3000, positionClass: 'toast-bottom-right'});
