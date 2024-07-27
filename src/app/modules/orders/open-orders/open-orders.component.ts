@@ -83,7 +83,7 @@ export class OpenOrdersComponent implements OnInit {
     let orderId = order.order_id
     this._orderService.getEditOrderDetail(orderId).subscribe(response =>{
       if(response){
-        this.marginsSource = response;
+        // this.marginsSource = response;
         console.log(this.marginsSource);
         this.showOrdersModal = true;
         this.orderToggle = true;

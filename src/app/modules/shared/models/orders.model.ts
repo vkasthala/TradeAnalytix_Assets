@@ -15,6 +15,12 @@ export interface OrdersResponse {
     tradeType: string | undefined;
 }
 
+export interface MarginResponse {
+    margin: number;
+    charges: number;
+    availableMargin: number;
+}
+
 export interface OrdersRequest {
     exchange: string;
     order_type: string;

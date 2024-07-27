@@ -30,4 +30,7 @@ export class Margins {
     journal: string | undefined;
     selected: boolean | undefined;
     symbolId: string | undefined;
+    margin: number | undefined;
+    charges: number | undefined;
+    availableMargin: number | undefined;
 }
