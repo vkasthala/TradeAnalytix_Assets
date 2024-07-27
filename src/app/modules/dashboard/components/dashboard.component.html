@@ -2,9 +2,10 @@
     <div class="trade-dash-cards-web">
         <div class="dashboard-body">
             <div>
-                <div class="card-title">Welcome {{userName}}</div>
-                <p class="text-black header-description">Transform your trading journey with CueTrade - your gateway to success! Take charge of your financial objectives by setting clear trading goals, crafting effective trading rules, and embracing a disciplined daily routine that puts you in control. Start now and experience the power of a systematic approach to trading!</p>
+                <div class="card-title">Welcome to CueTrade, {{userName}}</div>
+                <p class="text-black header-description">Trade, set goals, apply rules, journal, and analyze your performance — all in one place. Begin your disciplined trading journey now!</p>
 
+                <!--
                 <div class="card-title">Your Trading Goals</div>
                 <div class="d-flex align-items-center">
                     <p class="text-black header-description m-0">Set trading goals for your target timeframe</p>
@@ -16,9 +17,9 @@
                     <p class="text-black header-description m-0">Enable trading rules based on your experience and best practices</p>
                     <a class="btn btn-start ml-3" [routerLink]="['/rules/']">Add Rules</a>
                 </div>
-            </div>
+            </div>-->
             
-            <div class="mt-3 dashboard-header-row">
+            <!-- <div class="mt-3 dashboard-header-row">
                 <div class="daily-workspace">
                     <div class="row" style="margin-left:0;">
                         <div class="col-3 daily-workspace-lt">
@@ -113,7 +114,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <div class="metrics-section">
                 <h5 class="mt-3 mb-2 metrics-title">Key Metrics</h5>
@@ -138,26 +139,26 @@
 
             <div class="trade-dash-con mt-3">
                 <div class="row">
-                    <div class="col-sm-12 col-md-6" style="padding-right: 2%">
+                    <div class="col-sm-12 " style="padding-right: 2%">
                         <div class="trade-analytics">
                             <div class="trade-headiang">
-                                <h5>Calendar Report</h5>
-                            </div>
+                                <h5>Daily Performance</h5>
+                                </div>
                             <div class="dsh-img border-0" [ngClass]="fiveRowsCalendar ? 'firve-rows-calendar' : ''">
                                 <app-calendar #calendarReport></app-calendar>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-12 col-md-6 trade-dash-con mt-0" style="padding-left: 2%">
+                    <!-- <div class="col-sm-12 col-md-6 trade-dash-con mt-0" style="padding-left: 2%">
                         <div class="trade-analytics">
                             <div class="trade-headiang">
                                 <h5>Realized Return</h5>
                             </div>
                             <div class="dsh-img">
                                 <app-realized-return-chart></app-realized-return-chart>
-                            </div>
+                            </div> 
                         </div>
-                    </div>
+                    </div>-->
                    
                 </div>
             </div>
@@ -166,7 +167,7 @@
 </div>
 
 
-
+<!--
 <div class="checklist-slide" [ngClass]="checklist ? 'open' : ''">
     <div class="checklist-slide-heading">
         <div>
@@ -199,4 +200,4 @@
 <div class="device-info" *ngIf="isMobileDevice">
     <div class="message">CueTrade is best suited for laptop or desktop usage.<br/>
         Please use desktop or laptop.</div>
-</div>
+</div> -->
