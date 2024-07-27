@@ -269,17 +269,46 @@ export class WatchListComponent implements OnInit {
     console.log($event);
     let tradingsymbol = $event.symbol ? $event.symbol : $event.trading_symbol;
 
-    this.showOrdersModal = true;
+    const defaultOrderRequest = {
+      orderType: "MARKET",
+      productType: "MIS",
+      quantity: 1,
+      symbol: tradingsymbol,
+      transactionType: $event.transaction_type,
+      limitPrice: 0,
+      stopPrice: 0,
+      validity: 'DAY',
+      stopLossTriggerPrice: 0
+    }
+
+    this._omsService.getMargin(defaultOrderRequest).subscribe(response =>{
+        // this.marginsSource = response;
+        this.marginsSource.margin = response.margin;
+        this.marginsSource.charges = response.charges;
+        this.marginsSource.availableMargin = response.availableMargin;
+        this.showOrdersModal = true;
+        this.orderToggle = true;
+        if ($event.transaction_type === 'BUY') {
+            this.orderToggle = false;
+          }
+        this.showMobileContextMenu = false;
+        this.loader = false;
+      }, error =>{
+        this.toastr.error(error.error, "Error", {timeOut: 3000, positionClass: 'toast-bottom-right'});
+        this.loader = false;
+      });
+
+    // this.showOrdersModal = true;
     this.marginsSource = $event;
     this.marginsSource.product = "MIS";
     this.marginsSource.order_type = "MARKET";
     this.marginsSource.quantity = 1;
     this.marginsSource.variety= "regular";
     this.marginsSource.trigger_price= $event.price;
-    this.orderToggle = true;
-    if ($event.transaction_type === 'BUY') {
-      this.orderToggle = false;
-    }
+    // this.orderToggle = true;
+    // if ($event.transaction_type === 'BUY') {
+    //   this.orderToggle = false;
+    // }
 
     this.marginsSource.type = $event.transaction_type;
     this.marginsSource.instrument = {'symbol':tradingsymbol, 'symbolId':$event.token ? $event.token : $event.instrument_token, 'exchange':''};
@@ -319,7 +348,7 @@ export class WatchListComponent implements OnInit {
     this.loader = true;
     this._omsService.getEditOrderDetail(orderId).subscribe(response =>{
       if(response){
-        this.marginsSource = response;
+        // this.marginsSource = response;
         this.marginsSource.quantity = response.qty;
         this.marginsSource.tradeType = response.instrumenType == 14 ? 'OPTION' : 'STOCK';
         console.log(this.marginsSource);

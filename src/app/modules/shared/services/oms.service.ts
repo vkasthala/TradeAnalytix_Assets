@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { OrderPurchasehistory, OrderPurchasehistoryResponse, OrderRuleCheckRequest, OrderRuleResponse, OrdersRequest, OrdersResponse, PlaceOrderRequest, PurchaseOrderResponse } from '../models/orders.model';
+import { MarginResponse, OrderPurchasehistory, OrderPurchasehistoryResponse, OrderRuleCheckRequest, OrderRuleResponse, OrdersRequest, OrdersResponse, PlaceOrderRequest, PurchaseOrderResponse } from '../models/orders.model';
 import { Observable } from 'rxjs';
 import { HttpService } from './http.service';
 
@@ -21,9 +21,9 @@ export class OmsService {
     return httpHeaders;
   }
 
-  getMargin(orderRequest: OrdersRequest) : Observable<OrdersResponse>{
-     const url = environment.apiUrl + "/v0/oms/margins/orders";
-     return this.http.post<OrdersResponse>(url, orderRequest);
+  getMargin(orderRequest: PlaceOrderRequest) : Observable<MarginResponse>{
+    const url = environment.tradingServiceUri + "/orders/margins";
+     return this.http.post<MarginResponse>(url, orderRequest, { headers: this.createHttpHeaders() });
   }
 
   placeOrder(orderRequest: PlaceOrderRequest, orderType: string) : Observable<PurchaseOrderResponse>{
