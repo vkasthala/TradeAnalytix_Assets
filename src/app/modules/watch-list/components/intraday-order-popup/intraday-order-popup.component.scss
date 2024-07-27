@@ -1,3 +1,4 @@
+@import '../../../../../assets/styles/variable.scss';
 .compare-popup {
     position: fixed;
     left: 0;
@@ -15,8 +16,8 @@
 .order-window {
     border-radius: 3px 3px 0 0;
     background-color: #fff;
-    -webkit-box-shadow: 0 0 2px 0 rgba(0,0,0,.2),0 4px 10px 0 rgba(0,0,0,.05);
-    box-shadow: 0 0 2px 0 rgba(0,0,0,.2),0 4px 10px 0 rgba(0,0,0,.05);
+    -webkit-box-shadow: 0 0 2px 0 rgba(0, 0, 0, .2), 0 4px 10px 0 rgba(0, 0, 0, .05);
+    box-shadow: 0 0 2px 0 rgba(0, 0, 0, .2), 0 4px 10px 0 rgba(0, 0, 0, .05);
     z-index: 99;
     left: calc(50% - 600px/2);
     width: 100%;
@@ -83,8 +84,9 @@
     line-height: 1.2em
 }
 
-.order-window header .tx-toggle .su-switch-control,.order-window header .tx-toggle .su-switch:checked+.su-switch-control {
-    background-color: rgba(255,255,255,.3)
+.order-window header .tx-toggle .su-switch-control,
+.order-window header .tx-toggle .su-switch:checked+.su-switch-control {
+    background-color: rgba(255, 255, 255, .3)
 }
 
 .order-window header .info {
@@ -211,6 +213,7 @@
 .order-window.buy .button {
     color: #4A69CB;
 }
+
 .order-window.sell .button {
     color: #E0261A;
 }
@@ -270,34 +273,41 @@
 
 @media (max-width: 767px) {
     .example-box {
-        top: 0!important;
-        left: 0!important;
-        right: 0!important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
         margin: 0;
         width: 100%;
         overflow-y: auto;
         z-index: 999;
-        transform:inherit !important;
+        transform: inherit !important;
     }
+
     .order-window header .eight.columns {
         width: 75%;
     }
+
     .order-window header .four.columns {
         width: 25%;
     }
+
     .order-window .body .product .type {
         width: 50%;
     }
+
     .order-window .body .price .order-type {
         margin-bottom: 20px;
     }
+
     .order-window .body .order-type {
         text-align: left;
         margin-left: 5px;
     }
+
     .order-window .footer .actions button {
         width: 49%;
     }
+
     .order-window .footer .margins {
         margin-top: 0;
         margin-bottom: 20px;
@@ -307,28 +317,31 @@
 .intraday-panel {
     border-bottom: 1px solid #e7e7e7;
 }
+
 .intraday-panel-header {
     padding: 10px 15px;
     font-size: 15px;
     font-weight: 600;
     border-bottom: 1px solid #e7e7e7;
 }
+
 .intraday-panel-body {
     padding: 4px 0;
     height: 320px;
     overflow: auto;
 }
+
 .rule-type {
     color: #908F8F;
     font-size: 14px;
     padding-left: 0.25rem;
 }
+
 .sub-heading {
     font-size: 15px;
     font-weight: 600;
-    padding-top:4px;
-    padding-bottom:10px
-
+    padding-top: 4px;
+    padding-bottom: 10px
 }
 
 .custom-checkbox {
@@ -340,29 +353,34 @@
     border: 1px solid #ccc;
     border-radius: 2px;
     outline: none;
-     background-color: transparent !important;
-  }
-  
-  .custom-checkbox:checked {
+    background-color: transparent !important;
+}
+
+.custom-checkbox:checked {
     background-color: #ccc;
-  }
-  
-  .custom-checkbox:after {
-    content: ""; /* Empty content */
+}
+
+.custom-checkbox:after {
+    content: "";
+    /* Empty content */
     display: block;
     text-align: center;
     line-height: 20px;
-  }
-  
-  .checked:after {
-    content: "✔"; /* Right mark character */
-    color: #1aa92d ; /* Green color for right mark */
-  }
-  
-  .cross:after {
-    content: "✖"; /* Cross mark character */
-    color: #ff0000; /* Red color for cross mark */
-  }
+}
+
+.checked:after {
+    content: "✔";
+    /* Right mark character */
+    color: #1aa92d;
+    /* Green color for right mark */
+}
+
+.cross:after {
+    content: "✖";
+    /* Cross mark character */
+    color: #ff0000;
+    /* Red color for cross mark */
+}
 
 //   Manual checkbox
 
@@ -375,9 +393,9 @@
     appearance: none;
     outline: none;
     cursor: pointer;
-  }
-  
-  .manual-checkbox:before {
+}
+
+.manual-checkbox:before {
     content: "";
     position: absolute;
     top: 0;
@@ -385,17 +403,122 @@
     width: 100%;
     height: 100%;
     background-color: #fff;
-    border: 2px solid #ccc; /* Grey border */
+    border: 2px solid #ccc;
+    /* Grey border */
     border-radius: 2px;
-  }
-  
-  .manual-checkbox:checked:before {
-    content: "✔"; /* Check mark character */
-    color: white; /* Green color for checked */
-    font-size: 14px; /* Adjust font size */
-    line-height: 20px; /* Center vertically */
-    text-align: center; /* Center horizontally */
+}
+
+.manual-checkbox:checked:before {
+    content: "✔";
+    /* Check mark character */
+    color: white;
+    /* Green color for checked */
+    font-size: 14px;
+    /* Adjust font size */
+    line-height: 20px;
+    /* Center vertically */
+    text-align: center;
+    /* Center horizontally */
     background-color: transparent;
-    color: #1aa92d ;
-  }
-  
+    color: #1aa92d;
+}
+
+.reports-header {
+    color: #393B40;
+    font-size: 18px;
+    box-shadow: 0 1px 5px 0 rgba(var(--color-border-5--rgb), 0.1);
+    background: #fff;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    padding: 5px 10px;
+}
+
+// tabs
+.tab .nav-tabs {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    border: none;
+}
+
+.tab .nav-tabs li {
+    padding: 0;
+}
+
+.tab .nav-tabs li:first-child>a {
+    border-radius: 0;
+}
+
+.tab .nav-tabs li a {
+    display: block;
+    background: transparent;
+    font-size: 18px;
+    line-height: 16px;
+    text-align: center;
+    border: none;
+    z-index: 2;
+    transition: all 0.3s ease 0s;
+    text-decoration: none;
+
+    padding: 20px 0 12px 0;
+    margin: 0 10px;
+    color: #000; //Venkat changed from #5B5C60
+    position: relative;
+    font-weight: 500;
+}
+
+.tab .nav-tabs li a:hover,
+.tab .nav-tabs li.active a {
+    color: #394C86;
+    text-decoration: none;
+}
+
+.tab .nav-tabs li.active a::before,
+.tab .nav-tabs li a:hover::before {
+    content: '';
+    width: 100%;
+    height: 4px;
+    border-radius: 4px 4px 0px 0px;
+    background: #4A69CB;
+    position: absolute;
+    bottom: -4px;
+}
+
+.tab .tab-content {
+    padding: 0px;
+    margin-top: 0;
+    font-size: 15px;
+    background: #f5f8fa;
+
+    @media #{$extra-small} {
+        overflow-y: scroll;
+    }
+
+    @media #{$small} {
+        overflow-y: scroll;
+    }
+
+    @media #{$medium} {
+        overflow-y: scroll;
+    }
+}
+
+.tab .tab-content h3 {
+    font-size: 24px;
+    margin-top: 0;
+}
+
+@media only screen and (max-width: 479px) {
+    .tab .nav-tabs li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .tab .nav-tabs li.active a:before {
+        content: "\f105";
+        bottom: 15%;
+        left: 0;
+        right: auto;
+    }
+}

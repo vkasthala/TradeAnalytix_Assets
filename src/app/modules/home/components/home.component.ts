@@ -31,6 +31,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   brokerageModal: boolean = false;
   userDropDown: boolean = false;
   isMobileDevice: any;
+  userData: any;
   constructor(
     private globalStore: Store<fromGlobalConfig.State>,
     private router: Router,
@@ -75,6 +76,15 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this._activatedRoute.queryParamMap.subscribe(params => {
       console.log('params', params.get.name);
       //const ss = params.snapshot.queryParamMap;
+    });
+    this.loadUserDetails()
+  }
+
+  loadUserDetails() {
+    this.userService.getUserDetails().subscribe(res => {
+      if (res && res.name) {
+        this.userData = res;
+      }
     });
   }
 

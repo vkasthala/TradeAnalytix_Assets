@@ -30,7 +30,6 @@
 
                     <a (click)="fyersLogin()"><span>Login</span></a>
                 </div>
-                
                 <div class="right-nav">
                     <!-- <span class="btn btn-start mr-3" (click)="startTour()">
                         Start Tour <mat-icon>arrow_forward</mat-icon>
@@ -39,16 +38,18 @@
                         <div class="dropdown-label cursor" (click)="showUserDropDown()">
                             <div id="avatar-44">
                                 <div class="avatar">
-                                    <span>{{avatarName}}</span>
+                                    <span></span>
                                 </div>
                             </div>
-                            <span class="user-id">{{userId}}</span>
+                            <span class="user-id"></span>
                         </div>
                         <div *ngIf="userDropDown" class="dropdown-nav layer-2">
-                            <div class="dropdown-nav-header"><a href="/profile" class="">
-                                    <h4 class="username">{{userDetails.name}}</h4>
-                                    <div class="email">{{userDetails | json}}</div>
-                                </a></div>
+                            <div class="dropdown-nav-header">
+                                <a [routerLink]="['/profile/']" class="p-0">
+                                    {{userData.name}}
+                                    <!-- <div class="email">{{userDetails | json}}</div> -->
+                                </a>
+                            </div>
                             <hr>
                             <ul class="m-0">
                                 <li class="list-flat-item">

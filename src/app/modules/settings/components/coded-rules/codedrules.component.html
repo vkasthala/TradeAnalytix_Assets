@@ -31,10 +31,10 @@
                             [(ngModel)]="coderule.checked" (change)="onRuleSelectionChange(coderule)" />
                         <span [ngClass]="coderule.checked ? 'disabled-text' : 'add-new'">{{coderule.checked ? 'Disable'
                             : 'Enable' }}</span> -->
-                        <input type="checkbox" name="rule" class="checkbox checkbox-custom"
+                        <!-- <input type="checkbox" name="rule" class="checkbox checkbox-custom"
                             [checked]="coderule.id && coderule.id !== null && coderule.id > 0"
-                        [(ngModel)]="coderule.checked" (change)="onCheckBoxChange(coderule)" />
-                        <span class="disabled-text" *ngIf="coderule.val">Disable</span>
+                        [(ngModel)]="coderule.checked" (change)="onCheckBoxChange(coderule)" /> -->
+                        <span class="disabled-text" (click)="onCheckBoxChange(coderule)" *ngIf="coderule.val">Disable</span>
                     </span>
                 </td>
                 <td class="mat-cell rule-cell">
