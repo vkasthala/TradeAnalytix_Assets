@@ -50,7 +50,7 @@ const routes: Routes = [
     children: [
         {
           path : 'dashboard',
-          loadChildren: () => import('../main-chart/main-chart.module').then(m => m.MainChartModule),
+          loadChildren: () => import('../dashboard/dashboard.module').then(m => m.DashboardModule),
         },
         {
           path : 'new-trade',

@@ -12,6 +12,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatStepperModule } from '@angular/material/stepper';
+import { DashboardComponent } from '../dashboard/components/dashboard.component';
+import { CalendarComponent } from '../reports/components/calendar/calendar.component';
 
 const modules = [
   CommonModule,
@@ -26,6 +28,7 @@ const components = [
   SearchComponent,
   OrdersModalComponent,
   ClickOutsideDirective,
+  CalendarComponent,
 ];
 const providers = [
   SharedService,
@@ -35,6 +38,7 @@ const providers = [
 @NgModule({
   declarations: [
     ...components,
+    DashboardComponent,
   ],
   imports: [
     ...modules
@@ -42,6 +46,7 @@ const providers = [
   exports: [
     ...modules,
     ...components,
+    DashboardComponent,
   ],
   providers: [
   ],

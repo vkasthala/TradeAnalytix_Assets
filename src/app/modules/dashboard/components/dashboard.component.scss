@@ -3,6 +3,10 @@
 .dashboard {
     display: flex;
     flex-direction: column;
+    background: #f5f8fa;
+    padding: 20px;
+    font-size: 16px;
+    line-height: 24px;
 }
 .view-more {
     font-weight: 600;
@@ -841,9 +845,13 @@
 }
 
 .dashboard-body {
-    padding-top: 10px;
-    padding-left: 30px;
-    padding-right: 1rem;
+    background: #fff;
+    color: #393B40;
+    padding: 15px 20px;
+    font-size: 15px;
+    line-height: 24px;
+    border-radius: 0px;
+    box-shadow: 0px 4px 16px rgba(157, 157, 157, 0.45);
 }
 
 .metrics-bottom {

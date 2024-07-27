@@ -22,7 +22,6 @@ import { RiskByAssetChartComponent } from '../dashboard/charts/risk-by-asset-cha
 import { UserGoalsByDateChartComponent } from '../dashboard/charts/user-goals-by-date/user-goals-by-date.component.';
 import { AskForFeatureComponent } from '../dashboard/components/ask-for-feature/ask-for-feature.component';
 import { BecomeAnAffiliateComponent } from '../dashboard/components/become-an-affiliate/become-an-affiliate.component';
-import { DashboardComponent } from '../dashboard/components/dashboard.component';
 import { FindUsersComponent } from '../dashboard/components/find-users/find-users.component';
 import { KeyInsightsComponent } from '../dashboard/components/key-insights/key-insights.component';
 import { LeaveReviewComponent } from '../dashboard/components/leave-review/leave-review.component';
@@ -193,7 +192,6 @@ export const MY_FORMATS = {
 
 @NgModule({
   declarations: [
-    DashboardComponent,
     HomeComponent,
     AddNewTradeComponent,
     ImportTradesComponent,
@@ -282,7 +280,7 @@ export const MY_FORMATS = {
     ImportTradePopupComponent,
     AutoImportTradePopupComponent,
     RulesComponent,
-    CalendarComponent,
+    // CalendarComponent,
     CalendarComponentTradeplan,
     ReportsRulesComponent,
     StrategySelectionComponent,
@@ -399,7 +397,7 @@ export const MY_FORMATS = {
     RuleCommentDialogComponent,
     ImportTradePopupComponent,
     AutoImportTradePopupComponent,
-    CalendarComponent,
+    // CalendarComponent,
     CalendarComponentTradeplan,
     ReportsRulesComponent,
     StrategySelectionComponent,

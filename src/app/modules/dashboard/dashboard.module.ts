@@ -1,13 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ChartModule } from 'angular-highcharts';
-import { DashboardChartComponent } from './components/dashboard-chart/dashboard-chart.component';
+import { DashboardRoutingModule } from './dashboard-routing-module';
+import { SharedModule } from '../shared/shared.module';
+import { DashboardComponent } from './components/dashboard.component';
 
 @NgModule({
-  declarations: [DashboardChartComponent],
   imports: [
-    CommonModule,
-    ChartModule
+    ChartModule,
+    SharedModule,
+    DashboardRoutingModule
   ]
 })
 export class DashboardModule { }
