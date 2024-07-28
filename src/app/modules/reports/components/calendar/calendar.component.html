@@ -11,7 +11,8 @@
             </p>
 
             <p class="w-100 returnAmount" *ngIf="!isUsInstances">
-                <img src="../../../../../assets/img/rupee.png" />: {{date.returnAmount | number:'1.0-0' }}
+                <!-- <img src="../../../../../assets/img/rupee.png" />: {{date.returnAmount | number:'1.0-0' }} -->
+                {{date.returnAmount | number:'1.0-0' }}
                 <span *ngIf="!date.returnAmount"> 0</span>
             </p>
             <p class="w-100 text-right">
