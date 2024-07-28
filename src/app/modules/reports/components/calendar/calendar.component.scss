@@ -2,7 +2,7 @@
 .custom-calendar {
     padding: 0;
     min-height: 400px;
-    box-shadow: none;
+    box-shadow: 0px 4px 16px rgba(157, 157, 157, 0.4);
     border-radius: 12px;
     ul {
         list-style: none;
@@ -20,7 +20,7 @@
             flex: 0 0 14.2857%;
             border-left: 0;
             border-top: 0;
-            font-size: 14px;
+            font-size: 15px;
             height: 63px;
             position: relative;
             justify-content: center;
@@ -28,7 +28,7 @@
             padding: 5px;
             flex-direction: column;
             line-height: 1.5;
-            color: #5B5C60;
+            color: #393B40;
         }
         li.days {
             border-top: 1px solid #dee2e6;
@@ -45,11 +45,11 @@
             background: #8a8989;
             color: #fff;
             border-radius: 0 0 15px 0;
-            width: 30px;
+            width: 35px;
             text-align: center;
             display: flex;
             justify-content: center;
-            height: 25px;
+            height: 35px;
             line-height: 25px;
         }
         .working_day {
@@ -59,11 +59,11 @@
             background: #12B76A;
             color: #fff;
             border-radius: 0 0 15px 0;
-            width: 30px;
+            width: 35px;
             text-align: center;
             display: flex;
             justify-content: center;
-            height: 25px;
+            height: 35px;
             line-height: 25px;
         }
         .negitive_return {
@@ -73,11 +73,11 @@
             background: #F04438;
             color: #fff;
             border-radius: 0 0 15px 0;
-            width: 30px;
+            width: 35px;
             text-align: center;
             display: flex;
             justify-content: center;
-            height: 25px;
+            height: 35px;
             line-height: 25px;
         }
     }
@@ -85,5 +85,6 @@
 .returnAmount {
     text-align: right;
     min-height: 6px;
+    font-size: 15px;
     margin:16px;          //Added this to adjust the formatting of return amount and trade count in calendar report
 }
