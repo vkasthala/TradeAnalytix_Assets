@@ -6,12 +6,12 @@
                 <div class="d-flex align-items-center">
                     <div class="eight columns">
                         <div class="instrument">
-                            Intraday Order : <span class="transaction-type">{{margins.transaction_type | titlecase}}</span> 
+                            Intraday Order: <span class="transaction-type">{{margins.transaction_type | titlecase}}</span> 
                             <span class="tradingsymbol">
                                 <span class="name pl-2">{{margins.trading_symbol}}</span> 
                             </span>
                             <span class="qty px-1">{{margins.quantity}}</span>
-                            <span class="su-radio-label">qty at Limit Price of</span>
+                            <span class="su-radio-label">Qty at Limit Price of</span>
                             <span class="price pl-1">₹{{margins.price}}</span>
                         </div>
                     </div>
@@ -29,7 +29,7 @@
                         <div class="row">
                             <div class="col-6 pr-0">
                                 <div class="intraday-panel">
-                                    <div class="intraday-panel-header">Check Your Rules</div>
+                                    <div class="intraday-panel-header">Trading Rules</div>
                                     <div class="intraday-panel-body">
                                         <div class="tab" role="tabpanel">
                                             <div class="reports-header">
@@ -82,7 +82,7 @@
                             </div>
                             <div class="col-6 border-left pl-0">
                                 <div class="intraday-panel">
-                                    <div class="intraday-panel-header">Review Performance</div>
+                                    <div class="intraday-panel-header">Historical Statistics</div>
                                     <div class="intraday-panel-body">
                                         <div class="d-flex py-2 align-items-center">
                                             <div class="col-8">Realized Return</div>

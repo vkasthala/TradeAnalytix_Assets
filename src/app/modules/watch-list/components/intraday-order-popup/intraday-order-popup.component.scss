@@ -329,6 +329,7 @@
     padding: 4px 0;
     height: 320px;
     overflow: auto;
+    font-size: 14px;
 }
 
 .rule-type {
@@ -453,16 +454,16 @@
 .tab .nav-tabs li a {
     display: block;
     background: transparent;
-    font-size: 18px;
-    line-height: 16px;
+    font-size: 14px;
+    line-height: 9px;
     text-align: center;
     border: none;
     z-index: 2;
     transition: all 0.3s ease 0s;
     text-decoration: none;
 
-    padding: 20px 0 12px 0;
-    margin: 0 10px;
+    padding: 5px 0 10px 0;
+    margin: 0 5px;
     color: #000; //Venkat changed from #5B5C60
     position: relative;
     font-weight: 500;
@@ -488,8 +489,8 @@
 .tab .tab-content {
     padding: 0px;
     margin-top: 0;
-    font-size: 15px;
-    background: #f5f8fa;
+    font-size: 14px;
+    background: #ffffff;
 
     @media #{$extra-small} {
         overflow-y: scroll;
