@@ -230,6 +230,7 @@
 .trade-dash-con {
     margin: 10px 0px 0px 0px;
     padding: 0px 0.5rem;
+    width:96%;
     @media #{$extra-small} {
         padding: 1rem;
         padding-top: 0;
@@ -449,7 +450,7 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    width: 100%;
+    width: 94%;
     flex-flow: row wrap;
     @media #{$extra-small} {
         height: 100px;
@@ -512,8 +513,8 @@
 .trade-headiang {
     margin-bottom: 10px;
     h5 {
-        font-weight: 600;
-        font-size: 18px;
+        font-weight: 500;
+        font-size: 20px;
         margin-bottom: 0px;
         color: #000000;
         @media #{$medium} {
@@ -529,8 +530,8 @@
     }
 }
 .metrics-title {
-    font-weight: 600;
-    font-size: 18px;
+    font-weight: 500;
+    font-size: 20px;
     color: #000000;
     @media #{$extra-small} {
         font-size: 18px;
@@ -757,13 +758,13 @@
     flex-direction: column;
 }
 .card-title {
-    font-weight: 600;
+    font-weight: 500;
     font-style: Open Sans, sans-serif !important;
-    font-size: 18px;
+    font-size: 20px;
     line-height: 30px;
     color: #000000;
     margin: 0;
-    margin-bottom: 3px;
+    margin-bottom: 5px;
 }
 .card-bottom {
     font-weight: bold;
@@ -879,7 +880,7 @@
     transition: all 0.5s ease 0s;
 }
 .metrics-section {
-    padding: 18px 0 10px 0;
+    padding: 2px 0 0px 0;
     @media #{$extra-small} {
         background: #fff;
         padding: 1rem;
@@ -1170,8 +1171,9 @@
     min-height: 165px;
 }
 .header-description {
-    font-size: 16px;
+    font-size: 18px;
     color: #393B40;
+    line-height: 30px;
 }
 
 .device-info {
