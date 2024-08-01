@@ -61,7 +61,7 @@
                                 data-balloon-pos="up" data-balloon-length="large"
                                 [ngClass]="margins.orderId ? 'disabled' : ''">
                                 <input id="MIS" type="radio" name="product" class="su-radio" value="MIS"
-                                    [(ngModel)]="margins.product" checked>
+                                    [(ngModel)]="margins.product" (change)="calculateMargin()" checked>
                                 <label for="MIS" class="su-radio-label">Intraday <span>MIS</span></label>
                             </div>
                             <div class="type four columns su-radio-wrap"
@@ -69,7 +69,7 @@
                                 data-balloon-pos="up" data-balloon-length="large"
                                 [ngClass]="margins.orderId ? 'disabled' : ''">
                                 <input id="CNC" type="radio" name="product" class="su-radio" value="CNC"
-                                    [(ngModel)]="margins.product">
+                                    [(ngModel)]="margins.product" (change)="calculateMargin()">
                                 <label for="CNC" class="su-radio-label">Longterm <span>CNC</span></label>
                             </div>
                         </div>
@@ -82,13 +82,13 @@
                                     <input type="number" name="quantity" autocorrect="off" min="1" step="1"
                                         autofocus="autofocus" nativeerror="true" staticlabel="true" animate="true"
                                         dynamicwidthsize="8" [value]="margins.quantity" [(ngModel)]="margins.quantity"
-                                        (change)="changeOrderQty($event)" />
+                                        (input)="changeOrderQty($event)" />
                                 </div>
                             </div>
                             <div class="four columns price">
                                 <div class="no su-input-group su-static-label" [ngClass]="margins.order_type === 'MARKET' || margins.order_type === 'SL-M' ? 'disabled' : ''">
                                     <label class="su-input-label su-visible">Price</label>
-                                    <input type="number" autocorrect="off" min="0" step="0.01" nativeerror="true" staticlabel="true" animate="true" label="Price" id="price" dynamicwidthsize="8" [disabled]="margins.order_type === 'MARKET' || margins.order_type === 'SL-M'" [value]="margins.order_type === 'MARKET' || margins.order_type === 'SL-M' ? '0' : orderPlacementPrice" />
+                                    <input type="number" autocorrect="off" min="0" step="0.01" nativeerror="true" staticlabel="true" animate="true" label="Price" id="price" dynamicwidthsize="8" [disabled]="margins.order_type === 'MARKET' || margins.order_type === 'SL-M'" [value]="margins.order_type === 'MARKET' || margins.order_type === 'SL-M' ? '0' : orderPlacementPrice" (input)="calculateMargin()"/>
 
                                     <!-- <input type="number" autocorrect="off" min="0.05" step="0.05" nativeerror="true" staticlabel="true" animate="true" label="Price" id="price" dynamicwidthsize="8" [disabled]="margins.order_type === 'MARKET' || margins.order_type === 'SL-M'" [value]="margins.order_type === 'MARKET' || margins.order_type === 'SL-M' ? '0' : orderPlacementPrice"> -->
                                 </div>
@@ -101,14 +101,14 @@
                                         staticlabel="true" animate="true" label="Trigger price" id="trigger_price"
                                         dynamicwidthsize="8"
                                         [disabled]="margins.order_type == 'MARKET' || margins.order_type == 'LIMIT'"
-                                        [value]="margins.order_type === 'MARKET' || margins.order_type === 'LIMIT' ? '0' : margins.trigger_price">
+                                        [value]="margins.order_type === 'MARKET' || margins.order_type === 'LIMIT' ? '0' : margins.trigger_price" (input)="calculateMargin()">
                                 </div>
                                 <div class="no su-input-group su-static-label" *ngIf="margins.variety === 'co'">
                                     <label class="su-input-label">Stoploss trigger Price</label>
                                     <input type="number" placeholder="" autocorrect="off" min="0" step="0.05"
                                         nativeerror="true" staticlabel="true" animate="true"
                                         label="Stoploss trigger Price" dynamicwidthsize="8"
-                                        [value]="margins.trigger_price">
+                                        [value]="margins.trigger_price" (input)="calculateMargin()">
                                 </div>
                             </div>
                         </div>
@@ -122,7 +122,7 @@
                                         data-balloon-pos="down" [ngClass]="margins.orderId ? 'disabled' : ''">
                                         <input id="MARKET" type="radio" name="orderType" label="Market" class="su-radio"
                                             value="MARKET" [(ngModel)]="margins.order_type"
-                                            [disabled]="margins.variety !== 'regular' && margins.variety !== 'co'">
+                                            [disabled]="margins.variety !== 'regular' && margins.variety !== 'co'" (change)="calculateMargin()">
                                         <label for="MARKET" class="su-radio-label">Market</label>
                                     </div>
                                     <div class="su-radio-wrap checked" tooltip-pos="down"
@@ -130,7 +130,7 @@
                                         [ngClass]="margins.orderId ? 'disabled' : ''">
                                         <input id="LIMIT" type="radio" name="orderType" label="Limit" class="su-radio"
                                             value="LIMIT" [(ngModel)]="margins.order_type"
-                                            [disabled]="margins.variety !== 'regular' && margins.variety !== 'co'">
+                                            [disabled]="margins.variety !== 'regular' && margins.variety !== 'co'" (change)="calculateMargin()">
                                         <label for="LIMIT" class="su-radio-label">Limit</label>
                                     </div>
                                 </div>
@@ -142,7 +142,7 @@
                                         [ngClass]="margins.variety == 'co' ? 'disabled' : ''">
                                         <input id="SL" type="radio" name="orderType" label="SL" class="su-radio"
                                             value="SL" [(ngModel)]="margins.order_type"
-                                            [disabled]="margins.variety == 'co'">
+                                            [disabled]="margins.variety == 'co'" (change)="calculateMargin()">
                                         <label for="SL" class="su-radio-label">SL</label>
                                     </div>
                                     <div class="su-radio-wrap" tooltip-pos="down"
@@ -150,7 +150,7 @@
                                         [ngClass]="margins.variety === 'co' ? 'disabled' : ''">
                                         <input id="SL-M" type="radio" name="orderType" label="SL-M" class="su-radio"
                                             value="SL-M" [(ngModel)]="margins.order_type"
-                                            [disabled]="margins.variety === 'co'">
+                                            [disabled]="margins.variety === 'co'" (change)="calculateMargin()">
                                         <label for="SL-M" class="su-radio-label">SL-M</label>
                                     </div>
                                 </div>

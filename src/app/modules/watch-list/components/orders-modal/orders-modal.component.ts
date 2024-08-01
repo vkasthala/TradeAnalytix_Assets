@@ -58,6 +58,7 @@ export class OrdersModalComponent implements OnInit {
       this.margins.transaction_type = "BUY"
       this.margins.type = "BUY"
     }
+    this.calculateMargin();
     this._sharedService.orderToggleStatus.emit(this.orderToggle);
   }
 
@@ -81,6 +82,23 @@ export class OrdersModalComponent implements OnInit {
         }, 50);
       }
     }
+  }
+
+  calculateMargin(){
+    const placeOrderRequest = this.getOrderPlacementRequest();
+    if(placeOrderRequest){
+      this.loader = true;
+    this._omsService.getMargin(placeOrderRequest).subscribe(response =>{
+      this.margins.margin = response.margin;
+      this.margins.charges = response.charges;
+      this.margins.availableMargin = response.availableMargin;
+      this.loader = false;
+    }, error =>{
+      // this.toastr.error(error.error, "Error", {timeOut: 3000, positionClass: 'toast-bottom-right'});
+      console.log("Error in calling margin api "+error.error);
+      this.loader = false;
+    });
+  }
   }
 
   orderPlacement(orderRules: OrderRuleResponse) {
@@ -198,6 +216,7 @@ export class OrdersModalComponent implements OnInit {
     if(val < 0) {
       this.margins.quantity = Math.abs(val);
     }
+    this.calculateMargin();
   }
 
   isValidPricesForStopLoss(triggerPrice: number) : boolean{
@@ -257,7 +276,7 @@ export class OrdersModalComponent implements OnInit {
       validity: 'DAY',
       limitPrice: price,
       stopPrice : triggerPrice,
-      stopLossTriggerPrice: this.margins.trigger_price
+      stopLossTriggerPrice: 0
     }
     return placeOrderRequest;
   }
