@@ -28,7 +28,7 @@
 
                     <a [class.router-link-active]="currentRoute === 'rules'" [routerLink]="['/rules/']" routerLinkActive="router-link-active"><span>Rules</span></a>
 
-                    <a (click)="fyersLogin()"><span>Login</span></a>
+                    <a (click)="openBrokerageModal()"><span>Login</span></a>
                 </div>
                 <div class="right-nav">
                     <!-- <span class="btn btn-start mr-3" (click)="startTour()">
@@ -182,9 +182,9 @@
         </div>
         <div class="modal-body pt-0">
             <form>
-                <div class="">
+                <div class="col-10 p-0">
                   <label class="col-form-label">Select a broker</label>
-                  <select class="form-control">
+                  <select (change)="onBrokerageChange($event.target.value)" class="form-control">
                     <option value="0">Choose a broker from the list</option>
                     <option value="FYERS">FYERS</option>
                   </select>

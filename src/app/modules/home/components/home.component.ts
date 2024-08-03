@@ -291,4 +291,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.brokerageModal = !this.brokerageModal;
   }
 
+  onBrokerageChange(value) {
+    if(value === 'FYERS') {
+      this.fyersLogin();
+    }
+  }
+
 }

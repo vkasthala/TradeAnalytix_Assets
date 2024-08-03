@@ -21,10 +21,10 @@
                     <mat-icon class="mat-icon-sm  mat-icon material-icons ml-3 pl-3" [ngClass]="coderule.val ? 'text-success' : 'text-danger'">{{coderule.val ? 'check' : 'close'}}</mat-icon>
                 </td>
                 <td class="mat-cell action-cell">
-                    <span class="cursor text-link mr-2"
+                    <span class="cursor btn btn-active mr-2"
                         (click)="activateRule(coderule)" *ngIf="coderule.val === null">Activate
                     </span>
-                    <span class="cursor text-link mr-3" (click)="onUpdateRule(coderule)" *ngIf="coderule.val && coderule.dataType !== 'boolean'">Update</span>
+                    <span class="cursor btn btn-secondary mr-3" (click)="onUpdateRule(coderule)" *ngIf="coderule.val && coderule.dataType !== 'boolean'">Update</span>
                     <span class="cursor position-relative">
                         <!-- <input type="checkbox" name="rule" class="checkbox checkbox-custom"
                             [checked]="coderule.id && coderule.id !== null && coderule.id > 0"
@@ -34,7 +34,7 @@
                         <!-- <input type="checkbox" name="rule" class="checkbox checkbox-custom"
                             [checked]="coderule.id && coderule.id !== null && coderule.id > 0"
                         [(ngModel)]="coderule.checked" (change)="onCheckBoxChange(coderule)" /> -->
-                        <span class="disabled-text" (click)="onCheckBoxChange(coderule)" *ngIf="coderule.val">Disable</span>
+                        <span class="btn btn-disabled" (click)="onCheckBoxChange(coderule)" *ngIf="coderule.val">Disable</span>
                     </span>
                 </td>
                 <td class="mat-cell rule-cell">
