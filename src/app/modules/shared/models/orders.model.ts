@@ -65,6 +65,7 @@ export interface OrderPurchasehistoryResponse{
 }
 
 export interface OrderPurchasehistory{
+    transaction_type: string;
     id: number;
     orderId: string;
     time: string;

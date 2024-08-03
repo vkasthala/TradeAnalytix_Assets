@@ -156,7 +156,10 @@ export class OpenOrdersComponent implements OnInit {
   }
 
   openIntradayOrder(order) {
-
+    this._sharedService.orderModifyEvent.emit(order);
+    if(this.isMobileDevice) {
+      this.modifyOrder(order)
+    }
   }
 
 
