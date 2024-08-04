@@ -116,7 +116,7 @@
             </div> -->
 
             <div class="metrics-section">
-                <h5 class="mt-3 mb-2 metrics-title">Key Metrics</h5>
+                <h5 class="mb-2 metrics-title">Key Metrics</h5>
                 <div class="trade-dash-cards" [ngClass]="showMoreMetrics ? 'show-all' : ''">
                     <div class="flex-item" *ngFor="let item of summaryItems;">
                         <div class="flex-inner">
@@ -138,12 +138,12 @@
 
             <div class="trade-dash-con mt-3">
                 <div class="row">
-                    <div class="col-sm-12 " style="padding-right: 2%">
+                    <div class="col-sm-12">
                         <div class="trade-analytics">
                             <div class="trade-headiang">
                                 <h5>Daily Performance</h5>
                                 </div>
-                            <div class="dsh-img border-0" [ngClass]="fiveRowsCalendar ? 'firve-rows-calendar' : ''">
+                            <div class="dsh-img border-0 dashboard-calendar" [ngClass]="fiveRowsCalendar ? 'firve-rows-calendar' : ''">
                                 <app-calendar #calendarReport></app-calendar>
                             </div>
                         </div>

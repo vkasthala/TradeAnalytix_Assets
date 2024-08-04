@@ -229,14 +229,7 @@
 
 .trade-dash-con {
     margin: 10px 0px 0px 0px;
-    padding: 0px 0.5rem;
-    width:96%;
-    @media #{$extra-small} {
-        padding: 1rem;
-        padding-top: 0;
-        margin-left: -8px;
-        margin-right: -8px;
-    }
+    
     .dsh-img {
         margin-bottom: 20px;
         background: #FFFFFF;
@@ -450,7 +443,6 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    width: 94%;
     flex-flow: row wrap;
     @media #{$extra-small} {
         height: 100px;
@@ -850,7 +842,7 @@
 .dashboard-body {
     background: #f5f8fa;
     color: #393B40;
-    padding: 15px 30px;
+    padding: 15px 20px 15px 30px;
     font-size: 15px;
     line-height: 24px;
     border-radius: 0px;
