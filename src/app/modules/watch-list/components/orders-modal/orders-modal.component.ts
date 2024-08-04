@@ -113,11 +113,11 @@ export class OrdersModalComponent implements OnInit {
         this._sharedService.loaderEvent.emit(false);
         this.closePopup();
         this._omsService.saveRules(orderRules, response.data.orderId).subscribe(response=>{
-          if(response){
-            this.toastr.success('Order rules saved successfully', 'Success', {timeOut: 3000, positionClass: 'toast-bottom-right'});
-          }
+          // if(response){
+          //   this.toastr.success('Order rules saved successfully', 'Success', {timeOut: 3000, positionClass: 'toast-bottom-right'});
+          // }
         }, error => {
-          this.toastr.error("Error while saving order rules", 'Error', {timeOut: 3000, positionClass: 'toast-bottom-right'});
+          // this.toastr.error("Error while saving order rules", 'Error', {timeOut: 3000, positionClass: 'toast-bottom-right'});
         });
       }
     }, error => {

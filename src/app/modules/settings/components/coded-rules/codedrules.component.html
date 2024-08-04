@@ -10,32 +10,15 @@
         <thead>
             <tr class="mat-header-row">
                 <th class="mat-header-cell">Status</th>
-                <th class="mat-header-cell action-cell">Action</th>
                 <th class="mat-header-cell">Trading Rule</th>
                 <th class="mat-header-cell value-cell">Value</th>
+                <th class="mat-header-cell action-cell">Action</th>
             </tr>
         </thead>
         <tbody>
             <tr class="mat-header-row" *ngFor="let coderule of portfolioLevelRules">
                 <td class="mat-cell value-cell">
                     <mat-icon class="mat-icon-sm  mat-icon material-icons ml-3 pl-3" [ngClass]="coderule.val ? 'text-success' : 'text-danger'">{{coderule.val ? 'check' : 'close'}}</mat-icon>
-                </td>
-                <td class="mat-cell action-cell">
-                    <span class="cursor btn btn-active mr-2"
-                        (click)="activateRule(coderule)" *ngIf="coderule.val === null">Activate
-                    </span>
-                    <span class="cursor btn btn-secondary mr-3" (click)="onUpdateRule(coderule)" *ngIf="coderule.val && coderule.dataType !== 'boolean'">Update</span>
-                    <span class="cursor position-relative">
-                        <!-- <input type="checkbox" name="rule" class="checkbox checkbox-custom"
-                            [checked]="coderule.id && coderule.id !== null && coderule.id > 0"
-                            [(ngModel)]="coderule.checked" (change)="onRuleSelectionChange(coderule)" />
-                        <span [ngClass]="coderule.checked ? 'disabled-text' : 'add-new'">{{coderule.checked ? 'Disable'
-                            : 'Enable' }}</span> -->
-                        <!-- <input type="checkbox" name="rule" class="checkbox checkbox-custom"
-                            [checked]="coderule.id && coderule.id !== null && coderule.id > 0"
-                        [(ngModel)]="coderule.checked" (change)="onCheckBoxChange(coderule)" /> -->
-                        <span class="btn btn-disabled" (click)="onCheckBoxChange(coderule)" *ngIf="coderule.val">Disable</span>
-                    </span>
                 </td>
                 <td class="mat-cell rule-cell">
                     <span class="d-flex align-items-center">
@@ -52,6 +35,23 @@
                         </mat-icon>
                         <mat-icon class="ml-2 text-danger action-icon" (click)="onCancel(coderule)"
                             *ngIf="coderule.editing">close</mat-icon>
+                    </span>
+                </td>
+                <td class="mat-cell action-cell">
+                    <span class="cursor btn btn-active mr-2"
+                        (click)="activateRule(coderule)" *ngIf="coderule.val === null">Activate
+                    </span>
+                    <span class="cursor btn btn-update mr-3" (click)="onUpdateRule(coderule)" *ngIf="coderule.val && coderule.dataType !== 'boolean'">Update</span>
+                    <span class="cursor position-relative">
+                        <!-- <input type="checkbox" name="rule" class="checkbox checkbox-custom"
+                            [checked]="coderule.id && coderule.id !== null && coderule.id > 0"
+                            [(ngModel)]="coderule.checked" (change)="onRuleSelectionChange(coderule)" />
+                        <span [ngClass]="coderule.checked ? 'disabled-text' : 'add-new'">{{coderule.checked ? 'Disable'
+                            : 'Enable' }}</span> -->
+                        <!-- <input type="checkbox" name="rule" class="checkbox checkbox-custom"
+                            [checked]="coderule.id && coderule.id !== null && coderule.id > 0"
+                        [(ngModel)]="coderule.checked" (change)="onCheckBoxChange(coderule)" /> -->
+                        <span class="btn btn-disabled" (click)="onCheckBoxChange(coderule)" *ngIf="coderule.val">Disable</span>
                     </span>
                 </td>
             </tr>

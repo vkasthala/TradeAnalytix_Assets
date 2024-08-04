@@ -20,7 +20,7 @@
                 <th class="sortable"><span>Price</span></th>
                 <th class="sortable"><span>Status</span></th>
                 <th class="sortable"><span>Journal</span></th>
-                <!-- <th></th> -->
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -45,8 +45,8 @@
                 <td><span class="text-link" (click)="openIntradayOrder(order)">{{order.journal}}</span></td>
                 <td>
                     <button type="button" class="button button-small button-outline button-blue" (click)="editOrder(order)">Edit</button> 
-                    <button type="button" class="button button-small button-outline button-blue ml-2" (click)="openIntradayOrder(order)">ADD</button>
-                    <!-- <button type="button" class="button button-small button-outline ml-2" (click)="cancelOrder(order)">Cancel</button> -->
+                    <!-- <button type="button" class="button button-small button-outline button-blue ml-2" (click)="openIntradayOrder(order)">ADD</button> -->
+                    <button type="button" class="button button-small button-outline ml-2" (click)="cancelOrder(order)">Cancel</button>
                 </td>
             </tr>
             <!-- <tr>
