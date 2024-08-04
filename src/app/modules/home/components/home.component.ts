@@ -294,6 +294,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
   onBrokerageChange(value) {
     if(value === 'FYERS') {
       this.fyersLogin();
+    } else {
+      this.toastr.info('Integration with the brokerage is in the works', '');
     }
   }
 

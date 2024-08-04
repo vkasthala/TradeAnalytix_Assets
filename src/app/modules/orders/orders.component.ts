@@ -105,7 +105,7 @@ export class OrdersComponent implements OnInit {
         // this.subscribeSymbolsPriceUpdate();
       }
     }, error => {
-      this.toastr.error(error.error.errorMessage, 'Error', {timeOut: 3000, positionClass: 'toast-bottom-right'});
+      this.toastr.error(error.error.errorMessage, 'Error', {timeOut: 3000});
     }
     );
   }

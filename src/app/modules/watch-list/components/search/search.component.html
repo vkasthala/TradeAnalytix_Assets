@@ -39,9 +39,9 @@
           <button type="button" class="sell" data-balloon="Sell" data-balloon-pos="up"
             (click)="sellOrders(searchItem)" *ngIf="!isNiftyStock(searchItem)">S</button>
 
-          <button type="button" class="button-outline" data-balloon="Chart" data-balloon-pos="up" [routerLink]="['/chart/',searchItem.symbol, searchItem.token]">
+          <!-- <button type="button" class="button-outline" data-balloon="Chart" data-balloon-pos="up" [routerLink]="['/chart/',searchItem.symbol, searchItem.token]">
             <mat-icon class="material-icons mat-icon-sm">show_chart</mat-icon>
-          </button>
+          </button> -->
 
           <button type="button" class="button-green" data-balloon="Add" data-balloon-pos="up"
             (click)="addNewItem(searchItem); $event.stopPropagation();" *ngIf="!searchItem.addedToWatchList">

@@ -159,7 +159,7 @@ add(rowData:any) {
   //     this.showMobileContextMenu = false;
   //     this._sharedService.loaderEvent.emit(false);
   //   }, error =>{
-  //     this.toastr.error(error.error, "Error", {timeOut: 3000, positionClass: 'toast-bottom-right'});
+  //     this.toastr.error(error.error, "Error", {timeOut: 3000});
   //     this._sharedService.loaderEvent.emit(false);
   //   });
   //   return this.marginsSource;

@@ -184,9 +184,11 @@
             <form>
                 <div class="col-10 p-0">
                   <label class="col-form-label">Select a broker</label>
-                  <select (change)="onBrokerageChange($event.target.value)" class="form-control">
+                  <select (change)="onBrokerageChange($event.target.value)" class="form-control mb-3">
                     <option value="0">Choose a broker from the list</option>
                     <option value="FYERS">FYERS</option>
+                    <option value="Zerodha">Zerodha</option>
+                    <option value="Robinhood">Robinhood</option>
                   </select>
                 </div>
               </form>

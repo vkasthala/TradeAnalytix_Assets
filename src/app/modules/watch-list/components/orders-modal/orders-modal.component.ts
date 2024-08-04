@@ -94,7 +94,7 @@ export class OrdersModalComponent implements OnInit {
       this.margins.availableMargin = response.availableMargin;
       this.loader = false;
     }, error =>{
-      // this.toastr.error(error.error, "Error", {timeOut: 3000, positionClass: 'toast-bottom-right'});
+      // this.toastr.error(error.error, "Error", {timeOut: 3000});
       console.log("Error in calling margin api "+error.error);
       this.loader = false;
     });
@@ -108,20 +108,20 @@ export class OrdersModalComponent implements OnInit {
     placeOrderRequest.stopLossTriggerPrice = 0;
     this._omsService.placeOrder(placeOrderRequest, orderType).subscribe(response=>{
       if(response){
-        this.toastr.success('Order placed successfully', 'Success', {timeOut: 3000, positionClass: 'toast-bottom-right'});
+        this.toastr.success('Order placed successfully', 'Success', {timeOut: 3000});
         this._sharedService.ordersReloadEvent.emit(true);
         this._sharedService.loaderEvent.emit(false);
         this.closePopup();
         this._omsService.saveRules(orderRules, response.data.orderId).subscribe(response=>{
           // if(response){
-          //   this.toastr.success('Order rules saved successfully', 'Success', {timeOut: 3000, positionClass: 'toast-bottom-right'});
+          //   this.toastr.success('Order rules saved successfully', 'Success', {timeOut: 3000});
           // }
         }, error => {
-          // this.toastr.error("Error while saving order rules", 'Error', {timeOut: 3000, positionClass: 'toast-bottom-right'});
+          // this.toastr.error("Error while saving order rules", 'Error', {timeOut: 3000});
         });
       }
     }, error => {
-      this.toastr.error(error.error.errorMessage, 'Error', {timeOut: 3000, positionClass: 'toast-bottom-right'});
+      this.toastr.error(error.error.errorMessage, 'Error', {timeOut: 3000});
       this._sharedService.ordersReloadEvent.emit(true);
       this._sharedService.loaderEvent.emit(false);
     });
@@ -179,7 +179,7 @@ export class OrdersModalComponent implements OnInit {
     let message = price < 0.05 
       ? 'Value must be greater than or equal to 0.05' 
       : 'Please enter a valid value. Two nearest valid values are ' + nearestValues[0] + ' and ' + nearestValues[1];
-    this.toastr.error(message, 'Error', {timeOut: 3000, positionClass: 'toast-bottom-right'});
+    this.toastr.error(message, 'Error', {timeOut: 3000});
   }
 
   modifyOrder(){
@@ -199,13 +199,13 @@ export class OrdersModalComponent implements OnInit {
     this._sharedService.ordersReloadEvent.emit(true);
     this._omsService.modifyOrder(this.margins.orderId, placeOrderRequest).subscribe(response=>{
       if(response){
-        this.toastr.success('Order Updated successfully', 'Success', {timeOut: 3000, positionClass: 'toast-bottom-right'});
+        this.toastr.success('Order Updated successfully', 'Success', {timeOut: 3000});
         this._sharedService.ordersReloadEvent.emit(true);
         this.closePopup();
         this._sharedService.loaderEvent.emit(false);
       }
     }, error => {
-      this.toastr.error(error.error.errorMessage, 'Error', {timeOut: 3000, positionClass: 'toast-bottom-right'});
+      this.toastr.error(error.error.errorMessage, 'Error', {timeOut: 3000});
       this.closePopup();
       this._sharedService.loaderEvent.emit(false);
     });
@@ -225,7 +225,7 @@ export class OrdersModalComponent implements OnInit {
       isvalid = false;
       let message = "Trigger price for " + this.margins.transaction_type  + " orders should be lesser than the last traded price ("
        + triggerPrice + "). Use limit order to sell at higer price.";
-      this.toastr.error(message, 'Error', {timeOut: 3000, positionClass: 'toast-bottom-right'});
+      this.toastr.error(message, 'Error', {timeOut: 3000});
     }
     this._sharedService.loaderEvent.emit(false);
     return isvalid;

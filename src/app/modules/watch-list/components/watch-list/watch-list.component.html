@@ -57,12 +57,12 @@
                                             (click)="sellOrders(item)" *ngIf="!isNiftyStock(item)">S</button>
                                     </span>
 
-                                    <span data-balloon="Chart (C)" data-balloon-pos="up"
+                                    <!-- <span data-balloon="Chart (C)" data-balloon-pos="up"
                                         [routerLink]="['/chart/',item.tradingsymbol, item.symbol_id]">
                                         <button type="button" class="button-outline">
                                             <mat-icon class="material-icons mat-icon-sm">show_chart</mat-icon>
                                         </button>
-                                    </span>
+                                    </span> -->
                                     <span data-balloon="Delete (del)" data-balloon-pos="up">
                                         <button type="button" class="button-outline" (click)="deleteOrder(item)">
                                             <mat-icon class="material-icons">delete_outline</mat-icon>

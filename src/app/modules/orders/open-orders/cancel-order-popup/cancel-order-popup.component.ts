@@ -38,13 +38,13 @@ export class CancelOrderPopupComponent implements OnInit {
     let orderIds = order.order_id;
     this._orderService.cancelOrder(orderIds).subscribe(
       response => {
-        this.toastr.success('Success', 'Order Cancelled successfully', {timeOut: 3000, positionClass: 'toast-bottom-right'});
+        this.toastr.success('Success', 'Order Cancelled successfully', {timeOut: 3000});
         this.data.splice(index, 1);
         if(this.data.length === 0) {
           this.dialogRef.close(order);
         }
       }, error => {
-        this.toastr.error('Error', 'Error whike cancelling orders', {timeOut: 3000, positionClass: 'toast-bottom-right'});
+        this.toastr.error('Error', 'Error whike cancelling orders', {timeOut: 3000});
       }
     )
   }

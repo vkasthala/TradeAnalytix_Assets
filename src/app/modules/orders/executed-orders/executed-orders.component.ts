@@ -71,7 +71,7 @@ export class ExecutedOrdersComponent implements OnInit {
       }
       this._sharedService.loaderEvent.emit(true);
     }, error =>{
-      this.toastr.error("Error", error.error, {timeOut: 3000, positionClass: 'toast-bottom-right'});
+      this.toastr.error("Error", error.error, {timeOut: 3000});
       this._sharedService.loaderEvent.emit(false);
     });
   }

@@ -45,12 +45,12 @@ export class OpenOrdersComponent implements OnInit {
     this._orderService.cancelOrder(orderIds).subscribe(
       response => {
         console.log(response);
-        this.toastr.success('Success', 'Order Cancelled successfully', {timeOut: 3000, positionClass: 'toast-bottom-right'});
+        this.toastr.success('Success', 'Order Cancelled successfully', {timeOut: 3000});
         this._sharedService.ordersReloadEvent.emit(true);
         this._sharedService.loaderEvent.emit(false);
       }, error => {
         console.log(error);
-        this.toastr.error('Error', 'Error whike cancelling orders', {timeOut: 3000, positionClass: 'toast-bottom-right'});
+        this.toastr.error('Error', 'Error whike cancelling orders', {timeOut: 3000});
         this._sharedService.loaderEvent.emit(false);
       }
     );
@@ -93,7 +93,7 @@ export class OpenOrdersComponent implements OnInit {
       }
       this._sharedService.loaderEvent.emit(true);
     }, error =>{
-      this.toastr.error("Error", error.error, {timeOut: 3000, positionClass: 'toast-bottom-right'});
+      this.toastr.error("Error", error.error, {timeOut: 3000});
       this._sharedService.loaderEvent.emit(false);
     });
   }

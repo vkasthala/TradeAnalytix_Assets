@@ -103,7 +103,7 @@ export class WatchListComponent implements OnInit {
         }
         this.loader = false;
       }, error => {
-        this.toastr.error(error, 'Error', {timeOut: 3000, positionClass: 'toast-bottom-right'});
+        this.toastr.error(error, 'Error', {timeOut: 3000});
         this.loader = false;
         console.log(error);
       }
@@ -216,11 +216,10 @@ export class WatchListComponent implements OnInit {
         this.loader = false;
         this.toastr.success('Order deleted successfully', 'Success', 
         {
-          timeOut: 3000, 
-          positionClass: 'toast-bottom-right',
+          timeOut: 3000
         });
       }, error => {
-        this.toastr.error(error, 'Error', {timeOut: 3000, positionClass: 'toast-bottom-right'});
+        this.toastr.error(error, 'Error', {timeOut: 3000});
         this.loader = false;
       }
     )
@@ -294,7 +293,7 @@ export class WatchListComponent implements OnInit {
         this.showMobileContextMenu = false;
         this.loader = false;
       }, error =>{
-        this.toastr.error(error.error, "Error", {timeOut: 3000, positionClass: 'toast-bottom-right'});
+        this.toastr.error(error.error, "Error", {timeOut: 3000});
         this.loader = false;
       });
 
@@ -360,7 +359,7 @@ export class WatchListComponent implements OnInit {
         this.loader = false;
       }
     }, error =>{
-      this.toastr.error(error.error, "Error", {timeOut: 3000, positionClass: 'toast-bottom-right'});
+      this.toastr.error(error.error, "Error", {timeOut: 3000});
       this.loader = false;
     });
   }
