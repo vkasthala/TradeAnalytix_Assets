@@ -266,12 +266,12 @@
 }
 
 .app .header .right-nav .user-nav .dropdown-nav {
-    top: 105%;
-    right: 20px;
+    top: 100%;
+    right: 0px;
     z-index: 9999;
     cursor: pointer;
     text-align: left;
-    min-width: 200px;
+    min-width: 180px;
     position: absolute;
     border-style: solid;
     border-width: 0 1px 1px 1px;
@@ -358,7 +358,7 @@ body {
 .mat-horizontal-stepper-header-container {
     color: #000;    //Venkat changed from #5B5C60
     font-size: 18px;
-    box-shadow: 0px -4px 16px rgba(157, 157, 157, 0.1);
+    // box-shadow: 0px -4px 16px rgba(157, 157, 157, 0.1);
     background: #f6f8fb;
     align-items: center;
     display: flex;
@@ -410,7 +410,7 @@ body {
         .mat-horizontal-stepper-header-container {
             padding: 10px 0px;
             justify-content: space-between;
-            background: #f6f8fb;
+            background: #f1f3f5;
         }
     }
 }

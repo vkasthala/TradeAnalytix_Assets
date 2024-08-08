@@ -44,30 +44,33 @@
                             <span class="user-id"></span>
                         </div>
                         <div *ngIf="userDropDown" class="dropdown-nav layer-2">
-                            <div class="dropdown-nav-header">
+                            <!-- <div class="dropdown-nav-header"> -->
+                                <li class="list-flat-item">
                                 <a [routerLink]="['/profile/']" class="p-0">
                                     {{userData.name}}
                                     <!-- <div class="email">{{userDetails | json}}</div> -->
                                 </a>
-                            </div>
+                                </li>
+                            <!-- </div> -->
                             <hr>
                             <ul class="m-0">
                                 <li class="list-flat-item">
                                     <a class="p-0" [routerLink]="['/settings/']">
-                                        Trading Goals
+                                    Goals
                                     </a>
                                 </li>
                                 <hr>
                                 <li class="list-flat-item">
                                     <a class="p-0" [routerLink]="['/settings/']">
-                                        Data Setup
+                                    Data Setup
                                     </a>
                                 </li>
 
                                 <hr>
                                 <li class="list-flat-item">
                                     <span class="d-flex align-items-center" (click)="logout()">
-                                        <mat-icon class="material-icons mr-1">logout</mat-icon> Logout
+                                        <!-- <mat-icon class="material-icons mr-1">logout</mat-icon> Logout -->
+                                    Logout     
                                     </span>
                                 </li>
                             </ul>
