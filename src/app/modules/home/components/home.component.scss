@@ -516,6 +516,20 @@
     margin-right: 7px;
 }
 
+//Venkat
+.btn-broker-login {
+    color: #ffffff !important;
+    background:  #2469FF;
+    border-color:  #2469FF !important;
+    width: 150px;
+    height: 44px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100px;
+    font-size: 18px;
+}
+
 .btn-start {
     color: #fff !important;
     background: #4A69CB;
@@ -542,24 +556,28 @@
     display: block;
 }
 .contact-modal .modal-dialog {
-    width: 350px;
+    width: 450px;
 }
 
 .contact-modal .modal-content {
     border-radius: 8px;
     border: 0;
-    font-size: 12px;
+    font-size: 13px;
+    color:#000000;
 }
 .contact-modal .modal-header {
     border-radius: 8px 8px 0px 0px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 25px 15px;
     border: 0;
+    padding: 13px 13px;
+    border-bottom: 1px solid rgb(157 166 186 / 30%);
+    position: relative;
+    background: #4A69CB;
 }
 .contact-modal .modal-header .modal-title{
-    color: #394C86;
+    color: #ffffff;
     font-size: 14px;
     margin: 0;
     display: flex;
@@ -568,11 +586,11 @@
     line-height: 1;
 }
 .contact-modal .modal-header .close{
-    color: #000;
+    color: #ffffff;
     font-weight: 300;
     opacity: 1;
     padding: 0 1rem;
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 .contact-modal .btn-add {
@@ -599,9 +617,10 @@
     box-shadow: none;
 }
 .contact-modal .form-control {
-    font-size: 14px;
+    font-size: 13px;
+    padding:0px;
 }
 .contact-modal .form-control option {
-    font-size: 14px;
+    font-size: 13px;
     padding: 10px;
 }

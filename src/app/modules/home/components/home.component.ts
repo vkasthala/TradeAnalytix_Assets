@@ -295,7 +295,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     if(value === 'FYERS') {
       this.fyersLogin();
     } else {
-      this.toastr.info('Integration with the brokerage is in the works', '');
+      this.toastr.info('Only FYERS is supported at present. Stay tuned for more integrations soon!', '');
     }
   }
 
