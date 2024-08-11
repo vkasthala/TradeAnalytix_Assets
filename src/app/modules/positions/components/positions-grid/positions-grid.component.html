@@ -32,7 +32,7 @@
                 <!-- <td><span [ngClass]="rowData.day_p_and_l > -1 ? 'text-green' : 'text-red'">{{rowData.day_p_and_l}}</span></td> -->
             </tr>
             
-            <tr (mouseover)="showPositionsActions($event, null)" (mouseout)="hidePositionsActions(null)">
+            <tr (mouseover)="showPositionsActions($event, null)" (mouseout)="hidePositionsActions(null)" *ngIf="positionsData.data.data.length > 0">
                 <td></td>
                 <td></td>
                 <td></td>
@@ -40,6 +40,9 @@
                 <td class="text-right">Total</td>
                 <td class="text-right"><span [ngClass]="positionsData.data.total_p_and_l > -1 ? 'text-green' : 'text-red'">{{positionsData.data.total_p_and_l | number:'1.2-2'}}</span></td>
                 <!-- <td><span class="text-red">{{positionsData.total_p_and_l}}</span></td> -->
+            </tr>
+            <tr *ngIf="positionsData.data.data.length === 0">
+                <td colspan="6" class="text-center">No Positions</td>
             </tr>
         </tbody>
     </table>

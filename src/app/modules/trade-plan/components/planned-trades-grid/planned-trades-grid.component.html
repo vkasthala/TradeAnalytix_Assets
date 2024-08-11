@@ -10,15 +10,15 @@
             <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
         </ng-container>
 
-        <ng-container matColumnDef="strategyUid">
+        <!-- <ng-container matColumnDef="strategyUid">
             <th mat-header-cell *matHeaderCellDef class="cell-w-12">Identifier</th>
             <td mat-cell *matCellDef="let element"> {{element.strategyUid ? element.strategyUid : 'N/A'}} </td>
-        </ng-container>
+        </ng-container> -->
 
-        <ng-container matColumnDef="createDate">
+        <!-- <ng-container matColumnDef="createDate">
             <th mat-header-cell *matHeaderCellDef class="cell-w-12">Create Date</th>
             <td mat-cell *matCellDef="let element"> {{element.openDate | date: 'dd-MMM-yyyy'}} </td>
-        </ng-container>
+        </ng-container> -->
         <ng-container matColumnDef="strategyType">
             <th mat-header-cell *matHeaderCellDef class="cell-w-12">Strategy</th>
             <td mat-cell *matCellDef="let element"> {{element.strategyType}} </td>
@@ -45,10 +45,10 @@
             <td mat-cell *matCellDef="let element"> {{element.profit | number:'1.0-0'}} </td>
         </ng-container> -->
 
-        <ng-container matColumnDef="tags">
+        <!-- <ng-container matColumnDef="tags">
             <th mat-header-cell *matHeaderCellDef class="justification-cell">Tags</th>
             <td mat-cell *matCellDef="let element"> {{element.tags}} </td>
-        </ng-container>
+        </ng-container> -->
         <!-- <ng-container matColumnDef="postMarketComments">
             <th mat-header-cell *matHeaderCellDef class="justification-cell">Post-Market Comments</th>
             <td mat-cell *matCellDef="let element, let i = index">

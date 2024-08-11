@@ -30,6 +30,9 @@
                         <td class="text-right"><span [ngClass]="rowData.net_change > 0 ? 'text-green' : 'text-red'">{{rowData.net_change | number:'1.2-2'}}%</span></td>
                         <td class="text-right"><span [ngClass]="rowData.net_change > 0 ? 'text-green' : 'text-red'">{{rowData.day_change | number:'1.2-2'}}%</span></td>
                     </tr>
+                    <tr *ngIf="holdingsResponse.data.data.length === 0">
+                        <td colspan="8" class="text-center">No Holdings</td>
+                    </tr>
                 </tbody>
             </table>
         </div>

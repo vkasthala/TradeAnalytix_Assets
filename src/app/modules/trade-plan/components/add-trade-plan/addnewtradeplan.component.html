@@ -115,7 +115,7 @@
                             </div>
                         </div>
 
-                        <div class="planed-trades mb-3">
+                        <div class="planed-trades">
                             <div class="mb-3 d-flex align-items-center justify-content-between">
                                 <div>
                                     <div class="title">Planned Trades</div>
@@ -223,9 +223,9 @@
             </mat-accordion>
         </div>
 
-        <div class="trade-plan-container pb-1">
+        <div class="trade-plan-container pb-0">
             <mat-accordion class="trade-plan-accordion w-100">
-                <mat-expansion-panel [expanded]="false">
+                <mat-expansion-panel class="mb-0" [expanded]="false">
                     <mat-expansion-panel-header>
                         <mat-panel-title style="flex-direction:column">
                             Post-Market Analysis
@@ -294,7 +294,7 @@
 
                         
                         
-                            <div class="py-3">
+                            <div>
                             <app-dailystatistics [selectedPlan]="selectedPlan" #dailyPlanStats></app-dailystatistics>
                         </div> 
                     </ng-template>

@@ -162,5 +162,9 @@ export class OpenOrdersComponent implements OnInit {
     }
   }
 
+  get hasOpenOrders(): boolean {
+    return !this.openOrders || this.openOrders.length === 0;
+  }
+
 
 }

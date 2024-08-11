@@ -57,6 +57,9 @@
                     
                 </td>
             </tr> -->
+            <tr *ngIf="hasOpenOrders">
+                <td colspan="8" class="text-center">No Orders</td>
+            </tr>
         </tbody>
     </table>
 </div>

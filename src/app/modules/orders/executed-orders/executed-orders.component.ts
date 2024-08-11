@@ -76,4 +76,8 @@ export class ExecutedOrdersComponent implements OnInit {
     });
   }
 
+  get hasExecutedOrders(): boolean {
+    return !this.executedOrders || this.executedOrders.length === 0;
+  }
+
 }
