@@ -63,11 +63,14 @@ h2 {
 
 .banner-section {
     font-family: 'Inter', sans-serif !important;
-    background-image: url("../../../../assets/img/bannerbg-hero.png");
+  //  background-image: url("../../../../assets/img/bannerbg-hero.png");
     background-size: cover;
+    background-color: #ffffff;
     background-position: center;
-    padding: 40px 80px;
+    justify-content: center;
+    padding: 80px 100px;
     margin-top: 100px;
+    text-align: center; // Venkat added to make sub text in the hero section center-aligned
 }
 
 .btn-banner {
@@ -76,7 +79,8 @@ h2 {
     padding: 16px 29px;
     border: none;
     color: #fff;
-    margin-top: 1.5rem;
+    margin-top: 3rem;
+ //   margin-left: 447px;
     margin-bottom: 1rem;
     border-radius: 4px;
     font-size: 1rem;
@@ -84,16 +88,16 @@ h2 {
 
 .btn-how-banner {
     font-family: 'Inter', sans-serif !important;
-    background-color: transparent;
+    background-color: #2469FF;
     padding: 14px 56px;
-    border: 2px solid #fff;
+    border: 2px solid #2469FF;
     border-radius: 4px;
-    color: #fff;
+    color: #ffffff;
     margin-bottom: 2.5rem;
     font-size: 1rem;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 500px) {
     .banner-section {
         /*  background: linear-gradient(83.62deg, #1B45B4 3.5%, #1C2792 96.85%); */
         background-image: url(../../../../assets/img/bannerbg-hero.png);
@@ -103,7 +107,7 @@ h2 {
     }
 
     .banner-section h1 {
-        font-size: 34px !important;
+        font-size: 30px !important;
     }
 
     .banner-section p {
@@ -117,15 +121,19 @@ h2 {
 
 .banner-section h1 {
     font-family: 'Inter', sans-serif !important;
-    color: #fff;
-    font-size: 52px;
+    color: #000000;
+    font-size: 50px;
+  //  margin-left:240px;
 }
 
 .banner-section p {
     font-family: 'Inter', sans-serif !important;
-    color: #fff;
+    color: #58595B;
     font-size: 18px;
-    padding-right: 1px;
+    margin-left:250px;
+    margin-right:250px;
+    justify-content: center;
+ //   padding-right: 1px;
 }
 
 .brands-sec {
@@ -262,7 +270,7 @@ h2 {
 .img-container {
     display: flex;
     align-items: baseline;
-   /* justify-content: center; */
+    justify-content: center;
 }
 
 .slide-image {
@@ -1002,3 +1010,96 @@ input:checked~.accordion-content {
     display: block;
 }
 
+// New
+.benefits {
+    display: flex;
+    justify-content: center;
+    margin-top:50px;
+  //  padding: 40px 20px;
+  //  background-color: #f4f4f4;
+  //  border-bottom: 2px solid #ddd;
+  }
+  
+  .benefit-item-with-cuetrade {
+    flex: 1;
+    max-width: 33%;
+    padding: 10px;
+    margin: 0 10px;
+    background-color: #f1f2f4;
+    border-radius: 8px;
+//    box-shadow: 2px 2px 2px 2px rgba(0.1, 0.1, 0.1, 0.1);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+
+  }
+
+  .benefit-item-without-cuetrade {
+    flex: 1;
+    max-width: 33%;
+    padding: 10px;
+    margin: 0 10px;
+    background-color: #f1f2f4;
+    border-radius: 8px;
+//    box-shadow: 2px 2px 2px 2px rgba(0.1, 0.1, 0.1, 0.1);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+
+}
+  
+  .benefit-item-with-cuetrade h2 {
+    font-size: 18px;
+    margin-bottom: 14px;
+    color: #000000;
+    text-align: center;
+  }
+
+  .benefit-item-without-cuetrade h2 {
+    font-size: 18px;
+    margin-bottom: 14px;
+    color: #000000;
+    text-align: center;
+  }
+  
+  .benefit-item-with-cuetrade ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .benefit-item-without-cuetrade ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .benefit-item-with-cuetrade ul li {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #58595B;
+    position: relative;
+    padding-left: 20px;
+    text-align: left;
+  }
+
+  .benefit-item-without-cuetrade ul li {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #58595B;
+    position: relative;
+    padding-left: 20px;
+    text-align: left;
+  }
+  
+  .benefit-item-with-cuetrade ul li::before {
+    content: '✔';
+    position: absolute;
+    left: 0;
+    color: #2ecc71;
+    font-weight: bold;
+  }
+  
+  .benefit-item-without-cuetrade ul li::before {
+    content: 'X';
+    position: absolute;
+    left: 0;
+    color: #ff2200;
+    font-weight: bold;
+  }

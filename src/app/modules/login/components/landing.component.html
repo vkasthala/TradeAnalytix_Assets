@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top" style="padding: 25px 0; background-color: #fff;">
+<nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top" style="padding: 25px 0; background-color: #fff; box-shadow:0 0 5px rgb(201 201 201 / 80%);">
     <div class="container-fluid">
         <div class="cue-logo">
             <img src="../../../../assets/img/cuetrade-logo.svg" alt="">
@@ -40,20 +40,37 @@
 
 <section class="">
     <div class="container-fluid banner-section">
-        <div class="row align-items-center">
-            <div class="col-md-6">
-                <h1>Improve Trading Results with Discipline and Data</h1>
-                <p class="pt-4">CueTrade is an intuitive trading journal and analytics platform that helps you become a better trader through planning, journaling, and tracking
-                    your trading performance over time.</p>
-                <button type="button" class="btn-banner" (click)="login('google')">Try Beta for free&nbsp;&nbsp;&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+         <div class="align-items-center">
+                <h1>Trade with Discipline and Analytics</h1>
+                <p class="pt-1">CueTrade fosters disciplined trading with a systematic approach, emphasizing planning, trading rules, journaling, and analytics</p>
+                <section class="benefits">
+                    <div class="benefit-item-without-cuetrade">
+                      <h2>Without CueTrade</h2>
+                      <ul>
+                        <li>Multiple brokers, multiple platforms</li>
+                        <li>Rules forgotten during trading</li>
+                        <li>Journaling often delayed until day's end</li>
+                        <li>No insight into trading history</li>                       
+                        <!-- <li>Disparate systems for trading, journaling, and analyzing</li> -->
+                        <li>Often no structured trading plan</li>
+                      </ul>
+                    </div>
+                    <div class="benefit-item-with-cuetrade">
+                      <h2>With CueTrade</h2>
+                      <ul>
+                        <li>Trade with multiple brokers from one platform</li>
+                        <li>Real-time validation of orders against self-set rules</li>
+                        <li>Journal in real-time or post-trade</li>                    
+                        <li>Advanced analytics on trading performance</li>
+                        <!-- <li>A unified system for all trading activities</li> -->
+                        <li>Create and track detailed trading plans</li>
+                      </ul>
+                    </div>
+                </section>                  
+                <button type="button" class="btn-banner" (click)="login('google')">Try Beta for Free&nbsp;&nbsp;&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
                   </svg></button>&nbsp;&nbsp;<a href="#howworks"><button
                         type="button" class="btn-how-banner">How it Works</button></a>
-            </div>
-            <div class="col-md-6">
-                <!-- <center><img src="assests/img/banner-asset.png" alt="" width="70%"></center>-->
-                <ng-lottie width="110%" height="600%" [options]="banner"></ng-lottie>
-            </div>
         </div>
     </div>
 </section>
@@ -98,157 +115,7 @@
 </section> -->
 
 
-
-<section id="howit_works">
-    <div class="carousel slide how-works">
-        <h2>How it works?</h2>
-        <p>CueTrade is a user-friendly trading journal designed to empower you in making well-informed trading decisions. Effortlessly incorporate it into your pre and post-market routines to seamlessly plan, journal, and evaluate trades.</p>
-        
-        <div class="carousel-inner">
-            <div class="carousel-item" [ngClass]="startPosition == 0 ? 'active': ''">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-md-5 slide-content">
-                            <h3>Plan Trades</h3>
-                            <!--Point 1-->
-                            <div class="img-container">
-                                <div class="slide-image">
-                                    <img src="../../../../assets/img/tick-icon.png">
-                                </div>
-                                <div class="slide-text">
-                                    <p>Create a personalized daily trading plan to prepare for the day ahead</p>
-                                </div>
-                            </div>
-
-                            <!--Point 2-->
-                            <div class="img-container">
-                                <div class="slide-image">
-                                    <img src="../../../../assets/img/tick-icon.png">
-                                </div>
-                                <div class="slide-text">
-                                    <p>Build potential trades and analyze them from multiple perspectives</p>
-                                </div>
-                            </div>
-
-                            <!--Point 3-->
-                            <div class="img-container">
-                                <div class="slide-image">
-                                    <img src="../../../../assets/img/tick-icon.png">
-                                </div>
-                                <div class="slide-text">
-                                    <p>Analyze risk-reward profile of trade strategies involving options</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-7">
-                            <ng-lottie width="100%" height="600%" [options]="tradeplan"></ng-lottie>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item align-items-center" [ngClass]="startPosition == 1 ? 'active': ''">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-md-5  slide-content">
-                            <h3>Journal Trades</h3>
-                            <!--Point 1-->
-                            <div class="img-container">
-                                <div class="slide-image">
-                                    <img src="../../../../assets/img/tick-icon.png">
-                                </div>
-                                <div class="slide-text">
-                                    <p>Import your trades from brokerage accounts seamlessly</p>
-                                </div>
-                            </div>
-
-                            <!--Point 2-->
-                            <div class="img-container">
-                                <div class="slide-image">
-                                    <img src="../../../../assets/img/tick-icon.png">
-                                </div>
-                                <div class="slide-text">
-                                    <p>Journal your trades effortlessly either individually or in bulk</p>
-                                </div>
-                            </div>
-
-                            <!--Point 3-->
-                            <div class="img-container">
-                                <div class="slide-image">
-                                    <img src="../../../../assets/img/tick-icon.png">
-                                </div>
-                                <div class="slide-text">
-                                    <p>Check alignment of your trades with self-set trading rules</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-7">
-                            <ng-lottie width="100%" height="600%" [options]="tradejournal"></ng-lottie>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item" [ngClass]="startPosition == 2 ? 'active': ''">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-md-5  slide-content">
-                            <h3>Review Insights</h3>
-                            <!--Point 1-->
-                            <div class="img-container">
-                                <div class="slide-image">
-                                    <img src="../../../../assets/img/tick-icon.png">
-                                </div>
-                                <div class="slide-text">
-                                    <p>Evaluate your performance through review of statistics and reports</p>
-                                </div>
-                            </div>
-
-                            <!--Point 2-->
-                            <div class="img-container">
-                                <div class="slide-image">
-                                    <img src="../../../../assets/img/tick-icon.png">
-                                </div>
-                                <div class="slide-text">
-                                    <p>Update daily trading plan with your notes after the market hours</p>
-                                </div>
-                            </div>
-
-                            <!--Point 3-->
-                            <div class="img-container">
-                                <div class="slide-image">
-                                    <img src="../../../../assets/img/tick-icon.png">
-                                </div>
-                                <div class="slide-text">
-                                    <p>Add new rules or update existing ones based on the lessons learnt</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-7">
-                            <ng-lottie width="100%" height="600%" [options]="tradereview"></ng-lottie>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <owl-carousel-o [options]="customOptions" (translated)="getPassedData($event)" #owlCar>
-                <ng-template carouselSlide>
-                    
-                    
-                </ng-template>
-                
-                <ng-template carouselSlide>
-                    
-                    
-                </ng-template>
-                <ng-template carouselSlide>
-                    
-                </ng-template>
-            </owl-carousel-o>
-        </div>
-        
-    </div>
-</section>
-
-<section class="pb-5 bg-white" style="padding-top: 4rem;" id="benefits">
+<section class="pb-5 bg-white" style="padding-top: 1rem;" id="benefits">
     <div class="container text-center">
         <h2 class="text-black">How CueTrade Helps You?</h2>
     </div>
@@ -318,9 +185,10 @@
                 <img src="../../../../assets/img/risk-management.png" alt="">
                 <h3>Risk Management</h3>
                 <p>Protect your trading portfolio through proactive assessment of risk exposure in your trade strategies. With our Payoff Analyzer, you can analyze and visualize potential profit or loss at different price levels of the underlying asset, taking into account factors such as option premiums, strike prices, and expiration dates.</p>
-                <a href="landing#" (click)="login('google')">Try Beta for free&nbsp;&nbsp;&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                <!-- <a href="landing#" (click)="login('google')">Try Beta for free&nbsp;&nbsp;&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
   <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
-</svg></a>
+</svg></a> -->
+<a href="landing#" (click)="login('google')">Try Beta for Free</a>
             </div>
             <div class="col-md-6 order-md-1">
                 <img src="../../../../assets/img/how-cuetrade-helps/Risk-Management.svg" alt="" width="100%">
@@ -825,29 +693,3 @@
       </div>
     </div>
 </div>
-
-<script>
-    $('.owl-carousel').owlCarousel({
-        loop: true,
-        margin: 15,
-        nav: true,
-        navText: [
-            "<i class='fa fa-caret-left'></i>",
-            "<i class='fa fa-caret-right'></i>"
-        ],
-        autoplay: true,
-        autoplayHoverPause: true,
-        autoplayTimeout: 5000,
-        responsive: {
-            0: {
-                items: 1
-            },
-            600: {
-                items: 3
-            },
-            1000: {
-                items: 4
-            }
-        }
-    })
-</script>
