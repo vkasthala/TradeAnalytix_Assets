@@ -286,18 +286,18 @@ h2 {
     font-family: 'Inter', sans-serif !important;
 }
 .cue-help h3 {
-    color: #135EA4;
+    color: #000000;
     font-weight: 700;
-    font-size: 36px;
+    font-size: 30px;
     letter-spacing: 0.5px;
     font-family: 'Inter', sans-serif !important;
 }
 
 .cue-help p {
-    color: #717785;
+    color: #58595B;
     font-weight: 400;
     font-size: 18px;
-    line-height: 32px;
+    line-height: 30px;
     letter-spacing: 0.3px;
     font-family: 'Inter', sans-serif !important;
 }
@@ -725,7 +725,7 @@ input:checked~.accordion-content {
     font-family: 'Inter', sans-serif !important;
     background-color: #121D33;
     padding-top: 65px;
-    padding-bottom: 20px;
+    padding-bottom: 1px;
     font-size: 1rem;
 }
 
@@ -737,17 +737,22 @@ input:checked~.accordion-content {
 .cue-footer p {
     color: #D3D6D8;
     font-family: 'Inter', sans-serif !important;
+    font-size:15px;
 }
 
 .cue-footer h4 {
     color: #D3D6D8;
     font-family: 'Inter', sans-serif !important;
+    margin-top:24px;
+    font-size:15px;
+    font-weight:700;
 }
 
 .cue-footer li {
     color: #D3D6D8;
     list-style: none;
     padding: 5px 0;
+    font-size:15px;
 }
 
 .cue-footer li a {
@@ -939,6 +944,13 @@ input:checked~.accordion-content {
 
 .blog-section {
     font-family: 'Inter', sans-serif !important;
+    background-color: #F1F9FF;
+    background-position: center;
+    justify-content: center;
+    padding: 40px 50px; /* Adjusted padding for better spacing */
+    margin-top: 15px;
+    margin-bottom: 15px;
+    text-align: center; 
 }
 .blog-section h2 {
     font-family: 'Inter', sans-serif !important;
@@ -946,13 +958,16 @@ input:checked~.accordion-content {
     font-size: 48px;
     text-align: center;
     letter-spacing: 0.5px;
-    margin-bottom: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    font-weight: 700;
+    margin-bottom: 30px;
 }
 .blog-box {
     background-color: #FFFFFF;
     padding: 15px;
     font-size: 13px;
-    color: #212529;
+    color: #000000;
     font-family: 'Inter', sans-serif !important;
     box-shadow: 0 0 5px rgb(201 201 201 / 80%);
     margin: 5px;
