@@ -14,7 +14,7 @@ textarea {
 nav {
     font-family: 'Inter', sans-serif !important;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 18px;
     color: #000 !important;
 }
 
@@ -41,7 +41,7 @@ h6 {
 }
 
 h2 {
-    font-size: 48px;
+    font-size: 44px;
     letter-spacing: 0.5px;
 }
 
@@ -122,7 +122,7 @@ h2 {
 .banner-section h1 {
     font-family: 'Inter', sans-serif !important;
     color: #000000;
-    font-size: 50px;
+    font-size: 44px;
   //  margin-left:240px;
 }
 
@@ -130,8 +130,8 @@ h2 {
     font-family: 'Inter', sans-serif !important;
     color: #58595B;
     font-size: 18px;
-    margin-left:250px;
-    margin-right:250px;
+    margin-left:300px;
+    margin-right:300px;
     justify-content: center;
  //   padding-right: 1px;
 }
@@ -143,7 +143,7 @@ h2 {
 }
 
 .brands-sec h5 {
-    color: #717785;
+    color: #58595B;
     font-size: 16px;
     text-align: center;
 }
@@ -197,7 +197,7 @@ h2 {
 .how-works h2 {
     font-family: 'Inter', sans-serif !important;
     color: #000;
-    font-size: 48px;
+    font-size: 44px;
     text-align: center;
     padding-top: 30px;
     letter-spacing: 0.5px;
@@ -228,7 +228,7 @@ h2 {
     text-align: center;
     font-size: 18px;
     padding: 0px 80px;
-    color: #717785;
+    color: #58595B;
 }
 
 @media only screen and (max-width: 600px) {
@@ -251,7 +251,7 @@ h2 {
 .how-works li {
     font-weight: 400;
     font-size: 20px;
-    color: #717785;
+    color: #58595B;
     padding-bottom: 1rem;
 }
 .slide-content {
@@ -320,7 +320,7 @@ h2 {
     }
 
     .cue-help p {
-        color: #717785;
+        color: #58595B;
         font-weight: 400;
         font-size: 16px;
         line-height: 30px;
@@ -424,7 +424,7 @@ h2 {
     line-height: 19px;
     letter-spacing: 0.30000001192092896px;
     text-align: left;
-    color: #717785;
+    color: #58595B;
     font-family: 'Inter', sans-serif !important;
 }
 .feature-description {
@@ -516,7 +516,7 @@ h2 {
     letter-spacing: 0px;
     text-align: left;
     text-align: left;
-    color: #717785;
+    color: #58595B;
 }
 
 .testimonial-copy h4 {
@@ -544,19 +544,28 @@ h2 {
 .accordion-item h2 {
     font-size: 36px !important;
     font-weight: 700 !important;
-    line-height: 52px;
+   // line-height: 52px;
     letter-spacing: 0.5px;
+    background-color: #F1F9FF;
+    font-family: 'Inter', sans-serif !important;
+    color: #000;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    font-weight: 700;
+    margin-bottom: 30px;
 }
 
 .accordion-wrapper input {
     position: absolute;
     opacity: 0;
     z-index: -1;
+    background-color: #F1F9FF;
 }
 
 .accordion {
     width: 100%;
-    color: white;
+    color: #F1F9FF;
+    background-color: #F1F9FF;
     overflow: hidden;
     margin-bottom: 4px;
 
@@ -572,10 +581,10 @@ h2 {
     -webkit-box-pack: justify;
     justify-content: space-between;
     padding: 16px;
-    background: #fff;
-    font-weight: bold;
+    background: #F1F9FF;
+    font-weight:400;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 18px;
     color: #000;
     margin: 0;
 }
@@ -589,7 +598,7 @@ h2 {
 .accordion-label:hover {
     font-family: 'Inter', sans-serif;
     background: #fff;
-    color: #125DA1;
+    color: #000000;
 }
 
 .accordion-label::after {
@@ -608,30 +617,32 @@ h2 {
     background: white;
     -webkit-transition: all 0.3s;
     transition: all 0.3s;
+    background: #Fff;
 }
 
 .accordion-content p {
     margin: 0;
-    color: #717785;
+    color: #58595B;
     font-family: 'Inter', sans-serif;
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 400;
-    line-height: 32px;
+    line-height: 30px;
     letter-spacing: 0.30000001192092896px;
     text-align: left;
-
+    background: #fff;
+    font-size:18px;
 }
 
 @media only screen and (max-width: 600px) {
     .accordion-content p {
-        font-size: 16px;
+        font-size: 15px;
         line-height: 30px;
     }
 }
 
 .accordion-content ul {
     margin: 0;
-    color: #717785;
+    color: #58595B;
     font-family: 'Inter', sans-serif;
     font-size: 16px;
     font-weight: 400;
@@ -655,14 +666,14 @@ h2 {
 input:checked+.accordion-label {
     font-family: 'Inter', sans-serif;
     background: #fff;
-    color: #125DA1;
+    color: #000000;
     font-weight: 700;
-    font-size: 24px;
+    font-size: 18px;
 }
 
 @media only screen and (max-width: 600px) {
     input:checked+.accordion-label {
-        font-size: 20px;
+        font-size: 18px;
     }
 }
 
@@ -817,9 +828,9 @@ input:checked~.accordion-content {
 
 .cta-box h3 {
     color: #fff;
-    font-size: 30px;
+    font-size: 33px;
     font-weight: 700;
-    line-height: 44px;
+    line-height: 48px;
     letter-spacing: 1px;
     text-align: left;
 }
@@ -903,7 +914,7 @@ input:checked~.accordion-content {
     letter-spacing: 0px;
     text-align: left;
     text-align: left;
-    color: #717785;
+    color: #58595B;
 }
 
 .testimonial-copy h4 {
@@ -944,7 +955,7 @@ input:checked~.accordion-content {
 
 .blog-section {
     font-family: 'Inter', sans-serif !important;
-    background-color: #F1F9FF;
+    background-color: #ffffff;
     background-position: center;
     justify-content: center;
     padding: 40px 50px; /* Adjusted padding for better spacing */
@@ -955,7 +966,7 @@ input:checked~.accordion-content {
 .blog-section h2 {
     font-family: 'Inter', sans-serif !important;
     color: #000;
-    font-size: 48px;
+    font-size: 44px;
     text-align: center;
     letter-spacing: 0.5px;
     margin-top: 2rem;
@@ -1126,7 +1137,7 @@ input:checked~.accordion-content {
 }
 
 .how-it-works h1 {
-    font-size: 48px; /* Slightly reduced for balance */
+    font-size: 44px; /* Slightly reduced for balance */
     font-weight: 700;
     color: #000000;
     margin-bottom: 20px; /* Added spacing below heading */
@@ -1209,7 +1220,7 @@ input:checked~.accordion-content {
 
 .step-description {
     margin-top: 10px;
-    font-size: 15px;
+    font-size: 16px;
     color: #58595B;
     line-height: 1.6;
     font-family: "Inter", sans-serif !important;
