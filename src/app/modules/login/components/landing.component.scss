@@ -19,7 +19,7 @@ nav {
 }
 
 .nav-item {
-    padding: 0 15px !important;
+    padding: 0 8px !important;
 }
 
 .nav-link {
@@ -1154,8 +1154,8 @@ input:checked~.accordion-content {
 #trading-steps {
     padding: 40px 0; //reduced from 70px
     display: flex;
-    margin-left:100px;
-    margin-right:-30px;
+    margin-left:150px;
+    margin-right:-50px;
     justify-content: center;
 }
 
@@ -1175,8 +1175,8 @@ input:checked~.accordion-content {
     position: absolute;
     top: 18px; /* Positioning the line to pass through the center of the circles */
     left: calc(0% + 0px); /* Starts at the center of Step 1 */
-    right: calc(16% + 18px); /* Ends at the center of Step 5 */
-    height: 1px; /* Thicker line for visibility */
+    right: calc(18% + 18px); /* Ends at the center of Step 5 */
+    height: 0.5px; /* Thicker line for visibility */
     background-color: #4A69CB;
     z-index: 1;
 }
@@ -1188,14 +1188,14 @@ input:checked~.accordion-content {
     flex-direction: column;
     align-items: flex-start; 
     text-align: left;
-    width: 18%;
+    width: 21%;
 }
 
 .step-number {
     background-color: #2469FF;
     color: #ffffff;
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     display: flex;
     justify-content: center;

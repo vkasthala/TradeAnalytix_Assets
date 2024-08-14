@@ -18,14 +18,17 @@
                 <li class="nav-item">
                     <a class="nav-link" href="landing#benefits">Benefits</a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="landing#features">Features</a>
-                </li>
+                </li> -->
                 <!-- <li class="nav-item">
                     <a class="nav-link" href="landing#reviews">Reviews</a>
                 </li> -->
                 <li class="nav-item">
-                    <a class="nav-link" href="landing#faq">FAQ</a>
+                    <a class="nav-link" href="landing#faq">FAQs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="landing#faq">Blogs</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="javascript:void(0)" (click)="openContactUsModal()">
@@ -119,8 +122,40 @@
     <div class="align-items-center">
            <h1>How It Works</h1>
            <p class="pt-1">Connect your brokerage accounts, trade with discipline, and stick to your rules. CueTrade’s analytics and journaling help you review and refine your strategy, so you can trade smarter and achieve better results.</p>
-
-            <section id="trading-steps">
+           <section id="trading-steps">
+            <div class="step-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-title">Connect & Trade</div>
+                    <div class="step-description">
+                        Log in to CueTrade, connect your brokerage accounts, and place different types of orders—just like on a brokerage platform.
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-title">Verify Rules</div>
+                    <div class="step-description">
+                        Ensure your trades align with your predefined rules. Review statistics on similar trades to make data-driven decisions.
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-title">Journal</div>
+                    <div class="step-description">
+                        Add notes, tags and files to your trades effortlessly at the time of trading or later to review and learn from your past trades.
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-title">Analyze</div>
+                    <div class="step-description">
+                        Analyze your performance using analytics to refine your strategies and continuously improve your trading outcomes.
+                    </div>
+                </div>
+            </div>
+        </section>
+<!-- Start of Five Steps -->
+            <!-- <section id="trading-steps">
                 <div class="step-container">
                     <div class="step">
                         <div class="step-number">1</div>
@@ -158,7 +193,8 @@
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> -->
+<!-- End of Five Steps -->
         </div>
     </div>
 </section>
@@ -388,50 +424,46 @@
         </div>
         <div class="accordion">
             <input type="radio" name="radio-a" id="check1">
-            <label class="accordion-label" for="check1">Who can benefit from using CueTrade?</label>
+            <label class="accordion-label" for="check1">What is CueTrade?</label>
             <div class="accordion-content">
-                <p>CueTrade is ideal for individual traders and investors who manage multiple brokerage accounts and seek a disciplined, rules-based approach to trading. Whether you're a beginner aiming to improve your trading strategies or an experienced trader looking for advanced analytics and journaling tools, CueTrade helps you stay organized, make data-driven decisions, and continuously refine your trading performance.</p>
+                <p>CueTrade is a trading platform designed to help traders manage multiple brokerage accounts, enforce trading discipline through customizable rules, and leverage powerful analytics to continuously improve their trading performance.</p>
             </div>
         </div>
-        <!-- <div class="accordion">
+        <div class="accordion">
             <input type="radio" name="radio-a" id="check2">
-            <label class="accordion-label" for="check2">When should CueTrade be used?</label>
+            <label class="accordion-label" for="check2">Who can benefit from using CueTrade?</label>
             <div class="accordion-content">
-                <p>CueTrade can be used to optimize your trading efficiency throughout the day. It is beneficial to utilize CueTrade before the market opens to create a comprehensive trading plan and conduct thorough analysis of potential trades from various perspectives, enabling you to make informed decisions. </p> <br>
-                <p>After the market closes, CueTrade proves valuable for reviewing your trades, adding notes, ensuring alignment with your trading rules, and leveraging insightful reports. This post-market analysis helps you pinpoint mistakes and gain valuable learning experiences to enhance your trading strategies.</p>
+                <p>CueTrade is ideal for individual traders and investors who seek a disciplined, rules-based approach to trading. Whether you're a beginner aiming to improve your trading strategies or an experienced trader looking for advanced analytics and journaling tools, CueTrade helps you stay organized, make data-driven decisions, and continuously refine your trading performance.</p>
             </div>
-        </div> -->
+        </div>
         <div class="accordion">
             <input type="radio" name="radio-a" id="check3">
-            <label class="accordion-label" for="check3">How does CueTrade simplify trade journaling?</label>
+            <label class="accordion-label" for="check3">What are trading rules, and how do they assist?</label>
             <div class="accordion-content">
-                <p>CueTrade simplifies trade journaling by automatically capturing your trades from multiple brokerage accounts in one place. It allows you to easily add notes, tags, and attach relevant files, like chart images, directly to your trades. This organized approach ensures that your trade history is well-documented, making it easier to review past trades, identify patterns, and learn from your trading experiences—all without the hassle of manual logging.</p>
-                <!-- <p> - Enables effortless trade import from brokerage accounts, with automatic and manual integration options.</p>
-                <p> - Offers an intuitive interface for taking notes on multiple trade strategies in one place without the need to update each trade individually.</p>
+                <p>Trading rules in CueTrade are customizable guidelines that you set to manage your trading activities.</p> <br>
+                <p>CueTrade offers two types of rules: Automatic and Manual. Automatic rules are consistently verified for each trade, with CueTrade promptly indicating whether a trade complies with the rule or not. On the other hand, manual rules act as text-based reminders, requiring manual updates as needed.</p> <br>
+                <p>Trading rules help you maintain discipline, avoid impulsive decisions, and improve your overall trading performance.</p>
+            </div>
+        </div>
+        <div class="accordion">
+            <input type="radio" name="radio-a" id="check4">
+            <label class="accordion-label" for="check4">How does CueTrade simplify trade journaling?</label>
+            <div class="accordion-content">
+                <p>CueTrade simplifies trade journaling by allowing you to journal at the time of trading or anytime afterward. You can easily add notes, tags, and attach relevant files, like chart images, directly to your trades.</p> <br>
+                <p>This organized approach ensures that your trade history is well-documented, making it easier to review past trades, identify patterns, and learn from your trading experiences.</p> <br> 
+                <p>You can import historical trades from brokerage accounts into CueTrade as well with automatic and manual integration options.</p>
+                <!-- <p> - Offers an intuitive interface for taking notes on multiple trade strategies in one place without the need to update each trade individually.</p>
                 <p> - Groups related trades into strategies automatically, enabling comprehensive analysis and journaling at strategy level.</p>
                 <p> - Automates the calculation of trade parameters such as strategy and direction eliminating the need for manual entry. </p> -->
             </div>
         </div>
         <div class="accordion">
-            <input type="radio" name="radio-a" id="check4">
-            <label class="accordion-label" for="check4">What are trading rules, and how do they assist?</label>
+            <input type="radio" name="radio-a" id="check5">
+            <label class="accordion-label" for="check5">Can I connect multiple brokerage accounts to CueTrade?</label>
             <div class="accordion-content">
-                <p>Trading rules in CueTrade are customizable guidelines that you set to manage your trading activities. CueTrade assists by automatically checking each trade against your rules before it's executed, ensuring that your trades align with your strategy. This helps you maintain discipline, avoid impulsive decisions, and improve your overall trading performance. </p>
-                <!-- <p>CueTrade offers two types of rules: automatic and manual. Automatic rules are consistently verified for each trade, with CueTrade promptly indicating whether a trade complies with the rule or not. On the other hand, manual rules act as text-based reminders, requiring manual updates as needed.</p> -->
+                <p>Yes, CueTrade allows you to connect and manage multiple brokerage accounts from a single platform. This feature streamlines your trading process by consolidating all your trade history in one place, making it easier to track your performance across different accounts.</p>
             </div>
         </div>
-<!--        <div class="accordion">
-            <input type="radio" name="radio-a" id="check5">
-            <label class="accordion-label" for="check5">What makes CueTrade stand out compared to other trade journals?</label>
-            <div class="accordion-content">
-                <p>Introducing CueTrade, a one-of-a-kind trade journal specifically designed for the active traders. What sets CueTrade apart from other journals are its exceptional features:</p> <br>
-                <p><b>Comprehensive Trade Analysis:</b> CueTrade empowers traders to thoroughly analyze their trades from multiple perspectives, including rationale, statistics, risk, and emotions. This holistic approach provides valuable insights for improving trading strategies.</p> <br>
-                <p><b>Rule-Based Trading:</b> With CueTrade, users can establish both automatic and manual trading rules. These rules ensure that each trade aligns with predefined criteria, helping traders maintain consistency and discipline in their trading practices.</p> <br>
-                <p><b>User-Friendly Interface:</b> Similar to an Excel sheet, CueTrade offers a user-friendly interface where traders can provide notes for multiple trades effortlessly. This intuitive layout enhances efficiency and ease of use, making it a breeze to record and track trade-related information.</p> <br>
-                <p><b>Emphasis on Risk Management:</b> CueTrade places significant emphasis on risk management, recognizing its vital role in successful trading. The Payoff Analyzer tool is a testament to this commitment, enabling traders to analyze the potential profit or loss of trades involving options at a specific future date. By adjusting stock price and implied volatility, traders gain valuable insights into potential outcomes, facilitating informed decision-making.</p> <br>
-                <p><b>Streamlined Trade Strategy Management:</b> CueTrade simplifies the management of trades by grouping them based on symbols into trade strategies. This organization allows users to conveniently enter notes, assess risk, review statistics, and check rule alignment at the trade strategy level, rather than dealing with individual trades separately.</p>
-            </div>
-        </div> -->
         <!-- <div class="accordion">
             <input type="radio" name="radio-a" id="check6">
             <label class="accordion-label" for="check6">How do I add trades from a brokerage account to CueTrade?</label>
@@ -443,24 +475,39 @@
         </div> -->
         <div class="accordion">
             <input type="radio" name="radio-a" id="check7">
-            <label class="accordion-label" for="check7">What types of reports does CueTrade offer?</label>
+            <label class="accordion-label" for="check7">How does CueTrade help me make data-driven decisions?</label>
             <div class="accordion-content">
-                <p>CueTrade presents an extensive range of statistics and reports across various categories, enabling traders to gain valuable insights into their trading performance. With a continually growing list of over reports and statistics, CueTrade ensures comprehensive coverage of essential aspects such as performance, risk management, commissions, goals, and discipline. These insightful reports are meticulously generated based on your trading history and journal details, offering a comprehensive analysis of your trading activities.</p>
+                <p>CueTrade presents an extensive range of statistics and reports across various categories, enabling traders to gain valuable insights into their trading performance. With a continually growing list of over reports, CueTrade ensures comprehensive coverage of essential analytics across performance, risk management, commissions, and discipline.</p> <br>
+                <p>These insightful reports are generated based on your trading history and journal details, offering a comprehensive analysis of your trading activities.</p>
             </div>
         </div>
         <div class="accordion">
             <input type="radio" name="radio-a" id="check8">
-            <label class="accordion-label" for="check8">What features does CueTrade's Payoff Analyzer tool offer?</label>
+            <label class="accordion-label" for="check8">Is CueTrade suitable for beginner traders?</label>
             <div class="accordion-content">
-                <p>CueTrade's Payoff Analyzer tool is an invaluable resource for analyzing option-based trade strategies, allowing you to assess their potential profit or loss at a specific future date. With the ability to input a desired stock price and adjust variables like implied volatility and days to expiration, you gain precise insights into how these adjustments impact potential outcomes. By understanding how adjustments to the trade strategy affect potential profit or loss, you can align your trading approach with your risk tolerance and return expectations.</p>
+                <p>Absolutely. CueTrade is designed to support traders at all levels. For beginners, it provides a structured approach to trading with customizable rules and easy-to-use journaling tools. The platform’s analytics help beginners understand their trading habits and improve their strategies over time.</p>
             </div>
         </div>
         <div class="accordion">
             <input type="radio" name="radio-a" id="check9">
-            <label class="accordion-label" for="check9">What is the current status of CueTrade and its pricing model?</label>
+            <label class="accordion-label" for="check9">What is CueTrade's Payoff Analyzer?</label>
             <div class="accordion-content">
-                <p>Experience CueTrade in Beta Mode for Free!</p>  
-              <!--  <p>Experience CueTrade in Beta Mode for Free! Stay tuned for future updates regarding potential transition to a paid version, ensuring you have ample time to prepare.</p> -->
+                <p>CueTrade's Payoff Analyzer tool is an invaluable resource for analyzing option-based trade strategies, allowing you to assess their potential profit or loss at a specific future date. With the ability to input a desired stock price and adjust variables like implied volatility and days to expiration, you gain insights into how these adjustments impact potential outcomes. By understanding how adjustments to the trade strategy affect potential profit or loss, you can align your trading approach with your risk tolerance and return expectations.</p>
+            </div>
+        </div>
+        <div class="accordion">
+            <input type="radio" name="radio-a" id="check10">
+            <label class="accordion-label" for="check10">How secure is my data on CueTrade?</label>
+            <div class="accordion-content">
+                <p>CueTrade takes data security very seriously. We use industry-standard encryption and security protocols to protect your personal information and trading data. Your data is stored securely, and we do not share it with third parties without your consent.</p>
+            </div>
+        </div>
+        <div class="accordion">
+            <input type="radio" name="radio-a" id="check11">
+            <label class="accordion-label" for="check11">What is CueTrade's pricing model?</label>
+            <div class="accordion-content">
+                <p>Experience CueTrade for Free During Our Beta Phase! As we continue to refine and enhance CueTrade, we're excited to offer you full access to the platform at no cost during our Beta phase. </p> <br> 
+                <p>Join us now and be part of shaping the future of CueTrade while enjoying a premium trading experience at no charge.</p>  
             </div>
         </div>
     </div>
