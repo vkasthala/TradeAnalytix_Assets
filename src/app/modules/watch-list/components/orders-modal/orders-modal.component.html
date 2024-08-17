@@ -179,10 +179,10 @@
                     </div>
                     <div class="five columns text-right actions">
                         <button *ngIf="!isOrderModify" type="submit" class="submit"
-                            (click)="openIntradayOrderPopup()"><span>{{margins.type |
+                            (click)="openIntradayOrderPopup('new')"><span>{{margins.type |
                                 titlecase}}</span></button>
                         <button *ngIf="isOrderModify" type="submit" class="submit"
-                            (click)="modifyOrder()"><span>Modify</span></button>
+                        (click)="openIntradayOrderPopup('open')"><span>Modify</span></button>
                         <button type="button" class="button-outline cancel ml-1" (click)="closePopup()">Cancel</button>
                     </div>
                 </footer>

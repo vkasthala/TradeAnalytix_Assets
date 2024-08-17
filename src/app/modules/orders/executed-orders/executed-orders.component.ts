@@ -1,9 +1,11 @@
-import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
 import { SharedService } from '../../shared/services/shared.service';
 import { OmsService } from '../../shared/services/oms.service';
 import { Margins } from '../../shared/models/margins.model';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { IntradayOrderPopupComponent } from '../../watch-list/components/intraday-order-popup/intraday-order-popup.component';
+import { OrderRuleCheckRequest, OrderRuleResponse } from '../../shared/models/orders.model';
 
 @Component({
   selector: 'app-executed-orders',
@@ -14,6 +16,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 export class ExecutedOrdersComponent implements OnInit {
 
   @Input() executedOrders:any;
+  @Output('cancelOrder') cancelOrder = new EventEmitter();
   isMobileDevice: any;
 
   orderToggle: boolean = true;
@@ -29,6 +32,10 @@ export class ExecutedOrdersComponent implements OnInit {
 
   ngOnInit(): void {
     this.checkDevice();
+  }
+
+  closePopup() {
+    this.cancelOrder.emit()
   }
 
   checkDevice() {
@@ -49,29 +56,33 @@ export class ExecutedOrdersComponent implements OnInit {
     this.checkDevice()
   }
 
-  openIntradayOrder(order) {
-    this._sharedService.orderModifyEvent.emit(order);
-    if(this.isMobileDevice) {
-      this.modifyOrder(order)
-    }
+  openIntradayOrderPopup(orderType:any, orderId:string) {
+    let ruleCheckPayload: OrderRuleCheckRequest;
+    ruleCheckPayload.orderId = orderId;
+    const dialogRef = this._dialog.open(IntradayOrderPopupComponent, {
+      width: 'auto',
+      height: 'auto',
+      data: {'ruleCheckPayload':{}, 'margins': {}, 'orderType':orderType}
+    });
+    dialogRef.afterClosed().subscribe((orderRules) => {
+      if (orderRules) {
+        this.updateJournal(orderRules, orderId);
+      }
+    });
   }
 
-  modifyOrder(order : any) {
+  updateJournal(orderRules: OrderRuleResponse, orderId:string){
     this._sharedService.loaderEvent.emit(true);
-    let orderId = order.order_id
-    this._orderService.getEditOrderDetail(orderId).subscribe(response =>{
+    this._orderService.updateRules(orderRules, orderId).subscribe(response=>{
       if(response){
-        // this.marginsSource = response;
-        console.log(this.marginsSource);
-        this.showOrdersModal = true;
-        this.orderToggle = true;
-        if (response.transaction_type === 'BUY') {
-          this.orderToggle = false;
-        }
+        this.toastr.success('Order Updated successfully', 'Success', {timeOut: 3000});
+        this._sharedService.ordersReloadEvent.emit(true);
+        this.closePopup();
       }
-      this._sharedService.loaderEvent.emit(true);
-    }, error =>{
-      this.toastr.error("Error", error.error, {timeOut: 3000});
+    }, error => {
+      this.toastr.error(error.error.errorMessage, 'Error', {timeOut: 3000});
+      this.closePopup();
+      this._sharedService.ordersReloadEvent.emit(true);
       this._sharedService.loaderEvent.emit(false);
     });
   }

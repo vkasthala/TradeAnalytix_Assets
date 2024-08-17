@@ -310,7 +310,7 @@ export class WatchListComponent implements OnInit {
     // }
 
     this.marginsSource.type = $event.transaction_type;
-    this.marginsSource.instrument = {'symbol':tradingsymbol, 'symbolId':$event.token ? $event.token : $event.instrument_token, 'exchange':''};
+    this.marginsSource.instrument = {'symbol':tradingsymbol, 'symbolId':$event.token ? $event.token : $event.instrument_token, 'exchange':'', actualSymbol:''};
     this.marginsSource.price = $event.price;
     this.marginsSource.expiry = $event.expiryDate ? $event.expiryDate : $event.expiry;
     this.marginsSource.tradeType = $event.instrumenType == 14 ? 'OPTION' : 'STOCK';
@@ -347,16 +347,51 @@ export class WatchListComponent implements OnInit {
     this.loader = true;
     this._omsService.getEditOrderDetail(orderId).subscribe(response =>{
       if(response){
-        // this.marginsSource = response;
-        this.marginsSource.quantity = response.qty;
-        this.marginsSource.tradeType = response.instrumenType == 14 ? 'OPTION' : 'STOCK';
-        console.log(this.marginsSource);
-        this.showOrdersModal = true;
-        this.orderToggle = true;
-        if (response.type === 'BUY') {
-          this.orderToggle = false;
+        const marginRequest = {
+          orderType: response.order_type,
+          productType: response.product,
+          quantity: response.qty,
+          symbol: response.instrument.actualSymbol,
+          transactionType: response.type,
+          limitPrice: response.price,
+          stopPrice: response.trigger_price,
+          validity: 'DAY',
+          stopLossTriggerPrice: 0
         }
-        this.loader = false;
+        this._omsService.getMargin(marginRequest).subscribe(resp =>{
+          // this.marginsSource = response;
+          this.marginsSource.margin = resp.margin;
+          this.marginsSource.charges = resp.charges;
+          this.marginsSource.availableMargin = resp.availableMargin;
+          this.marginsSource.orderId = orderId;
+          this.showOrdersModal = true;
+          this.orderToggle = true;
+          if (response.type === 'BUY') {
+              this.orderToggle = false;
+            }
+          this.showMobileContextMenu = false;
+          this.loader = false;
+        }, error =>{
+          this.toastr.error(error.error, "Error", {timeOut: 3000});
+          this.loader = false;
+        });
+        // this.marginsSource = response;
+    this.marginsSource.product = response.product;
+    this.marginsSource.order_type = response.order_type;
+    this.marginsSource.quantity = response.qty;
+    this.marginsSource.variety= "regular";
+    this.marginsSource.trigger_price= response.price;
+    // this.orderToggle = true;
+    // if ($event.transaction_type === 'BUY') {
+    //   this.orderToggle = false;
+    // }
+
+    this.marginsSource.type = response.type;
+    this.marginsSource.instrument = {'symbol':response.instrument.actualSymbol, 'symbolId':response.instrument.symbolId, 'exchange':response.instrument.exchange, 'actualSymbol':response.instrument.actualSymbol};
+    this.marginsSource.price = response.price;
+    // this.marginsSource.expiry = $event.expiryDate ? $event.expiryDate : $event.expiry;
+    this.marginsSource.tradeType = 'STOCK'
+    //$event.instrumenType == 14 ? 'OPTION' : 'STOCK';
       }
     }, error =>{
       this.toastr.error(error.error, "Error", {timeOut: 3000});

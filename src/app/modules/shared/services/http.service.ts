@@ -35,6 +35,10 @@ export class HttpService {
     return this.postWithHeaders(url, body, new Map());
   }
 
+  public delete<S, T>(url: string,): Observable<T> {
+    return this.deleteWithHeaders(url,new Map());
+  }
+
   public put<S, T>(url: string, body: S): Observable<T> {
     return this.putWithHeaders(url, body, new Map());
   }
@@ -45,14 +49,16 @@ export class HttpService {
     });
   }
 
-  public putWithHeaders<S, T>(url: string, body: S, headersMap: Map<string, string>): Observable<T> {
-    return this.http.put<T>(url, body, {
+  public deleteWithHeaders<S, T>(url: string, headersMap: Map<string, string>): Observable<T> {
+    return this.http.delete<T>(url, {
       headers: this.createHttpHeaders(headersMap)
     });
   }
 
-  public delete(url: string): Observable<void> {
-    return this.http.delete<void>(url);
+  public putWithHeaders<S, T>(url: string, body: S, headersMap: Map<string, string>): Observable<T> {
+    return this.http.put<T>(url, body, {
+      headers: this.createHttpHeaders(headersMap)
+    });
   }
 
   private createHttpParms(requestParams: Map<string, string>): HttpParams {

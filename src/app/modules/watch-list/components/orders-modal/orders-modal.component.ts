@@ -106,25 +106,25 @@ export class OrdersModalComponent implements OnInit {
     const placeOrderRequest = this.getOrderPlacementRequest();
     const orderType = this.margins.variety;
     placeOrderRequest.stopLossTriggerPrice = 0;
-    this._omsService.placeOrder(placeOrderRequest, orderType).subscribe(response=>{
-      if(response){
-        this.toastr.success('Order placed successfully', 'Success', {timeOut: 3000});
+      this._omsService.placeOrder(placeOrderRequest).subscribe(response=>{
+        if(response){
+          this.toastr.success('Order placed successfully', 'Success', {timeOut: 3000});
+          this._sharedService.ordersReloadEvent.emit(true);
+          this._sharedService.loaderEvent.emit(false);
+          this.closePopup();
+          this._omsService.saveRules(orderRules, response.data.orderId).subscribe(response=>{
+            // if(response){
+            //   this.toastr.success('Order rules saved successfully', 'Success', {timeOut: 3000});
+            // }
+          }, error => {
+            // this.toastr.error("Error while saving order rules", 'Error', {timeOut: 3000});
+          });
+        }
+      }, error => {
+        this.toastr.error(error.error.errorMessage, 'Error', {timeOut: 3000});
         this._sharedService.ordersReloadEvent.emit(true);
         this._sharedService.loaderEvent.emit(false);
-        this.closePopup();
-        this._omsService.saveRules(orderRules, response.data.orderId).subscribe(response=>{
-          // if(response){
-          //   this.toastr.success('Order rules saved successfully', 'Success', {timeOut: 3000});
-          // }
-        }, error => {
-          // this.toastr.error("Error while saving order rules", 'Error', {timeOut: 3000});
-        });
-      }
-    }, error => {
-      this.toastr.error(error.error.errorMessage, 'Error', {timeOut: 3000});
-      this._sharedService.ordersReloadEvent.emit(true);
-      this._sharedService.loaderEvent.emit(false);
-    });
+      });
   }
 
   isValid(price: number): boolean{
@@ -182,7 +182,7 @@ export class OrdersModalComponent implements OnInit {
     this.toastr.error(message, 'Error', {timeOut: 3000});
   }
 
-  modifyOrder(){
+  modifyOrder(orderRules: OrderRuleResponse){
     this._sharedService.loaderEvent.emit(true);
     console.log("modify");
     let price = this.getPrice();
@@ -203,10 +203,18 @@ export class OrdersModalComponent implements OnInit {
         this._sharedService.ordersReloadEvent.emit(true);
         this.closePopup();
         this._sharedService.loaderEvent.emit(false);
+        this._omsService.updateRules(orderRules, this.margins.orderId).subscribe(response=>{
+          // if(response){
+          //   this.toastr.success('Order rules saved successfully', 'Success', {timeOut: 3000});
+          // }
+        }, error => {
+          // this.toastr.error("Error while saving order rules", 'Error', {timeOut: 3000});
+        });
       }
     }, error => {
       this.toastr.error(error.error.errorMessage, 'Error', {timeOut: 3000});
       this.closePopup();
+      this._sharedService.ordersReloadEvent.emit(true);
       this._sharedService.loaderEvent.emit(false);
     });
   }
@@ -231,21 +239,28 @@ export class OrdersModalComponent implements OnInit {
     return isvalid;
   }
 
-  openIntradayOrderPopup() {
+  openIntradayOrderPopup(orderType:any) {
     console.log(this.margins);
     let ruleCheckPayload: OrderRuleCheckRequest = this.getOrderPlacementRequest();
     ruleCheckPayload.tradeType = this.margins.tradeType;
     if(ruleCheckPayload.tradeType == 'OPTION') {
       ruleCheckPayload.expiryDate = this.margins.expiry;
     }
+    if(this.margins.orderId){
+      ruleCheckPayload.orderId = this.margins.orderId;
+    }
     const dialogRef = this._dialog.open(IntradayOrderPopupComponent, {
       width: 'auto',
       height: 'auto',
-      data: {'ruleCheckPayload':ruleCheckPayload, 'margins': this.margins}
+      data: {'ruleCheckPayload':ruleCheckPayload, 'margins': this.margins, 'orderType':orderType}
     });
     dialogRef.afterClosed().subscribe((orderRules) => {
       if (orderRules) {
-        this.orderPlacement(orderRules);
+        if(this.margins.orderId){
+        this.modifyOrder(orderRules);
+        } else{
+          this.orderPlacement(orderRules);
+        }
       }
     });
   }

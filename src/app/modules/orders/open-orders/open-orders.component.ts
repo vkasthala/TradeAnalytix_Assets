@@ -41,13 +41,20 @@ export class OpenOrdersComponent implements OnInit {
 
   cancelOrder(purchasedOrder : any){
     this._sharedService.loaderEvent.emit(true);
-    let orderIds = purchasedOrder.order_id;
-    this._orderService.cancelOrder(orderIds).subscribe(
+    let orderId = purchasedOrder.orderId;
+    this._orderService.cancelOrder(orderId).subscribe(
       response => {
         console.log(response);
         this.toastr.success('Success', 'Order Cancelled successfully', {timeOut: 3000});
         this._sharedService.ordersReloadEvent.emit(true);
         this._sharedService.loaderEvent.emit(false);
+        this._orderService.deleteOrderRules(orderId).subscribe(response=>{
+          // if(response){
+          //   this.toastr.success('Order rules saved successfully', 'Success', {timeOut: 3000});
+          // }
+        }, error => {
+          // this.toastr.error("Error while saving order rules", 'Error', {timeOut: 3000});
+        });
       }, error => {
         console.log(error);
         this.toastr.error('Error', 'Error whike cancelling orders', {timeOut: 3000});

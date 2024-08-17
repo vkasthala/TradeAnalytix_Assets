@@ -27,7 +27,7 @@
                     <span class="text-label small order-status-label green">{{order.status}}</span>
                 </td>
                 <td>
-                    <span class="text-link" (click)="openIntradayOrder(order)">{{order.journal}}</span>
+                    <span class="text-link" (click)="openIntradayOrder('closed',order.id)">{{order.journal}}</span>
                     <!-- <button type="button" class="button button-small button-outline button-blue ml-2" (click)="openIntradayOrder(order)">ADD</button> -->
                 </td>
             </tr>

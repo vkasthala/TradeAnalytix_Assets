@@ -16,7 +16,7 @@ import { StockSummaryResult } from 'src/app/modules/trade-management/models/stoc
 export class IntradayOrderPopupComponent implements OnInit {
   @Input('orderToggle') orderToggle: boolean=false;
   @Input('margins') margins:any = Margins;
-  data:{'ruleCheckPayload':OrderRuleCheckRequest, 'margins':Margins};
+  data:{'ruleCheckPayload':OrderRuleCheckRequest, 'margins':Margins, 'orderType':any};
   orderRules: OrderRuleResponse[] = [new OrderRuleResponse()];
   stockSummaryResult: StockSummaryResult = new StockSummaryResult();
 
@@ -34,11 +34,16 @@ export class IntradayOrderPopupComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.data);
+    if(this.data.orderType == 'closed'){
+      this.loadExistingOrderRules();
+    } else{
     this.loadRules();
+    }
     this.loadSummary();
   }
 
   loadRules(){
+    // this.data.ruleCheckPayload.orderId = '24070800145772';
   this._orderService.checkRules(this.data.ruleCheckPayload).subscribe(response=>{
     if(response){
       this.orderRules = response;
@@ -46,6 +51,17 @@ export class IntradayOrderPopupComponent implements OnInit {
   }, error => {
     console.log("Error "+error);
   });
+}
+
+loadExistingOrderRules(){
+  // this.data.ruleCheckPayload.orderId = '24070800145772';
+this._orderService.getExistingRules(this.data.ruleCheckPayload.orderId).subscribe(response=>{
+  if(response){
+    this.orderRules = response;
+  }
+}, error => {
+  console.log("Error "+error);
+});
 }
 
 loadSummary() {

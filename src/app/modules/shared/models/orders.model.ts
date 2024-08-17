@@ -32,18 +32,19 @@ export interface OrdersRequest {
 }
 
 export interface PlaceOrderRequest {
-    symbol: string;
+    symbol: String;
     quantity: number;
-    orderType: string;
+    orderType: String;
     transactionType: string;
-    productType: string;
-    limitPrice: number;
-    stopPrice : number;
-    validity: string;
-    stopLossTriggerPrice: number;
+    productType: String;
+    limitPrice: Number;
+    stopPrice : Number;
+    validity: String;
+    stopLossTriggerPrice: Number;
 }
 
 export interface OrderRuleCheckRequest extends PlaceOrderRequest {
+    orderId: string;
     tradeType: string;
     expiryDate: string;
 }
@@ -91,6 +92,7 @@ export interface OrderPurchasehistory{
 
 export interface InstrumentResponse{
     symbol: string;
+    actualSymbol: string;
     exchange: string;
     symbolId: string;
 }

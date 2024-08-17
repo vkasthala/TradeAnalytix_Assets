@@ -26,7 +26,7 @@ export class OmsService {
      return this.http.post<MarginResponse>(url, orderRequest, { headers: this.createHttpHeaders() });
   }
 
-  placeOrder(orderRequest: PlaceOrderRequest, orderType: string) : Observable<PurchaseOrderResponse>{
+  placeOrder(orderRequest: PlaceOrderRequest) : Observable<PurchaseOrderResponse>{
     console.log(orderRequest);
     const url = environment.tradingServiceUri + "/orders/place";
     return this.http.post<PurchaseOrderResponse>(url, orderRequest, { headers: this.createHttpHeaders() });
@@ -61,9 +61,9 @@ export class OmsService {
     return this.http.put<String>(url, orderRequest, { headers: this.createHttpHeaders() });
   }
 
-  cancelOrder(orderId: string) : Observable<PurchaseOrderResponse> {
-    const url = environment.apiUrl + "/v0/oms/orders/" + orderId;
-    return this.http.delete<PurchaseOrderResponse>(url);
+  cancelOrder(orderId: string) : Observable<String> {
+    const url = environment.tradingServiceUri + "/orders/" + orderId;
+    return this.http.delete<String>(url, { headers: this.createHttpHeaders() });
   }
 
   checkRules(data: OrderRuleCheckRequest) : Observable<OrderRuleResponse[]> {
@@ -74,5 +74,20 @@ export class OmsService {
   saveRules(orderRules: OrderRuleResponse, orderId: string) :  Observable<string> {
     const url = environment.apiUrl + "/order/save-coded-rule/"+orderId;
     return this.httpService.post<OrderRuleResponse,string>(url,orderRules);
+  }
+
+  deleteOrderRules(orderId: string) : Observable<string> {
+    const url = environment.apiUrl + "/order/delete-coded-rule/"+orderId;
+    return this.httpService.delete<string,string>(url);
+  }
+
+  updateRules(orderRules: OrderRuleResponse, orderId: string) :  Observable<string> {
+    const url = environment.apiUrl + "/order/update-coded-rule/"+orderId;
+    return this.httpService.put<OrderRuleResponse,string>(url,orderRules);
+  }
+
+  getExistingRules(orderId: string) : Observable<OrderRuleResponse[]>{
+    const url = environment.apiUrl + "/order/coded-rule/"+orderId;
+    return this.httpService.get<OrderRuleResponse[]>(url);
   }
 }
