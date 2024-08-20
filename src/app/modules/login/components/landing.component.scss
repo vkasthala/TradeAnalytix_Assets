@@ -1130,7 +1130,7 @@ input:checked~.accordion-content {
     background-color: #F1F9FF;
     background-position: center;
     justify-content: center;
-    padding: 90px 50px; /* Adjusted padding for better spacing */
+    padding: 70px 50px; /* Adjusted padding for better spacing */
     margin-top: 15px;
     margin-bottom: 15px;
     text-align: center; 
@@ -1146,7 +1146,7 @@ input:checked~.accordion-content {
 .how-it-works p {
     color: #58595B;
     max-width: 900px; /* Limited width for better readability */
-    margin: 0 auto 50px auto; /* Centered and added bottom margin */
+    margin: 0 auto 10px auto; /* Centered and added bottom margin */
     font-size: 18px;
     line-height: 1.5;
 }
@@ -1219,10 +1219,10 @@ input:checked~.accordion-content {
 }
 
 .step-description {
-    margin-top: 10px;
+    margin-top: 5px;
     font-size: 16px;
     color: #58595B;
-    line-height: 1.6;
+    line-height: 1.5;
     font-family: "Inter", sans-serif !important;
 }
 
@@ -1245,3 +1245,39 @@ input:checked~.accordion-content {
         text-align: center;
     }
 }
+
+//Code added to include Video
+.video-container {
+    justify-content: center;
+    align-items: center;
+    margin-left: 275px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.video-thumbnail {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    margin-left: 100px;
+    border-radius: 1px;
+}
+
+.video-player {
+    width: 100%;
+    height: 350px; /* Adjust the height as needed */
+    border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+    .video-container {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .video-container {
+        width: 100%;
+    }
+}
+
