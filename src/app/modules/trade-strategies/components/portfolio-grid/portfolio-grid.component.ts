@@ -187,6 +187,8 @@ export class PortfolioGrid implements AfterViewInit, OnInit {
           this.reload(this.strategiesGridFilter);
         });
         this.Loader = !this.Loader;
+      } else {
+        this.Loader = !this.Loader;
       }
     });
   }

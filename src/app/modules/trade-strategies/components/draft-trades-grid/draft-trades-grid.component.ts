@@ -209,6 +209,8 @@ export class DraftTradesGrid implements AfterViewInit, OnInit {
           );
           this.Loader = !this.Loader;
         })
+      } else {
+        this.Loader = !this.Loader;
       }
     });
   }

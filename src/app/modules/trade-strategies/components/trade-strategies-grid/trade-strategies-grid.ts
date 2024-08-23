@@ -187,6 +187,8 @@ merge(this.sort.sortChange, this.paginator.page)
           this.reload();
         });
         this.Loader = !this.Loader;
+      } else {
+        this.Loader = !this.Loader;
       }
     });
   }

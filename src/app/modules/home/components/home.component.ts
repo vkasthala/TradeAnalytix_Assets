@@ -103,7 +103,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     const dialogRef = this._dialog.open(ConfirmDialogComponent, {
       width: 'auto',
       height: 'auto',
-      data: { 'message': 'Are you sure you want to logout?' }
+      data: { 'message': 'Are you sure you want to log out from CueTrade?', 'title':'Exit CueTrade' }
     });
     dialogRef.afterClosed().subscribe(dialogResult => {
       if (dialogResult == true) {
