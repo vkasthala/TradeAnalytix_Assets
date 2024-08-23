@@ -1,13 +1,13 @@
 <div class="app page-dashboard zoom" [ngClass]="isMobileDevice ? 'mobile' : ''" (window:resize)="onResize($event)">
     <div class="header">
         <div class="wrapper">
-            <div class="header-left" *ngIf="!isMobileDevice">
+            <div class="header-left">
                 <div class="pinned-instruments">
                     <div class="instrument-widget">
-                        <span *ngIf="isExpand" class="sidebar-brand cursor-pointer" [routerLink]="['/dashboard/']">
-                            <img src="../../../../assets/images/logo-sm.svg" alt="Trade-app-logo" class="img-fluid logo_sm">
+                        <span *ngIf="isMobileDevice" class="sidebar-brand cursor-pointer" [routerLink]="['/dashboard/']">
+                            <img src="../../../../assets/images/cuetrade-logo.svg" alt="Trade-app-logo" class="img-fluid logo_sm">
                         </span>
-                        <span *ngIf="!isExpand" class="sidebar-brand cursor-pointer" [routerLink]="['/dashboard/']">
+                        <span *ngIf="!isMobileDevice" class="sidebar-brand cursor-pointer" [routerLink]="['/dashboard/']">
                             <img src="../../../../assets/images/cuetrade-logo.svg" alt="Trade-app-logo" class="img-fluid full-logo">
                         </span>
                     </div>
@@ -84,80 +84,8 @@
     </div>
 
 
-    <!-- <div class="sidebar" [ngClass]="!isExpand ? '' : 'toggled'">
-        <span *ngIf="isExpand" class="sidebar-brand cursor-pointer" [routerLink]="['/dashboard/']">
-            <img src="../../../../assets/images/logo-sm.svg" alt="Trade-app-logo" class="img-fluid logo_sm">
-        </span>
-        <span *ngIf="!isExpand" class="sidebar-brand cursor-pointer" [routerLink]="['/dashboard/']">
-            <img src="../../../../assets/images/logo.svg" alt="Trade-app-logo" class="img-fluid full-logo">
-        </span>
-        <nav class="trade-navbar">
-            <div class="parent-item">
-                <img src="../../../../assets/images/plan_r.svg" class="nav-icon nav-icon-md">
-                <img src="../../../../assets/images/plan.svg" class="nav-icon nav-icon_r"> 
-                Plan
-            </div>
-            <ul class="list-unstyled ">
-                <li class="sidebar-item" [class.nav-active]="currentRoute === 'trade-plans'">
-                    <a class="sidebar-link" [routerLink]="['/trade-plans/']" routerLinkActive="active">
-                        <mat-icon>note_add</mat-icon>
-                        <span>Daily Plan</span>
-                    </a>
-                </li>
-                <li class="sidebar-item" [class.nav-active]="currentRoute === 'trade-builder'">
-                    <a class="sidebar-link" [routerLink]="['/trade-builder/']" routerLinkActive="active">
-                        <mat-icon>compare_arrows</mat-icon>
-                        <span>Trade Builder</span>
-                    </a>
-                </li>
-            </ul>
-
-            <div class="parent-item">
-                <img src="../../../../assets/images/journal_r.svg" class="nav-icon nav-icon-md">
-                <img src="../../../../assets/images/journal.svg" class="nav-icon nav-icon_r">
-                Journal
-            </div>
-            <ul class="list-unstyled ">
-                <li class="sidebar-item" [class.nav-active]="currentRoute == 'import-trades-history'">
-                    <a class="sidebar-link" [routerLink]="['/import-trades-history/']" routerLinkActive="active">
-                        <mat-icon class="mat-lg">import_export</mat-icon>
-                        <span>Import Trades</span>
-                    </a>
-                </li>
-                <li class="sidebar-item" [class.nav-active]="currentRoute == 'positions'">
-                    <a class="sidebar-link" [routerLink]="['/positions/']" routerLinkActive="active">
-                        <mat-icon>attach_money</mat-icon>
-                        <span>Positions</span>
-                    </a>
-                </li>
-                
-            </ul>
-
-            <div class="parent-item">
-                <img src="../../../../assets/images/review_r.svg" class="nav-icon review-icon"> 
-                <img src="../../../../assets/images/review.svg" class="nav-icon nav-icon_r"> 
-                Review
-            </div>
-            <ul class="list-unstyled ">
-                <li class="sidebar-item" [class.nav-active]="currentRoute == 'reports'">
-                    <a class="sidebar-link" [routerLink]="['/reports/']">
-                        <mat-icon>pie_chart</mat-icon>
-                        <span>Reports</span>
-                    </a>
-                </li>
-               
-                <li class="sidebar-item" [class.nav-active]="currentRoute == 'rules'">
-                    <a class="sidebar-link" [routerLink]="['/rules/']">
-                        <mat-icon>rule</mat-icon>
-                        <span>Trading Rules</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </div> -->
-
     <div class="trading-container wrapper">
-        <div class="container-left">
+        <div class="container-left" *ngIf="!isMobileDevice">
             <div class="watch-list-container">
                 <app-watch-list></app-watch-list>
             </div>
@@ -166,6 +94,38 @@
             <router-outlet></router-outlet>
             <app-footer></app-footer>
         </div>
+    </div>
+
+    <div class="app-nav mobile mobile-nav" *ngIf="isMobileDevice">
+        <a class="nav-link" [class.router-link-active]="currentRoute === 'market-watch'" [routerLink]="['/market-watch/']" routerLinkActive="router-link-active" >
+            <span class="icon">
+                <img *ngIf="currentRoute !== 'market-watch'" src="../../../../assets/img/icon-watchlist.png" >
+                <img *ngIf="currentRoute === 'market-watch'" src="../../../../assets/img/icon-watchlist_r.png" alt="Trade-app-logo">
+            </span>
+            <span class="nav-text">Watchlist</span>
+        </a>
+        
+        <a class="nav-link" [class.router-link-active]="['/orders/']" [routerLink]="['/orders/']" routerLinkActive="router-link-active">
+            <span class="icon">
+                <img *ngIf="currentRoute !== 'orders'" src="../../../../assets/img/icon-order.png" />
+                <img *ngIf="currentRoute === 'orders'" src="../../../../assets/img/icon-order_r.png" />
+            </span>
+            <span class="nav-text">Orders</span>
+        </a>
+        <a class="nav-link" [class.router-link-active]="['/holdings/']" [routerLink]="['/holdings/']" routerLinkActive="router-link-active">
+            <span class="icon">
+                <img *ngIf="currentRoute !== 'holdings'" src="../../../../assets/img/icon-holdings.png" />
+                <img *ngIf="currentRoute === 'holdings'" src="../../../../assets/img/icon-holdings_r.png" />
+            </span>
+            <span class="nav-text">Holdings</span>
+        </a>
+        <a class="nav-link" [class.router-link-active]="['/positions/']" [routerLink]="['/positions/']" routerLinkActive="router-link-active">
+            <span class="icon">
+                <img *ngIf="currentRoute !== 'positions'" src="../../../../assets/img/icon-positions.png" />
+                <img *ngIf="currentRoute === 'positions'" src="../../../../assets/img/icon-positions_r.png" />
+            </span>
+            <span class="nav-text">Positions</span>
+        </a>
     </div>
     
 </div>

@@ -55,7 +55,6 @@ const routes: Routes = [
         {
           path : 'new-trade',
           component: AddNewTradeComponent,
-          // canDeactivate: [AddTradeCanDeactivateGuard]
         },
         {
           path : 'import-trades',
@@ -160,6 +159,10 @@ const routes: Routes = [
         {
           path : 'holdings',
           loadChildren: () => import('../holdings/holdings.module').then(m => m.HoldingsModule),
+        },
+        {
+          path: 'market-watch',
+          loadChildren: () => import('../market-watch/market-watch.module').then(m => m.MarketWatchModule),
         }
         
     ]

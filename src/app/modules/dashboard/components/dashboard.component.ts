@@ -81,9 +81,9 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     const today: Date = new Date();
     this.calendarReport.loadData(today.getFullYear(), today.getMonth() + 1);
     this.loadUserDetails();
-    this.loadMarketOverview();
+    // this.loadMarketOverview();
     this.loadEconomic();
-    this.loadActiveStocks();
+    // this.loadActiveStocks();
 
     
     
@@ -451,7 +451,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     script.src = "https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js";
     script.text = '{"width": "100%","height": 382,"locale": "USD","dateRange": "12M","colorTheme": "light","trendLineColor": "#37a6ef","underLineColor": "#E3F2FD","isTransparent": false,"autosize": false,"isTransparent": false,"showSymbolLogo": true,"showFloatingTooltip": false,"showChart": false,"plotLineColorGrowing": "rgba(41, 98, 255, 1)","plotLineColorFalling": "rgba(41, 98, 255, 1)","gridLineColor": "rgba(240, 243, 250, 0)","scaleFontColor": "rgba(106, 109, 120, 1)","belowLineFillColorGrowing": "rgba(41, 98, 255, 0.12)","belowLineFillColorFalling": "rgba(41, 98, 255, 0.12)","belowLineFillColorGrowingBottom": "rgba(41, 98, 255, 0)","belowLineFillColorFallingBottom": "rgba(41, 98, 255, 0)","symbolActiveColor": "rgba(41, 98, 255, 0.12)"}';
 
-    this.tradingview.nativeElement.appendChild(script);
+    // this.tradingview.nativeElement.appendChild(script);
     // this.t radingview.nativeElement.appendChild(style);
     
   }
@@ -463,7 +463,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     script.src = "https://s3.tradingview.com/external-embedding/embed-widget-events.js";
     script.text = '{"width": "100%","height": 382,"locale": "USD","dateRange": "12M","colorTheme": "light","trendLineColor": "#37a6ef","underLineColor": "#E3F2FD","isTransparent": false,"autosize": false,"importanceFilter": "-1,0,1", "currencyFilter": "USD"}';
 
-    this.calendarview.nativeElement.appendChild(script);
+    // this.calendarview.nativeElement.appendChild(script);
   }
 
   loadActiveStocks() {
@@ -472,7 +472,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     script.src = "https://s3.tradingview.com/external-embedding/embed-widget-hotlists.js";
     script.text = '{"width": "100%","height": 382,"locale": "USD","dateRange": "12M","colorTheme": "light","exchange": "US","showChart": false,"trendLineColor": "#37a6ef","underLineColor": "#E3F2FD","isTransparent": false,"showSymbolLogo": false,"showFloatingTooltip": false,"autosize": false,"importanceFilter": "-1,0,1", "currencyFilter": "USD","plotLineColorGrowing": "rgba(41, 98, 255, 1)","plotLineColorFalling": "rgba(41, 98, 255, 1)","gridLineColor": "rgba(240, 243, 250, 0)","scaleFontColor": "rgba(106, 109, 120, 1)","belowLineFillColorGrowing": "rgba(41, 98, 255, 0.12)","belowLineFillColorFalling": "rgba(41, 98, 255, 0.12)","belowLineFillColorGrowingBottom": "rgba(41, 98, 255, 0)","belowLineFillColorFallingBottom": "rgba(41, 98, 255, 0)","symbolActiveColor": "rgba(41, 98, 255, 0.12)"}';
 
-    this.activeStocks.nativeElement.appendChild(script);
+    // this.activeStocks.nativeElement.appendChild(script);
   }
 
   selectedId: number = 1;

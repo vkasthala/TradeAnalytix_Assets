@@ -73,17 +73,17 @@
                         </div>
                         <div *ngIf="isMobileDevice">
                             <div class="vddl-draggable instrument up index0"
-                                *ngFor="let item of list.items, let i=index">
+                                *ngFor="let item of list.items, let i=index" [ngClass]="{'up': item && item.changePercent >= 0, 'down' : item && item.changePercent < 0 }">
                                 <div class="info price-change-type-close-all" (click)="openMobileActions(item)">
                                     <div class="symbol-wrapper">
                                         <div class="symbol">
-                                            <span class="nice-name">{{item.tradingsymbol}}</span>
+                                            <span class="nice-name">{{item.tradingSymbolShort}}</span>
+                                            <span class="tag dim index-xsmall" *ngIf="isNiftyStock(item)">INDEX</span>
                                         </div>
                                     </div>
                                     <div class="price-wrapper">
                                         <div class="price-change">
                                             <div class="dim">
-                                               
                                                 <span class="price-percentage">{{item &&
                                                     item.changePercent !== undefined ?
                                                     item.changePercent : '-'}}
@@ -92,10 +92,12 @@
                                             </div>
                                         </div>
                                         <div class="price">
-                                            <span class="change-indicator icon icon-chevron-up"></span>
-                                            <span class="last-price">{{item && item.price !==
-                                                undefined?
-                                                item.price : '-'}}</span>
+                                            <span class="change-indicator icon"
+                                                [ngClass]="{'icon-chevron-up': item && item.winFlag === true, 'icon-chevron-down' : item && item.winFlag === false }">
+                                            </span>
+                                            <mat-icon class="mat-icon material-icons text-success" *ngIf="item && item.changePercent >= 0">keyboard_arrow_up</mat-icon>
+                                            <mat-icon class="mat-icon material-icons text-danger" *ngIf="item && item.changePercent < 0">keyboard_arrow_down</mat-icon>
+                                            <span class="last-price">{{item && item.price !== undefined? item.price : '-'}}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -109,7 +111,7 @@
                                             Sell</li>
                                         <li (click)="deleteOrder(selectedSymbol)"><span class="icon icon-trash"></span>
                                             Delete</li>
-                                        <li class="d-flex justify-content-between">
+                                        <!-- <li class="d-flex justify-content-between">
                                             <span data-balloon="Chart (C)" data-balloon-pos="up"
                                                 [routerLink]="['/chart/',selectedSymbol.tradingsymbol, selectedSymbol]">
                                                 <span class="icon icon-trending-up"></span> Chart
@@ -117,7 +119,7 @@
                                             <span title="Popout" class="options">
                                                 <a href="#"><span class="icon icon-external-link"></span></a>
                                             </span>
-                                        </li>
+                                        </li> -->
                                     </ul>
                                 </div>
                             </div>

@@ -68,6 +68,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
+    this.checkDevice();
     this.demoToggle = this.demoService.demoMode;
     this._activatedRoute.url.subscribe(console.log);
     let state = this._activatedRoute.paramMap.pipe(map(() => window.history.state ));
@@ -259,7 +260,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
       const agent = window.navigator.userAgent.toLowerCase();
       let regexp = /android|iphone|kindle|ipad/i;
       let deviceType = regexp.test(agent);
-
       if (deviceType) {
         this.isMobileDevice = true;
       } else {

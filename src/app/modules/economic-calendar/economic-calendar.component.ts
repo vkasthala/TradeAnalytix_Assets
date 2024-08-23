@@ -19,7 +19,7 @@ export class EconomicCalendarComponent implements OnInit, AfterViewInit {
     script.src = "https://s3.tradingview.com/external-embedding/embed-widget-events.js";
     script.text = '{"width": "100%","height": 300,"locale": "USD","dateRange": "12M","colorTheme": "light","trendLineColor": "#37a6ef","underLineColor": "#E3F2FD","isTransparent": false,"autosize": false,"importanceFilter": "-1,0,1", "currencyFilter": "USD"}';
 
-    this.tradingview.nativeElement.appendChild(script);
+    // this.tradingview.nativeElement.appendChild(script);
   }
 
 }
