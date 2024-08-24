@@ -24,9 +24,9 @@
 
                     <a [class.router-link-active]="currentRoute === 'import-trades-history'" [routerLink]="['/import-trades-history/']" routerLinkActive="router-link-active"><span>Journal</span></a>
 
-                    <a [class.router-link-active]="currentRoute === 'reports'" [routerLink]="['/reports/']" routerLinkActive="router-link-active"><span>Analytics</span></a>
-
                     <a [class.router-link-active]="currentRoute === 'rules'" [routerLink]="['/rules/']" routerLinkActive="router-link-active"><span>Rules</span></a>
+
+                    <a [class.router-link-active]="currentRoute === 'reports'" [routerLink]="['/reports/']" routerLinkActive="router-link-active"><span>Analytics</span></a>
 
                     <a (click)="openBrokerageModal()"><span class="btn-broker-login">Connect Broker</span></a>
                 </div> 
