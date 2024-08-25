@@ -56,17 +56,20 @@ export class ExecutedOrdersComponent implements OnInit {
     this.checkDevice()
   }
 
-  openIntradayOrderPopup(orderType:any, orderId:string) {
-    let ruleCheckPayload: OrderRuleCheckRequest;
-    ruleCheckPayload.orderId = orderId;
+  openIntradayOrderPopup(orderType:any, order:any) {
+    console.log(this.executedOrders);
+    let ruleCheckPayload: OrderRuleCheckRequest = {} as OrderRuleCheckRequest;
+    let margins: Margins = {} as Margins;
+    margins.instrument = {symbol: null, actualSymbol:null ,exchange:null ,symbolId: order.instrument.symbolId};
+    ruleCheckPayload.orderId = order.orderId;
     const dialogRef = this._dialog.open(IntradayOrderPopupComponent, {
       width: 'auto',
       height: 'auto',
-      data: {'ruleCheckPayload':{}, 'margins': {}, 'orderType':orderType}
+      data: {'ruleCheckPayload':ruleCheckPayload, 'margins': margins, 'orderType':orderType}
     });
     dialogRef.afterClosed().subscribe((orderRules) => {
       if (orderRules) {
-        this.updateJournal(orderRules, orderId);
+        this.updateJournal(orderRules, order.orderId);
       }
     });
   }

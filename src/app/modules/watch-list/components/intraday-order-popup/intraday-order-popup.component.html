@@ -17,7 +17,7 @@
                     </div>
                     <div class="four columns text-right">
                         <div class="wrap-right">
-                            <button type="button" class="button button-md button-outline" (click)="orderPlacement(margins)">Skip and {{margins.transaction_type | titlecase}}</button>
+                            <button *ngIf="data.orderType != 'closed'" type="button" class="button button-md button-outline" (click)="orderPlacement(margins)">Skip and {{margins.transaction_type | titlecase}}</button>
                         </div>
                     </div>
                 </div>
@@ -146,7 +146,7 @@
 
                     <footer class="footer">
                         <div class="text-right actions">
-                            <button type="submit" class="button submit button-md" (click)="orderPlacement(margins)"><span>{{margins.transaction_type | titlecase}}</span></button>
+                            <button type="submit" class="button submit button-md" (click)="orderPlacement(margins)"><span>{{ data.orderType == 'closed' ? 'Update' : (margins.transaction_type | titlecase) }}</span></button>
                             <button type="button" class="button button-outline cancel button-md ml-1" (click)="closeModal()">Cancel</button>
                         </div>
                     </footer>
