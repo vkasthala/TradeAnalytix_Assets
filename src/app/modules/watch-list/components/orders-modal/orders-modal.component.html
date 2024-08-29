@@ -112,8 +112,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="d-flex">
-                            <div class="four columns">
+                        <div class="d-flex order-type-section">
+                            <div class="four columns empty-column">
                                 &nbsp;
                             </div>
                             <div class="four columns price">
@@ -177,7 +177,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="five columns text-right actions">
+                    <div class="five columns text-right actions order-modal-footer">
                         <button *ngIf="!isOrderModify" type="submit" class="submit"
                             (click)="openIntradayOrderPopup('new')"><span>{{margins.type |
                                 titlecase}}</span></button>

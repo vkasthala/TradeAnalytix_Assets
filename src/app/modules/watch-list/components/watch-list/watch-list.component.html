@@ -103,24 +103,27 @@
                                 </div>
 
                                 <div class="mobile-context-menu" *ngIf="showMobileContextMenu">
-                                    <ul class="mobile-context-menu-list list-flat"
-                                        (clickOutside)="closeMobileContextMenu($event)">
-                                        <li (click)="buyOrders(selectedSymbol)" *ngIf="!isNiftyStock(selectedSymbol)"><span class="icon icon-plus"></span> Buy
-                                        </li>
-                                        <li (click)="sellOrders(selectedSymbol)"><span class="icon icon-minus" *ngIf="!isNiftyStock(selectedSymbol)"></span>
-                                            Sell</li>
-                                        <li (click)="deleteOrder(selectedSymbol)"><span class="icon icon-trash"></span>
-                                            Delete</li>
-                                        <!-- <li class="d-flex justify-content-between">
-                                            <span data-balloon="Chart (C)" data-balloon-pos="up"
-                                                [routerLink]="['/chart/',selectedSymbol.tradingsymbol, selectedSymbol]">
-                                                <span class="icon icon-trending-up"></span> Chart
-                                            </span>
-                                            <span title="Popout" class="options">
-                                                <a href="#"><span class="icon icon-external-link"></span></a>
-                                            </span>
-                                        </li> -->
-                                    </ul>
+                                    <div class="mobile-context-menu-list">
+                                        <div class="mobile-context-menu-header">
+                                            <div class="symbol_name">{{selectedSymbol.tradingSymbolShort}}</div>
+                                            <div class="selectedSymbol-bottom">
+                                                <span>{{selectedSymbol.exchange}}</span>
+                                                <span class="ml-3">{{selectedSymbol.price}}</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="mobile-context-menu-body" (clickOutside)="closeMobileContextMenu($event)">
+                                            <button type="button" class="button buy col-4" (click)="buyOrders(selectedSymbol)" *ngIf="!isNiftyStock(selectedSymbol)">Buy</button>
+
+                                            <div class="col-5">
+                                                <button type="button" class="button sell w-100" (click)="sellOrders(selectedSymbol)" *ngIf="!isNiftyStock(selectedSymbol)">Sell</button>    
+                                            </div>
+                                            
+                                            
+                                            <button class="button-outline col-3" type="button" (click)="deleteOrder(selectedSymbol)"><mat-icon class="material-icons">delete_outline</mat-icon></button>
+                                            
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

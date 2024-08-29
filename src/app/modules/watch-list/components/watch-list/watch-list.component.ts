@@ -281,21 +281,22 @@ export class WatchListComponent implements OnInit {
     }
 
     this._omsService.getMargin(defaultOrderRequest).subscribe(response =>{
-        // this.marginsSource = response;
-        this.marginsSource.margin = response.margin;
-        this.marginsSource.charges = response.charges;
-        this.marginsSource.availableMargin = response.availableMargin;
-        this.showOrdersModal = true;
-        this.orderToggle = true;
-        if ($event.transaction_type === 'BUY') {
-            this.orderToggle = false;
-          }
-        this.showMobileContextMenu = false;
-        this.loader = false;
-      }, error =>{
-        this.toastr.error(error.error, "Error", {timeOut: 3000});
-        this.loader = false;
-      });
+      // this.marginsSource = response;
+      this.marginsSource.margin = response.margin;
+      this.marginsSource.charges = response.charges;
+      this.marginsSource.availableMargin = response.availableMargin;
+      this.showOrdersModal = true;
+      this.orderToggle = true;
+      if ($event.transaction_type === 'BUY') {
+          this.orderToggle = false;
+        }
+      this.showMobileContextMenu = false;
+      this.loader = false;
+    }, error =>{
+      this.toastr.error(error.error, "Error", {timeOut: 3000});
+      this.loader = false;
+      this.showMobileContextMenu = false;
+    });
 
     // this.showOrdersModal = true;
     this.marginsSource = $event;

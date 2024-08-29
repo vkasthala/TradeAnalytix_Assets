@@ -2591,17 +2591,17 @@ input {
     width: 14px
 }
 
-@media (min-width: 550px) {
+@media (min-width: 320px) {
     .container {
         width:80%
     }
 
     .column,.columns {
-        margin-left: 4%
+        padding-left: 4%
     }
 
     .column:first-child,.columns:first-child {
-        margin-left: 0
+        padding-left: 0
     }
 
     .one.column,.one.columns {
@@ -2617,7 +2617,7 @@ input {
     }
 
     .four.columns {
-        width: 30.66667%
+        width: 33.66667%
     }
 
     .five.columns {
@@ -2806,6 +2806,13 @@ input {
     .app-nav.mobile-nav a.router-link-active,
     .app-nav.mobile-nav a:hover {
         color: #4A69CB;
+    }
+    .chatbot-icon {
+        bottom: 140px;
+        right: 0;
+    }
+    .chatbot-icon {
+        width: 30px;
     }
 }
 
@@ -3409,18 +3416,17 @@ button.button-outline {
     right: 0;
     bottom: 0;
     z-index: 9;
-    background-color: rgb(0 0 0 / 40%);
-    opacity: 0.345;
+    background-color:rgb(0 0 0 / 7%);
 }
 
 .mobile-context-menu .mobile-context-menu-list {
-    bottom: 0;
+    bottom: 60px;
     width: 100%;
-    max-height: 70%;
+    // max-height: 70%;
     position: fixed;
     overflow: scroll;
     background-color: var(--color-bg-default);
-    height: 70%;
+    // height: 70%;
 }
 
 .mobile-context-menu .mobile-context-menu-list li {
@@ -3522,4 +3528,8 @@ button.button-outline {
 .mobile-context-menu .mobile-context-menu-list li.multiple-2 .options a .icon {
     margin: 0;
     padding: 0
+}
+
+@media (max-width: 767px) {
+
 }
