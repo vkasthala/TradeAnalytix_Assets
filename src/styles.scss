@@ -3533,3 +3533,33 @@ button.button-outline {
 @media (max-width: 767px) {
 
 }
+
+.gtt-list .empty-state img {
+    max-width: 250px
+}
+
+.gtt-list .fixed-width-label {
+    min-width: 90px
+}
+
+.gtt-list .data-table table tbody tr td,.gtt-list .data-table table tfoot tr td {
+    vertical-align: top
+}
+
+.gtt-list .data-table table tr td.trigger-values .distance-percent,.gtt-list .data-table table tr th.trigger-values .distance-percent {
+    min-width: 20px;
+    margin-left: 10px;
+    display: inline-block
+}
+
+.gtt-list .data-table table tr th span {
+    margin-right: 10px
+}
+
+.gtt-list .type-label {
+    min-width: 58px
+}
+
+.gtt-list .transaction-type-label {
+    min-width: 42px
+}

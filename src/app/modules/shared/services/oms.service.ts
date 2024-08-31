@@ -23,7 +23,7 @@ export class OmsService {
 
   getMargin(orderRequest: PlaceOrderRequest) : Observable<MarginResponse>{
     const url = environment.tradingServiceUri + "/orders/margins";
-     return this.http.post<MarginResponse>(url, orderRequest, { headers: this.createHttpHeaders() });
+     return this.http.post<MarginResponse>(url, orderRequest, {  });
   }
 
   placeOrder(orderRequest: PlaceOrderRequest) : Observable<PurchaseOrderResponse>{

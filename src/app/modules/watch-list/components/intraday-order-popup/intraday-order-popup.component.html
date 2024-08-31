@@ -3,7 +3,7 @@
     <div class="example-box">
         <div data-drag-boundary="true" class="order-window layer-2 place" [ngClass]="margins.transaction_type === 'SELL' ? 'sell' : 'buy' ">
             <header>
-                <div class="d-flex align-items-center">
+                <div class="d-flex align-items-center intraday-modal-header">
                     <div class="eight columns">
                         <div class="instrument">
                             Intraday Order: <span class="transaction-type">{{margins.transaction_type | titlecase}}</span> 
@@ -27,7 +27,7 @@
                 <div class="content">
                     <div class="body">
                         <div class="row">
-                            <div class="col-6 pr-0">
+                            <div class="col-12 col-md-6 rules-column">
                                 <div class="intraday-panel">
                                     <div class="intraday-panel-header">Trading Rules</div>
                                     <div class="intraday-panel-body">
@@ -80,7 +80,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-6 border-left pl-0">
+                            <div class="col-12 col-md-6 border-left statistics-column">
                                 <div class="intraday-panel">
                                     <div class="intraday-panel-header">Historical Statistics</div>
                                     <div class="intraday-panel-body">

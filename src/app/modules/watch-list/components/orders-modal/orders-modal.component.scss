@@ -295,9 +295,13 @@
         right: 0!important;
         margin: 0 auto;
         width: 96%;
+        overflow-x: hidden;
         overflow-y: auto;
         z-index: 999;
         transform:inherit !important;
+    }
+    .order-window {
+        width: 100%;
     }
     .order-window header .eight.columns {
         width: 75%;
