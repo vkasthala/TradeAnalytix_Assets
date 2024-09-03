@@ -75,18 +75,18 @@ h2 {
     text-align: center; // Venkat added to make sub text in the hero section center-aligned
 }
 
-banner-section h1 {
+.banner-section h1 {
     font-family: "Inter", sans-serif !important;
     color: #000000;
-    font-size: 48px !important;
+    font-size: 46px;
 }
 
 .banner-section p {
     font-family: 'Inter', sans-serif !important;
     color: #58595B;
     font-size: 18px;
-    margin-left: 260px; /* Aligns text properly without extra space */
-    margin-right: 260px;
+    margin-left: 325px; /* Aligns text properly without extra space */
+    margin-right: 325px;
     justify-content: center; 
    }
 
@@ -221,10 +221,9 @@ banner-section h1 {
     .how-it-works p {
         color: #58595B;
         font-size: 18px;
-        line-height: 1.5;
+        line-height: 1;
         text-align: center;
         justify-content: center; 
-        margin-left: 1px;
     }
 
     // #trading-steps {
@@ -1165,8 +1164,8 @@ input:checked~.accordion-content {
   
   .benefit-item-with-cuetrade {
     flex: 1;
-    max-width: 33%;
-    padding: 10px;
+    max-width: 36%;
+    padding: 15px;
     margin: 0 10px;
     background-color: #f1f2f4;
     border-radius: 8px;
@@ -1176,24 +1175,23 @@ input:checked~.accordion-content {
 
   .benefit-item-without-cuetrade {
     flex: 1;
-    max-width: 33%;
-    padding: 10px;
+    max-width: 36%;
+    padding: 15px;
     margin: 0 10px;
     background-color: #f1f2f4;
     border-radius: 8px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-
 }
   
   .benefit-item-with-cuetrade h2 {
-    font-size: 18px;
+    font-size: 20px;
     margin-bottom: 14px;
     color: #000000;
     text-align: center;
   }
 
   .benefit-item-without-cuetrade h2 {
-    font-size: 18px;
+    font-size: 20px;
     margin-bottom: 14px;
     color: #000000;
     text-align: center;
@@ -1266,10 +1264,10 @@ input:checked~.accordion-content {
 
 .how-it-works p {
     color: #58595B;
-    max-width: 900px; /* Limited width for better readability */
-    margin: 0 auto 10px auto; /* Centered and added bottom margin */
+    // max-width: 900px; /* Limited width for better readability */
+    // margin: 0 400px 10px 400px; /* Centered and added bottom margin */
     font-size: 18px;
-    line-height: 1.5;
+    line-height: 1;
 }
 
 #trading-steps {
