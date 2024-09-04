@@ -182,7 +182,7 @@ export class OrdersModalComponent implements OnInit {
     this.toastr.error(message, 'Error', {timeOut: 3000});
   }
 
-  modifyOrder(orderRules: OrderRuleResponse){
+  modifyOrder(orderRules: OrderRuleResponse, orderId:any){
     this._sharedService.loaderEvent.emit(true);
     console.log("modify");
     let price = this.getPrice();
@@ -203,7 +203,7 @@ export class OrdersModalComponent implements OnInit {
         this._sharedService.ordersReloadEvent.emit(true);
         this.closePopup();
         this._sharedService.loaderEvent.emit(false);
-        this._omsService.updateRules(orderRules, this.margins.orderId).subscribe(response=>{
+        this._omsService.updateRules(orderRules, orderId).subscribe(response=>{
           // if(response){
           //   this.toastr.success('Order rules saved successfully', 'Success', {timeOut: 3000});
           // }
@@ -257,7 +257,7 @@ export class OrdersModalComponent implements OnInit {
     dialogRef.afterClosed().subscribe((orderRules) => {
       if (orderRules) {
         if(this.margins.orderId){
-        this.modifyOrder(orderRules);
+        this.modifyOrder(orderRules, this.margins.orderId);
         } else{
           this.orderPlacement(orderRules);
         }
