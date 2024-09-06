@@ -78,7 +78,7 @@ export class ExecutedOrdersComponent implements OnInit {
     this._sharedService.loaderEvent.emit(true);
     this._orderService.updateRules(orderRules, orderId).subscribe(response=>{
       if(response){
-        this.toastr.success('Order Updated successfully', 'Success', {timeOut: 3000});
+        this.toastr.success('Journal updated successfully', 'Success', {timeOut: 3000});
         this._sharedService.ordersReloadEvent.emit(true);
         this.closePopup();
       }

@@ -3,6 +3,8 @@
 
 body {
     font-family: 'Inter', sans-serif !important;
+    overflow-x: hidden; /* Prevent horizontal scrolling RWD */
+    max-width: 100%; /* Prevents the body from extending beyond viewport RWD*/
 }
 input,
 button,
@@ -14,7 +16,7 @@ textarea {
 nav {
     font-family: 'Inter', sans-serif !important;
     font-weight: 500;
-    font-size: 17px;
+    font-size: 18px;
     color: #000 !important;
 }
 
@@ -73,6 +75,21 @@ h2 {
     text-align: center; // Venkat added to make sub text in the hero section center-aligned
 }
 
+.banner-section h1 {
+    font-family: "Inter", sans-serif !important;
+    color: #000000;
+    font-size: 46px;
+}
+
+.banner-section p {
+    font-family: 'Inter', sans-serif !important;
+    color: #58595B;
+    font-size: 18px;
+    margin-left: 325px; /* Aligns text properly without extra space */
+    margin-right: 325px;
+    justify-content: center; 
+   }
+
 .btn-banner {
     font-family: 'Inter', sans-serif !important;
     background-color: #4BB964;
@@ -80,7 +97,8 @@ h2 {
     border: none;
     color: #fff;
     margin-top: 3rem;
- //   margin-left: 447px;
+    margin-right:10px;
+    width:210px;
     margin-bottom: 1rem;
     border-radius: 4px;
     font-size: 1rem;
@@ -92,49 +110,150 @@ h2 {
     padding: 14px 50px;
     border: 2px solid #2469FF;
     border-radius: 4px;
+    width:210px;
     color: #ffffff;
  //   margin-bottom: 2.5rem;
     font-size: 1rem;
 }
 
-@media only screen and (max-width: 500px) {
-    .banner-section {
-        /*  background: linear-gradient(83.62deg, #1B45B4 3.5%, #1C2792 96.85%); */
-        background-image: url(../../../../assets/img/bannerbg-hero.png);
-        background-size: cover;
-        background-position: center;
-        padding: 40px 30px;
-    }
-
-    .banner-section h1 {
-        font-size: 30px !important;
-    }
-
-    .banner-section p {
-        font-size: 16px !important;
-    }
-}
-
 .cue-logo img {
     width: 85%;
-}
+    }
+
+//RWD Specific Code
+
+@media only screen and (max-width: 600px) {
+ 
+    .banner-section {
+        text-align: center; /* Center align text RWD */
+        padding: 20px 10px 10px 10px; /* Reduce side padding to ensure content fits within view RWD */
+        display: flex;
+        justify-content: center;
+        margin-top:60px;
+    }
+
+    .hamburger-menu-icon {
+        color: black; /* Change color if it's not visible against the background RWD */
+        display: block; /* Ensure hamburger menu is visible RWD */
+    }
+
+    .section, div {
+        max-width: 100%;
+        overflow-x: hidden; /* Keeps the menu icon on the same line as the logo. RWD */
+    }
+
+    img {
+        max-width: 100%; /* Ensures images are not wider than the screen RWD */
+        height: auto; /* Maintains aspect ratio RWD */
+    }
+    
+    section .benefits {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .benefit-item-with-cuetrade, .benefit-item-without-cuetrade {
+        max-width: 90% !important;  // Ensuring this rule takes precedence
+        margin: 10px auto !important;  // Centering the boxes with automatic margins
+        padding: 10px !important;  // Increasing padding for better text spacing
+        box-sizing: border-box;  // Includes padding and border in the element's total width and height
+    }
+
+    .benefit-item-with-cuetrade h2, .benefit-item-without-cuetrade h2 {
+        font-size: 20px !important;  // Ensuring the font size increase applies
+    }
+
+.btn-banner, .btn-how-banner {
+    width: 100%; /* Allows buttons to fit content RWD*/
+    font-size: 18px; /* Smaller font for small screens RWD*/
+    padding: 15px 15px; /* Smaller padding for buttons RWD*/
+    margin-left:0px;
+    margin-right:40px;
+    }
+
+.btn {
+    padding: 8px 16px; /* Smaller buttons */
+    font-size: 16px; /* Smaller font size for buttons */
+    }
+
+.cue-logo img {
+    width: 70%; /* Adjust this percentage based on your specific needs RWD */
+    margin-left:5px;
+    }
 
 .banner-section h1 {
     font-family: 'Inter', sans-serif !important;
     color: #000000;
-    font-size: 44px;
-  //  margin-left:240px;
-}
+    font-size: 40px;
+    margin-left: 0; /* Aligns text properly without extra space */
+    margin-right: 0;
+    padding: 50px; /* Reduced padding */
+    }
 
 .banner-section p {
     font-family: 'Inter', sans-serif !important;
     color: #58595B;
     font-size: 18px;
-    margin-left:300px;
-    margin-right:300px;
-    justify-content: center;
- //   padding-right: 1px;
-}
+    margin-left: 10px; /* Aligns text properly without extra space */
+    margin-right: 10px;
+    margin-top:-40px;
+    padding: 0px; /* Reduced padding */
+    }
+
+    .how-it-works {
+        padding: 10px 10px 10px 10px; /* Reduce side padding to ensure content fits within view RWD */
+        margin-top: 5px;
+        margin-bottom: 10px;
+        text-align: center;
+        display: flex;
+        justify-content: center; 
+    }
+    
+    .how-it-works h1 {
+        font-size: 40px; /* Slightly reduced for balance */
+        font-weight: 700;
+        color: #000000;
+        margin-bottom: 10px; /* Added spacing below heading */
+    }
+    
+    .how-it-works p {
+        color: #58595B;
+        font-size: 18px;
+        line-height: 1;
+        text-align: center;
+        justify-content: center; 
+    }
+
+    .trading-steps {
+        padding: 20px 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    .video-container {
+        justify-content: center;
+        align-items: center;
+        margin-left: 5px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    
+    .video-thumbnail {
+        width: 100%;
+        height: auto;
+        // overflow: hidden;
+        margin-left: 5px;
+        margin-top:50px;
+        border-radius: 1px;
+    }
+    
+    .video-player {
+        width: 100%;
+        height: 50px; /* Adjust the height as needed */
+        border-radius: 8px;
+    }
 
 .brands-sec {
     font-family: 'Inter', sans-serif !important;
@@ -183,6 +302,8 @@ h2 {
     width: 12px;
     background-color: #135EA4 !important;
 }
+}
+
 
 @media only screen and (max-width: 600px) {
     .carousel-indicators {
@@ -1042,37 +1163,34 @@ input:checked~.accordion-content {
   
   .benefit-item-with-cuetrade {
     flex: 1;
-    max-width: 33%;
-    padding: 10px;
+    max-width: 36%;
+    padding: 15px;
     margin: 0 10px;
     background-color: #f1f2f4;
     border-radius: 8px;
-//    box-shadow: 2px 2px 2px 2px rgba(0.1, 0.1, 0.1, 0.1);
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 
   }
 
   .benefit-item-without-cuetrade {
     flex: 1;
-    max-width: 33%;
-    padding: 10px;
+    max-width: 36%;
+    padding: 15px;
     margin: 0 10px;
     background-color: #f1f2f4;
     border-radius: 8px;
-//    box-shadow: 2px 2px 2px 2px rgba(0.1, 0.1, 0.1, 0.1);
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-
 }
   
   .benefit-item-with-cuetrade h2 {
-    font-size: 18px;
+    font-size: 20px;
     margin-bottom: 14px;
     color: #000000;
     text-align: center;
   }
 
   .benefit-item-without-cuetrade h2 {
-    font-size: 18px;
+    font-size: 20px;
     margin-bottom: 14px;
     color: #000000;
     text-align: center;
@@ -1137,7 +1255,7 @@ input:checked~.accordion-content {
 }
 
 .how-it-works h1 {
-    font-size: 44px; /* Slightly reduced for balance */
+    font-size: 40px; /* Slightly reduced for balance */
     font-weight: 700;
     color: #000000;
     margin-bottom: 20px; /* Added spacing below heading */
@@ -1145,14 +1263,15 @@ input:checked~.accordion-content {
 
 .how-it-works p {
     color: #58595B;
-    max-width: 900px; /* Limited width for better readability */
-    margin: 0 auto 10px auto; /* Centered and added bottom margin */
+    // max-width: 900px; /* Limited width for better readability */
+    // margin: 0 400px 10px 400px; /* Centered and added bottom margin */
+    margin-bottom: 50px;
     font-size: 18px;
     line-height: 1.5;
 }
 
-#trading-steps {
-    padding: 40px 0; //reduced from 70px
+.trading-steps {
+    // padding: 40px 0; //reduced from 70px
     display: flex;
     margin-left:150px;
     margin-right:-50px;
@@ -1237,12 +1356,17 @@ input:checked~.accordion-content {
         margin-bottom: 30px;
     }
 
-    .step-number {
-        margin: 0 auto;
-    }
+    // .step-number {
+    //     margin: 0 auto;
+    // }
 
-    .step-title, .step-description {
-        text-align: center;
+    // .step-title, .step-description {
+    //      text-align: center;
+    // }
+
+    .step-container::before {
+        content: ''; /* Ensure the line is removed in the mobile view */
+        display: none; /* This ensures the line is not just hidden but removed from the layout */
     }
 }
 
@@ -1260,12 +1384,13 @@ input:checked~.accordion-content {
     height: auto;
     overflow: hidden;
     margin-left: 100px;
+    margin-top:50px;
     border-radius: 1px;
 }
 
 .video-player {
     width: 100%;
-    height: 350px; /* Adjust the height as needed */
+    height: 400px; /* Adjust the height as needed */
     border-radius: 8px;
 }
 
