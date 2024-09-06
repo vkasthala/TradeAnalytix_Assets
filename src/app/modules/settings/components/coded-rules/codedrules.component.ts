@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { EditableGridColumn } from 'src/app/modules/shared/models/common/editable-grid-column.model';
 import { isArray } from 'util';
@@ -32,6 +32,8 @@ export class CodedRulesComponent implements OnInit {
   portfolioLevelRules=[];
   isDemoMode: boolean = false;
   Loader: boolean = false;
+
+  isMobileDevice: any;
   
   constructor(private codedRuleService: CodedRuleService, 
     private toastr: ToastrService,
@@ -47,7 +49,7 @@ export class CodedRulesComponent implements OnInit {
   rule: EntryExitRule = new EntryExitRule();
 
   ngOnInit() {
-
+    this.checkDevice();
   }
 
   ngAfterViewInit() {
@@ -316,6 +318,24 @@ export class CodedRulesComponent implements OnInit {
         this.deleteCodedRule(rule);
       }
     });
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.checkDevice();
+  }
+
+  checkDevice() {
+    setTimeout(() => {
+      const agent = window.navigator.userAgent.toLowerCase();
+      let regexp = /android|iphone|kindle|ipad/i;
+      let deviceType = regexp.test(agent);
+      if (deviceType) {
+        this.isMobileDevice = true;
+      } else {
+        this.isMobileDevice = false;
+      }
+    }, 100)
   }
 
 }

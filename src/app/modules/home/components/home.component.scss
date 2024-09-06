@@ -624,3 +624,14 @@
     font-size: 13px;
     padding: 10px;
 }
+
+@media (max-width: 767px) {
+    .contact-modal {
+        left: 0%;
+        top: 20%;
+    }
+    
+    .contact-modal .modal-dialog {
+        width: 96%;
+    }
+}

@@ -104,6 +104,13 @@
             </span>
             <span class="nav-text">Watchlist</span>
         </a>
+
+        <a class="nav-link" (click)="openBrokerageModal()">
+            <span class="icon">
+                <img src="../../../../assets/img/icon-watchlist.png" >
+            </span>
+            <span class="nav-text">Connect</span>
+        </a>
         
         <a class="nav-link" [class.router-link-active]="['/orders/']" [routerLink]="['/orders/']" routerLinkActive="router-link-active">
             <span class="icon">
@@ -125,6 +132,11 @@
                 <img *ngIf="currentRoute === 'positions'" src="../../../../assets/img/icon-positions_r.png" />
             </span>
             <span class="nav-text">Positions</span>
+        </a>
+        <a class="nav-link" [class.router-link-active]="['/rules/']" [routerLink]="['/rules/']" routerLinkActive="router-link-active">
+            <img *ngIf="currentRoute !== 'rules'" src="../../../../assets/img/icon-positions.png" />
+            <img *ngIf="currentRoute === 'rules'" src="../../../../assets/img/icon-positions_r.png" />
+            <span class="nav-text">Rules</span>
         </a>
     </div>
     
