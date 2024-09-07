@@ -273,3 +273,68 @@ thead tr.mat-header-row {
     min-width:70px;
     font-size:14px;
 }
+
+@media (max-width: 767px) {
+    .rule-row {
+        background-color: #f6f7fa;
+        padding: 1rem;
+    }
+    .rule-row:nth-child(odd) {
+        background-color: #f6f7fa;
+        border: 0;
+    }
+    .rule-row:nth-child(even) {
+        background-color: #fff;
+        border: 0;
+    }
+
+    .top.d-flex {
+        margin-bottom: 0.678rem;
+    }
+    .cards .flex3 {
+        -webkit-box-flex: 3;
+        -ms-flex: 3;
+        flex: 3
+    }
+
+    .cards .flex4 {
+        -webkit-box-flex: 4;
+        -ms-flex: 4;
+        flex: 4
+    }
+
+    .cards .flex5 {
+        -webkit-box-flex: 5;
+        -ms-flex: 5;
+        flex: 5
+    }
+    .cards .flex6 {
+        -webkit-box-flex: 6;
+        -ms-flex: 6;
+        flex: 6
+    }
+
+    .cards .flex7 {
+        -webkit-box-flex: 7;
+        -ms-flex: 7;
+        flex: 7
+    }
+
+    .cards .flex8 {
+        -webkit-box-flex: 8;
+        -ms-flex: 8;
+        flex: 8
+    }
+
+    .cards .flex9 {
+        -webkit-box-flex: 9;
+        -ms-flex: 9;
+        flex: 9
+    }
+
+    .cards .flex10 {
+        -webkit-box-flex: 10;
+        -ms-flex: 10;
+        flex: 10
+    }
+}

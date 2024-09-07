@@ -180,3 +180,13 @@ select.form-control {
 textarea.form-control {
     height: inherit;
 }
+
+@media (max-width: 767px) {
+    .compare-popup {
+        left: 4%;
+    }
+    .compare-pop-inner {
+        max-width: 100%;
+        min-width: 100%;
+    }
+}

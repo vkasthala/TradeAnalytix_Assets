@@ -81,7 +81,7 @@ export class OmsService {
     return this.httpService.delete<string,string>(url);
   }
 
-  updateRules(orderRules: OrderRuleResponse, orderId: string) :  Observable<string> {
+  updateRules(orderRules: OrderRuleResponse, orderId: string) :  Observable<any> {
     const url = environment.apiUrl + "/order/update-coded-rule/"+orderId;
     return this.httpService.put<OrderRuleResponse,string>(url,orderRules);
   }
