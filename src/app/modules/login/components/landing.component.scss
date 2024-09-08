@@ -165,42 +165,42 @@ h2 {
         font-size: 20px !important;  // Ensuring the font size increase applies
     }
 
-.btn-banner, .btn-how-banner {
-    width: 100%; /* Allows buttons to fit content RWD*/
-    font-size: 18px; /* Smaller font for small screens RWD*/
-    padding: 15px 15px; /* Smaller padding for buttons RWD*/
-    margin-left:0px;
-    margin-right:40px;
-    }
+    .btn-banner, .btn-how-banner {
+        width: 100%; /* Allows buttons to fit content RWD*/
+        font-size: 18px; /* Smaller font for small screens RWD*/
+        padding: 15px 15px; /* Smaller padding for buttons RWD*/
+        margin-left:0px;
+        margin-right:40px;
+        }
 
-.btn {
-    padding: 8px 16px; /* Smaller buttons */
-    font-size: 16px; /* Smaller font size for buttons */
-    }
+    .btn {
+        padding: 8px 16px; /* Smaller buttons */
+        font-size: 16px; /* Smaller font size for buttons */
+        }
 
-.cue-logo img {
-    width: 70%; /* Adjust this percentage based on your specific needs RWD */
-    margin-left:5px;
-    }
+    .cue-logo img {
+        width: 70%; /* Adjust this percentage based on your specific needs RWD */
+        margin-left:5px;
+        }
 
-.banner-section h1 {
-    font-family: 'Inter', sans-serif !important;
-    color: #000000;
-    font-size: 40px;
-    margin-left: 0; /* Aligns text properly without extra space */
-    margin-right: 0;
-    padding: 50px; /* Reduced padding */
-    }
+    .banner-section h1 {
+        font-family: 'Inter', sans-serif !important;
+        color: #000000;
+        font-size: 36px;
+        margin-left: 0; /* Aligns text properly without extra space */
+        margin-right: 0;
+        padding: 50px; /* Reduced padding */
+        }
 
-.banner-section p {
-    font-family: 'Inter', sans-serif !important;
-    color: #58595B;
-    font-size: 18px;
-    margin-left: 10px; /* Aligns text properly without extra space */
-    margin-right: 10px;
-    margin-top:-40px;
-    padding: 0px; /* Reduced padding */
-    }
+    .banner-section p {
+        font-family: 'Inter', sans-serif !important;
+        color: #58595B;
+        font-size: 18px;
+        margin-left: 10px; /* Aligns text properly without extra space */
+        margin-right: 10px;
+        margin-top:-40px;
+        padding: 0px; /* Reduced padding */
+        }
 
     .how-it-works {
         padding: 10px 10px 10px 10px; /* Reduce side padding to ensure content fits within view RWD */
@@ -212,7 +212,7 @@ h2 {
     }
     
     .how-it-works h1 {
-        font-size: 40px; /* Slightly reduced for balance */
+        font-size: 36px !important; /* Slightly reduced for balance */
         font-weight: 700;
         color: #000000;
         margin-bottom: 10px; /* Added spacing below heading */
@@ -1232,7 +1232,7 @@ input:checked~.accordion-content {
     background-color: #F1F9FF;
     background-position: center;
     justify-content: center;
-    padding: 70px 50px; /* Adjusted padding for better spacing */
+    padding: 50px 50px; /* Adjusted padding for better spacing */
     margin-top: 15px;
     margin-bottom: 15px;
     text-align: center; 
@@ -1389,7 +1389,8 @@ input:checked~.accordion-content {
     .video-container, .video-player, .video-thumbnail {
         display: block !important;  /* Ensures visibility */
         width: 100% !important;    /* Ensures full width */
-        margin-left:10px;
+        margin-top: 0px;
+        margin-left: 0px;
         height: auto !important;   /* Maintains aspect ratio */
     }
 }
@@ -1398,7 +1399,8 @@ input:checked~.accordion-content {
     .video-container, .video-player, .video-thumbnail {
         display: block !important;  /* Ensures visibility */
         width: 100% !important;    /* Ensures full width */
-        margin-left:10px;
+        margin-top: 0px;
+        margin-left:0px;
         height: auto !important;   /* Maintains aspect ratio */
     }
 }
@@ -1407,7 +1409,8 @@ input:checked~.accordion-content {
     .video-container, .video-player, .video-thumbnail {
         display: block !important;  /* Ensures visibility */
         width: 100% !important;    /* Ensures full width */
-        margin-left:10px;
+        margin-top: 0px;
+        margin-left:0px;
         height: auto !important;   /* Maintains aspect ratio */
     }
 }
