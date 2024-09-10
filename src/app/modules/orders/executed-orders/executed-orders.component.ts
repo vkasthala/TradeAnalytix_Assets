@@ -5,7 +5,7 @@ import { Margins } from '../../shared/models/margins.model';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { IntradayOrderPopupComponent } from '../../watch-list/components/intraday-order-popup/intraday-order-popup.component';
-import { OrderRuleCheckRequest, OrderRuleResponse } from '../../shared/models/orders.model';
+import { OrderRuleCheckRequest, OrderRuleDto, OrderRuleResponse } from '../../shared/models/orders.model';
 
 @Component({
   selector: 'app-executed-orders',
@@ -74,7 +74,7 @@ export class ExecutedOrdersComponent implements OnInit {
     });
   }
 
-  updateJournal(orderRules: OrderRuleResponse, orderId:string){
+  updateJournal(orderRules: OrderRuleDto, orderId:string){
     this._sharedService.loaderEvent.emit(true);
     this._orderService.updateRules(orderRules, orderId).subscribe(response=>{
       if(response){

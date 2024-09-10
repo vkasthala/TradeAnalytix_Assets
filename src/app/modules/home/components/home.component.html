@@ -28,7 +28,7 @@
 
                     <a [class.router-link-active]="currentRoute === 'reports'" [routerLink]="['/reports/']" routerLinkActive="router-link-active"><span>Analytics</span></a>
 
-                    <a (click)="openBrokerageModal()"><span class="btn-broker-login">Connect Broker</span></a>
+                    <a (click)="openBrokerageModal()" *ngIf="!isBrokerageActive"><span class="btn-broker-login">Connect Broker</span></a>
                 </div> 
                 <div class="right-nav">
                     <!-- <span class="btn btn-start mr-3" (click)="startTour()">

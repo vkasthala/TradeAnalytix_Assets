@@ -24,6 +24,11 @@ export class UserService {
     return this.httpService.get<UserDetails>(this.apiUrl + '/user/details');
   }
 
+  checkIfBrokerageActive(): Observable<Boolean>{
+      const url = environment.tradingServiceUri + "/user/checkIfBrokerageActive";
+      return this.httpService.get<Boolean>(url);
+  }
+
   loadUserDetails() {
     this.httpService.get<UserDetails>(this.apiUrl + '/user/details').subscribe(result => {
       this.userDetails = this.userDetails;

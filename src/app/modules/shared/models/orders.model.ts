@@ -53,6 +53,11 @@ export interface PurchaseOrderResponse {
     data: {orderId: string}
 }
 
+export class OrderRuleDto {
+    notes: string;
+    orderRules: OrderRuleResponse[]
+}
+
 export class OrderRuleResponse {
     msg: string;
     ruleId: number;

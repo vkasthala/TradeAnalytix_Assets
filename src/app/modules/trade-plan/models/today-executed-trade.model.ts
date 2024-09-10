@@ -1,17 +1,13 @@
 export class TodayExecutedTrade {
 
-    id: number;
-
-    strategyId: number;
-
-    strategyUid: string;
+    orderType: string;
 
     symbol: string;
 
-    amount: number;
+    productType: string;
 
-    returnAmount: number;
+    quantity: number;
 
-    maxRisk: number;
+    executedPrice: number;
 
 }

@@ -45,7 +45,7 @@
                                 
                                             <div class="tab-content tabs reports-tab-content">
                                                 <div class="tab-pane active" id="Manual" role="tabpanel">
-                                                    <div *ngFor="let item of orderRules; let index=index">
+                                                    <div *ngFor="let item of orderRuleDto.orderRules; let index=index">
                                                         <div *ngIf="item.type==='Manual'" class="d-flex py-2 align-items-center">
                                                             <div class="col-10">
                                                                 {{item.msg}}
@@ -60,7 +60,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="tab-pane" id="Automatic" role="tabpanel">
-                                                    <div *ngFor="let item of orderRules; let index=index">
+                                                    <div *ngFor="let item of orderRuleDto.orderRules; let index=index">
                                                         <div *ngIf="item.type==='Automatic'" class="d-flex py-2 align-items-center">
                                                             <div class="col-10">
                                                                 {{item.msg}}
@@ -128,7 +128,7 @@
                                     <app-trade-tags #tradeTag></app-trade-tags>
                                 </div>
                             </div>
-                            <textarea class="form-control" rows="4"></textarea>
+                            <textarea class="form-control" rows="4" [(ngModel)]="orderRuleDto.notes"></textarea>
                         </div>
 
                         <div class="px-3">

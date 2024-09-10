@@ -32,6 +32,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   userDropDown: boolean = false;
   isMobileDevice: any;
   userData: any;
+  isBrokerageActive: boolean = false;
   constructor(
     private globalStore: Store<fromGlobalConfig.State>,
     private router: Router,
@@ -69,6 +70,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.checkDevice();
+    this.isBrokerageActive = sessionStorage.getItem('isBrokerageActive') && sessionStorage.getItem('isBrokerageActive') === 'true';
     this.demoToggle = this.demoService.demoMode;
     this._activatedRoute.url.subscribe(console.log);
     let state = this._activatedRoute.paramMap.pipe(map(() => window.history.state ));

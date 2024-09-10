@@ -7,7 +7,7 @@ import { SharedService } from 'src/app/modules/shared/services/shared.service';
 import { IntradayOrderPopupComponent } from '../intraday-order-popup/intraday-order-popup.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DatePipe } from '@angular/common';
-import { OrderRuleCheckRequest, OrderRuleResponse } from 'src/app/modules/shared/models/orders.model';
+import { OrderRuleCheckRequest, OrderRuleDto, OrderRuleResponse } from 'src/app/modules/shared/models/orders.model';
 
 @Component({
   selector: 'app-orders-modal',
@@ -182,7 +182,7 @@ export class OrdersModalComponent implements OnInit {
     this.toastr.error(message, 'Error', {timeOut: 3000});
   }
 
-  modifyOrder(orderRules: OrderRuleResponse, orderId:any){
+  modifyOrder(orderRules: OrderRuleDto, orderId:any){
     this._sharedService.loaderEvent.emit(true);
     console.log("modify");
     let price = this.getPrice();

@@ -237,6 +237,17 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     this.userService.getUserDetails().subscribe(details => {
       if (details && details.name) {
         this.userName = details.name;
+        this.checkIfBrokerageActive();
+      }
+    });
+  }
+
+  checkIfBrokerageActive(){
+    this.userService.checkIfBrokerageActive().subscribe(isBrokerageActive => {
+      if(isBrokerageActive){
+        sessionStorage.setItem("isBrokerageActive","true");
+      } else{
+        sessionStorage.setItem("isBrokerageActive","false");
       }
     });
   }

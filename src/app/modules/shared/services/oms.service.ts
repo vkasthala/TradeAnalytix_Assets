@@ -1,9 +1,10 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { MarginResponse, OrderPurchasehistory, OrderPurchasehistoryResponse, OrderRuleCheckRequest, OrderRuleResponse, OrdersRequest, OrdersResponse, PlaceOrderRequest, PurchaseOrderResponse } from '../models/orders.model';
+import { MarginResponse, OrderPurchasehistory, OrderPurchasehistoryResponse, OrderRuleCheckRequest, OrderRuleDto, OrderRuleResponse, OrdersRequest, OrdersResponse, PlaceOrderRequest, PurchaseOrderResponse } from '../models/orders.model';
 import { Observable } from 'rxjs';
 import { HttpService } from './http.service';
+import { TodayExecutedTrade } from '../../trade-plan/models/today-executed-trade.model';
 
 @Injectable({
   providedIn: 'root'
@@ -23,13 +24,18 @@ export class OmsService {
 
   getMargin(orderRequest: PlaceOrderRequest) : Observable<MarginResponse>{
     const url = environment.tradingServiceUri + "/orders/margins";
-     return this.http.post<MarginResponse>(url, orderRequest, {  });
+     return this.http.post<MarginResponse>(url, orderRequest, { headers: this.createHttpHeaders() });
   }
 
   placeOrder(orderRequest: PlaceOrderRequest) : Observable<PurchaseOrderResponse>{
     console.log(orderRequest);
     const url = environment.tradingServiceUri + "/orders/place";
     return this.http.post<PurchaseOrderResponse>(url, orderRequest, { headers: this.createHttpHeaders() });
+  }
+
+  getTodayExecutedTrades(day: string): Observable<TodayExecutedTrade[]> {
+    const url = environment.tradingServiceUri + "/orders/executedTrades?day=";
+    return this.http.get<TodayExecutedTrade[]>(url+day, { headers: this.createHttpHeaders() });
   }
   
   // getOpenOrders() : Observable<OrderPurchasehistoryResponse>{
@@ -66,9 +72,9 @@ export class OmsService {
     return this.http.delete<String>(url, { headers: this.createHttpHeaders() });
   }
 
-  checkRules(data: OrderRuleCheckRequest) : Observable<OrderRuleResponse[]> {
+  checkRules(data: OrderRuleCheckRequest) : Observable<OrderRuleDto> {
     const url = environment.apiUrl + "/order/coded-rule-check";
-    return this.httpService.post<OrderRuleCheckRequest,OrderRuleResponse[]>(url,data);
+    return this.httpService.post<OrderRuleCheckRequest,OrderRuleDto>(url,data);
   }
 
   saveRules(orderRules: OrderRuleResponse, orderId: string) :  Observable<string> {
@@ -81,13 +87,13 @@ export class OmsService {
     return this.httpService.delete<string,string>(url);
   }
 
-  updateRules(orderRules: OrderRuleResponse, orderId: string) :  Observable<any> {
+  updateRules(orderRules: OrderRuleDto, orderId: string) :  Observable<any> {
     const url = environment.apiUrl + "/order/update-coded-rule/"+orderId;
-    return this.httpService.put<OrderRuleResponse,string>(url,orderRules);
+    return this.httpService.put<OrderRuleDto,string>(url,orderRules);
   }
 
-  getExistingRules(orderId: string) : Observable<OrderRuleResponse[]>{
+  getExistingRules(orderId: string) : Observable<OrderRuleDto>{
     const url = environment.apiUrl + "/order/coded-rule/"+orderId;
-    return this.httpService.get<OrderRuleResponse[]>(url);
+    return this.httpService.get<OrderRuleDto>(url);
   }
 }

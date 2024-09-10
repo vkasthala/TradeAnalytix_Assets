@@ -2,7 +2,7 @@ import { Component, Inject, Input, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { Margins } from 'src/app/modules/shared/models/margins.model';
-import { OrderRuleCheckRequest, OrderRuleResponse } from 'src/app/modules/shared/models/orders.model';
+import { OrderRuleCheckRequest, OrderRuleDto, OrderRuleResponse } from 'src/app/modules/shared/models/orders.model';
 import { OmsService } from 'src/app/modules/shared/services/oms.service';
 import { SharedService } from 'src/app/modules/shared/services/shared.service';
 import { UserStockStatsService } from 'src/app/modules/shared/services/user-stock-stats.service';
@@ -17,15 +17,13 @@ export class IntradayOrderPopupComponent implements OnInit {
   @Input('orderToggle') orderToggle: boolean=false;
   @Input('margins') margins:any = Margins;
   data:{'ruleCheckPayload':OrderRuleCheckRequest, 'margins':Margins, 'orderType':any};
-  orderRules: OrderRuleResponse[] = [new OrderRuleResponse()];
+  orderRuleDto: OrderRuleDto = new OrderRuleDto();
   stockSummaryResult: StockSummaryResult = new StockSummaryResult();
 
   constructor(
     public dialogRef: MatDialogRef<IntradayOrderPopupComponent>,
     @Inject(MAT_DIALOG_DATA) data:any,
     private _orderService: OmsService,
-    private _sharedService: SharedService,
-    private toastr: ToastrService,
     private userStockStatsService: UserStockStatsService
   ) {
     this.data = data;
@@ -46,7 +44,7 @@ export class IntradayOrderPopupComponent implements OnInit {
     // this.data.ruleCheckPayload.orderId = '24070800145772';
   this._orderService.checkRules(this.data.ruleCheckPayload).subscribe(response=>{
     if(response){
-      this.orderRules = response;
+      this.orderRuleDto = response;
     }
   }, error => {
     console.log("Error "+error);
@@ -57,7 +55,7 @@ loadExistingOrderRules(){
   // this.data.ruleCheckPayload.orderId = '24070800145772';
 this._orderService.getExistingRules(this.data.ruleCheckPayload.orderId).subscribe(response=>{
   if(response){
-    this.orderRules = response;
+    this.orderRuleDto = response;
   }
 }, error => {
   console.log("Error "+error);
@@ -84,7 +82,7 @@ loadSummary() {
 
   orderPlacement(order:any) {
     let orderIds = order.order_id;
-    this.dialogRef.close(this.orderRules);
+    this.dialogRef.close(this.orderRuleDto);
   }
 
   cancelAllOpenOrders() {
