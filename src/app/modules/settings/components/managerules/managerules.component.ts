@@ -34,6 +34,8 @@ export class ManagerulesComponent implements OnInit {
   public event: EventEmitter<any> = new EventEmitter();
   public gridData = [];
   isDemoMode: boolean = false;
+  isMobileDevice: any;
+
   constructor(private _dialog: MatDialog,
     private router: Router,
     private entryExitRulesService: EntryExitRulesService,
@@ -47,8 +49,10 @@ export class ManagerulesComponent implements OnInit {
   rule: EntryExitRule = new EntryExitRule();
 
   ngOnInit() {
+    this.checkDevice();
     this.dataSource = new EntryExitRulesGridStore(this.entryExitRulesService, this.settingsService);
     this.loadPage();
+    
   }
 
 
@@ -78,22 +82,26 @@ export class ManagerulesComponent implements OnInit {
         title: title,
         btnText: btnText,
         isDemoMode:this.isDemoMode,
-        formData:''
+        formData:{}
       }
     });
     
     dialogRef.afterClosed().subscribe((res) => {
-      this.settingsService.saveEntryExitRule(res).subscribe(data => {
-        this.toastr.success('Manual rule added', 'Success');
-        this.loadPage();
-      }, err => {
-        this.toastr.error('Failed to add entry exit rule', 'Error', 
-        { 
-          tapToDismiss:false,
-          closeButton:true,
-          disableTimeOut: true
+      
+      if (res && res !== undefined) {
+        debugger;
+        this.settingsService.saveEntryExitRule(res).subscribe(data => {
+          this.toastr.success('Manual rule added', 'Success');
+          this.loadPage();
+        }, err => {
+          this.toastr.error('Failed to add entry exit rule', 'Error', 
+          { 
+            tapToDismiss:false,
+            closeButton:true,
+            disableTimeOut: true
+          });
         });
-      });
+      }
     });
   
   }
@@ -110,22 +118,22 @@ export class ManagerulesComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((res) => {
-
       this.rule.id = rowModel.id;
       this.rule.type = rowModel.type;
       this.rule.description = rowModel.description;
       this.rule.source = rowModel.source;
-
-      this.settingsService.updateEntryExitRule(this.rule).subscribe(data => {
-        this.toastr.success('Manual rule updated', 'Success');
-        this.loadPage();
-      }, err => {
-        this.toastr.error('Failed to update entry exit rule', 'Error', { 
-          tapToDismiss:false,
-          closeButton:true,
-          disableTimeOut: true
+      if (res && res !== undefined) {
+        this.settingsService.updateEntryExitRule(this.rule).subscribe(data => {
+          this.toastr.success('Manual rule updated', 'Success');
+          this.loadPage();
+        }, err => {
+          this.toastr.error('Failed to update entry exit rule', 'Error', { 
+            tapToDismiss:false,
+            closeButton:true,
+            disableTimeOut: true
+          });
         });
-      });
+      }
     });
   }
 
@@ -152,6 +160,19 @@ export class ManagerulesComponent implements OnInit {
     let iframe = document.querySelector('iframe');
     iframe.src='';
     iframe.setAttribute("src",'https://www.youtube.com/embed/z_MMEzxPbGw');
+  }
+
+  checkDevice() {
+    setTimeout(() => {
+      const agent = window.navigator.userAgent.toLowerCase();
+      let regexp = /android|iphone|kindle|ipad/i;
+      let deviceType = regexp.test(agent);
+      if (deviceType) {
+        this.isMobileDevice = true;
+      } else {
+        this.isMobileDevice = false;
+      }
+    }, 100)
   }
 
 }

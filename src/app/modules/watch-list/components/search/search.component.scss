@@ -63,7 +63,7 @@
 }
 
 .stocks-search .stocks-search-results .search-result-item .company {
-    font-size: .725rem
+    font-size: 14px;
 }
 
 .stocks-search .stocks-search-results .search-result-item .exchange-tag {
@@ -149,4 +149,14 @@
     font-size: 18px !important;
     height: 18px;
     width: 18px;
+}
+@media (max-width: 767px) {
+    .button-grey {
+        height: 24px;
+    }
+
+    .button-green {
+        height: 24px;
+        color: var(--color-text-8);
+    }
 }

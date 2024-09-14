@@ -10,7 +10,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 export class ManageRulePopupComponent implements OnInit {
   title:string;
   btnText:string;
-  rowData:string;
+  rowData:any;
   entryexitruleform;
   isDemoMode:boolean;
   public event: EventEmitter<any> = new EventEmitter();
@@ -36,8 +36,10 @@ export class ManageRulePopupComponent implements OnInit {
 
   closeModal(form) {
     this.dialogRef.close();
-    this.event.emit({ data: form.value });
-    this.dialogRef.close(form.value);
+    if (form && form !== undefined) {
+      this.event.emit({ data: form.value });
+      this.dialogRef.close(form.value);
+    }
   }
 
 

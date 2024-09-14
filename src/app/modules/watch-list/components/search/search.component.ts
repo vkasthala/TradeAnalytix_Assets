@@ -176,7 +176,8 @@ export class SearchComponent implements OnInit {
       wlItems.forEach((wlItem: { tradingSymbolShort: string | undefined; }) => {
         if (searchItem.symbolShort === wlItem.tradingSymbolShort) {
           searchItem.addedToWatchList = true;
-          this.currentWatchListSize = this.watchListData[this.pageIndex].items.length;
+          this.currentWatchListSize = this.watchListData[this.pageIndex - 1].items.length;
+          // this.currentWatchListSize = this.watchListData[this.pageIndex].items.length;
         }
       })
     })

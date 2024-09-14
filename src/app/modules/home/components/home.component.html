@@ -31,10 +31,10 @@
                     <a (click)="openBrokerageModal()" *ngIf="!isBrokerageActive"><span class="btn-broker-login">Connect Broker</span></a>
                 </div> 
                 <div class="right-nav">
-                    <!-- <span class="btn btn-start mr-3" (click)="startTour()">
-                        Start Tour <mat-icon>arrow_forward</mat-icon>
-                    </span> -->
-                    <div class="user-nav perspective px-0" (clickOutside)="closeUserDropDownUI(true)">
+                    <span *ngIf="isMobileDevice" class="d-flex align-items-center pr-2" (click)="logout()">
+                        <mat-icon class="material-icons">logout</mat-icon> 
+                    </span>
+                    <div class="user-nav perspective px-0" *ngIf="!isMobileDevice" (clickOutside)="closeUserDropDownUI(true)">
                         <div class="dropdown-label cursor" (click)="showUserDropDown()">
                             <div id="avatar-44">
                                 <div class="avatar">
@@ -119,13 +119,13 @@
             </span>
             <span class="nav-text">Orders</span>
         </a>
-        <a class="nav-link" [class.router-link-active]="['/holdings/']" [routerLink]="['/holdings/']" routerLinkActive="router-link-active">
+        <!-- <a class="nav-link" [class.router-link-active]="['/holdings/']" [routerLink]="['/holdings/']" routerLinkActive="router-link-active">
             <span class="icon">
                 <img *ngIf="currentRoute !== 'holdings'" src="../../../../assets/img/icon-holdings.png" />
                 <img *ngIf="currentRoute === 'holdings'" src="../../../../assets/img/icon-holdings_r.png" />
             </span>
             <span class="nav-text">Holdings</span>
-        </a>
+        </a> -->
         <a class="nav-link" [class.router-link-active]="['/positions/']" [routerLink]="['/positions/']" routerLinkActive="router-link-active">
             <span class="icon">
                 <img *ngIf="currentRoute !== 'positions'" src="../../../../assets/img/icon-positions.png" />
@@ -171,4 +171,4 @@
     </div>
 </div>
 
-<app-chatbot></app-chatbot>
+<app-chatbot *ngIf="!isMobileDevice"></app-chatbot>

@@ -63,14 +63,13 @@
         <!-- card:: start -->
         <div class="card rule-row" *ngFor="let rule of portfolioLevelRules">
             <div class="top d-flex">
-                <div class="flex4">
-                    <label class="text-label order-status-label m-0" [ngClass]="rule.val ? 'green' : 'red'">Status</label>
+                <div class="flex10">
+                    <span class="dim">{{rule.uiLabel}}</span>
+                </div>
+                <div class="flex2 text-right">
                     <span class="pt-2">
                         <mat-icon class="mat-icon-sm mat-icon material-icons pl-2" [ngClass]="rule.val ? 'text-success' : 'text-danger'">{{rule.val ? 'check' : 'close'}}</mat-icon> 
                     </span>
-                </div>
-                <div class="flex8 text-right">
-                    <span class="dim">{{rule.uiLabel}}</span>
                 </div>
             </div>
             <div class="middle d-flex">

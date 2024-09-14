@@ -201,8 +201,8 @@ table.mat-table {
 }
 
 .action-cell {
-    width: 45%;
-    flex: 0 0 45%;
+    width: 50%;
+    flex: 0 0 50%;
 }
 
 .form-control {
@@ -261,4 +261,21 @@ table.mat-table {
 .trade-table {
     min-height: 100vh;
     box-shadow: 0px 4px 16px rgba(157, 157, 157, 0.4) !important;
+}
+
+@media (max-width: 767px) {
+    .date-cell {
+        width: 28%;
+        flex: 0 0 28%;
+    }
+    .description-cell {
+        width: 60%;
+        flex: 0 0 60%;
+        padding-right: 15px;
+    }
+    
+    .action-cell {
+        width: 12%;
+        flex: 0 0 12%;
+    }
 }

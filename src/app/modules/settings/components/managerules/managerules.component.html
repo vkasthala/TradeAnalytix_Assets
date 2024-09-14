@@ -39,11 +39,7 @@
                     <mat-cell class="date-cell" *matCellDef="let element"> {{element.createDate | date:'dd-MMM-yyyy'}} </mat-cell>
                 </ng-container>
 
-                <!-- Name Column -->
-                <!-- <ng-container matColumnDef="type">
-                    <mat-header-cell class="type-cell" *matHeaderCellDef> Type</mat-header-cell>
-                    <mat-cell class="type-cell" *matCellDef="let element" class="type-cell"> {{element.type === '2' ? 'Exit' : 'Entry'}} </mat-cell>
-                </ng-container> -->
+               
 
                 <!-- Weight Column -->
                 <ng-container matColumnDef="description">
@@ -51,12 +47,7 @@
                     <mat-cell *matCellDef="let element" class="description-cell"> {{element.description}} </mat-cell>
                 </ng-container>
 
-                <!-- Symbol Column -->
-                <!-- <ng-container matColumnDef="source">
-                    <mat-header-cell class="source-cell" *matHeaderCellDef> Source </mat-header-cell>
-                    <mat-cell class="source-cell" *matCellDef="let element"> {{element.source}} </mat-cell>
-                </ng-container> -->
-
+                
                 <!-- Action Column -->
                 <ng-container matColumnDef="action">
                     <mat-header-cell class="action-cell" *matHeaderCellDef> Action</mat-header-cell>
@@ -74,5 +65,5 @@
             <!-- <mat-paginator *ngIf="dataSource.totalCount > 0" [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true" [length]="dataSource.totalCount"></mat-paginator> -->
         </div>
     </div>
-</div>
 
+</div>
