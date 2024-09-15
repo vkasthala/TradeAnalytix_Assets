@@ -264,6 +264,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
       let deviceType = regexp.test(agent);
       if (deviceType) {
         this.isMobileDevice = true;
+        if (this.router.url === "/dashboard") {
+          this.router.navigate(['/market-watch'])
+        }
       } else {
         this.isMobileDevice = false;
         if (this.router.url === "/market-watch") {

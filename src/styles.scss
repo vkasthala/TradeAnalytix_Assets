@@ -2592,10 +2592,6 @@ input {
 }
 
 @media (min-width: 320px) {
-    .container {
-        width:80%
-    }
-
     .column,.columns {
         padding-left: 4%
     }
@@ -3211,7 +3207,7 @@ button.button-outline {
     background: #fff;
     align-items: center;
     position: fixed;
-    bottom:0;
+    bottom:50%;
     left:0;
     width:100%;
     z-index: 99;
@@ -3531,7 +3527,15 @@ button.button-outline {
 }
 
 @media (max-width: 767px) {
-
+    .owl-carousel .owl-stage {
+        width: 100% !important;
+    }
+    .owl-carousel .owl-item {
+        width: 100% !important;
+    }
+    .blog-section {
+        padding: 40px 0px !important;
+    }
 }
 
 .gtt-list .empty-state img {

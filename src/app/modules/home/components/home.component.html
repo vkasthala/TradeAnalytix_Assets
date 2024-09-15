@@ -99,26 +99,20 @@
     </div>
 
     <div class="app-nav mobile mobile-nav" *ngIf="isMobileDevice">
-        <a class="nav-link" [class.router-link-active]="currentRoute === 'market-watch'" [routerLink]="['/market-watch/']" routerLinkActive="router-link-active" >
+        <a class="nav-link" [class.router-link-active]="currentRoute === 'market-watch'" [routerLink]="['/market-watch']" routerLinkActive="router-link-active" >
             <span class="icon">
-                <img *ngIf="currentRoute !== 'market-watch'" src="../../../../assets/img/icon-watchlist.png" >
-                <img *ngIf="currentRoute === 'market-watch'" src="../../../../assets/img/icon-watchlist_r.png" alt="Trade-app-logo">
+                <mat-icon class="material-icons">list</mat-icon>
             </span>
             <span class="nav-text">Watchlist</span>
         </a>
 
         <a class="nav-link" (click)="openBrokerageModal()">
-            <span class="icon">
-                <img src="../../../../assets/img/icon-watchlist.png" >
-            </span>
+            <span class="icon"><mat-icon class="material-icons">link</mat-icon></span>
             <span class="nav-text">Connect</span>
         </a>
         
-        <a class="nav-link" [class.router-link-active]="['/orders/']" [routerLink]="['/orders/']" routerLinkActive="router-link-active">
-            <span class="icon">
-                <img *ngIf="currentRoute !== 'orders'" src="../../../../assets/img/icon-order.png" />
-                <img *ngIf="currentRoute === 'orders'" src="../../../../assets/img/icon-order_r.png" />
-            </span>
+        <a class="nav-link" [class.router-link-active]="currentRoute === 'orders'" [routerLink]="['/orders/']" routerLinkActive="router-link-active">
+            <span class="icon"><mat-icon class="material-icons">reorder</mat-icon></span>
             <span class="nav-text">Orders</span>
         </a>
         <!-- <a class="nav-link" [class.router-link-active]="['/holdings/']" [routerLink]="['/holdings/']" routerLinkActive="router-link-active">
@@ -128,16 +122,12 @@
             </span>
             <span class="nav-text">Holdings</span>
         </a> -->
-        <a class="nav-link" [class.router-link-active]="['/positions/']" [routerLink]="['/positions/']" routerLinkActive="router-link-active">
-            <span class="icon">
-                <img *ngIf="currentRoute !== 'positions'" src="../../../../assets/img/icon-positions.png" />
-                <img *ngIf="currentRoute === 'positions'" src="../../../../assets/img/icon-positions_r.png" />
-            </span>
+        <a class="nav-link" [class.router-link-active]="currentRoute === 'positions'" [routerLink]="['/positions/']" routerLinkActive="router-link-active">
+            <span class="icon"><mat-icon class="material-icons">inventory</mat-icon></span>
             <span class="nav-text">Positions</span>
         </a>
-        <a class="nav-link" [class.router-link-active]="['/rules/']" [routerLink]="['/rules/']" routerLinkActive="router-link-active">
-            <img *ngIf="currentRoute !== 'rules'" src="../../../../assets/img/icon-positions.png" />
-            <img *ngIf="currentRoute === 'rules'" src="../../../../assets/img/icon-positions_r.png" />
+        <a class="nav-link" [class.router-link-active]="currentRoute === 'rules'" [routerLink]="['/rules/']" routerLinkActive="router-link-active">
+            <span class="icon"><mat-icon class="material-icons">rule</mat-icon></span>
             <span class="nav-text">Rules</span>
         </a>
     </div>
