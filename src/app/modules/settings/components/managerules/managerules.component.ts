@@ -89,8 +89,7 @@ export class ManagerulesComponent implements OnInit {
     dialogRef.afterClosed().subscribe((res) => {
       
       if (res && res !== undefined) {
-        debugger;
-        this.settingsService.saveEntryExitRule(res).subscribe(data => {
+         this.settingsService.saveEntryExitRule(res).subscribe(data => {
           this.toastr.success('Manual rule added', 'Success');
           this.loadPage();
         }, err => {
