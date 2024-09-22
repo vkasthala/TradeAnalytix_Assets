@@ -30,7 +30,7 @@
 
                     <a (click)="openBrokerageModal()" *ngIf="!isBrokerageActive"><span class="btn-broker-login">Connect Broker</span></a>
 
-                    <a (click)="openBrokerageModal()" *ngIf="isBrokerageActive"><span class="btn-broker-exit">Exit Session</span></a>
+                    <a (click)="logoutFromBrokerage()" *ngIf="isBrokerageActive"><span class="btn-broker-exit">Exit Session</span></a>
                 </div> 
                 <div class="right-nav">
                     <span *ngIf="isMobileDevice" class="d-flex align-items-center pr-2" (click)="logout()">

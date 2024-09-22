@@ -53,4 +53,8 @@ export class UserService {
     // // };
     return this.httpService.get<any>(this.apiUrl+ '/v0/brokerage/login/fyers?env='+environment.env);
   }
+
+  logoutFromBrokerage(brokerage: string): Observable<HttpResponse<string>>{
+    return this.httpService.post<any, any>(this.apiUrl+ '/v0/brokerage/logout/'+brokerage, {});
+  }
 }

@@ -16,8 +16,6 @@ export class ApiInterceptor implements HttpInterceptor {
                     console.log('error:', err)
                     if (err.status === 401) {
                         this.router.navigate(['landing']);
-                    } if (err.status === 400) {
-                        sessionStorage.setItem("isBrokerageActive","false");
                     }
                     throw err;
                 }
