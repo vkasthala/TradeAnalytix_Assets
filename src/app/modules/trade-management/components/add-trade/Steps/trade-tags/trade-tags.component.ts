@@ -108,7 +108,7 @@ export class TradeTagsComponent implements OnInit {
             this.tags.filter((x) => {
               if (tag.tagId === x.tagId) {
                 isTagExist = true;
-                this.toastr.error('This tag already added', 'Error',
+                this.toastr.error('This tag already exists', 'Error',
                   {
                     tapToDismiss: false,
                     closeButton: true,
@@ -128,7 +128,7 @@ export class TradeTagsComponent implements OnInit {
           console.log('item', x);
           let val = x !== undefined ? x.toLowerCase() : '';
           if (val === res.toLowerCase()) {
-            this.toastr.error('This tag already exist', 'Error',
+            this.toastr.error('This tag already exists', 'Error',
               {
                 tapToDismiss: false,
                 closeButton: true,

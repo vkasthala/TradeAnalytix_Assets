@@ -45,7 +45,7 @@ export class OpenOrdersComponent implements OnInit {
     this._orderService.cancelOrder(orderId).subscribe(
       response => {
         console.log(response);
-        this.toastr.success('Success', 'Order Cancelled successfully', {timeOut: 3000});
+        this.toastr.success('Success', 'Order Canceled Successfully', {timeOut: 3000});
         this._sharedService.ordersReloadEvent.emit(true);
         this._sharedService.loaderEvent.emit(false);
         this._orderService.deleteOrderRules(orderId).subscribe(response=>{
@@ -57,7 +57,7 @@ export class OpenOrdersComponent implements OnInit {
         });
       }, error => {
         console.log(error);
-        this.toastr.error('Error', 'Error whike cancelling orders', {timeOut: 3000});
+        this.toastr.error('Error', 'Error While Canceling Order', {timeOut: 3000});
         this._sharedService.loaderEvent.emit(false);
       }
     );

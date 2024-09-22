@@ -127,7 +127,7 @@ export class CodedRulesComponent implements OnInit {
 
     if (!element.id || element.id === 0) {
       this.codedRuleService.createCodedRule(element).subscribe(data => {
-        this.toastr.success('Automatic rule enabled', 'Success');
+        this.toastr.success('Trading Rule Enabled', 'Success');
         this.loadCodedRulesData();
         setTimeout(() => {
           this.Loader = false;
@@ -140,7 +140,7 @@ export class CodedRulesComponent implements OnInit {
       });
     } else {
       this.codedRuleService.updateCodedRule(element).subscribe(data => {
-        this.toastr.success('Automatic rule updated', 'Success');
+        this.toastr.success('Trading Rule Updated Successfully', 'Success');
         this.loadCodedRulesData();
         this.Loader = false;setTimeout(() => {
           this.Loader = false;
@@ -156,7 +156,7 @@ export class CodedRulesComponent implements OnInit {
   deleteCodedRule(rule: UserCodedRule) {
     this.Loader = true;
     this.codedRuleService.deleteCodedRule(rule.id).subscribe(data => {
-      this.toastr.success('Automatic rule disabled.', 'Success');
+      this.toastr.success('Trading Rule Disabled.', 'Success');
       this.loadCodedRulesData();
       setTimeout(() => {
         this.Loader = false;
@@ -196,7 +196,7 @@ export class CodedRulesComponent implements OnInit {
     
     dialogRef.afterClosed().subscribe((res) => {
       this.settingsService.saveEntryExitRule(res).subscribe(data => {
-        this.toastr.success('Manual rule added', 'Success');
+        this.toastr.success('Trading Rule Added Successfully', 'Success');
         // this.loadPage();
       }, err => {
         this.toastr.error('Failed to add entry exit rule', 'Error', 
@@ -229,7 +229,7 @@ export class CodedRulesComponent implements OnInit {
       this.rule.source = rowModel.source;
 
       this.settingsService.updateEntryExitRule(this.rule).subscribe(data => {
-        this.toastr.success('Manual rule updated', 'Success');
+        this.toastr.success('Trading Rule Updated Successfully', 'Success');
         // this.loadPage();
       }, err => {
         this.toastr.error('Failed to update entry exit rule', 'Error', { 

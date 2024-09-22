@@ -87,7 +87,7 @@ export class InvestmentGoalsComponent implements OnInit {
     dialogRef.afterClosed().subscribe(dialogResult => {
       if (dialogResult == true) {
         this.goalsService.deleteInvestmentGoals(goal).subscribe((data: []) => {
-          this.toastr.success('Goal has been deleted', 'Success');
+          this.toastr.success('Goal Deleted Successfully', 'Success');
           this.GoalsList = data;
         });
       }
@@ -133,7 +133,7 @@ export class InvestmentGoalsComponent implements OnInit {
   saveProfile(goal: InvestmentGoals) {
     this.goalsService.saveInvestmentGoals(goal).subscribe((data: []) => {
       this.GoalsList = data;
-      this.toastr.success('Goals saved successfully', 'Success');
+      this.toastr.success('Goals Saved Successfully', 'Success');
       this.handleClear();
     }, (error) => {
       console.log('test: ', error);

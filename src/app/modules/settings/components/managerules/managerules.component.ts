@@ -90,7 +90,7 @@ export class ManagerulesComponent implements OnInit {
       
       if (res && res !== undefined) {
          this.settingsService.saveEntryExitRule(res).subscribe(data => {
-          this.toastr.success('Manual rule added', 'Success');
+          this.toastr.success('Trading Rule Added Successfully', 'Success');
           this.loadPage();
         }, err => {
           this.toastr.error('Failed to add entry exit rule', 'Error', 
@@ -123,7 +123,7 @@ export class ManagerulesComponent implements OnInit {
       this.rule.source = rowModel.source;
       if (res && res !== undefined) {
         this.settingsService.updateEntryExitRule(this.rule).subscribe(data => {
-          this.toastr.success('Manual rule updated', 'Success');
+          this.toastr.success('Trading Rule Updated Successfully', 'Success');
           this.loadPage();
         }, err => {
           this.toastr.error('Failed to update entry exit rule', 'Error', { 
@@ -144,10 +144,10 @@ export class ManagerulesComponent implements OnInit {
     this.rule.source = rowModel.source;
 
     this.settingsService.deleteEntryExitRule(this.rule).subscribe(data => {
-      this.toastr.success('Manual Rule deleted successfully', 'Success');
+      this.toastr.success('Manual Rule Deleted Successfully', 'Success');
       this.loadPage();
     }, err => {
-      this.toastr.error('Failed to delete Manual Rule', 'Error', { 
+      this.toastr.error('Unable to Delete Trading Rule', 'Error', { 
         tapToDismiss:false,
         closeButton:true,
         disableTimeOut: true

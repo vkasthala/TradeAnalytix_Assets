@@ -302,7 +302,7 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
       this.showCreatePlan = false;
       this.showIntro = false;
     }, () => {
-      this.toastr.error("Failed to create trade plan for the day", 'Error')
+      this.toastr.error("Unable to create trading plan", 'Error')
     });
   }
 
@@ -312,7 +312,7 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
     this.tradePlan.statusId = 2;
     console.log('trade plan to be updated: ', this.tradePlan);
     this.tradePlanService.updateTradePlan(this.tradePlan).subscribe(result => {
-      this.toastr.success('Trade plan updated', 'Success');
+      this.toastr.success('Trading Plan Updated Successfully', 'Success');
       //this.router.navigate(['/trade-plans']);
     });
   }
@@ -337,9 +337,9 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
         this.tradePlanService.deleteTradePlan(plan.id).subscribe(() => {
           console.log('Trade strategy deleted..', plan.id);
           this.loadPlanEntries(null);
-          this.toastr.success("Successfully deleted trade plan")
+          this.toastr.success("Trading Plan Deleted Successfully")
         }, err => {
-          this.toastr.error("Failed to delete trade plan", 'Error')
+          this.toastr.error("Unable to delete trading plan", 'Error')
         });
       }
     });
@@ -456,10 +456,10 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
 
     dialogRef.afterClosed().subscribe((res) => {
       this.settingsService.saveEntryExitRule(res).subscribe(data => {
-        this.toastr.success('Manual rule added', 'Success');
+        this.toastr.success('Trading Rule Added Successfully', 'Success');
         // this.loadPage();
       }, err => {
-        this.toastr.error('Failed to add entry exit rule', 'Error');
+        this.toastr.error('Unable to add entry exit rule', 'Error');
       });
     });
 

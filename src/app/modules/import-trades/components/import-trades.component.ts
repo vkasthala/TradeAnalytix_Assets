@@ -36,7 +36,7 @@ export class ImportTradesComponent implements OnInit {
           this.toastr.success('Your trades have been sucessfully imported. Uploaded Records: ____; Failed Records: ____', 'Success');
         },
         err => {
-          this.toastr.error('Failed to import trades', 'Error', 
+          this.toastr.error('Failed to Import Trades', 'Error', 
           { 
             tapToDismiss:false,
             closeButton:true,

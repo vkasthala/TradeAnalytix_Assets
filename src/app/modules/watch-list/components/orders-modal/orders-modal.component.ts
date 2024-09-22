@@ -108,7 +108,7 @@ export class OrdersModalComponent implements OnInit {
     placeOrderRequest.stopLossTriggerPrice = 0;
       this._omsService.placeOrder(placeOrderRequest).subscribe(response=>{
         if(response){
-          this.toastr.success('Order placed successfully', 'Success', {timeOut: 3000});
+          this.toastr.success('Order Placed Successfully', 'Success', {timeOut: 3000});
           this._sharedService.ordersReloadEvent.emit(true);
           this._sharedService.loaderEvent.emit(false);
           this.closePopup();
@@ -199,7 +199,7 @@ export class OrdersModalComponent implements OnInit {
     this._sharedService.ordersReloadEvent.emit(true);
     this._omsService.modifyOrder(this.margins.orderId, placeOrderRequest).subscribe(response=>{
       if(response){
-        this.toastr.success('Order Updated successfully', 'Success', {timeOut: 3000});
+        this.toastr.success('Order Updated Successfully', 'Success', {timeOut: 3000});
         this._sharedService.ordersReloadEvent.emit(true);
         this.closePopup();
         this._sharedService.loaderEvent.emit(false);

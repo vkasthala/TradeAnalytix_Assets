@@ -214,7 +214,7 @@ export class WatchListComponent implements OnInit {
         }
         this.showMobileContextMenu = false;
         this.loader = false;
-        this.toastr.success('Order deleted successfully', 'Success', 
+        this.toastr.success('Symbol Deleted Successfully', 'Success', 
         {
           timeOut: 3000
         });

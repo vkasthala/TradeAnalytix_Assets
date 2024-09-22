@@ -561,7 +561,7 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
             this.tags.filter((x) => {
               if (tag.tagId === x.tagId) {
                 isTagExist = true;
-                this.toastr.error('This tag already added', 'Error',
+                this.toastr.error('This tag already exists', 'Error',
                   {
                     tapToDismiss: false,
                     closeButton: true,
@@ -581,7 +581,7 @@ export class TradeThesisComponent implements OnInit, AfterViewInit {
           console.log('item', x);
           let val = x !== undefined ? x.toLowerCase() : '';
           if (val === res.toLowerCase()) {
-            this.toastr.error('This tag already exist', 'Error',
+            this.toastr.error('This tag already exists', 'Error',
               {
                 tapToDismiss: false,
                 closeButton: true,

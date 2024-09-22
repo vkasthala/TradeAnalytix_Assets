@@ -230,7 +230,7 @@ export class LandingComponent implements OnInit {
     }
     
     this._contactService.contactData(this.contactForm).subscribe(data => {
-      this.toastr.success('Your details sumitted scuccessfully', 'Success');
+      this.toastr.success('Your details submitted successfully', 'Success');
       this.contactUsModal = !this.contactUsModal;
     }, err => {
       this.toastr.error(err);
