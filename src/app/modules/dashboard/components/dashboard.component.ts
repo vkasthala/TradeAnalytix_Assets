@@ -249,6 +249,9 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       } else{
         sessionStorage.setItem("isBrokerageActive","false");
       }
+    }, err => {
+      sessionStorage.setItem("isBrokerageActive","false");
+      console.log("Error while checking if brokerage is active "+JSON.stringify(err));
     });
   }
 

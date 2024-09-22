@@ -115,6 +115,28 @@ export class HomeComponent implements OnInit, AfterViewInit {
     });
   }
 
+  logoutFromBrokerage() {
+    const dialogRef = this._dialog.open(ConfirmDialogComponent, {
+      width: 'auto',
+      height: 'auto',
+      data: { 'message': 'Are you sure you want to log out from FYERS?', 'title':'Exit FYERS' }
+    });
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      if (dialogResult == true) {
+        this.userService.logoutFromBrokerage('FYERS').subscribe(result => {
+          if(result){
+          sessionStorage.removeItem('isBrokerageActive');
+          this.isBrokerageActive = false;
+          this.router.navigate(['/landing']);
+          }
+        }, err => {
+          console.log("Error while exiting session "+JSON.stringify(err))
+          this.toastr.error('Failed to exit session', 'Error');
+        });
+      }
+    });
+  }
+
   @HostListener('document:click', ['$event'])
   @HostListener('document:touchstart', ['$event'])
   toggle(event) {
