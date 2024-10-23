@@ -65,7 +65,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       this.hamburgerMenu = false
     });
 
-    _sharedService.loaderEvent.subscribe(
+    _sharedService.sessionActiveEvent.subscribe(
       (res) => {
         this.isBrokerageActive = res;
       }
