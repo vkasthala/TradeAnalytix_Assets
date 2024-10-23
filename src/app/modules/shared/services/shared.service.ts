@@ -22,4 +22,5 @@ export class SharedService {
 
   pagiNationEvent: EventEmitter<any> = new EventEmitter();
   loaderEvent: EventEmitter<any> = new EventEmitter();
+  sessionActiveEvent: EventEmitter<any> = new EventEmitter();
 }

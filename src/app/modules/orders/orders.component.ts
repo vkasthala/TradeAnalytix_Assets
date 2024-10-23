@@ -5,6 +5,8 @@ import { OrderPurchasehistory, OrderPurchasehistoryResponse } from '../shared/mo
 import { OmsService } from '../shared/services/oms.service';
 import { OrdersWebsocketService } from '../shared/services/websocket/orders-websocket.service';
 import { UserService } from '../shared/services/user.service';
+import { NavigationStart, Router } from '@angular/router';
+import { PriceUpdateWebsocketService } from '../shared/services/websocket/price-update-websocket.service';
 
 @Component({
   selector: 'app-orders',
@@ -22,7 +24,9 @@ export class OrdersComponent implements OnInit {
     private _sharedService: SharedService,
     private toastr: ToastrService,
     private ordersWebsocketService: OrdersWebsocketService,
-    private userService: UserService
+    private userService: UserService,
+    private instrumentPriceUpdateService: PriceUpdateWebsocketService,
+    private router: Router
   ) {
 
     _sharedService.ordersReloadEvent.subscribe(
@@ -34,6 +38,12 @@ export class OrdersComponent implements OnInit {
             setTimeout(() => {
             }, 4000)
           }
+        }
+      });
+
+      this.router.events.subscribe(event => {
+        if (event instanceof NavigationStart) {
+          this.instrumentPriceUpdateService.disconnectUser();
         }
       });
 
@@ -87,13 +97,11 @@ export class OrdersComponent implements OnInit {
       }
   }
 
-  updateChangeProps(openOrder: OrderPurchasehistory, data: any) {
-    if (data && data.body) {
-      let jsonResult = JSON.parse(data.body);
-      if (jsonResult.price) {
-        openOrder.ltp = jsonResult.price;
-      }
-    }
+  updateChangeProps(openOrders: OrderPurchasehistoryResponse, data: any) {
+    openOrders.data.forEach(openOrder => {
+      if(openOrder.instrument.actualSymbol === data.symbol){
+        openOrder.ltp = data.ltp;
+      }});
   }
 
   loadOrders(){
@@ -102,12 +110,33 @@ export class OrdersComponent implements OnInit {
         console.log(response);
         this.loadOpenOrders(response);
         this.loadExecutedOrders(response);
-        // this.subscribeSymbolsPriceUpdate();
+        this.subscribeSymbolsPriceUpdate();
       }
     }, error => {
       this.toastr.error(error.error.errorMessage, 'Error', {timeOut: 3000});
     }
     );
+  }
+
+  subscribeSymbolsPriceUpdate() {
+    if (this.openOrders.data && this.openOrders.data.length > 0) {
+      this.instrumentPriceUpdateService.joinRoom(this.instrumentPriceUpdateService.userId);
+      this.openOrders.data.forEach(openOrder => {
+          let callback = (data: any) => {
+            this.updateChangeProps(this.openOrders, data);
+          };
+          this.instrumentPriceUpdateService.initPriceUpdateSubscription(openOrder.instrument.actualSymbol, [callback]);
+        });
+    }
+    if (this.executedOrders.data && this.executedOrders.data.length > 0) {
+      this.instrumentPriceUpdateService.joinRoom(this.instrumentPriceUpdateService.userId);
+      this.executedOrders.data.forEach(executedOrder => {
+          let callback = (data: any) => {
+            this.updateChangeProps(this.executedOrders, data);
+          };
+          this.instrumentPriceUpdateService.initPriceUpdateSubscription(executedOrder.instrument.actualSymbol, [callback]);
+        });
+    }
   }
 
   loadOpenOrders(response){

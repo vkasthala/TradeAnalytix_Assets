@@ -12,6 +12,8 @@ import { Margins } from 'src/app/modules/shared/models/margins.model';
 import { OmsService } from 'src/app/modules/shared/services/oms.service';
 import { InstrumentPriceUpdateService } from 'src/app/modules/shared/services/instrument-price-update.service';
 import { PriceUpdateModel } from 'src/app/modules/shared/models/price-update-model';
+import { PriceUpdateWebsocketService } from 'src/app/modules/shared/services/websocket/price-update-websocket.service';
+import { NavigationStart, Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
@@ -44,9 +46,10 @@ export class WatchListComponent implements OnInit {
     private renderer: Renderer2,
     private _sharedService: SharedService,
     private _watchlistService: WatchlistService,
-    private instrumentPriceUpdateService: InstrumentPriceUpdateService,
+    private instrumentPriceUpdateService: PriceUpdateWebsocketService,
     private _omsService: OmsService,
     private toastr: ToastrService,
+    private router: Router
   ) {
     _sharedService.addItemEvent.subscribe(
       (res) => {
@@ -80,6 +83,12 @@ export class WatchListComponent implements OnInit {
         this.loader = res;
       }
     );
+
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationStart) {
+        this.instrumentPriceUpdateService.disconnectUser();
+      }
+    });
   }
 
 
@@ -110,17 +119,8 @@ export class WatchListComponent implements OnInit {
     );
   }
 
-  registerinstrumentPriceUpdateListner() {
-    // TODO : Revert this once the fyers websocket is fixed
-    // this._watchlistService.registerinstrumentPriceUpdateListner().subscribe(
-    //   response => {
-    //     if (response) {
-    //       console.log(response)
-    //     }
-    //   }, error => {
-    //     console.log(error);
-    //   }
-    // );
+  unsubscribeSymbol(item: Watchlistsymbol) {
+    this.instrumentPriceUpdateService.unSubscribePriceUpdate(item.trading_symbol);
     console.log("Supposed to register the price update listener");
   }
 
@@ -129,7 +129,7 @@ export class WatchListComponent implements OnInit {
       let watchList = this.watchListData[pageIndex - 1];
       if (watchList.items) {
         watchList.items.forEach(wlItem => {
-          this.instrumentPriceUpdateService.unSubscribePriceUpdate(wlItem.symbol_id);
+          this.instrumentPriceUpdateService.unSubscribePriceUpdate(wlItem.trading_symbol);
         });
       }
     }
@@ -139,30 +139,26 @@ export class WatchListComponent implements OnInit {
     if (this.watchListData && this.watchListData.length >= pageIndex) {
       let watchList = this.watchListData[pageIndex - 1];
       if (watchList.items) {
+        this.instrumentPriceUpdateService.joinRoom(this.instrumentPriceUpdateService.userId);
         watchList.items.forEach(wlItem => {
           console.log(wlItem)
           let callback = (data: any) => {
-            this.updatePriceModel(wlItem, data);
+            this.updatePriceModel(watchList, data);
           };
-          this.instrumentPriceUpdateService.subscribePriceUpdate(wlItem.id, callback);
+          this.instrumentPriceUpdateService.initPriceUpdateSubscription(wlItem.trading_symbol, [callback]);
         });
       }
     }
   }
 
-  updatePriceModel(symbol: Watchlistsymbol, data: any) {
-    console.log('data', data);
-    if (!symbol.priceModel && data && data.body) {
-      symbol.priceModel = new PriceUpdateModel();
-    }
-    if (data && data.body) {
-      let jsonResult = JSON.parse(data.body);
-      if (jsonResult.ltp) {
-        symbol.priceModel.price = jsonResult.price;
-        symbol.priceModel.ltp = jsonResult.ltp;
-        symbol.priceModel.updateChangeProps();
+  updatePriceModel(watchLists: Watchlist, data: any) {
+    watchLists.items.forEach(wlItem => {
+      if(wlItem.trading_symbol === data.symbol){
+        wlItem.ltp = data.ltp;
+        wlItem.price = data.ltp;
+        wlItem.changePercent = data.chp;
       }
-    }
+    })
   }
 
   showActions(event: any, index: any) {
@@ -210,7 +206,7 @@ export class WatchListComponent implements OnInit {
       response => {
         if (response) {
           this.removeItemFromWatchList(item);
-          this.registerinstrumentPriceUpdateListner();
+          this.unsubscribeSymbol(item);
         }
         this.showMobileContextMenu = false;
         this.loader = false;
@@ -261,7 +257,7 @@ export class WatchListComponent implements OnInit {
       }
     })
     this.loadWatchList();
-    this.registerinstrumentPriceUpdateListner();
+    // this.registerinstrumentPriceUpdateListner();
   }
 
   createMargin($event: any) {

@@ -19,7 +19,8 @@ export class HttpService {
     const options = {
       headers: this.createHttpHeaders(headersMap),
       params: this.createHttpParms(requestParamsMap),
-      responseType: 'arraybuffer' as 'text'
+      responseType: 'arraybuffer' as 'text',
+      withCredentials: true
     };
     return this.http.get(url, options);
   }
@@ -27,7 +28,8 @@ export class HttpService {
   public getWithParams<T>(url: string, requestParamsMap: Map<string, string>, headersMap: Map<string, string>): Observable<T> {
     return this.http.get<T>(url, {
       headers: this.createHttpHeaders(headersMap),
-      params: this.createHttpParms(requestParamsMap)
+      params: this.createHttpParms(requestParamsMap),
+      withCredentials: true
     });
   }
 
@@ -45,19 +47,22 @@ export class HttpService {
 
   public postWithHeaders<S, T>(url: string, body: S, headersMap: Map<string, string>): Observable<T> {
     return this.http.post<T>(url, body, {
-      headers: this.createHttpHeaders(headersMap)
+      headers: this.createHttpHeaders(headersMap),
+      withCredentials: true
     });
   }
 
   public deleteWithHeaders<S, T>(url: string, headersMap: Map<string, string>): Observable<T> {
     return this.http.delete<T>(url, {
-      headers: this.createHttpHeaders(headersMap)
+      headers: this.createHttpHeaders(headersMap),
+      withCredentials: true
     });
   }
 
   public putWithHeaders<S, T>(url: string, body: S, headersMap: Map<string, string>): Observable<T> {
     return this.http.put<T>(url, body, {
-      headers: this.createHttpHeaders(headersMap)
+      headers: this.createHttpHeaders(headersMap),
+      withCredentials: true
     });
   }
 
@@ -74,7 +79,7 @@ export class HttpService {
     let httpHeaders: HttpHeaders = new HttpHeaders({
       Authorization: 'Bearer ' + sessionStorage.getItem('token'),
       'demo-mode': this.demoService.demoMode === true ? "1" : "0",
-      country: sessionStorage.getItem('country')
+      country: sessionStorage.getItem('country'),
     });
     for (let key in headersMap.keys()) {
       httpHeaders.append(key, headersMap.get(key));

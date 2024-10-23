@@ -6,6 +6,7 @@ import { RegistrationSource } from '../../dashboard/models/registration-source.m
 import { UserDetails } from '../models/common/user-details.model';
 import { HttpService } from './http.service';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { WebsocketUserDetails } from '../models/common/websocket-user-details.model';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +29,11 @@ export class UserService {
       const url = environment.tradingServiceUri + "/user/checkIfBrokerageActive";
       return this.httpService.get<Boolean>(url);
   }
+
+  getUserInfoForWs(): Observable<WebsocketUserDetails>{
+    const url = environment.tradingServiceUri + "/user/userInfoForWs";
+    return this.httpService.get<WebsocketUserDetails>(url);
+}
 
   loadUserDetails() {
     this.httpService.get<UserDetails>(this.apiUrl + '/user/details').subscribe(result => {

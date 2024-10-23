@@ -10,6 +10,7 @@ import { DemoModeDetailsService } from '../../shared/services/demo-mode-details.
 import { SliderModalComponent } from '../../dashboard/components/slider-modal/slider-modal.component';
 import { map } from 'rxjs/operators';
 import { UserService } from '../../shared/services/user.service';
+import { SharedService } from '../../shared/services/shared.service';
 
 @Component({
   selector: 'app-home',
@@ -41,7 +42,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
     protected toastr: ToastrService,
     private demoService: DemoModeDetailsService,
     public  _activatedRoute: ActivatedRoute,
-    private userService: UserService
+    private userService: UserService,
+    private _sharedService: SharedService
   ) {
     let globalSelector = (fromGlobalConfig.globalConfigFeatureKey as any);
     globalStore.select(globalSelector).subscribe(res => {
@@ -62,6 +64,12 @@ export class HomeComponent implements OnInit, AfterViewInit {
       }
       this.hamburgerMenu = false
     });
+
+    _sharedService.loaderEvent.subscribe(
+      (res) => {
+        this.isBrokerageActive = res;
+      }
+    );
   }
 
   ngAfterViewInit(): void {
@@ -134,7 +142,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
           if(result){
           sessionStorage.removeItem('isBrokerageActive');
           this.isBrokerageActive = false;
-          this.router.navigate(['/landing']);
+          this._sharedService.sessionActiveEvent.emit(false);
+          this.router.navigate(['/dashboard']);
           }
         }, err => {
           console.log("Error while exiting session "+JSON.stringify(err));

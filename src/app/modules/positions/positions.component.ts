@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PositionsResponse } from '../shared/models/portfolio.model';
+import { PositionsResponse,Position } from '../shared/models/portfolio.model';
 import { PositionService } from '../shared/services/position.service';
 
 
@@ -41,13 +41,21 @@ export class PositionsComponent implements OnInit {
     })
   }
 
-  updateChangeProps(data: any) {
+  updatePositionsChanges(data: any) {
     if (data && data.body) {
       let payload = JSON.parse(data.body);
       if (payload.status) {
         this.loadPositions();
       }
     }
+  }
+
+  updateChangeProps(positions: Position[], data: any) {
+    positions.forEach(position => {
+      if(position.instrument.symbol === data.symbol){
+        position.ltp = data.ltp;
+      }
+      });
   }
 
 

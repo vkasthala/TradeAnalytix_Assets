@@ -7,6 +7,8 @@ import { OmsService } from 'src/app/modules/shared/services/oms.service';
 import { UserService } from 'src/app/modules/shared/services/user.service';
 import { PositionsWebsocketService } from 'src/app/modules/shared/services/websocket/positions-websocket.service';
 import { NavigationStart, Router } from '@angular/router';
+import { PriceUpdateWebsocketService } from 'src/app/modules/shared/services/websocket/price-update-websocket.service';
+import { PositionsResponse } from 'src/app/modules/shared/models/portfolio.model';
 
 @Component({
   selector: 'app-positions-grid',
@@ -17,7 +19,7 @@ export class PositionsGridComponent implements OnInit {
   isMobileDevice: any;
   rowId:any=null;
   
-  @Input() positionsData:any;
+  @Input() positionsData:PositionsResponse;
 
   showMobileContextMenu: boolean = false;
 
@@ -36,12 +38,14 @@ export class PositionsGridComponent implements OnInit {
     private positionsComponent: PositionsComponent,
     private postionsWSService: PositionsWebsocketService,
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
+    private instrumentPriceUpdateService: PriceUpdateWebsocketService
   ) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
         // Fire your event or perform any action here
         this.postionsWSService.unsubscribeAll();
+        this.instrumentPriceUpdateService.disconnectUser();
       }
     });
    }
@@ -56,13 +60,26 @@ export class PositionsGridComponent implements OnInit {
       if (details && details.userId) {
         this.userId = details.userId;
         this.subscribePositionUpdate(this.userId+'');
+        this.subscribePriceUpdate();
       }
     });
   }
 
+  subscribePriceUpdate(){
+    if(this.positionsData){
+      this.instrumentPriceUpdateService.joinRoom(this.instrumentPriceUpdateService.userId);
+      this.positionsData.data.data.forEach(posData => {
+        let callback = (data: any) => {
+          this.positionsComponent.updateChangeProps(this.positionsData.data.data,data);
+        };
+        this.instrumentPriceUpdateService.initPriceUpdateSubscription(posData.instrument.symbol, [callback]);
+      });
+    }
+  }
+
   subscribePositionUpdate(userId: string) {
     let callback = (data: any) => {
-      this.positionsComponent.updateChangeProps(data);
+      this.positionsComponent.updatePositionsChanges(data);
     };
     this.postionsWSService.subscribePositionsUpdate(userId, callback);
 }

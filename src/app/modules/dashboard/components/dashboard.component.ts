@@ -27,6 +27,7 @@ import { ViewFollowersComponent } from './view-followers/view-followers.componen
 import $ from "jquery";
 import { DailyWorkspace } from '../models/daily-workspace.model';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { SharedService } from '../../shared/services/shared.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -65,7 +66,8 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     private dashboardService: DashboardChartService,
     private brokerageService: BrokerageService,
     private _renderer1: Renderer2,
-    private _renderer2: Renderer2
+    private _renderer2: Renderer2,
+    private _sharedService: SharedService
   ) { }
 
   ngOnInit() {
@@ -246,11 +248,14 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     this.userService.checkIfBrokerageActive().subscribe(isBrokerageActive => {
       if(isBrokerageActive){
         sessionStorage.setItem("isBrokerageActive","true");
+        this._sharedService.sessionActiveEvent.emit(true);
       } else{
         sessionStorage.setItem("isBrokerageActive","false");
+        this._sharedService.sessionActiveEvent.emit(false);
       }
     }, err => {
       sessionStorage.setItem("isBrokerageActive","false");
+      this._sharedService.sessionActiveEvent.emit(false);
       console.log("Error while checking if brokerage is active "+JSON.stringify(err));
     });
   }

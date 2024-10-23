@@ -7,6 +7,8 @@ import { OmsService } from 'src/app/modules/shared/services/oms.service';
 import { SharedService } from 'src/app/modules/shared/services/shared.service';
 
 import { environment } from 'src/environments/environment';
+import { PriceUpdateWebsocketService } from '../shared/services/websocket/price-update-websocket.service';
+import { NavigationStart, Router } from '@angular/router';
 
 @Component({
   selector: 'app-holdings',
@@ -36,7 +38,15 @@ export class HoldingsComponent implements OnInit {
     private _omsService: OmsService,
     private _sharedService: SharedService,
     private toastr: ToastrService,
-    ) { }
+    private instrumentPriceUpdateService: PriceUpdateWebsocketService,
+    private router: Router
+    ) {
+      this.router.events.subscribe(event => {
+        if (event instanceof NavigationStart) {
+          this.instrumentPriceUpdateService.disconnectUser();
+        }
+      });
+     }
 
   ngOnInit() {
     this.checkDevice();
@@ -61,20 +71,21 @@ export class HoldingsComponent implements OnInit {
 
   subscribeSymbolsPriceUpdate() {
     if (this.holdingsResponse.data && this.holdingsResponse.data.data.length > 0) {
+      this.instrumentPriceUpdateService.joinRoom(this.instrumentPriceUpdateService.userId);
       this.holdingsResponse.data.data.forEach(holding => {
           let callback = (data: any) => {
-            this.updateChangeProps(holding, data);
+            this.updateChangeProps(this.holdingsResponse.data.data, data);
           };
+          this.instrumentPriceUpdateService.initPriceUpdateSubscription(holding.instrument.symbol, [callback]);
           // this.quoteUpdateService.subscribePriceUpdate(holding.instrument.symbolId, callback);
         });
     }
   }
 
-  updateChangeProps(holding: Holding, data: any) {
-    if (data && data.body) {
-      let jsonResult = JSON.parse(data.body);
-      if (jsonResult.price) {
-        /**
+  updateChangeProps(holdings: Holding[], data: any) {
+    holdings.forEach(holding => {
+      if(holding.instrument.symbol === data.symbol){
+                /**
          * Day change calculation
          */
         // let day_change = parseFloat((jsonResult.price - holding.ltp).toFixed(3));
@@ -83,7 +94,7 @@ export class HoldingsComponent implements OnInit {
         /**
          * LTP update
          */
-        holding.ltp = jsonResult.price;
+        holding.ltp = data.ltp;
 
         /**
          * P&L calculation
@@ -97,10 +108,10 @@ export class HoldingsComponent implements OnInit {
         /**
          * Net change calculation
          */
-        let net_change = parseFloat((holding.ltp - jsonResult.previousDayClose).toFixed(3));
-        holding.net_change = parseFloat(((net_change / jsonResult.previousDayClose) * 100).toFixed(2));
+        let net_change = parseFloat((holding.ltp - data.previousDayClose).toFixed(3));
+        holding.net_change = parseFloat(((net_change / data.previousDayClose) * 100).toFixed(2));
       }
-    }
+    })
   }
 
   checkDevice() {
