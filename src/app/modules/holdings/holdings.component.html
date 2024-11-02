@@ -9,7 +9,7 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Instrument</th>
+                        <th class="instrument-cell">Instrument</th>
                         <th class="text-right">Qty.</th>
                         <th class="text-right">Avg.cost</th>
                         <th class="text-right">LTP</th>
@@ -17,6 +17,7 @@
                         <th class="text-right">P&L</th>
                         <th class="text-right">Net Chg.</th>
                         <th class="text-right">Day Chg.</th>
+                        <th class="text-right"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,6 +30,16 @@
                         <td class="text-right"><span class="text-green" [ngClass]="rowData.p_and_l > -1 ? 'text-green' : 'text-red'">{{rowData.p_and_l | number:'1.2-2'}}</span></td>
                         <td class="text-right"><span [ngClass]="rowData.net_change > 0 ? 'text-green' : 'text-red'">{{rowData.net_change | number:'1.2-2'}}%</span></td>
                         <td class="text-right"><span [ngClass]="rowData.net_change > 0 ? 'text-green' : 'text-red'">{{rowData.day_change | number:'1.2-2'}}%</span></td>
+                        <td>
+                            <span data-balloon="Buy (B)" data-balloon-pos="up">
+                                <button type="button" class="btn btn-xs buy ml-3"
+                                    (click)="add(rowData)">BUY</button>
+                            </span>
+                            <span data-balloon="Sell (S)" data-balloon-pos="up">
+                                <button type="button" class="btn btn-xs sell ml-2"
+                                    (click)="add(rowData)">SELL</button>
+                            </span>
+                        </td>
                     </tr>
                     <tr *ngIf="holdingsResponse.data.data.length === 0">
                         <td colspan="8" class="text-center">No Holdings</td>

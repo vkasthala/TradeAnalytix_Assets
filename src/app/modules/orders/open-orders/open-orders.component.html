@@ -3,7 +3,7 @@
     <table>
         <thead>
             <tr>
-                <th>
+                <th class="checkbox-cell">
                     <span>
                         <input type="checkbox" [(ngModel)]="selectAll" 
                         (change)="toggleSelectAll()" 
@@ -11,15 +11,15 @@
                         />
                     </span>
                 </th>
-                <th class="sortable"><span>Time</span></th>
-                <th class="sortable"><span>Type</span></th>
-                <th class="sortable"><span>Instrument</span></th>
-                <th class="sortable"><span>Product</span></th>
-                <th class="sortable"><span>Qty</span></th>
-                <th class="sortable"><span>LTP</span></th>
-                <th class="sortable"><span>Price</span></th>
-                <th class="sortable"><span>Status</span></th>
-                <th class="sortable"><span>Journal</span></th>
+                <th class="sortable time-cell"><span>Time</span></th>
+                <th class="sortable type-cell"><span>Type</span></th>
+                <th class="sortable instrument-cell"><span>Instrument</span></th>
+                <th class="sortable product-cell"><span>Product</span></th>
+                <th class="sortable qty-cell"><span>Qty</span></th>
+                <th class="sortable qty-cell"><span>LTP</span></th>
+                <th class="sortable status-cell"><span>Price</span></th>
+                <th class="sortable status-cell"><span>Status</span></th>
+                <!-- <th class="sortable"><span>Journal</span></th> -->
                 <th></th>
             </tr>
         </thead>
@@ -42,7 +42,7 @@
                 <td>
                     <span class="status-tag text-label caps">{{order.status}}</span>
                 </td>
-                <td><span class="text-link" (click)="openIntradayOrder(order)">{{order.journal}}</span></td>
+                <!-- <td><span class="text-link" (click)="openIntradayOrder(order)">{{order.journal}}</span></td> -->
                 <td>
                     <button type="button" class="button button-small button-outline button-blue" (click)="editOrder(order)">Edit</button> 
                     <!-- <button type="button" class="button button-small button-outline button-blue ml-2" (click)="openIntradayOrder(order)">ADD</button> -->

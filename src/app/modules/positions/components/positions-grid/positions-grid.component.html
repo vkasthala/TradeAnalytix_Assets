@@ -2,12 +2,13 @@
     <table>
         <thead>
             <tr (mouseover)="showPositionsActions($event, null)" (mouseout)="hidePositionsActions(null)">
-                <th>Product</th>
-                <th>Instrument</th>
+                <th class="product-cell">Product</th>
+                <th class="instrument-cell">Instrument</th>
                 <th class="qty-cell">Qty.</th>
                 <th class="text-right qty-cell">Avg</th>
-                <th class="text-right">LTP</th>
-                <th class="text-right">P&L</th>
+                <th class="text-right product-cell">LTP</th>
+                <th class="text-right product-cell">P&L</th>
+                <th class="text-right"></th>
             </tr>
         </thead>
         <tbody>
@@ -29,7 +30,16 @@
                 <td class="text-right">{{rowData.average_price | number:'1.2-2' }}</td>
                 <td class="text-right">{{rowData.ltp | number:'1.2-2'}}</td>
                 <td class="text-right"><span class="text-green" [ngClass]="rowData.day_p_and_l > -1 ? 'text-green' : 'text-red'">{{rowData.day_p_and_l | number:'1.2-2'}}</span></td>
-                <!-- <td><span [ngClass]="rowData.day_p_and_l > -1 ? 'text-green' : 'text-red'">{{rowData.day_p_and_l}}</span></td> -->
+                <td>
+                    <span data-balloon="Buy (B)" data-balloon-pos="up">
+                        <button type="button" class="btn btn-xs buy"
+                            (click)="add(rowData)">B</button>
+                    </span>
+                    <span data-balloon="Sell (S)" data-balloon-pos="up">
+                        <button type="button" class="btn btn-xs sell ml-2"
+                            (click)="sellOrders(rowData)">S</button>
+                    </span>
+                </td>
             </tr>
             
             <tr (mouseover)="showPositionsActions($event, null)" (mouseout)="hidePositionsActions(null)" *ngIf="positionsData.data.data.length > 0">
