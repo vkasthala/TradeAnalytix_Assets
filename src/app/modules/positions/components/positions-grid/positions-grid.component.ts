@@ -110,7 +110,7 @@ add(rowData:any) {
     this.orderToggle = false;
     payload.quantity = Math.abs(rowData.quantity);
   }
-  // this.createMargin(payload)
+  this.createMargin(payload)
 }
 
   generatePayload(rowData:any) {
@@ -167,20 +167,22 @@ add(rowData:any) {
     }
   }
 
-  // createMargin(payload:any) {
-  //   this._sharedService.loaderEvent.emit(true);
-  //   this._omsService.getMargin(payload).subscribe(response =>{
-  //     this.marginsSource = response;
-  //     this.showOrdersModal = true;
-  //     this.isPositionsOrder = true;
-  //     this.showMobileContextMenu = false;
-  //     this._sharedService.loaderEvent.emit(false);
-  //   }, error =>{
-  //     this.toastr.error(error.error, "Error", {timeOut: 3000});
-  //     this._sharedService.loaderEvent.emit(false);
-  //   });
-  //   return this.marginsSource;
-  // }
+  createMargin(payload:any) {
+    this._sharedService.loaderEvent.emit(true);
+    this._omsService.getMargin(payload).subscribe(response =>{
+      this.marginsSource.margin = response.margin;
+      this.marginsSource.charges = response.charges;
+      this.marginsSource.availableMargin = response.availableMargin;
+      this.showOrdersModal = true;
+      this.isPositionsOrder = true;
+      this.showMobileContextMenu = false;
+      this._sharedService.loaderEvent.emit(false);
+    }, error =>{
+      this.toastr.error(error.error, "Error", {timeOut: 3000});
+      this._sharedService.loaderEvent.emit(false);
+    });
+    return this.marginsSource;
+  }
 
   closeModal() {
     this.showOrdersModal = false;

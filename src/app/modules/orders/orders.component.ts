@@ -105,17 +105,21 @@ export class OrdersComponent implements OnInit {
   }
 
   loadOrders(){
-    this._orderService.getOrders().subscribe(response => {
-      if(response){
-        console.log(response);
-        this.loadOpenOrders(response);
-        this.loadExecutedOrders(response);
-        this.subscribeSymbolsPriceUpdate();
-      }
-    }, error => {
-      this.toastr.error(error.error.errorMessage, 'Error', {timeOut: 3000});
+    let isBrokerageActive = sessionStorage.getItem('isBrokerageActive') && sessionStorage.getItem('isBrokerageActive') === 'true';
+    if (isBrokerageActive && isBrokerageActive !== undefined) {
+      this._orderService.getOrders().subscribe(response => {
+        if(response){
+          console.log(response);
+          this.loadOpenOrders(response);
+          this.loadExecutedOrders(response);
+          this.subscribeSymbolsPriceUpdate();
+        }
+      }, error => {
+        this.toastr.error(error.error.errorMessage, 'Error', {timeOut: 3000});
+      });
+    } else {
+      this.toastr.error("You are not connected to the broker. Click 'Connect Broker' to establish a connection", 'Error');
     }
-    );
   }
 
   subscribeSymbolsPriceUpdate() {

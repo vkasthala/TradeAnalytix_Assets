@@ -88,6 +88,17 @@
                     <span class="ml-1" [ngClass]="rowData.day_p_and_l > -1 ? 'text-green' : 'text-red'">{{rowData.day_p_and_l}}</span>
                 </span>
             </div>
+
+            <div class="flex6 text-right">
+                <span data-balloon="Buy (B)" data-balloon-pos="up">
+                    <button type="button" class="btn btn-xs buy"
+                        (click)="add(rowData)">BUY</button>
+                </span>
+                <span data-balloon="Sell (S)" data-balloon-pos="up">
+                    <button type="button" class="btn btn-xs sell ml-2"
+                        (click)="add(rowData)">SELL</button>
+                </span>
+            </div>
             
         </div>
         

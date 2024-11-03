@@ -12,7 +12,7 @@ export class Margins {
     // order_id: string | undefined;
     // ltp: number | undefined;
 
-    order_type: String | undefined;
+    order_type: any | undefined;
     expiry: string | undefined;
     tradeType: string | undefined;
     trigger_price: number | undefined;
