@@ -12,20 +12,20 @@ export const environment = {
   redirectUri: 'https://us.tradeanalytix.com/oauth-redirect',*/
 
   //Prod
-  apiUrl: 'https://in.cuetrade.io/service',
-  redirectUri: 'https://in.cuetrade.io/oauth-redirect',
-  tradingServiceUri: 'https://trading.cuetrade.io/tradingservice',
-  websocketUrl: 'https://trading.cuetrade.io:5001',
+  // apiUrl: 'https://in.cuetrade.io/service',
+  // redirectUri: 'https://in.cuetrade.io/oauth-redirect',
+  // tradingServiceUri: 'https://trading.cuetrade.io/tradingservice',
+  // websocketUrl: 'https://trading.cuetrade.io',
   //Uncomment this only in local
   // env: 'local',
   //Comment this only in local
   env: 'prod',
 
   //Local Dev
-  // apiUrl: 'http://localhost:8080/service',
-  // redirectUri: 'http://localhost:4200/oauth-redirect',
-  // tradingServiceUri: 'http://localhost:8081/tradingservice',
-  // websocketUrl: 'http://localhost:5001',
+  apiUrl: 'http://localhost:8080/service',
+  redirectUri: 'http://localhost:4200/oauth-redirect',
+  tradingServiceUri: 'http://localhost:8081/tradingservice',
+  websocketUrl: 'http://localhost:5001',
 
 
   clientCode: 'GPJIG4CRFK-102',

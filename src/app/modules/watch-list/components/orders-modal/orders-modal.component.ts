@@ -101,7 +101,7 @@ export class OrdersModalComponent implements OnInit {
   }
   }
 
-  orderPlacement(orderRules: OrderRuleResponse) {
+  orderPlacement(orderRules: OrderRuleDto) {
     this._sharedService.loaderEvent.emit(true);
     const placeOrderRequest = this.getOrderPlacementRequest();
     const orderType = this.margins.variety;

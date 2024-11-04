@@ -50,6 +50,7 @@ export class OrdersComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.instrumentPriceUpdateService.establishConnection();
     this.loadOrders();
     this.unsubscribe();
     this.loadUserDetails();

@@ -49,6 +49,7 @@ export class HoldingsComponent implements OnInit {
      }
 
   ngOnInit() {
+    this.instrumentPriceUpdateService.establishConnection();
     this.checkDevice();
     this.loadHoldingData();
     // this.postionsWSService.unsubscribeAll();

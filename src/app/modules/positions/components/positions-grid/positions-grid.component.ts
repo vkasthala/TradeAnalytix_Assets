@@ -51,6 +51,7 @@ export class PositionsGridComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.instrumentPriceUpdateService.establishConnection();
     this.checkDevice();
     this.loadUserDetails();
   }
