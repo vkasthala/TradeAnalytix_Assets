@@ -91,6 +91,11 @@ export class SearchComponent implements OnInit {
   }
 
   buyOrders($event: any) {
+    let isBrokerageActive = sessionStorage.getItem('isBrokerageActive') && sessionStorage.getItem('isBrokerageActive') === 'true';
+    if (!isBrokerageActive || isBrokerageActive === undefined) {
+      this.toastr.error("You are not connected to the broker. Click 'Connect Broker' to establish a connection", 'Error');
+      return;
+    }
     $event.transaction_type = 'BUY';
     this._sharedService.transactionsEvent.emit($event);
     this.searchResult = [];
@@ -99,6 +104,11 @@ export class SearchComponent implements OnInit {
   }
 
   sellOrders($event: any) {
+    let isBrokerageActive = sessionStorage.getItem('isBrokerageActive') && sessionStorage.getItem('isBrokerageActive') === 'true';
+    if (!isBrokerageActive || isBrokerageActive === undefined) {
+      this.toastr.error("You are not connected to the broker. Click 'Connect Broker' to establish a connection", 'Error');
+      return;
+    }
     $event.transaction_type = 'SELL';
     this._sharedService.transactionsEvent.emit($event);
     this.searchResult = [];

@@ -88,7 +88,7 @@
                             <div class="four columns price">
                                 <div class="no su-input-group su-static-label" [ngClass]="margins.order_type === 'MARKET' || margins.order_type === 'SL-M' ? 'disabled' : ''">
                                     <label class="su-input-label su-visible">Price</label>
-                                    <input type="number" autocorrect="off" min="0" step="0.01" nativeerror="true" staticlabel="true" animate="true" label="Price" id="price" dynamicwidthsize="8" [disabled]="margins.order_type === 'MARKET' || margins.order_type === 'SL-M'" [value]="margins.order_type === 'MARKET' || margins.order_type === 'SL-M' ? '0' : orderPlacementPrice" (input)="calculateMargin()"/>
+                                    <input type="number" autocorrect="off" min="0" step="0.01" nativeerror="true" staticlabel="true" animate="true" id="price" dynamicwidthsize="8" [disabled]="margins.order_type === 'MARKET' || margins.order_type === 'SL-M'" [value]="margins.order_type === 'MARKET' || margins.order_type === 'SL-M' ? '0' : orderPlacementPrice" (input)="calculateMargin()"/>
 
                                     <!-- <input type="number" autocorrect="off" min="0.05" step="0.05" nativeerror="true" staticlabel="true" animate="true" label="Price" id="price" dynamicwidthsize="8" [disabled]="margins.order_type === 'MARKET' || margins.order_type === 'SL-M'" [value]="margins.order_type === 'MARKET' || margins.order_type === 'SL-M' ? '0' : orderPlacementPrice"> -->
                                 </div>

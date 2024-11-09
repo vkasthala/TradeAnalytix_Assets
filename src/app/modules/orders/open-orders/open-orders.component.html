@@ -3,20 +3,20 @@
     <table>
         <thead>
             <tr>
-                <th class="checkbox-cell">
+                <!-- <th class="checkbox-cell">
                     <span>
                         <input type="checkbox" [(ngModel)]="selectAll" 
                         (change)="toggleSelectAll()" 
                         [checked]="selectAll"
                         />
                     </span>
-                </th>
+                </th> -->
                 <th class="sortable time-cell"><span>Time</span></th>
                 <th class="sortable type-cell"><span>Type</span></th>
                 <th class="sortable instrument-cell"><span>Instrument</span></th>
                 <th class="sortable product-cell"><span>Product</span></th>
                 <th class="sortable qty-cell"><span>Qty</span></th>
-                <th class="sortable qty-cell"><span>LTP</span></th>
+                <th class="sortable qty-tp"><span>LTP</span></th>
                 <th class="sortable status-cell"><span>Price</span></th>
                 <th class="sortable status-cell"><span>Status</span></th>
                 <!-- <th class="sortable"><span>Journal</span></th> -->
@@ -26,9 +26,9 @@
         <tbody>
             
             <tr *ngFor = "let order of openOrders">
-                <td>
+                <!-- <td>
                     <input type="checkbox" [(ngModel)]="order.selected" (change)="toggleOrder(order)" />
-                </td>
+                </td> -->
                 <td>{{order.time}}</td>
                 <td>
                     <span class="text-label transaction-type-label" [ngClass]="order.type === 'SELL' ? 'orange' : 'blue'">{{order.type}}</span>

@@ -24,6 +24,7 @@ export interface Position {
     net_p_and_l: number
     average_price: number
     action_type: string
+    realized_return: any;
 }
 
 export interface Holding{
@@ -41,5 +42,6 @@ export interface Holding{
 export interface InstrumentResponse{
     symbolId: number
     symbol: string
-    exchange: string
+    exchange: string;
+    actualSymbol: string
 }

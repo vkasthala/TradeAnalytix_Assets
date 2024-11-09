@@ -101,8 +101,6 @@ export class WatchListComponent implements OnInit {
   }
 
   loadWatchList() {
-    let isBrokerageActive = sessionStorage.getItem('isBrokerageActive') && sessionStorage.getItem('isBrokerageActive') === 'true';
-    if (isBrokerageActive && isBrokerageActive !== undefined) {
       this.loader = true;
       this._watchlistService.getWatchListItems().subscribe(
         response => {
@@ -118,7 +116,6 @@ export class WatchListComponent implements OnInit {
           this.loader = false;
         }
       );
-    }
   }
 
   unsubscribeSymbol(item: Watchlistsymbol) {
@@ -190,12 +187,22 @@ export class WatchListComponent implements OnInit {
   }
 
   buyOrders($event: any) {
+    let isBrokerageActive = sessionStorage.getItem('isBrokerageActive') && sessionStorage.getItem('isBrokerageActive') === 'true';
+    if (!isBrokerageActive || isBrokerageActive === undefined) {
+      this.toastr.error("You are not connected to the broker. Click 'Connect Broker' to establish a connection", 'Error');
+      return;
+    }
     $event.transaction_type = 'BUY';
     this.createMargin($event);
     
   }
 
   sellOrders($event: any) {
+    let isBrokerageActive = sessionStorage.getItem('isBrokerageActive') && sessionStorage.getItem('isBrokerageActive') === 'true';
+    if (!isBrokerageActive || isBrokerageActive === undefined) {
+      this.toastr.error("You are not connected to the broker. Click 'Connect Broker' to establish a connection", 'Error');
+      return;
+    }
     $event.transaction_type = 'SELL';
     this.showOrdersModal = true;
     this.orderToggle = true;
@@ -212,6 +219,7 @@ export class WatchListComponent implements OnInit {
         }
         this.showMobileContextMenu = false;
         this.loader = false;
+        this._sharedService.watchListCountEvent.emit(event);
         this.toastr.success('Symbol Deleted Successfully', 'Success', 
         {
           timeOut: 3000
@@ -417,6 +425,5 @@ export class WatchListComponent implements OnInit {
   isNiftyStock(item:any) {
     return this.niftyList.includes(item.tradingsymbol);
   }
-
 
 }
