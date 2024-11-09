@@ -1,3 +1,5 @@
+import { TradeTag } from "./trade-management/trade-tag.model";
+
 export interface OrdersResponse {
     id: number;
     exchange: string;
@@ -55,6 +57,7 @@ export interface PurchaseOrderResponse {
 
 export class OrderRuleDto {
     notes: string;
+    tags: TradeTag[];
     orderRules: OrderRuleResponse[]
 }
 

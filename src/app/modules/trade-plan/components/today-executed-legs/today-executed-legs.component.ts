@@ -27,8 +27,8 @@ export class TodayExecutedLegsComponent implements OnInit {
     private omsService: OmsService) { }
 
   ngOnInit() {
-    console.log('day::', this.day);
-    this.loadTodayExecutedLegs(this.day);
+    console.log('day::', this.selectedPlan.day);
+    this.loadTodayExecutedLegs(this.selectedPlan.day);
   }
 
   loadTodayExecutedLegs(day) {

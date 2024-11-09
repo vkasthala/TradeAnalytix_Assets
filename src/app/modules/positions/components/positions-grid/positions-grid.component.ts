@@ -51,32 +51,7 @@ export class PositionsGridComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.positionsData = {
-      "data": {
-          "data": [
-              {
-                "instrument": {
-                  "symbol": "NSE:RENUKA-EQ",
-                  "exchange": "NSE",
-                  "symbolId": null,
-                  "actualSymbol": null
-                },
-                "quantity": 1,
-                "type": "INTRADAY",
-                "ltp": 41.94,
-                "realized_return": 0.0,
-                "day_p_and_l": 0.09,
-                "average_price": 41.85,
-                "action_type": "BUY",
-                buy_avg: 0,
-                sell_avg: 0,
-                net_p_and_l: 0
-              }
-          ],
-          "total_day_p_and_l": 0.0,
-          "total_p_and_l": 0.09
-      }
-  }
+    this.instrumentPriceUpdateService.establishConnection();
     this.checkDevice();
     this.loadUserDetails();
   }

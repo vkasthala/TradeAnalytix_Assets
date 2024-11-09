@@ -77,9 +77,9 @@ export class OmsService {
     return this.httpService.post<OrderRuleCheckRequest,OrderRuleDto>(url,data);
   }
 
-  saveRules(orderRules: OrderRuleResponse, orderId: string) :  Observable<string> {
+  saveRules(orderRules: OrderRuleDto, orderId: string) :  Observable<string> {
     const url = environment.apiUrl + "/order/save-coded-rule/"+orderId;
-    return this.httpService.post<OrderRuleResponse,string>(url,orderRules);
+    return this.httpService.post<OrderRuleDto,string>(url,orderRules);
   }
 
   deleteOrderRules(orderId: string) : Observable<string> {

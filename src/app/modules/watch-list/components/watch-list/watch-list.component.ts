@@ -93,6 +93,7 @@ export class WatchListComponent implements OnInit {
 
 
   ngOnInit() {
+    this.instrumentPriceUpdateService.establishConnection();
     this.checkDevice();
     this.loadWatchList();
     setTimeout(()=>{
@@ -138,6 +139,7 @@ export class WatchListComponent implements OnInit {
     if (this.watchListData && this.watchListData.length >= pageIndex) {
       let watchList = this.watchListData[pageIndex - 1];
       if (watchList.items) {
+        if(this.instrumentPriceUpdateService.userId){
         this.instrumentPriceUpdateService.joinRoom(this.instrumentPriceUpdateService.userId);
         watchList.items.forEach(wlItem => {
           console.log(wlItem)
@@ -147,6 +149,7 @@ export class WatchListComponent implements OnInit {
           this.instrumentPriceUpdateService.initPriceUpdateSubscription(wlItem.trading_symbol, [callback]);
         });
       }
+    }
     }
   }
 
