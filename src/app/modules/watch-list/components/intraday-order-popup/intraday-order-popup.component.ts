@@ -53,7 +53,9 @@ export class IntradayOrderPopupComponent implements OnInit {
     this.loadRules();
     }
     this.loadSummary();
+    if(this.tradeTagsComponent){
     this.tradeTagsComponent.tags = this.tags;
+    }
   }
 
   loadRules(){

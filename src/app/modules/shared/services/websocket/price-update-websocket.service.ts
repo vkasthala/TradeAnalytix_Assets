@@ -133,7 +133,6 @@ export class PriceUpdateWebsocketService {
 
     this.socket.on('price_update', (response: any) => {
       if (response && response.symbol) {
-        console.log('Received price update:', response);
         if (callbacks) {
           callbacks.forEach(callback => callback(response));
         }
