@@ -41,6 +41,7 @@ export class IntradayOrderPopupComponent implements OnInit {
     protected userTagService: UserTagService
   ) {
     this.data = data;
+    this.tags = data.tags;
     this.margins = data.margins;
   }
 
@@ -52,6 +53,7 @@ export class IntradayOrderPopupComponent implements OnInit {
     this.loadRules();
     }
     this.loadSummary();
+    this.tradeTagsComponent.tags = this.tags;
   }
 
   loadRules(){
@@ -59,9 +61,10 @@ export class IntradayOrderPopupComponent implements OnInit {
   this._orderService.checkRules(this.data.ruleCheckPayload).subscribe(response=>{
     if(response){
       this.orderRuleDto = response;
-      debugger;
       this.tags = this.orderRuleDto.tags;
+      if(this.tags){
       this.tradeTagsComponent.tags = this.tags;
+      }
     }
   }, error => {
     console.log("Error "+error);
@@ -72,10 +75,11 @@ loadExistingOrderRules(){
   // this.data.ruleCheckPayload.orderId = '24070800145772';
 this._orderService.getExistingRules(this.data.ruleCheckPayload.orderId).subscribe(response=>{
   if(response){
-    debugger;
     this.orderRuleDto = response;
     this.tags = this.orderRuleDto.tags;
-    this.tradeTagsComponent.tags = this.tags;
+    if(this.tags){
+      this.tradeTagsComponent.tags = this.tags;
+      }
   }
 }, error => {
   console.log("Error "+error);

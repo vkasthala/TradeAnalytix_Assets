@@ -102,6 +102,7 @@ export class WatchListComponent implements OnInit {
   }
 
   loadWatchList() {
+    let isBrokerageActive = sessionStorage.getItem('isBrokerageActive') && sessionStorage.getItem('isBrokerageActive') === 'true';
       this.loader = true;
       this._watchlistService.getWatchListItems().subscribe(
         response => {
@@ -109,11 +110,13 @@ export class WatchListComponent implements OnInit {
             console.log(response)
             this.watchListData = response.watch_lists;
             this._sharedService.watchListReloadEvent.emit(this.watchListData);
+            if (isBrokerageActive && isBrokerageActive !== undefined) {
             this.subscribeSymbolsPriceUpdate(this.pageIndex);
+            }
           }
           this.loader = false;
         }, error => {
-          this.toastr.error(error, 'Error', {timeOut: 3000});
+          //this.toastr.error(error, 'Error', {timeOut: 3000});
           this.loader = false;
         }
       );
