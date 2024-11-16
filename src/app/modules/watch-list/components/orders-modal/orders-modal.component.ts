@@ -86,19 +86,19 @@ export class OrdersModalComponent implements OnInit {
 
   calculateMargin(){
     const placeOrderRequest = this.getOrderPlacementRequest();
-    if(placeOrderRequest){
-      this.loader = true;
-    this._omsService.getMargin(placeOrderRequest).subscribe(response =>{
-      this.margins.margin = response.margin;
-      this.margins.charges = response.charges;
-      this.margins.availableMargin = response.availableMargin;
-      this.loader = false;
-    }, error =>{
-      // this.toastr.error(error.error, "Error", {timeOut: 3000});
-      console.log("Error in calling margin api "+error.error);
-      this.loader = false;
-    });
-  }
+      if(placeOrderRequest){
+        this.loader = true;
+        this._omsService.getMargin(placeOrderRequest).subscribe(response =>{
+          this.margins.margin = response.margin;
+          this.margins.charges = response.charges;
+          this.margins.availableMargin = response.availableMargin;
+          this.loader = false;
+        }, error =>{
+          // this.toastr.error(error.error, "Error", {timeOut: 3000});
+          console.log("Error in calling margin api "+error.error);
+          this.loader = false;
+        });
+      }
   }
 
   orderPlacement(orderRules: OrderRuleDto) {
@@ -179,7 +179,11 @@ export class OrdersModalComponent implements OnInit {
     let message = price < 0.05 
       ? 'Value must be greater than or equal to 0.05' 
       : 'Please enter a valid value. Two nearest valid values are ' + nearestValues[0] + ' and ' + nearestValues[1];
-    this.toastr.error(message, 'Error', {timeOut: 3000});
+    this.showBottomRight(message);
+  }
+
+  showBottomRight(message: string, title: string = '') {
+    this.toastr.error(message, title, { positionClass: 'toast-bottom-right' });
   }
 
   modifyOrder(orderRules: OrderRuleDto, orderId:any){
@@ -268,7 +272,6 @@ export class OrdersModalComponent implements OnInit {
   getOrderPlacementRequest(): any {
     let price = this.getPrice();
     if(!this.isValid(price)){
-      this.displayNearestValidPriceErrorMsg(price);
       this._sharedService.loaderEvent.emit(false);
       return; 
     }
@@ -316,5 +319,15 @@ export class OrdersModalComponent implements OnInit {
     }
   }
 
+  onBlurEvent(event: any) {
+    let price = this.getPrice();
+    if (event.target.name === 'price' && !this.isValid(price)){
+      this.displayNearestValidPriceErrorMsg(price);
+      this._sharedService.loaderEvent.emit(false);
+      return; 
+    }
+
+    this.calculateMargin();
+  }
 
 }

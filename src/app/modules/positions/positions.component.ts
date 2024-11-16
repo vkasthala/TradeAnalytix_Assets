@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PositionsResponse,Position } from '../shared/models/portfolio.model';
 import { PositionService } from '../shared/services/position.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -21,7 +22,8 @@ export class PositionsComponent implements OnInit {
   userId: string = "";
 
   constructor(
-    private _positionService: PositionService
+    private _positionService: PositionService,
+    private _toastr: ToastrService,
   ) { }
 
   ngOnInit() {
@@ -29,16 +31,21 @@ export class PositionsComponent implements OnInit {
   }
 
   loadPositions(){
-    this._positionService.getPositions().subscribe(response=>{
-      if(response){
-        this.positionResponse.data.data = response.data.data;
-        this.positionResponse.data.total_p_and_l = response.data.total_day_p_and_l;
-        this.positionResponse.data.total_p_and_l = response.data.total_p_and_l;
-        this.positionsCount = this.positionResponse.data.data!.length;
-      }
-    }, error => {
-      console.log(error);
-    })
+    let isBrokerageActive = sessionStorage.getItem('isBrokerageActive') && sessionStorage.getItem('isBrokerageActive') === 'true';
+    if (isBrokerageActive && isBrokerageActive !== undefined) {
+      this._positionService.getPositions().subscribe(response=>{
+        if(response){
+          this.positionResponse.data.data = response.data.data;
+          this.positionResponse.data.total_p_and_l = response.data.total_day_p_and_l;
+          this.positionResponse.data.total_p_and_l = response.data.total_p_and_l;
+          this.positionsCount = this.positionResponse.data.data!.length;
+        }
+      }, error => {
+        console.log(error);
+      })
+    } else {
+      this._toastr.error("You are not connected to the broker. Click 'Connect Broker' to establish a connection", 'Error');
+    }
   }
 
   updatePositionsChanges(data: any) {

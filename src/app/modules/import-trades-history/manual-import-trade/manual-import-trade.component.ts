@@ -147,7 +147,7 @@ export class ManualImportTradeComponent implements OnInit {
         type = ZerodhaInstructionsComponent;
         showPopup = true;
         return;
-      } else if(item.country === "US" && item.id === id) {
+      } else if(item.id === id) {
         type = RobinhoodInstructionsComponent;
         showPopup = true;
         return;

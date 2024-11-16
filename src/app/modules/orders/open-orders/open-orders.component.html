@@ -40,13 +40,13 @@
                 <td>{{order.price}}</td>
                 
                 <td>
-                    <span class="status-tag text-label caps">{{order.status}}</span>
+                    <span class="text-label small order-status-label caps">{{order.status}}</span>
                 </td>
                 <!-- <td><span class="text-link" (click)="openIntradayOrder(order)">{{order.journal}}</span></td> -->
                 <td>
-                    <button type="button" class="button button-small button-outline button-blue" (click)="editOrder(order)">Edit</button> 
+                    <span type="button" class="link blue-link" (click)="editOrder(order)">Edit</span> 
                     <!-- <button type="button" class="button button-small button-outline button-blue ml-2" (click)="openIntradayOrder(order)">ADD</button> -->
-                    <button type="button" class="button button-small button-outline ml-2" (click)="cancelOrder(order)">Cancel</button>
+                    <span type="button" class="link blue-link ml-3" (click)="cancelOrder(order)">Cancel</span>
                 </td>
             </tr>
             <!-- <tr>

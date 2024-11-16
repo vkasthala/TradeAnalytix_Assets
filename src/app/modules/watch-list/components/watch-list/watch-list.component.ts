@@ -302,7 +302,7 @@ export class WatchListComponent implements OnInit {
       this.showMobileContextMenu = false;
       this.loader = false;
     }, error =>{
-      this.toastr.error(error.error, "Error", {timeOut: 3000});
+      // this.toastr.error(error.error, "Error", {timeOut: 3000});
       this.loader = false;
       this.showMobileContextMenu = false;
     });
@@ -354,7 +354,8 @@ export class WatchListComponent implements OnInit {
   }
 
   modifyOrder(orderId : string) {
-    this.loader = true;
+    // this.loader = true;
+    this.showOrdersModal = true;
     this._omsService.getEditOrderDetail(orderId).subscribe(response =>{
       if(response){
         const marginRequest = {
@@ -382,7 +383,7 @@ export class WatchListComponent implements OnInit {
           this.showMobileContextMenu = false;
           this.loader = false;
         }, error =>{
-          this.toastr.error(error.error, "Error", {timeOut: 3000});
+          // this.toastr.error(error.error, "Error", {timeOut: 3000});
           this.loader = false;
         });
         // this.marginsSource = response;
@@ -404,7 +405,7 @@ export class WatchListComponent implements OnInit {
     //$event.instrumenType == 14 ? 'OPTION' : 'STOCK';
       }
     }, error =>{
-      this.toastr.error(error.error, "Error", {timeOut: 3000});
+      // this.toastr.error(error.error, "Error", {timeOut: 3000});
       this.loader = false;
     });
   }

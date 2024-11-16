@@ -88,7 +88,7 @@
                             <div class="four columns price">
                                 <div class="no su-input-group su-static-label" [ngClass]="margins.order_type === 'MARKET' || margins.order_type === 'SL-M' ? 'disabled' : ''">
                                     <label class="su-input-label su-visible">Price</label>
-                                    <input type="number" autocorrect="off" min="0" step="0.01" nativeerror="true" staticlabel="true" animate="true" id="price" dynamicwidthsize="8" [disabled]="margins.order_type === 'MARKET' || margins.order_type === 'SL-M'" [value]="margins.order_type === 'MARKET' || margins.order_type === 'SL-M' ? '0' : orderPlacementPrice" (input)="calculateMargin()"/>
+                                    <input type="number" autocorrect="off" min="0" step="0.01" nativeerror="true" staticlabel="true" animate="true" name="price" id="price" dynamicwidthsize="8" [disabled]="margins.order_type === 'MARKET' || margins.order_type === 'SL-M'" [value]="margins.order_type === 'MARKET' || margins.order_type === 'SL-M' ? '0' : orderPlacementPrice" (blur)="onBlurEvent($event)"/>
 
                                     <!-- <input type="number" autocorrect="off" min="0.05" step="0.05" nativeerror="true" staticlabel="true" animate="true" label="Price" id="price" dynamicwidthsize="8" [disabled]="margins.order_type === 'MARKET' || margins.order_type === 'SL-M'" [value]="margins.order_type === 'MARKET' || margins.order_type === 'SL-M' ? '0' : orderPlacementPrice"> -->
                                 </div>
@@ -98,17 +98,17 @@
                                     [ngClass]="margins.order_type == 'MARKET' || margins.order_type == 'LIMIT' ? 'disabled' : ''">
                                     <label class="su-input-label">Trigger price</label>
                                     <input type="number" autocorrect="off" min="0" step="0.01" nativeerror="true"
-                                        staticlabel="true" animate="true" label="Trigger price" id="trigger_price"
+                                        staticlabel="true" animate="true" label="Trigger price" name="trigger_price" id="trigger_price"
                                         dynamicwidthsize="8"
                                         [disabled]="margins.order_type == 'MARKET' || margins.order_type == 'LIMIT'"
-                                        [value]="margins.order_type === 'MARKET' || margins.order_type === 'LIMIT' ? '0' : margins.trigger_price" (input)="calculateMargin()">
+                                        [value]="margins.order_type === 'MARKET' || margins.order_type === 'LIMIT' ? '0' : margins.trigger_price" (blur)="onBlurEvent($event)">
                                 </div>
                                 <div class="no su-input-group su-static-label" *ngIf="margins.variety === 'co'">
                                     <label class="su-input-label">Stoploss trigger Price</label>
-                                    <input type="number" placeholder="" autocorrect="off" min="0" step="0.05"
+                                    <input type="number" placeholder="" autocorrect="off" min="0" step="0.05" name="trigger_price"
                                         nativeerror="true" staticlabel="true" animate="true"
                                         label="Stoploss trigger Price" dynamicwidthsize="8"
-                                        [value]="margins.trigger_price" (input)="calculateMargin()">
+                                        [value]="margins.trigger_price" (blur)="onBlurEvent($event)">
                                 </div>
                             </div>
                         </div>

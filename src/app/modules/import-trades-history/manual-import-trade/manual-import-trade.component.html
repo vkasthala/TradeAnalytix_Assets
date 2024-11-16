@@ -12,7 +12,7 @@
     </div>
     <div class="py-3">
         <div class="col-form-label symbol-description">
-            Step 2: Choose trade history file. See <span class="cursor blue-link" (click)="showInstructionsPopup(selectedbroker)">Instructions</span>
+            Step 2: Choose trade history file. See <span class="cursor blue-link" (click)="showInstructionsPopup(selectedBrokerage.id)">Instructions</span>
         </div>
         <input class="w-100" type="file" (change)="selectFile($event)" />
     </div>

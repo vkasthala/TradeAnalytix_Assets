@@ -24,7 +24,7 @@
                 <td>{{order.quantity}}</td>
                 <td>{{order.price}}</td>
                 <td>
-                    <span class="text-label small order-status-label green">{{order.status}}</span>
+                    <span class="text-label small order-status-label" [ngClass]="order.status === 'REJECTED' ? 'orange' : 'green'">{{order.status}}</span>
                 </td>
                 <td>
                     <span class="text-link" (click)="openIntradayOrderPopup('closed',order)">{{order.journal}}</span>
