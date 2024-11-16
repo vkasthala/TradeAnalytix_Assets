@@ -1,101 +1,127 @@
-<div class="sub-nav">
-    <a [routerLink]="['/import-trades-history/']" routerLinkActive="router-link-active"><span>Import Trades</span></a>
-    <a [routerLink]="['/stravtegies/']" routerLinkActive="router-link-active" class="active-item"><span>Trade History</span></a>
-</div>
-<div class="trade-strategies-sec">
-    <div class="main-body">
-        <div class="text-right p-3">
-            <!-- <div class="col-sm-8 pl-1">
-                <div class="summary-items" *ngIf="isOpenPositions">
-                    <div class="flex-item" *ngFor="let summary of summaryItems">
-                        <div class="flex-inner">
-                            <h3 class="text-secondary trade_count"
-                            [ngClass]="{'text-success': summary.id === 'max_gain', 'text-danger' : summary.id === 'max_loss' }">{{getSummaryValue(summary)}}</h3>
-                            <span class="trade_title">{{summary.name}}</span>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
 
-            <a class="bold-link mr-2" [routerLink]="['/bulk-update/']">Bulk&nbsp;Journal</a>
-            <span class="cursor ml-2" (click)="strategiesFilter()">
-                <span *ngIf="!showFilters" class="text-blue" data-toggle="tooltip" data-placement="top"
-                    title="Show Filters">Show Filters</span>
-                <span *ngIf="showFilters" class="text-primary" data-toggle="tooltip" data-placement="top"
-                    title="Close Filters">Hide Filters</span>
-            </span>
-        </div>
 
-        <div class="trade-strategies-table py-2 trade-strategies-filters">
-            <div *ngIf="showFilters" class="d-flex justify-content-between align-items-center">
-                <div class="trade-st-box pt-0 pb-2">
-                    <div class="st-slect-section">
-                        <div class="trade-form strategies_filter">
-                            <div class="form-group has-search">
-                                <app-trade-search (symbolSelectEvent)="symbolSelectEventHandler($event)"
-                                    #tradeSearchComponent>
-                                </app-trade-search>
-                                <mat-icon class="form-icon-down">search</mat-icon>
+<div class="reports-section">
+    <div class="trade-risk-tabs web-parent-reports">
+        <div class="tab" role="tabpanel">
+            <div class="reports-header">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="active" role="presentation">
+                        <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#openTrades" role="tab">Open Trades</a>
+                    </li>
+                    <li role="presentation">
+                        <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#closedTrades" role="tab">Closed Trades</a>
+                    </li>
+                </ul>
+            </div>
+
+            
+
+            <div class="position-relative p-3 tab-content tabs reports-tab-content">
+                <div class="text-right pb-3">
+                    <!-- <div class="col-sm-8 pl-1">
+                        <div class="summary-items" *ngIf="isOpenPositions">
+                            <div class="flex-item" *ngFor="let summary of summaryItems">
+                                <div class="flex-inner">
+                                    <h3 class="text-secondary trade_count"
+                                    [ngClass]="{'text-success': summary.id === 'max_gain', 'text-danger' : summary.id === 'max_loss' }">{{getSummaryValue(summary)}}</h3>
+                                    <span class="trade_title">{{summary.name}}</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="st-slect-section">
-                        <div class="trade-sel position-relative">
-                            <span class="custom-label" *ngIf="strategyLabel">Strategy Type</span>
-                            <select class="form-control select-input" id="strategy_inputState"
-                                [(ngModel)]='strategiesGridFilter.strategy' (change)='onOptionsSelected($event)'
-                                name="strategy">
-                                <option *ngFor="let key of strategyTypes" [value]="key" [label]="strategies[key]">
-                                </option>
-                            </select>
-                            <mat-icon class="form-icon-down">keyboard_arrow_down</mat-icon>
-                        </div>
-                    </div>
-                    <!-- <div class="st-slect-section">
-                        <div class="trade-sel position-relative">
-                            <span class="custom-label" *ngIf="statusLabel">Status</span>
-                            <select class="form-control" id="tradeStrategyStatusFilter" [(ngModel)]='strategiesGridFilter.status' (change)='onOptionsSelected($event)'>
-                                    <option *ngFor="let key of tradeStatusNames" [value]="key"
-                                        [label]="tradeStatues[key]"></option>
-                                </select>
-                            <mat-icon class="form-icon-down">keyboard_arrow_down</mat-icon>
-                        </div>
                     </div> -->
+        
+                    <a class="bold-link mr-2" [routerLink]="['/bulk-update/']">Bulk&nbsp;Journal</a>
+                    <span class="cursor ml-2" (click)="strategiesFilter()">
+                        <span *ngIf="!showFilters" class="text-blue" data-toggle="tooltip" data-placement="top"
+                            title="Show Filters">Show Filters</span>
+                        <span *ngIf="showFilters" class="text-primary" data-toggle="tooltip" data-placement="top"
+                            title="Close Filters">Hide Filters</span>
+                    </span>
+                </div>
 
-                    <div class="st-slect-section">
-                        <!-- <mat-form-field appearance="fill">
-                            <mat-label>Enter a date range</mat-label>
-                            <mat-date-range-input [rangePicker]="picker">
-                            <input matStartDate placeholder="Start date">
-                            <input matEndDate placeholder="End date">
-                            </mat-date-range-input>
-                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                            <mat-date-range-picker #picker></mat-date-range-picker>
-                        </mat-form-field>
-                        <mat-form-field class="example-full-width" appearance="fill">
-                            <mat-label>Choose a date</mat-label>
-                            <input matInput [matDatepicker]="picker">
-                            <mat-datepicker-toggle matSuffix [for]="picker">
-                            <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
-                            </mat-datepicker-toggle>
-                            <mat-datepicker #picker></mat-datepicker>
-                        </mat-form-field> -->
-                        <div class="trade-date date-range-md">
-                            <my-date-range-picker placeholder="Date range" name="mydaterange"
-                                [options]="myDateRangePickerOptions" (dateRangeChanged)="onDateRangeChanged($event)">
-                            </my-date-range-picker>
+                <div *ngIf="showFilters" class="d-flex justify-content-between align-items-center">
+                    <div class="trade-st-box pt-0 pb-2">
+                        <div class="st-slect-section">
+                            <div class="trade-form strategies_filter">
+                                <div class="form-group has-search">
+                                    <app-trade-search (symbolSelectEvent)="symbolSelectEventHandler($event)"
+                                        #tradeSearchComponent>
+                                    </app-trade-search>
+                                    <mat-icon class="form-icon-down">search</mat-icon>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class=" st-slect-section select-btn">
-                        <a href="javascript:void(0)" class="btn btn-apply mr-2" (click)="applyFilters()">Apply</a>
-
-                        <a href="javascript:void(0)" class="btn btn-outline-primary btn-clear ml-1" (click)="clearFilters()">Clear</a>
+                        <div class="st-slect-section">
+                            <div class="trade-sel position-relative">
+                                <span class="custom-label" *ngIf="strategyLabel">Strategy Type</span>
+                                <select class="form-control select-input" id="strategy_inputState"
+                                    [(ngModel)]='strategiesGridFilter.strategy' (change)='onOptionsSelected($event)'
+                                    name="strategy">
+                                    <option *ngFor="let key of strategyTypes" [value]="key" [label]="strategies[key]">
+                                    </option>
+                                </select>
+                                <mat-icon class="form-icon-down">keyboard_arrow_down</mat-icon>
+                            </div>
+                        </div>
+                        <!-- <div class="st-slect-section">
+                            <div class="trade-sel position-relative">
+                                <span class="custom-label" *ngIf="statusLabel">Status</span>
+                                <select class="form-control" id="tradeStrategyStatusFilter" [(ngModel)]='strategiesGridFilter.status' (change)='onOptionsSelected($event)'>
+                                        <option *ngFor="let key of tradeStatusNames" [value]="key"
+                                            [label]="tradeStatues[key]"></option>
+                                    </select>
+                                <mat-icon class="form-icon-down">keyboard_arrow_down</mat-icon>
+                            </div>
+                        </div> -->
+    
+                        <div class="st-slect-section">
+                            <!-- <mat-form-field appearance="fill">
+                                <mat-label>Enter a date range</mat-label>
+                                <mat-date-range-input [rangePicker]="picker">
+                                <input matStartDate placeholder="Start date">
+                                <input matEndDate placeholder="End date">
+                                </mat-date-range-input>
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-date-range-picker #picker></mat-date-range-picker>
+                            </mat-form-field>
+                            <mat-form-field class="example-full-width" appearance="fill">
+                                <mat-label>Choose a date</mat-label>
+                                <input matInput [matDatepicker]="picker">
+                                <mat-datepicker-toggle matSuffix [for]="picker">
+                                <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+                                </mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                            </mat-form-field> -->
+                            <div class="trade-date date-range-md">
+                                <my-date-range-picker placeholder="Date range" name="mydaterange"
+                                    [options]="myDateRangePickerOptions" (dateRangeChanged)="onDateRangeChanged($event)">
+                                </my-date-range-picker>
+                            </div>
+                        </div>
+    
+                        <div class=" st-slect-section select-btn">
+                            <a href="javascript:void(0)" class="btn btn-apply mr-2" (click)="applyFilters()">Apply</a>
+    
+                            <a href="javascript:void(0)" class="btn btn-outline-primary btn-clear ml-1" (click)="clearFilters()">Clear</a>
+                        </div>
                     </div>
                 </div>
+
+                <div class="tab-pane active" id="openTrades" role="tabpanel">
+                    <app-portfolio-grid #portfolioGrid>loading</app-portfolio-grid>
+                </div>
+                <div class="tab-pane" id="closedTrades" role="tabpanel">
+                    <app-history-grid #historyGrid>loading</app-history-grid>
+                </div>
             </div>
-            
-            <!-- start : Tabs section -->
+        </div>
+    </div>
+</div>
+
+
+<!-- <div class="trade-strategies-sec">
+    <div class="main-body">
+        <div class="trade-strategies-table py-2 trade-strategies-filters">
             <mat-horizontal-stepper labelPosition="left" #stepper [linear]="false" (selectionChange)="selectionChange($event)">
                 <mat-step [class.active]="stepone.completed" label="Open Positions" #stepone>
                     <ng-template matStepLabel>Open Trades</ng-template>
@@ -103,30 +129,28 @@
                         <app-portfolio-grid #portfolioGrid>loading</app-portfolio-grid>
                     </div>
                 </mat-step>
-                <!-- <mat-step label="Draft Trades">
+                <mat-step label="Draft Trades">
                     <ng-template matStepLabel>Draft Trades</ng-template>
                     <div class="stepper-content">
                         <app-draft-trades-grid #draftTradesGrid>loading</app-draft-trades-grid>
                     </div>
-                </mat-step> -->
+                </mat-step>
                 <mat-step label="Closed Positions">
                     <ng-template matStepLabel>Closed Trades</ng-template>
                     <div class="stepper-content">
                         <app-history-grid #historyGrid>loading</app-history-grid>
                     </div>
                 </mat-step>
-                <!-- <mat-step label="Shared Trades">
+                <mat-step label="Shared Trades">
                     <ng-template matStepLabel>Community Trades<img src="../../../../assets/images/beta-icon.png" class="beta-icon"/></ng-template>
                     <div class="stepper-content">
                         <app-community-trades-grid #draftTradesGrid>loading</app-community-trades-grid>
                     </div>
-                </mat-step> -->
+                </mat-step>
             </mat-horizontal-stepper>
-            <!-- Grid row -->
-
         </div>
     </div>
-</div>
+</div> -->
 
 
 <!-- for-mobile -->

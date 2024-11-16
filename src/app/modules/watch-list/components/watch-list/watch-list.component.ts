@@ -359,8 +359,7 @@ export class WatchListComponent implements OnInit {
   }
 
   modifyOrder(orderId : string) {
-    // this.loader = true;
-    this.showOrdersModal = true;
+    this.loader = true;
     this._omsService.getEditOrderDetail(orderId).subscribe(response =>{
       if(response){
         const marginRequest = {
