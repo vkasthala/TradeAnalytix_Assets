@@ -74,7 +74,9 @@ export class WatchListComponent implements OnInit {
 
     _sharedService.orderModifyEvent.subscribe(
       (orderData) => {
-        console.log(orderData);
+        this.marginsSource = orderData;
+        this.marginsSource.instrument = orderData.instrument;
+        this.marginsSource.trading_symbol = orderData.instrument.actualSymbol;
         this.modifyOrder(orderData.orderId);
       }
     );

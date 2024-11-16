@@ -33,4 +33,5 @@ export class Margins {
     margin: number | undefined;
     charges: number | undefined;
     availableMargin: number | undefined;
+    trading_symbol: string | undefined;
 }

@@ -96,7 +96,7 @@ export function playerFactory() {
     NgxPlaidLinkModule,
     ToastrModule.forRoot({
       timeOut: 1500,
-      positionClass: 'toast-top-center',
+      positionClass: 'toast-bottom-right',
       preventDuplicates: false
     }),
     SharedModule.forRoot(),

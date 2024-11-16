@@ -81,7 +81,7 @@ export interface OrderPurchasehistory{
     type: string;
     instrument: InstrumentResponse;
     product: string;
-    quantity: number;
+    quantity: any;
     ltp: number;
     price: number;
     status: string;

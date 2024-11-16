@@ -188,7 +188,6 @@ export class OrdersModalComponent implements OnInit {
 
   modifyOrder(orderRules: OrderRuleDto, orderId:any){
     this._sharedService.loaderEvent.emit(true);
-    console.log("modify");
     let price = this.getPrice();
     if(!this.isValid(price)){
       this.displayNearestValidPriceErrorMsg(price)
