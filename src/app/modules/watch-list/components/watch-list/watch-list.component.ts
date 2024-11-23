@@ -78,6 +78,10 @@ export class WatchListComponent implements OnInit {
         this.marginsSource.instrument = orderData.instrument;
         this.marginsSource.trading_symbol = orderData.instrument.actualSymbol;
         this.marginsSource.transaction_type = orderData.type;
+        this.orderToggle = true;
+        if (orderData.type === 'BUY') {
+          this.orderToggle = false;
+        }
         this.modifyOrder(orderData.orderId);
       }
     );
