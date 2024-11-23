@@ -31,14 +31,14 @@
                 <td class="text-right">{{rowData.ltp | number:'1.2-2'}}</td>
                 <td class="text-right"><span class="text-green" [ngClass]="rowData.day_p_and_l > -1 ? 'text-green' : 'text-red'">{{rowData.day_p_and_l | number:'1.2-2'}}</span></td>
                 <td>
-                    <span data-balloon="Buy (B)" data-balloon-pos="up">
+                    <!-- <span data-balloon="Buy (B)" data-balloon-pos="up">
                         <button type="button" class="btn btn-xs buy"
                             (click)="add(rowData)">BUY</button>
                     </span>
                     <span data-balloon="Sell (S)" data-balloon-pos="up">
                         <button type="button" class="btn btn-xs sell ml-2"
                             (click)="add(rowData)">SELL</button>
-                    </span>
+                    </span> -->
                 </td>
             </tr>
             
@@ -90,14 +90,14 @@
             </div>
 
             <div class="flex6 text-right">
-                <span data-balloon="Buy (B)" data-balloon-pos="up">
+                <!-- <span data-balloon="Buy (B)" data-balloon-pos="up">
                     <button type="button" class="btn btn-xs buy"
                         (click)="add(rowData)">BUY</button>
                 </span>
                 <span data-balloon="Sell (S)" data-balloon-pos="up">
                     <button type="button" class="btn btn-xs sell ml-2"
                         (click)="add(rowData)">SELL</button>
-                </span>
+                </span> -->
             </div>
             
         </div>
