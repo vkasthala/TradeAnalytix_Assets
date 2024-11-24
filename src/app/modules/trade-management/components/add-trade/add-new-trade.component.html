@@ -1,7 +1,7 @@
 <div class="addnew-trade">
     <div class="sub-nav bg-white">
-        <a [routerLink]="['/import-trades-history/']" routerLinkActive="router-link-active"><span>Import Trades</span></a>
-        <a [routerLink]="['/stravtegies/']" routerLinkActive="router-link-active" class="active-item"><span>Trade History</span></a>
+        <a [routerLink]="['/stravtegies/']" routerLinkActive="router-link-active" [ngClass]="!tradeStrategy.closeDate ? 'active-item' : ''"><span>Open Trades</span></a>
+        <a [routerLink]="['/stravtegies/']" routerLinkActive="router-link-active" [ngClass]="tradeStrategy.closeDate ? 'active-item' : ''"><span>Closed Trades</span></a>
     </div>
     
     <ng-container [ngSwitch]="currentState">
