@@ -32,8 +32,8 @@ export class HistoryGrid implements AfterViewInit, OnInit {
   protected Loader = false;
   expandIndex: any;
   // displayedColumns = ['action', 'stockName', 'id', 'openDate', 'closeDate', 'strategy', 'direction', 'journaled', 'netR', 'maxLoss', 'return', 'tags'];
-  // Remove id to remove identifier and direction column from the open strategies grid
-  displayedColumns = ['action', 'stockName', 'openDate', 'closeDate', 'strategy', 'journaled', 'netR', 'maxLoss', 'return', 'tags'];
+  // Remove id to remove identifier, direction and maxLoss column from the open strategies grid
+  displayedColumns = ['action', 'stockName', 'openDate', 'closeDate', 'strategy', 'journaled', 'netR', 'return', 'tags'];
   pageSize: number = 20
 
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
