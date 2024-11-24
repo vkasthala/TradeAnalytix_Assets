@@ -38,18 +38,18 @@
         
     </table>
 </div>
-<!-- <div class="gtt-list cards" *ngIf="isMobileDevice">
+<div class="gtt-list cards" *ngIf="isMobileDevice">
     <div class="card" *ngFor = "let order of executedOrders">
-        <div class="top flex">
+        <div class="top flex px-3">
             <div class="flex4">
                 <span class="text-label transaction-type-label" [ngClass]="order.type === 'SELL' ? 'orange' : 'blue'">{{order.type}}</span>
-                <span class="text-label small order-status-label green ml-1">{{order.status}}</span>
+                <span class="text-label small order-status-label ml-2" [ngClass]="order.status === 'REJECTED' ? 'orange' : 'green'">{{order.status}}</span>
             </div>
             <div class="flex4 text-right text-small">
                 <span class="dim">{{order.time}}</span>
             </div>
         </div>
-        <div class="middle flex">
+        <div class="middle flex px-3">
             <div class="flex6">
                 <span>{{order.instrument.symbol}}</span>
                 <span class="text-xsmall dim ml-2">{{order.product}}</span>
@@ -60,7 +60,7 @@
             </div>
         </div>
     </div>
-</div> -->
+</div>
 
 <app-orders-modal *ngIf="showOrdersModal" [orderToggle]="orderToggle" [margins]="marginsSource"
     (cancelOrder)="closeModal()"></app-orders-modal>

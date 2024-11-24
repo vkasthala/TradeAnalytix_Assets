@@ -86,6 +86,16 @@ export class OpenOrdersComponent implements OnInit {
   }
 
   modifyOrder(order : any) {
+    this.showOrdersModal = true;
+    this.marginsSource = order;
+    this.marginsSource.instrument = order.instrument;
+    this.marginsSource.trading_symbol = order.instrument.actualSymbol;
+    this.marginsSource.transaction_type = order.type;
+    this.orderToggle = true;
+    if (order.type === 'BUY') {
+      this.orderToggle = false;
+    }
+    
     this._sharedService.loaderEvent.emit(true);
     let orderId = order.order_id
     this._orderService.getEditOrderDetail(orderId).subscribe(response =>{

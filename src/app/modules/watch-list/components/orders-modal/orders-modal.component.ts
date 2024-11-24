@@ -21,6 +21,7 @@ export class OrdersModalComponent implements OnInit {
   orderPlacementPrice: number = 0;
   isOrderModify: boolean = false;
   ltp: number = 0;
+  isMobileDevice: any;
 
   loader: boolean = false;
   @Input() isPositionsOrder: boolean=false;
@@ -38,6 +39,7 @@ export class OrdersModalComponent implements OnInit {
     this.isOrderModify = this.margins.orderId != null;
     this.orderPlacementPrice = this.margins.price;
     this.ltp = this.margins.price;
+    this.checkDevice();
   }
 
   closePopup() {
@@ -327,6 +329,19 @@ export class OrdersModalComponent implements OnInit {
     }
 
     this.calculateMargin();
+  }
+
+  checkDevice() {
+    setTimeout(() => {
+      const agent = window.navigator.userAgent.toLowerCase();
+      let regexp = /android|iphone|kindle|ipad/i;
+      let deviceType = regexp.test(agent);
+      if (deviceType) {
+        this.isMobileDevice = true;
+      } else {
+        this.isMobileDevice = false;
+      }
+    }, 100)
   }
 
 }

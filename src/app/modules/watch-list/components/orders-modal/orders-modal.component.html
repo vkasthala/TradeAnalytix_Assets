@@ -1,4 +1,7 @@
-<div class="example-box" cdkDrag>
+<div class="example-box" [ngClass]="isMobileDevice ? 'order-popup' : ''" cdkDrag>
+    <div class="mobile-header-nav" *ngIf="isMobileDevice">
+        <mat-icon class="material-icons mat-icon cursor" (click)="closePopup()">keyboard_backspace</mat-icon>
+    </div>
     <form data-drag-boundary="true" class="order-window layer-2 place" [ngClass]="orderToggle ? 'sell' : 'buy' ">
         <header>
             <div class="d-flex">

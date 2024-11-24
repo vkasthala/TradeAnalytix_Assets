@@ -40,7 +40,7 @@
                 <td>{{order.price}}</td>
                 
                 <td>
-                    <span class="text-label small order-status-label caps">{{order.status}}</span>
+                    <span class="text-label small order-status-label caps blue">{{order.status}}</span>
                 </td>
                 <!-- <td><span class="text-link" (click)="openIntradayOrder(order)">{{order.journal}}</span></td> -->
                 <td>
@@ -66,28 +66,28 @@
 
 <div class="gtt-list cards" *ngIf="isMobileDevice">
     <div class="mb-2 d-flex justify-content-between">
-        <span>
+        <!-- <span>
             <input type="checkbox" [(ngModel)]="selectAll" 
             (change)="toggleSelectAll()" 
             [checked]="selectAll"
             />
-        </span>
+        </span> -->
         <div *ngIf="cancelOrdersList.length > 0">
             <button type="button" class="button button-small button-blue" (click)="openCancelOrderPopup()">Cancel {{cancelOrdersList.length}} orders</button>
         </div>
     </div>
     <!-- card:: start -->
     <div class="card" *ngFor = "let order of openOrders">
-        <div class="top flex">
+        <div class="top flex px-3">
             <div class="flex6">
-                <input type="checkbox" [(ngModel)]="order.selected" (change)="toggleOrder(order)" />
-                <span class="text-label small order-status-label green ml-2">{{order.status}}</span>
+                <!-- <input type="checkbox" [(ngModel)]="order.selected" (change)="toggleOrder(order)" /> -->
+                <span class="text-label small order-status-label caps blue">{{order.status}}</span>
             </div>
             <div class="flex6 text-right text-small">
                 <span class="dim">{{order.time}}</span>
             </div>
         </div>
-        <div class="middle flex">
+        <div class="middle flex px-3">
             <div class="flex6">
                 {{order.instrument.symbol}}
             </div>
@@ -96,7 +96,7 @@
                 <span class="text-label transaction-type-label" [ngClass]="order.type === 'SELL' ? 'orange' : 'blue'">{{order.type}}</span>
             </div>
         </div>
-        <div class="flex">
+        <div class="flex px-3">
             <div class="flex6">
                 <span>{{order.price}}</span>
                 <span class="ml-2">
@@ -105,14 +105,13 @@
                 </span>
             </div>
             <div class="flex6 text-right">
-                <button type="button" class="button button-xsmall button-outline button-blue" (click)="editOrder(order)"><span class="icon icon-edit"></span> Edit</button> 
-                <button type="button" class="button button-xsmall button-outline ml-2" (click)="openIntradayOrder(order)">{{order.journal}}</button>
-                <!-- <button type="button" class="button button-xsmall button-outline ml-2" (click)="cancelOrder(order)">Cancel</button> -->
+                <span type="button" class="link blue-link" (click)="editOrder(order)">EDIT</span> 
+                <span type="button" class="link blue-link ml-3" (click)="cancelOrder(order)">CANCEL</span>
             </div>
         </div>
         
     </div>
     <!-- card:: end -->
-    <!-- <app-orders-modal *ngIf="showOrdersModal" [orderToggle]="orderToggle" [margins]="marginsSource"
-    (cancelOrder)="closeModal()"></app-orders-modal> -->
+    <app-orders-modal *ngIf="showOrdersModal" [orderToggle]="orderToggle" [margins]="marginsSource"
+    (cancelOrder)="closeModal()"></app-orders-modal>
 </div>
