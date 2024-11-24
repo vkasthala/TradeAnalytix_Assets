@@ -60,11 +60,11 @@
       </ng-container>
 
       <!-- Direction Column -->
-      <ng-container matColumnDef="direction">
+      <!-- <ng-container matColumnDef="direction">
         <mat-header-cell class="direction-cell" *matHeaderCellDef mat-sort-header>Direction</mat-header-cell>
         <mat-cell *matCellDef="let element" class="text-danger direction-cell"> {{element.direction}}
         </mat-cell>
-      </ng-container>
+      </ng-container> -->
 
       <!-- Journaled Column -->
       <ng-container matColumnDef="journaled">
@@ -91,7 +91,7 @@
       
       <!-- Realized Return Column -->
       <ng-container matColumnDef="return">
-        <mat-header-cell class="return-cell" *matHeaderCellDef mat-sort-header>Realized Return</mat-header-cell>
+        <mat-header-cell class="return-cell" *matHeaderCellDef mat-sort-header>Return</mat-header-cell>
         <mat-cell class="return-cell" *matCellDef="let element"> 
           {{element.returnAmount | number: '1.0-0'}} 
           
