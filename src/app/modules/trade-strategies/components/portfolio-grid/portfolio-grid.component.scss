@@ -53,8 +53,8 @@ th.mat-header-cell {
   flex: 0 0 7% !important;
 }
 .journal-cell{
-  width: 7%;
-  flex: 0 0 7% !important;
+  width: 5%;
+  flex: 0 0 5% !important;
   justify-content: center;
 }
 .netR-cell {
@@ -72,13 +72,14 @@ th.mat-header-cell {
   flex: 0 0 10% !important;
 }
 .return-cell, .total-amount-cell {
-  width: 12%;
-  flex: 0 0 12% !important;
+  width: 10%;
+  flex: 0 0 10% !important;
 }
 
 .close-date-cell{
-  width: 12%;
-  flex: 0 0 12% !important;
+  width: 6%;
+  flex: 0 0 6% !important;
+  justify-content: end;
 }
 .shared-cell{
   width: 8%;
@@ -86,8 +87,10 @@ th.mat-header-cell {
 }
 
 .tags-cell {
-  width: 30%;
-  flex: 0 0 30% !important;
+  width: 50%;
+  flex: 0 0 50% !important;
+  padding-left: 20px;
+  justify-content: left;
 }
 .action-cell {
   width: 7%;

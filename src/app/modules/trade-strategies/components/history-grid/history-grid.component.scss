@@ -82,6 +82,7 @@ th.mat-header-cell {
 }
 .netR-cell {
   width: 6%;
+  justify-content: end;
   flex: 0 0 6% !important;
 }
 .direction_arrow .material-icons {
@@ -237,9 +238,10 @@ th.mat-header-cell {
 }
 
 .stock-name-tags {
-  width: 30%;
-  padding-left: 10px;
-  flex: 0 0 30% !important;
+  width: 50%;
+  padding-left: 30px;
+  justify-content: left;
+  flex: 0 0 50% !important;
 }
 .return-cell {
   justify-content: end;
