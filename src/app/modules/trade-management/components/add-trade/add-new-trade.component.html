@@ -77,7 +77,7 @@
                                 </app-trade-details>
 
                                 <div class="closed-legs-sec" *ngIf="!add && tradeStrategy.statusId !=4">
-                                    <div class="cursor closed-legs-header pb-0" (click)="showClosedLegs()">
+                                    <!-- <div class="cursor closed-legs-header pb-0" (click)="showClosedLegs()">
                                         <div class="closed-legs-title">
                                             <span>Closed Positions</span>
                                             <i class="negative-amt material-icons"
@@ -85,7 +85,7 @@
                                             <i class="negative-amt material-icons"
                                                 *ngIf="!closedLegs">keyboard_arrow_right</i>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="closed-legs-body pt-1" *ngIf="closedLegs && tradeHistory">
                                         <div class="text-center" *ngIf="tradeHistory.stockLegHistories.length === 0 && tradeHistory.optionLegHistories.length === 0">
                                             No closed positions

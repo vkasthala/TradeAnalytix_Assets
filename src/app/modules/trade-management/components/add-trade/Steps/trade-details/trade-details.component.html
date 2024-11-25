@@ -72,7 +72,7 @@
                 </span>
             </div>
             <div class="trade-cards-section" *ngIf="stockAdded && !viewTrade">
-                <h4>Stock Positions</h4>
+                <!-- <h4>Stock Positions</h4> -->
                 <div class="trade-card-box">
                     <!-- <div class="card-main card-main-actions" *ngIf="tradeStatus !== 4">
                         <label class="col-form-label pt-0">Transaction Date</label>
@@ -166,11 +166,11 @@
             <div class="trade-cards-section mt-3" *ngIf="stockOptions.length">
                 <mat-accordion class="example-headers-align w-100" multi="true">
                     <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
-                        <mat-expansion-panel-header>
+                        <!-- <mat-expansion-panel-header>
                             <mat-panel-title>
                                 Option Positions
                             </mat-panel-title>
-                        </mat-expansion-panel-header>
+                        </mat-expansion-panel-header> -->
                         <ng-template matExpansionPanelContent>
                             <ng-container>
                                 <div class="trade-card-box mt-0">
