@@ -151,29 +151,29 @@ export class ReportTypeService {
     reportSubType.reportDetailList = [new ReportDetails('net_return_trade_tags', 'Net Return by Tag', ReportCategory.Net_Return_Tag, "This report shows the realized return by tag"), new ReportDetails('win_loss_trade_tags', 'Win/Loss by Tag', ReportCategory.Win_Loss_Tag, "This report shows the number of winning and losing trades by tag")];
     reportSubTypes.push(reportSubType);
 
-    reportSubType = new ReportSubType();
-    reportSubType.name = 'Technical Indicator';
-    reportSubType.id = "technical_indicator";
-    reportSubType.reportDetailList = [new ReportDetails('net_return_technicalindicator', 'Net Return by Technical Indicator', ReportCategory.Net_Return, "This report shows the realized return by the technical indicator used for trade strategy"), new ReportDetails('win_loss_technicalindicator', 'Win/Loss by Technical Indicator', ReportCategory.Win_Loss, "This report shows the number of winning and losing trades by the technical indicator used for trade strategy")];
-    reportSubTypes.push(reportSubType);
+    // reportSubType = new ReportSubType();
+    // reportSubType.name = 'Technical Indicator';
+    // reportSubType.id = "technical_indicator";
+    // reportSubType.reportDetailList = [new ReportDetails('net_return_technicalindicator', 'Net Return by Technical Indicator', ReportCategory.Net_Return, "This report shows the realized return by the technical indicator used for trade strategy"), new ReportDetails('win_loss_technicalindicator', 'Win/Loss by Technical Indicator', ReportCategory.Win_Loss, "This report shows the number of winning and losing trades by the technical indicator used for trade strategy")];
+    // reportSubTypes.push(reportSubType);
 
-    reportSubType = new ReportSubType();
-    reportSubType.name = 'Source';
-    reportSubType.id = "source";
-    reportSubType.reportDetailList = [new ReportDetails('net_return_source', 'Net Return by Source', ReportCategory.Net_Return, "This report shows the realized return by the source of the trade idea"), new ReportDetails('win_loss_source', 'Win/Loss by Source', ReportCategory.Win_Loss, "This report shows the number of winning and losing trades by the source of trade idea")];
-    reportSubTypes.push(reportSubType);
+    // reportSubType = new ReportSubType();
+    // reportSubType.name = 'Source';
+    // reportSubType.id = "source";
+    // reportSubType.reportDetailList = [new ReportDetails('net_return_source', 'Net Return by Source', ReportCategory.Net_Return, "This report shows the realized return by the source of the trade idea"), new ReportDetails('win_loss_source', 'Win/Loss by Source', ReportCategory.Win_Loss, "This report shows the number of winning and losing trades by the source of trade idea")];
+    // reportSubTypes.push(reportSubType);
 
-    reportSubType = new ReportSubType();
-    reportSubType.name = 'Events';
-    reportSubType.id = "event";
-    reportSubType.reportDetailList = [new ReportDetails('net_return_events', 'Net Return by Events', ReportCategory.Net_Return, "This report shows the realized return by the event that trigerred to open the trade"), new ReportDetails('win_loss_events', 'Win/Loss by Events', ReportCategory.Win_Loss, "This report shows the number of winning and losing trades by the event that trigerred to open the trade")];
-    reportSubTypes.push(reportSubType);
+    // reportSubType = new ReportSubType();
+    // reportSubType.name = 'Events';
+    // reportSubType.id = "event";
+    // reportSubType.reportDetailList = [new ReportDetails('net_return_events', 'Net Return by Events', ReportCategory.Net_Return, "This report shows the realized return by the event that trigerred to open the trade"), new ReportDetails('win_loss_events', 'Win/Loss by Events', ReportCategory.Win_Loss, "This report shows the number of winning and losing trades by the event that trigerred to open the trade")];
+    // reportSubTypes.push(reportSubType);
 
-    reportSubType = new ReportSubType();
-    reportSubType.name = 'Mindset';
-    reportSubType.id = "mindset";
-    reportSubType.reportDetailList = [new ReportDetails('net_return_mindset', 'Net Return by Mindset', ReportCategory.Net_Return, "This report shows the realized return by your mindset at the time of initiating the trade"), new ReportDetails('win_loss_mindset', 'Win/Loss by Mindset', ReportCategory.Win_Loss, "This report shows the number of winning and losing trades by your mindset at the time of initiating the trade")];
-    reportSubTypes.push(reportSubType);
+    // reportSubType = new ReportSubType();
+    // reportSubType.name = 'Mindset';
+    // reportSubType.id = "mindset";
+    // reportSubType.reportDetailList = [new ReportDetails('net_return_mindset', 'Net Return by Mindset', ReportCategory.Net_Return, "This report shows the realized return by your mindset at the time of initiating the trade"), new ReportDetails('win_loss_mindset', 'Win/Loss by Mindset', ReportCategory.Win_Loss, "This report shows the number of winning and losing trades by your mindset at the time of initiating the trade")];
+    // reportSubTypes.push(reportSubType);
 
     // reportSubType = new ReportSubType();
     // reportSubType.name = 'Stock Price Range';
