@@ -12,7 +12,7 @@
 <div class="import-body">
     <div class="import-container">
         <div class="import_trade_header">
-            <span class="header-title">{{importType == 1 ? "Manual Import" : "Auto-Import" }}</span>
+            <span class="header-title">{{importType == 1 ? "Upload Trades from Your Brokerage" : "Auto-Import" }}</span>
             <div class="d-flex align-items-center justify-content-end">
                 <label class="col-form-label px-3 w-auto">Select Import Type</label>
                 <select [(value)]="importType" (change)="selectionChange($event.target.value)" class="form-control w-auto">
