@@ -30,7 +30,7 @@
          Step 3: Upload file to add your trades to CueTrade
         </div>
         <button class="btn btn-enter btn-sm" *ngIf="!processing && !isDemoMode" [disabled]="!selectedFiles && !selectedOptionFiles"
-                (click)="importTrades()">UPLOAD TRADES</button>
+                (click)="importTrades()">Upload Trades</button>
             <mat-spinner [diameter]="30" *ngIf="processing"></mat-spinner>
     </div>
 <!-- Venkat commented this to reduce the number of steps
