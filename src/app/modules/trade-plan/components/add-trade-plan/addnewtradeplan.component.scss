@@ -6,7 +6,7 @@
     background: #FFFFFF;
     // box-shadow: 0px 4px 16px rgba(157, 157, 157, 0.4);
     position: relative;
-    padding: 10px 1rem;
+    padding: 10px 2rem;
 }
 .trade-plan-header {
     font-weight: 600;
@@ -30,7 +30,7 @@
         text-decoration: none;
     }
     li.active a {
-        color: #4A69CB;
+        color: #2469FF;
     }
 }
 
@@ -383,7 +383,7 @@ textarea {
 
 .col-form-label {
     font-weight: 600;
-    color: #4A69CB;
+    color: #2469FF;
     font-size: 15px;
 }
 
@@ -428,7 +428,7 @@ textarea.form-control {
 }
 
 .add-new {
-    color: #4A69CB;
+    color: #2469FF;
     text-decoration: none;
     cursor: pointer;
     font-size: 15px;
@@ -543,16 +543,17 @@ td.mat-cell {
     background:#f1f3f5;
     font-weight: 600;
     font-size: 15px;               // font size of trade plan dates
-    line-height: 24px;
+    line-height: 32px;
+    justify-content: center;
     color: #000000;             //color of the date and delete icon for the inactive trade plana
     .date-filter-header {
         display: flex;
         align-items: center;
         justify-content: space-around;
-        background: #4A69CB;
+        background: #2469FF;
         color: #fff;
-        height: 42px;
-        margin-top: 12px;
+        height: 50px;
+        margin-top: 6px;
         padding: 12px;
     }
     .title {
@@ -573,7 +574,7 @@ td.mat-cell {
             padding: 0.5rem;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
             &:hover .delete_date {
                 display: block;
             }
@@ -582,11 +583,12 @@ td.mat-cell {
             background:#fff;
             color: #000000;  //color of the date and delete icon for the active trade plan
             font-size: 15px;
+            justify-content: center;
         }
     }
 }
 .new-plan {
-    background-color: #4A69CB ;
+    background-color: #2469FF ;
     color: $white;
     font-size: 15px;
     padding: 0.375rem 16px !important;
@@ -600,13 +602,13 @@ td.mat-cell {
     }
 }
 .trade-plan-lt {
-    max-width: 10%;
-    flex: 0 0 10%;
+    max-width: 14%;
+    flex: 0 0 14%;
     padding: 0;
 }
 .trade-plan-rt {
-    max-width: 88%;
-    flex: 0 0 88%;
+    max-width: 82%;
+    flex: 0 0 82%;
     padding-right: 0;
 }
 .mat-expansion-panel {
@@ -663,7 +665,7 @@ left: 26px;
 .switch input[type="checkbox"]:checked + label {
 background-color: $primary;
 @media #{$extra-small} {
-    background-color: #4A69CB;
+    background-color: #2469FF;
 }
 }
 .switch input[type="checkbox"]:not(:checked) + label {
@@ -722,7 +724,7 @@ background-color: $primary;
   }
 
   .toggle input:checked+.slider {
-    background-color: #4A69CB;
+    background-color: #2469FF;
   }
 
   .toggle input:checked+.slider::before {
@@ -852,7 +854,7 @@ th.mat-header-cell {
 }
 
 .btn-enter {
-    background: #4A69CB;
+    background: #2469FF;
     border-radius: 8px;
     color: $white;
     padding: 5px 20px !important;
@@ -869,8 +871,8 @@ th.mat-header-cell {
 }
 .btn-save {
     color: #fff !important;
-    background: #4A69CB;
-    border-color: #4A69CB !important;
+    background: #2469FF;
+    border-color: #2469FF !important;
     height: 40px;
     display: flex !important;
     align-items: center;
@@ -893,9 +895,9 @@ th.mat-header-cell {
 }
 .btn-outline-black {
     background: transparent;
-    border: 1px solid #4A69CB;
+    border: 1px solid #2469FF;
     border-radius: 4px;
-    color: #4A69CB;
+    color: #2469FF;
     font-size: 15px;
     padding: 0.25rem 0.5rem !important;
     display: flex;
