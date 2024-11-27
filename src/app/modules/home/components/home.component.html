@@ -146,7 +146,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">
-            <span class="">Connect to Your Brokerage</span>
+            <span class="">Connect to your Brokerage and Start Trading</span>
         </h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeBrokerageModal()">
             <span aria-hidden="true">&times;</span>
@@ -155,11 +155,12 @@
         <div class="modal-body pt-0">
             <form>
                 <div class="col-10 p-0">
-                  <label class="col-form-label">Log in to your brokerage account to execute trades directly from CueTrade</label>
+                  <label class="col-form-label" style="margin-top: 10px;">Choose FYERS to trade directly, or select SnapTrade to access multiple brokers.</label>  
+                  <!-- <label class="col-form-label">Choose FYERS to trade directly, or select SnapTrade to access multiple brokers.</label> -->
                   <select (change)="onBrokerageChange($event.target.value)" class="form-control mb-3">
                     <option value="0">Select your brokerage</option>
                     <option value="FYERS">FYERS</option>
-                    <option value="Zerodha">SnapTrade Brokerages</option>
+                    <option value="Zerodha">SnapTrade</option>
                   </select>
                 </div>
               </form>
