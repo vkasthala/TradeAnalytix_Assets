@@ -169,7 +169,7 @@ export class OrdersModalComponent implements OnInit {
     return true;
   }
 
-   findNearestValidTickSize(number: number): number[] {
+  findNearestValidTickSize(number: number): number[] {
     const roundedNumber: number = Number(number.toFixed(2));
     const lowerTick = Math.floor(roundedNumber / 0.05) * 0.05;
     const upperTick = Math.ceil(roundedNumber / 0.05) * 0.05;
@@ -177,11 +177,17 @@ export class OrdersModalComponent implements OnInit {
   }
 
   displayNearestValidPriceErrorMsg(price:number){
+    const numStr = price.toFixed(2);
+
     let nearestValues = this.findNearestValidTickSize(price);
-    let message = price < 0.05 
-      ? 'Value must be greater than or equal to 0.05' 
-      : 'Please enter a valid value. Two nearest valid values are ' + nearestValues[0] + ' and ' + nearestValues[1];
-    this.showBottomRight(message);
+    let message :any = 'Value must be greater than or equal to 0.05';
+    const decimalPart:any = numStr.toString().split('.')[1];
+    if (price < 0.05) {
+      this.showBottomRight(message);
+    } else if (decimalPart % 5 !== 0) {
+        message = 'Please enter a valid value. Two nearest valid values are ' + nearestValues[0].toFixed(2) + ' and ' + nearestValues[1].toFixed(2);
+        this.showBottomRight(message);
+    }
   }
 
   showBottomRight(message: string, title: string = '') {

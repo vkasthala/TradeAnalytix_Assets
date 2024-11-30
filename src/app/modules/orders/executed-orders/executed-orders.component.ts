@@ -60,7 +60,9 @@ export class ExecutedOrdersComponent implements OnInit {
     console.log(this.executedOrders);
     let ruleCheckPayload: OrderRuleCheckRequest = {} as OrderRuleCheckRequest;
     let margins: Margins = {} as Margins;
-    margins.instrument = {symbol: null, actualSymbol:null ,exchange:null ,symbolId: order.instrument.symbolId};
+    margins = order;
+    margins.trading_symbol = order.instrument.actualSymbol;
+    margins.transaction_type = order.type;
     ruleCheckPayload.orderId = order.orderId;
     const dialogRef = this._dialog.open(IntradayOrderPopupComponent, {
       width: 'auto',
