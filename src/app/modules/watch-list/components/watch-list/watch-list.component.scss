@@ -70,9 +70,25 @@
     
 }
 .mobile-context-menu-body {
-    padding: 15px;
+    padding: 30px 15px;
     display: flex;
     justify-content: space-between;
+    border-bottom: 1px solid #E6E6E6;
+}
+.mobile-context-menu-footer {
+    padding: 15px;
+    color: #000000;
+}
+.progress-title {
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+.progress-top {
+    justify-content: space-between;
+    display: flex;
+    color: rgba(150, 154, 162, 1);
+    margin-bottom: 10px;
 }
 .symbol_name {
     font-weight: 500;

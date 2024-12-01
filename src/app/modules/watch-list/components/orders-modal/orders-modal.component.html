@@ -115,11 +115,15 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="h6 mt-3" *ngIf="isMobileDevice">
+                            Type
+                        </div>
                         <div class="d-flex order-type-section">
-                            <div class="four columns empty-column">
+                            <div class="four columns empty-column" *ngIf="!isMobileDevice">
                                 &nbsp;
                             </div>
-                            <div class="four columns price">
+                            
+                            <div class="price" [ngClass]="isMobileDevice ? 'margins-order_type pr-3' : 'four columns'">
                                 <div class="su-radio-group order-type">
                                     <div class="su-radio-wrap" tooltip-pos="down" data-balloon="Buy at market price"
                                         data-balloon-pos="down" [ngClass]="margins.orderId ? 'disabled' : ''">
@@ -138,7 +142,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="four columns trigger">
+                            <div class="trigger" [ngClass]="isMobileDevice ? 'margins-order_type pl-3' : 'four columns'">
                                 <div class="su-radio-group text-right order-type">
                                     <div class="su-radio-wrap" tooltip-pos="down"
                                         data-balloon="Buy at a preferred price with a stoploss" data-balloon-pos="down"
@@ -163,7 +167,7 @@
                 </div>
 
 
-                <footer class="footer d-flex">
+                <footer class="footer d-flex" *ngIf="!isMobileDevice">
                     <div class="seven columns">
                         <div class="row margins">
                             <div class="block">
@@ -187,6 +191,25 @@
                         <button *ngIf="isOrderModify" type="submit" class="submit"
                         (click)="openIntradayOrderPopup('open')"><span>Modify</span></button>
                         <button type="button" class="button-outline cancel ml-1" (click)="closePopup()">Cancel</button>
+                    </div>
+                </footer>
+                <footer class="footer" *ngIf="isMobileDevice">
+                    <div class="d-flex py-3 justify-content-center align-items-center">
+                        <div class="block">
+                            <label class="mb-0">Margin: </label>
+                            <span class="value" data-balloon="Margin calculation explained" data-balloon-pos="up">₹{{margins.margin}}</span>
+                        </div>
+                        <div class="d-flex charges align-items-center">
+                            <label class="mb-0 ml-3">Available Margin: </label> 
+                            <span class="value" data-balloon="View charges &amp; taxes" data-balloon-pos="up">₹{{margins.availableMargin}}</span>
+                            <mat-icon class="material-icons mat-icon mat-icon-sm cursor" (click)="closePopup()" data-balloon="Refresh"
+                            data-balloon-pos="up">refresh</mat-icon>
+                        </div>
+                    </div>
+                
+                    <div class="actions">
+                        <button *ngIf="!isOrderModify" type="submit" class="btn submit" (click)="openIntradayOrderPopup('new')"><span>{{margins.type | titlecase}}</span></button>
+                        <button *ngIf="isOrderModify" type="submit" class="btn submit" (click)="openIntradayOrderPopup('open')"><span>Modify</span></button>
                     </div>
                 </footer>
             </div>

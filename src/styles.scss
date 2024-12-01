@@ -2719,6 +2719,48 @@ input {
     }
 }
 
+.watchlist-wrap {
+    position: fixed;
+    height: calc(100% - 80px);
+    width: var(--left-content-width);
+    z-index: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    -webkit-box-shadow: 0 0 5px 0 rgba(var(--color-border-5--rgb),.1);
+    box-shadow: 0 0 5px 0 rgba(var(--color-border-5--rgb),.1);
+}
+
+
+.watchlist-sidebar .marketwatch-selector {
+    bottom: 0;
+    width: var(--left-content-width);
+    position: fixed;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    background-color: var(--color-bg-default);
+    border-top: 1px solid var(--color-border-default)
+}
+
+.watchlist-sidebar .marketwatch-selector li {
+    float: left;
+    vertical-align: middle
+}
+
+.watchlist-sidebar .marketwatch-selector li.item {
+    padding: 10px 20px;
+    cursor: pointer;
+    text-align: center;
+    color: var(--color-text-1);
+    display: inline-block;
+    border-right: 1px solid var(--color-border-default)
+}
+
+.watchlist-sidebar .marketwatch-selector li.item.selected,
+.watchlist-sidebar .marketwatch-selector li.item:hover {
+    background-color: var(--color-bg-1);
+    color: var(--color-text-5)
+}
 
 @media (min-width: 1440px),(min-width:1536px) {
     :root {
@@ -2790,6 +2832,7 @@ input {
     .trading-container {
         position: relative;
         top: 67px;
+        height: 97vh !important;
     }
 
     .app-nav.mobile-nav a.nav-link {
@@ -2811,7 +2854,19 @@ input {
     .chatbot-icon {
         width: 30px;
     }
+    .watchlist-wrap {
+        height: 86vh;
+    }
+    .watchlist-sidebar .marketwatch-selector {
+        position: absolute;
+    }
 }
+
+@media screen and (orientation:landscape) {
+    .watchlist-wrap {
+        height: 68vh;
+    }
+ }
 
 .trading-container {
     background: #FFFFFF;
@@ -2826,17 +2881,7 @@ input {
     
 }
 
-.watchlist-wrap {
-    position: fixed;
-    height: calc(100% - 80px);
-    width: var(--left-content-width);
-    z-index: 1;
-    overflow-y: auto;
-    overflow-x: hidden;
-    scrollbar-width: thin;
-    -webkit-box-shadow: 0 0 5px 0 rgba(var(--color-border-5--rgb),.1);
-    box-shadow: 0 0 5px 0 rgba(var(--color-border-5--rgb),.1);
-}
+
 
 .container-right {
     -webkit-box-flex: 1;
@@ -3171,35 +3216,6 @@ button.button-outline {
     width: auto !important;
 }
 
-.watchlist-sidebar .marketwatch-selector {
-    bottom: 0;
-    width: var(--left-content-width);
-    position: fixed;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    background-color: var(--color-bg-default);
-    border-top: 1px solid var(--color-border-default)
-}
-
-.watchlist-sidebar .marketwatch-selector li {
-    float: left;
-    vertical-align: middle
-}
-
-.watchlist-sidebar .marketwatch-selector li.item {
-    padding: 10px 20px;
-    cursor: pointer;
-    text-align: center;
-    color: var(--color-text-1);
-    display: inline-block;
-    border-right: 1px solid var(--color-border-default)
-}
-
-.watchlist-sidebar .marketwatch-selector li.item.selected,
-.watchlist-sidebar .marketwatch-selector li.item:hover {
-    background-color: var(--color-bg-1);
-    color: var(--color-text-5)
-}
 
 .mobile-nav{
     height: 65px;
@@ -3211,7 +3227,6 @@ button.button-outline {
     bottom:0%; // Changed from 50% to 0% to show the menu at the bottom
     left:0;
     width:100%;
-    z-index: 99;
     display: flex;
     justify-content: space-between;
 }
@@ -3417,13 +3432,12 @@ button.button-outline {
 }
 
 .mobile-context-menu .mobile-context-menu-list {
-    bottom: 60px;
+    bottom: 0;
     width: 100%;
-    // max-height: 70%;
+    padding-bottom: 60px;
     position: fixed;
     overflow: scroll;
     background-color: var(--color-bg-default);
-    // height: 70%;
 }
 
 .mobile-context-menu .mobile-context-menu-list li {

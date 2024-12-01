@@ -1186,3 +1186,15 @@ iframe body {
     bottom: 20px;
     right: 20px;
 }
+
+@media (max-width: 1023px) {
+    .toast-container .ngx-toastr {
+        width: 100% !important;
+    }
+    .toast-bottom-right {
+        bottom: 0;
+        right: 2px;
+        top: 8%;
+        width: 95%;
+    }
+}
