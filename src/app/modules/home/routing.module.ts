@@ -42,6 +42,7 @@ import { CloseTradeCanDeactivateGuard } from '../trade-management/components/clo
 import { BulkUpdateComponent } from '../bulk-update/bulk-update.component';
 import { TradeBuilderComponent } from '../trade-builder/components/trade-builder.component';
 import { OrdersComponent } from '../orders/orders.component';
+import { SnapTradeComponentComponent } from '../snap-trade/snap-trade-component/snap-trade-component.component';
 
 const routes: Routes = [
   {
@@ -163,6 +164,10 @@ const routes: Routes = [
         {
           path: 'market-watch',
           loadChildren: () => import('../market-watch/market-watch.module').then(m => m.MarketWatchModule),
+        },
+        {
+          path : 'registersnap/:username',
+          component: SnapTradeComponentComponent
         }
         
     ]
