@@ -28,6 +28,20 @@ export class SnapTradeService {
     });
   
   }
+  getActivities(userName: any): Observable<any> {
+    const payload = JSON.stringify({ "userId": 'arun1@test.com' });
+    const url = `http://localhost:8080/api/users/activites`;
+    
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Accept':"application/json"
+    });
+    return this.http.post<any>(url, payload,{ 
+      headers: headers,
+    });
+  
+  }
+
   login(userName: any): Observable<any> {
     const payload = JSON.stringify({ "userId": "arun1@test.com" });
     const url = `http://localhost:8080/api/users/login`;

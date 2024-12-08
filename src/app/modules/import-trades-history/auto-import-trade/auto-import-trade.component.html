@@ -9,11 +9,21 @@
                 </select> 
                 <!-- <mr-ngx-plaid-link-button env="development" [token]="plaidToken" (Success)="onPlaidSuccess($event)" (Exit)="onPlaidExit($event)" (Load)="onPlaidLoad($event)" (Event)="onPlaidEvent($event)" className="plaid-button" buttonText="Link Account" (Click)="onPlaidClick($event)"></mr-ngx-plaid-link-button> -->
             </div>
+            <div class="py-2 col-sm-8">
+                <button class="btn btn-enter btn-sm" 
+                (click)="importSnapTrades()">ImportSnapTrade</button>
+            </div>
             <div class="pt-2 col-sm-6">
                 <button class="btn btn-enter btn-sm" [disabled]="!selectedBrokerage"
                     (click)="importTrades()">Import Trades</button>
                 <mat-spinner [diameter]="30" *ngIf="processing"></mat-spinner>
             </div>
+            <div class="popup" *ngIf="showPopup">
+                <div class="popup-content">
+                  <span class="close" (click)="closePopup()">&times;</span>
+                  <pre>{{ jsonData | json }}</pre>
+                </div>
+              </div>
         </div>
     </div>
 </div>

@@ -7,6 +7,9 @@ import { BrokerageService } from '../../shared/services/brokerage.service';
 import { Brokerage } from '../models/brokerage.model';
 import { PlaidService } from '../services/plaid.service';
 import { ZerodhaPopupComponent } from '../zerodha-popup/zerodha-popup.component';
+import { SnapTradeService } from '../../snap-trade/snap-trade.service';
+import { userInfo } from 'os';
+import { UserDetails } from '../../shared/models/common/user-details.model';
 
 @Component({
   selector: 'app-auto-import',
@@ -19,7 +22,7 @@ export class AutoImportTradeComponent implements OnInit {
   // @Input("plaidToken") plaidToken:any;
   
   brokerages: Brokerage[] = [];
-
+  jsonData: any;
   selectedFiles: FileList;
   selectedOptionFiles: FileList;
   currentFile: File;
@@ -27,6 +30,7 @@ export class AutoImportTradeComponent implements OnInit {
   selectedbroker: any = 1;
   processing: boolean = false;
   selectedBrokerage: Brokerage;
+  showPopup:boolean = false;
 
   constructor(
     private uploadService: UploadFileService,
@@ -36,6 +40,7 @@ export class AutoImportTradeComponent implements OnInit {
     protected router: Router,
     // @Inject(MAT_DIALOG_DATA) data,
     private _dialog: MatDialog,
+    private snapTradeService:SnapTradeService,
   ) {
     console.log('plaidToken',this.plaidToken);
     
@@ -69,6 +74,24 @@ export class AutoImportTradeComponent implements OnInit {
     });
   }
 
+  importSnapTrades() {
+    console.log('UserDetails.name------>', UserDetails.name);
+    this.processing = true;
+    this.snapTradeService.getActivities(UserDetails.name).subscribe( result => {
+      this.processing = false;
+      this.showPopup = true;
+      this.jsonData = result;
+      
+    },err => {
+      this.processing = false;
+      console.log("error:", err);
+      window.open(err.error.text, "_blank");
+    })
+  }
+  closePopup(): void {
+    this.showPopup = false;
+    this.jsonData = null;
+  }
   onBrokerageChange(val, index) {
     if (this.brokerages) {
       this.brokerages.filter(brokerage => (brokerage.id == this.selectedbroker)).forEach(brokerage => this.selectedBrokerage = brokerage);
