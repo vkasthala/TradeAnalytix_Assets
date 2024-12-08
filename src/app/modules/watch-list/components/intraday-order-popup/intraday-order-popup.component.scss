@@ -475,30 +475,47 @@
 }
 
 @media (max-width: 767px) {
+    .order-window .su-input-group input {
+        font-size: 1rem;
+    }
+    
+    .order-window .su-select select {
+        font-size: 14px;
+    }
+    
     .example-box {
-        top: 5% !important;
-        left: 0 !important;
-        right: 0 !important;
-        margin: 0;
+        top: 0 !important;
+        left: 0!important;
+        right: 0!important;
+        margin: 0 auto;
         width: 100%;
+        overflow-x: hidden;
         overflow-y: auto;
         z-index: 999;
-        transform: inherit !important;
+        transform:inherit !important;
+        flex-direction: column;
+        background-color: #fff;
+        height: 100%;
+    }
+    .order-window {
+        width: 100%;
+        border-radius: 0;
+        box-shadow: none;
     }
 
     .intraday-modal-header {
         flex-direction: column;
     }
     .rules-column {
-        padding-right: 1rem;
+        padding: 0;
     }
     
     .statistics-column {
-        padding-left: 1rem;
+        padding: 0;
         border: 0 !important;
     }
     .order-window .wrap {
-        height: 81vh;
+        height: 90vh;
         overflow-y: auto;
         overflow-x: hidden;
     }
@@ -517,7 +534,8 @@
     }
 
     .order-window .footer .actions button {
-        width: 49%;
+        width: 50%;
+        height: 50px;
     }
 
     .order-window .footer .margins {
@@ -540,7 +558,6 @@
 
     .tab .nav-tabs li.active a:before {
         content: "";
-        bottom: 15%;
         left: 0;
         right: auto;
     }
@@ -548,8 +565,21 @@
     .compare-popup {
         width: 100%;
     }
-    .order-window {
-        width: 96%;
-        margin: 0 auto;
+    
+    .order-window .footer {
+        padding: 0;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        background: rgba(249, 249, 249, 1);
     }
+}
+
+.mobile-header-nav {
+    background-color: #fff;
+    color: #000;
+    padding: 15px;
+    border-radius: 0;
+    font-weight: 400;
+    font-size: .925rem;
 }

@@ -1,9 +1,17 @@
 <div class="example-box" [ngClass]="isMobileDevice ? 'order-popup' : ''" cdkDrag>
-    <div class="mobile-header-nav" *ngIf="isMobileDevice">
-        <mat-icon class="material-icons mat-icon cursor" (click)="closePopup()">keyboard_backspace</mat-icon>
-    </div>
+    
     <form data-drag-boundary="true" class="order-window layer-2 place" [ngClass]="orderToggle ? 'sell' : 'buy' ">
-        <header>
+        <div class="mobile-header-nav" *ngIf="isMobileDevice">
+            <div class="d-flex align-items-start">
+                <mat-icon class="material-icons mat-icon cursor" (click)="closePopup()">keyboard_backspace</mat-icon>
+                <div class="instrument ml-3">
+                    <h3>{{margins.trading_symbol}}</h3>
+                    <label class="su-radio-label m-0">₹{{margins.ltp}}</label>
+                    <span class="qty ml-3">{{margins.quantity}} Qty</span>
+                </div>
+            </div>
+        </div>
+        <header *ngIf="!isMobileDevice">
             <div class="d-flex">
                 <div class="eight columns">
                     <div class="instrument">
@@ -58,7 +66,10 @@
 
                 <div class="body">
                     <div class="product">
-                        <div class="su-radio-group">
+                        <div class="h6 my-2" *ngIf="isMobileDevice">
+                            Product
+                        </div>
+                        <div class="su-radio-group d-flex justify-content-between">
                             <div class="type four columns su-radio-wrap checked"
                                 data-balloon="Margin Intraday Squareoff: Requires lower margin for equity. Has to be exited before market close."
                                 data-balloon-pos="up" data-balloon-length="large"
@@ -77,7 +88,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="first-fields">
+                    
+                    <div class="first-fields" [ngClass]="isMobileDevice ? 'pt-2' : ''">
                         <div class="d-flex">
                             <div class="four columns quantity">
                                 <div class="no su-input-group su-static-label">
@@ -115,7 +127,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="h6 mt-3" *ngIf="isMobileDevice">
+                        <div class="h6 mt-2" *ngIf="isMobileDevice">
                             Type
                         </div>
                         <div class="d-flex order-type-section">

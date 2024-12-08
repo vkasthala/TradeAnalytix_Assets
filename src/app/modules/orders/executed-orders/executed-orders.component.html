@@ -38,12 +38,12 @@
         
     </table>
 </div>
-<div class="gtt-list cards" *ngIf="isMobileDevice">
+<div class="executed-orders gtt-list cards" *ngIf="isMobileDevice">
     <div class="card" *ngFor = "let order of executedOrders">
         <div class="top flex px-3">
             <div class="flex4">
                 <span class="text-label transaction-type-label" [ngClass]="order.type === 'SELL' ? 'orange' : 'blue'">{{order.type}}</span>
-                <span class="text-label small order-status-label ml-2" [ngClass]="order.status === 'REJECTED' ? 'orange' : 'green'">{{order.status}}</span>
+                <span class="text-label order-status-label ml-2" [ngClass]="order.status === 'REJECTED' ? 'orange' : 'green'">{{order.status}}</span>
             </div>
             <div class="flex4 text-right text-small">
                 <span class="dim">{{order.time}}</span>
@@ -57,6 +57,7 @@
             <div class="flex6 text-right">
                 <span class="text-xsmall dim">Qty</span> 
                 <span class="ml-1">{{order.quantity}}/{{order.quantity}}</span>
+                <span class="text-link ml-3" (click)="openIntradayOrderPopup('closed',order)">{{order.journal}}</span>
             </div>
         </div>
     </div>

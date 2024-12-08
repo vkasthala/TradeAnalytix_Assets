@@ -2808,13 +2808,18 @@ input {
         --left-content-width: 100%;
         --right-content-width: calc(var(--wrapper-width) - var(--left-content-width))
     }
+    body {
+        font-size: 13px !important;
+    }
     h3, h4 {
         font-size: 15px;
     }
     h1,h2 {
         font-size: 18px;
     }
-
+    h6, .h6 {
+        font-size: 14px;
+    }
     .app .header {
         position: fixed;
         top: 0;
@@ -2859,6 +2864,35 @@ input {
     }
     .watchlist-sidebar .marketwatch-selector {
         position: absolute;
+    }
+    .su-radio-group .su-radio-label {
+        position: relative;
+        padding: 8px 10px;
+        text-align: left;
+        margin: 0;
+    }
+    .su-radio-group .su-radio-wrap {
+        margin-right: 0;
+        display: flex;
+        flex: 0 0 46%;
+        flex-direction: column;
+    }
+    .su-radio-group .disabled .su-radio-label {
+        opacity: 0.7 !important;
+    }
+
+    .su-radio-wrap {
+        border: 1px solid #CDCACA;
+        border-radius: 4px;
+    }
+    .order-window.buy .su-radio-wrap:has(input[type="radio"]:checked) {
+        border: 1px solid #4A69CB;
+    }
+    .order-window.sell .su-radio-wrap:has(input[type="radio"]:checked) {
+        border: 1px solid #E0261A;
+    }
+    .executed-orders.gtt-list {
+        margin-bottom: 70px;
     }
 }
 

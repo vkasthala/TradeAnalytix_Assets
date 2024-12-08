@@ -30,6 +30,7 @@ export class IntradayOrderPopupComponent implements OnInit {
   tags: TradeTag[];
   registeredTags: any = [];
   @Input("inputState") inputState: TradeInputData;
+  isMobileDevice: any;
 
   constructor(
     private _dialog: MatDialog,
@@ -46,7 +47,7 @@ export class IntradayOrderPopupComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.data);
+    this.checkDevice();
     if(this.data.orderType == 'closed'){
       this.loadExistingOrderRules();
     } else{
@@ -196,6 +197,19 @@ loadSummary() {
         }
       }
     });
+  }
+
+  checkDevice() {
+    setTimeout(() => {
+      const agent = window.navigator.userAgent.toLowerCase();
+      let regexp = /android|iphone|kindle|ipad/i;
+      let deviceType = regexp.test(agent);
+      if (deviceType) {
+        this.isMobileDevice = true;
+      } else {
+        this.isMobileDevice = false;
+      }
+    }, 100)
   }
 
 }

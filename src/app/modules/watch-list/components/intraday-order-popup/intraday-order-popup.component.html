@@ -1,10 +1,17 @@
 
 <div class="compare-popup">
-    <div class="example-box">
+    <div class="example-box" [ngClass]="isMobileDevice ? 'order-popup' : ''">
+        <div class="mobile-header-nav" *ngIf="isMobileDevice">
+            <div class="d-flex align-items-center justify-content-between">
+                <mat-icon class="material-icons mat-icon cursor" (click)="closeModal()">keyboard_backspace</mat-icon>
+                <button *ngIf="data.orderType != 'closed'" type="button" class="button" (click)="orderPlacement(margins)" [ngClass]="margins.transaction_type === 'SELL' ? 'sell' : 'buy' ">Skip and {{margins.transaction_type | titlecase}}</button>
+            </div>
+        </div>
+
         <div data-drag-boundary="true" class="order-window layer-2 place" [ngClass]="margins.transaction_type === 'SELL' ? 'sell' : 'buy' ">
             <header>
                 <div class="d-flex align-items-center intraday-modal-header">
-                    <div class="eight columns">
+                    <div class="eight columns" [ngClass]="isMobileDevice ? 'w-100' : ''">
                         <div class="instrument">
                             Intraday Order: <span class="transaction-type">{{margins.transaction_type | titlecase}}</span> 
                             <span class="tradingsymbol">
@@ -15,7 +22,7 @@
                             <span class="price pl-1">₹{{margins.price}}</span>
                         </div>
                     </div>
-                    <div class="four columns text-right">
+                    <div class="four columns text-right" *ngIf="!isMobileDevice">
                         <div class="wrap-right">
                             <button *ngIf="data.orderType != 'closed'" type="button" class="button button-md button-outline" (click)="orderPlacement(margins)">Skip and {{margins.transaction_type | titlecase}}</button>
                         </div>
@@ -26,7 +33,7 @@
             <section class="wrap">
                 <div class="content">
                     <div class="body">
-                        <div class="row">
+                        <div class="row" [ngClass]="isMobileDevice ? 'm-0' : ''">
                             <div class="col-12 col-md-6 rules-column">
                                 <div class="intraday-panel">
                                     <div class="intraday-panel-header">Trading Rules</div>
@@ -147,7 +154,7 @@
                     <footer class="footer">
                         <div class="text-right actions">
                             <button type="submit" class="button submit button-md" (click)="orderPlacement(margins)"><span>{{ data.orderType == 'closed' ? 'Update' : (margins.transaction_type | titlecase) }}</span></button>
-                            <button type="button" class="button button-outline cancel button-md ml-1" (click)="closeModal()">Cancel</button>
+                            <button type="button" class="button button-outline cancel button-md" (click)="closeModal()" [ngClass]="isMobileDevice ? '' : 'ml-1'">Cancel</button>
                         </div>
                     </footer>
 
