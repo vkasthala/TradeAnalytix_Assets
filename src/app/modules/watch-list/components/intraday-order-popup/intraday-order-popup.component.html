@@ -87,7 +87,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12 col-md-6 border-left statistics-column">
+                            <div class="col-12 col-md-6 border-left statistics-column" *ngIf="!isMobileDevice">
                                 <div class="intraday-panel">
                                     <div class="intraday-panel-header">Historical Statistics</div>
                                     <div class="intraday-panel-body">
@@ -142,12 +142,52 @@
                             <div class="d-flex align-items-center justify-content-between pt-2">
                                 <label class="sub-heading m-0">Attach Files</label>
                             
-                        <div class="d-flex align-items-center p-3 text-right actions">
-                            <!--    <input type="file"> Venkat Commented it -->
-                            <button type="submit" class="button submit button-md"><span class="text-white">Upload file</span></button>
+                                <div class="d-flex align-items-center p-3 text-right actions">
+                                    <!--    <input type="file"> Venkat Commented it -->
+                                    <button type="submit" class="button submit button-md"><span class="text-white">Upload file</span></button>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    </div>
+
+                        <div class="statistics-column" *ngIf="isMobileDevice">
+                            <div class="intraday-panel">
+                                <div class="intraday-panel-header">Historical Statistics</div>
+                                <div class="intraday-panel-body">
+                                    <div class="d-flex py-2 align-items-center">
+                                        <div class="col-8">Realized Return</div>
+                                        <div class="col-4 price text-right">{{stockSummaryResult.realizedReturn}}</div>
+                                    </div>
+                                    <div class="d-flex py-2 align-items-center">
+                                        <div class="col-8">Win Rate</div>
+                                        <div class="col-4 price text-right">{{stockSummaryResult.winRate}}%</div>
+                                    </div>
+                                    <div class="d-flex py-2 align-items-center">
+                                        <div class="col-8">Total Strategies</div>
+                                        <div class="col-4 price text-right">{{stockSummaryResult.totalStrategies}}</div>
+                                    </div>
+                                    <div class="d-flex py-2 align-items-center">
+                                        <div class="col-8">Total Trades</div>
+                                        <div class="col-4 price text-right">{{stockSummaryResult.totalTransactions}}</div>
+                                    </div>
+                                    <div class="d-flex py-2 align-items-center">
+                                        <div class="col-8">Avg Holding Period</div>
+                                        <div class="col-4 price text-right">{{stockSummaryResult.avgHoldingPeriod}}</div>
+                                    </div>
+                                    <div class="d-flex py-2 align-items-center">
+                                        <div class="col-8">Most Successful Strategy</div>
+                                        <div class="col-4 price text-right">{{stockSummaryResult.successStrategy}}</div>
+                                    </div>
+                                    <div class="d-flex py-2 align-items-center">
+                                        <div class="col-8">Highest Return</div>
+                                        <div class="col-4 price text-right">{{stockSummaryResult.highestReturn}}</div>
+                                    </div>
+                                    <div class="d-flex py-2 align-items-center">
+                                        <div class="col-8">Lowest Return</div>
+                                        <div class="col-4 price text-right">{{stockSummaryResult.largestLoss}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
 

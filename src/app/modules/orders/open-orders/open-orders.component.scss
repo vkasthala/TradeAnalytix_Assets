@@ -154,3 +154,9 @@
     max-width: 10%;
     width: 10%;
 }
+.actions-row {
+    display: grid;
+    column-gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(48%, 2fr));
+    margin-top: 10px;
+}

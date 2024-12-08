@@ -66,10 +66,10 @@
 
                 <div class="body">
                     <div class="product">
-                        <div class="h6 my-2" *ngIf="isMobileDevice">
+                        <div class="h6 my-3" *ngIf="isMobileDevice">
                             Product
                         </div>
-                        <div class="su-radio-group d-flex justify-content-between">
+                        <div class="su-radio-group d-flex" [ngClass]="isMobileDevice ? 'justify-content-between' : ''">
                             <div class="type four columns su-radio-wrap checked"
                                 data-balloon="Margin Intraday Squareoff: Requires lower margin for equity. Has to be exited before market close."
                                 data-balloon-pos="up" data-balloon-length="large"
@@ -89,7 +89,7 @@
                         </div>
                     </div>
                     
-                    <div class="first-fields" [ngClass]="isMobileDevice ? 'pt-2' : ''">
+                    <div class="first-fields" [ngClass]="isMobileDevice ? 'pt-3' : ''">
                         <div class="d-flex">
                             <div class="four columns quantity">
                                 <div class="no su-input-group su-static-label">
@@ -127,7 +127,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="h6 mt-2" *ngIf="isMobileDevice">
+                        <div class="h6 mt-3 pt-3" *ngIf="isMobileDevice">
                             Type
                         </div>
                         <div class="d-flex order-type-section">

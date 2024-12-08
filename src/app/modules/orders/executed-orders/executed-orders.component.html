@@ -57,8 +57,10 @@
             <div class="flex6 text-right">
                 <span class="text-xsmall dim">Qty</span> 
                 <span class="ml-1">{{order.quantity}}/{{order.quantity}}</span>
-                <span class="text-link ml-3" (click)="openIntradayOrderPopup('closed',order)">{{order.journal}}</span>
             </div>
+        </div>
+        <div class="mt-2 px-3" *ngIf="order.journal !== ''">
+            <button type="submit" class="button button-md w-100 " [ngClass]="order.type === 'SELL' ? 'sell' : 'buy'" (click)="openIntradayOrderPopup('closed',order)">{{order.journal}}</button>
         </div>
     </div>
 </div>
