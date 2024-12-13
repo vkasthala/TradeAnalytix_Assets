@@ -8,7 +8,6 @@ import { Brokerage } from '../models/brokerage.model';
 import { PlaidService } from '../services/plaid.service';
 import { ZerodhaPopupComponent } from '../zerodha-popup/zerodha-popup.component';
 import { SnapTradeService } from '../../snap-trade/snap-trade.service';
-import { userInfo } from 'os';
 import { UserDetails } from '../../shared/models/common/user-details.model';
 
 @Component({
@@ -77,7 +76,7 @@ export class AutoImportTradeComponent implements OnInit {
   importSnapTrades() {
     console.log('UserDetails.name------>', UserDetails.name);
     this.processing = true;
-    this.snapTradeService.getActivities(UserDetails.name).subscribe( result => {
+    this.snapTradeService.getActivities(UserDetails.name,"145").subscribe( result => {
       this.processing = false;
       this.showPopup = true;
       this.jsonData = result;
@@ -88,7 +87,7 @@ export class AutoImportTradeComponent implements OnInit {
       window.open(err.error.text, "_blank");
     })
   }
-  closePopup(): void {
+closePopup(): void {
     this.showPopup = false;
     this.jsonData = null;
   }

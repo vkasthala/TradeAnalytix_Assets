@@ -14,8 +14,8 @@ export class SnapTradeService {
   private apiUrl = 'http://localhost:8080'; 
   constructor(private http: HttpClient) {}
 
-   postData(userName: any): Observable<any> {
-    const payload = JSON.stringify({ "userId": 'a8aaa888run1@test.com' });
+   postData(snapUserId: any): Observable<any> {
+    const payload = JSON.stringify({ "snapUserId": 'a8aaa888run1@test.com' });
     const url = `http://localhost:8080/api/users/registeruser`;
     
     const headers = new HttpHeaders({
@@ -28,8 +28,8 @@ export class SnapTradeService {
     });
   
   }
-  getActivities(userName: any): Observable<any> {
-    const payload = JSON.stringify({ "userId": 'arun1@test.com' });
+  getActivities(snapUserId: any,cuetradeId:string): Observable<any> {
+    const payload = JSON.stringify({ "snapUserId": 'arun1@test.com',"cuetradeId":"145" });
     const url = `http://localhost:8080/api/users/activites`;
     
     const headers = new HttpHeaders({
@@ -42,8 +42,8 @@ export class SnapTradeService {
   
   }
 
-  login(userName: any): Observable<any> {
-    const payload = JSON.stringify({ "userId": "arun1@test.com" });
+  login(snapUserId: any,cuetradeId:string): Observable<any> {
+    const payload = JSON.stringify({ "snapUserId": "arun1@test.com" ,"cuetradeId":"145"});
     const url = `http://localhost:8080/api/users/login`;
     
     const headers = new HttpHeaders({

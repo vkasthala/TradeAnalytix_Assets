@@ -334,7 +334,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     });
   }
   snapeTradeLogin(username:string){
-    this.snapTradeService.login(username).subscribe(response => {
+    this.snapTradeService.login(username,"145").subscribe(response => {
       if (response != null) {
         console.log("response");
         const location = response['redirectUri'];
