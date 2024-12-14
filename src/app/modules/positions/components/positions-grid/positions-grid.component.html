@@ -26,10 +26,10 @@
                         </span>
                     </span> -->
                 </td>
-                <td><span [ngClass]="rowData.action_type === 'SELL' ? 'text-red' : 'text-green'">{{rowData.action_type === 'SELL' ? '-' : ''}} {{rowData.quantity}}</span></td>
+                <td><span [ngClass]="rowData.action_type === 'SELL' ? 'text-danger' : 'text-success'">{{rowData.action_type === 'SELL' ? '-' : ''}} {{rowData.quantity}}</span></td>
                 <td class="text-right">{{rowData.average_price | number:'1.2-2' }}</td>
                 <td class="text-right">{{rowData.ltp | number:'1.2-2'}}</td>
-                <td class="text-right"><span class="text-green" [ngClass]="rowData.day_p_and_l > -1 ? 'text-green' : 'text-red'">{{rowData.day_p_and_l | number:'1.2-2'}}</span></td>
+                <td class="text-right"><span [ngClass]="rowData.day_p_and_l > -1 ? 'text-success' : 'text-danger'">{{rowData.day_p_and_l | number:'1.2-2'}}</span></td>
                 <td>
                     <!-- <span data-balloon="Buy (B)" data-balloon-pos="up">
                         <button type="button" class="btn btn-xs buy"
@@ -48,7 +48,7 @@
                 <td></td>
                 <td></td>
                 <td class="text-right">Total</td>
-                <td class="text-right"><span [ngClass]="positionsData.data.total_p_and_l > -1 ? 'text-green' : 'text-red'">{{positionsData.data.total_p_and_l | number:'1.2-2'}}</span></td>
+                <td class="text-right"><span [ngClass]="positionsData.data.total_p_and_l > -1 ? 'text-success' : 'text-danger'">{{positionsData.data.total_p_and_l | number:'1.2-2'}}</span></td>
                 <!-- <td><span class="text-red">{{positionsData.total_p_and_l}}</span></td> -->
             </tr>
             <tr *ngIf="positionsData.data.data.length === 0">
@@ -58,52 +58,53 @@
     </table>
 </div>
 
-<div class="gtt-list cards" *ngIf="isMobileDevice">
-    <!-- card:: start -->
-    <div class="card" *ngFor = "let rowData of positionsData.data.data">
-        <div class="top flex">
-            <div class="flex6">
-                <span class="status-tag text-label caps">{{rowData.type}}</span>
-            </div>
-            <div class="flex6 text-right">
-                <span>
-                    <span class="text-xsmall dim">Avg</span> 
-                    <span class="ml-1">{{rowData.average_price}}</span>
-                </span>
-            </div>
+<div class="executed-orders gtt-list cards" *ngIf="isMobileDevice">
+    <div class="gtt-list-header">
+        <div class="gtt-list-header-content">
+            <div>Total P&L</div>
+            <span [ngClass]="positionsData.data.total_p_and_l > -1 ? 'text-success' : 'text-danger'">{{positionsData.data.total_p_and_l | number:'1.2-2'}}</span>
         </div>
-        <div class="middle flex" (click)="openMobileActions(rowData)">
-            <div class="flex6">
-                {{rowData.instrument.symbol}}
-            </div>
-            <div class="flex6 text-right">
-                <span class="text-xsmall dim">Qty</span> 
-                <span class="ml-1">{{rowData.action_type == 'BUY' ? rowData.quantity : -1 * rowData.quantity}}</span>
-            </div>
-        </div>
-        <div class="flex">
-            <div class="flex6">
-                <span>
-                    <span class="text-xsmall dim">P&L</span> 
-                    <span class="ml-1" [ngClass]="rowData.day_p_and_l > -1 ? 'text-green' : 'text-red'">{{rowData.day_p_and_l}}</span>
-                </span>
-            </div>
+    </div>
+    
 
-            <div class="flex6 text-right">
-                <!-- <span data-balloon="Buy (B)" data-balloon-pos="up">
-                    <button type="button" class="btn btn-xs buy"
-                        (click)="add(rowData)">BUY</button>
-                </span>
-                <span data-balloon="Sell (S)" data-balloon-pos="up">
-                    <button type="button" class="btn btn-xs sell ml-2"
-                        (click)="add(rowData)">SELL</button>
-                </span> -->
+    <!-- card:: start -->
+     <div class="pt-2">
+        <div class="card" *ngFor = "let rowData of positionsData.data.data">
+            <div class="top flex">
+                <div class="flex6">
+                    <span class="text-xsmall dim">Qty</span> 
+                    <span class="text-blue ml-1 mr-2">{{rowData.action_type == 'BUY' ? rowData.quantity : -1 * rowData.quantity}}</span>
+                    <span>
+                        <span class="text-xsmall dim">Avg</span> 
+                        <span class="ml-1">{{rowData.average_price}}</span>
+                    </span>
+                </div>
+                <div class="flex6 text-right">
+                    <span class="text-label warning caps">{{rowData.type}}</span>
+                </div>
+            </div>
+            <div class="middle flex" (click)="openMobileActions(rowData)">
+                <div class="flex6">
+                    {{rowData.instrument.symbol}}
+                </div>
+                <div class="flex6 text-right">
+                    <span [ngClass]="rowData.day_p_and_l > -1 ? 'text-success' : 'text-danger'">{{rowData.day_p_and_l | number:'1.2-2'}}</span>
+                </div>
+            </div>
+            <div class="flex">
+                <div class="flex6">
+                    <span class="dim">{{rowData.instrument.exchange}}</span>
+                </div>
+                <div class="flex6 text-right">
+                    <span class="text-xsmall dim">LTP</span> 
+                    <span class="ml-1">{{rowData.ltp | number:'1.2-2'}}</span>
+                </div>
+                
             </div>
             
         </div>
-        
+        <!-- card:: end -->
     </div>
-    <!-- card:: end -->
     
 </div>
 
