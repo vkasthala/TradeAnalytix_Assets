@@ -141,10 +141,19 @@
 </div>
 
 <div *ngIf="brokerageModal" class="modal-backdrop fade show"></div>
-<div class="modal contact-modal" [ngClass]="brokerageModal ? 'show' : ''"  tabindex="-1" aria-hidden="true">
+<div class="modal contact-modal connect-container" [ngClass]="brokerageModal ? 'show' : ''"  tabindex="-1" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <div class="modal-header">
+        <div class="mobile-header-nav" *ngIf="isMobileDevice">
+            <div class="d-flex align-items-start">
+                <mat-icon class="material-icons mat-icon cursor" (click)="closeBrokerageModal()">keyboard_backspace</mat-icon>
+                <div class="instrument ml-3">
+                    <h3 class="pt-1">Connect to your Brokerage and Start Trading</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-header" *ngIf="!isMobileDevice">
           <h5 class="modal-title">
             <span class="">Connect to your Brokerage and Start Trading</span>
         </h5>
@@ -154,7 +163,7 @@
         </div>
         <div class="modal-body pt-0">
             <form>
-                <div class="col-10 p-0">
+                <div class="col-10 p-0" [ngClass]="isMobileDevice ? 'col-12' : ''">
                   <label class="col-form-label" style="margin-top: 10px;">Choose FYERS to trade directly, or select SnapTrade to access multiple brokers.</label>  
                   <!-- <label class="col-form-label">Choose FYERS to trade directly, or select SnapTrade to access multiple brokers.</label> -->
                   <select (change)="onBrokerageChange($event.target.value)" class="form-control mb-3">

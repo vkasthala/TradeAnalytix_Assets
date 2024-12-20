@@ -4,3 +4,86 @@
     height: 100vh;
     overflow: auto;
 }
+
+@media (max-width: 1023px) {
+    .container-main {
+        background: #fff;
+        padding: 0;
+    }
+    .order-container {
+        background: #fff;
+        height: inherit;
+    }
+
+    .reports-header {
+        align-items: center;
+        color: #000;  //Venkat changed from #5B5C60
+        font-size: 18px;
+        box-shadow: 0 1px 5px 0 rgba(var(--color-border-5--rgb), 0.1);
+
+        padding: 30px 20px;
+        background: #f1f2f4;
+        display: flex;
+        justify-content: space-evenly;
+    }
+    .tab .nav-tabs {
+        display: flex;
+        align-items: center;
+        border: none;
+        justify-content: space-evenly;
+        width: 100%;
+    }
+    
+    .tab .nav-tabs li {
+        padding: 0;
+        text-align: center;
+    }
+    
+    .tab .nav-tabs li:first-child>a {
+        border-radius: 0;
+    }
+    
+    .tab .nav-tabs li a {
+        display: block;
+        background: transparent;
+        font-size: 18px;
+        line-height: 18px;
+        text-align: center;
+        border: none;
+        z-index: 2;
+        transition: all 0.3s ease 0s;
+        text-decoration: none;
+    
+        padding: 20px 12px;
+        color: #000;    //Venkat changed from #5B5C60
+        position: relative;
+        font-weight: 500;
+    }
+    
+    .tab .nav-tabs li a:hover,
+    .tab .nav-tabs li.active a {
+        color: #394C86;
+        text-decoration: none;
+    }
+    
+    .tab .nav-tabs li.active a::before,
+    .tab .nav-tabs li a:hover::before
+    {
+        content: '';
+        width: 100%;
+        height: 4px;
+        border-radius: 4px 4px 0px 0px;
+        background: #2469FF;
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+    }
+
+
+    .tab .nav-tabs li.active a:before {
+        content: "";
+        bottom: 5%;
+        left: 0;
+        right: auto;
+    }
+}

@@ -31,12 +31,10 @@
         margin-right: 20px
     }
 
-    .cards .card:first-child {
-        border-top: 1px solid var(--color-border-default)
-    }
 
     .cards .card {
         margin: 0;
+        border: 0;
         padding: 12px 0;
         border-bottom: 1px solid var(--color-border-default)
     }
@@ -166,9 +164,9 @@
 }
 
 .gtt-list-header {
-    margin: -9px -20px 0 -19px;
-    padding: 15px;
+    padding: 20px 15px;
     background: #fff;
+    padding-bottom: 10px;
 }
 .gtt-list-header-content {
     box-shadow: 0px 0px 4px 0px rgba(103, 103, 103, 0.349);
@@ -176,4 +174,6 @@
     font-size: 18px;
     text-align: center;
     padding: 10px;
+    margin-top: -30px;
+    background: #fff;
 }

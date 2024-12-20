@@ -27,9 +27,9 @@
                         <td class="text-right">{{rowData.average | number:'1.2-2'}}</td>
                         <td class="text-right">{{rowData.ltp | number:'1.2-2'}}</td>
                         <td class="text-right">{{rowData.current_value | number:'1.2-2'}}</td>
-                        <td class="text-right"><span class="text-green" [ngClass]="rowData.p_and_l > -1 ? 'text-green' : 'text-red'">{{rowData.p_and_l | number:'1.2-2'}}</span></td>
-                        <td class="text-right"><span [ngClass]="rowData.net_change > 0 ? 'text-green' : 'text-red'">{{rowData.net_change | number:'1.2-2'}}%</span></td>
-                        <td class="text-right"><span [ngClass]="rowData.net_change > 0 ? 'text-green' : 'text-red'">{{rowData.day_change | number:'1.2-2'}}%</span></td>
+                        <td class="text-right"><span class="text-success" [ngClass]="rowData.p_and_l > -1 ? 'text-success' : 'text-danger'">{{rowData.p_and_l | number:'1.2-2'}}</span></td>
+                        <td class="text-right"><span [ngClass]="rowData.net_change > 0 ? 'text-success' : 'text-danger'">{{rowData.net_change | number:'1.2-2'}}%</span></td>
+                        <td class="text-right"><span [ngClass]="rowData.net_change > 0 ? 'text-success' : 'text-danger'">{{rowData.day_change | number:'1.2-2'}}%</span></td>
                         <td>
                             <!-- <span data-balloon="Buy (B)" data-balloon-pos="up">
                                 <button type="button" class="btn btn-xs buy ml-3"
@@ -50,6 +50,28 @@
 
 
         <div class="gtt-list cards" *ngIf="isMobileDevice">
+            <div class="gtt-list-header">
+                <div class="gtt-list-header-content">
+                    <div class="d-flex justify-content-between pb-2">
+                        <div>
+                            <span class="dim">Invested</span>
+                            <div class="text-black">54,470.17</div>
+                        </div>
+                        <div class="text-right">
+                            <span class="dim">Current</span>
+                            <div class="text-black">54,470.17</div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between border-top pt-2">
+                        <span class="dim">P&L</span>
+                        <div class="text-right">
+                            <span [ngClass]="holdingsResponse.data.total_p_and_l > -1 ? 'text-success' : 'text-danger'">{{holdingsResponse.data.total_p_and_l | number:'1.2-2'}}</span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
             <!-- card:: start -->
             <div class="card" *ngFor = "let rowData of holdingsResponse.data.data">
                 <div class="top flex">
@@ -74,16 +96,16 @@
                 <div class="flex">
                     <div class="flex6">
                         <span class="text-xsmall dim">P&L</span> 
-                        <span class="ml-1" [ngClass]="rowData.p_and_l > 0 ? 'text-green' : 'text-red'">{{rowData.p_and_l}}</span>
+                        <span class="ml-1" [ngClass]="rowData.p_and_l > 0 ? 'text-success' : 'text-red'">{{rowData.p_and_l}}</span>
 
                         <span class="ml-3 pl-3">
                             <span class="text-xsmall dim">Net chg</span> 
-                            <span class="ml-1" [ngClass]="rowData.net_change > 0 ? 'text-green' : 'text-red'">{{rowData.net_change}}</span>
+                            <span class="ml-1" [ngClass]="rowData.net_change > 0 ? 'text-success' : 'text-red'">{{rowData.net_change}}</span>
                         </span>
                     </div>
                     <div class="flex6 text-right">
                         <span class="text-xsmall dim">Day chg</span>
-                        <span class="ml-1" [ngClass]="rowData.day_change > 0 ? 'text-green' : 'text-red'">{{rowData.day_change}}</span>
+                        <span class="ml-1" [ngClass]="rowData.day_change > 0 ? 'text-success' : 'text-red'">{{rowData.day_change}}</span>
                     </div>
                 </div>
                 <div class="flex">

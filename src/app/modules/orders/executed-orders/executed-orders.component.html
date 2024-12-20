@@ -1,4 +1,4 @@
-<h3 class="page-title p-3 bg-white mt-3 mb-0 mt-2">Executed Orders (<span *ngIf="executedOrders">{{executedOrders.length}}</span>)</h3>
+<h3 class="page-title p-3 bg-white mt-3 mb-0 mt-2" *ngIf="!isMobileDevice">Executed Orders (<span *ngIf="executedOrders">{{executedOrders.length}}</span>)</h3>
 <div class="data-table instruments-table fold-header bg-white" *ngIf="!isMobileDevice">
     <table>
         <thead>
@@ -38,7 +38,7 @@
         
     </table>
 </div>
-<div class="executed-orders gtt-list cards" *ngIf="isMobileDevice">
+<div class="gtt-list cards" *ngIf="isMobileDevice">
     <div class="card" *ngFor = "let order of executedOrders">
         <div class="top flex px-3">
             <div class="flex4">
