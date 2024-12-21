@@ -1,9 +1,12 @@
 
 <div class="sub-nav">
-    <a routerLinkActive="router-link-active" class="active-item"><span>Positions</span></a>
+    <a routerLinkActive="router-link-active" class="active-item">
+        <span>Positions</span> 
+        <span class="circle ml-1" *ngIf="isMobileDevice && positionResponse.data.data.length > 0">{{positionResponse.data.data.length}}</span>
+    </a>
     <a [routerLink]="['/holdings/']" routerLinkActive="router-link-active"><span>Holdings</span></a>
 </div>
 
 <div class="container-main">
-    <app-positions-grid [positionsData]="positionResponse"></app-positions-grid>
+    <app-positions-grid [positionsData]="positionResponse" [isMobileDevice]="isMobileDevice"></app-positions-grid>
 </div>

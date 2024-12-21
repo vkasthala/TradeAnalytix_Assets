@@ -12,10 +12,10 @@
             <div class="reports-header">
                 <ul class="nav nav-tabs" role="tablist">
                     <li class="active" role="presentation">
-                        <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#openOrders" role="tab">Open Orders</a>
+                        <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#openOrders" role="tab">Open Orders <span class="circle" *ngIf="openOrders">{{openOrders.data.length}}</span></a>
                     </li>
                     <li role="presentation">
-                        <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#executedOrders" role="tab">Executed Orders</a>
+                        <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#executedOrders" role="tab">Executed Orders <span class="circle" *ngIf="openOrders">{{executedOrders.data.length}}</span></a>
                     </li>
                 </ul>
             </div>

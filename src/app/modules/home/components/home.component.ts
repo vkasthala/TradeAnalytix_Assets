@@ -70,6 +70,11 @@ export class HomeComponent implements OnInit, AfterViewInit {
         this.isBrokerageActive = res;
       }
     );
+    _sharedService.connectBrokerageEvent.subscribe(
+      (res) => {
+        this.openBrokerageModal();
+      }
+    );
   }
 
   ngAfterViewInit(): void {

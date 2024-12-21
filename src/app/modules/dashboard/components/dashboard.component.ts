@@ -517,6 +517,12 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     this.checkDevice()
   }
 
+  connectPopup() {
+    let isBrokerageActive = sessionStorage.getItem('isBrokerageActive') && sessionStorage.getItem('isBrokerageActive') === 'true';
+    if(!isBrokerageActive){
+      this._sharedService.connectBrokerageEvent.emit(true);
+    }
+  }
 
 }
 

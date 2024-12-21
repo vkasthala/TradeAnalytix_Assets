@@ -1,7 +1,7 @@
 @import "../../../../../assets/styles/variable.scss";
 
 .managerules-sec {
-    padding: 10px 20px;
+    padding: 10px 15px;
 }
 
 .trade-st-box {
@@ -264,18 +264,31 @@ table.mat-table {
 }
 
 @media (max-width: 767px) {
+    .mat-cell, .mat-footer-cell {
+        font-size: 15px;
+        color: #000000;
+        align-items: start;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
     .date-cell {
-        width: 28%;
-        flex: 0 0 28%;
+        width: 29%;
+        flex: 0 0 29%;
     }
     .description-cell {
-        width: 60%;
-        flex: 0 0 60%;
-        padding-right: 15px;
+        width: 57%;
+        flex: 0 0 57%;
+        padding-right: 10px;
     }
     
     .action-cell {
-        width: 12%;
-        flex: 0 0 12%;
+        width: 14%;
+        flex: 0 0 14%;
+    }
+    .mat-header-cell, .mat-cell, .mat-footer-cell, .custom-label {
+        font-size: 14px !important;
+    }
+    mat-footer-row, mat-header-row, mat-row {
+        align-items: start;
     }
 }

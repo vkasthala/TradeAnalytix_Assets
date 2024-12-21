@@ -58,15 +58,15 @@
     padding: 0px;
     margin-top: 0;
     font-size: 15px;
-    background: #f1f2f4;
+    background: rgb(223 223 223 / 77%);
     @media #{$extra-small} {
-        overflow-y: scroll;
+        overflow-y: auto;
     }
     @media #{$small} {
-        overflow-y: scroll;
+        overflow-y: auto;
     }
     @media #{$medium} {
-        overflow-y: scroll;
+        overflow-y: auto;
     }
 }
 
@@ -162,6 +162,9 @@ td.mat-cell {
 }
 
 @media (max-width: 767px) {
+    .reports-section {
+        padding-bottom: 0;
+    }
     .example-box {
         top: 5% !important;
         left: 0 !important;

@@ -16,7 +16,7 @@ import { PositionsResponse } from 'src/app/modules/shared/models/portfolio.model
   styleUrls: ['./positions-grid.component.scss']
 })
 export class PositionsGridComponent implements OnInit {
-  isMobileDevice: any;
+  @Input() isMobileDevice: any;
   rowId:any=null;
   
   @Input() positionsData:PositionsResponse;
@@ -52,7 +52,6 @@ export class PositionsGridComponent implements OnInit {
 
   ngOnInit(): void {
     this.instrumentPriceUpdateService.establishConnection();
-    this.checkDevice();
     this.loadUserDetails();
   }
 
@@ -138,23 +137,6 @@ add(rowData:any) {
     }
   }
 
-  checkDevice() {
-    setTimeout(() => {
-      const agent = window.navigator.userAgent.toLowerCase();
-      let regexp = /android|iphone|kindle|ipad/i;
-      let deviceType = regexp.test(agent);
-      if (deviceType) {
-        this.isMobileDevice = true;
-      } else {
-        this.isMobileDevice = false;
-      }
-    }, 100)
-  }
-
-  @HostListener('window:resize', ['$event'])
-  onResize() {
-    this.checkDevice()
-  }
 
   openMobileActions(rowData: any) {
     this.showMobileContextMenu = true;

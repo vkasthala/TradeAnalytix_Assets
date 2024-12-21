@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { PositionsResponse,Position } from '../shared/models/portfolio.model';
+import { Component, HostListener, OnInit } from '@angular/core';
+import { PositionsResponse, Position } from '../shared/models/portfolio.model';
 import { PositionService } from '../shared/services/position.service';
 import { ToastrService } from 'ngx-toastr';
 
@@ -10,7 +10,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./positions.component.scss']
 })
 export class PositionsComponent implements OnInit {
-  
+  isMobileDevice: any;
   positionResponse: PositionsResponse = {
     data: {
     data: [],
@@ -27,14 +27,15 @@ export class PositionsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.checkDevice();
     this.loadPositions();
   }
 
   loadPositions(){
     let isBrokerageActive = sessionStorage.getItem('isBrokerageActive') && sessionStorage.getItem('isBrokerageActive') === 'true';
     if (isBrokerageActive && isBrokerageActive !== undefined) {
-      this._positionService.getPositions().subscribe(response=>{
-        if(response){
+      this._positionService.getPositions().subscribe(response => {
+        if (response) {
           this.positionResponse.data.data = response.data.data;
           this.positionResponse.data.total_p_and_l = response.data.total_day_p_and_l;
           this.positionResponse.data.total_p_and_l = response.data.total_p_and_l;
@@ -59,10 +60,28 @@ export class PositionsComponent implements OnInit {
 
   updateChangeProps(positions: Position[], data: any) {
     positions.forEach(position => {
-      if(position.instrument.symbol === data.symbol){
+      if (position.instrument.symbol === data.symbol) {
         position.ltp = data.ltp;
       }
-      });
+    });
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.checkDevice()
+  }
+
+  checkDevice() {
+    setTimeout(() => {
+      const agent = window.navigator.userAgent.toLowerCase();
+      let regexp = /android|iphone|kindle|ipad/i;
+      let deviceType = regexp.test(agent);
+      if (deviceType) {
+        this.isMobileDevice = true;
+      } else {
+        this.isMobileDevice = false;
+      }
+    }, 100)
   }
 
 

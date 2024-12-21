@@ -67,15 +67,14 @@
     }
     
     .tab .nav-tabs li.active a::before,
-    .tab .nav-tabs li a:hover::before
-    {
+    .tab .nav-tabs li a:hover::before {
         content: '';
         width: 100%;
         height: 4px;
         border-radius: 4px 4px 0px 0px;
         background: #2469FF;
         position: absolute;
-        bottom: -4px;
+        bottom: 5%;
         left: 0;
     }
 
@@ -85,5 +84,18 @@
         bottom: 5%;
         left: 0;
         right: auto;
+    }
+    .circle {
+        background: #5B5C60;
+        color: #fff;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: inline-flex;    ;
+        align-items: center;
+        justify-content: center;
+    }
+    .tab .nav-tabs li.active .circle {
+        background: #4A69CB;
     }
 }

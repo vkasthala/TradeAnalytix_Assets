@@ -2939,7 +2939,6 @@ input {
     }
     
     .sub-nav a {
-        padding: 5px 15px;
         margin: 0;
     }
     
@@ -2947,6 +2946,16 @@ input {
     .sub-nav a:hover::before {
         content: '';
         left: 0;
+    }
+    .circle {
+        background: #4A69CB;
+        color: #fff;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
     }
 }
 
