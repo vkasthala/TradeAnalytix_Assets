@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, HostListener } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
@@ -7,7 +7,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
   styleUrls: ['./disable-rule-modal.component.scss']
 })
 export class DisableeRuleModalComponent implements OnInit {
-
+  isMobileDevice: any;
   title: string;
   value: any;
 
@@ -25,7 +25,7 @@ export class DisableeRuleModalComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+    this.checkDevice();
   }
 
   closeModal() {
@@ -38,4 +38,22 @@ export class DisableeRuleModalComponent implements OnInit {
     this.dialogRef.close(this.value);
   }
 
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.checkDevice()
+  }
+
+  checkDevice() {
+    setTimeout(() => {
+      const agent = window.navigator.userAgent.toLowerCase();
+      let regexp = /android|iphone|kindle|ipad/i;
+      let deviceType = regexp.test(agent);
+      if (deviceType) {
+        this.isMobileDevice = true;
+      } else {
+        this.isMobileDevice = false;
+      }
+    }, 100)
+  }
+  
 }

@@ -20,9 +20,8 @@
         color: #000;  //Venkat changed from #5B5C60
         font-size: 18px;
         box-shadow: 0 1px 5px 0 rgba(var(--color-border-5--rgb), 0.1);
-
-        padding: 30px 20px;
-        background: #f1f2f4;
+        padding:10px 15px 20px 15px;
+        background: #E1E8FF;
         display: flex;
         justify-content: space-evenly;
     }
@@ -30,7 +29,7 @@
         display: flex;
         align-items: center;
         border: none;
-        justify-content: space-evenly;
+        justify-content: space-between;
         width: 100%;
     }
     
@@ -53,8 +52,7 @@
         z-index: 2;
         transition: all 0.3s ease 0s;
         text-decoration: none;
-    
-        padding: 20px 12px;
+        padding: 16px 0;
         color: #000;    //Venkat changed from #5B5C60
         position: relative;
         font-weight: 500;
@@ -88,12 +86,13 @@
     .circle {
         background: #5B5C60;
         color: #fff;
-        width: 30px;
-        height: 30px;
+        width: 25px;
+        height: 25px;
         border-radius: 50%;
-        display: inline-flex;    ;
+        display: inline-flex;
         align-items: center;
         justify-content: center;
+        font-size: 14px;
     }
     .tab .nav-tabs li.active .circle {
         background: #4A69CB;

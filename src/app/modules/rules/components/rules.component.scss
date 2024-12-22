@@ -76,10 +76,7 @@
 }
 
 @media only screen and (max-width: 479px) {
-    .tab .nav-tabs li {
-        width: 100%;
-        text-align: center;
-    }
+   
     .tab .nav-tabs li.active a:before {
         content: "\f105";
         bottom: 15%;
@@ -175,7 +172,16 @@ td.mat-cell {
         z-index: 999;
         transform: inherit !important;
     }
-
+    .reports-header {
+        align-items: center;
+        color: #000;  //Venkat changed from #5B5C60
+        font-size: 18px;
+        box-shadow: 0 1px 5px 0 rgba(var(--color-border-5--rgb), 0.1);
+        padding:10px 15px 20px 15px;
+        background: #E1E8FF;
+        display: flex;
+        justify-content: space-evenly;
+    }
     .intraday-modal-header {
         flex-direction: column;
     }
@@ -219,13 +225,11 @@ td.mat-cell {
     }
     .tab .nav-tabs {
         width: 100%;
+        justify-content: space-between;
     }
     .tab .nav-tabs li a {
         line-height: 18px;
-    }
-    .tab .nav-tabs li {
-        width: 50%;
-        text-align: center;
+        margin: 0;
     }
 
     .tab .nav-tabs li.active a:before {

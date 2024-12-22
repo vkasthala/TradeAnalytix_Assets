@@ -2266,7 +2266,7 @@ input {
 .watchlist-sidebar .stocks-search input {
     border: 0;
     border-bottom: 1px solid #f1f1f1;
-    padding: 15px 10px 15px 40px
+    padding: 18px 10px 10px 40px
 }
 
 .watchlist-sidebar .stocks-search .icon {
@@ -2364,7 +2364,7 @@ input {
 
 .su-input-group .prefix-icon.icon {
     left: 0;
-    border-right: 1px solid var(--color-border-default)
+    border-right: 1px solid #c9c8c8;
 }
 
 .su-input-group .prefix-icon.icon,.su-input-group .reveal-password-icon {
@@ -2871,22 +2871,34 @@ input {
     }
     .trading-container {
         position: relative;
-        top: 67px;
-        height: 85vh !important;
+        top: 81px;
+        height: 78vh !important;
         overflow: auto;
     }
-
+    .app .header {
+        box-shadow: none;
+        border-bottom: 1px solid #dbdbdb;
+    }
     .app-nav.mobile-nav a.nav-link {
         display: flex;
         flex-direction: column;
         color: #000000;
         justify-content: center;
         align-items: center;
+        font-size: 15px;
+        font-weight: 600;
+        padding: 8px;
     }
 
     .app-nav.mobile-nav a.router-link-active,
     .app-nav.mobile-nav a:hover {
         color: #2469FF;
+    }
+    .app-nav.mobile-nav a.nav-link span.icon {
+        height: 30px;
+        display: flex;
+        align-items: end;
+        padding-bottom: 3px;
     }
     .chatbot-icon {
         bottom: 140px;
@@ -2896,7 +2908,7 @@ input {
         width: 30px;
     }
     .watchlist-wrap {
-        height: 86vh;
+        height: 78vh;
     }
     .watchlist-sidebar .marketwatch-selector {
         position: absolute;
@@ -2932,8 +2944,8 @@ input {
     }
 
     .sub-nav {
-        padding: 40px 20px;
-        background: #f1f2f4;
+        padding: 15px 15px 35px 15px;
+        background: #E1E8FF;
         display: flex;
         justify-content: space-evenly;
     }
@@ -2950,12 +2962,17 @@ input {
     .circle {
         background: #4A69CB;
         color: #fff;
-        width: 30px;
-        height: 30px;
+        width: 25px;
+        height: 25px;
         border-radius: 50%;
         display: inline-flex;
         align-items: center;
         justify-content: center;
+        font-size: 14px;
+    }
+    .watchlist-sidebar .instruments {
+        max-height: calc(100% - 55px);
+        height: calc(100% - 55px);
     }
 }
 

@@ -5,10 +5,10 @@
                 <div class="pinned-instruments">
                     <div class="instrument-widget">
                         <span *ngIf="isMobileDevice" class="sidebar-brand cursor-pointer" [routerLink]="['/dashboard/']">
-                            <img src="../../../../assets/images/cuetrade-logo.svg" alt="Trade-app-logo" class="img-fluid logo_sm">
+                            <img src="../../../../assets/img/cuetrade-logo.svg" alt="Trade-app-logo" class="img-fluid logo_sm">
                         </span>
                         <span *ngIf="!isMobileDevice" class="sidebar-brand cursor-pointer" [routerLink]="['/dashboard/']">
-                            <img src="../../../../assets/images/cuetrade-logo.svg" alt="Trade-app-logo" class="img-fluid full-logo">
+                            <img src="../../../../assets/img/cuetrade-logo.svg" alt="Trade-app-logo" class="img-fluid full-logo">
                         </span>
                     </div>
                 </div>
@@ -118,7 +118,7 @@
         </a>
         
         <a class="nav-link" [class.router-link-active]="currentRoute === 'orders'" [routerLink]="['/orders/']" routerLinkActive="router-link-active">
-            <span class="icon"><mat-icon class="material-icons">reorder</mat-icon></span>
+            <span class="icon orders-icon"><mat-icon class="material-icons">reorder</mat-icon></span>
             <span class="nav-text">Orders</span>
         </a>
         <!-- <a class="nav-link" [class.router-link-active]="['/holdings/']" [routerLink]="['/holdings/']" routerLinkActive="router-link-active">
@@ -129,11 +129,11 @@
             <span class="nav-text">Holdings</span>
         </a> -->
         <a class="nav-link" [class.router-link-active]="currentRoute === 'positions'" [routerLink]="['/positions/']" routerLinkActive="router-link-active">
-            <span class="icon"><mat-icon class="material-icons">inventory</mat-icon></span>
+            <span class="icon position-icon"><mat-icon class="material-icons">inventory</mat-icon></span>
             <span class="nav-text">Positions</span>
         </a>
         <a class="nav-link" [class.router-link-active]="currentRoute === 'rules'" [routerLink]="['/rules/']" routerLinkActive="router-link-active">
-            <span class="icon"><mat-icon class="material-icons">rule</mat-icon></span>
+            <span class="icon rules-icon"><mat-icon class="material-icons">rule</mat-icon></span>
             <span class="nav-text">Rules</span>
         </a>
     </div>
