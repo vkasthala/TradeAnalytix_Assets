@@ -689,6 +689,7 @@
         min-width: 120px;
         max-width: 120px;
         font-size: 12px;
+        // margin-left:5px; // To move the leg in the closed legs section to move right
         h6 {
             font-size: 1.25rem;
             @media #{$medium} {
@@ -777,16 +778,16 @@
         font-weight: 600;
         font-size: 15px;
         line-height: 24px;
-        padding: 10px 25px;
+        padding: 10px 39px;  // Moves Closed Legs heading to the right
         color: #000000;
         margin-bottom: 4px;         //Venkat added to give space between Trade Details and Trade Statistics sections
         .closed-legs-title {
             display: flex;
             margin-left:-7px;        //Venkat added to align closed legs title with the rest of the titles
             margin-bottom:4px;        //Venkat added to give space between Trade Details and Trade Statistics section
-            justify-content: space-between;
+            // justify-content: space-between;
             align-items: center;
-            padding-bottom: 16px;     //Venkat added to give space in Closed Positions section when collapsed
+            padding-bottom: 10px;     //Venkat added to give space in Closed Positions section when collapsed
         }
     }
     .closed-legs-body {

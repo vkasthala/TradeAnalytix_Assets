@@ -2,7 +2,7 @@
     <div class="pb-3">
         <div class="row">
             <div class="py-2 col-sm-8">
-                 <label class="col-form-label">Select Brokerage</label>
+                 <label class="col-form-label">Select Your Broker and Import Trades</label>
                  <select class="form-control" [(ngModel)]="selectedbroker" (change)="onBrokerageChange($event.target.value, index)">
                     <option *ngFor="let item of brokerages;let index = index" value={{item.id}}>{{item.name}}
                     </option>
@@ -11,7 +11,7 @@
             </div>
             <div class="pt-2 col-sm-6">
                 <button class="btn btn-enter btn-sm" [disabled]="!selectedBrokerage"
-                    (click)="importTrades()">Import</button>
+                    (click)="importTrades()">Import Trades</button>
                 <mat-spinner [diameter]="30" *ngIf="processing"></mat-spinner>
             </div>
         </div>

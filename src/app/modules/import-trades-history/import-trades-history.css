@@ -206,7 +206,7 @@ th.mat-header-cell {
 .mat-cell:first-of-type, .mat-footer-cell:first-of-type, .mat-header-cell:first-of-type {
   text-align: left !important;
   justify-content: start;
-  padding: 0px 32px;
+  padding: 0px 32px; 
 }
 
 .video-modal .modal-dialog {
@@ -227,7 +227,8 @@ th.mat-header-cell {
 }
 .header-title {
   font-weight: 600;
-  font-size: 18px;
+  font-size: 20px;
+  color:#2469FF;
 }
 .sub-title {
   font-weight: 500;
@@ -254,15 +255,23 @@ th.mat-header-cell {
   background-color: transparent;
   cursor: pointer;
 }
+
+.importdate_cell {
+  width: 15%;
+}
+
 .brokerage_cell {
   width: 15%;
 }
-.Linked_cell {
-  width: 12%;
+
+tradesimported_cell {
+  width: 0%;
 }
-.Fetch_cell {
-  width: 20%;
+
+lasttradedate_cell {
+  width: 15%;
 }
+
 .Action_cell {
   width: 10%;
 }

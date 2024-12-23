@@ -1,20 +1,9 @@
-<!-- <div class="sub-nav">
-    <a [routerLink]="['/import-trades-history/']" routerLinkActive="router-link-active" class="active-item"><span>Import Trades</span></a>
-    <a [routerLink]="['/stravtegies/']" routerLinkActive="router-link-active"><span>Trade History</span></a>
-</div> -->
-
- <!-- <div class="import-header">
-   <p>Adding trades to CueTrade from your brokerage account is a breeze. Simply download the trade history files from your brokerage account and effortlessly upload them into CueTrade.</p>  -->
-   <!-- <strong>Manual Import: </strong>Simply download the trade history files from your brokerage account and effortlessly upload them into CueTrade. This allows you to add your trades to CueTrade manually.
-    <strong>Auto-Import: </strong>Seamlessly connect your brokerage account to CueTrade, allowing for automatic importation of all your trades from the brokerage directly into CueTrade. -->
-<!-- </div> -->
-
 <div class="import-body">
     <div class="import-container">
         <div class="import_trade_header">
-            <span class="header-title">{{importType == 1 ? "Upload Trades from Your Brokerage" : "Auto-Import" }}</span>
+            <span class="header-title">{{importType == 1 ? "Import Trades via File" : "Sync Trades Automatically" }}</span>
             <div class="d-flex align-items-center justify-content-end">
-                <label class="col-form-label px-3 w-auto">Select Import Type</label>
+                <label class="col-form-label px-3 w-auto" style="font-size: 16px; font-weight: 600;">Select Import Type</label>
                 <select [(value)]="importType" (change)="selectionChange($event.target.value)" class="form-control w-auto">
                     <option value="1">Manual Import</option>
                     <option value="2">Auto-Import</option>
@@ -104,84 +93,20 @@
         </div>
     </div>
 
-    <!-- Venkat commented the code to display the grid that shows brokerages from whom trades can be auto-imported, status, last fecthed date, etc. Uncomment this when auto-import is implemented.
+   
     <div *ngIf="importType == 2" class="mt-3">
-        <h4 class="sub-title py-2">Brokerage Accounts</h4>
         <div class="trade-table">
             <table class="mat-table">
                 <thead>
                     <tr class="mat-header-row">
+                        <th class="mat-header-cell importdate_cell">Import Date</th>
                         <th class="mat-header-cell brokerage_cell">Brokerage</th>
-                        <th class="mat-header-cell Linked_cell">Status</th>
-                        <th class="mat-header-cell Linked_cell">Linked Date</th>
-                        <th class="mat-header-cell Fetch_cell">Last Successful Fetch Date</th>
-                        <th class="mat-header-cell Action_cell">Action</th>
+                        <th class="mat-header-cell tradesimported_cell">Trades Imported</th>
+                        <th class="mat-header-cell lasttradedate_cell">Last Trade Date & Time</th>
                         <th class="mat-header-cell"></th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr class="mat-row">
-                        <td class="mat-cell">Robinhood</td>
-                        <td class="mat-cell">Not Linked</td>
-                        <td class="mat-cell">NA</td>
-                        <td class="mat-cell">NA</td>
-                        <td class="mat-cell"><span class="cursor-text">Link</span></td>
-                        <td class="mat-cell"></td>
-                    </tr>
-                    <tr class="mat-row">
-                        <td class="mat-cell">eTrade</td>
-                        <td class="mat-cell">Linked</td>
-                        <td class="mat-cell">23-Feb-2023</td>
-                        <td class="mat-cell">04-May-2023</td>
-                        <td class="mat-cell"><span class="cursor-text">Unlink</span></td>
-                        <td class="mat-cell">
-                            <button type="button" class="btn btn-green">Fetch Trades</button>
-                        </td>
-                    </tr>
-                    <tr class="mat-row">
-                        <td class="mat-cell">Fidelity</td>
-                        <td class="mat-cell">Not Linked</td>
-                        <td class="mat-cell">23-Feb-2023</td>
-                        <td class="mat-cell">04-May-2023</td>
-                        <td class="mat-cell"><span class="cursor-text">Link</span></td>
-                        <td class="mat-cell">
-                            <button type="button" class="btn btn-green">Fetch Trades</button>
-                        </td>
-                    </tr>
-                    <tr class="mat-row">
-                        <td class="mat-cell">Trade King</td>
-                        <td class="mat-cell">Not Linked</td>
-                        <td class="mat-cell">23-Feb-2023</td>
-                        <td class="mat-cell">04-May-2023</td>
-                        <td class="mat-cell"><span class="cursor-text">Link</span></td>
-                        <td class="mat-cell">
-                            <button type="button" class="btn btn-green">Fetch Trades</button>
-                        </td>
-                    </tr>
-                    <tr class="mat-row">
-                        <td class="mat-cell">Trade Station</td>
-                        <td class="mat-cell">Not Linked</td>
-                        <td class="mat-cell">NA</td>
-                        <td class="mat-cell">NA</td>
-                        <td class="mat-cell"><span class="cursor-text">Unlink</span></td>
-                        <td class="mat-cell"></td>
-                    </tr>
-                </tbody>
             </table>
         </div>
     </div>
-</div> -->
-
-<!-- This must be the link to an old video. Venkat commented it.
-<div class="modal video-modal" id="modal1" tabindex="-1" role="dialog" aria-labelledby="modallabel1" aria-hidden= "true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="text-right px-2 pt-2">
-                <span class="cursor" (click)="closePopup()" data-dismiss="modal"><mat-icon class="mat-icon-sm">clear</mat-icon></span>
-            </div>
-            <div class="modal-body px-2 py-0">
-                <iframe width="100%" height="480" src="https://www.youtube.com/embed/txIqoIys3GI" allowfullscreen></iframe>
-            </div>
-        </div>
-    </div>
-</div> -->
+</div>

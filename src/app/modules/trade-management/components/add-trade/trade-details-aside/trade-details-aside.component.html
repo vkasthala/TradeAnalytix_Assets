@@ -1,10 +1,9 @@
 <div class="custom-card" style="margin-bottom: 1rem;" *ngIf="selectedStock && stockSummaryResult">
     <div class="custom-card-header">
         <div class="custom-card-title">Trade Statistics</div>
-        <a class="add-new cursor d-flex" (click)="refreshTradeDetails()">
-            <!-- <mat-icon>refresh</mat-icon> Refresh -->
+        <!-- <a class="add-new cursor d-flex" (click)="refreshTradeDetails()"> //Uncomment refresh icon to refresh Max Risk once it is auto-calculated
             <mat-icon>refresh</mat-icon>
-        </a>
+        </a> -->
     </div>
     <div class="custom-card-body">
         <div class="d-flex mb-1 align-items-center" *ngIf="(editTrade || closeTrade || tradeStatus === 2) && (tradeStatus !== 4 )">
