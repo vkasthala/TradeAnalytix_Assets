@@ -93,12 +93,16 @@
       <ng-container matColumnDef="return">
         <mat-header-cell class="return-cell" *matHeaderCellDef mat-sort-header>Realized Return</mat-header-cell>
         <mat-cell class="return-cell" *matCellDef="let element"> 
-          {{element.returnAmount | number: '1.0-0'}} 
-          
+          {{element.returnAmount | number: '1.0-0'}}      
         </mat-cell>
       </ng-container>
       
-
+      <!-- Broker Name Column -->
+      <ng-container matColumnDef="brokerId">
+        <mat-header-cell class="broker-name-cell" *matHeaderCellDef mat-sort-header>Source</mat-header-cell>
+        <mat-cell class="broker-name-cell" *matCellDef="let element"> {{element.brokerId}} </mat-cell>
+      </ng-container>
+      
       <!-- Tags Column -->
       <ng-container matColumnDef="tags">
         <mat-header-cell class="tags-cell" *matHeaderCellDef mat-sort-header>Tags</mat-header-cell>

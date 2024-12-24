@@ -28,7 +28,7 @@ export class PortfolioGrid implements AfterViewInit, OnInit {
   expandIndex: any;
   // displayedColumns = ['action', 'stockName', 'id', 'openDate', 'strategy', 'direction', 'journaled', 'totalAmount', 'maxLoss', 'return', 'tags'];
   // Remove id to remove identifier, direction, and maxLoss columns from the open strategies grid
-  displayedColumns = ['action', 'stockName', 'openDate', 'strategy', 'totalAmount', 'return', 'maxLoss', 'journaled', 'tags'];
+  displayedColumns = ['action', 'stockName', 'openDate', 'strategy', 'totalAmount', 'return', 'maxLoss', 'journaled', 'brokerId'];
   pageSize: number = 20
 
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;

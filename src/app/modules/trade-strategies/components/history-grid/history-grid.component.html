@@ -108,6 +108,12 @@
         <mat-cell class="stock-name-tags" *matCellDef="let element"> {{element.tags}} </mat-cell>
       </ng-container>
 
+      <!-- Broker Name Column --> 
+      <ng-container matColumnDef="brokerId">
+        <mat-header-cell class="broker-name-cell" *matHeaderCellDef mat-sort-header>Source</mat-header-cell>
+        <mat-cell class="broker-name-cell" *matCellDef="let element"> {{element.brokerId}} </mat-cell>
+      </ng-container>
+      
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
