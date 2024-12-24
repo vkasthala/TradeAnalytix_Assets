@@ -29,8 +29,13 @@
 
       <!-- Symbol Column -->
       <ng-container matColumnDef="stockName">
-        <mat-header-cell class="stock-name-cell" *matHeaderCellDef mat-sort-header>Symbol</mat-header-cell>
-        <mat-cell class="stock-name-cell" *matCellDef="let element"> {{element.stockCode}} </mat-cell>
+        <mat-header-cell class="stock-name-cell" *matHeaderCellDef mat-sort-header>Symbol | Contract</mat-header-cell>
+        <mat-cell class="stock-name-cell" *matCellDef="let element">
+          {{element.stockCode}}
+          <span *ngIf="element.optionType"> &nbsp;| {{element.optionType.toLowerCase() | titlecase}} </span>
+          <span *ngIf="element.strikePrice"> &nbsp;| {{element.strikePrice}} </span>
+          <span *ngIf="element.expiryDate"> &nbsp;| {{element.expiryDate | date: 'dd-MMM-yyyy'}} </span>
+        </mat-cell>
       </ng-container>
 
       <!-- Strategy ID Column -->
