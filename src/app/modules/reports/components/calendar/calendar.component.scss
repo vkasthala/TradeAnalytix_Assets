@@ -3,6 +3,7 @@
     padding: 0;
     min-height: 400px;
     box-shadow: 0px 4px 16px rgba(157, 157, 157, 0.4);
+    border: 1px solid rgba(16, 92, 159, 0.15);
     border-radius: 12px;
     ul {
         list-style: none;
@@ -20,7 +21,7 @@
             flex: 0 0 14.2857%;
             border-left: 0;
             border-top: 0;
-            font-size: 15px;
+            font-size: 16px;
             height: 63px;
             position: relative;
             justify-content: center;
@@ -35,8 +36,8 @@
             height: 40px;
             justify-content: center;
             align-items: center;
-            font-weight: 600;
-            font-size: 15px;
+            font-weight: 500;
+            font-size: 16px;
         }
         .default_day {
             position: absolute;
@@ -45,12 +46,14 @@
             background: #8a8989;
             color: #fff;
             border-radius: 0 0 15px 0;
-            width: 35px;
+            width: 40px;
             text-align: center;
             display: flex;
             justify-content: center;
-            height: 35px;
+            height: 40px;
             line-height: 25px;
+            padding-top: 7px;
+            font-size: 16px;
         }
         .working_day {
             position: absolute;
@@ -85,6 +88,6 @@
 .returnAmount {
     text-align: right;
     min-height: 6px;
-    font-size: 15px;
+    font-size: 16px;
     margin:16px;          //Added this to adjust the formatting of return amount and trade count in calendar report
 }

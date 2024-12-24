@@ -37,7 +37,7 @@
         justify-content: center;
         display: flex;
         align-items: flex-start;
-        background: #fbfbfb;
+        background: #ffffff;
         border: 1px solid rgba(16, 92, 159, 0.15);
         box-shadow: 0px 4px 16px rgba(157, 157, 157, 0.4);
         border-radius: 6px;
@@ -71,10 +71,10 @@
                 cursor: pointer;
                 span {
                     display: block;
-                    font-size: 15px;
+                    font-size: 16px;
                     line-height: 1;
                     color: #000000;
-                    font-weight: 600;
+                    font-weight: 500;
                     @media #{$extra-small} {
                         font-size: 12px;
                         line-height: 14px;
@@ -503,7 +503,8 @@
 }
 
 .trade-headiang {
-    margin-bottom: 10px;
+    padding-top: 5px;
+    margin-bottom: 15px;
     h5 {
         font-weight: 600;
         font-size: 20px;
@@ -525,6 +526,8 @@
     font-weight: 600;
     font-size: 20px;
     color: #000000;
+    padding-top: 5px;
+    padding-bottom: 5px;
     @media #{$extra-small} {
         font-size: 18px;
         line-height: 22px;
@@ -842,7 +845,7 @@
 .dashboard-body {
     background: #f1f2f4;
     color: #000000;
-    padding: 20px 40px 10px 20px;
+    padding: 20px 40px 10px 35px;
     font-size: 15px;
     line-height: 24px;
     border-radius: 0px;
