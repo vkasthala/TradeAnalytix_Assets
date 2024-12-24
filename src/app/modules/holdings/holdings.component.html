@@ -16,13 +16,13 @@
                 <thead>
                     <tr>
                         <th class="instrument-cell">Instrument</th>
-                        <th class="text-right">Qty.</th>
-                        <th class="text-right">Avg.cost</th>
-                        <th class="text-right">LTP</th>
-                        <th class="text-right">Cur.Val</th>
-                        <th class="text-right">P&L</th>
-                        <th class="text-right">Net Chg.</th>
-                        <th class="text-right">Day Chg.</th>
+                        <th class="qty-cell">Quantity</th>
+                        <th class="avgcost-cell">Avg.Cost</th>
+                        <th class="ltp-cell">LTP</th>
+                        <th class="currval-cell">Current Value</th>
+                        <th class="netprofit-cell">Net Profit</th>
+                        <th class="netchange-cell">Net Change</th>
+                        <th class="daychange-cell">Day Change</th>
                         <th class="text-right"></th>
                     </tr>
                 </thead>
@@ -85,32 +85,32 @@
                         {{rowData.instrument.symbol}}
                     </div>
                     <div class="flex6 text-right">
-                        <span class="text-xsmall dim">Qty</span> 
+                        <span class="text-xsmall dim">Quantity</span> 
                         <span class="ml-1">{{rowData.quantity}}</span>
                     </div>
                 </div>
                 <div class="middle flex">
                     <div class="flex6">
-                        <span class="text-xsmall dim">Avg.cost</span> 
+                        <span class="text-xsmall dim">Avg.Cost</span> 
                         <span class="ml-1">{{rowData.average}}</span>
                     </div>
                     <div class="flex6 text-right">
-                        <span class="text-xsmall dim">Cur.val</span> 
+                        <span class="text-xsmall dim">Cur.Value</span> 
                         <span class="ml-1">{{rowData.current_value}}</span>
                     </div>
                 </div>
                 <div class="flex">
                     <div class="flex6">
-                        <span class="text-xsmall dim">P&L</span> 
+                        <span class="text-xsmall dim">Net Profit</span> 
                         <span class="ml-1" [ngClass]="rowData.p_and_l > 0 ? 'text-success' : 'text-red'">{{rowData.p_and_l}}</span>
 
                         <span class="ml-3 pl-3">
-                            <span class="text-xsmall dim">Net chg</span> 
+                            <span class="text-xsmall dim">Net Change</span> 
                             <span class="ml-1" [ngClass]="rowData.net_change > 0 ? 'text-success' : 'text-red'">{{rowData.net_change}}</span>
                         </span>
                     </div>
                     <div class="flex6 text-right">
-                        <span class="text-xsmall dim">Day chg</span>
+                        <span class="text-xsmall dim">Day Change</span>
                         <span class="ml-1" [ngClass]="rowData.day_change > 0 ? 'text-success' : 'text-red'">{{rowData.day_change}}</span>
                     </div>
                 </div>
