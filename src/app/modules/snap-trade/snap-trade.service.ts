@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
 import { HttpHeaders } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs'
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +12,16 @@ export class SnapTradeService {
 
   private apiUrl = 'http://localhost:8080'; 
   constructor(private http: HttpClient) {}
+   
+  suffixCuteTrade(snapUserId:any){
+    var noSpaces = snapUserId.replace(/\s+/g, ''); 
+    var suffix = '-cuetrade';
+    return noSpaces+suffix;
+  }
 
-   postData(snapUserId: any): Observable<any> {
-    const payload = JSON.stringify({ "snapUserId": 'a8aaa888run1@test.com' });
+   registerUser(snapUserId: string,cuetradeId:string): Observable<any> {
+    snapUserId = this.suffixCuteTrade(snapUserId);
+    const payload = JSON.stringify({ "snapUserId":snapUserId,"cuetradeId":cuetradeId });
     const url = `http://localhost:8080/api/users/registeruser`;
     
     const headers = new HttpHeaders({
@@ -28,8 +34,26 @@ export class SnapTradeService {
     });
   
   }
+
   getActivities(snapUserId: any,cuetradeId:string): Observable<any> {
-    const payload = JSON.stringify({ "snapUserId": 'arun1@test.com',"cuetradeId":"145" });
+    snapUserId = this.suffixCuteTrade(snapUserId);
+    const payload = JSON.stringify({ "snapUserId":snapUserId,"cuetradeId":cuetradeId });
+    const url = `http://localhost:8080/api/users/activites`;
+    
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Accept':"application/json"
+    });
+    return this.http.post<any>(url, payload,{ 
+      headers: headers,
+    });
+  
+  }
+
+
+  getActivitiesByDate(snapUserId: any,cuetradeId:string,startDate:string,endDate:string): Observable<any> {
+    snapUserId = this.suffixCuteTrade(snapUserId);
+    const payload = JSON.stringify({ "snapUserId":snapUserId,"cuetradeId":cuetradeId,"startDate":startDate,"endDate":endDate});
     const url = `http://localhost:8080/api/users/activites`;
     
     const headers = new HttpHeaders({
@@ -43,7 +67,8 @@ export class SnapTradeService {
   }
 
   login(snapUserId: any,cuetradeId:string): Observable<any> {
-    const payload = JSON.stringify({ "snapUserId": "arun1@test.com" ,"cuetradeId":"145"});
+    snapUserId = this.suffixCuteTrade(snapUserId);
+    const payload = JSON.stringify({ "snapUserId": snapUserId ,"cuetradeId":cuetradeId});
     const url = `http://localhost:8080/api/users/login`;
     
     const headers = new HttpHeaders({

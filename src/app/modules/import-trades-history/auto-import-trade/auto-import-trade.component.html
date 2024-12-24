@@ -13,6 +13,14 @@
                 <button class="btn btn-enter btn-sm" 
                 (click)="importSnapTrades()">ImportSnapTrade</button>
             </div>
+            <div class="py-2 col-sm-8"> 
+                <label for="startDate">Start Date:</label> 
+                <input type="date" id="startDate" name="startDate" [(ngModel)]="startDate"> 
+                <label for="endDate">End Date:</label> 
+                <input type="date" id="endDate" name="endDate" [(ngModel)]="endDate">
+                 <button class="btn btn-enter btn-sm" 
+                (click)="importSnapTradesByDate()">ImportSnapTradeBydate</button>
+            </div>
             <div class="pt-2 col-sm-6">
                 <button class="btn btn-enter btn-sm" [disabled]="!selectedBrokerage"
                     (click)="importTrades()">Import Trades</button>

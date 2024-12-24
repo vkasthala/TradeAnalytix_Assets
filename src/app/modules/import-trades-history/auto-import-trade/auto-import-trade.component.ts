@@ -9,6 +9,8 @@ import { PlaidService } from '../services/plaid.service';
 import { ZerodhaPopupComponent } from '../zerodha-popup/zerodha-popup.component';
 import { SnapTradeService } from '../../snap-trade/snap-trade.service';
 import { UserDetails } from '../../shared/models/common/user-details.model';
+import { UserService } from '../../shared/services/user.service';
+
 
 @Component({
   selector: 'app-auto-import',
@@ -30,6 +32,9 @@ export class AutoImportTradeComponent implements OnInit {
   processing: boolean = false;
   selectedBrokerage: Brokerage;
   showPopup:boolean = false;
+  userData: any;
+  startDate:string;
+  endDate:string;
 
   constructor(
     private uploadService: UploadFileService,
@@ -37,7 +42,8 @@ export class AutoImportTradeComponent implements OnInit {
     private plaidService: PlaidService,
     protected toastr: ToastrService,
     protected router: Router,
-    // @Inject(MAT_DIALOG_DATA) data,
+    private userService: UserService,
+     // @Inject(MAT_DIALOG_DATA) data,
     private _dialog: MatDialog,
     private snapTradeService:SnapTradeService,
   ) {
@@ -55,10 +61,13 @@ export class AutoImportTradeComponent implements OnInit {
     this.brokerageService.getAutoBrokerages().subscribe(result => {
       this.brokerages = result;
     });
+    this.loadUserDetails();
   }
 
   importTrades() {
     console.log('selectedbroker------>', this.selectedBrokerage);
+    
+   
     this.processing = true;
     this.uploadService.getImportRedirectUrl(this.selectedBrokerage.uid).subscribe(result => {
       this.processing = false;
@@ -72,11 +81,31 @@ export class AutoImportTradeComponent implements OnInit {
       window.open(err.error.text, "_blank");
     });
   }
-
+ 
+  loadUserDetails() {
+    this.userService.getUserDetails().subscribe(res => {
+      if (res && res.name) {
+        this.userData = res;
+      }
+    });
+  }
   importSnapTrades() {
-    console.log('UserDetails.name------>', UserDetails.name);
     this.processing = true;
-    this.snapTradeService.getActivities(UserDetails.name,"145").subscribe( result => {
+    this.snapTradeService.getActivities(this.userData.name,this.userData.userId).subscribe( result => {
+      this.processing = false;
+      this.showPopup = true;
+      this.jsonData = result;
+      
+    },err => {
+      this.processing = false;
+      console.log("error:", err);
+      window.open(err.error.text, "_blank");
+    })
+  }
+
+  importSnapTradesByDate() {
+    this.processing = true;
+    this.snapTradeService.getActivitiesByDate(this.userData.name,this.userData.userId,this.startDate,this.endDate).subscribe( result => {
       this.processing = false;
       this.showPopup = true;
       this.jsonData = result;

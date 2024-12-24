@@ -166,7 +166,7 @@ const routes: Routes = [
           loadChildren: () => import('../market-watch/market-watch.module').then(m => m.MarketWatchModule),
         },
         {
-          path : 'registersnap/:username',
+          path : 'registersnap/:username/:userid',
           component: SnapTradeComponentComponent
         }
         
