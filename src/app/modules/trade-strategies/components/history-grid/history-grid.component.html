@@ -85,9 +85,9 @@
         </mat-cell>
       </ng-container>
       
-      <!-- Realized Return Column -->
+      <!-- Net Return Column -->
       <ng-container matColumnDef="return">
-        <mat-header-cell class="return-cell" *matHeaderCellDef mat-sort-header>Return</mat-header-cell>
+        <mat-header-cell class="return-cell" *matHeaderCellDef mat-sort-header>Net Return</mat-header-cell>
         <mat-cell class="return-cell" *matCellDef="let element"> 
           {{element.returnAmount | number: '1.0-0'}} 
         </mat-cell>
@@ -171,7 +171,7 @@
         </div>
         <div class="row py-1">
           <div class="col-6 pl-4">
-            Realized Return
+            Net Return
           </div>
           <div class="col-6 text-success text-right">
             {{element.returnAmount}}

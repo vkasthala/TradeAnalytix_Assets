@@ -49,7 +49,7 @@
             </div>
         </div>
         <div class="d-flex mb-1 align-items-center" *ngIf="!closeTrade && (tradeStatus == 1 || tradeStatus == 2)">
-            <label class="col-form-label">Realized Return</label>
+            <label class="col-form-label">Net Return</label>
             <div class="col-8 col-md-7 col-form-value">{{strategySummaryResult.realizedReturn}}</div>
         </div>
         <div class="d-flex mb-1 align-items-center" *ngIf="tradeStatus == 2">
@@ -69,7 +69,7 @@
     </div>
     <div class="custom-card-body">
         <div class="d-flex mb-1 align-items-center" *ngIf="!addTrade && tradeStatus !== 4">
-            <label class="col-form-label">Realized Return</label>
+            <label class="col-form-label">Net Return</label>
             <div class="col-8 col-md-7 col-form-value">{{stockSummaryResult.realizedReturn}}</div>
         </div>
         <div class="d-flex mb-1 align-items-center">

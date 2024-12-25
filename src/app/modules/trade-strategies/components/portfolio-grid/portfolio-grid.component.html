@@ -77,7 +77,7 @@
 
       <!-- Total Amount Column -->
       <ng-container matColumnDef="totalAmount">
-        <mat-header-cell class="total-amount-cell" *matHeaderCellDef mat-sort-header>Cost of Trade</mat-header-cell>
+        <mat-header-cell class="total-amount-cell" *matHeaderCellDef mat-sort-header>Trade Cost</mat-header-cell>
         <mat-cell class="total-amount-cell" *matCellDef="let element"> {{element.totalAmount | number: '1.0-0'}} </mat-cell>
       </ng-container>
 
@@ -91,7 +91,7 @@
 
       <!-- Return Column -->
       <ng-container matColumnDef="return">
-        <mat-header-cell class="return-cell" *matHeaderCellDef mat-sort-header>Realized Return</mat-header-cell>
+        <mat-header-cell class="return-cell" *matHeaderCellDef mat-sort-header>Net Return</mat-header-cell>
         <mat-cell class="return-cell" *matCellDef="let element"> 
           {{element.returnAmount | number: '1.0-0'}}      
         </mat-cell>

@@ -1,14 +1,14 @@
-<h3 class="page-title p-3 bg-white mt-3 mb-0 mt-2" *ngIf="!isMobileDevice">Executed Orders (<span *ngIf="executedOrders">{{executedOrders.length}}</span>)</h3>
+<h3 class="executedorders-title" *ngIf="!isMobileDevice">Executed Orders (<span *ngIf="executedOrders">{{executedOrders.length}}</span>)</h3>
 <div class="data-table instruments-table fold-header bg-white" *ngIf="!isMobileDevice">
     <table>
         <thead>
             <tr>
                 <th class="sortable time-cell"><span>Time</span></th>
-                <th class="sortable type-cell"><span>Type</span></th>
                 <th class="sortable instrument-cell"><span>Instrument</span></th>
                 <th class="sortable product-cell"><span>Product</span></th>
+                <th class="sortable type-cell"><span>Action</span></th>
                 <th class="sortable qty-cell"><span>Quantity</span></th>
-                <th class="sortable status-cell"><span>Price</span></th>
+                <th class="sortable price-cell"><span>Price</span></th>
                 <th class="sortable status-cell"><span>Status</span></th>
                 <th class="sortable"><span>Journal</span></th>
             </tr>

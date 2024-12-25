@@ -124,36 +124,47 @@
     width: 10px;
 }
 .time-cell {
-    max-width: 15%;
-    width: 15%;
-}
-.type-cell {
-    max-width: 8%;
-    width: 8%;
-}
-.qty-cell {
-    max-width: 6%;
-    width: 6%;
+    max-width: 12%;
+    width: 12%;
 }
 .product-cell {
     max-width: 10%;
     width: 10%;
 }
 .instrument-cell {
-    max-width: 18%;
-    width: 18%;
+    max-width: 12%;
+    width: 12%;
 }
-.qty-tp {
+.action-cell {
+    max-width: 8%;
+    width: 8%;
+}
+.qty-cell {
     max-width: 10%;
     width: 10%;
+}
+.ltp-cell {
+    max-width: 8%;
+    width: 8%;
+}
+.price-cell {
+    max-width: 8%;
+    width: 8%;
 }
 .status-cell {
-    max-width: 10%;
-    width: 10%;
+    max-width: 8%;
+    width: 8%;
 }
 .actions-row {
     display: grid;
     column-gap: 10px;
     grid-template-columns: repeat(auto-fit, minmax(48%, 2fr));
     margin-top: 10px;
+}
+.openorders-title {
+    color: #000000;
+    font-size:18px;
+    margin-top:12px;
+    margin-bottom:12px;
+    font-weight: 500;
 }

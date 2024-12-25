@@ -163,6 +163,7 @@ textarea {
     background: #FFFFFF;
     border: 1px solid rgb(157 166 186 / 20%);
     margin-top:12px;
+    margin-left:16px;
     // box-shadow: 0px 4px 4px rgba(157, 157, 157, 0.4);
 }
 
@@ -186,7 +187,7 @@ tr.mat-row {
 td.mat-cell,
 td.mat-footer-cell,
 th.mat-header-cell {
-    padding: .5rem .25rem .5rem 1rem !important;
+    padding: .5rem 1.25rem .5rem 1rem !important;
     border-radius: 0;
     border: 0;
 }
@@ -196,8 +197,8 @@ td.mat-cell {
     font-weight: 500;
 }
 .rule-cell {
-    width: 22%;
-    flex: 0 0 22%; 
+    width: 30%;
+    flex: 0 0 30%; 
 }
 .action-cell {
     width: 67%;
@@ -207,11 +208,11 @@ td.mat-cell {
 .value-cell {
     width: 5%;
     flex: 0 0 5%;
+    padding-left:2px;
 }
 .status-cell {
     width: 10%;
     flex: 0 0 10%;
-    padding-left: 0px;
 }
 .add-new {
     color: #2469FF;
