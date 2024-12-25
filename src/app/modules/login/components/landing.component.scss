@@ -16,7 +16,7 @@ textarea {
 nav {
     font-family: 'Inter', sans-serif !important;
     font-weight: 500;
-    font-size: 18px;
+    font-size: 1.125rem;
     color: #000 !important;
 }
 
@@ -34,7 +34,7 @@ nav {
 
 .hero-title {
     font-family: 'Inter', sans-serif !important;
-    font-size: 42px;
+    font-size: 2.625rem;
     max-width: 85%; /* For responsiveness */
     align-items: center;
     justify-content: center;
@@ -57,12 +57,12 @@ nav {
 
   .hero-title .feature {
     font-weight: 700;
-    font-size: 26px;
+    font-size: 1.625rem;
     color: #1958BF;
   }
   
   .hero-title .subtext {
-    font-size: 26px;
+    font-size: 1.625rem;
     color: #58595B;
     font-weight: 400;
   }
@@ -79,13 +79,13 @@ h6 {
 }
 
 h2 {
-    font-size: 44px;
+    font-size: 2.75rem;
     letter-spacing: 0.5px;
 }
 
 @media only screen and (max-width: 600px) {
     h2 {
-        font-size: 24px;
+        font-size: 1.5rem;
     }
 }
 
@@ -106,21 +106,21 @@ h2 {
     background-color: #ffffff;
     background-position: center;
     justify-content: center;
-    padding: 80px 100px;
-    margin-top: 100px;
     text-align: center; // Venkat added to make sub text in the hero section center-aligned
+    padding: 80px 5%; /* Use percentage for horizontal padding */
+    margin-top: 10vh; /* Relative to viewport height */
 }
 
 .banner-section h1 {
     font-family: "Inter", sans-serif !important;
     color: #000000;
-    font-size: 46px;
+    font-size: 2.875rem;
 }
 
 .banner-section p {
     font-family: 'Inter', sans-serif !important;
     color: #58595B;
-    font-size: 18px;
+    font-size: 1.125rem;
     margin-left: 325px; /* Aligns text properly without extra space */
     margin-right: 325px;
     justify-content: center; 
@@ -138,6 +138,7 @@ h2 {
     margin-bottom: 1rem;
     border-radius: 4px;
     font-size: 1rem;
+    margin-left:-22px;
 }
 
 .btn-how-banner {
@@ -189,22 +190,9 @@ h2 {
         width: 100%;
     }
 
-    .benefit-item-with-cuetrade, .benefit-item-without-cuetrade {
-        font-family: 'Inter', sans-serif !important;
-        color: #000000;
-        max-width: 90% !important;  // Ensuring this rule takes precedence
-        margin: 10px auto !important;  // Centering the boxes with automatic margins
-        padding: 10px !important;  // Increasing padding for better text spacing
-        box-sizing: border-box;  // Includes padding and border in the element's total width and height
-    }
-
-    .benefit-item-with-cuetrade h2, .benefit-item-without-cuetrade h2 {
-        font-size: 20px !important;  // Ensuring the font size increase applies
-    }
-
     .btn-banner, .btn-how-banner {
         width: 100%; /* Allows buttons to fit content RWD*/
-        font-size: 18px; /* Smaller font for small screens RWD*/
+        font-size: 1.125rem; /* Smaller font for small screens RWD*/
         padding: 15px 15px; /* Smaller padding for buttons RWD*/
         margin-left:0px;
         margin-right:40px;
@@ -217,7 +205,7 @@ h2 {
 
     .btn {
         padding: 8px 16px; /* Smaller buttons */
-        font-size: 16px; /* Smaller font size for buttons */
+        font-size: 1rem; /* Smaller font size for buttons */
         }
 
     .cue-logo img {
@@ -228,7 +216,7 @@ h2 {
     .banner-section h1 {
         font-family: 'Inter', sans-serif !important;
         color: #000000;
-        font-size: 36px;
+        font-size: 2.25rem;
         margin-left: 0; /* Aligns text properly without extra space */
         margin-right: 0;
         padding: 50px; /* Reduced padding */
@@ -237,7 +225,7 @@ h2 {
     .banner-section p {
         font-family: 'Inter', sans-serif !important;
         color: #58595B;
-        font-size: 18px;
+        font-size: 1.125rem;
         margin-left: 10px; /* Aligns text properly without extra space */
         margin-right: 10px;
         margin-top:-40px;
@@ -254,7 +242,7 @@ h2 {
     }
     
     .how-it-works h1 {
-        font-size: 36px !important; /* Slightly reduced for balance */
+        font-size: 2.25rem !important; /* Slightly reduced for balance */
         font-weight: 700;
         color: #000000;
         margin-bottom: 10px; /* Added spacing below heading */
@@ -262,7 +250,7 @@ h2 {
     
     .how-it-works p {
         color: #58595B;
-        font-size: 18px;
+        font-size: 1.125rem;
         line-height: 1;
         text-align: center;
         justify-content: center; 
@@ -289,7 +277,7 @@ h2 {
 
 .brands-sec h5 {
     color: #58595B;
-    font-size: 16px;
+    font-size: 1rem;
     text-align: center;
 }
 
@@ -344,7 +332,7 @@ h2 {
 .how-works h2 {
     font-family: 'Inter', sans-serif !important;
     color: #000;
-    font-size: 44px;
+    font-size: 2.75rem;
     text-align: center;
     padding-top: 30px;
     letter-spacing: 0.5px;
@@ -352,11 +340,11 @@ h2 {
 
 @media only screen and (max-width: 600px) {
     .how-works h2 {
-        font-size: 28px;
+        font-size: 1.75rem;
     }
 
     .how-works h3 {
-        font-size: 26px !important;
+        font-size: 1.625rem !important;
     }
 }
 
@@ -364,7 +352,7 @@ h2 {
     font-family: 'Inter', sans-serif !important;
     color: #135EA4;
     font-weight: 700;
-    font-size: 36px;
+    font-size: 2.25rem;
     line-height: 52px;
     padding-bottom: 1rem;
     letter-spacing: 0.5px;
@@ -373,20 +361,20 @@ h2 {
 .how-works p {
     font-family: 'Inter', sans-serif !important;
     text-align: center;
-    font-size: 18px;
+    font-size: 1.125rem;
     padding: 0px 80px;
     color: #58595B;
 }
 
 @media only screen and (max-width: 600px) {
     .how-works p {
-        font-size: 16px;
+        font-size: 1rem;
         text-align: center;
         padding: 0px 20px;
     }
 
     .how-works li {
-        font-size: 18px !important;
+        font-size: 1.125rem !important;
     }
 }
 
@@ -397,7 +385,7 @@ h2 {
 
 .how-works li {
     font-weight: 400;
-    font-size: 20px;
+    font-size: 1.25rem;
     color: #58595B;
     padding-bottom: 1rem;
 }
@@ -408,7 +396,7 @@ h2 {
 .slide-content p {
     text-align: left;
     padding: 0;
-    font-size: 18px;
+    font-size: 1.125rem;
     margin-bottom: 0.5rem;
 }
 
@@ -424,7 +412,7 @@ h2 {
 }
 
 .slide-text {
-    font-size: 20px;
+    font-size: 1.25rem;
     padding-left: 15px;
     margin-top: 12px;
 }
@@ -435,7 +423,7 @@ h2 {
 .cue-help h3 {
     color: #000000;
     font-weight: 700;
-    font-size: 30px;
+    font-size: 1.875rem;
     letter-spacing: 0.5px;
     font-family: 'Inter', sans-serif !important;
 }
@@ -443,7 +431,7 @@ h2 {
 .cue-help p {
     color: #58595B;
     font-weight: 400;
-    font-size: 18px;
+    font-size: 1.125rem;
     line-height: 30px;
     letter-spacing: 0.3px;
     font-family: 'Inter', sans-serif !important;
@@ -463,13 +451,13 @@ h2 {
     }
 
     .cue-help h3 {
-        font-size: 32px;
+        font-size: 2rem;
     }
 
     .cue-help p {
         color: #58595B;
         font-weight: 400;
-        font-size: 16px;
+        font-size: 1rem;
         line-height: 30px;
         letter-spacing: 0.3px;
     }
@@ -483,7 +471,7 @@ h2 {
 .cue-help-icon a {
     text-decoration: none;
     font-weight: 700;
-    font-size: 18px;
+    font-size: 1.125rem;
     color: #125DA1;
 }
 
@@ -494,13 +482,13 @@ h2 {
 }
 
 .cue-features p {
-    font-size: 18px;
+    font-size: 1.125rem;
     font-family: 'Inter', sans-serif !important;
 }
 
 @media only screen and (max-width: 600px) {
     .cue-features p {
-        font-size: 16px;
+        font-size: 1rem;
     }
 }
 
@@ -529,7 +517,7 @@ h2 {
 }
 
 .owl-nav i {
-    font-size: 52px;
+    font-size: 3.25rem;
 }
 
 .owl-nav .owl-prev {
@@ -559,14 +547,14 @@ h2 {
 .feature-box h4 {
     color: #135EA4;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 1.25rem;
     line-height: 32px;
     letter-spacing: 0.5px;
     font-family: 'Inter', sans-serif !important;
 }
 
 .feature-box p {
-    font-size: 13px;
+    font-size: 0.813rem;
     font-weight: 400;
     line-height: 19px;
     letter-spacing: 0.30000001192092896px;
@@ -588,13 +576,13 @@ h2 {
 }
 
 .cue-testi p {
-    font-size: 18px;
+    font-size: 1.125rem;
     font-family: 'Inter', sans-serif !important;
 }
 
 @media only screen and (max-width: 600px) {
     .cue-testi p {
-        font-size: 16px;
+        font-size: 1rem;
     }
 }
 
@@ -625,7 +613,7 @@ h2 {
 
 .slick-prev:before,
 .slick-next:before {
-    font-size: 30px !important;
+    font-size: 1.875rem !important;
     color: #49B565 !important;
 }
 
@@ -641,11 +629,11 @@ h2 {
 
 .slick-dots li.slick-active button:before {
     color: #125DA1;
-    font-size: 12px;
+    font-size: 0.75rem;
 }
 
 .slick-dots li button:before {
-    font-size: 12px !important;
+    font-size: 0.75rem !important;
 }
 
 
@@ -656,7 +644,7 @@ h2 {
 }
 
 .testimonial-copy p {
-    font-size: 16px;
+    font-size: 1rem;
     font-style: italic;
     font-weight: 400;
     line-height: 32px;
@@ -668,7 +656,7 @@ h2 {
 
 .testimonial-copy h4 {
     font-family: 'Inter', sans-serif;
-    font-size: 20px;
+    font-size: 1.25rem;
     font-weight: 700;
     line-height: 24px;
     letter-spacing: 0.5px;
@@ -689,7 +677,7 @@ h2 {
 }
 
 .accordion-item h2 {
-    font-size: 36px !important;
+    font-size: 2.25rem !important;
     font-weight: 700 !important;
    // line-height: 52px;
     letter-spacing: 0.5px;
@@ -731,14 +719,14 @@ h2 {
     background: #F1F9FF;
     font-weight:400;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 1.125rem;
     color: #000;
     margin: 0;
 }
 
 @media only screen and (max-width: 600px) {
     .accordion-label {
-        font-size: 18px;
+        font-size: 1.125rem;
     }
 }
 
@@ -771,7 +759,7 @@ h2 {
     margin: 0;
     color: #58595B;
     font-family: 'Inter', sans-serif;
-    font-size: 15px;
+    font-size: 0.938rem;
     font-weight: 400;
     line-height: 30px;
     letter-spacing: 0.30000001192092896px;
@@ -782,7 +770,7 @@ h2 {
 
 @media only screen and (max-width: 600px) {
     .accordion-content p {
-        font-size: 15px;
+        font-size: 0.938rem;
         line-height: 30px;
     }
 }
@@ -791,7 +779,7 @@ h2 {
     margin: 0;
     color: #58595B;
     font-family: 'Inter', sans-serif;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 400;
     line-height: 32px;
     letter-spacing: 0.30000001192092896px;
@@ -815,12 +803,12 @@ input:checked+.accordion-label {
     background: #fff;
     color: #000000;
     font-weight: 700;
-    font-size: 18px;
+    font-size: 1.125rem;
 }
 
 @media only screen and (max-width: 600px) {
     input:checked+.accordion-label {
-        font-size: 18px;
+        font-size: 1.125rem;
     }
 }
 
@@ -843,7 +831,7 @@ input:checked~.accordion-content {
 
 .cta-box h3 {
     color: #fff;
-    font-size: 30px;
+    font-size: 1.875rem;
     font-weight: 700;
     line-height: 44px;
     letter-spacing: 1px;
@@ -855,7 +843,7 @@ input:checked~.accordion-content {
     padding: 16px 16px;
     border-radius: 4px;
     color: #fff;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 500;
     line-height: 21px;
     letter-spacing: 0px;
@@ -870,7 +858,7 @@ input:checked~.accordion-content {
     }
 
     .cta-box h3 {
-        font-size: 24px;
+        font-size: 1.5rem;
         text-align: center;
         line-height: 40px;
     }
@@ -946,7 +934,7 @@ input:checked~.accordion-content {
 .social-icons li a {
     display: inline-block;
     color: #fff;
-    font-size: 24px;
+    font-size: 1.5rem;
     height: 24px;
     line-height: 24px;
     width: 24px;
@@ -975,7 +963,7 @@ input:checked~.accordion-content {
 
 .cta-box h3 {
     color: #fff;
-    font-size: 33px;
+    font-size: 2.063rem;
     font-weight: 700;
     line-height: 48px;
     letter-spacing: 1px;
@@ -987,7 +975,7 @@ input:checked~.accordion-content {
     padding: 16px 16px;
     border-radius: 4px;
     color: #fff;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 500;
     line-height: 21px;
     letter-spacing: 0px;
@@ -1002,7 +990,7 @@ input:checked~.accordion-content {
     }
 
     .cta-box h3 {
-        font-size: 24px;
+        font-size: 1.5rem;
         text-align: center;
         line-height: 40px;
     }
@@ -1054,7 +1042,7 @@ input:checked~.accordion-content {
 }
 
 .testimonial-copy p {
-    font-size: 16px;
+    font-size: 1rem;
     font-style: italic;
     font-weight: 400;
     line-height: 32px;
@@ -1066,7 +1054,7 @@ input:checked~.accordion-content {
 
 .testimonial-copy h4 {
     font-family: 'Inter', sans-serif;
-    font-size: 20px;
+    font-size: 1.25rem;
     font-weight: 700;
     line-height: 24px;
     letter-spacing: 0.5px;
@@ -1113,7 +1101,7 @@ input:checked~.accordion-content {
 .blog-section h2 {
     font-family: 'Inter', sans-serif !important;
     color: #000;
-    font-size: 44px;
+    font-size: 2.75rem;
     text-align: center;
     letter-spacing: 0.5px;
     margin-top: 2rem;
@@ -1124,7 +1112,7 @@ input:checked~.accordion-content {
 .blog-box {
     background-color: #FFFFFF;
     padding: 15px;
-    font-size: 13px;
+    font-size: 0.813rem;
     color: #000000;
     font-family: 'Inter', sans-serif !important;
     box-shadow: 0 0 5px rgb(201 201 201 / 80%);
@@ -1136,7 +1124,7 @@ input:checked~.accordion-content {
 .blog-box h4 {
     color: #000000;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 1.25rem;
     line-height: 28px;
     letter-spacing: 0.5px;
     font-family: 'Inter', sans-serif !important;
@@ -1144,7 +1132,7 @@ input:checked~.accordion-content {
 }
     
 .blog-box p {
-    font-size: 14px;
+    font-size: 0.875rem;
     font-weight: 400;
     line-height: 19px;
     text-align: left;
@@ -1155,7 +1143,7 @@ input:checked~.accordion-content {
 .blog-linkText {
     color: #135EA4;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 0.875rem;
     font-weight: 600;
 }
 .blog-box:hover .blog-linkText {
@@ -1187,89 +1175,6 @@ input:checked~.accordion-content {
     margin-top:50px;
   }
   
-  .benefit-item-with-cuetrade {
-    flex: 1;
-    max-width: 40%;
-    padding: 15px;
-    margin: 0 10px;
-    background-color: #f5f5f5;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-
-  }
-
-  .benefit-item-without-cuetrade {
-    flex: 1;
-    max-width: 40%;
-    padding: 15px;
-    margin: 0 10px;
-    background-color: #f5f5f5;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
-  
-  .benefit-item-with-cuetrade h2 {
-    font-size: 22px;
-    margin-bottom: 14px;
-    color: #000000;
-    text-align: center;
-    font-weight: 800;
-  }
-
-  .benefit-item-without-cuetrade h2 {
-    font-size: 22px;
-    margin-bottom: 14px;
-    color: #000000;
-    font-weight: 800;
-    text-align: center;
-  }
-  
-  .benefit-item-with-cuetrade ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .benefit-item-without-cuetrade ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .benefit-item-with-cuetrade ul li {
-    font-size: 18px;
-    margin-bottom: 10px;
-    color: #58595B;
-    position: relative;
-    padding-left: 28px;
-    text-align: left;
-  }
-
-  .benefit-item-without-cuetrade ul li {
-    font-size: 18px;
-    margin-bottom: 10px;
-    color: #58595B;
-    position: relative;
-    padding-left: 28px;
-    text-align: left;
-  }
-  
-  .benefit-item-with-cuetrade ul li::before {
-    content: '✔';
-    position: absolute;
-    left: 0;
-    color: #2ecc71;
-    font-weight: bold;
-  }
-  
-  .benefit-item-without-cuetrade ul li::before {
-    content: 'X';
-    position: absolute;
-    left: 0;
-    color: #ff2200;
-    font-weight: bold;
-  }
-
 .how-it-works {
     font-family: 'Inter', sans-serif !important;
     background-size: cover;
@@ -1283,7 +1188,7 @@ input:checked~.accordion-content {
 }
 
 .how-it-works h1 {
-    font-size: 40px; /* Slightly reduced for balance */
+    font-size: 2.5rem; /* Slightly reduced for balance */
     font-weight: 700;
     color: #000000;
     margin-bottom: 20px; /* Added spacing below heading */
@@ -1294,7 +1199,7 @@ input:checked~.accordion-content {
     // max-width: 900px; /* Limited width for better readability */
     // margin: 0 400px 10px 400px; /* Centered and added bottom margin */
     margin-bottom: 50px;
-    font-size: 18px;
+    font-size: 1.125rem;
     line-height: 1.5;
 }
 
@@ -1312,9 +1217,13 @@ input:checked~.accordion-content {
     justify-content: center;
     width:100%;
     align-items: center;
+    justify-content: center;
     margin-left: 350px;
     margin-top: 5px;
     margin-bottom: 5px;
+    // position: relative;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
 }
 
 .video-thumbnail {
@@ -1327,9 +1236,12 @@ input:checked~.accordion-content {
 }
 
 .video-player {
-    width: 100%;
-    height: 400px; /* Adjust the height as needed */
     border-radius: 8px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
 }
 
 .step-container {
@@ -1374,7 +1286,7 @@ input:checked~.accordion-content {
     justify-content: center;
     align-items: center;
     font-weight: 500;
-    font-size: 15px;
+    font-size: 0.938rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Added subtle shadow */
     transition: transform 0.3s ease-in-out; /* Hover effect */
     z-index: 2; /* Ensure the circles are above the line */
@@ -1386,14 +1298,14 @@ input:checked~.accordion-content {
 
 .step-title {
     margin-top: 14px;
-    font-size: 20px;
+    font-size: 1.25rem;
     color: #000000;
     font-weight: 600; /* Slightly lighter weight */
 }
 
 .step-description {
     margin-top: 5px;
-    font-size: 16px;
+    font-size: 1rem;
     color: #58595B;
     line-height: 1.5;
     font-family: "Inter", sans-serif !important;
@@ -1458,3 +1370,64 @@ input:checked~.accordion-content {
         height: auto !important;   /* Maintains aspect ratio */
     }
 }
+
+// Styles pertaining to new design for Without CueTrade and With CueTrade
+
+.comparison-section {
+    display: flex;
+    justify-content: center;
+    padding: 56px 20px 20px;
+  }
+  
+  .comparison {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    gap: 40px;
+  }
+  
+  .comparison .without, .comparison .with {
+    // flex: 1;
+    padding: 20px;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 1.375rem;
+    background: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  .comparison h2 {
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: #000000;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .comparison ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .comparison li {
+    font-size: 1.125rem;
+    color: #58595B;
+    line-height: 1.4;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .comparison li i.icon {
+    margin-right: 10px;
+    font-size: 1rem;
+    font-style: normal; /* Ensures the icon is not italic */
+  }
+  
+  .comparison .without h2 {
+    color: #000000; /* Highlight Without CueTrade with a warning color */
+  }
+  
+  .comparison .with h2 {
+    color: #000000; /* Highlight With CueTrade with a positive color */
+  }
