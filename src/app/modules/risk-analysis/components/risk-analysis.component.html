@@ -81,8 +81,9 @@
                                                 </div>
                                                 <div class="d-flex align-items-center">
                                                     <div *ngIf="!isEditTrade">
-                                                        <span class="col-form-label p-0">Want to create strategy with the same data? </span>
-                                                        <a class="btn btn-outline-primary ml-3" (click)="navigateToAddTrade()" *ngIf="selectedStock.name && (stockEntry || stockOptions.length > 0)">{{fromAddTrade ? 'Update Strategy' : 'Create Strategy'}}</a>
+                                                        <!-- Uncommenting this code allows adding a trade from payoff analyzer to a journal as a draft trade -->
+                                                        <!-- <span class="col-form-label p-0">Want to create strategy with the same data? </span>
+                                                        <a class="btn btn-outline-primary ml-3" (click)="navigateToAddTrade()" *ngIf="selectedStock.name && (stockEntry || stockOptions.length > 0)">{{fromAddTrade ? 'Update Strategy' : 'Create Strategy'}}</a> -->
 
                                                     </div>
                                                     <a class="btn btn-outline-primary ml-3" (click)="navigateToAddTrade()" *ngIf="isEditTrade">Go Back to Strategy</a>
@@ -218,7 +219,7 @@
 
                             <mat-expansion-panel [expanded]="panelOpenState" (opened)="setStep(1)" (afterCollapse)="afterPanelClosed(1)" (afterExpand)="afterPanelOpened($event)" [disabled]="panelDisabled">
                                 <mat-expansion-panel-header>
-                                Step 2: Provide the inputs to analyze the strategy (i.e., stock price range, days left to expiration, implied volatility)
+                                Step 2: Provide the inputs to analyze the strategy
                                 </mat-expansion-panel-header>
 
                                 <ng-template matExpansionPanelContent>
@@ -331,7 +332,7 @@
                             <mat-expansion-panel [expanded]="panelExpand" (opened)="setStep(2)" [disabled]="panel3Disabled" (afterCollapse)="afterPanelClosed(2)">
                                 <mat-expansion-panel-header>
                                     <mat-panel-title>
-                                        Step 3: Analyze the profitability of the strategy for the given inputs. Update the strategy and inputs to reassess the risk-reward profile
+                                        Step 3: Analyze the profitability of the strategy
                                     </mat-panel-title>
                                 </mat-expansion-panel-header>
                                 <ng-template matExpansionPanelContent>
