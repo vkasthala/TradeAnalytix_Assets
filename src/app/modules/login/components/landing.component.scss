@@ -32,6 +32,42 @@ nav {
     flex-grow: 0.2 !important;
 }
 
+.hero-title {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 42px;
+    max-width: 85%; /* For responsiveness */
+    align-items: center;
+    justify-content: center;
+    line-height: 1.2;
+    margin: 0 auto; /* Centers the text horizontally */
+    text-align: center;
+    color: #000000;
+  }
+  
+  .hero-title .highlight {
+    font-weight: 800;
+    color: #4BB964;
+  }
+  
+  .hero-title .neutral {
+    font-weight: 600;
+    color: #000000;
+    text-decoration: none;
+  }
+
+  .hero-title .feature {
+    font-weight: 700;
+    font-size: 26px;
+    color: #1958BF;
+  }
+  
+  .hero-title .subtext {
+    font-size: 26px;
+    color: #58595B;
+    font-weight: 400;
+  }
+
+
 h1,
 h2,
 h3,
@@ -49,7 +85,7 @@ h2 {
 
 @media only screen and (max-width: 600px) {
     h2 {
-        font-size: 28px;
+        font-size: 24px;
     }
 }
 
@@ -154,6 +190,8 @@ h2 {
     }
 
     .benefit-item-with-cuetrade, .benefit-item-without-cuetrade {
+        font-family: 'Inter', sans-serif !important;
+        color: #000000;
         max-width: 90% !important;  // Ensuring this rule takes precedence
         margin: 10px auto !important;  // Centering the boxes with automatic margins
         padding: 10px !important;  // Increasing padding for better text spacing
@@ -1151,7 +1189,7 @@ input:checked~.accordion-content {
   
   .benefit-item-with-cuetrade {
     flex: 1;
-    max-width: 36%;
+    max-width: 40%;
     padding: 15px;
     margin: 0 10px;
     background-color: #f5f5f5;
@@ -1162,7 +1200,7 @@ input:checked~.accordion-content {
 
   .benefit-item-without-cuetrade {
     flex: 1;
-    max-width: 36%;
+    max-width: 40%;
     padding: 15px;
     margin: 0 10px;
     background-color: #f5f5f5;
@@ -1171,16 +1209,18 @@ input:checked~.accordion-content {
 }
   
   .benefit-item-with-cuetrade h2 {
-    font-size: 20px;
+    font-size: 22px;
     margin-bottom: 14px;
     color: #000000;
     text-align: center;
+    font-weight: 800;
   }
 
   .benefit-item-without-cuetrade h2 {
-    font-size: 20px;
+    font-size: 22px;
     margin-bottom: 14px;
     color: #000000;
+    font-weight: 800;
     text-align: center;
   }
   
@@ -1197,20 +1237,20 @@ input:checked~.accordion-content {
   }
   
   .benefit-item-with-cuetrade ul li {
-    font-size: 1rem;
+    font-size: 18px;
     margin-bottom: 10px;
     color: #58595B;
     position: relative;
-    padding-left: 20px;
+    padding-left: 28px;
     text-align: left;
   }
 
   .benefit-item-without-cuetrade ul li {
-    font-size: 1rem;
+    font-size: 18px;
     margin-bottom: 10px;
     color: #58595B;
     position: relative;
-    padding-left: 20px;
+    padding-left: 28px;
     text-align: left;
   }
   
