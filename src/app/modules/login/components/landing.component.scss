@@ -79,7 +79,7 @@ h6 {
 }
 
 h2 {
-    font-size: 2.75rem;
+    font-size: 2.5rem;
     letter-spacing: 0.5px;
 }
 
@@ -157,6 +157,13 @@ h2 {
     width: 80%;
     }
 
+.benefits-subtext {
+    color: #58595B; 
+    font-size: 1.125rem; 
+    line-height: 1.5; 
+    max-width: 800px; 
+    margin: 0 auto 10px auto;
+}
 //RWD Specific Code
 
 @media only screen and (max-width: 600px) {
@@ -872,7 +879,7 @@ input:checked~.accordion-content {
     background-color: #121D33;
     padding-top: 65px;
     padding-bottom: 1px;
-    font-size: 1rem;
+    font-size: 1.25rem;
 }
 
 .cue-footer img {
@@ -883,7 +890,8 @@ input:checked~.accordion-content {
 .cue-footer p {
     color: #D3D6D8;
     font-family: 'Inter', sans-serif !important;
-    font-size:15px;
+    font-size:1rem;
+    width:500px;
 }
 
 .cue-footer h4 {
@@ -917,7 +925,11 @@ input:checked~.accordion-content {
 
 .cue-copyright {
     text-align: center;
-    padding-top: 40px;
+}
+
+.cue-copyright p {
+    text-align: center;
+    width:100%;
 }
 
 .social-icons {
@@ -1181,34 +1193,34 @@ input:checked~.accordion-content {
     background-color: #F1F9FF;
     background-position: center;
     justify-content: center;
-    padding: 50px 50px; /* Adjusted padding for better spacing */
+    padding: 40px 50px;
     margin-top: 15px;
     margin-bottom: 15px;
     text-align: center; 
 }
 
 .how-it-works h1 {
-    font-size: 2.5rem; /* Slightly reduced for balance */
+    font-size: 2.5rem; 
     font-weight: 700;
     color: #000000;
-    margin-bottom: 20px; /* Added spacing below heading */
+    margin-bottom: 20px;  
 }
 
 .how-it-works p {
     color: #58595B;
-    // max-width: 900px; /* Limited width for better readability */
-    // margin: 0 400px 10px 400px; /* Centered and added bottom margin */
+    max-width: 90%; /* Limited width for better readability */
+    align-content: center;
+    margin: auto;
     margin-bottom: 50px;
     font-size: 1.125rem;
     line-height: 1.5;
 }
 
 .trading-steps {
-    // padding: 40px 0; //reduced from 70px
     display: flex;
-    margin-left:150px;
-    margin-right:-50px;
     justify-content: center;
+    margin-bottom: 1.25rem;
+    padding-bottom: 3rem;
 }
 
 //Video styling for desktop
@@ -1221,27 +1233,22 @@ input:checked~.accordion-content {
     margin-left: 350px;
     margin-top: 5px;
     margin-bottom: 5px;
-    // position: relative;
-    padding-top: 56.25%; /* 16:9 Aspect Ratio */
-    height: 0;
+    // padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    // height: 0;
 }
 
 .video-thumbnail {
     width: 100%;
     height: auto;
-    // overflow: hidden;
     margin-left: 10px;
     margin-top: 50px;
     border-radius: 1px;
 }
 
 .video-player {
-    border-radius: 8px;
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
-    height: 50%;
+    height: 400px;
+    border-radius: 8px;
 }
 
 .step-container {
@@ -1258,7 +1265,7 @@ input:checked~.accordion-content {
 .step-container::before {
     content: '';
     position: absolute;
-    top: 18px; /* Positioning the line to pass through the center of the circles */
+    top: 30px; /* Positioning the line to pass through the center of the circles */
     left: calc(0% + 0px); /* Starts at the center of Step 1 */
     right: calc(18% + 18px); /* Ends at the center of Step 5 */
     height: 0.5px; /* Thicker line for visibility */
@@ -1277,30 +1284,30 @@ input:checked~.accordion-content {
 }
 
 .step-number {
-    background-color: #2469FF;
+    background-color: #4BB964;
     color: #ffffff;
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     font-weight: 500;
-    font-size: 0.938rem;
+    font-size: 1.25rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Added subtle shadow */
     transition: transform 0.3s ease-in-out; /* Hover effect */
     z-index: 2; /* Ensure the circles are above the line */
 }
 
 .step-number:hover {
-    transform: scale(1.1); /* Slight zoom on hover */
+    transform: scale(1.2);  
 }
 
 .step-title {
-    margin-top: 14px;
-    font-size: 1.25rem;
+    margin-top: 20px;
+    font-size: 1.5rem;
     color: #000000;
-    font-weight: 600; /* Slightly lighter weight */
+    font-weight: 600;  
 }
 
 .step-description {
@@ -1318,17 +1325,12 @@ input:checked~.accordion-content {
         width: 100%;             /* Full width to use all available space */
         justify-content: center; /* Center the steps within the container */
         text-align: center;      /* Centers the text inside each step */
-        margin-left:-150px;
     }
 
     .step {
         width: 100%;
         margin-bottom: 20px;
     }
-
-    // .step-number {
-    //      margin: 0 auto;
-    // }
 
     .step-title, .step-description {
         margin-top:10px;
@@ -1371,8 +1373,7 @@ input:checked~.accordion-content {
     }
 }
 
-// Styles pertaining to new design for Without CueTrade and With CueTrade
-
+// Without CueTrade and With CueTrade Styling
 .comparison-section {
     display: flex;
     justify-content: center;
@@ -1382,18 +1383,18 @@ input:checked~.accordion-content {
   .comparison {
     display: flex;
     justify-content: space-between;
-    max-width: 1200px;
+    max-width: 90%;
     gap: 40px;
   }
   
   .comparison .without, .comparison .with {
-    // flex: 1;
     padding: 20px;
     font-family: 'Inter', sans-serif !important;
     font-size: 1.375rem;
     background: #ffffff;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+    box-sizing: border-box; /* Includes padding in width */
   }
 
   .comparison .without {
@@ -1440,3 +1441,28 @@ input:checked~.accordion-content {
   .comparison .with h2 {
     color: #000000; /* Highlight With CueTrade with a positive color */
   }
+
+  .footer-links {
+    display: flex;
+    gap: 10px; /* Add spacing between the links */
+    justify-content: center; /* Center align if required */
+    align-items: center; /* Vertically align the links */
+    flex-wrap: wrap; /* Wrap links to the next line on smaller screens */
+    width:330%;
+}
+
+.footer-links a {
+    color: #ffffff;
+    text-decoration: none; /* Remove underline */
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    transition: color 0.3s ease-in-out; /* Add hover effect */
+    padding-top:24px;
+}
+
+.faqs {
+    padding-bottom: 20px; 
+    text-align: center;
+    font-size:1rem;
+}
