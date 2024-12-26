@@ -32,14 +32,15 @@ nav {
     flex-grow: 0.2 !important;
 }
 
+// Hero Section for Desktop
 .hero-title {
     font-family: 'Inter', sans-serif !important;
     font-size: 2.625rem;
-    max-width: 85%; /* For responsiveness */
+    max-width: 85%;  
     align-items: center;
     justify-content: center;
     line-height: 1.2;
-    margin: 0 auto; /* Centers the text horizontally */
+    margin: 0 auto; 
     text-align: center;
     color: #000000;
   }
@@ -52,7 +53,7 @@ nav {
   .hero-title .neutral {
     font-weight: 600;
     color: #000000;
-    text-decoration: none;
+    // text-decoration: none;
   }
 
   .hero-title .feature {
@@ -67,6 +68,118 @@ nav {
     font-weight: 400;
   }
 
+/* Hero Section Responsive Adjustments*/
+@media (max-width: 1024px) { /* Targeting tablets in landscape and lower */
+    .banner-section {
+        padding-top: 60px; /* Increased top padding for more space */
+        padding-bottom: 30px; /* Optional: add more space at the bottom */
+    }
+    .hero-title {
+        font-size: 2.8rem; /* Slightly smaller */
+        max-width: 100%;
+        line-height: 1.5;
+    }
+
+    .hero-title .feature, .hero-title .subtext {
+        font-size: 0.9rem; /* Adjusting accordingly */
+        max-width: 100%;
+    }
+
+    .subtext-line {
+        line-height: 1;
+    }
+}
+
+@media (max-width: 768px) { /* Targeting tablets in portrait and lower */
+    .banner-section {
+        padding-top: 60px; /* Increased top padding for more space */
+    }
+    
+    .hero-title {
+        font-size: 2.8rem; /* Further reducing size */
+        margin-top: 30px; /* Extra margin for more vertical space */
+        padding: 10px 10px; /* Maintain padding on the sides */
+        max-width: 100%;
+        line-height: 1.5;
+    }
+
+    .hero-title .feature, .hero-title .subtext {
+        font-size: 0.9rem;
+        max-width: 100%;
+    }
+
+    .subtext-line {
+        line-height: 1;
+    }
+}
+
+@media (max-width: 576px) { /* Targeting large phones */
+    .banner-section {
+        padding-top: 60px; /* Increased top padding for more space */
+    }
+
+    .hero-title {
+        font-size: 2.8rem; /* Increasing font size for better readability */
+        padding: 10px 5px; /* Maintain padding on the sides */
+        margin-top: 50px; /* Extra margin for more vertical space */
+        line-height: 1.3;
+        max-width: 100%;
+    }
+
+    .hero-title .feature, .hero-title .subtext {
+        font-size: 0.9rem; /* Slightly larger for better visibility */
+        max-width: 100%;
+        line-height: 1 !important; /* Reducing line height to tighten space between lines */
+        margin: 0; /* Remove any default margins */
+        padding: 0; /* Remove any default padding */
+        display: inline; /* Ensure inline display to avoid unwanted breaks */
+    }
+
+    .hero-title .subtext::after {
+        content: ' '; /* Adding space after subtexts */
+    }
+
+    .btn-banner, .btn-how-banner {
+        width: 100%; /* Full-width buttons for easier access */
+        margin: 10px 0; /* Adequate space between buttons */
+    }
+
+    .subtext-line {
+        line-height: 1 !important;
+    }
+}
+
+@media (max-width: 360px) { /* Targeting small phones */
+    .banner-section {
+        padding-top: 50px; /* Adjust padding for smaller screens */
+    }
+
+    .hero-title {
+        font-size: 2.8rem; /* Adjusted font size for small screens */
+        margin-top: 20px; /* Less margin due to smaller screen size */
+        line-height: 1.3;
+        max-width: 100%;
+    }
+
+    .hero-title .feature, .hero-title .subtext {
+        font-size: 1.5rem; /* Increase font size slightly for readability */
+        max-width: 100%;
+    }
+
+    .subtext-line {
+        line-height: 1;
+    }
+}
+
+.benefits {
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 700 !important;
+    padding-top: 0px; 
+    padding-bottom: 10px;
+    margin-top: 1px;
+    text-align: center;
+    font-size:2.5rem;
+}
 
 h1,
 h2,
@@ -101,14 +214,13 @@ h2 {
 
 .banner-section {
     font-family: 'Inter', sans-serif !important;
-  //  background-image: url("../../../../assets/img/bannerbg-hero.png");
     background-size: cover;
     background-color: #ffffff;
     background-position: center;
     justify-content: center;
-    text-align: center; // Venkat added to make sub text in the hero section center-aligned
-    padding: 80px 5%; /* Use percentage for horizontal padding */
-    margin-top: 10vh; /* Relative to viewport height */
+    text-align: center;  
+    padding: 80px 5%;  
+    margin-top: 12vh;  
 }
 
 .banner-section h1 {
@@ -121,7 +233,7 @@ h2 {
     font-family: 'Inter', sans-serif !important;
     color: #58595B;
     font-size: 1.125rem;
-    margin-left: 325px; /* Aligns text properly without extra space */
+    margin-left: 325px;  
     margin-right: 325px;
     justify-content: center; 
    }
@@ -164,33 +276,61 @@ h2 {
     max-width: 800px; 
     margin: 0 auto 10px auto;
 }
-//RWD Specific Code
+
+// Logo size for responsive
+@media (max-width: 360px) {
+    .cue-logo img {
+        width: 50%;  
+        margin-left:5px;
+        }
+}
+
+@media (max-width: 576px) {
+    .cue-logo img {
+        width: 60%;  
+        margin-left:5px;
+        }
+}
+
+@media (max-width: 768px) {
+    .cue-logo img {
+        width: 60%;  
+        margin-left:5px;
+        }
+}
+
+@media (max-width: 1024px) {
+    .cue-logo img {
+        width: 60%;  
+        margin-left:5px;
+        }    
+}
 
 @media only screen and (max-width: 600px) {
  
     .banner-section {
-        text-align: center; /* Center align text RWD */
-        padding: 20px 10px 10px 10px; /* Reduce side padding to ensure content fits within view RWD */
+        text-align: center;  
+        padding: 20px 10px 10px 10px;  
         display: flex;
         justify-content: center;
         margin-top:60px;
     }
 
     .hamburger-menu-icon {
-        color: black; /* Change color if it's not visible against the background RWD */
-        display: block; /* Ensure hamburger menu is visible RWD */
+        color: black;  
+        display: block;  
     }
 
     .section, div {
-        overflow-x: hidden; /* Keeps the menu icon on the same line as the logo. RWD */
+        overflow-x: hidden;  
     }
 
-    img {
-        max-width: 100%; /* Ensures images are not wider than the screen RWD */
-        height: auto; /* Maintains aspect ratio RWD */
+    .img {
+        max-width: 100%;  
+        height: auto;  
     }
     
-    section .benefits {
+    .section .benefits {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -198,9 +338,9 @@ h2 {
     }
 
     .btn-banner, .btn-how-banner {
-        width: 100%; /* Allows buttons to fit content RWD*/
-        font-size: 1.125rem; /* Smaller font for small screens RWD*/
-        padding: 15px 15px; /* Smaller padding for buttons RWD*/
+        width: 100%;  
+        font-size: 1.125rem;  
+        padding: 15px 15px;  
         margin-left:0px;
         margin-right:40px;
         }
@@ -211,22 +351,17 @@ h2 {
     }
 
     .btn {
-        padding: 8px 16px; /* Smaller buttons */
-        font-size: 1rem; /* Smaller font size for buttons */
-        }
-
-    .cue-logo img {
-        width: 70%; /* Adjust this percentage based on your specific needs RWD */
-        margin-left:5px;
+        padding: 8px 16px;  
+        font-size: 1rem;  
         }
 
     .banner-section h1 {
         font-family: 'Inter', sans-serif !important;
         color: #000000;
         font-size: 2.25rem;
-        margin-left: 0; /* Aligns text properly without extra space */
+        margin-left: 0; 
         margin-right: 0;
-        padding: 50px; /* Reduced padding */
+        padding: 50px;  
         }
 
     .banner-section p {
@@ -879,7 +1014,7 @@ input:checked~.accordion-content {
     background-color: #121D33;
     padding-top: 65px;
     padding-bottom: 1px;
-    font-size: 1.25rem;
+    font-size: 1rem;
 }
 
 .cue-footer img {
@@ -1306,7 +1441,7 @@ input:checked~.accordion-content {
 .step-title {
     margin-top: 20px;
     font-size: 1.5rem;
-    color: #000000;
+    color: #1958BF;
     font-weight: 600;  
 }
 
@@ -1373,7 +1508,7 @@ input:checked~.accordion-content {
     }
 }
 
-// Without CueTrade and With CueTrade Styling
+// Without CueTrade and With CueTrade Styling for Desktop
 .comparison-section {
     display: flex;
     justify-content: center;
@@ -1426,6 +1561,7 @@ input:checked~.accordion-content {
     margin-bottom: 16px;
     display: flex;
     align-items: center;
+    text-align: left;
   }
   
   .comparison li i.icon {
@@ -1442,19 +1578,67 @@ input:checked~.accordion-content {
     color: #000000; /* Highlight With CueTrade with a positive color */
   }
 
+/* Responsive adjustments for Without CueTrade and With CueTrade section*/
+@media (max-width: 768px) {
+    .comparison {
+        flex-direction: column;
+        gap: 20px; /* Adjust gap for vertical stacking */
+    }
+}
+
+.comparison .without {
+    background-color: #f0f0f0; /* Lighter background for contrast */
+    border: 1px dashed #ccc; /* Dashed border for a less solid appearance */
+}
+
+.comparison .with {
+    background-color: #ffffff;
+    border: 1px solid #4BB964; /* Solid green border indicating positivity */
+}
+
+.comparison h2 {
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: #000000;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.comparison ul {
+    list-style: none;
+    padding: 0;
+}
+
+.comparison li {
+    font-size: 1.125rem;
+    color: #58595B;
+    line-height: 1.4;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    text-align: left;
+    padding-left: 1px;
+}
+
+.comparison li i.icon {
+    margin-right: 10px;
+    font-size: 1rem;
+    font-style: normal; /* Ensures the icon is not italic */
+}
+
   .footer-links {
     display: flex;
     gap: 10px; /* Add spacing between the links */
     justify-content: center; /* Center align if required */
     align-items: center; /* Vertically align the links */
-    flex-wrap: wrap; /* Wrap links to the next line on smaller screens */
+    // flex-wrap: wrap; /* Wrap links to the next line on smaller screens */
     width:330%;
 }
 
 .footer-links a {
     color: #ffffff;
     text-decoration: none; /* Remove underline */
-    font-size: 16px;
+    font-size: 0.9rem;
     font-family: 'Inter', sans-serif;
     font-weight: 500;
     transition: color 0.3s ease-in-out; /* Add hover effect */
@@ -1464,5 +1648,70 @@ input:checked~.accordion-content {
 .faqs {
     padding-bottom: 20px; 
     text-align: center;
-    font-size:1rem;
-}
+    font-size:2.5rem;
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 700 !important;
+    }
+
+.blogs {
+    padding-bottom: 20px; 
+    text-align: center;
+    font-size:2.5rem;
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 700 !important;
+    }
+
+@media (max-width: 360px) {
+    .blogs .faqs .benefits {
+        padding-bottom: 20px; 
+        text-align: center;
+        font-size:2.25rem;
+        font-family: 'Inter', sans-serif !important;
+        font-weight: 700 !important;
+    }
+    .cue-help h3 {
+        font-size:1.6rem;
+    }
+    }
+    
+    @media (max-width: 576px) {
+        .blogs .faqs .benefits {
+            padding-bottom: 10px; 
+            text-align: center;
+            font-size:2.25rem;
+            font-family: 'Inter', sans-serif !important;
+            font-weight: 700 !important;
+        }
+
+        .cue-help h3 {
+            font-size:1.6rem;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .blogs .faqs .benefits {
+            padding-bottom: 10px; 
+            text-align: center;
+            font-size:2.25rem;
+            font-family: 'Inter', sans-serif !important;
+            font-weight: 700 !important;
+        }
+        
+        .cue-help h3 {
+            font-size:1.6rem;
+        }
+
+    }
+    
+    @media (max-width: 1024px) {
+        .blogs .faqs .benefits {
+            padding-bottom: 10px; 
+            text-align: center;
+            font-size:2.25rem;
+            font-family: 'Inter', sans-serif !important;
+            font-weight: 700 !important;
+        }
+        .cue-help h3 {
+            font-size:1.6rem;
+        }
+    }
