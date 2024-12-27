@@ -53,8 +53,8 @@
                             <hr>
                             <ul class="m-0">
                                 <li class="list-flat-item">
-                                    <a class="p-0" [routerLink]="['/settings/']">
-                                   Join SnapTrade
+                                    <a class="p-0" [routerLink]="['/registersnap',this.userData.name,this.userData.userId]">
+                                    Join SnapTrade
                                     </a>
                                 </li>
                                 <li class="list-flat-item">
@@ -163,7 +163,7 @@
                   <select (change)="onBrokerageChange($event.target.value)" class="form-control mb-3">
                     <option value="0">Select your brokerage</option>
                     <option value="FYERS">FYERS</option>
-                    <option value="Zerodha">SnapTrade</option>
+                    <option value="SnapTrade">SnapTrade</option>
                   </select>
                 </div>
               </form>

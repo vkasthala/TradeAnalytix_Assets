@@ -38,6 +38,7 @@ export class UserService {
   loadUserDetails() {
     this.httpService.get<UserDetails>(this.apiUrl + '/user/details').subscribe(result => {
       this.userDetails = this.userDetails;
+      return this.userDetails;
     });
   }
 

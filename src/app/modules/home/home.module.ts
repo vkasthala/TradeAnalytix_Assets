@@ -177,6 +177,8 @@ import { DisableeRuleModalComponent } from '../settings/components/disable-rule-
 import { SharedModule } from '../shared/shared.module';
 import { IntradayOrderPopupComponent } from '../watch-list/components/intraday-order-popup/intraday-order-popup.component';
 import { ChatbotComponent } from '../chatbot/chatbot.component';
+import { SnapTradeModule } from '../snap-trade/snap-trade.module';
+import { SnapTradeComponentComponent } from '../snap-trade/snap-trade-component/snap-trade-component.component';
 
 export const MY_FORMATS = {
   parse: {
@@ -371,7 +373,8 @@ export const MY_FORMATS = {
     AgGridModule.withComponents([BulkUpdateComponent]),
     MatProgressBarModule,
     MatCardModule,
-    SharedModule
+    SharedModule,
+    SnapTradeModule
   ],
   entryComponents: [
     AddTradeConfirmationPopupComponent,

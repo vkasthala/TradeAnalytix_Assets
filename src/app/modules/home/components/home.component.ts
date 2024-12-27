@@ -11,6 +11,7 @@ import { SliderModalComponent } from '../../dashboard/components/slider-modal/sl
 import { map } from 'rxjs/operators';
 import { UserService } from '../../shared/services/user.service';
 import { SharedService } from '../../shared/services/shared.service';
+import { SnapTradeService} from '../../snap-trade/snap-trade.service';
 
 @Component({
   selector: 'app-home',
@@ -43,7 +44,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
     private demoService: DemoModeDetailsService,
     public  _activatedRoute: ActivatedRoute,
     private userService: UserService,
-    private _sharedService: SharedService
+    private _sharedService: SharedService,
+    private snapTradeService:SnapTradeService
   ) {
     let globalSelector = (fromGlobalConfig.globalConfigFeatureKey as any);
     globalStore.select(globalSelector).subscribe(res => {
@@ -331,6 +333,15 @@ export class HomeComponent implements OnInit, AfterViewInit {
       }
     });
   }
+  snapeTradeLogin(username:string,userId:string){
+    this.snapTradeService.login(username,userId).subscribe(response => {
+      if (response != null) {
+        console.log("response");
+        const location = response['redirectUri'];
+        window.location.href = response;
+      }
+    });
+  }
   openBrokerageModal() {
     this.brokerageModal= !this.brokerageModal;
   }
@@ -342,7 +353,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
   onBrokerageChange(value) {
     if(value === 'FYERS') {
       this.fyersLogin();
-    } else {
+    } else if ( value === 'SnapTrade') {
+        this.snapeTradeLogin(this.userData.name,this.userData.userId);
+     }else {
       this.toastr.info('Only FYERS is supported at present. Stay tuned for more integrations soon!', '');
     }
   }
