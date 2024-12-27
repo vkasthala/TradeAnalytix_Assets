@@ -77,15 +77,6 @@ h2 {
     display: none;
 }
 
-.banner-section {
-    font-family: 'Inter', sans-serif !important;
-    background-image: url("../../../../assets/img/bannerbg-hero.png");
-    background-size: cover;
-    background-position: center;
-    padding: 40px 80px;
-    margin-top: 100px;
-}
-
 .btn-banner {
     font-family: 'Inter', sans-serif !important;
     background-color: #4BB964;
@@ -109,39 +100,8 @@ h2 {
     font-size: 1rem;
 }
 
-@media only screen and (max-width: 600px) {
-    .banner-section {
-        /*  background: linear-gradient(83.62deg, #1B45B4 3.5%, #1C2792 96.85%); */
-        background-image: url(../../../../assets/img/bannerbg-hero.png);
-        background-size: cover;
-        background-position: center;
-        padding: 40px 30px;
-    }
-
-    .banner-section h1 {
-        font-size: 34px !important;
-    }
-
-    .banner-section p {
-        font-size: 16px !important;
-    }
-}
-
 .cue-logo img {
     width: 80%;
-}
-
-.banner-section h1 {
-    font-family: 'Inter', sans-serif !important;
-    color: #fff;
-    font-size: 52px;
-}
-
-.banner-section p {
-    font-family: 'Inter', sans-serif !important;
-    color: #fff;
-    font-size: 18px;
-    padding-right: 1px;
 }
 
 .brands-sec {
