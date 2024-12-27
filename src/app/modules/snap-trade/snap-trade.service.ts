@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs'
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import { Observable, throwError } from 'rxjs'
 export class SnapTradeService {
 
 
-  private apiUrl = 'http://localhost:8080'; 
+  private snaptradeurl = environment.snaptradeurl;
   constructor(private http: HttpClient) {}
    
   suffixCuteTrade(snapUserId:any){
@@ -22,7 +23,7 @@ export class SnapTradeService {
    registerUser(snapUserId: string,cuetradeId:string): Observable<any> {
     snapUserId = this.suffixCuteTrade(snapUserId);
     const payload = JSON.stringify({ "snapUserId":snapUserId,"cuetradeId":cuetradeId });
-    const url = `http://localhost:8080/api/users/registeruser`;
+    const url = this.snaptradeurl+`/api/users/registeruser`;
     
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -38,7 +39,7 @@ export class SnapTradeService {
   getActivities(snapUserId: any,cuetradeId:string): Observable<any> {
     snapUserId = this.suffixCuteTrade(snapUserId);
     const payload = JSON.stringify({ "snapUserId":snapUserId,"cuetradeId":cuetradeId });
-    const url = `http://localhost:8080/api/users/activites`;
+    const url = this.snaptradeurl+'/api/users/activites';
     
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -54,7 +55,7 @@ export class SnapTradeService {
   getActivitiesByDate(snapUserId: any,cuetradeId:string,startDate:string,endDate:string): Observable<any> {
     snapUserId = this.suffixCuteTrade(snapUserId);
     const payload = JSON.stringify({ "snapUserId":snapUserId,"cuetradeId":cuetradeId,"startDate":startDate,"endDate":endDate});
-    const url = `http://localhost:8080/api/users/activites`;
+    const url = this.snaptradeurl+`/api/users/activites`;
     
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -69,7 +70,7 @@ export class SnapTradeService {
   login(snapUserId: any,cuetradeId:string): Observable<any> {
     snapUserId = this.suffixCuteTrade(snapUserId);
     const payload = JSON.stringify({ "snapUserId": snapUserId ,"cuetradeId":cuetradeId});
-    const url = `http://localhost:8080/api/users/login`;
+    const url =this.snaptradeurl+`/api/users/login`;
     
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',

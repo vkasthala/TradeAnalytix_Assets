@@ -26,6 +26,8 @@ export const environment = {
   // redirectUri: 'http://localhost:4200/oauth-redirect',
   // tradingServiceUri: 'http://localhost:8081/tradingservice',
   // websocketUrl: 'http://localhost:5001',
+  snaptradeurl:'http://localhost:8081',
+
 
 
   clientCode: 'GPJIG4CRFK-102',

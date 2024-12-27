@@ -333,8 +333,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
       }
     });
   }
-  snapeTradeLogin(username:string){
-    this.snapTradeService.login(this.userData.username,this.userData.userId).subscribe(response => {
+  snapeTradeLogin(username:string,userId:string){
+    this.snapTradeService.login(username,userId).subscribe(response => {
       if (response != null) {
         console.log("response");
         const location = response['redirectUri'];
@@ -354,7 +354,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     if(value === 'FYERS') {
       this.fyersLogin();
     } else if ( value === 'SnapTrade') {
-        this.snapeTradeLogin(this.userData.name);
+        this.snapeTradeLogin(this.userData.name,this.userData.userId);
      }else {
       this.toastr.info('Only FYERS is supported at present. Stay tuned for more integrations soon!', '');
     }
