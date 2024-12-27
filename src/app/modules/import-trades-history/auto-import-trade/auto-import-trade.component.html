@@ -9,11 +9,7 @@
                 </select> 
                 <!-- <mr-ngx-plaid-link-button env="development" [token]="plaidToken" (Success)="onPlaidSuccess($event)" (Exit)="onPlaidExit($event)" (Load)="onPlaidLoad($event)" (Event)="onPlaidEvent($event)" className="plaid-button" buttonText="Link Account" (Click)="onPlaidClick($event)"></mr-ngx-plaid-link-button> -->
             </div>
-            <div class="py-2 col-sm-8">
-                <button class="btn btn-enter btn-sm" 
-                (click)="importSnapTrades()">ImportSnapTrade</button>
-            </div>
-            <div class="py-2 col-sm-8"> 
+             <div class="py-2 col-sm-8"> 
                 <label for="startDate">Start Date:</label> 
                 <input type="date" id="startDate" name="startDate" [(ngModel)]="startDate"> 
                 <label for="endDate">End Date:</label> 

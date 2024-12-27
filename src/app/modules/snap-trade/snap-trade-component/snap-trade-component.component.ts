@@ -33,7 +33,7 @@ export class SnapTradeComponentComponent implements OnInit {
       this.errorMessage = null; // Clear any previous error message
     },
     (error) => {
-      this.errorMessage = `Error: ${error.message}`; // Set the error message
+      this.errorMessage = `Snaptrade account alredy exists!`; // Set the error message
       console.error('Error occurred:', error);
     }
   );
