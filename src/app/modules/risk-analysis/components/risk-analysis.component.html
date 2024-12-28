@@ -95,7 +95,7 @@
                                         <div class="trade-card-box" *ngIf="stockAdded || stockPriceUpdated">
                                             <div class="top-heading">
                                                 <span>Stock Leg</span>
-                                                <mat-icon (click)="deleteStock()">delete</mat-icon>
+                                                <mat-icon (click)="deleteStock()" style="margin-bottom: 1rem;">delete</mat-icon>
                                             </div>
                                             <div class="card-main">
                                                 <label class="col-form-label">Action</label>
@@ -136,7 +136,7 @@
                                             <div class="trade-card-box card-m">
                                                 <div class="top-heading">
                                                     <span>Option Leg</span>
-                                                    <mat-icon class="cursor-pointer" (click)="deleteStockOption(index)">delete</mat-icon>
+                                                    <mat-icon class="cursor-pointer" (click)="deleteStockOption(index)" style="margin-bottom: 1rem;">delete</mat-icon>
                                                 </div>
                                                 <div class="card-main">
                                                     <label class="col-form-label">Action</label>
@@ -267,7 +267,7 @@
                                                     <div class="mt-3">
                                                         <label class="stock-name pb-1 m-0">Target Date</label>
                                                         <div class="w-80">
-                                                            <div class="datepicker-group">
+                                                            <div class="datepicker-group" style="width:126%;">
                                                                 <input matInput [matDatepicker]="targetDate" id="targetDate" name="targetDate" [min]="minDate" [(ngModel)]="targetDt" (dateChange)="onTargetDateChange()"/>
                                                                 <mat-datepicker-toggle matSuffix [for]="targetDate"></mat-datepicker-toggle>
                                                                 <mat-datepicker #targetDate></mat-datepicker>
@@ -569,7 +569,7 @@
                                                 </span>
 
                                                 <span class="top-heading ml-3" *ngIf="stockAdded || stockPriceUpdated">
-                                                    <mat-icon (click)="deleteStock()">delete</mat-icon>
+                                                    <mat-icon (click)="deleteStock()" style="margin-bottom: 1rem;">delete</mat-icon>
                                                 </span>
                                             </div>
                                         </div>
@@ -610,7 +610,7 @@
                                                 <span class="trade-edit" (click)="editOptionLeg(index)">
                                                     <mat-icon class="mat-icon-sm mr-1">edit</mat-icon> 
                                                 </span>
-                                                <span class="top-heading ml-3 cursor" (click)="deleteStockOption(index)">
+                                                <span class="top-heading ml-3 cursor" (click)="deleteStockOption(index)" style="margin-bottom: 1rem;">
                                                     <mat-icon>delete</mat-icon>
                                                 </span>
                                             </div>

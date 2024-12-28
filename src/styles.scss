@@ -20,8 +20,10 @@
     position: sticky;
     top: 0;
     background-color: var(--color-bg-default);
-    -webkit-box-shadow: 0 1px 5px 0 rgba(var(--color-border-5--rgb),.1);
-    box-shadow: 0 1px 5px 0 rgba(var(--color-border-5--rgb),.1)
+    // -webkit-box-shadow: 0 1px 5px 0 rgba(var(--color-border-5--rgb),.1);
+    // box-shadow: 0 1px 5px 0 rgba(var(--color-border-5--rgb),.1)
+    border: 0.5px solid #ccc;  
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .app .header .wrapper {
