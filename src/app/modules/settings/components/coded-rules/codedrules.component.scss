@@ -198,14 +198,15 @@ td.mat-cell {
     color: #000000;
     font-size: 16px;
     font-weight: 500;
+    align-content: center;
 }
 .rule-cell {
     width: 30%;
     flex: 0 0 30%; 
 }
 .action-cell {
-    width: 67%;
-    flex: 0 0 67%;
+    width: 20%;
+    flex: 0 0 20%;
 }
 
 .value-cell {
@@ -261,22 +262,28 @@ thead tr.mat-header-row {
     background: #2469FF;
     color: #fff;
     letter-spacing: 1px;
-    min-width: 70px;
-    font-size:14px;
+    min-width: 40%;
+    font-size:16px;
+    height:44px;
+    align-content: center;
 }
 .btn-update {
     background: #6c757d;
     color: #fff;
     letter-spacing: 1px;
-    min-width:70px;
-    font-size:14px;
+    min-width:40%;
+    font-size:16px;
+    height:44px;
+    align-content: center;
 }
 .btn-disabled {
     background: #e0e0e0;
     letter-spacing: 1px;
     color: #2469FF;
-    min-width:70px;
-    font-size:14px;
+    min-width:40%;
+    font-size:16px;
+    height:44px;
+    align-content: center;
 }
 
 @media (max-width: 767px) {

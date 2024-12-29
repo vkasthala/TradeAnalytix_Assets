@@ -12,10 +12,15 @@
                         <div class="tb-container-box-header">How to use Payoff Analyzer?</div>
                         <div class="tb-container-box-body">
                             <ul>
-                                <li><img src="../../../../assets/images/tb_icon_1.svg" class="mr-3" />Build a trade strategy with stock and option legs</li>
-                                <li><img src="../../../../assets/images/tb_icon_2.svg" class="mr-3" />Provide inputs for analysis (e.g., implied volatility, days left)</li>
-                                <li><img src="../../../../assets/images/tb_icon_3.svg" class="mr-3" />Analyze profit or loss of the strategy</li>
-                                <li><img src="../../../../assets/images/tb_icon_4.svg" class="mr-3" />Update strategy and inputs to reassess its profit and loss</li>
+                                <!-- <li><img src="../../../../assets/images/tb_icon_1.svg" class="mr-3" />1. Build a trade strategy with stock and option legs</li>
+                                <li><img src="../../../../assets/images/tb_icon_2.svg" class="mr-3" />2. Provide inputs for analysis (e.g., implied volatility, days left)</li>
+                                <li><img src="../../../../assets/images/tb_icon_3.svg" class="mr-3" />3. Analyze profit or loss of the strategy</li>
+                                <li><img src="../../../../assets/images/tb_icon_4.svg" class="mr-3" />4. Update strategy and inputs to reassess its profit and loss</li> -->
+                                <li>1. Build a trade strategy with stock and option legs</li>
+                                <li>2. Provide inputs for analysis</li>
+                                <li>3. Analyze profitability of the strategy</li>
+                                <li>4. Update strategy to reassess its profitability</li>
+
                             </ul>
                         </div>
                     </div>
@@ -23,7 +28,8 @@
     
                     <div class="trade-form">
                         <app-trade-search (symbolSelectEvent)="symbolSelectEventHandler($event)">
-                        </app-trade-search>
+                        </app-trade-search><br>
+                        <button class="btn btn-enter" (click)="enterSymbol()">Submit</button>
                         <div class="trade-form-body">
                             <h4 class="py-2 mt-3">Popular User Searches</h4>
                             <ul *ngIf="!isUsInstances">
@@ -33,7 +39,7 @@
                                 <li *ngFor="let instance of usInstances; let i = index;"><span class="text-link" (click)="submitInstance(instance)">{{instance.name}}</span></li>
                             </ul>
                         </div>
-                        <button class="btn btn-enter" (click)="enterSymbol()">Submit </button>
+                        
                     </div>
                 </div>
             </ng-container>
@@ -504,7 +510,7 @@
                     <div class="mt-2">
                         <app-trade-search (symbolSelectEvent)="symbolSelectEventHandler($event)"></app-trade-search>
                         <div class="text-center mt-2">
-                            <button class="btn btn-enter ml-3" (click)="enterSymbol()">Submit </button>
+                            <button class="btn btn-enter ml-3" (click)="enterSymbol()">Submit</button>
                         </div>
                     </div>
                     <div class="mt-2"><a href="#">Watch a Demo</a></div>

@@ -2767,16 +2767,18 @@ input {
 
 .sub-nav {
     padding: 20px 30px;
-    color: #000;  //Venkat changed from #5B5C60
+    color: #000;   
     font-size: 18px;
-    box-shadow: 0 1px 5px 0 rgba(var(--color-border-5--rgb), 0.1);
+    // box-shadow: 0 1px 5px 0 rgba(var(--color-border-5--rgb), 0.1);
     background: #fff;
+    border: 0.5px solid #ccc;  
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .sub-nav a {
     padding: 10px 0;
     margin: 0 10px;
-    color: #000; //Venkat changed from #5B5C60
+    color: #000;  
     position: relative;
     font-weight: 500;
 }
@@ -3023,7 +3025,9 @@ button.sell {
 }
 
 .data-table {
-    position: relative
+    position: relative;
+    border: 0.5px solid #ccc;  
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .data-table.fold-header .toolbar {

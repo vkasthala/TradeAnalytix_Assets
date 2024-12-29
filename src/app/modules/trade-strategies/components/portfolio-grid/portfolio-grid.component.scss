@@ -2,6 +2,8 @@
 @import "../../../../../assets/styles/variable.scss";
 mat-table {
     width: 100%;
+    border: 0.5px solid #ccc;  
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 .trade-strategies-grid {
     @media #{$extra-small} {

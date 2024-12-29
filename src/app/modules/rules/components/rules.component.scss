@@ -150,12 +150,14 @@ td.mat-cell {
 .reports-header {
     color: #000000;
     font-size: 18px;
-    box-shadow: 0 1px 5px 0 rgba(var(--color-border-5--rgb), 0.1);
+    // box-shadow: 0 1px 5px 0 rgba(var(--color-border-5--rgb), 0.1);
     background: #fff;
     align-items: center;
     justify-content:space-between;
     display: flex;
-    padding: 5px 24px;
+    padding: 10px 24px;
+    border: 0.5px solid #ccc;  
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 @media (max-width: 767px) {
