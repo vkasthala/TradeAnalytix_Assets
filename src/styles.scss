@@ -2849,7 +2849,7 @@ input {
         --right-content-width: calc(var(--wrapper-width) - var(--left-content-width))
     }
     body {
-        font-size: 13px !important;
+        font-size: 15px !important;
     }
     h3, h4 {
         font-size: 15px;
@@ -2858,7 +2858,7 @@ input {
         font-size: 18px;
     }
     h6, .h6 {
-        font-size: 14px;
+        font-size: 15px;
     }
     .app .header {
         position: fixed;
@@ -2889,9 +2889,9 @@ input {
         color: #000000;
         justify-content: center;
         align-items: center;
-        font-size: 15px;
-        font-weight: 600;
-        padding: 8px;
+        font-size: 16px;
+        font-weight: 500;
+        padding: 6px;
     }
 
     .app-nav.mobile-nav a.router-link-active,
@@ -3003,9 +3003,10 @@ input {
 }
 
 button.buy {
-    color: #fff;
-    background-color: #2469FF !important;
+    color: #2469FF !important;
+    background-color: #FFF !important;
     border-color: #2469FF !important;
+    height:46px;
 }
 button.sell {
     color: #fff;
@@ -3200,7 +3201,7 @@ button.sell {
 
 .data-table table tbody tr td,.data-table table tfoot tr td {
     min-width: 30px;
-    padding: 10px 12px;
+    padding: 10px 6px;
     border-bottom: 1px solid var(--color-border-1)
 }
 

@@ -7,7 +7,7 @@
                 <div class="instrument ml-3">
                     <h3>{{margins.trading_symbol}}</h3>
                     <label class="su-radio-label m-0">₹{{margins.ltp}}</label>
-                    <span class="qty ml-3">{{margins.quantity}} Qty</span>
+                    <span class="qty ml-3">{{margins.quantity}} Quantity</span>
                 </div>
             </div>
         </div>
@@ -15,12 +15,12 @@
             <div class="d-flex">
                 <div class="eight columns">
                     <div class="instrument">
-                        <span class="transaction-type">{{margins.type | titlecase}}</span>
+                        <span class="transaction-type">{{margins.type}}</span>
                         <span class="tradingsymbol ml-2">
                             <span class="name">{{margins.trading_symbol}}</span>
                         </span>
                         ×
-                        <span class="qty">{{margins.quantity}} Qty</span>
+                        <span class="qty">{{margins.quantity}} Quantity</span>
                     </div>
                     <div class="su-radio-group">
                         <div class="type su-radio-wrap checked">
@@ -198,8 +198,7 @@
                     </div>
                     <div class="five columns text-right actions order-modal-footer">
                         <button *ngIf="!isOrderModify" type="submit" class="submit"
-                            (click)="openIntradayOrderPopup('new')"><span>{{margins.type |
-                                titlecase}}</span></button>
+                            (click)="openIntradayOrderPopup('new')"><span>{{margins.type}}</span></button>
                         <button *ngIf="isOrderModify" type="submit" class="submit"
                         (click)="openIntradayOrderPopup('open')"><span>Modify</span></button>
                         <button type="button" class="button-outline cancel ml-1" (click)="closePopup()">Cancel</button>

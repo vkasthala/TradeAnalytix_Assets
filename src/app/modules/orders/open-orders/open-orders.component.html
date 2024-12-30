@@ -12,9 +12,9 @@
                     </span>
                 </th> -->
                 <th class="sortable time-cell"><span>Time</span></th>
+                <th class="sortable action-cell"><span>Action</span></th>
                 <th class="sortable instrument-cell"><span>Instrument</span></th>
                 <th class="sortable product-cell"><span>Product</span></th>
-                <th class="sortable action-cell"><span>Action</span></th>
                 <th class="sortable qty-cell"><span>Quantity</span></th>
                 <th class="sortable ltp-cell"><span>LTP</span></th>
                 <th class="sortable price-cell"><span>Price</span></th>
@@ -106,7 +106,7 @@
         </div>
         <div class="actions-row px-3">
             <button type="submit" class="button button-md" [ngClass]="order.type === 'SELL' ? 'sell' : 'buy'" (click)="editOrder(order)">EDIT</button>
-            <button type="button" class="button button-outline button-md" (click)="cancelOrder(order)">Cancel</button>
+            <button type="button" class="button button-outline button-md" (click)="cancelOrder(order)">CANCEL</button>
         </div>
         
     </div>
