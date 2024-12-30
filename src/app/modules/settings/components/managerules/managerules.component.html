@@ -11,49 +11,30 @@
     <div class="d-flex align-items-center pb-2">
         <a class="add-new cursor" (click)="addEntryExitRule('Add', 'Save')">Add Rule</a>
     </div>
-    <!-- <div class="d-flex mb-2">
-        <div class="trade-dash-name col-8 col-md-9 px-0">
-            <h3>Manual rules are user-specific rules that show up in the Rules section of a trade when the user adds, edits, or closes a trade. User can review these rules and should manually mark them aligned or not aligned. <a data-toggle="modal" data-target="#modal1" class="watch-video-sm cursor">Watch Video</a></h3>
-        </div>
-        <div class="trade-st-box pt-0 col-4 col-sm-2">
-            <label class="m-0">Filter By</label>
-            <div class="px-2">
-                <select class="form-control" id="exampleFormControlSelect1">
-                    <option value="1">Source</option>
-                    <option value="2">Draft</option>
-                    <option value="3">Open</option>
-                    <option value="4">Closed</option>
-                    <option value="5">Expired</option>
-                </select>
-            </div>
-            <a class="btn btn-primary add-new" (click)="addEntryExitRule('Add', 'SAVE')">Add Rule</a>
-        </div>
-    </div> -->
 
     <div class="trade-strategies-table">
         <div class="trade-table">
             <mat-table [dataSource]="dataSource" matSort>
                 <!-- Position Column -->
                 <ng-container matColumnDef="date">
-                    <mat-header-cell class="date-cell" *matHeaderCellDef> Date </mat-header-cell>
+                    <mat-header-cell class="date-cell" *matHeaderCellDef>Date </mat-header-cell>
                     <mat-cell class="date-cell" *matCellDef="let element"> {{element.createDate | date:'dd-MMM-yyyy'}} </mat-cell>
                 </ng-container>
 
-               
-
-                <!-- Weight Column -->
+                <!-- Rule Description Column -->
                 <ng-container matColumnDef="description">
-                    <mat-header-cell class="description-cell" *matHeaderCellDef>Rule</mat-header-cell>
+                    <mat-header-cell class="description-cell" *matHeaderCellDef>Trading Rule</mat-header-cell>
                     <mat-cell *matCellDef="let element" class="description-cell"> {{element.description}} </mat-cell>
                 </ng-container>
-
                 
                 <!-- Action Column -->
                 <ng-container matColumnDef="action">
-                    <mat-header-cell class="action-cell" *matHeaderCellDef> Action</mat-header-cell>
+                    <mat-header-cell class="action-cell" *matHeaderCellDef>Action</mat-header-cell>
                     <mat-cell *matCellDef="let element" class="action-cell">
-                        <mat-icon class="mat-icon-sm mat-icon-edit" (click)="editRule(element, 'Edit', 'Update')">edit</mat-icon>
-                        <mat-icon class="mat-icon-sm ml-2" (click)="deleteRule(element)">delete</mat-icon>
+                        <button class="btn btn-edit" (click)="editRule(element, 'Edit', 'Update')">Update</button>
+                        <button class="btn btn-delete ml-2" (click)="deleteRule(element)">Delete</button>
+                        <!-- <mat-icon class="mat-icon-sm mat-icon-edit" (click)="editRule(element, 'Edit', 'Update')">edit</mat-icon>
+                        <mat-icon class="mat-icon-sm ml-2" (click)="deleteRule(element)">delete</mat-icon> -->
                     </mat-cell>
                 </ng-container>
 

@@ -15,7 +15,7 @@
       </div>
 
       <div class="main-pop-inner">
-          <p>{{jsonData.uiLabel }} the amount stated below</p>
+          <!-- <p>{{jsonData.uiLabel }} the amount stated below</p> -->
 
           <!-- <div class="d-flex justify-content-center align-items-center">
             <label class="col-form-label px-3">Enter the amount</label>
@@ -23,11 +23,10 @@
               <input class="form-control disabled" placeholder="" type="text" [(ngModel)]='value' />
             </div>
           </div> -->
-          <p class="mb-0" *ngIf="jsonData.ruleType === 1">As a result of deactivating this trading rule, your trades will no longer be checked
-            against this rule going forward. 
-            Notifications will NOT be issued when the trading rule is broken.</p>
+          <p class="mb-0" *ngIf="jsonData.ruleType === 1">Upon deactivating this rule, your trades will no longer be checked
+            against this rule going forward.</p>
 
-            <p class="mb-0" *ngIf="jsonData.ruleType === 2">As a result of deactivating this trading rule, your account will no longer be checked against this rule going forward. Notifications will NOT be issued when the trading rule is broken.</p>
+            <p class="mb-0" *ngIf="jsonData.ruleType === 2">Upon deactivating this rule, your account will no longer be checked against this rule going forward.</p>
         </div>
 
         <div class="popup-footer">

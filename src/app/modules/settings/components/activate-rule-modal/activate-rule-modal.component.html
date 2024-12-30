@@ -15,10 +15,10 @@
       </div>
 
       <div class="main-pop-inner">
-          <p  *ngIf="jsonData.ruleType === 1">{{jsonData.uiLabel }} the amount stated below</p>
+          <!-- <p  *ngIf="jsonData.ruleType === 1">{{jsonData.uiLabel }} the amount stated below</p> -->
 
           <div class="d-flex justify-content-center align-items-center" *ngIf="jsonData.dataType === 'double' || jsonData.dataType === 'time'">
-            <label class="col-form-label px-3">Enter the {{jsonData.dataType === 'double' ? 'amount' : 'Time'}} </label>
+            <label class="col-form-label px-3">Enter the {{jsonData.dataType === 'double' ? 'value' : 'time'}} </label>
             <div class="form-group">
               <input *ngIf="jsonData.dataType === 'double'" class="form-control" placeholder="" type="text" [(ngModel)]='value' (ngModelChange)="validateInput($event)"/>
               <input *ngIf="jsonData.dataType === 'time'" class="form-control" placeholder="" type="time" [(ngModel)]='value' />
@@ -27,11 +27,10 @@
           <div *ngIf="jsonData.dataType === 'double' && error" class="text-danger">
             {{error}}
           </div>
-          <p class="mt-3 mb-0" *ngIf="jsonData.ruleType === 1">As a result of activating this trading rule, your trades will be checked against 
-            this rule going forward and indicated as aligned or broken. 
-            Notifications will be issued when the trading rule is broken.</p>
+          <p class="mt-3 mb-0" *ngIf="jsonData.ruleType === 1">Upon activating this rule, your orders will be checked against 
+            this rule during order placement and indicated as aligned or broken. </p>
 
-          <p class="mt-3 mb-0" *ngIf="jsonData.ruleType === 2">As a result of activating this trading rule, your account will be checked against this rule going forward and notifications are issued when the trading rule is broken.</p>
+          <p class="mt-3 mb-0" *ngIf="jsonData.ruleType === 2">Upon activating this rule, your account will be checked against this rule going forward.</p>
         </div>
 
         <div class="popup-footer">
