@@ -326,10 +326,43 @@ table.mat-table {
     align-content: center;
 }
 
-/* Responsive adjustments */
+/* Responsive adjustments */ 
+// @media (max-width: 767px) {
+//     .btn-edit, .btn-delete {
+//         font-size: 12px;
+//         padding: 3px 6px;
+//     }
+// }
+
+
 @media (max-width: 767px) {
+    .managerules-sec {
+        padding: 5px;
+    }
+
     .btn-edit, .btn-delete {
-        font-size: 12px;
-        padding: 3px 6px;
+        padding: 8px 10px; /* Larger padding for easier tapping */
+        font-size: 14px; /* Adjust based on readability */
+        min-width: 100px; /* Ensure buttons are not too narrow */
+    }
+
+    .date-cell, .description-cell, .action-cell {
+        flex: 1 1 100%; /* Each cell takes full width on smaller screens */
+    }
+
+    .action-cell {
+        display: flex;
+        flex-direction: column; /* Stack buttons vertically in small screens */
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    /* Adjustments for tablets and small desktops */
+    .btn-edit, .btn-delete {
+        font-size: 16px;
+    }
+
+    .description-cell {
+        padding-right: 15px;
     }
 }

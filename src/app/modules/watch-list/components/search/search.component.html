@@ -15,40 +15,40 @@
         (mouseout)="fadeOutActions(index)" (click)="addToWatchList(searchItem)">
         <span class="symbol" (click)="addToWatchList(searchItem)">
           <span class="tradingsymbol">{{searchItem.symbolShort}}</span>
-          <span class="ins-added-label" data-balloon="Added" data-balloon-pos="up" *ngIf="searchItem.addedToWatchList">
+          <span class="ins-added-label" data-tooltip="Added" data-tooltip-pos="up" *ngIf="searchItem.addedToWatchList">
             <mat-icon class="mat-icon material-icons mat-icon-sm icon icon-check">check</mat-icon>
           </span>
         </span>
         <span class="exchange">
           <span class="company">{{searchItem.symbolFull}}</span>
           <span *ngIf="isMobileDevice">
-            <button type="button" class="button-outline button-green button-xsmall ml-2" data-balloon="Add" data-balloon-pos="up"
+            <button type="button" class="button-outline button-green button-xsmall ml-2" data-tooltip="Add" data-tooltip-pos="up"
             (click)="addNewItem(searchItem); $event.stopPropagation();" *ngIf="!searchItem.addedToWatchList">
             <mat-icon class="material-icons mat-icon-sm">add</mat-icon>
             </button>
-            <button type="button" class="button-outline button-grey button-xsmall ml-2" data-balloon="Added" data-balloon-pos="up"
+            <button type="button" class="button-outline button-grey button-xsmall ml-2" data-tooltip="Added" data-tooltip-pos="up"
             *ngIf="searchItem.addedToWatchList" (click)="closePanel()">
               <mat-icon class="material-icons mat-icon-sm">check</mat-icon>
             </button>
           </span>
         </span>
         <span class="action-buttons" *ngIf="searchListIndex == index && !isMobileDevice">
-          <!-- <button type="button" class="buy" data-balloon="Buy" data-balloon-pos="up"
+          <!-- <button type="button" class="buy" data-tooltip="Buy" data-tooltip-pos="up"
             (click)="buyOrders(searchItem)" *ngIf="!isNiftyStock(searchItem)">B</button>
 
-          <button type="button" class="sell" data-balloon="Sell" data-balloon-pos="up"
+          <button type="button" class="sell" data-tooltip="Sell" data-tooltip-pos="up"
             (click)="sellOrders(searchItem)" *ngIf="!isNiftyStock(searchItem)">S</button> -->
 
-          <!-- <button type="button" class="button-outline" data-balloon="Chart" data-balloon-pos="up" [routerLink]="['/chart/',searchItem.symbol, searchItem.token]">
+          <!-- <button type="button" class="button-outline" data-tooltip="Chart" data-tooltip-pos="up" [routerLink]="['/chart/',searchItem.symbol, searchItem.token]">
             <mat-icon class="material-icons mat-icon-sm">show_chart</mat-icon>
           </button> -->
 
-          <button type="button" class="button-green" data-balloon="Add" data-balloon-pos="up"
+          <button type="button" class="button-green" data-tooltip="Add" data-tooltip-pos="up"
             (click)="addNewItem(searchItem); $event.stopPropagation();" *ngIf="!searchItem.addedToWatchList">
             <mat-icon class="material-icons mat-icon-sm">add</mat-icon>
           </button>
 
-          <button type="button" class="button-outline button-grey" data-balloon="Added" data-balloon-pos="up"
+          <button type="button" class="button-outline button-grey" data-tooltip="Added" data-tooltip-pos="up"
             *ngIf="searchItem.addedToWatchList" (click)="closePanel()">
             <mat-icon class="material-icons mat-icon-sm">check</mat-icon>
           </button>
@@ -69,7 +69,7 @@
         <button type="button" class="button sell" (click)="sellOrders(selectedSymbol)">SELL</button>
       </div>
       <!-- <div class="text-center p-2">
-        <span data-balloon="Chart (C)" data-balloon-pos="up"
+        <span data-tooltip="Chart (C)" data-tooltip-pos="up"
         [routerLink]="['/chart/',selectedSymbol.symbol, selectedSymbol.token]">
             <span class="icon icon-trending-up"></span> Chart
         </span>

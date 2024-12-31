@@ -48,22 +48,22 @@
                                 </div>
 
                                 <span class="actions fade-leave fade-leave-active" *ngIf="watchItem == i">
-                                    <span data-balloon="Buy (B)" data-balloon-pos="up">
+                                    <span data-tooltip="Buy (B)" data-tooltip-pos="up">
                                         <button type="button" class="buy"
                                             (click)="buyOrders(item)" *ngIf="!isNiftyStock(item)">B</button>
                                     </span>
-                                    <span data-balloon="Sell (S)" data-balloon-pos="up">
+                                    <span data-tooltip="Sell (S)" data-tooltip-pos="up">
                                         <button type="button" class="sell"
                                             (click)="sellOrders(item)" *ngIf="!isNiftyStock(item)">S</button>
                                     </span>
 
-                                    <!-- <span data-balloon="Chart (C)" data-balloon-pos="up"
+                                    <!-- <span data-tooltip="Chart (C)" data-tooltip-pos="up"
                                         [routerLink]="['/chart/',item.tradingsymbol, item.symbol_id]">
                                         <button type="button" class="button-outline">
                                             <mat-icon class="material-icons mat-icon-sm">show_chart</mat-icon>
                                         </button>
                                     </span> -->
-                                    <span data-balloon="Delete (del)" data-balloon-pos="up">
+                                    <span data-tooltip="Delete (del)" data-tooltip-pos="up">
                                         <button type="button" class="button-outline" (click)="deleteOrder(item)">
                                             <mat-icon class="material-icons">delete_outline</mat-icon>
                                         </button>
@@ -160,8 +160,8 @@
 
         <!-- <ul class="marketwatch-selector list-flat">
             <li class="item" *ngFor="let page of watchListData, let index=index"
-                [ngClass]="selecedIndex === page.pageNumber ? 'selected' : ''" [attr.data-balloon]="page.name"
-                data-balloon-pos="up" (click)="nextPage(page.pageNumber)">{{page.pageNumber}}</li>
+                [ngClass]="selecedIndex === page.pageNumber ? 'selected' : ''" [attr.data-tooltip]="page.name"
+                data-tooltip-pos="up" (click)="nextPage(page.pageNumber)">{{page.pageNumber}}</li>
         </ul> -->
     </div>
 </div>

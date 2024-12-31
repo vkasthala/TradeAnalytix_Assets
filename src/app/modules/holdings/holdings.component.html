@@ -37,14 +37,6 @@
                         <td class="text-right"><span [ngClass]="rowData.net_change > 0 ? 'text-success' : 'text-danger'">{{rowData.net_change | number:'1.2-2'}}%</span></td>
                         <td class="text-right"><span [ngClass]="rowData.net_change > 0 ? 'text-success' : 'text-danger'">{{rowData.day_change | number:'1.2-2'}}%</span></td>
                         <td>
-                            <!-- <span data-balloon="Buy (B)" data-balloon-pos="up">
-                                <button type="button" class="btn btn-xs buy ml-3"
-                                    (click)="add(rowData)">BUY</button>
-                            </span>
-                            <span data-balloon="Sell (S)" data-balloon-pos="up">
-                                <button type="button" class="btn btn-xs sell ml-2"
-                                    (click)="add(rowData)">SELL</button>
-                            </span> -->
                         </td>
                     </tr>
                     <tr *ngIf="holdingsResponse.data.data.length === 0">
@@ -115,11 +107,11 @@
                     </div>
                 </div>
                 <div class="flex">
-                    <!-- <span data-balloon="Buy (B)" data-balloon-pos="up">
+                    <!-- <span data-tooltip="Buy (B)" data-tooltip-pos="up">
                         <button type="button" class="btn btn-xs buy"
                             (click)="add(rowData)">BUY</button>
                     </span>
-                    <span data-balloon="Sell (S)" data-balloon-pos="up">
+                    <span data-tooltip="Sell (S)" data-tooltip-pos="up">
                         <button type="button" class="btn btn-xs sell ml-2"
                             (click)="add(rowData)">SELL</button>
                     </span> -->
