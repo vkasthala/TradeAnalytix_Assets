@@ -360,4 +360,15 @@ export class HomeComponent implements OnInit, AfterViewInit {
     }
   }
 
+  snapeTradeRegister() {
+    this.snapTradeService.registerUser(this.userData.name,this.userData.userId).subscribe((response) => {
+      console.log('Success response:', response);
+      this.toastr.success('SnapTrade account created for the user', 'Success');
+    },
+    (error) => {
+      this.toastr.error('SnapTrade account already exists for the user. Please connect to your broker and fetch trades', 'Error');
+    }
+    );
+  }
+
 }

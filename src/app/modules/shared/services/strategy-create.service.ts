@@ -23,6 +23,14 @@ export class StrategyCreateService {
     }
     return names;
   }
+  public getOptionType(): String[] {
+    let names: String[] = [];
+    for (let option in OptionType) {
+      if (typeof OptionType[option] === 'string')
+        names.push(option);
+    }
+    return names;
+  }
 
   public getActionTypes(): string[] {
     let names: string[] = [];

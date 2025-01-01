@@ -9,5 +9,13 @@ export class StrategiesGridFilter {
     fromDate: string;
 
     toDate: string;
+
+    openDate: any;
+    
+    expiryDate: any;
+
+    brokerName: string;
+
+    optionType: string;
     
 }
