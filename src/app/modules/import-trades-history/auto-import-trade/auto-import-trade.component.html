@@ -1,13 +1,7 @@
-<div class="trade-form">
+<!-- <div class="trade-form">
     <div class="pb-3">
         <div class="row">
             <div class="py-2 col-sm-8">
-                 <!-- <label class="col-form-label">Select Your Broker and Import Trades</label> -->
-                 <!-- <select class="form-control" [(ngModel)]="selectedbroker" (change)="onBrokerageChange($event.target.value, index)">
-                    <option *ngFor="let item of brokerages;let index = index" value={{item.id}}>{{item.name}}
-                    </option>
-                </select>  -->
-                <!-- <mr-ngx-plaid-link-button env="development" [token]="plaidToken" (Success)="onPlaidSuccess($event)" (Exit)="onPlaidExit($event)" (Load)="onPlaidLoad($event)" (Event)="onPlaidEvent($event)" className="plaid-button" buttonText="Link Account" (Click)="onPlaidClick($event)"></mr-ngx-plaid-link-button> -->
             </div>
              <div class="py-2 col-sm-8"> 
                 <label for="startDate">Start Date:</label> 
@@ -28,6 +22,21 @@
                   <pre>{{ jsonData | json }}</pre>
                 </div>
               </div>
+        </div>
+    </div>
+</div>
+ -->
+
+ <div class="brokerage-page">
+    <h1 class="page-title">Connected Brokerage: <span id="brokerageName">Zerodha</span></h1>
+    <div class="import-controls">
+        <button class="btn-import" onclick="importAllTrades()">Import All Trades</button>
+        <div class="date-range-selector">
+            <label for="startDate">Start Date:</label>
+            <input type="date" id="startDate" name="startDate">
+            <label for="endDate">End Date:</label>
+            <input type="date" id="endDate" name="endDate">
+            <button class="btn-import" onclick="importTradesByDate()">Import Trades by Date</button>
         </div>
     </div>
 </div>

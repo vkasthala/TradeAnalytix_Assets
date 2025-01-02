@@ -48,11 +48,11 @@
                                 </div>
 
                                 <span class="actions fade-leave fade-leave-active" *ngIf="watchItem == i">
-                                    <span data-tooltip="Buy (B)" data-tooltip-pos="up">
+                                    <span data-tooltip="Buy" data-tooltip-pos="up">
                                         <button type="button" class="buy"
                                             (click)="buyOrders(item)" *ngIf="!isNiftyStock(item)">B</button>
                                     </span>
-                                    <span data-tooltip="Sell (S)" data-tooltip-pos="up">
+                                    <span data-tooltip="Sell" data-tooltip-pos="up">
                                         <button type="button" class="sell"
                                             (click)="sellOrders(item)" *ngIf="!isNiftyStock(item)">S</button>
                                     </span>

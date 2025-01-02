@@ -3,7 +3,7 @@
         <div class="import_trade_header">
             <span class="header-title">{{importType == 1 ? "Import Trades via File" : "Sync Trades Automatically" }}</span>
             <div class="d-flex align-items-center justify-content-end">
-                <label class="col-form-label px-3 w-auto" style="font-size: 16px; font-weight: 600;">Select Import Type</label>
+                <label class="col-form-label px-3 w-auto" style="font-size: 16px; font-weight: 500;">Select Import Type</label>
                 <select [(value)]="importType" (change)="selectionChange($event.target.value)" class="form-control w-auto">
                     <option value="1">Manual Import</option>
                     <option value="2">Auto-Import</option>
