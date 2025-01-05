@@ -29,7 +29,6 @@ export const environment = {
   snaptradeurl:'https://trading.cuetrade.io',
 
 
-
   clientCode: 'GPJIG4CRFK-102',
   authToken: '',
   tz: 'Asia/Calcutta'

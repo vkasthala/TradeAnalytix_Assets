@@ -14,7 +14,7 @@ export class TodayExecutedLegsComponent implements OnInit {
 
   @Input('selectedPlan') selectedPlan: TradePlanEntry;
 
-  todayExecutedGridColumns: string[] = ['orderType', 'symbol', 'productType', 'quantity', 'executedPrice'];
+  todayExecutedGridColumns: string[] = ['orderType', 'symbol', 'productType', 'quantity', 'executedPrice', 'action', 'timestamp'];
 
   todayExecutedTrades: TodayExecutedTrade[] = [];
 

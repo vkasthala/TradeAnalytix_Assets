@@ -10,4 +10,6 @@ export class TodayExecutedTrade {
 
     executedPrice: number;
 
+    action: string;
+
 }

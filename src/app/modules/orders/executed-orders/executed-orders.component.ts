@@ -59,6 +59,14 @@ export class ExecutedOrdersComponent implements OnInit {
   openIntradayOrderPopup(orderType:any, order:any) {
     console.log(this.executedOrders);
     let ruleCheckPayload: OrderRuleCheckRequest = {} as OrderRuleCheckRequest;
+    ruleCheckPayload.orderType = order.order_type;
+    ruleCheckPayload.productType = order.product;
+    // ruleCheckPayload.limitPrice = order.price;
+    ruleCheckPayload.tradeType = order.tradeType ? order.tradeType : 'STOCK';
+    ruleCheckPayload.limitPrice = order.trigger_price == 0 ? order.price : 0;
+    ruleCheckPayload.stopPrice = order.trigger_price == 0 ? 0 : order.trigger_price;
+    ruleCheckPayload.quantity = order.placedQty;
+
     let margins: Margins = {} as Margins;
     margins = order;
     margins.trading_symbol = order.instrument.actualSymbol;

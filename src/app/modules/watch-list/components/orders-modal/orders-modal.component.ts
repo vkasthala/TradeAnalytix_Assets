@@ -22,6 +22,7 @@ export class OrdersModalComponent implements OnInit {
   isOrderModify: boolean = false;
   ltp: number = 0;
   isMobileDevice: any;
+  isButtonEnabled: boolean = true;
 
   loader: boolean = false;
   @Input() isPositionsOrder: boolean=false;
@@ -144,8 +145,8 @@ export class OrdersModalComponent implements OnInit {
     let price = (document.getElementById('price') as HTMLInputElement).value;
     console.log(isLimitChecked);
     if(!isLimitChecked){
-      // price = this.margins.price;
-      price = '0.0';
+      price = this.margins.price;
+      // price = '0.0';
     }
     return parseFloat(price);
   }
@@ -163,16 +164,20 @@ export class OrdersModalComponent implements OnInit {
     if (isNaN(number)) {
       return false;
     }
-    if (number < 0.05 || ((number * 100) % 5 !== 0)) {
+    if (number < 0.05) {
       return false;
     }
-    return true;
+    if(number<250){
+      return (number * 100) % 1 === 0;
+    } else  {
+      return (number * 100) % 5 === 0;
+    }
   }
 
   findNearestValidTickSize(number: number): number[] {
     const roundedNumber: number = Number(number.toFixed(2));
-    const lowerTick = Math.floor(roundedNumber / 0.05) * 0.05;
-    const upperTick = Math.ceil(roundedNumber / 0.05) * 0.05;
+    const lowerTick = number<250 ? Math.floor(roundedNumber / 0.01) * 0.01 : Math.floor(roundedNumber / 0.05) * 0.05;
+    const upperTick = number<250 ? Math.ceil(roundedNumber / 0.01) * 0.01 : Math.ceil(roundedNumber / 0.05) * 0.05;
     return [Number(lowerTick.toFixed(2)),Number(upperTick.toFixed(2))];
   }
 
@@ -184,7 +189,7 @@ export class OrdersModalComponent implements OnInit {
     const decimalPart:any = numStr.toString().split('.')[1];
     if (price < 0.05) {
       this.showBottomRight(message);
-    } else if (decimalPart % 5 !== 0) {
+    } else {
         message = 'Please enter a valid value. Two nearest valid values are ' + nearestValues[0].toFixed(2) + ' and ' + nearestValues[1].toFixed(2);
         this.showBottomRight(message);
     }
@@ -195,14 +200,17 @@ export class OrdersModalComponent implements OnInit {
   }
 
   modifyOrder(orderRules: OrderRuleDto, orderId:any){
+    this.isButtonEnabled = true;
     this._sharedService.loaderEvent.emit(true);
     let price = this.getPrice();
     if(!this.isValid(price)){
+      this.isButtonEnabled = false;
       this.displayNearestValidPriceErrorMsg(price)
       return; 
     }
     let triggerPrice = this.getTriggerPrice();
     if(!this.isValidPricesForStopLoss(triggerPrice)){
+      this.isButtonEnabled = false;
       return;
     }
     console.log(this.margins);
@@ -327,11 +335,26 @@ export class OrdersModalComponent implements OnInit {
   }
 
   onBlurEvent(event: any) {
+    this.isButtonEnabled = true;
     let price = this.getPrice();
     if (event.target.name === 'price' && !this.isValid(price)){
+      this.isButtonEnabled = false;
       this.displayNearestValidPriceErrorMsg(price);
       this._sharedService.loaderEvent.emit(false);
       return; 
+    }
+    if (event.target.name === 'trigger_price'){
+      let triggerPrice = this.getTriggerPrice();
+      if(!this.isValidPricesForStopLoss(triggerPrice)){
+        this.isButtonEnabled = false;
+      return;
+    } else{
+      if(!this.validateTickSize(triggerPrice)){
+        this.isButtonEnabled = false;
+        this.displayNearestValidPriceErrorMsg(triggerPrice);
+        return;
+      }
+    }
     }
 
     this.calculateMargin();
