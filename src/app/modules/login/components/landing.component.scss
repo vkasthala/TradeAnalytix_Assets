@@ -35,8 +35,8 @@ nav {
 // Hero Section for Desktop
 .hero-title {
     font-family: 'Inter', sans-serif !important;
-    font-size: 2.625rem;
-    max-width: 85%;  
+    font-size: 2.4rem;
+    max-width: 90%;  
     align-items: center;
     justify-content: center;
     line-height: 1.2;
@@ -49,6 +49,13 @@ nav {
     font-weight: 800;
     color: #4BB964;
   }
+
+  .hero-title .red-strike {
+    color: black; /* Text color */
+    text-decoration: line-through; /* Strike-through effect */
+    text-decoration-color: red; /* Color of the strike-through line */
+    text-decoration-thickness: 2px; /* Thickness of the strike-through line (optional) */
+}
   
   .hero-title .neutral {
     font-weight: 600;
@@ -1343,7 +1350,7 @@ input:checked~.accordion-content {
 
 .how-it-works p {
     color: #58595B;
-    max-width: 90%; /* Limited width for better readability */
+    max-width: 70%; /* Limited width for better readability */
     align-content: center;
     margin: auto;
     margin-bottom: 50px;
