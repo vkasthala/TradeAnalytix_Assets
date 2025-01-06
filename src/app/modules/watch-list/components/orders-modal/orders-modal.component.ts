@@ -307,7 +307,7 @@ export class OrdersModalComponent implements OnInit {
       symbol: this.margins.instrument.symbol,
       transactionType: this.margins.type,
       validity: 'DAY',
-      limitPrice: price,
+      limitPrice: this.isLimitChecked() ? price : 0,
       stopPrice : triggerPrice,
       stopLossTriggerPrice: 0
     }
