@@ -168,9 +168,9 @@ export class OrdersModalComponent implements OnInit {
       return false;
     }
     if(number<250){
-      return (number * 100) % 1 === 0;
+      return Math.round(number * 100) % 1 === 0;
     } else  {
-      return (number * 100) % 5 === 0;
+      return Math.round(number * 100) % 5 === 0;
     }
   }
 
