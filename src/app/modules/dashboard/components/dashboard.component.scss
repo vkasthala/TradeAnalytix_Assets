@@ -37,7 +37,7 @@
         justify-content: center;
         display: flex;
         align-items: flex-start;
-        background: #f4f8ff;  //Changed background color from #ffffff to #f4f8ff
+        background: #ffffff;  //Changed background color from #f4f8ff to #ffffff
         border-radius: 6px;
         border: 0.5px solid #ccc;  
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -759,7 +759,7 @@
     line-height: 22px;
     color: #000000;
     margin: 0;
-    margin-bottom: 5px;
+    margin-bottom: 16px;
 }
 .card-bottom {
     font-weight: bold;
@@ -1116,7 +1116,7 @@ a {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 40px;
-    margin-top: 30px;
+    margin-top: 40px;
     margin-bottom: 30px;
     font-family: Open Sans, sans-serif !important;
   }
@@ -1133,7 +1133,8 @@ a {
     display: flex;
     align-items: flex-start;
     align-content: center;
-    background: #f4f8ff;
+    // background: #f4f8ff;
+    background: #ffffff;
     border: 0.5px solid #ccc;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     flex-wrap: wrap;
@@ -1177,7 +1178,7 @@ a {
   .summary-text {
     font-size: 1.2rem;
     font-weight: 500;
-    padding-top: 24px;
+    padding-top: 40px;
     justify-content: left;
     text-align: left;
     color: #000000;
