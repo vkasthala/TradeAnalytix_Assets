@@ -335,10 +335,8 @@ export class OrdersModalComponent implements OnInit {
   }
 
   onBlurEvent(event: any) {
-    this.isButtonEnabled = true;
     let price = this.getPrice();
     if (event.target.name === 'price' && !this.isValid(price)){
-      this.isButtonEnabled = false;
       this.displayNearestValidPriceErrorMsg(price);
       this._sharedService.loaderEvent.emit(false);
       return; 
@@ -346,11 +344,9 @@ export class OrdersModalComponent implements OnInit {
     if (event.target.name === 'trigger_price'){
       let triggerPrice = this.getTriggerPrice();
       if(!this.isValidPricesForStopLoss(triggerPrice)){
-        this.isButtonEnabled = false;
       return;
     } else{
       if(!this.validateTickSize(triggerPrice)){
-        this.isButtonEnabled = false;
         this.displayNearestValidPriceErrorMsg(triggerPrice);
         return;
       }
@@ -358,6 +354,24 @@ export class OrdersModalComponent implements OnInit {
     }
 
     this.calculateMargin();
+  }
+
+  onInput(event: any){
+    this.isButtonEnabled = true;
+    let price = this.getPrice();
+    if (event.target.name === 'price' && !this.isValid(price)){
+      this.isButtonEnabled = false;
+    }
+    if (event.target.name === 'trigger_price'){
+      let triggerPrice = this.getTriggerPrice();
+      if(triggerPrice > this.ltp){
+        this.isButtonEnabled = false;
+    } else{
+      if(!this.validateTickSize(triggerPrice)){
+        this.isButtonEnabled = false;
+      }
+    }
+    }
   }
 
   checkDevice() {
