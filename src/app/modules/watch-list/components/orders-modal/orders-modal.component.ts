@@ -167,10 +167,11 @@ export class OrdersModalComponent implements OnInit {
     if (number < 0.05) {
       return false;
     }
+    const num = parseFloat((number * 100).toFixed(10));
     if(number<250){
-      return Math.round(number * 100) % 1 === 0;
+      return num % 1 === 0;
     } else  {
-      return Math.round(number * 100) % 5 === 0;
+      return num % 5 === 0;
     }
   }
 
