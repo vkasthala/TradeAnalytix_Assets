@@ -76,7 +76,7 @@ export class IntradayOrderPopupComponent implements OnInit {
 
 loadExistingOrderRules(){
   // this.data.ruleCheckPayload.orderId = '24070800145772';
-this._orderService.getExistingRules(this.data.ruleCheckPayload.orderId).subscribe(response=>{
+this._orderService.getExistingRules(this.data.ruleCheckPayload.orderId, this.data.ruleCheckPayload).subscribe(response=>{
   if(response){
     this.orderRuleDto = response;
     this.tags = this.orderRuleDto.tags;

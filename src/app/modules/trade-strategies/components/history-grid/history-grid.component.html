@@ -27,8 +27,13 @@
 
       <!-- Symbol Column -->
       <ng-container matColumnDef="stockName">
-        <mat-header-cell class="stock-name-cell" *matHeaderCellDef mat-sort-header>Symbol</mat-header-cell>
-        <mat-cell class="stock-name-cell" *matCellDef="let element"> {{element.stockCode}} </mat-cell>
+        <mat-header-cell class="stock-name-cell" *matHeaderCellDef mat-sort-header>Symbol | Contract</mat-header-cell>
+        <mat-cell class="stock-name-cell" *matCellDef="let element">
+          {{element.stockCode}}
+          <span *ngIf="element.optionType"> &nbsp;| {{element.optionType.toLowerCase() | titlecase}} </span>
+          <span *ngIf="element.strikePrice"> &nbsp;| {{element.strikePrice}} </span>
+          <span *ngIf="element.expiryDate"> &nbsp;| {{element.expiryDate | date: 'dd-MMM-yyyy'}} </span>
+        </mat-cell>
       </ng-container>
 
       <!-- Identifier Column -->
@@ -66,15 +71,6 @@
         </mat-cell>
       </ng-container> -->
 
-      <!-- Journaled Column -->
-      <ng-container matColumnDef="journaled">
-        <mat-header-cell class="journal-cell" *matHeaderCellDef mat-sort-header>Journaled</mat-header-cell>
-        <mat-cell *matCellDef="let element" class="journal-cell">
-          <mat-icon class="mat-icon-sm text-success" *ngIf="element.isJournaled === 1">check</mat-icon>
-          <mat-icon class="mat-icon-sm text-danger" *ngIf="element.isJournaled === 0">close</mat-icon>
-        </mat-cell>
-      </ng-container>
-
       <!-- Max Risk Column -->
       <ng-container matColumnDef="maxLoss">
         <mat-header-cell class="netR-cell" *matHeaderCellDef mat-sort-header>Max Risk</mat-header-cell>
@@ -89,12 +85,20 @@
         </mat-cell>
       </ng-container>
       
-      <!-- Realized Return Column -->
+      <!-- Net Return Column -->
       <ng-container matColumnDef="return">
-        <mat-header-cell class="return-cell" *matHeaderCellDef mat-sort-header>Return</mat-header-cell>
+        <mat-header-cell class="return-cell" *matHeaderCellDef mat-sort-header>Net Return</mat-header-cell>
         <mat-cell class="return-cell" *matCellDef="let element"> 
           {{element.returnAmount | number: '1.0-0'}} 
-          
+        </mat-cell>
+      </ng-container>
+
+      <!-- Journaled Column -->
+      <ng-container matColumnDef="journaled">
+        <mat-header-cell class="journal-cell" *matHeaderCellDef mat-sort-header>Journaled</mat-header-cell>
+        <mat-cell *matCellDef="let element" class="journal-cell">
+          <mat-icon class="mat-icon-sm text-success" *ngIf="element.isJournaled === 1">check</mat-icon>
+          <mat-icon class="mat-icon-sm text-danger" *ngIf="element.isJournaled === 0">close</mat-icon>
         </mat-cell>
       </ng-container>
 
@@ -104,6 +108,12 @@
         <mat-cell class="stock-name-tags" *matCellDef="let element"> {{element.tags}} </mat-cell>
       </ng-container>
 
+      <!-- Broker Name Column --> 
+      <ng-container matColumnDef="brokerName">
+        <mat-header-cell class="broker-name-cell" *matHeaderCellDef mat-sort-header>Source</mat-header-cell>
+        <mat-cell class="broker-name-cell" *matCellDef="let element"> {{element.brokerName}} </mat-cell>
+      </ng-container>
+      
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
@@ -161,7 +171,7 @@
         </div>
         <div class="row py-1">
           <div class="col-6 pl-4">
-            Realized Return
+            Net Return
           </div>
           <div class="col-6 text-success text-right">
             {{element.returnAmount}}

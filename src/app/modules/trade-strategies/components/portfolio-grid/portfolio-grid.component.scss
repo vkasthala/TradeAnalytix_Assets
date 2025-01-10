@@ -2,6 +2,8 @@
 @import "../../../../../assets/styles/variable.scss";
 mat-table {
     width: 100%;
+    border: 0.5px solid #ccc;  
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 .trade-strategies-grid {
     @media #{$extra-small} {
@@ -35,17 +37,22 @@ th.mat-header-cell {
 }
 
 .strategy-name-cell{
-  width: 9%;
-  flex: 0 0 9% !important;
-}
-
-.strategy-cell{
   width: 8%;
   flex: 0 0 8% !important;
 }
+
+.strategy-cell{
+  width: 7%;
+  flex: 0 0 7% !important;
+}
 .stock-name-cell{   
-  width: 20%;               //Venkat changed width from 8% to 18% to accomodate symbol KEY
-  flex: 0 0 20% !important;
+  width: 23%;               //Venkat changed width from 8% to 18% to accomodate symbol KEY
+  flex: 0 0 23% !important;
+}
+
+broker-name-cell {
+  width: 7%;
+  flex: 0 0 7% !important;
 }
 
 .direction-cell{
@@ -53,8 +60,8 @@ th.mat-header-cell {
   flex: 0 0 7% !important;
 }
 .journal-cell{
-  width: 6%;
-  flex: 0 0 6% !important;
+  width: 9%;
+  flex: 0 0 9% !important;
   justify-content: center;
 }
 .netR-cell {
@@ -72,13 +79,13 @@ th.mat-header-cell {
   flex: 0 0 10% !important;
 }
 .return-cell, .total-amount-cell {
-  width: 10%;
-  flex: 0 0 10% !important;
+  width: 9%;
+  flex: 0 0 9% !important;
 }
 
 .close-date-cell{
-  width: 6%;
-  flex: 0 0 6% !important;
+  width: 7%;
+  flex: 0 0 7% !important;
   justify-content: end;
 }
 .shared-cell{
@@ -89,7 +96,7 @@ th.mat-header-cell {
 .tags-cell {
   width: 50%;
   flex: 0 0 50% !important;
-  padding-left: 20px;
+  padding-left: 10px;
   justify-content: left;
 }
 .action-cell {

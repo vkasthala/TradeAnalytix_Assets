@@ -20,6 +20,13 @@
     color: #5B5C60
 }
 
+
+.container-main {
+    padding: 10px 20px;
+    background: #f5f5f5;
+    min-height: 100vh;
+}
+
 @media (max-width: 1023px) {
     h4 {
         font-size: 15px;
@@ -38,12 +45,9 @@
         margin-right: 20px
     }
 
-    .cards .card:first-child {
-        border-top: 1px solid var(--color-border-default)
-    }
-
     .cards .card {
         margin: 0;
+        border: 0;
         padding: 12px 0;
         border-bottom: 1px solid var(--color-border-default)
     }
@@ -126,6 +130,13 @@
         -ms-flex: 10;
         flex: 10
     }
+
+    
+    .container-main {
+        background: #fff;
+        padding: 0;
+        min-height: inherit;
+    }
 }
 
 
@@ -141,15 +152,10 @@
     width: 48%;
 }
 
-.container-main {
-    padding: 10px 20px;
-    background: #f1f2f4;
-    min-height: 100vh;
-}
 
 .content-main {
     background: #fff;
-    box-shadow: 0px 4px 8px rgba(157, 157, 157, 0.45);
+    margin-left:16px;
 }
 
 .product-cell {
@@ -157,16 +163,80 @@
     width: 12%;
 }
 .instrument-cell {
-    max-width: 15%;
-    width: 15%;
+    max-width: 18%;
+    width: 18%;
+    padding-left:15px;
 }
 .qty-cell {
-    max-width: 8%;
-    width: 8%;
+    max-width: 10%;
+    width: 10%;
 }
+
+.ltp-cell {
+    max-width: 10%;
+    width: 10%;
+}
+
+.avgcost-cell {
+    max-width: 10%;
+    width: 10%;
+}
+
+.currval-cell {
+    max-width: 12%;
+    width: 12%;
+}
+
+.netprofit-cell {
+    max-width: 10%;
+    width: 10%;
+}
+
+.netchange-cell {
+    max-width: 10%;
+    width: 10%;
+}
+
+.daychange-cell {
+    max-width: 10%;
+    width: 10%;
+}
+
 .btn-xs, .btn-group-xs > .btn {
     padding: 0.25rem 0.5rem;
     font-size: 0.875rem;
     line-height: 1;
     border-radius: 0.2rem;
+}
+.dim {
+    color: #969AA2;
+}
+.warning {
+    background-color: #FFF8D7;
+    color: #5A1F1F;
+}
+.text-blue {
+    color:#4A69CB
+}
+.gtt-list-header {
+    padding: 20px 15px;
+    background: #fff;
+    padding-bottom: 10px;
+}
+.gtt-list-header-content {
+    font-size: 16px;
+    text-align: center;
+    padding: 10px;
+    background: #fff;
+    color: #000;
+    margin-top: -36px;
+    border: 0.5px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+//Added to adjust the spacing in Holdings columns
+.data-table table tbody tr td,.data-table table tfoot tr td {
+    min-width: 30px;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--color-border-1)
 }

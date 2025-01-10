@@ -5,10 +5,10 @@
                 <div class="pinned-instruments">
                     <div class="instrument-widget">
                         <span *ngIf="isMobileDevice" class="sidebar-brand cursor-pointer" [routerLink]="['/dashboard/']">
-                            <img src="../../../../assets/images/cuetrade-logo.svg" alt="Trade-app-logo" class="img-fluid logo_sm">
+                            <img src="../../../../assets/img/cuetrade-logo.svg" alt="Trade-app-logo" class="img-fluid logo_sm">
                         </span>
                         <span *ngIf="!isMobileDevice" class="sidebar-brand cursor-pointer" [routerLink]="['/dashboard/']">
-                            <img src="../../../../assets/images/cuetrade-logo.svg" alt="Trade-app-logo" class="img-fluid full-logo">
+                            <img src="../../../../assets/img/cuetrade-logo.svg" alt="Trade-app-logo" class="img-fluid full-logo">
                         </span>
                     </div>
                 </div>
@@ -16,22 +16,14 @@
             <div class="header-right">
                 <div class="app-nav" *ngIf="!isMobileDevice">
                     <a [class.router-link-active]="currentRoute === 'dashboard'" [routerLink]="['/dashboard/']" routerLinkActive="router-link-active" ><span>Home</span></a>
-                    <a [class.router-link-active]="currentRoute === 'orders'" [routerLink]="['/orders/']" routerLinkActive="router-link-active"><span>Orders</span></a>
-                    
-                    <a [class.router-link-active]="currentRoute === 'positions'" [routerLink]="['/positions/']" routerLinkActive="router-link-active"><span>Portfolio</span></a>
-
                     <a [class.router-link-active]="currentRoute === 'trade-plans'" [routerLink]="['/trade-plans/']" routerLinkActive="router-link-active"><span>Plan</span></a>
-
-                    <a [class.router-link-active]="currentRoute === 'stravtegies'" [routerLink]="['/stravtegies/']" routerLinkActive="router-link-active"><span>Journal</span></a>
-
-                    <a [class.router-link-active]="currentRoute === 'import-trades-history'" [routerLink]="['/import-trades-history/']" routerLinkActive="router-link-active"><span>Import Trades</span></a>
-
                     <a [class.router-link-active]="currentRoute === 'rules'" [routerLink]="['/rules/']" routerLinkActive="router-link-active"><span>Rules</span></a>
-
+                    <a [class.router-link-active]="currentRoute === 'orders'" [routerLink]="['/orders/']" routerLinkActive="router-link-active"><span>Orders</span></a>                    
+                    <a [class.router-link-active]="currentRoute === 'positions'" [routerLink]="['/positions/']" routerLinkActive="router-link-active"><span>Positions</span></a>
+                    <a [class.router-link-active]="currentRoute === 'import-trades-history'" [routerLink]="['/import-trades-history/']" routerLinkActive="router-link-active"><span>Import Trades</span></a>
+                    <a [class.router-link-active]="currentRoute === 'stravtegies'" [routerLink]="['/stravtegies/']" routerLinkActive="router-link-active"><span>Journal</span></a>
                     <a [class.router-link-active]="currentRoute === 'reports'" [routerLink]="['/reports/']" routerLinkActive="router-link-active"><span>Analytics</span></a>
-
                     <a (click)="openBrokerageModal()" *ngIf="!isBrokerageActive"><span class="btn-broker-login">Connect Broker</span></a>
-
                     <a (click)="logoutFromBrokerage()" *ngIf="isBrokerageActive"><span class="btn-broker-exit">Exit Session</span></a>
                 </div> 
                 <div class="right-nav">
@@ -51,7 +43,7 @@
                             <!-- <div class="dropdown-nav-header"> -->
                                 <li class="list-flat-item">
                                 <a [routerLink]="['/profile/']" class="p-0">
-                                    {{userData.name}}
+                                    User: {{userData.name}}
                                     <!-- <div class="email">{{userDetails | json}}</div> -->
                                 </a>
                                 </li>
@@ -59,19 +51,19 @@
                             <hr>
                             <ul class="m-0">
                                 <li class="list-flat-item">
+                                    <a class="p-0" (click)="snapeTradeRegister()">
+                                    Join SnapTrade
+                                    </a>
+                                </li>
+                                <li class="list-flat-item">
                                     <a class="p-0" [routerLink]="['/settings/']">
-                                    Goals
+                                    Add Goals
                                     </a>
                                 </li>
                                 <hr>
                                 <li class="list-flat-item">
                                     <a class="p-0" [routerLink]="['/settings/']">
-                                    Data Setup
-                                    </a>
-                                </li>
-                                <li class="list-flat-item">
-                                    <a class="p-0" [routerLink]="['/settings/']">
-                                   SnapTrade Account
+                                    Setup Data
                                     </a>
                                 </li>
                                 <hr>
@@ -118,7 +110,7 @@
         </a>
         
         <a class="nav-link" [class.router-link-active]="currentRoute === 'orders'" [routerLink]="['/orders/']" routerLinkActive="router-link-active">
-            <span class="icon"><mat-icon class="material-icons">reorder</mat-icon></span>
+            <span class="icon orders-icon"><mat-icon class="material-icons">reorder</mat-icon></span>
             <span class="nav-text">Orders</span>
         </a>
         <!-- <a class="nav-link" [class.router-link-active]="['/holdings/']" [routerLink]="['/holdings/']" routerLinkActive="router-link-active">
@@ -129,11 +121,11 @@
             <span class="nav-text">Holdings</span>
         </a> -->
         <a class="nav-link" [class.router-link-active]="currentRoute === 'positions'" [routerLink]="['/positions/']" routerLinkActive="router-link-active">
-            <span class="icon"><mat-icon class="material-icons">inventory</mat-icon></span>
+            <span class="icon position-icon"><mat-icon class="material-icons">inventory</mat-icon></span>
             <span class="nav-text">Positions</span>
         </a>
         <a class="nav-link" [class.router-link-active]="currentRoute === 'rules'" [routerLink]="['/rules/']" routerLinkActive="router-link-active">
-            <span class="icon"><mat-icon class="material-icons">rule</mat-icon></span>
+            <span class="icon rules-icon"><mat-icon class="material-icons">rule</mat-icon></span>
             <span class="nav-text">Rules</span>
         </a>
     </div>
@@ -141,12 +133,21 @@
 </div>
 
 <div *ngIf="brokerageModal" class="modal-backdrop fade show"></div>
-<div class="modal contact-modal" [ngClass]="brokerageModal ? 'show' : ''"  tabindex="-1" aria-hidden="true">
+<div class="modal contact-modal connect-container" [ngClass]="brokerageModal ? 'show' : ''"  tabindex="-1" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <div class="modal-header">
+        <div class="mobile-header-nav" *ngIf="isMobileDevice">
+            <div class="d-flex align-items-start">
+                <mat-icon class="material-icons mat-icon cursor" (click)="closeBrokerageModal()">keyboard_backspace</mat-icon>
+                <div class="instrument ml-3">
+                    <h3 class="pt-1">Connect to your brokerage</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-header" *ngIf="!isMobileDevice">
           <h5 class="modal-title">
-            <span class="">Connect to your Brokerage and Start Trading</span>
+            <span class="">Connect to your brokerage</span>
         </h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeBrokerageModal()">
             <span aria-hidden="true">&times;</span>
@@ -154,13 +155,13 @@
         </div>
         <div class="modal-body pt-0">
             <form>
-                <div class="col-10 p-0">
+                <div class="col-10 p-0" [ngClass]="isMobileDevice ? 'col-12' : ''">
                   <label class="col-form-label" style="margin-top: 10px;">Choose FYERS to trade directly, or select SnapTrade to access multiple brokers.</label>  
                   <!-- <label class="col-form-label">Choose FYERS to trade directly, or select SnapTrade to access multiple brokers.</label> -->
                   <select (change)="onBrokerageChange($event.target.value)" class="form-control mb-3">
                     <option value="0">Select your brokerage</option>
                     <option value="FYERS">FYERS</option>
-                    <option value="Zerodha">SnapTrade</option>
+                    <option value="SnapTrade">SnapTrade</option>
                   </select>
                 </div>
               </form>

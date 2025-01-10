@@ -7,7 +7,7 @@
                 <div class="instrument ml-3">
                     <h3>{{margins.trading_symbol}}</h3>
                     <label class="su-radio-label m-0">₹{{margins.ltp}}</label>
-                    <span class="qty ml-3">{{margins.quantity}} Qty</span>
+                    <span class="qty ml-3">{{margins.quantity}} Quantity</span>
                 </div>
             </div>
         </div>
@@ -15,12 +15,12 @@
             <div class="d-flex">
                 <div class="eight columns">
                     <div class="instrument">
-                        <span class="transaction-type">{{margins.type | titlecase}}</span>
+                        <span class="transaction-type">{{margins.type}}</span>
                         <span class="tradingsymbol ml-2">
                             <span class="name">{{margins.trading_symbol}}</span>
                         </span>
                         ×
-                        <span class="qty">{{margins.quantity}} Qty</span>
+                        <span class="qty">{{margins.quantity}} Quantity</span>
                     </div>
                     <div class="su-radio-group">
                         <div class="type su-radio-wrap checked">
@@ -32,7 +32,7 @@
                     <div class="wrap-right">
 
                         <div>
-                            <span data-balloon="Toggle Buy / Sell" data-balloon-pos="up">
+                            <span data-tooltip="Toggle Buy / Sell" data-tooltip-pos="up">
                                 <div class="su-switch-group tx-toggle">
                                     <input id="switch-BuySell" name="orderToggle" type="checkbox" stateon="SELL"
                                         stateoff="BUY" class="su-switch" [(ngModel)]="orderToggle"
@@ -42,8 +42,8 @@
                                     <label for="switch-BuySell" class="su-switch-control"></label>
                                 </div>
                             </span>
-                            <a target="_blank" href="https://www.vrdnation.com" class="info" data-balloon="Help"
-                                data-balloon-pos="up">
+                            <a target="_blank" href="https://www.vrdnation.com" class="info" data-tooltip="Help"
+                                data-tooltip-pos="up">
                                 <span class="icon icon-info"></span>
                             </a>
                         </div>
@@ -56,7 +56,7 @@
             <div class="content">
                 <!-- <div class="variety">
                     <div class="su-radio-group">
-                        <div class="type su-radio-wrap checked" data-balloon="Regular order" data-balloon-pos="up">
+                        <div class="type su-radio-wrap checked" data-tooltip="Regular order" data-tooltip-pos="up">
                             <input id="regular" type="radio" name="variety" label="Regular" class="su-radio"
                                 value="regular" [(ngModel)]="margins.variety" checked (change)="varietyChange($event)">
                             <label for="regular" class="su-radio-label">Regular</label>
@@ -71,16 +71,16 @@
                         </div>
                         <div class="su-radio-group d-flex" [ngClass]="isMobileDevice ? 'justify-content-between' : ''">
                             <div class="type four columns su-radio-wrap checked"
-                                data-balloon="Margin Intraday Squareoff: Requires lower margin for equity. Has to be exited before market close."
-                                data-balloon-pos="up" data-balloon-length="large"
+                                data-tooltip="Margin Intraday Squareoff: Requires lower margin for equity. Has to be exited before market close."
+                                data-tooltip-pos="up" data-tooltip-length="large"
                                 [ngClass]="margins.orderId ? 'disabled' : ''">
                                 <input id="MIS" type="radio" name="product" class="su-radio" value="MIS"
                                     [(ngModel)]="margins.product" (change)="calculateMargin()" checked>
                                 <label for="MIS" class="su-radio-label">Intraday <span>MIS</span></label>
                             </div>
                             <div class="type four columns su-radio-wrap"
-                                data-balloon="CashNCarry: Longterm investment. Requires full upfront margin."
-                                data-balloon-pos="up" data-balloon-length="large"
+                                data-tooltip="CashNCarry: Longterm investment. Requires full upfront margin."
+                                data-tooltip-pos="up" data-tooltip-length="large"
                                 [ngClass]="margins.orderId ? 'disabled' : ''">
                                 <input id="CNC" type="radio" name="product" class="su-radio" value="CNC"
                                     [(ngModel)]="margins.product" (change)="calculateMargin()">
@@ -103,7 +103,7 @@
                             <div class="four columns price">
                                 <div class="no su-input-group su-static-label" [ngClass]="margins.order_type === 'MARKET' || margins.order_type === 'SL-M' ? 'disabled' : ''">
                                     <label class="su-input-label su-visible">Price</label>
-                                    <input type="number" autocorrect="off" min="0" step="0.01" nativeerror="true" staticlabel="true" animate="true" name="price" id="price" dynamicwidthsize="8" [disabled]="margins.order_type === 'MARKET' || margins.order_type === 'SL-M'" [value]="margins.order_type === 'MARKET' || margins.order_type === 'SL-M' ? '0' : orderPlacementPrice" (blur)="onBlurEvent($event)"/>
+                                    <input type="number" autocorrect="off" min="0" step="0.01" nativeerror="true" staticlabel="true" animate="true" name="price" id="price" dynamicwidthsize="8" [disabled]="margins.order_type === 'MARKET' || margins.order_type === 'SL-M'" [value]="margins.order_type === 'MARKET' || margins.order_type === 'SL-M' ? '0' : orderPlacementPrice" (blur)="onBlurEvent($event)" (input)="onInput($event)"/>
 
                                     <!-- <input type="number" autocorrect="off" min="0.05" step="0.05" nativeerror="true" staticlabel="true" animate="true" label="Price" id="price" dynamicwidthsize="8" [disabled]="margins.order_type === 'MARKET' || margins.order_type === 'SL-M'" [value]="margins.order_type === 'MARKET' || margins.order_type === 'SL-M' ? '0' : orderPlacementPrice"> -->
                                 </div>
@@ -116,14 +116,14 @@
                                         staticlabel="true" animate="true" label="Trigger price" name="trigger_price" id="trigger_price"
                                         dynamicwidthsize="8"
                                         [disabled]="margins.order_type == 'MARKET' || margins.order_type == 'LIMIT'"
-                                        [value]="margins.order_type === 'MARKET' || margins.order_type === 'LIMIT' ? '0' : margins.trigger_price" (blur)="onBlurEvent($event)">
+                                        [value]="margins.order_type === 'MARKET' || margins.order_type === 'LIMIT' ? '0' : margins.trigger_price" (blur)="onBlurEvent($event)" (input)="onInput($event)">
                                 </div>
                                 <div class="no su-input-group su-static-label" *ngIf="margins.variety === 'co'">
                                     <label class="su-input-label">Stoploss trigger Price</label>
                                     <input type="number" placeholder="" autocorrect="off" min="0" step="0.05" name="trigger_price"
                                         nativeerror="true" staticlabel="true" animate="true"
                                         label="Stoploss trigger Price" dynamicwidthsize="8"
-                                        [value]="margins.trigger_price" (blur)="onBlurEvent($event)">
+                                        [value]="margins.trigger_price" (blur)="onBlurEvent($event)" (input)="onInput($event)">
                                 </div>
                             </div>
                         </div>
@@ -137,15 +137,15 @@
                             
                             <div class="price" [ngClass]="isMobileDevice ? 'margins-order_type pr-3' : 'four columns'">
                                 <div class="su-radio-group order-type">
-                                    <div class="su-radio-wrap" tooltip-pos="down" data-balloon="Buy at market price"
-                                        data-balloon-pos="down" [ngClass]="margins.orderId ? 'disabled' : ''">
+                                    <div class="su-radio-wrap" tooltip-pos="down" data-tooltip="Buy at market price"
+                                        data-tooltip-pos="down" [ngClass]="margins.orderId ? 'disabled' : ''">
                                         <input id="MARKET" type="radio" name="orderType" label="Market" class="su-radio"
                                             value="MARKET" [(ngModel)]="margins.order_type"
                                             [disabled]="margins.variety !== 'regular' && margins.variety !== 'co'" (change)="calculateMargin()">
                                         <label for="MARKET" class="su-radio-label">Market</label>
                                     </div>
                                     <div class="su-radio-wrap checked" tooltip-pos="down"
-                                        data-balloon="Buy at a preferred price" data-balloon-pos="down"
+                                        data-tooltip="Buy at a preferred price" data-tooltip-pos="down"
                                         [ngClass]="margins.orderId ? 'disabled' : ''">
                                         <input id="LIMIT" type="radio" name="orderType" label="Limit" class="su-radio"
                                             value="LIMIT" [(ngModel)]="margins.order_type"
@@ -157,7 +157,7 @@
                             <div class="trigger" [ngClass]="isMobileDevice ? 'margins-order_type pl-3' : 'four columns'">
                                 <div class="su-radio-group text-right order-type">
                                     <div class="su-radio-wrap" tooltip-pos="down"
-                                        data-balloon="Buy at a preferred price with a stoploss" data-balloon-pos="down"
+                                        data-tooltip="Buy at a preferred price with a stoploss" data-tooltip-pos="down"
                                         [ngClass]="margins.variety == 'co' ? 'disabled' : ''">
                                         <input id="SL" type="radio" name="orderType" label="SL" class="su-radio"
                                             value="SL" [(ngModel)]="margins.order_type"
@@ -165,7 +165,7 @@
                                         <label for="SL" class="su-radio-label">SL</label>
                                     </div>
                                     <div class="su-radio-wrap" tooltip-pos="down"
-                                        data-balloon="Buy at market price with stoploss" data-balloon-pos="down"
+                                        data-tooltip="Buy at market price with stoploss" data-tooltip-pos="down"
                                         [ngClass]="margins.variety === 'co' ? 'disabled' : ''">
                                         <input id="SL-M" type="radio" name="orderType" label="SL-M" class="su-radio"
                                             value="SL-M" [(ngModel)]="margins.order_type"
@@ -184,13 +184,13 @@
                         <div class="row margins">
                             <div class="block">
                                 <label>Margin: </label>
-                                <span class="value" data-balloon="Margin calculation explained" data-balloon-pos="up">₹{{margins.margin}}</span>
+                                <span class="value" data-tooltip="Margin calculation explained" data-tooltip-pos="up">₹{{margins.margin}}</span>
                             </div>
                             <div class="block charges">
                                 <label>Available Margin: </label> 
-                                <span class="value" data-balloon="View charges &amp; taxes" data-balloon-pos="up">₹{{margins.availableMargin}}</span> 
-                                <span class="refresh-margins" data-balloon="Refresh"
-                                    data-balloon-pos="up">
+                                <span class="value" data-tooltip="View charges &amp; taxes" data-tooltip-pos="up">₹{{margins.availableMargin}}</span> 
+                                <span class="refresh-margins" data-tooltip="Refresh"
+                                    data-tooltip-pos="up">
                                     <span class="reload-margin icon icon-reload"></span>
                                 </span>
                             </div>
@@ -198,24 +198,24 @@
                     </div>
                     <div class="five columns text-right actions order-modal-footer">
                         <button *ngIf="!isOrderModify" type="submit" class="submit"
-                            (click)="openIntradayOrderPopup('new')"><span>{{margins.type |
+                            (click)="openIntradayOrderPopup('new')" [disabled]="!isButtonEnabled"><span>{{margins.type |
                                 titlecase}}</span></button>
                         <button *ngIf="isOrderModify" type="submit" class="submit"
                         (click)="openIntradayOrderPopup('open')"><span>Modify</span></button>
-                        <button type="button" class="button-outline cancel ml-1" (click)="closePopup()">Cancel</button>
+                        <button type="button" class="button-outline cancel ml-1" (click)="closePopup()">CANCEL</button>
                     </div>
                 </footer>
                 <footer class="footer" *ngIf="isMobileDevice">
                     <div class="d-flex py-3 justify-content-center align-items-center">
                         <div class="block">
                             <label class="mb-0">Margin: </label>
-                            <span class="value" data-balloon="Margin calculation explained" data-balloon-pos="up">₹{{margins.margin}}</span>
+                            <span class="value" data-tooltip="Margin calculation explained" data-tooltip-pos="up">₹{{margins.margin}}</span>
                         </div>
                         <div class="d-flex charges align-items-center">
                             <label class="mb-0 ml-3">Available Margin: </label> 
-                            <span class="value" data-balloon="View charges &amp; taxes" data-balloon-pos="up">₹{{margins.availableMargin}}</span>
-                            <mat-icon class="material-icons mat-icon mat-icon-sm cursor" (click)="closePopup()" data-balloon="Refresh"
-                            data-balloon-pos="up">refresh</mat-icon>
+                            <span class="value" data-tooltip="View charges &amp; taxes" data-tooltip-pos="up">₹{{margins.availableMargin}}</span>
+                            <mat-icon class="material-icons mat-icon mat-icon-sm cursor" (click)="closePopup()" data-tooltip="Refresh"
+                            data-tooltip-pos="up">refresh</mat-icon>
                         </div>
                     </div>
                 

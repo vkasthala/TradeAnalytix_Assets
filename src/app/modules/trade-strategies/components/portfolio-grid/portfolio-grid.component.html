@@ -29,8 +29,13 @@
 
       <!-- Symbol Column -->
       <ng-container matColumnDef="stockName">
-        <mat-header-cell class="stock-name-cell" *matHeaderCellDef mat-sort-header>Symbol</mat-header-cell>
-        <mat-cell class="stock-name-cell" *matCellDef="let element"> {{element.stockCode}} </mat-cell>
+        <mat-header-cell class="stock-name-cell" *matHeaderCellDef mat-sort-header>Symbol | Contract</mat-header-cell>
+        <mat-cell class="stock-name-cell" *matCellDef="let element">
+          {{element.stockCode}}
+          <span *ngIf="element.optionType"> &nbsp;| {{element.optionType.toLowerCase() | titlecase}} </span>
+          <span *ngIf="element.strikePrice"> &nbsp;| {{element.strikePrice}} </span>
+          <span *ngIf="element.expiryDate"> &nbsp;| {{element.expiryDate | date: 'dd-MMM-yyyy'}} </span>
+        </mat-cell>
       </ng-container>
 
       <!-- Strategy ID Column -->
@@ -72,7 +77,7 @@
 
       <!-- Total Amount Column -->
       <ng-container matColumnDef="totalAmount">
-        <mat-header-cell class="total-amount-cell" *matHeaderCellDef mat-sort-header>Cost of Trade</mat-header-cell>
+        <mat-header-cell class="total-amount-cell" *matHeaderCellDef mat-sort-header>Trade Cost</mat-header-cell>
         <mat-cell class="total-amount-cell" *matCellDef="let element"> {{element.totalAmount | number: '1.0-0'}} </mat-cell>
       </ng-container>
 
@@ -86,14 +91,18 @@
 
       <!-- Return Column -->
       <ng-container matColumnDef="return">
-        <mat-header-cell class="return-cell" *matHeaderCellDef mat-sort-header>Realized Return</mat-header-cell>
+        <mat-header-cell class="return-cell" *matHeaderCellDef mat-sort-header>Net Return</mat-header-cell>
         <mat-cell class="return-cell" *matCellDef="let element"> 
-          {{element.returnAmount | number: '1.0-0'}} 
-          
+          {{element.returnAmount | number: '1.0-0'}}      
         </mat-cell>
       </ng-container>
       
-
+      <!-- Broker Name Column -->
+      <ng-container matColumnDef="brokerName">
+        <mat-header-cell class="broker-name-cell" *matHeaderCellDef mat-sort-header>Source</mat-header-cell>
+        <mat-cell class="broker-name-cell" *matCellDef="let element"> {{element.brokerName}} </mat-cell>
+      </ng-container>
+      
       <!-- Tags Column -->
       <ng-container matColumnDef="tags">
         <mat-header-cell class="tags-cell" *matHeaderCellDef mat-sort-header>Tags</mat-header-cell>

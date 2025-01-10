@@ -32,18 +32,18 @@ export class LandingComponent implements OnInit {
   startPosition: number = 0;
   activeSlides: any;
   title = 'ngSlick';
-  banner: AnimationOptions = {
-    path: "../../../../assets/animations/hero-cuetrade-ani.json"
-  };
-  tradeplan: AnimationOptions = {
-    path: "../../../../assets/animations/cuetrade-plan-ani.json"
-  };
-  tradejournal: AnimationOptions = {
-    path: "../../../../assets/animations/cuetrade-journal-ani.json"
-  };
-  tradereview: AnimationOptions = {
-    path: "../../../../assets/animations/cuetrade-review-ani.json"
-  };
+  // banner: AnimationOptions = {
+  //   path: "../../../../assets/animations/hero-cuetrade-ani.json"
+  // };
+  // tradeplan: AnimationOptions = {
+  //   path: "../../../../assets/animations/cuetrade-plan-ani.json"
+  // };
+  // tradejournal: AnimationOptions = {
+  //   path: "../../../../assets/animations/cuetrade-journal-ani.json"
+  // };
+  // tradereview: AnimationOptions = {
+  //   path: "../../../../assets/animations/cuetrade-review-ani.json"
+  // };
   
 
 

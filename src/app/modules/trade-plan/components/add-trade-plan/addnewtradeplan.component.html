@@ -4,7 +4,7 @@
         <div class="tb-container-box">
             
             <div class="tb-container-box-body">
-                <img src="../../../../../assets/images/newtade-plan.svg" class="mr-3" />
+                <!-- <img src="../../../../../assets/images/newtade-plan.svg" class="mr-3" /> -->
             </div>
             <div class="tb-container-box-header">Create Your 1st Trading Plan</div>
             Select a date from the date picker to create a trading plan
@@ -49,9 +49,12 @@
         </div>  -->
         
         <div class="date-filter-list" *ngIf="planDates.length > 0">
-            <div class="date-filter-header border-bottom">
+            <!-- <div class="date-filter-header border-bottom">
                 <span class="title cursor" (click)="openCreatePlan()">Create Plan </span>
-            </div>
+            </div> -->
+            <button class="btn btn-sm btn-create-plan" (click)="openCreatePlan()">
+                <!-- <mat-icon class="mat-icon-md">add</mat-icon> --> Create Plan
+            </button>
             <div *ngIf="showCreatePlan" class="bg-white p-2">
                 <div class="d-flex align-items-center">
                     <div class="trade-plan-date">
@@ -88,7 +91,7 @@
     <div class="col-sm-10 trade-plan-rt" *ngIf = "selectedPlan">
         <div class="d-flex justify-content-between py-1">
             <div class="trade-plan-title pt-1">
-                Trade Plan for {{selecedDate.day | date: 'dd-MMM-yyyy'}}
+                Your Trading Plan for {{selecedDate.day | date: 'dd-MMM-yyyy'}}
             </div>
             <button type="button" class="btn btn-save" (click)="saveTradePlan()">Save Plan</button>
         </div>

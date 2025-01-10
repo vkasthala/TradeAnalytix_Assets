@@ -32,10 +32,10 @@
                         <input type="text" class="form-control" id="targetProfit" [(ngModel)]="targetProfit" />
                     </span>
 
-                    <span class="td-cell description-cell pb-0">
+                    <!-- <span class="td-cell description-cell pb-0">
                         <label class="col-form-label">Description</label>
                         <input type="text" class="form-control" id="description" [(ngModel)]="goalDescription" maxlength="1000" />
-                    </span>
+                    </span> -->
 
                     <span class="d-flex align-items-end mb-2 btn-next-web">
                         <span class="text-link" (click)="addGoal()">{{!isEdit ? 'Add Goal': 'Submit'}}</span>
@@ -50,7 +50,7 @@
                         <span class="header-cell">Goal Name</span>
                         <span class="header-cell header-cell-lg">Target Date Range</span>
                         <span class="header-cell">Target Profit</span>
-                        <span class="header-cell description-cell">Description</span>
+                        <!-- <span class="header-cell description-cell">Description</span> -->
                         <span class="header-cell action-cell">Action</span>
                     </div>
                     <ng-container *ngIf="GoalsList">
@@ -60,10 +60,12 @@
                                 <span class="td-cell">{{goal.goalName}}</span>
                                 <span class="td-cell td-cell-lg">{{goal.startDate | date: 'dd MMM yyyy'}} - {{goal.endDate | date: 'dd MMM yyyy'}}</span>
                                 <span class="td-cell">{{goal.targetAmount}}</span>
-                                <span class="td-cell description-cell">{{goal.goalDescription}}</span>
+                                <!-- <span class="td-cell description-cell">{{goal.goalDescription}}</span> -->
                                 <span class="td-cell">
-                                    <span class="mr-3 text-link" (click)="editinvestmentGoal(goal)">Edit</span>
-                                    <span class="text-link" (click)="deleteinvestmentGoal(goal)">Delete</span>
+                                    <button class="btn-edit" (click)="editinvestmentGoal(goal)">Edit</button>
+                                    <button class="btn-delete" (click)="deleteinvestmentGoal(goal)">Delete</button>
+                                        <!-- <mat-icon class="mat-icon-sm mat-icon-edit" (click)="editRule(element, 'Edit', 'Update')">edit</mat-icon>
+                                        <mat-icon class="mat-icon-sm ml-2" (click)="deleteRule(element)">delete</mat-icon> -->
                                 </span>
                             </div>
                         </div>

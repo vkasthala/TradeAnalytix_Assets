@@ -19,6 +19,7 @@ export class OrdersComponent implements OnInit {
   executedOrders: OrderPurchasehistoryResponse = {data: null};
   newOrder:boolean = false;
   userId: number = undefined;
+  isMobileDevice: any;
   constructor(
     private _orderService: OmsService,
     private _sharedService: SharedService,
@@ -51,6 +52,7 @@ export class OrdersComponent implements OnInit {
 
   ngOnInit() {
     this.instrumentPriceUpdateService.establishConnection();
+    this.checkDevice();
     this.loadOrders();
     this.unsubscribe();
     this.loadUserDetails();
@@ -165,6 +167,18 @@ export class OrdersComponent implements OnInit {
     // });
   }
 
+  checkDevice() {
+    setTimeout(() => {
+      const agent = window.navigator.userAgent.toLowerCase();
+      let regexp = /android|iphone|kindle|ipad/i;
+      let deviceType = regexp.test(agent);
+      if (deviceType) {
+        this.isMobileDevice = true;
+      } else {
+        this.isMobileDevice = false;
+      }
+    }, 100)
+  }
 
 
 }

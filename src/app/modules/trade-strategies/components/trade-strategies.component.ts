@@ -17,9 +17,10 @@ import { TradeStrategyGridService } from '../services/trade-strategy-grid.servic
 import { SummaryItem } from '../../shared/models/reports/summary-item.model';
 import { SummaryRequest } from '../../shared/models/reports/summary-request.model';
 import { ReportDataService } from '../../reports/services/report-data.service';
-import { MatDialog } from '@angular/material';
+import { MatDatepickerInputEvent, MatDialog } from '@angular/material';
 import { CommunityTradesGrid } from './community-trades-grid/community-trades-grid.component';
 import { DemoModeDetailsService } from '../../shared/services/demo-mode-details.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
    selector: 'app-trade-strategies',
@@ -60,6 +61,7 @@ export class TradeStrategiesComponent implements OnInit {
    });
    strategies = StrategyType;
    strategyTypes: String[] = this.strategyCreateService.getStrategies();
+   optionTypes: String[] = this.strategyCreateService.getOptionType();
 
    tradeStatues = TradeStatus;
    tradeStatusNames: String[] = this.strategyCreateService.getTradeStatuses();
@@ -74,6 +76,7 @@ export class TradeStrategiesComponent implements OnInit {
       private reportDataService: ReportDataService,
       private _dialog: MatDialog,
       private demoService: DemoModeDetailsService,
+      private datePipe: DatePipe
    ) { }
 
    ngOnInit() {
@@ -121,6 +124,12 @@ export class TradeStrategiesComponent implements OnInit {
    symbolSelectEventHandler($event) {
       this.strategiesGridFilter.stockCode = $event.code;
    }
+   brokerNameSelectEventHandler(event:any) {
+      let value = event.target.value;
+      if (value !== '') {
+         this.strategiesGridFilter.brokerName = value;
+      }
+   }
 
    applyFilters() {
       let tradeStrategyGridRequest = this.tradeStrategiesGrid.tradeStrategyGridRequest;
@@ -154,7 +163,7 @@ export class TradeStrategiesComponent implements OnInit {
    onOptionsSelected(event) {
       let value = event.target.value;
       if (value !== '') {
-         if (event.target.name == 'strategy') {
+         if (event.target.name == 'optionType') {
             this.strategyLabel = false;
          } else {
             this.statusLabel = false;
@@ -199,4 +208,15 @@ export class TradeStrategiesComponent implements OnInit {
       iframe.src='';
       iframe.setAttribute("src",'https://www.youtube.com/embed/pzpvE4bqyTs');
     }
+
+   
+   onExpiryDateSelected(event: any) {
+      const formattedDate = this.datePipe.transform(event.value._d, 'yyyy-MM-dd');
+      this.strategiesGridFilter.expiryDate = formattedDate;
+   }
+   onOpenDateSelected(event: any) {
+      const formattedDate = this.datePipe.transform(event.value._d, 'yyyy-MM-dd');
+      this.strategiesGridFilter.openDate = formattedDate;
+   }
+  
 }

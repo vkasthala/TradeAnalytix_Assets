@@ -31,7 +31,7 @@
         cursor: pointer;
         width: 100%;
         text-align: left;
-        height: 38px;
+        height: 46px;
         font-size: 15px;
         font-weight: 500;
         color: #000000;
@@ -83,6 +83,7 @@
 
 .cursor {
     cursor: pointer;
+    margin-right:16px;
 }
 
 .mat-step-header[aria-selected="true"] {
@@ -161,7 +162,7 @@
 
 
 .card {
-    box-shadow: 0px 0px 10px 0px rgba(103, 103, 103, 0.49);
+//    box-shadow: 0px 0px 10px 0px rgba(103, 103, 103, 0.49); // Removed the shadow in Open Orders for mobile
 }
 
 .trade-dash-main {
@@ -185,11 +186,12 @@
     font-size: 15px !important;   
     line-height: 1.5;
     color: #242E3A !important;
-    height: 40px;
+    height: 46px;
     background: #FFFFFF;
     border: 1px solid #9DA6BA;
     box-sizing: border-box;
     border-radius: 4px;
+    width:100%;
 }
 
 .mydrp .selection {
@@ -317,18 +319,22 @@ mat-header-cell:last-of-type,
     // box-shadow: 0px 4px 16px rgba(157, 157, 157, 0.1);
     border-radius: 4px;
     margin-bottom: 1rem;
+    margin-left:16px;
+    margin-right:16px;
+    border: 0.5px solid #ccc;  
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .mat-header-cell {
-    background: #eaecf1;
+    background: #e5e5e5;
     color: #000000;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 600;
 }
 
 .mat-cell,
 .mat-footer-cell {
-    font-size: 15px;
+    font-size: 16px;
     color: #000000;
 }
 
@@ -661,10 +667,10 @@ textarea {
 }
 
 .input-group.date-rang .selection {
-    height: 40px !important;
+    height: 48px !important;
     background: #FFFFFF;
     border: 1px solid #9DA6BA;
-    font-size: 13px !important;
+    font-size: 15px !important;
 }
 
 .input-group.date-rang .mydrp {
@@ -838,7 +844,7 @@ textarea {
         padding: 0 !important;
     }
     .datepicker-group input.mat-input-element {
-        height: 33px !important;
+        height: 46px !important;
     }
     .widget_item-title {
         text-align: center;
@@ -847,8 +853,8 @@ textarea {
 
 @media screen and (min-width: 320px) and (max-width:599px) {
     .col-form-label {
-        color: #929292;
-        font-size: 15px !important;
+        color: #000;
+        font-size: 16px !important;
     }
 }
 
@@ -1170,7 +1176,7 @@ iframe body {
     font-size: 16px !important;
 }
 .target_date .mydrp {
-    width: 250px !important;
+    width: 225px !important;
 }
 @media (max-width:1400px) {
     .target_date .mydrp {
@@ -1197,4 +1203,18 @@ iframe body {
         top: 8%;
         width: 95%;
     }
+
+    .position-icon {
+        margin-top: 3px;
+        .mat-icon {
+            font-size: 20px !important;
+        }
+    }
+    .rules-icon {
+        margin-top: 2px;
+        .mat-icon {
+            font-size: 20px !important;
+        }
+    }
+    
 }

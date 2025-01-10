@@ -92,9 +92,9 @@ export class OmsService {
     return this.httpService.put<OrderRuleDto,string>(url,orderRules);
   }
 
-  getExistingRules(orderId: string) : Observable<OrderRuleDto>{
+  getExistingRules(orderId: string, data: OrderRuleCheckRequest) : Observable<OrderRuleDto>{
     const url = environment.apiUrl + "/order/coded-rule/"+orderId;
-    return this.httpService.get<OrderRuleDto>(url);
+    return this.httpService.post<OrderRuleCheckRequest,OrderRuleDto>(url,data);
   }
 
   updateRulesForStrategy(orderId: string) :  Observable<any> {

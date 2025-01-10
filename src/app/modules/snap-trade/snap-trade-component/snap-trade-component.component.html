@@ -1,0 +1,8 @@
+<div *ngIf="responseData">
+    <h2>Snap User created Successfully</h2>
+    <pre>{{ responseData}}</pre>
+  </div>
+  
+  <div *ngIf="errorMessage">
+    <h2 style="color: red;">Error: {{ errorMessage }}</h2>
+  </div>

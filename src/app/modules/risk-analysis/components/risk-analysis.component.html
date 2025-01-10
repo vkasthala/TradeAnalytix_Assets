@@ -12,10 +12,15 @@
                         <div class="tb-container-box-header">How to use Payoff Analyzer?</div>
                         <div class="tb-container-box-body">
                             <ul>
-                                <li><img src="../../../../assets/images/tb_icon_1.svg" class="mr-3" />Build a trade strategy with stock and option legs</li>
-                                <li><img src="../../../../assets/images/tb_icon_2.svg" class="mr-3" />Provide inputs for analysis (e.g., implied volatility, days left)</li>
-                                <li><img src="../../../../assets/images/tb_icon_3.svg" class="mr-3" />Analyze profit or loss of the strategy</li>
-                                <li><img src="../../../../assets/images/tb_icon_4.svg" class="mr-3" />Update strategy and inputs to reassess its profit and loss</li>
+                                <!-- <li><img src="../../../../assets/images/tb_icon_1.svg" class="mr-3" />1. Build a trade strategy with stock and option legs</li>
+                                <li><img src="../../../../assets/images/tb_icon_2.svg" class="mr-3" />2. Provide inputs for analysis (e.g., implied volatility, days left)</li>
+                                <li><img src="../../../../assets/images/tb_icon_3.svg" class="mr-3" />3. Analyze profit or loss of the strategy</li>
+                                <li><img src="../../../../assets/images/tb_icon_4.svg" class="mr-3" />4. Update strategy and inputs to reassess its profit and loss</li> -->
+                                <li>1. Build a trade strategy with stock and option legs</li>
+                                <li>2. Provide inputs for analysis</li>
+                                <li>3. Analyze profitability of the strategy</li>
+                                <li>4. Update strategy to reassess its profitability</li>
+
                             </ul>
                         </div>
                     </div>
@@ -23,7 +28,8 @@
     
                     <div class="trade-form">
                         <app-trade-search (symbolSelectEvent)="symbolSelectEventHandler($event)">
-                        </app-trade-search>
+                        </app-trade-search><br>
+                        <button class="btn btn-enter" (click)="enterSymbol()">Submit</button>
                         <div class="trade-form-body">
                             <h4 class="py-2 mt-3">Popular User Searches</h4>
                             <ul *ngIf="!isUsInstances">
@@ -33,7 +39,7 @@
                                 <li *ngFor="let instance of usInstances; let i = index;"><span class="text-link" (click)="submitInstance(instance)">{{instance.name}}</span></li>
                             </ul>
                         </div>
-                        <button class="btn btn-enter" (click)="enterSymbol()">Submit </button>
+                        
                     </div>
                 </div>
             </ng-container>
@@ -81,8 +87,9 @@
                                                 </div>
                                                 <div class="d-flex align-items-center">
                                                     <div *ngIf="!isEditTrade">
-                                                        <span class="col-form-label p-0">Want to create strategy with the same data? </span>
-                                                        <a class="btn btn-outline-primary ml-3" (click)="navigateToAddTrade()" *ngIf="selectedStock.name && (stockEntry || stockOptions.length > 0)">{{fromAddTrade ? 'Update Strategy' : 'Create Strategy'}}</a>
+                                                        <!-- Uncommenting this code allows adding a trade from payoff analyzer to a journal as a draft trade -->
+                                                        <!-- <span class="col-form-label p-0">Want to create strategy with the same data? </span>
+                                                        <a class="btn btn-outline-primary ml-3" (click)="navigateToAddTrade()" *ngIf="selectedStock.name && (stockEntry || stockOptions.length > 0)">{{fromAddTrade ? 'Update Strategy' : 'Create Strategy'}}</a> -->
 
                                                     </div>
                                                     <a class="btn btn-outline-primary ml-3" (click)="navigateToAddTrade()" *ngIf="isEditTrade">Go Back to Strategy</a>
@@ -94,7 +101,7 @@
                                         <div class="trade-card-box" *ngIf="stockAdded || stockPriceUpdated">
                                             <div class="top-heading">
                                                 <span>Stock Leg</span>
-                                                <mat-icon (click)="deleteStock()">delete</mat-icon>
+                                                <mat-icon (click)="deleteStock()" style="margin-bottom: 1rem;">delete</mat-icon>
                                             </div>
                                             <div class="card-main">
                                                 <label class="col-form-label">Action</label>
@@ -135,7 +142,7 @@
                                             <div class="trade-card-box card-m">
                                                 <div class="top-heading">
                                                     <span>Option Leg</span>
-                                                    <mat-icon class="cursor-pointer" (click)="deleteStockOption(index)">delete</mat-icon>
+                                                    <mat-icon class="cursor-pointer" (click)="deleteStockOption(index)" style="margin-bottom: 1rem;">delete</mat-icon>
                                                 </div>
                                                 <div class="card-main">
                                                     <label class="col-form-label">Action</label>
@@ -218,7 +225,7 @@
 
                             <mat-expansion-panel [expanded]="panelOpenState" (opened)="setStep(1)" (afterCollapse)="afterPanelClosed(1)" (afterExpand)="afterPanelOpened($event)" [disabled]="panelDisabled">
                                 <mat-expansion-panel-header>
-                                Step 2: Provide the inputs to analyze the strategy (i.e., stock price range, days left to expiration, implied volatility)
+                                Step 2: Provide the inputs to analyze the strategy
                                 </mat-expansion-panel-header>
 
                                 <ng-template matExpansionPanelContent>
@@ -266,7 +273,7 @@
                                                     <div class="mt-3">
                                                         <label class="stock-name pb-1 m-0">Target Date</label>
                                                         <div class="w-80">
-                                                            <div class="datepicker-group">
+                                                            <div class="datepicker-group" style="width:126%;">
                                                                 <input matInput [matDatepicker]="targetDate" id="targetDate" name="targetDate" [min]="minDate" [(ngModel)]="targetDt" (dateChange)="onTargetDateChange()"/>
                                                                 <mat-datepicker-toggle matSuffix [for]="targetDate"></mat-datepicker-toggle>
                                                                 <mat-datepicker #targetDate></mat-datepicker>
@@ -331,7 +338,7 @@
                             <mat-expansion-panel [expanded]="panelExpand" (opened)="setStep(2)" [disabled]="panel3Disabled" (afterCollapse)="afterPanelClosed(2)">
                                 <mat-expansion-panel-header>
                                     <mat-panel-title>
-                                        Step 3: Analyze the profitability of the strategy for the given inputs. Update the strategy and inputs to reassess the risk-reward profile
+                                        Step 3: Analyze the profitability of the strategy
                                     </mat-panel-title>
                                 </mat-expansion-panel-header>
                                 <ng-template matExpansionPanelContent>
@@ -503,7 +510,7 @@
                     <div class="mt-2">
                         <app-trade-search (symbolSelectEvent)="symbolSelectEventHandler($event)"></app-trade-search>
                         <div class="text-center mt-2">
-                            <button class="btn btn-enter ml-3" (click)="enterSymbol()">Submit </button>
+                            <button class="btn btn-enter ml-3" (click)="enterSymbol()">Submit</button>
                         </div>
                     </div>
                     <div class="mt-2"><a href="#">Watch a Demo</a></div>
@@ -568,7 +575,7 @@
                                                 </span>
 
                                                 <span class="top-heading ml-3" *ngIf="stockAdded || stockPriceUpdated">
-                                                    <mat-icon (click)="deleteStock()">delete</mat-icon>
+                                                    <mat-icon (click)="deleteStock()" style="margin-bottom: 1rem;">delete</mat-icon>
                                                 </span>
                                             </div>
                                         </div>
@@ -609,7 +616,7 @@
                                                 <span class="trade-edit" (click)="editOptionLeg(index)">
                                                     <mat-icon class="mat-icon-sm mr-1">edit</mat-icon> 
                                                 </span>
-                                                <span class="top-heading ml-3 cursor" (click)="deleteStockOption(index)">
+                                                <span class="top-heading ml-3 cursor" (click)="deleteStockOption(index)" style="margin-bottom: 1rem;">
                                                     <mat-icon>delete</mat-icon>
                                                 </span>
                                             </div>

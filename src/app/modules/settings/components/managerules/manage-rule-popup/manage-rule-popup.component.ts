@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, EventEmitter } from '@angular/core';
+import { Component, OnInit, Inject, EventEmitter, HostListener } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
@@ -14,7 +14,7 @@ export class ManageRulePopupComponent implements OnInit {
   entryexitruleform;
   isDemoMode:boolean;
   public event: EventEmitter<any> = new EventEmitter();
-
+  isMobileDevice: any;
   constructor(
     private formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<ManageRulePopupComponent>,
@@ -32,6 +32,7 @@ export class ManageRulePopupComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.checkDevice();
   }
 
   closeModal(form) {
@@ -42,5 +43,22 @@ export class ManageRulePopupComponent implements OnInit {
     }
   }
 
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.checkDevice()
+  }
+
+  checkDevice() {
+    setTimeout(() => {
+      const agent = window.navigator.userAgent.toLowerCase();
+      let regexp = /android|iphone|kindle|ipad/i;
+      let deviceType = regexp.test(agent);
+      if (deviceType) {
+        this.isMobileDevice = true;
+      } else {
+        this.isMobileDevice = false;
+      }
+    }, 100)
+  }
 
 }

@@ -93,6 +93,7 @@ export interface OrderPurchasehistory{
     order_type: String;
     trigger_price: number;
     qty: number | undefined;
+    placedQty: number | undefined;
     instrumenType: number | undefined;
     symbolId: string | undefined;
     variety: string | undefined;

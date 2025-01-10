@@ -162,7 +162,12 @@ textarea {
 .mat-table {
     background: #FFFFFF;
     border: 1px solid rgb(157 166 186 / 20%);
-   box-shadow: 0px 4px 4px rgba(157, 157, 157, 0.4);
+    margin-top:12px;
+    width:80%;
+    margin-left:16px;
+    // box-shadow: 0px 4px 4px rgba(157, 157, 157, 0.4);
+    border: 0.5px solid #ccc;  
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 tr.mat-header-row,
@@ -174,9 +179,9 @@ tr.mat-row {
 }
 
 .mat-header-cell {
-    background: #eaecf1;
+    background: #e5e5e5;
     color: #000000;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 600;
     border: 0;
     flex: 0 0 10%;
@@ -185,32 +190,33 @@ tr.mat-row {
 td.mat-cell,
 td.mat-footer-cell,
 th.mat-header-cell {
-    padding: .5rem .25rem .5rem 1rem !important;
+    padding: .5rem 1.25rem .5rem 1rem !important;
     border-radius: 0;
     border: 0;
 }
 td.mat-cell {
     color: #000000;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 500;
+    align-content: center;
 }
 .rule-cell {
-    width: 22%;
-    flex: 0 0 22%; 
+    width: 30%;
+    flex: 0 0 30%; 
 }
 .action-cell {
-    width: 67%;
-    flex: 0 0 67%;
+    width: 20%;
+    flex: 0 0 20%;
 }
 
 .value-cell {
     width: 5%;
     flex: 0 0 5%;
+    padding-left:2px;
 }
 .status-cell {
     width: 10%;
     flex: 0 0 10%;
-    padding-left: 0px;
 }
 .add-new {
     color: #2469FF;
@@ -256,22 +262,28 @@ thead tr.mat-header-row {
     background: #2469FF;
     color: #fff;
     letter-spacing: 1px;
-    min-width: 70px;
-    font-size:14px;
+    min-width: 32%;
+    font-size:15px;
+    height:40px;
+    align-content: center;
 }
 .btn-update {
     background: #6c757d;
     color: #fff;
     letter-spacing: 1px;
-    min-width:70px;
-    font-size:14px;
+    min-width:32%;
+    font-size:15px;
+    height:40px;
+    align-content: center;
 }
 .btn-disabled {
     background: #e0e0e0;
     letter-spacing: 1px;
     color: #2469FF;
-    min-width:70px;
-    font-size:14px;
+    min-width:32%;
+    font-size:15px;
+    height:40px;
+    align-content: center;
 }
 
 @media (max-width: 767px) {

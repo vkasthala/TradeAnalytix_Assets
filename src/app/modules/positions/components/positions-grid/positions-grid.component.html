@@ -4,10 +4,10 @@
             <tr (mouseover)="showPositionsActions($event, null)" (mouseout)="hidePositionsActions(null)">
                 <th class="product-cell">Product</th>
                 <th class="instrument-cell">Instrument</th>
-                <th class="qty-cell">Qty.</th>
-                <th class="text-right qty-cell">Avg</th>
-                <th class="text-right product-cell">LTP</th>
-                <th class="text-right product-cell">P&L</th>
+                <th class="qty-cell">Quantity</th>
+                <th class="text-right avgcost-cell">Avg.Cost</th>
+                <th class="text-right ltp-cell">LTP</th>
+                <th class="text-right netprofit-cell">Net Profit</th>
                 <th class="text-right"></th>
             </tr>
         </thead>
@@ -17,11 +17,11 @@
                 <td class="instrument-td" (mouseover)="showPositionsActions(rowData, i)" (mouseout)="hidePositionsActions(i)">
                     {{rowData.instrument.symbol}} 
                     <!-- <span class="actions fade-leave fade-leave-active" *ngIf="rowId == i">
-                        <span data-balloon="Add" data-balloon-pos="up">
+                        <span data-tooltip="Add" data-tooltip-pos="up">
                             <button type="button" class="button button-xsmall button-blue"
                                 (click)="add(rowData)">Add</button>
                         </span>
-                        <span data-balloon="Exit" data-balloon-pos="up">
+                        <span data-tooltip="Exit" data-tooltip-pos="up">
                             <button type="button" class="button button-xsmall button-orange ml-2" (click)="exit(rowData)">Exit</button>
                         </span>
                     </span> -->
@@ -31,11 +31,11 @@
                 <td class="text-right">{{rowData.ltp | number:'1.2-2'}}</td>
                 <td class="text-right"><span [ngClass]="rowData.day_p_and_l > -1 ? 'text-success' : 'text-danger'">{{rowData.day_p_and_l | number:'1.2-2'}}</span></td>
                 <td>
-                    <!-- <span data-balloon="Buy (B)" data-balloon-pos="up">
+                    <!-- <span data-tooltip="Buy (B)" data-tooltip-pos="up">
                         <button type="button" class="btn btn-xs buy"
                             (click)="add(rowData)">BUY</button>
                     </span>
-                    <span data-balloon="Sell (S)" data-balloon-pos="up">
+                    <span data-tooltip="Sell (S)" data-tooltip-pos="up">
                         <button type="button" class="btn btn-xs sell ml-2"
                             (click)="add(rowData)">SELL</button>
                     </span> -->
@@ -68,7 +68,6 @@
     
 
     <!-- card:: start -->
-     <div class="pt-2">
         <div class="card" *ngFor = "let rowData of positionsData.data.data">
             <div class="top flex">
                 <div class="flex6">
@@ -83,7 +82,7 @@
                     <span class="text-label warning caps">{{rowData.type}}</span>
                 </div>
             </div>
-            <div class="middle flex" (click)="openMobileActions(rowData)">
+            <div class="middle flex">
                 <div class="flex6">
                     {{rowData.instrument.symbol}}
                 </div>
@@ -104,7 +103,6 @@
             
         </div>
         <!-- card:: end -->
-    </div>
     
 </div>
 

@@ -44,8 +44,8 @@ th.mat-header-cell {
   flex: 0 0 9% !important;
 }
 .stock-name-cell{
-  width: 18%;                   //Venkat changed width from 8% to 18% to accomodate symbol KEY
-  flex: 0 0 18% !important;
+  width: 24%;                   //Venkat changed width from 8% to 18% to accomodate symbol KEY
+  flex: 0 0 24% !important;
 }
 
 .status-cell{
@@ -58,8 +58,8 @@ th.mat-header-cell {
   flex: 0 0 9% !important;
 }
 .return-cell, .total-amount-cell {
-  width: 6%;
-  flex: 0 0 6% !important;
+  width: 7%;
+  flex: 0 0 7% !important;
 }
 
 .close-date-cell{
@@ -76,19 +76,30 @@ th.mat-header-cell {
   width: 8%;
   flex: 0 0 8% !important;
 }
-.journal-cell{
-  width: 7%;
-  flex: 0 0 7% !important;
+
+.journal-cell {
+  width: 9%;
+  flex: 0 0 9% !important;
+  padding-left: 6px; /* Add space before the column */
+  justify-content: center;
 }
+
 .netR-cell {
   width: 6%;
   justify-content: end;
   flex: 0 0 6% !important;
+  padding-right: 6px; /* Add space after the column */
 }
+
 .direction_arrow .material-icons {
   font-size: 1rem;
   align-items: center;
   display: flex;
+}
+
+broker-name-cell {
+  width: 7%;
+  flex: 0 0 7% !important;
 }
 
 .action_colum{
@@ -239,7 +250,7 @@ th.mat-header-cell {
 
 .stock-name-tags {
   width: 50%;
-  padding-left: 30px;
+  padding-left: 10px;
   justify-content: left;
   flex: 0 0 50% !important;
 }

@@ -44,6 +44,13 @@
                         <div class="st-slect-section">
                             <div class="trade-form strategies_filter">
                                 <div class="form-group has-search">
+                                    <input class="form-control" id="brokerName" name="brokerName" (blur)="brokerNameSelectEventHandler($event)" placeholder="Enter Source"  />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="st-slect-section">
+                            <div class="trade-form strategies_filter">
+                                <div class="form-group has-search">
                                     <app-trade-search (symbolSelectEvent)="symbolSelectEventHandler($event)"
                                         #tradeSearchComponent>
                                     </app-trade-search>
@@ -53,12 +60,12 @@
                         </div>
                         <div class="st-slect-section">
                             <div class="trade-sel position-relative">
-                                <span class="custom-label" *ngIf="strategyLabel">Strategy Type</span>
+                                <span class="custom-label" *ngIf="strategyLabel">Option Type</span>
                                 <select class="form-control select-input" id="strategy_inputState"
-                                    [(ngModel)]='strategiesGridFilter.strategy' (change)='onOptionsSelected($event)'
-                                    name="strategy">
-                                    <option *ngFor="let key of strategyTypes" [value]="key" [label]="strategies[key]">
-                                    </option>
+                                    [(ngModel)]='strategiesGridFilter.optionType' (change)='onOptionsSelected($event)'
+                                    name="optionType">
+                                    <option value="Call">Call</option>
+                                    <option value="PUT">PUT</option>
                                 </select>
                                 <mat-icon class="form-icon-down">keyboard_arrow_down</mat-icon>
                             </div>
@@ -74,28 +81,32 @@
                             </div>
                         </div> -->
     
-                        <div class="st-slect-section">
-                            <!-- <mat-form-field appearance="fill">
-                                <mat-label>Enter a date range</mat-label>
-                                <mat-date-range-input [rangePicker]="picker">
-                                <input matStartDate placeholder="Start date">
-                                <input matEndDate placeholder="End date">
-                                </mat-date-range-input>
-                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                                <mat-date-range-picker #picker></mat-date-range-picker>
-                            </mat-form-field>
-                            <mat-form-field class="example-full-width" appearance="fill">
-                                <mat-label>Choose a date</mat-label>
-                                <input matInput [matDatepicker]="picker">
-                                <mat-datepicker-toggle matSuffix [for]="picker">
-                                <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+                        <div class="st-slect-section datepicker-col">
+                            <div class="datepicker-group bg-white date-picker-sm">
+                                <input matInput [matDatepicker]="expiryDate" (click)="expiryDate.open()"
+    id="expiryDate" (dateInput)="onExpiryDateSelected($event)"
+    name="expiryDate" class="form-control form-control-sm" placeholder="Expiry Date" />
+
+                                <mat-datepicker-toggle matSuffix [for]="expiryDate">
                                 </mat-datepicker-toggle>
-                                <mat-datepicker #picker></mat-datepicker>
-                            </mat-form-field> -->
-                            <div class="trade-date date-range-md">
+                                <mat-datepicker #expiryDate></mat-datepicker>
+                            </div>
+
+                            
+                            
+                            <!-- <div class="trade-date date-range-md">
                                 <my-date-range-picker placeholder="Date range" name="mydaterange"
                                     [options]="myDateRangePickerOptions" (dateRangeChanged)="onDateRangeChanged($event)">
                                 </my-date-range-picker>
+                            </div> -->
+                        </div>
+                        <div class="st-slect-section datepicker-col">
+                            <div class="datepicker-group bg-white date-picker-sm">
+                                <input matInput [matDatepicker]="openDate" (click)="openDate.open()" id="openDate" (dateInput)="onOpenDateSelected($event)" name="openDate" class="form-control form-control-sm" placeholder="Open Date" />
+
+                                <mat-datepicker-toggle matSuffix [for]="openDate">
+                                </mat-datepicker-toggle>
+                                <mat-datepicker #openDate></mat-datepicker>
                             </div>
                         </div>
     

@@ -31,12 +31,9 @@
         margin-right: 20px
     }
 
-    .cards .card:first-child {
-        border-top: 1px solid var(--color-border-default)
-    }
-
     .cards .card {
         margin: 0;
+        border: 0;
         padding: 12px 0;
         border-bottom: 1px solid var(--color-border-default)
     }
@@ -122,41 +119,55 @@
 .data-table {
     position: relative;
     // box-shadow: 0px 4px 8px rgba(157, 157, 157, 0.45);
+    border: 0.5px solid #ccc;  
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 .checkbox-cell {
     width: 10px;
 }
 .time-cell {
-    max-width: 15%;
-    width: 15%;
-}
-.type-cell {
-    max-width: 8%;
-    width: 8%;
-}
-.qty-cell {
-    max-width: 6%;
-    width: 6%;
+    max-width: 17%;
+    width: 17%;
+    padding-left:10px;
 }
 .product-cell {
     max-width: 10%;
     width: 10%;
 }
 .instrument-cell {
-    max-width: 18%;
-    width: 18%;
+    max-width: 16%;
+    width: 16%;
 }
-.qty-tp {
+.action-cell {
+    max-width: 8%;
+    width: 8%;
+}
+.qty-cell {
     max-width: 10%;
     width: 10%;
+}
+.ltp-cell {
+    max-width: 7%;
+    width: 7%;
+}
+.price-cell {
+    max-width: 8%;
+    width: 8%;
 }
 .status-cell {
-    max-width: 10%;
-    width: 10%;
+    max-width: 6%;
+    width: 6%;
 }
 .actions-row {
     display: grid;
     column-gap: 10px;
     grid-template-columns: repeat(auto-fit, minmax(48%, 2fr));
     margin-top: 10px;
+}
+.openorders-title {
+    color: #000000;
+    font-size:18px;
+    margin-top:12px;
+    margin-bottom:12px;
+    font-weight: 500;
 }

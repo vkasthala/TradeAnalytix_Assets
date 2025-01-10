@@ -266,7 +266,7 @@ export class CodedRulesComponent implements OnInit {
       height: 'auto',
       data: {
         res:element,
-        title: "Activate the automatic trading rule",
+        title: "Activate Trading Rule",
         btnText: "Activate",
       }
     });
@@ -286,7 +286,7 @@ export class CodedRulesComponent implements OnInit {
       height: 'auto',
       data: {
         res:element,
-        title: "Update the automatic trading rule",
+        title: "Update Trading Rule",
         btnText: "Submit",
       }
     });

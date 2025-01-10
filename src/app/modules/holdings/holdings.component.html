@@ -1,6 +1,12 @@
 <div class="sub-nav">
-    <a [routerLink]="['/positions/']" routerLinkActive="router-link-active"><span>Positions</span></a>
-    <a [routerLink]="['/holdings/']" routerLinkActive="router-link-active" class="active-item"><span>Holdings</span></a>
+    <a [routerLink]="['/positions/']" routerLinkActive="router-link-active">
+        <span>Positions</span>
+        
+    </a>
+    <a [routerLink]="['/holdings/']" routerLinkActive="router-link-active" class="active-item">
+        <span>Holdings</span>
+        <span class="circle ml-1" *ngIf="isMobileDevice && holdingsResponse.data.data.length > 0">{{holdingsResponse.data.data.length}}</span>
+    </a>
 </div>
 <div class="container-main">
     <div class="content-main">
@@ -10,13 +16,13 @@
                 <thead>
                     <tr>
                         <th class="instrument-cell">Instrument</th>
-                        <th class="text-right">Qty.</th>
-                        <th class="text-right">Avg.cost</th>
-                        <th class="text-right">LTP</th>
-                        <th class="text-right">Cur.Val</th>
-                        <th class="text-right">P&L</th>
-                        <th class="text-right">Net Chg.</th>
-                        <th class="text-right">Day Chg.</th>
+                        <th class="qty-cell">Quantity</th>
+                        <th class="avgcost-cell">Avg.Cost</th>
+                        <th class="ltp-cell">LTP</th>
+                        <th class="currval-cell">Current Value</th>
+                        <th class="netprofit-cell">Net Profit</th>
+                        <th class="netchange-cell">Net Change</th>
+                        <th class="daychange-cell">Day Change</th>
                         <th class="text-right"></th>
                     </tr>
                 </thead>
@@ -27,18 +33,10 @@
                         <td class="text-right">{{rowData.average | number:'1.2-2'}}</td>
                         <td class="text-right">{{rowData.ltp | number:'1.2-2'}}</td>
                         <td class="text-right">{{rowData.current_value | number:'1.2-2'}}</td>
-                        <td class="text-right"><span class="text-green" [ngClass]="rowData.p_and_l > -1 ? 'text-green' : 'text-red'">{{rowData.p_and_l | number:'1.2-2'}}</span></td>
-                        <td class="text-right"><span [ngClass]="rowData.net_change > 0 ? 'text-green' : 'text-red'">{{rowData.net_change | number:'1.2-2'}}%</span></td>
-                        <td class="text-right"><span [ngClass]="rowData.net_change > 0 ? 'text-green' : 'text-red'">{{rowData.day_change | number:'1.2-2'}}%</span></td>
+                        <td class="text-right"><span class="text-success" [ngClass]="rowData.p_and_l > -1 ? 'text-success' : 'text-danger'">{{rowData.p_and_l | number:'1.2-2'}}</span></td>
+                        <td class="text-right"><span [ngClass]="rowData.net_change > 0 ? 'text-success' : 'text-danger'">{{rowData.net_change | number:'1.2-2'}}%</span></td>
+                        <td class="text-right"><span [ngClass]="rowData.net_change > 0 ? 'text-success' : 'text-danger'">{{rowData.day_change | number:'1.2-2'}}%</span></td>
                         <td>
-                            <!-- <span data-balloon="Buy (B)" data-balloon-pos="up">
-                                <button type="button" class="btn btn-xs buy ml-3"
-                                    (click)="add(rowData)">BUY</button>
-                            </span>
-                            <span data-balloon="Sell (S)" data-balloon-pos="up">
-                                <button type="button" class="btn btn-xs sell ml-2"
-                                    (click)="add(rowData)">SELL</button>
-                            </span> -->
                         </td>
                     </tr>
                     <tr *ngIf="holdingsResponse.data.data.length === 0">
@@ -50,6 +48,28 @@
 
 
         <div class="gtt-list cards" *ngIf="isMobileDevice">
+            <div class="gtt-list-header">
+                <div class="gtt-list-header-content">
+                    <div class="d-flex justify-content-between pb-2">
+                        <div>
+                            <span class="dim">Invested</span>
+                            <div class="text-black">54,470.17</div>
+                        </div>
+                        <div class="text-right">
+                            <span class="dim">Current</span>
+                            <div class="text-black">54,470.17</div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between border-top pt-2">
+                        <span class="dim">P&L</span>
+                        <div class="text-right">
+                            <span [ngClass]="holdingsResponse.data.total_p_and_l > -1 ? 'text-success' : 'text-danger'">{{holdingsResponse.data.total_p_and_l | number:'1.2-2'}}</span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
             <!-- card:: start -->
             <div class="card" *ngFor = "let rowData of holdingsResponse.data.data">
                 <div class="top flex">
@@ -57,41 +77,41 @@
                         {{rowData.instrument.symbol}}
                     </div>
                     <div class="flex6 text-right">
-                        <span class="text-xsmall dim">Qty</span> 
+                        <span class="text-xsmall dim">Quantity</span> 
                         <span class="ml-1">{{rowData.quantity}}</span>
                     </div>
                 </div>
                 <div class="middle flex">
                     <div class="flex6">
-                        <span class="text-xsmall dim">Avg.cost</span> 
+                        <span class="text-xsmall dim">Avg.Cost</span> 
                         <span class="ml-1">{{rowData.average}}</span>
                     </div>
                     <div class="flex6 text-right">
-                        <span class="text-xsmall dim">Cur.val</span> 
+                        <span class="text-xsmall dim">Cur.Value</span> 
                         <span class="ml-1">{{rowData.current_value}}</span>
                     </div>
                 </div>
                 <div class="flex">
                     <div class="flex6">
-                        <span class="text-xsmall dim">P&L</span> 
-                        <span class="ml-1" [ngClass]="rowData.p_and_l > 0 ? 'text-green' : 'text-red'">{{rowData.p_and_l}}</span>
+                        <span class="text-xsmall dim">Net Profit</span> 
+                        <span class="ml-1" [ngClass]="rowData.p_and_l > 0 ? 'text-success' : 'text-red'">{{rowData.p_and_l}}</span>
 
                         <span class="ml-3 pl-3">
-                            <span class="text-xsmall dim">Net chg</span> 
-                            <span class="ml-1" [ngClass]="rowData.net_change > 0 ? 'text-green' : 'text-red'">{{rowData.net_change}}</span>
+                            <span class="text-xsmall dim">Net Change</span> 
+                            <span class="ml-1" [ngClass]="rowData.net_change > 0 ? 'text-success' : 'text-red'">{{rowData.net_change}}</span>
                         </span>
                     </div>
                     <div class="flex6 text-right">
-                        <span class="text-xsmall dim">Day chg</span>
-                        <span class="ml-1" [ngClass]="rowData.day_change > 0 ? 'text-green' : 'text-red'">{{rowData.day_change}}</span>
+                        <span class="text-xsmall dim">Day Change</span>
+                        <span class="ml-1" [ngClass]="rowData.day_change > 0 ? 'text-success' : 'text-red'">{{rowData.day_change}}</span>
                     </div>
                 </div>
                 <div class="flex">
-                    <!-- <span data-balloon="Buy (B)" data-balloon-pos="up">
+                    <!-- <span data-tooltip="Buy" data-tooltip-pos="up">
                         <button type="button" class="btn btn-xs buy"
                             (click)="add(rowData)">BUY</button>
                     </span>
-                    <span data-balloon="Sell (S)" data-balloon-pos="up">
+                    <span data-tooltip="Sell" data-tooltip-pos="up">
                         <button type="button" class="btn btn-xs sell ml-2"
                             (click)="add(rowData)">SELL</button>
                     </span> -->

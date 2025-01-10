@@ -2,119 +2,39 @@
     <div class="trade-dash-cards-web">
         <div class="dashboard-body">
             <div>
-                <div class="card-title">Welcome to CueTrade, {{userName}}</div>
-                <!-- <p class="text-black header-description"><p class="text-black header-description">Connect your brokerage accounts and trade directly from CueTrade. <br> Create trading plans, validate trades against your custom rules, journal easily—while trading or anytime later—and get detailed reports on your trade history to track performance, avoid mistakes, and make smarter decisions.</p> -->
-                <p class="text-black header-description"><a href="LINK_FOR_CONNECT">Connect</a> your brokerage accounts and trade directly from CueTrade. <br> Create <a href="/trade-plans">trading plans</a>, validate trades against your own <a href="/rules">rules</a>, <a href="/stravtegies">journal</a> easily—while trading or anytime later—and get detailed <a href="/reports">reports</a> on your trade history to track performance, avoid mistakes, and make smarter decisions. </p>
-                <!--
-                <div class="card-title">Your Trading Goals</div>
-                <div class="d-flex align-items-center">
-                    <p class="text-black header-description m-0">Set trading goals for your target timeframe</p>
-                    <a class="btn btn-start ml-3" [routerLink]="['/settings/']">Set Goals</a>
-                </div>
-
-                <div class="card-title">Your Trading Rules</div>
-                <div class="d-flex align-items-center">
-                    <p class="text-black header-description m-0">Enable trading rules based on your experience and best practices</p>
-                    <a class="btn btn-start ml-3" [routerLink]="['/rules/']">Add Rules</a>
-                </div>
-            </div>-->
-            
-            <!-- <div class="mt-3 dashboard-header-row">
-                <div class="daily-workspace">
-                    <div class="row" style="margin-left:0;">
-                        <div class="col-3 daily-workspace-lt">
-                            <div class="daily-workspace-lt-header">
-                                Master Your Daily Trading Routine
-                            </div>
-                            <div class="step-container">
-                                <div class="step-count">Step-1</div>
-                                <div class="step-pic"><img src="../../../../assets/images/Plan Image in Daily Agenda.svg" /></div>
-                                <div class="step-description">Prepare for the <br/> trading day ahead</div>
-                            </div>
-                            <div class="step-container step2-container">
-                                <div class="step-count">Step-2</div>
-                                <div class="step-pic"><img src="../../../../assets/images/Journal Image in Daily Agenda.svg" /></div>
-                                <div class="step-description">Import trades and <br/> maintain a journal</div>
-                            </div>
-                            <div class="step-container">
-                                <div class="step-count">Step-3</div>
-                                <div class="step-pic"><img src="../../../../assets/images/Review Image in Daily Agenda.svg" /></div>
-                                <div class="step-description">Discover insights from <br/> your trading activities</div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-9" style="padding-right: 20px;">
-                            <div class="daily-workspace-header">
-                                <div>
-                                 
-                                    <h5 class="daily-workspace-header-title">Plan, Journal, and Analyze for Better Performance</h5>
-                                    
-                                </div>
-                                <div class="daily-workspace-progress">
-                                    <div style="min-width:300px ;">
-                                        <p class="mb-2">Status</p>
-                                        <div><mat-progress-bar mode="determinate" value="{{ progressPercent }}"></mat-progress-bar></div>
-                                    </div>
-                                    <span class="progress-count">{{dailyProgress}}/{{totalTasks}}</span>
-                                </div>
-                            </div>
-
-                            <div class="workspace-content">
-                                <div class="white-box-container">
-                                    <div class="white-box-header">
-                                        <div class="white-box-title">Plan Trades</div>
-                                    </div>
-                                    <ul class="orange-list">
-                                        <li><mat-checkbox [checked]="dailyWorkspaceViewModel.dailyPlan" (change)="updateDailyWorkspace({ checked: $event.checked, field: 'DAILY_PLAN' })"><mat-icon class="close-icon">close</mat-icon>Create a daily trading plan</mat-checkbox>
-                                            <a class="workspace-link" [routerLink]="['/trade-plans/']" *ngIf="!dailyWorkspaceViewModel.dailyPlan">Create Plan</a>
-                                        </li>
-                                        <li>
-                                            <mat-checkbox [checked]="dailyWorkspaceViewModel.analyzeTrades" (change)="updateDailyWorkspace({ checked: $event.checked, field: 'ANALYZE_TRADES' })"><mat-icon class="close-icon">close</mat-icon>Build trades and analyze them</mat-checkbox>
-                                            <a class="workspace-link" [routerLink]="['/new-trade/']" *ngIf="!dailyWorkspaceViewModel.analyzeTrades">Build Trades</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="white-box-container" style="min-height:175px ;">
-                                    <div class="white-box-header">
-                                        <div class="white-box-title">Journal Trades</div>
-                                    </div>
-                                    <ul class="orange-list">
-                                        <li>
-                                            <mat-checkbox [checked]="dailyWorkspaceViewModel.importTrades" (change)="updateDailyWorkspace({ checked: $event.checked, field: 'IMPORT_TRADES' })"><mat-icon class="close-icon">close</mat-icon>Import trades from your brokerage</mat-checkbox>
-                                            <a class="workspace-link" [routerLink]="['/import-trades-history/']" *ngIf="!dailyWorkspaceViewModel.importTrades">Import Trades</a>
-                                        </li>
-                                        <li>
-                                            <mat-checkbox [checked]="dailyWorkspaceViewModel.addNotes" (change)="updateDailyWorkspace({ checked: $event.checked, field: 'ADD_NOTES' })"><mat-icon class="close-icon">close</mat-icon>Journal trades and check alignment with your trading rules</mat-checkbox>
-                                            <a class="workspace-link" [routerLink]="['/positions/']" *ngIf="!dailyWorkspaceViewModel.addNotes">Journal Trades</a>
-                                        </li>
-                                        <li>
-                                            <mat-checkbox [checked]="dailyWorkspaceViewModel.reviewPerformance" (change)="updateDailyWorkspace({ checked: $event.checked, field: 'REVIEW_PERFORMANCE' })"><mat-icon class="close-icon">close</mat-icon>Update daily trading plan after the market close</mat-checkbox>
-                                            <a class="workspace-link" [routerLink]="['/trade-plans/']" *ngIf="!dailyWorkspaceViewModel.reviewPerformance">Update Plan</a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <div class="white-box-container" style="min-height: inherit; margin-top: 24px;">
-                                    <div class="white-box-header">
-                                        <div class="white-box-title">Gain Insights</div>
-                                    </div>
-                                    <ul class="orange-list pb-0">
-                                        <li>
-                                            <mat-checkbox [checked]="dailyWorkspaceViewModel.reviewStats" (change)="updateDailyWorkspace({ checked: $event.checked, field: 'REVIEW_STATS' })"><mat-icon class="close-icon">close</mat-icon> Analyze your trading performance through Analytics</mat-checkbox>
-                                            <a class="workspace-link" [routerLink]="['/reports/']" *ngIf="!dailyWorkspaceViewModel.reviewStats">Review Stats</a>
-                                        </li>
-                                        
-                                        <li>
-                                            <mat-checkbox [checked]="dailyWorkspaceViewModel.addRules" (change)="updateDailyWorkspace({ checked: $event.checked, field: 'ADD_RULES' })"><mat-icon class="close-icon">close</mat-icon> Add, update, or delete trading rules</mat-checkbox>
-                                            <a class="workspace-link" [routerLink]="['/rules/']" *ngIf="!dailyWorkspaceViewModel.addRules">Add Rules</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+            <div class="welcome-container">
+                <div class="card-title">Welcome to CueTrade, {{userName}}!</div> 
+                <div class ="welcome-text">Trading is challenging—impulsive decisions, overtrading, and risky trades often lead to setbacks.</div>
+                        <div class ="welcome-text">CueTrade combines trading, journaling, and analytics into one seamless experience helping you stay disciplined, avoid mistakes, and achieve your goals.</div>
+                    <div class="grid-container">
+                      <div class="grid-item">
+                        <i class="icon">🔗</i>
+                        <h3>Connect</h3>
+                        <p>Connect your brokerage account to trade directly on CueTrade</p>
+                      </div>
+                      <div class="grid-item">
+                        <i class="icon">📋</i>
+                        <h3>Set Rules</h3>
+                        <p>Stay disciplined with real-time rule checks and trading plan</p>
+                      </div>
+                      <div class="grid-item">
+                        <i class="icon">📝</i>
+                        <h3>Journal</h3>
+                        <p>Journal effortlessly as you trade to make thoughtful decisions</p>
+                      </div>
+                      <div class="grid-item">
+                        <i class="icon">📊</i>
+                        <h3>Analytics</h3>
+                        <p>Gain insights with analytics to refine your strategies</p>
+                      </div>
+                    </div>
+                    <div class="summary-text">
+                        <p>Your journey to disciplined trading starts now!</p>
+                        <div class="button-group">
+                            <button class="cta-button connect-btn">Connect</button>
+                            <button class="cta-button tour-btn">Quick Tour</button>
                         </div>
                     </div>
-                </div>
-            </div> -->
 
             <div class="metrics-section">
                 <h5 class="mb-2 metrics-title">Key Metrics</h5>
@@ -149,55 +69,8 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="col-sm-12 col-md-6 trade-dash-con mt-0" style="padding-left: 2%">
-                        <div class="trade-analytics">
-                            <div class="trade-headiang">
-                                <h5>Realized Return</h5>
-                            </div>
-                            <div class="dsh-img">
-                                <app-realized-return-chart></app-realized-return-chart>
-                            </div> 
-                        </div>
-                    </div>-->
-                   
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-
-<!--
-<div class="checklist-slide" [ngClass]="checklist ? 'open' : ''">
-    <div class="checklist-slide-heading">
-        <div>
-            <span>Welcome Onboard, {{userName}}</span>
-            <p class="py-2">Please find below all the items that will get you started in CueTrade.</p>
-        </div>
-        <mat-icon class="mat-icon-sm cursor" (click)="showChecklist()">clear</mat-icon> 
-    </div>
-
-    <div class="p-1">
-        <div class="py-1">
-            <input type="checkbox" name="" class="checkbox mr-2" /> Configure data for trade journal. <a class="cursor" routerLink="/settings"><mat-icon class="mat-icon-sm">launch</mat-icon></a> 
-        </div>
-        <div class="py-1">
-            <input type="checkbox" name="" class="checkbox mr-2" /> Create manual rules. <a class="cursor" routerLink="/rules"><mat-icon class="mat-icon-sm">launch</mat-icon></a> 
-        </div>
-        <div class="py-1">
-            <input type="checkbox" name="" class="checkbox mr-2" /> Enable automatic rules. <a class="cursor" routerLink="/rules"><mat-icon class="mat-icon-sm">launch</mat-icon></a> 
-        </div>
-        <div class="py-1">
-            <input type="checkbox" name="" class="checkbox mr-2" /> Define trading goals. <a class="cursor" routerLink="/settings"><mat-icon class="mat-icon-sm">launch</mat-icon></a> 
-        </div>
-        <div class="py-1">
-            <input type="checkbox" name="" class="checkbox mr-2" /> Add or Import trades. <a class="cursor" routerLink="/trade-strategies"><mat-icon class="mat-icon-sm">launch</mat-icon></a> 
-        </div>
-    </div>
-
-</div>
-
-<div class="device-info" *ngIf="isMobileDevice">
-    <div class="message">CueTrade is best suited for laptop or desktop usage.<br/>
-        Please use desktop or laptop.</div>
-</div> -->

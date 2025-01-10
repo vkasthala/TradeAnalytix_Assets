@@ -809,6 +809,8 @@ a.import-new img {
 }
 .stepper-content {
     margin-bottom: 3rem;
+    border: 0.5px solid #ccc;  
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 .trade-table {
     box-shadow: 0px 4px 16px rgba(157, 157, 157, 0.51) !important;
@@ -820,12 +822,14 @@ a.import-new img {
 .reports-header {
     color: #000000;
     font-size: 18px;
-    box-shadow: 0 1px 5px 0 rgba(var(--color-border-5--rgb), 0.1);
+    // box-shadow: 0 1px 5px 0 rgba(var(--color-border-5--rgb), 0.1);
     background: #fff;
     align-items: center;
     justify-content:space-between;
     display: flex;
-    padding: 5px 10px;
+    padding: 8px 20px;
+    border: 0.5px solid #ccc;  
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 // tabs
@@ -877,14 +881,14 @@ a.import-new img {
     border-radius: 4px 4px 0px 0px;
     background: #2469FF;
     position: absolute;
-    bottom: -4px;
+    bottom: 0px;
 }
 
 .tab .tab-content {
     padding: 0px;
     margin-top: 0;
     font-size: 15px;
-    background: #f1f2f4;
+    background: #f5f5f5;
     @media #{$extra-small} {
         overflow-y: scroll;
     }
@@ -912,4 +916,8 @@ a.import-new img {
         left: 0;
         right: auto;
     }
+}
+
+.datepicker-col {
+    width: 140px;
 }
