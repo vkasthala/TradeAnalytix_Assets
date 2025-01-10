@@ -286,19 +286,22 @@
     padding: 10px 15px;
     font-size: 15px;
     font-weight: 600;
-    border-bottom: 1px solid #e7e7e7;
+    // border-bottom: 1px solid #e7e7e7;
+    border: 0.5px solid #ccc;  
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .intraday-panel-body {
-    padding: 4px 0;
     height: 320px;
     overflow: auto;
-    font-size: 14px;
+    font-size: 15px;
+    border: 0.5px solid #ccc;  
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .rule-type {
     color: #908F8F;
-    font-size: 14px;
+    font-size: 15px;
     padding-left: 0.25rem;
 }
 
@@ -378,7 +381,7 @@
     /* Check mark character */
     color: white;
     /* Green color for checked */
-    font-size: 14px;
+    font-size: 15px;
     /* Adjust font size */
     line-height: 20px;
     /* Center vertically */
@@ -418,7 +421,7 @@
 .tab .nav-tabs li a {
     display: block;
     background: transparent;
-    font-size: 14px;
+    font-size: 15px;
     line-height: 9px;
     text-align: center;
     border: none;
@@ -453,7 +456,7 @@
 .tab .tab-content {
     padding: 0px;
     margin-top: 0;
-    font-size: 14px;
+    font-size: 15px;
     background: #ffffff;
 
     @media #{$extra-small} {
@@ -480,7 +483,7 @@
     }
     
     .order-window .su-select select {
-        font-size: 14px;
+        font-size: 15px;
     }
     
     .example-box {
