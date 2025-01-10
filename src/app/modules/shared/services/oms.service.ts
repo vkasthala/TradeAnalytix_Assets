@@ -96,4 +96,9 @@ export class OmsService {
     const url = environment.apiUrl + "/order/coded-rule/"+orderId;
     return this.httpService.get<OrderRuleDto>(url);
   }
+
+  updateRulesForStrategy(orderId: string) :  Observable<any> {
+    const url = environment.apiUrl + "/order/update-strategy/"+orderId;
+    return this.httpService.put<string, null>(url, null);
+  }
 }
