@@ -27,7 +27,7 @@
                     </td>
                     
                     <td class="mat-cell status-cell">
-                        <span class="d-flex align-items-center col-3" *ngIf="coderule.dataType === 'double' || coderule.dataType === 'time'">
+                        <span class="d-flex align-items-center col-3" *ngIf="coderule.dataType === 'int' || coderule.dataType === 'double' || coderule.dataType === 'time'">
                             <input type="text" class="form-control" [ngClass]="!coderule.editing ? 'disabled' : ''"
                                 [(ngModel)]="coderule.val" />
                             <mat-icon class="ml-2 mat-icon-edit action-icon" (click)="onItemEdit(coderule)"

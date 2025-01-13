@@ -39,6 +39,8 @@ export class ActivateRuleModalComponent implements OnInit {
   Activate() {
     if (this.jsonData.uiLabel === "A trading plan should be created everyday") {
       this.value = 1;
+    } else if ((this.value === null || this.value === undefined) && this.jsonData.dataType === 'boolean') {
+      this.value = 'TRUE';
     } else if (this.value === null || this.value === undefined) {
       this.value = 0;
     }
@@ -52,6 +54,10 @@ export class ActivateRuleModalComponent implements OnInit {
 
     if (dataType === 'double' && value && isNaN(value)) {
       this.error = "Invalid input. Expected number";
+    }
+
+    if (dataType === 'double' && value &&  !(/^[+-]?\d+$/.test(value))) {
+      this.error = "Invalid input. Expected int";
     }
   }
 

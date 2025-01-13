@@ -17,14 +17,14 @@
       <div class="main-pop-inner">
           <!-- <p  *ngIf="jsonData.ruleType === 1">{{jsonData.uiLabel }} the amount stated below</p> -->
 
-          <div class="d-flex justify-content-center align-items-center" *ngIf="jsonData.dataType === 'double' || jsonData.dataType === 'time'">
-            <label class="col-form-label px-3">Enter the {{jsonData.dataType === 'double' ? 'value' : 'time'}} </label>
+          <div class="d-flex justify-content-center align-items-center" *ngIf="jsonData.dataType === 'int' || jsonData.dataType === 'double' || jsonData.dataType === 'time'">
+            <label class="col-form-label px-3">Enter the {{jsonData.dataType === 'double' || jsonData.dataType === 'int' ? 'value' : 'time'}} </label>
             <div class="form-group">
-              <input *ngIf="jsonData.dataType === 'double'" class="form-control" placeholder="" type="text" [(ngModel)]='value' (ngModelChange)="validateInput($event)"/>
+              <input *ngIf="jsonData.dataType === 'double' || jsonData.dataType === 'int'" class="form-control" placeholder="" type="text" [(ngModel)]='value' (ngModelChange)="validateInput($event)"/>
               <input *ngIf="jsonData.dataType === 'time'" class="form-control" placeholder="" type="time" [(ngModel)]='value' />
             </div>
           </div>
-          <div *ngIf="jsonData.dataType === 'double' && error" class="text-danger">
+          <div *ngIf="(jsonData.dataType === 'double' || jsonData.dataType === 'int') && error" class="text-danger">
             {{error}}
           </div>
           <p class="mt-3 mb-0" *ngIf="jsonData.ruleType === 1">Upon activating this rule, your orders will be checked against 

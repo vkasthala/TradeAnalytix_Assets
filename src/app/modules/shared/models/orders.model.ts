@@ -49,6 +49,7 @@ export interface OrderRuleCheckRequest extends PlaceOrderRequest {
     orderId: string;
     tradeType: string;
     expiryDate: string;
+    marketPrice: Number;
 }
 
 export interface PurchaseOrderResponse {

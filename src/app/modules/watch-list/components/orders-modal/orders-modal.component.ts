@@ -263,6 +263,7 @@ export class OrdersModalComponent implements OnInit {
     console.log(this.margins);
     let ruleCheckPayload: OrderRuleCheckRequest = this.getOrderPlacementRequest();
     ruleCheckPayload.tradeType = this.margins.tradeType;
+    ruleCheckPayload.marketPrice = this.margins.price;
     if(ruleCheckPayload.tradeType == 'OPTION') {
       ruleCheckPayload.expiryDate = this.margins.expiry;
     }
