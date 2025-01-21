@@ -42,10 +42,6 @@
                                     <label for="switch-BuySell" class="su-switch-control"></label>
                                 </div>
                             </span>
-                            <a target="_blank" href="https://www.vrdnation.com" class="info" data-tooltip="Help"
-                                data-tooltip-pos="up">
-                                <span class="icon icon-info"></span>
-                            </a>
                         </div>
                     </div>
                 </div>
@@ -54,16 +50,6 @@
 
         <section class="wrap">
             <div class="content">
-                <!-- <div class="variety">
-                    <div class="su-radio-group">
-                        <div class="type su-radio-wrap checked" data-tooltip="Regular order" data-tooltip-pos="up">
-                            <input id="regular" type="radio" name="variety" label="Regular" class="su-radio"
-                                value="regular" [(ngModel)]="margins.variety" checked (change)="varietyChange($event)">
-                            <label for="regular" class="su-radio-label">Regular</label>
-                        </div>
-                    </div>
-                </div> -->
-
                 <div class="body">
                     <div class="product">
                         <div class="h6 my-3" *ngIf="isMobileDevice">
@@ -71,7 +57,6 @@
                         </div>
                         <div class="su-radio-group d-flex" [ngClass]="isMobileDevice ? 'justify-content-between' : ''">
                             <div class="type four columns su-radio-wrap checked"
-                                data-tooltip="Margin Intraday Squareoff: Requires lower margin for equity. Has to be exited before market close."
                                 data-tooltip-pos="up" data-tooltip-length="large"
                                 [ngClass]="margins.orderId ? 'disabled' : ''">
                                 <input id="MIS" type="radio" name="product" class="su-radio" value="MIS"
@@ -79,7 +64,6 @@
                                 <label for="MIS" class="su-radio-label">Intraday <span>MIS</span></label>
                             </div>
                             <div class="type four columns su-radio-wrap"
-                                data-tooltip="CashNCarry: Longterm investment. Requires full upfront margin."
                                 data-tooltip-pos="up" data-tooltip-length="large"
                                 [ngClass]="margins.orderId ? 'disabled' : ''">
                                 <input id="CNC" type="radio" name="product" class="su-radio" value="CNC"
@@ -93,7 +77,7 @@
                         <div class="d-flex">
                             <div class="four columns quantity">
                                 <div class="no su-input-group su-static-label">
-                                    <label class="su-input-label su-visible">Qty.</label>
+                                    <label class="su-input-label su-visible">Quantity</label>
                                     <input type="number" name="quantity" autocorrect="off" min="1" step="1"
                                         autofocus="autofocus" nativeerror="true" staticlabel="true" animate="true"
                                         dynamicwidthsize="8" [value]="margins.quantity" [(ngModel)]="margins.quantity"
@@ -104,8 +88,6 @@
                                 <div class="no su-input-group su-static-label" [ngClass]="margins.order_type === 'MARKET' || margins.order_type === 'SL-M' ? 'disabled' : ''">
                                     <label class="su-input-label su-visible">Price</label>
                                     <input type="number" autocorrect="off" min="0" step="0.01" nativeerror="true" staticlabel="true" animate="true" name="price" id="price" dynamicwidthsize="8" [disabled]="margins.order_type === 'MARKET' || margins.order_type === 'SL-M'" [value]="margins.order_type === 'MARKET' || margins.order_type === 'SL-M' ? '0' : orderPlacementPrice" (blur)="onBlurEvent($event)" (input)="onInput($event)"/>
-
-                                    <!-- <input type="number" autocorrect="off" min="0.05" step="0.05" nativeerror="true" staticlabel="true" animate="true" label="Price" id="price" dynamicwidthsize="8" [disabled]="margins.order_type === 'MARKET' || margins.order_type === 'SL-M'" [value]="margins.order_type === 'MARKET' || margins.order_type === 'SL-M' ? '0' : orderPlacementPrice"> -->
                                 </div>
                             </div>
                             <div class="four columns trigger">
@@ -157,7 +139,6 @@
                             <div class="trigger" [ngClass]="isMobileDevice ? 'margins-order_type pl-3' : 'four columns'">
                                 <div class="su-radio-group text-right order-type">
                                     <div class="su-radio-wrap" tooltip-pos="down"
-                                        data-tooltip="Buy at a preferred price with a stoploss" data-tooltip-pos="down"
                                         [ngClass]="margins.variety == 'co' ? 'disabled' : ''">
                                         <input id="SL" type="radio" name="orderType" label="SL" class="su-radio"
                                             value="SL" [(ngModel)]="margins.order_type"
@@ -165,7 +146,6 @@
                                         <label for="SL" class="su-radio-label">SL</label>
                                     </div>
                                     <div class="su-radio-wrap" tooltip-pos="down"
-                                        data-tooltip="Buy at market price with stoploss" data-tooltip-pos="down"
                                         [ngClass]="margins.variety === 'co' ? 'disabled' : ''">
                                         <input id="SL-M" type="radio" name="orderType" label="SL-M" class="su-radio"
                                             value="SL-M" [(ngModel)]="margins.order_type"
@@ -202,7 +182,7 @@
                                 titlecase}}</span></button>
                         <button *ngIf="isOrderModify" type="submit" class="submit"
                         (click)="openIntradayOrderPopup('open')"><span>Modify</span></button>
-                        <button type="button" class="button-outline cancel ml-1" (click)="closePopup()">CANCEL</button>
+                        <button type="button" class="button-outline cancel ml-1" (click)="closePopup()">Cancel</button>
                     </div>
                 </footer>
                 <footer class="footer" *ngIf="isMobileDevice">

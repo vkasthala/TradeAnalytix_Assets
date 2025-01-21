@@ -43,9 +43,9 @@
                     <div class="trade-st-box pt-0 pb-2">
                         <div class="st-slect-section">
                             <div class="trade-form strategies_filter">
-                                <div class="form-group has-search">
+                                <!-- <div class="form-group has-search">
                                     <input class="form-control" id="brokerName" name="brokerName" (blur)="brokerNameSelectEventHandler($event)" placeholder="Enter Source"  />
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                         <div class="st-slect-section">
@@ -58,7 +58,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="st-slect-section">
+                        <!-- <div class="st-slect-section">
                             <div class="trade-sel position-relative">
                                 <span class="custom-label" *ngIf="strategyLabel">Option Type</span>
                                 <select class="form-control select-input" id="strategy_inputState"
@@ -69,7 +69,7 @@
                                 </select>
                                 <mat-icon class="form-icon-down">keyboard_arrow_down</mat-icon>
                             </div>
-                        </div>
+                        </div> -->
                         <!-- <div class="st-slect-section">
                             <div class="trade-sel position-relative">
                                 <span class="custom-label" *ngIf="statusLabel">Status</span>
@@ -81,7 +81,7 @@
                             </div>
                         </div> -->
     
-                        <div class="st-slect-section datepicker-col">
+                        <!-- <div class="st-slect-section datepicker-col">
                             <div class="datepicker-group bg-white date-picker-sm">
                                 <input matInput [matDatepicker]="expiryDate" (click)="expiryDate.open()"
     id="expiryDate" (dateInput)="onExpiryDateSelected($event)"
@@ -90,7 +90,7 @@
                                 <mat-datepicker-toggle matSuffix [for]="expiryDate">
                                 </mat-datepicker-toggle>
                                 <mat-datepicker #expiryDate></mat-datepicker>
-                            </div>
+                            </div> -->
 
                             
                             
@@ -98,9 +98,9 @@
                                 <my-date-range-picker placeholder="Date range" name="mydaterange"
                                     [options]="myDateRangePickerOptions" (dateRangeChanged)="onDateRangeChanged($event)">
                                 </my-date-range-picker>
-                            </div> -->
-                        </div>
-                        <div class="st-slect-section datepicker-col">
+                            </div> 
+                        </div> -->
+                        <!-- <div class="st-slect-section datepicker-col">
                             <div class="datepicker-group bg-white date-picker-sm">
                                 <input matInput [matDatepicker]="openDate" (click)="openDate.open()" id="openDate" (dateInput)="onOpenDateSelected($event)" name="openDate" class="form-control form-control-sm" placeholder="Open Date" />
 
@@ -108,7 +108,7 @@
                                 </mat-datepicker-toggle>
                                 <mat-datepicker #openDate></mat-datepicker>
                             </div>
-                        </div>
+                        </div> -->
     
                         <div class=" st-slect-section select-btn">
                             <a href="javascript:void(0)" class="btn btn-apply mr-2" (click)="applyFilters()">Apply</a>
