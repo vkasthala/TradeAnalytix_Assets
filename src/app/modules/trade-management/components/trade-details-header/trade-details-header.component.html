@@ -5,7 +5,7 @@
             {{getDisplayValue(selectedStock.name)}} ({{getDisplayValue(selectedStock.code)}})
             <span *ngIf="!addTrade"> - {{StrategyId.uid}}</span>
         </div>
-        <a class="configure-questions" (click)="generateChart()" *ngIf="addTrade || editTrade"><img src="../../../../../assets/images/trading_view.svg" /> Trading View</a>
+        <!-- <a class="configure-questions" (click)="generateChart()" *ngIf="addTrade || editTrade"><img src="../../../../../assets/images/trading_view.svg" /> Trading View</a> -->
     </div>
 
 <!-- Commented the code to show Symbol statistics in the trade details page -->
@@ -139,14 +139,14 @@
             <div class="text-right px-2 pt-2">
                 <span class="cursor" data-dismiss="modal"><mat-icon class="mat-icon-sm">clear</mat-icon></span>
             </div>
-            <div class="modal-body px-2 py-0">
+            <!-- <div class="modal-body px-2 py-0">
                 <div class="tradingview-widget-container">
                     <div class="tradingview-widget-container__widget tradingview-chart"></div>
                     <div id="financialsView" class="financials-view" #tradingview></div>
                     <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/NASDAQ-AAPL/financials-overview/" rel="noopener" target="_blank"><span class="blue-text">{{symbol}}</span></a> by TradingView</div>
                     
                   </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>

@@ -20,7 +20,7 @@
         color: #000;  //Venkat changed from #5B5C60
         font-size: 18px;
         // box-shadow: 0 1px 5px 0 rgba(var(--color-border-5--rgb), 0.1);
-        padding:10px 15px 20px 15px;
+        padding:1px 18px 9px 18px;
         display: flex;
         justify-content: space-evenly;
         border: 0.5px solid #ccc;  
@@ -31,7 +31,7 @@
         display: flex;
         align-items: center;
         border: none;
-        justify-content: space-between;
+        justify-content: space-evenly;
         width: 100%;
     }
     
@@ -62,14 +62,14 @@
     
     .tab .nav-tabs li a:hover,
     .tab .nav-tabs li.active a {
-        color: #394C86;
+        color: #2469FF;
         text-decoration: none;
     }
     
     .tab .nav-tabs li.active a::before,
     .tab .nav-tabs li a:hover::before {
         content: '';
-        width: 82%;
+        width: 80%;
         height: 4px;
         border-radius: 4px 4px 0px 0px;
         background: #2469FF;
@@ -88,8 +88,8 @@
     .circle {
         background: #5B5C60;
         color: #fff;
-        width: 25px;
-        height: 25px;
+        width: 30px;
+        height: 30px;
         border-radius: 50%;
         display: inline-flex;
         align-items: center;
@@ -97,6 +97,6 @@
         font-size: 14px;
     }
     .tab .nav-tabs li.active .circle {
-        background: #4A69CB;
+        background: #2469FF;
     }
 }

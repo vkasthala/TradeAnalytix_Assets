@@ -1,7 +1,7 @@
 <div class="import-body">
     <div class="import-container">
         <div class="import_trade_header">
-            <span class="header-title">{{importType == 1 ? "Import Trades via File" : "Sync Trades Automatically" }}</span>
+            <span class="header-title">{{importType == 1 ? "Import Trades via File" : "Auto-Sync Trades" }}</span>
             <div class="d-flex align-items-center justify-content-end">
                 <label class="col-form-label px-3 w-auto" style="font-size: 16px; font-weight: 500;">Select Import Type</label>
                 <select [(value)]="importType" (change)="selectionChange($event.target.value)" class="form-control w-auto">
@@ -99,10 +99,11 @@
             <table class="mat-table">
                 <thead>
                     <tr class="mat-header-row">
-                        <th class="mat-header-cell importdate_cell">Import Date</th>
                         <th class="mat-header-cell brokerage_cell">Brokerage</th>
+                        <th class="mat-header-cell lastsyncdate_cell">Last Sync Date</th>
                         <th class="mat-header-cell tradesimported_cell">Trades Imported</th>
-                        <th class="mat-header-cell lasttradedate_cell">Last Trade Date & Time</th>
+                        <th class="mat-header-cell lasttradetimestamp_cell">Last Trade Timestamp</th>
+                        <th class="mat-header-cell lasttransaction_cell">Last Transaction Number</th>
                         <th class="mat-header-cell"></th>
                     </tr>
                 </thead>

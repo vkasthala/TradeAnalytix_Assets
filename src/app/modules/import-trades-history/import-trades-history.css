@@ -206,7 +206,8 @@ th.mat-header-cell {
 .mat-cell:first-of-type, .mat-footer-cell:first-of-type, .mat-header-cell:first-of-type {
   text-align: left !important;
   justify-content: start;
-  padding: 0px 32px; 
+  padding: 0px 40px; 
+  font-size: 1rem;
 }
 
 .video-modal .modal-dialog {
@@ -256,19 +257,23 @@ th.mat-header-cell {
   cursor: pointer;
 }
 
-.importdate_cell {
-  width: 15%;
-}
-
 .brokerage_cell {
   width: 15%;
 }
 
-tradesimported_cell {
-  width: 0%;
+.lastsyncdate_cell {
+  width: 15%;
 }
 
-lasttradedate_cell {
+.tradesimported_cell {
+  width: 15%;
+}
+
+.lasttradetimestamp_cell {
+  width: 18%;
+}
+
+.lasttransaction_cell {
   width: 15%;
 }
 

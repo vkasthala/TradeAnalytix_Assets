@@ -17,8 +17,9 @@
                             <span class="tradingsymbol">
                                 <span class="name pl-2">{{margins.trading_symbol}}</span> 
                             </span>
+                            <span class="px-1">x</span> <!-- Inserted X here -->
                             <span class="qty px-1">{{margins.quantity}}</span>
-                            <span class="su-radio-label">Quantity at Price of</span>
+                            <span class="su-radio-label">Quantity at</span>
                             <span class="price pl-1">₹{{margins.price}}</span>
                         </div>
                     </div>
@@ -41,11 +42,11 @@
                                         <div class="tab" role="tabpanel">
                                             <div class="reports-header">
                                                 <ul class="nav nav-tabs" role="tablist">
-                                                    <li class="active" role="presentation">
-                                                        <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#Manual" role="tab">Manual</a>
-                                                    </li>
                                                     <li role="presentation">
                                                         <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#Automatic" role="tab">Automatic</a>
+                                                    </li>
+                                                    <li class="active" role="presentation">
+                                                        <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#Manual" role="tab">Manual</a>
                                                     </li>
                                                 </ul>
                                             </div>

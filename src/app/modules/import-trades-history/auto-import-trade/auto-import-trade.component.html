@@ -1,34 +1,7 @@
-<!-- <div class="trade-form">
-    <div class="pb-3">
-        <div class="row">
-            <div class="py-2 col-sm-8">
-            </div>
-             <div class="py-2 col-sm-8"> 
-                <label for="startDate">Start Date:</label> 
-                <input type="date" id="startDate" name="startDate" [(ngModel)]="startDate"> 
-                <label for="endDate">End Date:</label> 
-                <input type="date" id="endDate" name="endDate" [(ngModel)]="endDate">
-                 <button class="btn btn-enter btn-sm" 
-                (click)="importSnapTradesByDate()">ImportSnapTradeBydate</button>
-            </div>
-            <div class="pt-2 col-sm-6">
-                <button class="btn btn-enter btn-sm" [disabled]="!selectedBrokerage"
-                    (click)="importTrades()">Import Trades</button>
-                <mat-spinner [diameter]="30" *ngIf="processing"></mat-spinner>
-            </div>
-            <div class="popup" *ngIf="showPopup">
-                <div class="popup-content">
-                  <span class="close" (click)="closePopup()">&times;</span>
-                  <pre>{{ jsonData | json }}</pre>
-                </div>
-              </div>
-        </div>
-    </div>
-</div>
- -->
-
- <div class="brokerage-page">
-    <h1 class="page-title">Connected Brokerage: <span id="brokerageName">Zerodha</span></h1>
+<div class="brokerage-page">
+    <h1 class="page-title">
+        Connected Brokerages: <span class="brokerage-names">Brokerage-1, Brokerage-2, Brokerage-3</span>
+    </h1>
     <div class="import-controls">
         <!-- <button class="btn-import" (click)="importSnapTrades()">Import All Trades</button> -->
         <div class="date-range-selector">

@@ -786,12 +786,12 @@ input:invalid {
     opacity: 1 !important;
     background: rgba(0,0,0,.32) !important;
 }
-.tradingview-chart > div {
-    width: 100% !important;
-}
-.tradingview-chart > div > div {
-    width: 100% !important;
-}
+// .tradingview-chart > div {
+//     width: 100% !important;
+// }
+// .tradingview-chart > div > div {
+//     width: 100% !important;
+// }
 
 .financials-view > div {
     width: 100% !important;
@@ -1077,11 +1077,6 @@ html.theme-light .group-wWM3zP_M- {
 .how-works .owl-nav {
     display: none;
 }
-
-
-
-/** Trading view css  **/
-
 
 
 @-webkit-keyframes loading {
@@ -3007,14 +3002,14 @@ input {
 }
 
 button.buy {
-    color: #2469FF !important;
-    background-color: #FFF !important;
+    color: #FFF !important;
+    background-color: #2469FF !important;
     border-color: #2469FF !important;
     height:46px;
 }
 button.sell {
-    color: #E0261A;
-    background-color: #ffffff !important;
+    color: #FFF;
+    background-color: #E0261A !important;
     border-color: #E0261A !important;
     height:46px;
 }
