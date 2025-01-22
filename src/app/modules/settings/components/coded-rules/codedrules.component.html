@@ -21,9 +21,10 @@
                         <mat-icon class="mat-icon-sm mat-icon material-icons pl-2" [ngClass]="coderule.val ? 'text-success' : 'text-danger'">{{coderule.val ? 'check' : 'close'}}</mat-icon>
                     </td>
                     <td class="mat-cell rule-cell">
-                        <span class="d-flex align-items-center">
-                            {{coderule.uiLabel}}
-                        </span>
+                        <div class="d-flex align-items-center">
+                            <span>{{coderule.uiLabel}}</span>
+                            <mat-chip class="chip {{ coderule.purpose.toLowerCase().replace(' ', '-') }}">{{coderule.purpose}}</mat-chip>
+                        </div>
                     </td>
                     
                     <td class="mat-cell status-cell">
@@ -64,7 +65,7 @@
         <div class="card rule-row" *ngFor="let rule of portfolioLevelRules">
             <div class="top d-flex">
                 <div class="flex10">
-                    <span class="dim">{{rule.uiLabel}}</span>
+                    <span class="dim">{{rule.uiLabel}}</span> 
                 </div>
                 <div class="flex2 text-right">
                     <span class="pt-2">

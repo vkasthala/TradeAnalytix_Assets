@@ -68,6 +68,7 @@ export class OrderRuleResponse {
     aligned: boolean;
     type: string;
     ruleParamId: number;
+    purpose: string;
 }
 
 export interface OrderPurchasehistoryResponse{

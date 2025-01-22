@@ -401,7 +401,7 @@ export class WatchListComponent implements OnInit {
     this.marginsSource.order_type = response.order_type;
     this.marginsSource.quantity = response.qty;
     this.marginsSource.variety= "regular";
-    this.marginsSource.trigger_price= response.price;
+    this.marginsSource.trigger_price= response.trigger_price;
     // this.orderToggle = true;
     // if ($event.transaction_type === 'BUY') {
     //   this.orderToggle = false;
