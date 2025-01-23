@@ -586,14 +586,46 @@
     font-size: .925rem;
 }
 
-.chip {
-    margin-left: 10px; /* Add space between the label and the chip */
-    font-weight: bold;
-    border-radius: 16px; /* Rounded corners */
-    padding: 4px 8px; /* Adjust padding as needed */
+// .chip {
+//     margin-left: 10px; /* Add space between the label and the chip */
+//     font-weight: bold;
+//     border-radius: 16px; /* Rounded corners */
+//     padding: 4px 8px; /* Adjust padding as needed */
+// }
+
+// .activity-limit{
+//     background-color: #e0f7fa; /* Light blue background */
+//     color: #00796b; /* Text color */
+// }
+
+.activity-limit {
+    // background-color: rgba(52, 58, 64, 0.2); /* Muted dark gray */
+    // color: #333; /* Darker gray for text */
+    background-color: rgba(102, 51, 153, 0.2); /* Muted purple */
+    color: #663399; /* Deep purple text */
 }
 
-.activity-limit{
-    background-color: #e0f7fa; /* Light blue background */
-    color: #00796b; /* Text color */
+.risk-management {
+    background-color: rgba(0, 123, 255, 0.2); /* Muted blue */
+    color: #0056b3; /* Dark blue for text */
+}
+
+.discipline {
+    background-color: rgba(40, 167, 69, 0.2); /* Muted green */
+    color: #1e7e34; /* Dark green for text */
+}
+
+.cost-control {
+    background-color: rgba(255, 193, 7, 0.2); /* Muted yellow */
+    color: #856404; /* Dark yellow for text */
+}
+
+.chip {
+    margin-left: 10px; /* Space between label and chip */
+    font-weight: 500;
+    border-radius: 12px; /* Rounded corners */
+    padding: 2px 6px; /* Smaller height */
+    font-size: 14px; /* Font size */
+    line-height: 24px; /* Vertical alignment */
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Light border for separation */
 }
