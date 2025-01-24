@@ -198,6 +198,7 @@
 .order-window .footer .margins .block label {
     margin-right: 3px;
     margin-left: 16px;
+    font-size: 1rem;
 }
 
 .order-window .footer .submit {
@@ -229,12 +230,15 @@
 
 .order-window.buy .actions .submit {
     background-color: #2469FF;
-    border-color: #2469FF
+    border-color: #2469FF;
+    font-size: 1rem;
+    width:40%;
+    height:100%;
 }
 
 .order-window.sell .su-radio:checked+.su-radio-label:before {
     background-color: #E0261A;
-    border-color: #E0261A
+    border-color: #E0261A;
 }
 
 .order-window.sell header {
@@ -261,7 +265,9 @@
 
 .order-window.sell .actions .submit {
     background-color: #E0261A;
-    border-color: #E0261A
+    border-color: #E0261A;
+    width: 40%;
+    font-size: 1rem;
 }
 
 .order-window .first-fields {

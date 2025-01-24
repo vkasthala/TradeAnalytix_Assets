@@ -14,13 +14,13 @@
                     <div class="eight columns" [ngClass]="isMobileDevice ? 'w-100' : ''">
                         <div class="instrument">
                             Intraday Order: <span class="transaction-type">{{margins.transaction_type | titlecase}}</span> 
-                            <span class="tradingsymbol">
-                                <span class="name pl-2">{{margins.trading_symbol}}</span> 
-                            </span>
-                            <span class="px-1">x</span> <!-- Inserted X here -->
                             <span class="qty px-1">{{margins.quantity}}</span>
-                            <span class="su-radio-label">Quantity at</span>
-                            <span class="price pl-1">₹{{margins.price}}</span>
+                            <span class="su-radio-label">Quantity of</span>
+                            <span class="tradingsymbol">
+                                <span class="name pl-1">{{margins.trading_symbol}}</span> 
+                            </span>
+                            <span class="px-1">at</span>
+                            <span class="price">₹{{margins.price}}</span>
                         </div>
                     </div>
                     <div class="four columns text-right" *ngIf="!isMobileDevice">
