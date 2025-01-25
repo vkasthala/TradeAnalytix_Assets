@@ -31,15 +31,14 @@
     display: block;
     background: transparent;
     font-size: 18px;
-    line-height: 16px;
+    line-height: 18px;
     text-align: center;
     border: none;
     z-index: 2;
     transition: all 0.3s ease 0s;
     text-decoration: none;
-
-    padding: 22px 10px;
-    margin: 0 10px;
+    padding: 22px 9px;
+    margin: 0 7px;
     color: #000000;
     position: relative;
     font-weight: 500;
@@ -55,7 +54,7 @@
 .tab .nav-tabs li a:hover::before
 {
     content: '';
-    width: 100%;
+    width: 86%;
     height: 4px;
     border-radius: 4px 4px 0px 0px;
     background: #2469FF;

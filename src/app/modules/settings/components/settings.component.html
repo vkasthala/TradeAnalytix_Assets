@@ -11,18 +11,9 @@
                 <li class="active" role="presentation">
                     <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#InvestmentGoals" role="tab">Trading Goals</a>
                 </li>
-                <!-- <li class="" role="presentation">
-                    <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#DepositsWithdrawals" role="tab">Deposits & Withdrawals</a>
-                </li> -->
                 <li class="" role="presentation">
-                    <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#DataSetup" role="tab">Data Setup</a>
+                    <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#DataSetup" role="tab">Delete Data</a>
                 </li>
-                <!-- <li class="" role="presentation">
-                    <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#ConfigureQuestions" role="tab">Configure Questions</a>
-                </li> -->
-                <!-- <li class="" role="presentation">
-                    <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#CodedRules" role="tab">Coded Rules</a>
-                </li> -->
             </ul>
 
             <!-- Settings-mobile -->
@@ -31,8 +22,7 @@
                     <select class="form-control" (change)="settingsTabChange($event.target.value)">
                         <!-- <option value="UserProﬁle" selected data-default>User Proﬁle</option> -->
                         <option value="InvestmentGoals" selected data-default>Goals</option>
-                        <!-- <option value="DepositsWithdrawals">Deposits & Withdrawals</option> -->
-                        <option value="DataSetup">Data Setup</option>
+                        <option value="DataSetup">Delete Data</option>
                     </select>
                 </div>
             </div>
@@ -44,9 +34,6 @@
                 <div class="tab-pane active" id="InvestmentGoals" role="tabpanel" [ngClass]="[selectedType === 'InvestmentGoals' ? 'mobile-tab-pane-show' : 'mobile-tab-pane-d-none']">
                     <app-investmentgoals></app-investmentgoals>
                 </div>
-                <!-- <div class="tab-pane" id="DepositsWithdrawals" role="tabpanel">
-                    <app-depositswithdrawals></app-depositswithdrawals>
-                </div> -->
                 <div class="tab-pane settings-component" id="DataSetup" role="tabpanel" [ngClass]="[selectedType === 'DataSetup' ? 'd-block' : 'mobile-tab-pane-d-none']">
                     <app-datasetup></app-datasetup>
                 </div>

@@ -1,7 +1,7 @@
 <div class="outer-container settings-container">
-    <div class="import-header">
+    <!-- <div class="import-header">
         Goal-Driven Trading: Set and Track Your Profit Goals within a Defined Date Range for Optimal Performance
-    </div>
+    </div> -->
     <mat-expansion-panel [expanded]="true">
         <ng-template matExpansionPanelContent>
             <div class="mb-2 investment_body">
@@ -49,7 +49,7 @@
                         <span class="header-cell">Entry Date</span>
                         <span class="header-cell">Goal Name</span>
                         <span class="header-cell header-cell-lg">Target Date Range</span>
-                        <span class="header-cell">Target Profit</span>
+                        <span class="targetprofit-header-cell">Target Profit</span>
                         <!-- <span class="header-cell description-cell">Description</span> -->
                         <span class="header-cell action-cell">Action</span>
                     </div>
@@ -61,12 +61,10 @@
                                 <span class="td-cell td-cell-lg">{{goal.startDate | date: 'dd MMM yyyy'}} - {{goal.endDate | date: 'dd MMM yyyy'}}</span>
                                 <span class="td-cell">{{goal.targetAmount}}</span>
                                 <!-- <span class="td-cell description-cell">{{goal.goalDescription}}</span> -->
-                                <span class="td-cell">
-                                    <button class="btn-edit" (click)="editinvestmentGoal(goal)">Edit</button>
-                                    <button class="btn-delete" (click)="deleteinvestmentGoal(goal)">Delete</button>
-                                        <!-- <mat-icon class="mat-icon-sm mat-icon-edit" (click)="editRule(element, 'Edit', 'Update')">edit</mat-icon>
-                                        <mat-icon class="mat-icon-sm ml-2" (click)="deleteRule(element)">delete</mat-icon> -->
-                                </span>
+                                    <!-- <button class="btn-edit" (click)="editRule(element, 'Edit', 'Update')">Update</button>
+                                    <button class="btn-delete ml-2" (click)="deleteRule(element)">Delete</button> -->
+                                    <button class="btn-edit" (click)="editinvestmentGoal(goal)">Update</button>
+                                    <button class="btn-delete ml-2" (click)="deleteinvestmentGoal(goal)">Delete</button>
                             </div>
                         </div>
                     </ng-container>

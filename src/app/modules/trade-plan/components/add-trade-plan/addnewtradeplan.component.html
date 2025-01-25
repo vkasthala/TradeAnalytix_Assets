@@ -100,9 +100,9 @@
                 <mat-expansion-panel [expanded]="false">
                     <mat-expansion-panel-header>
                         <mat-panel-title style="flex-direction:column">
-                            Pre-Market Analysis
+                            Before the Market Hours: Plan Your Day
                             <br/>
-                            <span class="sub-heading">Get ready for the day ahead by crafting a pre-market trading plan.</span>
+                            <span class="sub-heading">Enter your daily goals, market insights, and key assets to watch</span>
                         </mat-panel-title>
                     </mat-expansion-panel-header>
                     <ng-template matExpansionPanelContent>
@@ -113,7 +113,7 @@
                                     <a class="add-new" (click)="openEconomicModal()">Economic Calendar</a>
                                 </div>
                                 <div>
-                                    <textarea placeholder="Share your insights on today's market and outline your planned trades for the day, providing rationale behind your decisions." class="textarea-lg"  [(ngModel)]="tradePlan.perspective"></textarea>
+                                    <textarea placeholder="Outline your trades for the day, explaining your decisions based on today’s market conditions." class="textarea-lg"  [(ngModel)]="tradePlan.perspective"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -131,7 +131,7 @@
                             <app-planned-trades-grid [selectedPlan]="selectedPlan" [dataChangeSubject] = "dataChangeSubject" #plannedTradesGrid></app-planned-trades-grid>
                         </div>
 
-                    <!--       <div class="row">
+                          <!-- <div class="row">
                             <div class="col-sm-6">
                                 <div class="inner-accordion">
                                     <mat-accordion>
@@ -147,7 +147,7 @@
                                 </div>
                             </div> -->
 
-                    <!--           <div class="col-sm-6">
+                              <!-- <div class="col-sm-6">
                                 <div class="inner-accordion">
                                     <mat-accordion>
                                         <mat-expansion-panel [expanded]="false">
@@ -231,9 +231,9 @@
                 <mat-expansion-panel class="mb-0" [expanded]="false">
                     <mat-expansion-panel-header>
                         <mat-panel-title style="flex-direction:column">
-                            Post-Market Analysis
+                            After the Market Hours: Reflect on Your Performance
                             <br/>
-                            <span class="sub-heading">Write about your experience in the market today </span>
+                            <span class="sub-heading">Summarize today’s trading outcomes, key learnings, and adjustments for tomorrow</span>
                         </mat-panel-title>
                     </mat-expansion-panel-header>
                     <ng-template matExpansionPanelContent>
@@ -244,7 +244,7 @@
                                     <span class="add-new" *ngIf="!viewTradePlan" (click)="openRateExperienceDialog()">Rate Your Perfomance</span>
                                 </div>
                                 <div>
-                                    <textarea placeholder="Take a moment to reflect on your trading performance and analyze both the successes and challenges encountered throughout the day" class="textarea-lg" [(ngModel)]="tradePlan.lessons"></textarea>
+                                    <textarea placeholder="Take a moment to reflect on your trading performance and analyze both the successes and challenges." class="textarea-lg" [(ngModel)]="tradePlan.lessons"></textarea>
                                 </div>
                             </div>
                         </div>

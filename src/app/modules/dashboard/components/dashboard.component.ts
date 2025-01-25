@@ -172,19 +172,19 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       if (summaryItem.value && value > 0) {
         color = '#12B76A';
       } else {
-        color = '#F04438';
+        color = '#E0261A';
       }
     } else if (summaryItem.id == 'win_rate') {
       let value: number = parseFloat(summaryItem.value);
       if (summaryItem.value && value > 80) {
         color = '#12B76A';
       } else {
-        color = '#F04438';
+        color = '#E0261A';
       }
     } else if (summaryItem.id == 'maxRisk') {
-      color = '#F04438';
+      color = '#E0261A';
     } else if (summaryItem.id == 'avgLosingTrade') {
-      color = '#F04438';
+      color = '#E0261A';
     } else if (summaryItem.id == 'avgWinningTrade') {
       color = '#12B76A';
     } else if (summaryItem.id == 'avgTradeCount') {
@@ -194,7 +194,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       }
       let val: number = parseInt(value);
       if (val === 0) {
-        color = '#F04438';
+        color = '#E0261A';
       } else {
         color = '#12B76A';
       }

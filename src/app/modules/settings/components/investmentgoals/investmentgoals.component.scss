@@ -143,7 +143,9 @@
     }
 }
 .investment_body {
-    min-height: 60vh;
+    min-height: 97vh;
+    margin-left: 20px;
+    margin-top: 20px;
 }
 
 .investment-web {
@@ -278,20 +280,33 @@
 .header-cell {
     background: #e5e5e5;
     color: #000000;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 600;
-    padding: 0.789rem 0.5rem;
+    padding: 1rem 1rem;
     flex: 0 0 9%;
     max-width: 9%;
+}
+.targetprofit-header-cell {
+    background: #e5e5e5;
+    color: #000000;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 1rem 1rem;
+    flex: 0 0 20%;
+    max-width: 12%;
+    padding-left:36px;
 }
 .header-cell-lg {
     flex: 0 0 18%;
     max-width: 18%;
+    padding-left:28px;
 }
 .td-cell {
     padding: 0.789rem 0.5rem;
     flex: 0 0 9%;
     max-width: 9%;
+    display: inline-block;  /* Ensures buttons are in line */
+    margin-right: 10px;    /* Optional: adds spacing between buttons */
 }
 .td-cell-lg {
     flex: 0 0 18%;
@@ -304,6 +319,7 @@
 .action-cell {
     flex: 0 0 30%;
     max-width: 30%;
+    padding-left:0px;
 }
 
 .panel-header {
@@ -349,7 +365,7 @@
     background-color: #6c757d;
     border-color:#6c757d;
     color: #fff;
-    min-width: 50%;
+    min-width: 6%;
     font-size: 15px;
     margin-right: 10px;
     height: 40px;
@@ -357,10 +373,10 @@
 }
 
 .btn-delete {
-    background-color: #f04438;
-    border-color:#f04438;
+    background-color: #E0261A;
+    border-color:#E0261A;
     color: #fff;
-    min-width: 50%;
+    min-width: 6%;
     font-size: 15px;
     height: 40px;
     align-content: center;

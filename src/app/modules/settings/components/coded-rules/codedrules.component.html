@@ -18,7 +18,7 @@
             <tbody>
                 <tr class="mat-header-row" *ngFor="let coderule of portfolioLevelRules">
                     <td class="mat-cell value-cell">
-                        <mat-icon class="mat-icon-sm mat-icon material-icons pl-2" [ngClass]="coderule.val ? 'text-success' : 'text-danger'">{{coderule.val ? 'check' : 'close'}}</mat-icon>
+                        <mat-icon class="mat-icon-sm mat-icon material-icons pl-2" [ngClass]="coderule.val ? 'text-success' : 'text-danger'">{{coderule.val ? 'check_circle' : 'cancel'}}</mat-icon>
                     </td>
                     <td class="mat-cell rule-cell">
                         <div class="d-flex align-items-center">
