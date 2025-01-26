@@ -6,7 +6,7 @@ import { environment } from 'src/environments/environment';
 import { HttpService } from '../../shared/services/http.service';
 import { JoinWaitlistComponent } from './join-waitlist/join-waitlist.component';
 import { ImageService } from './image.service';
-import { AnimationOptions } from "ngx-lottie";
+// import { AnimationOptions } from "ngx-lottie";
 import { SlidesOutputData, OwlOptions } from 'ngx-owl-carousel-o';
 import { AuthService } from '../../shared/services/auth/auth.service';
 import { ContactUs } from './contact-us.model';

@@ -158,7 +158,7 @@ export class ManagerulesComponent implements OnInit {
   closePopup(e) {
     let iframe = document.querySelector('iframe');
     iframe.src='';
-    iframe.setAttribute("src",'https://www.youtube.com/embed/z_MMEzxPbGw');
+    iframe.setAttribute("src",'');
   }
 
   checkDevice() {

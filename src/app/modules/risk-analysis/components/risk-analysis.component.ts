@@ -786,7 +786,7 @@ export class RiskAnalysisComponent implements OnInit {
   closePopup(e) {
     let iframe = document.querySelector('iframe');
     iframe.src='';
-    iframe.setAttribute("src",'https://www.youtube.com/embed/YuIdSJ7TU7s');
+    iframe.setAttribute("src",'');
   }
 
   submitInstance($event: any) {

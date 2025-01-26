@@ -114,7 +114,7 @@ export class ReportsComponent implements OnInit {
   closePopup(e) {
     let iframe = document.querySelector('iframe');
     iframe.src = '';
-    iframe.setAttribute("src", 'https://www.youtube.com/embed/oTOw-wUL1Jw');
+    iframe.setAttribute("src", '');
   }
 
   onDateOptionSelect(option: string) {

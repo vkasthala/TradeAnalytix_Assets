@@ -206,7 +206,7 @@ export class TradeStrategiesComponent implements OnInit {
    closePopup(e) {
       let iframe = document.querySelector('iframe');
       iframe.src='';
-      iframe.setAttribute("src",'https://www.youtube.com/embed/pzpvE4bqyTs');
+      iframe.setAttribute("src",'');
     }
 
    

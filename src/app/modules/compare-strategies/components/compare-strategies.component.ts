@@ -345,6 +345,6 @@ export class CompareStrategiesComponent implements OnInit {
   closePopup(e) {
     let iframe = document.querySelector('iframe');
     iframe.src='';
-    iframe.setAttribute("src",'https://www.youtube.com/embed/1PzJ6IVGNMM');
+    iframe.setAttribute("src",'');
   }
 }

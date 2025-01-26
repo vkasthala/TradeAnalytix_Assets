@@ -19,7 +19,7 @@ import { UploadFileService } from 'src/app/modules/import-trades/services/upload
 import { UtilService } from '../utilities/services/util.service';
 import { AutoImportTradePopupComponent } from './auto-import-trade-popup/auto-import-trade-popup.component';
 import { DemoModeDetailsService } from '../shared/services/demo-mode-details.service';
-import { PlaidService } from './services/plaid.service';
+// import { PlaidService } from './services/plaid.service'; // Venkat commented on 1/26/2025
 import { AutoImportTradeComponent } from './auto-import-trade/auto-import-trade.component'
 
 
@@ -35,7 +35,7 @@ export class ImportTradesHistory implements AfterViewInit, OnInit {
   pageSize: number = 20
   importType:number = 1;
 
-  plaidToken:any = '';
+  // plaidToken:any = '';  // Venkat commented on 1/26/2025
 
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort: MatSort;
@@ -53,9 +53,9 @@ export class ImportTradesHistory implements AfterViewInit, OnInit {
     private _dialog: MatDialog,
     private utilService: UtilService,
     private myElement: ElementRef,
-    private plaidService: PlaidService,
-    //public dialogRef: MatDialogRef<ImportTradePopupComponent>
-  ) {
+    // private plaidService: PlaidService,  // Venkat commented on 1/26/2025
+    //public dialogRef: MatDialogRef<ImportTradePopupComponent>  // Venkat commented on 1/26/2025
+  ) {  
     
   }
 
@@ -184,34 +184,34 @@ export class ImportTradesHistory implements AfterViewInit, OnInit {
   }
 
   autoImportTradesPopup() {
-    this.plaidService.createLinkToken().subscribe(result => {
+    // this.plaidService.createLinkToken().subscribe(result => {  // Venkat commented on 1/26/2025
       const dialogRef = this._dialog.open(AutoImportTradePopupComponent, {
         disableClose: true,
         width: 'auto',
-        data: { 'token': result.token }
+        // data: { 'token': result.token }  // Venkat commented on 1/26/2025
       });
       dialogRef.afterClosed().subscribe((res) => {
         if (res === true) {
           this.reload();
         }
       });
-    });
+    // });  // Venkat commented on 1/26/2025
   }
 
   closePopup(e) {
     let iframe = document.querySelector('iframe');
     iframe.src = '';
-    iframe.setAttribute("src", 'https://www.youtube.com/embed/txIqoIys3GI');
+    iframe.setAttribute("src", '');
   }
 
   selectionChange(event: any){
     
     this.importType = event;
     if(this.importType == 2) {
-        this.plaidService.createLinkToken().subscribe(result => {
-        this.plaidToken = result.token;
-        this.plaidService.sendClickEvent.emit(result.token);
-      });
+        // this.plaidService.createLinkToken().subscribe(result => {  // Venkat commented on 1/26/2025
+        // this.plaidToken = result.token;   // Venkat commented on 1/26/2025
+        // this.plaidService.sendClickEvent.emit(result.token);   // Venkat commented on 1/26/2025
+      // };  // Venkat commented on 1/26/2025
     }else {
       this.importTradesGridService.loadImportTrades(this.importTradesGridRequest).subscribe(result => {
         if (result) {

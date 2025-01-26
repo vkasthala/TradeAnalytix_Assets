@@ -669,7 +669,7 @@ export class AddNewTradeComponent implements OnInit {
   closePopup(e) {
     let iframe = document.querySelector('iframe');
     iframe.src = '';
-    iframe.setAttribute("src", 'https://www.youtube.com/embed/JlRinQiXHmM');
+    iframe.setAttribute("src", '');
   }
 
   submitInstance($event: any) {
