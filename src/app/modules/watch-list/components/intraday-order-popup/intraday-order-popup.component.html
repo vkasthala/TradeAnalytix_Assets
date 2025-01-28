@@ -42,17 +42,17 @@
                                         <div class="tab" role="tabpanel">
                                             <div class="reports-header">
                                                 <ul class="nav nav-tabs" role="tablist">
-                                                    <li role="presentation">
+                                                    <li class="active" role="presentation">
                                                         <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#Automatic" role="tab">Automatic</a>
                                                     </li>
-                                                    <li class="active" role="presentation">
+                                                    <li role="presentation">
                                                         <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#Manual" role="tab">Manual</a>
                                                     </li>
                                                 </ul>
                                             </div>
                                 
                                             <div class="tab-content tabs reports-tab-content">
-                                                <div class="tab-pane active" id="Manual" role="tabpanel">
+                                                <div class="tab-pane" id="Manual" role="tabpanel">
                                                     <div *ngFor="let item of orderRuleDto.orderRules; let index=index">
                                                         <div *ngIf="item.type==='Manual'" class="d-flex py-2 align-items-center">
                                                             <div class="col-10">
@@ -67,7 +67,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="tab-pane" id="Automatic" role="tabpanel">
+                                                <div class="tab-pane active" id="Automatic" role="tabpanel">
                                                     <div *ngFor="let item of orderRuleDto.orderRules; let index=index">
                                                         <div *ngIf="item.type==='Automatic'" class="d-flex py-2 align-items-center">
                                                             <div class="col-10 d-flex align-items-center">
