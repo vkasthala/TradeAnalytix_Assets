@@ -120,7 +120,7 @@
                             <div class="price" [ngClass]="isMobileDevice ? 'margins-order_type pr-3' : 'four columns'">
                                 <div class="su-radio-group order-type">
                                     <div class="su-radio-wrap" tooltip-pos="down" data-tooltip="Buy at market price"
-                                        data-tooltip-pos="down" [ngClass]="margins.orderId ? 'disabled' : ''">
+                                        data-tooltip-pos="down" [ngClass]="">
                                         <input id="MARKET" type="radio" name="orderType" label="Market" class="su-radio"
                                             value="MARKET" [(ngModel)]="margins.order_type"
                                             [disabled]="margins.variety !== 'regular' && margins.variety !== 'co'" (change)="calculateMargin()">
@@ -128,7 +128,7 @@
                                     </div>
                                     <div class="su-radio-wrap checked" tooltip-pos="down"
                                         data-tooltip="Buy at a preferred price" data-tooltip-pos="down"
-                                        [ngClass]="margins.orderId ? 'disabled' : ''">
+                                        [ngClass]="">
                                         <input id="LIMIT" type="radio" name="orderType" label="Limit" class="su-radio"
                                             value="LIMIT" [(ngModel)]="margins.order_type"
                                             [disabled]="margins.variety !== 'regular' && margins.variety !== 'co'" (change)="calculateMargin()">

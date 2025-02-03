@@ -65,6 +65,7 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
   tradePlan: TradePlan = new TradePlan();
   minDate: Date;
   maxDate: Date;
+  perspective: string;
 
 
   @ViewChild('tradeMobileStepper', { static: false }) private tradeMobileStepper: MatStepper;
@@ -141,9 +142,12 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
     return request;
   }
 
-  loadTradePlanData() {
+  loadTradePlanData(frstLoad: boolean) {
     this.tradePlanService.getTradePlanData(this.selectedPlan.id).subscribe(result => {
       this.tradePlan = result;
+      if(!frstLoad){
+        this.tradePlan.perspective = this.perspective;
+      }
     });
   }
 
@@ -264,7 +268,7 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
 
   refreshSelectedPlanData() {
     if (this.selectedPlan) {
-      this.loadTradePlanData();
+      this.loadTradePlanData(true);
       this.loadHoldings();
       if (this.plannedTradesGrid) {
         this.plannedTradesGrid.initPlannedTradesGrid(this.selectedPlan.id, false);
@@ -493,7 +497,6 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
     dialogRef.afterClosed().subscribe((res) => {
       if (res) {
         console.log('result..', res);
-
         this.createPlannedTrade(res);
       }
     }, (err) => { console.log(err) });
@@ -502,7 +505,8 @@ export class AddnewtradeplanComponent implements OnInit, AfterViewInit {
   createPlannedTrade(plannedTrade: PlannedTrade) {
     this.tradePlanService.createPlannedTrade(this.selectedPlan.id, plannedTrade).subscribe(result => {
     this.plannedTradesGrid.initPlannedTradesGrid(this.selectedPlan.id, false);
-    // this.loadTradePlanData()
+    this.perspective = this.tradePlan.perspective;
+    this.loadTradePlanData(false);
     });
   }
 

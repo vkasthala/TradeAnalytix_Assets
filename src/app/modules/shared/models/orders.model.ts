@@ -59,7 +59,8 @@ export interface PurchaseOrderResponse {
 export class OrderRuleDto {
     notes: string;
     tags: TradeTag[];
-    orderRules: OrderRuleResponse[]
+    orderRules: OrderRuleResponse[];
+    isNotesChanged: boolean;
 }
 
 export class OrderRuleResponse {

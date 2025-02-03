@@ -224,6 +224,9 @@ export class OrdersModalComponent implements OnInit {
           // if(response){
           //   this.toastr.success('Order rules saved successfully', 'Success', {timeOut: 3000});
           // }
+          setTimeout(() => {
+            this._omsService.updateRulesForStrategy(orderRules, orderId).subscribe(success => {}, err => {});
+          }, 2000);
         }, error => {
           // this.toastr.error("Error while saving order rules", 'Error', {timeOut: 3000});
         });

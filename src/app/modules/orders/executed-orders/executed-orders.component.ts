@@ -93,6 +93,9 @@ export class ExecutedOrdersComponent implements OnInit {
         this.toastr.success('Journal updated successfully', 'Success', {timeOut: 3000});
         this._sharedService.ordersReloadEvent.emit(true);
         this.closePopup();
+        setTimeout(() => {
+          this._orderService.updateRulesForStrategy(orderRules, orderId).subscribe(success => {}, err => {});
+        }, 2000);
       }
     }, error => {
       this.toastr.error(error.error.errorMessage, 'Error', {timeOut: 3000});

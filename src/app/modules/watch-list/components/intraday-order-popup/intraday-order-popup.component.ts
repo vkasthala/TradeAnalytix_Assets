@@ -21,6 +21,7 @@ import { StockSummaryResult } from 'src/app/modules/trade-management/models/stoc
   styleUrls: ['./intraday-order-popup.component.scss']
 })
 export class IntradayOrderPopupComponent implements OnInit {
+  originalNotes: string = '';
   @Input('orderToggle') orderToggle: boolean=false;
   @Input('margins') margins:any = Margins;
   @ViewChild('tradeTag', { static: false }) tradeTagsComponent: TradeTagsComponent;
@@ -79,6 +80,7 @@ loadExistingOrderRules(){
 this._orderService.getExistingRules(this.data.ruleCheckPayload.orderId, this.data.ruleCheckPayload).subscribe(response=>{
   if(response){
     this.orderRuleDto = response;
+    this.originalNotes = this.orderRuleDto.notes;
     this.tags = this.orderRuleDto.tags;
     if(this.tags){
       this.tradeTagsComponent.tags = this.tags;
@@ -107,6 +109,11 @@ loadSummary() {
     let orderIds = order.order_id;
     let tags = this.tradeTagsComponent.tags;
     this.orderRuleDto.tags = tags;
+    if(this.originalNotes != this.orderRuleDto.notes){
+      this.orderRuleDto.isNotesChanged = true;
+    } else{
+      this.orderRuleDto.isNotesChanged = false;
+    }
     this.dialogRef.close(this.orderRuleDto);
   }
 
