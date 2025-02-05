@@ -23,6 +23,7 @@
                     <a [class.router-link-active]="currentRoute === 'import-trades-history'" [routerLink]="['/import-trades-history/']" routerLinkActive="router-link-active"><span>Import Trades</span></a>
                     <a [class.router-link-active]="currentRoute === 'stravtegies'" [routerLink]="['/stravtegies/']" routerLinkActive="router-link-active"><span>Journal</span></a>
                     <a [class.router-link-active]="currentRoute === 'reports'" [routerLink]="['/reports/']" routerLinkActive="router-link-active"><span>Analytics</span></a>
+                    <a [class.router-link-active]="currentRoute === 'payoff-analyzer'" [routerLink]="['/payoff-analyzer/']" routerLinkActive="router-link-active"><span>Payoff Analyzer</span></a>
                     <a (click)="openBrokerageModal()" *ngIf="!isBrokerageActive"><span class="btn-broker-login">Connect Broker</span></a>
                     <a (click)="logoutFromBrokerage()" *ngIf="isBrokerageActive"><span class="btn-broker-exit">Exit Session</span></a>
                 </div> 
