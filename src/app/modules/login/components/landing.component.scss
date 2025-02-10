@@ -35,45 +35,36 @@ nav {
 // Hero Section for Desktop
 .hero-title {
     font-family: 'Inter', sans-serif !important;
-    font-size: 2.4rem;
-    max-width: 78%;  
+    font-size: 1.6rem;
+    max-width: 75%;  
     align-items: center;
     justify-content: center;
-    line-height: 1.2;
+    line-height: 1.3;
     margin: 0 auto; 
     text-align: center;
     color: #000000;
   }
   
-  .hero-title .highlight {
-    font-weight: 800;
-    color: #4BB964;
-  }
-
-  .hero-title .red-strike {
-    color: black; /* Text color */
-    text-decoration: line-through; /* Strike-through effect */
-    text-decoration-color: red; /* Color of the strike-through line */
-    text-decoration-thickness: 2px; /* Thickness of the strike-through line (optional) */
-}
-  
   .hero-title .neutral {
     font-weight: 600;
     color: #000000;
-    font-size: 3.2rem;
+    font-size: 3rem;
+    line-height: 1.3;
     // text-decoration: none;
   }
 
   .hero-title .feature {
-    font-weight: 700;
-    font-size: 1.5rem;
+    font-weight: 600;
+    font-size: 1.3rem;
     color: #1958BF;
+    line-height: 1.3;
   }
   
   .hero-title .subtext {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     color: #58595B;
-    font-weight: 400;
+    font-weight: 500;
+    line-height: 1.1;
   }
 
 /* Hero Section Responsive Adjustments*/
@@ -83,13 +74,13 @@ nav {
         padding-bottom: 30px; /* Optional: add more space at the bottom */
     }
     .hero-title {
-        font-size: 2.6rem; /* Slightly smaller */
+        font-size: 3rem; /* Slightly smaller */
         max-width: 100%;
-        line-height: 1.5;
+        line-height: 1.1;
     }
 
     .hero-title .feature, .hero-title .subtext {
-        font-size: 0.9rem; /* Adjusting accordingly */
+        font-size: 1.3rem; /* Adjusting accordingly */
         max-width: 100%;
     }
 
@@ -104,15 +95,15 @@ nav {
     }
     
     .hero-title {
-        font-size: 2.6rem; /* Further reducing size */
+        font-size: 3rem; /* Further reducing size */
         margin-top: 30px; /* Extra margin for more vertical space */
         padding: 10px 10px; /* Maintain padding on the sides */
         max-width: 100%;
-        line-height: 1.5;
+        line-height: 1.1;
     }
 
     .hero-title .feature, .hero-title .subtext {
-        font-size: 0.9rem;
+        font-size: 1.3rem;
         max-width: 100%;
     }
 
@@ -127,15 +118,15 @@ nav {
     }
 
     .hero-title {
-        font-size: 2.5rem; /* Increasing font size for better readability */
+        font-size: 3rem; /* Increasing font size for better readability */
         padding: 10px 5px; /* Maintain padding on the sides */
         margin-top: 50px; /* Extra margin for more vertical space */
-        line-height: 1.3;
+        line-height: 1.1;
         max-width: 100%;
     }
 
     .hero-title .feature, .hero-title .subtext {
-        font-size: 0.9rem; /* Slightly larger for better visibility */
+        font-size: 1.3rem; /* Slightly larger for better visibility */
         max-width: 100%;
         line-height: 1 !important; /* Reducing line height to tighten space between lines */
         margin: 0; /* Remove any default margins */
@@ -163,15 +154,15 @@ nav {
     }
 
     .hero-title {
-        font-size: 2.3rem; /* Adjusted font size for small screens */
+        font-size: 3rem; /* Adjusted font size for small screens */
         margin-top: 20px; /* Less margin due to smaller screen size */
-        line-height: 1.3;
+        line-height: 1.1;
         max-width: 100%;
     }
 
     .hero-title .feature, .hero-title .subtext {
-        font-size: 1.5rem; /* Increase font size slightly for readability */
-        max-width: 100%;
+        font-size: 1.3rem; /* Increase font size slightly for readability */
+        max-width: 80%;
     }
 
     .subtext-line {
@@ -187,6 +178,7 @@ nav {
     margin-top: 1px;
     text-align: center;
     font-size:2.5rem;
+    background-color: #F1F9FF;
 }
 
 h1,
@@ -252,12 +244,12 @@ h2 {
     padding: 16px 20px;
     border: none;
     color: #fff;
-    margin-top: 2rem;
+    margin-top: 1rem;
     margin-right:10px;
-    width:210px;
+    width:230px;
     margin-bottom: 1rem;
     border-radius: 4px;
-    font-size: 1rem;
+    font-size: 1.2rem;
     margin-left:-22px;
 }
 
@@ -267,10 +259,10 @@ h2 {
     padding: 14px 50px;
     border: 2px solid #2469FF;
     border-radius: 4px;
-    width:210px;
+    width:230px;
     color: #ffffff;
  //   margin-bottom: 2.5rem;
-    font-size: 1rem;
+    font-size: 1.2rem;
 }
 
 .cue-logo img {
@@ -279,9 +271,9 @@ h2 {
 
 .benefits-subtext {
     color: #58595B; 
-    font-size: 1.125rem; 
+    font-size: 1.2rem; 
     line-height: 1.5; 
-    max-width: 800px; 
+    max-width: 80%; 
     margin: 0 auto 10px auto;
 }
 
@@ -376,14 +368,14 @@ h2 {
         font-family: 'Inter', sans-serif !important;
         color: #58595B;
         font-size: 1.125rem;
-        margin-left: 10px; /* Aligns text properly without extra space */
+        margin-left: 10px;  
         margin-right: 10px;
         margin-top:-40px;
-        padding: 0px; /* Reduced padding */
+        padding: 0px;  
         }
 
     .how-it-works {
-        padding: 10px 10px 10px 10px; /* Reduce side padding to ensure content fits within view RWD */
+        padding: 10px 10px 10px 10px;  
         margin-top: 5px;
         margin-bottom: 10px;
         text-align: center;
@@ -392,15 +384,15 @@ h2 {
     }
     
     .how-it-works h1 {
-        font-size: 2.25rem !important; /* Slightly reduced for balance */
+        font-size: 2.25rem !important; 
         font-weight: 700;
         color: #000000;
-        margin-bottom: 10px; /* Added spacing below heading */
+        margin-bottom: 10px;  
     }
     
     .how-it-works p {
         color: #58595B;
-        font-size: 1.125rem;
+        font-size: 1.2rem;
         line-height: 1;
         text-align: center;
         justify-content: center; 
@@ -433,7 +425,7 @@ h2 {
 
 .how-works {
     font-family: 'Inter', sans-serif !important;
-    background: #F1F5F9;
+    background: #ffffff;
     padding: 30px 10px;
 }
 
@@ -866,7 +858,7 @@ h2 {
     -webkit-box-pack: justify;
     justify-content: space-between;
     padding: 16px;
-    background: #F1F9FF;
+    background: #ffffff;
     font-weight:400;
     cursor: pointer;
     font-size: 1.125rem;
@@ -1245,7 +1237,7 @@ input:checked~.accordion-content {
 
 .blog-section {
     font-family: 'Inter', sans-serif !important;
-    background-color: #ffffff;
+    background-color: #F1F9FF;
     background-position: center;
     justify-content: center;
     padding: 40px 50px; /* Adjusted padding for better spacing */
@@ -1265,7 +1257,7 @@ input:checked~.accordion-content {
     margin-bottom: 30px;
 }
 .blog-box {
-    background-color: #FFFFFF;
+    background-color: #F1F9FF;
     padding: 15px;
     font-size: 0.813rem;
     color: #000000;
@@ -1333,7 +1325,7 @@ input:checked~.accordion-content {
 .how-it-works {
     font-family: 'Inter', sans-serif !important;
     background-size: cover;
-    background-color: #F1F9FF;
+    background-color: #ffffff;
     background-position: center;
     justify-content: center;
     padding: 40px 50px;
@@ -1355,7 +1347,7 @@ input:checked~.accordion-content {
     align-content: center;
     margin: auto;
     margin-bottom: 50px;
-    font-size: 1.125rem;
+    font-size: 1.2rem;
     line-height: 1.5;
 }
 
@@ -1722,4 +1714,61 @@ input:checked~.accordion-content {
         .cue-help h3 {
             font-size:1.5rem;
         }
+    }
+
+    .testimonials {
+        background-color: #F1F9FF;
+        padding: 40px 0;
+    }
+    
+    .testimonial-callout {
+        background-color: #ffffff;
+        border-left: 4px solid #2469FF;
+        padding: 20px;
+        margin-bottom: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        border-radius: 10px; /* Rounded corners for the callout */
+        transform: skew(-5deg); /* Slight skew for a dynamic shape */
+        margin-top: 1rem;
+        transition: transform 0.3s ease; /* Smooth transition for hover effect */
+    }
+    
+    .testimonial-callout:hover {
+        transform: skew(0deg); /* Revert skew on hover for a nice effect */
+        box-shadow: 0 8px 16px rgba(0,0,0,0.1); /* Enhance shadow on hover */
+    }
+    
+    .testimonial-text {
+        font-size: 1.1rem;
+        color: #333;
+        line-height: 1.4;
+        margin-bottom: 0px !important;
+    }
+    
+    .testimonial-author {
+        display: block;
+        text-align: right;
+        color: #666;
+        font-style: italic;
+        font-size: 1.1rem;
+        margin-top: 10px;
+    }
+    
+    @media (max-width: 768px) {
+        .testimonial-callout {
+            margin-bottom: 15px;
+            transform: skew(0deg); /* Remove skew on smaller screens for better readability */
+        }
+    
+        .col-md-4 {
+            padding: 0 15px;
+        }
+    }
+
+    #benefits {
+        background-color: #F1F9FF;
+    }
+
+    #blogs {
+        background-color: #F1F9FF;
     }
