@@ -132,6 +132,16 @@
     justify-content: center;
 }
 
+.app .header .app-nav a:hover, .app .header .right-nav a:hover {
+    background-color: #f0f0f0;  
+    border-radius: 5px; /* Rounded corners for a softer look */
+}
+
+.router-link-active, .app .header .app-nav a.router-link-active {
+    font-weight: 500; /* Making active link bold */
+    border-bottom: 3px solid #2469FF; /* Blue bottom border for active state */
+}
+
 .app .header .app-nav a.router-link-active,.app .header .app-nav a:hover,.app .header .right-nav a.router-link-active,.app .header .right-nav a:hover {
     cursor: pointer;
     color: #2469FF;
