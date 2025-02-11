@@ -33,6 +33,18 @@ export class OmsService {
     return this.http.post<PurchaseOrderResponse>(url, orderRequest, { headers: this.createHttpHeaders() });
   }
 
+  subscribeToOrderUpdates(): Observable<String>{
+    const url = environment.tradingServiceUri + "/orders/subscribe-order-updates";
+    return this.http.post<String>(url, null, { headers: this.createHttpHeaders() });
+  }
+
+  unsubscribeOrderUpdates(brokerage: string): Observable<String>{
+    let httpHeaders: HttpHeaders = this.createHttpHeaders();
+    httpHeaders.set("Brokerage", brokerage);
+    const url = environment.tradingServiceUri + "/orders/unsubscribe-order-updates";
+    return this.http.post<String>(url, null, { headers:  httpHeaders});
+  }
+
   getTodayExecutedTrades(day: string): Observable<TodayExecutedTrade[]> {
     const url = environment.tradingServiceUri + "/orders/executedTrades?day=";
     return this.http.get<TodayExecutedTrade[]>(url+day, { headers: this.createHttpHeaders() });

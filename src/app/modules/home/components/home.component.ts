@@ -12,6 +12,7 @@ import { map } from 'rxjs/operators';
 import { UserService } from '../../shared/services/user.service';
 import { SharedService } from '../../shared/services/shared.service';
 import { SnapTradeService} from '../../snap-trade/snap-trade.service';
+import { OmsService } from '../../shared/services/oms.service';
 
 @Component({
   selector: 'app-home',
@@ -36,6 +37,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   userData: any;
   isBrokerageActive: boolean = false;
   constructor(
+    private _omsService: OmsService,
     private globalStore: Store<fromGlobalConfig.State>,
     private router: Router,
     private notificationService: NotificationService,
@@ -145,15 +147,24 @@ export class HomeComponent implements OnInit, AfterViewInit {
     });
     dialogRef.afterClosed().subscribe(dialogResult => {
       if (dialogResult == true) {
-        this.userService.logoutFromBrokerage('FYERS').subscribe(result => {
+
+        this._omsService.unsubscribeOrderUpdates('FYERS').subscribe(result => {
+          debugger;
           if(result){
-          sessionStorage.removeItem('isBrokerageActive');
-          this.isBrokerageActive = false;
-          this._sharedService.sessionActiveEvent.emit(false);
-          this.router.navigate(['/dashboard']);
+            this.userService.logoutFromBrokerage('FYERS').subscribe(result => {
+              if(result){
+              sessionStorage.removeItem('isBrokerageActive');
+              this.isBrokerageActive = false;
+              this._sharedService.sessionActiveEvent.emit(false);
+              this.router.navigate(['/dashboard']);
+              }
+            }, err => {
+              console.log("Error while exiting session "+JSON.stringify(err));
+              this.toastr.error('Failed to exit session', 'Error');
+            });
           }
         }, err => {
-          console.log("Error while exiting session "+JSON.stringify(err));
+          console.log("Error while unsubscribing order update "+JSON.stringify(err));
           this.toastr.error('Failed to exit session', 'Error');
         });
       }
@@ -325,6 +336,11 @@ export class HomeComponent implements OnInit, AfterViewInit {
   fyersLogin(){
     this.userService.fyersLogin().subscribe(response => {
       if (response != null) {
+        this._omsService.subscribeToOrderUpdates().subscribe(response => {
+          if("Success" === response){
+            console.log("Successfully subscribed to fyers order updates");
+          }
+        });
         console.log("response");
         const location = response['redirectUri'];
         if (location) {

@@ -28,6 +28,7 @@ import $ from "jquery";
 import { DailyWorkspace } from '../models/daily-workspace.model';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { SharedService } from '../../shared/services/shared.service';
+import { OmsService } from '../../shared/services/oms.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -58,6 +59,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   fiveRowsCalendar: boolean = true;
 
   constructor(
+    private omsService: OmsService,
     private router: Router, private ref: ChangeDetectorRef, private tradePlanService: TradePlansService, private reportDataService: ReportDataService,
     private userService: UserService,
     private _dialog: MatDialog,
@@ -249,6 +251,11 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       if(isBrokerageActive){
         sessionStorage.setItem("isBrokerageActive","true");
         this._sharedService.sessionActiveEvent.emit(true);
+        this.omsService.subscribeToOrderUpdates().subscribe(response => {
+          if("Success" === response){
+            console.log("Successfully subscribed to fyers order updates");
+          }
+        });
       } else{
         sessionStorage.setItem("isBrokerageActive","false");
         this._sharedService.sessionActiveEvent.emit(false);
