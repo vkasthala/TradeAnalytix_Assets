@@ -35,7 +35,6 @@ nav {
 // Hero Section for Desktop
 .hero-title {
     font-family: 'Inter', sans-serif !important;
-    font-size: 1.6rem;
     max-width: 75%;  
     align-items: center;
     justify-content: center;
@@ -50,7 +49,6 @@ nav {
     color: #000000;
     font-size: 3rem;
     line-height: 1.3;
-    // text-decoration: none;
   }
 
   .hero-title .feature {
@@ -68,19 +66,19 @@ nav {
   }
 
 /* Hero Section Responsive Adjustments*/
-@media (max-width: 1024px) { /* Targeting tablets in landscape and lower */
+@media (max-width: 1024px) {  
     .banner-section {
-        padding-top: 60px; /* Increased top padding for more space */
-        padding-bottom: 30px; /* Optional: add more space at the bottom */
+        padding-top: 60px; 
+        padding-bottom: 30px;  
     }
     .hero-title {
-        font-size: 3rem; /* Slightly smaller */
+        font-size: 2.8rem;  
         max-width: 100%;
         line-height: 1.1;
     }
 
     .hero-title .feature, .hero-title .subtext {
-        font-size: 1.3rem; /* Adjusting accordingly */
+        font-size: 1.3rem;  
         max-width: 100%;
     }
 
@@ -95,7 +93,7 @@ nav {
     }
     
     .hero-title {
-        font-size: 3rem; /* Further reducing size */
+        font-size: 2.8rem; /* Further reducing size */
         margin-top: 30px; /* Extra margin for more vertical space */
         padding: 10px 10px; /* Maintain padding on the sides */
         max-width: 100%;
@@ -118,7 +116,7 @@ nav {
     }
 
     .hero-title {
-        font-size: 3rem; /* Increasing font size for better readability */
+        font-size: 2.7rem; /* Increasing font size for better readability */
         padding: 10px 5px; /* Maintain padding on the sides */
         margin-top: 50px; /* Extra margin for more vertical space */
         line-height: 1.1;
@@ -154,7 +152,7 @@ nav {
     }
 
     .hero-title {
-        font-size: 3rem; /* Adjusted font size for small screens */
+        font-size: 2.6rem; /* Adjusted font size for small screens */
         margin-top: 20px; /* Less margin due to smaller screen size */
         line-height: 1.1;
         max-width: 100%;
@@ -396,6 +394,7 @@ h2 {
         line-height: 1;
         text-align: center;
         justify-content: center; 
+        max-width: 100%; 
     }
 
     //for RWD
@@ -1257,7 +1256,7 @@ input:checked~.accordion-content {
     margin-bottom: 30px;
 }
 .blog-box {
-    background-color: #F1F9FF;
+    background-color: #ffffff;
     padding: 15px;
     font-size: 0.813rem;
     color: #000000;
@@ -1343,7 +1342,7 @@ input:checked~.accordion-content {
 
 .how-it-works p {
     color: #58595B;
-    max-width: 70%; /* Limited width for better readability */
+    max-width: 86%; /* Limited width for better readability */
     align-content: center;
     margin: auto;
     margin-bottom: 50px;
