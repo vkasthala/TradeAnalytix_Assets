@@ -35,6 +35,8 @@ export class AutoImportTradeComponent implements OnInit {
   userData: any;
   startDate:string;
   endDate:string;
+  accounts:any;
+  accountNames:any;
 
   constructor(
     private uploadService: UploadFileService,
@@ -49,10 +51,12 @@ export class AutoImportTradeComponent implements OnInit {
   ) {
     console.log('plaidToken',this.plaidToken);
     
+    
   }
 
 
   ngOnInit() {
+   
     this.plaidService.sendClickEvent.subscribe((res) => {
       this.plaidToken = res;
     });
@@ -62,8 +66,21 @@ export class AutoImportTradeComponent implements OnInit {
       this.brokerages = result;
     });
     this.loadUserDetails();
+    
   }
+  loadAccountDetails() {
+    this.snapTradeService.getAccounts(this.userData.name,this.userData.userId).subscribe(result => {
+    this.accounts = result;
+    if (this.accounts && this.accounts.length > 0) {
+      this.accountNames = this.accounts.map(account => account.institutionName).join(', ');
+    }
+  },err => {
+   // this.processing = false;
+    console.log("error:", err);
+    window.open(err.error.text, "_blank");
+  });
 
+  }
   importTrades() {
     console.log('selectedbroker------>', this.selectedBrokerage);
     
@@ -86,11 +103,13 @@ export class AutoImportTradeComponent implements OnInit {
     this.userService.getUserDetails().subscribe(res => {
       if (res && res.name) {
         this.userData = res;
+        this.loadAccountDetails();
       }
-    });
+     });
   }
   importSnapTrades() {
     this.processing = true;
+   
     this.snapTradeService.getActivities(this.userData.name,this.userData.userId).subscribe( result => {
       this.processing = false;
       this.showPopup = true;
