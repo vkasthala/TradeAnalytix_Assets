@@ -98,4 +98,20 @@ export class SnapTradeService {
     });
   
   }
+
+  getTransactions(snapUserId: any,cuetradeId:string): Observable<any> {
+    snapUserId = this.suffixCuteTrade(snapUserId);
+    const payload = JSON.stringify({ "snapUserId": snapUserId ,"cuetradeId":cuetradeId});
+    const url =this.snaptradeurl+`/api/users/transactions`;
+    console.log(payload);
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Accept':"application/json"
+    });
+    return this.http.request<any>('POST', `${url}`, {
+      headers: headers,
+      body: payload
+    });
+  
+  }
 }

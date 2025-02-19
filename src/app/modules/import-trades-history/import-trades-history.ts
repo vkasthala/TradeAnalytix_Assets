@@ -21,6 +21,8 @@ import { AutoImportTradePopupComponent } from './auto-import-trade-popup/auto-im
 import { DemoModeDetailsService } from '../shared/services/demo-mode-details.service';
 // import { PlaidService } from './services/plaid.service'; // Venkat commented on 1/26/2025
 import { AutoImportTradeComponent } from './auto-import-trade/auto-import-trade.component'
+import { SnapTradeService } from '../snap-trade/snap-trade.service';
+import { UserService } from '../shared/services/user.service';
 
 
 @Component({
@@ -42,6 +44,8 @@ export class ImportTradesHistory implements AfterViewInit, OnInit {
  
   dataSource: ImportTradesGridStore;
   importTradesGridRequest: ImportTradesGridRequest = this.getInitialRequest();
+  userData: any;
+  trades: any[] = [];
 
   constructor(private importTradesGridService: ImportTradesGridService,
     private tradeStrategyService: TradeStrategyService,
@@ -53,6 +57,8 @@ export class ImportTradesHistory implements AfterViewInit, OnInit {
     private _dialog: MatDialog,
     private utilService: UtilService,
     private myElement: ElementRef,
+    private snapTradeService:SnapTradeService,
+    private userService:UserService
     // private plaidService: PlaidService,  // Venkat commented on 1/26/2025
     //public dialogRef: MatDialogRef<ImportTradePopupComponent>  // Venkat commented on 1/26/2025
   ) {  
@@ -62,6 +68,7 @@ export class ImportTradesHistory implements AfterViewInit, OnInit {
   ngOnInit() {
     this.dataSource = new ImportTradesGridStore(this.importTradesGridService);
     this.loadPage();
+    this.loadUserDetails();
   }
 
   loadPage() {
@@ -228,7 +235,25 @@ export class ImportTradesHistory implements AfterViewInit, OnInit {
 
   }
 
+  loadUserDetails() {
+    this.userService.getUserDetails().subscribe(res => {
+      if (res && res.name) {
+        this.userData = res;
+        this.loadTransactionDetails();
+      }
+     });
+  }
+  loadTransactionDetails() {
+    this.snapTradeService.getTransactions(this.userData.name,this.userData.userId).subscribe(result => {
+    this.trades = result;
+   
+  },err => {
+   // this.processing = false;
+    console.log("error:", err);
+    window.open(err.error.text, "_blank");
+  });
 
+  }
 }
 
 
