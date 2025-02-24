@@ -13,7 +13,7 @@
         </div>
         <header *ngIf="!isMobileDevice">
             <div class="d-flex">
-                <div class="eight columns">
+                <div class="ten columns">
                     <div class="instrument">
                         <span class="transaction-type">{{margins.type}}</span>
                         <span class="tradingsymbol ml-2">
@@ -28,7 +28,21 @@
                         </div>
                     </div>
                 </div>
-                <div class="four columns text-right">
+
+                <div class="twelve columns">
+                    <div class="instrument">
+                        <span class="transaction-type">
+                            Day's Range: {{margins.todayLow}} - {{margins.todayHigh}}
+                        </span>
+                    </div>
+                    <div class="su-radio-group">
+                        <span class="transaction-type">
+                            Prev Close: {{margins.previousDayClose}} &nbsp; Volume: {{margins.volume}}
+                        </span>
+                    </div>
+                </div>
+
+                <div class="two columns text-right">
                     <div class="wrap-right">
 
                         <div>
@@ -81,7 +95,7 @@
                                     <input type="number" name="quantity" autocorrect="off" min="1" step="1"
                                         autofocus="autofocus" nativeerror="true" staticlabel="true" animate="true"
                                         dynamicwidthsize="8" [value]="margins.quantity" [(ngModel)]="margins.quantity"
-                                        (input)="changeOrderQty($event)" />
+                                        (input)="changeOrderQty($event)" (blur)="onBlurEvent($event)"/>
                                 </div>
                             </div>
                             <div class="four columns price">

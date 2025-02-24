@@ -22,4 +22,5 @@ export class SymbolSearchModel {
     expiryDate: string | undefined;
     segment: string | undefined;
     strike: number | undefined;
+    lot_size: number | undefined;
 }

@@ -149,7 +149,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
       if (dialogResult == true) {
 
         this._omsService.unsubscribeOrderUpdates('FYERS').subscribe(result => {
-          debugger;
           if(result){
             this.userService.logoutFromBrokerage('FYERS').subscribe(result => {
               if(result){

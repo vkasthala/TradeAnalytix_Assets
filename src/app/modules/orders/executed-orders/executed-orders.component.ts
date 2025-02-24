@@ -61,7 +61,7 @@ export class ExecutedOrdersComponent implements OnInit {
     let ruleCheckPayload: OrderRuleCheckRequest = {} as OrderRuleCheckRequest;
     ruleCheckPayload.orderType = order.order_type;
     ruleCheckPayload.productType = order.product;
-    ruleCheckPayload.tradeType = order.tradeType ? order.tradeType : 'STOCK';
+    ruleCheckPayload.tradeType = order.tradeType;
     ruleCheckPayload.limitPrice = order.limitPrice;
     ruleCheckPayload.stopPrice = order.trigger_price;
     ruleCheckPayload.quantity = order.placedQty;

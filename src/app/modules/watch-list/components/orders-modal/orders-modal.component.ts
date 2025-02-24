@@ -8,6 +8,7 @@ import { IntradayOrderPopupComponent } from '../intraday-order-popup/intraday-or
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DatePipe } from '@angular/common';
 import { OrderRuleCheckRequest, OrderRuleDto, OrderRuleResponse } from 'src/app/modules/shared/models/orders.model';
+import { PriceUpdateWebsocketService } from 'src/app/modules/shared/services/websocket/price-update-websocket.service';
 
 @Component({
   selector: 'app-orders-modal',
@@ -23,6 +24,7 @@ export class OrdersModalComponent implements OnInit {
   ltp: number = 0;
   isMobileDevice: any;
   isButtonEnabled: boolean = true;
+  quantity: number;
 
   loader: boolean = false;
   @Input() isPositionsOrder: boolean=false;
@@ -33,14 +35,17 @@ export class OrdersModalComponent implements OnInit {
     private toastr: ToastrService,
     private _omsService: OmsService,
     private _dialog: MatDialog,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private instrumentPriceUpdateService: PriceUpdateWebsocketService
   ) { }
 
   ngOnInit() {
     this.isOrderModify = this.margins.orderId != null;
     this.orderPlacementPrice = this.margins.price;
     this.ltp = this.margins.price;
+    this.quantity = this.margins.quantity;
     this.checkDevice();
+    this.subscribeSymbolsPriceUpdate();
   }
 
   closePopup() {
@@ -241,9 +246,16 @@ export class OrdersModalComponent implements OnInit {
 
   changeOrderQty(event:any) {
     let val = event.target.value;
+    if(this.margins.tradeType == 'STOCK'){
     if(val < 0) {
       this.margins.quantity = Math.abs(val);
     }
+  }
+  if(this.margins.tradeType == 'OPTION'){
+    if(this.margins.quantity % this.quantity != 0){
+      return;
+    }
+  }
     this.calculateMargin();
   }
 
@@ -337,7 +349,17 @@ export class OrdersModalComponent implements OnInit {
   }
 
   onBlurEvent(event: any) {
+    this.isButtonEnabled = true;
     let price = this.getPrice();
+    if(event.target.name === 'quantity' && this.margins.tradeType == 'OPTION'){
+      if(this.margins.quantity % this.quantity != 0){
+        this.isButtonEnabled = false;
+        let message = "Quantity has to be multiple of "+this.quantity;
+        this.toastr.error(message, 'Error', {timeOut: 3000});
+        this._sharedService.loaderEvent.emit(false);
+        return;
+      }
+    }
     if (event.target.name === 'price' && !this.isValid(price)){
       this.displayNearestValidPriceErrorMsg(price);
       this._sharedService.loaderEvent.emit(false);
@@ -387,6 +409,27 @@ export class OrdersModalComponent implements OnInit {
         this.isMobileDevice = false;
       }
     }, 100)
+  }
+
+  subscribeSymbolsPriceUpdate() {
+    if (this.margins.trading_symbol) {
+      this.instrumentPriceUpdateService.joinRoom(this.instrumentPriceUpdateService.userId);
+          let callback = (data: any) => {
+            this.updateChangeProps(data);
+          };
+          this.instrumentPriceUpdateService.initPriceUpdateSubscription(this.margins.trading_symbol, [callback]);
+          // this.quoteUpdateService.subscribePriceUpdate(holding.instrument.symbolId, callback);
+    }
+  }
+
+  updateChangeProps(data: any) {
+      if(this.margins.trading_symbol === data.symbol){
+        this.margins.ltp = data.ltp;
+        this.margins.previousDayClose = data.previousDayClose;
+        this.margins.todayLow = data.todayLow;
+        this.margins.todayHigh = data.todayHigh;
+        this.margins.volume = data.volume;
+      }
   }
 
 }

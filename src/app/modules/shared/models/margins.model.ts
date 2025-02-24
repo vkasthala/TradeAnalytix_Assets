@@ -34,4 +34,11 @@ export class Margins {
     charges: number | undefined;
     availableMargin: number | undefined;
     trading_symbol: string | undefined;
+    symbolType: string | undefined;
+
+    
+    previousDayClose: number | undefined;
+    todayLow: number | undefined;
+    todayHigh: number | undefined;
+    volume: number | undefined;
 }

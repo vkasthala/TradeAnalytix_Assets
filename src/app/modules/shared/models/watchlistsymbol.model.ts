@@ -5,6 +5,7 @@ export class Watchlistsymbol {
     exchange: string;
     expiry: string;
     segment: string;
+    lot_size: number;
     sequence: number;
     instrument_token: string;
     trading_symbol: string;
@@ -19,6 +20,11 @@ export class Watchlistsymbol {
     change: number | undefined;
     changePercent: number | undefined;
     winFlag: boolean | undefined;
+
+    previousDayClose: number | undefined;
+    todayLow: number | undefined;;
+    todayHigh: number | undefined;;
+    volume: number | undefined;;
 
     updateChangeProps() {
         if (!this.price) {

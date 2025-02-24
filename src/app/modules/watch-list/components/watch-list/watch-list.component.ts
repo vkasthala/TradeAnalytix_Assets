@@ -287,10 +287,13 @@ export class WatchListComponent implements OnInit {
     console.log($event);
     let tradingsymbol = $event.symbol ? $event.symbol : $event.trading_symbol;
 
+    //If segment is 11, it is OPTION. If segment is 10 , it is STOCK 
+    let qty = $event.segment == 11 ? $event.lotSize : 1;
+
     const defaultOrderRequest = {
       orderType: "MARKET",
       productType: "MIS",
-      quantity: 1,
+      quantity: qty,
       symbol: tradingsymbol,
       transactionType: $event.transaction_type,
       limitPrice: 0,
@@ -321,7 +324,7 @@ export class WatchListComponent implements OnInit {
     this.marginsSource = $event;
     this.marginsSource.product = "MIS";
     this.marginsSource.order_type = "MARKET";
-    this.marginsSource.quantity = 1;
+    this.marginsSource.quantity = qty;
     this.marginsSource.variety= "regular";
     this.marginsSource.trigger_price= $event.price;
     // this.orderToggle = true;
@@ -333,7 +336,12 @@ export class WatchListComponent implements OnInit {
     this.marginsSource.instrument = {'symbol':tradingsymbol, 'symbolId':$event.token ? $event.token : $event.instrument_token, 'exchange':'', actualSymbol:''};
     this.marginsSource.price = $event.price;
     this.marginsSource.expiry = $event.expiryDate ? $event.expiryDate : $event.expiry;
-    this.marginsSource.tradeType = $event.instrumenType == 14 ? 'OPTION' : 'STOCK';
+    //If segment is 11, it is OPTION. If segment is 10 , it is STOCK 
+    this.marginsSource.tradeType = $event.segment == 11 ? 'OPTION' : 'STOCK';
+    this.marginsSource.previousDayClose = $event.previousDayClose;
+    this.marginsSource.todayLow = $event.todayLow;
+    this.marginsSource.todayHigh = $event.todayHigh;
+    this.marginsSource.volume = $event.volume;
     return this.marginsSource;
   }
 
