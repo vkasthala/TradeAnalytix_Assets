@@ -1,23 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&family=Montserrat&display=swap');
 
+$font-family: 'Inter', sans-serif !important;
+$primary-color: #1958BF;
+$secondary-color: #58595B;
+$highlight-color: #4BB964;
+$background-color: #F1F9FF;
 
 body {
-    font-family: 'Inter', sans-serif !important;
+    font-family: $font-family;
     overflow-x: hidden; /* Prevent horizontal scrolling RWD */
     max-width: 100%; /* Prevents the body from extending beyond viewport RWD*/
 }
+
 input,
 button,
 select,
 optgroup,
-textarea {
-    font-family: 'Inter', sans-serif !important;
-}
+textarea,
 nav {
-    font-family: 'Inter', sans-serif !important;
-    font-weight: 500;
-    font-size: 1.125rem;
-    color: #000 !important;
+    font-family: $font-family;
 }
 
 .nav-item {
@@ -26,6 +27,7 @@ nav {
 
 .nav-link {
     color: #000 !important;
+    font-size: 1.1rem;
 }
 
 .navbar-collapse {
@@ -34,36 +36,46 @@ nav {
 
 // Hero Section for Desktop
 .hero-title {
-    font-family: 'Inter', sans-serif !important;
-    max-width: 75%;  
+    font-family: $font-family;
+    max-width: 100%;  
     align-items: center;
     justify-content: center;
     line-height: 1.3;
     margin: 0 auto; 
-    text-align: center;
+    text-align: left;
     color: #000000;
-  }
+    padding: 20px;
+}
   
-  .hero-title .neutral {
+.hero-title .neutral {
     font-weight: 600;
     color: #000000;
     font-size: 3rem;
     line-height: 1.3;
-  }
+}
 
-  .hero-title .feature {
+.hero-title .feature {
     font-weight: 600;
     font-size: 1.3rem;
-    color: #1958BF;
+    color: $primary-color;
     line-height: 1.3;
-  }
+}
   
-  .hero-title .subtext {
+.hero-title .subtext {
     font-size: 1.3rem;
-    color: #58595B;
+    color: $secondary-color;
     font-weight: 500;
-    line-height: 1.1;
-  }
+    line-height: 1.3;
+}
+
+.hero-image {
+    width: 100%; /* Ensure the image takes full width */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 20px;
+    padding: 20px;
+    display: block; /* Ensure the image is displayed as a block element */
+    margin: 0 auto; /* Center the image horizontally */
+}
 
 /* Hero Section Responsive Adjustments*/
 @media (max-width: 1024px) {  
@@ -98,6 +110,7 @@ nav {
         padding: 10px 10px; /* Maintain padding on the sides */
         max-width: 100%;
         line-height: 1.1;
+        text-align: center;
     }
 
     .hero-title .feature, .hero-title .subtext {
@@ -107,6 +120,10 @@ nav {
 
     .subtext-line {
         line-height: 1;
+    }
+
+    .hero-image {
+        margin: 0 auto;
     }
 }
 
@@ -169,14 +186,17 @@ nav {
 }
 
 .benefits {
-    font-family: 'Inter', sans-serif !important;
+    font-family: $font-family;
     font-weight: 700 !important;
     padding-top: 0px; 
     padding-bottom: 10px;
     margin-top: 1px;
     text-align: center;
     font-size:2.5rem;
-    background-color: #F1F9FF;
+    background-color: $background-color;
+    display: flex;
+    justify-content: center;
+    margin-top:50px;
 }
 
 h1,
@@ -185,7 +205,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'Inter', sans-serif !important;
+    font-family: $font-family;
     font-weight: 700 !important;
 }
 
@@ -211,7 +231,7 @@ h2 {
 }
 
 .banner-section {
-    font-family: 'Inter', sans-serif !important;
+    font-family: $font-family;
     background-size: cover;
     background-color: #ffffff;
     background-position: center;
@@ -222,14 +242,14 @@ h2 {
 }
 
 .banner-section h1 {
-    font-family: "Inter", sans-serif !important;
+    font-family: $font-family;
     color: #000000;
     font-size: 2.875rem;
 }
 
 .banner-section p {
-    font-family: 'Inter', sans-serif !important;
-    color: #58595B;
+    font-family: $font-family;
+    color: $secondary-color;
     font-size: 1.125rem;
     margin-left: 325px;  
     margin-right: 325px;
@@ -237,8 +257,8 @@ h2 {
    }
 
 .btn-banner {
-    font-family: 'Inter', sans-serif !important;
-    background-color: #4BB964;
+    font-family: $font-family;
+    background-color: $highlight-color;
     padding: 16px 20px;
     border: none;
     color: #fff;
@@ -248,11 +268,11 @@ h2 {
     margin-bottom: 1rem;
     border-radius: 4px;
     font-size: 1.2rem;
-    margin-left:-22px;
+    // margin-left: 0 !important; /* Align button to the left */
 }
 
 .btn-how-banner {
-    font-family: 'Inter', sans-serif !important;
+    font-family: $font-family;
     background-color: #2469FF;
     padding: 14px 50px;
     border: 2px solid #2469FF;
@@ -264,11 +284,11 @@ h2 {
 }
 
 .cue-logo img {
-    width: 80%;
+    width: 75%;
     }
 
 .benefits-subtext {
-    color: #58595B; 
+    color: $secondary-color; 
     font-size: 1.2rem; 
     line-height: 1.5; 
     max-width: 80%; 
@@ -354,7 +374,7 @@ h2 {
         }
 
     .banner-section h1 {
-        font-family: 'Inter', sans-serif !important;
+        font-family: $font-family;
         color: #000000;
         font-size: 2.25rem;
         margin-left: 0; 
@@ -363,8 +383,8 @@ h2 {
         }
 
     .banner-section p {
-        font-family: 'Inter', sans-serif !important;
-        color: #58595B;
+        font-family: $font-family;
+        color: $secondary-color;
         font-size: 1.125rem;
         margin-left: 10px;  
         margin-right: 10px;
@@ -389,7 +409,7 @@ h2 {
     }
     
     .how-it-works p {
-        color: #58595B;
+        color: $secondary-color;
         font-size: 1.2rem;
         line-height: 1;
         text-align: center;
@@ -411,19 +431,19 @@ h2 {
     }
 
 .brands-sec {
-    font-family: 'Inter', sans-serif !important;
+    font-family: $font-family;
     background: #fff;
     padding: 40px 0px;                                 
 }
 
 .brands-sec h5 {
-    color: #58595B;
+    color: $secondary-color;
     font-size: 1rem;
     text-align: center;
 }
 
 .how-works {
-    font-family: 'Inter', sans-serif !important;
+    font-family: $font-family;
     background: #ffffff;
     padding: 30px 10px;
 }
@@ -455,7 +475,7 @@ h2 {
 .carousel-indicators [data-bs-target], .owl-dot {
     height: 12px;
     width: 12px;
-    background-color: #135EA4 !important;
+    background-color: $primary-color !important;
 }
 }
 
@@ -471,7 +491,7 @@ h2 {
 
 
 .how-works h2 {
-    font-family: 'Inter', sans-serif !important;
+    font-family: $font-family;
     color: #000;
     font-size: 2.75rem;
     text-align: center;
@@ -490,8 +510,8 @@ h2 {
 }
 
 .how-works h3 {
-    font-family: 'Inter', sans-serif !important;
-    color: #135EA4;
+    font-family: $font-family;
+    color: $primary-color;
     font-weight: 700;
     font-size: 2.25rem;
     line-height: 52px;
@@ -500,11 +520,11 @@ h2 {
 }
 
 .how-works p {
-    font-family: 'Inter', sans-serif !important;
+    font-family: $font-family;
     text-align: center;
     font-size: 1.125rem;
     padding: 0px 80px;
-    color: #58595B;
+    color: $secondary-color;
 }
 
 @media only screen and (max-width: 600px) {
@@ -527,7 +547,7 @@ h2 {
 .how-works li {
     font-weight: 400;
     font-size: 1.25rem;
-    color: #58595B;
+    color: $secondary-color;
     padding-bottom: 1rem;
 }
 .slide-content {
@@ -559,23 +579,23 @@ h2 {
 }
 
 .cue-help {
-    font-family: 'Inter', sans-serif !important;
+    font-family: $font-family;
 }
 .cue-help h3 {
-    color: #1958BF;
+    color: $primary-color;
     font-weight: 700;
     font-size: 1.75rem;
     letter-spacing: 0.5px;
-    font-family: 'Inter', sans-serif !important;
+    font-family: $font-family;
 }
 
 .cue-help p {
-    color: #58595B;
+    color: $secondary-color;
     font-weight: 400;
     font-size: 1.125rem;
     line-height: 30px;
     letter-spacing: 0.3px;
-    font-family: 'Inter', sans-serif !important;
+    font-family: $font-family;
 }
 
 .cue-help-icon {
@@ -596,7 +616,7 @@ h2 {
     }
 
     .cue-help p {
-        color: #58595B;
+        color: $secondary-color;
         font-weight: 400;
         font-size: 1rem;
         line-height: 30px;
@@ -619,12 +639,12 @@ h2 {
 .cue-features {
     background-color: #F1F5F9;
     padding: 4rem 1.5rem;
-    font-family: 'Inter', sans-serif !important;
+    font-family: $font-family;
 }
 
 .cue-features p {
     font-size: 1.125rem;
-    font-family: 'Inter', sans-serif !important;
+    font-family: $font-family;
 }
 
 @media only screen and (max-width: 600px) {
@@ -639,7 +659,7 @@ h2 {
     margin: 70px auto;
     padding: 0 5%;
     position: relative;
-    font-family: 'Inter', sans-serif !important;
+    font-family: $font-family;
 }
 
 /* fix blank or flashing items on carousel */
@@ -676,7 +696,7 @@ h2 {
     background-color: #FFFFFF;
     padding: 20px;
     border-radius: 12px;
-    font-family: 'Inter', sans-serif !important;
+    font-family: $font-family;
     margin-bottom: 1rem;
 }
 
@@ -686,12 +706,12 @@ h2 {
 }
 
 .feature-box h4 {
-    color: #135EA4;
+    color: $primary-color;
     font-weight: 700;
     font-size: 1.25rem;
     line-height: 32px;
     letter-spacing: 0.5px;
-    font-family: 'Inter', sans-serif !important;
+    font-family: $font-family;
 }
 
 .feature-box p {
@@ -700,12 +720,12 @@ h2 {
     line-height: 19px;
     letter-spacing: 0.30000001192092896px;
     text-align: left;
-    color: #58595B;
-    font-family: 'Inter', sans-serif !important;
+    color: $secondary-color;
+    font-family: $font-family;
 }
 .feature-description {
     color: #212529;
-    font-family: 'Inter', sans-serif !important;
+    font-family: $font-family;
 }
 
 
@@ -713,12 +733,12 @@ h2 {
 
 .cue-testi {
     padding: 4rem 1.5rem;
-    font-family: 'Inter', sans-serif !important;
+    font-family: $font-family;
 }
 
 .cue-testi p {
     font-size: 1.125rem;
-    font-family: 'Inter', sans-serif !important;
+    font-family: $font-family;
 }
 
 @media only screen and (max-width: 600px) {
@@ -792,17 +812,17 @@ h2 {
     letter-spacing: 0px;
     text-align: left;
     text-align: left;
-    color: #58595B;
+    color: $secondary-color;
 }
 
 .testimonial-copy h4 {
-    font-family: 'Inter', sans-serif;
+    font-family: $font-family;
     font-size: 1.25rem;
     font-weight: 700;
     line-height: 24px;
     letter-spacing: 0.5px;
     text-align: left;
-    color: #135EA4;
+    color: $primary-color;
     text-align: left;
 }
 
@@ -822,8 +842,8 @@ h2 {
     font-weight: 700 !important;
    // line-height: 52px;
     letter-spacing: 0.5px;
-    background-color: #F1F9FF;
-    font-family: 'Inter', sans-serif !important;
+    background-color: $background-color;
+    font-family: $font-family;
     color: #000;
     margin-top: 2rem;
     margin-bottom: 2rem;
@@ -835,13 +855,13 @@ h2 {
     position: absolute;
     opacity: 0;
     z-index: -1;
-    background-color: #F1F9FF;
+    background-color: $background-color;
 }
 
 .accordion {
     width: 100%;
-    color: #F1F9FF;
-    background-color: #F1F9FF;
+    color: $background-color;
+    background-color: $background-color;
     overflow: hidden;
     margin-bottom: 4px;
 
@@ -852,7 +872,7 @@ h2 {
 }
 
 .accordion-label {
-    font-family: 'Inter', sans-serif;
+    font-family: $font-family;
     display: flex;
     -webkit-box-pack: justify;
     justify-content: space-between;
@@ -872,7 +892,7 @@ h2 {
 }
 
 .accordion-label:hover {
-    font-family: 'Inter', sans-serif;
+    font-family: $font-family;
     background: #fff;
     color: #000000;
 }
@@ -898,8 +918,8 @@ h2 {
 
 .accordion-content p {
     margin: 0;
-    color: #58595B;
-    font-family: 'Inter', sans-serif;
+    color: $secondary-color;
+    font-family: $font-family;
     font-size: 0.938rem;
     font-weight: 400;
     line-height: 30px;
@@ -918,8 +938,8 @@ h2 {
 
 .accordion-content ul {
     margin: 0;
-    color: #58595B;
-    font-family: 'Inter', sans-serif;
+    color: $secondary-color;
+    font-family: $font-family;
     font-size: 1rem;
     font-weight: 400;
     line-height: 32px;
@@ -940,7 +960,7 @@ h2 {
 }
 
 input:checked+.accordion-label {
-    font-family: 'Inter', sans-serif;
+    font-family: $font-family;
     background: #fff;
     color: #000000;
     font-weight: 700;
@@ -980,7 +1000,7 @@ input:checked~.accordion-content {
 }
 
 .cta-box button {
-    background-color: #4BB964;
+    background-color: $highlight-color;
     padding: 16px 16px;
     border-radius: 4px;
     color: #fff;
@@ -1009,7 +1029,7 @@ input:checked~.accordion-content {
 /* footer */
 
 .cue-footer {
-    font-family: 'Inter', sans-serif !important;
+    font-family: $font-family;
     background-color: #121D33;
     padding-top: 65px;
     padding-bottom: 1px;
@@ -1023,14 +1043,14 @@ input:checked~.accordion-content {
 
 .cue-footer p {
     color: #D3D6D8;
-    font-family: 'Inter', sans-serif !important;
+    font-family: $font-family;
     font-size:1rem;
     width:500px;
 }
 
 .cue-footer h4 {
     color: #D3D6D8;
-    font-family: 'Inter', sans-serif !important;
+    font-family: $font-family;
     margin-top:24px;
     font-size:15px;
     font-weight:700;
@@ -1049,7 +1069,7 @@ input:checked~.accordion-content {
 }
 
 .cue-footer li a:hover {
-    color: #4BB964;
+    color: $highlight-color;
 }
 
 .cue-footer ul {
@@ -1088,7 +1108,7 @@ input:checked~.accordion-content {
 }
 
 .social-icons li a:hover {
-    color: #4AB565;
+    color: $highlight-color;
 }
 
 .splide__slide img {
@@ -1117,7 +1137,7 @@ input:checked~.accordion-content {
 }
 
 .cta-box button {
-    background-color: #4BB964;
+    background-color: $highlight-color;
     padding: 16px 16px;
     border-radius: 4px;
     color: #fff;
@@ -1156,7 +1176,7 @@ input:checked~.accordion-content {
 }
 
 .btn-success {
-    background-color: #4BB964; padding: 9px 40px !important; margin-right: 30px; border: none;
+    background-color: $highlight-color; padding: 9px 40px !important; margin-right: 30px; border: none;
 }
 
 
@@ -1195,17 +1215,17 @@ input:checked~.accordion-content {
     letter-spacing: 0px;
     text-align: left;
     text-align: left;
-    color: #58595B;
+    color: $secondary-color;
 }
 
 .testimonial-copy h4 {
-    font-family: 'Inter', sans-serif;
+    font-family: $font-family;
     font-size: 1.25rem;
     font-weight: 700;
     line-height: 24px;
     letter-spacing: 0.5px;
     text-align: left;
-    color: #125DA1;;
+    color: $primary-color;;
     text-align: left;
 }
 
@@ -1235,8 +1255,8 @@ input:checked~.accordion-content {
 }
 
 .blog-section {
-    font-family: 'Inter', sans-serif !important;
-    background-color: #F1F9FF;
+    font-family: $font-family;
+    background-color: $background-color;
     background-position: center;
     justify-content: center;
     padding: 40px 50px; /* Adjusted padding for better spacing */
@@ -1245,7 +1265,7 @@ input:checked~.accordion-content {
     text-align: center; 
 }
 .blog-section h2 {
-    font-family: 'Inter', sans-serif !important;
+    font-family: $font-family;
     color: #000;
     font-size: 2.75rem;
     text-align: center;
@@ -1260,7 +1280,7 @@ input:checked~.accordion-content {
     padding: 15px;
     font-size: 0.813rem;
     color: #000000;
-    font-family: 'Inter', sans-serif !important;
+    font-family: $font-family;
     box-shadow: 0 0 5px rgb(201 201 201 / 80%);
     margin: 5px;
     position: relative;
@@ -1273,7 +1293,7 @@ input:checked~.accordion-content {
     font-size: 1.25rem;
     line-height: 28px;
     letter-spacing: 0.5px;
-    font-family: 'Inter', sans-serif !important;
+    font-family: $font-family;
     margin-bottom: .5rem;
 }
     
@@ -1282,18 +1302,18 @@ input:checked~.accordion-content {
     font-weight: 400;
     line-height: 19px;
     text-align: left;
-    color: #58595B;
-    font-family: 'Inter', sans-serif !important;
+    color: $secondary-color;
+    font-family: $font-family;
     margin-bottom: .5rem;
 }
 .blog-linkText {
-    color: #135EA4;
+    color: $primary-color;
     text-decoration: none;
     font-size: 0.875rem;
     font-weight: 600;
 }
 .blog-box:hover .blog-linkText {
-    color: #135EA4;
+    color: $primary-color;
 }
 .blog-box::after {
     clear: both;
@@ -1301,7 +1321,7 @@ input:checked~.accordion-content {
     display: table;
 }
 .blog-box:hover::after {
-    border-bottom: 3px solid #135EA4;
+    border-bottom: 3px solid $primary-color;
     bottom: -1px;
     left: -1px;
     margin-left: 0;
@@ -1315,14 +1335,8 @@ input:checked~.accordion-content {
     display: block;
 }
 
-.benefits {
-    display: flex;
-    justify-content: center;
-    margin-top:50px;
-  }
-  
 .how-it-works {
-    font-family: 'Inter', sans-serif !important;
+    font-family: $font-family;
     background-size: cover;
     background-color: #ffffff;
     background-position: center;
@@ -1341,7 +1355,7 @@ input:checked~.accordion-content {
 }
 
 .how-it-works p {
-    color: #58595B;
+    color: $secondary-color;
     max-width: 86%; /* Limited width for better readability */
     align-content: center;
     margin: auto;
@@ -1418,7 +1432,7 @@ input:checked~.accordion-content {
 }
 
 .step-number {
-    background-color: #4BB964;
+    background-color: $highlight-color;
     color: #ffffff;
     width: 60px;
     height: 60px;
@@ -1440,16 +1454,16 @@ input:checked~.accordion-content {
 .step-title {
     margin-top: 20px;
     font-size: 1.5rem;
-    color: #1958BF;
+    color: $primary-color;
     font-weight: 600;  
 }
 
 .step-description {
     margin-top: 5px;
     font-size: 1rem;
-    color: #58595B;
+    color: $secondary-color;
     line-height: 1.5;
-    font-family: "Inter", sans-serif !important;
+    font-family: $font-family;
 }
 
 @media (max-width: 600px) {
@@ -1523,7 +1537,7 @@ input:checked~.accordion-content {
   
   .comparison .without, .comparison .with {
     padding: 20px;
-    font-family: 'Inter', sans-serif !important;
+    font-family: $font-family;
     font-size: 1.375rem;
     background: #ffffff;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -1537,7 +1551,7 @@ input:checked~.accordion-content {
   }
   .comparison .with {
     background-color: #ffffff;
-    border: 1px solid #4BB964; /* Solid green border indicating positivity */
+    border: 1px solid $highlight-color; /* Solid green border indicating positivity */
   }
   
   .comparison h2 {
@@ -1555,7 +1569,7 @@ input:checked~.accordion-content {
   
   .comparison li {
     font-size: 1.125rem;
-    color: #58595B;
+    color: $secondary-color;
     line-height: 1.4;
     margin-bottom: 16px;
     display: flex;
@@ -1592,7 +1606,7 @@ input:checked~.accordion-content {
 
 .comparison .with {
     background-color: #ffffff;
-    border: 1px solid #4BB964; /* Solid green border indicating positivity */
+    border: 1px solid $highlight-color; /* Solid green border indicating positivity */
 }
 
 .comparison h2 {
@@ -1610,7 +1624,7 @@ input:checked~.accordion-content {
 
 .comparison li {
     font-size: 1.125rem;
-    color: #58595B;
+    color: $secondary-color;
     line-height: 1.4;
     margin-bottom: 16px;
     display: flex;
@@ -1638,7 +1652,7 @@ input:checked~.accordion-content {
     color: #ffffff;
     text-decoration: none; /* Remove underline */
     font-size: 0.9rem;
-    font-family: 'Inter', sans-serif;
+    font-family: $font-family;
     font-weight: 500;
     transition: color 0.3s ease-in-out; /* Add hover effect */
     padding-top:24px;
@@ -1648,7 +1662,7 @@ input:checked~.accordion-content {
     padding-bottom: 20px; 
     text-align: center;
     font-size:2.5rem;
-    font-family: 'Inter', sans-serif !important;
+    font-family: $font-family;
     font-weight: 700 !important;
     }
 
@@ -1656,7 +1670,7 @@ input:checked~.accordion-content {
     padding-bottom: 20px; 
     text-align: center;
     font-size:2.5rem;
-    font-family: 'Inter', sans-serif !important;
+    font-family: $font-family;
     font-weight: 700 !important;
     }
 
@@ -1665,7 +1679,7 @@ input:checked~.accordion-content {
         padding-bottom: 20px; 
         text-align: center;
         font-size:2.25rem;
-        font-family: 'Inter', sans-serif !important;
+        font-family: $font-family;
         font-weight: 700 !important;
     }
     .cue-help h3 {
@@ -1678,7 +1692,7 @@ input:checked~.accordion-content {
             padding-bottom: 10px; 
             text-align: center;
             font-size:2.25rem;
-            font-family: 'Inter', sans-serif !important;
+            font-family: $font-family;
             font-weight: 700 !important;
         }
 
@@ -1692,7 +1706,7 @@ input:checked~.accordion-content {
             padding-bottom: 10px; 
             text-align: center;
             font-size:2.25rem;
-            font-family: 'Inter', sans-serif !important;
+            font-family: $font-family;
             font-weight: 700 !important;
         }
         
@@ -1707,7 +1721,7 @@ input:checked~.accordion-content {
             padding-bottom: 10px; 
             text-align: center;
             font-size:2.25rem;
-            font-family: 'Inter', sans-serif !important;
+            font-family: $font-family;
             font-weight: 700 !important;
         }
         .cue-help h3 {
@@ -1716,7 +1730,7 @@ input:checked~.accordion-content {
     }
 
     .testimonials {
-        background-color: #F1F9FF;
+        background-color: $background-color;
         padding: 40px 0;
     }
     
@@ -1765,9 +1779,9 @@ input:checked~.accordion-content {
     }
 
     #benefits {
-        background-color: #F1F9FF;
+        background-color: $background-color;
     }
 
     #blogs {
-        background-color: #F1F9FF;
+        background-color: $background-color;
     }

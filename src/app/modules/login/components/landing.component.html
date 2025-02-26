@@ -43,12 +43,13 @@
 
 <section class="">
     <div class="container-fluid banner-section">
-        <div class="align-items-center">
+        <div class="row align-items-center">
+            <div class="col-md-6">
                 <div class="hero-title">
                     <span class="neutral">Trade with Discipline for Better Trades</span>
                     <br>
-                    <br>
-                    <span class="subtext-line">
+                    <!-- <br> -->
+                    <!-- <span class="subtext-line">
                     <span class="subtext">Avoid costly mistakes with </span>
                     <span class="feature">real-time rules</span>
                     <span class="subtext">, </span>
@@ -57,32 +58,17 @@
                     <span class="subtext">, </span>
                     <span class="subtext">and improve with </span>
                     <span class="feature">powerful analytics</span>
-                    </span>
+                    </span> -->
+                    <span class="subtext">Stop emotional trading with real-time rules, instant journaling, and powerful analytics—and start trading with discipline and confidence.</span>
+                    <br>
+                    <br>
+                    <button type="button" class="btn-banner" (click)="login('google')">Try Beta for Free</button>
+                    <a href="#howworks"><button type="button" class="btn-how-banner">How it Works</button></a>
                 </div>
-                <div class="comparison-section">
-                    <div class="comparison">
-                      <div class="without">
-                        <h2>Without CueTrade</h2>
-                        <ul>
-                          <li><i class="icon">⚠️</i>Rules are often ignored, leading to mistakes</li>
-                          <li><i class="icon">⌛</i>Journaling feels tedious and gets delayed</li>
-                          <li><i class="icon">🔍</i>No insights from past trades to improve</li>
-                          <li><i class="icon">❌</i>No planning causes impulsive decisions</li>
-                        </ul>
-                      </div>
-                      <div class="with">
-                        <h2>With CueTrade</h2>
-                        <ul>
-                          <li><i class="icon">✅</i>Trades align with your rules, avoiding mistakes</li>
-                          <li><i class="icon">📝</i>Effortless journaling instantly or anytime later</li>
-                          <li><i class="icon">📊</i>Analytics give insights to refine strategies</li>
-                          <li><i class="icon">📋</i>Trading Plans keep your trades focused on goals</li>
-                        </ul>
-                      </div>
-                    </div>
-                </div>
-                <button type="button" class="btn-banner" (click)="login('google')">Try Beta for Free</button><a href="#howworks"><button
-                        type="button" class="btn-how-banner">How it Works</button></a>
+            </div>
+            <div class="col-md-6">
+                <img src="/Users/venkatkasthala/Documents/Projects/CueTrade/TradeAnalytix_Assets/dist/TradeAnalytics/assets/img/Aug2024Images/hero-image.png" alt="Hero Image" class="hero-image">
+            </div>
         </div>
     </div>
 </section>
@@ -685,4 +671,3 @@
       </div>
     </div>
 </div>
-    
