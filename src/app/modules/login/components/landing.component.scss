@@ -50,7 +50,7 @@ nav {
 .hero-title .neutral {
     font-weight: 600;
     color: #000000;
-    font-size: 3rem;
+    font-size: 2.9rem;
     line-height: 1.3;
 }
 
@@ -65,7 +65,7 @@ nav {
     font-size: 1.3rem;
     color: $secondary-color;
     font-weight: 500;
-    line-height: 1.3;
+    line-height: 1.1;
 }
 
 .hero-image {
@@ -82,14 +82,15 @@ nav {
         padding-bottom: 30px;  
     }
     .hero-title {
-        font-size: 2.8rem;  
+        font-size: 2.7rem;  
         max-width: 100%;
-        line-height: 1.1;
+        line-height: 1.3;
     }
 
     .hero-title .feature, .hero-title .subtext {
         font-size: 1.3rem;  
         max-width: 100%;
+        line-height: 1.1 !important;
     }
 
     .subtext-line {
@@ -103,17 +104,18 @@ nav {
     }
     
     .hero-title {
-        font-size: 2.8rem; /* Further reducing size */
+        font-size: 2.6rem; /* Further reducing size */
         margin-top: 30px; /* Extra margin for more vertical space */
         padding: 10px 10px; /* Maintain padding on the sides */
         max-width: 100%;
-        line-height: 1.1;
+        line-height: 1.3;
         text-align: center;
     }
 
     .hero-title .feature, .hero-title .subtext {
         font-size: 1.3rem;
         max-width: 100%;
+        line-height: 1.1 !important;
     }
 
     .subtext-line {
@@ -131,20 +133,20 @@ nav {
     }
 
     .hero-title {
-        font-size: 2.7rem; /* Increasing font size for better readability */
+        font-size: 2.6rem; /* Increasing font size for better readability */
         padding: 10px 5px; /* Maintain padding on the sides */
         margin-top: 50px; /* Extra margin for more vertical space */
-        line-height: 1.1;
+        line-height: 1.3;
         max-width: 100%;
     }
 
     .hero-title .feature, .hero-title .subtext {
         font-size: 1.3rem; /* Slightly larger for better visibility */
         max-width: 100%;
-        line-height: 1 !important; /* Reducing line height to tighten space between lines */
         margin: 0; /* Remove any default margins */
         padding: 0; /* Remove any default padding */
         display: inline; /* Ensure inline display to avoid unwanted breaks */
+        line-height: 1.1 !important;
     }
 
     .hero-title .subtext::after {
@@ -173,13 +175,14 @@ nav {
     .hero-title {
         font-size: 2.6rem; /* Adjusted font size for small screens */
         margin-top: 20px; /* Less margin due to smaller screen size */
-        line-height: 1.1;
+        line-height: 1.3;
         max-width: 100%;
     }
 
     .hero-title .feature, .hero-title .subtext {
         font-size: 1.3rem; /* Increase font size slightly for readability */
         max-width: 80%;
+        line-height: 1.1 !important;
     }
 
     .subtext-line {
@@ -240,7 +243,7 @@ h2 {
     justify-content: center;
     text-align: center;  
     padding: 80px 5%;  
-    margin-top: 12vh;  
+    margin-top: 6rem;  
 }
 
 .banner-section h1 {
