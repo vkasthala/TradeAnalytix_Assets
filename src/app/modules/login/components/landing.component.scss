@@ -71,8 +71,6 @@ nav {
 .hero-image {
     width: 100%; /* Ensure the image takes full width */
     height: auto; /* Maintain aspect ratio */
-    margin-bottom: 20px;
-    padding: 20px;
     display: block; /* Ensure the image is displayed as a block element */
     margin: 0 auto; /* Center the image horizontally */
 }
@@ -161,6 +159,10 @@ nav {
     .subtext-line {
         line-height: 1 !important;
     }
+
+    // .hero-image {
+    //     display: none; /* Hide hero image on mobile devices */
+    // }
 }
 
 @media (max-width: 360px) { /* Targeting small phones */
