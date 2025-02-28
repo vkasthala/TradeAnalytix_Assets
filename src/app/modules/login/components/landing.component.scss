@@ -44,7 +44,6 @@ nav {
     margin: 0 auto; 
     text-align: left;
     color: #000000;
-    padding: 20px;
 }
   
 .hero-title .neutral {
@@ -54,140 +53,18 @@ nav {
     line-height: 1.3;
 }
 
-.hero-title .feature {
-    font-weight: 600;
+.hero-title .subtext-line {
     font-size: 1.3rem;
-    color: $primary-color;
+    color: #000;
+    font-weight: 500;
     line-height: 1.3;
 }
-  
-.hero-title .subtext {
-    font-size: 1.3rem;
-    color: $secondary-color;
-    font-weight: 500;
-    line-height: 1.1;
-}
-
+ 
 .hero-image {
-    width: 100%; /* Ensure the image takes full width */
+    width: 111%; /* Ensure the image takes full width */
     height: auto; /* Maintain aspect ratio */
     display: block; /* Ensure the image is displayed as a block element */
     margin: 0 auto; /* Center the image horizontally */
-}
-
-/* Hero Section Responsive Adjustments*/
-@media (max-width: 1024px) {  
-    .banner-section {
-        padding-top: 60px; 
-        padding-bottom: 30px;  
-    }
-    .hero-title {
-        font-size: 2.7rem;  
-        max-width: 100%;
-        line-height: 1.3;
-    }
-
-    .hero-title .feature, .hero-title .subtext {
-        font-size: 1.3rem;  
-        max-width: 100%;
-        line-height: 1.1 !important;
-    }
-
-    .subtext-line {
-        line-height: 1;
-    }
-}
-
-@media (max-width: 768px) { /* Targeting tablets in portrait and lower */
-    .banner-section {
-        padding-top: 60px; /* Increased top padding for more space */
-    }
-    
-    .hero-title {
-        font-size: 2.6rem; /* Further reducing size */
-        margin-top: 30px; /* Extra margin for more vertical space */
-        padding: 10px 10px; /* Maintain padding on the sides */
-        max-width: 100%;
-        line-height: 1.3;
-        text-align: center;
-    }
-
-    .hero-title .feature, .hero-title .subtext {
-        font-size: 1.3rem;
-        max-width: 100%;
-        line-height: 1.1 !important;
-    }
-
-    .subtext-line {
-        line-height: 1;
-    }
-
-    .hero-image {
-        margin: 0 auto;
-    }
-}
-
-@media (max-width: 576px) { /* Targeting large phones */
-    .banner-section {
-        padding-top: 60px; /* Increased top padding for more space */
-    }
-
-    .hero-title {
-        font-size: 2.6rem; /* Increasing font size for better readability */
-        padding: 10px 5px; /* Maintain padding on the sides */
-        margin-top: 50px; /* Extra margin for more vertical space */
-        line-height: 1.3;
-        max-width: 100%;
-    }
-
-    .hero-title .feature, .hero-title .subtext {
-        font-size: 1.3rem; /* Slightly larger for better visibility */
-        max-width: 100%;
-        margin: 0; /* Remove any default margins */
-        padding: 0; /* Remove any default padding */
-        display: inline; /* Ensure inline display to avoid unwanted breaks */
-        line-height: 1.1 !important;
-    }
-
-    .hero-title .subtext::after {
-        content: ' '; /* Adding space after subtexts */
-    }
-
-    .btn-banner, .btn-how-banner {
-        width: 100%; /* Full-width buttons for easier access */
-        margin: 10px 0; /* Adequate space between buttons */
-    }
-
-    .subtext-line {
-        line-height: 1 !important;
-    }
-
-    // .hero-image {
-    //     display: none; /* Hide hero image on mobile devices */
-    // }
-}
-
-@media (max-width: 360px) { /* Targeting small phones */
-    .banner-section {
-        padding-top: 50px; /* Adjust padding for smaller screens */
-    }
-
-    .hero-title {
-        font-size: 2.6rem; /* Adjusted font size for small screens */
-        margin-top: 20px; /* Less margin due to smaller screen size */
-        line-height: 1.3;
-        max-width: 100%;
-    }
-
-    .hero-title .feature, .hero-title .subtext {
-        font-size: 1.3rem; /* Increase font size slightly for readability */
-        max-width: 80%;
-        line-height: 1.1 !important;
-    }
-
-    .subtext-line {
-        line-height: 1;
-    }
 }
 
 .benefits {
@@ -219,7 +96,7 @@ h2 {
     letter-spacing: 0.5px;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 576px) {
     h2 {
         font-size: 1.5rem;
     }
@@ -242,8 +119,9 @@ h2 {
     background-position: center;
     justify-content: center;
     text-align: center;  
-    padding: 80px 5%;  
-    margin-top: 6rem;  
+    padding: 3rem 5%;  
+    padding-top: 12rem;
+    padding-bottom: 7rem;
 }
 
 .banner-section h1 {
@@ -301,16 +179,30 @@ h2 {
 }
 
 // Logo size for responsive
-@media (max-width: 360px) {
+@media (max-width: 320px) {
     .cue-logo img {
-        width: 50%;  
+        width: 40%;  
+        margin-left:5px;
+        }
+}
+
+@media (max-width: 375px) {
+    .cue-logo img {
+        width: 40%;  
+        margin-left:5px;
+        }
+}
+
+@media (max-width: 414px) {
+    .cue-logo img {
+        width: 40%;  
         margin-left:5px;
         }
 }
 
 @media (max-width: 576px) {
     .cue-logo img {
-        width: 60%;  
+        width: 50%;  
         margin-left:5px;
         }
 }
@@ -329,7 +221,7 @@ h2 {
         }    
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 576px) {
  
     .banner-section {
         text-align: center;  
@@ -485,7 +377,7 @@ h2 {
 }
 
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 576px) {
     .carousel-indicators {
         bottom: 320px !important;
     }
@@ -504,7 +396,7 @@ h2 {
     letter-spacing: 0.5px;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 576px) {
     .how-works h2 {
         font-size: 1.75rem;
     }
@@ -532,7 +424,7 @@ h2 {
     color: $secondary-color;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 576px) {
     .how-works p {
         font-size: 1rem;
         text-align: center;
@@ -1790,3 +1682,255 @@ input:checked~.accordion-content {
     #blogs {
         background-color: $background-color;
     }
+
+.hero-spacing {
+  height: 15px;
+}
+
+.subtext-spacing {
+    height: 15px;
+  }
+
+
+// Large Screens (min-width: 1200px)
+@media (min-width: 1200px) {
+    .nav-item {
+        padding: 0 8px !important;
+    }
+    .nav-link {
+        color: #000 !important;
+        font-size: 1.1rem;
+    }
+    .container {
+        max-width: 1140px;
+    }
+    .how-it-works {
+        // padding: 60px 0;
+    }
+    .hero-spacing {
+        height: 20px;
+      }
+      .subtext-spacing {
+        height: 20px;
+      }
+}
+
+// Medium Screens (992px - 1199px)
+@media (min-width: 992px) and (max-width: 1199px) {
+    .nav-item {
+        padding: 0 5px !important;
+    }
+    .nav-link {
+        color: #000 !important;
+        font-size: 1rem;
+    }
+    .container {
+        max-width: 960px;
+    }
+    .hero-title {
+        padding: 40px 0 0 40px;
+    }
+
+    .hero-title .neutral {
+        font-size: 2.8rem;
+        line-height: 1.3;
+    }
+
+    .hero-title .subtext-line {
+        font-size: 1.3rem;
+        color: #000;
+        font-weight: 500;
+        line-height: 1.3;
+    }
+
+    .how-it-works {
+        padding: 50px 0;
+    }
+    .hero-spacing {
+        height: 20px;
+      }
+      .subtext-spacing {
+        height: 20px;
+      }
+
+}
+
+// Tablets (768px - 991px)
+@media (min-width: 768px) and (max-width: 991px) {
+    .nav-item {
+        padding: 0 5px !important;
+    }
+    .nav-link {
+        color: #000 !important;
+        font-size: 1rem;
+    }
+    .container {
+        max-width: 720px;
+    }
+    .hero-title {
+        padding: 40px 0 0 30px;   
+    }
+    .hero-title .neutral {
+        font-size: 2.8rem;
+        line-height: 1.3;
+    }
+    .hero-title .subtext-line {
+        font-size: 1.3rem;
+        color: #000;
+        font-weight: 500;
+        line-height: 1.3;
+    }
+    .hero-image {
+        margin-top: 30px;
+    }
+    .how-it-works {
+        padding: 40px 0;
+    }
+    .step-container {
+        flex-direction: column;
+    }
+    .hero-spacing {
+        height: 15px;
+      }
+      .subtext-spacing {
+        height: 50px;
+      }
+}
+
+// Mobile Landscape (576px - 767px)
+@media (min-width: 576px) and (max-width: 767px) {
+    .nav-item {
+        padding: 0 5px !important;
+    }
+    .nav-link {
+        color: #000 !important;
+        font-size: 1rem;
+    }
+    .container {
+        max-width: 540px;
+    }
+    .hero-title {
+        padding: 40px;
+        text-align: center;
+    }
+    .hero-title .neutral {
+        font-size: 2.6rem;
+        line-height: 1.3;
+    }
+    .hero-title .subtext-line {
+        font-size: 1.2rem;
+        color: #000;
+        font-weight: 500;
+        line-height: 1.3;
+    }
+    .hero-image {
+        margin-top: 20px;
+    }
+    .how-it-works {
+        padding: 30px 0;
+    }
+    .step-container {
+        flex-direction: column;
+    }
+    .testimonial-callout {
+        margin-bottom: 20px;
+    }
+    .hero-spacing {
+        height: 15px;
+      }
+      .subtext-spacing {
+        height: 50px;
+      }
+}
+
+// Mobile Portrait (max-width: 575px)
+@media (max-width: 575px) {
+    .hero-title {
+        padding: 40px;
+        text-align: center;
+    }
+    .hero-title .neutral {
+        font-size: 2.2rem;
+        line-height: 1.3;
+    }
+    .hero-title .subtext-line {
+        font-size: 1.1rem;
+        color: #000;
+        font-weight: 500;
+        line-height: 1.3;
+    }
+    .hero-image {
+        margin-top: 15px;
+    }
+    .how-it-works {
+        padding: 20px 0;
+    }
+    .step-container {
+        flex-direction: column;
+    }
+    .testimonial-callout {
+        margin-bottom: 15px;
+    }
+    .navbar-nav {
+        text-align: center;
+    }
+    .btn-banner, .btn-how-banner {
+        width: 100%;
+        margin: 5px 0;
+    }
+    .hero-spacing {
+        height: 15px;
+      }
+      .subtext-spacing {
+        height: 50px;
+      }
+}
+
+// Mobile Portrait (max-width: 360px)
+@media (max-width: 360px) {
+    .hero-title {
+        padding: 40px;
+        text-align: center;
+    }
+    .hero-title .neutral {
+        font-size: 2.1rem;
+        line-height: 1.3;
+    }
+    .hero-title .subtext-line {
+        font-size: 1.1rem;
+        color: #000;
+        font-weight: 500;
+        line-height: 1.3;
+    }
+    .hero-spacing {
+        height: 15px;
+      }
+      .subtext-spacing {
+        height: 40px;
+      }
+    .hero-image {
+        margin-top: 15px;
+    }
+    .how-it-works {
+        padding: 20px 0;
+    }
+    .step-container {
+        flex-direction: column;
+    }
+    .testimonial-callout {
+        margin-bottom: 15px;
+    }
+    .navbar-nav {
+        text-align: center;
+    }
+    .btn-banner, .btn-how-banner {
+        width: 100%;
+        margin: 5px 0;
+    }
+    // ...existing mobile portrait specific styles...
+}
+
+// Print styles (if needed)
+@media print {
+    // ...existing print specific styles...
+}
