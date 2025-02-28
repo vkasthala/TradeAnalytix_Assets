@@ -1156,21 +1156,17 @@ input:checked~.accordion-content {
     background-color: $background-color;
     background-position: center;
     justify-content: center;
-    padding: 40px 50px; /* Adjusted padding for better spacing */
-    margin-top: 15px;
-    margin-bottom: 15px;
+    padding: 20px 30px; /* Adjusted padding for better spacing */
     text-align: center; 
 }
 .blog-section h2 {
     font-family: $font-family;
     color: #000;
-    font-size: 2.75rem;
+    font-size: 2.3rem;
     text-align: center;
     letter-spacing: 0.5px;
-    margin-top: 2rem;
     margin-bottom: 2rem;
     font-weight: 700;
-    margin-bottom: 30px;
 }
 .blog-box {
     background-color: #ffffff;
@@ -1187,7 +1183,7 @@ input:checked~.accordion-content {
 .blog-box h4 {
     color: #000000;
     font-weight: 700;
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     line-height: 28px;
     letter-spacing: 0.5px;
     font-family: $font-family;
@@ -1253,7 +1249,7 @@ input:checked~.accordion-content {
 
 .how-it-works p {
     color: $secondary-color;
-    max-width: 86%; /* Limited width for better readability */
+    max-width: 68%; /* Limited width for better readability */
     align-content: center;
     margin: auto;
     margin-bottom: 50px;
@@ -1422,7 +1418,7 @@ input:checked~.accordion-content {
 .comparison-section {
     display: flex;
     justify-content: center;
-    padding: 56px 20px 20px;
+    padding: 56px 20px;
   }
   
   .comparison {
@@ -1933,4 +1929,80 @@ input:checked~.accordion-content {
 // Print styles (if needed)
 @media print {
     // ...existing print specific styles...
+}
+
+.faq-section {
+    padding: 40px 20px;
+    background-color: $background-color;
+    font-family: $font-family;
+}
+
+.faq-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    color: $primary-color;
+    margin-bottom: 20px;
+}
+
+.faq-item {
+    margin-bottom: 20px;
+    border-bottom: 1px solid $secondary-color;
+    padding-bottom: 10px;
+}
+
+.faq-question {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: $primary-color;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faq-answer {
+    font-size: 1.125rem;
+    color: $secondary-color;
+    margin-top: 10px;
+    display: none;
+}
+
+.faq-question::after {
+    content: "\002B"; /* Plus sign */
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.faq-question.active::after {
+    content: "\2212"; /* Minus sign */
+    transform: rotate(180deg);
+}
+
+@media (max-width: 768px) {
+    .faq-title {
+        font-size: 2rem;
+    }
+
+    .faq-question {
+        font-size: 1.25rem;
+    }
+
+    .faq-answer {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .faq-title {
+        font-size: 1.75rem;
+    }
+
+    .faq-question {
+        font-size: 1.125rem;
+    }
+
+    .faq-answer {
+        font-size: 0.938rem;
+    }
 }
