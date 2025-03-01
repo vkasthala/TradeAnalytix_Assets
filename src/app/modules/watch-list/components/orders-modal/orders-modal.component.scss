@@ -5,7 +5,7 @@
     box-shadow: 0 0 2px 0 rgba(0,0,0,.2),0 4px 10px 0 rgba(0,0,0,.05);
     z-index: 99;
     left: calc(50% - 700px/2);
-    width: 700px;
+    width: 720px;
 }
 
 .order-window .no {
@@ -45,7 +45,8 @@
 
 .order-window header .transaction-type {
     display: inline-block;
-    min-width: 28px
+    min-width: 28px;
+    font-size: 1rem;
 }
 
 .order-window header .tradingsymbol {
@@ -192,13 +193,14 @@
 
 .order-window .footer .margins .block {
     display: inline-block;
-    margin-right: 8px
+    margin-right: 8px;
+    font-size:1rem;
 }
 
 .order-window .footer .margins .block label {
     margin-right: 3px;
     margin-left: 16px;
-    font-size: 16px;
+    font-size: 1rem;
 }
 
 .order-window .footer .submit {
