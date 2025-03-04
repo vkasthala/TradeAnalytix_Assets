@@ -14,7 +14,7 @@
         *ngFor="let searchItem of searchResult, let index=index" (mouseover)="showSearchActions($event, index)"
         (mouseout)="fadeOutActions(index)" (click)="addToWatchList(searchItem)">
         <span class="symbol" (click)="addToWatchList(searchItem)">
-          <span class="tradingsymbol">{{searchItem.symbolShort}}</span>
+          <span class="tradingsymbol">{{searchItem.wlSymbol}}</span>
           <span class="ins-added-label" data-tooltip="Added" data-tooltip-pos="up" *ngIf="searchItem.addedToWatchList">
             <mat-icon class="mat-icon material-icons mat-icon-sm icon icon-check">check</mat-icon>
           </span>

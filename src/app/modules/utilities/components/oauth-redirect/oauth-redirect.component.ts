@@ -60,7 +60,7 @@ export class OauthRedirectComponent implements OnInit {
 
   successLogin() {
     this.router.navigate([this.urlToNavigateAfterLogin]);
-    this.loadFirstUser();
+    // this.loadFirstUser();
     this.stockSymbolService.getStockSymbols();
     this.metdataStoreService.load();
     this.userTagService.loadTags();
@@ -80,25 +80,25 @@ export class OauthRedirectComponent implements OnInit {
     dialogRef.afterClosed().subscribe((res) => {
     });
   }
-  loadFirstUser() {
-    this.dashboardService.getSurveyQuestions().subscribe(res => {
-      let questions: [] = res;
-      let surveyCompleted: boolean = questions.length == 0 ? true : false;
-      if (!surveyCompleted) {
-        const dialogRef = this._dialog.open(FirstUserComponent, {
-          disableClose: true,
-          panelClass: 'guided-tour-panel',
-          backdropClass: 'guided-tour-modal',
-          data: questions
-        });
+  // loadFirstUser() {
+  //   this.dashboardService.getSurveyQuestions().subscribe(res => {
+  //     let questions: [] = res;
+  //     let surveyCompleted: boolean = questions.length == 0 ? true : false;
+  //     if (!surveyCompleted) {
+  //       const dialogRef = this._dialog.open(FirstUserComponent, {
+  //         disableClose: true,
+  //         panelClass: 'guided-tour-panel',
+  //         backdropClass: 'guided-tour-modal',
+  //         data: questions
+  //       });
 
-        dialogRef.afterClosed().subscribe((res) => {
-        });
-      }
-    }, err => {
+  //       dialogRef.afterClosed().subscribe((res) => {
+  //       });
+  //     }
+  //   }, err => {
 
-    })
-  }
+  //   })
+  // }
 
   loadReferralModal() {
     let setRefellInfo: string = sessionStorage.getItem("setReferralInfo");

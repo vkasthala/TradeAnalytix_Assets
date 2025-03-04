@@ -23,4 +23,5 @@ export class SymbolSearchModel {
     segment: string | undefined;
     strike: number | undefined;
     lot_size: number | undefined;
+    wlSymbol: string | undefined;
 }
