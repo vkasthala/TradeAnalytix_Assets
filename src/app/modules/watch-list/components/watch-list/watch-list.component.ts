@@ -333,7 +333,7 @@ export class WatchListComponent implements OnInit {
     // }
 
     this.marginsSource.type = $event.transaction_type;
-    this.marginsSource.instrument = {'symbol':tradingsymbol, 'symbolId':$event.token ? $event.token : $event.instrument_token, 'exchange':'', actualSymbol:''};
+    this.marginsSource.instrument = {'symbol':tradingsymbol, 'symbolId':$event.token ? $event.token : $event.instrument_token, 'exchange':'', actualSymbol:'', expiryDate: ''};
     this.marginsSource.price = $event.price;
     this.marginsSource.expiry = $event.expiryDate ? $event.expiryDate : $event.expiry;
     //If segment is 11, it is OPTION. If segment is 10 , it is STOCK 
@@ -416,10 +416,10 @@ export class WatchListComponent implements OnInit {
     // }
 
     this.marginsSource.type = response.type;
-    this.marginsSource.instrument = {'symbol':response.instrument.actualSymbol, 'symbolId':response.instrument.symbolId, 'exchange':response.instrument.exchange, 'actualSymbol':response.instrument.actualSymbol};
+    this.marginsSource.instrument = {'symbol':response.instrument.actualSymbol, 'symbolId':response.instrument.symbolId, 'exchange':response.instrument.exchange, 'actualSymbol':response.instrument.actualSymbol, expiryDate:response.instrument.expiryDate};
     this.marginsSource.price = response.price;
-    // this.marginsSource.expiry = $event.expiryDate ? $event.expiryDate : $event.expiry;
-    this.marginsSource.tradeType = 'STOCK'
+    this.marginsSource.expiry = response.instrument.expiryDate;
+    this.marginsSource.tradeType = response.tradeType;
     //$event.instrumenType == 14 ? 'OPTION' : 'STOCK';
       }
     }, error =>{

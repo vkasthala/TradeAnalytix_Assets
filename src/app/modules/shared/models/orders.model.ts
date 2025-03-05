@@ -107,4 +107,5 @@ export interface InstrumentResponse{
     actualSymbol: string;
     exchange: string;
     symbolId: string;
+    expiryDate: string;
 }

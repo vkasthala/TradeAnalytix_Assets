@@ -68,6 +68,7 @@ export class ExecutedOrdersComponent implements OnInit {
     ruleCheckPayload.transactionType = order.type;
     ruleCheckPayload.symbol = order.instrument.actualSymbol;
     ruleCheckPayload.marketPrice = order.price;
+    ruleCheckPayload.expiryDate = order.instrument.expiryDate;
 
     let margins: Margins = {} as Margins;
     margins = order;
