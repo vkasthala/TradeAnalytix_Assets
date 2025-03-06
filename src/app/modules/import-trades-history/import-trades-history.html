@@ -102,9 +102,9 @@
                         <th class="mat-header-cell brokerage_cell">Brokerage</th>
                         <th class="mat-header-cell lastsyncdate_cell">Last Sync Date</th>
                         <th class="mat-header-cell lasttradetimestamp_cell">Last Trade Timestamp</th>
-                        <th class="mat-header-cell lastsyncstatus">Last Trade Statis</th>
-                        <th class="mat-header-cell lastsyncresult">Last Trade Count(Total/Completed)</th>
-                        <th class="mat-header-cell lastsynclink">JournalLink</th>
+                        <th class="mat-header-cell lastsyncstatus">Status</th>
+                        <th class="mat-header-cell lastsyncresult">Trade Count</th>
+                        <!-- <th class="mat-header-cell lastsynclink">JournalLink</th> -->
                      </tr>
                 </thead>
                     <tbody>
@@ -112,9 +112,9 @@
                           <td class="mat-cell">{{ trade.brokarageName }}</td>
                           <td class="mat-cell">{{ trade.lastSyncedLocalDateTime }}</td>
                           <td class="mat-cell">{{ trade.transaLocalDateTime }}</td>
-                          <td class="mat-cell">{{trade.status?'SUCCESS':'FAIL'}}</td>
+                          <td class="mat-cell">{{trade.status?'Success':'Failed'}}</td>
                           <td class="mat-cell">{{trade.total}}/{{trade.completed}}</td>
-                          <td class="mat-cell"><a href="/stravtegies">Visit Page</a></td>
+                          <td class="mat-cell"><a href="/stravtegies">Visit Journal</a></td>
                          </tr>
                   </tbody>
             </table>
