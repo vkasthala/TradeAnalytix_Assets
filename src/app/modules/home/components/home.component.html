@@ -17,9 +17,11 @@
                 <div class="app-nav" *ngIf="!isMobileDevice">
                     <a [class.router-link-active]="currentRoute === 'dashboard'" [routerLink]="['/dashboard/']" routerLinkActive="router-link-active" ><span>Home</span></a>
                     <a [class.router-link-active]="currentRoute === 'trade-plans'" [routerLink]="['/trade-plans/']" routerLinkActive="router-link-active"><span>Plan</span></a>
-                    <a [class.router-link-active]="currentRoute === 'rules'" [routerLink]="['/rules/']" routerLinkActive="router-link-active"><span>Rules</span></a>
+                    <!-- Below three lines of code is commented for US site only. Uncomment for India -->
+                    <!-- <a [class.router-link-active]="currentRoute === 'rules'" [routerLink]="['/rules/']" routerLinkActive="router-link-active"><span>Rules</span></a>
                     <a [class.router-link-active]="currentRoute === 'orders'" [routerLink]="['/orders/']" routerLinkActive="router-link-active"><span>Orders</span></a>                    
-                    <a [class.router-link-active]="currentRoute === 'positions'" [routerLink]="['/positions/']" routerLinkActive="router-link-active"><span>Positions</span></a>
+                    <a [class.router-link-active]="currentRoute === 'positions'" [routerLink]="['/positions/']" routerLinkActive="router-link-active"><span>Positions</span></a> -->
+                    <!-- Above three lines of code is commented for US site only. Uncomment for India -->
                     <a [class.router-link-active]="currentRoute === 'import-trades-history'" [routerLink]="['/import-trades-history/']" routerLinkActive="router-link-active"><span>Import Trades</span></a>
                     <a [class.router-link-active]="currentRoute === 'stravtegies'" [routerLink]="['/stravtegies/']" routerLinkActive="router-link-active"><span>Journal</span></a>
                     <a [class.router-link-active]="currentRoute === 'reports'" [routerLink]="['/reports/']" routerLinkActive="router-link-active"><span>Analytics</span></a>
@@ -86,11 +88,13 @@
 
 
     <div class="trading-container wrapper">
-        <div class="container-left" *ngIf="!isMobileDevice">
+        <!-- Below five lines of code is commented for US site only. Uncomment for India -->
+        <!-- <div class="container-left" *ngIf="!isMobileDevice">
             <div class="watch-list-container">
                 <app-watch-list></app-watch-list>
             </div>
-        </div>
+        </div> -->
+        <!-- Above five lines of code is commented for US site only. Uncomment for India -->
         <div class="container-right">
             <router-outlet></router-outlet>
             <app-footer></app-footer>
