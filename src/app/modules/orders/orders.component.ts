@@ -148,7 +148,7 @@ export class OrdersComponent implements OnInit {
 
   loadOpenOrders(response){
     response.data.openOrders.forEach(obj => {
-      obj.journal = 'ADD';
+      obj.journal = 'Journal';
       obj.selected = false;
   });
     this.openOrders.data = response.data.openOrders;
@@ -156,7 +156,7 @@ export class OrdersComponent implements OnInit {
 
   loadExecutedOrders(response){
     response.data.executedOrders.forEach(obj => {
-      obj.journal = 'ADD';
+      obj.journal = 'Journal';
       obj.selected = false;
   });
     this.executedOrders.data = response.data.executedOrders;

@@ -5,7 +5,7 @@
             <div class="d-flex align-items-start">
                 <mat-icon class="material-icons mat-icon cursor" (click)="closePopup()">keyboard_backspace</mat-icon>
                 <div class="instrument ml-3">
-                    <h3>{{margins.trading_symbol}}</h3>
+                    <h3>{{margins.tradingSymbolShort}}</h3>
                     <label class="su-radio-label m-0">₹{{margins.ltp}}</label>
                     <span class="qty ml-3">{{margins.quantity}} Quantity</span>
                 </div>
@@ -17,7 +17,7 @@
                     <div class="instrument">
                         <span class="transaction-type">{{margins.type}}</span>
                         <span class="tradingsymbol ml-2">
-                            <span class="name">{{margins.trading_symbol}}</span>
+                            <span class="name">{{margins.tradingSymbolShort}}</span>
                         </span>
                         ×
                         <span class="qty">{{margins.quantity}} Quantity</span>

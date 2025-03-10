@@ -10,6 +10,8 @@ export class TradeThesis {
 
     reasons: string;
 
+    additionalNotes: string;
+
     surroundingEventId: number;
 
     targetPrice: number;
