@@ -1,106 +1,227 @@
 <div class="trade-risk-tabs">
     <div class="metrics-body">
-        <div class="row">
-            <div class="col-sm-6 metrics-column">
-                <div class="metrics-title mb-2">
-                    P&L
+        <!-- P&L Group -->
+        <div class="metric-group">
+            <div class="group-title">Profit & Loss</div>
+            <div class="group-cards">
+                <div class="metric-card">
+                    <div class="metric-value" [ngClass]="{'positive': plSummary.realized_return >= 0, 'negative': plSummary.realized_return < 0}">
+                        {{plSummary.realized_return || 0}}
+                    </div>
+                    <div class="metric-title">Net Return</div>
                 </div>
-                <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">Net Return</label>
-                    <span class="col-sm-5">{{plSummary.realized_return || 0}}</span>
+                <div class="metric-card">
+                    <div class="metric-value" [ngClass]="{'positive': plSummary.payoff_ratio >= 0, 'negative': plSummary.payoff_ratio < 0}">
+                        {{plSummary.payoff_ratio || 0}}
+                    </div>
+                    <div class="metric-title">Payoff Ratio</div>
                 </div>
-                <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">Payoff Ratio</label>
-                    <span class="col-sm-5">{{plSummary.payoff_ratio || 0}}</span>
+                <div class="metric-card">
+                    <div class="metric-value" [ngClass]="{'positive': plSummary.profit_factor >= 0, 'negative': plSummary.profit_factor < 0}">
+                        {{plSummary.profit_factor || 0}}
+                    </div>
+                    <div class="metric-title">Profit Factor</div>
                 </div>
-                <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">Profit Factor</label>
-                    <span class="col-sm-5">{{plSummary.profit_factor || 0}}</span>
+                <div class="metric-card">
+                    <div class="metric-value" [ngClass]="{'positive': plSummary.net_r >= 0, 'negative': plSummary.net_r < 0}">
+                        {{plSummary.net_r || 0}}
+                    </div>
+                    <div class="metric-title">Net R</div>
                 </div>
-                <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">Net R</label>
-                    <span class="col-sm-5">{{plSummary.net_r || 0}}</span>
-                </div>
-                <!-- <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">Average P&L Per Strategy</label>
-                    <span class="col-sm-5">-</span>
+                <!-- <div class="metric-card">
+                    <div class="metric-title">Average P&L Per Strategy</div>
+                    <div class="metric-value">-</div>
                 </div> -->
-                <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">Average Daily P&L</label>
-                    <span class="col-sm-5">{{getAvgDailyPl(plSummary.realized_return) | number:'1.0-1'}}</span>
+                <div class="metric-card">
+                    <div class="metric-value" [ngClass]="{'positive': getAvgDailyPl(plSummary.realized_return) >= 0, 'negative': getAvgDailyPl(plSummary.realized_return) < 0}">
+                        {{getAvgDailyPl(plSummary.realized_return) | number:'1.0-1'}}
+                    </div>
+                    <div class="metric-title">Average Daily P&L</div>
                 </div>
-                <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">P&L Volatility</label>
-                    <span class="col-sm-5">-</span>
+                <!-- <div class="metric-card">
+                    <div class="metric-title">P&L Volatility</div>
+                    <div class="metric-value">-</div>
+                </div> -->
+                <div class="metric-card">
+                    <div class="metric-value" [ngClass]="{'positive': plSummary.largest_profit >= 0, 'negative': plSummary.largest_profit < 0}">
+                        {{plSummary.largest_profit || 0}}
+                    </div>
+                    <div class="metric-title">Largest Profit</div>
                 </div>
-                <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">Largest Profit</label>
-                    <span class="col-sm-5">{{plSummary.largest_profit || 0}}</span>
+                <div class="metric-card">
+                    <div class="metric-value" [ngClass]="{'positive': plSummary.largest_loss >= 0, 'negative': plSummary.largest_loss < 0}">
+                        {{plSummary.largest_loss || 0}}
+                    </div>
+                    <div class="metric-title">Largest Loss</div>
                 </div>
-                <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">Largest Loss</label>
-                    <span class="col-sm-5">{{plSummary.largest_loss || 0}}</span>
+                
+                <div class="metric-card">
+                <div class="metric-value">
+                    {{symbolSummary.most_profitable_symbol || '-'}}
                 </div>
-
-                <div class="metrics-title mb-2">
-                    Trade Volume
-                </div>
-                <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">Total Strategies</label>
-                    <span class="col-sm-5">{{volumeSummary.strategy_count || 0}}</span>
-                </div>
-                <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">Total Trades</label>
-                    <span class="col-sm-5">{{volumeSummary.total_trades || 0}}</span>
-                </div>
-                <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">Winning Strategies</label>
-                    <span class="col-sm-5">{{volumeSummary.winning_trades || 0}}</span>
-                </div>
-                <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">Losing Strategies</label>
-                    <span class="col-sm-5">{{volumeSummary.losing_trades || 0}}</span>
-                </div>
-                <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">Contrarian Strategies (%)</label>
-                    <span class="col-sm-5">{{percentage(volumeSummary.contrarian_trades,
-                        volumeSummary.strategy_count)| number:'1.0-1'}}</span>
-                </div>
-                <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">Planned Strategies (%)</label>
-                    <span class="col-sm-5">{{percentage(volumeSummary.planned_trades,
-                        volumeSummary.strategy_count) | number:'1.0-1'}}</span>
-                </div>
-                <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">Average Daily Trade Count</label>
-                    <span class="col-sm-5">{{getAvgTradeCount(volumeSummary.total_trades) | number:'1.0-1'}}</span>
+                <div class="metric-title">Most Profitable Symbol</div>
                 </div>
 
-                <div class="metrics-title mb-2">
-                    Strategy
-                </div>
-                <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">Best Strategy by Return</label>
-                    <span class="col-sm-5">{{strategySummary.best_strategy_by_return}}</span>
-                </div>
-                <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">Best Strategy by Win-Rate</label>
-                    <span class="col-sm-5">{{strategySummary.best_strategy_by_winloss}}</span>
-                </div>
-                <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">Worst Strategy by Return</label>
-                    <span class="col-sm-5">{{strategySummary.worst_strategy_by_return}}</span>
-                </div>
-                <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">Worst Strategy by Win-Rate</label>
-                    <span class="col-sm-5">{{strategySummary.worst_strategy_by_winloss}}</span>
-                </div>
-                <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">Most-Used Strategy</label>
-                    <span class="col-sm-5">{{strategySummary.most_used_strategy}}</span>
-                </div>
+                <div class="metric-card">
+                    <div class="metric-value">
+                        {{symbolSummary.least_profitable_symbol || '-'}}
+                    </div>
+                    <div class="metric-title">Least Profitable Symbol</div>
+                    </div>
+            </div>
+        </div>
 
-                <div class="metrics-title mb-2">
+        <!-- Trade Volume Group -->
+        <div class="metric-group">
+            <div class="group-title">Trade Volume</div>
+            <div class="group-cards">
+                <!-- <div class="metric-card">
+                    <div class="metric-title">Total Strategies</div>
+                    <div class="metric-value">{{volumeSummary.strategy_count || 0}}</div>
+                </div> -->
+                <div class="metric-card">
+                    <div class="metric-value">{{volumeSummary.total_trades || 0}}</div>
+                    <div class="metric-title">Total Trades</div>
+                </div>
+                <!-- <div class="metric-card">
+                    <div class="metric-title">Winning Strategies</div>
+                    <div class="metric-value">{{volumeSummary.winning_trades || 0}}</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-title">Losing Strategies</div>
+                    <div class="metric-value">{{volumeSummary.losing_trades || 0}}</div>
+                </div> -->
+                <div class="metric-card">
+                    <div class="metric-value">{{winRateSummary.win_rate | number:'1.0-1'}}</div>
+                    <div class="metric-title">Win-Rate</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">{{winRateSummary.avgWinningTrade || 0}}</div>
+                    <div class="metric-title">Average Winning Trade</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">{{winRateSummary.avgLosingTrade || 0}}</div>
+                    <div class="metric-title">Average Losing Trade</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">{{percentage(volumeSummary.contrarian_trades, volumeSummary.strategy_count) | number:'1.0-1'}}</div>
+                    <div class="metric-title">Contrarian Trades (%)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">{{percentage(volumeSummary.planned_trades, volumeSummary.strategy_count) | number:'1.0-1'}}</div>
+                    <div class="metric-title">Planned Trades (%)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">{{getAvgTradeCount(volumeSummary.total_trades) | number:'1.0-1'}}</div>
+                    <div class="metric-title">Avg. Daily Trade Count</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Strategy Group -->
+        <div class="metric-group">
+            <div class="group-title">Strategy</div>
+            <div class="group-cards">
+                <div class="metric-card">
+                    <div class="metric-value">{{strategySummary.best_strategy_by_return}}</div>
+                    <div class="metric-title">Best Strategy by Return</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">{{strategySummary.best_strategy_by_winloss}}</div>
+                    <div class="metric-title">Best Strategy by Win-Rate</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">{{strategySummary.worst_strategy_by_return}}</div>
+                    <div class="metric-title">Worst Strategy by Return</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">{{strategySummary.worst_strategy_by_winloss}}</div>
+                    <div class="metric-title">Worst Strategy by Win-Rate</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">{{strategySummary.most_used_strategy}}</div>
+                    <div class="metric-title">Most-Used Strategy</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Holding Period Group -->
+        <div class="metric-group">
+            <div class="group-title">Holding Period</div>
+            <div class="group-cards">
+                <div class="metric-card">
+                    <div class="metric-value">{{holdingPeriodSummary.avg_holding_period | number:'1.0-1'}}</div>
+                    <div class="metric-title">Avg. Holding Period</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">{{holdingPeriodSummary.avg_holding_period_win_trades}}</div>
+                    <div class="metric-title">Avg. Holding Period (Win Trades)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">{{holdingPeriodSummary.avg_holding_period_lost_trades}}</div>
+                    <div class="metric-title">Avg. Holding Period (Loss Trades)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Discipline Group -->
+        <div class="metric-group">
+            <div class="group-title">Discipline</div>
+            <div class="group-cards">
+                <div class="metric-card">
+                    <div class="metric-value">{{tradePlanSummary.trade_plan_creation_percent}}</div>
+                    <div class="metric-title">Trade Plan Creation (%)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">{{tradePlanSummary.trade_plan_align_percent}}</div>
+                    <div class="metric-title">Trade Plan Alignment (%)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">-</div>
+                    <div class="metric-title">Rules Compliance %</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">-</div>
+                    <div class="metric-title">Journaled Trades %</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tags Group -->
+        <div class="metric-group">
+            <div class="group-title">Tags</div>
+            <div class="group-cards">
+                <div class="metric-card">
+                    <div class="metric-value">{{tradeTagsSummary.most_successful_tag || '-'}}</div>
+                    <div class="metric-title">Most Successful Tag by Return</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">{{tradeTagsSummary.most_successful_tag_winrate || '-'}}</div>
+                    <div class="metric-title">Most Successful Tag by Win-Rate</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">{{tradeTagsSummary.least_successful_tag || '-'}}</div>
+                    <div class="metric-title">Least Successful Tag by Return</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">{{tradeTagsSummary.least_successful_tag_winrate || '-'}}</div>
+                    <div class="metric-title">Least Successful Tag by Win-Rate</div>
+                </div>
+                <!-- <div class="metric-card">
+                    <div class="metric-value">{{tradeTagsSummary.most_used_tag || 'N/A'}}</div>
+                    <div class="metric-title">Most Used Tag</div>
+                </div> -->
+            </div>
+        </div>
+
+        <!-- Loader -->
+        <div class="mask" *ngIf="loader">
+            <div class="loader"></div>
+        </div>
+    </div>
+</div>
+
+                <!-- <div class="metrics-title mb-2">
                     Direction
                 </div>
                 <div class="metrics-row">
@@ -124,8 +245,8 @@
                     <label class="col-sm-7 mb-0">Return from Custom Trades</label>
                     <span class="col-sm-5">{{directionSummary.custom_trade_total_return || 0}}</span>
                 </div>
-            </div>
-            <div class="col-sm-6 metrics-column">
+            </div> -->
+            <!-- <div class="col-sm-6 metrics-column">
                 <div class="metrics-title mb-2">
                     Win-Rate
                 </div>
@@ -140,7 +261,7 @@
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Average Losing Trade</label>
                     <span class="col-sm-5">{{winRateSummary.avgLosingTrade || 0}}</span>
-                </div>                              
+                </div>                               -->
                 <!-- <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Average Win Size</label>
                     <span class="col-sm-5">{{getAverage(volumeSummary.winning_trades, (volumeSummary.winning_trades + volumeSummary.losing_trades)) | number:'1.0-1'}}</span>
@@ -149,32 +270,15 @@
                     <label class="col-sm-7 mb-0">Average Loss Size</label>
                     <span class="col-sm-5">{{getAverage(volumeSummary.losing_trades, (volumeSummary.winning_trades + volumeSummary.losing_trades)) | number:'1.0-1'}}</span>
                 </div> -->
-                <div class="metrics-row">
+                <!-- <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Max Consecutive Wins</label>
                     <span class="col-sm-5">-</span>
                 </div>
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Max Consecutive Losses</label>
                     <span class="col-sm-5">-</span>
-                </div>
-
-                <div class="metrics-title mb-2">
-                    Holding Period
-                </div>
-                <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">Average Holding Period</label>
-                    <span class="col-sm-5">{{holdingPeriodSummary.avg_holding_period | number:'1.0-1'}}</span>
-                </div>
-                <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">Average Holding Period (Winning Trades)</label>
-                    <span class="col-sm-5">{{holdingPeriodSummary.avg_holding_period_win_trades}}</span>
-                </div>
-                <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">Average Holding Period (Losing Trades)</label>
-                    <span class="col-sm-5">{{holdingPeriodSummary.avg_holding_period_lost_trades}}</span>
-                </div>
-
-                <!-- <div class="metrics-title mb-2">
+                </div> -->
+<!-- <div class="metrics-title mb-2">
                     Commissions
                 </div>
                 <div class="metrics-row">
@@ -190,7 +294,7 @@
                     <span class="col-sm-5">-</span>
                 </div> -->
 
-                <div class="metrics-title mb-2">
+                <!-- <div class="metrics-title mb-2">
                     Symbol
                 </div>
                 <div class="metrics-row">
@@ -200,24 +304,13 @@
                 <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Least Profitable Symbol</label>
                     <span class="col-sm-5">{{symbolSummary.least_profitable_symbol || 'N/A'}}</span>
-                </div>
-                <div class="metrics-row">
+                </div> -->
+                <!-- <div class="metrics-row">
                     <label class="col-sm-7 mb-0">Frequently Traded Stock</label>
                     <span class="col-sm-5">{{symbolSummary.most_used_symbol || 'N/A'}}</span>
-                </div>
+                </div> -->
 
-                <div class="metrics-title mb-2">
-                    Trade Plan Alignment
-                </div>
-                <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">Trade Plan Creation (%)</label>
-                    <span class="col-sm-5">{{tradePlanSummary.trade_plan_creation_percent}}</span>
-                </div>
-                <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">Trade Plan Alignment (%)</label>
-                    <span class="col-sm-5">{{tradePlanSummary.trade_plan_align_percent}}</span>
-                </div>
-                <div class="metrics-row">
+                <!-- <div class="metrics-row">
                     <label class="col-sm-7 mb-0">P&L on Planned Trades</label>
                     <span class="col-sm-5">{{tradePlanSummary.planned_trades_pl || 0}}</span>
                 </div>
@@ -225,36 +318,12 @@
                     <label class="col-sm-7 mb-0">Win-Rate of Planned Trades</label>
                     <span class="col-sm-5">{{tradePlanSummary.planned_trades_winrate || 0}}</span>
                 </div>
-
-                    <div class="metrics-title mb-2">
-                        Tags
-                    </div>
-                    <div class="metrics-row">
-                        <label class="col-sm-7 mb-0">Most Successful Tag by Return</label>
-                        <span class="col-sm-5">{{tradeTagsSummary.most_successful_tag || 'N/A'}}</span>
-                    </div>
-                    <div class="metrics-row">
-                        <label class="col-sm-7 mb-0">Most Successful Tag by Win-Rate</label>
-                        <span class="col-sm-5">{{tradeTagsSummary.most_successful_tag_winrate || 'N/A'}}</span>
-                    </div>
-                    <div class="metrics-row">
-                        <label class="col-sm-7 mb-0">Least Successful Tag by Return</label>
-                        <span class="col-sm-5">{{tradeTagsSummary.least_successful_tag || 'N/A'}}</span>
-                    </div>
-                    <div class="metrics-row">
-                        <label class="col-sm-7 mb-0">Least Successful Tag by Win-Rate</label>
-                        <span class="col-sm-5">{{tradeTagsSummary.least_successful_tag_winrate || 'N/A'}}</span>
-                    </div>
-                    <div class="metrics-row">
-                        <label class="col-sm-7 mb-0">Most Used Tag</label>
-                        <span class="col-sm-5">{{tradeTagsSummary.most_used_tag || 'N/A'}}</span>
-                    </div>
-
-                <!-- <div class="metrics-title mb-2">
-                    Trading Rules
+                <div class="metrics-row">
+                    <label class="col-sm-7 mb-0">P&L on Compliant Trades</label>
+                    <span class="col-sm-5">-</span>
                 </div>
                 <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">Rules Compliance %</label>
+                    <label class="col-sm-7 mb-0">Win-Rate of Compliant Trades</label>
                     <span class="col-sm-5">-</span>
                 </div>
                 <div class="metrics-row">
@@ -265,35 +334,6 @@
                     <label class="col-sm-7 mb-0">Win-Rate of Compliant Trades</label>
                     <span class="col-sm-5">-</span>
                 </div> -->
-            </div>
-        </div>
-
-        <!-- <div class="row">
-            <div class="col-sm-6 metrics-column">
-                <div class="metrics-title mb-2">
-                    Tags
-                </div>
-                <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">Most Successful Tag by Return</label>
-                    <span class="col-sm-5">{{tradeTagsSummary.most_successful_tag || 'N/A'}}</span>
-                </div>
-                <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">Most Successful Tag by Win-Rate</label>
-                    <span class="col-sm-5">{{tradeTagsSummary.most_successful_tag_winrate || 'N/A'}}</span>
-                </div>
-                <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">Least Successful Tag by Return</label>
-                    <span class="col-sm-5">{{tradeTagsSummary.least_successful_tag || 'N/A'}}</span>
-                </div>
-                <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">Least Successful Tag by Win-Rate</label>
-                    <span class="col-sm-5">{{tradeTagsSummary.least_successful_tag_winrate || 'N/A'}}</span>
-                </div>
-                <div class="metrics-row">
-                    <label class="col-sm-7 mb-0">Most Used Tag</label>
-                    <span class="col-sm-5">{{tradeTagsSummary.most_used_tag || 'N/A'}}</span>
-                </div> -->
-
                 <!-- <div class="metrics-title mb-2">
                     Technical Indicators
                 </div>
@@ -405,12 +445,8 @@
             </div>
         </div> -->
         
-        <div class="mask" *ngIf="loader">
-            <div class="loader"></div>
-        </div>
-
-    </div>
     <!-- <div class="metrics-footer">
         <span class="cursor" (click)="toggleMetrics()">{{showMoreMetrics ? 'Less' : 'More' }} Statistics</span>
     </div> -->
-</div>
+
+
