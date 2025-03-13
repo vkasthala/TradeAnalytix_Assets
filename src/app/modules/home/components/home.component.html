@@ -18,9 +18,9 @@
                     <a [class.router-link-active]="currentRoute === 'dashboard'" [routerLink]="['/dashboard/']" routerLinkActive="router-link-active" ><span>Home</span></a>
                     <a [class.router-link-active]="currentRoute === 'trade-plans'" [routerLink]="['/trade-plans/']" routerLinkActive="router-link-active"><span>Plan</span></a>
                     <!-- Start of India specific code. Comment for US -->
-                    <a [class.router-link-active]="currentRoute === 'rules'" [routerLink]="['/rules/']" routerLinkActive="router-link-active"><span>Rules</span></a>
+                    <!-- <a [class.router-link-active]="currentRoute === 'rules'" [routerLink]="['/rules/']" routerLinkActive="router-link-active"><span>Rules</span></a>
                     <a [class.router-link-active]="currentRoute === 'orders'" [routerLink]="['/orders/']" routerLinkActive="router-link-active"><span>Orders</span></a>                    
-                    <a [class.router-link-active]="currentRoute === 'positions'" [routerLink]="['/positions/']" routerLinkActive="router-link-active"><span>Positions</span></a>
+                    <a [class.router-link-active]="currentRoute === 'positions'" [routerLink]="['/positions/']" routerLinkActive="router-link-active"><span>Positions</span></a> -->
                     <!-- End of India specific code. Comment for US -->
                     <a [class.router-link-active]="currentRoute === 'import-trades-history'" [routerLink]="['/import-trades-history/']" routerLinkActive="router-link-active"><span>Import Trades</span></a>
                     <a [class.router-link-active]="currentRoute === 'stravtegies'" [routerLink]="['/stravtegies/']" routerLinkActive="router-link-active"><span>Journal</span></a>
@@ -89,11 +89,11 @@
 
     <div class="trading-container wrapper">
         <!-- Start of India specific code. Comment for US -->
-        <div class="container-left" *ngIf="!isMobileDevice">
+        <!-- <div class="container-left" *ngIf="!isMobileDevice">
             <div class="watch-list-container">
                 <app-watch-list></app-watch-list>
             </div>
-        </div>
+        </div> -->
         <!-- End of India specific code. Comment for US -->
         <div class="container-right">
             <router-outlet></router-outlet>
