@@ -1,6 +1,6 @@
 .metrics-body {
   padding: 20px;
-  background-color: #f9f9f9;
+  background-color: #ffff;
 }
 
 .metric-group {
@@ -10,7 +10,7 @@
 .group-title {
   font-size: 18px;
   font-weight: 600;
-  color: #333;
+  color: #000;
   margin-bottom: 15px;
 }
 
@@ -60,6 +60,14 @@
 
 .metric-value.negative {
   color: #dc3545; /* Red for negative values */
+}
+
+.metric-value.always-green {
+  color: #28a745; /* Green for Most Profitable Symbol */
+}
+
+.metric-value.always-red {
+  color: #dc3545; /* Red for Least Profitable Symbol */
 }
 
 /* Retaining commented CSS for reference */

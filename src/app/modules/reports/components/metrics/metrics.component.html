@@ -49,21 +49,21 @@
                     <div class="metric-title">Largest Profit</div>
                 </div>
                 <div class="metric-card">
-                    <div class="metric-value" [ngClass]="{'positive': plSummary.largest_loss >= 0, 'negative': plSummary.largest_loss < 0}">
+                    <div class="metric-value " [ngClass]="{'positive': plSummary.largest_loss >= 0, 'negative': plSummary.largest_loss < 0}">
                         {{plSummary.largest_loss || 0}}
                     </div>
                     <div class="metric-title">Largest Loss</div>
                 </div>
                 
                 <div class="metric-card">
-                <div class="metric-value">
+                <div class="metric-value always-green">
                     {{symbolSummary.most_profitable_symbol || '-'}}
                 </div>
                 <div class="metric-title">Most Profitable Symbol</div>
                 </div>
 
                 <div class="metric-card">
-                    <div class="metric-value">
+                    <div class="metric-value always-red">
                         {{symbolSummary.least_profitable_symbol || '-'}}
                     </div>
                     <div class="metric-title">Least Profitable Symbol</div>
