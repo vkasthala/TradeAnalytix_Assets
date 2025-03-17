@@ -33,7 +33,8 @@ import { UserService } from '../shared/services/user.service';
 export class ImportTradesHistory implements AfterViewInit, OnInit {
   selectedFiles: FileList;
   expandIndex: any;
-  displayedColumns = ['openDate', 'stockName', 'status', 'direction', 'failedRecords', 'action'];
+  // displayedColumns = ['openDate', 'stockName', 'status', 'direction', 'failedRecords', 'action'];
+  displayedColumns = ['openDate', 'stockName', 'status', 'direction'];
   pageSize: number = 20
   importType:number = 1;
 

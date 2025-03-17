@@ -715,11 +715,16 @@ a.import-new img {
     }
 }
 
-::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-    color: pink;
+::placeholder { /* For modern browsers */
+    color: #B0B0B0 !important; /* Light gray */
 }
-::-moz-placeholder { /* Firefox 19+ */
-    color: pink;
+
+:-ms-input-placeholder { /* For Internet Explorer 10-11 */
+    color: #B0B0B0 !important; /* Light gray */
+}
+
+::-ms-input-placeholder { /* For Microsoft Edge */
+    color: #B0B0B0 !important; /* Light gray */
 }
 .summary-items {
     display: flex;
