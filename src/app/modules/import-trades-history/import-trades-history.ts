@@ -250,7 +250,6 @@ export class ImportTradesHistory implements AfterViewInit, OnInit {
   },err => {
    // this.processing = false;
     console.log("error:", err);
-    window.open(err.error.text, "_blank");
   });
 
   }
