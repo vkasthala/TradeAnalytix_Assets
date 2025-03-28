@@ -22,9 +22,10 @@ export class Watchlistsymbol {
     winFlag: boolean | undefined;
 
     previousDayClose: number | undefined;
-    todayLow: number | undefined;;
-    todayHigh: number | undefined;;
-    volume: number | undefined;;
+    todayLow: number | undefined;
+    todayHigh: number | undefined;
+    volume: number | undefined;
+    symbolDesc: string;
 
     updateChangeProps() {
         if (!this.price) {

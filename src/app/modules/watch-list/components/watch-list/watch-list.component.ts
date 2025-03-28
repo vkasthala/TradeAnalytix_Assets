@@ -448,4 +448,8 @@ export class WatchListComponent implements OnInit {
     return this.niftyList.includes(item.tradingsymbol);
   }
 
+  showTradingViewChart(item){
+    this._sharedService.clickChartIconEvent.emit(item);
+  }
+
 }

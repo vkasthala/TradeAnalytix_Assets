@@ -24,4 +24,5 @@ export class SharedService {
   loaderEvent: EventEmitter<any> = new EventEmitter();
   sessionActiveEvent: EventEmitter<any> = new EventEmitter();
   connectBrokerageEvent: EventEmitter<any> = new EventEmitter();
+  clickChartIconEvent: EventEmitter<any> = new EventEmitter();
 }

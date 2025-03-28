@@ -29,6 +29,7 @@ import { DailyWorkspace } from '../models/daily-workspace.model';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { SharedService } from '../../shared/services/shared.service';
 import { OmsService } from '../../shared/services/oms.service';
+import { Watchlistsymbol } from '../../shared/models/watchlistsymbol.model';
 
 @Component({
   selector: 'app-dashboard',
@@ -57,6 +58,8 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   currentDate: Date = new Date();
   isMobileDevice: any;
   fiveRowsCalendar: boolean = true;
+  showChart: boolean = false;
+  symbolData: Watchlistsymbol = new Watchlistsymbol();
 
   constructor(
     private omsService: OmsService,
@@ -70,7 +73,14 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     private _renderer1: Renderer2,
     private _renderer2: Renderer2,
     private _sharedService: SharedService
-  ) { }
+  ) {
+    _sharedService.clickChartIconEvent.subscribe(
+      (res) => {
+        this.showChart = true;
+        this.symbolData = res;
+      }
+    );
+   }
 
   ngOnInit() {
     this.checkDevice();
