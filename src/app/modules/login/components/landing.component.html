@@ -12,18 +12,18 @@
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="#">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="landing#testimonials">Testimonials</a>
-                </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="landing#howitworks">How it works</a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                     <a class="nav-link" href="landing#benefits">Benefits</a>
                 </li>
                 <!-- <li class="nav-item">
                     <a class="nav-link" href="landing#features">Features</a>
                 </li> -->
+                <li class="nav-item">
+                    <a class="nav-link" href="landing#testimonials">Testimonials</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="landing#faqs">FAQs</a>
                 </li>
@@ -48,70 +48,39 @@
                 <div class="hero-title">
                     <span class="neutral">Trade with Discipline, Profit with Confidence</span> <br>
                     <div class="hero-spacing"></div>
-                    <span class="subtext-line"> Stop emotional trading with real-time rules, instant journaling, and analytics - and start trading with discipline </span>
+                    <span class="subtext-line">Stop emotional trading with real-time rules, instant journaling, and analytics - and start trading with discipline </span>
                     <div class="subtext-spacing"></div>
-                    <button type="button" class="btn-banner" (click)="login('google')">Try Beta for Free</button>
-                    <a href="#howworks"><button type="button" class="btn-how-banner">How it Works</button></a>
+                    <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(255, 50, 50, 0.1); border-radius: 24px; padding: 6px 12px; margin: 12px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+                        <span style="color: #ff3232; font-weight: 600;">🔴 NOW LIVE WITH FYERS</span>
+                        <span style="color: #333;">→</span>
+                        <span style="font-weight: 500;">Trade directly from CueTrade</span>
+                      </div>
+                    <div class="subtext-spacing"></div>
+                    <button type="button" class="btn-banner" (click)="login('google')">Login with Google</button>
+                    <p style="font-size: 13px; color: #666; margin: 8px 20px 0;">No credit card • 100% free</p>
+                    <!-- <a href="#howworks"><button type="button" class="btn-how-banner">How it Works</button></a> -->
                 </div>
             </div>
             <div class="col-md-6">
-                <img src="../../../../assets/img/Aug2024Images/Dashboard.png" alt="" class="hero-image">
+                <iframe 
+                    class="video-player" 
+                    src="https://www.youtube.com/embed/0TWLVl_A-5c?modestbranding=1&rel=0&autoplay=1&controls=0&mute=1" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
             </div>
         </div>
     </div>
 </section>
 
-<section class="testimonials py-5" id="testimonials">
-    <div class="container">
-        <h2 class="text-center mb-4">What Our Users Say</h2>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="testimonial-callout">
-                    <p class="testimonial-text">Before CueTrade, I kept jumping into trades just for fear of missing out. Now, the real-time rule checks make me pause and think. I trade less, but my decisions are smarter!</p>
-                    <span class="testimonial-author">— Srinivas K., <em>Hyderabad</em></span>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="testimonial-callout">
-                    <p class="testimonial-text">Trading, journaling, tracking trades, and checking my analytics—all in one place. CueTrade makes it so easy!</p>
-                    <span class="testimonial-author">— Krishna L., <em>Bhubaneswar</em></span>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="testimonial-callout">
-                    <p class="testimonial-text">CueTrade’s instant journaling makes me pause and write my trade thesis before executing. I now trade with intent rather than reacting to the market.</p>
-                    <span class="testimonial-author">— Lakshmi A., <em>Bengaluru</em></span>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="testimonial-callout">
-                    <p class="testimonial-text">I became a disciplined trader by planning my trades in advance, analyze the potential payoffs, and stick to my strategy instead of trading emotionally.</p>
-                    <span class="testimonial-author">— Dharmendra H., <em>Dallas</em></span>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="testimonial-callout">
-                    <p class="testimonial-text">CueTrade’s insights showed me exactly where I was losing money and why. It helped me fix my risk-taking habits, and now my trades are more structured!</p>
-                    <span class="testimonial-author">— Pawan V., <em>Hyderabad</em></span>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="testimonial-callout">
-                    <p class="testimonial-text">With Payoff Analyzer, I can easily estimate my return on option strategies in the future by changing stock price and implied volatility. I approach options trading differently now.</p>
-                    <span class="testimonial-author">— Syam N., <em>Houston</em></span>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section>
+<!-- <section>
 <div class="how-it-works" id="howitworks">
     <div class="align-items-center">
            <h1>How It Works</h1>
            <p class="pt-1">CueTrade combines trading, journaling, and analytics into one seamless experience helping you stay disciplined, avoid mistakes, and achieve your financial goals.</p>
-           <!-- <img src="../../../../assets/img/howitworks.png" alt="How It Works" class="img-fluid"> -->
-           <!-- <section class="trading-steps">
+           <img src="../../../../assets/img/howitworks.png" alt="How It Works" class="img-fluid">
+           <section class="trading-steps">
             <div class="step-container">
                 <div class="step">
                     <div class="step-number">1</div>
@@ -142,7 +111,7 @@
                     </div>
                 </div>
             </div>
-            </section> -->
+            </section>
 
             <div class="col-lg-6 col-md-12 video-container">
                 <div class="video-thumbnail">
@@ -154,13 +123,13 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 
 
 <section class="pb-1" id="benefits" style="padding-top: 0.1rem;">
     <div class="container text-center">
-        <div class = "benefits">Benefits</div>
-        <p class="benefits-subtext">CueTrade is designed to empower you with the tools and insights needed to stay disciplined, make informed decisions, avoid costly mistakes, and enhance your overall trading performance</p>
+        <div class = "benefits">CueTrade Benefits</div>
+        <p class="benefits-subtext">CueTrade combines trading, journaling, and analytics into one seamless experience helping you stay disciplined, avoid mistakes, and achieve your financial goals.</p>
     </div>
 </section>
 
@@ -269,30 +238,16 @@
             </div>
             <div class="col-md-4">
                 <div class="feature-box">
-                    <img src="../../assets/img/trade-builder.png" alt="">
-                    <h4>In-depth Trade Analysis</h4>
-                    <p>:Enables traders to conduct thorough analysis of their trades from multiple perspectives. Traders can delve into the rationale behind their decisions, examine relevant statistics, assess risk factors, and evaluate the emotional aspects involved.</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="feature-box">
-                    <img src="../../assets/img/payoff-analyzer.png" alt="">
-                    <h4>Option Payoff Analysis</h4>
-                    <p>Assess profitability of option strategies at a specific future date within a desired stock price range while adjusting implied volatility and days to expiration. Gain insights into the impact of these adjustments and align your trade with risk tolerance and return expectations.</p>
+                    <img src="../../assets/img/trading-rules.png" alt="">
+                    <h4>Rule-Based Trading</h4>
+                    <p>Set predefined trading rules to enforce disciplineEnables you to define personalized trading rules that serve as invaluable guides, keeping you within your boundaries and preventing repetitive mistakes. Automatic rules are verified for each trade indicating compliance instantly while manual rules act as text-based reminders.</p>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="feature-box">
                     <img src="../../assets/img/trade-journal.png" alt="">
-                    <h4>Extensive Trading Journal</h4>
+                    <h4>Instant Trading Journal</h4>
                     <p>Allows users to effortlessly maintain a record of their trades. Import trades from brokerages, add notes, attach documents, and indicate alignment with trading rules. This feature keeps track of trading activities, providing valuable insights for analysis.</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="feature-box">
-                    <img src="../../assets/img/trading-rules.png" alt="">
-                    <h4>Rule-Based Trading</h4>
-                    <p>Set predefined trading rules to enforce disciplineEnables you to define personalized trading rules that serve as invaluable guides, keeping you within your boundaries and preventing repetitive mistakes. Automatic rules are verified for each trade indicating compliance instantly while manual rules act as text-based reminders.</p>
                 </div>
             </div>
             <div class="col-md-4">
@@ -302,7 +257,6 @@
                     <p>Offers a wide array of statistics and reports, providing valuable insights into your trading performance covering essential aspects like performance, risk management, commissions, goals, and discipline. These reports are based on your trading history and journal details.</p>
                 </div>
             </div>            
-
             <div class="col-md-4">
                 <div class="feature-box">
                     <img src="../../assets/img/payoff-analyzer.png" alt="">
@@ -319,21 +273,64 @@
             </div>
             <div class="col-md-4">
                 <div class="feature-box">
-                    <img src="../../assets/img/trading-plan.png" alt="">
-                    <h4>Daily Tracker</h4>
-                    <p>CueTrade focuses on three daily steps to improve as a trader: Plan, Journal, and Review. Daily Tracker fosters trading discipline by monitoring daily task progress effortlessly. Tasks are automatically marked as complete based on your activities, simplifying tracking.</p>
+                    <img src="../../assets/img/payoff-analyzer.png" alt="">
+                    <h4>Option Payoff Analysis</h4>
+                    <p>Assess profitability of option strategies at a specific future date within a desired stock price range while adjusting implied volatility and days to expiration. Gain insights into the impact of these adjustments and align your trade with risk tolerance and return expectations.</p>
                 </div>
-            </div>            
-
+            </div>
         </div>
     </div>
 </section> -->
+
+<section class="testimonials py-5" id="testimonials">
+    <div class="container">
+        <h2 class="text-center mb-4">What Our Users Say</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="testimonial-callout">
+                    <p class="testimonial-text">Before CueTrade, I kept jumping into trades just for fear of missing out. Now, the real-time rule checks make me pause and think. I trade less, but my decisions are smarter!</p>
+                    <span class="testimonial-author">— Srinivas K., <em>Hyderabad</em></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="testimonial-callout">
+                    <p class="testimonial-text">Trading, journaling, tracking trades, and checking my analytics—all in one place. CueTrade makes it so easy!</p>
+                    <span class="testimonial-author">— Krishna L., <em>Bhubaneswar</em></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="testimonial-callout">
+                    <p class="testimonial-text">CueTrade’s instant journaling makes me pause and write my trade thesis before executing. I now trade with intent rather than reacting to the market.</p>
+                    <span class="testimonial-author">— Lakshmi A., <em>Bengaluru</em></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="testimonial-callout">
+                    <p class="testimonial-text">I became a disciplined trader by planning my trades in advance, analyze the potential payoffs, and stick to my strategy instead of trading emotionally.</p>
+                    <span class="testimonial-author">— Dharmendra H., <em>Dallas</em></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="testimonial-callout">
+                    <p class="testimonial-text">CueTrade’s insights showed me exactly where I was losing money and why. It helped me fix my risk-taking habits, and now my trades are more structured!</p>
+                    <span class="testimonial-author">— Pawan V., <em>Hyderabad</em></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="testimonial-callout">
+                    <p class="testimonial-text">With Payoff Analyzer, I can easily estimate my return on option strategies in the future by changing stock price and implied volatility. I approach options trading differently now.</p>
+                    <span class="testimonial-author">— Syam N., <em>Houston</em></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <section class="pt-5 pb-5" id="faqs" style="background-size:cover; background-color:#ffffff; padding-bottom: 100px;">
     <div class="container accordion-wrapper">
         <div class="row">
             <div class="col-12 col-lg-12">
-                <h2 class="faqs"><strong>FAQs</strong></h2>
+                <h2 class="faqs"><strong>Frequently Asked Questions</strong></h2>
             </div>
         </div>
         <div class="accordion">
@@ -433,52 +430,37 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <a href="https://www.linkedin.com/posts/venkatkasthala_cuetrade-activity-7295975330568159232-xnrB?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAEjdyYBYh5UPgCw54POZ0Zm0mwYBfdGVxw" target="_blank" class="blog-box">
-                        <h4>Why did we build CueTrade?</h4>
-                        <p>9 out of 10 active traders lose money. Why? Because without discipline, trading feels more like gambling. The trading ecosystem, social media, and even our own emotions - push us to trade mode, not better.</p>
-                        <span class="blog-linkText">Read More</span>
-                    </a>
-                </div>
-                <div class="col-md-4">
-                    <a href="https://www.linkedin.com/posts/venkatkasthala_tradingdiscipline-fintech-cuetrade-activity-7295270933315956736-Z0uf?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAEjdyYBYh5UPgCw54POZ0Zm0mwYBfdGVxw" target="_blank" class="blog-box">
-                        <h4>Big News from CueTrade</h4>
-                        <p> am excited to share a significant evolution in our product. Originally launched as a trading journal and analytics tool, CueTrade was designed to help traders document and reflect on their trades to improve decision-making.</p>
-                        <span class="blog-linkText">Read More</span>
-                    </a>
-                </div>
-                <div class="col-md-4">
                     <a href="https://www.linkedin.com/pulse/cuetrade-empowering-traders-discipline-analytics-cue-trade%3FtrackingId=aol0IIhfiypfT8%252FFcO8gBA%253D%253D/?trackingId=aol0IIhfiypfT8%2FFcO8gBA%3D%3D" target="_blank" class="blog-box">
-                        <h4>Empowering Disciplined Trading</h4>
+                        <h4>CueTrade: Empowering Traders with Discipline and Analytics</h4>
                         <p>In the exciting world of financial markets, many people believe that trading is a sure shot way to make money. But the reality is quite different. Shockingly, about 90% of active traders actually end up losing money.</p>
                         <span class="blog-linkText">Read More</span>
                     </a>
                 </div>
-
                 <div class="col-md-4">
                     <a href="https://www.linkedin.com/pulse/navigating-perils-trading-personal-journey-birth-cuetrade-cue-trade%3FtrackingId=Asv6E33Iq4gptyevgNX68w%253D%253D/?trackingId=Asv6E33Iq4gptyevgNX68w%3D%3D" target="_blank" class="blog-box">
-                        <h4>Navigating the Trading Perils</h4>
+                        <h4>Navigating the Trading Perils: A Personal Journey and the Birth of CueTrade</h4>
                         <p>Trading in the financial markets can be an exciting endeavor, promising potential riches and financial independence. Like millions of retail traders, I too ventured into the world of trading a few years ago.</p>
                         <span class="blog-linkText">Read More</span>
                     </a>
                 </div>
                 <div class="col-md-4">
                     <a href="https://www.linkedin.com/pulse/analyze-option-strategy-payoffs-cuetrades-payoff-analyzer-cue-trade%3FtrackingId=oojX8%252F6oGgzANnanxyshew%253D%253D/?trackingId=oojX8%2F6oGgzANnanxyshew%3D%3D" target="_blank" class="blog-box">
-                        <h4>CueTrade’s Payoff Analyzer</h4>
-                        <p>Options trading has surged in popularity among retail traders over the last few years, driven by the allure of leverage despite the inherent risks. Retail traders now account for more than 25% of all options trading,</p>
+                        <h4>Analyze Option Strategy Payoffs with CueTrade’s Payoff Analyzer</h4>
+                        <p>Options trading has surged in popularity among retail traders over the last few years, driven by the allure of leverage despite the inherent risks. Retail traders now account for more than 25% of all options trading, thanks to discount brokers.</p>
                         <span class="blog-linkText">Read More</span>
                     </a>
                 </div>
                 <div class="col-md-4">
                     <a href="https://www.linkedin.com/pulse/empower-your-trading-day-cuetrades-plan-cue-trade%3FtrackingId=N2NlPeD9C7Ie%252FiTJeTbxug%253D%253D/?trackingId=N2NlPeD9C7Ie%2FiTJeTbxug%3D%3D" target="_blank" class="blog-box">
-                        <h4>Boost Trading with a Daily Plan</h4>
-                        <p>Embarking on a journey in the trading world requires more than just luck. It’s about being informed, having a plan, and making decisions backed by research and analysis. We all know how tempting it is to get carried</p>
+                        <h4>Empower Your Trading Day with CueTrade’s Daily Trading Plan</h4>
+                        <p>Embarking on a journey in the trading world requires more than just luck. It’s about being informed, having a plan, and making decisions backed by research and analysis. We all know how tempting it is to get carried away by fast-paced</p>
                         <span class="blog-linkText">Read More</span>
                     </a>
                 </div>
                 <div class="col-md-4">
                     <a href="https://www.linkedin.com/pulse/trading-without-rules-recipe-disaster-how-fix-cue-trade-cpxdf%3FtrackingId=y1zCLQ0IxpcKtnjgFvWpJQ%253D%253D/?trackingId=y1zCLQ0IxpcKtnjgFvWpJQ%3D%3D" target="_blank" class="blog-box">
-                        <h4>Trading Without Rules</h4>
-                        <p>Trading appears deceptively simple in hindsight – buy low, sell high, and practice patience. The reality, however, is that making a profit in the financial markets is a challenging endeavor.</p>
+                        <h4>Trading Without Rules: The Recipe for Disaster (and How to Fix It)</h4>
+                        <p>Trading appears deceptively simple in hindsight – buy low, sell high, and practice patience. The reality, however, is that making a profit in the financial markets is a challenging endeavor. Ignore anyone who claims otherwise.</p>
                         <span class="blog-linkText">Read More</span>
                     </a>
                 </div>
