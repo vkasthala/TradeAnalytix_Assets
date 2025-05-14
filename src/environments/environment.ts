@@ -12,10 +12,11 @@ export const environment = {
   redirectUri: 'https://us.tradeanalytix.com/oauth-redirect',*/
 
   //Prod
-  apiUrl: 'https://in.cuetrade.io/service',
-  redirectUri: 'https://in.cuetrade.io/oauth-redirect',
-  tradingServiceUri: 'https://trading.cuetrade.io/tradingservice',
-  websocketUrl: 'https://trading.cuetrade.io',
+  apiUrl: 'https://us.cuetrade.io/service',
+  redirectUri: 'https://us.cuetrade.io/oauth-redirect',
+  tradingServiceUri: 'https://us.cuetrade.io/tradingservice',
+  websocketUrl: 'https://ustrading.cuetrade.io',
+  country: 'US', // SET US for US deployment and IN for indian deployment
   //Uncomment this only in local
   // env: 'local',
   //Comment this only in local
@@ -26,12 +27,9 @@ export const environment = {
   // redirectUri: 'http://localhost:4200/oauth-redirect',
   // tradingServiceUri: 'http://localhost:8081/tradingservice',
   // websocketUrl: 'http://localhost:5001',
-  snaptradeurl:'https://trading.cuetrade.io',
-
-
-  clientCode: 'GPJIG4CRFK-102',
-  authToken: '',
-  tz: 'Asia/Calcutta'
+  // tz: 'Asia/Calcutta',
+  tz: 'America/New_York',
+  snaptradeurl: ""
 };
 
 /*

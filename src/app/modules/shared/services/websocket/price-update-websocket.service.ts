@@ -18,6 +18,9 @@ export class PriceUpdateWebsocketService {
   }
 
   establishConnection(){
+    if('US' === environment.country){
+      return;
+    }
     this.connect(() => {
       this.connectInProgress = false;
       this.registerPendingSymbols();
@@ -25,6 +28,10 @@ export class PriceUpdateWebsocketService {
   }
 
   connect(callback: Function) {
+
+    if('US' === environment.country){
+      return;
+    }
   
     if (this.socket && this.socket.connected) {
       callback();
@@ -90,6 +97,9 @@ export class PriceUpdateWebsocketService {
   
 
   subscribePriceUpdate(userId: number, userToken: string, symbols: string, callback: Function) {
+    if('US' === environment.country){
+      return;
+    }
     if (this.connectInProgress) {
       let callbacks = this.symbolsToRegister.get(userId);
       if (!callbacks) {
@@ -110,6 +120,9 @@ export class PriceUpdateWebsocketService {
   }
 
   registerPendingSymbols() {
+    if('US' === environment.country){
+      return;
+    }
     if (this.symbolsToRegister && this.symbolsToRegister.size > 0) {
       this.symbolsToRegister.forEach((callbacks, userId) => {
         // Reinitialize subscription for stored symbols
@@ -120,11 +133,17 @@ export class PriceUpdateWebsocketService {
   }
 
   joinRoom(userId: number) {
+    if('US' === environment.country){
+      return;
+    }
     this.socket.emit('join', userId); // Emit join event with userId
     console.log(`Joined room for userId: ${userId}`);
   }
 
   initPriceUpdateSubscription(symbol: string, callbacks: Function[]) {
+    if('US' === environment.country){
+      return;
+    }
     this.socket.emit('subscribe', {
       "access_token": this.fyToken,
       "symbol": symbol,
@@ -141,20 +160,24 @@ export class PriceUpdateWebsocketService {
   }
 
   unSubscribePriceUpdate(symbol: string) {
-    let access_token = "GPPJIG4CRFK-102:eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhcGkuZnllcnMuaW4iLCJpYXQiOjE3Mjg3MjczODgsImV4cCI6MTcyODc3OTQwOCwibmJmIjoxNzI4NzI3Mzg4LCJhdWQiOlsieDowIiwieDoxIiwieDoyIiwiZDoxIiwiZDoyIixbIng6MCIsIng6MSIsIng6MiIsImQ6MSIsImQ6MiJdXSwic3ViIjoiYWNjZXNzX3Rva2VuIiwiYXRfaGFzaCI6ImdBQUFBQUJuQ2tsY1hBTmZUYmp0bl94R0xhdzAtd0RTQ1dJbGFieE0zY3dGYmlUQ1pUNjNYRlBGaTV1TTNDTEpsZGEwdlkyMG1kakFBQWs1RVFueDQ2cklxck9pS2lPU1F4bHB2TEd6aVZnUlFrLXAtYW5fM2owPSIsImRpc3BsYXlfbmFtZSI6Ik5JVEhJTiBCQUxBS1JJU0hOQSBOQVlBSyIsIm9tcyI6IksxIiwiaHNtX2tleSI6ImMwYWQ5MDgxNzY2Zjk0OTU2MWU0ZWM0OGEyNzNmMGMyNzY0Zjk1YzAwMWIxN2RkZjVkZjIzZWJhIiwiZnlfaWQiOiJZTjAyMDQ3IiwiYXBwVHlwZSI6MTAyLCJwb2FfZmxhZyI6Ik4ifQ.4qODWYiWprGkOPHQX0lpeCJebc6m_BTyrjHZfgczFpw";
+    if('US' === environment.country){
+      return;
+    }
 
     this.socket.emit('unsubscribe', {
-      "access_token": access_token,
       "symbol": symbol,
-      "user_id": 1
+      "user_id": this.userId
     });
 
     this.socket.on('unsubscribe', (response: any) => {
-        console.log(response);
+        console.log("Unsub"+response);
     });
   }
 
   disconnectUser() {
+    if('US' === environment.country){
+      return;
+    }
     if (this.socket && this.socket.connected) {
       this.socket.emit('disconnect');
       this.socket.off('price_update');

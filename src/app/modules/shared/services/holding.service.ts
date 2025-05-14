@@ -17,8 +17,8 @@ export class HoldingService {
   
   private createHttpHeaders(): HttpHeaders {
     let httpHeaders: HttpHeaders = new HttpHeaders({
-      Brokerage: 'FYERS',
-      Authorization: 'Bearer ' + sessionStorage.getItem('token')
+      Brokerage: 'US' == environment.country ? 'SNAPTRADE' : 'FYERS',
+      "X-Auth-Token": 'Bearer ' + sessionStorage.getItem('token')
     });
     return httpHeaders;
   }

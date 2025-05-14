@@ -42,6 +42,8 @@ export class WatchListComponent implements OnInit {
 
   sampleData:any =[];
 
+  isPriceUpdateSubscribed: boolean = false;
+
   constructor(
     private renderer: Renderer2,
     private _sharedService: SharedService,
@@ -51,6 +53,13 @@ export class WatchListComponent implements OnInit {
     private toastr: ToastrService,
     private router: Router
   ) {
+    _sharedService.sessionActiveEvent.subscribe(
+      (res) => {
+        if(!this.isPriceUpdateSubscribed){
+          this.subscribeSymbolsPriceUpdate(this.pageIndex);
+        }
+      }
+    );
     _sharedService.addItemEvent.subscribe(
       (res) => {
         this.addNewItem(res);
@@ -146,6 +155,7 @@ export class WatchListComponent implements OnInit {
   }
 
   subscribeSymbolsPriceUpdate(pageIndex: number) {
+    this.isPriceUpdateSubscribed = true;
     if (this.watchListData && this.watchListData.length >= pageIndex) {
       let watchList = this.watchListData[pageIndex - 1];
       if (watchList.items) {
@@ -420,6 +430,12 @@ export class WatchListComponent implements OnInit {
     this.marginsSource.price = response.price;
     this.marginsSource.expiry = response.instrument.expiryDate;
     this.marginsSource.tradeType = response.tradeType;
+
+    this.marginsSource.previousDayClose = response.previousDayClose;
+    this.marginsSource.todayLow = response.todayLow;
+    this.marginsSource.todayHigh = response.todayHigh;
+    this.marginsSource.volume = response.volume;
+
     //$event.instrumenType == 14 ? 'OPTION' : 'STOCK';
       }
     }, error =>{

@@ -7,6 +7,7 @@ import { UserDetails } from '../models/common/user-details.model';
 import { HttpService } from './http.service';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { WebsocketUserDetails } from '../models/common/websocket-user-details.model';
+import { env } from 'process';
 
 @Injectable({
   providedIn: 'root'
@@ -21,13 +22,26 @@ export class UserService {
     private http: HttpClient
   ) { }
 
+  private createHttpHeaders(): HttpHeaders {
+    let httpHeaders: HttpHeaders = new HttpHeaders({
+      Brokerage: 'US' == environment.country ? 'SNAPTRADE' : 'FYERS',
+      "X-Auth-Token": 'Bearer ' + sessionStorage.getItem('token')
+    });
+    return httpHeaders;
+  }
+
   getUserDetails(): Observable<UserDetails> {
     return this.httpService.get<UserDetails>(this.apiUrl + '/user/details');
   }
 
   checkIfBrokerageActive(): Observable<Boolean>{
       const url = environment.tradingServiceUri + "/user/checkIfBrokerageActive";
-      return this.httpService.get<Boolean>(url);
+      return this.http.get<Boolean>(url, { headers: this.createHttpHeaders() });
+  }
+
+  getConnectedBrokeragesOfUser(): Observable<any> {
+    const url = environment.tradingServiceUri+`/api/users/accounts`;
+    return this.http.get<any>(url, { headers: this.createHttpHeaders() });
   }
 
   getUserInfoForWs(): Observable<WebsocketUserDetails>{
@@ -50,15 +64,8 @@ export class UserService {
     return this.httpService.post<ReferralInfo, void>(this.apiUrl + '/user/referral-details', referralDto);
   }
 
-  fyersLogin(): Observable<HttpResponse<string>>{
-    // const headers = new HttpHeaders({
-    //   'Content-Type': 'application/json'
-    // });
-    // // const options = {
-    // //   headers: headers,
-    // //   observe: 'response' as 'body'  
-    // // };
-    return this.httpService.get<any>(this.apiUrl+ '/v0/brokerage/login/fyers?env='+environment.env);
+  brokerageLogin(brokerage: string): Observable<HttpResponse<string>>{
+    return this.httpService.get<any>(this.apiUrl+ '/v0/brokerage/login/'+ brokerage + '?env='+environment.env);
   }
 
   logoutFromBrokerage(brokerage: string): Observable<HttpResponse<string>>{

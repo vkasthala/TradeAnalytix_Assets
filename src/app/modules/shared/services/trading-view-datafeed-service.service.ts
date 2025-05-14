@@ -15,7 +15,7 @@ export class TradingViewDatafeedServiceService {
   private createHttpHeaders(): HttpHeaders {
     return new HttpHeaders({
       Brokerage: 'FYERS',
-      Authorization: 'Bearer ' + sessionStorage.getItem('token')
+      "X-Auth-Token": 'Bearer ' + sessionStorage.getItem('token')
     });
   }
 
@@ -97,7 +97,6 @@ class CustomDatafeed {
   }
 
   getBars(symbolInfo: any, resolution: any, range: any, onHistoryCallback: any, onErrorCallback: any) {
-    debugger;
     const startDate = this.getEpochInIST(new Date('2017-07-03T00:00:00'));
     const endDate = range.to;
     let adjustedRange = this.adjustRange(startDate, endDate, resolution);
@@ -113,7 +112,6 @@ class CustomDatafeed {
             close: response.c[index],
             volume: response.v[index]
           }));
-          debugger;
           onHistoryCallback(bars, { noData: false });
         } else {
           onHistoryCallback([], { noData: true });

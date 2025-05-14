@@ -13,6 +13,7 @@ import { UserService } from '../../shared/services/user.service';
 import { SharedService } from '../../shared/services/shared.service';
 import { SnapTradeService} from '../../snap-trade/snap-trade.service';
 import { OmsService } from '../../shared/services/oms.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -36,6 +37,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   isMobileDevice: any;
   userData: any;
   isBrokerageActive: boolean = false;
+  country = environment.country;
   constructor(
     private _omsService: OmsService,
     private globalStore: Store<fromGlobalConfig.State>,
@@ -332,15 +334,16 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   }
 
-  fyersLogin(){
-    this.userService.fyersLogin().subscribe(response => {
+  brokerageLogin(brokerage: string){
+    this.userService.brokerageLogin(brokerage).subscribe(response => {
       if (response != null) {
+        if('FYERS' === brokerage){
         this._omsService.subscribeToOrderUpdates().subscribe(response => {
           if("Success" === response){
             console.log("Successfully subscribed to fyers order updates");
           }
         });
-        console.log("response");
+      }
         const location = response['redirectUri'];
         if (location) {
           window.location.href = location;
@@ -348,15 +351,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       }
     });
   }
-  snapeTradeLogin(username:string,userId:string){
-    this.snapTradeService.login(username,userId).subscribe(response => {
-      if (response != null) {
-        console.log("response");
-        const location = response['redirectUri'];
-        window.location.href = response;
-      }
-    });
-  }
+
   openBrokerageModal() {
     this.brokerageModal= !this.brokerageModal;
   }
@@ -367,23 +362,12 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   onBrokerageChange(value) {
     if(value === 'FYERS') {
-      this.fyersLogin();
+      this.brokerageLogin(value);
     } else if ( value === 'SnapTrade') {
-        this.snapeTradeLogin(this.userData.name,this.userData.userId);
+        this.brokerageLogin(value);
      }else {
-      this.toastr.info('Only FYERS is supported at present. Stay tuned for more integrations soon!', '');
+      this.toastr.info('Only FYERS and SnapTrade is supported at present. Stay tuned for more integrations soon!', '');
     }
-  }
-
-  snapeTradeRegister() {
-    this.snapTradeService.registerUser(this.userData.name,this.userData.userId).subscribe((response) => {
-      console.log('Success response:', response);
-      this.toastr.success('SnapTrade account created for the user', 'Success');
-    },
-    (error) => {
-      this.toastr.error('SnapTrade account already exists for the user. Please connect to your broker and fetch trades', 'Error');
-    }
-    );
   }
 
 }

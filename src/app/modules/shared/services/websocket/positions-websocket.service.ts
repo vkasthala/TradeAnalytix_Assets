@@ -15,12 +15,18 @@ export class PositionsWebsocketService {
   usersToRegister: Map<string, Function[]> = new Map();
 
   constructor() {
+    if('US' === environment.country){
+      return;
+    }
     this.connect(() => {
       this.registerPendingCallbacks();
     });
   }
 
   connect(callback: Function) {
+    if('US' === environment.country){
+      return;
+    }
     this.socket = new SockJS(environment.tradingServiceUri + '/positions-websocket' + '?access_token=' + this.getAccessToken());
     this.stompClient = Stomp.over(this.socket);
     console.log('Connecting socket..');
@@ -37,10 +43,16 @@ export class PositionsWebsocketService {
   }
 
   sendMessage(destination: string, body: any) {
+    if('US' === environment.country){
+      return;
+    }
     this.stompClient.send(destination, {}, JSON.stringify(body));
   }
 
   subscribePositionsUpdate(userId: string, callback: Function) {
+    if('US' === environment.country){
+      return;
+    }
     if (this.connectInProgress) {
       let callbacks: Function[] | undefined = this.usersToRegister.get(userId);
       if (!callbacks) {
@@ -62,6 +74,9 @@ export class PositionsWebsocketService {
   }
 
   registerPendingCallbacks() {
+    if('US' === environment.country){
+      return;
+    }
     if (this.usersToRegister && this.usersToRegister.size > 0) {
       this.usersToRegister.forEach((callbacks, symbol) => {
         this.initPositionsSubscriptions(symbol, callbacks);
@@ -71,16 +86,25 @@ export class PositionsWebsocketService {
   }
 
   initPositionsSubscriptions(userId: string, callbacks: Function[]) {
+    if('US' === environment.country){
+      return;
+    }
     this.subscribeToTopic('/topic/positions.' + userId, callbacks);
   }
 
   unSubscribePositionsUpdate(userId: string) {
+    if('US' === environment.country){
+      return;
+    }
     if (this.stompClient.connected) {
       this.unSubscribeTopic('/topic/positions.' + userId);
     }
   }
 
   unsubscribeAll() {
+    if('US' === environment.country){
+      return;
+    }
     if (!this.stompClient.connected) {
       return;
     }
@@ -94,6 +118,9 @@ export class PositionsWebsocketService {
   }
 
   private subscribeToTopic(topic: string, callbacks: Function[]) {
+    if('US' === environment.country){
+      return;
+    }
     if (this.subscriptions.has(topic)) {
       this.unSubscribeTopic(topic);
     }
@@ -112,6 +139,9 @@ export class PositionsWebsocketService {
   }
 
   private unSubscribeTopic(topic: string) {
+    if('US' === environment.country){
+      return;
+    }
     if (this.subscriptions.has(topic)) {
       let subcs = this.subscriptions.get(topic);
       if (subcs && subcs.length > 0) {
@@ -124,12 +154,18 @@ export class PositionsWebsocketService {
   }
 
   private getAuthHeaders(): any {
+    if('US' === environment.country){
+      return;
+    }
     return {
-      'Authorization': 'Bearer ' + this.getAccessToken()
+      "X-Auth-Token": 'Bearer ' + this.getAccessToken()
     };
   }
 
   private getAccessToken() {
+    if('US' === environment.country){
+      return;
+    }
     return sessionStorage.getItem('token');
   }
 }

@@ -53,11 +53,9 @@ export class WatchlistService {
 
   private getHeaders(): HttpHeaders{
     let headers = new HttpHeaders({
-      'X-BROKER-ID':  'fyers',
-      'X-USER-ID': '1',
-      'Authorization': 'Bearer ' + sessionStorage.getItem('token')
+      'X-BROKER-ID':  environment.country ? 'SNAPTRADE' : 'FYERS',
+      "X-Auth-Token": 'Bearer ' + sessionStorage.getItem('token')
     });
-    console.log("Token  : " + sessionStorage.getItem('token'));
     return headers;
   }
 }

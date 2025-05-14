@@ -103,14 +103,14 @@
                     </div>
                     <div class="card-main card-main-custom">
                         <label class="col-form-label pt-0">Entry Price</label>
-                        <input type="number" pattern="^\d*(\.\d{0,3})?$" (change)="checkForDecimalValidation($event)"
+                        <input type="number" pattern="^\d*(\.\d{0,2})?$" (change)="checkForDecimalValidation($event)"
                             step="0.0001" (keydown)="preventNegatives($event, true)" min="0" class="form-control"
                             placeholder="" [(ngModel)]="stockEntry.price"
                             [ngClass]="[closeTrade || viewTrade ? 'disabled' : '', editTrade && ((StockPosition.quantity > 0 && StockPosition.quantity !== undefined ) || (StockPosition.partialLegChange && StockPosition.partialLegChange.length > 0)) ? 'disabled' : '', tradeStatus == 4 ? 'input_enanled' : '']" />
                     </div>
                     <div class="card-main card-main-custom" *ngIf="closeTrade">
                         <label class="col-form-label pt-0">Exit Price <span class="text-danger">*</span></label>
-                        <input type="number" pattern="^\d*(\.\d{0,3})?$" step="0.0001" min="0"
+                        <input type="number" pattern="^\d*(\.\d{0,2})?$" step="0.0001" min="0"
                             class="form-control cards-input" placeholder="" (change)="checkForDecimalValidation($event)" [(ngModel)]="stockEntry.closePrice"
                             [ngClass]="[viewTrade ? 'disabled' : '']" />
                     </div>
@@ -366,7 +366,7 @@
                     </div>
                     <div class="col-4" *ngIf="closeTrade">
                         <label class="col-form-label pt-0">Exit Price <span class="text-danger">*</span></label>
-                        <input type="number" pattern="^\d*(\.\d{0,3})?$" step="0.0001" min="0"
+                        <input type="number" pattern="^\d*(\.\d{0,2})?$" step="0.0001" min="0"
                             class="form-control cards-input" placeholder="" [(ngModel)]="stockEntry.closePrice"
                             [ngClass]="[viewTrade ? 'disabled' : '']" />
                     </div>
@@ -496,7 +496,7 @@
                     </div>
                     <div>
                         <label class="col-form-label pt-0">Entry Price</label>
-                        <input type="number" pattern="^\d*(\.\d{0,3})?$" (change)="checkForDecimalValidation($event)"
+                        <input type="number" pattern="^\d*(\.\d{0,2})?$" (change)="checkForDecimalValidation($event)"
                             step="0.0001" (change)="preventNegatives($event, true)" min="0" class="form-control"
                             placeholder="" [(ngModel)]="editingStock.price"
                             [ngClass]="[closeTrade || viewTrade ? 'disabled' : '', editTrade && (editingStock.quantity > 0 && editingStock.quantity !== undefined ) ? 'disabled' : '']" />
@@ -512,7 +512,7 @@
                     </div>
                     <div class="card-main card-main-custom" *ngIf="closeTrade">
                         <label class="col-form-label pt-0">Exit Price <span class="text-danger">*</span></label>
-                        <input type="number" pattern="^\d*(\.\d{0,3})?$" step="0.0001" min="0"
+                        <input type="number" pattern="^\d*(\.\d{0,2})?$" step="0.0001" min="0"
                             class="form-control cards-input" placeholder="" (change)="checkForDecimalValidation($event)" [(ngModel)]="editingStock.closePrice"
                             [ngClass]="[viewTrade ? 'disabled' : '']" />
                     </div>
@@ -601,7 +601,7 @@
                     <div class="row mb-2">
                         <div class="col-6">
                             <label class="col-form-label pt-0">Entry Price</label>
-                            <input type="number" (change)="preventNegatives($event, true)" pattern="^\d*(\.\d{0,3})?$"
+                            <input type="number" (change)="preventNegatives($event, true)" pattern="^\d*(\.\d{0,2})?$"
                                 (change)="checkForDecimalValidation($event)" step="0.0001" min="0" class="form-control"
                                 placeholder="" [(ngModel)]="editingOption.price" />
                         </div>

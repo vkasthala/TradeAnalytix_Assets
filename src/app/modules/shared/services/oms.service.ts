@@ -16,8 +16,8 @@ export class OmsService {
 
   private createHttpHeaders(): HttpHeaders {
     let httpHeaders: HttpHeaders = new HttpHeaders({
-      Brokerage: 'FYERS',
-      Authorization: 'Bearer ' + sessionStorage.getItem('token')
+      Brokerage: 'US' == environment.country ? 'SNAPTRADE' : 'FYERS',
+      "X-Auth-Token": 'Bearer ' + sessionStorage.getItem('token')
     });
     return httpHeaders;
   }
@@ -34,11 +34,17 @@ export class OmsService {
   }
 
   subscribeToOrderUpdates(): Observable<String>{
+    if('US' === environment.country){
+      return;
+    }
     const url = environment.tradingServiceUri + "/orders/subscribe-order-updates";
     return this.http.post<String>(url, null, { headers: this.createHttpHeaders() });
   }
 
   unsubscribeOrderUpdates(brokerage: string): Observable<String>{
+    if('US' === environment.country){
+      return;
+    }
     let httpHeaders: HttpHeaders = this.createHttpHeaders();
     httpHeaders.set("Brokerage", brokerage);
     const url = environment.tradingServiceUri + "/orders/unsubscribe-order-updates";

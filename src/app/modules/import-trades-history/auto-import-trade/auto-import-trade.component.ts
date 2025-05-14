@@ -10,6 +10,7 @@ import { ZerodhaPopupComponent } from '../zerodha-popup/zerodha-popup.component'
 import { SnapTradeService } from '../../snap-trade/snap-trade.service';
 import { UserDetails } from '../../shared/models/common/user-details.model';
 import { UserService } from '../../shared/services/user.service';
+import { TradingService } from '../../shared/services/trading.service';
 
 
 @Component({
@@ -48,6 +49,7 @@ export class AutoImportTradeComponent implements OnInit {
      // @Inject(MAT_DIALOG_DATA) data,
     private _dialog: MatDialog,
     private snapTradeService:SnapTradeService,
+    private tradingService: TradingService
   ) {
     console.log('plaidToken',this.plaidToken);
     
@@ -69,13 +71,12 @@ export class AutoImportTradeComponent implements OnInit {
     
   }
   loadAccountDetails() {
-    this.snapTradeService.getAccounts(this.userData.name,this.userData.userId).subscribe(result => {
+    this.userService.getConnectedBrokeragesOfUser().subscribe(result => {
     this.accounts = result;
     if (this.accounts && this.accounts.length > 0) {
       this.accountNames = this.accounts.map(account => account.institutionName).join(', ');
     }
   },err => {
-   // this.processing = false;
     console.log("error:", err);
     window.open(err.error.text, "_blank");
   });
@@ -110,7 +111,7 @@ export class AutoImportTradeComponent implements OnInit {
   importSnapTrades() {
     this.processing = true;
    
-    this.snapTradeService.getActivities(this.userData.name,this.userData.userId).subscribe( result => {
+    this.tradingService.importTrades(this.userData.name,this.userData.userId, this.startDate,this.endDate).subscribe( result => {
       this.processing = false;
       this.showPopup = true;
       this.jsonData = result;
@@ -122,19 +123,6 @@ export class AutoImportTradeComponent implements OnInit {
     })
   }
 
-  importSnapTradesByDate() {
-    this.processing = true;
-    this.snapTradeService.getActivitiesByDate(this.userData.name,this.userData.userId,this.startDate,this.endDate).subscribe( result => {
-      this.processing = false;
-      this.showPopup = true;
-      this.jsonData = result;
-      
-    },err => {
-      this.processing = false;
-      console.log("error:", err);
-      window.open(err.error.text, "_blank");
-    })
-  }
 closePopup(): void {
     this.showPopup = false;
     this.jsonData = null;

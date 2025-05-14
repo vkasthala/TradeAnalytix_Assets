@@ -100,6 +100,11 @@ export interface OrderPurchasehistory{
     instrumenType: number | undefined;
     symbolId: string | undefined;
     variety: string | undefined;
+
+    previousDayClose: number | undefined;
+    todayLow: number | undefined;
+    todayHigh: number | undefined;
+    volume: number | undefined;
 }
 
 export interface InstrumentResponse{
