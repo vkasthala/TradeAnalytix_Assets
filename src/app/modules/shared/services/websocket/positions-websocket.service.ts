@@ -158,7 +158,7 @@ export class PositionsWebsocketService {
       return;
     }
     return {
-      "X-Auth-Token": 'Bearer ' + this.getAccessToken()
+      'Authorization': 'Bearer ' + this.getAccessToken()
     };
   }
 

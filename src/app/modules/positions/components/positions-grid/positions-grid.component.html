@@ -2,7 +2,7 @@
     <table>
         <thead>
             <tr (mouseover)="showPositionsActions($event, null)" (mouseout)="hidePositionsActions(null)">
-                <th class="product-cell">Product</th>
+                <th *ngIf="environment.country == 'IN'" class="product-cell">Product</th>
                 <th class="instrument-cell">Instrument</th>
                 <th class="qty-cell">Quantity</th>
                 <th class="text-right avgcost-cell">Avg.Cost</th>

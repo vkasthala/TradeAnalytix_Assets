@@ -78,7 +78,6 @@ export class AutoImportTradeComponent implements OnInit {
     }
   },err => {
     console.log("error:", err);
-    window.open(err.error.text, "_blank");
   });
 
   }

@@ -15,7 +15,7 @@ export class TradingViewDatafeedServiceService {
   private createHttpHeaders(): HttpHeaders {
     return new HttpHeaders({
       Brokerage: 'FYERS',
-      "X-Auth-Token": 'Bearer ' + sessionStorage.getItem('token')
+      Authorization: 'Bearer ' + sessionStorage.getItem('token')
     });
   }
 

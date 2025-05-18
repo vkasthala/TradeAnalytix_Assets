@@ -9,6 +9,7 @@ import { PositionsWebsocketService } from 'src/app/modules/shared/services/webso
 import { NavigationStart, Router } from '@angular/router';
 import { PriceUpdateWebsocketService } from 'src/app/modules/shared/services/websocket/price-update-websocket.service';
 import { PositionsResponse } from 'src/app/modules/shared/models/portfolio.model';
+import { environment } from '../../../../../environments/environment';;
 
 @Component({
   selector: 'app-positions-grid',

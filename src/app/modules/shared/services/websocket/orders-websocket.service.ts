@@ -119,7 +119,7 @@ export class OrdersWebsocketService {
 
   private getAuthHeaders(): any {
     return {
-      "X-Auth-Token": 'Bearer ' + this.getAccessToken()
+      'Authorization': 'Bearer ' + this.getAccessToken()
     };
   }
 

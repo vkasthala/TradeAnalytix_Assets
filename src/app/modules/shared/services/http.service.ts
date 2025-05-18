@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { DemoModeDetailsService } from './demo-mode-details.service';
-import { UserService } from './user.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -80,6 +80,7 @@ export class HttpService {
       Authorization: 'Bearer ' + sessionStorage.getItem('token'),
       'demo-mode': this.demoService.demoMode === true ? "1" : "0",
       country: sessionStorage.getItem('country'),
+      Brokerage: 'US' == environment.country ? 'SNAPTRADE' : 'FYERS'
     });
     for (let key in headersMap.keys()) {
       httpHeaders.append(key, headersMap.get(key));

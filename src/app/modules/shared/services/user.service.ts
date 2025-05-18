@@ -25,7 +25,7 @@ export class UserService {
   private createHttpHeaders(): HttpHeaders {
     let httpHeaders: HttpHeaders = new HttpHeaders({
       Brokerage: 'US' == environment.country ? 'SNAPTRADE' : 'FYERS',
-      "X-Auth-Token": 'Bearer ' + sessionStorage.getItem('token')
+      Authorization: 'Bearer ' + sessionStorage.getItem('token')
     });
     return httpHeaders;
   }

@@ -14,7 +14,7 @@ export class ApiInterceptor implements HttpInterceptor {
             .pipe(catchError((err, event) => {
                 if (err instanceof HttpErrorResponse) {
                     console.log('error:', err)
-                    if (err.status === 401) {
+                    if (err.status === 401 && err.error.path != '/tradingservice/api/users/accounts') {
                         this.router.navigate(['landing']);
                     }
                     throw err;
