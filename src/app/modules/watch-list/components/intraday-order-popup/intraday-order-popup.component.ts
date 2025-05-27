@@ -14,6 +14,7 @@ import { UserStockStatsService } from 'src/app/modules/shared/services/user-stoc
 import { EditableSelectComponent } from 'src/app/modules/trade-management/components/add-trade/Steps/editable-select/editable-select.component';
 import { TradeTagsComponent } from 'src/app/modules/trade-management/components/add-trade/Steps/trade-tags/trade-tags.component';
 import { StockSummaryResult } from 'src/app/modules/trade-management/models/stock-summary-result.model';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-intraday-order-popup',
@@ -32,6 +33,7 @@ export class IntradayOrderPopupComponent implements OnInit {
   registeredTags: any = [];
   @Input("inputState") inputState: TradeInputData;
   isMobileDevice: any;
+  country: string = environment.country;
 
   constructor(
     private _dialog: MatDialog,

@@ -150,9 +150,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
     dialogRef.afterClosed().subscribe(dialogResult => {
       if (dialogResult == true) {
 
-        this._omsService.unsubscribeOrderUpdates('FYERS').subscribe(result => {
-          if(result){
-            this.userService.logoutFromBrokerage('FYERS').subscribe(result => {
+        let activeBrokerage = environment.country == 'IN' ? 'FYERS' : 'SNAPTRADE';
+        this._omsService.unsubscribeOrderUpdates(activeBrokerage).subscribe(result => {
+          if(result || activeBrokerage == 'SNAPTRADE'){
+            this.userService.logoutFromBrokerage(activeBrokerage).subscribe(result => {
               if(result){
               sessionStorage.removeItem('isBrokerageActive');
               this.isBrokerageActive = false;

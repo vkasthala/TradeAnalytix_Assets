@@ -1,9 +1,9 @@
 <div class="sub-nav">
-    <a [routerLink]="['/positions/']" routerLinkActive="router-link-active">
+    <a [routerLink]="['/positions/']" routerLinkActive="router-link-active" *ngIf="country == 'IN'">
         <span>Positions</span>
         
     </a>
-    <a [routerLink]="['/holdings/']" routerLinkActive="router-link-active" class="active-item">
+    <a [routerLink]="['/holdings/']" routerLinkActive="router-link-active" class="active-item" *ngIf="country == 'IN'">
         <span>Holdings</span>
         <span class="circle ml-1" *ngIf="isMobileDevice && holdingsResponse.data.data.length > 0">{{holdingsResponse.data.data.length}}</span>
     </a>

@@ -6,7 +6,7 @@
                 <th class="sortable time-cell"><span>Time</span></th>
                 <th class="sortable type-cell"><span>Action</span></th>
                 <th class="sortable instrument-cell"><span>Instrument</span></th>
-                <th class="sortable product-cell"><span>Product</span></th>
+                <th class="sortable product-cell" *ngIf="country == 'IN'"><span>Product</span></th>
                 <th class="sortable qty-cell"><span>Quantity</span></th>
                 <th class="sortable price-cell"><span>Price</span></th>
                 <th class="sortable status-cell"><span>Status</span></th>
@@ -20,7 +20,7 @@
                     <span class="text-label transaction-type-label" [ngClass]="order.type === 'SELL' ? 'orange' : 'blue'">{{order.type}}</span>
                 </td>
                 <td>{{order.instrument.symbol}}</td>
-                <td>{{order.product}}</td>
+                <td *ngIf="country == 'IN'">{{order.product}}</td>
                 <td>{{order.quantity}}</td>
                 <td>{{order.price}}</td>
                 <td>
@@ -52,7 +52,7 @@
         <div class="middle flex px-3">
             <div class="flex6">
                 <span>{{order.instrument.symbol}}</span>
-                <span class="text-xsmall dim ml-2">{{order.product}}</span>
+                <span class="text-xsmall dim ml-2" *ngIf="country == 'IN'">{{order.product}}</span>
             </div>
             <div class="flex6 text-right">
                 <span class="text-xsmall dim">Quantity</span> 

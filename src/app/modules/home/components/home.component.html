@@ -20,7 +20,7 @@
                     <!-- Start of India specific code. Comment for US -->
                     <a [class.router-link-active]="currentRoute === 'rules'" [routerLink]="['/rules/']" routerLinkActive="router-link-active"><span>Rules</span></a>
                     <a [class.router-link-active]="currentRoute === 'orders'" [routerLink]="['/orders/']" routerLinkActive="router-link-active"><span>Orders</span></a>                    
-                    <a [class.router-link-active]="currentRoute === 'positions'" [routerLink]="['/positions/']" routerLinkActive="router-link-active"><span>Positions</span></a>
+                    <a [class.router-link-active]="currentRoute === 'positions'" [routerLink]="country == 'IN' ? ['/positions/'] : ['/holdings/']" routerLinkActive="router-link-active"><span>Positions</span></a>
                     <!-- End of India specific code. Comment for US -->
                     <a [class.router-link-active]="currentRoute === 'import-trades-history'" [routerLink]="['/import-trades-history/']" routerLinkActive="router-link-active"><span>Import Trades</span></a>
                     <a [class.router-link-active]="currentRoute === 'stravtegies'" [routerLink]="['/stravtegies/']" routerLinkActive="router-link-active"><span>Journal</span></a>

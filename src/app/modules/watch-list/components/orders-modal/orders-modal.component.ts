@@ -9,6 +9,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DatePipe } from '@angular/common';
 import { OrderRuleCheckRequest, OrderRuleDto, OrderRuleResponse } from 'src/app/modules/shared/models/orders.model';
 import { PriceUpdateWebsocketService } from 'src/app/modules/shared/services/websocket/price-update-websocket.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-orders-modal',
@@ -25,6 +26,7 @@ export class OrdersModalComponent implements OnInit {
   isMobileDevice: any;
   isButtonEnabled: boolean = true;
   quantity: number;
+  country: string = environment.country;
 
   loader: boolean = false;
   @Input() isPositionsOrder: boolean=false;

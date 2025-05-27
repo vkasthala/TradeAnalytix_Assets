@@ -20,7 +20,7 @@
                                 <span class="name pl-1">{{margins.tradingSymbolShort}}</span> 
                             </span>
                             <span class="px-1">at</span>
-                            <span class="price">₹{{margins.price}}</span>
+                            <span class="price">{{ country === 'IN' ? '₹' : '$' }}{{ margins.price }}</span>
                         </div>
                     </div>
                     <div class="four columns text-right" *ngIf="!isMobileDevice">

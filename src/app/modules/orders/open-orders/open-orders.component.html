@@ -14,7 +14,7 @@
                 <th class="sortable time-cell"><span>Time</span></th>
                 <th class="sortable action-cell"><span>Action</span></th>
                 <th class="sortable instrument-cell"><span>Instrument</span></th>
-                <th class="sortable product-cell"><span>Product</span></th>
+                <th class="sortable product-cell" *ngIf="country == 'IN'"><span>Product</span></th>
                 <th class="sortable qty-cell"><span>Quantity</span></th>
                 <th class="sortable ltp-cell"><span>LTP</span></th>
                 <th class="sortable price-cell"><span>Price</span></th>
@@ -33,7 +33,7 @@
                     <span class="text-label transaction-type-label" [ngClass]="order.type === 'SELL' ? 'orange' : 'blue'">{{order.type}}</span>
                 </td>
                 <td>{{order.instrument.symbol}}</td>
-                <td>{{order.product}}</td>
+                <td *ngIf="country == 'IN'">{{order.product}}</td>
                 <td>{{order.quantity}}</td>
                 <td>{{order.ltp}}</td>
                 <td>{{order.price}}</td>
@@ -43,7 +43,7 @@
                 </td>
                 <!-- <td><span class="text-link" (click)="openIntradayOrder(order)">{{order.journal}}</span></td> -->
                 <td>
-                    <span type="button" class="link blue-link" (click)="editOrder(order)">EDIT</span> 
+                    <span type="button" class="link blue-link" (click)="editOrder(order)" *ngIf="country == 'IN'">EDIT</span> 
                     <!-- <button type="button" class="button button-small button-outline button-blue ml-2" (click)="openIntradayOrder(order)">ADD</button> -->
                     <span type="button" class="link blue-link ml-3" (click)="cancelOrder(order)">CANCEL</span>
                 </td>
@@ -91,7 +91,7 @@
                 {{order.instrument.symbol}}
             </div>
             <div class="flex6 text-right">
-                <span class="text-xsmall dim mr-2">{{order.product}}</span>
+                <span class="text-xsmall dim mr-2" *ngIf="country == 'IN'">{{order.product}}</span>
                 <span class="text-label transaction-type-label" [ngClass]="order.type === 'SELL' ? 'orange' : 'blue'">{{order.type}}</span>
             </div>
         </div>
@@ -105,7 +105,7 @@
             </div>
         </div>
         <div class="actions-row px-3">
-            <button type="submit" class="button button-md" [ngClass]="order.type === 'SELL' ? 'sell' : 'buy'" (click)="editOrder(order)">EDIT</button>
+            <button type="submit" class="button button-md" [ngClass]="order.type === 'SELL' ? 'sell' : 'buy'" (click)="editOrder(order)" *ngIf="country == 'IN'">EDIT</button>
             <button type="button" class="button button-outline button-md" (click)="cancelOrder(order)">CANCEL</button>
         </div>
         

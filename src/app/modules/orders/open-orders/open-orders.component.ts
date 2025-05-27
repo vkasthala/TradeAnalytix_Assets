@@ -5,6 +5,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Margins } from '../../shared/models/margins.model';
 import { OmsService } from '../../shared/services/oms.service';
 import { SharedService } from '../../shared/services/shared.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-open-orders',
@@ -20,6 +21,7 @@ export class OpenOrdersComponent implements OnInit {
   showOrdersModal: boolean | undefined;
   selectAll: boolean = false;
   cancelOrdersList:any=[];
+  country: string = environment.country;
 
   constructor(
     private _orderService: OmsService,

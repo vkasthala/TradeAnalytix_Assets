@@ -6,7 +6,7 @@
                 <mat-icon class="material-icons mat-icon cursor" (click)="closePopup()">keyboard_backspace</mat-icon>
                 <div class="instrument ml-3">
                     <h3>{{margins.tradingSymbolShort}}</h3>
-                    <label class="su-radio-label m-0">₹{{margins.ltp}}</label>
+                    <label class="su-radio-label m-0">{{ country === 'IN' ? '₹' : '$' }}{{margins.ltp}}</label>
                     <span class="qty ml-3">{{margins.quantity}} Quantity</span>
                 </div>
             </div>
@@ -24,7 +24,7 @@
                     </div>
                     <div class="su-radio-group">
                         <div class="type su-radio-wrap checked">
-                            <label class="su-radio-label m-0">₹{{margins.ltp}}</label>
+                            <label class="su-radio-label m-0">{{ country === 'IN' ? '₹' : '$' }}{{margins.ltp}}</label>
                         </div>
                     </div>
                 </div>
@@ -70,7 +70,7 @@
                         <div class="h6 my-3" *ngIf="isMobileDevice">
                             Product
                         </div>
-                        <div class="su-radio-group d-flex" [ngClass]="isMobileDevice ? 'justify-content-between' : ''">
+                        <div class="su-radio-group d-flex" *ngIf="country == 'IN'" [ngClass]="isMobileDevice ? 'justify-content-between' : ''">
                             <div class="type four columns su-radio-wrap checked"
                                 data-tooltip-pos="up" data-tooltip-length="large"
                                 [ngClass]="margins.orderId ? 'disabled' : ''">
@@ -179,11 +179,11 @@
                         <div class="row margins">
                             <div class="block">
                                 <label>Required: </label>
-                                <span class="value">₹{{margins.margin}}</span>
+                                <span class="value">{{ country === 'IN' ? '₹' : '$' }}{{margins.margin}}</span>
                             </div>
                             <div class="block charges">
                                 <label>Available: </label> 
-                                <span class="value">₹{{margins.availableMargin}}</span> 
+                                <span class="value">{{ country === 'IN' ? '₹' : '$' }}{{margins.availableMargin}}</span> 
                                 <span class="refresh-margins" data-tooltip="Refresh"
                                     data-tooltip-pos="up">
                                     <span class="reload-margin icon icon-reload"></span>
@@ -204,11 +204,11 @@
                     <div class="d-flex py-3 justify-content-center align-items-center">
                         <div class="block">
                             <label class="mb-0">Required: </label>
-                            <span class="value" data-tooltip="Margin calculation explained" data-tooltip-pos="up">₹{{margins.margin}}</span>
+                            <span class="value" data-tooltip="Margin calculation explained" data-tooltip-pos="up">{{ country === 'IN' ? '₹' : '$' }}{{margins.margin}}</span>
                         </div>
                         <div class="d-flex charges align-items-center">
                             <label class="mb-0 ml-3">Available: </label> 
-                            <span class="value" data-tooltip="View charges &amp; taxes" data-tooltip-pos="up">₹{{margins.availableMargin}}</span>
+                            <span class="value" data-tooltip="View charges &amp; taxes" data-tooltip-pos="up">{{ country === 'IN' ? '₹' : '$' }}{{margins.availableMargin}}</span>
                             <mat-icon class="material-icons mat-icon mat-icon-sm cursor" (click)="closePopup()" data-tooltip="Refresh"
                             data-tooltip-pos="up">refresh</mat-icon>
                         </div>

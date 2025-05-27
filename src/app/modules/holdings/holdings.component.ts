@@ -24,6 +24,7 @@ export class HoldingsComponent implements OnInit {
   showOrdersModal: boolean | undefined;
   isHoldingOrder:any;
   mobileRowData: any;
+  country: string = environment.country;
 
   holdingsResponse: HoldingResponse = {
     data:{
