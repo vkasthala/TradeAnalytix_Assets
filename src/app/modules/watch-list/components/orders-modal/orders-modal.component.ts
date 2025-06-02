@@ -325,7 +325,8 @@ export class OrdersModalComponent implements OnInit {
       validity: 'DAY',
       limitPrice: this.isLimitChecked() ? price : 0,
       stopPrice : triggerPrice,
-      stopLossTriggerPrice: 0
+      stopLossTriggerPrice: 0,
+      price: price
     }
     return placeOrderRequest;
   }

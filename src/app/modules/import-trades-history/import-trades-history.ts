@@ -23,6 +23,7 @@ import { DemoModeDetailsService } from '../shared/services/demo-mode-details.ser
 import { AutoImportTradeComponent } from './auto-import-trade/auto-import-trade.component'
 import { SnapTradeService } from '../snap-trade/snap-trade.service';
 import { UserService } from '../shared/services/user.service';
+import { TradingService } from '../shared/services/trading.service';
 
 
 @Component({
@@ -59,7 +60,8 @@ export class ImportTradesHistory implements AfterViewInit, OnInit {
     private utilService: UtilService,
     private myElement: ElementRef,
     private snapTradeService:SnapTradeService,
-    private userService:UserService
+    private userService:UserService,
+    private tradingService: TradingService
     // private plaidService: PlaidService,  // Venkat commented on 1/26/2025
     //public dialogRef: MatDialogRef<ImportTradePopupComponent>  // Venkat commented on 1/26/2025
   ) {  
@@ -244,8 +246,9 @@ export class ImportTradesHistory implements AfterViewInit, OnInit {
       }
      });
   }
+  
   loadTransactionDetails() {
-    this.snapTradeService.getTransactions(this.userData.name,this.userData.userId).subscribe(result => {
+    this.tradingService.getAutoImportHistory().subscribe(result => {
     this.trades = result;
    
   },err => {

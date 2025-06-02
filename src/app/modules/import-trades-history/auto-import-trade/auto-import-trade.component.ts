@@ -118,7 +118,7 @@ export class AutoImportTradeComponent implements OnInit {
     },err => {
       this.processing = false;
       console.log("error:", err);
-      window.open(err.error.text, "_blank");
+      this.toastr.error(err.error.errorMessage);
     })
   }
 

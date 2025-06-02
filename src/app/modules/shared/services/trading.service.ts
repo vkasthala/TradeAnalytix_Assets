@@ -23,5 +23,10 @@ export class TradingService {
         return this.http.post<any>(url, {"startDate":startDate, "endDate": endDate}, { headers: this.createHttpHeaders() });
     }
 
+    getAutoImportHistory(): Observable<any> {
+        const url = environment.tradingServiceUri+`/portfolio/autoImportHistory`;
+        return this.http.get<any>(url, { headers: this.createHttpHeaders() });
+      }
+
 }
     

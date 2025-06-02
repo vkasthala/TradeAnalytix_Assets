@@ -142,15 +142,15 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   logoutFromBrokerage() {
+    let activeBrokerage = environment.country == 'IN' ? 'FYERS' : 'SNAPTRADE';
     const dialogRef = this._dialog.open(ConfirmDialogComponent, {
       width: 'auto',
       height: 'auto',
-      data: { 'message': 'Are you sure you want to log out from FYERS?', 'title':'Exit FYERS' }
+      data: { 'message': 'Are you sure you want to log out from ' + activeBrokerage + '?', 'title':'Exit FYERS' }
     });
     dialogRef.afterClosed().subscribe(dialogResult => {
       if (dialogResult == true) {
 
-        let activeBrokerage = environment.country == 'IN' ? 'FYERS' : 'SNAPTRADE';
         this._omsService.unsubscribeOrderUpdates(activeBrokerage).subscribe(result => {
           if(result || activeBrokerage == 'SNAPTRADE'){
             this.userService.logoutFromBrokerage(activeBrokerage).subscribe(result => {
@@ -338,13 +338,11 @@ export class HomeComponent implements OnInit, AfterViewInit {
   brokerageLogin(brokerage: string){
     this.userService.brokerageLogin(brokerage).subscribe(response => {
       if (response != null) {
-        if('FYERS' === brokerage){
         this._omsService.subscribeToOrderUpdates().subscribe(response => {
           if("Success" === response){
             console.log("Successfully subscribed to fyers order updates");
           }
         });
-      }
         const location = response['redirectUri'];
         if (location) {
           window.location.href = location;

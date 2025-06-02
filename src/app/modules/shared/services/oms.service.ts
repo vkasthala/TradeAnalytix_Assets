@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { MarginResponse, OrderPurchasehistory, OrderPurchasehistoryResponse, OrderRuleCheckRequest, OrderRuleDto, OrderRuleResponse, OrdersRequest, OrdersResponse, PlaceOrderRequest, PurchaseOrderResponse } from '../models/orders.model';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { HttpService } from './http.service';
 import { TodayExecutedTrade } from '../../trade-plan/models/today-executed-trade.model';
 
@@ -34,16 +34,13 @@ export class OmsService {
   }
 
   subscribeToOrderUpdates(): Observable<String>{
-    if('US' === environment.country){
-      return;
-    }
     const url = environment.tradingServiceUri + "/orders/subscribe-order-updates";
     return this.http.post<String>(url, null, { headers: this.createHttpHeaders() });
   }
 
   unsubscribeOrderUpdates(brokerage: string): Observable<String>{
     if('US' === environment.country){
-      return;
+      return of('success');
     }
     let httpHeaders: HttpHeaders = this.createHttpHeaders();
     httpHeaders.set("Brokerage", brokerage);

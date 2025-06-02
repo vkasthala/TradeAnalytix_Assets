@@ -309,7 +309,8 @@ export class WatchListComponent implements OnInit {
       limitPrice: 0,
       stopPrice: 0,
       validity: 'DAY',
-      stopLossTriggerPrice: 0
+      stopLossTriggerPrice: 0,
+      price: $event.price
     }
 
     this._omsService.getMargin(defaultOrderRequest).subscribe(response =>{
@@ -397,6 +398,7 @@ export class WatchListComponent implements OnInit {
           validity: 'DAY',
           stopLossTriggerPrice: 0
         }
+        
         this._omsService.getMargin(marginRequest).subscribe(resp =>{
           // this.marginsSource = response;
           this.marginsSource.margin = resp.margin;
