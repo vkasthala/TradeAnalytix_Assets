@@ -164,8 +164,8 @@
                   <label class="col-form-label" style="margin-top: 10px;">Select FYERS to trade directly on CueTrade, or choose Other Brokers to connect multiple accounts and import trades seamlessly.</label>  
                   <select (change)="onBrokerageChange($event.target.value)" class="form-control mb-3">
                     <option value="0">Select your brokerage</option>
-                    <option value="FYERS">FYERS</option>
-                    <option value="SnapTrade">Other Brokers</option>
+                    <option value="FYERS" *ngIf="country == 'IN'">FYERS</option>
+                    <option value="SnapTrade" *ngIf="country == 'US'">SNAPTRADE</option>
                   </select>
                 </div>
               </form>

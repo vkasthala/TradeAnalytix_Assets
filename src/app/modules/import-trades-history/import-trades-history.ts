@@ -24,6 +24,7 @@ import { AutoImportTradeComponent } from './auto-import-trade/auto-import-trade.
 import { SnapTradeService } from '../snap-trade/snap-trade.service';
 import { UserService } from '../shared/services/user.service';
 import { TradingService } from '../shared/services/trading.service';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -37,7 +38,8 @@ export class ImportTradesHistory implements AfterViewInit, OnInit {
   // displayedColumns = ['openDate', 'stockName', 'status', 'direction', 'failedRecords', 'action'];
   displayedColumns = ['openDate', 'stockName', 'status', 'direction'];
   pageSize: number = 20
-  importType:number = 1;
+  country:string = environment.country;
+  importType:number = this.country == 'IN' ? 1 : 2;
 
   // plaidToken:any = '';  // Venkat commented on 1/26/2025
 

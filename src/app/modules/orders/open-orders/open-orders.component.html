@@ -17,7 +17,7 @@
                 <th class="sortable product-cell" *ngIf="country == 'IN'"><span>Product</span></th>
                 <th class="sortable qty-cell"><span>Quantity</span></th>
                 <th class="sortable ltp-cell"><span>LTP</span></th>
-                <th class="sortable price-cell"><span>Price</span></th>
+                <th class="sortable price-cell" *ngIf="country == 'IN'"><span>Price</span></th>
                 <th class="sortable status-cell"><span>Status</span></th>
                 <th></th>
             </tr>
@@ -36,7 +36,7 @@
                 <td *ngIf="country == 'IN'">{{order.product}}</td>
                 <td>{{order.quantity}}</td>
                 <td>{{order.ltp}}</td>
-                <td>{{order.price}}</td>
+                <td *ngIf="country == 'IN'">{{order.price}}</td>
                 
                 <td>
                     <span class="text-label small order-status-label caps blue">{{order.status}}</span>
@@ -97,7 +97,7 @@
         </div>
         <div class="flex px-3">
             <div class="flex6">
-                <span>{{order.price}}</span>
+                <span *ngIf="country == 'IN'">{{order.price}}</span>
                 <span class="ml-2">
                     <span class="text-xsmall dim">Qty</span> 
                     <span class="ml-1">{{order.quantity}}</span>

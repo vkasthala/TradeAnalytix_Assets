@@ -14,6 +14,7 @@ import { InstrumentPriceUpdateService } from 'src/app/modules/shared/services/in
 import { PriceUpdateModel } from 'src/app/modules/shared/models/price-update-model';
 import { PriceUpdateWebsocketService } from 'src/app/modules/shared/services/websocket/price-update-websocket.service';
 import { NavigationStart, Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
@@ -43,6 +44,8 @@ export class WatchListComponent implements OnInit {
   sampleData:any =[];
 
   isPriceUpdateSubscribed: boolean = false;
+
+  country:string = environment.country;
 
   constructor(
     private renderer: Renderer2,
@@ -398,7 +401,7 @@ export class WatchListComponent implements OnInit {
           validity: 'DAY',
           stopLossTriggerPrice: 0
         }
-        
+
         this._omsService.getMargin(marginRequest).subscribe(resp =>{
           // this.marginsSource = response;
           this.marginsSource.margin = resp.margin;

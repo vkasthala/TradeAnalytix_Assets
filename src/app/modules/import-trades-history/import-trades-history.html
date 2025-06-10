@@ -111,7 +111,7 @@
                         <tr class="mat-row" *ngFor="let trade of trades">
                           <td class="mat-cell">{{ trade.brokarageName }}</td>
                           <td class="mat-cell">{{ trade.lastSyncedLocalDateTime }}</td>
-                          <td class="mat-cell">{{ trade.transaLocalDateTime }}</td>
+                          <td class="mat-cell">{{ trade.transaLocalDateTime | date:'yyyy-MM-dd HH:mm:ss' }}</td>
                           <td class="mat-cell">{{trade.status?'Success':'Failed'}}</td>
                           <td class="mat-cell">{{trade.total}}/{{trade.completed}}</td>
                           <td class="mat-cell"><a href="/stravtegies">Visit Journal</a></td>
