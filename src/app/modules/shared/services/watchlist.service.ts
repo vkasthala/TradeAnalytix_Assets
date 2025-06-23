@@ -58,4 +58,13 @@ export class WatchlistService {
     });
     return headers;
   }
+
+  getPricesForSymbols(symbols: string[]): Observable<any[]> {
+    const apiUrl = environment.tradingServiceUri + '/v0/watchlist/prices';
+    const params = symbols.map(s => `symbols=${s}`).join('&');
+    let headers = this.getHeaders();
+  
+    return this.http.get<any[]>(`${apiUrl}?${params}`, { headers });
+  }
+  
 }
