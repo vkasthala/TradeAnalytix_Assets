@@ -14,7 +14,7 @@ export const environment = {
   //Prod
   apiUrl: 'https://us.cuetrade.io/service',
   redirectUri: 'https://us.cuetrade.io/oauth-redirect',
-  tradingServiceUri: 'https://ustrading.cuetrade.io/tradingservice',
+  tradingServiceUri: 'https://us.cuetrade.io/tradingservice',
   websocketUrl: 'https://ustrading.cuetrade.io',
   country: 'US', // SET US for US deployment and IN for indian deployment
   //Uncomment this only in local

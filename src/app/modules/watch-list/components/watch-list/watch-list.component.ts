@@ -15,6 +15,7 @@ import { PriceUpdateModel } from 'src/app/modules/shared/models/price-update-mod
 import { PriceUpdateWebsocketService } from 'src/app/modules/shared/services/websocket/price-update-websocket.service';
 import { NavigationStart, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { Subscription, interval } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -36,6 +37,8 @@ export class WatchListComponent implements OnInit {
   watchListData: Watchlist[] = [];
   showMobileContextMenu: boolean = false;
   selectedSymbol: any;
+  pricePollingSubscription: Subscription;
+  private pollRestartTimer: any;
 
   loader = true;
 
@@ -120,6 +123,13 @@ export class WatchListComponent implements OnInit {
     }, 3000);
   }
 
+  ngOnDestroy() {
+    if (this.pricePollingSubscription) {
+      this.pricePollingSubscription.unsubscribe();
+    }
+  }
+  
+
   loadWatchList() {
     let isBrokerageActive = sessionStorage.getItem('isBrokerageActive') && sessionStorage.getItem('isBrokerageActive') === 'true';
       this.loader = true;
@@ -131,6 +141,7 @@ export class WatchListComponent implements OnInit {
             this._sharedService.watchListReloadEvent.emit(this.watchListData);
             if (isBrokerageActive && isBrokerageActive !== undefined) {
             this.subscribeSymbolsPriceUpdate(this.pageIndex);
+            this.restartPollingWithDebounce();
             }
           }
           this.loader = false;
@@ -139,6 +150,76 @@ export class WatchListComponent implements OnInit {
           this.loader = false;
         }
       );
+  }
+
+  getWatchlistSymbols(): string[] {
+    const currentWatchlist = this.watchListData.find(w => w.pageNumber === this.pageIndex);
+  
+    if (currentWatchlist && currentWatchlist.items) {
+      return currentWatchlist.items.map(item => item.trading_symbol);
+    }
+  
+    return [];
+  }  
+
+  restartPollingWithDebounce() {
+    clearTimeout(this.pollRestartTimer);
+    this.pollRestartTimer = setTimeout(() => {
+      this.startPricePolling();
+    }, 500); // 500ms debounce
+  }
+
+  startPricePolling() {
+    if (this.pricePollingSubscription) {
+      this.pricePollingSubscription.unsubscribe();
+    }
+  
+    this.pricePollingSubscription = interval(10000).subscribe(() => {
+      const symbols = this.getWatchlistSymbols();
+      if (symbols.length === 0) return;
+  
+      this._watchlistService.getPricesForSymbols(symbols).subscribe(
+        (prices) => {
+          this.updatePrices(prices);
+        },
+        (error) => {
+          console.error('Price API error', error);
+        }
+      );
+    });
+  }  
+
+  updatePrices(prices: any[]) {
+    const currentWatchlist = this.watchListData[this.pageIndex - 1];
+  
+    if (!currentWatchlist || !currentWatchlist.items) {
+      return;
+    }
+  
+    for (let i = 0; i < currentWatchlist.items.length; i++) {
+      const wlItem = currentWatchlist.items[i];
+      const match = prices.find(p => p.symbol === wlItem.trading_symbol);
+  
+      if (match && match.price !== undefined) {
+        const currentPrice = parseFloat(match.price);
+  
+        if (
+          wlItem.price !== undefined &&
+          wlItem.price !== null &&
+          wlItem.price !== 0
+        ) {
+          wlItem.changePercent = +(
+            ((currentPrice - wlItem.price) / wlItem.price) *
+            100
+          ).toFixed(2);
+        } else {
+          wlItem.changePercent = 0;
+        }
+  
+        wlItem.ltp = currentPrice;
+        wlItem.price = currentPrice;
+      }
+    }
   }
 
   unsubscribeSymbol(item: Watchlistsymbol) {
@@ -279,22 +360,27 @@ export class WatchListComponent implements OnInit {
     this._sharedService.outSideSidebarEvent.emit(event);
   }
 
-  addNewItem(item: any) {
-    let isItemExist = false;
-    this.watchListData.map((x: any) => {
-      if (x.pageNumber === this.pageIndex) {
-        x.items.filter((instrument: any) => {
-          if (instrument.tradingsymbol === item.tradingsymbol) {
-            isItemExist = true;
-            return;
-          }
-        });
-        !isItemExist ? x.items.push(item) : ''
+addNewItem(item: any) {
+  let isItemExist = false;
+
+  for (let i = 0; i < this.watchListData.length; i++) {
+    const x = this.watchListData[i];
+    if (x.pageNumber === this.pageIndex) {
+      const found = x.items.find((instrument: any) => instrument.tradingsymbol === item.tradingsymbol);
+      if (found) {
+        isItemExist = true;
+        break;
+      } else {
+        x.items.push(item);
+        break;
       }
-    })
-    this.loadWatchList();
-    // this.registerinstrumentPriceUpdateListner();
+    }
   }
+
+  if (!isItemExist) {
+    this.loadWatchList(); // reload only if item was added
+  }
+}
 
   createMargin($event: any) {
     console.log($event);

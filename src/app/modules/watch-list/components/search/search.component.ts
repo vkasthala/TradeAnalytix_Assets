@@ -179,19 +179,30 @@ export class SearchComponent implements OnInit {
     (document.getElementById('search-box') as HTMLInputElement).value = '';
   }
 
-  compareData(index: any) {
+  compareData(index: number) {
     console.log(this.searchResult);
-    let wlItems = this.watchListData[index - 1].items;
+  
+    const watchList = this.watchListData && this.watchListData[index - 1];
+    if (!watchList || !watchList.items || !Array.isArray(this.searchResult)) return;
+  
+    const wlItems = watchList.items;
+  
     this.searchResult.forEach(searchItem => {
-      wlItems.forEach((wlItem: { tradingSymbolShort: string | undefined; }) => {
+      wlItems.forEach((wlItem: { tradingSymbolShort: string | undefined }) => {
         if (searchItem.symbolShort === wlItem.tradingSymbolShort) {
           searchItem.addedToWatchList = true;
-          this.currentWatchListSize = this.watchListData[this.pageIndex - 1].items.length;
-          // this.currentWatchListSize = this.watchListData[this.pageIndex].items.length;
+  
+          const currentWatchList = this.watchListData[this.pageIndex - 1];
+          if (currentWatchList && currentWatchList.items) {
+            this.currentWatchListSize = currentWatchList.items.length;
+          } else {
+            this.currentWatchListSize = 0;
+          }
         }
-      })
-    })
+      });
+    });
   }
+  
 
   openMobileActions(symbol: any) {
     this.showMobileContextMenu = true;
