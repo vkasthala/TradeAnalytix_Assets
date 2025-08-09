@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&family=Montserrat&display=swap');
 
+$font-primary: "Inter", "system-ui", "sans-serif";
 $font-family: 'Inter', sans-serif !important;
-$primary-color: #1958BF;
+$primary-color: #2563eb;
 $secondary-color: #58595B;
-// $highlight-color: #4BB964;
-$highlight-color: #2469FF;
+$highlight-color: #2563eb;
 $background-color: #F1F9FF;
 
 body {
@@ -46,7 +46,7 @@ nav {
     text-align: left;
     color: #000000;
 }
-  
+
 .hero-title .neutral {
     font-weight: 600;
     color: #000000;
@@ -60,7 +60,7 @@ nav {
     font-weight: 500;
     line-height: 1.3;
 }
- 
+
 .hero-image {
     width: 111%; /* Ensure the image takes full width */
     height: auto; /* Maintain aspect ratio */
@@ -143,28 +143,49 @@ h2 {
 .btn-banner {
     font-family: $font-family;
     background-color: $highlight-color;
-    padding: 16px 20px;
+    padding: 14px 24px;
     border: none;
     color: #fff;
-    // margin-top: 1rem;
-    margin-right:10px;
-    width:13rem;
-    // margin-bottom: 1rem;
-    border-radius: 4px;
-    font-size: 1.1rem;
-    // margin-left: 0 !important; /* Align button to the left */
+    margin-right: 10px;
+    min-width: fit-content;
+    white-space: nowrap;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.2;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-banner:hover {
+    background-color: #1e40af;
+    transform: translateY(-1px);
 }
 
 .btn-how-banner {
     font-family: $font-family;
     background-color: #2469FF;
-    padding: 14px 50px;
+    padding: 14px 24px;
     border: 2px solid #2469FF;
-    border-radius: 4px;
-    width:230px;
+    border-radius: 6px;
+    min-width: fit-content;
+    white-space: nowrap;
     color: #ffffff;
- //   margin-bottom: 2.5rem;
-    font-size: 1.2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.2;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-how-banner:hover {
+    background-color: #1e40af;
+    border-color: #1e40af;
+    transform: translateY(-1px);
 }
 
 .cue-logo img {
@@ -223,7 +244,7 @@ h2 {
 }
 
 @media only screen and (max-width: 576px) {
- 
+
     .banner-section {
         text-align: center;  
         padding: 20px 10px 10px 10px;  
@@ -245,7 +266,7 @@ h2 {
         max-width: 100%;  
         height: auto;  
     }
-    
+
     .section .benefits {
         display: flex;
         flex-direction: column;
@@ -255,10 +276,11 @@ h2 {
 
     .btn-banner, .btn-how-banner {
         width: 100%;  
-        font-size: 1.125rem;  
-        padding: 15px 15px;  
-        margin-left:0px;
-        margin-right:40px;
+        font-size: 1rem;  
+        padding: 14px 20px;  
+        margin-left: 0px;
+        margin-right: 0px;
+        white-space: nowrap;
         }
 
     .btn-banner {
@@ -298,14 +320,14 @@ h2 {
         display: flex;
         justify-content: center; 
     }
-    
+
     .how-it-works h1 {
         font-size: 2.25rem !important; 
         font-weight: 700;
         color: #000000;
         margin-bottom: 10px;  
     }
-    
+
     .how-it-works p {
         color: $secondary-color;
         font-size: 1.2rem;
@@ -1062,7 +1084,7 @@ input:checked~.accordion-content {
 .marquee-container {
     overflow: hidden;
 }
-  
+
 .marquee {
     display: flex;
 }
@@ -1075,6 +1097,11 @@ input:checked~.accordion-content {
 
 .btn-success {
     background-color: $highlight-color; padding: 9px 40px !important; margin-right: 30px; border: none;
+}
+
+.btn-primary {
+    background-color: $highlight-color; 
+    border-color: $highlight-color;
 }
 
 
@@ -1190,7 +1217,7 @@ input:checked~.accordion-content {
     font-family: $font-family;
     margin-bottom: .5rem;
 }
-    
+
 .blog-box p {
     font-size: 0.875rem;
     font-weight: 400;
@@ -1421,14 +1448,14 @@ input:checked~.accordion-content {
     justify-content: center;
     padding: 56px 20px;
   }
-  
+
   .comparison {
     display: flex;
     justify-content: space-between;
     max-width: 90%;
     gap: 40px;
   }
-  
+
   .comparison .without, .comparison .with {
     padding: 20px;
     font-family: $font-family;
@@ -1447,7 +1474,7 @@ input:checked~.accordion-content {
     background-color: #ffffff;
     border: 1px solid $highlight-color; /* Solid green border indicating positivity */
   }
-  
+
   .comparison h2 {
     font-size: 1.375rem;
     font-weight: 700;
@@ -1455,12 +1482,12 @@ input:checked~.accordion-content {
     text-align: center;
     margin-bottom: 20px;
   }
-  
+
   .comparison ul {
     list-style: none;
     padding: 0;
   }
-  
+
   .comparison li {
     font-size: 1.125rem;
     color: $secondary-color;
@@ -1470,17 +1497,17 @@ input:checked~.accordion-content {
     align-items: center;
     text-align: left;
   }
-  
+
   .comparison li i.icon {
     margin-right: 10px;
     font-size: 1rem;
     font-style: normal; /* Ensures the icon is not italic */
   }
-  
+
   .comparison .without h2 {
     color: #000000; /* Highlight Without CueTrade with a warning color */
   }
-  
+
   .comparison .with h2 {
     color: #000000; /* Highlight With CueTrade with a positive color */
   }
@@ -1580,7 +1607,7 @@ input:checked~.accordion-content {
         font-size:1.5rem;
     }
     }
-    
+
     @media (max-width: 576px) {
         .blogs .faqs .benefits {
             padding-bottom: 10px; 
@@ -1594,7 +1621,7 @@ input:checked~.accordion-content {
             font-size:1.5rem;
         }
     }
-    
+
     @media (max-width: 768px) {
         .blogs .faqs .benefits {
             padding-bottom: 10px; 
@@ -1603,13 +1630,13 @@ input:checked~.accordion-content {
             font-family: $font-family;
             font-weight: 700 !important;
         }
-        
+
         .cue-help h3 {
             font-size:1.5rem;
         }
 
     }
-    
+
     @media (max-width: 1024px) {
         .blogs .faqs .benefits {
             padding-bottom: 10px; 
@@ -1627,7 +1654,7 @@ input:checked~.accordion-content {
         background-color: $background-color;
         padding: 40px 0;
     }
-    
+
     .testimonial-callout {
         background-color: #ffffff;
         border-left: 4px solid #2469FF;
@@ -1639,19 +1666,19 @@ input:checked~.accordion-content {
         margin-top: 1rem;
         transition: transform 0.3s ease; /* Smooth transition for hover effect */
     }
-    
+
     .testimonial-callout:hover {
         transform: skew(0deg); /* Revert skew on hover for a nice effect */
         box-shadow: 0 8px 16px rgba(0,0,0,0.1); /* Enhance shadow on hover */
     }
-    
+
     .testimonial-text {
         font-size: 1.1rem;
         color: #333;
         line-height: 1.4;
         margin-bottom: 0px !important;
     }
-    
+
     .testimonial-author {
         display: block;
         text-align: right;
@@ -1660,13 +1687,13 @@ input:checked~.accordion-content {
         font-size: 1.1rem;
         margin-top: 10px;
     }
-    
+
     @media (max-width: 768px) {
         .testimonial-callout {
             margin-bottom: 15px;
             transform: skew(0deg); /* Remove skew on smaller screens for better readability */
         }
-    
+
         .col-md-4 {
             padding: 0 15px;
         }

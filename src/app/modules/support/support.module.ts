@@ -4,11 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
-import { JoinWaitlistComponent } from './components/join-waitlist/join-waitlist.component';
+import { TermsAgreementModalComponent } from './terms-agreement-modal/terms-agreement-modal.component';
 
 @NgModule({
   declarations: [
-    JoinWaitlistComponent
+    TermsAgreementModalComponent
   ],
   imports: [
     CommonModule,
@@ -16,6 +16,9 @@ import { JoinWaitlistComponent } from './components/join-waitlist/join-waitlist.
     RouterModule,
     MatIconModule,
     MatDialogModule
+  ],
+  exports: [
+    TermsAgreementModalComponent
   ]
 })
-export class LoginModule { }
+export class SupportModule { }

@@ -50,6 +50,7 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { AboutUsComponent } from './modules/about-us/components/about-us.component';
 import { SharedModule } from './modules/shared/shared.module';
+import { SupportModule } from './modules/support/support.module';
 
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
   return localStorageSync({ keys: [globalConfigFeatureKey], rehydrate: true })(reducer);
@@ -109,6 +110,7 @@ export function playerFactory() {
     }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     StoreModule.forFeature(fromGlobalConfig.globalConfigFeatureKey, fromGlobalConfig.reducer),
+    SupportModule
   ],
   providers: [
     PwaService, UtilService,
