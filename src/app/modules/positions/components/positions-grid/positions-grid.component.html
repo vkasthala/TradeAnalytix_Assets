@@ -1,0 +1,121 @@
+<div class="data-table instruments-table fold-header mt-2" *ngIf="!isMobileDevice">
+    <table>
+        <thead>
+            <tr (mouseover)="showPositionsActions($event, null)" (mouseout)="hidePositionsActions(null)">
+                <th *ngIf="environment.country == 'IN'" class="product-cell">Product</th>
+                <th class="instrument-cell">Instrument</th>
+                <th class="qty-cell">Quantity</th>
+                <th class="text-right avgcost-cell">Avg.Cost</th>
+                <th class="text-right ltp-cell">LTP</th>
+                <th class="text-right netprofit-cell">Net Profit</th>
+                <th class="text-right"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let rowData of positionsData.data.data, let i=index">
+                <td><span class="status-tag text-label caps">{{rowData.type}}</span></td>
+                <td class="instrument-td" (mouseover)="showPositionsActions(rowData, i)" (mouseout)="hidePositionsActions(i)">
+                    {{rowData.instrument.symbol}} 
+                    <!-- <span class="actions fade-leave fade-leave-active" *ngIf="rowId == i">
+                        <span data-tooltip="Add" data-tooltip-pos="up">
+                            <button type="button" class="button button-xsmall button-blue"
+                                (click)="add(rowData)">Add</button>
+                        </span>
+                        <span data-tooltip="Exit" data-tooltip-pos="up">
+                            <button type="button" class="button button-xsmall button-orange ml-2" (click)="exit(rowData)">Exit</button>
+                        </span>
+                    </span> -->
+                </td>
+                <td><span [ngClass]="rowData.action_type === 'SELL' ? 'text-danger' : 'text-success'">{{rowData.action_type === 'SELL' ? '-' : ''}} {{rowData.quantity}}</span></td>
+                <td class="text-right">{{rowData.average_price | number:'1.2-2' }}</td>
+                <td class="text-right">{{rowData.ltp | number:'1.2-2'}}</td>
+                <td class="text-right"><span [ngClass]="rowData.day_p_and_l > -1 ? 'text-success' : 'text-danger'">{{rowData.day_p_and_l | number:'1.2-2'}}</span></td>
+                <td>
+                    <!-- <span data-tooltip="Buy (B)" data-tooltip-pos="up">
+                        <button type="button" class="btn btn-xs buy"
+                            (click)="add(rowData)">BUY</button>
+                    </span>
+                    <span data-tooltip="Sell (S)" data-tooltip-pos="up">
+                        <button type="button" class="btn btn-xs sell ml-2"
+                            (click)="add(rowData)">SELL</button>
+                    </span> -->
+                </td>
+            </tr>
+            
+            <tr (mouseover)="showPositionsActions($event, null)" (mouseout)="hidePositionsActions(null)" *ngIf="positionsData.data.data.length > 0">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="text-right">Total</td>
+                <td class="text-right"><span [ngClass]="positionsData.data.total_p_and_l > -1 ? 'text-success' : 'text-danger'">{{positionsData.data.total_p_and_l | number:'1.2-2'}}</span></td>
+                <!-- <td><span class="text-red">{{positionsData.total_p_and_l}}</span></td> -->
+            </tr>
+            <tr *ngIf="positionsData.data.data.length === 0">
+                <td colspan="6" class="text-center">No Positions</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="executed-orders gtt-list cards" *ngIf="isMobileDevice">
+    <div class="gtt-list-header">
+        <div class="gtt-list-header-content">
+            <div>Total P&L</div>
+            <span [ngClass]="positionsData.data.total_p_and_l > -1 ? 'text-success' : 'text-danger'">{{positionsData.data.total_p_and_l | number:'1.2-2'}}</span>
+        </div>
+    </div>
+    
+
+    <!-- card:: start -->
+        <div class="card" *ngFor = "let rowData of positionsData.data.data">
+            <div class="top flex">
+                <div class="flex6">
+                    <span class="text-xsmall dim">Qty</span> 
+                    <span class="text-blue ml-1 mr-2">{{rowData.action_type == 'BUY' ? rowData.quantity : -1 * rowData.quantity}}</span>
+                    <span>
+                        <span class="text-xsmall dim">Avg</span> 
+                        <span class="ml-1">{{rowData.average_price}}</span>
+                    </span>
+                </div>
+                <div class="flex6 text-right">
+                    <span class="text-label warning caps">{{rowData.type}}</span>
+                </div>
+            </div>
+            <div class="middle flex">
+                <div class="flex6">
+                    {{rowData.instrument.symbol}}
+                </div>
+                <div class="flex6 text-right">
+                    <span [ngClass]="rowData.day_p_and_l > -1 ? 'text-success' : 'text-danger'">{{rowData.day_p_and_l | number:'1.2-2'}}</span>
+                </div>
+            </div>
+            <div class="flex">
+                <div class="flex6">
+                    <span class="dim">{{rowData.instrument.exchange}}</span>
+                </div>
+                <div class="flex6 text-right">
+                    <span class="text-xsmall dim">LTP</span> 
+                    <span class="ml-1">{{rowData.ltp | number:'1.2-2'}}</span>
+                </div>
+                
+            </div>
+            
+        </div>
+        <!-- card:: end -->
+    
+</div>
+
+<div *ngIf="isMobileDevice">
+    <div class="mobile-context-menu search-mobile-menu" *ngIf="showMobileContextMenu">
+      <div class="mobile-context-menu-list list-flat" (clickOutside)="closeMobileContextMenu($event)">
+        
+        <div class="d-flex justify-content-between p-3">
+          <button type="button" class="button button-blue" (click)="add(mobileRowData)">Add</button>
+          <button type="button" class="button button-orange" (click)="exit(mobileRowData)">Exit</button>
+        </div>
+      </div>
+    </div>
+</div>
+<app-orders-modal *ngIf="showOrdersModal" [orderToggle]="orderToggle" [margins]="marginsSource"
+    (cancelOrder)="closeModal()" [isPositionsOrder]="isPositionsOrder"></app-orders-modal>

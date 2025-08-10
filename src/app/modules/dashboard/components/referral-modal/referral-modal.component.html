@@ -1,0 +1,24 @@
+<div class="compare-popup">
+    <div class="compare-pop-inner">
+        <div class="slider-header">
+            <h3 class="slider-title">{{data[currentInd].title}}</h3>
+        </div>
+
+        <div class="main-pop-inner">
+            <div class="mb-3">
+                <label class="col-form-label">How did you hear about CueTrade?</label>
+                <select class="form-control select-input" id="inputState" [(ngModel)]='referralInfo.registrationSourceId'>
+                    <option *ngFor="let key of registrationSources" [value]="key.id" [label]="key.name"></option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="col-form-label">Who referred you to CueTrade?</label>
+                <input class="form-control" matInput id="referred" [(ngModel)]='referralInfo.referralName' />
+            </div>
+        </div>
+
+        <div class="modal-footer py-2">
+            <button type="button" class="btn btn-join" (click)="submitReferral()">Submit</button>
+        </div>
+    </div>
+</div>

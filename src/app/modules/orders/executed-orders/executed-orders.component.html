@@ -1,0 +1,70 @@
+<h3 class="executedorders-title" *ngIf="!isMobileDevice">Executed Orders (<span *ngIf="executedOrders">{{executedOrders.length}}</span>)</h3>
+<div class="data-table instruments-table fold-header bg-white" *ngIf="!isMobileDevice">
+    <table>
+        <thead>
+            <tr>
+                <th class="sortable time-cell"><span>Time</span></th>
+                <th class="sortable type-cell"><span>Action</span></th>
+                <th class="sortable instrument-cell"><span>Instrument</span></th>
+                <th class="sortable product-cell" *ngIf="country == 'IN'"><span>Product</span></th>
+                <th class="sortable qty-cell"><span>Quantity</span></th>
+                <th class="sortable price-cell"><span>Price</span></th>
+                <th class="sortable status-cell"><span>Status</span></th>
+                <th class="sortable"><span>Journal</span></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor = "let order of executedOrders">
+                <td>{{order.time}}</td>
+                <td>
+                    <span class="text-label transaction-type-label" [ngClass]="order.type === 'SELL' ? 'orange' : 'blue'">{{order.type}}</span>
+                </td>
+                <td>{{order.instrument.symbol}}</td>
+                <td *ngIf="country == 'IN'">{{order.product}}</td>
+                <td>{{order.quantity}}</td>
+                <td>{{order.price}}</td>
+                <td>
+                    <span class="text-label small order-status-label" [ngClass]="order.status === 'REJECTED' ? 'orange' : 'green'">{{order.status}}</span>
+                </td>
+                <td>
+                    <span class="text-link" (click)="openIntradayOrderPopup('closed',order)">{{order.journal}}</span>
+                    <!-- <button type="button" class="button button-small button-outline button-blue ml-2" (click)="openIntradayOrder(order)">ADD</button> -->
+                </td>
+            </tr>
+            <tr *ngIf="hasExecutedOrders">
+                <td colspan="8" class="text-center">No Orders</td>
+            </tr>
+        </tbody>
+        
+    </table>
+</div>
+<div class="gtt-list cards" *ngIf="isMobileDevice">
+    <div class="card" *ngFor = "let order of executedOrders">
+        <div class="top flex px-3">
+            <div class="flex4">
+                <span class="text-label transaction-type-label" [ngClass]="order.type === 'SELL' ? 'orange' : 'blue'">{{order.type}}</span>
+                <span class="text-label order-status-label ml-2" [ngClass]="order.status === 'REJECTED' ? 'orange' : 'green'">{{order.status}}</span>
+            </div>
+            <div class="flex4 text-right text-small">
+                <span class="dim">{{order.time}}</span>
+            </div>
+        </div>
+        <div class="middle flex px-3">
+            <div class="flex6">
+                <span>{{order.instrument.symbol}}</span>
+                <span class="text-xsmall dim ml-2" *ngIf="country == 'IN'">{{order.product}}</span>
+            </div>
+            <div class="flex6 text-right">
+                <span class="text-xsmall dim">Quantity</span> 
+                <!-- <span class="ml-1">{{order.quantity}}/{{order.quantity}}</span> -->
+                <span class="ml-1">{{order.quantity}}</span>
+            </div>
+        </div>
+        <div class="mt-2 px-3" *ngIf="order.journal !== ''">
+            <button type="submit" class="button button-md w-100 " [ngClass]="order.type === 'SELL' ? 'sell' : 'buy'" (click)="openIntradayOrderPopup('closed',order)">{{order.journal}}</button>
+        </div>
+    </div>
+</div>
+
+<app-orders-modal *ngIf="showOrdersModal" [orderToggle]="orderToggle" [margins]="marginsSource"
+    (cancelOrder)="closeModal()"></app-orders-modal>

@@ -1,0 +1,35 @@
+@import "../../../../../assets/styles/variable.scss";
+
+.trade-plan-header {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000000;
+    display: flex;
+    align-items: center;
+    padding: 0.25rem 0;
+}
+.add-new {
+    color: #007bff;
+    font-size: 13px;
+    line-height: 1;
+    font-weight: 600;
+}
+
+.daily-statistics-container {
+    background: #FFFFFF;
+    border: 1px solid rgb(157 166 186 / 50%);
+    border-radius: 4px;
+    .col-form-label {
+        font-weight: 600;
+        color: #000000;
+        font-size: 15px;
+        text-align: right;
+    }
+    .col-form-value {
+        font-weight: 400;
+        color: #000000;
+        font-size: 15px;
+        text-align: right;
+    }
+}

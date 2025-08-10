@@ -1,0 +1,183 @@
+<!-- TODO : Remove this once the price update listner is fixed -->
+<div [ngClass]="isMobileDevice ? 'page-content marketwatch' : ''">
+    <div class="watchlist-sidebar watchlist-wrap">
+       
+        <app-search [pageIndex]="pageIndex" [watchListData]="watchListData" (clickOutside)="closeSarchUI(true)" [isMobileDevice]="isMobileDevice"></app-search>
+        <div class="instruments" (mouseleave)="out(null)">
+            <div *ngFor="let list of watchListData">
+                <div *ngIf="pageIndex == list.pageNumber && list.items.length === 0" class="empty-state">
+                    <br>
+                    <h4>No Symbols in Your Watchlist</h4>
+                    <p>Add stocks and options to start tracking prices and trading</p>
+                </div>
+                <div *ngIf="pageIndex == list.pageNumber">
+                    <div class="vddl-list list-flat">
+                        <div cdkDropList draggable="true" *ngIf="!isMobileDevice" (cdkDropListDropped)="drop($event)">
+                            <div class="vddl-draggable instrument index0"
+                                [ngClass]="{'up': item && item.changePercent >= 0, 'down' : item && item.changePercent < 0 }"
+                                *ngFor="let item of list.items, let i=index" (mouseover)="showActions($event, i)"
+                                (mouseout)="out(i)">
+                                <div class="info price-change-type-close-all">
+                                    <div class="symbol-wrapper">
+                                        <div class="symbol">
+                                            <span class="nice-name">{{item.tradingSymbolShort}}</span>
+                                            <span class="tag dim index-xsmall" *ngIf="isNiftyStock(item)">INDEX</span>
+                                        </div>
+                                    </div>
+                                    <div class="price-wrapper">
+                                        <div class="price-change">
+                                            <div class="dim">
+                                                <span class="price-percentage">{{item &&
+                                                    item.changePercent !== undefined ?
+                                                    item.changePercent : '-'}}
+                                                    <span class="text-xxsmall">%</span>
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="price">
+                                            <span class="change-indicator icon"
+                                                [ngClass]="{'icon-chevron-up': item && item.winFlag === true, 'icon-chevron-down' : item && item.winFlag === false }"></span>
+                                                <mat-icon class="mat-icon material-icons text-success" *ngIf="item && item.changePercent >= 0">keyboard_arrow_up</mat-icon>
+                                                <mat-icon class="mat-icon material-icons text-danger" *ngIf="item && item.changePercent < 0">keyboard_arrow_down</mat-icon>
+                                            <span class="last-price">{{item && item.price !==
+                                                undefined?
+                                                item.price : '-'}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <span class="actions fade-leave fade-leave-active" *ngIf="watchItem == i">
+                                    <span data-tooltip="Buy" data-tooltip-pos="up">
+                                        <button type="button" class="buy"
+                                            (click)="buyOrders(item)" *ngIf="!isNiftyStock(item)">B</button>
+                                    </span>
+                                    <span data-tooltip="Sell" data-tooltip-pos="up">
+                                        <button type="button" class="sell"
+                                            (click)="sellOrders(item)" *ngIf="!isNiftyStock(item)">S</button>
+                                    </span>
+
+                                    <!-- <span data-tooltip="Chart (C)" data-tooltip-pos="up"
+                                        [routerLink]="['/chart/',item.tradingsymbol, item.symbol_id]">
+                                        <button type="button" class="button-outline">
+                                            <mat-icon class="material-icons mat-icon-sm">show_chart</mat-icon>
+                                        </button>
+                                    </span> -->
+                                    <span data-tooltip="Delete" data-tooltip-pos="up">
+                                        <button type="button" class="button-outline" (click)="deleteOrder(item)">
+                                            <!-- <mat-icon class="material-icons">delete_outline</mat-icon> -->
+                                            <mat-icon class="material-icons">delete</mat-icon>
+                                        </button>
+                                    </span>
+                                    <span data-tooltip="Chart" data-tooltip-pos="up">
+                                        <button type="button" class="button-outline" (click)="showTradingViewChart(item)" *ngIf="country == 'IN'">
+                                            <mat-icon class="material-icons">show_chart</mat-icon>
+                                        </button>
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                        <div *ngIf="isMobileDevice">
+                            <div class="vddl-draggable instrument up index0"
+                                *ngFor="let item of list.items, let i=index" [ngClass]="{'up': item && item.changePercent >= 0, 'down' : item && item.changePercent < 0 }">
+                                <div class="info price-change-type-close-all" (click)="openMobileActions(item)">
+                                    <div class="symbol-wrapper">
+                                        <div class="symbol">
+                                            <span class="nice-name">{{item.tradingSymbolShort}}</span>
+                                            <span class="tag dim index-xsmall" *ngIf="isNiftyStock(item)">INDEX</span>
+                                        </div>
+                                    </div>
+                                    <div class="price-wrapper">
+                                        <div class="price-change">
+                                            <div class="dim">
+                                                <span class="price-percentage">{{item &&
+                                                    item.changePercent !== undefined ?
+                                                    item.changePercent : '-'}}
+                                                    <span class="text-xxsmall">%</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="price">
+                                            <span class="change-indicator icon"
+                                                [ngClass]="{'icon-chevron-up': item && item.winFlag === true, 'icon-chevron-down' : item && item.winFlag === false }">
+                                            </span>
+                                            <mat-icon class="mat-icon material-icons text-success" *ngIf="item && item.changePercent >= 0">keyboard_arrow_up</mat-icon>
+                                            <mat-icon class="mat-icon material-icons text-danger" *ngIf="item && item.changePercent < 0">keyboard_arrow_down</mat-icon>
+                                            <span class="last-price">{{item && item.price !== undefined? item.price : '-'}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mobile-context-menu" *ngIf="showMobileContextMenu">
+                                    <div class="mobile-context-menu-list">
+                                        <div class="mobile-context-menu-header">
+                                            <div class="symbol_name">{{selectedSymbol.tradingSymbolShort}}</div>
+                                            <div class="selectedSymbol-bottom">
+                                                <span>{{selectedSymbol.exchange}}</span>
+                                                <span class="ml-3">{{selectedSymbol.price}}</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="mobile-context-menu-body" (clickOutside)="closeMobileContextMenu($event)">
+                                            <button type="button" class="button buy col-4" (click)="buyOrders(selectedSymbol)" *ngIf="!isNiftyStock(selectedSymbol)">Buy</button>
+
+                                            <div class="col-5">
+                                                <button type="button" class="button sell w-100" (click)="sellOrders(selectedSymbol)" *ngIf="!isNiftyStock(selectedSymbol)">Sell</button>    
+                                            </div>
+                                            
+                                            
+                                            <button class="button-outline col-3" type="button" (click)="deleteOrder(selectedSymbol)"><mat-icon class="material-icons">delete_outline</mat-icon></button>
+
+                                            <button class="button-outline col-3" type="button" (click)="showTradingViewChart(selectedSymbol)" *ngIf="country == 'IN'"><mat-icon class="material-icons">show_chart</mat-icon></button>
+                                            
+                                        </div>
+                                        <!-- <div class="mobile-context-menu-footer">
+                                            <div class="progress-title">Day’s Range</div>
+                                            <div class="py-2">
+                                                <div class="progress-top">
+                                                    <span>Low</span>
+                                                    <span>High</span>
+                                                </div>
+                                                <div class="progress-top">
+                                                    <span class="text-black">6,427.00</span>
+                                                    <span class="text-black">6,525.00</span>
+                                                </div>
+                                                <div class="progress mb-3">
+                                                    <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                                                </div>
+                                                <div class="progress-top">
+                                                    <span>
+                                                        Open 
+                                                        <span class="text-black">6,525.00</span>
+                                                    </span>
+                                                    <span>
+                                                        Close 
+                                                        <span class="text-black">6,555.00</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <ul class="marketwatch-selector list-flat">
+            <li class="item" *ngFor="let page of watchListData, let index=index"
+                [ngClass]="selecedIndex === page.pageNumber ? 'selected' : ''" [attr.data-tooltip]="page.name"
+                data-tooltip-pos="up" (click)="nextPage(page.pageNumber)">{{page.pageNumber}}</li>
+        </ul> -->
+    </div>
+</div>
+
+<app-orders-modal 
+    *ngIf="showOrdersModal" 
+    [orderToggle]="orderToggle" 
+    [margins]="marginsSource" (cancelOrder)="cancelOrders()">
+</app-orders-modal>
+
+<mat-spinner *ngIf="loader"></mat-spinner>

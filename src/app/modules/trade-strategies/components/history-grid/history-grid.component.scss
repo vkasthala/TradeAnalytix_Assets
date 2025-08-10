@@ -1,0 +1,260 @@
+
+@import "../../../../../assets/styles/variable.scss";
+mat-table {
+    width: 100%;
+}
+.trade-strategies-grid {
+    @media #{$extra-small} {
+        display: none;
+    }
+}
+
+th.mat-header-cell {
+  background: #979797;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.mat-row:nth-child(even){
+  background-color: transparent;
+  border: 0;
+}
+
+.mat-row:nth-child(odd){
+  
+  background-color: transparent;
+  border: 0;
+}
+
+.strategy-id-cell{
+  width: 9%;
+  flex: 0 0 9% !important;
+  min-width: 100px;
+}
+
+.strategy-name-cell{
+  width: 9%;
+  flex: 0 0 9% !important;
+}
+
+.strategy-cell{
+  width: 9%;
+  flex: 0 0 9% !important;
+}
+.stock-name-cell{
+  width: 26%;                   //Venkat changed width from 8% to 18% to accomodate symbol KEY
+  flex: 0 0 26% !important;
+}
+
+.status-cell{
+  width: 9%;
+  flex: 0 0 9% !important;
+}
+
+.open-date-cell, .rules-cell{
+  width: 9%;
+  flex: 0 0 9% !important;
+}
+.return-cell, .total-amount-cell {
+  width: 8%;
+  flex: 0 0 8% !important;
+}
+
+.close-date-cell{
+  width: 9%;
+  flex: 0 0 9% !important;
+}
+
+.action-cell {
+  width: 5%;
+  flex: 0 0 5% !important;
+}
+
+.direction-cell{
+  width: 8%;
+  flex: 0 0 8% !important;
+}
+
+.journal-cell {
+  width: 9%;
+  flex: 0 0 9% !important;
+  padding-left: 6px; /* Add space before the column */
+  justify-content: center;
+}
+
+.netR-cell {
+  width: 6%;
+  justify-content: end;
+  flex: 0 0 6% !important;
+  padding-right: 6px; /* Add space after the column */
+}
+
+.direction_arrow .material-icons {
+  font-size: 1rem;
+  align-items: center;
+  display: flex;
+}
+
+broker-name-cell {
+  width: 7%;
+  flex: 0 0 7% !important;
+}
+
+.action_colum{
+  cursor: pointer;
+  position: relative;
+  overflow: visible;
+}
+.trade-details .trade-det-box{
+  display: block;
+}
+.trade-det-box{
+  z-index: 99999;
+  position: absolute;
+  left: 10px;
+  top: 30px;
+  width: 120px;
+  height: auto;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;  
+}
+.de-box {
+  display: flex;
+  padding: 10px;
+  position: relative;
+}
+
+.de-box a.box-icon {
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding: 6px 0px;
+}
+.de-box a.box-icon img{
+  width: 10px;
+  margin-top: 4px;
+  height: auto;
+  object-fit: contain;
+}
+.de-box a.box-icon span{
+  font-size: 13px;
+  margin-left: 8px;
+  font-weight: 500;
+  color: #888;
+}
+
+.trad-border{
+  border: 1px solid #acacac;
+  opacity: 0.3;
+}
+.close-dash{
+  width: 20%;
+  height: 3px;
+  background-color: #848484;
+  margin: 0 auto;
+}
+.right-con{
+  width: 100%;
+}
+.close_action_box {
+  justify-content: flex-start;
+  align-items: flex-start;
+  z-index: 99999;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}
+.trade-edit {
+  color: #2469FF;
+}
+.trade-close {
+  color: #EC6B56;
+}
+
+.trade-delete {
+  color: #2469FF;
+}
+.trade-view {
+  color: #2469FF;
+}
+
+.text-success {
+  color: #37A000 !important;
+}
+.text-primary {
+  color: #0190CA !important;
+}
+.mask {
+  position: fixed;
+}
+.trade-st-mobile {
+  display: none;
+  @media #{$extra-small} {
+      display: block;
+      margin-top: 10px;
+      padding-bottom: 30px;
+  }
+}
+
+.trade-st-mobile-grid {
+  color: #2469FF;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 16px rgba(157, 157, 157, 0.1);
+  border-radius: 4px;
+  font-weight: 400;
+  padding: 1rem;
+  font-size: 16px;
+  .cell-header {
+    font-weight: 600;
+  }
+  .mobile-grid-row {
+    border-bottom: 1px solid rgb(157 166 186 / 30%);
+  }
+  .mobile-grid-cell {
+    display: inline-flex;
+    .material-icons {
+      color: #2285FA;
+    }
+  }
+}
+
+@media #{$extra-small} {
+  .grid-bottom {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .mobile-grid-btn {
+    background: #F5F8FA;
+    border: 1px solid #9DA6BA;
+    box-sizing: border-box;
+    border-radius: 4px;
+    display: inline-flex;
+    justify-content: center;
+    padding: 0.375rem 1rem !important;
+    width:48%;
+  }
+  .trade-edit {
+    color: #2469FF;
+    opacity: 1;
+  }
+  .trade-delete {
+    color: #EB5757;
+  }
+}
+
+.stock-name-tags {
+  width: 50%;
+  padding-left: 10px;
+  justify-content: left;
+  flex: 0 0 50% !important;
+}
+.return-cell {
+  justify-content: end;
+  padding-right: 10px;
+}

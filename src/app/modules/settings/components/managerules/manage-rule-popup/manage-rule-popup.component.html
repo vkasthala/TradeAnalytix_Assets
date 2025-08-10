@@ -1,0 +1,51 @@
+<!-- manage-rules-popup -->
+<div class="compare-popup">
+    <div class="compare-pop-inner">
+        <div class="top-pop-inner" *ngIf="!isMobileDevice">
+            <div class="left-heading">
+                <h6>{{title}} Manual Rule</h6>
+            </div>
+            <div class="right-close" (click)="closeModal()">
+                <mat-icon>clear</mat-icon>
+            </div>
+        </div>
+
+        <div class="mobile-header-nav" *ngIf="isMobileDevice">
+            <div class="d-flex align-items-center">
+                <mat-icon class="material-icons mat-icon cursor" (click)="closeModal()">keyboard_backspace</mat-icon>
+                <h5 class="mb-0 ml-3">{{title}} Manual Rule</h5>
+            </div>
+        </div>
+
+        <form [formGroup]="entryexitruleform">
+            <div class="main-pop-inner">
+                <!-- <div class="row mb-2">
+                    <label class="col-12 col-form-label">Rule Type</label>
+                    <div class="col-8">
+                        <select class="form-control" formControlName="type" id="exampleFormControlSelect1" [(ngModel)]="rowData.type">
+                            <option value="Entry">Entry</option>
+                            <option value="Exit">Exit</option>
+                        </select>
+                    </div>
+                </div> -->
+
+                <div class="mb-2">
+                    <!-- <label class="col-form-label">Rule Description</label> -->
+                    <textarea class="form-control" formControlName="description" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="rowData.description"></textarea>
+                </div>
+                <!-- <div class="row mb-2">
+                    <label class="col-12 col-form-label">Source</label>
+                    <div class="col-8 has-search">
+                        <input class="form-control" formControlName="source" placeholder="" type="text" [(ngModel)]="rowData.source" />
+                    </div>
+                </div> -->
+                <div class="row separator"></div>
+
+                <div class="popup-footer">
+                    <button *ngIf="!isDemoMode" type="button" class="btn btn-save" [mat-dialog-close]="data" (click)="closeModal(entryexitruleform)" [ngClass]="isMobileDevice ? 'w-100 button-md' : ''">{{btnText}}</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>

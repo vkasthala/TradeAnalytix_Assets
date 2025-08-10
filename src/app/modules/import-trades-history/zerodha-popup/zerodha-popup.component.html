@@ -1,0 +1,20 @@
+<div class="compare-popup">
+    <div class="compare-pop-inner">
+        <div class="top-pop-inner pb-0">
+            <div class="left-heading">
+                <h6>{{title}}</h6>
+            </div>
+            <div class="right-close" (click)="closeModal()">
+                <mat-icon>clear</mat-icon>
+            </div>
+        </div>
+
+        <div class="main-pop-inner">
+            <!-- <iframe src='' width="400" height="400" frameborder="0" allowfullscreen></iframe> -->
+        </div>
+
+        <div class="px-3 py-2 text-center">
+            <button type="button" class="btn btn-secondary btn-sm" [mat-dialog-close]="data">Close</button>
+        </div>
+    </div>
+</div>

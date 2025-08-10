@@ -1,0 +1,123 @@
+<div class="import-body">
+    <div class="import-container">
+        <div class="import_trade_header">
+            <span class="header-title">{{importType == 1 ? "Import Trades via File" : "Auto-Sync Trades" }}</span>
+            <div class="d-flex align-items-center justify-content-end">
+                <label class="col-form-label px-3 w-auto" style="font-size: 16px; font-weight: 500;">Select Import Type</label>
+                <select [(value)]="importType" (change)="selectionChange($event.target.value)" class="form-control w-auto">
+                    <option value="1">Manual Import</option>
+                    <option value="2">Auto-Import</option>
+                </select>
+            </div>
+        </div>
+        
+        <div *ngIf="importType == 1">
+            <app-manual-import (newItemEvent)="reload()"></app-manual-import>
+        </div>
+
+        <div *ngIf="importType == 2">
+            <app-auto-import (newItemEvent)="reload()"></app-auto-import>
+        </div>
+    </div>
+
+    <div *ngIf="importType == 1" class="mt-3">
+        <div class="d-flex justify-content-end pb-2 px-3">
+            <a class="d-flex text-link" (click)="reload()">
+                <mat-icon>refresh</mat-icon> Refresh
+            </a>
+        </div>
+        <div class="trade-table">
+            <mat-table [dataSource]="dataSource" matSort>
+                <!-- Date Column -->
+                <ng-container matColumnDef="openDate">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header class="date-cell">Date</mat-header-cell>
+                    <mat-cell class="date-cell" *matCellDef="let element"> {{element.createDateTime | date: 'dd-MMM-yyyy'}} </mat-cell>
+                </ng-container>
+
+                <!-- File name Column -->
+                <ng-container matColumnDef="stockName">
+                    <mat-header-cell class="stock-name-cell" *matHeaderCellDef mat-sort-header>File Name</mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.fileName}} </mat-cell>
+                </ng-container>
+
+                <!-- Status Column -->
+                <ng-container matColumnDef="status">
+                    <mat-header-cell class="status-cell" *matHeaderCellDef mat-sort-header>Status</mat-header-cell>
+                    <mat-cell *matCellDef="let element" class="status-cell">
+                        <span class="text-primary" *ngIf="element.status === 'IN_PROGRESS'">
+                            In Progress
+                        </span>
+                        <span class="text-success" *ngIf="element.status === 'COMPLETE'">Complete</span>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Uploaded Records Column -->
+                <ng-container matColumnDef="direction">
+                    <mat-header-cell class="records-cell" *matHeaderCellDef mat-sort-header>Uploaded Records</mat-header-cell>
+                    <mat-cell *matCellDef="let element" class="text-success records-cell"> {{element.totalRecords}} </mat-cell>
+                </ng-container>
+
+                <!-- Failed Records Column -->
+                <!-- <ng-container matColumnDef="failedRecords">
+                    <mat-header-cell class="records-cell" *matHeaderCellDef mat-sort-header>Failed Records</mat-header-cell>
+                    <mat-cell *matCellDef="let element" class="text-danger records-cell"> {{element.failedRecords}} </mat-cell>
+                </ng-container> -->
+                
+
+                <!-- Closed Date Column -->
+                <!-- <ng-container matColumnDef="action">
+                    <mat-header-cell class="action-cell" *matHeaderCellDef mat-sort-header>Action</mat-header-cell>
+                    <mat-cell *matCellDef="let element, let i = index" class="action-cell action_colum">
+                        <div class="d-flex align-items-center">
+                            <span class="mr-3 import_trade_actions" (click)="downloadFailedTrade(element)">
+                                <mat-icon class="mat-icon-sm">download</mat-icon> Failed Records
+                            </span> -->
+                            <!-- <span class="mr-3 import_trade_actions" (click)="downloadTradeThesis(element)">
+                                <mat-icon  class="mat-icon-sm">download</mat-icon> Impacted Trades
+                            </span>
+                            <span class="d-flex align-items-center position-relative">
+                                <mat-icon class="mat-icon-sm">cloud_upload</mat-icon>
+                                <input class="custom-browse" type="file" (change)="uploadTradeThesis($event, element)" /> Upload Trade Thesis
+                            </span> -->
+                        <!-- </div>
+                    </mat-cell>
+                </ng-container> -->
+
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+            <div class="p-3 text-center" *ngIf="dataSource.length === 0">No trades are imported yet</div>
+            <!-- Angular 8 pagination -->
+            <mat-paginator *ngIf="dataSource.totalCount > 0" [pageSize]="20" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true" [length]="dataSource.totalCount">
+            </mat-paginator>
+        </div>
+    </div>
+
+   
+    <div *ngIf="importType == 2" class="mt-3">
+        <div class="trade-table">
+            <table class="mat-table">
+                <thead>
+                    <tr class="mat-header-row">
+                        <th class="mat-header-cell brokerage_cell">Brokerage</th>
+                        <th class="mat-header-cell lastsyncdate_cell">Last Sync Date</th>
+                        <th class="mat-header-cell lasttradetimestamp_cell">Last Trade Timestamp</th>
+                        <th class="mat-header-cell lastsyncstatus">Status</th>
+                        <th class="mat-header-cell lastsyncresult">Trade Count</th>
+                        <!-- <th class="mat-header-cell lastsynclink">JournalLink</th> -->
+                     </tr>
+                </thead>
+                    <tbody>
+                        <tr class="mat-row" *ngFor="let trade of trades">
+                          <td class="mat-cell">{{ trade.brokarageName }}</td>
+                          <td class="mat-cell">{{ trade.lastSyncedLocalDateTime }}</td>
+                          <td class="mat-cell">{{ trade.transaLocalDateTime | date:'yyyy-MM-dd HH:mm:ss' }}</td>
+                          <td class="mat-cell">{{trade.status?'Success':'Failed'}}</td>
+                          <td class="mat-cell">{{trade.total}}/{{trade.completed}}</td>
+                          <td class="mat-cell"><a href="/stravtegies">Visit Journal</a></td>
+                         </tr>
+                  </tbody>
+            </table>
+        </div>
+    </div>
+</div>

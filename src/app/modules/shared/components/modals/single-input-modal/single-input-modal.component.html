@@ -1,0 +1,29 @@
+
+<div class="exit-thesis-pop">
+    <div class="exit-thesis-pop-inner">
+      <div class="pop-top-heading">
+        <div class="left-heading">
+          <h5>Add {{title}}</h5>
+        </div>
+        <div class="right-close" (click)="closeModal()">
+          <mat-icon>clear</mat-icon>
+        </div>
+      </div>
+
+      <div class="exit-con">
+        <div class="let-con">
+          <label class="col-form-label">{{title}}</label>
+        </div>
+        <div class="right-input">
+          <div class="form-group">
+            <input class="form-control" placeholder="" type="text" [(ngModel)]='value'/>
+          </div>
+        </div>
+      </div>
+      <div class="separator"></div>
+      <div class="px-3 pt-1 text-right">
+        <button type="button" class="btn btn-add" (click)="closeModal()">Save</button>
+      </div>
+
+    </div>
+</div>

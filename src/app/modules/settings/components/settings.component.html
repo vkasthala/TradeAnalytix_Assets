@@ -1,0 +1,53 @@
+<div class="reports-section">
+
+    <!-- risk-tabs -->
+    <div class="trade-risk-tabs">
+        <div class="tab" role="tabpanel">
+            <ul class="nav nav-tabs settings_web bg-white" role="tablist">
+                <!-- <li class="active" role="presentation">
+                    <a aria-controls="home" aria-expanded="true" data-toggle="tab" href="#UserProﬁle" role="tab">
+                            User Proﬁle</a>
+                </li> -->
+                <li class="active" role="presentation">
+                    <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#InvestmentGoals" role="tab">Trading Goals</a>
+                </li>
+                <li class="" role="presentation">
+                    <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#DataSetup" role="tab">Delete Data</a>
+                </li>
+            </ul>
+
+            <!-- Settings-mobile -->
+            <div class="settings-mobile">
+                <div class="">
+                    <select class="form-control" (change)="settingsTabChange($event.target.value)">
+                        <!-- <option value="UserProﬁle" selected data-default>User Proﬁle</option> -->
+                        <option value="InvestmentGoals" selected data-default>Goals</option>
+                        <option value="DataSetup">Delete Data</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="tab-content tabs p-3">
+                <!-- <div class="tab-pane active" id="UserProﬁle" role="tabpanel">
+                    <app-profile></app-profile>
+                </div> -->
+                <div class="tab-pane active" id="InvestmentGoals" role="tabpanel" [ngClass]="[selectedType === 'InvestmentGoals' ? 'mobile-tab-pane-show' : 'mobile-tab-pane-d-none']">
+                    <app-investmentgoals></app-investmentgoals>
+                </div>
+                <div class="tab-pane settings-component" id="DataSetup" role="tabpanel" [ngClass]="[selectedType === 'DataSetup' ? 'd-block' : 'mobile-tab-pane-d-none']">
+                    <app-datasetup></app-datasetup>
+                </div>
+                <!-- <div class="tab-pane" id="ConfigureQuestions" role="tabpanel">
+                    <div class="profile-body">
+                        <div class="mb-2"><a class="configure-questions" href="javascript:void(0)" (click)="openEntryQuestions()" >Configure Entry Questions</a></div>
+                        <div><a class="configure-questions" href="javascript:void(0)" (click)="openExitQuestions()" >Configure Exit Questions</a></div>
+                    </div>
+                </div> -->
+                <!-- <div class="tab-pane" id="CodedRules" role="tabpanel">
+                    <app-codedrules></app-codedrules>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,435 @@
+@import "../../../../assets/styles/variable.scss";
+
+.add-new-trade-btn {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 21px;
+    align-items: center;
+}
+
+.trade-strategies-table {
+    padding: 20px 35px;
+    background: #f5f5f5;
+    
+    .card-body {
+        padding: 0px;
+        @media #{$small} {
+            overflow: hidden;
+        }
+    }
+    .table {
+        margin-bottom: 0px;
+        @media #{$small} {
+            // overflow-x: scroll;
+            // display: block;
+        }
+        thead {
+            background-color: $apptabel;
+            color: $white;
+            tr {
+                th {
+                    padding: 10px 14px;
+                    font-size: 14px;
+                    font-weight: 500;
+                    text-align: center;
+                    vertical-align: middle;
+                    border-bottom: 1px solid #dee2e6;
+                    @media #{$medium} {
+                        padding: 8px 0px;
+                        font-size: 12px;
+                    }
+                    @media #{$small} {
+                        &:not(:first-child) {
+                            padding: 8px 10px;
+                            font-size: 12px;
+                        }
+                    }
+                    @media #{$extra-small} {
+                        padding: 8px 0px;
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+        tbody {
+            tr {
+                td {
+                    padding: 10px 14px;
+                    text-align: center;
+                    vertical-align: middle;
+                    font-size: 13px;
+                    color: #2a2a2a;
+                    @media #{$medium} {
+                        padding: 8px 0px;
+                        font-size: 12px;
+                    }
+                    @media #{$small} {
+                        &:not(:first-child) {
+                            padding: 8px 10px;
+                            font-size: 12px;
+                        }
+                    }
+                    @media #{$extra-small} {
+                        padding: 8px 0px;
+                        font-size: 12px;
+                    }
+                    p {
+                        text-align: justify;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.table tbody tr td:first-child {
+    padding-right: 0px !important;
+}
+
+.table tbody tr th:first-child {
+    padding-right: 0px !important;
+}
+
+.table-striped tbody tr:nth-of-type(even) {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: transparent !important;
+}
+
+.trade-st-box {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    padding: 15px 20px;
+    @media #{$extra-small} {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    @media #{$small} {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+.st-slect-sections {
+    width: 30%;
+}
+
+.st-slect-section {
+    @media #{$small} {
+        display: flex;
+    }
+    @media #{$extra-small} {
+        display: flex;
+    }
+}
+
+.st-slect-section.select-btn {
+    margin-left: 20px;
+}
+
+.right-box {
+    display: flex;
+    justify-content: flex-start;
+    width: 40%;
+    align-items: flex-start;
+    @media #{$extra-small} {
+        width: 100%;
+    }
+    @media #{$small} {
+        width: 100%;
+        justify-content: flex-start;
+    }
+    @media #{$medium} {
+        width: 50%;
+    }
+}
+
+.select-btn {
+    @media #{$medium} {
+        display: flex;
+        justify-content: space-between;
+    }
+    button.btn.btn-apply {
+        @media #{$medium} {
+            padding: 0px 4px;
+            font-size: 12px;
+        }
+    }
+}
+
+.add-new {
+    background-color: #2285FA;
+    color: $white;
+    font-size: 15px;
+    padding: 0.375rem 16px !important;
+    border-radius: 4px;
+    height: 44px;
+    @media #{$extra-small} {
+        justify-content: center;
+        width: 100% !important;
+        display: inline-flex !important;
+    }
+}
+
+.trade-form {
+    position: relative;
+    width: 80%;
+}
+
+img.form-icon {
+    position: absolute;
+    right: 11px;
+    top: 9px;
+    width: 19px;
+}
+
+.form-icon-down {
+    position: absolute;
+    right: 11px;
+    top: 15px;
+    width: 15px;
+}
+
+.form-control {
+    border: 1px solid #707070;
+}
+
+.trade-sel {
+    width: 200px;
+    position: relative;
+    margin-right: 30px;
+    select {
+        cursor: pointer;
+        -webkit-appearance: none !important;
+    }
+}
+
+.trade-form .form-control {
+    font-size: 15px;
+    color: #4a4a4a;
+}
+
+.trade-form .form-control ::placeholder {
+    color: #4a4a4a;
+}
+
+.trade-date .form-control {
+    font-size: 15px;
+    color: #4a4a4a;
+}
+
+.trade-sel .form-control {
+    font-size: 15px;
+    color: #4a4a4a;
+}
+
+.market {
+    width: 35%;
+}
+
+.currnt {
+    width: 11%;
+}
+
+.date {
+    width: 1%;
+}
+
+.plan {
+    width: 20%;
+}
+
+.per {
+    width: 10%;
+}
+
+.lesson {
+    width: 15%;
+}
+
+.edit {
+    cursor: pointer;
+}
+
+table {
+    width: 100%;
+}
+
+.mat-table {
+    width: 100%;
+}
+
+.mat-row:nth-child(even) {
+    background-color: #F9F9F9;
+}
+
+.mat-row:nth-child(odd) {
+    background-color: transparent;
+}
+
+.trade_plans_header {
+    justify-content: flex-end;
+    align-items: flex-start;
+    display: flex !important;
+}
+
+.col-form-label {
+    color: #242E3A;
+    font-size: 15px !important;
+}
+
+.trade-dash-name {
+    h3 {
+        font-size: 14px;
+    }
+}
+
+.add-icon {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1;
+}
+
+.status-cell {
+    width: 10%;
+    flex: 0 0 10% !important;
+    min-width: 100px !important;
+}
+.entry_date_cell {
+    width: 10%;
+    flex: 0 0 10% !important;
+}
+td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type, th.mat-header-cell:first-of-type {
+    text-align: left !important;
+}
+td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
+    text-align: center;
+}
+
+.trade-plan-mobile {
+    position: relative;
+    display: none;
+    overflow: hidden;
+    .filters-slide {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        right: -100%;
+        top: 0;
+        padding: 0 15px;
+        z-index: 200;
+        background: #eef0f2;
+        transition: all 0.5s ease;
+    }
+    .filters-slide.open {
+        right: 0;
+    }
+    .filter-form {
+        background: #FFFFFF;
+        box-shadow: 0px 4px 16px rgb(157 157 157 / 10%);
+        border-radius: 4px;
+        padding: 15px;
+        height: 100%;
+    }
+    .trade-top-heading {
+        background: #394C86;
+        padding: 10px 15px;
+        h3 {
+            color: #fff;
+            font-size: 18px;
+            margin: 0 !important;
+            display: flex;
+            align-items: center;
+        }
+    }
+    .btn-apply {
+        background-color: #2469FF;
+        color: $white;
+        color: #ffffff;
+        font-size: 15px;
+        padding: 0.375rem 1.5rem !important;
+        border-radius: 0;
+        height: 44px;
+        line-height: 26px;
+        @media #{$extra-small} {
+            justify-content: center;
+            width: 100% !important;
+            display: inline-flex !important;
+        }
+    }
+}
+
+.trade-plan-mobile-grid {
+    color: #3B5065;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 16px rgba(157, 157, 157, 0.1);
+    border-radius: 4px;
+    font-weight: 400;
+    padding: 1rem;
+    font-size: 16px;
+    .cell-header {
+        font-weight: 500;
+    }
+    .mobile-grid-row {
+        border-bottom: 1px solid rgb(157 166 186 / 30%);
+    }
+    .mobile-grid-cell {
+        display: inline-flex;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+        color: #3B5065;
+        .material-icons {
+            color: #2285FA;
+        }
+    }
+    .mobile-grid-cell-value {
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 24px;
+        color: #3B5065;
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width:599px) {
+    .trade-plan-web,
+    .grid-open-trades-web {
+        display: none;
+    }
+    .trade-plan-mobile,
+    .grid-open-trades-mobile {
+        display: block;
+        margin-top: 15px;
+    }
+    .mobile-grid-btn {
+        background: #F5F8FA;
+        border: 1px solid #9DA6BA;
+        box-sizing: border-box;
+        border-radius: 4px;
+        display: inline-flex;
+        justify-content: center;
+        padding: 0.375rem 1rem !important;
+        width: 48%;
+    }
+    .trade-edit {
+        color: #2285FA !important;
+        opacity: 1;
+        width: 100%;
+        justify-content: center;
+    }
+    .trade-delete {
+        color: #EB5757;
+    }
+}
+.video-modal .modal-dialog {
+    max-width: 699px;
+}
+
+.modal {
+    top: 10% !important;
+}
+

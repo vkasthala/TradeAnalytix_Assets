@@ -1,0 +1,16 @@
+<div class="modal-header p-2">
+    <h1 class="modal-title">
+        <!-- Exit CueTrade -->
+        {{title}}
+    </h1>
+</div>
+
+<div class="modal-body">
+    <!-- <p>Are you sure you want to log out from CueTrade?</p> -->
+    <p>{{message}}</p>
+</div>
+
+<div class="modal-footer py-1">
+    <button class="btn btn-primary btn-sm mr-2" (click)="onConfirm()">Yes</button>
+    <button class="btn btn-secondary btn-sm" (click)="onDismiss()">No</button>
+</div>

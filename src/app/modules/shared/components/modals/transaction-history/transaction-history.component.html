@@ -1,0 +1,52 @@
+<div class="compare-popup">
+    <div class="compare-pop-inner">
+        <div class="top-pop-inner">
+            <div class="left-heading">
+                <h6>Trade History</h6>
+            </div>
+            <div class="right-close" (click)="closeModal()">
+                <mat-icon>clear</mat-icon>
+            </div>
+        </div>
+
+        <div class="main-pop-inner pt-2">
+            <div class="row align-items-center">
+                <label class="col-form-label col-4">Execution Date</label>
+                <label class="col-form-label col-3">Quantity</label>
+                <label class="col-form-label col-2">Price</label>
+                <label class="col-form-label col-3">Cost</label>
+            </div>
+
+            <div class="row mb-1" *ngFor="let item of history;let index=index">
+                <span class="col-4 text-center cell-value">{{item.executionDate | date: 'dd-MMM-yyyy'}}</span>
+                <span class="col-3 text-center cell-value">{{item.quantity}}</span>
+                <span class="col-2 cell-value">{{item.price}}</span>
+                <span class="col-3 cell-value">{{item.cost}}</span>
+            </div>
+            <!-- <div class="row mb-1">
+                <span class="col-4 text-center">20Dec2022</span>
+                <span class="col-3 text-center">100</span>
+                <span class="col-2">230</span>
+                <span class="col-3">230.00</span>
+            </div>
+            <div class="row mb-1">
+                <span class="col-4 text-center">20Dec2022</span>
+                <span class="col-3 text-center">100</span>
+                <span class="col-2">230</span>
+                <span class="col-3">230.00</span>
+            </div>
+            <div class="row mb-1">
+                <span class="col-4 text-center">20Dec2022</span>
+                <span class="col-3 text-center">100</span>
+                <span class="col-2">230</span>
+                <span class="col-3">230.00</span>
+            </div>
+            <div class="row mb-1">
+                <span class="col-4 text-center">20Dec2022</span>
+                <span class="col-3 text-center">100</span>
+                <span class="col-2">230</span>
+                <span class="col-3">230.00</span>
+            </div> -->
+        </div>
+    </div>
+</div>

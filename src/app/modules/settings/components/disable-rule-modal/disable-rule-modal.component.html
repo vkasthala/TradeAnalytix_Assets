@@ -1,0 +1,37 @@
+
+<div class="compare-popup">
+  <div class="compare-pop-inner">
+      <div class="top-pop-inner" *ngIf="!isMobileDevice">
+        <div class="left-heading">
+          <h5>Disable the automatic trading rule</h5>
+        </div>
+      </div>
+
+      <div class="mobile-header-nav" *ngIf="isMobileDevice">
+        <div class="d-flex align-items-center">
+            <mat-icon class="material-icons mat-icon cursor" (click)="closeModal()">keyboard_backspace</mat-icon>
+            <h5 class="mb-0 ml-3">Disable the automatic trading rule</h5>
+        </div>
+      </div>
+
+      <div class="main-pop-inner">
+          <!-- <p>{{jsonData.uiLabel }} the amount stated below</p> -->
+
+          <!-- <div class="d-flex justify-content-center align-items-center">
+            <label class="col-form-label px-3">Enter the amount</label>
+            <div class="form-group">
+              <input class="form-control disabled" placeholder="" type="text" [(ngModel)]='value' />
+            </div>
+          </div> -->
+          <p class="mb-0" *ngIf="jsonData.ruleType === 1">Upon deactivating this rule, your trades will no longer be checked
+            against this rule going forward.</p>
+
+            <p class="mb-0" *ngIf="jsonData.ruleType === 2">Upon deactivating this rule, your account will no longer be checked against this rule going forward.</p>
+        </div>
+
+        <div class="popup-footer">
+          <button type="button" class="btn btn-save" [ngClass]="isMobileDevice ? 'button-md' : ''" (click)="Disable()">Disable</button>
+          <button type="button" class="btn btn-cancel" (click)="closeModal()" [ngClass]="!isMobileDevice ? 'ml-2' : 'button-md'">Cancel</button>
+        </div>
+    </div>
+</div>

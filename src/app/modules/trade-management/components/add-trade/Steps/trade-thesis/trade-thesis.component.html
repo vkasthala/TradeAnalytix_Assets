@@ -1,0 +1,73 @@
+<div class="custom-card">
+    <div class="custom-card-header">
+        <div class="custom-card-title">Journal</div>
+        <a class="add-new cursor" (click)="openJournalModal()">View</a>
+    </div>
+    <div class="custom-card-body">
+        <div class="custom-row mb-3">
+            <label class="col-form-label col-3">Tags</label>
+            <div class="col-9 text-right" style="overflow:hidden;">
+                <app-trade-tags #tradeTag></app-trade-tags>
+            </div>
+        </div>
+        <div class="custom-row mb-3">
+            <label class="col-form-label col-5">Strategy</label>
+            <div class="col-md-5">
+                <select class="form-control" [(ngModel)]='strategyTypeId'>
+                    <option *ngFor="let key of strategyTypes" [value]="key" [label]="strategies[key]"></option>
+                </select>
+            </div>
+        </div>
+        <div class="custom-row mb-3">
+            <label class="col-form-label col-5">Direction</label>
+            <div class="col-5">
+                <select class="form-control" [(ngModel)]='tradeThesis.direction'>
+                    <option *ngFor="let key of userMetadataStoreService.directions" [value]="key.id" [label]="key.name"></option>
+                </select>
+            </div>
+        </div>
+        <div class="custom-row mb-3">
+            <label class="col-form-label col-5">Contrarian Trade</label>
+            <div class="col-5">
+                <select class="form-control" [(ngModel)]='tradeThesis.contrarian'>
+                    <option value="1">Yes</option>
+                    <option value="2">No</option>
+                </select> 
+            </div>
+        </div>
+        
+        <div class="custom-row mb-3" *ngIf="!addTrade && tradeStatus !== 4">
+            <label class="col-form-label col-5">Planned Trade</label>
+            <div class="col-5">
+                <select class="form-control" [(ngModel)]='tradeThesis.tradeType'>
+                    <option value="planned">Yes</option>
+                    <option value="impromptu">No</option>
+                </select>
+            </div>
+        </div>
+        <div class="custom-row mb-3 align-items-start">
+            <label class="col-form-label col-4">Trade Rationale</label>
+            <div class="col-8">
+                <textarea [disabled]="true" class="form-control" [(ngModel)]='tradeThesis.reasons'></textarea>
+            </div>
+            </div>
+        <div class="custom-row mb-3 align-items-start">
+            <label class="col-form-label col-4">Post-Trade Review</label>
+            <div class="col-8">
+                <textarea class="form-control" [(ngModel)]='tradeThesis.additionalNotes'></textarea>
+            </div>
+        </div>
+        <!-- <div class="d-flex mb-3 align-items-center">
+            <label class="col-form-label">Technical Analysis</label>
+            <div class="col-8 col-md-7">
+                <a class="add-new" (click)="generateChart()" *ngIf="addTrade || editTrade">Open Chart</a>
+            </div>
+        </div> -->
+        <div class="custom-row mb-3">
+            <label class="col-form-label col-5">Attach Files</label>
+            <div class="col-6 text-right">
+                <a class="add-new" (click)="openJournalModal()">Upload Files</a>
+            </div>
+        </div>
+    </div>
+</div>

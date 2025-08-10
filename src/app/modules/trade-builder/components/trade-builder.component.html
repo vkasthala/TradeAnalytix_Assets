@@ -1,0 +1,40 @@
+<div class="sub-nav">
+    <a [routerLink]="['/trade-plans/']" routerLinkActive="router-link-active"><span>Daily Plan</span></a>
+    <a [routerLink]="['/trade-builder/']" routerLinkActive="router-link-active" class="active-item"><span>Trade Builder</span></a> 
+</div>
+<div class="trade-strategies-sec">
+    <div class="main-body">
+        <div class="trade-dash-main justify-content-end">
+            <button routerLink="/new-trade" class="btn btn-apply">Add Trade</button>
+        </div>
+        <div class="trade-strategies-table px-3 trade-strategies-filters">
+            <app-draft-trades-grid #draftTradesGrid>loading</app-draft-trades-grid>
+        </div>
+    </div>
+</div>
+
+
+<!-- for-mobile -->
+<div class="trade-st-mobile">
+    
+
+    <div class="row m-0" *ngIf="isOpenPositions">
+        <div class="col-6 pr-2 pl-2" *ngFor="let summary of summaryItems">
+            <div class="flex-item">
+                <div class="flex-inner">
+                    <h3 class="text-secondary trade_count"
+                    [ngClass]="{'text-success': summary.id === 'max_gain', 'text-danger' : summary.id === 'max_loss' }">{{summary.value}}</h3>
+                    <span class="trade_title">{{summary.name}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="px-2">
+        <button type="button" class="btn btn-primary w-100" routerLink="/new-trade">Add Trade</button>
+    </div>
+    
+    <div class="trade-strategies-table px-2">
+        <!-- Grid row -->
+        <app-draft-trades-grid #draftTradesGrid>loading</app-draft-trades-grid>
+    </div>
+</div>

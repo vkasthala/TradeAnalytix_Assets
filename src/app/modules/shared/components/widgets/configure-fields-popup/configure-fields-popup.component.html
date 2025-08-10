@@ -1,0 +1,24 @@
+<div class="compare-popup">
+    <div class="compare-pop-inner">
+        <div class="top-pop-inner">
+            <div class="modal-title mb-1">{{title}}</div>
+            <div class="right-close" (click)="closeModal()">
+                <mat-icon>clear</mat-icon>
+            </div>
+        </div>
+
+        <div class="main-pop-inner">
+            <div class="mt-2">
+                <div *ngFor="let field of dynamicFields;let i = index" class="row mb-2 align-items-center">
+                    <span class="col-8">{{field.label}}</span>
+                    <span class="px-3 followers-col"><input type="radio" name="{{field.name}}" [(ngModel)]="field.show" class="mr-2" value="1" /> Show</span>
+                    <span class="px-3 followers-col"><input type="radio" name="{{field.name}}" [(ngModel)]="field.show" class="mr-2" value="0" /> Hide</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer py-2">
+            <button type="button" class="btn btn-join" (click) = "saveFieldSettings()">Save</button>
+        </div>
+    </div>
+</div>

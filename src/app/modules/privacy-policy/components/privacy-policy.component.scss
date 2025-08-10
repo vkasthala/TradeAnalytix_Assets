@@ -1,0 +1,650 @@
+// Privacy Policy Styling
+.privacy-container {
+  background: linear-gradient(135deg, #f1f5f9 0%, #ffffff 100%);
+  min-height: 100vh;
+  padding-top: 100px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+// Hero Section
+.privacy-hero {
+  text-align: left;
+  margin-bottom: 30px;
+  margin-top: -60px;
+
+  .privacy-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 15px;
+  }
+
+  .privacy-meta {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+
+    span {
+      background: #ecfdf5;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      color: #065f46;
+      border: 1px solid #a7f3d0;
+    }
+  }
+}
+
+// Disclaimer Banner
+.disclaimer-banner {
+  background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+  border: 2px solid #3b82f6;
+  border-radius: 12px;
+  padding: 30px;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.1);
+
+  .disclaimer-icon {
+    font-size: 2rem;
+    margin-bottom: 15px;
+  }
+
+  h3 {
+    color: #1e40af;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+  }
+
+  p {
+    color: #1e40af;
+    font-weight: 600;
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+
+  .disclaimer-points {
+    .point {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 12px;
+
+      .bullet {
+        color: #3b82f6;
+        font-weight: bold;
+        margin-right: 10px;
+        font-size: 1.2rem;
+      }
+
+      span:last-child {
+        color: #1e40af;
+        line-height: 1.5;
+      }
+    }
+  }
+}
+
+// Navigation Menu
+.privacy-nav {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e5e7eb;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+
+  .nav-item {
+    a {
+      display: block;
+      padding: 12px 16px;
+      text-decoration: none;
+      color: #4b5563;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+
+      &:hover {
+        background: #ecfdf5;
+        color: #059669;
+        transform: translateX(5px);
+      }
+    }
+  }
+}
+
+// Privacy Content
+.privacy-content {
+  background: white;
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+}
+
+.privacy-section {
+  margin-bottom: 50px;
+  scroll-margin-top: 120px;
+
+  h2 {
+    color: #1f2937;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 3px solid #e5e7eb;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(135deg, #059669, #047857);
+      border-radius: 2px;
+    }
+  }
+
+  h3 {
+    color: #374151;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 25px 0 15px 0;
+  }
+
+  h4 {
+    color: #4b5563;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 20px 0 10px 0;
+  }
+
+  p {
+    color: #6b7280;
+    line-height: 1.7;
+    margin-bottom: 15px;
+    font-size: 1rem;
+  }
+}
+
+// Key Points
+.key-points {
+  background: #f0f9ff;
+  border-left: 4px solid #0ea5e9;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 0 8px 8px 0;
+
+  h3 {
+    color: #0c4a6e;
+    margin-bottom: 15px;
+  }
+}
+
+// Subsections
+.subsection {
+  margin-bottom: 30px;
+  padding-left: 20px;
+  border-left: 3px solid #f3f4f6;
+
+  &:hover {
+    border-left-color: #6ee7b7;
+    transition: border-color 0.3s ease;
+  }
+}
+
+// Information Categories
+.info-category, .security-category, .cookie-category {
+  background: #f9fafb;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 15px 0;
+  border: 1px solid #f3f4f6;
+
+  h4 {
+    color: #374151;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+  }
+
+  p {
+    margin-bottom: 10px;
+  }
+}
+
+// Important Notices
+.important-note, .no-sale-notice, .children-notice, .third-party-notice {
+  background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+  border: 2px solid #22c55e;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px 0;
+
+  h3 {
+    color: #15803d;
+    margin-bottom: 10px;
+  }
+
+  p {
+    color: #166534;
+    font-weight: 500;
+  }
+}
+
+.no-sale-notice {
+  background: linear-gradient(135deg, #fef2f2, #fecaca);
+  border-color: #ef4444;
+
+  h3 {
+    color: #dc2626;
+  }
+
+  p {
+    color: #991b1b;
+  }
+}
+
+// Legal Basis
+.legal-basis {
+  background: #fefce8;
+  border: 1px solid #eab308;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px 0;
+
+  h3 {
+    color: #a16207;
+  }
+
+  p {
+    color: #92400e;
+  }
+}
+
+// Rights Items
+.right-item {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 15px 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+  h4 {
+    color: #059669;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+  }
+
+  p {
+    color: #6b7280;
+    margin-bottom: 0;
+  }
+}
+
+// Retention Items
+.retention-item {
+  background: #f8fafc;
+  border-left: 4px solid #64748b;
+  padding: 15px 20px;
+  margin: 10px 0;
+  border-radius: 0 8px 8px 0;
+
+  h4 {
+    color: #334155;
+    margin-bottom: 5px;
+    font-size: 1rem;
+  }
+
+  p {
+    color: #64748b;
+    margin-bottom: 0;
+    font-size: 0.9rem;
+  }
+}
+
+// Lists
+.styled-list {
+  list-style: none;
+  padding-left: 0;
+
+  li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 10px;
+    color: #6b7280;
+    line-height: 1.6;
+
+    &::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #059669;
+      font-weight: bold;
+    }
+  }
+}
+
+// Contact Information
+.contact-info {
+  background: #f0f9ff;
+  border-radius: 12px;
+  padding: 25px;
+  border: 1px solid #bae6fd;
+
+  h3 {
+    color: #0c4a6e;
+    margin-bottom: 15px;
+  }
+
+  .contact-details {
+    margin: 15px 0;
+
+    .contact-item {
+      margin-bottom: 10px;
+
+      strong {
+        color: #0c4a6e;
+        margin-right: 10px;
+      }
+
+      a {
+        color: #0ea5e9;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .response-time {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #bae6fd;
+
+    p {
+      color: #0c4a6e;
+      font-size: 0.9rem;
+      margin-bottom: 0;
+    }
+  }
+}
+
+.supervisory-authority {
+  background: #fef3c7;
+  border: 1px solid #fbbf24;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 20px;
+
+  h3 {
+    color: #92400e;
+    margin-bottom: 10px;
+  }
+
+  p {
+    color: #92400e;
+    margin-bottom: 0;
+  }
+}
+
+// Footer
+.privacy-footer {
+  text-align: center;
+  margin-top: 50px;
+  padding: 30px;
+  background: #f8fafc;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+
+  p {
+    color: #6b7280;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .privacy-container {
+    padding-top: 80px;
+  }
+
+  .privacy-hero .privacy-title {
+    font-size: 2rem;
+  }
+
+  .privacy-meta {
+    gap: 15px;
+  }
+
+  .privacy-nav {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+
+  .privacy-content {
+    padding: 25px;
+  }
+
+  .privacy-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .disclaimer-banner {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 15px;
+  }
+
+  .privacy-content {
+    padding: 20px;
+  }
+
+  .disclaimer-banner {
+    padding: 15px;
+  }
+
+  .subsection {
+    padding-left: 15px;
+  }
+}
+
+// Smooth scrolling
+html {
+  scroll-behavior: smooth;
+}
+
+// Print styles
+@media print {
+  .navbar, .cue-footer, .privacy-nav {
+    display: none;
+  }
+
+  .privacy-container {
+    background: white;
+    padding-top: 0;
+  }
+
+  .privacy-content {
+    box-shadow: none;
+    border: none;
+  }
+}
+/* Navigation Styles */
+.cue-navbar {
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 1rem 0;
+}
+
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cue-logo img {
+  height: 40px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  
+  &:hover {
+    color: #4CAF50;
+  }
+}
+
+.login-btn {
+  background: #4CAF50;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  color: white;
+  font-weight: 600;
+  transition: background 0.3s ease;
+  
+  &:hover {
+    background: #45a049;
+  }
+}
+
+.hamburger-menu {
+  display: none;
+  flex-direction: column;
+  background: none;
+  border: none;
+  cursor: pointer;
+  
+  span {
+    width: 25px;
+    height: 3px;
+    background: #333;
+    margin: 3px 0;
+    transition: 0.3s;
+  }
+  
+  &.hamburger-open span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+  }
+  
+  &.hamburger-open span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  &.hamburger-open span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: 80px;
+    left: -100%;
+    width: 100%;
+    height: calc(100vh - 80px);
+    background: white;
+    flex-direction: column;
+    justify-content: start;
+    padding-top: 2rem;
+    transition: left 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    
+    &.nav-links-open {
+      left: 0;
+    }
+  }
+  
+  .hamburger-menu {
+    display: flex;
+  }
+}
+
+/* Footer Styles */
+.cue-footer {
+  background: #f8f9fa;
+  padding: 3rem 0 1rem;
+  margin-top: 3rem;
+  
+  .cue-logo img {
+    height: 35px;
+    margin-bottom: 1rem;
+  }
+  
+  h4 {
+    color: #333;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    
+    li {
+      margin-bottom: 0.5rem;
+      
+      a {
+        color: #666;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        
+        &:hover {
+          color: #4CAF50;
+        }
+      }
+    }
+  }
+  
+  .social-icons {
+    display: none;
+  }
+}
+
+.cue-copyright {
+  border-top: 1px solid #e0e0e0;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  text-align: center;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* Page content spacing to account for fixed navbar */
+.privacy-container,
+.terms-container {
+  margin-top: 100px;
+}

@@ -1,0 +1,79 @@
+
+<div class="modal-backdrop fade show" *ngIf="isVisible"></div>
+
+<div class="modal fade custom_modal" [ngClass]="isVisible ? 'show' : ''" style="display: block;" tabindex="-1" role="dialog" *ngIf="isVisible">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Terms & Conditions and Privacy Policy</h5>
+                <button type="button" class="btn-close" (click)="closeModal()" aria-label="Close">
+                    <mat-icon class="mat-icon-sm">clear</mat-icon>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p class="mb-3">
+                    By continuing with your authentication, you acknowledge that you have read, understood, and agree to be bound by our Terms & Conditions and Privacy Policy.
+                </p>
+                
+                <div class="terms-links mb-4">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h6 class="card-title">Terms & Conditions</h6>
+                                    <p class="card-text small">
+                                        Please review our terms of service, which outline the rules and regulations for using CueTrade.
+                                    </p>
+                                    <a [routerLink]="['/terms-conditions']" target="_blank" class="btn btn-outline-primary btn-sm">
+                                        Read Terms & Conditions
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h6 class="card-title">Privacy Policy</h6>
+                                    <p class="card-text small">
+                                        Learn how we collect, use, and protect your personal information.
+                                    </p>
+                                    <a [routerLink]="['/privacy-policy']" target="_blank" class="btn btn-outline-primary btn-sm">
+                                        Read Privacy Policy
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" [(ngModel)]="agreedToTerms" id="termsCheckbox">
+                    <label class="form-check-label" for="termsCheckbox">
+                        I have read and agree to the <a [routerLink]="['/terms-conditions']" target="_blank">Terms & Conditions</a> 
+                        and <a [routerLink]="['/privacy-policy']" target="_blank">Privacy Policy</a>
+                    </label>
+                </div>
+
+                <div class="important-notice alert alert-warning">
+                    <h6><strong>Important Notice:</strong></h6>
+                    <ul class="mb-0">
+                        <li>CueTrade is developed and operated by an individual developer</li>
+                        <li>No guarantees are provided for data security, availability, or support</li>
+                        <li>Use at your own risk with understanding of individual project limitations</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="closeModal()">
+                    Cancel
+                </button>
+                <button type="button" 
+                        class="btn btn-primary" 
+                        [disabled]="!agreedToTerms"
+                        (click)="proceedWithAuth()">
+                    I Agree - Continue with {{authProvider | titlecase}}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

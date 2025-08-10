@@ -1,0 +1,71 @@
+<div class="compare-popup">
+    <div class="compare-pop-inner">
+        <div class="pop-top-heading">
+            <div class="left-heading">
+              <h5>Robinhood Instructions</h5>
+            </div>
+            <div class="right-close" (click)="closeModal()">
+              <mat-icon>clear</mat-icon>
+            </div>
+          </div>
+          
+        <div class="main-pop-inner">
+            <div class="instructions-container">
+                <div class="d-flex justify-content-between">
+                    <h6>Instructions for Exporting Your Trades from Robinhood:</h6>
+                    <h6><span (click)="scrollToMiddle()" class="cursor blue-link">Instructions for Adding Robinhood Trades to CueTrade</span></h6>
+                </div>
+                
+                <ul>
+                    <li>Open a web browser and log in to your Robinhood account (not the mobile app)</li>
+                    <li>Access the Account menu and choose Reports and Statements.</li>
+                    <li>To customize your report and generate it:
+                        <ul>
+                            <li>From the Account dropdown, select Brokerage.</li>
+                            <li>Enter the Start Date and End Date for the desired period.</li>
+                            <li>Click the Generate Report button</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Locate the CSV-format report containing trades executed between the specified dates in the Your Reports section.
+                    </li>
+                    <li>Click the Download CSV option to save the transactions in CSV format.
+                        <div class="pt-2">
+                            <img src="../../../../assets/images/instructions/robinhood-instructions-1.jpg" />
+                        </div>
+                    </li>
+                </ul>
+            </div>	
+
+            <div class="instructions-container second_instructions">
+                <h6>Instructions for Adding Robinhood Trades to CueTrade:</h6>
+                <ul>
+                    <li>Navigate to the Import Trades page within CueTrade.</li>
+                    <li>From the Select Brokerage dropdown, opt for Robinhood.</li>
+                    <li>Choose the file that you downloaded from Robinhood in step 5.</li>
+                    <li>Click the Upload button to initiate the import process.</li>
+                    <li>Your trades from Robinhood will now be accessible in CueTrade. To view them, go to the Positions page.
+                        <div class="pt-2">
+                            <img src="../../../../assets/images/instructions/robinhood-instructions-2.jpg" />
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="separator"></div>
+
+        <p class="text-right">
+            <span class="cursor" (click)="scrollToTop()">
+                Top
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-short" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5z"/>
+                </svg>
+            </span>
+        </p>
+
+        <div class="px-3 py-2 text-right">
+            <button type="button" class="btn btn-secondary btn-sm" [mat-dialog-close]="data">Close</button>
+        </div>
+    </div>
+</div>

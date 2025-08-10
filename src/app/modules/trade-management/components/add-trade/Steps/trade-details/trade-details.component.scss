@@ -1,0 +1,1120 @@
+@import "../../../../../../../assets/styles/variable.scss";
+@import "../../../../../../../assets/styles/breakpoints.scss";
+
+.addnew-trade-body {
+    @media #{$extra-small} {
+        display: none;
+    }
+}
+.trade-details-mobile {
+    overflow: hidden;
+    position: relative;
+    display: none;
+    @media #{$extra-small} {
+        display: block;
+    }
+}
+.addnew-trade {
+    padding: 0px 20px;
+}
+
+.btn-enter {
+    background-color: #2469FF;
+    color: $white;
+    padding: 6px 40px;
+}
+
+.trade-right-search .form-control {
+    border: 1px solid #a2a2a2;
+    // height: 40px;
+}
+
+.trade-right-search {
+    position: relative;
+    width: 200px;
+    @include media(">tablet", "<laptop") {
+        width: 150px;
+    }
+}
+
+img.form-icon {
+    position: absolute;
+    right: 11px;
+    top: 9px;
+    width: 19px;
+}
+
+.trade-rate {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.trade-name {
+    margin-bottom: 5px;
+    h5 {
+        font-weight: bold;
+    }
+}
+
+span.trade-r {
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+span.trade-rr {
+    color: #ff0000;
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.trade-rate-box {
+    background-color: #f2f2f2;
+    // border: 1px solid #cbcbcb;
+    padding: 12px;
+    margin: 10px 0px 20px 0px;
+}
+
+.trade-rate-sec {
+    margin-top: 10px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    @media #{$small} {
+        flex-wrap: wrap;
+    }
+}
+
+.rate-box-right {
+    width: 50%;
+    border-right: 1px solid #bdbdbdb3;
+    @media #{$small} {
+        border-right: unset;
+    }
+}
+
+.rate-box-left {
+    width: 50%;
+    @media #{$small} {
+        width: 53%;
+    }
+}
+
+.trade-rate-heading {
+    h6 {
+        color: $primary;
+    }
+}
+
+.rate-box-s {
+    width: 15%;
+    @media #{$small} {
+        width: 50%;
+        border: 1px solid #ddd;
+        padding: 10px;
+    }
+}
+
+.rate-box {
+    width: 26%;
+    display: flex;
+    justify-content: flex-start;
+    @media #{$small} {
+        width: 50%;
+        border: 1px solid #ddd;
+        padding: 10px;
+    }
+}
+
+.bxo-name {
+    margin-bottom: 12px;
+    span {
+        font-size: 15px;
+    }
+}
+
+.trad-border {
+    border: 1px solid #acacac;
+    opacity: 0.2;
+}
+
+.mat-stepper-horizontal.mat-horizontal-content-container {
+    padding: 0px !important;
+}
+
+.search_btn .btn-add {
+    width: 110px;
+    height: 40px;
+    background: #2469FF;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    line-height: 2;
+}
+
+.btn-next {
+    padding: 8px 1rem;
+    background: $appbtn-color;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    line-height: 2;
+}
+
+.btn:hover {
+    color: $white;
+}
+
+.order-btn {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    @media #{$extra-small} {
+        justify-content: space-between;
+    }
+}
+
+a.btn.btn-skip {
+    color: $appbtn-color;
+    right: 0px;
+    position: absolute;
+    font-size: 15px;
+}
+
+.gap-btn {
+    margin-left: 15px;
+}
+
+.trade-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    flex-wrap: wrap;
+    @include media(">tablet", "<laptop") {
+        width: 100%;
+    }
+    @media #{$small} {
+        width: 100%;
+    }
+    @media #{$extra-small} {
+        width: 100%;
+    }
+}
+
+.gap-btn {
+    margin-left: 15px;
+}
+
+.Trade-type .form-control {
+    height: 40px;
+    width: 140px;
+}
+
+.trade-sec h6 {
+    font-size: 16px;
+    color: $primary;
+}
+
+.add-stock-sec {
+    padding: 20px;
+    padding-bottom: 5px;
+    .col-form-label {
+        color: #000000;
+        font-size: 15px;
+        font-weight: 500;
+    }
+}
+
+.add-stock-body {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 36px;
+    color: #9DA6BA;
+    text-align: center;
+    padding-top: 3rem;
+    .btn-link {
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 24px;
+        text-align: center;
+        color: #2469FF;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}
+.nodata-section {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 36px;
+    color: #9DA6BA;
+    text-align: center;
+    padding: .5rem;
+    border: 1px solid rgba(157, 166, 186, 0.22);
+    box-shadow: 0px 4px 6px rgb(157 166 186 / 40%);
+    border-radius: 4px;
+}
+
+.btn-secondary {
+    color: $white;
+    text-transform: uppercase;
+    width: 110px;
+    height: 36px;
+    font-size: 15px;
+    background-color: #3E3E3E !important;
+    border-color: #3E3E3E !important;
+}
+
+.trade-risk-section {
+    margin-top: 20px;
+}
+
+.trade-cards-section {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    flex-direction: column;
+    // flex-wrap: wrap;
+    @media #{$extra-small} {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+    @media #{$small} {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        // margin-bottom: 10px;
+    }
+    @media #{$medium} {
+        flex-wrap: wrap;
+        // margin-bottom: 10px;
+    }
+    h4 {
+        font-weight: 600;
+        font-size: 15px;
+        line-height: 24px;
+        color: #000000;
+    }
+    .trade-card-box {
+        display: flex;
+        align-items: stretch;
+        margin-top: 4px;
+        flex-wrap: wrap;
+        padding-left:10px;
+        @media #{$extra-small} {
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+        }
+        .top-heading {
+            display: flex;
+            align-items: center;
+            padding-top: 1.45rem;
+            img {
+                width: 14px;
+                cursor: pointer;
+            }
+            .mat-icon {
+                color: #2469FF;
+                cursor: pointer;
+                margin-top: -7px;  //added to align the delete and history icons with the legs
+            }
+        }
+        .card-main {
+            // text-align: center;
+            padding-right: .5678rem;
+            min-width: 125px;
+            max-width: 125px;
+            color: #000000;
+            font-size: 15px;
+            font-weight: 500;
+            h6 {
+                font-size: 1.25rem;
+                @media #{$medium} {
+                    font-size: 12px;
+                }
+            }
+            .card-right {
+                width: 52%;
+                .cards-input {
+                    font-size: 14px !important;
+                    height: 40px;
+                    padding: 0px;
+                    padding-left: 10px !important;
+                }
+                .select-input {
+                    padding: 0px 8px;
+                    height: 40px;
+                    font-size: 15px;
+                }
+            }
+        }
+        .card-main-actions {
+            min-width: 130px;
+            max-width: 130px;
+        }
+    }
+}
+
+.trade-card-box {
+    @media #{$extra-small} {
+        margin: 0px 0px 0px 0px;
+    }
+}
+
+.btn-yes,
+.btn-no {
+    padding: 10px 25px;
+    border-radius: 5px;
+}
+
+.btn-yes {
+    background-color: #219563;
+    color: $white;
+}
+
+.btn-no {
+    background-color: #e2e2e2;
+    color: #000000;
+    margin-left: 10px;
+}
+
+.btn-no:hover {
+    color: #000000;
+}
+
+.trade-risk h6 {
+    font-size: 16px;
+    font-weight: 500;
+    color: #016db0;
+    @media #{$extra-small} {
+        margin-bottom: 10px !important;
+    }
+}
+
+.trade-risk {
+    margin: 10px 0px;
+}
+
+.risk-stock-seciton {
+    display: flex;
+    width: 97%;
+    align-items: center;
+    @media #{$medium} {
+        width: 100%;
+    }
+}
+
+.stock-inc {
+    border: 1px solid #7070703d;
+    padding: 4px 8px;
+    border-radius: 50px;
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    // margin: 0 auto;
+    a {
+        cursor: pointer;
+        img {
+            width: 20px;
+            height: auto;
+        }
+    }
+    span {
+        margin: 0px 5px;
+    }
+}
+
+.stock-name {
+    width: 50%;
+    span {
+        font-size: 15px;
+    }
+}
+
+.risk-box {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 20%;
+    @media #{$small} {
+        margin-bottom: 20px;
+        width: 48%;
+        border: 1px solid #ddd;
+        padding: 12px;
+        margin-right: 10px;
+    }
+    @media #{$medium} {
+        margin-bottom: 20px;
+        width: 23%;
+        border: 1px solid #ddd;
+        padding: 8px;
+        margin-right: 10px;
+    }
+}
+
+.risk-af {
+    position: relative;
+    @media #{$extra-small} {
+        margin-bottom: 20px;
+    }
+}
+
+.risk-af::after {
+    content: "";
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 2px;
+    height: 60%;
+    background-color: #7070703b;
+    z-index: 9;
+    opacity: 0.5;
+    @media #{$extra-small} {
+        display: none;
+    }
+    @media #{$small} {
+        display: none;
+    }
+    @media #{$medium} {
+        display: none;
+    }
+}
+
+.card-m {
+    margin-left: 10px;
+    @media #{$small} {
+        margin-left: 0px;
+    }
+    @media #{$medium} {
+        margin-left: 0px;
+    }
+}
+
+.risk-bt {
+    margin-bottom: 20px;
+}
+
+.trade-risk-heading {
+    margin-bottom: 40px;
+    h6 {
+        // font-size: 14px;
+        font-weight: 500;
+        color: #016db0;
+    }
+    p {
+        display: block;
+        margin-top: 15px;
+        font-size: 13px;
+    }
+    .refresh-icon {
+        font-size: 35px;
+        color: #016db0;
+        float: right;
+        cursor: pointer;
+    }
+}
+
+.trade-risk-stock {
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    @media #{$small} {
+        flex-wrap: wrap;
+    }
+    @media #{$medium} {
+        flex-wrap: wrap;
+    }
+}
+
+// risk tabs
+.tab .nav-tabs {
+    border-bottom: 2px solid #e8e8e8;
+}
+
+.tab .nav-tabs li a {
+    display: block;
+    padding: 10px 20px;
+    margin: 0 5px 1px 0;
+    background: #fff;
+    font-size: 15px;
+    font-weight: 500;
+    color: #000000;
+    text-align: center;
+    border: none;
+    border-radius: 0;
+    z-index: 2;
+    position: relative;
+    transition: all 0.3s ease 0s;
+    text-decoration: none;
+}
+
+.tab .nav-tabs li a:hover,
+.tab .nav-tabs li.active a {
+    color: $primary !important;
+    border: none;
+}
+
+.tab .nav-tabs li.active a:after {
+    content: "";
+    width: 100%;
+    height: 2px;
+    background: $primary;
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    z-index: -1;
+    transition: all 0.3s ease 0s;
+}
+
+.tab .tab-content {
+    padding: 30px 0px;
+    margin-top: 0;
+    background: #fff;
+    font-size: 15px;
+    color: #7a9181;
+    line-height: 30px;
+    border-radius: 0 0 5px 5px;
+    @media #{$extra-small} {
+        overflow-y: scroll;
+    }
+    @media #{$small} {
+        overflow-y: scroll;
+    }
+    @media #{$medium} {
+        overflow-y: scroll;
+    }
+}
+
+.tab .tab-content h3 {
+    font-size: 24px;
+    margin-top: 0;
+}
+
+.tags-list {
+    list-style: none;
+    display: inline-flex;
+    justify-content: flex-end;
+    margin: 0;
+}
+
+.tag-icon {
+    font-size: 15px !important;
+    vertical-align: middle;
+    color: #2469FF;
+}
+
+.tags-list > li {
+    display: inline-flex;
+}
+
+.tag-item {
+    
+    margin-left: 5px;;
+}
+.tag-list-item {
+    cursor: pointer;
+    background: #ced2d7;
+    border-radius: 8px;
+    padding: 0.25rem 0.5rem;
+    padding-right: 0;
+    color: #000000;
+}
+
+.add-tag {
+    cursor: pointer;
+    margin-left: 10px;
+    border: 2px solid #9da6ba !important;
+    border-radius: 3px;
+    padding: 0.235rem;
+    font-size: 15px;
+}
+
+.delete-tag-icon {
+    cursor: pointer;
+    font-size: 15px !important;
+    color: #ff0000 !important;
+    width: 15px;
+}
+
+@media only screen and (max-width: 479px) {
+    .tab .nav-tabs li {
+        width: 100%;
+        text-align: center;
+    }
+    .tab .nav-tabs li.active a:before {
+        content: "\f105";
+        bottom: 15%;
+        left: 0;
+        right: auto;
+    }
+}
+
+.charts {
+    img {
+        width: 50%;
+    }
+}
+
+// risk table
+.risk-tabs-table {
+    position: relative;
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    margin: 0px 0;
+    @media #{$small} {
+        width: auto;
+    }
+}
+
+.risk-table {
+    width: 30%;
+    height: auto;
+    min-height: 340px;
+    border-right: 1px solid;
+    padding: 0px 10px;
+    @media #{$small} {
+        width: 50%;
+    }
+    h6 {
+        text-align: center;
+        font-size: 14px;
+        margin-bottom: 10px !important;
+        color: #000000;
+    }
+    table {
+        width: 100%;
+        margin: 0 auto;
+        text-align: center;
+        thead {
+            th {
+                background: #707070;
+                color: white;
+                font-size: 13px;
+                font-weight: normal;
+                @media #{$small} {
+                    font-size: 12px;
+                }
+            }
+            &:nth-child(2) {
+                display: block;
+                margin: 0 12px;
+                @media #{$small} {
+                    display: inline;
+                }
+            }
+        }
+        td {
+            font-size: 13px;
+            font-weight: 400;
+            //   color: #4f5051;
+            border-bottom: 1px solid #bfbfbf;
+            @media #{$small} {
+                padding: 0px 10px;
+            }
+        }
+    }
+}
+
+.risk-tables {
+    width: 8%;
+    height: auto;
+    min-height: 340px;
+    padding: 0px 18px;
+    @media #{$small} {
+        width: 9%;
+    }
+    h6 {
+        text-align: center;
+        font-size: 14px;
+        margin-bottom: 10px !important;
+        color: #000000;
+    }
+    table {
+        width: 100%;
+        margin: 0 auto;
+        text-align: center;
+        thead {
+            th {
+                background: #707070;
+                color: white;
+                font-size: 14px;
+                font-weight: normal;
+                @media #{$small} {
+                    font-size: 12px;
+                }
+            }
+            &:nth-child(2) {
+                display: block;
+                margin: 0 12px;
+            }
+        }
+        td {
+            font-size: 13px;
+            font-weight: 400;
+            //   color: #4f5051;
+            border-bottom: 1px solid #bfbfbf;
+            @media #{$small} {
+                padding: 0px 10px;
+            }
+        }
+    }
+}
+
+// thead th:nth-child(2) {
+//   display: block;
+//   margin: 0 12px;
+// }
+.trade-rdd {
+    color: #e11c1c;
+}
+
+.trade-rd {
+    color: #1cb86a;
+}
+
+.trade-form {
+    .row {
+        justify-content: center;
+        align-items: center;
+    }
+    .trade-he {
+        display: flex;
+        justify-content: flex-end;
+    }
+    @include media(">tablet", "<laptop") {
+        .btn-enter {
+            text-align: center;
+        }
+        .trade-he {
+            display: flex;
+            justify-content: center;
+            // margin-bottom: 10px;
+        }
+    }
+}
+
+.stock-p {
+    display: flex;
+    position: relative;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    p {
+        // margin-left: -12px;
+        position: absolute;
+        right: 5px;
+    }
+    .hide-bars {
+        width: 80%;
+        text-align: center;
+    }
+}
+
+.current-stock {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 8%;
+    margin-top: 5px;
+    P {
+        font-size: 14px;
+    }
+}
+
+.form-control {
+    height: 40px;
+    padding: 0.375rem .5rem;
+    font-size: 14px;
+    font-weight: 500;
+    color: #000000;
+}
+
+.col-form-label {
+    padding-bottom: .25rem;
+}
+
+.input_text {
+    height: 40px;
+    align-items: center;
+    display: flex;
+    font-weight: 500;
+    font-size: 15px !important;
+    color: #000000;
+}
+
+.card-main-md {
+    min-width: 80px !important;
+    max-width: 80px !important;
+}
+
+.card-main-sm {
+    min-width: 80px !important;
+    max-width: 80px !important;
+}
+
+@media (min-width:768px) {
+    .net_debit {
+        // padding-left: 610px;
+        font-weight: 300;
+        font-size: 14px !important;
+        display: flex;
+    }
+    .total_label {
+        width: 568px;
+        display: flex;
+        justify-content: flex-end;
+    }
+    .total_amount {
+        width: 75px;
+        display: flex;
+        justify-content: flex-end;
+    }
+    .total_return {
+        width: 150px;
+    }
+}
+
+.close_trade_module .form-control,
+.close_trade_module .mat-input-element,
+.disabled {
+    background: #dedede !important;
+    pointer-events: none !important;
+}
+
+.width-70 {
+    width: 70px !important;
+    min-width: 70px !important;
+    max-width: 70px !important;
+}
+
+.card-main-custom {
+    width: 90px !important;
+    min-width: 90px !important;
+    max-width: 90px !important;
+    padding-right: 0 !important;
+    margin-right: 0.5678rem;
+}
+
+.add-options-sec {
+    padding: 0;
+    position: relative;
+    .add-options-header {
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 36px;
+        position: absolute;
+        width: 100px;
+        height: 40px;
+        background: #9DA6BA;
+        top: 0;
+        left: 50%;
+        color: #fff;
+        border-radius: 0 0 6px 6px;
+        margin-left: -50px;
+    }
+    .add-options-body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        min-height: 250px;
+    }
+    .col-form-label {
+        color: #929292;
+        font-size: 15px;
+        font-weight: 500;
+    }
+    .btn-link {
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 24px;
+        text-align: center;
+        color: #2469FF;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+    .mat-expansion-panel {
+        box-shadow: none;
+        margin: 0 !important;
+    }
+    .mat-expansion-panel-header {
+        font-family: Open Sans,sans-serif !important;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 24px;
+        color: #000000;
+        background: transparent !important;
+        padding: 5px 25px !important;
+        height: inherit !important;
+        border: 0;
+        .mat-expansion-panel-header-title {
+            color: #000000;
+        }
+    }
+    .mat-expansion-panel-body {
+        padding: 0 25px !important;
+    }
+}
+@media (max-width:1024px) {
+    
+    .form-control {
+        height: 35px;
+    }
+    .card-main{
+        min-width: 115px !important;
+        max-width: 115px !important;
+        font-size: 12px !important;
+        padding-right: 0.345rem !important;
+    }
+    .card-main-actions {
+        min-width: 100px !important;
+        max-width: 100px !important;
+    }
+    .card-main-custom, .trade-cards-section .card-main-custom {
+        width: 70px !important;
+        min-width: 70px !important;
+        max-width: 70px !important;
+        margin-right: 0 !important;
+        font-size: 12px !important;
+    }
+    .card-main-md {
+        min-width: 70px !important;
+        max-width: 70px !important;
+        font-size: 12px !important;
+    }
+    .mat-icon {
+        height: 20px;
+        width: 18px;
+        font-size: 22px !important;
+    }
+    
+}
+@media #{$extra-small} {
+    .mat-icon-edit {
+        line-height: 16px;
+    }
+    .form-stock-sec {
+        background: #FFFFFF;
+        box-shadow: 0px 4px 16px rgb(157 157 157 / 10%);
+        border-radius: 4px;
+        padding: 15px;
+        margin-top: 20px;
+    }
+    .btn-add {
+        width: 100%;
+        height: 40px;
+        background: #9DA6BA;
+        border-radius: 4px;
+        color: #fff;
+        font-size: 14px;
+        cursor: pointer;
+        font-weight: 400;
+        line-height: 18px;
+        text-align: center;
+    }
+    .show-stock-sec {
+        border-bottom: 1px solid rgb(157 166 186 / 30%);
+        padding-bottom: .5rem;
+        margin-bottom: .5rem;
+    }
+    .col-form-value {
+        font-weight: 600;
+        font-size: 15px;
+        line-height: 21px;
+        color: #2469FF;
+    }
+    .form-stock-value {
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 21px;
+        color: #3B5065;
+    }
+    .trade-edit {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 1;
+        color: #2469FF;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+    }
+    .trade-delete {
+        font-weight: 500;
+        font-size: 16px;
+        line-height:14px;
+        color: #2469FF;
+        cursor: pointer;
+    }
+    .option-leg-form {
+        h3 {
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 24px;
+            color: #2469FF;
+            padding-bottom: .5rem;
+        }
+    }
+    .stock-leg-form {
+        h3 {
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 24px;
+            color: #2469FF;
+            padding-bottom: .5rem;
+        }
+    }
+    
+}
+.assess-risk-btn {
+    border: 3px solid #dee2e6 !important;
+    border-radius: 5px;
+    padding: 0.25rem 0.5rem;
+}
+.input_enanled {
+    background: #fff !important;
+    pointer-events: inherit !important;
+}
+.addnew-trade-header {
+    border-bottom: 1px solid rgb(157 166 186 / 30%);
+    background: #fff;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #000000;
+    h4 {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
+        color: #000000;
+        margin: 0;
+        margin-left:12px;
+    }
+    .widget_item-value {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
+        color: #000000;
+        margin: 0;
+    }
+}
+
+.mat-expansion-panel-body {
+    padding: 0 24px 10px;
+}
+.icon-history {
+    color: #2469FF !important;
+}

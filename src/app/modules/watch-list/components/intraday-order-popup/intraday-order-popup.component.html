@@ -1,0 +1,208 @@
+
+<div class="compare-popup">
+    <div class="example-box" [ngClass]="isMobileDevice ? 'order-popup' : ''">
+        <div class="mobile-header-nav" *ngIf="isMobileDevice">
+            <div class="d-flex align-items-center justify-content-between">
+                <mat-icon class="material-icons mat-icon cursor" (click)="closeModal()">keyboard_backspace</mat-icon>
+                <button *ngIf="data.orderType != 'closed'" type="button" class="button" (click)="orderPlacement(margins)" [ngClass]="margins.transaction_type === 'SELL' ? 'sell' : 'buy' ">Skip and {{margins.transaction_type | titlecase}}</button>
+            </div>
+        </div>
+
+        <div data-drag-boundary="true" class="order-window layer-2 place" [ngClass]="margins.transaction_type === 'SELL' ? 'sell' : 'buy' ">
+            <header>
+                <div class="d-flex align-items-center intraday-modal-header">
+                    <div class="eight columns" [ngClass]="isMobileDevice ? 'w-100' : ''">
+                        <div class="instrument">
+                            {{margins.product === 'MIS' ? 'Intraday' : 'Overnight'}} Order: <span class="transaction-type">{{margins.transaction_type | titlecase}}</span> 
+                            <span class="qty px-1">{{margins.quantity}}</span>
+                            <span class="su-radio-label">Qty of</span>
+                            <span class="tradingsymbol">
+                                <span class="name pl-1">{{margins.tradingSymbolShort}}</span> 
+                            </span>
+                            <span class="px-1">at</span>
+                            <span class="price">{{ country === 'IN' ? '₹' : '$' }}{{ margins.price }}</span>
+                        </div>
+                    </div>
+                    <div class="four columns text-right" *ngIf="!isMobileDevice">
+                        <div class="wrap-right">
+                            <button *ngIf="data.orderType != 'closed'" type="button" class="button button-md button-outline" (click)="orderPlacement(margins)">Skip and {{margins.transaction_type | titlecase}}</button>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            
+            <section class="wrap">
+                <div class="content">
+                    <div class="body">
+                        <div class="row" [ngClass]="isMobileDevice ? 'm-0' : ''">
+                            <div class="col-12 col-md-6 rules-column">
+                                <div class="intraday-panel">
+                                    <div class="intraday-panel-header">Trading Rules</div>
+                                    <div class="intraday-panel-body">
+                                        <div class="tab" role="tabpanel">
+                                            <div class="reports-header">
+                                                <ul class="nav nav-tabs" role="tablist">
+                                                    <li class="active" role="presentation">
+                                                        <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#Automatic" role="tab">Automatic</a>
+                                                    </li>
+                                                    <li role="presentation">
+                                                        <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#Manual" role="tab">Manual</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                
+                                            <div class="tab-content tabs reports-tab-content">
+                                                <div class="tab-pane" id="Manual" role="tabpanel">
+                                                    <div *ngFor="let item of orderRuleDto.orderRules; let index=index">
+                                                        <div *ngIf="item.type==='Manual'" class="d-flex py-2 align-items-center">
+                                                            <div class="col-10">
+                                                                {{item.msg}}
+                                                             
+                                                            </div>
+                                                            <div class="col-2 price text-right">
+                                                                <input type="checkbox" *ngIf="item.type === 'Automatic'" [disabled]="item.type === 'Automatic'" class="custom-checkbox" [ngClass]="{ 'checked': item.aligned, 'cross': !item.aligned }">
+                                                                <input type="checkbox" *ngIf="item.type === 'Manual'" [(ngModel)]="item.aligned"  class="manual-checkbox">
+                                                            </div>
+                
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane active" id="Automatic" role="tabpanel">
+                                                    <div *ngFor="let item of orderRuleDto.orderRules; let index=index">
+                                                        <div *ngIf="item.type==='Automatic'" class="d-flex py-2 align-items-center">
+                                                            <div class="col-10 d-flex align-items-center">
+                                                                <span>{{item.msg}}</span>
+                                                                <mat-chip class="chip {{ item.purpose.toLowerCase().replace(' ', '-') }}">{{item.purpose}}</mat-chip>
+                                                            </div>
+                                                            <div class="col-2 price text-right">
+                                                                <input type="checkbox" *ngIf="item.type === 'Automatic'" [disabled]="item.type === 'Automatic'" class="custom-checkbox" [ngClass]="{ 'checked': item.aligned, 'cross': !item.aligned }">
+                                                                <input type="checkbox" *ngIf="item.type === 'Manual'" [(ngModel)]="item.aligned"  class="manual-checkbox">
+                                                            </div>
+                
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 border-left statistics-column" *ngIf="!isMobileDevice">
+                                <div class="intraday-panel">
+                                    <div class="intraday-panel-header">Historical Statistics</div>
+                                    <div class="intraday-panel-body">
+                                        <div class="d-flex py-2 align-items-center">
+                                            <div class="col-8">Net Return</div>
+                                            <div class="col-4 price text-right">{{stockSummaryResult.realizedReturn}}</div>
+                                        </div>
+                                        <div class="d-flex py-2 align-items-center">
+                                            <div class="col-8">Win Rate</div>
+                                            <div class="col-4 price text-right">{{stockSummaryResult.winRate}}%</div>
+                                        </div>
+                                        <div class="d-flex py-2 align-items-center">
+                                            <div class="col-8">Total Strategies</div>
+                                            <div class="col-4 price text-right">{{stockSummaryResult.totalStrategies}}</div>
+                                        </div>
+                                        <div class="d-flex py-2 align-items-center">
+                                            <div class="col-8">Total Trades</div>
+                                            <div class="col-4 price text-right">{{stockSummaryResult.totalTransactions}}</div>
+                                        </div>
+                                        <div class="d-flex py-2 align-items-center">
+                                            <div class="col-8">Avg Holding Period</div>
+                                            <div class="col-4 price text-right">{{stockSummaryResult.avgHoldingPeriod}}</div>
+                                        </div>
+                                        <div class="d-flex py-2 align-items-center">
+                                            <div class="col-8">Most Successful Strategy</div>
+                                            <div class="col-4 price text-right">{{stockSummaryResult.successStrategy}}</div>
+                                        </div>
+                                        <div class="d-flex py-2 align-items-center">
+                                            <div class="col-8">Highest Return</div>
+                                            <div class="col-4 price text-right">{{stockSummaryResult.highestReturn}}</div>
+                                        </div>
+                                        <div class="d-flex py-2 align-items-center">
+                                            <div class="col-8">Lowest Return</div>
+                                            <div class="col-4 price text-right">{{stockSummaryResult.largestLoss}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="px-3">
+                            <div class="d-flex align-items-center justify-content-between pt-2">
+                                <label class="sub-heading m-0">Add Notes</label>
+                                <div class="text-right">
+                                    <app-trade-tags #tradeTag></app-trade-tags>
+                                </div>
+                            </div>
+                            <textarea class="form-control" rows="4" [(ngModel)]="orderRuleDto.notes"></textarea>
+                        </div>
+
+                        <div class="px-3">
+                            <div class="d-flex align-items-center justify-content-between pt-2">
+                                <label class="sub-heading m-0">Attach Files</label>
+                            
+                                <div class="d-flex align-items-center p-3 text-right actions">
+                                    <!--    <input type="file"> Venkat Commented it -->
+                                    <button type="submit" class="button submit button-md"><span class="text-white">Upload file</span></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="statistics-column" *ngIf="isMobileDevice">
+                            <div class="intraday-panel">
+                                <div class="intraday-panel-header">Historical Statistics</div>
+                                <div class="intraday-panel-body">
+                                    <div class="d-flex py-2 align-items-center">
+                                        <div class="col-8">Net Return</div>
+                                        <div class="col-4 price text-right">{{stockSummaryResult.realizedReturn}}</div>
+                                    </div>
+                                    <div class="d-flex py-2 align-items-center">
+                                        <div class="col-8">Win Rate</div>
+                                        <div class="col-4 price text-right">{{stockSummaryResult.winRate}}%</div>
+                                    </div>
+                                    <div class="d-flex py-2 align-items-center">
+                                        <div class="col-8">Total Strategies</div>
+                                        <div class="col-4 price text-right">{{stockSummaryResult.totalStrategies}}</div>
+                                    </div>
+                                    <div class="d-flex py-2 align-items-center">
+                                        <div class="col-8">Total Trades</div>
+                                        <div class="col-4 price text-right">{{stockSummaryResult.totalTransactions}}</div>
+                                    </div>
+                                    <div class="d-flex py-2 align-items-center">
+                                        <div class="col-8">Avg Holding Period</div>
+                                        <div class="col-4 price text-right">{{stockSummaryResult.avgHoldingPeriod}}</div>
+                                    </div>
+                                    <div class="d-flex py-2 align-items-center">
+                                        <div class="col-8">Most Successful Strategy</div>
+                                        <div class="col-4 price text-right">{{stockSummaryResult.successStrategy}}</div>
+                                    </div>
+                                    <div class="d-flex py-2 align-items-center">
+                                        <div class="col-8">Highest Return</div>
+                                        <div class="col-4 price text-right">{{stockSummaryResult.highestReturn}}</div>
+                                    </div>
+                                    <div class="d-flex py-2 align-items-center">
+                                        <div class="col-8">Lowest Return</div>
+                                        <div class="col-4 price text-right">{{stockSummaryResult.largestLoss}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <footer class="footer">
+                        <div class="text-right actions">
+                            <button type="submit" class="button submit button-md" (click)="orderPlacement(margins)"><span>{{ data.orderType == 'closed' ? 'Update' : (margins.transaction_type | titlecase) }}</span></button>
+                            <button type="button" class="button button-outline cancel button-md" (click)="closeModal()" [ngClass]="isMobileDevice ? '' : 'ml-1'">Cancel</button>
+                        </div>
+                    </footer>
+
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+  

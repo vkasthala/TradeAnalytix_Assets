@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins');
+.custom-calendar {
+    padding: 0;
+    min-height: 400px;
+    // box-shadow: 0px 4px 16px rgba(157, 157, 157, 0.4);
+    // border: 1px solid rgba(16, 92, 159, 0.15);
+    border-radius: 12px;
+    // border: 0.5px solid #ccc;  
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        border-left: 1px solid #dee2e6;
+        background-color: #f9faff;  //Changed background color from #ffffff to #f9faff
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        // border: 0.5px solid #ccc;
+        display: flex;
+        flex-wrap: wrap;
+        li {
+            border: 1px solid #dee2e6;
+            display: inline-flex;
+            width: 14.2857%;
+            max-width: 14.2857%;
+            flex: 0 0 14.2857%;
+            border-left: 0;
+            border-top: 0;
+            font-size: 16px;
+            height: 63px;
+            position: relative;
+            justify-content: center;
+            align-items: center;
+            padding: 5px;
+            flex-direction: column;
+            line-height: 1.5;
+            color: #000000;
+        }
+        li.days {
+            border-top: 1px solid #dee2e6;
+            height: 40px;
+            justify-content: center;
+            align-items: center;
+            font-weight: 500;
+            font-size: 16px;
+        }
+        .default_day {
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #7f8da9;
+            color: #fff;
+            border-radius: 0 0 15px 0;
+            width: 40px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            height: 40px;
+            line-height: 25px;
+            padding-top: 7px;
+            font-size: 16px;
+        }
+        .working_day {
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #12B76A;
+            color: #fff;
+            border-radius: 0 0 15px 0;
+            width: 40px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            height: 40px;
+            line-height: 25px;
+        }
+        .negitive_return {
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #E0261A;
+            color: #fff;
+            border-radius: 0 0 15px 0;
+            width: 40px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            height: 40px;
+            line-height: 25px;
+        }
+    }
+}
+.returnAmount {
+    text-align: right;
+    min-height: 6px;
+    font-size: 16px;
+    margin:16px;          //Added this to adjust the formatting of return amount and trade count in calendar report
+}

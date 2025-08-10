@@ -1,0 +1,23 @@
+<div class="compare-popup">
+    <div class="compare-pop-inner">
+        <div class="top-pop-inner">
+            <div class="left-heading">
+                <h6>Comment</h6>
+            </div>
+            <div class="right-close" (click)="closeModal()">
+                <mat-icon>clear</mat-icon>
+            </div>
+        </div>
+
+        <div class="main-pop-inner">
+            <div class="pb-1">
+                <textarea rows="2" class="form-control" [(ngModel)]="data.comment"></textarea>
+            </div>
+
+            <div class="btn-up mb-0">
+                <button type="button" class="btn btn-add" [mat-dialog-close]="data">Save</button>
+            </div>
+        </div>
+
+    </div>
+</div>

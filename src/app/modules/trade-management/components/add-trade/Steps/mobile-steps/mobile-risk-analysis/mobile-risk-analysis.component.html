@@ -1,0 +1,150 @@
+<!-- step-third -->
+<div class="container">
+  <div class="new-step-third">
+    <div class="trade-stategy-heading">
+      <h6>
+        Provide inputs for Strategy Builder simulation
+      </h6>
+    </div>
+
+    <div class="stock-price-sec">
+      <div class="left-stock-con">
+        <p>
+          Stock Price Range
+        </p>
+      </div>
+      <div class="right-stock-price">
+        <div class="stock-price-box">
+          <a (click)="decreaseStockPriceStartRange()">
+            <img alt="" src="../../../../../assets/images/icon/Group 359.png" />
+          </a>
+          <div class="stock-p"> 
+            <input type="number" class="hide-bars"  [(ngModel)]="stockPriceStartRange"><p>&#37;</p>
+
+          </div>
+          <a (click)="increaseStockPriceStartRange()">
+            <img alt="" src="../../../../../assets/images/icon/Group 360.png" />
+          </a>
+        </div>
+
+        <div class="stock-price-box box-m">
+          <a (click)="decreaseStockPriceEndRage()">
+            <img alt="" src="../../../../../assets/images/icon/Group 359.png" />
+          </a>
+          <div class="stock-p">
+            <input type="number" class="hide-bars"  [(ngModel)]="stockPriceEndRange"><p>&#37;</p>
+          </div>
+          <a (click)="increaseStockPriceEndRange()">
+            <img alt="" src="../../../../../assets/images/icon/Group 360.png" />
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="trad-border"></div>
+
+    <div class="stock-price-sec">
+      <div class="left-stock-con">
+        <p>
+          Target Date
+        </p>
+      </div>
+      <div class="right-stock-price">
+        <div class="form-group">
+          <input class="form-control" placeholder="05-May-2020" type="date" />
+        </div>
+      </div>
+    </div>
+
+    <div class="trad-border"></div>
+
+    <div class="stock-options-choose">
+      <div class="option-heading">
+        <div class="top-q">
+          <span>
+            Qty
+          </span>
+        </div>
+
+        <div class="top-qt">
+          <span>
+            Days Left
+          </span>
+        </div>
+
+        <div class="top-qt">
+          <span>
+            Imp.Vol(%)
+          </span>
+        </div>
+      </div>
+
+
+      <ng-container *ngFor="let item of stockOptions; let i=index">
+        <div class="option-select">
+          <div class="left-stock-option">
+            <p>
+              {{item.title}}
+            </p>
+          </div>
+  
+          <div class="right-stock-option">
+            <div class="firstqt">
+              <div class="form-group">
+                <input class="form-control" type="number" [(ngModel)]="item.quantity" />
+              </div>
+            </div>
+            <div class="first-qt">
+              <div class="stock-price-box">
+                <a (click)="decreaseDaysLeft(i)">
+                  <img
+                    alt=""
+                    src="../../../../../assets/images/icon/Group 359.png"
+                  />
+                </a>
+                <span> 
+                  <input (keydown)="preventNegatives($event, true)" type="number" class="hide-bars" [(ngModel)]="item.daysLeft">
+                </span>
+                <a (click)="increaseDaysLeft(i)">
+                  <img
+                    alt=""
+                    src="../../../../../assets/images/icon/Group 360.png"
+                  />
+                </a>
+              </div>
+            </div>
+            <div class="first-qt">
+              <div class="stock-price-box">
+                <a (click)="decreaseImpliedValue(i)">
+                  <img
+                    alt=""
+                    src="../../../../../assets/images/icon/Group 359.png"
+                  />
+                </a>
+                <div class="stock-p"> 
+                  <input (keydown)="preventNegatives($event, true)" type="number" class="hide-bars" [(ngModel)]="item.impliedValue"><p>&#37;</p>
+  
+                </div>
+                <a (click)="increaseImpliedValue(i)">
+                  <img
+                    alt=""
+                    src="../../../../../assets/images/icon/Group 360.png"
+                  />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="trad-border" *ngIf="i != stockOptions.length"></div>
+      </ng-container>
+      
+      <br>
+      <a class="btn btn-add" (click)="next()"> ANALYZE</a>
+
+      <div class="trade-btn-p">
+        <a class="btn-pre" (click)="previous()">Previous</a>
+        <a class="btn-pre" (click)="skipRiskAnalysis()">Skip Strategy Builder</a>
+      </div>
+    </div>
+  </div>
+</div>

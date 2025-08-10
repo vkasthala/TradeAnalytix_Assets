@@ -1,0 +1,24 @@
+<div class="custom-calendar">
+    <ul class="custom-calendar-header">
+        <li class="days" *ngFor="let day of calendarDays">{{day}}</li>
+    </ul>
+    <ul class="custom_dates">
+        <li *ngFor="let date of calendarDates">
+            <span *ngIf="date.day" [ngClass]="{'default_day' : date.day, 'abc' : !date.returnAmount, 'working_day' : date.returnAmount > 0,  'negitive_return' : date.returnAmount < 0 }">{{date.day}}</span>
+            <p class="w-100 returnAmount" *ngIf="isUsInstances">
+                <span *ngIf="date.returnAmount">{{date.returnAmount | currency:"$"}}</span>
+                <span *ngIf="!date.returnAmount">$: 0</span>
+            </p>
+
+            <p class="w-100 returnAmount" *ngIf="!isUsInstances">
+                <!-- <img src="../../../../../assets/img/rupee.png" />: {{date.returnAmount | number:'1.0-0' }} -->
+                {{date.returnAmount | number:'1.0-0' }}
+                <span *ngIf="!date.returnAmount && date.day"> 0</span>
+            </p>
+            <p class="w-100 text-right">
+                <span *ngIf="date.tradeCount && date.tradeCount > 0">Trades: {{date.tradeCount}}</span>
+                <span *ngIf="!date.tradeCount && date.tradeCount == 0">Trades: 0</span>
+            </p>
+        </li>
+    </ul>
+</div>

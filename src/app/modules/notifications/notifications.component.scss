@@ -1,0 +1,105 @@
+@import "../../../assets/styles/variable.scss";
+
+mat-table {
+  width: 100%;
+}
+
+th.mat-header-cell {
+  background: #979797;
+  color: #fff;
+  font-size: 15px;
+  border-bottom: 1px solid #dee2e6;
+  font-weight: 600;
+  flex: 0 0 10% !important;
+  min-width: 100px !important;
+  width: 10%;
+}
+
+.mat-row:nth-child(even){
+  background-color: transparent;
+  border: 0;
+}
+
+.mat-row:nth-child(odd){
+  
+  background-color: transparent;
+  border: 0;
+}
+
+.date-cell{
+  width: 10%;
+  flex: 0 0 10% !important;
+  min-width: 80px !important;
+  
+}
+.mat-column-date-cell {
+  flex: 0 0 25% !important;
+  min-width: 100px !important;
+  @media #{$extra-small} {
+    width: 30%;
+    flex: 0 0 30% !important;
+    min-width: inherit !important;
+  }
+}
+.notification-cell{
+  width: 75%;
+  flex: 0 0 75% !important;
+  min-width: 400px !important;
+  text-align: left;
+  justify-content: start;
+  @media #{$extra-small} {
+    width: 51%;
+    flex: 0 0 51% !important;
+    min-width: inherit !important;
+  }
+}
+
+
+.action-cell {
+  width: 15%;
+  flex: 0 0 15% !important;
+  min-width: 100px !important;
+  @media #{$extra-small} {
+    width: 20%;
+    flex: 0 0 20% !important;
+    min-width: inherit !important;
+  }
+}
+.mat-column-notification-cell {
+  flex: 0 0 60% !important;
+  min-width: 400px !important;
+}
+
+
+.action_colum{
+  width: 15%;
+  flex: 0 0 15% !important;
+  min-width: 100px !important;
+  position: relative;
+  @media #{$extra-small} {
+    width: 20%;
+    flex: 0 0 20% !important;
+    min-width: inherit !important;
+  }
+}
+
+
+.trade-edit {
+  color: #9DA6BA;
+}
+.trade-close {
+  color: #EC6B56;
+}
+.trade-delete {
+  color: #2469FF;
+}
+.trade-view {
+  color: #2469FF;
+}
+
+.text-success {
+  color: #2469FF !important;
+}
+.text-primary {
+  color: #0190CA !important;
+}

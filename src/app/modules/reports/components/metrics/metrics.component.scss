@@ -1,0 +1,148 @@
+.metrics-body {
+  padding: 20px;
+  background-color: #ffff;
+}
+
+.metric-group {
+  margin-bottom: 30px;
+}
+
+.group-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 15px;
+}
+
+.group-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.metric-card {
+  background-color: #f9faff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.metric-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.metric-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: #242E3A;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.metric-value {
+  font-size: 22px;
+  font-weight: 500;
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 5px;
+  gap: 5px;
+  text-align: center;
+}
+
+.metric-value.positive {
+  color: #28a745; /* Green for positive values */
+}
+
+.metric-value.negative {
+  color: #dc3545; /* Red for negative values */
+}
+
+.metric-value.always-green {
+  color: #28a745; /* Green for Most Profitable Symbol */
+}
+
+.metric-value.always-red {
+  color: #dc3545; /* Red for Least Profitable Symbol */
+}
+
+/* Retaining commented CSS for reference */
+/*
+.metrics-header {
+border-bottom: 1px solid #B9B7B7;
+padding: 15px;
+color: #000000;
+font-weight: 500;
+font-size: 16px;
+}
+
+.metrics-title {
+color: #000000;
+font-weight: 600;
+font-size: 16px;
+margin-top: 1rem;
+}
+
+.trade-date .mydrp, .mydrp .headerclearbtn, .mydrp .headerokbtn {
+  border: 1px solid #37a01a !important;
+  border-radius: 0 !important;
+}
+
+.metrics-body {
+padding: 0 25px;
+color: #000000;
+font-weight: 500;
+font-size: 16px;
+padding-bottom: 20px;
+}
+.page-nav {
+padding: 0 1rem;
+font-weight: 600;
+font-size: 16px;
+line-height: 40px;
+color: #0066FF;
+}
+.page-nav-item {
+color: #0066FF;
+margin: 0 1rem;
+}
+.metrics-column {
+border-left: 1px solid rgb(185 183 183 / 39%);
+}
+.metrics-column:first-child {
+border-left: 0;
+}
+.metrics-footer {
+border-top: 1px solid #B9B7B7;
+text-align: center;
+font-weight: 600;
+font-size: 16px;
+line-height: 40px;
+color: #0066FF;
+padding: 15px;
+position: relative;
+}
+.metrics-row {
+padding-top: 0.345rem !important;
+padding-bottom: 0.345rem !important;
+display: flex;
+margin-left: 5px;
+}
+.metrics-row:nth-child(even) {background-color: rgb(255 255 255 / 90%);}
+.metrics-row:nth-child(odd) {background-color: rgb(219 219 219 / 30%);}
+
+.less-metrics {
+display: flex;
+width: 100%;
+flex-direction: column;
+max-height: 20px;
+transition: max-height 5s ease-in;
+}
+.more-metrics {
+transition: max-height 5s ease-in;
+}
+*/

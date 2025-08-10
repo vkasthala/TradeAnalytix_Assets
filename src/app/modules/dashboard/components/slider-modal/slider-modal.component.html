@@ -1,0 +1,371 @@
+<!-- <div class="compare-popup" *ngIf="currentInd == 0">
+    <div class="compare-pop-inner">
+        <div class="slider-header">
+            <h3 class="slider-title">{{data[currentInd].title}}</h3>
+            <h3 class="slider-title">Welcome {{userName}}</h3>
+            <span class="right-close" (click)="closeModal()">
+                <mat-icon>clear</mat-icon>
+            </span>
+        </div>
+        <div class="main-pop-inner">
+            <div class="slider-description" [innerHTML]="data[currentInd].description"></div> 
+            <p *ngIf="data[currentInd].imgUrl"><img class="slider-img" src="{{data[currentInd].imgUrl}}" /></p>
+           
+            <div *ngIf="currentInd == 0">
+                <div class="slider-description">
+                    CueTrade is a new age trading journal that helps you make better, more informed decisions based on strong rationale and data.
+                </div>
+                <div class="slider-description mb-3 py-3">
+                    Most of the people investing or trading actively in the financial markets end up on the losing side mainly due to indiscipline.
+                </div>
+                <iframe width="720" height="400" src="https://www.youtube.com/embed/42FLXxQa4H4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="modal-footer py-1 justify-content-center">
+            <button type="button" class="btn btn-next" (click)="nextSlide()">Start tour</button>
+            <button type="button" class="btn btn-white" (click)="closeModal()">Close</button>
+        </div>
+    </div>
+</div> -->
+
+<!-- <div class="compare-popup guided-tour-modal1" *ngIf="currentInd == 1">
+    <div class="compare-pop-inner">
+        <div class="slider-header">
+            <h3 class="slider-title">What is CueTrade?</h3>
+            <span class="right-close" (click)="closeModal()">
+                <mat-icon>clear</mat-icon>
+            </span>
+        </div>
+        <div class="main-pop-inner">
+            <div class="slider-description mb-1">
+                CueTrade is a new age trade planner, journal and decision support tool for retail investors and traders.<br/><br/>
+                The app provides you with the perspective to plan your trades, journal your trades and analyze the data to find out your strengths and limitations as a trader and make informed decisions.
+            </div>
+        </div>
+
+        <div class="modal-footer py-1 justify-content-center">
+            <button type="button" class="btn btn-white" (click)="priviousSlide()">Previous</button>
+            <button type="button" class="btn btn-next" (click)="nextSlide()">Next</button>
+        </div>
+    </div>
+</div> -->
+
+    <!-- <div class="compare-popup trade-planner-slider" *ngIf="currentInd == 1">
+        <div class="compare-pop-inner">
+            <div class="slider-header">
+                <h3 class="slider-title">CueTrade as a Trade Planner</h3>
+                <span class="right-close" (click)="closeModal()">
+                    <mat-icon>clear</mat-icon>
+                </span>
+            </div>
+            <div class="main-pop-inner">
+                <div class="slider-description mb-1">
+                    Users can plan their trades in CueTrade before executing the trades in the brokerage platforms. Such planning gives you an advantage in making a trade decision and helps you avoid mistakes due to emotions.
+                </div>
+                <div class="slider-banner">
+                    <img src="../../../../../assets/images/trade-planner-final.svg" />
+                </div>
+            </div>
+
+            <div class="modal-footer py-1 justify-content-center">
+                <button type="button" class="btn btn-white" (click)="priviousSlide()">Previous</button>
+                <button type="button" class="btn btn-next" (click)="nextSlide()">Next</button>
+            </div>
+        </div>
+    </div> -->
+<!-- <div class="compare-popup trade-planner-slider" *ngIf="currentInd == 3">
+    <div class="compare-pop-inner">
+        <div class="slider-header">
+            <h3 class="slider-title">CueTrade as a Trade Journal</h3>
+            <span class="right-close" (click)="closeModal()">
+                <mat-icon>clear</mat-icon>
+            </span>
+        </div>
+        <div class="main-pop-inner">
+            <div class="slider-description mb-1">
+                Users can journal their trades in CueTrade after executing the trades in the brokerage platforms. Trades can be added either individually or in bulk by importing trade history files. 
+            </div>
+            <div class="slider-banner">
+                <img src="../../../../../assets/images/trade-journal.svg" />
+            </div>
+        </div>
+
+        <div class="modal-footer py-1 justify-content-center">
+            <button type="button" class="btn btn-white" (click)="priviousSlide()">Previous</button>
+            <button type="button" class="btn btn-next" (click)="nextSlide()">Next</button>
+        </div>
+    </div>
+</div> -->
+
+<div class="compare-popup top-pointer-modal demo-tour-slider" *ngIf="currentInd == 1">
+    <div class="compare-pop-inner">
+        <div class="slider-header">
+            <h3 class="slider-title">Demo Mode</h3>
+            <span class="right-close" (click)="closeModal()">
+                <mat-icon>clear</mat-icon>
+            </span>
+        </div>
+        <div class="main-pop-inner">
+            <div class="slider-description mb-1">
+                Turn on the demo mode to explore the simulated data loaded throughout the application and experience CueTrade's benefits firsthand.
+            </div>
+        </div>
+
+        <div class="modal-footer py-1 justify-content-center">
+            <button type="button" class="btn btn-white" (click)="priviousSlide()">Previous</button>
+            <button type="button" class="btn btn-next" (click)="nextSlide()">Next</button>
+        </div>
+    </div>
+</div>
+
+<div class="compare-popup left-pointer-modal strategy-comparison-slider" *ngIf="currentInd == 2">
+    <div class="compare-pop-inner">
+        <div class="slider-header">
+            <h3 class="slider-title">Daily Plan</h3>
+            <span class="right-close" (click)="closeModal()">
+                <mat-icon>clear</mat-icon>
+            </span>
+        </div>
+        <div class="main-pop-inner">
+            <div class="slider-description mb-1">
+                Create a daily trading plan or access past trade plans.
+            </div>
+        </div>
+
+        <div class="modal-footer py-1 justify-content-center">
+            <button type="button" class="btn btn-white" (click)="priviousSlide()">Previous</button>
+            <button type="button" class="btn btn-next" (click)="nextSlide()">Next</button>
+        </div>
+    </div>
+</div>
+
+<div class="compare-popup left-pointer-modal add-trade-slider" *ngIf="currentInd == 3">
+    <div class="compare-pop-inner">
+        <div class="slider-header">
+            <h3 class="slider-title">Trade Builder</h3>
+            <span class="right-close" (click)="closeModal()">
+                <mat-icon>clear</mat-icon>
+            </span>
+        </div>
+        <div class="main-pop-inner">
+            <div class="slider-description mb-1">
+                Build trades and analyze them considering aspects such as risk, statistical data, logical reasoning, and trading rules.
+            </div>
+        </div>
+
+        <div class="modal-footer py-1 justify-content-center">
+            <button type="button" class="btn btn-white" (click)="priviousSlide()">Previous</button>
+            <button type="button" class="btn btn-next" (click)="nextSlide()">Next</button>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="compare-popup left-pointer-modal risk-analysis-slider" *ngIf="currentInd == 4">
+    <div class="compare-pop-inner">
+        <div class="slider-header">
+            <h3 class="slider-title">Payoff Analyzer</h3>
+            <span class="right-close" (click)="closeModal()">
+                <mat-icon>clear</mat-icon>
+            </span>
+        </div>
+        <div class="main-pop-inner">
+            <div class="slider-description mb-1">
+                Analyze the payoff of option trades with varying stock prices, implied volatility, and days left for expiration.
+            </div>
+        </div>
+
+        <div class="modal-footer py-1 justify-content-center">
+            <button type="button" class="btn btn-white" (click)="priviousSlide()">Previous</button>
+            <button type="button" class="btn btn-next" (click)="nextSlide()">Next</button>
+        </div>
+    </div>
+</div> -->
+
+<div class="compare-popup left-pointer-modal import-trade-slider" *ngIf="currentInd == 4">
+    <div class="compare-pop-inner">
+        <div class="slider-header">
+            <h3 class="slider-title">Import Trades</h3>
+            <span class="right-close" (click)="closeModal()">
+                <mat-icon>clear</mat-icon>
+            </span>
+        </div>
+        <div class="main-pop-inner">
+            <div class="slider-description mb-1">
+                Upload trade history files downloaded from your brokerages to add multiple trades at once.
+            </div>
+        </div>
+
+        <div class="modal-footer py-1 justify-content-center">
+            <button type="button" class="btn btn-white" (click)="priviousSlide()">Previous</button>
+            <button type="button" class="btn btn-next" (click)="nextSlide()">Next</button>
+        </div>
+    </div>
+</div>
+
+<div class="compare-popup left-pointer-modal trade-book" *ngIf="currentInd == 5">
+    <div class="compare-pop-inner">
+        <div class="slider-header">
+            <h3 class="slider-title">Positions</h3>
+            <span class="right-close" (click)="closeModal()">
+                <mat-icon>clear</mat-icon>
+            </span>
+        </div>
+        <div class="main-pop-inner">
+            <div class="slider-description mb-1">
+                Revisit your executed trades here. Journal your trades with comprehensive details and ensure they adhere to the trading rules.
+            </div>
+        </div>
+
+        <div class="modal-footer py-1 justify-content-center">
+            <button type="button" class="btn btn-white" (click)="priviousSlide()">Previous</button>
+            <button type="button" class="btn btn-next" (click)="nextSlide()">Next</button>
+        </div>
+    </div>
+</div>
+<!-- <div class="compare-popup left-pointer-modal bulkUpdate" *ngIf="currentInd == 7">
+    <div class="compare-pop-inner">
+        <div class="slider-header">
+            <h3 class="slider-title">Bulk Journal</h3>
+            <span class="right-close" (click)="closeModal()">
+                <mat-icon>clear</mat-icon>
+            </span>
+        </div>
+        <div class="main-pop-inner">
+            <div class="slider-description mb-1">
+                Easily input notes for multiple trades simultaneously using an intuitive user interface similar to Excel.
+            </div>
+        </div>
+
+        <div class="modal-footer py-1 justify-content-center">
+            <button type="button" class="btn btn-white" (click)="priviousSlide()">Previous</button>
+            <button type="button" class="btn btn-next" (click)="nextSlide()">Next</button>
+        </div>
+    </div>
+</div> -->
+
+<div class="compare-popup left-pointer-modal reports-slider" *ngIf="currentInd == 6">
+    <div class="compare-pop-inner">
+        <div class="slider-header">
+            <h3 class="slider-title">Reports</h3>
+            <span class="right-close" (click)="closeModal()">
+                <mat-icon>clear</mat-icon>
+            </span>
+        </div>
+        <div class="main-pop-inner">
+            <div class="slider-description mb-1">
+                Access in-depth statistics and reports generated from your trading history.
+            </div>
+        </div>
+
+        <div class="modal-footer py-1 justify-content-center">
+            <button type="button" class="btn btn-white" (click)="priviousSlide()">Previous</button>
+            <button type="button" class="btn btn-next" (click)="nextSlide()">Next</button>
+        </div>
+    </div>
+</div>
+
+<div class="compare-popup left-pointer-modal trading-rules-slider" *ngIf="currentInd == 7">
+    <div class="compare-pop-inner">
+        <div class="slider-header">
+            <h3 class="slider-title">Trading Rules</h3>
+            <span class="right-close" (click)="closeModal()">
+                <mat-icon>clear</mat-icon>
+            </span>
+        </div>
+        <div class="main-pop-inner">
+            <div class="slider-description mb-1">
+                Establish trading rules or guidelines that you want all your trades to follow.
+            </div>
+        </div>
+
+        <div class="modal-footer py-1 justify-content-center">
+            <button type="button" class="btn btn-white" (click)="priviousSlide()">Previous</button>
+            <button type="button" class="btn btn-next" (click)="nextSlide()">Next</button>
+        </div>
+    </div>
+</div>
+<div class="compare-popup top-pointer-modal insights-slider" *ngIf="currentInd == 8">
+    <div class="compare-pop-inner">
+        <div class="slider-header">
+            <h3 class="slider-title">Insights</h3>
+            <span class="right-close" (click)="closeModal()">
+                <mat-icon>clear</mat-icon>
+            </span>
+        </div>
+        <div class="main-pop-inner">
+            <div class="slider-description mb-1">
+                Gain valuable insights on your trades.
+            </div>
+        </div>
+
+        <div class="modal-footer py-1 justify-content-center">
+            <button type="button" class="btn btn-white" (click)="priviousSlide()">Previous</button>
+            <button type="button" class="btn btn-next" (click)="nextSlide()">Next</button>
+        </div>
+    </div>
+</div>
+<!-- <div class="compare-popup top-pointer-modal notifications-slider" *ngIf="currentInd == 11">
+    <div class="compare-pop-inner">
+        <div class="slider-header">
+            <h3 class="slider-title">Notifications</h3>
+            <span class="right-close" (click)="closeModal()">
+                <mat-icon>clear</mat-icon>
+            </span>
+        </div>
+        <div class="main-pop-inner">
+            <div class="slider-description mb-1">
+                Click here to view all the notifications issued to you based on your trading rules.
+            </div>
+        </div>
+
+        <div class="modal-footer py-1 justify-content-center">
+            <button type="button" class="btn btn-white" (click)="priviousSlide()">Previous</button>
+            <button type="button" class="btn btn-next" (click)="nextSlide()">Next</button>
+        </div>
+    </div>
+</div> -->
+<div class="compare-popup top-pointer-modal demo-tour-slider" *ngIf="currentInd == 9">
+    <div class="compare-pop-inner">
+        <div class="slider-header">
+            <h3 class="slider-title">Settings</h3>
+            <span class="right-close" (click)="closeModal()">
+                <mat-icon>clear</mat-icon>
+            </span>
+        </div>
+        <div class="main-pop-inner">
+            <div class="slider-description mb-1">
+                Set your trading goals and personalize the data in the trading journal template.
+            </div>
+        </div>
+
+        <div class="modal-footer py-1 justify-content-center">
+            <button type="button" class="btn btn-next" (click)="priviousSlide()">Previous</button>
+            <button type="button" class="btn btn-white" (click)="closeModal()">Close</button>
+        </div>
+    </div>
+</div>
+<!-- <div class="compare-popup top-pointer-modal help-slider" *ngIf="currentInd == 13">
+    <div class="compare-pop-inner">
+        <div class="slider-header">
+            <h3 class="slider-title">Help</h3>
+            <span class="right-close" (click)="closeModal()">
+                <mat-icon>clear</mat-icon>
+            </span>
+        </div>
+        <div class="main-pop-inner">
+            <div class="slider-description mb-1">
+                Click here to view how-to manual and videos on each feature.
+            </div>
+        </div>
+
+        <div class="modal-footer py-1 justify-content-center">
+            <button type="button" class="btn btn-next" (click)="priviousSlide()">Previous</button>
+            <button type="button" class="btn btn-white" (click)="closeModal()">Close</button>
+        </div>
+    </div>
+</div> -->
+
+
+    
+    

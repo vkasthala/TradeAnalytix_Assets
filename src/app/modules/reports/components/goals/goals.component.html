@@ -1,0 +1,82 @@
+<div class="trade-risk-tabs">
+    <div class="tab vertical-tabs" role="tabpanel">
+        <ul class="nav nav-tabs v-tabs" role="tablist">
+            <li class="active" role="presentation">
+                <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#MaxRiskandProﬁt" role="tab" (click)="getRiskItems()">Value at Risk and Proﬁt</a>
+            </li>
+            <li class="" role="presentation">
+                <a aria-controls="profile" aria-expanded="false" data-toggle="tab" href="#NetR" role="tab" (click)="getNetRItems()">Net R</a>
+            </li> 
+        </ul>
+        <div class="tab-content tabs">
+            <div class="tab-pane active" id="MaxRiskandProﬁt" role="tabpanel">
+                <div class="risk-manage-sec">
+                    <div class="top-sec">
+                        <div class="px-3">
+                            Filter By Date
+                        </div>
+                        <div class="trade-date">
+                            <div class="form-group">
+                                <div class='input-group date' id='datetimepicker1'>
+                                    <my-date-range-picker placeholder="Date range" name="mydaterange"
+                                        [options]="myDateRangePickerOptions"></my-date-range-picker>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- cards -->
+                    <app-reportsitems [reportsitems]="reportsitems"></app-reportsitems>
+
+                    <!-- risk-nalytics -->
+                    <div class="trade-dash-con">
+                        <div class="trade-analytics">
+                            <div class="trade-headiang">
+                                <h5>Maximum Risk and Proﬁt Potential</h5>
+                            </div>
+                            <div class="dsh-img reports-chart">
+                                <img src="../../../../assets/images/risk/Group 305.png" alt="" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end:  Overview -->
+
+            <div class="tab-pane fade" id="NetR" role="tabpanel">
+                <div class="risk-manage-sec">
+                    <div class="top-sec">
+                        <div class="px-3">
+                            Filter By Date
+                        </div>
+                        <div class="trade-date">
+                            <div class="form-group">
+                                <div class='input-group date' id='datetimepicker1'>
+                                    <my-date-range-picker placeholder="Date range" name="mydaterange"
+                                        [options]="myDateRangePickerOptions"></my-date-range-picker>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- cards -->
+                    <app-reportsitems [reportsitems]="reportsitems"></app-reportsitems>
+
+                    <!-- risk-nalytics -->
+                    <div class="trade-dash-con">
+                        <div class="trade-analytics">
+                            <div class="trade-headiang">
+                                <h5>Net R</h5>
+                            </div>
+                            <div class="dsh-img reports-chart">
+                                <img src="../../../../assets/images/risk/Group 305.png" alt="" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end:  Strategy Type -->
+
+        </div>
+    </div>
+</div>

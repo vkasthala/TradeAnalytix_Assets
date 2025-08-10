@@ -1,0 +1,456 @@
+
+<nav class="cue-navbar">
+    <div class="container">
+        <div class="nav-content">
+            <div class="cue-logo">
+                <a [routerLink]="['/landing']">
+                    <img src="../../../../assets/img/cuetrade-logo.svg" alt="CueTrade">
+                </a>
+            </div>
+            <div class="nav-links" [ngClass]="hamburgerMenu ? 'nav-links-open' : ''">
+                <a [routerLink]="['/landing']" class="nav-link">Home</a>
+                <a href="/landing#how-it-works" class="nav-link">How it Works</a>
+                <a href="/landing#benefits" class="nav-link">Features</a>
+                <a href="/landing#faqs" class="nav-link">FAQs</a>
+                <button type="button" class="btn btn-success" (click)="login('google')">Start Free Today</button>
+            </div>
+            <button class="hamburger-menu" (click)="menuToggle()" [ngClass]="hamburgerMenu ? 'hamburger-open' : ''">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<div class="terms-container">
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="terms-hero">
+            <h1 class="terms-title">Terms of Service</h1>
+            <div class="terms-meta">
+                <span class="effective-date">Effective Date: January 1, 2025</span>
+                <span class="last-updated">Last Updated: January 1, 2025</span>
+            </div>
+        </div>
+
+        <!-- Important Notice -->
+        <div class="disclaimer-banner">
+            <div class="disclaimer-icon">⚠️</div>
+            <div class="disclaimer-content">
+                <h3>Important Notice - Individual Developer Project</h3>
+                <p><strong>CueTrade is operated by an individual developer as a personal project for concept validation, not by a registered financial institution or corporation.</strong></p>
+                <div class="disclaimer-points">
+                    <div class="point">
+                        <span class="bullet">•</span>
+                        <span><strong>Not a Registered Investment Advisor:</strong> We do not provide investment advice, recommendations, or financial planning services.</span>
+                    </div>
+                    <div class="point">
+                        <span class="bullet">•</span>
+                        <span><strong>Educational Tool Only:</strong> This platform is for trade journaling and analysis - not for executing trades or managing investments.</span>
+                    </div>
+                    <div class="point">
+                        <span class="bullet">•</span>
+                        <span><strong>No Corporate Infrastructure:</strong> Limited support, compliance, and regulatory oversight compared to institutional providers.</span>
+                    </div>
+                    <div class="point">
+                        <span class="bullet">•</span>
+                        <span><strong>Use at Your Own Risk:</strong> Users assume all risks associated with using this experimental platform.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Menu -->
+        <div class="terms-nav">
+            <div class="nav-item"><a href="#acceptance">1. Acceptance</a></div>
+            <div class="nav-item"><a href="#services">2. Services</a></div>
+            <div class="nav-item"><a href="#user-accounts">3. User Accounts</a></div>
+            <div class="nav-item"><a href="#financial-disclaimer">4. Financial Disclaimer</a></div>
+            <div class="nav-item"><a href="#data-security">5. Data Security</a></div>
+            <div class="nav-item"><a href="#user-conduct">6. User Conduct</a></div>
+            <div class="nav-item"><a href="#intellectual-property">7. Intellectual Property</a></div>
+            <div class="nav-item"><a href="#privacy">8. Privacy</a></div>
+            <div class="nav-item"><a href="#disclaimers">9. Disclaimers</a></div>
+            <div class="nav-item"><a href="#limitation-liability">10. Limitation of Liability</a></div>
+            <div class="nav-item"><a href="#indemnification">11. Indemnification</a></div>
+            <div class="nav-item"><a href="#termination">12. Termination</a></div>
+            <div class="nav-item"><a href="#governing-law">13. Governing Law</a></div>
+            <div class="nav-item"><a href="#changes">14. Changes to Terms</a></div>
+            <div class="nav-item"><a href="#contact">15. Contact Information</a></div>
+        </div>
+
+        <!-- Terms Content -->
+        <div class="terms-content">
+            <!-- Section 1: Acceptance -->
+            <section id="acceptance" class="terms-section">
+                <h2>1. Acceptance of Terms</h2>
+                <p>By accessing or using CueTrade ("Service", "Platform", "Application"), you agree to be bound by these Terms of Service ("Terms"). If you disagree with any part of these terms, you may not access the Service.</p>
+                <p>These Terms constitute a legally binding agreement between you and CueTrade. Your use of the Service confirms your acceptance of these Terms and our Privacy Policy.</p>
+            </section>
+
+            <!-- Section 2: Services -->
+            <section id="services" class="terms-section">
+                <h2>2. Description of Services</h2>
+                <div class="subsection">
+                    <h3>2.1 Core Services</h3>
+                    <p>CueTrade provides:</p>
+                    <ul class="styled-list">
+                        <li>Trade journaling and documentation tools</li>
+                        <li>Trading performance analytics and reporting</li>
+                        <li>Trade import and synchronization capabilities</li>
+                        <li>Educational content and trading plan templates</li>
+                        <li>Risk analysis and payoff visualization tools</li>
+                    </ul>
+                </div>
+                
+                <div class="subsection">
+                    <h3>2.2 Service Limitations - Individual Developer Project</h3>
+                    <ul class="styled-list">
+                        <li>We do not execute trades or hold financial instruments</li>
+                        <li>We do not provide investment advice or recommendations</li>
+                        <li>We are not a registered broker-dealer or investment advisor</li>
+                        <li><strong>No Service Guarantees:</strong> Service availability is not guaranteed and may be interrupted or permanently discontinued at any time</li>
+                        <li><strong>No Support Team:</strong> Technical support is provided on a best-effort basis by a single individual with no guaranteed response times</li>
+                        <li><strong>No Backup Infrastructure:</strong> Limited disaster recovery capabilities may result in permanent data loss</li>
+                        <li><strong>Personal Project Status:</strong> This service may be discontinued without notice if it becomes unsustainable as an individual project</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Section 3: User Accounts -->
+            <section id="user-accounts" class="terms-section">
+                <h2>3. User Accounts and Registration</h2>
+                <div class="subsection">
+                    <h3>3.1 Account Creation</h3>
+                    <p>To access certain features, you must create an account by providing accurate, current, and complete information. You are responsible for maintaining the confidentiality of your account credentials.</p>
+                </div>
+                
+                <div class="subsection">
+                    <h3>3.2 Account Security</h3>
+                    <ul class="styled-list">
+                        <li>Use strong, unique passwords for your account</li>
+                        <li>Enable two-factor authentication when available</li>
+                        <li>Immediately notify us of any unauthorized account access</li>
+                        <li>You are liable for all activities under your account</li>
+                    </ul>
+                </div>
+
+                <div class="subsection">
+                    <h3>3.3 Account Eligibility</h3>
+                    <p>You must be at least 18 years old and legally capable of entering contracts in your jurisdiction to use this Service.</p>
+                </div>
+            </section>
+
+            <!-- Section 4: Financial Disclaimer -->
+            <section id="financial-disclaimer" class="terms-section">
+                <h2>4. Financial and Investment Disclaimer</h2>
+                <div class="important-notice">
+                    <h3>⚠️ Critical Financial Disclosures</h3>
+                    <div class="subsection">
+                        <h4>4.1 No Investment Advice</h4>
+                        <p>CueTrade does not provide investment advice, recommendations, or financial planning services. All content is for educational and informational purposes only.</p>
+                    </div>
+
+                    <div class="subsection">
+                        <h4>4.2 Trading Risks</h4>
+                        <p>Trading and investing involve substantial risk of loss. Past performance does not guarantee future results. You should carefully consider your financial situation before making any trading decisions.</p>
+                    </div>
+
+                    <div class="subsection">
+                        <h4>4.3 Regulatory Compliance</h4>
+                        <p>CueTrade is not registered with the SEC, FINRA, CFTC, or any other financial regulatory authority. We do not operate as a broker-dealer, investment advisor, or commodity trading advisor.</p>
+                    </div>
+
+                    <div class="subsection">
+                        <h4>4.4 Third-Party Integrations</h4>
+                        <p>Brokerage account integrations are facilitated through SnapTrade, a trusted third-party service. These integrations are read-only for data import purposes only. We do not execute trades, hold funds, or access your brokerage account credentials. SnapTrade handles the secure authentication and data transmission from your brokerage accounts.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 5: Data Security -->
+            <section id="data-security" class="terms-section">
+                <h2>5. Data Security and Protection</h2>
+                <div class="subsection">
+                    <h3>5.1 Security Measures</h3>
+                    <p>We implement security measures to the best of our knowledge and capabilities, including:</p>
+                    <ul class="styled-list">
+                        <li>Data encryption in transit and at rest</li>
+                        <li>Secure cloud infrastructure (AWS)</li>
+                        <li>Basic access controls and authentication protocols</li>
+                    </ul>
+                    <p><strong>Note:</strong> As an individual developer project, we do not have access to enterprise-grade security infrastructure, formal security compliance programs, or regular security monitoring and updates.</p>
+                </div>
+
+                <div class="subsection">
+                    <h3>5.2 Data Breach Response</h3>
+                    <p>As an individual developer project, we have limited resources for breach detection and response. In the event we become aware of a data breach affecting your personal information:</p>
+                    <ul class="styled-list">
+                        <li>We will make reasonable efforts to notify affected users as soon as practicable after discovery</li>
+                        <li>We will report to relevant authorities as required by law, subject to our technical capabilities</li>
+                        <li>Response times may be longer than commercial services due to limited monitoring infrastructure</li>
+                        <li>Users are encouraged to monitor their own accounts and report suspicious activity</li>
+                    </ul>
+                </div>
+
+                <div class="subsection">
+                    <h3>5.3 User Responsibilities</h3>
+                    <ul class="styled-list">
+                        <li>Maintain secure account credentials</li>
+                        <li>Use secure internet connections when accessing the platform</li>
+                        <li>Report suspicious activity immediately</li>
+                        <li>Keep contact information current for security notifications</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Section 6: User Conduct -->
+            <section id="user-conduct" class="terms-section">
+                <h2>6. Acceptable Use and User Conduct</h2>
+                <div class="subsection">
+                    <h3>6.1 Permitted Use</h3>
+                    <p>You may use the Service for legitimate trade journaling, analysis, and educational purposes in compliance with all applicable laws.</p>
+                </div>
+
+                <div class="subsection">
+                    <h3>6.2 Prohibited Activities</h3>
+                    <ul class="styled-list">
+                        <li>Attempting to gain unauthorized access to the platform or other users' accounts</li>
+                        <li>Uploading malicious code, viruses, or harmful content</li>
+                        <li>Using the platform for illegal activities or market manipulation</li>
+                        <li>Sharing false, misleading, or fraudulent information</li>
+                        <li>Reverse engineering, decompiling, or attempting to extract source code</li>
+                        <li>Creating multiple accounts to circumvent limitations</li>
+                        <li>Commercial use without explicit written permission</li>
+                    </ul>
+                </div>
+
+                <div class="subsection">
+                    <h3>6.3 Content Standards</h3>
+                    <p>Any content you submit must not violate intellectual property rights, contain defamatory material, or include sensitive financial information of third parties.</p>
+                </div>
+            </section>
+
+            <!-- Section 7: Intellectual Property -->
+            <section id="intellectual-property" class="terms-section">
+                <h2>7. Intellectual Property Rights</h2>
+                <div class="subsection">
+                    <h3>7.1 Platform Ownership</h3>
+                    <p>CueTrade and all related trademarks, service marks, graphics, and code are owned by CueTrade. You are granted a limited, non-exclusive, non-transferable license to use the platform.</p>
+                </div>
+
+                <div class="subsection">
+                    <h3>7.2 User Content</h3>
+                    <p>You retain ownership of your trading data and journal entries. By using the Service, you grant us a limited license to process and store your content to provide the Service.</p>
+                </div>
+
+                <div class="subsection">
+                    <h3>7.3 Third-Party Content</h3>
+                    <p>The platform may include third-party content or links. We do not endorse or assume responsibility for third-party materials.</p>
+                </div>
+            </section>
+
+            <!-- Section 8: Privacy -->
+            <section id="privacy" class="terms-section">
+                <h2>8. Privacy and Data Handling</h2>
+                <div class="subsection">
+                    <h3>8.1 Privacy Policy</h3>
+                    <p>Our Privacy Policy, incorporated by reference, governs how we collect, use, and protect your information. Please review it carefully.</p>
+                </div>
+
+                <div class="subsection">
+                    <h3>8.2 Data Processing</h3>
+                    <p>We process your data to provide and improve our services, conduct analytics, and ensure platform security. Processing is based on legitimate business interests and your consent.</p>
+                </div>
+
+                <div class="subsection">
+                    <h3>8.3 Data Retention</h3>
+                    <p>We retain your data as long as your account is active or as needed to provide services. You may request data deletion subject to legal and operational requirements.</p>
+                </div>
+            </section>
+
+            <!-- Section 9: Disclaimers -->
+            <section id="disclaimers" class="terms-section">
+                <h2>9. Disclaimers of Warranties</h2>
+                <div class="important-notice">
+                    <div class="subsection">
+                        <h3>9.1 "AS IS" Service</h3>
+                        <p>THE SERVICE IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.</p>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>9.2 No Guarantee of Accuracy</h3>
+                        <p>We do not warrant the accuracy, completeness, or reliability of any content, data, or analytics provided through the platform.</p>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>9.3 Service Availability</h3>
+                        <p>We do not guarantee uninterrupted or error-free service. The platform may be unavailable due to maintenance, technical issues, or circumstances beyond our control.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 10: Limitation of Liability -->
+            <section id="limitation-liability" class="terms-section">
+                <h2>10. Limitation of Liability</h2>
+                <div class="important-notice">
+                    <div class="subsection">
+                        <h3>10.1 Limited Liability</h3>
+                        <p>TO THE MAXIMUM EXTENT PERMITTED BY LAW, CUETRADE SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING LOST PROFITS, DATA LOSS, OR BUSINESS INTERRUPTION.</p>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>10.2 Damage Cap</h3>
+                        <p>Our total liability for any claims arising from your use of the Service shall not exceed $5.</p>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>10.3 Financial Losses</h3>
+                        <p>We are not liable for any trading losses, investment decisions, or financial damages resulting from your use of the platform or reliance on any content or analytics.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 11: Indemnification -->
+            <section id="indemnification" class="terms-section">
+                <h2>11. Indemnification</h2>
+                <p>You agree to indemnify and hold harmless CueTrade from any claims, damages, losses, costs, and expenses (including reasonable attorneys' fees) arising from:</p>
+                <ul class="styled-list">
+                    <li>Your use of the Service</li>
+                    <li>Your violation of these Terms</li>
+                    <li>Your violation of any third-party rights</li>
+                    <li>Any content you submit to the platform</li>
+                    <li>Your trading or investment activities</li>
+                </ul>
+            </section>
+
+            <!-- Section 12: Termination -->
+            <section id="termination" class="terms-section">
+                <h2>12. Termination</h2>
+                <div class="subsection">
+                    <h3>12.1 Termination by You</h3>
+                    <p>You may terminate your account at any time by contacting us or using account settings. Termination does not relieve you of obligations incurred prior to termination.</p>
+                </div>
+
+                <div class="subsection">
+                    <h3>12.2 Termination by Us - Individual Developer Limitations</h3>
+                    <p>We may terminate or suspend your account immediately for violations of these Terms, illegal activity, or at our discretion. <strong>Important limitations:</strong></p>
+                    <ul class="styled-list">
+                        <li><strong>No Guaranteed Notice:</strong> Service termination may occur without advance notice due to individual capacity limitations</li>
+                        <li><strong>Immediate Discontinuation:</strong> The entire service may be permanently discontinued at any time if it becomes unsustainable</li>
+                        <li><strong>Limited Investigation:</strong> We may not be able to investigate disputes or provide detailed explanations for account actions</li>
+                        <li><strong>No Appeal Process:</strong> Formal appeal processes are not available due to individual developer constraints</li>
+                    </ul>
+                </div>
+
+                <div class="subsection">
+                    <h3>12.3 Effect of Termination</h3>
+                    <p>Upon termination, your access to the Service will cease, and we may delete your account and data after a reasonable period, subject to legal requirements.</p>
+                </div>
+            </section>
+
+            <!-- Section 13: Governing Law -->
+            <section id="governing-law" class="terms-section">
+                <h2>13. Governing Law and Dispute Resolution</h2>
+                <div class="subsection">
+                    <h3>13.1 Governing Law</h3>
+                    <p>These Terms are governed by the laws of the United States and the state where CueTrade is operated, without regard to conflict of law principles.</p>
+                </div>
+
+                <div class="subsection">
+                    <h3>13.2 Dispute Resolution</h3>
+                    <p>Any disputes arising from these Terms or your use of the Service shall be resolved through binding arbitration in accordance with the American Arbitration Association Commercial Arbitration Rules.</p>
+                </div>
+
+                <div class="subsection">
+                    <h3>13.3 Class Action Waiver</h3>
+                    <p>You waive any right to participate in class action lawsuits or class-wide arbitration against CueTrade.</p>
+                </div>
+            </section>
+
+            <!-- Section 14: Changes to Terms -->
+            <section id="changes" class="terms-section">
+                <h2>14. Changes to Terms</h2>
+                <p>We may update these Terms periodically to reflect changes in our services, legal requirements, or business practices. Material changes will be posted on this page with an updated "Last Updated" date. Users are responsible for checking this page periodically for changes.</p>
+                <p>Continued use of the Service after changes constitutes acceptance of the updated Terms.</p>
+            </section>
+
+            <!-- Section 15: Contact -->
+            <section id="contact" class="terms-section">
+                <h2>15. Contact Information</h2>
+                <div class="contact-info">
+                    <p>For questions about these Terms or our Service, contact us at:</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <strong>Support:</strong> <a href="mailto:venkat.kasthala@gmail.com">venkat.kasthala@gmail.com</a>
+                        </div>
+                        <div class="contact-item">
+                            <strong>Website:</strong> <a href="https://www.cuetrade.io">www.cuetrade.io</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        
+    </div>
+</div>
+
+<footer class="cue-footer pt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="../../../../assets/img/cuetrade-logo.svg" alt="">
+                <p>CueTrade fosters disciplined trading with a systematic approach, emphasizing planning, trading rules, journaling, and analytics.</p>
+                <ul class="social-icons">
+                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-3">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="#howworks">How it works</a></li>
+                    <li><a href="#benefits">Benefits</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h4>Company</h4>
+                <ul>
+                    <li><a [routerLink]="['/about-us/']">About</a></li>
+                    <li><a [routerLink]="['/terms-conditions/']">Terms</a></li>
+                    <li><a [routerLink]="['/privacy-policy/']">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="cue-copyright">
+            <p> © 2024 CueTrade. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Modal -->
+<div *ngIf="contactUsModal" class="modal-backdrop fade show"></div>
+<div class="modal contact-modal" [ngClass]="contactUsModal ? 'show' : ''"  tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Contact Us</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeContactUsModal()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <h5>If you need help or have inquiries, contact us at <a href="mailto:support@cuetrade.io">support@cuetrade.io</a></h5>
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+</div>

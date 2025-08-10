@@ -1,0 +1,152 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top" style="padding: 20px 0; background-color: #fff; box-shadow: 0 0 5px rgb(201 201 201 / 80%);">
+    <div class="container-fluid">
+        <div class="cue-logo">
+            <img src="../../../../assets/img/cuetrade-logo.svg" alt="">
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation" (click)="menuToggle()">
+            <span class="material-icons hamburger-menu-icon">menu</span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText" [ngClass]="hamburgerMenu ? 'show' : ''">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="landing#howit_works">How it works</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="landing#benefits">Benefits</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="landing#features">Features</a>
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link" href="landing#reviews">Reviews</a>
+                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link" href="landing#faq">FAQ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0)" (click)="openContactUsModal()">
+                        Contact Us
+                    </a>
+                </li>
+            </ul>
+            <button type="button" class="btn btn-success" (click)="login('google')">Login</button>
+        </div>
+    </div>
+</nav>
+
+<div class="trade-app">
+   
+
+    <div class="main-body">
+        <div class="container">
+            <div class="features_section pt-4 mt-4">
+                <div class="intro-description">
+                   Welcome to CueTrade!
+                   <br/><br/>
+                   I'm Venkat Kasthala, the founder of CueTrade.
+                   <br/><br/>
+                   Founded with the vision of helping traders protect their capital and achieve sustainable financial outcomes, CueTrade is for traders who want to take control of their financial future. Whether you're an experienced trader or just starting out, CueTrade empowers you to trade smarter and stay aligned with your goals.
+                   <br/><br/>
+                   The reality is that over 90% of traders lose money, primarily due to a lack of discipline, which impacts both their finances and overall well-being. Despite having access to advanced trading tools, the challenge persists, with millions entering the market unprepared each year. This widespread problem underscores a critical need for a trading platform that instills a disciplined approach essential for sustained success.
+                   <br/><br/>
+                   At CueTrade, we are on a mission to change this. Our platform is designed to help retail traders approach the financial markets with discipline, reduce costly mistakes, and make smarter, data-driven decisions. CueTrade offers powerful tools, including real-time order validation of rules, trading plans, trading journals, and comprehensive analytics, to give you confidence in every trade.
+                   <br/><br/>
+                   The beta version of CueTrade is now live, offering complimentary access to selected traders. Join us in refining the platform for a more disciplined and successful trading experience. For inquiries or demo requests, feel free to reach out at <a href="mailto:support@cuetrade.io">support@cuetrade.io.</a>
+                   <br/><br/>
+                   Best regards,
+                   <br/>
+                   Venkat Kasthala
+                   <br/><br/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end: main-body -->
+
+    
+</div>
+
+
+
+<footer class="cue-footer pt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="../../../../assets/img/cuetrade-logo.svg" alt="">
+                <p>CueTrade fosters disciplined trading with a systematic approach, emphasizing planning, trading rules, journaling, and analytics.</p>
+                <ul class="social-icons">
+                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+
+            </div>
+            <div class="col-md-3">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="#howworks">How it works</a></li>
+                    <li><a href="#benefits">Benefits</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h4>Company</h4>
+                <ul>
+                    <li><a [routerLink]="['/about-us/']">About</a></li>
+                    <li><a [routerLink]="['/terms-conditions/']">Terms</a></li>
+                    <li><a [routerLink]="['/privacy-policy/']">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="cue-copyright">
+            <p> © 2024 Uptick Systems Private Limited. All rights reserved.
+              <!--  Content powered by CMOTS Internet Technologies Pvt. Ltd. -->
+            </p>
+        </div>
+    </div>
+</footer>
+
+<!-- Modal -->
+
+<div *ngIf="contactUsModal" class="modal-backdrop fade show"></div>
+<div class="modal contact-modal" [ngClass]="contactUsModal ? 'show' : ''"  tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Contact Us</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeContactUsModal()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <h5>If you need help or have inquiries, contact us at <a href="mailto:support@cuetrade.io">support@cuetrade.io</a></h5>
+            <!-- Uncomment the following code to show the contact us form. -->
+            <!-- <form>
+                <div class="mb-3">
+                  <label class="required-field mb-1">Name</label>
+                  <input type="text" class="form-control" id="name" placeholder="Name" />
+                </div>
+                <div class="mb-3">
+                  <label class="required-field mb-1">Email</label>
+                  <input type="email" class="form-control" id="email" placeholder="Email" />
+                </div>
+                <div class="form-group">
+                  <label class="required-field mb-1">Message </label>
+                  <textarea rows="4" class="form-control" id="message" placeholder="Message"></textarea>
+                </div>
+              </form> -->
+        </div>
+        <div class="modal-footer">
+            <!-- <button type="button" class="btn btn-primary" (click)="submitContact()">Submit</button> -->
+            <button type="button" class="btn btn-secondary ml-3" (click)="closeContactUsModal()">Close</button>
+        </div>
+      </div>
+    </div>
+</div>

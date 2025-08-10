@@ -1,0 +1,12 @@
+<div class="custom-calendar">
+    <ul>
+        <li class="days" *ngFor="let day of calendarDays">{{day}}</li>
+    </ul>
+    <ul class="custom_dates">
+        <li *ngFor="let date of calendarDates">
+                <span class="" [ngClass]="{'default_day' : date.day, 'working_day' : date.tradePlanCreated == 'true',  'negitive_return' : date.tradePlanCreated == 'false' }">{{date.day}}</span>
+                <span class="align-text" *ngIf="date.tradePlanCreated == 'true'" [style.color]="date.tradePlanAligned ? 'green' : 'gray'" [ngClass]="date.tradePlanAligned ? '' : ''">{{ date.tradePlanAligned ? 'Aligned' : 'Not Aligned'}}</span>
+        </li>
+        
+    </ul>
+</div>

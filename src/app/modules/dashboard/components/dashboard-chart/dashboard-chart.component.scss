@@ -1,0 +1,32 @@
+.dashboard-chart {
+    box-shadow: none;
+    border-radius: 12px;
+    min-height: 400px;
+}
+
+.chart-cont{
+    height: 400px;
+    border-radius: 6px;
+}
+
+.highcharts-heatmap-series .highcharts-data-label span{
+    top: 0px;
+    left: 0px;
+}
+.nodata-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 400px;
+    font-weight: 500;
+    font-size: 18px;
+    color: #2469FF;
+    text-decoration: none;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    flex-direction: column;
+    a {
+        text-decoration: none;
+    }
+}

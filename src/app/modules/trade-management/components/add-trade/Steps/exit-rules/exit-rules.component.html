@@ -1,0 +1,60 @@
+<div class="trade-thesis-sec" *ngIf="!addTrade && tradeStatus !== 4">
+    <div class="entry-thesis-header cursor" (click)="showExitRules()">
+        <span>Exit Rules</span>
+        <i class="negative-amt material-icons">{{hideExitRules ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}</i>
+    </div>
+
+    <div class="trade-thesis-body" *ngIf="!hideExitRules">
+        <!--
+        <div class="row" *ngFor="let exit of exitRules;">
+            <div class="col-sm-6">
+                <div class="thesis_item">
+                    <div class="thesis_item_title">
+                        {{exit.description}}
+                    </div>
+                    <div class="switch">
+                        <input type="checkbox" checked id="hedging" [(ngModel)]="exit.aligned" [disabled]="closeTrade" [ngClass]="closeTrade ? 'disabled' : ''" />
+                    </div>
+                    <input type="text" class="trade-check" placeholder="Add notes" [disabled]="closeTrade" [ngClass]="closeTrade ? 'disabled' : ''" />
+                </div>
+            </div>        
+        </div>
+        -->
+
+        <mat-table [dataSource]="exitRules">
+            <ng-container matColumnDef="msg">
+                <th mat-header-cell *matHeaderCellDef class="msg-cell">Rule</th>
+                <td mat-cell *matCellDef="let element" class="msg-cell"> {{element.msg}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="aligned">
+                <th mat-header-cell *matHeaderCellDef class="aligned-cell"><span>Aligned</span></th>
+                <td mat-cell *matCellDef="let element" class="aligned-cell">
+                    <mat-icon class="mat-icon-warning mat-icon-sm"
+                        *ngIf="element.type === 'Coded'">warning
+                    </mat-icon>
+                    <mat-checkbox *ngIf="element.type !== 'Coded'" [(ngModel)]="element.aligned"></mat-checkbox>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="comment">
+                <th mat-header-cell *matHeaderCellDef class="comment-cell"><span>Comment</span></th>
+                <td mat-cell *matCellDef="let element" class="comment-cell">
+                    <span class="d-flex align-items-center" *ngIf="!viewTradePlan">
+                        {{element.comment}}
+                        <mat-icon class="mat-icon-edit mat-icon-sm" (click)="onCommentEdit(element)">edit
+                        </mat-icon>
+                    </span>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="ruleGridColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: ruleGridColumns;"></tr>
+
+            
+
+        </mat-table>
+        
+        <div class="p-3 text-center" *ngIf="exitRules && exitRules.length === 0">Exit rules have not been set up</div>
+    </div>
+</div>

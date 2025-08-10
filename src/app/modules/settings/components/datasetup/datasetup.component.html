@@ -1,0 +1,170 @@
+<mat-accordion class="example-headers-align w-100" multi="true">
+    <!-- <mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Trade Share Settings<img src="../../../../assets/images/beta-icon.png" class="beta-icon"/>
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ng-template matExpansionPanelContent>
+            
+            <div class="mb-2">
+                <span class="share-trade-field"><input class="checkbox mr-1" type="checkbox" (change)="onShareTradeChange($event)"> Share all my trades with my followers</span>
+            </div>
+            <div class="mb-2">
+                <span class="share-trade-field"><input class="checkbox mr-1" type="checkbox" (change)="findUsers($event)"> Allow other users to find me</span>
+            </div>
+        </ng-template>
+    </mat-expansion-panel> -->
+    <!-- <div class="description_text pt-2">Configure the data in your trading journal template</div> -->
+    <!-- <mat-expansion-panel [expanded]="true" (opened)="setStep(0)">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Trade Sources: Specify the origins of your trades, such as personal decisions, subscription services, or social media platforms.
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ng-template matExpansionPanelContent>
+            <app-editable-list #tradeIdea></app-editable-list>
+        </ng-template>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="true" (opened)="setStep(1)">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Technical Indicators: Specify the technical indicators that you rely on to identify trading opportunities.
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ng-template matExpansionPanelContent>
+            <app-editable-list #technicalIndicator></app-editable-list>
+        </ng-template>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="true" (opened)="setStep(2)">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Trading Mindset: Specify the mindsets applicable while during trading such as fear of missing out (FOMO) or confidence.
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ng-template matExpansionPanelContent>
+            <app-editable-list #mindSetType></app-editable-list>
+        </ng-template>
+    </mat-expansion-panel>
+    <mat-expansion-panel [expanded]="true" (opened)="setStep(3)">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Trading Events: Specify the specific events that influence your trading decisions, such as before or after earnings announcements.
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ng-template matExpansionPanelContent>
+            <app-editable-list #event></app-editable-list>
+        </ng-template>
+    </mat-expansion-panel> -->
+    <mat-expansion-panel [expanded]="true" (opened)="setStep(4)">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Data Deletion
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ng-template matExpansionPanelContent>
+            <div class="d-flex mb-3 justify-content-between" style="font-size: 16px;">
+                <div>Delete all your trading strategies from CueTrade</div>
+                <button type="button" class="btn btn-danger" (click)="deleteAllStrategies()">Delete All Strategies</button>
+            </div>
+            <div class="d-flex mb-3 justify-content-between" style="font-size: 16px;">
+                <div>Permanently delete all data from CueTrade, i.e., trade history, plans, statistics, etc. </div>
+                <button type="button" class="btn btn-danger" (click)="deleteAllData()">Delete All Data</button>
+            </div>
+        </ng-template>
+    </mat-expansion-panel>
+    <!-- <mat-expansion-panel [expanded]="true" (opened)="setStep(5)">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Gain or Loss Attribution
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ng-template matExpansionPanelContent>
+            <app-editable-list #gainOrLossAttribution></app-editable-list>
+        </ng-template>
+    </mat-expansion-panel> -->
+    <!-- <mat-expansion-panel [expanded]="true" (opened)="setStep(6)">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Pre-Market Activities
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ng-template matExpansionPanelContent>
+            <div class="row align-items-end">
+                <div class="col-sm-8 col-md-5">
+                    <textarea id="preMarketActivities" rows="4"></textarea>
+                </div>
+                <div class="col-sm-4">
+                    <button type="button" class="btn add-new">Submit</button>
+                </div>
+            </div>
+        </ng-template>
+    </mat-expansion-panel> -->
+    <!-- <mat-expansion-panel [expanded]="true" (opened)="setStep(7)">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Brokerage Commission
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ng-template matExpansionPanelContent>
+            <div class="col-sm-12 col-md-7 px-0">
+                <app-editable-grid #brokerageCommissions></app-editable-grid>
+            </div>
+        </ng-template>
+    </mat-expansion-panel> -->
+</mat-accordion>
+
+<!--<div class="pre-market-box col-sm-6 py-3">
+        <div class="mb-2">
+            <div class="trade-cards-section">
+                <span class="card-main">
+                    <select class="form-control">
+                        <option value="1">Forex Options</option>
+                        <option value="2">Stock Options</option>
+                        <option value="3">Stock Future</option>
+                    </select>
+                </span>
+                <span class="card-main">
+                    <select class="form-control">
+                        <option value="1">Percentage</option>
+                        <option value="2">Fixed</option>
+                    </select>
+                </span>
+                <span class="card-main card-main-sm"><input type="text" class="form-control" value="0.85%" /></span>
+                <span class="text-primary"><mat-icon class="mt-2 text-success">add_circle</mat-icon></span>
+            </div>-->
+<!--<div class="d-flex align-items-center mb-1">
+                <span class="card-main pl-3">Stocks</span>
+                <span class="card-main pl-3">Percentage</span>
+                <span class="card-main card-main-sm pl-3">0.15%</span>
+                <mat-icon class="mr-2 text-success mat-icon-sm">edit</mat-icon>
+                <mat-icon class="mat-icon-sm">delete</mat-icon>
+            </div>
+            <div class="d-flex align-items-center mb-1">
+                <span class="card-main pl-3">Stock Options</span>
+                <span class="card-main pl-3">Fixed</span>
+                <span class="card-main card-main-sm pl-3">0.65</span>
+                <mat-icon class="mr-2 text-success mat-icon-sm">edit</mat-icon>
+                <mat-icon class="mat-icon-sm">delete</mat-icon>
+            </div>
+            <div class="d-flex align-items-center mb-1">
+                <span class="card-main pl-3">Stock Future</span>
+                <span class="card-main pl-3">Fixed</span>
+                <span class="card-main card-main-sm pl-3">0.85</span>
+                <mat-icon class="mr-2 text-success mat-icon-sm">edit</mat-icon>
+                <mat-icon class="mat-icon-sm">delete</mat-icon>
+            </div>
+        </div>
+    </div>-->
+
+
+
+<!--
+<div class="trade-btn profile-bottom py-3">
+    <div class="btn btn-apply" (click)="saveprofile()">
+        SAVE
+    </div>
+</div>
+-->

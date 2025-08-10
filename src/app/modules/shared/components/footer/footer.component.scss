@@ -1,0 +1,56 @@
+@import "../../../../../assets/styles/variable.scss";
+
+.trade-app-footer {
+  align-items: center;
+  color:#000000;
+  font-size: 12px;
+  background: #f5f5f5;
+  z-index: 999;
+  @media #{$extra-small} {
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    flex-direction: column;
+    display: none;
+  }
+  .container {
+    padding: 6px 15px;
+  }
+  .trade-logo {
+    color: $white;
+  }
+
+
+  .trade-socail-icon {
+    display: flex;
+    align-items: center;
+    color: #9DA6BA;
+    justify-content: flex-end;
+    img {
+      margin-left: 10px;
+      height: 20px;
+    }
+    @media #{$extra-small} {
+      justify-content: center;
+      padding-top: 0.5rem !important;
+    }
+  }
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    li{
+      padding: 0 10px;
+      display: inline-flex;
+    }
+  }
+}
+
+.powered-by {
+  font-size: 12px;
+  line-height: 18px;
+  padding-bottom: 0.25rem;
+  @media #{$extra-small} {
+      text-align: left;
+  }
+}

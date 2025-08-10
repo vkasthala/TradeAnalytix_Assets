@@ -1,0 +1,118 @@
+
+<div class="position-relative p-3">
+    <!-- <div class="dashboard-header">
+        <div>
+            <p>CueTrade automatically checks each trade against your rules in real-time, showing if it aligns or breaks them. Easily manage your rules here to stay disciplined and on track</p>
+        </div>
+    </div> -->
+    <div *ngIf="!isMobileDevice">
+        <table class="mat-table table">
+            <thead>
+                <tr class="mat-header-row">
+                    <th class="mat-header-cell">Status</th>
+                    <th class="mat-header-cell">Trading Rule</th>
+                    <th class="mat-header-cell value-cell">Value</th>
+                    <th class="mat-header-cell action-cell">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="mat-header-row" *ngFor="let coderule of portfolioLevelRules">
+                    <td class="mat-cell value-cell">
+                        <mat-icon class="mat-icon-sm mat-icon material-icons pl-2" [ngClass]="coderule.val ? 'text-success' : 'text-danger'">{{coderule.val ? 'check_circle' : 'cancel'}}</mat-icon>
+                    </td>
+                    <td class="mat-cell rule-cell">
+                        <div class="d-flex align-items-center">
+                            <span>{{coderule.uiLabel}}</span>
+                            <mat-chip class="chip {{ coderule.purpose.toLowerCase().replace(' ', '-') }}">{{coderule.purpose}}</mat-chip>
+                        </div>
+                    </td>
+                    
+                    <td class="mat-cell status-cell">
+                        <span class="d-flex align-items-center col-3" *ngIf="coderule.dataType === 'int' || coderule.dataType === 'double' || coderule.dataType === 'time'">
+                            <input type="text" class="form-control" [ngClass]="!coderule.editing ? 'disabled' : ''"
+                                [(ngModel)]="coderule.val" />
+                            <mat-icon class="ml-2 mat-icon-edit action-icon" (click)="onItemEdit(coderule)"
+                                *ngIf="coderule.editing">check_circle
+                            </mat-icon>
+                            <mat-icon class="ml-2 text-danger action-icon" (click)="onCancel(coderule)"
+                                *ngIf="coderule.editing">close</mat-icon>
+                        </span>
+                    </td>
+                    <td class="mat-cell action-cell">
+                        <span class="cursor btn btn-active mr-2"
+                            (click)="activateRule(coderule)" *ngIf="coderule.val === null">Activate
+                        </span>
+                        <span class="cursor btn btn-update mr-3" (click)="onUpdateRule(coderule)" *ngIf="coderule.val && coderule.dataType !== 'boolean'">Update</span>
+                        <span class="cursor position-relative">
+                            <!-- <input type="checkbox" name="rule" class="checkbox checkbox-custom"
+                                [checked]="coderule.id && coderule.id !== null && coderule.id > 0"
+                                [(ngModel)]="coderule.checked" (change)="onRuleSelectionChange(coderule)" />
+                            <span [ngClass]="coderule.checked ? 'disabled-text' : 'add-new'">{{coderule.checked ? 'Disable'
+                                : 'Enable' }}</span> -->
+                            <!-- <input type="checkbox" name="rule" class="checkbox checkbox-custom"
+                                [checked]="coderule.id && coderule.id !== null && coderule.id > 0"
+                            [(ngModel)]="coderule.checked" (change)="onCheckBoxChange(coderule)" /> -->
+                            <span class="btn btn-disabled" (click)="onCheckBoxChange(coderule)" *ngIf="coderule.val">Disable</span>
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="gtt-list cards" *ngIf="isMobileDevice">
+        <!-- card:: start -->
+        <div class="card rule-row" *ngFor="let rule of portfolioLevelRules">
+            <div class="top d-flex">
+                <div class="flex10">
+                    <span class="dim">{{rule.uiLabel}}</span> 
+                </div>
+                <div class="flex2 text-right">
+                    <span class="pt-2">
+                        <mat-icon class="mat-icon-sm mat-icon material-icons pl-2" [ngClass]="rule.val ? 'text-success' : 'text-danger'">{{rule.val ? 'check' : 'close'}}</mat-icon> 
+                    </span>
+                </div>
+            </div>
+            <div class="middle d-flex">
+                <div class="flex4">
+                    <span class="d-flex align-items-center" *ngIf="rule.dataType === 'double' || rule.dataType === 'time'">
+                        <input type="text" class="form-control" [ngClass]="!rule.editing ? 'disabled' : ''" [(ngModel)]="rule.val" />
+                        <mat-icon class="ml-2 mat-icon-edit action-icon" (click)="onItemEdit(rule)"
+                            *ngIf="rule.editing">check_circle
+                        </mat-icon>
+                        <mat-icon class="ml-2 text-danger action-icon" (click)="onCancel(rule)"
+                            *ngIf="rule.editing">close</mat-icon>
+                    </span>
+                </div>
+                <div class="flex8 text-right">
+                    <span class="cursor btn btn-active mr-2"
+                        (click)="activateRule(rule)" *ngIf="rule.val === null">Activate
+                    </span>
+                    <span class="cursor btn btn-update mr-3" (click)="onUpdateRule(rule)" *ngIf="rule.val && rule.dataType !== 'boolean'">Update</span>
+                    <span class="cursor position-relative">
+                        <span class="btn btn-disabled" (click)="onCheckBoxChange(rule)" *ngIf="rule.val">Disable</span>
+                    </span>
+                </div>
+            </div>
+           <!--  <div class="flex">
+                <div class="flex6">
+                    <span>{{order.price}}</span>
+                    <span class="ml-2">
+                        <span class="text-xsmall dim">Qty</span> 
+                        <span class="ml-1">{{order.quantity}}</span>
+                    </span>
+                </div>
+                <div class="flex6 text-right">
+                    <button type="button" class="button button-xsmall button-outline button-blue" (click)="editOrder(order)"><span class="icon icon-edit"></span> Edit</button> 
+                    <button type="button" class="button button-xsmall button-outline ml-2" (click)="openIntradayOrder(order)">{{order.journal}}</button>
+                    
+                </div>
+            </div> -->
+            
+        </div>
+        <!-- card:: end -->
+    </div>
+    <div class="mask" *ngIf="Loader">
+        <div class="loader"></div>
+    </div>
+</div>

@@ -1,0 +1,209 @@
+.add-icon {
+    float: right;
+}
+
+.mat-icon-sm {
+    cursor: pointer;
+}
+
+.mat-table {
+    max-height: 300px;
+    overflow: auto;
+    width: 100%;
+}
+
+tr.mat-header-row,
+tr.mat-footer-row,
+tr.mat-row {
+    height: 40px;
+    min-height: 40px;
+    line-height: 35px;
+}
+
+.mat-header-cell {
+    background: rgba(157, 166, 186, 0.2);
+    color: #000000;
+    font-size: 15px;
+    font-weight: 600;
+    border: 0;
+    flex: 0 0 10% !important;
+    min-width: 100px !important;
+    width: 10%;
+    border: 0;
+}
+
+td.mat-cell,
+td.mat-footer-cell,
+th.mat-header-cell {
+    padding: .5rem 1rem !important;
+    border-radius: 0;
+    line-height: 18px;
+    border: 0;
+}
+
+.mat-column-symbol {
+    flex: 0 0 20% !important;
+    min-width: 150px !important;
+}
+
+.mat-column-strategyType {
+    flex: 0 0 20% !important;
+    min-width: 150px !important;
+}
+
+.mat-column-actionType {
+    flex: 0 0 15% !important;
+    min-width: 100px !important;
+}
+
+.mat-column-maxRisk {
+    flex: 0 0 15% !important;
+    min-width: 80px !important;
+}
+
+.mat-column-maxProfit {
+    flex: 0 0 15% !important;
+    min-width: 100px !important;
+}
+
+.mat-column-reason {
+    flex: 0 0 20% !important;
+    min-width: 220px !important;
+}
+
+.col-form-label {
+    font-weight: 600;
+    font-size: 15px !important;
+    line-height: 27px;
+    color: #2469FF;
+}
+
+.mat-icon-edit {
+    color: #9DA6BA;
+}
+
+.mat-row:nth-child(odd) {
+    background-color: #fff;
+    border: 0;
+}
+
+.mat-column-justification-cell {
+    flex: 0 0 25% !important;
+    min-width: 104px !important;
+}
+
+.justification-cell {
+    width: 30%;
+    flex: 0 0 30% !important;
+    min-width: 150px !important;
+}
+
+.mat-column-symbol-cell {
+    flex: 0 0 10% !important;
+    min-width: 100px !important;
+    width: 10%;
+}
+
+.symbol-cell {
+    width: 10%;
+    flex: 0 0 10% !important;
+    min-width: 100px !important;
+}
+
+.cell-w-12 {
+    width: 12%;
+    flex: 0 0 12% !important;
+    min-width: 111px !important;
+    border-radius: 0;
+}
+
+.ad-trade-plan-mobile {
+    display: none;
+}
+
+.trade-plan-mobile-grid {
+    color: #2469FF;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 16px rgba(157, 157, 157, 0.1);
+    border-radius: 4px;
+    font-weight: 400;
+    padding: 1rem;
+    font-size: 16px;
+    .cell-header {
+        font-weight: 600;
+    }
+    .mobile-grid-row {
+        border-bottom: 1px solid rgb(157 166 186 / 30%);
+    }
+    .mobile-grid-cell {
+        display: inline-flex;
+        .material-icons {
+            color: #2285FA;
+        }
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width:599px) {
+    .ad-trade-plan-web {
+        display: none;
+    }
+    .ad-trade-plan-mobile {
+        display: block;
+        overflow: hidden;
+    }
+}
+
+.mat-expansion-panel {
+    box-shadow: none;
+    margin-bottom: 20px;
+    border-radius: 4px !important;
+}
+
+.mat-expansion-panel-header {
+    font-family: Open Sans,sans-serif !important;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 24px;
+    color: #2469FF;
+    background: transparent !important;
+    border-radius: 4px 4px 0 !important;
+    padding: 15px 25px !important;
+    height: inherit !important;
+    border: 0;
+    border-bottom: 1px solid rgb(157 166 186 / 30%);
+    .mat-expansion-panel-header-title {
+        color: #2469FF;
+    }
+}
+
+.mat-expansion-panel-body {
+    padding: 0 25px !important;
+    border-top: 1px solid rgb(157 166 186 / 30%);
+}
+
+.mat-expansion-panel-header-title {
+    color: #2469FF;
+    font-family: "Poppins", sans-serif !important;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 24px;
+}
+.plannedTrades-container {
+    border: 0.5px solid #ced4da;
+    border-radius: 4px;
+}
+.trade-plan-header {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: #2469FF;
+    display: flex;
+    align-items: center;
+    padding:0.5rem 0.25rem;
+}
+.add-new {
+    color: #007bff;
+    font-size: 13px;
+    line-height: 1;
+    font-weight: 600;
+}

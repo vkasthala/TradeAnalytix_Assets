@@ -1,0 +1,29 @@
+<div class="compare-popup">
+    <div class="compare-pop-inner">
+        <div class="top-pop-inner">
+            <div class="modal-title">{{title}}</div>
+            <div class="right-close" (click)="closeModal()">
+                <mat-icon>clear</mat-icon>
+            </div>
+        </div>
+        <!-- <form [formGroup]="entryexitruleform"> -->
+            <div class="main-pop-inner">
+                <div class="d-flex justify-content-between mb-2" *ngFor="let rule of entryRules; let index=index">
+                    <div class="col-11 pl-0">
+                        <label class="col-form-label">{{rule.msg}}</label>
+                        <textarea class="form-control" [(ngModel)]="rule.comment"></textarea>
+                    </div>
+                    <mat-checkbox [(ngModel)]="rule.aligned" class="mt-2" [ngClass]="rule.type === 'Coded' ? 'automatic-rule' : '' ">
+                        <mat-icon *ngIf="rule.type === 'Coded' && rule.aligned === false" class="close-icon">close</mat-icon>
+                    </mat-checkbox>
+                </div>
+
+                
+            </div>
+            <div class="modal-footer py-2">
+                <button type="button" class="btn btn-join m-0" (click)="closeModal()">Cancel</button>
+                <button type="button" class="btn btn-join m-0 ml-3" (click)="saveRules()">Save</button>
+            </div>
+        <!-- </form> -->
+    </div>
+</div>

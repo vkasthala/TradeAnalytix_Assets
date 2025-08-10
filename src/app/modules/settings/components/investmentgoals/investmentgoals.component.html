@@ -1,0 +1,158 @@
+<div class="outer-container settings-container">
+    <!-- <div class="import-header">
+        Goal-Driven Trading: Set and Track Your Profit Goals within a Defined Date Range for Optimal Performance
+    </div> -->
+    <mat-expansion-panel [expanded]="true">
+        <ng-template matExpansionPanelContent>
+            <div class="mb-2 investment_body">
+                <div class="trade-cards-section investmentgoals-form mb-3">
+                    <span class="td-cell pl-0 pb-0">
+                        <label class="col-form-label">Entry Date</label>
+                        <div class="datepicker-group">
+                            <input matInput [matDatepicker]="entrydate" (click)="entrydate.open()" id="entrydate"  name="entrydate" (dateChange)="addEvent($event)" [(ngModel)]="entry_date">
+                            <mat-datepicker-toggle matSuffix [for]="entrydate"></mat-datepicker-toggle>
+                            <mat-datepicker #entrydate></mat-datepicker>
+                        </div>
+                    </span>
+                    <span class="td-cell pb-0">
+                        <label class="col-form-label">Goal</label>
+                        <input type="text" class="form-control" id="goalname" [(ngModel)]="goalName" maxlength="10" />
+                    </span>
+
+                    <span class="td-cell td-cell-lg pb-0 target_date">
+                        <label class="col-form-label">Target Date Range</label>
+                        <div class='input-group date date-rang' id='datetimepicker1'>
+                            <my-date-range-picker name="targetdate" id="targetdate" (dateRangeChanged)="onDateRangeChanged($event)" [(ngModel)]="targetDate"></my-date-range-picker>
+                        </div>
+                    </span>
+
+                    
+                    <span class="td-cell pb-0">
+                        <label class="col-form-label">Target Profit</label>
+                        <input type="text" class="form-control" id="targetProfit" [(ngModel)]="targetProfit" />
+                    </span>
+
+                    <!-- <span class="td-cell description-cell pb-0">
+                        <label class="col-form-label">Description</label>
+                        <input type="text" class="form-control" id="description" [(ngModel)]="goalDescription" maxlength="1000" />
+                    </span> -->
+
+                    <span class="d-flex align-items-end mb-2 btn-next-web">
+                        <span class="text-link" (click)="addGoal()">{{!isEdit ? 'Add Goal': 'Submit'}}</span>
+                    </span>
+
+                    <a class="btn btn-next-mobile" (click)="addGoal()">Save</a>
+
+                </div>
+                <div class="planed-trades mb-3">
+                    <div class="d-flex align-items-center">
+                        <span class="header-cell">Entry Date</span>
+                        <span class="header-cell">Goal</span>
+                        <span class="header-cell header-cell-lg">Target Date Range</span>
+                        <span class="targetprofit-header-cell">Target Profit</span>
+                        <!-- <span class="header-cell description-cell">Description</span> -->
+                        <span class="header-cell action-cell">Action</span>
+                    </div>
+                    <ng-container *ngIf="GoalsList">
+                        <div class="goal-row" *ngFor="let goal of GoalsList;let index = index">
+                            <div class="d-flex align-items-center">
+                                <span class="td-cell">{{goal.entryDate}}</span>
+                                <span class="td-cell">{{goal.goalName}}</span>
+                                <span class="td-cell td-cell-lg">{{goal.startDate | date: 'dd MMM yyyy'}} - {{goal.endDate | date: 'dd MMM yyyy'}}</span>
+                                <span class="td-cell">{{goal.targetAmount}}</span>
+                                <!-- <span class="td-cell description-cell">{{goal.goalDescription}}</span> -->
+                                    <!-- <button class="btn-edit" (click)="editRule(element, 'Edit', 'Update')">Update</button>
+                                    <button class="btn-delete ml-2" (click)="deleteRule(element)">Delete</button> -->
+                                    <button class="btn-edit" (click)="editinvestmentGoal(goal)">Update</button>
+                                    <button class="btn-delete ml-2" (click)="deleteinvestmentGoal(goal)">Delete</button>
+                            </div>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="GoalsList.length === 0">
+                        <div class="text-center p-3"> Trading goals have not been set.</div>
+                    </ng-container>
+                </div>
+            </div>
+        </ng-template>
+    </mat-expansion-panel>
+</div>
+
+<!-- investment-mobile -->
+<!-- <div class="investment-mobile">
+    <div class="investment_mobile_sec">
+        <div class="d-flex justify-content-between">
+            <h3>
+                Specify your investment goals for a given date range
+            </h3>
+            <mat-icon (click)="openGoalForm()">add_circle</mat-icon>
+        </div>
+        <div class="show-stock-sec" *ngFor="let goal of GoalsList;let index = index">
+            <div class="row">
+                <div class="col-4">
+                    <label class="col-form-label p-0">Entry Date</label>
+                    <div class="col-form-value">{{goal.entryDate}}</div>
+                </div>
+                <div class="col-4">
+                    <label class="col-form-label p-0">Goal Name</label>
+                    <div class="col-form-value">{{ goal.goalName }}</div>
+                </div>
+                <div class="col-4">
+                    <label class="col-form-label p-0">Target Profit</label>
+                    <div class="col-form-value">{{goal.targetAmount}}</div>
+                </div>
+            </div>
+            <div class="row pt-2">
+                <div class="col-12">
+                    <label class="col-form-label p-0">Taget Date Range</label>
+                    <div class="col-form-value">
+                        {{goal.startDate + ' - '+goal.endDate}}
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="newgoal_slide" *ngIf="showGoalForm">
+        <div class="newgoal_slide-header">
+            <mat-icon class="arrow_back mr-2 cursor" (click)="hideGoalForm()">arrow_back</mat-icon> 
+                New Goal
+        </div>
+
+        <div class="p-3">
+            <div class="newgoal_slide_body">
+                <div class="newgoal_slide_body_heading">Add New</div>
+                <div class="row">
+                    <div class="col-6">
+                        <label class="col-form-label">Entry Date</label>
+                        <div class="datepicker-group">
+                            <input matInput [matDatepicker]="entrydate" (click)="entrydate.open()" id="entrydate"  name="entrydate" (dateChange)="addEvent($event)" [(ngModel)]="entry_date">
+                            <mat-datepicker-toggle matSuffix [for]="entrydate"></mat-datepicker-toggle>
+                            <mat-datepicker #entrydate></mat-datepicker>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <label class="col-form-label">Goal Name</label>
+                        <input type="text" class="form-control" id="goalname" [(ngModel)]="goalName" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <label class="col-form-label">Target Date range</label>
+                        <div class='input-group date date-rang' id='datetimepicker1'>
+                            <my-date-range-picker name="targetdate" id="targetdate" (dateRangeChanged)="onDateRangeChanged($event)" [(ngModel)]="targetDate"></my-date-range-picker>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <label class="col-form-label">Target Profit</label>
+                        <input type="text" class="form-control" id="targetProfit" [(ngModel)]="targetProfit" />
+                    </div>
+                </div>
+                   
+                <div class="pt-3">
+                    <button type="button" class="btn btn-add w-100" (click)="addGoal()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->

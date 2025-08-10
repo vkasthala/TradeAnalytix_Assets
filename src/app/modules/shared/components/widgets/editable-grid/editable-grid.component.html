@@ -1,0 +1,40 @@
+<div class="trade-cards-section mb-2">
+    <span class="card-main" *ngFor="let entry of columnConfigs" [ngClass]="entry.id === 'brokerageValue' ? 'w-25' : ''">
+        <select class="form-control" *ngIf="entry.type == 'select' && entry.visible" id="{{entry.id}}" (change)="onComboValueChange(entry.id)" required>
+            <option value="" disabled selected>Select {{entry.name}}</option>
+            <option *ngFor="let value of entry.values" value="{{value[0]}}">{{value[1]}}</option>
+        </select>
+        <input type="text" class="form-control editable-text" *ngIf="entry.type == 'text' && entry.visible" id="{{entry.id}}" placeholder="Enter {{entry.name}}" [ngClass]="entry.id === 'brokerageValue' ? 'w-100' : ''" />
+    </span>
+    <span class="text-primary">
+        <span class="text-primary action-icon" *ngIf="!edit">
+            <mat-icon class="mt-2 text-primary" (click)="onItemAdd()">add_circle</mat-icon>
+        </span>
+    <span class="text-primary" *ngIf="edit">
+            <mat-icon class="mt-2 mat-icon-edit action-icon" (click)="onItemEdit()">check_circle</mat-icon>
+        </span>
+    <span class="text-primary" *ngIf="edit">
+            <mat-icon class="mt-2 text-danger action-icon" (click)="onCancel()">close</mat-icon>
+        </span>
+    </span>
+</div>
+
+<div class="editable-grid-container" [ngClass]="columns.length > 4 ? 'editable-list' : ''">
+    <mat-table [dataSource]="dataSource">
+        <ng-container *ngFor="let entry of columns" matColumnDef="{{entry}}">
+            <mat-cell class="strategy-id-cell" *matCellDef="let element">
+                <span *ngIf="entry == 'action'" class="actions-column">
+                    <mat-icon class="mat-icon-sm mat-icon-edit action-icon" (click)="onRowEdit(element)">edit
+                    </mat-icon>
+                    <mat-icon class="mat-icon-sm action-icon" (click)="onRowDelete(element)">delete</mat-icon>
+                </span>
+                <span *ngIf="entry != 'action'">
+                    {{element[entry]}}
+                </span>
+            </mat-cell>
+        </ng-container>
+
+        <mat-row class="editable-grid-row" *matRowDef="let element; columns: columns;">
+        </mat-row>
+    </mat-table>
+</div>

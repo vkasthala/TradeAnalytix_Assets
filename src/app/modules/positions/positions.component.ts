@@ -1,0 +1,88 @@
+import { Component, HostListener, OnInit } from '@angular/core';
+import { PositionsResponse, Position } from '../shared/models/portfolio.model';
+import { PositionService } from '../shared/services/position.service';
+import { ToastrService } from 'ngx-toastr';
+
+
+@Component({
+  selector: 'app-positions',
+  templateUrl: './positions.component.html',
+  styleUrls: ['./positions.component.scss']
+})
+export class PositionsComponent implements OnInit {
+  isMobileDevice: any;
+  positionResponse: PositionsResponse = {
+    data: {
+    data: [],
+    total_day_p_and_l: 0,
+    total_p_and_l: 0
+    }
+  }
+  positionsCount: number = 0;
+  userId: string = "";
+
+  constructor(
+    private _positionService: PositionService,
+    private _toastr: ToastrService,
+  ) { }
+
+  ngOnInit() {
+    this.checkDevice();
+    this.loadPositions();
+  }
+
+  loadPositions(){
+    let isBrokerageActive = sessionStorage.getItem('isBrokerageActive') && sessionStorage.getItem('isBrokerageActive') === 'true';
+    if (isBrokerageActive && isBrokerageActive !== undefined) {
+      this._positionService.getPositions().subscribe(response => {
+        if (response) {
+          this.positionResponse.data.data = response.data.data;
+          this.positionResponse.data.total_p_and_l = response.data.total_day_p_and_l;
+          this.positionResponse.data.total_p_and_l = response.data.total_p_and_l;
+          this.positionsCount = this.positionResponse.data.data!.length;
+        }
+      }, error => {
+        console.log(error);
+      })
+    } else {
+      this._toastr.error("You are not connected to the broker. Click 'Connect Broker' to establish a connection", 'Error');
+    }
+  }
+
+  updatePositionsChanges(data: any) {
+    if (data && data.body) {
+      let payload = JSON.parse(data.body);
+      if (payload.status) {
+        this.loadPositions();
+      }
+    }
+  }
+
+  updateChangeProps(positions: Position[], data: any) {
+    positions.forEach(position => {
+      if (position.instrument.symbol === data.symbol) {
+        position.ltp = data.ltp;
+      }
+    });
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.checkDevice()
+  }
+
+  checkDevice() {
+    setTimeout(() => {
+      const agent = window.navigator.userAgent.toLowerCase();
+      let regexp = /android|iphone|kindle|ipad/i;
+      let deviceType = regexp.test(agent);
+      if (deviceType) {
+        this.isMobileDevice = true;
+      } else {
+        this.isMobileDevice = false;
+      }
+    }, 100)
+  }
+
+
+}

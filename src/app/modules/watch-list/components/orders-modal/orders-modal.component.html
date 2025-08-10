@@ -1,0 +1,227 @@
+<div class="example-box" [ngClass]="isMobileDevice ? 'order-popup' : ''" cdkDrag>
+    
+    <form data-drag-boundary="true" class="order-window layer-2 place" [ngClass]="orderToggle ? 'sell' : 'buy' ">
+        <div class="mobile-header-nav" *ngIf="isMobileDevice">
+            <div class="d-flex align-items-start">
+                <mat-icon class="material-icons mat-icon cursor" (click)="closePopup()">keyboard_backspace</mat-icon>
+                <div class="instrument ml-3">
+                    <h3>{{margins.tradingSymbolShort}}</h3>
+                    <label class="su-radio-label m-0">{{ country === 'IN' ? '₹' : '$' }}{{margins.ltp}}</label>
+                    <span class="qty ml-3">{{margins.quantity}} Quantity</span>
+                </div>
+            </div>
+        </div>
+        <header *ngIf="!isMobileDevice">
+            <div class="d-flex">
+                <div class="ten columns">
+                    <div class="instrument">
+                        <span class="transaction-type">{{margins.type}}</span>
+                        <span class="tradingsymbol ml-2">
+                            <span class="name">{{margins.tradingSymbolShort}}</span>
+                        </span>
+                        ×
+                        <span class="qty">{{margins.quantity}} Quantity</span>
+                    </div>
+                    <div class="su-radio-group">
+                        <div class="type su-radio-wrap checked">
+                            <label class="su-radio-label m-0">{{ country === 'IN' ? '₹' : '$' }}{{margins.ltp}}</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="twelve columns">
+                    <div class="instrument">
+                        <span class="transaction-type">
+                            Day's Range: {{margins.todayLow}} - {{margins.todayHigh}}
+                        </span>
+                    </div>
+                    <div class="su-radio-group">
+                        <span class="transaction-type">
+                            Prev Close: {{margins.previousDayClose}} &nbsp; Volume: {{margins.volume}}
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Shows the toggle switch to buy or sell in the order window -->
+                <!-- <div class="two columns text-right">
+                    <div class="wrap-right">
+
+                        <div>
+                            <span data-tooltip="Toggle Buy / Sell" data-tooltip-pos="up">
+                                <div class="su-switch-group tx-toggle">
+                                    <input id="switch-BuySell" name="orderToggle" type="checkbox" stateon="SELL"
+                                        stateoff="BUY" class="su-switch" [(ngModel)]="orderToggle"
+                                        (change)="changeOrderType($event)" [checked]="orderToggle"
+                                        [disabled]="isOrderModify">
+
+                                    <label for="switch-BuySell" class="su-switch-control"></label>
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </header>
+
+        <section class="wrap">
+            <div class="content">
+                <div class="body">
+                    <div class="product">
+                        <div class="h6 my-3" *ngIf="isMobileDevice">
+                            Product
+                        </div>
+                        <div class="su-radio-group d-flex" *ngIf="country == 'IN'" [ngClass]="isMobileDevice ? 'justify-content-between' : ''">
+                            <div class="type four columns su-radio-wrap checked"
+                                data-tooltip-pos="up" data-tooltip-length="large"
+                                [ngClass]="margins.orderId ? 'disabled' : ''">
+                                <input id="MIS" type="radio" name="product" class="su-radio" value="MIS"
+                                    [(ngModel)]="margins.product" (change)="calculateMargin()" checked>
+                                <label for="MIS" class="su-radio-label">Intraday</label>
+                            </div>
+                            <div class="type four columns su-radio-wrap"
+                                data-tooltip-pos="up" data-tooltip-length="large"
+                                [ngClass]="margins.orderId ? 'disabled' : ''">
+                                <input id="CNC" type="radio" name="product" class="su-radio" value="CNC"
+                                    [(ngModel)]="margins.product" (change)="calculateMargin()">
+                                <label for="CNC" class="su-radio-label">Overnight</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="first-fields" [ngClass]="isMobileDevice ? 'pt-3' : ''">
+                        <div class="d-flex">
+                            <div class="four columns quantity">
+                                <div class="no su-input-group su-static-label">
+                                    <label class="su-input-label su-visible">Quantity</label>
+                                    <input type="number" name="quantity" autocorrect="off" min="1" step="1"
+                                        autofocus="autofocus" nativeerror="true" staticlabel="true" animate="true"
+                                        dynamicwidthsize="8" [value]="margins.quantity" [(ngModel)]="margins.quantity"
+                                        (input)="changeOrderQty($event)" (blur)="onBlurEvent($event)"/>
+                                </div>
+                            </div>
+                            <div class="four columns price">
+                                <div class="no su-input-group su-static-label" [ngClass]="margins.order_type === 'MARKET' || margins.order_type === 'SL-M' ? 'disabled' : ''">
+                                    <label class="su-input-label su-visible">Price</label>
+                                    <input type="number" autocorrect="off" min="0" step="0.01" nativeerror="true" staticlabel="true" animate="true" name="price" id="price" dynamicwidthsize="8" [disabled]="margins.order_type === 'MARKET' || margins.order_type === 'SL-M'" [value]="margins.order_type === 'MARKET' || margins.order_type === 'SL-M' ? '0' : orderPlacementPrice" (blur)="onBlurEvent($event)" (input)="onInput($event)"/>
+                                </div>
+                            </div>
+                            <div class="four columns trigger">
+                                <div class="no su-input-group su-static-label"
+                                    [ngClass]="margins.order_type == 'MARKET' || margins.order_type == 'LIMIT' ? 'disabled' : ''">
+                                    <label class="su-input-label">Trigger Price</label>
+                                    <input type="number" autocorrect="off" min="0" step="0.01" nativeerror="true"
+                                        staticlabel="true" animate="true" label="Trigger price" name="trigger_price" id="trigger_price"
+                                        dynamicwidthsize="8"
+                                        [disabled]="margins.order_type == 'MARKET' || margins.order_type == 'LIMIT'"
+                                        [value]="margins.order_type === 'MARKET' || margins.order_type === 'LIMIT' ? '0' : margins.trigger_price" (blur)="onBlurEvent($event)" (input)="onInput($event)">
+                                </div>
+                                <div class="no su-input-group su-static-label" *ngIf="margins.variety === 'co'">
+                                    <label class="su-input-label">Stoploss Trigger Price</label>
+                                    <input type="number" placeholder="" autocorrect="off" min="0" step="0.05" name="trigger_price"
+                                        nativeerror="true" staticlabel="true" animate="true"
+                                        label="Stoploss trigger Price" dynamicwidthsize="8"
+                                        [value]="margins.trigger_price" (blur)="onBlurEvent($event)" (input)="onInput($event)">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="h6 mt-3 pt-3" *ngIf="isMobileDevice">
+                            Type
+                        </div>
+                        <div class="d-flex order-type-section">
+                            <div class="four columns empty-column" *ngIf="!isMobileDevice">
+                                &nbsp;
+                            </div>
+                            
+                            <div class="price" [ngClass]="isMobileDevice ? 'margins-order_type pr-3' : 'four columns'">
+                                <div class="su-radio-group order-type">
+                                    <div class="su-radio-wrap" tooltip-pos="down" data-tooltip="Buy at market price"
+                                        data-tooltip-pos="down" [ngClass]="">
+                                        <input id="MARKET" type="radio" name="orderType" label="Market" class="su-radio"
+                                            value="MARKET" [(ngModel)]="margins.order_type"
+                                            [disabled]="margins.variety !== 'regular' && margins.variety !== 'co'" (change)="calculateMargin()">
+                                        <label for="MARKET" class="su-radio-label">Market</label>
+                                    </div>
+                                    <div class="su-radio-wrap checked" tooltip-pos="down"
+                                        data-tooltip="Buy at a preferred price" data-tooltip-pos="down"
+                                        [ngClass]="">
+                                        <input id="LIMIT" type="radio" name="orderType" label="Limit" class="su-radio"
+                                            value="LIMIT" [(ngModel)]="margins.order_type"
+                                            [disabled]="margins.variety !== 'regular' && margins.variety !== 'co'" (change)="calculateMargin()">
+                                        <label for="LIMIT" class="su-radio-label">Limit</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="trigger" [ngClass]="isMobileDevice ? 'margins-order_type pl-3' : 'four columns'">
+                                <div class="su-radio-group text-right order-type">
+                                    <div class="su-radio-wrap" tooltip-pos="down"
+                                        [ngClass]="margins.variety == 'co' ? 'disabled' : ''">
+                                        <input id="SL" type="radio" name="orderType" label="SL" class="su-radio"
+                                            value="SL" [(ngModel)]="margins.order_type"
+                                            [disabled]="margins.variety == 'co'" (change)="calculateMargin()">
+                                        <label for="SL" class="su-radio-label">SL</label>
+                                    </div>
+                                    <div class="su-radio-wrap" tooltip-pos="down"
+                                        [ngClass]="margins.variety === 'co' ? 'disabled' : ''">
+                                        <input id="SL-M" type="radio" name="orderType" label="SL-M" class="su-radio"
+                                            value="SL-M" [(ngModel)]="margins.order_type"
+                                            [disabled]="margins.variety === 'co'" (change)="calculateMargin()">
+                                        <label for="SL-M" class="su-radio-label">SL-M</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <footer class="footer d-flex" *ngIf="!isMobileDevice">
+                    <div class="seven columns">
+                        <div class="row margins">
+                            <div class="block">
+                                <label>Required: </label>
+                                <span class="value">{{ country === 'IN' ? '₹' : '$' }}{{margins.margin}}</span>
+                            </div>
+                            <div class="block charges">
+                                <label>Available: </label> 
+                                <span class="value">{{ country === 'IN' ? '₹' : '$' }}{{margins.availableMargin}}</span> 
+                                <span class="refresh-margins" data-tooltip="Refresh"
+                                    data-tooltip-pos="up">
+                                    <span class="reload-margin icon icon-reload"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="five columns text-right actions order-modal-footer">
+                        <button *ngIf="!isOrderModify" type="submit" class="submit"
+                            (click)="openIntradayOrderPopup('new')" [disabled]="!isButtonEnabled"><span>{{margins.type |
+                                titlecase}}</span></button>
+                        <button *ngIf="isOrderModify" type="submit" class="submit"
+                        (click)="openIntradayOrderPopup('open')"><span>Modify</span></button>
+                        <button type="button" class="button-outline cancel ml-1" (click)="closePopup()">Cancel</button>
+                    </div>
+                </footer>
+                <footer class="footer" *ngIf="isMobileDevice">
+                    <div class="d-flex py-3 justify-content-center align-items-center">
+                        <div class="block">
+                            <label class="mb-0">Required: </label>
+                            <span class="value" data-tooltip="Margin calculation explained" data-tooltip-pos="up">{{ country === 'IN' ? '₹' : '$' }}{{margins.margin}}</span>
+                        </div>
+                        <div class="d-flex charges align-items-center">
+                            <label class="mb-0 ml-3">Available: </label> 
+                            <span class="value" data-tooltip="View charges &amp; taxes" data-tooltip-pos="up">{{ country === 'IN' ? '₹' : '$' }}{{margins.availableMargin}}</span>
+                            <mat-icon class="material-icons mat-icon mat-icon-sm cursor" (click)="closePopup()" data-tooltip="Refresh"
+                            data-tooltip-pos="up">refresh</mat-icon>
+                        </div>
+                    </div>
+                
+                    <div class="actions">
+                        <button *ngIf="!isOrderModify" type="submit" class="btn submit" (click)="openIntradayOrderPopup('new')"><span>{{margins.type | titlecase}}</span></button>
+                        <button *ngIf="isOrderModify" type="submit" class="btn submit" (click)="openIntradayOrderPopup('open')"><span>Modify</span></button>
+                    </div>
+                </footer>
+            </div>
+        </section>
+
+    </form>
+</div>
+<div toastContainer></div>

@@ -4,7 +4,32 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8080'
+  /*apiUrl: 'https://tradeanalytix.com/service',
+  redirectUri: 'http://localhost:4200/oauth-redirect',*/
+  /*apiUrl: 'https://tradeanalytix.com/service',
+  redirectUri: 'https://tradeanalytix.com/oauth-redirect',*/
+  /*apiUrl: 'https://tradeanalytix.com/service/us',
+  redirectUri: 'https://us.tradeanalytix.com/oauth-redirect',*/
+
+  //Prod
+  apiUrl: 'https://us.cuetrade.io/service',
+  redirectUri: 'https://us.cuetrade.io/oauth-redirect',
+  tradingServiceUri: 'https://us.cuetrade.io/tradingservice',
+  websocketUrl: 'https://ustrading.cuetrade.io',
+  country: 'US', // SET US for US deployment and IN for indian deployment
+  //Uncomment this only in local
+  // env: 'local',
+  //Comment this only in local
+  env: 'prod',
+
+  //Local Dev
+  // apiUrl: 'http://localhost:8080/service',
+  // redirectUri: 'http://localhost:4200/oauth-redirect',
+  // tradingServiceUri: 'http://localhost:8081/tradingservice',
+  // websocketUrl: 'http://localhost:5001',
+  // tz: 'Asia/Calcutta',
+  tz: 'America/New_York',
+  snaptradeurl: ""
 };
 
 /*

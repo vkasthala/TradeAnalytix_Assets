@@ -1,0 +1,21 @@
+<div class="custom-card">
+    <div class="custom-card-header">
+        <div class="custom-card-title">Trading Rules</div>
+        <!-- <a class="add-new cursor" (click)="openTradingRulesModal()">Remarks</a> -->
+        <!-- <span class="cursor" (click)="evalRules($event)"><mat-icon class="form-icon-down">refresh</mat-icon></span>  -->
+    </div>
+    <!-- {{entryRules | json}} -->
+    <div class="custom-card-body">
+        <div *ngFor="let item of entryRules; let index=index">
+            <div class="d-flex justify-content-between mb-3" *ngIf = "index < 5 || showMoreRules">
+                <label class="col-form-label">{{item.msg}}</label>
+                <mat-checkbox [(ngModel)]="item.aligned" [ngClass]="item.type === 'Coded' ? 'automatic-rule' : '' ">
+                    <mat-icon *ngIf="item.type === 'Coded' && item.aligned === false" class="close-icon">close</mat-icon>
+                </mat-checkbox>
+            </div>
+        </div>
+        <div class="text-right">
+            <span class="cursor link-item" (click)="toggleTradingRules()">{{showMoreRules ? 'Less' : 'More'}}</span>
+        </div>
+    </div>
+</div>

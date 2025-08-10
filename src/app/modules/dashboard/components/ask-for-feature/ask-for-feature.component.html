@@ -1,0 +1,42 @@
+<div class="compare-popup">
+    <div class="compare-pop-inner">
+        <div class="top-pop-inner pb-0">
+            <!-- <div class="left-heading">
+                <h6>{{title}}</h6>
+            </div> -->
+            <div class="right-close" (click)="closeModal()">
+                <mat-icon>clear</mat-icon>
+            </div>
+        </div>
+
+        <div class="main-pop-inner">
+            <div class="modal-title mb-1">{{title}}</div>
+            <p class="mb-0">Did we miss a feature that’s important to you?</p>
+            <p class="mb-2 small-text">Please provide details on the feature you would like us to implement</p>
+            <div class="pb-2">
+                <label class="col-form-label pb-0">Name</label>
+                <input class="form-control" matInput id="name" placeholder="Name" [(ngModel)]='data.name' />
+            </div>
+            <div class="pb-2">
+                <label class="col-form-label pb-0">Email</label>
+                <input class="form-control" placeholder="Email" matInput id="email" [(ngModel)]='data.email' />
+            </div>
+            <div class="pb-2">
+                <label class="col-form-label pb-0">Provide details of the feature</label>
+                <textarea class="form-control" matInput id="feature_details" [(ngModel)]='data.description'></textarea>
+            </div>
+            <div class="py-2">
+                <span class="demo-toggle">
+                    Can we contact you about this feature? <div class="switch ml-2">
+                        <input type="checkbox" [(ngModel)]="data.contact" id="featureContactToggle" class="cursor" />
+                        <label for="featureContactToggle"></label>
+                      </div>
+                </span>
+            </div>
+        </div>
+
+        <div class="px-3 pb-3 text-center">
+            <button type="button" class="btn btn-join" [mat-dialog-close]="data">Submit</button>
+        </div>
+    </div>
+</div>
